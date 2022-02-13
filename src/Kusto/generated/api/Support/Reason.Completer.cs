@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
-    /// <summary>Argument completer implementation for Reason.</summary>
+    /// <summary>Message providing the reason why the given name is invalid.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.ReasonTypeConverter))]
     public partial struct Reason :
         System.Management.Automation.IArgumentCompleter

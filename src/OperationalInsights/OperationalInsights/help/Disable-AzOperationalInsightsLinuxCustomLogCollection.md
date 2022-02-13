@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
 ms.assetid: EF3FE3F1-1C8F-41EB-990E-F2B30BD9D082
-online version: https://docs.microsoft.com/en-us/powershell/module/az.operationalinsights/disable-azoperationalinsightslinuxcustomlogcollection
+online version: https://docs.microsoft.com/powershell/module/az.operationalinsights/disable-azoperationalinsightslinuxcustomlogcollection
 schema: 2.0.0
 ---
 
@@ -29,6 +29,20 @@ Disable-AzOperationalInsightsLinuxCustomLogCollection [-Workspace] <PSWorkspace>
 The **Disable-AzOperationalInsightsLinuxCustomLogCollection** cmdlet stops collection of custom logs from connected Linux computers in a workspace.
 
 ## EXAMPLES
+
+### Example 1
+```powershell
+PS C:\> Disable-AzOperationalInsightsLinuxCustomLogCollection -ResourceGroupName yuzhi-rg -WorkspaceName OperationalInsight
+
+Name              : DataSource_CustomLogCollection
+ResourceGroupName : yuzhi-rg
+WorkspaceName     : OperationalInsight
+ResourceId        : /subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/yuzhi-rg/providers/Microsoft.OperationalInsights/wo
+                    rkspaces/OperationalInsight/datasources/DataSource_CustomLogCollection
+Kind              : CustomLogCollection
+Properties        : {"state":"LinuxLogsDisabled"}
+```
+Stops collection of custom logs from connected Linux computers in a workspace.
 
 ## PARAMETERS
 
@@ -124,7 +138,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
-    /// <summary>Argument completer implementation for ExportType.</summary>
+    /// <summary>The type of the query.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportTypeTypeConverter))]
     public partial struct ExportType :
         System.Management.Automation.IArgumentCompleter

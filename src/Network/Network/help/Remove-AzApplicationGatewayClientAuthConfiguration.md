@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azapplicationgatewayclientauthconfiguration
+online version: https://docs.microsoft.com/powershell/module/az.network/remove-azapplicationgatewayclientauthconfiguration
 schema: 2.0.0
 ---
 
@@ -27,9 +27,10 @@ The **Remove-AzApplicationGatewayClientAuthConfiguration** cmdlet removes the cl
 PS C:\> $AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
 PS C:\> $profile  = Get-AzApplicationGatewaySslProfile -Name "Profile01" -ApplicationGateway $AppGw
 PS C:\> Remove-AzApplicationGatewayClientAuthConfiguration -SslProfile $profile
+PS C:\> Set-AzApplicationGateway -ApplicationGateway $AppGW
 ```
 
-The first command gets the application gateway named ApplicationGateway01 in the resource group named ResourceGroup01 and stores it in the $AppGw variable. The second command gets the SSL profile named Profile01 for $AppGw and stores it in the $profile variable. The last command removes the client authentication configuration of the ssl profile stored in $profile.
+The first command gets the application gateway named ApplicationGateway01 in the resource group named ResourceGroup01 and stores it in the $AppGw variable. The second command gets the SSL profile named Profile01 for $AppGw and stores it in the $profile variable. The next command removes the client authentication configuration of the ssl profile stored in $profile. The last command updates the application gateway.
 
 ## PARAMETERS
 
@@ -79,8 +80,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [New-AzApplicationGatewayClientAuthConfiguration](./New-AzApplicationGatewayClientAuthConfiguration.md)
-
-[Add-AzApplicationGatewayClientAuthConfiguration](./Add-AzApplicationGatewayClientAuthConfiguration.md)
 
 [Get-AzApplicationGatewayClientAuthConfiguration](./Get-AzApplicationGatewayClientAuthConfiguration.md)
 

@@ -82,20 +82,20 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             {
                 action();
             }
-            catch (ErrorException ex)
+            catch (ErrorResponseException ex)
             {
                 if (ex.Body == null)
                 {
                     throw new PSInvalidOperationException(ex.Message, ex);
                 }
 
-                throw new PSInvalidOperationException(ex.Body.ErrorProperty.Message, ex);
+                throw new PSInvalidOperationException($"{ex.Message}\r\n{ex.Body.Error.Message}", ex);
             }
         }
 
 
         protected void WriteCognitiveServicesAccount(
-            CognitiveServicesModels.CognitiveServicesAccount cognitiveServicesAccount)
+            CognitiveServicesModels.Account cognitiveServicesAccount)
         {
             if (cognitiveServicesAccount != null)
             {
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         }
 
         protected void WriteCognitiveServicesAccountList(
-            IEnumerable<CognitiveServicesModels.CognitiveServicesAccount> cognitiveServicesAccounts)
+            IEnumerable<CognitiveServicesModels.Account> cognitiveServicesAccounts)
         {
             List<PSCognitiveServicesAccount> output = new List<PSCognitiveServicesAccount>();
             if (cognitiveServicesAccounts != null)

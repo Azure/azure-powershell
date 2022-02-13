@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>TypeConverter implementation for LicenseType.</summary>
+    /// <summary>License type.</summary>
     public partial class LicenseTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

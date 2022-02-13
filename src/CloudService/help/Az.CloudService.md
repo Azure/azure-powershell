@@ -1,7 +1,7 @@
 ---
 Module Name: Az.CloudService
 Module Guid: a41eb61d-c5a1-4e9b-81a7-b8905fff7f2c
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.cloudservice
+Download Help Link: https://docs.microsoft.com/powershell/module/az.cloudservice
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -19,6 +19,12 @@ Gets the status of a cloud service.
 
 ### [Get-AzCloudServiceNetworkInterfaces](Get-AzCloudServiceNetworkInterfaces.md)
 Get the network interfaces of a cloud service.
+
+### [Get-AzCloudServiceOSFamily](Get-AzCloudServiceOSFamily.md)
+Gets properties of a guest operating system family that can be specified in the XML service configuration (.cscfg) for a cloud service.
+
+### [Get-AzCloudServiceOSVersion](Get-AzCloudServiceOSVersion.md)
+Gets properties of a guest operating system version that can be specified in the XML service configuration (.cscfg) for a cloud service.
 
 ### [Get-AzCloudServicePublicIPAddress](Get-AzCloudServicePublicIPAddress.md)
 Get the public IP address of a cloud service.

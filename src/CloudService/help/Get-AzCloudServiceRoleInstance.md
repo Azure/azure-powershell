@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.CloudService
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cloudservice/get-azcloudserviceroleinstance
+online version: https://docs.microsoft.com/powershell/module/az.cloudservice/get-azcloudserviceroleinstance
 schema: 2.0.0
 ---
 
@@ -38,8 +38,10 @@ Gets a role instance from a cloud service.
 
 ### Example 1: Get all role instances
 ```powershell
-PS C:\> Get-AzCloudServiceRoleInstance -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS"
+Get-AzCloudServiceRoleInstance -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS"
+```
 
+```Output
 Name                    Location    SkuName        SkuTier
 ----                    --------    -------        -------
 ContosoFrontEnd_IN_0    eastus2euap Standard_D1_v2 Standard
@@ -53,8 +55,10 @@ This command gets the properties of all role instances of cloud service named Co
 
 ### Example 2: Get properties for single role instance
 ```powershell
-PS C:\> Get-AzCloudServiceRoleInstance -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstanceName "ContosoFrontEnd_IN_0"
+Get-AzCloudServiceRoleInstance -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstanceName "ContosoFrontEnd_IN_0"
+```
 
+```Output
 Name                    Location    SkuName        SkuTier
 ----                    --------    -------        -------
 ContosoFrontEnd_IN_0    eastus2euap Standard_D1_v2 Standard
@@ -181,7 +185,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IRoleInstance
+### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IRoleInstance
 
 ## NOTES
 
@@ -195,6 +199,9 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   - `[CloudServiceName <String>]`: 
   - `[Id <String>]`: Resource identity path
+  - `[Location <String>]`: Name of the location that the OS version pertains to.
+  - `[OSFamilyName <String>]`: Name of the OS family.
+  - `[OSVersionName <String>]`: Name of the OS version.
   - `[ResourceGroupName <String>]`: 
   - `[RoleInstanceName <String>]`: Name of the role instance.
   - `[RoleName <String>]`: Name of the role.

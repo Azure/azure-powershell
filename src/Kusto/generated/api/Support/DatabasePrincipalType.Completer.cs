@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
-    /// <summary>Argument completer implementation for DatabasePrincipalType.</summary>
+    /// <summary>Database principal type.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.DatabasePrincipalTypeTypeConverter))]
     public partial struct DatabasePrincipalType :
         System.Management.Automation.IArgumentCompleter

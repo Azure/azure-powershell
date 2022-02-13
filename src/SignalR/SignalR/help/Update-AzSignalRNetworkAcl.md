@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SignalR.dll-Help.xml
 Module Name: Az.SignalR
-online version: https://docs.microsoft.com/en-us/powershell/module/az.signalr/update-azsignalrnetworkacl
+online version: https://docs.microsoft.com/powershell/module/az.signalr/update-azsignalrnetworkacl
 schema: 2.0.0
 ---
 
@@ -79,7 +79,7 @@ Allowed network ACLs
 Type: System.String[]
 Parameter Sets: (All)
 Aliases:
-Accepted values: ClientConnection, ServerConnection, RESTAPI
+Accepted values: ClientConnection, ServerConnection, RESTAPI, Trace
 
 Required: False
 Position: Named
@@ -141,7 +141,7 @@ Denied network ACLs
 Type: System.String[]
 Parameter Sets: (All)
 Aliases:
-Accepted values: ClientConnection, ServerConnection, RESTAPI
+Accepted values: ClientConnection, ServerConnection, RESTAPI, Trace
 
 Required: False
 Position: Named

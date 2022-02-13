@@ -11,29 +11,42 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
-param([switch]$Isolated, [switch]$Live, [switch]$Record, [switch]$Playback)
+param([switch]$Isolated, [switch]$Live, [switch]$Record, [switch]$Playback, [switch]$RegenerateSupportModule, [switch]$UsePreviousConfigForRecord, [string[]]$TestName)
 $ErrorActionPreference = 'Stop'
 
-if(-not $Isolated) {
+if(-not $Isolated)
+{
   Write-Host -ForegroundColor Green 'Creating isolated process...'
+  if ($PSBoundParameters.ContainsKey("TestName")) {
+    $PSBoundParameters["TestName"] = $PSBoundParameters["TestName"] -join ","
+  }
   $pwsh = [System.Diagnostics.Process]::GetCurrentProcess().Path
   & "$pwsh" -NonInteractive -NoLogo -NoProfile -File $MyInvocation.MyCommand.Path @PSBoundParameters -Isolated
   return
 }
 
+# This is a workaround, since for string array parameter, pwsh -File will only take the first element
+if ($PSBoundParameters.ContainsKey("TestName") -and ($TestName.count -eq 1) -and ($TestName[0].Contains(','))) {
+  $TestName = $TestName[0].Split(",")
+}
+
 $ProgressPreference = 'SilentlyContinue'
 $baseName = $PSScriptRoot.BaseName
 $requireResourceModule = (($baseName -ne "Resources") -and ($Record.IsPresent -or $Live.IsPresent))
-. (Join-Path $PSScriptRoot 'check-dependencies.ps1') -Isolated -Accounts:$false -Pester -Resources:$requireResourceModule
+. (Join-Path $PSScriptRoot 'check-dependencies.ps1') -Isolated -Accounts:$false -Pester -Resources:$requireResourceModule -RegenerateSupportModule:$RegenerateSupportModule
 . ("$PSScriptRoot\test\utils.ps1")
 
-if ($requireResourceModule) {
+if ($requireResourceModule)
+{
+  # Load the latest Az.Accounts installed
+  Import-Module -Name Az.Accounts -RequiredVersion (Get-Module -Name Az.Accounts -ListAvailable | Sort-Object -Property Version -Descending)[0].Version
   $resourceModulePSD = Get-Item -Path (Join-Path $HOME '.PSSharedModules\Resources\Az.Resources.TestSupport.psd1')
   Import-Module -Name $resourceModulePSD.FullName
 }
 
 $localModulesPath = Join-Path $PSScriptRoot 'generated\modules'
-if(Test-Path -Path $localModulesPath) {
+if(Test-Path -Path $localModulesPath)
+{
   $env:PSModulePath = "$localModulesPath$([IO.Path]::PathSeparator)$env:PSModulePath"
 }
 
@@ -45,22 +58,34 @@ Import-Module -Name Pester
 Import-Module -Name $modulePath
 
 $TestMode = 'playback'
-if($Live) {
+$ExcludeTag = @("LiveOnly")
+if($Live)
+{
   $TestMode = 'live'
+  $ExcludeTag = @()
 }
-if($Record) {
+if($Record)
+{
   $TestMode = 'record'
 }
-try {
-  if ($TestMode -ne 'playback') {
+try
+{
+  if ($TestMode -ne 'playback')
+  {
     setupEnv
   }
   $testFolder = Join-Path $PSScriptRoot 'test'
-  Invoke-Pester -Script @{ Path = $testFolder } -EnableExit -OutputFile (Join-Path $testFolder "$moduleName-TestResults.xml")
-}
-Finally
+  if ($null -ne $TestName)
+  {
+    Invoke-Pester -Script @{ Path = $testFolder } -TestName $TestName -ExcludeTag $ExcludeTag -EnableExit -OutputFile (Join-Path $testFolder "$moduleName-TestResults.xml")
+  } else
+  {
+    Invoke-Pester -Script @{ Path = $testFolder } -ExcludeTag $ExcludeTag -EnableExit -OutputFile (Join-Path $testFolder "$moduleName-TestResults.xml")
+  }
+} Finally
 {
-  if ($TestMode -ne 'playback') {
+  if ($TestMode -ne 'playback')
+  {
     cleanupEnv
   }
 }

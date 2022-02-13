@@ -6,10 +6,11 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Extensions;
+    using System;
 
     /// <summary>Get a server's security alert policy.</summary>
     /// <remarks>
-    /// [OpenAPI] ServerSecurityAlertPolicies_Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}/securityAlertPolicies/{securityAlertPolicyName}"
+    /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}/securityAlertPolicies/{securityAlertPolicyName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzPostgreSqlServerSecurityAlertPolicy_Get")]
@@ -227,7 +228,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Cmdlets
                     case Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.Information:
                     {
                         var data = messageData();
-                        WriteInformation(data, new[] { data.Message });
+                        WriteInformation(data.Message, new string[]{});
                         return ;
                     }
                     case Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.Debug:

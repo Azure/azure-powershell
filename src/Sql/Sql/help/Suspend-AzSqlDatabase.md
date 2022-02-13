@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 7302D785-9DD0-4CC0-93C9-9A6EA60591CF
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/suspend-azsqldatabase
+online version: https://docs.microsoft.com/powershell/module/az.sql/suspend-azsqldatabase
 schema: 2.0.0
 ---
 

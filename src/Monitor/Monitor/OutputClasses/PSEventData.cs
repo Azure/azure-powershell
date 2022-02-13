@@ -58,6 +58,36 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         public new DateTime EventTimestamp { get; set; }
 
         /// <summary>
+        /// Hide EventName property in base class for output
+        /// </summary>
+        public new string EventName { get; set; }
+
+        /// <summary>
+        /// Hide Category property in base class for output
+        /// </summary>
+        public new string Category { get; set; }
+
+        /// <summary>
+        /// Hide ResourceProviderName property in base class for output
+        /// </summary>
+        public new string ResourceProviderName { get; set; }
+
+        /// <summary>
+        /// Hide OperationName property in base class for output
+        /// </summary>
+        public new string OperationName { get; set; }
+
+        /// <summary>
+        /// Hide Status property in base class for output
+        /// </summary>
+        public new string Status { get; set; }
+
+        /// <summary>
+        /// Hide SubStatus property in base class for output
+        /// </summary>
+        public new string SubStatus { get; set; }
+
+        /// <summary>
         /// Initializes a new instance of the EventData class.
         /// </summary>
         public PSEventData(EventData eventData)
@@ -93,6 +123,14 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
                 this.Level = eventData.Level ?? default(EventLevel);
                 this.SubmissionTimestamp = eventData.SubmissionTimestamp ?? default(DateTime);
                 this.EventTimestamp = eventData.EventTimestamp ?? default(DateTime);
+
+                // Copy values for LocalizableStrings from the EventData object
+                this.EventName = eventData.EventName?.LocalizedValue;
+                this.Category = eventData.Category?.LocalizedValue;
+                this.ResourceProviderName = eventData.ResourceProviderName?.LocalizedValue;
+                this.OperationName = eventData.OperationName?.LocalizedValue;
+                this.Status = eventData.Status?.LocalizedValue;
+                this.SubStatus = eventData.SubStatus?.LocalizedValue;
             }
         }
     }

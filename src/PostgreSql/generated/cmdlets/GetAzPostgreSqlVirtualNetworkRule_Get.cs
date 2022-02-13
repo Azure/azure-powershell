@@ -6,10 +6,11 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Extensions;
+    using System;
 
     /// <summary>Gets a virtual network rule.</summary>
     /// <remarks>
-    /// [OpenAPI] VirtualNetworkRules_Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}/virtualNetworkRules/{virtualNetworkRuleName}"
+    /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}/virtualNetworkRules/{virtualNetworkRuleName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzPostgreSqlVirtualNetworkRule_Get")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IVirtualNetworkRule))]
@@ -241,7 +242,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Cmdlets
                     case Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.Information:
                     {
                         var data = messageData();
-                        WriteInformation(data, new[] { data.Message });
+                        WriteInformation(data.Message, new string[]{});
                         return ;
                     }
                     case Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.Debug:

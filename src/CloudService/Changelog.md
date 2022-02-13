@@ -19,6 +19,22 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.0
+* General availability of 'Az.CloudService' module
+
+## Version 0.5.0
+* Fixed the issue that RemoteDesktopExtension password is wrong setted.
+
+## Version 0.4.0
+* Introduced 2 additional parameter sets for `New-AzCloudService`.
+
+## Version 0.3.0
+* Fixed the issue that FrontendIPConfiguration is empty in `Get-AzCloudService`.[#14702]
+
+## Version 0.2.0
+* Bumped API version to stable 2021-03-01
+* Supported OSFamily and OSVersion
+
 ## Version 0.1.0
 * First preview release for module Az.CloudService
 

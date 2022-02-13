@@ -11,7 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Cmdlets
     /// Gets the private link resources that need to be created for a RedisEnterprise cluster.
     /// </summary>
     /// <remarks>
-    /// [OpenAPI] ListByRedisEnterpriseCache=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/privateLinkResources"
+    /// [OpenAPI] ListByCluster=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/privateLinkResources"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzRedisEnterpriseCachePrivateLinkResource_List")]
@@ -113,12 +113,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Cmdlets
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
-        /// <summary>The name of the resource group.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the resource group.")]
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the resource group. The name is case insensitive.")]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"The name of the resource group.",
+        Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category(global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.ParameterCategory.Path)]
@@ -127,15 +127,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Cmdlets
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string[] _subscriptionId;
 
-        /// <summary>
-        /// Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part
-        /// of the URI for every service call.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.")]
+        /// <summary>The ID of the target subscription.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the target subscription.")]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.",
+        Description = @"The ID of the target subscription.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.DefaultInfo(
@@ -310,7 +307,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Cmdlets
                     foreach( var SubscriptionId in this.SubscriptionId )
                     {
                         await ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                        await this.Client.PrivateLinkResourcesListByRedisEnterpriseCache(ResourceGroupName, ClusterName, SubscriptionId, onOk, onDefault, this, Pipeline);
+                        await this.Client.PrivateLinkResourcesListByCluster(ResourceGroupName, ClusterName, SubscriptionId, onOk, onDefault, this, Pipeline);
                         await ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     }
                 }

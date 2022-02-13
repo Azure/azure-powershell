@@ -26,6 +26,8 @@ namespace Microsoft.Azure.Commands.Compute
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMConfig", DefaultParameterSetName = "DefaultParameterSet"), OutputType(typeof(PSVirtualMachine))]
     public class NewAzureVMConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
+        private const string DefaultParameterSetName = "DefaultParameterSet", ExplicitIdentityParameterSet = "ExplicitIdentityParameterSet";
+	
         [Alias("ResourceName", "Name")]
         [Parameter(
             Mandatory = true,
@@ -59,14 +61,14 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             Position = 4,
             Mandatory = true,
-            ParameterSetName = "ExplicitIdentityParameterSet",
+            ParameterSetName = ExplicitIdentityParameterSet,
             ValueFromPipelineByPropertyName = false)]
         [ValidateNotNullOrEmpty]
         public ResourceIdentityType? IdentityType { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = "ExplicitIdentityParameterSet",
+            ParameterSetName = ExplicitIdentityParameterSet,
             ValueFromPipelineByPropertyName = true)]
         public string[] IdentityId { get; set; }
 
@@ -124,10 +126,40 @@ namespace Microsoft.Azure.Commands.Compute
            HelpMessage = "EncryptionAtHost property can be used by user in the request to enable or disable the Host Encryption for the virtual machine. This will enable the encryption for all the disks including Resource/Temp disk at host itself.")]
         public SwitchParameter EncryptionAtHost { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Id of the capacity reservation Group that is used to allocate.")]
+        [ResourceIdCompleter("Microsoft.Compute/capacityReservationGroups")]
+        public string CapacityReservationGroupId { get; set; }
+
         protected override bool IsUsageMetricEnabled
         {
             get { return true; }
         }
+	
+	[Parameter(
+            Mandatory = false,
+            ParameterSetName = ExplicitIdentityParameterSet,
+            HelpMessage = "UserData for the VM, which will be Base64 encoded. Customer should not pass any secrets in here.",
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = DefaultParameterSetName,
+            HelpMessage = "UserData for the VM, which will be Base64 encoded. Customer should not pass any secrets in here.",
+            ValueFromPipelineByPropertyName = true)]
+        public string UserData { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the fault domain of the virtual machine.")]
+        public int PlatformFaultDomain { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The flag that enables or disables hibernation capability on the VM.")]
+        public SwitchParameter HibernationEnabled { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -174,7 +206,20 @@ namespace Microsoft.Azure.Commands.Compute
 
             if (this.EnableUltraSSD.IsPresent)
             {
-                vm.AdditionalCapabilities = new AdditionalCapabilities(true);
+                if (vm.AdditionalCapabilities == null)
+                {
+                    vm.AdditionalCapabilities = new AdditionalCapabilities();
+                }
+                vm.AdditionalCapabilities.UltraSSDEnabled = this.EnableUltraSSD;
+            }
+
+            if (this.HibernationEnabled.IsPresent)
+            {
+                if (vm.AdditionalCapabilities == null)
+                {
+                    vm.AdditionalCapabilities = new AdditionalCapabilities();
+                }
+                vm.AdditionalCapabilities.HibernationEnabled = this.HibernationEnabled;
             }
 
             if (this.IsParameterBound(c => c.ProximityPlacementGroupId))
@@ -203,6 +248,27 @@ namespace Microsoft.Azure.Commands.Compute
                     vm.SecurityProfile = new SecurityProfile();
 
                 vm.SecurityProfile.EncryptionAtHost = this.EncryptionAtHost.IsPresent;
+            }
+
+            if (this.IsParameterBound(c => c.CapacityReservationGroupId))
+            {
+                vm.CapacityReservation = new CapacityReservationProfile();
+                vm.CapacityReservation.CapacityReservationGroup = new SubResource(this.CapacityReservationGroupId);
+            }
+	    
+	        if (this.IsParameterBound(c => c.UserData))
+            {
+                if (!ValidateBase64EncodedString.ValidateStringIsBase64Encoded(this.UserData))
+                {
+                    this.UserData = ValidateBase64EncodedString.EncodeStringToBase64(this.UserData);
+                    this.WriteInformation(ValidateBase64EncodedString.UserDataEncodeNotification, new string[] { "PSHOST" });
+                }
+                vm.UserData = this.UserData;
+            }
+
+            if (this.IsParameterBound(c => c.PlatformFaultDomain))
+            {
+                vm.PlatformFaultDomain = this.PlatformFaultDomain;
             }
 
             WriteObject(vm);

@@ -18,6 +18,48 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version *
+* Added logic of returning error if insufficient user permissions are there for `GetAgentRegistrationInfo`
+
+## Version 1.7.3
+* `New-AzAutomationSchedule` allows defnining StartTime with offsets.
+*  Fixed bug: updated 'Set-AzAutomationModule' to use PUT call while updating modules with specific versions   [#12552]
+
+## Version 1.7.2
+* Fixed example in reference doc for `Remove-AzAutomationHybridWorkerGroup`
+
+## Version 1.7.1
+* Fixed bug: Add Schedule name validation in New-AzAutomationSchedule
+
+## Version 1.7.1
+* Fixed bug: Closing in input file handle in Import-AzAutomationRunbook
+
+## Version 1.7.0
+* Added support for User Assigned Identities and PublicNetworkAccess flag
+
+## Version 1.6.0
+* Added support for Customer Managed Key Encryption with System Assigned Identity
+* Fixed issue that disables the schedule for update deployment if schedule was re-created with same name
+
+## Version 1.5.2
+* Fixed the issue for starting Python3 runbooks with parameters
+* Fixed time zone issue while creating an update deployment schedule.
+
+## Version 1.5.1
+* Fixed te issue that complex object cannot be serialized correctly. [#14431]
+
+## Version 1.5.0
+* Fixed the issue that string cannot be serialized correctly. [#14215]
+* Added Support for Python3 Runbook Type
+
+## Version 1.4.3
+* Fixed the issue of processing `PSCustomObject` and `Array`.
+
+## Version 1.4.2
+* Fixed issue where description was not populated for update management schedules
+
+## Version 1.4.1
 * Fixed issue that parameters of `Start-AzAutomationRunbook` cannot convert PSObject wrapped string to JSON string [#13240]
 * Fixed location completer for New-AzAutomationUpdateManagementAzureQuery cmdlet
 

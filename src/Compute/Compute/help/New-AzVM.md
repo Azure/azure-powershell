@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 05E6155D-4F0E-406B-9312-77AD97EF66EE
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/new-azvm
+online version: https://docs.microsoft.com/powershell/module/az.compute/new-azvm
 schema: 2.0.0
 ---
 
@@ -15,33 +15,41 @@ Creates a virtual machine.
 
 ### SimpleParameterSet (Default)
 ```
-New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [[-Zone] <String[]>] -Name <String>
- -Credential <PSCredential> [-VirtualNetworkName <String>] [-AddressPrefix <String>] [-SubnetName <String>]
+New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <String>] [[-Zone] <String[]>]
+ -Name <String> -Credential <PSCredential> [-NetworkInterfaceDeleteOption <String>]
+ [-VirtualNetworkName <String>] [-AddressPrefix <String>] [-SubnetName <String>]
  [-SubnetAddressPrefix <String>] [-PublicIpAddressName <String>] [-DomainNameLabel <String>]
  [-AllocationMethod <String>] [-SecurityGroupName <String>] [-OpenPorts <Int32[]>] [-Image <String>]
  [-Size <String>] [-AvailabilitySetName <String>] [-SystemAssignedIdentity] [-UserAssignedIdentity <String>]
- [-AsJob] [-DataDiskSizeInGb <Int32[]>] [-EnableUltraSSD] [-ProximityPlacementGroupId <String>]
- [-HostId <String>] [-VmssId <String>] [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-EncryptionAtHost]
- [-HostGroupId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-OSDiskDeleteOption <String>] [-DataDiskSizeInGb <Int32[]>] [-DataDiskDeleteOption <String>]
+ [-EnableUltraSSD] [-ProximityPlacementGroupId <String>] [-HostId <String>] [-VmssId <String>]
+ [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-EncryptionAtHost]
+ [-HostGroupId <String>] [-SshKeyName <String>] [-GenerateSshKey] [-CapacityReservationGroupId <String>]
+ [-UserData <String>] [-PlatformFaultDomain <Int32>] [-HibernationEnabled]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DefaultParameterSet
 ```
-New-AzVM [-ResourceGroupName] <String> [-Location] <String> [-VM] <PSVirtualMachine> [[-Zone] <String[]>]
- [-DisableBginfoExtension] [-Tag <Hashtable>] [-LicenseType <String>] [-AsJob]
+New-AzVM [-ResourceGroupName] <String> [-Location] <String> [-EdgeZone <String>] [-VM] <PSVirtualMachine>
+ [[-Zone] <String[]>] [-DisableBginfoExtension] [-Tag <Hashtable>] [-LicenseType <String>] [-AsJob]
+ [-OSDiskDeleteOption <String>] [-DataDiskDeleteOption <String>] [-SshKeyName <String>] [-GenerateSshKey]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DiskFileParameterSet
 ```
-New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] -Name <String> [-VirtualNetworkName <String>]
- [-AddressPrefix <String>] [-SubnetName <String>] [-SubnetAddressPrefix <String>]
- [-PublicIpAddressName <String>] [-DomainNameLabel <String>] [-AllocationMethod <String>]
- [-SecurityGroupName <String>] [-OpenPorts <Int32[]>] -DiskFile <String> [-Linux] [-Size <String>]
- [-AvailabilitySetName <String>] [-SystemAssignedIdentity] [-UserAssignedIdentity <String>] [-AsJob]
- [-DataDiskSizeInGb <Int32[]>] [-EnableUltraSSD] [-ProximityPlacementGroupId <String>] [-HostId <String>]
+New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <String>] -Name <String>
+ [-NetworkInterfaceDeleteOption <String>] [-VirtualNetworkName <String>] [-AddressPrefix <String>]
+ [-SubnetName <String>] [-SubnetAddressPrefix <String>] [-PublicIpAddressName <String>]
+ [-DomainNameLabel <String>] [-AllocationMethod <String>] [-SecurityGroupName <String>] [-OpenPorts <Int32[]>]
+ -DiskFile <String> [-Linux] [-Size <String>] [-AvailabilitySetName <String>] [-SystemAssignedIdentity]
+ [-UserAssignedIdentity <String>] [-AsJob] [-OSDiskDeleteOption <String>] [-DataDiskSizeInGb <Int32[]>]
+ [-DataDiskDeleteOption <String>] [-EnableUltraSSD] [-ProximityPlacementGroupId <String>] [-HostId <String>]
  [-VmssId <String>] [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-EncryptionAtHost]
- [-HostGroupId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-HostGroupId <String>] [-CapacityReservationGroupId <String>] [-UserData <String>]
+ [-PlatformFaultDomain <Int32>] [-HibernationEnabled] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,9 +62,11 @@ The `SimpleParameterSet` provides a convenient method to create a VM by making c
 ## EXAMPLES
 
 ### Example 1: Create a virtual machine
+```powershell
+New-AzVM -Name MyVm -Credential (Get-Credential)
 ```
-PS C:\> New-AzVM -Name MyVm -Credential (Get-Credential)
 
+```output
 VERBOSE: Use 'mstsc /v:myvm-222222.eastus.cloudapp.azure.com' to connect to the VM.
 
 ResourceGroupName        : MyVm
@@ -80,8 +90,8 @@ The script will ask a user name and password for the VM.
 This script uses several other cmdlets.
 
 ### Example 2: Create a virtual machine from a custom user image
-```
-PS C:\> ## VM Account
+```powershell
+## VM Account
 # Credentials for Local Admin account you created in the sysprepped (generalized) vhd image
 $VMLocalAdminUser = "LocalAdminUser"
 $VMLocalAdminSecurePassword = ConvertTo-SecureString "Password" -AsPlainText -Force
@@ -134,7 +144,7 @@ This script assumes that you are already logged into your Azure account.
 You can confirm your login status by using the **Get-AzSubscription** cmdlet.
 
 ### Example 3: Create a VM from a marketplace image without a Public IP
-```
+```powershell
 $VMLocalAdminUser = "LocalAdminUser"
 $VMLocalAdminSecurePassword = ConvertTo-SecureString <password> -AsPlainText -Force
 $LocationName = "westus"
@@ -163,8 +173,32 @@ $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'Micros
 New-AzVM -ResourceGroupName $ResourceGroupName -Location $LocationName -VM $VirtualMachine -Verbose
 ```
 
-This example provisions a new network and deploys a Windows VM from the Marketplace without creating a public IP address or Network Security Group.
-This script can be used for automatic provisioning because it uses the local virtual machine admin credentials inline instead of calling **Get-Credential** which requires user interaction.
+### Example 4: Create a VM with a UserData value:
+```powershell
+## VM Account
+$VMLocalAdminUser = "LocalAdminUser";
+$VMLocalAdminSecurePassword = ConvertTo-SecureString "Password" -AsPlainText -Force;
+
+## Azure Account
+$LocationName = "eastus";
+$ResourceGroupName = "MyResourceGroup";
+
+# VM Profile & Hardware
+$VMName = 'v' + $ResourceGroupName;
+$domainNameLabel = "d1" + $ResourceGroupName;
+$Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $VMLocalAdminSecurePassword);
+
+# Create UserData value
+$text = "text for UserData";
+$bytes = [System.Text.Encoding]::Unicode.GetBytes($text);
+$userData = [Convert]::ToBase64String($bytes);
+
+# Create VM
+New-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName -Credential $cred -DomainNameLabel $domainNameLabel -UserData $userData;
+$vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName -UserData;
+```
+
+The UserData value must always be Base64 encoded. 
 
 ## PARAMETERS
 
@@ -229,6 +263,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CapacityReservationGroupId
+Id of the capacity reservation Group that is used to allocate.
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Credential
 The administrator credentials for the VM.
 
@@ -238,6 +287,21 @@ Parameter Sets: SimpleParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataDiskDeleteOption
+Specifies Data Disk delete option after VM deletion. Options are Detach, Delete
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -319,6 +383,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EdgeZone
+Sets the edge zone name. If set, the query will be routed to the specified edgezone instead of the main region.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -EnableUltraSSD
 Use UltraSSD disks for the vm.
 
@@ -330,6 +409,23 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionAtHost
+EncryptionAtHost property can be used by user in the request to enable or disable the Host Encryption for the virtual machine or virtual machine scale set. 
+This will enable the encryption for all the disks including Resource/Temp disk at host itself. 
+Default: The Encryption at host will be disabled unless this property is set to true for the resource.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -346,6 +442,36 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GenerateSshKey
+Generate a SSH Public/Private key pair and create a SSH Public Key resource on Azure.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: SimpleParameterSet, DefaultParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HibernationEnabled
+The flag that enables or disables hibernation capability on the VM.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -380,7 +506,7 @@ Accept wildcard characters: False
 ```
 
 ### -Image
-The friendly image name upon which the VM will be built.  These include: Win2016Datacenter, Win2012R2Datacenter, Win2012Datacenter, Win2008R2SP1, UbuntuLTS, CentOS, CoreOS, Debian, openSUSE-Leap, RHEL, SLES.
+The friendly image name upon which the VM will be built.  These include: Win2019Datacenter, Win2016Datacenter, Win2012R2Datacenter, Win2012Datacenter, Win2008R2SP1, UbuntuLTS, CentOS, CoreOS, Debian, openSUSE-Leap, RHEL, SLES.
 
 ```yaml
 Type: System.String
@@ -472,24 +598,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EncryptionAtHost
-EncryptionAtHost property can be used by user in the request to enable or disable the Host Encryption for the virtual machine or virtual machine scale set. 
-This will enable the encryption for all the disks including Resource/Temp disk at host itself. 
-Default: The Encryption at host will be disabled unless this property is set to true for the resource.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: SimpleParameterSet, DiskParameterSet
-Aliases: 
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-
 ### -Name
 The name of the VM resource.
 
@@ -499,6 +607,21 @@ Parameter Sets: SimpleParameterSet, DiskFileParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetworkInterfaceDeleteOption
+Specifies what action to perform on the NetworkInterface resource when the VM is deleted. Options are: Detach, Delete.
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -517,6 +640,36 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OSDiskDeleteOption
+Specifies OS Disk delete option after VM deletion. Options are Detach, Delete
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PlatformFaultDomain
+Specifies the fault domain of the virtual machine.
+
+```yaml
+Type: System.Int32
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -611,7 +764,7 @@ Accept wildcard characters: False
 ```
 
 ### -Size
-The Virtual Machine Size.  The Default Value is: Standard_DS1_v2.
+The Virtual Machine Size.  The Default Value is: Standard_D2s_v3.
 
 ```yaml
 Type: System.String
@@ -620,7 +773,22 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: Standard_DS1_v2
+Default value: Standard_D2s_v3
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SshKeyName
+Name of the SSH Public Key resource.
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet, DefaultParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -702,6 +870,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -UserData
+UserData for the VM, which will be base-64 encoded. Customer should not pass any secrets in here.
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -VirtualNetworkName
 The name of a new (or existing) virtual network for the created VM to use.  If not specified, a name will be generated.
 
@@ -741,6 +924,7 @@ The ID of Virtual Machine Scale Set that this VM will be associated with
 Type: System.String
 Parameter Sets: SimpleParameterSet, DiskFileParameterSet
 Aliases:
+
 Required: False
 Position: Named
 Default value: None

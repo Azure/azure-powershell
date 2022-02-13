@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.2.0
+* Fixed an error that the CostmanagementExport could not be updated correctly
+
 ## Version 0.1.0
 * First preview release for module Az.CostManagement
 

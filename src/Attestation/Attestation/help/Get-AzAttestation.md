@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Attestation.dll-Help.xml
 Module Name: Az.Attestation
-online version: https://docs.microsoft.com/en-us/powershell/module/az.attestation/get-azattestation
+online version: https://docs.microsoft.com/powershell/module/az.attestation/get-azattestation
 schema: 2.0.0
 ---
 
@@ -36,7 +36,9 @@ The Get-AzAttestation cmdlet gets information about the attestation in a subscri
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzAttestation -Name pshtest -ResourceGroupName psh-test-rg                                                                                                                                                                                                                                                       
+Get-AzAttestation -Name pshtest -ResourceGroupName psh-test-rg
+```
+```output                                                                                                                                                       
 Id                : subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/psh-test-rg/providers/Microsoft.Attestation/attestationProviders/pshtest
 Location          : East US
 ResourceGroupName : psh-test-rg
@@ -56,7 +58,9 @@ Get Attestation Provider *pshtest* in Resource Group *psh-test-rg*.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzAttestation -DefaultProvider
+Get-AzAttestation -DefaultProvider
+```
+```output
 Id                : /providers/Microsoft.Attestation/attestationProviders/sharedeus2
 Location          : East US 2
 ResourceGroupName :
@@ -92,7 +96,9 @@ Get all available Attestation Default Providers
 
 ### Example 3
 ```powershell
-PS C:\> Get-AzAttestation -DefaultProvider -Location "East US 2"
+Get-AzAttestation -DefaultProvider -Location "East US 2"
+```
+```output
 Id                : /providers/Microsoft.Attestation/attestationProviders/sharedeus2
 Location          : East US 2
 ResourceGroupName :

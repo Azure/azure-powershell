@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 2E43D0D8-EF93-443B-AA8F-58C992026E95
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-aznetworksecurityruleconfig
+online version: https://docs.microsoft.com/powershell/module/az.network/remove-aznetworksecurityruleconfig
 schema: 2.0.0
 ---
 

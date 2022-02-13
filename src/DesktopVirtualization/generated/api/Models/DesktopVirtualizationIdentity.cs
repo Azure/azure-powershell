@@ -63,6 +63,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
+        /// <summary>Backing field for <see cref="ScalingPlanName" /> property.</summary>
+        private string _scalingPlanName;
+
+        /// <summary>The name of the scaling plan.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
+        public string ScalingPlanName { get => this._scalingPlanName; set => this._scalingPlanName = value; }
+
         /// <summary>Backing field for <see cref="SessionHostName" /> property.</summary>
         private string _sessionHostName;
 
@@ -158,6 +165,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceGroupName { get; set; }
+        /// <summary>The name of the scaling plan.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the scaling plan.",
+        SerializedName = @"scalingPlanName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ScalingPlanName { get; set; }
         /// <summary>The name of the session host within the specified host pool</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -211,6 +226,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         string MsixPackageFullName { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }
+        /// <summary>The name of the scaling plan.</summary>
+        string ScalingPlanName { get; set; }
         /// <summary>The name of the session host within the specified host pool</summary>
         string SessionHostName { get; set; }
         /// <summary>The ID of the target subscription.</summary>

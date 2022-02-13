@@ -73,8 +73,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
                 return;
             }
             __imageTemplateCustomizer = new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ImageTemplateCustomizer(json);
-            {_filter = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonArray>("filters"), out var __jsonFilters) ? If( __jsonFilters as Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<string[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : Filter;}
             {_searchCriterion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonString>("searchCriteria"), out var __jsonSearchCriteria) ? (string)__jsonSearchCriteria : (string)SearchCriterion;}
+            {_filter = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonArray>("filters"), out var __jsonFilters) ? If( __jsonFilters as Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<string[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : Filter;}
             {_updateLimit = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNumber>("updateLimit"), out var __jsonUpdateLimit) ? (int?)__jsonUpdateLimit : UpdateLimit;}
             AfterFromJson(json);
         }
@@ -100,6 +100,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
                 return container;
             }
             __imageTemplateCustomizer?.ToJson(container, serializationMode);
+            AddIf( null != (((object)this._searchCriterion)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonString(this._searchCriterion.ToString()) : null, "searchCriteria" ,container.Add );
             if (null != this._filter)
             {
                 var __w = new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.XNodeArray();
@@ -109,7 +110,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
                 }
                 container.Add("filters",__w);
             }
-            AddIf( null != (((object)this._searchCriterion)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonString(this._searchCriterion.ToString()) : null, "searchCriteria" ,container.Add );
             AddIf( null != this._updateLimit ? (Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNumber((int)this._updateLimit) : null, "updateLimit" ,container.Add );
             AfterToJson(ref container);
             return container;

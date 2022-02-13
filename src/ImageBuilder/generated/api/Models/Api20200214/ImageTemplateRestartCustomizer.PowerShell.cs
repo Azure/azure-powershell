@@ -98,11 +98,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateRestartCustomizerInternal)this).RestartCheckCommand = (string) content.GetValueForProperty("RestartCheckCommand",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateRestartCustomizerInternal)this).RestartCheckCommand, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateRestartCustomizerInternal)this).RestartCommand = (string) content.GetValueForProperty("RestartCommand",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateRestartCustomizerInternal)this).RestartCommand, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateRestartCustomizerInternal)this).RestartCheckCommand = (string) content.GetValueForProperty("RestartCheckCommand",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateRestartCustomizerInternal)this).RestartCheckCommand, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateRestartCustomizerInternal)this).RestartTimeout = (string) content.GetValueForProperty("RestartTimeout",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateRestartCustomizerInternal)this).RestartTimeout, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateCustomizerInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateCustomizerInternal)this).Name, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateCustomizerInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateCustomizerInternal)this).Type, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateCustomizerInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateCustomizerInternal)this).Name, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -120,11 +120,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateRestartCustomizerInternal)this).RestartCheckCommand = (string) content.GetValueForProperty("RestartCheckCommand",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateRestartCustomizerInternal)this).RestartCheckCommand, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateRestartCustomizerInternal)this).RestartCommand = (string) content.GetValueForProperty("RestartCommand",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateRestartCustomizerInternal)this).RestartCommand, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateRestartCustomizerInternal)this).RestartCheckCommand = (string) content.GetValueForProperty("RestartCheckCommand",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateRestartCustomizerInternal)this).RestartCheckCommand, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateRestartCustomizerInternal)this).RestartTimeout = (string) content.GetValueForProperty("RestartTimeout",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateRestartCustomizerInternal)this).RestartTimeout, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateCustomizerInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateCustomizerInternal)this).Name, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateCustomizerInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateCustomizerInternal)this).Type, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateCustomizerInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateCustomizerInternal)this).Name, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 

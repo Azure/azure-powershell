@@ -6,7 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
-    /// <summary>Argument completer implementation for TimeframeType.</summary>
+    /// <summary>
+    /// The time frame for pulling data for the query. If custom, then a specific time period must be provided.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeTypeTypeConverter))]
     public partial struct TimeframeType :
         System.Management.Automation.IArgumentCompleter

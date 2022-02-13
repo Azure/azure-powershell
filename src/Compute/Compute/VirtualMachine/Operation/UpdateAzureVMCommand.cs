@@ -107,14 +107,52 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "The Id of Host")]
         public string HostId { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Id of the capacity reservation Group that is used to allocate.")]
+        [ResourceIdCompleter("Microsoft.Compute/capacityReservationGroups")]
+        public string CapacityReservationGroupId { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has successfully been completed, use some other mechanism.")]
         public SwitchParameter NoWait { get; set; }
+        
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = ResourceGroupNameParameterSet,
+            HelpMessage = "UserData for the VM, which will be Base64 encoded. Customer should not pass any secrets in here.",
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = IdParameterSet,
+            HelpMessage = "UserData for the VM, which will be Base64 encoded. Customer should not pass any secrets in here.",
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = ExplicitIdentityParameterSet,
+            HelpMessage = "UserData for the VM, which will be Base64 encoded. Customer should not pass any secrets in here.",
+            ValueFromPipelineByPropertyName = true)]
+        public string UserData { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The flag that enables or disables hibernation capability on the VM.")]
+        public SwitchParameter HibernationEnabled { get; set; }
 
         public override void ExecuteCmdlet()
         {
+            if (this.IsParameterBound(c => c.UserData))
+            {
+                if (!ValidateBase64EncodedString.ValidateStringIsBase64Encoded(this.UserData))
+                {
+                    this.UserData = ValidateBase64EncodedString.EncodeStringToBase64(this.UserData);
+                    this.WriteInformation(ValidateBase64EncodedString.UserDataEncodeNotification, new string[] { "PSHOST" });
+                }
+            }
+
             base.ExecuteCmdlet();
 
             if (this.ParameterSetName.Equals(IdParameterSet))
@@ -126,6 +164,7 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 ExecuteClientAction(() =>
                 {
+                            
                     var parameters = new VirtualMachine
                     {
                         DiagnosticsProfile = this.VM.DiagnosticsProfile,
@@ -138,6 +177,7 @@ namespace Microsoft.Azure.Commands.Compute
                         Plan = this.VM.Plan,
                         AvailabilitySet = this.VM.AvailabilitySetReference,
                         Location = this.VM.Location,
+                        ExtendedLocation = this.VM.ExtendedLocation,
                         LicenseType = this.VM.LicenseType,
                         Tags = this.Tag != null ? this.Tag.ToDictionary() : this.VM.Tags,
                         Identity = ComputeAutoMapperProfile.Mapper.Map<VirtualMachineIdentity>(this.VM.Identity),
@@ -151,7 +191,12 @@ namespace Microsoft.Azure.Commands.Compute
                         VirtualMachineScaleSet = this.VM.VirtualMachineScaleSet,
                         AdditionalCapabilities = this.VM.AdditionalCapabilities,
                         EvictionPolicy = this.VM.EvictionPolicy,
-                        Priority = this.VM.Priority
+                        Priority = this.VM.Priority,
+                        CapacityReservation = this.VM.CapacityReservation,
+                        ApplicationProfile = ComputeAutoMapperProfile.Mapper.Map<ApplicationProfile>(this.VM.ApplicationProfile),
+                        UserData = this.IsParameterBound(c => c.UserData)
+                            ? this.UserData
+                            : this.VM.UserData
                     };
 
                     if (parameters.Host != null && string.IsNullOrWhiteSpace(parameters.Host.Id))
@@ -207,6 +252,15 @@ namespace Microsoft.Azure.Commands.Compute
                         parameters.AdditionalCapabilities.UltraSSDEnabled = this.UltraSSDEnabled;
                     }
 
+                    if (this.IsParameterBound(c => c.HibernationEnabled))
+                    {
+                        if (parameters.AdditionalCapabilities == null)
+                        {
+                            parameters.AdditionalCapabilities = new AdditionalCapabilities();
+                        }
+                        parameters.AdditionalCapabilities.HibernationEnabled = this.HibernationEnabled;
+                    }
+
                     if (this.IsParameterBound(c => c.MaxPrice))
                     {
                         if (parameters.BillingProfile == null)
@@ -223,6 +277,20 @@ namespace Microsoft.Azure.Commands.Compute
                             parameters.SecurityProfile = new SecurityProfile();
                         }
                         parameters.SecurityProfile.EncryptionAtHost = this.EncryptionAtHost;
+                    }
+
+                    if (this.IsParameterBound(c => c.CapacityReservationGroupId))
+                    {
+                        if (parameters.CapacityReservation == null)
+                        {
+                            parameters.CapacityReservation = new CapacityReservationProfile();
+                        }
+                        parameters.CapacityReservation.CapacityReservationGroup = new SubResource(CapacityReservationGroupId);
+                    }
+
+                    if (parameters.StorageProfile != null && parameters.StorageProfile.ImageReference != null && parameters.StorageProfile.ImageReference.Id != null)
+                    {
+                        parameters.StorageProfile.ImageReference.Id = null;
                     }
 
                     if (NoWait.IsPresent)

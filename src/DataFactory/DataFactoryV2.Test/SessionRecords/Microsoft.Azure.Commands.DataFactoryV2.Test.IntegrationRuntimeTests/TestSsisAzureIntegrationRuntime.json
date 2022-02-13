@@ -348,7 +348,73 @@
       "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cb715d05-3337-4640-8c43-4f943c50d06e/resourceGroups/ps6306/providers/Microsoft.DataFactory/factories/ps3174/linkedservices/proxy-linkedservice\",\r\n  \"name\": \"proxy-linkedservice\",\r\n  \"type\": \"Microsoft.DataFactory/factories/linkedservices\",\r\n  \"properties\": {\r\n    \"type\": \"AzureStorage\",\r\n    \"typeProperties\": {\r\n      \"connectionString\": \"DefaultEndpointsProtocol=https;AccountName=myaccount;\",\r\n      \"encryptedCredential\": \"ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIlBTMzE3NF9mOGY5ZTk2Yi1hOGY4LTQ3NTgtYjIzMy01ZTRiMDJkZTdlOTQiDQp9\"\r\n    }\r\n  },\r\n  \"etag\": \"ab000141-0000-0d00-0000-5e0315c40000\"\r\n}",
       "StatusCode": 200
     },
-    {
+     {
+      "RequestUri": "/subscriptions/cb715d05-3337-4640-8c43-4f943c50d06e/resourceGroups/ps6306/providers/Microsoft.DataFactory/factories/ps3174/integrationRuntimes/ssis-azure-ir/outboundNetworkDependenciesEndpoints?api-version=2018-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2I3MTVkMDUtMzMzNy00NjQwLThjNDMtNGY5NDNjNTBkMDZlL3Jlc291cmNlR3JvdXBzL3BzNjMwNi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFGYWN0b3J5L2ZhY3Rvcmllcy9wczMxNzQvaW50ZWdyYXRpb25SdW50aW1lcy9zc2lzLWF6dXJlLWlyL291dGJvdW5kTmV0d29ya0RlcGVuZGVuY2llc0VuZHBvaW50cz9hcGktdmVyc2lvbj0yMDE4LTA2LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "92399414-b8c9-44dd-876b-c7305459f28e"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30321.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/4.22.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "318b109d-c684-480e-8f60-1035a9c2dc20"
+        ],
+        "x-ms-correlation-request-id": [
+          "318b109d-c684-480e-8f60-1035a9c2dc20"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2:20210816T075350Z:318b109d-c684-480e-8f60-1035a9c2dc20"
+        ],
+        "Date": [
+          "Mon, 16 Aug 2021 07:53:50 GMT"
+        ],
+        "Content-Length": [
+          "809"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"category\": \"Azure Data Factory (Management)\",\r\n      \"endpoints\": [\r\n        {\r\n          \"domainName\": \"wu.frontend.clouddatahub.net\",\r\n          \"endpointDetails\": [\r\n            {\r\n              \"port\": 443\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"category\": \"Azure Storage (Management)\",\r\n      \"endpoints\": [\r\n        {\r\n          \"domainName\": \"*.blob.core.windows.net\",\r\n          \"endpointDetails\": [\r\n            {\r\n              \"port\": 443\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"domainName\": \"*.table.core.windows.net\",\r\n          \"endpointDetails\": [\r\n            {\r\n              \"port\": 443\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"category\": \"Event Hub (Logging)\",\r\n      \"endpoints\": [\r\n        {\r\n          \"domainName\": \"*.servicebus.windows.net\",\r\n          \"endpointDetails\": [\r\n            {\r\n              \"port\": 443\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"category\": \"Microsoft Logging service (Internal Use)\",\r\n      \"endpoints\": [\r\n        {\r\n          \"domainName\": \"gcs.prod.monitoring.core.windows.net\",\r\n          \"endpointDetails\": [\r\n            {\r\n              \"port\": 443\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"domainName\": \"prod.warmpath.msftcloudes.com\",\r\n          \"endpointDetails\": [\r\n            {\r\n              \"port\": 443\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"domainName\": \"azurewatsonanalysis-prod.core.windows.net\",\r\n          \"endpointDetails\": [\r\n            {\r\n              \"port\": 443\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+	{
       "RequestUri": "/subscriptions/cb715d05-3337-4640-8c43-4f943c50d06e/resourceGroups/ps6306/providers/Microsoft.DataFactory/factories/ps3174/integrationRuntimes/ssis-azure-ir?api-version=2018-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2I3MTVkMDUtMzMzNy00NjQwLThjNDMtNGY5NDNjNTBkMDZlL3Jlc291cmNlR3JvdXBzL3BzNjMwNi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFGYWN0b3J5L2ZhY3Rvcmllcy9wczMxNzQvaW50ZWdyYXRpb25SdW50aW1lcy9zc2lzLWF6dXJlLWlyP2FwaS12ZXJzaW9uPTIwMTgtMDYtMDE=",
       "RequestMethod": "GET",

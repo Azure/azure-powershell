@@ -38,7 +38,7 @@ function Test-NewDirectConnectionWithV4V6 {
     $createdConnection = New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -SessionPrefixV4 $sessionv4 -SessionPrefixV6 $sessionv6 -MaxPrefixesAdvertisedIPv4 $maxv4 -MaxPrefixesAdvertisedIPv6 $maxv6 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5
     Assert-AreEqual $md5 $createdConnection.BgpSession.Md5AuthenticationKey
     Assert-AreEqual $bandwidth $createdConnection.BandwidthInMbps 
-    Assert-AreEqual $facilityId $createdConnection.PeeringDBFacilityId 
+    Assert-AreEqual $facilityId $createdConnection.PeeringDBFacilityId
     Assert-AreEqual $sessionv4 $createdConnection.BgpSession.SessionPrefixV4
     Assert-AreEqual $sessionv6 $createdConnection.BgpSession.SessionPrefixV6
     Assert-AreEqual $false $createdConnection.UseForPeeringService
@@ -152,7 +152,7 @@ function Test-NewDirectConnectionNoSession {
 }
 <#
 .SYNOPSIS
-NewDirectConnectionWithV6 should fail with high BandwidthInMbps message
+NewDirectConnectionWithV6 should allow high BandwidthInMbps and pass
 #>
 function Test-NewDirectConnectionHighBandwidth {
     $asn = makePeerAsn (getRandomNumber)
@@ -162,23 +162,26 @@ function Test-NewDirectConnectionHighBandwidth {
     $peeringLocation = getPeeringLocation $kind $loc;
     $facilityId = $peeringLocation[0].PeeringDBFacilityId
     #Create some data for the object
-    #Set up the wrong BandwidthInMbps
+    #Set up the BandwidthInMbps in multiples of 100G
     $bandwidth = getBandwidth
-    #Anything over 100000 will fail. 
+    #Multiples of 100000 should pass. 
     $bandwidth = [int]$bandwidth * 10
     Write-Debug "Creating Connection at $facilityId"
     $md5 = getHash
     $md5 = $md5.ToString()
     Write-Debug "Created Hash $md5"
     $sessionv4 = newIpV4Address $true $true 0 0
-    $sessionv6 = newIpV6Address $true $true 0 0
-    Write-Debug "Created IPs $sessionv4 $SessionPrefixV6"
+    Write-Debug "Created IPs $sessionv4"
     $maxv4 = maxAdvertisedIpv4
-    $maxv6 = maxAdvertisedIpv6
-    Write-Debug "Created maxAdvertised $maxv4 $maxv6"
+    Write-Debug "Created maxAdvertised $maxv4"
     #create Connection
-    Assert-ThrowsContains { New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -SessionPrefixV6 $sessionv6 -MaxPrefixesAdvertisedIPv6 $maxv6 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5 } "The $bandwidth argument is greater than the maximum allowed range of 100000"
-
+    $createdConnection = New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -SessionPrefixV4 $sessionv4 -MaxPrefixesAdvertisedIPv4 $maxv4 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5 
+    Assert-AreEqual $md5 $createdConnection.BgpSession.Md5AuthenticationKey
+    Assert-AreEqual $bandwidth $createdConnection.BandwidthInMbps 
+    Assert-AreEqual $facilityId $createdConnection.PeeringDBFacilityId 
+    Assert-AreEqual $sessionv4 $createdConnection.BgpSession.SessionPrefixV4
+    Assert-AreEqual $false $createdConnection.UseForPeeringService
+    Assert-AreEqual "Peer" $createdConnection.SessionAddressProvider
     removePeerAsn $asn
 	
 }

@@ -10,11 +10,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401
 
         /// <summary>A machine readable error code.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Databricks.PropertyOrigin.Inlined)]
-        public string Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IErrorInfoInternal)Error).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IErrorInfoInternal)Error).Code = value; }
+        public string Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IErrorInfoInternal)Error).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IErrorInfoInternal)Error).Code = value ; }
 
         /// <summary>error details.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Databricks.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IErrorDetail[] Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IErrorInfoInternal)Error).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IErrorInfoInternal)Error).Detail = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IErrorDetail[] Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IErrorInfoInternal)Error).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IErrorInfoInternal)Error).Detail = value ?? null /* arrayOf */; }
 
         /// <summary>Backing field for <see cref="Error" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IErrorInfo _error;
@@ -25,11 +25,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401
 
         /// <summary>Inner error details if they exist.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Databricks.PropertyOrigin.Inlined)]
-        public string Innererror { get => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IErrorInfoInternal)Error).Innererror; set => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IErrorInfoInternal)Error).Innererror = value; }
+        public string Innererror { get => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IErrorInfoInternal)Error).Innererror; set => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IErrorInfoInternal)Error).Innererror = value ?? null; }
 
         /// <summary>A human readable error message.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Databricks.PropertyOrigin.Inlined)]
-        public string Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IErrorInfoInternal)Error).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IErrorInfoInternal)Error).Message = value; }
+        public string Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IErrorInfoInternal)Error).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IErrorInfoInternal)Error).Message = value ; }
 
         /// <summary>Internal Acessors for Error</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IErrorInfo Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IErrorResponseInternal.Error { get => (this._error = this._error ?? new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.ErrorInfo()); set { {_error = value;} } }

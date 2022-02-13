@@ -1,7 +1,7 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.dll-Help.xml
 Module Name: Az.ApplicationInsights
-online version: https://docs.microsoft.com/en-us/powershell/module/az.applicationinsights/set-azapplicationinsightspricingplan
+online version: https://docs.microsoft.com/powershell/module/az.applicationinsights/set-azapplicationinsightspricingplan
 schema: 2.0.0
 ---
 
@@ -36,14 +36,15 @@ Set-AzApplicationInsightsPricingPlan [-ResourceId] <String> [-PricingPlan <Strin
 ## DESCRIPTION
 Set pricing plan and daily data volume information for an application insights resource.
 Pricing plan of application insights created after April 2018 cannot be set by this cmdlet: 
-https://docs.microsoft.com/en-us/azure/azure-monitor/app/pricing#legacy-enterprise-per-node-pricing-tier
+https://docs.microsoft.com/azure/azure-monitor/app/pricing#legacy-enterprise-per-node-pricing-tier
 
 ## EXAMPLES
 
 ### Example 1 Set pricing plan and daily data volume information for an application insights resource
+```powershell
+Set-AzApplicationInsightsDailyCap -ResourceGroupName "testgroup" -Name "test" -PricingPlan "Basic" -DailyCapGB 400
 ```
-PS C:\> Set-AzApplicationInsightsDailyCap -ResourceGroupName "testgroup" -Name "test" -PricingPlan "Basic" -DailyCapGB 400
-
+```output
  Cap ResetTime StopSendNotificationWhenHitCap PricingPlan
 --- --------- ------------------------------ -----------
 400         0                           False Basic

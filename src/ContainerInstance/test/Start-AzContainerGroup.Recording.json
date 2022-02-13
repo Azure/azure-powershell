@@ -1,0 +1,119 @@
+{
+  "Start-AzContainerGroup+[NoContext]+Start+$POST+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgdabsp/providers/Microsoft.ContainerInstance/containerGroups/bez-test-cg/start?api-version=2021-09-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgdabsp/providers/Microsoft.ContainerInstance/containerGroups/bez-test-cg/start?api-version=2021-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "95" ],
+        "x-ms-client-request-id": [ "f185d492-e7c8-4e00-a493-5750964e30b5" ],
+        "CommandName": [ "Start-AzContainerGroup" ],
+        "FullCommandName": [ "Start-AzContainerGroup_Start" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "eastus:357f98dd-ef89-462a-b6d7-66a8c548cb73" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
+        "x-ms-correlation-request-id": [ "4057f591-744c-4af5-9a92-532a3e3468e9" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211109T092801Z:4057f591-744c-4af5-9a92-532a3e3468e9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 09 Nov 2021 09:28:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Start-AzContainerGroup+[NoContext]+StartViaIdentity+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgdabsp/providers/Microsoft.ContainerInstance/containerGroups/bez-test-cg?api-version=2021-09-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgdabsp/providers/Microsoft.ContainerInstance/containerGroups/bez-test-cg?api-version=2021-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "96" ],
+        "x-ms-client-request-id": [ "4e04de7f-d4fa-4416-a26c-7dec0fd3c85e" ],
+        "CommandName": [ "Get-AzContainerGroup" ],
+        "FullCommandName": [ "Get-AzContainerGroup_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "eastus:83dce73d-7ff4-4ad8-a047-00d2f7f2126c" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11920" ],
+        "x-ms-correlation-request-id": [ "cc33ce0c-e031-457c-ab94-a5e2682d0c5d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211109T092801Z:cc33ce0c-e031-457c-ab94-a5e2682d0c5d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 09 Nov 2021 09:28:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1316" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"sku\":\"Standard\",\"provisioningState\":\"Updating\",\"containers\":[{\"name\":\"bez-test-ci\",\"properties\":{\"image\":\"nginx\",\"ports\":[{\"port\":80}],\"environmentVariables\":[],\"instanceView\":{\"restartCount\":0,\"currentState\":{\"state\":\"Waiting\",\"detailStatus\":\"\"},\"events\":[{\"count\":1,\"firstTimestamp\":\"2021-11-09T08:54:22Z\",\"lastTimestamp\":\"2021-11-09T08:54:22Z\",\"name\":\"Pulled\",\"message\":\"Successfully pulled image \\\"nginx@sha256:7250923ba3543110040462388756ef099331822c6172a050b12c7a38361ea46f\\\"\",\"type\":\"Normal\"},{\"count\":1,\"firstTimestamp\":\"2021-11-09T08:54:22Z\",\"lastTimestamp\":\"2021-11-09T08:54:22Z\",\"name\":\"Pulling\",\"message\":\"pulling image \\\"nginx@sha256:7250923ba3543110040462388756ef099331822c6172a050b12c7a38361ea46f\\\"\",\"type\":\"Normal\"},{\"count\":1,\"firstTimestamp\":\"2021-11-09T08:54:28Z\",\"lastTimestamp\":\"2021-11-09T08:54:28Z\",\"name\":\"Started\",\"message\":\"Started container\",\"type\":\"Normal\"}]},\"resources\":{\"requests\":{\"memoryInGB\":1.5,\"cpu\":1.0}}}}],\"initContainers\":[],\"osType\":\"Linux\",\"instanceView\":{\"events\":[],\"state\":\"Running\"}},\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgdabsp/providers/Microsoft.ContainerInstance/containerGroups/bez-test-cg\",\"name\":\"bez-test-cg\",\"type\":\"Microsoft.ContainerInstance/containerGroups\",\"location\":\"eastus\",\"tags\":{\"key\":\"value\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzContainerGroup+[NoContext]+StartViaIdentity+$POST+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgdabsp/providers/Microsoft.ContainerInstance/containerGroups/bez-test-cg/start?api-version=2021-09-01+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgdabsp/providers/Microsoft.ContainerInstance/containerGroups/bez-test-cg/start?api-version=2021-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "97" ],
+        "x-ms-client-request-id": [ "dacf6753-0873-4395-9d55-80560841fa48" ],
+        "CommandName": [ "Start-AzContainerGroup" ],
+        "FullCommandName": [ "Start-AzContainerGroup_StartViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "eastus:58dafb0c-b48d-41bf-ad9f-53ad12bc514a" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1194" ],
+        "x-ms-correlation-request-id": [ "0173032c-4d94-40c4-8052-21c7c00759e5" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211109T092802Z:0173032c-4d94-40c4-8052-21c7c00759e5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 09 Nov 2021 09:28:02 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

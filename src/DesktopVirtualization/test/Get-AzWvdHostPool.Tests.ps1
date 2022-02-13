@@ -25,7 +25,6 @@ Describe 'Get-AzWvdHostPool' {
                             -FriendlyName 'fri' `
                             -MaxSessionLimit 5 `
                             -VMTemplate $null `
-                            -SsoContext $null `
                             -CustomRdpProperty $null `
                             -Ring $null `
                             -ValidationEnvironment:$false `
@@ -48,7 +47,6 @@ Describe 'Get-AzWvdHostPool' {
             $hostPool.FriendlyName | Should -Be 'fri'
             $hostPool.MaxSessionLimit | Should -Be 5
             $hostPool.VMTemplate | Should -Be $null
-            $hostPool.SsoContext | Should -Be $null
             # @todo not corrct since it should be null need to look into it
             # $hostPool.CustomRdpProperty | Should -Be ""
             $hostPool.Ring | Should -Be $null
@@ -79,7 +77,6 @@ Describe 'Get-AzWvdHostPool' {
                             -FriendlyName 'fri' `
                             -MaxSessionLimit 5 `
                             -VMTemplate $null `
-                            -SsoContext $null `
                             -CustomRdpProperty $null `
                             -Ring $null `
                             -ValidationEnvironment:$false `
@@ -102,7 +99,6 @@ Describe 'Get-AzWvdHostPool' {
                             -FriendlyName 'fri' `
                             -MaxSessionLimit 5 `
                             -VMTemplate $null `
-                            -SsoContext $null `
                             -CustomRdpProperty $null `
                             -Ring $null `
                             -ValidationEnvironment:$false `
@@ -126,7 +122,6 @@ Describe 'Get-AzWvdHostPool' {
             $hostPools[0].FriendlyName | Should -Be 'fri'
             $hostPools[0].MaxSessionLimit | Should -Be 5
             $hostPools[0].VMTemplate | Should -Be $null
-            $hostPools[0].SsoContext | Should -Be $null
             # @todo not corrct since it should be null need to look into it
             # $hostPools[0].CustomRdpProperty | Should -Be ""
             $hostPools[0].Ring | Should -Be $null
@@ -148,7 +143,6 @@ Describe 'Get-AzWvdHostPool' {
             $hostPools[1].FriendlyName | Should -Be 'fri'
             $hostPools[1].MaxSessionLimit | Should -Be 5
             $hostPools[1].VMTemplate | Should -Be $null
-            $hostPools[1].SsoContext | Should -Be $null
             # @todo not corrct since it should be null need to look into it
             # $hostPools[1].CustomRdpProperty | Should -Be ""
             $hostPools[1].Ring | Should -Be $null
@@ -183,7 +177,6 @@ Describe 'Get-AzWvdHostPool' {
                             -FriendlyName 'fri' `
                             -MaxSessionLimit 5 `
                             -VMTemplate $null `
-                            -SsoContext $null `
                             -CustomRdpProperty $null `
                             -Ring $null `
                             -ValidationEnvironment:$false `
@@ -206,7 +199,6 @@ Describe 'Get-AzWvdHostPool' {
                             -FriendlyName 'fri' `
                             -MaxSessionLimit 5 `
                             -VMTemplate $null `
-                            -SsoContext $null `
                             -CustomRdpProperty $null `
                             -Ring $null `
                             -ValidationEnvironment:$false `
@@ -229,7 +221,6 @@ Describe 'Get-AzWvdHostPool' {
             $hostPools[0].FriendlyName | Should -Be 'fri'
             $hostPools[0].MaxSessionLimit | Should -Be 5
             $hostPools[0].VMTemplate | Should -Be $null
-            $hostPools[0].SsoContext | Should -Be $null
             # @todo not corrct since it should be null need to look into it
             # $hostPools[0].CustomRdpProperty | Should -Be ""
             $hostPools[0].Ring | Should -Be $null
@@ -251,7 +242,6 @@ Describe 'Get-AzWvdHostPool' {
             $hostPools[1].FriendlyName | Should -Be 'fri'
             $hostPools[1].MaxSessionLimit | Should -Be 5
             $hostPools[1].VMTemplate | Should -Be $null
-            $hostPools[1].SsoContext | Should -Be $null
             # @todo not corrct since it should be null need to look into it
             # $hostPools[1].CustomRdpProperty | Should -Be ""
             $hostPools[1].Ring | Should -Be $null

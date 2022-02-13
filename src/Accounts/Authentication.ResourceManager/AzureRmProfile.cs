@@ -71,10 +71,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                 }
 
                 IAzureContext result = null;
-                if (DefaultContextKey == "Default" && Contexts.Any(c => c.Key != "Default"))
+                if (DefaultContextKey == Constants.DefaultValue && Contexts.Any(c => c.Key != Constants.DefaultValue))
                 {
-                    // If the default context is "Default", but there are other contexts set, remove the "Default" context to throw the below exception
-                    TryCacheRemoveContext("Default");
+                    // If the default context is "Default", but there are other contexts set, remove the "Default" context and select first avaiable context as default
+                    EnqueueDebugMessage($"Incorrect default context key '{DefaultContextKey}' found. Trying to remove it and falling back to the first available context.");
+                    TryRemoveContext(Constants.DefaultValue);
                 }
 
                 if (!string.IsNullOrEmpty(DefaultContextKey) && Contexts != null && Contexts.ContainsKey(DefaultContextKey))
@@ -292,6 +293,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
             try
             {
+                TryRemoveContext(Constants.DefaultValue);
                 string contents = ToString(serializeCache);
                 string diskContents = string.Empty;
                 diskContents = provider.CreateReader().ReadToEnd();
@@ -486,11 +488,24 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             return result;
         }
 
+        /// <summary>
+        /// Add the input context with the specified name.
+        /// If the context with the same tenant, subscription, accountId does not exist, add the input into context list.
+        /// If the context with the same tenant, subscription, accountId already exist, merge 2 contexes and add the merged context to the context list.
+        /// </summary>
+        /// <param name="name">The specified new name of the context.</param>
+        /// <param name="context">The new context to set as default.</param>
         public bool TrySetContext(string name, IAzureContext context)
         {
             bool result = false;
             if (Contexts != null)
             {
+                if (TryFindContext(context, out string oldName))
+                {
+                    var oldContext = Contexts[oldName].DeepCopy();
+                    oldContext.Update(context);
+                    context = oldContext;
+                }
                 Contexts[name] = context;
                 result = true;
             }
@@ -525,6 +540,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
             return result;
         }
+
+        /// <summary>
+        /// Set the default context with the input context.
+        /// If the context with the same name does not exist, add the input into context list and set as default.
+        /// If the context with the same name already exist, update the attributes with the same names and add the missing attributes.
+        /// </summary>
+        /// <param name="context">The new context to set as default.</param>
 
         public bool TrySetDefaultContext(IAzureContext context)
         {

@@ -36,7 +36,7 @@ namespace Commands.HDInsight.Test.ScenarioTests
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-ClusterRelatedCommands");
         }
 
-        [Fact]
+        [Fact(Skip = "Sikp this")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCmkClusterRelatedCommands()
         {
@@ -90,6 +90,27 @@ namespace Commands.HDInsight.Test.ScenarioTests
         public void TestCreateClusterWithCustomAmbariDatabase()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateClusterWithCustomAmbariDatabase");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateClusterWithComputeIsolation()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateClusterWithComputeIsolation");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateClusterWithAvailabilityZones()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateClusterWithAvailabilityZones");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateClusterWithPrivateLinkConfiguration()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateClusterWithPrivateLinkConfiguration");
         }
     }
 }

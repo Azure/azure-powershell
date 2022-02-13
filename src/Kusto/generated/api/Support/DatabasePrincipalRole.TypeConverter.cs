@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
-    /// <summary>TypeConverter implementation for DatabasePrincipalRole.</summary>
+    /// <summary>Database principal role.</summary>
     public partial class DatabasePrincipalRoleTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

@@ -28,43 +28,43 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Pendingissuance".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Pendingissuance", "Pendingissuance", global::System.Management.Automation.CompletionResultType.ParameterValue, "Pendingissuance");
+                yield return new global::System.Management.Automation.CompletionResult("'Pendingissuance'", "Pendingissuance", global::System.Management.Automation.CompletionResultType.ParameterValue, "Pendingissuance");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Issued".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Issued", "Issued", global::System.Management.Automation.CompletionResultType.ParameterValue, "Issued");
+                yield return new global::System.Management.Automation.CompletionResult("'Issued'", "Issued", global::System.Management.Automation.CompletionResultType.ParameterValue, "Issued");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Revoked".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Revoked", "Revoked", global::System.Management.Automation.CompletionResultType.ParameterValue, "Revoked");
+                yield return new global::System.Management.Automation.CompletionResult("'Revoked'", "Revoked", global::System.Management.Automation.CompletionResultType.ParameterValue, "Revoked");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Canceled".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Canceled", "Canceled", global::System.Management.Automation.CompletionResultType.ParameterValue, "Canceled");
+                yield return new global::System.Management.Automation.CompletionResult("'Canceled'", "Canceled", global::System.Management.Automation.CompletionResultType.ParameterValue, "Canceled");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Denied".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Denied", "Denied", global::System.Management.Automation.CompletionResultType.ParameterValue, "Denied");
+                yield return new global::System.Management.Automation.CompletionResult("'Denied'", "Denied", global::System.Management.Automation.CompletionResultType.ParameterValue, "Denied");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Pendingrevocation".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Pendingrevocation", "Pendingrevocation", global::System.Management.Automation.CompletionResultType.ParameterValue, "Pendingrevocation");
+                yield return new global::System.Management.Automation.CompletionResult("'Pendingrevocation'", "Pendingrevocation", global::System.Management.Automation.CompletionResultType.ParameterValue, "Pendingrevocation");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "PendingRekey".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("PendingRekey", "PendingRekey", global::System.Management.Automation.CompletionResultType.ParameterValue, "PendingRekey");
+                yield return new global::System.Management.Automation.CompletionResult("'PendingRekey'", "PendingRekey", global::System.Management.Automation.CompletionResultType.ParameterValue, "PendingRekey");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Unused".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Unused", "Unused", global::System.Management.Automation.CompletionResultType.ParameterValue, "Unused");
+                yield return new global::System.Management.Automation.CompletionResult("'Unused'", "Unused", global::System.Management.Automation.CompletionResultType.ParameterValue, "Unused");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Expired".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Expired", "Expired", global::System.Management.Automation.CompletionResultType.ParameterValue, "Expired");
+                yield return new global::System.Management.Automation.CompletionResult("'Expired'", "Expired", global::System.Management.Automation.CompletionResultType.ParameterValue, "Expired");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NotSubmitted".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NotSubmitted", "NotSubmitted", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotSubmitted");
+                yield return new global::System.Management.Automation.CompletionResult("'NotSubmitted'", "NotSubmitted", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotSubmitted");
             }
         }
     }

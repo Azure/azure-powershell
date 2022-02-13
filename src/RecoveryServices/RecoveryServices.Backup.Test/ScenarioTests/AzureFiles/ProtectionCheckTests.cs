@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
     public partial class ProtectionCheckTests : RMTestBase
     {
-        [Fact]
+        [Fact(Skip = "To un-skip in upcoming release")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureFS)]
         public void TestAzureFSProtectionCheck()

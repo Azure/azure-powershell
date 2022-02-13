@@ -38,7 +38,7 @@ function Get-AzureRmSecuritySetting-SubscriptionLevelResource
 .SYNOPSIS
 Set an Azure Security Center setting
 #>
-function Set-AzureRmSecuritySetting-DataExportSettingsScope
+function Set-AzureRmSecuritySetting-SettingsScope
 {
     $updatedSetting = Set-AzSecuritySetting -SettingName "MCAS" -SettingKind "DataExportSettings" -Enabled $true
 
@@ -48,13 +48,13 @@ function Set-AzureRmSecuritySetting-DataExportSettingsScope
 
 <#
 .SYNOPSIS
-Validates a list of security pricings
+Validates a list of security settings
 #>
 function Validate-Settings
 {
 	param($settings)
 
-    Assert-True { $settings.Count -gt 0 }
+    Assert-True { $settings.Count -eq 4 }
 
 	Foreach($setting in $settings)
 	{

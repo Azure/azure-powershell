@@ -1,7 +1,7 @@
 ﻿---
 Module Name: Az.DataFactory
 Module Guid: e3c0f6bc-fe96-41a0-88f4-5e490a91f05d
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.datafactory
+Download Help Link: https://docs.microsoft.com/powershell/module/az.datafactory
 Help Version: 0.5.3.0
 Locale: en-US
 ---

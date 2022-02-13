@@ -1,7 +1,7 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
-online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/get-aziothubcertificate
+online version: https://docs.microsoft.com/powershell/module/az.iothub/get-aziothubcertificate
 schema: 2.0.0
 ---
 
@@ -31,7 +31,7 @@ Get-AzIotHubCertificate [-ResourceId] <String> [-CertificateName <String>]
 ```
 
 ## DESCRIPTION
-For a detailed explanation of CA certificates in Azure IoT Hub, see https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-x509ca-overview
+For a detailed explanation of CA certificates in Azure IoT Hub, see https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview
 
 ## EXAMPLES
 

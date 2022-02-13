@@ -50,6 +50,14 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         public object Tags { get; set; }
 
         /// <summary>
+        /// Gets or sets resource etag
+        /// </summary>
+        /// <remarks>
+        /// A unique read-only string that changes whenever the resource is updated.
+        /// </remarks>
+        public string Etag { get; set; }
+
+        /// <summary>
         /// Gets poolId
         /// </summary>
         public string PoolId { get; set; }
@@ -85,13 +93,28 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// </value>
         public double? UtilizedThroughputMibps { get; set; }
 
-
         /// <summary>
-        /// Gets or sets qosType
+        /// Gets or sets QosType
         /// </summary>
         /// <value>
-        /// The qos type of the pool. Possible values include: 'Auto', 'Manual'
+        /// The qos type of the pool (Auto, Manual)
         /// </value>
         public string QosType { get; set; }
+
+        /// <summary>
+        /// Gets or sets CoolAccess
+        /// </summary>
+        /// <value>
+        /// If enabled (true) the pool can contain cool Access enabled volumes.
+        /// </value>
+        public bool? CoolAccess { get; set; }
+
+        /// <summary>
+        /// Gets or sets EncryptionType
+        /// </summary>
+        /// <value>
+        /// Encryption type of the capacity pool (Single, Double), set encryption type for data at rest for this pool and all volumes in it. This value can only be set when creating new pool.
+        /// </value>
+        public string EncryptionType { get; set; }
     }
 }

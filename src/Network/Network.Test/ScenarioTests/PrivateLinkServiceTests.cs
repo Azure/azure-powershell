@@ -36,6 +36,14 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        public void TestPrivateLinkServiceInEdgeZone()
+        {
+            TestRunner.RunTestScript("Test-PrivateLinkServiceInEdgeZone");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestPrivateEndpointConnectionCRUD()
         {
             TestRunner.RunTestScript("Test-PrivateEndpointConnectionCRUD");

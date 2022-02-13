@@ -39,6 +39,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             RuntimeRegionalUrl = additionalLocation.GatewayRegionalUrl;
             PublicIPAddresses = additionalLocation.PublicIPAddresses != null ? additionalLocation.PublicIPAddresses.ToArray() : null;
             PrivateIPAddresses = additionalLocation.PrivateIPAddresses != null ? additionalLocation.PrivateIPAddresses.ToArray() : null;
+            Zone = additionalLocation.Zones?.ToArray();
+            DisableGateway = additionalLocation.DisableGateway;
             if (additionalLocation.VirtualNetworkConfiguration != null)
             {
                 VirtualNetwork = new PsApiManagementVirtualNetwork(additionalLocation.VirtualNetworkConfiguration);
@@ -58,5 +60,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
         public string Location { get; set; }
 
         public string RuntimeRegionalUrl { get; set; }
+
+        public string[] Zone { get; set; }
+
+        public bool? DisableGateway { get; set; }
     }
 }

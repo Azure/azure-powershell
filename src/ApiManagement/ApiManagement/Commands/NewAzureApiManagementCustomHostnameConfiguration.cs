@@ -58,6 +58,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
 
         [Parameter(
             ValueFromPipelineByPropertyName = false,
+            ParameterSetName = SslCertificateFromKeyVault,
+            Mandatory = false,
+            HelpMessage = "User-Assigned Managed Identity ClientId to authenticate to KeyVault to fetch Custom SSL Certificate.")]
+        public string IdentityClientId { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = false,
             ParameterSetName = SslCertificateFromFile,
             Mandatory = true,
             HelpMessage = "Path to a .pfx certificate file.")]
@@ -98,6 +105,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             if (!string.IsNullOrWhiteSpace(KeyVaultId))
             {
                 hostnameConfig.KeyVaultId = KeyVaultId;
+                if (!string.IsNullOrWhiteSpace(IdentityClientId))
+                {
+                    hostnameConfig.IdentityClientId = IdentityClientId;
+                }
             }
             else if (!string.IsNullOrWhiteSpace(PfxPath))
             {

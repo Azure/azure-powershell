@@ -1,0 +1,41 @@
+{
+  "Get-AzResourceMoverRequiredForResources+[NoContext]+List+$GET+https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/MoveCollection-RG-rms/providers/Microsoft.Migrate/moveCollections/MoveCollection-rms/requiredFor?sourceId=%2Fsubscriptions%2Fe80eb9fa-c996-4435-aa32-5af6f3d3077c%2FresourceGroups%2Frms-sRg\u0026api-version=2021-08-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/MoveCollection-RG-rms/providers/Microsoft.Migrate/moveCollections/MoveCollection-rms/requiredFor?sourceId=%2Fsubscriptions%2Fe80eb9fa-c996-4435-aa32-5af6f3d3077c%2FresourceGroups%2Frms-sRg\u0026api-version=2021-08-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "648c7074-2dc7-409a-b390-1b492d409f20" ],
+        "CommandName": [ "Get-AzResourceMoverRequiredForResources" ],
+        "FullCommandName": [ "Get-AzResourceMoverRequiredForResources_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "b488f38c-a6ec-41fc-9b15-a4b473d19a06" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "x-ms-correlation-request-id": [ "7bdf1228-606e-4f5a-bb7c-a6c0dfd07e67" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20211217T073309Z:7bdf1228-606e-4f5a-bb7c-a6c0dfd07e67" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 17 Dec 2021 07:33:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "16" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"sourceIds\":[]}"
+    }
+  }
+}

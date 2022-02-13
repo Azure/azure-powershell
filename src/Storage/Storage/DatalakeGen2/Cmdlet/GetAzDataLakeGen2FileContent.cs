@@ -81,6 +81,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         // Overwrite the useless parameter
         public override int? ClientTimeoutPerRequest { get; set; }
         public override int? ServerTimeoutPerRequest { get; set; }
+        public override string TagCondition { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the GetAzDataLakeGen2ItemContentCommand class.
@@ -110,6 +111,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             string activity = String.Format(Resources.ReceiveAzureBlobActivity, blob.Name, filePath);
             string status = Resources.PrepareDownloadingBlob;
             ProgressRecord pr = new ProgressRecord(OutputStream.GetProgressId(taskId), activity, status);
+
+            // If the blob has no length information, need get it
+            if(blob.Properties.Length < 0)
+            {
+                blob.FetchAttributes();
+            }
+
             DataMovementUserData data = new DataMovementUserData()
             {
                 Data = blob,

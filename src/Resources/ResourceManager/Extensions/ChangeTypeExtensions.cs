@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
 {
     using Formatters;
     using Management.ResourceManager.Models;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
     using System;
     using System.Collections.Generic;
 
@@ -29,7 +30,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
                 [ChangeType.Deploy] = Color.Blue,
                 [ChangeType.Create] = Color.Green,
                 [ChangeType.Delete] = Color.Orange,
-                [ChangeType.Modify] = Color.Purple
+                [ChangeType.Modify] = Color.Purple,
+                [ChangeType.Unsupported] = Color.Gray,
             };
 
         private static readonly IReadOnlyDictionary<ChangeType, Symbol> SymbolsByChangeType =
@@ -40,7 +42,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
                 [ChangeType.Deploy] = Symbol.ExclamationPoint,
                 [ChangeType.Create] = Symbol.Plus,
                 [ChangeType.Delete] = Symbol.Minus,
-                [ChangeType.Modify] = Symbol.Tilde
+                [ChangeType.Modify] = Symbol.Tilde,
+                [ChangeType.Unsupported] = Symbol.Cross,
+            };
+
+        private static readonly IReadOnlyDictionary<ChangeType, PSChangeType> PSChangeTypesByChangeType =
+            new Dictionary<ChangeType, PSChangeType>
+            {
+                [ChangeType.NoChange] = PSChangeType.NoChange,
+                [ChangeType.Ignore] = PSChangeType.Ignore,
+                [ChangeType.Deploy] = PSChangeType.Deploy,
+                [ChangeType.Create] = PSChangeType.Create,
+                [ChangeType.Delete] = PSChangeType.Delete,
+                [ChangeType.Modify] = PSChangeType.Modify,
+                [ChangeType.Unsupported] = PSChangeType.Unsupported,
             };
 
         public static Color ToColor(this ChangeType changeType)
@@ -66,6 +81,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
 
             return symbol;
         }
+
+        public static PSChangeType ToPSChangeType(this ChangeType changeType)
+        {
+            bool success = PSChangeTypesByChangeType.TryGetValue(changeType, out PSChangeType psChangeType);
+
+            if (!success)
+            {
+                throw new ArgumentOutOfRangeException(nameof(changeType));
+            }
+
+            return psChangeType;
+        }
+
     }
 }
 

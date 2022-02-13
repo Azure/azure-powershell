@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
-online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/remove-azmetricalertrulev2
+online version: https://docs.microsoft.com/powershell/module/az.monitor/remove-azmetricalertrulev2
 schema: 2.0.0
 ---
 
@@ -47,10 +47,10 @@ This command removes the alert rule named PsSdk
 ### Example 2: Remove an alert rule by ID
 
 ```powershell
-PS C:\>Remove-AzMetricAlertRuleV2 -ResourceId /subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/metricAlertRG/providers/microsoft.insights/metricAlerts/myAlertRule
+PS C:\>Remove-AzMetricAlertRuleV2 -ResourceId /subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/metricAlertRG/providers/Microsoft.Insights/metricAlerts/myAlertRule
 ```
 
-This command removes the alert rule with resource ID `/subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/metricAlertRG/providers/microsoft.insights/metricAlerts/myAlertRule`
+This command removes the alert rule with resource ID `/subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/metricAlertRG/providers/Microsoft.Insights/metricAlerts/myAlertRule`
 
 ### Example 3: Get an alert and remove it
 

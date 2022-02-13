@@ -21,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         /// <param name="value">the value to convert to an instance of <see cref="MySqlMigrationType" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new MySqlMigrationType(System.Convert.ToString(value));
+            return new MySqlMigrationType(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type MySqlMigrationType</summary>

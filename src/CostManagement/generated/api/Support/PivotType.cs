@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
+    /// <summary>Data type to show in view.</summary>
     public partial struct PivotType :
         System.IEquatable<PivotType>
     {
@@ -20,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
         /// <param name="value">the value to convert to an instance of <see cref="PivotType" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new PivotType(System.Convert.ToString(value));
+            return new PivotType(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type PivotType</summary>

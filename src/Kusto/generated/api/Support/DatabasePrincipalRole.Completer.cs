@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
-    /// <summary>Argument completer implementation for DatabasePrincipalRole.</summary>
+    /// <summary>Database principal role.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.DatabasePrincipalRoleTypeConverter))]
     public partial struct DatabasePrincipalRole :
         System.Management.Automation.IArgumentCompleter
@@ -42,9 +42,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("User", "User", global::System.Management.Automation.CompletionResultType.ParameterValue, "User");
             }
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "UnrestrictedViewers".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "UnrestrictedViewer".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("UnrestrictedViewers", "UnrestrictedViewers", global::System.Management.Automation.CompletionResultType.ParameterValue, "UnrestrictedViewers");
+                yield return new global::System.Management.Automation.CompletionResult("UnrestrictedViewer", "UnrestrictedViewer", global::System.Management.Automation.CompletionResultType.ParameterValue, "UnrestrictedViewer");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Viewer".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {

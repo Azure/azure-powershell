@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azgalleryimageversion
+online version: https://docs.microsoft.com/powershell/module/az.compute/get-azgalleryimageversion
 schema: 2.0.0
 ---
 
@@ -32,8 +32,10 @@ Get or list gallery image versions.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzGalleryImageVersion -ResourceGroupName rg1 -GalleryName gallery1 -GalleryImageDefinitionName image1 -GalleryImageVersionName 1.0.0
+Get-AzGalleryImageVersion -ResourceGroupName rg1 -GalleryName gallery1 -GalleryImageDefinitionName image1 -GalleryImageVersionName 1.0.0
+```
 
+```output
 ResourceGroupName        : rg1
 PublishingProfile        :
   TargetRegions[0]       :
@@ -70,8 +72,10 @@ Get the gallery image version.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzGalleryImageVersion -ResourceGroupName rg1 -GalleryName gallery1 -GalleryImageDefinitionName image1 -GalleryImageVersionName 1*
+Get-AzGalleryImageVersion -ResourceGroupName rg1 -GalleryName gallery1 -GalleryImageDefinitionName image1 -GalleryImageVersionName 1*
+```
 
+```output
 ResourceGroupName        : rg1
 PublishingProfile        :
   TargetRegions[0]       :
@@ -139,8 +143,10 @@ Get the gallery image versions that starts with "1".
 
 ### Example 3
 ```powershell
-PS C:\> Get-AzGalleryImageVersion -ResourceGroupName rg1 -GalleryName gallery1 -GalleryImageDefinitionName image1
+Get-AzGalleryImageVersion -ResourceGroupName rg1 -GalleryName gallery1 -GalleryImageDefinitionName image1
+```
 
+```output
 ResourceGroupName        : rg1
 PublishingProfile        :
   TargetRegions[0]       :

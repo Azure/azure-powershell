@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: C3B2C33F-8BD4-4E31-9450-EF6A3A6A5325
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/set-azpolicyassignment
+online version: https://docs.microsoft.com/powershell/module/az.resources/set-azpolicyassignment
 schema: 2.0.0
 ---
 
@@ -17,7 +17,8 @@ Modifies a policy assignment.
 ```
 Set-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>] [-DisplayName <String>]
  [-Description <String>] [-Metadata <String>] [-AssignIdentity] [-Location <String>]
- [-EnforcementMode <PolicyAssignmentEnforcementMode>] [-ApiVersion <String>] [-Pre]
+ [-EnforcementMode <PolicyAssignmentEnforcementMode>] [-IdentityType <ManagedIdentityType>]
+ [-IdentityId <String>] [-NonComplianceMessage <PsNonComplianceMessage[]>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -25,7 +26,9 @@ Set-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>] [
 ```
 Set-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>] [-DisplayName <String>]
  [-Description <String>] [-Metadata <String>] -PolicyParameterObject <Hashtable> [-AssignIdentity]
- [-Location <String>] [-EnforcementMode <PolicyAssignmentEnforcementMode>] [-ApiVersion <String>] [-Pre]
+ [-Location <String>] [-EnforcementMode <PolicyAssignmentEnforcementMode>]
+ [-IdentityType <ManagedIdentityType>] [-IdentityId <String>]
+ [-NonComplianceMessage <PsNonComplianceMessage[]>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -33,7 +36,8 @@ Set-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>] [
 ```
 Set-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>] [-DisplayName <String>]
  [-Description <String>] [-Metadata <String>] -PolicyParameter <String> [-AssignIdentity] [-Location <String>]
- [-EnforcementMode <PolicyAssignmentEnforcementMode>] [-ApiVersion <String>] [-Pre]
+ [-EnforcementMode <PolicyAssignmentEnforcementMode>] [-IdentityType <ManagedIdentityType>]
+ [-IdentityId <String>] [-NonComplianceMessage <PsNonComplianceMessage[]>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -41,7 +45,8 @@ Set-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>] [
 ```
 Set-AzPolicyAssignment [-NotScope <String[]>] -Id <String> [-DisplayName <String>] [-Description <String>]
  [-Metadata <String>] [-AssignIdentity] [-Location <String>]
- [-EnforcementMode <PolicyAssignmentEnforcementMode>] [-ApiVersion <String>] [-Pre]
+ [-EnforcementMode <PolicyAssignmentEnforcementMode>] [-IdentityType <ManagedIdentityType>]
+ [-IdentityId <String>] [-NonComplianceMessage <PsNonComplianceMessage[]>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -49,7 +54,8 @@ Set-AzPolicyAssignment [-NotScope <String[]>] -Id <String> [-DisplayName <String
 ```
 Set-AzPolicyAssignment [-NotScope <String[]>] -Id <String> [-DisplayName <String>] [-Description <String>]
  [-Metadata <String>] -PolicyParameterObject <Hashtable> [-AssignIdentity] [-Location <String>]
- [-EnforcementMode <PolicyAssignmentEnforcementMode>] [-ApiVersion <String>] [-Pre]
+ [-EnforcementMode <PolicyAssignmentEnforcementMode>] [-IdentityType <ManagedIdentityType>]
+ [-IdentityId <String>] [-NonComplianceMessage <PsNonComplianceMessage[]>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -57,7 +63,8 @@ Set-AzPolicyAssignment [-NotScope <String[]>] -Id <String> [-DisplayName <String
 ```
 Set-AzPolicyAssignment [-NotScope <String[]>] -Id <String> [-DisplayName <String>] [-Description <String>]
  [-Metadata <String>] -PolicyParameter <String> [-AssignIdentity] [-Location <String>]
- [-EnforcementMode <PolicyAssignmentEnforcementMode>] [-ApiVersion <String>] [-Pre]
+ [-EnforcementMode <PolicyAssignmentEnforcementMode>] [-IdentityType <ManagedIdentityType>]
+ [-IdentityId <String>] [-NonComplianceMessage <PsNonComplianceMessage[]>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -65,8 +72,9 @@ Set-AzPolicyAssignment [-NotScope <String[]>] -Id <String> [-DisplayName <String
 ```
 Set-AzPolicyAssignment [-NotScope <String[]>] [-DisplayName <String>] [-Description <String>]
  [-Metadata <String>] [-AssignIdentity] [-Location <String>]
- [-EnforcementMode <PolicyAssignmentEnforcementMode>] -InputObject <PsPolicyAssignment> [-ApiVersion <String>]
- [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-EnforcementMode <PolicyAssignmentEnforcementMode>] [-IdentityType <ManagedIdentityType>]
+ [-IdentityId <String>] -InputObject <PsPolicyAssignment> [-NonComplianceMessage <PsNonComplianceMessage[]>]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -88,17 +96,29 @@ The second command gets the policy assignment named PolicyAssignment by using th
 The command stores that object in the $PolicyAssignment variable.
 The final command updates the display name on the policy assignment on the resource group identified by the **ResourceId** property of $ResourceGroup.
 
-### Example 2: Add a managed identity to the policy assignment
+### Example 2: Add a system assigned managed identity to the policy assignment
 ```
 PS C:\> $PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment'
-PS C:\> Set-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -AssignIdentity -Location 'westus'
+PS C:\> Set-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -IdentityType 'SystemAssigned' -Location 'westus'
 ```
 
 The first command gets the policy assignment named PolicyAssignment from the current subscription by using the Get-AzPolicyAssignment cmdlet.
 The command stores that object in the $PolicyAssignment variable.
-The final command assigns a managed identity to the policy assignment.
+The final command assigns a system assigned managed identity to the policy assignment.
 
-### Example 3: Update policy assignment parameters with new policy parameter object
+### Example 3: Add a user assigned managed identity to the policy assignment
+```
+PS C:\> $PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment'
+PS C:\> $UserAssignedIdentity = Get-AzUserAssignedIdentity -ResourceGroupName 'ResourceGroup1' -Name 'UserAssignedIdentity1'
+PS C:\> Set-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -IdentityType 'UserAssigned' -Location 'westus' -IdentityId $UserAssignedIdentity.Id
+```
+
+The first command gets the policy assignment named PolicyAssignment from the current subscription by using the Get-AzPolicyAssignment cmdlet.
+The command stores that object in the $PolicyAssignment variable.
+The second command gets the user assigned managed identity named UserAssignedIdentity1 by using the Get-AzUserAssignedIdentity cmdlet and stores it in the $UserAssignedIdentity variable.
+The final command assigns the user assigned managed identity identified by the **Id** property of $UserAssignedIdentity to the policy assignment.
+
+### Example 4: Update policy assignment parameters with new policy parameter object
 ```
 PS C:\> $Locations = Get-AzLocation | where {($_.displayname -like 'france*') -or ($_.displayname -like 'uk*')}
 PS C:\> $AllowedLocations = @{'listOfAllowedLocations'=($Locations.location)}
@@ -112,7 +132,7 @@ The third command gets the policy assignment named 'PolicyAssignment'
 The command stores that object in the $PolicyAssignment variable.
 The final command updates the parameter values on the policy assignment named PolicyAssignment.
 
-### Example 4: Update policy assignment parameters with policy parameter file
+### Example 5: Update policy assignment parameters with policy parameter file
 Create a file called _AllowedLocations.json_ in the local working directory with the following content.
 
 ```
@@ -134,7 +154,7 @@ PS C:\> Set-AzPolicyAssignment -Name 'PolicyAssignment' -PolicyParameter .\Allow
 
 The command updates the policy assignment named 'PolicyAssignment' using the policy parameter file AllowedLocations.json from the local working directory.
 
-### Example 5: Update an enforcementMode
+### Example 6: Update an enforcementMode
 ```
 PS C:\> $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
 PS C:\> $PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment' -Scope $ResourceGroup.ResourceId
@@ -146,6 +166,15 @@ The command stores that object in the $ResourceGroup variable.
 The second command gets the policy assignment named PolicyAssignment by using the Get-AzPolicyAssignment cmdlet.
 The command stores that object in the $PolicyAssignment variable.
 The final command updates the enforcementMode property on the policy assignment on the resource group identified by the **ResourceId** property of $ResourceGroup.
+
+### Example 7: Update non-compliance messages
+```
+PS C:\> $PolicyAssignment = Get-AzPolicyAssignment -Name 'VirtualMachinePolicy'
+PS C:\> Set-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -NonComplianceMessage @{Message="All resources must follow resource naming guidelines."}
+```
+
+The first command gets the policy assignment named VirtualMachinePolicy by using the Get-AzPolicyAssignment cmdlet and stores it in the $PolicyAssignment variable.
+The final command updates the non-compliance messages on the policy assignment with a new message that will be displayed if a resource is denied by the policy.
 
 ## PARAMETERS
 
@@ -166,7 +195,7 @@ Accept wildcard characters: False
 ```
 
 ### -AssignIdentity
-Generate and assign an Azure Active Directory Identity for this policy assignment. The identity will be used when executing deployments for 'deployIfNotExists' policies. Location is required when assigning an identity.
+Generate and assign a system assigned managed identity for this policy assignment. The identity will be used when executing deployments for 'deployIfNotExists' and 'modify' policies. Location is required when assigning an identity.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -256,6 +285,37 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -IdentityId
+Specifies the Id of the user assigned managed identity to assign to this policy assignment. This value is required if the value 'UserAssigned' is passed to the -IdentityType parameter. 
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityType
+Specifies the type of managed identity to assign to this policy assignment. If the 'SystemAssigned' value is provided, a system assigned managed identity is generated and assigned to this policy assignment. If the 'UserAssigned' value is provided, the user assigned identity passed via its Id to the -IdentityId parameter is assigned to this policy assignment. The identity will be used when executing deployments for 'deployIfNotExists' and 'modify' policies. Location is required when assigning an identity. Permissions must be granted to the identity using New-AzRoleAssignment after the system assigned identity is created. The IdentityType parameter will be given precedence if both the AssignIdentity and the IdentityType parameter are used.
+
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources.ManagedIdentityType]
+Parameter Sets: (All)
+Aliases:
+Accepted values: SystemAssigned, UserAssigned, None
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 The policy assignment object to update that was output from another cmdlet.
 
@@ -272,7 +332,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The location of the policy assignment's resource identity. This is required when the -AssignIdentity switch is used.
+The location of the policy assignment's resource identity. This is required when the -IdentityType value is provided.
 
 ```yaml
 Type: System.String
@@ -310,6 +370,21 @@ Parameter Sets: NameParameterSet, PolicyParameterNameObjectParameterSet, PolicyP
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -NonComplianceMessage
+The non-compliance messages that describe why a resource is non-compliant with the policy.
+
+```yaml
+Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsNonComplianceMessage[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -400,9 +475,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String[]
 
+### System.Nullable`1[[Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy.PolicyAssignmentEnforcementMode, Microsoft.Azure.PowerShell.Cmdlets.ResourceManager, Version=3.5.0.0, Culture=neutral, PublicKeyToken=null]]
+
+### Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyAssignment
+
+### Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsNonComplianceMessage[]
+
 ## OUTPUTS
 
-### System.Management.Automation.PSObject
+### Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyAssignment
 
 ## NOTES
 

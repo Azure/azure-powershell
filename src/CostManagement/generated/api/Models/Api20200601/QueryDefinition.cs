@@ -13,7 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601
         /// includes all columns.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Origin(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PropertyOrigin.Inlined)]
-        public string[] ConfigurationColumn { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryDatasetInternal)Dataset).ConfigurationColumn; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryDatasetInternal)Dataset).ConfigurationColumn = value; }
+        public string[] ConfigurationColumn { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryDatasetInternal)Dataset).ConfigurationColumn; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryDatasetInternal)Dataset).ConfigurationColumn = value ?? null /* arrayOf */; }
 
         /// <summary>Backing field for <see cref="Dataset" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryDataset _dataset;
@@ -27,21 +27,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601
         /// aggregated column. Query can have up to 2 aggregation clauses.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Origin(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryDatasetAggregation DatasetAggregation { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryDatasetInternal)Dataset).Aggregation; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryDatasetInternal)Dataset).Aggregation = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryDatasetAggregation DatasetAggregation { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryDatasetInternal)Dataset).Aggregation; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryDatasetInternal)Dataset).Aggregation = value ?? null /* model class */; }
 
         /// <summary>Has filter expression to use in the query.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Origin(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter DatasetFilter { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryDatasetInternal)Dataset).Filter; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryDatasetInternal)Dataset).Filter = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter DatasetFilter { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryDatasetInternal)Dataset).Filter; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryDatasetInternal)Dataset).Filter = value ?? null /* model class */; }
 
         /// <summary>The granularity of rows in the query.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Origin(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType? DatasetGranularity { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryDatasetInternal)Dataset).Granularity; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryDatasetInternal)Dataset).Granularity = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType? DatasetGranularity { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryDatasetInternal)Dataset).Granularity; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryDatasetInternal)Dataset).Granularity = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType)""); }
 
         /// <summary>
         /// Array of group by expression to use in the query. Query can have up to 2 group by clauses.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Origin(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryGrouping[] DatasetGrouping { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryDatasetInternal)Dataset).Grouping; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryDatasetInternal)Dataset).Grouping = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryGrouping[] DatasetGrouping { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryDatasetInternal)Dataset).Grouping; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryDatasetInternal)Dataset).Grouping = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Dataset</summary>
         Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryDataset Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryDefinitionInternal.Dataset { get => (this._dataset = this._dataset ?? new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.QueryDataset()); set { {_dataset = value;} } }
@@ -61,11 +61,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601
 
         /// <summary>The start date to pull data from.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Origin(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PropertyOrigin.Inlined)]
-        public global::System.DateTime TimePeriodFrom { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryTimePeriodInternal)TimePeriod).From; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryTimePeriodInternal)TimePeriod).From = value; }
+        public global::System.DateTime? TimePeriodFrom { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryTimePeriodInternal)TimePeriod).From; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryTimePeriodInternal)TimePeriod).From = value ?? default(global::System.DateTime); }
 
         /// <summary>The end date to pull data to.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Origin(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PropertyOrigin.Inlined)]
-        public global::System.DateTime TimePeriodTo { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryTimePeriodInternal)TimePeriod).To; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryTimePeriodInternal)TimePeriod).To = value; }
+        public global::System.DateTime? TimePeriodTo { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryTimePeriodInternal)TimePeriod).To; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryTimePeriodInternal)TimePeriod).To = value ?? default(global::System.DateTime); }
 
         /// <summary>Backing field for <see cref="Timeframe" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType _timeframe;
@@ -143,20 +143,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601
         Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryGrouping[] DatasetGrouping { get; set; }
         /// <summary>The start date to pull data from.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"The start date to pull data from.",
         SerializedName = @"from",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        global::System.DateTime TimePeriodFrom { get; set; }
+        global::System.DateTime? TimePeriodFrom { get; set; }
         /// <summary>The end date to pull data to.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"The end date to pull data to.",
         SerializedName = @"to",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        global::System.DateTime TimePeriodTo { get; set; }
+        global::System.DateTime? TimePeriodTo { get; set; }
         /// <summary>
         /// The time frame for pulling data for the query. If custom, then a specific time period must be provided.
         /// </summary>
@@ -209,9 +209,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601
         /// <summary>Has time period for pulling data for the query.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryTimePeriod TimePeriod { get; set; }
         /// <summary>The start date to pull data from.</summary>
-        global::System.DateTime TimePeriodFrom { get; set; }
+        global::System.DateTime? TimePeriodFrom { get; set; }
         /// <summary>The end date to pull data to.</summary>
-        global::System.DateTime TimePeriodTo { get; set; }
+        global::System.DateTime? TimePeriodTo { get; set; }
         /// <summary>
         /// The time frame for pulling data for the query. If custom, then a specific time period must be provided.
         /// </summary>

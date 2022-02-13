@@ -44,7 +44,7 @@ The url should exactly match the schema `https://docs.microsoft.com/en-us/powers
 
 ### Message
 
-> c:\workspace\powershell\build.proj(597,5): error MSB3073: The command "c:\workspace\powershell\artifacts\\**StaticAnalysis.exe** -p c:\workspace\powershell\artifacts\Debug -r c:\workspace\powershell\artifacts -m Az.Network" exited with code 255.c:\workspace\powershell\build.proj(609,5): error : StaticAnalysis has failed. Please follow the instructions on this doc: [https://github.com/Azure/azure-powershell/blob/master/documentation/Debugging-StaticAnalysis-Errors.md](Debugging-StaticAnalysis-Errors.md)
+> c:\workspace\powershell\build.proj(597,5): error MSB3073: The command "c:\workspace\powershell\artifacts\\**StaticAnalysis.exe** -p c:\workspace\powershell\artifacts\Debug -r c:\workspace\powershell\artifacts -m Az.Network" exited with code 255.c:\workspace\powershell\build.proj(609,5): error : StaticAnalysis has failed. Please follow the instructions on this doc: [https://github.com/Azure/azure-powershell/blob/main/documentation/Debugging-StaticAnalysis-Errors.md](Debugging-StaticAnalysis-Errors.md)
 
 ### Reasons
 

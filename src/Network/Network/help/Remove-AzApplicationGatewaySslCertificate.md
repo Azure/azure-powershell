@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 5D788B84-0179-4A35-AC35-27C6F5FECB39
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azapplicationgatewaysslcertificate
+online version: https://docs.microsoft.com/powershell/module/az.network/remove-azapplicationgatewaysslcertificate
 schema: 2.0.0
 ---
 
@@ -25,12 +25,14 @@ The **Remove-AzApplicationGatewaySslCertificate** cmdlet removes a Secure Socket
 
 ### Example 1: Remove an SSL certificate from an application gateway
 ```
-PS C:\>$AppGW = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+PS C:\> $AppGW = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
 PS C:\> Remove-AzApplicationGatewaySslCertificate -ApplicationGateway $AppGW -Name "Cert02"
+PS C:\> Set-AzApplicationGateway -ApplicationGateway $AppGw
 ```
 
 The first command gets the application gateway named ApplicationGateway01 and stores the result in the variable named $AppGW.
 The second command removes the SSL certificate named Cert02 from the application gateway stored in the $AppGW variable.
+The last command updates the application gateway.
 
 ## PARAMETERS
 

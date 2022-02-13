@@ -1,0 +1,70 @@
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using Microsoft.Azure.Management.Synapse.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Microsoft.Azure.Commands.Synapse.Models
+{
+    public enum ThreatDetectionStateType { Enabled, Disabled, New };
+
+    public class PSServerSecurityAlertPolicy
+    {
+        public PSServerSecurityAlertPolicy(ServerSecurityAlertPolicy policy, string resourceGroupName, string workspaceName)
+        {
+            this.ResourceGroupName = resourceGroupName;
+            this.WorkspaceName = workspaceName;
+            Enum.TryParse(policy.State.ToString(), true, out ThreatDetectionStateType state);
+            this.ThreatDetectionState = state;
+            this.NotificationRecipientsEmails = string.Join(";", policy.EmailAddresses.ToArray());
+            this.EmailAdmins = policy.EmailAccountAdmins == null ? false : policy.EmailAccountAdmins.Value;
+            this.RetentionInDays = (uint)policy.RetentionDays;
+            this.ExcludedDetectionTypes = policy.DisabledAlerts.Where(alert => !string.IsNullOrEmpty(alert)).ToArray() ?? new string[] { };
+            ModelizeStorageAccount(policy.StorageEndpoint);
+        }
+
+        public PSServerSecurityAlertPolicy() { }
+
+        public string ResourceGroupName { get; set; }
+
+        public string WorkspaceName { get; set; }
+
+        public ThreatDetectionStateType ThreatDetectionState { get; internal set; }
+
+        public string NotificationRecipientsEmails { get; internal set; }
+
+        public string StorageAccountName { get; internal set; }
+
+        public bool EmailAdmins { get; internal set; }
+
+        public string[] ExcludedDetectionTypes { get; internal set; }
+
+        public uint? RetentionInDays { get; internal set; }
+
+        protected void ModelizeStorageAccount(string storageEndpoint)
+        {
+            if (string.IsNullOrEmpty(storageEndpoint))
+            {
+                this.StorageAccountName = string.Empty;
+                return;
+            }
+            var accountNameStartIndex = storageEndpoint.StartsWith("https://", StringComparison.InvariantCultureIgnoreCase) ? 8 : 7; // https:// or http://
+            var accountNameEndIndex = storageEndpoint.IndexOf(".blob", StringComparison.InvariantCultureIgnoreCase);
+            this.StorageAccountName = storageEndpoint.Substring(accountNameStartIndex, accountNameEndIndex - accountNameStartIndex);
+        }
+    }
+}

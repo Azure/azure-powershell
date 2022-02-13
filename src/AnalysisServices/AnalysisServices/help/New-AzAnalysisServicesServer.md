@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices.dll-Help.xml
 Module Name: Az.AnalysisServices
-online version: https://docs.microsoft.com/en-us/powershell/module/az.analysisservices/new-azanalysisservicesserver
+online version: https://docs.microsoft.com/powershell/module/az.analysisservices/new-azanalysisservicesserver
 schema: 2.0.0
 ---
 
@@ -27,7 +27,7 @@ The New-AzAnalysisServicesServer cmdlet creates a new Analysis Services server
 
 ### Example 1
 ```powershell
-PS C:\> New-AzAnalysisServicesServer -ResourceGroupName "testresourcegroup" -Name "testserver" -Location "West-US" -Sku "S1"
+New-AzAnalysisServicesServer -ResourceGroupName "testresourcegroup" -Name "testserver" -Location "West-US" -Sku "S1"
 ```
 
 Creates a server named testserver in the Azure region West-US and in resource group testresourcegroup. The sku level for the server will be S1.

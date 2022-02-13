@@ -25,8 +25,6 @@ using Microsoft.Azure.Management.ContainerService.Models;
 using Microsoft.Azure.Commands.Aks.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Graph.RBAC.Version1_6;
-using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01.Models;
 using Microsoft.Azure.Management.Internal.Resources;
@@ -38,6 +36,10 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Rest.Azure.OData;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.Azure.Commands.Common.Exceptions;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
 
 namespace Microsoft.Azure.Commands.Aks
 {
@@ -45,6 +47,7 @@ namespace Microsoft.Azure.Commands.Aks
     {
         protected const string DefaultParamSet = "defaultParameterSet";
         protected readonly Regex DnsRegex = new Regex("[^A-Za-z0-9-]");
+        private const string SUPPRESS_ERROR_OR_WARNING_MESSAGE_ENV_VARIABLE_NAME = "SuppressAzurePowerShellBreakingChangeWarnings";
 
         [Parameter(
             Position = 0,
@@ -114,60 +117,46 @@ namespace Microsoft.Azure.Commands.Aks
         [Alias("SshKeyPath")]
         public string SshKeyValue { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Grant the 'acrpull' role of the specified ACR to AKS Service Principal, e.g. myacr")]
+        public string AcrNameToAttach { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
         [Parameter(Mandatory = false)]
         public Hashtable Tag { get; set; }
 
-        protected virtual ManagedCluster BuildNewCluster()
-        {
-            BeforeBuildNewCluster();
+        [Parameter(Mandatory = false, HelpMessage = "The desired number of allocated SNAT ports per VM.")]
+        [ValidateRange(0, 64000)]
+        public int LoadBalancerAllocatedOutboundPort { get; set; }
 
-            var defaultAgentPoolProfile = new ManagedClusterAgentPoolProfile(
-                name: NodeName ?? "default",
-                count: NodeCount,
-                vmSize: NodeVmSize,
-                osDiskSizeGB: NodeOsDiskSize);
+        [Parameter(Mandatory = false, HelpMessage = "Desired managed outbound IPs count for the cluster load balancer.")]
+        public int LoadBalancerManagedOutboundIpCount { get; set; }
 
-            if (this.IsParameterBound(c => c.NodeMinCount))
-            {
-                defaultAgentPoolProfile.MinCount = NodeMinCount;
-            }
-            if (this.IsParameterBound(c => c.NodeMaxCount))
-            {
-                defaultAgentPoolProfile.MaxCount = NodeMaxCount;
-            }
-            if (EnableNodeAutoScaling.IsPresent)
-            {
-                defaultAgentPoolProfile.EnableAutoScaling = EnableNodeAutoScaling.ToBool();
-            }
+        [Parameter(Mandatory = false, HelpMessage = "Desired outbound IP resources for the cluster load balancer.")]
+        public string[] LoadBalancerOutboundIp { get; set; }
 
-            var pubKey =
-                new List<ContainerServiceSshPublicKey> { new ContainerServiceSshPublicKey(SshKeyValue) };
+        [Parameter(Mandatory = false, HelpMessage = "Desired outbound IP Prefix resources for the cluster load balancer.")]
+        public string[] LoadBalancerOutboundIpPrefix { get; set; }
 
-            var linuxProfile =
-                new ContainerServiceLinuxProfile(LinuxProfileAdminUserName,
-                    new ContainerServiceSshConfiguration(pubKey));
+        [Parameter(Mandatory = false, HelpMessage = "Desired outbound flow idle timeout in minutes.")]
+        [ValidateRange(4, 120)]
+        public int LoadBalancerIdleTimeoutInMinute { get; set; }
 
-            var acsServicePrincipal = EnsureServicePrincipal(ServicePrincipalIdAndSecret?.UserName, ServicePrincipalIdAndSecret?.Password?.ToString());
+        [Parameter(Mandatory = false, HelpMessage = "The IP ranges authorized to access the Kubernetes API server.")]
+        public string[] ApiServerAccessAuthorizedIpRange { get; set; }
 
-            var spProfile = new ManagedClusterServicePrincipalProfile(
-                acsServicePrincipal.SpId,
-                acsServicePrincipal.ClientSecret);
+        [Parameter(Mandatory = false, HelpMessage = "Whether to create the cluster as a private cluster or not.")]
+        public SwitchParameter EnableApiServerAccessPrivateCluster { get; set; }
 
-            WriteVerbose(string.Format(Resources.DeployingYourManagedKubeCluster, AcsSpFilePath));
-            var managedCluster = new ManagedCluster(
-                Location,
-                name: Name,
-                tags: TagsConversionHelper.CreateTagDictionary(Tag, true),
-                dnsPrefix: DnsNamePrefix,
-                kubernetesVersion: KubernetesVersion,
-                agentPoolProfiles: new List<ManagedClusterAgentPoolProfile> { defaultAgentPoolProfile },
-                linuxProfile: linuxProfile,
-                servicePrincipalProfile: spProfile);
-            return managedCluster;
-        }
+        [Parameter(Mandatory = false, HelpMessage = "The private DNS zone mode for the cluster.")]
+        public string ApiServerAccessPrivateDnsZone { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to create additional public FQDN for private cluster or not.")]
+        public SwitchParameter EnableApiServerAccessPrivateClusterPublicFQDN { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The FQDN subdomain of the private cluster with custom private dns zone.")]
+        public string FqdnSubdomain { get; set; }
 
         protected void BeforeBuildNewCluster()
         {
@@ -218,8 +207,6 @@ namespace Microsoft.Azure.Commands.Aks
         /// <exception cref="ArgumentException">The SSH key or file argument was null and there was no default pub key in path.</exception>
         protected string GetSshKey(string sshKeyOrFile)
         {
-            const string helpLink = "https://docs.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys";
-
             // SSH key was specified as either a file or as key data
             if (!string.IsNullOrEmpty(SshKeyValue))
             {
@@ -237,7 +224,8 @@ namespace Microsoft.Azure.Commands.Aks
             var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".ssh", "id_rsa.pub");
             if (!AzureSession.Instance.DataStore.FileExists(path))
             {
-                throw new ArgumentException(string.Format(Resources.CouldNotFindSshPublicKeyInError, path, helpLink));
+                var errorMessage = string.Format(Resources.CouldNotFindSshPublicKeyInError, path);
+                throw new AzPSArgumentException(errorMessage, nameof(SshKeyValue));
             }
 
             WriteVerbose(string.Format(Resources.FetchSshPublicKeyFromFile, path));
@@ -248,62 +236,109 @@ namespace Microsoft.Azure.Commands.Aks
 
         protected AcsServicePrincipal EnsureServicePrincipal(string spId = null, string clientSecret = null)
         {
+            //If user specifies service principal, just use it directly and no need to save to disk
+            if(!string.IsNullOrEmpty(spId) && !string.IsNullOrEmpty(clientSecret))
+            {
+                return new AcsServicePrincipal()
+                {
+                    SpId = spId,
+                    ClientSecret = clientSecret
+                };
+            }
+
             var acsServicePrincipal = LoadServicePrincipal();
             if (acsServicePrincipal == null)
             {
-                WriteVerbose(string.Format(
+                WriteWarning(string.Format(
                     Resources.NoServicePrincipalFoundCreatingANewServicePrincipal,
-                    AcsSpFilePath));
+                    AcsSpFilePath, DefaultContext.Subscription.Id));
 
                 // if nothing to load, make one
                 if (clientSecret == null)
                 {
                     clientSecret = RandomBase64String(16);
                 }
-                var salt = RandomBase64String(3);
-                var url = $"http://{salt}.{DnsNamePrefix}.{Location}.cloudapp.azure.com";
 
-                acsServicePrincipal = BuildServicePrincipal(Name, url, clientSecret);
+                bool supressWarningOrError = false;
+
+                try
+                {
+                    supressWarningOrError = bool.Parse(Environment.GetEnvironmentVariable(SUPPRESS_ERROR_OR_WARNING_MESSAGE_ENV_VARIABLE_NAME));
+                }
+                catch (Exception)
+                {
+                    //no action
+                }
+                if (!supressWarningOrError)
+                {
+                    WriteWarning(Constants.MSGraphMigrationMessage);
+                }
+
+                acsServicePrincipal = BuildServicePrincipal(Name, clientSecret);
                 WriteVerbose(Resources.CreatedANewServicePrincipalAndAssignedTheContributorRole);
                 StoreServicePrincipal(acsServicePrincipal);
             }
             return acsServicePrincipal;
         }
 
-        private AcsServicePrincipal BuildServicePrincipal(string name, string url, string clientSecret)
+        private AcsServicePrincipal BuildServicePrincipal(string name, string clientSecret)
         {
-            var pwCreds = new PasswordCredential(
-                value: clientSecret,
-                startDate: DateTime.UtcNow,
-                endDate: DateTime.UtcNow.AddYears(2));
+            var keyCredentials = new List<MicrosoftGraphKeyCredential> {
+                    new MicrosoftGraphKeyCredential {
+                        EndDateTime = DateTime.UtcNow.AddYears(2),
+                        StartDateTime = DateTime.UtcNow,
+                        Key = clientSecret,
+                        Type = "Symmetric",
+                        Usage = "Verify"
+                    }
+            };
+            var appCreateParameters = new MicrosoftGraphApplication
+            {
+                DisplayName = name,
+                KeyCredentials = keyCredentials
+            };
+            var app = GraphClient.Applications.CreateApplication(appCreateParameters);
 
-            var app = GraphClient.Applications.Create(new ApplicationCreateParameters(
-                false,
-                name,
-                new List<string> { url },
-                url,
-                passwordCredentials: new List<PasswordCredential> { pwCreds }));
-
-            ServicePrincipal sp = null;
+            MicrosoftGraphServicePrincipal sp = null;
             var success = RetryAction(() =>
             {
-                var spCreateParams = new ServicePrincipalCreateParameters(
-                                app.AppId,
-                                true,
-                                passwordCredentials: new List<PasswordCredential> { pwCreds });
-                sp = GraphClient.ServicePrincipals.Create(spCreateParams);
+                var servicePrincipalCreateParams = new MicrosoftGraphServicePrincipal
+                {
+                    AppId = app.AppId,
+                    AccountEnabled = true,
+                    KeyCredentials = keyCredentials
+                };
+                sp = GraphClient.ServicePrincipals.CreateServicePrincipal(servicePrincipalCreateParams);
             }, Resources.ServicePrincipalCreate);
 
             if (!success)
             {
-                throw new CmdletInvocationException(Resources.CouldNotCreateAServicePrincipalWithTheRightPermissionsAreYouAnOwner);
+                throw new AzPSInvalidOperationException(
+                    Resources.CouldNotCreateAServicePrincipalWithTheRightPermissionsAreYouAnOwner,
+                    desensitizedMessage: Resources.CouldNotCreateAServicePrincipalWithTheRightPermissionsAreYouAnOwner);
             }
 
-            AddSubscriptionRoleAssignment("Contributor", sp.ObjectId);
-            return new AcsServicePrincipal { SpId = app.AppId, ClientSecret = clientSecret, ObjectId = app.ObjectId };
+            AddSubscriptionRoleAssignment("Contributor", sp.Id);
+            return new AcsServicePrincipal { SpId = app.AppId, ClientSecret = clientSecret, ObjectId = sp.Id };
         }
 
-        protected void AddAcrRoleAssignment(string acrName, AcsServicePrincipal acsServicePrincipal)
+        protected RoleAssignment GetRoleAssignmentWithRoleDefinitionId(string roleDefinitionId)
+        {
+            RoleAssignment roleAssignment = null;
+            var actionSuccess = RetryAction(() =>
+            {
+                roleAssignment = AuthClient.RoleAssignments.List().Where(x => x.Properties.RoleDefinitionId == roleDefinitionId && x.Name == Name).FirstOrDefault();
+            });
+            if (!actionSuccess)
+            {
+                throw new AzPSInvalidOperationException(
+                    Resources.CouldNotGetAcrRoleAssignment,
+                    desensitizedMessage: Resources.CouldNotGetAcrRoleAssignment);
+            }
+            return roleAssignment;
+        }
+
+        protected void AddAcrRoleAssignment(string acrName, string acrParameterName, AcsServicePrincipal acsServicePrincipal)
         {
             string acrResourceId = null;
             try
@@ -313,25 +348,36 @@ namespace Microsoft.Azure.Commands.Aks
                 var acrObjects = RmClient.Resources.List(acrQuery);
                 acrResourceId = acrObjects.First().Id;
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                throw new CmdletInvocationException(string.Format(Resources.CouldNotFindSpecifiedAcr, acrName), ex);
+                throw new AzPSArgumentException(
+                    string.Format(Resources.CouldNotFindSpecifiedAcr, acrName),
+                    acrParameterName,
+                    string.Format(Resources.CouldNotFindSpecifiedAcr, "*"));
             }
 
             var roleId = GetRoleId("acrpull", acrResourceId);
+            RoleAssignment roleAssignment = GetRoleAssignmentWithRoleDefinitionId(roleId);
+            if (roleAssignment != null)
+            {
+                WriteWarning(string.Format(Resources.AcrRoleAssignmentIsAlreadyExist, acrResourceId));
+                return;
+            }
             var spObjectId = acsServicePrincipal.ObjectId;
-            if(spObjectId == null)
+            if (spObjectId == null)
             {
                 try
                 {
-                    //Please note string.Equals doesn't work here, while == works.
-                    var odataQuery = new ODataQuery<ServicePrincipal>(sp => sp.AppId == acsServicePrincipal.SpId);
-                    var servicePrincipal = GraphClient.ServicePrincipals.List(odataQuery).First();
-                    spObjectId = servicePrincipal.ObjectId;
+                    ODataQuery<MicrosoftGraphServicePrincipal> oDataQuery = new ODataQuery<MicrosoftGraphServicePrincipal>(sp => sp.AppId == acsServicePrincipal.SpId);
+                    var servicePrincipal = GraphClient.FilterServicePrincipals(oDataQuery).First();
+                    spObjectId = servicePrincipal.Id;
                 }
                 catch(Exception ex)
                 {
-                    throw new CmdletInvocationException(string.Format(Resources.CouldNotFindObjectIdForServicePrincipal, acsServicePrincipal.SpId), ex);
+                    throw new AzPSInvalidOperationException(
+                        string.Format(Resources.CouldNotFindObjectIdForServicePrincipal, acsServicePrincipal.SpId),
+                        ex,
+                        string.Format(Resources.CouldNotFindObjectIdForServicePrincipal,"*"));
                 }
             }
             var success = RetryAction(() =>
@@ -342,8 +388,9 @@ namespace Microsoft.Azure.Commands.Aks
 
             if (!success)
             {
-                throw new CmdletInvocationException(
-                    Resources.CouldNotAddAcrRoleAssignment);
+                throw new AzPSInvalidOperationException(
+                    Resources.CouldNotAddAcrRoleAssignment,
+                    desensitizedMessage: Resources.CouldNotAddAcrRoleAssignment);
             }
         }
 
@@ -374,8 +421,9 @@ namespace Microsoft.Azure.Commands.Aks
 
             if (!success)
             {
-                throw new CmdletInvocationException(
-                    Resources.CouldNotCreateAServicePrincipalWithTheRightPermissionsAreYouAnOwner);
+                throw new AzPSInvalidOperationException(
+                    Resources.CouldNotAssignServicePrincipalWithSubsContributorPermission,
+                    desensitizedMessage: Resources.CouldNotAssignServicePrincipalWithSubsContributorPermission);
             }
         }
 
@@ -407,7 +455,11 @@ namespace Microsoft.Azure.Commands.Aks
         protected AcsServicePrincipal LoadServicePrincipal()
         {
             var config = LoadServicePrincipals();
-            return config?[DefaultContext.Subscription.Id];
+            if(config?.ContainsKey(DefaultContext.Subscription.Id) == true)
+            {
+                return config[DefaultContext.Subscription.Id];
+            }
+            return null;
         }
 
         protected Dictionary<string, AcsServicePrincipal> LoadServicePrincipals()
@@ -448,6 +500,71 @@ namespace Microsoft.Azure.Commands.Aks
 
             var subPart = string.Join("", DefaultContext.Subscription.Id.Take(4));
             return $"{namePart}{subPart}";
+        }
+    
+        protected ManagedClusterLoadBalancerProfile CreateOrUpdateLoadBalancerProfile(ManagedClusterLoadBalancerProfile loadBalancerProfile)
+        {
+            if ((this.IsParameterBound(c => c.LoadBalancerManagedOutboundIpCount) ||
+                this.IsParameterBound(c => c.LoadBalancerOutboundIp) ||
+                this.IsParameterBound(c => c.LoadBalancerOutboundIpPrefix) ||
+                this.IsParameterBound(c => c.LoadBalancerAllocatedOutboundPort) ||
+                this.IsParameterBound(c => c.LoadBalancerIdleTimeoutInMinute)) &&
+                loadBalancerProfile == null)
+            {
+                loadBalancerProfile = new ManagedClusterLoadBalancerProfile();
+            }
+            if (this.IsParameterBound(c => c.LoadBalancerManagedOutboundIpCount))
+            {
+                loadBalancerProfile.ManagedOutboundIPs = new ManagedClusterLoadBalancerProfileManagedOutboundIPs(LoadBalancerManagedOutboundIpCount);
+            }
+            if (this.IsParameterBound(c => c.LoadBalancerOutboundIp))
+            {
+                loadBalancerProfile.OutboundIPs = new ManagedClusterLoadBalancerProfileOutboundIPs(LoadBalancerOutboundIp.ToList().Select(x => { return new ResourceReference(x); }).ToList());
+            }
+            if (this.IsParameterBound(c => c.LoadBalancerOutboundIpPrefix))
+            {
+                loadBalancerProfile.OutboundIPPrefixes = new ManagedClusterLoadBalancerProfileOutboundIPPrefixes(LoadBalancerOutboundIpPrefix.ToList().Select(x => { return new ResourceReference(x); }).ToList());
+            }
+            if (this.IsParameterBound(c => c.LoadBalancerAllocatedOutboundPort))
+            {
+                loadBalancerProfile.AllocatedOutboundPorts = LoadBalancerAllocatedOutboundPort;
+            }
+            if (this.IsParameterBound(c => c.LoadBalancerIdleTimeoutInMinute))
+            {
+                loadBalancerProfile.IdleTimeoutInMinutes = LoadBalancerIdleTimeoutInMinute;
+            }
+
+            return loadBalancerProfile;
+        }
+
+        protected ManagedClusterAPIServerAccessProfile CreateOrUpdateApiServerAccessProfile(ManagedClusterAPIServerAccessProfile apiServerAccessProfile)
+        {
+            if ((this.IsParameterBound(c => c.ApiServerAccessAuthorizedIpRange) ||
+                this.IsParameterBound(c => c.EnableApiServerAccessPrivateCluster) ||
+                this.IsParameterBound(c => c.ApiServerAccessPrivateDnsZone) ||
+                this.IsParameterBound(c => c.EnableApiServerAccessPrivateClusterPublicFQDN)) &&
+                apiServerAccessProfile == null)
+            {
+                apiServerAccessProfile = new ManagedClusterAPIServerAccessProfile();
+            }
+            if (this.IsParameterBound(c => c.ApiServerAccessAuthorizedIpRange))
+            {
+                apiServerAccessProfile.AuthorizedIPRanges = ApiServerAccessAuthorizedIpRange;
+            }
+            if (this.IsParameterBound(c => c.EnableApiServerAccessPrivateCluster))
+            {
+                apiServerAccessProfile.EnablePrivateCluster = EnableApiServerAccessPrivateCluster;
+            }
+            if (this.IsParameterBound(c => c.ApiServerAccessPrivateDnsZone))
+            {
+                apiServerAccessProfile.PrivateDNSZone = ApiServerAccessPrivateDnsZone;
+            }
+            if (this.IsParameterBound(c => c.EnableApiServerAccessPrivateClusterPublicFQDN))
+            {
+                apiServerAccessProfile.EnablePrivateClusterPublicFQDN = EnableApiServerAccessPrivateClusterPublicFQDN;
+            }
+
+            return apiServerAccessProfile;
         }
     }
 }

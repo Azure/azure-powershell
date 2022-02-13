@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
         }
 
         public AutomationAccount CreateAutomationAccount(string resourceGroupName, string automationAccountName,
-            string location, string plan, IDictionary tags)
+            string location, string plan, IDictionary tags, bool addSystemId, string[] userIds, bool enableAMK, bool enableCMK, string KeyName, string KeyVersion, string KeyVaultUri, string UserIdentityEncryption, bool disablePublicNetworkAccess)
         {
             Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
             Requires.Argument("Location", location).NotNull();
@@ -165,13 +165,61 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 Tags = accountTags
             };
 
+            if (addSystemId == true)
+            {
+                accountCreateOrUpdateParameters.Identity = new Identity(null, null, ResourceIdentityType.SystemAssigned);
+            }
+            if ((userIds != null) && userIds.Any())
+            {
+                var userIdDict = new Dictionary<string, IdentityUserAssignedIdentitiesValue>();
+                foreach (var id in userIds)
+                {
+                    userIdDict.Add(id, new IdentityUserAssignedIdentitiesValue());
+                }
+
+                var IdType = ResourceIdentityType.UserAssigned;
+                if (addSystemId == true)
+                {
+                    IdType = ResourceIdentityType.SystemAssignedUserAssigned;
+                }
+
+                accountCreateOrUpdateParameters.Identity = new Identity(null, null, IdType, userIdDict);
+            }
+            if (enableAMK == true)
+            {
+                accountCreateOrUpdateParameters.Encryption = new EncryptionProperties(null, EncryptionKeySourceType.MicrosoftAutomation);
+            }
+            if (enableCMK == true)
+            {
+                if (String.IsNullOrEmpty(UserIdentityEncryption))
+                {
+                    accountCreateOrUpdateParameters.Encryption = new EncryptionProperties(
+                        new KeyVaultProperties(KeyVaultUri, KeyName, KeyVersion),
+                        EncryptionKeySourceType.MicrosoftKeyvault
+                        );
+                }
+                else
+                {
+                    accountCreateOrUpdateParameters.Encryption = new EncryptionProperties(
+                        new KeyVaultProperties(KeyVaultUri, KeyName, KeyVersion),
+                        EncryptionKeySourceType.MicrosoftKeyvault,
+                        new EncryptionPropertiesIdentity(UserIdentityEncryption)
+                        );
+                }
+            }
+
+            if (disablePublicNetworkAccess == true)
+            {
+                accountCreateOrUpdateParameters.PublicNetworkAccess = false;
+            }
+
             var account = this.automationManagementClient.AutomationAccount.CreateOrUpdate(resourceGroupName, automationAccountName, accountCreateOrUpdateParameters);
 
             return new AutomationAccount(resourceGroupName, account);
         }
 
         public AutomationAccount UpdateAutomationAccount(string resourceGroupName, string automationAccountName,
-            string plan, IDictionary tags)
+            string plan, IDictionary tags, bool addSystemId, string[] userIds, bool enableAMK, bool enableCMK, string KeyName, string KeyVersion, string KeyVaultUri, string UserIdentityEncryption, bool disablePublicNetworkAccess)
         {
             Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
             Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
@@ -200,6 +248,54 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 },
                 Tags = accountTags,
             };
+
+            if (addSystemId == true)
+            {
+                accountUpdateParameters.Identity = new Identity(null, null, ResourceIdentityType.SystemAssigned);
+            }
+            if ((userIds != null) && userIds.Any())
+            {
+                var userIdDict = new Dictionary<string, IdentityUserAssignedIdentitiesValue>();
+                foreach (var id in userIds)
+                {
+                    userIdDict.Add(id, new IdentityUserAssignedIdentitiesValue());
+                }
+
+                var IdType = ResourceIdentityType.UserAssigned;
+                if (addSystemId == true)
+                {
+                    IdType = ResourceIdentityType.SystemAssignedUserAssigned;
+                }
+
+                accountUpdateParameters.Identity = new Identity(null, null, IdType, userIdDict);
+            }
+            if (enableAMK == true)
+            {
+                accountUpdateParameters.Encryption = new EncryptionProperties(null, EncryptionKeySourceType.MicrosoftAutomation);
+            }
+            if (enableCMK == true)
+            {
+                if (String.IsNullOrEmpty(UserIdentityEncryption))
+                {
+                    accountUpdateParameters.Encryption = new EncryptionProperties(
+                        new KeyVaultProperties(KeyVaultUri, KeyName, KeyVersion),
+                        EncryptionKeySourceType.MicrosoftKeyvault
+                        );
+                }
+                else
+                {
+                    accountUpdateParameters.Encryption = new EncryptionProperties(
+                        new KeyVaultProperties(KeyVaultUri, KeyName, KeyVersion),
+                        EncryptionKeySourceType.MicrosoftKeyvault,
+                        new EncryptionPropertiesIdentity(UserIdentityEncryption)
+                        );
+                }
+            }
+
+            if (disablePublicNetworkAccess == true)
+            {
+                accountUpdateParameters.PublicNetworkAccess = false;
+            }
 
             var account = this.automationManagementClient.AutomationAccount.Update(resourceGroupName, automationAccountName, accountUpdateParameters);
 
@@ -292,28 +388,44 @@ namespace Microsoft.Azure.Commands.Automation.Common
         public Module UpdateModule(string resourceGroupName, string automationAccountName, string name,
             Uri contentLinkUri, string contentLinkVersion)
         {
-            var moduleModel =
-                this.automationManagementClient.Module.Get(resourceGroupName, automationAccountName, name);
-            if (contentLinkUri != null)
+            try
             {
-                var moduleUpdateParameters = new AutomationManagement.Models.ModuleUpdateParameters();
-
-                moduleUpdateParameters.Name = name;
-                moduleUpdateParameters.ContentLink = new AutomationManagement.Models.ContentLink();
-                moduleUpdateParameters.ContentLink.Uri = contentLinkUri.ToString();
-                moduleUpdateParameters.ContentLink.Version =
-                    (String.IsNullOrWhiteSpace(contentLinkVersion))
-                        ? Guid.NewGuid().ToString()
-                        : contentLinkVersion;
-
-                moduleUpdateParameters.Tags = moduleModel.Tags;
-
-                this.automationManagementClient.Module.Update(resourceGroupName, automationAccountName, name,
-                    moduleUpdateParameters);
-            }
-            var updatedModule =
+                var moduleModel =
                 this.automationManagementClient.Module.Get(resourceGroupName, automationAccountName, name);
+                if (contentLinkUri != null)
+                {
+                    var updateModule = this.automationManagementClient.Module.CreateOrUpdate(resourceGroupName,
+                    automationAccountName,
+                    name,
+                    new AutomationManagement.Models.ModuleCreateOrUpdateParameters()
+                    {
+                        Name = name,
+                        ContentLink = new AutomationManagement.Models.ContentLink()
+                        {
+                            Uri = contentLinkUri.ToString(),
+                            ContentHash = null,
+                            Version =
+                            (String.IsNullOrWhiteSpace(contentLinkVersion))
+                            ? Guid.NewGuid().ToString()
+                            : contentLinkVersion
+                        },
+                    });
+                }
+            var updatedModule =
+            this.automationManagementClient.Module.Get(resourceGroupName, automationAccountName, name);
             return new Module(resourceGroupName, automationAccountName, updatedModule);
+            }
+            catch (ErrorResponseException cloudException)
+            {
+                 if (cloudException.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                 {
+                     throw new ResourceNotFoundException(typeof(Module),
+                         string.Format(CultureInfo.CurrentCulture, Resources.ModuleNotFound, name));
+
+                 }
+
+                 throw;
+             }
         }
 
         public void DeleteModule(string resourceGroupName, string automationAccountName, string name)
@@ -340,10 +452,10 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         public Schedule CreateSchedule(string resourceGroupName, string automationAccountName, Schedule schedule)
         {
-            var scheduleCreateOrUpdateParameters = new AutomationManagement.Models.ScheduleCreateOrUpdateParameters
+            var scheduleCreateOrUpdateParameters = new ScheduleCreateOrUpdateParameters
             {
                Name = schedule.Name,
-               StartTime = schedule.StartTime.DateTime,
+               StartTime = schedule.StartTime,
                ExpiryTime = schedule.ExpiryTime,
                Description = schedule.Description,
                Interval = schedule.Interval,
@@ -525,8 +637,10 @@ namespace Microsoft.Azure.Commands.Automation.Common
             {
                 var runbook = this.CreateRunbookByName(resourceGroupName, automationAccountName, runbookName, description, tags, type, logProgress, logVerbose, overwrite);
 
-                FileStream SourceStream = File.Open(runbookPath, FileMode.Open);
-                this.automationManagementClient.RunbookDraft.ReplaceContent(resourceGroupName, automationAccountName, runbookName, SourceStream);
+                using(FileStream SourceStream = File.Open(runbookPath, FileMode.Open))
+                {
+                    this.automationManagementClient.RunbookDraft.ReplaceContent(resourceGroupName, automationAccountName, runbookName, SourceStream);
+                }
 
                 if (published)
                 {
@@ -1700,7 +1814,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     Resources.RunbookHasNoPublishedVersion, runbookName));
             }
             
-            if (runbook != null && runbook.RunbookType == "Python2") {
+            if (runbook != null && (runbook.RunbookType == "Python2" || runbook.RunbookType == "Python3")) {
                 int i = 1;
 
                 foreach (var key in parameters.Keys) {

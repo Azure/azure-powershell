@@ -83,7 +83,7 @@ Get security regulatory compliance assessments on a subscription
 #>
 function Get-AzureRmRegulatoryComplianceAssessment-SubscriptionScope
 {
-    $regulatoryComplianceAssessments = Get-AzRegulatoryComplainceAssessment -StandardName "SOC TSP" -ControlName "CC5.8"
+    $regulatoryComplianceAssessments = Get-AzRegulatoryComplianceAssessment -StandardName "SOC TSP" -ControlName "CC5.8"
 	Validate-RegulatoryComplianceObjects $regulatoryComplianceAssessments
 }
 
@@ -93,7 +93,7 @@ Get security regulatory compliance assessment
 #>
 function Get-AzureRmRegulatoryComplianceAssessment-SubscriptionLevelResource
 {
-    $regulatoryComplianceAssessment = Get-AzRegulatoryComplainceAssessment -StandardName "SOC TSP" -ControlName "CC5.8" -Name "fe48038b-f73a-4264-b499-0ff9dfaab05c"
+    $regulatoryComplianceAssessment = Get-AzRegulatoryComplianceAssessment -StandardName "SOC TSP" -ControlName "CC5.8" -Name "fe48038b-f73a-4264-b499-0ff9dfaab05c"
 	Validate-RegulatoryComplianceObject $regulatoryComplianceAssessment
 }
 
@@ -103,9 +103,9 @@ Get security regulatory compliance assessment by a resource ID
 #>
 function Get-AzureRmRegulatoryComplianceAssessment-ResourceId
 {
-	$regulatoryComplianceAssessment = Get-AzRegulatoryComplainceAssessment -StandardName "SOC TSP" -ControlName "CC5.8" | Select -First 1
+	$regulatoryComplianceAssessment = Get-AzRegulatoryComplianceAssessment -StandardName "SOC TSP" -ControlName "CC5.8" | Select -First 1
 
-    $regulatoryComplianceAssessment = Get-AzRegulatoryComplainceAssessment -ResourceId $regulatoryComplianceAssessment.Id
+    $regulatoryComplianceAssessment = Get-AzRegulatoryComplianceAssessment -ResourceId $regulatoryComplianceAssessment.Id
 	Validate-RegulatoryComplianceObject $regulatoryComplianceAssessment
 }
 

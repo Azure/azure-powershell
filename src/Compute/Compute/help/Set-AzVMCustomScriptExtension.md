@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 64AB1BAE-A756-43A8-A40F-10B746EA0946
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/set-azvmcustomscriptextension
+online version: https://docs.microsoft.com/powershell/module/az.compute/set-azvmcustomscriptextension
 schema: 2.0.0
 ---
 
@@ -89,7 +89,7 @@ This extension lets you run your own scripts on the virtual machine.
 
 ### Example 1: Add a custom script
 ```powershell
-PS C:\> Set-AzVMCustomScriptExtension -ResourceGroupName "ResourceGroup11" -Location "Central US" -VMName "VirtualMachine07" -Name "ContosoTest" -TypeHandlerVersion "1.1" -StorageAccountName "Contoso" -StorageAccountKey <StorageKey> -FileName "ContosoScript.exe" -ContainerName "Scripts"
+Set-AzVMCustomScriptExtension -ResourceGroupName "ResourceGroup11" -Location "Central US" -VMName "VirtualMachine07" -Name "ContosoTest" -TypeHandlerVersion "1.1" -StorageAccountName "Contoso" -StorageAccountKey <StorageKey> -FileName "ContosoScript.exe" -ContainerName "Scripts"
 ```
 
 This command adds a custom script to the virtual machine named VirtualMachine07.

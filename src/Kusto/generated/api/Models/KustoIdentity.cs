@@ -50,9 +50,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
         /// <summary>Backing field for <see cref="Location" /> property.</summary>
         private string _location;
 
-        /// <summary>Azure location.</summary>
+        /// <summary>Azure location (region) name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Origin(Microsoft.Azure.PowerShell.Cmdlets.Kusto.PropertyOrigin.Owned)]
         public string Location { get => this._location; set => this._location = value; }
+
+        /// <summary>Backing field for <see cref="OperationId" /> property.</summary>
+        private string _operationId;
+
+        /// <summary>The Guid of the operation ID</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Origin(Microsoft.Azure.PowerShell.Cmdlets.Kusto.PropertyOrigin.Owned)]
+        public string OperationId { get => this._operationId; set => this._operationId = value; }
 
         /// <summary>Backing field for <see cref="PrincipalAssignmentName" /> property.</summary>
         private string _principalAssignmentName;
@@ -67,6 +74,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
         /// <summary>The name of the resource group containing the Kusto cluster.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Origin(Microsoft.Azure.PowerShell.Cmdlets.Kusto.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
+
+        /// <summary>Backing field for <see cref="ScriptName" /> property.</summary>
+        private string _scriptName;
+
+        /// <summary>The name of the Kusto database script.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Origin(Microsoft.Azure.PowerShell.Cmdlets.Kusto.PropertyOrigin.Owned)]
+        public string ScriptName { get => this._scriptName; set => this._scriptName = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -127,14 +141,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
-        /// <summary>Azure location.</summary>
+        /// <summary>Azure location (region) name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Azure location.",
+        Description = @"Azure location (region) name.",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
         string Location { get; set; }
+        /// <summary>The Guid of the operation ID</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The Guid of the operation ID",
+        SerializedName = @"operationId",
+        PossibleTypes = new [] { typeof(string) })]
+        string OperationId { get; set; }
         /// <summary>The name of the Kusto principalAssignment.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(
         Required = false,
@@ -151,6 +173,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceGroupName { get; set; }
+        /// <summary>The name of the Kusto database script.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the Kusto database script.",
+        SerializedName = @"scriptName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ScriptName { get; set; }
         /// <summary>
         /// Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of
         /// the URI for every service call.
@@ -177,12 +207,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
         string DatabaseName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
-        /// <summary>Azure location.</summary>
+        /// <summary>Azure location (region) name.</summary>
         string Location { get; set; }
+        /// <summary>The Guid of the operation ID</summary>
+        string OperationId { get; set; }
         /// <summary>The name of the Kusto principalAssignment.</summary>
         string PrincipalAssignmentName { get; set; }
         /// <summary>The name of the resource group containing the Kusto cluster.</summary>
         string ResourceGroupName { get; set; }
+        /// <summary>The name of the Kusto database script.</summary>
+        string ScriptName { get; set; }
         /// <summary>
         /// Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of
         /// the URI for every service call.

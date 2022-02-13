@@ -35,21 +35,27 @@ namespace Microsoft.Azure.Commands.Management.Search
         protected const string ResourceIdParameterSetName = "ResourceIdParameterSet";
         protected const string ResourceGroupParameterSetName = "ResourceGroupParameterSet";
 
-        protected const string InputObjectHelpMessage = "Search Service Input Object.";
-        protected const string ResourceIdHelpMessage = "Search Service Resource Id.";
+        protected const string InputObjectHelpMessage = "Azure Cognitive Search Service Input Object.";
+        protected const string ResourceIdHelpMessage = "Azure Cognitive Search Service Resource Id.";
         protected const string ForceHelpMessage = "Do not ask for confirmation.";
 
         protected const string ResourceGroupHelpMessage = "Resource Group name.";
-        protected const string ResourceNameHelpMessage = "Search Service name.";
-        protected const string SkuHelpMessage = "Search Service Sku.";
-        protected const string LocationHelpMessage = "Search Service location.";
-        protected const string PartitionCountHelpMessage = "Search Service partition count.";
-        protected const string ReplicaCountHelpMessage = "Search Service replica count.";
-        protected const string HostingModeHelpMessage = "Search Service hosting mode.";
-        protected const string KeyKindHelpMessage = "Search Service admin key kind (Primary/Secondary).";
-        protected const string QueryKeyNameHelpMessage = "Search Service query key name.";
-        protected const string QueryKeyValueHelpMessage = "Search Service query key value.";
+        protected const string ResourceNameHelpMessage = "Azure Cognitive Search Service name.";
+        protected const string SkuHelpMessage = "Azure Cognitive Search Service Sku.";
+        protected const string LocationHelpMessage = "Azure Cognitive Search Service location.";
+        protected const string PartitionCountHelpMessage = "Azure Cognitive Search Service partition count.";
+        protected const string ReplicaCountHelpMessage = "Azure Cognitive Search Service replica count.";
+        protected const string HostingModeHelpMessage = "Azure Cognitive Search Service hosting mode.";
+        protected const string KeyKindHelpMessage = "Azure Cognitive Search Service admin key kind (Primary/Secondary).";
+        protected const string QueryKeyNameHelpMessage = "Azure Cognitive Search Service query key name.";
+        protected const string QueryKeyValueHelpMessage = "Azure Cognitive Search Service query key value.";
         protected const string PassThruHelpMessage = "This Cmdlet does not return an object by default. If this switch is specified, it returns true if successful.";
+
+        protected const string PublicNetworkAccessMessage = "(Optional) Azure Cognitive Search Service public network access (Enabled/Disabled)";
+        protected const string IdentityMessage = "(Optional) Azure Cognitive Search Service Identity (None/SystemAssigned)";
+        protected const string IPRulesMessage = "(Optional) Azure Cognitive Search Service IP rules";
+
+        protected const string AsJobMessage = "Run cmdlet in the background";
 
         protected const string ParentObjectParameterSetName = "ParentObjectParameterSet";
         protected const string ParentResourceIdParameterSetName = "ParentResourceIdParameterSet";
@@ -133,6 +139,29 @@ namespace Microsoft.Azure.Commands.Management.Search
             {
                 throw ae.InnerException;
             }
+        }
+
+        protected static string GetServiceNameFromParentResource(string parentResourceIdentifier)
+        {
+            // when processing a valid parent resource from a resource identifier of a 
+            // child resource type of a search service, it should be in the format
+            // "searchServices/<serviceName>". Anything else is an error
+            string[] constituents = parentResourceIdentifier.Split('/');
+
+            if (constituents.Length != 2)
+            {
+                throw new ArgumentException("Invalid resource id");
+            }
+
+            string parentResourceType = constituents[0];
+            string serviceName = constituents[1];
+
+            if (!parentResourceType.Equals("searchServices", StringComparison.InvariantCulture))
+            {
+                throw new ArgumentException("Invalid parent resource type in resource id");
+            }
+
+            return serviceName;
         }
     }
 }

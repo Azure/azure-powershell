@@ -12,28 +12,57 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
+using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
+using System.Management.Automation;
+using System.Management.Automation.Runspaces;
 using System.Net.NetworkInformation;
 using System.Security.Cryptography;
 using System.Text;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
-    using PowerShell = System.Management.Automation.PowerShell;
-
     /// <summary>
     /// The class for the current Azure PowerShell context.
     /// </summary>
     internal sealed class AzContext : IAzContext
     {
+        private const string InternalUserSuffix = "@microsoft.com";
         private static readonly Version DefaultVersion = new Version("0.0.0.0");
+        private IPowerShellRuntime _powerShellRuntime;
 
         /// <inheritdoc/>
-        public string UserId { get; private set; } = string.Empty;
+        public Version AzVersion { get; private set; } = DefaultVersion;
+
+        private int? _cohort;
+        /// <inheritdoc/>
+        public int Cohort
+        {
+            get
+            {
+                if (!_cohort.HasValue)
+                {
+                    if (!string.IsNullOrWhiteSpace(MacAddress))
+                    {
+                        if (int.TryParse($"{MacAddress.Last()}", NumberStyles.AllowHexSpecifier, CultureInfo.InvariantCulture, out int lastDigit))
+                        {
+                            _cohort = lastDigit % AzPredictorConstants.CohortCount;
+                            return _cohort.Value;
+                        }
+                    }
+
+                    _cohort = (new Random(DateTime.UtcNow.Millisecond)).Next() % AzPredictorConstants.CohortCount;
+                }
+
+                return _cohort.Value;
+            }
+        }
+
+        /// <inheritdoc/>
+        public string HashUserId { get; private set; } = string.Empty;
 
         private string _macAddress;
         /// <inheritdoc/>
@@ -73,7 +102,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             {
                 if (_powerShellVersion == null)
                 {
-                    var outputs = AzContext.ExecuteScript<Version>("(Get-Host).Version");
+                    var outputs = _powerShellRuntime.ExecuteScript<Version>("(Get-Host).Version");
 
                     _powerShellVersion = outputs.FirstOrDefault();
                 }
@@ -98,10 +127,27 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         }
 
         /// <inheritdoc/>
+        public bool IsInternal { get; internal set; }
+
+        public AzContext(IPowerShellRuntime powerShellRuntime) => _powerShellRuntime
+             = powerShellRuntime;
+
+        /// <inheritdoc/>
         public void UpdateContext()
         {
-            UserId = GenerateSha256HashString(GetUserAccountId());
+            AzVersion = GetAzVersion();
+            RawUserId = GetUserAccountId();
+            HashUserId = GenerateSha256HashString(RawUserId);
+
+            if (!IsInternal)
+            {
+                IsInternal = RawUserId.EndsWith(AzContext.InternalUserSuffix, StringComparison.OrdinalIgnoreCase);
+            }
         }
+
+        internal string RawUserId { get; set; }
+
+        public Runspace DefaultRunspace => _powerShellRuntime.DefaultRunspace;
 
         /// <summary>
         /// Gets the user account id if the user logs in, otherwise empty string.
@@ -110,7 +156,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         {
             try
             {
-                var output = AzContext.ExecuteScript<string>("(Get-AzContext).Account.Id");
+                var output = _powerShellRuntime.ExecuteScript<string>("(Get-AzContext).Account.Id");
                 return output.FirstOrDefault() ?? string.Empty;
             }
             catch (Exception)
@@ -121,24 +167,45 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         }
 
         /// <summary>
-        /// Executes the PowerShell cmdlet in the current powershell session.
+        /// Gets the latest version from the loaded Az modules.
         /// </summary>
-        private static List<T> ExecuteScript<T>(string contents)
+        private Version GetAzVersion()
         {
-            List<T> output = new List<T>();
+            Version latestAzVersion = DefaultVersion;
 
-            using (PowerShell powershell = PowerShell.Create(RunspaceMode.NewRunspace))
+            try
             {
-                powershell.AddScript(contents);
-                Collection<T> result = powershell.Invoke<T>();
+                var outputs = _powerShellRuntime.ExecuteScript<PSObject>("Get-Module -Name Az -ListAvailable");
 
-                if (result != null && result.Count > 0)
+                if (!(outputs?.Any() == true))
                 {
-                    output.AddRange(result);
+                    outputs = _powerShellRuntime.ExecuteScript<PSObject>("Get-Module -Name AzPreview -ListAvailable");
+                }
+
+                if (outputs?.Any() == true)
+                {
+                    ExtractAndSetLatestAzVersion(outputs);
                 }
             }
+            catch (Exception)
+            {
+            }
 
-            return output;
+            return latestAzVersion;
+
+            void ExtractAndSetLatestAzVersion(IEnumerable<PSObject> outputs)
+            {
+                foreach (var psObject in outputs)
+                {
+                    string versionOutput = psObject.Properties["Version"].Value.ToString();
+                    int positionOfVersion = versionOutput.IndexOf('-');
+                    Version currentAzVersion = (positionOfVersion == -1) ? new Version(versionOutput) : new Version(versionOutput.Substring(0, positionOfVersion));
+                    if (currentAzVersion > latestAzVersion)
+                    {
+                        latestAzVersion = currentAzVersion;
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -156,7 +223,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             string result = string.Empty;
             try
             {
-                using (var sha256 = new SHA256CryptoServiceProvider())
+                using (var sha256 = SHA256.Create())
                 {
                     var bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(originInput));
                     result = BitConverter.ToString(bytes);

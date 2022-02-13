@@ -15,19 +15,19 @@
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
 {
     /// <summary>
-    /// The telemetry client that collects and sends the telemetry data.
+    /// The telemetry client that collects data at the interested places.
     /// </summary>
     public interface ITelemetryClient
     {
         /// <summary>
-        /// Gets the correlation id for the telemetry events.
+        /// Gets the id to identify the events proceeding to a CommandHistory
         /// </summary>
-        public string CorrelationId { get; }
+        public string CommandId { get; }
 
         /// <summary>
-        /// Gets the session id for the telemetry events.
+        /// Gets and sets the id to correlate the request and the server.
         /// </summary>
-        public string SessionId { get; }
+        public string RequestId { get; set; }
 
         /// <summary>
         /// Collects the event of the history command.
@@ -42,15 +42,33 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         public void OnRequestPrediction(RequestPredictionTelemetryData telemetryData);
 
         /// <summary>
+        /// Collects when we return a suggestion.
+        /// </summary>
+        /// <param name="telemetryData">The data to collect.</param>
+        public void OnGetSuggestion(GetSuggestionTelemetryData telemetryData);
+
+        /// <summary>
+        /// Collects when a suggestion is displayed.
+        /// </summary>
+        /// <param name="telemetryData">The data to collect.</param>
+        public void OnSuggestionDisplayed(SuggestionDisplayedTelemetryData telemetryData);
+
+        /// <summary>
         /// Collects when a suggestion is accepted.
         /// </summary>
         /// <param name="telemetryData">The data to collect.</param>
         public void OnSuggestionAccepted(SuggestionAcceptedTelemetryData telemetryData);
 
         /// <summary>
-        /// Collects when we return a suggestion
+        /// Collects when we load parameter map file.
         /// </summary>
         /// <param name="telemetryData">The data to collect.</param>
-        public void OnGetSuggestion(GetSuggestionTelemetryData telemetryData);
+        public void OnLoadParameterMap(ParameterMapTelemetryData telemetryData);
+
+        /// <summary>
+        /// Collects when we fails to parse a command in the model.
+        /// </summary>
+        /// <param name="telemetryData">The data to collect.</param>
+        public void OnParseCommandLineFailure(CommandLineParsingTelemetryData telemetryData);
     }
 }

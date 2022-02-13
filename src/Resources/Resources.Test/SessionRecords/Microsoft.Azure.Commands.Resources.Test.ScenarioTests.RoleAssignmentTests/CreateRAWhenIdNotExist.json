@@ -1,0 +1,165 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/getObjectsByObjectIds?api-version=1.6",
+      "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi9nZXRPYmplY3RzQnlPYmplY3RJZHM/YXBpLXZlcnNpb249MS42",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n  \"objectIds\": [\r\n    \"6d764d35-6b3b-49ea-83f8-5c223b56eac5\"\r\n  ],\r\n  \"includeDirectoryObjectReferences\": true\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "4a118391-5288-4d3a-926b-3461ecf1da02"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/3.5.1.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "116"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ocp-aad-diagnostics-server-name": [
+          "8AxVNPrgvBWphAoH/ND9PWGcjIn4cwH9bsVNs+Y4nls="
+        ],
+        "request-id": [
+          "27375d2f-c2eb-428e-98d5-79d9310da1a0"
+        ],
+        "client-request-id": [
+          "4a118391-5288-4d3a-926b-3461ecf1da02"
+        ],
+        "x-ms-dirapi-data-contract-version": [
+          "1.6"
+        ],
+        "ocp-aad-session-key": [
+          "6dixdHRGmwsiNakv5L4I_TP7JFXLuYZzgE9OTEKiFpCBeSn1QsmxaMiaUHbZggKAlneZfCQrPUU8C7T38dv-DN4EqiRtChRhf95APfX245hc2Z2QtAFcBQM0Gu_60lKW.EdCj8rECj7c4tlv5DagHJfUuoS25aGlc0pzXzGY7Jkc"
+        ],
+        "Duration": [
+          "733850"
+        ],
+        "x-ms-resource-unit": [
+          "3"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Access-Control-Allow-Origin": [
+          "*"
+        ],
+        "Date": [
+          "Fri, 03 Sep 2021 20:44:35 GMT"
+        ],
+        "Content-Type": [
+          "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "121"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/$metadata#directoryObjects\",\r\n  \"value\": []\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "//subscriptions/70cff36b-c4f8-46ea-9655-9cfd44664763/providers/Microsoft.Authorization/roleAssignments/734de5f5-c680-41c0-8beb-67b98c3539d5?api-version=2020-08-01-preview",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzcwY2ZmMzZiLWM0ZjgtNDZlYS05NjU1LTljZmQ0NDY2NDc2My9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcm9sZUFzc2lnbm1lbnRzLzczNGRlNWY1LWM2ODAtNDFjMC04YmViLTY3Yjk4YzM1MzlkNT9hcGktdmVyc2lvbj0yMDIwLTA4LTAxLXByZXZpZXc=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"roleDefinitionId\": \"/subscriptions/70cff36b-c4f8-46ea-9655-9cfd44664763/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7\",\r\n    \"principalId\": \"6d764d35-6b3b-49ea-83f8-5c223b56eac5\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3557a1e2-bda4-4dd2-941a-dfca482ffb40"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/2.13.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "254"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "1d5abd6f-06c4-46eb-88bc-4367805ddbd9"
+        ],
+        "x-ms-correlation-request-id": [
+          "1d5abd6f-06c4-46eb-88bc-4367805ddbd9"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20210903T204436Z:1d5abd6f-06c4-46eb-88bc-4367805ddbd9"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 03 Sep 2021 20:44:36 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "129"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"SubscriptionNotFound\",\r\n    \"message\": \"The subscription '70cff36b-c4f8-46ea-9655-9cfd44664763' could not be found.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "TenantId": "1273adef-00a3-4086-a51a-dbcce1857d36",
+    "SubscriptionId": "70cff36b-c4f8-46ea-9655-9cfd44664763"
+  }
+}

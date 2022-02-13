@@ -61,6 +61,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No appliance found with the name {0}..
+        /// </summary>
+        internal static string ApplianceNotFound {
+            get {
+                return ResourceManager.GetString("ApplianceNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please provide required VM properties to update.
         /// </summary>
         internal static string ArgumentsMissingForUpdateVmProperties {
@@ -157,6 +166,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         internal static string DisableProtectionWhatIfMessage {
             get {
                 return ResourceManager.GetString("DisableProtectionWhatIfMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disk Tag(s) &quot;{0}&quot; cannot be set if UseManagedDisk is &quot;{1}&quot;..
+        /// </summary>
+        internal static string DiskTagCannotBeSet {
+            get {
+                return ResourceManager.GetString("DiskTagCannotBeSet", resourceCulture);
             }
         }
         
@@ -441,6 +459,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to IP Config &quot;{0}&quot; not found in VM NIC &quot;{1}&quot;..
+        /// </summary>
+        internal static string IPConfigNotFoundInVMNic {
+            get {
+                return ResourceManager.GetString("IPConfigNotFoundInVMNic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Location is not specified for creating Azure fabric..
         /// </summary>
         internal static string LocationNotSpecifiedForAzureFabric {
@@ -531,6 +558,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No protectable machine found in the Site {1}..
+        /// </summary>
+        internal static string NoProtectableMachinesInSite {
+            get {
+                return ResourceManager.GetString("NoProtectableMachinesInSite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to PrimaryStagingAzureStorageAccountId passed is null or empty..
         /// </summary>
         internal static string NullorEmptyPrimaryStagingAzureStorageAccountId {
@@ -599,6 +635,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         internal static string ProtectableItemNotFound {
             get {
                 return ResourceManager.GetString("ProtectableItemNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Protectable machine {0} not found in the Site {1}..
+        /// </summary>
+        internal static string ProtectableMachineNotFound {
+            get {
+                return ResourceManager.GetString("ProtectableMachineNotFound", resourceCulture);
             }
         }
         
@@ -848,6 +893,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Credentials to access source machine: {0} not found for the appliance {1} in the Site {2}.
+        /// </summary>
+        internal static string RunAsAccountNotFound {
+            get {
+                return ResourceManager.GetString("RunAsAccountNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Server {0} is not associated with the Vault {1}.
         /// </summary>
         internal static string ServerNotFound {
@@ -880,6 +934,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         internal static string SiteNotFound {
             get {
                 return ResourceManager.GetString("SiteNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Site Id {0} is not valid. Please try again with the correct site details..
+        /// </summary>
+        internal static string SiteNotValid {
+            get {
+                return ResourceManager.GetString("SiteNotValid", resourceCulture);
             }
         }
         
@@ -948,6 +1011,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The target appliance &quot;{0}&quot; is already mapped to the machine &quot;{1}&quot;.
+        /// </summary>
+        internal static string TargetApplianceAlreadyMapped {
+            get {
+                return ResourceManager.GetString("TargetApplianceAlreadyMapped", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Different test failover virtual network Ids present in ASRVMNics..
         /// </summary>
         internal static string TfoNetworkIdConflictInASRVMNics {
@@ -998,6 +1070,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         internal static string UnsupportedFabricTypeForDiscoverVirtualMachines {
             get {
                 return ResourceManager.GetString("UnsupportedFabricTypeForDiscoverVirtualMachines", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unsupported replication protection action for virtual machine in replication group for cancel failover for replication provider {0}..
+        /// </summary>
+        internal static string UnsupportedReplicationProtectionActionForCancelFailover {
+            get {
+                return ResourceManager.GetString("UnsupportedReplicationProtectionActionForCancelFailover", resourceCulture);
             }
         }
         
@@ -1074,6 +1155,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unsupported replication provider for protectable item. Supported replication provider: {1}..
+        /// </summary>
+        internal static string UnsupportedReplicationProviderForProtectableItem {
+            get {
+                return ResourceManager.GetString("UnsupportedReplicationProviderForProtectableItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unsupported replication provider {0} for reprotect.
         /// </summary>
         internal static string UnsupportedReplicationProviderForReprotect {
@@ -1092,6 +1182,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unsupported replication protection action for virtual machine in replication group for Unplanned failover for replication provider {0}. Use recovery plan action for the same purpose..
+        /// </summary>
+        internal static string UnsupportedReplicationProviderForUnplannedFailover {
+            get {
+                return ResourceManager.GetString("UnsupportedReplicationProviderForUnplannedFailover", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unsupported replication provider {0} for update mobility service.
         /// </summary>
         internal static string UnsupportedReplicationProviderForUpdateMobilityService {
@@ -1106,6 +1205,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         internal static string UnsupportedReplicationProviderForUpdatePolicy {
             get {
                 return ResourceManager.GetString("UnsupportedReplicationProviderForUpdatePolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unsupported replication provider {0} for this {1} operation.
+        /// </summary>
+        internal static string UnsupportedReplicationProviderOperation {
+            get {
+                return ResourceManager.GetString("UnsupportedReplicationProviderOperation", resourceCulture);
             }
         }
         

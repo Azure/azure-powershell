@@ -15,17 +15,20 @@
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
 using Azure.Core;
 using Azure.Identity;
 
+using Hyak.Common;
+
 using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.Azure.PowerShell.Authenticators
 {
-    public class MsalAccessToken : IAccessToken
+    public class MsalAccessToken : IAccessToken, IClaimsChallengeProcessor
     {
         public string AccessToken { get; private set; }
 
@@ -66,6 +69,8 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         }
 
         internal static async Task<IAccessToken> GetAccessTokenAsync(
+            string callerClassName,
+            string parametersLog,
             TokenCredential tokenCredential,
             TokenRequestContext requestContext,
             CancellationToken cancellationToken,
@@ -73,6 +78,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             string userId = null,
             string homeAccountId = "")
         {
+            TracingAdapter.Information($"{DateTime.Now:T} - [{callerClassName}] Calling {tokenCredential.GetType().Name}.GetTokenAsync {parametersLog}");
             var token = await tokenCredential.GetTokenAsync(requestContext, cancellationToken).ConfigureAwait(false);
             return new MsalAccessToken(tokenCredential, requestContext, token.Token, token.ExpiresOn, tenantId, userId, homeAccountId);
         }
@@ -86,6 +92,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         {
             var record = await authTask.ConfigureAwait(false);
             cancellationToken.ThrowIfCancellationRequested();
+            TracingAdapter.Information($"{DateTime.Now:T} - [MsalAccessToken] Calling {tokenCredential.GetType().Name}.GetTokenAsync - Scopes:'{string.Join(",", requestContext.Scopes)}'");
             var token = await tokenCredential.GetTokenAsync(requestContext, cancellationToken).ConfigureAwait(false);
 
             return new MsalAccessToken(tokenCredential, requestContext, token.Token, token.ExpiresOn, record.TenantId, record.Username, record.HomeAccountId);
@@ -112,6 +119,17 @@ namespace Microsoft.Azure.PowerShell.Authenticators
 #endif
             var timeUntilExpiration = ExpiresOn - DateTimeOffset.UtcNow;
             return timeUntilExpiration < ExpirationThreshold;
+        }
+
+        public async ValueTask<bool> OnClaimsChallenageAsync(HttpRequestMessage request, string claimsChallenge, CancellationToken cancellationToken)
+        {
+            TracingAdapter.Information($"{DateTime.Now:T} - [ClaimsChallengeProcessor] Calling {TokenCredential.GetType().Name}.GetTokenAsync- claimsChallenge:'{claimsChallenge}'");
+            var newRequestContext = new TokenRequestContext(TokenRequestContext.Scopes, null, claimsChallenge);
+            var token = await TokenCredential.GetTokenAsync(newRequestContext, cancellationToken).ConfigureAwait(false);
+            AccessToken = token.Token;
+            ExpiresOn = token.ExpiresOn;
+            request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", AccessToken);
+            return true;
         }
     }
 }

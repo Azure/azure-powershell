@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azcomputeresourcesku
+online version: https://docs.microsoft.com/powershell/module/az.compute/get-azcomputeresourcesku
 schema: 2.0.0
 ---
 
@@ -22,8 +22,8 @@ List all compute resource Skus
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Get-AzComputeResourceSku "westus";
+```powershell
+Get-AzComputeResourceSku "westus";
 ```
 
 List all compute resource skus in West US region

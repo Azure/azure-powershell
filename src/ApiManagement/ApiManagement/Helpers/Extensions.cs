@@ -45,6 +45,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.Helpers
                 hostnameConfiguration.KeyVaultId = hostnameConfig.KeyVaultId;
             }
 
+            if (!string.IsNullOrWhiteSpace(hostnameConfig.IdentityClientId))
+            {
+                hostnameConfiguration.IdentityClientId = hostnameConfig.IdentityClientId;
+            }
+
             if (hostnameConfig.DefaultSslBinding.HasValue)
             {
                 hostnameConfiguration.DefaultSslBinding = hostnameConfig.DefaultSslBinding.Value;
@@ -105,6 +110,39 @@ namespace Microsoft.Azure.Commands.ApiManagement.Helpers
             certificateInformation.Subject = psCertificateInformation.Subject;
 
             return certificateInformation;
+        }
+
+        public static AdditionalLocation GetAdditionalLocation(
+            this PsApiManagementRegion region)
+        {
+            if (region == null)
+            {
+                return null;
+            }
+
+            var additionalLocation = new AdditionalLocation();
+            additionalLocation.Location = region.Location;
+            additionalLocation.Sku = new ApiManagementServiceSkuProperties()
+            {
+                Name = Mappers.MapSku(region.Sku),
+                Capacity = region.Capacity
+            };
+
+            additionalLocation.VirtualNetworkConfiguration = region.VirtualNetwork == null
+                ? null
+                : new VirtualNetworkConfiguration
+                {
+                    SubnetResourceId = region.VirtualNetwork.SubnetResourceId
+                };
+
+            additionalLocation.Zones = region.Zone;
+
+            if (region.DisableGateway != null && region.DisableGateway.HasValue)
+            {
+                additionalLocation.DisableGateway = region.DisableGateway;
+            }
+
+            return additionalLocation;
         }
     }
 }

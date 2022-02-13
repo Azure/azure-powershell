@@ -1,0 +1,581 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01?api-version=2020-01-13-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMT9hcGktdmVyc2lvbj0yMDIwLTAxLTEzLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "5be2d180-b8f3-4b26-86cd-82929b6fc8f4"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ocp-automation-accountid": [
+          "eef8df7b-0e26-4e3d-91ae-6794bc7cf811"
+        ],
+        "x-ms-request-id": [
+          "5be2d180-b8f3-4b26-86cd-82929b6fc8f4"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11993"
+        ],
+        "x-ms-correlation-request-id": [
+          "002f8c1c-ec03-4fb5-a57f-6971d6d13625"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20210404T064522Z:002f8c1c-ec03-4fb5-a57f-6971d6d13625"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sun, 04 Apr 2021 06:45:21 GMT"
+        ],
+        "Content-Length": [
+          "725"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"fbs-aa-01\",\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {},\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": null,\r\n      \"capacity\": null\r\n    },\r\n    \"state\": \"Ok\",\r\n    \"RegistrationUrl\": \"https://eef8df7b-0e26-4e3d-91ae-6794bc7cf811.agentsvc.eus.azure-automation.net/accounts/eef8df7b-0e26-4e3d-91ae-6794bc7cf811\",\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.Automation\",\r\n      \"identity\": {\r\n        \"userAssignedIdentity\": null\r\n      }\r\n    },\r\n    \"privateEndpointConnections\": [],\r\n    \"creationTime\": \"2021-04-03T22:47:41.42+05:30\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2021-04-03T22:47:41.42+05:30\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/variables/NormalHashTable?api-version=2020-01-13-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS92YXJpYWJsZXMvTm9ybWFsSGFzaFRhYmxlP2FwaS12ZXJzaW9uPTIwMjAtMDEtMTMtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "0e81c826-de3a-44f9-be31-91a0f14f3525"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "0e81c826-de3a-44f9-be31-91a0f14f3525"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11986"
+        ],
+        "x-ms-correlation-request-id": [
+          "422daad1-0edf-4933-9152-75ce2a61fe7d"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20210404T064522Z:422daad1-0edf-4933-9152-75ce2a61fe7d"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sun, 04 Apr 2021 06:45:22 GMT"
+        ],
+        "Content-Length": [
+          "51"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"code\": \"NotFound\",\r\n  \"message\": \"Variable not found.\"\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/variables/NormalHashTable?api-version=2020-01-13-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS92YXJpYWJsZXMvTm9ybWFsSGFzaFRhYmxlP2FwaS12ZXJzaW9uPTIwMjAtMDEtMTMtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e66c29a8-8cf2-4f67-9657-d366b1395dbd"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "e66c29a8-8cf2-4f67-9657-d366b1395dbd"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11990"
+        ],
+        "x-ms-correlation-request-id": [
+          "4398d4a9-d7d5-44ac-91e0-45b22867a047"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20210404T064525Z:4398d4a9-d7d5-44ac-91e0-45b22867a047"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sun, 04 Apr 2021 06:45:25 GMT"
+        ],
+        "Content-Length": [
+          "461"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/variables/NormalHashTable\",\r\n  \"name\": \"NormalHashTable\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Variables\",\r\n  \"properties\": {\r\n    \"creationTime\": \"2021-04-04T12:15:23.07+05:30\",\r\n    \"lastModifiedTime\": \"2021-04-04T12:15:23.07+05:30\",\r\n    \"isEncrypted\": false,\r\n    \"value\": \"{\\\"key0\\\":\\\"value0\\\"}\",\r\n    \"description\": \"NormalHashTableVariable\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/variables/NormalHashTable?api-version=2020-01-13-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS92YXJpYWJsZXMvTm9ybWFsSGFzaFRhYmxlP2FwaS12ZXJzaW9uPTIwMjAtMDEtMTMtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e66c29a8-8cf2-4f67-9657-d366b1395dbd"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "e66c29a8-8cf2-4f67-9657-d366b1395dbd"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11989"
+        ],
+        "x-ms-correlation-request-id": [
+          "b66f96b5-1eb4-4b3b-a49e-553a0d3be3ab"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20210404T064526Z:b66f96b5-1eb4-4b3b-a49e-553a0d3be3ab"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sun, 04 Apr 2021 06:45:26 GMT"
+        ],
+        "Content-Length": [
+          "466"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/variables/NormalHashTable\",\r\n  \"name\": \"NormalHashTable\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Variables\",\r\n  \"properties\": {\r\n    \"creationTime\": \"2021-04-04T12:15:23.07+05:30\",\r\n    \"lastModifiedTime\": \"2021-04-04T12:15:25.6133333+05:30\",\r\n    \"isEncrypted\": false,\r\n    \"value\": \"{\\\"key1\\\":\\\"value1\\\"}\",\r\n    \"description\": \"NormalHashTableVariable\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/variables/NormalHashTable?api-version=2020-01-13-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS92YXJpYWJsZXMvTm9ybWFsSGFzaFRhYmxlP2FwaS12ZXJzaW9uPTIwMjAtMDEtMTMtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "fb4708fa-ec27-4e96-88dd-e4cfa777105b"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "fb4708fa-ec27-4e96-88dd-e4cfa777105b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-correlation-request-id": [
+          "96c37c35-b1e5-42eb-9ae9-5dd87e120927"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20210404T064532Z:96c37c35-b1e5-42eb-9ae9-5dd87e120927"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sun, 04 Apr 2021 06:45:31 GMT"
+        ],
+        "Content-Length": [
+          "51"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"code\": \"NotFound\",\r\n  \"message\": \"Variable not found.\"\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/variables/NormalHashTable?api-version=2020-01-13-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS92YXJpYWJsZXMvTm9ybWFsSGFzaFRhYmxlP2FwaS12ZXJzaW9uPTIwMjAtMDEtMTMtcHJldmlldw==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"name\": \"NormalHashTable\",\r\n  \"properties\": {\r\n    \"value\": \"{\\\"key0\\\":\\\"value0\\\"}\",\r\n    \"description\": \"NormalHashTableVariable\",\r\n    \"isEncrypted\": false\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "0e81c826-de3a-44f9-be31-91a0f14f3525"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "170"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/variables/NormalHashTable?api-version=2020-01-13-preview"
+        ],
+        "x-ms-request-id": [
+          "0e81c826-de3a-44f9-be31-91a0f14f3525"
+        ],
+        "x-ms-location": [
+          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/variables/NormalHashTable?api-version=2020-01-13-preview"
+        ],
+        "ocp-location": [
+          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/variables/NormalHashTable?api-version=2020-01-13-preview"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1196"
+        ],
+        "x-ms-correlation-request-id": [
+          "b9ddde67-550f-45fd-8034-1677400c3ba2"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20210404T064523Z:b9ddde67-550f-45fd-8034-1677400c3ba2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sun, 04 Apr 2021 06:45:22 GMT"
+        ],
+        "Content-Length": [
+          "461"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"NormalHashTable\",\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/variables/NormalHashTable\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Variables\",\r\n  \"properties\": {\r\n    \"creationTime\": \"2021-04-04T12:15:23.07+05:30\",\r\n    \"lastModifiedTime\": \"2021-04-04T12:15:23.07+05:30\",\r\n    \"isEncrypted\": false,\r\n    \"value\": \"{\\\"key0\\\":\\\"value0\\\"}\",\r\n    \"description\": \"NormalHashTableVariable\"\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/variables/NormalHashTable?api-version=2020-01-13-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS92YXJpYWJsZXMvTm9ybWFsSGFzaFRhYmxlP2FwaS12ZXJzaW9uPTIwMjAtMDEtMTMtcHJldmlldw==",
+      "RequestMethod": "PATCH",
+      "RequestBody": "{\r\n  \"name\": \"NormalHashTable\",\r\n  \"properties\": {\r\n    \"value\": \"{\\\"key1\\\":\\\"value1\\\"}\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e66c29a8-8cf2-4f67-9657-d366b1395dbd"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "96"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "e66c29a8-8cf2-4f67-9657-d366b1395dbd"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1196"
+        ],
+        "x-ms-correlation-request-id": [
+          "7c909548-f748-45d1-9a4c-621d40991dfb"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20210404T064525Z:7c909548-f748-45d1-9a4c-621d40991dfb"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sun, 04 Apr 2021 06:45:25 GMT"
+        ],
+        "Content-Length": [
+          "466"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/variables/NormalHashTable\",\r\n  \"name\": \"NormalHashTable\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Variables\",\r\n  \"properties\": {\r\n    \"creationTime\": \"2021-04-04T12:15:23.07+05:30\",\r\n    \"lastModifiedTime\": \"2021-04-04T12:15:25.6133333+05:30\",\r\n    \"isEncrypted\": false,\r\n    \"value\": \"{\\\"key1\\\":\\\"value1\\\"}\",\r\n    \"description\": \"NormalHashTableVariable\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/variables/NormalHashTable?api-version=2020-01-13-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS92YXJpYWJsZXMvTm9ybWFsSGFzaFRhYmxlP2FwaS12ZXJzaW9uPTIwMjAtMDEtMTMtcHJldmlldw==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3f007f31-3837-4423-884f-8b1cc9d366ba"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "3f007f31-3837-4423-884f-8b1cc9d366ba"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-correlation-request-id": [
+          "4ae70d6a-f232-478b-a575-f76fd3c13bcd"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20210404T064530Z:4ae70d6a-f232-478b-a575-f76fd3c13bcd"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sun, 04 Apr 2021 06:45:30 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "422b6c61-95b0-4213-b3be-7282315df71d"
+  }
+}

@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>TypeConverter implementation for MigrationState.</summary>
+    /// <summary>The migration status.</summary>
     public partial class MigrationStateTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

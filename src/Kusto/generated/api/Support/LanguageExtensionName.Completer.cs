@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
-    /// <summary>Argument completer implementation for LanguageExtensionName.</summary>
+    /// <summary>Language extension that can run within KQL query.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.LanguageExtensionNameTypeConverter))]
     public partial struct LanguageExtensionName :
         System.Management.Automation.IArgumentCompleter

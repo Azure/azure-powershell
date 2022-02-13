@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         //
         // Summary:
         //     Gets or sets describes the ServerVersion of an a MongoDB account. Possible values
-        //     include: '3.2', '3.6'
+        //     include: '3.2', '3.6', '4.0'
         public string ServerVersion { get; set; }
     }
 }

@@ -113,10 +113,9 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         /// <summary>
         /// Calls the set security alert APIs for the database security alert policy for the given database in the given database server in the given resource group
         /// </summary>
-        public void SetDatabaseSecurityAlertPolicy(string resourceGroupName, string serverName, string databaseName, DatabaseSecurityAlertPolicyCreateOrUpdateParameters parameters)
+        public void SetDatabaseSecurityAlertPolicy(string resourceGroupName, string serverName, string databaseName, Management.Sql.Models.DatabaseSecurityAlertPolicy policyToSet)
         {
-            ISecurityAlertPolicyOperations operations = GetLegacySqlClient().SecurityAlertPolicy;
-            operations.CreateOrUpdateDatabaseSecurityAlertPolicy(resourceGroupName, serverName, databaseName, parameters);
+            GetCurrentSqlClient().DatabaseSecurityAlertPolicies.CreateOrUpdate(resourceGroupName, serverName, databaseName, policyToSet);
         }
 
         /// <summary>

@@ -6,7 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
-    /// <summary>TypeConverter implementation for IotHubDataFormat.</summary>
+    /// <summary>
+    /// The data format of the message. Optionally the data format can be added to each message.
+    /// </summary>
     public partial class IotHubDataFormatTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

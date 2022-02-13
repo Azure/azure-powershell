@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>TypeConverter implementation for RecoveryPointSyncType.</summary>
+    /// <summary>A value indicating whether the recovery point is multi VM consistent.</summary>
     public partial class RecoveryPointSyncTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

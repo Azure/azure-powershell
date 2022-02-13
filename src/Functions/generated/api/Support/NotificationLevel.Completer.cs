@@ -28,19 +28,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Critical".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Critical", "Critical", global::System.Management.Automation.CompletionResultType.ParameterValue, "Critical");
+                yield return new global::System.Management.Automation.CompletionResult("'Critical'", "Critical", global::System.Management.Automation.CompletionResultType.ParameterValue, "Critical");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Warning".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Warning", "Warning", global::System.Management.Automation.CompletionResultType.ParameterValue, "Warning");
+                yield return new global::System.Management.Automation.CompletionResult("'Warning'", "Warning", global::System.Management.Automation.CompletionResultType.ParameterValue, "Warning");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Information".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Information", "Information", global::System.Management.Automation.CompletionResultType.ParameterValue, "Information");
+                yield return new global::System.Management.Automation.CompletionResult("'Information'", "Information", global::System.Management.Automation.CompletionResultType.ParameterValue, "Information");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NonUrgentSuggestion".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NonUrgentSuggestion", "NonUrgentSuggestion", global::System.Management.Automation.CompletionResultType.ParameterValue, "NonUrgentSuggestion");
+                yield return new global::System.Management.Automation.CompletionResult("'NonUrgentSuggestion'", "NonUrgentSuggestion", global::System.Management.Automation.CompletionResultType.ParameterValue, "NonUrgentSuggestion");
             }
         }
     }

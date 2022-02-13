@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
 Module Name: Az.Accounts
-online version: https://docs.microsoft.com/en-us/powershell/module/az.accounts/invoke-azrestmethod
+online version: https://docs.microsoft.com/powershell/module/az.accounts/invoke-azrestmethod
 schema: 2.0.0
 ---
 
@@ -14,15 +14,21 @@ Construct and perform HTTP request to Azure resource management endpoint only
 
 ### ByPath (Default)
 ```
-Invoke-AzRestMethod -Path <String> -Method <String> [-Payload <String>] [-AsJob]
+Invoke-AzRestMethod -Path <String> [-Method <String>] [-Payload <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParameters
 ```
 Invoke-AzRestMethod [-SubscriptionId <String>] [-ResourceGroupName <String>] [-ResourceProviderName <String>]
- [-ResourceType <String[]>] [-Name <String[]>] -ApiVersion <String> -Method <String> [-Payload <String>]
+ [-ResourceType <String[]>] [-Name <String[]>] -ApiVersion <String> [-Method <String>] [-Payload <String>]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByURI
+```
+Invoke-AzRestMethod [-Uri] <Uri> [-ResourceId <Uri>] [-Method <String>] [-Payload <String>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,7 +39,9 @@ Construct and perform HTTP request to Azure resource management endpoint only
 ### Example 1
 ```powershell
 Invoke-AzRestMethod -Path "/subscriptions/{subscription}/resourcegroups/{resourcegroup}/providers/microsoft.operationalinsights/workspaces/{workspace}?api-version={API}" -Method GET
+```
 
+```Output
 Headers    : {[Cache-Control, System.String[]], [Pragma, System.String[]], [x-ms-request-id, System.String[]], [Strict-Transport-Security, System.String[]]…}
 Version    : 1.1
 StatusCode : 200
@@ -75,13 +83,28 @@ Content    : {
 
 Get log analytics workspace by path
 
+### Example 2
+```powershell
+Invoke-AzRestMethod https://graph.microsoft.com/v1.0/me
+```
+
+```output
+Headers    : {[Date, System.String[]], [Cache-Control, System.String[]], [Transfer-Encoding, System.String[]], [Strict-Transport-Security, System.String[]]…}
+Version    : 1.1
+StatusCode : 200
+Method     : GET
+Content    : {"@odata.context":"https://graph.microsoft.com/v1.0/$metadata#users/$entity","businessPhones":["......}
+```
+
+Get current signed in user via MicrosoftGraph API. This example is equivalent to `Get-AzADUser -SignedIn`.
+
 ## PARAMETERS
 
 ### -ApiVersion
 Api Version
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByParameters
 Aliases:
 
@@ -96,7 +119,7 @@ Accept wildcard characters: False
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -111,7 +134,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -126,12 +149,12 @@ Accept wildcard characters: False
 Http Method
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: GET, POST, PUT, PATCH, DELETE
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -142,7 +165,7 @@ Accept wildcard characters: False
 list of Target Resource Name
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: ByParameters
 Aliases:
 
@@ -157,7 +180,7 @@ Accept wildcard characters: False
 Target Path
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByPath
 Aliases:
 
@@ -172,7 +195,7 @@ Accept wildcard characters: False
 JSON format payload
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -187,8 +210,23 @@ Accept wildcard characters: False
 Target Resource Group Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByParameters
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Identifier URI specified by the REST API you are calling. It shouldn't be the resource id of Azure Resource Manager.
+
+```yaml
+Type: System.Uri
+Parameter Sets: ByURI
 Aliases:
 
 Required: False
@@ -202,7 +240,7 @@ Accept wildcard characters: False
 Target Resource Provider Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByParameters
 Aliases:
 
@@ -217,7 +255,7 @@ Accept wildcard characters: False
 List of Target Resource Type
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: ByParameters
 Aliases:
 
@@ -232,7 +270,7 @@ Accept wildcard characters: False
 Target Subscription Id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByParameters
 Aliases:
 
@@ -243,11 +281,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Uri
+Uniform Resource Identifier of the Azure resources. The target resource needs to support Azure AD authentication and the access token is derived according to resource id. If resource id is not set, its value is derived according to built-in service suffixes in current Azure Environment.
+
+```yaml
+Type: System.Uri
+Parameter Sets: ByURI
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -263,7 +316,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

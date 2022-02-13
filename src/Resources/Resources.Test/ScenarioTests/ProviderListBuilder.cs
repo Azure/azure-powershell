@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             public string Namespace { get; }
 
-            private List<ResourceTypeBuilder> ResourceTypes { get; } = new List<ResourceTypeBuilder>();
+            private List<ResourceTypeBuilder> ResourceTypes { get; set; } = new List<ResourceTypeBuilder>();
 
             public ProviderBuilder(string providerNamespace)
             {
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
             public Provider Provider => new Provider(
                 namespaceProperty: this.Namespace,
-                resourceTypes: this.ResourceTypes.Select(item => item.ResourceType).ToList(),
+                resourceTypes: this.ResourceTypes?.Select(item => item.ResourceType).ToList(),
                 registrationState: "Registered");
 
             public ResourceTypeBuilder AddResourceType(string resourceType, IEnumerable<string> apiVersions = null, IEnumerable<string> locations = null)
@@ -53,6 +53,11 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 this.ResourceTypes.Add(rv);
                 return rv;
             }
+
+            public void AddNullResourceType()
+            {
+                this.ResourceTypes = null;
+            }
         }
 
         public class ResourceTypeBuilder
@@ -60,9 +65,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             public static IList<string> DefaultApiVersions { get; } = new List<string> { "2018-01-01", "2016-01-01" };
             public static IList<string> DefaultLocations { get; } = new List<string> { "East US", "West US", "South US" };
             private string Name { get; }
-            private List<string> ApiVersions { get; } = new List<string>();
-            private List<string> Locations { get; } = new List<string>();
-            private List<AliasBuilder> Aliases { get; } = new List<AliasBuilder>();
+            private List<string> ApiVersions { get; set; } = new List<string>();
+            private List<string> Locations { get; set; } = new List<string>();
+            private List<AliasBuilder> Aliases { get; set; } = new List<AliasBuilder>();
             public ResourceTypeBuilder(string resourceType, IEnumerable<string> apiVersions = null, IEnumerable<string> locations = null)
             {
                 this.Name = resourceType;
@@ -75,7 +80,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 ResourceType = this.Name,
                 ApiVersions = this.ApiVersions,
                 Locations = this.Locations,
-                Aliases = this.Aliases.Select(alias => alias.Alias).ToList()
+                Aliases = this.Aliases?.Select(alias => alias.Alias).ToList()
             };
 
             public AliasBuilder AddAlias(string name)
@@ -84,13 +89,28 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 this.Aliases.Add(rv);
                 return rv;
             }
+
+            public void AddNullAlias()
+            {
+                this.Aliases = null;
+            }
+
+            public void AddNullLocation()
+            {
+                this.Locations = null;
+            }
+
+            public void AddNullApiVersion()
+            {
+                this.ApiVersions = null;
+            }
         }
 
         public class AliasBuilder
         {
             public static IList<string> DefaultApiVersions { get; } = new List<string> { "2018-01-01", "2016-01-01" };
             private string Name { get; }
-            private List<AliasPath> Paths { get; } = new List<AliasPath>();
+            private List<AliasPath> Paths { get; set; } = new List<AliasPath>();
             private AliasPathMetadata DefaultAliasPathMetadata { get; set; }
 
             public AliasBuilder(string name)
@@ -120,6 +140,11 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
                 this.Paths.Add(rv);
                 return rv;
+            }
+
+            public void AddNullAliasPath()
+            {
+                this.Paths = null;
             }
         }
     }

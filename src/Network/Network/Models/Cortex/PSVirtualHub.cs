@@ -60,5 +60,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [Ps1Xml(Label = "RoutingState", Target = ViewControl.Table)]
         public string RoutingState { get; set; }
+        
+        [Ps1Xml(Label = "Preferred Routing Gateway", Target = ViewControl.Table)]
+        public string PreferredRoutingGateway { get; set; }
     }
 }

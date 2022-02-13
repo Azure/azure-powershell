@@ -112,6 +112,27 @@ function Test-VirtualMachineScaleSetProfile
     Assert-AreEqual 100 $vmss.VirtualMachineProfile.StorageProfile.DataDisks[0].DiskIOPSReadWrite;
     Assert-AreEqual 1000 $vmss.VirtualMachineProfile.StorageProfile.DataDisks[0].DiskMBpsReadWrite;
 
+    # Security Profile
+    Assert-Null $vmss.VirtualMachineProfile.SecurityProfile.UefiSettings.VtpmEnabled;
+    Assert-Null $vmss.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled;
+
+    $vmss = Set-AzVmssUefi -VirtualMachineScaleSet $vmss -EnableVtpm $true -EnableSecureBoot $true
+    Assert-AreEqual $vmss.VirtualMachineProfile.SecurityProfile.UefiSettings.VtpmEnabled $true;
+    Assert-AreEqual $vmss.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled $true;
+
+    $vmss = Set-AzVmssUefi -VirtualMachineScaleSet $vmss -EnableVtpm $true -EnableSecureBoot $false
+    Assert-AreEqual $vmss.VirtualMachineProfile.SecurityProfile.UefiSettings.VtpmEnabled $true;
+    Assert-AreEqual $vmss.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled $false;
+
+    $vmss = Set-AzVmssUefi -VirtualMachineScaleSet $vmss -EnableVtpm $false -EnableSecureBoot $true
+    Assert-AreEqual $vmss.VirtualMachineProfile.SecurityProfile.UefiSettings.VtpmEnabled $false;
+    Assert-AreEqual $vmss.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled $true;
+
+    $vmss = Set-AzVmssUefi -VirtualMachineScaleSet $vmss -EnableVtpm $false -EnableSecureBoot $false
+    Assert-AreEqual $vmss.VirtualMachineProfile.SecurityProfile.UefiSettings.VtpmEnabled $false;
+    Assert-AreEqual $vmss.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled $false;
+
+
     # Extension profile
     Assert-AreEqual $extname $vmss.VirtualMachineProfile.ExtensionProfile.Extensions[0].Name;
     Assert-AreEqual $publisher $vmss.VirtualMachineProfile.ExtensionProfile.Extensions[0].Publisher;

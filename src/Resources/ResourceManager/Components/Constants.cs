@@ -87,17 +87,22 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <summary>
         /// The default policy definition API version.
         /// </summary>
-        public static readonly string PolicyDefinitionApiVersion = "2019-09-01";
+        public static readonly string PolicyDefinitionApiVersion = "2021-06-01";
 
         /// <summary>
         /// The default policy set definition API version.
         /// </summary>
-        public static readonly string PolicySetDefintionApiVersion = "2019-09-01";
+        public static readonly string PolicySetDefintionApiVersion = "2021-06-01";
 
         /// <summary>
         /// The default policy assignment API version.
         /// </summary>
-        public static readonly string PolicyAssignmentApiVersion = "2019-09-01";
+        public static readonly string PolicyAssignmentApiVersion = "2021-06-01";
+
+        /// <summary>
+        /// The default policy exemption API version.
+        /// </summary>
+        public static readonly string PolicyExemptionApiVersion = "2020-07-01-preview";
 
         /// <summary>
         /// The default providers API version.
@@ -150,9 +155,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         public static readonly string MicrosoftAuthorizationPolicySetDefinitionType = Constants.MicrosoftAuthorizationNamespace + "/policysetdefinitions";
 
         /// <summary>
-        /// The policy definition resource type.
+        /// The policy assignment resource type.
         /// </summary>
         public static readonly string MicrosoftAuthorizationPolicyAssignmentType = Constants.MicrosoftAuthorizationNamespace + "/policyassignments";
+
+        /// <summary>
+        /// The policy exemption resource type.
+        /// </summary>
+        public static readonly string MicrosoftAuthorizationPolicyExemptionType = Constants.MicrosoftAuthorizationNamespace + "/policyexemptions";
 
         /// <summary>
         /// The application definition resource type.

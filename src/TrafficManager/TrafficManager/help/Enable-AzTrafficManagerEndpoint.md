@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.TrafficManager.dll-Help.xml
 Module Name: Az.TrafficManager
 ms.assetid: 32263236-C207-4FE0-AB8A-018118FC7729
-online version: https://docs.microsoft.com/en-us/powershell/module/az.trafficmanager/enable-aztrafficmanagerendpoint
+online version: https://docs.microsoft.com/powershell/module/az.trafficmanager/enable-aztrafficmanagerendpoint
 schema: 2.0.0
 ---
 

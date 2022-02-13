@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>The recovery point type.</summary>
     public partial struct RpInMageRecoveryPointType :
         System.IEquatable<RpInMageRecoveryPointType>
     {
@@ -22,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         /// <param name="value">the value to convert to an instance of <see cref="RpInMageRecoveryPointType" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new RpInMageRecoveryPointType(System.Convert.ToString(value));
+            return new RpInMageRecoveryPointType(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type RpInMageRecoveryPointType</summary>

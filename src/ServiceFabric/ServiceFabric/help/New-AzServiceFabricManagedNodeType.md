@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
-online version: https://docs.microsoft.com/en-us/powershell/module/az.servicefabric/new-azservicefabricmanagednodetype
+online version: https://docs.microsoft.com/powershell/module/az.servicefabric/new-azservicefabricmanagednodetype
 schema: 2.0.0
 ---
 
@@ -14,11 +14,12 @@ Create new node type resource.
 
 ```
 New-AzServiceFabricManagedNodeType [-ResourceGroupName] <String> [-ClusterName] <String> [-Name] <String>
- -InstanceCount <Int32> [-Primary] [-DiskSize <Int32>] [-ApplicationStartPort <Int32>]
+ -InstanceCount <Int32> [-Primary] [-DiskSize <Int32>] [-DiskType <PSDiskType>] [-ApplicationStartPort <Int32>]
  [-ApplicationEndPort <Int32>] [-EphemeralStartPort <Int32>] [-EphemeralEndPort <Int32>] [-VmSize <String>]
  [-VmImagePublisher <String>] [-VmImageOffer <String>] [-VmImageSku <String>] [-VmImageVersion <String>]
- [-Capacity <Hashtable>] [-PlacementProperty <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Capacity <Hashtable>] [-PlacementProperty <Hashtable>] [-VmUserAssignedIdentity <String[]>] [-IsStateless]
+ [-MultiplePlacementGroup] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,6 +46,27 @@ New-AzServiceFabricManagedNodeType -ResourceGroupName $rgName -ClusterName $clus
 ```
 
 Create primary node type with 5 nodes and specifying placement properties, capacities, application and ephemeral ports.
+
+### Example 3
+```powershell
+$rgName = "testRG"
+$clusterName = "testCluster"
+$NodeTypeName = "nt2"
+New-AzServiceFabricManagedNodeType -ResourceGroupName $rgName -ClusterName $clusterName -Name $NodeTypeName -InstanceCount 10 -DiskType Premium_LRS -VmSize "Standard_DS2" -MultiplePlacementGroup
+```
+
+Create non primary node type with 10 nodes, premium disk type and multiple placement groups.
+
+### Example 4
+```powershell
+$rgName = "testRG"
+$clusterName = "testCluster"
+$NodeTypeName = "nt2"
+$identityId = "/subscriptions/00000000-0000-0000-0000-00000000/resourceGroups/testRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testIdentity"
+New-AzServiceFabricManagedNodeType -ResourceGroupName $rgName -ClusterName $clusterName -Name $NodeTypeName -InstanceCount 5 -VmUserAssignedIdentity $identityId -IsStateless
+```
+
+Create node type with user assigned identity and marked to host stateless workload.
 
 ## PARAMETERS
 
@@ -146,7 +168,23 @@ Default 100.
 ```yaml
 Type: System.Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: DataDiskSize
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DiskType
+Managed data disk type. IOPS and throughput are given by the disk size, to see more information go to https://docs.microsoft.com/en-us/azure/virtual-machines/disks-types. Default StandardSSD_LRS
+
+```yaml
+Type: Microsoft.Azure.Commands.ServiceFabric.Models.PSDiskType
+Parameter Sets: (All)
+Aliases: DataDiskType
+Accepted values: Standard_LRS, StandardSSD_LRS, Premium_LRS
 
 Required: False
 Position: Named
@@ -194,6 +232,36 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IsStateless
+Indicates if the node type can only host Stateless workloads.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MultiplePlacementGroup
+Indicates if scale set associated with the node type can be composed of multiple placement groups.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -341,6 +409,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: "Standard_D2"
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VmUserAssignedIdentity
+The list of user assigend identities associated with the virtual machine scale set under the node type. Each entry will be an ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. Follow steps to create the identity and add the role assignment with Service Fabric Resource Provider beforehand here: https://docs.microsoft.com/en-us/azure/service-fabric/how-to-managed-identity-managed-cluster-virtual-machine-scale-sets
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

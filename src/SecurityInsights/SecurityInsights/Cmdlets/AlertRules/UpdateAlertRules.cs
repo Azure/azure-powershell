@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Actions
 
                 var alertule = convertedFusionAlertRule;
             };
-            if(alertRule.Kind == "MicrosoftSecurityIncidentCreationRule") 
+            if(alertRule.Kind == "MicrosoftSecurityIncidentCreation") 
             {
                 var convertedMicrosoftSecurityIncidentCreationAlertRule = alertRule as PSSentinelMicrosoftSecurityIncidentCreationRule;
 

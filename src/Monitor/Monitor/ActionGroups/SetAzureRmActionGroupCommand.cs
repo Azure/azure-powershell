@@ -141,6 +141,7 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
                     this.Receiver.AddRange(this.InputObject.LogicAppReceivers);
                     this.Receiver.AddRange(this.InputObject.AutomationRunbookReceivers);
                     this.Receiver.AddRange(this.InputObject.AzureAppPushReceivers);
+                    this.Receiver.AddRange(this.InputObject.EventHubReceivers);
                 }
                 else if (ParameterSetName == ByResourceId)
                 {
@@ -175,6 +176,10 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
                 IList <VoiceReceiver> voiceReceivers =
                     this.Receiver.OfType<PSVoiceReceiver>().
                         Select(o => new VoiceReceiver(name: o.Name, countryCode: o.CountryCode, phoneNumber: o.PhoneNumber)).ToList();
+
+                IList<EventHubReceiver> eventHubReceivers =
+                    this.Receiver.OfType<PSEventHubReceiver>().
+                        Select(o => new EventHubReceiver(name: o.Name, subscriptionId: o.SubscriptionId, eventHubNameSpace: o.EventHubNameSpace, eventHubName: o.EventHubName, useCommonAlertSchema: o.UseCommonAlertSchema)).ToList();
 
                 IList<ArmRoleReceiver> armRoleReceivers =
                     this.Receiver.OfType<PSArmRoleReceiver>().
@@ -228,6 +233,7 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
                                                       WebhookReceivers = webhookReceivers,
                                                       ItsmReceivers = itsmReceivers,
                                                       VoiceReceivers = voiceReceivers,
+                                                      EventHubReceivers = eventHubReceivers,
                                                       ArmRoleReceivers = armRoleReceivers,
                                                       AzureFunctionReceivers = azureFunctionReceivers,
                                                       LogicAppReceivers = logicAppReceivers,

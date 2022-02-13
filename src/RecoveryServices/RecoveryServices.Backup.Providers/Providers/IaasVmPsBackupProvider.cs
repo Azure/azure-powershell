@@ -19,8 +19,8 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
-using Microsoft.Rest;
 using Microsoft.Rest.Azure.OData;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -32,6 +32,7 @@ using System.Text.RegularExpressions;
 using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using RestAzureNS = Microsoft.Rest.Azure;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using CrrModel = Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore.Models;
 using SystemNet = System.Net;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
@@ -389,6 +390,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string[] restoreDiskList = (string[])ProviderData[RestoreVMBackupItemParams.RestoreDiskList];
             SwitchParameter restoreOnlyOSDisk = (SwitchParameter)ProviderData[RestoreVMBackupItemParams.RestoreOnlyOSDisk];
             SwitchParameter restoreAsUnmanagedDisks = (SwitchParameter)ProviderData[RestoreVMBackupItemParams.RestoreAsUnmanagedDisks];
+            String DiskEncryptionSetId = ProviderData.ContainsKey(RestoreVMBackupItemParams.DiskEncryptionSetId) ?
+                (string)ProviderData[RestoreVMBackupItemParams.DiskEncryptionSetId].ToString() : null;
+            bool useSecondaryRegion = (bool)ProviderData[CRRParams.UseSecondaryRegion];                        
+            String secondaryRegion = useSecondaryRegion ? (string)ProviderData[CRRParams.SecondaryRegion]: null;
+            IList<string> targetZones = ProviderData.ContainsKey(RecoveryPointParams.TargetZone) ?
+                new List<string>(new string[]{(ProviderData[RecoveryPointParams.TargetZone].ToString())}) : null;
+            bool restoreWithManagedDisks = (bool)ProviderData[RestoreVMBackupItemParams.RestoreAsManagedDisk];
+            string rehydrateDuration = ProviderData.ContainsKey(RecoveryPointParams.RehydrateDuration) ?
+                ProviderData[RecoveryPointParams.RehydrateDuration].ToString() : "15";
+            string rehydratePriority = ProviderData.ContainsKey(RecoveryPointParams.RehydratePriority) ?
+                ProviderData[RecoveryPointParams.RehydratePriority].ToString() : null;            
+            bool useSystemAssignedIdentity = (bool)ProviderData[RestoreVMBackupItemParams.UseSystemAssignedIdentity];
+            string userAssignedIdentityId = (string) ProviderData[RestoreVMBackupItemParams.UserAssignedIdentityId];
 
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(rp.Id);
             string containerUri = HelperUtils.GetContainerUri(uriDict, rp.Id);
@@ -414,7 +428,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
 
             // if the vm is unmanaged, target rg should not be provided
-            if(rp.IsManagedVirtualMachine == false && targetResourceGroupName != null)
+            if(rp.IsManagedVirtualMachine == false && targetResourceGroupName != null && !restoreWithManagedDisks)
             {
                 Logger.Instance.WriteWarning(Resources.TargetResourcegroupNotSupported);
             }
@@ -433,6 +447,34 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 restoreDiskLUNS = null;
             }
 
+            // Vanguard M9 requirement: restores using MSI
+            IdentityInfo identityInfo = null;
+            IdentityBasedRestoreDetails identityBasedRestoreDetails = null;
+            if (useSystemAssignedIdentity || (userAssignedIdentityId != null && userAssignedIdentityId != ""))
+            {
+                if (rp.IsManagedVirtualMachine)
+                {
+                    identityInfo = new IdentityInfo();
+                    if (useSystemAssignedIdentity)
+                    {   
+                        identityInfo.IsSystemAssignedIdentity = true;
+                    }
+                    else
+                    {
+                        identityInfo.IsSystemAssignedIdentity = false;
+                        identityInfo.ManagedIdentityResourceId = userAssignedIdentityId;
+                    }
+
+                    // target storage account for MSI based restore 
+                    identityBasedRestoreDetails = new IdentityBasedRestoreDetails();
+                    identityBasedRestoreDetails.TargetStorageAccountId = storageAccountResource.Id;
+                }
+                else
+                {
+                    throw new NotSupportedException(Resources.MSIRestoreNotSupportedForUnmanagedVM);                    
+                }
+            }
+
             IaasVMRestoreRequest restoreRequest = new IaasVMRestoreRequest()
             {
                 CreateNewCloudService = false,
@@ -445,20 +487,85 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     "/subscriptions/" + ServiceClientAdapter.SubscriptionId + "/resourceGroups/" + targetResourceGroupName :
                     null,
                 OriginalStorageAccountOption = useOsa,
-                RestoreDiskLunList = restoreDiskLUNS
+                RestoreDiskLunList = restoreDiskLUNS,
+                DiskEncryptionSetId = DiskEncryptionSetId,
+                RestoreWithManagedDisks = restoreWithManagedDisks,
+                IdentityInfo = identityInfo,
+                IdentityBasedRestoreDetails = identityBasedRestoreDetails
             };
 
+            // make StorageAccountId null in case of MSI based restore
+            if (identityBasedRestoreDetails != null)
+            {
+                restoreRequest.StorageAccountId = null;
+            }
+
+            if(targetZones != null)
+            {
+                restoreRequest.Zones = targetZones;
+            }
+            
             RestoreRequestResource triggerRestoreRequest = new RestoreRequestResource();
             triggerRestoreRequest.Properties = restoreRequest;
+            
+            // Cross Region Restore
+            if (useSecondaryRegion)
+            {
+                // get access token
+                CrrModel.CrrAccessToken accessToken = ServiceClientAdapter.GetCRRAccessToken(rp, secondaryRegion, vaultName: vaultName, resourceGroupName: resourceGroupName);
 
-            var response = ServiceClientAdapter.RestoreDisk(
+                // Iaas VM CRR Request
+                Logger.Instance.WriteDebug("Triggering Restore to secondary region: " + secondaryRegion);
+                restoreRequest.Region = secondaryRegion;
+                restoreRequest.AffinityGroup = "";
+
+                CrrModel.CrossRegionRestoreRequest crrRestoreRequest = new CrrModel.CrossRegionRestoreRequest();
+                crrRestoreRequest.CrossRegionRestoreAccessDetails = accessToken;
+
+                // convert restore request to CRR restore request
+                var restoreRequestSerialized = JsonConvert.SerializeObject(restoreRequest);
+                CrrModel.IaasVMRestoreRequest restoreRequestForSecondaryRegion = JsonConvert.DeserializeObject<CrrModel.IaasVMRestoreRequest>(restoreRequestSerialized);
+                crrRestoreRequest.RestoreRequest = restoreRequestForSecondaryRegion;
+                
+                var response = ServiceClientAdapter.RestoreDiskSecondryRegion(
+                    rp,
+                    crrRestoreRequest,
+                    storageAccountResource.Location,
+                    secondaryRegion: secondaryRegion);
+                
+                return response;
+            }
+            else
+            {
+                #region Rehydrate Restore 
+                if (rp.RecoveryPointTier == RecoveryPointTier.VaultArchive && rehydratePriority == null)
+                {
+                    throw new ArgumentException(Resources.InvalidRehydration);
+                }
+
+                if (rp.RecoveryPointTier == RecoveryPointTier.VaultArchive && rehydratePriority != null)
+                {
+                    // rehydrate restore request                    
+                    var iaasVmRestoreRequestSerialized = JsonConvert.SerializeObject(triggerRestoreRequest.Properties);
+                    IaasVMRestoreWithRehydrationRequest iaasVMRestoreWithRehydrationRequest = JsonConvert.DeserializeObject<IaasVMRestoreWithRehydrationRequest>(iaasVmRestoreRequestSerialized);
+                    
+                    iaasVMRestoreWithRehydrationRequest.RecoveryPointRehydrationInfo = new RecoveryPointRehydrationInfo();
+                    iaasVMRestoreWithRehydrationRequest.RecoveryPointRehydrationInfo.RehydrationRetentionDuration = "P" + rehydrateDuration + "D"; // P <val> D
+                    iaasVMRestoreWithRehydrationRequest.RecoveryPointRehydrationInfo.RehydrationPriority = rehydratePriority;
+                    
+                    triggerRestoreRequest.Properties = iaasVMRestoreWithRehydrationRequest;                    
+                }
+                #endregion
+
+                var response = ServiceClientAdapter.RestoreDisk(
                 rp,
                 storageAccountResource.Location,
                 triggerRestoreRequest,
                 vaultName: vaultName,
                 resourceGroupName: resourceGroupName,
                 vaultLocation: vaultLocation ?? ServiceClientAdapter.BmsAdapter.GetResourceLocation());
-            return response;
+                return response;
+            }    
         }
 
         public ProtectedItemResource GetProtectedItem()
@@ -813,8 +920,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         {
             string vaultName = (string)ProviderData[VaultParams.VaultName];
             string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
-            ContainerBase container =
-                (ContainerBase)ProviderData[ItemParams.Container];
+            ContainerBase container = (ContainerBase)ProviderData[ItemParams.Container];
             string itemName = (string)ProviderData[ItemParams.ItemName];
             ItemProtectionStatus protectionStatus =
                 (ItemProtectionStatus)ProviderData[ItemParams.ProtectionStatus];
@@ -824,75 +930,112 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 (CmdletModel.WorkloadType)ProviderData[ItemParams.WorkloadType];
             ItemDeleteState deleteState =
                (ItemDeleteState)ProviderData[ItemParams.DeleteState];
-
-            PolicyBase policy = (PolicyBase)ProviderData[PolicyParams.ProtectionPolicy];
-
+            bool UseSecondaryRegion = (bool)ProviderData[CRRParams.UseSecondaryRegion];            
+            PolicyBase policy = (PolicyBase)ProviderData[PolicyParams.ProtectionPolicy];            
+                        
             // 1. Filter by container
-            List<ProtectedItemResource> protectedItems = AzureWorkloadProviderHelper.ListProtectedItemsByContainer(
+            List<CrrModel.ProtectedItemResource> protectedItemsCrr = null;
+            List<ProtectedItemResource> protectedItems = null;
+            List<ItemBase> itemModels = null;
+            if (UseSecondaryRegion)
+            {
+                protectedItemsCrr = AzureWorkloadProviderHelper.ListProtectedItemsByContainerCrr(
                 vaultName,
                 resourceGroupName,
                 container,
                 policy,
                 ServiceClientModel.BackupManagementType.AzureIaasVM,
-                DataSourceType.VM);
+                DataSourceType.VM);                
 
-            // 2. Filter by item name
-            List<ItemBase> itemModels = AzureWorkloadProviderHelper.ListProtectedItemsByItemName(
-                protectedItems,
-                itemName,
-                vaultName,
-                resourceGroupName,
-                (itemModel, protectedItemGetResponse) =>
-                {
-                    AzureVmItemExtendedInfo extendedInfo = new AzureVmItemExtendedInfo();
-                    var serviceClientExtendedInfo = ((AzureIaaSVMProtectedItem)protectedItemGetResponse.Properties).ExtendedInfo;
-                    if (serviceClientExtendedInfo.OldestRecoveryPoint.HasValue)
+                // 2. Filter by item name
+                itemModels = AzureWorkloadProviderHelper.ListProtectedItemsByItemNameCrr(
+                    protectedItemsCrr,
+                    itemName,
+                    vaultName,
+                    resourceGroupName,
+                    (itemModel, protectedItemGetResponse) =>
                     {
-                        extendedInfo.OldestRecoveryPoint = serviceClientExtendedInfo.OldestRecoveryPoint;
-                    }
-                    extendedInfo.PolicyState = serviceClientExtendedInfo.PolicyInconsistent.ToString();
-                    extendedInfo.RecoveryPointCount =
-                        (int)(serviceClientExtendedInfo.RecoveryPointCount.HasValue ?
-                            serviceClientExtendedInfo.RecoveryPointCount : 0);
-                    ((AzureVmItem)itemModel).ExtendedInfo = extendedInfo;
-                });
+                        AzureVmItemExtendedInfo extendedInfo = new AzureVmItemExtendedInfo();
+                        var serviceClientExtendedInfo = ((AzureIaaSVMProtectedItem)protectedItemGetResponse.Properties).ExtendedInfo;
+                        if (serviceClientExtendedInfo.OldestRecoveryPoint.HasValue)
+                        {
+                            extendedInfo.OldestRecoveryPoint = serviceClientExtendedInfo.OldestRecoveryPoint;
+                        }
+                        extendedInfo.PolicyState = serviceClientExtendedInfo.PolicyInconsistent.ToString();
+                        extendedInfo.RecoveryPointCount =
+                            (int)(serviceClientExtendedInfo.RecoveryPointCount.HasValue ?
+                                serviceClientExtendedInfo.RecoveryPointCount : 0);
+                        ((AzureVmItem)itemModel).ExtendedInfo = extendedInfo;
+                    });                
+            }
+            else
+            {
+                protectedItems = AzureWorkloadProviderHelper.ListProtectedItemsByContainer(
+                    vaultName,
+                    resourceGroupName,
+                    container,
+                    policy,
+                    ServiceClientModel.BackupManagementType.AzureIaasVM,
+                    DataSourceType.VM);
 
+                // 2. Filter by item name
+                itemModels = AzureWorkloadProviderHelper.ListProtectedItemsByItemName(
+                    protectedItems,
+                    itemName,
+                    vaultName,
+                    resourceGroupName,
+                    (itemModel, protectedItemGetResponse) =>
+                    {
+                        AzureVmItemExtendedInfo extendedInfo = new AzureVmItemExtendedInfo();
+                        var serviceClientExtendedInfo = ((AzureIaaSVMProtectedItem)protectedItemGetResponse.Properties).ExtendedInfo;
+                        if (serviceClientExtendedInfo.OldestRecoveryPoint.HasValue)
+                        {
+                            extendedInfo.OldestRecoveryPoint = serviceClientExtendedInfo.OldestRecoveryPoint;
+                        }
+                        extendedInfo.PolicyState = serviceClientExtendedInfo.PolicyInconsistent.ToString();
+                        extendedInfo.RecoveryPointCount =
+                            (int)(serviceClientExtendedInfo.RecoveryPointCount.HasValue ?
+                                serviceClientExtendedInfo.RecoveryPointCount : 0);
+                        ((AzureVmItem)itemModel).ExtendedInfo = extendedInfo;
+                    });
+            }
+            
             // 3. Filter by item's Protection Status
             if (protectionStatus != 0)
-            {
+            {                
                 itemModels = itemModels.Where(itemModel =>
                 {
                     return ((AzureVmItem)itemModel).ProtectionStatus == protectionStatus;
                 }).ToList();
             }
-
+            
             // 4. Filter by item's Protection State
             if (status != 0)
-            {
+            {                
                 itemModels = itemModels.Where(itemModel =>
                 {
                     return ((AzureVmItem)itemModel).ProtectionState == status;
                 }).ToList();
             }
-
+            
             // 5. Filter by workload type
             if (workloadType != 0)
-            {
+            {                
                 itemModels = itemModels.Where(itemModel =>
                 {
                     return itemModel.WorkloadType == workloadType;
                 }).ToList();
             }
-
+            
             // 6. Filter by Delete State
             if (deleteState != 0)
-            {
+            {                
                 itemModels = itemModels.Where(itemModel =>
                 {
                     return ((AzureVmItem)itemModel).DeleteState == deleteState;
                 }).ToList();
             }
-
+            
             return itemModels;
         }
 
@@ -983,7 +1126,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         private void ValidateProtectedItemCount(AzureVmPolicy azureVmPolicy)
         {
-            if (azureVmPolicy.ProtectedItemsCount > 1000)
+            if (azureVmPolicy.ProtectedItemsCount > 100)
             {
                 throw new ArgumentException(Resources.ProtectedItemsCountExceededException);
             }

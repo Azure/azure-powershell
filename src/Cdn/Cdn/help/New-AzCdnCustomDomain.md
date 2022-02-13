@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
 ms.assetid: 7060D3D7-B397-447E-88E3-B6F0D094770D
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/new-azcdncustomdomain
+online version: https://docs.microsoft.com/powershell/module/az.cdn/new-azcdncustomdomain
 schema: 2.0.0
 ---
 
@@ -30,6 +30,27 @@ New-AzCdnCustomDomain -HostName <String> -CustomDomainName <String> -CdnEndpoint
 The **New-AzCdnCustomDomain** cmdlet creates a custom domain for the Azure Content Delivery Network (CDN) endpoint.
 
 ## EXAMPLES
+
+### Example 1
+```powershell
+New-AzCdnCustomDomain -ResourceGroupName myresourcegroup -ProfileName mycdnprofile -EndpointName myendpoint -CustomDomainName cdn-example-com -HostName cdn.example.com
+```
+
+```Output
+HostName                        : cdn.example.com
+ValidationData                  :
+ResourceState                   : Active
+CustomHttpsProvisioningState    : Disabled
+CustomHttpsProvisioningSubstate : None
+ResourceGroupName               : myresourcegroup
+ProfileName                     : mycdnprofile
+EndpointName                    : myendpoint
+Id                              : /subscriptions/11111111-1111-1111-1111-111111111111/resourcegroups/myresourcegroup/providers
+                                  /Microsoft.Cdn/profiles/mycdnprofile/endpoints/myendpoint/customdomains/cdn-example-com
+Name                            : cdn-example-com
+Type                            : Microsoft.Cdn/profiles/endpoints/customdomains
+ProvisioningState               : Succeeded
+```
 
 ## PARAMETERS
 

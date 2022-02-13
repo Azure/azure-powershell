@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DeploymentManager.dll-Help.xml
 Module Name: Az.DeploymentManager
-online version: https://docs.microsoft.com/en-us/powershell/module/az.deploymentmanager/get-azdeploymentmanagerstep
+online version: https://docs.microsoft.com/powershell/module/az.deploymentmanager/get-azdeploymentmanagerstep
 schema: 2.0.0
 ---
 
@@ -46,7 +46,6 @@ PS C:\> New-AzDeploymentManagerStep -ResourceGroupName ContosoResourceGroup -Nam
 This command gets a step named ContosoService1WaitStep in ContosoResourceGroup.
 
 ### Example 2: Get a step using the resource identifier
-### Example 1
 ```powershell
 PS C:\> Get-AzDeploymentManagerStep -ResourceId "/subscriptions/subscriptionId/resourcegroups/ContosoResourceGroup/providers/Microsoft.DeploymentManager/steps/ContosoService1WaitStep"
 ```

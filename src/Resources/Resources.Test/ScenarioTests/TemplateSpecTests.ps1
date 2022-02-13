@@ -136,7 +136,7 @@ function Test-CreateTemplateSpec
         
         # For the ARM template itself we'll do some normalization to ensure a valid comparison:
         $normalizedSampleTemplateJson = $sampleTemplateJson | ConvertFrom-Json | ConvertTo-Json -Compress
-        $normalizedTemplateJsonInV1 = $basicCreatedTemplateSpecV1.Versions[0].Template.ToString() | ConvertFrom-Json | ConvertTo-Json -Compress
+        $normalizedTemplateJsonInV1 = $basicCreatedTemplateSpecV1.Versions[0].MainTemplate.ToString() | ConvertFrom-Json | ConvertTo-Json -Compress
         
         Assert-AreEqual $normalizedSampleTemplateJson $normalizedTemplateJsonInV1
 
@@ -182,7 +182,7 @@ function Test-SetTemplateSpec
 
         # For the ARM template itself we'll do some normalization to ensure a valid comparison:
         $normalizedSampleTemplateJson = $sampleTemplateJson | ConvertFrom-Json | ConvertTo-Json -Compress
-        $normalizedTemplateJsonInV1 = $basicCreatedTemplateSpecV1.Versions[0].Template.ToString() | ConvertFrom-Json | ConvertTo-Json -Compress
+        $normalizedTemplateJsonInV1 = $basicCreatedTemplateSpecV1.Versions[0].MainTemplate.ToString() | ConvertFrom-Json | ConvertTo-Json -Compress
 
         Assert-AreEqual $normalizedSampleTemplateJson $normalizedTemplateJsonInV1
 
@@ -237,6 +237,33 @@ function Test-RemoveTemplateSpec
         $allVersionsRemovalResult = Remove-AzTemplateSpec -ResourceId $basicCreatedTemplateSpecV1.Id -Force # Note: Id is Id of the root template spec
         Assert-True { $allVersionsRemovalResult }
         Assert-Throws { Get-AzTemplateSpec -ResourceGroupName $rgname -Name $rname }
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests that using a non-existant TemplateSpec throws the correct type of error
+#>
+function Test-TemplateSpecErrorType
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $rglocation = "West US 2"
+    $subId = (Get-AzContext).Subscription.SubscriptionId
+
+    try
+    {
+        # Prepare our RG and basic template spec (with two versions):
+
+        New-AzResourceGroup -Name $rgname -Location $rglocation
+        Assert-Throws { Get-AzTemplateSpec -ResourceGroupName $rgname -Name $rname }
+        Assert-AreEqual $error.Exception.GetType().name TemplateSpecsErrorException
     }
     finally
     {

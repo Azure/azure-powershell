@@ -6,7 +6,10 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
 {
 
-    /// <summary>Argument completer implementation for IdentityType.</summary>
+    /// <summary>
+    /// The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory
+    /// principal for the resource.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.IdentityTypeTypeConverter))]
     public partial struct IdentityType :
         System.Management.Automation.IArgumentCompleter
@@ -28,7 +31,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "SystemAssigned".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("SystemAssigned", "SystemAssigned", global::System.Management.Automation.CompletionResultType.ParameterValue, "SystemAssigned");
+                yield return new global::System.Management.Automation.CompletionResult("'SystemAssigned'", "SystemAssigned", global::System.Management.Automation.CompletionResultType.ParameterValue, "SystemAssigned");
             }
         }
     }

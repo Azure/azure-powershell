@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: DBA7AD5F-CC13-417A-B753-F998942530BB
-online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/get-azapimanagement
+online version: https://docs.microsoft.com/powershell/module/az.apimanagement/get-azapimanagement
 schema: 2.0.0
 ---
 
@@ -41,14 +41,14 @@ The **Get-AzApiManagement** cmdlet gets a list of all API Management services un
 
 ### Example 1: Get all API Management services
 ```powershell
-PS C:\>Get-AzApiManagement
+Get-AzApiManagement
 ```
 
 This command gets all API Management services within a subscription.
 
 ### Example 2: Get all API Management services by a specific name
 ```powershell
-PS C:\>Get-AzApiManagement -ResourceGroupName "ContosoGroup" -Name "ContosoApi"
+Get-AzApiManagement -ResourceGroupName "ContosoGroup" -Name "ContosoApi"
 ```
 
 This command gets all API Management service by name.

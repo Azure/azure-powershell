@@ -105,6 +105,15 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Preferred Routing Gateway to Route On-Prem traffic from VNET")]
+        [ValidateSet(
+            MNM.PreferredRoutingGateway.ExpressRoute,
+            MNM.PreferredRoutingGateway.VpnGateway,
+            IgnoreCase = true)]
+        public string PreferredRoutingGateway { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -178,6 +187,11 @@ namespace Microsoft.Azure.Commands.Network
             if (!string.IsNullOrWhiteSpace(this.Sku))
             {
                 virtualHubToUpdate.Sku = this.Sku;
+            }
+
+            if (!string.IsNullOrWhiteSpace(this.PreferredRoutingGateway))
+            {
+                virtualHubToUpdate.PreferredRoutingGateway = this.PreferredRoutingGateway;
             }
 
             //// Update the virtual hub

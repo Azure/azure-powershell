@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: C453485D-67A7-480E-83F6-527D4F5EBC93
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/set-azvmdatadisk
+online version: https://docs.microsoft.com/powershell/module/az.compute/set-azvmdatadisk
 schema: 2.0.0
 ---
 
@@ -34,8 +34,8 @@ The **Set-AzVMDataDisk** cmdlet modifies properties of a virtual machine data di
 
 ### Example 1: Modify the caching mode of a data disk
 ```powershell
-PS C:\> $VM = Get-AzVM -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM07"
-PS C:\> Set-AzVMDataDisk -VM $VM -Name "DataDisk01" -Caching ReadWrite | Update-AzVM
+$VM = Get-AzVM -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM07"
+Set-AzVMDataDisk -VM $VM -Name "DataDisk01" -Caching ReadWrite | Update-AzVM
 ```
 
 The first command gets the virtual machine named ContosoVM07 by using **Get-AzVM**.

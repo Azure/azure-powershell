@@ -56,19 +56,31 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
                 ProfileName = CdnProfile.Name;
             }
 
-            var existingProfile = CdnManagementClient.Profiles.List()
-                .Select(p => p.ToPsProfile())
-                .Where(p => p.Name.ToLower() == ProfileName.ToLower())
-                .FirstOrDefault(p => p.ResourceGroupName.ToLower() == ResourceGroupName.ToLower());
-
-            if (existingProfile == null)
+            try
             {
-                throw new PSArgumentException(string.Format(
-                    Resources.Error_DeleteNonExistingProfile,
-                    ProfileName,
-                    ResourceGroupName));
+                // The current subscription level based profile list api has maximum item limit which will
+                // casue profile missing in the response
+                var existingProfile = CdnManagementClient.Profiles.Get(ResourceGroupName, ProfileName);
+                if (existingProfile.Sku.Name == AfdSkuConstants.PremiumAzureFrontDoor ||
+                    existingProfile.Sku.Name == AfdSkuConstants.StandardAzureFrontDoor)
+                {
+                    throw new PSArgumentException($"You are attempting to delete a {existingProfile.Sku.Name} profile. Please use RemoveAzFrontDoorCdnProfile instead.");
+                }
             }
-
+            catch (ErrorResponseException ex)
+            {
+                if (ex.Response.StatusCode.Equals(HttpStatusCode.NotFound))
+                {
+                    throw new PSArgumentException(string.Format(
+                        Resources.Error_DeleteNonExistingProfile,
+                        ProfileName,
+                        ResourceGroupName));
+                }
+                else
+                {
+                    throw;
+                }
+            }
 
             ConfirmAction(Force,
                 string.Format(Resources.Confirm_RemoveProfile, ProfileName),
@@ -81,7 +93,6 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
             {
                 WriteObject(true);
             }
-
         }
 
         private bool ContainsEndpoints()

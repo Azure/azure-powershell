@@ -14,7 +14,6 @@
 
 using System;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.SecurityInsights;
 using Microsoft.Azure.Commands.SecurityInsights.Common;
 using Microsoft.Azure.Commands.SecurityInsights.Models.Incidents;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -26,8 +25,6 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Incidents
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SentinelIncident", DefaultParameterSetName = ParameterSetNames.WorkspaceScope), OutputType(typeof(PSSentinelIncident))]
     public class GetIncidents : SecurityInsightsCmdletBase
     {
-        private const int MaxIncidentsToFetch = 1500;
-
         [Parameter(ParameterSetName = ParameterSetNames.WorkspaceScope, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceGroupName)]
         [Parameter(ParameterSetName = ParameterSetNames.IncidentId, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceGroupName)]
         [ResourceGroupCompleter]
@@ -43,28 +40,38 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Incidents
         [ValidateNotNullOrEmpty]
         public string IncidentId { get; set; }
 
+        [Parameter(ParameterSetName = ParameterSetNames.WorkspaceScope, Mandatory = false, ValueFromPipeline = false, HelpMessage = ParameterHelpMessages.Filter)]
+        public string Filter { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.WorkspaceScope, Mandatory = false, ValueFromPipeline = false, HelpMessage = ParameterHelpMessages.OrderBy)]
+        public string OrderBy { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.WorkspaceScope, Mandatory = false, ValueFromPipeline = false, HelpMessage = ParameterHelpMessages.Max)]
+        [ValidateRange(1, int.MaxValue)]
+        public int Max { get; set; }
+
         [Parameter(ParameterSetName = ParameterSetNames.ResourceId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ResourceId)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            int numberOfFetchedIncidents = 0;
             string nextLink = null;
             switch (ParameterSetName)
             {
                 case ParameterSetNames.WorkspaceScope:
-                    var incidents = SecurityInsightsClient.Incidents.List(ResourceGroupName, WorkspaceName);
+                    string filter = (Filter == default(string)) ? null : Filter;
+                    string orderby = (OrderBy == default(string)) ? null : OrderBy;
+                    int max = (Max == default(int)) ? 1000 : Max;
+                    var incidents = SecurityInsightsClient.Incidents.List(ResourceGroupName, WorkspaceName, filter: filter, orderby: orderby);
                     var incidentscount = incidents.Count();
                     WriteObject(incidents.ConvertToPSType(), enumerateCollection: true);
-                    numberOfFetchedIncidents += incidentscount;
                     nextLink = incidents?.NextPageLink;
-                    while (!string.IsNullOrWhiteSpace(nextLink) && numberOfFetchedIncidents < MaxIncidentsToFetch)
+                    while (!string.IsNullOrWhiteSpace(nextLink) && incidentscount < max)
                     {
                         incidents = SecurityInsightsClient.Incidents.ListNext(incidents.NextPageLink);
-                        incidentscount = incidents.Count();
                         WriteObject(incidents.ConvertToPSType(), enumerateCollection: true);
-                        numberOfFetchedIncidents += incidentscount;
+                        incidentscount += incidents.Count();
                         nextLink = incidents?.NextPageLink;
                     }
                     break;

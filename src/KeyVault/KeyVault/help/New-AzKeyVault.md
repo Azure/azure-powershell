@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 ms.assetid: 4C40DAC9-5C0B-4AFD-9BDB-D407E0B9F701
-online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/new-azkeyvault
+online version: https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault
 schema: 2.0.0
 ---
 
@@ -18,7 +18,7 @@ New-AzKeyVault [-Name] <String> [-ResourceGroupName] <String> [-Location] <Strin
  [-EnabledForTemplateDeployment] [-EnabledForDiskEncryption] [-EnablePurgeProtection]
  [-EnableRbacAuthorization] [-SoftDeleteRetentionInDays <Int32>] [-Sku <String>] [-Tag <Hashtable>]
  [-NetworkRuleSet <PSKeyVaultNetworkRuleSet>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,6 +29,14 @@ Note: If you see the error **The subscription is not registered to use namespace
 'Microsoft.KeyVault'** when you try to create your new key vault, run
 **Register-AzResourceProvider -ProviderNamespace "Microsoft.KeyVault"** and then rerun your
 **New-AzKeyVault** command. For more information, see Register-AzResourceProvider.
+
+The cmdlet may call below Microsoft Graph API according to input parameters:
+
+- GET /directoryObjects/{id}
+- GET /users/{id}
+- GET /servicePrincipals/{id}
+- GET /groups/{id}
+- GET /me
 
 ## EXAMPLES
 
@@ -212,7 +220,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-Specifies the Azure region in which to create the key vault. Use the command [Get-AzLocation](https://docs.microsoft.com/powershell/module/Azure/Get-AzLocation) to see your choices.
+Specifies the Azure region in which to create the key vault. Use the command [Get-AzLocation](/powershell/module/az.resources/get-azlocation) to see your choices.
 
 ```yaml
 Type: System.String
@@ -298,6 +306,23 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the subscription.
+By default, cmdlets are executed in the subscription that is set in the current context. If the user specifies another subscription, the current cmdlet is executed in the subscription specified by the user.
+Overriding subscriptions only take effect during the lifecycle of the current cmdlet. It does not change the subscription in the context, and does not affect subsequent cmdlets.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

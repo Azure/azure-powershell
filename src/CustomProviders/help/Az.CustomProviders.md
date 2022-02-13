@@ -1,7 +1,7 @@
 ---
 Module Name: Az.CustomProviders
 Module Guid: b98dded0-6e9a-4371-b2c6-d74464fb724b
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.customproviders
+Download Help Link: https://docs.microsoft.com/powershell/module/az.customproviders
 Help Version: 1.0.0.0
 Locale: en-US
 ---

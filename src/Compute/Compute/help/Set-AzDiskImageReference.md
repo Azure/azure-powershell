@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/set-azdiskimagereference
+online version: https://docs.microsoft.com/powershell/module/az.compute/set-azdiskimagereference
 schema: 2.0.0
 ---
 
@@ -23,11 +23,11 @@ The **Set-AzDiskImageReference** cmdlet sets the image reference properties on a
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $diskconfig = New-AzDiskConfig -DiskSizeGB 10 -AccountType PremiumLRS -OsType Windows -CreateOption FromImage;
-PS C:\> $image = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.Compute/images/TestImage123';        
-PS C:\> $diskconfig = Set-AzDiskImageReference -Disk $diskconfig -Id $image -Lun 0;
-PS C:\> New-AzDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -Disk $diskconfig;
+```powershell
+$diskconfig = New-AzDiskConfig -DiskSizeGB 10 -AccountType PremiumLRS -OsType Windows -CreateOption FromImage;
+$image = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.Compute/images/TestImage123';        
+$diskconfig = Set-AzDiskImageReference -Disk $diskconfig -Id $image -Lun 0;
+New-AzDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -Disk $diskconfig;
 ```
 
 The first command creates a local disk object with size 10GB in Premium_LRS storage account type.  It also sets Windows OS type.

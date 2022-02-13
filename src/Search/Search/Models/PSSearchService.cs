@@ -15,6 +15,7 @@
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Management.Search.Models
 {
@@ -44,6 +45,24 @@ namespace Microsoft.Azure.Commands.Management.Search.Models
         [Ps1Xml(Label = "Resource Id", Target = ViewControl.List, Position = 7)]
         public string Id { get; private set; }
 
+        [Ps1Xml(Label = "Public Network Access", Target = ViewControl.List, Position = 8)]
+        public PSPublicNetworkAccess? PublicNetworkAccess { get; private set; }
+
+        [Ps1Xml(Label = "Network Rule Set", Target = ViewControl.List, Position = 9)]
+        public IList<PSIpRule> NetworkRuleSet { get; private set; }
+
+        [Ps1Xml(Label = "Private Endpoint Connections", Target = ViewControl.List, Position = 10)]
+        public IList<PSPrivateEndpointConnection> PrivateEndpointConnections { get; private set; }
+
+        [Ps1Xml(Label = "Status", Target = ViewControl.List, Position = 11)]
+        public PSSearchServiceStatus? Status { get; private set; }
+
+        [Ps1Xml(Label = "Identity", Target = ViewControl.List, Position = 12)]
+        public PSIdentity Identity { get; private set; }
+
+        [Ps1Xml(Label = "Shared private link resources", Target = ViewControl.List, Position = 13)]
+        public IList<PSSharedPrivateLinkResource> SharedPrivateLinkResources { get; private set; }
+
         public IDictionary<string, string> Tags { get; set; }
 
         public PSSearchService(Azure.Management.Search.Models.SearchService searchService)
@@ -67,6 +86,31 @@ namespace Microsoft.Azure.Commands.Management.Search.Models
             }
 
             Tags = searchService.Tags;
+            Status = (PSSearchServiceStatus)searchService.Status;
+            Identity = (PSIdentity)searchService.Identity;
+
+            if (searchService.PublicNetworkAccess != null)
+            {
+                PublicNetworkAccess = (PSPublicNetworkAccess)searchService.PublicNetworkAccess;
+            }
+
+            NetworkRuleSet = new List<PSIpRule>();
+            if (searchService.NetworkRuleSet != null)
+            {
+                NetworkRuleSet = searchService.NetworkRuleSet.IpRules.Select(ipRule => (PSIpRule)ipRule).ToList();
+            }
+
+            PrivateEndpointConnections = new List<PSPrivateEndpointConnection>();
+            if (searchService.PrivateEndpointConnections != null)
+            {
+                PrivateEndpointConnections = searchService.PrivateEndpointConnections.Select(pec => (PSPrivateEndpointConnection)pec).ToList();
+            }
+
+            SharedPrivateLinkResources = new List<PSSharedPrivateLinkResource>();
+            if (searchService.SharedPrivateLinkResources != null)
+            {
+                SharedPrivateLinkResources = searchService.SharedPrivateLinkResources.Select(splr => (PSSharedPrivateLinkResource)splr).ToList();
+            }
         }
 
         public static PSSearchService Create(Azure.Management.Search.Models.SearchService searchService)

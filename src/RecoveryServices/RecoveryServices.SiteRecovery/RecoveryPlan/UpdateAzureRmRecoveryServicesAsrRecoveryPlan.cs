@@ -143,6 +143,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                                         {
                                             VmId = ((ASRInMageSpecificRPIDetails)item.ProviderSpecificDetails).VmId;
                                         }
+                                        else if (item.ProviderSpecificDetails.GetType() == typeof(ASRInMageRcmSpecificRPIDetails))
+                                        {
+                                            VmId = ((ASRInMageRcmSpecificRPIDetails)item.ProviderSpecificDetails).InternalIdentifier;
+                                        }
+                                        else if (item.ProviderSpecificDetails.GetType() == typeof(ASRInMageRcmFailbackSpecificRPIDetails))
+                                        {
+                                            VmId = ((ASRInMageRcmFailbackSpecificRPIDetails)item.ProviderSpecificDetails).InternalIdentifier;
+                                        }
 
                                         newItem.VirtualMachineId = VmId;
 

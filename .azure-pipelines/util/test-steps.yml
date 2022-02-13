@@ -8,6 +8,21 @@ steps:
 - template: download-build-steps.yml
   parameters:
     osName: ${{ parameters.osName }}
+- task: NodeTool@0
+  condition: eq(variables.IsGenerateBased, true)
+  displayName: Install autorest
+  inputs:
+    versionSpec: '14.17.1'
+    command: custom
+    verbose: false
+    customCommand: install autorest@latest
+- task: PowerShell@2
+  condition: eq(variables.IsGenerateBased, true)
+  displayName: Setup environment for autorest
+  inputs:
+    targetType: inline
+    script: "$env:NODE_OPTIONS=\"--max-old-space-size=65536\""
+    pwsh: true
 
 - task: UseDotNet@2
   displayName: 'Use .NET Core sdk'
@@ -32,7 +47,7 @@ steps:
    Install-Module -Name Pester -RequiredVersion 4.10.1 -Force -SkipPublisherCheck
    Install-Module -Name Az.Accounts -Scope CurrentUser -Force
    $env:PSModulePath = $env:PSModulePath + ";" + (pwd).Path
-   Get-ChildItem -Directory Az.* | ForEach-Object {if (Test-Path $_/test-module.ps1) {cd $_; ./test-module.ps1}}
+   Get-ChildItem -File -Recurse -Depth 1 test-module.ps1 | ForEach-Object {. $_; if ($LastExitCode -ne 0) {throw "test fails when executing $_"}}
   workingDirectory: 'artifacts/Debug'
   displayName: Test for AutoGen Modules With Windows PowerShell
   condition: and(succeeded(), ne('${{ parameters.testTarget }}', 'Test'))
@@ -42,7 +57,7 @@ steps:
    Install-Module -Name Az.Accounts -Scope CurrentUser -Force
    if ($IsWindows) { $sp = ";" } else { $sp = ":" }
    $env:PSModulePath = $env:PSModulePath + $sp + (pwd).Path
-   Get-ChildItem -Directory Az.* | ForEach-Object {if (Test-Path $_/test-module.ps1) {cd $_; ./test-module.ps1}}
+   Get-ChildItem -File -Recurse -Depth 1 test-module.ps1 | ForEach-Object {. $_; if ($LastExitCode -ne 0) {throw "test fails when executing $_"}}
   workingDirectory: 'artifacts/Debug'
   displayName: 'Test for AutoGen Modules With PowerShell Core'
   condition: and(succeeded(), eq('${{ parameters.testTarget }}', 'Test'))

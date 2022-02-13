@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: A3D60CF1-2E66-4EE5-9C68-932DD8DF80BD
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azfirewall
+online version: https://docs.microsoft.com/powershell/module/az.network/new-azfirewall
 schema: 2.0.0
 ---
 
@@ -29,7 +29,7 @@ New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String>
 ### OldIpConfigurationParameterValues
 ```
 New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String> -VirtualNetworkName <String>
- -PublicIpName <String> [-ApplicationRuleCollection <PSAzureFirewallApplicationRuleCollection[]>]
+ [-PublicIpName <String>] [-ApplicationRuleCollection <PSAzureFirewallApplicationRuleCollection[]>]
  [-NatRuleCollection <PSAzureFirewallNatRuleCollection[]>]
  [-NetworkRuleCollection <PSAzureFirewallNetworkRuleCollection[]>] [-ThreatIntelMode <String>]
  [-ThreatIntelWhitelist <PSAzureFirewallThreatIntelWhitelist>] [-PrivateRange <String[]>] [-EnableDnsProxy]
@@ -42,7 +42,7 @@ New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String> -Vi
 ### IpConfigurationParameterValues
 ```
 New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String> -VirtualNetwork <PSVirtualNetwork>
- -PublicIpAddress <PSPublicIpAddress[]> [-ManagementPublicIpAddress <PSPublicIpAddress>]
+ [-PublicIpAddress <PSPublicIpAddress[]>] [-ManagementPublicIpAddress <PSPublicIpAddress>]
  [-ApplicationRuleCollection <PSAzureFirewallApplicationRuleCollection[]>]
  [-NatRuleCollection <PSAzureFirewallNatRuleCollection[]>]
  [-NetworkRuleCollection <PSAzureFirewallNetworkRuleCollection[]>] [-ThreatIntelMode <String>]
@@ -242,7 +242,7 @@ $fw=New-AzFirewall -Name "azFw" -ResourceGroupName $rgName -Location westus -Sku
 This example creates a Firewall attached to virtual hub "hub" in the same resource group as the firewall.
 The Firewall will be assigned 2 public IPs that are created implicitly.
 
-### 16:  Create a Firewall with Allow Active FTP.
+### Example 16:  Create a Firewall with Allow Active FTP.
 ```
 $rgName = "resourceGroupName"
 $vnet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name "vnet"
@@ -251,6 +251,18 @@ New-AzFirewall -Name "azFw" -ResourceGroupName $rgName -Location centralus -Virt
 ```
 
 This example creates a Firewall with allow active FTP flag.
+
+### Example 17: Create a Firewall with a management subnet and no data Public IP address
+```powershell
+$rgName = "resourceGroupName"
+$vnet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name "vnet"
+$mgmtPip = Get-AzPublicIpAddress -ResourceGroupName $rgName -Name "managementPublicIpName"
+
+New-AzFirewall -Name "azFw" -ResourceGroupName $rgName -Location centralus -VirtualNetwork $vnet -ManagementPublicIpAddress $mgmtPip
+```
+
+This example creates a "forced tunneling" Firewall that uses the subnet "AzureFirewallManagementSubnet" and the management public IP address for its management traffic.
+In this scenario, users do not have to specify a data Public IP if they are only using firewall for private traffic only.
 
 ## PARAMETERS
 
@@ -482,14 +494,14 @@ Accept wildcard characters: False
 ```
 
 ### -PublicIpAddress
-One or more Public IP Addresses. The Public IP addresses must use Standard SKU and must belong to the same resource group as the Firewall.
+One or more Public IP Addresses. The Public IP addresses must use Standard SKU and must belong to the same resource group as the Firewall. No input needed for Forced Tunneling Firewalls. 
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress[]
 Parameter Sets: IpConfigurationParameterValues
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -504,7 +516,7 @@ Type: System.String
 Parameter Sets: OldIpConfigurationParameterValues
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

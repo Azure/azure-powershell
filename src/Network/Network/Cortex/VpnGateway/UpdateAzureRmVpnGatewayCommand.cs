@@ -78,6 +78,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "The list of VpnGatewayNatRules that are associated with this VpnGateway.")]
+        public PSVpnGatewayNatRule[] VpnGatewayNatRule { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "The scale unit for this VpnGateway.")]
         public uint VpnGatewayScaleUnit { get; set; }
 
@@ -85,6 +90,11 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "The BGP peering addresses for this VpnGateway bgpsettings.")]
         public PSIpConfigurationBgpPeeringAddress[] BgpPeeringAddress { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Flag to enable Bgp route translation for NAT on this VpnGateway.")]
+        public bool? EnableBgpRouteTranslationForNat { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -122,6 +132,12 @@ namespace Microsoft.Azure.Commands.Network
                 throw new PSArgumentException(Properties.Resources.VpnGatewayNotFound);
             }
 
+            // Enable the Bgp route translation for NAT on this VpnGateway, if specified by the customer.
+            if (this.EnableBgpRouteTranslationForNat.HasValue)
+            {
+                existingVpnGateway.EnableBgpRouteTranslationForNat = this.EnableBgpRouteTranslationForNat.Value;
+            }
+
             //// Modify scale unit if specified
             if (this.VpnGatewayScaleUnit > 0)
             {
@@ -133,6 +149,13 @@ namespace Microsoft.Azure.Commands.Network
             {
                 existingVpnGateway.Connections = new List<PSVpnConnection>();
                 existingVpnGateway.Connections.AddRange(this.VpnConnection);
+            }
+
+            //// Modify the natRules
+            existingVpnGateway.NatRules = new List<PSVpnGatewayNatRule>();
+            if (this.VpnGatewayNatRule != null && this.VpnGatewayNatRule.Any())
+            {
+                existingVpnGateway.NatRules.AddRange(this.VpnGatewayNatRule);
             }
 
             //// Modify BgpPeeringAddress

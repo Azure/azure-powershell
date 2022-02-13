@@ -98,6 +98,11 @@ function Test-App
 	Assert-AreEqual 1 $app.MinimumNodes
 	Assert-AreEqual 4 $app.MaximumNodes
 
+	# Test noop
+	$appNoop = $app | Update-AzServiceFabricApplication -Verbose
+	Assert-AreEqual "Succeeded" $appNoop.ProvisioningState
+	Assert-AreEqualObjectPropertiesExcept $app $appNoop @("ETag")
+
 	$removeResponse = Remove-AzServiceFabricApplication -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appName -Force -PassThru -Verbose
 	Assert-True { $removeResponse }
 

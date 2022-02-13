@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Models
 {
     public class PSImportSourceCredentials
     {
-        public PSImportSourceCredentials(string password, string username = default(string))
+        public PSImportSourceCredentials(string username, string password)
         {
             Username = username;
             Password = password;

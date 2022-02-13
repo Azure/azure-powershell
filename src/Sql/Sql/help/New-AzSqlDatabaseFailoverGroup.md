@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/new-azsqldatabasefailovergroup
+online version: https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabasefailovergroup
 schema: 2.0.0
 ---
 
@@ -44,7 +44,7 @@ This command creates a new Failover Group with failover policy 'Manual' for two 
 ## PARAMETERS
 
 ### -AllowReadOnlyFailoverToPrimary
-Whether an outage on the secondary server should trigger automatic failover of the read-only endpoint. This feature is not yet supported.
+Whether an outage on the secondary server should trigger automatic failover of the read-only endpoint.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Sql.FailoverGroup.Model.AllowReadOnlyFailoverToPrimary

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 5C309071-A2ED-464C-9197-0A77859C8FBB
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azvirtualnetworkgateway
+online version: https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworkgateway
 schema: 2.0.0
 ---
 
@@ -17,78 +17,34 @@ Updates a virtual network gateway.
 ```
 Set-AzVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> [-GatewaySku <String>]
  [-GatewayDefaultSite <PSLocalNetworkGateway>] [-VpnClientAddressPool <String[]>]
- [-VpnClientProtocol <String[]>] [-VpnClientRootCertificates <PSVpnClientRootCertificate[]>]
+ [-VpnClientProtocol <String[]>] [-VpnAuthenticationType <String[]>]
+ [-VpnClientRootCertificates <PSVpnClientRootCertificate[]>]
  [-VpnClientRevokedCertificates <PSVpnClientRevokedCertificate[]>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
  [-Asn <UInt32>] [-PeerWeight <Int32>]
  [-IpConfigurationBgpPeeringAddresses <PSIpConfigurationBgpPeeringAddress[]>] [-EnableActiveActiveFeature]
- [-EnablePrivateIpAddress <Boolean>] [-DisableActiveActiveFeature] [-RemoveAadAuthentication]
- [-CustomRoute <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### RadiusServerConfiguration
-```
-Set-AzVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> [-GatewaySku <String>]
- [-GatewayDefaultSite <PSLocalNetworkGateway>] [-VpnClientAddressPool <String[]>]
- [-VpnClientProtocol <String[]>] [-VpnClientRootCertificates <PSVpnClientRootCertificate[]>]
- [-VpnClientRevokedCertificates <PSVpnClientRevokedCertificate[]>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
- [-Asn <UInt32>] [-PeerWeight <Int32>]
- [-IpConfigurationBgpPeeringAddresses <PSIpConfigurationBgpPeeringAddress[]>] [-EnableActiveActiveFeature]
- [-EnablePrivateIpAddress <Boolean>] [-DisableActiveActiveFeature] -RadiusServerAddress <String>
- -RadiusServerSecret <SecureString> [-RemoveAadAuthentication] [-CustomRoute <String[]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### RadiusServerConfigurationUpdateResourceWithTags
-```
-Set-AzVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> [-GatewaySku <String>]
- [-GatewayDefaultSite <PSLocalNetworkGateway>] [-VpnClientAddressPool <String[]>]
- [-VpnClientProtocol <String[]>] [-VpnClientRootCertificates <PSVpnClientRootCertificate[]>]
- [-VpnClientRevokedCertificates <PSVpnClientRevokedCertificate[]>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
- [-Asn <UInt32>] [-PeerWeight <Int32>]
- [-IpConfigurationBgpPeeringAddresses <PSIpConfigurationBgpPeeringAddress[]>] [-EnableActiveActiveFeature]
- [-EnablePrivateIpAddress <Boolean>] [-DisableActiveActiveFeature] -RadiusServerAddress <String>
- -RadiusServerSecret <SecureString> [-RemoveAadAuthentication] [-CustomRoute <String[]>] -Tag <Hashtable>
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### MultipleRadiusServersConfiguration
-```
-Set-AzVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> [-GatewaySku <String>]
- [-GatewayDefaultSite <PSLocalNetworkGateway>] [-VpnClientAddressPool <String[]>]
- [-VpnClientProtocol <String[]>] [-VpnClientRootCertificates <PSVpnClientRootCertificate[]>]
- [-VpnClientRevokedCertificates <PSVpnClientRevokedCertificate[]>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
- [-Asn <UInt32>] [-PeerWeight <Int32>]
- [-IpConfigurationBgpPeeringAddresses <PSIpConfigurationBgpPeeringAddress[]>] [-EnableActiveActiveFeature]
- [-EnablePrivateIpAddress <Boolean>] [-DisableActiveActiveFeature] -RadiusServerList <PSRadiusServer[]>
- [-RemoveAadAuthentication] [-CustomRoute <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### AadAuthenticationConfiguration
-```
-Set-AzVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> [-GatewaySku <String>]
- [-GatewayDefaultSite <PSLocalNetworkGateway>] [-VpnClientAddressPool <String[]>]
- [-VpnClientProtocol <String[]>] [-VpnClientRootCertificates <PSVpnClientRootCertificate[]>]
- [-VpnClientRevokedCertificates <PSVpnClientRevokedCertificate[]>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
- [-Asn <UInt32>] [-PeerWeight <Int32>]
- [-IpConfigurationBgpPeeringAddresses <PSIpConfigurationBgpPeeringAddress[]>] [-EnableActiveActiveFeature]
- [-EnablePrivateIpAddress <Boolean>] [-DisableActiveActiveFeature] -AadTenantUri <String>
- -AadAudienceId <String> -AadIssuerUri <String> [-RemoveAadAuthentication] [-CustomRoute <String[]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnablePrivateIpAddress <Boolean>] [-DisableActiveActiveFeature] [-RadiusServerAddress <String>]
+ [-RadiusServerSecret <SecureString>] [-RadiusServerList <PSRadiusServer[]>] [-AadTenantUri <String>]
+ [-AadAudienceId <String>] [-AadIssuerUri <String>] [-RemoveAadAuthentication] [-CustomRoute <String[]>]
+ [-NatRule <PSVirtualNetworkGatewayNatRule[]>] [-BgpRouteTranslationForNat <Boolean>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateResourceWithTags
 ```
 Set-AzVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> [-GatewaySku <String>]
  [-GatewayDefaultSite <PSLocalNetworkGateway>] [-VpnClientAddressPool <String[]>]
- [-VpnClientProtocol <String[]>] [-VpnClientRootCertificates <PSVpnClientRootCertificate[]>]
+ [-VpnClientProtocol <String[]>] [-VpnAuthenticationType <String[]>]
+ [-VpnClientRootCertificates <PSVpnClientRootCertificate[]>]
  [-VpnClientRevokedCertificates <PSVpnClientRevokedCertificate[]>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
  [-Asn <UInt32>] [-PeerWeight <Int32>]
  [-IpConfigurationBgpPeeringAddresses <PSIpConfigurationBgpPeeringAddress[]>] [-EnableActiveActiveFeature]
- [-EnablePrivateIpAddress <Boolean>] [-DisableActiveActiveFeature] [-RemoveAadAuthentication]
- [-CustomRoute <String[]>] -Tag <Hashtable> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-EnablePrivateIpAddress <Boolean>] [-DisableActiveActiveFeature] [-RadiusServerAddress <String>]
+ [-RadiusServerSecret <SecureString>] [-RadiusServerList <PSRadiusServer[]>] [-AadTenantUri <String>]
+ [-AadAudienceId <String>] [-AadIssuerUri <String>] [-RemoveAadAuthentication] [-CustomRoute <String[]>]
+ [-NatRule <PSVirtualNetworkGatewayNatRule[]>] [-BgpRouteTranslationForNat <Boolean>]
+ -Tag <Hashtable> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -313,6 +269,117 @@ The third command assigns the address list into addresslist1.
 The fourth command created a PSIpConfigurationBgpPeeringAddress object.
 The fifth command set this new created PSIpConfigurationBgpPeeringAddress to IpConfigurationBgpPeeringAddresses and update the gateway.
 
+### Example 6: Add/Update NatRules to an existing virtual network gateway
+```
+PS C:\>$Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "ResourceGroup001" -Name "Gateway001"
+PS C:\>$vngNatRules = $Gateway.NatRules
+PS C:\>$natRule = New-AzVirtualNetworkGatewayNatRule -Name "natRule1" -Type "Static" -Mode "IngressSnat" -InternalMapping @("25.0.0.0/16") -ExternalMapping @("30.0.0.0/16")
+PS C:\>$vngNatRules.Add($natrule)
+PS C:\>Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -NatRule $vngNatRules.NatRules -BgpRouteTranslationForNat $true
+
+Name                   : Gateway001
+ResourceGroupName      : ResourceGroup001
+Location               : westcentralus
+Id                     : /subscriptions/59ac12a6-f2b7-46d4-af3d-98ba9d9dbd92/resourceGroups/ResourceGroup001/providers/Microsoft.Network/virtualNetworkGateways/Gateway001
+Etag                   : W/"a08f13d3-6106-44e0-9127-e35e6f9793d5"
+ResourceGuid           : 30993429-a1ed-42ca-9862-9156b013626e
+ProvisioningState      : Succeeded
+Tags                   :
+IpConfigurations       : [
+                           {
+                             "PrivateIpAllocationMethod": "Dynamic",
+                             "Subnet": {
+                               "Id": "/subscriptions/59ac12a6-f2b7-46d4-af3d-98ba9d9dbd92/resourceGroups/ResourceGroup001/providers/Microsoft.Network/virtualNetworks/newApipaNet/subnets/GatewaySubnet"
+                             },
+                             "PublicIpAddress": {
+                               "Id": "/subscriptions/59ac12a6-f2b7-46d4-af3d-98ba9d9dbd92/resourceGroups/ResourceGroup001/providers/Microsoft.Network/publicIPAddresses/newapipaip"
+                             },
+                             "Name": "default",
+                             "Etag": "W/\"a08f13d3-6106-44e0-9127-e35e6f9793d5\"",
+                             "Id": "/subscriptions/59ac12a6-f2b7-46d4-af3d-98ba9d9dbd92/resourceGroups/ResourceGroup001/providers/Microsoft.Network/virtualNetworkGateways/Gateway001/ipConfigurations/default"
+                           }
+                         ]
+GatewayType            : Vpn
+VpnType                : RouteBased
+EnableBgp              : False
+ActiveActive           : False
+GatewayDefaultSite     : null
+Sku                    : {
+                           "Capacity": 2,
+                           "Name": "VpnGw1",
+                           "Tier": "VpnGw1"
+                         }
+VpnClientConfiguration : null
+BgpSettings            : {
+                           "Asn": 65515,
+                           "BgpPeeringAddress": "10.1.255.30",
+                           "PeerWeight": 0,
+                           "BgpPeeringAddresses": [
+                             {
+                               "IpconfigurationId": "/subscriptions/59ac12a6-f2b7-46d4-af3d-98ba9d9dbd92/resourceGroups/ResourceGroup001/providers/Microsoft.Network/virtualNetworkGateways/Gateway001/ipConfigurations/default",
+                               "DefaultBgpIpAddresses": [
+                                 "10.1.255.30"
+                               ],
+                               "CustomBgpIpAddresses": [
+                                 "169.254.21.55"
+                               ],
+                               "TunnelIpAddresses": [
+                                 "13.78.146.151"
+                               ]
+                             }
+                           ]
+                         }
+NatRules                        : [
+                                    {
+                                      "VirtualNetworkGatewayNatRulePropertiesType": "Static",
+                                      "Mode": "IngressSnat",
+                                      "InternalMappings": [
+                                        {
+                                          "AddressSpace": "25.0.0.0/16"
+                                        }
+                                      ],
+                                      "ExternalMappings": [
+                                        {
+                                          "AddressSpace": "30.0.0.0/16"
+                                        }
+                                      ],
+                                      "ProvisioningState": "Succeeded",
+                                      "Name": "natRule1",
+                                      "Etag": "W/\"5150d788-e165-42ba-99c4-8138a545fce9\"",
+                                      "Id": "/subscriptions/59ac12a6-f2b7-46d4-af3d-98ba9d9dbd92/resourceGroups/ResourceGroup001/providers/Microsoft.Network/virtualNetworkGateways/Gateway001/natRules/natRule1"
+                                    }
+                                  ]
+EnableBgpRouteTranslationForNat : True
+```
+
+The first command gets a virtual network gateway named Gateway01 that belongs to resource group ResourceGroup001 and stores it to the variable named $Gateway
+The second command assigns the existing natrules into variable vngNatRules.
+The third command assigns the value newly created PSVirtualNetworkGatewayNatRule object natrule into variable natRule.
+The fourth command add this PSVirtualNetworkGatewayNatRule object into vngNatRules list.
+The fifth command set this new created PSVirtualNetworkGatewayNatRule to NatRules of gateway and update the gateway.
+
+### Example 7: Delete multiple expired VpnClientRootCertificates of an existing virtual network gateway
+```
+PS C:\>$Gateway=Get-Azvirtualnetworkgateway -ResourceGroupName "ResourceGroup001" -Name "Gateway001"
+
+PS C:\>$rootCerts=$Gateway.VpnClientConfiguration.VpnClientRootCertificates
+
+PS C:\>$rootCerts.Count
+PS C:\>$rootCerts[0]
+PS C:\>$rootCerts[1]
+PS C:\>$rootCerts.Remove($rootCerts[1])
+
+PS C:\>$Gateway1 = Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -VpnClientRootCertificates $rootCerts
+
+```
+
+The first command gets a virtual network gateway named Gateway01 that belongs to resource group ResourceGroup001 and stores it to the variable named $Gateway
+The second command gets all the root certificates on VirtualNetworkGateway and save it to another variable $rootCerts
+The third command shows total existing root certs on VirtualNetworkGateway. 
+The forth & fifth commands print root certificates at those corresponding indices for customer to see which ones they want to delete.
+The sixth command removes expired root certificate by using that index e.g. here 1. Repeat same steps to remove multiple expired certificates from variable: $rootCerts
+The seventh command updates VirtualNetworkGateway to set valid root certificates i.e. certificates that exists in variable: $rootCerts
+
 ## PARAMETERS
 
 ### -AadAudienceId
@@ -320,10 +387,10 @@ P2S AAD authentication option:AadAudienceId.
 
 ```yaml
 Type: System.String
-Parameter Sets: AadAuthenticationConfiguration
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -335,10 +402,10 @@ P2S AAD authentication option:AadIssuerUri.
 
 ```yaml
 Type: System.String
-Parameter Sets: AadAuthenticationConfiguration
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -350,10 +417,10 @@ P2S AAD authentication option:AadTenantUri.
 
 ```yaml
 Type: System.String
-Parameter Sets: AadAuthenticationConfiguration
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -387,6 +454,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -BgpRouteTranslationForNat
+This will enable and disable BgpRouteTranslationForNat on this VirtualNetworkGateway
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -512,6 +594,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -NatRule
+The NatRules for Virtual network gateway.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGatewayNatRule[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -PeerWeight
 The weight added to routes learned over BGP from this virtual network gateway
 
@@ -532,10 +629,10 @@ P2S External Radius server address.
 
 ```yaml
 Type: System.String
-Parameter Sets: RadiusServerConfiguration, RadiusServerConfigurationUpdateResourceWithTags
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -547,10 +644,10 @@ P2S multiple external Radius servers.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSRadiusServer[]
-Parameter Sets: MultipleRadiusServersConfiguration
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -562,10 +659,10 @@ P2S External Radius server secret.
 
 ```yaml
 Type: System.Security.SecureString
-Parameter Sets: RadiusServerConfiguration, RadiusServerConfigurationUpdateResourceWithTags
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -592,7 +689,7 @@ P2S External Radius server address.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: RadiusServerConfigurationUpdateResourceWithTags, UpdateResourceWithTags
+Parameter Sets: UpdateResourceWithTags
 Aliases:
 
 Required: True
@@ -615,6 +712,22 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -VpnAuthenticationType
+The list of P2S VPN client authentication types.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+Accepted values: Certificate, Radius, AAD
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -754,6 +867,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.Network.Models.PSIpConfigurationBgpPeeringAddress[]
 
 ### System.Security.SecureString
+
+### Microsoft.Azure.Commands.Network.Models.PSRadiusServer[]
+
+### Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGatewayNatRule[]
 
 ## OUTPUTS
 

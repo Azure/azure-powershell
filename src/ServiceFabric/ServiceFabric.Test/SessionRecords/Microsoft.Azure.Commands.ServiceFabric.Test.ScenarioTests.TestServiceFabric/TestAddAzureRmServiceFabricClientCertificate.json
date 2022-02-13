@@ -7,15 +7,15 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2061a90f-ea37-453d-8b94-6ec966f41376"
+          "8ce68dd4-5a22-43b8-9c95-8bd45c369c3d"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28801.04",
+          "FxVersion/4.6.29812.02",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
           "Microsoft.Azure.Management.ServiceFabric.ServiceFabricManagementClient/1.3.0.0"
         ]
       },
@@ -36,19 +36,19 @@
           "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11969"
         ],
         "x-ms-request-id": [
-          "3e38265f-08e0-4e9f-9c3d-4d3a40291b1c"
+          "5d357463-157a-40b9-bdab-0d8b49632120"
         ],
         "x-ms-correlation-request-id": [
-          "3e38265f-08e0-4e9f-9c3d-4d3a40291b1c"
+          "5d357463-157a-40b9-bdab-0d8b49632120"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200901T232408Z:3e38265f-08e0-4e9f-9c3d-4d3a40291b1c"
+          "WESTCENTRALUS:20210310T012902Z:5d357463-157a-40b9-bdab-0d8b49632120"
         ],
         "Date": [
-          "Tue, 01 Sep 2020 23:24:07 GMT"
+          "Wed, 10 Mar 2021 01:29:02 GMT"
         ],
         "Content-Length": [
           "2572"
@@ -60,7 +60,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"type\": \"Microsoft.ServiceFabric/clusters\",\r\n  \"location\": \"southcentralus\",\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourcegroups/azurermsfrg/providers/Microsoft.ServiceFabric/clusters/azurermsfclustertest\",\r\n  \"name\": \"azurermsfclustertest\",\r\n  \"tags\": {},\r\n  \"etag\": \"W/\\\"637345954992021222\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"clusterId\": \"8103e73b-b02f-409c-bf22-788d520b0475\",\r\n    \"clusterCodeVersion\": \"7.1.458.9590\",\r\n    \"clusterState\": \"Ready\",\r\n    \"managementEndpoint\": \"https://azurermsfclustertest.southcentralus.cloudapp.azure.com:19080\",\r\n    \"clusterEndpoint\": \"https://warp-test-winfabrp-southcentralus.trafficmanager.net/runtime/clusters/8103e73b-b02f-409c-bf22-788d520b0475\",\r\n    \"certificate\": {\r\n      \"thumbprint\": \"3545EEBFA6F5EA7A1D436F5D6C708AD6A7110D6B\",\r\n      \"thumbprintSecondary\": \"9ED6D1B225C63DC653CB0D9E16CFD7F799785FAC\",\r\n      \"x509StoreName\": \"My\"\r\n    },\r\n    \"clientCertificateThumbprints\": [],\r\n    \"clientCertificateCommonNames\": [],\r\n    \"fabricSettings\": [\r\n      {\r\n        \"name\": \"Security\",\r\n        \"parameters\": [\r\n          {\r\n            \"name\": \"ClusterProtectionLevel\",\r\n            \"value\": \"EncryptAndSign\"\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"vmImage\": \"Windows\",\r\n    \"reliabilityLevel\": \"Silver\",\r\n    \"nodeTypes\": [\r\n      {\r\n        \"name\": \"nt1vm\",\r\n        \"vmInstanceCount\": 5,\r\n        \"clientConnectionEndpointPort\": 19000,\r\n        \"httpGatewayEndpointPort\": 19080,\r\n        \"applicationPorts\": {\r\n          \"startPort\": 20000,\r\n          \"endPort\": 30000\r\n        },\r\n        \"ephemeralPorts\": {\r\n          \"startPort\": 49152,\r\n          \"endPort\": 65534\r\n        },\r\n        \"isPrimary\": true,\r\n        \"durabilityLevel\": \"Bronze\"\r\n      }\r\n    ],\r\n    \"diagnosticsStorageAccountConfig\": {\r\n      \"storageAccountName\": \"movceivkf3yzy2\",\r\n      \"primaryAccessKey\": \"\",\r\n      \"secondaryAccessKey\": \"\",\r\n      \"protectedAccountKeyName\": \"StorageAccountKey1\",\r\n      \"blobEndpoint\": \"https://movceivkf3yzy2.blob.core.windows.net/\",\r\n      \"queueEndpoint\": \"https://movceivkf3yzy2.queue.core.windows.net/\",\r\n      \"tableEndpoint\": \"https://movceivkf3yzy2.table.core.windows.net/\",\r\n      \"protectedAccountKeyName2\": \"\"\r\n    },\r\n    \"upgradeMode\": \"Automatic\",\r\n    \"addonFeatures\": [\r\n      \"DnsService\",\r\n      \"RepairManager\"\r\n    ],\r\n    \"availableClusterVersions\": [\r\n      {\r\n        \"codeVersion\": \"7.1.458.9590\",\r\n        \"supportExpiryUtc\": \"9999-12-31T23:59:59.9999999\",\r\n        \"environment\": \"Windows\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.ServiceFabric/clusters\",\r\n  \"location\": \"southcentralus\",\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourcegroups/azurermsfrg/providers/Microsoft.ServiceFabric/clusters/azurermsfclustertest\",\r\n  \"name\": \"azurermsfclustertest\",\r\n  \"tags\": {},\r\n  \"etag\": \"W/\\\"637509265581228428\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"clusterId\": \"395da2f8-755c-4eec-a5a8-b17098380ae6\",\r\n    \"clusterCodeVersion\": \"7.2.477.9590\",\r\n    \"clusterState\": \"Ready\",\r\n    \"managementEndpoint\": \"https://azurermsfclustertest.southcentralus.cloudapp.azure.com:19080\",\r\n    \"clusterEndpoint\": \"https://warp-test-winfabrp-southcentralus.trafficmanager.net/runtime/clusters/395da2f8-755c-4eec-a5a8-b17098380ae6\",\r\n    \"certificate\": {\r\n      \"thumbprint\": \"ED1647D7E58F9F69E473B4700A0CCED50F7F65B0\",\r\n      \"thumbprintSecondary\": \"D1DC34B88497F50FB0C0F019DA74E4DA5FADD56D\",\r\n      \"x509StoreName\": \"My\"\r\n    },\r\n    \"clientCertificateThumbprints\": [],\r\n    \"clientCertificateCommonNames\": [],\r\n    \"fabricSettings\": [\r\n      {\r\n        \"name\": \"Security\",\r\n        \"parameters\": [\r\n          {\r\n            \"name\": \"ClusterProtectionLevel\",\r\n            \"value\": \"EncryptAndSign\"\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"vmImage\": \"Windows\",\r\n    \"reliabilityLevel\": \"Silver\",\r\n    \"nodeTypes\": [\r\n      {\r\n        \"name\": \"nt1vm\",\r\n        \"vmInstanceCount\": 5,\r\n        \"clientConnectionEndpointPort\": 19000,\r\n        \"httpGatewayEndpointPort\": 19080,\r\n        \"applicationPorts\": {\r\n          \"startPort\": 20000,\r\n          \"endPort\": 30000\r\n        },\r\n        \"ephemeralPorts\": {\r\n          \"startPort\": 49152,\r\n          \"endPort\": 65534\r\n        },\r\n        \"isPrimary\": true,\r\n        \"durabilityLevel\": \"Bronze\"\r\n      }\r\n    ],\r\n    \"diagnosticsStorageAccountConfig\": {\r\n      \"storageAccountName\": \"movceivkf3yzy2\",\r\n      \"primaryAccessKey\": \"\",\r\n      \"secondaryAccessKey\": \"\",\r\n      \"protectedAccountKeyName\": \"StorageAccountKey1\",\r\n      \"blobEndpoint\": \"https://movceivkf3yzy2.blob.core.windows.net/\",\r\n      \"queueEndpoint\": \"https://movceivkf3yzy2.queue.core.windows.net/\",\r\n      \"tableEndpoint\": \"https://movceivkf3yzy2.table.core.windows.net/\",\r\n      \"protectedAccountKeyName2\": \"\"\r\n    },\r\n    \"upgradeMode\": \"Automatic\",\r\n    \"addonFeatures\": [\r\n      \"DnsService\",\r\n      \"RepairManager\"\r\n    ],\r\n    \"availableClusterVersions\": [\r\n      {\r\n        \"codeVersion\": \"7.2.477.9590\",\r\n        \"supportExpiryUtc\": \"9999-12-31T23:59:59.9999999\",\r\n        \"environment\": \"Windows\"\r\n      }\r\n    ]\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -70,15 +70,15 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c21a8661-0538-435d-8e50-b6fcb156282d"
+          "e82c4f75-d966-4c8f-9269-3ec681468ad9"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28801.04",
+          "FxVersion/4.6.29812.02",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
           "Microsoft.Azure.Management.ServiceFabric.ServiceFabricManagementClient/1.3.0.0"
         ]
       },
@@ -99,19 +99,19 @@
           "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
+          "11968"
         ],
         "x-ms-request-id": [
-          "ae55a634-dea5-45e6-a5cc-997c16bd735c"
+          "a267cf90-d580-4fa6-be14-0497c2f42b05"
         ],
         "x-ms-correlation-request-id": [
-          "ae55a634-dea5-45e6-a5cc-997c16bd735c"
+          "a267cf90-d580-4fa6-be14-0497c2f42b05"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200901T232408Z:ae55a634-dea5-45e6-a5cc-997c16bd735c"
+          "WESTCENTRALUS:20210310T012903Z:a267cf90-d580-4fa6-be14-0497c2f42b05"
         ],
         "Date": [
-          "Tue, 01 Sep 2020 23:24:07 GMT"
+          "Wed, 10 Mar 2021 01:29:02 GMT"
         ],
         "Content-Length": [
           "2572"
@@ -123,64 +123,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"type\": \"Microsoft.ServiceFabric/clusters\",\r\n  \"location\": \"southcentralus\",\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourcegroups/azurermsfrg/providers/Microsoft.ServiceFabric/clusters/azurermsfclustertest\",\r\n  \"name\": \"azurermsfclustertest\",\r\n  \"tags\": {},\r\n  \"etag\": \"W/\\\"637345954992021222\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"clusterId\": \"8103e73b-b02f-409c-bf22-788d520b0475\",\r\n    \"clusterCodeVersion\": \"7.1.458.9590\",\r\n    \"clusterState\": \"Ready\",\r\n    \"managementEndpoint\": \"https://azurermsfclustertest.southcentralus.cloudapp.azure.com:19080\",\r\n    \"clusterEndpoint\": \"https://warp-test-winfabrp-southcentralus.trafficmanager.net/runtime/clusters/8103e73b-b02f-409c-bf22-788d520b0475\",\r\n    \"certificate\": {\r\n      \"thumbprint\": \"3545EEBFA6F5EA7A1D436F5D6C708AD6A7110D6B\",\r\n      \"thumbprintSecondary\": \"9ED6D1B225C63DC653CB0D9E16CFD7F799785FAC\",\r\n      \"x509StoreName\": \"My\"\r\n    },\r\n    \"clientCertificateThumbprints\": [],\r\n    \"clientCertificateCommonNames\": [],\r\n    \"fabricSettings\": [\r\n      {\r\n        \"name\": \"Security\",\r\n        \"parameters\": [\r\n          {\r\n            \"name\": \"ClusterProtectionLevel\",\r\n            \"value\": \"EncryptAndSign\"\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"vmImage\": \"Windows\",\r\n    \"reliabilityLevel\": \"Silver\",\r\n    \"nodeTypes\": [\r\n      {\r\n        \"name\": \"nt1vm\",\r\n        \"vmInstanceCount\": 5,\r\n        \"clientConnectionEndpointPort\": 19000,\r\n        \"httpGatewayEndpointPort\": 19080,\r\n        \"applicationPorts\": {\r\n          \"startPort\": 20000,\r\n          \"endPort\": 30000\r\n        },\r\n        \"ephemeralPorts\": {\r\n          \"startPort\": 49152,\r\n          \"endPort\": 65534\r\n        },\r\n        \"isPrimary\": true,\r\n        \"durabilityLevel\": \"Bronze\"\r\n      }\r\n    ],\r\n    \"diagnosticsStorageAccountConfig\": {\r\n      \"storageAccountName\": \"movceivkf3yzy2\",\r\n      \"primaryAccessKey\": \"\",\r\n      \"secondaryAccessKey\": \"\",\r\n      \"protectedAccountKeyName\": \"StorageAccountKey1\",\r\n      \"blobEndpoint\": \"https://movceivkf3yzy2.blob.core.windows.net/\",\r\n      \"queueEndpoint\": \"https://movceivkf3yzy2.queue.core.windows.net/\",\r\n      \"tableEndpoint\": \"https://movceivkf3yzy2.table.core.windows.net/\",\r\n      \"protectedAccountKeyName2\": \"\"\r\n    },\r\n    \"upgradeMode\": \"Automatic\",\r\n    \"addonFeatures\": [\r\n      \"DnsService\",\r\n      \"RepairManager\"\r\n    ],\r\n    \"availableClusterVersions\": [\r\n      {\r\n        \"codeVersion\": \"7.1.458.9590\",\r\n        \"supportExpiryUtc\": \"9999-12-31T23:59:59.9999999\",\r\n        \"environment\": \"Windows\"\r\n      }\r\n    ]\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.ServiceFabric/clusters/azurermsfclustertest?api-version=2020-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Jlc291cmNlR3JvdXBzL2F6dXJlcm1zZnJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUZhYnJpYy9jbHVzdGVycy9henVyZXJtc2ZjbHVzdGVydGVzdD9hcGktdmVyc2lvbj0yMDIwLTAzLTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.28801.04",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.ServiceFabric.ServiceFabricManagementClient/1.3.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11989"
-        ],
-        "x-ms-request-id": [
-          "04ad151b-291c-45e9-812c-6a7257f0aa88"
-        ],
-        "x-ms-correlation-request-id": [
-          "04ad151b-291c-45e9-812c-6a7257f0aa88"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20200901T233111Z:04ad151b-291c-45e9-812c-6a7257f0aa88"
-        ],
-        "Date": [
-          "Tue, 01 Sep 2020 23:31:10 GMT"
-        ],
-        "Content-Length": [
-          "2765"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"type\": \"Microsoft.ServiceFabric/clusters\",\r\n  \"location\": \"southcentralus\",\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourcegroups/azurermsfrg/providers/Microsoft.ServiceFabric/clusters/azurermsfclustertest\",\r\n  \"name\": \"azurermsfclustertest\",\r\n  \"tags\": {},\r\n  \"etag\": \"W/\\\"637345954992021223\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"clusterId\": \"8103e73b-b02f-409c-bf22-788d520b0475\",\r\n    \"clusterCodeVersion\": \"7.1.458.9590\",\r\n    \"clusterState\": \"Ready\",\r\n    \"managementEndpoint\": \"https://azurermsfclustertest.southcentralus.cloudapp.azure.com:19080\",\r\n    \"clusterEndpoint\": \"https://warp-test-winfabrp-southcentralus.trafficmanager.net/runtime/clusters/8103e73b-b02f-409c-bf22-788d520b0475\",\r\n    \"certificate\": {\r\n      \"thumbprint\": \"3545EEBFA6F5EA7A1D436F5D6C708AD6A7110D6B\",\r\n      \"thumbprintSecondary\": \"9ED6D1B225C63DC653CB0D9E16CFD7F799785FAC\",\r\n      \"x509StoreName\": \"My\"\r\n    },\r\n    \"clientCertificateThumbprints\": [],\r\n    \"clientCertificateCommonNames\": [\r\n      {\r\n        \"certificateCommonName\": \"cn=AzureRMSFTestCert2\",\r\n        \"certificateIssuerThumbprint\": \"9ED6D1B225C63DC653CB0D9E16CFD7F799785FAC\",\r\n        \"isAdmin\": false\r\n      }\r\n    ],\r\n    \"fabricSettings\": [\r\n      {\r\n        \"name\": \"Security\",\r\n        \"parameters\": [\r\n          {\r\n            \"name\": \"ClusterProtectionLevel\",\r\n            \"value\": \"EncryptAndSign\"\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"vmImage\": \"Windows\",\r\n    \"reliabilityLevel\": \"Silver\",\r\n    \"nodeTypes\": [\r\n      {\r\n        \"name\": \"nt1vm\",\r\n        \"vmInstanceCount\": 5,\r\n        \"clientConnectionEndpointPort\": 19000,\r\n        \"httpGatewayEndpointPort\": 19080,\r\n        \"applicationPorts\": {\r\n          \"startPort\": 20000,\r\n          \"endPort\": 30000\r\n        },\r\n        \"ephemeralPorts\": {\r\n          \"startPort\": 49152,\r\n          \"endPort\": 65534\r\n        },\r\n        \"isPrimary\": true,\r\n        \"durabilityLevel\": \"Bronze\"\r\n      }\r\n    ],\r\n    \"diagnosticsStorageAccountConfig\": {\r\n      \"storageAccountName\": \"movceivkf3yzy2\",\r\n      \"primaryAccessKey\": \"\",\r\n      \"secondaryAccessKey\": \"\",\r\n      \"protectedAccountKeyName\": \"StorageAccountKey1\",\r\n      \"blobEndpoint\": \"https://movceivkf3yzy2.blob.core.windows.net/\",\r\n      \"queueEndpoint\": \"https://movceivkf3yzy2.queue.core.windows.net/\",\r\n      \"tableEndpoint\": \"https://movceivkf3yzy2.table.core.windows.net/\",\r\n      \"protectedAccountKeyName2\": \"\"\r\n    },\r\n    \"upgradeMode\": \"Automatic\",\r\n    \"addonFeatures\": [\r\n      \"DnsService\",\r\n      \"RepairManager\"\r\n    ],\r\n    \"availableClusterVersions\": [\r\n      {\r\n        \"codeVersion\": \"7.1.458.9590\",\r\n        \"supportExpiryUtc\": \"9999-12-31T23:59:59.9999999\",\r\n        \"environment\": \"Windows\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.ServiceFabric/clusters\",\r\n  \"location\": \"southcentralus\",\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourcegroups/azurermsfrg/providers/Microsoft.ServiceFabric/clusters/azurermsfclustertest\",\r\n  \"name\": \"azurermsfclustertest\",\r\n  \"tags\": {},\r\n  \"etag\": \"W/\\\"637509265581228428\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"clusterId\": \"395da2f8-755c-4eec-a5a8-b17098380ae6\",\r\n    \"clusterCodeVersion\": \"7.2.477.9590\",\r\n    \"clusterState\": \"Ready\",\r\n    \"managementEndpoint\": \"https://azurermsfclustertest.southcentralus.cloudapp.azure.com:19080\",\r\n    \"clusterEndpoint\": \"https://warp-test-winfabrp-southcentralus.trafficmanager.net/runtime/clusters/395da2f8-755c-4eec-a5a8-b17098380ae6\",\r\n    \"certificate\": {\r\n      \"thumbprint\": \"ED1647D7E58F9F69E473B4700A0CCED50F7F65B0\",\r\n      \"thumbprintSecondary\": \"D1DC34B88497F50FB0C0F019DA74E4DA5FADD56D\",\r\n      \"x509StoreName\": \"My\"\r\n    },\r\n    \"clientCertificateThumbprints\": [],\r\n    \"clientCertificateCommonNames\": [],\r\n    \"fabricSettings\": [\r\n      {\r\n        \"name\": \"Security\",\r\n        \"parameters\": [\r\n          {\r\n            \"name\": \"ClusterProtectionLevel\",\r\n            \"value\": \"EncryptAndSign\"\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"vmImage\": \"Windows\",\r\n    \"reliabilityLevel\": \"Silver\",\r\n    \"nodeTypes\": [\r\n      {\r\n        \"name\": \"nt1vm\",\r\n        \"vmInstanceCount\": 5,\r\n        \"clientConnectionEndpointPort\": 19000,\r\n        \"httpGatewayEndpointPort\": 19080,\r\n        \"applicationPorts\": {\r\n          \"startPort\": 20000,\r\n          \"endPort\": 30000\r\n        },\r\n        \"ephemeralPorts\": {\r\n          \"startPort\": 49152,\r\n          \"endPort\": 65534\r\n        },\r\n        \"isPrimary\": true,\r\n        \"durabilityLevel\": \"Bronze\"\r\n      }\r\n    ],\r\n    \"diagnosticsStorageAccountConfig\": {\r\n      \"storageAccountName\": \"movceivkf3yzy2\",\r\n      \"primaryAccessKey\": \"\",\r\n      \"secondaryAccessKey\": \"\",\r\n      \"protectedAccountKeyName\": \"StorageAccountKey1\",\r\n      \"blobEndpoint\": \"https://movceivkf3yzy2.blob.core.windows.net/\",\r\n      \"queueEndpoint\": \"https://movceivkf3yzy2.queue.core.windows.net/\",\r\n      \"tableEndpoint\": \"https://movceivkf3yzy2.table.core.windows.net/\",\r\n      \"protectedAccountKeyName2\": \"\"\r\n    },\r\n    \"upgradeMode\": \"Automatic\",\r\n    \"addonFeatures\": [\r\n      \"DnsService\",\r\n      \"RepairManager\"\r\n    ],\r\n    \"availableClusterVersions\": [\r\n      {\r\n        \"codeVersion\": \"7.2.477.9590\",\r\n        \"supportExpiryUtc\": \"9999-12-31T23:59:59.9999999\",\r\n        \"environment\": \"Windows\"\r\n      }\r\n    ]\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -190,378 +133,12 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e260e7dd-8bb5-4099-be42-7b78a345854f"
-        ],
-        "Accept-Language": [
-          "en-US"
+          "e82c4f75-d966-4c8f-9269-3ec681468ad9"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28801.04",
+          "FxVersion/4.6.29812.02",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.ServiceFabric.ServiceFabricManagementClient/1.3.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11988"
-        ],
-        "x-ms-request-id": [
-          "0d60bf37-66e3-453c-bd8f-9be80f378720"
-        ],
-        "x-ms-correlation-request-id": [
-          "0d60bf37-66e3-453c-bd8f-9be80f378720"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20200901T233111Z:0d60bf37-66e3-453c-bd8f-9be80f378720"
-        ],
-        "Date": [
-          "Tue, 01 Sep 2020 23:31:10 GMT"
-        ],
-        "Content-Length": [
-          "2765"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"type\": \"Microsoft.ServiceFabric/clusters\",\r\n  \"location\": \"southcentralus\",\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourcegroups/azurermsfrg/providers/Microsoft.ServiceFabric/clusters/azurermsfclustertest\",\r\n  \"name\": \"azurermsfclustertest\",\r\n  \"tags\": {},\r\n  \"etag\": \"W/\\\"637345954992021223\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"clusterId\": \"8103e73b-b02f-409c-bf22-788d520b0475\",\r\n    \"clusterCodeVersion\": \"7.1.458.9590\",\r\n    \"clusterState\": \"Ready\",\r\n    \"managementEndpoint\": \"https://azurermsfclustertest.southcentralus.cloudapp.azure.com:19080\",\r\n    \"clusterEndpoint\": \"https://warp-test-winfabrp-southcentralus.trafficmanager.net/runtime/clusters/8103e73b-b02f-409c-bf22-788d520b0475\",\r\n    \"certificate\": {\r\n      \"thumbprint\": \"3545EEBFA6F5EA7A1D436F5D6C708AD6A7110D6B\",\r\n      \"thumbprintSecondary\": \"9ED6D1B225C63DC653CB0D9E16CFD7F799785FAC\",\r\n      \"x509StoreName\": \"My\"\r\n    },\r\n    \"clientCertificateThumbprints\": [],\r\n    \"clientCertificateCommonNames\": [\r\n      {\r\n        \"certificateCommonName\": \"cn=AzureRMSFTestCert2\",\r\n        \"certificateIssuerThumbprint\": \"9ED6D1B225C63DC653CB0D9E16CFD7F799785FAC\",\r\n        \"isAdmin\": false\r\n      }\r\n    ],\r\n    \"fabricSettings\": [\r\n      {\r\n        \"name\": \"Security\",\r\n        \"parameters\": [\r\n          {\r\n            \"name\": \"ClusterProtectionLevel\",\r\n            \"value\": \"EncryptAndSign\"\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"vmImage\": \"Windows\",\r\n    \"reliabilityLevel\": \"Silver\",\r\n    \"nodeTypes\": [\r\n      {\r\n        \"name\": \"nt1vm\",\r\n        \"vmInstanceCount\": 5,\r\n        \"clientConnectionEndpointPort\": 19000,\r\n        \"httpGatewayEndpointPort\": 19080,\r\n        \"applicationPorts\": {\r\n          \"startPort\": 20000,\r\n          \"endPort\": 30000\r\n        },\r\n        \"ephemeralPorts\": {\r\n          \"startPort\": 49152,\r\n          \"endPort\": 65534\r\n        },\r\n        \"isPrimary\": true,\r\n        \"durabilityLevel\": \"Bronze\"\r\n      }\r\n    ],\r\n    \"diagnosticsStorageAccountConfig\": {\r\n      \"storageAccountName\": \"movceivkf3yzy2\",\r\n      \"primaryAccessKey\": \"\",\r\n      \"secondaryAccessKey\": \"\",\r\n      \"protectedAccountKeyName\": \"StorageAccountKey1\",\r\n      \"blobEndpoint\": \"https://movceivkf3yzy2.blob.core.windows.net/\",\r\n      \"queueEndpoint\": \"https://movceivkf3yzy2.queue.core.windows.net/\",\r\n      \"tableEndpoint\": \"https://movceivkf3yzy2.table.core.windows.net/\",\r\n      \"protectedAccountKeyName2\": \"\"\r\n    },\r\n    \"upgradeMode\": \"Automatic\",\r\n    \"addonFeatures\": [\r\n      \"DnsService\",\r\n      \"RepairManager\"\r\n    ],\r\n    \"availableClusterVersions\": [\r\n      {\r\n        \"codeVersion\": \"7.1.458.9590\",\r\n        \"supportExpiryUtc\": \"9999-12-31T23:59:59.9999999\",\r\n        \"environment\": \"Windows\"\r\n      }\r\n    ]\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.ServiceFabric/clusters/azurermsfclustertest?api-version=2020-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Jlc291cmNlR3JvdXBzL2F6dXJlcm1zZnJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUZhYnJpYy9jbHVzdGVycy9henVyZXJtc2ZjbHVzdGVydGVzdD9hcGktdmVyc2lvbj0yMDIwLTAzLTAx",
-      "RequestMethod": "PATCH",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"clientCertificateCommonNames\": [\r\n      {\r\n        \"isAdmin\": false,\r\n        \"certificateCommonName\": \"cn=AzureRMSFTestCert2\",\r\n        \"certificateIssuerThumbprint\": \"9ED6D1B225C63DC653CB0D9E16CFD7F799785FAC\"\r\n      }\r\n    ],\r\n    \"clientCertificateThumbprints\": []\r\n  }\r\n}",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "fc151a46-8adc-4482-94bf-d6a9afd3f9c0"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.28801.04",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.ServiceFabric.ServiceFabricManagementClient/1.3.0.0"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "302"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operationResults/a413fea5-1772-4c4f-93df-76f2324b34b2?api-version=2020-03-01&Experiment=local"
-        ],
-        "Retry-After": [
-          "60"
-        ],
-        "Azure-AsyncOperation": [
-          "https://management.azure.com:443/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/a413fea5-1772-4c4f-93df-76f2324b34b2?api-version=2020-03-01&Experiment=local"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
-        ],
-        "x-ms-request-id": [
-          "63f204ea-32c4-44f4-ac58-7e4cfa199784"
-        ],
-        "x-ms-correlation-request-id": [
-          "63f204ea-32c4-44f4-ac58-7e4cfa199784"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20200901T232409Z:63f204ea-32c4-44f4-ac58-7e4cfa199784"
-        ],
-        "Date": [
-          "Tue, 01 Sep 2020 23:24:08 GMT"
-        ],
-        "Content-Length": [
-          "2591"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"type\": \"Microsoft.ServiceFabric/clusters\",\r\n  \"location\": \"southcentralus\",\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourcegroups/azurermsfrg/providers/Microsoft.ServiceFabric/clusters/azurermsfclustertest\",\r\n  \"name\": \"azurermsfclustertest\",\r\n  \"tags\": {},\r\n  \"etag\": \"W/\\\"637345954992021223\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"clusterId\": \"8103e73b-b02f-409c-bf22-788d520b0475\",\r\n    \"clusterCodeVersion\": \"7.1.458.9590\",\r\n    \"clusterState\": \"UpdatingUserConfiguration\",\r\n    \"managementEndpoint\": \"https://azurermsfclustertest.southcentralus.cloudapp.azure.com:19080\",\r\n    \"clusterEndpoint\": \"https://warp-test-winfabrp-southcentralus.trafficmanager.net/runtime/clusters/8103e73b-b02f-409c-bf22-788d520b0475\",\r\n    \"certificate\": {\r\n      \"thumbprint\": \"3545EEBFA6F5EA7A1D436F5D6C708AD6A7110D6B\",\r\n      \"thumbprintSecondary\": \"9ED6D1B225C63DC653CB0D9E16CFD7F799785FAC\",\r\n      \"x509StoreName\": \"My\"\r\n    },\r\n    \"clientCertificateThumbprints\": [],\r\n    \"clientCertificateCommonNames\": [],\r\n    \"fabricSettings\": [\r\n      {\r\n        \"name\": \"Security\",\r\n        \"parameters\": [\r\n          {\r\n            \"name\": \"ClusterProtectionLevel\",\r\n            \"value\": \"EncryptAndSign\"\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"vmImage\": \"Windows\",\r\n    \"reliabilityLevel\": \"Silver\",\r\n    \"nodeTypes\": [\r\n      {\r\n        \"name\": \"nt1vm\",\r\n        \"vmInstanceCount\": 5,\r\n        \"clientConnectionEndpointPort\": 19000,\r\n        \"httpGatewayEndpointPort\": 19080,\r\n        \"applicationPorts\": {\r\n          \"startPort\": 20000,\r\n          \"endPort\": 30000\r\n        },\r\n        \"ephemeralPorts\": {\r\n          \"startPort\": 49152,\r\n          \"endPort\": 65534\r\n        },\r\n        \"isPrimary\": true,\r\n        \"durabilityLevel\": \"Bronze\"\r\n      }\r\n    ],\r\n    \"diagnosticsStorageAccountConfig\": {\r\n      \"storageAccountName\": \"movceivkf3yzy2\",\r\n      \"primaryAccessKey\": \"\",\r\n      \"secondaryAccessKey\": \"\",\r\n      \"protectedAccountKeyName\": \"StorageAccountKey1\",\r\n      \"blobEndpoint\": \"https://movceivkf3yzy2.blob.core.windows.net/\",\r\n      \"queueEndpoint\": \"https://movceivkf3yzy2.queue.core.windows.net/\",\r\n      \"tableEndpoint\": \"https://movceivkf3yzy2.table.core.windows.net/\",\r\n      \"protectedAccountKeyName2\": \"\"\r\n    },\r\n    \"upgradeMode\": \"Automatic\",\r\n    \"addonFeatures\": [\r\n      \"DnsService\",\r\n      \"RepairManager\"\r\n    ],\r\n    \"availableClusterVersions\": [\r\n      {\r\n        \"codeVersion\": \"7.1.458.9590\",\r\n        \"supportExpiryUtc\": \"9999-12-31T23:59:59.9999999\",\r\n        \"environment\": \"Windows\"\r\n      }\r\n    ]\r\n  }\r\n}",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/a413fea5-1772-4c4f-93df-76f2324b34b2?api-version=2020-03-01&Experiment=local",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUZhYnJpYy9sb2NhdGlvbnMvc291dGhjZW50cmFsdXMvb3BlcmF0aW9ucy9hNDEzZmVhNS0xNzcyLTRjNGYtOTNkZi03NmYyMzI0YjM0YjI/YXBpLXZlcnNpb249MjAyMC0wMy0wMSZFeHBlcmltZW50PWxvY2Fs",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.28801.04",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.ServiceFabric.ServiceFabricManagementClient/1.3.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11996"
-        ],
-        "x-ms-request-id": [
-          "394c13e7-a549-418b-8df6-9d0a2ff94ce2"
-        ],
-        "x-ms-correlation-request-id": [
-          "394c13e7-a549-418b-8df6-9d0a2ff94ce2"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20200901T232509Z:394c13e7-a549-418b-8df6-9d0a2ff94ce2"
-        ],
-        "Date": [
-          "Tue, 01 Sep 2020 23:25:09 GMT"
-        ],
-        "Content-Length": [
-          "361"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/a413fea5-1772-4c4f-93df-76f2324b34b2\",\r\n  \"name\": \"a413fea5-1772-4c4f-93df-76f2324b34b2\",\r\n  \"status\": \"Created\",\r\n  \"startTime\": \"2020-09-01T23:24:09.3308171Z\",\r\n  \"endTime\": \"0001-01-01T00:00:00\",\r\n  \"percentComplete\": 0.0\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/a413fea5-1772-4c4f-93df-76f2324b34b2?api-version=2020-03-01&Experiment=local",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUZhYnJpYy9sb2NhdGlvbnMvc291dGhjZW50cmFsdXMvb3BlcmF0aW9ucy9hNDEzZmVhNS0xNzcyLTRjNGYtOTNkZi03NmYyMzI0YjM0YjI/YXBpLXZlcnNpb249MjAyMC0wMy0wMSZFeHBlcmltZW50PWxvY2Fs",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.28801.04",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.ServiceFabric.ServiceFabricManagementClient/1.3.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11995"
-        ],
-        "x-ms-request-id": [
-          "3d85d351-3b3a-43a7-ac70-298cb1249686"
-        ],
-        "x-ms-correlation-request-id": [
-          "3d85d351-3b3a-43a7-ac70-298cb1249686"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20200901T232610Z:3d85d351-3b3a-43a7-ac70-298cb1249686"
-        ],
-        "Date": [
-          "Tue, 01 Sep 2020 23:26:09 GMT"
-        ],
-        "Content-Length": [
-          "361"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/a413fea5-1772-4c4f-93df-76f2324b34b2\",\r\n  \"name\": \"a413fea5-1772-4c4f-93df-76f2324b34b2\",\r\n  \"status\": \"Created\",\r\n  \"startTime\": \"2020-09-01T23:24:09.3308171Z\",\r\n  \"endTime\": \"0001-01-01T00:00:00\",\r\n  \"percentComplete\": 0.0\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/a413fea5-1772-4c4f-93df-76f2324b34b2?api-version=2020-03-01&Experiment=local",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUZhYnJpYy9sb2NhdGlvbnMvc291dGhjZW50cmFsdXMvb3BlcmF0aW9ucy9hNDEzZmVhNS0xNzcyLTRjNGYtOTNkZi03NmYyMzI0YjM0YjI/YXBpLXZlcnNpb249MjAyMC0wMy0wMSZFeHBlcmltZW50PWxvY2Fs",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.28801.04",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.ServiceFabric.ServiceFabricManagementClient/1.3.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11994"
-        ],
-        "x-ms-request-id": [
-          "ad8bc0ff-4c99-4668-b5c2-0af2fdf60f4f"
-        ],
-        "x-ms-correlation-request-id": [
-          "ad8bc0ff-4c99-4668-b5c2-0af2fdf60f4f"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20200901T232710Z:ad8bc0ff-4c99-4668-b5c2-0af2fdf60f4f"
-        ],
-        "Date": [
-          "Tue, 01 Sep 2020 23:27:10 GMT"
-        ],
-        "Content-Length": [
-          "3377"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/a413fea5-1772-4c4f-93df-76f2324b34b2\",\r\n  \"name\": \"a413fea5-1772-4c4f-93df-76f2324b34b2\",\r\n  \"status\": \"InProgress:{\\\"upgradeDescription\\\":{\\\"targetCodeVersion\\\":\\\"7.1.458.9590\\\",\\\"targetConfigVersion\\\":\\\"4\\\",\\\"upgradePolicyDescription\\\":{\\\"healthPolicy\\\":{\\\"considerWarningAsError\\\":false,\\\"maxPercentUnhealthyNodes\\\":100,\\\"maxPercentUnhealthyApplications\\\":0,\\\"applicationTypeHealthPolicyMap\\\":{}},\\\"enableDeltaHealthEvaluation\\\":true,\\\"upgradeHealthPolicy\\\":{\\\"maxPercentDeltaUnhealthyNodes\\\":0,\\\"maxPercentUpgradeDomainDeltaUnhealthyNodes\\\":0},\\\"applicationHealthPolicyMap\\\":{\\\"fabric:/System\\\":{\\\"considerWarningAsError\\\":false,\\\"maxPercentUnhealthyDeployedApplications\\\":0,\\\"defaultServiceTypeHealthPolicy\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"serviceTypeHealthPolicyMap\\\":{\\\"clusterManagerServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"dnsServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"eventStoreServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"fmServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"faultAnalysisServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"fileStoreServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"namingStoreService\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"repairManagerServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"upgradeServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0}}}},\\\"monitoringPolicy\\\":{\\\"failureAction\\\":\\\"Rollback\\\",\\\"healthCheckWaitDuration\\\":\\\"00:00:30\\\",\\\"healthCheckStableDuration\\\":\\\"00:01:00\\\",\\\"healthCheckRetryTimeout\\\":\\\"00:45:00\\\",\\\"upgradeTimeout\\\":\\\"12:00:00\\\",\\\"upgradeDomainTimeout\\\":\\\"02:00:00\\\"},\\\"upgradeMode\\\":\\\"Monitored\\\",\\\"forceRestart\\\":false,\\\"upgradeReplicaSetCheckTimeout\\\":\\\"49710.06:28:15\\\",\\\"sortOrder\\\":\\\"Default\\\",\\\"instanceCloseDelayDuration\\\":\\\"49710.06:28:15\\\",\\\"kind\\\":\\\"Rolling\\\"}},\\\"targetCodeVersion\\\":\\\"7.1.458.9590\\\",\\\"targetConfigVersion\\\":\\\"4\\\",\\\"upgradeState\\\":\\\"RollingForwardInProgress\\\",\\\"upgradeDomains\\\":[],\\\"rollingUpgradeMode\\\":\\\"Monitored\\\",\\\"upgradeDuration\\\":\\\"00:00:00\\\",\\\"currentUpgradeDomainDuration\\\":\\\"00:00:00\\\",\\\"unhealthyEvaluations\\\":[],\\\"currentUpgradeDomainProgress\\\":{\\\"upgradeDomainName\\\":\\\"\\\",\\\"nodeProgressList\\\":[]},\\\"startTimestampUtc\\\":\\\"2020-09-01T23:25:55.4422295Z\\\"}\",\r\n  \"startTime\": \"2020-09-01T23:24:09.3308171Z\",\r\n  \"endTime\": \"0001-01-01T00:00:00\",\r\n  \"percentComplete\": 0.0\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/a413fea5-1772-4c4f-93df-76f2324b34b2?api-version=2020-03-01&Experiment=local",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUZhYnJpYy9sb2NhdGlvbnMvc291dGhjZW50cmFsdXMvb3BlcmF0aW9ucy9hNDEzZmVhNS0xNzcyLTRjNGYtOTNkZi03NmYyMzI0YjM0YjI/YXBpLXZlcnNpb249MjAyMC0wMy0wMSZFeHBlcmltZW50PWxvY2Fs",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.28801.04",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.ServiceFabric.ServiceFabricManagementClient/1.3.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11993"
-        ],
-        "x-ms-request-id": [
-          "a6e87528-2213-49d9-bb46-b5d3f0b29669"
-        ],
-        "x-ms-correlation-request-id": [
-          "a6e87528-2213-49d9-bb46-b5d3f0b29669"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20200901T232810Z:a6e87528-2213-49d9-bb46-b5d3f0b29669"
-        ],
-        "Date": [
-          "Tue, 01 Sep 2020 23:28:09 GMT"
-        ],
-        "Content-Length": [
-          "3377"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/a413fea5-1772-4c4f-93df-76f2324b34b2\",\r\n  \"name\": \"a413fea5-1772-4c4f-93df-76f2324b34b2\",\r\n  \"status\": \"InProgress:{\\\"upgradeDescription\\\":{\\\"targetCodeVersion\\\":\\\"7.1.458.9590\\\",\\\"targetConfigVersion\\\":\\\"4\\\",\\\"upgradePolicyDescription\\\":{\\\"healthPolicy\\\":{\\\"considerWarningAsError\\\":false,\\\"maxPercentUnhealthyNodes\\\":100,\\\"maxPercentUnhealthyApplications\\\":0,\\\"applicationTypeHealthPolicyMap\\\":{}},\\\"enableDeltaHealthEvaluation\\\":true,\\\"upgradeHealthPolicy\\\":{\\\"maxPercentDeltaUnhealthyNodes\\\":0,\\\"maxPercentUpgradeDomainDeltaUnhealthyNodes\\\":0},\\\"applicationHealthPolicyMap\\\":{\\\"fabric:/System\\\":{\\\"considerWarningAsError\\\":false,\\\"maxPercentUnhealthyDeployedApplications\\\":0,\\\"defaultServiceTypeHealthPolicy\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"serviceTypeHealthPolicyMap\\\":{\\\"clusterManagerServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"dnsServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"eventStoreServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"fmServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"faultAnalysisServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"fileStoreServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"namingStoreService\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"repairManagerServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"upgradeServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0}}}},\\\"monitoringPolicy\\\":{\\\"failureAction\\\":\\\"Rollback\\\",\\\"healthCheckWaitDuration\\\":\\\"00:00:30\\\",\\\"healthCheckStableDuration\\\":\\\"00:01:00\\\",\\\"healthCheckRetryTimeout\\\":\\\"00:45:00\\\",\\\"upgradeTimeout\\\":\\\"12:00:00\\\",\\\"upgradeDomainTimeout\\\":\\\"02:00:00\\\"},\\\"upgradeMode\\\":\\\"Monitored\\\",\\\"forceRestart\\\":false,\\\"upgradeReplicaSetCheckTimeout\\\":\\\"49710.06:28:15\\\",\\\"sortOrder\\\":\\\"Default\\\",\\\"instanceCloseDelayDuration\\\":\\\"49710.06:28:15\\\",\\\"kind\\\":\\\"Rolling\\\"}},\\\"targetCodeVersion\\\":\\\"7.1.458.9590\\\",\\\"targetConfigVersion\\\":\\\"4\\\",\\\"upgradeState\\\":\\\"RollingForwardInProgress\\\",\\\"upgradeDomains\\\":[],\\\"rollingUpgradeMode\\\":\\\"Monitored\\\",\\\"upgradeDuration\\\":\\\"00:00:00\\\",\\\"currentUpgradeDomainDuration\\\":\\\"00:00:00\\\",\\\"unhealthyEvaluations\\\":[],\\\"currentUpgradeDomainProgress\\\":{\\\"upgradeDomainName\\\":\\\"\\\",\\\"nodeProgressList\\\":[]},\\\"startTimestampUtc\\\":\\\"2020-09-01T23:25:55.4422295Z\\\"}\",\r\n  \"startTime\": \"2020-09-01T23:24:09.3308171Z\",\r\n  \"endTime\": \"0001-01-01T00:00:00\",\r\n  \"percentComplete\": 0.0\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/a413fea5-1772-4c4f-93df-76f2324b34b2?api-version=2020-03-01&Experiment=local",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUZhYnJpYy9sb2NhdGlvbnMvc291dGhjZW50cmFsdXMvb3BlcmF0aW9ucy9hNDEzZmVhNS0xNzcyLTRjNGYtOTNkZi03NmYyMzI0YjM0YjI/YXBpLXZlcnNpb249MjAyMC0wMy0wMSZFeHBlcmltZW50PWxvY2Fs",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.28801.04",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
           "Microsoft.Azure.Management.ServiceFabric.ServiceFabricManagementClient/1.3.0.0"
         ]
       },
@@ -585,19 +162,19 @@
           "11992"
         ],
         "x-ms-request-id": [
-          "aa2ea16d-c0ca-4d52-8ec5-9b767c70c8d2"
+          "4a86b9b6-b130-429c-bae3-fc3a9c59c5f8"
         ],
         "x-ms-correlation-request-id": [
-          "aa2ea16d-c0ca-4d52-8ec5-9b767c70c8d2"
+          "4a86b9b6-b130-429c-bae3-fc3a9c59c5f8"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200901T232910Z:aa2ea16d-c0ca-4d52-8ec5-9b767c70c8d2"
+          "WESTCENTRALUS:20210310T014708Z:4a86b9b6-b130-429c-bae3-fc3a9c59c5f8"
         ],
         "Date": [
-          "Tue, 01 Sep 2020 23:29:09 GMT"
+          "Wed, 10 Mar 2021 01:47:07 GMT"
         ],
         "Content-Length": [
-          "1440"
+          "2765"
         ],
         "Content-Type": [
           "application/json"
@@ -606,19 +183,25 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/a413fea5-1772-4c4f-93df-76f2324b34b2\",\r\n  \"name\": \"a413fea5-1772-4c4f-93df-76f2324b34b2\",\r\n  \"status\": \"InProgress:{\\\"upgradeDescription\\\":{\\\"targetCodeVersion\\\":\\\"7.1.458.9590\\\",\\\"targetConfigVersion\\\":\\\"4\\\",\\\"upgradePolicyDescription\\\":{\\\"upgradeMode\\\":\\\"UnmonitoredAuto\\\",\\\"forceRestart\\\":false,\\\"upgradeReplicaSetCheckTimeout\\\":\\\"49710.06:28:15\\\",\\\"sortOrder\\\":\\\"Default\\\",\\\"instanceCloseDelayDuration\\\":\\\"49710.06:28:15\\\",\\\"kind\\\":\\\"Rolling\\\"}},\\\"targetCodeVersion\\\":\\\"7.1.458.9590\\\",\\\"targetConfigVersion\\\":\\\"4\\\",\\\"upgradeState\\\":\\\"RollingForwardInProgress\\\",\\\"upgradeDomains\\\":[{\\\"name\\\":\\\"0\\\",\\\"state\\\":\\\"Completed\\\"},{\\\"name\\\":\\\"1\\\",\\\"state\\\":\\\"Completed\\\"},{\\\"name\\\":\\\"2\\\",\\\"state\\\":\\\"Pending\\\"},{\\\"name\\\":\\\"3\\\",\\\"state\\\":\\\"Pending\\\"},{\\\"name\\\":\\\"4\\\",\\\"state\\\":\\\"Pending\\\"}],\\\"rollingUpgradeMode\\\":\\\"UnmonitoredAuto\\\",\\\"nextUpgradeDomain\\\":\\\"2\\\",\\\"upgradeDuration\\\":\\\"00:01:00\\\",\\\"currentUpgradeDomainDuration\\\":\\\"00:00:00\\\",\\\"unhealthyEvaluations\\\":[],\\\"currentUpgradeDomainProgress\\\":{\\\"upgradeDomainName\\\":\\\"2\\\",\\\"nodeProgressList\\\":[{\\\"nodeName\\\":\\\"_nt1vm_2\\\",\\\"upgradePhase\\\":\\\"Upgrading\\\",\\\"pendingSafetyChecks\\\":[]}]},\\\"startTimestampUtc\\\":\\\"2020-09-01T23:25:55.4422295Z\\\"}\",\r\n  \"startTime\": \"2020-09-01T23:24:09.3308171Z\",\r\n  \"endTime\": \"0001-01-01T00:00:00\",\r\n  \"percentComplete\": 0.0\r\n}",
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.ServiceFabric/clusters\",\r\n  \"location\": \"southcentralus\",\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourcegroups/azurermsfrg/providers/Microsoft.ServiceFabric/clusters/azurermsfclustertest\",\r\n  \"name\": \"azurermsfclustertest\",\r\n  \"tags\": {},\r\n  \"etag\": \"W/\\\"637509265581228429\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"clusterId\": \"395da2f8-755c-4eec-a5a8-b17098380ae6\",\r\n    \"clusterCodeVersion\": \"7.2.477.9590\",\r\n    \"clusterState\": \"Ready\",\r\n    \"managementEndpoint\": \"https://azurermsfclustertest.southcentralus.cloudapp.azure.com:19080\",\r\n    \"clusterEndpoint\": \"https://warp-test-winfabrp-southcentralus.trafficmanager.net/runtime/clusters/395da2f8-755c-4eec-a5a8-b17098380ae6\",\r\n    \"certificate\": {\r\n      \"thumbprint\": \"ED1647D7E58F9F69E473B4700A0CCED50F7F65B0\",\r\n      \"thumbprintSecondary\": \"D1DC34B88497F50FB0C0F019DA74E4DA5FADD56D\",\r\n      \"x509StoreName\": \"My\"\r\n    },\r\n    \"clientCertificateThumbprints\": [],\r\n    \"clientCertificateCommonNames\": [\r\n      {\r\n        \"certificateCommonName\": \"cn=AzureRMSFTestCert2\",\r\n        \"certificateIssuerThumbprint\": \"D1DC34B88497F50FB0C0F019DA74E4DA5FADD56D\",\r\n        \"isAdmin\": false\r\n      }\r\n    ],\r\n    \"fabricSettings\": [\r\n      {\r\n        \"name\": \"Security\",\r\n        \"parameters\": [\r\n          {\r\n            \"name\": \"ClusterProtectionLevel\",\r\n            \"value\": \"EncryptAndSign\"\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"vmImage\": \"Windows\",\r\n    \"reliabilityLevel\": \"Silver\",\r\n    \"nodeTypes\": [\r\n      {\r\n        \"name\": \"nt1vm\",\r\n        \"vmInstanceCount\": 5,\r\n        \"clientConnectionEndpointPort\": 19000,\r\n        \"httpGatewayEndpointPort\": 19080,\r\n        \"applicationPorts\": {\r\n          \"startPort\": 20000,\r\n          \"endPort\": 30000\r\n        },\r\n        \"ephemeralPorts\": {\r\n          \"startPort\": 49152,\r\n          \"endPort\": 65534\r\n        },\r\n        \"isPrimary\": true,\r\n        \"durabilityLevel\": \"Bronze\"\r\n      }\r\n    ],\r\n    \"diagnosticsStorageAccountConfig\": {\r\n      \"storageAccountName\": \"movceivkf3yzy2\",\r\n      \"primaryAccessKey\": \"\",\r\n      \"secondaryAccessKey\": \"\",\r\n      \"protectedAccountKeyName\": \"StorageAccountKey1\",\r\n      \"blobEndpoint\": \"https://movceivkf3yzy2.blob.core.windows.net/\",\r\n      \"queueEndpoint\": \"https://movceivkf3yzy2.queue.core.windows.net/\",\r\n      \"tableEndpoint\": \"https://movceivkf3yzy2.table.core.windows.net/\",\r\n      \"protectedAccountKeyName2\": \"\"\r\n    },\r\n    \"upgradeMode\": \"Automatic\",\r\n    \"addonFeatures\": [\r\n      \"DnsService\",\r\n      \"RepairManager\"\r\n    ],\r\n    \"availableClusterVersions\": [\r\n      {\r\n        \"codeVersion\": \"7.2.477.9590\",\r\n        \"supportExpiryUtc\": \"9999-12-31T23:59:59.9999999\",\r\n        \"environment\": \"Windows\"\r\n      }\r\n    ]\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/a413fea5-1772-4c4f-93df-76f2324b34b2?api-version=2020-03-01&Experiment=local",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUZhYnJpYy9sb2NhdGlvbnMvc291dGhjZW50cmFsdXMvb3BlcmF0aW9ucy9hNDEzZmVhNS0xNzcyLTRjNGYtOTNkZi03NmYyMzI0YjM0YjI/YXBpLXZlcnNpb249MjAyMC0wMy0wMSZFeHBlcmltZW50PWxvY2Fs",
+      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.ServiceFabric/clusters/azurermsfclustertest?api-version=2020-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Jlc291cmNlR3JvdXBzL2F6dXJlcm1zZnJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUZhYnJpYy9jbHVzdGVycy9henVyZXJtc2ZjbHVzdGVydGVzdD9hcGktdmVyc2lvbj0yMDIwLTAzLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "f7dacc91-6bdf-472a-be54-772044bb5da5"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "FxVersion/4.6.28801.04",
+          "FxVersion/4.6.29812.02",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
           "Microsoft.Azure.Management.ServiceFabric.ServiceFabricManagementClient/1.3.0.0"
         ]
       },
@@ -642,19 +225,19 @@
           "11991"
         ],
         "x-ms-request-id": [
-          "fa40d6b7-2fc8-4f4f-b689-6c119e162f5e"
+          "29fc9314-5855-4adf-b4ca-20e6fbf7fdcf"
         ],
         "x-ms-correlation-request-id": [
-          "fa40d6b7-2fc8-4f4f-b689-6c119e162f5e"
+          "29fc9314-5855-4adf-b4ca-20e6fbf7fdcf"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200901T233010Z:fa40d6b7-2fc8-4f4f-b689-6c119e162f5e"
+          "WESTCENTRALUS:20210310T014708Z:29fc9314-5855-4adf-b4ca-20e6fbf7fdcf"
         ],
         "Date": [
-          "Tue, 01 Sep 2020 23:30:10 GMT"
+          "Wed, 10 Mar 2021 01:47:07 GMT"
         ],
         "Content-Length": [
-          "1444"
+          "2765"
         ],
         "Content-Type": [
           "application/json"
@@ -663,19 +246,100 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/a413fea5-1772-4c4f-93df-76f2324b34b2\",\r\n  \"name\": \"a413fea5-1772-4c4f-93df-76f2324b34b2\",\r\n  \"status\": \"InProgress:{\\\"upgradeDescription\\\":{\\\"targetCodeVersion\\\":\\\"7.1.458.9590\\\",\\\"targetConfigVersion\\\":\\\"4\\\",\\\"upgradePolicyDescription\\\":{\\\"upgradeMode\\\":\\\"UnmonitoredAuto\\\",\\\"forceRestart\\\":false,\\\"upgradeReplicaSetCheckTimeout\\\":\\\"49710.06:28:15\\\",\\\"sortOrder\\\":\\\"Default\\\",\\\"instanceCloseDelayDuration\\\":\\\"49710.06:28:15\\\",\\\"kind\\\":\\\"Rolling\\\"}},\\\"targetCodeVersion\\\":\\\"7.1.458.9590\\\",\\\"targetConfigVersion\\\":\\\"4\\\",\\\"upgradeState\\\":\\\"RollingForwardInProgress\\\",\\\"upgradeDomains\\\":[{\\\"name\\\":\\\"0\\\",\\\"state\\\":\\\"Completed\\\"},{\\\"name\\\":\\\"1\\\",\\\"state\\\":\\\"Completed\\\"},{\\\"name\\\":\\\"2\\\",\\\"state\\\":\\\"Completed\\\"},{\\\"name\\\":\\\"3\\\",\\\"state\\\":\\\"Completed\\\"},{\\\"name\\\":\\\"4\\\",\\\"state\\\":\\\"Pending\\\"}],\\\"rollingUpgradeMode\\\":\\\"UnmonitoredAuto\\\",\\\"nextUpgradeDomain\\\":\\\"4\\\",\\\"upgradeDuration\\\":\\\"00:01:00\\\",\\\"currentUpgradeDomainDuration\\\":\\\"00:00:00\\\",\\\"unhealthyEvaluations\\\":[],\\\"currentUpgradeDomainProgress\\\":{\\\"upgradeDomainName\\\":\\\"4\\\",\\\"nodeProgressList\\\":[{\\\"nodeName\\\":\\\"_nt1vm_4\\\",\\\"upgradePhase\\\":\\\"Upgrading\\\",\\\"pendingSafetyChecks\\\":[]}]},\\\"startTimestampUtc\\\":\\\"2020-09-01T23:25:55.4422295Z\\\"}\",\r\n  \"startTime\": \"2020-09-01T23:24:09.3308171Z\",\r\n  \"endTime\": \"0001-01-01T00:00:00\",\r\n  \"percentComplete\": 0.0\r\n}",
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.ServiceFabric/clusters\",\r\n  \"location\": \"southcentralus\",\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourcegroups/azurermsfrg/providers/Microsoft.ServiceFabric/clusters/azurermsfclustertest\",\r\n  \"name\": \"azurermsfclustertest\",\r\n  \"tags\": {},\r\n  \"etag\": \"W/\\\"637509265581228429\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"clusterId\": \"395da2f8-755c-4eec-a5a8-b17098380ae6\",\r\n    \"clusterCodeVersion\": \"7.2.477.9590\",\r\n    \"clusterState\": \"Ready\",\r\n    \"managementEndpoint\": \"https://azurermsfclustertest.southcentralus.cloudapp.azure.com:19080\",\r\n    \"clusterEndpoint\": \"https://warp-test-winfabrp-southcentralus.trafficmanager.net/runtime/clusters/395da2f8-755c-4eec-a5a8-b17098380ae6\",\r\n    \"certificate\": {\r\n      \"thumbprint\": \"ED1647D7E58F9F69E473B4700A0CCED50F7F65B0\",\r\n      \"thumbprintSecondary\": \"D1DC34B88497F50FB0C0F019DA74E4DA5FADD56D\",\r\n      \"x509StoreName\": \"My\"\r\n    },\r\n    \"clientCertificateThumbprints\": [],\r\n    \"clientCertificateCommonNames\": [\r\n      {\r\n        \"certificateCommonName\": \"cn=AzureRMSFTestCert2\",\r\n        \"certificateIssuerThumbprint\": \"D1DC34B88497F50FB0C0F019DA74E4DA5FADD56D\",\r\n        \"isAdmin\": false\r\n      }\r\n    ],\r\n    \"fabricSettings\": [\r\n      {\r\n        \"name\": \"Security\",\r\n        \"parameters\": [\r\n          {\r\n            \"name\": \"ClusterProtectionLevel\",\r\n            \"value\": \"EncryptAndSign\"\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"vmImage\": \"Windows\",\r\n    \"reliabilityLevel\": \"Silver\",\r\n    \"nodeTypes\": [\r\n      {\r\n        \"name\": \"nt1vm\",\r\n        \"vmInstanceCount\": 5,\r\n        \"clientConnectionEndpointPort\": 19000,\r\n        \"httpGatewayEndpointPort\": 19080,\r\n        \"applicationPorts\": {\r\n          \"startPort\": 20000,\r\n          \"endPort\": 30000\r\n        },\r\n        \"ephemeralPorts\": {\r\n          \"startPort\": 49152,\r\n          \"endPort\": 65534\r\n        },\r\n        \"isPrimary\": true,\r\n        \"durabilityLevel\": \"Bronze\"\r\n      }\r\n    ],\r\n    \"diagnosticsStorageAccountConfig\": {\r\n      \"storageAccountName\": \"movceivkf3yzy2\",\r\n      \"primaryAccessKey\": \"\",\r\n      \"secondaryAccessKey\": \"\",\r\n      \"protectedAccountKeyName\": \"StorageAccountKey1\",\r\n      \"blobEndpoint\": \"https://movceivkf3yzy2.blob.core.windows.net/\",\r\n      \"queueEndpoint\": \"https://movceivkf3yzy2.queue.core.windows.net/\",\r\n      \"tableEndpoint\": \"https://movceivkf3yzy2.table.core.windows.net/\",\r\n      \"protectedAccountKeyName2\": \"\"\r\n    },\r\n    \"upgradeMode\": \"Automatic\",\r\n    \"addonFeatures\": [\r\n      \"DnsService\",\r\n      \"RepairManager\"\r\n    ],\r\n    \"availableClusterVersions\": [\r\n      {\r\n        \"codeVersion\": \"7.2.477.9590\",\r\n        \"supportExpiryUtc\": \"9999-12-31T23:59:59.9999999\",\r\n        \"environment\": \"Windows\"\r\n      }\r\n    ]\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/a413fea5-1772-4c4f-93df-76f2324b34b2?api-version=2020-03-01&Experiment=local",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUZhYnJpYy9sb2NhdGlvbnMvc291dGhjZW50cmFsdXMvb3BlcmF0aW9ucy9hNDEzZmVhNS0xNzcyLTRjNGYtOTNkZi03NmYyMzI0YjM0YjI/YXBpLXZlcnNpb249MjAyMC0wMy0wMSZFeHBlcmltZW50PWxvY2Fs",
+      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.ServiceFabric/clusters/azurermsfclustertest?api-version=2020-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Jlc291cmNlR3JvdXBzL2F6dXJlcm1zZnJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUZhYnJpYy9jbHVzdGVycy9henVyZXJtc2ZjbHVzdGVydGVzdD9hcGktdmVyc2lvbj0yMDIwLTAzLTAx",
+      "RequestMethod": "PATCH",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"clientCertificateCommonNames\": [\r\n      {\r\n        \"isAdmin\": false,\r\n        \"certificateCommonName\": \"cn=AzureRMSFTestCert2\",\r\n        \"certificateIssuerThumbprint\": \"D1DC34B88497F50FB0C0F019DA74E4DA5FADD56D\"\r\n      }\r\n    ],\r\n    \"clientCertificateThumbprints\": []\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e82c4f75-d966-4c8f-9269-3ec681468ad9"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ServiceFabric.ServiceFabricManagementClient/1.3.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "302"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operationResults/c3628deb-f76b-4945-b262-ccdffa00a977?api-version=2020-03-01&Experiment=local"
+        ],
+        "Retry-After": [
+          "60"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com:443/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/c3628deb-f76b-4945-b262-ccdffa00a977?api-version=2020-03-01&Experiment=local"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-request-id": [
+          "d0f1c948-2850-4bf9-a1de-aa6f4d7bacb4"
+        ],
+        "x-ms-correlation-request-id": [
+          "d0f1c948-2850-4bf9-a1de-aa6f4d7bacb4"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20210310T012904Z:d0f1c948-2850-4bf9-a1de-aa6f4d7bacb4"
+        ],
+        "Date": [
+          "Wed, 10 Mar 2021 01:29:03 GMT"
+        ],
+        "Content-Length": [
+          "2591"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.ServiceFabric/clusters\",\r\n  \"location\": \"southcentralus\",\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourcegroups/azurermsfrg/providers/Microsoft.ServiceFabric/clusters/azurermsfclustertest\",\r\n  \"name\": \"azurermsfclustertest\",\r\n  \"tags\": {},\r\n  \"etag\": \"W/\\\"637509265581228429\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"clusterId\": \"395da2f8-755c-4eec-a5a8-b17098380ae6\",\r\n    \"clusterCodeVersion\": \"7.2.477.9590\",\r\n    \"clusterState\": \"UpdatingUserConfiguration\",\r\n    \"managementEndpoint\": \"https://azurermsfclustertest.southcentralus.cloudapp.azure.com:19080\",\r\n    \"clusterEndpoint\": \"https://warp-test-winfabrp-southcentralus.trafficmanager.net/runtime/clusters/395da2f8-755c-4eec-a5a8-b17098380ae6\",\r\n    \"certificate\": {\r\n      \"thumbprint\": \"ED1647D7E58F9F69E473B4700A0CCED50F7F65B0\",\r\n      \"thumbprintSecondary\": \"D1DC34B88497F50FB0C0F019DA74E4DA5FADD56D\",\r\n      \"x509StoreName\": \"My\"\r\n    },\r\n    \"clientCertificateThumbprints\": [],\r\n    \"clientCertificateCommonNames\": [],\r\n    \"fabricSettings\": [\r\n      {\r\n        \"name\": \"Security\",\r\n        \"parameters\": [\r\n          {\r\n            \"name\": \"ClusterProtectionLevel\",\r\n            \"value\": \"EncryptAndSign\"\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"vmImage\": \"Windows\",\r\n    \"reliabilityLevel\": \"Silver\",\r\n    \"nodeTypes\": [\r\n      {\r\n        \"name\": \"nt1vm\",\r\n        \"vmInstanceCount\": 5,\r\n        \"clientConnectionEndpointPort\": 19000,\r\n        \"httpGatewayEndpointPort\": 19080,\r\n        \"applicationPorts\": {\r\n          \"startPort\": 20000,\r\n          \"endPort\": 30000\r\n        },\r\n        \"ephemeralPorts\": {\r\n          \"startPort\": 49152,\r\n          \"endPort\": 65534\r\n        },\r\n        \"isPrimary\": true,\r\n        \"durabilityLevel\": \"Bronze\"\r\n      }\r\n    ],\r\n    \"diagnosticsStorageAccountConfig\": {\r\n      \"storageAccountName\": \"movceivkf3yzy2\",\r\n      \"primaryAccessKey\": \"\",\r\n      \"secondaryAccessKey\": \"\",\r\n      \"protectedAccountKeyName\": \"StorageAccountKey1\",\r\n      \"blobEndpoint\": \"https://movceivkf3yzy2.blob.core.windows.net/\",\r\n      \"queueEndpoint\": \"https://movceivkf3yzy2.queue.core.windows.net/\",\r\n      \"tableEndpoint\": \"https://movceivkf3yzy2.table.core.windows.net/\",\r\n      \"protectedAccountKeyName2\": \"\"\r\n    },\r\n    \"upgradeMode\": \"Automatic\",\r\n    \"addonFeatures\": [\r\n      \"DnsService\",\r\n      \"RepairManager\"\r\n    ],\r\n    \"availableClusterVersions\": [\r\n      {\r\n        \"codeVersion\": \"7.2.477.9590\",\r\n        \"supportExpiryUtc\": \"9999-12-31T23:59:59.9999999\",\r\n        \"environment\": \"Windows\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/c3628deb-f76b-4945-b262-ccdffa00a977?api-version=2020-03-01&Experiment=local",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUZhYnJpYy9sb2NhdGlvbnMvc291dGhjZW50cmFsdXMvb3BlcmF0aW9ucy9jMzYyOGRlYi1mNzZiLTQ5NDUtYjI2Mi1jY2RmZmEwMGE5Nzc/YXBpLXZlcnNpb249MjAyMC0wMy0wMSZFeHBlcmltZW50PWxvY2Fs",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e82c4f75-d966-4c8f-9269-3ec681468ad9"
+        ],
         "User-Agent": [
-          "FxVersion/4.6.28801.04",
+          "FxVersion/4.6.29812.02",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
           "Microsoft.Azure.Management.ServiceFabric.ServiceFabricManagementClient/1.3.0.0"
         ]
       },
@@ -696,19 +360,1039 @@
           "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11990"
+          "11976"
         ],
         "x-ms-request-id": [
-          "a50f53b2-b52c-460e-ad70-0e69cff799ab"
+          "31c380a0-1c85-4e6e-94cd-2032705a0715"
         ],
         "x-ms-correlation-request-id": [
-          "a50f53b2-b52c-460e-ad70-0e69cff799ab"
+          "31c380a0-1c85-4e6e-94cd-2032705a0715"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200901T233111Z:a50f53b2-b52c-460e-ad70-0e69cff799ab"
+          "WESTCENTRALUS:20210310T013004Z:31c380a0-1c85-4e6e-94cd-2032705a0715"
         ],
         "Date": [
-          "Tue, 01 Sep 2020 23:31:10 GMT"
+          "Wed, 10 Mar 2021 01:30:03 GMT"
+        ],
+        "Content-Length": [
+          "361"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/c3628deb-f76b-4945-b262-ccdffa00a977\",\r\n  \"name\": \"c3628deb-f76b-4945-b262-ccdffa00a977\",\r\n  \"status\": \"Created\",\r\n  \"startTime\": \"2021-03-10T01:29:03.9258992Z\",\r\n  \"endTime\": \"0001-01-01T00:00:00\",\r\n  \"percentComplete\": 0.0\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/c3628deb-f76b-4945-b262-ccdffa00a977?api-version=2020-03-01&Experiment=local",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUZhYnJpYy9sb2NhdGlvbnMvc291dGhjZW50cmFsdXMvb3BlcmF0aW9ucy9jMzYyOGRlYi1mNzZiLTQ5NDUtYjI2Mi1jY2RmZmEwMGE5Nzc/YXBpLXZlcnNpb249MjAyMC0wMy0wMSZFeHBlcmltZW50PWxvY2Fs",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e82c4f75-d966-4c8f-9269-3ec681468ad9"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ServiceFabric.ServiceFabricManagementClient/1.3.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11975"
+        ],
+        "x-ms-request-id": [
+          "4f4a3dc1-493a-4259-873c-88ac7d2db025"
+        ],
+        "x-ms-correlation-request-id": [
+          "4f4a3dc1-493a-4259-873c-88ac7d2db025"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20210310T013104Z:4f4a3dc1-493a-4259-873c-88ac7d2db025"
+        ],
+        "Date": [
+          "Wed, 10 Mar 2021 01:31:03 GMT"
+        ],
+        "Content-Length": [
+          "361"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/c3628deb-f76b-4945-b262-ccdffa00a977\",\r\n  \"name\": \"c3628deb-f76b-4945-b262-ccdffa00a977\",\r\n  \"status\": \"Created\",\r\n  \"startTime\": \"2021-03-10T01:29:03.9258992Z\",\r\n  \"endTime\": \"0001-01-01T00:00:00\",\r\n  \"percentComplete\": 0.0\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/c3628deb-f76b-4945-b262-ccdffa00a977?api-version=2020-03-01&Experiment=local",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUZhYnJpYy9sb2NhdGlvbnMvc291dGhjZW50cmFsdXMvb3BlcmF0aW9ucy9jMzYyOGRlYi1mNzZiLTQ5NDUtYjI2Mi1jY2RmZmEwMGE5Nzc/YXBpLXZlcnNpb249MjAyMC0wMy0wMSZFeHBlcmltZW50PWxvY2Fs",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e82c4f75-d966-4c8f-9269-3ec681468ad9"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ServiceFabric.ServiceFabricManagementClient/1.3.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11974"
+        ],
+        "x-ms-request-id": [
+          "be32ffa2-ca29-4117-8629-207325cfe509"
+        ],
+        "x-ms-correlation-request-id": [
+          "be32ffa2-ca29-4117-8629-207325cfe509"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20210310T013204Z:be32ffa2-ca29-4117-8629-207325cfe509"
+        ],
+        "Date": [
+          "Wed, 10 Mar 2021 01:32:04 GMT"
+        ],
+        "Content-Length": [
+          "3603"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/c3628deb-f76b-4945-b262-ccdffa00a977\",\r\n  \"name\": \"c3628deb-f76b-4945-b262-ccdffa00a977\",\r\n  \"status\": \"InProgress:{\\\"upgradeDescription\\\":{\\\"targetCodeVersion\\\":\\\"7.2.477.9590\\\",\\\"targetConfigVersion\\\":\\\"4\\\",\\\"upgradePolicyDescription\\\":{\\\"healthPolicy\\\":{\\\"considerWarningAsError\\\":false,\\\"maxPercentUnhealthyNodes\\\":100,\\\"maxPercentUnhealthyApplications\\\":0,\\\"applicationTypeHealthPolicyMap\\\":{}},\\\"enableDeltaHealthEvaluation\\\":true,\\\"upgradeHealthPolicy\\\":{\\\"maxPercentDeltaUnhealthyNodes\\\":0,\\\"maxPercentUpgradeDomainDeltaUnhealthyNodes\\\":0},\\\"applicationHealthPolicyMap\\\":{\\\"fabric:/System\\\":{\\\"considerWarningAsError\\\":false,\\\"maxPercentUnhealthyDeployedApplications\\\":0,\\\"defaultServiceTypeHealthPolicy\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"serviceTypeHealthPolicyMap\\\":{\\\"clusterManagerServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"dnsServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"eventStoreServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"fmServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"faultAnalysisServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"fileStoreServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"namingStoreService\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"repairManagerServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"upgradeServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0}}}},\\\"monitoringPolicy\\\":{\\\"failureAction\\\":\\\"Rollback\\\",\\\"healthCheckWaitDuration\\\":\\\"00:00:30\\\",\\\"healthCheckStableDuration\\\":\\\"00:01:00\\\",\\\"healthCheckRetryTimeout\\\":\\\"00:45:00\\\",\\\"upgradeTimeout\\\":\\\"12:00:00\\\",\\\"upgradeDomainTimeout\\\":\\\"02:00:00\\\"},\\\"upgradeMode\\\":\\\"Monitored\\\",\\\"forceRestart\\\":false,\\\"upgradeReplicaSetCheckTimeout\\\":\\\"49710.06:28:15\\\",\\\"sortOrder\\\":\\\"Default\\\",\\\"instanceCloseDelayDuration\\\":\\\"49710.06:28:15\\\",\\\"kind\\\":\\\"Rolling\\\"}},\\\"targetCodeVersion\\\":\\\"7.2.477.9590\\\",\\\"targetConfigVersion\\\":\\\"4\\\",\\\"upgradeState\\\":\\\"RollingForwardInProgress\\\",\\\"upgradeDomains\\\":[{\\\"name\\\":\\\"0\\\",\\\"state\\\":\\\"InProgress\\\"},{\\\"name\\\":\\\"1\\\",\\\"state\\\":\\\"Pending\\\"},{\\\"name\\\":\\\"2\\\",\\\"state\\\":\\\"Pending\\\"},{\\\"name\\\":\\\"3\\\",\\\"state\\\":\\\"Pending\\\"},{\\\"name\\\":\\\"4\\\",\\\"state\\\":\\\"Pending\\\"}],\\\"rollingUpgradeMode\\\":\\\"Monitored\\\",\\\"nextUpgradeDomain\\\":\\\"1\\\",\\\"upgradeDuration\\\":\\\"00:00:00\\\",\\\"currentUpgradeDomainDuration\\\":\\\"00:00:00\\\",\\\"unhealthyEvaluations\\\":[],\\\"currentUpgradeDomainProgress\\\":{\\\"upgradeDomainName\\\":\\\"0\\\",\\\"nodeProgressList\\\":[]},\\\"startTimestampUtc\\\":\\\"2021-03-10T01:30:38.3840501Z\\\"}\",\r\n  \"startTime\": \"2021-03-10T01:29:03.9258992Z\",\r\n  \"endTime\": \"0001-01-01T00:00:00\",\r\n  \"percentComplete\": 0.0\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/c3628deb-f76b-4945-b262-ccdffa00a977?api-version=2020-03-01&Experiment=local",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUZhYnJpYy9sb2NhdGlvbnMvc291dGhjZW50cmFsdXMvb3BlcmF0aW9ucy9jMzYyOGRlYi1mNzZiLTQ5NDUtYjI2Mi1jY2RmZmEwMGE5Nzc/YXBpLXZlcnNpb249MjAyMC0wMy0wMSZFeHBlcmltZW50PWxvY2Fs",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e82c4f75-d966-4c8f-9269-3ec681468ad9"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ServiceFabric.ServiceFabricManagementClient/1.3.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11973"
+        ],
+        "x-ms-request-id": [
+          "0532209a-8555-44a8-b15b-a4e714a2ffc8"
+        ],
+        "x-ms-correlation-request-id": [
+          "0532209a-8555-44a8-b15b-a4e714a2ffc8"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20210310T013304Z:0532209a-8555-44a8-b15b-a4e714a2ffc8"
+        ],
+        "Date": [
+          "Wed, 10 Mar 2021 01:33:04 GMT"
+        ],
+        "Content-Length": [
+          "3599"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/c3628deb-f76b-4945-b262-ccdffa00a977\",\r\n  \"name\": \"c3628deb-f76b-4945-b262-ccdffa00a977\",\r\n  \"status\": \"InProgress:{\\\"upgradeDescription\\\":{\\\"targetCodeVersion\\\":\\\"7.2.477.9590\\\",\\\"targetConfigVersion\\\":\\\"4\\\",\\\"upgradePolicyDescription\\\":{\\\"healthPolicy\\\":{\\\"considerWarningAsError\\\":false,\\\"maxPercentUnhealthyNodes\\\":100,\\\"maxPercentUnhealthyApplications\\\":0,\\\"applicationTypeHealthPolicyMap\\\":{}},\\\"enableDeltaHealthEvaluation\\\":true,\\\"upgradeHealthPolicy\\\":{\\\"maxPercentDeltaUnhealthyNodes\\\":0,\\\"maxPercentUpgradeDomainDeltaUnhealthyNodes\\\":0},\\\"applicationHealthPolicyMap\\\":{\\\"fabric:/System\\\":{\\\"considerWarningAsError\\\":false,\\\"maxPercentUnhealthyDeployedApplications\\\":0,\\\"defaultServiceTypeHealthPolicy\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"serviceTypeHealthPolicyMap\\\":{\\\"clusterManagerServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"dnsServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"eventStoreServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"fmServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"faultAnalysisServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"fileStoreServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"namingStoreService\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"repairManagerServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"upgradeServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0}}}},\\\"monitoringPolicy\\\":{\\\"failureAction\\\":\\\"Rollback\\\",\\\"healthCheckWaitDuration\\\":\\\"00:00:30\\\",\\\"healthCheckStableDuration\\\":\\\"00:01:00\\\",\\\"healthCheckRetryTimeout\\\":\\\"00:45:00\\\",\\\"upgradeTimeout\\\":\\\"12:00:00\\\",\\\"upgradeDomainTimeout\\\":\\\"02:00:00\\\"},\\\"upgradeMode\\\":\\\"Monitored\\\",\\\"forceRestart\\\":false,\\\"upgradeReplicaSetCheckTimeout\\\":\\\"49710.06:28:15\\\",\\\"sortOrder\\\":\\\"Default\\\",\\\"instanceCloseDelayDuration\\\":\\\"49710.06:28:15\\\",\\\"kind\\\":\\\"Rolling\\\"}},\\\"targetCodeVersion\\\":\\\"7.2.477.9590\\\",\\\"targetConfigVersion\\\":\\\"4\\\",\\\"upgradeState\\\":\\\"RollingForwardPending\\\",\\\"upgradeDomains\\\":[{\\\"name\\\":\\\"0\\\",\\\"state\\\":\\\"Completed\\\"},{\\\"name\\\":\\\"1\\\",\\\"state\\\":\\\"Pending\\\"},{\\\"name\\\":\\\"2\\\",\\\"state\\\":\\\"Pending\\\"},{\\\"name\\\":\\\"3\\\",\\\"state\\\":\\\"Pending\\\"},{\\\"name\\\":\\\"4\\\",\\\"state\\\":\\\"Pending\\\"}],\\\"rollingUpgradeMode\\\":\\\"Monitored\\\",\\\"nextUpgradeDomain\\\":\\\"1\\\",\\\"upgradeDuration\\\":\\\"00:01:00\\\",\\\"currentUpgradeDomainDuration\\\":\\\"00:01:00\\\",\\\"unhealthyEvaluations\\\":[],\\\"currentUpgradeDomainProgress\\\":{\\\"upgradeDomainName\\\":\\\"1\\\",\\\"nodeProgressList\\\":[]},\\\"startTimestampUtc\\\":\\\"2021-03-10T01:30:38.3840501Z\\\"}\",\r\n  \"startTime\": \"2021-03-10T01:29:03.9258992Z\",\r\n  \"endTime\": \"0001-01-01T00:00:00\",\r\n  \"percentComplete\": 0.0\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/c3628deb-f76b-4945-b262-ccdffa00a977?api-version=2020-03-01&Experiment=local",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUZhYnJpYy9sb2NhdGlvbnMvc291dGhjZW50cmFsdXMvb3BlcmF0aW9ucy9jMzYyOGRlYi1mNzZiLTQ5NDUtYjI2Mi1jY2RmZmEwMGE5Nzc/YXBpLXZlcnNpb249MjAyMC0wMy0wMSZFeHBlcmltZW50PWxvY2Fs",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e82c4f75-d966-4c8f-9269-3ec681468ad9"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ServiceFabric.ServiceFabricManagementClient/1.3.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11972"
+        ],
+        "x-ms-request-id": [
+          "a89b71be-896b-4dbc-8493-dc71fc5939d4"
+        ],
+        "x-ms-correlation-request-id": [
+          "a89b71be-896b-4dbc-8493-dc71fc5939d4"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20210310T013405Z:a89b71be-896b-4dbc-8493-dc71fc5939d4"
+        ],
+        "Date": [
+          "Wed, 10 Mar 2021 01:34:04 GMT"
+        ],
+        "Content-Length": [
+          "3599"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/c3628deb-f76b-4945-b262-ccdffa00a977\",\r\n  \"name\": \"c3628deb-f76b-4945-b262-ccdffa00a977\",\r\n  \"status\": \"InProgress:{\\\"upgradeDescription\\\":{\\\"targetCodeVersion\\\":\\\"7.2.477.9590\\\",\\\"targetConfigVersion\\\":\\\"4\\\",\\\"upgradePolicyDescription\\\":{\\\"healthPolicy\\\":{\\\"considerWarningAsError\\\":false,\\\"maxPercentUnhealthyNodes\\\":100,\\\"maxPercentUnhealthyApplications\\\":0,\\\"applicationTypeHealthPolicyMap\\\":{}},\\\"enableDeltaHealthEvaluation\\\":true,\\\"upgradeHealthPolicy\\\":{\\\"maxPercentDeltaUnhealthyNodes\\\":0,\\\"maxPercentUpgradeDomainDeltaUnhealthyNodes\\\":0},\\\"applicationHealthPolicyMap\\\":{\\\"fabric:/System\\\":{\\\"considerWarningAsError\\\":false,\\\"maxPercentUnhealthyDeployedApplications\\\":0,\\\"defaultServiceTypeHealthPolicy\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"serviceTypeHealthPolicyMap\\\":{\\\"clusterManagerServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"dnsServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"eventStoreServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"fmServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"faultAnalysisServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"fileStoreServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"namingStoreService\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"repairManagerServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"upgradeServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0}}}},\\\"monitoringPolicy\\\":{\\\"failureAction\\\":\\\"Rollback\\\",\\\"healthCheckWaitDuration\\\":\\\"00:00:30\\\",\\\"healthCheckStableDuration\\\":\\\"00:01:00\\\",\\\"healthCheckRetryTimeout\\\":\\\"00:45:00\\\",\\\"upgradeTimeout\\\":\\\"12:00:00\\\",\\\"upgradeDomainTimeout\\\":\\\"02:00:00\\\"},\\\"upgradeMode\\\":\\\"Monitored\\\",\\\"forceRestart\\\":false,\\\"upgradeReplicaSetCheckTimeout\\\":\\\"49710.06:28:15\\\",\\\"sortOrder\\\":\\\"Default\\\",\\\"instanceCloseDelayDuration\\\":\\\"49710.06:28:15\\\",\\\"kind\\\":\\\"Rolling\\\"}},\\\"targetCodeVersion\\\":\\\"7.2.477.9590\\\",\\\"targetConfigVersion\\\":\\\"4\\\",\\\"upgradeState\\\":\\\"RollingForwardPending\\\",\\\"upgradeDomains\\\":[{\\\"name\\\":\\\"0\\\",\\\"state\\\":\\\"Completed\\\"},{\\\"name\\\":\\\"1\\\",\\\"state\\\":\\\"Pending\\\"},{\\\"name\\\":\\\"2\\\",\\\"state\\\":\\\"Pending\\\"},{\\\"name\\\":\\\"3\\\",\\\"state\\\":\\\"Pending\\\"},{\\\"name\\\":\\\"4\\\",\\\"state\\\":\\\"Pending\\\"}],\\\"rollingUpgradeMode\\\":\\\"Monitored\\\",\\\"nextUpgradeDomain\\\":\\\"1\\\",\\\"upgradeDuration\\\":\\\"00:02:00\\\",\\\"currentUpgradeDomainDuration\\\":\\\"00:02:00\\\",\\\"unhealthyEvaluations\\\":[],\\\"currentUpgradeDomainProgress\\\":{\\\"upgradeDomainName\\\":\\\"1\\\",\\\"nodeProgressList\\\":[]},\\\"startTimestampUtc\\\":\\\"2021-03-10T01:30:38.3840501Z\\\"}\",\r\n  \"startTime\": \"2021-03-10T01:29:03.9258992Z\",\r\n  \"endTime\": \"0001-01-01T00:00:00\",\r\n  \"percentComplete\": 0.0\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/c3628deb-f76b-4945-b262-ccdffa00a977?api-version=2020-03-01&Experiment=local",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUZhYnJpYy9sb2NhdGlvbnMvc291dGhjZW50cmFsdXMvb3BlcmF0aW9ucy9jMzYyOGRlYi1mNzZiLTQ5NDUtYjI2Mi1jY2RmZmEwMGE5Nzc/YXBpLXZlcnNpb249MjAyMC0wMy0wMSZFeHBlcmltZW50PWxvY2Fs",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e82c4f75-d966-4c8f-9269-3ec681468ad9"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ServiceFabric.ServiceFabricManagementClient/1.3.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11988"
+        ],
+        "x-ms-request-id": [
+          "6f4b498d-3fe2-4fde-b072-8a98be89d39d"
+        ],
+        "x-ms-correlation-request-id": [
+          "6f4b498d-3fe2-4fde-b072-8a98be89d39d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20210310T013505Z:6f4b498d-3fe2-4fde-b072-8a98be89d39d"
+        ],
+        "Date": [
+          "Wed, 10 Mar 2021 01:35:05 GMT"
+        ],
+        "Content-Length": [
+          "3605"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/c3628deb-f76b-4945-b262-ccdffa00a977\",\r\n  \"name\": \"c3628deb-f76b-4945-b262-ccdffa00a977\",\r\n  \"status\": \"InProgress:{\\\"upgradeDescription\\\":{\\\"targetCodeVersion\\\":\\\"7.2.477.9590\\\",\\\"targetConfigVersion\\\":\\\"4\\\",\\\"upgradePolicyDescription\\\":{\\\"healthPolicy\\\":{\\\"considerWarningAsError\\\":false,\\\"maxPercentUnhealthyNodes\\\":100,\\\"maxPercentUnhealthyApplications\\\":0,\\\"applicationTypeHealthPolicyMap\\\":{}},\\\"enableDeltaHealthEvaluation\\\":true,\\\"upgradeHealthPolicy\\\":{\\\"maxPercentDeltaUnhealthyNodes\\\":0,\\\"maxPercentUpgradeDomainDeltaUnhealthyNodes\\\":0},\\\"applicationHealthPolicyMap\\\":{\\\"fabric:/System\\\":{\\\"considerWarningAsError\\\":false,\\\"maxPercentUnhealthyDeployedApplications\\\":0,\\\"defaultServiceTypeHealthPolicy\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"serviceTypeHealthPolicyMap\\\":{\\\"clusterManagerServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"dnsServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"eventStoreServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"fmServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"faultAnalysisServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"fileStoreServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"namingStoreService\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"repairManagerServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"upgradeServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0}}}},\\\"monitoringPolicy\\\":{\\\"failureAction\\\":\\\"Rollback\\\",\\\"healthCheckWaitDuration\\\":\\\"00:00:30\\\",\\\"healthCheckStableDuration\\\":\\\"00:01:00\\\",\\\"healthCheckRetryTimeout\\\":\\\"00:45:00\\\",\\\"upgradeTimeout\\\":\\\"12:00:00\\\",\\\"upgradeDomainTimeout\\\":\\\"02:00:00\\\"},\\\"upgradeMode\\\":\\\"Monitored\\\",\\\"forceRestart\\\":false,\\\"upgradeReplicaSetCheckTimeout\\\":\\\"49710.06:28:15\\\",\\\"sortOrder\\\":\\\"Default\\\",\\\"instanceCloseDelayDuration\\\":\\\"49710.06:28:15\\\",\\\"kind\\\":\\\"Rolling\\\"}},\\\"targetCodeVersion\\\":\\\"7.2.477.9590\\\",\\\"targetConfigVersion\\\":\\\"4\\\",\\\"upgradeState\\\":\\\"RollingForwardInProgress\\\",\\\"upgradeDomains\\\":[{\\\"name\\\":\\\"1\\\",\\\"state\\\":\\\"InProgress\\\"},{\\\"name\\\":\\\"0\\\",\\\"state\\\":\\\"Completed\\\"},{\\\"name\\\":\\\"2\\\",\\\"state\\\":\\\"Pending\\\"},{\\\"name\\\":\\\"3\\\",\\\"state\\\":\\\"Pending\\\"},{\\\"name\\\":\\\"4\\\",\\\"state\\\":\\\"Pending\\\"}],\\\"rollingUpgradeMode\\\":\\\"Monitored\\\",\\\"nextUpgradeDomain\\\":\\\"2\\\",\\\"upgradeDuration\\\":\\\"00:03:00\\\",\\\"currentUpgradeDomainDuration\\\":\\\"00:00:00\\\",\\\"unhealthyEvaluations\\\":[],\\\"currentUpgradeDomainProgress\\\":{\\\"upgradeDomainName\\\":\\\"1\\\",\\\"nodeProgressList\\\":[]},\\\"startTimestampUtc\\\":\\\"2021-03-10T01:30:38.3840501Z\\\"}\",\r\n  \"startTime\": \"2021-03-10T01:29:03.9258992Z\",\r\n  \"endTime\": \"0001-01-01T00:00:00\",\r\n  \"percentComplete\": 0.0\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/c3628deb-f76b-4945-b262-ccdffa00a977?api-version=2020-03-01&Experiment=local",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUZhYnJpYy9sb2NhdGlvbnMvc291dGhjZW50cmFsdXMvb3BlcmF0aW9ucy9jMzYyOGRlYi1mNzZiLTQ5NDUtYjI2Mi1jY2RmZmEwMGE5Nzc/YXBpLXZlcnNpb249MjAyMC0wMy0wMSZFeHBlcmltZW50PWxvY2Fs",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e82c4f75-d966-4c8f-9269-3ec681468ad9"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ServiceFabric.ServiceFabricManagementClient/1.3.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11987"
+        ],
+        "x-ms-request-id": [
+          "043507e0-827b-492e-a878-f0f4138c487a"
+        ],
+        "x-ms-correlation-request-id": [
+          "043507e0-827b-492e-a878-f0f4138c487a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20210310T013605Z:043507e0-827b-492e-a878-f0f4138c487a"
+        ],
+        "Date": [
+          "Wed, 10 Mar 2021 01:36:05 GMT"
+        ],
+        "Content-Length": [
+          "3792"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/c3628deb-f76b-4945-b262-ccdffa00a977\",\r\n  \"name\": \"c3628deb-f76b-4945-b262-ccdffa00a977\",\r\n  \"status\": \"InProgress:{\\\"upgradeDescription\\\":{\\\"targetCodeVersion\\\":\\\"7.2.477.9590\\\",\\\"targetConfigVersion\\\":\\\"4\\\",\\\"upgradePolicyDescription\\\":{\\\"healthPolicy\\\":{\\\"considerWarningAsError\\\":false,\\\"maxPercentUnhealthyNodes\\\":100,\\\"maxPercentUnhealthyApplications\\\":0,\\\"applicationTypeHealthPolicyMap\\\":{}},\\\"enableDeltaHealthEvaluation\\\":true,\\\"upgradeHealthPolicy\\\":{\\\"maxPercentDeltaUnhealthyNodes\\\":0,\\\"maxPercentUpgradeDomainDeltaUnhealthyNodes\\\":0},\\\"applicationHealthPolicyMap\\\":{\\\"fabric:/System\\\":{\\\"considerWarningAsError\\\":false,\\\"maxPercentUnhealthyDeployedApplications\\\":0,\\\"defaultServiceTypeHealthPolicy\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"serviceTypeHealthPolicyMap\\\":{\\\"clusterManagerServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"dnsServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"eventStoreServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"fmServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"faultAnalysisServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"fileStoreServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"namingStoreService\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"repairManagerServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"upgradeServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0}}}},\\\"monitoringPolicy\\\":{\\\"failureAction\\\":\\\"Rollback\\\",\\\"healthCheckWaitDuration\\\":\\\"00:00:30\\\",\\\"healthCheckStableDuration\\\":\\\"00:01:00\\\",\\\"healthCheckRetryTimeout\\\":\\\"00:45:00\\\",\\\"upgradeTimeout\\\":\\\"12:00:00\\\",\\\"upgradeDomainTimeout\\\":\\\"02:00:00\\\"},\\\"upgradeMode\\\":\\\"Monitored\\\",\\\"forceRestart\\\":false,\\\"upgradeReplicaSetCheckTimeout\\\":\\\"49710.06:28:15\\\",\\\"sortOrder\\\":\\\"Default\\\",\\\"instanceCloseDelayDuration\\\":\\\"49710.06:28:15\\\",\\\"kind\\\":\\\"Rolling\\\"}},\\\"targetCodeVersion\\\":\\\"7.2.477.9590\\\",\\\"targetConfigVersion\\\":\\\"4\\\",\\\"upgradeState\\\":\\\"RollingForwardInProgress\\\",\\\"upgradeDomains\\\":[{\\\"name\\\":\\\"1\\\",\\\"state\\\":\\\"InProgress\\\"},{\\\"name\\\":\\\"0\\\",\\\"state\\\":\\\"Completed\\\"},{\\\"name\\\":\\\"2\\\",\\\"state\\\":\\\"Pending\\\"},{\\\"name\\\":\\\"3\\\",\\\"state\\\":\\\"Pending\\\"},{\\\"name\\\":\\\"4\\\",\\\"state\\\":\\\"Pending\\\"}],\\\"rollingUpgradeMode\\\":\\\"Monitored\\\",\\\"nextUpgradeDomain\\\":\\\"2\\\",\\\"upgradeDuration\\\":\\\"00:03:00\\\",\\\"currentUpgradeDomainDuration\\\":\\\"00:00:00\\\",\\\"unhealthyEvaluations\\\":[],\\\"currentUpgradeDomainProgress\\\":{\\\"upgradeDomainName\\\":\\\"1\\\",\\\"nodeProgressList\\\":[{\\\"nodeName\\\":\\\"_nt1vm_1\\\",\\\"upgradePhase\\\":\\\"PreUpgradeSafetyCheck\\\",\\\"pendingSafetyChecks\\\":[{\\\"partitionId\\\":\\\"00000000-0000-0000-0000-000000003000\\\",\\\"kind\\\":\\\"WaitForPrimarySwap\\\"}]}]},\\\"startTimestampUtc\\\":\\\"2021-03-10T01:30:38.3840501Z\\\"}\",\r\n  \"startTime\": \"2021-03-10T01:29:03.9258992Z\",\r\n  \"endTime\": \"0001-01-01T00:00:00\",\r\n  \"percentComplete\": 0.0\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/c3628deb-f76b-4945-b262-ccdffa00a977?api-version=2020-03-01&Experiment=local",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUZhYnJpYy9sb2NhdGlvbnMvc291dGhjZW50cmFsdXMvb3BlcmF0aW9ucy9jMzYyOGRlYi1mNzZiLTQ5NDUtYjI2Mi1jY2RmZmEwMGE5Nzc/YXBpLXZlcnNpb249MjAyMC0wMy0wMSZFeHBlcmltZW50PWxvY2Fs",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e82c4f75-d966-4c8f-9269-3ec681468ad9"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ServiceFabric.ServiceFabricManagementClient/1.3.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11986"
+        ],
+        "x-ms-request-id": [
+          "78bd7ee8-f586-4c08-81f2-d2f7c0e03de9"
+        ],
+        "x-ms-correlation-request-id": [
+          "78bd7ee8-f586-4c08-81f2-d2f7c0e03de9"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20210310T013706Z:78bd7ee8-f586-4c08-81f2-d2f7c0e03de9"
+        ],
+        "Date": [
+          "Wed, 10 Mar 2021 01:37:05 GMT"
+        ],
+        "Content-Length": [
+          "3601"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/c3628deb-f76b-4945-b262-ccdffa00a977\",\r\n  \"name\": \"c3628deb-f76b-4945-b262-ccdffa00a977\",\r\n  \"status\": \"InProgress:{\\\"upgradeDescription\\\":{\\\"targetCodeVersion\\\":\\\"7.2.477.9590\\\",\\\"targetConfigVersion\\\":\\\"4\\\",\\\"upgradePolicyDescription\\\":{\\\"healthPolicy\\\":{\\\"considerWarningAsError\\\":false,\\\"maxPercentUnhealthyNodes\\\":100,\\\"maxPercentUnhealthyApplications\\\":0,\\\"applicationTypeHealthPolicyMap\\\":{}},\\\"enableDeltaHealthEvaluation\\\":true,\\\"upgradeHealthPolicy\\\":{\\\"maxPercentDeltaUnhealthyNodes\\\":0,\\\"maxPercentUpgradeDomainDeltaUnhealthyNodes\\\":0},\\\"applicationHealthPolicyMap\\\":{\\\"fabric:/System\\\":{\\\"considerWarningAsError\\\":false,\\\"maxPercentUnhealthyDeployedApplications\\\":0,\\\"defaultServiceTypeHealthPolicy\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"serviceTypeHealthPolicyMap\\\":{\\\"clusterManagerServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"dnsServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"eventStoreServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"fmServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"faultAnalysisServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"fileStoreServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"namingStoreService\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"repairManagerServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"upgradeServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0}}}},\\\"monitoringPolicy\\\":{\\\"failureAction\\\":\\\"Rollback\\\",\\\"healthCheckWaitDuration\\\":\\\"00:00:30\\\",\\\"healthCheckStableDuration\\\":\\\"00:01:00\\\",\\\"healthCheckRetryTimeout\\\":\\\"00:45:00\\\",\\\"upgradeTimeout\\\":\\\"12:00:00\\\",\\\"upgradeDomainTimeout\\\":\\\"02:00:00\\\"},\\\"upgradeMode\\\":\\\"Monitored\\\",\\\"forceRestart\\\":false,\\\"upgradeReplicaSetCheckTimeout\\\":\\\"49710.06:28:15\\\",\\\"sortOrder\\\":\\\"Default\\\",\\\"instanceCloseDelayDuration\\\":\\\"49710.06:28:15\\\",\\\"kind\\\":\\\"Rolling\\\"}},\\\"targetCodeVersion\\\":\\\"7.2.477.9590\\\",\\\"targetConfigVersion\\\":\\\"4\\\",\\\"upgradeState\\\":\\\"RollingForwardPending\\\",\\\"upgradeDomains\\\":[{\\\"name\\\":\\\"0\\\",\\\"state\\\":\\\"Completed\\\"},{\\\"name\\\":\\\"1\\\",\\\"state\\\":\\\"Completed\\\"},{\\\"name\\\":\\\"2\\\",\\\"state\\\":\\\"Pending\\\"},{\\\"name\\\":\\\"3\\\",\\\"state\\\":\\\"Pending\\\"},{\\\"name\\\":\\\"4\\\",\\\"state\\\":\\\"Pending\\\"}],\\\"rollingUpgradeMode\\\":\\\"Monitored\\\",\\\"nextUpgradeDomain\\\":\\\"2\\\",\\\"upgradeDuration\\\":\\\"00:04:00\\\",\\\"currentUpgradeDomainDuration\\\":\\\"00:01:00\\\",\\\"unhealthyEvaluations\\\":[],\\\"currentUpgradeDomainProgress\\\":{\\\"upgradeDomainName\\\":\\\"2\\\",\\\"nodeProgressList\\\":[]},\\\"startTimestampUtc\\\":\\\"2021-03-10T01:30:38.3840501Z\\\"}\",\r\n  \"startTime\": \"2021-03-10T01:29:03.9258992Z\",\r\n  \"endTime\": \"0001-01-01T00:00:00\",\r\n  \"percentComplete\": 0.0\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/c3628deb-f76b-4945-b262-ccdffa00a977?api-version=2020-03-01&Experiment=local",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUZhYnJpYy9sb2NhdGlvbnMvc291dGhjZW50cmFsdXMvb3BlcmF0aW9ucy9jMzYyOGRlYi1mNzZiLTQ5NDUtYjI2Mi1jY2RmZmEwMGE5Nzc/YXBpLXZlcnNpb249MjAyMC0wMy0wMSZFeHBlcmltZW50PWxvY2Fs",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e82c4f75-d966-4c8f-9269-3ec681468ad9"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ServiceFabric.ServiceFabricManagementClient/1.3.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11985"
+        ],
+        "x-ms-request-id": [
+          "27f92fd2-7fbd-4f0b-8950-04dd5b3673d9"
+        ],
+        "x-ms-correlation-request-id": [
+          "27f92fd2-7fbd-4f0b-8950-04dd5b3673d9"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20210310T013806Z:27f92fd2-7fbd-4f0b-8950-04dd5b3673d9"
+        ],
+        "Date": [
+          "Wed, 10 Mar 2021 01:38:05 GMT"
+        ],
+        "Content-Length": [
+          "3601"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/c3628deb-f76b-4945-b262-ccdffa00a977\",\r\n  \"name\": \"c3628deb-f76b-4945-b262-ccdffa00a977\",\r\n  \"status\": \"InProgress:{\\\"upgradeDescription\\\":{\\\"targetCodeVersion\\\":\\\"7.2.477.9590\\\",\\\"targetConfigVersion\\\":\\\"4\\\",\\\"upgradePolicyDescription\\\":{\\\"healthPolicy\\\":{\\\"considerWarningAsError\\\":false,\\\"maxPercentUnhealthyNodes\\\":100,\\\"maxPercentUnhealthyApplications\\\":0,\\\"applicationTypeHealthPolicyMap\\\":{}},\\\"enableDeltaHealthEvaluation\\\":true,\\\"upgradeHealthPolicy\\\":{\\\"maxPercentDeltaUnhealthyNodes\\\":0,\\\"maxPercentUpgradeDomainDeltaUnhealthyNodes\\\":0},\\\"applicationHealthPolicyMap\\\":{\\\"fabric:/System\\\":{\\\"considerWarningAsError\\\":false,\\\"maxPercentUnhealthyDeployedApplications\\\":0,\\\"defaultServiceTypeHealthPolicy\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"serviceTypeHealthPolicyMap\\\":{\\\"clusterManagerServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"dnsServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"eventStoreServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"fmServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"faultAnalysisServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"fileStoreServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"namingStoreService\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"repairManagerServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"upgradeServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0}}}},\\\"monitoringPolicy\\\":{\\\"failureAction\\\":\\\"Rollback\\\",\\\"healthCheckWaitDuration\\\":\\\"00:00:30\\\",\\\"healthCheckStableDuration\\\":\\\"00:01:00\\\",\\\"healthCheckRetryTimeout\\\":\\\"00:45:00\\\",\\\"upgradeTimeout\\\":\\\"12:00:00\\\",\\\"upgradeDomainTimeout\\\":\\\"02:00:00\\\"},\\\"upgradeMode\\\":\\\"Monitored\\\",\\\"forceRestart\\\":false,\\\"upgradeReplicaSetCheckTimeout\\\":\\\"49710.06:28:15\\\",\\\"sortOrder\\\":\\\"Default\\\",\\\"instanceCloseDelayDuration\\\":\\\"49710.06:28:15\\\",\\\"kind\\\":\\\"Rolling\\\"}},\\\"targetCodeVersion\\\":\\\"7.2.477.9590\\\",\\\"targetConfigVersion\\\":\\\"4\\\",\\\"upgradeState\\\":\\\"RollingForwardPending\\\",\\\"upgradeDomains\\\":[{\\\"name\\\":\\\"0\\\",\\\"state\\\":\\\"Completed\\\"},{\\\"name\\\":\\\"1\\\",\\\"state\\\":\\\"Completed\\\"},{\\\"name\\\":\\\"2\\\",\\\"state\\\":\\\"Pending\\\"},{\\\"name\\\":\\\"3\\\",\\\"state\\\":\\\"Pending\\\"},{\\\"name\\\":\\\"4\\\",\\\"state\\\":\\\"Pending\\\"}],\\\"rollingUpgradeMode\\\":\\\"Monitored\\\",\\\"nextUpgradeDomain\\\":\\\"2\\\",\\\"upgradeDuration\\\":\\\"00:05:00\\\",\\\"currentUpgradeDomainDuration\\\":\\\"00:02:00\\\",\\\"unhealthyEvaluations\\\":[],\\\"currentUpgradeDomainProgress\\\":{\\\"upgradeDomainName\\\":\\\"2\\\",\\\"nodeProgressList\\\":[]},\\\"startTimestampUtc\\\":\\\"2021-03-10T01:30:38.3840501Z\\\"}\",\r\n  \"startTime\": \"2021-03-10T01:29:03.9258992Z\",\r\n  \"endTime\": \"0001-01-01T00:00:00\",\r\n  \"percentComplete\": 0.0\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/c3628deb-f76b-4945-b262-ccdffa00a977?api-version=2020-03-01&Experiment=local",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUZhYnJpYy9sb2NhdGlvbnMvc291dGhjZW50cmFsdXMvb3BlcmF0aW9ucy9jMzYyOGRlYi1mNzZiLTQ5NDUtYjI2Mi1jY2RmZmEwMGE5Nzc/YXBpLXZlcnNpb249MjAyMC0wMy0wMSZFeHBlcmltZW50PWxvY2Fs",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e82c4f75-d966-4c8f-9269-3ec681468ad9"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ServiceFabric.ServiceFabricManagementClient/1.3.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11984"
+        ],
+        "x-ms-request-id": [
+          "6e81a73c-7833-4dc6-a39c-bafc5f315b4d"
+        ],
+        "x-ms-correlation-request-id": [
+          "6e81a73c-7833-4dc6-a39c-bafc5f315b4d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20210310T013906Z:6e81a73c-7833-4dc6-a39c-bafc5f315b4d"
+        ],
+        "Date": [
+          "Wed, 10 Mar 2021 01:39:05 GMT"
+        ],
+        "Content-Length": [
+          "3607"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/c3628deb-f76b-4945-b262-ccdffa00a977\",\r\n  \"name\": \"c3628deb-f76b-4945-b262-ccdffa00a977\",\r\n  \"status\": \"InProgress:{\\\"upgradeDescription\\\":{\\\"targetCodeVersion\\\":\\\"7.2.477.9590\\\",\\\"targetConfigVersion\\\":\\\"4\\\",\\\"upgradePolicyDescription\\\":{\\\"healthPolicy\\\":{\\\"considerWarningAsError\\\":false,\\\"maxPercentUnhealthyNodes\\\":100,\\\"maxPercentUnhealthyApplications\\\":0,\\\"applicationTypeHealthPolicyMap\\\":{}},\\\"enableDeltaHealthEvaluation\\\":true,\\\"upgradeHealthPolicy\\\":{\\\"maxPercentDeltaUnhealthyNodes\\\":0,\\\"maxPercentUpgradeDomainDeltaUnhealthyNodes\\\":0},\\\"applicationHealthPolicyMap\\\":{\\\"fabric:/System\\\":{\\\"considerWarningAsError\\\":false,\\\"maxPercentUnhealthyDeployedApplications\\\":0,\\\"defaultServiceTypeHealthPolicy\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"serviceTypeHealthPolicyMap\\\":{\\\"clusterManagerServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"dnsServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"eventStoreServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"fmServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"faultAnalysisServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"fileStoreServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"namingStoreService\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"repairManagerServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"upgradeServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0}}}},\\\"monitoringPolicy\\\":{\\\"failureAction\\\":\\\"Rollback\\\",\\\"healthCheckWaitDuration\\\":\\\"00:00:30\\\",\\\"healthCheckStableDuration\\\":\\\"00:01:00\\\",\\\"healthCheckRetryTimeout\\\":\\\"00:45:00\\\",\\\"upgradeTimeout\\\":\\\"12:00:00\\\",\\\"upgradeDomainTimeout\\\":\\\"02:00:00\\\"},\\\"upgradeMode\\\":\\\"Monitored\\\",\\\"forceRestart\\\":false,\\\"upgradeReplicaSetCheckTimeout\\\":\\\"49710.06:28:15\\\",\\\"sortOrder\\\":\\\"Default\\\",\\\"instanceCloseDelayDuration\\\":\\\"49710.06:28:15\\\",\\\"kind\\\":\\\"Rolling\\\"}},\\\"targetCodeVersion\\\":\\\"7.2.477.9590\\\",\\\"targetConfigVersion\\\":\\\"4\\\",\\\"upgradeState\\\":\\\"RollingForwardInProgress\\\",\\\"upgradeDomains\\\":[{\\\"name\\\":\\\"2\\\",\\\"state\\\":\\\"InProgress\\\"},{\\\"name\\\":\\\"0\\\",\\\"state\\\":\\\"Completed\\\"},{\\\"name\\\":\\\"1\\\",\\\"state\\\":\\\"Completed\\\"},{\\\"name\\\":\\\"3\\\",\\\"state\\\":\\\"Pending\\\"},{\\\"name\\\":\\\"4\\\",\\\"state\\\":\\\"Pending\\\"}],\\\"rollingUpgradeMode\\\":\\\"Monitored\\\",\\\"nextUpgradeDomain\\\":\\\"3\\\",\\\"upgradeDuration\\\":\\\"00:06:00\\\",\\\"currentUpgradeDomainDuration\\\":\\\"00:00:00\\\",\\\"unhealthyEvaluations\\\":[],\\\"currentUpgradeDomainProgress\\\":{\\\"upgradeDomainName\\\":\\\"2\\\",\\\"nodeProgressList\\\":[]},\\\"startTimestampUtc\\\":\\\"2021-03-10T01:30:38.3840501Z\\\"}\",\r\n  \"startTime\": \"2021-03-10T01:29:03.9258992Z\",\r\n  \"endTime\": \"0001-01-01T00:00:00\",\r\n  \"percentComplete\": 0.0\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/c3628deb-f76b-4945-b262-ccdffa00a977?api-version=2020-03-01&Experiment=local",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUZhYnJpYy9sb2NhdGlvbnMvc291dGhjZW50cmFsdXMvb3BlcmF0aW9ucy9jMzYyOGRlYi1mNzZiLTQ5NDUtYjI2Mi1jY2RmZmEwMGE5Nzc/YXBpLXZlcnNpb249MjAyMC0wMy0wMSZFeHBlcmltZW50PWxvY2Fs",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e82c4f75-d966-4c8f-9269-3ec681468ad9"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ServiceFabric.ServiceFabricManagementClient/1.3.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11987"
+        ],
+        "x-ms-request-id": [
+          "569b09f3-d8a1-456b-a654-7beb17c3ca4b"
+        ],
+        "x-ms-correlation-request-id": [
+          "569b09f3-d8a1-456b-a654-7beb17c3ca4b"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20210310T014006Z:569b09f3-d8a1-456b-a654-7beb17c3ca4b"
+        ],
+        "Date": [
+          "Wed, 10 Mar 2021 01:40:06 GMT"
+        ],
+        "Content-Length": [
+          "3603"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/c3628deb-f76b-4945-b262-ccdffa00a977\",\r\n  \"name\": \"c3628deb-f76b-4945-b262-ccdffa00a977\",\r\n  \"status\": \"InProgress:{\\\"upgradeDescription\\\":{\\\"targetCodeVersion\\\":\\\"7.2.477.9590\\\",\\\"targetConfigVersion\\\":\\\"4\\\",\\\"upgradePolicyDescription\\\":{\\\"healthPolicy\\\":{\\\"considerWarningAsError\\\":false,\\\"maxPercentUnhealthyNodes\\\":100,\\\"maxPercentUnhealthyApplications\\\":0,\\\"applicationTypeHealthPolicyMap\\\":{}},\\\"enableDeltaHealthEvaluation\\\":true,\\\"upgradeHealthPolicy\\\":{\\\"maxPercentDeltaUnhealthyNodes\\\":0,\\\"maxPercentUpgradeDomainDeltaUnhealthyNodes\\\":0},\\\"applicationHealthPolicyMap\\\":{\\\"fabric:/System\\\":{\\\"considerWarningAsError\\\":false,\\\"maxPercentUnhealthyDeployedApplications\\\":0,\\\"defaultServiceTypeHealthPolicy\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"serviceTypeHealthPolicyMap\\\":{\\\"clusterManagerServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"dnsServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"eventStoreServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"fmServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"faultAnalysisServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"fileStoreServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"namingStoreService\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"repairManagerServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"upgradeServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0}}}},\\\"monitoringPolicy\\\":{\\\"failureAction\\\":\\\"Rollback\\\",\\\"healthCheckWaitDuration\\\":\\\"00:00:30\\\",\\\"healthCheckStableDuration\\\":\\\"00:01:00\\\",\\\"healthCheckRetryTimeout\\\":\\\"00:45:00\\\",\\\"upgradeTimeout\\\":\\\"12:00:00\\\",\\\"upgradeDomainTimeout\\\":\\\"02:00:00\\\"},\\\"upgradeMode\\\":\\\"Monitored\\\",\\\"forceRestart\\\":false,\\\"upgradeReplicaSetCheckTimeout\\\":\\\"49710.06:28:15\\\",\\\"sortOrder\\\":\\\"Default\\\",\\\"instanceCloseDelayDuration\\\":\\\"49710.06:28:15\\\",\\\"kind\\\":\\\"Rolling\\\"}},\\\"targetCodeVersion\\\":\\\"7.2.477.9590\\\",\\\"targetConfigVersion\\\":\\\"4\\\",\\\"upgradeState\\\":\\\"RollingForwardPending\\\",\\\"upgradeDomains\\\":[{\\\"name\\\":\\\"0\\\",\\\"state\\\":\\\"Completed\\\"},{\\\"name\\\":\\\"1\\\",\\\"state\\\":\\\"Completed\\\"},{\\\"name\\\":\\\"2\\\",\\\"state\\\":\\\"Completed\\\"},{\\\"name\\\":\\\"3\\\",\\\"state\\\":\\\"Pending\\\"},{\\\"name\\\":\\\"4\\\",\\\"state\\\":\\\"Pending\\\"}],\\\"rollingUpgradeMode\\\":\\\"Monitored\\\",\\\"nextUpgradeDomain\\\":\\\"3\\\",\\\"upgradeDuration\\\":\\\"00:07:00\\\",\\\"currentUpgradeDomainDuration\\\":\\\"00:01:00\\\",\\\"unhealthyEvaluations\\\":[],\\\"currentUpgradeDomainProgress\\\":{\\\"upgradeDomainName\\\":\\\"3\\\",\\\"nodeProgressList\\\":[]},\\\"startTimestampUtc\\\":\\\"2021-03-10T01:30:38.3840501Z\\\"}\",\r\n  \"startTime\": \"2021-03-10T01:29:03.9258992Z\",\r\n  \"endTime\": \"0001-01-01T00:00:00\",\r\n  \"percentComplete\": 0.0\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/c3628deb-f76b-4945-b262-ccdffa00a977?api-version=2020-03-01&Experiment=local",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUZhYnJpYy9sb2NhdGlvbnMvc291dGhjZW50cmFsdXMvb3BlcmF0aW9ucy9jMzYyOGRlYi1mNzZiLTQ5NDUtYjI2Mi1jY2RmZmEwMGE5Nzc/YXBpLXZlcnNpb249MjAyMC0wMy0wMSZFeHBlcmltZW50PWxvY2Fs",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e82c4f75-d966-4c8f-9269-3ec681468ad9"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ServiceFabric.ServiceFabricManagementClient/1.3.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "859c42a1-960b-447e-8519-56352f916e37"
+        ],
+        "x-ms-correlation-request-id": [
+          "859c42a1-960b-447e-8519-56352f916e37"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20210310T014106Z:859c42a1-960b-447e-8519-56352f916e37"
+        ],
+        "Date": [
+          "Wed, 10 Mar 2021 01:41:06 GMT"
+        ],
+        "Content-Length": [
+          "3603"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/c3628deb-f76b-4945-b262-ccdffa00a977\",\r\n  \"name\": \"c3628deb-f76b-4945-b262-ccdffa00a977\",\r\n  \"status\": \"InProgress:{\\\"upgradeDescription\\\":{\\\"targetCodeVersion\\\":\\\"7.2.477.9590\\\",\\\"targetConfigVersion\\\":\\\"4\\\",\\\"upgradePolicyDescription\\\":{\\\"healthPolicy\\\":{\\\"considerWarningAsError\\\":false,\\\"maxPercentUnhealthyNodes\\\":100,\\\"maxPercentUnhealthyApplications\\\":0,\\\"applicationTypeHealthPolicyMap\\\":{}},\\\"enableDeltaHealthEvaluation\\\":true,\\\"upgradeHealthPolicy\\\":{\\\"maxPercentDeltaUnhealthyNodes\\\":0,\\\"maxPercentUpgradeDomainDeltaUnhealthyNodes\\\":0},\\\"applicationHealthPolicyMap\\\":{\\\"fabric:/System\\\":{\\\"considerWarningAsError\\\":false,\\\"maxPercentUnhealthyDeployedApplications\\\":0,\\\"defaultServiceTypeHealthPolicy\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"serviceTypeHealthPolicyMap\\\":{\\\"clusterManagerServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"dnsServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"eventStoreServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"fmServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"faultAnalysisServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"fileStoreServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"namingStoreService\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"repairManagerServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"upgradeServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0}}}},\\\"monitoringPolicy\\\":{\\\"failureAction\\\":\\\"Rollback\\\",\\\"healthCheckWaitDuration\\\":\\\"00:00:30\\\",\\\"healthCheckStableDuration\\\":\\\"00:01:00\\\",\\\"healthCheckRetryTimeout\\\":\\\"00:45:00\\\",\\\"upgradeTimeout\\\":\\\"12:00:00\\\",\\\"upgradeDomainTimeout\\\":\\\"02:00:00\\\"},\\\"upgradeMode\\\":\\\"Monitored\\\",\\\"forceRestart\\\":false,\\\"upgradeReplicaSetCheckTimeout\\\":\\\"49710.06:28:15\\\",\\\"sortOrder\\\":\\\"Default\\\",\\\"instanceCloseDelayDuration\\\":\\\"49710.06:28:15\\\",\\\"kind\\\":\\\"Rolling\\\"}},\\\"targetCodeVersion\\\":\\\"7.2.477.9590\\\",\\\"targetConfigVersion\\\":\\\"4\\\",\\\"upgradeState\\\":\\\"RollingForwardPending\\\",\\\"upgradeDomains\\\":[{\\\"name\\\":\\\"0\\\",\\\"state\\\":\\\"Completed\\\"},{\\\"name\\\":\\\"1\\\",\\\"state\\\":\\\"Completed\\\"},{\\\"name\\\":\\\"2\\\",\\\"state\\\":\\\"Completed\\\"},{\\\"name\\\":\\\"3\\\",\\\"state\\\":\\\"Pending\\\"},{\\\"name\\\":\\\"4\\\",\\\"state\\\":\\\"Pending\\\"}],\\\"rollingUpgradeMode\\\":\\\"Monitored\\\",\\\"nextUpgradeDomain\\\":\\\"3\\\",\\\"upgradeDuration\\\":\\\"00:08:00\\\",\\\"currentUpgradeDomainDuration\\\":\\\"00:02:00\\\",\\\"unhealthyEvaluations\\\":[],\\\"currentUpgradeDomainProgress\\\":{\\\"upgradeDomainName\\\":\\\"3\\\",\\\"nodeProgressList\\\":[]},\\\"startTimestampUtc\\\":\\\"2021-03-10T01:30:38.3840501Z\\\"}\",\r\n  \"startTime\": \"2021-03-10T01:29:03.9258992Z\",\r\n  \"endTime\": \"0001-01-01T00:00:00\",\r\n  \"percentComplete\": 0.0\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/c3628deb-f76b-4945-b262-ccdffa00a977?api-version=2020-03-01&Experiment=local",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUZhYnJpYy9sb2NhdGlvbnMvc291dGhjZW50cmFsdXMvb3BlcmF0aW9ucy9jMzYyOGRlYi1mNzZiLTQ5NDUtYjI2Mi1jY2RmZmEwMGE5Nzc/YXBpLXZlcnNpb249MjAyMC0wMy0wMSZFeHBlcmltZW50PWxvY2Fs",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e82c4f75-d966-4c8f-9269-3ec681468ad9"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ServiceFabric.ServiceFabricManagementClient/1.3.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-request-id": [
+          "032fa135-9572-4cab-a748-bf65abc84c6f"
+        ],
+        "x-ms-correlation-request-id": [
+          "032fa135-9572-4cab-a748-bf65abc84c6f"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20210310T014207Z:032fa135-9572-4cab-a748-bf65abc84c6f"
+        ],
+        "Date": [
+          "Wed, 10 Mar 2021 01:42:06 GMT"
+        ],
+        "Content-Length": [
+          "3609"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/c3628deb-f76b-4945-b262-ccdffa00a977\",\r\n  \"name\": \"c3628deb-f76b-4945-b262-ccdffa00a977\",\r\n  \"status\": \"InProgress:{\\\"upgradeDescription\\\":{\\\"targetCodeVersion\\\":\\\"7.2.477.9590\\\",\\\"targetConfigVersion\\\":\\\"4\\\",\\\"upgradePolicyDescription\\\":{\\\"healthPolicy\\\":{\\\"considerWarningAsError\\\":false,\\\"maxPercentUnhealthyNodes\\\":100,\\\"maxPercentUnhealthyApplications\\\":0,\\\"applicationTypeHealthPolicyMap\\\":{}},\\\"enableDeltaHealthEvaluation\\\":true,\\\"upgradeHealthPolicy\\\":{\\\"maxPercentDeltaUnhealthyNodes\\\":0,\\\"maxPercentUpgradeDomainDeltaUnhealthyNodes\\\":0},\\\"applicationHealthPolicyMap\\\":{\\\"fabric:/System\\\":{\\\"considerWarningAsError\\\":false,\\\"maxPercentUnhealthyDeployedApplications\\\":0,\\\"defaultServiceTypeHealthPolicy\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"serviceTypeHealthPolicyMap\\\":{\\\"clusterManagerServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"dnsServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"eventStoreServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"fmServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"faultAnalysisServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"fileStoreServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"namingStoreService\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"repairManagerServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"upgradeServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0}}}},\\\"monitoringPolicy\\\":{\\\"failureAction\\\":\\\"Rollback\\\",\\\"healthCheckWaitDuration\\\":\\\"00:00:30\\\",\\\"healthCheckStableDuration\\\":\\\"00:01:00\\\",\\\"healthCheckRetryTimeout\\\":\\\"00:45:00\\\",\\\"upgradeTimeout\\\":\\\"12:00:00\\\",\\\"upgradeDomainTimeout\\\":\\\"02:00:00\\\"},\\\"upgradeMode\\\":\\\"Monitored\\\",\\\"forceRestart\\\":false,\\\"upgradeReplicaSetCheckTimeout\\\":\\\"49710.06:28:15\\\",\\\"sortOrder\\\":\\\"Default\\\",\\\"instanceCloseDelayDuration\\\":\\\"49710.06:28:15\\\",\\\"kind\\\":\\\"Rolling\\\"}},\\\"targetCodeVersion\\\":\\\"7.2.477.9590\\\",\\\"targetConfigVersion\\\":\\\"4\\\",\\\"upgradeState\\\":\\\"RollingForwardInProgress\\\",\\\"upgradeDomains\\\":[{\\\"name\\\":\\\"3\\\",\\\"state\\\":\\\"InProgress\\\"},{\\\"name\\\":\\\"0\\\",\\\"state\\\":\\\"Completed\\\"},{\\\"name\\\":\\\"1\\\",\\\"state\\\":\\\"Completed\\\"},{\\\"name\\\":\\\"2\\\",\\\"state\\\":\\\"Completed\\\"},{\\\"name\\\":\\\"4\\\",\\\"state\\\":\\\"Pending\\\"}],\\\"rollingUpgradeMode\\\":\\\"Monitored\\\",\\\"nextUpgradeDomain\\\":\\\"4\\\",\\\"upgradeDuration\\\":\\\"00:09:01\\\",\\\"currentUpgradeDomainDuration\\\":\\\"00:00:00\\\",\\\"unhealthyEvaluations\\\":[],\\\"currentUpgradeDomainProgress\\\":{\\\"upgradeDomainName\\\":\\\"3\\\",\\\"nodeProgressList\\\":[]},\\\"startTimestampUtc\\\":\\\"2021-03-10T01:30:38.3840501Z\\\"}\",\r\n  \"startTime\": \"2021-03-10T01:29:03.9258992Z\",\r\n  \"endTime\": \"0001-01-01T00:00:00\",\r\n  \"percentComplete\": 0.0\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/c3628deb-f76b-4945-b262-ccdffa00a977?api-version=2020-03-01&Experiment=local",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUZhYnJpYy9sb2NhdGlvbnMvc291dGhjZW50cmFsdXMvb3BlcmF0aW9ucy9jMzYyOGRlYi1mNzZiLTQ5NDUtYjI2Mi1jY2RmZmEwMGE5Nzc/YXBpLXZlcnNpb249MjAyMC0wMy0wMSZFeHBlcmltZW50PWxvY2Fs",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e82c4f75-d966-4c8f-9269-3ec681468ad9"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ServiceFabric.ServiceFabricManagementClient/1.3.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-request-id": [
+          "d3234489-00aa-41b1-a3ae-fe53ca2aa296"
+        ],
+        "x-ms-correlation-request-id": [
+          "d3234489-00aa-41b1-a3ae-fe53ca2aa296"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20210310T014307Z:d3234489-00aa-41b1-a3ae-fe53ca2aa296"
+        ],
+        "Date": [
+          "Wed, 10 Mar 2021 01:43:07 GMT"
+        ],
+        "Content-Length": [
+          "3605"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/c3628deb-f76b-4945-b262-ccdffa00a977\",\r\n  \"name\": \"c3628deb-f76b-4945-b262-ccdffa00a977\",\r\n  \"status\": \"InProgress:{\\\"upgradeDescription\\\":{\\\"targetCodeVersion\\\":\\\"7.2.477.9590\\\",\\\"targetConfigVersion\\\":\\\"4\\\",\\\"upgradePolicyDescription\\\":{\\\"healthPolicy\\\":{\\\"considerWarningAsError\\\":false,\\\"maxPercentUnhealthyNodes\\\":100,\\\"maxPercentUnhealthyApplications\\\":0,\\\"applicationTypeHealthPolicyMap\\\":{}},\\\"enableDeltaHealthEvaluation\\\":true,\\\"upgradeHealthPolicy\\\":{\\\"maxPercentDeltaUnhealthyNodes\\\":0,\\\"maxPercentUpgradeDomainDeltaUnhealthyNodes\\\":0},\\\"applicationHealthPolicyMap\\\":{\\\"fabric:/System\\\":{\\\"considerWarningAsError\\\":false,\\\"maxPercentUnhealthyDeployedApplications\\\":0,\\\"defaultServiceTypeHealthPolicy\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"serviceTypeHealthPolicyMap\\\":{\\\"clusterManagerServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"dnsServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"eventStoreServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"fmServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"faultAnalysisServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"fileStoreServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"namingStoreService\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"repairManagerServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"upgradeServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0}}}},\\\"monitoringPolicy\\\":{\\\"failureAction\\\":\\\"Rollback\\\",\\\"healthCheckWaitDuration\\\":\\\"00:00:30\\\",\\\"healthCheckStableDuration\\\":\\\"00:01:00\\\",\\\"healthCheckRetryTimeout\\\":\\\"00:45:00\\\",\\\"upgradeTimeout\\\":\\\"12:00:00\\\",\\\"upgradeDomainTimeout\\\":\\\"02:00:00\\\"},\\\"upgradeMode\\\":\\\"Monitored\\\",\\\"forceRestart\\\":false,\\\"upgradeReplicaSetCheckTimeout\\\":\\\"49710.06:28:15\\\",\\\"sortOrder\\\":\\\"Default\\\",\\\"instanceCloseDelayDuration\\\":\\\"49710.06:28:15\\\",\\\"kind\\\":\\\"Rolling\\\"}},\\\"targetCodeVersion\\\":\\\"7.2.477.9590\\\",\\\"targetConfigVersion\\\":\\\"4\\\",\\\"upgradeState\\\":\\\"RollingForwardPending\\\",\\\"upgradeDomains\\\":[{\\\"name\\\":\\\"0\\\",\\\"state\\\":\\\"Completed\\\"},{\\\"name\\\":\\\"1\\\",\\\"state\\\":\\\"Completed\\\"},{\\\"name\\\":\\\"2\\\",\\\"state\\\":\\\"Completed\\\"},{\\\"name\\\":\\\"3\\\",\\\"state\\\":\\\"Completed\\\"},{\\\"name\\\":\\\"4\\\",\\\"state\\\":\\\"Pending\\\"}],\\\"rollingUpgradeMode\\\":\\\"Monitored\\\",\\\"nextUpgradeDomain\\\":\\\"4\\\",\\\"upgradeDuration\\\":\\\"00:10:01\\\",\\\"currentUpgradeDomainDuration\\\":\\\"00:01:00\\\",\\\"unhealthyEvaluations\\\":[],\\\"currentUpgradeDomainProgress\\\":{\\\"upgradeDomainName\\\":\\\"4\\\",\\\"nodeProgressList\\\":[]},\\\"startTimestampUtc\\\":\\\"2021-03-10T01:30:38.3840501Z\\\"}\",\r\n  \"startTime\": \"2021-03-10T01:29:03.9258992Z\",\r\n  \"endTime\": \"0001-01-01T00:00:00\",\r\n  \"percentComplete\": 0.0\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/c3628deb-f76b-4945-b262-ccdffa00a977?api-version=2020-03-01&Experiment=local",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUZhYnJpYy9sb2NhdGlvbnMvc291dGhjZW50cmFsdXMvb3BlcmF0aW9ucy9jMzYyOGRlYi1mNzZiLTQ5NDUtYjI2Mi1jY2RmZmEwMGE5Nzc/YXBpLXZlcnNpb249MjAyMC0wMy0wMSZFeHBlcmltZW50PWxvY2Fs",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e82c4f75-d966-4c8f-9269-3ec681468ad9"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ServiceFabric.ServiceFabricManagementClient/1.3.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-request-id": [
+          "a1362b28-133e-4189-a057-3c81da807bba"
+        ],
+        "x-ms-correlation-request-id": [
+          "a1362b28-133e-4189-a057-3c81da807bba"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20210310T014407Z:a1362b28-133e-4189-a057-3c81da807bba"
+        ],
+        "Date": [
+          "Wed, 10 Mar 2021 01:44:06 GMT"
+        ],
+        "Content-Length": [
+          "3668"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/c3628deb-f76b-4945-b262-ccdffa00a977\",\r\n  \"name\": \"c3628deb-f76b-4945-b262-ccdffa00a977\",\r\n  \"status\": \"InProgress:{\\\"upgradeDescription\\\":{\\\"targetCodeVersion\\\":\\\"7.2.477.9590\\\",\\\"targetConfigVersion\\\":\\\"4\\\",\\\"upgradePolicyDescription\\\":{\\\"healthPolicy\\\":{\\\"considerWarningAsError\\\":false,\\\"maxPercentUnhealthyNodes\\\":100,\\\"maxPercentUnhealthyApplications\\\":0,\\\"applicationTypeHealthPolicyMap\\\":{}},\\\"enableDeltaHealthEvaluation\\\":true,\\\"upgradeHealthPolicy\\\":{\\\"maxPercentDeltaUnhealthyNodes\\\":0,\\\"maxPercentUpgradeDomainDeltaUnhealthyNodes\\\":0},\\\"applicationHealthPolicyMap\\\":{\\\"fabric:/System\\\":{\\\"considerWarningAsError\\\":false,\\\"maxPercentUnhealthyDeployedApplications\\\":0,\\\"defaultServiceTypeHealthPolicy\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"serviceTypeHealthPolicyMap\\\":{\\\"clusterManagerServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"dnsServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"eventStoreServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"fmServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"faultAnalysisServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"fileStoreServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"namingStoreService\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"repairManagerServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"upgradeServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0}}}},\\\"monitoringPolicy\\\":{\\\"failureAction\\\":\\\"Rollback\\\",\\\"healthCheckWaitDuration\\\":\\\"00:00:30\\\",\\\"healthCheckStableDuration\\\":\\\"00:01:00\\\",\\\"healthCheckRetryTimeout\\\":\\\"00:45:00\\\",\\\"upgradeTimeout\\\":\\\"12:00:00\\\",\\\"upgradeDomainTimeout\\\":\\\"02:00:00\\\"},\\\"upgradeMode\\\":\\\"Monitored\\\",\\\"forceRestart\\\":false,\\\"upgradeReplicaSetCheckTimeout\\\":\\\"49710.06:28:15\\\",\\\"sortOrder\\\":\\\"Default\\\",\\\"instanceCloseDelayDuration\\\":\\\"49710.06:28:15\\\",\\\"kind\\\":\\\"Rolling\\\"}},\\\"targetCodeVersion\\\":\\\"7.2.477.9590\\\",\\\"targetConfigVersion\\\":\\\"4\\\",\\\"upgradeState\\\":\\\"RollingForwardInProgress\\\",\\\"upgradeDomains\\\":[{\\\"name\\\":\\\"4\\\",\\\"state\\\":\\\"InProgress\\\"},{\\\"name\\\":\\\"0\\\",\\\"state\\\":\\\"Completed\\\"},{\\\"name\\\":\\\"1\\\",\\\"state\\\":\\\"Completed\\\"},{\\\"name\\\":\\\"2\\\",\\\"state\\\":\\\"Completed\\\"},{\\\"name\\\":\\\"3\\\",\\\"state\\\":\\\"Completed\\\"}],\\\"rollingUpgradeMode\\\":\\\"Monitored\\\",\\\"upgradeDuration\\\":\\\"00:12:01\\\",\\\"currentUpgradeDomainDuration\\\":\\\"00:00:00\\\",\\\"unhealthyEvaluations\\\":[],\\\"currentUpgradeDomainProgress\\\":{\\\"upgradeDomainName\\\":\\\"4\\\",\\\"nodeProgressList\\\":[{\\\"nodeName\\\":\\\"_nt1vm_4\\\",\\\"upgradePhase\\\":\\\"Upgrading\\\",\\\"pendingSafetyChecks\\\":[]}]},\\\"startTimestampUtc\\\":\\\"2021-03-10T01:30:38.3840501Z\\\"}\",\r\n  \"startTime\": \"2021-03-10T01:29:03.9258992Z\",\r\n  \"endTime\": \"0001-01-01T00:00:00\",\r\n  \"percentComplete\": 0.0\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/c3628deb-f76b-4945-b262-ccdffa00a977?api-version=2020-03-01&Experiment=local",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUZhYnJpYy9sb2NhdGlvbnMvc291dGhjZW50cmFsdXMvb3BlcmF0aW9ucy9jMzYyOGRlYi1mNzZiLTQ5NDUtYjI2Mi1jY2RmZmEwMGE5Nzc/YXBpLXZlcnNpb249MjAyMC0wMy0wMSZFeHBlcmltZW50PWxvY2Fs",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e82c4f75-d966-4c8f-9269-3ec681468ad9"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ServiceFabric.ServiceFabricManagementClient/1.3.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
+        ],
+        "x-ms-request-id": [
+          "a3768ce7-ca11-4bc3-91d4-54499632a65c"
+        ],
+        "x-ms-correlation-request-id": [
+          "a3768ce7-ca11-4bc3-91d4-54499632a65c"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20210310T014507Z:a3768ce7-ca11-4bc3-91d4-54499632a65c"
+        ],
+        "Date": [
+          "Wed, 10 Mar 2021 01:45:06 GMT"
+        ],
+        "Content-Length": [
+          "3581"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/c3628deb-f76b-4945-b262-ccdffa00a977\",\r\n  \"name\": \"c3628deb-f76b-4945-b262-ccdffa00a977\",\r\n  \"status\": \"InProgress:{\\\"upgradeDescription\\\":{\\\"targetCodeVersion\\\":\\\"7.2.477.9590\\\",\\\"targetConfigVersion\\\":\\\"4\\\",\\\"upgradePolicyDescription\\\":{\\\"healthPolicy\\\":{\\\"considerWarningAsError\\\":false,\\\"maxPercentUnhealthyNodes\\\":100,\\\"maxPercentUnhealthyApplications\\\":0,\\\"applicationTypeHealthPolicyMap\\\":{}},\\\"enableDeltaHealthEvaluation\\\":true,\\\"upgradeHealthPolicy\\\":{\\\"maxPercentDeltaUnhealthyNodes\\\":0,\\\"maxPercentUpgradeDomainDeltaUnhealthyNodes\\\":0},\\\"applicationHealthPolicyMap\\\":{\\\"fabric:/System\\\":{\\\"considerWarningAsError\\\":false,\\\"maxPercentUnhealthyDeployedApplications\\\":0,\\\"defaultServiceTypeHealthPolicy\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"serviceTypeHealthPolicyMap\\\":{\\\"clusterManagerServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"dnsServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"eventStoreServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"fmServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"faultAnalysisServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"fileStoreServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"namingStoreService\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"repairManagerServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"upgradeServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0}}}},\\\"monitoringPolicy\\\":{\\\"failureAction\\\":\\\"Rollback\\\",\\\"healthCheckWaitDuration\\\":\\\"00:00:30\\\",\\\"healthCheckStableDuration\\\":\\\"00:01:00\\\",\\\"healthCheckRetryTimeout\\\":\\\"00:45:00\\\",\\\"upgradeTimeout\\\":\\\"12:00:00\\\",\\\"upgradeDomainTimeout\\\":\\\"02:00:00\\\"},\\\"upgradeMode\\\":\\\"Monitored\\\",\\\"forceRestart\\\":false,\\\"upgradeReplicaSetCheckTimeout\\\":\\\"49710.06:28:15\\\",\\\"sortOrder\\\":\\\"Default\\\",\\\"instanceCloseDelayDuration\\\":\\\"49710.06:28:15\\\",\\\"kind\\\":\\\"Rolling\\\"}},\\\"targetCodeVersion\\\":\\\"7.2.477.9590\\\",\\\"targetConfigVersion\\\":\\\"4\\\",\\\"upgradeState\\\":\\\"RollingForwardInProgress\\\",\\\"upgradeDomains\\\":[{\\\"name\\\":\\\"0\\\",\\\"state\\\":\\\"Completed\\\"},{\\\"name\\\":\\\"1\\\",\\\"state\\\":\\\"Completed\\\"},{\\\"name\\\":\\\"2\\\",\\\"state\\\":\\\"Completed\\\"},{\\\"name\\\":\\\"3\\\",\\\"state\\\":\\\"Completed\\\"},{\\\"name\\\":\\\"4\\\",\\\"state\\\":\\\"Completed\\\"}],\\\"rollingUpgradeMode\\\":\\\"Monitored\\\",\\\"upgradeDuration\\\":\\\"00:13:01\\\",\\\"currentUpgradeDomainDuration\\\":\\\"00:01:00\\\",\\\"unhealthyEvaluations\\\":[],\\\"currentUpgradeDomainProgress\\\":{\\\"upgradeDomainName\\\":\\\"\\\",\\\"nodeProgressList\\\":[]},\\\"startTimestampUtc\\\":\\\"2021-03-10T01:30:38.3840501Z\\\"}\",\r\n  \"startTime\": \"2021-03-10T01:29:03.9258992Z\",\r\n  \"endTime\": \"0001-01-01T00:00:00\",\r\n  \"percentComplete\": 0.0\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/c3628deb-f76b-4945-b262-ccdffa00a977?api-version=2020-03-01&Experiment=local",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUZhYnJpYy9sb2NhdGlvbnMvc291dGhjZW50cmFsdXMvb3BlcmF0aW9ucy9jMzYyOGRlYi1mNzZiLTQ5NDUtYjI2Mi1jY2RmZmEwMGE5Nzc/YXBpLXZlcnNpb249MjAyMC0wMy0wMSZFeHBlcmltZW50PWxvY2Fs",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e82c4f75-d966-4c8f-9269-3ec681468ad9"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ServiceFabric.ServiceFabricManagementClient/1.3.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11994"
+        ],
+        "x-ms-request-id": [
+          "566ec7ad-7c89-4c31-8998-0ecd8138bf73"
+        ],
+        "x-ms-correlation-request-id": [
+          "566ec7ad-7c89-4c31-8998-0ecd8138bf73"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20210310T014607Z:566ec7ad-7c89-4c31-8998-0ecd8138bf73"
+        ],
+        "Date": [
+          "Wed, 10 Mar 2021 01:46:07 GMT"
+        ],
+        "Content-Length": [
+          "3581"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/c3628deb-f76b-4945-b262-ccdffa00a977\",\r\n  \"name\": \"c3628deb-f76b-4945-b262-ccdffa00a977\",\r\n  \"status\": \"InProgress:{\\\"upgradeDescription\\\":{\\\"targetCodeVersion\\\":\\\"7.2.477.9590\\\",\\\"targetConfigVersion\\\":\\\"4\\\",\\\"upgradePolicyDescription\\\":{\\\"healthPolicy\\\":{\\\"considerWarningAsError\\\":false,\\\"maxPercentUnhealthyNodes\\\":100,\\\"maxPercentUnhealthyApplications\\\":0,\\\"applicationTypeHealthPolicyMap\\\":{}},\\\"enableDeltaHealthEvaluation\\\":true,\\\"upgradeHealthPolicy\\\":{\\\"maxPercentDeltaUnhealthyNodes\\\":0,\\\"maxPercentUpgradeDomainDeltaUnhealthyNodes\\\":0},\\\"applicationHealthPolicyMap\\\":{\\\"fabric:/System\\\":{\\\"considerWarningAsError\\\":false,\\\"maxPercentUnhealthyDeployedApplications\\\":0,\\\"defaultServiceTypeHealthPolicy\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"serviceTypeHealthPolicyMap\\\":{\\\"clusterManagerServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"dnsServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"eventStoreServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"fmServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"faultAnalysisServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"fileStoreServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"namingStoreService\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"repairManagerServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0},\\\"upgradeServiceType\\\":{\\\"maxPercentUnhealthyServices\\\":0,\\\"maxPercentUnhealthyPartitionsPerService\\\":0,\\\"maxPercentUnhealthyReplicasPerPartition\\\":0}}}},\\\"monitoringPolicy\\\":{\\\"failureAction\\\":\\\"Rollback\\\",\\\"healthCheckWaitDuration\\\":\\\"00:00:30\\\",\\\"healthCheckStableDuration\\\":\\\"00:01:00\\\",\\\"healthCheckRetryTimeout\\\":\\\"00:45:00\\\",\\\"upgradeTimeout\\\":\\\"12:00:00\\\",\\\"upgradeDomainTimeout\\\":\\\"02:00:00\\\"},\\\"upgradeMode\\\":\\\"Monitored\\\",\\\"forceRestart\\\":false,\\\"upgradeReplicaSetCheckTimeout\\\":\\\"49710.06:28:15\\\",\\\"sortOrder\\\":\\\"Default\\\",\\\"instanceCloseDelayDuration\\\":\\\"49710.06:28:15\\\",\\\"kind\\\":\\\"Rolling\\\"}},\\\"targetCodeVersion\\\":\\\"7.2.477.9590\\\",\\\"targetConfigVersion\\\":\\\"4\\\",\\\"upgradeState\\\":\\\"RollingForwardInProgress\\\",\\\"upgradeDomains\\\":[{\\\"name\\\":\\\"0\\\",\\\"state\\\":\\\"Completed\\\"},{\\\"name\\\":\\\"1\\\",\\\"state\\\":\\\"Completed\\\"},{\\\"name\\\":\\\"2\\\",\\\"state\\\":\\\"Completed\\\"},{\\\"name\\\":\\\"3\\\",\\\"state\\\":\\\"Completed\\\"},{\\\"name\\\":\\\"4\\\",\\\"state\\\":\\\"Completed\\\"}],\\\"rollingUpgradeMode\\\":\\\"Monitored\\\",\\\"upgradeDuration\\\":\\\"00:14:01\\\",\\\"currentUpgradeDomainDuration\\\":\\\"00:02:00\\\",\\\"unhealthyEvaluations\\\":[],\\\"currentUpgradeDomainProgress\\\":{\\\"upgradeDomainName\\\":\\\"\\\",\\\"nodeProgressList\\\":[]},\\\"startTimestampUtc\\\":\\\"2021-03-10T01:30:38.3840501Z\\\"}\",\r\n  \"startTime\": \"2021-03-10T01:29:03.9258992Z\",\r\n  \"endTime\": \"0001-01-01T00:00:00\",\r\n  \"percentComplete\": 0.0\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/c3628deb-f76b-4945-b262-ccdffa00a977?api-version=2020-03-01&Experiment=local",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUZhYnJpYy9sb2NhdGlvbnMvc291dGhjZW50cmFsdXMvb3BlcmF0aW9ucy9jMzYyOGRlYi1mNzZiLTQ5NDUtYjI2Mi1jY2RmZmEwMGE5Nzc/YXBpLXZlcnNpb249MjAyMC0wMy0wMSZFeHBlcmltZW50PWxvY2Fs",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e82c4f75-d966-4c8f-9269-3ec681468ad9"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ServiceFabric.ServiceFabricManagementClient/1.3.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11993"
+        ],
+        "x-ms-request-id": [
+          "abab0833-d01a-4229-b975-c6d9097428f7"
+        ],
+        "x-ms-correlation-request-id": [
+          "abab0833-d01a-4229-b975-c6d9097428f7"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20210310T014708Z:abab0833-d01a-4229-b975-c6d9097428f7"
+        ],
+        "Date": [
+          "Wed, 10 Mar 2021 01:47:07 GMT"
         ],
         "Content-Length": [
           "374"
@@ -720,7 +1404,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/a413fea5-1772-4c4f-93df-76f2324b34b2\",\r\n  \"name\": \"a413fea5-1772-4c4f-93df-76f2324b34b2\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2020-09-01T23:24:09.3308171Z\",\r\n  \"endTime\": \"2020-09-01T23:30:33.2476119Z\",\r\n  \"percentComplete\": 100.0\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/providers/Microsoft.ServiceFabric/locations/southcentralus/operations/c3628deb-f76b-4945-b262-ccdffa00a977\",\r\n  \"name\": \"c3628deb-f76b-4945-b262-ccdffa00a977\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2021-03-10T01:29:03.9258992Z\",\r\n  \"endTime\": \"2021-03-10T01:46:56.1795747Z\",\r\n  \"percentComplete\": 100.0\r\n}",
       "StatusCode": 200
     }
   ],

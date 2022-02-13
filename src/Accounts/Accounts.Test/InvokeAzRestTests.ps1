@@ -35,7 +35,7 @@ function Test-InvokeAzRest
     Assert-AreEqual $put $response.Method
     Assert-NotNull $response.Content
 
-    $response = Invoke-AzRest -ResourceGroupName $name -ApiVersion $api -Method $get
+    $response = Invoke-AzRest -ResourceGroupName $name -ApiVersion $api
 
     Assert-AreEqual 200 $response.StatusCode
     Assert-AreEqual $get $response.Method

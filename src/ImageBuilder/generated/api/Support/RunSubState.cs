@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support
 {
 
+    /// <summary>Sub-state of the last run</summary>
     public partial struct RunSubState :
         System.IEquatable<RunSubState>
     {
@@ -24,7 +25,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support
         /// <param name="value">the value to convert to an instance of <see cref="RunSubState" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new RunSubState(System.Convert.ToString(value));
+            return new RunSubState(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type RunSubState</summary>

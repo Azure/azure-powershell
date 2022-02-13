@@ -1,7 +1,7 @@
 ---
 Module Name: Az.Peering
 Module Guid: 6c848b97-4dd4-49ef-b385-43c64905d25a
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.peering.md
+Download Help Link: https://docs.microsoft.com/powershell/module/az.peering.md
 Help Version: 0.1.0
 Locale: e-US
 ---
@@ -11,6 +11,9 @@ Locale: e-US
 Microsoft Peering Service allows customers and Microsoft to connect to Azure and represent their network resources as ARM objects.
 
 ## Az.Peering Cmdlets
+### [Get-AzPeeringCdnPeeringPrefix](Get-AzPeeringCdnPeeringPrefix.md)
+Lists all of the advertised prefixes for cdn in the specified peering location
+
 ### [Get-AzLegacyPeering](Get-AzLegacyPeering.md)
 Used to Convert Legacy Peering resources to Azure Resource Management (ARM) Resources. 
 

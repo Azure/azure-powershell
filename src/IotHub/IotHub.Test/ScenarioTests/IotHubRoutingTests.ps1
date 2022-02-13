@@ -23,15 +23,6 @@ Test all iothub routing cmdlets
 #>
 function Test-AzureRmIotHubRoutingLifecycle
 {
-	##############################################################
-	# Set these to the proper azure storage account information.
-	$azureStorageResourceGroupName = 'pshardcodedrg1234'
-	$azureStorageSubscriptionId = '91d12660-3dec-467a-be2a-213b5544ddc0'
-	$ascConnectionString = 'DefaultEndpointsProtocol=https;AccountName=pshardcodedstorage1234;AccountKey=W1ujKNLtPmMtaNqZfOCUU5cnYMI8bQeF9ODce4riISyT2RSXiIxcwuwQhzCmIuwPWi82ParLfbq1bOF5ypUnPw==;EndpointSuffix=core.windows.net'
-	$containerName1 = 'container1'
-	$containerName2 = 'container2'
-	##############################################################
-
 	$Location = Get-Location "Microsoft.Devices" "IotHubs" "WEST US 2"
 	$IotHubName = getAssetName
 	$ResourceGroupName = getAssetName
@@ -56,7 +47,31 @@ function Test-AzureRmIotHubRoutingLifecycle
 	$resourceGroup = New-AzResourceGroup -Name $ResourceGroupName -Location $Location 
 
 	# Create Iot Hub
-	$iothub = New-AzIotHub -Name $IotHubName -ResourceGroupName $ResourceGroupName -Location $Location -SkuName $Sku -Units 1 
+	$iothub = New-AzIotHub -Name $IotHubName -ResourceGroupName $ResourceGroupName -Location $Location -SkuName $Sku -Units 1
+	$subscriptionId = $iothub.SubscriptionId
+
+	# Setup storage account
+	$azureStorageResourceGroupName = $ResourceGroupName
+	$azureStorageSubscriptionId = $subscriptionId
+	$azureStorageAccountName = getAssetName
+	$containerName1 = 'container1'
+	$containerName2 = 'container2'
+
+	# Create storage account
+	$storageAccount = New-AzStorageAccount -ResourceGroupName $azureStorageResourceGroupName -AccountName $azureStorageAccountName -Location westus -SkuName Standard_GRS
+	$key = Get-AzStorageAccountKey -ResourceGroupName $azureStorageResourceGroupName -Name $azureStorageAccountName;
+	$context = New-AzStorageContext -StorageAccountName $azureStorageAccountName -StorageAccountKey $key.Value[0];
+
+
+	# Create containers
+	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+    {
+		New-AzStorageContainer -Name $containerName1 -Context $context
+		New-AzStorageContainer -Name $containerName2 -Context $context
+	}
+
+	# Get connection string
+	$ascConnectionString = $context.ConnectionString
 
 	# Create new eventHub namespace  
     $eventHubNamespace = New-AzEventHubNamespace -ResourceGroup $ResourceGroupName -NamespaceName $namespaceName -Location $Location

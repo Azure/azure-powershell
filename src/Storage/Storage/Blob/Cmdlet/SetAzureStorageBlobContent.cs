@@ -61,21 +61,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// </summary>
         private const string ContainerParameterSet = "ContainerPipeline";
 
-        /// <summary>
-        /// block blob type
-        /// </summary>
-        private const string BlockBlobType = "Block";
-
-        /// <summary>
-        /// page blob type
-        /// </summary>
-        private const string PageBlobType = "Page";
-
-        /// <summary>
-        /// append blob type
-        /// </summary>
-        private const string AppendBlobType = "Append";
-
         [Alias("FullName")]
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "file Path.",
             ValueFromPipelineByPropertyName = true, ParameterSetName = ManualParameterSet)]
@@ -162,6 +147,22 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 
         private Hashtable BlobMetadata = null;
 
+        [Parameter(HelpMessage = "Blob Tags", Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public Hashtable Tag
+        {
+            get
+            {
+                return BlobTag;
+            }
+
+            set
+            {
+                BlobTag = value;
+            }
+        }
+        private Hashtable BlobTag = null;
+
         [Parameter(HelpMessage = "Premium Page Blob Tier", Mandatory = false)]
         public PremiumPageBlobTier PremiumPageBlobTier
         {
@@ -211,6 +212,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 
         protected override bool UseTrack2Sdk()
         {
+            if (this.BlobTag != null)
+            {
+                return true;
+            }
             if (!string.IsNullOrEmpty(EncryptionScope))
             {
                 return true;
@@ -433,10 +438,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             BlobClientOptions options = this.ClientOptions;
             if (!string.IsNullOrEmpty(this.EncryptionScope))
             {
-                options = new BlobClientOptions()
-                {
-                    EncryptionScope = this.EncryptionScope,
-                };
+                options = SetClientOptionsWithEncryptionScope(this.EncryptionScope);
             }
 
             if (this.Force.IsPresent
@@ -461,7 +463,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                         // Size of the source file might be 0, when it is, directly treat the progress as 100 percent.
                         pr.PercentComplete = 0 == fileSize ? 100 : (int)(finishedBytes * 100 / fileSize);
                         pr.StatusDescription = string.Format(CultureInfo.CurrentCulture, Resources.FileTransmitStatus, pr.PercentComplete);
-                        Console.WriteLine(finishedBytes);
                         this.OutputStream.WriteProgress(pr);
                     }
                 });
@@ -476,6 +477,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                         outputBlobClient = blobClient;
                         StorageTransferOptions trasnferOption = new StorageTransferOptions() { MaximumConcurrency = this.GetCmdletConcurrency() };
                         BlobUploadOptions uploadOptions = new BlobUploadOptions();
+                        if (this.BlobTag != null)
+                        {
+                            uploadOptions.Tags = this.BlobTag.Cast<DictionaryEntry>().ToDictionary(d => (string)d.Key, d => (string)d.Value);
+                        }
                         uploadOptions.Metadata = metadata;
                         uploadOptions.HttpHeaders = blobHttpHeaders;
                         uploadOptions.Conditions = this.BlobRequestConditions;
@@ -502,6 +507,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                             pageblobClient = GetTrack2PageBlobClient(blob, localChannel.StorageContext, options);
                             outputBlobClient = pageblobClient;
                             PageBlobCreateOptions createOptions = new PageBlobCreateOptions();
+                            if (this.BlobTag != null)
+                            {
+                                createOptions.Tags = this.BlobTag.Cast<DictionaryEntry>().ToDictionary(d => (string)d.Key, d => (string)d.Value);
+                            }
                             createOptions.Metadata = metadata;
                             createOptions.HttpHeaders = blobHttpHeaders;
                             createOptions.Conditions = this.PageBlobRequestConditions;
@@ -512,6 +521,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                             appendblobClient = GetTrack2AppendBlobClient(blob, localChannel.StorageContext, options);
                             outputBlobClient = appendblobClient;
                             AppendBlobCreateOptions createOptions = new AppendBlobCreateOptions();
+                            if (this.BlobTag != null)
+                            {
+                                createOptions.Tags = this.BlobTag.Cast<DictionaryEntry>().ToDictionary(d => (string)d.Key, d => (string)d.Value);
+                            }
                             createOptions.Metadata = metadata;
                             createOptions.HttpHeaders = blobHttpHeaders;
                             createOptions.Conditions = this.AppendBlobRequestConditions;

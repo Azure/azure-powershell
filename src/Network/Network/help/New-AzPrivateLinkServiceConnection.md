@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azprivatelinkserviceconnection
+online version: https://docs.microsoft.com/powershell/module/az.network/new-azprivatelinkserviceconnection
 schema: 2.0.0
 ---
 
@@ -64,7 +64,7 @@ Accept wildcard characters: False
 ```
 
 ### -GroupId
-The list of group id.
+The list of group id. You can use '(Get-AzPrivateLinkResource -PrivateLinkResourceId ${privateLinkResourceId}).GroupId' to get the supported group ids.
 
 ```yaml
 Type: System.String[]

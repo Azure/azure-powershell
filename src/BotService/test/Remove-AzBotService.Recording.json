@@ -1,0 +1,194 @@
+{
+  "Remove-AzBotService+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youriBotService-rg-g0j9s3/providers/Microsoft.BotService/botServices/BotService-02le6b?api-version=2018-07-12+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youriBotService-rg-g0j9s3/providers/Microsoft.BotService/botServices/BotService-02le6b?api-version=2018-07-12",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "98f5452b-8b35-482d-bc6f-92363d26dd39" ],
+        "CommandName": [ "Remove-AzBotService" ],
+        "FullCommandName": [ "Remove-AzBotService_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-request-id": [ "078c9aca-efa5-4bdf-a98f-7a4339b189cf" ],
+        "x-ms-correlation-request-id": [ "078c9aca-efa5-4bdf-a98f-7a4339b189cf" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201216T133344Z:078c9aca-efa5-4bdf-a98f-7a4339b189cf" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Dec 2020 13:33:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  },
+  "Remove-AzBotService+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.BotService/botServices?api-version=2018-07-12+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.BotService/botServices?api-version=2018-07-12",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "f278ac82-4a3a-4dd1-9ee8-0dd468a80766" ],
+        "CommandName": [ "Get-AzBotService" ],
+        "FullCommandName": [ "Get-AzBotService_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11974" ],
+        "x-ms-request-id": [ "bc260ebb-db71-47b4-be4b-e8328a795760" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "291dda04-d82f-4a32-bffe-d6f63040d3c1" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201216T133344Z:291dda04-d82f-4a32-bffe-d6f63040d3c1" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Dec 2020 13:33:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4115" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youriBotService-rg-g0j9s3/providers/Microsoft.BotService/botServices/BotService-v5kgny\",\"name\":\"BotService-v5kgny\",\"type\":\"Microsoft.BotService/botServices\",\"etag\":\"\\\"00003a8a-0000-1800-0000-5fda0c530000\\\"\",\"location\":\"global\",\"sku\":{\"name\":\"\"},\"kind\":\"sdk\",\"tags\":{},\"properties\":{\"displayName\":\"BotService-v5kgny\",\"description\":null,\"iconUrl\":\"https://docs.botframework.com/static/devportal/client/images/bot-framework-default.png\",\"endpoint\":null,\"msaAppId\":\"72344727-89e6-400f-8a31-20dd2c40da2a\",\"developerAppInsightKey\":null,\"developerAppInsightsApplicationId\":null,\"luisAppIds\":[],\"endpointVersion\":null,\"configuredChannels\":[],\"enabledChannels\":[\"webchat\",\"directline\"],\"isDeveloperAppInsightsApiKeySet\":null,\"isStreamingSupported\":false,\"publishingCredentials\":null,\"parameters\":null,\"allSettings\":null,\"manifestUrl\":null,\"storageResourceId\":null,\"migrationToken\":null,\"isCmekEnabled\":null,\"cmekKeyVaultUrl\":null,\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youriBotService-rg-vgcb4n/providers/Microsoft.BotService/botServices/BotService-w94u8h\",\"name\":\"BotService-w94u8h\",\"type\":\"Microsoft.BotService/botServices\",\"etag\":\"\\\"080003e5-0000-1800-0000-5fd9fb340000\\\"\",\"location\":\"global\",\"sku\":{\"name\":\"F0\"},\"kind\":\"bot\",\"tags\":{},\"properties\":{\"displayName\":\"BotService-w94u8h\",\"description\":null,\"iconUrl\":\"https://docs.botframework.com/static/devportal/client/images/bot-framework-default.png\",\"endpoint\":null,\"msaAppId\":\"ac9e440a-d2a6-42af-a27c-7525a513977b\",\"developerAppInsightKey\":null,\"developerAppInsightsApplicationId\":null,\"luisAppIds\":[],\"endpointVersion\":null,\"configuredChannels\":[],\"enabledChannels\":[\"webchat\",\"directline\"],\"isDeveloperAppInsightsApiKeySet\":null,\"isStreamingSupported\":false,\"publishingCredentials\":null,\"parameters\":null,\"allSettings\":null,\"manifestUrl\":null,\"storageResourceId\":null,\"migrationToken\":null,\"isCmekEnabled\":null,\"cmekKeyVaultUrl\":null,\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youriBotService-rg-vgcb4n/providers/Microsoft.BotService/botServices/youri2022\",\"name\":\"youri2022\",\"type\":\"Microsoft.BotService/botServices\",\"etag\":\"\\\"0e009df5-0000-0200-0000-5fd9fd9a0000\\\"\",\"location\":\"global\",\"sku\":{\"name\":\"F0\"},\"kind\":\"sdk\",\"tags\":{},\"properties\":{\"displayName\":\"youri2022\",\"description\":null,\"iconUrl\":\"https://docs.botframework.com/static/devportal/client/images/bot-framework-default.png\",\"endpoint\":null,\"msaAppId\":\"b624c22b-7328-4860-a67c-8d057c257c4b\",\"developerAppInsightKey\":null,\"developerAppInsightsApplicationId\":null,\"luisAppIds\":[],\"endpointVersion\":null,\"configuredChannels\":[],\"enabledChannels\":[\"webchat\",\"directline\"],\"isDeveloperAppInsightsApiKeySet\":null,\"isStreamingSupported\":false,\"publishingCredentials\":null,\"parameters\":null,\"allSettings\":null,\"manifestUrl\":null,\"storageResourceId\":null,\"migrationToken\":null,\"isCmekEnabled\":null,\"cmekKeyVaultUrl\":null,\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youriBotService-rg-g0j9s3/providers/Microsoft.BotService/botServices/youriWebAppTest2037\",\"name\":\"youriWebAppTest2037\",\"type\":\"Microsoft.BotService/botServices\",\"etag\":\"\\\"0e00c5fa-0000-0200-0000-5fd9ffd70000\\\"\",\"location\":\"global\",\"sku\":{\"name\":\"F0\"},\"kind\":\"sdk\",\"tags\":{},\"properties\":{\"displayName\":\"youriWebAppTest2037\",\"description\":null,\"iconUrl\":\"https://docs.botframework.com/static/devportal/client/images/bot-framework-default.png\",\"endpoint\":null,\"msaAppId\":\"4848079c-327f-4e93-b84b-323d14052db5\",\"developerAppInsightKey\":null,\"developerAppInsightsApplicationId\":null,\"luisAppIds\":[],\"endpointVersion\":null,\"configuredChannels\":[],\"enabledChannels\":[\"webchat\",\"directline\"],\"isDeveloperAppInsightsApiKeySet\":null,\"isStreamingSupported\":false,\"publishingCredentials\":null,\"parameters\":null,\"allSettings\":null,\"manifestUrl\":null,\"storageResourceId\":null,\"migrationToken\":null,\"isCmekEnabled\":null,\"cmekKeyVaultUrl\":null,\"provisioningState\":\"Succeeded\"}}]}"
+    }
+  },
+  "Remove-AzBotService+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youriBotService-rg-g0j9s3/providers/Microsoft.BotService/botServices/BotService-v5kgny?api-version=2018-07-12+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youriBotService-rg-g0j9s3/providers/Microsoft.BotService/botServices/BotService-v5kgny?api-version=2018-07-12",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "efbd68ca-4116-4ffa-bb5c-afe1b02eebc3" ],
+        "CommandName": [ "Get-AzBotService" ],
+        "FullCommandName": [ "Get-AzBotService_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"00003a8a-0000-1800-0000-5fda0c530000\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11973" ],
+        "x-ms-request-id": [ "dafe198b-64e8-418c-b526-0ba581579287" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "0becb14a-84a1-41ea-8259-19d93f02b312" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201216T133344Z:0becb14a-84a1-41ea-8259-19d93f02b312" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Dec 2020 13:33:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1123" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youriBotService-rg-g0j9s3/providers/Microsoft.BotService/botServices/BotService-v5kgny\",\"name\":\"BotService-v5kgny\",\"type\":\"Microsoft.BotService/botServices\",\"etag\":\"\\\"00003a8a-0000-1800-0000-5fda0c530000\\\"\",\"location\":\"global\",\"sku\":{\"name\":\"\"},\"kind\":\"sdk\",\"tags\":{},\"properties\":{\"displayName\":\"BotService-v5kgny\",\"description\":null,\"iconUrl\":\"https://docs.botframework.com/static/devportal/client/images/bot-framework-default.png\",\"endpoint\":\"https://BotService-v5kgny.azurewebsites.net/api/messages\",\"msaAppId\":\"72344727-89e6-400f-8a31-20dd2c40da2a\",\"developerAppInsightKey\":null,\"developerAppInsightsApplicationId\":null,\"luisAppIds\":[],\"endpointVersion\":\"3.0\",\"configuredChannels\":[\"webchat\"],\"enabledChannels\":[\"webchat\",\"directline\"],\"isDeveloperAppInsightsApiKeySet\":false,\"isStreamingSupported\":false,\"publishingCredentials\":null,\"parameters\":null,\"allSettings\":null,\"manifestUrl\":null,\"storageResourceId\":null,\"migrationToken\":null,\"isCmekEnabled\":false,\"cmekKeyVaultUrl\":null,\"cmekEncryptionStatus\":\"Off\",\"provisioningState\":\"Succeeded\"}}"
+    }
+  },
+  "Remove-AzBotService+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youriBotService-rg-g0j9s3/providers/Microsoft.BotService/botServices/BotService-v5kgny?api-version=2018-07-12+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youriBotService-rg-g0j9s3/providers/Microsoft.BotService/botServices/BotService-v5kgny?api-version=2018-07-12",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "9514bf14-1420-4adf-a458-eae778b042e7" ],
+        "CommandName": [ "Remove-AzBotService" ],
+        "FullCommandName": [ "Remove-AzBotService_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
+        "x-ms-request-id": [ "4aa000ae-58fc-406a-adcb-7162a22a04d7" ],
+        "x-ms-correlation-request-id": [ "4aa000ae-58fc-406a-adcb-7162a22a04d7" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201216T133352Z:4aa000ae-58fc-406a-adcb-7162a22a04d7" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Dec 2020 13:33:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  },
+  "Remove-AzBotService+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.BotService/botServices?api-version=2018-07-12+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.BotService/botServices?api-version=2018-07-12",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "9c93e2e1-319b-4ff2-bf36-0d191b13f305" ],
+        "CommandName": [ "Get-AzBotService" ],
+        "FullCommandName": [ "Get-AzBotService_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11972" ],
+        "x-ms-request-id": [ "dad66bda-a1c8-47d5-a805-eec71270df8a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "bc0f2053-6019-41e4-a153-b8f04389d45f" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201216T133353Z:bc0f2053-6019-41e4-a153-b8f04389d45f" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Dec 2020 13:33:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "3086" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youriBotService-rg-vgcb4n/providers/Microsoft.BotService/botServices/BotService-w94u8h\",\"name\":\"BotService-w94u8h\",\"type\":\"Microsoft.BotService/botServices\",\"etag\":\"\\\"080003e5-0000-1800-0000-5fd9fb340000\\\"\",\"location\":\"global\",\"sku\":{\"name\":\"F0\"},\"kind\":\"bot\",\"tags\":{},\"properties\":{\"displayName\":\"BotService-w94u8h\",\"description\":null,\"iconUrl\":\"https://docs.botframework.com/static/devportal/client/images/bot-framework-default.png\",\"endpoint\":null,\"msaAppId\":\"ac9e440a-d2a6-42af-a27c-7525a513977b\",\"developerAppInsightKey\":null,\"developerAppInsightsApplicationId\":null,\"luisAppIds\":[],\"endpointVersion\":null,\"configuredChannels\":[],\"enabledChannels\":[\"webchat\",\"directline\"],\"isDeveloperAppInsightsApiKeySet\":null,\"isStreamingSupported\":false,\"publishingCredentials\":null,\"parameters\":null,\"allSettings\":null,\"manifestUrl\":null,\"storageResourceId\":null,\"migrationToken\":null,\"isCmekEnabled\":null,\"cmekKeyVaultUrl\":null,\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youriBotService-rg-vgcb4n/providers/Microsoft.BotService/botServices/youri2022\",\"name\":\"youri2022\",\"type\":\"Microsoft.BotService/botServices\",\"etag\":\"\\\"0e009df5-0000-0200-0000-5fd9fd9a0000\\\"\",\"location\":\"global\",\"sku\":{\"name\":\"F0\"},\"kind\":\"sdk\",\"tags\":{},\"properties\":{\"displayName\":\"youri2022\",\"description\":null,\"iconUrl\":\"https://docs.botframework.com/static/devportal/client/images/bot-framework-default.png\",\"endpoint\":null,\"msaAppId\":\"b624c22b-7328-4860-a67c-8d057c257c4b\",\"developerAppInsightKey\":null,\"developerAppInsightsApplicationId\":null,\"luisAppIds\":[],\"endpointVersion\":null,\"configuredChannels\":[],\"enabledChannels\":[\"webchat\",\"directline\"],\"isDeveloperAppInsightsApiKeySet\":null,\"isStreamingSupported\":false,\"publishingCredentials\":null,\"parameters\":null,\"allSettings\":null,\"manifestUrl\":null,\"storageResourceId\":null,\"migrationToken\":null,\"isCmekEnabled\":null,\"cmekKeyVaultUrl\":null,\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youriBotService-rg-g0j9s3/providers/Microsoft.BotService/botServices/youriWebAppTest2037\",\"name\":\"youriWebAppTest2037\",\"type\":\"Microsoft.BotService/botServices\",\"etag\":\"\\\"0e00c5fa-0000-0200-0000-5fd9ffd70000\\\"\",\"location\":\"global\",\"sku\":{\"name\":\"F0\"},\"kind\":\"sdk\",\"tags\":{},\"properties\":{\"displayName\":\"youriWebAppTest2037\",\"description\":null,\"iconUrl\":\"https://docs.botframework.com/static/devportal/client/images/bot-framework-default.png\",\"endpoint\":null,\"msaAppId\":\"4848079c-327f-4e93-b84b-323d14052db5\",\"developerAppInsightKey\":null,\"developerAppInsightsApplicationId\":null,\"luisAppIds\":[],\"endpointVersion\":null,\"configuredChannels\":[],\"enabledChannels\":[\"webchat\",\"directline\"],\"isDeveloperAppInsightsApiKeySet\":null,\"isStreamingSupported\":false,\"publishingCredentials\":null,\"parameters\":null,\"allSettings\":null,\"manifestUrl\":null,\"storageResourceId\":null,\"migrationToken\":null,\"isCmekEnabled\":null,\"cmekKeyVaultUrl\":null,\"provisioningState\":\"Succeeded\"}}]}"
+    }
+  }
+}

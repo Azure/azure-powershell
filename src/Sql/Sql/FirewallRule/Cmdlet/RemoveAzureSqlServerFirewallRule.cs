@@ -19,7 +19,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzSqlServerFirewallRule cmdlet
+    /// Defines the Remove-AzSqlServerFirewallRule cmdlet
     /// </summary>
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerFirewallRule", SupportsShouldProcess = true), OutputType(typeof(Model.AzureSqlServerFirewallRuleModel))]
     public class RemoveAzureSqlServerFirewallRule : AzureSqlServerFirewallRuleCmdletBase

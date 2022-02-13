@@ -155,6 +155,16 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
+            if (!string.IsNullOrEmpty(this.GatewayLoadBalancerId))
+            {
+                // Gateway
+                if (ipconfig.GatewayLoadBalancer == null)
+                {
+                    ipconfig.GatewayLoadBalancer = new PSFrontendIPConfiguration();
+                }
+                ipconfig.GatewayLoadBalancer.Id = this.GatewayLoadBalancerId;
+            }
+
             if (this.ApplicationSecurityGroupId != null)
             {
                 ipconfig.ApplicationSecurityGroups = new List<PSApplicationSecurityGroup>();
@@ -164,7 +174,7 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
-            if(this.PrivateIpAddressVersion != null)
+            if (this.PrivateIpAddressVersion != null)
             {
                 ipconfig.PrivateIpAddressVersion = this.PrivateIpAddressVersion;
             }

@@ -61,6 +61,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateChangeTypes]
         public string[] WhatIfExcludeChangeType { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation if there is no changes in the What-If result. Applicable when the -Confirm switch is set.")]
+        public SwitchParameter ProceedIfNoChange { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -74,8 +77,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             Location = this.Location,
             DeploymentName = this.Name,
             DeploymentMode = DeploymentMode.Incremental,
+            QueryString = this.QueryString,
             TemplateFile = this.TemplateUri ?? this.TryResolvePath(this.TemplateFile),
             TemplateObject = this.TemplateObject,
+            TemplateSpecId = this.TemplateSpecId,
             TemplateParameterObject = this.GetTemplateParameterObject(this.TemplateParameterObject),
             ParameterUri = this.TemplateParameterUri,
             DeploymentDebugLogLevel = GetDeploymentDebugLogLevel(this.DeploymentDebugLogLevel),
@@ -87,12 +92,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             deploymentName : this.Name,
             location : this.Location,
             mode : DeploymentMode.Incremental,
+            queryString: this.QueryString,
             templateUri : TemplateUri ?? this.TryResolvePath(TemplateFile),
             templateObject : this.TemplateObject,
+            templateSpecId: TemplateSpecId,
             templateParametersUri : this.TemplateParameterUri,
             templateParametersObject : GetTemplateParameterObject(this.TemplateParameterObject),
             resultFormat : this.WhatIfResultFormat,
             excludeChangeTypes: this.WhatIfExcludeChangeType
         );
+
+        protected override bool ShouldSkipConfirmationIfNoChange() => this.ProceedIfNoChange;
     }
 }

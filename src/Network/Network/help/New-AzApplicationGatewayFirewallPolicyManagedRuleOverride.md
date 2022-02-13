@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azapplicationgatewayfirewallpolicymanagedruleoverride
+online version: https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgatewayfirewallpolicymanagedruleoverride
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ The **New-AzApplicationGatewayFirewallPolicyManagedRuleOverride** creates a rule
 
 ### Example 1
 ```powershell
-PS C:\> ruleOverrideEntry = New-AzApplicationGatewayFirewallPolicyManagedRuleOverride -RuleId $ruleId -State Disabled
+PS C:\> $ruleOverrideEntry = New-AzApplicationGatewayFirewallPolicyManagedRuleOverride -RuleId $ruleId -State Disabled
 ```
 
 Creates a ruleOverride Entry with RuleId as $ruleId and State as Disabled.

@@ -6,6 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
+    /// <summary>
+    /// The data format of the message. Optionally the data format can be added to each message.
+    /// </summary>
     public partial struct IotHubDataFormat :
         System.IEquatable<IotHubDataFormat>
     {
@@ -48,7 +51,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
         /// <param name="value">the value to convert to an instance of <see cref="IotHubDataFormat" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new IotHubDataFormat(System.Convert.ToString(value));
+            return new IotHubDataFormat(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type IotHubDataFormat</summary>

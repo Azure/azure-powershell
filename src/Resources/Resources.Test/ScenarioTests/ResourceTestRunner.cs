@@ -43,7 +43,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 .WithExtraRmModules(helper => new[]
                 {
                     helper.RMResourceModule,
-                    helper.GetRMModulePath("AzureRM.Monitor.psd1")
+                    helper.GetRMModulePath("AzureRM.Monitor.psd1"),
+                    helper.GetRMModulePath(@"Az.ManagedServiceIdentity.psd1"),
                 })
                 .WithRecordMatcher(
                     (ignoreResourcesClient, resourceProviders, userAgentsToIgnore) =>

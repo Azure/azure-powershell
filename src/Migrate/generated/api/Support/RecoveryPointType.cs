@@ -6,6 +6,10 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>
+    /// The recovery point type. Values from LatestTime, LatestTag or Custom. In the case of custom, the recovery point provided
+    /// by RecoveryPointId will be used. In the other two cases, recovery point id will be ignored.
+    /// </summary>
     public partial struct RecoveryPointType :
         System.IEquatable<RecoveryPointType>
     {
@@ -22,7 +26,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         /// <param name="value">the value to convert to an instance of <see cref="RecoveryPointType" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new RecoveryPointType(System.Convert.ToString(value));
+            return new RecoveryPointType(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type RecoveryPointType</summary>

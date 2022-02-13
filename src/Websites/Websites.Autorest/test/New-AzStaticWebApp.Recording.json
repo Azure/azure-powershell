@@ -1,0 +1,83 @@
+{
+  "New-AzStaticWebApp+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-jcrp6t?api-version=2020-12-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-jcrp6t?api-version=2020-12-01",
+      "Content": "{\r\n  \"location\": \"Central US\",\r\n  \"properties\": {\r\n    \"buildProperties\": {\r\n      \"appLocation\": \"Client\",\r\n      \"apiLocation\": \"Api\",\r\n      \"outputLocation\": \"wwwroot\"\r\n    },\r\n    \"repositoryUrl\": \"https://github.com/LucasYao93/blazor-starter\",\r\n    \"branch\": \"lucas/dev02\",\r\n    \"repositoryToken\": \"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\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "396" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "c22624d3-dc88-43cd-a9e7-d64318723301" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "e5fdbb19-ca85-4347-93aa-179fbf2f151c" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210507T082942Z:e5fdbb19-ca85-4347-93aa-179fbf2f151c" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 07 May 2021 08:29:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "740" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-jcrp6t\",\"name\":\"staticweb-jcrp6t\",\"type\":\"Microsoft.Web/staticSites\",\"location\":\"Central US\",\"properties\":{\"defaultHostname\":\"purple-wave-0a279c310.azurestaticapps.net\",\"repositoryUrl\":\"https://github.com/LucasYao93/blazor-starter\",\"branch\":\"lucas/dev02\",\"provider\":\"GitHub\",\"customDomains\":[],\"privateEndpointConnections\":[],\"contentDistributionEndpoint\":\"https://content-dm1.infrastructure.azurestaticapps.net\",\"keyVaultReferenceIdentity\":\"SystemAssigned\",\"userProvidedFunctionApps\":[],\"stagingEnvironmentPolicy\":\"Enabled\",\"allowConfigFileUpdates\":true},\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzStaticWebApp+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-jcrp6t?api-version=2020-12-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-jcrp6t?api-version=2020-12-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "f5f9c317-5d81-420f-ac7b-5a6a2c8c9241" ],
+        "CommandName": [ "New-AzStaticWebApp" ],
+        "FullCommandName": [ "New-AzStaticWebApp_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "6884a472-da7c-40c4-bc7f-cbd9f85718a4" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-correlation-request-id": [ "544a867a-b403-4e45-a4e5-c467b7bf9c47" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210507T083014Z:544a867a-b403-4e45-a4e5-c467b7bf9c47" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 07 May 2021 08:30:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "740" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-jcrp6t\",\"name\":\"staticweb-jcrp6t\",\"type\":\"Microsoft.Web/staticSites\",\"location\":\"Central US\",\"properties\":{\"defaultHostname\":\"purple-wave-0a279c310.azurestaticapps.net\",\"repositoryUrl\":\"https://github.com/LucasYao93/blazor-starter\",\"branch\":\"lucas/dev02\",\"provider\":\"GitHub\",\"customDomains\":[],\"privateEndpointConnections\":[],\"contentDistributionEndpoint\":\"https://content-dm1.infrastructure.azurestaticapps.net\",\"keyVaultReferenceIdentity\":\"SystemAssigned\",\"userProvidedFunctionApps\":[],\"stagingEnvironmentPolicy\":\"Enabled\",\"allowConfigFileUpdates\":true},\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\"}}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
     using Microsoft.Azure.Commands.LogicApp.Utilities;
     using ResourceManager.Common.ArgumentCompleters;
+    using System;
     using System.Management.Automation;
 
     /// <summary>
@@ -49,6 +50,15 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [ValidateNotNullOrEmpty]
         public string ActionName { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Indicates the cmdlet should follow next page links.")]
+        [Alias("FL")]
+        public SwitchParameter FollowNextPageLink { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Specifies how many times to follow next page links if FollowNextPageLink is used.")]
+        [Alias("ML")]
+        [ValidateRange(1, Int32.MaxValue)]
+        public int MaximumFollowNextPageLink { get; set; } = int.MaxValue;
+
         #endregion Input Parameters
 
         /// <summary>
@@ -57,17 +67,22 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-
             if (string.IsNullOrEmpty(this.ActionName))
             {
-                var enumerator = LogicAppClient.GetWorkflowRunActions(this.ResourceGroupName, this.Name, this.RunName).GetEnumerator();
-                this.WriteObject(enumerator.ToIEnumerable<WorkflowRunAction>(), true);
+                var page = new Page<WorkflowRunAction>();
+                int i = 0;
+                do
+                {
+                    page = this.LogicAppClient.GetWorkflowRunActions(this.ResourceGroupName, this.Name, this.RunName, page.NextPageLink);
+                    this.WriteObject(page.GetEnumerator().ToIEnumerable<WorkflowRunAction>(), true);
+                    i++;
+                }
+                while (this.FollowNextPageLink && !string.IsNullOrWhiteSpace(page.NextPageLink) && i <= this.MaximumFollowNextPageLink);
             }
             else
             {
-                this.WriteObject(
-                    LogicAppClient.GetWorkflowRunAction(this.ResourceGroupName, this.Name, this.RunName, this.ActionName),
-                    true);
+                this.WriteObject(LogicAppClient.GetWorkflowRunAction(
+                    this.ResourceGroupName, this.Name, this.RunName, this.ActionName), true);
             }
         }
     }

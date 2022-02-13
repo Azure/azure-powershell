@@ -1,14 +1,15 @@
 {
   "Entries": [
     {
-      "RequestUri": "/Subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-09-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvNDBkNzdmOGUtNTk4Mi00ZTdlLWJhZmEtYjdjZDIzYjEyM2U2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lhc3NpZ25tZW50cy9zb21lTmFtZT9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
+      "RequestUri": "/Subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policyassignments/someName?api-version=2021-06-01",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZDA2MTBiMjctOTY2My00YzA1LTg5ZjgtNWI0YmUwMWU4NmE1L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lhc3NpZ25tZW50cy9zb21lTmFtZT9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "NameParameterSet"
@@ -19,22 +20,25 @@
       },
       "ResponseHeaders": {
         "Cache-Control": [
-          "no-cache"
+          "no-store, no-cache"
         ],
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-request-id": [
-          "westus:46220da2-804c-4343-8cd1-845f1bee7248"
-        ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11999"
         ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "7d7d1c27-7c76-41ba-b736-fc64e4f159eb"
+        ],
         "x-ms-correlation-request-id": [
-          "178262b8-7c07-4c55-9b98-c9fc142e818a"
+          "7d7d1c27-7c76-41ba-b736-fc64e4f159eb"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021024Z:178262b8-7c07-4c55-9b98-c9fc142e818a"
+          "WESTUS:20220107T232328Z:7d7d1c27-7c76-41ba-b736-fc64e4f159eb"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -43,13 +47,13 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:24 GMT"
+          "Fri, 07 Jan 2022 23:23:27 GMT"
         ],
         "Content-Length": [
           "104"
         ],
         "Content-Type": [
-          "application/json; charset=utf-8"
+          "application/json"
         ],
         "Expires": [
           "-1"
@@ -62,14 +66,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/Subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-09-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvNDBkNzdmOGUtNTk4Mi00ZTdlLWJhZmEtYjdjZDIzYjEyM2U2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lhc3NpZ25tZW50cy9zb21lTmFtZT9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
+      "RequestUri": "/Subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policyassignments/someName?api-version=2021-06-01",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZDA2MTBiMjctOTY2My00YzA1LTg5ZjgtNWI0YmUwMWU4NmE1L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lhc3NpZ25tZW50cy9zb21lTmFtZT9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "NameParameterSet"
@@ -80,22 +85,25 @@
       },
       "ResponseHeaders": {
         "Cache-Control": [
-          "no-cache"
+          "no-store, no-cache"
         ],
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-request-id": [
-          "westus:223e6789-4519-40a7-9e95-709e3e2a1e9b"
-        ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11999"
         ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "cbbe1aa7-577f-4ba4-ba9a-c95e910451e5"
+        ],
         "x-ms-correlation-request-id": [
-          "3a187a7c-675f-4449-ab9a-69f77306c992"
+          "cbbe1aa7-577f-4ba4-ba9a-c95e910451e5"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021025Z:3a187a7c-675f-4449-ab9a-69f77306c992"
+          "WESTUS:20220107T232328Z:cbbe1aa7-577f-4ba4-ba9a-c95e910451e5"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -104,13 +112,13 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:24 GMT"
+          "Fri, 07 Jan 2022 23:23:28 GMT"
         ],
         "Content-Length": [
           "104"
         ],
         "Content-Type": [
-          "application/json; charset=utf-8"
+          "application/json"
         ],
         "Expires": [
           "-1"
@@ -123,14 +131,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/Subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-09-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvNDBkNzdmOGUtNTk4Mi00ZTdlLWJhZmEtYjdjZDIzYjEyM2U2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lhc3NpZ25tZW50cy9zb21lTmFtZT9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
+      "RequestUri": "/Subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policyassignments/someName?api-version=2021-06-01",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZDA2MTBiMjctOTY2My00YzA1LTg5ZjgtNWI0YmUwMWU4NmE1L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lhc3NpZ25tZW50cy9zb21lTmFtZT9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "NameParameterSet"
@@ -141,22 +150,25 @@
       },
       "ResponseHeaders": {
         "Cache-Control": [
-          "no-cache"
+          "no-store, no-cache"
         ],
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-request-id": [
-          "westus:1b0dc08d-1705-4ce7-9947-c9fa21da71c8"
-        ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11999"
         ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "eeb7a4da-ed3f-4f91-8e9b-efeea89435d5"
+        ],
         "x-ms-correlation-request-id": [
-          "44aacf61-939a-4ecc-a336-e850655f4292"
+          "eeb7a4da-ed3f-4f91-8e9b-efeea89435d5"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021025Z:44aacf61-939a-4ecc-a336-e850655f4292"
+          "WESTUS:20220107T232328Z:eeb7a4da-ed3f-4f91-8e9b-efeea89435d5"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -165,13 +177,13 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:24 GMT"
+          "Fri, 07 Jan 2022 23:23:28 GMT"
         ],
         "Content-Length": [
           "104"
         ],
         "Content-Type": [
-          "application/json; charset=utf-8"
+          "application/json"
         ],
         "Expires": [
           "-1"
@@ -184,14 +196,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/Subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-09-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvNDBkNzdmOGUtNTk4Mi00ZTdlLWJhZmEtYjdjZDIzYjEyM2U2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lhc3NpZ25tZW50cy9zb21lTmFtZT9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
+      "RequestUri": "/Subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policyassignments/someName?api-version=2021-06-01",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZDA2MTBiMjctOTY2My00YzA1LTg5ZjgtNWI0YmUwMWU4NmE1L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lhc3NpZ25tZW50cy9zb21lTmFtZT9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "NameParameterSet"
@@ -202,22 +215,25 @@
       },
       "ResponseHeaders": {
         "Cache-Control": [
-          "no-cache"
+          "no-store, no-cache"
         ],
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-request-id": [
-          "westus:a2f667e5-5cc4-4e36-9337-6d042f6c9430"
-        ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11999"
         ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "8fd850ca-ab03-43fe-bfbd-3311c910bded"
+        ],
         "x-ms-correlation-request-id": [
-          "d109adcb-fc8d-438b-8879-bb3ff25265c5"
+          "8fd850ca-ab03-43fe-bfbd-3311c910bded"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021025Z:d109adcb-fc8d-438b-8879-bb3ff25265c5"
+          "WESTUS:20220107T232328Z:8fd850ca-ab03-43fe-bfbd-3311c910bded"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -226,13 +242,13 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:25 GMT"
+          "Fri, 07 Jan 2022 23:23:28 GMT"
         ],
         "Content-Length": [
           "104"
         ],
         "Content-Type": [
-          "application/json; charset=utf-8"
+          "application/json"
         ],
         "Expires": [
           "-1"
@@ -245,14 +261,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/Subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-09-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvNDBkNzdmOGUtNTk4Mi00ZTdlLWJhZmEtYjdjZDIzYjEyM2U2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lhc3NpZ25tZW50cy9zb21lTmFtZT9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
+      "RequestUri": "/Subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policyassignments/someName?api-version=2021-06-01",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZDA2MTBiMjctOTY2My00YzA1LTg5ZjgtNWI0YmUwMWU4NmE1L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lhc3NpZ25tZW50cy9zb21lTmFtZT9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "NameParameterSet"
@@ -263,22 +280,25 @@
       },
       "ResponseHeaders": {
         "Cache-Control": [
-          "no-cache"
+          "no-store, no-cache"
         ],
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-request-id": [
-          "westus:6bc57f25-4020-4238-ad9d-746d89253163"
-        ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11999"
         ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "0676e57f-617b-4cef-b615-ac50fc7544db"
+        ],
         "x-ms-correlation-request-id": [
-          "af27a48c-98e3-4662-b6bc-e723ab94007d"
+          "0676e57f-617b-4cef-b615-ac50fc7544db"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021025Z:af27a48c-98e3-4662-b6bc-e723ab94007d"
+          "WESTUS:20220107T232328Z:0676e57f-617b-4cef-b615-ac50fc7544db"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -287,13 +307,13 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:25 GMT"
+          "Fri, 07 Jan 2022 23:23:28 GMT"
         ],
         "Content-Length": [
           "104"
         ],
         "Content-Type": [
-          "application/json; charset=utf-8"
+          "application/json"
         ],
         "Expires": [
           "-1"
@@ -306,14 +326,80 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/Subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-09-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvNDBkNzdmOGUtNTk4Mi00ZTdlLWJhZmEtYjdjZDIzYjEyM2U2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lhc3NpZ25tZW50cy9zb21lTmFtZT9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
+      "RequestUri": "/Subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policyassignments/someName?api-version=2021-06-01",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZDA2MTBiMjctOTY2My00YzA1LTg5ZjgtNWI0YmUwMWU4NmE1L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lhc3NpZ25tZW50cy9zb21lTmFtZT9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
+        ],
+        "ParameterSetName": [
+          "NameParameterSet"
+        ],
+        "CommandName": [
+          "Set-AzPolicyAssignment"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "0ae8c238-69f6-403f-a70d-7c5f66cae44a"
+        ],
+        "x-ms-correlation-request-id": [
+          "0ae8c238-69f6-403f-a70d-7c5f66cae44a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220107T232329Z:0ae8c238-69f6-403f-a70d-7c5f66cae44a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 07 Jan 2022 23:23:28 GMT"
+        ],
+        "Content-Length": [
+          "104"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"PolicyAssignmentNotFound\",\r\n    \"message\": \"The policy assignment 'someName' is not found.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/Subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policyassignments/someName?api-version=2021-06-01",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZDA2MTBiMjctOTY2My00YzA1LTg5ZjgtNWI0YmUwMWU4NmE1L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lhc3NpZ25tZW50cy9zb21lTmFtZT9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "PolicyParameterNameObjectParameterSet"
@@ -324,22 +410,25 @@
       },
       "ResponseHeaders": {
         "Cache-Control": [
-          "no-cache"
+          "no-store, no-cache"
         ],
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-request-id": [
-          "westus:c063b1c3-243e-4a8d-9266-9425230dd8f5"
-        ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11999"
         ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "bf9d9675-ce09-48e2-b9dd-e3335687f5ae"
+        ],
         "x-ms-correlation-request-id": [
-          "af26e607-a287-478e-bec1-5a7f1ec60d68"
+          "bf9d9675-ce09-48e2-b9dd-e3335687f5ae"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021026Z:af26e607-a287-478e-bec1-5a7f1ec60d68"
+          "WESTUS:20220107T232329Z:bf9d9675-ce09-48e2-b9dd-e3335687f5ae"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -348,13 +437,13 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:25 GMT"
+          "Fri, 07 Jan 2022 23:23:28 GMT"
         ],
         "Content-Length": [
           "104"
         ],
         "Content-Type": [
-          "application/json; charset=utf-8"
+          "application/json"
         ],
         "Expires": [
           "-1"
@@ -367,14 +456,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/Subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-09-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvNDBkNzdmOGUtNTk4Mi00ZTdlLWJhZmEtYjdjZDIzYjEyM2U2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lhc3NpZ25tZW50cy9zb21lTmFtZT9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
+      "RequestUri": "/Subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policyassignments/someName?api-version=2021-06-01",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZDA2MTBiMjctOTY2My00YzA1LTg5ZjgtNWI0YmUwMWU4NmE1L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lhc3NpZ25tZW50cy9zb21lTmFtZT9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "PolicyParameterNameStringParameterSet"
@@ -385,22 +475,25 @@
       },
       "ResponseHeaders": {
         "Cache-Control": [
-          "no-cache"
+          "no-store, no-cache"
         ],
         "Pragma": [
           "no-cache"
-        ],
-        "x-ms-request-id": [
-          "westus:793148c8-4775-4014-9a4f-9b00f59d3fcc"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11999"
         ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "fe3aeb71-3253-4df3-bc98-88f614d9d4bd"
+        ],
         "x-ms-correlation-request-id": [
-          "cce5369a-56fc-48f2-9f8a-7d09b48bcd8d"
+          "fe3aeb71-3253-4df3-bc98-88f614d9d4bd"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021026Z:cce5369a-56fc-48f2-9f8a-7d09b48bcd8d"
+          "WESTUS:20220107T232329Z:fe3aeb71-3253-4df3-bc98-88f614d9d4bd"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -409,13 +502,13 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:25 GMT"
+          "Fri, 07 Jan 2022 23:23:29 GMT"
         ],
         "Content-Length": [
           "104"
         ],
         "Content-Type": [
-          "application/json; charset=utf-8"
+          "application/json"
         ],
         "Expires": [
           "-1"
@@ -428,14 +521,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/Subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-09-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvNDBkNzdmOGUtNTk4Mi00ZTdlLWJhZmEtYjdjZDIzYjEyM2U2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lhc3NpZ25tZW50cy9zb21lTmFtZT9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
+      "RequestUri": "/Subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policyassignments/someName?api-version=2021-06-01",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZDA2MTBiMjctOTY2My00YzA1LTg5ZjgtNWI0YmUwMWU4NmE1L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lhc3NpZ25tZW50cy9zb21lTmFtZT9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "NameParameterSet"
@@ -446,22 +540,25 @@
       },
       "ResponseHeaders": {
         "Cache-Control": [
-          "no-cache"
+          "no-store, no-cache"
         ],
         "Pragma": [
           "no-cache"
-        ],
-        "x-ms-request-id": [
-          "westus:1fe70e9d-781f-43ec-976e-9ef6aee676f6"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11999"
         ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "b65c3365-b9a5-4bb3-a029-0041566c21f7"
+        ],
         "x-ms-correlation-request-id": [
-          "3a522db7-f26f-47d0-85f2-6dd45a34e109"
+          "b65c3365-b9a5-4bb3-a029-0041566c21f7"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021026Z:3a522db7-f26f-47d0-85f2-6dd45a34e109"
+          "WESTUS:20220107T232329Z:b65c3365-b9a5-4bb3-a029-0041566c21f7"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -470,13 +567,13 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:25 GMT"
+          "Fri, 07 Jan 2022 23:23:28 GMT"
         ],
         "Content-Length": [
           "104"
         ],
         "Content-Type": [
-          "application/json; charset=utf-8"
+          "application/json"
         ],
         "Expires": [
           "-1"
@@ -489,14 +586,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/Subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-09-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvNDBkNzdmOGUtNTk4Mi00ZTdlLWJhZmEtYjdjZDIzYjEyM2U2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lhc3NpZ25tZW50cy9zb21lTmFtZT9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
+      "RequestUri": "/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policyassignments/someName?api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDA2MTBiMjctOTY2My00YzA1LTg5ZjgtNWI0YmUwMWU4NmE1L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lhc3NpZ25tZW50cy9zb21lTmFtZT9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "NameParameterSet"
@@ -507,83 +605,25 @@
       },
       "ResponseHeaders": {
         "Cache-Control": [
-          "no-cache"
+          "no-store, no-cache"
         ],
         "Pragma": [
           "no-cache"
-        ],
-        "x-ms-request-id": [
-          "westus:d79ff787-640b-4664-98a3-b4598146a0f5"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
-        ],
-        "x-ms-correlation-request-id": [
-          "5f36d013-c749-46d1-9bef-549c5c53208a"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20200109T021026Z:5f36d013-c749-46d1-9bef-549c5c53208a"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 09 Jan 2020 02:10:25 GMT"
-        ],
-        "Content-Length": [
-          "104"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"PolicyAssignmentNotFound\",\r\n    \"message\": \"The policy assignment 'someName' is not found.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDBkNzdmOGUtNTk4Mi00ZTdlLWJhZmEtYjdjZDIzYjEyM2U2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lhc3NpZ25tZW50cy9zb21lTmFtZT9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
-        ],
-        "ParameterSetName": [
-          "NameParameterSet"
-        ],
-        "CommandName": [
-          "Set-AzPolicyAssignment"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "westus:9a54fa5e-2e34-4e18-beba-b83891589673"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11999"
         ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "944c791d-d3e1-47b9-b96a-10524d9ec2fa"
+        ],
         "x-ms-correlation-request-id": [
-          "3ed05148-27e9-4103-834c-951e66835474"
+          "944c791d-d3e1-47b9-b96a-10524d9ec2fa"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021025Z:3ed05148-27e9-4103-834c-951e66835474"
+          "WESTUS:20220107T232328Z:944c791d-d3e1-47b9-b96a-10524d9ec2fa"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -592,13 +632,13 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:24 GMT"
+          "Fri, 07 Jan 2022 23:23:28 GMT"
         ],
         "Content-Length": [
           "104"
         ],
         "Content-Type": [
-          "application/json; charset=utf-8"
+          "application/json"
         ],
         "Expires": [
           "-1"
@@ -611,14 +651,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wOS0wMQ==",
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "NameParameterSet"
@@ -638,13 +679,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "87e9bf1f-d7ef-4762-ad14-211f240b301a"
+          "3ebbc24e-808f-428b-b4f2-e1750a407ca6"
         ],
         "x-ms-correlation-request-id": [
-          "87e9bf1f-d7ef-4762-ad14-211f240b301a"
+          "3ebbc24e-808f-428b-b4f2-e1750a407ca6"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021026Z:87e9bf1f-d7ef-4762-ad14-211f240b301a"
+          "WESTUS:20220107T232329Z:3ebbc24e-808f-428b-b4f2-e1750a407ca6"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -653,7 +694,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:26 GMT"
+          "Fri, 07 Jan 2022 23:23:28 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -672,14 +713,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wOS0wMQ==",
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "NameParameterSet"
@@ -699,13 +741,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "219dc6a4-4973-4258-ab99-529a38134d51"
+          "1e455c28-36d5-4d3d-b220-23b8512fedf2"
         ],
         "x-ms-correlation-request-id": [
-          "219dc6a4-4973-4258-ab99-529a38134d51"
+          "1e455c28-36d5-4d3d-b220-23b8512fedf2"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021026Z:219dc6a4-4973-4258-ab99-529a38134d51"
+          "WESTUS:20220107T232329Z:1e455c28-36d5-4d3d-b220-23b8512fedf2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -714,7 +756,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:26 GMT"
+          "Fri, 07 Jan 2022 23:23:29 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -733,14 +775,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wOS0wMQ==",
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "NameParameterSet"
@@ -760,13 +803,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "68e38b92-5559-44b3-933b-0fcbc56a302c"
+          "9c0405ac-7910-459c-b8c2-1ef3aaaa190b"
         ],
         "x-ms-correlation-request-id": [
-          "68e38b92-5559-44b3-933b-0fcbc56a302c"
+          "9c0405ac-7910-459c-b8c2-1ef3aaaa190b"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021026Z:68e38b92-5559-44b3-933b-0fcbc56a302c"
+          "WESTUS:20220107T232330Z:9c0405ac-7910-459c-b8c2-1ef3aaaa190b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -775,7 +818,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:26 GMT"
+          "Fri, 07 Jan 2022 23:23:29 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -794,14 +837,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wOS0wMQ==",
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "NameParameterSet"
@@ -821,13 +865,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "22a4d0f7-b452-4f52-9c86-7179c23e5fbf"
+          "75efde9f-6d4d-44f2-babf-d726d12f6494"
         ],
         "x-ms-correlation-request-id": [
-          "22a4d0f7-b452-4f52-9c86-7179c23e5fbf"
+          "75efde9f-6d4d-44f2-babf-d726d12f6494"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021027Z:22a4d0f7-b452-4f52-9c86-7179c23e5fbf"
+          "WESTUS:20220107T232330Z:75efde9f-6d4d-44f2-babf-d726d12f6494"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -836,7 +880,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:26 GMT"
+          "Fri, 07 Jan 2022 23:23:30 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -855,14 +899,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wOS0wMQ==",
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "PolicyParameterNameObjectParameterSet"
@@ -882,13 +927,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "a992e88d-c76a-4120-8ec8-a67d79c69064"
+          "012c74a0-b55f-4603-91f4-73043fd898cf"
         ],
         "x-ms-correlation-request-id": [
-          "a992e88d-c76a-4120-8ec8-a67d79c69064"
+          "012c74a0-b55f-4603-91f4-73043fd898cf"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021027Z:a992e88d-c76a-4120-8ec8-a67d79c69064"
+          "WESTUS:20220107T232330Z:012c74a0-b55f-4603-91f4-73043fd898cf"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -897,7 +942,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:26 GMT"
+          "Fri, 07 Jan 2022 23:23:29 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -916,441 +961,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wOS0wMQ==",
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
-        ],
-        "ParameterSetName": [
-          "PolicyParameterNameStringParameterSet"
-        ],
-        "CommandName": [
-          "Set-AzPolicyAssignment"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "b3a773a4-ff0d-4d83-93ab-901c7ae4d6aa"
-        ],
-        "x-ms-correlation-request-id": [
-          "b3a773a4-ff0d-4d83-93ab-901c7ae4d6aa"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20200109T021027Z:b3a773a4-ff0d-4d83-93ab-901c7ae4d6aa"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 09 Jan 2020 02:10:26 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "135"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wOS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
-        ],
-        "ParameterSetName": [
-          "NameParameterSet"
-        ],
-        "CommandName": [
-          "Set-AzPolicyAssignment"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "caa0d39a-83af-4cce-9615-d68207b003bc"
-        ],
-        "x-ms-correlation-request-id": [
-          "caa0d39a-83af-4cce-9615-d68207b003bc"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20200109T021027Z:caa0d39a-83af-4cce-9615-d68207b003bc"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 09 Jan 2020 02:10:27 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "135"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wOS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
-        ],
-        "ParameterSetName": [
-          "NameParameterSet"
-        ],
-        "CommandName": [
-          "Set-AzPolicyAssignment"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "d4bdbbd9-4b50-48e3-80ad-70f776d6a17c"
-        ],
-        "x-ms-correlation-request-id": [
-          "d4bdbbd9-4b50-48e3-80ad-70f776d6a17c"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20200109T021027Z:d4bdbbd9-4b50-48e3-80ad-70f776d6a17c"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 09 Jan 2020 02:10:27 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "135"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wOS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
-        ],
-        "ParameterSetName": [
-          "NameParameterSet"
-        ],
-        "CommandName": [
-          "Set-AzPolicyAssignment"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "44c3dd5b-3402-442b-8854-49fe07ad258b"
-        ],
-        "x-ms-correlation-request-id": [
-          "44c3dd5b-3402-442b-8854-49fe07ad258b"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20200109T021027Z:44c3dd5b-3402-442b-8854-49fe07ad258b"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 09 Jan 2020 02:10:26 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "135"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wOS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
-        ],
-        "ParameterSetName": [
-          "NameParameterSet"
-        ],
-        "CommandName": [
-          "Set-AzPolicyAssignment"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "825eae12-fc01-4e79-96e4-cdc202955acc"
-        ],
-        "x-ms-correlation-request-id": [
-          "825eae12-fc01-4e79-96e4-cdc202955acc"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20200109T021027Z:825eae12-fc01-4e79-96e4-cdc202955acc"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 09 Jan 2020 02:10:27 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "135"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wOS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
-        ],
-        "ParameterSetName": [
-          "NameParameterSet"
-        ],
-        "CommandName": [
-          "Set-AzPolicyAssignment"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "9492fa2b-bccf-4a60-ae41-27385a0dbb76"
-        ],
-        "x-ms-correlation-request-id": [
-          "9492fa2b-bccf-4a60-ae41-27385a0dbb76"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20200109T021027Z:9492fa2b-bccf-4a60-ae41-27385a0dbb76"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 09 Jan 2020 02:10:27 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "135"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wOS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
-        ],
-        "ParameterSetName": [
-          "PolicyParameterNameObjectParameterSet"
-        ],
-        "CommandName": [
-          "Set-AzPolicyAssignment"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "c2354863-944c-4af3-932d-0e6fde7b5ea2"
-        ],
-        "x-ms-correlation-request-id": [
-          "c2354863-944c-4af3-932d-0e6fde7b5ea2"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20200109T021028Z:c2354863-944c-4af3-932d-0e6fde7b5ea2"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 09 Jan 2020 02:10:27 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "135"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wOS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "PolicyParameterNameStringParameterSet"
@@ -1370,13 +989,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "dcb6f971-c8d2-4381-9b10-caf3320917ce"
+          "c18e1f80-758b-466b-8e0e-97af50a1dbe0"
         ],
         "x-ms-correlation-request-id": [
-          "dcb6f971-c8d2-4381-9b10-caf3320917ce"
+          "c18e1f80-758b-466b-8e0e-97af50a1dbe0"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021028Z:dcb6f971-c8d2-4381-9b10-caf3320917ce"
+          "WESTUS:20220107T232330Z:c18e1f80-758b-466b-8e0e-97af50a1dbe0"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1385,7 +1004,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:27 GMT"
+          "Fri, 07 Jan 2022 23:23:30 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1404,14 +1023,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wOS0wMQ==",
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "NameParameterSet"
@@ -1431,13 +1051,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "b2e320c1-8c1e-42f3-b0f2-0b7424e2aa59"
+          "e4f312f2-eef8-40dd-8be4-0f8fcd634a5c"
         ],
         "x-ms-correlation-request-id": [
-          "b2e320c1-8c1e-42f3-b0f2-0b7424e2aa59"
+          "e4f312f2-eef8-40dd-8be4-0f8fcd634a5c"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021028Z:b2e320c1-8c1e-42f3-b0f2-0b7424e2aa59"
+          "WESTUS:20220107T232330Z:e4f312f2-eef8-40dd-8be4-0f8fcd634a5c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1446,7 +1066,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:27 GMT"
+          "Fri, 07 Jan 2022 23:23:30 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1465,14 +1085,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wOS0wMQ==",
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "NameParameterSet"
@@ -1492,13 +1113,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "434ac82b-0c85-4361-b3de-55b7e785516f"
+          "04e0fca2-c87b-4776-ae19-f71f43ea6f66"
         ],
         "x-ms-correlation-request-id": [
-          "434ac82b-0c85-4361-b3de-55b7e785516f"
+          "04e0fca2-c87b-4776-ae19-f71f43ea6f66"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021028Z:434ac82b-0c85-4361-b3de-55b7e785516f"
+          "WESTUS:20220107T232330Z:04e0fca2-c87b-4776-ae19-f71f43ea6f66"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1507,7 +1128,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:27 GMT"
+          "Fri, 07 Jan 2022 23:23:30 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1526,14 +1147,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wOS0wMQ==",
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "NameParameterSet"
@@ -1553,13 +1175,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "95d379c0-517b-40ba-9a75-7071630d3a44"
+          "237e90c4-e2bc-48e1-a4d1-bf32e9aab35c"
         ],
         "x-ms-correlation-request-id": [
-          "95d379c0-517b-40ba-9a75-7071630d3a44"
+          "237e90c4-e2bc-48e1-a4d1-bf32e9aab35c"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021028Z:95d379c0-517b-40ba-9a75-7071630d3a44"
+          "WESTUS:20220107T232331Z:237e90c4-e2bc-48e1-a4d1-bf32e9aab35c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1568,7 +1190,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:27 GMT"
+          "Fri, 07 Jan 2022 23:23:30 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1587,14 +1209,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wOS0wMQ==",
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "NameParameterSet"
@@ -1614,13 +1237,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "ac28eb09-907a-49bf-975e-57a8d424f1b1"
+          "fe7b3b7b-bc80-4a89-822a-11b4591b623c"
         ],
         "x-ms-correlation-request-id": [
-          "ac28eb09-907a-49bf-975e-57a8d424f1b1"
+          "fe7b3b7b-bc80-4a89-822a-11b4591b623c"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021028Z:ac28eb09-907a-49bf-975e-57a8d424f1b1"
+          "WESTUS:20220107T232331Z:fe7b3b7b-bc80-4a89-822a-11b4591b623c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1629,7 +1252,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:27 GMT"
+          "Fri, 07 Jan 2022 23:23:30 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1648,14 +1271,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wOS0wMQ==",
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "PolicyParameterNameObjectParameterSet"
@@ -1675,13 +1299,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "c8d45172-1de1-45cf-a82c-ee4309375aba"
+          "fbe31135-3ee1-4028-92f9-c953874e90b3"
         ],
         "x-ms-correlation-request-id": [
-          "c8d45172-1de1-45cf-a82c-ee4309375aba"
+          "fbe31135-3ee1-4028-92f9-c953874e90b3"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021028Z:c8d45172-1de1-45cf-a82c-ee4309375aba"
+          "WESTUS:20220107T232331Z:fbe31135-3ee1-4028-92f9-c953874e90b3"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1690,7 +1314,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:28 GMT"
+          "Fri, 07 Jan 2022 23:23:30 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1709,14 +1333,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wOS0wMQ==",
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "PolicyParameterNameStringParameterSet"
@@ -1736,13 +1361,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "19220c7e-09d5-4801-9f74-2aa8244ae889"
+          "6eb33d53-e236-4385-854d-00d7dda7fe3a"
         ],
         "x-ms-correlation-request-id": [
-          "19220c7e-09d5-4801-9f74-2aa8244ae889"
+          "6eb33d53-e236-4385-854d-00d7dda7fe3a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021028Z:19220c7e-09d5-4801-9f74-2aa8244ae889"
+          "WESTUS:20220107T232331Z:6eb33d53-e236-4385-854d-00d7dda7fe3a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1751,7 +1376,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:28 GMT"
+          "Fri, 07 Jan 2022 23:23:30 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1770,14 +1395,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wOS0wMQ==",
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "NameParameterSet"
@@ -1797,13 +1423,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "1d496230-ba13-4f37-8bb9-726d0f164116"
+          "38cd60c8-998f-41a7-99dc-fbf5340df0f9"
         ],
         "x-ms-correlation-request-id": [
-          "1d496230-ba13-4f37-8bb9-726d0f164116"
+          "38cd60c8-998f-41a7-99dc-fbf5340df0f9"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021028Z:1d496230-ba13-4f37-8bb9-726d0f164116"
+          "WESTUS:20220107T232331Z:38cd60c8-998f-41a7-99dc-fbf5340df0f9"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1812,7 +1438,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:28 GMT"
+          "Fri, 07 Jan 2022 23:23:30 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1831,14 +1457,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wOS0wMQ==",
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "NameParameterSet"
@@ -1858,13 +1485,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "bd629f31-d528-4181-8ef5-bf866f40250b"
+          "1b7b09c1-97df-43e4-98da-d974769869eb"
         ],
         "x-ms-correlation-request-id": [
-          "bd629f31-d528-4181-8ef5-bf866f40250b"
+          "1b7b09c1-97df-43e4-98da-d974769869eb"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021029Z:bd629f31-d528-4181-8ef5-bf866f40250b"
+          "WESTUS:20220107T232331Z:1b7b09c1-97df-43e4-98da-d974769869eb"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1873,7 +1500,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:28 GMT"
+          "Fri, 07 Jan 2022 23:23:31 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1892,14 +1519,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wOS0wMQ==",
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "NameParameterSet"
@@ -1919,13 +1547,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "d9cfb6b6-270e-48c2-abc9-9e7259ea9072"
+          "98100ae6-5989-4e71-b920-a039d16c9d22"
         ],
         "x-ms-correlation-request-id": [
-          "d9cfb6b6-270e-48c2-abc9-9e7259ea9072"
+          "98100ae6-5989-4e71-b920-a039d16c9d22"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021029Z:d9cfb6b6-270e-48c2-abc9-9e7259ea9072"
+          "WESTUS:20220107T232331Z:98100ae6-5989-4e71-b920-a039d16c9d22"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1934,7 +1562,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:28 GMT"
+          "Fri, 07 Jan 2022 23:23:31 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1953,14 +1581,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wOS0wMQ==",
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "PolicyParameterNameObjectParameterSet"
@@ -1980,13 +1609,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "01d18b63-bb57-4c9a-b720-673a5c62f216"
+          "b1285a8e-4780-40d5-b49d-205fd39a07aa"
         ],
         "x-ms-correlation-request-id": [
-          "01d18b63-bb57-4c9a-b720-673a5c62f216"
+          "b1285a8e-4780-40d5-b49d-205fd39a07aa"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021029Z:01d18b63-bb57-4c9a-b720-673a5c62f216"
+          "WESTUS:20220107T232332Z:b1285a8e-4780-40d5-b49d-205fd39a07aa"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1995,7 +1624,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:28 GMT"
+          "Fri, 07 Jan 2022 23:23:31 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2014,14 +1643,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wOS0wMQ==",
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "PolicyParameterNameStringParameterSet"
@@ -2041,13 +1671,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "4c309aa1-ff00-4399-8d4d-ea2a311c7d4f"
+          "dcd50e42-1e2a-423f-9279-8166d7e86b3c"
         ],
         "x-ms-correlation-request-id": [
-          "4c309aa1-ff00-4399-8d4d-ea2a311c7d4f"
+          "dcd50e42-1e2a-423f-9279-8166d7e86b3c"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021029Z:4c309aa1-ff00-4399-8d4d-ea2a311c7d4f"
+          "WESTUS:20220107T232332Z:dcd50e42-1e2a-423f-9279-8166d7e86b3c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2056,7 +1686,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:28 GMT"
+          "Fri, 07 Jan 2022 23:23:31 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2075,14 +1705,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wOS0wMQ==",
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "NameParameterSet"
@@ -2102,13 +1733,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "77a33990-5dc4-4f02-9a35-7affee9fca59"
+          "2ba93160-6494-49c6-bbf5-89fe291eea6f"
         ],
         "x-ms-correlation-request-id": [
-          "77a33990-5dc4-4f02-9a35-7affee9fca59"
+          "2ba93160-6494-49c6-bbf5-89fe291eea6f"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021029Z:77a33990-5dc4-4f02-9a35-7affee9fca59"
+          "WESTUS:20220107T232332Z:2ba93160-6494-49c6-bbf5-89fe291eea6f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2117,7 +1748,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:29 GMT"
+          "Fri, 07 Jan 2022 23:23:31 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2136,14 +1767,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wOS0wMQ==",
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "NameParameterSet"
@@ -2163,13 +1795,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "27e78f37-49e8-400e-a560-92342d68b349"
+          "818cc7f0-a8a2-4c2d-9aa0-1216d3d021bb"
         ],
         "x-ms-correlation-request-id": [
-          "27e78f37-49e8-400e-a560-92342d68b349"
+          "818cc7f0-a8a2-4c2d-9aa0-1216d3d021bb"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021029Z:27e78f37-49e8-400e-a560-92342d68b349"
+          "WESTUS:20220107T232332Z:818cc7f0-a8a2-4c2d-9aa0-1216d3d021bb"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2178,7 +1810,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:28 GMT"
+          "Fri, 07 Jan 2022 23:23:31 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2197,14 +1829,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wOS0wMQ==",
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "PolicyParameterNameObjectParameterSet"
@@ -2224,13 +1857,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "60ece5e9-47d4-4316-bdb4-9d829d3fbcd7"
+          "93fa344b-4931-4b59-aaeb-9f795b20916b"
         ],
         "x-ms-correlation-request-id": [
-          "60ece5e9-47d4-4316-bdb4-9d829d3fbcd7"
+          "93fa344b-4931-4b59-aaeb-9f795b20916b"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021029Z:60ece5e9-47d4-4316-bdb4-9d829d3fbcd7"
+          "WESTUS:20220107T232332Z:93fa344b-4931-4b59-aaeb-9f795b20916b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2239,7 +1872,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:29 GMT"
+          "Fri, 07 Jan 2022 23:23:32 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2258,14 +1891,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wOS0wMQ==",
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "PolicyParameterNameStringParameterSet"
@@ -2285,13 +1919,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "566d361c-f78a-4af1-b84e-7c5b0ef5efd3"
+          "3faebf21-40b1-4cc7-b8af-1666a933d6cb"
         ],
         "x-ms-correlation-request-id": [
-          "566d361c-f78a-4af1-b84e-7c5b0ef5efd3"
+          "3faebf21-40b1-4cc7-b8af-1666a933d6cb"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021029Z:566d361c-f78a-4af1-b84e-7c5b0ef5efd3"
+          "WESTUS:20220107T232332Z:3faebf21-40b1-4cc7-b8af-1666a933d6cb"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2300,7 +1934,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:29 GMT"
+          "Fri, 07 Jan 2022 23:23:32 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2319,14 +1953,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wOS0wMQ==",
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "NameParameterSet"
@@ -2346,13 +1981,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "dc5fa0f2-7c17-4f06-a0d4-c57068384a6d"
+          "b79ede31-5e8c-4ca1-bd0a-9c6bac5e6a90"
         ],
         "x-ms-correlation-request-id": [
-          "dc5fa0f2-7c17-4f06-a0d4-c57068384a6d"
+          "b79ede31-5e8c-4ca1-bd0a-9c6bac5e6a90"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021030Z:dc5fa0f2-7c17-4f06-a0d4-c57068384a6d"
+          "WESTUS:20220107T232333Z:b79ede31-5e8c-4ca1-bd0a-9c6bac5e6a90"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2361,7 +1996,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:29 GMT"
+          "Fri, 07 Jan 2022 23:23:32 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2380,14 +2015,139 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wOS0wMQ==",
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
+        ],
+        "ParameterSetName": [
+          "PolicyParameterNameObjectParameterSet"
+        ],
+        "CommandName": [
+          "Set-AzPolicyAssignment"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "c5e3336a-fbcb-4e16-a786-40122f0ac0e0"
+        ],
+        "x-ms-correlation-request-id": [
+          "c5e3336a-fbcb-4e16-a786-40122f0ac0e0"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220107T232333Z:c5e3336a-fbcb-4e16-a786-40122f0ac0e0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 07 Jan 2022 23:23:32 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "135"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
+        ],
+        "ParameterSetName": [
+          "PolicyParameterNameStringParameterSet"
+        ],
+        "CommandName": [
+          "Set-AzPolicyAssignment"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "45da0379-8558-4ce0-aac7-6142e2ef72d1"
+        ],
+        "x-ms-correlation-request-id": [
+          "45da0379-8558-4ce0-aac7-6142e2ef72d1"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220107T232333Z:45da0379-8558-4ce0-aac7-6142e2ef72d1"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 07 Jan 2022 23:23:33 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "135"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "NameParameterSet"
@@ -2407,13 +2167,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "e873efa7-6f53-429a-a6e5-17000b565dad"
+          "23793118-2026-4990-ad68-c937edcb27c5"
         ],
         "x-ms-correlation-request-id": [
-          "e873efa7-6f53-429a-a6e5-17000b565dad"
+          "23793118-2026-4990-ad68-c937edcb27c5"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021030Z:e873efa7-6f53-429a-a6e5-17000b565dad"
+          "WESTUS:20220107T232333Z:23793118-2026-4990-ad68-c937edcb27c5"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2422,7 +2182,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:29 GMT"
+          "Fri, 07 Jan 2022 23:23:32 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2441,14 +2201,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wOS0wMQ==",
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "PolicyParameterNameObjectParameterSet"
@@ -2468,13 +2229,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "5894afa2-f69c-4104-ad6c-52b70e176207"
+          "b13487a7-4b21-41f2-bd0a-f85f8804fbf1"
         ],
         "x-ms-correlation-request-id": [
-          "5894afa2-f69c-4104-ad6c-52b70e176207"
+          "b13487a7-4b21-41f2-bd0a-f85f8804fbf1"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021030Z:5894afa2-f69c-4104-ad6c-52b70e176207"
+          "WESTUS:20220107T232333Z:b13487a7-4b21-41f2-bd0a-f85f8804fbf1"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2483,7 +2244,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:29 GMT"
+          "Fri, 07 Jan 2022 23:23:33 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2502,14 +2263,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wOS0wMQ==",
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "PolicyParameterNameObjectParameterSet"
@@ -2529,13 +2291,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "2a8c7c90-ca27-41a5-84b3-b5f44be50130"
+          "152149f1-4807-4417-9259-4d85068fc098"
         ],
         "x-ms-correlation-request-id": [
-          "2a8c7c90-ca27-41a5-84b3-b5f44be50130"
+          "152149f1-4807-4417-9259-4d85068fc098"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021030Z:2a8c7c90-ca27-41a5-84b3-b5f44be50130"
+          "WESTUS:20220107T232333Z:152149f1-4807-4417-9259-4d85068fc098"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2544,7 +2306,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:29 GMT"
+          "Fri, 07 Jan 2022 23:23:32 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2563,14 +2325,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wOS0wMQ==",
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "PolicyParameterNameObjectParameterSet"
@@ -2590,13 +2353,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "213e9190-fa1c-4de8-9850-dc70ad96428c"
+          "31835ab8-ce8d-4820-85a4-70b78b197b53"
         ],
         "x-ms-correlation-request-id": [
-          "213e9190-fa1c-4de8-9850-dc70ad96428c"
+          "31835ab8-ce8d-4820-85a4-70b78b197b53"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021030Z:213e9190-fa1c-4de8-9850-dc70ad96428c"
+          "WESTUS:20220107T232333Z:31835ab8-ce8d-4820-85a4-70b78b197b53"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2605,7 +2368,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:29 GMT"
+          "Fri, 07 Jan 2022 23:23:33 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2624,14 +2387,77 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policyAssignments/someName?api-version=2019-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDBkNzdmOGUtNTk4Mi00ZTdlLWJhZmEtYjdjZDIzYjEyM2U2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lBc3NpZ25tZW50cy9zb21lTmFtZT9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
+        ],
+        "ParameterSetName": [
+          "PolicyParameterNameObjectParameterSet"
+        ],
+        "CommandName": [
+          "Set-AzPolicyAssignment"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "4d4e78c5-114a-4b3b-98a9-b8998b23b5e0"
+        ],
+        "x-ms-correlation-request-id": [
+          "4d4e78c5-114a-4b3b-98a9-b8998b23b5e0"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220107T232334Z:4d4e78c5-114a-4b3b-98a9-b8998b23b5e0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 07 Jan 2022 23:23:34 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "135"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policyAssignments/someName?api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDA2MTBiMjctOTY2My00YzA1LTg5ZjgtNWI0YmUwMWU4NmE1L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lBc3NpZ25tZW50cy9zb21lTmFtZT9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "IdParameterSet"
@@ -2642,22 +2468,25 @@
       },
       "ResponseHeaders": {
         "Cache-Control": [
-          "no-cache"
+          "no-store, no-cache"
         ],
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-request-id": [
-          "westus:253af1e8-f846-41f2-80fa-d231a388ee66"
-        ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11999"
         ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "6e70c092-699b-482a-bcc3-34e514303c21"
+        ],
         "x-ms-correlation-request-id": [
-          "3f9131be-fa86-43a9-87ab-484091c9d874"
+          "6e70c092-699b-482a-bcc3-34e514303c21"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021030Z:3f9131be-fa86-43a9-87ab-484091c9d874"
+          "WESTUS:20220107T232334Z:6e70c092-699b-482a-bcc3-34e514303c21"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2666,13 +2495,13 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:30 GMT"
+          "Fri, 07 Jan 2022 23:23:33 GMT"
         ],
         "Content-Length": [
           "104"
         ],
         "Content-Type": [
-          "application/json; charset=utf-8"
+          "application/json"
         ],
         "Expires": [
           "-1"
@@ -2685,14 +2514,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
+      "RequestUri": "/someId?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "IdParameterSet"
@@ -2712,13 +2542,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "543e7801-435c-4fe4-8a55-c3cb402b8b46"
+          "2aa74eff-5bb1-4afa-bff0-085d2a0ce302"
         ],
         "x-ms-correlation-request-id": [
-          "543e7801-435c-4fe4-8a55-c3cb402b8b46"
+          "2aa74eff-5bb1-4afa-bff0-085d2a0ce302"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021030Z:543e7801-435c-4fe4-8a55-c3cb402b8b46"
+          "WESTUS:20220107T232334Z:2aa74eff-5bb1-4afa-bff0-085d2a0ce302"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2727,7 +2557,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:29 GMT"
+          "Fri, 07 Jan 2022 23:23:34 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2746,14 +2576,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
+      "RequestUri": "/someId?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "IdParameterSet"
@@ -2773,13 +2604,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "6383a931-b783-4c25-b6d0-f6e0d9bc2a45"
+          "0ff1db7f-a4cd-497f-9dfa-e3b25455dd12"
         ],
         "x-ms-correlation-request-id": [
-          "6383a931-b783-4c25-b6d0-f6e0d9bc2a45"
+          "0ff1db7f-a4cd-497f-9dfa-e3b25455dd12"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021030Z:6383a931-b783-4c25-b6d0-f6e0d9bc2a45"
+          "WESTUS:20220107T232334Z:0ff1db7f-a4cd-497f-9dfa-e3b25455dd12"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2788,7 +2619,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:30 GMT"
+          "Fri, 07 Jan 2022 23:23:34 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2807,14 +2638,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
+      "RequestUri": "/someId?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "IdParameterSet"
@@ -2834,13 +2666,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "31447c7d-7fd8-494e-9741-9e97de9be771"
+          "a45ebe23-da20-4eaf-8cea-c26b15c2ade6"
         ],
         "x-ms-correlation-request-id": [
-          "31447c7d-7fd8-494e-9741-9e97de9be771"
+          "a45ebe23-da20-4eaf-8cea-c26b15c2ade6"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021030Z:31447c7d-7fd8-494e-9741-9e97de9be771"
+          "WESTUS:20220107T232334Z:a45ebe23-da20-4eaf-8cea-c26b15c2ade6"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2849,7 +2681,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:30 GMT"
+          "Fri, 07 Jan 2022 23:23:34 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2868,14 +2700,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
+      "RequestUri": "/someId?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "IdParameterSet"
@@ -2895,13 +2728,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "52efd436-a2f3-4490-b508-b94106f753d8"
+          "cde9c588-d5ee-4d05-a739-a1825be4ed5b"
         ],
         "x-ms-correlation-request-id": [
-          "52efd436-a2f3-4490-b508-b94106f753d8"
+          "cde9c588-d5ee-4d05-a739-a1825be4ed5b"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021031Z:52efd436-a2f3-4490-b508-b94106f753d8"
+          "WESTUS:20220107T232334Z:cde9c588-d5ee-4d05-a739-a1825be4ed5b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2910,7 +2743,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:30 GMT"
+          "Fri, 07 Jan 2022 23:23:33 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2929,14 +2762,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
+      "RequestUri": "/someId?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "PolicyParameterIdObjectParameterSet"
@@ -2956,13 +2790,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "4611c2f0-a498-43be-bd95-c532bcfe0d0b"
+          "6471b2f1-2c1d-48cc-9687-e9233a01fa93"
         ],
         "x-ms-correlation-request-id": [
-          "4611c2f0-a498-43be-bd95-c532bcfe0d0b"
+          "6471b2f1-2c1d-48cc-9687-e9233a01fa93"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021031Z:4611c2f0-a498-43be-bd95-c532bcfe0d0b"
+          "WESTUS:20220107T232335Z:6471b2f1-2c1d-48cc-9687-e9233a01fa93"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2971,7 +2805,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:30 GMT"
+          "Fri, 07 Jan 2022 23:23:34 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2990,14 +2824,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
+      "RequestUri": "/someId?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "PolicyParameterIdStringParameterSet"
@@ -3017,13 +2852,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "49e0be1a-3a4b-48ab-9484-411c884c5611"
+          "2a2dde19-cab6-44f1-920e-7acf4c276224"
         ],
         "x-ms-correlation-request-id": [
-          "49e0be1a-3a4b-48ab-9484-411c884c5611"
+          "2a2dde19-cab6-44f1-920e-7acf4c276224"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021031Z:49e0be1a-3a4b-48ab-9484-411c884c5611"
+          "WESTUS:20220107T232335Z:2a2dde19-cab6-44f1-920e-7acf4c276224"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -3032,7 +2867,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:30 GMT"
+          "Fri, 07 Jan 2022 23:23:34 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -3051,14 +2886,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
+      "RequestUri": "/someId?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "IdParameterSet"
@@ -3078,13 +2914,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "95a93451-892c-4f60-9e81-2a3ed91254c3"
+          "4a0c543a-99ef-4e26-8284-42b160d6d0d7"
         ],
         "x-ms-correlation-request-id": [
-          "95a93451-892c-4f60-9e81-2a3ed91254c3"
+          "4a0c543a-99ef-4e26-8284-42b160d6d0d7"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021031Z:95a93451-892c-4f60-9e81-2a3ed91254c3"
+          "WESTUS:20220107T232335Z:4a0c543a-99ef-4e26-8284-42b160d6d0d7"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -3093,7 +2929,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:31 GMT"
+          "Fri, 07 Jan 2022 23:23:35 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -3112,14 +2948,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
+      "RequestUri": "/someId?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "IdParameterSet"
@@ -3139,13 +2976,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "7eadf4f9-5cc7-4cda-9e99-bdb4abcb4615"
+          "3a3a1ebf-92ac-4fff-a6bf-8e74d663ce70"
         ],
         "x-ms-correlation-request-id": [
-          "7eadf4f9-5cc7-4cda-9e99-bdb4abcb4615"
+          "3a3a1ebf-92ac-4fff-a6bf-8e74d663ce70"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021031Z:7eadf4f9-5cc7-4cda-9e99-bdb4abcb4615"
+          "WESTUS:20220107T232335Z:3a3a1ebf-92ac-4fff-a6bf-8e74d663ce70"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -3154,7 +2991,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:30 GMT"
+          "Fri, 07 Jan 2022 23:23:35 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -3173,14 +3010,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
+      "RequestUri": "/someId?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "IdParameterSet"
@@ -3200,13 +3038,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "270f9773-2fc7-4dc2-b0d3-c83f9acd80d7"
+          "dc96f31b-3b88-41a3-98d1-20da75a42260"
         ],
         "x-ms-correlation-request-id": [
-          "270f9773-2fc7-4dc2-b0d3-c83f9acd80d7"
+          "dc96f31b-3b88-41a3-98d1-20da75a42260"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021031Z:270f9773-2fc7-4dc2-b0d3-c83f9acd80d7"
+          "WESTUS:20220107T232335Z:dc96f31b-3b88-41a3-98d1-20da75a42260"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -3215,7 +3053,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:31 GMT"
+          "Fri, 07 Jan 2022 23:23:34 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -3234,14 +3072,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
+      "RequestUri": "/someId?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "IdParameterSet"
@@ -3261,13 +3100,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "089d7fb9-e3f5-4bdc-ba22-132d0090478e"
+          "fd3b0c19-36e9-4f92-b717-18110530cbd2"
         ],
         "x-ms-correlation-request-id": [
-          "089d7fb9-e3f5-4bdc-ba22-132d0090478e"
+          "fd3b0c19-36e9-4f92-b717-18110530cbd2"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021031Z:089d7fb9-e3f5-4bdc-ba22-132d0090478e"
+          "WESTUS:20220107T232335Z:fd3b0c19-36e9-4f92-b717-18110530cbd2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -3276,7 +3115,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:31 GMT"
+          "Fri, 07 Jan 2022 23:23:35 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -3295,75 +3134,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
+      "RequestUri": "/someId?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
-        ],
-        "ParameterSetName": [
-          "IdParameterSet"
-        ],
-        "CommandName": [
-          "Set-AzPolicyAssignment"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "3375ba54-b012-4ac0-b7fe-092bce6421b1"
-        ],
-        "x-ms-correlation-request-id": [
-          "3375ba54-b012-4ac0-b7fe-092bce6421b1"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20200109T021032Z:3375ba54-b012-4ac0-b7fe-092bce6421b1"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 09 Jan 2020 02:10:31 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "135"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/someId?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "PolicyParameterIdObjectParameterSet"
@@ -3383,13 +3162,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "b73e95b5-da87-45a7-b103-cf9b7a6a05aa"
+          "0a2c44bf-232e-427c-bc2b-e99459158faa"
         ],
         "x-ms-correlation-request-id": [
-          "b73e95b5-da87-45a7-b103-cf9b7a6a05aa"
+          "0a2c44bf-232e-427c-bc2b-e99459158faa"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021032Z:b73e95b5-da87-45a7-b103-cf9b7a6a05aa"
+          "WESTUS:20220107T232335Z:0a2c44bf-232e-427c-bc2b-e99459158faa"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -3398,7 +3177,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:32 GMT"
+          "Fri, 07 Jan 2022 23:23:35 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -3417,14 +3196,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
+      "RequestUri": "/someId?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "PolicyParameterIdStringParameterSet"
@@ -3444,13 +3224,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "0f86e3f6-e737-4609-bc80-1ec90ecc4c0b"
+          "407c29c3-d897-4584-ba71-59995c8933c3"
         ],
         "x-ms-correlation-request-id": [
-          "0f86e3f6-e737-4609-bc80-1ec90ecc4c0b"
+          "407c29c3-d897-4584-ba71-59995c8933c3"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021029Z:0f86e3f6-e737-4609-bc80-1ec90ecc4c0b"
+          "WESTUS:20220107T232336Z:407c29c3-d897-4584-ba71-59995c8933c3"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -3459,7 +3239,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:28 GMT"
+          "Fri, 07 Jan 2022 23:23:35 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -3478,14 +3258,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
+      "RequestUri": "/someId?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "IdParameterSet"
@@ -3505,13 +3286,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "5fc9a231-d9c6-48b5-bfac-c686c5e98cc1"
+          "64dd5000-1a39-47d5-beb5-6ed6d2c09354"
         ],
         "x-ms-correlation-request-id": [
-          "5fc9a231-d9c6-48b5-bfac-c686c5e98cc1"
+          "64dd5000-1a39-47d5-beb5-6ed6d2c09354"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021032Z:5fc9a231-d9c6-48b5-bfac-c686c5e98cc1"
+          "WESTUS:20220107T232336Z:64dd5000-1a39-47d5-beb5-6ed6d2c09354"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -3520,7 +3301,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:32 GMT"
+          "Fri, 07 Jan 2022 23:23:36 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -3539,14 +3320,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
+      "RequestUri": "/someId?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "IdParameterSet"
@@ -3566,13 +3348,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "1694b806-3fcb-4edf-9918-9d0a8af9c97f"
+          "7cd5370d-e353-401c-ab49-96ee0d3da024"
         ],
         "x-ms-correlation-request-id": [
-          "1694b806-3fcb-4edf-9918-9d0a8af9c97f"
+          "7cd5370d-e353-401c-ab49-96ee0d3da024"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021032Z:1694b806-3fcb-4edf-9918-9d0a8af9c97f"
+          "WESTUS:20220107T232336Z:7cd5370d-e353-401c-ab49-96ee0d3da024"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -3581,7 +3363,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:32 GMT"
+          "Fri, 07 Jan 2022 23:23:35 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -3600,14 +3382,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
+      "RequestUri": "/someId?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "IdParameterSet"
@@ -3627,13 +3410,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "1d88124f-355e-4719-9532-9b085431fade"
+          "55742790-c078-49bf-93fe-b677f1c41ad0"
         ],
         "x-ms-correlation-request-id": [
-          "1d88124f-355e-4719-9532-9b085431fade"
+          "55742790-c078-49bf-93fe-b677f1c41ad0"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021032Z:1d88124f-355e-4719-9532-9b085431fade"
+          "WESTUS:20220107T232336Z:55742790-c078-49bf-93fe-b677f1c41ad0"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -3642,7 +3425,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:31 GMT"
+          "Fri, 07 Jan 2022 23:23:35 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -3661,75 +3444,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
+      "RequestUri": "/someId?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
-        ],
-        "ParameterSetName": [
-          "IdParameterSet"
-        ],
-        "CommandName": [
-          "Set-AzPolicyAssignment"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "cdc02fae-acd0-4f61-9a09-8e30649ba9ea"
-        ],
-        "x-ms-correlation-request-id": [
-          "cdc02fae-acd0-4f61-9a09-8e30649ba9ea"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20200109T021032Z:cdc02fae-acd0-4f61-9a09-8e30649ba9ea"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 09 Jan 2020 02:10:32 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "135"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/someId?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "PolicyParameterIdObjectParameterSet"
@@ -3749,13 +3472,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "f3ec3bb2-2408-4636-bbbc-ca7e5598a29d"
+          "e2b23726-ea4f-4408-9f46-1b5c3e513e1f"
         ],
         "x-ms-correlation-request-id": [
-          "f3ec3bb2-2408-4636-bbbc-ca7e5598a29d"
+          "e2b23726-ea4f-4408-9f46-1b5c3e513e1f"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021032Z:f3ec3bb2-2408-4636-bbbc-ca7e5598a29d"
+          "WESTUS:20220107T232336Z:e2b23726-ea4f-4408-9f46-1b5c3e513e1f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -3764,7 +3487,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:32 GMT"
+          "Fri, 07 Jan 2022 23:23:36 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -3783,14 +3506,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
+      "RequestUri": "/someId?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "PolicyParameterIdStringParameterSet"
@@ -3810,13 +3534,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "ba6afad4-1c13-4924-b54b-965fa68f2653"
+          "3db0bf36-1884-4c56-a2d1-a1bf8505a6a0"
         ],
         "x-ms-correlation-request-id": [
-          "ba6afad4-1c13-4924-b54b-965fa68f2653"
+          "3db0bf36-1884-4c56-a2d1-a1bf8505a6a0"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021033Z:ba6afad4-1c13-4924-b54b-965fa68f2653"
+          "WESTUS:20220107T232336Z:3db0bf36-1884-4c56-a2d1-a1bf8505a6a0"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -3825,7 +3549,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:32 GMT"
+          "Fri, 07 Jan 2022 23:23:36 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -3844,14 +3568,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
+      "RequestUri": "/someId?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "IdParameterSet"
@@ -3871,13 +3596,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "f0adaf37-f341-403b-9c25-3498c8734d17"
+          "c1da0ef0-0a11-4a7b-b767-926157022f7f"
         ],
         "x-ms-correlation-request-id": [
-          "f0adaf37-f341-403b-9c25-3498c8734d17"
+          "c1da0ef0-0a11-4a7b-b767-926157022f7f"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021033Z:f0adaf37-f341-403b-9c25-3498c8734d17"
+          "WESTUS:20220107T232337Z:c1da0ef0-0a11-4a7b-b767-926157022f7f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -3886,7 +3611,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:32 GMT"
+          "Fri, 07 Jan 2022 23:23:36 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -3905,14 +3630,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
+      "RequestUri": "/someId?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "IdParameterSet"
@@ -3932,13 +3658,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "5ed0ead0-c8e7-47aa-ada2-5cce0ed88117"
+          "451285b9-e96c-456c-9020-2839fe786230"
         ],
         "x-ms-correlation-request-id": [
-          "5ed0ead0-c8e7-47aa-ada2-5cce0ed88117"
+          "451285b9-e96c-456c-9020-2839fe786230"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021033Z:5ed0ead0-c8e7-47aa-ada2-5cce0ed88117"
+          "WESTUS:20220107T232337Z:451285b9-e96c-456c-9020-2839fe786230"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -3947,7 +3673,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:33 GMT"
+          "Fri, 07 Jan 2022 23:23:36 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -3966,75 +3692,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
+      "RequestUri": "/someId?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
-        ],
-        "ParameterSetName": [
-          "IdParameterSet"
-        ],
-        "CommandName": [
-          "Set-AzPolicyAssignment"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "95e05274-a5f5-4892-a810-d52f2a14e76d"
-        ],
-        "x-ms-correlation-request-id": [
-          "95e05274-a5f5-4892-a810-d52f2a14e76d"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20200109T021033Z:95e05274-a5f5-4892-a810-d52f2a14e76d"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 09 Jan 2020 02:10:32 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "135"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/someId?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "PolicyParameterIdObjectParameterSet"
@@ -4054,13 +3720,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "b77b8e5e-8659-47fc-8da6-7c57b99a5ab4"
+          "fa6b5be8-b9b7-47e5-b2f9-3f593bd2d987"
         ],
         "x-ms-correlation-request-id": [
-          "b77b8e5e-8659-47fc-8da6-7c57b99a5ab4"
+          "fa6b5be8-b9b7-47e5-b2f9-3f593bd2d987"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021033Z:b77b8e5e-8659-47fc-8da6-7c57b99a5ab4"
+          "WESTUS:20220107T232337Z:fa6b5be8-b9b7-47e5-b2f9-3f593bd2d987"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -4069,7 +3735,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:32 GMT"
+          "Fri, 07 Jan 2022 23:23:36 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -4088,14 +3754,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
+      "RequestUri": "/someId?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "PolicyParameterIdStringParameterSet"
@@ -4115,13 +3782,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "534b4538-3a76-47a0-93f0-2309aeeddb9b"
+          "7c9842b8-3ae2-4b4f-b411-c2a34faec7d2"
         ],
         "x-ms-correlation-request-id": [
-          "534b4538-3a76-47a0-93f0-2309aeeddb9b"
+          "7c9842b8-3ae2-4b4f-b411-c2a34faec7d2"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021033Z:534b4538-3a76-47a0-93f0-2309aeeddb9b"
+          "WESTUS:20220107T232337Z:7c9842b8-3ae2-4b4f-b411-c2a34faec7d2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -4130,7 +3797,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:33 GMT"
+          "Fri, 07 Jan 2022 23:23:36 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -4149,14 +3816,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
+      "RequestUri": "/someId?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "IdParameterSet"
@@ -4176,13 +3844,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "0bbaaf3d-2668-420c-85f9-b726ace93782"
+          "d65a1976-c892-4f08-8e3d-1fc93c34f504"
         ],
         "x-ms-correlation-request-id": [
-          "0bbaaf3d-2668-420c-85f9-b726ace93782"
+          "d65a1976-c892-4f08-8e3d-1fc93c34f504"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021033Z:0bbaaf3d-2668-420c-85f9-b726ace93782"
+          "WESTUS:20220107T232337Z:d65a1976-c892-4f08-8e3d-1fc93c34f504"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -4191,7 +3859,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:33 GMT"
+          "Fri, 07 Jan 2022 23:23:37 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -4210,75 +3878,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
+      "RequestUri": "/someId?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
-        ],
-        "ParameterSetName": [
-          "IdParameterSet"
-        ],
-        "CommandName": [
-          "Set-AzPolicyAssignment"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "2b83a5b7-4907-41bb-8db7-70290b182441"
-        ],
-        "x-ms-correlation-request-id": [
-          "2b83a5b7-4907-41bb-8db7-70290b182441"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20200109T021033Z:2b83a5b7-4907-41bb-8db7-70290b182441"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 09 Jan 2020 02:10:33 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "135"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/someId?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "PolicyParameterIdObjectParameterSet"
@@ -4298,13 +3906,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "62b306b6-b95e-4ed6-98cc-49b031e4e5bc"
+          "be81fd7d-27d9-4ae1-a2ed-90c1e3c119e0"
         ],
         "x-ms-correlation-request-id": [
-          "62b306b6-b95e-4ed6-98cc-49b031e4e5bc"
+          "be81fd7d-27d9-4ae1-a2ed-90c1e3c119e0"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021034Z:62b306b6-b95e-4ed6-98cc-49b031e4e5bc"
+          "WESTUS:20220107T232337Z:be81fd7d-27d9-4ae1-a2ed-90c1e3c119e0"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -4313,7 +3921,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:33 GMT"
+          "Fri, 07 Jan 2022 23:23:37 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -4332,14 +3940,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
+      "RequestUri": "/someId?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "PolicyParameterIdStringParameterSet"
@@ -4359,13 +3968,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "8e19ad2b-f9f6-4136-9ab6-fcc5f614815a"
+          "da8f439c-9e32-46c2-8ef9-bf85c29a1f4f"
         ],
         "x-ms-correlation-request-id": [
-          "8e19ad2b-f9f6-4136-9ab6-fcc5f614815a"
+          "da8f439c-9e32-46c2-8ef9-bf85c29a1f4f"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021034Z:8e19ad2b-f9f6-4136-9ab6-fcc5f614815a"
+          "WESTUS:20220107T232338Z:da8f439c-9e32-46c2-8ef9-bf85c29a1f4f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -4374,7 +3983,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:33 GMT"
+          "Fri, 07 Jan 2022 23:23:37 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -4393,14 +4002,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
+      "RequestUri": "/someId?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "IdParameterSet"
@@ -4420,13 +4030,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "48fcf6b9-649b-4299-a030-1626ed46e21d"
+          "f48545d9-055c-49d6-a57f-24b0d646c1ee"
         ],
         "x-ms-correlation-request-id": [
-          "48fcf6b9-649b-4299-a030-1626ed46e21d"
+          "f48545d9-055c-49d6-a57f-24b0d646c1ee"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021031Z:48fcf6b9-649b-4299-a030-1626ed46e21d"
+          "WESTUS:20220107T232338Z:f48545d9-055c-49d6-a57f-24b0d646c1ee"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -4435,7 +4045,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:30 GMT"
+          "Fri, 07 Jan 2022 23:23:37 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -4454,75 +4064,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
+      "RequestUri": "/someId?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
-        ],
-        "ParameterSetName": [
-          "IdParameterSet"
-        ],
-        "CommandName": [
-          "Set-AzPolicyAssignment"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "49d8b7e1-1012-4977-a3a0-66bb178dda8f"
-        ],
-        "x-ms-correlation-request-id": [
-          "49d8b7e1-1012-4977-a3a0-66bb178dda8f"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20200109T021034Z:49d8b7e1-1012-4977-a3a0-66bb178dda8f"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 09 Jan 2020 02:10:34 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "135"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/someId?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "PolicyParameterIdObjectParameterSet"
@@ -4542,13 +4092,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "0f17482b-b87e-4d07-8ffa-4c5878a30428"
+          "b88f60d0-2aea-4fd1-a203-e8b6960ef224"
         ],
         "x-ms-correlation-request-id": [
-          "0f17482b-b87e-4d07-8ffa-4c5878a30428"
+          "b88f60d0-2aea-4fd1-a203-e8b6960ef224"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021034Z:0f17482b-b87e-4d07-8ffa-4c5878a30428"
+          "WESTUS:20220107T232338Z:b88f60d0-2aea-4fd1-a203-e8b6960ef224"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -4557,7 +4107,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:34 GMT"
+          "Fri, 07 Jan 2022 23:23:37 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -4576,14 +4126,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
+      "RequestUri": "/someId?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "PolicyParameterIdObjectParameterSet"
@@ -4603,13 +4154,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "8a28fe1c-281b-4e1d-8f1c-2beaf65f93d1"
+          "a0e3b4cd-8a9a-4d6c-b089-7c264221d31f"
         ],
         "x-ms-correlation-request-id": [
-          "8a28fe1c-281b-4e1d-8f1c-2beaf65f93d1"
+          "a0e3b4cd-8a9a-4d6c-b089-7c264221d31f"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021034Z:8a28fe1c-281b-4e1d-8f1c-2beaf65f93d1"
+          "WESTCENTRALUS:20220107T232338Z:a0e3b4cd-8a9a-4d6c-b089-7c264221d31f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -4618,7 +4169,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:34 GMT"
+          "Fri, 07 Jan 2022 23:23:38 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -4637,14 +4188,15 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-09-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
+      "RequestUri": "/someId?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
         ],
         "ParameterSetName": [
           "PolicyParameterIdObjectParameterSet"
@@ -4664,13 +4216,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "aebaacfe-ca08-4445-b978-21070dbd2e6d"
+          "c858a108-302c-4d43-b698-912e13ff775a"
         ],
         "x-ms-correlation-request-id": [
-          "aebaacfe-ca08-4445-b978-21070dbd2e6d"
+          "c858a108-302c-4d43-b698-912e13ff775a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T021034Z:aebaacfe-ca08-4445-b978-21070dbd2e6d"
+          "WESTCENTRALUS:20220107T232338Z:c858a108-302c-4d43-b698-912e13ff775a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -4679,7 +4231,69 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 02:10:34 GMT"
+          "Fri, 07 Jan 2022 23:23:38 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "135"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/someId?api-version=2021-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/5.2.0"
+        ],
+        "ParameterSetName": [
+          "PolicyParameterIdObjectParameterSet"
+        ],
+        "CommandName": [
+          "Set-AzPolicyAssignment"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "05a88445-701e-4a69-a0b8-48666739407f"
+        ],
+        "x-ms-correlation-request-id": [
+          "05a88445-701e-4a69-a0b8-48666739407f"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20220107T232339Z:05a88445-701e-4a69-a0b8-48666739407f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 07 Jan 2022 23:23:38 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -4700,6 +4314,6 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "40d77f8e-5982-4e7e-bafa-b7cd23b123e6"
+    "SubscriptionId": "d0610b27-9663-4c05-89f8-5b4be01e86a5"
   }
 }

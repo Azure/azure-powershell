@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             DefaultTtl = sqlContainerGetPropertiesResource.DefaultTtl;
             UniqueKeyPolicy = new PSUniqueKeyPolicy(sqlContainerGetPropertiesResource.UniqueKeyPolicy);
             ConflictResolutionPolicy = new PSConflictResolutionPolicy(sqlContainerGetPropertiesResource.ConflictResolutionPolicy);
+            AnalyticalStorageTtl = (int?)sqlContainerGetPropertiesResource.AnalyticalStorageTtl;
             _rid = sqlContainerGetPropertiesResource._rid;
             _ts = sqlContainerGetPropertiesResource._ts;
             _etag = sqlContainerGetPropertiesResource._etag;
@@ -67,6 +68,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         // Summary:
         //     Gets or sets the conflict resolution policy for the container.
         public PSConflictResolutionPolicy ConflictResolutionPolicy { get; set; }
+        //
+        // Summary:
+        //     Gets or sets analytical TTL.
+        // int? since our Service defines it as int?
+        public int? AnalyticalStorageTtl { get; set; }
         //
         // Summary:
         //     Gets a system generated property. A unique identifier.

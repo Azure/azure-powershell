@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 38917534-49C6-47EA-B815-240F794EE655
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/update-azvm
+online version: https://docs.microsoft.com/powershell/module/az.compute/update-azvm
 schema: 2.0.0
 ---
 
@@ -17,7 +17,8 @@ Updates the state of an Azure virtual machine.
 ```
 Update-AzVM [-ResourceGroupName] <String> -VM <PSVirtualMachine> [-Tag <Hashtable>]
  [-OsDiskWriteAccelerator <Boolean>] [-UltraSSDEnabled <Boolean>] [-MaxPrice <Double>]
- [-ProximityPlacementGroupId <String>] [-HostId <String>] [-EncryptionAtHost <Boolean>] [-AsJob] [-NoWait]
+ [-EncryptionAtHost <Boolean>] [-ProximityPlacementGroupId <String>] [-HostId <String>]
+ [-CapacityReservationGroupId <String>] [-AsJob] [-NoWait] [-UserData <String>] [-HibernationEnabled]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -25,15 +26,19 @@ Update-AzVM [-ResourceGroupName] <String> -VM <PSVirtualMachine> [-Tag <Hashtabl
 ```
 Update-AzVM [-ResourceGroupName] <String> -VM <PSVirtualMachine> [-Tag <Hashtable>]
  -IdentityType <ResourceIdentityType> [-IdentityId <String[]>] [-OsDiskWriteAccelerator <Boolean>]
- [-UltraSSDEnabled <Boolean>] [-MaxPrice <Double>] [-ProximityPlacementGroupId <String>] [-HostId <String>]
- [-EncryptionAtHost <Boolean>] [-AsJob] [-NoWait] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-UltraSSDEnabled <Boolean>] [-MaxPrice <Double>] [-EncryptionAtHost <Boolean>]
+ [-ProximityPlacementGroupId <String>] [-HostId <String>] [-CapacityReservationGroupId <String>] [-AsJob]
+ [-NoWait] [-UserData <String>] [-HibernationEnabled] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### IdParameterSetName
 ```
 Update-AzVM [-Id] <String> -VM <PSVirtualMachine> [-Tag <Hashtable>] [-OsDiskWriteAccelerator <Boolean>]
- [-UltraSSDEnabled <Boolean>] [-MaxPrice <Double>] [-ProximityPlacementGroupId <String>] [-HostId <String>]
- [-EncryptionAtHost <Boolean>] [-AsJob] [-NoWait] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-UltraSSDEnabled <Boolean>] [-MaxPrice <Double>] [-EncryptionAtHost <Boolean>]
+ [-ProximityPlacementGroupId <String>] [-HostId <String>] [-CapacityReservationGroupId <String>] [-AsJob]
+ [-NoWait] [-UserData <String>] [-HibernationEnabled] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,8 +47,8 @@ The **Update-AzVM** cmdlet updates the state of an Azure virtual machine to the 
 ## EXAMPLES
 
 ### Example 1: Update a virtual machine
-```
-PS C:\> Update-AzVM -ResourceGroupName "ResourceGroup11" -VM $VirtualMachine
+```powershell
+Update-AzVM -ResourceGroupName "ResourceGroup11" -VM $VirtualMachine
 ```
 
 This command updates the virtual machine, $VirtualMachine, in ResourceGroup11.
@@ -57,6 +62,21 @@ Run cmdlet in the background and return a Job to track progress.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CapacityReservationGroupId
+Id of the capacity reservation Group that is used to allocate.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -82,6 +102,37 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EncryptionAtHost
+EncryptionAtHost property can be used by user in the request to enable or disable the Host Encryption for the virtual machine or virtual machine scale set. 
+This will enable the encryption for all the disks including Resource/Temp disk at host itself. 
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HibernationEnabled
+The flag that enables or disables hibernation capability on the VM.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -HostId
 The Id of Host
 
@@ -94,22 +145,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -EncryptionAtHost
-EncryptionAtHost property can be used by user in the request to enable or disable the Host Encryption for the virtual machine or virtual machine scale set. 
-This will enable the encryption for all the disks including Resource/Temp disk at host itself. 
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -268,6 +303,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -UserData
+UserData for the VM, which will be base-64 encoded. Customer should not pass any secrets in here.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -VM
 Specifies a local virtual machine object.
 To obtain a virtual machine object, use the Get-AzVM cmdlet.
@@ -315,7 +365,6 @@ Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
-
 
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).

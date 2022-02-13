@@ -69,5 +69,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy
         /// </summary>
         [JsonProperty(Required = Required.Default)]
         public JObject Parameters { get; set; }
+
+        /// <summary>
+        /// The non-compliance messages used to describe why a resource is non-compliant with the policy.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public NonComplianceMessage[] NonComplianceMessages { get; set; }
     }
 }

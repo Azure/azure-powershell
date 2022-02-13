@@ -48,7 +48,7 @@ The following prerequisites should be completed before contributing to the Azure
 - Install the latest version of [Git](https://git-scm.com/downloads)
 - Install the [`platyPS` module](help-generation.md#Installing-platyPS)
 - Install the latest [**.NET Core SDK** and **.NET Framework Dev Pack 4.7.2**](https://dotnet.microsoft.com/download) or greater
-- Install [PowerShell Core](https://github.com/PowerShell/PowerShell/releases/latest)
+- Install [PowerShell 7](https://github.com/PowerShell/PowerShell/releases/latest)
 - Set the PowerShell [execution policy](https://technet.microsoft.com/en-us/library/ee176961.aspx) to **Unrestricted** for the following versions of PowerShell:
   - `C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe`
   - `C:\Windows\SysWOW64\WindowsPowerShell\v1.0\powershell.exe`
@@ -76,10 +76,10 @@ You now be able to create your own branches, commit changes, and push commits to
 git remote add upstream https://github.com/Azure/azure-powershell.git
 ```
 
-Then, to pull changes from the **master** branch in _Azure/azure-powershell_ into your local working branch, run the following command:
+Then, to pull changes from the **main** branch in _Azure/azure-powershell_ into your local working branch, run the following command:
 
 ```
-git pull upstream master
+git pull upstream main
 ```
 
 ## Building the Environment
@@ -92,7 +92,7 @@ After cloning the repository to your local machine, you want to ensure that you 
 msbuild build.proj
 ```
 
-Alternatively, you can open any command prompt (Command Prompt, Windows PowerShell, or PowerShell Core), navigate to the root of the repository, and run:
+Alternatively, you can open any command prompt (Command Prompt, Windows PowerShell, or PowerShell 7), navigate to the root of the repository, and run:
 
 ```powershell
 PS C:\azure-powershell> dotnet msbuild build.proj
@@ -124,7 +124,7 @@ Launch `VS Developer Command Prompt` and run the following command (from the roo
 msbuild build.proj /t:Test
 ```
 
-Alternatively, you can open any command prompt (Command Prompt, Windows PowerShell, or PowerShell Core), navigate to the root of the repository, and run:
+Alternatively, you can open any command prompt (Command Prompt, Windows PowerShell, or PowerShell 7), navigate to the root of the repository, and run:
 
 ```powershell
 PS C:\azure-powershell> dotnet msbuild build.proj /t:Test

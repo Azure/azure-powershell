@@ -20,6 +20,12 @@
 
 ## Upcoming Release
 
+## Version 1.2.0
+* Added Guest patch maintenance support.
+
+## Version 1.1.1
+* Bumped API version to stable 2021-05-01.
+
 ## Version 1.1.0
 * Added optional schedule related fields to `New-AzMaintenanceConfiguration`
 * Added new cmdlet for `Get-AzMaintenancePublicConfiguration`

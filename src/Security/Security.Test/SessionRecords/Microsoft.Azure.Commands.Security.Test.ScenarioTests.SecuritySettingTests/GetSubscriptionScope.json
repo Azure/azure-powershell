@@ -1,22 +1,22 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/settings?api-version=2019-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDg3YmI0ODUtYjViMC00NzFlLTljMGQtMTA3MTc2MTJmODY5L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHkvc2V0dGluZ3M/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
+      "RequestUri": "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/settings?api-version=2021-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDg3YmI0ODUtYjViMC00NzFlLTljMGQtMTA3MTc2MTJmODY5L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHkvc2V0dGluZ3M/YXBpLXZlcnNpb249MjAyMS0wNy0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "8f441550-521c-47f1-bf8c-ada6614fbdaa"
+          "c91343da-5a78-4259-93bd-cd2902396375"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28207.03",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Security.SecurityCenterClient/2.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Security.SecurityCenterClient/3.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -26,32 +26,35 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-request-id": [
-          "12b779fb-a204-4443-844c-d98c169dc783"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "749"
         ],
-        "x-ms-correlation-request-id": [
-          "2e214621-4c9b-435e-9300-b8ed479891c6"
-        ],
-        "x-ms-routing-request-id": [
-          "GERMANYWESTCENTRAL:20200507T214137Z:2e214621-4c9b-435e-9300-b8ed479891c6"
-        ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
+        ],
+        "api-supported-versions": [
+          "1.0"
+        ],
+        "x-ms-request-id": [
+          "57e7e41e-014a-4e81-9290-b7fbffa1e07e"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-correlation-request-id": [
+          "3644afe3-e49e-4c68-957e-ce4bda33d425"
+        ],
+        "x-ms-routing-request-id": [
+          "UAECENTRAL:20210831T191104Z:3644afe3-e49e-4c68-957e-ce4bda33d425"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 07 May 2020 21:41:37 GMT"
+          "Tue, 31 Aug 2021 19:11:03 GMT"
         ],
         "Content-Length": [
-          "439"
+          "933"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -60,7 +63,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/settings/MCAS\",\r\n      \"name\": \"MCAS\",\r\n      \"type\": \"Microsoft.Security/settings\",\r\n      \"kind\": \"DataExportSettings\",\r\n      \"properties\": {\r\n        \"enabled\": true\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/settings/WDATP\",\r\n      \"name\": \"WDATP\",\r\n      \"type\": \"Microsoft.Security/settings\",\r\n      \"kind\": \"DataExportSettings\",\r\n      \"properties\": {\r\n        \"enabled\": true\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/settings/MCAS\",\r\n      \"name\": \"MCAS\",\r\n      \"type\": \"Microsoft.Security/settings\",\r\n      \"kind\": \"DataExportSettings\",\r\n      \"properties\": {\r\n        \"enabled\": true\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/settings/WDATP\",\r\n      \"name\": \"WDATP\",\r\n      \"type\": \"Microsoft.Security/settings\",\r\n      \"kind\": \"DataExportSettings\",\r\n      \"properties\": {\r\n        \"enabled\": true\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/settings/WDATP_EXCLUDE_LINUX_PUBLIC_PREVIEW\",\r\n      \"name\": \"WDATP_EXCLUDE_LINUX_PUBLIC_PREVIEW\",\r\n      \"type\": \"Microsoft.Security/settings\",\r\n      \"kind\": \"DataExportSettings\",\r\n      \"properties\": {\r\n        \"enabled\": true\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/settings/Sentinel\",\r\n      \"name\": \"Sentinel\",\r\n      \"type\": \"Microsoft.Security/settings\",\r\n      \"kind\": \"AlertSyncSettings\",\r\n      \"properties\": {\r\n        \"enabled\": false\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     }
   ],

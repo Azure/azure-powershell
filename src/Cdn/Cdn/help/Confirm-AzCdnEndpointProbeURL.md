@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/confirm-azcdnendpointprobeurl
+online version: https://docs.microsoft.com/powershell/module/az.cdn/confirm-azcdnendpointprobeurl
 schema: 2.0.0
 ---
 
@@ -24,7 +24,10 @@ The **Confirm-AzCdnEndpointProbeURL** cmdlet confirms if the probe URL provided 
 
 ### Example 1
 ```powershell
-PS C:\> Confirm-AzCdnEndpointProbeURL -ProbeUrl "http://www.bing.com/images"
+Confirm-AzCdnEndpointProbeURL -ProbeUrl "http://www.bing.com/images"
+```
+
+```output
 IsValid: true
 ErrorCode: None
 Message:

@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Extensions;
+    using System;
 
     /// <summary>
     /// Creates (or updates) an Application Insights component. Note: You cannot specify a different value for InstrumentationKey
@@ -46,7 +47,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         SerializedName = @"Application_Type",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ApplicationType) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ApplicationType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ApplicationType ApplicationType { get => InsightPropertiesBody.ApplicationType; set => InsightPropertiesBody.ApplicationType = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ApplicationType ApplicationType { get => InsightPropertiesBody.ApplicationType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ApplicationType)""); set => InsightPropertiesBody.ApplicationType = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -278,7 +279,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
                     case Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Events.Information:
                     {
                         var data = messageData();
-                        WriteInformation(data, new[] { data.Message });
+                        WriteInformation(data.Message, new string[]{});
                         return ;
                     }
                     case Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Events.Debug:

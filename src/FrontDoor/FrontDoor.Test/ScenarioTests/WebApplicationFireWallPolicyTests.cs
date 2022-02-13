@@ -48,5 +48,12 @@ namespace Microsoft.Azure.Commands.FrontDoor.Test.ScenarioTests.ScenarioTest
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-ManagedRuleSetDefinition");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPolicyAction()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-PolicyAction");
+        }
     }
 }

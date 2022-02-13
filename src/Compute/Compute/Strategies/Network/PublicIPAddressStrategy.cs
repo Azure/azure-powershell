@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Strategies;
-using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
-using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Network;
+using Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Network.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -42,6 +42,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
         public static ResourceConfig<PublicIPAddress> CreatePublicIPAddressConfig(
             this ResourceConfig<ResourceGroup> resourceGroup,
             string name,
+            string edgeZone,
             string domainNameLabel,
             string allocationMethod,
             Sku sku,
@@ -61,6 +62,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
                         Name = sku.ToString(),
                     },
                     Zones = zones,
+                    ExtendedLocation = edgeZone == null
+                        ? null
+                        : new ExtendedLocation { Name = edgeZone }
                 });
 
         public static async Task<string> UpdateDomainNameLabelAsync(

@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Cmdlets
 
     /// <summary>Get information about a virtual machine image template</summary>
     /// <remarks>
-    /// [OpenAPI] VirtualMachineImageTemplates_Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}"
+    /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzImageBuilderTemplate_Get")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplate))]

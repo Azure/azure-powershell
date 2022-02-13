@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
 Module Name: Az.Accounts
-online version: https://docs.microsoft.com/en-us/powershell/module/az.accounts/select-azcontext
+online version: https://docs.microsoft.com/powershell/module/az.accounts/select-azcontext
 schema: 2.0.0
 ---
 
@@ -32,8 +32,10 @@ selected context.
 
 ### Example 1: Target a named context
 ```powershell
-PS C:\> Select-AzContext "Work"
+Select-AzContext "Work"
+```
 
+```Output
 Name    Account             SubscriptionName    Environment         TenantId
 ----    -------             ----------------    -----------         --------
 Work    test@outlook.com    Subscription1       AzureCloud          xxxxxxxx-x...
@@ -144,7 +146,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

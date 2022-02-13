@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
+    /// <summary>Alert category</summary>
     public partial struct AlertCategory :
         System.IEquatable<AlertCategory>
     {
@@ -31,7 +32,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
         /// <param name="value">the value to convert to an instance of <see cref="AlertCategory" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new AlertCategory(System.Convert.ToString(value));
+            return new AlertCategory(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type AlertCategory</summary>

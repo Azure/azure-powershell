@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
 ms.assetid: 1A84AF77-1AEF-4FD0-9FAA-D195B361FCEB
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/set-azcdnendpoint
+online version: https://docs.microsoft.com/powershell/module/az.cdn/set-azcdnendpoint
 schema: 2.0.0
 ---
 
@@ -22,6 +22,42 @@ Set-AzCdnEndpoint -CdnEndpoint <PSEndpoint> [-DefaultProfile <IAzureContextConta
 The **Set-AzCdnEndpoint** cmdlet updates an Azure Content Delivery Network (CDN) endpoint.
 
 ## EXAMPLES
+
+### Example 1: Set allowed protocols to HTTPS only
+```powershell
+$endpointObject = Get-AzCdnEndpoint -ResourceGroupName myresourcegroup -ProfileName mycdnprofile -EndpointName myendpoint
+$endpointObject.IsHttpAllowed = $false
+Set-AzCdnEndpoint -CdnEndpoint $endpointObject
+```
+
+```Output
+HostName                   : myendpoint.azureedge.net
+OriginHostHeader           :
+OriginPath                 :
+ContentTypesToCompress     : {}
+IsCompressionEnabled       : False
+IsHttpAllowed              : False
+IsHttpsAllowed             : True
+QueryStringCachingBehavior : IgnoreQueryString
+Origins                    : {mystorage}
+OptimizationType           :
+ProbePath                  :
+GeoFilters                 : {}
+DeliveryPolicy             :
+ResourceState              : Running
+DefaultOriginGroup         :
+ResourceGroupName          : myresourcegroup
+ProfileName                : mycdnprofile
+Location                   : WestUs
+Tags                       : {}
+Id                         : /subscriptions/11111111-1111-1111-1111-111111111111/resourcegroups/myresourcegroup/providers/Micr
+                             osoft.Cdn/profiles/mycdnprofile/endpoints/myendpoint
+Name                       : myendpoint
+Type                       : Microsoft.Cdn/profiles/endpoints
+ProvisioningState          : Succeeded
+```
+
+Properties that are allowed to change are: `ContentTypesToCompress`, `IsCompressionEnabled`, `IsHttpAllowed`, `IsHttpsAllowed`, `QueryStringCachingBehavior`, `GeoFilters` and `Tags`.
 
 ## PARAMETERS
 

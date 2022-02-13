@@ -97,7 +97,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601
             }
             // actually deserialize
             ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpressionInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpressionInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpressionInternal)this).Operator = (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.OperatorType) content.GetValueForProperty("Operator",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpressionInternal)this).Operator, Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.OperatorType.CreateFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpressionInternal)this).Operator = (string) content.GetValueForProperty("Operator",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpressionInternal)this).Operator, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpressionInternal)this).Value = (string[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpressionInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
             AfterDeserializeDictionary(content);
         }
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601
             }
             // actually deserialize
             ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpressionInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpressionInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpressionInternal)this).Operator = (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.OperatorType) content.GetValueForProperty("Operator",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpressionInternal)this).Operator, Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.OperatorType.CreateFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpressionInternal)this).Operator = (string) content.GetValueForProperty("Operator",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpressionInternal)this).Operator, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpressionInternal)this).Value = (string[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpressionInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
             AfterDeserializePSObject(content);
         }

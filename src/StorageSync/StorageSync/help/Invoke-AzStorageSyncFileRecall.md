@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.StorageSync.dll-Help.xml
 Module Name: Az.StorageSync
-online version: https://docs.microsoft.com/en-us/powershell/module/Az.storagesync/invoke-Azstoragesyncfilerecall
+online version: https://docs.microsoft.com/powershell/module/Az.storagesync/invoke-Azstoragesyncfilerecall
 schema: 2.0.0
 ---
 
@@ -9,6 +9,9 @@ schema: 2.0.0
 
 ## SYNOPSIS
 This command recalls all tiered files back to local disk.
+
+> [!IMPORTANT]
+> `Invoke-AzStorageSyncFileRecall` is deprecated. Please use [Invoke-StorageSyncFileRecall](/azure/storage/files/storage-sync-how-to-manage-tiered-files#how-to-recall-a-tiered-file-to-disk).
 
 ## SYNTAX
 

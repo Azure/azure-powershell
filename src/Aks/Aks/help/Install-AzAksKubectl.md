@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Aks.dll-Help.xml
 Module Name: Az.Aks
-online version: https://docs.microsoft.com/en-us/powershell/module/az.aks/install-azakskubectl
+online version: https://docs.microsoft.com/powershell/module/az.aks/install-azakskubectl
 schema: 2.0.0
 ---
 
@@ -14,7 +14,8 @@ Download and install kubectl, the Kubernetes command-line tool.
 
 ```
 Install-AzAksKubectl [-Destination <String>] [-Version <String>] [-DownloadFromMirror] [-PassThru] [-AsJob]
- [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +25,7 @@ Download and install kubectl, the Kubernetes command-line tool.
 
 ### Download and install latest version of kubectl
 ```powershell
-PS C:\> Install-AzAksKubectl -Version latest
+Install-AzAksKubectl -Version latest
 ```
 
 ## PARAMETERS
@@ -117,6 +118,23 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the subscription.
+By default, cmdlets are executed in the subscription that is set in the current context. If the user specifies another subscription, the current cmdlet is executed in the subscription specified by the user.
+Overriding subscriptions only take effect during the lifecycle of the current cmdlet. It does not change the subscription in the context, and does not affect subsequent cmdlets.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

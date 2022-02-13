@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support
 {
 
-    /// <summary>Argument completer implementation for JobName.</summary>
+    /// <summary>Defines the job name.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.JobNameTypeConverter))]
     public partial struct JobName :
         System.Management.Automation.IArgumentCompleter
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "InitialSync".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("InitialSync", "InitialSync", global::System.Management.Automation.CompletionResultType.ParameterValue, "InitialSync");
+                yield return new global::System.Management.Automation.CompletionResult("'InitialSync'", "InitialSync", global::System.Management.Automation.CompletionResultType.ParameterValue, "InitialSync");
             }
         }
     }

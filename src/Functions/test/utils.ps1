@@ -36,11 +36,29 @@ function setupEnv() {
     $storageAccountLinux = "functionslinuxstorage" + (RandomString -len 3)
     
     # Create resource groups
-    Write-Host "Creating resource groups" -ForegroundColor Green
-    New-AzResourceGroup -Name $resourceGroupNameWindowsPremium -Location $location | Out-Null
-    New-AzResourceGroup -Name $resourceGroupNameLinuxPremium -Location $location | Out-Null
-    New-AzResourceGroup -Name $resourceGroupNameWindowsConsumption -Location $location | Out-Null
-    New-AzResourceGroup -Name $resourceGroupNameLinuxConsumption -Location $location | Out-Null
+    $resourceGroupsToCreate = @(
+        @{
+            Name = $resourceGroupNameWindowsPremium
+            Location = $location
+        },
+        @{
+            Name = $resourceGroupNameLinuxPremium
+            Location = $location
+        },
+        @{
+            Name = $resourceGroupNameWindowsConsumption
+            Location = $location
+        },
+        @{
+            Name = $resourceGroupNameLinuxConsumption
+            Location = $location
+        }
+    )
+
+    $resourceGroupsToCreate | ForEach-Object {
+        Write-Host "Creating resource group $($psitem.Name)" -ForegroundColor Yellow
+        New-AzResourceGroup @psitem | Out-Null
+    }
 
     # Create storage accounts
     Write-Host "Creating storage accounts" -ForegroundColor Green
@@ -113,7 +131,7 @@ function setupEnv() {
             Runtime = "PowerShell"
             RuntimeVersion = '7.0'
             Name = "Functions-PowerShell-7-" + (RandomString -len 6)
-            FunctionsVersion = 3
+            FunctionsVersion = 4
         },
         @{
             ResourceGroupName = $resourceGroupNameLinuxPremium
@@ -121,9 +139,9 @@ function setupEnv() {
             StorageAccountName = $storageAccountLinux
             OSType = "Linux"
             Runtime = "Node"
-            RuntimeVersion = 10
-            Name = "Functions-Node-10-" + (RandomString -len 6)
-            FunctionsVersion = 3
+            RuntimeVersion = 14
+            Name = "Functions-Node-14-" + (RandomString -len 6)
+            FunctionsVersion = 4
         },
         @{
             ResourceGroupName = $resourceGroupNameWindowsConsumption
@@ -131,9 +149,9 @@ function setupEnv() {
             StorageAccountName = $storageAccountWindows
             OSType = "Windows"
             Runtime = "DotNet"
-            RuntimeVersion = 3
-            Name = "Functions-DoNet-3-" + (RandomString -len 6)
-            FunctionsVersion = 3
+            RuntimeVersion = 6.0
+            Name = "Functions-DoNet-6-" + (RandomString -len 6)
+            FunctionsVersion = 4
         },
         @{
             ResourceGroupName = $resourceGroupNameLinuxConsumption      
@@ -143,7 +161,7 @@ function setupEnv() {
             Runtime = "Python"
             RuntimeVersion = 3.8
             Name = "Functions-Python-3-8-" + (RandomString -len 6)
-            FunctionsVersion = 3
+            FunctionsVersion = 4
         }
     )
 
@@ -163,6 +181,7 @@ function setupEnv() {
     $functionNameJava = "Functions-Java-" + (RandomString -len 10)
     $functionNamePython = "Functions-Python-" + (RandomString -len 10)
     $functionAppPlanName= "Functions-MyPlan-" + (RandomString -len 10)
+    $functionAppTestPlanName= "Functions-MyTestPlan1-" + (RandomString -len 10)
 
     $env.add('functionNamePowerShell', $functionNamePowerShell) | Out-Null
     $env.add('functionNameContainer', $functionNameContainer) | Out-Null
@@ -172,24 +191,36 @@ function setupEnv() {
     $env.add('functionNameJava', $functionNameJava) | Out-Null
     $env.add('functionNamePython', $functionNamePython) | Out-Null
     $env.add('functionAppPlanName', $functionAppPlanName) | Out-Null
+    $env.add('functionAppTestPlanName', $functionAppTestPlanName) | Out-Null
 
     # Create user assigned identity
+    Write-Host "Create user assigned managed identity" -ForegroundColor Yellow
     $identityInfo = New-AzUserAssignedIdentity -ResourceGroupName $env.resourceGroupNameWindowsPremium -Name ID1 -Location $env.location
     $env.add('identityInfo', $identityInfo) | Out-Null
 
     # Create new ApplInsights project
+    Write-Host "Create application insights project" -ForegroundColor Yellow
     $newApplInsightsName = $functionNamePowerShell + "-new"
     $newApplInsights = New-AzApplicationInsights -ResourceGroupName $env.resourceGroupNameWindowsPremium -Name $newApplInsightsName -Location $location
     $env.add('newApplInsights', $newApplInsights) | Out-Null
+
+    # Set the test mode for the Az.Functions module
+    # This is requried to support playback mode (given that we need to have the same values in teh payload for each function app creation)
+    # Currently this flag is used to have a constant share name when creation an app
+    $env:FunctionsTestMode = $true
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
     }
+
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
 }
 
 function cleanupEnv() {
+
+    $env:FunctionsTestMode = $null
+
     # Clean test resources
     Remove-AzResourceGroup -Name $env.resourceGroupNameWindowsPremium
     Remove-AzResourceGroup -Name $env.resourceGroupNameLinuxPremium

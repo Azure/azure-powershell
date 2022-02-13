@@ -816,3 +816,39 @@ function Test-PublicIpAddressCRUD-IdleTimeout
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Test for creating a new simple publicIpAddress in an edge zone. Subscriptions need to be explicitly whitelisted for access to edge zones.
+#>
+function Test-PublicIpAddressInEdgeZone
+{
+    # Setup
+    $resourceName = Get-ResourceName
+	$domainNameLabel = Get-ResourceName
+    $resourceGroupName = Get-ResourceGroupName
+    $locationName = 'westus'
+    $edgeZone = 'microsoftlosangeles1'
+
+    try
+    {
+        # Create the resource group
+        New-AzResourceGroup -Name $resourceGroupName -Location $locationName
+
+        # Create publicIpAddres
+        New-AzPublicIpAddress -ResourceGroupName $resourceGroupName -Name $resourceName -Location $locationName -EdgeZone $edgeZone -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+
+        $publicIP = Get-AzPublicIpAddress -Name $resourceName -ResourceGroupName $resourceGroupName
+        Assert-AreEqual $publicIP.ExtendedLocation.Name $edgeZone
+        Assert-AreEqual $publicIP.ExtendedLocation.Type 'EdgeZone'
+    }
+    catch [Microsoft.Azure.Commands.Network.Common.NetworkCloudException]
+    {
+        Assert-NotNull { $_.Exception.Message -match 'Resource type .* does not support edge zone .* in location .* The supported edge zones are .*' }
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $resourceGroupName
+    }
+}

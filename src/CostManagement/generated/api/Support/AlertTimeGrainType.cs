@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
+    /// <summary>Type of timegrain cadence</summary>
     public partial struct AlertTimeGrainType :
         System.IEquatable<AlertTimeGrainType>
     {
@@ -37,7 +38,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
         /// <param name="value">the value to convert to an instance of <see cref="AlertTimeGrainType" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new AlertTimeGrainType(System.Convert.ToString(value));
+            return new AlertTimeGrainType(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type AlertTimeGrainType</summary>

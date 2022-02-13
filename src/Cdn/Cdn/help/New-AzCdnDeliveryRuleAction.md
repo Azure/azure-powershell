@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/new-azcdndeliveryruleaction
+online version: https://docs.microsoft.com/powershell/module/az.cdn/new-azcdndeliveryruleaction
 schema: 2.0.0
 ---
 
@@ -50,8 +50,10 @@ The **New-AzCdnDeliveryRule** cmdlet creates a delivery rule for CDN endpoint cr
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCdnDeliveryRuleAction -HeaderActionType ModifyRequestHeader -Action Append -HeaderName "Accept-Encoding" -Value "gzip"
+New-AzCdnDeliveryRuleAction -HeaderActionType ModifyRequestHeader -Action Append -HeaderName "Accept-Encoding" -Value "gzip"
+```
 
+```output
 HeaderActionType    Action HeaderName      Value
 ----------------    ------ ----------      -----
 ModifyRequestHeader Append Accept-Encoding gzip

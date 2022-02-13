@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Cmdlets
 
     /// <summary>Create or update a virtual machine image template</summary>
     /// <remarks>
-    /// [OpenAPI] VirtualMachineImageTemplates_CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}"
+    /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzImageBuilderTemplate_Create", SupportsShouldProcess = true)]

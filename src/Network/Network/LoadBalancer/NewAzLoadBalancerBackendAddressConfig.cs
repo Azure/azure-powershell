@@ -27,12 +27,17 @@ using System.Net;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancerBackendAddressConfig", DefaultParameterSetName = "SetByResourcePublicIpAddress", SupportsShouldProcess = true), OutputType(typeof(PSLoadBalancerBackendAddress))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancerBackendAddressConfig", DefaultParameterSetName = "SetByIpAndSubnet", SupportsShouldProcess = true), OutputType(typeof(PSLoadBalancerBackendAddress))]
     public partial class NewAzureLoadBalancerBackendAddress : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
-            ParameterSetName = "SetByResourcePublicIpAddress",
+            ParameterSetName = "SetByIpAndVnet",
+            HelpMessage = "The IPAddress to add to the Backend pool",
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = "SetByIpAndSubnet",
             HelpMessage = "The IPAddress to add to the Backend pool",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
@@ -47,11 +52,19 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            ParameterSetName = "SetByResourcePublicIpAddress",
+            ParameterSetName = "SetByIpAndVnet",
             HelpMessage = "The virtual network associated with the Backend Address config",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string VirtualNetworkId { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = "SetByIpAndSubnet",
+            HelpMessage = "The subnet associated with the Backend Address config",
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public string SubnetId { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -65,36 +78,43 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            var loadBalancerBackendAddress = new PSLoadBalancerBackendAddress();
-            loadBalancerBackendAddress.Name = this.Name;
-
-            if (string.Equals(ParameterSetName, "SetByResourcePublicIpAddress"))
+            var loadBalancerBackendAddress = new PSLoadBalancerBackendAddress
             {
-                if (!ValidateIpAddress(this.IpAddress))
-                {
-                    throw new PSArgumentException($"Invalid IPAddress : {Properties.Resources.InvalidIPAddress}");
-                }
+                Name = this.Name
+            };
+
+            if (string.Equals(ParameterSetName, "SetByIpAndVnet"))
+            {
+                this.ValidateAndSetIpAddress(loadBalancerBackendAddress);
 
                 loadBalancerBackendAddress.VirtualNetwork = new PSResourceId
                 {
                     Id = VirtualNetworkId
                 };
-
-                loadBalancerBackendAddress.IpAddress = this.IpAddress;
             }
-            
-            if(string.Equals(ParameterSetName, "SetByResourceFrontendIPConfiguration"))
+
+            if (string.Equals(ParameterSetName, "SetByIpAndSubnet"))
+            {
+                this.ValidateAndSetIpAddress(loadBalancerBackendAddress);
+
+                loadBalancerBackendAddress.Subnet = new PSResourceId
+                {
+                    Id = SubnetId
+                };
+            }
+
+            if (string.Equals(ParameterSetName, "SetByResourceFrontendIPConfiguration"))
             {
                 loadBalancerBackendAddress.LoadBalancerFrontendIPConfiguration = new PSResourceId
                 {
                     Id = LoadBalancerFrontendIPConfigurationId
                 };
-            }            
+            }
 
             WriteObject(loadBalancerBackendAddress);
         }
 
-        public bool ValidateIpAddress(string ipAddress)
+        private bool ValidateIpAddress(string ipAddress)
         {
             IPAddress result = null;
 
@@ -104,6 +124,16 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             return IPAddress.TryParse(ipAddress, out result);
+        }
+
+        private void ValidateAndSetIpAddress(PSLoadBalancerBackendAddress backendAddress)
+        {
+            if (!ValidateIpAddress(this.IpAddress))
+            {
+                throw new PSArgumentException($"Invalid IPAddress : {Properties.Resources.InvalidIPAddress}");
+            }
+
+            backendAddress.IpAddress = this.IpAddress;
         }
     }
 }

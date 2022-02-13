@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support
 {
 
+    /// <summary>Gets or sets the target availability zone.</summary>
     public partial struct TargetAvailabilityZone :
         System.IEquatable<TargetAvailabilityZone>
     {
@@ -24,7 +25,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support
         /// <param name="value">the value to convert to an instance of <see cref="TargetAvailabilityZone" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new TargetAvailabilityZone(System.Convert.ToString(value));
+            return new TargetAvailabilityZone(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type TargetAvailabilityZone</summary>

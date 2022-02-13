@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: 29CCF141-CC2F-4E11-8235-64025CFB5782
-online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/set-azapimanagementapi
+online version: https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementapi
 schema: 2.0.0
 ---
 
@@ -40,28 +40,28 @@ The **Set-AzApiManagementApi** cmdlet modifies an Azure API Management API.
 
 ### Example 1: Modify an API
 ```powershell
-PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Set-AzApiManagementApi -Context $ApiMgmtContext -Name "EchoApi" -ServiceUrl "https://contoso.com/apis/echo" -Protocols @('https') -Description "Responds with what was sent" -Path "echo"
+$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Set-AzApiManagementApi -Context $ApiMgmtContext -Name "EchoApi" -ServiceUrl "https://contoso.com/apis/echo" -Protocols @('https') -Description "Responds with what was sent" -Path "echo"
 ```
 
 ### Example 2: Add an API to an existing ApiVersionSet
 ```powershell
-PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>$versionSet = New-AzApiManagementApiVersionSet -Context $context -Name "Echo API Version Set" -Scheme Segment -Description "version set sample"
-PS C:\>$api = Get-AzApiManagementApi -Context $ApiMgmtContext -ApiId "echo-api"
-PS C:\>$api.ApiVersionSetId = $versionSet.Id
-PS C:\>$api.ApiVersion = "v1"
-PS C:\>$api.ApiVersionSetDescription = $versionSet.Description
-PS C:\>Set-AzApiManagementApi -InputObject $api -PassThru
+$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+$versionSet = New-AzApiManagementApiVersionSet -Context $context -Name "Echo API Version Set" -Scheme Segment -Description "version set sample"
+$api = Get-AzApiManagementApi -Context $ApiMgmtContext -ApiId "echo-api"
+$api.ApiVersionSetId = $versionSet.Id
+$api.ApiVersion = "v1"
+$api.ApiVersionSetDescription = $versionSet.Description
+Set-AzApiManagementApi -InputObject $api -PassThru
 ```
 
 This example adds an API to an existing API Version Set
 
 ### Example 3: Change the Backend ServiceUrl where the API is pointing to
 ```powershell
-PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>$updatedApiServiceUrl = "http://newechoapi.cloudapp.net/updateapi"
-PS C:\>$updatedApi = Set-AzApiManagementApi -Context $ApiMgmtContext -ApiId $echoApiId -ServiceUrl $updatedApiServiceUrl
+$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+$updatedApiServiceUrl = "http://newechoapi.cloudapp.net/updateapi"
+$updatedApi = Set-AzApiManagementApi -Context $ApiMgmtContext -ApiId $echoApiId -ServiceUrl $updatedApiServiceUrl
 ```
 
 This example updates the ServiceUrl the `echo-api` is pointing to.
@@ -117,7 +117,7 @@ Accept wildcard characters: False
 ```
 
 ### -BearerTokenSendingMethod
-OpenId authorization server mechanism by which access token is passed to the API. Refer to http://tools.ietf.org/html/rfc6749#section-4. This parameter is optional. Default value is $null.
+OpenId authorization server mechanism by which access token is passed to the API. Refer to https://datatracker.ietf.org/doc/html/rfc6749#section-4. This parameter is optional. Default value is $null.
 
 ```yaml
 Type: System.String[]

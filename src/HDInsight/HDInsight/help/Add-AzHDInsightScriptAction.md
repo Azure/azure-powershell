@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
 ms.assetid: 8F0634BD-D817-4365-B6D1-924DC36AE4C9
-online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/add-azhdinsightscriptaction
+online version: https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightscriptaction
 schema: 2.0.0
 ---
 

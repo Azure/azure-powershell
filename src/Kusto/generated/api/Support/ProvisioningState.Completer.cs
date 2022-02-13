@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
-    /// <summary>Argument completer implementation for ProvisioningState.</summary>
+    /// <summary>The provisioned state of the resource.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.ProvisioningStateTypeConverter))]
     public partial struct ProvisioningState :
         System.Management.Automation.IArgumentCompleter

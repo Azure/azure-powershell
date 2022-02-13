@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 770093CD-CE2A-4076-8A28-F4DCFFB7A075
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/set-azresourcelock
+online version: https://docs.microsoft.com/powershell/module/az.resources/set-azresourcelock
 schema: 2.0.0
 ---
 

@@ -358,24 +358,24 @@ INPUTOBJECT <IDatabricksIdentity>: Identity Parameter
 
 PARAMETER <IWorkspace>: Information about workspace.
   Location <String>: The geo-location where the resource lives
-  AmlWorkspaceIdValue <String>: The value which should be used for this field.
-  CustomPrivateSubnetNameValue <String>: The value which should be used for this field.
-  CustomPublicSubnetNameValue <String>: The value which should be used for this field.
-  CustomVirtualNetworkIdValue <String>: The value which should be used for this field.
-  EnableNoPublicIPValue <Boolean>: The value which should be used for this field.
   ManagedResourceGroupId <String>: The managed resource group Id.
-  PrepareEncryption <Boolean>: The value which should be used for this field.
-  RequireInfrastructureEncryption <Boolean>: The value which should be used for this field.
-  SkuName <String>: The SKU name.
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
+  [AmlWorkspaceIdValue <String>]: The value which should be used for this field.
   [Authorization <IWorkspaceProviderAuthorization[]>]: The workspace provider authorizations.
     PrincipalId <String>: The provider's principal identifier. This is the identity that the provider will use to call ARM to manage the workspace resources.
     RoleDefinitionId <String>: The provider's role definition identifier. This role will define all the permissions that the provider must have on the workspace's container resource group. This role definition cannot have permission to delete the resource group.
+  [CustomPrivateSubnetNameValue <String>]: The value which should be used for this field.
+  [CustomPublicSubnetNameValue <String>]: The value which should be used for this field.
+  [CustomVirtualNetworkIdValue <String>]: The value which should be used for this field.
+  [EnableNoPublicIP <Boolean?>]: The value which should be used for this field.
   [EncryptionKeyName <String>]: The name of KeyVault key.
   [EncryptionKeySource <KeySource?>]: The encryption keySource (provider). Possible values (case-insensitive):  Default, Microsoft.Keyvault
   [EncryptionKeyVaultUri <String>]: The Uri of KeyVault.
   [EncryptionKeyVersion <String>]: The version of KeyVault key.
+  [PrepareEncryption <Boolean?>]: The value which should be used for this field.
+  [RequireInfrastructureEncryption <Boolean?>]: The value which should be used for this field.
+  [SkuName <String>]: The SKU name.
   [SkuTier <String>]: The SKU tier.
   [UiDefinitionUri <String>]: The blob URI where the UI definition file is located.
 .Link

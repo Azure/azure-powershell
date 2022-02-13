@@ -1,7 +1,7 @@
 ---
 Module Name: Az.Support
 Module Guid: 22d73af7-38c2-4bf6-b56f-4dc9db05d97a
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.support
+Download Help Link: https://docs.microsoft.com/powershell/module/az.support
 Help Version: 1.0.0.0
 Locale: en-US
 ---

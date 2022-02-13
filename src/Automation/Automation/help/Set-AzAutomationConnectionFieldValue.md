@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 ms.assetid: CA25260C-D0BF-4F9C-A846-9D9B6C48CE8A
-online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/set-azautomationconnectionfieldvalue
+online version: https://docs.microsoft.com/powershell/module/az.automation/set-azautomationconnectionfieldvalue
 schema: 2.0.0
 ---
 

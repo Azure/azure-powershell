@@ -26,7 +26,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
 
         /// <summary>Friendly Name to provide context on what this customization step does</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Origin(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.PropertyOrigin.Inherited)]
-        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateCustomizerInternal)__imageTemplateCustomizer).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateCustomizerInternal)__imageTemplateCustomizer).Name = value; }
+        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateCustomizerInternal)__imageTemplateCustomizer).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateCustomizerInternal)__imageTemplateCustomizer).Name = value ?? null; }
+
+        /// <summary>Backing field for <see cref="RunAsSystem" /> property.</summary>
+        private bool? _runAsSystem;
+
+        /// <summary>
+        /// If specified, the PowerShell script will be run with elevated privileges using the Local System user. Can only be true
+        /// when the runElevated field above is set to true.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Origin(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.PropertyOrigin.Owned)]
+        public bool? RunAsSystem { get => this._runAsSystem; set => this._runAsSystem = value; }
 
         /// <summary>Backing field for <see cref="RunElevated" /> property.</summary>
         private bool? _runElevated;
@@ -55,7 +65,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
         /// The type of customization tool you want to use on the Image. For example, "Shell" can be shell customizer
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Origin(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.PropertyOrigin.Inherited)]
-        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateCustomizerInternal)__imageTemplateCustomizer).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateCustomizerInternal)__imageTemplateCustomizer).Type = value; }
+        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateCustomizerInternal)__imageTemplateCustomizer).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateCustomizerInternal)__imageTemplateCustomizer).Type = value ; }
 
         /// <summary>Backing field for <see cref="ValidExitCode" /> property.</summary>
         private int[] _validExitCode;
@@ -96,6 +106,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
         SerializedName = @"inline",
         PossibleTypes = new [] { typeof(string) })]
         string[] Inline { get; set; }
+        /// <summary>
+        /// If specified, the PowerShell script will be run with elevated privileges using the Local System user. Can only be true
+        /// when the runElevated field above is set to true.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"If specified, the PowerShell script will be run with elevated privileges using the Local System user. Can only be true when the runElevated field above is set to true.",
+        SerializedName = @"runAsSystem",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? RunAsSystem { get; set; }
         /// <summary>If specified, the PowerShell script will be run with elevated privileges</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Info(
         Required = false,
@@ -139,6 +160,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
     {
         /// <summary>Array of PowerShell commands to execute</summary>
         string[] Inline { get; set; }
+        /// <summary>
+        /// If specified, the PowerShell script will be run with elevated privileges using the Local System user. Can only be true
+        /// when the runElevated field above is set to true.
+        /// </summary>
+        bool? RunAsSystem { get; set; }
         /// <summary>If specified, the PowerShell script will be run with elevated privileges</summary>
         bool? RunElevated { get; set; }
         /// <summary>

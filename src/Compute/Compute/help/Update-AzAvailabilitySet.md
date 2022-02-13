@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/update-azavailabilityset
+online version: https://docs.microsoft.com/powershell/module/az.compute/update-azavailabilityset
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ The **Update-AzAvailabilitySet** cmdlet updates an availability set.
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Get-AzAvailabilitySet -ResourceGroupName 'ResourceGroup01' -Name 'AvSet01' | Update-AzAvailabilitySet -Managed;
+```powershell
+Get-AzAvailabilitySet -ResourceGroupName 'ResourceGroup01' -Name 'AvSet01' | Update-AzAvailabilitySet -Managed;
 ```
 
 This command updates the availability set named 'AvSet01' in the resource group named 'ResourceGroup01' to a managed availability set.

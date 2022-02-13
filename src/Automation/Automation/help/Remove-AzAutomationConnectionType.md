@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 ms.assetid: 92B69069-0F98-428A-B05C-BBA09EBC0381
-online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/remove-azautomationconnectiontype
+online version: https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationconnectiontype
 schema: 2.0.0
 ---
 

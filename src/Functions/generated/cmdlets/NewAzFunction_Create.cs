@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Extensions;
+    using System;
 
     /// <summary>Description for Create function for web site, or a deployment slot.</summary>
     /// <remarks>

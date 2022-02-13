@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The User/Application doesn&apos;t have sufficient AAD graph permissions to perform the operation..
+        ///   Looks up a localized string similar to The User/Application doesn&apos;t have sufficient Microsoft Graph permissions to perform the operation..
         /// </summary>
         internal static string InSufficientGraphPermission {
             get {
@@ -484,11 +484,29 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No AD object was found with the parameters provided please ensure that the display name or GUID is written properly.
+        /// </summary>
+        internal static string NoADObjectFound {
+            get {
+                return ResourceManager.GetString("NoADObjectFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot find any deployments in resource group &apos;{0}&apos;..
         /// </summary>
         internal static string NoDeploymentWereFound {
             get {
                 return ResourceManager.GetString("NoDeploymentWereFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Call to Graph was unsuccesfull, this is likely due to insuficient permissions in Azure AD. Please ensure you have the correct set of permissions..
+        /// </summary>
+        internal static string NotAuthorizedInGraph {
+            get {
+                return ResourceManager.GetString("NotAuthorizedInGraph", resourceCulture);
             }
         }
         
@@ -948,6 +966,16 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static string ServicePrincipalDoesntExist {
             get {
                 return ResourceManager.GetString("ServicePrincipalDoesntExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The role assignment creation operation failed with the error: &apos;{0}&apos;
+        ///This means the role assignment was not able to be created. Please assign a role manually with help of the Service Principal Id.
+        /// </summary>
+        internal static string ServicePrincipalRoleAssignmentCreationFailed {
+            get {
+                return ResourceManager.GetString("ServicePrincipalRoleAssignmentCreationFailed", resourceCulture);
             }
         }
         

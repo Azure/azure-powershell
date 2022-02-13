@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/start-azstorageblobincrementalcopy
+online version: https://docs.microsoft.com/powershell/module/az.storage/start-azstorageblobincrementalcopy
 schema: 2.0.0
 ---
 
@@ -56,7 +56,7 @@ Start-AzStorageBlobIncrementalCopy -AbsoluteUri <String> -DestContainer <String>
 
 ## DESCRIPTION
 Start an Incremental copy operation from a Page blob snapshot to the specified destination Page blob.
-See more details of the feature in https://docs.microsoft.com/en-us/rest/api/storageservices/fileservices/incremental-copy-blob.
+See more details of the feature in https://docs.microsoft.com/rest/api/storageservices/fileservices/incremental-copy-blob.
 
 ## EXAMPLES
 

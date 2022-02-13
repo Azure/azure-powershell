@@ -1919,7 +1919,20 @@ function Certificate-CrudTest {
     $certThumbprint = '8E989652CABCF585ACBFCB9C2C91F1D174FDB3A2'
 
     $certId = getAssetName
+    $kvcertId = 'cert1234'
+    $secretIdentifier = 'https://jikangsdkkeyvault.vault.azure.net/secrets/sdkcert1'
+    $keyvault = New-AzApiManagementKeyVaultObject -SecretIdentifier $secretIdentifier
     try {
+        # Add Keyvault Certificate
+        $kvcert = New-AzApiManagementCertificate -Context $context -CertificateId $kvcertId -KeyVault $keyvault
+        Assert-AreEqual $kvcertId $kvcert.CertificateId
+        Assert-NotNull $kvcert.Subject
+        Assert-NotNull $kvcert.Thumbprint
+        Assert-AreEqual $secretIdentifier $kvcert.keyVault.SecretIdentifier
+
+        $refresh = Get-AzApiManagementCertificate -ResourceId $kvcert.Id | Sync-AzApiManagementKeyVaultSecret 
+        Assert-NotNull $refresh
+
         # upload certificate
         $cert = New-AzApiManagementCertificate -Context $context -CertificateId $certId -PfxFilePath $certPath -PfxPassword $certPassword
 
@@ -1950,21 +1963,33 @@ function Certificate-CrudTest {
 
         # list certificates
         $certificates = Get-AzApiManagementCertificate -Context $context
-        Assert-AreEqual 1 $certificates.Count
+        Assert-AreEqual 2 $certificates.Count
 
-        Assert-AreEqual $certId $certificates[0].CertificateId
-        Assert-AreEqual $certThumbprint $certificates[0].Thumbprint
-        Assert-AreEqual $certSubject $certificates[0].Subject
+        Assert-AreEqual $certId $certificates[1].CertificateId
+        Assert-AreEqual $certThumbprint $certificates[1].Thumbprint
+        Assert-AreEqual $certSubject $certificates[1].Subject
     }
     finally {
         # remove uploaded certificate
         $removed = Remove-AzApiManagementCertificate -Context $context -CertificateId $certId  -PassThru
         Assert-True { $removed }
 
+        $removed = Remove-AzApiManagementCertificate -Context $context -CertificateId $kvcertId  -PassThru
+        Assert-True { $removed }
+
         $cert = $null
         try {
             # check it was removed
             $cert = Get-AzApiManagementCertificate -Context $context -CertificateId $certId
+        }
+        catch {
+        }
+        Assert-Null $cert
+
+        $cert = $null
+        try {
+            # check it was removed
+            $cert = Get-AzApiManagementCertificate -Context $context -CertificateId $kvcertId
         }
         catch {
         }
@@ -1975,7 +2000,7 @@ function Certificate-CrudTest {
 
 <#
 .SYNOPSIS
-Tests CRUD operations of Certificate.
+Tests CRUD operations of Cache.
 #>
 function Cache-CrudTest {
     Param($resourceGroupName, $serviceName)
@@ -2005,6 +2030,7 @@ function Cache-CrudTest {
         Assert-AreEqual $cacheId $cache.CacheId
         Assert-NotNull $cache.ConnectionString
         Assert-AreEqual $cacheDescription $cache.Description
+        Assert-NotNull $cache.UseFromLocation
 
 		# get cache by Id
 		$cache = Get-AzApiManagementCache -ResourceId $cache.Id
@@ -2119,7 +2145,7 @@ function AuthorizationServer-CrudTest {
         Assert-AreEqual $resourceOwnerUsername $server.ResourceOwnerUsername
         Assert-AreEqual $supportState $server.SupportState
         Assert-AreEqual $tokenBodyParameters.Count $server.TokenBodyParameters.Count
-
+   
         $server = Get-AzApiManagementAuthorizationServer -Context $context -ServerId $serverId
 
         Assert-AreEqual $serverId $server.ServerId
@@ -2143,8 +2169,8 @@ function AuthorizationServer-CrudTest {
         Assert-AreEqual $clientAuthenticationMethods.Count $server.ClientAuthenticationMethods.Count
         Assert-AreEqual $clientAuthenticationMethods[0] $server.ClientAuthenticationMethods[0]
         Assert-Null $server.ClientSecret
-        Assert-AreEqual $resourceOwnerPassword $server.ResourceOwnerPassword
-        Assert-AreEqual $resourceOwnerUsername $server.ResourceOwnerUsername
+        #Assert-AreEqual $resourceOwnerPassword $server.ResourceOwnerPassword
+        #Assert-AreEqual $resourceOwnerUsername $server.ResourceOwnerUsername
         Assert-AreEqual $supportState $server.SupportState
         Assert-AreEqual $tokenBodyParameters.Count $server.TokenBodyParameters.Count
 
@@ -2478,6 +2504,8 @@ function Properties-CrudTest {
     # create non-Secret Property
     $namedValueId = getAssetName
     $secretNamedValueId = $null
+    $secretIdentifier = 'https://jikangsdkkeyvault.vault.azure.net/secrets/sdkkv'
+    $keyvault = New-AzApiManagementKeyVaultObject -SecretIdentifier $secretIdentifier
     try {
         $propertyName = getAssetName
         $propertyValue = getAssetName
@@ -2493,6 +2521,20 @@ function Properties-CrudTest {
 
         $property = Get-AzApiManagementNamedValueSecretValue -Context $context -NamedValueId $namedValueId
         Assert-AreEqual $propertyValue $property.Value
+
+        #create KeyVault Property
+        $keyVaultNamedValueId = getAssetName
+        $keyVaultNamedValueName = getAssetName
+        $keyVaultNamedValue = New-AzApiManagementNamedValue -Context $context -NamedValueId $keyVaultNamedValueId -Name $keyVaultNamedValueName -keyVault $keyvault -Secret
+
+        Assert-NotNull $keyVaultNamedValue
+        Assert-AreEqual $keyVaultNamedValueId $keyVaultNamedValue.NamedValueId
+        Assert-AreEqual $keyVaultNamedValueName $keyVaultNamedValue.Name
+        Assert-Null $keyVaultNamedValue.Value
+        Assert-NotNull $keyVaultNamedValue.KeyVault.SecretIdentifier
+
+        $refresh = Sync-AzApiManagementKeyVaultSecret -ResourceId $keyVaultNamedValue.Id
+        Assert-NotNull $refresh
 
         #create Secret Property
         $secretNamedValueId = getAssetName
@@ -2512,8 +2554,8 @@ function Properties-CrudTest {
         $properties = Get-AzApiManagementNamedValue -Context $context
 
         Assert-NotNull $properties
-        # there should be 2 properties
-        Assert-AreEqual 2 $properties.Count
+        # there should be 3 properties
+        Assert-AreEqual 3 $properties.Count
 
         # get properties by name
         $properties = $null
@@ -2521,7 +2563,7 @@ function Properties-CrudTest {
 		
         Assert-NotNull $properties
         # both the properties created start with 'ps'
-        Assert-AreEqual 2 $properties.Count
+        Assert-AreEqual 3 $properties.Count
 
         # get properties by tag
         $properties = $null
@@ -2609,6 +2651,20 @@ function Properties-CrudTest {
         }
         catch {
         }
+
+        #remove kv NamedValue
+        $removed = Remove-AzApiManagementNamedValue -Context $context -NamedValueId $keyVaultNamedValueId -PassThru
+        Assert-True { $removed }
+
+        $property = $null
+        try {
+            # check it was removed
+            $property = Get-AzApiManagementNamedValue -Context $context -$keyVaultNamedValueId $namedValueId
+        }
+        catch {
+        }
+
+        Assert-Null $property
     }
 }
 
@@ -2626,6 +2682,9 @@ function TenantGitConfiguration-CrudTest {
 
         Assert-NotNull $tenantGitAccess
         Assert-AreEqual $true $tenantGitAccess.Enabled
+        Assert-AreEqual "git" $tenantGitAccess.id
+        Assert-Null $tenantGitAccess.PrimaryKey
+        Assert-Null $tenantGitAccess.SecondaryKey
 
         #get Tenant Sync state
         $tenantSyncState = Get-AzApiManagementTenantSyncState -Context $context

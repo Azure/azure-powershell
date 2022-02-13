@@ -1,0 +1,115 @@
+{
+  "New-AzMapsAccountKey+[NoContext]+RegenerateExpanded+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-2l4gq1/providers/Microsoft.Maps/accounts/mapsim1yk3/regenerateKey?api-version=2021-02-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-2l4gq1/providers/Microsoft.Maps/accounts/mapsim1yk3/regenerateKey?api-version=2021-02-01",
+      "Content": "{\r\n  \"keyType\": \"primary\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "28" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-request-id": [ "3f6d9eca-4658-438d-8ab7-fc2cf8779195" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "7be99edb-039c-47a9-b3a9-c66b37cf0baf" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20210623T070359Z:7be99edb-039c-47a9-b3a9-c66b37cf0baf" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 23 Jun 2021 07:03:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "254" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"primaryKey\": \"U8woU2HbswNew9lLz3AduH9GkE7AW-gdo3rob8JXEI4\",\r\n  \"secondaryKey\": \"9ihScQqbMa7M6jsYW0olJ2fUY8i_ZT9uHHtDX1s6-jU\",\r\n  \"primaryKeyLastUpdated\": \"2021-06-23T07:03:59.586605Z\",\r\n  \"secondaryKeyLastUpdated\": \"2021-06-23T07:03:38.9320732Z\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzMapsAccountKey+[NoContext]+RegenerateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-2l4gq1/providers/Microsoft.Maps/accounts/mapsim1yk3?api-version=2021-02-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-2l4gq1/providers/Microsoft.Maps/accounts/mapsim1yk3?api-version=2021-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "19" ],
+        "x-ms-client-request-id": [ "44896fff-07bb-4294-927c-3d3af2161e97" ],
+        "CommandName": [ "Get-AzMapsAccount" ],
+        "FullCommandName": [ "Get-AzMapsAccount_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11967" ],
+        "x-ms-request-id": [ "c77c374b-d6c3-4528-8387-736e05e8f263" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "94647682-4bb0-4e66-93f3-55497942df17" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20210623T070400Z:94647682-4bb0-4e66-93f3-55497942df17" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 23 Jun 2021 07:03:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "469" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"kind\": \"Gen1\",\r\n  \"type\": \"Microsoft.Maps/accounts\",\r\n  \"sku\": {\r\n    \"name\": \"S1\",\r\n    \"tier\": \"Standard\"\r\n  },\r\n  \"properties\": {\r\n    \"uniqueId\": \"8e667b11-ea54-41a5-a4c0-c0fa98db5da8\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"disableLocalAuth\": false\r\n  },\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-2l4gq1/providers/Microsoft.Maps/accounts/mapsim1yk3\",\r\n  \"name\": \"mapsim1yk3\",\r\n  \"location\": \"westcentralus\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzMapsAccountKey+[NoContext]+RegenerateViaIdentityExpanded+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-2l4gq1/providers/Microsoft.Maps/accounts/mapsim1yk3/regenerateKey?api-version=2021-02-01+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-2l4gq1/providers/Microsoft.Maps/accounts/mapsim1yk3/regenerateKey?api-version=2021-02-01",
+      "Content": "{\r\n  \"keyType\": \"primary\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "28" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-request-id": [ "29bb6987-57b1-4452-b2ef-1de2e3bf6eef" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "fbb962c3-08e8-4343-8c2a-3aa92b111a9d" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20210623T070400Z:fbb962c3-08e8-4343-8c2a-3aa92b111a9d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 23 Jun 2021 07:03:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "255" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"primaryKey\": \"wzlOJaLPv2VhX8e9sJ4gbAvUOYWJTdPpeYjBquyRvpo\",\r\n  \"secondaryKey\": \"9ihScQqbMa7M6jsYW0olJ2fUY8i_ZT9uHHtDX1s6-jU\",\r\n  \"primaryKeyLastUpdated\": \"2021-06-23T07:04:00.4008237Z\",\r\n  \"secondaryKeyLastUpdated\": \"2021-06-23T07:03:38.9320732Z\"\r\n}",
+      "isContentBase64": false
+    }
+  }
+}

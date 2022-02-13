@@ -16,7 +16,6 @@ using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.Support.Common;
 using Microsoft.Azure.Commands.Support.Helpers;
 using Microsoft.Azure.Commands.Support.Models;
-using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Management.Support;
 using Microsoft.Azure.Management.Support.Models;
 using Microsoft.Azure.PowerShell.Cmdlets.Support.ArgumentCompleters;

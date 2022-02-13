@@ -19,6 +19,28 @@
 -->
 ## Upcoming Release
 
+## Version 2.2.3
+* Fixed username and password issue in `Import-AzContainerRegistryImage` [#14971]
+* Fixed data plane operations (repository, tag, manifest) failed cross registry in single Powershell session [#14849]
+
+## Version 2.2.2
+* Fixed bug in `Get-AzContainerRegistryManifest` showing incorrect image name 
+
+## Version 2.2.1
+* Fixed authentication for `Connect-AzContainerRegistry`
+
+## Version 2.2.0
+* Added cmdlets to supported repository, manifest, and tag operations:
+    - `Get-AzContainerRegistryRepository`
+    - `Update-AzContainerRegistryRepository`
+    - `Remove-AzContainerRegistryRepository`
+    - `Get-AzContainerRegistryManifest`
+    - `Update-AzContainerRegistryManifest`
+    - `Remove-AzContainerRegistryManifest`
+    - `Get-AzContainerRegistryTag`
+    - `Update-AzContainerRegistryTag`
+    - `Remove-AzContainerRegistryTag`
+
 ## Version 2.1.0
 * Supported parameter `Name` for and value from pipeline input for `Get-AzContainerRegistryUsage` [#13605]
 * Polished exceptions for `Connect-AzContainerRegistry`

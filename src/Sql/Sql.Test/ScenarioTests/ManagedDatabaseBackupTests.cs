@@ -21,6 +21,9 @@ using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
+    /// <summary>
+    /// These tests depends on the existing resources. Please contact MDCSSQLCustomerExp@microsoft.com for instructions.
+    /// </summary>
     public class ManagedDatabaseBackupTests : SqlTestsBase
     {
         protected override void SetupManagementClients(RestTestFramework.MockContext context)
@@ -53,21 +56,21 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-ManagedDeletedDatabaseShortTermRetentionPolicy");
         }
 
-        [Fact]
+        [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedInstanceLongTermRetentionPolicy()
         {
             RunPowerShellTest("Test-ManagedInstanceLongTermRetentionPolicy");
         }
 
-        [Fact]
+        [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedInstanceLongTermRetentionBackup()
         {
             RunPowerShellTest("Test-ManagedInstanceLongTermRetentionBackup");
         }
 
-        [Fact]
+        [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedInstanceLongTermRetentionResourceGroupBasedBackup()
         {

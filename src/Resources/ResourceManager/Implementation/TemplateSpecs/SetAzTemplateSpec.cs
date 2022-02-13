@@ -12,8 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.ResourceManager.Models;
@@ -137,9 +139,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         [Alias("InputFile")]
         [Parameter(Mandatory = true, ParameterSetName = UpdateVersionByNameFromJsonFileParameterSet, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The file path to the local Azure Resource Manager template JSON file.")]
+            HelpMessage = "The file path to the local Azure Resource Manager template JSON/Bicep file.")]
         [Parameter(Mandatory = true, ParameterSetName = UpdateVersionByIdFromJsonFileParameterSet, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The file path to the local Azure Resource Manager template JSON file.")]
+            HelpMessage = "The file path to the local Azure Resource Manager template JSON/Bicep file.")]
         [ValidateNotNullOrEmpty]
         public string TemplateFile { get; set; }
 
@@ -154,6 +156,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public string VersionDescription { get; set; }
 
+
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "UIForm for the templatespec resource")]
+        public string UIFormDefinitionFile { get; set; }
+
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "UIForm for the templatespec resource")]
+        public string UIFormDefinitionString { get; set; }
         #endregion
 
         #region Cmdlet Overrides
@@ -190,8 +202,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                                     string.Format(ProjectResources.InvalidFilePath, TemplateFile)
                                 );
                             }
+                            if (BicepUtility.IsBicepFile(TemplateFile))
+                            {
+                                filePath = BicepUtility.BuildFile(this.ResolvePath(TemplateFile), this.WriteVerbose, this.WriteWarning);
+                            }
 
-                            packagedTemplate = TemplateSpecPackagingEngine.Pack(filePath);
+                            // Note: We set uiFormDefinitionFilePath to null below because we process the UIFormDefinition
+                            // specified by the cmdlet parameters later within this method...
+                            packagedTemplate = TemplateSpecPackagingEngine.Pack(filePath, uiFormDefinitionFilePath: null);
                             break;
                         case UpdateVersionByIdFromJsonParameterSet:
                         case UpdateVersionByNameFromJsonParameterSet:
@@ -233,7 +251,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                             packagedTemplate = new PackagedTemplate
                             {
                                 RootTemplate = JObject.Parse(TemplateJson),
-                                Artifacts = new TemplateSpecArtifact[0]
+                                Artifacts = new LinkedTemplateArtifact[0]
                             };
                             break;
                         default:
@@ -243,6 +261,23 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     if (!ShouldProcess($"{Name}/versions/{Version}", "Create or Update"))
                     {
                         return;
+                    }
+
+                    if (!string.IsNullOrWhiteSpace(UIFormDefinitionFile))
+                    {
+                        string UIFormFilePath = this.TryResolvePath(UIFormDefinitionFile);
+                        if (!File.Exists(UIFormFilePath))
+                        {
+                            throw new PSInvalidOperationException(
+                                string.Format(ProjectResources.InvalidFilePath, UIFormDefinitionFile)
+                            );
+                        }
+                        string UIFormJson = FileUtilities.DataStore.ReadFileAsText(UIFormDefinitionFile);
+                        packagedTemplate.UIFormDefinition = JObject.Parse(UIFormJson);
+                    }
+                    else if (!string.IsNullOrWhiteSpace(UIFormDefinitionString))
+                    {
+                        packagedTemplate.UIFormDefinition = JObject.Parse(UIFormDefinitionString);
                     }
 
                     var templateSpecVersion = TemplateSpecsSdkClient.CreateOrUpdateTemplateSpecVersion(

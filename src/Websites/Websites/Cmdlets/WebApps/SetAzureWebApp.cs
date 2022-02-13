@@ -236,14 +236,16 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                         if (ContainerRegistryUser != string.Empty)
                         {
                             appSettings[CmdletHelpers.DockerRegistryServerUserName] = ContainerRegistryUser;
-                        }                        
+                        }
                     }
-
-                    appSettings.Remove(CmdletHelpers.DockerRegistryServerPassword);
 
                     if (ContainerRegistryPassword != null)
                     {
-                        appSettings[CmdletHelpers.DockerRegistryServerPassword] = ContainerRegistryPassword.ConvertToString();
+                        appSettings.Remove(CmdletHelpers.DockerRegistryServerPassword);
+                        if (ContainerRegistryPassword.ConvertToString() != string.Empty)
+                        {
+                            appSettings[CmdletHelpers.DockerRegistryServerPassword] = ContainerRegistryPassword.ConvertToString();
+                        }
                     }
 
                     if (parameters.Contains("EnableContainerContinuousDeployment"))

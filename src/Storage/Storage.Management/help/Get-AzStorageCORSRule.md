@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 5FA8A3F3-F52C-40BC-94C2-4CDA00C6F32F
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/get-azstoragecorsrule
+online version: https://docs.microsoft.com/powershell/module/az.storage/get-azstoragecorsrule
 schema: 2.0.0
 ---
 

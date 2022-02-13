@@ -13,6 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Management.Automation.Language;
+using System.Management.Automation.Subsystem.Prediction;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
 {
@@ -22,9 +26,24 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
     sealed class MockAzPredictorService : AzPredictorService
     {
         /// <summary>
-        /// Gets or sets if a predictions is requested.
+        /// Gets or sets the value to indicate whether it throws exception in it's implementation.
         /// </summary>
-        public bool IsPredictionRequested { get; set; }
+        public bool ThrowException { get; set; }
+
+        /// <summary>
+        /// Gets or sets the commands in history to request prediction for.
+        /// </summary>
+        public IEnumerable<string> Commands { get; set; }
+
+        /// <summary>
+        /// Gets or sets the commands that's recorded in history.
+        /// </summary>
+        public CommandAst History { get; set; }
+
+        /// <summary>
+        /// The task that a test can wait on until RequestPredictionsAsync is complete.
+        /// </summary>
+        public TaskCompletionSource<bool?> RequestPredictionTaskCompletionSource { get; private set; }
 
         /// <summary>
         /// Constructs a new instance of <see cref="MockAzPredictorService"/>
@@ -32,8 +51,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
         /// <param name="history">The history that the suggestion is for</param>
         /// <param name="suggestions">The suggestions collection</param>
         /// <param name="commands">The commands collection</param>
-        public MockAzPredictorService(string history, IList<string> suggestions, IList<string> commands)
+        /// <param name="azContext">The Az context which this module runs in.</param>
+        public MockAzPredictorService(string history, IList<PredictiveCommand> suggestions, IList<PredictiveCommand> commands, IAzContext azContext) : base(azContext)
         {
+            ResetRequestPredictionTask();
             if (history != null)
             {
                 SetCommandToRequestPrediction(history);
@@ -51,15 +72,49 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
         }
 
         /// <inheritdoc/>
-        public override void RequestPredictions(IEnumerable<string> history)
+        public override Task<bool?> RequestPredictionsAsync(IEnumerable<string> commands, string requestId, CancellationToken cancellationToken)
         {
-            this.IsPredictionRequested = true;
+            if (ThrowException)
+            {
+                RequestPredictionTaskCompletionSource.TrySetResult(false);
+                var e = new MockTestException("Test Exception");
+                throw new ServiceRequestException(e.Message, e)
+                {
+                    IsRequestSent = false,
+                };
+            }
+
+            Commands = commands;
+            RequestPredictionTaskCompletionSource.TrySetResult(true);
+            return RequestPredictionTaskCompletionSource.Task;
+        }
+
+        /// <inheritdoc/>
+        public override CommandLineSuggestion GetSuggestion(PredictionContext context, int suggestionCount, int maxAllowedCommandDuplicate, CancellationToken cancellationToken)
+        {
+            if (ThrowException)
+            {
+                throw new MockTestException("Test Exception");
+            }
+
+            return base.GetSuggestion(context, suggestionCount, maxAllowedCommandDuplicate, cancellationToken);
         }
 
         /// <inheritdoc/>
         protected override void RequestAllPredictiveCommands()
         {
             // Do nothing since we've set the command and suggestion predictors.
+        }
+
+        /// <inheritdoc/>
+        public override void RecordHistory(CommandAst history)
+        {
+            History = history;
+        }
+
+        public void ResetRequestPredictionTask()
+        {
+            RequestPredictionTaskCompletionSource = new TaskCompletionSource<bool?>();
         }
     }
 }

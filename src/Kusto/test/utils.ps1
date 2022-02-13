@@ -10,10 +10,11 @@ function setupEnv() {
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
+	Write-Host "sub id = " $env.SubscriptionId
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
     # Generate some random strings for use in the test.
-    $rstr1 = RandomString -allChars $false -len 6
+    $rstr1 = RandomString -allChars $false -len 6	
     $rstr2 = RandomString -allChars $false -len 6
     $rstr3 = RandomString -allChars $false -len 6
     # Follow random strings will be used in the test directly, so add it to $env
@@ -34,37 +35,6 @@ function setupEnv() {
     $null = $env.Add("resourceGroupName", $resourceGroupName)
     New-AzResourceGroup -Name $resourceGroupName -Location $env.location
 
-    # Create Event Hub
-    $eventhubNSName = "eventhubns" + $rstr1
-    $eventhubName = "eventhub" + $rstr1
-    Write-Host "Start to create Event Hub NS" $eventhubNSName
-    $null = $env.Add("eventhubNSName", $eventhubNSName)
-    $null = $env.Add("eventhubName", $eventhubName)
-    $eventhubNSParams = Get-Content .\test\deployment-templates\event-hub\parameters.json | ConvertFrom-Json
-    $eventhubNSParams.parameters.namespaces_sdkpseventhubns_name.value = $eventhubNSName
-    $eventhubNSParams.parameters.eventhub_name.value = $eventhubName
-    set-content -Path .\test\deployment-templates\event-hub\parameters.json -Value (ConvertTo-Json $eventhubNSParams)
-    New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\event-hub\template.json -TemplateParameterFile .\test\deployment-templates\event-hub\parameters.json -Name eventhub -ResourceGroupName $resourceGroupName
-
-    # Create Event Grid
-    $eventhubNSGName = "eventhubnsgrid" + $rstr2
-    $eventhubGName = "eventgrid" + $rstr2
-    Write-Host "Start to create Event Grid NS" $eventhubNSGName
-    $null = $env.Add("eventhubNSNameForEventGrid", $eventhubNSGName)
-    $null = $env.Add("eventhubNameForEventGrid", $eventhubGName)
-    $eventhubNSGParams = Get-Content .\test\deployment-templates\event-grid\parameters.json | ConvertFrom-Json
-    $eventhubNSGParams.parameters.namespaces_sdkpseventhubnsg_name.value = $eventhubNSGName
-    $eventhubNSGParams.parameters.eventhubg_name.value = $eventhubGName
-    set-content -Path .\test\deployment-templates\event-grid\parameters.json -Value (ConvertTo-Json $eventhubNSGParams)
-    New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\event-grid\template.json -TemplateParameterFile .\test\deployment-templates\event-grid\parameters.json -Name eventgrid -ResourceGroupName $resourceGroupName
-
-    # IoT Hub must be created manually, the name is saved in env.json under iothubName
-    # Create IoT Hub
-    $iothubName = "iothub" + $rstr1
-    Write-Host "Start to create IoT Hub" $iothubName
-    $null = $env.Add("iothubName", $iothubName)
-    # New-AzIotHub -ResourceGroupName $resourceGroupName -Name $iothubName -SkuName S1 -Units 1 -Location $env.location
-
     # Create Storage Account
     $storageName = "storage" + $rstr1
     Write-Host "Start to create Storage Account" $storageName
@@ -73,9 +43,11 @@ function setupEnv() {
     $storageParams.parameters.storageAccounts_sdkpsstorage_name.value = $storageName
     set-content -Path .\test\deployment-templates\storage-account\parameters.json -Value (ConvertTo-Json $storageParams)
     New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\storage-account\template.json -TemplateParameterFile .\test\deployment-templates\storage-account\parameters.json -Name storage -ResourceGroupName $resourceGroupName
-
-    # Deploy cluster + database + dataconnections for test
-    $SubscriptionId = $env.SubscriptionId
+	
+	$SubscriptionId = $env.SubscriptionId
+	Write-Host "sub id = " $SubscriptionId
+    # Deploy cluster + database 
+    
     $clusterName = "testcluster" + $rstr1
     $databaseName = "testdatabase" + $rstr1
     $dataConnectionName = "testdataconnection" + $rstr1
@@ -88,26 +60,13 @@ function setupEnv() {
     Write-Host "Start to create a database" $databaseName
     $softDeletePeriodInDaysUpdated = New-TimeSpan -Days 4
     $hotCachePeriodInDaysUpdated = New-TimeSpan -Days 2
-    New-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName -Kind ReadWrite -Location $env.location -SoftDeletePeriod $softDeletePeriodInDaysUpdated -HotCachePeriod $hotCachePeriodInDaysUpdated
+    New-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName -Kind ReadWrite -Location $env.location -SoftDeletePeriod $softDeletePeriodInDaysUpdated -HotCachePeriod $hotCachePeriodInDaysUpdated -Subscription $SubscriptionId
 
     # Note, for *Principal* tests, AzADApplication was created, see principalAssignmentName, principalId and principalAssignmentName1, principalId1 for details
     New-AzKustoClusterPrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -PrincipalAssignmentName $env.principalAssignmentName -PrincipalId $env.principalId -PrincipalType $env.principalType -Role $env.principalRole
     New-AzKustoDatabasePrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -PrincipalAssignmentName $env.principalAssignmentName -DatabaseName $databaseName -PrincipalId $env.principalId -PrincipalType $env.principalType -Role $env.databasePrincipalRole
 
-    # Create data connections:
-    $dataConnectionName = $env.dataConnectionName
-    $eventHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventhubNSName/eventhubs/$eventhubName"
-    New-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -Location $env.location -Kind "EventHub" -EventHubResourceId $eventHubResourceId -ConsumerGroup '$Default' -Compression "None"
-    
-    $dataConnectionName = $env.dataConnectionName + "g"
-    $eventHubResourceId = "/subscriptions/$SubscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventhubNSGName/eventhubs/$eventhubGName"
-    $storageAccountResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageName"
-    New-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -location $env.location -Kind "EventGrid" -EventHubResourceId $eventHubResourceId -StorageAccountResourceId $storageAccountResourceId -ConsumerGroup '$Default'
-    
-    $dataConnectionName = $env.dataConnectionName + "h"
-    $iotHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Devices/IotHubs/$iothubName"
-    New-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -location $env.location -Kind "IotHub" -IotHubResourceId $iotHubResourceId -SharedAccessPolicyName $env.iothubSharedAccessPolicyName -ConsumerGroup '$Default'
-
+   
     # Deploy follower cluster for test
     $followerClusterName = "testfcluster" + $rstr2
     $attachedDatabaseConfigurationName = "testdbconf" + $rstr2
@@ -124,6 +83,18 @@ function setupEnv() {
     $null = $env.Add("PlainClusterName", $clusterName)
     New-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Location $env.location -SkuName $env.skuName -SkuTier $env.skuTier
 
+    # Adding constans for data-connetction tests
+    $env.Add("locationfordc","Australia Central")
+    $env.Add("resourceGroupNamefordc","test-clients-rg")
+    $env.Add("clusterNamefordc","eventgridclienttest")
+    $env.Add("databaseNamefordc","databasetest")
+    $env.Add("iothubNamefordc","test-clients-iot")
+    $env.Add("storageNamefordc","testclients")
+    $env.Add("eventhubNSNameForEventGridfordc","testclientsns")
+    $env.Add("eventhubNameForEventGridfordc","testclientseg")
+    $env.Add("eventhubNamefordc","testclientseh")
+    $env.Add("eventhubNSNamefordc","testclientsns")
+
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
@@ -134,5 +105,5 @@ function setupEnv() {
 function cleanupEnv() {
     # Clean resources you create for testing
     # Removing resourcegroup will clean all the resources created for testing.
-    Remove-AzResourceGroup -Name $env.resourceGroupName
+    # Remove-AzResourceGroup -Name $env.resourceGroupName
 }

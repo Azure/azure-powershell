@@ -59,9 +59,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031
                 return;
             }
             {_networkProfile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.Json.JsonObject>("networkProfile"), out var __jsonNetworkProfile) ? Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.NetworkProfile.FromJson(__jsonNetworkProfile) : NetworkProfile;}
-            {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)ProvisioningState;}
             {_stampId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.Json.JsonString>("stampId"), out var __jsonStampId) ? (string)__jsonStampId : (string)StampId;}
             {_statusMessage = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.Json.JsonString>("statusMessage"), out var __jsonStatusMessage) ? (string)__jsonStatusMessage : (string)StatusMessage;}
+            {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)ProvisioningState;}
             AfterFromJson(json);
         }
 
@@ -97,14 +97,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031
                 return container;
             }
             AddIf( null != this._networkProfile ? (Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.Json.JsonNode) this._networkProfile.ToJson(null,serializationMode) : null, "networkProfile" ,container.Add );
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );
-            }
             AddIf( null != (((object)this._stampId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.Json.JsonString(this._stampId.ToString()) : null, "stampId" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SerializationMode.IncludeReadOnly))
             {
                 AddIf( null != (((object)this._statusMessage)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.Json.JsonString(this._statusMessage.ToString()) : null, "statusMessage" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );
             }
             AfterToJson(ref container);
             return container;

@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
 {
 
-    /// <summary>TypeConverter implementation for OperationOrigin.</summary>
+    /// <summary>The intended executor of the operation.</summary>
     public partial class OperationOriginTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

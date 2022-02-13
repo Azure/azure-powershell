@@ -30,16 +30,18 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using CM = Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.Compute.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssConfig", SupportsShouldProcess = true, DefaultParameterSetName = "DefaultParameterSet")]
     [OutputType(typeof(PSVirtualMachineScaleSet))]
-    [GenericBreakingChange("This command will no longer always create the UpgradePolicy property in the PSVirtualMachineScaleSet object" +
-        " after the next major release. Please ensure you pass in the UpgradePolicyMode, RollingUpgradePolicy, or EnableAutomaticOSUpgrade parameter" +
-        " if you require this to be populated.")]
     public partial class NewAzureRmVmssConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
+    
+        private const string ExplicitIdentityParameterSet = "ExplicitIdentityParameterSet",
+                             DefaultParameterSetName = "DefaultParameterSet";
         [Parameter(
             Mandatory = false,
             Position = 0,
@@ -52,6 +54,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         [LocationCompleter("Microsoft.Compute/virtualMachineScaleSets")]
         public string Location { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string EdgeZone { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -203,6 +210,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+        public SwitchParameter EnableSpotRestore { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string SpotRestoreTimeout { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
         [PSArgumentCompleter("Deallocate", "Delete")]
         public string EvictionPolicy { get; set; }
 
@@ -234,20 +251,39 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = true,
-            ParameterSetName = "ExplicitIdentityParameterSet",
+            ParameterSetName = ExplicitIdentityParameterSet,
             ValueFromPipelineByPropertyName = true)]
         public ResourceIdentityType? IdentityType { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = "ExplicitIdentityParameterSet",
+            ParameterSetName = ExplicitIdentityParameterSet,
             ValueFromPipelineByPropertyName = true)]
         public string[] IdentityId { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        public SwitchParameter EncryptionAtHost { get; set; } 
+        public SwitchParameter EncryptionAtHost { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the orchestration mode for the virtual machine scale set.")]
+        [PSArgumentCompleter("Uniform", "Flexible")]
+        public string OrchestrationMode { get; set; }
+        
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Id of the capacity reservation Group that is used to allocate.")]
+        [ResourceIdCompleter("Microsoft.Compute/capacityReservationGroups")]
+        public string CapacityReservationGroupId { get; set; }
+        
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "UserData for the VM, which will be Base64 encoded. Customer should not pass any secrets in here.",
+            ValueFromPipelineByPropertyName = true)]
+        public string UserData { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -285,6 +321,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             // Identity
             VirtualMachineScaleSetIdentity vIdentity = null;
+
+            // ExtendedLocation
+            CM.PSExtendedLocation vExtendedLocation = null;
 
             if (this.IsParameterBound(c => c.SkuName))
             {
@@ -402,6 +441,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vVirtualMachineProfile.SecurityProfile.EncryptionAtHost = this.EncryptionAtHost;
             }
 
+            if (this.IsParameterBound(c=> c.CapacityReservationGroupId))
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.CapacityReservation == null)
+                {
+                    vVirtualMachineProfile.CapacityReservation = new CapacityReservationProfile();
+                }
+                vVirtualMachineProfile.CapacityReservation.CapacityReservationGroup = new SubResource(this.CapacityReservationGroupId);
+            }
+
             if (this.IsParameterBound(c => c.AutomaticRepairGracePeriod))
             {
                 if (vAutomaticRepairsPolicy == null)
@@ -516,6 +568,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vVirtualMachineProfile.Priority = this.Priority;
             }
 
+
             if (this.IsParameterBound(c => c.EvictionPolicy))
             {
                 if (vVirtualMachineProfile == null)
@@ -622,6 +675,26 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
             }
 
+            if (this.IsParameterBound(c => c.EdgeZone))
+            {
+                vExtendedLocation = new CM.PSExtendedLocation(this.EdgeZone);
+            }
+            
+            if (this.IsParameterBound(c => c.UserData))
+            {
+                if (!ValidateBase64EncodedString.ValidateStringIsBase64Encoded(this.UserData))
+                {
+                    this.UserData = ValidateBase64EncodedString.EncodeStringToBase64(this.UserData);
+                    this.WriteInformation(ValidateBase64EncodedString.UserDataEncodeNotification, new string[] { "PSHOST" });
+                }
+
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                vVirtualMachineProfile.UserData = this.UserData;
+            }
+
             var vVirtualMachineScaleSet = new PSVirtualMachineScaleSet
             {
                 Overprovision = this.IsParameterBound(c => c.Overprovision) ? this.Overprovision : (bool?)null,
@@ -631,6 +704,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 PlatformFaultDomainCount = this.IsParameterBound(c => c.PlatformFaultDomainCount) ? this.PlatformFaultDomainCount : (int?)null,
                 Zones = this.IsParameterBound(c => c.Zone) ? this.Zone : null,
                 Location = this.IsParameterBound(c => c.Location) ? this.Location : null,
+                ExtendedLocation = vExtendedLocation,
                 Tags = this.IsParameterBound(c => c.Tag) ? this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null,
                 Sku = vSku,
                 Plan = vPlan,
@@ -641,6 +715,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 AdditionalCapabilities = vAdditionalCapabilities,
                 ScaleInPolicy = vScaleInPolicy,
                 Identity = vIdentity,
+                OrchestrationMode = this.IsParameterBound(c => c.OrchestrationMode) ? this.OrchestrationMode : null,
+                SpotRestorePolicy = this.IsParameterBound(c => c.EnableSpotRestore) ? new SpotRestorePolicy(true, this.SpotRestoreTimeout) : null
             };
 
             WriteObject(vVirtualMachineScaleSet);

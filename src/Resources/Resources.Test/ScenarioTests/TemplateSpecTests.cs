@@ -115,5 +115,12 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-SetRemovesTagsIfTagsExplicitlyEmpty");
         }
 
+        [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SetTemplateSpec_TestErrorType()
+        {
+            TestRunner.RunTestScript("Test-TemplateSpecErrorType");
+        }
+
     }
 }

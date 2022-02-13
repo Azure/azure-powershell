@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
-    /// <summary>TypeConverter implementation for AzureScaleType.</summary>
+    /// <summary>Scale type.</summary>
     public partial class AzureScaleTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

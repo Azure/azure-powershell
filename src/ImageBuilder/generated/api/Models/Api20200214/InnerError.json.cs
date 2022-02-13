@@ -70,8 +70,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
             {
                 return;
             }
-            {_errorDetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonString>("errorDetail"), out var __jsonErrorDetail) ? (string)__jsonErrorDetail : (string)ErrorDetail;}
             {_exceptionType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonString>("exceptionType"), out var __jsonExceptionType) ? (string)__jsonExceptionType : (string)ExceptionType;}
+            {_errorDetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonString>("errorDetail"), out var __jsonErrorDetail) ? (string)__jsonErrorDetail : (string)ErrorDetail;}
             AfterFromJson(json);
         }
 
@@ -94,8 +94,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
             {
                 return container;
             }
-            AddIf( null != (((object)this._errorDetail)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonString(this._errorDetail.ToString()) : null, "errorDetail" ,container.Add );
             AddIf( null != (((object)this._exceptionType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonString(this._exceptionType.ToString()) : null, "exceptionType" ,container.Add );
+            AddIf( null != (((object)this._errorDetail)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonString(this._errorDetail.ToString()) : null, "errorDetail" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

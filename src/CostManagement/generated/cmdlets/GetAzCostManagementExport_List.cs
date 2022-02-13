@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Cmdlets
 
     /// <summary>The operation to list all exports at the given scope.</summary>
     /// <remarks>
-    /// [OpenAPI] Exports_List=>GET:"/{scope}/providers/Microsoft.CostManagement/exports"
+    /// [OpenAPI] List=>GET:"/{scope}/providers/Microsoft.CostManagement/exports"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzCostManagementExport_List")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExport))]

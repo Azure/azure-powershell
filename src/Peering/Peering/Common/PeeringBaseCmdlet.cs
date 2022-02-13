@@ -22,6 +22,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
 
     using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+    using Microsoft.Azure.Commands.Common.Exceptions;
     using Microsoft.Azure.Commands.Peering.Properties;
     using Microsoft.Azure.Commands.ResourceManager.Common;
     using Microsoft.Azure.Management.Peering;
@@ -124,6 +125,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// The peering services client
         /// </summary>
         public IPeeringServicesOperations PeeringServicesClient => this.PeeringManagementClient.PeeringServices;
+
+        /// <summary>
+        /// The cdn peering prefix client
+        /// </summary>
+        public ICdnPeeringPrefixesOperations CdnPeeringPrefixesOperationsClient => this.PeeringManagementClient.CdnPeeringPrefixes;
 
         /// <summary>
         /// The to peering.
@@ -278,10 +284,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         }
 
         /// <summary>
-        /// The top s peering location.
+        /// The to ps peering location.
         /// </summary>
         /// <param name="peering">
-        /// The oc.
+        /// The peering.
         /// </param>
         /// <returns>
         /// The <see cref="PSPeeringLocation"/>.
@@ -295,6 +301,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
             catch (InvalidOperationException mapException)
             {
                 throw new InvalidOperationException(String.Format(Resources.Error_Mapping, mapException));
+            }
+        }
+
+        /// <summary>
+        /// Convert to powershell cdn peering prefix
+        /// </summary>
+        /// <param name="cdnPrefix">
+        /// The cdn prefix.
+        /// </param>
+        /// <returns>
+        /// The <see cref="PSPeeringLocation"/>.
+        /// </returns>
+        public PSCdnPeeringPrefix ToPSCdnPeeringPrefix(object cdnPrefix)
+        {
+            try
+            {
+                return PeeringResourceManagerProfile.Mapper.Map<PSCdnPeeringPrefix>(cdnPrefix);
+            }
+            catch (InvalidOperationException mapException)
+            {
+                throw new AzPSInvalidOperationException(String.Format(Resources.Error_Mapping, mapException));
             }
         }
 
@@ -313,13 +340,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         {
             this.WriteVerbose($"validating bandwidth: {bandwidthInMbps}");
             if (bandwidthInMbps <= 0)
-                throw new PSArgumentException(string.Format(Resources.Error_BandwidthTooLow, bandwidthInMbps));
+                throw new AzPSArgumentException(string.Format(Resources.Error_BandwidthTooLow, bandwidthInMbps), "bandwidthInMbps");
             if (bandwidthInMbps % Constants.MinRange != 0)
-                throw new PSArgumentException(
-                    string.Format(Resources.Error_BandwidthIncorrectFormat, bandwidthInMbps, Constants.MinRange));
-            if (bandwidthInMbps > Constants.MaxRange)
-                throw new PSArgumentException(
-                    string.Format(Resources.Error_BandwidthTooHigh, bandwidthInMbps, Constants.MaxRange));
+                throw new AzPSArgumentOutOfRangeException(
+                    string.Format(Resources.Error_BandwidthIncorrectFormat, bandwidthInMbps, Constants.MinRange), "bandwidthInMbps");
             return true;
         }
 

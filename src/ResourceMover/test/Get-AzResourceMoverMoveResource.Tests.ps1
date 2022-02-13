@@ -13,12 +13,12 @@ while (-not $mockingPath) {
 
 Describe 'Get-AzResourceMoverMoveResource' {
     It 'List' {                  
-        $moveResource = Get-AzResourceMoverMoveResource -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.moveCollectionMetadataRG -MoveCollectionName $env.moveCollectionName
-        $moveResource.Length | Should -Be 1
+       $moveResource = Get-AzResourceMoverMoveResource -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.moveCollectionMetadataRG -MoveCollectionName $env.moveCollectionName
+       $moveResource.Length | Should -Be 1
     }
 
     It 'Get' { 
-        $moveResource = Get-AzResourceMoverMoveResource -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.moveCollectionMetadataRG -MoveCollectionName $env.moveCollectionName -Name "my-sRgVm1"
-        $moveResource.Name | Should -Be "my-sRgVm1"
+       $moveResource = Get-AzResourceMoverMoveResource -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.moveCollectionMetadataRG -MoveCollectionName $env.moveCollectionName -Name "rms-sRg"
+       $moveResource.Name | Should -Be "rms-sRg"
     }
 }

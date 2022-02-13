@@ -13,20 +13,21 @@
 // ----------------------------------------------------------------------------------
 
 
-using Microsoft.Azure.Commands.Aks.Properties;
-using Microsoft.WindowsAzure.Commands.Common;
-
-using System;
 using System.Management.Automation;
-using System.Runtime.InteropServices;
 using System.Security;
 using System.Text.RegularExpressions;
+
+using Microsoft.Azure.Commands.Aks.Properties;
+using Microsoft.Azure.Commands.Common.Exceptions;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.Aks.Utils
 {
     public sealed class ValidateSecureString: ValidateEnumeratedArgumentsAttribute
     {
         public string RegularExpression { get; set; }
+
+        public string ParameterName { get; set; }
 
         protected override void ValidateElement(object element)
         {
@@ -35,7 +36,9 @@ namespace Microsoft.Azure.Commands.Aks.Utils
             Regex regex = new Regex(RegularExpression);
             if (!regex.IsMatch(content))
             {
-                throw new ArgumentException(string.Format(Resources.SecureStringNotValid, RegularExpression));
+                throw new AzPSArgumentException(
+                    string.Format(Resources.SecureStringNotValid, RegularExpression),
+                    ParameterName);
             }
         }
     }

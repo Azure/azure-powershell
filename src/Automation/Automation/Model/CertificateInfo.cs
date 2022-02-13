@@ -38,10 +38,8 @@ namespace Microsoft.Azure.Commands.Automation.Model
             Requires.Argument("certificate", certificate).NotNull();
             this.AutomationAccountName = accountAcccountName;
             this.ResourceGroupName = resourceGroupName;
-            this.Name = certificate.Name;
-
             if (certificate == null) return;
-
+            this.Name = certificate.Name;
             this.Description = certificate.Description;
             this.CreationTime = certificate.CreationTime.ToLocalTime();
             this.LastModifiedTime = certificate.LastModifiedTime.ToLocalTime();

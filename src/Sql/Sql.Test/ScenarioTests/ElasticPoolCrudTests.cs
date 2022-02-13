@@ -61,6 +61,13 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestElasticPoolCreateWithMaintenanceConfigurationId()
+        {
+            RunPowerShellTest("Test-CreateElasticPoolWithMaintenanceConfigurationId");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestElasticPoolUpdate()
         {
             RunPowerShellTest("Test-UpdateElasticPool");
@@ -89,6 +96,13 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestElasticPoolUpdateWithMaintenanceConfigurationId()
+        {
+            RunPowerShellTest("Test-UpdateElasticPoolWithMaintenanceConfigurationId");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestElasticPoolGet()
         {
             RunPowerShellTest("Test-GetElasticPool");
@@ -99,6 +113,13 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public void TestElasticPoolGetWithZoneRedundancy()
         {
             RunPowerShellTest("Test-GetElasticPoolWithZoneRedundancy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestElasticPoolGetWithMaintenanceConfigurationId()
+        {
+            RunPowerShellTest("Test-GetElasticPoolWithMaintenanceConfigurationId");
         }
 
         [Fact]

@@ -64,6 +64,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         {
             return true;
         }
+        
+        // Overwrite the useless parameter
+        public override string TagCondition { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the SetAzureStorageContainerStoredAccessPolicyCommand class.
@@ -116,7 +119,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             }
             if (noExpiryTime)
             {
-                signedIdentifier.AccessPolicy.PolicyExpiresOn = DateTimeOffset.MinValue;
+                signedIdentifier.AccessPolicy.PolicyExpiresOn = null;
             }
             else if (ExpiryTime != null)
             {

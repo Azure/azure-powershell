@@ -12,12 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
-using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 using System.Text.RegularExpressions;
 
@@ -27,8 +23,12 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
     [OutputType(typeof(bool))]
     public class ConnectAzureContainerRegistry : ContainerRegistryCmdletBase
     {
+        protected const string WithoutNameAndPasswordParameterSet = "WithoutNameAndPasswordParameterSet";
+        protected const string WithNameAndPasswordParameterSet = "WithNameAndPasswordParameterSet";
+
         [Parameter(Mandatory = true, HelpMessage = "Azure Container Registry Name.", ParameterSetName = WithoutNameAndPasswordParameterSet)]
         [Parameter(Mandatory = true, HelpMessage = "Azure Container Registry Name.", ParameterSetName = WithNameAndPasswordParameterSet)]
+        [Alias("RegistryName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -39,8 +39,6 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Password For Azure Container Registry.", ParameterSetName = WithNameAndPasswordParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Password { get; set; }
-
-        private RecordingTracingInterceptor _httpTracingInterceptor { get; set; }
 
         protected override void InitDebuggingFilter()
         {

@@ -82,14 +82,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             return objects;
         }
 
-        public IContainerServicesOperations ContainerServicesClient
-        {
-            get
-            {
-                return ComputeClient.ComputeManagementClient.ContainerServices;
-            }
-        }
-
         public IDedicatedHostGroupsOperations DedicatedHostGroupsClient
         {
             get
@@ -127,6 +119,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             get
             {
                 return ComputeClient.ComputeManagementClient.DiskAccesses;
+            }
+        }
+
+        public ISshPublicKeysOperations SshPublicKeyClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.SshPublicKeys;
             }
         }
 
@@ -234,11 +234,50 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
         }
 
+        public IVirtualMachineScaleSetVMRunCommandsOperations VirtualMachineScaleSetVMRunCommandsClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.VirtualMachineScaleSetVMRunCommands;
+            }
+        }
+
         public IVirtualMachinesOperations VirtualMachinesClient
         {
             get
             {
                 return ComputeClient.ComputeManagementClient.VirtualMachines;
+            }
+        }
+
+        public ICapacityReservationGroupsOperations CapacityReservationGroupClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.CapacityReservationGroups;
+            }
+        }
+        public ICapacityReservationsOperations CapacityReservationClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.CapacityReservations;
+            }
+        }
+
+        public IRestorePointCollectionsOperations RestorePointCollectionsClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.RestorePointCollections;
+            }
+        }
+
+        public IRestorePointsOperations RestorePointClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.RestorePoints;
             }
         }
 

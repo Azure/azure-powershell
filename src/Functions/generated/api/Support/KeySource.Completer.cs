@@ -30,11 +30,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Microsoft.Storage".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Microsoft.Storage", "Microsoft.Storage", global::System.Management.Automation.CompletionResultType.ParameterValue, "Microsoft.Storage");
+                yield return new global::System.Management.Automation.CompletionResult("'Microsoft.Storage'", "Microsoft.Storage", global::System.Management.Automation.CompletionResultType.ParameterValue, "Microsoft.Storage");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Microsoft.Keyvault".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Microsoft.Keyvault", "Microsoft.Keyvault", global::System.Management.Automation.CompletionResultType.ParameterValue, "Microsoft.Keyvault");
+                yield return new global::System.Management.Automation.CompletionResult("'Microsoft.Keyvault'", "Microsoft.Keyvault", global::System.Management.Automation.CompletionResultType.ParameterValue, "Microsoft.Keyvault");
             }
         }
     }

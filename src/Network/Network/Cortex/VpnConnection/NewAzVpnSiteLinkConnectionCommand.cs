@@ -6,6 +6,8 @@
     using MNM = Microsoft.Azure.Management.Network.Models;
     using System.Security;
     using Microsoft.WindowsAzure.Commands.Common;
+    using System.Linq;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet(
         VerbsCommon.New,
@@ -29,8 +31,8 @@
         public PSVpnSiteLink VpnSiteLink { get; set; }
 
         [Parameter(
-                    Mandatory = false,
-                    HelpMessage = "The shared key required to set this link connection up.")]
+            Mandatory = false,
+            HelpMessage = "The shared key required to set this link connection up.")]
         [ValidateNotNullOrEmpty]
         public SecureString SharedKey { get; set; }
 
@@ -50,8 +52,8 @@
         public PSIpsecPolicy IpSecPolicy { get; set; }
 
         [Parameter(
-        Mandatory = false,
-        HelpMessage = "Gateway connection protocol:IKEv1/IKEv2")]
+            Mandatory = false,
+            HelpMessage = "Gateway connection protocol:IKEv1/IKEv2")]
         [ValidateSet(
             MNM.VirtualNetworkGatewayConnectionProtocol.IKEv1,
             MNM.VirtualNetworkGatewayConnectionProtocol.IKEv2,
@@ -73,6 +75,22 @@
             HelpMessage = "Use policy based traffic selectors for this link connection.")]
         public SwitchParameter UsePolicyBasedTrafficSelectors { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The list of ingress NAT rules that are associated with this link Connection.")]
+        public PSResourceId[] IngressNatRule { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The list of egress  NAT rules that are associated with this link Connection.")]
+        public PSResourceId[] EgressNatRule { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The connection mode for this link connection.")]
+        [PSArgumentCompleter("Default", "ResponderOnly", "InitiatorOnly")]
+        public string VpnLinkConnectionMode { get; set; }
+
         public override void Execute()
         {
             base.Execute();
@@ -83,7 +101,10 @@
                 EnableBgp = this.EnableBgp.IsPresent,
                 UseLocalAzureIpAddress = this.UseLocalAzureIpAddress.IsPresent,
                 UsePolicyBasedTrafficSelectors = this.UsePolicyBasedTrafficSelectors.IsPresent,
-                RoutingWeight = Convert.ToInt32(this.RoutingWeight)
+                RoutingWeight = Convert.ToInt32(this.RoutingWeight),
+                IngressNatRules = IngressNatRule?.ToList(),
+                EgressNatRules = EgressNatRule?.ToList(),
+                VpnLinkConnectionMode = this.VpnLinkConnectionMode
             };
 
             if (this.VpnSiteLink == null)

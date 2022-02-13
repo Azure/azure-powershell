@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Support.dll-Help.xml
 Module Name: Az.Support
-online version:https://docs.microsoft.com/en-us/powershell/module/az.support/get-azsupportticketcommunication
+online version:https://docs.microsoft.com/powershell/module/az.support/get-azsupportticketcommunication
 schema: 2.0.0
 ---
 

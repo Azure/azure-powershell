@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: B85BF332-503D-41CB-A3B7-221B85B9BE30
-online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/new-azapimanagementsubscription
+online version: https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementsubscription
 schema: 2.0.0
 ---
 
@@ -34,22 +34,22 @@ The **New-AzApiManagementSubscription** cmdlet creates a subscription.
 
 ### Example 1: Subscribe a user to a product
 ```powershell
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>New-AzApiManagementSubscription -Context $apimContext -UserId "777" -ProductId "999"
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+New-AzApiManagementSubscription -Context $apimContext -UserId "777" -ProductId "999"
 ```
 
 This command subscribes an existing user to a product.
 
 ### Example 2: Create a subscription for all Api Scope
 ```powershell
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>New-AzApiManagementSubscription -Context $context -Scope "/apis" -Name "GlobalApiScope"
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+New-AzApiManagementSubscription -Context $context -Scope "/apis" -Name "GlobalApiScope"
 ```
 
 ### Example 3: Create a subscription for Product Scope
 ```powershell
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>New-AzApiManagementSubscription -Context $context -Scope "/products/starter" -Name "UnlimitedProductSub"
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+New-AzApiManagementSubscription -Context $context -Scope "/products/starter" -Name "UnlimitedProductSub"
 ```
 
 ## PARAMETERS

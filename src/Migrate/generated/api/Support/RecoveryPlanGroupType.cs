@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>The group type.</summary>
     public partial struct RecoveryPlanGroupType :
         System.IEquatable<RecoveryPlanGroupType>
     {
@@ -22,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         /// <param name="value">the value to convert to an instance of <see cref="RecoveryPlanGroupType" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new RecoveryPlanGroupType(System.Convert.ToString(value));
+            return new RecoveryPlanGroupType(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type RecoveryPlanGroupType</summary>

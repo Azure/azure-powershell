@@ -1,0 +1,43 @@
+{
+  "Add-AzContainerInstanceOutput+[NoContext]+Attach+$POST+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgdabsp/providers/Microsoft.ContainerInstance/containerGroups/bez-test-cg/containers/bez-test-ci/attach?api-version=2021-09-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgdabsp/providers/Microsoft.ContainerInstance/containerGroups/bez-test-cg/containers/bez-test-ci/attach?api-version=2021-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "d969f84b-659f-44f0-a4cb-1647d67a5dd3" ],
+        "CommandName": [ "Add-AzContainerInstanceOutput" ],
+        "FullCommandName": [ "Add-AzContainerInstanceOutput_Attach" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "eastus:9f24caa5-ccb4-40b7-80ec-7c860bfcc7fb" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "d3b71d20-9a2f-4a71-a518-a1bd8934f1d8" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211109T085607Z:d3b71d20-9a2f-4a71-a518-a1bd8934f1d8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 09 Nov 2021 08:56:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "197" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"webSocketUri\":\"wss://sbzx49426vpqjxq.eastus.atlas.cloudapp.azure.com:19390/logstream/sessionId/c5f9e88b-a7fe-4a5e-b30d-587ee50edc6b?api-version=1.0\",\"password\":\"0Xp_be/narQu7d]AqaOsN_(Ai[[EOM]]\"}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support
 {
 
-    /// <summary>TypeConverter implementation for JobName.</summary>
+    /// <summary>Defines the job name.</summary>
     public partial class JobNameTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

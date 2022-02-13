@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: AF8CC409-2EA7-4EC1-86C9-E7A773DE9201
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azapplicationgatewayhttplistener
+online version: https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgatewayhttplistener
 schema: 2.0.0
 ---
 

@@ -29,7 +29,8 @@ function Test-AzIotDpsEnrollmentGroupLifeCycle
 	$ResourceGroupName = getAssetName 
 	$IotHubName = getAssetName
 	$hubKeyName = "ServiceKey"
-	$CertificateKey = "MIIBiDCCAS2gAwIBAgIFWks8LR4wCgYIKoZIzj0EAwIwNjEUMBIGA1UEAwwLcmlvdGNvcmVuZXcxETAPBgNVBAoMCE1TUl9URVNUMQswCQYDVQQGEwJVUzAgFw0xNzAxMDEwMDAwMDBaGA8zNzAxMDEzMTIzNTk1OVowNjEUMBIGA1UEAwwLcmlvdGNvcmVuZXcxETAPBgNVBAoMCE1TUl9URVNUMQswCQYDVQQGEwJVUzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABLVS6bK+QMm+HZ0247Nm+JmnERuickBXTj6rydcP3WzVQNBNpvcQ/4YVrPp60oiYRxZbsPyBtHt2UCAC00vEXy+jJjAkMA4GA1UdDwEB/wQEAwIHgDASBgNVHRMBAf8ECDAGAQH/AgECMAoGCCqGSM49BAMCA0kAMEYCIQDEjs2PoZEi/yAQNj2Vji9RthQ33HG/QdL12b1ABU5UXgIhAPJujG/c/S+7vcREWI7bQcCb31JIBDhWZbt4eyCvXZtZ"
+	$PrimaryCertificateKey = "MIIBiDCCAS2gAwIBAgIFWks8LR4wCgYIKoZIzj0EAwIwNjEUMBIGA1UEAwwLcmlvdGNvcmVuZXcxETAPBgNVBAoMCE1TUl9URVNUMQswCQYDVQQGEwJVUzAgFw0xNzAxMDEwMDAwMDBaGA8zNzAxMDEzMTIzNTk1OVowNjEUMBIGA1UEAwwLcmlvdGNvcmVuZXcxETAPBgNVBAoMCE1TUl9URVNUMQswCQYDVQQGEwJVUzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABLVS6bK+QMm+HZ0247Nm+JmnERuickBXTj6rydcP3WzVQNBNpvcQ/4YVrPp60oiYRxZbsPyBtHt2UCAC00vEXy+jJjAkMA4GA1UdDwEB/wQEAwIHgDASBgNVHRMBAf8ECDAGAQH/AgECMAoGCCqGSM49BAMCA0kAMEYCIQDEjs2PoZEi/yAQNj2Vji9RthQ33HG/QdL12b1ABU5UXgIhAPJujG/c/S+7vcREWI7bQcCb31JIBDhWZbt4eyCvXZtZ"
+	$SecondaryCertificateKey = "MIIBiDCCAS2gAwIBAgIFWks8LR4wCgYIKoZIzj0EAwIwNjEUMBIGA1UEAwwLcmlvdGNvcmVuZXcxETAPBgNVBAoMCE1TUl9URVNUMQswCQYDVQQGEwJVUzAgFw0xNzAxMDEwMDAwMDBaGA8zNzAxMDEzMTIzNTk1OVowNjEUMBIGA1UEAwwLcmlvdGNvcmVuZXcxETAPBgNVBAoMCE1TUl9URVNUMQswCQYDVQQGEwJVUzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABLVS6bK+QMm+HZ0247Nm+JmnERuickBXTj6rydcP3WzVQNBNpvcQ/4YVrPp60oiYRxZbsPyBtHt2UCAC00vEXy+jJjAkMA4GA1UdDwEB/wQEAwIHgDASBgNVHRMBAf8ECDAGAQH/AgECMAoGCCqGSM49BAMCA0kAMEYCIQDEjs2PoZEi/yAQNj2Vji9RthQ33HG/QdL12b1ABU5UXgIhAPJujG/c/S+7vcREWI7bQcCb31JIBDhWZbt4eyCvXZtY"
 	$Sku = "S1"
 	$symEnroll = getAssetName
 	$x509Enroll = getAssetName
@@ -115,7 +116,7 @@ function Test-AzIotDpsEnrollmentGroupLifeCycle
 	Assert-True { $symEnrollment.ReprovisionPolicy.MigrateDeviceData }
 
 	# Create enrollment group with X509 attestation
-	$x509Enrollment = Add-AzIoTDeviceProvisioningServiceEnrollmentGroup -ResourceGroupName $ResourceGroupName -DpsName $IotDpsName -Name $x509Enroll -AttestationType X509 -PrimaryCertificate $CertificateKey -RootCertificate -IotHubHostName $LinkedHubName -ReprovisionPolicy reprovisionandresetdata -ProvisioningStatus "Disabled"
+	$x509Enrollment = Add-AzIoTDeviceProvisioningServiceEnrollmentGroup -ResourceGroupName $ResourceGroupName -DpsName $IotDpsName -Name $x509Enroll -AttestationType X509 -PrimaryCertificate $PrimaryCertificateKey -RootCertificate -IotHubHostName $LinkedHubName -ReprovisionPolicy reprovisionandresetdata -ProvisioningStatus "Disabled"
 	Assert-True { $x509Enrollment.EnrollmentGroupId -eq $x509Enroll }
 	Assert-True { $x509Enrollment.IotHubHostName -eq $LinkedHubName }
 	Assert-False { $x509Enrollment.Capabilities.IotEdge }
@@ -154,6 +155,16 @@ function Test-AzIotDpsEnrollmentGroupLifeCycle
 	Assert-True { $x509EnrollmentUpdated.ReprovisionPolicy.UpdateHubAssignment }
 	Assert-False { $x509EnrollmentUpdated.ReprovisionPolicy.MigrateDeviceData }
 
+	# Update Enrollment attestation values
+
+	# SymmetricKey (swap keys)
+	$symEnrollmentUpdated = Set-AzIoTDeviceProvisioningServiceEnrollmentGroup -ResourceGroupName $ResourceGroupName -DpsName $IotDpsName -Name $symEnroll -PrimaryKey $symEnrollment.Attestation.SymmetricKey.SecondaryKey -SecondaryKey  $symEnrollment.Attestation.SymmetricKey.PrimaryKey
+	Assert-True { $symEnrollmentUpdated.Attestation.Type -eq "SymmetricKey" }
+	Assert-True { $symEnrollmentUpdated.Attestation.PrimaryKey -eq $symEnrollment.Attestation.SecondaryKey }
+	Assert-True { $symEnrollmentUpdated.Attestation.SecondaryKey -eq $symEnrollment.Attestation.PrimaryKey }
+
+	# X509 (change certs)
+	$x509EnrollmentUpdated = Set-AzIoTDeviceProvisioningServiceEnrollmentGroup -ResourceGroupName $ResourceGroupName -DpsName $IotDpsName -Name $x509Enroll -PrimaryCertificate $SecondaryCertificateKey -SecondaryCertificate $PrimaryCertificateKey -RootCertificate
 	# Remove enrollment group
 	$result = Remove-AzIoTDPSEnrollmentGroup -ResourceGroupName $ResourceGroupName -DpsName $IotDpsName -Name $symEnroll -PassThru
 	Assert-True { $result }

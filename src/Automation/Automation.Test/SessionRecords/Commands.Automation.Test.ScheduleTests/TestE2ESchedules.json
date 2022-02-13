@@ -1,57 +1,42 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01?api-version=2015-10-31",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMT9hcGktdmVyc2lvbj0yMDE1LTEwLTMx",
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01?api-version=2020-01-13-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMT9hcGktdmVyc2lvbj0yMDIwLTAxLTEzLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ec46cf0f-14f1-4da5-9574-80b6ff01bf35"
+          "0dbb83c1-cd34-4519-b2dc-449a224c9de3"
         ],
-        "accept-language": [
+        "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3190.0",
+          "FxVersion/4.6.29812.02",
           "OSName/Windows",
-          "OSVersion/6.3.9600.0",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.0.0"
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
         ]
       },
       "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
         "Pragma": [
           "no-cache"
         ],
         "ocp-automation-accountid": [
-          "70c03a7a-1ee5-4c33-972c-b84fe0b1b31f"
+          "eef8df7b-0e26-4e3d-91ae-6794bc7cf811"
         ],
         "x-ms-request-id": [
-          "ec46cf0f-14f1-4da5-9574-80b6ff01bf35"
+          "0dbb83c1-cd34-4519-b2dc-449a224c9de3"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
-        ],
-        "x-ms-correlation-request-id": [
-          "c22604b6-b34e-4dc8-bcea-fe0e4aebc42c"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20181109T022056Z:c22604b6-b34e-4dc8-bcea-fe0e4aebc42c"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Fri, 09 Nov 2018 02:20:55 GMT"
-        ],
         "Server": [
-          "Microsoft-IIS/8.5"
+          "Microsoft-IIS/10.0"
         ],
         "X-AspNet-Version": [
           "4.0.30319"
@@ -59,8 +44,23 @@
         "X-Powered-By": [
           "ASP.NET"
         ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11991"
+        ],
+        "x-ms-correlation-request-id": [
+          "db8d3947-eed6-4c52-a630-0ef242e92b36"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20210404T182259Z:db8d3947-eed6-4c52-a630-0ef242e92b36"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sun, 04 Apr 2021 18:22:58 GMT"
+        ],
         "Content-Length": [
-          "580"
+          "725"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -69,26 +69,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"fbs-aa-01\",\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n  \"location\": \"eastus2\",\r\n  \"tags\": {},\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": null,\r\n      \"capacity\": null\r\n    },\r\n    \"state\": \"Ok\",\r\n    \"RegistrationUrl\": \"https://eus2-agentservice-prod-1.azure-automation.net/accounts/70c03a7a-1ee5-4c33-972c-b84fe0b1b31f\",\r\n    \"creationTime\": \"2018-10-18T16:39:00.267-07:00\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2018-11-01T10:07:37.523-07:00\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"fbs-aa-01\",\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {},\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": null,\r\n      \"capacity\": null\r\n    },\r\n    \"state\": \"Ok\",\r\n    \"RegistrationUrl\": \"https://eef8df7b-0e26-4e3d-91ae-6794bc7cf811.agentsvc.eus.azure-automation.net/accounts/eef8df7b-0e26-4e3d-91ae-6794bc7cf811\",\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.Automation\",\r\n      \"identity\": {\r\n        \"userAssignedIdentity\": null\r\n      }\r\n    },\r\n    \"privateEndpointConnections\": [],\r\n    \"creationTime\": \"2021-04-03T22:47:41.42+05:30\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2021-04-03T22:47:41.42+05:30\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3?api-version=2015-10-31",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS9zY2hlZHVsZXMvU2NoZWR1bGUzP2FwaS12ZXJzaW9uPTIwMTUtMTAtMzE=",
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3?api-version=2020-01-13-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS9zY2hlZHVsZXMvU2NoZWR1bGUzP2FwaS12ZXJzaW9uPTIwMjAtMDEtMTMtcHJldmlldw==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"name\": \"Schedule3\",\r\n  \"properties\": {\r\n    \"description\": \"Hello\",\r\n    \"startTime\": \"2018-11-09T13:00:00-08:00\",\r\n    \"expiryTime\": \"2019-11-09T13:00:00-08:00\",\r\n    \"interval\": 1,\r\n    \"frequency\": \"Day\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"name\": \"Schedule3\",\r\n  \"properties\": {\r\n    \"description\": \"Hello\",\r\n    \"startTime\": \"2021-04-05T13:00:00+05:30\",\r\n    \"expiryTime\": \"2022-04-05T13:00:00+05:30\",\r\n    \"interval\": 1,\r\n    \"frequency\": \"Day\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "68c53bb4-e2c3-4b82-b035-81f11d5a6edb"
+          "c50c8d97-20e4-4c05-80fa-8314bafe6ab4"
         ],
-        "accept-language": [
+        "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3190.0",
+          "FxVersion/4.6.29812.02",
           "OSName/Windows",
-          "OSVersion/6.3.9600.0",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.0.0"
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -98,44 +98,29 @@
         ]
       },
       "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
         "Pragma": [
           "no-cache"
         ],
+        "Location": [
+          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3?api-version=2020-01-13-preview"
+        ],
         "x-ms-request-id": [
-          "68c53bb4-e2c3-4b82-b035-81f11d5a6edb"
+          "c50c8d97-20e4-4c05-80fa-8314bafe6ab4"
         ],
         "x-ms-location": [
-          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3?api-version=2015-10-31"
+          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3?api-version=2020-01-13-preview"
         ],
         "ocp-location": [
-          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3?api-version=2015-10-31"
+          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3?api-version=2020-01-13-preview"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
-        ],
-        "x-ms-correlation-request-id": [
-          "ef7f9605-ee00-4d7c-98bd-c9886bb67bbc"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20181109T022056Z:ef7f9605-ee00-4d7c-98bd-c9886bb67bbc"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Fri, 09 Nov 2018 02:20:56 GMT"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3?api-version=2015-10-31"
-        ],
         "Server": [
-          "Microsoft-IIS/8.5"
+          "Microsoft-IIS/10.0"
         ],
         "X-AspNet-Version": [
           "4.0.30319"
@@ -143,8 +128,23 @@
         "X-Powered-By": [
           "ASP.NET"
         ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "0ce109fd-85cb-4b39-a42a-9f87f7c3704e"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20210404T182302Z:0ce109fd-85cb-4b39-a42a-9f87f7c3704e"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sun, 04 Apr 2021 18:23:01 GMT"
+        ],
         "Content-Length": [
-          "673"
+          "683"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -153,26 +153,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3\",\r\n  \"name\": \"Schedule3\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Schedules\",\r\n  \"properties\": {\r\n    \"description\": \"Hello\",\r\n    \"startTime\": \"2018-11-09T13:00:00-08:00\",\r\n    \"startTimeOffsetMinutes\": 0.0,\r\n    \"expiryTime\": \"2019-11-09T13:00:00-08:00\",\r\n    \"expiryTimeOffsetMinutes\": 0.0,\r\n    \"isEnabled\": true,\r\n    \"nextRun\": \"2018-11-09T13:00:00-08:00\",\r\n    \"nextRunOffsetMinutes\": 0.0,\r\n    \"interval\": 1,\r\n    \"frequency\": \"Day\",\r\n    \"creationTime\": \"2018-11-08T18:20:56.82-08:00\",\r\n    \"lastModifiedTime\": \"2018-11-08T18:20:56.82-08:00\",\r\n    \"timeZone\": \"UTC\",\r\n    \"advancedSchedule\": null\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3\",\r\n  \"name\": \"Schedule3\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Schedules\",\r\n  \"properties\": {\r\n    \"description\": \"Hello\",\r\n    \"startTime\": \"2021-04-05T13:00:00+05:30\",\r\n    \"startTimeOffsetMinutes\": 0.0,\r\n    \"expiryTime\": \"2022-04-05T13:00:00+05:30\",\r\n    \"expiryTimeOffsetMinutes\": 0.0,\r\n    \"isEnabled\": true,\r\n    \"nextRun\": \"2021-04-05T13:00:00+05:30\",\r\n    \"nextRunOffsetMinutes\": 0.0,\r\n    \"interval\": 1,\r\n    \"frequency\": \"Day\",\r\n    \"creationTime\": \"2021-04-04T23:53:01.9533333+05:30\",\r\n    \"lastModifiedTime\": \"2021-04-04T23:53:01.9533333+05:30\",\r\n    \"timeZone\": \"UTC\",\r\n    \"advancedSchedule\": null\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3?api-version=2015-10-31",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS9zY2hlZHVsZXMvU2NoZWR1bGUzP2FwaS12ZXJzaW9uPTIwMTUtMTAtMzE=",
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3?api-version=2020-01-13-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS9zY2hlZHVsZXMvU2NoZWR1bGUzP2FwaS12ZXJzaW9uPTIwMjAtMDEtMTMtcHJldmlldw==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"name\": \"Schedule3\",\r\n  \"properties\": {\r\n    \"description\": \"Hello Again\",\r\n    \"startTime\": \"2018-11-09T13:00:00-08:00\",\r\n    \"expiryTime\": \"2019-11-09T13:00:00-08:00\",\r\n    \"interval\": 3,\r\n    \"frequency\": \"Week\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"name\": \"Schedule3\",\r\n  \"properties\": {\r\n    \"description\": \"Hello Again\",\r\n    \"startTime\": \"2021-04-05T13:00:00+05:30\",\r\n    \"expiryTime\": \"2022-04-05T13:00:00+05:30\",\r\n    \"interval\": 3,\r\n    \"frequency\": \"Week\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "81901da5-7ad3-4e87-87e3-77a6deaf03e2"
+          "a643b2e3-28b6-4bf2-958c-dc661ade3c46"
         ],
-        "accept-language": [
+        "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3190.0",
+          "FxVersion/4.6.29812.02",
           "OSName/Windows",
-          "OSVersion/6.3.9600.0",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.0.0"
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -182,44 +182,44 @@
         ]
       },
       "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
         "Pragma": [
           "no-cache"
         ],
         "x-ms-request-id": [
-          "81901da5-7ad3-4e87-87e3-77a6deaf03e2"
+          "a643b2e3-28b6-4bf2-958c-dc661ade3c46"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1198"
         ],
         "x-ms-correlation-request-id": [
-          "6108f550-fdf5-45f7-9127-428a84767895"
+          "cf18996e-31a7-431e-92e6-5b20b23786d7"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181109T022057Z:6108f550-fdf5-45f7-9127-428a84767895"
+          "CENTRALINDIA:20210404T182303Z:cf18996e-31a7-431e-92e6-5b20b23786d7"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "Cache-Control": [
-          "no-cache"
-        ],
         "Date": [
-          "Fri, 09 Nov 2018 02:20:56 GMT"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.5"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
+          "Sun, 04 Apr 2021 18:23:03 GMT"
         ],
         "Content-Length": [
-          "736"
+          "746"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -228,343 +228,67 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3\",\r\n  \"name\": \"Schedule3\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Schedules\",\r\n  \"properties\": {\r\n    \"description\": \"Hello Again\",\r\n    \"startTime\": \"2018-11-09T13:00:00-08:00\",\r\n    \"startTimeOffsetMinutes\": 0.0,\r\n    \"expiryTime\": \"2019-11-09T13:00:00-08:00\",\r\n    \"expiryTimeOffsetMinutes\": 0.0,\r\n    \"isEnabled\": true,\r\n    \"nextRun\": \"2018-11-09T13:00:00-08:00\",\r\n    \"nextRunOffsetMinutes\": 0.0,\r\n    \"interval\": 3,\r\n    \"frequency\": \"Week\",\r\n    \"creationTime\": \"2018-11-08T18:20:56.82-08:00\",\r\n    \"lastModifiedTime\": \"2018-11-08T18:20:56.82-08:00\",\r\n    \"timeZone\": \"UTC\",\r\n    \"advancedSchedule\": {\r\n      \"monthDays\": null,\r\n      \"monthlyOccurrences\": null,\r\n      \"weekDays\": null\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3\",\r\n  \"name\": \"Schedule3\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Schedules\",\r\n  \"properties\": {\r\n    \"description\": \"Hello Again\",\r\n    \"startTime\": \"2021-04-05T13:00:00+05:30\",\r\n    \"startTimeOffsetMinutes\": 0.0,\r\n    \"expiryTime\": \"2022-04-05T13:00:00+05:30\",\r\n    \"expiryTimeOffsetMinutes\": 0.0,\r\n    \"isEnabled\": true,\r\n    \"nextRun\": \"2021-04-05T13:00:00+05:30\",\r\n    \"nextRunOffsetMinutes\": 0.0,\r\n    \"interval\": 3,\r\n    \"frequency\": \"Week\",\r\n    \"creationTime\": \"2021-04-04T23:53:01.9533333+05:30\",\r\n    \"lastModifiedTime\": \"2021-04-04T23:53:01.9533333+05:30\",\r\n    \"timeZone\": \"UTC\",\r\n    \"advancedSchedule\": {\r\n      \"monthDays\": null,\r\n      \"monthlyOccurrences\": null,\r\n      \"weekDays\": null\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3?api-version=2015-10-31",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS9zY2hlZHVsZXMvU2NoZWR1bGUzP2FwaS12ZXJzaW9uPTIwMTUtMTAtMzE=",
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3?api-version=2020-01-13-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS9zY2hlZHVsZXMvU2NoZWR1bGUzP2FwaS12ZXJzaW9uPTIwMjAtMDEtMTMtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "aaefc9e3-15d1-4254-9aec-196a1295bf9a"
+          "c50c8d97-20e4-4c05-80fa-8314bafe6ab4"
         ],
-        "accept-language": [
+        "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3190.0",
+          "FxVersion/4.6.29812.02",
           "OSName/Windows",
-          "OSVersion/6.3.9600.0",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.0.0"
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
         ]
       },
       "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
         "Pragma": [
           "no-cache"
         ],
         "x-ms-request-id": [
-          "aaefc9e3-15d1-4254-9aec-196a1295bf9a"
+          "c50c8d97-20e4-4c05-80fa-8314bafe6ab4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
-        ],
-        "x-ms-correlation-request-id": [
-          "de3720d5-e1db-479c-ba5c-3b51f51e2100"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20181109T022057Z:de3720d5-e1db-479c-ba5c-3b51f51e2100"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Fri, 09 Nov 2018 02:20:56 GMT"
-        ],
         "Server": [
-          "Microsoft-IIS/8.5"
+          "Microsoft-IIS/10.0"
         ],
         "X-AspNet-Version": [
           "4.0.30319"
         ],
         "X-Powered-By": [
           "ASP.NET"
-        ],
-        "Content-Length": [
-          "673"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3\",\r\n  \"name\": \"Schedule3\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Schedules\",\r\n  \"properties\": {\r\n    \"description\": \"Hello\",\r\n    \"startTime\": \"2018-11-09T13:00:00-08:00\",\r\n    \"startTimeOffsetMinutes\": 0.0,\r\n    \"expiryTime\": \"2019-11-09T13:00:00-08:00\",\r\n    \"expiryTimeOffsetMinutes\": 0.0,\r\n    \"isEnabled\": true,\r\n    \"nextRun\": \"2018-11-09T13:00:00-08:00\",\r\n    \"nextRunOffsetMinutes\": 0.0,\r\n    \"interval\": 1,\r\n    \"frequency\": \"Day\",\r\n    \"creationTime\": \"2018-11-08T18:20:56.82-08:00\",\r\n    \"lastModifiedTime\": \"2018-11-08T18:20:56.82-08:00\",\r\n    \"timeZone\": \"UTC\",\r\n    \"advancedSchedule\": null\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3?api-version=2015-10-31",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS9zY2hlZHVsZXMvU2NoZWR1bGUzP2FwaS12ZXJzaW9uPTIwMTUtMTAtMzE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "41e4d289-25e5-4602-9c5a-e117ca3b3b9b"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.7.3190.0",
-          "OSName/Windows",
-          "OSVersion/6.3.9600.0",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "41e4d289-25e5-4602-9c5a-e117ca3b3b9b"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
-        ],
-        "x-ms-correlation-request-id": [
-          "18fbc4fd-6e02-47f8-83ae-82cd81662cb2"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20181109T022057Z:18fbc4fd-6e02-47f8-83ae-82cd81662cb2"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Fri, 09 Nov 2018 02:20:56 GMT"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.5"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "Content-Length": [
-          "737"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3\",\r\n  \"name\": \"Schedule3\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Schedules\",\r\n  \"properties\": {\r\n    \"description\": \"Hello Again\",\r\n    \"startTime\": \"2018-11-09T13:00:00-08:00\",\r\n    \"startTimeOffsetMinutes\": 0.0,\r\n    \"expiryTime\": \"2019-11-09T13:00:00-08:00\",\r\n    \"expiryTimeOffsetMinutes\": 0.0,\r\n    \"isEnabled\": true,\r\n    \"nextRun\": \"2018-11-09T13:00:00-08:00\",\r\n    \"nextRunOffsetMinutes\": 0.0,\r\n    \"interval\": 3,\r\n    \"frequency\": \"Week\",\r\n    \"creationTime\": \"2018-11-08T18:20:56.82-08:00\",\r\n    \"lastModifiedTime\": \"2018-11-08T18:20:57.163-08:00\",\r\n    \"timeZone\": \"UTC\",\r\n    \"advancedSchedule\": {\r\n      \"monthDays\": null,\r\n      \"monthlyOccurrences\": null,\r\n      \"weekDays\": null\r\n    }\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3?api-version=2015-10-31",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS9zY2hlZHVsZXMvU2NoZWR1bGUzP2FwaS12ZXJzaW9uPTIwMTUtMTAtMzE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "7a38cfb0-34c3-419a-b50a-7ebe3404525e"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.7.3190.0",
-          "OSName/Windows",
-          "OSVersion/6.3.9600.0",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "7a38cfb0-34c3-419a-b50a-7ebe3404525e"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11996"
-        ],
-        "x-ms-correlation-request-id": [
-          "260f7727-879c-4da9-850b-b5311783836e"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20181109T022057Z:260f7727-879c-4da9-850b-b5311783836e"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Fri, 09 Nov 2018 02:20:56 GMT"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.5"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "Content-Length": [
-          "737"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3\",\r\n  \"name\": \"Schedule3\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Schedules\",\r\n  \"properties\": {\r\n    \"description\": \"Hello Again\",\r\n    \"startTime\": \"2018-11-09T13:00:00-08:00\",\r\n    \"startTimeOffsetMinutes\": 0.0,\r\n    \"expiryTime\": \"2019-11-09T13:00:00-08:00\",\r\n    \"expiryTimeOffsetMinutes\": 0.0,\r\n    \"isEnabled\": true,\r\n    \"nextRun\": \"2018-11-09T13:00:00-08:00\",\r\n    \"nextRunOffsetMinutes\": 0.0,\r\n    \"interval\": 3,\r\n    \"frequency\": \"Week\",\r\n    \"creationTime\": \"2018-11-08T18:20:56.82-08:00\",\r\n    \"lastModifiedTime\": \"2018-11-08T18:20:57.163-08:00\",\r\n    \"timeZone\": \"UTC\",\r\n    \"advancedSchedule\": {\r\n      \"monthDays\": null,\r\n      \"monthlyOccurrences\": null,\r\n      \"weekDays\": null\r\n    }\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3?api-version=2015-10-31",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS9zY2hlZHVsZXMvU2NoZWR1bGUzP2FwaS12ZXJzaW9uPTIwMTUtMTAtMzE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "ee643208-5916-4926-ad86-a596d1114acd"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.7.3190.0",
-          "OSName/Windows",
-          "OSVersion/6.3.9600.0",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "ee643208-5916-4926-ad86-a596d1114acd"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11995"
-        ],
-        "x-ms-correlation-request-id": [
-          "69ada64a-8a27-44bc-a800-41a9b344bad3"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20181109T022057Z:69ada64a-8a27-44bc-a800-41a9b344bad3"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Fri, 09 Nov 2018 02:20:56 GMT"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.5"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "Content-Length": [
-          "737"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3\",\r\n  \"name\": \"Schedule3\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Schedules\",\r\n  \"properties\": {\r\n    \"description\": \"Hello Again\",\r\n    \"startTime\": \"2018-11-09T13:00:00-08:00\",\r\n    \"startTimeOffsetMinutes\": 0.0,\r\n    \"expiryTime\": \"2019-11-09T13:00:00-08:00\",\r\n    \"expiryTimeOffsetMinutes\": 0.0,\r\n    \"isEnabled\": true,\r\n    \"nextRun\": \"2018-11-09T13:00:00-08:00\",\r\n    \"nextRunOffsetMinutes\": 0.0,\r\n    \"interval\": 3,\r\n    \"frequency\": \"Week\",\r\n    \"creationTime\": \"2018-11-08T18:20:56.82-08:00\",\r\n    \"lastModifiedTime\": \"2018-11-08T18:20:57.163-08:00\",\r\n    \"timeZone\": \"UTC\",\r\n    \"advancedSchedule\": {\r\n      \"monthDays\": null,\r\n      \"monthlyOccurrences\": null,\r\n      \"weekDays\": null\r\n    }\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3?api-version=2015-10-31",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS9zY2hlZHVsZXMvU2NoZWR1bGUzP2FwaS12ZXJzaW9uPTIwMTUtMTAtMzE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "1ca8cf96-fc2b-446d-9a13-cbe5be70480c"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.7.3190.0",
-          "OSName/Windows",
-          "OSVersion/6.3.9600.0",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "1ca8cf96-fc2b-446d-9a13-cbe5be70480c"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11994"
         ],
         "x-ms-correlation-request-id": [
-          "04cf49d0-920f-4d4b-b501-ea27a8548476"
+          "5e7c7f45-daea-4df7-841e-8b0fae432ea0"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181109T022058Z:04cf49d0-920f-4d4b-b501-ea27a8548476"
+          "CENTRALINDIA:20210404T182302Z:5e7c7f45-daea-4df7-841e-8b0fae432ea0"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "Cache-Control": [
-          "no-cache"
-        ],
         "Date": [
-          "Fri, 09 Nov 2018 02:20:57 GMT"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.5"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
+          "Sun, 04 Apr 2021 18:23:01 GMT"
         ],
         "Content-Length": [
-          "733"
+          "683"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -573,133 +297,409 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3\",\r\n  \"name\": \"Schedule3\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Schedules\",\r\n  \"properties\": {\r\n    \"description\": \"Goodbye\",\r\n    \"startTime\": \"2018-11-09T13:00:00-08:00\",\r\n    \"startTimeOffsetMinutes\": 0.0,\r\n    \"expiryTime\": \"2019-11-09T13:00:00-08:00\",\r\n    \"expiryTimeOffsetMinutes\": 0.0,\r\n    \"isEnabled\": false,\r\n    \"nextRun\": \"2018-11-09T13:00:00-08:00\",\r\n    \"nextRunOffsetMinutes\": 0.0,\r\n    \"interval\": 3,\r\n    \"frequency\": \"Week\",\r\n    \"creationTime\": \"2018-11-08T18:20:56.82-08:00\",\r\n    \"lastModifiedTime\": \"2018-11-08T18:20:57.85-08:00\",\r\n    \"timeZone\": \"UTC\",\r\n    \"advancedSchedule\": {\r\n      \"monthDays\": null,\r\n      \"monthlyOccurrences\": null,\r\n      \"weekDays\": null\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3\",\r\n  \"name\": \"Schedule3\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Schedules\",\r\n  \"properties\": {\r\n    \"description\": \"Hello\",\r\n    \"startTime\": \"2021-04-05T13:00:00+05:30\",\r\n    \"startTimeOffsetMinutes\": 0.0,\r\n    \"expiryTime\": \"2022-04-05T13:00:00+05:30\",\r\n    \"expiryTimeOffsetMinutes\": 0.0,\r\n    \"isEnabled\": true,\r\n    \"nextRun\": \"2021-04-05T13:00:00+05:30\",\r\n    \"nextRunOffsetMinutes\": 0.0,\r\n    \"interval\": 1,\r\n    \"frequency\": \"Day\",\r\n    \"creationTime\": \"2021-04-04T23:53:01.9533333+05:30\",\r\n    \"lastModifiedTime\": \"2021-04-04T23:53:01.9533333+05:30\",\r\n    \"timeZone\": \"UTC\",\r\n    \"advancedSchedule\": null\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3?api-version=2015-10-31",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS9zY2hlZHVsZXMvU2NoZWR1bGUzP2FwaS12ZXJzaW9uPTIwMTUtMTAtMzE=",
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3?api-version=2020-01-13-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS9zY2hlZHVsZXMvU2NoZWR1bGUzP2FwaS12ZXJzaW9uPTIwMjAtMDEtMTMtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "8ac495fd-19f4-4132-b31e-1e3292af2025"
+          "a643b2e3-28b6-4bf2-958c-dc661ade3c46"
         ],
-        "accept-language": [
+        "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3190.0",
+          "FxVersion/4.6.29812.02",
           "OSName/Windows",
-          "OSVersion/6.3.9600.0",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.0.0"
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
         ]
       },
       "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
         "Pragma": [
           "no-cache"
         ],
         "x-ms-request-id": [
-          "8ac495fd-19f4-4132-b31e-1e3292af2025"
+          "a643b2e3-28b6-4bf2-958c-dc661ade3c46"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11993"
-        ],
-        "x-ms-correlation-request-id": [
-          "406003c0-dad3-4811-81c4-b186e50e9ebb"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20181109T022058Z:406003c0-dad3-4811-81c4-b186e50e9ebb"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Fri, 09 Nov 2018 02:20:57 GMT"
-        ],
         "Server": [
-          "Microsoft-IIS/8.5"
+          "Microsoft-IIS/10.0"
         ],
         "X-AspNet-Version": [
           "4.0.30319"
         ],
         "X-Powered-By": [
           "ASP.NET"
-        ],
-        "Content-Length": [
-          "733"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3\",\r\n  \"name\": \"Schedule3\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Schedules\",\r\n  \"properties\": {\r\n    \"description\": \"Goodbye\",\r\n    \"startTime\": \"2018-11-09T13:00:00-08:00\",\r\n    \"startTimeOffsetMinutes\": 0.0,\r\n    \"expiryTime\": \"2019-11-09T13:00:00-08:00\",\r\n    \"expiryTimeOffsetMinutes\": 0.0,\r\n    \"isEnabled\": false,\r\n    \"nextRun\": \"2018-11-09T13:00:00-08:00\",\r\n    \"nextRunOffsetMinutes\": 0.0,\r\n    \"interval\": 3,\r\n    \"frequency\": \"Week\",\r\n    \"creationTime\": \"2018-11-08T18:20:56.82-08:00\",\r\n    \"lastModifiedTime\": \"2018-11-08T18:20:57.85-08:00\",\r\n    \"timeZone\": \"UTC\",\r\n    \"advancedSchedule\": {\r\n      \"monthDays\": null,\r\n      \"monthlyOccurrences\": null,\r\n      \"weekDays\": null\r\n    }\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3?api-version=2015-10-31",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS9zY2hlZHVsZXMvU2NoZWR1bGUzP2FwaS12ZXJzaW9uPTIwMTUtMTAtMzE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "fb0283a6-3bfc-4646-81e4-cdfcf939203f"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.7.3190.0",
-          "OSName/Windows",
-          "OSVersion/6.3.9600.0",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "fb0283a6-3bfc-4646-81e4-cdfcf939203f"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11992"
         ],
         "x-ms-correlation-request-id": [
-          "adf967b8-825f-49b8-8130-51a60a9c5ca3"
+          "0f0c1930-de1f-4538-83ad-00ee7bf136c4"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181109T022058Z:adf967b8-825f-49b8-8130-51a60a9c5ca3"
+          "CENTRALINDIA:20210404T182304Z:0f0c1930-de1f-4538-83ad-00ee7bf136c4"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
+        "Date": [
+          "Sun, 04 Apr 2021 18:23:03 GMT"
+        ],
+        "Content-Length": [
+          "741"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3\",\r\n  \"name\": \"Schedule3\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Schedules\",\r\n  \"properties\": {\r\n    \"description\": \"Hello Again\",\r\n    \"startTime\": \"2021-04-05T13:00:00+05:30\",\r\n    \"startTimeOffsetMinutes\": 0.0,\r\n    \"expiryTime\": \"2022-04-05T13:00:00+05:30\",\r\n    \"expiryTimeOffsetMinutes\": 0.0,\r\n    \"isEnabled\": true,\r\n    \"nextRun\": \"2021-04-05T13:00:00+05:30\",\r\n    \"nextRunOffsetMinutes\": 0.0,\r\n    \"interval\": 3,\r\n    \"frequency\": \"Week\",\r\n    \"creationTime\": \"2021-04-04T23:53:01.9533333+05:30\",\r\n    \"lastModifiedTime\": \"2021-04-04T23:53:03.72+05:30\",\r\n    \"timeZone\": \"UTC\",\r\n    \"advancedSchedule\": {\r\n      \"monthDays\": null,\r\n      \"monthlyOccurrences\": null,\r\n      \"weekDays\": null\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3?api-version=2020-01-13-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS9zY2hlZHVsZXMvU2NoZWR1bGUzP2FwaS12ZXJzaW9uPTIwMjAtMDEtMTMtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "aac888d7-8c07-4708-90be-8cbbdc693800"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
+        ]
+      },
+      "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
         ],
-        "Date": [
-          "Fri, 09 Nov 2018 02:20:57 GMT"
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "aac888d7-8c07-4708-90be-8cbbdc693800"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
         ],
         "Server": [
-          "Microsoft-IIS/8.5"
+          "Microsoft-IIS/10.0"
         ],
         "X-AspNet-Version": [
           "4.0.30319"
         ],
         "X-Powered-By": [
           "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11994"
+        ],
+        "x-ms-correlation-request-id": [
+          "7668e37d-819c-449f-9708-546bb5e5b8f1"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20210404T182305Z:7668e37d-819c-449f-9708-546bb5e5b8f1"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sun, 04 Apr 2021 18:23:04 GMT"
+        ],
+        "Content-Length": [
+          "741"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"Schedule3\",\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Schedules\",\r\n  \"properties\": {\r\n    \"description\": \"Hello Again\",\r\n    \"startTime\": \"2021-04-05T13:00:00+05:30\",\r\n    \"startTimeOffsetMinutes\": 0.0,\r\n    \"expiryTime\": \"2022-04-05T13:00:00+05:30\",\r\n    \"expiryTimeOffsetMinutes\": 0.0,\r\n    \"isEnabled\": true,\r\n    \"nextRun\": \"2021-04-05T13:00:00+05:30\",\r\n    \"nextRunOffsetMinutes\": 0.0,\r\n    \"interval\": 3,\r\n    \"frequency\": \"Week\",\r\n    \"creationTime\": \"2021-04-04T23:53:01.9533333+05:30\",\r\n    \"lastModifiedTime\": \"2021-04-04T23:53:03.72+05:30\",\r\n    \"timeZone\": \"UTC\",\r\n    \"advancedSchedule\": {\r\n      \"monthDays\": null,\r\n      \"monthlyOccurrences\": null,\r\n      \"weekDays\": null\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3?api-version=2020-01-13-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS9zY2hlZHVsZXMvU2NoZWR1bGUzP2FwaS12ZXJzaW9uPTIwMjAtMDEtMTMtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "4d5df88c-0771-4225-ab3c-67b0f096e009"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "4d5df88c-0771-4225-ab3c-67b0f096e009"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11992"
+        ],
+        "x-ms-correlation-request-id": [
+          "9b0e1d89-36ab-4185-938e-faa390cc3ea6"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20210404T182306Z:9b0e1d89-36ab-4185-938e-faa390cc3ea6"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sun, 04 Apr 2021 18:23:05 GMT"
+        ],
+        "Content-Length": [
+          "741"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3\",\r\n  \"name\": \"Schedule3\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Schedules\",\r\n  \"properties\": {\r\n    \"description\": \"Hello Again\",\r\n    \"startTime\": \"2021-04-05T13:00:00+05:30\",\r\n    \"startTimeOffsetMinutes\": 0.0,\r\n    \"expiryTime\": \"2022-04-05T13:00:00+05:30\",\r\n    \"expiryTimeOffsetMinutes\": 0.0,\r\n    \"isEnabled\": true,\r\n    \"nextRun\": \"2021-04-05T13:00:00+05:30\",\r\n    \"nextRunOffsetMinutes\": 0.0,\r\n    \"interval\": 3,\r\n    \"frequency\": \"Week\",\r\n    \"creationTime\": \"2021-04-04T23:53:01.9533333+05:30\",\r\n    \"lastModifiedTime\": \"2021-04-04T23:53:03.72+05:30\",\r\n    \"timeZone\": \"UTC\",\r\n    \"advancedSchedule\": {\r\n      \"monthDays\": null,\r\n      \"monthlyOccurrences\": null,\r\n      \"weekDays\": null\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3?api-version=2020-01-13-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS9zY2hlZHVsZXMvU2NoZWR1bGUzP2FwaS12ZXJzaW9uPTIwMjAtMDEtMTMtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "4d5df88c-0771-4225-ab3c-67b0f096e009"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "4d5df88c-0771-4225-ab3c-67b0f096e009"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11991"
+        ],
+        "x-ms-correlation-request-id": [
+          "14d779ec-613d-40b7-bc08-e6459ac40da2"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20210404T182307Z:14d779ec-613d-40b7-bc08-e6459ac40da2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sun, 04 Apr 2021 18:23:07 GMT"
+        ],
+        "Content-Length": [
+          "738"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3\",\r\n  \"name\": \"Schedule3\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Schedules\",\r\n  \"properties\": {\r\n    \"description\": \"Goodbye\",\r\n    \"startTime\": \"2021-04-05T13:00:00+05:30\",\r\n    \"startTimeOffsetMinutes\": 0.0,\r\n    \"expiryTime\": \"2022-04-05T13:00:00+05:30\",\r\n    \"expiryTimeOffsetMinutes\": 0.0,\r\n    \"isEnabled\": false,\r\n    \"nextRun\": \"2021-04-05T13:00:00+05:30\",\r\n    \"nextRunOffsetMinutes\": 0.0,\r\n    \"interval\": 3,\r\n    \"frequency\": \"Week\",\r\n    \"creationTime\": \"2021-04-04T23:53:01.9533333+05:30\",\r\n    \"lastModifiedTime\": \"2021-04-04T23:53:06.92+05:30\",\r\n    \"timeZone\": \"UTC\",\r\n    \"advancedSchedule\": {\r\n      \"monthDays\": null,\r\n      \"monthlyOccurrences\": null,\r\n      \"weekDays\": null\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3?api-version=2020-01-13-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS9zY2hlZHVsZXMvU2NoZWR1bGUzP2FwaS12ZXJzaW9uPTIwMjAtMDEtMTMtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9dffa16e-dcaf-4057-977b-ebd5bd7eae2a"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "9dffa16e-dcaf-4057-977b-ebd5bd7eae2a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11993"
+        ],
+        "x-ms-correlation-request-id": [
+          "72c12e1c-8448-4661-955e-9f46c37aecc1"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20210404T182308Z:72c12e1c-8448-4661-955e-9f46c37aecc1"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sun, 04 Apr 2021 18:23:07 GMT"
+        ],
+        "Content-Length": [
+          "738"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3\",\r\n  \"name\": \"Schedule3\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Schedules\",\r\n  \"properties\": {\r\n    \"description\": \"Goodbye\",\r\n    \"startTime\": \"2021-04-05T13:00:00+05:30\",\r\n    \"startTimeOffsetMinutes\": 0.0,\r\n    \"expiryTime\": \"2022-04-05T13:00:00+05:30\",\r\n    \"expiryTimeOffsetMinutes\": 0.0,\r\n    \"isEnabled\": false,\r\n    \"nextRun\": \"2021-04-05T13:00:00+05:30\",\r\n    \"nextRunOffsetMinutes\": 0.0,\r\n    \"interval\": 3,\r\n    \"frequency\": \"Week\",\r\n    \"creationTime\": \"2021-04-04T23:53:01.9533333+05:30\",\r\n    \"lastModifiedTime\": \"2021-04-04T23:53:06.92+05:30\",\r\n    \"timeZone\": \"UTC\",\r\n    \"advancedSchedule\": {\r\n      \"monthDays\": null,\r\n      \"monthlyOccurrences\": null,\r\n      \"weekDays\": null\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3?api-version=2020-01-13-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS9zY2hlZHVsZXMvU2NoZWR1bGUzP2FwaS12ZXJzaW9uPTIwMjAtMDEtMTMtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d4406f25-429d-4131-a4d3-9155f5f3148a"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "d4406f25-429d-4131-a4d3-9155f5f3148a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "e20f9078-1c08-45dc-b66f-3535d550be27"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20210404T182310Z:e20f9078-1c08-45dc-b66f-3535d550be27"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sun, 04 Apr 2021 18:23:10 GMT"
         ],
         "Content-Length": [
           "32"
@@ -715,22 +715,22 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3?api-version=2015-10-31",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS9zY2hlZHVsZXMvU2NoZWR1bGUzP2FwaS12ZXJzaW9uPTIwMTUtMTAtMzE=",
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3?api-version=2020-01-13-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS9zY2hlZHVsZXMvU2NoZWR1bGUzP2FwaS12ZXJzaW9uPTIwMjAtMDEtMTMtcHJldmlldw==",
       "RequestMethod": "PATCH",
       "RequestBody": "{\r\n  \"name\": \"Schedule3\",\r\n  \"properties\": {\r\n    \"description\": \"Goodbye\",\r\n    \"isEnabled\": false\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c8095a22-97d1-4955-94e1-1fef5ddfc568"
+          "4d5df88c-0771-4225-ab3c-67b0f096e009"
         ],
-        "accept-language": [
+        "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3190.0",
+          "FxVersion/4.6.29812.02",
           "OSName/Windows",
-          "OSVersion/6.3.9600.0",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.0.0"
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -740,35 +740,20 @@
         ]
       },
       "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
         "Pragma": [
           "no-cache"
         ],
         "x-ms-request-id": [
-          "c8095a22-97d1-4955-94e1-1fef5ddfc568"
+          "4d5df88c-0771-4225-ab3c-67b0f096e009"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1197"
-        ],
-        "x-ms-correlation-request-id": [
-          "588c0a90-6c6a-487c-b735-ba3c0f189948"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20181109T022057Z:588c0a90-6c6a-487c-b735-ba3c0f189948"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Fri, 09 Nov 2018 02:20:57 GMT"
-        ],
         "Server": [
-          "Microsoft-IIS/8.5"
+          "Microsoft-IIS/10.0"
         ],
         "X-AspNet-Version": [
           "4.0.30319"
@@ -776,8 +761,23 @@
         "X-Powered-By": [
           "ASP.NET"
         ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1197"
+        ],
+        "x-ms-correlation-request-id": [
+          "afe09256-d271-486e-9acd-355ab3513d70"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20210404T182307Z:afe09256-d271-486e-9acd-355ab3513d70"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sun, 04 Apr 2021 18:23:07 GMT"
+        ],
         "Content-Length": [
-          "734"
+          "738"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -786,58 +786,43 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3\",\r\n  \"name\": \"Schedule3\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Schedules\",\r\n  \"properties\": {\r\n    \"description\": \"Goodbye\",\r\n    \"startTime\": \"2018-11-09T13:00:00-08:00\",\r\n    \"startTimeOffsetMinutes\": 0.0,\r\n    \"expiryTime\": \"2019-11-09T13:00:00-08:00\",\r\n    \"expiryTimeOffsetMinutes\": 0.0,\r\n    \"isEnabled\": false,\r\n    \"nextRun\": \"2018-11-09T13:00:00-08:00\",\r\n    \"nextRunOffsetMinutes\": 0.0,\r\n    \"interval\": 3,\r\n    \"frequency\": \"Week\",\r\n    \"creationTime\": \"2018-11-08T18:20:56.82-08:00\",\r\n    \"lastModifiedTime\": \"2018-11-08T18:20:57.163-08:00\",\r\n    \"timeZone\": \"UTC\",\r\n    \"advancedSchedule\": {\r\n      \"monthDays\": null,\r\n      \"monthlyOccurrences\": null,\r\n      \"weekDays\": null\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3\",\r\n  \"name\": \"Schedule3\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Schedules\",\r\n  \"properties\": {\r\n    \"description\": \"Goodbye\",\r\n    \"startTime\": \"2021-04-05T13:00:00+05:30\",\r\n    \"startTimeOffsetMinutes\": 0.0,\r\n    \"expiryTime\": \"2022-04-05T13:00:00+05:30\",\r\n    \"expiryTimeOffsetMinutes\": 0.0,\r\n    \"isEnabled\": false,\r\n    \"nextRun\": \"2021-04-05T13:00:00+05:30\",\r\n    \"nextRunOffsetMinutes\": 0.0,\r\n    \"interval\": 3,\r\n    \"frequency\": \"Week\",\r\n    \"creationTime\": \"2021-04-04T23:53:01.9533333+05:30\",\r\n    \"lastModifiedTime\": \"2021-04-04T23:53:03.72+05:30\",\r\n    \"timeZone\": \"UTC\",\r\n    \"advancedSchedule\": {\r\n      \"monthDays\": null,\r\n      \"monthlyOccurrences\": null,\r\n      \"weekDays\": null\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3?api-version=2015-10-31",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS9zY2hlZHVsZXMvU2NoZWR1bGUzP2FwaS12ZXJzaW9uPTIwMTUtMTAtMzE=",
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3?api-version=2020-01-13-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS9zY2hlZHVsZXMvU2NoZWR1bGUzP2FwaS12ZXJzaW9uPTIwMjAtMDEtMTMtcHJldmlldw==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ff5e2c52-8c0a-4e33-b726-d24564d40ac9"
+          "0cd89656-2e5b-493c-8dff-73c80972c789"
         ],
-        "accept-language": [
+        "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3190.0",
+          "FxVersion/4.6.29812.02",
           "OSName/Windows",
-          "OSVersion/6.3.9600.0",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.0.0"
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
         ]
       },
       "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
         "Pragma": [
           "no-cache"
         ],
         "x-ms-request-id": [
-          "ff5e2c52-8c0a-4e33-b726-d24564d40ac9"
+          "0cd89656-2e5b-493c-8dff-73c80972c789"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14999"
-        ],
-        "x-ms-correlation-request-id": [
-          "16494467-21fe-44df-8975-3d81ba320564"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20181109T022058Z:16494467-21fe-44df-8975-3d81ba320564"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Fri, 09 Nov 2018 02:20:57 GMT"
-        ],
         "Server": [
-          "Microsoft-IIS/8.5"
+          "Microsoft-IIS/10.0"
         ],
         "X-AspNet-Version": [
           "4.0.30319"
@@ -845,11 +830,26 @@
         "X-Powered-By": [
           "ASP.NET"
         ],
-        "Content-Length": [
-          "0"
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-correlation-request-id": [
+          "d4d26c49-0f3f-428d-93df-028eee9f442f"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20210404T182309Z:d4d26c49-0f3f-428d-93df-028eee9f442f"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sun, 04 Apr 2021 18:23:09 GMT"
         ],
         "Expires": [
           "-1"
+        ],
+        "Content-Length": [
+          "0"
         ]
       },
       "ResponseBody": "",

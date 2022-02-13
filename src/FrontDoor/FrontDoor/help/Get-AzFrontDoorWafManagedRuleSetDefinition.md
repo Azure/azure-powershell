@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
-online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/get-azfrontdoorwafmanagedrulesetdefinition
+online version: https://docs.microsoft.com/powershell/module/az.frontdoor/get-azfrontdoorwafmanagedrulesetdefinition
 schema: 2.0.0
 ---
 
@@ -33,7 +33,7 @@ Succeeded         DefaultRuleSet              preview-0.1    {LFI, RFI, RCE, PHP
 Succeeded         BotProtection               preview-0.1    {KnownBadBots}
 ```
 
-{{ Add example description here }}
+Get WAF managed rule set definitions.
 
 ## PARAMETERS
 

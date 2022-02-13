@@ -22,10 +22,11 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Collections;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Network
 {
-
+    [CmdletDeprecation(ReplacementCmdletName = "Remove-AzRouteServer")]
     [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualRouter", DefaultParameterSetName = VirtualRouterParameterSetNames.ByVirtualRouterName, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureVirtualRouterCommand : NetworkBaseCmdlet
     {

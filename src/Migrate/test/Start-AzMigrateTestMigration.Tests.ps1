@@ -13,12 +13,12 @@ while(-not $mockingPath) {
 
 Describe 'Start-AzMigrateTestMigration' {
     It 'ByIDVMwareCbt' {
-      $output = Start-AzMigrateTestMigration -TargetObjectID $env.srsMachinetmpx -TestNetworkId $env.srsTestNetworkId -SubscriptionId $env.srsSubscriptionId
+        $output = Start-AzMigrateTestMigration -TargetObjectID $env.srsMachinetmpx -TestNetworkId $env.srsTestNetworkId -SubscriptionId $env.srsSubscriptionId
         $output.Count | Should -BeGreaterOrEqual 1 
     }
 
     It 'ByInputObjectVMwareCbt' {
-       $obj = Get-AzMigrateServerReplication -TargetObjectID $env.srsMachinetmpx -SubscriptionId $env.srsSubscriptionId
+        $obj = Get-AzMigrateServerReplication -TargetObjectID $env.srsMachinetmpw -SubscriptionId $env.srsSubscriptionId
         $obj.Count | Should -BeGreaterOrEqual 1
         $output = Start-AzMigrateTestMigration -InputObject $obj -TestNetworkId $env.srsTestNetworkId -SubscriptionId $env.srsSubscriptionId
         $output.Count | Should -BeGreaterOrEqual 1 

@@ -53,7 +53,7 @@ function Test-GetLocationKindExchangeSeattle {
         $asnPeerName = makePeerAsn $asn
         $location = Get-AzPeeringLocation -Kind Exchange -PeeringLocation seattle
         Assert-NotNull $location
-        Assert-AreEqual 5 $location.Count
+        Assert-AreEqual 4 $location.Count
     }
     finally {
         Remove-AzPeerAsn -Name $asnPeerName -Force

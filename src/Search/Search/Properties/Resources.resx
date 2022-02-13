@@ -121,13 +121,22 @@
     <value>Create query key.</value>
   </data>
   <data name="CreateSearchService" xml:space="preserve">
-    <value>Create Search Service.</value>
+    <value>Create Azure Cognitive Search Service.</value>
+  </data>
+  <data name="CreateSharedPrivateLinkResource" xml:space="preserve">
+    <value>Create Azure Cognitive Search Service Shared Private Link Resource</value>
   </data>
   <data name="RegenerateAdminKey" xml:space="preserve">
-    <value>Regenerate {0} key for Search Service '{1}'.</value>
+    <value>Regenerate {0} key for Azure Cognitive Search Service '{1}'.</value>
   </data>
   <data name="RegenerateAdminKeyWarning" xml:space="preserve">
-    <value>Are you sure you want to regenerate '{0}' key for Search Service '{1}'?</value>
+    <value>Are you sure you want to regenerate '{0}' key for Azure Cognitive Search Service '{1}'?</value>
+  </data>
+  <data name="RemovePrivateEndpointConnection" xml:space="preserve">
+    <value>Remove Private Endpoint Connection '{0}'.</value>
+  </data>
+  <data name="RemovePrivateEndpointConnectionWarning" xml:space="preserve">
+    <value>Are you sure you want to remove Private Endpoint Connection '{0}'?</value>
   </data>
   <data name="RemoveQueryKey" xml:space="preserve">
     <value>Remove query key '{0}'.</value>
@@ -136,12 +145,24 @@
     <value>Are you sure you want to remove query key '{0}'?</value>
   </data>
   <data name="RemoveSearchService" xml:space="preserve">
-    <value>Remove Search Service '{0}'.</value>
+    <value>Remove Azure Cognitive Search Service '{0}'.</value>
   </data>
   <data name="RemoveSearchServiceWarning" xml:space="preserve">
-    <value>Are you sure you want to remove Search Service '{0}'?</value>
+    <value>Are you sure you want to remove Azure Cognitive Search Service '{0}'?</value>
+  </data>
+  <data name="RemoveSharedPrivateLinkResource" xml:space="preserve">
+    <value>Remove Shared Private Link Resource '{0}'.</value>
+  </data>
+  <data name="RemoveSharedPrivateLinkResourceWarning" xml:space="preserve">
+    <value>Are you sure you want to remove Shared Private Link Resource '{0}'?</value>
+  </data>
+  <data name="UpdatePrivateEndpointConnection" xml:space="preserve">
+    <value>Update Private Endpoint Connection.</value>
   </data>
   <data name="UpdateSearchService" xml:space="preserve">
-    <value>Update Search Service.</value>
+    <value>Update Azure Cognitive Search Service.</value>
+  </data>
+  <data name="UpdateSharedPrivateLinkResource" xml:space="preserve">
+    <value>Update Shared Private Link Resource</value>
   </data>
 </root>

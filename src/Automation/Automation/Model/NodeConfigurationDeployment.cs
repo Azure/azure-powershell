@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
             AutomationAccountName = accountName;
             NodeConfigurationName = nodeConfiguraionName;
 
-            if (automationJob != null && automationJob == null) return;
+            if (automationJob == null) return;
 
             if (automationJob != null)
             {

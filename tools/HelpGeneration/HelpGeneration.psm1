@@ -91,7 +91,7 @@ function Test-AzMarkdownHelp
         $HelpFolder = Get-Item $HelpFolderPath
         $Exceptions = Import-Csv "$SuppressedExceptionsPath\ValidateHelpIssues.csv"
         [String[]]$errors = @()
-        $MarkdownFiles = Get-ChildItem -Path $HelpFolder
+        $MarkdownFiles = Get-ChildItem -Path $HelpFolder -Include "*.md"
         $ModuleName = ($MarkdownFiles | where { $_.Name -notlike "*-*" }).Name -replace ".md",""
         foreach ($file in $MarkdownFiles)
         {
@@ -225,7 +225,7 @@ function Test-AzMarkdownHelp
                     }
                     "online version:"
                     {
-                        $onlineString = "https://docs.microsoft.com/en-us/powershell/module/$($ModuleName.ToLower())/$($CmdletName.ToLower())"
+                        $onlineString = "https://docs.microsoft.com/powershell/module/$($ModuleName.ToLower())/$($CmdletName.ToLower())"
                         $split = $content[$idx] -split "online version:"
                         if ([string]::IsNullOrWhiteSpace($split[1]) -or $split[1] -notlike "*$onlineString*")
                         {

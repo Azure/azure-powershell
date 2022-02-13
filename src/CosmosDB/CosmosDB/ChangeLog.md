@@ -20,6 +20,53 @@
 
 ## Upcoming Release
 
+## Version 1.5.1
+* Exposed BackupPolicyMigrationState as a part of Get-AzCosmosDBAccount response.
+  - This shew the status of a backup policy migration state when an account was being converted from peroidic backup mode to continuous.
+
+## Version 1.5.0
+* Fixed when a warning about the value of AnalyticalStorageSchemaType is displayed when no value was given.
+* Added support for managed Cassandra.
+
+## Version 1.4.0
+* Introduced Get-AzCosmosDBMongoDBBackupInformation to retrieve latest backup information for MongoDB.
+* Updated New-AzCosmosDBAccount, Update-AzCosmosDBAccount to accept BackupStorageRedundancy
+* Introduced Get-AzCosmosDBLocation to list Azure CosmosDB Account and its locations properties.
+
+## Version 1.3.1
+* Fixed a bug where the restore of deleted database accounts fail.
+
+## Version 1.3.0
+* This release introduces the cmdlets for the features of Continuous Backup(Point in time restore):
+  - Introduced support for creating accounts with continuous mode backup policy.
+  - Introduced support for Point in time restore for accounts with continuous mode backup policy.
+  - Introduced support to update the backup interval and backup retention for accounts with periodic mode backup policy.
+  - Introduced support to list the restorable resources in a live database account.
+  - Introduces support to specify analytical storage schema type on account creation/update.
+  - The following cmdlets are added:
+    - Restore-AzCosmosDBAccount, New-AzCosmosDBDatabaseToRestore, Get-AzCosmosDBRestorableDatabaseAccount,
+    - Get-AzCosmosDBSqlRestorableDatabase, Get-AzCosmosDBSqlRestorableContainer, Get-AzCosmosDBSqlRestorableResource,
+    - Get-AzCosmosDBMongoDBRestorableDatabase, Get-AzCosmosDBMongoDBRestorableCollection, Get-AzCosmosDBMongoDBRestorableResource.
+
+## Version 1.2.0
+* Introduced support for Sql data plane RBAC, allowing the creation, updating, removal, and retrieval of Role Definitions and Role Assignments
+  - The following cmdlets are added:
+    - Get-AzCosmosDBSqlRoleDefinition, Get-AzCosmosDBSqlRoleAssignment,
+    - New-AzCosmosDBSqlRoleDefinition, New-AzCosmosDBSqlRoleAssignment,
+    - Remove-AzCosmosDBSqlRoleDefinition, Remove-AzCosmosDBSqlRoleAssignment,
+    - Update-AzCosmosDBSqlRoleDefinition, Update-AzCosmosDBSqlRoleAssignment,
+    - New-AzCosmosDBSqlPermission
+
+## Version 1.1.0
+* Introduced NetworkAclBypass and NetworkAclBypassResourceIds for Database Account cmdlets.
+* Introduced ServerVersion parameter to Update-AzCosmosDBAccount.
+* Introduced BackupInterval and BackupRetention for Database Account cmdlets
+
+## Version 1.0.0
+* General availability of 'Az.CosmosDB' module
+* Restricting New-AzCosmosDBAccount cmdlet to make update calls to existing Database Accounts.
+* Introducing AnalyticalStorageTTL in SqlContainer.
+
 ## Version 0.2.0
 * Introduced support for throughput Migration, allowing custoers to migrate their resources from manually provisioned throughput to autoscaled throughput. Customers can use this feature using the following cmdlets:
     - 'Invoke-AzCosmosDBSqlContainerThroughputMigration', 

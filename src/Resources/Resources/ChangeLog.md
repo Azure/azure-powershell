@@ -19,12 +19,122 @@
 -->
 
 ## Upcoming Release
+
+## Version 5.3.0
+* Added proeprties `onPremisesLastSyncDateTime`, `onPremisesSyncEnabled` to `User` object [#16892]
+* Added additional properties when creating request for `New-AzADServicePrincipal` and `Update-AzADServicePrincipal` [#16847] [#16841]
+* Fixed `DisplayName` and `ApplicationId` for `New-AzADAppCredential` [#16764]
+* Enabled password reset for `Update-AzADUser` [#16869]
+* Updated parameter name `EnableAccount` to `AccountEnabled`, and added alias `EnableAccount` for `Update-AzADUser` [#16753] [#16795]
+* Fixed `Set-AzPolicyAssignment` does not remove `notScope` if empty [#15828]
+
+## Version 5.2.0
+* Fixed incorrect alias for `Get-AzADSpCredential` [#16592]
+* Fixed `ServicePrincipalName` and `InputObject` parameters for `Update-AzADServicePrincipal` [#16620]
+* Fixed example for `New-AzADAppCredential` [#16682]
+* Added parameter `Web` for `New-AzADApplication` [#16659]
+* Added secret text in response of `New-AzADApplication` and `New-AzADServicePrincipal` [#16659]
+* Deserialized the `Value` in `DeploymentVariable` as object array if its type is Array [#16523]
+* Fixed the usage of `SignInName` in `New-AzRoleAssignment` [#16627]
+* Formatted the output format of `DeploymentVariable`
+* Remove `isUser` operation filter from GetAzureProviderOperation Cmdlet
+
+## Version 5.1.0
+* Added 'Get-AzProviderPreviewFeature', 'Register-AzProviderPreviewFeature' and 'Unregister-AzProviderPreviewFeature' cmdlets.
+* Fixed a bug when running Get-AzPolicyAlias with empty value of NamespaceMatch parameter [#16370]
+* [Breaking change] Migrated from AAD Graph to Microsoft Graph
+* [Breaking change] Changed the returned `Id` in PSDenyAssignment from GUID string to fully qualified ID
+* Allowed parameter `Id` in `Get-AzDenyAssignment` to accept fully qualified ID
+* Added new cmdlet `Publish-AzBicepModule` for publishing Bicep modules
+* Added deprecation message for `AssignIdentity` parameter in `*-AzPolicyAssignment` cmdlets.
+* Added support for user assigned managed identities in policy assignments by adding `IdentityType` and `IdentityId` parameters to `*-AzPolicyAssignment` cmdlets.
+* Updated policy cmdlets to use new api version 2021-06-01 that introduces support for user assigned managed identities in policy assignments.
+* Narrowed API permission when get information about active directory object for *-AzRoleAssignment [#16054]
+
+## Version 4.4.1
+* Fixed a bug about the exitcode of Bicep [#16055]
+* Added breaking change warnings for AAD cmdlets
+* Added property `UIFormDefinition` to Template Spec Versions,  `Export-AzTemplateSpec` will now include a Template Spec Version's UIFormDefinition (if any) as part of the export.
+* Added error catching for role assignment creation fail while creating a Service Principal
+* Performance improvement for Get-AzPolicyAlias when -NamespaceMatch matches a single RP namespace
+
+## Version 4.4.0
+* Added a clearer error message for a case in which TemplateUri do not accept bicep file.
+* Fixed typos with ManagementGroups breaking change descriptions [#15819].
+* Fixed resource tags casing issue - resource tags casing not being preserved.
+* Updated to Microsoft.Azure.Management.Authorization 2.13.0-preview.
+
+## Version 4.3.1
+* Use JsonExtensions to serialize deserialize JSON objects to ensure the use of custom serialization settings [#15552]
+* Added support for `Unsupported` and `NoEffect` change types to deployment What-If cmdlets.
+* Added support for `ConsentToPermissions` Boolean parameter to Register-AzResourceProvider cmdlet.
+
+## Version 4.3.0
+* Fixed bug with `PSResource` where some constructors left `SubscriptionId` property unassigned/null.  [#10783]
+* Added support for creating and updating Template Spec in Bicep file [#15313]
+* Added `-ProceedIfNoChange` parameter to deployment create cmdlets.
+
+## Version 4.2.0
+* Allowed naming the deployment when testing deployments [#11497]
+
+## Version 4.1.1
+* Fixed issue that property `IdentifierUri` is cleaned by `Update-AzAdApplication` [#15134]
+
+## Version 4.1.0
+* Changed `-IdentifierUris` in `New-AzADApplication` to optional parameter
+* Removed generated `DisplayName` of ADApplication created by `New-AzADServicePrincipal`
+* Updated SDK to 3.13.1-preview to use GA TemplateSpecs API version
+* Added `AdditionalProperties` to PSADUser and PSADGroup [#14568]
+* Supported `CustomKeyIdentifier` in `New-AzADAppCredential` and `Get-AzADAppCredential` [#11457], [#13723]
+* Changed `MainTemplate` to be shown by the default formatter for Template Spec Versions
+* Added support for `NonComplianceMessage` to `*-AzPolicyAssignment` cmdlets
+
+## Version 3.5.0
+* Added parameter `ObjectType` for `New-AzRoleAssignment`
+* Fix version checking bug in `Set-AzRoleAssignment`
+* Updated to use SDK version 3.13-preview
+* Template Spec Versions: Renamed artifacts to linkedTemplates
+* Template Spec Versions: Renamed "template" to "mainTemplate"
+* Added support for UIFormDefinition for New-AzTemplateSpec and Set-AzTemplateSpec
+
+## Version 3.4.1
+* Added upcoming breaking change warnings on below cmdlets, because the value of `IdentifierUris` parameter will need verified domain.
+  - `New-AzADApplication`
+  - `Update-AzADApplication`
+  - `New-AzADServicePrincipal`
+  - `Update-AzADServicePrincipal`
+* Ignored Bicep warning message in error stream if exitcode equals zero.
+
+## Version 3.4.0
+* Redirected bicep message to verbose stream
+* Removed the logic of copying Bicep template file to temp folder.
+* Added support of policy exemption resource type
+* Fixed what-if functionality when using `-QueryString` parameter.
+* Normalized `-QueryString` starting with "?" for scenarios involving dynamic parameters.
+
+## Version 3.3.0
+* Added support for Azure resources deployment in Bicep language
+* Fixed issues with TemplateSpec deployments in `New-AzTenantDeployment` and `New-AzManagementGroupDeployment`
+* Added support for `-QueryString` parameter in `Test-Az*Deployments` cmdlets
+* Fixed issue with dynamic parameters when `New-Az*Deployments` is used with `-QueryString`
+* Added support for `-TemplateParameterObject` parameter while using `-TemplateSpecId` parameter in `New-Az*Deployments` cmdlets
+* Fixed the inaccurate error message received on trying to deploy a non-existent template spec
+* Added support for policy export format to ```New-AzPolicyDefinition -Policy```
+* Add support for property updates from ```Set-AzPolicyAssignment -InputObject```
+
+## Version 3.2.1
+* Removed principal type on New-AzRoleAssignment and Set-AzRoleAssignment because current mapping was breaking certain scenarios
+
+## Version 3.2.0
+* Added support for -QueryString parameter in New-Az*Deployments cmdlets
+
+## Version 3.1.1
 * Fixed a NullRef exception issue in `New-AzureManagedApplication` and `Set-AzureManagedApplication`.
 * Updated Azure Resource Manager SDK to use latest DeploymentScripts GA api-version: 2020-10-01.
 
 ## Version 3.1.0
 * Added `-Tag` parameter support to `Set-AzTemplateSpec` and `New-AzTemplateSpec`
-* Added Tag display support to default formatter for Template Specs 
+* Added Tag display support to default formatter for Template Specs
 
 ## Version 3.0.1
 * Fixed an issue where What-If shows two resource group scopes with different casing
@@ -32,6 +142,8 @@
 * Added culture info to parse methods
 * Fixed issue where attempts to deploy template specs from a subscription outside of the current subscription context would fail
 * Changed Double parser for version parser
+* Changed New-AzRoleAssignment to include principal type during calls
+* Changed Set-AzRoleAssignment to include principal type during calls
 
 ## Version 3.0.0
 * Fixed parsing bug
@@ -40,7 +152,7 @@
 * Fixed an issue where template deployment cmdlets does not preserve case for template parameters
 * Added a default API version to be used in `Export-AzResourceGroup` cmdlet
 * Added cmdlets for Template Specs (`Get-AzTemplateSpec`, `Set-AzTemplateSpec`, `New-AzTemplateSpec`, `Remove-AzTemplateSpec`, `Export-AzTemplateSpec`)
-* Added support for deploying Template Specs using existing deployment cmdlets (via the new -TemplateSpecId parameter) 
+* Added support for deploying Template Specs using existing deployment cmdlets (via the new -TemplateSpecId parameter)
 * Updated `Get-AzResourceGroupDeploymentOperation` to use the SDK.
 * Removed `-ApiVersion` parameter from `*-AzDeployment` cmdlets.
 
@@ -126,7 +238,7 @@
     - Remove-AzTag -ResourceId
 * Added new Tag cmdlet
     - Update-AzTag -ResourceId
-* Brought ScopedDeployment from SDK 3.3.0 
+* Brought ScopedDeployment from SDK 3.3.0
 
 ## Version 1.11.0
 * Refactored template deployment cmdlets

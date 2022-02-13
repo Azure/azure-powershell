@@ -14,8 +14,10 @@
 
 using System;
 using System.Management.Automation;
+
 using Microsoft.Azure.Commands.Aks.Models;
 using Microsoft.Azure.Commands.Aks.Properties;
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.ContainerService;
@@ -65,9 +67,11 @@ namespace Microsoft.Azure.Commands.Aks
         [PSArgumentCompleter("Linux", "Windows")]
         public string OsType { get; set; }
 
-        //Hide as PublicIp is going to GA around May
-        //[Parameter(Mandatory = false, HelpMessage = "Whether to enable public IP for nodes")]
-        //public SwitchParameter EnableNodePublicIp { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enable public IP for nodes.")]
+        public SwitchParameter EnableNodePublicIp { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The resource Id of public IP prefix for node pool.")]
+        public string NodePublicIPPrefixID { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "ScaleSetPriority to be used to specify virtual machine scale set priority. Default to regular.")]
         [PSArgumentCompleter("Low", "Regular")]
@@ -80,6 +84,11 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "Represents types of an node pool. Possible values include: 'VirtualMachineScaleSets', 'AvailabilitySet'")]
         [PSArgumentCompleter("AvailabilitySet", "VirtualMachineScaleSets")]
         public string VmSetType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Availability zones for nodes. Must use VirtualMachineScaleSets AgentPoolType.")]
+        public string[] AvailabilityZone { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Create node pool even if it already exists")]
         public SwitchParameter Force { get; set; }
@@ -107,7 +116,10 @@ namespace Microsoft.Azure.Commands.Aks
             var msg = $"{Name} for {ClusterName} in {ResourceGroupName}";
 
             if (GetAgentPoolObject() != null)
-                throw new PSInvalidOperationException(Resources.AgentPoolAlreadyExistsError);
+                throw new AzPSArgumentException(
+                    Resources.AgentPoolAlreadyExistsError,
+                    nameof(Name),
+                    desensitizedMessage: Resources.AgentPoolAlreadyExistsError);
 
             if (ShouldProcess(msg, Resources.CreatingClusterAgentPool))
             {
@@ -150,17 +162,25 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 agentPool.EnableAutoScaling = EnableAutoScaling.ToBool();
             }
-            //if(EnableNodePublicIp.IsPresent)
-            //{
-            //    agentPool.EnableNodePublicIP = EnableNodePublicIp.ToBool();
-            //}
-            if(this.IsParameterBound(c => c.ScaleSetEvictionPolicy))
+            if (EnableNodePublicIp.IsPresent)
+            {
+                agentPool.EnableNodePublicIP = EnableNodePublicIp.ToBool();
+            }
+            if (this.IsParameterBound(c => c.NodePublicIPPrefixID))
+            {
+                agentPool.NodePublicIPPrefixID = NodePublicIPPrefixID;
+            }
+            if (this.IsParameterBound(c => c.ScaleSetEvictionPolicy))
             {
                 agentPool.ScaleSetEvictionPolicy = ScaleSetEvictionPolicy;
             }
             if(this.IsParameterBound(c => c.ScaleSetPriority))
             {
                 agentPool.ScaleSetPriority = ScaleSetPriority;
+            }
+            if (this.IsParameterBound(c => c.AvailabilityZone))
+            {
+                agentPool.AvailabilityZones = AvailabilityZone;
             }
 
             return agentPool;
@@ -186,15 +206,28 @@ namespace Microsoft.Azure.Commands.Aks
             if (string.Equals(this.OsType, "Windows"))
             {
                 if (VmSetType != "VirtualMachineScaleSets")
-                    throw new PSInvalidOperationException(Resources.VmSetTypeIsIncorrectForWindowsPool);
+                {
+                    throw new AzPSArgumentException(
+                        Resources.VmSetTypeIsIncorrectForWindowsPool,
+                        nameof(VmSetType),
+                        desensitizedMessage: Resources.VmSetTypeIsIncorrectForWindowsPool);
+                }
 
                 if (Name?.Length > 6)
-                    throw new PSInvalidOperationException(Resources.WindowsNodePoolNameLengthLimitation);
+                {
+                    throw new AzPSArgumentException(
+                        Resources.WindowsNodePoolNameLengthLimitation,
+                        nameof(Name),
+                        desensitizedMessage: Resources.WindowsNodePoolNameLengthLimitation);
+                }
             }
 
             if ((this.IsParameterBound(c => c.MinCount) || this.IsParameterBound(c => c.MaxCount) || this.EnableAutoScaling.IsPresent) &&
                 !(this.IsParameterBound(c => c.MinCount) && this.IsParameterBound(c => c.MaxCount) && this.EnableAutoScaling.IsPresent))
-                throw new PSInvalidCastException(Resources.NodePoolAutoScalingParametersMustAppearTogether);
+                throw new AzPSArgumentException(
+                    Resources.NodePoolAutoScalingParametersMustAppearTogether,
+                    nameof(EnableAutoScaling),
+                    desensitizedMessage: Resources.NodePoolAutoScalingParametersMustAppearTogether);
         }
     }
 }

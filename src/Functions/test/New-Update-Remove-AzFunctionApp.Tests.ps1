@@ -27,7 +27,7 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
 
         try
         {
-            Write-Verbose "Create function app with a SystemAssigned manage identity" -Verbose
+            Write-Verbose "Create function app with a SystemAssigned managed identity" -Verbose
             New-AzFunctionApp -Name $functionName `
                               -ResourceGroupName $env.resourceGroupNameWindowsPremium `
                               -PlanName $env.planNameWorkerTypeWindows `
@@ -66,7 +66,7 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
             $plan.Name | Should -Be $planName
 
             Write-Verbose "Update function app plan hosting plan" -Verbose
-            Update-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium -PlanName $planName
+            Update-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium -PlanName $planName -Force
 
             $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium
             $functionApp.OSType | Should -Be "Windows"
@@ -81,8 +81,8 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
             }
 
             # Remove the managed identity from the function app - run Update-AzFunctionApp
-            Write-Verbose "Update function -> remove SystemAssigned manage identity" -Verbose
-            Update-AzFunctionApp -InputObject $functionApp -IdentityType None
+            Write-Verbose "Update function -> remove SystemAssigned managed identity" -Verbose
+            Update-AzFunctionApp -InputObject $functionApp -IdentityType None -Force
             
             $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium
             $functionApp.OSType | Should -Be "Windows"
@@ -93,7 +93,7 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
             # Update application insigts
             Write-Verbose "Update function app ApplicationInsights via -ApplicationInsightsName" -Verbose
             $newApplInsights = $env.newApplInsights
-            Update-AzFunctionApp -InputObject $functionApp -ApplicationInsightsName $newApplInsights.Name
+            Update-AzFunctionApp -InputObject $functionApp -ApplicationInsightsName $newApplInsights.Name -Force
 
             $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium
             $functionApp.OSType | Should -Be "Windows"
@@ -115,10 +115,16 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
             {
                 Remove-AzFunctionApp -InputObject $functionApp -Force -ErrorAction SilentlyContinue
             }
+
+            $plan = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $env.resourceGroupNameWindowsPremium -ErrorAction SilentlyContinue
+            if ($plan)
+            {
+                Remove-AzFunctionAppPlan -InputObject $plan -Force -ErrorAction SilentlyContinue
+            }
         }
     }
 
-    It "Validate New-AzFunctionAppPlan -AsJob, Update-AzFunctionApp -AsJob and Remove-AzFunctionApp" {
+    It "Validate New-AzFunctionApp -AsJob, Update-AzFunctionApp -AsJob and Remove-AzFunctionApp" {
 
         $functionName = $env.functionNamePowerShell
 
@@ -145,8 +151,8 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
             $functionApp.Runtime | Should -Be "PowerShell"
             $functionApp.AppServicePlan | Should -Be $env.planNameWorkerTypeWindows
 
-            Write-Verbose "Update function app -> set a SystemAssigned manage identity" -Verbose
-            $updateFunctionAppJob = Update-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium -IdentityType SystemAssigned -AsJob
+            Write-Verbose "Update function app -> enable a SystemAssigned managed identity" -Verbose
+            $updateFunctionAppJob = Update-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium -IdentityType SystemAssigned -Force -AsJob
             $result = WaitForJobToComplete -JobId $updateFunctionAppJob.Id
             $result.State | Should -Be "Completed"
             $result | Remove-Job -ErrorAction SilentlyContinue
@@ -156,6 +162,59 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
             $functionApp.Runtime | Should -Be "PowerShell"
             $functionApp.IdentityType | Should -Be "SystemAssigned"
             $functionApp.AppServicePlan | Should -Be $env.planNameWorkerTypeWindows
+
+            Write-Verbose "Remove function app" -Verbose
+            Remove-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium -Force
+
+            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium
+            $functionApp | Should -Be $null
+        }
+        finally
+        {
+            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium -ErrorAction SilentlyContinue
+            if ($functionApp)
+            {
+                Remove-AzFunctionApp -InputObject $functionApp -Force -ErrorAction SilentlyContinue
+            }
+        }
+    }
+
+    It "Create a function app and then use Update-AzFunctionApp to enable a UserAssigned managed identity for the app" {
+
+        $functionName = $env.functionNamePowerShell
+        $identityInfo = $env.identityInfo
+
+        try
+        {
+            Write-Verbose "Creating function app" -Verbose
+            New-AzFunctionApp -Name $functionName `
+                              -ResourceGroupName $env.resourceGroupNameWindowsPremium `
+                              -PlanName $env.planNameWorkerTypeWindows `
+                              -StorageAccount $env.storageAccountWindows `
+                              -OSType "Windows" `
+                              -Runtime "PowerShell" `
+                              -RuntimeVersion 7.0 `
+                              -FunctionsVersion 3
+
+            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium
+            $functionApp.OSType | Should -Be "Windows"
+            $functionApp.Runtime | Should -Be "PowerShell"
+            $functionApp.AppServicePlan | Should -Be $env.planNameWorkerTypeWindows
+
+            Write-Verbose "Update function app -> enable a UserAssigned managed identity for the app" -Verbose
+            Update-AzFunctionApp -Name $functionName `
+                                 -ResourceGroupName $env.resourceGroupNameWindowsPremium `
+                                 -IdentityType UserAssigned `
+                                 -IdentityID $identityInfo.Id `
+                                 -Force
+
+            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium
+            $functionApp.OSType | Should -Be "Windows"
+            $functionApp.Runtime | Should -Be "PowerShell"
+            $functionApp.IdentityType | Should -Be "UserAssigned"
+
+            $userAssignedIdentity = $functionApp.IdentityUserAssignedIdentity.AdditionalProperties
+            $userAssignedIdentity.ContainsKey($identityInfo.Id) | Should -Be $true
 
             Write-Verbose "Remove function app" -Verbose
             Remove-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium -Force

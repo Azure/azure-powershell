@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Extensions;
+    using System;
 
     /// <summary>Description for Updates the configuration of an app.</summary>
     /// <remarks>
@@ -369,7 +370,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Gets or sets a flag indicating whether the Push endpoint is enabled.",
         SerializedName = @"isPushEnabled",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter IsPushEnabled { get => SiteConfigBody.IsPushEnabled; set => SiteConfigBody.IsPushEnabled = value; }
+        public global::System.Management.Automation.SwitchParameter IsPushEnabled { get => SiteConfigBody.IsPushEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => SiteConfigBody.IsPushEnabled = value; }
 
         /// <summary>Java container.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Java container.")]
@@ -492,50 +493,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         SerializedName = @"logsDirectorySizeLimit",
         PossibleTypes = new [] { typeof(int) })]
         public int LogsDirectorySizeLimit { get => SiteConfigBody.LogsDirectorySizeLimit ?? default(int); set => SiteConfigBody.LogsDirectorySizeLimit = value; }
-
-        /// <summary>Algorithm used for decryption.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Algorithm used for decryption.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Algorithm used for decryption.",
-        SerializedName = @"decryption",
-        PossibleTypes = new [] { typeof(string) })]
-        public string MachineKeyDecryption { get => SiteConfigBody.MachineKeyDecryption ?? null; set => SiteConfigBody.MachineKeyDecryption = value; }
-
-        /// <summary>Decryption key.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Decryption key.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Decryption key.",
-        SerializedName = @"decryptionKey",
-        PossibleTypes = new [] { typeof(string) })]
-        public string MachineKeyDecryptionKey { get => SiteConfigBody.MachineKeyDecryptionKey ?? null; set => SiteConfigBody.MachineKeyDecryptionKey = value; }
-
-        /// <summary>MachineKey validation.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "MachineKey validation.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"MachineKey validation.",
-        SerializedName = @"validation",
-        PossibleTypes = new [] { typeof(string) })]
-        public string MachineKeyValidation { get => SiteConfigBody.MachineKeyValidation ?? null; set => SiteConfigBody.MachineKeyValidation = value; }
-
-        /// <summary>Validation key.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Validation key.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Validation key.",
-        SerializedName = @"validationKey",
-        PossibleTypes = new [] { typeof(string) })]
-        public string MachineKeyValidationKey { get => SiteConfigBody.MachineKeyValidationKey ?? null; set => SiteConfigBody.MachineKeyValidationKey = value; }
 
         /// <summary>Managed pipeline mode.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Managed pipeline mode.")]
@@ -1111,7 +1068,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
                     case Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Events.Information:
                     {
                         var data = messageData();
-                        WriteInformation(data, new[] { data.Message });
+                        WriteInformation(data.Message, new string[]{});
                         return ;
                     }
                     case Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Events.Debug:

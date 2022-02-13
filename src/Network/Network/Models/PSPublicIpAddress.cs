@@ -20,6 +20,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
     public class PSPublicIpAddress : PSTopLevelResource
     {
+        public PSExtendedLocation ExtendedLocation { get; set; }
+
         [Ps1Xml(Target = ViewControl.Table)]
         public string PublicIpAllocationMethod { get; set; }
 
@@ -75,6 +77,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string PublicIpPrefixText
         {
             get { return JsonConvert.SerializeObject(PublicIpPrefix, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string ExtendedLocationText
+        {
+            get { return JsonConvert.SerializeObject(ExtendedLocation, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

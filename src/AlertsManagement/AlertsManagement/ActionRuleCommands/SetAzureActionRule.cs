@@ -335,7 +335,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                                 endTime: SuppressionEndTime.Split(' ')[1]
                                 );
 
-                            if (ReccurentValue.Length > 0)
+                            if (ReccurentValue?.Length > 0)
                             {
                                 config.Schedule.RecurrenceValues = ReccurentValue.OfType<int?>().ToList();
                             }

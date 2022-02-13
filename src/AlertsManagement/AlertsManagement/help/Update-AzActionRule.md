@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement.dll-Help.xml
 Module Name: Az.AlertsManagement
-online version: https://docs.microsoft.com/en-us/powershell/module/az.alertsmanagement/update-azactionrule
+online version: https://docs.microsoft.com/powershell/module/az.alertsmanagement/update-azactionrule
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ Update-AzActionRule -InputObject <PSActionRule> [-Status <String>] [-Tag <Hashta
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzActionRule -ResourceGroupName "test-rg" -Name "Test-ActionRule" -Status "Disabled"
+Update-AzActionRule -ResourceGroupName "test-rg" -Name "Test-ActionRule" -Status "Disabled"
 ```
 
 This cmdlet disables the action rule. 

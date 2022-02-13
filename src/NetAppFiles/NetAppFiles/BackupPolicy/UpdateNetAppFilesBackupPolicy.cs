@@ -23,6 +23,7 @@ using System.Globalization;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Collections.Generic;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
 {
@@ -31,6 +32,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesBackupPolicy",
         SupportsShouldProcess = true,
         DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSNetAppFilesBackupPolicy))]
+    [CmdletOutputBreakingChange(typeof(PSNetAppFilesBackupPolicy), DeprecatedOutputProperties = new string[] { "YearlyBackupsToKeep" })]
     [Alias("Update-AnfBackupPolicy")]
     public class UpdateAzureRmNetAppFilesBackupPolicy : AzureNetAppFilesCmdletBase
     {
@@ -97,6 +99,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
         [Parameter(
             Mandatory = false,
             HelpMessage = "Yearly backups count to keep")]
+        [CmdletParameterBreakingChange("YearlyBackupsToKeep", ChangeDescription = "Parameter YearlyBackupsToKeep is invalid and preserved for compatibility.")]
         [ValidateNotNullOrEmpty]
         public int? YearlyBackupsToKeep { get; set; }
 
@@ -174,8 +177,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
                 Tags = tagPairs,
                 DailyBackupsToKeep = DailyBackupsToKeep,
                 WeeklyBackupsToKeep = WeeklyBackupsToKeep,
-                MonthlyBackupsToKeep = MonthlyBackupsToKeep,
-                YearlyBackupsToKeep = YearlyBackupsToKeep
+                MonthlyBackupsToKeep = MonthlyBackupsToKeep
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))

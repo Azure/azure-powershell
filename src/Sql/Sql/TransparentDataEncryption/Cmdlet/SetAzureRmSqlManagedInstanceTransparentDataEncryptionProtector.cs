@@ -64,7 +64,16 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
             HelpMessage = "The Azure Key Vault KeyId.")]
         [ValidateNotNullOrEmpty]
         public string KeyId { get; set; }
-        
+
+        /// <summary>
+        /// Gets or sets the encryption protector key auto rotation status
+        /// </summary>
+        [Parameter(Mandatory = false,
+        ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Key Auto Rotation status")]
+        [ValidateNotNullOrEmpty]
+        public bool? AutoRotationEnabled { get; set; }
+
         /// <summary>
         /// Defines whether it is ok to skip the requesting of setting Transparent Data Encryption protector confirmation
         /// </summary>
@@ -101,7 +110,8 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
                 resourceGroupName: this.ResourceGroupName, 
                 managedInstanceName: this.InstanceName, 
                 type: this.Type, 
-                keyId: this.KeyId));
+                keyId: this.KeyId,
+                autoRotatonEnabled: this.AutoRotationEnabled));
 
             return newEntity;
         }

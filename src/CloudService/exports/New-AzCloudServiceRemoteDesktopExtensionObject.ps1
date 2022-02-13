@@ -24,12 +24,12 @@ PS C:\> $expiration = (Get-Date).AddYears(1)
 PS C:\> $extension = New-AzCloudServiceRemoteDesktopExtensionObject -Name 'RDPExtension' -Credential $credential -Expiration $expiration -TypeHandlerVersion '1.2.1'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.Extension
+Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.Extension
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.CloudService/new-AzCloudServiceExtensionObject
+https://docs.microsoft.com/powershell/module/az.cloudservice/new-azcloudserviceremotedesktopextensionobject
 #>
 function New-AzCloudServiceRemoteDesktopExtensionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.Extension])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.Extension])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Position=0, Mandatory)]
@@ -79,6 +79,8 @@ begin {
         $mapping = @{
             __AllParameterSets = 'Az.CloudService.custom\New-AzCloudServiceRemoteDesktopExtensionObject';
         }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

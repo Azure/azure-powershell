@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: CAA3E6A9-7E1A-4D57-A269-0B2D3D9C3BEC
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azvmsqlserverextension
+online version: https://docs.microsoft.com/powershell/module/az.compute/get-azvmsqlserverextension
 schema: 2.0.0
 ---
 
@@ -24,8 +24,11 @@ The **Get-AzVMSqlServerExtension** cmdlet gets the settings of the SQL Server in
 ## EXAMPLES
 
 ### Example 1: Get the settings of a SQL Server extension on a virtual machine
+```powershell
+Get-AzVMSqlServerExtension -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM07"
 ```
-PS C:\> Get-AzVMSqlServerExtension -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM07"
+
+```output
 ExtensionName        : SqlIaaSAgent
 Publisher            : Microsoft.SqlServer.Management
 Version              : 1.0
@@ -38,8 +41,11 @@ AutoBackupSettings   : Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Ex
 This command gets the settings of the SQL Server extension on a virtual machine named ContosoVM07.
 
 ### Example 2: Get the settings by using the pipeline
+```powershell
+Get-AzVM -ServiceName "Service08" -Name "ContosoVM22" | Get-AzVMSqlServerExtension
 ```
-PS C:\> Get-AzVM -ServiceName "Service08" -Name "ContosoVM22" | Get-AzVMSqlServerExtension
+
+```output
 ExtensionName        : SqlIaaSAgent
 Publisher            : Microsoft.SqlServer.Management
 Version              : 1.0
@@ -54,8 +60,11 @@ The command passes the results to the current cmdlet by using the pipeline opera
 The current command gets the settings of the SQL Server IaaS Agent on that virtual machine.
 
 ### Example 3: Get the settings of specific SQL Server version
+```powershell
+Get-AzVMSqlServerExtension -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM07" -Version "1.0"
 ```
-PS C:\> Get-AzVMSqlServerExtension -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM07" -Version "1.0"
+
+```output
 ExtensionName        : SqlIaaSAgent
 Publisher            : Microsoft.SqlServer.Management
 Version              : 1.0

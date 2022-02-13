@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.CustomProviders
-online version: https://docs.microsoft.com/en-us/powershell/module/az.customproviders/get-azcustomprovider
+online version: https://docs.microsoft.com/powershell/module/az.customproviders/get-azcustomprovider
 schema: 2.0.0
 ---
 

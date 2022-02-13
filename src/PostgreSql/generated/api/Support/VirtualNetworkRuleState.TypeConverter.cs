@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
 {
 
-    /// <summary>TypeConverter implementation for VirtualNetworkRuleState.</summary>
+    /// <summary>Virtual Network Rule State</summary>
     public partial class VirtualNetworkRuleStateTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

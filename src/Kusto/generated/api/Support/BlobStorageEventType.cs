@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
+    /// <summary>The name of blob storage event type to process.</summary>
     public partial struct BlobStorageEventType :
         System.IEquatable<BlobStorageEventType>
     {
@@ -27,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
         /// <param name="value">the value to convert to an instance of <see cref="BlobStorageEventType" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new BlobStorageEventType(System.Convert.ToString(value));
+            return new BlobStorageEventType(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type BlobStorageEventType</summary>

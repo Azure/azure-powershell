@@ -27,7 +27,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         /// <param name="value">the value to convert to an instance of <see cref="SignedResourceTypes" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new SignedResourceTypes(System.Convert.ToString(value));
+            return new SignedResourceTypes(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type SignedResourceTypes</summary>

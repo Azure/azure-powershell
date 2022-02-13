@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "AzureDns".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("AzureDns", "AzureDns", global::System.Management.Automation.CompletionResultType.ParameterValue, "AzureDns");
+                yield return new global::System.Management.Automation.CompletionResult("'AzureDns'", "AzureDns", global::System.Management.Automation.CompletionResultType.ParameterValue, "AzureDns");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "DefaultDomainRegistrarDns".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("DefaultDomainRegistrarDns", "DefaultDomainRegistrarDns", global::System.Management.Automation.CompletionResultType.ParameterValue, "DefaultDomainRegistrarDns");
+                yield return new global::System.Management.Automation.CompletionResult("'DefaultDomainRegistrarDns'", "DefaultDomainRegistrarDns", global::System.Management.Automation.CompletionResultType.ParameterValue, "DefaultDomainRegistrarDns");
             }
         }
     }

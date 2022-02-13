@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azapplicationgatewayidentity
+online version: https://docs.microsoft.com/powershell/module/az.network/remove-azapplicationgatewayidentity
 schema: 2.0.0
 ---
 

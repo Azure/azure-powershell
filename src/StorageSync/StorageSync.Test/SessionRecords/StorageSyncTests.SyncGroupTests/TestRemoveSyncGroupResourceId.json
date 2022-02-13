@@ -1,22 +1,22 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/1dfbd0ca-8f09-4063-8b4d-85ca8f8a383b/providers/Microsoft.Resources?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWRmYmQwY2EtOGYwOS00MDYzLThiNGQtODVjYThmOGEzODNiL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVzb3VyY2VzP2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestUri": "/subscriptions/7b96cb02-4663-40f4-9a89-603d3849e46a/providers/Microsoft.Resources?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2I5NmNiMDItNDY2My00MGY0LTlhODktNjAzZDM4NDllNDZhL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVzb3VyY2VzP2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "175bd767-6bd5-4da9-87fa-61366bae452c"
+          "b843c0bd-8fc0-49a7-84d6-c243a0ed9eb3"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28207.03",
+          "FxVersion/4.6.30321.06",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.14393.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.16"
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.43"
         ]
       },
       "ResponseHeaders": {
@@ -27,16 +27,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11989"
+          "11991"
         ],
         "x-ms-request-id": [
-          "cd2d6944-947c-4664-85b7-41896b9de268"
+          "0199f20e-0951-4a52-9eea-75f7dfd4f0bd"
         ],
         "x-ms-correlation-request-id": [
-          "cd2d6944-947c-4664-85b7-41896b9de268"
+          "0199f20e-0951-4a52-9eea-75f7dfd4f0bd"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200623T072302Z:cd2d6944-947c-4664-85b7-41896b9de268"
+          "WESTCENTRALUS:20210811T001227Z:0199f20e-0951-4a52-9eea-75f7dfd4f0bd"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -45,7 +45,7 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 23 Jun 2020 07:23:02 GMT"
+          "Wed, 11 Aug 2021 00:12:27 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -54,29 +54,29 @@
           "-1"
         ],
         "Content-Length": [
-          "10899"
+          "13189"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1dfbd0ca-8f09-4063-8b4d-85ca8f8a383b/providers/Microsoft.Resources\",\r\n  \"namespace\": \"Microsoft.Resources\",\r\n  \"authorization\": {\r\n    \"applicationId\": \"3b990c8b-9607-4c2a-8b04-1d41985facca\"\r\n  },\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"tenants\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2020-01-01\",\r\n        \"2019-09-01\",\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-09-01\",\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"operationresults\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-09-01\",\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"notifyResourceJobs\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-09-01\",\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"tags\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-10-01\",\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\"\r\n      ],\r\n      \"capabilities\": \"SupportsExtension\"\r\n    },\r\n    {\r\n      \"resourceType\": \"checkPolicyCompliance\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"providers\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"checkresourcename\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"calculateTemplateHash\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-09-01\",\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"resources\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-09-01\",\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-10-01\",\r\n        \"2019-09-01\",\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/resources\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-09-01\",\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/providers\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/operationresults\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"resourceGroups\",\r\n      \"locations\": [\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"West Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia Southeast\",\r\n        \"Australia East\",\r\n        \"West India\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Australia Central\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/resourceGroups\",\r\n      \"locations\": [\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"West Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia Southeast\",\r\n        \"Australia East\",\r\n        \"West India\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Australia Central\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/resourcegroups/resources\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/locations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/tagnames\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/tagNames/tagValues\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"deployments\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-09-01\",\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"deployments/operations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-09-01\",\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"links\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ],\r\n      \"capabilities\": \"SupportsExtension\"\r\n    },\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2015-01-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"deploymentScripts\",\r\n      \"locations\": [\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"Canada Central\",\r\n        \"East US 2\",\r\n        \"East US\",\r\n        \"Central US\",\r\n        \"North Central US\",\r\n        \"UK South\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"Japan East\",\r\n        \"Korea Central\",\r\n        \"North Europe\",\r\n        \"West Central US\",\r\n        \"West Europe\",\r\n        \"West US 2\",\r\n        \"West US\",\r\n        \"South Central US\",\r\n        \"Canada East\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2019-10-01-preview\"\r\n      ],\r\n      \"capabilities\": \"None\"\r\n    },\r\n    {\r\n      \"resourceType\": \"deploymentScripts/logs\",\r\n      \"locations\": [\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"Canada Central\",\r\n        \"East US 2\",\r\n        \"East US\",\r\n        \"Central US\",\r\n        \"North Central US\",\r\n        \"UK South\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"Japan East\",\r\n        \"Korea Central\",\r\n        \"North Europe\",\r\n        \"West Central US\",\r\n        \"West Europe\",\r\n        \"West US 2\",\r\n        \"West US\",\r\n        \"South Central US\",\r\n        \"Canada East\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2019-10-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/deploymentScriptOperationResults\",\r\n      \"locations\": [\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"Canada Central\",\r\n        \"East US 2\",\r\n        \"East US\",\r\n        \"Central US\",\r\n        \"North Central US\",\r\n        \"UK South\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"Japan East\",\r\n        \"Korea Central\",\r\n        \"North Europe\",\r\n        \"West Central US\",\r\n        \"West Europe\",\r\n        \"West US 2\",\r\n        \"West US\",\r\n        \"South Central US\",\r\n        \"Canada East\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2019-10-01-preview\"\r\n      ]\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/7b96cb02-4663-40f4-9a89-603d3849e46a/providers/Microsoft.Resources\",\r\n  \"namespace\": \"Microsoft.Resources\",\r\n  \"authorization\": {\r\n    \"applicationId\": \"3b990c8b-9607-4c2a-8b04-1d41985facca\"\r\n  },\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"tenants\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2020-01-01\",\r\n        \"2019-09-01\",\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-09-01\",\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"operationresults\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-09-01\",\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"notifyResourceJobs\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-09-01\",\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"tags\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-10-01\",\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\"\r\n      ],\r\n      \"capabilities\": \"SupportsExtension\"\r\n    },\r\n    {\r\n      \"resourceType\": \"checkPolicyCompliance\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"providers\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"checkresourcename\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"calculateTemplateHash\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-09-01\",\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"resources\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-09-01\",\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-10-01\",\r\n        \"2019-09-01\",\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/resources\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-09-01\",\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/providers\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/operationresults\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"resourceGroups\",\r\n      \"locations\": [\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"West Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia Southeast\",\r\n        \"Australia East\",\r\n        \"West India\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Australia Central\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/resourceGroups\",\r\n      \"locations\": [\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"West Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia Southeast\",\r\n        \"Australia East\",\r\n        \"West India\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Australia Central\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/resourcegroups/resources\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/locations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/tagnames\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/tagNames/tagValues\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"deployments\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2021-01-01\",\r\n        \"2020-10-01\",\r\n        \"2020-06-01\",\r\n        \"2019-09-01\",\r\n        \"2019-08-01\",\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"deployments/operations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2021-01-01\",\r\n        \"2020-10-01\",\r\n        \"2020-06-01\",\r\n        \"2019-09-01\",\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"links\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ],\r\n      \"capabilities\": \"SupportsExtension\"\r\n    },\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2015-01-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"bulkDelete\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"deploymentScripts\",\r\n      \"locations\": [\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"Canada Central\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"East US 2\",\r\n        \"East US\",\r\n        \"Central US\",\r\n        \"North Central US\",\r\n        \"France Central\",\r\n        \"UK South\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"Japan East\",\r\n        \"Korea Central\",\r\n        \"North Europe\",\r\n        \"Norway East\",\r\n        \"UAE North\",\r\n        \"West Central US\",\r\n        \"West Europe\",\r\n        \"West US 2\",\r\n        \"West US\",\r\n        \"South Central US\",\r\n        \"Canada East\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-10-01\",\r\n        \"2019-10-01-preview\"\r\n      ],\r\n      \"capabilities\": \"None\"\r\n    },\r\n    {\r\n      \"resourceType\": \"deploymentScripts/logs\",\r\n      \"locations\": [\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"Canada Central\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"East US 2\",\r\n        \"East US\",\r\n        \"Central US\",\r\n        \"North Central US\",\r\n        \"France Central\",\r\n        \"UK South\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"Japan East\",\r\n        \"Korea Central\",\r\n        \"North Europe\",\r\n        \"Norway East\",\r\n        \"UAE North\",\r\n        \"West Central US\",\r\n        \"West Europe\",\r\n        \"West US 2\",\r\n        \"West US\",\r\n        \"South Central US\",\r\n        \"Canada East\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-10-01\",\r\n        \"2019-10-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/deploymentScriptOperationResults\",\r\n      \"locations\": [\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"Canada Central\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"East US 2\",\r\n        \"East US\",\r\n        \"Central US\",\r\n        \"North Central US\",\r\n        \"France Central\",\r\n        \"UK South\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"Japan East\",\r\n        \"Korea Central\",\r\n        \"North Europe\",\r\n        \"Norway East\",\r\n        \"UAE North\",\r\n        \"West Central US\",\r\n        \"West Europe\",\r\n        \"West US 2\",\r\n        \"West US\",\r\n        \"South Central US\",\r\n        \"Canada East\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-10-01\",\r\n        \"2019-10-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"templateSpecs\",\r\n      \"locations\": [\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Australia East\",\r\n        \"Australia Central\",\r\n        \"Australia Central 2\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"East US 2\",\r\n        \"East US\",\r\n        \"Central US\",\r\n        \"North Central US\",\r\n        \"France Central\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"South India\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"North Europe\",\r\n        \"Norway East\",\r\n        \"UAE North\",\r\n        \"West Central US\",\r\n        \"West Europe\",\r\n        \"West US 2\",\r\n        \"West US\",\r\n        \"South Central US\",\r\n        \"South Africa North\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-05-01\",\r\n        \"2021-03-01-preview\",\r\n        \"2019-06-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"templateSpecs/versions\",\r\n      \"locations\": [\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Australia East\",\r\n        \"Australia Central\",\r\n        \"Australia Central 2\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"East US 2\",\r\n        \"East US\",\r\n        \"Central US\",\r\n        \"North Central US\",\r\n        \"France Central\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"South India\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"North Europe\",\r\n        \"Norway East\",\r\n        \"UAE North\",\r\n        \"West Central US\",\r\n        \"West Europe\",\r\n        \"West US 2\",\r\n        \"West US\",\r\n        \"South Central US\",\r\n        \"South Africa North\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-05-01\",\r\n        \"2021-03-01-preview\",\r\n        \"2019-06-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/1dfbd0ca-8f09-4063-8b4d-85ca8f8a383b/providers/Microsoft.StorageSync?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWRmYmQwY2EtOGYwOS00MDYzLThiNGQtODVjYThmOGEzODNiL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZVN5bmM/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestUri": "/subscriptions/7b96cb02-4663-40f4-9a89-603d3849e46a/providers/Microsoft.StorageSync?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2I5NmNiMDItNDY2My00MGY0LTlhODktNjAzZDM4NDllNDZhL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZVN5bmM/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "8e7aa98f-251e-4761-aa1c-8dfc415ae448"
+          "6f272a7c-4e19-40fb-b048-e97f547c514c"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28207.03",
+          "FxVersion/4.6.30321.06",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.14393.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.16"
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.43"
         ]
       },
       "ResponseHeaders": {
@@ -87,16 +87,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11988"
+          "11990"
         ],
         "x-ms-request-id": [
-          "fadd6f87-505a-4736-a47e-c61b6a2b0fe4"
+          "e5c449d4-940e-4e40-97be-f7543702cac3"
         ],
         "x-ms-correlation-request-id": [
-          "fadd6f87-505a-4736-a47e-c61b6a2b0fe4"
+          "e5c449d4-940e-4e40-97be-f7543702cac3"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200623T072302Z:fadd6f87-505a-4736-a47e-c61b6a2b0fe4"
+          "WESTCENTRALUS:20210811T001227Z:e5c449d4-940e-4e40-97be-f7543702cac3"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -105,7 +105,7 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 23 Jun 2020 07:23:02 GMT"
+          "Wed, 11 Aug 2021 00:12:27 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -114,29 +114,29 @@
           "-1"
         ],
         "Content-Length": [
-          "7645"
+          "9590"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1dfbd0ca-8f09-4063-8b4d-85ca8f8a383b/providers/Microsoft.StorageSync\",\r\n  \"namespace\": \"Microsoft.StorageSync\",\r\n  \"authorizations\": [\r\n    {\r\n      \"applicationId\": \"9469b9f5-6722-4481-a2b2-14ed560b706f\",\r\n      \"roleDefinitionId\": \"4cd49d82-1f4d-43fc-af0c-1c1203668e5a\"\r\n    }\r\n  ],\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"storageSyncServices\",\r\n      \"locations\": [\r\n        \"West Central US\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"East US\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Brazil South\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"West US 2\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"France South\",\r\n        \"South Africa North\",\r\n        \"South Africa West\",\r\n        \"UAE North\",\r\n        \"UAE Central\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-03-01\",\r\n        \"2019-10-01\",\r\n        \"2019-06-01\",\r\n        \"2019-03-01\",\r\n        \"2019-02-01\",\r\n        \"2018-10-01\",\r\n        \"2018-07-01\",\r\n        \"2018-04-02\",\r\n        \"2018-01-01-preview\",\r\n        \"2017-06-05-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"storageSyncServices/syncGroups\",\r\n      \"locations\": [\r\n        \"West Central US\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"East US\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Brazil South\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"West US 2\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"France South\",\r\n        \"South Africa North\",\r\n        \"South Africa West\",\r\n        \"UAE North\",\r\n        \"UAE Central\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-03-01\",\r\n        \"2019-10-01\",\r\n        \"2019-06-01\",\r\n        \"2019-03-01\",\r\n        \"2019-02-01\",\r\n        \"2018-10-01\",\r\n        \"2018-07-01\",\r\n        \"2018-04-02\",\r\n        \"2018-01-01-preview\",\r\n        \"2017-06-05-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"storageSyncServices/syncGroups/cloudEndpoints\",\r\n      \"locations\": [\r\n        \"West Central US\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"East US\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Brazil South\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"West US 2\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"France South\",\r\n        \"South Africa North\",\r\n        \"South Africa West\",\r\n        \"UAE North\",\r\n        \"UAE Central\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-03-01\",\r\n        \"2019-10-01\",\r\n        \"2019-06-01\",\r\n        \"2019-03-01\",\r\n        \"2019-02-01\",\r\n        \"2018-10-01\",\r\n        \"2018-07-01\",\r\n        \"2018-04-02\",\r\n        \"2018-01-01-preview\",\r\n        \"2017-06-05-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"storageSyncServices/syncGroups/serverEndpoints\",\r\n      \"locations\": [\r\n        \"West Central US\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"East US\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Brazil South\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"West US 2\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"France South\",\r\n        \"South Africa North\",\r\n        \"South Africa West\",\r\n        \"UAE North\",\r\n        \"UAE Central\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-03-01\",\r\n        \"2019-10-01\",\r\n        \"2019-06-01\",\r\n        \"2019-03-01\",\r\n        \"2019-02-01\",\r\n        \"2018-10-01\",\r\n        \"2018-07-01\",\r\n        \"2018-04-02\",\r\n        \"2018-01-01-preview\",\r\n        \"2017-06-05-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"storageSyncServices/registeredServers\",\r\n      \"locations\": [\r\n        \"West Central US\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"East US\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Brazil South\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"West US 2\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"France South\",\r\n        \"South Africa North\",\r\n        \"South Africa West\",\r\n        \"UAE North\",\r\n        \"UAE Central\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-03-01\",\r\n        \"2019-10-01\",\r\n        \"2019-06-01\",\r\n        \"2019-03-01\",\r\n        \"2019-02-01\",\r\n        \"2018-10-01\",\r\n        \"2018-07-01\",\r\n        \"2018-04-02\",\r\n        \"2018-01-01-preview\",\r\n        \"2017-06-05-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"storageSyncServices/workflows\",\r\n      \"locations\": [\r\n        \"West Central US\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"East US\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Brazil South\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"West US 2\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"France South\",\r\n        \"South Africa North\",\r\n        \"South Africa West\",\r\n        \"UAE North\",\r\n        \"UAE Central\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-03-01\",\r\n        \"2019-10-01\",\r\n        \"2019-06-01\",\r\n        \"2019-03-01\",\r\n        \"2019-02-01\",\r\n        \"2018-10-01\",\r\n        \"2018-07-01\",\r\n        \"2018-04-02\",\r\n        \"2018-01-01-preview\",\r\n        \"2017-06-05-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2020-03-01\",\r\n        \"2019-10-01\",\r\n        \"2019-06-01\",\r\n        \"2019-03-01\",\r\n        \"2019-02-01\",\r\n        \"2018-10-01\",\r\n        \"2018-07-01\",\r\n        \"2018-04-02\",\r\n        \"2018-01-01-preview\",\r\n        \"2017-06-05-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2020-03-01\",\r\n        \"2019-10-01\",\r\n        \"2019-06-01\",\r\n        \"2019-03-01\",\r\n        \"2019-02-01\",\r\n        \"2018-10-01\",\r\n        \"2018-07-01\",\r\n        \"2018-04-02\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/checkNameAvailability\",\r\n      \"locations\": [\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"East US\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Brazil South\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"France South\",\r\n        \"South Africa North\",\r\n        \"South Africa West\",\r\n        \"UAE North\",\r\n        \"UAE Central\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-03-01\",\r\n        \"2019-10-01\",\r\n        \"2019-06-01\",\r\n        \"2019-03-01\",\r\n        \"2019-02-01\",\r\n        \"2018-10-01\",\r\n        \"2018-07-01\",\r\n        \"2018-04-02\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/workflows\",\r\n      \"locations\": [\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"East US\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Brazil South\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"France South\",\r\n        \"South Africa North\",\r\n        \"South Africa West\",\r\n        \"UAE North\",\r\n        \"UAE Central\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-03-01\",\r\n        \"2019-10-01\",\r\n        \"2019-06-01\",\r\n        \"2019-03-01\",\r\n        \"2019-02-01\",\r\n        \"2018-10-01\",\r\n        \"2018-07-01\",\r\n        \"2018-04-02\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/operations\",\r\n      \"locations\": [\r\n        \"West Central US\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"East US\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Brazil South\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"West US 2\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"France South\",\r\n        \"South Africa North\",\r\n        \"South Africa West\",\r\n        \"UAE North\",\r\n        \"UAE Central\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-03-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/operationResults\",\r\n      \"locations\": [\r\n        \"West Central US\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"East US\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Brazil South\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"West US 2\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"France South\",\r\n        \"South Africa North\",\r\n        \"South Africa West\",\r\n        \"UAE North\",\r\n        \"UAE Central\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-03-01\"\r\n      ]\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/7b96cb02-4663-40f4-9a89-603d3849e46a/providers/Microsoft.StorageSync\",\r\n  \"namespace\": \"Microsoft.StorageSync\",\r\n  \"authorizations\": [\r\n    {\r\n      \"applicationId\": \"9469b9f5-6722-4481-a2b2-14ed560b706f\",\r\n      \"roleDefinitionId\": \"4cd49d82-1f4d-43fc-af0c-1c1203668e5a\"\r\n    },\r\n    {\r\n      \"applicationId\": \"1fcdfafe-959b-4b32-afff-84f850974e84\",\r\n      \"roleDefinitionId\": \"18c76bf0-ff35-48d1-8a74-bcd770c71a1f\"\r\n    }\r\n  ],\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"storageSyncServices\",\r\n      \"locations\": [\r\n        \"West Central US\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"East US\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Brazil South\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"West US 2\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"France South\",\r\n        \"South Africa North\",\r\n        \"South Africa West\",\r\n        \"UAE North\",\r\n        \"UAE Central\",\r\n        \"Germany West Central\",\r\n        \"Germany North\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Norway East\",\r\n        \"Norway West\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-09-01\",\r\n        \"2020-03-01\",\r\n        \"2019-10-01\",\r\n        \"2019-06-01\",\r\n        \"2019-03-01\",\r\n        \"2019-02-01\",\r\n        \"2018-10-01\",\r\n        \"2018-07-01\",\r\n        \"2018-04-02\",\r\n        \"2018-01-01-preview\",\r\n        \"2017-06-05-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"storageSyncServices/syncGroups\",\r\n      \"locations\": [\r\n        \"West Central US\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"East US\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Brazil South\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"West US 2\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"France South\",\r\n        \"South Africa North\",\r\n        \"South Africa West\",\r\n        \"UAE North\",\r\n        \"UAE Central\",\r\n        \"Germany West Central\",\r\n        \"Germany North\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Norway East\",\r\n        \"Norway West\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-09-01\",\r\n        \"2020-03-01\",\r\n        \"2019-10-01\",\r\n        \"2019-06-01\",\r\n        \"2019-03-01\",\r\n        \"2019-02-01\",\r\n        \"2018-10-01\",\r\n        \"2018-07-01\",\r\n        \"2018-04-02\",\r\n        \"2018-01-01-preview\",\r\n        \"2017-06-05-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"storageSyncServices/syncGroups/cloudEndpoints\",\r\n      \"locations\": [\r\n        \"West Central US\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"East US\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Brazil South\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"West US 2\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"France South\",\r\n        \"South Africa North\",\r\n        \"South Africa West\",\r\n        \"UAE North\",\r\n        \"UAE Central\",\r\n        \"Germany West Central\",\r\n        \"Germany North\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Norway East\",\r\n        \"Norway West\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-09-01\",\r\n        \"2020-03-01\",\r\n        \"2019-10-01\",\r\n        \"2019-06-01\",\r\n        \"2019-03-01\",\r\n        \"2019-02-01\",\r\n        \"2018-10-01\",\r\n        \"2018-07-01\",\r\n        \"2018-04-02\",\r\n        \"2018-01-01-preview\",\r\n        \"2017-06-05-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"storageSyncServices/syncGroups/serverEndpoints\",\r\n      \"locations\": [\r\n        \"West Central US\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"East US\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Brazil South\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"West US 2\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"France South\",\r\n        \"South Africa North\",\r\n        \"South Africa West\",\r\n        \"UAE North\",\r\n        \"UAE Central\",\r\n        \"Germany West Central\",\r\n        \"Germany North\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Norway East\",\r\n        \"Norway West\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-09-01\",\r\n        \"2020-03-01\",\r\n        \"2019-10-01\",\r\n        \"2019-06-01\",\r\n        \"2019-03-01\",\r\n        \"2019-02-01\",\r\n        \"2018-10-01\",\r\n        \"2018-07-01\",\r\n        \"2018-04-02\",\r\n        \"2018-01-01-preview\",\r\n        \"2017-06-05-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"storageSyncServices/registeredServers\",\r\n      \"locations\": [\r\n        \"West Central US\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"East US\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Brazil South\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"West US 2\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"France South\",\r\n        \"South Africa North\",\r\n        \"South Africa West\",\r\n        \"UAE North\",\r\n        \"UAE Central\",\r\n        \"Germany West Central\",\r\n        \"Germany North\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Norway East\",\r\n        \"Norway West\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-09-01\",\r\n        \"2020-03-01\",\r\n        \"2019-10-01\",\r\n        \"2019-06-01\",\r\n        \"2019-03-01\",\r\n        \"2019-02-01\",\r\n        \"2018-10-01\",\r\n        \"2018-07-01\",\r\n        \"2018-04-02\",\r\n        \"2018-01-01-preview\",\r\n        \"2017-06-05-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"storageSyncServices/workflows\",\r\n      \"locations\": [\r\n        \"West Central US\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"East US\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Brazil South\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"West US 2\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"France South\",\r\n        \"South Africa North\",\r\n        \"South Africa West\",\r\n        \"UAE North\",\r\n        \"UAE Central\",\r\n        \"Germany West Central\",\r\n        \"Germany North\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Norway East\",\r\n        \"Norway West\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-09-01\",\r\n        \"2020-03-01\",\r\n        \"2019-10-01\",\r\n        \"2019-06-01\",\r\n        \"2019-03-01\",\r\n        \"2019-02-01\",\r\n        \"2018-10-01\",\r\n        \"2018-07-01\",\r\n        \"2018-04-02\",\r\n        \"2018-01-01-preview\",\r\n        \"2017-06-05-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [\r\n        \"West Central US\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"East US\",\r\n        \"West US 3\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"Central US EUAP\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Brazil South\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"West US 2\",\r\n        \"East US 2 EUAP\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"France South\",\r\n        \"South Africa North\",\r\n        \"South Africa West\",\r\n        \"UAE North\",\r\n        \"UAE Central\",\r\n        \"Germany West Central\",\r\n        \"Germany North\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Norway East\",\r\n        \"Norway West\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-09-01\",\r\n        \"2020-03-01\",\r\n        \"2019-10-01\",\r\n        \"2019-06-01\",\r\n        \"2019-03-01\",\r\n        \"2019-02-01\",\r\n        \"2018-10-01\",\r\n        \"2018-07-01\",\r\n        \"2018-04-02\",\r\n        \"2018-01-01-preview\",\r\n        \"2017-06-05-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2020-09-01\",\r\n        \"2020-03-01\",\r\n        \"2019-10-01\",\r\n        \"2019-06-01\",\r\n        \"2019-03-01\",\r\n        \"2019-02-01\",\r\n        \"2018-10-01\",\r\n        \"2018-07-01\",\r\n        \"2018-04-02\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/checkNameAvailability\",\r\n      \"locations\": [\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"East US\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Brazil South\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"France South\",\r\n        \"South Africa North\",\r\n        \"South Africa West\",\r\n        \"UAE North\",\r\n        \"UAE Central\",\r\n        \"Germany West Central\",\r\n        \"Germany North\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Norway East\",\r\n        \"Norway West\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-09-01\",\r\n        \"2020-03-01\",\r\n        \"2019-10-01\",\r\n        \"2019-06-01\",\r\n        \"2019-03-01\",\r\n        \"2019-02-01\",\r\n        \"2018-10-01\",\r\n        \"2018-07-01\",\r\n        \"2018-04-02\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/workflows\",\r\n      \"locations\": [\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"East US\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Brazil South\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"France South\",\r\n        \"South Africa North\",\r\n        \"South Africa West\",\r\n        \"UAE North\",\r\n        \"UAE Central\",\r\n        \"Germany West Central\",\r\n        \"Germany North\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Norway East\",\r\n        \"Norway West\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-09-01\",\r\n        \"2020-03-01\",\r\n        \"2019-10-01\",\r\n        \"2019-06-01\",\r\n        \"2019-03-01\",\r\n        \"2019-02-01\",\r\n        \"2018-10-01\",\r\n        \"2018-07-01\",\r\n        \"2018-04-02\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/operations\",\r\n      \"locations\": [\r\n        \"West Central US\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"East US\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Brazil South\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"West US 2\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"France South\",\r\n        \"South Africa North\",\r\n        \"South Africa West\",\r\n        \"UAE North\",\r\n        \"UAE Central\",\r\n        \"Germany West Central\",\r\n        \"Germany North\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Norway East\",\r\n        \"Norway West\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-09-01\",\r\n        \"2020-03-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/operationResults\",\r\n      \"locations\": [\r\n        \"West Central US\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"East US\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Brazil South\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"West US 2\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"France South\",\r\n        \"South Africa North\",\r\n        \"South Africa West\",\r\n        \"UAE North\",\r\n        \"UAE Central\",\r\n        \"Germany West Central\",\r\n        \"Germany North\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Norway East\",\r\n        \"Norway West\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-09-01\",\r\n        \"2020-03-01\"\r\n      ]\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/1dfbd0ca-8f09-4063-8b4d-85ca8f8a383b/resourcegroups/ps619?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWRmYmQwY2EtOGYwOS00MDYzLThiNGQtODVjYThmOGEzODNiL3Jlc291cmNlZ3JvdXBzL3BzNjE5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestUri": "/subscriptions/7b96cb02-4663-40f4-9a89-603d3849e46a/resourcegroups/ps7352?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2I5NmNiMDItNDY2My00MGY0LTlhODktNjAzZDM4NDllNDZhL3Jlc291cmNlZ3JvdXBzL3BzNzM1Mj9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"West US\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "836bcd22-e163-4bb9-b39e-e215768dac78"
+          "730b9d72-43da-462b-a604-5016ac1f14da"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28207.03",
+          "FxVersion/4.6.30321.06",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.14393.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.16"
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.43"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -156,13 +156,13 @@
           "1198"
         ],
         "x-ms-request-id": [
-          "68782e26-de3d-42b4-9ba4-254bb2795707"
+          "a3dcb76e-a82b-427b-8b4b-e507eeff7f5f"
         ],
         "x-ms-correlation-request-id": [
-          "68782e26-de3d-42b4-9ba4-254bb2795707"
+          "a3dcb76e-a82b-427b-8b4b-e507eeff7f5f"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200623T072302Z:68782e26-de3d-42b4-9ba4-254bb2795707"
+          "WESTCENTRALUS:20210811T001227Z:a3dcb76e-a82b-427b-8b4b-e507eeff7f5f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -171,10 +171,10 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 23 Jun 2020 07:23:02 GMT"
+          "Wed, 11 Aug 2021 00:12:27 GMT"
         ],
         "Content-Length": [
-          "163"
+          "165"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -183,26 +183,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1dfbd0ca-8f09-4063-8b4d-85ca8f8a383b/resourceGroups/ps619\",\r\n  \"name\": \"ps619\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/7b96cb02-4663-40f4-9a89-603d3849e46a/resourceGroups/ps7352\",\r\n  \"name\": \"ps7352\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/1dfbd0ca-8f09-4063-8b4d-85ca8f8a383b/providers/Microsoft.StorageSync/locations/CentralUSEUAP/checkNameAvailability?api-version=2020-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWRmYmQwY2EtOGYwOS00MDYzLThiNGQtODVjYThmOGEzODNiL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZVN5bmMvbG9jYXRpb25zL0NlbnRyYWxVU0VVQVAvY2hlY2tOYW1lQXZhaWxhYmlsaXR5P2FwaS12ZXJzaW9uPTIwMjAtMDMtMDE=",
+      "RequestUri": "/subscriptions/7b96cb02-4663-40f4-9a89-603d3849e46a/providers/Microsoft.StorageSync/locations/CentralUSEUAP/checkNameAvailability?api-version=2020-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2I5NmNiMDItNDY2My00MGY0LTlhODktNjAzZDM4NDllNDZhL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZVN5bmMvbG9jYXRpb25zL0NlbnRyYWxVU0VVQVAvY2hlY2tOYW1lQXZhaWxhYmlsaXR5P2FwaS12ZXJzaW9uPTIwMjAtMDktMDE=",
       "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"name\": \"sssps4949\",\r\n  \"type\": \"Microsoft.StorageSync/storageSyncServices\"\r\n}",
+      "RequestBody": "{\r\n  \"name\": \"sssps9366\",\r\n  \"type\": \"Microsoft.StorageSync/storageSyncServices\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "bf9d2115-76e2-492b-a9a1-303e7358e139"
+          "d1f6c296-35e1-429d-9755-d48cc26abb64"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28207.03",
+          "FxVersion/4.6.30321.06",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.14393.",
-          "Microsoft.Azure.Management.StorageSync.StorageSyncManagementClient/5.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.StorageSync.StorageSyncManagementClient/6.0.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -219,7 +219,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "8d5df8a9-52c1-43e7-8f5b-b5340309b79e"
+          "11bec527-747e-4c57-8ada-7a4e9bb7a186"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -240,13 +240,13 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "3a2f6df6-cd2f-4cd0-89b8-85591a3761a9"
+          "9e6d5f10-1419-4f8b-8bb7-d14a7573a7f8"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200623T072303Z:3a2f6df6-cd2f-4cd0-89b8-85591a3761a9"
+          "WESTCENTRALUS:20210811T001228Z:9e6d5f10-1419-4f8b-8bb7-d14a7573a7f8"
         ],
         "Date": [
-          "Tue, 23 Jun 2020 07:23:03 GMT"
+          "Wed, 11 Aug 2021 00:12:27 GMT"
         ],
         "Content-Length": [
           "29"
@@ -262,22 +262,22 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/1dfbd0ca-8f09-4063-8b4d-85ca8f8a383b/resourceGroups/ps619/providers/Microsoft.StorageSync/storageSyncServices/sssps4949?api-version=2020-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWRmYmQwY2EtOGYwOS00MDYzLThiNGQtODVjYThmOGEzODNiL3Jlc291cmNlR3JvdXBzL3BzNjE5L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZVN5bmMvc3RvcmFnZVN5bmNTZXJ2aWNlcy9zc3NwczQ5NDk/YXBpLXZlcnNpb249MjAyMC0wMy0wMQ==",
+      "RequestUri": "/subscriptions/7b96cb02-4663-40f4-9a89-603d3849e46a/resourceGroups/ps7352/providers/Microsoft.StorageSync/storageSyncServices/sssps9366?api-version=2020-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2I5NmNiMDItNDY2My00MGY0LTlhODktNjAzZDM4NDllNDZhL3Jlc291cmNlR3JvdXBzL3BzNzM1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2VTeW5jL3N0b3JhZ2VTeW5jU2VydmljZXMvc3NzcHM5MzY2P2FwaS12ZXJzaW9uPTIwMjAtMDktMDE=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"Central US EUAP\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"incomingTrafficPolicy\": \"AllowAllTraffic\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "7391442b-02d7-41fa-b706-da65200695cf"
+          "d1f6c296-35e1-429d-9755-d48cc26abb64"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28207.03",
+          "FxVersion/4.6.30321.06",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.14393.",
-          "Microsoft.Azure.Management.StorageSync.StorageSyncManagementClient/5.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.StorageSync.StorageSyncManagementClient/6.0.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -294,16 +294,220 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/1dfbd0ca-8f09-4063-8b4d-85ca8f8a383b/providers/microsoft.storagesync/locations/centraluseuap/operationresults/eyJwYXJ0aXRpb25JZCI6IjgxOGVjZGUwLWVhODktNDIwOC04YzE2LTEwNzVmOWI4MmFhYyIsIndvcmtmbG93SWQiOiIwZDZiYTE1OS03NjZmLTQyOGMtYTY0Mi1iMjZlNTg0NTYyMTAiLCJ3b3JrZmxvd09wZXJhdGlvbklkIjoiYmU4OTI0N2MtYmZkNS00NTBjLWFmMjItNjJhNGVkNDhkOWJhIn0=?api-version=2020-03-01"
+          "https://management.azure.com/subscriptions/7b96cb02-4663-40f4-9a89-603d3849e46a/providers/microsoft.storagesync/locations/centraluseuap/operationresults/eyJwYXJ0aXRpb25JZCI6IjVhN2Q4ZjRjLWNhYTEtNDNiMC05YTUwLWQ2ZDljYjE0MGUwMiIsIndvcmtmbG93SWQiOiIzN2U3YzNmNS1kYTIxLTRjNWYtODRhYS02ZGE3N2NmZmRlMTciLCJ3b3JrZmxvd09wZXJhdGlvbklkIjoiYTc2MWUzOTItZTgwMC00MmFjLTkyYmItNmU3OGI4NWFkZGVhIn0=?api-version=2020-09-01"
         ],
         "Retry-After": [
           "10"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/1dfbd0ca-8f09-4063-8b4d-85ca8f8a383b/providers/microsoft.storagesync/locations/centraluseuap/operations/eyJwYXJ0aXRpb25JZCI6IjgxOGVjZGUwLWVhODktNDIwOC04YzE2LTEwNzVmOWI4MmFhYyIsIndvcmtmbG93SWQiOiIwZDZiYTE1OS03NjZmLTQyOGMtYTY0Mi1iMjZlNTg0NTYyMTAiLCJ3b3JrZmxvd09wZXJhdGlvbklkIjoiYmU4OTI0N2MtYmZkNS00NTBjLWFmMjItNjJhNGVkNDhkOWJhIn0=?api-version=2020-03-01"
+          "https://management.azure.com/subscriptions/7b96cb02-4663-40f4-9a89-603d3849e46a/providers/microsoft.storagesync/locations/centraluseuap/operations/eyJwYXJ0aXRpb25JZCI6IjVhN2Q4ZjRjLWNhYTEtNDNiMC05YTUwLWQ2ZDljYjE0MGUwMiIsIndvcmtmbG93SWQiOiIzN2U3YzNmNS1kYTIxLTRjNWYtODRhYS02ZGE3N2NmZmRlMTciLCJ3b3JrZmxvd09wZXJhdGlvbklkIjoiYTc2MWUzOTItZTgwMC00MmFjLTkyYmItNmU3OGI4NWFkZGVhIn0=?api-version=2020-09-01"
         ],
         "x-ms-request-id": [
-          "22d9eefd-4076-4704-863a-8f26d0101d0c"
+          "329d896b-d14f-4d3b-98b0-b8f8b6305f6c"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "12e382ea-4a16-4866-90be-548b7a729145"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20210811T001230Z:12e382ea-4a16-4866-90be-548b7a729145"
+        ],
+        "Date": [
+          "Wed, 11 Aug 2021 00:12:29 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/7b96cb02-4663-40f4-9a89-603d3849e46a/providers/microsoft.storagesync/locations/centraluseuap/operations/eyJwYXJ0aXRpb25JZCI6IjVhN2Q4ZjRjLWNhYTEtNDNiMC05YTUwLWQ2ZDljYjE0MGUwMiIsIndvcmtmbG93SWQiOiIzN2U3YzNmNS1kYTIxLTRjNWYtODRhYS02ZGE3N2NmZmRlMTciLCJ3b3JrZmxvd09wZXJhdGlvbklkIjoiYTc2MWUzOTItZTgwMC00MmFjLTkyYmItNmU3OGI4NWFkZGVhIn0=?api-version=2020-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2I5NmNiMDItNDY2My00MGY0LTlhODktNjAzZDM4NDllNDZhL3Byb3ZpZGVycy9taWNyb3NvZnQuc3RvcmFnZXN5bmMvbG9jYXRpb25zL2NlbnRyYWx1c2V1YXAvb3BlcmF0aW9ucy9leUp3WVhKMGFYUnBiMjVKWkNJNklqVmhOMlE0WmpSakxXTmhZVEV0TkROaU1DMDVZVFV3TFdRMlpEbGpZakUwTUdVd01pSXNJbmR2Y210bWJHOTNTV1FpT2lJek4yVTNZek5tTlMxa1lUSXhMVFJqTldZdE9EUmhZUzAyWkdFM04yTm1abVJsTVRjaUxDSjNiM0pyWm14dmQwOXdaWEpoZEdsdmJrbGtJam9pWVRjMk1XVXpPVEl0WlRnd01DMDBNbUZqTFRreVltSXRObVUzT0dJNE5XRmtaR1ZoSW4wPT9hcGktdmVyc2lvbj0yMDIwLTA5LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d1f6c296-35e1-429d-9755-d48cc26abb64"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30321.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.StorageSync.StorageSyncManagementClient/6.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "668c1008-3ff6-4a53-b5ed-6b146d40f69c"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "2ed64540-a8aa-4df3-a79d-166658cd4e31"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20210811T001241Z:2ed64540-a8aa-4df3-a79d-166658cd4e31"
+        ],
+        "Date": [
+          "Wed, 11 Aug 2021 00:12:40 GMT"
+        ],
+        "Content-Length": [
+          "745"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/7b96cb02-4663-40f4-9a89-603d3849e46a/providers/microsoft.storagesync/locations/centraluseuap/operationresults/eyJwYXJ0aXRpb25JZCI6IjVhN2Q4ZjRjLWNhYTEtNDNiMC05YTUwLWQ2ZDljYjE0MGUwMiIsIndvcmtmbG93SWQiOiIzN2U3YzNmNS1kYTIxLTRjNWYtODRhYS02ZGE3N2NmZmRlMTciLCJ3b3JrZmxvd09wZXJhdGlvbklkIjoiYTc2MWUzOTItZTgwMC00MmFjLTkyYmItNmU3OGI4NWFkZGVhIn0=\",\r\n  \"name\": \"eyJwYXJ0aXRpb25JZCI6IjVhN2Q4ZjRjLWNhYTEtNDNiMC05YTUwLWQ2ZDljYjE0MGUwMiIsIndvcmtmbG93SWQiOiIzN2U3YzNmNS1kYTIxLTRjNWYtODRhYS02ZGE3N2NmZmRlMTciLCJ3b3JrZmxvd09wZXJhdGlvbklkIjoiYTc2MWUzOTItZTgwMC00MmFjLTkyYmItNmU3OGI4NWFkZGVhIn0=\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2021-08-11T00:12:30.5975831Z\",\r\n  \"endTime\": \"2021-08-11T00:12:41.1574827Z\",\r\n  \"properties\": {}\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/7b96cb02-4663-40f4-9a89-603d3849e46a/resourceGroups/ps7352/providers/Microsoft.StorageSync/storageSyncServices/sssps9366?api-version=2020-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2I5NmNiMDItNDY2My00MGY0LTlhODktNjAzZDM4NDllNDZhL3Jlc291cmNlR3JvdXBzL3BzNzM1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2VTeW5jL3N0b3JhZ2VTeW5jU2VydmljZXMvc3NzcHM5MzY2P2FwaS12ZXJzaW9uPTIwMjAtMDktMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d1f6c296-35e1-429d-9755-d48cc26abb64"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30321.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.StorageSync.StorageSyncManagementClient/6.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "99828b28-d27c-4fc0-8f17-4d4abee9fd17"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "02249377-643a-46ce-8209-aff9194a648d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20210811T001242Z:02249377-643a-46ce-8209-aff9194a648d"
+        ],
+        "Date": [
+          "Wed, 11 Aug 2021 00:12:41 GMT"
+        ],
+        "Content-Length": [
+          "962"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"storageSyncServiceStatus\": 0,\r\n    \"incomingTrafficPolicy\": \"AllowAllTraffic\",\r\n    \"privateEndpointConnections\": [],\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"lastWorkflowId\": \"storageSyncServices/sssps9366/workflows/37e7c3f5-da21-4c5f-84aa-6da77cffde17\",\r\n    \"lastOperationName\": \"ICreateStorageSyncServiceWorkflow\"\r\n  },\r\n  \"location\": \"Central US EUAP\",\r\n  \"tags\": {},\r\n  \"id\": \"/subscriptions/7b96cb02-4663-40f4-9a89-603d3849e46a/resourceGroups/ps7352/providers/microsoft.storagesync/storageSyncServices/sssps9366\",\r\n  \"name\": \"sssps9366\",\r\n  \"type\": \"microsoft.storagesync/storageSyncServices\",\r\n  \"systemData\": {\r\n    \"createdBy\": \"c8b36958-2a0a-423d-bba9-98ff3af75f58\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2021-08-11T00:12:29.3166966Z\",\r\n    \"lastModifiedBy\": \"c8b36958-2a0a-423d-bba9-98ff3af75f58\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2021-08-11T00:12:29.3166966Z\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/7b96cb02-4663-40f4-9a89-603d3849e46a/resourceGroups/ps7352/providers/Microsoft.StorageSync/storageSyncServices/sssps9366/syncGroups/sgps4108?api-version=2020-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2I5NmNiMDItNDY2My00MGY0LTlhODktNjAzZDM4NDllNDZhL3Jlc291cmNlR3JvdXBzL3BzNzM1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2VTeW5jL3N0b3JhZ2VTeW5jU2VydmljZXMvc3NzcHM5MzY2L3N5bmNHcm91cHMvc2dwczQxMDg/YXBpLXZlcnNpb249MjAyMC0wOS0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {}\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "8617bbd3-4817-4122-8f01-9b0f625e5b21"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30321.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.StorageSync.StorageSyncManagementClient/6.0.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "24"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "df6af10c-8e19-4648-beeb-dd932e37aa41"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -324,76 +528,16 @@
           "1198"
         ],
         "x-ms-correlation-request-id": [
-          "21b246b5-d1b5-45f6-8023-477a71adec1e"
+          "7cae565e-935b-4142-9e31-5777e8a11871"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200623T072304Z:21b246b5-d1b5-45f6-8023-477a71adec1e"
+          "WESTCENTRALUS:20210811T001243Z:7cae565e-935b-4142-9e31-5777e8a11871"
         ],
         "Date": [
-          "Tue, 23 Jun 2020 07:23:04 GMT"
-        ],
-        "Expires": [
-          "-1"
+          "Wed, 11 Aug 2021 00:12:42 GMT"
         ],
         "Content-Length": [
-          "0"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/1dfbd0ca-8f09-4063-8b4d-85ca8f8a383b/providers/microsoft.storagesync/locations/centraluseuap/operations/eyJwYXJ0aXRpb25JZCI6IjgxOGVjZGUwLWVhODktNDIwOC04YzE2LTEwNzVmOWI4MmFhYyIsIndvcmtmbG93SWQiOiIwZDZiYTE1OS03NjZmLTQyOGMtYTY0Mi1iMjZlNTg0NTYyMTAiLCJ3b3JrZmxvd09wZXJhdGlvbklkIjoiYmU4OTI0N2MtYmZkNS00NTBjLWFmMjItNjJhNGVkNDhkOWJhIn0=?api-version=2020-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWRmYmQwY2EtOGYwOS00MDYzLThiNGQtODVjYThmOGEzODNiL3Byb3ZpZGVycy9taWNyb3NvZnQuc3RvcmFnZXN5bmMvbG9jYXRpb25zL2NlbnRyYWx1c2V1YXAvb3BlcmF0aW9ucy9leUp3WVhKMGFYUnBiMjVKWkNJNklqZ3hPR1ZqWkdVd0xXVmhPRGt0TkRJd09DMDRZekUyTFRFd056Vm1PV0k0TW1GaFl5SXNJbmR2Y210bWJHOTNTV1FpT2lJd1pEWmlZVEUxT1MwM05qWm1MVFF5T0dNdFlUWTBNaTFpTWpabE5UZzBOVFl5TVRBaUxDSjNiM0pyWm14dmQwOXdaWEpoZEdsdmJrbGtJam9pWW1VNE9USTBOMk10WW1aa05TMDBOVEJqTFdGbU1qSXROakpoTkdWa05EaGtPV0poSW4wPT9hcGktdmVyc2lvbj0yMDIwLTAzLTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.28207.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.14393.",
-          "Microsoft.Azure.Management.StorageSync.StorageSyncManagementClient/5.0.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "671bd95e-294d-4e5c-9029-efd72f2d8193"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
-        ],
-        "x-ms-correlation-request-id": [
-          "17e6a467-dfc6-47eb-a0c3-c64cdfe0f915"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20200623T072314Z:17e6a467-dfc6-47eb-a0c3-c64cdfe0f915"
-        ],
-        "Date": [
-          "Tue, 23 Jun 2020 07:23:14 GMT"
-        ],
-        "Content-Length": [
-          "744"
+          "700"
         ],
         "Content-Type": [
           "application/json"
@@ -402,164 +546,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1dfbd0ca-8f09-4063-8b4d-85ca8f8a383b/providers/microsoft.storagesync/locations/centraluseuap/operationresults/eyJwYXJ0aXRpb25JZCI6IjgxOGVjZGUwLWVhODktNDIwOC04YzE2LTEwNzVmOWI4MmFhYyIsIndvcmtmbG93SWQiOiIwZDZiYTE1OS03NjZmLTQyOGMtYTY0Mi1iMjZlNTg0NTYyMTAiLCJ3b3JrZmxvd09wZXJhdGlvbklkIjoiYmU4OTI0N2MtYmZkNS00NTBjLWFmMjItNjJhNGVkNDhkOWJhIn0=\",\r\n  \"name\": \"eyJwYXJ0aXRpb25JZCI6IjgxOGVjZGUwLWVhODktNDIwOC04YzE2LTEwNzVmOWI4MmFhYyIsIndvcmtmbG93SWQiOiIwZDZiYTE1OS03NjZmLTQyOGMtYTY0Mi1iMjZlNTg0NTYyMTAiLCJ3b3JrZmxvd09wZXJhdGlvbklkIjoiYmU4OTI0N2MtYmZkNS00NTBjLWFmMjItNjJhNGVkNDhkOWJhIn0=\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2020-06-23T07:23:05.216068Z\",\r\n  \"endTime\": \"2020-06-23T07:23:11.5613015Z\",\r\n  \"properties\": {}\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"syncGroupStatus\": \"0\",\r\n    \"uniqueId\": \"b564c44b-ccf2-4861-8889-0f95617f1760\"\r\n  },\r\n  \"id\": \"/subscriptions/7b96cb02-4663-40f4-9a89-603d3849e46a/resourceGroups/ps7352/providers/microsoft.storagesync/storageSyncServices/sssps9366/syncGroups/sgps4108\",\r\n  \"name\": \"sgps4108\",\r\n  \"type\": \"microsoft.storagesync/storageSyncServices/syncGroups\",\r\n  \"systemData\": {\r\n    \"createdBy\": \"c8b36958-2a0a-423d-bba9-98ff3af75f58\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2021-08-11T00:12:42.2229978Z\",\r\n    \"lastModifiedBy\": \"c8b36958-2a0a-423d-bba9-98ff3af75f58\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2021-08-11T00:12:42.2229978Z\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/1dfbd0ca-8f09-4063-8b4d-85ca8f8a383b/resourceGroups/ps619/providers/Microsoft.StorageSync/storageSyncServices/sssps4949?api-version=2020-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWRmYmQwY2EtOGYwOS00MDYzLThiNGQtODVjYThmOGEzODNiL3Jlc291cmNlR3JvdXBzL3BzNjE5L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZVN5bmMvc3RvcmFnZVN5bmNTZXJ2aWNlcy9zc3NwczQ5NDk/YXBpLXZlcnNpb249MjAyMC0wMy0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.28207.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.14393.",
-          "Microsoft.Azure.Management.StorageSync.StorageSyncManagementClient/5.0.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "e9722a95-156d-410d-9c63-2d6de8a0876a"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11996"
-        ],
-        "x-ms-correlation-request-id": [
-          "537805f8-953f-466b-aafc-fc9893e1a6e7"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20200623T072315Z:537805f8-953f-466b-aafc-fc9893e1a6e7"
-        ],
-        "Date": [
-          "Tue, 23 Jun 2020 07:23:14 GMT"
-        ],
-        "Content-Length": [
-          "632"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"storageSyncServiceStatus\": 0,\r\n    \"incomingTrafficPolicy\": \"AllowAllTraffic\",\r\n    \"privateEndpointConnections\": [],\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"lastWorkflowId\": \"storageSyncServices/sssps4949/workflows/0d6ba159-766f-428c-a642-b26e58456210\",\r\n    \"lastOperationName\": \"ICreateStorageSyncServiceWorkflow\"\r\n  },\r\n  \"location\": \"Central US EUAP\",\r\n  \"tags\": {},\r\n  \"id\": \"/subscriptions/1dfbd0ca-8f09-4063-8b4d-85ca8f8a383b/resourceGroups/ps619/providers/microsoft.storagesync/storageSyncServices/sssps4949\",\r\n  \"name\": \"sssps4949\",\r\n  \"type\": \"microsoft.storagesync/storageSyncServices\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/1dfbd0ca-8f09-4063-8b4d-85ca8f8a383b/resourceGroups/ps619/providers/Microsoft.StorageSync/storageSyncServices/sssps4949/syncGroups/sgps3148?api-version=2020-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWRmYmQwY2EtOGYwOS00MDYzLThiNGQtODVjYThmOGEzODNiL3Jlc291cmNlR3JvdXBzL3BzNjE5L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZVN5bmMvc3RvcmFnZVN5bmNTZXJ2aWNlcy9zc3NwczQ5NDkvc3luY0dyb3Vwcy9zZ3BzMzE0OD9hcGktdmVyc2lvbj0yMDIwLTAzLTAx",
-      "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {}\r\n}",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "c8d95317-eb27-47f0-acfe-c4f239ef5e41"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.28207.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.14393.",
-          "Microsoft.Azure.Management.StorageSync.StorageSyncManagementClient/5.0.0.0"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "24"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "a1b63bcd-e917-4a89-b3a0-77eb0e4357ce"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1197"
-        ],
-        "x-ms-correlation-request-id": [
-          "3a37b837-bdd8-4b28-98af-4bb5e427598b"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20200623T072315Z:3a37b837-bdd8-4b28-98af-4bb5e427598b"
-        ],
-        "Date": [
-          "Tue, 23 Jun 2020 07:23:15 GMT"
-        ],
-        "Content-Length": [
-          "370"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"syncGroupStatus\": \"0\",\r\n    \"uniqueId\": \"69d7d778-a75e-468c-976d-a2a9683080f5\"\r\n  },\r\n  \"id\": \"/subscriptions/1dfbd0ca-8f09-4063-8b4d-85ca8f8a383b/resourceGroups/ps619/providers/microsoft.storagesync/storageSyncServices/sssps4949/syncGroups/sgps3148\",\r\n  \"name\": \"sgps3148\",\r\n  \"type\": \"microsoft.storagesync/storageSyncServices/syncGroups\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/1dfbd0ca-8f09-4063-8b4d-85ca8f8a383b/resourceGroups/ps619/providers/Microsoft.StorageSync/storageSyncServices/sssps4949/syncGroups/sgps3148?api-version=2020-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWRmYmQwY2EtOGYwOS00MDYzLThiNGQtODVjYThmOGEzODNiL3Jlc291cmNlR3JvdXBzL3BzNjE5L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZVN5bmMvc3RvcmFnZVN5bmNTZXJ2aWNlcy9zc3NwczQ5NDkvc3luY0dyb3Vwcy9zZ3BzMzE0OD9hcGktdmVyc2lvbj0yMDIwLTAzLTAx",
+      "RequestUri": "/subscriptions/7b96cb02-4663-40f4-9a89-603d3849e46a/resourceGroups/ps7352/providers/Microsoft.StorageSync/storageSyncServices/sssps9366/syncGroups/sgps4108?api-version=2020-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2I5NmNiMDItNDY2My00MGY0LTlhODktNjAzZDM4NDllNDZhL3Jlc291cmNlR3JvdXBzL3BzNzM1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2VTeW5jL3N0b3JhZ2VTeW5jU2VydmljZXMvc3NzcHM5MzY2L3N5bmNHcm91cHMvc2dwczQxMDg/YXBpLXZlcnNpb249MjAyMC0wOS0wMQ==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1f25d2f7-6467-4b1f-b902-880a75c2e1da"
+          "d72c1fc5-66a7-4f54-8946-271cd02e4509"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28207.03",
+          "FxVersion/4.6.30321.06",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.14393.",
-          "Microsoft.Azure.Management.StorageSync.StorageSyncManagementClient/5.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.StorageSync.StorageSyncManagementClient/6.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -570,7 +576,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "707fcb41-fe91-4ca5-bc77-bb2a2fa65e15"
+          "2788baed-1a13-4730-8784-b0b620549dff"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -591,13 +597,13 @@
           "14999"
         ],
         "x-ms-correlation-request-id": [
-          "12804025-28c6-4b68-815b-dc1a65c9b510"
+          "1e2cb0f0-2623-4633-a518-bcf2a92f9709"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200623T072315Z:12804025-28c6-4b68-815b-dc1a65c9b510"
+          "WESTCENTRALUS:20210811T001244Z:1e2cb0f0-2623-4633-a518-bcf2a92f9709"
         ],
         "Date": [
-          "Tue, 23 Jun 2020 07:23:15 GMT"
+          "Wed, 11 Aug 2021 00:12:43 GMT"
         ],
         "Expires": [
           "-1"
@@ -610,22 +616,22 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/1dfbd0ca-8f09-4063-8b4d-85ca8f8a383b/resourceGroups/ps619/providers/Microsoft.StorageSync/storageSyncServices/sssps4949?api-version=2020-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWRmYmQwY2EtOGYwOS00MDYzLThiNGQtODVjYThmOGEzODNiL3Jlc291cmNlR3JvdXBzL3BzNjE5L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZVN5bmMvc3RvcmFnZVN5bmNTZXJ2aWNlcy9zc3NwczQ5NDk/YXBpLXZlcnNpb249MjAyMC0wMy0wMQ==",
+      "RequestUri": "/subscriptions/7b96cb02-4663-40f4-9a89-603d3849e46a/resourceGroups/ps7352/providers/Microsoft.StorageSync/storageSyncServices/sssps9366?api-version=2020-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2I5NmNiMDItNDY2My00MGY0LTlhODktNjAzZDM4NDllNDZhL3Jlc291cmNlR3JvdXBzL3BzNzM1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2VTeW5jL3N0b3JhZ2VTeW5jU2VydmljZXMvc3NzcHM5MzY2P2FwaS12ZXJzaW9uPTIwMjAtMDktMDE=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ff9b5a14-53b3-495b-b9f8-b95c4d5cd370"
+          "9bf7720a-f335-4595-9723-87d1a9b7d41f"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28207.03",
+          "FxVersion/4.6.30321.06",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.14393.",
-          "Microsoft.Azure.Management.StorageSync.StorageSyncManagementClient/5.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.StorageSync.StorageSyncManagementClient/6.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -636,16 +642,16 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/1dfbd0ca-8f09-4063-8b4d-85ca8f8a383b/providers/microsoft.storagesync/locations/centraluseuap/operationresults/eyJwYXJ0aXRpb25JZCI6IjgxOGVjZGUwLWVhODktNDIwOC04YzE2LTEwNzVmOWI4MmFhYyIsIndvcmtmbG93SWQiOiI2NDVhMWM1My1jNWJiLTRhNTMtYTU3ZC1kNTBkMDIwMjI1MmMiLCJ3b3JrZmxvd09wZXJhdGlvbklkIjoiMGRjMDBmMjctMTRmZC00N2RkLThiYmItZTRkMThjMDJmYWQ2In0=?api-version=2020-03-01"
+          "https://management.azure.com/subscriptions/7b96cb02-4663-40f4-9a89-603d3849e46a/providers/microsoft.storagesync/locations/centraluseuap/operationresults/eyJwYXJ0aXRpb25JZCI6IjVhN2Q4ZjRjLWNhYTEtNDNiMC05YTUwLWQ2ZDljYjE0MGUwMiIsIndvcmtmbG93SWQiOiI5MjJkMjNkYS0yNmRhLTQxYjQtODE4Mi1kN2MwMWVkNzBkN2IiLCJ3b3JrZmxvd09wZXJhdGlvbklkIjoiMjBmMTAwMzctOThiNS00NDZlLTljMjYtYmJjNjBmMWU0NjU1In0=?api-version=2020-09-01"
         ],
         "Retry-After": [
           "10"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/1dfbd0ca-8f09-4063-8b4d-85ca8f8a383b/providers/microsoft.storagesync/locations/centraluseuap/operations/eyJwYXJ0aXRpb25JZCI6IjgxOGVjZGUwLWVhODktNDIwOC04YzE2LTEwNzVmOWI4MmFhYyIsIndvcmtmbG93SWQiOiI2NDVhMWM1My1jNWJiLTRhNTMtYTU3ZC1kNTBkMDIwMjI1MmMiLCJ3b3JrZmxvd09wZXJhdGlvbklkIjoiMGRjMDBmMjctMTRmZC00N2RkLThiYmItZTRkMThjMDJmYWQ2In0=?api-version=2020-03-01"
+          "https://management.azure.com/subscriptions/7b96cb02-4663-40f4-9a89-603d3849e46a/providers/microsoft.storagesync/locations/centraluseuap/operations/eyJwYXJ0aXRpb25JZCI6IjVhN2Q4ZjRjLWNhYTEtNDNiMC05YTUwLWQ2ZDljYjE0MGUwMiIsIndvcmtmbG93SWQiOiI5MjJkMjNkYS0yNmRhLTQxYjQtODE4Mi1kN2MwMWVkNzBkN2IiLCJ3b3JrZmxvd09wZXJhdGlvbklkIjoiMjBmMTAwMzctOThiNS00NDZlLTljMjYtYmJjNjBmMWU0NjU1In0=?api-version=2020-09-01"
         ],
         "x-ms-request-id": [
-          "18dde49d-b014-428b-a465-573fd1ae09d7"
+          "58820e66-9c61-4733-a88c-b196a617673f"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -666,13 +672,13 @@
           "14998"
         ],
         "x-ms-correlation-request-id": [
-          "6d226f79-3f4a-46bd-8c43-2ba523e32f2f"
+          "30a696eb-fc08-4f98-baef-4902733d4b78"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200623T072316Z:6d226f79-3f4a-46bd-8c43-2ba523e32f2f"
+          "WESTCENTRALUS:20210811T001245Z:30a696eb-fc08-4f98-baef-4902733d4b78"
         ],
         "Date": [
-          "Tue, 23 Jun 2020 07:23:15 GMT"
+          "Wed, 11 Aug 2021 00:12:44 GMT"
         ],
         "Expires": [
           "-1"
@@ -685,16 +691,19 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/1dfbd0ca-8f09-4063-8b4d-85ca8f8a383b/providers/microsoft.storagesync/locations/centraluseuap/operations/eyJwYXJ0aXRpb25JZCI6IjgxOGVjZGUwLWVhODktNDIwOC04YzE2LTEwNzVmOWI4MmFhYyIsIndvcmtmbG93SWQiOiI2NDVhMWM1My1jNWJiLTRhNTMtYTU3ZC1kNTBkMDIwMjI1MmMiLCJ3b3JrZmxvd09wZXJhdGlvbklkIjoiMGRjMDBmMjctMTRmZC00N2RkLThiYmItZTRkMThjMDJmYWQ2In0=?api-version=2020-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWRmYmQwY2EtOGYwOS00MDYzLThiNGQtODVjYThmOGEzODNiL3Byb3ZpZGVycy9taWNyb3NvZnQuc3RvcmFnZXN5bmMvbG9jYXRpb25zL2NlbnRyYWx1c2V1YXAvb3BlcmF0aW9ucy9leUp3WVhKMGFYUnBiMjVKWkNJNklqZ3hPR1ZqWkdVd0xXVmhPRGt0TkRJd09DMDRZekUyTFRFd056Vm1PV0k0TW1GaFl5SXNJbmR2Y210bWJHOTNTV1FpT2lJMk5EVmhNV00xTXkxak5XSmlMVFJoTlRNdFlUVTNaQzFrTlRCa01ESXdNakkxTW1NaUxDSjNiM0pyWm14dmQwOXdaWEpoZEdsdmJrbGtJam9pTUdSak1EQm1NamN0TVRSbVpDMDBOMlJrTFRoaVltSXRaVFJrTVRoak1ESm1ZV1EySW4wPT9hcGktdmVyc2lvbj0yMDIwLTAzLTAx",
+      "RequestUri": "/subscriptions/7b96cb02-4663-40f4-9a89-603d3849e46a/providers/microsoft.storagesync/locations/centraluseuap/operations/eyJwYXJ0aXRpb25JZCI6IjVhN2Q4ZjRjLWNhYTEtNDNiMC05YTUwLWQ2ZDljYjE0MGUwMiIsIndvcmtmbG93SWQiOiI5MjJkMjNkYS0yNmRhLTQxYjQtODE4Mi1kN2MwMWVkNzBkN2IiLCJ3b3JrZmxvd09wZXJhdGlvbklkIjoiMjBmMTAwMzctOThiNS00NDZlLTljMjYtYmJjNjBmMWU0NjU1In0=?api-version=2020-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2I5NmNiMDItNDY2My00MGY0LTlhODktNjAzZDM4NDllNDZhL3Byb3ZpZGVycy9taWNyb3NvZnQuc3RvcmFnZXN5bmMvbG9jYXRpb25zL2NlbnRyYWx1c2V1YXAvb3BlcmF0aW9ucy9leUp3WVhKMGFYUnBiMjVKWkNJNklqVmhOMlE0WmpSakxXTmhZVEV0TkROaU1DMDVZVFV3TFdRMlpEbGpZakUwTUdVd01pSXNJbmR2Y210bWJHOTNTV1FpT2lJNU1qSmtNak5rWVMweU5tUmhMVFF4WWpRdE9ERTRNaTFrTjJNd01XVmtOekJrTjJJaUxDSjNiM0pyWm14dmQwOXdaWEpoZEdsdmJrbGtJam9pTWpCbU1UQXdNemN0T1RoaU5TMDBORFpsTFRsak1qWXRZbUpqTmpCbU1XVTBOalUxSW4wPT9hcGktdmVyc2lvbj0yMDIwLTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9bf7720a-f335-4595-9723-87d1a9b7d41f"
+        ],
         "User-Agent": [
-          "FxVersion/4.6.28207.03",
+          "FxVersion/4.6.30321.06",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.14393.",
-          "Microsoft.Azure.Management.StorageSync.StorageSyncManagementClient/5.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.StorageSync.StorageSyncManagementClient/6.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -705,7 +714,139 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "5d82bfb2-350f-40e0-bbcc-58f47dda28b1"
+          "8c4a6315-4d9e-4fdb-afd1-4b804264ccb1"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "09834b1c-1f44-4174-8067-0fc2cbf4984f"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20210811T001255Z:09834b1c-1f44-4174-8067-0fc2cbf4984f"
+        ],
+        "Date": [
+          "Wed, 11 Aug 2021 00:12:55 GMT"
+        ],
+        "Content-Length": [
+          "745"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/7b96cb02-4663-40f4-9a89-603d3849e46a/providers/microsoft.storagesync/locations/centraluseuap/operationresults/eyJwYXJ0aXRpb25JZCI6IjVhN2Q4ZjRjLWNhYTEtNDNiMC05YTUwLWQ2ZDljYjE0MGUwMiIsIndvcmtmbG93SWQiOiI5MjJkMjNkYS0yNmRhLTQxYjQtODE4Mi1kN2MwMWVkNzBkN2IiLCJ3b3JrZmxvd09wZXJhdGlvbklkIjoiMjBmMTAwMzctOThiNS00NDZlLTljMjYtYmJjNjBmMWU0NjU1In0=\",\r\n  \"name\": \"eyJwYXJ0aXRpb25JZCI6IjVhN2Q4ZjRjLWNhYTEtNDNiMC05YTUwLWQ2ZDljYjE0MGUwMiIsIndvcmtmbG93SWQiOiI5MjJkMjNkYS0yNmRhLTQxYjQtODE4Mi1kN2MwMWVkNzBkN2IiLCJ3b3JrZmxvd09wZXJhdGlvbklkIjoiMjBmMTAwMzctOThiNS00NDZlLTljMjYtYmJjNjBmMWU0NjU1In0=\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2021-08-11T00:12:45.2119357Z\",\r\n  \"endTime\": \"2021-08-11T00:12:53.0597488Z\",\r\n  \"properties\": {}\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/7b96cb02-4663-40f4-9a89-603d3849e46a/providers/microsoft.storagesync/locations/centraluseuap/operationresults/eyJwYXJ0aXRpb25JZCI6IjVhN2Q4ZjRjLWNhYTEtNDNiMC05YTUwLWQ2ZDljYjE0MGUwMiIsIndvcmtmbG93SWQiOiI5MjJkMjNkYS0yNmRhLTQxYjQtODE4Mi1kN2MwMWVkNzBkN2IiLCJ3b3JrZmxvd09wZXJhdGlvbklkIjoiMjBmMTAwMzctOThiNS00NDZlLTljMjYtYmJjNjBmMWU0NjU1In0=?api-version=2020-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2I5NmNiMDItNDY2My00MGY0LTlhODktNjAzZDM4NDllNDZhL3Byb3ZpZGVycy9taWNyb3NvZnQuc3RvcmFnZXN5bmMvbG9jYXRpb25zL2NlbnRyYWx1c2V1YXAvb3BlcmF0aW9ucmVzdWx0cy9leUp3WVhKMGFYUnBiMjVKWkNJNklqVmhOMlE0WmpSakxXTmhZVEV0TkROaU1DMDVZVFV3TFdRMlpEbGpZakUwTUdVd01pSXNJbmR2Y210bWJHOTNTV1FpT2lJNU1qSmtNak5rWVMweU5tUmhMVFF4WWpRdE9ERTRNaTFrTjJNd01XVmtOekJrTjJJaUxDSjNiM0pyWm14dmQwOXdaWEpoZEdsdmJrbGtJam9pTWpCbU1UQXdNemN0T1RoaU5TMDBORFpsTFRsak1qWXRZbUpqTmpCbU1XVTBOalUxSW4wPT9hcGktdmVyc2lvbj0yMDIwLTA5LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9bf7720a-f335-4595-9723-87d1a9b7d41f"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30321.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.StorageSync.StorageSyncManagementClient/6.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "35bc55d0-2540-48e3-b21c-256e8fd87aa7"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-correlation-request-id": [
+          "7a4b3da4-15cc-4132-a5cb-7abed1a1b8b7"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20210811T001256Z:7a4b3da4-15cc-4132-a5cb-7abed1a1b8b7"
+        ],
+        "Date": [
+          "Wed, 11 Aug 2021 00:12:56 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/7b96cb02-4663-40f4-9a89-603d3849e46a/resourceGroups/ps7352/providers/Microsoft.StorageSync/storageSyncServices?api-version=2020-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2I5NmNiMDItNDY2My00MGY0LTlhODktNjAzZDM4NDllNDZhL3Jlc291cmNlR3JvdXBzL3BzNzM1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2VTeW5jL3N0b3JhZ2VTeW5jU2VydmljZXM/YXBpLXZlcnNpb249MjAyMC0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ed44e580-a399-4d81-8840-ae58b81417a7"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30321.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.StorageSync.StorageSyncManagementClient/6.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "4eb3b0f2-df66-4b47-8453-21e5b9bc339e"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -726,142 +867,13 @@
           "11995"
         ],
         "x-ms-correlation-request-id": [
-          "fbcf276e-e62e-42b7-8e1d-eff5ce522b33"
+          "c6d77662-9341-4078-b9d2-ebc6c643f15f"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200623T072326Z:fbcf276e-e62e-42b7-8e1d-eff5ce522b33"
+          "WESTCENTRALUS:20210811T001256Z:c6d77662-9341-4078-b9d2-ebc6c643f15f"
         ],
         "Date": [
-          "Tue, 23 Jun 2020 07:23:25 GMT"
-        ],
-        "Content-Length": [
-          "745"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1dfbd0ca-8f09-4063-8b4d-85ca8f8a383b/providers/microsoft.storagesync/locations/centraluseuap/operationresults/eyJwYXJ0aXRpb25JZCI6IjgxOGVjZGUwLWVhODktNDIwOC04YzE2LTEwNzVmOWI4MmFhYyIsIndvcmtmbG93SWQiOiI2NDVhMWM1My1jNWJiLTRhNTMtYTU3ZC1kNTBkMDIwMjI1MmMiLCJ3b3JrZmxvd09wZXJhdGlvbklkIjoiMGRjMDBmMjctMTRmZC00N2RkLThiYmItZTRkMThjMDJmYWQ2In0=\",\r\n  \"name\": \"eyJwYXJ0aXRpb25JZCI6IjgxOGVjZGUwLWVhODktNDIwOC04YzE2LTEwNzVmOWI4MmFhYyIsIndvcmtmbG93SWQiOiI2NDVhMWM1My1jNWJiLTRhNTMtYTU3ZC1kNTBkMDIwMjI1MmMiLCJ3b3JrZmxvd09wZXJhdGlvbklkIjoiMGRjMDBmMjctMTRmZC00N2RkLThiYmItZTRkMThjMDJmYWQ2In0=\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2020-06-23T07:23:16.6543816Z\",\r\n  \"endTime\": \"2020-06-23T07:23:22.2799911Z\",\r\n  \"properties\": {}\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/1dfbd0ca-8f09-4063-8b4d-85ca8f8a383b/providers/microsoft.storagesync/locations/centraluseuap/operationresults/eyJwYXJ0aXRpb25JZCI6IjgxOGVjZGUwLWVhODktNDIwOC04YzE2LTEwNzVmOWI4MmFhYyIsIndvcmtmbG93SWQiOiI2NDVhMWM1My1jNWJiLTRhNTMtYTU3ZC1kNTBkMDIwMjI1MmMiLCJ3b3JrZmxvd09wZXJhdGlvbklkIjoiMGRjMDBmMjctMTRmZC00N2RkLThiYmItZTRkMThjMDJmYWQ2In0=?api-version=2020-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWRmYmQwY2EtOGYwOS00MDYzLThiNGQtODVjYThmOGEzODNiL3Byb3ZpZGVycy9taWNyb3NvZnQuc3RvcmFnZXN5bmMvbG9jYXRpb25zL2NlbnRyYWx1c2V1YXAvb3BlcmF0aW9ucmVzdWx0cy9leUp3WVhKMGFYUnBiMjVKWkNJNklqZ3hPR1ZqWkdVd0xXVmhPRGt0TkRJd09DMDRZekUyTFRFd056Vm1PV0k0TW1GaFl5SXNJbmR2Y210bWJHOTNTV1FpT2lJMk5EVmhNV00xTXkxak5XSmlMVFJoTlRNdFlUVTNaQzFrTlRCa01ESXdNakkxTW1NaUxDSjNiM0pyWm14dmQwOXdaWEpoZEdsdmJrbGtJam9pTUdSak1EQm1NamN0TVRSbVpDMDBOMlJrTFRoaVltSXRaVFJrTVRoak1ESm1ZV1EySW4wPT9hcGktdmVyc2lvbj0yMDIwLTAzLTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.28207.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.14393.",
-          "Microsoft.Azure.Management.StorageSync.StorageSyncManagementClient/5.0.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "64e6b0fb-a93f-49e8-b372-f687be4572c9"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11994"
-        ],
-        "x-ms-correlation-request-id": [
-          "b0d990c0-9b2a-4d08-bdf5-f6b41bf7cf0b"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20200623T072326Z:b0d990c0-9b2a-4d08-bdf5-f6b41bf7cf0b"
-        ],
-        "Date": [
-          "Tue, 23 Jun 2020 07:23:26 GMT"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "0"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/1dfbd0ca-8f09-4063-8b4d-85ca8f8a383b/resourceGroups/ps619/providers/Microsoft.StorageSync/storageSyncServices?api-version=2020-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWRmYmQwY2EtOGYwOS00MDYzLThiNGQtODVjYThmOGEzODNiL3Jlc291cmNlR3JvdXBzL3BzNjE5L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZVN5bmMvc3RvcmFnZVN5bmNTZXJ2aWNlcz9hcGktdmVyc2lvbj0yMDIwLTAzLTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "c6c4e1e9-b570-4ad5-8611-43299cb2f303"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.28207.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.14393.",
-          "Microsoft.Azure.Management.StorageSync.StorageSyncManagementClient/5.0.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "2bd52892-0cd4-42e5-b64b-5afebf053452"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11993"
-        ],
-        "x-ms-correlation-request-id": [
-          "6f2a81f5-1e3d-400d-baaf-9f180d683f5b"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20200623T072326Z:6f2a81f5-1e3d-400d-baaf-9f180d683f5b"
-        ],
-        "Date": [
-          "Tue, 23 Jun 2020 07:23:26 GMT"
+          "Wed, 11 Aug 2021 00:12:56 GMT"
         ],
         "Content-Length": [
           "19"
@@ -877,22 +889,22 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/1dfbd0ca-8f09-4063-8b4d-85ca8f8a383b/resourcegroups/ps619?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWRmYmQwY2EtOGYwOS00MDYzLThiNGQtODVjYThmOGEzODNiL3Jlc291cmNlZ3JvdXBzL3BzNjE5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestUri": "/subscriptions/7b96cb02-4663-40f4-9a89-603d3849e46a/resourcegroups/ps7352?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2I5NmNiMDItNDY2My00MGY0LTlhODktNjAzZDM4NDllNDZhL3Jlc291cmNlZ3JvdXBzL3BzNzM1Mj9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "42e255d4-5292-4250-8329-4df79e8f1583"
+          "027f8b55-5df9-4a41-88e9-6ded034d4a7e"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28207.03",
+          "FxVersion/4.6.30321.06",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.14393.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.16"
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.43"
         ]
       },
       "ResponseHeaders": {
@@ -903,22 +915,22 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/1dfbd0ca-8f09-4063-8b4d-85ca8f8a383b/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzYxOS1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/7b96cb02-4663-40f4-9a89-603d3849e46a/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzczNTItV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14997"
+          "14998"
         ],
         "x-ms-request-id": [
-          "41d43b5b-9612-44f7-b439-9237f123e215"
+          "2fae141a-2ea7-415d-a858-dd4714103079"
         ],
         "x-ms-correlation-request-id": [
-          "41d43b5b-9612-44f7-b439-9237f123e215"
+          "2fae141a-2ea7-415d-a858-dd4714103079"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200623T072326Z:41d43b5b-9612-44f7-b439-9237f123e215"
+          "WESTCENTRALUS:20210811T001257Z:2fae141a-2ea7-415d-a858-dd4714103079"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -927,7 +939,7 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 23 Jun 2020 07:23:26 GMT"
+          "Wed, 11 Aug 2021 00:12:56 GMT"
         ],
         "Expires": [
           "-1"
@@ -940,181 +952,16 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/1dfbd0ca-8f09-4063-8b4d-85ca8f8a383b/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzYxOS1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWRmYmQwY2EtOGYwOS00MDYzLThiNGQtODVjYThmOGEzODNiL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpZeE9TMVhSVk5VVlZNaUxDSnFiMkpNYjJOaGRHbHZiaUk2SW5kbGMzUjFjeUo5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestUri": "/subscriptions/7b96cb02-4663-40f4-9a89-603d3849e46a/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzczNTItV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2I5NmNiMDItNDY2My00MGY0LTlhODktNjAzZDM4NDllNDZhL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpjek5USXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.6.28207.03",
+          "FxVersion/4.6.30321.06",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.14393.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.16"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/1dfbd0ca-8f09-4063-8b4d-85ca8f8a383b/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzYxOS1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2016-09-01"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11992"
-        ],
-        "x-ms-request-id": [
-          "99f8f0d3-6195-4a24-9c3c-dbdffe5b7223"
-        ],
-        "x-ms-correlation-request-id": [
-          "99f8f0d3-6195-4a24-9c3c-dbdffe5b7223"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20200623T072341Z:99f8f0d3-6195-4a24-9c3c-dbdffe5b7223"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 23 Jun 2020 07:23:41 GMT"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "0"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/1dfbd0ca-8f09-4063-8b4d-85ca8f8a383b/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzYxOS1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWRmYmQwY2EtOGYwOS00MDYzLThiNGQtODVjYThmOGEzODNiL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpZeE9TMVhSVk5VVlZNaUxDSnFiMkpNYjJOaGRHbHZiaUk2SW5kbGMzUjFjeUo5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.28207.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.14393.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.16"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/1dfbd0ca-8f09-4063-8b4d-85ca8f8a383b/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzYxOS1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2016-09-01"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11991"
-        ],
-        "x-ms-request-id": [
-          "039f5377-d858-4190-8810-c1306a4ec0f9"
-        ],
-        "x-ms-correlation-request-id": [
-          "039f5377-d858-4190-8810-c1306a4ec0f9"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20200623T072357Z:039f5377-d858-4190-8810-c1306a4ec0f9"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 23 Jun 2020 07:23:56 GMT"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "0"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/1dfbd0ca-8f09-4063-8b4d-85ca8f8a383b/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzYxOS1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWRmYmQwY2EtOGYwOS00MDYzLThiNGQtODVjYThmOGEzODNiL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpZeE9TMVhSVk5VVlZNaUxDSnFiMkpNYjJOaGRHbHZiaUk2SW5kbGMzUjFjeUo5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.28207.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.14393.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.16"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11990"
-        ],
-        "x-ms-request-id": [
-          "0a3dad54-93eb-4897-8510-1c442c41fb69"
-        ],
-        "x-ms-correlation-request-id": [
-          "0a3dad54-93eb-4897-8510-1c442c41fb69"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20200623T072412Z:0a3dad54-93eb-4897-8510-1c442c41fb69"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 23 Jun 2020 07:24:11 GMT"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "0"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/1dfbd0ca-8f09-4063-8b4d-85ca8f8a383b/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzYxOS1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWRmYmQwY2EtOGYwOS00MDYzLThiNGQtODVjYThmOGEzODNiL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpZeE9TMVhSVk5VVlZNaUxDSnFiMkpNYjJOaGRHbHZiaUk2SW5kbGMzUjFjeUo5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.28207.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.14393.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.16"
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.43"
         ]
       },
       "ResponseHeaders": {
@@ -1128,13 +975,13 @@
           "11989"
         ],
         "x-ms-request-id": [
-          "bf77a915-3bc1-437d-9e35-f566c8ad92c2"
+          "ac8b99a8-86f2-4039-9393-11e7e202aa0d"
         ],
         "x-ms-correlation-request-id": [
-          "bf77a915-3bc1-437d-9e35-f566c8ad92c2"
+          "ac8b99a8-86f2-4039-9393-11e7e202aa0d"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200623T072412Z:bf77a915-3bc1-437d-9e35-f566c8ad92c2"
+          "WESTCENTRALUS:20210811T001312Z:ac8b99a8-86f2-4039-9393-11e7e202aa0d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1143,7 +990,58 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 23 Jun 2020 07:24:11 GMT"
+          "Wed, 11 Aug 2021 00:13:11 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/7b96cb02-4663-40f4-9a89-603d3849e46a/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzczNTItV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2I5NmNiMDItNDY2My00MGY0LTlhODktNjAzZDM4NDllNDZhL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpjek5USXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.30321.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.43"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11988"
+        ],
+        "x-ms-request-id": [
+          "7e059ce6-2302-441e-8ca8-c946c2e2faed"
+        ],
+        "x-ms-correlation-request-id": [
+          "7e059ce6-2302-441e-8ca8-c946c2e2faed"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20210811T001312Z:7e059ce6-2302-441e-8ca8-c946c2e2faed"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 11 Aug 2021 00:13:11 GMT"
         ],
         "Expires": [
           "-1"
@@ -1158,14 +1056,14 @@
   ],
   "Names": {
     "Test-RemoveSyncGroupResourceId": [
-      "ps619",
-      "ps4949",
-      "ps3148"
+      "ps7352",
+      "ps9366",
+      "ps4108"
     ]
   },
   "Variables": {
-    "SubscriptionId": "1dfbd0ca-8f09-4063-8b4d-85ca8f8a383b",
-    "TenantId": "6ad91d65-65ab-4e14-90f7-fe951035b7c9",
+    "SubscriptionId": "7b96cb02-4663-40f4-9a89-603d3849e46a",
+    "TenantId": "0483643a-cb2f-462a-bc27-1a270e5bdc0a",
     "Domain": ""
   }
 }

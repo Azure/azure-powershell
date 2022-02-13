@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.PostgreSql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.postgresql/restart-azpostgresqlserver
+online version: https://docs.microsoft.com/powershell/module/az.postgresql/restart-azpostgresqlserver
 schema: 2.0.0
 ---
 

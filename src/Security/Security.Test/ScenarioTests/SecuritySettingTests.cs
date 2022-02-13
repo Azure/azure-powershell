@@ -46,9 +46,9 @@ namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void SetDataExportSettingsScope()
+        public void SetSettingsScope()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzureRmSecuritySetting-DataExportSettingsScope");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzureRmSecuritySetting-SettingsScope");
         }
     }
 }

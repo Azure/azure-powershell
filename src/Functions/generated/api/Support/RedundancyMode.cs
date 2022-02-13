@@ -27,7 +27,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         /// <param name="value">the value to convert to an instance of <see cref="RedundancyMode" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new RedundancyMode(System.Convert.ToString(value));
+            return new RedundancyMode(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type RedundancyMode</summary>

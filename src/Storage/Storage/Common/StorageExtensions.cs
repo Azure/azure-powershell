@@ -10,6 +10,7 @@
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
     using global::Azure.Storage;
+    using global::Azure.Storage.Blobs;
     using global::Azure.Storage.Blobs.Specialized;
     using global::Azure.Storage.Sas;
     using Microsoft.Azure.Storage.Auth;
@@ -24,6 +25,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
     internal static class StorageExtensions
     {
         private const int CopySASLifeTimeInMinutes = 7 * 24 * 60;
+
+        // The Oauth delegate SAS expire time must be in 7 days. 
+        // As client and server has time difference, to make it more stable, the time will be 1 hour less than 7 days.
+        private const int CopySASLifeTimeInMinutesOauth = 7 * 24 * 60 - 60;
 
         internal static Uri GenerateUriWithCredentials(
             this CloudFile file)
@@ -196,7 +201,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         private static string GetBlobSasToken(CloudBlob blob)
         {
             if (null == blob.ServiceClient.Credentials
-                || blob.ServiceClient.Credentials.IsAnonymous)
+                || (blob.ServiceClient.Credentials.IsAnonymous && !blob.ServiceClient.Credentials.IsToken))
             {
                 return string.Empty;
             }
@@ -207,6 +212,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
 
             // SAS life time is at least 10 minutes.
             TimeSpan sasLifeTime = TimeSpan.FromMinutes(CopySASLifeTimeInMinutes);
+            if (blob.ServiceClient.Credentials.IsToken)
+            {
+                sasLifeTime = TimeSpan.FromMinutes(CopySASLifeTimeInMinutesOauth);
+            }
 
             SharedAccessBlobPolicy policy = new SharedAccessBlobPolicy()
             {
@@ -224,14 +233,24 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             {
                 rootBlob = Util.GetBlobReference(blob.Uri, blob.ServiceClient.Credentials, blob.BlobType);
             }
+            if (!blob.ServiceClient.Credentials.IsToken) // not oauth, generated normal sas
+            {
+                return rootBlob.GetSharedAccessSignature(policy);
+            }
+            else // oauth, generate identity sas
+            {
+                DateTimeOffset userDelegationKeyStartTime = DateTime.Now;
+                DateTimeOffset userDelegationKeyEndTime = userDelegationKeyStartTime.AddMinutes(CopySASLifeTimeInMinutes) ;
+                Azure.Storage.UserDelegationKey userDelegationKey = rootBlob.ServiceClient.GetUserDelegationKey(userDelegationKeyStartTime, userDelegationKeyEndTime);
 
-            return rootBlob.GetSharedAccessSignature(policy);
+                return rootBlob.GetUserDelegationSharedAccessSignature(userDelegationKey, policy);
+            }
         }
 
         private static string GetBlobSasToken(BlobBaseClient blob, AzureStorageContext context)
         {
             if (null == context.StorageAccount.Credentials
-                || context.StorageAccount.Credentials.IsAnonymous)
+                || (context.StorageAccount.Credentials.IsAnonymous && !context.StorageAccount.Credentials.IsToken))
             {
                 return string.Empty;
             }
@@ -242,6 +261,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
 
             // SAS life time is at least 10 minutes.
             TimeSpan sasLifeTime = TimeSpan.FromMinutes(CopySASLifeTimeInMinutes);
+            if (context.StorageAccount.Credentials.IsToken)
+            {
+                sasLifeTime = TimeSpan.FromMinutes(CopySASLifeTimeInMinutesOauth);
+            }
 
             BlobSasBuilder sasBuilder = new BlobSasBuilder
             {
@@ -253,8 +276,27 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             {
                 sasBuilder.BlobVersionId = Util.GetVersionIdFromBlobUri(blob.Uri);
             }
-            sasBuilder.SetPermissions("r");
-            string sasToken = sasBuilder.ToSasQueryParameters(new StorageSharedKeyCredential(context.StorageAccountName, context.StorageAccount.Credentials.ExportBase64EncodedKey())).ToString();
+            sasBuilder.SetPermissions("rt");
+
+            string sasToken = null;
+            if (context != null && context.StorageAccount.Credentials.IsToken) //oauth
+            {
+                global::Azure.Storage.Blobs.Models.UserDelegationKey userDelegationKey = null;
+                BlobServiceClient oauthService = new BlobServiceClient(context.StorageAccount.BlobEndpoint, context.Track2OauthToken, null);
+
+                Util.ValidateUserDelegationKeyStartEndTime(sasBuilder.StartsOn, sasBuilder.ExpiresOn);
+
+                userDelegationKey = oauthService.GetUserDelegationKey(
+                    startsOn: sasBuilder.StartsOn == DateTimeOffset.MinValue || sasBuilder.StartsOn == null? DateTimeOffset.UtcNow : sasBuilder.StartsOn.ToUniversalTime(),
+                    expiresOn: sasBuilder.ExpiresOn.ToUniversalTime());
+
+                sasToken = sasBuilder.ToSasQueryParameters(userDelegationKey, context.StorageAccountName).ToString();
+            }
+            else // sharedkey
+            {
+                sasToken = sasBuilder.ToSasQueryParameters(new StorageSharedKeyCredential(context.StorageAccountName, context.StorageAccount.Credentials.ExportBase64EncodedKey())).ToString();
+            }
+
             if (sasToken[0] != '?')
             {
                 sasToken = "?" + sasToken;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.Azure.Commands.KeyVault.SecurityDomain.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
@@ -96,12 +97,12 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
 
         void SetExponent(byte[] exp)
         {
-            e = Base64UrlEncoder.Encode(exp);
+            e = Base64UrlHelper.Encode(exp);
         }
 
         void SetModulus(byte[] modulus)
         {
-            n = Base64UrlEncoder.Encode(modulus);
+            n = Base64UrlHelper.Encode(modulus);
         }
 
         void SetKeyType(JwkKeyType keyType)
@@ -236,12 +237,12 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
 
         void SetX5t(X509Certificate2 cert)
         {
-            x5t = Base64UrlEncoder.Encode(ToByteArray(cert.Thumbprint));
+            x5t = Base64UrlHelper.Encode(ToByteArray(cert.Thumbprint));
         }
 
         void SetX5t256(X509Certificate2 cert)
         {
-            x5t_S256 = Base64UrlEncoder.Encode(Utils.Sha256Thumbprint(cert));
+            x5t_S256 = Base64UrlHelper.Encode(Utils.Sha256Thumbprint(cert));
         }
 
         public string kty { get; set; }

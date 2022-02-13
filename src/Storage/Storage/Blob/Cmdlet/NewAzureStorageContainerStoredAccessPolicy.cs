@@ -58,6 +58,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         {
             return true;
         }
+        
+        // Overwrite the useless parameter
+        public override string TagCondition { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the NewAzureStorageContainerStoredAccessPolicyCommand class.

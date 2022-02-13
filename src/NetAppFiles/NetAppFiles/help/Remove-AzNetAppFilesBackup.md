@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://docs.microsoft.com/en-us/powershell/module/az.netappfiles/remove-aznetappfilesbackup
+online version: https://docs.microsoft.com/powershell/module/az.netappfiles/remove-aznetappfilesbackup
 schema: 2.0.0
 ---
 
@@ -17,6 +17,12 @@ Deletes an Azure NetApp Files (ANF) backup.
 Remove-AzNetAppFilesBackup -ResourceGroupName <String> [-AccountName <String>] -PoolName <String>
  [-VolumeName <String>] -Name <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
+```
+
+### ByAccountBackupFieldsParameterSet
+```
+Remove-AzNetAppFilesBackup -ResourceGroupName <String> -AccountName <String> -AccountBackupName <String>
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
@@ -49,7 +55,29 @@ PS C:\> Remove-AzNetAppFilesBackup -ResourceGroupName "MyRG" -AccountName "MyAcc
 
 This command deletes the new ANF backup with a the name "MyBackup" for volume "MyVolume".
 
+### Example 2
+```powershell
+PS C:\> Remove-AzNetAppFilesBackup -ResourceGroupName "MyRG" -AccountName "MyAccount" -AccountBackupName "MyBackup"
+```
+
+This command deletes the new ANF backup with a the name "MyBackup" for account "MyAccount".
+
 ## PARAMETERS
+
+### -AccountBackupName
+The name of the ANF backup
+
+```yaml
+Type: System.String
+Parameter Sets: ByAccountBackupFieldsParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AccountName
 The name of the ANF account
@@ -60,6 +88,18 @@ Parameter Sets: ByFieldsParameterSet
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: ByAccountBackupFieldsParameterSet
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -146,7 +186,7 @@ The resource group of the ANF account
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: ByFieldsParameterSet, ByAccountBackupFieldsParameterSet
 Aliases:
 
 Required: True

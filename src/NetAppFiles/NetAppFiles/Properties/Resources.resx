@@ -120,9 +120,12 @@
   <data name="CreateResourceMessage" xml:space="preserve">
     <value>Create the new {0}</value>
   </data>
+  <data name="PoolChangeMessage" xml:space="preserve">
+    <value>Changing pool of the volume {0}</value>
+  </data>
   <data name="RemoveResourceMessage" xml:space="preserve">
     <value>Remove the {0}</value>
-  </data>  
+  </data>
   <data name="UpdateResourceMessage" xml:space="preserve">
     <value>Updating the {0}</value>
   </data>

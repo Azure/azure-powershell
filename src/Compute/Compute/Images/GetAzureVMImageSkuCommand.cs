@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Linq;
 using System.Management.Automation;
 
@@ -26,6 +27,11 @@ namespace Microsoft.Azure.Commands.Compute
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty, LocationCompleter("Microsoft.Compute/locations/publishers")]
         public string Location { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Set the extended location name for EdgeZone. If not set, VM Image sku will be queried from Azure main region. Otherwise it will be queried from the specified extended location")]
+
+        public string EdgeZone { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
         public string PublisherName { get; set; }
@@ -39,24 +45,50 @@ namespace Microsoft.Azure.Commands.Compute
 
             ExecuteClientAction(() =>
             {
-                var result = this.VirtualMachineImageClient.ListSkusWithHttpMessagesAsync(
-                    this.Location.Canonicalize(),
-                    this.PublisherName,
-                    this.Offer).GetAwaiter().GetResult();
+                if ((this.IsParameterBound(c => c.EdgeZone)) && this.EdgeZone != null)
+                {
+                    var result = this.VirtualMachineImagesEdgeZoneClient.ListSkusWithHttpMessagesAsync(
+                        this.Location.Canonicalize(),
+                        this.EdgeZone.Canonicalize(),
+                        this.PublisherName,
+                        this.Offer).GetAwaiter().GetResult();
 
-                var images = from r in result.Body
-                             select new PSVirtualMachineImageSku
-                             {
-                                 RequestId = result.RequestId,
-                                 StatusCode = result.Response.StatusCode,
-                                 Id = r.Id,
-                                 Location = r.Location,
-                                 PublisherName = this.PublisherName,
-                                 Offer = this.Offer,
-                                 Skus = r.Name
-                             };
+                    var images = from r in result.Body
+                                 select new PSVirtualMachineImageSku
+                                 {
+                                     RequestId = result.RequestId,
+                                     StatusCode = result.Response.StatusCode,
+                                     Id = r.Id,
+                                     Location = r.Location,
+                                     EdgeZone = r.ExtendedLocation.Name,
+                                     PublisherName = this.PublisherName,
+                                     Offer = this.Offer,
+                                     Skus = r.Name
+                                 };
 
-                WriteObject(images, true);
+                    WriteObject(images, true);
+                }
+                else
+                {
+                    var result = this.VirtualMachineImageClient.ListSkusWithHttpMessagesAsync(
+                        this.Location.Canonicalize(),
+                        this.PublisherName,
+                        this.Offer).GetAwaiter().GetResult();
+
+                    var images = from r in result.Body
+                                 select new PSVirtualMachineImageSku
+                                 {
+                                     RequestId = result.RequestId,
+                                     StatusCode = result.Response.StatusCode,
+                                     Id = r.Id,
+                                     Location = r.Location,
+                                     PublisherName = this.PublisherName,
+                                     Offer = this.Offer,
+                                     Skus = r.Name
+                                 };
+
+                    WriteObject(images, true);
+                }
             });
         }
     }

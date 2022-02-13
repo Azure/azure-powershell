@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
-online version: https://docs.microsoft.com/en-us/powershell/module/az.servicefabric/set-azservicefabricsetting
+online version: https://docs.microsoft.com/powershell/module/az.servicefabric/set-azservicefabricsetting
 schema: 2.0.0
 ---
 
@@ -36,7 +36,6 @@ Set-AzServiceFabricSetting -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster
 ```
 
 This command will set 'MaxFileOperationTimeout' to value '5000' under the section 'NamingService'.
-
 
 ### Example 2
 ```

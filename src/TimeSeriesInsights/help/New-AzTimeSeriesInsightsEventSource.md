@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.TimeSeriesInsights
-online version: https://docs.microsoft.com/en-us/powershell/module/az.timeseriesinsights/new-aztimeseriesinsightseventsource
+online version: https://docs.microsoft.com/powershell/module/az.timeseriesinsights/new-aztimeseriesinsightseventsource
 schema: 2.0.0
 ---
 

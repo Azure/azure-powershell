@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
             if (ShouldProcess($"managed HSM {Name}", $"download encrypted security domain data to '{OutputPath}'"))
             {
                 OutputPath = ResolveUserPath(OutputPath);
-                var securityDomain = Client.DownloadSecurityDomain(Name, certificates, Quorum);
+                var securityDomain = Client.DownloadSecurityDomain(Name, certificates, Quorum, CancellationToken);
                 if (!AzureSession.Instance.DataStore.FileExists(OutputPath) || Force || ShouldContinue(string.Format(Resources.FileOverwriteMessage, OutputPath), Resources.FileOverwriteCaption))
                 {
                     AzureSession.Instance.DataStore.WriteFile(OutputPath, securityDomain);

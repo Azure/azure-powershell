@@ -1,10 +1,26 @@
-﻿using Microsoft.Azure.Commands.Synapse.Models;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using Microsoft.Azure.Commands.Synapse.Models;
 
 namespace Microsoft.Azure.Commands.Synapse.Common
 {
     public static class HelpMessages
     {
         public const string ResourceGroupName = "Resource group name.";
+
+        public const string ScanId = "Scan Id.";
 
         public const string Location = "Azure region where the resource should be created.";
 
@@ -14,15 +30,41 @@ namespace Microsoft.Azure.Commands.Synapse.Common
 
         public const string WorkspaceObject = "workspace input object, usually passed through the pipeline.";
 
+        public const string ManagedResourceGroupName = "A container that holds ancillary resources. Created by default while the name can be specified. Note that this group must be different with ResourceGroupName.";
+
         public const string DefaultDataLakeStorageAccountName = "The default ADLS Gen2 storage account name.";
 
         public const string DefaultDataLakeStorageFilesystem = "The default ADLS Gen2 file system.";
 
-        public const string ManagedVirtualNetwork = "Name of a Synapse-managed virtual network dedicated for the Azure Synapse workspace.";
+        public const string DeletionDate = "The deletion date of the Azure Synaspe SQL Database to retrieve backups for, with millisecond precision (e.g. 2016-02-23T00:21:22.847Z)";
+
+        public const string ManagedVirtualNetwork = "Managed Virtual Network Settings.";
 
         public const string DisallowAllConnection = "Azure Synapse Studio and other client tools will only be able to connect to the workspace endpoints if this parameter is not present. Connections from specific IP addresses or all Azure services can be allowed/disallowed after the workspace is provisioned.";
 
         public const string SqlAdministratorLoginCredential = "SQL administrator credentials.";
+
+        public const string GitRepository = "Git Repository Settings. Connect workspace to the repository for source control and collaboration for work on your workspace pipelines";
+
+        public const string RepositoryType = "Select the repository type that you want to use to store your artifacts for this Synapse Analytics workspace, the type include DevOps and GitHub.";
+
+        public const string HostName = "GitHub Enterprise host name. For example: https://github.mydomain.com";
+
+        public const string AccountName = "GitHub or DevOps account name used for the repository.";
+
+        public const string ProjectName = "The project name you are connecting, only specify it when you choose DevOps.";
+
+        public const string RepositoryName = "The name of the repository you are connecting.";
+
+        public const string CollaborationBranch = "Select the branch name where you will collaborate with others and from which you will publish.";
+
+        public const string PublishBranch = "The publish branch is the branch in your repository where publishing related ARM templates are stored and update. The default value is workspace_publish.";
+
+        public const string RootFolder = "Displays the name of the folder to the location of your Azure Data Factory JSON resources are imported. The default value is /";
+
+        public const string TenantId = "Select the tenant Id to use when signing in into the Azure DevOps Git repository.";
+
+        public const string DoNotAssignManagedIdentity = "Do not assign the workspace's system-assigned managed identity CONTROL permissions to SQL pools for pipeline integration.";
 
         public const string SparkPoolName = "Name of Synapse Spark pool.";
 
@@ -46,11 +88,13 @@ namespace Microsoft.Azure.Commands.Synapse.Common
 
         public const string DisableAutoPause = "Indicates whether Auto-pause should be disabled.";
 
-        public const string AutoPauseDelayInMinute = "Number of minutes idle. This parameter must be specified when Auto-pause is enabled.";
+        public const string AutoPauseDelayInMinute = "Number of minutes idle. This parameter can be specified when Auto-pause is enabled. If it is not specified manually, the default value will be " + SynapseConstants.DefaultAutoPauseDelayInMinute + ".";
 
         public const string SparkVersion = "Apache Spark version. Allowed values: 2.4";
 
         public const string LibraryRequirementsFilePath = "Environment configuration file (\"PIP freeze\" output).";
+
+        public const string SparkConfigPropertiesFilePath = "Spark pool properties configuration file.";
 
         public const string Batch = "Indicates Spark batch.";
 
@@ -116,6 +160,8 @@ namespace Microsoft.Azure.Commands.Synapse.Common
 
         public const string ApplicationId = "The Application identifier of the session.";
 
+        public const string scanRecordObject = "The scan record object to use in order to convert a Vulnerability Assessment scan.";
+
         public const string SqlDatabaseName = "Name of Synapse SQL Database.";
 
         public const string SqlDatabaseResourceId = "Resource identifier of Synapse SQL Database.";
@@ -148,6 +194,8 @@ namespace Microsoft.Azure.Commands.Synapse.Common
         
         public const string MaxSizeInBytes = "Specifies the maximum size of the database in bytes.";
 
+        public const string StorageRedundancy = "Storage redundancy of the database.";
+
         public const string BackupResourceGroupName = "The resource group name of bakcup SQL pool object to create from.";
 
         public const string BackupWorkspaceName = "The Synapse workspace name of bakcup SQL pool object to create from.";
@@ -164,7 +212,7 @@ namespace Microsoft.Azure.Commands.Synapse.Common
 
         public const string SourceSqlPoolName = "The name of source SQL pool object to create from.";
 
-        public const string SourceSqlPoolId = "The resource identifier of source SQL pool object to create from.";
+        public const string SourceDatabaseId = "The resource ID of the database to restore.";
 
         public const string FromBackup = "Indicates to restore from the most recent backup of any SQL pool in this subscription.";
 
@@ -219,6 +267,16 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
 
         public const string RetentionInDays = "The number of retention days for the audit logs.";
 
+        public const string EventHubTargetState = "Indicates whether event hub is a destination for audit records.";
+
+        public const string EventHubName = "The name of the event hub. If none is specified when providing EventHubAuthorizationRuleResourceId, the default event hub will be selected.";
+
+        public const string EventHubAuthorizationRuleId = "The resource Id for the event hub authorization rule";
+
+        public const string LogAnalyticsTargetState = "Indicates whether log analytics is a destination for audit records.";
+
+        public const string WorkspaceId = "The workspace ID (resource ID of a Log Analytics workspace) for a Log Analytics workspace to which you would like to send Audit Logs. Example: /subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2";
+
         public const string NotificationRecipientsEmails = "A semicolon separated list of email addresses to send the alerts to.";
 
         public const string EmailAdmins = "Defines whether to email administrators.";
@@ -251,13 +309,15 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
 
         public const string EndIpAddress = "The end IP address of the firewall rule. Must be IPv4 format. Must be greater than or equal to startIpAddress.";
 
-        public const string AzureIpRule = "Creates a special firewall rule that permits all Azure IPs to have access.";
+        public const string AllowAllAzureIpRule = "Creates a special firewall rule that permits all Azure IPs to have access. The Start IP is 0.0.0.0. The End IP is 0.0.0.0.";
+
+        public const string AllowAllIpRule = "Creates a special firewall rule that allows connections from all IP addresses. The Start IP is 0.0.0.0. The End IP is 255.255.255.255.";
 
         public const string RoleAssignmentId = "The ID of the role assignment.";
 
         public const string RoleDefinitionId = "Id of the Role that is assigned to the principal.";
 
-        public const string RoleDefinitionName = "Name of the Role that is assigned to the principal.";
+         public const string RoleDefinitionName = "Name of the Role that is assigned to the principal.";
 
         public const string PrincipalId = "The Azure AD ObjectId of the User, Group or Service Principal.";
 
@@ -392,5 +452,115 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
         public const string DataFlowName = "The data flow name.";
 
         public const string DataFlowObject = "The data flow object.";
+
+        public const string EnableManagedIdentitySqlControlSetting = "Indicates whether to enable managed identity SQL control setting. Specify $True to enable managed identity SQL control setting, or $False to disable managed identity SQL control setting.";
+
+        public const string PreventDataExfiltration = "Indicates whether to prevent data exfiltration.";
+
+        public const string LinkedAccessCheckOnTargetResource = "Indicates whther to check linked access on target resource.";
+
+        public const string AllowedAadTenantIdsForLinking = "The allowed AAD tenant IDs for linking.";
+
+        public const string EncryptionKeyName = "The workspace encryption key name.";
+
+        public const string EncryptionKeyIdentifier = "Key identifier should be in the format of: https://{keyvaultname}.vault.azure.net/keys/{keyname}.";
+
+        public const string WorkspaceKeyName = "The name of the workspace key.";
+
+        public const string WorkspaceItemType = "The workspace item type.";
+
+        public const string WorkspaceItem = "The workspace item.";
+
+        public const string IsActiveCustomerManagedKey = "Indicates whether to activate the workspace after a customer managed key is provided.";
+
+        public const string KeyResourceId = "The resource identifier of Synapse SQL Pool.";
+
+        public const string KeyObject = "Workspace key input object, usually passed through the pipeline.";
+
+        public const string SparkJobDefinitionName = "The Spark job definition name.";
+
+        public const string SparkJobDefinitionObject = "The Spark job definition object.";
+
+        public const string MaxServiceObjectName = "The max service level objective name of the sql pool.";
+
+        public const string AutoPauseTimer = "The period of inactivity in minutes before automatically pausing the sql pool.";
+
+        public const string AutoResume = "Indicates whether the sql pool can automatically resume when connection attempts are made.";
+
+        public const string ManagedPrivateEndpointName = "The Synapse Managed Private Endpoint Name.";
+
+        public const string ManagedPrivateEndpointObject = "The Synapse Managed Private Endpoint Object.";
+
+        public const string DefaultVNetName = "Managed Virtual Network Name is 'default'.";
+
+        public const string HelpTriggerRun = "The information about the trigger run.";
+
+        public const string TriggerRunId = "The Run ID of the trigger.";
+
+        public const string WorkspacePackageFile = "Specifies a local file path for a file to upload as workspace package.";
+
+        public const string WorkspacePackageName = "The workspace package name.";
+
+        public const string WorkspacePackageObject = "The workspace package object.";
+
+        public const string WorkspacePackages = "The workspace packages.";
+
+        public const string PackageAction = "Package action must be specified when you add or remove a workspace package from a Apache Spark pool.";
+
+        public const string DataFlowDebugSessionId = "Identifier for Synapse data flow debug session.";
+
+        public const string DebugSessionCommand = "The data flow debug command. Optionals are executePreviewQuery, executeStatisticsQuery and executeExpressionQuery.";
+
+        public const string DebugSessionStreamName = "The stream name of data flow for debugging.";
+
+        public const string DebugSessionRowLimit = "The row limit for data flow data preview.";
+
+        public const string DebugSessionExpression = "The expression for data flow expression preview.";
+
+        public const string DebugSessionColumns = "The columns list for data flow statistics preview.";
+
+        public const string DataFlowDebugSessionFilePath = "File path for Synapse data flow debug session";
+
+        public const string SqlScriptName = "The sql script name.";
+
+        public const string SqlScriptObject = "The sql script object.";
+
+        public const string SqlScriptOutputFolder = "The folder where the sql scripts should be placed.";
+
+        public const string SqlScriptSqlPoolName = "Which sql pool the sql script is going to connect to.";
+
+        public const string SqlScriptDatabaseName = "Which database the sql script is going to use.";
+
+        public const string ResultLimit = "Limit of results, '-1' for no limit.";
+
+        public const string SqlFolderPath = "The folder that this SQL script is in. If specify a multi-level path such as [rootFolder/subFolder], the SqlScript will appear at the bottom level. If not specified, this SQL script will appear at the root level.";
+
+        public const string Description = "The description of the SQL script.";
+
+        public const string DefaultResultLimit = "The default resultLimit is 5000";
+
+        public const string SqlFilePath = "The SQL file path.";
+
+        public const string SparkConfigurationFolderPath = "The folder that this Spark job definition is in. If specify a multi-level path such as [rootFolder/subFolder], the Spark job definition will appear at the bottom level. If not specified, this Spark job definition will appear at the root level.";
+
+        public const string NoteBookFolderPath = "The folder that this notebook is in. If specify a multi-level path such as [rootFolder/subFolder], the notebook will appear at the bottom level. If not specified, this notebook will appear at the root level.";
+
+        public const string SparkConfigurationName = "The Spark Configuration name.";
+
+        public const string SparkConfigurationObject = "The Spark configuration object.";
+        
+        public const string KqlScriptName = "KQL script name.";
+
+        public const string KqlScriptObject = "KQL script object.";
+
+        public const string KqlScriptOutputFolder = "The folder where the KQL script should be placed.";
+
+        public const string KqlFilePath = "The KQL file path.";
+
+        public const string KustoPoolName = "Name of Synapse Kusto pool.";
+
+        public const string KustoPoolDatabaseName = "Name of Synapse Kusto database.";
+
+        public const string StorageAccountType = "The storage account type used to store backups for the sql pool. Possible values include: 'GRS', 'LRS'.";
     }
 }

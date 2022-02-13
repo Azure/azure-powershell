@@ -1,0 +1,188 @@
+{
+  "AzProviderHubResourceTypeRegistration-NestedResourceType-CRUD+[NoContext]+Create, get, and delete a nested resource type registration+$PUT+https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/resourcetypeRegistrations/employees%2Fresourcetyperegistrations%2FnestedResourceType?api-version=2020-11-20+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/resourcetypeRegistrations/employees%2Fresourcetyperegistrations%2FnestedResourceType?api-version=2020-11-20",
+      "Content": "{\r\n  \"properties\": {\r\n    \"routingType\": \"ProxyOnly\",\r\n    \"regionality\": \"Global\",\r\n    \"endpoints\": [\r\n      {\r\n        \"apiVersions\": [ \"2019-01-01\" ],\r\n        \"locations\": [ \"\" ],\r\n        \"extensions\": [ ]\r\n      }\r\n    ],\r\n    \"swaggerSpecifications\": [\r\n      {\r\n        \"apiVersions\": [ \"2019-01-01\" ],\r\n        \"swaggerSpecFolderUri\": \"https://github.com/Azure/azure-rest-api-specs-pr/tree/RPSaaSMaster/specification/rpsaas/resource-manager/Microsoft.Contoso/\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "494" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-request-id": [ "e2eb24b4-4df8-4d9b-a0d3-c998afd1b2e4" ],
+        "x-ms-correlation-request-id": [ "43909f89-7769-4311-9194-668587e4dd57" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210810T210443Z:43909f89-7769-4311-9194-668587e4dd57" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 10 Aug 2021 21:04:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "763" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"name\":\"employees/nestedResourceType\",\"routingType\":\"ProxyOnly\",\"regionality\":\"Global\",\"endpoints\":[{\"apiVersions\":[\"2019-01-01\"],\"locations\":[\"\"],\"extensions\":[]}],\"swaggerSpecifications\":[{\"apiVersions\":[\"2019-01-01\"],\"swaggerSpecFolderUri\":\"https://github.com/Azure/azure-rest-api-specs-pr/tree/RPSaaSMaster/specification/rpsaas/resource-manager/Microsoft.Contoso/\"}],\"enableAsyncOperation\":false,\"provisioningState\":\"Succeeded\",\"enableThirdPartyS2S\":false,\"templateDeploymentOptions\":{\"preflightSupported\":true,\"preflightOptions\":[\"DefaultValidationOnly\"]}},\"id\":\"/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/\",\"type\":\"Microsoft.ProviderHub/providerRegistrationsresourceTypeRegistrations\",\"name\":\"employees/nestedResourceType\"}"
+    }
+  },
+  "AzProviderHubResourceTypeRegistration-NestedResourceType-CRUD+[NoContext]+Create, get, and delete a nested resource type registration+$GET+https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/resourcetypeRegistrations/employees%2Fresourcetyperegistrations%2FnestedResourceType?api-version=2020-11-20+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/resourcetypeRegistrations/employees%2Fresourcetyperegistrations%2FnestedResourceType?api-version=2020-11-20",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "e09850ce-1f96-4aee-b8e1-d4aa4feb3b12" ],
+        "CommandName": [ "New-AzProviderHubResourceTypeRegistration" ],
+        "FullCommandName": [ "New-AzProviderHubResourceTypeRegistration_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-request-id": [ "ad387d8e-1d96-48db-8d38-812610d95523" ],
+        "x-ms-correlation-request-id": [ "2b24f613-58dc-484d-aa4b-c2446693838e" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210810T210513Z:2b24f613-58dc-484d-aa4b-c2446693838e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 10 Aug 2021 21:05:12 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "763" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"name\":\"employees/nestedResourceType\",\"routingType\":\"ProxyOnly\",\"regionality\":\"Global\",\"endpoints\":[{\"apiVersions\":[\"2019-01-01\"],\"locations\":[\"\"],\"extensions\":[]}],\"swaggerSpecifications\":[{\"apiVersions\":[\"2019-01-01\"],\"swaggerSpecFolderUri\":\"https://github.com/Azure/azure-rest-api-specs-pr/tree/RPSaaSMaster/specification/rpsaas/resource-manager/Microsoft.Contoso/\"}],\"enableAsyncOperation\":false,\"provisioningState\":\"Succeeded\",\"enableThirdPartyS2S\":false,\"templateDeploymentOptions\":{\"preflightSupported\":true,\"preflightOptions\":[\"DefaultValidationOnly\"]}},\"id\":\"/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/\",\"type\":\"Microsoft.ProviderHub/providerRegistrationsresourceTypeRegistrations\",\"name\":\"employees/nestedResourceType\"}"
+    }
+  },
+  "AzProviderHubResourceTypeRegistration-NestedResourceType-CRUD+[NoContext]+Create, get, and delete a nested resource type registration+$GET+https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/resourcetypeRegistrations/employees%2Fresourcetyperegistrations%2FnestedResourceType?api-version=2020-11-20+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/resourcetypeRegistrations/employees%2Fresourcetyperegistrations%2FnestedResourceType?api-version=2020-11-20",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "e09850ce-1f96-4aee-b8e1-d4aa4feb3b12" ],
+        "CommandName": [ "New-AzProviderHubResourceTypeRegistration" ],
+        "FullCommandName": [ "New-AzProviderHubResourceTypeRegistration_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-request-id": [ "8ee296d7-f61f-40ea-aa3d-db4789adae75" ],
+        "x-ms-correlation-request-id": [ "1294dca0-6fcb-4fa7-86b0-c394a6c4ffda" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210810T210513Z:1294dca0-6fcb-4fa7-86b0-c394a6c4ffda" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 10 Aug 2021 21:05:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "763" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"name\":\"employees/nestedResourceType\",\"routingType\":\"ProxyOnly\",\"regionality\":\"Global\",\"endpoints\":[{\"apiVersions\":[\"2019-01-01\"],\"locations\":[\"\"],\"extensions\":[]}],\"swaggerSpecifications\":[{\"apiVersions\":[\"2019-01-01\"],\"swaggerSpecFolderUri\":\"https://github.com/Azure/azure-rest-api-specs-pr/tree/RPSaaSMaster/specification/rpsaas/resource-manager/Microsoft.Contoso/\"}],\"enableAsyncOperation\":false,\"provisioningState\":\"Succeeded\",\"enableThirdPartyS2S\":false,\"templateDeploymentOptions\":{\"preflightSupported\":true,\"preflightOptions\":[\"DefaultValidationOnly\"]}},\"id\":\"/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/\",\"type\":\"Microsoft.ProviderHub/providerRegistrationsresourceTypeRegistrations\",\"name\":\"employees/nestedResourceType\"}"
+    }
+  },
+  "AzProviderHubResourceTypeRegistration-NestedResourceType-CRUD+[NoContext]+Create, get, and delete a nested resource type registration+$GET+https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/resourcetypeRegistrations/employees%2Fresourcetyperegistrations%2FnestedResourceType?api-version=2020-11-20+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/resourcetypeRegistrations/employees%2Fresourcetyperegistrations%2FnestedResourceType?api-version=2020-11-20",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "e08e6e12-2f3e-4227-8628-de6feeb758e4" ],
+        "CommandName": [ "Get-AzProviderHubResourceTypeRegistration" ],
+        "FullCommandName": [ "Get-AzProviderHubResourceTypeRegistration_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-request-id": [ "da2eb3c3-c839-4979-ba3f-fa4be83a3efc" ],
+        "x-ms-correlation-request-id": [ "c7f029db-2cab-47a3-83b8-e8d9a2c7c17e" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210810T210513Z:c7f029db-2cab-47a3-83b8-e8d9a2c7c17e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 10 Aug 2021 21:05:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "763" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"name\":\"employees/nestedResourceType\",\"routingType\":\"ProxyOnly\",\"regionality\":\"Global\",\"endpoints\":[{\"apiVersions\":[\"2019-01-01\"],\"locations\":[\"\"],\"extensions\":[]}],\"swaggerSpecifications\":[{\"apiVersions\":[\"2019-01-01\"],\"swaggerSpecFolderUri\":\"https://github.com/Azure/azure-rest-api-specs-pr/tree/RPSaaSMaster/specification/rpsaas/resource-manager/Microsoft.Contoso/\"}],\"enableAsyncOperation\":false,\"provisioningState\":\"Succeeded\",\"enableThirdPartyS2S\":false,\"templateDeploymentOptions\":{\"preflightSupported\":true,\"preflightOptions\":[\"DefaultValidationOnly\"]}},\"id\":\"/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/\",\"type\":\"Microsoft.ProviderHub/providerRegistrationsresourceTypeRegistrations\",\"name\":\"employees/nestedResourceType\"}"
+    }
+  },
+  "AzProviderHubResourceTypeRegistration-NestedResourceType-CRUD+[NoContext]+Create, get, and delete a nested resource type registration+$DELETE+https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/resourcetypeRegistrations/employees%2Fresourcetyperegistrations%2FnestedResourceType?api-version=2020-11-20+5": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/resourcetypeRegistrations/employees%2Fresourcetyperegistrations%2FnestedResourceType?api-version=2020-11-20",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "4917537c-8e96-48e5-95ee-048c9781fe55" ],
+        "CommandName": [ "Remove-AzProviderHubResourceTypeRegistration" ],
+        "FullCommandName": [ "Remove-AzProviderHubResourceTypeRegistration_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 400,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "60ea4fb8-2121-4680-b9bb-623a7112f336" ],
+        "x-ms-correlation-request-id": [ "4fab747c-6cfc-4815-a23f-8e3c4c84825b" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210810T210514Z:4fab747c-6cfc-4815-a23f-8e3c4c84825b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 10 Aug 2021 21:05:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "419" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"DeletingResourceTypeRegistrationIsNotAllowed\",\"message\":\"Deleting resource type \u0027Microsoft.Contoso/employees/resourcetyperegistrations/nestedResourceType\u0027 in subscription \u00276f53185c-ea09-4fc3-9075-318dec805303\u0027 is not allowed. Please contact RPaaS team to delete it https://armwiki.azurewebsites.net/rpaas/getting_help.html. Or you can update the existing resouce type registration with the PUT API.\"}}"
+    }
+  }
+}

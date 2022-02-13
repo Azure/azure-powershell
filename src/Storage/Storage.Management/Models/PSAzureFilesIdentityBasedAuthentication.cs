@@ -24,11 +24,13 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             {
                 this.DirectoryServiceOptions = auth.DirectoryServiceOptions;
                 this.ActiveDirectoryProperties = auth.ActiveDirectoryProperties != null ? new PSActiveDirectoryProperties(auth.ActiveDirectoryProperties) : null;
+                this.DefaultSharePermission = auth.DefaultSharePermission;
             }
         }
         // Gets or sets indicates the directory service used. Possible values include: 'None','AADDS', 'AD'
         public string DirectoryServiceOptions { get; set; }
         public PSActiveDirectoryProperties ActiveDirectoryProperties { get; set; }
+        public string DefaultSharePermission { get; set; }
     }
 
     public class PSActiveDirectoryProperties

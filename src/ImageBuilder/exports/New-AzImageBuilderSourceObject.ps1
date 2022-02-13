@@ -41,7 +41,7 @@ PlatformImage UbuntuServer Canonical 18.04-LTS latest
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateSource
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.imagebuilder/New-AzImageBuilderSourceObject
+https://docs.microsoft.com/powershell/module/az.imagebuilder/New-AzImageBuilderSourceObject
 #>
 function New-AzImageBuilderSourceObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateSource])]
@@ -63,7 +63,7 @@ param(
     [Parameter(ParameterSetName='PlatformImage', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
     [System.Management.Automation.SwitchParameter]
-    # Describes an image source from [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
+    # Describes an image source from [Azure Gallery Images](https://docs.microsoft.com/rest/api/compute/virtualmachineimages).
     ${SourceTypePlatformImage},
 
     [Parameter(ParameterSetName='PlatformImagePlanInfo', Mandatory)]
@@ -88,28 +88,28 @@ param(
     [Parameter(ParameterSetName='PlatformImage')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
     [System.String]
-    # Image offer from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
+    # Image offer from the [Azure Gallery Images](https://docs.microsoft.com/rest/api/compute/virtualmachineimages).
     ${Offer},
 
     [Parameter(ParameterSetName='PlatformImagePlanInfo')]
     [Parameter(ParameterSetName='PlatformImage')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
     [System.String]
-    # Image Publisher in [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
+    # Image Publisher in [Azure Gallery Images](https://docs.microsoft.com/rest/api/compute/virtualmachineimages).
     ${Publisher},
 
     [Parameter(ParameterSetName='PlatformImagePlanInfo')]
     [Parameter(ParameterSetName='PlatformImage')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
     [System.String]
-    # Image sku from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
+    # Image sku from the [Azure Gallery Images](https://docs.microsoft.com/rest/api/compute/virtualmachineimages).
     ${Sku},
 
     [Parameter(ParameterSetName='PlatformImagePlanInfo')]
     [Parameter(ParameterSetName='PlatformImage')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
     [System.String]
-    # Image version from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
+    # Image version from the [Azure Gallery Images](https://docs.microsoft.com/rest/api/compute/virtualmachineimages).
     ${Version},
 
     [Parameter(ParameterSetName='SharedImageVersion', Mandatory)]

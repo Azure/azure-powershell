@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 6A46DA60-2ACF-4842-B5B3-58944264854A
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/remove-azstoragecontainer
+online version: https://docs.microsoft.com/powershell/module/az.storage/remove-azstoragecontainer
 schema: 2.0.0
 ---
 

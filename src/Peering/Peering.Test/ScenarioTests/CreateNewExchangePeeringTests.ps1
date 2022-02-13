@@ -20,7 +20,7 @@ function Test-NewExchangePeering()
 #Hard Coded locations becuase of limitations in locations
 	$resourceName = getAssetName "NewExchangePeeringCVS"
     $resourceGroup = "testCarrier"
-    $peeringLocation = "Seattle"
+    $peeringLocation = "Ashburn"
 	$kind = IsDirect $false
 	Write-Debug "Getting the Facility Information"
 	try {

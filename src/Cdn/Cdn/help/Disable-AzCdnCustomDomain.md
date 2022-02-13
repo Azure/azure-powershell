@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/disable-azcdncustomdomain
+online version: https://docs.microsoft.com/powershell/module/az.cdn/disable-azcdncustomdomain
 schema: 2.0.0
 ---
 
@@ -33,7 +33,6 @@ The **Disable-AzCdnCustomDomain** cmdlet disables the secured HTTPS delivery of 
 ### Example 1
 ```powershell
 Disable-AzCdnCustomDomain -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroupName
-true
 ```
 
 Disable https delivery of the custom domain.

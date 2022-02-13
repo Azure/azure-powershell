@@ -63,6 +63,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specify if Disk Supports Hibernation with $true of $false")]
+        public bool? SupportsHibernation { get; set; }
+
+
+        [Parameter(
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public bool? EncryptionSettingsEnabled { get; set; }
 
@@ -86,6 +93,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         [PSArgumentCompleter("EncryptionAtRestWithPlatformKey", "EncryptionAtRestWithCustomerKey")]
         public string EncryptionType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Policy for controlling export on the disk.")]
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        public string PublicNetworkAccess { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -187,6 +201,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 EncryptionSettingsCollection = vEncryptionSettingsCollection,
                 Encryption = vEncryption,
                 Sku = vSku,
+                SupportsHibernation = this.IsParameterBound(c => c.SupportsHibernation) ? SupportsHibernation : null,
+                PublicNetworkAccess = this.IsParameterBound(c => c.PublicNetworkAccess) ? PublicNetworkAccess : null
             };
 
             WriteObject(vSnapshotUpdate);

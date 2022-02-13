@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
 {
 
-    /// <summary>Argument completer implementation for GeoRedundantBackup.</summary>
+    /// <summary>Enable Geo-redundant or not for server backup.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.GeoRedundantBackupTypeConverter))]
     public partial struct GeoRedundantBackup :
         System.Management.Automation.IArgumentCompleter
@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Enabled".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Enabled", "Enabled", global::System.Management.Automation.CompletionResultType.ParameterValue, "Enabled");
+                yield return new global::System.Management.Automation.CompletionResult("'Enabled'", "Enabled", global::System.Management.Automation.CompletionResultType.ParameterValue, "Enabled");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Disabled".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Disabled", "Disabled", global::System.Management.Automation.CompletionResultType.ParameterValue, "Disabled");
+                yield return new global::System.Management.Automation.CompletionResult("'Disabled'", "Disabled", global::System.Management.Automation.CompletionResultType.ParameterValue, "Disabled");
             }
         }
     }

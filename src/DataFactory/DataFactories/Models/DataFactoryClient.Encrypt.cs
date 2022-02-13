@@ -34,8 +34,8 @@ namespace Microsoft.Azure.Commands.DataFactories
         {
             LinkedServiceType linkedServiceType = type == null ? LinkedServiceType.OnPremisesSqlLinkedService : GetLinkedServiceType(type);
 
-            if (linkedServiceType == LinkedServiceType.OnPremisesSqlLinkedService && linkedServiceType == LinkedServiceType.OnPremisesOracleLinkedService
-                && linkedServiceType == LinkedServiceType.OnPremisesFileSystemLinkedService && (value == null || value.Length == 0))
+            if ((linkedServiceType == LinkedServiceType.OnPremisesSqlLinkedService || linkedServiceType == LinkedServiceType.OnPremisesOracleLinkedService
+                || linkedServiceType == LinkedServiceType.OnPremisesFileSystemLinkedService) && (value == null || value.Length == 0))
             {
                 throw new ArgumentNullException("value");
             }

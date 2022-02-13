@@ -6,6 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>
+    /// A value indicating whether multi VM sync enabled VMs should use multi VM sync points for failover.
+    /// </summary>
     public partial struct MultiVMSyncPointOption :
         System.IEquatable<MultiVMSyncPointOption>
     {
@@ -20,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         /// <param name="value">the value to convert to an instance of <see cref="MultiVMSyncPointOption" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new MultiVMSyncPointOption(System.Convert.ToString(value));
+            return new MultiVMSyncPointOption(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type MultiVMSyncPointOption</summary>

@@ -41,9 +41,9 @@ namespace Microsoft.Azure.Commands.Profile.Context
         [Parameter(Mandatory=false, HelpMessage="Return the renamed context")]
         public SwitchParameter PassThru { get; set; }
 
-        public object GetDynamicParameters()
+        public new object GetDynamicParameters()
         {
-            var parameters = new RuntimeDefinedParameterDictionary();
+            var parameters = base.GetDynamicParameters() as RuntimeDefinedParameterDictionary;
             RuntimeDefinedParameter sourceNameParameter;
             if (TryGetExistingContextNameParameter(SourceParameterName, NameParameterSet, out sourceNameParameter))
             {

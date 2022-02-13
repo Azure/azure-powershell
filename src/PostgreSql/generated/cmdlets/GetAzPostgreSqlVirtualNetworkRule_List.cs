@@ -6,10 +6,11 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Extensions;
+    using System;
 
     /// <summary>Gets a list of virtual network rules in a server.</summary>
     /// <remarks>
-    /// [OpenAPI] VirtualNetworkRules_ListByServer=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}/virtualNetworkRules"
+    /// [OpenAPI] ListByServer=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}/virtualNetworkRules"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzPostgreSqlVirtualNetworkRule_List")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IVirtualNetworkRule))]
@@ -31,6 +32,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Cmdlets
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
+
+        /// <summary>A flag to tell whether it is the first onOK call.</summary>
+        private bool _isFirst = true;
+
+        /// <summary>Link to retrieve next page.</summary>
+        private string _nextLink;
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -226,7 +233,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Cmdlets
                     case Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.Information:
                     {
                         var data = messageData();
-                        WriteInformation(data, new[] { data.Message });
+                        WriteInformation(data.Message, new string[]{});
                         return ;
                     }
                     case Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.Debug:
@@ -385,13 +392,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Cmdlets
                 // pageable / value / nextLink
                 var result = await response;
                 WriteObject(result.Value,true);
-                if (result.NextLink != null)
+                _nextLink = result.NextLink;
+                if (_isFirst)
                 {
-                    if (responseMessage.RequestMessage is System.Net.Http.HttpRequestMessage requestMessage )
+                    _isFirst = false;
+                    while (_nextLink != null)
                     {
-                        requestMessage = requestMessage.Clone(new global::System.Uri( result.NextLink ),Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Method.Get );
-                        await ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.FollowingNextLink); if( ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                        await this.Client.VirtualNetworkRulesListByServer_Call(requestMessage, onOk, onDefault, this, Pipeline);
+                        if (responseMessage.RequestMessage is System.Net.Http.HttpRequestMessage requestMessage )
+                        {
+                            requestMessage = requestMessage.Clone(new global::System.Uri( _nextLink ),Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Method.Get );
+                            await ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.FollowingNextLink); if( ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+                            await this.Client.VirtualNetworkRulesListByServer_Call(requestMessage, onOk, onDefault, this, Pipeline);
+                        }
                     }
                 }
             }

@@ -15,5 +15,6 @@ Describe "Get secret" {
         $versions = Get-AzKeyVaultSecret -VaultName $vaultName -Name $secretName -IncludeVersions
         Get-AzKeyVaultSecret -VaultName $vaultName -Name $secretName -Version $versions[0].Version -AsPlainText | Should -BeExactly $secretTextV2
         Get-AzKeyVaultSecret -VaultName $vaultName -Name $secretName -Version $versions[1].Version -AsPlainText | Should -BeExactly $secretText
+        Get-AzKeyVaultSecret -VaultName $vaultName -Name "doesnotexist" -AsPlainText | Should -BeNullOrEmpty
     }
 }

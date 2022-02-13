@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
-    /// <summary>Argument completer implementation for ReportConfigColumnType.</summary>
+    /// <summary>The type of the column in the report.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ReportConfigColumnTypeTypeConverter))]
     public partial struct ReportConfigColumnType :
         System.Management.Automation.IArgumentCompleter

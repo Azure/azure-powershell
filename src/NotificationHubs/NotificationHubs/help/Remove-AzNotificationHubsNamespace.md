@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NotificationHubs.dll-Help.xml
 Module Name: Az.NotificationHubs
 ms.assetid: 5EDFBF19-928F-4F95-BD93-CF8BAEA11C52
-online version: https://docs.microsoft.com/en-us/powershell/module/az.notificationhubs/remove-aznotificationhubsnamespace
+online version: https://docs.microsoft.com/powershell/module/az.notificationhubs/remove-aznotificationhubsnamespace
 schema: 2.0.0
 ---
 

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.LogicApp.dll-Help.xml
 Module Name: Az.LogicApp
 ms.assetid: 39D1576D-7042-4A62-AB41-0B5131C150D5
-online version: https://docs.microsoft.com/en-us/powershell/module/az.logicapp/remove-azlogicapp
+online version: https://docs.microsoft.com/powershell/module/az.logicapp/remove-azlogicapp
 schema: 2.0.0
 ---
 

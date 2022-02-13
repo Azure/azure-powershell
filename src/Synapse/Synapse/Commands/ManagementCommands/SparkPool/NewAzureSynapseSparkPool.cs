@@ -1,12 +1,27 @@
-﻿using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using Microsoft.Azure.Commands.Common.Exceptions;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
-using Microsoft.Azure.Commands.Synapse.Models.Exceptions;
 using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Synapse.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
 using System.Collections;
 using System.IO;
 using System.Management.Automation;
@@ -93,7 +108,7 @@ namespace Microsoft.Azure.Commands.Synapse
             HelpMessage = HelpMessages.AutoPauseDelayInMinute)]
         [ValidateNotNullOrEmpty]
         [ValidateRange(5, 10080)]
-        public int AutoPauseDelayInMinute { get; set; }
+        public int AutoPauseDelayInMinute { get; set; } = int.Parse(SynapseConstants.DefaultAutoPauseDelayInMinute);
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true,
             HelpMessage = HelpMessages.SparkVersion)]
@@ -101,9 +116,9 @@ namespace Microsoft.Azure.Commands.Synapse
         public string SparkVersion { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
-            HelpMessage = HelpMessages.LibraryRequirementsFilePath)]
+            HelpMessage = HelpMessages.SparkConfigPropertiesFilePath)]
         [ValidateNotNullOrEmpty]
-        public string LibraryRequirementsFilePath { get; set; }
+        public string SparkConfigFilePath { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
@@ -141,7 +156,7 @@ namespace Microsoft.Azure.Commands.Synapse
 
             if (existingSparkPool != null)
             {
-                throw new SynapseException(string.Format(Resources.SynapseSparkPoolExists, this.Name, this.ResourceGroupName, this.WorkspaceName));
+                throw new AzPSInvalidOperationException(string.Format(Resources.SynapseSparkPoolExists, this.Name, this.ResourceGroupName, this.WorkspaceName));
             }
 
             Workspace existingWorkspace = null;
@@ -156,18 +171,18 @@ namespace Microsoft.Azure.Commands.Synapse
 
             if (existingWorkspace == null)
             {
-                throw new SynapseException(string.Format(Resources.WorkspaceDoesNotExist, this.WorkspaceName));
+                throw new AzPSResourceNotFoundCloudException(string.Format(Resources.WorkspaceDoesNotExist, this.WorkspaceName));
             }
 
-            LibraryRequirements libraryRequirements = null;
-            if (this.IsParameterBound(c => c.LibraryRequirementsFilePath))
+            SparkConfigProperties sparkConfigProperties = null;
+            if (this.IsParameterBound(c => c.SparkConfigFilePath))
             {
-                var powerShellDestinationPath = SessionState.Path.GetUnresolvedProviderPathFromPSPath(LibraryRequirementsFilePath);
-
-                libraryRequirements = new LibraryRequirements
+                string path = this.TryResolvePath(SparkConfigFilePath);
+                string filename = Path.GetFileNameWithoutExtension(path);
+                sparkConfigProperties = new SparkConfigProperties()
                 {
-                    Filename = Path.GetFileName(powerShellDestinationPath),
-                    Content = this.ReadFileAsText(powerShellDestinationPath),
+                    Content = this.ReadFileAsText(this.SparkConfigFilePath),
+                    Filename = filename
                 };
             }
 
@@ -175,22 +190,22 @@ namespace Microsoft.Azure.Commands.Synapse
             {
                 Location = existingWorkspace.Location,
                 Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true),
-                NodeCount = this.enableAutoScale ? (int?) null : this.NodeCount,
+                NodeCount = this.enableAutoScale ? (int?)null : this.NodeCount,
                 NodeSizeFamily = NodeSizeFamily.MemoryOptimized,
                 NodeSize = NodeSize,
-                AutoScale = !this.enableAutoScale ? null : new AutoScaleProperties
+                AutoScale = !this.enableAutoScale ? new AutoScaleProperties { Enabled = false } : new AutoScaleProperties
                 {
                     Enabled = this.enableAutoScale,
                     MinNodeCount = AutoScaleMinNodeCount,
                     MaxNodeCount = AutoScaleMaxNodeCount
                 },
-                AutoPause = !EnableAutoPause ? null : new AutoPauseProperties
+                AutoPause = !EnableAutoPause ? new AutoPauseProperties { Enabled = false } : new AutoPauseProperties
                 {
                     Enabled = EnableAutoPause.IsPresent,
                     DelayInMinutes = AutoPauseDelayInMinute
                 },
                 SparkVersion = this.SparkVersion,
-                LibraryRequirements = libraryRequirements
+                SparkConfigProperties = sparkConfigProperties
             };
 
             if (this.ShouldProcess(this.Name, string.Format(Resources.CreatingSynapseSparkPool, this.ResourceGroupName, this.WorkspaceName, this.Name)))

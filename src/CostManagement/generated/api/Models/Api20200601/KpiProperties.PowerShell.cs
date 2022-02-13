@@ -95,8 +95,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601
             }
             // actually deserialize
             ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IKpiPropertiesInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.KpiType?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IKpiPropertiesInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.KpiType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IKpiPropertiesInternal)this).Enabled = (bool?) content.GetValueForProperty("Enabled",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IKpiPropertiesInternal)this).Enabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IKpiPropertiesInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IKpiPropertiesInternal)this).Id, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IKpiPropertiesInternal)this).Enabled = (bool?) content.GetValueForProperty("Enabled",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IKpiPropertiesInternal)this).Enabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             AfterDeserializeDictionary(content);
         }
 
@@ -115,8 +115,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601
             }
             // actually deserialize
             ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IKpiPropertiesInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.KpiType?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IKpiPropertiesInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.KpiType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IKpiPropertiesInternal)this).Enabled = (bool?) content.GetValueForProperty("Enabled",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IKpiPropertiesInternal)this).Enabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IKpiPropertiesInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IKpiPropertiesInternal)this).Id, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IKpiPropertiesInternal)this).Enabled = (bool?) content.GetValueForProperty("Enabled",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IKpiPropertiesInternal)this).Enabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             AfterDeserializePSObject(content);
         }
 

@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -754,6 +754,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The name length must be from 1 to 128 characters. The name cannot contain special characters &lt; &gt; * % &amp; : \ ? . + / and cannot end with a whitespace character..
+        /// </summary>
+        internal static string ScheduleNameInvalid {
+            get {
+                return ResourceManager.GetString("ScheduleNameInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The schedule was not found. Schedule name: {0}..
         /// </summary>
         internal static string ScheduleNotFound {
@@ -939,6 +948,17 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         internal static string WebhookOneTimeURL {
             get {
                 return ResourceManager.GetString("WebhookOneTimeURL", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Insufficient user permissions. Please refer https://docs.microsoft.com/azure/role-based-access-control/built-in-roles for more details.
+        /// </summary>
+        internal static string InsufficientUserPermissions
+        {
+            get
+            {
+                return ResourceManager.GetString("InsufficientUserPermissions", resourceCulture);
             }
         }
     }

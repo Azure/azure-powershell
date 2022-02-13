@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.dll-Help.xml
 Module Name: Az.ApplicationInsights
-online version: https://docs.microsoft.com/en-us/powershell/module/az.applicationinsights/new-azapplicationinsights
+online version: https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsights
 schema: 2.0.0
 ---
 
@@ -25,8 +25,10 @@ Create a new application insights resource
 ## EXAMPLES
 
 ### Example 1 Create a new application insights resource
+```powershell
+New-AzApplicationInsights -Kind java -ResourceGroupName testgroup -Name test1027 -location eastus
 ```
-PS C:\>  New-AzApplicationInsights -Kind java -ResourceGroupName testgroup -Name test1027 -location eastus
+```output
 Id                 : /subscriptions/{subid}/resourceGroups/testgroup/providers/microsoft.insights/components/test1027
 ResourceGroupName  : testgroup
 Name               : test1027

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ImageBuilder
-online version: https://docs.microsoft.com/en-us/powershell/module/az.imagebuilder/New-AzImageBuilderSourceObject
+online version: https://docs.microsoft.com/powershell/module/az.imagebuilder/New-AzImageBuilderSourceObject
 schema: 2.0.0
 ---
 
@@ -107,7 +107,7 @@ Accept wildcard characters: False
 ```
 
 ### -Offer
-Image offer from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
+Image offer from the [Azure Gallery Images](https://docs.microsoft.com/rest/api/compute/virtualmachineimages).
 
 ```yaml
 Type: System.String
@@ -167,7 +167,7 @@ Accept wildcard characters: False
 ```
 
 ### -Publisher
-Image Publisher in [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
+Image Publisher in [Azure Gallery Images](https://docs.microsoft.com/rest/api/compute/virtualmachineimages).
 
 ```yaml
 Type: System.String
@@ -182,7 +182,7 @@ Accept wildcard characters: False
 ```
 
 ### -Sku
-Image sku from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
+Image sku from the [Azure Gallery Images](https://docs.microsoft.com/rest/api/compute/virtualmachineimages).
 
 ```yaml
 Type: System.String
@@ -212,7 +212,7 @@ Accept wildcard characters: False
 ```
 
 ### -SourceTypePlatformImage
-Describes an image source from [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
+Describes an image source from [Azure Gallery Images](https://docs.microsoft.com/rest/api/compute/virtualmachineimages).
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -242,7 +242,7 @@ Accept wildcard characters: False
 ```
 
 ### -Version
-Image version from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
+Image version from the [Azure Gallery Images](https://docs.microsoft.com/rest/api/compute/virtualmachineimages).
 
 ```yaml
 Type: System.String

@@ -6,7 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
-    /// <summary>TypeConverter implementation for EventGridDataFormat.</summary>
+    /// <summary>
+    /// The data format of the message. Optionally the data format can be added to each message.
+    /// </summary>
     public partial class EventGridDataFormatTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

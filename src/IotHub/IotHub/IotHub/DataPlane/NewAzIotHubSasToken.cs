@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                         Module module = registryManager.GetModuleAsync(this.DeviceId, this.ModuleId).GetAwaiter().GetResult();
                         if (module != null)
                         {
-                            if (module.Authentication.Type.Equals(AuthenticationType.Sas))
+                            if (module.Authentication.Type.Equals(Devices.AuthenticationType.Sas))
                             {
                                 resourceUri = string.Format("{0}/devices/{1}/modules/{2}", iotHubDescription.Properties.HostName, this.DeviceId, this.ModuleId);
                                 key = this.KeyType.Equals(PSKeyType.primary) ? module.Authentication.SymmetricKey.PrimaryKey : module.Authentication.SymmetricKey.SecondaryKey;
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                         Device device = registryManager.GetDeviceAsync(this.DeviceId).GetAwaiter().GetResult();
                         if (device != null)
                         {
-                            if (device.Authentication.Type.Equals(AuthenticationType.Sas))
+                            if (device.Authentication.Type.Equals(Devices.AuthenticationType.Sas))
                             {
                                 resourceUri = string.Format("{0}/devices/{1}", iotHubDescription.Properties.HostName, this.DeviceId);
                                 key = this.KeyType.Equals(PSKeyType.primary) ? device.Authentication.SymmetricKey.PrimaryKey : device.Authentication.SymmetricKey.SecondaryKey;
@@ -181,7 +181,6 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             TimeSpan sinceEpoch = DateTime.UtcNow - new DateTime(1970, 1, 1);
             var expiry = Convert.ToString((int)sinceEpoch.TotalSeconds + duration);
             string stringToSign = WebUtility.UrlEncode(resourceUri) + "\n" + expiry;
-            stringToSign=Regex.Replace(stringToSign, "(%[0-9A-F]{2})", c => c.Value.ToLowerInvariant());
             HMACSHA256 hmac = new HMACSHA256(Convert.FromBase64String(key));
             var signature = Convert.ToBase64String(hmac.ComputeHash(Encoding.UTF8.GetBytes(stringToSign)));
             var sasToken = String.Format(CultureInfo.InvariantCulture, "SharedAccessSignature sr={0}&sig={1}&se={2}", WebUtility.UrlEncode(resourceUri), WebUtility.UrlEncode(signature), expiry);
@@ -189,7 +188,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             {
                 sasToken += String.Format(CultureInfo.InvariantCulture, "&skn={0}", keyName);
             }
-            return Regex.Replace(sasToken, "(%[0-9A-F]{2})", c => c.Value.ToLowerInvariant());
+            return sasToken;
         }
     }
 }

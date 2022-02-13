@@ -343,6 +343,21 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSVirtualNetworkPeering, MNM.VirtualNetworkPeering>()
                     .ForMember(
                         dest => dest.RemoteAddressSpace,
+                        opt => opt.MapFrom(src => src.PeeredRemoteAddressSpace)
+                    );
+
+                // MNM to CNM
+                cfg.CreateMap<MNM.VirtualNetworkPeering, CNM.PSVirtualNetworkPeering>()
+                    .ForMember(
+                        dest => dest.PeeredRemoteAddressSpace,
+                        opt => opt.MapFrom(src => src.RemoteAddressSpace)
+                    );
+
+                /*
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSVirtualNetworkPeering, MNM.VirtualNetworkPeering>()
+                    .ForMember(
+                        dest => dest.RemoteVirtualNetworkAddressSpace,
                         opt => opt.MapFrom(src => src.RemoteVirtualNetworkAddressSpace)
                     );
 
@@ -350,8 +365,9 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.VirtualNetworkPeering, CNM.PSVirtualNetworkPeering>()
                     .ForMember(
                         dest => dest.RemoteVirtualNetworkAddressSpace,
-                        opt => opt.MapFrom(src => src.RemoteAddressSpace)
+                        opt => opt.MapFrom(src => src.RemoteVirtualNetworkAddressSpace)
                     );
+                */
 
                 // VirtualNetwork
                 // CNM to MNM
@@ -364,7 +380,12 @@ namespace Microsoft.Azure.Commands.Network
                 // MNM to CNM
                 cfg.CreateMap<MNM.SubResource, CNM.PSVirtualNetwork>();
                 cfg.CreateMap<MNM.AddressSpace, CNM.PSAddressSpace>();
-                cfg.CreateMap<MNM.VirtualNetwork, CNM.PSVirtualNetwork>();
+                cfg.CreateMap<MNM.VirtualNetwork, CNM.PSVirtualNetwork>()
+                    .ForMember(
+                        dest => dest.ExtendedLocation,
+                        opt => opt.MapFrom(src =>
+                            (src.ExtendedLocation == null ? null : new PSExtendedLocation(src.ExtendedLocation.Name)))
+                    );
                 cfg.CreateMap<MNM.VirtualNetworkUsage, CNM.PSVirtualNetworkUsage>();
                 cfg.CreateMap<MNM.VirtualNetworkUsageName, CNM.PSUsageName>();
 
@@ -376,7 +397,12 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSPublicIpAddressDnsSettings, MNM.PublicIPAddressDnsSettings>();
 
                 // MNM to CNM
-                cfg.CreateMap<MNM.PublicIPAddress, CNM.PSPublicIpAddress>();
+                cfg.CreateMap<MNM.PublicIPAddress, CNM.PSPublicIpAddress>()
+                    .ForMember(
+                        dest => dest.ExtendedLocation,
+                        opt => opt.MapFrom(src =>
+                            (src.ExtendedLocation == null ? null : new PSExtendedLocation(src.ExtendedLocation.Name)))
+                    );
                 cfg.CreateMap<MNM.IpTag, CNM.PSPublicIpTag>();
                 cfg.CreateMap<MNM.PublicIPAddressSku, CNM.PSPublicIpAddressSku>();
                 cfg.CreateMap<MNM.PublicIPAddressDnsSettings, CNM.PSPublicIpAddressDnsSettings>();
@@ -410,7 +436,12 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSNetworkInterfaceIPConfiguration, MNM.SubResource>();
 
                 // MNM to CNM
-                cfg.CreateMap<MNM.NetworkInterface, CNM.PSNetworkInterface>();
+                cfg.CreateMap<MNM.NetworkInterface, CNM.PSNetworkInterface>()
+                    .ForMember(
+                        dest => dest.ExtendedLocation,
+                        opt => opt.MapFrom(src =>
+                            (src.ExtendedLocation == null ? null : new PSExtendedLocation(src.ExtendedLocation.Name)))
+                    );
                 cfg.CreateMap<MNM.NetworkInterfaceDnsSettings, CNM.PSNetworkInterfaceDnsSettings>();
                 cfg.CreateMap<MNM.NetworkInterfaceIPConfiguration, CNM.PSNetworkInterfaceIPConfiguration>();
                 cfg.CreateMap<MNM.NetworkInterfaceTapConfiguration, CNM.PSNetworkInterfaceTapConfiguration>();
@@ -871,6 +902,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSGatewayRoute, MNM.GatewayRoute>();
                 cfg.CreateMap<CNM.PSVpnClientConnectionHealthDetail, MNM.VpnClientConnectionHealthDetail>();
                 cfg.CreateMap<CNM.PSIpConfigurationBgpPeeringAddress, MNM.IPConfigurationBgpPeeringAddress>();
+                cfg.CreateMap<CNM.PSVirtualNetworkGatewayNatRule, MNM.VirtualNetworkGatewayNatRule>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.VirtualNetworkGateway, CNM.PSVirtualNetworkGateway>();
@@ -892,6 +924,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.GatewayRoute, CNM.PSGatewayRoute>();
                 cfg.CreateMap<MNM.VpnClientConnectionHealthDetail, CNM.PSVpnClientConnectionHealthDetail>();
                 cfg.CreateMap<MNM.IPConfigurationBgpPeeringAddress, CNM.PSIpConfigurationBgpPeeringAddress>();
+                cfg.CreateMap<MNM.VirtualNetworkGatewayNatRule, CNM.PSVirtualNetworkGatewayNatRule>();
 
                 // Application Gateways
                 // CNM to MNM
@@ -947,6 +980,9 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicyManagedRuleGroupOverride, MNM.ManagedRuleGroupOverride>();
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicyManagedRuleOverride, MNM.ManagedRuleOverride>();
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicyExclusion, MNM.ApplicationGatewayFirewallExclusion>();
+                cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicyExclusionManagedRuleSet, MNM.ExclusionManagedRuleSet>();
+                cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicyExclusionManagedRuleGroup, MNM.ExclusionManagedRuleGroup>();
+                cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicyExclusionManagedRule, MNM.ExclusionManagedRule>();
                 cfg.CreateMap<CNM.PSApplicationGatewayConnectionDraining, MNM.ApplicationGatewayConnectionDraining>();
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallDisabledRuleGroup, MNM.ApplicationGatewayFirewallDisabledRuleGroup>()
                     .AfterMap((src, dest) => dest.Rules = (src.Rules == null) ? null : dest.Rules);
@@ -1016,6 +1052,9 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.ManagedRuleGroupOverride, CNM.PSApplicationGatewayFirewallPolicyManagedRuleGroupOverride>();
                 cfg.CreateMap<MNM.ManagedRuleOverride, CNM.PSApplicationGatewayFirewallPolicyManagedRuleOverride>();
                 cfg.CreateMap<MNM.ApplicationGatewayFirewallExclusion, CNM.PSApplicationGatewayFirewallPolicyExclusion>();
+                cfg.CreateMap<MNM.ExclusionManagedRuleSet, CNM.PSApplicationGatewayFirewallPolicyExclusionManagedRuleSet>();
+                cfg.CreateMap<MNM.ExclusionManagedRuleGroup, CNM.PSApplicationGatewayFirewallPolicyExclusionManagedRuleGroup>();
+                cfg.CreateMap<MNM.ExclusionManagedRule, CNM.PSApplicationGatewayFirewallPolicyExclusionManagedRule>();
                 cfg.CreateMap<MNM.ApplicationGatewayConnectionDraining, CNM.PSApplicationGatewayConnectionDraining>();
                 cfg.CreateMap<MNM.ApplicationGatewayFirewallDisabledRuleGroup, CNM.PSApplicationGatewayFirewallDisabledRuleGroup>()
                     .AfterMap((src, dest) => dest.Rules = (src.Rules == null) ? null : dest.Rules);
@@ -1094,6 +1133,8 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSVirtualHubRouteTable, MNM.VirtualHubRouteTableV2>();
                 cfg.CreateMap<CNM.PSVirtualHubRoute, MNM.VirtualHubRouteV2>();
                 cfg.CreateMap<CNM.PSVpnGateway, MNM.VpnGateway>();
+                cfg.CreateMap<CNM.PSVpnGatewayNatRule, MNM.VpnGatewayNatRule>();
+                cfg.CreateMap<CNM.PSVpnNatRuleMapping, MNM.VpnNatRuleMapping>();
                 cfg.CreateMap<CNM.PSVpnGatewayIpConfiguration, MNM.VpnGatewayIpConfiguration>();
                 cfg.CreateMap<CNM.PSVpnSiteLinkConnection, MNM.VpnSiteLinkConnection>();
                 cfg.CreateMap<CNM.PSVpnSiteLink, MNM.VpnSiteLink>();
@@ -1128,6 +1169,8 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.VirtualHubRouteTableV2, CNM.PSVirtualHubRouteTable>();
                 cfg.CreateMap<MNM.VirtualHubRouteV2, CNM.PSVirtualHubRoute>();
                 cfg.CreateMap<MNM.VpnGateway, CNM.PSVpnGateway>();
+                cfg.CreateMap<MNM.VpnGatewayNatRule, CNM.PSVpnGatewayNatRule>();
+                cfg.CreateMap<MNM.VpnNatRuleMapping, CNM.PSVpnNatRuleMapping>();
                 cfg.CreateMap<MNM.VpnGatewayIpConfiguration, CNM.PSVpnGatewayIpConfiguration>();
                 cfg.CreateMap<MNM.VpnConnection, CNM.PSVpnConnection>();
                 cfg.CreateMap<MNM.VpnSite, CNM.PSVpnSite>().AfterMap((src, dest) =>
@@ -1314,8 +1357,14 @@ namespace Microsoft.Azure.Commands.Network
                 // MNM to CNM
                 cfg.CreateMap<MNM.VirtualNetworkTap, CNM.PSVirtualNetworkTap>();
 
-                cfg.CreateMap<CNM.PSPrivateEndpoint, MNM.PrivateEndpoint>();
-                cfg.CreateMap<MNM.PrivateEndpoint, CNM.PSPrivateEndpoint>();
+                cfg.CreateMap<CNM.PSPrivateEndpoint, MNM.PrivateEndpoint>()
+                    .ForMember(dest => dest.ApplicationSecurityGroups, opt => opt.MapFrom(src => src._psApplicationSecurityGroups))
+                    .ForMember(dest => dest.IpConfigurations, opt => opt.MapFrom(src => src._psIpConfigurations));
+                cfg.CreateMap<MNM.PrivateEndpoint, CNM.PSPrivateEndpoint>()
+                    .ForMember(dest => dest._psApplicationSecurityGroups, opt => opt.MapFrom(src => src.ApplicationSecurityGroups))
+                    .ForMember(dest => dest._psIpConfigurations, opt => opt.MapFrom(src => src.IpConfigurations));
+                cfg.CreateMap<CNM.PSPrivateEndpointIPConfiguration, MNM.PrivateEndpointIPConfiguration>();
+                cfg.CreateMap<MNM.PrivateEndpointIPConfiguration, CNM.PSPrivateEndpointIPConfiguration>();
                 cfg.CreateMap<CNM.PSPrivateDnsZoneGroup, MNM.PrivateDnsZoneGroup>();
                 cfg.CreateMap<MNM.PrivateDnsZoneGroup, CNM.PSPrivateDnsZoneGroup>();
                 cfg.CreateMap<CNM.PSPrivateDnsZoneConfig, MNM.PrivateDnsZoneConfig>();
@@ -1364,13 +1413,16 @@ namespace Microsoft.Azure.Commands.Network
                 // Virtual Router
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSVirtualRouter, MNM.VirtualRouter>();
+                cfg.CreateMap<CNM.PSRouteServer, MNM.VirtualRouter>();
                 cfg.CreateMap<CNM.PSVirtualRouterPeer, MNM.BgpConnection>();
+                cfg.CreateMap<CNM.PSRouteServerPeer, MNM.BgpConnection>();
                 cfg.CreateMap<CNM.PSPeerRoute, MNM.PeerRoute>();
                 cfg.CreateMap<CNM.PSHubIpConfiguration, MNM.HubIpConfiguration>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.BgpConnection, CNM.PSBgpConnection>();
                 cfg.CreateMap<MNM.BgpConnection, CNM.PSVirtualRouterPeer>();
+                cfg.CreateMap<MNM.BgpConnection, CNM.PSRouteServerPeer>();
                 cfg.CreateMap<MNM.PeerRoute, CNM.PSPeerRoute>();
                 cfg.CreateMap<MNM.HubIpConfiguration, CNM.PSHubIpConfiguration>();
 

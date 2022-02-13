@@ -17,8 +17,8 @@
 Checks whether the first string contains the second one
 #>
 
-$resourceGroupName = "PSCmdletTest-RG"
-$automationAccountName = "PSCmdletTestAccount01"
+$resourceGroupName = "to-delete-01"
+$automationAccountName = "fbs-aa-01"
 
 function AssertContains
 {

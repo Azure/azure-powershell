@@ -78,13 +78,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601
                 return container;
             }
             AddIf( null != this._query ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) this._query.ToJson(null,serializationMode) : null, "query" ,container.Add );
-            AddIf( null != (((object)this._accumulated)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString(this._accumulated.ToString()) : null, "accumulated" ,container.Add );
-            AddIf( null != (((object)this._chart)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString(this._chart.ToString()) : null, "chart" ,container.Add );
+            AddIf( null != (((object)this._displayName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString(this._displayName.ToString()) : null, "displayName" ,container.Add );
+            AddIf( null != (((object)this._scope)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString(this._scope.ToString()) : null, "scope" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SerializationMode.IncludeReadOnly))
             {
                 AddIf( null != this._createdOn ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString(this._createdOn?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "createdOn" ,container.Add );
             }
-            AddIf( null != (((object)this._displayName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString(this._displayName.ToString()) : null, "displayName" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != this._modifiedOn ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString(this._modifiedOn?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "modifiedOn" ,container.Add );
+            }
+            AddIf( null != (((object)this._chart)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString(this._chart.ToString()) : null, "chart" ,container.Add );
+            AddIf( null != (((object)this._accumulated)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString(this._accumulated.ToString()) : null, "accumulated" ,container.Add );
+            AddIf( null != (((object)this._metric)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString(this._metric.ToString()) : null, "metric" ,container.Add );
             if (null != this._kpi)
             {
                 var __w = new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.XNodeArray();
@@ -93,11 +99,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601
                     AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
                 }
                 container.Add("kpis",__w);
-            }
-            AddIf( null != (((object)this._metric)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString(this._metric.ToString()) : null, "metric" ,container.Add );
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != this._modifiedOn ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString(this._modifiedOn?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "modifiedOn" ,container.Add );
             }
             if (null != this._pivot)
             {
@@ -108,7 +109,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601
                 }
                 container.Add("pivots",__r);
             }
-            AddIf( null != (((object)this._scope)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString(this._scope.ToString()) : null, "scope" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
@@ -126,15 +126,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601
                 return;
             }
             {_query = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonObject>("query"), out var __jsonQuery) ? Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.ReportConfigDefinition.FromJson(__jsonQuery) : Query;}
-            {_accumulated = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("accumulated"), out var __jsonAccumulated) ? (string)__jsonAccumulated : (string)Accumulated;}
-            {_chart = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("chart"), out var __jsonChart) ? (string)__jsonChart : (string)Chart;}
-            {_createdOn = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("createdOn"), out var __jsonCreatedOn) ? global::System.DateTime.TryParse((string)__jsonCreatedOn, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonCreatedOnValue) ? __jsonCreatedOnValue : CreatedOn : CreatedOn;}
             {_displayName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("displayName"), out var __jsonDisplayName) ? (string)__jsonDisplayName : (string)DisplayName;}
-            {_kpi = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonArray>("kpis"), out var __jsonKpis) ? If( __jsonKpis as Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IKpiProperties[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IKpiProperties) (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.KpiProperties.FromJson(__u) )) ))() : null : Kpi;}
-            {_metric = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("metric"), out var __jsonMetric) ? (string)__jsonMetric : (string)Metric;}
-            {_modifiedOn = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("modifiedOn"), out var __jsonModifiedOn) ? global::System.DateTime.TryParse((string)__jsonModifiedOn, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonModifiedOnValue) ? __jsonModifiedOnValue : ModifiedOn : ModifiedOn;}
-            {_pivot = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonArray>("pivots"), out var __jsonPivots) ? If( __jsonPivots as Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IPivotProperties[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IPivotProperties) (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.PivotProperties.FromJson(__p) )) ))() : null : Pivot;}
             {_scope = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("scope"), out var __jsonScope) ? (string)__jsonScope : (string)Scope;}
+            {_createdOn = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("createdOn"), out var __jsonCreatedOn) ? global::System.DateTime.TryParse((string)__jsonCreatedOn, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonCreatedOnValue) ? __jsonCreatedOnValue : CreatedOn : CreatedOn;}
+            {_modifiedOn = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("modifiedOn"), out var __jsonModifiedOn) ? global::System.DateTime.TryParse((string)__jsonModifiedOn, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonModifiedOnValue) ? __jsonModifiedOnValue : ModifiedOn : ModifiedOn;}
+            {_chart = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("chart"), out var __jsonChart) ? (string)__jsonChart : (string)Chart;}
+            {_accumulated = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("accumulated"), out var __jsonAccumulated) ? (string)__jsonAccumulated : (string)Accumulated;}
+            {_metric = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("metric"), out var __jsonMetric) ? (string)__jsonMetric : (string)Metric;}
+            {_kpi = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonArray>("kpis"), out var __jsonKpis) ? If( __jsonKpis as Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IKpiProperties[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IKpiProperties) (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.KpiProperties.FromJson(__u) )) ))() : null : Kpi;}
+            {_pivot = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonArray>("pivots"), out var __jsonPivots) ? If( __jsonPivots as Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IPivotProperties[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IPivotProperties) (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.PivotProperties.FromJson(__p) )) ))() : null : Pivot;}
             AfterFromJson(json);
         }
     }

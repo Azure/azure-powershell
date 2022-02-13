@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>TypeConverter implementation for VirtualDiskMode.</summary>
+    /// <summary>Disk mode property used for identifying independent disks.</summary>
     public partial class VirtualDiskModeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

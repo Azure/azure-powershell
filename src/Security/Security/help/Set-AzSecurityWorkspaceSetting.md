@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Set-AzSecurityWorkspaceSetting
+online version: https://docs.microsoft.com/powershell/module/az.security/Set-AzSecurityWorkspaceSetting
 schema: 2.0.0
 ---
 
@@ -32,7 +32,7 @@ Id                                                                              
 /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/workspaceSettings/default default /...
 ```
 
-Sets the "myWorkspace" workspace to hold all the security data that was collected by the Azure Log Analytics agent.
+Sets the "securityuserws" workspace to hold all the security data that was collected by the Azure Log Analytics agent.
 
 ## PARAMETERS
 

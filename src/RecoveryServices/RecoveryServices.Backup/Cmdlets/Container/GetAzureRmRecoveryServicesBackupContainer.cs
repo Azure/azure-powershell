@@ -40,8 +40,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// </summary>
         [Parameter(Mandatory = false, Position = 2,
             HelpMessage = ParamHelpMsgs.Container.BackupManagementType)]
-        [ValidateNotNullOrEmpty]
-        [ValidateSet("AzureVM", "MARS", "AzureStorage", "AzureWorkload")]
+        [ValidateSet("AzureVM", "AzureStorage", "AzureWorkload", "MAB")]
         public string BackupManagementType { get; set; }
 
         /// <summary>

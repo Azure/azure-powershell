@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
-online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/update-azscheduledqueryrule
+online version: https://docs.microsoft.com/powershell/module/az.monitor/update-azscheduledqueryrule
 schema: 2.0.0
 ---
 
@@ -32,7 +32,7 @@ Update-AzScheduledQueryRule -ResourceId <String> -Enabled <Boolean> [-DefaultPro
 
 ## DESCRIPTION
 Updates a Log Alert rule, updating only "Enabled" property is supported by this command.
-To update other properties, see [Set-AzScheduledQueryRule](https://docs.microsoft.com/en-us/powershell/module/az.monitor/set-azscheduledqueryrule) command.
+To update other properties, see [Set-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) command.
 
 ## EXAMPLES
 
@@ -47,9 +47,9 @@ ProvisioningState : Succeeded
 Source            : Microsoft.Azure.Management.Monitor.Models.Source
 Schedule          : Microsoft.Azure.Management.Monitor.Models.Schedule
 Action            : Microsoft.Azure.Management.Monitor.Models.AlertingAction
-Id                : /subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/MyResourceGroup/providers/microsoft.insights/scheduledqueryrules/LogAlertRule1
+Id                : /subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/MyResourceGroup/providers/Microsoft.Insights/scheduledqueryrules/LogAlertRule1
 Name              : LogAlertRule1
-Type              : microsoft.insights/scheduledqueryrules
+Type              : Microsoft.Insights/scheduledqueryrules
 Location          : centralindia
 Tags              : {[hidden-link:/subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/MyResourceGroup/providers/Microsoft.OperationalInsights/workspaces/MyWorkspace, Resource]}
 ```
@@ -65,16 +65,16 @@ ProvisioningState : Succeeded
 Source            : Microsoft.Azure.Management.Monitor.Models.Source
 Schedule          : Microsoft.Azure.Management.Monitor.Models.Schedule
 Action            : Microsoft.Azure.Management.Monitor.Models.AlertingAction
-Id                : /subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/MyResourceGroup/providers/microsoft.insights/scheduledqueryrules/LogAlertRule1
+Id                : /subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/MyResourceGroup/providers/Microsoft.Insights/scheduledqueryrules/LogAlertRule1
 Name              : LogAlertRule1
-Type              : microsoft.insights/scheduledqueryrules
+Type              : Microsoft.Insights/scheduledqueryrules
 Location          : centralindia
 Tags              : {[hidden-link:/subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/MyResourceGroup/providers/Microsoft.OperationalInsights/workspaces/MyWorkspace, Resource]}
 ```
 
 ### Example 3: Update by resource Id
 ```powershell
-PS C:\> Update-AzScheduledQueryRule -ResourceId /subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/MyResourceGroup/providers/microsoft.insights/scheduledqueryrules/LogAlertRule1 -Enabled $true
+PS C:\> Update-AzScheduledQueryRule -ResourceId /subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/MyResourceGroup/providers/Microsoft.Insights/scheduledqueryrules/LogAlertRule1 -Enabled $true
 
 Description       : description
 Enabled           : true
@@ -83,9 +83,9 @@ ProvisioningState : Succeeded
 Source            : Microsoft.Azure.Management.Monitor.Models.Source
 Schedule          : Microsoft.Azure.Management.Monitor.Models.Schedule
 Action            : Microsoft.Azure.Management.Monitor.Models.AlertingAction
-Id                : /subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/MyResourceGroup/providers/microsoft.insights/scheduledqueryrules/LogAlertRule1
+Id                : /subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/MyResourceGroup/providers/Microsoft.Insights/scheduledqueryrules/LogAlertRule1
 Name              : LogAlertRule1
-Type              : microsoft.insights/scheduledqueryrules
+Type              : Microsoft.Insights/scheduledqueryrules
 Location          : centralindia
 Tags              : {[hidden-link:/subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/MyResourceGroup/providers/Microsoft.OperationalInsights/workspaces/MyWorkspace, Resource]}
 ```

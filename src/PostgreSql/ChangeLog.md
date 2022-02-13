@@ -19,6 +19,37 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.0
+* General availability of Az.PostgreSql
+
+## Version 0.8.0
+* Removed `Location` in `Restore-AzPostgreSqlFlexibleServer`
+* Minor fixes for `Get-AzPostgreSqlFlexibleServerLocationBasedCapability`, `Test-AzPostgreSqlFlexibleServerConnect` and `New-AzPostgreSqlFlexibleServer`
+
+## Version 0.7.0
+* Changed default New-AzMySqlFlexibleServer network option from private access to public access
+* Migrated to 2020-07-01-preview API version to 2021-05-01-preview version
+* Added subnet , private DNS zone parameters for Restore-AzMySqlFlexibleServer cmdlet
+* Added cmdlets for flexible server database
+    - Get-AzPostgreSqlFlexibleServerDatabase
+    - New-AzPostgreSqlFlexibleServerDatabase
+    - Remove-AzPostgreSqlFlexibleServerDatabase   
+
+## Version 0.6.0
+* Migrated from 20200214 preview API to 20210601 API
+* Changed default database create experience to public access from private access
+
+## Version 0.5.0
+* Added maintenance windows parameter to Update-AzPostgreSqlFlexibleServer cmdlet
+* Added zone parameter to server New/Restore-PostgresSqlFlexibleServer cmdlet.
+
+## Version 0.4.0
+* Added cmdlet `Test-AzPostgreSqlFlexibleServerConnect`
+
+## Version 0.3.0
+* Add parameter MinimalTlsVersion
+* First version of flexible server
+
 ## Version 0.2.0
 * New/Update-AzPostgreSqlFirewallRule create a default name with time stamp when no name is passed (#12738)
 * Added validateset for parameter StorageAutogrow (#12736)

@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>Disk mode property used for identifying independent disks.</summary>
     public partial struct VirtualDiskMode :
         System.IEquatable<VirtualDiskMode>
     {
@@ -28,7 +29,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         /// <param name="value">the value to convert to an instance of <see cref="VirtualDiskMode" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new VirtualDiskMode(System.Convert.ToString(value));
+            return new VirtualDiskMode(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type VirtualDiskMode</summary>

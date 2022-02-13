@@ -164,7 +164,14 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestNewExtensionDiskAdd()
         {
             TestRunner.RunTestScript("Test-NewExtensionDiskAdd");
-        }        
+        }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestExtensionProxyDebug()
+        {
+            TestRunner.RunTestScript("Test-ExtensionProxyDebug");
+        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

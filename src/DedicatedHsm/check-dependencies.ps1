@@ -46,7 +46,7 @@ if(Test-Path -Path $localModulesPath) {
   $env:PSModulePath = "$localModulesPath$([IO.Path]::PathSeparator)$env:PSModulePath"
 }
 
-DownloadModule -predicate ($all -or $Accounts) -path $localModulesPath -moduleName 'Az.Accounts' -versionMinimum '1.7.4'
+DownloadModule -predicate ($all -or $Accounts) -path $localModulesPath -moduleName 'Az.Accounts' -versionMinimum '1.8.1'
 DownloadModule -predicate ($all -or $Pester) -path $localModulesPath -moduleName 'Pester' -requiredVersion '4.10.1'
 
 $tools = Join-Path $PSScriptRoot 'tools'

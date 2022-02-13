@@ -13,8 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using Newtonsoft.Json;
 using RestAzureNS = Microsoft.Rest.Azure;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using CrrModel = Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
 {
@@ -34,6 +36,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             return BmsAdapter.Client.BackupOperationStatuses.GetWithHttpMessagesAsync(
                 vaultName ?? BmsAdapter.GetResourceName(),
                 resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                operationId).Result;
+        }
+
+        /// <summary>
+        /// Gets status of a generic operation on the protected item using the operation ID
+        /// </summary>
+        /// <param name="operationId">ID of the operation in progress</param>
+        /// <returns>Operation status response returned by the service</returns>
+        public RestAzureNS.AzureOperationResponse<CrrModel.OperationStatus>
+            GetCrrOperationStatus(
+                string secondaryRegion,
+                string operationId)
+        {
+            return CrrAdapter.Client.CrrOperationStatus.GetWithHttpMessagesAsync(
+                secondaryRegion,
                 operationId).Result;
         }
 
@@ -122,18 +139,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// </summary>
         /// <param name="operationId">ID of the operation in progress</param>
         /// <returns></returns>
-        public ServiceClientModel.PrepareDataMoveResponse
+        public PrepareDataMoveResponse
             GetPrepareDataMoveOperationResult(
             string operationId,
             string vaultName = null,
             string resourceGroupName = null)
         {
-            PrepareDataMoveResponse prepareResponse = BmsAdapter.Client.BMSPrepareDataMoveOperationResult.BeginGetWithHttpMessagesAsync(
+            var prepareResponseBase = BmsAdapter.Client.BMSPrepareDataMoveOperationResult.GetWithHttpMessagesAsync(
                                 vaultName,
                                 resourceGroupName,
-                                operationId).Result.Body;            
+                                operationId).Result.Body;
+
+            var prepareResponseSerialized = JsonConvert.SerializeObject(prepareResponseBase);
+            PrepareDataMoveResponse prepareResponseDerived = JsonConvert.DeserializeObject<PrepareDataMoveResponse>(prepareResponseSerialized);
             
-            return  prepareResponse;
+            return prepareResponseDerived;
         }
 
         /// <summary>

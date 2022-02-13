@@ -30,7 +30,9 @@ function Test-AzIotDpsEnrollmentLifeCycle
 	$IotHubName = getAssetName
 	$hubKeyName = "ServiceKey"
 	$EndorsementKey = "AToAAQALAAMAsgAgg3GXZ0SEs/gakMyNRqXXJP1S124GUgtk8qHaGzMUaaoABgCAAEMAEAgAAAAAAAEAibym9HQP9vxCGF5dVc1QQsAGe021aUGJzNol1/gycBx3jFsTpwmWbISRwnFvflWd0w2Mc44FAAZNaJOAAxwZvG8GvyLlHh6fGKdh+mSBL4iLH2bZ4Ry22cB3CJVjXmdGoz9Y/j3/NwLndBxQC+baNvzvyVQZ4/A2YL7vzIIj2ik4y+ve9ir7U0GbNdnxskqK1KFIITVVtkTIYyyFTIR0BySjPrRIDj7r7Mh5uF9HBppGKQCBoVSVV8dI91lNazmSdpGWyqCkO7iM4VvUMv2HT/ym53aYlUrau+Qq87Tu+uQipWYgRdF11KDfcpMHqqzBQQ1NpOJVhrsTrhyJzO7KNw=="
-	$CertificateKey = "MIIBiDCCAS2gAwIBAgIFWks8LR4wCgYIKoZIzj0EAwIwNjEUMBIGA1UEAwwLcmlvdGNvcmVuZXcxETAPBgNVBAoMCE1TUl9URVNUMQswCQYDVQQGEwJVUzAgFw0xNzAxMDEwMDAwMDBaGA8zNzAxMDEzMTIzNTk1OVowNjEUMBIGA1UEAwwLcmlvdGNvcmVuZXcxETAPBgNVBAoMCE1TUl9URVNUMQswCQYDVQQGEwJVUzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABLVS6bK+QMm+HZ0247Nm+JmnERuickBXTj6rydcP3WzVQNBNpvcQ/4YVrPp60oiYRxZbsPyBtHt2UCAC00vEXy+jJjAkMA4GA1UdDwEB/wQEAwIHgDASBgNVHRMBAf8ECDAGAQH/AgECMAoGCCqGSM49BAMCA0kAMEYCIQDEjs2PoZEi/yAQNj2Vji9RthQ33HG/QdL12b1ABU5UXgIhAPJujG/c/S+7vcREWI7bQcCb31JIBDhWZbt4eyCvXZtZ"
+	$EndorsementKeyUpdated = "BToAAQALAAMAsgAgg3GXZ0SEs/gakMyNRqXXJP1S124GUgtk8qHaGzMUaaoABgCAAEMAEAgAAAAAAAEAibym9HQP9vxCGF5dVc1QQsAGe021aUGJzNol1/gycBx3jFsTpwmWbISRwnFvflWd0w2Mc44FAAZNaJOAAxwZvG8GvyLlHh6fGKdh+mSBL4iLH2bZ4Ry22cB3CJVjXmdGoz9Y/j3/NwLndBxQC+baNvzvyVQZ4/A2YL7vzIIj2ik4y+ve9ir7U0GbNdnxskqK1KFIITVVtkTIYyyFTIR0BySjPrRIDj7r7Mh5uF9HBppGKQCBoVSVV8dI91lNazmSdpGWyqCkO7iM4VvUMv2HT/ym53aYlUrau+Qq87Tu+uQipWYgRdF11KDfcpMHqqzBQQ1NpOJVhrsTrhyJzO7KNw=="
+	$PrimaryCertificateKey = "MIIBiDCCAS2gAwIBAgIFWks8LR4wCgYIKoZIzj0EAwIwNjEUMBIGA1UEAwwLcmlvdGNvcmVuZXcxETAPBgNVBAoMCE1TUl9URVNUMQswCQYDVQQGEwJVUzAgFw0xNzAxMDEwMDAwMDBaGA8zNzAxMDEzMTIzNTk1OVowNjEUMBIGA1UEAwwLcmlvdGNvcmVuZXcxETAPBgNVBAoMCE1TUl9URVNUMQswCQYDVQQGEwJVUzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABLVS6bK+QMm+HZ0247Nm+JmnERuickBXTj6rydcP3WzVQNBNpvcQ/4YVrPp60oiYRxZbsPyBtHt2UCAC00vEXy+jJjAkMA4GA1UdDwEB/wQEAwIHgDASBgNVHRMBAf8ECDAGAQH/AgECMAoGCCqGSM49BAMCA0kAMEYCIQDEjs2PoZEi/yAQNj2Vji9RthQ33HG/QdL12b1ABU5UXgIhAPJujG/c/S+7vcREWI7bQcCb31JIBDhWZbt4eyCvXZtZ"
+	$SecondaryCertificateKey = "MIIBiDCCAS2gAwIBAgIFWks8LR4wCgYIKoZIzj0EAwIwNjEUMBIGA1UEAwwLcmlvdGNvcmVuZXcxETAPBgNVBAoMCE1TUl9URVNUMQswCQYDVQQGEwJVUzAgFw0xNzAxMDEwMDAwMDBaGA8zNzAxMDEzMTIzNTk1OVowNjEUMBIGA1UEAwwLcmlvdGNvcmVuZXcxETAPBgNVBAoMCE1TUl9URVNUMQswCQYDVQQGEwJVUzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABLVS6bK+QMm+HZ0247Nm+JmnERuickBXTj6rydcP3WzVQNBNpvcQ/4YVrPp60oiYRxZbsPyBtHt2UCAC00vEXy+jJjAkMA4GA1UdDwEB/wQEAwIHgDASBgNVHRMBAf8ECDAGAQH/AgECMAoGCCqGSM49BAMCA0kAMEYCIQDEjs2PoZEi/yAQNj2Vji9RthQ33HG/QdL12b1ABU5UXgIhAPJujG/c/S+7vcREWI7bQcCb31JIBDhWZbt4eyCvXZZt"
 	$Sku = "S1"
 	$symEnroll = getAssetName
 	$tpmEnroll = getAssetName
@@ -129,7 +131,7 @@ function Test-AzIotDpsEnrollmentLifeCycle
 	Assert-True { $tpmEnrollment.Attestation.Tpm.EndorsementKey -eq $EndorsementKey }
 
 	# Create enrollment with X509 attestation
-	$x509Enrollment = Add-AzIoTDeviceProvisioningServiceEnrollment -ResourceGroupName $ResourceGroupName -DpsName $IotDpsName -RegistrationId $x509Enroll -AttestationType X509 -PrimaryCertificate $CertificateKey -IotHubHostName $LinkedHubName -ReprovisionPolicy reprovisionandresetdata -ProvisioningStatus "Disabled"
+	$x509Enrollment = Add-AzIoTDeviceProvisioningServiceEnrollment -ResourceGroupName $ResourceGroupName -DpsName $IotDpsName -RegistrationId $x509Enroll -AttestationType X509 -PrimaryCertificate $PrimaryCertificateKey -IotHubHostName $LinkedHubName -ReprovisionPolicy reprovisionandresetdata -ProvisioningStatus "Disabled"
 	Assert-True { $x509Enrollment.RegistrationId -eq $x509Enroll }
 	Assert-True { $x509Enrollment.IotHubHostName -eq $LinkedHubName }
 	Assert-False { $x509Enrollment.Capabilities.IotEdge }
@@ -167,6 +169,21 @@ function Test-AzIotDpsEnrollmentLifeCycle
 	Assert-True { $tpmEnrollmentUpdated.ProvisioningStatus -eq "Enabled" }
 	Assert-True { $tpmEnrollmentUpdated.Attestation.Type -eq "Tpm" }
 	Assert-True { $tpmEnrollmentUpdated.Attestation.Tpm.EndorsementKey -eq $EndorsementKey }
+
+	# Update Enrollment attestation values
+
+	# SymmetricKey (swap keys)
+	$symEnrollmentUpdated = Set-AzIoTDeviceProvisioningServiceEnrollment -ResourceGroupName $ResourceGroupName -DpsName $IotDpsName -RegistrationId $symEnroll -PrimaryKey $symEnrollment.Attestation.SymmetricKey.SecondaryKey -SecondaryKey  $symEnrollment.Attestation.SymmetricKey.PrimaryKey
+	Assert-True { $symEnrollmentUpdated.Attestation.Type -eq "SymmetricKey" }
+	Assert-True { $symEnrollmentUpdated.Attestation.PrimaryKey -eq $symEnrollment.Attestation.SecondaryKey }
+	Assert-True { $symEnrollmentUpdated.Attestation.SecondaryKey -eq $symEnrollment.Attestation.PrimaryKey }
+
+	# X509 (change certs)
+	$x509EnrollmentUpdated = Set-AzIoTDeviceProvisioningServiceEnrollment -ResourceGroupName $ResourceGroupName -DpsName $IotDpsName -RegistrationId $x509Enroll -PrimaryCertificate $SecondaryCertificateKey -SecondaryCertificate $PrimaryCertificateKey
+
+	# TPM (new endorsement key)
+	$tpmEnrollmentUpdated = Set-AzIoTDeviceProvisioningServiceEnrollment -ResourceGroupName $ResourceGroupName -DpsName $IotDpsName -RegistrationId $tpmEnroll -IotHubHostName $LinkedHubName -EndorsementKey $EndorsementKeyUpdated
+	Assert-True { $tpmEnrollmentUpdated.Attestation.Tpm.EndorsementKey -eq $EndorsementKeyUpdated }
 
 	# Remove Enrollment
 	$result = Remove-AzIoTDeviceProvisioningServiceEnrollment -ResourceGroupName $ResourceGroupName -DpsName $IotDpsName -RegistrationId $tpmEnroll -PassThru

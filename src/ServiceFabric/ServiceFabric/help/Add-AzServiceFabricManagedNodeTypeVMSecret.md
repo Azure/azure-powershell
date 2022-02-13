@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
-online version: https://docs.microsoft.com/en-us/powershell/module/az.servicefabric/add-azservicefabricmanagednodetypevmsecret
+online version: https://docs.microsoft.com/powershell/module/az.servicefabric/add-azservicefabricmanagednodetypevmsecret
 schema: 2.0.0
 ---
 
@@ -27,7 +27,7 @@ Add-AzServiceFabricManagedNodeTypeVMSecret [-ResourceGroupName] <String> [-Clust
 ```
 
 ## DESCRIPTION
-Add certificate secret to the node type. The secret must be stored in an Azure Key Vault. For more information relating to Key Vault, see What is Azure Key Vault? (https://azure.microsoft.com/en-us/documentation/articles/key-vault-whatis/). For more information about the cmdlets, see Azure Key Vault Cmdlets (https://msdn.microsoft.com/library/azure/dn868052.aspx) in the Microsoft Developer Network library or the Set-AzKeyVaultSecret cmdlet.
+Add certificate secret to the node type. The secret must be stored in an Azure Key Vault. For more information relating to Key Vault, see What is Azure Key Vault? (https://azure.microsoft.com/en-us/documentation/articles/key-vault-whatis/). For more information about the cmdlets, see Azure Key Vault Cmdlets (/powershell/module/az.keyvault/) in the Microsoft Developer Network library or the Set-AzKeyVaultSecret cmdlet.
 
 ## EXAMPLES
 

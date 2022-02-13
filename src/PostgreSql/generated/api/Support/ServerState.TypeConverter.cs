@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
 {
 
-    /// <summary>TypeConverter implementation for ServerState.</summary>
+    /// <summary>A state of a server that is visible to user.</summary>
     public partial class ServerStateTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

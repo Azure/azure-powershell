@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.CloudService
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cloudservice/get-azcloudservice
+online version: https://docs.microsoft.com/powershell/module/az.cloudservice/get-azcloudservice
 schema: 2.0.0
 ---
 
@@ -41,8 +41,10 @@ Display information about a cloud service.
 
 ### Example 1: Get all cloud service under a resource group
 ```powershell
-PS C:\> Get-AzCloudService -ResourceGroupName "ContosOrg"
+Get-AzCloudService -ResourceGroupName "ContosOrg"
+```
 
+```Output
 ResourceGroupName Name              Location    ProvisioningState
 ----------------- ----              --------    -----------------
 ContosOrg         ContosoCS         eastus2euap Succeeded
@@ -53,34 +55,13 @@ This command gets all cloud services in resource group named ContosOrg
 
 ### Example 2: Get cloud service
 ```powershell
-PS C:\> Get-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS"
+Get-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS"
+```
 
+```Output
 ResourceGroupName Name              Location    ProvisioningState
 ----------------- ----              --------    -----------------
 ContosOrg         ContosoCS         eastus2euap Succeeded
-
-PS C:\> $cloudService = Get-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS"
-PS C:\> $cloudService | Format-List
-ResourceGroupName : ContosOrg
-Configuration     : xxxxxxxx
-ConfigurationUrl  :
-ExtensionProfile  : xxxxxxxx
-Id                : xxxxxxxx
-Location          : East US
-Name              : ContosoCS
-NetworkProfile    : xxxxxxxx
-OSProfile         : xxxxxxxx
-PackageUrl        : xxxxxxxx
-ProvisioningState : Succeeded
-RoleProfile       : xxxxxxxx
-StartCloudService :
-Tag               : {
-                      "Owner": "Contos"
-                    }
-Type              : Microsoft.Compute/cloudServices
-UniqueId          : xxxxxxxx
-UpgradeMode       : Auto
-
 ```
 
 This command gets cloud service named ContosoCS that belongs to the resource group named ContosOrg.
@@ -173,7 +154,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudService
+### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService
 
 ## NOTES
 
@@ -187,6 +168,9 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   - `[CloudServiceName <String>]`: 
   - `[Id <String>]`: Resource identity path
+  - `[Location <String>]`: Name of the location that the OS version pertains to.
+  - `[OSFamilyName <String>]`: Name of the OS family.
+  - `[OSVersionName <String>]`: Name of the OS version.
   - `[ResourceGroupName <String>]`: 
   - `[RoleInstanceName <String>]`: Name of the role instance.
   - `[RoleName <String>]`: Name of the role.

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/en-us/powershell/module/Az.storage/new-Azstorageaccountmanagementpolicyfilter
+online version: https://docs.microsoft.com/powershell/module/Az.storage/new-Azstorageaccountmanagementpolicyfilter
 schema: 2.0.0
 ---
 
@@ -13,8 +13,8 @@ Creates a ManagementPolicy rule filter object, which can be used in New-AzStorag
 ## SYNTAX
 
 ```
-New-AzStorageAccountManagementPolicyFilter [-PrefixMatch <String[]>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+New-AzStorageAccountManagementPolicyFilter [-PrefixMatch <String[]>] [-BlobType <String[]>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,12 +24,12 @@ The **New-AzStorageAccountManagementPolicyFilter** cmdlet creates a ManagementPo
 
 ### Example 1: Creates a ManagementPolicy rule filter object, then add it to a management policy rule and set to a Storage account
 ```
-PS C:\>$filter = New-AzStorageAccountManagementPolicyFilter -PrefixMatch blobprefix1,blobprefix2
+PS C:\>$filter = New-AzStorageAccountManagementPolicyFilter -PrefixMatch blobprefix1,blobprefix2 -BlobType appendBlob,blockBlob
 PS C:\>$filter 
 
 PrefixMatch                BlobTypes  
 -----------                ---------  
-{blobprefix1, blobprefix2} {blockBlob}
+{blobprefix1, blobprefix2} {appendBlob, blockBlob}
 
 PS C:\>$action = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction Delete -daysAfterModificationGreaterThan 100
 PS C:\>$rule = New-AzStorageAccountManagementPolicyRule -Name Test -Action $action -Filter $filter
@@ -39,6 +39,22 @@ PS C:\>$policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName "myreso
 This command create a ManagementPolicy rule filter object. Then add it to a management policy rule and set to a Storage account.
 
 ## PARAMETERS
+
+### -BlobType
+An array of strings for blobtypes to be match. Currently blockBlob supports all tiering and delete actions. Only delete actions are supported for appendBlob.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+Accepted values: blockBlob, appendBlob
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.

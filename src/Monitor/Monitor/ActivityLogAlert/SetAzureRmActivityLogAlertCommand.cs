@@ -216,6 +216,8 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
                 inputObject.Name,
                 inputObject.Type,
                 inputObject.Tags,
+                inputObject.Kind,
+                inputObject.Etag,
                 inputObject.Enabled,
                 inputObject.Description);
 

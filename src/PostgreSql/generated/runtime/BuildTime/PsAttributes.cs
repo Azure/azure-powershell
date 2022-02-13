@@ -17,7 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         }
     }
 
-    [AttributeUsage(AttributeTargets.Class)]
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Property)]
     public class DoNotExportAttribute : Attribute
     {
     }

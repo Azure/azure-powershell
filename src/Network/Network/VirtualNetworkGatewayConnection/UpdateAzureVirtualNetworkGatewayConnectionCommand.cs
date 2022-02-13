@@ -24,6 +24,7 @@ using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 using Microsoft.Azure.Commands.Network.VirtualNetworkGateway;
 using System.Collections;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -49,6 +50,12 @@ namespace Microsoft.Azure.Commands.Network
         public int? DpdTimeoutInSeconds { get; set; }
 
         [Parameter(
+        Mandatory = false,
+        HelpMessage = "Virtual Network Gateway Connection Mode.")]
+        [PSArgumentCompleter("Default", "ResponderOnly", "InitiatorOnly")]
+        public string ConnectionMode { get; set; }
+
+        [Parameter(
             Mandatory = false,
             HelpMessage = "Whether to use policy-based traffic selectors for a S2S connection")]
         public bool? UsePolicyBasedTrafficSelectors { get; set; }
@@ -69,6 +76,16 @@ namespace Microsoft.Azure.Commands.Network
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "A list of traffic selector policies.")]
         public PSTrafficSelectorPolicy[] TrafficSelectorPolicy { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The list of ingress NAT rules that are associated with this Connection.")]
+        public PSResourceId[] IngressNatRule { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The list of egress  NAT rules that are associated with this Connection.")]
+        public PSResourceId[] EgressNatRule { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -110,6 +127,11 @@ namespace Microsoft.Azure.Commands.Network
                         this.VirtualNetworkGatewayConnection.DpdTimeoutSeconds = this.DpdTimeoutInSeconds.Value;
                     }
 
+                    if (!String.IsNullOrEmpty(this.ConnectionMode))
+                    {
+                        this.VirtualNetworkGatewayConnection.ConnectionMode = this.ConnectionMode;
+                    }
+
                     if (this.UsePolicyBasedTrafficSelectors.HasValue)
                     {
                         this.VirtualNetworkGatewayConnection.UsePolicyBasedTrafficSelectors = this.UsePolicyBasedTrafficSelectors.Value;
@@ -128,6 +150,32 @@ namespace Microsoft.Azure.Commands.Network
                     if (this.TrafficSelectorPolicy != null)
                     {
                         this.VirtualNetworkGatewayConnection.TrafficSelectorPolicies = this.TrafficSelectorPolicy?.ToList();
+                    }
+
+                    if (this.IngressNatRule != null)
+                    {
+                        this.VirtualNetworkGatewayConnection.IngressNatRules = new List<PSResourceId>();
+                        foreach (var resource in this.IngressNatRule)
+                        {
+                            this.VirtualNetworkGatewayConnection.IngressNatRules.Add(
+                                new PSResourceId()
+                                {
+                                    Id = resource.Id
+                                });
+                        }
+                    }
+
+                    if (this.EgressNatRule != null)
+                    {
+                        this.VirtualNetworkGatewayConnection.EgressNatRules = new List<PSResourceId>();
+                        foreach (var resource in this.EgressNatRule)
+                        {
+                            this.VirtualNetworkGatewayConnection.EgressNatRules.Add(
+                                new PSResourceId()
+                                {
+                                    Id = resource.Id
+                                });
+                        }
                     }
 
                     var vnetGatewayConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetworkGatewayConnection>(this.VirtualNetworkGatewayConnection);

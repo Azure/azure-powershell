@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azgalleryimagedefinition
+online version: https://docs.microsoft.com/powershell/module/az.compute/get-azgalleryimagedefinition
 schema: 2.0.0
 ---
 
@@ -31,8 +31,10 @@ Get or list gallery image definitions.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzGalleryImageDefinition -ResourceGroupName rg1 -GalleryName gallery1 -GalleryImageDefinitionName image1
+Get-AzGalleryImageDefinition -ResourceGroupName rg1 -GalleryName gallery1 -GalleryImageDefinitionName image1
+```
 
+```output
 ResourceGroupName   : rg1
 Eula                : eula
 PrivacyStatementUri : Https://www.microsoft.com
@@ -70,8 +72,10 @@ Get the gallery image definition.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzGalleryImageDefinition -ResourceGroupName rg1 -GalleryName gallery1 -GalleryImageDefinitionName image*
+Get-AzGalleryImageDefinition -ResourceGroupName rg1 -GalleryName gallery1 -GalleryImageDefinitionName image*
+```
 
+```output
 ResourceGroupName   : rg1
 Eula                : eula
 PrivacyStatementUri : Https://www.microsoft.com
@@ -141,8 +145,10 @@ Get the gallery image definition that starts with "image".
 
 ### Example 3
 ```powershell
-PS C:\> Get-AzGalleryImageDefinition -ResourceGroupName rg1 -GalleryName gallery1
+Get-AzGalleryImageDefinition -ResourceGroupName rg1 -GalleryName gallery1
+```
 
+```output
 ResourceGroupName   : rg1
 Eula                : eula
 PrivacyStatementUri : Https://www.microsoft.com

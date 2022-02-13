@@ -126,13 +126,66 @@ namespace RecoveryServices.SiteRecovery.Test
             Category.CheckIn)]
         public void TestUpdateRPIWithDES()
         {
-            this.VaultSettingsFilePath = System.IO.Path.Combine(
-                System.AppDomain.CurrentDomain.BaseDirectory,
-                "ScenarioTests", "B2A", "CMKInput", "B2A.VaultCredentials");
             this.RunPowerShellTest(
                 _logger,
                 Constants.NewModel,
                 "Test-UpdateRPIWithDiskEncryptionSetMap -vaultSettingsFilePath \"" +
+                this.VaultSettingsFilePath +
+                "\"");
+        }
+
+        [Fact]
+        [Trait(
+            Category.AcceptanceType,
+            Category.CheckIn)]
+        public void TestCreateRPIWithAdditionalProperties()
+        {
+            this.RunPowerShellTest(
+                _logger,
+                Constants.NewModel,
+                "Test-CreateRPIWithAdditionalProperties -vaultSettingsFilePath \"" +
+                this.VaultSettingsFilePath +
+                "\"");
+        }
+
+        [Fact]
+        [Trait(
+            Category.AcceptanceType,
+            Category.CheckIn)]
+        public void TestUpdateRPIWithAdditionalProperties()
+        {
+            this.RunPowerShellTest(
+                _logger,
+                Constants.NewModel,
+                "Test-UpdateRPIWithAdditionalProperties -vaultSettingsFilePath \"" +
+                this.VaultSettingsFilePath +
+                "\"");
+        }
+
+        [Fact]
+        [Trait(
+            Category.AcceptanceType,
+            Category.CheckIn)]
+        public void TestCreateRPIWithAvZone()
+        {
+            this.RunPowerShellTest(
+                _logger,
+                Constants.NewModel,
+                "Test-CreateRPIWithAvailabilityZone -vaultSettingsFilePath \"" +
+                this.VaultSettingsFilePath +
+                "\"");
+        }
+
+        [Fact]
+        [Trait(
+            Category.AcceptanceType,
+            Category.CheckIn)]
+        public void TestUpdateRPIWithAvZone()
+        {
+            this.RunPowerShellTest(
+                _logger,
+                Constants.NewModel,
+                "Test-UpdateRPIWithAvailabilityZone -vaultSettingsFilePath \"" +
                 this.VaultSettingsFilePath +
                 "\"");
         }

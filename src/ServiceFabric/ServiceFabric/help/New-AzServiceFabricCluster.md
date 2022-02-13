@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
-online version: https://docs.microsoft.com/en-us/powershell/module/az.servicefabric/new-azservicefabriccluster
+online version: https://docs.microsoft.com/powershell/module/az.servicefabric/new-azservicefabriccluster
 schema: 2.0.0
 ---
 
@@ -322,7 +322,7 @@ The Operating System of the VMs that make up the cluster.
 Type: Microsoft.Azure.Commands.ServiceFabric.Models.OperatingSystem
 Parameter Sets: ByDefaultArmTemplate
 Aliases: VmImage
-Accepted values: WindowsServer2012R2Datacenter, WindowsServer2016Datacenter, WindowsServer2016DatacenterwithContainers, UbuntuServer1604
+Accepted values: WindowsServer2012R2Datacenter, WindowsServer2016Datacenter, WindowsServer2016DatacenterwithContainers, UbuntuServer1604, UbuntuServer1804
 
 Required: False
 Position: Named

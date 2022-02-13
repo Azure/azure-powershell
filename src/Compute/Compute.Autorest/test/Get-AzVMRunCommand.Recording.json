@@ -1,0 +1,419 @@
+{
+  "Get-AzVMRunCommand+[NoContext]+[NoScenario]+$PUT+https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/testpwshellcompute/providers/Microsoft.Compute/virtualMachines/testpwshellvm/runCommands/firstruncommand1?api-version=2021-07-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/testpwshellcompute/providers/Microsoft.Compute/virtualMachines/testpwshellvm/runCommands/firstruncommand1?api-version=2021-07-01",
+      "Content": "{\r\n  \"location\": \"eastus\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "28" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Compute/locations/eastus/operations/504d8a2b-4a5d-4ede-b17e-3be1faca2fe6?p=4bed644a-a596-4634-b1fa-8009f92f8b59\u0026api-version=2021-07-01" ],
+        "Azure-AsyncNotification": [ "Enabled" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/UpdateVM3Min;239,Microsoft.Compute/UpdateVM30Min;1194" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "504d8a2b-4a5d-4ede-b17e-3be1faca2fe6" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "dbc5ed82-6d53-445b-b646-d30bc22eba0b" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20211102T005429Z:dbc5ed82-6d53-445b-b646-d30bc22eba0b" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 02 Nov 2021 00:54:29 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "443" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"name\": \"firstruncommand1\",\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/testpwshellcompute/providers/Microsoft.Compute/virtualMachines/testpwshellvm/runCommands/firstruncommand1\",\r\n  \"type\": \"Microsoft.Compute/virtualMachines/runCommands\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"source\": {},\r\n    \"timeoutInSeconds\": 0,\r\n    \"provisioningState\": \"Creating\",\r\n    \"asyncExecution\": false\r\n  }\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzVMRunCommand+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Compute/locations/eastus/operations/504d8a2b-4a5d-4ede-b17e-3be1faca2fe6?p=4bed644a-a596-4634-b1fa-8009f92f8b59\u0026api-version=2021-07-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Compute/locations/eastus/operations/504d8a2b-4a5d-4ede-b17e-3be1faca2fe6?p=4bed644a-a596-4634-b1fa-8009f92f8b59\u0026api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "476c4827-6872-4621-8124-7e0b0debaf79" ],
+        "CommandName": [ "Set-AzVMRunCommand" ],
+        "FullCommandName": [ "Set-AzVMRunCommand_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetOperation3Min;14995,Microsoft.Compute/GetOperation30Min;29960" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "294bcc07-ed2a-4f08-a6df-782307446cf1" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-correlation-request-id": [ "86d6f634-3fdc-4c7b-9da7-b871b840804d" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20211102T005459Z:86d6f634-3fdc-4c7b-9da7-b871b840804d" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 02 Nov 2021 00:54:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "133" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"startTime\": \"2021-11-02T00:54:29.303886+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"504d8a2b-4a5d-4ede-b17e-3be1faca2fe6\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzVMRunCommand+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Compute/locations/eastus/operations/504d8a2b-4a5d-4ede-b17e-3be1faca2fe6?p=4bed644a-a596-4634-b1fa-8009f92f8b59\u0026api-version=2021-07-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Compute/locations/eastus/operations/504d8a2b-4a5d-4ede-b17e-3be1faca2fe6?p=4bed644a-a596-4634-b1fa-8009f92f8b59\u0026api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "476c4827-6872-4621-8124-7e0b0debaf79" ],
+        "CommandName": [ "Set-AzVMRunCommand" ],
+        "FullCommandName": [ "Set-AzVMRunCommand_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetOperation3Min;14994,Microsoft.Compute/GetOperation30Min;29964" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "4b5ac8c0-6f6c-4ce8-a017-d07c08a74f42" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-correlation-request-id": [ "8f9fa9aa-d73e-495d-8873-e8a1e62c0755" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20211102T005529Z:8f9fa9aa-d73e-495d-8873-e8a1e62c0755" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 02 Nov 2021 00:55:29 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "133" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"startTime\": \"2021-11-02T00:54:29.303886+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"504d8a2b-4a5d-4ede-b17e-3be1faca2fe6\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzVMRunCommand+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Compute/locations/eastus/operations/504d8a2b-4a5d-4ede-b17e-3be1faca2fe6?p=4bed644a-a596-4634-b1fa-8009f92f8b59\u0026api-version=2021-07-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Compute/locations/eastus/operations/504d8a2b-4a5d-4ede-b17e-3be1faca2fe6?p=4bed644a-a596-4634-b1fa-8009f92f8b59\u0026api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "476c4827-6872-4621-8124-7e0b0debaf79" ],
+        "CommandName": [ "Set-AzVMRunCommand" ],
+        "FullCommandName": [ "Set-AzVMRunCommand_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetOperation3Min;14993,Microsoft.Compute/GetOperation30Min;29963" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "e7d52a36-cb90-4ae3-ab99-1e7e4cd422f4" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-correlation-request-id": [ "1484473b-f8a7-4aeb-8d5a-2c93888f5139" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20211102T005600Z:1484473b-f8a7-4aeb-8d5a-2c93888f5139" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 02 Nov 2021 00:55:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "133" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"startTime\": \"2021-11-02T00:54:29.303886+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"504d8a2b-4a5d-4ede-b17e-3be1faca2fe6\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzVMRunCommand+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Compute/locations/eastus/operations/504d8a2b-4a5d-4ede-b17e-3be1faca2fe6?p=4bed644a-a596-4634-b1fa-8009f92f8b59\u0026api-version=2021-07-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Compute/locations/eastus/operations/504d8a2b-4a5d-4ede-b17e-3be1faca2fe6?p=4bed644a-a596-4634-b1fa-8009f92f8b59\u0026api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "476c4827-6872-4621-8124-7e0b0debaf79" ],
+        "CommandName": [ "Set-AzVMRunCommand" ],
+        "FullCommandName": [ "Set-AzVMRunCommand_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetOperation3Min;14991,Microsoft.Compute/GetOperation30Min;29961" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "7a77c5cd-0206-46f5-b99f-f9005ff52b3e" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-correlation-request-id": [ "1b855a9c-635e-42de-be08-add476192290" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20211102T005630Z:1b855a9c-635e-42de-be08-add476192290" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 02 Nov 2021 00:56:29 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "183" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"startTime\": \"2021-11-02T00:54:29.303886+00:00\",\r\n  \"endTime\": \"2021-11-02T00:56:03.9767399+00:00\",\r\n  \"status\": \"Succeeded\",\r\n  \"name\": \"504d8a2b-4a5d-4ede-b17e-3be1faca2fe6\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzVMRunCommand+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/testpwshellcompute/providers/Microsoft.Compute/virtualMachines/testpwshellvm/runCommands/firstruncommand1?api-version=2021-07-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/testpwshellcompute/providers/Microsoft.Compute/virtualMachines/testpwshellvm/runCommands/firstruncommand1?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "476c4827-6872-4621-8124-7e0b0debaf79" ],
+        "CommandName": [ "Set-AzVMRunCommand" ],
+        "FullCommandName": [ "Set-AzVMRunCommand_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/LowCostGet3Min;3996,Microsoft.Compute/LowCostGet30Min;31958" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "c74c0f08-18c8-44b8-8164-c2a369df4e68" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "x-ms-correlation-request-id": [ "26bdb213-10e0-4a29-b817-c3803b7b981d" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20211102T005630Z:26bdb213-10e0-4a29-b817-c3803b7b981d" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 02 Nov 2021 00:56:29 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "444" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"name\": \"firstruncommand1\",\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/testpwshellcompute/providers/Microsoft.Compute/virtualMachines/testpwshellvm/runCommands/firstruncommand1\",\r\n  \"type\": \"Microsoft.Compute/virtualMachines/runCommands\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"source\": {},\r\n    \"timeoutInSeconds\": 0,\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"asyncExecution\": false\r\n  }\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzVMRunCommand+[NoContext]+List+$GET+https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/testpwshellcompute/providers/Microsoft.Compute/virtualMachines/testpwshellvm/runCommands?api-version=2021-07-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/testpwshellcompute/providers/Microsoft.Compute/virtualMachines/testpwshellvm/runCommands?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "0119cdf4-baa4-4a7c-8213-0bdfd57d55fe" ],
+        "CommandName": [ "Get-AzVMRunCommand" ],
+        "FullCommandName": [ "Get-AzVMRunCommand_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/LowCostGet3Min;3995,Microsoft.Compute/LowCostGet30Min;31957" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "c4192052-9d4d-4799-8f60-7c9e4406eeed" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
+        "x-ms-correlation-request-id": [ "c0d2b290-9e0a-41ef-a158-e2e7124fa7b2" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20211102T005630Z:c0d2b290-9e0a-41ef-a158-e2e7124fa7b2" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 02 Nov 2021 00:56:29 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "517" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"firstruncommand1\",\r\n      \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/testpwshellcompute/providers/Microsoft.Compute/virtualMachines/testpwshellvm/runCommands/firstruncommand1\",\r\n      \"type\": \"Microsoft.Compute/virtualMachines/runCommands\",\r\n      \"location\": \"eastus\",\r\n      \"properties\": {\r\n        \"source\": {},\r\n        \"timeoutInSeconds\": 0,\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"asyncExecution\": false\r\n      }\r\n    }\r\n  ]\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzVMRunCommand+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/testpwshellcompute/providers/Microsoft.Compute/virtualMachines/testpwshellvm/runCommands/firstruncommand1?api-version=2021-07-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/testpwshellcompute/providers/Microsoft.Compute/virtualMachines/testpwshellvm/runCommands/firstruncommand1?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "654361ce-2f41-4f23-b53a-20d729e62c16" ],
+        "CommandName": [ "Get-AzVMRunCommand" ],
+        "FullCommandName": [ "Get-AzVMRunCommand_Get1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/LowCostGet3Min;3994,Microsoft.Compute/LowCostGet30Min;31956" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "e4bb55c1-04bc-43c5-976a-b660fdb2e309" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "x-ms-correlation-request-id": [ "51021eae-8e46-4a46-aedc-a392be0f770e" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20211102T005631Z:51021eae-8e46-4a46-aedc-a392be0f770e" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 02 Nov 2021 00:56:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "444" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"name\": \"firstruncommand1\",\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/testpwshellcompute/providers/Microsoft.Compute/virtualMachines/testpwshellvm/runCommands/firstruncommand1\",\r\n  \"type\": \"Microsoft.Compute/virtualMachines/runCommands\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"source\": {},\r\n    \"timeoutInSeconds\": 0,\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"asyncExecution\": false\r\n  }\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzVMRunCommand+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Compute/locations/eastus/runCommands?api-version=2021-07-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Compute/locations/eastus/runCommands?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "d4b7a68b-fb8c-491c-b3c6-d817e8cc61f9" ],
+        "CommandName": [ "Get-AzVMRunCommand" ],
+        "FullCommandName": [ "Get-AzVMRunCommand_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetSubscriptionInfo3Min;359" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "72e1509d-917b-49f2-bcba-d1b82004651e" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
+        "x-ms-correlation-request-id": [ "3fabe63d-3d2f-42c4-a178-2c2b3c72dae8" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20211102T005631Z:3fabe63d-3d2f-42c4-a178-2c2b3c72dae8" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 02 Nov 2021 00:56:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "5725" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"value\": [\r\n    {\r\n      \"$schema\": \"http://schema.management.azure.com/schemas/2016-11-17/runcommands.json\",\r\n      \"id\": \"DisableNLA\",\r\n      \"osType\": \"Windows\",\r\n      \"label\": \"Disable Network Level Authentication\",\r\n      \"description\": \"Disables Network Level Authentication (NLA). You must restart the VM after the script completes for the change to take effect. The script itself does not restart the VM. You can use this script to disable NLA if RDP connections are failing with error \u0027The remote computer that you are trying to connect to requires Network Level Authentication (NLA), but your Windows domain controller cannot be contacted to perform NLA.\u0027 or error \u0027An authentication error has occurred. The Local Security Authority cannot be contacted.\u0027 NLA is a security feature that should only be disabled temporarily to allow RDP connections to succeed until the domain controller connectivity issue has been resolved.\"\r\n    },\r\n    {\r\n      \"$schema\": \"http://schema.management.azure.com/schemas/2016-11-17/runcommands.json\",\r\n      \"id\": \"DisableWindowsUpdate\",\r\n      \"osType\": \"Windows\",\r\n      \"label\": \"Disable Windows Update Automatic Updates\",\r\n      \"description\": \"Disable Automatic Updates through Windows Update.\"\r\n    },\r\n    {\r\n      \"$schema\": \"http://schema.management.azure.com/schemas/2016-11-17/runcommands.json\",\r\n      \"id\": \"EnableAdminAccount\",\r\n      \"osType\": \"Windows\",\r\n      \"label\": \"Enable administrator account\",\r\n      \"description\": \"Checks if the local Administrator account is disabled, and if so enables it.\"\r\n    },\r\n    {\r\n      \"$schema\": \"http://schema.management.azure.com/schemas/2016-11-17/runcommands.json\",\r\n      \"id\": \"EnableEMS\",\r\n      \"osType\": \"Windows\",\r\n      \"label\": \"Enable EMS\",\r\n      \"description\": \"Enable Emergency Management Services (EMS) to allow for serial console connection in troubleshooting scenarios.\"\r\n    },\r\n    {\r\n      \"$schema\": \"http://schema.management.azure.com/schemas/2016-11-17/runcommands.json\",\r\n      \"id\": \"EnableRemotePS\",\r\n      \"osType\": \"Windows\",\r\n      \"label\": \"Enable remote PowerShell\",\r\n      \"description\": \"Configure the machine to enable remote PowerShell.\"\r\n    },\r\n    {\r\n      \"$schema\": \"http://schema.management.azure.com/schemas/2016-11-17/runcommands.json\",\r\n      \"id\": \"EnableWindowsUpdate\",\r\n      \"osType\": \"Windows\",\r\n      \"label\": \"Enable Windows Update Automatic Updates\",\r\n      \"description\": \"Enable Automatic Updates through Windows Update.\"\r\n    },\r\n    {\r\n      \"$schema\": \"http://schema.management.azure.com/schemas/2016-11-17/runcommands.json\",\r\n      \"id\": \"ifconfig\",\r\n      \"osType\": \"Linux\",\r\n      \"label\": \"List network configuration\",\r\n      \"description\": \"Get the configuration of all network interfaces.\"\r\n    },\r\n    {\r\n      \"$schema\": \"http://schema.management.azure.com/schemas/2016-11-17/runcommands.json\",\r\n      \"id\": \"IPConfig\",\r\n      \"osType\": \"Windows\",\r\n      \"label\": \"List IP configuration\",\r\n      \"description\": \"Shows detailed information for the IP address, subnet mask and default gateway for each adapter bound to TCP/IP.\"\r\n    },\r\n    {\r\n      \"$schema\": \"http://schema.management.azure.com/schemas/2016-11-17/runcommands.json\",\r\n      \"id\": \"RDPSettings\",\r\n      \"osType\": \"Windows\",\r\n      \"label\": \"Verify RDP Listener Settings\",\r\n      \"description\": \"Checks registry settings and domain policy settings. Suggests policy actions if machine is part of a domain or modifies the settings to default values.\"\r\n    },\r\n    {\r\n      \"$schema\": \"http://schema.management.azure.com/schemas/2016-11-17/runcommands.json\",\r\n      \"id\": \"RemoveRunCommandLinuxExtension\",\r\n      \"osType\": \"Linux\",\r\n      \"label\": \"Removes the internal RunCommandLinux extension\",\r\n      \"description\": \"Removes RunCommandLinux extension deployed to execute previous RunCommand operations.\"\r\n    },\r\n    {\r\n      \"$schema\": \"http://schema.management.azure.com/schemas/2016-11-17/runcommands.json\",\r\n      \"id\": \"RemoveRunCommandWindowsExtension\",\r\n      \"osType\": \"Windows\",\r\n      \"label\": \"Removes the internal RunCommandWindows extension\",\r\n      \"description\": \"Removes RunCommandWindows extension deployed to execute previous RunCommand operations.\"\r\n    },\r\n    {\r\n      \"$schema\": \"http://schema.management.azure.com/schemas/2016-11-17/runcommands.json\",\r\n      \"id\": \"ResetRDPCert\",\r\n      \"osType\": \"Windows\",\r\n      \"label\": \"Restore RDP Authentication mode to defaults\",\r\n      \"description\": \"Removes the SSL certificate tied to the RDP listener and restores the RDP listener security to default. Use this script if you see any issues with the certificate.\"\r\n    },\r\n    {\r\n      \"$schema\": \"http://schema.management.azure.com/schemas/2016-11-17/runcommands.json\",\r\n      \"id\": \"RunPowerShellScript\",\r\n      \"osType\": \"Windows\",\r\n      \"label\": \"Executes a PowerShell script\",\r\n      \"description\": \"Custom multiline PowerShell script should be defined in script property. Optional parameters can be set in parameters property.\"\r\n    },\r\n    {\r\n      \"$schema\": \"http://schema.management.azure.com/schemas/2016-11-17/runcommands.json\",\r\n      \"id\": \"RunShellScript\",\r\n      \"osType\": \"Linux\",\r\n      \"label\": \"Executes a Linux shell script\",\r\n      \"description\": \"Custom multiline shell script should be defined in script property. Optional parameters can be set in parameters property.\"\r\n    },\r\n    {\r\n      \"$schema\": \"http://schema.management.azure.com/schemas/2016-11-17/runcommands.json\",\r\n      \"id\": \"SetRDPPort\",\r\n      \"osType\": \"Windows\",\r\n      \"label\": \"Set Remote Desktop port\",\r\n      \"description\": \"Sets the default or user specified port number for Remote Desktop connections. Enables firewall rule for inbound access to the port.\"\r\n    }\r\n  ]\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzVMRunCommand+[NoContext]+Get1+$GET+https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Compute/locations/eastus/runCommands/RunPowerShellScript?api-version=2021-07-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Compute/locations/eastus/runCommands/RunPowerShellScript?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "ff07487a-4ff1-4bb3-9607-d7978032ae7c" ],
+        "CommandName": [ "Get-AzVMRunCommand" ],
+        "FullCommandName": [ "Get-AzVMRunCommand_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetSubscriptionInfo3Min;358" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "7f33a209-3637-4a87-8ac2-162efe7623ac" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
+        "x-ms-correlation-request-id": [ "81be2faa-369c-41b3-9d9a-dfbdcfa26cf7" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20211102T005631Z:81be2faa-369c-41b3-9d9a-dfbdcfa26cf7" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 02 Nov 2021 00:56:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "14049" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"script\": [\r\n    \"param(\\r\\n  [string]$arg1,\\r\\n  [string]$arg2\\r\\n)\\r\\nWrite-Host This is a sample script with parameters $arg1 $arg2\\r\\n\\r\\n# SIG # Begin signature block\\r\\n# MIIjlAYJKoZIhvcNAQcCoIIjhTCCI4ECAQExDzANBglghkgBZQMEAgEFADB5Bgor\\r\\n# BgEEAYI3AgEEoGswaTA0BgorBgEEAYI3AgEeMCYCAwEAAAQQH8w7YFlLCE63JNLG\\r\\n# KX7zUQIBAAIBAAIBAAIBAAIBADAxMA0GCWCGSAFlAwQCAQUABCB6jm9GJUxEj/xj\\r\\n# xRn7NMmK1YlgeGDCHEVx3xVyCBNnmaCCDXYwggX0MIID3KADAgECAhMzAAAB3vl+\\r\\n# gOdHKPWkAAAAAAHeMA0GCSqGSIb3DQEBCwUAMH4xCzAJBgNVBAYTAlVTMRMwEQYD\\r\\n# VQQIEwpXYXNoaW5ndG9uMRAwDgYDVQQHEwdSZWRtb25kMR4wHAYDVQQKExVNaWNy\\r\\n# b3NvZnQgQ29ycG9yYXRpb24xKDAmBgNVBAMTH01pY3Jvc29mdCBDb2RlIFNpZ25p\\r\\n# bmcgUENBIDIwMTEwHhcNMjAxMjE1MjEzMTQ0WhcNMjExMjAyMjEzMTQ0WjB0MQsw\\r\\n# CQYDVQQGEwJVUzETMBEGA1UECBMKV2FzaGluZ3RvbjEQMA4GA1UEBxMHUmVkbW9u\\r\\n# ZDEeMBwGA1UEChMVTWljcm9zb2Z0IENvcnBvcmF0aW9uMR4wHAYDVQQDExVNaWNy\\r\\n# b3NvZnQgQ29ycG9yYXRpb24wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIB\\r\\n# AQC42o7GuqPBrC9Z9N+JtpXANgk2m77zmZSuuBKQmr5pZRmQCht/u/V21N5nwBWK\\r\\n# NGwCZNdI98dyYGYORRZgrMOh8JWxDBjLMQYtqklGLw5ZPw3OCGCIM2ZU0snDlvZ3\\r\\n# nKwys5NtPlY4shJxcVM2dhMnXhRTqvtexmeWpfmvtiop7jJn2Sdq0iDybDyU2vMz\\r\\n# nH2ASetgjvuW2eP4d6zQXlboTBBu1ZxTv/aCRrWCWUPge8lHr3wtiPJHMyxmRHXT\\r\\n# ulS2VksZ6iI9RLOdlqup9UOcnKRaj1usJKjwADu75+fegAZ4HPWSEXXmpBmuhvbT\\r\\n# Euwa04eiL7ZKbG3mY9EqpiJ7AgMBAAGjggFzMIIBbzAfBgNVHSUEGDAWBgorBgEE\\r\\n# AYI3TAgBBggrBgEFBQcDAzAdBgNVHQ4EFgQUbrkwVx/G26M/PsNzHEotPDOdBMcw\\r\\n# RQYDVR0RBD4wPKQ6MDgxHjAcBgNVBAsTFU1pY3Jvc29mdCBDb3Jwb3JhdGlvbjEW\\r\\n# MBQGA1UEBRMNMjMwMDEyKzQ2MzAwODAfBgNVHSMEGDAWgBRIbmTlUAXTgqoXNzci\\r\\n# tW2oynUClTBUBgNVHR8ETTBLMEmgR6BFhkNodHRwOi8vd3d3Lm1pY3Jvc29mdC5j\\r\\n# b20vcGtpb3BzL2NybC9NaWNDb2RTaWdQQ0EyMDExXzIwMTEtMDctMDguY3JsMGEG\\r\\n# CCsGAQUFBwEBBFUwUzBRBggrBgEFBQcwAoZFaHR0cDovL3d3dy5taWNyb3NvZnQu\\r\\n# Y29tL3BraW9wcy9jZXJ0cy9NaWNDb2RTaWdQQ0EyMDExXzIwMTEtMDctMDguY3J0\\r\\n# MAwGA1UdEwEB/wQCMAAwDQYJKoZIhvcNAQELBQADggIBAHBTJKafCqTZswwxIpvl\\r\\n# yU+K/+9oxjswaMqV+yGkRLa7LDqf917yb+IHjsPphMwe0ncDkpnNtKazW2doVHh3\\r\\n# wMNXUYX6DzyVg1Xr/MTYaai0/GkPR/RN4MSBfoVBDzXJSisnYEWlK1TbI1J1mNTU\\r\\n# iyiaktveVsH3xQyOVXQEpKFW17xYoHGjYm8s5v22mRE/ShVgsEW9ckxeQbJPCkPc\\r\\n# PiqD4eXwPguTxv06Pwxva8lsjsPDvo2EgwozBCNGRAxsv2pEl0bh+yOtaFpfQWG7\\r\\n# yMskiLQwWWoWFyuzm6yiKmZ/jdfO98xR1bFUhQMdwQoMi0lCUMx6YQJj1WpNUTDq\\r\\n# X0ttJGny2aPWsoOgZ5fzKHNfCowOA+7hLc6gCVRBzyMN/xvV19aKymPt8I/J5gqA\\r\\n# ZCQT19YgNKyhHUYS4GnFyMr/0GCezE8kexDGeQ3JX1TpHQvcz/dghK30fWM9z44l\\r\\n# BjNcMV/HtTuefSFsr9tCp53wVaw65LudxSjH+/a2zUa85KKCBzj/GU4OhDaa5Wd4\\r\\n# 8jr0JSm/515Ynzm1Xje5Ai/qo9xaGCrjrVcJUxBXd/SZPorm3HN6U1aJnL2Kw6nY\\r\\n# 8Rs205CIWT28aFTecMQ6+KnMt1NZR4pogBnnpWSLc92JMbUd1Z6IbauU6U/oOjyl\\r\\n# WOtkYUKbyE7EvK9GwUQXMds/MIIHejCCBWKgAwIBAgIKYQ6Q0gAAAAAAAzANBgkq\\r\\n# hkiG9w0BAQsFADCBiDELMAkGA1UEBhMCVVMxEzARBgNVBAgTCldhc2hpbmd0b24x\\r\\n# EDAOBgNVBAcTB1JlZG1vbmQxHjAcBgNVBAoTFU1pY3Jvc29mdCBDb3Jwb3JhdGlv\\r\\n# bjEyMDAGA1UEAxMpTWljcm9zb2Z0IFJvb3QgQ2VydGlmaWNhdGUgQXV0aG9yaXR5\\r\\n# IDIwMTEwHhcNMTEwNzA4MjA1OTA5WhcNMjYwNzA4MjEwOTA5WjB+MQswCQYDVQQG\\r\\n# EwJVUzETMBEGA1UECBMKV2FzaGluZ3RvbjEQMA4GA1UEBxMHUmVkbW9uZDEeMBwG\\r\\n# A1UEChMVTWljcm9zb2Z0IENvcnBvcmF0aW9uMSgwJgYDVQQDEx9NaWNyb3NvZnQg\\r\\n# Q29kZSBTaWduaW5nIFBDQSAyMDExMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIIC\\r\\n# CgKCAgEAq/D6chAcLq3YbqqCEE00uvK2WCGfQhsqa+laUKq4BjgaBEm6f8MMHt03\\r\\n# a8YS2AvwOMKZBrDIOdUBFDFC04kNeWSHfpRgJGyvnkmc6Whe0t+bU7IKLMOv2akr\\r\\n# rnoJr9eWWcpgGgXpZnboMlImEi/nqwhQz7NEt13YxC4Ddato88tt8zpcoRb0Rrrg\\r\\n# OGSsbmQ1eKagYw8t00CT+OPeBw3VXHmlSSnnDb6gE3e+lD3v++MrWhAfTVYoonpy\\r\\n# 4BI6t0le2O3tQ5GD2Xuye4Yb2T6xjF3oiU+EGvKhL1nkkDstrjNYxbc+/jLTswM9\\r\\n# sbKvkjh+0p2ALPVOVpEhNSXDOW5kf1O6nA+tGSOEy/S6A4aN91/w0FK/jJSHvMAh\\r\\n# dCVfGCi2zCcoOCWYOUo2z3yxkq4cI6epZuxhH2rhKEmdX4jiJV3TIUs+UsS1Vz8k\\r\\n# A/DRelsv1SPjcF0PUUZ3s/gA4bysAoJf28AVs70b1FVL5zmhD+kjSbwYuER8ReTB\\r\\n# w3J64HLnJN+/RpnF78IcV9uDjexNSTCnq47f7Fufr/zdsGbiwZeBe+3W7UvnSSmn\\r\\n# Eyimp31ngOaKYnhfsi+E11ecXL93KCjx7W3DKI8sj0A3T8HhhUSJxAlMxdSlQy90\\r\\n# lfdu+HggWCwTXWCVmj5PM4TasIgX3p5O9JawvEagbJjS4NaIjAsCAwEAAaOCAe0w\\r\\n# ggHpMBAGCSsGAQQBgjcVAQQDAgEAMB0GA1UdDgQWBBRIbmTlUAXTgqoXNzcitW2o\\r\\n# ynUClTAZBgkrBgEEAYI3FAIEDB4KAFMAdQBiAEMAQTALBgNVHQ8EBAMCAYYwDwYD\\r\\n# VR0TAQH/BAUwAwEB/zAfBgNVHSMEGDAWgBRyLToCMZBDuRQFTuHqp8cx0SOJNDBa\\r\\n# BgNVHR8EUzBRME+gTaBLhklodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpL2Ny\\r\\n# bC9wcm9kdWN0cy9NaWNSb29DZXJBdXQyMDExXzIwMTFfMDNfMjIuY3JsMF4GCCsG\\r\\n# AQUFBwEBBFIwUDBOBggrBgEFBQcwAoZCaHR0cDovL3d3dy5taWNyb3NvZnQuY29t\\r\\n# L3BraS9jZXJ0cy9NaWNSb29DZXJBdXQyMDExXzIwMTFfMDNfMjIuY3J0MIGfBgNV\\r\\n# HSAEgZcwgZQwgZEGCSsGAQQBgjcuAzCBgzA/BggrBgEFBQcCARYzaHR0cDovL3d3\\r\\n# dy5taWNyb3NvZnQuY29tL3BraW9wcy9kb2NzL3ByaW1hcnljcHMuaHRtMEAGCCsG\\r\\n# AQUFBwICMDQeMiAdAEwAZQBnAGEAbABfAHAAbwBsAGkAYwB5AF8AcwB0AGEAdABl\\r\\n# AG0AZQBuAHQALiAdMA0GCSqGSIb3DQEBCwUAA4ICAQBn8oalmOBUeRou09h0ZyKb\\r\\n# C5YR4WOSmUKWfdJ5DJDBZV8uLD74w3LRbYP+vj/oCso7v0epo/Np22O/IjWll11l\\r\\n# hJB9i0ZQVdgMknzSGksc8zxCi1LQsP1r4z4HLimb5j0bpdS1HXeUOeLpZMlEPXh6\\r\\n# I/MTfaaQdION9MsmAkYqwooQu6SpBQyb7Wj6aC6VoCo/KmtYSWMfCWluWpiW5IP0\\r\\n# wI/zRive/DvQvTXvbiWu5a8n7dDd8w6vmSiXmE0OPQvyCInWH8MyGOLwxS3OW560\\r\\n# STkKxgrCxq2u5bLZ2xWIUUVYODJxJxp/sfQn+N4sOiBpmLJZiWhub6e3dMNABQam\\r\\n# ASooPoI/E01mC8CzTfXhj38cbxV9Rad25UAqZaPDXVJihsMdYzaXht/a8/jyFqGa\\r\\n# J+HNpZfQ7l1jQeNbB5yHPgZ3BtEGsXUfFL5hYbXw3MYbBL7fQccOKO7eZS/sl/ah\\r\\n# XJbYANahRr1Z85elCUtIEJmAH9AAKcWxm6U/RXceNcbSoqKfenoi+kiVH6v7RyOA\\r\\n# 9Z74v2u3S5fi63V4GuzqN5l5GEv/1rMjaHXmr/r8i+sLgOppO6/8MO0ETI7f33Vt\\r\\n# Y5E90Z1WTk+/gFcioXgRMiF670EKsT/7qMykXcGhiJtXcVZOSEXAQsmbdlsKgEhr\\r\\n# /Xmfwb1tbWrJUnMTDXpQzTGCFXQwghVwAgEBMIGVMH4xCzAJBgNVBAYTAlVTMRMw\\r\\n# EQYDVQQIEwpXYXNoaW5ndG9uMRAwDgYDVQQHEwdSZWRtb25kMR4wHAYDVQQKExVN\\r\\n# aWNyb3NvZnQgQ29ycG9yYXRpb24xKDAmBgNVBAMTH01pY3Jvc29mdCBDb2RlIFNp\\r\\n# Z25pbmcgUENBIDIwMTECEzMAAAHe+X6A50co9aQAAAAAAd4wDQYJYIZIAWUDBAIB\\r\\n# BQCgga4wGQYJKoZIhvcNAQkDMQwGCisGAQQBgjcCAQQwHAYKKwYBBAGCNwIBCzEO\\r\\n# MAwGCisGAQQBgjcCARUwLwYJKoZIhvcNAQkEMSIEILRVe51SADMwMrxkRhclRTwV\\r\\n# 5EzZTQ4rcSJH+ldboByFMEIGCisGAQQBgjcCAQwxNDAyoBSAEgBNAGkAYwByAG8A\\r\\n# cwBvAGYAdKEagBhodHRwOi8vd3d3Lm1pY3Jvc29mdC5jb20wDQYJKoZIhvcNAQEB\\r\\n# BQAEggEApp6eN+EzdETk/q3huIqtNJfVdlDRTRM5yC9FGy9Jz8Zc35g3JqEz/PjE\\r\\n# ZTpyOMxK+TNUpccBuaWud5joIc825m7jlMk1dWEyF/EGPtCPdBLiMASN/jwWjUIY\\r\\n# NirShWiSUFF49GMgHz2to/TdmCLMZVtkV4TD3dg8L+i2Df2EZI/3X1c+p4xHrpmA\\r\\n# v3VGvM2DzA6jtkt2HAXO/Ra159i9IYeltK4XJZ6OHwbzXAVr1HQ8ZMKzt2X7NY6Q\\r\\n# ma8PAd2KzMBzZWkD3ZwghaOyS9AwvcMeju+0XPh2pQG/UKi45Ro8dpVJv3KbeqKt\\r\\n# awe/LTPGDwGofu6BG1zn/VPUz55hbqGCEv4wghL6BgorBgEEAYI3AwMBMYIS6jCC\\r\\n# EuYGCSqGSIb3DQEHAqCCEtcwghLTAgEDMQ8wDQYJYIZIAWUDBAIBBQAwggFZBgsq\\r\\n# hkiG9w0BCRABBKCCAUgEggFEMIIBQAIBAQYKKwYBBAGEWQoDATAxMA0GCWCGSAFl\\r\\n# AwQCAQUABCBFcsaDdApx9e/VGK64UuX/A0DbhMYohbYBR9fSRLLafwIGYXB46U3u\\r\\n# GBMyMDIxMTAyMjIzMjA0Mi4yODFaMASAAgH0oIHYpIHVMIHSMQswCQYDVQQGEwJV\\r\\n# UzETMBEGA1UECBMKV2FzaGluZ3RvbjEQMA4GA1UEBxMHUmVkbW9uZDEeMBwGA1UE\\r\\n# ChMVTWljcm9zb2Z0IENvcnBvcmF0aW9uMS0wKwYDVQQLEyRNaWNyb3NvZnQgSXJl\\r\\n# bGFuZCBPcGVyYXRpb25zIExpbWl0ZWQxJjAkBgNVBAsTHVRoYWxlcyBUU1MgRVNO\\r\\n# Ojg2REYtNEJCQy05MzM1MSUwIwYDVQQDExxNaWNyb3NvZnQgVGltZS1TdGFtcCBT\\r\\n# ZXJ2aWNloIIOTTCCBPkwggPhoAMCAQICEzMAAAE+zsp3UsX3NCsAAAAAAT4wDQYJ\\r\\n# KoZIhvcNAQELBQAwfDELMAkGA1UEBhMCVVMxEzARBgNVBAgTCldhc2hpbmd0b24x\\r\\n# EDAOBgNVBAcTB1JlZG1vbmQxHjAcBgNVBAoTFU1pY3Jvc29mdCBDb3Jwb3JhdGlv\\r\\n# bjEmMCQGA1UEAxMdTWljcm9zb2Z0IFRpbWUtU3RhbXAgUENBIDIwMTAwHhcNMjAx\\r\\n# MDE1MTcyODI1WhcNMjIwMTEyMTcyODI1WjCB0jELMAkGA1UEBhMCVVMxEzARBgNV\\r\\n# BAgTCldhc2hpbmd0b24xEDAOBgNVBAcTB1JlZG1vbmQxHjAcBgNVBAoTFU1pY3Jv\\r\\n# c29mdCBDb3Jwb3JhdGlvbjEtMCsGA1UECxMkTWljcm9zb2Z0IElyZWxhbmQgT3Bl\\r\\n# cmF0aW9ucyBMaW1pdGVkMSYwJAYDVQQLEx1UaGFsZXMgVFNTIEVTTjo4NkRGLTRC\\r\\n# QkMtOTMzNTElMCMGA1UEAxMcTWljcm9zb2Z0IFRpbWUtU3RhbXAgU2VydmljZTCC\\r\\n# ASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALxUxMg82X6cLONOIEgtJLeF\\r\\n# Usl/72scDn64vPYEHcb30Db70AEXmykd6Zah89GR2Vvm5hcchrU4fc8NtC0naTHF\\r\\n# mAxXNa8z7ib0zQJw5CskD/k6q1u4/5Q5Qi26ovLm6OBKkqZB62tGbdeY9q/yCRmW\\r\\n# 7t0GkWOqmDGccZJMOGObmwMFdxNafkzcxYPJ84CfZMBDOMb2QH/TYR4TNiv48dPd\\r\\n# sZischX6dF9LW6GPXdTsoXQl5fLKTooBN9oPMx9dmNjV03yONeNS0FPvXSjikO2B\\r\\n# RdZMKH7hhsMTFNArA4pjg1oK+lRVXDQ3drUGxrm4HXywRhAX43tD8qDjlxDtZuEC\\r\\n# AwEAAaOCARswggEXMB0GA1UdDgQWBBSTWvOd+LvQYi1r8LW2VA62hoj9ezAfBgNV\\r\\n# HSMEGDAWgBTVYzpcijGQ80N7fEYbxTNoWoVtVTBWBgNVHR8ETzBNMEugSaBHhkVo\\r\\n# dHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpL2NybC9wcm9kdWN0cy9NaWNUaW1T\\r\\n# dGFQQ0FfMjAxMC0wNy0wMS5jcmwwWgYIKwYBBQUHAQEETjBMMEoGCCsGAQUFBzAC\\r\\n# hj5odHRwOi8vd3d3Lm1pY3Jvc29mdC5jb20vcGtpL2NlcnRzL01pY1RpbVN0YVBD\\r\\n# QV8yMDEwLTA3LTAxLmNydDAMBgNVHRMBAf8EAjAAMBMGA1UdJQQMMAoGCCsGAQUF\\r\\n# BwMIMA0GCSqGSIb3DQEBCwUAA4IBAQCms/kRfVqfhpK5FY+nGOXYwnVXqSRcrnwA\\r\\n# SdaipQll4TqGAHAe8O2cc0QuGdomOG3PUFPd7GtmA8IUMBT3qnymX1kpJq3LrOPU\\r\\n# AfRBj3PRcCIHwUCtgCbYWmBMrE2sEuNH+snOsP8m6LQHJahQK/gTw7dMxmaBMbxn\\r\\n# PGaVQGab0sl28xi7irZvCvke91QuA1KeLERXJNQsfCC72HWEjWKjkcodBsIt7+B1\\r\\n# psOh7rWnxTnRY2ikBHErJ9EjS32Nuajqp7ugy/jQKO896g9HgQyEopVqG+XZZQ3D\\r\\n# jX7LvfVBLTp623ZdvdshjSMsYpaSPFxjYBnGcSjelaiwcQLipVjmMIIGcTCCBFmg\\r\\n# AwIBAgIKYQmBKgAAAAAAAjANBgkqhkiG9w0BAQsFADCBiDELMAkGA1UEBhMCVVMx\\r\\n# EzARBgNVBAgTCldhc2hpbmd0b24xEDAOBgNVBAcTB1JlZG1vbmQxHjAcBgNVBAoT\\r\\n# FU1pY3Jvc29mdCBDb3Jwb3JhdGlvbjEyMDAGA1UEAxMpTWljcm9zb2Z0IFJvb3Qg\\r\\n# Q2VydGlmaWNhdGUgQXV0aG9yaXR5IDIwMTAwHhcNMTAwNzAxMjEzNjU1WhcNMjUw\\r\\n# NzAxMjE0NjU1WjB8MQswCQYDVQQGEwJVUzETMBEGA1UECBMKV2FzaGluZ3RvbjEQ\\r\\n# MA4GA1UEBxMHUmVkbW9uZDEeMBwGA1UEChMVTWljcm9zb2Z0IENvcnBvcmF0aW9u\\r\\n# MSYwJAYDVQQDEx1NaWNyb3NvZnQgVGltZS1TdGFtcCBQQ0EgMjAxMDCCASIwDQYJ\\r\\n# KoZIhvcNAQEBBQADggEPADCCAQoCggEBAKkdDbx3EYo6IOz8E5f1+n9plGt0VBDV\\r\\n# pQoAgoX77XxoSyxfxcPlYcJ2tz5mK1vwFVMnBDEfQRsalR3OCROOfGEwWbEwRA/x\\r\\n# YIiEVEMM1024OAizQt2TrNZzMFcmgqNFDdDq9UeBzb8kYDJYYEbyWEeGMoQedGFn\\r\\n# kV+BVLHPk0ySwcSmXdFhE24oxhr5hoC732H8RsEnHSRnEnIaIYqvS2SJUGKxXf13\\r\\n# Hz3wV3WsvYpCTUBR0Q+cBj5nf/VmwAOWRH7v0Ev9buWayrGo8noqCjHw2k4GkbaI\\r\\n# CDXoeByw6ZnNPOcvRLqn9NxkvaQBwSAJk3jN/LzAyURdXhacAQVPIk0CAwEAAaOC\\r\\n# AeYwggHiMBAGCSsGAQQBgjcVAQQDAgEAMB0GA1UdDgQWBBTVYzpcijGQ80N7fEYb\\r\\n# xTNoWoVtVTAZBgkrBgEEAYI3FAIEDB4KAFMAdQBiAEMAQTALBgNVHQ8EBAMCAYYw\\r\\n# DwYDVR0TAQH/BAUwAwEB/zAfBgNVHSMEGDAWgBTV9lbLj+iiXGJo0T2UkFvXzpoY\\r\\n# xDBWBgNVHR8ETzBNMEugSaBHhkVodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtp\\r\\n# L2NybC9wcm9kdWN0cy9NaWNSb29DZXJBdXRfMjAxMC0wNi0yMy5jcmwwWgYIKwYB\\r\\n# BQUHAQEETjBMMEoGCCsGAQUFBzAChj5odHRwOi8vd3d3Lm1pY3Jvc29mdC5jb20v\\r\\n# cGtpL2NlcnRzL01pY1Jvb0NlckF1dF8yMDEwLTA2LTIzLmNydDCBoAYDVR0gAQH/\\r\\n# BIGVMIGSMIGPBgkrBgEEAYI3LgMwgYEwPQYIKwYBBQUHAgEWMWh0dHA6Ly93d3cu\\r\\n# bWljcm9zb2Z0LmNvbS9QS0kvZG9jcy9DUFMvZGVmYXVsdC5odG0wQAYIKwYBBQUH\\r\\n# AgIwNB4yIB0ATABlAGcAYQBsAF8AUABvAGwAaQBjAHkAXwBTAHQAYQB0AGUAbQBl\\r\\n# AG4AdAAuIB0wDQYJKoZIhvcNAQELBQADggIBAAfmiFEN4sbgmD+BcQM9naOhIW+z\\r\\n# 66bM9TG+zwXiqf76V20ZMLPCxWbJat/15/B4vceoniXj+bzta1RXCCtRgkQS+7lT\\r\\n# jMz0YBKKdsxAQEGb3FwX/1z5Xhc1mCRWS3TvQhDIr79/xn/yN31aPxzymXlKkVIA\\r\\n# rzgPF/UveYFl2am1a+THzvbKegBvSzBEJCI8z+0DpZaPWSm8tv0E4XCfMkon/VWv\\r\\n# L/625Y4zu2JfmttXQOnxzplmkIz/amJ/3cVKC5Em4jnsGUpxY517IW3DnKOiPPp/\\r\\n# fZZqkHimbdLhnPkd/DjYlPTGpQqWhqS9nhquBEKDuLWAmyI4ILUl5WTs9/S/fmNZ\\r\\n# JQ96LjlXdqJxqgaKD4kWumGnEcua2A5HmoDF0M2n0O99g/DhO3EJ3110mCIIYdqw\\r\\n# UB5vvfHhAN/nMQekkzr3ZUd46PioSKv33nJ+YWtvd6mBy6cJrDm77MbL2IK0cs0d\\r\\n# 9LiFAR6A+xuJKlQ5slvayA1VmXqHczsI5pgt6o3gMy4SKfXAL1QnIffIrE7aKLix\\r\\n# qduWsqdCosnPGUFN4Ib5KpqjEWYw07t0MkvfY3v1mYovG8chr1m1rtxEPJdQcdeh\\r\\n# 0sVV42neV8HR3jDA/czmTfsNv11P6Z0eGTgvvM9YBS7vDaBQNdrvCScc1bN+NR4I\\r\\n# uto229Nfj950iEkSoYIC1zCCAkACAQEwggEAoYHYpIHVMIHSMQswCQYDVQQGEwJV\\r\\n# UzETMBEGA1UECBMKV2FzaGluZ3RvbjEQMA4GA1UEBxMHUmVkbW9uZDEeMBwGA1UE\\r\\n# ChMVTWljcm9zb2Z0IENvcnBvcmF0aW9uMS0wKwYDVQQLEyRNaWNyb3NvZnQgSXJl\\r\\n# bGFuZCBPcGVyYXRpb25zIExpbWl0ZWQxJjAkBgNVBAsTHVRoYWxlcyBUU1MgRVNO\\r\\n# Ojg2REYtNEJCQy05MzM1MSUwIwYDVQQDExxNaWNyb3NvZnQgVGltZS1TdGFtcCBT\\r\\n# ZXJ2aWNloiMKAQEwBwYFKw4DAhoDFQCgTBXo9MYwk4wpNbE3Uymvk8yQ1KCBgzCB\\r\\n# gKR+MHwxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpXYXNoaW5ndG9uMRAwDgYDVQQH\\r\\n# EwdSZWRtb25kMR4wHAYDVQQKExVNaWNyb3NvZnQgQ29ycG9yYXRpb24xJjAkBgNV\\r\\n# BAMTHU1pY3Jvc29mdCBUaW1lLVN0YW1wIFBDQSAyMDEwMA0GCSqGSIb3DQEBBQUA\\r\\n# AgUA5R2aQTAiGA8yMDIxMTAyMzA0MTQ1N1oYDzIwMjExMDI0MDQxNDU3WjB3MD0G\\r\\n# CisGAQQBhFkKBAExLzAtMAoCBQDlHZpBAgEAMAoCAQACAgGTAgH/MAcCAQACAhEv\\r\\n# MAoCBQDlHuvBAgEAMDYGCisGAQQBhFkKBAIxKDAmMAwGCisGAQQBhFkKAwKgCjAI\\r\\n# AgEAAgMHoSChCjAIAgEAAgMBhqAwDQYJKoZIhvcNAQEFBQADgYEArT8r4e8qh6kl\\r\\n# c745U05IVni7m55gqXhBEap/HcyANlpguaSd+Ck6mB+MX9nBzmoyLnCp3NdPxC6i\\r\\n# TCBA0blkpiYL85Ds8K2g6kRemvDw1BQGldHKqxj5/2XIeeQrso3dvR+erXXOKh/o\\r\\n# TYlW0Jvxny4wdH+If7NYb+hRMRJx/pExggMNMIIDCQIBATCBkzB8MQswCQYDVQQG\\r\\n# EwJVUzETMBEGA1UECBMKV2FzaGluZ3RvbjEQMA4GA1UEBxMHUmVkbW9uZDEeMBwG\\r\\n# A1UEChMVTWljcm9zb2Z0IENvcnBvcmF0aW9uMSYwJAYDVQQDEx1NaWNyb3NvZnQg\\r\\n# VGltZS1TdGFtcCBQQ0EgMjAxMAITMwAAAT7OyndSxfc0KwAAAAABPjANBglghkgB\\r\\n# ZQMEAgEFAKCCAUowGgYJKoZIhvcNAQkDMQ0GCyqGSIb3DQEJEAEEMC8GCSqGSIb3\\r\\n# DQEJBDEiBCC5hhW4oqlJw1KDJ4ExsjSwwtfRKhkZu4298AotsVwDXTCB+gYLKoZI\\r\\n# hvcNAQkQAi8xgeowgecwgeQwgb0EIIvrzo2qjU7yjmRrrePR166rcFI9mQp1Trqw\\r\\n# cH4EMZsTMIGYMIGApH4wfDELMAkGA1UEBhMCVVMxEzARBgNVBAgTCldhc2hpbmd0\\r\\n# b24xEDAOBgNVBAcTB1JlZG1vbmQxHjAcBgNVBAoTFU1pY3Jvc29mdCBDb3Jwb3Jh\\r\\n# dGlvbjEmMCQGA1UEAxMdTWljcm9zb2Z0IFRpbWUtU3RhbXAgUENBIDIwMTACEzMA\\r\\n# AAE+zsp3UsX3NCsAAAAAAT4wIgQg2TjHppuiQ/clyIM8m2xHlJ28nHb+GG9xY5Qq\\r\\n# fldziq0wDQYJKoZIhvcNAQELBQAEggEAPyXn/kBL1ui+Dk01tI4M6I/0/RhYK6PX\\r\\n# auWhZoNh6KFjYIpcBtlRMBAwkuc+39fQ6Va+UvUO4VVwuLq/OSDeqjC1K0VDMeJU\\r\\n# f0UVnf2jQCLcdxtRjOsAGWO7lu+19xPZaZ9Sf+5CG+73XQ66l3rLTH7sqne0vVni\\r\\n# 7q1AZF5eW70KSH+2eMvi6xUkRY5ldp+fEwyhRYY6KNKJEuLBoRjCnGOI6ufAxGL5\\r\\n# bNLFZz5tq0qvv/AeZBtgEFUl/QRnDFD+EFVm5kfBMw3O+yFzZpdv6+IvGH9BVGR5\\r\\n# ZfqYyA9YcL3X14eKG/Ki5FuJ1d0LfOBb+yV77Hc/gaYAuz+Tdic4bg==\\r\\n# SIG # End signature block\\r\\n\"\r\n  ],\r\n  \"parameters\": [\r\n    {\r\n      \"name\": \"arg1\",\r\n      \"type\": \"string\",\r\n      \"required\": false\r\n    },\r\n    {\r\n      \"name\": \"arg2\",\r\n      \"type\": \"string\",\r\n      \"required\": false\r\n    }\r\n  ],\r\n  \"$schema\": \"http://schema.management.azure.com/schemas/2016-11-17/runcommands.json\",\r\n  \"id\": \"RunPowerShellScript\",\r\n  \"osType\": \"Windows\",\r\n  \"label\": \"Executes a PowerShell script\",\r\n  \"description\": \"Custom multiline PowerShell script should be defined in script property. Optional parameters can be set in parameters property.\"\r\n}",
+      "isContentBase64": false
+    }
+  }
+}

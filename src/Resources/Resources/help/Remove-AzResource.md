@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: A262DFD1-8B90-462C-A4E2-ABA0F51173FA
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-azresource
+online version: https://docs.microsoft.com/powershell/module/az.resources/remove-azresource
 schema: 2.0.0
 ---
 

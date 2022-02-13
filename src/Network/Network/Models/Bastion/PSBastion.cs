@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     using System;
     using System.Collections.Generic;
+    using Microsoft.Azure.Commands.Network.Models.Bastion;
     using Microsoft.WindowsAzure.Commands.Common.Attributes;
     using Newtonsoft.Json;
     using System.Linq;
@@ -31,10 +32,22 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string ProvisioningState { get; set; }
 
+        [Ps1Xml(Label = "Sku Name", Target = ViewControl.List, ScriptBlock = "$_.Sku.Name")]
+        public PSBastionSku Sku { get; set; }
+
+        [Ps1Xml(Label = "Scale Units", Target = ViewControl.List)]
+        public int? ScaleUnit { get; set; }
+
         [JsonIgnore]
         public string IpConfigurationsText
         {
             get { return JsonConvert.SerializeObject(IpConfigurations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string SkuText
+        {
+            get { return JsonConvert.SerializeObject(Sku, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         public void Allocate(PSVirtualNetwork virtualNetwork, PSPublicIpAddress publicIpAddress)

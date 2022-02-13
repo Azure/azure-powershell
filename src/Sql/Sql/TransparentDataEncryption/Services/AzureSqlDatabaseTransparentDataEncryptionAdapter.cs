@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.Sql.Services;
 using Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model;
 using Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Services;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
+using Microsoft.Azure.Management.Sql.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -73,13 +74,18 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
         /// <returns>The updated server model</returns>
         public AzureSqlDatabaseTransparentDataEncryptionModel UpsertTransparentDataEncryption(AzureSqlDatabaseTransparentDataEncryptionModel model)
         {
-            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.DatabaseName, new TransparentDataEncryptionCreateOrUpdateParameters()
+            TransparentDataEncryptionStatus status = TransparentDataEncryptionStatus.Enabled;
+
+            if (model.State.ToString().Equals(TransparentDataEncryptionStatus.Disabled.ToString()))
             {
-                Properties = new TransparentDataEncryptionCreateOrUpdateProperties()
-                {
-                    State = model.State.ToString(),
-                }
-            });
+                status = TransparentDataEncryptionStatus.Disabled;
+            }
+
+            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.DatabaseName, new Management.Sql.Models.TransparentDataEncryption()
+            {
+                Status = status
+
+            }); ;
 
             return CreateTransparentDataEncryptionModelFromResponse(model.ResourceGroupName, model.ServerName, model.DatabaseName, resp);
         }
@@ -103,13 +109,11 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
         /// <returns>The created or updated encryption protector model</returns>
         public AzureSqlServerTransparentDataEncryptionProtectorModel CreateOrUpdateEncryptionProtector(AzureSqlServerTransparentDataEncryptionProtectorModel model)
         {
-            var resp = Communicator.CreateOrUpdateEncryptionProtector(model.ResourceGroupName, model.ServerName, new EncryptionProtectorCreateOrUpdateParameters()
+            var resp = Communicator.CreateOrUpdateEncryptionProtector(model.ResourceGroupName, model.ServerName, new Management.Sql.Models.EncryptionProtector()
             {
-                Properties = new EncryptionProtectorCreateOrUpdateProperties()
-                {
-                    ServerKeyType = model.Type.ToString(),
-                    ServerKeyName = model.ServerKeyVaultKeyName
-                }
+                ServerKeyType = model.Type.ToString(),
+                ServerKeyName = model.ServerKeyVaultKeyName,
+                AutoRotationEnabled = model.AutoRotationEnabled                
             });
             return CreateEncryptionProtectorModelFromResponse(model.ResourceGroupName, model.ServerName, resp);
         }
@@ -121,7 +125,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
         /// <param name="serverName">The name of the server</param>
         /// <param name="resp">The management client server response to convert</param>
         /// <returns>The converted server model</returns>
-        private static AzureSqlDatabaseTransparentDataEncryptionModel CreateTransparentDataEncryptionModelFromResponse(string resourceGroup, string serverName, string databaseName, Management.Sql.LegacySdk.Models.TransparentDataEncryption resp)
+        private static AzureSqlDatabaseTransparentDataEncryptionModel CreateTransparentDataEncryptionModelFromResponse(string resourceGroup, string serverName, string databaseName, Management.Sql.Models.TransparentDataEncryption resp)
         {
             AzureSqlDatabaseTransparentDataEncryptionModel TransparentDataEncryption = new AzureSqlDatabaseTransparentDataEncryptionModel();
 
@@ -130,7 +134,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
             TransparentDataEncryption.DatabaseName = databaseName;
 
             TransparentDataEncryptionStateType State = TransparentDataEncryptionStateType.Disabled;
-            Enum.TryParse<TransparentDataEncryptionStateType>(resp.Properties.State, true, out State);
+            Enum.TryParse<TransparentDataEncryptionStateType>(resp.Status.ToString(), true, out State);
             TransparentDataEncryption.State = State;
 
             return TransparentDataEncryption;
@@ -143,7 +147,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
         /// <param name="serverName">The name of the server</param>
         /// <param name="resp">The management client server response to convert</param>
         /// <returns>The converted server model</returns>
-        private static AzureSqlDatabaseTransparentDataEncryptionActivityModel CreateTransparentDataEncryptionActivityModelFromResponse(string resourceGroup, string serverName, string databaseName, Management.Sql.LegacySdk.Models.TransparentDataEncryptionActivity resp)
+        private static AzureSqlDatabaseTransparentDataEncryptionActivityModel CreateTransparentDataEncryptionActivityModelFromResponse(string resourceGroup, string serverName, string databaseName, Management.Sql.Models.TransparentDataEncryptionActivity resp)
         {
             AzureSqlDatabaseTransparentDataEncryptionActivityModel TransparentDataEncryptionActivity = new AzureSqlDatabaseTransparentDataEncryptionActivityModel();
 
@@ -152,9 +156,9 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
             TransparentDataEncryptionActivity.DatabaseName = databaseName;
 
             TransparentDataEncryptionActivityStatusType status = TransparentDataEncryptionActivityStatusType.Decrypting;
-            Enum.TryParse<TransparentDataEncryptionActivityStatusType>(resp.Properties.Status, true, out status);
+            Enum.TryParse<TransparentDataEncryptionActivityStatusType>(resp.Status, true, out status);
             TransparentDataEncryptionActivity.Status = status;
-            TransparentDataEncryptionActivity.PercentComplete = resp.Properties.PercentComplete;
+            TransparentDataEncryptionActivity.PercentComplete = (float)resp.PercentComplete;
 
             return TransparentDataEncryptionActivity;
         }
@@ -185,19 +189,20 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
         /// <param name="serverName">The name of the server</param>
         /// <param name="resp">The management client server response to convert</param>
         /// <returns>The converted server model</returns>
-        private static AzureSqlServerTransparentDataEncryptionProtectorModel CreateEncryptionProtectorModelFromResponse(string resourceGroup, string serverName, EncryptionProtector resp)
+        private static AzureSqlServerTransparentDataEncryptionProtectorModel CreateEncryptionProtectorModelFromResponse(string resourceGroup, string serverName, Management.Sql.Models.EncryptionProtector resp)
         {
             AzureSqlServerTransparentDataEncryptionProtectorModel EncryptionProtector = new AzureSqlServerTransparentDataEncryptionProtectorModel();
             EncryptionProtector.ResourceGroupName = resourceGroup;
             EncryptionProtector.ServerName = serverName;
-            EncryptionProtector.ServerKeyVaultKeyName = resp.Properties.ServerKeyName;
+            EncryptionProtector.ServerKeyVaultKeyName = resp.ServerKeyName;
             Model.EncryptionProtectorType type = Model.EncryptionProtectorType.ServiceManaged;
-            Enum.TryParse<Model.EncryptionProtectorType>(resp.Properties.ServerKeyType, true, out type);
+            Enum.TryParse<Model.EncryptionProtectorType>(resp.ServerKeyType, true, out type);
             EncryptionProtector.Type = type;
+            EncryptionProtector.AutoRotationEnabled = resp.AutoRotationEnabled;
 
             if (type == Model.EncryptionProtectorType.AzureKeyVault)
             {
-                EncryptionProtector.KeyId = resp.Properties.Uri;
+                EncryptionProtector.KeyId = resp.Uri;
             }
 
             return EncryptionProtector;

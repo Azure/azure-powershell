@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/update-azgallery
+online version: https://docs.microsoft.com/powershell/module/az.compute/update-azgallery
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ Update a gallery.
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -Description $galleryDescription
+Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -Description $galleryDescription
 ```
 
 Update a gallery.

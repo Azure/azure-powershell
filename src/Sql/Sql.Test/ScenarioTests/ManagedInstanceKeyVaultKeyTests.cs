@@ -39,35 +39,35 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             Helper.SetupSomeOfManagementClients(sqlClient, newResourcesClient, networkClient, graphClient, keyVaultClient);
         }
 
-        [Fact]
+        [Fact(Skip = "Requires manual set up.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedInstanceKeyVaultKeyCI()
         {
             RunPowerShellTest("Test-ManagedInstanceKeyVaultKeyCI");
         }
 
-        [Fact]
+        [Fact(Skip = "Requires manual set up.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedInstanceKeyVaultKey()
         {
             RunPowerShellTest("Test-ManagedInstanceKeyVaultKey");
         }
 
-        [Fact]
+        [Fact(Skip = "Requires manual set up.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedInstanceKeyVaultKeyInputObject()
         {
             RunPowerShellTest("Test-ManagedInstanceKeyVaultKeyInputObject");
         }
 
-        [Fact]
+        [Fact(Skip = "Requires manual set up.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedInstanceKeyVaultKeyResourceId()
         {
             RunPowerShellTest("Test-ManagedInstanceKeyVaultKeyResourceId");
         }
 
-        [Fact]
+        [Fact(Skip = "Requires manual set up.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedInstanceKeyVaultKeyPiping()
         {

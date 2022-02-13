@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 488229AF-FD6D-4E1B-B3DA-E57CA781D91E
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azroleassignment
+online version: https://docs.microsoft.com/powershell/module/az.resources/get-azroleassignment
 schema: 2.0.0
 ---
 
@@ -12,6 +12,14 @@ schema: 2.0.0
 Lists Azure RBAC role assignments at the specified scope.
 By default it lists all role assignments in the selected Azure subscription.
 Use respective parameters to list assignments to a specific user, or to list assignments on a specific resource group or resource.
+
+The cmdlet may call below Microsoft Graph API according to input parameters:
+
+- GET /users/{id}
+- GET /servicePrincipals/{id}
+- GET /groups/{id}
+- GET /directoryObjects/{id}
+- POST /directoryObjects/getByIds
 
 ## SYNTAX
 

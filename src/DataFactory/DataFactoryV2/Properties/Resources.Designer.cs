@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -57,6 +57,24 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SubnetId must be set for express Azure-SSIS integration runtime..
+        /// </summary>
+        internal static string AzureExpressSSISIRSubnetIdMustBePresent {
+            get {
+                return ResourceManager.GetString("AzureExpressSSISIRSubnetIdMustBePresent", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to When subnetId as VNet property of Azure - SSIS integration runtime is provided, the other subnet and vnetId properties must be empty..
+        /// </summary>
+        internal static string AzureSSISIRSubnetAndVnetIdMustBeEmpty {
+            get {
+                return ResourceManager.GetString("AzureSSISIRSubnetAndVnetIdMustBeEmpty", resourceCulture);
             }
         }
         
@@ -99,7 +117,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to A data factory with the name {0} in the resource group {1} exists. 
-        ///Continuing execution may overwrite the exisiting one. 
+        ///Continuing execution may overwrite the existing one. 
         ///Are you sure you want to continue?.
         /// </summary>
         internal static string DataFactoryExists {
@@ -173,7 +191,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to A data flow with the name {0} in the data factory {1} already exists. 
-        ///Continuing execution will overwrite the exisiting one. 
+        ///Continuing execution will overwrite the existing one. 
         ///Are you sure you want to continue?.
         /// </summary>
         internal static string DataFlowExists {
@@ -220,7 +238,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to A dataset with the name {0} in the data factory {1} already exists. 
-        ///Continuing execution will overwrite the exisiting one. 
+        ///Continuing execution will overwrite the existing one. 
         ///Are you sure you want to continue?.
         /// </summary>
         internal static string DatasetExists {
@@ -362,7 +380,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to A hub with the name {0} in the data factory {1} exists. 
-        ///Continuing execution may overwrite the exisiting one. 
+        ///Continuing execution may overwrite the existing one. 
         ///Are you sure you want to continue?.
         /// </summary>
         internal static string HubExists {
@@ -527,6 +545,15 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please provide a subnet resource ID to bring static public IP addresses for your Azure-SSIS Integration Runtime..
+        /// </summary>
+        internal static string IntegrationRuntimeSubnetNotProvided {
+            get {
+                return ResourceManager.GetString("IntegrationRuntimeSubnetNotProvided", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Syncing node credentials in integration runtime &apos;{0}&apos;..
         /// </summary>
         internal static string IntegrationRuntimeSyncingNodeCredential {
@@ -581,7 +608,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to VNetId and Subnet should be provided when creating new integration runtime with public IP addresses..
+        ///   Looks up a localized string similar to Please provide a VNet resource ID and subnet name to bring static public IP addresses for your Azure-SSIS Integration Runtime..
         /// </summary>
         internal static string IntegrationRuntimeVNetNotProvided {
             get {
@@ -644,7 +671,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid number of public IP addresses are provided: &apos;{0}&apos;. Please provide 2 public IP addresses for your SSIS Integration Runtime..
+        ///   Looks up a localized string similar to Please provide two static public IP addresses for your Azure-SSIS Integration Runtime..
         /// </summary>
         internal static string InvalidPublicIPCount {
             get {
@@ -681,7 +708,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to A linked service with the name {0} in the data factory {1} exists. 
-        ///Continuing execution may overwrite the exisiting one. 
+        ///Continuing execution may overwrite the existing one. 
         ///Are you sure you want to continue?.
         /// </summary>
         internal static string LinkedServiceExists {
@@ -773,7 +800,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to A pipeline with the name {0} in the data factory {1} exists. 
-        ///Continuing execution may overwrite the exisiting one. 
+        ///Continuing execution may overwrite the existing one. 
         ///Are you sure you want to continue?.
         /// </summary>
         internal static string PipelineExists {
@@ -838,7 +865,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to A trigger with the name {0} in the data factory {1} exists. 
-        ///Continuing execution may overwrite the exisiting one. 
+        ///Continuing execution may overwrite the existing one. 
         ///Are you sure you want to continue?.
         /// </summary>
         internal static string TriggerExists {

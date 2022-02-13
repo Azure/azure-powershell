@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 14814BF3-51AF-4E51-A8A6-661825BD88D1
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/Get-AzSqlDatabaseSensitivityRecommendation
+online version: https://docs.microsoft.com/powershell/module/az.sql/Get-AzSqlDatabaseSensitivityRecommendation
 schema: 2.0.0
 ---
 
@@ -193,4 +193,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Learn more about Azure SQL Database data discovery and classification](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-data-discovery-and-classification)
+[Learn more about Azure SQL Database data discovery and classification](https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-classification)

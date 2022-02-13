@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Cmdlets
 
     /// <summary>The operation to get the export for the defined scope by export name.</summary>
     /// <remarks>
-    /// [OpenAPI] Exports_Get=>GET:"/{scope}/providers/Microsoft.CostManagement/exports/{exportName}"
+    /// [OpenAPI] Get=>GET:"/{scope}/providers/Microsoft.CostManagement/exports/{exportName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzCostManagementExport_Get")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExport))]

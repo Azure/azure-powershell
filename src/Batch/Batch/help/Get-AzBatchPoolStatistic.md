@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: 8188C617-4895-4B43-8D3B-FA6FC5B868DD
-online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/get-azbatchpoolstatistic
+online version: https://docs.microsoft.com/powershell/module/az.batch/get-azbatchpoolstatistic
 schema: 2.0.0
 ---
 
@@ -25,10 +25,13 @@ Statistics are aggregated across all pools that have ever existed in the account
 ## EXAMPLES
 
 ### Example 1: Get resource statistics of all pools in an account
+```powershell
+$Context = Get-AzBatchAccountKey -AccountName "ContosoBatchAccount"
+$PoolStatistics = Get-AzBatchPoolStatistic -BatchContext $Context
+$PoolStatistics.ResourceStatistics
 ```
-PS C:\>$Context = Get-AzBatchAccountKey -AccountName "ContosoBatchAccount"
-PS C:\> $PoolStatistics = Get-AzBatchPoolStatistic -BatchContext $Context
-PS C:\> $PoolStatistics.ResourceStatistics
+
+```output
 AverageCpuPercentage : 0.351232518750755
 AverageDiskGiB       : 55.2569014701165
 AverageMemoryGiB     : 2.87273772318252

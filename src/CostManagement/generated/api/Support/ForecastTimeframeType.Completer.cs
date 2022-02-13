@@ -6,7 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
-    /// <summary>Argument completer implementation for ForecastTimeframeType.</summary>
+    /// <summary>
+    /// The time frame for pulling data for the forecast. If custom, then a specific time period must be provided.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ForecastTimeframeTypeTypeConverter))]
     public partial struct ForecastTimeframeType :
         System.Management.Automation.IArgumentCompleter

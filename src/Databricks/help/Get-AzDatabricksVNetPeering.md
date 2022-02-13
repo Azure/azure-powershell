@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Databricks
-online version: https://docs.microsoft.com/en-us/powershell/module/az.databricks/get-azdatabricksvnetpeering
+online version: https://docs.microsoft.com/powershell/module/az.databricks/get-azdatabricksvnetpeering
 schema: 2.0.0
 ---
 

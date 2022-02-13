@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/invoke-azvmreimage
+online version: https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmreimage
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ The **Invoke-AzVMReimage** cmdlet reimages an Azure virtual machine.
 
 ### Example 1
 ```powershell
-PS C:\> Invoke-AzVMReimage -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
+Invoke-AzVMReimage -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
 ```
 
 This command reimages the virtual machine named VirtualMachine07 in ResourceGroup11.

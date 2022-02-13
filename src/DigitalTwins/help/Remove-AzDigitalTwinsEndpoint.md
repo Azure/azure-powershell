@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DigitalTwins
-online version: https://docs.microsoft.com/en-us/powershell/module/az.digitaltwins/remove-azdigitaltwinsendpoint
+online version: https://docs.microsoft.com/powershell/module/az.digitaltwins/remove-azdigitaltwinsendpoint
 schema: 2.0.0
 ---
 

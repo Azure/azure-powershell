@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Integrated".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Integrated", "Integrated", global::System.Management.Automation.CompletionResultType.ParameterValue, "Integrated");
+                yield return new global::System.Management.Automation.CompletionResult("'Integrated'", "Integrated", global::System.Management.Automation.CompletionResultType.ParameterValue, "Integrated");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Classic".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Classic", "Classic", global::System.Management.Automation.CompletionResultType.ParameterValue, "Classic");
+                yield return new global::System.Management.Automation.CompletionResult("'Classic'", "Classic", global::System.Management.Automation.CompletionResultType.ParameterValue, "Classic");
             }
         }
     }

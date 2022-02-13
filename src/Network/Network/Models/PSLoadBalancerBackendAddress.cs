@@ -29,9 +29,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSResourceId VirtualNetwork { get; set; }
 
         [JsonProperty(Order = 3)]
-        public string IpAddress { get; set; }
+        public PSResourceId Subnet { get; set; }
 
         [JsonProperty(Order = 4)]
+        public string IpAddress { get; set; }
+
+        [JsonProperty(Order = 5)]
         public PSResourceId LoadBalancerFrontendIPConfiguration { get; set; }
 
         [JsonIgnore]
@@ -52,6 +55,15 @@ namespace Microsoft.Azure.Commands.Network.Models
             get
             {
                 return JsonConvert.SerializeObject(VirtualNetwork, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
+            }
+        }
+
+        [JsonIgnore]
+        public string SubnetIdText
+        {
+            get
+            {
+                return JsonConvert.SerializeObject(Subnet, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
             }
         }
     }

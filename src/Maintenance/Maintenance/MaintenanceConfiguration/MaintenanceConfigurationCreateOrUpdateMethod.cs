@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Maintenance.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Maintenance;
 using Microsoft.Azure.Management.Maintenance.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -85,6 +86,74 @@ namespace Microsoft.Azure.Commands.Maintenance
                     {
                         configuration.Visibility = this.Visibility;
                     }
+
+                    if (this.InstallPatchRebootSetting != null)
+                    {
+                        configuration.InstallPatches = configuration.InstallPatches ?? new InputPatchConfiguration();
+                        configuration.InstallPatches.RebootSetting = this.InstallPatchRebootSetting;
+                    }
+
+                    if (this.WindowParameterClassificationToInclude != null)
+                    {
+                        configuration.InstallPatches = configuration.InstallPatches ?? new InputPatchConfiguration();
+                        configuration.InstallPatches.WindowsParameters = configuration.InstallPatches.WindowsParameters ?? new InputWindowsParameters();
+                        configuration.InstallPatches.WindowsParameters.ClassificationsToInclude = this.WindowParameterClassificationToInclude.ToList();
+                    }
+
+                    if (this.WindowParameterExcludeKbRequiringReboot.HasValue)
+                    {
+                        configuration.InstallPatches = configuration.InstallPatches ?? new InputPatchConfiguration();
+                        configuration.InstallPatches.WindowsParameters = configuration.InstallPatches.WindowsParameters ?? new InputWindowsParameters();
+                        configuration.InstallPatches.WindowsParameters.ExcludeKbsRequiringReboot = this.WindowParameterExcludeKbRequiringReboot;
+                    }
+
+                    if (this.WindowParameterKbNumberToExclude != null)
+                    {
+                        configuration.InstallPatches = configuration.InstallPatches ?? new InputPatchConfiguration();
+                        configuration.InstallPatches.WindowsParameters = configuration.InstallPatches.WindowsParameters ?? new InputWindowsParameters();
+                        configuration.InstallPatches.WindowsParameters.KbNumbersToExclude = this.WindowParameterKbNumberToExclude.ToList();
+                    }
+
+                    if (this.WindowParameterKbNumberToInclude != null)
+                    {
+                        configuration.InstallPatches = configuration.InstallPatches ?? new InputPatchConfiguration();
+                        configuration.InstallPatches.WindowsParameters = configuration.InstallPatches.WindowsParameters ?? new InputWindowsParameters();
+                        configuration.InstallPatches.WindowsParameters.KbNumbersToInclude = this.WindowParameterKbNumberToInclude.ToList();
+                    }
+
+                    if (this.LinuxParameterClassificationToInclude!= null)
+                    {
+                        configuration.InstallPatches = configuration.InstallPatches ?? new InputPatchConfiguration();
+                        configuration.InstallPatches.LinuxParameters = configuration.InstallPatches.LinuxParameters ?? new InputLinuxParameters();
+                        configuration.InstallPatches.LinuxParameters.ClassificationsToInclude = this.LinuxParameterClassificationToInclude.ToList();
+                    }
+
+                    if (this.LinuxParameterPackageNameMaskToExclude != null)
+                    {
+                        configuration.InstallPatches = configuration.InstallPatches ?? new InputPatchConfiguration();
+                        configuration.InstallPatches.LinuxParameters = configuration.InstallPatches.LinuxParameters ?? new InputLinuxParameters();
+                        configuration.InstallPatches.LinuxParameters.PackageNameMasksToExclude= this.LinuxParameterPackageNameMaskToExclude.ToList();
+                    }
+
+                    if (this.LinuxParameterPackageNameMaskToInclude != null)
+                    {
+                        configuration.InstallPatches = configuration.InstallPatches ?? new InputPatchConfiguration();
+                        configuration.InstallPatches.LinuxParameters = configuration.InstallPatches.LinuxParameters ?? new InputLinuxParameters();
+                        configuration.InstallPatches.LinuxParameters.PackageNameMasksToInclude= this.LinuxParameterPackageNameMaskToInclude.ToList();
+                    }
+
+                    if (this.PreTask != null)
+                    {
+                        configuration.InstallPatches = configuration.InstallPatches ?? new InputPatchConfiguration();
+                        configuration.InstallPatches.PreTasks = JsonConvert.DeserializeObject<List<TaskProperties>>(this.PreTask);
+                    }
+
+                    if (this.PostTask != null)
+                    {
+                        configuration.InstallPatches = configuration.InstallPatches ?? new InputPatchConfiguration();
+                        configuration.InstallPatches.PreTasks = JsonConvert.DeserializeObject<List<TaskProperties>>(this.PostTask);
+                    }
+
                     var result = MaintenanceConfigurationsClient.CreateOrUpdate(resourceGroupName, resourceName, configuration);
                     var psObject = new PSMaintenanceConfiguration();
                     MaintenanceAutomationAutoMapperProfile.Mapper.Map<MaintenanceConfiguration, PSMaintenanceConfiguration>(result, psObject);
@@ -163,6 +232,55 @@ namespace Microsoft.Azure.Commands.Maintenance
             HelpMessage = "The Recurrence interval.")]
         public string RecurEvery { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "List of packages to include during vm patch operation")]
+        public HashSet<string> LinuxParameterPackageNameMaskToInclude { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "List of packages to exclude during vm patch operation")]
+        public HashSet<string> LinuxParameterPackageNameMaskToExclude { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "List of linux patch classifications")]
+        public HashSet<string> LinuxParameterClassificationToInclude { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "List of KBs to include during vm patch operation")]
+        public HashSet<string> WindowParameterKbNumberToInclude { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "List of KBs to exclude during vm patch operationn")]
+        public HashSet<string> WindowParameterKbNumberToExclude { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "List of windows patch classification")]
+        public HashSet<string> WindowParameterClassificationToInclude { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Exclude KBs which require reboot")]
+        public bool? WindowParameterExcludeKbRequiringReboot { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "List of tasks executed before schedule. e.g. [{'source' :'runbook', 'taskScope': 'Global', 'parameters': { 'arg1': 'value1'}}]")]
+        public string PreTask { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "List of tasks executed after schedule. [{'source' :'runbook', 'taskScope': 'Resource', 'parameters': { 'arg1': 'value1'}}]")]
+        public string PostTask { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Install Patch Reboot Option. Allowed values Never, IfRequired, Always")]
+        public string InstallPatchRebootSetting { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }

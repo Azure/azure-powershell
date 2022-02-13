@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support
 {
 
-    /// <summary>Argument completer implementation for RunState.</summary>
+    /// <summary>State of the last run</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.RunStateTypeConverter))]
     public partial struct RunState :
         System.Management.Automation.IArgumentCompleter

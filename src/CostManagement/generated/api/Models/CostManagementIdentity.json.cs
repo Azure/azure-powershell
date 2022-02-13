@@ -62,13 +62,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models
             {
                 return;
             }
-            {_alertId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("alertId"), out var __jsonAlertId) ? (string)__jsonAlertId : (string)AlertId;}
-            {_exportName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("exportName"), out var __jsonExportName) ? (string)__jsonExportName : (string)ExportName;}
-            {_externalCloudProviderId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("externalCloudProviderId"), out var __jsonExternalCloudProviderId) ? (string)__jsonExternalCloudProviderId : (string)ExternalCloudProviderId;}
-            {_externalCloudProviderType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("externalCloudProviderType"), out var __jsonExternalCloudProviderType) ? (string)__jsonExternalCloudProviderType : (string)ExternalCloudProviderType;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
             {_scope = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("scope"), out var __jsonScope) ? (string)__jsonScope : (string)Scope;}
             {_viewName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("viewName"), out var __jsonViewName) ? (string)__jsonViewName : (string)ViewName;}
+            {_alertId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("alertId"), out var __jsonAlertId) ? (string)__jsonAlertId : (string)AlertId;}
+            {_externalCloudProviderType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("externalCloudProviderType"), out var __jsonExternalCloudProviderType) ? (string)__jsonExternalCloudProviderType : (string)ExternalCloudProviderType;}
+            {_externalCloudProviderId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("externalCloudProviderId"), out var __jsonExternalCloudProviderId) ? (string)__jsonExternalCloudProviderId : (string)ExternalCloudProviderId;}
+            {_exportName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("exportName"), out var __jsonExportName) ? (string)__jsonExportName : (string)ExportName;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
             AfterFromJson(json);
         }
 
@@ -103,13 +103,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models
             {
                 return container;
             }
-            AddIf( null != (((object)this._alertId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString(this._alertId.ToString()) : null, "alertId" ,container.Add );
-            AddIf( null != (((object)this._exportName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString(this._exportName.ToString()) : null, "exportName" ,container.Add );
-            AddIf( null != (((object)this._externalCloudProviderId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString(this._externalCloudProviderId.ToString()) : null, "externalCloudProviderId" ,container.Add );
-            AddIf( null != (((object)this._externalCloudProviderType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString(this._externalCloudProviderType.ToString()) : null, "externalCloudProviderType" ,container.Add );
-            AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );
             AddIf( null != (((object)this._scope)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString(this._scope.ToString()) : null, "scope" ,container.Add );
             AddIf( null != (((object)this._viewName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString(this._viewName.ToString()) : null, "viewName" ,container.Add );
+            AddIf( null != (((object)this._alertId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString(this._alertId.ToString()) : null, "alertId" ,container.Add );
+            AddIf( null != (((object)this._externalCloudProviderType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString(this._externalCloudProviderType.ToString()) : null, "externalCloudProviderType" ,container.Add );
+            AddIf( null != (((object)this._externalCloudProviderId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString(this._externalCloudProviderId.ToString()) : null, "externalCloudProviderId" ,container.Add );
+            AddIf( null != (((object)this._exportName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString(this._exportName.ToString()) : null, "exportName" ,container.Add );
+            AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

@@ -58,9 +58,23 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.GeoReplicationStats = PSGeoReplicationStats.ParsePSGeoReplicationStats(storageAccount.GeoReplicationStats);
             this.AllowBlobPublicAccess = storageAccount.AllowBlobPublicAccess;
             this.MinimumTlsVersion = storageAccount.MinimumTlsVersion;
+            this.RoutingPreference = PSRoutingPreference.ParsePSRoutingPreference(storageAccount.RoutingPreference);
             this.BlobRestoreStatus = storageAccount.BlobRestoreStatus is null ? null : new PSBlobRestoreStatus(storageAccount.BlobRestoreStatus);
-
+            this.EnableNfsV3 = storageAccount.EnableNfsV3;
+            this.ExtendedLocation = storageAccount.ExtendedLocation is null ? null : new PSExtendedLocation(storageAccount.ExtendedLocation);
+            this.AllowSharedKeyAccess = storageAccount.AllowSharedKeyAccess;
+            this.KeyCreationTime = storageAccount.KeyCreationTime is null? null : new PSKeyCreationTime(storageAccount.KeyCreationTime);
+            this.KeyPolicy = storageAccount.KeyPolicy;
+            this.SasPolicy = storageAccount.SasPolicy;
+            this.AllowCrossTenantReplication = storageAccount.AllowCrossTenantReplication;
+            this.PublicNetworkAccess = storageAccount.PublicNetworkAccess;
+            this.ImmutableStorageWithVersioning = storageAccount.ImmutableStorageWithVersioning is null ? null : new PSImmutableStorageAccount(storageAccount.ImmutableStorageWithVersioning);
         }
+        public bool? AllowCrossTenantReplication { get; set; }
+
+        public PSKeyCreationTime KeyCreationTime { get; set; }
+        public KeyPolicy KeyPolicy { get; }
+        public SasPolicy SasPolicy { get; }
 
         [Ps1Xml(Label = "ResourceGroupName", Target = ViewControl.Table, Position = 1)]
         public string ResourceGroupName { get; set; }
@@ -70,6 +84,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public string Id { get; set; }
 
+        [Ps1Xml(Label = "Location", Target = ViewControl.Table, Position = 2)]
         public string Location { get; set; }
 
         [Ps1Xml(Label = "SkuName", Target = ViewControl.Table, ScriptBlock = "$_.Sku.Name", Position = 3)]
@@ -122,6 +137,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public PSNetworkRuleSet NetworkRuleSet { get; set; }
 
+        public PSRoutingPreference RoutingPreference { get; set; }
+
         public PSBlobRestoreStatus BlobRestoreStatus { get; set; }
 
         public PSGeoReplicationStats GeoReplicationStats { get; set; }
@@ -129,6 +146,16 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public bool? AllowBlobPublicAccess { get; set; }
 
         public string MinimumTlsVersion { get; set; }
+        
+        public bool? EnableNfsV3 { get; set; }
+
+        public bool? AllowSharedKeyAccess { get; set; }
+
+        public PSExtendedLocation ExtendedLocation { get; set; }
+
+        public string PublicNetworkAccess { get; set; }
+
+        public PSImmutableStorageAccount ImmutableStorageWithVersioning { get; set; }
 
         public static PSStorageAccount Create(StorageModels.StorageAccount storageAccount, IStorageManagementClient client)
         {
@@ -196,5 +223,77 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         {
             return new Sku(Name, Tier);
         }
+    }
+
+    public class PSExtendedLocation
+    {
+        public PSExtendedLocation()
+        { }
+
+        public PSExtendedLocation(ExtendedLocation extendedLocation)
+        {
+            this.Name = extendedLocation.Name;
+            this.Type = extendedLocation.Type;
+        }
+
+        public string Name { get; set; }
+        public string Type { get; set; }
+    }
+
+    public class PSKeyCreationTime
+    {
+        public PSKeyCreationTime()
+        { }
+
+        public PSKeyCreationTime(KeyCreationTime keyCreationTime)
+        {
+            if (keyCreationTime != null)
+            {
+                this.Key1 = keyCreationTime.Key1;
+                this.Key2 = keyCreationTime.Key2;
+            }
+        }
+        public System.DateTime? Key1 { get; set; }
+        public System.DateTime? Key2 { get; set; }
+    }
+
+    /// <summary>
+    /// wrapper class for ImmutableStorageAccount
+    /// </summary>
+    public class PSImmutableStorageAccount
+    {
+        public PSImmutableStorageAccount()
+        { }
+
+        public PSImmutableStorageAccount(ImmutableStorageAccount immutableStorageAccount)
+        {
+            if (immutableStorageAccount != null)
+            {
+                this.Enabled = immutableStorageAccount.Enabled;
+                this.ImmutabilityPolicy = immutableStorageAccount.ImmutabilityPolicy is null ? null : new PSAccountImmutabilityPolicyProperties(immutableStorageAccount.ImmutabilityPolicy);
+            }
+        }
+        public bool? Enabled { get; set; }
+        public PSAccountImmutabilityPolicyProperties ImmutabilityPolicy { get; set; }
+    }
+
+    /// <summary>
+    /// wrapper class for AccountImmutabilityPolicyProperties
+    /// </summary>
+    public class PSAccountImmutabilityPolicyProperties
+    {
+        public PSAccountImmutabilityPolicyProperties()
+        { }
+
+        public PSAccountImmutabilityPolicyProperties(AccountImmutabilityPolicyProperties accountImmutabilityPolicyProperties)
+        {
+            if (accountImmutabilityPolicyProperties != null)
+            {
+                this.ImmutabilityPeriodSinceCreationInDays = accountImmutabilityPolicyProperties.ImmutabilityPeriodSinceCreationInDays;
+                this.State = accountImmutabilityPolicyProperties.State;
+            }
+        }
+        public int? ImmutabilityPeriodSinceCreationInDays { get; set; }
+        public string State { get; set; }
     }
 }

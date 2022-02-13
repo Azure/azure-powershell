@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MariaDb
-online version: https://docs.microsoft.com/en-us/powershell/module/az.mariadb/update-azmariadbconfiguration
+online version: https://docs.microsoft.com/powershell/module/az.mariadb/update-azmariadbconfiguration
 schema: 2.0.0
 ---
 

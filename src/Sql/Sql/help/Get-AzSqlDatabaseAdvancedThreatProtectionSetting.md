@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 017EF522-ABC5-40EE-B8DC-369D097F49D0
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-AzSqlDatabaseAdvancedThreatProtectionSetting
+online version: https://docs.microsoft.com/powershell/module/az.sql/get-AzSqlDatabaseAdvancedThreatProtectionSetting
 schema: 2.0.0
 ---
 
@@ -150,7 +150,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Remove-AzSqlDatabaseAdvancedThreatProtectionSetting](./Remove-AzSqlDatabaseAdvancedThreatProtectionSetting.md)
-
-
-
+[Azure SQL Database cmdlets](/powershell/module/az.sql/)

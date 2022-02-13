@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
@@ -23,6 +24,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     public class AzureWorkloadRecoveryPoint : AzureRecoveryPoint
     {
         public IList<SQLDataDirectory> DataDirectoryPaths { get; set; }
+
+        /// <summary>
+        /// Recovery Type information for Recovery point: "Vault", "Snapshot", "Snapshot and Vault" 
+        /// </summary>
+        public RecoveryPointTier RecoveryPointTier;
+
+        /// <summary>
+        /// Recovery point move rediness info
+        /// </summary>
+        public IDictionary<string, RecoveryPointMoveReadinessInfo> RecoveryPointMoveReadinessInfo;
+
+        /// <summary>
+        /// Rehydration expiry time
+        /// </summary>
+        public DateTime? RehydrationExpiryTime;
+
         public AzureWorkloadRecoveryPoint()
         {
 

@@ -21,6 +21,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
     using Microsoft.WindowsAzure.Commands.Storage;
     using global::Azure.Storage.Files.Shares;
     using global::Azure.Storage;
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
 
     /// <summary>
     /// Azure storage file object
@@ -97,15 +98,16 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             ShareFileClient fileClient;
             if (cloudFile.ServiceClient.Credentials.IsSAS) //SAS
             {
+                string sas = Util.GetSASStringWithoutQuestionMark(cloudFile.ServiceClient.Credentials.SASToken);
                 string fullUri = cloudFile.SnapshotQualifiedUri.ToString();
                 if (cloudFile.Share.IsSnapshot)
                 {
                     // Since snapshot URL already has '?', need remove '?' in the first char of sas
-                    fullUri = fullUri + "&" + cloudFile.ServiceClient.Credentials.SASToken.Substring(1);
+                    fullUri = fullUri + "&" + sas;
                 }
                 else
                 {
-                    fullUri = fullUri + cloudFile.ServiceClient.Credentials.SASToken;
+                    fullUri = fullUri + "?" + sas;
                 }
                 fileClient = new ShareFileClient(new Uri(fullUri));
             }

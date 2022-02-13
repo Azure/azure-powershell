@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<Configuration>
+  <ViewDefinitions>
+    <View>
+      <Name>Microsoft.Azure.Commands.ResourceGraph.Models.PSResourceGraphResponse`1[[System.Management.Automation.PSObject]]</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.ResourceGraph.Models.PSResourceGraphResponse`1[[System.Management.Automation.PSObject]]</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <PropertyName>SkipToken</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Data</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+  </ViewDefinitions>
+</Configuration>

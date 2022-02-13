@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 6C40A7BA-6BE2-464A-84E4-9021935A5BF6
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/remove-azvmextension
+online version: https://docs.microsoft.com/powershell/module/az.compute/remove-azvmextension
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ The **Remove-AzVMExtension** cmdlet removes an extension from the Virtual Machin
 ## EXAMPLES
 
 ### Example 1: Remove an extension from a virtual machine
-```
-PS C:\> Remove-AzVMExtension -ResourceGroupName "ResourceGroup11" -Name "ContosoTest" -VMName "VirtualMachine22"
+```powershell
+Remove-AzVMExtension -ResourceGroupName "ResourceGroup11" -Name "ContosoTest" -VMName "VirtualMachine22"
 ```
 
 This command removes the extension named ContosoTest from the virtual machine named VirtualMachine22 in ResourceGroup11.

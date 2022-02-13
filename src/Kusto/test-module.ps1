@@ -11,7 +11,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
-param([switch]$Isolated, [switch]$Live, [switch]$Record, [switch]$Playback)
+param([switch]$Isolated, [switch]$Live, [switch]$Record, [switch]$Playback, [switch]$RegenerateSupportModule)
 $ErrorActionPreference = 'Stop'
 
 if(-not $Isolated) {
@@ -24,10 +24,12 @@ if(-not $Isolated) {
 $ProgressPreference = 'SilentlyContinue'
 $baseName = $PSScriptRoot.BaseName
 $requireResourceModule = (($baseName -ne "Resources") -and ($Record.IsPresent -or $Live.IsPresent))
-. (Join-Path $PSScriptRoot 'check-dependencies.ps1') -Isolated -Accounts:$false -Pester -Resources:$requireResourceModule
+. (Join-Path $PSScriptRoot 'check-dependencies.ps1') -Isolated -Accounts:$false -Pester -Resources:$requireResourceModule -RegenerateSupportModule:$RegenerateSupportModule
 . ("$PSScriptRoot\test\utils.ps1")
 
 if ($requireResourceModule) {
+  # Load the latest Az.Accounts installed
+  Import-Module -Name Az.Accounts -RequiredVersion (Get-Module -Name Az.Accounts -ListAvailable | Sort-Object -Property Version -Descending)[0].Version
   $resourceModulePSD = Get-Item -Path (Join-Path $HOME '.PSSharedModules\Resources\Az.Resources.TestSupport.psd1')
   Import-Module -Name $resourceModulePSD.FullName
 }

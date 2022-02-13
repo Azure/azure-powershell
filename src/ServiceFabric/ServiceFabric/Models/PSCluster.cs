@@ -53,7 +53,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
                   diagnosticsStorageAccountConfig: cluster.DiagnosticsStorageAccountConfig,
                   upgradeDescription: cluster.UpgradeDescription,
                   azureActiveDirectory: cluster.AzureActiveDirectory,
-                  addOnFeatures: cluster.AddOnFeatures
+                  addOnFeatures: cluster.AddOnFeatures,
+                  eventStoreServiceEnabled: cluster.EventStoreServiceEnabled,
+                  applicationTypeVersionsCleanupPolicy: cluster.ApplicationTypeVersionsCleanupPolicy
                 )
         {
         }

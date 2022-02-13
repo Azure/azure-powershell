@@ -142,6 +142,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     this.Policy.ReplicationProvider,
                     Constants.InMageAzureV2,
                     StringComparison.OrdinalIgnoreCase) !=
+                0 &&
+                string.Compare(
+                    this.Policy.ReplicationProvider,
+                    Constants.InMageRcm,
+                    StringComparison.OrdinalIgnoreCase) !=
                 0)
             {
                 throw new InvalidOperationException(

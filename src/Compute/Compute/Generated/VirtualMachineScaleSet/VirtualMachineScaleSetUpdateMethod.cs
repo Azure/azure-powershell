@@ -31,6 +31,7 @@ using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Compute.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -38,8 +39,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public partial class UpdateAzureRmVmss : ComputeAutomationBaseCmdlet
     {
+        protected const string ExplicitIdentityParameterSet = "ExplicitIdentityParameterSet";
+    
         public override void ExecuteCmdlet()
         {
+            
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
@@ -55,6 +59,22 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         BuildPutObject();
                     }
+
+                    // check if image reference is being updated, if not remove image reference from payload for SIG 
+                    if (this.VirtualMachineScaleSet != null
+                            && this.VirtualMachineScaleSet.VirtualMachineProfile != null
+                            && this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile != null
+                            && this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference != null)
+                    {
+                        var newImageRef = this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference;
+                        var currVMSS = VirtualMachineScaleSetsClient.Get(resourceGroupName, vmScaleSetName);
+                        var currImageRef = currVMSS.VirtualMachineProfile.StorageProfile.ImageReference;
+                        if (currImageRef.Id == newImageRef.Id)
+                        {
+                            this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference = null;
+                        }
+                    }
+
                     VirtualMachineScaleSetUpdate parametersupdate = this.VirtualMachineScaleSetUpdate;
                     VirtualMachineScaleSet parameters = new VirtualMachineScaleSet();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<PSVirtualMachineScaleSet, VirtualMachineScaleSet>(this.VirtualMachineScaleSet, parameters);
@@ -134,13 +154,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public bool EnableAutomaticUpdate { get; set; }
 
         [Parameter(
-            ParameterSetName = "ExplicitIdentityParameterSet",
+            ParameterSetName = ExplicitIdentityParameterSet,
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string[] IdentityId { get; set; }
 
         [Parameter(
-            ParameterSetName = "ExplicitIdentityParameterSet",
+            ParameterSetName = ExplicitIdentityParameterSet,
             Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public ResourceIdentityType? IdentityType { get; set; }
@@ -305,6 +325,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public UpgradeMode UpgradePolicyMode { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            HelpMessage = "Id of the capacity reservation Group that is used to allocate.")]
+        [ResourceIdCompleter("Microsoft.Compute/capacityReservationGroups")]
+        public string CapacityReservationGroupId { get; set; }
+
+        [Parameter(
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string[] VhdContainer { get; set; }
@@ -312,10 +338,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
-
         [Parameter(
             Mandatory = false)]
-        public bool EncryptionAtHost { get; set; } 
+        public bool EncryptionAtHost { get; set; }
+        
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "UserData for the Vmss, which will be Base64 encoded. Customer should not pass any secrets in here.",
+            ValueFromPipelineByPropertyName = true)]
+        public string UserData { get; set; }
 
         private void BuildPatchObject()
         {
@@ -1117,6 +1148,21 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 this.VirtualMachineScaleSetUpdate.ProximityPlacementGroup.Id = null;
             }
+            
+            if (this.IsParameterBound(c => c.UserData))
+            {
+                if (!ValidateBase64EncodedString.ValidateStringIsBase64Encoded(this.UserData))
+                {
+                    this.UserData = ValidateBase64EncodedString.EncodeStringToBase64(this.UserData);
+                    this.WriteInformation(ValidateBase64EncodedString.UserDataEncodeNotification, new string[] { "PSHOST" });
+                }
+
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                this.VirtualMachineScaleSet.VirtualMachineProfile.UserData = this.UserData;
+            }
 
             if (this.VirtualMachineScaleSetUpdate != null
                 && this.VirtualMachineScaleSetUpdate.VirtualMachineProfile != null
@@ -1184,6 +1230,23 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSet.VirtualMachineProfile.DiagnosticsProfile.BootDiagnostics = new BootDiagnostics();
                 }
                 this.VirtualMachineScaleSet.VirtualMachineProfile.DiagnosticsProfile.BootDiagnostics.StorageUri = this.BootDiagnosticsStorageUri;
+            }
+
+            if (this.IsParameterBound(c=> c.CapacityReservationGroupId))
+            {
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.CapacityReservation == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.CapacityReservation = new CapacityReservationProfile();
+                }
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.CapacityReservation.CapacityReservationGroup == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.CapacityReservation.CapacityReservationGroup = new SubResource();
+                }
+                this.VirtualMachineScaleSet.VirtualMachineProfile.CapacityReservation.CapacityReservationGroup.Id = this.CapacityReservationGroupId;
             }
 
             if (this.IsParameterBound(c => c.CustomData))
@@ -1740,6 +1803,21 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 this.VirtualMachineScaleSet.ProximityPlacementGroup.Id = null;
             }
+            
+            if (this.IsParameterBound(c => c.UserData))
+            {
+                if (!ValidateBase64EncodedString.ValidateStringIsBase64Encoded(this.UserData))
+                {
+                    this.UserData = ValidateBase64EncodedString.EncodeStringToBase64(this.UserData);
+                    this.WriteInformation(ValidateBase64EncodedString.UserDataEncodeNotification, new string[] { "PSHOST" });
+                }
+
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                this.VirtualMachineScaleSet.VirtualMachineProfile.UserData = this.UserData;
+            }
 
             if (this.VirtualMachineScaleSet != null
                 && this.VirtualMachineScaleSet.VirtualMachineProfile != null
@@ -1749,6 +1827,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 throw new ArgumentException(Microsoft.Azure.Commands.Compute.Properties.Resources.BothWindowsAndLinuxConfigurationsSpecified);
             }
+
         }
     }
 }

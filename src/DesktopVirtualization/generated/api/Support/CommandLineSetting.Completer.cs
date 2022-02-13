@@ -31,15 +31,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "DoNotAllow".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("DoNotAllow", "DoNotAllow", global::System.Management.Automation.CompletionResultType.ParameterValue, "DoNotAllow");
+                yield return new global::System.Management.Automation.CompletionResult("'DoNotAllow'", "DoNotAllow", global::System.Management.Automation.CompletionResultType.ParameterValue, "DoNotAllow");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Allow".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Allow", "Allow", global::System.Management.Automation.CompletionResultType.ParameterValue, "Allow");
+                yield return new global::System.Management.Automation.CompletionResult("'Allow'", "Allow", global::System.Management.Automation.CompletionResultType.ParameterValue, "Allow");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Require".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Require", "Require", global::System.Management.Automation.CompletionResultType.ParameterValue, "Require");
+                yield return new global::System.Management.Automation.CompletionResult("'Require'", "Require", global::System.Management.Automation.CompletionResultType.ParameterValue, "Require");
             }
         }
     }

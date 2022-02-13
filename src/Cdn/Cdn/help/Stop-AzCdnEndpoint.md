@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
 ms.assetid: 1C45A450-CFD5-40CE-871C-1C2521A03073
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/stop-azcdnendpoint
+online version: https://docs.microsoft.com/powershell/module/az.cdn/stop-azcdnendpoint
 schema: 2.0.0
 ---
 
@@ -29,6 +29,11 @@ Stop-AzCdnEndpoint -CdnEndpoint <PSEndpoint> [-PassThru] [-DefaultProfile <IAzur
 The **Stop-AzCdnEndpoint** cmdlet stops the Azure Content Delivery Network (CDN) endpoint.
 
 ## EXAMPLES
+
+### Example 1
+```powershell
+Stop-AzCdnEndpoint -ResourceGroupName myresourcegroup -ProfileName mycdnprofile -EndpointName myendpoint
+```
 
 ## PARAMETERS
 

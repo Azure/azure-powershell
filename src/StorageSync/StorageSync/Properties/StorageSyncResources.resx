@@ -123,9 +123,6 @@
   <data name="GetSyncServerCertificateErrorMessageFormat" xml:space="preserve">
     <value>COM Exception while loading certificate: HResult: {0} Message: {1}</value>
   </data>
-  <data name="InvokeStorageSyncFileRecallActionMessage" xml:space="preserve">
-    <value>Invoke Storage Sync File Recall</value>
-  </data>
   <data name="MissingAfsAgentInstallerPathErrorMessage" xml:space="preserve">
     <value>We cannot find the Storage Sync agent installed in the system. The given registry AfsAgentInstallerPath cannot be found.</value>
   </data>
@@ -281,11 +278,5 @@
   </data>
   <data name="SetStorageSyncServiceActionMessage" xml:space="preserve">
     <value>Updating a Storage Sync Service</value>
-  </data>
-  <data name="InvalidInitialDownloadPolicyErrorMessage" xml:space="preserve">
-    <value>InitialDownloadPolicy parameter has invalid value.</value>
-  </data>
-  <data name="InvalidLocalCacheModeErrorMessage" xml:space="preserve">
-    <value>LocalCacheMode parameter has invalid value.</value>
   </data>
 </root>

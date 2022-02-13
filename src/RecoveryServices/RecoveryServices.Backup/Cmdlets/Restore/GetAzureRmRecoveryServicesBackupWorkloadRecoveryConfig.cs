@@ -21,7 +21,6 @@ using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Rest.Azure.OData;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
@@ -115,6 +114,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 ResourceIdentifier resourceIdentifier = new ResourceIdentifier(VaultId);
                 string vaultName = resourceIdentifier.ResourceName;
                 string resourceGroupName = resourceIdentifier.ResourceGroupName;
+                string targetVaultName = "";
+                string targetResourceGroupName = "";
 
                 if (!OriginalWorkloadRestore.IsPresent && !AlternateWorkloadRestore.IsPresent && !RestoreAsFiles.IsPresent)
                 {
@@ -127,6 +128,32 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 TimeSpan timeSpan = DateTime.UtcNow - new DateTime(1970, 1, 1);
                 int offset = (int)timeSpan.TotalSeconds;
                 string targetDb = "";
+
+                if (AlternateWorkloadRestore.IsPresent || RestoreAsFiles.IsPresent)
+                {
+                    if (TargetContainer == null)
+                    {
+                        throw new ArgumentNullException("TargetContainer", Resources.TargetContainerRequiredException);
+                    }
+
+                    azureWorkloadRecoveryConfig.TargetVirtualMachineId = (TargetContainer as AzureVmWorkloadContainer).SourceResourceId;
+                }
+
+                if (TargetItem != null)
+                {
+                    // getting Target vault/RG for TargetPhysicalPath in CRR 
+                    Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(TargetItem.Id);
+                    targetResourceGroupName = HelperUtils.GetResourceGroupNameFromId(keyValueDict, TargetItem.Id);
+                    targetVaultName = HelperUtils.GetVaultNameFromId(keyValueDict, TargetItem.Id);
+
+                    // check if the TragetItem provided is of workload type
+                    if (!string.Equals(((AzureWorkloadProtectableItem)TargetItem).ProtectableItemType,
+                        ProtectableItemType.SQLInstance.ToString()))
+                    {
+                        throw new ArgumentException(string.Format(Resources.AzureWorkloadRestoreProtectableItemException));
+                    }
+                }
+
                 if (ParameterSetName == RpParameterSet)
                 {
                     Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(RecoveryPoint.Id);
@@ -145,12 +172,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 }
                 else if (AlternateWorkloadRestore.IsPresent && Item == null)
                 {
-                    if (string.Compare(((AzureWorkloadProtectableItem)TargetItem).ProtectableItemType,
-                        ProtectableItemType.SQLInstance.ToString()) != 0)
-                    {
-                        throw new ArgumentException(string.Format(Resources.AzureWorkloadRestoreProtectableItemException));
-                    }
-
                     azureWorkloadRecoveryConfig.RestoredDBName =
                     GetRestoredDBName(RecoveryPoint.ItemName, currentTime);
                     azureWorkloadRecoveryConfig.OverwriteWLIfpresent = "No";
@@ -164,11 +185,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     q => q.WorkloadItemType == WorkloadItemType.SQLInstance &&
                     q.BackupManagementType == backupManagementType);
 
-                    var itemResponses = ServiceClientAdapter.ListWorkloadItem(
+                    List<WorkloadItemResource> itemResponses;
+                    if (targetVaultName != "" && targetResourceGroupName != "")
+                    {
+                        itemResponses = ServiceClientAdapter.ListWorkloadItem(
+                        TargetItem.ContainerName,
+                        queryParams,
+                        vaultName: targetVaultName,
+                        resourceGroupName: targetResourceGroupName);
+                    }
+                    else
+                    {
+                        itemResponses = ServiceClientAdapter.ListWorkloadItem(
                         TargetItem.ContainerName,
                         queryParams,
                         vaultName: vaultName,
                         resourceGroupName: resourceGroupName);
+                    }
 
                     foreach (var itemResponse in itemResponses)
                     {
@@ -199,12 +232,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 }
                 else if (Item != null && TargetItem != null)
                 {
-                    if (string.Compare(((AzureWorkloadProtectableItem)TargetItem).ProtectableItemType,
-                        ProtectableItemType.SQLDataBase.ToString()) == 0)
-                    {
-                        throw new ArgumentException(string.Format(Resources.AzureWorkloadRestoreProtectableItemException));
-                    }
-
                     azureWorkloadRecoveryConfig.RestoredDBName =
                     GetRestoredDBName(Item.Name, currentTime);
                     azureWorkloadRecoveryConfig.OverwriteWLIfpresent = "No";
@@ -218,11 +245,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     q => q.WorkloadItemType == WorkloadItemType.SQLInstance &&
                     q.BackupManagementType == backupManagementType);
 
-                    var itemResponses = ServiceClientAdapter.ListWorkloadItem(
+                    List<WorkloadItemResource> itemResponses;
+                    if (targetVaultName != "" && targetResourceGroupName != "")
+                    {
+                        itemResponses = ServiceClientAdapter.ListWorkloadItem(
+                        TargetItem.ContainerName,
+                        queryParams,
+                        vaultName: targetVaultName,
+                        resourceGroupName: targetResourceGroupName);
+                    }
+                    else
+                    {
+                        itemResponses = ServiceClientAdapter.ListWorkloadItem(
                         TargetItem.ContainerName,
                         queryParams,
                         vaultName: vaultName,
                         resourceGroupName: resourceGroupName);
+                    }
 
                     foreach (var itemResponse in itemResponses)
                     {
@@ -247,17 +286,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                             break;
                         }
                     }
-
                     azureWorkloadRecoveryConfig.targetPhysicalPath = targetPhysicalPath;
                     azureWorkloadRecoveryConfig.ContainerId = GetContainerId(TargetItem.Id);
                 }
                 else if (RestoreAsFiles.IsPresent)
                 {
-                    if(TargetContainer == null)
-                    {
-                        throw new ArgumentNullException("TargetContainer", Resources.TargetContainerRequiredException);
-                    }
-
                     azureWorkloadRecoveryConfig.OverwriteWLIfpresent = "No";
                     azureWorkloadRecoveryConfig.NoRecoveryMode = "Disabled";
                     azureWorkloadRecoveryConfig.ContainerId = (TargetContainer as AzureVmWorkloadContainer).Id;

@@ -12,6 +12,172 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+
+function Test-AzureRSVaultCMK
+{
+	$location = "centraluseuap"
+	$resourceGroupName = "hiagarg"
+	$vaultName = "cmk-pstest-vault"
+	$keyVault = "cmk-pstest-keyvault"
+	$encryptionKeyId = "https://cmk-pstest-keyvault.vault.azure.net/keys/cmk-pstest-key/5569d5a163ee474cad2da4ac334af9d7"
+
+	try
+	{	
+		# Setup
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+
+		# error scenario
+		Assert-ThrowsContains { Set-AzRecoveryServicesVaultProperty -EncryptionKeyId $encryptionKeyId -VaultId $vault.ID -InfrastructureEncryption -UseSystemAssignedIdentity $false } `
+		"Please input a valid UserAssignedIdentity";	
+
+		# set and verify - CMK encryption property to UAI 
+		Set-AzRecoveryServicesVaultProperty -EncryptionKeyId $encryptionKeyId -VaultId $vault.ID -InfrastructureEncryption -UseSystemAssignedIdentity $false  -UserAssignedIdentity $vault.Identity.UserAssignedIdentities.Keys[0]
+		$prop = Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
+		Assert-True { $prop.encryptionProperties.UserAssignedIdentity -eq $vault.Identity.UserAssignedIdentities.Keys[0] }
+
+		Start-TestSleep 10000
+
+		# set and verify - CMK encryption property to system identity 	
+		Set-AzRecoveryServicesVaultProperty -EncryptionKeyId $encryptionKeyId -VaultId $vault.ID -UseSystemAssignedIdentity $true
+		$prop = Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
+		Assert-True { $prop.encryptionProperties.UseSystemAssignedIdentity }
+	}
+	finally
+	{
+		# no Cleanup		
+	}
+}
+
+function Test-AzureVMRestoreWithMSI
+{
+	$location = "centraluseuap"
+	$resourceGroupName = "hiagarg"
+	$vaultName = "hiagaVault"
+	$vmName = "VM;iaasvmcontainerv2;hiagarg;hiagavm"
+	$saName = "hiagasa"
+
+	try
+	{
+		# Setup
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+		$item = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM `
+			-VaultId $vault.ID -Name $vmName
+
+		$backupJob = Backup-Item $vault $item
+		$backupStartTime = $backupJob.StartTime.AddMinutes(-1);
+		$backupEndTime = $backupJob.EndTime.AddMinutes(1);
+		
+		$rp = Get-AzRecoveryServicesBackupRecoveryPoint `
+			-VaultId $vault.ID `
+			-StartDate $backupStartTime `
+			-EndDate $backupEndTime `
+			-Item $item; 		
+
+		$restoreJob1 = Restore-AzRecoveryServicesBackupItem -VaultId $vault.ID -VaultLocation $vault.Location `
+			-RecoveryPoint $rp[0] -StorageAccountName $saName -StorageAccountResourceGroupName `
+			$vault.ResourceGroupName -RestoreOnlyOSDisk -TargetResourceGroupName $vault.ResourceGroupName `
+			-UseSystemAssignedIdentity | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+
+		Assert-True { $restoreJob1.Status -eq "Completed" }   
+	}
+	finally
+	{
+		# no Cleanup		
+	}
+}
+
+function Test-AzureVMCrossRegionRestore
+{
+	$location = "centraluseuap"
+	$resourceGroupName = Create-ResourceGroup $location 24
+
+	try
+	{
+		# Setup
+		$vault = Create-RecoveryServicesVault $resourceGroupName $location 25
+
+		# waiting for service to reflect
+		Start-TestSleep 20000
+
+		# Enable CRR
+		Set-AzRecoveryServicesBackupProperty -Vault $vault -EnableCrossRegionRestore
+
+		# waiting for service to reflect
+		Start-TestSleep 30000
+
+		# Assert that the vault is now CRR enabled
+		$crr = Get-AzRecoveryServicesBackupProperty -Vault $vault
+		Assert-True { $crr.CrossRegionRestore -eq $true }
+	}
+	finally
+	{
+		# Cleanup
+		Cleanup-ResourceGroup $resourceGroupName
+	}
+}
+
+function Test-AzureRSVaultMSI
+{
+	$location = "centraluseuap"
+	$resourceGroupName = "msi-pstest-rg"
+	$vaultName = "msi-pstest-vault"
+
+	$identityId1 = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-msi1"
+	$identityId2 = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-msi2"
+	$identityId3 = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-msi3"
+
+	try
+	{	
+		# get Identity - verify Empty 
+		$vault = Get-AzRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName
+		
+		# set Identity - verify System assigned
+		$updatedVault = Update-AzRecoveryServicesVault -ResourceGroupName $vault.ResourceGroupName -Name $vault.Name -IdentityType "None"
+		$updatedVault = Update-AzRecoveryServicesVault -ResourceGroupName $vault.ResourceGroupName -Name $vault.Name -IdentityType "SystemAssigned"
+		Assert-True { $updatedVault.Identity.Type -eq "SystemAssigned" }
+
+		# add UAI 1, 2 and 3 to the vault 
+		$updatedVault = Update-AzRecoveryServicesVault -ResourceGroupName $vault.ResourceGroupName -Name $vault.Name -IdentityType UserAssigned -IdentityId $identityId1, $identityId2, $identityId3
+		
+		# verify that UAI 1, 2 and 3 are added to vault 
+		Assert-True { $updatedVault.Identity.UserAssignedIdentities.Keys.Contains($identityId1) }
+		Assert-True { $updatedVault.Identity.UserAssignedIdentities.Keys.Contains($identityId2) }
+		Assert-True { $updatedVault.Identity.UserAssignedIdentities.Keys.Contains($identityId3) }
+
+		# remove UAI 1 and 214 (should throw error)
+		$identityId = $identityId2 + "14"
+		
+		Assert-ThrowsContains { $updatedVault = Update-AzRecoveryServicesVault -ResourceGroupName $vault.ResourceGroupName -Name $vault.Name -RemoveUserAssigned -IdentityId $identityId1, $identityId } `
+		"IdentityId '" + $identityId +  "' is invalid";
+		
+		# remove UAI 1 from vault
+		$updatedVault = Update-AzRecoveryServicesVault -ResourceGroupName $vault.ResourceGroupName -Name $vault.Name -RemoveUserAssigned -IdentityId $identityId1
+		
+		# Remove both SystemAssigned and UserAssigned identities simultaneously (would throw error)	
+		Assert-ThrowsContains { $updatedVault = Update-AzRecoveryServicesVault -ResourceGroupName $vault.ResourceGroupName -Name $vault.Name -RemoveUserAssigned -IdentityId $identityId2 -RemoveSystemAssigned } `
+		"UserAssigned and SystemAssigned identities can't be removed together";		
+		
+		# remove all present UAI from vault 
+		$updatedVault = Update-AzRecoveryServicesVault -ResourceGroupName $vault.ResourceGroupName -Name $vault.Name -RemoveUserAssigned -IdentityId $identityId2, $identityId3
+		Assert-True { $updatedVault.Identity.Type -eq "SystemAssigned" }
+		
+		# remove SystemAssigned identity from the vault 
+		$updatedVault = Update-AzRecoveryServicesVault -ResourceGroupName $vault.ResourceGroupName -Name $vault.Name -RemoveSystemAssigned
+		Assert-True { $updatedVault.Identity.Type -eq "None" }
+		
+		# add UAI 3 to the vault
+		$updatedVault = Update-AzRecoveryServicesVault -ResourceGroupName $vault.ResourceGroupName -Name $vault.Name -IdentityType UserAssigned -IdentityId $identityId3
+		
+		# remove Identity - verify empty again 
+		$updatedVault = Update-AzRecoveryServicesVault -ResourceGroupName $vault.ResourceGroupName -Name $vault.Name -IdentityType "None"
+		Assert-True { $updatedVault.Identity.Type -eq "None" }
+	}
+	finally
+	{
+		# no cleanup		
+	}
+}
+
 function Test-AzureBackupDataMove
 {
 	$sourceLocation = "eastus2euap"
@@ -49,6 +215,10 @@ function Test-AzureVMGetItems
 		$vm = Create-VM $resourceGroupName $location 1
 		$vm2 = Create-VM $resourceGroupName $location 12
 		$vault = Create-RecoveryServicesVault $resourceGroupName $location
+
+		# disable soft delete for successful cleanup
+		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState "Disable"
+
 		Enable-Protection $vault $vm
 		Enable-Protection $vault $vm2
 		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
@@ -155,7 +325,7 @@ function Test-AzureVMProtection
 		# Setup
 		$vm = Create-VM $resourceGroupName $location
 		$vault = Create-RecoveryServicesVault $resourceGroupName $location
-
+		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState "Disable"
 		# Sleep to give the service time to add the default policy to the vault
         Start-TestSleep 5000
 
@@ -218,6 +388,7 @@ function Test-AzureVMGetRPs
   		# Setup
 		$vm = Create-VM $resourceGroupName $location
 		$vault = Create-RecoveryServicesVault $resourceGroupName $location
+		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState "Disable"
 		$item = Enable-Protection $vault $vm
 		$backupJob = Backup-Item $vault $item
 
@@ -285,6 +456,7 @@ function Test-AzureVMFullRestore
 		$saName = Create-SA $resourceGroupName $location
 		$vm = Create-VM $resourceGroupName $location
 		$vault = Create-RecoveryServicesVault $resourceGroupName $location
+		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState "Disable"
 		$item = Enable-Protection $vault $vm
 		$backupJob = Backup-Item $vault $item
 		$rp = Get-RecoveryPoint $vault $item $backupJob
@@ -338,6 +510,10 @@ function Test-AzureUnmanagedVMFullRestore
 		$saName = Create-SA $resourceGroupName $location
 		$vm = Create-UnmanagedVM $resourceGroupName $location $saName
 		$vault = Create-RecoveryServicesVault $resourceGroupName $location
+		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState "Disable"
+		$VaultProperty = Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
+		Assert-True { $VaultProperty.SoftDeleteFeatureState -eq "Disabled" }
+
 		$item = Enable-Protection $vault $vm $resourceGroupName
 		$backupJob = Backup-Item $vault $item
 		$rp = Get-RecoveryPoint $vault $item $backupJob
@@ -351,6 +527,14 @@ function Test-AzureUnmanagedVMFullRestore
 			-UseOriginalStorageAccount | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
 		
 		Assert-True { $restoreJob.Status -eq "Completed" }
+
+		$restoreJob2 = Restore-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-VaultLocation $vault.Location `
+			-RecoveryPoint $rp `
+			-StorageAccountName $saName `
+			-StorageAccountResourceGroupName $resourceGroupName `
+			-RestoreAsManagedDisk -TargetResourceGroupName $resourceGroupName
 	}
 	finally
 	{
@@ -368,6 +552,7 @@ function Test-AzureVMRPMountScript
 		# Setup
 		$vm = Create-VM $resourceGroupName $location
 		$vault = Create-RecoveryServicesVault $resourceGroupName $location
+		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState "Disable"
 		$item = Enable-Protection $vault $vm
 		$backupJob = Backup-Item $vault $item
 		$rp = Get-RecoveryPoint $vault $item $backupJob
@@ -403,6 +588,7 @@ function Test-AzureVMBackup
 	{
 		# Setup
 		$vault = Create-RecoveryServicesVault $resourceGroupName $location
+		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState "Disable"
 		$vm = Create-VM $resourceGroupName $location
 		$item = Enable-Protection $vault $vm
 		
@@ -431,10 +617,13 @@ function Test-AzureVMSetVaultContext
 		$vm = Create-VM $resourceGroupName $location
 		$vault = Create-RecoveryServicesVault $resourceGroupName $location
 
+		# disable soft delete for successful cleanup
+		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState "Disable"
+
 		# Sleep to give the service time to add the default policy to the vault
         Start-TestSleep 5000
 
-		Set-AzRecoveryServicesVaultContext -Vault $vault
+		Set-AzRecoveryServicesVaultContext -Vault $vault | Out-Null
 
 		# Get default policy
 		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `

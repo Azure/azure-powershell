@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.CloudService
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cloudservice/restart-azcloudservice
+online version: https://docs.microsoft.com/powershell/module/az.cloudservice/restart-azcloudservice
 schema: 2.0.0
 ---
 
@@ -32,15 +32,15 @@ Restarts one or more role instances in a cloud service.
 
 ### Example 1: Restart role instances of cloud service
 ```powershell
-PS C:\> $roleInstances = @("ContosoFrontEnd_IN_0", "ContosoBackEnd_IN_1")
-PS C:\> Restart-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstance $roleInstances
+$roleInstances = @("ContosoFrontEnd_IN_0", "ContosoBackEnd_IN_1")
+Restart-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstance $roleInstances
 ```
 
 This command restarts 2 role instances ContosoFrontEnd_IN_0 and ContosoBackEnd_IN_1 of cloud service named ContosoCS that belongs to the resource group named ContosOrg.
 
 ### Example 2: Restart all roles of cloud service
 ```powershell
-PS C:\> Restart-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstance "*"
+Restart-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstance "*"
 ```
 
 This command restarts all role instances of cloud service named ContosoCS that belongs to the resource group named ContosOrg.
@@ -239,6 +239,9 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   - `[CloudServiceName <String>]`: 
   - `[Id <String>]`: Resource identity path
+  - `[Location <String>]`: Name of the location that the OS version pertains to.
+  - `[OSFamilyName <String>]`: Name of the OS family.
+  - `[OSVersionName <String>]`: Name of the OS version.
   - `[ResourceGroupName <String>]`: 
   - `[RoleInstanceName <String>]`: Name of the role instance.
   - `[RoleName <String>]`: Name of the role.

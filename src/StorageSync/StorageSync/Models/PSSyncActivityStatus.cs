@@ -51,5 +51,15 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         /// </summary>
         /// <value>The total bytes.</value>
         public long? TotalBytes { get; set; }
+        /// <summary>
+        /// Gets or sets the sync mode.
+        /// </summary>
+        /// <value>The sync mode.</value>
+        public string SyncMode { get; set; }
+        /// <summary>
+        /// Gets or sets the estimated time remaining.
+        /// </summary>
+        /// <value>The  estimated time remaining.</value>
+        public int? SessionMinutesRemaining { get; set; }
     }
 }

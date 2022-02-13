@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.CostManagement
-online version: https://docs.microsoft.com/en-us/powershell/module/az.costmanagement/get-azcostmanagementexportexecutionhistory
+online version: https://docs.microsoft.com/powershell/module/az.costmanagement/get-azcostmanagementexportexecutionhistory
 schema: 2.0.0
 ---
 

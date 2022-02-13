@@ -21,27 +21,28 @@ function getVaultName{
     return "A2APowershellTest" + $seed;
 }
 
+# vault resource group.
 function getVaultRg{
     return "A2APowershellTestRg" + $seed;
 }
 
 
 function getVaultRgLocation{
-    return "eastus"
+    return "WestCentralUS"
 }
 
 function getVaultLocation{
-     return "eastus"
+     return "WestCentralUS"
 }
 
 function getPrimaryLocation
 {
-    return "westus"
+    return "EastUS"
 }
 
 function getPrimaryZoneLocation
 {
-    return "southeastasia"
+    return "EastUS"
 }
 
 function getPrimaryZone
@@ -194,6 +195,23 @@ function createAzureVmInProximityPlacementgroup{
         $vm = New-AzVM -Name $VMName -Credential $Credential -location $VMLocation -Image RHEL -DomainNameLabel $domain -ProximityPlacementGroupId $ppg.Id
 		return $vm.Id
 }
+
+function createAzureVmForCRG{
+    param([string]$primaryLocation)
+    
+        $VMLocalAdminUser = "adminUser"
+		$PasswordString = $(Get-RandomSuffix 12)
+		$Password=$PasswordString| ConvertTo-SecureString -Force -AsPlainText
+        $VMLocalAdminSecurePassword = $Password
+		$VMLocation = getPrimaryLocation
+		$VMName = getAzureVmName
+		$domain = "domain"+ $seed
+        $password=$VMLocalAdminSecurePassword|ConvertTo-SecureString -AsPlainText -Force
+        $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $password);
+        $vm = New-AzVM -Name $VMName -Credential $Credential -location $VMLocation -Image RHEL -DomainNameLabel $domain -Size "Standard_Ds1_v2"
+		return $vm.Id
+}
+
 
 function createAzureVmInAvailabilityZone{
     param([string]$primaryLocation)

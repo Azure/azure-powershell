@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 75E30205-97AD-44E3-A61F-62B81ADB532C
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azlocalnetworkgateway
+online version: https://docs.microsoft.com/powershell/module/az.network/remove-azlocalnetworkgateway
 schema: 2.0.0
 ---
 

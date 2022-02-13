@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
 
                 parameters.Validate();
                 if (this.ShouldProcess(this.Name,
-                    string.Format("Creating Log Alert Rule '{0}' in resource group {0}", this.Name,
+                    string.Format("Creating Log Alert Rule '{0}' in resource group {1}", this.Name,
                         this.ResourceGroupName)))
                 {
 

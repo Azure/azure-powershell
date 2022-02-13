@@ -438,4 +438,7 @@
     <value>Get operation state in '{0}'</value>
     <comment>Process workflow</comment>
   </data>
+  <data name="RefreshKeyVaultBasedObject" xml:space="preserve">
+    <value>Refresh KeyVault Object.</value>
+  </data>
 </root>

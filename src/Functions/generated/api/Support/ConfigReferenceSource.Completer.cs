@@ -28,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "KeyVault".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("KeyVault", "KeyVault", global::System.Management.Automation.CompletionResultType.ParameterValue, "KeyVault");
+                yield return new global::System.Management.Automation.CompletionResult("'KeyVault'", "KeyVault", global::System.Management.Automation.CompletionResultType.ParameterValue, "KeyVault");
             }
         }
     }

@@ -31,14 +31,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 
         public PackagedTemplate(TemplateSpecVersion versionModel)
         {
-            this.RootTemplate = (JObject)versionModel?.Template;
-            this.Artifacts = versionModel?.Artifacts?.ToArray() 
-                ?? new TemplateSpecArtifact[0];
+            this.RootTemplate = (JObject)versionModel?.MainTemplate;
+            this.Artifacts = versionModel?.LinkedTemplates?.ToArray() 
+                ?? new LinkedTemplateArtifact[0];
+            this.UIFormDefinition = (JObject)versionModel?.UiFormDefinition;
         }
 
         public JObject RootTemplate { get; set; }
 
-        public TemplateSpecArtifact[] Artifacts { get; set; }
+        public JObject UIFormDefinition { get; set; }
+
+        public LinkedTemplateArtifact[] Artifacts { get; set; }
     }
 
     /// <summary>
@@ -64,8 +67,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 
             public string CurrentDirectory { get; set; }
 
-            public IList<TemplateSpecArtifact> Artifacts { get; private set; }
-                = new List<TemplateSpecArtifact>();
+            public IList<LinkedTemplateArtifact> Artifacts { get; private set; }
+                = new List<LinkedTemplateArtifact>();
         }
 
         /// <summary>
@@ -75,19 +78,34 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <param name="rootTemplateFilePath">
         /// The path to the ARM Template .json file to pack
         /// </param>
-        public static PackagedTemplate Pack(string rootTemplateFilePath)
+        /// <param name="uiFormDefinitionFilePath">
+        /// The path to the UI Form Definition .json to pack (if any)
+        /// </param>
+        public static PackagedTemplate Pack(string rootTemplateFilePath, 
+            string uiFormDefinitionFilePath)
         {
             rootTemplateFilePath = Path.GetFullPath(rootTemplateFilePath);
             PackingContext context = new PackingContext(
                 Path.GetDirectoryName(rootTemplateFilePath)
             );
-
+            
             PackArtifacts(rootTemplateFilePath, context, out JObject templateObj);
-            return new PackagedTemplate
+            var packagedTemplate = new PackagedTemplate
             {
                 RootTemplate = templateObj,
                 Artifacts = context.Artifacts.ToArray()
             };
+
+            // If a UI Form Definition file path was provided to us, make sure we package the
+            // UI Form Definition as well:
+
+            if (!string.IsNullOrWhiteSpace(uiFormDefinitionFilePath))
+            {
+                string uiFormDefinitionJson = FileUtilities.DataStore.ReadFileAsText(uiFormDefinitionFilePath);
+                packagedTemplate.UIFormDefinition = JObject.Parse(uiFormDefinitionJson);
+            }
+
+            return packagedTemplate;
         }
 
         /// <summary>
@@ -168,7 +186,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 
                     PackArtifacts(absoluteLocalPath, context, out JObject templateObjForArtifact);
 
-                    TemplateSpecArtifact artifact = new TemplateSpecTemplateArtifact
+                    LinkedTemplateArtifact artifact = new LinkedTemplateArtifact
                     {
                         Path = asRelativePath,
                         Template = templateObjForArtifact
@@ -193,10 +211,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <param name="templateFileName">
         /// The name of the file to use for the root template json
         /// </param>
+        /// <param name="uiFormDefinitionFileName">
+        /// The name of the file to use for the ui form definition json (if any). If set to
+        /// null, the ui definition won't be unpacked even if present within the packaged template.
+        /// </param>
         public static void Unpack(
             PackagedTemplate packagedTemplate,
             string targetDirectory,
-            string templateFileName)
+            string templateFileName,
+            string uiFormDefinitionFileName)
         {
             // Ensure paths are normalized:
             templateFileName = Path.GetFileName(templateFileName);
@@ -238,7 +261,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 
             foreach (var artifact in packagedTemplate.Artifacts)
             {
-                if (!(artifact is TemplateSpecTemplateArtifact templateArtifact))
+                if (!(artifact is LinkedTemplateArtifact templateArtifact))
                 {
                     throw new NotSupportedException("Unknown artifact type encountered...");
                 }
@@ -253,6 +276,23 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
                 FileUtilities.DataStore.CreateDirectory(Path.GetDirectoryName(absoluteLocalPath));
                 FileUtilities.DataStore.WriteFile(absoluteLocalPath,
                     ((JObject)templateArtifact.Template).ToString());
+            }
+
+            // Lastly, let's write the UIFormDefinition file if a UIFormDefinition is present within
+            // the packaged template:
+
+            if (!string.IsNullOrWhiteSpace(uiFormDefinitionFileName) && 
+                packagedTemplate.UIFormDefinition != null)
+            {
+                string absoluteUIFormDefinitionFilePath = Path.Combine(
+                    targetDirectory, 
+                    uiFormDefinitionFileName
+                );
+
+                FileUtilities.DataStore.WriteFile(
+                    absoluteUIFormDefinitionFilePath,
+                    packagedTemplate.UIFormDefinition.ToString()
+                );
             }
         }
 

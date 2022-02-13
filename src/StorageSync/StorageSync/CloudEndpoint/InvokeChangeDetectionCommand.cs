@@ -21,7 +21,6 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.StorageSync;
 using Microsoft.Azure.Management.StorageSync.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 
@@ -53,6 +52,12 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
            Mandatory = true,
            ValueFromPipelineByPropertyName = false,
            HelpMessage = HelpMessages.ResourceGroupNameParameter)]
+        [Parameter(
+           Position = 0,
+           ParameterSetName = StorageSyncParameterSets.ChangeDetectionFullShareStringParameterSet,
+           Mandatory = true,
+           ValueFromPipelineByPropertyName = false,
+           HelpMessage = HelpMessages.ResourceGroupNameParameter)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -70,6 +75,12 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
         [Parameter(
            Position = 1,
            ParameterSetName = StorageSyncParameterSets.ChangeDetectionStringAndPathParameterSet,
+           Mandatory = true,
+           ValueFromPipelineByPropertyName = false,
+           HelpMessage = HelpMessages.StorageSyncServiceNameParameter)]
+        [Parameter(
+           Position = 1,
+           ParameterSetName = StorageSyncParameterSets.ChangeDetectionFullShareStringParameterSet,
            Mandatory = true,
            ValueFromPipelineByPropertyName = false,
            HelpMessage = HelpMessages.StorageSyncServiceNameParameter)]
@@ -94,6 +105,12 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
            Mandatory = true,
            ValueFromPipelineByPropertyName = false,
            HelpMessage = HelpMessages.SyncGroupNameParameter)]
+        [Parameter(
+           Position = 2,
+           ParameterSetName = StorageSyncParameterSets.ChangeDetectionFullShareStringParameterSet,
+           Mandatory = true,
+           ValueFromPipelineByPropertyName = false,
+           HelpMessage = HelpMessages.SyncGroupNameParameter)]
         [ValidateNotNullOrEmpty]
         // TODO : Place ResourceNameCompleter for all non root resources. https://github.com/Azure/azure-powershell/issues/8620
         [ResourceNameCompleter("Microsoft.StorageSync/storageSyncServices/syncGroups", "ResourceGroupName", "StorageSyncServiceName")]
@@ -109,6 +126,10 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
             HelpMessage = HelpMessages.CloudEndpointNameParameter)]
         [Parameter(Mandatory = true,
             ParameterSetName = StorageSyncParameterSets.ChangeDetectionStringAndPathParameterSet,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = HelpMessages.CloudEndpointNameParameter)]
+        [Parameter(Mandatory = true,
+            ParameterSetName = StorageSyncParameterSets.ChangeDetectionFullShareStringParameterSet,
             ValueFromPipelineByPropertyName = false,
             HelpMessage = HelpMessages.CloudEndpointNameParameter)]
         [ValidateNotNullOrEmpty]
@@ -131,6 +152,12 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
           Mandatory = true,
           ValueFromPipelineByPropertyName = true,
           HelpMessage = HelpMessages.CloudEndpointResourceIdParameter)]
+        [Parameter(
+          Position = 0,
+          ParameterSetName = StorageSyncParameterSets.ChangeDetectionFullShareResourceIdParameterSet,
+          Mandatory = true,
+          ValueFromPipelineByPropertyName = true,
+          HelpMessage = HelpMessages.CloudEndpointResourceIdParameter)]
         [ValidateNotNullOrEmpty]
         [Alias(StorageSyncAliases.CloudEndpointIdAlias)]
         [ResourceIdCompleter(StorageSyncConstants.CloudEndpointType)]
@@ -149,6 +176,12 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
         [Parameter(
            Position = 0,
            ParameterSetName = StorageSyncParameterSets.ChangeDetectionObjectAndPathParameterSet,
+           Mandatory = true,
+           ValueFromPipeline = true,
+           HelpMessage = HelpMessages.CloudEndpointObjectParameter)]
+        [Parameter(
+           Position = 0,
+           ParameterSetName = StorageSyncParameterSets.ChangeDetectionFullShareObjectParameterSet,
            Mandatory = true,
            ValueFromPipeline = true,
            HelpMessage = HelpMessages.CloudEndpointObjectParameter)]
@@ -275,7 +308,7 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
                     storageSyncServiceName = StorageSyncServiceName;
                 }
 
-                var triggerChangeDetectionParameters = default(TriggerChangeDetectionParameters);
+                var triggerChangeDetectionParameters = new TriggerChangeDetectionParameters();
                 if (this.IsParameterBound(c => c.DirectoryPath))
                 {
                     if (this.DirectoryPath == null)
@@ -283,9 +316,8 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
                         throw new PSArgumentException(nameof(this.DirectoryPath));
                     }
 
-                    triggerChangeDetectionParameters = new TriggerChangeDetectionParameters(
-                        directoryPath: this.DirectoryPath,
-                        changeDetectionMode: this.Recursive.IsPresent ? ChangeDetectionMode.Recursive : ChangeDetectionMode.Default);
+                    triggerChangeDetectionParameters.DirectoryPath = this.DirectoryPath;
+                    triggerChangeDetectionParameters.ChangeDetectionMode = this.Recursive.IsPresent ? ChangeDetectionMode.Recursive : ChangeDetectionMode.Default;
                 }
                 else if (this.IsParameterBound(c => c.Path))
                 {
@@ -294,12 +326,7 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
                         throw new PSArgumentException(nameof(this.Path));
                     }
 
-                    triggerChangeDetectionParameters = new TriggerChangeDetectionParameters(
-                        paths: this.Path.ToList());
-                }
-                else
-                {
-                    throw new PSArgumentException(nameof(this.DirectoryPath));
+                    triggerChangeDetectionParameters.Paths = this.Path.ToList();
                 }
 
                 string target = string.Join("/", resourceGroupName, storageSyncServiceName, parentResourceName, resourceName);

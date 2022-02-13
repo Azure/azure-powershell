@@ -1,22 +1,22 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/regulatoryComplianceStandards?api-version=2019-01-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDg3YmI0ODUtYjViMC00NzFlLTljMGQtMTA3MTc2MTJmODY5L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHkvcmVndWxhdG9yeUNvbXBsaWFuY2VTdGFuZGFyZHM/YXBpLXZlcnNpb249MjAxOS0wMS0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/f26d1f13-67d5-4ad6-9012-67ca12d2436f/providers/Microsoft.Security/regulatoryComplianceStandards?api-version=2019-01-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjI2ZDFmMTMtNjdkNS00YWQ2LTkwMTItNjdjYTEyZDI0MzZmL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHkvcmVndWxhdG9yeUNvbXBsaWFuY2VTdGFuZGFyZHM/YXBpLXZlcnNpb249MjAxOS0wMS0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "4215b6cd-c9e3-4f8b-ab65-9bf6f0f4b46e"
+          "cf0c8e88-7e02-4d87-85f0-4097c886773d"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28207.03",
+          "FxVersion/4.6.30015.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Security.SecurityCenterClient/1.1.1.0"
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Security.SecurityCenterClient/2.2.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -27,7 +27,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "5d0620b2-1216-411c-8669-a3651f21ada8"
+          "856778fb-0261-4d53-a66c-429f69fe117d"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -36,10 +36,10 @@
           "749"
         ],
         "x-ms-correlation-request-id": [
-          "c038289e-7a03-4cfb-8e61-07e2c14726e7"
+          "d9fcc266-9afa-4153-8085-991936e4c647"
         ],
         "x-ms-routing-request-id": [
-          "GERMANYWESTCENTRAL:20200401T100919Z:c038289e-7a03-4cfb-8e61-07e2c14726e7"
+          "FRANCESOUTH:20210621T130817Z:d9fcc266-9afa-4153-8085-991936e4c647"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -48,10 +48,10 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 01 Apr 2020 10:09:18 GMT"
+          "Mon, 21 Jun 2021 13:08:17 GMT"
         ],
         "Content-Length": [
-          "1319"
+          "1340"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -60,26 +60,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/regulatoryComplianceStandards/Azure-CIS-1.1.0\",\r\n      \"name\": \"Azure-CIS-1.1.0\",\r\n      \"type\": \"Microsoft.Security/regulatoryComplianceStandards\",\r\n      \"properties\": {\r\n        \"state\": \"Failed\",\r\n        \"passedControls\": 14,\r\n        \"failedControls\": 5,\r\n        \"skippedControls\": 1,\r\n        \"unsupportedControls\": 86\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/regulatoryComplianceStandards/ISO-27001\",\r\n      \"name\": \"ISO-27001\",\r\n      \"type\": \"Microsoft.Security/regulatoryComplianceStandards\",\r\n      \"properties\": {\r\n        \"state\": \"Failed\",\r\n        \"passedControls\": 9,\r\n        \"failedControls\": 9,\r\n        \"skippedControls\": 3,\r\n        \"unsupportedControls\": 93\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/regulatoryComplianceStandards/PCI-DSS-3.2.1\",\r\n      \"name\": \"PCI-DSS-3.2.1\",\r\n      \"type\": \"Microsoft.Security/regulatoryComplianceStandards\",\r\n      \"properties\": {\r\n        \"state\": \"Failed\",\r\n        \"passedControls\": 32,\r\n        \"failedControls\": 8,\r\n        \"skippedControls\": 3,\r\n        \"unsupportedControls\": 189\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/regulatoryComplianceStandards/SOC-TSP\",\r\n      \"name\": \"SOC-TSP\",\r\n      \"type\": \"Microsoft.Security/regulatoryComplianceStandards\",\r\n      \"properties\": {\r\n        \"state\": \"Passed\",\r\n        \"passedControls\": 12,\r\n        \"failedControls\": 0,\r\n        \"skippedControls\": 0,\r\n        \"unsupportedControls\": 25\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/f26d1f13-67d5-4ad6-9012-67ca12d2436f/providers/Microsoft.Security/regulatoryComplianceStandards/Azure-Security-Benchmark\",\r\n      \"name\": \"Azure-Security-Benchmark\",\r\n      \"type\": \"Microsoft.Security/regulatoryComplianceStandards\",\r\n      \"properties\": {\r\n        \"state\": \"Failed\",\r\n        \"passedControls\": 11,\r\n        \"failedControls\": 29,\r\n        \"skippedControls\": 0,\r\n        \"unsupportedControls\": 30\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/f26d1f13-67d5-4ad6-9012-67ca12d2436f/providers/Microsoft.Security/regulatoryComplianceStandards/ISO-27001\",\r\n      \"name\": \"ISO-27001\",\r\n      \"type\": \"Microsoft.Security/regulatoryComplianceStandards\",\r\n      \"properties\": {\r\n        \"state\": \"Failed\",\r\n        \"passedControls\": 6,\r\n        \"failedControls\": 14,\r\n        \"skippedControls\": 0,\r\n        \"unsupportedControls\": 94\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/f26d1f13-67d5-4ad6-9012-67ca12d2436f/providers/Microsoft.Security/regulatoryComplianceStandards/PCI-DSS-3.2.1\",\r\n      \"name\": \"PCI-DSS-3.2.1\",\r\n      \"type\": \"Microsoft.Security/regulatoryComplianceStandards\",\r\n      \"properties\": {\r\n        \"state\": \"Failed\",\r\n        \"passedControls\": 23,\r\n        \"failedControls\": 20,\r\n        \"skippedControls\": 0,\r\n        \"unsupportedControls\": 189\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/f26d1f13-67d5-4ad6-9012-67ca12d2436f/providers/Microsoft.Security/regulatoryComplianceStandards/SOC-TSP\",\r\n      \"name\": \"SOC-TSP\",\r\n      \"type\": \"Microsoft.Security/regulatoryComplianceStandards\",\r\n      \"properties\": {\r\n        \"state\": \"Failed\",\r\n        \"passedControls\": 3,\r\n        \"failedControls\": 10,\r\n        \"skippedControls\": 0,\r\n        \"unsupportedControls\": 24\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/regulatoryComplianceStandards/Azure-CIS-1.1.0?api-version=2019-01-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDg3YmI0ODUtYjViMC00NzFlLTljMGQtMTA3MTc2MTJmODY5L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHkvcmVndWxhdG9yeUNvbXBsaWFuY2VTdGFuZGFyZHMvQXp1cmUtQ0lTLTEuMS4wP2FwaS12ZXJzaW9uPTIwMTktMDEtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/f26d1f13-67d5-4ad6-9012-67ca12d2436f/providers/Microsoft.Security/regulatoryComplianceStandards/Azure-Security-Benchmark?api-version=2019-01-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjI2ZDFmMTMtNjdkNS00YWQ2LTkwMTItNjdjYTEyZDI0MzZmL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHkvcmVndWxhdG9yeUNvbXBsaWFuY2VTdGFuZGFyZHMvQXp1cmUtU2VjdXJpdHktQmVuY2htYXJrP2FwaS12ZXJzaW9uPTIwMTktMDEtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2c40de67-a15e-402f-9590-5c6bebda03fb"
+          "46a13aa0-9bdd-488d-b00b-7b5792bcb9c7"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28207.03",
+          "FxVersion/4.6.30015.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Security.SecurityCenterClient/1.1.1.0"
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Security.SecurityCenterClient/2.2.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -90,7 +90,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "07d3a630-685e-4a03-8251-686c42720a2f"
+          "01ecaca4-5699-425f-9f30-53ad714e4c79"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -99,10 +99,10 @@
           "748"
         ],
         "x-ms-correlation-request-id": [
-          "86caf7de-55e0-40cb-afcf-87dfba1600a3"
+          "853b51f9-6781-450d-b02b-5a743844db70"
         ],
         "x-ms-routing-request-id": [
-          "GERMANYWESTCENTRAL:20200401T100919Z:86caf7de-55e0-40cb-afcf-87dfba1600a3"
+          "FRANCESOUTH:20210621T130818Z:853b51f9-6781-450d-b02b-5a743844db70"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -111,10 +111,10 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 01 Apr 2020 10:09:19 GMT"
+          "Mon, 21 Jun 2021 13:08:17 GMT"
         ],
         "Content-Length": [
-          "334"
+          "353"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -123,12 +123,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/regulatoryComplianceStandards/Azure-CIS-1.1.0\",\r\n  \"name\": \"Azure-CIS-1.1.0\",\r\n  \"type\": \"Microsoft.Security/regulatoryComplianceStandards\",\r\n  \"properties\": {\r\n    \"state\": \"Failed\",\r\n    \"passedControls\": 14,\r\n    \"failedControls\": 5,\r\n    \"skippedControls\": 1,\r\n    \"unsupportedControls\": 86\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f26d1f13-67d5-4ad6-9012-67ca12d2436f/providers/Microsoft.Security/regulatoryComplianceStandards/Azure-Security-Benchmark\",\r\n  \"name\": \"Azure-Security-Benchmark\",\r\n  \"type\": \"Microsoft.Security/regulatoryComplianceStandards\",\r\n  \"properties\": {\r\n    \"state\": \"Failed\",\r\n    \"passedControls\": 11,\r\n    \"failedControls\": 29,\r\n    \"skippedControls\": 0,\r\n    \"unsupportedControls\": 30\r\n  }\r\n}",
       "StatusCode": 200
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "487bb485-b5b0-471e-9c0d-10717612f869"
+    "SubscriptionId": "f26d1f13-67d5-4ad6-9012-67ca12d2436f"
   }
 }

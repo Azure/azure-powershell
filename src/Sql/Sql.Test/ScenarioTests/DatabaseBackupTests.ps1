@@ -19,7 +19,7 @@
 function Test-ListDatabaseRestorePoints
 {
 	# Setup
-	$location = "westcentralus"
+	$location = "southeastasia"
 	$serverVersion = "12.0";
 	$rg = Create-ResourceGroupForTest
 
@@ -30,11 +30,11 @@ function Test-ListDatabaseRestorePoints
 		# Create data warehouse database with all parameters.
 		$databaseName = Get-DatabaseName
 		$dwdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-			-Edition DataWarehouse -RequestedServiceObjectiveName DW100c
+			-Edition DataWarehouse -RequestedServiceObjectiveName DW100c -Force
 
 		$databaseName = Get-DatabaseName
 		$standarddb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-			-Edition Standard -RequestedServiceObjectiveName S0
+			-Edition Standard -RequestedServiceObjectiveName S0 -Force
 
 		# Get restore points from data warehouse database.
 		$restorePoints = Get-AzSqlDatabaseRestorePoint -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName
@@ -79,7 +79,7 @@ function Test-RestoreGeoBackup
 function Test-RestoreDeletedDatabaseBackup
 {
 	# Setup
-	$location = "westcentralus"
+	$location = "southeastasia"
 	$serverVersion = "12.0"
 	$rg = Create-ResourceGroupForTest
 	$restoredDbName = "powershell_db_deleted"
@@ -136,7 +136,7 @@ function Test-RestorePointInTimeBackup
 # TODO update for LTRv2 backup
 function Test-RestoreLongTermRetentionBackup
 {
-	$location = "West Central US"
+	$location = "southeast asia"
 	$serverVersion = "12.0"
 	$rg = Get-AzResourceGroup -ResourceGroupName "brandong-test"
 	$server = Get-AzSqlServer -ServerName "brandong-ltr-test" -ResourceGroupName $rg.ResourceGroupName
@@ -147,10 +147,10 @@ function Test-RestoreLongTermRetentionBackup
 		-ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName
 }
 
-function Test-LongTermRetentionV2Policy($location = "westcentralus")
+function Test-LongTermRetentionV2Policy($location = "southeastasia")
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "servers" "West central US"
+	$location = Get-Location "Microsoft.Sql" "servers" "southeast asia"
 	$rg = Create-ResourceGroupForTest
 	$server = Create-ServerForTest $rg $location
 	$weeklyRetention1 = "P1W"
@@ -161,7 +161,7 @@ function Test-LongTermRetentionV2Policy($location = "westcentralus")
 	{
 		# Create with default values
 		$databaseName = Get-DatabaseName
-		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Force
 
 		# Basic Policy Test
 		Set-AzSqlDatabaseLongTermRetentionPolicy -ResourceGroup $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -WeeklyRetention $weeklyRetention2
@@ -183,10 +183,10 @@ function Test-LongTermRetentionV2Policy($location = "westcentralus")
 	}
 }
 
-function Test-LongTermRetentionV2Backup($location = "westcentralus")
+function Test-LongTermRetentionV2Backup($location = "southeastasia")
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "servers" "West central US"
+	$location = Get-Location "Microsoft.Sql" "servers" "southeast asia"
 	$rg = Create-ResourceGroupForTest
 	$server = Create-ServerForTest $rg $location
 
@@ -194,7 +194,7 @@ function Test-LongTermRetentionV2Backup($location = "westcentralus")
 	{
 		# Create with default values
 		$databaseName = Get-DatabaseName
-		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Force
 		
 		# Basic Get Tests
 		Get-AzSqlDatabaseLongTermRetentionBackup -Location $db.Location
@@ -210,10 +210,10 @@ function Test-LongTermRetentionV2Backup($location = "westcentralus")
 	}
 }
 
-function Test-LongTermRetentionV2ResourceGroupBasedBackup($location = "westcentralus")
+function Test-LongTermRetentionV2ResourceGroupBasedBackup($location = "southeastasia")
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "servers" "West central US"
+	$location = Get-Location "Microsoft.Sql" "servers" "southeast asia"
 	$rg = Create-ResourceGroupForTest
 	$server = Create-ServerForTest $rg $location
 
@@ -221,7 +221,7 @@ function Test-LongTermRetentionV2ResourceGroupBasedBackup($location = "westcentr
 	{
 		# Create with default values
 		$databaseName = Get-DatabaseName
-		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Force
 		
 		# Basic Get Tests
 		Get-AzSqlDatabaseLongTermRetentionBackup -Location $db.Location -ResourceGroupName $server.ResourceGroupName
@@ -399,7 +399,7 @@ function Test-NewDatabaseRestorePoint
 function Test-RemoveDatabaseRestorePoint
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "servers" "West central US"
+	$location = Get-Location "Microsoft.Sql" "servers" "southeast asia"
 	$serverVersion = "12.0";
 	$label = "label01";
 	$rg = Create-ResourceGroupForTest
@@ -411,7 +411,7 @@ function Test-RemoveDatabaseRestorePoint
 		# Create data warehouse database with all parameters.
 		$databaseName = Get-DatabaseName
 		$dwdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-			-Edition DataWarehouse -RequestedServiceObjectiveName DW100
+			-Edition DataWarehouse -RequestedServiceObjectiveName DW100 -Force
 			
 		New-AzSqlDatabaseRestorePoint -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName -RestorePointLabel $label
 
@@ -443,53 +443,275 @@ function Test-RemoveDatabaseRestorePoint
 function Test-ShortTermRetentionPolicy
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "servers" "West US 2"
-	$rg = Create-ResourceGroupForTest $location
-	$server = Create-ServerForTest $rg $location
+	$location = "westus2"
+	$rg = "WestUS2ResourceGroup"
+	$server = "lillian-westus2-server"
 
  	try
 	{
 		# Create db with default values
 		$databaseName = Get-DatabaseName
-		$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+		$db = New-AzSqlDatabase -ResourceGroupName $rg -ServerName $server -DatabaseName $databaseName -Force:$true
 
- 		# Test default parameter set
-		$retention = 28
-		$policy = Set-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RetentionDays $retention
+		# Test GET default values. 
+		$defaultRetention = 7
+		# After we configure Backup Service's default DiffBackupIntervalInHours to 24 hours for new created databases, $defaultDiffbackupinterval should be changed to 24.
+		$defaultDiffbackupinterval = 12
+		$policy = Get-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg -ServerName $server -DatabaseName $databaseName
+		Assert-AreEqual $policy.Count 1
+		Assert-AreEqual $defaultRetention $policy[0].RetentionDays
+		Assert-AreEqual $defaultDiffbackupinterval $policy[0].DiffBackupIntervalInHours
+
+ 		# Test SET
+		$retention = 6
+		$diffbackupinterval = 24
+		$policy = Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg -ServerName $server -DatabaseName $databaseName -RetentionDays $retention -DiffBackupIntervalInHours $diffbackupinterval
 		Assert-AreEqual $policy.Count 1
 		Assert-AreEqual $retention $policy[0].RetentionDays
-		$policy = Get-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
-		Assert-AreEqual $policy.Count 1
-		Assert-AreEqual $retention $policy[0].RetentionDays
+		Assert-AreEqual $diffbackupinterval $policy[0].DiffBackupIntervalInHours
 
+		$retentionOnly = 5
+		$policy = Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg -ServerName $server -DatabaseName $databaseName -RetentionDays $retentionOnly
+		Assert-AreEqual $policy.Count 1
+		Assert-AreEqual $retentionOnly $policy[0].RetentionDays
+		Assert-AreEqual $diffbackupinterval $policy[0].DiffBackupIntervalInHours
+
+		$diffbackupintervalOnly = 12
+		$policy = Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg -ServerName $server -DatabaseName $databaseName -DiffBackupIntervalInHours $diffbackupintervalOnly
+		Assert-AreEqual $policy.Count 1
+		Assert-AreEqual $retentionOnly $policy[0].RetentionDays
+		Assert-AreEqual $diffbackupintervalOnly $policy[0].DiffBackupIntervalInHours
+		
  		# Test InputObject
-		$retention = 21
-		$policy = Set-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -AzureSqlDatabase $db -RetentionDays $retention
+		$retention = 7
+		$diffbackupinterval = 24
+		$policy = Set-AzSqlDatabaseBackupShortTermRetentionPolicy -AzureSqlDatabase $db -RetentionDays $retention -DiffBackupIntervalInHours $diffbackupinterval
 		Assert-AreEqual 1 $policy.Count
 		Assert-AreEqual $retention $policy[0].RetentionDays
-		$policy = Get-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -AzureSqlDatabase $db
+		Assert-AreEqual $diffbackupinterval $policy[0].DiffBackupIntervalInHours
+		$policy = Get-AzSqlDatabaseBackupShortTermRetentionPolicy -AzureSqlDatabase $db
 		Assert-AreEqual 1 $policy.Count
 		Assert-AreEqual $retention $policy[0].RetentionDays
+		Assert-AreEqual $diffbackupinterval $policy[0].DiffBackupIntervalInHours
 
  		# Test ResourceId
-		$retention = 14
+		$retention = 6
+		$diffbackupinterval = 12
 		$resourceId = $db.ResourceId + "/backupShortTermRetentionPolicies/default"
-		$policy = Set-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -ResourceId $resourceId -RetentionDays $retention
+		$policy = Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceId $resourceId -RetentionDays $retention -DiffBackupIntervalInHours $diffbackupinterval
 		Assert-AreEqual 1 $policy.Count
 		Assert-AreEqual $retention $policy[0].RetentionDays
-		$policy = Get-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -ResourceId $resourceId
+		Assert-AreEqual $diffbackupinterval $policy[0].DiffBackupIntervalInHours
+		$policy = Get-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceId $resourceId
 		Assert-AreEqual 1 $policy.Count
 		Assert-AreEqual $retention $policy[0].RetentionDays
+		Assert-AreEqual $diffbackupinterval $policy[0].DiffBackupIntervalInHours
 
  		# Test Piping
 		$retention = 7
-		$policy = $db | Set-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -RetentionDays $retention
+		$diffbackupinterval = 24
+		$policy = $db | Set-AzSqlDatabaseBackupShortTermRetentionPolicy -RetentionDays $retention -DiffBackupIntervalInHours $diffbackupinterval
 		Assert-AreEqual 1 $policy.Count
 		Assert-AreEqual $retention $policy[0].RetentionDays
-		$policy = $db | Get-AzureRmSqlDatabaseBackupShortTermRetentionPolicy
+		Assert-AreEqual $diffbackupinterval $policy[0].DiffBackupIntervalInHours
+		$policy = $db | Get-AzSqlDatabaseBackupShortTermRetentionPolicy
 		Assert-AreEqual 1 $policy.Count
 		Assert-AreEqual $retention $policy[0].RetentionDays
+		Assert-AreEqual $diffbackupinterval $policy[0].DiffBackupIntervalInHours
  	}
+	finally
+	{
+		Remove-AzSqlDatabase -ResourceGroupName $rg -ServerName $server -DatabaseName $databaseName
+	}
+}
+
+function Test-CopyLongTermRetentionBackup
+{
+	# MANUAL INSTRUCTIONS
+	# Create a server and database and fill in the appropriate information below
+	# Set the weekly retention on the database so that the first backup gets picked up, for example:
+	# Set-AzSqlDatabaseLongTermRetentionPolicy -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseName -WeeklyRetention P1W
+	# Wait about 18 hours until it gets properly copied and you see the backup when run get backups, for example:
+	# Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaseName $databaseName -ResourceGroupName $resourceGroup
+	$sourceResourceGroupName = "testrg"
+	$targetResourceGroupName = "testrg"
+	$sourceLocationName = "eastasia"
+	$sourceServerName = "ayang-eas"
+	$targetLocationName = "southeastasia"
+	$targetServerName= "ayang-stage-seas"
+	$targetDatabaseName = "tgt-ltr1"
+
+	# Retrieve a backup to copy
+	$sourceBackups = Get-AzSqlDatabaseLongTermRetentionBackup -Location $sourceLocationName 
+	Assert-AreNotEqual $sourceBackups.Count 0
+	$sourceBackup = $sourceBackups[0]
+
+	# Copy backup
+	$copyBackupResults = Copy-AzSqlDatabaseLongTermRetentionBackup -Location $sourceLocationName -ServerName $sourceBackup.ServerName -DatabaseName $sourceBackup.DatabaseName -BackupName $sourceBackup.BackupName -ResourceGroupName $sourceResourceGroupName -TargetDatabaseName $targetDatabaseName -TargetServerName $TargetServerName -TargetSubscriptionId '01c4ec88-e179-44f7-9eb0-e9719a5087ab' -TargetResourceGroupName $targetResourceGroupName
+	$targetBackup = Get-AzSqlDatabaseLongTermRetentionBackup -Location $copyBackupResults.TargetLocation -ResourceGroup $copyBackupResults.TargetResourceGroupName -ServerName $copyBackupResults.TargetServerName -DatabaseName $copyBackupResults.TargetDatabaseName -BackupName $copyBackupResults.TargetBackupName
+	Assert-AreEqual $targetDatabaseName $targetBackup.DatabaseName 
+	Assert-AreEqual $targetServerName $targetBackup.ServerName
+}
+
+function Test-UpdateLongTermRetentionBackup
+{
+	# MANUAL INSTRUCTIONS
+	# Create a server and database and fill in the appropriate information below
+	# Set the weekly retention on the database so that the first backup gets picked up, for example:
+	# Set-AzSqlDatabaseLongTermRetentionPolicy -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseName -WeeklyRetention P1W
+	# Wait about 18 hours until it gets properly copied and you see the backup when run get backups, for example:
+	# Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaeName $databaseName -ResourceGroupName $resourceGroup
+	$resourceGroupName = "testrg"
+	$locationName = "eastasia"
+	$serverName = "ayang-eas"
+	$databaseName = "ltr1"
+
+	# Fetch a backup
+	$backups = Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName
+	$backup = $backups[0]
+
+	# Change backup storage redundancy of database, so LTR backup's backup storage redundancy can be changed 
+	# LTR backup's backup storage redundancy must match database's backup storage redundancy
+	# Use a backup storage redundancy different from the CurrentBackupStorageRedundancy value in Get-AzSqlDatabase
+	Set-AzSqlDatabase -DatabaseName $databaseName -ServerName $serverName -ResourceGroupName $resourceGroupName -BackupStorageRedundancy Local
+
+	# Change backup's backup storage redundancy 
+	$backupAfterSet = Update-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $backup.ServerName -DatabaseName $backup.DatabaseName -BackupName $backup.BackupName -ResourceGroupName $backup.ResourceGroupName -BackupStorageRedundancy Local
+
+	# Update-AzSqlDatabaseLongTermRetentionBackup returns after target BSR is set
+	Assert-AreEqual "Local" $backupAfterSet.BackupStorageRedundancy 
+}
+
+<#
+	.SYNOPSIS
+	Tests restoring a vldb with source zone redundant == false
+	1. Restore source vldb passing in zone redundant == true and backup storage redundancy == Zone,
+	   Verify restored vldb has zone redundant == true and backup storage redundancy == Zone
+	2. Restore source vldb with no parameters passed in,
+	   Verify restored vldb has zone redundant == false and backup storage redundancy == Geo
+#>
+function Test-CreateRestoreRegularAndZoneRedundantDatabaseWithSourceNotZoneRedundant()
+{
+	# Setup
+	$location = Get-Location "Microsoft.Sql" "operations" "East US 2 EUAP"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+	$sourceNonZRDatabaseName = Get-DatabaseName + "-non-zr"
+
+	$restoreTrueZRParamDatabaseName = $sourceNonZRDatabaseName + "-source-non-zr-restore-zr-true"
+	$restoreNoZRParamDatabaseName = $sourceNonZRDatabaseName + "-source-non-zr-restore-no-zr-param"
+
+	try
+	{
+		# Create source vldb
+		$sourceNonZRDatabase = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $sourceNonZRDatabaseName `
+		 -VCore 2 -ComputeGeneration Gen5 -Edition Hyperscale -LicenseType "LicenseIncluded"
+
+		# Verify created source vldb has correct values (specifically zone redundancy == false and backup storage redundancy == Geo)
+		Assert-AreEqual $sourceNonZRDatabase.ServerName $server.ServerName
+		Assert-AreEqual $sourceNonZRDatabase.DatabaseName $sourceNonZRDatabaseName
+		Assert-AreEqual $sourceNonZRDatabase.Edition "Hyperscale"
+		Assert-AreEqual $sourceNonZRDatabase.CurrentBackupStorageRedundancy "Geo"
+		Assert-NotNull  $sourceNonZRDatabase.ZoneRedundant 
+		Assert-False    { $sourceNonZRDatabase.ZoneRedundant }
+
+		# Get current time for PITR
+		$time = Get-Date
+		$utcTime = $Time.ToUniversalTime()
+		$pitrTime = $utcTime.ToString("yyyy-MM-ddTHH:mm:ssZ")
+
+		# Restore source vldb with zone redundancy == true and backup storage redundancy == Zone
+		$restoreTrueZRParamDatabase = Restore-AzSqlDatabase -FromPointInTimeBackup -PointInTime $pitrTime -TargetDatabaseName $restoreTrueZRParamDatabaseName -ResourceGroupName $rg.ResourceGroupName `
+		-ServerName $server.ServerName -ResourceId $sourceNonZRDatabase.ResourceId -VCore 2 -ComputeGeneration Gen5 -Edition Hyperscale -BackupStorageRedundancy "Zone" -ZoneRedundant
+
+		# Verify restored vldb has correct values (specifically zone redundancy == true and backup storage redundancy == Zone)
+		Assert-AreEqual $restoreTrueZRParamDatabase.ServerName $server.ServerName
+		Assert-AreEqual $restoreTrueZRParamDatabase.DatabaseName $restoreTrueZRParamDatabaseName
+		Assert-AreEqual $restoreTrueZRParamDatabase.Edition "Hyperscale"
+		Assert-AreEqual $restoreTrueZRParamDatabase.CurrentBackupStorageRedundancy "Zone"
+		Assert-NotNull  $restoreTrueZRParamDatabase.ZoneRedundant 
+		Assert-True     { $restoreTrueZRParamDatabase.ZoneRedundant }
+
+		# Restore source vldb with no parameters passed in
+		$restoreNoZRParamDatabase = Restore-AzSqlDatabase -FromPointInTimeBackup -PointInTime $pitrTime -TargetDatabaseName $restoreNoZRParamDatabaseName -ResourceGroupName $rg.ResourceGroupName `
+		-ServerName $server.ServerName -ResourceId $sourceNonZRDatabase.ResourceId
+
+		# Verify restored vldb has correct values (specifically zone redundancy == false and backup storage redundancy == Geo)
+		Assert-AreEqual $restoreNoZRParamDatabase.ServerName $server.ServerName
+		Assert-AreEqual $restoreNoZRParamDatabase.DatabaseName $restoreNoZRParamDatabaseName
+		Assert-AreEqual $restoreNoZRParamDatabase.Edition "Hyperscale"
+		Assert-AreEqual $restoreNoZRParamDatabase.CurrentBackupStorageRedundancy "Geo"
+		Assert-NotNull  $restoreNoZRParamDatabase.ZoneRedundant 
+		Assert-False    { $restoreNoZRParamDatabase.ZoneRedundant }
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests restoring a vldb with source zone redundant == true and backup storage redundancy == Zone
+	1. Restore source vldb passing in zone redundant == false and backup storage redundancy == Zone,
+	   Verify restored vldb has zone redundant == false and backup storage redundancy == Zone
+	2. Restore source vldb with no parameters passed in,
+	   Verify restored vldb has zone redundant == true and backup storage redundancy == Zone
+#>
+function Test-CreateRestoreRegularAndZoneRedundantDatabaseWithSourceZoneRedundant()
+{
+	# Setup
+	$location = Get-Location "Microsoft.Sql" "operations" "East US 2 EUAP"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+	$sourceZRDatabaseName = Get-DatabaseName + "-zr"
+
+	$restoreFalseZRParamDatabaseName = $sourceZRDatabaseName + "-source-zr-restore-zr-false"
+	$restoreNoZRParamDatabaseName = $sourceZRDatabaseName + "-source-zr-restore-no-zr-param"
+
+	try
+	{
+		# Create source vldb with zone redundancy == true and backup storage redundancy == Zone
+		$sourceZRDatabase = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $sourceZRDatabaseName `
+		 -VCore 2 -ComputeGeneration Gen5 -Edition Hyperscale -LicenseType "LicenseIncluded" -BackupStorageRedundancy "Zone" -ZoneRedundant
+
+		# Verify created source vldb has correct values (specifically zone redundancy == true and backup storage redundancy == Zone)
+		Assert-AreEqual $sourceZRDatabase.ServerName $server.ServerName
+		Assert-AreEqual $sourceZRDatabase.DatabaseName $sourceZRDatabaseName
+		Assert-AreEqual $sourceZRDatabase.Edition "Hyperscale"
+		Assert-AreEqual $sourceZRDatabase.CurrentBackupStorageRedundancy "Zone"
+		Assert-NotNull  $sourceZRDatabase.ZoneRedundant 
+		Assert-True     { $sourceZRDatabase.ZoneRedundant }
+
+		# Get current time for PITR
+		$time = Get-Date
+		$utcTime = $Time.ToUniversalTime()
+		$pitrTime = $utcTime.ToString("yyyy-MM-ddTHH:mm:ssZ")
+
+		# Copy source vldb with zone redundancy == false
+		$restoreFalseZRParamDatabase = Restore-AzSqlDatabase -FromPointInTimeBackup -PointInTime $pitrTime -TargetDatabaseName $restoreFalseZRParamDatabaseName -ResourceGroupName $rg.ResourceGroupName `
+		-ServerName $server.ServerName -ResourceId $sourceZRDatabase.ResourceId -VCore 2 -ComputeGeneration Gen5 -Edition Hyperscale -ZoneRedundant:$false
+		
+		# Verify restored vldb has correct values (specifically zone redundancy == false and backup storage redundancy == Zone)
+		Assert-AreEqual $restoreFalseZRParamDatabase.ServerName $server.ServerName
+		Assert-AreEqual $restoreFalseZRParamDatabase.DatabaseName $restoreFalseZRParamDatabaseName
+		Assert-AreEqual $restoreFalseZRParamDatabase.Edition "Hyperscale"
+		Assert-AreEqual $restoreFalseZRParamDatabase.CurrentBackupStorageRedundancy "Zone"
+		Assert-NotNull  $restoreFalseZRParamDatabase.ZoneRedundant 
+		Assert-False    { $restoreFalseZRParamDatabase.ZoneRedundant }
+
+		# Restore source vldb with no parameters passed in
+		$restoreNoZRParamDatabase = Restore-AzSqlDatabase -FromPointInTimeBackup -PointInTime $pitrTime -TargetDatabaseName $restoreNoZRParamDatabaseName -ResourceGroupName $rg.ResourceGroupName `
+		-ServerName $server.ServerName -ResourceId $sourceZRDatabase.ResourceId
+
+		# Verify restored vldb has correct values (specifically zone redundancy == true and backup storage redundancy == Zone)
+		Assert-AreEqual $restoreNoZRParamDatabase.ServerName $server.ServerName
+		Assert-AreEqual $restoreNoZRParamDatabase.DatabaseName $restoreNoZRParamDatabaseName
+		Assert-AreEqual $restoreNoZRParamDatabase.Edition "Hyperscale"
+		Assert-AreEqual $restoreNoZRParamDatabase.CurrentBackupStorageRedundancy "Zone"
+		Assert-NotNull  $restoreNoZRParamDatabase.ZoneRedundant 
+		Assert-True     { $restoreNoZRParamDatabase.ZoneRedundant }
+	}
 	finally
 	{
 		Remove-ResourceGroupForTest $rg

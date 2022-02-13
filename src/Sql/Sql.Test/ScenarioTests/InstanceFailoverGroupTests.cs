@@ -95,14 +95,14 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-SetInstanceFailoverGroup-ManualToAutomaticNoGracePeriod");
         }
 
-        [Fact]
+        [Fact(Skip = "Command Swith should be executed on secondary.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Test_SwitchInstanceFailoverGroup()
         {
             RunPowerShellTest("Test-SwitchInstanceFailoverGroup");
         }
 
-        [Fact]
+        [Fact(Skip = "Command Swith should be executed on secondary.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Test_SwitchInstanceFailoverGroupAllowDataLoss()
         {

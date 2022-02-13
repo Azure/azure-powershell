@@ -30,7 +30,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         /// <param name="value">the value to convert to an instance of <see cref="CloneAbilityResult" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new CloneAbilityResult(System.Convert.ToString(value));
+            return new CloneAbilityResult(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type CloneAbilityResult</summary>

@@ -1,0 +1,1818 @@
+{
+  "ModuleName": "Az.Advisor",
+  "ModuleVersion": "1.1.2",
+  "Cmdlets": [
+    {
+      "VerbName": "Disable",
+      "NounName": "AzAdvisorRecommendation",
+      "Name": "Disable-AzAdvisorRecommendation",
+      "ClassName": "Microsoft.Azure.Commands.Advisor.Cmdlets.DisableAzAdvisorRecommendation",
+      "SupportsShouldProcess": true,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "IdParameterSet",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models",
+            "Name": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorSuppressionContract",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorSuppressionContract, Microsoft.Azure.PowerShell.Cmdlets.Advisor, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "SuppressionId": "System.String",
+              "Ttl": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String"
+            },
+            "Methods": [
+              {
+                "Name": "GetType",
+                "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Object"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "ReturnType": "System.Int32"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "Parameters": [
+                  {
+                    "Name": "suppressionId",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "ttl",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "ResourceId",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "Days",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Int32",
+            "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateRangeMin": 1,
+          "ValidateRangeMax": 2147483647,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "InputObject",
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models",
+            "Name": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase, Microsoft.Azure.PowerShell.Cmdlets.Advisor, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "ShortDescription": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsRecommendationBaseShortDescription",
+              "Metadata": "System.Collections.Generic.IDictionary`2[System.String,System.Object]",
+              "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "SuppressionIds": "System.Collections.Generic.IList`1[System.Nullable`1[System.Guid]]",
+              "LastUpdated": "System.Nullable`1[System.DateTime]",
+              "ResourceId": "System.String",
+              "Category": "System.String",
+              "Impact": "System.String",
+              "ImpactedField": "System.String",
+              "ImpactedValue": "System.String",
+              "RecommendationTypeId": "System.String",
+              "Risk": "System.String",
+              "Name": "System.String",
+              "Type": "System.String"
+            }
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "RecommendationName",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "DefaultProfile",
+          "AliasList": [
+            "AzContext",
+            "AzureRmContext",
+            "AzureCredential"
+          ],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+              "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+              "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+              "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+            }
+          },
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "IdParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Days",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Int32",
+                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateRangeMin": 1,
+                "ValidateRangeMax": 2147483647,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  }
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "NameParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Days",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Int32",
+                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateRangeMin": 1,
+                "ValidateRangeMax": 2147483647,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "RecommendationName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  }
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "InputObjectParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Days",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Int32",
+                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateRangeMin": 1,
+                "ValidateRangeMax": 2147483647,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "InputObject",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models",
+                  "Name": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase, Microsoft.Azure.PowerShell.Cmdlets.Advisor, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "ShortDescription": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsRecommendationBaseShortDescription",
+                    "Metadata": "System.Collections.Generic.IDictionary`2[System.String,System.Object]",
+                    "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "SuppressionIds": "System.Collections.Generic.IList`1[System.Nullable`1[System.Guid]]",
+                    "LastUpdated": "System.Nullable`1[System.DateTime]",
+                    "ResourceId": "System.String",
+                    "Category": "System.String",
+                    "Impact": "System.String",
+                    "ImpactedField": "System.String",
+                    "ImpactedValue": "System.String",
+                    "RecommendationTypeId": "System.String",
+                    "Risk": "System.String",
+                    "Name": "System.String",
+                    "Type": "System.String"
+                  }
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": true,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  }
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  }
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "VerbName": "Enable",
+      "NounName": "AzAdvisorRecommendation",
+      "Name": "Enable-AzAdvisorRecommendation",
+      "ClassName": "Microsoft.Azure.Commands.Advisor.Cmdlets.EnableAzAdvisorRecommendation",
+      "SupportsShouldProcess": true,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "NameParameterSet",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models",
+            "Name": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase, Microsoft.Azure.PowerShell.Cmdlets.Advisor, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "ShortDescription": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsRecommendationBaseShortDescription",
+              "Metadata": "System.Collections.Generic.IDictionary`2[System.String,System.Object]",
+              "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "SuppressionIds": "System.Collections.Generic.IList`1[System.Nullable`1[System.Guid]]",
+              "LastUpdated": "System.Nullable`1[System.DateTime]",
+              "ResourceId": "System.String",
+              "Category": "System.String",
+              "Impact": "System.String",
+              "ImpactedField": "System.String",
+              "ImpactedValue": "System.String",
+              "RecommendationTypeId": "System.String",
+              "Risk": "System.String",
+              "Name": "System.String",
+              "Type": "System.String"
+            },
+            "Methods": [
+              {
+                "Name": "GetType",
+                "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Object"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "ReturnType": "System.Int32"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": ""
+              }
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "ResourceId",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "InputObject",
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models",
+            "Name": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase, Microsoft.Azure.PowerShell.Cmdlets.Advisor, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "ShortDescription": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsRecommendationBaseShortDescription",
+              "Metadata": "System.Collections.Generic.IDictionary`2[System.String,System.Object]",
+              "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "SuppressionIds": "System.Collections.Generic.IList`1[System.Nullable`1[System.Guid]]",
+              "LastUpdated": "System.Nullable`1[System.DateTime]",
+              "ResourceId": "System.String",
+              "Category": "System.String",
+              "Impact": "System.String",
+              "ImpactedField": "System.String",
+              "ImpactedValue": "System.String",
+              "RecommendationTypeId": "System.String",
+              "Risk": "System.String",
+              "Name": "System.String",
+              "Type": "System.String"
+            }
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "RecommendationName",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "DefaultProfile",
+          "AliasList": [
+            "AzContext",
+            "AzureRmContext",
+            "AzureCredential"
+          ],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+              "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+              "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+              "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+            }
+          },
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "IdParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  }
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "InputObjectParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "InputObject",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models",
+                  "Name": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase, Microsoft.Azure.PowerShell.Cmdlets.Advisor, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "ShortDescription": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsRecommendationBaseShortDescription",
+                    "Metadata": "System.Collections.Generic.IDictionary`2[System.String,System.Object]",
+                    "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "SuppressionIds": "System.Collections.Generic.IList`1[System.Nullable`1[System.Guid]]",
+                    "LastUpdated": "System.Nullable`1[System.DateTime]",
+                    "ResourceId": "System.String",
+                    "Category": "System.String",
+                    "Impact": "System.String",
+                    "ImpactedField": "System.String",
+                    "ImpactedValue": "System.String",
+                    "RecommendationTypeId": "System.String",
+                    "Risk": "System.String",
+                    "Name": "System.String",
+                    "Type": "System.String"
+                  }
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": true,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  }
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "NameParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "RecommendationName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  }
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  }
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "VerbName": "Get",
+      "NounName": "AzAdvisorConfiguration",
+      "Name": "Get-AzAdvisorConfiguration",
+      "ClassName": "Microsoft.Azure.Commands.Advisor.Cmdlets.GetAzAdvisorConfiguration",
+      "SupportsShouldProcess": false,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "RgParameterSet",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models",
+            "Name": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData, Microsoft.Azure.PowerShell.Cmdlets.Advisor, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "Properties": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationProperties",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String"
+            },
+            "Methods": [
+              {
+                "Name": "GetType",
+                "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Object"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "ReturnType": "System.Int32"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": ""
+              }
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "ResourceGroupName",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "DefaultProfile",
+          "AliasList": [
+            "AzContext",
+            "AzureRmContext",
+            "AzureCredential"
+          ],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+              "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+              "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+              "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+            }
+          },
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "RgParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  }
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  }
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "VerbName": "Get",
+      "NounName": "AzAdvisorRecommendation",
+      "Name": "Get-AzAdvisorRecommendation",
+      "ClassName": "Microsoft.Azure.Commands.Advisor.Cmdlets.GetAzAdvisorRecommendation",
+      "SupportsShouldProcess": false,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "NameParameterSet",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models",
+            "Name": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase, Microsoft.Azure.PowerShell.Cmdlets.Advisor, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "ShortDescription": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsRecommendationBaseShortDescription",
+              "Metadata": "System.Collections.Generic.IDictionary`2[System.String,System.Object]",
+              "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "SuppressionIds": "System.Collections.Generic.IList`1[System.Nullable`1[System.Guid]]",
+              "LastUpdated": "System.Nullable`1[System.DateTime]",
+              "ResourceId": "System.String",
+              "Category": "System.String",
+              "Impact": "System.String",
+              "ImpactedField": "System.String",
+              "ImpactedValue": "System.String",
+              "RecommendationTypeId": "System.String",
+              "Risk": "System.String",
+              "Name": "System.String",
+              "Type": "System.String"
+            },
+            "Methods": [
+              {
+                "Name": "GetType",
+                "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Object"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "ReturnType": "System.Int32"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": ""
+              }
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "ResourceId",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "Category",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateSet": [
+            "Cost",
+            "HighAvailability",
+            "OperationalExcellence",
+            "Performance",
+            "Security"
+          ],
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ResourceGroupName",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "DefaultProfile",
+          "AliasList": [
+            "AzContext",
+            "AzureRmContext",
+            "AzureCredential"
+          ],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+              "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+              "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+              "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+            }
+          },
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "IdParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Category",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateSet": [
+                  "Cost",
+                  "HighAvailability",
+                  "OperationalExcellence",
+                  "Performance",
+                  "Security"
+                ],
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  }
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "NameParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Category",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateSet": [
+                  "Cost",
+                  "HighAvailability",
+                  "OperationalExcellence",
+                  "Performance",
+                  "Security"
+                ],
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  }
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  }
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "VerbName": "Set",
+      "NounName": "AzAdvisorConfiguration",
+      "Name": "Set-AzAdvisorConfiguration",
+      "ClassName": "Microsoft.Azure.Commands.Advisor.Cmdlets.SetAzAdvisorConfiguration",
+      "SupportsShouldProcess": true,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "InputObjectRgExcludeParameterSet",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models",
+            "Name": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData, Microsoft.Azure.PowerShell.Cmdlets.Advisor, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "Properties": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationProperties",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String"
+            },
+            "Methods": [
+              {
+                "Name": "GetType",
+                "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Object"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "ReturnType": "System.Int32"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": ""
+              }
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "Exclude",
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "LowCpuThreshold",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Int32",
+            "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateSet": [
+            "0",
+            "5",
+            "10",
+            "15",
+            "20"
+          ],
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ResourceGroupName",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "InputObject",
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models",
+            "Name": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData, Microsoft.Azure.PowerShell.Cmdlets.Advisor, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "Properties": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationProperties",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String"
+            }
+          },
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "DefaultProfile",
+          "AliasList": [
+            "AzContext",
+            "AzureRmContext",
+            "AzureCredential"
+          ],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+              "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+              "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+              "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+            }
+          },
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "InputObjectLowCpuExcludeParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Exclude",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "LowCpuThreshold",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Int32",
+                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateSet": [
+                  "0",
+                  "5",
+                  "10",
+                  "15",
+                  "20"
+                ],
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "InputObject",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models",
+                  "Name": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData, Microsoft.Azure.PowerShell.Cmdlets.Advisor, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "Properties": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationProperties",
+                    "Id": "System.String",
+                    "Name": "System.String",
+                    "Type": "System.String"
+                  }
+                },
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": 1,
+              "ValueFromPipeline": true,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  }
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "InputObjectRgExcludeParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Exclude",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "InputObject",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models",
+                  "Name": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData, Microsoft.Azure.PowerShell.Cmdlets.Advisor, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "Properties": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationProperties",
+                    "Id": "System.String",
+                    "Name": "System.String",
+                    "Type": "System.String"
+                  }
+                },
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": 1,
+              "ValueFromPipeline": true,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  }
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  }
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "TypeDictionary": {
+    "System.String": {
+      "Name": "System.String"
+    },
+    "System.Boolean": {
+      "Name": "System.Boolean"
+    },
+    "System.Byte": {
+      "Name": "System.Byte"
+    },
+    "System.SByte": {
+      "Name": "System.SByte"
+    },
+    "System.Int16": {
+      "Name": "System.Int16"
+    },
+    "System.UInt16": {
+      "Name": "System.UInt16"
+    },
+    "System.Int32": {
+      "Name": "System.Int32"
+    },
+    "System.UInt32": {
+      "Name": "System.UInt32"
+    },
+    "System.Int64": {
+      "Name": "System.Int64"
+    },
+    "System.UInt64": {
+      "Name": "System.UInt64"
+    },
+    "System.Single": {
+      "Name": "System.Single"
+    },
+    "System.Double": {
+      "Name": "System.Double"
+    },
+    "System.Decimal": {
+      "Name": "System.Decimal"
+    },
+    "System.Char": {
+      "Name": "System.Char"
+    },
+    "System.Type": {
+      "Namespace": "System",
+      "Name": "System.Type",
+      "AssemblyQualifiedName": "System.Type, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+    },
+    "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsRecommendationBaseShortDescription": {
+      "Namespace": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models",
+      "Name": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsRecommendationBaseShortDescription",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsRecommendationBaseShortDescription, Microsoft.Azure.PowerShell.Cmdlets.Advisor, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Problem": "System.String",
+        "Solution": "System.String"
+      },
+      "Methods": [
+        {
+          "Name": "GetType",
+          "ReturnType": "System.Type"
+        },
+        {
+          "Name": "ToString",
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Object"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "ReturnType": "System.Int32"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": ""
+        }
+      ]
+    },
+    "System.Collections.Generic.IDictionary`2[System.String,System.Object]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IDictionary`2[System.String,System.Object]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Object, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "System.String",
+        "System.Object"
+      ]
+    },
+    "System.Object": {
+      "Namespace": "System",
+      "Name": "System.Object",
+      "AssemblyQualifiedName": "System.Object, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+    },
+    "System.Collections.Generic.IDictionary`2[System.String,System.String]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "System.String",
+        "System.String"
+      ]
+    },
+    "System.Collections.Generic.IList`1[System.Nullable`1[System.Guid]]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IList`1[System.Nullable`1[System.Guid]]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[System.Nullable`1[[System.Guid, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "System.Nullable`1[System.Guid]"
+      ]
+    },
+    "System.Nullable`1[System.Guid]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[System.Guid]",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.Guid, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "System.Guid"
+      ]
+    },
+    "System.Guid": {
+      "Namespace": "System",
+      "Name": "System.Guid",
+      "AssemblyQualifiedName": "System.Guid, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+    },
+    "System.Nullable`1[System.DateTime]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[System.DateTime]",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "System.DateTime"
+      ]
+    },
+    "System.DateTime": {
+      "Namespace": "System",
+      "Name": "System.DateTime",
+      "AssemblyQualifiedName": "System.DateTime, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+    },
+    "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext": {
+      "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+      "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Account": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount",
+        "Environment": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment",
+        "Subscription": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription",
+        "Tenant": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant",
+        "TokenCache": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache",
+        "VersionProfile": "System.String"
+      }
+    },
+    "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount": {
+      "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+      "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "TenantMap": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+        "Id": "System.String",
+        "Credential": "System.String",
+        "Type": "System.String"
+      }
+    },
+    "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment": {
+      "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+      "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "OnPremise": "System.Boolean",
+        "VersionProfiles": "System.Collections.Generic.IList`1[System.String]",
+        "Name": "System.String",
+        "AdTenant": "System.String",
+        "AzureDataLakeStoreFileSystemEndpointSuffix": "System.String",
+        "AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix": "System.String",
+        "BatchEndpointResourceId": "System.String",
+        "DataLakeEndpointResourceId": "System.String",
+        "GraphEndpointResourceId": "System.String",
+        "AzureKeyVaultServiceEndpointResourceId": "System.String",
+        "AzureKeyVaultDnsSuffix": "System.String",
+        "TrafficManagerDnsSuffix": "System.String",
+        "SqlDatabaseDnsSuffix": "System.String",
+        "ActiveDirectoryServiceEndpointResourceId": "System.String",
+        "GraphUrl": "System.String",
+        "GalleryUrl": "System.String",
+        "ActiveDirectoryAuthority": "System.String",
+        "PublishSettingsFileUrl": "System.String",
+        "ManagementPortalUrl": "System.String",
+        "ResourceManagerUrl": "System.String",
+        "ServiceManagementUrl": "System.String",
+        "StorageEndpointSuffix": "System.String",
+        "ContainerRegistryEndpointSuffix": "System.String"
+      }
+    },
+    "System.Collections.Generic.IList`1[System.String]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IList`1[System.String]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "System.String"
+      ]
+    },
+    "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription": {
+      "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+      "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Id": "System.String",
+        "Name": "System.String",
+        "State": "System.String"
+      }
+    },
+    "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant": {
+      "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+      "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Id": "System.String"
+      }
+    },
+    "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache": {
+      "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+      "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "CacheData": "System.Byte[]"
+      },
+      "Methods": [
+        {
+          "Name": "Clear",
+          "ReturnType": "System.Void"
+        }
+      ]
+    },
+    "System.Byte[]": {
+      "Namespace": "System",
+      "Name": "System.Byte[]",
+      "AssemblyQualifiedName": "System.Byte[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "ElementType": "System.Byte"
+    },
+    "System.Void": {
+      "Namespace": "System",
+      "Name": "System.Void",
+      "AssemblyQualifiedName": "System.Void, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+    },
+    "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount"
+      ]
+    },
+    "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment"
+      ]
+    },
+    "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription"
+      ]
+    },
+    "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationProperties": {
+      "Namespace": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models",
+      "Name": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationProperties",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationProperties, Microsoft.Azure.PowerShell.Cmdlets.Advisor, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "AdditionalProperties": "System.Collections.Generic.IDictionary`2[System.String,System.Object]",
+        "Exclude": "System.Nullable`1[System.Boolean]",
+        "LowCpuThreshold": "System.String"
+      },
+      "Methods": [
+        {
+          "Name": "GetType",
+          "ReturnType": "System.Type"
+        },
+        {
+          "Name": "ToString",
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Object"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "ReturnType": "System.Int32"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": ""
+        }
+      ]
+    },
+    "System.Nullable`1[System.Boolean]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[System.Boolean]",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "System.Boolean"
+      ]
+    }
+  }
+}

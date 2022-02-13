@@ -1,0 +1,38 @@
+{
+  "Invoke-AzContainerInstanceCommand+[NoContext]+ExecuteExpanded+$POST+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgdabsp/providers/Microsoft.ContainerInstance/containerGroups/bez-test-cg/containers/bez-test-ci/exec?api-version=2021-09-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgdabsp/providers/Microsoft.ContainerInstance/containerGroups/bez-test-cg/containers/bez-test-ci/exec?api-version=2021-09-01",
+      "Content": "{\r\n  \"terminalSize\": {\r\n    \"rows\": 12,\r\n    \"cols\": 12\r\n  },\r\n  \"command\": \"echo hello\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "91" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "eastus:37fd4063-7af8-4a14-a135-b0b32e1f2113" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-correlation-request-id": [ "e51dbc28-b47d-4f59-ba33-d3e0f598c1d1" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211109T085617Z:e51dbc28-b47d-4f59-ba33-d3e0f598c1d1" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 09 Nov 2021 08:56:17 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "214" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"webSocketUri\":\"wss://sbzx49426vpqjxq.eastus.atlas.cloudapp.azure.com:19390/execstream/sessionId/677a0c53-598f-45d7-aa15-47fcab58293a?api-version=1.0\u0026rows=12\u0026cols=12\",\"password\":\"Gr{#^Iv5tlTDc(\u0026Bp#4nXH9!s[[EOM]]\"}",
+      "isContentBase64": false
+    }
+  }
+}

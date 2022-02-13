@@ -18,9 +18,68 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added a new parameter `-AsPlainText` to `Get-AzKeyVaultSecret` to directly return the secret in plain text
+
+## Version 4.2.1
+* Improved the error message of Az.KeyVault.Extension [#16798]
+* Added default access policies for Key Vault key as "All but purge"
+* Absorbed KeyOps from parameter when importing key from certificate on managed HSM [#16773]
+* Fixed a bug when updating key operations on managed HSM [#16774]
+* Fixed the issue when importing no-password certificate [#16742]
+
+## Version 4.2.0
+* Added cmdlets: `Invoke-AzKeyVaultKeyRotation`, `Get-AzKeyVaultKeyRotationPolicy` and `Set-AzKeyVaultKeyRotationPolicy`
+
+## Version 4.1.0
+* [Breaking Change] Renamed properties of `PSKeyVaultPermission` type to follow the pattern of Azure RBAC.
+* Migrated AAD Graph API to MSGraph API.
+* Added a message to `Set-AzKeyVaultAccessPolicy` stating that for the Permissions parameters, using the 'All' option will not include the 'Purge' permission.
+
+## Version 3.6.1
+* Added warning message of upcoming breaking change to `New-AzKeyVaultRoleDefinition` and `Get-AzKeyVaultRoleDefinition`.
+    - To comply with the syntax of `New-AzRoleDefinition` and `Get-AzRoleDefinition` we are going to rename some of the properties of `PSKeyVaultPermission` model, which might affect these two cmdlets.
+* Added warnings of upcoming breaking change of migrating to Microsoft Graph.
+
+## Version 3.6.0
+* Supported custom role definitions on managed HSM:
+    - Create via `New-AzKeyVaultRoleDefinition`,
+    - Delete via `Remove-AzKeyVaultRoleDefinition`,
+    - Filter all custom roles via `Get-AzKeyVaultRoleDefinition -Custom`.
+* Supported Encrypt/Decrypt/Wrap/Unwrap using keys [#15679]
+* Enabled managing resources in other subscriptions without switching the context by adding `-Subscription <String>`.
+
+## Version 3.5.0
+* Supported adding EC keys in key vault [#15699]
+
+## Version 3.4.5
+* Removed duplicate list item in `Get-AzKeyVault` [#15164]
+* Added `SecretManagement` tag to `Az.KeyVault` module [#15173]
+
+## Version 3.4.4
+* Provided key size for RSA key [#14819]
+
+## Version 3.4.3
+* Fixed a bug for `Get-AzKeyVaultSecret -IncludeVersions` when current version is disabled [#14740]
+* Displayed error code and message when updating purged secret [#14800]
+
+## Version 3.4.2
+* Fixed a bug for `Get-AzKeyVaultSecret -AsPlainText` if the secret is not found [#14645]
+
+## Version 3.4.1
+* Supported upcoming new API design for `Export-AzKeyVaultSecurityDomain`
+* Fixed several typos in cmdlet messages [#14341]
+
+## Version 3.4.0
+* Supported specifying key type and curve name when importing keys via a BYOK file
+
+## Version 3.3.1
+* Fixed an issue in Secret Management module
+
+## Version 3.3.0
+* Added a new parameter `-AsPlainText` to `Get-AzKeyVaultSecret` to directly return the secret in plain text [#13630]
 * Supported selective restore a key from a managed HSM full backup [#13526]
+* Fixed some minor issues [#13583] [#13584]
 * Added missing return objects of `Get-Secret` in SecretManagement module
+* Fixed an issue that may cause vault to be created without default access policy [#13687]
 
 ## Version 3.2.0
 * Supported "all" as an option when setting key vault access policies

@@ -18,12 +18,14 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Rest.Azure.OData;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using RestAzureNS = Microsoft.Rest.Azure;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using CrrModel = Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
@@ -69,7 +71,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             ItemBase itemBase = (ItemBase)ProviderData[ItemParams.Item];
 
-            AzureWorkloadSQLDatabaseProtectedItem item = (AzureWorkloadSQLDatabaseProtectedItem)ProviderData[ItemParams.Item];
+            AzureItem item;
+            if (itemBase.WorkloadType == CmdletModel.WorkloadType.SAPHanaDatabase)
+            {
+                item = (AzureWorkloadSAPHanaDatabaseProtectedItem)ProviderData[ItemParams.Item];                
+            }
+            else
+            {
+                item = (AzureWorkloadSQLDatabaseProtectedItem)ProviderData[ItemParams.Item];                
+            }
+            
             AzureVmWorkloadSQLDatabaseProtectedItem properties = new AzureVmWorkloadSQLDatabaseProtectedItem();
 
             return EnableOrModifyProtection(disableWithRetentionData: true);
@@ -77,20 +88,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         }
 
         public RestAzureNS.AzureOperationResponse DisableProtectionWithDeleteData()
-        {
+        {   
             string vaultName = (string)ProviderData[VaultParams.VaultName];
             string vaultResourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
             bool deleteBackupData = ProviderData.ContainsKey(ItemParams.DeleteBackupData) ?
                 (bool)ProviderData[ItemParams.DeleteBackupData] : false;
 
             ItemBase itemBase = (ItemBase)ProviderData[ItemParams.Item];
-
-            AzureWorkloadSQLDatabaseProtectedItem item = (AzureWorkloadSQLDatabaseProtectedItem)ProviderData[ItemParams.Item];
             string containerUri = "";
             string protectedItemUri = "";
-            AzureVmWorkloadSQLDatabaseProtectedItem properties = new AzureVmWorkloadSQLDatabaseProtectedItem();
 
-            ValidateAzureWorkloadSQLDatabaseDisableProtectionRequest(itemBase);
+            AzureItem item;
+            if (itemBase.WorkloadType == CmdletModel.WorkloadType.SAPHanaDatabase)
+            {
+                item = (AzureWorkloadSAPHanaDatabaseProtectedItem)ProviderData[ItemParams.Item];
+                ValidateAzureWorkloadSAPHanaDatabaseDisableProtectionRequest(itemBase);
+            }
+            else
+            {
+                item = (AzureWorkloadSQLDatabaseProtectedItem)ProviderData[ItemParams.Item];
+                ValidateAzureWorkloadSQLDatabaseDisableProtectionRequest(itemBase);
+            }
+
+            // AzureVmWorkloadSQLDatabaseProtectedItem properties = new AzureVmWorkloadSQLDatabaseProtectedItem();                 
 
             Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(item.Id);
             containerUri = HelperUtils.GetContainerUri(keyValueDict, item.Id);
@@ -104,7 +124,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         }
 
         public RestAzureNS.AzureOperationResponse<ProtectedItemResource> UndeleteProtection()
-        {
+        {   
             string vaultName = (string)ProviderData[VaultParams.VaultName];
             string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
             AzureWorkloadSQLDatabaseProtectedItem item = (AzureWorkloadSQLDatabaseProtectedItem)ProviderData[ItemParams.Item];
@@ -265,23 +285,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 (ItemProtectionState)ProviderData[ItemParams.ProtectionState];
             CmdletModel.WorkloadType workloadType =
                 (CmdletModel.WorkloadType)ProviderData[ItemParams.WorkloadType];
+            bool UseSecondaryRegion = (bool)ProviderData[CRRParams.UseSecondaryRegion];
             PolicyBase policy = (PolicyBase)ProviderData[PolicyParams.ProtectionPolicy];
 
-            // 1. Filter by container
-            List<ProtectedItemResource> protectedItems = AzureWorkloadProviderHelper.ListProtectedItemsByContainer(
+            string dataSourceType = (workloadType == CmdletModel.WorkloadType.SAPHanaDatabase) ? DataSourceType.SAPHanaDatabase : DataSourceType.SQLDataBase;
+            
+            List<CrrModel.ProtectedItemResource> protectedItemsCrr = null;
+            List<ProtectedItemResource> protectedItems = null;
+            List<ItemBase> itemModels = null;
+            if (UseSecondaryRegion)
+            {                
+                // 1. Filter by container
+                protectedItemsCrr = AzureWorkloadProviderHelper.ListProtectedItemsByContainerCrr(
                 vaultName,
                 resourceGroupName,
                 container,
                 policy,
                 ServiceClientModel.BackupManagementType.AzureWorkload,
-                DataSourceType.SQLDataBase);
-
-            List<ProtectedItemResource> protectedItemGetResponses =
-                new List<ProtectedItemResource>();
-
-            // 2. Filter by item name
-            List<ItemBase> itemModels = AzureWorkloadProviderHelper.ListProtectedItemsByItemName(
-                protectedItems,
+                dataSourceType);
+                
+                itemModels = AzureWorkloadProviderHelper.ListProtectedItemsByItemNameCrr(
+                protectedItemsCrr,
                 itemName,
                 vaultName,
                 resourceGroupName,
@@ -299,8 +323,42 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                             serviceClientExtendedInfo.RecoveryPointCount : 0);
                     ((AzureWorkloadSQLDatabaseProtectedItem)itemModel).LatestRecoveryPoint = ((AzureVmWorkloadSQLDatabaseProtectedItem)protectedItemGetResponse.Properties).LastRecoveryPoint;
                     ((AzureWorkloadSQLDatabaseProtectedItem)itemModel).ExtendedInfo = extendedInfo;
-                });
+                });                
+            }
+            else
+            {
+                // 1. Filter by container
+                protectedItems = AzureWorkloadProviderHelper.ListProtectedItemsByContainer(
+                vaultName,
+                resourceGroupName,
+                container,
+                policy,
+                ServiceClientModel.BackupManagementType.AzureWorkload,
+                dataSourceType);
 
+                // 2. Filter by item name
+                itemModels = AzureWorkloadProviderHelper.ListProtectedItemsByItemName(
+                    protectedItems,
+                    itemName,
+                    vaultName,
+                    resourceGroupName,
+                    (itemModel, protectedItemGetResponse) =>
+                    {
+                        AzureWorkloadSQLDatabaseProtectedItemExtendedInfo extendedInfo = new AzureWorkloadSQLDatabaseProtectedItemExtendedInfo();
+                        var serviceClientExtendedInfo = ((AzureVmWorkloadSQLDatabaseProtectedItem)protectedItemGetResponse.Properties).ExtendedInfo;
+                        if (serviceClientExtendedInfo.OldestRecoveryPoint.HasValue)
+                        {
+                            extendedInfo.OldestRecoveryPoint = serviceClientExtendedInfo.OldestRecoveryPoint;
+                        }
+                        extendedInfo.PolicyState = serviceClientExtendedInfo.PolicyState.ToString();
+                        extendedInfo.RecoveryPointCount =
+                            (int)(serviceClientExtendedInfo.RecoveryPointCount.HasValue ?
+                                serviceClientExtendedInfo.RecoveryPointCount : 0);
+                        ((AzureWorkloadSQLDatabaseProtectedItem)itemModel).LatestRecoveryPoint = ((AzureVmWorkloadSQLDatabaseProtectedItem)protectedItemGetResponse.Properties).LastRecoveryPoint;
+                        ((AzureWorkloadSQLDatabaseProtectedItem)itemModel).ExtendedInfo = extendedInfo;
+                    });
+            }
+            
             // 3. Filter by item's Protection Status
             if (protectionStatus != 0)
             {
@@ -326,7 +384,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 {
                     return itemModel.WorkloadType == workloadType;
                 }).ToList();
-            }
+            }           
 
             return itemModels;
         }
@@ -398,10 +456,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string vaultLocation = (string)ProviderData[VaultParams.VaultLocation];
             RecoveryConfigBase wLRecoveryConfigBase =
                 (RecoveryConfigBase)ProviderData[RestoreWLBackupItemParams.WLRecoveryConfig];
-
             AzureWorkloadRecoveryConfig wLRecoveryConfig =
                 (AzureWorkloadRecoveryConfig)ProviderData[RestoreWLBackupItemParams.WLRecoveryConfig];
             RestoreRequestResource triggerRestoreRequest = new RestoreRequestResource();
+            bool useSecondaryRegion = (bool)ProviderData[CRRParams.UseSecondaryRegion];
+            String secondaryRegion = useSecondaryRegion ? (string)ProviderData[CRRParams.SecondaryRegion] : null;
+            string rehydrateDuration = ProviderData.ContainsKey(RecoveryPointParams.RehydrateDuration) ?
+                ProviderData[RecoveryPointParams.RehydrateDuration].ToString() : "15";
+            string rehydratePriority = ProviderData.ContainsKey(RecoveryPointParams.RehydratePriority) ?
+                ProviderData[RecoveryPointParams.RehydratePriority].ToString() : null;
 
             if (wLRecoveryConfig.RecoveryPoint.ContainerName != null && wLRecoveryConfig.FullRP == null)
             {
@@ -426,6 +489,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         ContainerId = wLRecoveryConfig.ContainerId
                     };
                     azureWorkloadSQLRestoreRequest.AlternateDirectoryPaths = wLRecoveryConfig.targetPhysicalPath;
+
+                    if (wLRecoveryConfig.TargetVirtualMachineId != null && wLRecoveryConfig.TargetVirtualMachineId != "")
+                    {
+                        azureWorkloadSQLRestoreRequest.TargetVirtualMachineId = wLRecoveryConfig.TargetVirtualMachineId;
+                    }
+                    else
+                    {
+                        throw new ArgumentException(Resources.TargetVirtualMachineIdRequiredException);
+                    }                    
                 }
                 if (wLRecoveryConfig.RecoveryMode == "FileRecovery")
                 {
@@ -463,6 +535,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         ContainerId = wLRecoveryConfig.ContainerId
                     };
                     azureWorkloadSQLPointInTimeRestoreRequest.AlternateDirectoryPaths = wLRecoveryConfig.targetPhysicalPath;
+
+                    if (wLRecoveryConfig.TargetVirtualMachineId != null && wLRecoveryConfig.TargetVirtualMachineId != "")
+                    {
+                        azureWorkloadSQLPointInTimeRestoreRequest.TargetVirtualMachineId = wLRecoveryConfig.TargetVirtualMachineId;
+                    }
+                    else
+                    {
+                        throw new ArgumentException(Resources.TargetVirtualMachineIdRequiredException);
+                    }
                 }
 
                 if (wLRecoveryConfig.RecoveryMode == "FileRecovery")
@@ -481,14 +562,78 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 triggerRestoreRequest.Properties = azureWorkloadSQLPointInTimeRestoreRequest;
             }
 
-            var response = ServiceClientAdapter.RestoreDisk(
+            if (useSecondaryRegion)
+            {
+                AzureRecoveryPoint rp = (AzureRecoveryPoint)wLRecoveryConfig.RecoveryPoint;
+
+                // get access token
+                CrrModel.CrrAccessToken accessToken = ServiceClientAdapter.GetCRRAccessToken(rp, secondaryRegion, vaultName: vaultName, resourceGroupName: resourceGroupName, ServiceClientModel.BackupManagementType.AzureWorkload);
+
+                // AzureWorkload CRR Request
+                Logger.Instance.WriteDebug("Triggering Restore to secondary region: " + secondaryRegion);
+
+                CrrModel.CrossRegionRestoreRequest crrRestoreRequest = new CrrModel.CrossRegionRestoreRequest();
+                crrRestoreRequest.CrossRegionRestoreAccessDetails = accessToken;
+                                
+                // convert restore request to CRR restore request
+                if (triggerRestoreRequest.Properties.GetType().Name.Equals("AzureWorkloadSQLPointInTimeRestoreRequest"))
+                {
+                    var restoreRequestSerialized = JsonConvert.SerializeObject(triggerRestoreRequest.Properties);
+                    CrrModel.AzureWorkloadSQLPointInTimeRestoreRequest restoreRequestForSecondaryRegion = JsonConvert.DeserializeObject<CrrModel.AzureWorkloadSQLPointInTimeRestoreRequest>(restoreRequestSerialized);
+                    crrRestoreRequest.RestoreRequest = restoreRequestForSecondaryRegion;
+                }
+                else if(triggerRestoreRequest.Properties.GetType().Name.Equals("AzureWorkloadSQLRestoreRequest"))
+                {
+                    var restoreRequestSerialized = JsonConvert.SerializeObject(triggerRestoreRequest.Properties);
+                    CrrModel.AzureWorkloadSQLRestoreRequest restoreRequestForSecondaryRegion = JsonConvert.DeserializeObject<CrrModel.AzureWorkloadSQLRestoreRequest>(restoreRequestSerialized);
+                    crrRestoreRequest.RestoreRequest = restoreRequestForSecondaryRegion;
+                }
+
+                // storage account location isn't required in case of workload restore
+                var response = ServiceClientAdapter.RestoreDiskSecondryRegion(
+                    rp,
+                    triggerCRRRestoreRequest: crrRestoreRequest,
+                    secondaryRegion: secondaryRegion);
+                return response;
+            }
+            else
+            {
+                #region Rehydrate Restore 
+                CmdletModel.AzureWorkloadRecoveryPoint rp =  (CmdletModel.AzureWorkloadRecoveryPoint)wLRecoveryConfig.RecoveryPoint;
+
+                if(rp.RecoveryPointTier == RecoveryPointTier.VaultArchive && rehydratePriority == null)
+                {
+                    throw new ArgumentException(Resources.InvalidRehydration); 
+                }
+
+                if (rp.RecoveryPointTier == RecoveryPointTier.VaultArchive && rehydratePriority != null)
+                {
+                    var azureWorkloadRestoreRequestSerialized = JsonConvert.SerializeObject(triggerRestoreRequest.Properties);
+                    
+                    if (triggerRestoreRequest.Properties.GetType().Equals("AzureWorkloadSQLPointInTimeRestoreRequest"))
+                    {
+                        Logger.Instance.WriteWarning("Rehyrate restore isn't supported for AzureWorkloadSQLPointInTimeRestore ");                        
+                    }
+                    else
+                    {
+                        AzureWorkloadSQLRestoreWithRehydrateRequest azureWorkloadRestoreRequestDeSerialized = JsonConvert.DeserializeObject<AzureWorkloadSQLRestoreWithRehydrateRequest>(azureWorkloadRestoreRequestSerialized);
+                        azureWorkloadRestoreRequestDeSerialized.RecoveryPointRehydrationInfo = new RecoveryPointRehydrationInfo();
+                        azureWorkloadRestoreRequestDeSerialized.RecoveryPointRehydrationInfo.RehydrationRetentionDuration = "P" + rehydrateDuration + "D"; // P <val> D
+                        azureWorkloadRestoreRequestDeSerialized.RecoveryPointRehydrationInfo.RehydrationPriority = rehydratePriority;
+                        triggerRestoreRequest.Properties = azureWorkloadRestoreRequestDeSerialized;
+                    }
+                }
+                #endregion
+
+                var response = ServiceClientAdapter.RestoreDisk(
                 (AzureRecoveryPoint)wLRecoveryConfig.RecoveryPoint,
                 "LocationNotRequired",
                 triggerRestoreRequest,
                 vaultName: vaultName,
                 resourceGroupName: resourceGroupName,
                 vaultLocation: vaultLocation);
-            return response;
+                return response;
+            }
         }
 
         private RestAzureNS.AzureOperationResponse<ProtectionPolicyResource> CreateorModifyPolicy()
@@ -581,7 +726,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 (CmdletModel.WorkloadType)ProviderData[PolicyParams.WorkloadType];
 
                 // do validations
-                ValidateAzureWorkloadWorkloadType(workloadType);
+                ValidateAzureVmWorkloadType(workloadType);
                 AzureWorkloadProviderHelper.ValidateSQLSchedulePolicy(schedulePolicy);
                 Logger.Instance.WriteDebug("Validation of Schedule policy is successful");
 
@@ -635,10 +780,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             ItemBase itemBase = ProviderData.ContainsKey(ItemParams.Item) ?
                 (ItemBase)ProviderData[ItemParams.Item] : null;
-            AzureWorkloadSQLDatabaseProtectedItem item = ProviderData.ContainsKey(ItemParams.Item) ?
+
+            AzureItem item;
+            AzureVmWorkloadProtectedItem properties;
+            if (itemBase != null && itemBase.WorkloadType == CmdletModel.WorkloadType.SAPHanaDatabase)
+            {
+                item = ProviderData.ContainsKey(ItemParams.Item) ?
+                (AzureWorkloadSAPHanaDatabaseProtectedItem)ProviderData[ItemParams.Item] : null;
+
+                properties = new AzureVmWorkloadSAPHanaDatabaseProtectedItem();
+            }
+            else
+            {
+                item = ProviderData.ContainsKey(ItemParams.Item) ?
                 (AzureWorkloadSQLDatabaseProtectedItem)ProviderData[ItemParams.Item] : null;
 
-            AzureVmWorkloadSQLDatabaseProtectedItem properties = new AzureVmWorkloadSQLDatabaseProtectedItem();
+                properties = new AzureVmWorkloadSQLDatabaseProtectedItem();
+            }
+            
             string containerUri = "";
             string protectedItemUri = "";
 
@@ -759,12 +918,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             ValidateAzureWorkloadContainerType(itemBase.ContainerType);
         }
 
+        private void ValidateAzureWorkloadSAPHanaDatabaseDisableProtectionRequest(ItemBase itemBase)
+        {
+
+            if (itemBase == null || itemBase.GetType() != typeof(AzureWorkloadSAPHanaDatabaseProtectedItem))
+            {
+                throw new ArgumentException(string.Format(Resources.InvalidProtectionPolicyException,
+                                            typeof(AzureWorkloadSAPHanaDatabaseProtectedItem).ToString()));
+            }
+
+            ValidateAzureVmWorkloadType(itemBase.WorkloadType);
+            ValidateAzureWorkloadContainerType(itemBase.ContainerType);
+        }
+
         private void ValidateAzureVmWorkloadType(CmdletModel.WorkloadType type)
         {
-            if (type != CmdletModel.WorkloadType.MSSQL)
+            if (type != CmdletModel.WorkloadType.MSSQL && type != CmdletModel.WorkloadType.SAPHanaDatabase)
             {
+                string expectedWorkloadType = CmdletModel.WorkloadType.MSSQL.ToString() + " or " + CmdletModel.WorkloadType.SAPHanaDatabase.ToString();
                 throw new ArgumentException(string.Format(Resources.UnExpectedWorkLoadTypeException,
-                                            CmdletModel.WorkloadType.MSSQL.ToString(),
+                                            expectedWorkloadType,
                                             type.ToString()));
             }
         }
@@ -814,32 +987,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                                             typeof(AzureVmWorkloadPolicy).ToString()));
             }
 
-            ValidateAzureWorkloadWorkloadType(policy.WorkloadType);
+            ValidateAzureVmWorkloadType(policy.WorkloadType);
 
             // call validation
             policy.Validate();
         }
 
-        private void ValidateAzureWorkloadWorkloadType(CmdletModel.WorkloadType type)
-        {
-            if (type != CmdletModel.WorkloadType.MSSQL)
-            {
-                throw new ArgumentException(string.Format(Resources.UnExpectedWorkLoadTypeException,
-                                            CmdletModel.WorkloadType.MSSQL.ToString(),
-                                            type.ToString()));
-            }
-        }
-
         private void ValidateAzureWorkloadDisableProtectionRequest(ItemBase itemBase)
         {
 
-            if (itemBase == null || itemBase.GetType() != typeof(AzureWorkloadSQLDatabaseProtectedItem))
+            if (itemBase == null || (itemBase.GetType() != typeof(AzureWorkloadSQLDatabaseProtectedItem) && itemBase.GetType() != typeof(AzureWorkloadSAPHanaDatabaseProtectedItem)))
             {
                 throw new ArgumentException(string.Format(Resources.InvalidProtectionPolicyException,
                                             typeof(AzureWorkloadSQLDatabaseProtectedItem).ToString()));
             }
 
-            ValidateAzureWorkloadWorkloadType(itemBase.WorkloadType);
+            ValidateAzureVmWorkloadType(itemBase.WorkloadType);
             ValidateAzureWorkloadContainerType(itemBase.ContainerType);
         }
     }

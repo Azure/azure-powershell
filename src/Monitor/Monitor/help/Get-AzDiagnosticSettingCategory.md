@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
-online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/get-azdiagnosticsettingcategory
+online version: https://docs.microsoft.com/powershell/module/az.monitor/get-azdiagnosticsettingcategory
 schema: 2.0.0
 ---
 
@@ -24,15 +24,15 @@ Get or list supported diagnostic setting category for Azure resource.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzDiagnosticSetting -TargetResourceId -TargetResourceId /subscriptions/XXXXXXXXXXXX/resourceGroups/XXXXXXXX/providers/Microsoft.Network/virtualNetworks/XXXXXXXX
-Id           : /subscriptions/XXXXXXXXXXXX/resourceGroups/XXXXXXXX/providers/Microsoft.Network/virtualNetworks/XXXXXXXX/providers/microsoft.insights/diagnosticSettingsCategories/VMProtectionAlerts
+PS C:\> Get-AzDiagnosticSettingCategory -TargetResourceId /subscriptions/XXXXXXXXXXXX/resourceGroups/XXXXXXXX/providers/Microsoft.Network/virtualNetworks/XXXXXXXX
+Id           : /subscriptions/XXXXXXXXXXXX/resourceGroups/XXXXXXXX/providers/Microsoft.Network/virtualNetworks/XXXXXXXX/providers/Microsoft.Insights/diagnosticSettingsCategories/VMProtectionAlerts
 Name         : VMProtectionAlerts
-Type         : microsoft.insights/diagnosticSettingsCategories
+Type         : Microsoft.Insights/diagnosticSettingsCategories
 CategoryType : Logs
 
-Id           : /subscriptions/XXXXXXXXXXXX/resourceGroups/XXXXXXXX/providers/Microsoft.Network/virtualNetworks/XXXXXXXX/providers/microsoft.insights/diagnosticSettingsCategories/AllMetrics
+Id           : /subscriptions/XXXXXXXXXXXX/resourceGroups/XXXXXXXX/providers/Microsoft.Network/virtualNetworks/XXXXXXXX/providers/Microsoft.Insights/diagnosticSettingsCategories/AllMetrics
 Name         : AllMetrics
-Type         : microsoft.insights/diagnosticSettingsCategories
+Type         : Microsoft.Insights/diagnosticSettingsCategories
 CategoryType : Metrics
 ```
 

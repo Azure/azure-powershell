@@ -49,7 +49,7 @@ function Test-SnapshotPolicyCrud
     try
     {
         # create the resource group
-        New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation
+        New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation -Tags @{Owner = 'b-aubald'}
 
         # try creating an Account -               
         $newTagName = "tag1"
@@ -72,6 +72,15 @@ function Test-SnapshotPolicyCrud
         Assert-AreEqual $dailySchedule["Hour"] $getRetrievedSnapshotPolicy.DailySchedule.Hour
         Assert-AreEqual $weeklySchedule["Day"] $getRetrievedSnapshotPolicy.WeeklySchedule.Day
         Assert-AreEqual $monthlySchedule["DaysOfMonth"] $getRetrievedSnapshotPolicy.MonthlySchedule.DaysOfMonth
+
+        #update with set
+        $hourlySchedule2 = @{
+            Minute = 2
+            SnapshotsToKeep = 3
+        }
+        #Check update with set
+        $setRetrievedSnapshotPolicy = Set-AzNetAppFilesSnapshotPolicy -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName1 -Name $snapshotPolicyName1 -Enabled -HourlySchedule $hourlySchedule -DailySchedule $dailySchedule -WeeklySchedule $weeklySchedule -MonthlySchedule $monthlySchedule
+        Assert-AreEqual $hourlySchedule["Minute"] $setRetrievedSnapshotPolicy.HourlySchedule.Minute
 
         $hourlySchedule2 = @{
             Minute = 1
@@ -161,7 +170,7 @@ function Test-SnapshotPolicyPipelines
     try
     {
         # create the resource group
-        New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation
+        New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation -Tags @{Owner = 'b-aubald'}
 
         New-AnfAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $accName1 
         # try creating an Account -               

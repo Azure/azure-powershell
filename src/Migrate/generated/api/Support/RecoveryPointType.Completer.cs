@@ -6,7 +6,10 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>Argument completer implementation for RecoveryPointType.</summary>
+    /// <summary>
+    /// The recovery point type. Values from LatestTime, LatestTag or Custom. In the case of custom, the recovery point provided
+    /// by RecoveryPointId will be used. In the other two cases, recovery point id will be ignored.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.RecoveryPointTypeTypeConverter))]
     public partial struct RecoveryPointType :
         System.Management.Automation.IArgumentCompleter
@@ -28,15 +31,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "LatestTime".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("LatestTime", "LatestTime", global::System.Management.Automation.CompletionResultType.ParameterValue, "LatestTime");
+                yield return new global::System.Management.Automation.CompletionResult("'LatestTime'", "LatestTime", global::System.Management.Automation.CompletionResultType.ParameterValue, "LatestTime");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "LatestTag".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("LatestTag", "LatestTag", global::System.Management.Automation.CompletionResultType.ParameterValue, "LatestTag");
+                yield return new global::System.Management.Automation.CompletionResult("'LatestTag'", "LatestTag", global::System.Management.Automation.CompletionResultType.ParameterValue, "LatestTag");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Custom".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Custom", "Custom", global::System.Management.Automation.CompletionResultType.ParameterValue, "Custom");
+                yield return new global::System.Management.Automation.CompletionResult("'Custom'", "Custom", global::System.Management.Automation.CompletionResultType.ParameterValue, "Custom");
             }
         }
     }

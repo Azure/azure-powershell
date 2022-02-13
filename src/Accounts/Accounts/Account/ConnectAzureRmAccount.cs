@@ -14,9 +14,11 @@
 
 using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
+using System.Runtime.InteropServices;
 using System.Security;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -27,14 +29,18 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Common;
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Models.Core;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.PowerShell.Authenticators;
 using Microsoft.Azure.PowerShell.Authenticators.Factories;
 using Microsoft.Identity.Client;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.WindowsAzure.Commands.Common.Utilities;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Profile
@@ -42,7 +48,7 @@ namespace Microsoft.Azure.Commands.Profile
     /// <summary>
     /// Cmdlet to log into an environment and download the subscriptions
     /// </summary>
-    [Cmdlet("Connect", AzureRMConstants.AzureRMPrefix + "Account", DefaultParameterSetName = "UserWithSubscriptionId", SupportsShouldProcess=true)]
+    [Cmdlet("Connect", AzureRMConstants.AzureRMPrefix + "Account", DefaultParameterSetName = UserParameterSet, SupportsShouldProcess=true)]
     [Alias("Login-AzAccount", "Login-AzureRmAccount", "Add-" + AzureRMConstants.AzureRMPrefix + "Account")]
     [OutputType(typeof(PSAzureProfile))]
     public class ConnectAzureRmAccountCommand : AzureContextModificationCmdlet, IModuleAssemblyInitializer
@@ -51,18 +57,22 @@ namespace Microsoft.Azure.Commands.Profile
         public const string UserWithCredentialParameterSet = "UserWithCredential";
         public const string ServicePrincipalParameterSet = "ServicePrincipalWithSubscriptionId";
         public const string ServicePrincipalCertificateParameterSet= "ServicePrincipalCertificateWithSubscriptionId";
+        public const string ServicePrincipalCertificateFileParameterSet = "ServicePrincipalCertificateFileWithSubscriptionId";
         public const string AccessTokenParameterSet = "AccessTokenWithSubscriptionId";
+        public const string ClientAssertionParameterSet = "ClientAssertionParameterSet";
         public const string ManagedServiceParameterSet = "ManagedServiceLogin";
         public const string MSIEndpointVariable = "MSI_ENDPOINT";
         public const string MSISecretVariable = "MSI_SECRET";
         public const int DefaultMaxContextPopulation = 25;
         public const string DefaultMaxContextPopulationString = "25";
+        private const int DefaultManagedServicePort = 50342;
 
         private IAzureEnvironment _environment;
 
         [Parameter(Mandatory = false, HelpMessage = "Name of the environment containing the account to log into")]
         [Alias("EnvironmentName")]
         [ValidateNotNullOrEmpty]
+        [EnvironmentCompleter()]
         public string Environment { get; set; }
 
         [Parameter(ParameterSetName = ServicePrincipalParameterSet,
@@ -77,11 +87,19 @@ namespace Microsoft.Azure.Commands.Profile
 
         [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet,
                     Mandatory = true, HelpMessage = "SPN")]
+        [Parameter(ParameterSetName = ClientAssertionParameterSet,
+                    Mandatory = true, HelpMessage = "SPN")]
+        [Parameter(ParameterSetName = ServicePrincipalCertificateFileParameterSet,
+                    Mandatory = true, HelpMessage = "SPN")]
         public string ApplicationId { get; set; }
 
         [Parameter(ParameterSetName = ServicePrincipalParameterSet,
                     Mandatory = true)]
         [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet,
+                    Mandatory = false)]
+        [Parameter(ParameterSetName = ServicePrincipalCertificateFileParameterSet,
+                    Mandatory = false)]
+        [Parameter(ParameterSetName = ClientAssertionParameterSet,
                     Mandatory = false)]
         public SwitchParameter ServicePrincipal { get; set; }
 
@@ -94,6 +112,10 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(ParameterSetName = AccessTokenParameterSet,
                     Mandatory = false, HelpMessage = "Tenant name or ID")]
         [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet,
+                    Mandatory = true, HelpMessage = "Tenant name or ID")]
+        [Parameter(ParameterSetName = ServicePrincipalCertificateFileParameterSet,
+                    Mandatory = true, HelpMessage = "Tenant name or ID")]
+        [Parameter(ParameterSetName = ClientAssertionParameterSet,
                     Mandatory = true, HelpMessage = "Tenant name or ID")]
         [Parameter(ParameterSetName = ManagedServiceParameterSet,
                     Mandatory = false, HelpMessage = "Optional tenant name or ID")]
@@ -112,10 +134,17 @@ namespace Microsoft.Azure.Commands.Profile
         public string GraphAccessToken { get; set; }
 
         [Parameter(ParameterSetName = AccessTokenParameterSet,
+                   Mandatory = false, HelpMessage = "Access token to Microsoft Graph")]
+        [ValidateNotNullOrEmpty]
+        public string MicrosoftGraphAccessToken { get; set; }
+
+        [Parameter(ParameterSetName = AccessTokenParameterSet,
                    Mandatory = false, HelpMessage = "AccessToken for KeyVault Service")]
         [ValidateNotNullOrEmpty]
         public string KeyVaultAccessToken { get; set; }
 
+        [Parameter(ParameterSetName = UserParameterSet,
+            Mandatory = false, HelpMessage = "Account Id / User Id / User Name to login with")]
         [Parameter(ParameterSetName = AccessTokenParameterSet,
                     Mandatory = true, HelpMessage = "Account Id for access token")]
         [Parameter(ParameterSetName = ManagedServiceParameterSet,
@@ -127,34 +156,37 @@ namespace Microsoft.Azure.Commands.Profile
         [Alias("MSI", "ManagedService")]
         public SwitchParameter Identity { get; set; }
 
-        [Parameter(ParameterSetName = ManagedServiceParameterSet, Mandatory = false, HelpMessage = "Obsolete. To use customized MSI endpoint, please set environment variable MSI_ENDPOINT, e.g. \"http://localhost:50342/oauth2/token\". Port number for managed service login.")]
-        [PSDefaultValue(Help = "50342", Value = 50342)]
-        public int ManagedServicePort { get; set; } = 50342;
-
-        [Parameter(ParameterSetName = ManagedServiceParameterSet, Mandatory = false, HelpMessage = "Obsolete. To use customized MSI endpoint, please set environment variable MSI_ENDPOINT, e.g. \"http://localhost:50342/oauth2/token\". Host name for managed service login.")]
-        [PSDefaultValue(Help = "localhost", Value = "localhost")]
-        public string ManagedServiceHostName { get; set; } = "localhost";
-
-        [Parameter(ParameterSetName = ManagedServiceParameterSet, Mandatory = false, HelpMessage = "Obsolete. To use customized MSI secret, please set environment variable MSI_SECRET. Secret, used for some kinds of managed service login.")]
-        [ValidateNotNullOrEmpty]
-        public SecureString ManagedServiceSecret { get; set; }
-
-
         [Alias("SubscriptionName", "SubscriptionId")]
-        [Parameter(ParameterSetName = UserParameterSet,
-                    Mandatory = false, HelpMessage = "Subscription Name or ID", ValueFromPipeline = true)]
-        [Parameter(ParameterSetName = UserWithCredentialParameterSet,
-                    Mandatory = false, HelpMessage = "Subscription Name or ID", ValueFromPipeline = true)]
-        [Parameter(ParameterSetName = ServicePrincipalParameterSet,
-                    Mandatory = false, HelpMessage = "Subscription Name or ID", ValueFromPipeline = true)]
-        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet,
-                    Mandatory = false, HelpMessage = "Subscription Name or ID", ValueFromPipeline = true)]
-        [Parameter(ParameterSetName = AccessTokenParameterSet,
-                    Mandatory = false, HelpMessage = "Subscription Name or ID", ValueFromPipeline = true)]
-        [Parameter(ParameterSetName = ManagedServiceParameterSet,
-                    Mandatory = false, HelpMessage = "Subscription Name or ID", ValueFromPipeline = true)]
+        [Parameter(Mandatory = false, HelpMessage = "Subscription Name or ID", ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public string Subscription { get; set; }
+
+        private const string AuthScopeHelpMessage = "Optional OAuth scope for login, supported pre-defined values: AadGraph, AnalysisServices, Attestation, Batch, DataLake, KeyVault, OperationalInsights, Storage, Synapse. It also supports resource id like 'https://storage.azure.com/'.";
+
+        [Alias("AuthScopeTypeName")]
+        [Parameter(ParameterSetName = UserParameterSet,
+            Mandatory = false, HelpMessage = AuthScopeHelpMessage)]
+        [Parameter(ParameterSetName = UserWithCredentialParameterSet,
+            Mandatory = false, HelpMessage = AuthScopeHelpMessage)]
+        [Parameter(ParameterSetName = ServicePrincipalParameterSet,
+            Mandatory = false, HelpMessage = AuthScopeHelpMessage)]
+        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet,
+            Mandatory = false, HelpMessage = AuthScopeHelpMessage)]
+        [Parameter(ParameterSetName = ManagedServiceParameterSet,
+            Mandatory = false, HelpMessage = AuthScopeHelpMessage)]
+        [PSArgumentCompleter(
+            SupportedResourceNames.AadGraph,
+            SupportedResourceNames.AnalysisServices,
+            SupportedResourceNames.Attestation,
+            SupportedResourceNames.Batch,
+            SupportedResourceNames.DataLake,
+            SupportedResourceNames.KeyVault,
+            SupportedResourceNames.ManagedHsm,
+            SupportedResourceNames.OperationalInsights,
+            SupportedResourceNames.Storage,
+            SupportedResourceNames.Synapse
+            )]
+        public string AuthScope { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Name of the default context from this login")]
         [ValidateNotNullOrEmpty]
@@ -167,12 +199,7 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(Mandatory = false, HelpMessage = "Skips context population if no contexts are found.")]
         public SwitchParameter SkipContextPopulation { get; set; }
 
-        [Parameter(ParameterSetName = UserParameterSet, Mandatory = false, HelpMessage = "Max subscription number to populate contexts after login. Default is "+ DefaultMaxContextPopulationString + ". To populate all subscriptions to contexts, set to -1.")]
-        [Parameter(ParameterSetName = UserWithCredentialParameterSet, Mandatory = false, HelpMessage = "Max subscription number to populate contexts after login. Default is " + DefaultMaxContextPopulationString + ". To populate all subscriptions to contexts, set to -1.")]
-        [Parameter(ParameterSetName = ServicePrincipalParameterSet, Mandatory = false, HelpMessage = "Max subscription number to populate contexts after login. Default is " + DefaultMaxContextPopulationString + ". To populate all subscriptions to contexts, set to -1.")]
-        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet, Mandatory = false, HelpMessage = "Max subscription number to populate contexts after login. Default is " + DefaultMaxContextPopulationString + ". To populate all subscriptions to contexts, set to -1.")]
-        [Parameter(ParameterSetName = AccessTokenParameterSet, Mandatory = false, HelpMessage = "Max subscription number to populate contexts after login. Default is " + DefaultMaxContextPopulationString + ". To populate all subscriptions to contexts, set to -1.")]
-        [Parameter(ParameterSetName = ManagedServiceParameterSet, Mandatory = false, HelpMessage = "Max subscription number to populate contexts after login. Default is " + DefaultMaxContextPopulationString + ". To populate all subscriptions to contexts, set to -1.")]
+        [Parameter(Mandatory = false, HelpMessage = "Max subscription number to populate contexts after login. Default is "+ DefaultMaxContextPopulationString + ". To populate all subscriptions to contexts, set to -1.")]
         [PSDefaultValue(Help = DefaultMaxContextPopulationString, Value = DefaultMaxContextPopulation)]
         [ValidateRange(-1,int.MaxValue)]
         public int MaxContextPopulation { get; set; } = DefaultMaxContextPopulation;
@@ -184,6 +211,22 @@ namespace Microsoft.Azure.Commands.Profile
 
         [Parameter(Mandatory = false, HelpMessage = "Overwrite the existing context with the same name, if any.")]
         public SwitchParameter Force { get; set; }
+
+        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet, HelpMessage = "Specifies if the x5c claim (public key of the certificate) should be sent to the STS to achieve easy certificate rollover in Azure AD.")]
+        [Parameter(ParameterSetName = ServicePrincipalCertificateFileParameterSet, HelpMessage = "Specifies if the x5c claim (public key of the certificate) should be sent to the STS to achieve easy certificate rollover in Azure AD.")]
+        public SwitchParameter SendCertificateChain { get; set; }
+
+
+        [Parameter(ParameterSetName = ServicePrincipalCertificateFileParameterSet, Mandatory = true, HelpMessage = "The path of certficate file in pkcs#12 format.")]
+        public String CertificatePath { get; set; }
+
+        [Parameter(ParameterSetName = ServicePrincipalCertificateFileParameterSet, HelpMessage = "The password required to access the pkcs#12 certificate file.")]
+        public SecureString CertificatePassword { get; set; }
+
+        [Parameter(ParameterSetName = ClientAssertionParameterSet, Mandatory = true, HelpMessage = "Specifies a token provided by another identity provider. The issuer and subject in this token must be first configured to be trusted by the ApplicationId.")]
+        [Alias("ClientAssertion")]
+        [ValidateNotNullOrEmpty]
+        public string FederatedToken { get; set; }
 
         protected override IAzureContext DefaultContext
         {
@@ -258,12 +301,12 @@ namespace Microsoft.Azure.Commands.Profile
 
         public override void ExecuteCmdlet()
         {
-            Guid subscrptionIdGuid;
+            Guid subscriptionIdGuid;
             string subscriptionName = null;
             string subscriptionId = null;
             if (MyInvocation.BoundParameters.ContainsKey(nameof(Subscription)))
             {
-                if (Guid.TryParse(Subscription, out subscrptionIdGuid))
+                if (Guid.TryParse(Subscription, out subscriptionIdGuid))
                 {
                     subscriptionId = Subscription;
                 }
@@ -274,72 +317,46 @@ namespace Microsoft.Azure.Commands.Profile
 
             }
 
+            if(ClientAssertionParameterSet.Equals(ParameterSetName, StringComparison.OrdinalIgnoreCase))
+            {
+                string suppressWarningOrErrorValue = System.Environment.GetEnvironmentVariable(BreakingChangeAttributeHelper.SUPPRESS_ERROR_OR_WARNING_MESSAGE_ENV_VARIABLE_NAME);
+                bool.TryParse(suppressWarningOrErrorValue, out bool suppressWarningOrError);
+                if (!suppressWarningOrError)
+                {
+                    WriteWarning("The feature related to parameter name 'FederatedToken' is under preview.");
+                }
+            }
+
             var azureAccount = new AzureAccount();
 
             switch (ParameterSetName)
             {
+                case UserParameterSet:
+                    azureAccount.Type = AzureAccount.AccountType.User;
+                    if(!string.IsNullOrEmpty(AccountId))
+                    {
+                        azureAccount.SetProperty("LoginHint", AccountId);
+                    }
+                    break;
                 case AccessTokenParameterSet:
                     azureAccount.Type = AzureAccount.AccountType.AccessToken;
                     azureAccount.Id = AccountId;
                     azureAccount.SetProperty(AzureAccount.Property.AccessToken, AccessToken);
                     azureAccount.SetProperty(AzureAccount.Property.GraphAccessToken, GraphAccessToken);
                     azureAccount.SetProperty(AzureAccount.Property.KeyVaultAccessToken, KeyVaultAccessToken);
+                    azureAccount.SetProperty(Constants.MicrosoftGraphAccessToken, MicrosoftGraphAccessToken);
                     break;
                 case ServicePrincipalCertificateParameterSet:
+                case ServicePrincipalCertificateFileParameterSet:
                 case ServicePrincipalParameterSet:
                     azureAccount.Type = AzureAccount.AccountType.ServicePrincipal;
                     break;
+                case ClientAssertionParameterSet:
+                    azureAccount.Type = "ClientAssertion";
+                    break;
                 case ManagedServiceParameterSet:
                     azureAccount.Type = AzureAccount.AccountType.ManagedService;
-                    var builder = new UriBuilder
-                    {
-                        Scheme = "http",
-                        Host = ManagedServiceHostName,
-                        Port = ManagedServicePort,
-                        Path = "/oauth2/token"
-                    };
-
-                    //ManagedServiceHostName/ManagedServicePort/ManagedServiceSecret are obsolete, should be removed in next major release
-                    if (this.IsBound(nameof(ManagedServiceHostName)) || this.IsBound(nameof(ManagedServicePort)) || this.IsBound(nameof(ManagedServiceSecret)))
-                    {
-                        WriteWarning(Resources.ObsoleteManagedServiceParameters);
-                    }
-
-                    var envSecret = System.Environment.GetEnvironmentVariable(MSISecretVariable);
-
-                    var msiSecret = this.IsBound(nameof(ManagedServiceSecret))
-                        ? ManagedServiceSecret.ConvertToString()
-                        : envSecret;
-
-                    var envUri = System.Environment.GetEnvironmentVariable(MSIEndpointVariable);
-
-                    var suppliedUri = this.IsBound(nameof(ManagedServiceHostName))
-                        ? builder.Uri.ToString()
-                        : envUri;
-
-                    if (!this.IsBound(nameof(ManagedServiceHostName)) && !string.IsNullOrWhiteSpace(envUri) 
-                        && !this.IsBound(nameof(ManagedServiceSecret)) && !string.IsNullOrWhiteSpace(envSecret))
-                    {
-                        // set flag indicating this is AppService Managed Identity ad hoc mode
-                        azureAccount.SetProperty(AuthenticationFactory.AppServiceManagedIdentityFlag, "the value not used");
-                    }
-
-                    if (!string.IsNullOrWhiteSpace(msiSecret))
-                    {
-                        azureAccount.SetProperty(AzureAccount.Property.MSILoginSecret, msiSecret);
-                    }
-
-                    if (!string.IsNullOrWhiteSpace(suppliedUri))
-                    {
-                        azureAccount.SetProperty(AzureAccount.Property.MSILoginUri, suppliedUri);
-                    }
-                    else
-                    {
-                        azureAccount.SetProperty(AzureAccount.Property.MSILoginUriBackup, builder.Uri.ToString());
-                        azureAccount.SetProperty(AzureAccount.Property.MSILoginUri, AuthenticationFactory.DefaultMSILoginUri);
-                    }
-
-                    azureAccount.Id = this.IsBound(nameof(AccountId)) ? AccountId : string.Format(Constants.DefaultMsiAccountIdPrefix + "{0}", ManagedServicePort);
+                    azureAccount.Id = this.IsBound(nameof(AccountId)) ? AccountId : $"{Constants.DefaultMsiAccountIdPrefix}{DefaultManagedServicePort}";
                     break;
                 default:
                     //Support username + password for both Windows PowerShell and PowerShell 6+
@@ -374,12 +391,46 @@ namespace Microsoft.Azure.Commands.Profile
                 azureAccount.SetThumbprint(CertificateThumbprint);
             }
 
+            if( !string.IsNullOrWhiteSpace(CertificatePath))
+            {
+                var resolvedPath = this.SessionState.Path.GetResolvedPSPathFromPSPath(CertificatePath).FirstOrDefault()?.Path;
+                if (string.IsNullOrEmpty(resolvedPath))
+                {
+                    var parametersLog = $"- Invalid certificate path :'{CertificatePath}'.";
+                    throw new InvalidOperationException(parametersLog);
+                }
+                azureAccount.SetProperty(AzureAccount.Property.CertificatePath, resolvedPath);
+                if (CertificatePassword != null)
+                {
+                    azureAccount.SetProperty(AzureAccount.Property.CertificatePassword, CertificatePassword.ConvertToString());
+                }
+            }
+
+            if ((ParameterSetName == ServicePrincipalCertificateParameterSet || ParameterSetName == ServicePrincipalCertificateFileParameterSet)
+                && SendCertificateChain)
+            {
+                azureAccount.SetProperty(AzureAccount.Property.SendCertificateChain, SendCertificateChain.ToString());
+                bool supressWarningOrError = false;
+                try
+                {
+                    supressWarningOrError = bool.Parse(System.Environment.GetEnvironmentVariable(BreakingChangeAttributeHelper.SUPPRESS_ERROR_OR_WARNING_MESSAGE_ENV_VARIABLE_NAME));
+                }
+                catch
+                {
+                    //if value of env variable is invalid, use default value of supressWarningOrError
+                }
+                if (!supressWarningOrError)
+                {
+                    WriteWarning(Resources.PreviewFunctionMessage);
+                }
+            }
+
             if (!string.IsNullOrEmpty(Tenant))
             {
                 azureAccount.SetProperty(AzureAccount.Property.Tenants, Tenant);
             }
 
-            if (azureAccount.Type == AzureAccount.AccountType.ServicePrincipal && string.IsNullOrEmpty(CertificateThumbprint))
+            if (azureAccount.Type == AzureAccount.AccountType.ServicePrincipal && password != null)
             {
                 azureAccount.SetProperty(AzureAccount.Property.ServicePrincipalSecret, password.ConvertToString());
                 if (GetContextModificationScope() == ContextModificationScope.CurrentUser)
@@ -389,6 +440,19 @@ namespace Microsoft.Azure.Commands.Profile
                     WriteWarning(string.Format(Resources.ServicePrincipalWarning, file, directory));
                 }
             }
+            if (azureAccount.Type == "ClientAssertion" && FederatedToken != null)
+            {
+                password = SecureStringExtensions.ConvertToSecureString(FederatedToken);
+                azureAccount.SetProperty("ClientAssertion", FederatedToken);
+                if (GetContextModificationScope() == ContextModificationScope.CurrentUser)
+                {
+                    var file = AzureSession.Instance.ARMProfileFile;
+                    var directory = AzureSession.Instance.ARMProfileDirectory;
+                    WriteWarning(string.Format(Resources.ClientAssertionWarning, file, directory));
+                }
+            }
+
+            var resourceId = PreProcessAuthScope();
 
             if (ShouldProcess(string.Format(Resources.LoginTarget, azureAccount.Type, _environment.Name), "log in"))
             {
@@ -397,12 +461,12 @@ namespace Microsoft.Azure.Commands.Profile
                     InitializeProfileProvider();
                 }
 
-                if(!AzureSession.Instance.TryGetComponent(nameof(CommonUtilities), out CommonUtilities commonUtitilies))
+                if(!AzureSession.Instance.TryGetComponent(nameof(CommonUtilities), out CommonUtilities commonUtilities))
                 {
-                    commonUtitilies = new CommonUtilities();
-                    AzureSession.Instance.RegisterComponent(nameof(CommonUtilities), () => commonUtitilies);
+                    commonUtilities = new CommonUtilities();
+                    AzureSession.Instance.RegisterComponent(nameof(CommonUtilities), () => commonUtilities);
                 }
-                if(!commonUtitilies.IsDesktopSession() && IsUsingInteractiveAuthentication())
+                if(!commonUtilities.IsDesktopSession() && IsUsingInteractiveAuthentication())
                 {
                     WriteWarning(Resources.InteractiveAuthNotSupported);
                     return;
@@ -417,6 +481,7 @@ namespace Microsoft.Azure.Commands.Profile
                    }
 
                    profileClient.WarningLog = (message) => _tasks.Enqueue(new Task(() => this.WriteWarning(message)));
+                   profileClient.DebugLog = (message) => _tasks.Enqueue(new Task(() => this.WriteDebugWithTimestamp(message)));
                    var task = new Task<AzureRmProfile>( () => profileClient.Login(
                         azureAccount,
                         _environment,
@@ -428,7 +493,8 @@ namespace Microsoft.Azure.Commands.Profile
                         WriteWarningEvent, //Could not use WriteWarning directly because it may be in worker thread
                         name,
                         shouldPopulateContextList,
-                        MaxContextPopulation));
+                        MaxContextPopulation,
+                        resourceId));
                    task.Start();
                    while (!task.IsCompleted)
                    {
@@ -446,10 +512,16 @@ namespace Microsoft.Azure.Commands.Profile
                    }
                    catch (AuthenticationFailedException ex)
                    {
+                       string message = string.Empty;
                        if (IsUnableToOpenWebPageError(ex))
                        {
                            WriteWarning(Resources.InteractiveAuthNotSupported);
                            WriteDebug(ex.ToString());
+                       }
+                       else if (TryParseUnknownAuthenticationException(ex, out message))
+                       {
+                           WriteDebug(ex.ToString());
+                           throw ex.WithAdditionalMessage(message);
                        }
                        else
                        {
@@ -466,6 +538,18 @@ namespace Microsoft.Azure.Commands.Profile
             }
         }
 
+        private string PreProcessAuthScope()
+        {
+            string mappedScope = AuthScope;
+            if (!string.IsNullOrEmpty(AuthScope) &&
+                SupportedResourceNames.DataPlaneResourceNameMap.ContainsKey(AuthScope))
+            {
+                mappedScope = SupportedResourceNames.DataPlaneResourceNameMap[AuthScope];
+                WriteDebug($"Map AuthScope from {AuthScope} to {mappedScope}.");
+            }
+            return mappedScope;
+        }
+
         private bool IsUsingInteractiveAuthentication()
         {
             return ParameterSetName == UserParameterSet && UseDeviceAuthentication == false;
@@ -475,6 +559,21 @@ namespace Microsoft.Azure.Commands.Profile
         {
             return exception.InnerException is MsalClientException && ((MsalClientException)exception.InnerException)?.ErrorCode == MsalError.LinuxXdgOpen
                             || (exception.Message?.ToLower()?.Contains("unable to open a web page") ?? false);
+        }
+
+        private bool TryParseUnknownAuthenticationException(AuthenticationFailedException exception, out string message)
+        {
+
+            var innerException = exception?.InnerException as MsalServiceException;
+            bool isUnknownMsalServiceException = string.Equals(innerException?.ErrorCode, "access_denied", StringComparison.OrdinalIgnoreCase);
+            message = null;
+            if(isUnknownMsalServiceException)
+            {
+                StringBuilder messageBuilder = new StringBuilder(nameof(innerException.ErrorCode));
+                messageBuilder.Append(": ").Append(innerException.ErrorCode);
+                message = messageBuilder.ToString();
+            }
+            return isUnknownMsalServiceException;
         }
 
         private ConcurrentQueue<Task> _tasks = new ConcurrentQueue<Task>();
@@ -576,6 +675,12 @@ namespace Microsoft.Azure.Commands.Profile
                 {
                     if (autoSaveEnabled && !TokenCachePersistenceChecker.Verify())
                     {
+                        if (!RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                        {
+                            // In Windows and macOS platforms, unknown errors are discovered that fails the persistence check.
+                            // Disable context autosaving before msal library provide a fallback method for the case.
+                            throw new PSInvalidOperationException(Resources.TokenCachePersistenceCheckError);
+                        }
                         // If token cache persistence is not supported, fall back to plain text persistence, and print a warning
                         // We cannot just throw an exception here because this is called when importing the module
                         WriteInitializationWarnings(Resources.TokenCacheEncryptionNotSupportedWithFallback);
@@ -615,12 +720,13 @@ namespace Microsoft.Azure.Commands.Profile
                 {
                     provider = new InMemoryTokenCacheProvider();
                 }
-                var tokenCache = provider.GetTokenCache();
                 IAzureEventListenerFactory azureEventListenerFactory = new AzureEventListenerFactory();
                 AzureSession.Instance.RegisterComponent(nameof(CommonUtilities), () => new CommonUtilities());
+                // It's tricky to register a component as an Interface
+                // Make sure componentInitializer return the Interface, not the derived type
+                AzureSession.Instance.RegisterComponent(nameof(ISharedUtilities), () => new AzureRmSharedUtilities() as ISharedUtilities);
                 AzureSession.Instance.RegisterComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, () => provider);
                 AzureSession.Instance.RegisterComponent(nameof(IAzureEventListenerFactory), () => azureEventListenerFactory);
-                AzureSession.Instance.RegisterComponent(nameof(PowerShellTokenCache), () => tokenCache);
                 AzureSession.Instance.RegisterComponent(nameof(AzureCredentialFactory), () => new AzureCredentialFactory());
                 AzureSession.Instance.RegisterComponent(nameof(MsalAccessTokenAcquirerFactory), () => new MsalAccessTokenAcquirerFactory());
 #if DEBUG

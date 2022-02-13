@@ -62,8 +62,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
             }
             // actually deserialize
             ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IApiErrorBaseInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IApiErrorBaseInternal)this).Code, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IApiErrorBaseInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IApiErrorBaseInternal)this).Message, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IApiErrorBaseInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IApiErrorBaseInternal)this).Target, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IApiErrorBaseInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IApiErrorBaseInternal)this).Message, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -82,8 +82,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
             }
             // actually deserialize
             ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IApiErrorBaseInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IApiErrorBaseInternal)this).Code, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IApiErrorBaseInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IApiErrorBaseInternal)this).Message, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IApiErrorBaseInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IApiErrorBaseInternal)this).Target, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IApiErrorBaseInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IApiErrorBaseInternal)this).Message, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 

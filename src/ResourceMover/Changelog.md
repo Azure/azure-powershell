@@ -19,6 +19,19 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.0
+* Added support for Tags in azure resource mover
+* Added support for SystemData in azure resource mover
+* Released 2021-08-01 api-version
+
+## Version 1.0.0
+* General availability of 'Az.ResourceMover' module
+
+## Version 0.2.0
+* Added new cmdlets `Invoke-AzResourceMoverBulkRemove`, `Get-AzResourceMoverRequiredForResources`
+* Added alias to `Add-AzResourceMoverMoveResource`: `Update-AzResourceMoverMoveResource`
+* Flattened object "ResourceSettings"
+
 ## Version 0.1.0
 * First preview release for module Az.ResourceMover
 

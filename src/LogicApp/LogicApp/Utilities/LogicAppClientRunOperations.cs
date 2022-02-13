@@ -82,9 +82,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <param name="workflowName">Name of the workflow</param>
         /// <param name="runName">Name of the workflow run</param>
         /// <returns>Actions of the specified workflow run</returns>
-        public Page<WorkflowRunAction> GetWorkflowRunActions(string resourceGroupName, string workflowName, string runName)
+        public Page<WorkflowRunAction> GetWorkflowRunActions(string resourceGroupName, string workflowName, string runName, string nextPageLink = "")
         {
-            return (Page<WorkflowRunAction>)this.LogicManagementClient.WorkflowRunActions.List(resourceGroupName, workflowName, runName);
+            return string.IsNullOrWhiteSpace(nextPageLink) ?
+                (Page<WorkflowRunAction>)this.LogicManagementClient.WorkflowRunActions.List(resourceGroupName, workflowName, runName) :
+                (Page<WorkflowRunAction>)this.LogicManagementClient.WorkflowRunActions.ListNext(nextPageLink);
         }
     }
 }

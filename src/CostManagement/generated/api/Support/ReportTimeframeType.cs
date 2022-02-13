@@ -6,6 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
+    /// <summary>
+    /// The time frame for pulling data for the report. If custom, then a specific time period must be provided.
+    /// </summary>
     public partial struct ReportTimeframeType :
         System.IEquatable<ReportTimeframeType>
     {
@@ -24,7 +27,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
         /// <param name="value">the value to convert to an instance of <see cref="ReportTimeframeType" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new ReportTimeframeType(System.Convert.ToString(value));
+            return new ReportTimeframeType(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type ReportTimeframeType</summary>

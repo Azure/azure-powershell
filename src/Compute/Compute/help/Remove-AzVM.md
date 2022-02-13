@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: A16C2084-30A4-4AB8-AE22-28CC6E74FD48
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/remove-azvm
+online version: https://docs.microsoft.com/powershell/module/az.compute/remove-azvm
 schema: 2.0.0
 ---
 
@@ -15,14 +15,14 @@ Removes a virtual machine from Azure.
 
 ### ResourceGroupNameParameterSetName (Default)
 ```
-Remove-AzVM [-Name] <String> [-Force] [-NoWait] [-ResourceGroupName] <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzVM [-Name] <String> [-ForceDeletion <Boolean>] [-Force] [-NoWait] [-ResourceGroupName] <String>
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### IdParameterSetName
 ```
-Remove-AzVM [-Force] [-NoWait] [-Id] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzVM [-ForceDeletion <Boolean>] [-Force] [-NoWait] [-Id] <String> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,8 +31,8 @@ The **Remove-AzVM** cmdlet removes a virtual machine from Azure.
 ## EXAMPLES
 
 ### Example 1: Remove a virtual machine
-```
-PS C:\> Remove-AzVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
+```powershell
+Remove-AzVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
 ```
 
 This command removes the virtual machine named VirtualMachine07 in the resource group ResourceGroup11.
@@ -79,6 +79,21 @@ Aliases:
 
 Required: False
 Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ForceDeletion
+Optional parameter to force delete a VM.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

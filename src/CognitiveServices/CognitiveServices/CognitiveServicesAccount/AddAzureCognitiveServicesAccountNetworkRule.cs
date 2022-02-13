@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
 
             if (ShouldProcess(this.Name, "Add Cognitive Services Account NetworkRules"))
             {
-                var account = this.CognitiveServicesClient.Accounts.GetProperties(
+                var account = this.CognitiveServicesClient.Accounts.Get(
                 this.ResourceGroupName,
                 this.Name);
                 NetworkRuleSet accountACL = account.Properties.NetworkAcls;
@@ -159,18 +159,18 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                         break;
                 }
 
-                var properties = new CognitiveServicesAccountProperties();
+                var properties = new AccountProperties();
                 properties.NetworkAcls = accountACL;
                 this.CognitiveServicesClient.Accounts.Update(
                     this.ResourceGroupName,
                     this.Name,
-                    new CognitiveServicesAccount()
+                    new Account()
                     {
                         Properties = properties
                     }
                     );
 
-                account = this.CognitiveServicesClient.Accounts.GetProperties(this.ResourceGroupName, this.Name);
+                account = this.CognitiveServicesClient.Accounts.Get(this.ResourceGroupName, this.Name);
 
                 switch (ParameterSetName)
                 {

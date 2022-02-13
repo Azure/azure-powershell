@@ -1,0 +1,44 @@
+{
+  "AzVMwareLocationQuotaAvailability+[NoContext]+Check+$POST+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/providers/Microsoft.AVS/locations/centralus/checkQuotaAvailability?api-version=2021-06-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/providers/Microsoft.AVS/locations/centralus/checkQuotaAvailability?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "227" ],
+        "x-ms-client-request-id": [ "601c1f81-0632-4620-99f3-adad6446913a" ],
+        "CommandName": [ "Test-AzVMwareLocationQuotaAvailability" ],
+        "FullCommandName": [ "Test-AzVMwareLocationQuotaAvailability_Check" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14853" ],
+        "x-ms-request-id": [ "54d57d95-5289-48bb-83e1-011d9b0e5ac3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "64472a38-8c4f-4497-b219-75d962732d43" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20210729T042059Z:64472a38-8c4f-4497-b219-75d962732d43" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: CC8A7A6962614796953071AD4416845B Ref B: SG2EDGE1419 Ref C: 2021-07-29T04:20:59Z" ],
+        "Date": [ "Thu, 29 Jul 2021 04:20:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "63" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"hostsRemaining\":{\"gp\":995,\"he\":967},\"quotaEnabled\":\"Enabled\"}",
+      "isContentBase64": false
+    }
+  }
+}

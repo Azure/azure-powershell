@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.HDInsight.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Microsoft.Azure.Commands.HDInsight.Commands
@@ -125,6 +126,46 @@ namespace Microsoft.Azure.Commands.HDInsight.Commands
             }
 
             return DefaultStorageAccount;
+        }
+
+        protected Dictionary<string, Dictionary<string, string>> GetDefaultVmsizesConfigurations(string location)
+        {
+            Dictionary<string, Dictionary<string, string>> nodeTypeAndClusterTypeAndVmSizeDict = null;
+            try
+            {
+                BillingResponseListResult billingResponseListResult = HDInsightManagementClient.ListBillingSpecs(location);
+
+                /* The result is KeyValuePair<ZOOKEEPERNODEROLE, KeyValulePair<SPARK, STANDARD_A2_V2>> */
+                var nodeTypeAndClusterTypeAndVmSizePairs = billingResponseListResult.VmSizeFilters.Where(filter => filter.FilterMode.Equals(FilterMode.Default)).SelectMany(x =>
+                {
+                    var clusterTypeAndVmSizePairs = x.ClusterFlavors.SelectMany(clusterType => x.VmSizes, (clusterType, vmSize) =>
+                    {
+                        return new KeyValuePair<string, string>(clusterType.ToUpper(), vmSize);
+                    });
+
+                    var result = x.NodeTypes.SelectMany(nodeType => clusterTypeAndVmSizePairs, (nodeType, clusterTypeAndVmSizePair) => { return new KeyValuePair<string, KeyValuePair<string, string>>(nodeType.ToUpper(), clusterTypeAndVmSizePair); });
+                    return result;
+                });
+
+                nodeTypeAndClusterTypeAndVmSizeDict = new Dictionary<string, Dictionary<string, string>>(StringComparer.OrdinalIgnoreCase);
+                foreach (var pair in nodeTypeAndClusterTypeAndVmSizePairs)
+                {
+                    if (!nodeTypeAndClusterTypeAndVmSizeDict.TryGetValue(pair.Key, out var tempDict))
+                    {
+                        nodeTypeAndClusterTypeAndVmSizeDict[pair.Key] = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+                        nodeTypeAndClusterTypeAndVmSizeDict[pair.Key].Add(pair.Value.Key, pair.Value.Value);
+                    }
+                    else
+                    {
+                        nodeTypeAndClusterTypeAndVmSizeDict[pair.Key].Add(pair.Value.Key, pair.Value.Value);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+            return nodeTypeAndClusterTypeAndVmSizeDict;
         }
     }
 }

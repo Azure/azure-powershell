@@ -30,6 +30,8 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Compute.Common;
+
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -37,10 +39,21 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public partial class NewAzureRmVmss : ComputeAutomationBaseCmdlet
     {
-        public const string SimpleParameterSet = "SimpleParameterSet";
+        public const string SimpleParameterSet = "SimpleParameterSet", DefaultParameter = "DefaultParameter";
+        public const int vmssFlexibleOrchestrationModeNetworkAPIVersionMinimumInt = 20201101;
+        public const string vmssFlexibleOrchestrationModeNetworkAPIVersionMinimum = "2020-11-01";
 
         public override void ExecuteCmdlet()
         {
+            if (this.IsParameterBound(c => c.UserData))
+            {
+                if (!ValidateBase64EncodedString.ValidateStringIsBase64Encoded(this.UserData))
+                {
+                    this.UserData = ValidateBase64EncodedString.EncodeStringToBase64(this.UserData);
+                    this.WriteInformation(ValidateBase64EncodedString.UserDataEncodeNotification, new string[] { "PSHOST" });
+                }
+            }
+
             base.ExecuteCmdlet();
             switch (ParameterSetName)
             {
@@ -61,6 +74,30 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                 WriteWarning("You are deploying VMSS pinned to a specific image version from Azure Marketplace. \n" +
                                     "Consider using \"latest\" as the image version. This allows VMSS to auto upgrade when a newer version is available.");
                             }
+
+                            if (parameters?.OrchestrationMode == "Flexible")
+                            {
+                                if (parameters?.VirtualMachineProfile?.NetworkProfile?.NetworkInterfaceConfigurations != null)
+                                {
+                                    foreach (var nicConfig in parameters.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations)
+                                    {
+                                        if (nicConfig.IpConfigurations != null)
+                                        {
+                                            foreach (var ipConfig in nicConfig.IpConfigurations)
+                                            {
+                                                ipConfig.LoadBalancerInboundNatPools = null;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                parameters.UpgradePolicy = null;
+
+                                flexibleOrchestrationModeDefaultParameters(parameters);
+                                checkFlexibleOrchestrationModeParamsDefaultParamSet(parameters);
+                            }
+                            
+
                             var result = VirtualMachineScaleSetsClient.CreateOrUpdate(resourceGroupName, vmScaleSetName, parameters);
                             var psObject = new PSVirtualMachineScaleSet();
                             ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSet>(result, psObject);
@@ -69,6 +106,48 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     });
                     break;
             }
+        }
+
+        /// This somewhat contradicts with the above behavior that sets UpgradePolicy to null.
+        /// There is some concern with the above behavior being correct or not, and requires additional testing before changing.
+        private void checkFlexibleOrchestrationModeParamsDefaultParamSet(VirtualMachineScaleSet parameters)
+        {
+            if (parameters?.UpgradePolicy != null)
+            {
+                throw new Exception("UpgradePolicy is not currently supported for a VMSS with OrchestrationMode set to Flexible.");
+            }
+            else if (convertAPIVersionToInt(parameters?.VirtualMachineProfile?.NetworkProfile?.NetworkApiVersion) < vmssFlexibleOrchestrationModeNetworkAPIVersionMinimumInt)
+            {
+                throw new Exception("The value for NetworkApiVersion is not valid for a VMSS with OrchestrationMode set to Flexible. You must use a valid Network API Version equal to or greater than " + vmssFlexibleOrchestrationModeNetworkAPIVersionMinimum);
+            }
+            else if (parameters?.SinglePlacementGroup == true)
+            {
+                throw new Exception("The value provided for SinglePlacementGroup cannot be used for a VMSS with OrchestrationMode set to Flexible. Please use SinglePlacementGroup 'false' instead.");
+            }
+        }
+
+        private void flexibleOrchestrationModeDefaultParameters(VirtualMachineScaleSet parameters)
+        {
+            if (parameters?.SinglePlacementGroup == null)
+            {
+                parameters.SinglePlacementGroup = false;
+            }
+            if (parameters?.VirtualMachineProfile?.NetworkProfile?.NetworkApiVersion == null)
+            {
+                parameters.VirtualMachineProfile.NetworkProfile.NetworkApiVersion = vmssFlexibleOrchestrationModeNetworkAPIVersionMinimum;
+            }
+            if (parameters?.PlatformFaultDomainCount == null)
+            {
+                parameters.PlatformFaultDomainCount = 1;
+            }
+        }
+
+        private int convertAPIVersionToInt(string networkAPIVersion)
+        {
+            string networkAPIVersionString = String.Join("", networkAPIVersion.Split('-'));
+            int apiversionInt = Convert.ToInt32(networkAPIVersionString);
+
+            return apiversionInt;
         }
 
         [Parameter(
@@ -83,7 +162,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
+            ParameterSetName = DefaultParameter,
             Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
@@ -94,7 +173,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string VMScaleSetName { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
+            ParameterSetName = DefaultParameter,
             Position = 2,
             Mandatory = true,
             ValueFromPipeline = true)]
@@ -102,5 +181,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+        
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = SimpleParameterSet,
+            HelpMessage = "UserData for the Vmss, which will be Base64 encoded. Customer should not pass any secrets in here.",
+            ValueFromPipelineByPropertyName = true)]
+        public string UserData { get; set; }
     }
 }

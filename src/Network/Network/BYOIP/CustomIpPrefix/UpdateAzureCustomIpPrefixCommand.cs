@@ -63,11 +63,25 @@ namespace Microsoft.Azure.Commands.Network
         [SupportsWildcards]
         public virtual string ResourceId { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        [Parameter(Mandatory = false, HelpMessage = "start commissioning process.")]
         public SwitchParameter Commission { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
-        public SwitchParameter Decomission { get; set; }
+        [Alias("Decomission")]
+        [Parameter(Mandatory = false, HelpMessage = "start decommissioning process.")]
+        public SwitchParameter Decommission { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "start provisioning process.")]
+        public SwitchParameter Provision { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "start deprovisioning process.")]
+        public SwitchParameter Deprovision { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The customIpPrefix CIDR.")]
+        [ValidateNotNullOrEmpty]
+        public string Cidr { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -103,7 +117,7 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
             }
 
-            if (Commission && Decomission)
+            if ((Commission ? 1 : 0) + (Decommission ? 1 : 0) + (Provision ? 1 : 0) + (Deprovision ? 1 : 0) > 1)
             {
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.CommissioningStateConflict);
             }
@@ -115,9 +129,26 @@ namespace Microsoft.Azure.Commands.Network
                 throw new PSArgumentException(Properties.Resources.ResourceNotFound, this.Name);
             }
 
-            if (Commission || Decomission)
+            if (Commission)
             {
-                customIpPrefixToUpdate.CommissionedState = Commission ? "Commissioning" : "Decomissioning";
+                customIpPrefixToUpdate.CommissionedState = "Commissioning";
+            }
+            else if (Decommission)
+            {
+                customIpPrefixToUpdate.CommissionedState = "Decommissioning";
+            }
+            else if (Provision)
+            {
+                customIpPrefixToUpdate.CommissionedState = "Provisioning";
+            }
+            else if (Deprovision)
+            {
+                customIpPrefixToUpdate.CommissionedState = "Deprovisioning";
+            }
+
+            if (this.Cidr != null)
+            {
+                customIpPrefixToUpdate.Cidr = this.Cidr;
             }
 
             var sdkModel = NetworkResourceManagerProfile.Mapper.Map<MNM.CustomIpPrefix>(customIpPrefixToUpdate);

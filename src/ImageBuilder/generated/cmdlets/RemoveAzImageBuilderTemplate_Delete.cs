@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Cmdlets
 
     /// <summary>Delete a virtual machine image template</summary>
     /// <remarks>
-    /// [OpenAPI] VirtualMachineImageTemplates_Delete=>DELETE:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}"
+    /// [OpenAPI] Delete=>DELETE:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Remove, @"AzImageBuilderTemplate_Delete", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(bool))]

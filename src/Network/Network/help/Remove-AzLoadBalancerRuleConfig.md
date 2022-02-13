@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: DEBD58A3-AFAF-485C-8708-53228625138F
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azloadbalancerruleconfig
+online version: https://docs.microsoft.com/powershell/module/az.network/remove-azloadbalancerruleconfig
 schema: 2.0.0
 ---
 

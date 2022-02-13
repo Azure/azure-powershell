@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public string Type { get; set; } // This is Type1 in SDK, but mapped to Type to hide a breaking change.  
         public string TypeHandlerVersion { get; set; }
         public bool? AutoUpgradeMinorVersion { get; set; }
+        public bool? EnableAutomaticUpgrade { get; set; }
         public object Settings { get; set; }
         public object ProtectedSettings { get; set; }
         public string ProvisioningState { get; set; }

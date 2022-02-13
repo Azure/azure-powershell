@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
             _logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(_logger);
 
-            ServiceFabricCommonCmdletBase.WriteVerboseIntervalInSec = 0;
+            ServiceFabricManagedCmdletBase.WriteVerboseIntervalInSec = 0;
             ServiceFabricCmdletBase.RunningTest = true;
         }
 

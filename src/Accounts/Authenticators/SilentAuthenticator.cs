@@ -18,9 +18,10 @@ using System.Threading.Tasks;
 
 using Azure.Core;
 using Azure.Identity;
-
+using Microsoft.Azure.PowerShell.Authenticators.Factories;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+
 
 namespace Microsoft.Azure.PowerShell.Authenticators
 {
@@ -35,9 +36,10 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var resource = silentParameters.Environment.GetEndpoint(silentParameters.ResourceId) ?? silentParameters.ResourceId;
             var scopes = AuthenticationHelpers.GetScope(onPremise, resource);
             var authority = silentParameters.Environment.ActiveDirectoryAuthority;
-
-            AzureSession.Instance.TryGetComponent(nameof(PowerShellTokenCache), out PowerShellTokenCache tokenCache);
-            var options = new SharedTokenCacheCredentialOptions(tokenCache.TokenCache)
+            var tokenCacheProvider = silentParameters.TokenCacheProvider;
+            
+            AzureSession.Instance.TryGetComponent(nameof(AzureCredentialFactory), out AzureCredentialFactory azureCredentialFactory);
+            var options = new SharedTokenCacheCredentialOptions(tokenCacheProvider.GetTokenCachePersistenceOptions())
             {
                 EnableGuestTenantAuthentication = true,
                 ClientId = AuthenticationHelpers.PowerShellClientId,
@@ -45,11 +47,18 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 AuthorityHost = new Uri(authority),
                 TenantId = tenantId,
             };
-
-            var cacheCredential = new SharedTokenCacheCredential(options);
+            var cacheCredential = azureCredentialFactory.CreateSharedTokenCacheCredentials(options);
             var requestContext = new TokenRequestContext(scopes);
-            var tokenTask = cacheCredential.GetTokenAsync(requestContext);
-            return MsalAccessToken.GetAccessTokenAsync(cacheCredential, requestContext, cancellationToken, silentParameters.TenantId, silentParameters.UserId, silentParameters.HomeAccountId);
+            var parametersLog = $"- TenantId:'{options.TenantId}', Scopes:'{string.Join(",", scopes)}', AuthorityHost:'{options.AuthorityHost}', UserId:'{silentParameters.UserId}'";
+            return MsalAccessToken.GetAccessTokenAsync(
+                nameof(SilentAuthenticator),
+                parametersLog,
+                cacheCredential,
+                requestContext,
+                cancellationToken,
+                silentParameters.TenantId,
+                silentParameters.UserId,
+                silentParameters.HomeAccountId);
         }
 
         public override bool CanAuthenticate(AuthenticationParameters parameters)

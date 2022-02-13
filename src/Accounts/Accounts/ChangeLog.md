@@ -17,7 +17,100 @@
     * Overview of change #1
         - Additional information about change #1
 -->
+
 ## Upcoming Release
+* Enabled Continue Access Evaluation for MSGraph
+* Improved error message when login is blocked by AAD
+* Improved error message when silent reauthentication failed
+
+## Version 2.7.2
+* Removed legacy assembly System.Private.ServiceModel and System.ServiceModel.Primitives [#16063]
+
+## Version 2.7.1
+* Copied `ServicePrincipalSecret` and `CertificatePassword` from Az.Accounts buildin profile to customer set profile. [#16617]
+* Updated help message and help markdown for parameter `Tenant` of the cmdlet `Set-AzContext`. [#16515]
+* Fixed the issue that Azure PowerShell could not work in a workflow. [#16408]
+* Fixed the doubled Api Version in the URI of the underlying request issued by `Invoke-AzRestMethod`. [#16615]
+
+## Version 2.7.0
+* Removed `ServicePrincipalSecret` and `CertificatePassword` in `PSAzureRmAccount` [#15427]
+* Added optional parameter `MicrosoftGraphAccessToken` to `Connect-AzAccount`
+* Added optional parameters `MicrosoftGraphEndpointResourceId`, `MicrosoftGraphUrl` to `Add-AzEnvironment` and `Set-AzEnvironment`
+* Added `-AccountId` property to `UserWithSubscriptionId` parameter set of `Connect-AzAccount` which allows a user name to be pre-selected for interactive logins
+* Added `-Uri` and `-ResourceId` to `Invoke-AzRestMethod`
+* Added Environment auto completer to the following cmdlets: Connect-AzAccount, Get-AzEnvironment, Set-AzEnvironment, and Remove-AzEnvironment [#15991]
+* Added module name and version to User-Agent string [#16291]
+
+## Version 2.6.2
+* Upgraded Azure.Identity to 1.5.0
+
+## Version 2.6.1
+* Added new version of AAD service client using Microsoft Graph API
+
+## Version 2.6.0
+* Added `-FederatedToken` on `Connect-AzAccount`
+* Updated Azure.Core from 1.19.0 to 1.20.0.
+
+## Version 2.5.4
+* Supported getting the access token for Microsoft Graph.
+* Added AuthorizeRequestDelegate to allow service module to adjust token audience.
+* Utilized [AssemblyLoadContext](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.loader.assemblyloadcontext) to resolve assembly conflict issues in PowerShell.
+* Updated Azure.Core from 1.16.0 to 1.19.0.
+
+## Version 2.5.3
+* Corrected the URLs to Azure Portal in the results of `Get-AzEnvironment` and `Get-AzContext`. [#15429]
+* Made infrastructural changes to support overriding default subscription via a `-SubscriptionId <String>` parameter.
+    - [Az.Aks](https://docs.microsoft.com/powershell/module/az.aks/get-azakscluster) is the first module that supports it.
+
+## Version 2.5.2
+* Disabled context auto saving when token cache persistence fails on Windows and macOS
+* Added PowerShell version into telemetry record
+* Upgraded Microsoft.ApplicationInsights from 2.4.0 to 2.12.0
+* Updated Azure.Core to 1.16.0
+
+## Version 2.5.1
+* Fixed access error when subscripiton has no `Tags` property [#15425].
+
+## Version 2.5.0
+* Added Tags, AuthorizationSource to PSAzureSusbscripiton and added TenantType, DefaultDomain, TenantBrandingLogoUrl, CountryCode to PSAzureTenant [#15220]
+* Upgraded subscription client to 2021-01-01 [#15220]
+* Removed Interactive mode check in common lib
+* Added endpoint of OperationalInsights to environment AzureChinaCloud [#15305]
+* Printed auto generated modules' default logs to verbose stream
+
+## Version 2.4.0
+* Added cmdlet `Open-AzSurveyLink`
+* Supported certificate file as input parameter of Connect-AzAccount
+
+## Version 2.3.0
+* Upgraded Azure.Identity to 1.4 and MSAL to 4.30.1
+* Removed obsolete parameters `ManagedServiceHostName`, `ManagedServicePort` and `ManagedServiceSecret` of cmdlet `Connect-AzAccount`, environment variables `MSI_ENDPOINT` and `MSI_SECRET` could be used instead
+* Customized display format of PSAzureRmAccount to hide secret of service principal [#14208]
+* Added optional parameter `AuthScope` to `Connect-AzAccount` to support enhanced authentication of data plane features
+* Set retry times by environment variable [#14748]
+* Supported subject name issuer authentication
+
+## Version 2.2.8
+* Fallback to first valid context if current default context key is "Default" which is invalid
+
+## Version 2.2.7
+* Fixed incorrect warning message on Windows PowerShell [#14556]
+* Set Azure Environment variable `AzureKeyVaultServiceEndpointResourceId` according to the value of `AzureKeyVaultDnsSuffix` when discovering environment
+
+## Version 2.2.6
+* Upgrade Azure.Identity to fix the issue that Connect-AzAccount fails when ADFS credential is used [#13560]
+
+## Version 2.2.5
+* Tracked CloudError code in exception
+* Raised 'ContextCleared' event when `Clear-AzContext` was executed
+
+## Version 2.2.4
+* Shown correct client request id on debug message [#13745]
+* Added common Azure PowerShell exception type
+* Supported storage API 2019-06-01
+
+## Version 2.2.3
+* Fixed the issue that Http proxy is not respected in Windows PowerShell [#13647]
 * Improved debug log of long running operations in generated modules
 
 ## Version 2.2.2
@@ -32,7 +125,7 @@
 * Added new cmdlet `Get-AzAccessToken`
 * Fixed an issue that error happens if user profile path is inaccessible
 * Fixed an issue causing Write-Object error during Connect-AzAccount [#13419]
-* Added parameter "ContainerRegistryEndpointSuffix" to: `Add-AzEnvironment`, `Set-AzEnvironment` 
+* Added parameter "ContainerRegistryEndpointSuffix" to: `Add-AzEnvironment`, `Set-AzEnvironment`
 * Supported interrupting login by hitting <kbd>CTRL</kbd>+<kbd>C</kbd>
 * Fixed an issue causing `Connect-AzAccount -KeyVaultAccessToken` not working [#13127]
 * Fixed null reference and method case insensitive in `Invoke-AzRestMethod`

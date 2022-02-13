@@ -1,7 +1,7 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.dll-Help.xml
 Module Name: Az.MarketplaceOrdering
-online version: https://docs.microsoft.com/en-us/powershell/module/az.marketplaceordering/set-azmarketplaceterms
+online version: https://docs.microsoft.com/powershell/module/az.marketplaceordering/set-azmarketplaceterms
 schema: 2.0.0
 ---
 

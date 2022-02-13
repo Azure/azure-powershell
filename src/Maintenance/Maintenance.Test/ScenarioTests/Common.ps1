@@ -64,17 +64,17 @@ function Get-ProviderLocation($provider)
 
             if ($location -eq $null)
             {
-                return "westus"
+                return "eastus2euap"
             } else
             {
                 return $location.Locations[0].ToLower() -replace '\s',''
             }
         }
 
-        return "westus"
+        return "eastus2euap"
     }
 
-    return "westus"
+    return "eastus2euap"
 }
 
 <#

@@ -33,11 +33,11 @@ function Test-HostRelatedCommands{
 		-MinSupportedTlsVersion $params.minSupportedTlsVersion
 		Assert-NotNull $cluster
 
-		#test Get-AzHDInsightHost
+		# test Get-AzHDInsightHost
 		$result = Get-AzHDInsightHost -ClusterName $cluster.Name
 		Assert-NotNull $result
 		
-		#test Restart-AzHDInsightHost
+		# test Restart-AzHDInsightHost
 		$workernode1= $result|Where-Object {$_.Name -like "wn1*"}
 		$resizeCluster = $workernode1 | Restart-AzHDInsightHost -ClusterName $cluster.Name
 	}

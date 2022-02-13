@@ -12,10 +12,15 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
+using System;
+using System.Text.RegularExpressions;
+
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 {
     public class PsApiManagementNamedValue : PsApiManagementArmResource
     {
+        static readonly Regex NamedvalueIdRegex = new Regex(@"(.*?)/providers/microsoft.apimanagement/service/(?<serviceName>[^/]+)/namedvalues/(?<certificateId>[^/]+)", RegexOptions.IgnoreCase);
+
         public string NamedValueId { get; set; }
 
         public string Name { get; set; }
@@ -25,5 +30,27 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
         public string[] Tags { get; set; }
 
         public bool Secret { get; set; }
+
+        public PsApiManagementKeyVaultEntity KeyVault { get; set; }
+
+        public PsApiManagementNamedValue() { }
+
+        public PsApiManagementNamedValue(string armResourceId)
+        {
+            this.Id = armResourceId;
+
+            var match = NamedvalueIdRegex.Match(Id);
+            if (match.Success)
+            {
+                var certificateIdRegexResult = match.Groups["certificateId"];
+                if (certificateIdRegexResult != null && certificateIdRegexResult.Success)
+                {
+                    this.NamedValueId = certificateIdRegexResult.Value;
+                    return;
+                }
+            }
+
+            throw new ArgumentException($"ResourceId {armResourceId} is not a valid NamedValue Id.");
+        }
     }
 }

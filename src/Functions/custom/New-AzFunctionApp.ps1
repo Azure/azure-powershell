@@ -89,7 +89,7 @@ function New-AzFunctionApp {
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FunctionsVersionType])]
         [ValidateNotNullOrEmpty()]
         [System.String]
-        # FunctionsVersion type (2 or 3). Default Functions version is defined in HelperFunctions.ps1
+        # FunctionsVersion type (3 or 4). Default Functions version is defined in HelperFunctions.ps1
         ${FunctionsVersion},
 
         [Parameter(ParameterSetName="ByAppServicePlan", HelpMessage='Disable creating application insights resource during the function app creation. No logs will be available.')]
@@ -271,10 +271,14 @@ function New-AzFunctionApp {
 
             ValidateFunctionsVersion -FunctionsVersion $FunctionsVersion
 
-            if (($Runtime -eq "DotNet") -and ($RuntimeVersion -ne $FunctionsVersion))
+            if ($FunctionsVersion -eq "3")
             {
-                Write-Verbose "'DotNet' runtime version is specified by FunctionsVersion. The value of the -RuntimeVersion will be set to '$FunctionsVersion'." -Verbose
-                $RuntimeVersion = $FunctionsVersion
+                # In Functions V3, RuntimeVersion matches FunctionsVersion. However, this is no longer the case for Functions V4 or higher
+                if (($Runtime -eq "DotNet") -and ($RuntimeVersion -ne $FunctionsVersion))
+                {
+                    Write-Verbose "'DotNet' runtime version is specified by FunctionsVersion. The value of the -RuntimeVersion will be set to '$FunctionsVersion'." -Verbose
+                    $RuntimeVersion = $FunctionsVersion
+                }
             }
 
             if (-not $OSType)
@@ -313,6 +317,13 @@ function New-AzFunctionApp {
                 foreach ($PropertyName in $runtimeJsonDefintion.SiteConfigPropertiesDictionary.Keys)
                 {
                     $value = $runtimeJsonDefintion.SiteConfigPropertiesDictionary[$PropertyName]
+
+                    if (($OSType -eq "Windows") -and ($FunctionsVersion -eq "3") -and ($PropertyName -eq "netFrameworkVersion"))
+                    {
+                        # For Functions V3 apps, do not set netFrameworkVersion.
+                        continue
+                    }
+
                     $siteCofig.$PropertyName = $value
                 }
             }            
@@ -395,9 +406,9 @@ function New-AzFunctionApp {
         }
 
         # Validate storage account and get connection string
-        $connectionStrings = GetConnectionString -StorageAccountName $StorageAccountName @params
-        $appSettings.Add((NewAppSetting -Name 'AzureWebJobsStorage' -Value $connectionStrings))
-        $appSettings.Add((NewAppSetting -Name 'AzureWebJobsDashboard' -Value $connectionStrings))
+        $connectionString = GetConnectionString -StorageAccountName $StorageAccountName @params
+        $appSettings.Add((NewAppSetting -Name 'AzureWebJobsStorage' -Value $connectionString))
+        $appSettings.Add((NewAppSetting -Name 'AzureWebJobsDashboard' -Value $connectionString))
 
         if (-not $functionAppIsCustomDockerImage)
         {
@@ -411,13 +422,13 @@ function New-AzFunctionApp {
             $siteCofig.AlwaysOn = $true
         }
 
-        # If plan is elastic premium or windows consumption, we need these app settings
-        $IsWindowsConsumption = $consumptionPlan -and (-not $OSIsLinux)
-
-        if ($planIsElasticPremium -or $IsWindowsConsumption)
+        # If plan is Elastic Premium or Consumption (Windows or Linux), we need these app settings
+        if ($planIsElasticPremium -or $consumptionPlan)
         {
-            $appSettings.Add((NewAppSetting -Name 'WEBSITE_CONTENTAZUREFILECONNECTIONSTRING' -Value $connectionStrings))
-            $appSettings.Add((NewAppSetting -Name 'WEBSITE_CONTENTSHARE' -Value $Name.ToLower()))
+            $appSettings.Add((NewAppSetting -Name 'WEBSITE_CONTENTAZUREFILECONNECTIONSTRING' -Value $connectionString))
+
+            $shareName = GetShareName -FunctionAppName $Name
+            $appSettings.Add((NewAppSetting -Name 'WEBSITE_CONTENTSHARE' -Value $shareName))
         }
 
         if (-not $DisableApplicationInsights)

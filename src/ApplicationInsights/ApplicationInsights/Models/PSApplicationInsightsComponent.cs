@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.Models
             this.Kind = component.Kind;
             this.Type = component.Type;
             this.AppId = component.AppId;
+            this.ApplicationId = component.ApplicationId;
             this.ApplicationType = component.ApplicationType;
             this.CreationDate = component.CreationDate;
             this.FlowType = component.FlowType;
@@ -45,6 +46,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.Models
             this.PublicNetworkAccessForQuery = component.PublicNetworkAccessForQuery;
             this.PrivateLinkScopedResources = component.PrivateLinkScopedResources;
             this.RetentionInDays = component.RetentionInDays;
+            this.ConnectionString = component.ConnectionString;
         }
 
         public string Id { get; set; }
@@ -60,6 +62,8 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.Models
         public string Type { get; set; }
 
         public string AppId { get; set; }
+
+        public string ApplicationId { get; private set; }
 
         public string ApplicationType { get; set; }
 
@@ -88,6 +92,8 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.Models
         public string PublicNetworkAccessForQuery { get; set; }
 
         public IList<PrivateLinkScopedResource> PrivateLinkScopedResources { get; private set; }
+
+        public string ConnectionString { get; private set; }
 
         public int? RetentionInDays { get; set; }
 

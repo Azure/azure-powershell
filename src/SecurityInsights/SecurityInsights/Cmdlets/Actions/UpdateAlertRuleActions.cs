@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Actions
             PSSentinelActionResponse alertRuleAction = null;
             try
             {
-                alertRuleAction = this.SecurityInsightsClient.AlertRules.GetAction(ResourceGroupName, WorkspaceName, AlertRuleId, ActionId).ConvertToPSType();
+                alertRuleAction = this.SecurityInsightsClient.Actions.Get(ResourceGroupName, WorkspaceName, AlertRuleId, ActionId).ConvertToPSType();
             }
             catch
             {
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Actions
             
             if (this.ShouldProcess(this.ActionId, string.Format("Updating Action '{0}' for Alert Rule '{1}' in resource group '{2}' under workspace '{3}'.", this.ActionId, this.AlertRuleId, this.ResourceGroupName, this.WorkspaceName)))
             {
-                var result = this.SecurityInsightsClient.AlertRules.CreateOrUpdateAction(this.ResourceGroupName, this.WorkspaceName, this.AlertRuleId, this.ActionId, updateAlertRuleAction.CreatePSType()).ConvertToPSType();
+                var result = this.SecurityInsightsClient.Actions.CreateOrUpdate(this.ResourceGroupName, this.WorkspaceName, this.AlertRuleId, this.ActionId, updateAlertRuleAction.CreatePSType()).ConvertToPSType();
                 WriteObject(result);
             }
         }

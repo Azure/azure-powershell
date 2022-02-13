@@ -56,11 +56,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         AzureVM = 1,
 
         /// <summary>
-        /// Represents the Microsoft Azure Recovery Services agent.
-        /// </summary>
-        MARS,
-
-        /// <summary>
         /// Represents the Service Center Data Protection Manager agent.
         /// </summary>
         SCDPM,
@@ -80,7 +75,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// Represents Azure Workload
         /// </summary>
         AzureWorkload,
-        MAB
+
+        /// <summary>
+        /// Represents MAB agent
+        /// </summary>
+        MAB,
+
+        /// <summary>
+        /// Represents that the BackupManagementType is Not Applicable.
+        /// </summary>
+        NA
+    }  
+
+    /// <summary>
+    /// Tier information for Recovery point: "Vault", "Snapshot", "Archive"
+    /// </summary>
+    public enum RecoveryPointTier
+    {
+        VaultStandard = 1,
+        Snapshot,
+        VaultArchive,
+        VaultStandardRehydrated,
+        SnapshotAndVaultStandard,
+        SnapshotAndVaultArchive
     }
 
     /// <summary>
@@ -119,7 +136,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// Represents MSSQL in Azure VM.
         /// </summary>
         MSSQL,
-        FileFolder
+
+        /// <summary>
+        /// Represents MARS agent.
+        /// </summary>
+        FileFolder,
+
+        /// <summary>
+        /// Represents SAPHANA in Azure VM.
+        /// </summary>
+        SAPHanaDatabase
     }
 
     /// <summary>
@@ -272,6 +298,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     {
         Daily = 1,
         Weekly = 2,
+        Hourly = 3
     }
 
     /// <summary>
@@ -331,7 +358,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// <summary>
         /// Data move between source and target vaults
         /// </summary>
-        BackupDataMove
+        BackupDataMove,
+
+        /// <summary>
+        /// update the customer managed key
+        /// </summary>
+        UpdateCustomerManagedKey
     }
 
     /// <summary>

@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
@@ -65,9 +66,43 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public bool OriginalSAEnabled { get; set; }
 
+        /// <summary>
+        /// Zone pinned information for the Recovery point
+        /// </summary>
+        public IList<string> Zones { get; set; }
+
+        /// <summary>
+        /// Recovery Type information for Recovery point: "Vault", "Snapshot", "Snapshot and Vault" 
+        /// </summary>
+        public RecoveryPointTier RecoveryPointTier;
+
+        /// <summary>
+        /// Rehydration expiry time
+        /// </summary>
+        public DateTime? RehydrationExpiryTime;
+
+        /// <summary>
+        /// Recovery point move rediness info
+        /// </summary>
+        public IDictionary<string, RecoveryPointMoveReadinessInfo> RecoveryPointMoveReadinessInfo;
+
         public AzureVmRecoveryPoint()
         {
 
         }
+    }
+
+    public class RecoveryPointMoveReadinessInfo
+    {
+        /// <summary>
+        /// determines the move readiness of a recovery point
+        /// </summary>
+        public bool? IsReadyForMove { get; set; }
+
+        /// <summary>
+        /// additional move message from service
+        /// </summary>
+        public string AdditionalInfo { get; set; }
+
     }
 }

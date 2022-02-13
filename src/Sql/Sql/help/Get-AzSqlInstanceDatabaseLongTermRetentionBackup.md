@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlinstancedatabaselongtermretentionbackup
+online version: https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabaselongtermretentionbackup
 schema: 2.0.0
 ---
 
@@ -60,7 +60,7 @@ Get-AzSqlInstanceDatabaseLongTermRetentionBackup [-InputObject] <AzureSqlManaged
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzSqlInstanceDatabaseLongTermRetentionBackup** cmdlet gets long term retention backup(s).
 
 ## EXAMPLES
 
@@ -98,7 +98,7 @@ Required: True
 Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -DatabaseName

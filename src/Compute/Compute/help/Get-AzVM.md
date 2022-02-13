@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 6250EC11-79CF-428B-A72F-9BD72C1751F0
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azvm
+online version: https://docs.microsoft.com/powershell/module/az.compute/get-azvm
 schema: 2.0.0
 ---
 
@@ -15,24 +15,26 @@ Gets the properties of a virtual machine.
 
 ### DefaultParamSet (Default)
 ```
-Get-AzVM [[-ResourceGroupName] <String>] [[-Name] <String>] [-Status]
+Get-AzVM [[-ResourceGroupName] <String>] [[-Name] <String>] [-Status] [-UserData]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetVirtualMachineInResourceGroupParamSet
 ```
-Get-AzVM [-ResourceGroupName] <String> [-Name] <String> [-Status] [-DisplayHint <DisplayHintType>]
+Get-AzVM [-ResourceGroupName] <String> [-Name] <String> [-Status] [-DisplayHint <DisplayHintType>] [-UserData]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ListLocationVirtualMachinesParamSet
 ```
-Get-AzVM -Location <String> [-Status] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzVM -Location <String> [-Status] [-UserData] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ListNextLinkVirtualMachinesParamSet
 ```
-Get-AzVM [-Status] [-NextLink] <Uri> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzVM [-Status] [-NextLink] <Uri> [-UserData] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,9 +46,11 @@ Specify the *Status* parameter to get the instance view of a virtual machine ins
 ## EXAMPLES
 
 ### Example 1: Get model and instance view properties
+```powershell
+Get-AzVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
 ```
-PS C:\> Get-AzVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
 
+```output
 ResourceGroupName        : ResourceGroup11
 Id                       : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup11/providers/M
 icrosoft.Compute/virtualMachines/VirtualMachine07
@@ -68,9 +72,11 @@ StorageProfile           : {ImageReference, OsDisk, DataDisks}
 This command gets the model view and instance view properties of the virtual machine named VirtualMachine07.
 
 ### Example 2: Get instance view properties
+```powershell
+Get-AzVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" -Status
 ```
-PS C:\> Get-AzVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" -Status
 
+```output
 ResourceGroupName       : ResourceGroup11
 Name                    : VirtualMachine07
 Disks[0]                :
@@ -165,9 +171,11 @@ This command specifies the *Status* parameter.
 Therefore, the command gets only the instance view properties.
 
 ### Example 3: Get properties for all virtual machines in a resource group
+```powershell
+Get-AzVM -ResourceGroupName "ResourceGroup11"
 ```
-PS C:\> Get-AzVM -ResourceGroupName "ResourceGroup11"
 
+```output
 ResourceGroupName    Name       Location          VmSize  OsType            NIC
 -----------------    ----       --------          ------  ------            ---
 ResourceGroup11     test1         eastus Standard_DS1_v2 Windows          test1
@@ -178,9 +186,11 @@ ResourceGroup11     test3         eastus Standard_DS1_v2 Windows          test3
 This command gets properties for all the virtual machines in the resource group named ResourceGroup11.
 
 ### Example 4: Get all virtual machines in your subscription
+```powershell
+Get-AzVM
 ```
-PS C:\> Get-AzVM
 
+```output
 ResourceGroupName    Name       Location          VmSize  OsType            NIC
 -----------------    ----       --------          ------  ------            ---
 TEST1               test1         eastus Standard_DS1_v2 Windows          test1
@@ -193,9 +203,11 @@ TEST2               test5         eastus Standard_DS1_v2 Windows          test5
 This command gets all the virtual machines in your subscription.
 
 ### Example 5: Get all virtual machines in the location.
+```powershell
+Get-AzVM -Location "westus"
 ```
-PS C:\> Get-AzVM -Location "westus"
 
+```output
 ResourceGroupName    Name       Location          VmSize  OsType            NIC
 -----------------    ----       --------          ------  ------            ---
 TEST1               test2         westus Standard_DS1_v2 Windows          test2
@@ -205,9 +217,11 @@ TEST2               test4         westus Standard_DS1_v2 Windows          test4
 This command gets all the virtual machines in West US region.
 
 ### Example 6: Get all virtual machines using filtering
+```powershell
+Get-AzVM -Name test*
 ```
-PS C:\> Get-AzVM -Name test*
 
+```output
 ResourceGroupName    Name       Location          VmSize  OsType            NIC
 -----------------    ----       --------          ------  ------            ---
 TEST1               test1         eastus Standard_DS1_v2 Windows          test1
@@ -217,7 +231,33 @@ TEST2               test4         westus Standard_DS1_v2 Windows          test4
 TEST2               test5         eastus Standard_DS1_v2 Windows          test5
 ```
 
-This command gets all the virtual machines in your subscription that start with "test".
+### Example 7: Get VM with UserData value
+```powershell
+Get-AzVM -ResourceGroupName <Resource Group Name> -Name <VM Name> -UserData;
+```
+
+```output
+ResourceGroupName : <>
+Id                : /subscriptions/<Subscription Id>/resourceGroups/<Resource Group Name>/providers/Microsoft
+.Compute/virtualMachines/<VM Name>
+VmId              : <VM Id>
+Name              : <VM Name>
+Type              : Microsoft.Compute/virtualMachines
+Location          : eastus
+Tags              :
+{"azsecpack":"nonprod","platformsettings.host_environment.service.platform_optedin_for_rootcerts":"true"}
+Extensions        : {Microsoft.Azure.Geneva.GenevaMonitoring,
+Microsoft.Azure.Security.AntimalwareSignature.AntimalwareConfiguration}
+HardwareProfile   : {VmSize}
+NetworkProfile    : {NetworkInterfaces}
+OSProfile         : {ComputerName, AdminUsername, WindowsConfiguration, Secrets, AllowExtensionOperations,
+RequireGuestProvisionSignal}
+ProvisioningState : Succeeded
+StorageProfile    : {ImageReference, OsDisk, DataDisks}
+UserData          : bm90IGVuY29kZWQ=
+```
+
+The UserData value must always be Base64 encoded. This command assumes you have already created a VM with a UserData value.
 
 ## PARAMETERS
 
@@ -351,6 +391,21 @@ Required: False
 Position: 2
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserData
+UserData for the VM, which will be base-64 encoded. Customer should not pass any secrets in here.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

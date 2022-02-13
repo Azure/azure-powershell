@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [AllowEmptyCollection]
         [ValidateNotNull]
         public Hashtable Metadata { get; set; }
-        
+
         [Parameter(
            Mandatory = false,
            HelpMessage = "Access tier for specific share. StorageV2 account can choose between TransactionOptimized (default), Hot, and Cool. FileStorage account can choose Premium.")]
@@ -140,6 +140,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
             }
         }
         private string accessTier = null;
+        
+        [Parameter(Mandatory = false,
+            HelpMessage = "Sets reduction of the access rights for the remote superuser. Possible values include: 'NoRootSquash', 'RootSquash', 'AllSquash'")]
+        [ValidateSet(RootSquashType.NoRootSquash,
+            RootSquashType.RootSquash,
+            RootSquashType.AllSquash,
+            IgnoreCase = true)]
+        public string RootSquash { get; set; }
         
         public override void ExecuteCmdlet()
         {
@@ -177,6 +185,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                                     new FileShare(
                                         metadata: MetadataDictionary,
                                         shareQuota: shareQuota,
+                                        rootSquash: this.RootSquash,
                                         accessTier: accessTier));
 
                 WriteObject(new PSShare(Share));

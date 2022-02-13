@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/en-us/powershell/module/az.synapse/get-azsynapseworkspace
+online version: https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapseworkspace
 schema: 2.0.0
 ---
 
@@ -40,7 +40,7 @@ This command gets all the Azure Synapse Analytics workspaces under the current s
 PS C:\> Get-AzSynapseWorkspace -ResourceGroupName ContosoResourceGroup
 ```
 
-This command gets all the Azure Synapse Analytics workspaces under the current subscription.
+This command gets all the Azure Synapse Analytics workspaces under the current subscription within the Resource Group ContosoResourceGroup.
 
 ### Example 3
 ```powershell

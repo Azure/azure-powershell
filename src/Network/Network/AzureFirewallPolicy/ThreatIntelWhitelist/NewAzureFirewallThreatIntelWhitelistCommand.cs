@@ -21,7 +21,6 @@ using Microsoft.Azure.Commands.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyThreatIntelWhitelist"), OutputType(typeof(PSAzureFirewallPolicyThreatIntelWhitelist))]
-    [Alias("New-AzFirewallThreatIntelWhitelistObject")]
     public class NewAzureFirewallPolicyThreatIntelWhitelistCommand : NetworkBaseCmdlet
     {
         [Parameter(

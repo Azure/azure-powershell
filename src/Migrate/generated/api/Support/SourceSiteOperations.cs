@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>A value indicating whether source site operations are required.</summary>
     public partial struct SourceSiteOperations :
         System.IEquatable<SourceSiteOperations>
     {
@@ -20,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         /// <param name="value">the value to convert to an instance of <see cref="SourceSiteOperations" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new SourceSiteOperations(System.Convert.ToString(value));
+            return new SourceSiteOperations(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type SourceSiteOperations</summary>

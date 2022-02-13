@@ -3,5 +3,5 @@
     <PsModuleName>{ModuleNamePlaceHolder}</PsModuleName>
   </PropertyGroup>
 
-  <Import Project="$(MSBuildThisFileDirectory)..\Az.autorest.props" />
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />
 </Project>

@@ -13,7 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'Get-AzMigrateServerReplication' {
     It 'ListByName' {
-        $output = Get-AzMigrateServerReplication -ProjectName $env.srsProjectName -ResourceGroupName $env.srsResourceGroup -SubscriptionId $env.srsSubscriptionId
+        $output = Get-AzMigrateServerReplication -ProjectName $env.srsProjectName -ResourceGroupName $env.migResourceGroup -SubscriptionId $env.srsSubscriptionId
         $output.Count | Should -BeGreaterOrEqual 1 
     }
 
@@ -34,7 +34,7 @@ Describe 'Get-AzMigrateServerReplication' {
     }
 
     It 'ListById' {
-        $output = Get-AzMigrateServerReplication -ProjectID $env.srsProjectId -ResourceGroupID $env.srsResourceGroupId -SubscriptionId $env.srsSubscriptionId
+        $output = Get-AzMigrateServerReplication -ProjectID $env.srsProjectId -ResourceGroupID $env.migResourceGroupId -SubscriptionId $env.srsSubscriptionId
         $output.Count | Should -BeGreaterOrEqual 1 
     }
 }

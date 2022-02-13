@@ -113,7 +113,7 @@ namespace StorageSync.Test.Common
         /// <returns>System.String.</returns>
         public bool TryGetAfsAgentVersion(out string afsAgentVersion)
         {
-            afsAgentVersion = @"5.0.2.0";
+            afsAgentVersion = @"13.0.0.0";
             return true;
         }
 

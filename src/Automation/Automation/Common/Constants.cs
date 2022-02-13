@@ -59,6 +59,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         public const string PsCommandParamDepth = "Depth";
 
+        public const string PsCommandParamCompress = "Compress";
+
         public const int PsCommandValueDepth = 2;
 
         public const int JobSummaryLength = 80;
@@ -87,6 +89,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
             public const string GraphicalPowerShellWorkflow = "GraphicalPowerShellWorkflow";
 
             public const string Python2 = "Python2";
+
+            public const string Python3 = "Python3";
         }
 
         public static class SupportedFileExtensions

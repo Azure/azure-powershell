@@ -1,0 +1,741 @@
+{
+  "Stop-AzDiskPool+[NoContext]+Deallocate+$POST+https://management.azure.com/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/resourceGroups/storagepool-rg-test/providers/Microsoft.StoragePool/diskPools/disk-pool-1/deallocate?api-version=2021-08-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/resourceGroups/storagepool-rg-test/providers/Microsoft.StoragePool/diskPools/disk-pool-1/deallocate?api-version=2021-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "43350fe5-954a-497f-b130-5804cb35e304" ],
+        "CommandName": [ "Stop-AzDiskPool" ],
+        "FullCommandName": [ "Stop-AzDiskPool_Deallocate" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/providers/Microsoft.StoragePool/locations/westeurope/operationresults/66b69867-289e-43f0-95f7-2ff18f1fed53?api-version=2021-08-01" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "Azure-Asyncoperation": [ "https://management.azure.com/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/providers/Microsoft.StoragePool/locations/westeurope/operationsStatus/66b69867-289e-43f0-95f7-2ff18f1fed53?api-version=2021-08-01" ],
+        "Content-Security-Policy": [ "default-src \u0027self\u0027; frame-ancestors \u0027none\u0027" ],
+        "X-Ms-Async-Operation-Timeout": [ "PT1H" ],
+        "X-Ms-Client-Request-Id": [ "43350fe5-954a-497f-b130-5804cb35e304" ],
+        "X-Ms-Request-Id": [ "ebf1c062-d9ba-47fd-83bc-b5bf03848b7c" ],
+        "X-Ms-Return-Client-Request-Id": [ "true" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "a5be4826-fe9e-4912-9986-6a970ca6def0" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211012T220907Z:a5be4826-fe9e-4912-9986-6a970ca6def0" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 12 Oct 2021 22:09:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzDiskPool+[NoContext]+Deallocate+$GET+https://management.azure.com/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/providers/Microsoft.StoragePool/locations/westeurope/operationsStatus/66b69867-289e-43f0-95f7-2ff18f1fed53?api-version=2021-08-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/providers/Microsoft.StoragePool/locations/westeurope/operationsStatus/66b69867-289e-43f0-95f7-2ff18f1fed53?api-version=2021-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "43350fe5-954a-497f-b130-5804cb35e304" ],
+        "CommandName": [ "Stop-AzDiskPool" ],
+        "FullCommandName": [ "Stop-AzDiskPool_Deallocate" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "Content-Security-Policy": [ "default-src \u0027self\u0027; frame-ancestors \u0027none\u0027" ],
+        "X-Ms-Client-Request-Id": [ "43350fe5-954a-497f-b130-5804cb35e304" ],
+        "X-Ms-Request-Id": [ "faca328c-a5c8-4a42-a78a-e7d0f5fba271" ],
+        "X-Ms-Return-Client-Request-Id": [ "true" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "5ccdcfc4-34ee-49f8-b414-fe286f14ef77" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211012T220917Z:5ccdcfc4-34ee-49f8-b414-fe286f14ef77" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 12 Oct 2021 22:09:16 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "247" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/locations/westeurope/operationStatus/66b69867-289e-43f0-95f7-2ff18f1fed53\",\"name\":\"66b69867-289e-43f0-95f7-2ff18f1fed53\",\"status\":\"Running\",\"startTime\":\"2021-10-12T22:09:07Z\",\"endTime\":\"\"}",
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzDiskPool+[NoContext]+Deallocate+$GET+https://management.azure.com/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/providers/Microsoft.StoragePool/locations/westeurope/operationsStatus/66b69867-289e-43f0-95f7-2ff18f1fed53?api-version=2021-08-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/providers/Microsoft.StoragePool/locations/westeurope/operationsStatus/66b69867-289e-43f0-95f7-2ff18f1fed53?api-version=2021-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "43350fe5-954a-497f-b130-5804cb35e304" ],
+        "CommandName": [ "Stop-AzDiskPool" ],
+        "FullCommandName": [ "Stop-AzDiskPool_Deallocate" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "Content-Security-Policy": [ "default-src \u0027self\u0027; frame-ancestors \u0027none\u0027" ],
+        "X-Ms-Client-Request-Id": [ "43350fe5-954a-497f-b130-5804cb35e304" ],
+        "X-Ms-Request-Id": [ "22019802-7a0f-47c8-acac-6d77a0eb30ab" ],
+        "X-Ms-Return-Client-Request-Id": [ "true" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "03b94127-9cb2-4d5d-a6c7-642e5f3dea02" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211012T220948Z:03b94127-9cb2-4d5d-a6c7-642e5f3dea02" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 12 Oct 2021 22:09:48 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1320" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/locations/westeurope/operationStatus/66b69867-289e-43f0-95f7-2ff18f1fed53\",\"name\":\"66b69867-289e-43f0-95f7-2ff18f1fed53\",\"status\":\"Succeeded\",\"startTime\":\"2021-10-12T22:09:07Z\",\"endTime\":\"2021-10-12T22:09:23Z\",\"properties\":{\"id\":\"/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/resourceGroups/storagepool-rg-test/providers/Microsoft.StoragePool/diskPools/disk-pool-1\",\"name\":\"disk-pool-1\",\"type\":\"Microsoft.StoragePool/diskPools\",\"location\":\"westeurope\",\"tags\":{},\"systemData\":{\"createdBy\":\"ruyingchen@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-11T22:05:07.0161213Z\",\"lastModifiedBy\":\"ruyingchen@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-10-12T19:28:19.2545027Z\"},\"properties\":{\"disks\":[{\"id\":\"/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/resourceGroups/storagepool-rg-test/providers/Microsoft.Compute/disks/disk-pool-disk-1\"}],\"availabilityZones\":[\"1\"],\"subnetId\":\"/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/resourceGroups/storagepool-rg-test/providers/Microsoft.Network/virtualNetworks/disk-pool-vnet/subnets/default\",\"provisioningState\":\"Succeeded\",\"status\":\"Stopped (deallocated)\",\"additionalCapabilities\":[\"DiskPool.SkipInfrastructureDeployment\"]},\"sku\":{\"name\":\"Standard_S1\",\"tier\":\"Standard\"}}}",
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzDiskPool+[NoContext]+Deallocate+$GET+https://management.azure.com/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/providers/Microsoft.StoragePool/locations/westeurope/operationsStatus/66b69867-289e-43f0-95f7-2ff18f1fed53?api-version=2021-08-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/providers/Microsoft.StoragePool/locations/westeurope/operationsStatus/66b69867-289e-43f0-95f7-2ff18f1fed53?api-version=2021-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "43350fe5-954a-497f-b130-5804cb35e304" ],
+        "CommandName": [ "Stop-AzDiskPool" ],
+        "FullCommandName": [ "Stop-AzDiskPool_Deallocate" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
+        "Content-Security-Policy": [ "default-src \u0027self\u0027; frame-ancestors \u0027none\u0027" ],
+        "X-Ms-Client-Request-Id": [ "43350fe5-954a-497f-b130-5804cb35e304" ],
+        "X-Ms-Request-Id": [ "1bf8c16b-2356-4f87-aa38-872fbfcbce4f" ],
+        "X-Ms-Return-Client-Request-Id": [ "true" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "f5735653-1276-45f4-8dca-feb18ab6683e" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211012T220948Z:f5735653-1276-45f4-8dca-feb18ab6683e" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 12 Oct 2021 22:09:48 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1320" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/locations/westeurope/operationStatus/66b69867-289e-43f0-95f7-2ff18f1fed53\",\"name\":\"66b69867-289e-43f0-95f7-2ff18f1fed53\",\"status\":\"Succeeded\",\"startTime\":\"2021-10-12T22:09:07Z\",\"endTime\":\"2021-10-12T22:09:23Z\",\"properties\":{\"id\":\"/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/resourceGroups/storagepool-rg-test/providers/Microsoft.StoragePool/diskPools/disk-pool-1\",\"name\":\"disk-pool-1\",\"type\":\"Microsoft.StoragePool/diskPools\",\"location\":\"westeurope\",\"tags\":{},\"systemData\":{\"createdBy\":\"ruyingchen@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-11T22:05:07.0161213Z\",\"lastModifiedBy\":\"ruyingchen@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-10-12T19:28:19.2545027Z\"},\"properties\":{\"disks\":[{\"id\":\"/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/resourceGroups/storagepool-rg-test/providers/Microsoft.Compute/disks/disk-pool-disk-1\"}],\"availabilityZones\":[\"1\"],\"subnetId\":\"/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/resourceGroups/storagepool-rg-test/providers/Microsoft.Network/virtualNetworks/disk-pool-vnet/subnets/default\",\"provisioningState\":\"Succeeded\",\"status\":\"Stopped (deallocated)\",\"additionalCapabilities\":[\"DiskPool.SkipInfrastructureDeployment\"]},\"sku\":{\"name\":\"Standard_S1\",\"tier\":\"Standard\"}}}",
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzDiskPool+[NoContext]+Deallocate+$GET+https://management.azure.com/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/resourceGroups/storagepool-rg-test/providers/Microsoft.StoragePool/diskPools/disk-pool-1?api-version=2021-08-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/resourceGroups/storagepool-rg-test/providers/Microsoft.StoragePool/diskPools/disk-pool-1?api-version=2021-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "0ecc9ccc-bc52-4fe8-8a31-53856209a98d" ],
+        "CommandName": [ "Get-AzDiskPool" ],
+        "FullCommandName": [ "Get-AzDiskPool_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "Content-Security-Policy": [ "default-src \u0027self\u0027; frame-ancestors \u0027none\u0027" ],
+        "X-Ms-Client-Request-Id": [ "0ecc9ccc-bc52-4fe8-8a31-53856209a98d" ],
+        "X-Ms-Request-Id": [ "d87edd13-412c-42cf-92ad-e4ec2ed8a384" ],
+        "X-Ms-Return-Client-Request-Id": [ "true" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "835b6c3c-4f63-4f0e-8edf-d9b68fb30164" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211012T220949Z:835b6c3c-4f63-4f0e-8edf-d9b68fb30164" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 12 Oct 2021 22:09:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1037" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/resourceGroups/storagepool-rg-test/providers/Microsoft.StoragePool/diskPools/disk-pool-1\",\"name\":\"disk-pool-1\",\"type\":\"Microsoft.StoragePool/diskPools\",\"location\":\"westeurope\",\"tags\":{},\"systemData\":{\"createdBy\":\"ruyingchen@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-11T22:05:07.0161213Z\",\"lastModifiedBy\":\"ruyingchen@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-10-12T19:28:19.2545027Z\"},\"properties\":{\"disks\":[{\"id\":\"/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/resourceGroups/storagepool-rg-test/providers/Microsoft.Compute/disks/disk-pool-disk-1\"}],\"availabilityZones\":[\"1\"],\"subnetId\":\"/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/resourceGroups/storagepool-rg-test/providers/Microsoft.Network/virtualNetworks/disk-pool-vnet/subnets/default\",\"provisioningState\":\"Succeeded\",\"status\":\"Stopped (deallocated)\",\"additionalCapabilities\":[\"DiskPool.SkipInfrastructureDeployment\"]},\"sku\":{\"name\":\"Standard_S1\",\"tier\":\"Standard\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzDiskPool+[NoContext]+DeallocateViaIdentity+$GET+https://management.azure.com/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/resourceGroups/storagepool-rg-test/providers/Microsoft.StoragePool/diskPools/disk-pool-5?api-version=2021-08-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/resourceGroups/storagepool-rg-test/providers/Microsoft.StoragePool/diskPools/disk-pool-5?api-version=2021-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "47fdbbb4-b1ba-44a4-95c4-6463ee59598e" ],
+        "CommandName": [ "Get-AzDiskPool" ],
+        "FullCommandName": [ "Get-AzDiskPool_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
+        "Content-Security-Policy": [ "default-src \u0027self\u0027; frame-ancestors \u0027none\u0027" ],
+        "X-Ms-Client-Request-Id": [ "47fdbbb4-b1ba-44a4-95c4-6463ee59598e" ],
+        "X-Ms-Request-Id": [ "3b346545-5e6b-48ce-a6cb-734203af0043" ],
+        "X-Ms-Return-Client-Request-Id": [ "true" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "1d6e64d5-ee1a-4b9b-8ef5-71a5a4482651" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211012T220949Z:1d6e64d5-ee1a-4b9b-8ef5-71a5a4482651" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 12 Oct 2021 22:09:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1103" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/resourceGroups/storagepool-rg-test/providers/Microsoft.StoragePool/diskPools/disk-pool-5\",\"name\":\"disk-pool-5\",\"type\":\"Microsoft.StoragePool/diskPools\",\"location\":\"westeurope\",\"tags\":{},\"systemData\":{\"createdBy\":\"ruyingchen@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-12T21:14:55.2875642Z\",\"lastModifiedBy\":\"ruyingchen@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-10-12T21:47:35.7896044Z\"},\"properties\":{\"disks\":[{\"id\":\"/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/resourceGroups/storagepool-rg-test/providers/Microsoft.Compute/disks/disk-pool-disk-2\"},{\"id\":\"/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/resourceGroups/storagepool-rg-test/providers/Microsoft.Compute/disks/disk-pool-disk-3\"}],\"availabilityZones\":[\"1\"],\"subnetId\":\"/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/resourceGroups/storagepool-rg-test/providers/Microsoft.Network/virtualNetworks/disk-pool-vnet/subnets/default\",\"provisioningState\":\"Succeeded\",\"status\":\"Running\"},\"sku\":{\"name\":\"Standard_S1\",\"tier\":\"Standard\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzDiskPool+[NoContext]+DeallocateViaIdentity+$POST+https://management.azure.com/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/resourceGroups/storagepool-rg-test/providers/Microsoft.StoragePool/diskPools/disk-pool-5/deallocate?api-version=2021-08-01+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/resourceGroups/storagepool-rg-test/providers/Microsoft.StoragePool/diskPools/disk-pool-5/deallocate?api-version=2021-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "cb017d9c-5ee3-4323-adeb-a4e870718ba0" ],
+        "CommandName": [ "Stop-AzDiskPool" ],
+        "FullCommandName": [ "Stop-AzDiskPool_DeallocateViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/providers/Microsoft.StoragePool/locations/westeurope/operationresults/0a7c17ba-cc46-4260-94b9-ac766cc1ec1f?api-version=2021-08-01" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "Azure-Asyncoperation": [ "https://management.azure.com/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/providers/Microsoft.StoragePool/locations/westeurope/operationsStatus/0a7c17ba-cc46-4260-94b9-ac766cc1ec1f?api-version=2021-08-01" ],
+        "Content-Security-Policy": [ "default-src \u0027self\u0027; frame-ancestors \u0027none\u0027" ],
+        "X-Ms-Async-Operation-Timeout": [ "PT1H" ],
+        "X-Ms-Client-Request-Id": [ "cb017d9c-5ee3-4323-adeb-a4e870718ba0" ],
+        "X-Ms-Request-Id": [ "31163d9c-d0b3-4a72-9aab-fb09149078a5" ],
+        "X-Ms-Return-Client-Request-Id": [ "true" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "bf627453-f48c-4a52-9a06-c4e1a7751d5a" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211012T220950Z:bf627453-f48c-4a52-9a06-c4e1a7751d5a" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 12 Oct 2021 22:09:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzDiskPool+[NoContext]+DeallocateViaIdentity+$GET+https://management.azure.com/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/providers/Microsoft.StoragePool/locations/westeurope/operationsStatus/0a7c17ba-cc46-4260-94b9-ac766cc1ec1f?api-version=2021-08-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/providers/Microsoft.StoragePool/locations/westeurope/operationsStatus/0a7c17ba-cc46-4260-94b9-ac766cc1ec1f?api-version=2021-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "cb017d9c-5ee3-4323-adeb-a4e870718ba0" ],
+        "CommandName": [ "Stop-AzDiskPool" ],
+        "FullCommandName": [ "Stop-AzDiskPool_DeallocateViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
+        "Content-Security-Policy": [ "default-src \u0027self\u0027; frame-ancestors \u0027none\u0027" ],
+        "X-Ms-Client-Request-Id": [ "cb017d9c-5ee3-4323-adeb-a4e870718ba0" ],
+        "X-Ms-Request-Id": [ "cd6d26db-2285-4f63-bb90-1758435d0d88" ],
+        "X-Ms-Return-Client-Request-Id": [ "true" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "61463473-36ae-4fab-a36d-2bf87a92ca34" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211012T221000Z:61463473-36ae-4fab-a36d-2bf87a92ca34" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 12 Oct 2021 22:10:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "247" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/locations/westeurope/operationStatus/0a7c17ba-cc46-4260-94b9-ac766cc1ec1f\",\"name\":\"0a7c17ba-cc46-4260-94b9-ac766cc1ec1f\",\"status\":\"Running\",\"startTime\":\"2021-10-12T22:09:49Z\",\"endTime\":\"\"}",
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzDiskPool+[NoContext]+DeallocateViaIdentity+$GET+https://management.azure.com/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/providers/Microsoft.StoragePool/locations/westeurope/operationsStatus/0a7c17ba-cc46-4260-94b9-ac766cc1ec1f?api-version=2021-08-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/providers/Microsoft.StoragePool/locations/westeurope/operationsStatus/0a7c17ba-cc46-4260-94b9-ac766cc1ec1f?api-version=2021-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "cb017d9c-5ee3-4323-adeb-a4e870718ba0" ],
+        "CommandName": [ "Stop-AzDiskPool" ],
+        "FullCommandName": [ "Stop-AzDiskPool_DeallocateViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
+        "Content-Security-Policy": [ "default-src \u0027self\u0027; frame-ancestors \u0027none\u0027" ],
+        "X-Ms-Client-Request-Id": [ "cb017d9c-5ee3-4323-adeb-a4e870718ba0" ],
+        "X-Ms-Request-Id": [ "5b90381c-4b6c-4201-a34a-a2d1bab54749" ],
+        "X-Ms-Return-Client-Request-Id": [ "true" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "602d9d6a-339d-465d-86cb-39bd81123536" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211012T221030Z:602d9d6a-339d-465d-86cb-39bd81123536" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 12 Oct 2021 22:10:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "247" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/locations/westeurope/operationStatus/0a7c17ba-cc46-4260-94b9-ac766cc1ec1f\",\"name\":\"0a7c17ba-cc46-4260-94b9-ac766cc1ec1f\",\"status\":\"Running\",\"startTime\":\"2021-10-12T22:09:49Z\",\"endTime\":\"\"}",
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzDiskPool+[NoContext]+DeallocateViaIdentity+$GET+https://management.azure.com/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/providers/Microsoft.StoragePool/locations/westeurope/operationsStatus/0a7c17ba-cc46-4260-94b9-ac766cc1ec1f?api-version=2021-08-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/providers/Microsoft.StoragePool/locations/westeurope/operationsStatus/0a7c17ba-cc46-4260-94b9-ac766cc1ec1f?api-version=2021-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "cb017d9c-5ee3-4323-adeb-a4e870718ba0" ],
+        "CommandName": [ "Stop-AzDiskPool" ],
+        "FullCommandName": [ "Stop-AzDiskPool_DeallocateViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
+        "Content-Security-Policy": [ "default-src \u0027self\u0027; frame-ancestors \u0027none\u0027" ],
+        "X-Ms-Client-Request-Id": [ "cb017d9c-5ee3-4323-adeb-a4e870718ba0" ],
+        "X-Ms-Request-Id": [ "f4e57c46-a37e-4ef4-86e0-2ac655bb314d" ],
+        "X-Ms-Return-Client-Request-Id": [ "true" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "4dc9e314-e471-407f-bc20-24bf914759b3" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211012T221101Z:4dc9e314-e471-407f-bc20-24bf914759b3" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 12 Oct 2021 22:11:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "247" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/locations/westeurope/operationStatus/0a7c17ba-cc46-4260-94b9-ac766cc1ec1f\",\"name\":\"0a7c17ba-cc46-4260-94b9-ac766cc1ec1f\",\"status\":\"Running\",\"startTime\":\"2021-10-12T22:09:49Z\",\"endTime\":\"\"}",
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzDiskPool+[NoContext]+DeallocateViaIdentity+$GET+https://management.azure.com/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/providers/Microsoft.StoragePool/locations/westeurope/operationsStatus/0a7c17ba-cc46-4260-94b9-ac766cc1ec1f?api-version=2021-08-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/providers/Microsoft.StoragePool/locations/westeurope/operationsStatus/0a7c17ba-cc46-4260-94b9-ac766cc1ec1f?api-version=2021-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "cb017d9c-5ee3-4323-adeb-a4e870718ba0" ],
+        "CommandName": [ "Stop-AzDiskPool" ],
+        "FullCommandName": [ "Stop-AzDiskPool_DeallocateViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11988" ],
+        "Content-Security-Policy": [ "default-src \u0027self\u0027; frame-ancestors \u0027none\u0027" ],
+        "X-Ms-Client-Request-Id": [ "cb017d9c-5ee3-4323-adeb-a4e870718ba0" ],
+        "X-Ms-Request-Id": [ "58059054-8071-4038-ac8b-8d01e28755e9" ],
+        "X-Ms-Return-Client-Request-Id": [ "true" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "548a3ef5-c622-461b-ab3f-ecb458a10568" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211012T221131Z:548a3ef5-c622-461b-ab3f-ecb458a10568" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 12 Oct 2021 22:11:31 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "247" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/locations/westeurope/operationStatus/0a7c17ba-cc46-4260-94b9-ac766cc1ec1f\",\"name\":\"0a7c17ba-cc46-4260-94b9-ac766cc1ec1f\",\"status\":\"Running\",\"startTime\":\"2021-10-12T22:09:49Z\",\"endTime\":\"\"}",
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzDiskPool+[NoContext]+DeallocateViaIdentity+$GET+https://management.azure.com/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/providers/Microsoft.StoragePool/locations/westeurope/operationsStatus/0a7c17ba-cc46-4260-94b9-ac766cc1ec1f?api-version=2021-08-01+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/providers/Microsoft.StoragePool/locations/westeurope/operationsStatus/0a7c17ba-cc46-4260-94b9-ac766cc1ec1f?api-version=2021-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "cb017d9c-5ee3-4323-adeb-a4e870718ba0" ],
+        "CommandName": [ "Stop-AzDiskPool" ],
+        "FullCommandName": [ "Stop-AzDiskPool_DeallocateViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11987" ],
+        "Content-Security-Policy": [ "default-src \u0027self\u0027; frame-ancestors \u0027none\u0027" ],
+        "X-Ms-Client-Request-Id": [ "cb017d9c-5ee3-4323-adeb-a4e870718ba0" ],
+        "X-Ms-Request-Id": [ "554fd7bb-d2d6-47c4-8a7f-8fdbbb2f2582" ],
+        "X-Ms-Return-Client-Request-Id": [ "true" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "7b97ca76-ae8d-483b-b6ee-9e1de7dd5661" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211012T221202Z:7b97ca76-ae8d-483b-b6ee-9e1de7dd5661" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 12 Oct 2021 22:12:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "247" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/locations/westeurope/operationStatus/0a7c17ba-cc46-4260-94b9-ac766cc1ec1f\",\"name\":\"0a7c17ba-cc46-4260-94b9-ac766cc1ec1f\",\"status\":\"Running\",\"startTime\":\"2021-10-12T22:09:49Z\",\"endTime\":\"\"}",
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzDiskPool+[NoContext]+DeallocateViaIdentity+$GET+https://management.azure.com/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/providers/Microsoft.StoragePool/locations/westeurope/operationsStatus/0a7c17ba-cc46-4260-94b9-ac766cc1ec1f?api-version=2021-08-01+8": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/providers/Microsoft.StoragePool/locations/westeurope/operationsStatus/0a7c17ba-cc46-4260-94b9-ac766cc1ec1f?api-version=2021-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "cb017d9c-5ee3-4323-adeb-a4e870718ba0" ],
+        "CommandName": [ "Stop-AzDiskPool" ],
+        "FullCommandName": [ "Stop-AzDiskPool_DeallocateViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11986" ],
+        "Content-Security-Policy": [ "default-src \u0027self\u0027; frame-ancestors \u0027none\u0027" ],
+        "X-Ms-Client-Request-Id": [ "cb017d9c-5ee3-4323-adeb-a4e870718ba0" ],
+        "X-Ms-Request-Id": [ "bae793ea-8bcc-4ade-ab0a-d048818a5948" ],
+        "X-Ms-Return-Client-Request-Id": [ "true" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "261cff9a-9aeb-4cac-9374-30ca74e1c919" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211012T221232Z:261cff9a-9aeb-4cac-9374-30ca74e1c919" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 12 Oct 2021 22:12:32 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "247" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/locations/westeurope/operationStatus/0a7c17ba-cc46-4260-94b9-ac766cc1ec1f\",\"name\":\"0a7c17ba-cc46-4260-94b9-ac766cc1ec1f\",\"status\":\"Running\",\"startTime\":\"2021-10-12T22:09:49Z\",\"endTime\":\"\"}",
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzDiskPool+[NoContext]+DeallocateViaIdentity+$GET+https://management.azure.com/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/providers/Microsoft.StoragePool/locations/westeurope/operationsStatus/0a7c17ba-cc46-4260-94b9-ac766cc1ec1f?api-version=2021-08-01+9": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/providers/Microsoft.StoragePool/locations/westeurope/operationsStatus/0a7c17ba-cc46-4260-94b9-ac766cc1ec1f?api-version=2021-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "cb017d9c-5ee3-4323-adeb-a4e870718ba0" ],
+        "CommandName": [ "Stop-AzDiskPool" ],
+        "FullCommandName": [ "Stop-AzDiskPool_DeallocateViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11985" ],
+        "Content-Security-Policy": [ "default-src \u0027self\u0027; frame-ancestors \u0027none\u0027" ],
+        "X-Ms-Client-Request-Id": [ "cb017d9c-5ee3-4323-adeb-a4e870718ba0" ],
+        "X-Ms-Request-Id": [ "380a74f9-7ff3-4c81-bde4-d95137a69bf0" ],
+        "X-Ms-Return-Client-Request-Id": [ "true" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "8abf7613-300f-4eff-ad09-cce233e8079f" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211012T221303Z:8abf7613-300f-4eff-ad09-cce233e8079f" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 12 Oct 2021 22:13:03 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "247" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/locations/westeurope/operationStatus/0a7c17ba-cc46-4260-94b9-ac766cc1ec1f\",\"name\":\"0a7c17ba-cc46-4260-94b9-ac766cc1ec1f\",\"status\":\"Running\",\"startTime\":\"2021-10-12T22:09:49Z\",\"endTime\":\"\"}",
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzDiskPool+[NoContext]+DeallocateViaIdentity+$GET+https://management.azure.com/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/providers/Microsoft.StoragePool/locations/westeurope/operationsStatus/0a7c17ba-cc46-4260-94b9-ac766cc1ec1f?api-version=2021-08-01+10": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/providers/Microsoft.StoragePool/locations/westeurope/operationsStatus/0a7c17ba-cc46-4260-94b9-ac766cc1ec1f?api-version=2021-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "15" ],
+        "x-ms-client-request-id": [ "cb017d9c-5ee3-4323-adeb-a4e870718ba0" ],
+        "CommandName": [ "Stop-AzDiskPool" ],
+        "FullCommandName": [ "Stop-AzDiskPool_DeallocateViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11984" ],
+        "Content-Security-Policy": [ "default-src \u0027self\u0027; frame-ancestors \u0027none\u0027" ],
+        "X-Ms-Client-Request-Id": [ "cb017d9c-5ee3-4323-adeb-a4e870718ba0" ],
+        "X-Ms-Request-Id": [ "da2a767a-8302-4ff7-ac60-dc6c8e6bc866" ],
+        "X-Ms-Return-Client-Request-Id": [ "true" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "f430c418-1ee9-411a-bf59-c2b84423ac4e" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211012T221333Z:f430c418-1ee9-411a-bf59-c2b84423ac4e" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 12 Oct 2021 22:13:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1400" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/locations/westeurope/operationStatus/0a7c17ba-cc46-4260-94b9-ac766cc1ec1f\",\"name\":\"0a7c17ba-cc46-4260-94b9-ac766cc1ec1f\",\"status\":\"Succeeded\",\"startTime\":\"2021-10-12T22:09:49Z\",\"endTime\":\"2021-10-12T22:13:23Z\",\"properties\":{\"id\":\"/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/resourceGroups/storagepool-rg-test/providers/Microsoft.StoragePool/diskPools/disk-pool-5\",\"name\":\"disk-pool-5\",\"type\":\"Microsoft.StoragePool/diskPools\",\"location\":\"westeurope\",\"tags\":{},\"systemData\":{\"createdBy\":\"ruyingchen@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-12T21:14:55.2875642Z\",\"lastModifiedBy\":\"ruyingchen@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-10-12T21:47:35.7896044Z\"},\"properties\":{\"disks\":[{\"id\":\"/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/resourceGroups/storagepool-rg-test/providers/Microsoft.Compute/disks/disk-pool-disk-2\"},{\"id\":\"/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/resourceGroups/storagepool-rg-test/providers/Microsoft.Compute/disks/disk-pool-disk-3\"}],\"availabilityZones\":[\"1\"],\"subnetId\":\"/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/resourceGroups/storagepool-rg-test/providers/Microsoft.Network/virtualNetworks/disk-pool-vnet/subnets/default\",\"provisioningState\":\"Succeeded\",\"status\":\"Stopped (deallocated)\"},\"sku\":{\"name\":\"Standard_S1\",\"tier\":\"Standard\"}}}",
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzDiskPool+[NoContext]+DeallocateViaIdentity+$GET+https://management.azure.com/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/providers/Microsoft.StoragePool/locations/westeurope/operationsStatus/0a7c17ba-cc46-4260-94b9-ac766cc1ec1f?api-version=2021-08-01+11": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/providers/Microsoft.StoragePool/locations/westeurope/operationsStatus/0a7c17ba-cc46-4260-94b9-ac766cc1ec1f?api-version=2021-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "16" ],
+        "x-ms-client-request-id": [ "cb017d9c-5ee3-4323-adeb-a4e870718ba0" ],
+        "CommandName": [ "Stop-AzDiskPool" ],
+        "FullCommandName": [ "Stop-AzDiskPool_DeallocateViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11983" ],
+        "Content-Security-Policy": [ "default-src \u0027self\u0027; frame-ancestors \u0027none\u0027" ],
+        "X-Ms-Client-Request-Id": [ "cb017d9c-5ee3-4323-adeb-a4e870718ba0" ],
+        "X-Ms-Request-Id": [ "9caa4645-a5bf-4680-ab1e-84ea0449d6ae" ],
+        "X-Ms-Return-Client-Request-Id": [ "true" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "d8216081-07ba-4c62-934a-1ad45a07f7cc" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211012T221334Z:d8216081-07ba-4c62-934a-1ad45a07f7cc" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 12 Oct 2021 22:13:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1400" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/locations/westeurope/operationStatus/0a7c17ba-cc46-4260-94b9-ac766cc1ec1f\",\"name\":\"0a7c17ba-cc46-4260-94b9-ac766cc1ec1f\",\"status\":\"Succeeded\",\"startTime\":\"2021-10-12T22:09:49Z\",\"endTime\":\"2021-10-12T22:13:23Z\",\"properties\":{\"id\":\"/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/resourceGroups/storagepool-rg-test/providers/Microsoft.StoragePool/diskPools/disk-pool-5\",\"name\":\"disk-pool-5\",\"type\":\"Microsoft.StoragePool/diskPools\",\"location\":\"westeurope\",\"tags\":{},\"systemData\":{\"createdBy\":\"ruyingchen@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-12T21:14:55.2875642Z\",\"lastModifiedBy\":\"ruyingchen@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-10-12T21:47:35.7896044Z\"},\"properties\":{\"disks\":[{\"id\":\"/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/resourceGroups/storagepool-rg-test/providers/Microsoft.Compute/disks/disk-pool-disk-2\"},{\"id\":\"/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/resourceGroups/storagepool-rg-test/providers/Microsoft.Compute/disks/disk-pool-disk-3\"}],\"availabilityZones\":[\"1\"],\"subnetId\":\"/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/resourceGroups/storagepool-rg-test/providers/Microsoft.Network/virtualNetworks/disk-pool-vnet/subnets/default\",\"provisioningState\":\"Succeeded\",\"status\":\"Stopped (deallocated)\"},\"sku\":{\"name\":\"Standard_S1\",\"tier\":\"Standard\"}}}",
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzDiskPool+[NoContext]+DeallocateViaIdentity+$GET+https://management.azure.com/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/resourceGroups/storagepool-rg-test/providers/Microsoft.StoragePool/diskPools/disk-pool-5?api-version=2021-08-01+12": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/resourceGroups/storagepool-rg-test/providers/Microsoft.StoragePool/diskPools/disk-pool-5?api-version=2021-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "435bc90b-2eae-4ed4-82fc-4421652506c1" ],
+        "CommandName": [ "Get-AzDiskPool" ],
+        "FullCommandName": [ "Get-AzDiskPool_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11982" ],
+        "Content-Security-Policy": [ "default-src \u0027self\u0027; frame-ancestors \u0027none\u0027" ],
+        "X-Ms-Client-Request-Id": [ "435bc90b-2eae-4ed4-82fc-4421652506c1" ],
+        "X-Ms-Request-Id": [ "a07783c4-4442-49df-a904-75f42eb29499" ],
+        "X-Ms-Return-Client-Request-Id": [ "true" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "679b0968-683b-4336-813d-9b28f248dd4a" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211012T221334Z:679b0968-683b-4336-813d-9b28f248dd4a" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 12 Oct 2021 22:13:34 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1117" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/resourceGroups/storagepool-rg-test/providers/Microsoft.StoragePool/diskPools/disk-pool-5\",\"name\":\"disk-pool-5\",\"type\":\"Microsoft.StoragePool/diskPools\",\"location\":\"westeurope\",\"tags\":{},\"systemData\":{\"createdBy\":\"ruyingchen@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-12T21:14:55.2875642Z\",\"lastModifiedBy\":\"ruyingchen@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-10-12T21:47:35.7896044Z\"},\"properties\":{\"disks\":[{\"id\":\"/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/resourceGroups/storagepool-rg-test/providers/Microsoft.Compute/disks/disk-pool-disk-2\"},{\"id\":\"/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/resourceGroups/storagepool-rg-test/providers/Microsoft.Compute/disks/disk-pool-disk-3\"}],\"availabilityZones\":[\"1\"],\"subnetId\":\"/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/resourceGroups/storagepool-rg-test/providers/Microsoft.Network/virtualNetworks/disk-pool-vnet/subnets/default\",\"provisioningState\":\"Succeeded\",\"status\":\"Stopped (deallocated)\"},\"sku\":{\"name\":\"Standard_S1\",\"tier\":\"Standard\"}}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -331,5 +331,25 @@ function Test-GetAzDiagnosticSettingCategory
 	}
 }
 
+<#
+.SYNOPSIS
+This is a live only test and example of how it could be tested.
+#>
+function Test-SubscriptionDiagnosticSetting
+{
+	$list = @()
+	Get-AzSubscriptionDiagnosticSettingCategory | ForEach-Object {
+		$list += (New-AzDiagnosticDetailSetting -Log -Category $_.Name -Enabled)
+	}
 
+	$DiagnosticSettingName = 'setting' + (getAssetName)
+	$SubscriptionId = 'please use your subscription Id here'
+	$WorkspaceId = 'please use your workspace Id here'
+	$setting = New-AzDiagnosticSetting -Name $DiagnosticSettingName -SubscriptionId $SubscriptionId -WorkspaceId $WorkspaceId -Setting $list
+	Set-AzDiagnosticSetting -InputObject $setting
+
+	Get-AzDiagnosticSetting -Name $DiagnosticSettingName -SubscriptionId $SubscriptionId
+
+	Remove-AzDiagnosticDetailSetting -Name $DiagnosticSettingName -SubscriptionId $SubscriptionId
+}
 # TODO add more complicated scenarios after we have a definitive subscription

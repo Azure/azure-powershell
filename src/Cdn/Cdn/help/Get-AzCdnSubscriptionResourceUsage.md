@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/get-azcdnsubscriptionresourceusage
+online version: https://docs.microsoft.com/powershell/module/az.cdn/get-azcdnsubscriptionresourceusage
 schema: 2.0.0
 ---
 
@@ -17,16 +17,20 @@ Get-AzCdnSubscriptionResourceUsage [-DefaultProfile <IAzureContextContainer>] [<
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzCdnSubscriptionResourceUsage** cmdlet gets the resource usage for a subscription.
 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> {{ Add example code here }}
+```powershell
+Get-AzCdnSubscriptionResourceUsage
 ```
 
-{{ Add example description here }}
+```Output
+ResourceType Unit  CurrentValue Limit
+------------ ----  ------------ -----
+profile      count            0    25
+```
 
 ## PARAMETERS
 

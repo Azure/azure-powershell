@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
 {
 
-    /// <summary>TypeConverter implementation for MinimalTlsVersionEnum.</summary>
+    /// <summary>Enforce a minimal Tls version for the server.</summary>
     public partial class MinimalTlsVersionEnumTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

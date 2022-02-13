@@ -85,6 +85,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
+            HelpMessage = "Cache UseFromLocation. This parameter is optional, default value 'default'.")]
+        [ValidateLength(1, 2000)]
+        public String UseFromLocation { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
             HelpMessage = "If specified then instance of " +
             "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementCache type " +
             " representing the modified cache will be written to output.")]
@@ -125,6 +132,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                     ConnectionString,
                     Description,
                     ResourceId,
+                    UseFromLocation,
                     InputObject);
 
                 if (PassThru)

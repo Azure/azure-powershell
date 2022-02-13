@@ -25,9 +25,11 @@ using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 using System.Linq;
 using Microsoft.Azure.Management.Network.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Network
 {
+    [CmdletDeprecation(ReplacementCmdletName = "New-AzRouteServer")]
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualRouter", SupportsShouldProcess = true, DefaultParameterSetName = VirtualRouterParameterSetNames.ByVirtualRouterName), OutputType(typeof(PSVirtualRouter))]
     public partial class NewAzureRmVirtualRouter : VirtualRouterBaseCmdlet
     {

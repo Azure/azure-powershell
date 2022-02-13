@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Dns.dll-Help.xml
 Module Name: Az.Dns
 ms.assetid: D1A2326C-CD41-45A6-B37A-FC6176193B01
-online version: https://docs.microsoft.com/en-us/powershell/module/az.dns/remove-azdnsrecordconfig
+online version: https://docs.microsoft.com/powershell/module/az.dns/remove-azdnsrecordconfig
 schema: 2.0.0
 ---
 

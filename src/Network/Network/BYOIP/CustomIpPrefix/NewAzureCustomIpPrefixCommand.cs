@@ -59,6 +59,24 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Signed message for WAN validation.",
+            ValueFromPipelineByPropertyName = true)]
+        public string SignedMessage { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Authorization message for WAN validation.",
+            ValueFromPipelineByPropertyName = true)]
+        public string AuthorizationMessage { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Parent CustomIpPrefix for /64 IPv6 CustomIpPrefix",
+            ValueFromPipelineByPropertyName = true)]
+        public PSCustomIpPrefix CustomIpPrefixParent { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "A list of availability zones denoting the IP allocated for the resource needs to come from.",
             ValueFromPipelineByPropertyName = true)]
         public string[] Zone { get; set; }
@@ -97,9 +115,12 @@ namespace Microsoft.Azure.Commands.Network
                 ResourceGroupName = this.ResourceGroupName,
                 Location = this.Location,
                 Cidr = this.Cidr,
-                Zones = this.Zone?.ToList()
+                Zones = this.Zone?.ToList(),
+                SignedMessage = this.SignedMessage,
+                AuthorizationMessage = this.AuthorizationMessage,
+                CustomIpPrefixParent = this.CustomIpPrefixParent
             };
-            
+
             var sdkModel = NetworkResourceManagerProfile.Mapper.Map<MNM.CustomIpPrefix>(psModel);
 
             sdkModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);

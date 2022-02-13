@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         {
             this.Name = receiver.Name;
             this.RoleId = receiver.RoleId;
-            this.UseCommonAlertSchema = receiver.UseCommonAlertSchema;
+            this.UseCommonAlertSchema = receiver.UseCommonAlertSchema.HasValue ? receiver.UseCommonAlertSchema.Value : false;
         }
     }
 }

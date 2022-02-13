@@ -1,0 +1,43 @@
+{
+  "Get-AzPurviewDefaultAccount+[NoContext]+Get+$GET+https://management.azure.com/providers/Microsoft.Purview/getDefaultAccount?scopeTenantId=54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\u0026scopeType=Tenant\u0026api-version=2021-07-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Purview/getDefaultAccount?scopeTenantId=54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\u0026scopeType=Tenant\u0026api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "40" ],
+        "x-ms-client-request-id": [ "1e323bd8-2d87-4837-ad9b-3e8be73ffcbb" ],
+        "CommandName": [ "Get-AzPurviewDefaultAccount" ],
+        "FullCommandName": [ "Get-AzPurviewDefaultAccount_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11999" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "03215327-28bc-4542-bfd1-80e53b21cc8d" ],
+        "x-ms-correlation-request-id": [ "03215327-28bc-4542-bfd1-80e53b21cc8d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210818T042018Z:03215327-28bc-4542-bfd1-80e53b21cc8d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 18 Aug 2021 04:20:17 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "243" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"scopeTenantId\":\"54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\",\"scopeType\":\"Tenant\",\"scope\":\"54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\",\"accountName\":\"bez-test-pa\",\"resourceGroupName\":\"test-rgzw9el\",\"subscriptionId\":\"0b1f6471-1bf0-4dda-aec3-cb9272f09590\"}",
+      "isContentBase64": false
+    }
+  }
+}

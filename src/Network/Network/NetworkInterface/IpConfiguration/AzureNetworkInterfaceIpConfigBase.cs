@@ -128,8 +128,15 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Specifies a collection of application security group references to which this network interface IP configuration belongs.")]
         public PSApplicationSecurityGroup[] ApplicationSecurityGroup { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = "SetByResource",
+            HelpMessage = "The reference of Gateway LoadBalancer Provider resource.",
+            ValueFromPipelineByPropertyName = true)]
+        public string GatewayLoadBalancerId { get; set; }
+
         public override void Execute()
-        {        
+        {
             if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
             {
                 if (this.Subnet != null)

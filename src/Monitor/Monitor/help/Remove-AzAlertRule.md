@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
 ms.assetid: C7EC21C7-1C7E-49B2-9B33-486532FCDAEC
-online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/remove-azalertrule
+online version: https://docs.microsoft.com/powershell/module/az.monitor/remove-azalertrule
 schema: 2.0.0
 ---
 

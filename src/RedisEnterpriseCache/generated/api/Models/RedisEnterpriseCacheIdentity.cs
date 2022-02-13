@@ -57,17 +57,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
-        /// <summary>The name of the resource group.</summary>
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
-        /// <summary>
-        /// Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part
-        /// of the URI for every service call.
-        /// </summary>
+        /// <summary>The ID of the target subscription.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Owned)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -128,22 +125,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
         SerializedName = @"privateEndpointConnectionName",
         PossibleTypes = new [] { typeof(string) })]
         string PrivateEndpointConnectionName { get; set; }
-        /// <summary>The name of the resource group.</summary>
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The name of the resource group.",
+        Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceGroupName { get; set; }
-        /// <summary>
-        /// Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part
-        /// of the URI for every service call.
-        /// </summary>
+        /// <summary>The ID of the target subscription.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.",
+        Description = @"The ID of the target subscription.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         string SubscriptionId { get; set; }
@@ -164,12 +158,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
         string OperationId { get; set; }
         /// <summary>The name of the private endpoint connection associated with the Azure resource</summary>
         string PrivateEndpointConnectionName { get; set; }
-        /// <summary>The name of the resource group.</summary>
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }
-        /// <summary>
-        /// Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part
-        /// of the URI for every service call.
-        /// </summary>
+        /// <summary>The ID of the target subscription.</summary>
         string SubscriptionId { get; set; }
 
     }

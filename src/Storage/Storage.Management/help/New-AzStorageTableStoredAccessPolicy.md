@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: CF3B6E3B-3FC1-4871-AFE0-366B17A9E4F8
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/new-azstoragetablestoredaccesspolicy
+online version: https://docs.microsoft.com/powershell/module/az.storage/new-azstoragetablestoredaccesspolicy
 schema: 2.0.0
 ---
 
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 
 ### -Permission
 Specifies permissions in the stored access policy to access the storage table.
-It is important to note that this is a string, like `rwd` (for Read, Write and Delete).
+It is important to note that this is a string, like `raud` (for Read, Add, Update and Delete).
 
 ```yaml
 Type: System.String

@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
-    /// <summary>TypeConverter implementation for BlobStorageEventType.</summary>
+    /// <summary>The name of blob storage event type to process.</summary>
     public partial class BlobStorageEventTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

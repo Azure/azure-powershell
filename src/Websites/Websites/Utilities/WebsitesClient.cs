@@ -161,9 +161,9 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                         }
                     }
                 }
-                catch (Exception e)
+                catch (DefaultErrorResponseException e)
                 {
-                    WriteWarning("Could not set custom hostname '{0}'. Details: {1}", hostName, e.ToString());
+                    WriteWarning("Could not set custom hostname '{0}'. Details: {1}", hostName, e?.Response?.Content?.ToString());
                     return;
                 }
             }
@@ -229,16 +229,16 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             }
         }
 
-        public HttpStatusCode RemoveWebApp(string resourceGroupName, string webSiteName, string slotName, bool deleteEmptyServerFarmBydefault, bool deleteMetricsBydefault, bool deleteSlotsBydefault)
+        public HttpStatusCode RemoveWebApp(string resourceGroupName, string webSiteName, string slotName, bool deleteAppServicePlan, bool deleteMetricsBydefault, bool deleteSlotsBydefault)
         {
             string qualifiedSiteName;
             if (CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName))
             {
-                WrappedWebsitesClient.WebApps().DeleteSlot(resourceGroupName, webSiteName, slotName, deleteMetrics: deleteMetricsBydefault, deleteEmptyServerFarm: deleteEmptyServerFarmBydefault);
+                WrappedWebsitesClient.WebApps().DeleteSlot(resourceGroupName, webSiteName, slotName, deleteMetrics: deleteMetricsBydefault, deleteEmptyServerFarm: deleteAppServicePlan);
             }
             else
             {
-                WrappedWebsitesClient.WebApps().Delete(resourceGroupName, webSiteName, deleteMetrics: deleteMetricsBydefault, deleteEmptyServerFarm: deleteEmptyServerFarmBydefault);
+                WrappedWebsitesClient.WebApps().Delete(resourceGroupName, webSiteName, deleteMetrics: deleteMetricsBydefault, deleteEmptyServerFarm: deleteAppServicePlan);
             }
 
             return HttpStatusCode.OK;
@@ -481,9 +481,25 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 && !string.IsNullOrEmpty(aseResourceGroupName))
             {
                 appServicePlan.HostingEnvironmentProfile = new HostingEnvironmentProfile(
-                id: CmdletHelpers.GetApplicationServiceEnvironmentResourceId(WrappedWebsitesClient.SubscriptionId, aseResourceGroupName, aseName),
+                id: CmdletHelpers.GetAppServiceEnvironmentResourceId(WrappedWebsitesClient.SubscriptionId, aseResourceGroupName, aseName),
                     name: aseName,
-                    type: CmdletHelpers.ApplicationServiceEnvironmentResourcesName);
+                    type: CmdletHelpers.AppServiceEnvironmentResourcesName);
+            }
+
+            return WrappedWebsitesClient.AppServicePlans().CreateOrUpdate(resourceGroupName, appServicePlanName, appServicePlan);
+        }
+
+        public AppServicePlan CreateOrUpdateAppServicePlan(string resourceGroupName, string appServicePlanName, AppServicePlan appServicePlan, string aseRecourceId)
+        {
+            if (!string.IsNullOrEmpty(aseRecourceId))
+            {
+                string aseResourceGroupName, aseName;
+                if (!CmdletHelpers.TryParseAppServiceEnvironmentMetadataFromResourceId(aseRecourceId, out aseResourceGroupName, out aseName))
+                    throw new ArgumentException(string.Format("AseResourceId format is invalid"));
+                appServicePlan.HostingEnvironmentProfile = new HostingEnvironmentProfile(
+                id: aseRecourceId,
+                name: aseName,
+                type: CmdletHelpers.AppServiceEnvironmentResourcesName);
             }
 
             return WrappedWebsitesClient.AppServicePlans().CreateOrUpdate(resourceGroupName, appServicePlanName, appServicePlan);
@@ -513,21 +529,21 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             if (useSlot)
             {
 
-                if (appSettings != null)
-                {
-                    WrappedWebsitesClient.WebApps().UpdateApplicationSettingsSlot(
-                        resourceGroupName,
-                        webSiteName,
-                        new StringDictionary { Properties = appSettings },
-                        slotName);
-                }
-
                 if (siteConfig != null)
                 {
                     WrappedWebsitesClient.WebApps().UpdateConfigurationSlot(
                         resourceGroupName,
                         webSiteName,
                         siteConfig.ConvertToSiteConfigResource(),
+                        slotName);
+                }
+
+                if (appSettings != null)
+                {
+                    WrappedWebsitesClient.WebApps().UpdateApplicationSettingsSlot(
+                        resourceGroupName,
+                        webSiteName,
+                        new StringDictionary { Properties = appSettings },
                         slotName);
                 }
 
@@ -552,17 +568,17 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             else
             {
 
+                if (siteConfig != null)
+                {
+                    WrappedWebsitesClient.WebApps().UpdateConfiguration(resourceGroupName, webSiteName, siteConfig.ConvertToSiteConfigResource());
+                }
+
                 if (appSettings != null)
                 {
                     WrappedWebsitesClient.WebApps().UpdateApplicationSettings(
                         resourceGroupName,
                         webSiteName,
                         new StringDictionary { Properties = appSettings });
-                }
-
-                if (siteConfig != null)
-                {
-                    WrappedWebsitesClient.WebApps().UpdateConfiguration(resourceGroupName, webSiteName, siteConfig.ConvertToSiteConfigResource());
                 }
 
                 if (connectionStrings != null)
@@ -887,6 +903,10 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
         {
             return WrappedWebsitesClient.Certificates().Get(resourceGroupName, certificateName);
         }
+        public IEnumerable<Certificate> ListCertificates()
+        {
+            return WrappedWebsitesClient.Certificates().List();
+        }
 
         public HttpStatusCode RemoveCertificate(string resourceGroupName, string certificateName)
         {
@@ -999,7 +1019,43 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 webSiteName,
                 sourceSlotName);
         }
+        public IAccessToken GetAccessToken(IAzureContext context)
+        {
+            string tenant = null;
 
+            if (context.Subscription != null && context.Account != null)
+            {
+                tenant = context.Subscription.GetPropertyAsArray(AzureSubscription.Property.Tenants)
+                      .Intersect(context.Account.GetPropertyAsArray(AzureAccount.Property.Tenants))
+                      .FirstOrDefault();
+            }
+
+            if (tenant == null && context.Tenant != null && new Guid(context.Tenant.Id) != Guid.Empty)
+            {
+                tenant = context.Tenant.Id.ToString();
+            }
+            return AzureSession.Instance.AuthenticationFactory.Authenticate(context.Account, context.Environment, tenant, null, ShowDialog.Never, null, context.Environment.GetTokenAudience(AzureEnvironment.Endpoint.ResourceManager));
+        }
+
+        public AppServiceEnvironmentResource GetAppServiceEnvironment(string resourceGroupName, string aseName)
+        {
+            return WrappedWebsitesClient.AppServiceEnvironments().Get(resourceGroupName, aseName);
+        }
+
+        public AddressResponse GetAppServiceEnvironmentAddresses(string resourceGroupName, string aseName)
+        {
+            return WrappedWebsitesClient.AppServiceEnvironments().GetVipInfo(resourceGroupName, aseName);
+        }
+
+        public AppServiceEnvironmentResource CreateAppServiceEnvironment(string resourceGroupName, string aseName, AppServiceEnvironmentResource appServiceEnvironment)
+        {
+            return WrappedWebsitesClient.AppServiceEnvironments().CreateOrUpdate(resourceGroupName, aseName, appServiceEnvironment);
+        }
+
+        public void RemoveAppServiceEnvironment(string resourceGroupName, string aseName)
+        {
+            WrappedWebsitesClient.AppServiceEnvironments().Delete(resourceGroupName, aseName);
+        }
         private void WriteVerbose(string verboseFormat, params object[] args)
         {
             if (VerboseLogger != null)

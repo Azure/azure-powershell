@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 2D882B33-2B62-4785-AF8F-5F4644E9504D
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-azroledefinition
+online version: https://docs.microsoft.com/powershell/module/az.resources/remove-azroledefinition
 schema: 2.0.0
 ---
 

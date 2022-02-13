@@ -13,17 +13,17 @@ while(-not $mockingPath) {
 
 Describe 'Get-AzMigrateReplicationProtectionContainerMapping' {
     It 'List1' {
-       $output = Get-AzMigrateReplicationProtectionContainerMapping -ResourceName $env.srsVaultName -ResourceGroupName $env.srsResourceGroup -SubscriptionId $env.srsSubscriptionId
+       $output = Get-AzMigrateReplicationProtectionContainerMapping -ResourceName $env.srsVaultName -ResourceGroupName $env.migResourceGroup -SubscriptionId $env.srsSubscriptionId
        $output.Count | Should -BeGreaterOrEqual 1 
     }
 
     It 'List' {
-        $output = Get-AzMigrateReplicationProtectionContainerMapping -FabricName $env.srsFabricName -ProtectionContainerName $env.srsProtectionContainerName -ResourceName $env.srsVaultName -ResourceGroupName $env.srsResourceGroup -SubscriptionId $env.srsSubscriptionId
+        $output = Get-AzMigrateReplicationProtectionContainerMapping -FabricName $env.srsFabricName -ProtectionContainerName $env.srsProtectionContainerName -ResourceName $env.srsVaultName -ResourceGroupName $env.migResourceGroup -SubscriptionId $env.srsSubscriptionId
         $output.Count | Should -BeGreaterOrEqual 1 
     }
 
     It 'Get' {
-        $output = Get-AzMigrateReplicationProtectionContainerMapping -FabricName $env.srsFabricName -ProtectionContainerName $env.srsProtectionContainerName -MappingName $env.srsMappingName -ResourceName $env.srsVaultName -ResourceGroupName $env.srsResourceGroup -SubscriptionId $env.srsSubscriptionId
+        $output = Get-AzMigrateReplicationProtectionContainerMapping -FabricName $env.srsFabricName -ProtectionContainerName $env.srsProtectionContainerName -MappingName $env.srsMappingName -ResourceName $env.srsVaultName -ResourceGroupName $env.migResourceGroup -SubscriptionId $env.srsSubscriptionId
         $output.Count | Should -BeGreaterOrEqual 1 
     }
 }

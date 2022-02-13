@@ -5,17 +5,25 @@
   },
   {
     "regex": "MachineLearning",
-    "group": "Machine Learning",
-    "alias": "Machine Learning"
+    "group": "ML Studio (Classic)",
+    "alias": "ML Studio (Classic)"
   },
   {
     "regex": "Ml",
-    "group": "Machine Learning",
-    "alias": "Machine Learning"
+    "group": "ML Studio (Classic)",
+    "alias": "ML Studio (Classic)"
   },
   {
     "regex": "ImageBuilder",
     "alias": "Image Builder"
+  },
+  {
+    "regex": "VMware",
+    "alias": "VMware"
+  },
+  {
+    "regex": "VMGuest",
+    "alias": "Guest Configuration"
   },
   {
     "regex": "Snapshot",
@@ -304,6 +312,10 @@
     "alias": "Traffic Manager"
   },
   {
+    "module": "MarketplaceOrdering",
+    "alias": "Marketplace Ordering"
+  },
+  {
     "regex": "Marketplace",
     "alias": "Marketplace"
   },
@@ -359,6 +371,10 @@
     "alias": "Policy"
   },
   {
+    "regex": "ADDomainService",
+    "alias": "Active Directory Domain Service"
+  },
+  {
     "regex": "AD",
     "group": "Resources",
     "alias": "Active Directory"
@@ -392,8 +408,14 @@
     "alias": "DevSpaces"
   },
   {
+    "module": "SignalR",
     "regex": "SignalR",
     "alias": "SignalR"
+  },
+  {
+    "module": "SignalR",
+    "regex": "WebPubSub",
+    "alias": "Web PubSub"
   },
   {
     "regex": "AzSearch",
@@ -402,6 +424,10 @@
   {
     "regex": "ResourceGraph",
     "alias": "ResourceGraph"
+  },
+  {
+    "regex": "Sentinel",
+    "alias": "Sentinel"
   },
   {
     "regex": "Security",
@@ -474,7 +500,7 @@
     "alias": "Alerts Management"
   },
   {
-    "regex": "HealthcareApisService",
+    "regex": "HealthcareApis",
     "alias": "HealthcareApis Service"
   },
   {
@@ -514,12 +540,12 @@
     "alias": "Database for PostgreSQL"
   },
   {
-    "regex": "Sql",
-    "alias": "SQL"
+    "module": "SqlVirtualMachine",
+    "alias": "Sql VM"
   },
   {
-    "regex": "Blockchain",
-    "alias": "Blockchain Service"
+    "module": "Sql",
+    "alias": "SQL"
   },
   {
     "regex": "ImportExport",
@@ -546,12 +572,12 @@
     "alias": "Custom Resource Providers"
   },
   {
-    "regex": "MonitorLogAnalytics",
+    "module": "MonitoringSolutions",
     "alias": "Monitoring Solutions"
   },
   {
     "regex": "ApplicationInsights",
-    "alias": "Monitor"
+    "alias": "Application Insights"
   },
   {
     "regex": "Monitor",
@@ -575,50 +601,118 @@
   },
   {
     "regex": "SpringCloud",
-    "alias": "SpringCloud"
+    "alias": "Spring Cloud"
   },
   {
     "regex": "ResourceMover",
-    "alias": "ResourceMover"
+    "alias": "Resource Mover"
   },
   {
-    "alias": "ConnectedMachine",
-    "regex": "ConnectedMachine"
+    "regex": "ConnectedMachine",
+    "alias": "Connected Machine"
   },
   {
-    "regex": "VMWare",
-    "alias": "VMWare"
+    "regex": "DedicatedHsm",
+    "alias": "Dedicated HSM"
   },
   {
-    "alias": "Dedicated HSM",
-    "regex": "DedicatedHsm"
-  },
-  {
-    "alias": "Migrate",
-    "regex": "Migrate"
+    "regex": "Migrate",
+    "alias": "Migrate"
   },
   {
     "regex": "DigitalTwins",
-    "alias": "DigitalTwins"
+    "alias": "Digital Twins"
   },
   {
     "regex": "CloudService",
-    "alias": "CloudService"
+    "alias": "Cloud Services"
   },
   {
-    "alias": "WindowsIotServices",
-    "regex": "WindowsIotServices"
+    "regex": "WindowsIotServices",
+    "alias": "WindowsIotServices"
   },
   {
     "regex": "CostManagement",
-    "alias": "CostManagement"
+    "alias": "Cost Management"
   },
   {
     "regex": "Communication",
-    "alias": "Communication"
+    "alias": "Communication Services"
   },
   {
     "regex": "RedisEnterpriseCache",
-    "alias": "RedisEnterpriseCache"
+    "alias": "Redis Enterprise"
+  },
+  {
+    "regex": "BotService",
+    "alias": "Bot Services"
+  },
+  {
+    "regex": "HealthBot",
+    "alias": "Health Bot"
+  },
+  {
+    "regex": "Confluent",
+    "alias": "Confluent"
+  },
+  {
+    "regex": "DataProtection",
+    "alias": "Data Protection"
+  },
+  {
+    "alias": "ProviderHub",
+    "regex": "ProviderHub"
+  },
+  {
+    "alias": "Security Insights",
+    "module": "SecurityInsights"
+  },
+  {
+    "alias": "Private DNS",
+    "module": "PrivateDns"
+  },
+  {
+    "regex": "ContainerInstance",
+    "alias": "ContainerInstance"
+  },
+  {
+    "alias": "DiskPool",
+    "module": "DiskPool"
+  },
+  {
+    "alias": "Datadog",
+    "regex": "Datadog"
+  },
+  {
+    "regex": "ChangeAnalysis",
+    "alias": "ChangeAnalysis"
+  },
+  {
+    "alias": "Purview",
+    "regex": "Purview"
+  },
+  {
+    "alias": "Elastic",
+    "regex": "Elastic"
+  },
+  {
+    "regex": "Logz",
+    "alias": "Logz"
+  },
+  {
+    "alias": "DiskPool",
+    "regex": "DiskPool"
+  },
+  {
+    "alias": "CustomLocation",
+    "regex": "CustomLocation"
+  },
+  {
+    "alias": "EdgeOrder",
+    "module": "EdgeOrder"
+  },
+  {
+    "alias": "Lab Services",
+    "module": "LabServices"
   }
 ]

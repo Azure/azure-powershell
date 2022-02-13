@@ -92,6 +92,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Common
         public const string DiscoveryLogs = "Data Connector Discovery Logs";
         public const string Exchange = "Data Connector Exchange";
         public const string SharePoint = "Data Connector SharePoint";
+        public const string Teams = "Data Connector Teams";
         public const string Indicators = "Data Connector Indicators";
         public const string SubscriptionId = "Data connector Subscription Id";
         #endregion
@@ -103,6 +104,9 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Common
 
         #region Incidents
         public const string IncidentId = "Incident Id.";
+        public const string Filter = "Filters the results, based on a Boolean condition.";
+        public const string OrderBy = "Sorts the results";
+        public const string Max = "Maximum number of records to return";
         public const string Classificaton = "Incident Classificaiton.";
         public const string ClassificationComment = "Incident Classificaiton Comment.";
         public const string ClassificationReason = "Incident Classificaiton Reason.";

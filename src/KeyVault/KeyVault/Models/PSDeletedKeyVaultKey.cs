@@ -12,11 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Azure.Security.KeyVault.Keys;
+
+using Microsoft.Azure.Commands.KeyVault.Helpers;
 using Microsoft.Azure.Commands.KeyVault.Properties;
-using Microsoft.Azure.KeyVault.WebKey;
+
 using System;
 using System.Linq;
-using Azure.Security.KeyVault.Keys;
+
 using JsonWebKey = Microsoft.Azure.KeyVault.WebKey.JsonWebKey;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
@@ -38,6 +41,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             SetObjectIdentifier(vaultUriHelper, deletedKeyBundle.KeyIdentifier);
 
             Key = deletedKeyBundle.Key;
+
+            KeySize = JwkHelper.ConvertToRSAKey(Key)?.KeySize;
+
             Attributes = new PSKeyVaultKeyAttributes(
                 deletedKeyBundle.Attributes.Enabled,
                 deletedKeyBundle.Attributes.Expires,
@@ -72,6 +78,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             SetObjectIdentifier(vaultUriHelper, new Microsoft.Azure.KeyVault.KeyIdentifier(deletedKey.Id.ToString()));
 
             Key = deletedKey.Key.ToTrack1JsonWebKey();
+            KeySize = JwkHelper.ConvertToRSAKey(Key)?.KeySize;
             Attributes = new PSKeyVaultKeyAttributes(
                 deletedKey.Properties.Enabled,
                 /// see https://docs.microsoft.com/en-us/dotnet/standard/datetime/converting-between-datetime-and-offset#conversions-from-datetimeoffset-to-datetime
@@ -100,5 +107,17 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public PSKeyVaultKeyAttributes Attributes { get; set; }
 
         public JsonWebKey Key { get; set; }
+
+        public string KeyType
+        {
+            get { return Key.Kty; }
+        }
+
+        public string CurveName
+        {
+            get { return Key.CurveName; }
+        }
+
+        public int? KeySize;
     }
 }

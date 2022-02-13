@@ -21,13 +21,14 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using Microsoft.Azure.Management.ServiceFabric;
 using Microsoft.Azure.Commands.Common.Compute.Version_2018_04;
 using Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1;
 using Microsoft.Azure.Commands.ServiceFabric.Commands;
-using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
 using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.ServiceFabric;
+using Microsoft.Azure.Management.ServiceFabricManagedClusters;
+using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
@@ -39,6 +40,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
         public ResourceManagementClient NewResourceManagementClient { get; private set; }
 
         public ServiceFabricManagementClient ServiceFabricClient { get; private set; }
+
+        public ServiceFabricManagedClustersManagementClient ServiceFabricManagedClustersClient { get; private set; }
 
         public ComputeManagementClient ComputeManagementClient { get; private set; }
 
@@ -130,6 +133,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
                 ServiceFabricClient.LongRunningOperationRetryTimeout = 20;
             }
 
+            ServiceFabricManagedClustersClient = GetServiceFabricManagedClustersManagementClient(context);
+            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            {
+                ServiceFabricManagedClustersClient.LongRunningOperationRetryTimeout = 20;
+            }
+
             ComputeManagementClient = GetComputeManagementClient(context);
             KeyVaultManagementClient = GetKeyVaultManagementClient(context);
             StorageManagementClient = GetStorageManagementClient(context);
@@ -138,6 +147,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
 
             _helper.SetupManagementClients(
                 ServiceFabricClient,
+                ServiceFabricManagedClustersClient,
                 ComputeManagementClient,
                 KeyVaultManagementClient,
                 StorageManagementClient,
@@ -148,6 +158,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
         private static ServiceFabricManagementClient GetServiceFabricManagementClient(MockContext context)
         {
             return context.GetServiceClient<ServiceFabricManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private static ServiceFabricManagedClustersManagementClient GetServiceFabricManagedClustersManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<ServiceFabricManagedClustersManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private static ComputeManagementClient GetComputeManagementClient(MockContext context)

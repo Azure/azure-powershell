@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.Network
             var vnetPeeringModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetworkPeering>(vnetPeering);
 
             // Execute the Create VirtualNetwork call
-            this.VirtualNetworkPeeringClient.CreateOrUpdateWithHttpMessagesAsync(this.VirtualNetwork.ResourceGroupName, this.VirtualNetwork.Name, this.Name, vnetPeeringModel, auxAuthHeader).GetAwaiter().GetResult();
+            this.VirtualNetworkPeeringClient.CreateOrUpdateWithHttpMessagesAsync(this.VirtualNetwork.ResourceGroupName, this.VirtualNetwork.Name, this.Name, vnetPeeringModel, null, auxAuthHeader).GetAwaiter().GetResult();
             var getVirtualNetworkPeering = this.GetVirtualNetworkPeering(this.VirtualNetwork.ResourceGroupName, this.VirtualNetwork.Name, this.Name);
 
             return getVirtualNetworkPeering;

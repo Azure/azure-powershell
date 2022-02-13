@@ -1,7 +1,7 @@
 ---
 Module Name: Az.Subscription
 Module Guid: 8074e741-0979-4b4e-8f9b-7243f213d98a
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.subscription
+Download Help Link: https://docs.microsoft.com/powershell/module/az.subscription
 Help Version: 1.0.0.0
 Locale: en-US
 ---

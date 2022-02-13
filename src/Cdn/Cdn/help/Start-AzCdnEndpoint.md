@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
 ms.assetid: 6477ADC3-0831-493D-8904-F1D787145DD3
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/start-azcdnendpoint
+online version: https://docs.microsoft.com/powershell/module/az.cdn/start-azcdnendpoint
 schema: 2.0.0
 ---
 
@@ -29,6 +29,11 @@ Start-AzCdnEndpoint -CdnEndpoint <PSEndpoint> [-PassThru] [-DefaultProfile <IAzu
 The **Start-AzCdnEndpoint** cmdlet starts an Azure Content Delivery Network (CDN) endpoint.
 
 ## EXAMPLES
+
+### Example 1
+```powershell
+Start-AzCdnEndpoint -ResourceGroupName myresourcegroup -ProfileName mycdnprofile -EndpointName myendpoint
+```
 
 ## PARAMETERS
 

@@ -1,0 +1,164 @@
+{
+  "New-AzHealthBot+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youriADDomain-rg-nf29bz/providers/Microsoft.HealthBot/healthBots/yourihealthbotsb4tv1?api-version=2020-12-08+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youriADDomain-rg-nf29bz/providers/Microsoft.HealthBot/healthBots/yourihealthbotsb4tv1?api-version=2020-12-08",
+      "Content": "{\r\n  \"location\": \"eastus\",\r\n  \"sku\": {\r\n    \"name\": \"F0\"\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "64" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"ce001703-0000-0100-0000-5fec24130000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "request-context": [ "appId=cid-v1:39ac773f-9efe-42dd-90ba-3ebab16f6587" ],
+        "X-DNS-Prefetch-Control": [ "off" ],
+        "X-Frame-Options": [ "SAMEORIGIN" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Download-Options": [ "noopen" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.HealthBot/locations/EASTUS/operationStatuses/3ad1e13f-ff9f-4eb2-9bd8-1ba10018856e?api-version=2020-12-08" ],
+        "x-ms-request-id": [ "3ad1e13f-ff9f-4eb2-9bd8-1ba10018856e" ],
+        "x-ms-correlation-request-id": [ "f06c2d01-11f4-49f9-8e3f-9844cdcf8207" ],
+        "Set-Cookie": [ "admin.healthbot.sid=1609311252.206.36.208078; Max-Age=3600; Path=/; Secure; HttpOnly" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201230T065413Z:f06c2d01-11f4-49f9-8e3f-9844cdcf8207" ],
+        "Date": [ "Wed, 30 Dec 2020 06:54:12 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "551" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youriADDomain-rg-nf29bz/providers/Microsoft.HealthBot/healthBots/yourihealthbotsb4tv1\",\"name\":\"yourihealthbotsb4tv1\",\"type\":\"Microsoft.HealthBot/healthBots\",\"sku\":{\"name\":\"F0\"},\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-lipyo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2020-12-30T06:54:09.3505284Z\",\"lastModifiedBy\":\"v-lipyo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2020-12-30T06:54:09.3505284Z\"},\"properties\":{\"provisioningState\":\"Accepted\"}}"
+    }
+  },
+  "New-AzHealthBot+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Microsoft.HealthBot/locations/EASTUS/operationStatuses/3ad1e13f-ff9f-4eb2-9bd8-1ba10018856e?api-version=2020-12-08+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.HealthBot/locations/EASTUS/operationStatuses/3ad1e13f-ff9f-4eb2-9bd8-1ba10018856e?api-version=2020-12-08",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "82bc6154-113b-4461-b29d-c43b623487a5" ],
+        "CommandName": [ "New-AzHealthBot" ],
+        "FullCommandName": [ "New-AzHealthBot_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"b0000521-0000-0100-0000-5fec24140000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11999" ],
+        "x-ms-request-id": [ "6e6cbbb4-df42-4e82-92f5-fd43bf5bfef9" ],
+        "x-ms-correlation-request-id": [ "bda724d6-bce2-4821-ab0e-7ffb628777e8" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201230T065443Z:bda724d6-bce2-4821-ab0e-7ffb628777e8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 30 Dec 2020 06:54:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "387" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.HealthBot/locations/EASTUS/operationStatuses/3ad1e13f-ff9f-4eb2-9bd8-1ba10018856e\",\"name\":\"3ad1e13f-ff9f-4eb2-9bd8-1ba10018856e\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youriADDomain-rg-nf29bz/providers/Microsoft.HealthBot/healthBots/yourihealthbotsb4tv1\",\"status\":\"Working\",\"startTime\":\"2020-12-30T06:54:10.9576232Z\"}"
+    }
+  },
+  "New-AzHealthBot+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Microsoft.HealthBot/locations/EASTUS/operationStatuses/3ad1e13f-ff9f-4eb2-9bd8-1ba10018856e?api-version=2020-12-08+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.HealthBot/locations/EASTUS/operationStatuses/3ad1e13f-ff9f-4eb2-9bd8-1ba10018856e?api-version=2020-12-08",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "82bc6154-113b-4461-b29d-c43b623487a5" ],
+        "CommandName": [ "New-AzHealthBot" ],
+        "FullCommandName": [ "New-AzHealthBot_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"b000a323-0000-0100-0000-5fec24410000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11998" ],
+        "x-ms-request-id": [ "77f05861-8c88-42bf-947a-4e8b0dc05eed" ],
+        "x-ms-correlation-request-id": [ "534c79f3-568b-4bc0-b141-19dac6197227" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201230T065514Z:534c79f3-568b-4bc0-b141-19dac6197227" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 30 Dec 2020 06:55:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "448" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.HealthBot/locations/EASTUS/operationStatuses/3ad1e13f-ff9f-4eb2-9bd8-1ba10018856e\",\"name\":\"3ad1e13f-ff9f-4eb2-9bd8-1ba10018856e\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youriADDomain-rg-nf29bz/providers/Microsoft.HealthBot/healthBots/yourihealthbotsb4tv1\",\"status\":\"Succeeded\",\"startTime\":\"2020-12-30T06:54:10.9576232Z\",\"endTime\":\"2020-12-30T06:54:57.6971453Z\",\"properties\":null}"
+    }
+  },
+  "New-AzHealthBot+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youriADDomain-rg-nf29bz/providers/Microsoft.HealthBot/healthBots/yourihealthbotsb4tv1?api-version=2020-12-08+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youriADDomain-rg-nf29bz/providers/Microsoft.HealthBot/healthBots/yourihealthbotsb4tv1?api-version=2020-12-08",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "82bc6154-113b-4461-b29d-c43b623487a5" ],
+        "CommandName": [ "New-AzHealthBot" ],
+        "FullCommandName": [ "New-AzHealthBot_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"ce00b204-0000-0100-0000-5fec24410000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-request-id": [ "08b21953-16f2-4a32-9047-a04347dfb677" ],
+        "x-ms-correlation-request-id": [ "a54ba3d2-669d-4329-8b68-c1a959180e87" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201230T065514Z:a54ba3d2-669d-4329-8b68-c1a959180e87" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 30 Dec 2020 06:55:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "674" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youriADDomain-rg-nf29bz/providers/Microsoft.HealthBot/healthBots/yourihealthbotsb4tv1\",\"name\":\"yourihealthbotsb4tv1\",\"type\":\"Microsoft.HealthBot/healthBots\",\"sku\":{\"name\":\"F0\"},\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-lipyo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2020-12-30T06:54:09.3505284Z\",\"lastModifiedBy\":\"6db4d6bb-6649-4dc2-84b7-0b5c6894031e\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2020-12-30T06:54:12.7964701Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"botManagementPortalLink\":\"https://us.healthbot.microsoft.com/account/yourihealthbotsb4tv1-ldsbfqp\"}}"
+    }
+  }
+}

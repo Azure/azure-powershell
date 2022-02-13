@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.StackEdge.dll-Help.xml
 Module Name: Az.StackEdge
-online version: https://docs.microsoft.com/en-us/powershell/module/az.stackedge/remove-azstackedgeuser
+online version: https://docs.microsoft.com/powershell/module/az.stackedge/remove-azstackedgeuser
 schema: 2.0.0
 ---
 

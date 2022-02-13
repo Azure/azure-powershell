@@ -28,27 +28,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Count".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Count", "Count", global::System.Management.Automation.CompletionResultType.ParameterValue, "Count");
+                yield return new global::System.Management.Automation.CompletionResult("'Count'", "Count", global::System.Management.Automation.CompletionResultType.ParameterValue, "Count");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Bytes".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Bytes", "Bytes", global::System.Management.Automation.CompletionResultType.ParameterValue, "Bytes");
+                yield return new global::System.Management.Automation.CompletionResult("'Bytes'", "Bytes", global::System.Management.Automation.CompletionResultType.ParameterValue, "Bytes");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Seconds".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Seconds", "Seconds", global::System.Management.Automation.CompletionResultType.ParameterValue, "Seconds");
+                yield return new global::System.Management.Automation.CompletionResult("'Seconds'", "Seconds", global::System.Management.Automation.CompletionResultType.ParameterValue, "Seconds");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Percent".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Percent", "Percent", global::System.Management.Automation.CompletionResultType.ParameterValue, "Percent");
+                yield return new global::System.Management.Automation.CompletionResult("'Percent'", "Percent", global::System.Management.Automation.CompletionResultType.ParameterValue, "Percent");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "CountsPerSecond".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("CountsPerSecond", "CountsPerSecond", global::System.Management.Automation.CompletionResultType.ParameterValue, "CountsPerSecond");
+                yield return new global::System.Management.Automation.CompletionResult("'CountsPerSecond'", "CountsPerSecond", global::System.Management.Automation.CompletionResultType.ParameterValue, "CountsPerSecond");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "BytesPerSecond".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("BytesPerSecond", "BytesPerSecond", global::System.Management.Automation.CompletionResultType.ParameterValue, "BytesPerSecond");
+                yield return new global::System.Management.Automation.CompletionResult("'BytesPerSecond'", "BytesPerSecond", global::System.Management.Automation.CompletionResultType.ParameterValue, "BytesPerSecond");
             }
         }
     }

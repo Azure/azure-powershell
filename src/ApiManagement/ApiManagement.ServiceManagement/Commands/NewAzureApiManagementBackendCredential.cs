@@ -33,6 +33,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = false,
             Mandatory = false,
+            HelpMessage = "Client Certificate Id. This parameter is optional.")]
+        public string[] CertificateId { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = false,
+            Mandatory = false,
             HelpMessage = "Query Parameter Values accepted by Backend. This parameter is optional.")]
         public Hashtable Query { get; set; }
 
@@ -58,7 +64,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         {
             var backendCredentials = new PsApiManagementBackendCredential();
 
-            if (CertificateThumbprint != null && CertificateThumbprint.Any())
+            if (CertificateId != null && CertificateId.Any())
+            {
+                backendCredentials.Certificate = CertificateId;
+            }
+            else if (CertificateThumbprint != null && CertificateThumbprint.Any())
             {
                 backendCredentials.Certificate = CertificateThumbprint;
             }

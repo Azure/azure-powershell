@@ -69,6 +69,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
             ValueFromPipelineByPropertyName = true)]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Include deleted containers, by default list containers won't include deleted containers")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter IncludeDeleted { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -84,6 +88,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
             if (!string.IsNullOrEmpty(this.Name))
             {
+                if (this.IncludeDeleted.IsPresent)
+                {
+                    WriteWarning("Can't get single deleted container, so -IncludeDeleted will be omit when get single container with -Name.");
+                }
                 var container = this.StorageClient.BlobContainers.Get(
                            this.ResourceGroupName,
                            this.StorageAccountName,
@@ -94,7 +102,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
             {
                 IPage<ListContainerItem> containerlistResult = this.StorageClient.BlobContainers.List(
                                this.ResourceGroupName,
-                               this.StorageAccountName);
+                               this.StorageAccountName, 
+                               include: IncludeDeleted.IsPresent ? ListContainersInclude.Deleted : null);
                 WriteContainerList(containerlistResult);
                 while (containerlistResult.NextPageLink != null)
                 {

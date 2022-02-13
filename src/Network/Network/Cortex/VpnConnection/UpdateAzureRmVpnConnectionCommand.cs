@@ -125,6 +125,18 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
         public PSRoutingConfiguration RoutingConfiguration { get; set; }
 
         [Parameter(
+        Mandatory = false,
+        HelpMessage = "The connection mode for the link connections.")]
+        [PSArgumentCompleter("Default", "ResponderOnly", "InitiatorOnly")]
+        public string VpnLinkConnectionMode { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "A list of traffic selector policies.")]
+        public PSTrafficSelectorPolicy[] TrafficSelectorPolicy { get; set; }
+
+        [Parameter(
             Mandatory = false,
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -229,6 +241,19 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
                 }
 
                 vpnConnectionToModify.RoutingConfiguration = RoutingConfiguration;
+            }
+
+            if(!String.IsNullOrEmpty(this.VpnLinkConnectionMode))
+            {
+                foreach(var vpnSiteLinkConnection in vpnConnectionToModify.VpnLinkConnections)
+                {
+                    vpnSiteLinkConnection.VpnLinkConnectionMode = this.VpnLinkConnectionMode;
+                }
+            }
+
+            if (this.TrafficSelectorPolicy != null)
+            {
+                vpnConnectionToModify.TrafficSelectorPolicies = this.TrafficSelectorPolicy?.ToList();
             }
 
             ConfirmAction(

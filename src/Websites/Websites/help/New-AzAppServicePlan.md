@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.Websites
 ms.assetid: 8F36244D-A4D7-40BB-AC4C-E9AD445549F8
-online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/new-azappserviceplan
+online version: https://docs.microsoft.com/powershell/module/az.websites/new-azappserviceplan
 schema: 2.0.0
 ---
 
@@ -16,16 +16,17 @@ Creates an Azure App Service plan in a given Geo location.
 ### S1
 ```
 New-AzAppServicePlan [-Location] <String> [[-Tier] <String>] [[-NumberofWorkers] <Int32>]
- [[-WorkerSize] <String>] [[-AseName] <String>] [[-AseResourceGroupName] <String>] [-PerSiteScaling <Boolean>]
- [-HyperV] [-AsJob] [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [[-WorkerSize] <String>] [[-AseName] <String>] [[-AseResourceGroupName] <String>] [-AseResourceId <String>]
+ [-PerSiteScaling <Boolean>] [-HyperV] [-AsJob] [-Tag <Hashtable>] [-Linux] [-ResourceGroupName] <String>
+ [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### S2
 ```
 New-AzAppServicePlan [-Location] <String> [[-Tier] <String>] [[-NumberofWorkers] <Int32>]
- [[-WorkerSize] <String>] [[-AseName] <String>] [[-AseResourceGroupName] <String>] [-PerSiteScaling <Boolean>]
- [-AsJob] [-AppServicePlan] <PSAppServicePlan> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [[-WorkerSize] <String>] [[-AseName] <String>] [[-AseResourceGroupName] <String>] [-AseResourceId <String>]
+ [-PerSiteScaling <Boolean>] [-AsJob] [-AppServicePlan] <PSAppServicePlan>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -88,6 +89,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AseResourceId
+Resource id of App Service Environment
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AsJob
 Run cmdlet in the background
 
@@ -120,6 +136,21 @@ Accept wildcard characters: False
 
 ### -HyperV
 Specify this, App Service Plan will run Windows Containers
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: S1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Linux
+Specify this, App Service Plan will run Linux Containers
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -208,6 +239,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Tag
+Tags are name/value pairs that enable you to categorize resources
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: S1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Tier
 Tier
 
@@ -240,7 +286,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

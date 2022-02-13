@@ -6,10 +6,11 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Extensions;
+    using System;
 
     /// <summary>Registers a tool with the migrate project.</summary>
     /// <remarks>
-    /// [OpenAPI] MigrateProjects_RegisterTool=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/registerTool"
+    /// [OpenAPI] RegisterTool=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/registerTool"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Register, @"AzMigrateProjectTool_RegisterExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(bool))]
@@ -234,7 +235,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
                     case Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Information:
                     {
                         var data = messageData();
-                        WriteInformation(data, new[] { data.Message });
+                        WriteInformation(data.Message, new string[]{});
                         return ;
                     }
                     case Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Debug:

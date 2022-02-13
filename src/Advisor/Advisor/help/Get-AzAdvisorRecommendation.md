@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Advisor.dll-Help.xml
 Module Name: Az.Advisor
-online version: https://docs.microsoft.com/en-us/powershell/module/az.advisor/get-azadvisorrecommendation
+online version: https://docs.microsoft.com/powershell/module/az.advisor/get-azadvisorrecommendation
 schema: 2.0.0
 ---
 
@@ -31,7 +31,10 @@ Obtains the list of Azure Advisor recommendations. Can be filtered by Category, 
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzAdvisorRecommendation
+Get-AzAdvisorRecommendation
+```
+
+```output
 ResourceId                   : /subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommen
                        dations/{recommendation-Id}
 Category             : Performance
@@ -52,7 +55,10 @@ Gets the list of all recommendations.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzAdvisorRecommendation -Category Performance
+Get-AzAdvisorRecommendation -Category Performance
+```
+
+```output
 ResourceId                   : /subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommen
                        dations/{recommendation-Id}
 Category             : Performance

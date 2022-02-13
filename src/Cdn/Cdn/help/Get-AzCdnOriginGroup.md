@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/get-azcdnorigingroup
+online version: https://docs.microsoft.com/powershell/module/az.cdn/get-azcdnorigingroup
 schema: 2.0.0
 ---
 
@@ -30,7 +30,7 @@ The Get-AzCdnOriginGroup cmdlet retrieves a CDN origin group.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCdnOriginGroup -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName -OriginGroupName $originGroupName
+Get-AzCdnOriginGroup -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName -OriginGroupName $originGroupName
 ```
 
 This command will get the origin group within the specified endpoint.

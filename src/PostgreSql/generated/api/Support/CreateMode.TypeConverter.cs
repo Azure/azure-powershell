@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
 {
 
-    /// <summary>TypeConverter implementation for CreateMode.</summary>
+    /// <summary>The mode to create a new server.</summary>
     public partial class CreateModeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

@@ -104,6 +104,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 case CmdletModel.BackupManagementType.AzureVM:
                     providerType = ServiceClientModel.BackupManagementType.AzureIaasVM.ToString();
                     break;
+                case CmdletModel.BackupManagementType.AzureWorkload:
+                    providerType = ServiceClientModel.BackupManagementType.AzureWorkload.ToString();
+                    break;
                 case CmdletModel.BackupManagementType.AzureSQL:
                     providerType = ServiceClientModel.BackupManagementType.AzureSql.ToString();
                     break;
@@ -263,6 +266,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     break;
                 case CmdletModel.ScheduleRunType.Weekly:
                     scheduleRunType = ServiceClientModel.ScheduleRunType.Weekly.ToString();
+                    break;
+                case CmdletModel.ScheduleRunType.Hourly:
+                    scheduleRunType = ServiceClientModel.ScheduleRunType.Hourly.ToString();
                     break;
                 default:
                     break;

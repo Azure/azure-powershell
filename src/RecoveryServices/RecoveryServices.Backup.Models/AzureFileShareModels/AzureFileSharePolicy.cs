@@ -19,6 +19,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// </summary>
     public class AzureFileSharePolicy : AzurePolicy
     {
-       
+        /// <summary>
+        /// Object defining the number of associated items for the policy
+        /// </summary>
+        public int? ProtectedItemsCount { get; set; }
     }
 }

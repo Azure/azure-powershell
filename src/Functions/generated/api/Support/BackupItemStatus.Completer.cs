@@ -28,43 +28,43 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "InProgress".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("InProgress", "InProgress", global::System.Management.Automation.CompletionResultType.ParameterValue, "InProgress");
+                yield return new global::System.Management.Automation.CompletionResult("'InProgress'", "InProgress", global::System.Management.Automation.CompletionResultType.ParameterValue, "InProgress");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Failed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Failed", "Failed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Failed");
+                yield return new global::System.Management.Automation.CompletionResult("'Failed'", "Failed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Failed");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Succeeded".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Succeeded", "Succeeded", global::System.Management.Automation.CompletionResultType.ParameterValue, "Succeeded");
+                yield return new global::System.Management.Automation.CompletionResult("'Succeeded'", "Succeeded", global::System.Management.Automation.CompletionResultType.ParameterValue, "Succeeded");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "TimedOut".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("TimedOut", "TimedOut", global::System.Management.Automation.CompletionResultType.ParameterValue, "TimedOut");
+                yield return new global::System.Management.Automation.CompletionResult("'TimedOut'", "TimedOut", global::System.Management.Automation.CompletionResultType.ParameterValue, "TimedOut");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Created".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Created", "Created", global::System.Management.Automation.CompletionResultType.ParameterValue, "Created");
+                yield return new global::System.Management.Automation.CompletionResult("'Created'", "Created", global::System.Management.Automation.CompletionResultType.ParameterValue, "Created");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Skipped".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Skipped", "Skipped", global::System.Management.Automation.CompletionResultType.ParameterValue, "Skipped");
+                yield return new global::System.Management.Automation.CompletionResult("'Skipped'", "Skipped", global::System.Management.Automation.CompletionResultType.ParameterValue, "Skipped");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "PartiallySucceeded".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("PartiallySucceeded", "PartiallySucceeded", global::System.Management.Automation.CompletionResultType.ParameterValue, "PartiallySucceeded");
+                yield return new global::System.Management.Automation.CompletionResult("'PartiallySucceeded'", "PartiallySucceeded", global::System.Management.Automation.CompletionResultType.ParameterValue, "PartiallySucceeded");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "DeleteInProgress".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("DeleteInProgress", "DeleteInProgress", global::System.Management.Automation.CompletionResultType.ParameterValue, "DeleteInProgress");
+                yield return new global::System.Management.Automation.CompletionResult("'DeleteInProgress'", "DeleteInProgress", global::System.Management.Automation.CompletionResultType.ParameterValue, "DeleteInProgress");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "DeleteFailed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("DeleteFailed", "DeleteFailed", global::System.Management.Automation.CompletionResultType.ParameterValue, "DeleteFailed");
+                yield return new global::System.Management.Automation.CompletionResult("'DeleteFailed'", "DeleteFailed", global::System.Management.Automation.CompletionResultType.ParameterValue, "DeleteFailed");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Deleted".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Deleted", "Deleted", global::System.Management.Automation.CompletionResultType.ParameterValue, "Deleted");
+                yield return new global::System.Management.Automation.CompletionResult("'Deleted'", "Deleted", global::System.Management.Automation.CompletionResultType.ParameterValue, "Deleted");
             }
         }
     }

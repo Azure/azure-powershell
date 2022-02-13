@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Management.Automation.Subsystem.Prediction;
+
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
 {
     /// <summary>
@@ -19,11 +21,24 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
     /// </summary>
     public sealed class HistoryTelemetryData : ITelemetryData
     {
-        /// <inheritdoc/>
-        public string SessionId { get; internal set; }
+        /// <summary>
+        /// The telemetry property name for "History".
+        /// </summary>
+        public const string PropertyNameHistory = "History";
+
+        /// <summary>
+        /// The telemetry property name for "Success".
+        /// </summary>
+        public const string PropertyNameSuccess = "Success";
 
         /// <inheritdoc/>
-        public string CorrelationId { get; internal set; }
+        public PredictionClient Client { get; init; }
+
+        /// <inheritdoc/>
+        string ITelemetryData.CommandId { get; set; }
+
+        /// <inheritdoc/>
+        string ITelemetryData.RequestId { get; set; }
 
         /// <summary>
         /// Gets the history command line.
@@ -31,9 +46,21 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         public string Command { get; }
 
         /// <summary>
+        /// Gets whether the commdn line ran successfully.
+        /// </summary>
+        public bool Success { get; }
+
+        /// <summary>
         /// Creates a new instance of <see cref="HistoryTelemetryData"/>.
         /// </summary>
+        /// <param name="client">The client that makes the call.</param>
         /// <param name="command">The history command line.</param>
-        public HistoryTelemetryData(string command) => Command = command;
+        /// <param name="success">Whether the <paramref name="command" /> ran successfully.</param>
+        public HistoryTelemetryData(PredictionClient client, string command, bool success)
+        {
+            Client = client;
+            Command = command;
+            Success = success;
+        }
     }
 }

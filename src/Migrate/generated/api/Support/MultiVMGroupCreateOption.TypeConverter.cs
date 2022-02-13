@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>TypeConverter implementation for MultiVMGroupCreateOption.</summary>
+    /// <summary>Whether Multi VM group is auto created or specified by user.</summary>
     public partial class MultiVMGroupCreateOptionTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HPCCache.dll-Help.xml
 Module Name: Az.HPCCache
-online version: https://docs.microsoft.com/en-us/powershell/module/az.hpccache/start-azhpccache
+online version: https://docs.microsoft.com/powershell/module/az.hpccache/start-azhpccache
 schema: 2.0.0
 ---
 

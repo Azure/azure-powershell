@@ -1,7 +1,7 @@
 ---
 Module Name: Az.Batch
 Module Guid: a8f00f40-1c1a-49b5-9db3-24076b75c3cf
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.batch
+Download Help Link: https://docs.microsoft.com/powershell/module/az.batch
 Help Version: 4.0.0.0
 Locale: en-US
 ---

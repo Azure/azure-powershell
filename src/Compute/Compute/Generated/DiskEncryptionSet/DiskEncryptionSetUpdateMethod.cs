@@ -128,6 +128,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Gets or sets set this flag to true to enable auto-updating of this disk encryption")]
+        public bool? RotationToLatestKeyVersionEnabled { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             Position = 1,
             ValueFromPipelineByPropertyName = true)]
         public Hashtable Tag { get; set; }
@@ -147,7 +153,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
                 if (this.DiskEncryptionSetUpdate.ActiveKey == null)
                 {
-                    this.DiskEncryptionSetUpdate.ActiveKey = new KeyVaultAndKeyReference();
+                    //this.DiskEncryptionSetUpdate.ActiveKey = new KeyVaultAndKeyReference();
+                    this.DiskEncryptionSetUpdate.ActiveKey = new KeyForDiskEncryptionSet();
                 }
                 this.DiskEncryptionSetUpdate.ActiveKey.KeyUrl = this.KeyUrl;
             }
@@ -160,7 +167,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
                 if (this.DiskEncryptionSetUpdate.ActiveKey == null)
                 {
-                    this.DiskEncryptionSetUpdate.ActiveKey = new KeyVaultAndKeyReference();
+                    //this.DiskEncryptionSetUpdate.ActiveKey = new KeyVaultAndKeyReference();
+                    this.DiskEncryptionSetUpdate.ActiveKey = new KeyForDiskEncryptionSet();
                 }
                 if (this.DiskEncryptionSetUpdate.ActiveKey.SourceVault == null)
                 {
@@ -176,6 +184,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.DiskEncryptionSetUpdate = new DiskEncryptionSetUpdate();
                 }
                 this.DiskEncryptionSetUpdate.Tags = this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
+            }
+
+            if(this.IsParameterBound(c => c.RotationToLatestKeyVersionEnabled))
+            {
+                if (this.DiskEncryptionSetUpdate == null)
+                {
+                    this.DiskEncryptionSetUpdate = new DiskEncryptionSetUpdate();
+                }
+                this.DiskEncryptionSetUpdate.RotationToLatestKeyVersionEnabled = this.RotationToLatestKeyVersionEnabled;
             }
         }
 
@@ -207,6 +224,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 this.InputObject.Tags = this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
             }
+
+            if (this.IsParameterBound(c => c.RotationToLatestKeyVersionEnabled))
+            {
+                this.InputObject.RotationToLatestKeyVersionEnabled = this.RotationToLatestKeyVersionEnabled;
+            }
+
         }
     }
 }

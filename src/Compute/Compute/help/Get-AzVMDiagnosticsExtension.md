@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: D5BEA683-44AE-4D71-827D-02A03F0BEAE9
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azvmdiagnosticsextension
+online version: https://docs.microsoft.com/powershell/module/az.compute/get-azvmdiagnosticsextension
 schema: 2.0.0
 ---
 
@@ -25,7 +25,7 @@ The **Get-AzVMDiagnosticsExtension** cmdlet gets the settings of the Azure Diagn
 
 ### Example 1: Get the diagnostics extension applied to a virtual machine
 ```powershell
-PS C:\> Get-AzVMDiagnosticsExtension -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM22"
+Get-AzVMDiagnosticsExtension -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM22"
 ```
 
 This command gets the diagnostics extension applied to the virtual machine named ContosoVM22.

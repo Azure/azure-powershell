@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
 ms.assetid: 9830CD16-D797-47EB-BEF5-6CFE3454BCAA
-online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/new-azactiongroupreceiver
+online version: https://docs.microsoft.com/powershell/module/az.monitor/new-azactiongroupreceiver
 schema: 2.0.0
 ---
 

@@ -13,9 +13,9 @@
 # ----------------------------------------------------------------------------------
 
 # Automation account information
-$resourceGroupName = "frangom-test"
-$automationAccountName = "frangom-sdkCmdlet-tests"
-$hybridWorkerGroupName = "test"
+$resourceGroupName = "hw-RG"
+$automationAccountName = "hw-aa123"
+$hybridWorkerGroupName = "hw-grp3"
 
 function Test-E2EHybridWorkerGroup
 {

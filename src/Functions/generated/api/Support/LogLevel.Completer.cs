@@ -28,23 +28,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Off".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Off", "Off", global::System.Management.Automation.CompletionResultType.ParameterValue, "Off");
+                yield return new global::System.Management.Automation.CompletionResult("'Off'", "Off", global::System.Management.Automation.CompletionResultType.ParameterValue, "Off");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Verbose".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Verbose", "Verbose", global::System.Management.Automation.CompletionResultType.ParameterValue, "Verbose");
+                yield return new global::System.Management.Automation.CompletionResult("'Verbose'", "Verbose", global::System.Management.Automation.CompletionResultType.ParameterValue, "Verbose");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Information".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Information", "Information", global::System.Management.Automation.CompletionResultType.ParameterValue, "Information");
+                yield return new global::System.Management.Automation.CompletionResult("'Information'", "Information", global::System.Management.Automation.CompletionResultType.ParameterValue, "Information");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Warning".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Warning", "Warning", global::System.Management.Automation.CompletionResultType.ParameterValue, "Warning");
+                yield return new global::System.Management.Automation.CompletionResult("'Warning'", "Warning", global::System.Management.Automation.CompletionResultType.ParameterValue, "Warning");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Error".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Error", "Error", global::System.Management.Automation.CompletionResultType.ParameterValue, "Error");
+                yield return new global::System.Management.Automation.CompletionResult("'Error'", "Error", global::System.Management.Automation.CompletionResultType.ParameterValue, "Error");
             }
         }
     }

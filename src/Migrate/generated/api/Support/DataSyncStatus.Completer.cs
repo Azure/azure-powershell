@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>Argument completer implementation for DataSyncStatus.</summary>
+    /// <summary>The data sync option.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.DataSyncStatusTypeConverter))]
     public partial struct DataSyncStatus :
         System.Management.Automation.IArgumentCompleter
@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ForDownTime".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ForDownTime", "ForDownTime", global::System.Management.Automation.CompletionResultType.ParameterValue, "ForDownTime");
+                yield return new global::System.Management.Automation.CompletionResult("'ForDownTime'", "ForDownTime", global::System.Management.Automation.CompletionResultType.ParameterValue, "ForDownTime");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ForSynchronization".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ForSynchronization", "ForSynchronization", global::System.Management.Automation.CompletionResultType.ParameterValue, "ForSynchronization");
+                yield return new global::System.Management.Automation.CompletionResult("'ForSynchronization'", "ForSynchronization", global::System.Management.Automation.CompletionResultType.ParameterValue, "ForSynchronization");
             }
         }
     }

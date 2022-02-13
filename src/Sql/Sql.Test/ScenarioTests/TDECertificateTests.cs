@@ -29,14 +29,14 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             };
         }
 
-        [Fact]
+        [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddTdeCertificateForSqlServerDefaultParameterSetNoPassword()
         {
             RunPowerShellTest("Test-AddTdeCertificateForSqlServerDefaultParameterSetNoPassword");
         }
 
-        [Fact]
+        [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddTdeCertificateForSqlServerDefaultParameterSetWithPassword()
         {
@@ -57,35 +57,35 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-AddTdeCertificateForManagedInstanceDefaultParameterSetWithPassword");
         }
 
-        [Fact]
+        [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddTdeCertificateForSqlServerInputObjectParameterSetWithPassword()
         {
             RunPowerShellTest("Test-AddTdeCertificateForSqlServerInputObjectParameterSetWithPassword");
         }
 
-        [Fact]
+        [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddTdeCertificateForSqlServerResourceIdParameterSetWithPassword()
         {
             RunPowerShellTest("Test-AddTdeCertificateForSqlServerResourceIdParameterSetWithPassword");
         }
 
-        [Fact]
+        [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddTdeCertificateForSqlServerInputObjectParameterSetNoPassword()
         {
             RunPowerShellTest("Test-AddTdeCertificateForSqlServerInputObjectParameterSetNoPassword");
         }
 
-        [Fact]
+        [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddTdeCertificateForSqlServerResourceIdParameterSetNoPassword()
         {
             RunPowerShellTest("Test-AddTdeCertificateForSqlServerResourceIdParameterSetNoPassword");
         }
 
-        [Fact]
+        [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddTdeCertificateForSqlServerWithPiping()
         {

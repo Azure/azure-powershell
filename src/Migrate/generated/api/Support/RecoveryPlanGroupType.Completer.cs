@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>Argument completer implementation for RecoveryPlanGroupType.</summary>
+    /// <summary>The group type.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.RecoveryPlanGroupTypeTypeConverter))]
     public partial struct RecoveryPlanGroupType :
         System.Management.Automation.IArgumentCompleter
@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Shutdown".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Shutdown", "Shutdown", global::System.Management.Automation.CompletionResultType.ParameterValue, "Shutdown");
+                yield return new global::System.Management.Automation.CompletionResult("'Shutdown'", "Shutdown", global::System.Management.Automation.CompletionResultType.ParameterValue, "Shutdown");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Boot".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Boot", "Boot", global::System.Management.Automation.CompletionResultType.ParameterValue, "Boot");
+                yield return new global::System.Management.Automation.CompletionResult("'Boot'", "Boot", global::System.Management.Automation.CompletionResultType.ParameterValue, "Boot");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Failover".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Failover", "Failover", global::System.Management.Automation.CompletionResultType.ParameterValue, "Failover");
+                yield return new global::System.Management.Automation.CompletionResult("'Failover'", "Failover", global::System.Management.Automation.CompletionResultType.ParameterValue, "Failover");
             }
         }
     }

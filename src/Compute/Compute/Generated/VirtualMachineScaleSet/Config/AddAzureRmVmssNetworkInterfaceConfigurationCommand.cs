@@ -84,6 +84,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Alias("DnsServer")]
         public string[] DnsSettingsDnsServer { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string NetworkApiVersion { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("VirtualMachineScaleSet", "Add"))
@@ -104,6 +109,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             if (this.VirtualMachineScaleSet.VirtualMachineProfile.NetworkProfile == null)
             {
                 this.VirtualMachineScaleSet.VirtualMachineProfile.NetworkProfile = new VirtualMachineScaleSetNetworkProfile();
+            }
+
+            if (this.IsParameterBound(c => c.NetworkApiVersion))
+            {
+                this.VirtualMachineScaleSet.VirtualMachineProfile.NetworkProfile.NetworkApiVersion = this.NetworkApiVersion;
             }
 
             // NetworkInterfaceConfigurations

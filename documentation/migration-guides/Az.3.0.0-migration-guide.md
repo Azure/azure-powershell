@@ -518,7 +518,7 @@ Get-AzSqlDatabaseAdvancedThreatProtectionSetting -ResourceGroupName "ResourceGro
 ```
 
 ### `Update-AzSqlDatabaseAdvancedThreatProtectionSettings`
-Cmdlet `Update-AzSqlDatabaseAdvancedThreatProtectionSettings` is repleaced by `Update-AzSqlDatabaseAdvancedThreatProtectionSetting`
+Cmdlet `Update-AzSqlDatabaseAdvancedThreatProtectionSettings` is replaced by `Update-AzSqlDatabaseAdvancedThreatProtectionSetting`
 
 #### Before
 ```powershell
@@ -531,7 +531,7 @@ Update-AzSqlDatabaseAdvancedThreatProtectionSetting -ResourceGroupName "Resource
 ```
 
 ### `Clear-AzSqlDatabaseAdvancedThreatProtectionSettings`
-Cmdlet `Clear-AzSqlDatabaseAdvancedThreatProtectionSettings` is repleaced by `Clear-AzSqlDatabaseAdvancedThreatProtectionSetting`
+Cmdlet `Clear-AzSqlDatabaseAdvancedThreatProtectionSettings` is replaced by `Clear-AzSqlDatabaseAdvancedThreatProtectionSetting`
 
 #### Before
 ```powershell
@@ -544,7 +544,7 @@ Clear-AzSqlDatabaseAdvancedThreatProtectionSetting -ResourceGroupName "ResourceG
 ```
 
 ### `Update-AzSqlDatabaseVulnerabilityAssessmentSettings`
-Cmdlet `Update-AzSqlDatabaseVulnerabilityAssessmentSettings` is repleaced by `Update-AzSqlDatabaseVulnerabilityAssessmentSetting`
+Cmdlet `Update-AzSqlDatabaseVulnerabilityAssessmentSettings` is replaced by `Update-AzSqlDatabaseVulnerabilityAssessmentSetting`
 
 #### Before
 ```powershell
@@ -574,7 +574,7 @@ Update-AzSqlDatabaseVulnerabilityAssessmentSetting `
 
 
 ### `Get-AzSqlDatabaseVulnerabilityAssessmentSettings`
-Cmdlet `Get-AzSqlDatabaseVulnerabilityAssessmentSettings` is repleaced by `Get-AzSqlDatabaseVulnerabilityAssessmentSetting`
+Cmdlet `Get-AzSqlDatabaseVulnerabilityAssessmentSettings` is replaced by `Get-AzSqlDatabaseVulnerabilityAssessmentSetting`
 
 #### Before
 ```powershell
@@ -593,7 +593,7 @@ Get-AzSqlDatabaseVulnerabilityAssessmentSetting `
 ```
 
 ### `Clear-AzSqlDatabaseVulnerabilityAssessmentSettings`
-Cmdlet `Clear-AzSqlDatabaseVulnerabilityAssessmentSettings` is repleaced by `Clear-AzSqlDatabaseVulnerabilityAssessmentSetting`
+Cmdlet `Clear-AzSqlDatabaseVulnerabilityAssessmentSettings` is replaced by `Clear-AzSqlDatabaseVulnerabilityAssessmentSetting`
 
 #### Before
 ```powershell
@@ -612,7 +612,7 @@ Clear-AzSqlDatabaseVulnerabilityAssessmentSetting `
 ```
 
 ### `Update-AzSqlInstanceDatabaseVulnerabilityAssessmentSettings`
-Cmdlet `Update-AzSqlInstanceDatabaseVulnerabilityAssessmentSettings` is repleaced by `Update-AzSqlInstanceDatabaseVulnerabilityAssessmentSetting`
+Cmdlet `Update-AzSqlInstanceDatabaseVulnerabilityAssessmentSettings` is replaced by `Update-AzSqlInstanceDatabaseVulnerabilityAssessmentSetting`
 
 #### Before
 ```powershell
@@ -641,7 +641,7 @@ Update-AzSqlInstanceDatabaseVulnerabilityAssessmentSetting `
 ```
 
 ### `Get-AzSqlInstanceDatabaseVulnerabilityAssessmentSettings`
-Cmdlet `Get-AzSqlInstanceDatabaseVulnerabilityAssessmentSettings` is repleaced by `Get-AzSqlInstanceDatabaseVulnerabilityAssessmentSetting`
+Cmdlet `Get-AzSqlInstanceDatabaseVulnerabilityAssessmentSettings` is replaced by `Get-AzSqlInstanceDatabaseVulnerabilityAssessmentSetting`
 
 #### Before
 ```powershell
@@ -660,7 +660,7 @@ Get-AzSqlInstanceDatabaseVulnerabilityAssessmentSetting `
 ```
 
 ### `Clear-AzSqlInstanceDatabaseVulnerabilityAssessmentSettings`
-Cmdlet `Clear-AzSqlInstanceDatabaseVulnerabilityAssessmentSettings` is repleaced by `Clear-AzSqlInstanceDatabaseVulnerabilityAssessmentSetting`
+Cmdlet `Clear-AzSqlInstanceDatabaseVulnerabilityAssessmentSettings` is replaced by `Clear-AzSqlInstanceDatabaseVulnerabilityAssessmentSetting`
 
 #### Before
 ```powershell
@@ -679,7 +679,7 @@ Clear-AzSqlInstanceDatabaseVulnerabilityAssessmentSetting `
 ```
 
 ### `Update-AzSqlInstanceVulnerabilityAssessmentSettings`
-Cmdlet `Update-AzSqlInstanceVulnerabilityAssessmentSettings` is repleaced by `Update-AzSqlInstanceVulnerabilityAssessmentSetting`
+Cmdlet `Update-AzSqlInstanceVulnerabilityAssessmentSettings` is replaced by `Update-AzSqlInstanceVulnerabilityAssessmentSetting`
 
 #### Before
 ```powershell
@@ -706,7 +706,7 @@ Update-AzSqlInstanceVulnerabilityAssessmentSetting `
 ```
 
 ### `Get-AzSqlInstanceVulnerabilityAssessmentSettings`
-Cmdlet `Get-AzSqlInstanceVulnerabilityAssessmentSettings` is repleaced by `Get-AzSqlInstanceVulnerabilityAssessmentSetting`
+Cmdlet `Get-AzSqlInstanceVulnerabilityAssessmentSettings` is replaced by `Get-AzSqlInstanceVulnerabilityAssessmentSetting`
 
 #### Before
 ```powershell
@@ -725,7 +725,7 @@ Get-AzSqlInstanceVulnerabilityAssessmentSetting `
 ```
 
 ### `Clear-AzSqlInstanceVulnerabilityAssessmentSettings`
-Cmdlet `Clear-AzSqlInstanceVulnerabilityAssessmentSettings` is repleaced by `Clear-AzSqlInstanceVulnerabilityAssessmentSetting`
+Cmdlet `Clear-AzSqlInstanceVulnerabilityAssessmentSettings` is replaced by `Clear-AzSqlInstanceVulnerabilityAssessmentSetting`
 
 #### Before
 ```powershell
@@ -744,7 +744,7 @@ Clear-AzSqlInstanceVulnerabilityAssessmentSetting `
 ```
 
 ### `Update-AzSqlServerVulnerabilityAssessmentSettings`
-Cmdlet `Update-AzSqlServerVulnerabilityAssessmentSettings` is repleaced by `Update-AzSqlServerVulnerabilityAssessmentSetting`
+Cmdlet `Update-AzSqlServerVulnerabilityAssessmentSettings` is replaced by `Update-AzSqlServerVulnerabilityAssessmentSetting`
 
 #### Before
 ```powershell
@@ -771,7 +771,7 @@ Update-AzSqlServerVulnerabilityAssessmentSetting `
 ```
 
 ### `Get-AzSqlServerVulnerabilityAssessmentSettings`
-Cmdlet `Get-AzSqlServerVulnerabilityAssessmentSettings` is repleaced by `Get-AzSqlServerVulnerabilityAssessmentSetting`
+Cmdlet `Get-AzSqlServerVulnerabilityAssessmentSettings` is replaced by `Get-AzSqlServerVulnerabilityAssessmentSetting`
 
 #### Before
 ```powershell
@@ -790,7 +790,7 @@ Get-AzSqlServerVulnerabilityAssessmentSetting `
 ```
 
 ### `Clear-AzSqlServerVulnerabilityAssessmentSettings`
-Cmdlet `Clear-AzSqlServerVulnerabilityAssessmentSettings` is repleaced by `Clear-AzSqlServerVulnerabilityAssessmentSetting`
+Cmdlet `Clear-AzSqlServerVulnerabilityAssessmentSettings` is replaced by `Clear-AzSqlServerVulnerabilityAssessmentSetting`
 
 #### Before
 ```powershell
@@ -809,10 +809,10 @@ Clear-AzSqlDatabaseVulnerabilityAssessmentSetting `
 ```
 
 ### `Get-AzSqlServerAdvancedThreatProtectionPolicy`
-Cmdlet `Get-AzSqlServerAdvancedThreatProtectionPolicy` is deleted and no cmdlet is repleaced it
+Cmdlet `Get-AzSqlServerAdvancedThreatProtectionPolicy` is deleted and no cmdlet is replaced it
 
 ### `Get-AzSqlServerThreatDetectionPolicy`
-Cmdlet `Get-AzSqlServerThreatDetectionPolicy` is repleaced by `Get-AzSqlServerThreatDetectionSetting`
+Cmdlet `Get-AzSqlServerThreatDetectionPolicy` is replaced by `Get-AzSqlServerThreatDetectionSetting`
 
 #### Before
 ```powershell
@@ -841,7 +841,7 @@ RetentionInDays              : 0
 ```
 
 ### `Remove-AzSqlServerThreatDetectionPolicy`
-Cmdlet `Remove-AzSqlServerThreatDetectionPolicy` is repleaced by `Clear-AzSqlServerThreatDetectionSetting`
+Cmdlet `Remove-AzSqlServerThreatDetectionPolicy` is replaced by `Clear-AzSqlServerThreatDetectionSetting`
 
 #### Before
 ```powershell
@@ -854,7 +854,7 @@ Clear-AzSqlServerAdvancedThreatProtectionSetting -ResourceGroupName "ResourceGro
 ```
 
 ### `Set-AzSqlServerThreatDetectionPolicy`
-Cmdlet `Set-AzSqlServerThreatDetectionPolicy` is repleaced by `Update-AzSqlServerThreatDetectionSetting`
+Cmdlet `Set-AzSqlServerThreatDetectionPolicy` is replaced by `Update-AzSqlServerThreatDetectionSetting`
 
 #### Before
 ```powershell
@@ -867,7 +867,7 @@ Update-AzSqlServerAdvancedThreatProtectionSetting -ResourceGroupName "ResourceGr
 ```
 
 ### `Get-AzSqlDatabaseThreatDetectionPolicy`
-Cmdlet `Get-AzSqlDatabaseThreatDetectionPolicy` is repleaced by `Get-AzSqlDatabaseThreatDetectionSetting`
+Cmdlet `Get-AzSqlDatabaseThreatDetectionPolicy` is replaced by `Get-AzSqlDatabaseThreatDetectionSetting`
 
 #### Before
 ```powershell
@@ -898,7 +898,7 @@ RetentionInDays              : 0
 ```
 
 ### `Set-AzSqlDatabaseThreatDetectionPolicy`
-Cmdlet `Set-AzSqlDatabaseThreatDetectionPolicy` is repleaced by `Update-AzSqlDatabaseThreatDetectionSetting`
+Cmdlet `Set-AzSqlDatabaseThreatDetectionPolicy` is replaced by `Update-AzSqlDatabaseThreatDetectionSetting`
 
 #### Before
 ```powershell
@@ -911,7 +911,7 @@ Update-AzSqlDatabaseAdvancedThreatProtectionSetting -ResourceGroupName "Resource
 ```
 
 ### `Remove-AzSqlDatabaseThreatDetectionPolicy`
-Cmdlet `Remove-AzSqlDatabaseThreatDetectionPolicy` is repleaced by `Clear-AzSqlDatabaseThreatDetectionSetting`
+Cmdlet `Remove-AzSqlDatabaseThreatDetectionPolicy` is replaced by `Clear-AzSqlDatabaseThreatDetectionSetting`
 
 #### Before
 ```powershell

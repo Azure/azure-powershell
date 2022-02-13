@@ -23,6 +23,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Common.Compute.Version_2018_04;
+using Microsoft.Azure.Commands.Common.Compute.Version_2018_04.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
@@ -64,11 +65,22 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                             this.NodeType));
                 }
 
+
                 var durabilityLevel = GetDurabilityLevel(existingNodeType.DurabilityLevel);
-                if (durabilityLevel == DurabilityLevel.Bronze)
+                if (durabilityLevel == DurabilityLevel.Bronze && vmssExists)
                 {
-                    throw new PSInvalidOperationException(
-                        ServiceFabricProperties.Resources.CannotUpdateBronzeNodeType);
+                    var vmss = GetVmss(existingNodeType.Name, cluster.ClusterId);
+
+                    VirtualMachineScaleSetExtension sfExtension;
+                    if (TryGetFabricVmExt(vmss.VirtualMachineProfile.ExtensionProfile?.Extensions, out sfExtension))
+                    {
+                        string vmssDurabilityLevel = GetDurabilityLevelFromExtension(sfExtension);
+                        if (!string.Equals(DurabilityLevel.Bronze.ToString(), vmssDurabilityLevel, StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            throw new PSInvalidOperationException(string.Format(
+                                ServiceFabricProperties.Resources.CannotRemoveMismatchedDurabilityNodeType, this.NodeType));
+                        }
+                    }
                 }
             }
 
@@ -80,7 +92,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         this.NodeType));
             }
 
-            if (ShouldProcess(target: this.NodeType, action: string.Format("Remove a nodetype {0} ", this.NodeType)))
+            if (ShouldProcess(target: this.NodeType, action: string.Format("Remove a nodetype {0}", this.NodeType)))
             {
                 if (vmssExists)
                 {
@@ -115,7 +127,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 }
                 else
                 {
-                    WriteObject((PSCluster)cluster, true);
+                    WriteObject(new PSCluster(cluster), true);
                 }
             }
         }

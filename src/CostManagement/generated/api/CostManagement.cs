@@ -40,26 +40,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
                         + (scope)
                         + "/providers/Microsoft.CostManagement/alerts/"
                         + (alertId)
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Patch, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
                 request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.AlertsDismiss_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -94,26 +95,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 var scope = _match.Groups["scope"].Value;
                 var alertId = _match.Groups["alertId"].Value;
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
                         + scope
                         + "/providers/Microsoft.CostManagement/alerts/"
                         + alertId
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Patch, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
                 request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.AlertsDismiss_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -136,8 +138,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -223,22 +226,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
                         + (scope)
                         + "/providers/Microsoft.CostManagement/alerts/"
                         + (alertId)
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.AlertsGet_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -272,22 +276,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 var scope = _match.Groups["scope"].Value;
                 var alertId = _match.Groups["alertId"].Value;
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
                         + scope
                         + "/providers/Microsoft.CostManagement/alerts/"
                         + alertId
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.AlertsGet_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -310,8 +315,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -393,21 +399,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
                         + (scope)
                         + "/providers/Microsoft.CostManagement/alerts"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.AlertsList_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -433,23 +440,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/providers/Microsoft.CostManagement/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/providers/Microsoft.CostManagement/"
                         + global::System.Uri.EscapeDataString(externalCloudProviderType)
                         + "/"
                         + global::System.Uri.EscapeDataString(externalCloudProviderId)
                         + "/alerts"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.AlertsListExternal_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -483,23 +491,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 var externalCloudProviderType = _match.Groups["externalCloudProviderType"].Value;
                 var externalCloudProviderId = _match.Groups["externalCloudProviderId"].Value;
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/providers/Microsoft.CostManagement/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/providers/Microsoft.CostManagement/"
                         + externalCloudProviderType
                         + "/"
                         + externalCloudProviderId
                         + "/alerts"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.AlertsListExternal_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -522,8 +531,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -602,21 +612,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 // replace URI parameters with values from identity
                 var scope = _match.Groups["scope"].Value;
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
                         + scope
                         + "/providers/Microsoft.CostManagement/alerts"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.AlertsList_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -639,8 +650,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -723,8 +735,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/providers/Microsoft.CostManagement/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/providers/Microsoft.CostManagement/"
                         + global::System.Uri.EscapeDataString(externalCloudProviderType)
                         + "/"
                         + global::System.Uri.EscapeDataString(externalCloudProviderId)
@@ -739,15 +751,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                         + (string.IsNullOrEmpty(Skiptoken) ? global::System.String.Empty : "$skiptoken=" + global::System.Uri.EscapeDataString(Skiptoken))
                         + "&"
                         + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.DimensionsByExternalCloudProviderType_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -789,8 +802,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 var externalCloudProviderType = _match.Groups["externalCloudProviderType"].Value;
                 var externalCloudProviderId = _match.Groups["externalCloudProviderId"].Value;
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/providers/Microsoft.CostManagement/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/providers/Microsoft.CostManagement/"
                         + externalCloudProviderType
                         + "/"
                         + externalCloudProviderId
@@ -805,15 +818,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                         + (string.IsNullOrEmpty(Skiptoken) ? global::System.String.Empty : "$skiptoken=" + global::System.Uri.EscapeDataString(Skiptoken))
                         + "&"
                         + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.DimensionsByExternalCloudProviderType_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -838,8 +852,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -937,8 +952,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
                         + (scope)
                         + "/providers/Microsoft.CostManagement/dimensions"
                         + "?"
@@ -951,15 +966,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                         + (string.IsNullOrEmpty(Skiptoken) ? global::System.String.Empty : "$skiptoken=" + global::System.Uri.EscapeDataString(Skiptoken))
                         + "&"
                         + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.DimensionsList_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -1000,8 +1016,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 // replace URI parameters with values from identity
                 var scope = _match.Groups["scope"].Value;
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
                         + scope
                         + "/providers/Microsoft.CostManagement/dimensions"
                         + "?"
@@ -1014,15 +1030,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                         + (string.IsNullOrEmpty(Skiptoken) ? global::System.String.Empty : "$skiptoken=" + global::System.Uri.EscapeDataString(Skiptoken))
                         + "&"
                         + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.DimensionsList_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -1045,8 +1062,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -1145,26 +1163,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
                         + (scope)
                         + "/providers/Microsoft.CostManagement/exports/"
                         + global::System.Uri.EscapeDataString(exportName)
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Put, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
                 request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.ExportsCreateOrUpdate_Call(request,onOk,onCreated,onDefault,eventListener,sender);
             }
@@ -1203,26 +1222,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 var scope = _match.Groups["scope"].Value;
                 var exportName = _match.Groups["exportName"].Value;
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
                         + scope
                         + "/providers/Microsoft.CostManagement/exports/"
                         + exportName
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Put, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
                 request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.ExportsCreateOrUpdate_Call(request,onOk,onCreated,onDefault,eventListener,sender);
             }
@@ -1246,8 +1266,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -1339,22 +1360,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
                         + (scope)
                         + "/providers/Microsoft.CostManagement/exports/"
                         + global::System.Uri.EscapeDataString(exportName)
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Delete, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.ExportsDelete_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -1388,22 +1410,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 var scope = _match.Groups["scope"].Value;
                 var exportName = _match.Groups["exportName"].Value;
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
                         + scope
                         + "/providers/Microsoft.CostManagement/exports/"
                         + exportName
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Delete, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.ExportsDelete_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -1426,8 +1449,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -1510,23 +1534,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
                         + (scope)
                         + "/providers/Microsoft.CostManagement/exports/"
                         + global::System.Uri.EscapeDataString(exportName)
                         + "/run"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Post, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.ExportsExecute_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -1560,23 +1585,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 var scope = _match.Groups["scope"].Value;
                 var exportName = _match.Groups["exportName"].Value;
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
                         + scope
                         + "/providers/Microsoft.CostManagement/exports/"
                         + exportName
                         + "/run"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Post, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.ExportsExecute_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -1599,8 +1625,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -1685,8 +1712,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
                         + (scope)
                         + "/providers/Microsoft.CostManagement/exports/"
                         + global::System.Uri.EscapeDataString(exportName)
@@ -1694,15 +1721,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         + "&"
                         + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.ExportsGet_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -1736,23 +1764,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
                         + (scope)
                         + "/providers/Microsoft.CostManagement/exports/"
                         + global::System.Uri.EscapeDataString(exportName)
                         + "/runHistory"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.ExportsGetExecutionHistory_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -1788,23 +1817,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 var scope = _match.Groups["scope"].Value;
                 var exportName = _match.Groups["exportName"].Value;
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
                         + scope
                         + "/providers/Microsoft.CostManagement/exports/"
                         + exportName
                         + "/runHistory"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.ExportsGetExecutionHistory_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -1827,8 +1857,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -1915,8 +1946,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 var scope = _match.Groups["scope"].Value;
                 var exportName = _match.Groups["exportName"].Value;
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
                         + scope
                         + "/providers/Microsoft.CostManagement/exports/"
                         + exportName
@@ -1924,15 +1955,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         + "&"
                         + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.ExportsGet_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -1955,8 +1987,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -2043,23 +2076,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
                         + (scope)
                         + "/providers/Microsoft.CostManagement/exports"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         + "&"
                         + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.ExportsList_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -2094,23 +2128,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 // replace URI parameters with values from identity
                 var scope = _match.Groups["scope"].Value;
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
                         + scope
                         + "/providers/Microsoft.CostManagement/exports"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         + "&"
                         + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.ExportsList_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -2133,8 +2168,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -2215,8 +2251,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/providers/Microsoft.CostManagement/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/providers/Microsoft.CostManagement/"
                         + global::System.Uri.EscapeDataString(externalCloudProviderType)
                         + "/"
                         + global::System.Uri.EscapeDataString(externalCloudProviderId)
@@ -2225,19 +2261,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                         + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + global::System.Uri.EscapeDataString(Filter))
                         + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Post, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
                 request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.ForecastExternalCloudProviderUsage_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -2274,8 +2311,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 var externalCloudProviderType = _match.Groups["externalCloudProviderType"].Value;
                 var externalCloudProviderId = _match.Groups["externalCloudProviderId"].Value;
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/providers/Microsoft.CostManagement/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/providers/Microsoft.CostManagement/"
                         + externalCloudProviderType
                         + "/"
                         + externalCloudProviderId
@@ -2284,19 +2321,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                         + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + global::System.Uri.EscapeDataString(Filter))
                         + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Post, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
                 request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.ForecastExternalCloudProviderUsage_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -2319,8 +2357,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -2406,27 +2445,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
                         + (scope)
                         + "/providers/Microsoft.CostManagement/forecast"
                         + "?"
                         + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + global::System.Uri.EscapeDataString(Filter))
                         + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Post, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
                 request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.ForecastUsage_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -2462,27 +2502,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 // replace URI parameters with values from identity
                 var scope = _match.Groups["scope"].Value;
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
                         + scope
                         + "/providers/Microsoft.CostManagement/forecast"
                         + "?"
                         + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + global::System.Uri.EscapeDataString(Filter))
                         + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Post, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
                 request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.ForecastUsage_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -2505,8 +2546,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -2583,19 +2625,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/providers/Microsoft.CostManagement/operations"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/providers/Microsoft.CostManagement/operations"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.OperationsList_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -2627,19 +2670,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
 
                 // replace URI parameters with values from identity
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/providers/Microsoft.CostManagement/operations"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/providers/Microsoft.CostManagement/operations"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.OperationsList_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -2662,8 +2706,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -2735,25 +2780,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
                         + (scope)
                         + "/providers/Microsoft.CostManagement/query"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Post, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
                 request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.QueryUsage_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -2780,27 +2826,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/providers/Microsoft.CostManagement/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/providers/Microsoft.CostManagement/"
                         + global::System.Uri.EscapeDataString(externalCloudProviderType)
                         + "/"
                         + global::System.Uri.EscapeDataString(externalCloudProviderId)
                         + "/query"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Post, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
                 request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.QueryUsageByExternalCloudProviderType_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -2835,27 +2882,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 var externalCloudProviderType = _match.Groups["externalCloudProviderType"].Value;
                 var externalCloudProviderId = _match.Groups["externalCloudProviderId"].Value;
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/providers/Microsoft.CostManagement/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/providers/Microsoft.CostManagement/"
                         + externalCloudProviderType
                         + "/"
                         + externalCloudProviderId
                         + "/query"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Post, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
                 request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.QueryUsageByExternalCloudProviderType_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -2880,8 +2928,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -2964,25 +3013,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 // replace URI parameters with values from identity
                 var scope = _match.Groups["scope"].Value;
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
                         + scope
                         + "/providers/Microsoft.CostManagement/query"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Post, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
                 request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.QueryUsage_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -3005,8 +3055,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -3086,24 +3137,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/providers/Microsoft.CostManagement/views/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/providers/Microsoft.CostManagement/views/"
                         + global::System.Uri.EscapeDataString(viewName)
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Put, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
                 request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.ViewsCreateOrUpdate_Call(request,onOk,onCreated,onDefault,eventListener,sender);
             }
@@ -3141,26 +3193,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
                         + global::System.Uri.EscapeDataString(scope)
                         + "/providers/Microsoft.CostManagement/views/"
                         + global::System.Uri.EscapeDataString(viewName)
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Put, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
                 request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.ViewsCreateOrUpdateByScope_Call(request,onOk,onCreated,onDefault,eventListener,sender);
             }
@@ -3199,26 +3252,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 var scope = _match.Groups["scope"].Value;
                 var viewName = _match.Groups["viewName"].Value;
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
                         + scope
                         + "/providers/Microsoft.CostManagement/views/"
                         + viewName
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Put, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
                 request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.ViewsCreateOrUpdateByScope_Call(request,onOk,onCreated,onDefault,eventListener,sender);
             }
@@ -3242,8 +3296,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -3342,24 +3397,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 // replace URI parameters with values from identity
                 var viewName = _match.Groups["viewName"].Value;
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/providers/Microsoft.CostManagement/views/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/providers/Microsoft.CostManagement/views/"
                         + viewName
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Put, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
                 request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.ViewsCreateOrUpdate_Call(request,onOk,onCreated,onDefault,eventListener,sender);
             }
@@ -3383,8 +3439,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -3458,20 +3515,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/providers/Microsoft.CostManagement/views/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/providers/Microsoft.CostManagement/views/"
                         + global::System.Uri.EscapeDataString(viewName)
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Delete, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.ViewsDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
             }
@@ -3505,22 +3563,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
                         + global::System.Uri.EscapeDataString(scope)
                         + "/providers/Microsoft.CostManagement/views/"
                         + global::System.Uri.EscapeDataString(viewName)
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Delete, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.ViewsDeleteByScope_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
             }
@@ -3555,22 +3614,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 var scope = _match.Groups["scope"].Value;
                 var viewName = _match.Groups["viewName"].Value;
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
                         + scope
                         + "/providers/Microsoft.CostManagement/views/"
                         + viewName
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Delete, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.ViewsDeleteByScope_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
             }
@@ -3594,8 +3654,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -3687,20 +3748,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 // replace URI parameters with values from identity
                 var viewName = _match.Groups["viewName"].Value;
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/providers/Microsoft.CostManagement/views/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/providers/Microsoft.CostManagement/views/"
                         + viewName
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Delete, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.ViewsDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
             }
@@ -3724,8 +3786,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -3795,20 +3858,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/providers/Microsoft.CostManagement/views/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/providers/Microsoft.CostManagement/views/"
                         + global::System.Uri.EscapeDataString(viewName)
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.ViewsGet_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -3841,22 +3905,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
                         + global::System.Uri.EscapeDataString(scope)
                         + "/providers/Microsoft.CostManagement/views/"
                         + global::System.Uri.EscapeDataString(viewName)
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.ViewsGetByScope_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -3890,22 +3955,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 var scope = _match.Groups["scope"].Value;
                 var viewName = _match.Groups["viewName"].Value;
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
                         + scope
                         + "/providers/Microsoft.CostManagement/views/"
                         + viewName
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.ViewsGetByScope_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -3928,8 +3994,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -4014,20 +4081,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 // replace URI parameters with values from identity
                 var viewName = _match.Groups["viewName"].Value;
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/providers/Microsoft.CostManagement/views/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/providers/Microsoft.CostManagement/views/"
                         + viewName
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.ViewsGet_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -4050,8 +4118,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -4114,19 +4183,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/providers/Microsoft.CostManagement/views"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/providers/Microsoft.CostManagement/views"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.ViewsList_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -4158,21 +4228,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
                         + global::System.Uri.EscapeDataString(scope)
                         + "/providers/Microsoft.CostManagement/views"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.ViewsListByScope_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -4205,21 +4276,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 // replace URI parameters with values from identity
                 var scope = _match.Groups["scope"].Value;
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
                         + scope
                         + "/providers/Microsoft.CostManagement/views"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.ViewsListByScope_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -4242,8 +4314,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -4325,19 +4398,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
 
                 // replace URI parameters with values from identity
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/providers/Microsoft.CostManagement/views"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/providers/Microsoft.CostManagement/views"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.ViewsList_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -4360,8 +4434,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 

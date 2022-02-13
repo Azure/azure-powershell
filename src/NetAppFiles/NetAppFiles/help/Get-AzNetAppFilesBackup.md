@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://docs.microsoft.com/en-us/powershell/module/az.netappfiles/get-aznetappfilesbackup
+online version: https://docs.microsoft.com/powershell/module/az.netappfiles/get-aznetappfilesbackup
 schema: 2.0.0
 ---
 
@@ -18,16 +18,22 @@ Get-AzNetAppFilesBackup -ResourceGroupName <String> -AccountName <String> -PoolN
  [-VolumeName <String>] [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ByResourceIdParameterSet
+### ByAccountBackupFieldsParameterSet
 ```
-Get-AzNetAppFilesBackup [-Name <String>] -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzNetAppFilesBackup -ResourceGroupName <String> -AccountName <String> [-Name <String>]
+ [-AccountBackupName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Get-AzNetAppFilesBackup [-Name <String>] -VolumeObject <PSNetAppFilesVolume>
+Get-AzNetAppFilesBackup [-Name <String>] [-AccountBackupName <String>] -VolumeObject <PSNetAppFilesVolume>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByResourceIdParameterSet
+```
+Get-AzNetAppFilesBackup [-Name <String>] -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,16 +46,38 @@ The **Get-AzNetAppFilesBackup** cmdlet gets details of an ANF backup.
 PS C:\> Get-AzNetAppFilesBackup -ResourceGroupName "MyRG" -AccountName "MyAccount" -PoolName "MyPool" -VolumeName "MyVolume" -Name "MyBackup"
 ```
 
-This command gets the backcup named "MyAnfAccount" from the volume named "MyVolume".
+This command gets the backup named "MyAnfAccount" from the volume named "MyVolume".
+
+### Example 2
+```powershell
+PS C:\> Get-AzNetAppFilesBackup -ResourceGroupName "MyRG" -AccountName "MyAccount" -AccountBackupName "MyBackup"
+```
+
+This command gets the backup named "MyAnfAccount" from the Account named "MyAccount".
 
 ## PARAMETERS
+
+### -AccountBackupName
+The name of the ANF backup
+
+```yaml
+Type: System.String
+Parameter Sets: ByAccountBackupFieldsParameterSet, ByParentObjectParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AccountName
 The name of the ANF account
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: ByFieldsParameterSet, ByAccountBackupFieldsParameterSet
 Aliases:
 
 Required: True
@@ -109,7 +137,7 @@ The resource group of the ANF account
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: ByFieldsParameterSet, ByAccountBackupFieldsParameterSet
 Aliases:
 
 Required: True

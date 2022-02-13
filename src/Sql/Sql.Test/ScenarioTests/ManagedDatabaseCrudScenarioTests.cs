@@ -22,6 +22,9 @@ using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
+    /// <summary>
+    /// These tests depends on the existing resources. Please contact MDCSSQLCustomerExp@microsoft.com for instructions.
+    /// </summary>
     public class ManagedDatabaseCrudScenarioTests : SqlTestsBase
     {
         protected override void SetupManagementClients(RestTestFramework.MockContext context)
@@ -48,21 +51,21 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-CreateManagedDatabase");
         }
 
-        [Fact(Skip = "Skip due to bug in ignore api version plus long setup time for managed instance")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetManagedDatabase()
         {
             RunPowerShellTest("Test-GetManagedDatabase");
         }
 
-        [Fact(Skip = "Skip due to long setup time for managed instance")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveManagedDatabase()
         {
             RunPowerShellTest("Test-RemoveManagedDatabase");
         }
 
-        [Fact(Skip = "Skip due to long setup time for managed instance")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestoreManagedDatabase()
         {

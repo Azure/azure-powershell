@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
 {
 
+    /// <summary>A state of a server that is visible to user.</summary>
     public partial struct ServerState :
         System.IEquatable<ServerState>
     {
@@ -17,6 +18,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.ServerState Ready = @"Ready";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.ServerState Starting = @"Starting";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.ServerState Stopped = @"Stopped";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.ServerState Stopping = @"Stopping";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.ServerState Updating = @"Updating";
+
         /// <summary>the value for an instance of the <see cref="ServerState" /> Enum.</summary>
         private string _value { get; set; }
 
@@ -24,7 +33,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
         /// <param name="value">the value to convert to an instance of <see cref="ServerState" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new ServerState(System.Convert.ToString(value));
+            return new ServerState(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type ServerState</summary>

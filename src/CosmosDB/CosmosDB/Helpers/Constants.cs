@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string AccountNameHelpMessage = "Name of the Cosmos DB database account.";
         public const string AccountKeyKindHelpMessage = "The access key to regenerate. Accepted values: primary, primaryReadonly, secondary, secondaryReadonly ";
         public const string AccountFailoverPolicyHelpMessage = "Array of strings having region names, ordered by failover priority. E.g eastus, westus";
+        public const string AccountInstanceIdHelpMessage = "The instance Id of the CosmosDB database account. (This is returned as a part of database account properties).";
         public const string AccountObjectHelpMessage = "CosmosDB Account object";
         public const string AccountUpdateLocationHelpMessage = "The georeplication location to be enabled for the Cosmos DB account, can be a single string or an array of strings.";
         public const string DefaultConsistencyLevelHelpMessage = "Default consistency level of the Cosmos DB database account. Accepted values: BoundedStaleness, ConsistentPrefix, Eventual, Session, Strong. Default is Session.";
@@ -53,6 +54,30 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string EnableFreeTierHelpMessage = "Bool to indicate if FreeTier is enabled on the account.";
         public const string EnableAnalyticalStorageHelpMessage = "Bool to indicate if AnalyticalStorage is enabled on the account.";
         public const string ServerVersionHelpMessage = "ServerVersion, valid only in case of MongoDB Accounts.";
+        public const string NetworkAclBypassHelpMessage = "Whether or not Network Acl Bypass is enabled for this account for Synapse Link. Possible values include: 'None', 'AzureServices'.";
+        public const string NetworkAclBypassResourceIdHelpMessage = "List of Resource Ids to allow Network Acl Bypass for Synapse Link.";
+        public const string DatabaseResourceIdHelpMessage = "ResourceId of the database.";
+        public const string AnalyticalStorageSchemaTypeHelpMessage = "The schema type for analytical storage. Valid values include: 'WellDefined' and 'FullFidelity'.";
+
+        //Restore specific help messages
+        public const string IsRestoreRequestHelpMessage = "Indicates that the new Cosmos DB account request is a restore request.";
+        public const string RestoreSourceIdHelpMessage = "The restorable database account Id of the source account of the restore. Example: /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorabledatabaseaccounts/{instanceId}";
+        public const string RestoreTimestampHelpMessage = "The timestamp to which the source account has to be restored to.";
+        public const string DatabasesToRestoreHelpMessage = "The list of PSDatabaseToRestore objects which specify the subset of databases and collections to restore from the source account. (If not provided, all the databases will be restored)";
+        public const string RestoreDatabaseNameHelpMessage = "The name of the database to restore";
+        public const string RestoreCollectionNamesHelpMessage = "The names of the collections to be restored. (If not provided, all the collections will be restored)";
+        public const string RestoreSourceDatabaseAccountNameHelpMessage = "The name of the source database account of the restore.";
+        public const string RestoreLocationNameHelpMessage = "The location of the source account from which restore is triggered. This will also be the write region of the restored account";
+        public const string RestorableDatabaseAccountObjectHelpMessage = "CosmosDB Restorable Database Account object";
+        public const string RestorableSqlDatabaseObjectHelpMessage = "CosmosDB Restorable Sql Database object";
+        public const string RestorableMongoDBDatabaseObjectHelpMessage = "CosmosDB Restorable MongoDB Database object";
+
+        //Backup specific help messages
+        public const string BackupPolicyHelpMessage = "The backup policy to indicate how the backups of the account should be taken";
+        public const string BackupIntervalInMinHelpMessage = "The interval(in minutes) with which backup are taken (only for accounts with periodic mode backups)";
+        public const string BackupRetentionInHoursHelpMessage = "The time(in hours) for which each backup is retained (only for accounts with periodic mode backups)";
+        public const string BackupTypeHelpMessage = "The type of backups on the Cosmos DB account. Accepted values: Periodic, Continuous";
+        public const string BackupStorageRedundancyHelpMessage = "The redundancy type of the backup Storage account";
 
         //Sql cmdlets help messages
         public const string DatabaseNameHelpMessage = "Database name.";
@@ -104,13 +129,14 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string IncludedPathIndexesHelpMessage = "List of indexes for this path";
         public const string CompositePathHelpMessage = "The path for which the indexing behavior applies to. Index paths typically start with root and end with wildcard (/path/*)";
         public const string CompositePathOrderTypeHelpMessage = " Gets or sets sort order for composite paths. Possible values include: 'Ascending', 'Descending'";
+        public const string SqlContainerAnalyticalStorageTtlHelpMessage = "TTL for Analytical Storage (in Seconds).";
 
         //MongoDB cmdlets help messages
         public const string CollectionNameHelpMessage = "Collection name.";
         public const string MongoDatabaseObjectHelpMessage = "Mongo Database object.";
         public const string MongoCollectionObjectHelpMessage = "Mongo Collection object.";
         public const string MongoShardKeyHelpMessage = "Sharding key path.";
-        public const string MongoCollectionAnalyticalStorageTtlHelpMessage = "TTL for Analytical Storage.";
+        public const string MongoCollectionAnalyticalStorageTtlHelpMessage = "TTL for Analytical Storage (in Seconds).";
         public const string MongoIndexTtlInSeconds = "Number of seconds after which the index expires.";
         public const string MongoIndexUnique = "Bool to indicate if the index is unique or not.";
         public const string MongoIndexKey = "Array of key values as strings.";
@@ -155,5 +181,49 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string ThroughputHelpMessage = "Throughput value in int.";
         public const string AutoscaleMaxThroughputHelpMessage = "Maximum Throughput value if autoscale is enabled.";
         public const string ThroughputTypeHelpMessage = "Throughput type to migrate to. Possible values are: Autoscale, Manual.";
+
+        // Role cmdlets help messages
+        public const string PrincipalIdHelpMessage = "Object ID (Guid) of the AAD principal to which the Role Assignment is being granted. This could be user, group, service principal, or managed identity.";
+        public const string ScopeHelpMessage  = "Resource path below which the Role Assignment shall grant access. Eg. '/', '/dbs/dbname','/dbs/dbname/colls/collname'.";
+        public const string RoleAssignmentHelpMessage  = "A Role Assignment attaches a Role Definition to an AAD principal at a specified resource scope for granting access.";
+        public const string RoleAssignmentIdHelpMessage  = "Unique ID (Guid) for the Role Assignment.";
+        public const string RoleDefinitionHelpMessage  = "A Role Definition is a collection of permissions.";
+        public const string RoleDefinitionIdHelpMessage  = "Unique ID (Guid) for the Role Definition.";
+        public const string TypeHelpMessage = "Type of the Role Definition, either CustomRole or BuiltInRole.";
+        public const string RoleNameHelpMessage = "Unique display name for the Role Definition.";
+        public const string DataActionsHelpMessage = "Set of data actions granted through the Role Definition. List of allowed actions can be found at: https://aka.ms/cosmos-native-rbac";
+        public const string PermissionsHelpMessage = "Permission is a collection of data actions.";
+        public const string AssignableScopesHelpMessage = "Set of resource paths below which a Role Assignment can be attached to the Role Definition. Eg. '/', '/dbs/dbname','/dbs/dbname/colls/collname'.";
+        public const string RoleDefinitionNameHelpMessage = "Unique display name for the Role Definition.";
+
+        //Cassandra cmdlets help messages        
+        public const string ManagedCassandraTagsHelpMessage = "Managed Cassandra Tags.";
+        public const string ManagedCassandraIdentityHelpMessage = "Identity used to authenticate.";
+        public const string ManagedCassandraRepairEnabledHelpMessage = "Enables automatic repair.";
+        public const string ManagedCassandraLocationHelpMessage = "Azure Location of the Cluster.";
+        public const string ManagedCassandraClusterNameHelpMessage = "Managed Cassandra Cluster Name.";
+        public const string ManagedCassandraClusterObjectHelpMessage = "Managed Cassandra Cluster object";
+        public const string ManagedCassandraDatacenterNameHelpMessage = "Managed Cassandra Datacenter Name.";
+        public const string ManagedCassandraCassandraVersionHelpMessage = "The version of Cassandra chosen.";
+        public const string ManagedCassandraDatacenterObjectHelpMessage = "Managed Cassandra Datacenter object";
+        public const string ManagedCassandraDatacenterLocationHelpMessage = "Azure Location of the DataCenter.";
+        public const string ManagedCassandraHoursBetweenBackupsHelpMessage = "The number of hours between backup attempts.";
+        public const string ManagedCassandraExternalSeedNodesHelpMessage = "A list of ip addresses of the seed nodes of on-premise data centers.";
+        public const string ManagedCassandraClientCertificatesHelpMessage = "If specified, enables client certificate authentication to the Cassandra API.";
+        public const string ManagedCassandraNodeCountHelpMessage = "The number of Cassandra virtual machines in this data center. The minimum value is 3.";
+        public const string ManagedCassandraExternalGossipCertificatesHelpMessage = "A list of certificates that the managed cassandra data center's should accept.";
+        public const string ManagedCassandraInitialCassandraAdminPasswordHelpMessage = "The intial password to be configured when a cluster is created for AuthenticationMethod Cassandra.";
+        public const string ManagedCassandraBase64EncodedCassandraYamlFragment = "This is a Base64 encoded yaml file that is a subset of cassandra.yaml. Supported fields will be honored and others will be ignored.";
+        public const string ManagedCassandraDataCenterDelegatedSubnetIdHelpMessage = "The resource id of a subnet where ip addresses of the Cassandra virtual machines will be allocated. This must be in the same region as datacenter location.";
+        public const string ManagedCassandraAuthenticationMethodHelpMessage = "Authentication mode can be None or Cassandra. If None, no authentication will be required to connect to the Cassandra API. If Cassandra, then passwords will be used.";
+        public const string ManagedCassandraRestoreFromBackupIdHelpMessage = "The resource id of a backup. If provided on create, the backup will be used to prepopulate the cluster.";
+        public const string ManagedCassandraDelegatedSubnetIdHelpMessage = "The resource id of a subnet where the ip address of the cassandra management server will be allocated. This subnet must have connectivity to the DelegatedSubnetId subnet of each data center.";
+        public const string ManagedCassandraClusterNameOverrideHelpMessage = "By default, the Azure resource name is used to populate the clusterName field in cassandra.yaml. If this field is set, its value is used instead of the Azure resource name, for example, if you need a clusterName that is not a valid Azure resource name, or you need multiple clusters with the same clusterName.";
+        public const string ManagedCassandraManagedDiskCustomerKeyUri = "URI to KeyVault key used to encrypt the Cassandra data disks. If not set, will use Azure's own keys. Ensure the system assigned identity of the cluster has been assigned appropriate permissions (key get/wrap/unwrap permissions) on the key.";
+        public const string ManagedCassandraBackupStorageCustomerKeyUri = "URI to KeyVault key that is used to encrypt Cassandra backups. If not set, will use Azure's own keys. Ensure the system assigned identity of the cluster has been assigned appropriate permissions (key get/wrap/unwrap permissions) on the key.";
+        public const string ManagedCassandraSku = "Virtual Machine SKU used for data centers. Default value is Standard_DS14_v2";
+        public const string ManagedCassandraDiskSku = "Disk SKU used for data centers. Default value is P30.";
+        public const string ManagedCassandraDiskCapacity = "Number of disk used for data centers. Default value is 4.";
+        public const string ManagedCassandraUseAvailabilityZone = "Deploy nodes across availability zones if they are available in this location.";
     }
 }

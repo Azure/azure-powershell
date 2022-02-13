@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 9F69DAEF-F2ED-449B-B75F-FCA7ED73D98F
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-aznetworksecuritygroup
+online version: https://docs.microsoft.com/powershell/module/az.network/set-aznetworksecuritygroup
 schema: 2.0.0
 ---
 

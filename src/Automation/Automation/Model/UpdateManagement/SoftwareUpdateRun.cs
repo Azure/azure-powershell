@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Automation.Model.UpdateManagement
             this.SoftwareUpdateConfigurationName = sucr.SoftwareUpdateConfiguration.Name;
             this.StartTime = sucr.StartTime;
             this.Status = (SoftwareUpdateRunStatus)Enum.Parse(typeof(SoftwareUpdateRunStatus), sucr.Status, true);
-            this.Tasks = sucr.Tasks;
+            this.Tasks = TaskConverter(sucr.Tasks);
         }
 
         public Guid RunId { get; set; }
@@ -58,5 +58,33 @@ namespace Microsoft.Azure.Commands.Automation.Model.UpdateManagement
         public SoftwareUpdateRunStatus Status { get; set; }
 
         public SoftareUpdateConfigurationRunTasks Tasks { get; set; }
+
+
+        // SoftwareUpdateConfigurationRunTasks to SoftareUpdateConfigurationRunTasks
+        // Added temporarily to avoid breaking change
+        public SoftareUpdateConfigurationRunTasks TaskConverter(SoftwareUpdateConfigurationRunTasks tasks1)
+        {
+            SoftareUpdateConfigurationRunTaskProperties preTask = null;
+            if (null != tasks1 && null != tasks1.PreTask)
+            {
+                preTask = TaskPropertiesConverter(tasks1.PreTask);
+            }
+            SoftareUpdateConfigurationRunTaskProperties postTask = null;
+            if (null != tasks1 && null != tasks1.PostTask)
+            {
+                postTask = TaskPropertiesConverter(tasks1.PostTask);
+            }
+
+            SoftareUpdateConfigurationRunTasks tasks2 = new SoftareUpdateConfigurationRunTasks(preTask, postTask);
+            return tasks2;
+        }
+
+        // SoftwareUpdateConfigurationRunTaskProperties to SoftareUpdateConfigurationRunTaskProperties
+        // Added temporarily to avoid breaking change
+        public SoftareUpdateConfigurationRunTaskProperties TaskPropertiesConverter(SoftwareUpdateConfigurationRunTaskProperties prop1)
+        {
+            SoftareUpdateConfigurationRunTaskProperties prop2 = new SoftareUpdateConfigurationRunTaskProperties(prop1.Status, prop1.Source, prop1.JobId);
+            return prop2;
+        }
     }
 }

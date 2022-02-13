@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
 ms.assetid: 53246003-D1E9-4863-94E9-8E0BF1272134
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/get-azcdncustomdomain
+online version: https://docs.microsoft.com/powershell/module/az.cdn/get-azcdncustomdomain
 schema: 2.0.0
 ---
 
@@ -29,6 +29,27 @@ Get-AzCdnCustomDomain [-CustomDomainName <String>] -CdnEndpoint <PSEndpoint>
 The **Get-AzCdnCustomDomain** cmdlet gets an Azure Content Delivery Network (CDN) custom domain and its related settings.
 
 ## EXAMPLES
+
+### Example 1
+```powershell
+Get-AzCdnCustomDomain -ResourceGroupName myresourcegroup -ProfileName mycdnprofile -EndpointName myendpoint
+```
+
+```Output
+HostName                        : cdn.example.com
+ValidationData                  :
+ResourceState                   : Active
+CustomHttpsProvisioningState    : Disabled
+CustomHttpsProvisioningSubstate : None
+ResourceGroupName               : myresourcegroup
+ProfileName                     : mycdnprofile
+EndpointName                    : myendpoint
+Id                              : /subscriptions/11111111-1111-1111-1111-111111111111/resourcegroups/myresourcegroup/providers
+                                  /Microsoft.Cdn/profiles/mycdnprofile/endpoints/myendpoint/customdomains/cdn-example-com
+Name                            : cdn-example-com
+Type                            : Microsoft.Cdn/profiles/endpoints/customdomains
+ProvisioningState               : Succeeded
+```
 
 ## PARAMETERS
 

@@ -55,10 +55,11 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
             {
                 LocalResourceIdentifier identifier = new LocalResourceIdentifier(AuthorizationRuleId);
                 string resourceUri = string.Empty, strPolicyName = string.Empty, sakey = string.Empty;
+                DateTime EpochTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
 
                 PSListKeysAttributes listkeys;
                 if (identifier.ParentResource1 != null && AuthorizationRuleId.Contains("topics"))
-                {                   
+                {
                     listkeys =  Client.GetTopicKey(identifier.ResourceGroupName, identifier.ParentResource, identifier.ParentResource1, identifier.ResourceName);
                 }
                 else if (identifier.ParentResource1 != null && AuthorizationRuleId.Contains("queues"))
@@ -94,13 +95,24 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
                         }
                 }
 
-                string stringToSign = StartTime.HasValue ? StartTime.ToString() + "\n" + System.Web.HttpUtility.UrlEncode(resourceUri) + "\n" + ExpiryTime.ToString() : System.Web.HttpUtility.UrlEncode(resourceUri) + "\n" + ExpiryTime.ToString();
+                var encodedResourceUri = System.Web.HttpUtility.UrlEncode(resourceUri);
+                var expiry = Convert.ToInt64(ExpiryTime.Value.Subtract(EpochTime).TotalSeconds, CultureInfo.InvariantCulture);
+                var stringToSign = StartTime == null ? "" : Convert.ToInt64(StartTime.Value.Subtract(EpochTime).TotalSeconds, CultureInfo.InvariantCulture) + "\n";
+                stringToSign = stringToSign + encodedResourceUri + "\n" + expiry;
+
                 HMACSHA256 hmac = new HMACSHA256(System.Text.Encoding.UTF8.GetBytes(sakey));
                 var signature = Convert.ToBase64String(hmac.ComputeHash(Encoding.UTF8.GetBytes(stringToSign)));
-                string sasToken = String.Format(CultureInfo.InvariantCulture, "SharedAccessSignature sr={0}&sig={1}&se={2}&skn={3}", HttpUtility.UrlEncode(resourceUri), HttpUtility.UrlEncode(signature), ExpiryTime, KeyType);
-                PSSharedAccessSignatureAttributes psSastoken = new PSSharedAccessSignatureAttributes(sasToken);
-                WriteObject(psSastoken, true);
 
+                string sasToken = String.Format(CultureInfo.InvariantCulture,
+                                                "SharedAccessSignature sr={0}&sig={1}&se={2}&skn={3}",
+                                                HttpUtility.UrlEncode(resourceUri),
+                                                HttpUtility.UrlEncode(signature),
+                                                ExpiryTime,
+                                                KeyType);
+
+                PSSharedAccessSignatureAttributes psSastoken = new PSSharedAccessSignatureAttributes(sasToken);
+
+                WriteObject(psSastoken, true);
             }
             catch (Management.ServiceBus.Models.ErrorResponseException ex)
             {

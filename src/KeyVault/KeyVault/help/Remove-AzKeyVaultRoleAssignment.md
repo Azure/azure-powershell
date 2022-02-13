@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
-online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/remove-azkeyvaultroleassignment
+online version: https://docs.microsoft.com/powershell/module/az.keyvault/remove-azkeyvaultroleassignment
 schema: 2.0.0
 ---
 
@@ -68,6 +68,11 @@ Remove-AzKeyVaultRoleAssignment [-Scope <String>] [-PassThru] -InputObject <PSKe
 
 ## DESCRIPTION
 Use the `Remove-AzKeyVaultRoleAssignment` cmdlet to revoke access to any principal at given scope and given role. The object of the assignment i.e. the principal MUST be specified. The principal can be a user (use SignInName or ObjectId parameters to identify a user), security group (use ObjectId parameter to identify a group) or service principal (use ApplicationId or ObjectId parameters to identify a ServicePrincipal. The role that the principal is assigned to MUST be specified using the RoleDefinitionName or RoleDefinitionId parameter.
+
+The cmdlet may call below Microsoft Graph API according to input parameters:
+
+- GET /users/{id}
+- GET /servicePrincipals
 
 ## EXAMPLES
 

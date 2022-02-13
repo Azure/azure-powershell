@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
-    /// <summary>Argument completer implementation for AzureScaleType.</summary>
+    /// <summary>Scale type.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureScaleTypeTypeConverter))]
     public partial struct AzureScaleType :
         System.Management.Automation.IArgumentCompleter

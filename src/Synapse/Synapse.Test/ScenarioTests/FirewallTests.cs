@@ -32,25 +32,9 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSynapseFirewall()
         {
-            string testResourceGroupName = SynapseTestBase.TestResourceGroupName;
-            if (string.IsNullOrEmpty(testResourceGroupName))
-            {
-                testResourceGroupName = nameof(TestResourceGroupName);
-            }
-
-            string testWorkspaceName = SynapseTestBase.TestWorkspaceName;
-            if (string.IsNullOrEmpty(testWorkspaceName))
-            {
-                testWorkspaceName = nameof(TestWorkspaceName);
-            }
-
             SynapseTestBase.NewInstance.RunPsTest(
                 _logger,
-                string.Format(
-                "Test-SynapseFirewall -resourceGroupName '{0}' -workspaceName '{1}'",
-                "testResourceGroupName",
-                "testWorkspaceName"
-                ));
+                "Test-SynapseFirewall");
         }
     }
 }

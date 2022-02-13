@@ -134,6 +134,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to IdentityId can&apos;t be empty for UserAssigned Identities.
+        /// </summary>
+        internal static string IdentityIdRequired {
+            get {
+                return ResourceManager.GetString("IdentityIdRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Replication Provider {0} entered invalid for the current set of parameters..
         /// </summary>
         internal static string IncorrectReplicationProvider {
@@ -158,6 +167,42 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         internal static string InvalidCloudExceptionErrorMessage {
             get {
                 return ResourceManager.GetString("InvalidCloudExceptionErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IdentityId &apos;{0}&apos; is invalid.
+        /// </summary>
+        internal static string InvalidIdentityId {
+            get {
+                return ResourceManager.GetString("InvalidIdentityId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UserAssigned and SystemAssigned identities can&apos;t be removed together.
+        /// </summary>
+        internal static string InvalidIdentityRemove {
+            get {
+                return ResourceManager.GetString("InvalidIdentityRemove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid parameter IdentityId. IdentityId can&apos;t be set for SystemAssigned Identities.
+        /// </summary>
+        internal static string InvalidParameterIdentityId {
+            get {
+                return ResourceManager.GetString("InvalidParameterIdentityId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid parameter set.
+        /// </summary>
+        internal static string InvalidParameterSet {
+            get {
+                return ResourceManager.GetString("InvalidParameterSet", resourceCulture);
             }
         }
         

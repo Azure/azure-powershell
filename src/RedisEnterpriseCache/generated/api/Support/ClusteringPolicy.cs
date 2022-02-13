@@ -28,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support
         /// <param name="value">the value to convert to an instance of <see cref="ClusteringPolicy" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new ClusteringPolicy(System.Convert.ToString(value));
+            return new ClusteringPolicy(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type ClusteringPolicy</summary>

@@ -22,6 +22,7 @@
 using Microsoft.Azure.Management.Compute.Models;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Models
 {
@@ -53,6 +54,9 @@ namespace Microsoft.Azure.Commands.Compute.Models
 
         // Gets or sets the property of 'Location'
         public string Location { get; set; }
+
+        // Gets or sets the property of 'EdgeZone'
+        public ExtendedLocation ExtendedLocation { get; set; }
 
         // Gets or sets the license type
         public string LicenseType { get; set; }
@@ -127,5 +131,14 @@ namespace Microsoft.Azure.Commands.Compute.Models
         
         // Gets or sets the HostGroup
         public SubResource HostGroup { get; set; }
+
+        public CapacityReservationProfile CapacityReservation { get; set; }
+        
+        // Gets or sets the UserData
+        public string UserData { get; set; }
+        
+        public PSApplicationProfile ApplicationProfile { get; set; }
+
+        public int? PlatformFaultDomain { get; set; }
     }
 }

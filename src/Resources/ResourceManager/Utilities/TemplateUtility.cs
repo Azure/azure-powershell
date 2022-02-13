@@ -26,6 +26,7 @@ using System.Diagnostics;
 using System.Security;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
 {
@@ -88,12 +89,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
             {
                 try
                 {
-                    parameters = JsonConvert.DeserializeObject<Dictionary<string, TemplateFileParameterV1>>(FileUtilities.DataStore.ReadFileAsText(templateParameterFilePath));
+                    // NOTE(jcotillo): We must use JsonExtensions to ensure the proper use of serialization settings.
+                    // otherwise we could get invalid date time serializations.
+                    parameters =
+                        FileUtilities.DataStore.ReadFileAsStream(templateParameterFilePath)
+                        .FromJson<Dictionary<string, TemplateFileParameterV1>>();
                 }
                 catch (JsonSerializationException)
                 {
-                    parameters = new Dictionary<string, TemplateFileParameterV1>(
-                        JsonConvert.DeserializeObject<TemplateFileParameterV2>(FileUtilities.DataStore.ReadFileAsText(templateParameterFilePath)).Parameters);
+                    var parametersv2 =
+                        FileUtilities.DataStore.ReadFileAsStream(templateParameterFilePath)
+                        .FromJson<TemplateFileParameterV2>();
+                    parameters = new Dictionary<string, TemplateFileParameterV1>(parametersv2.Parameters);
                 }
             }
 

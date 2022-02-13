@@ -79,6 +79,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         }
         private bool waitForComplete;
 
+        // Overwrite the useless parameter
+        public override string TagCondition { get; set; }
+
         /// <summary>
         /// CloudBlob objects which need to mointor until copy complete
         /// </summary>

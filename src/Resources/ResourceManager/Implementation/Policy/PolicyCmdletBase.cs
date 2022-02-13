@@ -105,6 +105,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
 
         /// <summary>
+        /// Converts the resource object collection to a PsPolicyExemption collection.
+        /// </summary>
+        /// <param name="resourceType">The resource type of the objects to create</param>
+        /// <param name="resources">The policy definition resource object.</param>
+        protected PsPolicyExemption[] GetOutputPolicyExemptions(params JToken[] resources)
+        {
+            return resources
+                .CoalesceEnumerable()
+                .Where(resource => resource != null)
+                .SelectArray(resource => new PsPolicyExemption(resource));
+        }
+
+        /// <summary>
         /// Converts the resource object collection to a filtered PsPolicyDefinition array.
         /// </summary>
         /// <param name="filter">the filter</param>
@@ -202,11 +215,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets the resource Id from the supplied PowerShell parameters.
         /// </summary>
-        protected string MakePolicyAssignmentId(string scope, string resourceName)
+        protected string GetPolicyArtifactFullyQualifiedId(string scope, string resourceType, string resourceName)
         {
             return ResourceIdUtility.GetResourceId(
                 resourceId: scope ?? $"/{Constants.Subscriptions}/{DefaultContext.Subscription.Id}",
-                extensionResourceType: Constants.MicrosoftAuthorizationPolicyAssignmentType,
+                extensionResourceType: resourceType,
                 extensionResourceName: resourceName);
         }
 

@@ -181,7 +181,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             }
             catch (StorageException e)
             {
-                if (e.IsConflictException() && retryDeleteSnapshot)
+                if (e.IsConflictException() && e.RequestInformation.ErrorCode.Equals("SnapshotsPresent", StringComparison.InvariantCultureIgnoreCase) && retryDeleteSnapshot)
                 {
                     //If x-ms-delete-snapshots is not specified on the request and the blob has associated snapshots, the Blob service returns status code 409 (Conflict).
                     retryDeleteSnapshot = true;

@@ -19,6 +19,19 @@
 -->
 ## Upcoming Release
 
+## Version 0.5.0
+* Onboarded cmdlets `New/Update/Get/Remove-AzKubernetesExtension` and `New/Get/Remove-AzKubernetesConfiguration`
+* Removed the plural form of parameter HelmOperatorChartValues, OperatorParameters and SshKnownHosts in `New-AzKubernetesConfiguration`
+
+## Version 0.4.0
+* Added SshKnownHosts and ConfigurationProtectedSetting to New-AzKubernetesConfiguration.
+
+## Version 0.3.0
+* Upgraded API version to 2021-03-01.
+
+## Version 0.2.0
+* Upgraded API version from 2019-11-01-preview to 2020-10-01-preview.
+
 ## Version 0.1.0
-* the first preview release
+* The first preview release
 

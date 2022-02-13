@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
 ms.assetid: 91919242-59ED-4938-A3A3-23A66F85FBC1
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/get-azcdnorigin
+online version: https://docs.microsoft.com/powershell/module/az.cdn/get-azcdnorigin
 schema: 2.0.0
 ---
 
@@ -35,6 +35,32 @@ Get-AzCdnOrigin [-OriginName <String>] -CdnEndpoint <PSEndpoint> [-DefaultProfil
 The **Get-AzCdnOrigin** cmdlet gets an Azure Content Delivery Network (CDN) origin server and its configuration data.
 
 ## EXAMPLES
+
+### Example 1
+```powershell
+Get-AzCdnOrigin -ResourceGroupName myresourcegroup -ProfileName mycdnprofile -EndpointName myendpoint
+```
+
+```Output
+HostName                   : mystorage.blob.core.windows.net
+HttpPort                   :
+HttpsPort                  :
+OriginHostHeader           :
+Priority                   :
+PrivateLinkApprovalMessage :
+PrivateLinkLocation        :
+PrivateLinkResourceId      :
+Weight                     :
+ResourceState              : Active
+ResourceGroupName          : myresourcegroup
+ProfileName                : mycdnprofile
+EndpointName               : myendpoint
+Id                         : /subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/myresourcegroup/providers/Micr
+                             osoft.Cdn/profiles/mycdnprofile/endpoints/myendpoint/origins/mystorage
+Name                       : mystorage
+Type                       : Microsoft.Cdn/profiles/endpoints/origins
+ProvisioningState          : Succeeded
+```
 
 ## PARAMETERS
 

@@ -12,14 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.WindowsAzure.Commands.Storage.Common;
-using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-using Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
 {
+    using System;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
+    using Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet;
+
     [TestClass]
     public class RemoveAzureStorageTableTest: StorageTableStorageTestBase
     {
@@ -28,61 +28,94 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
         [TestInitialize]
         public void InitCommand()
         {
-            command = new FakeRemoveAzureTableCommand(tableMock)
-                {
-                    CommandRuntime = MockCmdRunTime
-                };
+            this.command = new FakeRemoveAzureTableCommand(this.tableMock)
+            {
+                CommandRuntime = this.MockCmdRunTime
+            };
         }
 
         [TestCleanup]
         public void CleanCommand()
         {
-            command = null;
+            this.clearTest();
+            this.command = null;
         }
 
         [TestMethod]
         public void RemoveTableWithInvalidNameTest()
         {
-            string name = "a*b";
-            AssertThrows<ArgumentException>(() => command.RemoveAzureTable(name),
-                String.Format(Resources.InvalidTableName, name));
+            string tableName = "a*b";
+
+            // v1 test
+            AssertThrows<ArgumentException>(() => command.RemoveAzureTable(tableName),
+                String.Format(Resources.InvalidTableName, tableName));
+
+            // v2 test
+            AssertThrows<ArgumentException>(() => command.RemoveAzureTableV2(this.tableMock, tableName),
+                String.Format(Resources.InvalidTableName, tableName));
         }
 
         [TestMethod]
         public void RemvoeTableWithNotExistsTableTest()
         {
-            string name = "test";
-            AssertThrows<ResourceNotFoundException>(() => command.RemoveAzureTable(name),
-                String.Format(Resources.TableNotFound, name));
+            string tableName = "test";
+
+            // v1 test
+            AssertThrows<ResourceNotFoundException>(() => command.RemoveAzureTable(tableName),
+                String.Format(Resources.TableNotFound, tableName));
+
+            // v2 test
+            AssertThrows<ResourceNotFoundException>(() => command.RemoveAzureTableV2(this.tableMock, tableName),
+                String.Format(Resources.TableNotFound, tableName));
         }
 
         [TestMethod]
         public void RemoveTableSuccessfullyTest()
         {
+            // v1 test
             AddTestTables();
-            string name = "test";
-            bool removed = command.RemoveAzureTable(name);
+            bool removed = command.RemoveAzureTable("test");
             Assert.IsTrue(removed);
 
             AddTestTables();
-            name = "text";
             command.confirm = true;
-            removed = command.RemoveAzureTable(name);
+            removed = command.RemoveAzureTable("text");
             Assert.IsTrue(removed);
 
             AddTestTables();
-            name = "text";
             command.Force = true;
             command.confirm = false;
-            removed = command.RemoveAzureTable(name);
+            removed = command.RemoveAzureTable("text");
+            Assert.IsTrue(removed);
+
+            // v2 test
+            this.tableMock.ClearAndAddTestTableV2("test", "text");
+            removed = command.RemoveAzureTableV2(this.tableMock, "test");
+            Assert.IsTrue(removed);
+
+            this.tableMock.ClearAndAddTestTableV2("test", "text");
+            command.confirm = true;
+            removed = command.RemoveAzureTableV2(this.tableMock, "text");
+            Assert.IsTrue(removed);
+
+            this.tableMock.ClearAndAddTestTableV2("test", "text");
+            command.Force = true;
+            command.confirm = false;
+            removed = command.RemoveAzureTableV2(this.tableMock, "text");
             Assert.IsTrue(removed);
         }
 
         [TestMethod]
         public void ExecuteCommandRemoveAzureTable()
         {
+            // v1 test
             string name = "test";
             command.Name = name;
+            AssertThrows<ResourceNotFoundException>(() => command.ExecuteCmdlet(),
+                String.Format(Resources.TableNotFound, name));
+
+            // v2 test
+            this.tableMock.IsTokenCredential = true;
             AssertThrows<ResourceNotFoundException>(() => command.ExecuteCmdlet(),
                 String.Format(Resources.TableNotFound, name));
         }

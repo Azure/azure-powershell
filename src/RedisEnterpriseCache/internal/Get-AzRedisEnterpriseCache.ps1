@@ -33,14 +33,24 @@ Location Name     Type                            Zone      Database
 East US  MyCache1 Microsoft.Cache/redisEnterprise           {default}
 East US  MyCache2 Microsoft.Cache/redisEnterprise {1, 2, 3} {default}
 
+.Example
+PS C:\> Get-AzRedisEnterpriseCache
+
+Location    Name     Type                            Zone      Database
+--------    ----     ----                            ----      --------
+East US     MyCache1 Microsoft.Cache/redisEnterprise           {default}
+East US     MyCache2 Microsoft.Cache/redisEnterprise {1, 2, 3} {default}
+West US     MyCache3 Microsoft.Cache/redisEnterprise           {default}
+Central US  MyCache4 Microsoft.Cache/redisEnterprise {1, 2, 3} {default}
+
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.ICluster
+Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.ICluster
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.redisenterprisecache/get-azredisenterprisecache
+https://docs.microsoft.com/powershell/module/az.redisenterprisecache/get-azredisenterprisecache
 #>
 function Get-AzRedisEnterpriseCache {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.ICluster])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.ICluster])]
 [CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -55,14 +65,14 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
     [System.String]
     # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # Gets subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter()]

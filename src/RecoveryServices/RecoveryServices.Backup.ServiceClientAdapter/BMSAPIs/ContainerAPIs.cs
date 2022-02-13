@@ -73,6 +73,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         }
 
         /// <summary>
+        /// Fetches a particular protection container in the vault
+        /// </summary>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
+        /// <param name="containerName"></param>
+        /// <returns></returns>
+        public ProtectionContainerResource GetContainer(
+            string vaultName = null,
+            string resourceGroupName = null,
+            string containerName = null)
+        {
+            ProtectionContainerResource container = BmsAdapter.Client.ProtectionContainers.GetWithHttpMessagesAsync(
+                    vaultName ?? BmsAdapter.GetResourceName(),
+                    resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                    AzureFabricName,
+                    containerName,                    
+                    cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
+
+            return container;
+        }
+
+        /// <summary>
         /// Fetches backup engines in the vault according to the query params
         /// </summary>
         /// <param name="queryParams">Query parameters</param>

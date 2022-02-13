@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
-online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/remove-azapimanagementapirelease
+online version: https://docs.microsoft.com/powershell/module/az.apimanagement/remove-azapimanagementapirelease
 schema: 2.0.0
 ---
 
@@ -32,8 +32,8 @@ The **Remove-AzAzureRmApiManagementApiRelease** cmdlet removes an existing API R
 
 ### Example 1: Remove an API Release
 ```powershell
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Remove-AzAzureRmApiManagementApiRelease -Context $apimContext -ApiId "echo-api" -ReleaseId "2"
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Remove-AzAzureRmApiManagementApiRelease -Context $apimContext -ApiId "echo-api" -ReleaseId "2"
 ```
 
 This command removes the API Release with the specified ApiId and ReleaseId.

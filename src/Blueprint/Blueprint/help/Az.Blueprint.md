@@ -1,7 +1,7 @@
 ---
 Module Name: Az.Blueprint
 Module Guid: ef36c942-4a71-4e19-9450-05a35843deb6
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.blueprint
+Download Help Link: https://docs.microsoft.com/powershell/module/az.blueprint
 Help Version: 1.0.0.0
 Locale: en-US
 ---

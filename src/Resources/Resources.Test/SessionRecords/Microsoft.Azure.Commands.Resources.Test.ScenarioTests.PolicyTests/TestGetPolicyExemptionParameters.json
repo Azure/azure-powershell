@@ -1,0 +1,782 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/Subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/providers/Microsoft.Authorization/policyexemptions?$filter=atScope()&api-version=2020-07-01-preview",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvMmMyZjY3YWYtMDlmOS00ZDYwLWIwNTEtYzVkOTU2ZDJjOWE3L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lleGVtcHRpb25zPyRmaWx0ZXI9YXRTY29wZSgpJmFwaS12ZXJzaW9uPTIwMjAtMDctMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/4.4.1"
+        ],
+        "ParameterSetName": [
+          "NameParameterSet"
+        ],
+        "CommandName": [
+          "Get-AzPolicyExemption"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "8fb07180-e037-4c67-af99-eb26c8223d85"
+        ],
+        "x-ms-correlation-request-id": [
+          "8fb07180-e037-4c67-af99-eb26c8223d85"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHCENTRALUS:20211119T004916Z:8fb07180-e037-4c67-af99-eb26c8223d85"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 19 Nov 2021 00:49:16 GMT"
+        ],
+        "Content-Length": [
+          "828"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"policyAssignmentId\": \"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyAssignments/d80d743b97874fd3bfd1d539\",\r\n        \"policyDefinitionReferenceIds\": [],\r\n        \"exemptionCategory\": \"Waiver\",\r\n        \"displayName\": \"Azure Governance Performance Test - Empty deployment on each KeyVault resource (MG)\",\r\n        \"metadata\": {}\r\n      },\r\n      \"id\": \"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyExemptions/7b271bbc9d5245a89045dd43\",\r\n      \"type\": \"Microsoft.Authorization/policyExemptions\",\r\n      \"name\": \"7b271bbc9d5245a89045dd43\",\r\n      \"systemData\": {\r\n        \"createdBy\": \"robga@microsoft.com\",\r\n        \"createdByType\": \"User\",\r\n        \"createdAt\": \"2020-09-21T18:48:17.6274419Z\",\r\n        \"lastModifiedBy\": \"robga@microsoft.com\",\r\n        \"lastModifiedByType\": \"User\",\r\n        \"lastModifiedAt\": \"2020-09-21T18:48:17.6274419Z\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/providers/Microsoft.Authorization/policyexemptions/someName?api-version=2020-07-01-preview",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvMmMyZjY3YWYtMDlmOS00ZDYwLWIwNTEtYzVkOTU2ZDJjOWE3L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lleGVtcHRpb25zL3NvbWVOYW1lP2FwaS12ZXJzaW9uPTIwMjAtMDctMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/4.4.1"
+        ],
+        "ParameterSetName": [
+          "NameParameterSet"
+        ],
+        "CommandName": [
+          "Get-AzPolicyExemption"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "b4ccfecc-92a0-49f3-90bc-a606abd013ca"
+        ],
+        "x-ms-correlation-request-id": [
+          "b4ccfecc-92a0-49f3-90bc-a606abd013ca"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHCENTRALUS:20211119T004916Z:b4ccfecc-92a0-49f3-90bc-a606abd013ca"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 19 Nov 2021 00:49:16 GMT"
+        ],
+        "Content-Length": [
+          "108"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"PolicyExemptionNotFound\",\r\n    \"message\": \"The policy exemption 'someName' could not be found.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/Subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/providers/Microsoft.Authorization/policyexemptions/someName?api-version=2020-07-01-preview",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvMmMyZjY3YWYtMDlmOS00ZDYwLWIwNTEtYzVkOTU2ZDJjOWE3L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lleGVtcHRpb25zL3NvbWVOYW1lP2FwaS12ZXJzaW9uPTIwMjAtMDctMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/4.4.1"
+        ],
+        "ParameterSetName": [
+          "NameParameterSet"
+        ],
+        "CommandName": [
+          "Get-AzPolicyExemption"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "9d15a8f5-21be-4875-bf80-631f63c37992"
+        ],
+        "x-ms-correlation-request-id": [
+          "9d15a8f5-21be-4875-bf80-631f63c37992"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHCENTRALUS:20211119T004917Z:9d15a8f5-21be-4875-bf80-631f63c37992"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 19 Nov 2021 00:49:16 GMT"
+        ],
+        "Content-Length": [
+          "108"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"PolicyExemptionNotFound\",\r\n    \"message\": \"The policy exemption 'someName' could not be found.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/providers/Microsoft.Authorization/policyexemptions/someName?api-version=2020-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmMyZjY3YWYtMDlmOS00ZDYwLWIwNTEtYzVkOTU2ZDJjOWE3L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lleGVtcHRpb25zL3NvbWVOYW1lP2FwaS12ZXJzaW9uPTIwMjAtMDctMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/4.4.1"
+        ],
+        "ParameterSetName": [
+          "NameParameterSet"
+        ],
+        "CommandName": [
+          "Get-AzPolicyExemption"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "ba9fc1c0-77d5-4063-88ff-58226f9c5205"
+        ],
+        "x-ms-correlation-request-id": [
+          "ba9fc1c0-77d5-4063-88ff-58226f9c5205"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHCENTRALUS:20211119T004916Z:ba9fc1c0-77d5-4063-88ff-58226f9c5205"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 19 Nov 2021 00:49:16 GMT"
+        ],
+        "Content-Length": [
+          "108"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"PolicyExemptionNotFound\",\r\n    \"message\": \"The policy exemption 'someName' could not be found.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyexemptions/someName?api-version=2020-07-01-preview",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5ZXhlbXB0aW9ucy9zb21lTmFtZT9hcGktdmVyc2lvbj0yMDIwLTA3LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/4.4.1"
+        ],
+        "ParameterSetName": [
+          "NameParameterSet"
+        ],
+        "CommandName": [
+          "Get-AzPolicyExemption"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "b7374796-8461-4661-88fd-980ba1f10a95"
+        ],
+        "x-ms-correlation-request-id": [
+          "b7374796-8461-4661-88fd-980ba1f10a95"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHCENTRALUS:20211119T004917Z:b7374796-8461-4661-88fd-980ba1f10a95"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 19 Nov 2021 00:49:16 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "135"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/providers/Microsoft.Authorization/policyexemptions?$filter=atScope()&api-version=2020-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmMyZjY3YWYtMDlmOS00ZDYwLWIwNTEtYzVkOTU2ZDJjOWE3L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lleGVtcHRpb25zPyRmaWx0ZXI9YXRTY29wZSgpJmFwaS12ZXJzaW9uPTIwMjAtMDctMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/4.4.1"
+        ],
+        "ParameterSetName": [
+          "NameParameterSet"
+        ],
+        "CommandName": [
+          "Get-AzPolicyExemption"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "ca094864-1e92-485c-bad3-9e49401285e0"
+        ],
+        "x-ms-correlation-request-id": [
+          "ca094864-1e92-485c-bad3-9e49401285e0"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHCENTRALUS:20211119T004917Z:ca094864-1e92-485c-bad3-9e49401285e0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 19 Nov 2021 00:49:16 GMT"
+        ],
+        "Content-Length": [
+          "828"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"policyAssignmentId\": \"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyAssignments/d80d743b97874fd3bfd1d539\",\r\n        \"policyDefinitionReferenceIds\": [],\r\n        \"exemptionCategory\": \"Waiver\",\r\n        \"displayName\": \"Azure Governance Performance Test - Empty deployment on each KeyVault resource (MG)\",\r\n        \"metadata\": {}\r\n      },\r\n      \"id\": \"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyExemptions/7b271bbc9d5245a89045dd43\",\r\n      \"type\": \"Microsoft.Authorization/policyExemptions\",\r\n      \"name\": \"7b271bbc9d5245a89045dd43\",\r\n      \"systemData\": {\r\n        \"createdBy\": \"robga@microsoft.com\",\r\n        \"createdByType\": \"User\",\r\n        \"createdAt\": \"2020-09-21T18:48:17.6274419Z\",\r\n        \"lastModifiedBy\": \"robga@microsoft.com\",\r\n        \"lastModifiedByType\": \"User\",\r\n        \"lastModifiedAt\": \"2020-09-21T18:48:17.6274419Z\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/providers/Microsoft.Authorization/policyexemptions?$filter=policyAssignmentId%20eq%20'someId'&api-version=2020-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmMyZjY3YWYtMDlmOS00ZDYwLWIwNTEtYzVkOTU2ZDJjOWE3L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lleGVtcHRpb25zPyRmaWx0ZXI9cG9saWN5QXNzaWdubWVudElkJTIwZXElMjAnc29tZUlkJyZhcGktdmVyc2lvbj0yMDIwLTA3LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/4.4.1"
+        ],
+        "ParameterSetName": [
+          "NameParameterSet"
+        ],
+        "CommandName": [
+          "Get-AzPolicyExemption"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "aa66900b-b793-4708-943b-e0e1c71d6f18"
+        ],
+        "x-ms-correlation-request-id": [
+          "aa66900b-b793-4708-943b-e0e1c71d6f18"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHCENTRALUS:20211119T004917Z:aa66900b-b793-4708-943b-e0e1c71d6f18"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 19 Nov 2021 00:49:16 GMT"
+        ],
+        "Content-Length": [
+          "12"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": []\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/providers/Microsoft.Authorization/policyexemptions?api-version=2020-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmMyZjY3YWYtMDlmOS00ZDYwLWIwNTEtYzVkOTU2ZDJjOWE3L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lleGVtcHRpb25zP2FwaS12ZXJzaW9uPTIwMjAtMDctMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/4.4.1"
+        ],
+        "ParameterSetName": [
+          "IncludeDescendentParameterSet"
+        ],
+        "CommandName": [
+          "Get-AzPolicyExemption"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-request-id": [
+          "5e2ba327-c01c-456a-ae64-9b34f145c3c7"
+        ],
+        "x-ms-correlation-request-id": [
+          "5e2ba327-c01c-456a-ae64-9b34f145c3c7"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHCENTRALUS:20211119T004917Z:5e2ba327-c01c-456a-ae64-9b34f145c3c7"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 19 Nov 2021 00:49:17 GMT"
+        ],
+        "Content-Length": [
+          "828"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"policyAssignmentId\": \"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyAssignments/d80d743b97874fd3bfd1d539\",\r\n        \"policyDefinitionReferenceIds\": [],\r\n        \"exemptionCategory\": \"Waiver\",\r\n        \"displayName\": \"Azure Governance Performance Test - Empty deployment on each KeyVault resource (MG)\",\r\n        \"metadata\": {}\r\n      },\r\n      \"id\": \"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyExemptions/7b271bbc9d5245a89045dd43\",\r\n      \"type\": \"Microsoft.Authorization/policyExemptions\",\r\n      \"name\": \"7b271bbc9d5245a89045dd43\",\r\n      \"systemData\": {\r\n        \"createdBy\": \"robga@microsoft.com\",\r\n        \"createdByType\": \"User\",\r\n        \"createdAt\": \"2020-09-21T18:48:17.6274419Z\",\r\n        \"lastModifiedBy\": \"robga@microsoft.com\",\r\n        \"lastModifiedByType\": \"User\",\r\n        \"lastModifiedAt\": \"2020-09-21T18:48:17.6274419Z\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/providers/Microsoft.Authorization/policyExemptions/someName?api-version=2020-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmMyZjY3YWYtMDlmOS00ZDYwLWIwNTEtYzVkOTU2ZDJjOWE3L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lFeGVtcHRpb25zL3NvbWVOYW1lP2FwaS12ZXJzaW9uPTIwMjAtMDctMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/4.4.1"
+        ],
+        "ParameterSetName": [
+          "IdParameterSet"
+        ],
+        "CommandName": [
+          "Get-AzPolicyExemption"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "9d4d456f-e879-4e72-9116-97891f235985"
+        ],
+        "x-ms-correlation-request-id": [
+          "9d4d456f-e879-4e72-9116-97891f235985"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHCENTRALUS:20211119T004918Z:9d4d456f-e879-4e72-9116-97891f235985"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 19 Nov 2021 00:49:17 GMT"
+        ],
+        "Content-Length": [
+          "108"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"PolicyExemptionNotFound\",\r\n    \"message\": \"The policy exemption 'someName' could not be found.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/someId?$filter=policyAssignmentId%20eq%20'someId'&api-version=2020-07-01-preview",
+      "EncodedRequestUri": "L3NvbWVJZD8kZmlsdGVyPXBvbGljeUFzc2lnbm1lbnRJZCUyMGVxJTIwJ3NvbWVJZCcmYXBpLXZlcnNpb249MjAyMC0wNy0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/4.4.1"
+        ],
+        "ParameterSetName": [
+          "IdParameterSet"
+        ],
+        "CommandName": [
+          "Get-AzPolicyExemption"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "9186fcaf-040d-48d8-be9f-bd2ab9e89375"
+        ],
+        "x-ms-correlation-request-id": [
+          "9186fcaf-040d-48d8-be9f-bd2ab9e89375"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHCENTRALUS:20211119T004918Z:9186fcaf-040d-48d8-be9f-bd2ab9e89375"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 19 Nov 2021 00:49:18 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "135"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/Subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/providers/Microsoft.Authorization/policyexemptions?$filter=policyAssignmentId%20eq%20'someId'&api-version=2020-07-01-preview",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvMmMyZjY3YWYtMDlmOS00ZDYwLWIwNTEtYzVkOTU2ZDJjOWE3L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lleGVtcHRpb25zPyRmaWx0ZXI9cG9saWN5QXNzaWdubWVudElkJTIwZXElMjAnc29tZUlkJyZhcGktdmVyc2lvbj0yMDIwLTA3LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/4.4.1"
+        ],
+        "ParameterSetName": [
+          "NameParameterSet"
+        ],
+        "CommandName": [
+          "Get-AzPolicyExemption"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-request-id": [
+          "f60abe28-a898-4e44-91e8-e5e550bded53"
+        ],
+        "x-ms-correlation-request-id": [
+          "f60abe28-a898-4e44-91e8-e5e550bded53"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHCENTRALUS:20211119T004918Z:f60abe28-a898-4e44-91e8-e5e550bded53"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 19 Nov 2021 00:49:17 GMT"
+        ],
+        "Content-Length": [
+          "12"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": []\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/providers/Microsoft.Authorization/policyexemptions?api-version=2020-07-01-preview",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvMmMyZjY3YWYtMDlmOS00ZDYwLWIwNTEtYzVkOTU2ZDJjOWE3L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lleGVtcHRpb25zP2FwaS12ZXJzaW9uPTIwMjAtMDctMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/4.4.1"
+        ],
+        "ParameterSetName": [
+          "IncludeDescendentParameterSet"
+        ],
+        "CommandName": [
+          "Get-AzPolicyExemption"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "2110c809-29bd-49aa-a0d5-1ad812ca7708"
+        ],
+        "x-ms-correlation-request-id": [
+          "2110c809-29bd-49aa-a0d5-1ad812ca7708"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHCENTRALUS:20211119T004918Z:2110c809-29bd-49aa-a0d5-1ad812ca7708"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 19 Nov 2021 00:49:18 GMT"
+        ],
+        "Content-Length": [
+          "828"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"policyAssignmentId\": \"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyAssignments/d80d743b97874fd3bfd1d539\",\r\n        \"policyDefinitionReferenceIds\": [],\r\n        \"exemptionCategory\": \"Waiver\",\r\n        \"displayName\": \"Azure Governance Performance Test - Empty deployment on each KeyVault resource (MG)\",\r\n        \"metadata\": {}\r\n      },\r\n      \"id\": \"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyExemptions/7b271bbc9d5245a89045dd43\",\r\n      \"type\": \"Microsoft.Authorization/policyExemptions\",\r\n      \"name\": \"7b271bbc9d5245a89045dd43\",\r\n      \"systemData\": {\r\n        \"createdBy\": \"robga@microsoft.com\",\r\n        \"createdByType\": \"User\",\r\n        \"createdAt\": \"2020-09-21T18:48:17.6274419Z\",\r\n        \"lastModifiedBy\": \"robga@microsoft.com\",\r\n        \"lastModifiedByType\": \"User\",\r\n        \"lastModifiedAt\": \"2020-09-21T18:48:17.6274419Z\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "2c2f67af-09f9-4d60-b051-c5d956d2c9a7"
+  }
+}

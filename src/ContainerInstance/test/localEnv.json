@@ -1,0 +1,18 @@
+{
+  "location": "eastus",
+  "containerGroupName4": "test-cg7mwg0",
+  "containerGroupName3": "test-cg1ihxz",
+  "resourceGroupName": "test-rgjex0t",
+  "port1": 8000,
+  "containerInstanceName": "bez-test-ci",
+  "SubscriptionId": "da28f5e5-aa45-46fe-90c8-053ca49ab4b5",
+  "restartPolicy": "Never",
+  "containerGroupName5": "test-cgnrt2o",
+  "port2": 8001,
+  "osType": "Linux",
+  "containerGroupName1": "test-cgbgl96",
+  "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+  "containerGroupName": "bez-test-cg",
+  "containerGroupName2": "test-cgls6b0",
+  "image": "nginx"
+}

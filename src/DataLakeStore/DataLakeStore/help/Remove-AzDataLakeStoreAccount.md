@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll-Help.xml
 Module Name: Az.DataLakeStore
 ms.assetid: 585D6C4D-EA80-4E6B-8C36-E7632430431F
-online version: https://docs.microsoft.com/en-us/powershell/module/az.datalakestore/remove-azdatalakestoreaccount
+online version: https://docs.microsoft.com/powershell/module/az.datalakestore/remove-azdatalakestoreaccount
 schema: 2.0.0
 ---
 

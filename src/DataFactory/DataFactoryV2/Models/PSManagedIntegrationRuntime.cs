@@ -60,6 +60,10 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
 
         public string Subnet => ManagedIntegrationRuntime.ComputeProperties?.VNetProperties?.Subnet;
 
+        public string SubnetId => ManagedIntegrationRuntime.ComputeProperties?.VNetProperties?.SubnetId ?? ManagedIntegrationRuntime.CustomerVirtualNetwork?.SubnetId;
+
+        public string VNetInjectionMethod => ManagedIntegrationRuntime.CustomerVirtualNetwork?.SubnetId == null ? Constants.IntegrationRuntimeVNetInjectionStandard : Constants.IntegrationRuntimeVNectInjectionExpress;
+
         public string[] PublicIPs => ManagedIntegrationRuntime.ComputeProperties?.VNetProperties?.PublicIPs == null ? null : new List<string>(ManagedIntegrationRuntime.ComputeProperties?.VNetProperties?.PublicIPs).ToArray();
 
         public int? DataFlowCoreCount => ManagedIntegrationRuntime.ComputeProperties?.DataFlowProperties?.CoreCount;
@@ -67,6 +71,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
         public string DataFlowComputeType => ManagedIntegrationRuntime.ComputeProperties?.DataFlowProperties?.ComputeType;
 
         public int? DataFlowTimeToLive => ManagedIntegrationRuntime.ComputeProperties?.DataFlowProperties?.TimeToLive;
+
+        public bool? DataFlowEnableCleanUp => ManagedIntegrationRuntime.ComputeProperties?.DataFlowProperties.Cleanup;
 
         public string State => ManagedIntegrationRuntime.State;
 

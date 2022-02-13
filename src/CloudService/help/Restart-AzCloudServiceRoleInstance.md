@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.CloudService
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cloudservice/restart-azcloudserviceroleinstance
+online version: https://docs.microsoft.com/powershell/module/az.cloudservice/restart-azcloudserviceroleinstance
 schema: 2.0.0
 ---
 
@@ -32,7 +32,7 @@ The Reboot Role Instance asynchronous operation requests a reboot of a role inst
 
 ### Example 1: Restart role instance of a cloud service
 ```powershell
-PS C:\> Restart-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstanceName "ContosoFrontEnd_IN_0"
+Restart-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstanceName "ContosoFrontEnd_IN_0"
 ```
 
 This command restarts role instance named ContosoFrontEnd_IN_0 of cloud service named ContosoCS that belongs to the resource group named ContosOrg.
@@ -230,6 +230,9 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   - `[CloudServiceName <String>]`: 
   - `[Id <String>]`: Resource identity path
+  - `[Location <String>]`: Name of the location that the OS version pertains to.
+  - `[OSFamilyName <String>]`: Name of the OS family.
+  - `[OSVersionName <String>]`: Name of the OS version.
   - `[ResourceGroupName <String>]`: 
   - `[RoleInstanceName <String>]`: Name of the role instance.
   - `[RoleName <String>]`: Name of the role.

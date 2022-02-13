@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.CostManagement
-online version: https://docs.microsoft.com/en-us/powershell/module/az.costmanagement/invoke-azcostmanagementquery
+online version: https://docs.microsoft.com/powershell/module/az.costmanagement/invoke-azcostmanagementquery
 schema: 2.0.0
 ---
 
@@ -47,7 +47,7 @@ Invoke AzCostManagementQuery by Scope
 
 ### Example 2: Invoke AzCostManagementQuery by Scope with Dimensions
 ```powershell
-PS C:\> $dimensions = New-AzCostManagementQueryComparisonExpressionObject -Name 'ResourceGroup' -Operator 'In' -Value 'API'
+PS C:\> $dimensions = New-AzCostManagementQueryComparisonExpressionObject -Name 'ResourceGroup' -Value 'API'
 $filter = New-AzCostManagementQueryFilterObject -Dimensions $dimensions
 Invoke-AzCostManagementQuery -Type Usage -Scope "subscriptions/***********" -DatasetGranularity 'Monthly' -DatasetFilter $filter -Timeframe MonthToDate -Debug
 
@@ -311,7 +311,6 @@ DATASETFILTER <IQueryFilter>: Has filter expression to use in the query.
   - `[And <IQueryFilter[]>]`: The logical "AND" expression. Must have at least 2 items.
   - `[Dimensions <IQueryComparisonExpression>]`: Has comparison expression for a dimension
     - `Name <String>`: The name of the column to use in comparison.
-    - `Operator <OperatorType>`: The operator to use for comparison.
     - `Value <String[]>`: Array of values to use for comparison
   - `[Not <IQueryFilter>]`: The logical "NOT" expression.
   - `[Or <IQueryFilter[]>]`: The logical "OR" expression. Must have at least 2 items.

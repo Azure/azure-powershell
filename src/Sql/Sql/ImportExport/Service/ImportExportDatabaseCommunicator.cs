@@ -12,23 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Management.Sql;
-using Microsoft.Azure.Management.Sql.Models;
-using Microsoft.Rest.Azure;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
+
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Management.Sql;
+using Microsoft.Azure.Management.Sql.Models;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Services
 {
@@ -114,7 +109,13 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
             return result;
         }
 
-        public ImportExportOperationResult GetOperationStatus(string operationStatusLink)
+        /// <summary>
+        /// Get the status of an operation given a raw Operation Status Link
+        /// </summary>
+        /// <param name="operationStatusLink">Status link as returned by the import or export commandlet</param>
+        /// <param name="rawHttpResponse">Out parameter for the raw HTTP response for further inspection</param>
+        /// <returns></returns>
+        public ImportExportOperationResult GetOperationStatus(string operationStatusLink, out HttpResponseMessage rawHttpResponse)
         {
             var client = GetCurrentSqlClient();
 
@@ -127,17 +128,30 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
             client.Credentials.ProcessHttpRequestAsync(httpRequest, CancellationToken.None).ConfigureAwait(false).GetAwaiter().GetResult();
             var response = client.HttpClient.SendAsync(httpRequest, CancellationToken.None).ConfigureAwait(false).GetAwaiter().GetResult();
 
-            response.EnsureSuccessStatusCode();
-
+            rawHttpResponse = response;
             string responseString = response.Content.ReadAsStringAsync().Result;
 
-            ImportExportOperationResult operationResult = JsonConvert.DeserializeObject<ImportExportOperationResult>(responseString, new JsonSerializerSettings
+            if (response.IsSuccessStatusCode)
             {
-                Converters = new List<JsonConverter>() { new Rest.Serialization.TransformationJsonConverter() },
-                NullValueHandling = NullValueHandling.Ignore
-            });
+                ImportExportOperationResult operationResult = JsonConvert.DeserializeObject<ImportExportOperationResult>(responseString, new JsonSerializerSettings
+                {
+                    Converters = new List<JsonConverter>() { new Rest.Serialization.TransformationJsonConverter() },
+                    NullValueHandling = NullValueHandling.Ignore
+                });
 
-            return operationResult;
+                return operationResult;
+            }
+            else
+            {
+                OperationStatusResponse errorResult = JsonConvert.DeserializeObject<OperationStatusResponse>(responseString, new JsonSerializerSettings
+                {
+                    Converters = new List<JsonConverter>() { new Rest.Serialization.TransformationJsonConverter() },
+                    NullValueHandling = NullValueHandling.Ignore
+                });
+
+                HttpRequestException ex = new HttpRequestException(errorResult.Error.Message);
+                throw ex;
+            }
         }
 
         /// <summary>

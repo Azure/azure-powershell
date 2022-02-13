@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>TypeConverter implementation for EthernetAddressType.</summary>
+    /// <summary>The source IP address type.</summary>
     public partial class EthernetAddressTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

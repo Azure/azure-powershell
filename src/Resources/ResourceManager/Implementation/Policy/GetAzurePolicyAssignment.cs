@@ -17,15 +17,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Common;
-
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using Newtonsoft.Json.Linq;
     using Policy;
+    using System;
     using System.Management.Automation;
     using System.Threading.Tasks;
 
     /// <summary>
     /// Gets the policy assignment.
     /// </summary>
+    [CmdletOutputBreakingChange(typeof(PsPolicyAssignment), NewOutputProperties = new String[] { "Identity" })]
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PolicyAssignment", DefaultParameterSetName = PolicyCmdletBase.DefaultParameterSet), OutputType(typeof(PsPolicyAssignment))]
     public class GetAzurePolicyAssignmentCmdlet : PolicyCmdletBase
     {
@@ -61,7 +63,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public string PolicyDefinitionId { get; set; }
 
         /// <summary>
-        /// Gets or sets the all switch
+        /// Gets or sets the descendent scope switch
         /// </summary>
         [Parameter(ParameterSetName = PolicyCmdletBase.IncludeDescendentParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.GetPolicyAssignmentIncludeDescendentsHelp)]
         public SwitchParameter IncludeDescendent { get; set; }
@@ -89,7 +91,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
 
         /// <summary>
-        /// Queries the ARM cache and returns the cached resource that match the query specified.
+        /// Queries the ARM cache and returns the cached resource that matches the query specified.
         /// </summary>
         private async Task<ResponseWithContinuation<JObject[]>> GetResources()
         {
@@ -148,7 +150,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
 
         /// <summary>
-        /// Returns true if it is scope level policy assignment list call
+        /// Returns true if it is a management group level policy assignment list call
         /// </summary>
         private bool IsManagementGroupScope(string resourceId)
         {
@@ -170,7 +172,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private string GetResourceId()
         {
-            return this.Id ?? this.MakePolicyAssignmentId(this.Scope, this.Name);
+            return this.Id ?? this.GetPolicyArtifactFullyQualifiedId(this.Scope, Constants.MicrosoftAuthorizationPolicyAssignmentType, this.Name);
         }
 
         private string GetFilterParam(string resourceId)

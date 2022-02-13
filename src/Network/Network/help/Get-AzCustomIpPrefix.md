@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azcustomipprefix
+online version: https://docs.microsoft.com/powershell/module/az.network/get-azcustomipprefix
 schema: 2.0.0
 ---
 
@@ -30,7 +30,7 @@ The **Get-AzCustomIpPrefix** cmdlet gets one or more CustomIpPrefixes given the 
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzPublicIpPrefix -ResourceGroupName myRg -Name myCustomIpPrefix
+PS C:\> Get-AzCustomIpPrefix -ResourceGroupName myRg -Name myCustomIpPrefix
 
 Name                 : myCustomIpPrefix
 ResourceGroupName    : myRg
@@ -45,6 +45,10 @@ Cidr                 : 111.111.111.111/24
 CommissionedState    : Provisioning
 PublicIpPrefixes     : []
 Zones                : {}
+SignedMessage        : SignedMessage
+AuthorizationMessage : AuthorizationMessage
+CustomIpPrefixParent :
+ChildCustomIpPrefixes: []
 ```
 
 This command gets a CustomIpPrefix resource named myCustomIpPrefix in resource group myRg

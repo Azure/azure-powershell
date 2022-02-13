@@ -196,10 +196,12 @@ function Test-CreateNamedSecondaryDatabase()
 
 		# Create Named Replica
 		$namedReplica = New-AzSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $hsDatabase.DatabaseName `
-		 -PartnerResourceGroupName $rg.ResourceGroupName -PartnerServerName $server.ServerName -PartnerDatabaseName "secondary" -SecondaryType "Named"
+		 -PartnerResourceGroupName $rg.ResourceGroupName -PartnerServerName $server.ServerName -PartnerDatabaseName "secondary" -SecondaryType "Named" `
+		 -HighAvailabilityReplicaCount 2
 
 		$newDb = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName "secondary"
 		Assert-AreEqual "Named" $newDb.SecondaryType
+		Assert-AreEqual 2 $newDb.HighAvailabilityReplicaCount
 	}
 	finally
 	{
@@ -358,7 +360,7 @@ function Test-FailoverSecondaryDatabase()
 function Create-DatabaseForTest  ($rg, $server, $edition = "Premium")
 {
 	$databaseName = Get-DatabaseName
-	New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Edition $edition
+	New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Edition $edition -Force
 }
 
 <#
@@ -368,7 +370,7 @@ function Create-DatabaseForTest  ($rg, $server, $edition = "Premium")
 function Create-VcoreDatabaseForTest  ($rg, $server, $numCores = 2, $licenseType = "LicenseIncluded")
 {
 	$databaseName = Get-DatabaseName
-	New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -VCore $numCores -ComputeGeneration Gen5 -Edition GeneralPurpose -LicenseType $licenseType
+	New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -VCore $numCores -ComputeGeneration Gen5 -Edition GeneralPurpose -LicenseType $licenseType -Force
 }
 
 <#
@@ -378,7 +380,7 @@ function Create-VcoreDatabaseForTest  ($rg, $server, $numCores = 2, $licenseType
 function Create-HyperscaleDatabaseForTest  ($rg, $server, $numCores = 2, $licenseType = "LicenseIncluded")
 {
 	$databaseName = Get-DatabaseName
-	New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -VCore $numCores -ComputeGeneration Gen5 -Edition Hyperscale -LicenseType $licenseType
+	New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -VCore $numCores -ComputeGeneration Gen5 -Edition Hyperscale -LicenseType $licenseType -Force
 }
 
 <#
@@ -401,10 +403,10 @@ function Test-CreateDatabaseCopyWithBackupStorageRedundancy()
 	{
 		# Create a local database copy
 		$dbLocalCopy = New-AzSqlDatabaseCopy -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
-		 -CopyDatabaseName $copyDatabaseName -BackupStorageRedundancy zone
+		 -CopyDatabaseName $copyDatabaseName -BackupStorageRedundancy 'Zone'
 
 		$newDb = Get-AzSqlDatabase -ResourceGroupName $dbLocalCopy.ResourceGroupName -ServerName $dbLocalCopy.ServerName -DatabaseName $copyDatabaseName
-		Assert-AreEqual "Zone" $newDb.BackupStorageRedundancy 
+		Assert-AreEqual "Zone" $newDb.CurrentBackupStorageRedundancy 
 
 		# Create a cross server copy
 	}
@@ -422,7 +424,7 @@ function Test-CreateDatabaseCopyWithBackupStorageRedundancy()
 function Test-CreateSecondaryDatabaseWithBackupStorageRedundancy()
 {
 	# Setup
-    $location = "westcentralus"
+    $location = "southeastasia"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server
@@ -434,14 +436,346 @@ function Test-CreateSecondaryDatabaseWithBackupStorageRedundancy()
 	{
 		# Create Readable Secondary
 		$readSecondary = New-AzSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
-		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -AllowConnections All -BackupStorageRedundancy local
+		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -AllowConnections All -BackupStorageRedundancy 'Local'
 
 		$secondaryDb = Get-AzSqlDatabase -ResourceGroupName $readSecondary.PartnerResourceGroupName -ServerName $readSecondary.PartnerServerName -DatabaseName $readSecondary.DatabaseName
-		Assert-AreEqual $secondaryDb.BackupStorageRedundancy "Local"
+		Assert-AreEqual $secondaryDb.CurrentBackupStorageRedundancy "Local"
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg 
+		Remove-ResourceGroupForTest $partRg 
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests creating a vldb copy with source zone redundant == false
+	1. Copy source vldb passing in zone redundant == true and backup storage redundancy == Zone,
+	   Verify copied vldb has zone redundant == true and backup storage redundancy == Zone
+	2. Copy source vldb with no parameters passed in,
+	   Verify copied vldb has zone redundant == false and backup storage redundancy == Geo
+#>
+function Test-CreateCopyRegularAndZoneRedundantDatabaseWithSourceNotZoneRedundant()
+{
+	# Setup
+	$location = Get-Location "Microsoft.Sql" "operations" "East US 2 EUAP"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+	$sourceNonZRDatabaseName = Get-DatabaseName + "-non-zr"
+
+	$copyTrueZRParamDatabaseName = $sourceNonZRDatabaseName + "-source-non-zr-copy-zr-true"
+	$copyNoZRParamDatabaseName = $sourceNonZRDatabaseName + "-source-non-zr-copy-no-zr-param"
+
+	try
+	{
+		# Create source vldb
+		$sourceNonZRDatabase = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $sourceNonZRDatabaseName `
+		 -VCore 2 -ComputeGeneration Gen5 -Edition Hyperscale -LicenseType "LicenseIncluded"
+
+		# Verify created source vldb has correct values (specifically zone redundancy == false and backup storage redundancy == Geo)
+		Assert-AreEqual $sourceNonZRDatabase.ServerName $server.ServerName
+		Assert-AreEqual $sourceNonZRDatabase.DatabaseName $sourceNonZRDatabaseName
+		Assert-AreEqual $sourceNonZRDatabase.Edition "Hyperscale"
+		Assert-AreEqual $sourceNonZRDatabase.CurrentBackupStorageRedundancy "Geo"
+		Assert-NotNull  $sourceNonZRDatabase.ZoneRedundant 
+		Assert-False    { $sourceNonZRDatabase.ZoneRedundant }
+
+		# Copy source vldb with zone redundancy == true and backup storage redundancy == Zone
+		$copyTrueZRParamDatabaseResult = New-AzSqlDatabaseCopy -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $sourceNonZRDatabase.DatabaseName `
+		 -CopyDatabaseName $copyTrueZRParamDatabaseName -BackupStorageRedundancy "Zone" -ZoneRedundant
+
+		# Verify returned response has zone redundancy == true
+		Assert-NotNull  $copyTrueZRParamDatabaseResult.ZoneRedundant 
+		Assert-True     { $copyTrueZRParamDatabaseResult.ZoneRedundant }
+
+		# Retrieve the copied vldb
+		$copyTrueZRParamDatabase = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $copyTrueZRParamDatabaseName
+
+		# Verify copied vldb has correct values (specifically zone redundancy == true and backup storage redundancy == Zone)
+		Assert-AreEqual $copyTrueZRParamDatabase.ServerName $server.ServerName
+		Assert-AreEqual $copyTrueZRParamDatabase.DatabaseName $copyTrueZRParamDatabaseName
+		Assert-AreEqual $copyTrueZRParamDatabase.Edition "Hyperscale"
+		Assert-AreEqual $copyTrueZRParamDatabase.CurrentBackupStorageRedundancy "Zone"
+		Assert-NotNull  $copyTrueZRParamDatabase.ZoneRedundant 
+		Assert-True     { $copyTrueZRParamDatabase.ZoneRedundant }
+
+		# Copy source vldb with no parameters passed in
+		$copyNoZRParamDatabaseResult = New-AzSqlDatabaseCopy -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $sourceNonZRDatabase.DatabaseName `
+		 -CopyDatabaseName $copyNoZRParamDatabaseName
+		
+		# Verify returned response has zone redundancy == false
+		Assert-NotNull  $copyNoZRParamDatabaseResult.ZoneRedundant 
+		Assert-False     { $copyNoZRParamDatabaseResult.ZoneRedundant }
+
+		# Retrieve the copied vldb
+		$copyNoZRParamDatabase = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $copyNoZRParamDatabaseName
+
+		# Verify copied vldb has correct values (specifically zone redundancy == false and backup storage redundancy == Geo)
+		Assert-AreEqual $copyNoZRParamDatabase.ServerName $server.ServerName
+		Assert-AreEqual $copyNoZRParamDatabase.DatabaseName $copyNoZRParamDatabaseName
+		Assert-AreEqual $copyNoZRParamDatabase.Edition "Hyperscale"
+		Assert-AreEqual $copyNoZRParamDatabase.CurrentBackupStorageRedundancy "Geo"
+		Assert-NotNull  $copyNoZRParamDatabase.ZoneRedundant 
+		Assert-False    { $copyNoZRParamDatabase.ZoneRedundant }
 	}
 	finally
 	{
 		Remove-ResourceGroupForTest $rg
-		Remove-ResourceGroupForTest $partRg
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests creating a vldb copy with source zone redundant == true and backup storage redundancy == Zone
+	1. Copy source vldb passing in zone redundant == false and backup storage redundancy == Zone,
+	   Verify copied vldb has zone redundant == false and backup storage redundancy == Zone
+	2. Copy source vldb with no parameters passed in,
+	   Verify copied vldb has zone redundant == true and backup storage redundancy == Zone
+#>
+function Test-CreateCopyRegularAndZoneRedundantDatabaseWithSourceZoneRedundant()
+{
+	# Setup
+	$location = Get-Location "Microsoft.Sql" "operations" "East US 2 EUAP"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+	$sourceZRDatabaseName = Get-DatabaseName + "-zr"
+
+	$copyFalseZRParamDatabaseName = $sourceZRDatabaseName + "-source-zr-copy-zr-false"
+	$copyNoZRParamDatabaseName = $sourceZRDatabaseName + "-source-zr-copy-no-zr-param"
+
+	try
+	{
+		# Create source vldb with zone redundancy == true and backup storage redundancy == Zone
+		$sourceZRDatabase = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $sourceZRDatabaseName `
+		 -VCore 2 -ComputeGeneration Gen5 -Edition Hyperscale -LicenseType "LicenseIncluded" -BackupStorageRedundancy "Zone" -ZoneRedundant
+
+		# Verify created source vldb has correct values (specifically zone redundancy == true and backup storage redundancy == Zone)
+		Assert-AreEqual $sourceZRDatabase.ServerName $server.ServerName
+		Assert-AreEqual $sourceZRDatabase.DatabaseName $sourceZRDatabaseName
+		Assert-AreEqual $sourceZRDatabase.Edition "Hyperscale"
+		Assert-AreEqual $sourceZRDatabase.CurrentBackupStorageRedundancy "Zone"
+		Assert-NotNull  $sourceZRDatabase.ZoneRedundant 
+		Assert-True    { $sourceZRDatabase.ZoneRedundant }
+
+		# Copy source vldb with zone redundancy == false and backup storage redundancy == Zone
+		$copyFalseZRParamDatabaseResult = New-AzSqlDatabaseCopy -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $sourceZRDatabase.DatabaseName `
+		 -CopyDatabaseName $copyFalseZRParamDatabaseName -BackupStorageRedundancy "Zone" -ZoneRedundant:$false
+		
+		# Verify returned response has zone redundancy == false
+		Assert-NotNull  $copyFalseZRParamDatabaseResult.ZoneRedundant 
+		Assert-False    { $copyFalseZRParamDatabaseResult.ZoneRedundant }
+
+		# Retrieve the copied vldb
+		$copyFalseZRParamDatabase = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $copyFalseZRParamDatabaseName
+
+		# Verify copied vldb has correct values (specifically zone redundancy == false and backup storage redundancy == Zone)
+		Assert-AreEqual $copyFalseZRParamDatabase.ServerName $server.ServerName
+		Assert-AreEqual $copyFalseZRParamDatabase.DatabaseName $copyFalseZRParamDatabaseName
+		Assert-AreEqual $copyFalseZRParamDatabase.Edition "Hyperscale"
+		Assert-AreEqual $copyFalseZRParamDatabase.CurrentBackupStorageRedundancy "Zone"
+		Assert-NotNull  $copyFalseZRParamDatabase.ZoneRedundant 
+		Assert-False    { $copyFalseZRParamDatabase.ZoneRedundant }
+
+		# Copy source vldb with no parameters passed in
+		$copyNoZRParamDatabaseCopyResult = New-AzSqlDatabaseCopy -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $sourceZRDatabase.DatabaseName `
+		 -CopyDatabaseName $copyNoZRParamDatabaseName
+
+		# Verify returned response has zone redundancy == true
+		Assert-NotNull  $copyNoZRParamDatabaseCopyResult.ZoneRedundant 
+		Assert-True     { $copyNoZRParamDatabaseCopyResult.ZoneRedundant }
+
+		# Retrieve the copied vldb
+		$copyNoZRParamDatabase = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $copyNoZRParamDatabaseName
+
+		# Verify copied vldb has correct values (specifically zone redundancy == true and backup storage redundancy == Zone)
+		Assert-AreEqual $copyNoZRParamDatabase.ServerName $server.ServerName
+		Assert-AreEqual $copyNoZRParamDatabase.DatabaseName $copyNoZRParamDatabaseName
+		Assert-AreEqual $copyNoZRParamDatabase.Edition "Hyperscale"
+		Assert-AreEqual $copyNoZRParamDatabase.CurrentBackupStorageRedundancy "Zone"
+		Assert-NotNull  $copyNoZRParamDatabase.ZoneRedundant 
+		Assert-True     { $copyNoZRParamDatabase.ZoneRedundant }
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests creating a vldb geo secondary with geo primary zone redundant == false
+	1. Create geo secondary vldb by passing in zone redundant == true and backup storage redundancy == Zone,
+	   Verify created geo secondary vldb has zone redundant == true and backup storage redundancy == Zone
+	2. Create geo secondary vldb with no parameters passed in,
+	   Verify created geo secondary vldb has zone redundant == false and backup storage redundancy == Geo
+#>
+function Test-CreateSecondaryRegularAndZoneRedundantDatabaseWithSourceNotZoneRedundant()
+{
+	# Setup
+	$location = Get-Location "Microsoft.Sql" "operations" "East US 2 EUAP"
+
+	# Setup for geo primary
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+	$sourceNonZRDatabaseName = Get-DatabaseName + "-non-zr"
+	$sourceNonZRDatabaseName2 = Get-DatabaseName + "-non-zr-2"
+
+	#Setup for geo secondary
+	$rgSecondary = Create-ResourceGroupForTest $location
+	$serverSecondary = Create-ServerForTest $rgSecondary $location
+	$secondaryTrueZRParamDatabaseName = $sourceNonZRDatabaseName + "-source-non-zr-secondary-zr-true"
+	$secondaryNoZRParamDatabaseName = $sourceNonZRDatabaseName2 + "-source-non-zr-secondary-no-zr-param"
+
+	try
+	{
+		# Create first geo primary vldb
+		$sourceNonZRDatabase = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $sourceNonZRDatabaseName `
+		 -VCore 2 -ComputeGeneration Gen5 -Edition Hyperscale -LicenseType "LicenseIncluded"
+
+		# Verify created geo primary vldb has correct values (specifically zone redundancy == false and backup storage redundancy == Geo)
+		Assert-AreEqual $sourceNonZRDatabase.ServerName $server.ServerName
+		Assert-AreEqual $sourceNonZRDatabase.DatabaseName $sourceNonZRDatabaseName
+		Assert-AreEqual $sourceNonZRDatabase.Edition "Hyperscale"
+		Assert-AreEqual $sourceNonZRDatabase.CurrentBackupStorageRedundancy "Geo"
+		Assert-NotNull  $sourceNonZRDatabase.ZoneRedundant 
+		Assert-False    { $sourceNonZRDatabase.ZoneRedundant }
+
+		# Create geo secondary vldb with zone redundancy == true and backup storage redundancy == Zone
+		New-AzSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $sourceNonZRDatabase.DatabaseName `
+		 -PartnerResourceGroupName $rgSecondary.ResourceGroupName -PartnerServerName $serverSecondary.ServerName -PartnerDatabaseName $secondaryTrueZRParamDatabaseName `
+		 -BackupStorageRedundancy "Zone" -ZoneRedundant
+		
+		# Retrieve the created geo secondary vldb
+		$secondaryTrueZRParamDatabase = Get-AzSqlDatabase -ResourceGroupName $rgSecondary.ResourceGroupName -ServerName $serverSecondary.ServerName -DatabaseName $secondaryTrueZRParamDatabaseName
+
+		# Verify geo secondary vldb has correct values (specifically zone redundancy == true and backup storage redundancy == Zone)
+		Assert-AreEqual $secondaryTrueZRParamDatabase.ServerName $serverSecondary.ServerName
+		Assert-AreEqual $secondaryTrueZRParamDatabase.DatabaseName $secondaryTrueZRParamDatabaseName
+		Assert-AreEqual $secondaryTrueZRParamDatabase.Edition "Hyperscale"
+		Assert-AreEqual $secondaryTrueZRParamDatabase.CurrentBackupStorageRedundancy "Zone"
+		Assert-NotNull  $secondaryTrueZRParamDatabase.ZoneRedundant 
+		Assert-True     { $secondaryTrueZRParamDatabase.ZoneRedundant }
+
+		# Create second geo primary vldb
+		$sourceNonZRDatabase2 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $sourceNonZRDatabaseName2 `
+		 -VCore 2 -ComputeGeneration Gen5 -Edition Hyperscale -LicenseType "LicenseIncluded"
+
+		# Verify created geo primary vldb has correct values (specifically zone redundancy == false and backup storage redundancy == Geo)
+		Assert-AreEqual $sourceNonZRDatabase2.ServerName $server.ServerName
+		Assert-AreEqual $sourceNonZRDatabase2.DatabaseName $sourceNonZRDatabaseName2
+		Assert-AreEqual $sourceNonZRDatabase2.Edition "Hyperscale"
+		Assert-AreEqual $sourceNonZRDatabase2.CurrentBackupStorageRedundancy "Geo"
+		Assert-NotNull  $sourceNonZRDatabase2.ZoneRedundant 
+		Assert-False    { $sourceNonZRDatabase2.ZoneRedundant }
+
+		# Create geo secondary vldb with no parameters passed in
+		New-AzSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $sourceNonZRDatabase2.DatabaseName `
+		 -PartnerResourceGroupName $rgSecondary.ResourceGroupName -PartnerServerName $serverSecondary.ServerName -PartnerDatabaseName $secondaryNoZRParamDatabaseName
+		
+		# Retrieve the created geo secondary vldb
+		$secondaryNoZRParamDatabase = Get-AzSqlDatabase -ResourceGroupName $rgSecondary.ResourceGroupName -ServerName $serverSecondary.ServerName -DatabaseName $secondaryNoZRParamDatabaseName
+
+		# Verify geo secondary vldb has correct values (specifically zone redundancy == false and backup storage redundancy == Geo)
+		Assert-AreEqual $secondaryNoZRParamDatabase.ServerName $serverSecondary.ServerName
+		Assert-AreEqual $secondaryNoZRParamDatabase.DatabaseName $secondaryNoZRParamDatabaseName
+		Assert-AreEqual $secondaryNoZRParamDatabase.Edition "Hyperscale"
+		Assert-AreEqual $secondaryNoZRParamDatabase.CurrentBackupStorageRedundancy "Geo"
+		Assert-NotNull  $secondaryNoZRParamDatabase.ZoneRedundant 
+		Assert-False    { $secondaryNoZRParamDatabase.ZoneRedundant }
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+		Remove-ResourceGroupForTest $rgSecondary
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests creating a vldb geo secondary with geo primary zone redundant == true and backup storage redundancy == Zone
+	1. Create geo secondary vldb by passing in zone redundant == false,
+	   Verify created geo secondary vldb has zone redundant == false and backup storage redundancy == Zone
+	2. Create geo secondary vldb with no parameters passed in,
+	   Verify created geo secondary vldb has zone redundant == true and backup storage redundancy == Zone
+#>
+function Test-CreateSecondaryRegularAndZoneRedundantDatabaseWithSourceZoneRedundant()
+{
+	# Setup
+	$location = Get-Location "Microsoft.Sql" "operations" "East US 2 EUAP"
+
+	# Setup for geo primary
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+	$sourceZRDatabaseName = Get-DatabaseName + "-zr"
+	$sourceZRDatabaseName2 = Get-DatabaseName + "-zr-2"
+
+	#Setup for geo secondary
+	$rgSecondary = Create-ResourceGroupForTest $location
+	$serverSecondary = Create-ServerForTest $rgSecondary $location
+	$secondaryFalseZRParamDatabaseName = $sourceZRDatabaseName + "-source-zr-secondary-zr-false"
+	$secondaryNoZRParamDatabaseName = $sourceZRDatabaseName2 + "-source-zr-secondary-no-zr-param"
+
+	try
+	{
+		# Create first geo primary vldb with zone redundant == true and backup storage redundancy == Zone
+		$sourceZRDatabase = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $sourceZRDatabaseName `
+		 -VCore 2 -ComputeGeneration Gen5 -Edition Hyperscale -LicenseType "LicenseIncluded" -BackupStorageRedundancy "Zone" -ZoneRedundant
+
+		# Verify created geo primary vldb has correct values (specifically zone redundancy == true and backup storage redundancy == Zone)
+		Assert-AreEqual $sourceZRDatabase.ServerName $server.ServerName
+		Assert-AreEqual $sourceZRDatabase.DatabaseName $sourceZRDatabaseName
+		Assert-AreEqual $sourceZRDatabase.Edition "Hyperscale"
+		Assert-AreEqual $sourceZRDatabase.CurrentBackupStorageRedundancy "Zone"
+		Assert-NotNull  $sourceZRDatabase.ZoneRedundant 
+		Assert-True    { $sourceZRDatabase.ZoneRedundant }
+
+		# Create geo secondary vldb with zone redundancy == false
+		New-AzSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $sourceZRDatabase.DatabaseName `
+		 -PartnerResourceGroupName $rgSecondary.ResourceGroupName -PartnerServerName $serverSecondary.ServerName -PartnerDatabaseName $secondaryFalseZRParamDatabaseName `
+		 -ZoneRedundant:$false
+
+		# Retrieve the created geo secondary vldb
+		$secondaryFalseZRParamDatabase = Get-AzSqlDatabase -ResourceGroupName $rgSecondary.ResourceGroupName -ServerName $serverSecondary.ServerName -DatabaseName $secondaryFalseZRParamDatabaseName
+
+		# Verify geo secondary vldb has correct values (specifically zone redundancy == false and backup storage redundancy == Zone)
+		Assert-AreEqual $secondaryFalseZRParamDatabase.ServerName $serverSecondary.ServerName
+		Assert-AreEqual $secondaryFalseZRParamDatabase.DatabaseName $secondaryFalseZRParamDatabaseName
+		Assert-AreEqual $secondaryFalseZRParamDatabase.Edition "Hyperscale"
+		Assert-AreEqual $secondaryFalseZRParamDatabase.CurrentBackupStorageRedundancy "Zone"
+		Assert-NotNull  $secondaryFalseZRParamDatabase.ZoneRedundant 
+		Assert-False     { $secondaryFalseZRParamDatabase.ZoneRedundant }
+
+		# Create second geo primary vldb with zone redundant == true and backup storage redundancy == Zone
+		$sourceZRDatabase2 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $sourceZRDatabaseName2 `
+		 -VCore 2 -ComputeGeneration Gen5 -Edition Hyperscale -LicenseType "LicenseIncluded" -BackupStorageRedundancy "Zone" -ZoneRedundant
+
+		# Verify created geo primary vldb has correct values (specifically zone redundancy == true and backup storage redundancy == Zone)
+		Assert-AreEqual $sourceZRDatabase2.ServerName $server.ServerName
+		Assert-AreEqual $sourceZRDatabase2.DatabaseName $sourceZRDatabaseName2
+		Assert-AreEqual $sourceZRDatabase2.Edition "Hyperscale"
+		Assert-AreEqual $sourceZRDatabase2.CurrentBackupStorageRedundancy "Zone"
+		Assert-NotNull  $sourceZRDatabase2.ZoneRedundant 
+		Assert-True     { $sourceZRDatabase2.ZoneRedundant }
+
+		# Create geo secondary vldb with no parameters passed in
+		New-AzSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $sourceZRDatabase2.DatabaseName `
+		 -PartnerResourceGroupName $rgSecondary.ResourceGroupName -PartnerServerName $serverSecondary.ServerName -PartnerDatabaseName $secondaryNoZRParamDatabaseName
+
+		# Retrieve the created geo secondary vldb
+		$secondaryNoZRParamDatabase = Get-AzSqlDatabase -ResourceGroupName $rgSecondary.ResourceGroupName -ServerName $serverSecondary.ServerName -DatabaseName $secondaryNoZRParamDatabaseName
+
+		# Verify geo secondary vldb has correct values (specifically zone redundancy == true and backup storage redundancy == Zone)
+		Assert-AreEqual $secondaryNoZRParamDatabase.ServerName $serverSecondary.ServerName
+		Assert-AreEqual $secondaryNoZRParamDatabase.DatabaseName $secondaryNoZRParamDatabaseName
+		Assert-AreEqual $secondaryNoZRParamDatabase.Edition "Hyperscale"
+		Assert-AreEqual $secondaryNoZRParamDatabase.CurrentBackupStorageRedundancy "Zone"
+		Assert-NotNull  $secondaryNoZRParamDatabase.ZoneRedundant 
+		Assert-True     { $secondaryNoZRParamDatabase.ZoneRedundant }
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+		Remove-ResourceGroupForTest $rgSecondary
 	}
 }

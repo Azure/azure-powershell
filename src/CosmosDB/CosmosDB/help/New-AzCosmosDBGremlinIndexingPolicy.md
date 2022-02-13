@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/new-azcosmosdbgremlinindexingpolicy
+online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbgremlinindexingpolicy
 schema: 2.0.0
 ---
 
@@ -26,14 +26,13 @@ The **New-AzCosmosDBGremlinIndexingPolicy** cmdlet creates a new object of type 
 ### Example 1
 ```powershell
 PS C:\> $ipath1 = New-AzCosmosDBGremlinIncludedPathIndex -DataType String -Precision -1 -Kind Hash
-PS C:\>> $ipath2 = New-AzCosmosDBGremlinIncludedPathIndex -DataType String -Precision -1 -Kind Hash
-PS C:\>> $IncludedPath = New-AzCosmosDBGremlinIncludedPath -Path "/*" -Index $ipath1, $ipath2
-PS C:\>>  $SpatialSpec = New-AzCosmosDBGremlinSpatialSpec -Path  "/mySpatialPath/*" -Type  "Point", "LineString", "Polygon", "MultiPolygon"
-PS C:\>> $cp1 = New-AzCosmosDBGremlinCompositePath -Path "/abc" -Order Ascending
-PS C:\>>  $cp2 = New-AzCosmosDBGremlinCompositePath -Path "/aberc" -Order Descending
-PS C:\>> $compositePath = (($cp1, $cp2), ($cp2, $cp1))
-PS C:\>> New-AzCosmosDBGremlinIndexingPolicy -IncludedPath $IncludedPath -SpatialSpec $SpatialSpec -CompositePath $compositePath -ExcludedPath "/myPathToNotIndex/*" -Automatic 1 -IndexingMode Consistent
-
+PS C:\> $ipath2 = New-AzCosmosDBGremlinIncludedPathIndex -DataType String -Precision -1 -Kind Hash
+PS C:\> $IncludedPath = New-AzCosmosDBGremlinIncludedPath -Path "/*" -Index $ipath1, $ipath2
+PS C:\> $SpatialSpec = New-AzCosmosDBGremlinSpatialSpec -Path  "/mySpatialPath/*" -Type  "Point", "LineString", "Polygon", "MultiPolygon"
+PS C:\> $cp1 = New-AzCosmosDBGremlinCompositePath -Path "/abc" -Order Ascending
+PS C:\> $cp2 = New-AzCosmosDBGremlinCompositePath -Path "/aberc" -Order Descending
+PS C:\> $compositePath = (($cp1, $cp2), ($cp2, $cp1))
+PS C:\> New-AzCosmosDBGremlinIndexingPolicy -IncludedPath $IncludedPath -SpatialSpec $SpatialSpec -CompositePath $compositePath -ExcludedPath "/myPathToNotIndex/*" -Automatic 1 -IndexingMode Consistent
 
 Automatic        : True
 IndexingMode     : Consistent
@@ -44,15 +43,13 @@ CompositeIndexes : {Microsoft.Azure.Commands.CosmosDB.Models.PSCompositePath Mic
 SpatialIndexes   : {Microsoft.Azure.Commands.CosmosDB.Models.PSSpatialSpec}
 ```
 
-{{ Add example description here }}
-
 ## PARAMETERS
 
 ### -Automatic
 Bool to indicate if the indexing policy is automatic
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -67,7 +64,7 @@ Accept wildcard characters: False
 Array of array of objects of type Microsoft.Azure.Commands.CosmosDB.PSCompositePath
 
 ```yaml
-Type: PSCompositePath[][]
+Type: Microsoft.Azure.Commands.CosmosDB.Models.PSCompositePath[][]
 Parameter Sets: (All)
 Aliases:
 
@@ -82,7 +79,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -97,7 +94,7 @@ Accept wildcard characters: False
 Array of strings containing excludedPath(Specifies a path within a JSON document to be excluded in the Azure Cosmos DB service.)  elements.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -112,7 +109,7 @@ Accept wildcard characters: False
 Array of strings containing includedPath (Specifies a path within a JSON document to be included in the Azure Cosmos DB service.) elements.
 
 ```yaml
-Type: PSIncludedPath[]
+Type: Microsoft.Azure.Commands.CosmosDB.Models.PSIncludedPath[]
 Parameter Sets: (All)
 Aliases:
 
@@ -128,7 +125,7 @@ Indicates the indexing mode.
 Possible values include: 'Consistent', 'Lazy', 'None'
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -143,7 +140,7 @@ Accept wildcard characters: False
 Array of objects of type Microsoft.Azure.Commands.CosmosDB.PSSpatialSpec
 
 ```yaml
-Type: PSSpatialSpec[]
+Type: Microsoft.Azure.Commands.CosmosDB.Models.PSSpatialSpec[]
 Parameter Sets: (All)
 Aliases:
 

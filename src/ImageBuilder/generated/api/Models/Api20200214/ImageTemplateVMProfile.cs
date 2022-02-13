@@ -42,7 +42,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
 
         /// <summary>Resource id of a pre-existing subnet.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Origin(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.PropertyOrigin.Inlined)]
-        public string VnetConfigSubnetId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IVirtualNetworkConfigInternal)VnetConfig).SubnetId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IVirtualNetworkConfigInternal)VnetConfig).SubnetId = value; }
+        public string VnetConfigSubnetId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IVirtualNetworkConfigInternal)VnetConfig).SubnetId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IVirtualNetworkConfigInternal)VnetConfig).SubnetId = value ?? null; }
 
         /// <summary>Creates an new <see cref="ImageTemplateVMProfile" /> instance.</summary>
         public ImageTemplateVMProfile()

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 443F6492-EFA7-4417-943A-3A8D47F8C83C
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/reset-azp2svpngateway
+online version: https://docs.microsoft.com/powershell/module/az.network/reset-azp2svpngateway
 schema: 2.0.0
 ---
 
@@ -39,7 +39,7 @@ Resets the P2SVpnGateway
 
 ### Example 1:
 ```
-$Gateway = Get-AzVpnGateway -Name "ContosoVirtualGateway" -ResourceGroupName "RGName"
+$Gateway = Get-AzP2SVpnGateway -Name "ContosoVirtualGateway" -ResourceGroupName "RGName"
 Reset-AzP2sVpnGateway -P2SVpnGateway $Gateway
 ```
 

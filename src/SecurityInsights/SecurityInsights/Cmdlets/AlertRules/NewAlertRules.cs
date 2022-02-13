@@ -130,6 +130,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.AlertRules
         [ValidateNotNullOrEmpty]
         public int? TriggerThreshold { get; set; }
 
+        //Add Input object Support
 
         public override void ExecuteCmdlet()
         {

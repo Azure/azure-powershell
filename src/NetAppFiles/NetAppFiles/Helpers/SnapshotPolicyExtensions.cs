@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 Name = snapshotPolicy.Name,
                 Type = snapshotPolicy.Type,
                 Tags = snapshotPolicy.Tags,
+                Etag = snapshotPolicy.Etag,
                 ProvisioningState = snapshotPolicy.ProvisioningState,
                 Enabled = snapshotPolicy.Enabled,                
                 HourlySchedule = snapshotPolicy.HourlySchedule.ConvertToPs(),

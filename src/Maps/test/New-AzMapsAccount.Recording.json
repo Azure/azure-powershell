@@ -1,0 +1,38 @@
+{
+  "New-AzMapsAccount+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-2l4gq1/providers/Microsoft.Maps/accounts/mapsblkmj9?api-version=2021-02-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-2l4gq1/providers/Microsoft.Maps/accounts/mapsblkmj9?api-version=2021-02-01",
+      "Content": "{\r\n  \"location\": \"westcentralus\",\r\n  \"sku\": {\r\n    \"name\": \"S1\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "71" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1194" ],
+        "x-ms-request-id": [ "c910f80d-fc84-4544-9499-e2ac0bfb3126" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "58207cb9-8f97-4377-adf1-d5cd1469c666" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20210623T070359Z:58207cb9-8f97-4377-adf1-d5cd1469c666" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 23 Jun 2021 07:03:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "469" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"kind\": \"Gen1\",\r\n  \"type\": \"Microsoft.Maps/accounts\",\r\n  \"sku\": {\r\n    \"name\": \"S1\",\r\n    \"tier\": \"Standard\"\r\n  },\r\n  \"properties\": {\r\n    \"uniqueId\": \"9ed933b7-dfac-4cc0-83e5-d2ab31dd2248\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"disableLocalAuth\": false\r\n  },\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-2l4gq1/providers/Microsoft.Maps/accounts/mapsblkmj9\",\r\n  \"name\": \"mapsblkmj9\",\r\n  \"location\": \"westcentralus\"\r\n}",
+      "isContentBase64": false
+    }
+  }
+}

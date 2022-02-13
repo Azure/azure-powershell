@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support
 {
 
-    /// <summary>Argument completer implementation for ResourceIdentityType.</summary>
+    /// <summary>The type of identity used for the resource mover service.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.ResourceIdentityTypeTypeConverter))]
     public partial struct ResourceIdentityType :
         System.Management.Automation.IArgumentCompleter
@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "None".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("None", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
+                yield return new global::System.Management.Automation.CompletionResult("'None'", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "SystemAssigned".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("SystemAssigned", "SystemAssigned", global::System.Management.Automation.CompletionResultType.ParameterValue, "SystemAssigned");
+                yield return new global::System.Management.Automation.CompletionResult("'SystemAssigned'", "SystemAssigned", global::System.Management.Automation.CompletionResultType.ParameterValue, "SystemAssigned");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "UserAssigned".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("UserAssigned", "UserAssigned", global::System.Management.Automation.CompletionResultType.ParameterValue, "UserAssigned");
+                yield return new global::System.Management.Automation.CompletionResult("'UserAssigned'", "UserAssigned", global::System.Management.Automation.CompletionResultType.ParameterValue, "UserAssigned");
             }
         }
     }

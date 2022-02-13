@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
 ms.assetid: 4A6816DB-0E46-44F0-8AE9-180B1C4AAB22
-online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/set-azactiongroup
+online version: https://docs.microsoft.com/powershell/module/az.monitor/set-azactiongroup
 schema: 2.0.0
 ---
 

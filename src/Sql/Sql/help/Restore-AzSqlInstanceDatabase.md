@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/restore-azsqlinstancedatabase
+online version: https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase
 schema: 2.0.0
 ---
 
@@ -150,7 +150,7 @@ The second command restores the the fetched database, from the specified point-i
 
 ### Example 6: Restore a database from LTR backup.
 ```
-PS C:\> Restore-AzSqlInstanceDatabase -FromLongTermRetentionBackup -ResourceId /subscriptions/f46521f3-5bb0-4eea-a3c2-c2d5987df96b/resourceGroups/testResourceGroup/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/testInstance/longTermRetentionDatabases/test/longTermRetentionManagedInstanceBackups/15be823c-7e2c-49d8-819f-a3fdcad92215;132268250550000000 -TargetInstanceDatabaseName restoreTarget -TargetInstanceName testInstance -TargetResourceGroupName testResourceGroup
+PS C:\> Restore-AzSqlInstanceDatabase -FromLongTermRetentionBackup -ResourceId "/subscriptions/f46521f3-5bb0-4eea-a3c2-c2d5987df96b/resourceGroups/testResourceGroup/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/testInstance/longTermRetentionDatabases/test/longTermRetentionManagedInstanceBackups/15be823c-7e2c-49d8-819f-a3fdcad92215;132268250550000000" -TargetInstanceDatabaseName "restoreTarget" -TargetInstanceName "testInstance" -TargetResourceGroupName "testResourceGroup"
 
 
 Location                          : southeastasia

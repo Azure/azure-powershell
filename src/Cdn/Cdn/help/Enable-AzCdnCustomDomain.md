@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/enable-azcdncustomdomain
+online version: https://docs.microsoft.com/powershell/module/az.cdn/enable-azcdncustomdomain
 schema: 2.0.0
 ---
 
@@ -33,7 +33,6 @@ The **Enable-AzCdnCustomDomain** cmdlet enables the secured HTTPS delivery of a 
 ### Example 1
 ```powershell
 Enable-AzCdnCustomDomain -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroupName
-true
 ```
 
 Enable https delivery of the custom domain.

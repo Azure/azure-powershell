@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 ms.assetid: 5AF6F70F-7137-48E2-96ED-2C509042F127
-online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/new-azautomationvariable
+online version: https://docs.microsoft.com/powershell/module/az.automation/new-azautomationvariable
 schema: 2.0.0
 ---
 

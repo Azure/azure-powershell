@@ -19,6 +19,29 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.0
+* General availability of Az.MySql
+
+## Version 0.8.0
+* Changed API version to 2021-05-01
+* Fixed bugs for location capabilities
+
+## Version 0.7.0
+* Resolved Cx provisiong failure incident caused by backend server minimum storage change (10gb to 20gb)
+* Fixed doc of `Update-AzMySqlFlexibleServerConfiguration` [#15516]
+
+## Version 0.6.0
+* Added maintenance windows parameter to Update-AzMySqlFlexibleServer cmdlet
+* Added zone parameter to server New-AzMySqlFlexibleServer cmdlet.
+
+## Version 0.5.0
+* Added cmdlet `Test-AzMySqlFlexibleServerConnect`
+
+## Version 0.4.0
+* Updated New-AzMySqlFlexibleServer cmdlet to provide easy resource group and network management within RDBMS flexible server management
+* Added new cmdlets Get-AzMySqlFlexibleServerLocationBasedCapability and Get-AzMySqlConnectionString
+* Added parameter MinimalTlsVersion
+
 ## Version 0.3.1
 * Fixed secure string issue
 

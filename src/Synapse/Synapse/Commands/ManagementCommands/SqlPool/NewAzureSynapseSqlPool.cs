@@ -1,13 +1,26 @@
-﻿using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using Microsoft.Azure.Commands.Common.Exceptions;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
-using Microsoft.Azure.Commands.Synapse.Models.Exceptions;
 using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Synapse.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System;
 using System.Collections;
 using System.Management.Automation;
 using Sku = Microsoft.Azure.Management.Synapse.Models.Sku;
@@ -39,11 +52,13 @@ namespace Microsoft.Azure.Commands.Synapse
         public PSSynapseWorkspace WorkspaceObject { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = HelpMessages.SqlPoolName)]
+        [Alias(nameof(SynapseConstants.SqlPoolName))]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.SqlPoolVersion)]
         [ValidateNotNullOrEmpty]
+        [ValidateRange(2, 3)]
         public int Version { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.Tag)]
@@ -61,6 +76,11 @@ namespace Microsoft.Azure.Commands.Synapse
         [Parameter(ParameterSetName = CreateByParentObjectParameterSet, Mandatory = false, HelpMessage = HelpMessages.Collation)]
         [ValidateNotNullOrEmpty]
         public string Collation { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.StorageAccountType)]
+        [ValidateSet(Management.Synapse.Models.StorageAccountType.GRS, Management.Synapse.Models.StorageAccountType.LRS, IgnoreCase = true)]
+        [ValidateNotNull]
+        public string StorageAccountType { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
@@ -81,7 +101,7 @@ namespace Microsoft.Azure.Commands.Synapse
             var existingWorkspace = this.SynapseAnalyticsClient.GetWorkspaceOrDefault(this.ResourceGroupName, this.WorkspaceName);
             if (existingWorkspace == null)
             {
-                throw new SynapseException(string.Format(Resources.WorkspaceDoesNotExist, this.WorkspaceName));
+                throw new AzPSResourceNotFoundCloudException(string.Format(Resources.WorkspaceDoesNotExist, this.WorkspaceName));
             }
 
             if (this.Version == 3)
@@ -90,7 +110,7 @@ namespace Microsoft.Azure.Commands.Synapse
                 var existingSqlPool = this.SynapseAnalyticsClient.GetSqlPoolV3OrDefault(this.ResourceGroupName, this.WorkspaceName, this.Name);
                 if (existingSqlPool != null)
                 {
-                    throw new SynapseException(string.Format(Resources.SynapseSqlPoolExists, this.Name, this.ResourceGroupName, this.WorkspaceName));
+                    throw new AzPSInvalidOperationException(string.Format(Resources.SynapseSqlPoolExists, this.Name, this.ResourceGroupName, this.WorkspaceName));
                 }
 
                 var createParams = new SqlPoolV3
@@ -103,12 +123,12 @@ namespace Microsoft.Azure.Commands.Synapse
                 {
                     case CreateByNameParameterSet:
                     case CreateByParentObjectParameterSet:
-                        createParams.Sku = new Sku
+                        createParams.Sku = new SkuV3
                         {
                             Name = this.PerformanceLevel
                         };
                         break;
-                    default: throw new SynapseException(string.Format(Resources.InvalidParameterSet, this.ParameterSetName));
+                    default: throw new AzPSInvalidOperationException(string.Format(Resources.InvalidParameterSet, this.ParameterSetName));
                 }
 
                 if (this.ShouldProcess(this.Name, string.Format(Resources.CreatingSynapseSqlPool, this.ResourceGroupName, this.WorkspaceName, this.Name)))
@@ -122,13 +142,14 @@ namespace Microsoft.Azure.Commands.Synapse
                 var existingSqlPool = this.SynapseAnalyticsClient.GetSqlPoolOrDefault(this.ResourceGroupName, this.WorkspaceName, this.Name);
                 if (existingSqlPool != null)
                 {
-                    throw new SynapseException(string.Format(Resources.SynapseSqlPoolExists, this.Name, this.ResourceGroupName, this.WorkspaceName));
+                    throw new AzPSInvalidOperationException(string.Format(Resources.SynapseSqlPoolExists, this.Name, this.ResourceGroupName, this.WorkspaceName));
                 }
 
                 var createParams = new SqlPool
                 {
                     Location = existingWorkspace.Location,
-                    Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true)
+                    Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true),
+                    StorageAccountType = this.StorageAccountType
                 };
 
                 createParams.CreateMode = SynapseSqlPoolCreateMode.Default;
@@ -140,7 +161,7 @@ namespace Microsoft.Azure.Commands.Synapse
 
                 if (this.ShouldProcess(this.Name, string.Format(Resources.CreatingSynapseSqlPool, this.ResourceGroupName, this.WorkspaceName, this.Name)))
                 {
-                    var result = new PSSynapseSqlPool(this.SynapseAnalyticsClient.CreateSqlPool(this.ResourceGroupName, this.WorkspaceName, this.Name, createParams));
+                    var result = new PSSynapseSqlPool(this.ResourceGroupName, this.WorkspaceName, this.SynapseAnalyticsClient.CreateSqlPool(this.ResourceGroupName, this.WorkspaceName, this.Name, createParams));
                     WriteObject(result);
                 }
             }

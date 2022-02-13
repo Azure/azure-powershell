@@ -1,7 +1,7 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.dll-Help.xml
 Module Name: Az.ApplicationInsights
-online version: https://docs.microsoft.com/en-us/powershell/module/az.applicationinsights/remove-azapplicationinsightsapikey
+online version: https://docs.microsoft.com/powershell/module/az.applicationinsights/remove-azapplicationinsightsapikey
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ Remove an application insights api key for an application insights resource
 ## EXAMPLES
 
 ### Example 1 Remove an application insights api key for an application insights resource
-```
+```powershell
 Remove-AzApplicationInsightsApiKey -ResourceGroupName "testGroup" -Name "test"  -ApiKeyId dd173f38-4fd1-4c75-8af5-9
 9c29aa0f867 -PassThru
 True

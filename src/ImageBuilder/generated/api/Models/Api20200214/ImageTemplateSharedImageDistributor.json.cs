@@ -71,9 +71,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
                 return;
             }
             __imageTemplateDistributor = new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ImageTemplateDistributor(json);
-            {_excludeFromLatest = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonBoolean>("excludeFromLatest"), out var __jsonExcludeFromLatest) ? (bool?)__jsonExcludeFromLatest : ExcludeFromLatest;}
             {_galleryImageId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonString>("galleryImageId"), out var __jsonGalleryImageId) ? (string)__jsonGalleryImageId : (string)GalleryImageId;}
             {_replicationRegion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonArray>("replicationRegions"), out var __jsonReplicationRegions) ? If( __jsonReplicationRegions as Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<string[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : ReplicationRegion;}
+            {_excludeFromLatest = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonBoolean>("excludeFromLatest"), out var __jsonExcludeFromLatest) ? (bool?)__jsonExcludeFromLatest : ExcludeFromLatest;}
             {_storageAccountType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonString>("storageAccountType"), out var __jsonStorageAccountType) ? (string)__jsonStorageAccountType : (string)StorageAccountType;}
             AfterFromJson(json);
         }
@@ -99,7 +99,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
                 return container;
             }
             __imageTemplateDistributor?.ToJson(container, serializationMode);
-            AddIf( null != this._excludeFromLatest ? (Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonBoolean((bool)this._excludeFromLatest) : null, "excludeFromLatest" ,container.Add );
             AddIf( null != (((object)this._galleryImageId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonString(this._galleryImageId.ToString()) : null, "galleryImageId" ,container.Add );
             if (null != this._replicationRegion)
             {
@@ -110,6 +109,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
                 }
                 container.Add("replicationRegions",__w);
             }
+            AddIf( null != this._excludeFromLatest ? (Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonBoolean((bool)this._excludeFromLatest) : null, "excludeFromLatest" ,container.Add );
             AddIf( null != (((object)this._storageAccountType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonString(this._storageAccountType.ToString()) : null, "storageAccountType" ,container.Add );
             AfterToJson(ref container);
             return container;

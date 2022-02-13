@@ -6,7 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support
 {
 
-    /// <summary>TypeConverter implementation for SharedImageStorageAccountType.</summary>
+    /// <summary>
+    /// Storage account type to be used to store the shared image. Omit to use the default (Standard_LRS).
+    /// </summary>
     public partial class SharedImageStorageAccountTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

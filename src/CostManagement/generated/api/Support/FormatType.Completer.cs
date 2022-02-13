@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
-    /// <summary>Argument completer implementation for FormatType.</summary>
+    /// <summary>The format of the export being delivered. Currently only 'Csv' is supported.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatTypeTypeConverter))]
     public partial struct FormatType :
         System.Management.Automation.IArgumentCompleter

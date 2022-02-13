@@ -76,5 +76,13 @@ namespace Microsoft.Azure.Commands.Network
         internal const string ByVHubRouteTableObject = "ByVHubRouteTableObject";
         internal const string ByVHubRouteTableResourceId = "ByVHubRouteTableResourceId";
         internal const string ByVHubRouteTableName = "ByVHubRouteTableName";
+
+        internal const string ByVpnGatewayNatRuleObject = "ByVpnGatewayNatRuleObject";
+        internal const string ByVpnGatewayNatRuleResourceId = "ByVpnGatewayNatRuleResourceId";
+        internal const string ByVpnGatewayNatRuleName = "ByVpnGatewayNatRuleName";
+
+        internal const string ByHubBgpConnectionObject = "ByHubBgpConnectionObject";
+        internal const string ByHubBgpConnectionResourceId = "ByHubBgpConnectionResourceId";
+
     }
 }

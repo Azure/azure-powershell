@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
+    /// <summary>KPI type (Forecast, Budget).</summary>
     public partial struct KpiType :
         System.IEquatable<KpiType>
     {
@@ -20,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
         /// <param name="value">the value to convert to an instance of <see cref="KpiType" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new KpiType(System.Convert.ToString(value));
+            return new KpiType(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type KpiType</summary>

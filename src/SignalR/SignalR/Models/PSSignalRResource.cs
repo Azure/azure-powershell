@@ -48,7 +48,6 @@ namespace Microsoft.Azure.Commands.SignalR.Models
         {
             ExternalIp = signalR.ExternalIP;
             HostName = signalR.HostName;
-            HostNamePrefix = signalR.HostNamePrefix;
             ProvisioningState = signalR.ProvisioningState;
             PublicPort = signalR.PublicPort;
             ServerPort = signalR.ServerPort;

@@ -107,7 +107,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     {
                         throw new ArgumentException(string.Format(Resources.PolicyNotFoundException, Name));
                     }
-
                     WriteObject(ConversionHelpers.GetPolicyModel(policy));
                 }
                 else
@@ -147,28 +146,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                             }
                         serviceClientProviderType = ServiceClientHelpers.
                             GetServiceClientProviderType( Models.WorkloadType.AzureVM );
-                        }
-                    else if( WorkloadType == Models.WorkloadType.AzureSQLDatabase )
-                        {
-                        if( BackupManagementType != Models.BackupManagementType.AzureSQL )
-                            {
-                            throw new ArgumentException(
-                                Resources.AzureSqlUnsupportedBackupManagementTypeException );
-                            }
-                        serviceClientProviderType =
-                            ServiceClientHelpers.GetServiceClientProviderType(
-                                Models.WorkloadType.AzureSQLDatabase );
-                        }
-                    else if( WorkloadType == Models.WorkloadType.AzureFiles )
-                        {
-                        if( BackupManagementType != Models.BackupManagementType.AzureStorage )
-                            {
-                            throw new ArgumentException(
-                                Resources.AzureFileUnsupportedBackupManagementTypeException );
-                            }
-                        serviceClientProviderType =
-                            ServiceClientHelpers.GetServiceClientProviderType(
-                                Models.WorkloadType.AzureFiles );
                         }
                     else if( WorkloadType == Models.WorkloadType.AzureFiles )
                         {

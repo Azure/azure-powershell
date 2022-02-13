@@ -19,6 +19,16 @@
 -->
 ## Upcoming Release
 
+## Version 1.6.0
+* Added `IdentityType` and `UserAssignedIdentity` parameter in `New-AzRedisCache` and `Set-AzRedisCache` cmdlets.
+    - It is used to assign and modify the Identity of Azure Cache for Redis.
+
+## Version 1.5.1
+* Created new examples in documentation of `New-AzRedisCache` and `Set-AzRedisCache`.
+
+## Version 1.5.0
+* Added `RedisVersion` parameter in `New-AzRedisCache` and `Set-AzRedisCache`
+
 ## Version 1.4.0
 * Made `New-AzRedisCache` and `Set-AzRedisCache` cmdlets not fail because of permission issue related to registering Microsoft.Cache RP
 

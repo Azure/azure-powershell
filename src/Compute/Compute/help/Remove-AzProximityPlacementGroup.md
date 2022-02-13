@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/remove-azproximityplacementgroup
+online version: https://docs.microsoft.com/powershell/module/az.compute/remove-azproximityplacementgroup
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ This cmdlet will delete Proximity Placement Group resource.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzureRmProximityPlacementGroup  -ResourceGroupName $resourceGroupName -Name $proximityPlacementGroupName  | Remove-AzureRmProximityPlacementGroup
+Get-AzureRmProximityPlacementGroup  -ResourceGroupName $resourceGroupName -Name $proximityPlacementGroupName  | Remove-AzureRmProximityPlacementGroup
 ```
 
 This command removes the given proximity placement group.

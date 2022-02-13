@@ -7,7 +7,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoor" + "RulesEngineActionObject"), OutputType(typeof(PSRulesEngineAction))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoor" + "RulesEngineActionObject", DefaultParameterSetName = FieldsWithRegularActionParameterSet), OutputType(typeof(PSRulesEngineAction))]
     public class NewFrontDoorRulesEngineActionObject : AzureFrontDoorCmdletBase
     {
         [Parameter(Mandatory = false, HelpMessage = "A list of header actions to apply from the request from AFD to the origin.")]

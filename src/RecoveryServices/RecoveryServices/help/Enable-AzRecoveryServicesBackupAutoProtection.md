@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupautoprotection
+online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupautoprotection
 schema: 2.0.0
 ---
 
@@ -51,7 +51,7 @@ The class of resources being protected. Currently the values supported for this 
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureVM, MARS, SCDPM, AzureBackupServer, AzureSQL, AzureStorage, AzureWorkload
+Accepted values: AzureVM, MAB, SCDPM, AzureBackupServer, AzureSQL, AzureStorage, AzureWorkload
 
 Required: True
 Position: 1

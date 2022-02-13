@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
-    /// <summary>TypeConverter implementation for PrincipalType.</summary>
+    /// <summary>Principal type.</summary>
     public partial class PrincipalTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

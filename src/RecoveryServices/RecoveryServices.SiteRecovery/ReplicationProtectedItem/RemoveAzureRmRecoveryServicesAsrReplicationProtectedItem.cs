@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Management.Automation;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using Job = Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models.Job;
@@ -71,7 +72,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 this.InputObject.FriendlyName,
                 VerbsCommon.Remove))
             {
-
                 if (!this.Force.IsPresent)
                 {
                     var input = new DisableProtectionInput();
@@ -79,6 +79,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     {
                         ReplicationProviderInput = new DisableProtectionProviderSpecificInput()
                     };
+
+                    if (string.Compare(
+                        this.InputObject.ReplicationProvider,
+                        Constants.InMage,
+                        StringComparison.OrdinalIgnoreCase) == 0)
+                    {
+                        input.Properties.ReplicationProviderInput =
+                            new InMageDisableProtectionProviderSpecificInput()
+                            {
+                                ReplicaVmDeletionStatus = Constants.NotRequired
+                            };
+                    }
+
                     this.response = this.RecoveryServicesClient.DisableProtection(
                         Utilities.GetValueFromArmId(
                             this.InputObject.ID,

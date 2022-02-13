@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
 ms.assetid: B5F2388E-0136-4F8A-8577-67CE2A45671E
-online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/set-azdiagnosticsetting
+online version: https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting
 schema: 2.0.0
 ---
 
@@ -124,6 +124,21 @@ PS C:\>Get-AzDiagnosticSetting -ResourceId "Resource01" | Set-AzDiagnosticSettin
 ```
 
 This command uses the PowerShell pipeline to set (no change made) a diagnostic setting.
+
+### Example 7: Enable all categories for a subscription
+```powershell
+$list = @()
+Get-AzSubscriptionDiagnosticSettingCategory | ForEach-Object {
+	$list += (New-AzDiagnosticDetailSetting -Log -Category $_.Name -Enabled)
+}
+$DiagnosticSettingName = 'please use your setting name here'
+$SubscriptionId = 'please use your subscription Id here'
+$WorkspaceId = 'please use your workspace Id here'
+$setting = New-AzDiagnosticSetting -Name $DiagnosticSettingName -SubscriptionId $SubscriptionId -WorkspaceId $WorkspaceId -Setting $list
+Set-AzDiagnosticSetting -InputObject $setting
+```
+
+This command enabled all categories of logs for subscription.
 
 ## PARAMETERS
 

@@ -187,10 +187,27 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         public int? immutabilityPeriod;
 
-        [Parameter(Mandatory = false, ParameterSetName = AccountNameParameterSet, HelpMessage = "This property can only be changed for unlocked time-based retention policies. With this property enabled, new blocks can be written to an append blob while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted.")]
-        [Parameter(Mandatory = false, ParameterSetName = AccountObjectParameterSet, HelpMessage = "This property can only be changed for unlocked time-based retention policies. With this property enabled, new blocks can be written to an append blob while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted.")]
-        [Parameter(Mandatory = false, ParameterSetName = ContainerObjectParameterSet, HelpMessage = "This property can only be changed for unlocked time-based retention policies. With this property enabled, new blocks can be written to an append blob while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted.")]
-        [Parameter(Mandatory = false, ParameterSetName = ImmutabilityPolicyObjectParameterSet, HelpMessage = "This property can only be changed for unlocked time-based retention policies. With this property enabled, new blocks can be written to an append blob while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted.")]
+        [Parameter(Mandatory = false, ParameterSetName = AccountNameParameterSet, HelpMessage = "This property can only be changed for unlocked policies. When enabled, new blocks can be written to both 'Appened and Block Blobs' while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. This property cannot be changed with ExtendImmutabilityPolicy API. '-AllowProtectedAppendWrites' and '-AllowProtectedAppendWritesAll' are mutually exclusive.")]
+        [Parameter(Mandatory = false, ParameterSetName = AccountObjectParameterSet, HelpMessage = "This property can only be changed for unlocked policies. When enabled, new blocks can be written to both 'Appened and Block Blobs' while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. This property cannot be changed with ExtendImmutabilityPolicy API. '-AllowProtectedAppendWrites' and '-AllowProtectedAppendWritesAll' are mutually exclusive.")]
+        [Parameter(Mandatory = false, ParameterSetName = ContainerObjectParameterSet, HelpMessage = "This property can only be changed for unlocked policies. When enabled, new blocks can be written to both 'Appened and Block Blobs' while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. This property cannot be changed with ExtendImmutabilityPolicy API. '-AllowProtectedAppendWrites' and '-AllowProtectedAppendWritesAll' are mutually exclusive.")]
+        [Parameter(Mandatory = false, ParameterSetName = ImmutabilityPolicyObjectParameterSet, HelpMessage = "This property can only be changed for unlocked policies. When enabled, new blocks can be written to both 'Appened and Block Blobs' while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. This property cannot be changed with ExtendImmutabilityPolicy API. '-AllowProtectedAppendWrites' and '-AllowProtectedAppendWritesAll' are mutually exclusive.")]
+        public bool AllowProtectedAppendWriteAll
+        {
+            get
+            {
+                return allowProtectedAppendWriteAll is null ? false : allowProtectedAppendWriteAll.Value;
+            }
+            set
+            {
+                allowProtectedAppendWriteAll = value;
+            }
+        }
+        private bool? allowProtectedAppendWriteAll;
+
+        [Parameter(Mandatory = false, ParameterSetName = AccountNameParameterSet, HelpMessage = "This property can only be changed for unlocked time-based retention policies. With this property enabled, new blocks can be written to an append blob while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. '-AllowProtectedAppendWrites' and '-AllowProtectedAppendWritesAll' are mutually exclusive.")]
+        [Parameter(Mandatory = false, ParameterSetName = AccountObjectParameterSet, HelpMessage = "This property can only be changed for unlocked time-based retention policies. With this property enabled, new blocks can be written to an append blob while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. '-AllowProtectedAppendWrites' and '-AllowProtectedAppendWritesAll' are mutually exclusive.")]
+        [Parameter(Mandatory = false, ParameterSetName = ContainerObjectParameterSet, HelpMessage = "This property can only be changed for unlocked time-based retention policies. With this property enabled, new blocks can be written to an append blob while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. '-AllowProtectedAppendWrites' and '-AllowProtectedAppendWritesAll' are mutually exclusive.")]
+        [Parameter(Mandatory = false, ParameterSetName = ImmutabilityPolicyObjectParameterSet, HelpMessage = "This property can only be changed for unlocked time-based retention policies. With this property enabled, new blocks can be written to an append blob while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. '-AllowProtectedAppendWrites' and '-AllowProtectedAppendWritesAll' are mutually exclusive.")]
         public bool AllowProtectedAppendWrite
         {
             get
@@ -222,6 +239,12 @@ namespace Microsoft.Azure.Commands.Management.Storage
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+
+            if ((this.allowProtectedAppendWrite.HasValue && this.allowProtectedAppendWrite.Value) && 
+                (this.allowProtectedAppendWriteAll.HasValue && this.allowProtectedAppendWriteAll.Value))
+            {
+                throw new ArgumentException("'-AllowProtectedAppendWrites' and '-AllowProtectedAppendWritesAll' are mutually exclusive. They can't be set both to true.");
+            }
             if (ShouldProcess(this.ContainerName, "Set container ImmutabilityPolicy"))
             {
 
@@ -256,9 +279,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
                                 this.ResourceGroupName,
                                 this.StorageAccountName,
                                 this.ContainerName,
-                                this.Etag,
-                                immutabilityPeriod,
-                                this.allowProtectedAppendWrite);
+                                new ImmutabilityPolicy(
+                                    immutabilityPeriodSinceCreationInDays: immutabilityPeriod,
+                                    allowProtectedAppendWrites: this.allowProtectedAppendWrite,
+                                    allowProtectedAppendWritesAll: this.allowProtectedAppendWriteAll),
+                                this.Etag);
                 }
                 else
                 {
@@ -267,7 +292,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
                                 this.StorageAccountName,
                                 this.ContainerName,
                                 this.Etag,
-                                immutabilityPeriod);
+                                new ImmutabilityPolicy(
+                                    immutabilityPeriodSinceCreationInDays: immutabilityPeriod));
                 }
                 WriteObject(new PSImmutabilityPolicy(policy));
             }

@@ -19,6 +19,35 @@
 -->
 ## Upcoming Release
 
+## Version 1.4.1
+* Fixed the bug of "Update-AzSignalR" cmdlet that resets the resource states by mistake.
+
+## Version 1.4.0
+* Added Web PubSub cmdlets
+  - `New-AzWebPubSub`
+  - `Get-AzWebPubSub`
+  - `Update-AzWebPubSub`
+  - `Restart-AzWebPubSub`
+  - `Remove-AzWebPubSub`
+  - `New-AzWebPubSubHub`
+  - `Get-AzWebPubSubHub`
+  - `Remove-AzWebPubSubHub`
+  - `New-AzWebPubSubKey`
+  - `Get-AzWebPubSubKey`
+  - `Get-AzWebPubSubSku`
+  - `Get-AzWebPubSubUsage`
+  - `Test-AzWebPubSubNameAvailability`
+
+## Version 1.3.0
+* Changed to `Allow` and `Deny` parameters of `Update-AzSignalRNetworkAcl` cmdlet:
+    - Accepted `Trace` as a valid value.
+    - Accepted `@()` as empty collection to clear the list.
+* Supported `ResourceGroupCompleter` and `ResourceNameCompleter` in the applicable cmdlets.
+* Deprecated the `HostNamePrefix` property of output type `PSSignalRResource` of following cmdlets:
+    - `Get-AzSignalR`
+    - `New-AzSignalR`
+    - `Update-AzSignalR`
+
 ## Version 1.2.0
 * Fixed `Restart-AzSignalR` and `Update-AzSignalR` help files errors
 * Added cmdlets `Update-AzSignalRNetworkAcl`, `Set-AzSignalRUpstream`

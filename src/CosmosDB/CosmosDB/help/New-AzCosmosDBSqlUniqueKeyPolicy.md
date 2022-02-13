@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/new-azcosmosdbsqluniquekeypolicy
+online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqluniquekeypolicy
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ UniqueKey
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 Database name.
 
 ```yaml
-Type: PSSqlUniqueKey[]
+Type: Microsoft.Azure.Commands.CosmosDB.Models.PSSqlUniqueKey[]
 Parameter Sets: (All)
 Aliases:
 

@@ -1,13 +1,13 @@
 # Announcing New Module 'Az'
-In August 2018 we released a new module, 'Az' which combines the functionality of the AzureRM and AzureRM.Netcore modules.  Az will go to version 1.0 on 12/18/2018. Az runs on both Windows PowerShell 5.1 and PowerShell Core.  'Az' ensures that the Windows PowerShell and PowerShell Core cmdlets for managing Azure resources will always be in sync and up to date.  In addition, Az will simplify and regularize the naming of Azure cmdlets, and the organization of Azure modules.  Az is intended as a replacement for the AzureRM.Netcore and AzureRM modules.
+In August 2018 we released a new module, 'Az' which combines the functionality of the AzureRM and AzureRM.Netcore modules.  Az goes to version 1.0 on 12/18/2018. Az runs on both Windows PowerShell 5.1 and PowerShell 7.  'Az' ensures that the Windows PowerShell and PowerShell 7 cmdlets for managing Azure resources will always be in sync and up to date.  In addition, Az will simplify and regularize the naming of Azure cmdlets, and the organization of Azure modules.  Az is intended as a replacement for the AzureRM.Netcore and AzureRM modules.
 
 Az currently ships in Cloud Shell, and can be found on the PowerShell Gallery [here](https://www.powershellgallery.com/packages/Az/)
 
 Az is a new module, and reorganizing and simplifying cmdlet names involves breaking changes, so we have [added features to Az to make it easier to transition to the simplified, normalized names in your existing scripts](#migrating-from-azurerm). 
 
 ## New Features
-  - Windows PowerShell 5.1 and PowerShell Core support in the same module
-  - PowerShell Core and Windows PowerShell cmdlets are always in sync and up to date with latest Azure capabilities
+  - Windows PowerShell 5.1 and PowerShell 7 support in the same module
+  - PowerShell 7 and Windows PowerShell cmdlets are always in sync and up to date with latest Azure capabilities
   - Shortened and normalized cmdlet names - all cmdlets use the noun prefix 'Az'
   - Simplified and normalized module organization - data plane and management plane cmdlets in the same module for each service
   - Enhanced authentication for Netcore
@@ -17,8 +17,7 @@ Az is a new module, and reorganizing and simplifying cmdlet names involves break
 
 ## Supported Platforms
   - PowerShell 5.1 with .Net Framework 4.7.2 or later [Windows only]
-  - PowerShell Core 6.0 - Windows, Linux, macOS
-  - PowerShell Core 6.1 - Windows, Linux, macOS
+  - PowerShell 7 - Windows, Linux, macOS
 
 ## Timeline
 
@@ -170,12 +169,12 @@ For scripts that import modules directly, or use ```#Requires``` statements to s
 ### Installing Az and AzureRM Side-by-Side
 
 Az and AzureRM cannot be imported side-by-side into the same PowerShell session.  If you do not want to migrate your scripts from AzureRM to Az right away, there are two main options:
-- Install Az in PowerShell Core, and leave AzureRM in Windows PowerShell
+- Install Az in PowerShell 7, and leave AzureRM in Windows PowerShell
 - Install Az and AzureRM side-by-side in Windows PowerShell and ensure scripts do not mix the modules
 
-#### Install Az in PowerShell Core
-You can follow the instructions in [Installing PowerShell Core on Windows](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-6
-) to install PowerShell Core, then use ```Install-Module Az``` in PowerShell Core to acquire the Az module.  Since Windows PowerShell and PowerShell Core can exist side-by-side and do not share module directories, this will effectively isolate the two modules.
+#### Install Az in PowerShell 7
+You can follow the instructions in [Installing PowerShell 7 on Windows](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows
+) to install PowerShell 7, then use ```Install-Module Az``` in PowerShell 7 to acquire the Az module.  Since Windows PowerShell and PowerShell 7 can exist side-by-side and do not share module directories, this will effectively isolate the two modules.
 
 #### Install Az and AzureRM Side-by-Side
 If you need to have both modules installed:

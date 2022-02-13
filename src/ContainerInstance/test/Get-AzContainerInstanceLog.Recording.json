@@ -1,0 +1,84 @@
+{
+  "Get-AzContainerInstanceLog+[NoContext]+List+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgdabsp/providers/Microsoft.ContainerInstance/containerGroups/bez-test-cg/containers/bez-test-ci/logs?api-version=2021-09-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgdabsp/providers/Microsoft.ContainerInstance/containerGroups/bez-test-cg/containers/bez-test-ci/logs?api-version=2021-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "19" ],
+        "x-ms-client-request-id": [ "456c3aa3-a2d8-49ec-abf4-f758e7ed5776" ],
+        "CommandName": [ "Get-AzContainerInstanceLog" ],
+        "FullCommandName": [ "Get-AzContainerInstanceLog_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "eastus:655796dc-a678-466f-a8b5-5bfeaa0395cb" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11987" ],
+        "x-ms-correlation-request-id": [ "a8e7021d-41ab-4c57-8a64-3b7bd39472e6" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211109T085615Z:a8e7021d-41ab-4c57-8a64-3b7bd39472e6" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 09 Nov 2021 08:56:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1163" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"content\":\"/docker-entrypoint.sh: /docker-entrypoint.d/ is not empty, will attempt to perform configuration\\n/docker-entrypoint.sh: Looking for shell scripts in /docker-entrypoint.d/\\n/docker-entrypoint.sh: Launching /docker-entrypoint.d/10-listen-on-ipv6-by-default.sh\\n10-listen-on-ipv6-by-default.sh: info: Getting the checksum of /etc/nginx/conf.d/default.conf\\n10-listen-on-ipv6-by-default.sh: info: Enabled listen on IPv6 in /etc/nginx/conf.d/default.conf\\n/docker-entrypoint.sh: Launching /docker-entrypoint.d/20-envsubst-on-templates.sh\\n/docker-entrypoint.sh: Launching /docker-entrypoint.d/30-tune-worker-processes.sh\\n/docker-entrypoint.sh: Configuration complete; ready for start up\\n2021/11/09 08:54:29 [notice] 17#17: using the \\\"epoll\\\" event method\\n2021/11/09 08:54:29 [notice] 17#17: nginx/1.21.3\\n2021/11/09 08:54:29 [notice] 17#17: built by gcc 8.3.0 (Debian 8.3.0-6) \\n2021/11/09 08:54:29 [notice] 17#17: OS: Linux 5.4.81-microsoft-standard\\n2021/11/09 08:54:29 [notice] 17#17: getrlimit(RLIMIT_NOFILE): 1024:1048576\\n2021/11/09 08:54:29 [notice] 17#17: start worker processes\\n2021/11/09 08:54:29 [notice] 17#17: start worker process 45\\n\"}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzContainerInstanceLog+[NoContext]+Get the tail 2 lines of log of a container instance+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgdabsp/providers/Microsoft.ContainerInstance/containerGroups/bez-test-cg/containers/bez-test-ci/logs?api-version=2021-09-01\u0026tail=2+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgdabsp/providers/Microsoft.ContainerInstance/containerGroups/bez-test-cg/containers/bez-test-ci/logs?api-version=2021-09-01\u0026tail=2",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "20" ],
+        "x-ms-client-request-id": [ "62c5d8b8-6082-49bd-85b2-9cea43fb9489" ],
+        "CommandName": [ "Get-AzContainerInstanceLog" ],
+        "FullCommandName": [ "Get-AzContainerInstanceLog_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "eastus:dcf7d886-a270-4e8a-80b8-5cb874556ff8" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11986" ],
+        "x-ms-correlation-request-id": [ "2ba791c8-8bda-4fe2-899d-f6dc0441617a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211109T085615Z:2ba791c8-8bda-4fe2-899d-f6dc0441617a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 09 Nov 2021 08:56:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "135" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"content\":\"2021/11/09 08:54:29 [notice] 17#17: start worker processes\\n2021/11/09 08:54:29 [notice] 17#17: start worker process 45\\n\"}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "properties": {
+    "type": "Scalar",
+    "properties": {
+      "inputs": [
+        {
+          "dataType": "record"
+        }
+      ],
+      "output": {
+        "dataType": "bigint"
+      },
+      "binding": {
+        "type": "Microsoft.MachineLearningServices",
+        "properties": {
+          "endpoint": "http://875da830-4d5f-44f1-b221-718a5f26a21d.eastus.azurecontainer.io/score",
+          "inputs": [
+            {
+              "name": "data",
+              "dataType": "object",
+              "mapTo": 0
+            }
+          ],
+          "outputs": [
+            {
+              "name": "output",
+              "dataType": "int64",
+              "mapTo": 0
+            }
+          ],
+          "batchSize": 10000,
+          "numberOfParallelRequests": 1
+        }
+      }
+    }
+  }
+}

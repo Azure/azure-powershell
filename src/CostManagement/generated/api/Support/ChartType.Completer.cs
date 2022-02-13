@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
-    /// <summary>Argument completer implementation for ChartType.</summary>
+    /// <summary>Chart type of the main view in Cost Analysis. Required.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ChartTypeTypeConverter))]
     public partial struct ChartType :
         System.Management.Automation.IArgumentCompleter

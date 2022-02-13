@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 ms.assetid: 38BB4F4E-B72B-460E-8DF2-2A7A9CACDB41
-online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/get-azautomationjoboutputrecord
+online version: https://docs.microsoft.com/powershell/module/az.automation/get-azautomationjoboutputrecord
 schema: 2.0.0
 ---
 

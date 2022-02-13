@@ -24,5 +24,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
 
         public PSSentinelDataConnectorDataTypeOfficeSharePoint SharePoint { get; set; }
 
+        public PSSentinelDataConnectorDataTypeOfficeTeams Teams { get; set; }
+
     }
 }

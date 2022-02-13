@@ -1,0 +1,43 @@
+{
+  "Get-AzContainerInstanceUsage+[NoContext]+List+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.ContainerInstance/locations/eastus/usages?api-version=2021-09-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.ContainerInstance/locations/eastus/usages?api-version=2021-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "21" ],
+        "x-ms-client-request-id": [ "6f860017-b50b-433b-be99-8d6067bb5c56" ],
+        "CommandName": [ "Get-AzContainerInstanceUsage" ],
+        "FullCommandName": [ "Get-AzContainerInstanceUsage_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "eastus:7225ff88-caaf-4d67-b1fa-c07a2bbc4bab" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11985" ],
+        "x-ms-correlation-request-id": [ "68aa65b1-89ec-495b-9e11-51855ce22c08" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211109T085616Z:68aa65b1-89ec-495b-9e11-51855ce22c08" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 09 Nov 2021 08:56:16 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1807" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.ContainerInstance/locations/eastus/usages/ContainerGroups\",\"unit\":\"Count\",\"currentValue\":4,\"limit\":100,\"name\":{\"value\":\"ContainerGroups\",\"localizedValue\":\"Container Groups\"}},{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.ContainerInstance/locations/eastus/usages/standardCores\",\"unit\":\"Count\",\"currentValue\":4,\"limit\":400,\"name\":{\"value\":\"StandardCores\",\"localizedValue\":\"Container Groups\"}},{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.ContainerInstance/locations/eastus/usages/standardK80Cores\",\"unit\":\"Count\",\"currentValue\":0,\"limit\":400,\"name\":{\"value\":\"StandardK80Cores\",\"localizedValue\":\"Container Groups\"}},{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.ContainerInstance/locations/eastus/usages/standardP100Cores\",\"unit\":\"Count\",\"currentValue\":0,\"limit\":400,\"name\":{\"value\":\"StandardP100Cores\",\"localizedValue\":\"Container Groups\"}},{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.ContainerInstance/locations/eastus/usages/standardV100Cores\",\"unit\":\"Count\",\"currentValue\":0,\"limit\":400,\"name\":{\"value\":\"StandardV100Cores\",\"localizedValue\":\"Container Groups\"}},{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.ContainerInstance/locations/eastus/usages/DedicatedContainerGroups\",\"unit\":\"Count\",\"currentValue\":0,\"limit\":0,\"name\":{\"value\":\"DedicatedContainerGroups\",\"localizedValue\":\"Container Groups\"}},{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.ContainerInstance/locations/eastus/usages/dedicatedCores\",\"unit\":\"Count\",\"currentValue\":0,\"limit\":0,\"name\":{\"value\":\"DedicatedCores\",\"localizedValue\":\"Container Groups\"}}]}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Advisor.dll-Help.xml
 Module Name: Az.Advisor
-online version: https://docs.microsoft.com/en-us/powershell/module/az.advisor/enable-azadvisorrecommendation
+online version: https://docs.microsoft.com/powershell/module/az.advisor/enable-azadvisorrecommendation
 schema: 2.0.0
 ---
 
@@ -37,8 +37,10 @@ This cmdlet enables a previously suppressed recommendation. You can remove all t
 
 ### Example 1
 ```powershell
-PS C:\> Enable-AzAdvisorRecommendation -ResourceId c3621337-f131-4bf4-92f2-3fb9c8cfa0d8 
+Enable-AzAdvisorRecommendation -ResourceId c3621337-f131-4bf4-92f2-3fb9c8cfa0d8 
+```
 
+```output
 ResourceId			 : subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommendations/c3621337-f131-4bf4-92f2-3fb9c8cfa0d8
 Category             : Performance
 ExtendedProperties   : {}
@@ -61,9 +63,11 @@ Removes all the suppressions for the given recommendation with name "recommendat
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzAdvisorRecommendation -ResourceId "/subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz" 
+ Get-AzAdvisorRecommendation -ResourceId "/subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz" 
 | Enable-AzAdvisorRecommendation
+```
 
+```output
 ResourceId           : subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommendations/{recommendation_id}
 Category             : Performance
 ExtendedProperties   : {}

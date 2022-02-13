@@ -45,7 +45,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         TargetLocation,
         KeyFileDownloadLocation,
         FileDownloadLocation,
-        RestorePointQueryType
+        RestorePointQueryType,
+        TargetZone,
+        SourceTier,
+        TargetTier,
+        IsReadyForMove,
+        RehydrateDuration,
+        RehydratePriority,
+        Tier
     }
 
     public enum RestoreBackupItemParams
@@ -61,7 +68,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         OsaOption,
         RestoreDiskList,
         RestoreOnlyOSDisk,
-        RestoreAsUnmanagedDisks
+        RestoreAsUnmanagedDisks,
+        DiskEncryptionSetId,
+        RestoreAsManagedDisk,
+        UseSystemAssignedIdentity,
+        UserAssignedIdentityId
     }
 
     public enum RestoreFSBackupItemParams
@@ -77,6 +88,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     public enum RestoreWLBackupItemParams
     {
         WLRecoveryConfig
+    }
+
+    public enum CRRParams
+    {
+        UseSecondaryRegion,
+        SecondaryRegion
     }
 
     public enum WorkloadRecoveryConfigParams
@@ -99,7 +116,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         ProtectionPolicy,
         ResourceGroupName,
         ResourceName,
-        FixForInconsistentItems
+        FixForInconsistentItems,
+        ScheduleRunFrequency
     }
 
     public enum ItemParams

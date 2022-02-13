@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support
 {
 
-    /// <summary>Argument completer implementation for ProvisioningErrorCode.</summary>
+    /// <summary>Error code of the provisioning failure</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.ProvisioningErrorCodeTypeConverter))]
     public partial struct ProvisioningErrorCode :
         System.Management.Automation.IArgumentCompleter

@@ -1,7 +1,7 @@
 ---
 Module Name: Az.SpringCloud
 Module Guid: 697e18d3-95de-4211-86a1-ec7c4e163874
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.springcloud
+Download Help Link: https://docs.microsoft.com/powershell/module/az.springcloud
 Help Version: 1.0.0.0
 Locale: en-US
 ---

@@ -29,7 +29,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
         /// <param name="value">the value to convert to an instance of <see cref="SessionState" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new SessionState(System.Convert.ToString(value));
+            return new SessionState(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type SessionState</summary>

@@ -19,25 +19,31 @@ Test linked service CRD
 function Test-LinkedServiceCRD
 {
 	# setup
-	$rgNameExisting = "azps-test-group"
-	$clusterNameExisting = "yabocluster7"
-	$workspaceNameExisting = "yabo-test-la4"
-
+	$rgNameExisting = "dabenham-dev"
+	$clusterNameExisting = "dabenhamCluster-dev"
+	$workspaceNameExisting = "dabenham-eus"
+	$workspaceNameExistingAnother = "dabenham-eusAlt"
 
 	try
 	{
 		# cluster to be linked need to have provisioning state "Succeeded" and valid key vault properties
 		
 		$cluster = Get-AzOperationalInsightsCluster -ResourceGroupName $rgNameExisting -ClusterName $clusterNameExisting
-		$id = $cluster.Id
+		Assert-NotNull $cluster
+		Assert-NotNull $cluster.Id
 
-		$job = Set-AzOperationalInsightsLinkedService -ResourceGroupName $rgNameExisting -WorkspaceName $workspaceNameExisting -LinkedServiceName cluster -WriteAccessResourceId $id -AsJob
-		$job | Wait-Job
-		$link = $job | Receive-Job
+		$setLinkedServiceJob = Set-AzOperationalInsightsLinkedService -ResourceGroupName $rgNameExisting -WorkspaceName $workspaceNameExisting -LinkedServiceName cluster -WriteAccessResourceId $cluster.Id -AsJob
+		$setLinkedServiceJob | Wait-Job
+		$link = $setLinkedServiceJob | Receive-Job
 
 		Assert-NotNull $link
 		Assert-AreEqual "Succeeded" $link.ProvisioningState
-		Assert-AreEqual $id $link.WriteAccessResourceId
+		Assert-AreEqual $cluster.Id $link.WriteAccessResourceId
+
+		$removeLinkedServiceJob = Remove-AzOperationalInsightsLinkedService -ResourceGroupName $rgNameExisting -WorkspaceName $workspaceNameExisting -LinkedServiceName cluster -AsJob
+		$removeLinkedServiceJob | Wait-Job
+		$removeState = $removeLinkedServiceJob | Receive-Job
+		Assert-True {$removeState}
 	}
 	finally
 	{

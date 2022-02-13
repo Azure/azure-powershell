@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Aks.dll-Help.xml
 Module Name: Az.Aks
-online version: https://docs.microsoft.com/en-us/powershell/module/az.aks/new-azakscluster
+online version: https://docs.microsoft.com/powershell/module/az.aks/new-azakscluster
 schema: 2.0.0
 ---
 
@@ -10,20 +10,32 @@ schema: 2.0.0
 ## SYNOPSIS
 Create a new managed Kubernetes cluster.
 
+The cmdlet may call below Microsoft Graph API according to input parameters:
+
+- POST /servicePrincipals
+
 ## SYNTAX
 
 ```
-New-AzAksCluster [-Force] [-GenerateSshKey] [-NodeVmSetType <String>] [-NodeVnetSubnetID <String>]
- [-NodeMaxPodCount <Int32>] [-NodeSetPriority <String>] [-NodePoolMode <String>]
- [-NodeScaleSetEvictionPolicy <String>] [-AddOnNameToBeEnabled <String[]>] [-WorkspaceResourceId <String>]
- [-SubnetName <String>] [-AcrNameToAttach <String>] [-EnableRbac] [-WindowsProfileAdminUserName <String>]
- [-WindowsProfileAdminUserPassword <SecureString>] [-NetworkPlugin <String>] [-LoadBalancerSku <String>]
- [-ResourceGroupName] <String> [-Name] <String> [[-ServicePrincipalIdAndSecret] <PSCredential>]
- [-Location <String>] [-LinuxProfileAdminUserName <String>] [-DnsNamePrefix <String>]
- [-KubernetesVersion <String>] [-NodeName <String>] [-NodeMinCount <Int32>] [-NodeMaxCount <Int32>]
- [-EnableNodeAutoScaling] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>] [-NodeVmSize <String>]
- [-SshKeyValue <String>] [-AsJob] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzAksCluster [-NodeVmSetType <String>] [-NodeVnetSubnetID <String>] [-NodeMaxPodCount <Int32>]
+ [-NodeSetPriority <String>] [-NodePoolMode <String>] [-NodeScaleSetEvictionPolicy <String>]
+ [-AddOnNameToBeEnabled <String[]>] [-WorkspaceResourceId <String>] [-SubnetName <String>] [-EnableRbac]
+ [-WindowsProfileAdminUserName <String>] [-WindowsProfileAdminUserPassword <SecureString>]
+ [-NetworkPlugin <String>] [-NetworkPolicy <String>] [-PodCidr <String>] [-ServiceCidr <String>]
+ [-DnsServiceIP <String>] [-DockerBridgeCidr <String>] [-NodePoolLabel <Hashtable>]
+ [-AksCustomHeader <Hashtable>] [-LoadBalancerSku <String>] [-Force] [-GenerateSshKey] [-EnableNodePublicIp]
+ [-NodePublicIPPrefixID <String>] [-ResourceGroupName] <String> [-Name] <String>
+ [[-ServicePrincipalIdAndSecret] <PSCredential>] [-Location <String>] [-LinuxProfileAdminUserName <String>]
+ [-DnsNamePrefix <String>] [-KubernetesVersion <String>] [-NodeName <String>] [-NodeMinCount <Int32>]
+ [-NodeMaxCount <Int32>] [-EnableNodeAutoScaling] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>]
+ [-NodeVmSize <String>] [-SshKeyValue <String>] [-AcrNameToAttach <String>] [-AsJob] [-Tag <Hashtable>]
+ [-LoadBalancerAllocatedOutboundPort <Int32>] [-LoadBalancerManagedOutboundIpCount <Int32>]
+ [-LoadBalancerOutboundIp <String[]>] [-LoadBalancerOutboundIpPrefix <String[]>]
+ [-LoadBalancerIdleTimeoutInMinute <Int32>] [-ApiServerAccessAuthorizedIpRange <String[]>]
+ [-EnableApiServerAccessPrivateCluster] [-ApiServerAccessPrivateDnsZone <String>]
+ [-EnableApiServerAccessPrivateClusterPublicFQDN] [-FqdnSubdomain <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,7 +47,7 @@ Create a new Azure Kubernetes Service(AKS) cluster.
 ### New an AKS with default params.
 
 ```powershell
-PS C:\> New-AzAks -ResourceGroupName myResourceGroup -Name myCluster
+New-AzAksCluster -ResourceGroupName myResourceGroup -Name myCluster
 ```
 
 ### Create Windows Server container on an AKS.
@@ -43,9 +55,9 @@ To create Windows Server container on an AKS, you must specify at least four fol
 `-WindowsProfileAdminUserName *** -WindowsProfileAdminUserPassword *** -NetworkPlugin azure -NodeVmSetType VirtualMachineScaleSets`
 
 ```powershell
-PS C:\> $cred = ConvertTo-SecureString -AsPlainText "Password!!123" -Force
-PS C:\> New-AzAks -ResourceGroupName myResourceGroup -Name myCluster -WindowsProfileAdminUserName azureuser -WindowsProfileAdminUserPassword $cred -NetworkPlugin azure -NodeVmSetType VirtualMachineScaleSets
-PS C:\> New-AzAksNodePool -ResourceGroupName myResourceGroup -ClusterName myCluster -Name win1 -OsType Windows -VmSetType VirtualMachineScaleSets
+$cred = ConvertTo-SecureString -AsPlainText "Password!!123" -Force
+New-AzAksCluster -ResourceGroupName myResourceGroup -Name myCluster -WindowsProfileAdminUserName azureuser -WindowsProfileAdminUserPassword $cred -NetworkPlugin azure -NodeVmSetType VirtualMachineScaleSets
+New-AzAksNodePool -ResourceGroupName myResourceGroup -ClusterName myCluster -Name win1 -OsType Windows -VmSetType VirtualMachineScaleSets
 ```
 
 ## PARAMETERS
@@ -70,6 +82,51 @@ Add-on names to be enabled when cluster is created.
 
 ```yaml
 Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AksCustomHeader
+Aks custom headers used for building Kubernetes network.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ApiServerAccessAuthorizedIpRange
+The IP ranges authorized to access the Kubernetes API server.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ApiServerAccessPrivateDnsZone
+The private DNS zone mode for the cluster.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -125,8 +182,83 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DnsServiceIP
+DNS service IP used for building Kubernetes network.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DockerBridgeCidr
+Docker bridge cidr used for building Kubernetes network.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableApiServerAccessPrivateCluster
+Whether to create the cluster as a private cluster or not.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableApiServerAccessPrivateClusterPublicFQDN
+Whether to create additional public FQDN for private cluster or not.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableNodeAutoScaling
 Whether to enable auto-scaler
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableNodePublicIp
+Whether to enable public IP for nodes.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -160,6 +292,21 @@ Create cluster even if it already exists
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FqdnSubdomain
+The FQDN subdomain of the private cluster with custom private dns zone.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -207,6 +354,81 @@ User name for the Linux Virtual Machines.
 Type: System.String
 Parameter Sets: (All)
 Aliases: AdminUserName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LoadBalancerAllocatedOutboundPort
+The desired number of allocated SNAT ports per VM.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LoadBalancerIdleTimeoutInMinute
+Desired outbound flow idle timeout in minutes.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LoadBalancerManagedOutboundIpCount
+Desired managed outbound IPs count for the cluster load balancer.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LoadBalancerOutboundIp
+Desired outbound IP resources for the cluster load balancer.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LoadBalancerOutboundIpPrefix
+Desired outbound IP Prefix resources for the cluster load balancer.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -272,6 +494,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: azure
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetworkPolicy
+Network policy used for building Kubernetes network.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -366,8 +603,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NodePoolLabel
+Node pool labels used for building Kubernetes network.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NodePoolMode
 NodePoolMode represents mode of an node pool.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NodePublicIPPrefixID
+The resource Id of public IP prefix for node pool.
 
 ```yaml
 Type: System.String
@@ -456,6 +723,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PodCidr
+Pod cidr used for building Kubernetes network.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Resource Group Name.
 
@@ -466,6 +748,21 @@ Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServiceCidr
+Service cidr used for building Kubernetes network.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -504,6 +801,23 @@ Accept wildcard characters: False
 
 ### -SubnetName
 Subnet name of VirtualNode addon.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the subscription.
+By default, cmdlets are executed in the subscription that is set in the current context. If the user specifies another subscription, the current cmdlet is executed in the subscription specified by the user.
+Overriding subscriptions only take effect during the lifecycle of the current cmdlet. It does not change the subscription in the context, and does not affect subsequent cmdlets.
 
 ```yaml
 Type: System.String

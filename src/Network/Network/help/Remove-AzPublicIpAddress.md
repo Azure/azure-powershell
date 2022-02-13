@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 00236BC2-61D8-49C2-91BE-923C567153F3
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azpublicipaddress
+online version: https://docs.microsoft.com/powershell/module/az.network/remove-azpublicipaddress
 schema: 2.0.0
 ---
 

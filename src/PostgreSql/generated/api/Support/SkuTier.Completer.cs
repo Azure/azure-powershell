@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
 {
 
-    /// <summary>Argument completer implementation for SkuTier.</summary>
+    /// <summary>The tier of the particular SKU, e.g. Basic.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.SkuTierTypeConverter))]
     public partial struct SkuTier :
         System.Management.Automation.IArgumentCompleter
@@ -28,15 +28,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Basic".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Basic", "Basic", global::System.Management.Automation.CompletionResultType.ParameterValue, "Basic");
+                yield return new global::System.Management.Automation.CompletionResult("'Basic'", "Basic", global::System.Management.Automation.CompletionResultType.ParameterValue, "Basic");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "GeneralPurpose".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("GeneralPurpose", "GeneralPurpose", global::System.Management.Automation.CompletionResultType.ParameterValue, "GeneralPurpose");
+                yield return new global::System.Management.Automation.CompletionResult("'GeneralPurpose'", "GeneralPurpose", global::System.Management.Automation.CompletionResultType.ParameterValue, "GeneralPurpose");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "MemoryOptimized".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("MemoryOptimized", "MemoryOptimized", global::System.Management.Automation.CompletionResultType.ParameterValue, "MemoryOptimized");
+                yield return new global::System.Management.Automation.CompletionResult("'MemoryOptimized'", "MemoryOptimized", global::System.Management.Automation.CompletionResultType.ParameterValue, "MemoryOptimized");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Burstable".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Burstable'", "Burstable", global::System.Management.Automation.CompletionResultType.ParameterValue, "Burstable");
             }
         }
     }

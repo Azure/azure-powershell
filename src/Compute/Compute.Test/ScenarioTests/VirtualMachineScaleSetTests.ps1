@@ -374,6 +374,48 @@ function Test-VirtualMachineScaleSet-Common($IsManaged)
     }
 }
 
+function Test-VirtualMachineScaleSetInEdgeZone
+{
+    $ResourceGroupName = Get-ComputeTestResourceName;
+    $Location = "westus";
+    $EdgeZone = "microsoftlosangeles1";
+    $ScaleSetName = "scalesetinedgezone";
+    try
+    {
+        $config = New-AzVmssConfig -Location $Location -EdgeZone $EdgeZone;
+        Assert-AreEqual $config.ExtendedLocation.Name $EdgeZone
+         
+        New-AzResourceGroup -ResourceGroupName $ResourceGroupName -Location $Location;
+        
+        $VMLocalAdminUser = "LocalAdminUser";
+        $VMLocalAdminSecurePassword = ConvertTo-SecureString $PLACEHOLDER -AsPlainText -Force;
+
+        $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $VMLocalAdminSecurePassword);
+        
+        New-AzVmss `
+          -ResourceGroupName $ResourceGroupName `
+          -Location $Location `
+          -EdgeZone $EdgeZone `
+          -VMScaleSetName $ScaleSetName `
+          -VirtualNetworkName "myVnet" `
+          -SubnetName "mySubnet" `
+          -PublicIpAddressName "myPublicIPAddress" `
+          -LoadBalancerName "myLoadBalancer" `
+          -UpgradePolicyMode "Automatic" `
+          -Credential $Credential `
+          -DomainNameLabel "scalesetinedgezone-70f698"
+
+        $vmss = Get-AzVmss -ResourceGroupName $ResourceGroupName -VMScaleSetName $ScaleSetName
+
+        Assert-AreEqual $vmss.ExtendedLocation.Name $EdgeZone
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $ResourceGroupName
+    }
+}
+
 <#
 .SYNOPSIS
 Test Virtual Machine Scale Set Upgrade
@@ -417,7 +459,7 @@ function Test-VirtualMachineScaleSetUpdate
         $extver = '2.1';
 
         $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
-        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'Manual' `
+        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A1_v2' -UpgradePolicyMode 'Manual' `
             | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
             | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
             | Set-AzVmssStorageProfile -Name 'test' -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
@@ -429,7 +471,7 @@ function Test-VirtualMachineScaleSetUpdate
 
         Assert-AreEqual $loc $result.Location;
         Assert-AreEqual 2 $result.Sku.Capacity;
-        Assert-AreEqual 'Standard_A0' $result.Sku.Name;
+        Assert-AreEqual 'Standard_A1_v2' $result.Sku.Name;
         Assert-AreEqual 'Manual' $result.UpgradePolicy.Mode;
 
         # Validate Network Profile
@@ -463,7 +505,7 @@ function Test-VirtualMachineScaleSetUpdate
         # Verify the result of VMSS
         $vmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
         Assert-AreEqual $null $vmss.Zones;
-        Assert-AreEqual 0 $vmss.Tags.Count;
+        # Assert-AreEqual 0 $vmss.Tags.Count; commenting out because there are default tags being placed by internal policy
         Assert-AreEqual 2 $vmss.Sku.Capacity;
 
         Assert-ThrowsContains {
@@ -477,14 +519,12 @@ function Test-VirtualMachineScaleSetUpdate
 
         $vmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
         $returned_tags = $vmss.Tags;
-        Assert-AreEqual 2 $returned_tags.Count;
+        Assert-True { $returned_tags.Count -ge 2 }
         Assert-AreEqual $tags["test1"] $returned_tags["test1"];
         Assert-AreEqual $tags["test2"] $returned_tags["test2"];
         Assert-AreEqual 3 $vmss.Sku.Capacity;
 
         $vmss2 = $vmss | Update-AzVmss -SkuCapacity 4;
-        $returned_tags2 = $vmss2.Tags;
-        Assert-AreEqual 2 $returned_tags2.Count;
         Assert-AreEqual $tags["test1"] $returned_tags["test1"];
         Assert-AreEqual $tags["test2"] $returned_tags["test2"];
         Assert-AreEqual 4 $vmss2.Sku.Capacity;
@@ -548,7 +588,7 @@ function Test-VirtualMachineScaleSetReimageUpdate
         $extname2 = 'csetest2';
 
         $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
-        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'Manual' `
+        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A1_v2' -UpgradePolicyMode 'Manual' `
             | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
             | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
             | Set-AzVmssStorageProfile -Name 'test' -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
@@ -562,7 +602,7 @@ function Test-VirtualMachineScaleSetReimageUpdate
 
         Assert-AreEqual $loc $result.Location;
         Assert-AreEqual 2 $result.Sku.Capacity;
-        Assert-AreEqual 'Standard_A0' $result.Sku.Name;
+        Assert-AreEqual 'Standard_A1_v2' $result.Sku.Name;
         Assert-AreEqual 'Manual' $result.UpgradePolicy.Mode;
 
         # Validate Network Profile
@@ -1113,7 +1153,7 @@ function Test-VirtualMachineScaleSetIdentity
         $extname2 = 'csetest2';
 
         $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
-        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'Manual' -IdentityType "SystemAssigned" `
+        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A1_v2' -UpgradePolicyMode 'Manual' -IdentityType "SystemAssigned" `
             | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
             | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
             | Set-AzVmssStorageProfile -Name 'test' -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
@@ -1125,7 +1165,7 @@ function Test-VirtualMachineScaleSetIdentity
 
         Assert-AreEqual $loc.Replace(" ", "") $result.Location;
         Assert-AreEqual 2 $result.sku.capacity;
-        Assert-AreEqual 'standard_a0' $result.sku.name;
+        Assert-AreEqual 'Standard_A1_v2' $result.sku.name;
         Assert-AreEqual 'manual' $result.upgradepolicy.mode;
 
         # Validate VMSS Identity
@@ -1467,7 +1507,7 @@ function Test-VirtualMachineScaleSetPriority
     try
     {
         # Common
-        $loc = Get-ComputeVMLocation;
+        $loc = 'eastus';
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         # SRP
@@ -1624,7 +1664,7 @@ function Test-VirtualMachineScaleSetWriteAcceleratorUpdate
         # Verify the result of VMSS
         $vmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
         Assert-AreEqual $null $vmss.Zones;
-        Assert-AreEqual 0 $vmss.Tags.Count;
+        # Assert-AreEqual 0 $vmss.Tags.Count; commenting out because there are default tags being placed by internal policy
         Assert-AreEqual 2 $vmss.Sku.Capacity;
         Assert-AreEqual $false $vmss.VirtualMachineProfile.StorageProfile.OsDisk.WriteAcceleratorEnabled;
 
@@ -2099,7 +2139,7 @@ function Test-VirtualMachineScaleSetAutoRollback
 
         $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
 
-        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'Automatic' -DisableAutoRollback $false `
+        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A1_v2' -UpgradePolicyMode 'Automatic' -DisableAutoRollback $false `
             | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
             | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
             | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
@@ -2111,7 +2151,7 @@ function Test-VirtualMachineScaleSetAutoRollback
 
         Assert-AreEqual $loc.Replace(" ", "").ToLowerInvariant() $result.Location;
         Assert-AreEqual 2 $result.Sku.Capacity;
-        Assert-AreEqual 'Standard_A0' $result.Sku.Name;
+        Assert-AreEqual 'Standard_A1_v2' $result.Sku.Name;
         Assert-AreEqual 'Automatic' $result.UpgradePolicy.Mode;
         Assert-False { $result.UpgradePolicy.AutomaticOSUpgradePolicy.DisableAutomaticRollback };
 
@@ -2142,7 +2182,7 @@ function Test-VirtualMachineScaleSetAutoRollback
         # Verify the result of VMSS
         $vmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
         Assert-AreEqual $null $vmss.Zones;
-        Assert-AreEqual 0 $vmss.Tags.Count;
+        # Assert-AreEqual 0 $vmss.Tags.Count;  commenting out because there are default tags being placed by internal policy
         Assert-AreEqual 2 $vmss.Sku.Capacity;
         Assert-AreEqual $false $vmss.VirtualMachineProfile.StorageProfile.OsDisk.WriteAcceleratorEnabled;
 
@@ -2556,19 +2596,55 @@ function Test-VirtualMachineScaleSetOrchestrationVM
         $vmssName = 'vmssOrchestrationMode' + $rgname;
         $vmName = 'vm' + $rgname;
         $domainName = 'domain' + $rgname;
+        
         $adminUsername = 'Foo12';
         $adminPassword = $PLACEHOLDER;
-
         $securePassword = ConvertTo-SecureString $adminPassword -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $securePassword);
 
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $vneid = $vnet.Id
+        $subnetId = $vnet.Subnets[0].Id;
 
-        $VmssConfigWithoutVmProfile = new-azvmssconfig -location $loc -platformfaultdomain 1
-        $VmssWithoutVmProfile = new-azvmss -resourcegroupname $rgname -vmscalesetname $vmssName -virtualmachinescaleset $VmssConfigWithoutVmProfile
+        $ipConfig = New-AzVmssIpConfig -Name 'test' -SubnetId $subnetId
 
-        $vm = new-azvm -resourcegroupname $rgname -location $loc -name $vmname -credential $cred -domainnamelabel $domainName -vmssid $VmssWithoutVmProfile.id
+        $vmssConfig = New-AzVmssConfig `
+            -Location $loc `
+            -SkuCapacity 2 `
+            -SkuName "Standard_DS1_v2" `
+            -OrchestrationMode 'Flexible' `
+            -PlatformFaultDomainCount 2
 
-        Assert-AreEqual $VmssWithoutVmProfile.id $vm.virtualmachinescaleset.id
+        Set-AzVmssStorageProfile $vmssConfig `
+          -OsDiskCreateOption "FromImage" `
+          -ImageReferencePublisher "Canonical" `
+          -ImageReferenceOffer "UbuntuServer" `
+          -ImageReferenceSku "18.04-LTS" `
+          -ImageReferenceVersion "latest"
+
+        Set-AzVmssOsProfile $vmssConfig `
+          -AdminUsername $cred.UserName `
+          -AdminPassword $cred.Password `
+          -ComputerNamePrefix $vmname 
+
+        Add-AzVmssNetworkInterfaceConfiguration `
+          -VirtualMachineScaleSet $vmssConfig `
+          -Name 'test' `
+          -Primary $true `
+          -IPConfiguration $ipConfig `
+          -networkApiVersion "2020-11-01"
+
+        $VmssFlex = New-AzVmss `
+          -ResourceGroupName $rgname `
+          -Name $vmssName `
+          -VirtualMachineScaleSet $vmssConfig
+
+        $vm = new-azvm -resourcegroupname $rgname -location $loc -name $vmname -credential $cred -domainnamelabel $domainName -vmssid $VmssFlex.id
+
+        Assert-AreEqual $VmssFlex.id $vm.virtualmachinescaleset.id
+        Assert-AreEqual $VmssFlex.orchestrationMode "Flexible"
 
         # Test PlatformFaultDomainCount parameter
         $vmssNameSimple = $vmssname + "Simple";
@@ -2681,5 +2757,497 @@ function Test-VirtualMachineScaleSetExtRollingUpgrade
     finally
     {
         
+    }
+}
+
+<#
+.SYNOPSIS
+Test the VMSS spot restore policy 
+#>
+function Test-VirtualMachineScaleSetSpotRestorePolicy
+{
+
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+    try
+    {
+        
+        # Common
+        [string]$loc = "eastus";
+
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # SRP
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_GRS';
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        $stoaccount = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname;
+
+        # NRP
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+
+        # New VMSS Parameters
+        $vmssName = 'vmss' + $rgname;
+        $vmssType = 'Microsoft.Compute/virtualMachineScaleSets';
+
+        $adminUsername = 'Foo12';
+        $adminPassword = Get-PasswordForVM;
+
+        $imgRef = Get-DefaultCRPImage -loc $loc;
+
+        # Create VMSS with managed disk
+        $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
+        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A2_v2' -UpgradePolicyMode 'Automatic' -EnableSpotRestore -SpotRestoreTimeout 'PT35M' -PlatformFaultDomainCount 1 -Priority 'Spot'`
+            | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
+            | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
+            | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
+            -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
+            -ImageReferencePublisher $imgRef.PublisherName;
+
+        $result = New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
+
+        $vmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        Assert-AreEqual True $vmss.SpotRestorePolicy.Enabled;
+        Assert-AreEqual 'PT35M' $vmss.SpotRestorePolicy.RestoreTimeout;
+
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+
+<#
+.SYNOPSIS
+Test the VMSS Flexible orchestration mode defaulting. 
+#>
+function Test-VirtualMachineScaleSetFlexibleOModeDefaulting
+{
+
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $networkAPIVersionFlexible = "2020-11-01";
+    $flexiblePFDC = 1;
+    $flexibleSinglePlacementGroup = $false;
+
+    try
+    {
+        # Common
+        $loc = "eastus";
+
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        
+        # Setup variables
+        $vmssname = "vmss" + $rgname;
+        $domainNameLabel = "dnl" + $rgname;
+        $omode = "Flexible";
+        $username = "admin01"
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+
+        $credential = New-Object System.Management.Automation.PSCredential ($username, $securePassword);
+
+        # Create VMSS with minimal inputs to allow defaulting
+        $vmss = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -Credential $credential -OrchestrationMode $omode -DomainNameLabel $domainNameLabel;
+        Assert-NotNull $vmss;
+        Assert-AreEqual $vmss.OrchestrationMode $omode;
+        Assert-AreEqual $vmss.SinglePlacementGroup $flexibleSinglePlacementGroup;
+        Assert-AreEqual $vmss.PlatformFaultDomainCount $flexiblePFDC;
+        Assert-AreEqual $vmss.VirtualMachineProfile.NetworkProfile.NetworkAPIVersion $networkAPIVersionFlexible;
+
+        Assert-ThrowsContains 
+        {
+            $vmssError = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -Credential $credential -OrchestrationMode $omode -SinglePlacementGroup; `
+        } ` 
+        "The value provided for SinglePlacementGroup cannot be used for a VMSS with OrchestrationMode set to Flexible. Please use SinglePlacementGroup 'false' instead.";
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
+Test Add and remove Vmss Run Command. 
+#>
+function Test-AddAndRemoveAzVmssRunCommand
+{
+
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+
+    try
+    {
+        # Common
+        $loc = "eastus";
+
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        
+        # Setup variables
+        $vmssname = "vmss" + $rgname;
+        $domainNameLabel = "dnl" + $rgname;
+        $username = "admin01"
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+
+        $credential = New-Object System.Management.Automation.PSCredential ($username, $securePassword);
+
+        # Create VMSS with minimal inputs to allow defaulting
+        $vmss = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname  -ImageName 'Win2016Datacenter' -Credential $credential -InstanceCount 1 -DomainNameLabel $domainNameLabel
+        #$vmss = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -Credential $credential -OrchestrationMode $omode -DomainNameLabel $domainNameLabel;
+        
+        $runcmds = Add-AzVmssRunCommand -ResourceGroupName $rgname -VMScaleSetName $vmssname -Location eastus -Name myruncommand -Script "Write-Host Hello World" -TimeOutInSeconds 3600 -RunAsUser "admin01" 
+        Assert-AreEqual $runcmds.RunAsUser "admin01";
+        Assert-AreEqual $runcmds.TimeOutInSeconds "3600";
+        Remove-AzVmssRunCommand -ResourceGroupName $rgname -VMScaleSetName $vmssname -Name myruncommand
+
+    } 
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
+Test the VMSS UserData feature, specifically the Base64 encoding functionality.
+#>
+function Test-VirtualMachineScaleSetUserdata
+{
+
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+    try
+    {
+
+        # Common
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $vmssName = 'vmss' + $rgname;
+        $domainNameLabel = "dnl" + $rgname;
+
+        $text = "new vmss";
+        $bytes = [System.Text.Encoding]::Unicode.GetBytes($text);
+        $encodedText = [Convert]::ToBase64String($bytes);
+        $userData = $encodedText;
+
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;  
+        $user = "admin01";
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        # Create Vmss with UserData.
+        $vmss = New-AzVmss -ResourceGroupName $rgname -Name $vmssname -Credential $cred -DomainNameLabel $domainNameLabel -Userdata $userData;
+        $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -InstanceView:$false -Userdata;
+        Assert-AreEqual $vmssGet.VirtualMachineProfile.UserData $userData;
+
+        # Update UserData property on Vmss.
+        $text2 = "update vmss";
+        $bytes2 = [System.Text.Encoding]::Unicode.GetBytes($text2);
+        $encodedText2 = [Convert]::ToBase64String($bytes2);
+        $userData2 = $encodedText2;
+
+        $vmssUp = Update-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmssGet -Userdata $userData2;
+        $vmssGet2 = Get-AzVmss -ResourceGroupName $rgname -Name $vmssName -Userdata -InstanceView:$false;
+        Assert-AreEqual $vmssGet2.VirtualMachineProfile.UserData $userData2;
+
+        # Update VmssVm UserData property.
+        $text3 = "vm update vmss vm";
+        $bytes3 = [System.Text.Encoding]::Unicode.GetBytes($text3);
+        $encodedText3 = [Convert]::ToBase64String($bytes3);
+        $userData3 = $encodedText3;
+        $vmssvm = Get-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName -UserData; 
+        Assert-AreNotEqual $vmssvm.UserData $userData3;
+        $vmssvmUp = Update-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId 1 -UserData $userData3;
+        
+        $vmssvm2 = Get-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId 1 -UserData; 
+        Assert-AreEqual $vmssvm2.UserData $userData3;
+
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
+Test Virtual Machine Scale Set DiffDiskPlacement feature. 
+#>
+function Test-VirtualMachineScaleSetDiffDiskPlacement
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+
+    try
+    {
+        ## Cache Disk Test ##
+        # Common
+        $loc = Get-ComputeVMLocation;
+        $vmssSize = 'Standard_DS3_v2';
+
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # NRP
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+
+        # New VMSS Parameters
+        $vmssName = 'vmss' + $rgname;
+        $vmssType = 'Microsoft.Compute/virtualMachineScaleSets';
+        $diffDiskPlacement = "CacheDisk";
+
+        $adminUsername = 'Foo12';
+        $adminPassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
+
+        $imgRef = Create-ComputeVMImageObject -loc "eastus" -publisherName "MicrosoftWindowsServerHPCPack" -offer "WindowsServerHPCPack" -skus "2012R2" -version "4.5.5198";
+        $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
+                    
+        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName $vmssSize -UpgradePolicyMode 'Manual' `
+            | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
+            | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
+            | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'ReadOnly' `
+            -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
+            -ImageReferencePublisher $imgRef.PublisherName -DiffDiskSetting 'Local' -DiffDiskPlacement $diffDiskPlacement;
+
+        $result = New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
+
+        # Validate DiffDiskPlacement value
+        Assert-AreEqual $result.VirtualMachineProfile.StorageProfile.OsDisk.DiffDiskSettings.Placement $diffDiskPlacement;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
+Test Virtual Machine Scale Set EnableHotPatching feature. 
+#>
+function Test-VirtualMachineScaleSetEnableHotPatching
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+
+    try
+    {
+        $loc = "eastus";
+        $vmssName = "myVmssSlb";
+        $vmNamePrefix = "vmSlb";
+        $vmssInstanceCount = 5;
+        $vmssSku = "Standard_DS1_v2";
+
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;  
+        $cred = New-Object System.Management.Automation.PSCredential ("azureuser", $securePassword);
+
+        $vnetname = "myVnet";
+        $vnetAddress = "10.0.0.0/16";
+        $subnetname = "default-slb";
+        $subnetAddress = "10.0.2.0/24";
+
+        # set up networking
+        # VMSS Flex requires explicit outbound access
+        # Create a virtual network 
+        $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetname -AddressPrefix $subnetAddress;
+        $virtualNetwork = New-AzVirtualNetwork -Name $vnetname -ResourceGroupName $rgname -Location $loc -AddressPrefix $vnetAddress -Subnet $frontendSubnet;
+
+        # # Create a public IP address
+        $publicIP = New-AzPublicIpAddress `
+            -ResourceGroupName $rgname `
+            -Location $loc `
+            -AllocationMethod Static `
+            -Sku "Standard" `
+            -IpAddressVersion "IPv4" `
+            -Name "myLBPublicIP";
+
+        # # Create a frontend and backend IP pool
+        $frontendIP = New-AzLoadBalancerFrontendIpConfig `
+            -Name "myFrontEndPool" `
+            -PublicIpAddress $publicIP;
+
+        $backendPool = New-AzLoadBalancerBackendAddressPoolConfig `
+            -Name "myBackEndPool" ;
+
+        # # Create the load balancer
+        $lb = New-AzLoadBalancer `
+            -ResourceGroupName $rgname `
+            -Name "myLoadBalancer" `
+            -Sku "Standard" `
+            -Tier "Regional" `
+            -Location $loc `
+            -FrontendIpConfiguration $frontendIP `
+            -BackendAddressPool $backendPool ;
+
+        # # Create a load balancer health probe for TCP port 80
+        Add-AzLoadBalancerProbeConfig -Name "myHealthProbe" `
+            -LoadBalancer $lb `
+            -Protocol TCP `
+            -Port 80 `
+            -IntervalInSeconds 15 `
+            -ProbeCount 2;
+
+        # # Create a load balancer rule to distribute traffic on port TCP 80
+        # # The health probe from the previous step is used to make sure that traffic is
+        # # only directed to healthy VM instances
+        Add-AzLoadBalancerRuleConfig `
+            -Name "myLoadBalancerRule" `
+            -LoadBalancer $lb `
+            -FrontendIpConfiguration $lb.FrontendIpConfigurations[0] `
+            -BackendAddressPool $lb.BackendAddressPools[0] `
+            -Protocol TCP `
+            -FrontendPort 80 `
+            -BackendPort 80 `
+            -DisableOutboundSNAT `
+            -Probe (Get-AzLoadBalancerProbeConfig -Name "myHealthProbe" -LoadBalancer $lb);
+
+        # # Add outbound connectivity rule
+        Add-AzLoadBalancerOutboundRuleConfig `
+            -Name "outboundrule" `
+            -LoadBalancer $lb `
+            -AllocatedOutboundPort '10000' `
+            -Protocol 'All' `
+            -IdleTimeoutInMinutes '15' `
+            -FrontendIpConfiguration $lb.FrontendIpConfigurations[0] `
+            -BackendAddressPool $lb.BackendAddressPools[0] ;
+
+        # # Update the load balancer configuration
+        Set-AzLoadBalancer -LoadBalancer $lb;
+
+        # # Create IP address configurations
+        # # Instances will require explicit outbound connectivity, for example
+        # #   - NAT Gateway on the subnet (recommended)
+        # #   - Instances in backend pool of Standard LB with outbound connectivity rules
+        # #   - Public IP address on each instance
+        # # See aka.ms/defaultoutboundaccess for more info
+        $ipConfig = New-AzVmssIpConfig `
+            -Name "myIPConfig" `
+            -SubnetId $virtualNetwork.Subnets[0].Id `
+            -LoadBalancerBackendAddressPoolsId $lb.BackendAddressPools[0].Id `
+            -Primary;
+
+        # Create a config object
+        # The VMSS config object stores the core information for creating a scale set
+        $vmssConfig = New-AzVmssConfig `
+            -Location $loc `
+            -SkuCapacity $vmssInstanceCount `
+            -SkuName $vmssSku `
+            -OrchestrationMode 'Flexible' `
+            -PlatformFaultDomainCount 1;
+
+        # Reference a virtual machine image from the gallery
+        Set-AzVmssStorageProfile $vmssConfig `
+            -OsDiskCreateOption "FromImage" `
+            -ImageReferencePublisher "MicrosoftWindowsServer" `
+            -ImageReferenceOffer "WindowsServer" `
+            -ImageReferenceSku "2022-datacenter-azure-edition-core-smalldisk" `
+            -ImageReferenceVersion "latest";    
+
+        # Set up information for authenticating with the virtual machine
+        Set-AzVmssOsProfile $vmssConfig `
+            -AdminUsername $cred.UserName `
+            -AdminPassword $cred.Password `
+            -ComputerNamePrefix $vmNamePrefix `
+            -WindowsConfigurationProvisionVMAgent $true `
+            -WindowsConfigurationPatchMode "AutomaticByPlatform" `
+            -EnableHotpatching;
+
+        # Attach the virtual network to the config object
+        Add-AzVmssNetworkInterfaceConfiguration `
+            -VirtualMachineScaleSet $vmssConfig `
+            -Name "network-config" `
+            -Primary $true `
+            -IPConfiguration $ipConfig `
+            -NetworkApiVersion '2020-11-01' ;
+
+        # Health extension attempt
+        # Define the Application Health extension properties
+        $publicConfig = @{"protocol" = "http"; "port" = 80; "requestPath" = "/healthEndpoint"};
+        $extensionName = "myHealthExtension";
+        $extensionType = "ApplicationHealthWindows";
+        $publisher = "Microsoft.ManagedServices";
+        # Add the Application Health extension to the scale set model
+        Add-AzVmssExtension -VirtualMachineScaleSet $vmssConfig `
+            -Name $extensionName `
+            -Publisher $publisher `
+            -Setting $publicConfig `
+            -Type $extensionType `
+            -TypeHandlerVersion "1.0" `
+            -AutoUpgradeMinorVersion $True;
+
+        # Test updating the value. Updating after the Vmss is created is not supported.
+        Set-AzVmssOsProfile $vmssConfig -EnableHotPatching:$false;
+        Assert-AreEqual $false $vmssConfig.VirtualMachineProfile.OsProfile.WindowsConfiguration.PatchSettings.EnableHotPatching;
+        Set-AzVmssOsProfile $vmssConfig -EnableHotPatching:$true;
+        Assert-AreEqual $true $vmssConfig.VirtualMachineProfile.OsProfile.WindowsConfiguration.PatchSettings.EnableHotPatching;
+
+        # Create the scale set with the config object (this step might take a few minutes)
+        New-AzVmss `
+            -ResourceGroupName $rgname `
+            -Name $vmssName `
+            -VirtualMachineScaleSet $vmssConfig;   
+            
+        $vmss = Get-AzVmss -ResourceGroupName $rgname -Name $vmssName;
+        Assert-AreEqual $true $vmss.VirtualMachineProfile.OsProfile.WindowsConfiguration.PatchSettings.EnableHotPatching;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
+Force Deletion of VMSS. 
+#>
+function Test-RemoveVmssForceDeletion
+{
+
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+
+    try
+    {
+        # Common
+        $loc = "eastus";
+
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        
+        # Setup variables
+        $vmssname = "vmss" + $rgname;
+        $domainNameLabel = "dnl" + $rgname;
+        $username = "admin01"
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+
+        $credential = New-Object System.Management.Automation.PSCredential ($username, $securePassword);
+
+        # Create VMSS with minimal inputs to allow defaulting
+        $vmss = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname  -ImageName 'Win2016Datacenter' -Credential $credential -InstanceCount 1 -DomainNameLabel $domainNameLabel
+        #$vmss = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -Credential $credential -OrchestrationMode $omode -DomainNameLabel $domainNameLabel;
+        
+        Remove-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -ForceDeletion $true -Force
+
+    } 
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
     }
 }

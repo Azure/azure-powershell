@@ -1,7 +1,7 @@
 ---
 Module Name: Az.MySql
-Module Guid: 8c7c6fcd-a96f-460b-89e2-ff822a3246c8
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.mysql
+Module Guid: 0b8ac9f4-b926-4ac8-b73f-937a0d218521
+Download Help Link: https://docs.microsoft.com/powershell/module/az.mysql
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -26,11 +26,17 @@ Gets information about a server.
 ### [Get-AzMySqlFlexibleServerConfiguration](Get-AzMySqlFlexibleServerConfiguration.md)
 Gets information about a configuration of server.
 
+### [Get-AzMySqlFlexibleServerConnectionString](Get-AzMySqlFlexibleServerConnectionString.md)
+Get the connection string according to client connection provider.
+
 ### [Get-AzMySqlFlexibleServerDatabase](Get-AzMySqlFlexibleServerDatabase.md)
 Gets information about a database.
 
 ### [Get-AzMySqlFlexibleServerFirewallRule](Get-AzMySqlFlexibleServerFirewallRule.md)
 Gets information about a server firewall rule.
+
+### [Get-AzMySqlFlexibleServerLocationBasedCapability](Get-AzMySqlFlexibleServerLocationBasedCapability.md)
+Get the available SKU information for the location
 
 ### [Get-AzMySqlFlexibleServerReplica](Get-AzMySqlFlexibleServerReplica.md)
 List all the replicas for a given server.
@@ -48,7 +54,7 @@ Gets a virtual network rule.
 Creates a new firewall rule or updates an existing firewall rule.
 
 ### [New-AzMySqlFlexibleServer](New-AzMySqlFlexibleServer.md)
-Creates a new server.
+Creates a new MySQL flexible server.
 
 ### [New-AzMySqlFlexibleServerDatabase](New-AzMySqlFlexibleServerDatabase.md)
 Creates a new database or updates an existing database.
@@ -57,7 +63,7 @@ Creates a new database or updates an existing database.
 Creates a new firewall rule for MySQL flexible server
 
 ### [New-AzMySqlFlexibleServerReplica](New-AzMySqlFlexibleServerReplica.md)
-Creates a new replica from an existing database.
+Creates a replica server for a MySQL flexible server
 
 ### [New-AzMySqlReplica](New-AzMySqlReplica.md)
 Creates a new replica from an existing database.
@@ -104,6 +110,9 @@ Starts a server.
 ### [Stop-AzMySqlFlexibleServer](Stop-AzMySqlFlexibleServer.md)
 Stops a server.
 
+### [Test-AzMySqlFlexibleServerConnect](Test-AzMySqlFlexibleServerConnect.md)
+Test out the connection to the database server
+
 ### [Update-AzMySqlConfiguration](Update-AzMySqlConfiguration.md)
 Updates a configuration of a server.
 Use Update-AzMySqlServer instead if you want update AdministratorLoginPassword, sku, etc.
@@ -119,9 +128,6 @@ Use Update-AzMySqlFlexibleServerConfiguration instead if you want update server 
 ### [Update-AzMySqlFlexibleServerConfiguration](Update-AzMySqlFlexibleServerConfiguration.md)
 Updates information about a configuration of a MySQL flexible server.
 
-### [Update-AzMySqlFlexibleServerDatabase](Update-AzMySqlFlexibleServerDatabase.md)
-Creates a new database or updates an existing database.
-
 ### [Update-AzMySqlFlexibleServerFirewallRule](Update-AzMySqlFlexibleServerFirewallRule.md)
 Updates an existing firewall rule.
 
@@ -129,6 +135,9 @@ Updates an existing firewall rule.
 Updates an existing server.
 The request body can contain one to many of the properties present in the normal server definition.
 Use Update-AzMySqlConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
+
+### [Update-AzMySqlServerConfigurationsList](Update-AzMySqlServerConfigurationsList.md)
+Update a list of configurations in a given server.
 
 ### [Update-AzMySqlVirtualNetworkRule](Update-AzMySqlVirtualNetworkRule.md)
 Creates or updates an existing virtual network rule.

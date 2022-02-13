@@ -65,12 +65,26 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public string Name { get; set; }
         public string Type { get; set; }
         public string Location { get; set; }
+        public ExtendedLocation ExtendedLocation { get; set; }
         public IDictionary<string, string> Tags { get; set; }
         //     Gets or sets possible values include: 'AllowAll', 'AllowPrivate', 'DenyAll'
         public string NetworkAccessPolicy { get; set; }
         public string DiskAccessId { get; set; }
-
         public string Tier { get; set; }
+        public bool? BurstingEnabled { get; set; }
+        public PSPurchasePlan PurchasePlan { get; set; }
+        public bool? SupportsHibernation { get; set; }
+        public DiskSecurityProfile SecurityProfile { get; set; }
 
+        //
+        // Summary:
+        //     Gets or sets possible values include: 'Enabled', 'Disabled'
+        public string PublicNetworkAccess { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets list of supported capabilities for the image from which the OS disk
+        //     was created.
+        public SupportedCapabilities SupportedCapabilities { get; set; }
     }
 }

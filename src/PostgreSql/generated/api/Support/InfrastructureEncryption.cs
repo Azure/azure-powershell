@@ -6,6 +6,10 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
 {
 
+    /// <summary>
+    /// Add a second layer of encryption for your data using new encryption algorithm which gives additional data protection.
+    /// Value is optional but if passed in, must be 'Disabled' or 'Enabled'.
+    /// </summary>
     public partial struct InfrastructureEncryption :
         System.IEquatable<InfrastructureEncryption>
     {
@@ -22,7 +26,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
         /// <param name="value">the value to convert to an instance of <see cref="InfrastructureEncryption" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new InfrastructureEncryption(System.Convert.ToString(value));
+            return new InfrastructureEncryption(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type InfrastructureEncryption</summary>

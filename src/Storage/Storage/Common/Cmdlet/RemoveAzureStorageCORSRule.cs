@@ -17,6 +17,8 @@ using XTable = Microsoft.Azure.Cosmos.Table;
 using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
+using System;
+using Azure.Data.Tables.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
 {
@@ -28,6 +30,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
     {
         [Parameter(Mandatory = true, Position = 0, HelpMessage = GetAzureStorageServiceLoggingCommand.ServiceTypeHelpMessage)]
         public StorageServiceType ServiceType { get; set; }
+
+        // Overwrite the useless parameter
+        public override string TagCondition { get; set; }
 
         public RemoveAzureStorageCORSRuleCommand()
         {
@@ -54,14 +59,25 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
             else //Table use old XSCL
             {
                 StorageTableManagement tableChannel = new StorageTableManagement(Channel.StorageContext);
-                XTable.ServiceProperties currentServiceProperties = tableChannel.GetStorageTableServiceProperties(GetTableRequestOptions(), TableOperationContext);
-                XTable.ServiceProperties serviceProperties = new XTable.ServiceProperties();
-                serviceProperties.Clean();
-                serviceProperties.Cors = currentServiceProperties.Cors;
-                serviceProperties.Cors.CorsRules.Clear();
 
-                tableChannel.SetStorageTableServiceProperties(serviceProperties,
-                    GetTableRequestOptions(), TableOperationContext);
+                if (!tableChannel.IsTokenCredential)
+                {
+                    XTable.ServiceProperties currentServiceProperties = tableChannel.GetStorageTableServiceProperties(GetTableRequestOptions(), TableOperationContext);
+                    XTable.ServiceProperties serviceProperties = new XTable.ServiceProperties();
+                    serviceProperties.Clean();
+                    serviceProperties.Cors = currentServiceProperties.Cors;
+                    serviceProperties.Cors.CorsRules.Clear();
+
+                    tableChannel.SetStorageTableServiceProperties(serviceProperties,
+                        GetTableRequestOptions(), TableOperationContext);
+                }
+                else
+                {
+                    TableServiceProperties serviceProperties = tableChannel.GetProperties(this.CmdletCancellationToken);
+                    serviceProperties.Cors.Clear();
+
+                    tableChannel.SetProperties(serviceProperties, this.CmdletCancellationToken);
+                }
             }
         }
     }

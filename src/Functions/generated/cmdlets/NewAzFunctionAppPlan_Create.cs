@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Extensions;
+    using System;
 
     /// <summary>Description for Creates or updates an App Service Plan.</summary>
     /// <remarks>

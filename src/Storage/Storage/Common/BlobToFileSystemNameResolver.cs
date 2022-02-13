@@ -37,7 +37,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         {
             get
             {
-                return "\\";
+                return Path.DirectorySeparatorChar.ToString();
             }
         }
 

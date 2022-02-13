@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.Compute
         protected const string LinuxParamSet = "LinuxParamSet";
         protected const string WindowsAndDiskEncryptionParameterSet = "WindowsDiskEncryptionParameterSet";
         protected const string LinuxAndDiskEncryptionParameterSet = "LinuxDiskEncryptionParameterSet";
+        protected const string DiffDiskPlacementPresentButNotSetting = "The DiffDiskPlacement parameter can only be used when the DiffDiskSetting parameter is set to 'Local'. Please provide the DiffDiskSetting parameter.";
 
         [Alias("VMProfile")]
         [Parameter(
@@ -177,6 +178,20 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true)]
         public string DiffDiskSetting { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the ephemeral disk placement for operating system disk. This property can be used by user in the request to choose the location i.e. cache disk or resource disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer Ephemeral OS disk size requirements for Windows VM at https://docs.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements and Linux VM at https://docs.microsoft.com/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements. This parameter can only be used if the parameter DiffDiskSetting is set to 'Local'.")]
+        [PSArgumentCompleter("CacheDisk", "ResourceDisk")]
+        public string DiffDiskPlacement { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("Detach", "Delete")]
+        public string DeleteOption { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.VM.StorageProfile == null)
@@ -200,6 +215,7 @@ namespace Microsoft.Azure.Commands.Compute
             this.VM.StorageProfile.OsDisk.Name = this.Name ?? this.VM.StorageProfile.OsDisk.Name;
             this.VM.StorageProfile.OsDisk.Caching = this.Caching ?? this.VM.StorageProfile.OsDisk.Caching;
             this.VM.StorageProfile.OsDisk.DiskSizeGB = this.DiskSizeInGB ?? this.VM.StorageProfile.OsDisk.DiskSizeGB;
+            this.VM.StorageProfile.OsDisk.DeleteOption = this.DeleteOption ?? this.VM.StorageProfile.OsDisk.DeleteOption;
 
             if (this.Windows.IsPresent)
             {
@@ -260,6 +276,13 @@ namespace Microsoft.Azure.Commands.Compute
 
             this.VM.StorageProfile.OsDisk.WriteAcceleratorEnabled = this.WriteAccelerator.IsPresent;
 
+            if (this.IsParameterBound(c => c.DiffDiskPlacement) & !this.IsParameterBound(c => c.DiffDiskSetting))
+            {
+                WriteError(new ErrorRecord(
+                        new Exception(DiffDiskPlacementPresentButNotSetting),
+                        string.Empty, ErrorCategory.InvalidArgument, null));
+            }
+
             if (this.IsParameterBound(c => c.DiffDiskSetting))
             {
                 if (this.VM.StorageProfile.OsDisk.DiffDiskSettings == null)
@@ -267,6 +290,11 @@ namespace Microsoft.Azure.Commands.Compute
                     this.VM.StorageProfile.OsDisk.DiffDiskSettings = new DiffDiskSettings();
                 }
                 this.VM.StorageProfile.OsDisk.DiffDiskSettings.Option = this.DiffDiskSetting;
+
+                if (this.IsParameterBound(c => c.DiffDiskPlacement))
+                {
+                    this.VM.StorageProfile.OsDisk.DiffDiskSettings.Placement = this.DiffDiskPlacement;
+                }
             }
 
             WriteObject(this.VM);

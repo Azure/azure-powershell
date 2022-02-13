@@ -16,20 +16,23 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using System;
     using System.Collections;
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Management.Automation;
-
+    using Microsoft.Azure.Commands.Common.Exceptions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using Newtonsoft.Json.Linq;
-    using Policy;      
+    using Policy;
 
     /// <summary>
     /// Sets the policy assignment.
     /// </summary>
+    [CmdletOutputBreakingChange(typeof(PsPolicyAssignment), NewOutputProperties = new String[] { "Identity" })]
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PolicyAssignment", DefaultParameterSetName = PolicyCmdletBase.NameParameterSet), OutputType(typeof(PsPolicyAssignment))]
     public class SetAzurePolicyAssignmentCmdlet : PolicyCmdletBase
     {
@@ -55,7 +58,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// Gets or sets the policy assignment not scopes parameter.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyAssignmentNotScopesHelp)]
-        [ValidateNotNullOrEmpty]
+        [ValidateNotNull]
         public string[] NotScope { get; set; }
 
         /// <summary>
@@ -104,9 +107,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public string PolicyParameter { get; set; }
 
-        /// <summary>
-        /// Gets or sets a flag indicating whether a system assigned identity should be added to the policy assignment.
-        /// </summary>
+        [CmdletParameterBreakingChange("AssignIdentity", ChangeDescription = "Parameter AssignIdentity is deprecated and will be removed in future releases. Please use the 'IdentityType' parameter instead.")]
         [Parameter(Mandatory = false, HelpMessage = PolicyHelpStrings.PolicyAssignmentAssignIdentityHelp)]
         public SwitchParameter AssignIdentity { get; set; }
 
@@ -125,10 +126,29 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public PolicyAssignmentEnforcementMode? EnforcementMode { get; set; }
 
         /// <summary>
+        /// Gets or sets the type of managed identity to be assigned to the policy assignment.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = PolicyHelpStrings.PolicyAssignmentIdentityTypeHelp)]
+        public ManagedIdentityType? IdentityType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the ID of the user assigned managed identity to be assigned to the policy assignment.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = PolicyHelpStrings.PolicyAssignmentIdentityIdHelp)]
+        public string IdentityId { get; set; }
+
+        /// <summary>
         /// Gets or sets the policy assignment input object parameter.
         /// </summary>
         [Parameter(ParameterSetName = PolicyCmdletBase.InputObjectParameterSet, Mandatory = true, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyAssignmentInputObjectHelp)]
         public PsPolicyAssignment InputObject { get; set; }
+
+        /// <summary>
+        /// Gets or sets the messages that describe why a resource is non-compliant with the policy.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.PolicyAssignmentNonComplianceMessageHelp)]
+        [ValidateNotNull]
+        public PsNonComplianceMessage[] NonComplianceMessage { get; set; }
 
         /// <summary>
         /// Executes the cmdlet.
@@ -136,6 +156,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected override void OnProcessRecord()
         {
             base.OnProcessRecord();
+            CheckIfIdentityPresent();
             string resourceId = this.GetResourceId();
             var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.PolicyAssignmentApiVersion : this.ApiVersion;
 
@@ -162,35 +183,109 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
 
         /// <summary>
+        /// Verifies if identity type and/or identity ID and/or location are present
+        /// </summary>
+        private bool CheckIfIdentityPresent()
+        {
+            if (this.AssignIdentity.IsPresent && this.IdentityType != null)
+            {
+                throw new AzPSArgumentException("Cannot specify both IdentityType and AssignIdentity at the same time.", "IdentityType");
+            }
+
+            if (this.AssignIdentity.IsPresent && !string.IsNullOrEmpty(this.IdentityId))
+            {
+                throw new AzPSArgumentException("Cannot specify both AssignIdentity and IdentityId at the same time.", "IdentityId");
+            }
+
+            if (this.IdentityType != null && string.IsNullOrEmpty(this.Location) || this.AssignIdentity.IsPresent && string.IsNullOrEmpty(this.Location))
+            {
+                throw new AzPSArgumentException("Location needs to be specified if a managed identity is to be assigned to the policy assignment.", "Location");
+            }
+
+            if (this.IdentityType == ManagedIdentityType.UserAssigned && string.IsNullOrEmpty(this.IdentityId))
+            {
+                throw new AzPSArgumentException("A user assigned identity id needs to be specified if the identity type is 'UserAssigned'.", "IdentityId");
+            }
+
+            if (this.IdentityType == ManagedIdentityType.SystemAssigned && !string.IsNullOrEmpty(this.IdentityId))
+            {
+                throw new AzPSArgumentException("Cannot specify an identity ID if identity type is 'SystemAssigned'.", "IdentityId");
+            }
+
+            return true;
+        }
+
+        /// <summary>
         /// Constructs the resource
         /// </summary>
         private JToken GetResource(string resourceId, string apiVersion)
         {
-            var resource = this.GetExistingResource(resourceId, apiVersion).Result.ToResource();
+            var resource = this.GetExistingResource(resourceId, apiVersion).Result.ToResource<PolicyAssignmentProperties>();
 
-            var metaDataJson = string.IsNullOrEmpty(this.Metadata) ? resource.Properties["metadata"]?.ToString() : this.GetObjectFromParameter(this.Metadata, nameof(this.Metadata)).ToString();
-
-            PolicyAssignmentEnforcementMode? existingMode = null;
-            if (Enum.TryParse(resource.Properties["enforcementMode"]?.ToString(), true, out PolicyAssignmentEnforcementMode tempMode))
+            // get incoming object properties if present
+            JObject inputMetadata = null;
+            if (this.InputObject != null)
             {
-                existingMode = tempMode;
+                var newProperties = this.InputObject.Properties.ToJToken();
+                inputMetadata = newProperties["metadata"] as JObject;
             }
+
+            var parameterMetadata = this.Metadata != null ? this.GetObjectFromParameter(this.Metadata, nameof(this.Metadata)) : null;
+
+            PolicyAssignmentEnforcementMode? inputMode = null;
+            if (Enum.TryParse(this.InputObject?.Properties?.EnforcementMode?.ToString(), true, out PolicyAssignmentEnforcementMode tempMode1))
+            {
+                inputMode = tempMode1;
+            }
+
+            // Grab the non-compliance messages from the parameter or input object or existing resource
+            var nonComplianceMessages = this.NonComplianceMessage?.Where(message => message != null).SelectArray(message => message.ToModel());
+            if (nonComplianceMessages == null && this.InputObject?.Properties.NonComplianceMessages != null)
+            {
+                nonComplianceMessages = this.InputObject.Properties.NonComplianceMessages.Where(message => message != null).SelectArray(message => message.ToModel());
+            }
+            else if (nonComplianceMessages == null)
+            {
+                nonComplianceMessages = resource.Properties.NonComplianceMessages;
+            }
+
+            if (this.AssignIdentity != null && this.AssignIdentity.IsPresent)
+            {
+                this.IdentityType = ManagedIdentityType.SystemAssigned;
+            }
+
+            ResourceIdentity identityObject = this.IdentityType != null ?
+                ( this.IdentityType == ManagedIdentityType.UserAssigned ?
+                    new ResourceIdentity
+                    {
+                        Type = IdentityType.ToString(),
+                        UserAssignedIdentities = new Dictionary<string, UserAssignedIdentityResource>
+                        {
+                            { this.IdentityId, new UserAssignedIdentityResource {} }
+                        }
+                    } :
+                    new ResourceIdentity { Type = IdentityType.ToString() }
+                ) : null;
 
             var policyAssignmentObject = new PolicyAssignment
             {
-                Name = this.Name ?? resource.Name,
-                Identity = this.AssignIdentity.IsPresent ? new ResourceIdentity { Type = ResourceIdentityType.SystemAssigned } : null,
-                Location = this.Location ?? resource.Location,
+                Name = this.Name ?? this.InputObject?.Name ?? resource.Name,
+                Identity = identityObject,
+                Location = this.Location ?? this.InputObject?.Location ?? resource.Location,
                 Properties = new PolicyAssignmentProperties
                 {
-                    DisplayName = this.DisplayName ?? resource.Properties["displayName"]?.ToString(),
-                    Description = this.Description ?? resource.Properties["description"]?.ToString(),
-                    Scope = resource.Properties["scope"].ToString(),
-                    NotScopes = this.NotScope ?? resource.Properties["NotScopes"]?.ToString().Split(','),
-                    PolicyDefinitionId = resource.Properties["policyDefinitionId"].ToString(),
-                    Metadata = string.IsNullOrEmpty(this.Metadata) ? null : JObject.Parse(metaDataJson),
-                    EnforcementMode = this.EnforcementMode ?? existingMode,
-                    Parameters = this.GetParameters(this.PolicyParameter, this.PolicyParameterObject) ?? (JObject)resource.Properties["parameters"]
+                    DisplayName = this.DisplayName ?? this.InputObject?.Properties?.DisplayName ?? resource.Properties.DisplayName,
+                    Description = this.Description ?? this.InputObject?.Properties?.Description ?? resource.Properties.Description,
+                    Scope = resource.Properties.Scope,
+                    NotScopes = this.NotScope ?? this.InputObject?.Properties?.NotScopes ?? resource.Properties.NotScopes,
+                    PolicyDefinitionId = resource.Properties.PolicyDefinitionId,
+                    Metadata = parameterMetadata ?? inputMetadata ?? resource.Properties.Metadata,
+                    EnforcementMode = this.EnforcementMode ?? inputMode ?? resource.Properties.EnforcementMode,
+                    NonComplianceMessages = nonComplianceMessages,
+                    Parameters =
+                        this.GetParameters(this.PolicyParameter, this.PolicyParameterObject)
+                            ?? this.InputObject?.Properties?.Parameters?.ToResourcePropertiesBody() as JObject
+                            ?? resource.Properties.Parameters
                 }
             };
 
@@ -202,7 +297,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private string GetResourceId()
         {
-            return this.Id ?? this.InputObject?.ResourceId ?? this.MakePolicyAssignmentId(this.Scope, this.Name);
+            return this.Id ?? this.InputObject?.ResourceId ?? this.GetPolicyArtifactFullyQualifiedId(this.Scope, Constants.MicrosoftAuthorizationPolicyAssignmentType, this.Name);
         }
     }
 }

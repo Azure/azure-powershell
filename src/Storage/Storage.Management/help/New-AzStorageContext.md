@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 383402B2-6B7C-41AB-AFF9-36C86156B0A9
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/new-azstoragecontext
+online version: https://docs.microsoft.com/powershell/module/az.storage/new-azstoragecontext
 schema: 2.0.0
 ---
 
@@ -74,7 +74,7 @@ New-AzStorageContext [-Local] [<CommonParameters>]
 ## DESCRIPTION
 The **New-AzStorageContext** cmdlet creates an Azure Storage context.
 The default Authentication of a Storage Context is OAuth (Azure AD), if only input Storage account name.
-See details of authentication of the Storage Service in https://docs.microsoft.com/en-us/rest/api/storageservices/authorization-for-the-azure-storage-services.
+See details of authentication of the Storage Service in https://docs.microsoft.com/rest/api/storageservices/authorization-for-the-azure-storage-services.
 
 ## EXAMPLES
 

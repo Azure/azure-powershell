@@ -45,8 +45,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [Parameter(
             ParameterSetName = ASRParameterSets.ByObjectWithFriendlyName,
             Mandatory = true)]
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByObjectWithSiteIdAndFriendlyName,
+            Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string FriendlyName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the site Id of the ASR protectable item.
+        /// </summary>
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByObjectWithSiteId,
+            Mandatory = true)]
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByObjectWithSiteIdAndFriendlyName,
+            Mandatory = true)]
+        [ValidateNotNullOrEmpty]
+        public string SiteId { get; set; }
 
         /// <summary>
         ///     Gets or sets the Azure Site Recovery Protection Container object.
@@ -61,6 +76,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             ValueFromPipeline = true)]
         [Parameter(
             ParameterSetName = ASRParameterSets.ByObjectWithFriendlyName,
+            Mandatory = true,
+            ValueFromPipeline = true)]
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByObjectWithSiteId,
+            Mandatory = true,
+            ValueFromPipeline = true)]
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByObjectWithSiteIdAndFriendlyName,
             Mandatory = true,
             ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
@@ -83,6 +106,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     break;
                 case ASRParameterSets.ByObjectWithFriendlyName:
                     this.GetByFriendlyName();
+                    break;
+                case ASRParameterSets.ByObjectWithSiteId:
+                    this.GetBySiteId();
+                    break;
+                case ASRParameterSets.ByObjectWithSiteIdAndFriendlyName:
+                    this.GetBySiteIdAndFriendlyName();
                     break;
             }
         }
@@ -187,6 +216,64 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
 
         /// <summary>
+        ///     Queries by site Id.
+        /// </summary>
+        private void GetBySiteId()
+        {
+            var machines =
+                this.FabricDiscoveryClient
+                .GetAzureSiteRecoveryDiscoveredMachines(this.SiteId)
+                .Where(x => !x.Properties.IsDeleted)
+                .ToList();
+            if (!machines.Any())
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                        Resources.NoProtectableMachinesInSite,
+                        this.SiteId));
+            }
+            
+            this.WriteProtectableItems(machines);
+        }
+
+        /// <summary>
+        ///     Queries by site Id and friendly name.
+        /// </summary>
+        private void GetBySiteIdAndFriendlyName()
+        {
+            var machines =
+                this.FabricDiscoveryClient
+                .GetAzureSiteRecoveryDiscoveredMachines(this.SiteId)
+                .Where(x => !x.Properties.IsDeleted)
+                .ToList();
+            if (!machines.Any())
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                        Resources.NoProtectableMachinesInSite,
+                        this.SiteId));
+            }
+
+            var filteredMachines =
+                machines
+                .Where(x => string.Equals(
+                    x.Properties.DisplayName,
+                    this.FriendlyName,
+                    StringComparison.OrdinalIgnoreCase))
+                .ToList();
+            if (!filteredMachines.Any())
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                        Resources.ProtectableMachineNotFound,
+                        this.FriendlyName,
+                        this.SiteId));
+            }
+
+            this.WriteProtectableItems(filteredMachines);
+        }
+
+        /// <summary>
         ///     Write Protection Items
         /// </summary>
         /// <param name="protectableItem"></param>
@@ -205,6 +292,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             this.WriteObject(
                 protectableItems.Select(pi => new ASRProtectableItem(pi)),
+                true);
+        }
+
+        /// <summary>
+        ///     Write Protection Items
+        /// </summary>
+        /// <param name="machines">List of discovered machines.</param>
+        private void WriteProtectableItems(
+            IList<VMwareMachine> machines)
+        {
+            this.WriteObject(
+                machines.Select(x =>
+                    new ASRProtectableItem(
+                        this.ProtectionContainer,
+                        this.SiteId,
+                        x)),
                 true);
         }
     }

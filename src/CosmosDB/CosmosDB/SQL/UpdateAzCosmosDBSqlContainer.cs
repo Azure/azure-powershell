@@ -95,6 +95,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNull]
         public PSSqlDatabaseGetResults ParentObject { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.SqlContainerAnalyticalStorageTtlHelpMessage)]
+        public int? AnalyticalStorageTtl { get; set; }
+
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.SqlContainerObjectHelpMessage)]
         [ValidateNotNull]
         public PSSqlContainerGetResults InputObject { get; set; }
@@ -180,6 +183,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
             if (IndexingPolicy != null)
             {
                 sqlContainerResource.IndexingPolicy = PSIndexingPolicy.ToSDKModel(IndexingPolicy);
+            }
+
+            if (AnalyticalStorageTtl != null)
+            {
+                sqlContainerResource.AnalyticalStorageTtl = AnalyticalStorageTtl;
             }
 
             CreateUpdateOptions options = ThroughputHelper.PopulateCreateUpdateOptions(Throughput, AutoscaleMaxThroughput);

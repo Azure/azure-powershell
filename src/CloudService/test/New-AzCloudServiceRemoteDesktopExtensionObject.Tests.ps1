@@ -12,7 +12,12 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzCloudServiceRemoteDesktopExtensionObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        $Username = -join ((48..57) + (97..122) | Get-Random -Count 8 | % {[char]$_})
+        $Password = -join ((48..57) + (97..122) | Get-Random -Count 8 | % {[char]$_})
+        $SecureStringPassword = ConvertTo-SecureString $Password -AsPlainText -Force
+        $PsCredential = New-Object System.Management.Automation.PSCredential($Username, $SecureStringPassword)
+        $RemoteDesktopExtensionObject = New-AzCloudServiceRemoteDesktopExtensionObject -Name RemoteDesktopExtensionObject -Credential $PsCredential
+        $RemoteDesktopExtensionObject.ProtectedSetting | Should Be "<PrivateConfig><Password>$Password</Password></PrivateConfig>"
     }
 }

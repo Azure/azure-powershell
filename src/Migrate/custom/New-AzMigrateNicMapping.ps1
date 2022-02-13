@@ -19,11 +19,11 @@ Creates an object to update NIC properties of a replicating server.
 .Description
 The New-AzMigrateNicMapping cmdlet creates a mapping of the source NIC attached to the server to be migrated. This object is provided as an input to the Set-AzMigrateServerReplication cmdlet to update the NIC and its properties for a replicating server.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.migrate/new-azmigratenicmapping
+https://docs.microsoft.com/powershell/module/az.migrate/new-azmigratenicmapping
 #>
 function New-AzMigrateNicMapping {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMwareCbtNicInput])]
-    [CmdletBinding(DefaultParameterSetName='VMwareCbt', PositionalBinding=$false)]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtNicInput])]
+    [CmdletBinding(DefaultParameterSetName = 'VMwareCbt', PositionalBinding = $false)]
     param(
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -32,6 +32,8 @@ function New-AzMigrateNicMapping {
         ${NicID},
 
         [Parameter()]
+        [ValidateSet("primary" , "secondary", "donotcreate")]
+        [ArgumentCompleter({"primary" , "secondary", "donotcreate"})]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Specifies whether the NIC to be updated will be the primary, secondary or not migrated.
@@ -46,32 +48,56 @@ function New-AzMigrateNicMapping {
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
+        # Specifies the name of the NIC to be created.
+        ${TargetNicName},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
         # Specifies the IP within the destination subnet to be used for the NIC.
         ${TargetNicIP}
     )
     
     process {
-        $NicObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtNicInput]::new()
+        $NicObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.VMwareCbtNicInput]::new()
         $NicObject.NicId = $NicID
-        if($PSBoundParameters.ContainsKey('TargetNicSelectionType')){
-            if($TargetNicSelectionType -eq 'primary'){
+        if ($PSBoundParameters.ContainsKey('TargetNicSelectionType')) {
+            if ($TargetNicSelectionType -eq 'primary') {
                 $NicObject.IsPrimaryNic = "true"
                 $NicObject.IsSelectedForMigration = "true"
-            }elseif($TargetNicSelectionType -eq 'secondary'){
+            }
+            elseif ($TargetNicSelectionType -eq 'secondary') {
                 $NicObject.IsPrimaryNic = "false"
                 $NicObject.IsSelectedForMigration = "true"
-            }elseif($TargetNicSelectionType -eq 'donotcreate'){
+            }
+            elseif ($TargetNicSelectionType -eq 'donotcreate') {
                 $NicObject.IsPrimaryNic = "false"
                 $NicObject.IsSelectedForMigration = "false"
             }
         }
-        if($PSBoundParameters.ContainsKey('TargetNicSubnet')){
+        if ($PSBoundParameters.ContainsKey('TargetNicSubnet')) {
             $NicObject.TargetSubnetName = $TargetNicSubnet
         }
        
-        if($PSBoundParameters.ContainsKey('TargetNicIP')){
+        if ($PSBoundParameters.ContainsKey('TargetNicIP')) {
+            $isValidIpAddress = [ipaddress]::TryParse($TargetNicIP,[ref][ipaddress]::Loopback)
+            if(!$isValidIpAddress) {
+                throw "(InvalidPrivateIPAddressFormat) Static IP address value '$($TargetNicIP)' is invalid."
+            }
             $NicObject.TargetStaticIPAddress = $TargetNicIP
         }
+
+        if ($PSBoundParameters.ContainsKey('TargetNicName')) {
+            if ($TargetNicName.length -gt 80 -or $TargetNicName.length -eq 0) {
+                throw "The NIC name must be between 1 and 80 characters long."
+            }
+
+            if ($TargetNicName -notmatch "^[^_\W][a-zA-Z0-9_\-\.]{0,79}(?<![-.])$") {
+                throw "The NIC name must begin with a letter or number, end with a letter, number or underscore, and may contain only letters, numbers, underscores, periods, or hyphens."
+            }
+            $NicObject.TargetNicName = $TargetNicName
+        }
+
         return $NicObject
     }
 

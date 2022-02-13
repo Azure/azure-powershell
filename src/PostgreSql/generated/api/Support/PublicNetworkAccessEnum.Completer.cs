@@ -6,7 +6,10 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
 {
 
-    /// <summary>Argument completer implementation for PublicNetworkAccessEnum.</summary>
+    /// <summary>
+    /// Whether or not public network access is allowed for this server. Value is optional but if passed in, must be 'Enabled'
+    /// or 'Disabled'
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.PublicNetworkAccessEnumTypeConverter))]
     public partial struct PublicNetworkAccessEnum :
         System.Management.Automation.IArgumentCompleter
@@ -28,11 +31,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Enabled".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Enabled", "Enabled", global::System.Management.Automation.CompletionResultType.ParameterValue, "Enabled");
+                yield return new global::System.Management.Automation.CompletionResult("'Enabled'", "Enabled", global::System.Management.Automation.CompletionResultType.ParameterValue, "Enabled");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Disabled".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Disabled", "Disabled", global::System.Management.Automation.CompletionResultType.ParameterValue, "Disabled");
+                yield return new global::System.Management.Automation.CompletionResult("'Disabled'", "Disabled", global::System.Management.Automation.CompletionResultType.ParameterValue, "Disabled");
             }
         }
     }

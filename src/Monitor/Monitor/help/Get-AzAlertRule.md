@@ -2,14 +2,14 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
 ms.assetid: A837077C-0A79-431C-93D2-799B2134EE69
-online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/get-azalertrule
+online version: https://docs.microsoft.com/powershell/module/az.monitor/get-azalertrule
 schema: 2.0.0
 ---
 
 # Get-AzAlertRule
 
 ## SYNOPSIS
-Gets alert rules.
+Gets classic alert rules.
 
 ## SYNTAX
 
@@ -32,7 +32,7 @@ Get-AzAlertRule -ResourceGroupName <String> -TargetResourceId <String> [-Detaile
 ```
 
 ## DESCRIPTION
-The **Get-AzAlertRule** cmdlet gets an alert rule by its name or URI, or all alert rules from a specified resource group.
+The **Get-AzAlertRule** cmdlet gets a classic alert rule by its name or URI, or all classic alert rules from a specified resource group.
 
 ## EXAMPLES
 
@@ -153,8 +153,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[Add-AzLogAlertRule](./Add-AzLogAlertRule.md)
 
 [Add-AzMetricAlertRule](./Add-AzMetricAlertRule.md)
 

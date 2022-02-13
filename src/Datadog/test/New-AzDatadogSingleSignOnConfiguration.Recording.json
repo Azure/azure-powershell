@@ -1,0 +1,290 @@
+{
+  "New-AzDatadogSingleSignOnConfiguration+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitorab3cim/singleSignOnConfigurations/default?api-version=2021-03-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitorab3cim/singleSignOnConfigurations/default?api-version=2021-03-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"singleSignOnState\": \"Enable\",\r\n    \"enterpriseAppId\": \"00000000-0000-0000-0000-000000000000\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "127" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"000070e3-0000-3400-0000-60b48eb30000\"" ],
+        "Location": [ "https://management.azure.com/providers/Microsoft.Datadog/locations/EASTUS2EUAP/operationStatuses/a9ece909-d5c2-4d5e-8b7c-9797a4b56b76?api-version=2021-03-01" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:0b211baa-00db-496b-b625-0e3961b2c5bd" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.Datadog/locations/EASTUS2EUAP/operationStatuses/a9ece909-d5c2-4d5e-8b7c-9797a4b56b76?api-version=2021-03-01" ],
+        "x-ms-request-id": [ "a9ece909-d5c2-4d5e-8b7c-9797a4b56b76" ],
+        "x-ms-correlation-request-id": [ "d409f4a0-c000-4b3f-b61b-e7a211c93df4" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210531T072228Z:d409f4a0-c000-4b3f-b61b-e7a211c93df4" ],
+        "Date": [ "Mon, 31 May 2021 07:22:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "649" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitorab3cim/singleSignOnConfigurations/default\",\"name\":\"default\",\"type\":\"microsoft.Datadog/monitors/singlesignonconfigurations\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-05-31T07:19:07.06305Z\",\"lastModifiedBy\":\"v-diya@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-05-31T07:19:07.06305Z\"},\"properties\":{\"provisioningState\":\"Accepted\",\"singleSignOnState\":\"Enable\",\"enterpriseAppId\":\"00000000-0000-0000-0000-000000000000\",\"singleSignOnUrl\":null}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDatadogSingleSignOnConfiguration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Microsoft.Datadog/locations/EASTUS2EUAP/operationStatuses/a9ece909-d5c2-4d5e-8b7c-9797a4b56b76?api-version=2021-03-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Datadog/locations/EASTUS2EUAP/operationStatuses/a9ece909-d5c2-4d5e-8b7c-9797a4b56b76?api-version=2021-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "b3f1ff09-74dd-4917-9590-9e841a06a365" ],
+        "CommandName": [ "New-AzDatadogSingleSignOnConfiguration" ],
+        "FullCommandName": [ "New-AzDatadogSingleSignOnConfiguration_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"00007956-0000-3400-0000-60b48eb70000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11999" ],
+        "x-ms-request-id": [ "dcc05a8a-9b1e-46b7-a3aa-0cd47f2237dd" ],
+        "x-ms-correlation-request-id": [ "2e4ccbb5-08cd-40a7-a15e-8678f18537de" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210531T072258Z:2e4ccbb5-08cd-40a7-a15e-8678f18537de" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 31 May 2021 07:22:57 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "486" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.Datadog/locations/EASTUS2EUAP/operationStatuses/a9ece909-d5c2-4d5e-8b7c-9797a4b56b76\",\"name\":\"a9ece909-d5c2-4d5e-8b7c-9797a4b56b76\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitorab3cim/singleSignOnConfigurations/default\",\"status\":\"Succeeded\",\"startTime\":\"2021-05-31T07:22:27.8317294Z\",\"endTime\":\"2021-05-31T07:22:31.966478Z\",\"error\":{},\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDatadogSingleSignOnConfiguration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitorab3cim/singleSignOnConfigurations/default?api-version=2021-03-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitorab3cim/singleSignOnConfigurations/default?api-version=2021-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "b3f1ff09-74dd-4917-9590-9e841a06a365" ],
+        "CommandName": [ "New-AzDatadogSingleSignOnConfiguration" ],
+        "FullCommandName": [ "New-AzDatadogSingleSignOnConfiguration_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"000074e3-0000-3400-0000-60b48eb70000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "adaba87e-aa2c-4273-b616-8700affaab08" ],
+        "x-ms-correlation-request-id": [ "8cca53a4-6c04-4b0b-b5c0-98fd15367b38" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210531T072259Z:8cca53a4-6c04-4b0b-b5c0-98fd15367b38" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 31 May 2021 07:22:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "752" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitorab3cim/singleSignOnConfigurations/default\",\"name\":\"default\",\"type\":\"microsoft.Datadog/monitors/singlesignonconfigurations\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-05-31T07:19:07.06305Z\",\"lastModifiedBy\":\"ae11f5fb-c627-4eec-b4a0-f7b5969426e5\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-05-31T07:22:31.8587617Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"singleSignOnState\":\"Enable\",\"enterpriseAppId\":\"00000000-0000-0000-0000-000000000000\",\"singleSignOnUrl\":\"https://us3.Datadoghq.com/account/login/id/f685e980-c1d8-11eb-99d0-da7ad0900003\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDatadogSingleSignOnConfiguration+[NoContext]+CreateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitorab3cim/singleSignOnConfigurations/default?api-version=2021-03-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitorab3cim/singleSignOnConfigurations/default?api-version=2021-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "98fbd515-1db7-40fd-9445-94c54cd9b5b0" ],
+        "CommandName": [ "Get-AzDatadogSingleSignOnConfiguration" ],
+        "FullCommandName": [ "Get-AzDatadogSingleSignOnConfiguration_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"000074e3-0000-3400-0000-60b48eb70000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "3c9ec6b1-55a1-4266-aebf-75c746c2aa85" ],
+        "x-ms-correlation-request-id": [ "c4e0fc07-1e6b-47da-9078-2aba0ce73c9a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210531T072259Z:c4e0fc07-1e6b-47da-9078-2aba0ce73c9a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 31 May 2021 07:22:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "752" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitorab3cim/singleSignOnConfigurations/default\",\"name\":\"default\",\"type\":\"microsoft.Datadog/monitors/singlesignonconfigurations\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-05-31T07:19:07.06305Z\",\"lastModifiedBy\":\"ae11f5fb-c627-4eec-b4a0-f7b5969426e5\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-05-31T07:22:31.8587617Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"singleSignOnState\":\"Enable\",\"enterpriseAppId\":\"00000000-0000-0000-0000-000000000000\",\"singleSignOnUrl\":\"https://us3.Datadoghq.com/account/login/id/f685e980-c1d8-11eb-99d0-da7ad0900003\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDatadogSingleSignOnConfiguration+[NoContext]+CreateViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitorab3cim/singleSignOnConfigurations/default?api-version=2021-03-01+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitorab3cim/singleSignOnConfigurations/default?api-version=2021-03-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"singleSignOnState\": \"Disable\",\r\n    \"enterpriseAppId\": \"00000000-0000-0000-0000-000000000000\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "128" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"000076e3-0000-3400-0000-60b48ed40000\"" ],
+        "Location": [ "https://management.azure.com/providers/Microsoft.Datadog/locations/EASTUS2EUAP/operationStatuses/7351e919-8b70-45ef-bd40-bc797850e231?api-version=2021-03-01" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:0b211baa-00db-496b-b625-0e3961b2c5bd" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.Datadog/locations/EASTUS2EUAP/operationStatuses/7351e919-8b70-45ef-bd40-bc797850e231?api-version=2021-03-01" ],
+        "x-ms-request-id": [ "7351e919-8b70-45ef-bd40-bc797850e231" ],
+        "x-ms-correlation-request-id": [ "f9698514-ff43-4a8e-a624-bd6c46ae78c1" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210531T072300Z:f9698514-ff43-4a8e-a624-bd6c46ae78c1" ],
+        "Date": [ "Mon, 31 May 2021 07:23:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "752" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitorab3cim/singleSignOnConfigurations/default\",\"name\":\"default\",\"type\":\"microsoft.Datadog/monitors/singlesignonconfigurations\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-05-31T07:19:07.06305Z\",\"lastModifiedBy\":\"ae11f5fb-c627-4eec-b4a0-f7b5969426e5\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-05-31T07:22:31.8587617Z\"},\"properties\":{\"provisioningState\":\"Accepted\",\"singleSignOnState\":\"Disable\",\"enterpriseAppId\":\"00000000-0000-0000-0000-000000000000\",\"singleSignOnUrl\":\"https://us3.Datadoghq.com/account/login/id/f685e980-c1d8-11eb-99d0-da7ad0900003\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDatadogSingleSignOnConfiguration+[NoContext]+CreateViaIdentityExpanded+$GET+https://management.azure.com/providers/Microsoft.Datadog/locations/EASTUS2EUAP/operationStatuses/7351e919-8b70-45ef-bd40-bc797850e231?api-version=2021-03-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Datadog/locations/EASTUS2EUAP/operationStatuses/7351e919-8b70-45ef-bd40-bc797850e231?api-version=2021-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "9e62240f-a13e-45d8-adbb-a34faa1cb94e" ],
+        "CommandName": [ "New-AzDatadogSingleSignOnConfiguration" ],
+        "FullCommandName": [ "New-AzDatadogSingleSignOnConfiguration_CreateViaIdentityExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"00007e56-0000-3400-0000-60b48ed60000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11998" ],
+        "x-ms-request-id": [ "98557aea-d31c-41fb-a29f-0c489c47a722" ],
+        "x-ms-correlation-request-id": [ "c9c663ba-d177-456e-b24d-f8dabd429798" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210531T072331Z:c9c663ba-d177-456e-b24d-f8dabd429798" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 31 May 2021 07:23:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "486" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.Datadog/locations/EASTUS2EUAP/operationStatuses/7351e919-8b70-45ef-bd40-bc797850e231\",\"name\":\"7351e919-8b70-45ef-bd40-bc797850e231\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitorab3cim/singleSignOnConfigurations/default\",\"status\":\"Succeeded\",\"startTime\":\"2021-05-31T07:23:00.208272Z\",\"endTime\":\"2021-05-31T07:23:02.9010961Z\",\"error\":{},\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDatadogSingleSignOnConfiguration+[NoContext]+CreateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitorab3cim/singleSignOnConfigurations/default?api-version=2021-03-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitorab3cim/singleSignOnConfigurations/default?api-version=2021-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "9e62240f-a13e-45d8-adbb-a34faa1cb94e" ],
+        "CommandName": [ "New-AzDatadogSingleSignOnConfiguration" ],
+        "FullCommandName": [ "New-AzDatadogSingleSignOnConfiguration_CreateViaIdentityExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"000079e3-0000-3400-0000-60b48ed60000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "4934fdf7-d616-4085-8fa1-08eecc37f732" ],
+        "x-ms-correlation-request-id": [ "72865e8c-0e9d-4950-8e1d-acda637eb2db" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210531T072331Z:72865e8c-0e9d-4950-8e1d-acda637eb2db" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 31 May 2021 07:23:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "676" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitorab3cim/singleSignOnConfigurations/default\",\"name\":\"default\",\"type\":\"microsoft.Datadog/monitors/singlesignonconfigurations\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-05-31T07:19:07.06305Z\",\"lastModifiedBy\":\"ae11f5fb-c627-4eec-b4a0-f7b5969426e5\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-05-31T07:23:02.7949289Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"singleSignOnState\":\"Disable\",\"enterpriseAppId\":\"00000000-0000-0000-0000-000000000000\",\"singleSignOnUrl\":null}}",
+      "isContentBase64": false
+    }
+  }
+}

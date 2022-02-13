@@ -6,7 +6,10 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
-    /// <summary>Argument completer implementation for IdentityType.</summary>
+    /// <summary>
+    /// The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity
+    /// and a set of user-assigned identities. The type 'None' will remove all identities.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.IdentityTypeTypeConverter))]
     public partial struct IdentityType :
         System.Management.Automation.IArgumentCompleter
@@ -33,6 +36,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "SystemAssigned".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("SystemAssigned", "SystemAssigned", global::System.Management.Automation.CompletionResultType.ParameterValue, "SystemAssigned");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "UserAssigned".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("UserAssigned", "UserAssigned", global::System.Management.Automation.CompletionResultType.ParameterValue, "UserAssigned");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "SystemAssigned, UserAssigned".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("SystemAssigned, UserAssigned", "SystemAssigned, UserAssigned", global::System.Management.Automation.CompletionResultType.ParameterValue, "SystemAssigned, UserAssigned");
             }
         }
     }

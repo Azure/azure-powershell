@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 939320CB-2595-4150-AFDD-500CEA78559C
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/set-azvm
+online version: https://docs.microsoft.com/powershell/module/az.compute/set-azvm
 schema: 2.0.0
 ---
 
@@ -67,8 +67,8 @@ Before you run this cmdlet, log on to the virtual machine and use Sysprep to pre
 ## EXAMPLES
 
 ### Example 1: Mark a virtual machine as generalized
-```
-PS C:\> Set-AzVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" -Generalized
+```powershell
+Set-AzVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" -Generalized
 ```
 
 This command marks the virtual machine named VirtualMachine07 as generalized.

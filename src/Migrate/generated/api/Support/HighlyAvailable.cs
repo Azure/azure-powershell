@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>Value indicating whether the VM is highly available.</summary>
     public partial struct HighlyAvailable :
         System.IEquatable<HighlyAvailable>
     {
@@ -22,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         /// <param name="value">the value to convert to an instance of <see cref="HighlyAvailable" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new HighlyAvailable(System.Convert.ToString(value));
+            return new HighlyAvailable(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type HighlyAvailable</summary>

@@ -19,6 +19,56 @@
 -->
 ## Upcoming Release
 
+## Version 2.10.0
+* Updated `New-AzAppServicePlan`  to create an app service plan with host environment id #16094
+
+## Version 2.9.0
+* Updated the Microsoft.Azure.Management.Websites SDK to 3.1.2
+## Version 2.8.3
+* Updated `Import-AzWebAppKeyVaultCertificate1` to set the default name with combination of keyvault name and cert name 
+
+## Version 2.8.2
+* Fixed `Set-AzWebApp` to return a valid warning message when fails to add -Hostname #9316
+* Fixed `Get-AzWebApp` to return CustomDomainVerificationId in the response. #9316
+
+## Version 2.8.1
+* Fixed `Add-AzWebAppAccessRestrictionRule` failing when users does not have permissions to get Service Tag list #15316 and #14862
+
+## Version 2.8.0
+* Fixed `Import-AzWebAppKeyVaultCertificate` to support ServerFarmId [#15091] 
+* Fixed `Added an optional parameter to delete or keep Appservice plan when the last WebApp is removing from plan`
+
+## Version 2.7.0
+* Fixed issue that prevented removing rules by name and unique identifier in `Remove-AzWebAppAccessRestrictionRule`
+* Fixed issue that defaults AlwaysOn to false in `Set-AzWebAppSlot`
+
+## Version 2.6.0
+* updated `Set-AzAppServicePlan` to keep existing Tags when adding new Tags
+* Fixed `Set-AzWebApp` to set the AppSettings
+* updated `Set-AzWebAppSlot` to set FtpsState
+* Added support for StaticSites.
+
+## Version 2.5.0
+* Updated `Add-AzWebAppAccessRestrictionRule` to allow all supported Service Tags and validate against Service Tag API.
+
+## Version 2.4.0
+* Introduced an option to give custom timeout for `Publish-AzWebApp` 
+* Added support for App Service Environment
+    - `New-AzAppServiceEnvironment`
+    - `Remove-AzAppServiceEnvironment`
+    - `Get-AzAppServiceEnvironment`
+    - `New-AzAppServiceEnvironmentInboundServices`
+* Add-AzWebAppAccessRestrictionRule: When using subnet from another subscription, -IgnoreMissingServiceEndpoint must be used. Descriptive error message added.
+
+## Version 2.3.0
+* Added support for Importing a key vault certificate to WebApp.
+
+## Version 2.2.0
+* Added support for App Service Managed certificates
+    - `New-AzWebAppCertificate`
+    - `Remove-AzWebAppCertificate`
+* Fixed issue that causes Docker Password to be removed from appsettings in `Set-AzWebApp` and `Set-AzWebAppSlot`
+
 ## Version 2.1.1
 * Prevent duplicate access restriction rules
 

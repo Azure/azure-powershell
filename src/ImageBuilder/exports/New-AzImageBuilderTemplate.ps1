@@ -53,11 +53,11 @@ DISTRIBUTE <IImageTemplateDistributor[]>: The distribution targets where the ima
 SOURCE <IImageTemplateSource>: Describes a virtual machine image source for building, customizing and distributing.
   Type <String>: Specifies the type of source image you want to start with.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.imagebuilder/New-AzImageBuilderTemplate
+https://docs.microsoft.com/powershell/module/az.imagebuilder/New-AzImageBuilderTemplate
 #>
 function New-AzImageBuilderTemplate {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplate])]
-[CmdletBinding(DefaultParameterSetName='Name', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='FlattenParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
     [Alias('Name')]
@@ -79,118 +79,79 @@ param(
     # Subscription credentials which uniquely identify Microsoft Azure subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='FlattenParameterSet', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateDistributor[]]
     # The distribution targets where the image output needs to go to.
     # To construct, see NOTES section for DISTRIBUTE properties and create a hash table.
     ${Distribute},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='FlattenParameterSet', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateSource]
     # Describes a virtual machine image source for building, customizing and distributing.
     # To construct, see NOTES section for SOURCE properties and create a hash table.
     ${Source},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='FlattenParameterSet', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateIdentityUserAssignedIdentities]))]
     [System.String]
     # The id of user assigned identity.
     ${UserAssignedIdentityId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='FlattenParameterSet')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
     [System.String]
     # Resource location.
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='FlattenParameterSet')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
     [System.Int32]
     # Maximum duration to wait while building the image template.
     # Omit or specify 0 to use the default (4 hours).
     ${BuildTimeoutInMinute},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='FlattenParameterSet')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateCustomizer[]]
     # Specifies the properties used to describe the customization steps of the image, like Image source etc.
     # To construct, see NOTES section for CUSTOMIZE properties and create a hash table.
     ${Customize},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-    [System.DateTime]
-    # End time of the last run (UTC).
-    ${LastRunStatusEndTime},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-    [System.String]
-    # Verbose information about the last run state.
-    ${LastRunStatusMessage},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.RunState])]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.RunState]
-    # State of the last run.
-    ${LastRunStatusRunState},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.RunSubState])]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.RunSubState]
-    # Sub-state of the last run.
-    ${LastRunStatusRunSubState},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-    [System.DateTime]
-    # Start time of the last run (UTC).
-    ${LastRunStatusStartTime},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.ProvisioningErrorCode])]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.ProvisioningErrorCode]
-    # Error code of the provisioning failure.
-    ${ProvisioningErrorCode},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-    [System.String]
-    # Verbose error message about the provisioning failure.
-    ${ProvisioningErrorMessage},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='FlattenParameterSet')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='FlattenParameterSet')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
     [System.Int32]
     # Size of the OS disk in GB.
     # Omit or specify 0 to use Azure's default OS disk size.
     ${VMProfileOsdiskSizeInGb},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='FlattenParameterSet')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
     [System.String]
     # Size of the virtual machine used to build, customize and capture images.
     # Omit or specify empty string to use the default (Standard_D1_v2).
     ${VMProfileVmSize},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='FlattenParameterSet')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
     [System.String]
     # Resource id of a pre-existing subnet.
     ${VnetConfigSubnetId},
+
+    [Parameter(ParameterSetName='JsonTemplate')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
+    [System.String]
+    # Path of json formated image template file.
+    ${JsonTemplatePath},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -262,9 +223,10 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Name = 'Az.ImageBuilder.custom\New-AzImageBuilderTemplate';
+            FlattenParameterSet = 'Az.ImageBuilder.custom\New-AzImageBuilderTemplate';
+            JsonTemplate = 'Az.ImageBuilder.custom\New-AzImageBuilderTemplate';
         }
-        if (('Name') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('FlattenParameterSet', 'JsonTemplate') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

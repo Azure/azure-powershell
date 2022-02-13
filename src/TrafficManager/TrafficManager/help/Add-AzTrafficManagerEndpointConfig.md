@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.TrafficManager.dll-Help.xml
 Module Name: Az.TrafficManager
 ms.assetid: 25E3F297-1D91-4102-B4D3-1E7195A5D33D
-online version: https://docs.microsoft.com/en-us/powershell/module/az.trafficmanager/add-aztrafficmanagerendpointconfig
+online version: https://docs.microsoft.com/powershell/module/az.trafficmanager/add-aztrafficmanagerendpointconfig
 schema: 2.0.0
 ---
 
@@ -16,7 +16,7 @@ Adds an endpoint to a local Traffic Manager profile object.
 ```
 Add-AzTrafficManagerEndpointConfig -EndpointName <String> -TrafficManagerProfile <TrafficManagerProfile>
  -Type <String> [-TargetResourceId <String>] [-Target <String>] -EndpointStatus <String> [-Weight <UInt32>]
- [-Priority <UInt32>] [-EndpointLocation <String>] [-MinChildEndpoints <UInt32>]
+ [-Priority <UInt32>] [-EndpointLocation <String>] [-MinChildEndpoints <UInt32>] [-MinChildEndpointsIPv4 <UInt32>] [-MinChildEndpointsIPv6 <UInt32>]
  [-GeoMapping <System.Collections.Generic.List`1[System.String]>]
  [-SubnetMapping <System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange]>]
  [-CustomHeader <System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]>]
@@ -139,7 +139,7 @@ Accept wildcard characters: False
 ```
 
 ### -GeoMapping
-The list of regions mapped to this endpoint when using the 'Geographic' traffic routing method. Please consult Traffic Manager documentation for a [full list of accepted values](https://docs.microsoft.com/en-us/azure/traffic-manager/traffic-manager-geographic-regions).
+The list of regions mapped to this endpoint when using the 'Geographic' traffic routing method. Please consult Traffic Manager documentation for a [full list of accepted values](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-geographic-regions).
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
@@ -155,6 +155,14 @@ Accept wildcard characters: False
 
 ### -MinChildEndpoints
 The minimum number of endpoints that must be available in the child profile in order for the Nested Endpoint in the parent profile to be considered available.
+Only applicable to endpoint of type 'NestedEndpoints'.
+
+### -MinChildEndpointsIPv4
+The minimum number of IPv4 (DNS record type A) endpoints that must be available in the child profile in order for the Nested Endpoint in the parent profile to be considered available.
+Only applicable to endpoint of type 'NestedEndpoints'.
+
+### -MinChildEndpointsIPv6
+The minimum number of IPv6 (DNS record type AAAA) endpoints that must be available in the child profile in order for the Nested Endpoint in the parent profile to be considered available.
 Only applicable to endpoint of type 'NestedEndpoints'.
 
 ```yaml

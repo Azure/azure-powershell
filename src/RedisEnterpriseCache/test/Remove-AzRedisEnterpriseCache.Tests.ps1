@@ -18,6 +18,12 @@ Describe 'Remove-AzRedisEnterpriseCache' {
             ResourceGroupName = $env.ResourceGroupName
         }
         Remove-AzRedisEnterpriseCache @splat
+
+        $splat2 = @{
+            Name = $env.ClusterName2
+            ResourceGroupName = $env.ResourceGroupName
+        }
+        Remove-AzRedisEnterpriseCache @splat2
     }
 
     It 'DeleteViaIdentity' -skip {

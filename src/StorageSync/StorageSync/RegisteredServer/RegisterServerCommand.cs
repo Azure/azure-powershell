@@ -204,29 +204,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 LastHeartBeat = DateTime.Now.ToString(),
             };
 
-            return RemoveDoubleQuotes(StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Create(
+            return StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Create(
                resourceGroupName,
                 storageSyncServiceName,
                 serverRegistrationData.ServerId.ToString(),
-                createParameters));
+                createParameters);
         }
-
-        /// <summary>
-        /// Removes the double quotes.
-        /// </summary>
-        /// <param name="registeredServer">The registered server.</param>
-        /// <returns>RegisteredServer.</returns>
-        private RegisteredServer RemoveDoubleQuotes(RegisteredServer registeredServer)
-        {
-            registeredServer.ClusterId = registeredServer.ClusterId.Trim('\"');
-            registeredServer.StorageSyncServiceUid = registeredServer.StorageSyncServiceUid.Trim('\"');
-            registeredServer.ServerId = registeredServer.ServerId.Trim('\"');
-            registeredServer.DiscoveryEndpointUri = registeredServer.DiscoveryEndpointUri.Trim('\"');
-            registeredServer.ManagementEndpointUri = registeredServer.ManagementEndpointUri.Trim('\"');
-            registeredServer.LastHeartBeat = registeredServer.LastHeartBeat.Trim('\"');
-
-            return registeredServer;
-        }
-
     }
 }

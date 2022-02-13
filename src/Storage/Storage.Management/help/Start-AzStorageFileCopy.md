@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: A96A1A67-6C9C-499F-9935-B90F7ACEB50E
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/start-azstoragefilecopy
+online version: https://docs.microsoft.com/powershell/module/az.storage/start-azstoragefilecopy
 schema: 2.0.0
 ---
 
@@ -94,6 +94,7 @@ Start-AzStorageFileCopy -AbsoluteUri <String> -DestFile <CloudFile> [-Force] [-S
 
 ## DESCRIPTION
 The **Start-AzStorageFileCopy** cmdlet starts to copy a source file to a destination file.
+This cmdlet will trigger asynchronous blob copy, the copy process is handled by server. If this is a cross account blob copy, there is no SLA for the blob copy.
 
 ## EXAMPLES
 

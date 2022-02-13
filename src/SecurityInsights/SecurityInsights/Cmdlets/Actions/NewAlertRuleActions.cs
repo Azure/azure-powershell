@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Actions
 
             if (ShouldProcess(name, VerbsCommon.New))
             {
-                var outputaction = SecurityInsightsClient.AlertRules.CreateOrUpdateAction(ResourceGroupName, WorkspaceName, AlertRuleId, name, action);
+                var outputaction = SecurityInsightsClient.Actions.CreateOrUpdate(ResourceGroupName, WorkspaceName, AlertRuleId, name, action);
 
                 WriteObject(outputaction.ConvertToPSType(), enumerateCollection: false);
             }

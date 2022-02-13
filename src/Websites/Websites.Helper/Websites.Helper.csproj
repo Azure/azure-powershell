@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PsModuleName>Websites</PsModuleName>
+  </PropertyGroup>
+  
+  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper</AssemblyName>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+  </ItemGroup>
+
+</Project>

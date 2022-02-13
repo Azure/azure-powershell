@@ -18,6 +18,49 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated the breaking change warning messages [#16805]
+
+## Version 3.1.1
+* Fixed the typo in `New-AzAksCluster` [#16733]
+
+## Version 3.1.0
+* Added support of `load balancer` and `api server access` in `New-AzAksCluster` and `Set-AzAksCluster`. [#16575]
+
+## Version 3.0.0
+* [Breaking Change] Updated parameter alias and output type of `Get-AzAksVersion`
+* Added `Invoke-AzAksRunCommand` to support running a shell command (with kubectl, helm) on aks cluster. [#16104]
+* Added support of `EnableNodePublicIp` and `NodePublicIPPrefixID` for `New-AzAksCluster` and `New-AzAksNodePool`. [#15656]
+* Migrated the logic of creating service principal in `New-AzAksCluster` from `Azure Active Directory Graph` to `Microsoft Graph`.
+* Fixed the issue that `Set-AzAksCluster` can't upgrade cluster when node pool version doesn't match cluster version. [#14583]
+* Added `ResourceGroupName` in `PSKubernetesCluster`. [#15802]
+
+## Version 2.5.0
+* Added support for new parameters `NetworkPolicy`, `PodCidr`, `ServiceCidr`, `DnsServiceIP`, `DockerBridgeCidr`, `NodePoolLabel`, `AksCustomHeader` in `New-AzAksCluster`. [#13795]
+* Added warnings of upcoming breaking change of migrating to Microsoft Graph.
+* Added support for changing the number of nodes in a node pool. [#12379]
+
+## Version 2.4.0
+* Made `-Subscription <String>` available in all Aks cmdlets. You can manage Aks resources in other subscriptions without switching the context.
+
+## Version 2.3.0
+* Added `Start-AzAksCluster`, `Stop-AzAksCluster`, `Get-AzAksUpgradeProfile` and `Get-AzAksNodePoolUpgradeProfile`. [#14194]
+* Added property `IdentityProfile` in the output of `Get-AzAksCluster`. [#12546]
+
+## Version 2.2.0
+* Added parameter `AvailabilityZone` for `New-AzAksNodePool`. [#14505]
+
+## Version 2.1.1
+* Fixed the issue that `Set-AzAks` will fail in Automation Runbook. [#15006]
+
+## Version 2.1.0
+* Added support `AcrNameToAttach` in `Set-AzAksCluster`. [#14692]
+* Added support `AcrNameToDetach` in `Set-AzAksCluster`. [#14693]
+* Added `Set-AzAksClusterCredential` to reset the ServicePrincipal of an existing AKS cluster.
+
+## Version 2.0.2
+* Refined error messages of cmdlet failure.
+* Upgraded exception handling to use Azure PowerShell related exceptions.
+* Fixed the issue that user could not use provided service principal to create Kubernetes cluster. [#13938]
 
 ## Version 2.0.1
 * Fixed the issue that user cannot use service principal to create a new Kubernetes cluster. [#13012]

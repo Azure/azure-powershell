@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/en-us/powershell/module/az.synapse/update-azsynapsesqlpool
+online version: https://docs.microsoft.com/powershell/module/az.synapse/update-azsynapsesqlpool
 schema: 2.0.0
 ---
 
@@ -127,7 +127,7 @@ Name of Synapse SQL pool.
 ```yaml
 Type: System.String
 Parameter Sets: UpdateByNameParameterSet, UpdateByParentObjectParameterSet
-Aliases:
+Aliases: SqlPoolName
 
 Required: True
 Position: Named

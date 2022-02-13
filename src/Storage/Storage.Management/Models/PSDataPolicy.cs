@@ -185,6 +185,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
     {
         public PSManagementPolicyBaseBlob BaseBlob { get; set; }
         public PSManagementPolicySnapShot Snapshot { get; set; }
+        public PSManagementPolicyVersion Version { get; set; }
 
         public PSManagementPolicyActionGroup()
         { }
@@ -193,6 +194,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         {
             this.BaseBlob = (action is null || action.BaseBlob is null) ? null : new PSManagementPolicyBaseBlob(action.BaseBlob);
             this.Snapshot = (action is null || action.Snapshot is null) ? null : new PSManagementPolicySnapShot(action.Snapshot);
+            this.Version = (action is null || action.Version is null) ? null : new PSManagementPolicyVersion(action.Version);
         }
         public ManagementPolicyAction ParseManagementPolicyAction()
         {
@@ -200,6 +202,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             {
                 BaseBlob = this.BaseBlob is null ? null : this.BaseBlob.ParseManagementPolicyBaseBlob(),
                 Snapshot = this.Snapshot is null ? null : this.Snapshot.ParseManagementPolicySnapShot(),
+                Version = this.Version is null ? null : this.Version.ParseManagementPolicyVersion(),
             };
         }
     }
@@ -212,6 +215,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public PSDateAfterModification TierToCool { get; set; }
         public PSDateAfterModification TierToArchive { get; set; }
         public PSDateAfterModification Delete { get; set; }
+        public bool? EnableAutoTierToHotFromCool { get; set; }
 
         public PSManagementPolicyBaseBlob()
         { }
@@ -221,6 +225,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.TierToCool = blobAction.TierToCool is null ? null : new PSDateAfterModification(blobAction.TierToCool);
             this.TierToArchive = blobAction.TierToArchive is null ? null : new PSDateAfterModification(blobAction.TierToArchive);
             this.Delete = blobAction.Delete is null ? null : new PSDateAfterModification(blobAction.Delete);
+            this.EnableAutoTierToHotFromCool = blobAction.EnableAutoTierToHotFromCool;
         }
         public ManagementPolicyBaseBlob ParseManagementPolicyBaseBlob()
         {
@@ -228,7 +233,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             {
                 TierToCool = this.TierToCool is null ? null : this.TierToCool.ParseDateAfterModification(),
                 TierToArchive = this.TierToArchive is null ? null : this.TierToArchive.ParseDateAfterModification(),
-                Delete = this.Delete is null ? null : this.Delete.ParseDateAfterModification()
+                Delete = this.Delete is null ? null : this.Delete.ParseDateAfterModification(),
+                EnableAutoTierToHotFromCool = this.EnableAutoTierToHotFromCool
             };
         }
     }
@@ -239,19 +245,54 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
     public class PSManagementPolicySnapShot
     {
         public PSDateAfterCreation Delete { get; set; }
-        
+        public PSDateAfterCreation TierToCool { get; set; }
+        public PSDateAfterCreation TierToArchive { get; set; }
+
         public PSManagementPolicySnapShot()
         { }
 
         public PSManagementPolicySnapShot(ManagementPolicySnapShot blobAction)
         {
             this.Delete = blobAction.Delete is null ? null : new PSDateAfterCreation(blobAction.Delete);
+            this.TierToCool = blobAction.TierToCool is null ? null : new PSDateAfterCreation(blobAction.TierToCool);
+            this.TierToArchive = blobAction.TierToArchive is null ? null : new PSDateAfterCreation(blobAction.TierToArchive);
         }
         public ManagementPolicySnapShot ParseManagementPolicySnapShot()
         {
             return new ManagementPolicySnapShot()
             {
-                Delete = this.Delete is null ? null : this.Delete.ParseDateAfterCreation()
+                Delete = this.Delete is null ? null : this.Delete.ParseDateAfterCreation(),
+                TierToCool = this.TierToCool is null ? null : this.TierToCool.ParseDateAfterCreation(),
+                TierToArchive = this.TierToArchive is null ? null : this.TierToArchive.ParseDateAfterCreation()
+            };
+        }
+    }
+
+    /// <summary>
+    /// Wrapper of SDK type ManagementPolicySnapShot
+    /// </summary>
+    public class PSManagementPolicyVersion
+    {
+        public PSDateAfterCreation Delete { get; set; }
+        public PSDateAfterCreation TierToCool { get; set; }
+        public PSDateAfterCreation TierToArchive { get; set; }
+
+        public PSManagementPolicyVersion()
+        { }
+
+        public PSManagementPolicyVersion(ManagementPolicyVersion blobAction)
+        {
+            this.Delete = blobAction.Delete is null ? null : new PSDateAfterCreation(blobAction.Delete);
+            this.TierToCool = blobAction.TierToCool is null ? null : new PSDateAfterCreation(blobAction.TierToCool);
+            this.TierToArchive = blobAction.TierToArchive is null ? null : new PSDateAfterCreation(blobAction.TierToArchive);
+        }
+        public ManagementPolicyVersion ParseManagementPolicyVersion()
+        {
+            return new ManagementPolicyVersion()
+            {
+                Delete = this.Delete is null ? null : this.Delete.ParseDateAfterCreation(),
+                TierToCool = this.TierToCool is null ? null : this.TierToCool.ParseDateAfterCreation(),
+                TierToArchive = this.TierToArchive is null ? null : this.TierToArchive.ParseDateAfterCreation()
             };
         }
     }
@@ -262,26 +303,51 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
     public class PSDateAfterModification
     {
         public int? DaysAfterModificationGreaterThan { get; set; }
+        public int? DaysAfterLastAccessTimeGreaterThan { get; set; }
 
         public PSDateAfterModification()
         {
             this.DaysAfterModificationGreaterThan = null;
+            this.DaysAfterLastAccessTimeGreaterThan = null;
         }
 
         public PSDateAfterModification(int daysAfterModificationGreaterThan)
         {
             this.DaysAfterModificationGreaterThan = daysAfterModificationGreaterThan;
+            this.DaysAfterLastAccessTimeGreaterThan = null;
+        }
+
+        public PSDateAfterModification(int? daysAfterModificationGreaterThan, int? daysAfterLastAccessTimeGreaterThan)
+        {
+            this.DaysAfterModificationGreaterThan = daysAfterModificationGreaterThan;
+            this.DaysAfterLastAccessTimeGreaterThan = daysAfterLastAccessTimeGreaterThan;
         }
 
         public PSDateAfterModification(DateAfterModification data)
         {
-            this.DaysAfterModificationGreaterThan = Convert.ToInt32(data.DaysAfterModificationGreaterThan);
+            if (data.DaysAfterModificationGreaterThan is null)
+            {
+                this.DaysAfterModificationGreaterThan = null;
+            }
+            else
+            {
+                this.DaysAfterModificationGreaterThan = Convert.ToInt32(data.DaysAfterModificationGreaterThan);
+            }
+            if (data.DaysAfterLastAccessTimeGreaterThan is null)
+            {
+                this.DaysAfterLastAccessTimeGreaterThan = null;
+            }
+            else
+            {
+                this.DaysAfterLastAccessTimeGreaterThan = Convert.ToInt32(data.DaysAfterLastAccessTimeGreaterThan);
+            }
         }
         public DateAfterModification ParseDateAfterModification()
         {
-            return this.DaysAfterModificationGreaterThan is null? new DateAfterModification() : new DateAfterModification(this.DaysAfterModificationGreaterThan.Value);
+            return new DateAfterModification(this.DaysAfterModificationGreaterThan, this.DaysAfterLastAccessTimeGreaterThan);
         }
     }
+
 
     /// <summary>
     /// Wrapper of SDK type DateAfterCreation

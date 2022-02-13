@@ -14,7 +14,6 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.SignalR.Models;
 using Microsoft.Azure.Management.SignalR;
 using Microsoft.Azure.Management.SignalR.Models;
 
@@ -25,8 +24,6 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
     [OutputType(typeof(bool))]
     public class TestAzureRmSignalRName : SignalRCmdletBottom
     {
-        private const string NameAvailabilityType = "Microsoft.SignalRService/SignalR";
-
         [Parameter(
             Mandatory = true,
             Position = 0,
@@ -49,7 +46,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
             RunCmdlet(() =>
             {
                 var parameters = new NameAvailabilityParameters(
-                    type: NameAvailabilityType,
+                    type: Constants.SignalRResourceType,
                     name: Name);
 
                 var availability = Client.SignalR.CheckNameAvailability(Location, parameters);

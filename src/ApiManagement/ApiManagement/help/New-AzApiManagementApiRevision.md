@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
-online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/new-azapimanagementapirevision
+online version: https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementapirevision
 schema: 2.0.0
 ---
 
@@ -26,8 +26,8 @@ The **New-AzApiManagementApiRevision** cmdlet creates an API Revision for an exi
 
 ### Example 1: Create an empty API Revision for an API
 ```powershell
-PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>New-AzApiManagementApiRevision -Context $context -ApiId "echo-api" -ApiRevision "5"
+$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+New-AzApiManagementApiRevision -Context $context -ApiId "echo-api" -ApiRevision "5"
 
 
 New-AzApiManagementApiRevision -Context $context -ApiId "echo-api" -ApiRevision "5"
@@ -37,10 +37,11 @@ This command creates an API Revision `2` of the `echo-api` API.
 
 ### Example 2: Create an API Revision from an Existing Api and copy All operations, tags and Policies
 ```powershell
-PS C:\>$context = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>New-AzApiManagementApiRevision -Context $context -ApiId "echo-api" -ApiRevision "5" -SourceApiRevision "1" -ServiceUrl "https://echoapi.cloudapp.net/rev4"
+$context = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+New-AzApiManagementApiRevision -Context $context -ApiId "echo-api" -ApiRevision "5" -SourceApiRevision "1" -ServiceUrl "https://echoapi.cloudapp.net/rev4"
+```
 
-
+```output
 ApiId                         : echo-api;rev=5
 Name                          : Echo API
 Description                   :

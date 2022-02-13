@@ -92,13 +92,6 @@ param(
     # The name of the directory where exports will be uploaded.
     ${DestinationRootFolderPath},
 
-    # [Parameter()]
-    # [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    # [System.String]
-    # # eTag of the resource.
-    # # To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
-    # ${ETag},
-
     [Parameter()]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType])]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]

@@ -14,11 +14,11 @@ while(-not $mockingPath) {
 Describe 'New-AzCostManagementQueryFilterObject' {
     It '__AllParameterSets' {
         { 
-            $orDimension = New-AzCostManagementQueryComparisonExpressionObject -Name 'ResourceLocation' -Operator In -Value @('East US', 'West Europe') 
-            $orTag = New-AzCostManagementQueryComparisonExpressionObject -Name 'Environment' -Operator In -Value @('UAT', 'Prod') 
+            $orDimension = New-AzCostManagementQueryComparisonExpressionObject -Name 'ResourceLocation' -Operator 'In' -Value @('East US', 'West Europe') 
+            $orTag = New-AzCostManagementQueryComparisonExpressionObject -Name 'Environment' -Operator 'In' -Value @('UAT', 'Prod') 
             $andOr = New-AzCostManagementQueryFilterObject -or @((New-AzCostManagementQueryFilterObject -Dimension $orDimension), (New-AzCostManagementQueryFilterObject -Tag $orTag))
 
-            $dimension = New-AzCostManagementQueryComparisonExpressionObject -Name 'ResourceGroup' -Operator In -Value 'API'
+            $dimension = New-AzCostManagementQueryComparisonExpressionObject -Name 'ResourceGroup' -Operator 'In' -Value 'API'
             $andDimension = New-AzCostManagementQueryFilterObject -Dimension $dimension
             $fileter = New-AzCostManagementQueryFilterObject -And @($andOr, $andDimension) 
         } | Should -Not -Throw

@@ -210,5 +210,21 @@ namespace Microsoft.Azure.Commands.Profile.Models
 
             return result;
         }
+
+        public string AuthorizationSource
+        {
+            get
+            {
+                return this.GetProperty(AzureSubscription.Property.AuthorizationSource);
+            }
+        }
+
+        public Dictionary<string, string> Tags
+        {
+            get
+            {
+                return this.GetTags();
+            }
+        }
     }
 }

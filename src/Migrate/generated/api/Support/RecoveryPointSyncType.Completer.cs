@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>Argument completer implementation for RecoveryPointSyncType.</summary>
+    /// <summary>A value indicating whether the recovery point is multi VM consistent.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.RecoveryPointSyncTypeTypeConverter))]
     public partial struct RecoveryPointSyncType :
         System.Management.Automation.IArgumentCompleter
@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "MultiVmSyncRecoveryPoint".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("MultiVmSyncRecoveryPoint", "MultiVmSyncRecoveryPoint", global::System.Management.Automation.CompletionResultType.ParameterValue, "MultiVmSyncRecoveryPoint");
+                yield return new global::System.Management.Automation.CompletionResult("'MultiVmSyncRecoveryPoint'", "MultiVmSyncRecoveryPoint", global::System.Management.Automation.CompletionResultType.ParameterValue, "MultiVmSyncRecoveryPoint");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "PerVmRecoveryPoint".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("PerVmRecoveryPoint", "PerVmRecoveryPoint", global::System.Management.Automation.CompletionResultType.ParameterValue, "PerVmRecoveryPoint");
+                yield return new global::System.Management.Automation.CompletionResult("'PerVmRecoveryPoint'", "PerVmRecoveryPoint", global::System.Management.Automation.CompletionResultType.ParameterValue, "PerVmRecoveryPoint");
             }
         }
     }

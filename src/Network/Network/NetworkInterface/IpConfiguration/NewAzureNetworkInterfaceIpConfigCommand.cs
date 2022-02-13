@@ -130,6 +130,16 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
+            if (!string.IsNullOrEmpty(this.GatewayLoadBalancerId))
+            {
+                // Gateway
+                if (ipconfig.GatewayLoadBalancer == null)
+                {
+                    ipconfig.GatewayLoadBalancer = new PSFrontendIPConfiguration();
+                }
+                ipconfig.GatewayLoadBalancer.Id = this.GatewayLoadBalancerId;
+            }
+
             if (this.ApplicationGatewayBackendAddressPoolId != null)
             {
                 ipconfig.ApplicationGatewayBackendAddressPools = new List<PSApplicationGatewayBackendAddressPool>();

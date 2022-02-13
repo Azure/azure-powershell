@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Commands.TestFx
         }
 
         /// <summary>
-        ///
+        /// WithExtraUserAgentsToIgnore
         /// </summary>
         /// <param name="userAgentsToIgnore">
         /// Dictionary to store pairs: {user agent name, version-api to ignore}.

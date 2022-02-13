@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The list of group id.")]
+            HelpMessage = "The list of group id. You can use '(Get-AzPrivateLinkResource -PrivateLinkResourceId ${privateLinkResourceId}).GroupId' to get the supported group ids.")]
         public string[] GroupId { get; set; }
 
         [Parameter(

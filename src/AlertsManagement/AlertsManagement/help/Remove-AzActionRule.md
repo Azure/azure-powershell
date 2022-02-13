@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement.dll-Help.xml
 Module Name: Az.AlertsManagement
-online version: https://docs.microsoft.com/en-us/powershell/module/az.alertsmanagement/remove-azactionrule
+online version: https://docs.microsoft.com/powershell/module/az.alertsmanagement/remove-azactionrule
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ Remove-AzActionRule -InputObject <PSActionRule> [-DefaultProfile <IAzureContextC
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzActionRule -ResourceGroupName "test-rg" -Name "ActionRuleName"
+Remove-AzActionRule -ResourceGroupName "test-rg" -Name "ActionRuleName"
 ```
 
 This cmdlet deletes the action rule with name ActionRuleName in resource group test-rg

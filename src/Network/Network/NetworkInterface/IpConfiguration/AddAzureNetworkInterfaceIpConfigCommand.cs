@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Network
 
 
         public override void Execute()
-        {     
+        {
             base.Execute();
 
             var existingIpConfig = this.NetworkInterface.IpConfigurations.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.Network
             ipconfig.Name = this.Name;
             if (this.Primary.IsPresent)
             {
-                foreach(var item in NetworkInterface.IpConfigurations)
+                foreach (var item in NetworkInterface.IpConfigurations)
                 {
                     item.Primary = false;
                 }
@@ -129,6 +129,16 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     ipconfig.PrivateIpAllocationMethod = Management.Network.Models.IPAllocationMethod.Dynamic;
                 }
+            }
+
+            if (!string.IsNullOrEmpty(this.GatewayLoadBalancerId))
+            {
+                // Gateway
+                if (ipconfig.GatewayLoadBalancer == null)
+                {
+                    ipconfig.GatewayLoadBalancer = new PSFrontendIPConfiguration();
+                }
+                ipconfig.GatewayLoadBalancer.Id = this.GatewayLoadBalancerId;
             }
 
             if (!string.IsNullOrEmpty(this.PublicIpAddressId))

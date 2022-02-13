@@ -1,4 +1,4 @@
-### Example 1: Get database
+### Example 1: Get database information
 ```powershell
 PS C:\> Get-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup"
 
@@ -8,4 +8,4 @@ default Microsoft.Cache/redisEnterprise/databases
 
 ```
 
-This command gets the database for the Redis Enterprise Cache named MyCache.
+This command gets information about a database in the Redis Enterprise cache named MyCache.

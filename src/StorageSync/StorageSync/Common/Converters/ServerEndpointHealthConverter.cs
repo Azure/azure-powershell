@@ -13,34 +13,28 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.StorageSync.Models;
+using System;
 using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 
 namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
 {
     /// <summary>
     /// Class ServerEndpointHealthConvertor.
-    /// Implements the <see cref="Converters.ConverterBase{PSServerEndpointSyncStatus, StorageSyncModels.ServerEndpointHealth}" />
+    /// Implements the <see cref="Converters.ConverterBase{PSServerEndpointHealth, StorageSyncModels.ServerEndpointSyncStatus}" />
     /// </summary>
-    /// <seealso cref="Converters.ConverterBase{PSServerEndpointSyncStatus, StorageSyncModels.ServerEndpointHealth}" />
+    /// <seealso cref="Converters.ConverterBase{PSServerEndpointHealth, StorageSyncModels.ServerEndpointSyncStatus}" />
     public class ServerEndpointHealthConverter : ConverterBase<PSServerEndpointHealth, StorageSyncModels.ServerEndpointSyncStatus>
     {
         /// <summary>
         /// Transforms the specified source.
         /// </summary>
         /// <param name="source">The source.</param>
-        /// <returns>StorageSyncModels.ServerEndpointHealth.</returns>
-        protected override StorageSyncModels.ServerEndpointSyncStatus Transform(PSServerEndpointHealth source) => new StorageSyncModels.ServerEndpointSyncStatus(
-            source.DownloadHealth,
-            source.UploadHealth,
-            source.CombinedHealth,
-            source.SyncActivity,
-            null /*TotalPersistentFilesNotSyncingCount currently not supported in PS*/,
-            source.LastUpdatedTimestamp,
-            new SyncSessionStatusConvertor().Convert(source.UploadStatus),
-            new SyncSessionStatusConvertor().Convert(source.DownloadStatus),
-            new SyncActivityStatusConverter().Convert(source.UploadActivity),
-            new SyncActivityStatusConverter().Convert(source.DownloadActivity),
-            source.OfflineDataTransferStatus);
+        /// <returns>StorageSyncModels.ServerEndpointSyncStatus.</returns>
+        protected override StorageSyncModels.ServerEndpointSyncStatus Transform(PSServerEndpointHealth source)
+        {
+            // Sync status properties are read-only from the RP
+            throw new NotSupportedException();
+        }
 
         /// <summary>
         /// Transforms the specified source.
@@ -49,18 +43,26 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
         /// <returns>PSServerEndpointHealth.</returns>
         protected override PSServerEndpointHealth Transform(StorageSyncModels.ServerEndpointSyncStatus source)
         {
+            PSSyncSessionStatus uploadStatus = source.UploadStatus != null ? new SyncSessionStatusConvertor().Convert(source.UploadStatus) : null;
+            PSSyncSessionStatus downloadStatus = source.DownloadStatus != null ? new SyncSessionStatusConvertor().Convert(source.DownloadStatus) : null;
+            PSSyncActivityStatus uploadActivity = source.UploadActivity != null ? new SyncActivityStatusConverter().Convert(source.UploadActivity) : null;
+            PSSyncActivityStatus downloadActivity = source.DownloadActivity != null ? new SyncActivityStatusConverter().Convert(source.DownloadActivity) : null;
+            PSBackgroundDataDownloadActivity backgroundDataDownloadActivity = source.BackgroundDataDownloadActivity != null ? new BackgroundDataDownloadActivityConverter().Convert(source.BackgroundDataDownloadActivity) : null;
+
             return new PSServerEndpointHealth()
             {
                 DownloadHealth = source.DownloadHealth,
                 UploadHealth = source.UploadHealth,
                 CombinedHealth = source.CombinedHealth,
                 SyncActivity = source.SyncActivity,
+                TotalPersistentFilesNotSyncingCount = source.TotalPersistentFilesNotSyncingCount,
                 LastUpdatedTimestamp = source.LastUpdatedTimestamp,
-                UploadStatus = new SyncSessionStatusConvertor().Convert(source.UploadStatus),
-                DownloadStatus = new SyncSessionStatusConvertor().Convert(source.DownloadStatus),
-                UploadActivity = new SyncActivityStatusConverter().Convert(source.UploadActivity),
-                DownloadActivity = new SyncActivityStatusConverter().Convert(source.DownloadActivity),
-                OfflineDataTransferStatus = source.OfflineDataTransferStatus
+                UploadStatus = uploadStatus,
+                DownloadStatus = downloadStatus,
+                UploadActivity = uploadActivity,
+                DownloadActivity = downloadActivity,
+                OfflineDataTransferStatus = source.OfflineDataTransferStatus,
+                BackgroundDataDownloadActivity = backgroundDataDownloadActivity
             };
         }
     }

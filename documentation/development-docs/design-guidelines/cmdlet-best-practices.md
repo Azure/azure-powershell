@@ -139,7 +139,7 @@ $job | Wait-Job
 $subscriptions = $job | Receive-Job
 ````
 
-To set a custom job name, please use [`SetBackgroupJobDescription`](https://github.com/Azure/azure-powershell-common/blob/master/src/Common/AzurePSCmdlet.cs#L810). The default job description is: "Long Running Operation for '{cmdlet name}' on resource '{resource name}'"
+To set a custom job name, please use [`SetBackgroupJobDescription`](https://github.com/Azure/azure-powershell-common/blob/main/src/Common/AzurePSCmdlet.cs#L810). The default job description is: "Long Running Operation for '{cmdlet name}' on resource '{resource name}'"
 
 ### Required Parameter Sets
 

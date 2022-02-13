@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
 ms.assetid: 5727E2CA-0A0B-4050-9F4A-7E06758D9B53
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/remove-azcdncustomdomain
+online version: https://docs.microsoft.com/powershell/module/az.cdn/remove-azcdncustomdomain
 schema: 2.0.0
 ---
 
@@ -30,6 +30,11 @@ Remove-AzCdnCustomDomain -CdnCustomDomain <PSCustomDomain> [-PassThru]
 The **Remove-AzCdnCustomDomain** cmdlet removes the custom domain from an Azure Content Delivery Network (CDN) endpoint.
 
 ## EXAMPLES
+
+### Example 1
+```powershell
+Remove-AzCdnCustomDomain -ResourceGroupName myresourcegroup -ProfileName mycdnprofile -EndpointName myendpoint -CustomDomainName cdn-example-com
+```
 
 ## PARAMETERS
 

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
 Module Name: Az.Accounts
-online version: https://docs.microsoft.com/en-us/powershell/module/az.accounts/remove-azenvironment
+online version: https://docs.microsoft.com/powershell/module/az.accounts/remove-azenvironment
 schema: 2.0.0
 ---
 
@@ -23,8 +23,8 @@ The Remove-AzEnvironment cmdlet removes endpoints and metadata information for c
 ## EXAMPLES
 
 ### Example 1: Creating and removing a test environment
-```
-PS C:\> Add-AzEnvironment -Name TestEnvironment `
+```powershell
+Add-AzEnvironment -Name TestEnvironment `
         -ActiveDirectoryEndpoint TestADEndpoint `
         -ActiveDirectoryServiceEndpointResourceId TestADApplicationId `
         -ResourceManagerEndpoint TestRMEndpoint `
@@ -35,7 +35,7 @@ Name            Resource Manager Url ActiveDirectory Authority
 ----            -------------------- -------------------------
 TestEnvironment TestRMEndpoint       TestADEndpoint/
 
-PS C:\> Remove-AzEnvironment -Name TestEnvironment
+Remove-AzEnvironment -Name TestEnvironment
 
 Name            Resource Manager Url ActiveDirectory Authority
 ----            -------------------- -------------------------
@@ -123,7 +123,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

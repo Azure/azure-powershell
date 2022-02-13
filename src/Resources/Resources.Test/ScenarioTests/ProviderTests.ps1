@@ -151,7 +151,7 @@ function Test-AzureProviderOperation
 	Assert-True { $action.Length -eq 0 }
 
 	# Get operations for non-existing provider
-	$exceptionMessage = "Provider 'NonExistentProvider' not found.";
+	$exceptionMessage = "Operation returned an invalid status code 'NotFound'";
 	Assert-Throws { Get-AzProviderOperation NonExistentProvider/* } $exceptionMessage
 
 	# Get operations for non-existing provider

@@ -12,7 +12,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Cmdlets
     /// the latest eTag by performing a get operation. Create operation does not require eTag.
     /// </summary>
     /// <remarks>
-    /// [OpenAPI] Exports_CreateOrUpdate=>PUT:"/{scope}/providers/Microsoft.CostManagement/exports/{exportName}"
+    /// [OpenAPI] CreateOrUpdate=>PUT:"/{scope}/providers/Microsoft.CostManagement/exports/{exportName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.CostManagement.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzCostManagementExport_CreateExpanded", SupportsShouldProcess = true)]
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Cmdlets
         SerializedName = @"timeframe",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType DefinitionTimeframe { get => ParametersBody.DefinitionTimeframe; set => ParametersBody.DefinitionTimeframe = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType DefinitionTimeframe { get => ParametersBody.DefinitionTimeframe ?? ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType)""); set => ParametersBody.DefinitionTimeframe = value; }
 
         /// <summary>
         /// The type of the export. Note that 'Usage' is equivalent to 'ActualCost' and is applicable to exports that do not yet provide
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Cmdlets
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType DefinitionType { get => ParametersBody.DefinitionType; set => ParametersBody.DefinitionType = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType DefinitionType { get => ParametersBody.DefinitionType ?? ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType)""); set => ParametersBody.DefinitionType = value; }
 
         /// <summary>The name of the container where exports will be uploaded.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The name of the container where exports will be uploaded.")]
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Cmdlets
         Description = @"The start date of recurrence.",
         SerializedName = @"from",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        public global::System.DateTime RecurrencePeriodFrom { get => ParametersBody.RecurrencePeriodFrom; set => ParametersBody.RecurrencePeriodFrom = value; }
+        public global::System.DateTime RecurrencePeriodFrom { get => ParametersBody.RecurrencePeriodFrom ?? default(global::System.DateTime); set => ParametersBody.RecurrencePeriodFrom = value; }
 
         /// <summary>The end date of recurrence.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The end date of recurrence.")]
@@ -265,7 +265,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Cmdlets
         SerializedName = @"recurrence",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType ScheduleRecurrence { get => ParametersBody.ScheduleRecurrence; set => ParametersBody.ScheduleRecurrence = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType ScheduleRecurrence { get => ParametersBody.ScheduleRecurrence ?? ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType)""); set => ParametersBody.ScheduleRecurrence = value; }
 
         /// <summary>
         /// The status of the export's schedule. If 'Inactive', the export's schedule is paused.
@@ -307,7 +307,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Cmdlets
         Description = @"The start date for export data.",
         SerializedName = @"from",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        public global::System.DateTime TimePeriodFrom { get => ParametersBody.TimePeriodFrom; set => ParametersBody.TimePeriodFrom = value; }
+        public global::System.DateTime TimePeriodFrom { get => ParametersBody.TimePeriodFrom ?? default(global::System.DateTime); set => ParametersBody.TimePeriodFrom = value; }
 
         /// <summary>The end date for export data.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The end date for export data.")]
@@ -318,7 +318,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Cmdlets
         Description = @"The end date for export data.",
         SerializedName = @"to",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        public global::System.DateTime TimePeriodTo { get => ParametersBody.TimePeriodTo; set => ParametersBody.TimePeriodTo = value; }
+        public global::System.DateTime TimePeriodTo { get => ParametersBody.TimePeriodTo ?? default(global::System.DateTime); set => ParametersBody.TimePeriodTo = value; }
 
         /// <summary>
         /// <c>overrideOnCreated</c> will be called before the regular onCreated has been processed, allowing customization of what

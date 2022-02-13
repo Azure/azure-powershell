@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.StorageSync.Interfaces;
 using Microsoft.Azure.Graph.RBAC.Version1_6_20190326;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01;
 using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.Azure.Management.ResourceManager.Version2019_06_01;
+using Microsoft.Azure.Management.ResourceManager.Version2021_01_01;
 using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.Azure.Management.StorageSync;
 using Microsoft.Azure.ServiceManagement.Common.Models;
@@ -145,7 +145,8 @@ namespace ScenarioTests
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     "AzureRM.Storage.ps1",
-                    "AzureRM.Resources.ps1");
+                    "AzureRM.Resources.ps1",
+                    _helper.RMStorageModule);
 
                 try
                 {

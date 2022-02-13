@@ -1,7 +1,7 @@
 ---
 Module Name: Az.NetAppFiles
 Module Guid: e20e99dc-6df9-479b-8504-2960f0088f00
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.netappfiles
+Download Help Link: https://docs.microsoft.com/powershell/module/az.netappfiles
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -29,6 +29,9 @@ Gets details of an Azure NetApp Files (ANF) Backup Policy.
 ### [Get-AzNetAppFilesPool](Get-AzNetAppFilesPool.md)
 Gets details of an Azure NetApp Files (ANF) pool.
 
+### [Get-AzNetAppFilesQuotaLimit](Get-AzNetAppFilesQuotaLimit.md)
+Get quota limits
+
 ### [Get-AzNetAppFilesReplicationStatus](Get-AzNetAppFilesReplicationStatus.md)
 Get the status of the replication
 
@@ -43,6 +46,15 @@ Gets list of Azure NetApp Files (ANF) Accounts backup vaults.
 
 ### [Get-AzNetAppFilesVolume](Get-AzNetAppFilesVolume.md)
 Gets details of an Azure NetApp Files (ANF) volume.
+
+### [Get-AzNetAppFilesVolumeBackupStatus](Get-AzNetAppFilesVolumeBackupStatus.md)
+Get volume's backup status
+
+### [Get-AzNetAppFilesVolumeRestoreStatus](Get-AzNetAppFilesVolumeRestoreStatus.md)
+Get volume's restore status
+
+### [Initialize-AzNetAppFilesReplication](Initialize-AzNetAppFilesReplication.md)
+Re-Initializes the replication connection on the destination volume
 
 ### [New-AzNetAppFilesAccount](New-AzNetAppFilesAccount.md)
 Creates a new Azure NetApp Files (ANF) account.
@@ -103,6 +115,15 @@ Resume/Resync the connection on the destination volume. If the operation is ran 
 
 ### [Set-AzNetAppFilesAccount](Set-AzNetAppFilesAccount.md)
 Updates an Azure NetApp Files (ANF) account with the new data set. Useful for deletion of associated active directories.
+
+### [Set-AzNetAppFilesBackupPolicy](Set-AzNetAppFilesBackupPolicy.md)
+Updates an Azure NetApp Files (ANF) Backup Policy with the new data set. 
+
+### [Set-AzNetAppFilesPool](Set-AzNetAppFilesPool.md)
+Updates an Azure NetApp Files (ANF) Capacity Pool with the new data set. 
+
+### [Set-AzNetAppFilesSnapshotPolicy](Set-AzNetAppFilesSnapshotPolicy.md)
+Updates an Azure NetApp Files (ANF) Snapshot Policy with the new data set. 
 
 ### [Set-AzNetAppFilesVolumePool](Set-AzNetAppFilesVolumePool.md)
 Change pool for an Azure NetApp Files (ANF) volume.

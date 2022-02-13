@@ -17,15 +17,10 @@
 Create a in-memory object for Remote Desktop Extension
 .Description
 Create a in-memory object for Remote Desktop Extension
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.Extension
-.Link
-https://docs.microsoft.com/en-us/powershell/module/az.CloudService/new-azcloudserviceremotedesktopextensionobject
 #>
 
 function New-AzCloudServiceRemoteDesktopExtensionObject {
-  [OutputType('Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.Extension')]
+  [OutputType('Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.Extension')]
   param(
     [Parameter(HelpMessage="Name of Remote Desktop Extension.", Mandatory)]
     [string] $Name,
@@ -51,7 +46,8 @@ function New-AzCloudServiceRemoteDesktopExtensionObject {
     $RDPExtensionType = "RDP"
 
     $rdpSetting = "<PublicConfig><UserName>$($Credential.UserName)</UserName><Expiration>$Expiration</Expiration></PublicConfig>";
-    $rdpProtectedSetting = "<PrivateConfig><Password>$($Credential.Password)</Password></PrivateConfig>";
+    $Password = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $Credential.Password
+    $rdpProtectedSetting = "<PrivateConfig><Password>$($Password)</Password></PrivateConfig>";
 
     return New-AzCloudServiceExtensionObject -Name $Name -Publisher $RDPPublisher -Type $RDPExtensionType -TypeHandlerVersion $TypeHandlerVersion -Setting $rdpSetting -ProtectedSetting $rdpProtectedSetting -RolesAppliedTo $RolesAppliedTo -AutoUpgradeMinorVersion $AutoUpgradeMinorVersion
   }

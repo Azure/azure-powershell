@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
 ms.assetid: 47AFBAC7-8818-4788-B685-7AB4DCD6C2DE
-online version: https://docs.microsoft.com/en-us/powershell/module/az.operationalinsights/disable-azoperationalinsightslinuxperformancecollection
+online version: https://docs.microsoft.com/powershell/module/az.operationalinsights/disable-azoperationalinsightslinuxperformancecollection
 schema: 2.0.0
 ---
 
@@ -29,6 +29,20 @@ Disable-AzOperationalInsightsLinuxPerformanceCollection [-Workspace] <PSWorkspac
 The **Disable-AzOperationalInsightsLinuxPerformanceCollection** cmdlet stops collection of performance counters from connected Linux computers in a workspace.
 
 ## EXAMPLES
+
+### Example 1
+```powershell
+PS C:\> Disable-AzOperationalInsightsLinuxPerformanceCollection -ResourceGroupName yuzhi-rg -WorkspaceName OperationalInsight
+
+Name              : DataSource_LinuxPerformanceCollection
+ResourceGroupName : yuzhi-rg
+WorkspaceName     : OperationalInsight
+ResourceId        : /subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/yuzhi-rg/providers/Microsoft.OperationalInsights/wo
+                    rkspaces/OperationalInsight/datasources/DataSource_LinuxPerformanceCollection
+Kind              : LinuxPerformanceCollection
+Properties        : {"state":"Disabled"}
+```
+Stops collection of performance counters from connected Linux computers in a workspace.
 
 ## PARAMETERS
 
@@ -124,7 +138,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

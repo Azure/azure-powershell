@@ -81,9 +81,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 Client.NamedValueSet(
                     Context,
                     NamedValueId,
+                    Secret,
                     Name,
                     Value,
-                    Secret,
                     Tag);
 
                 if (PassThru)

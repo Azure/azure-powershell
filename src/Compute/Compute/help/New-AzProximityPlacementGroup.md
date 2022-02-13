@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/new-azproximityplacementgroup
+online version: https://docs.microsoft.com/powershell/module/az.compute/new-azproximityplacementgroup
 schema: 2.0.0
 ---
 
@@ -25,8 +25,10 @@ This cmdlet will create Proximity Placement Group resource.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzureRmProximityPlacementGroup -ResourceGroupName $resourceGroupName -Name $proximityPlacementGroupName -Location $location -Tag @{key1 = "val1"}
+New-AzureRmProximityPlacementGroup -ResourceGroupName $resourceGroupName -Name $proximityPlacementGroupName -Location $location -Tag @{key1 = "val1"}
+```
 
+```output
 ResourceGroupName           : rg0
 ProximityPlacementGroupType : Standard
 Id                          : /subscriptions/5393f919-a68a-43d0-9063-4b2bda6bffdf/resourceGroups/rg0/providers/Microsoft.Compute/proximityPlacementGroups/ppg0

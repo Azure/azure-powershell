@@ -30,7 +30,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IOperation
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.imagebuilder/get-azoperation
+https://docs.microsoft.com/powershell/module/az.imagebuilder/get-azoperation
 #>
 function Get-AzOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IOperation])]

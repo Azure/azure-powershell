@@ -85,7 +85,18 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// </summary>
         public IList<Management.Sql.Models.Database> List(string resourceGroupName, string serverName)
         {
-            return new List<Management.Sql.Models.Database>(GetCurrentSqlClient().Databases.ListByServer(resourceGroupName, serverName));
+            List<Management.Sql.Models.Database> resultsList = new List<Management.Sql.Models.Database>();
+
+            var pagedResponse = GetCurrentSqlClient().Databases.ListByServer(resourceGroupName, serverName);
+            resultsList.AddRange(pagedResponse);
+
+            while (!string.IsNullOrEmpty(pagedResponse.NextPageLink))
+            {
+                pagedResponse = GetCurrentSqlClient().Databases.ListByServerNext(pagedResponse.NextPageLink);
+                resultsList.AddRange(pagedResponse);
+            }
+
+            return resultsList;
         }
 
         /// <summary>

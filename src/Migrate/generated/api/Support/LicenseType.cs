@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>License type.</summary>
     public partial struct LicenseType :
         System.IEquatable<LicenseType>
     {
@@ -22,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         /// <param name="value">the value to convert to an instance of <see cref="LicenseType" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new LicenseType(System.Convert.ToString(value));
+            return new LicenseType(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type LicenseType</summary>

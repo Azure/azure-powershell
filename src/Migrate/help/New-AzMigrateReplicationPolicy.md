@@ -1,14 +1,14 @@
 ---
 external help file:
 Module Name: Az.Migrate
-online version: https://docs.microsoft.com/en-us/powershell/module/az.migrate/new-azmigratereplicationpolicy
+online version: https://docs.microsoft.com/powershell/module/az.migrate/new-azmigratereplicationpolicy
 schema: 2.0.0
 ---
 
 # New-AzMigrateReplicationPolicy
 
 ## SYNOPSIS
-The operation to create a replication policy
+The operation to create a replication policy.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ New-AzMigrateReplicationPolicy -PolicyName <String> -ResourceGroupName <String> 
 ```
 
 ## DESCRIPTION
-The operation to create a replication policy
+The operation to create a replication policy.
 
 ## EXAMPLES
 
@@ -88,7 +88,7 @@ Accept wildcard characters: False
 ```
 
 ### -PolicyName
-Replication policy name
+Replication policy name.
 
 ```yaml
 Type: System.String
@@ -107,7 +107,7 @@ The ReplicationProviderSettings.
 To construct, see NOTES section for PROVIDERSPECIFICINPUT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IPolicyProviderSpecificInput
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IPolicyProviderSpecificInput
 Parameter Sets: (All)
 Aliases:
 
@@ -149,7 +149,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The subscription Id.
+Azure Subscription Id in which migrate project was created.
 
 ```yaml
 Type: System.String
@@ -201,7 +201,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IPolicy
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IPolicy
 
 ## NOTES
 

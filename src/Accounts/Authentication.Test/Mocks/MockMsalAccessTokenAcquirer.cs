@@ -32,7 +32,7 @@ namespace Microsoft.Azure.PowerShell.Authentication.Test.Mocks
 
         public TokenRequestContext TokenRequestContext { get; set; }
 
-        internal override async Task<IAccessToken> GetAccessTokenAsync(TokenCredential tokenCredential, TokenRequestContext requestContext, CancellationToken cancellationToken, string tenantId = null, string userId = null, string homeAccountId = "")
+        internal override async Task<IAccessToken> GetAccessTokenAsync(string callerClassName, string parametersLog, TokenCredential tokenCredential, TokenRequestContext requestContext, CancellationToken cancellationToken, string tenantId = null, string userId = null, string homeAccountId = "")
         {
             TokenCredential = tokenCredential;
             TokenRequestContext = requestContext;

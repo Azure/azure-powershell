@@ -19,7 +19,6 @@ using System.Management.Automation;
 using Microsoft.Azure.Management.RecoveryServices.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Collections;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {

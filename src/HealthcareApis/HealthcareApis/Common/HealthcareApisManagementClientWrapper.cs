@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Management.HealthcareApis;
 using System;
 
@@ -23,8 +22,6 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Common
     public partial class HealthcareApisManagementClientWrapper
     {
         public IHealthcareApisManagementClient HealthcareApisManagementClient { get; set; }
-
-        public ActiveDirectoryClient ActiveDirectoryClient { get; set; }
 
         public Action<string> VerboseLogger { get; set; }
 
@@ -38,11 +35,6 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Common
         public HealthcareApisManagementClientWrapper(IHealthcareApisManagementClient resourceManagementClient)
         {
             HealthcareApisManagementClient = resourceManagementClient;
-        }
-
-        public HealthcareApisManagementClientWrapper(ActiveDirectoryClient activeDirectoryClient)
-        {
-            ActiveDirectoryClient = activeDirectoryClient;
         }
     }
 }

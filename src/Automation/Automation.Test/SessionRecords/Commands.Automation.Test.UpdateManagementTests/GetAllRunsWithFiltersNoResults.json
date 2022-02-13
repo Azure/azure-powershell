@@ -1,25 +1,25 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-resources-eus/providers/Microsoft.Automation/automationAccounts/mo-aaa-eus2/softwareUpdateConfigurationRuns?api-version=2017-05-15-preview&$filter=properties%2FosType%20eq%20%27Windows%27%20and%20properties%2Fstatus%20eq%20%27Failed%27%20and%20properties%2FstartTime%20ge%202018-05-22T23%3A40%3A00.0000000Z",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL21vLXJlc291cmNlcy1ldXMvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRvbWF0aW9uL2F1dG9tYXRpb25BY2NvdW50cy9tby1hYWEtZXVzMi9zb2Z0d2FyZVVwZGF0ZUNvbmZpZ3VyYXRpb25SdW5zP2FwaS12ZXJzaW9uPTIwMTctMDUtMTUtcHJldmlldyYkZmlsdGVyPXByb3BlcnRpZXMlMkZvc1R5cGUlMjBlcSUyMCUyN1dpbmRvd3MlMjclMjBhbmQlMjBwcm9wZXJ0aWVzJTJGc3RhdHVzJTIwZXElMjAlMjdGYWlsZWQlMjclMjBhbmQlMjBwcm9wZXJ0aWVzJTJGc3RhcnRUaW1lJTIwZ2UlMjAyMDE4LTA1LTIyVDIzJTNBNDAlM0EwMC4wMDAwMDAwWg==",
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-resources-eus/providers/Microsoft.Automation/automationAccounts/mo-aaa-eus2/softwareUpdateConfigurationRuns?api-version=2019-06-01&$filter=properties%2FosType%20eq%20%27Windows%27%20and%20properties%2Fstatus%20eq%20%27Failed%27%20and%20properties%2FstartTime%20ge%202021-04-04T11%3A10%3A00.0000000Z",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL21vLXJlc291cmNlcy1ldXMvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRvbWF0aW9uL2F1dG9tYXRpb25BY2NvdW50cy9tby1hYWEtZXVzMi9zb2Z0d2FyZVVwZGF0ZUNvbmZpZ3VyYXRpb25SdW5zP2FwaS12ZXJzaW9uPTIwMTktMDYtMDEmJGZpbHRlcj1wcm9wZXJ0aWVzJTJGb3NUeXBlJTIwZXElMjAlMjdXaW5kb3dzJTI3JTIwYW5kJTIwcHJvcGVydGllcyUyRnN0YXR1cyUyMGVxJTIwJTI3RmFpbGVkJTI3JTIwYW5kJTIwcHJvcGVydGllcyUyRnN0YXJ0VGltZSUyMGdlJTIwMjAyMS0wNC0wNFQxMSUzQTEwJTNBMDAuMDAwMDAwMFo=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1e300f74-41c8-456f-b26e-0cf1dd40a90a"
+          "2985420f-03c6-4358-a5aa-fd8d530e849e"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27129.04",
+          "FxVersion/4.6.29812.02",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.0.0"
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
         ],
         "x-ms-activity-id": [
-          "92ae32a5-0c53-400a-9fcf-844eb30eb198"
+          "38735da3-c37a-4781-995f-fb825e2d9d4a"
         ]
       },
       "ResponseHeaders": {
@@ -30,7 +30,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "92ae32a5-0c53-400a-9fcf-844eb30eb198"
+          "38735da3-c37a-4781-995f-fb825e2d9d4a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -45,19 +45,19 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11994"
         ],
         "x-ms-correlation-request-id": [
-          "71548950-5770-457a-92af-72dd4288cdd6"
+          "a127b11e-64fa-4bd5-8020-1b143cb08302"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190203T215555Z:71548950-5770-457a-92af-72dd4288cdd6"
+          "CENTRALINDIA:20210405T040323Z:a127b11e-64fa-4bd5-8020-1b143cb08302"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Sun, 03 Feb 2019 21:55:55 GMT"
+          "Mon, 05 Apr 2021 04:03:22 GMT"
         ],
         "Content-Length": [
           "12"

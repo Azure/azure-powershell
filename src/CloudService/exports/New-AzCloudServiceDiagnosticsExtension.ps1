@@ -24,12 +24,12 @@ PS C:\> $configFile = "<WAD configuration file path>"
 PS C:\> $extension = New-AzCloudServiceDiagnosticsExtension -Name "WADExtension" -ResourceGroupName "ContosOrg" -CloudServiceName "ContosCS" -StorageAccountName "ContosSA" -StorageAccountKey $storageAccountKey[0].Value -DiagnosticsConfigurationPath $configFile -TypeHandlerVersion "1.5" -AutoUpgradeMinorVersion $true
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.Extension
+Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.Extension
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.CloudService/new-AzCloudServiceExtensionObject
+https://docs.microsoft.com/powershell/module/az.cloudservice/new-azcloudservicediagnosticsextension
 #>
 function New-AzCloudServiceDiagnosticsExtension {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.Extension])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.Extension])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Position=1)]
@@ -108,6 +108,8 @@ begin {
         if (('__AllParameterSets') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Subscription')) {
             $PSBoundParameters['Subscription'] = (Get-AzContext).Subscription.Id
         }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

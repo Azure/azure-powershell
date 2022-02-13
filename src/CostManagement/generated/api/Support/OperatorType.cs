@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
+    /// <summary>The operator to use for comparison.</summary>
     public partial struct OperatorType :
         System.IEquatable<OperatorType>
     {
@@ -20,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
         /// <param name="value">the value to convert to an instance of <see cref="OperatorType" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new OperatorType(System.Convert.ToString(value));
+            return new OperatorType(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type OperatorType</summary>

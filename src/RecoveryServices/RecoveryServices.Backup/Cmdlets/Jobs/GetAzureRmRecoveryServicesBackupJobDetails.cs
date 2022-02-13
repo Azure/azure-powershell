@@ -16,16 +16,15 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using CrrModel = Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
     /// <summary>
     /// Gets detailed information about a particular job.
     /// </summary>
-    [GenericBreakingChange(" Please use singular alias Get-AzRecoveryServicesBackupJobDetail, as Get-AzRecoveryServicesBackupJobDetails plural alias will be removed in an upcoming breaking change release", "4.0.0")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupJobDetail", DefaultParameterSetName = JobFilterSet), OutputType(typeof(JobBase))]
-    [Alias("Get-AzRecoveryServicesBackupJobDetails")]
     public class GetAzureRmRecoveryServicesBackupJobDetails : RSBackupVaultCmdletBase
     {
         protected const string IdFilterSet = "IdFilterSet";
@@ -47,6 +46,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateNotNullOrEmpty]
         public string JobId { get; set; }
 
+        /// <summary>
+        /// Switch param to filter job based on secondary region (Cross Region Restore).
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Common.UseSecondaryReg)]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter UseSecondaryRegion { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
@@ -63,12 +69,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 }
 
                 WriteDebug("Fetching job with ID: " + JobId);
+                                
+                if (UseSecondaryRegion.IsPresent) {
+                    CrrModel.CrrJobRequest jobRequest = new CrrModel.CrrJobRequest();
+                    jobRequest.JobName = JobId;
+                    jobRequest.ResourceId = VaultId;
 
-                var adapterResponse = ServiceClientAdapter.GetJob(
+                    // check this GetVault for rainy day scenario
+                    ARSVault vault = ServiceClientAdapter.GetVault(resourceGroupName, vaultName);
+                    string secondaryRegion = BackupUtils.regionMap[vault.Location];
+
+                    CrrModel.JobResource jobDetailsCrr = ServiceClientAdapter.GetCRRJobDetails(secondaryRegion, jobRequest);
+                    WriteObject(JobConversions.GetPSJobCrr(jobDetailsCrr));
+                }
+                else
+                {
+                    JobResource jobDetails = ServiceClientAdapter.GetJob(
                     JobId,
                     vaultName: vaultName,
                     resourceGroupName: resourceGroupName);
-                WriteObject(JobConversions.GetPSJob(adapterResponse));
+
+                    WriteObject(JobConversions.GetPSJob(jobDetails));
+                }
             });
         }
     }

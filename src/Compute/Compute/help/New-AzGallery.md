@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/new-azgallery
+online version: https://docs.microsoft.com/powershell/module/az.compute/new-azgallery
 schema: 2.0.0
 ---
 
@@ -25,7 +25,7 @@ Create a gallery.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzGallery -ResourceGroupName $rgname -Name $galleryName -Location $location -Description $galleryDescription
+New-AzGallery -ResourceGroupName $rgname -Name $galleryName -Location $location -Description $galleryDescription
 ```
 
 Create a gallery.

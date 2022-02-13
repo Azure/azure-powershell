@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 0780CB09-9C3B-468A-A718-3A646FE3D152
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/test-azprivateipaddressavailability
+online version: https://docs.microsoft.com/powershell/module/az.network/test-azprivateipaddressavailability
 schema: 2.0.0
 ---
 

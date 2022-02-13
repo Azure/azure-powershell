@@ -25,7 +25,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Support
         /// <param name="value">the value to convert to an instance of <see cref="CreateMode" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new CreateMode(System.Convert.ToString(value));
+            return new CreateMode(global::System.Convert.ToString(value));
         }
 
         /// <summary>Creates an instance of the <see cref="CreateMode" Enum class./></summary>

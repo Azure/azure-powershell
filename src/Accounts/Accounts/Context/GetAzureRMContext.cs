@@ -144,9 +144,9 @@ namespace Microsoft.Azure.Commands.Profile
             WriteObject(context);
         }
 
-        public object GetDynamicParameters()
+        public new object GetDynamicParameters()
         {
-            var parameters = new RuntimeDefinedParameterDictionary();
+            var parameters = base.GetDynamicParameters() as RuntimeDefinedParameterDictionary;
             AzureRmProfile localProfile = DefaultProfile as AzureRmProfile;
             if (localProfile != null && localProfile.Contexts != null && localProfile.Contexts.Count > 0)
             {

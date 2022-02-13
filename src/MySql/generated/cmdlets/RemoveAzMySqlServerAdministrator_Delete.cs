@@ -6,10 +6,11 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Extensions;
+    using System;
 
     /// <summary>Deletes server active directory administrator.</summary>
     /// <remarks>
-    /// [OpenAPI] Delete=>DELETE:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySQL/servers/{serverName}/Administrators/activeDirectory"
+    /// [OpenAPI] Delete=>DELETE:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/administrators/activeDirectory"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.MySql.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Remove, @"AzMySqlServerAdministrator_Delete", SupportsShouldProcess = true)]

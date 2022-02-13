@@ -43,10 +43,10 @@ INPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
   [Location <String>]: The region the operation is in.
   [OperationId <String>]: The operation's unique identifier.
   [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.redisenterprisecache/remove-azredisenterprisecacheprivateendpointconnection
+https://docs.microsoft.com/powershell/module/az.redisenterprisecache/remove-azredisenterprisecacheprivateendpointconnection
 #>
 function Remove-AzRedisEnterpriseCachePrivateEndpointConnection {
 [OutputType([System.Boolean])]
@@ -69,14 +69,14 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
     [System.String]
     # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Delete')]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Gets subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]

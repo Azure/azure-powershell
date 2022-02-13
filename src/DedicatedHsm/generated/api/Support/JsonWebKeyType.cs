@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Support
 {
 
+    /// <summary>Provisioning state.</summary>
     public partial struct JsonWebKeyType :
         System.IEquatable<JsonWebKeyType>
     {
@@ -39,7 +40,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Support
         /// <param name="value">the value to convert to an instance of <see cref="JsonWebKeyType" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new JsonWebKeyType(System.Convert.ToString(value));
+            return new JsonWebKeyType(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type JsonWebKeyType</summary>

@@ -23,12 +23,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Globalization;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using System;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
 {
     /// <summary>
     /// Cmdlet to create a new Azure SQL Database Copy
     /// </summary>
+    [CmdletOutputBreakingChange(
+        deprecatedCmdletOutputTypeName: typeof(AzureSqlDatabaseCopyModel),
+        deprecateByVersion: "3.0.0",
+        DeprecatedOutputProperties = new String[] { "BackupStorageRedundancy" },
+        NewOutputProperties = new String[] { "CurrentBackupStorageRedundancy", "RequestedBackupStorageRedundancy" })]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseCopy", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true, DefaultParameterSetName = DtuDatabaseParameterSet), OutputType(typeof(AzureSqlDatabaseCopyModel))]
     public class NewAzureSqlDatabaseCopy : AzureSqlDatabaseCopyCmdletBase
     {
@@ -141,6 +149,13 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         [ValidateSet("Local", "Zone", "Geo")]
         public string BackupStorageRedundancy { get; set; }
 
+        /// <summary>
+        /// Gets or sets the zone redundant option to assign to the Azure SQL Database
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The zone redundancy to associate with the Azure Sql Database. This property is only settable for Hyperscale edition databases.")]
+        public SwitchParameter ZoneRedundant { get; set; }
+
         protected static readonly string[] ListOfRegionsToShowWarningMessageForGeoBackupStorage = { "eastasia", "southeastasia", "brazilsouth", "east asia", "southeast asia", "brazil south" };
 
         /// <summary>
@@ -158,7 +173,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                 }
                 else if (string.Equals(this.BackupStorageRedundancy, "Geo", System.StringComparison.OrdinalIgnoreCase))
                 {
-                    WriteWarning(string.Format(CultureInfo.InvariantCulture, Properties.Resources.GeoBackupRedundancyChosenWarning));
+                    WriteWarning(string.Format(CultureInfo.InvariantCulture, Properties.Resources.BackupRedundancyChosenIsGeoWarning));
                 }
             }
             base.ExecuteCmdlet();
@@ -225,7 +240,8 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                 ElasticPoolName = ElasticPoolName,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
                 LicenseType = LicenseType, // note: default license type is LicenseIncluded
-                BackupStorageRedundancy = BackupStorageRedundancy,
+                RequestedBackupStorageRedundancy = BackupStorageRedundancy,
+                ZoneRedundant = this.IsParameterBound(p => p.ZoneRedundant) ? ZoneRedundant.ToBool() : (bool?)null,
             };
 
             if(ParameterSetName == DtuDatabaseParameterSet)

@@ -2,14 +2,14 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 ms.assetid: 2BE34AE1-06FA-4F66-8FDB-CED22C2E0978
-online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/get-azkeyvaultkey
+online version: https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvaultkey
 schema: 2.0.0
 ---
 
 # Get-AzKeyVaultKey
 
 ## SYNOPSIS
-Gets Key Vault keys.
+Gets Key Vault keys. Please notes that detailed information about a key, like key type or key size, only available when querying a specific key version.
 
 ## SYNTAX
 
@@ -87,19 +87,19 @@ Get-AzKeyVaultKey [-HsmObject] <PSManagedHsm> [-Name] <String> [-IncludeVersions
 
 ### ByResourceIdVaultName
 ```
-Get-AzKeyVaultKey [-ResourceId] <String> [[-Name] <String>] [-InRemovedState] [-OutFile <String>]
+Get-AzKeyVaultKey -ResourceId <String> [[-Name] <String>] [-InRemovedState] [-OutFile <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceIdKeyName
 ```
-Get-AzKeyVaultKey [-ResourceId] <String> [-Name] <String> [-Version] <String> [-OutFile <String>]
+Get-AzKeyVaultKey -ResourceId <String> [-Name] <String> [-Version] <String> [-OutFile <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceIdKeyVersions
 ```
-Get-AzKeyVaultKey [-ResourceId] <String> [-Name] <String> [-IncludeVersions] [-OutFile <String>]
+Get-AzKeyVaultKey -ResourceId <String> [-Name] <String> [-IncludeVersions] [-OutFile <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -131,7 +131,7 @@ This cmdlet gets a specific **Microsoft.Azure.Commands.KeyVault.Models.KeyBundle
 ```powershell
 PS C:\> Get-AzKeyVaultKey -VaultName 'contoso'
 
-Vault Name     : contoso
+Vault/HSM Name : contoso
 Name           : test1
 Version        :
 Id             : https://contoso.vault.azure.net:443/keys/test1
@@ -162,8 +162,10 @@ This command gets all the keys in the key vault named Contoso.
 ```powershell
 PS C:\> Get-AzKeyVaultKey -VaultName 'contoso' -KeyName 'test1'
 
-Vault Name     : contoso
+Vault/HSM Name : contoso
 Name           : test1
+Key Type       : RSA
+Key Size       : 2048
 Version        : 7fe415d5518240c1a6fce89986b8d334
 Id             : https://contoso.vault.azure.net:443/keys/test1/7fe415d5518240c1a6fce89986b8d334
 Enabled        : True
@@ -181,7 +183,7 @@ This command gets the current version of the key named test1 in the key vault na
 ```powershell
 PS C:\> Get-AzKeyVaultKey -VaultName 'contoso' -KeyName 'test1' -IncludeVersions
 
-Vault Name     : contoso
+Vault/HSM Name : contoso
 Name           : test1
 Version        : 7fe415d5518240c1a6fce89986b8d334
 Id             : https://contoso.vault.azure.net:443/keys/test1/7fe415d5518240c1a6fce89986b8d334
@@ -193,7 +195,7 @@ Updated        : 5/24/2018 6:08:13 PM
 Purge Disabled : False
 Tags           :
 
-Vault Name     : contoso
+Vault/HSM Name     : contoso
 Name           : test1
 Version        : e4e95940e669407fbdb4298bc21a3e1d
 Id             : https://contoso.vault.azure.net:443/keys/test1/e4e95940e669407fbdb4298bc21a3e1d
@@ -212,8 +214,10 @@ This command gets all versions the key named ITPfx in the key vault named Contos
 ```powershell
 PS C:\> Get-AzKeyVaultKey -VaultName 'contoso' -KeyName 'test1' -Version 'e4e95940e669407fbdb4298bc21a3e1d'
 
-Vault Name     : contoso
+Vault/HSM Name : contoso
 Name           : test1
+Key Type       : RSA
+Key Size       : 2048
 Version        : e4e95940e669407fbdb4298bc21a3e1d
 Id             : https://contoso.vault.azure.net:443/keys/test1/e4e95940e669407fbdb4298bc21a3e1d
 Enabled        : False
@@ -231,8 +235,7 @@ After running this command, you can inspect various properties of the key by nav
 ### Example 5: Get all the keys that have been deleted but not purged for this key vault
 ```powershell
 PS C:\> Get-AzKeyVaultKey -VaultName 'contoso' -InRemovedState
-
-Vault Name           : contoso
+Vault/HSM Name       : contoso
 Name                 : test3
 Id                   : https://contoso.vault.azure.net:443/keys/test3
 Deleted Date         : 5/24/2018 8:32:42 PM
@@ -252,7 +255,7 @@ This command gets all the keys that have been previously deleted, but not purged
 ```powershell
 PS C:\> Get-AzKeyVaultKey -VaultName 'contoso' -KeyName 'test3' -InRemovedState
 
-Vault Name           : contoso
+Vault/HSM Name       : contoso
 Name                 : test3
 Id                   : https://contoso.vault.azure.net:443/keys/test3/1af807cc331a49d0b52b7c75e1b2366e
 Deleted Date         : 5/24/2018 8:32:42 PM
@@ -273,7 +276,7 @@ This command will return metadata such as the deletion date, and the scheduled p
 ```powershell
 PS C:\> Get-AzKeyVaultKey -VaultName 'contoso' -KeyName "test*"
 
-Vault Name     : contoso
+Vault/HSM Name : contoso
 Name           : test1
 Version        :
 Id             : https://contoso.vault.azure.net:443/keys/test1
@@ -285,7 +288,7 @@ Updated        : 5/24/2018 6:08:13 PM
 Purge Disabled : False
 Tags           :
 
-Vault Name     : contoso
+Vault/HSM Name : contoso
 Name           : test2
 Version        :
 Id             : https://contoso.vault.azure.net:443/keys/test2
@@ -308,7 +311,7 @@ PS C:\> Get-AzKeyVaultKey -VaultName $vaultName -KeyName $keyName -OutFile $path
 ```
 
 You can download the public key of a RSA key by specifying the `-OutFile` parameter.
-This is one step of importing HSM-protected keys to Azure Key Vault. See https://docs.microsoft.com/en-us/azure/key-vault/keys/hsm-protected-keys
+This is one step of importing HSM-protected keys to Azure Key Vault. See https://docs.microsoft.com/azure/key-vault/keys/hsm-protected-keys
 
 ## PARAMETERS
 
@@ -471,7 +474,7 @@ Parameter Sets: ByResourceIdVaultName, ByResourceIdKeyName, ByResourceIdKeyVersi
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -537,6 +540,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzKeyVaultKey](./Remove-AzKeyVaultKey.md)
 
 [Undo-AzKeyVaultKeyRemoval](./Undo-AzKeyVaultKeyRemoval.md)
-
-[Set-AzKeyVaultKeyAttribute](./Set-AzKeyVaultKeyAttribute.md)
-

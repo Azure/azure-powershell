@@ -1,7 +1,7 @@
 ﻿---
 Module Name: Az.NotificationHubs
 Module Guid: f875725d-8ce4-423f-a6af-ea880bc63f13
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.notificationhubs
+Download Help Link: https://docs.microsoft.com/powershell/module/az.notificationhubs
 Help Version: 4.1.1.0
 Locale: en-US
 ---

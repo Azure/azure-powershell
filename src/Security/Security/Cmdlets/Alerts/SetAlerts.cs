@@ -123,11 +123,11 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
                 {
                     if (actionType == "Dismiss")
                     {
-                        SecurityCenterClient.Alerts.UpdateSubscriptionLevelAlertStateToDismissWithHttpMessagesAsync(name).GetAwaiter().GetResult();
+                        SecurityCenterClient.Alerts.UpdateSubscriptionLevelStateToDismissWithHttpMessagesAsync(name).GetAwaiter().GetResult();
                     }
                     else if (actionType == "Activate")
                     {
-                        SecurityCenterClient.Alerts.UpdateSubscriptionLevelAlertStateToReactivateWithHttpMessagesAsync(name).GetAwaiter().GetResult();
+                        SecurityCenterClient.Alerts.UpdateSubscriptionLevelStateToActivateWithHttpMessagesAsync(name).GetAwaiter().GetResult();
                     }
                     else if (actionType == "Resolve")
                     {
@@ -141,11 +141,11 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
                 {
                     if (actionType == "Dismiss")
                     {
-                        SecurityCenterClient.Alerts.UpdateResourceGroupLevelAlertStateToDismissWithHttpMessagesAsync(name, rg).GetAwaiter().GetResult();
+                        SecurityCenterClient.Alerts.UpdateResourceGroupLevelStateToDismissWithHttpMessagesAsync(name, rg).GetAwaiter().GetResult();
                     }
                     else if (actionType == "Activate")
                     {
-                        SecurityCenterClient.Alerts.UpdateResourceGroupLevelAlertStateToReactivateWithHttpMessagesAsync(name, rg).GetAwaiter().GetResult();
+                        SecurityCenterClient.Alerts.UpdateResourceGroupLevelStateToActivateWithHttpMessagesAsync(name, rg).GetAwaiter().GetResult();
                     }
                     else if (actionType == "Resolve")
                     {

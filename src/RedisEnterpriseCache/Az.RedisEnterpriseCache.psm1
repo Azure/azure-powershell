@@ -24,17 +24,17 @@
       }
     }
     if(-not $accountsModule) {
-      $hasAdequateVersion = (Get-Module -Name $accountsName -ListAvailable | Where-Object { $_.Version -ge [System.Version]'1.8.1' } | Measure-Object).Count -gt 0
+      $hasAdequateVersion = (Get-Module -Name $accountsName -ListAvailable | Where-Object { $_.Version -ge [System.Version]'2.2.3' } | Measure-Object).Count -gt 0
       if($hasAdequateVersion) {
-        $accountsModule = Import-Module -Name $accountsName -MinimumVersion 1.8.1 -Scope Global -PassThru
+        $accountsModule = Import-Module -Name $accountsName -MinimumVersion 2.2.3 -Scope Global -PassThru
       }
     }
   }
 
   if(-not $accountsModule) {
-    Write-Error "`nThis module requires $accountsName version 1.8.1 or greater. For installation instructions, please see: https://docs.microsoft.com/en-us/powershell/azure/install-az-ps" -ErrorAction Stop
-  } elseif (($accountsModule.Version -lt [System.Version]'1.8.1') -and (-not $localAccounts)) {
-    Write-Error "`nThis module requires $accountsName version 1.8.1 or greater. An earlier version of Az.Accounts is imported in the current PowerShell session. If you are running test, please try to remove '.PSSharedModules' in your home directory. Otherwise please open a new PowerShell session and import this module again.`nAdditionally, this error could indicate that multiple incompatible versions of Azure PowerShell modules are installed on your system. For troubleshooting information, please see: https://aka.ms/azps-version-error" -ErrorAction Stop
+    Write-Error "`nThis module requires $accountsName version 2.2.3 or greater. For installation instructions, please see: https://docs.microsoft.com/en-us/powershell/azure/install-az-ps" -ErrorAction Stop
+  } elseif (($accountsModule.Version -lt [System.Version]'2.2.3') -and (-not $localAccounts)) {
+    Write-Error "`nThis module requires $accountsName version 2.2.3 or greater. An earlier version of Az.Accounts is imported in the current PowerShell session. If you are running test, please try to remove '.PSSharedModules' in your home directory. Otherwise please open a new PowerShell session and import this module again.`nAdditionally, this error could indicate that multiple incompatible versions of Azure PowerShell modules are installed on your system. For troubleshooting information, please see: https://aka.ms/azps-version-error" -ErrorAction Stop
   }
   Write-Information "Loaded Module '$($accountsModule.Name)'"
 

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/new-azcdnorigin
+online version: https://docs.microsoft.com/powershell/module/az.cdn/new-azcdnorigin
 schema: 2.0.0
 ---
 
@@ -42,7 +42,7 @@ The New-AzCdnOrigin will create a new CDN origin within the specified endpoint.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCdnOrigin -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName -OriginName $originName -HostName $hostName
+New-AzCdnOrigin -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName -OriginName $originName -HostName $hostName
 ```
 
 This cmdlet will create a new CDN origin for the specified endpoint. It will use the provided hostname as the origin. 

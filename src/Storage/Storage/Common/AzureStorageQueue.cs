@@ -20,6 +20,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
     using global::Azure.Storage;
     using global::Azure.Storage.Queues;
     using Microsoft.WindowsAzure.Commands.Storage;
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
 
     /// <summary>
     /// Azure storage queue
@@ -111,8 +112,9 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             }
             else if (cloudQueue.ServiceClient.Credentials.IsSAS) //SAS
             {
+                string sas = Util.GetSASStringWithoutQuestionMark(cloudQueue.ServiceClient.Credentials.SASToken);
                 string fullUri = cloudQueue.Uri.ToString();
-                fullUri = fullUri + cloudQueue.ServiceClient.Credentials.SASToken;
+                fullUri = fullUri + "?" + sas;
                 queueClient = new QueueClient(new Uri(fullUri));
             }
             else if (cloudQueue.ServiceClient.Credentials.IsSharedKey) //Shared Key

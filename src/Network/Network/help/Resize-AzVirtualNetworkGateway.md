@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: DE2441FC-9504-4F3F-AEAF-37EDCD9B7275
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/resize-azvirtualnetworkgateway
+online version: https://docs.microsoft.com/powershell/module/az.network/resize-azvirtualnetworkgateway
 schema: 2.0.0
 ---
 
@@ -64,12 +64,12 @@ The acceptable values for this parameter are:
 - VpnGw1
 - VpnGw2
 - VpnGw3
-- VpnGw1AZ 
-- VpnGw2AZ 
-- VpnGw3AZ 
-- ErGw1AZ 
-- ErGw2AZ 
-- ErGw3AZ 
+- VpnGw1AZ
+- VpnGw2AZ
+- VpnGw3AZ
+- ErGw1AZ
+- ErGw2AZ
+- ErGw3AZ
 
 ```yaml
 Type: System.String
@@ -114,7 +114,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
 
 ## NOTES
-You cannot resize from Basic/Standard/HighPerformance SKUs to the new VpnGw1/VpnGw2/VpnGw3 SKUs. Further resize is not allowed from/to VpnGw1AZ/VpnGw2AZ/VpnGw3AZ or ErGw1AZ/ErGw2AZ/ErGw3AZ. Resize is allowed only within the SKU 'series' e.g VpnGw1AZ can be resized to/from VpnGw2AZ/VpnGw3AZ and ErGw1AZ can be resized to/from ErGw2AZ/ErGw3AZ. See https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpngateways for instructions.
+You cannot resize from Basic/Standard/HighPerformance SKUs to the new VpnGw1/VpnGw2/VpnGw3 SKUs. Further resize is not allowed from/to VpnGw1AZ/VpnGw2AZ/VpnGw3AZ or ErGw1AZ/ErGw2AZ/ErGw3AZ. Resize is allowed only within the SKU 'series' e.g VpnGw1AZ can be resized to/from VpnGw2AZ/VpnGw3AZ and ErGw1AZ can be resized to/from ErGw2AZ/ErGw3AZ. See https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways for instructions.
 
 ## RELATED LINKS
 
@@ -129,5 +129,3 @@ You cannot resize from Basic/Standard/HighPerformance SKUs to the new VpnGw1/Vpn
 [Set-AzVirtualNetworkGateway](./Set-AzVirtualNetworkGateway.md)
 
 [Get-AzVpnClientPackage](./Get-AzVpnClientPackage.md)
-
-[Set-AzVirtualNetworkGatewayVpnClientConfig](./Set-AzVirtualNetworkGatewayVpnClientConfig.md)

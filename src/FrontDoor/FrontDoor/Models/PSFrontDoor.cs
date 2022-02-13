@@ -20,6 +20,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
     {
         public string FriendlyName { get; set; }
 
+        public string FrontDoorId { get; set; }
+
         public List<PSRoutingRule> RoutingRules { get; set; }
 
         public List<PSBackendPool> BackendPools { get; set; }

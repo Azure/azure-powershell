@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/get-azcdnprofileresourceusage
+online version: https://docs.microsoft.com/powershell/module/az.cdn/get-azcdnprofileresourceusage
 schema: 2.0.0
 ---
 
@@ -25,16 +25,22 @@ Get-AzCdnProfileResourceUsage -CdnProfile <PSProfile> [-DefaultProfile <IAzureCo
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzCdnProfileResourceUsage** cmdlet gets resource limits and current usage for a CDN profile.
 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> {{ Add example code here }}
+```powershell
+Get-AzCdnProfileResourceUsage -ProfileName profile1 -ResourceGroupName rg
+ResourceType Unit  CurrentValue Limit
 ```
 
-{{ Add example description here }}
+```output
+------------ ----  ------------ -----
+endpoint     count            2    25
+```
+
+This example shows the resource limits and current usage of the profile with name 'profile1'.
 
 ## PARAMETERS
 

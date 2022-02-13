@@ -51,6 +51,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     parameters.ToTime = this.ToTime;
                     parameters.GroupByResourceName = this.GroupByResourceName;
                     parameters.GroupByThrottlePolicy = this.GroupByThrottlePolicy;
+                    parameters.GroupByClientApplicationId = this.GroupByApplicationId;
+                    parameters.GroupByUserAgent = this.GroupByUserAgent;
                     string location = this.Location.Canonicalize();
 
                     if (NoWait.IsPresent)
@@ -67,6 +69,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         ComputeAutomationAutoMapperProfile.Mapper.Map<LogAnalyticsOperationResult, PSLogAnalyticsOperationResult>(result, psObject);
                         WriteObject(psObject);
                     }
+                    WriteWarning("Please go to https://aka.ms/throttledRequest to learn more about this cmdlet.");
                 }
             });
         }
@@ -117,6 +120,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ParameterSetName = "DefaultParameter",
             Mandatory = false)]
         public SwitchParameter GroupByThrottlePolicy { get; set; }
+
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            HelpMessage = "Group query result by Application Id.")]
+        public SwitchParameter GroupByApplicationId { get; set; }
+
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            HelpMessage = "Group query result by UserAgent.")]
+        public SwitchParameter GroupByUserAgent { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }

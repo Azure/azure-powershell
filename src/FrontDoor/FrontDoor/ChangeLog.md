@@ -19,6 +19,18 @@
 -->
 ## Upcoming Release
 
+## Version 1.9.0
+* Allowed rule engine action creation without RouteConfigurationOverride for `New-AzFrontDoorRulesEngineActionObject`.
+* Fixed DynamicCompression parameter being ignored issue of `New-AzFrontDoorRulesEngineActionObject`.
+
+## Version 1.8.0
+* Allowed Enable-AzFrontDoorCustomDomainHttps's SecretVersion parameter to be optional to support bring-your-own-certificate auto-rotation
+* Added Sku / RuleSetAction parameters for WAF
+
+## Version 1.7.0
+* Added FrontDoorId to properties
+* Added JSON Exclusions and RequestBodyCheck support to managed rules
+
 ## Version 1.6.1
 * Fixed an issue where an exception is being thrown when Enum.Parse tries to coerce a null value to an Enabled or Disabled enum values [#12344]
 

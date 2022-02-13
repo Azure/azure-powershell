@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
 ms.assetid: 0EB9F1C9-54CC-4794-9E37-108342341FE5
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/set-azcdnorigin
+online version: https://docs.microsoft.com/powershell/module/az.cdn/set-azcdnorigin
 schema: 2.0.0
 ---
 
@@ -40,6 +40,35 @@ Set-AzCdnOrigin -CdnOrigin <PSOrigin> [-DefaultProfile <IAzureContextContainer>]
 The **Set-AzCdnOrigin** cmdlet updates an Azure Content Delivery Network (CDN) origin server.
 
 ## EXAMPLES
+
+### Example 1
+```powershell
+Set-AzCdnOrigin -ResourceGroupName myresourcegroup -ProfileName mycdnprofile -EndpointName myendpoint `
+                -OriginName mystorage -HostName mystorage2.blob.core.windows.net
+```
+
+```Output
+HostName                   : mystorage2.blob.core.windows.net
+HttpPort                   :
+HttpsPort                  :
+OriginHostHeader           :
+Priority                   :
+PrivateLinkApprovalMessage :
+PrivateLinkLocation        :
+PrivateLinkResourceId      :
+Weight                     :
+ResourceState              : Active
+ResourceGroupName          : myresourcegroup
+ProfileName                : mycdnprofile
+EndpointName               : myendpoint
+Id                         : /subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/myresourcegroup/providers/Micr
+                             osoft.Cdn/profiles/mycdnprofile/endpoints/myendpoint/origins/mystorage
+Name                       : mystorage
+Type                       : Microsoft.Cdn/profiles/endpoints/origins
+ProvisioningState          : Succeeded
+```
+
+This cmdlet will change the hostname of the specified endpoint.
 
 ## PARAMETERS
 

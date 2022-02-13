@@ -31,6 +31,7 @@ using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.RecoveryServices;
 using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.Azure.ServiceManagement.Common.Models;
+using ComputeHelpers = Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
@@ -49,6 +50,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public NetworkManagementClient NetworkManagementClient { get; private set; }
 
         public ComputeManagementClient ComputeManagementClient { get; private set; }
+
+        public ComputeHelpers.Storage.StorageManagementClient ComputeStorageClient { get; set; } 
 
         protected string ResourceNamespace { get; private set; }
 
@@ -72,6 +75,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
             RmRestClient = GetRmRestClient(context);
 
             StorageClient = GetStorageManagementClient(context);
+            ComputeStorageClient = GetComputeStorageManagementClient(context);
             NetworkManagementClient = GetNetworkManagementClient(context);
             ComputeManagementClient = GetComputeManagementClient(context);
 
@@ -80,6 +84,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 RsClient,
                 RmRestClient,
                 StorageClient,
+                ComputeStorageClient,
                 NetworkManagementClient,
                 ComputeManagementClient);
         }
@@ -184,6 +189,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         private static StorageManagementClient GetStorageManagementClient(MockContext context)
         {
             return context.GetServiceClient<StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private static ComputeHelpers.Storage.StorageManagementClient GetComputeStorageManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<ComputeHelpers.Storage.StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private static NetworkManagementClient GetNetworkManagementClient(MockContext context)

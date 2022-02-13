@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
-    /// <summary>TypeConverter implementation for ProvisioningState.</summary>
+    /// <summary>The provisioned state of the resource.</summary>
     public partial class ProvisioningStateTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

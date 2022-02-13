@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Azure.Identity;
+
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Identity.Client;
 using System;
@@ -22,19 +24,15 @@ namespace Microsoft.Azure.Commands.ScenarioTest.Mocks
 {
     public class MockPowerShellTokenCacheProvider : PowerShellTokenCacheProvider
     {
-        public override PowerShellTokenCache GetTokenCache()
+        public override TokenCachePersistenceOptions GetTokenCachePersistenceOptions()
         {
             throw new NotImplementedException();
         }
-
- 
 
         public override byte[] ReadTokenData()
         {
-            throw new NotImplementedException();
+            return null;
         }
-
- 
 
         protected override void RegisterCache(IPublicClientApplication client)
         {

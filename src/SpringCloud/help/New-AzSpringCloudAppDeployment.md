@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.SpringCloud
-online version: https://docs.microsoft.com/en-us/powershell/module/az.SpringCloud/new-azSpringCloudappdeployment
+online version: https://docs.microsoft.com/powershell/module/az.SpringCloud/new-azSpringCloudappdeployment
 schema: 2.0.0
 ---
 

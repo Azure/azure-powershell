@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.StorageSync.Common.Extensions;
 using Microsoft.Azure.Commands.StorageSync.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using System;
 using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 
 namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
@@ -27,14 +28,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
     /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{Microsoft.Azure.Commands.StorageSync.Models.PSRegisteredServer, Microsoft.Azure.Management.StorageSync.Models.RegisteredServer}" />
     public class RegisteredServerConverter : ConverterBase<PSRegisteredServer, StorageSyncModels.RegisteredServer>
     {
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="RegisteredServerConverter" /> class.
-        /// </summary>
-        public RegisteredServerConverter()
-        {
-        }
-
         /// <summary>
         /// Transforms the specified source.
         /// </summary>
@@ -42,29 +35,19 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
         /// <returns>StorageSyncModels.RegisteredServer.</returns>
         protected override StorageSyncModels.RegisteredServer Transform(PSRegisteredServer source)
         {
-            return new StorageSyncModels.RegisteredServer(source.ResourceId,
-                source.ServerName,
-                StorageSyncConstants.RegisteredServerType,
-                source.ServerCertificate,
-                source.AgentVersion,
-                source.ServerOSVersion,
-                source.ServerManagementErrorCode,
-                source.LastHeartBeat,
-                source.ProvisioningState,
-                source.ServerRole,
-                source.ClusterId,
-                source.ClusterName,
-                source.ServerId,
-                source.StorageSyncServiceUid,
-                source.LastWorkflowId,
-                source.LastOperationName,
-                source.DiscoveryEndpointUri,
-                source.ResourceLocation,
-                source.ServiceLocation,
-                source.FriendlyName,
-                source.ManagementEndpointUri,
-                source.MonitoringEndpointUri,
-                source.MonitoringConfiguration);
+            // Convert only properties that are not read-only
+            return new StorageSyncModels.RegisteredServer(
+                id: source.ResourceId,
+                name: source.ServerId,
+                type: StorageSyncConstants.RegisteredServerType,
+                serverCertificate: source.ServerCertificate,
+                agentVersion: source.AgentVersion,
+                serverOSVersion: source.ServerOSVersion,
+                serverRole: source.ServerRole,
+                clusterId: source.ClusterId,
+                clusterName: source.ClusterName,
+                serverId: source.ServerId,
+                friendlyName: source.FriendlyName);
         }
 
         /// <summary>
@@ -79,29 +62,29 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
             {
                 ResourceId = source.Id,
                 StorageSyncServiceName = resourceIdentifier.GetParentResourceName(StorageSyncConstants.StorageSyncServiceTypeName, 0),
-                ServerName = source.Name,
+                ServerId = source.ServerId,
                 ResourceGroupName = resourceIdentifier.ResourceGroupName,
                 Type = resourceIdentifier.ResourceType ?? StorageSyncConstants.RegisteredServerType,
                 AgentVersion = source.AgentVersion,
-                ClusterId = source.ClusterId?.Trim('"'),
+                ClusterId = source.ClusterId,
                 ProvisioningState = source.ProvisioningState,
                 ClusterName = source.ClusterName,
-                DiscoveryEndpointUri = source.DiscoveryEndpointUri?.Trim('"'),
+                DiscoveryEndpointUri = source.DiscoveryEndpointUri,
                 FriendlyName = source.FriendlyName,
-                LastHeartBeat = source.LastHeartBeat?.Trim('"'),
+                LastHeartBeat = source.LastHeartBeat,
                 LastOperationName = source.LastOperationName,
-                LastWorkflowId = source.LastWorkflowId?.Trim('"'),
-                ManagementEndpointUri = source.ManagementEndpointUri?.Trim('"'),
+                LastWorkflowId = source.LastWorkflowId,
+                ManagementEndpointUri = source.ManagementEndpointUri,
                 MonitoringEndpointUri = source.MonitoringEndpointUri,
                 ResourceLocation = source.ResourceLocation,
-                ServerCertificate = source.ServerCertificate?.Trim('"'),
-                ServerId = source.ServerId?.Trim('"'),
+                ServerCertificate = source.ServerCertificate,
                 ServerManagementErrorCode = source.ServerManagementErrorCode,
                 ServerOSVersion = source.ServerOSVersion,
                 ServerRole = source.ServerRole,
                 ServiceLocation = source.ServiceLocation,
-                StorageSyncServiceUid = source.StorageSyncServiceUid?.Trim('"'),
-                MonitoringConfiguration = source.MonitoringConfiguration
+                StorageSyncServiceUid = source.StorageSyncServiceUid,
+                MonitoringConfiguration = source.MonitoringConfiguration,
+                ServerName = source.ServerName
             };
         }
     }

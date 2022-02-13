@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using CrrModel = Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore.Models;
 using Microsoft.Rest.Azure.OData;
 using RestAzureNS = Microsoft.Rest.Azure;
 
@@ -83,14 +84,105 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         }
 
         /// <summary>
-        /// provision item level recovery connection identified by the input parameters
+        /// Lists recovery points from Secondary region for CRR
         /// </summary>
         /// <param name="containerName">Name of the container which the item belongs to</param>
         /// <param name="protectedItemName">Name of the item</param>
-        /// <param name="recoveryPointId">ID of the recovery point</param>
-        /// <param name="registrationRequest">registration request for ILR</param>
-        /// <returns>Azure operation response returned by the service</returns>
-        public RestAzureNS.AzureOperationResponse ProvisioninItemLevelRecoveryAccess(
+        /// <param name="queryFilter">Query filter</param>
+        /// <returns>List of recovery points</returns>
+        public List<CrrModel.RecoveryPointResource> GetRecoveryPointsFromSecondaryRegion(
+            string containerName,
+            string protectedItemName,
+            ODataQuery<CrrModel.BMSRPQueryObject> queryFilter,
+            string vaultName = null,
+            string resourceGroupName = null)
+        {
+            Func<RestAzureNS.IPage<CrrModel.RecoveryPointResource>> listAsync =
+                () => CrrAdapter.Client.RecoveryPointsCrr.ListWithHttpMessagesAsync(
+                    vaultName ?? BmsAdapter.GetResourceName(),
+                    resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                    AzureFabricName,
+                    containerName,
+                    protectedItemName,
+                    queryFilter,
+                    cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
+
+            Func<string, RestAzureNS.IPage<CrrModel.RecoveryPointResource>> listNextAsync =
+                nextLink => CrrAdapter.Client.RecoveryPointsCrr.ListNextWithHttpMessagesAsync(
+                    nextLink,
+                    cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
+
+            var response = HelperUtils.GetPagedListCrr(listAsync, listNextAsync);
+            return response;
+        }
+
+        /// <summary>
+        /// Lists recovery points recommended for Archive move
+        /// </summary>
+        /// <param name="containerName">Name of the container which the item belongs to</param>
+        /// <param name="protectedItemName">Name of the item</param>
+        /// <returns>List of recovery points</returns>
+        public List<RecoveryPointResource> GetMoveRecommendedRecoveryPoints(
+            string containerName,
+            string protectedItemName,
+            ListRecoveryPointsRecommendedForMoveRequest moveRequest,
+            string vaultName = null,
+            string resourceGroupName = null)
+        {
+            Func<RestAzureNS.IPage<RecoveryPointResource>> listAsync =
+                () => BmsAdapter.Client.RecoveryPointsRecommendedForMove.ListWithHttpMessagesAsync(
+                vaultName,
+                resourceGroupName,
+                AzureFabricName,
+                containerName,
+                protectedItemName,
+                moveRequest             
+                ).Result.Body;
+
+            Func<string, RestAzureNS.IPage<RecoveryPointResource>> listNextAsync =
+                nextLink => BmsAdapter.Client.RecoveryPointsRecommendedForMove.ListNextWithHttpMessagesAsync(
+                    nextLink,
+                    cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
+
+            var response = HelperUtils.GetPagedList(listAsync, listNextAsync);
+            return response;
+        }
+
+        /// <summary>
+        /// Lists recovery points recommended for Archive move
+        /// </summary>
+        /// <param name="containerName">Name of the container which the item belongs to</param>
+        /// <param name="protectedItemName">Name of the item</param>
+        /// <returns>List of recovery points</returns>
+        public RestAzureNS.AzureOperationResponse MoveRecoveryPoint(
+            string containerName,
+            string protectedItemName,
+            MoveRPAcrossTiersRequest moveRPAcrossTiersRequest,
+            string recoveryPointId,
+            string vaultName = null,
+            string resourceGroupName = null)
+        {
+            return BmsAdapter.Client.BeginMoveRecoveryPointWithHttpMessagesAsync(
+                vaultName,
+                resourceGroupName,
+                AzureFabricName,
+                containerName,
+                protectedItemName,
+                recoveryPointId,
+                moveRPAcrossTiersRequest
+                ).Result;
+        }
+
+
+            /// <summary>
+            /// provision item level recovery connection identified by the input parameters
+            /// </summary>
+            /// <param name="containerName">Name of the container which the item belongs to</param>
+            /// <param name="protectedItemName">Name of the item</param>
+            /// <param name="recoveryPointId">ID of the recovery point</param>
+            /// <param name="registrationRequest">registration request for ILR</param>
+            /// <returns>Azure operation response returned by the service</returns>
+            public RestAzureNS.AzureOperationResponse ProvisioninItemLevelRecoveryAccess(
             string containerName,
             string protectedItemName,
             string recoveryPointId,

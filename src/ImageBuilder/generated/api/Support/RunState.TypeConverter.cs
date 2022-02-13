@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support
 {
 
-    /// <summary>TypeConverter implementation for RunState.</summary>
+    /// <summary>State of the last run</summary>
     public partial class RunStateTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

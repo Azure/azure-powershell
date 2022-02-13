@@ -1,14 +1,15 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policydefinitions/testPDWP?api-version=2019-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDBkNzdmOGUtNTk4Mi00ZTdlLWJhZmEtYjdjZDIzYjEyM2U2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy90ZXN0UERXUD9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
+      "RequestUri": "/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/providers/Microsoft.Authorization/policydefinitions/testPDWP?api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmMyZjY3YWYtMDlmOS00ZDYwLWIwNTEtYzVkOTU2ZDJjOWE3L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy90ZXN0UERXUD9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"name\": \"testPDWP\",\r\n  \"properties\": {\r\n    \"description\": \"Unit test junk: sorry for littering. Please delete me!\",\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"not\": {\r\n          \"field\": \"location\",\r\n          \"in\": \"[parameters('listOfAllowedLocations')]\"\r\n        }\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"[parameters('effectParam')]\"\r\n      }\r\n    },\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"array\",\r\n        \"metadata\": {\r\n          \"description\": \"An array of permitted locations for resources.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"List of locations\"\r\n        }\r\n      },\r\n      \"effectParam\": {\r\n        \"type\": \"string\",\r\n        \"defaultValue\": \"Deny\",\r\n        \"allowedValues\": [\r\n          \"Deny\",\r\n          \"Disabled\"\r\n        ],\r\n        \"metadata\": {\r\n          \"description\": \"The effect of the policy\",\r\n          \"displayName\": \"Policy Effect\"\r\n        }\r\n      }\r\n    },\r\n    \"mode\": \"All\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"name\": \"testPDWP\",\r\n  \"properties\": {\r\n    \"description\": \"Unit test junk: sorry for littering. Please delete me!\",\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"not\": {\r\n          \"field\": \"location\",\r\n          \"in\": \"[parameters('listOfAllowedLocations')]\"\r\n        }\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"[parameters('effectParam')]\"\r\n      }\r\n    },\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"array\",\r\n        \"metadata\": {\r\n          \"description\": \"An array of permitted locations for resources.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"List of locations\"\r\n        }\r\n      },\r\n      \"effectParam\": {\r\n        \"type\": \"string\",\r\n        \"defaultValue\": \"Deny\",\r\n        \"allowedValues\": [\r\n          \"Deny\",\r\n          \"Disabled\"\r\n        ],\r\n        \"metadata\": {\r\n          \"description\": \"The effect of the policy\",\r\n          \"displayName\": \"Policy Effect\"\r\n        }\r\n      }\r\n    },\r\n    \"mode\": \"All\",\r\n    \"policyType\": \"Custom\"\r\n  }\r\n}",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/4.4.1"
         ],
         "ParameterSetName": [
           "NameParameterSet"
@@ -20,7 +21,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "993"
+          "1022"
         ]
       },
       "ResponseHeaders": {
@@ -30,29 +31,32 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-request-id": [
-          "westus:34c0a47b-495f-41c2-a4eb-5b4b8bfa43d0"
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1199"
         ],
+        "x-ms-request-id": [
+          "6c85785d-f336-494c-a998-1f79e61dc2f2"
+        ],
         "x-ms-correlation-request-id": [
-          "99e854db-a978-4468-ac0f-a6b5bdc7848e"
+          "6c85785d-f336-494c-a998-1f79e61dc2f2"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20191212T212515Z:99e854db-a978-4468-ac0f-a6b5bdc7848e"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+          "NORTHCENTRALUS:20211118T231435Z:6c85785d-f336-494c-a998-1f79e61dc2f2"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 12 Dec 2019 21:25:15 GMT"
+          "Thu, 18 Nov 2021 23:14:35 GMT"
         ],
         "Content-Length": [
-          "960"
+          "1238"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -64,18 +68,19 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyType\": \"Custom\",\r\n    \"mode\": \"All\",\r\n    \"description\": \"Unit test junk: sorry for littering. Please delete me!\",\r\n    \"metadata\": {\r\n      \"createdBy\": \"094435f3-a5d5-4c38-abfb-238662bec758\",\r\n      \"createdOn\": \"2019-12-12T21:25:15.3797863Z\",\r\n      \"updatedBy\": null,\r\n      \"updatedOn\": null\r\n    },\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"Array\",\r\n        \"metadata\": {\r\n          \"description\": \"An array of permitted locations for resources.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"List of locations\"\r\n        }\r\n      },\r\n      \"effectParam\": {\r\n        \"type\": \"String\",\r\n        \"metadata\": {\r\n          \"description\": \"The effect of the policy\",\r\n          \"displayName\": \"Policy Effect\"\r\n        },\r\n        \"allowedValues\": [\r\n          \"Deny\",\r\n          \"Disabled\"\r\n        ],\r\n        \"defaultValue\": \"Deny\"\r\n      }\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"not\": {\r\n          \"field\": \"location\",\r\n          \"in\": \"[parameters('listOfAllowedLocations')]\"\r\n        }\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"[parameters('effectParam')]\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policyDefinitions/testPDWP\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"testPDWP\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyType\": \"Custom\",\r\n    \"mode\": \"All\",\r\n    \"description\": \"Unit test junk: sorry for littering. Please delete me!\",\r\n    \"metadata\": {\r\n      \"createdBy\": \"5710e138-9c59-46d4-85d9-d7db71406df0\",\r\n      \"createdOn\": \"2021-11-18T23:14:35.1945789Z\",\r\n      \"updatedBy\": null,\r\n      \"updatedOn\": null\r\n    },\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"array\",\r\n        \"metadata\": {\r\n          \"description\": \"An array of permitted locations for resources.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"List of locations\"\r\n        }\r\n      },\r\n      \"effectParam\": {\r\n        \"type\": \"string\",\r\n        \"metadata\": {\r\n          \"description\": \"The effect of the policy\",\r\n          \"displayName\": \"Policy Effect\"\r\n        },\r\n        \"allowedValues\": [\r\n          \"Deny\",\r\n          \"Disabled\"\r\n        ],\r\n        \"defaultValue\": \"Deny\"\r\n      }\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"not\": {\r\n          \"field\": \"location\",\r\n          \"in\": \"[parameters('listOfAllowedLocations')]\"\r\n        }\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"[parameters('effectParam')]\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/providers/Microsoft.Authorization/policyDefinitions/testPDWP\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"testPDWP\",\r\n  \"systemData\": {\r\n    \"createdBy\": \"74e3e043-481b-454f-8acc-3e7a4a845417\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2021-11-18T23:14:35.1581638Z\",\r\n    \"lastModifiedBy\": \"74e3e043-481b-454f-8acc-3e7a4a845417\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2021-11-18T23:14:35.1581638Z\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policydefinitions/testPDWP?api-version=2019-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDBkNzdmOGUtNTk4Mi00ZTdlLWJhZmEtYjdjZDIzYjEyM2U2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy90ZXN0UERXUD9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
+      "RequestUri": "/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/providers/Microsoft.Authorization/policydefinitions/testPDWP?api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmMyZjY3YWYtMDlmOS00ZDYwLWIwNTEtYzVkOTU2ZDJjOWE3L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy90ZXN0UERXUD9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"name\": \"testPDWP\",\r\n  \"properties\": {\r\n    \"description\": \"Unit test junk: sorry for littering. Please delete me!\",\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"not\": {\r\n          \"field\": \"location\",\r\n          \"in\": \"[parameters('listOfAllowedLocations')]\"\r\n        }\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"[parameters('effectParam')]\"\r\n      }\r\n    },\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"array\",\r\n        \"metadata\": {\r\n          \"description\": \"An array of permitted locations for resources.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"List of locations\"\r\n        }\r\n      },\r\n      \"effectParam\": {\r\n        \"type\": \"string\",\r\n        \"defaultValue\": \"deny\"\r\n      }\r\n    },\r\n    \"mode\": \"All\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"name\": \"testPDWP\",\r\n  \"properties\": {\r\n    \"description\": \"Unit test junk: sorry for littering. Please delete me!\",\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"not\": {\r\n          \"field\": \"location\",\r\n          \"in\": \"[parameters('listOfAllowedLocations')]\"\r\n        }\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"[parameters('effectParam')]\"\r\n      }\r\n    },\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"array\",\r\n        \"metadata\": {\r\n          \"description\": \"An array of permitted locations for resources.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"List of locations\"\r\n        }\r\n      },\r\n      \"effectParam\": {\r\n        \"type\": \"string\",\r\n        \"defaultValue\": \"deny\"\r\n      }\r\n    },\r\n    \"mode\": \"All\",\r\n    \"policyType\": \"Custom\"\r\n  }\r\n}",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/4.4.1"
         ],
         "ParameterSetName": [
           "NameParameterSet"
@@ -87,7 +92,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "781"
+          "810"
         ]
       },
       "ResponseHeaders": {
@@ -97,29 +102,32 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-request-id": [
-          "westus:69f4a19b-26bf-4534-a0f1-0da3519887a0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
-        ],
-        "x-ms-correlation-request-id": [
-          "6ff84d41-5142-4216-b342-445a07cbdcf5"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20191212T212516Z:6ff84d41-5142-4216-b342-445a07cbdcf5"
-        ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-request-id": [
+          "06d31e37-7659-4e54-9e87-ee3b637e5b71"
+        ],
+        "x-ms-correlation-request-id": [
+          "06d31e37-7659-4e54-9e87-ee3b637e5b71"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHCENTRALUS:20211118T231436Z:06d31e37-7659-4e54-9e87-ee3b637e5b71"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 12 Dec 2019 21:25:15 GMT"
+          "Thu, 18 Nov 2021 23:14:36 GMT"
         ],
         "Content-Length": [
-          "840"
+          "1118"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -131,18 +139,19 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyType\": \"Custom\",\r\n    \"mode\": \"All\",\r\n    \"description\": \"Unit test junk: sorry for littering. Please delete me!\",\r\n    \"metadata\": {\r\n      \"createdBy\": \"094435f3-a5d5-4c38-abfb-238662bec758\",\r\n      \"createdOn\": \"2019-12-12T21:25:16.4364209Z\",\r\n      \"updatedBy\": null,\r\n      \"updatedOn\": null\r\n    },\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"Array\",\r\n        \"metadata\": {\r\n          \"description\": \"An array of permitted locations for resources.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"List of locations\"\r\n        }\r\n      },\r\n      \"effectParam\": {\r\n        \"type\": \"String\",\r\n        \"defaultValue\": \"deny\"\r\n      }\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"not\": {\r\n          \"field\": \"location\",\r\n          \"in\": \"[parameters('listOfAllowedLocations')]\"\r\n        }\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"[parameters('effectParam')]\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policyDefinitions/testPDWP\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"testPDWP\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyType\": \"Custom\",\r\n    \"mode\": \"All\",\r\n    \"description\": \"Unit test junk: sorry for littering. Please delete me!\",\r\n    \"metadata\": {\r\n      \"createdBy\": \"5710e138-9c59-46d4-85d9-d7db71406df0\",\r\n      \"createdOn\": \"2021-11-18T23:14:36.1107537Z\",\r\n      \"updatedBy\": null,\r\n      \"updatedOn\": null\r\n    },\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"array\",\r\n        \"metadata\": {\r\n          \"description\": \"An array of permitted locations for resources.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"List of locations\"\r\n        }\r\n      },\r\n      \"effectParam\": {\r\n        \"type\": \"string\",\r\n        \"defaultValue\": \"deny\"\r\n      }\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"not\": {\r\n          \"field\": \"location\",\r\n          \"in\": \"[parameters('listOfAllowedLocations')]\"\r\n        }\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"[parameters('effectParam')]\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/providers/Microsoft.Authorization/policyDefinitions/testPDWP\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"testPDWP\",\r\n  \"systemData\": {\r\n    \"createdBy\": \"74e3e043-481b-454f-8acc-3e7a4a845417\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2021-11-18T23:14:36.0510822Z\",\r\n    \"lastModifiedBy\": \"74e3e043-481b-454f-8acc-3e7a4a845417\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2021-11-18T23:14:36.0510822Z\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policydefinitions/testPDWP?api-version=2019-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDBkNzdmOGUtNTk4Mi00ZTdlLWJhZmEtYjdjZDIzYjEyM2U2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy90ZXN0UERXUD9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
+      "RequestUri": "/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/providers/Microsoft.Authorization/policydefinitions/testPDWP?api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmMyZjY3YWYtMDlmOS00ZDYwLWIwNTEtYzVkOTU2ZDJjOWE3L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy90ZXN0UERXUD9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/4.4.1"
         ],
         "ParameterSetName": [
           "NameParameterSet"
@@ -158,32 +167,32 @@
         "Pragma": [
           "no-cache"
         ],
-        "Vary": [
-          "Accept-Encoding"
-        ],
-        "x-ms-request-id": [
-          "westus:ed443810-b555-4991-bfb6-e643f2ee71f2"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
-        ],
-        "x-ms-correlation-request-id": [
-          "26f99f61-0ef2-49c9-8b13-1b159c3019e1"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20191212T212515Z:26f99f61-0ef2-49c9-8b13-1b159c3019e1"
-        ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-request-id": [
+          "1789e966-8028-4d7e-ae36-3be0acf56567"
+        ],
+        "x-ms-correlation-request-id": [
+          "1789e966-8028-4d7e-ae36-3be0acf56567"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHCENTRALUS:20211118T231435Z:1789e966-8028-4d7e-ae36-3be0acf56567"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 12 Dec 2019 21:25:14 GMT"
+          "Thu, 18 Nov 2021 23:14:35 GMT"
         ],
         "Content-Length": [
-          "960"
+          "1238"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -195,18 +204,19 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyType\": \"Custom\",\r\n    \"mode\": \"All\",\r\n    \"description\": \"Unit test junk: sorry for littering. Please delete me!\",\r\n    \"metadata\": {\r\n      \"createdBy\": \"094435f3-a5d5-4c38-abfb-238662bec758\",\r\n      \"createdOn\": \"2019-12-12T21:25:15.3797863Z\",\r\n      \"updatedBy\": null,\r\n      \"updatedOn\": null\r\n    },\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"Array\",\r\n        \"metadata\": {\r\n          \"description\": \"An array of permitted locations for resources.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"List of locations\"\r\n        }\r\n      },\r\n      \"effectParam\": {\r\n        \"type\": \"String\",\r\n        \"metadata\": {\r\n          \"description\": \"The effect of the policy\",\r\n          \"displayName\": \"Policy Effect\"\r\n        },\r\n        \"allowedValues\": [\r\n          \"Deny\",\r\n          \"Disabled\"\r\n        ],\r\n        \"defaultValue\": \"Deny\"\r\n      }\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"not\": {\r\n          \"field\": \"location\",\r\n          \"in\": \"[parameters('listOfAllowedLocations')]\"\r\n        }\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"[parameters('effectParam')]\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policyDefinitions/testPDWP\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"testPDWP\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyType\": \"Custom\",\r\n    \"mode\": \"All\",\r\n    \"description\": \"Unit test junk: sorry for littering. Please delete me!\",\r\n    \"metadata\": {\r\n      \"createdBy\": \"5710e138-9c59-46d4-85d9-d7db71406df0\",\r\n      \"createdOn\": \"2021-11-18T23:14:35.1945789Z\",\r\n      \"updatedBy\": null,\r\n      \"updatedOn\": null\r\n    },\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"array\",\r\n        \"metadata\": {\r\n          \"description\": \"An array of permitted locations for resources.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"List of locations\"\r\n        }\r\n      },\r\n      \"effectParam\": {\r\n        \"type\": \"string\",\r\n        \"metadata\": {\r\n          \"description\": \"The effect of the policy\",\r\n          \"displayName\": \"Policy Effect\"\r\n        },\r\n        \"allowedValues\": [\r\n          \"Deny\",\r\n          \"Disabled\"\r\n        ],\r\n        \"defaultValue\": \"Deny\"\r\n      }\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"not\": {\r\n          \"field\": \"location\",\r\n          \"in\": \"[parameters('listOfAllowedLocations')]\"\r\n        }\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"[parameters('effectParam')]\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/providers/Microsoft.Authorization/policyDefinitions/testPDWP\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"testPDWP\",\r\n  \"systemData\": {\r\n    \"createdBy\": \"74e3e043-481b-454f-8acc-3e7a4a845417\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2021-11-18T23:14:35.1581638Z\",\r\n    \"lastModifiedBy\": \"74e3e043-481b-454f-8acc-3e7a4a845417\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2021-11-18T23:14:35.1581638Z\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policydefinitions/testPDWP?api-version=2019-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDBkNzdmOGUtNTk4Mi00ZTdlLWJhZmEtYjdjZDIzYjEyM2U2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy90ZXN0UERXUD9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
+      "RequestUri": "/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/providers/Microsoft.Authorization/policydefinitions/testPDWP?api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmMyZjY3YWYtMDlmOS00ZDYwLWIwNTEtYzVkOTU2ZDJjOWE3L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy90ZXN0UERXUD9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/4.4.1"
         ],
         "ParameterSetName": [
           "NameParameterSet"
@@ -222,32 +232,32 @@
         "Pragma": [
           "no-cache"
         ],
-        "Vary": [
-          "Accept-Encoding"
-        ],
-        "x-ms-request-id": [
-          "westus:9186d12d-df7e-4674-bd85-b95dff692591"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
-        ],
-        "x-ms-correlation-request-id": [
-          "2cff8805-0d08-4060-849a-f6728735a5dd"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20191212T212517Z:2cff8805-0d08-4060-849a-f6728735a5dd"
-        ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11994"
+        ],
+        "x-ms-request-id": [
+          "e45ccdd4-1cc4-4942-8e87-4fff5a410514"
+        ],
+        "x-ms-correlation-request-id": [
+          "e45ccdd4-1cc4-4942-8e87-4fff5a410514"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHCENTRALUS:20211118T231436Z:e45ccdd4-1cc4-4942-8e87-4fff5a410514"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 12 Dec 2019 21:25:17 GMT"
+          "Thu, 18 Nov 2021 23:14:36 GMT"
         ],
         "Content-Length": [
-          "840"
+          "1118"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -259,18 +269,19 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyType\": \"Custom\",\r\n    \"mode\": \"All\",\r\n    \"description\": \"Unit test junk: sorry for littering. Please delete me!\",\r\n    \"metadata\": {\r\n      \"createdBy\": \"094435f3-a5d5-4c38-abfb-238662bec758\",\r\n      \"createdOn\": \"2019-12-12T21:25:16.4364209Z\",\r\n      \"updatedBy\": null,\r\n      \"updatedOn\": null\r\n    },\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"Array\",\r\n        \"metadata\": {\r\n          \"description\": \"An array of permitted locations for resources.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"List of locations\"\r\n        }\r\n      },\r\n      \"effectParam\": {\r\n        \"type\": \"String\",\r\n        \"defaultValue\": \"deny\"\r\n      }\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"not\": {\r\n          \"field\": \"location\",\r\n          \"in\": \"[parameters('listOfAllowedLocations')]\"\r\n        }\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"[parameters('effectParam')]\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policyDefinitions/testPDWP\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"testPDWP\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyType\": \"Custom\",\r\n    \"mode\": \"All\",\r\n    \"description\": \"Unit test junk: sorry for littering. Please delete me!\",\r\n    \"metadata\": {\r\n      \"createdBy\": \"5710e138-9c59-46d4-85d9-d7db71406df0\",\r\n      \"createdOn\": \"2021-11-18T23:14:36.1107537Z\",\r\n      \"updatedBy\": null,\r\n      \"updatedOn\": null\r\n    },\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"array\",\r\n        \"metadata\": {\r\n          \"description\": \"An array of permitted locations for resources.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"List of locations\"\r\n        }\r\n      },\r\n      \"effectParam\": {\r\n        \"type\": \"string\",\r\n        \"defaultValue\": \"deny\"\r\n      }\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"not\": {\r\n          \"field\": \"location\",\r\n          \"in\": \"[parameters('listOfAllowedLocations')]\"\r\n        }\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"[parameters('effectParam')]\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/providers/Microsoft.Authorization/policyDefinitions/testPDWP\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"testPDWP\",\r\n  \"systemData\": {\r\n    \"createdBy\": \"74e3e043-481b-454f-8acc-3e7a4a845417\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2021-11-18T23:14:36.0510822Z\",\r\n    \"lastModifiedBy\": \"74e3e043-481b-454f-8acc-3e7a4a845417\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2021-11-18T23:14:36.0510822Z\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policydefinitions/testPDWP?api-version=2019-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDBkNzdmOGUtNTk4Mi00ZTdlLWJhZmEtYjdjZDIzYjEyM2U2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy90ZXN0UERXUD9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
+      "RequestUri": "/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/providers/Microsoft.Authorization/policydefinitions/testPDWP?api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmMyZjY3YWYtMDlmOS00ZDYwLWIwNTEtYzVkOTU2ZDJjOWE3L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy90ZXN0UERXUD9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/4.4.1"
         ],
         "ParameterSetName": [
           "NameParameterSet"
@@ -286,32 +297,32 @@
         "Pragma": [
           "no-cache"
         ],
-        "Vary": [
-          "Accept-Encoding"
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
         ],
-        "x-ms-request-id": [
-          "westus:d76db254-283a-4c52-ae43-08b1a0ef3b0a"
+        "Server": [
+          "Kestrel"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
           "14998"
         ],
+        "x-ms-request-id": [
+          "1b8d1ad2-5dfd-4783-b2b4-d434caf6307f"
+        ],
         "x-ms-correlation-request-id": [
-          "a66018b3-e4b1-40fa-8a78-0678f1e47267"
+          "1b8d1ad2-5dfd-4783-b2b4-d434caf6307f"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20191212T212516Z:a66018b3-e4b1-40fa-8a78-0678f1e47267"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+          "NORTHCENTRALUS:20211118T231435Z:1b8d1ad2-5dfd-4783-b2b4-d434caf6307f"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 12 Dec 2019 21:25:16 GMT"
+          "Thu, 18 Nov 2021 23:14:34 GMT"
         ],
         "Content-Length": [
-          "960"
+          "1238"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -323,18 +334,19 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyType\": \"Custom\",\r\n    \"mode\": \"All\",\r\n    \"description\": \"Unit test junk: sorry for littering. Please delete me!\",\r\n    \"metadata\": {\r\n      \"createdBy\": \"094435f3-a5d5-4c38-abfb-238662bec758\",\r\n      \"createdOn\": \"2019-12-12T21:25:15.3797863Z\",\r\n      \"updatedBy\": null,\r\n      \"updatedOn\": null\r\n    },\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"Array\",\r\n        \"metadata\": {\r\n          \"description\": \"An array of permitted locations for resources.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"List of locations\"\r\n        }\r\n      },\r\n      \"effectParam\": {\r\n        \"type\": \"String\",\r\n        \"metadata\": {\r\n          \"description\": \"The effect of the policy\",\r\n          \"displayName\": \"Policy Effect\"\r\n        },\r\n        \"allowedValues\": [\r\n          \"Deny\",\r\n          \"Disabled\"\r\n        ],\r\n        \"defaultValue\": \"Deny\"\r\n      }\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"not\": {\r\n          \"field\": \"location\",\r\n          \"in\": \"[parameters('listOfAllowedLocations')]\"\r\n        }\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"[parameters('effectParam')]\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policyDefinitions/testPDWP\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"testPDWP\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyType\": \"Custom\",\r\n    \"mode\": \"All\",\r\n    \"description\": \"Unit test junk: sorry for littering. Please delete me!\",\r\n    \"metadata\": {\r\n      \"createdBy\": \"5710e138-9c59-46d4-85d9-d7db71406df0\",\r\n      \"createdOn\": \"2021-11-18T23:14:35.1945789Z\",\r\n      \"updatedBy\": null,\r\n      \"updatedOn\": null\r\n    },\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"array\",\r\n        \"metadata\": {\r\n          \"description\": \"An array of permitted locations for resources.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"List of locations\"\r\n        }\r\n      },\r\n      \"effectParam\": {\r\n        \"type\": \"string\",\r\n        \"metadata\": {\r\n          \"description\": \"The effect of the policy\",\r\n          \"displayName\": \"Policy Effect\"\r\n        },\r\n        \"allowedValues\": [\r\n          \"Deny\",\r\n          \"Disabled\"\r\n        ],\r\n        \"defaultValue\": \"Deny\"\r\n      }\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"not\": {\r\n          \"field\": \"location\",\r\n          \"in\": \"[parameters('listOfAllowedLocations')]\"\r\n        }\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"[parameters('effectParam')]\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/providers/Microsoft.Authorization/policyDefinitions/testPDWP\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"testPDWP\",\r\n  \"systemData\": {\r\n    \"createdBy\": \"74e3e043-481b-454f-8acc-3e7a4a845417\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2021-11-18T23:14:35.1581638Z\",\r\n    \"lastModifiedBy\": \"74e3e043-481b-454f-8acc-3e7a4a845417\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2021-11-18T23:14:35.1581638Z\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policydefinitions/testPDWP?api-version=2019-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDBkNzdmOGUtNTk4Mi00ZTdlLWJhZmEtYjdjZDIzYjEyM2U2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy90ZXN0UERXUD9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
+      "RequestUri": "/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/providers/Microsoft.Authorization/policydefinitions/testPDWP?api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmMyZjY3YWYtMDlmOS00ZDYwLWIwNTEtYzVkOTU2ZDJjOWE3L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy90ZXN0UERXUD9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v3.0.0.0",
+          "Az.Resources/4.4.1"
         ],
         "ParameterSetName": [
           "NameParameterSet"
@@ -350,32 +362,32 @@
         "Pragma": [
           "no-cache"
         ],
-        "Vary": [
-          "Accept-Encoding"
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
         ],
-        "x-ms-request-id": [
-          "westus:7e7d9a3e-670f-4ef6-8554-30d23ea7020f"
+        "Server": [
+          "Kestrel"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
           "14999"
         ],
+        "x-ms-request-id": [
+          "a0c68b7f-027c-48af-a567-97769641d0b6"
+        ],
         "x-ms-correlation-request-id": [
-          "cf83b010-9434-4e3e-bbe4-c6b685ff34b5"
+          "a0c68b7f-027c-48af-a567-97769641d0b6"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20191212T212517Z:cf83b010-9434-4e3e-bbe4-c6b685ff34b5"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+          "NORTHCENTRALUS:20211118T231437Z:a0c68b7f-027c-48af-a567-97769641d0b6"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 12 Dec 2019 21:25:17 GMT"
+          "Thu, 18 Nov 2021 23:14:36 GMT"
         ],
         "Content-Length": [
-          "840"
+          "1118"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -387,12 +399,12 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyType\": \"Custom\",\r\n    \"mode\": \"All\",\r\n    \"description\": \"Unit test junk: sorry for littering. Please delete me!\",\r\n    \"metadata\": {\r\n      \"createdBy\": \"094435f3-a5d5-4c38-abfb-238662bec758\",\r\n      \"createdOn\": \"2019-12-12T21:25:16.4364209Z\",\r\n      \"updatedBy\": null,\r\n      \"updatedOn\": null\r\n    },\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"Array\",\r\n        \"metadata\": {\r\n          \"description\": \"An array of permitted locations for resources.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"List of locations\"\r\n        }\r\n      },\r\n      \"effectParam\": {\r\n        \"type\": \"String\",\r\n        \"defaultValue\": \"deny\"\r\n      }\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"not\": {\r\n          \"field\": \"location\",\r\n          \"in\": \"[parameters('listOfAllowedLocations')]\"\r\n        }\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"[parameters('effectParam')]\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policyDefinitions/testPDWP\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"testPDWP\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyType\": \"Custom\",\r\n    \"mode\": \"All\",\r\n    \"description\": \"Unit test junk: sorry for littering. Please delete me!\",\r\n    \"metadata\": {\r\n      \"createdBy\": \"5710e138-9c59-46d4-85d9-d7db71406df0\",\r\n      \"createdOn\": \"2021-11-18T23:14:36.1107537Z\",\r\n      \"updatedBy\": null,\r\n      \"updatedOn\": null\r\n    },\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"array\",\r\n        \"metadata\": {\r\n          \"description\": \"An array of permitted locations for resources.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"List of locations\"\r\n        }\r\n      },\r\n      \"effectParam\": {\r\n        \"type\": \"string\",\r\n        \"defaultValue\": \"deny\"\r\n      }\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"not\": {\r\n          \"field\": \"location\",\r\n          \"in\": \"[parameters('listOfAllowedLocations')]\"\r\n        }\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"[parameters('effectParam')]\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/providers/Microsoft.Authorization/policyDefinitions/testPDWP\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"testPDWP\",\r\n  \"systemData\": {\r\n    \"createdBy\": \"74e3e043-481b-454f-8acc-3e7a4a845417\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2021-11-18T23:14:36.0510822Z\",\r\n    \"lastModifiedBy\": \"74e3e043-481b-454f-8acc-3e7a4a845417\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2021-11-18T23:14:36.0510822Z\"\r\n  }\r\n}",
       "StatusCode": 200
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "40d77f8e-5982-4e7e-bafa-b7cd23b123e6"
+    "SubscriptionId": "2c2f67af-09f9-4d60-b051-c5d956d2c9a7"
   }
 }

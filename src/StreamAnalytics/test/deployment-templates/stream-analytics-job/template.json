@@ -1,0 +1,57 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "clusters_sac_m_test01_name": {
+            "defaultValue": "sac-m-test01",
+            "type": "String"
+        },
+        "streamingjobs_saj_test01_name": {
+            "defaultValue": "saj-test01",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.StreamAnalytics/clusters",
+            "apiVersion": "2020-03-01-preview",
+            "name": "[parameters('clusters_sac_m_test01_name')]",
+            "location": "West Central US",
+            "tags": {
+                "key4": "4"
+            },
+            "sku": {
+                "name": "Default",
+                "capacity": 36
+            },
+            "properties": {
+                "provisioningState": "Succeeded"
+            }
+        },
+        {
+            "type": "Microsoft.StreamAnalytics/streamingjobs",
+            "apiVersion": "2017-04-01-preview",
+            "name": "[parameters('streamingjobs_saj_test01_name')]",
+            "location": "West Central US",
+            "dependsOn": [
+                "[resourceId('Microsoft.StreamAnalytics/clusters', parameters('clusters_sac_m_test01_name'))]"
+            ],
+            "properties": {
+                "sku": {
+                    "name": "Standard"
+                },
+                "eventsOutOfOrderPolicy": "Adjust",
+                "outputErrorPolicy": "Stop",
+                "eventsOutOfOrderMaxDelayInSeconds": 0,
+                "eventsLateArrivalMaxDelayInSeconds": 5,
+                "dataLocale": "en-US",
+                "compatibilityLevel": "1.2",
+                "jobType": "Cloud",
+                "cluster": {
+                    "id": "[resourceId('Microsoft.StreamAnalytics/clusters', parameters('clusters_sac_m_test01_name'))]"
+                }
+            }
+        }
+    ]
+}

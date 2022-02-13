@@ -15,13 +15,14 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption;
 using Microsoft.Azure.Commands.Compute.StorageServices;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Storage;
 using Microsoft.WindowsAzure.Commands.Sync.Download;
+using Microsoft.WindowsAzure.Commands.Sync.Upload;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
@@ -31,9 +32,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.WindowsAzure.Commands.Sync.Upload;
-using Microsoft.Azure.Management.Storage.Version2017_10_01;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
 {

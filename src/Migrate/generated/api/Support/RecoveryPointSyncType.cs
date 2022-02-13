@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>A value indicating whether the recovery point is multi VM consistent.</summary>
     public partial struct RecoveryPointSyncType :
         System.IEquatable<RecoveryPointSyncType>
     {
@@ -20,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         /// <param name="value">the value to convert to an instance of <see cref="RecoveryPointSyncType" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new RecoveryPointSyncType(System.Convert.ToString(value));
+            return new RecoveryPointSyncType(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type RecoveryPointSyncType</summary>

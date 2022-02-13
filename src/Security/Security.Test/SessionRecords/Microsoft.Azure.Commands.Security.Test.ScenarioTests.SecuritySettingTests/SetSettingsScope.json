@@ -1,0 +1,80 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/settings/MCAS?api-version=2021-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDg3YmI0ODUtYjViMC00NzFlLTljMGQtMTA3MTc2MTJmODY5L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHkvc2V0dGluZ3MvTUNBUz9hcGktdmVyc2lvbj0yMDIxLTA3LTAx",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"kind\": \"DataExportSettings\",\r\n  \"properties\": {\r\n    \"enabled\": true\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "0d07b8e4-c2bf-49ae-a40b-9d2b7b221f24"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Security.SecurityCenterClient/3.0.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "82"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "249"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "api-supported-versions": [
+          "1.0"
+        ],
+        "x-ms-request-id": [
+          "9e96ae13-d0b3-4745-9d3f-ee16c22bd307"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-correlation-request-id": [
+          "c3ee9956-93ca-4060-a741-832965b8b513"
+        ],
+        "x-ms-routing-request-id": [
+          "UAECENTRAL:20210831T191053Z:c3ee9956-93ca-4060-a741-832965b8b513"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 31 Aug 2021 19:10:52 GMT"
+        ],
+        "Content-Length": [
+          "212"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/settings/MCAS\",\r\n  \"name\": \"MCAS\",\r\n  \"type\": \"Microsoft.Security/settings\",\r\n  \"kind\": \"DataExportSettings\",\r\n  \"properties\": {\r\n    \"enabled\": true\r\n  }\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "487bb485-b5b0-471e-9c0d-10717612f869"
+  }
+}

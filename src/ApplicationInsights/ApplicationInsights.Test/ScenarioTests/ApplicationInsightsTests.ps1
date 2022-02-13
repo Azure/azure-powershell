@@ -49,6 +49,7 @@ function Test-ApplicationInsightsCRUD
         Assert-AreEqual $apps[0].Name $appName
         Assert-AreEqual $apps[0].Kind $kind
         Assert-NotNull $apps[0].InstrumentationKey
+        Assert-NotNull $app[0].ConnectionString
 
         $app = Update-AzApplicationInsights -ResourceGroupName $rgname -Name $appName -Tags $tag -PublicNetworkAccessForIngestion "Disabled" -PublicNetworkAccessForQuery "Disabled"
 

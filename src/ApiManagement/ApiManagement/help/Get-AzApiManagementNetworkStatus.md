@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.dll-Help.xml
 Module Name: Az.ApiManagement
-online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/get-azapimanagementnetworkstatus
+online version: https://docs.microsoft.com/powershell/module/az.apimanagement/get-azapimanagementnetworkstatus
 schema: 2.0.0
 ---
 
@@ -31,15 +31,15 @@ Gets the Network status of their Api Management service
 
 ### Example 1
 ```powershell
-PS D:\github\azure-powershell> Get-AzApiManagementNetworkStatus -ResourceGroupName powershelltest -Name powershellsdkservice
+Get-AzApiManagementNetworkStatus -ResourceGroupName powershelltest -Name powershellsdkservice
 
 Location DnsServers      ConnectivityStatus
 -------- ----------      ------------------
 West US  {168.63.129.16} {apimgmtstaoonqs7wwzjosky.blob.core.windows.net, apimgmtstaoonqs7wwzjosky.file.core.windows.net, apimgmtstaoonqs7wwzjosky.queue.core.windows.net, apimgmtstaoonqs7wwzjosk...
 
 
-PS D:\github\azure-powershell> $networkStatus = Get-AzApiManagementNetworkStatus -ResourceGroupName powershelltest -Name powershellsdkservice
-PS D:\github\azure-powershell> $networkStatus.ConnectivityStatus
+$networkStatus = Get-AzApiManagementNetworkStatus -ResourceGroupName powershelltest -Name powershellsdkservice
+$networkStatus.ConnectivityStatus
 
 
 Name             : apimgmtstaoonqs7wwzjosky.blob.core.windows.net

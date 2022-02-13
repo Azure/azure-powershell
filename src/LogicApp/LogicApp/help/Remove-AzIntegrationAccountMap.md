@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.LogicApp.dll-Help.xml
 Module Name: Az.LogicApp
 ms.assetid: 7AAF2ACC-84ED-449C-B1E8-F074463F44EB
-online version: https://docs.microsoft.com/en-us/powershell/module/az.logicapp/remove-azintegrationaccountmap
+online version: https://docs.microsoft.com/powershell/module/az.logicapp/remove-azintegrationaccountmap
 schema: 2.0.0
 ---
 

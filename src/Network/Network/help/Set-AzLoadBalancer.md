@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 494E185D-3746-4959-846E-660017A1F392
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azloadbalancer
+online version: https://docs.microsoft.com/powershell/module/az.network/set-azloadbalancer
 schema: 2.0.0
 ---
 
@@ -25,7 +25,7 @@ The **Set-AzLoadBalancer** cmdlet updates a load balancer.
 
 ### Example 1: Modify a load balancer
 ```
-PS C:\>$slb = Get-AzLoadBalancer -Name "NRPLB" -ResourceGroupName "NRP-RG"
+PS C:\>$slb = Get-AzLoadBalancer -Name "NRPLB"
 PS C:\> $slb | Add-AzLoadBalancerInboundNatRuleConfig -Name "NewRule" -FrontendIpConfiguration $slb.FrontendIpConfigurations[0] -FrontendPort 81 -BackendPort 8181 -Protocol "TCP"
 PS C:\> $slb | Set-AzLoadBalancer
 ```
