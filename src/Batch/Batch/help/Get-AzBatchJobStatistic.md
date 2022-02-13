@@ -25,8 +25,11 @@ Statistics are aggregated across all jobs that have ever existed in the account,
 ## EXAMPLES
 
 ### Example 1: Get summary statistics for all jobs
+```powershell
+Get-AzBatchJobStatistic -BatchContext $Context
 ```
-PS C:\>Get-AzBatchJobStatistic -BatchContext $Context
+
+```output
 FailedTaskCount    : 330
 KernelCpuTime      : 00:24:31.8440000
 LastUpdateTime     : 5/16/2016 6:00:00 PM

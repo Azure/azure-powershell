@@ -36,7 +36,7 @@ Gets the endpoint.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzFrontDoorCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroupName
+Get-AzFrontDoorCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroupName
 ```
 
 Gets the endpoint.

@@ -34,10 +34,10 @@ The **New-AzVMDataDisk** cmdlet creates a local data disk object for a virtual m
 
 ### Example 1: Add a managed data disk to a Vmss VM.
 ```powershell
-PS C:\> $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname0
-PS C:\> $datadisk = New-AzVMDataDisk -Caching 'ReadOnly' -Lun 2 -CreateOption Attach -StorageAccountType Standard_LRS -ManagedDiskId $disk.Id
-PS C:\> $VmssVM = Get-AzVmssVM -ResourceGroupName "myrg" -VMScaleSetName "myvmss" -InstanceId 0
-PS C:\> Update-AzVmssVM -ResourceGroupName "myrg" -VMScaleSetName "myvmss" -InstanceId 0 -DataDisk $datadisk
+$disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname0
+$datadisk = New-AzVMDataDisk -Caching 'ReadOnly' -Lun 2 -CreateOption Attach -StorageAccountType Standard_LRS -ManagedDiskId $disk.Id
+$VmssVM = Get-AzVmssVM -ResourceGroupName "myrg" -VMScaleSetName "myvmss" -InstanceId 0
+Update-AzVmssVM -ResourceGroupName "myrg" -VMScaleSetName "myvmss" -InstanceId 0 -DataDisk $datadisk
 ```
 
 The first command gets an existing managed disk.

@@ -40,10 +40,11 @@ The cmdlet **Update-AzApiManagementCache** updates a cache in the ApiManagement 
 
 ### Example 1 : Updates the Description of the Cache in centralus
 ```powershell
-PS D:\github\azure-powershell> $context=New-AzApiManagementContext -ResourceGroupName Api-Default-Central-US -ServiceName contoso
-PS D:\github\azure-powershell> Update-AzApiManagementCache -Context $context -CacheId centralus -Description "Team new cache" -PassThru
+$context=New-AzApiManagementContext -ResourceGroupName Api-Default-Central-US -ServiceName contoso
+Update-AzApiManagementCache -Context $context -CacheId centralus -Description "Team new cache" -PassThru
+```
 
-
+```output
 CacheId              : centralus
 Description          : Team new cache
 ConnectionString     : {{5cc19889e6ed3b0524c3f7d3}}

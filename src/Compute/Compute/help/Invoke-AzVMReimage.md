@@ -24,7 +24,7 @@ The **Invoke-AzVMReimage** cmdlet reimages an Azure virtual machine.
 
 ### Example 1
 ```powershell
-PS C:\> Invoke-AzVMReimage -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
+Invoke-AzVMReimage -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
 ```
 
 This command reimages the virtual machine named VirtualMachine07 in ResourceGroup11.

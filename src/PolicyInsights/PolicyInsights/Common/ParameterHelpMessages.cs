@@ -31,6 +31,9 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Common
         public const string PolicyAssignmentId = "Policy assignment ID. E.g. '/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyAssignments/{assignmentName}'.";
         public const string PolicyDefinitionReferenceId = "The policy definition reference ID of the individual definition that is being remediated. Required when the policy assignment assigns a policy set definition.";
         public const string ResourceDiscoveryMode = "Describes how the remediation task will discover resources that need to be remediated. ReEvaluateCompliance is not supported when remediating management group scopes.";
+        public const string RemediationResourceCount = "Maximum number of non-compliant resources that will be remediated. If not provided, the default resource count is used.";
+        public const string RemediationFailureThreshold = "Number between 0.0 to 1.0 representing the percentage failure threshold. The remediation will fail if the percentage of failed remediation operations (i.e. failed deployments) exceeds this threshold.";
+        public const string RemediationParallelDeployments = "How many resources to remediate at any given time. Can be used to control the pace of the remediation. If not provided, the default parallel deployments value is used.";
         public const string Top = "Maximum number of records to return. If not provided, the maximum number of records returned is determined by the Azure Policy service (currently 1000).";
         public const string OrderBy = "Ordering expression using OData notation. One or more comma-separated column names with an optional 'desc' (the default) or 'asc'.";
         public const string Select = "Select expression using OData notation. One or more comma-separated column names. Limits the columns on each record to just those requested.";

@@ -27,8 +27,8 @@ You can enable a disabled job later.
 ## EXAMPLES
 
 ### Example 1: Disable a Batch job
-```
-PS C:\>Disable-AzBatchJob -Id "Job-000001" -DisableJobOption "Terminate" -BatchContext $Context
+```powershell
+Disable-AzBatchJob -Id "Job-000001" -DisableJobOption "Terminate" -BatchContext $Context
 ```
 
 This command disables the job that has the ID Job-000001.

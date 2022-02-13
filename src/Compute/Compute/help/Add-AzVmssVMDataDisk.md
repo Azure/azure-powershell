@@ -26,10 +26,10 @@ The **Add-AzVmssVMDataDisk** cmdlet adds a data disk to a Vmss VM.
 
 ### Example 1: Add a managed data disk to a Vmss VM.
 ```powershell
-PS C:\> $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname0
-PS C:\> $VmssVM = Get-AzVmssVM -ResourceGroupName "myrg" -VMScaleSetName "myvmss" -InstanceId 0
-PS C:\> $VmssVM = Add-AzVmssVMDataDisk -VirtualMachineScaleSetVM $VmssVM -Lun 0 -DiskSizeInGB 10 -CreateOption Attach -StorageAccountType Standard_LRS -ManagedDiskId $disk.Id
-PS C:\> Update-AzVmssVM -VirtualMachineScaleSetVM $VmssVM
+$disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname0
+$VmssVM = Get-AzVmssVM -ResourceGroupName "myrg" -VMScaleSetName "myvmss" -InstanceId 0
+$VmssVM = Add-AzVmssVMDataDisk -VirtualMachineScaleSetVM $VmssVM -Lun 0 -DiskSizeInGB 10 -CreateOption Attach -StorageAccountType Standard_LRS -ManagedDiskId $disk.Id
+Update-AzVmssVM -VirtualMachineScaleSetVM $VmssVM
 ```
 
 The first command gets an existing managed disk.

@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             HelpMessage = ParamHelpMsgs.Common.WorkloadType + validWorkloadTypes)]
         [ValidateNotNullOrEmpty]
         public WorkloadType WorkloadType { get; set; }
-
+                
         /// <summary>
         /// Backup management type of the policy to be created.
         /// </summary>
@@ -53,14 +53,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateNotNullOrEmpty]
         public BackupManagementType? BackupManagementType { get; set; }
 
+        /// <summary>
+        /// Schedule run frequency for the policy. 
+        /// </summary>
+        [Parameter(Mandatory = false, Position = 2,
+            HelpMessage = ParamHelpMsgs.Policy.ScheduleRunFrequency)]
+        [ValidateSet("Daily", "Hourly")]
+        public ScheduleRunType ScheduleRunFrequency = ScheduleRunType.Daily;
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
             {
                 base.ExecuteCmdlet();
 
+                Dictionary<Enum, object> providerParameters = new Dictionary<Enum, object>();
+                providerParameters.Add(PolicyParams.ScheduleRunFrequency, ScheduleRunFrequency);
+
                 PsBackupProviderManager providerManager = new PsBackupProviderManager(
-                    new Dictionary<Enum, object>(), ServiceClientAdapter);
+                    providerParameters, ServiceClientAdapter);
 
                 IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(
                     WorkloadType, BackupManagementType);

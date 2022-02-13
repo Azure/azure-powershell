@@ -43,8 +43,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             psPolicy.ScheduleRunDays =
                 HelperUtils.EnumListConverter<ServiceClientModel.DayOfWeek?, DayOfWeek>(
                     serviceClientPolicy.ScheduleRunDays);
-            psPolicy.ScheduleRunFrequency =
-                (ScheduleRunType)Enum.Parse(
+            psPolicy.ScheduleRunFrequency = (ScheduleRunType)Enum.Parse(
                     typeof(ScheduleRunType), serviceClientPolicy.ScheduleRunFrequency.ToString());
             psPolicy.ScheduleRunTimes = ParseDateTimesToUTC(serviceClientPolicy.ScheduleRunTimes, timeZone);
 
@@ -75,9 +74,31 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     }
                 }
             }
-            // safe side validation
-            psPolicy.Validate();
+            
+            if(psPolicy.ScheduleRunFrequency == ScheduleRunType.Hourly)
+            {
+                // multiple backups per day 
+                psPolicy.ScheduleInterval = serviceClientPolicy.HourlySchedule.Interval;
+                psPolicy.ScheduleWindowStartTime = serviceClientPolicy.HourlySchedule.ScheduleWindowStartTime;
+                psPolicy.ScheduleWindowDuration = serviceClientPolicy.HourlySchedule.ScheduleWindowDuration;
+                psPolicy.ScheduleRunTimeZone = timeZone;
+                psPolicy.ScheduleRunDays = null;
+                psPolicy.ScheduleRunTimes = null;
+            }
+            else
+            {
+                psPolicy.ScheduleInterval = null;
+                psPolicy.ScheduleWindowStartTime = null;
+                psPolicy.ScheduleWindowDuration = null;
+                psPolicy.ScheduleRunTimeZone = timeZone;
+            }
 
+            // safe side validation
+            if (psPolicy.ScheduleRunFrequency != ScheduleRunType.Hourly)
+            {
+                psPolicy.Validate();
+            }            
+                        
             return psPolicy;
         }
 
@@ -159,8 +180,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     HelperUtils.EnumListConverter<DayOfWeek, ServiceClientModel.DayOfWeek>(
                         psPolicy.ScheduleRunDays).Cast<ServiceClientModel.DayOfWeek?>().ToList();
             }
-            serviceClientPolicy.ScheduleRunTimes =
-                psPolicy.ScheduleRunTimes.ConvertAll(dateTime => (DateTime?)dateTime);
+
+            if (psPolicy.ScheduleRunFrequency != ScheduleRunType.Hourly)
+            {
+                serviceClientPolicy.ScheduleRunTimes = psPolicy.ScheduleRunTimes.ConvertAll(dateTime => (DateTime?)dateTime);
+            }
+            else
+            {
+                serviceClientPolicy.HourlySchedule = new ServiceClientModel.HourlySchedule();
+                serviceClientPolicy.HourlySchedule.Interval = psPolicy.ScheduleInterval;
+                serviceClientPolicy.HourlySchedule.ScheduleWindowDuration = psPolicy.ScheduleWindowDuration;
+                serviceClientPolicy.HourlySchedule.ScheduleWindowStartTime = psPolicy.ScheduleWindowStartTime;
+            }
             return serviceClientPolicy;
         }
 

@@ -1,0 +1,40 @@
+{
+  "Update-AzLabServicesPlanImage+[NoContext]+Update Image Name+$PATCH+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labPlans/labplan-unit-powershell/images/canonical.0001-com-ubuntu-server-focal.20_04-lts?api-version=2021-10-01-preview+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labPlans/labplan-unit-powershell/images/canonical.0001-com-ubuntu-server-focal.20_04-lts?api-version=2021-10-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"enabledState\": \"Enabled\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "55" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
+        "x-ms-request-id": [ "0HMCNTDL2N8NV:00000001" ],
+        "x-ms-correlation-request-id": [ "e117e325-cc79-428d-a308-e2524e4e4cb8" ],
+        "traceparent": [ "00-18114a7f7a2c4644ab392370330cfecd-3403e4592b0347fa-01" ],
+        "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211026T211828Z:e117e325-cc79-428d-a308-e2524e4e4cb8" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 26 Oct 2021 21:18:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1290" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"provisioningState\":\"Succeeded\",\"displayName\":\"Ubuntu Server 20.04 LTS\",\"description\":\"Ubuntu Server is the world\u0027s most popular Linux for cloud environments. Updates and patches for Ubuntu Server 20.04 LTS will be available until April 2025. Ubuntu Server is the perfect virtual machine (VM) platform for all workloads from web applications to NoSQL databases and Hadoop. For more information see \u003ca href=\u0027https://ubuntu.com/azure\u0027 target=\u0027_blank\u0027\u003eUbuntu on Azure\u003c/a\u003e and \u003ca href=\u0027http://juju.ubuntu.com\u0027 target=\u0027_blank\u0027\u003eusing Juju to deploy your workloads\u003c/a\u003e.\",\"iconUrl\":\"https://store-images.s-microsoft.com/image/apps.18832.b1cb587c-4b08-4839-9156-b06fa2ff0960.74e50379-1739-4b89-9061-f6f8a69cef7e.18bb5c17-eee7-4276-b40c-e6eab81975f4\",\"author\":\"Canonical\",\"osType\":\"Linux\",\"plan\":\"20_04-lts-ARM\",\"offer\":\"0001-com-ubuntu-server-focal\",\"publisher\":\"canonical\",\"sku\":\"20_04-lts\",\"version\":\"latest\",\"osState\":\"Generalized\",\"enabledState\":\"Enabled\"},\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labPlans/labplan-unit-powershell/images/canonical.0001-com-ubuntu-server-focal.20_04-lts\",\"name\":\"canonical.0001-com-ubuntu-server-focal.20_04-lts\",\"type\":\"Microsoft.LabServices/labPlans/images\"}",
+      "isContentBase64": false
+    }
+  }
+}

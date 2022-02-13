@@ -155,6 +155,12 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "Specifies the fault domain of the virtual machine.")]
         public int PlatformFaultDomain { get; set; }
 
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The flag that enables or disables hibernation capability on the VM.")]
+        public SwitchParameter HibernationEnabled { get; set; }
+
         public override void ExecuteCmdlet()
         {
             var vm = new PSVirtualMachine
@@ -200,7 +206,20 @@ namespace Microsoft.Azure.Commands.Compute
 
             if (this.EnableUltraSSD.IsPresent)
             {
-                vm.AdditionalCapabilities = new AdditionalCapabilities(true);
+                if (vm.AdditionalCapabilities == null)
+                {
+                    vm.AdditionalCapabilities = new AdditionalCapabilities();
+                }
+                vm.AdditionalCapabilities.UltraSSDEnabled = this.EnableUltraSSD;
+            }
+
+            if (this.HibernationEnabled.IsPresent)
+            {
+                if (vm.AdditionalCapabilities == null)
+                {
+                    vm.AdditionalCapabilities = new AdditionalCapabilities();
+                }
+                vm.AdditionalCapabilities.HibernationEnabled = this.HibernationEnabled;
             }
 
             if (this.IsParameterBound(c => c.ProximityPlacementGroupId))

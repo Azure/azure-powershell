@@ -31,21 +31,21 @@ Get access token
 
 ### Example 1 Get the access token for ARM endpoint
 ```powershell
-PS C:\> Get-AzAccessToken
+Get-AzAccessToken
 ```
 
 Get access token of current account for ResourceManager endpoint
 
 ### Example 2 Get the access token for Microsoft Graph endpoint
 ```powershell
-PS C:\> Get-AzAccessToken -ResourceTypeName MSGraph
+Get-AzAccessToken -ResourceTypeName MSGraph
 ```
 
 Get access token of Microsoft Graph endpoint for current account
 
 ### Example 3 Get the access token for Microsoft Graph endpoint
 ```powershell
-PS C:\> Get-AzAccessToken -ResourceUrl "https://graph.microsoft.com/"
+Get-AzAccessToken -ResourceUrl "https://graph.microsoft.com/"
 ```
 
 Get access token of Microsoft Graph endpoint for current account

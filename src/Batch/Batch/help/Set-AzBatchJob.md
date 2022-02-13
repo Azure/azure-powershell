@@ -26,10 +26,10 @@ Modify the properties of that object, and then use the current cmdlet to commit 
 ## EXAMPLES
 
 ### Example 1: Update a job
-```
-PS C:\>$Job = Get-AzBatchJob -Id "Job17" -BatchContext $Context
-PS C:\> $Job.Priority = 1
-PS C:\> Set-AzBatchJob -Job $Job -BatchContext $Context
+```powershell
+$Job = Get-AzBatchJob -Id "Job17" -BatchContext $Context
+$Job.Priority = 1
+Set-AzBatchJob -Job $Job -BatchContext $Context
 ```
 
 The first command gets a job by using **Get-AzBatchJob**, and then stores it in the $Job variable.

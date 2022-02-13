@@ -63,6 +63,27 @@ Here is the high-level description of the steps to be followed for modifying a p
 3.	Get the backup protection policy that you want to modify and store it in a variable. In the above example, we retrieved the backup policy with the name "TestPolicy" that we wanted to modify.
 4.	Modify the backup protection policy retrieved in step 3 using the modified schedule policy object and retention policy object.
 
+### Example 2: Modify Azure fileshare policy for multiple backups per day
+```powershell
+PS C:\> $schedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureFiles -BackupManagementType AzureStorage -ScheduleRunFrequency Hourly
+PS C:\>	$retentionPolicy = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureFiles -BackupManagementType AzureStorage -ScheduleRunFrequency Hourly
+PS C:\> $timeZone = Get-TimeZone
+PS C:\> $schedulePolicy.ScheduleRunTimeZone = $timeZone.Id
+PS C:\> $startTime = Get-Date -Date "2021-12-22T06:00:00.00+00:00"
+PS C:\> $schedulePolicy.ScheduleWindowStartTime = $startTime.ToUniversalTime()
+PS C:\> $schedulePolicy.ScheduleInterval = 6
+PS C:\> $schedulePolicy.ScheduleWindowDuration = 14
+PS C:\> $retentionPolicy.DailySchedule.DurationCountInDays = 6
+PS C:\> $policy = Get-AzRecoveryServicesBackupProtectionPolicy -Name "TestPolicy" -VaultId $vault.ID
+PS C:\> Set-AzRecoveryServicesBackupProtectionPolicy -Policy $policy -VaultId $vault.ID -SchedulePolicy $schedulePolicy -RetentionPolicy $retentionPolicy
+```
+
+Here is the high-level description of the steps to be followed for modifying a fileshare policy for multiple backups per day: 
+1.	Get a base hourly SchedulePolicyObject and base hourly RetentionPolicyObject. Store them in some variable.
+2.	Set the different parameters of schedule and retention policy object as per your requirement. For example- In the above sample script, we are trying to set the $timeZone in which we want to run the schedule we are setting the start time of the Hourly schedule, setting hourly interval (in hours), after which the backup will be retriggered on the same day, duration (in hours) for which the schedule will run. Next we are modifying the retention setting for daily recovery points.
+3.	Get the backup protection policy that you want to modify and store it in a variable. In the above example, we retrieved the backup policy with the name "TestPolicy" that we wanted to modify.
+4.	Modify the backup protection policy retrieved in step 3 using the modified schedule policy object and retention policy object.
+
 ## PARAMETERS
 
 ### -DefaultProfile
