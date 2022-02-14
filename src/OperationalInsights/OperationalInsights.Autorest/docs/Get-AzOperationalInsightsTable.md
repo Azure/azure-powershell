@@ -13,21 +13,30 @@ Gets a Log Analytics workspace table.
 ## SYNTAX
 
 ### List (Default)
+```powershell
+
 ```
-Get-AzOperationalInsightsTable -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+
+Get-AzOperationalInsightsTable -ResourceGroupName \<String\> -WorkspaceName \<String\>
+ [-SubscriptionId \<String[]\>] [-DefaultProfile \<PSObject\>] [\<CommonParameters\>]
 ```
 
 ### Get
+```powershell
+
 ```
-Get-AzOperationalInsightsTable -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+
+Get-AzOperationalInsightsTable -Name \<String\> -ResourceGroupName \<String\> -WorkspaceName \<String\>
+ [-SubscriptionId \<String[]\>] [-DefaultProfile \<PSObject\>] [\<CommonParameters\>]
 ```
 
 ### GetViaIdentity
+```powershell
+
 ```
-Get-AzOperationalInsightsTable -InputObject <IOperationalInsightsIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+
+Get-AzOperationalInsightsTable -InputObject \<IOperationalInsightsIdentity\> [-DefaultProfile \<PSObject\>]
+ [\<CommonParameters\>]
 ```
 
 ## DESCRIPTION
@@ -64,9 +73,10 @@ Name  Id                                                                        
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+```powershell
 
-```yaml
+```
+
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
@@ -79,10 +89,10 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+```powershell
 
-```yaml
+```
+
 Type: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.Models.IOperationalInsightsIdentity
 Parameter Sets: GetViaIdentity
 Aliases:
@@ -95,9 +105,10 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the table.
+```powershell
 
-```yaml
+```
+
 Type: System.String
 Parameter Sets: Get
 Aliases: TableName
@@ -110,10 +121,10 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+```powershell
 
-```yaml
+```
+
 Type: System.String
 Parameter Sets: Get, List
 Aliases:
@@ -126,9 +137,10 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The ID of the target subscription.
+```powershell
 
-```yaml
+```
+
 Type: System.String[]
 Parameter Sets: Get, List
 Aliases:
@@ -141,9 +153,10 @@ Accept wildcard characters: False
 ```
 
 ### -WorkspaceName
-The name of the workspace.
+```powershell
 
-```yaml
+```
+
 Type: System.String
 Parameter Sets: Get, List
 Aliases:
@@ -156,15 +169,26 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+```powershell
+
+```
+
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.Models.IOperationalInsightsIdentity
+```powershell
+
+```
 
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.Models.Api20211201Preview.ITable
+```powershell
+
+```
 
 ## NOTES
 
@@ -172,15 +196,16 @@ ALIASES
 
 COMPLEX PARAMETER PROPERTIES
 
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+To create the parameters described below, construct a hash table containing the appropriate properties.
+For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IOperationalInsightsIdentity>: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[TableName <String>]`: The name of the table.
-  - `[WorkspaceName <String>]`: The name of the workspace.
+INPUTOBJECT \<IOperationalInsightsIdentity\>: Identity Parameter
+  - `[Id \<String\>]`: Resource identity path
+  - `[ResourceGroupName \<String\>]`: The name of the resource group.
+The name is case insensitive.
+  - `[SubscriptionId \<String\>]`: The ID of the target subscription.
+  - `[TableName \<String\>]`: The name of the table.
+  - `[WorkspaceName \<String\>]`: The name of the workspace.
 
 ## RELATED LINKS
-

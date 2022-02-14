@@ -13,24 +13,30 @@ Updates a workspace.
 ## SYNTAX
 
 ### UpdateExpanded (Default)
+```powershell
+
 ```
-Update-AzOperationalInsightsWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DailyQuotaGb <Double>] [-DefaultDataCollectionRuleResourceId <String>] [-Feature <IWorkspaceFeatures>]
- [-ForceCmkForQuery] [-ProvisioningState <WorkspaceEntityStatus>]
- [-PublicNetworkAccessForIngestion <PublicNetworkAccessType>]
- [-PublicNetworkAccessForQuery <PublicNetworkAccessType>] [-RetentionInDay <Int32>]
- [-Sku <WorkspaceSkuNameEnum>] [-SkuCapacity <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+
+Update-AzOperationalInsightsWorkspace -Name \<String\> -ResourceGroupName \<String\> [-SubscriptionId \<String\>]
+ [-DailyQuotaGb \<Double\>] [-DefaultDataCollectionRuleResourceId \<String\>] [-Feature \<IWorkspaceFeatures\>]
+ [-ForceCmkForQuery] [-ProvisioningState \<WorkspaceEntityStatus\>]
+ [-PublicNetworkAccessForIngestion \<PublicNetworkAccessType\>]
+ [-PublicNetworkAccessForQuery \<PublicNetworkAccessType\>] [-RetentionInDay \<Int32\>]
+ [-Sku \<WorkspaceSkuNameEnum\>] [-SkuCapacity \<Int32\>] [-Tag \<Hashtable\>] [-DefaultProfile \<PSObject\>]
+ [-Confirm] [-WhatIf] [\<CommonParameters\>]
 ```
 
 ### UpdateViaIdentityExpanded
+```powershell
+
 ```
-Update-AzOperationalInsightsWorkspace -InputObject <IOperationalInsightsIdentity> [-DailyQuotaGb <Double>]
- [-DefaultDataCollectionRuleResourceId <String>] [-Feature <IWorkspaceFeatures>] [-ForceCmkForQuery]
- [-ProvisioningState <WorkspaceEntityStatus>] [-PublicNetworkAccessForIngestion <PublicNetworkAccessType>]
- [-PublicNetworkAccessForQuery <PublicNetworkAccessType>] [-RetentionInDay <Int32>]
- [-Sku <WorkspaceSkuNameEnum>] [-SkuCapacity <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+
+Update-AzOperationalInsightsWorkspace -InputObject \<IOperationalInsightsIdentity\> [-DailyQuotaGb \<Double\>]
+ [-DefaultDataCollectionRuleResourceId \<String\>] [-Feature \<IWorkspaceFeatures\>] [-ForceCmkForQuery]
+ [-ProvisioningState \<WorkspaceEntityStatus\>] [-PublicNetworkAccessForIngestion \<PublicNetworkAccessType\>]
+ [-PublicNetworkAccessForQuery \<PublicNetworkAccessType\>] [-RetentionInDay \<Int32\>]
+ [-Sku \<WorkspaceSkuNameEnum\>] [-SkuCapacity \<Int32\>] [-Tag \<Hashtable\>] [-DefaultProfile \<PSObject\>]
+ [-Confirm] [-WhatIf] [\<CommonParameters\>]
 ```
 
 ## DESCRIPTION
@@ -64,9 +70,10 @@ Please create a workspace using 'New-AzOperationalInsightsWorkspace' cmdlet befo
 ## PARAMETERS
 
 ### -DailyQuotaGb
-The workspace daily quota for ingestion.
+```powershell
 
-```yaml
+```
+
 Type: System.Double
 Parameter Sets: (All)
 Aliases:
@@ -79,10 +86,10 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultDataCollectionRuleResourceId
-The resource ID of the default Data Collection Rule to use for this workspace.
-Expected format is - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/dataCollectionRules/{dcrName}.
+```powershell
 
-```yaml
+```
+
 Type: System.String
 Parameter Sets: (All)
 Aliases:
@@ -95,9 +102,10 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+```powershell
 
-```yaml
+```
+
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
@@ -110,10 +118,10 @@ Accept wildcard characters: False
 ```
 
 ### -Feature
-Workspace features.
-To construct, see NOTES section for FEATURE properties and create a hash table.
+```powershell
 
-```yaml
+```
+
 Type: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.Models.Api20211201Preview.IWorkspaceFeatures
 Parameter Sets: (All)
 Aliases:
@@ -126,9 +134,10 @@ Accept wildcard characters: False
 ```
 
 ### -ForceCmkForQuery
-Indicates whether customer managed storage is mandatory for query management.
+```powershell
 
-```yaml
+```
+
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
@@ -141,10 +150,10 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+```powershell
 
-```yaml
+```
+
 Type: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.Models.IOperationalInsightsIdentity
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
@@ -157,9 +166,10 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the workspace.
+```powershell
 
-```yaml
+```
+
 Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases: WorkspaceName
@@ -172,9 +182,10 @@ Accept wildcard characters: False
 ```
 
 ### -ProvisioningState
-The provisioning state of the workspace.
+```powershell
 
-```yaml
+```
+
 Type: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.Support.WorkspaceEntityStatus
 Parameter Sets: (All)
 Aliases:
@@ -187,9 +198,10 @@ Accept wildcard characters: False
 ```
 
 ### -PublicNetworkAccessForIngestion
-The network access type for accessing Log Analytics ingestion.
+```powershell
 
-```yaml
+```
+
 Type: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.Support.PublicNetworkAccessType
 Parameter Sets: (All)
 Aliases:
@@ -202,9 +214,10 @@ Accept wildcard characters: False
 ```
 
 ### -PublicNetworkAccessForQuery
-The network access type for accessing Log Analytics query.
+```powershell
 
-```yaml
+```
+
 Type: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.Support.PublicNetworkAccessType
 Parameter Sets: (All)
 Aliases:
@@ -217,10 +230,10 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+```powershell
 
-```yaml
+```
+
 Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
@@ -233,11 +246,10 @@ Accept wildcard characters: False
 ```
 
 ### -RetentionInDay
-The workspace data retention in days.
-Allowed values are per pricing plan.
-See pricing tiers documentation for details.
+```powershell
 
-```yaml
+```
+
 Type: System.Int32
 Parameter Sets: (All)
 Aliases:
@@ -250,9 +262,10 @@ Accept wildcard characters: False
 ```
 
 ### -Sku
-The name of the SKU.
+```powershell
 
-```yaml
+```
+
 Type: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.Support.WorkspaceSkuNameEnum
 Parameter Sets: (All)
 Aliases:
@@ -265,9 +278,10 @@ Accept wildcard characters: False
 ```
 
 ### -SkuCapacity
-The capacity reservation level in GB for this workspace, when CapacityReservation sku is selected.
+```powershell
 
-```yaml
+```
+
 Type: System.Int32
 Parameter Sets: (All)
 Aliases:
@@ -280,9 +294,10 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The ID of the target subscription.
+```powershell
 
-```yaml
+```
+
 Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
@@ -295,10 +310,10 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Resource tags.
-Optional.
+```powershell
 
-```yaml
+```
+
 Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
@@ -311,9 +326,10 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
-Prompts you for confirmation before running the cmdlet.
+```powershell
 
-```yaml
+```
+
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
@@ -326,10 +342,10 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+```powershell
 
-```yaml
+```
+
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
@@ -342,15 +358,26 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+```powershell
+
+```
+
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.Models.IOperationalInsightsIdentity
+```powershell
+
+```
 
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.Models.Api20211201Preview.IWorkspace
+```powershell
+
+```
 
 ## NOTES
 
@@ -358,23 +385,24 @@ ALIASES
 
 COMPLEX PARAMETER PROPERTIES
 
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+To create the parameters described below, construct a hash table containing the appropriate properties.
+For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-FEATURE <IWorkspaceFeatures>: Workspace features.
-  - `[(Any) <Object>]`: This indicates any property can be added to this object.
-  - `[ClusterResourceId <String>]`: Dedicated LA cluster resourceId that is linked to the workspaces.
-  - `[DisableLocalAuth <Boolean?>]`: Disable Non-AAD based Auth.
-  - `[EnableDataExport <Boolean?>]`: Flag that indicate if data should be exported.
-  - `[EnableLogAccessUsingOnlyResourcePermission <Boolean?>]`: Flag that indicate which permission to use - resource or workspace or both.
-  - `[ImmediatePurgeDataOn30Day <Boolean?>]`: Flag that describes if we want to remove the data after 30 days.
+FEATURE \<IWorkspaceFeatures\>: Workspace features.
+  - `[(Any) \<Object\>]`: This indicates any property can be added to this object.
+  - `[ClusterResourceId \<String\>]`: Dedicated LA cluster resourceId that is linked to the workspaces.
+  - `[DisableLocalAuth \<Boolean?\>]`: Disable Non-AAD based Auth.
+  - `[EnableDataExport \<Boolean?\>]`: Flag that indicate if data should be exported.
+  - `[EnableLogAccessUsingOnlyResourcePermission \<Boolean?\>]`: Flag that indicate which permission to use - resource or workspace or both.
+  - `[ImmediatePurgeDataOn30Day \<Boolean?\>]`: Flag that describes if we want to remove the data after 30 days.
 
-INPUTOBJECT <IOperationalInsightsIdentity>: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[TableName <String>]`: The name of the table.
-  - `[WorkspaceName <String>]`: The name of the workspace.
+INPUTOBJECT \<IOperationalInsightsIdentity\>: Identity Parameter
+  - `[Id \<String\>]`: Resource identity path
+  - `[ResourceGroupName \<String\>]`: The name of the resource group.
+The name is case insensitive.
+  - `[SubscriptionId \<String\>]`: The ID of the target subscription.
+  - `[TableName \<String\>]`: The name of the table.
+  - `[WorkspaceName \<String\>]`: The name of the workspace.
 
 ## RELATED LINKS
-

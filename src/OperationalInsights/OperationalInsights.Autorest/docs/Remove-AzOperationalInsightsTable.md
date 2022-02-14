@@ -13,16 +13,22 @@ Delete a Log Analytics workspace table.
 ## SYNTAX
 
 ### Delete (Default)
+```powershell
+
 ```
-Remove-AzOperationalInsightsTable -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+
+Remove-AzOperationalInsightsTable -Name \<String\> -ResourceGroupName \<String\> -WorkspaceName \<String\>
+ [-SubscriptionId \<String\>] [-DefaultProfile \<PSObject\>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [\<CommonParameters\>]
 ```
 
 ### DeleteViaIdentity
+```powershell
+
 ```
-Remove-AzOperationalInsightsTable -InputObject <IOperationalInsightsIdentity> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+
+Remove-AzOperationalInsightsTable -InputObject \<IOperationalInsightsIdentity\> [-DefaultProfile \<PSObject\>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [\<CommonParameters\>]
 ```
 
 ## DESCRIPTION
@@ -38,6 +44,7 @@ PS C:\> Remove-AzOperationalInsightsTable -ResourceGroupName {RG-name} -Name {Ta
 ```
 
 
+
 ### Example 2: Remove a default 'Heartbeat' table - fail
 ```powershell
 PS C:\> Remove-AzOperationalInsightsTable -ResourceGroupName dabenham-dev -Name Heartbeat -WorkspaceName dabenham-PSH2
@@ -48,20 +55,21 @@ Remove-AzOperationalInsightsTable_Delete: No actual change was detected, for tab
 Deletion of default tables is not possible
 After performing an update to a default table using 'New-AzOperationalInsightsTable' or 'Update-AzOperationalInsightsTable' cmdlets, performing delete will revert the default table to it's original values'
 
-PS C:\> $tempTable = Update-AzOperationalInsightsTable -ResourceGroupName dabenham-dev -WorkspaceName dabenham-PSH2 -Name Heartbeat -RetentionInDay 55
-PS C:\> $tempTable.RetentionInDay
+PS C:\\> $tempTable = Update-AzOperationalInsightsTable -ResourceGroupName dabenham-dev -WorkspaceName dabenham-PSH2 -Name Heartbeat -RetentionInDay 55
+PS C:\\> $tempTable.RetentionInDay
 55
 
-PS C:\> Remove-AzOperationalInsightsTable -ResourceGroupName dabenham-dev -WorkspaceName dabenham-PSH2 -Name Heartbeat
-PS C:\> $tempTable = Get-AzOperationalInsightsTable -ResourceGroupName dabenham-dev -WorkspaceName dabenham-PSH2 -Name Heartbeat
-PS C:\> $tempTable.RetentionInDay
+PS C:\\> Remove-AzOperationalInsightsTable -ResourceGroupName dabenham-dev -WorkspaceName dabenham-PSH2 -Name Heartbeat
+PS C:\\> $tempTable = Get-AzOperationalInsightsTable -ResourceGroupName dabenham-dev -WorkspaceName dabenham-PSH2 -Name Heartbeat
+PS C:\\> $tempTable.RetentionInDay
 30
 ## PARAMETERS
 
 ### -AsJob
-Run the command as a job
+```powershell
 
-```yaml
+```
+
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
@@ -74,9 +82,10 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+```powershell
 
-```yaml
+```
+
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
@@ -89,10 +98,10 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+```powershell
 
-```yaml
+```
+
 Type: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.Models.IOperationalInsightsIdentity
 Parameter Sets: DeleteViaIdentity
 Aliases:
@@ -105,9 +114,10 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the table.
+```powershell
 
-```yaml
+```
+
 Type: System.String
 Parameter Sets: Delete
 Aliases: TableName
@@ -120,9 +130,10 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
-Run the command asynchronously
+```powershell
 
-```yaml
+```
+
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
@@ -135,9 +146,10 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Returns true when the command succeeds
+```powershell
 
-```yaml
+```
+
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
@@ -150,10 +162,10 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+```powershell
 
-```yaml
+```
+
 Type: System.String
 Parameter Sets: Delete
 Aliases:
@@ -166,9 +178,10 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The ID of the target subscription.
+```powershell
 
-```yaml
+```
+
 Type: System.String
 Parameter Sets: Delete
 Aliases:
@@ -181,9 +194,10 @@ Accept wildcard characters: False
 ```
 
 ### -WorkspaceName
-The name of the workspace.
+```powershell
 
-```yaml
+```
+
 Type: System.String
 Parameter Sets: Delete
 Aliases:
@@ -196,9 +210,10 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
-Prompts you for confirmation before running the cmdlet.
+```powershell
 
-```yaml
+```
+
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
@@ -211,10 +226,10 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+```powershell
 
-```yaml
+```
+
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
@@ -227,15 +242,26 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+```powershell
+
+```
+
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.Models.IOperationalInsightsIdentity
+```powershell
+
+```
 
 ## OUTPUTS
 
 ### System.Boolean
+```powershell
+
+```
 
 ## NOTES
 
@@ -243,15 +269,16 @@ ALIASES
 
 COMPLEX PARAMETER PROPERTIES
 
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+To create the parameters described below, construct a hash table containing the appropriate properties.
+For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IOperationalInsightsIdentity>: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[TableName <String>]`: The name of the table.
-  - `[WorkspaceName <String>]`: The name of the workspace.
+INPUTOBJECT \<IOperationalInsightsIdentity\>: Identity Parameter
+  - `[Id \<String\>]`: Resource identity path
+  - `[ResourceGroupName \<String\>]`: The name of the resource group.
+The name is case insensitive.
+  - `[SubscriptionId \<String\>]`: The ID of the target subscription.
+  - `[TableName \<String\>]`: The name of the table.
+  - `[WorkspaceName \<String\>]`: The name of the workspace.
 
 ## RELATED LINKS
-

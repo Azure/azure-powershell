@@ -34,6 +34,7 @@ DataTypeHint Description                                                        
 ```
 
 
+
 ### Example 2: Create a new Column which is used for New-AzOperationalInsightsTable cmdlet
 ```powershell
 PS C:\> New-AzOperationalInsightsTableColumnObject -Name 'TimeGenerated' -Description 'Date and time the record was created.' -Type 'datetime'
@@ -47,9 +48,10 @@ DataTypeHint Description                           DisplayName IsDefaultDisplay 
 ## PARAMETERS
 
 ### -DataTypeHint
-Column data type logical hint.
+```powershell
 
-```yaml
+```
+
 Type: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.Support.ColumnDataTypeHintEnum
 Parameter Sets: (All)
 Aliases:
@@ -62,9 +64,10 @@ Accept wildcard characters: False
 ```
 
 ### -Description
-Column description.
+```powershell
 
-```yaml
+```
+
 Type: System.String
 Parameter Sets: (All)
 Aliases:
@@ -77,9 +80,10 @@ Accept wildcard characters: False
 ```
 
 ### -DisplayName
-Column display name.
+```powershell
 
-```yaml
+```
+
 Type: System.String
 Parameter Sets: (All)
 Aliases:
@@ -92,9 +96,10 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Column name.
+```powershell
 
-```yaml
+```
+
 Type: System.String
 Parameter Sets: (All)
 Aliases:
@@ -107,9 +112,10 @@ Accept wildcard characters: False
 ```
 
 ### -Type
-Column data type.
+```powershell
 
-```yaml
+```
+
 Type: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.Support.ColumnTypeEnum
 Parameter Sets: (All)
 Aliases:
@@ -122,17 +128,24 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+```powershell
+
+```
+
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.Models.Api20211201Preview.Column
+```powershell
+
+```
 
 ## NOTES
 
 ALIASES
 
 ## RELATED LINKS
-

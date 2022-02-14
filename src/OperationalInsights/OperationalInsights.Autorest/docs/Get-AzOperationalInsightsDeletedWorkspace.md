@@ -13,15 +13,21 @@ Gets recently deleted workspaces in a subscription, available for recovery.
 ## SYNTAX
 
 ### List (Default)
+```powershell
+
 ```
-Get-AzOperationalInsightsDeletedWorkspace [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+
+Get-AzOperationalInsightsDeletedWorkspace [-SubscriptionId \<String[]\>] [-DefaultProfile \<PSObject\>]
+ [\<CommonParameters\>]
 ```
 
 ### List1
+```powershell
+
 ```
-Get-AzOperationalInsightsDeletedWorkspace -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+
+Get-AzOperationalInsightsDeletedWorkspace -ResourceGroupName \<String\> [-SubscriptionId \<String[]\>]
+ [-DefaultProfile \<PSObject\>] [\<CommonParameters\>]
 ```
 
 ## DESCRIPTION
@@ -74,7 +80,6 @@ ModifiedDate                    : Wed, 19 Jan 2022 20:50:32 GMT
 ForceCmkForQuery                :
 WorkspaceFeatures               : Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures
 
-
 ### Example 2: Get a deleted workspace by resorce group and name
 ```powershell
 Get-AzOperationalInsightsDeletedWorkspace -ResourceGroupName {RG-Name} -Name {WS-Name1}
@@ -103,9 +108,10 @@ WorkspaceFeatures               : Microsoft.Azure.Commands.OperationalInsights.M
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+```powershell
 
-```yaml
+```
+
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
@@ -118,10 +124,10 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+```powershell
 
-```yaml
+```
+
 Type: System.String
 Parameter Sets: List1
 Aliases:
@@ -134,9 +140,10 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The ID of the target subscription.
+```powershell
 
-```yaml
+```
+
 Type: System.String[]
 Parameter Sets: (All)
 Aliases:
@@ -149,13 +156,21 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+```powershell
+
+```
+
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.Models.Api20211201Preview.IWorkspace
+```powershell
+
+```
 
 ## NOTES
 
@@ -163,3 +178,4 @@ ALIASES
 
 ## RELATED LINKS
 
+## PARAMETERS
