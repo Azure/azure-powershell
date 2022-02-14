@@ -707,6 +707,7 @@ namespace Microsoft.Azure.Commands.Profile
                 AzureSession.Instance.RegisterComponent(nameof(IAzureEventListenerFactory), () => azureEventListenerFactory);
                 AzureSession.Instance.RegisterComponent(nameof(AzureCredentialFactory), () => new AzureCredentialFactory());
                 AzureSession.Instance.RegisterComponent(nameof(MsalAccessTokenAcquirerFactory), () => new MsalAccessTokenAcquirerFactory());
+                AzureSession.Instance.RegisterComponent<ISshCredentialFactory>(nameof(ISshCredentialFactory), () => new SshCredentialFactory());
 #if DEBUG
             }
             catch (Exception) when (TestMockSupport.RunningMocked)
