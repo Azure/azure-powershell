@@ -1,6 +1,6 @@
 ### Example 1: Create a Windows Virtual Desktop HostPool by name
 ```powershell
-PS C:\> New-AzWvdHostPool -ResourceGroupName ResourceGroupName `
+New-AzWvdHostPool -ResourceGroupName ResourceGroupName `
                             -Name HostPoolName `
                             -Location 'eastus' `
                             -HostPoolType 'Pooled' `
@@ -18,7 +18,9 @@ PS C:\> New-AzWvdHostPool -ResourceGroupName ResourceGroupName `
                             -CustomRdpProperty $null `
                             -Ring $null `
                             -ValidationEnvironment:$false
+```
 
+```output
 Location   Name                 Type
 --------   ----                 ----
 eastus     HostPoolName Microsoft.DesktopVirtualization/hostpools
@@ -28,7 +30,7 @@ This command creates a Windows Virtual Desktop HostPool in a Resource Group.
 
 ### Example 1: Create a Windows Virtual Desktop HostPool by name
 ```powershell
-PS C:\> New-AzWvdHostPool -ResourceGroupName ResourceGroupName `
+New-AzWvdHostPool -ResourceGroupName ResourceGroupName `
                             -Name HostPoolName `
                             -Location 'eastus' `
                             -HostPoolType 'Personal' `
@@ -46,7 +48,9 @@ PS C:\> New-AzWvdHostPool -ResourceGroupName ResourceGroupName `
                             -CustomRdpProperty $null `
                             -Ring $null `
                             -ValidationEnvironment:$false
+```
 
+```output
 Location   Name                 Type
 --------   ----                 ----
 eastus     HostPoolName Microsoft.DesktopVirtualization/hostpools
