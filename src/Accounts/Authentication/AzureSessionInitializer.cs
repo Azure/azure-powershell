@@ -224,6 +224,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             {
                 ClientFactory = new ClientFactory(),
                 AuthenticationFactory = new AuthenticationFactory(),
+                SshCredentialFactory = new SshCredentialFactory(),
                 DataStore = dataStore,
                 OldProfileFile = "WindowsAzureProfile.xml",
                 OldProfileFileBackup = "WindowsAzureProfile.xml.bak",
