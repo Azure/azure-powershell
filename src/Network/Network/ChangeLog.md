@@ -19,6 +19,11 @@
 --->
 
 ## Upcoming Release
+* Added new property `SqlSetting` for Azure Firewall Policy cmdlets 
+    - `Get-AzFirewallPolicy` 
+    - `New-AzFirewallPolicy`
+* Added new to create new `SqlSetting` object for creating Azure Firewall Policy
+    - `New-AzFirewallPolicySqlSetting`
 
 ## Version 4.14.0
 * Used case-insensitive comparison for ResourceId (Set/New-NetworkWatcherFlowLog)
