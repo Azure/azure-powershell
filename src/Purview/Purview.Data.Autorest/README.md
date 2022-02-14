@@ -32,7 +32,7 @@ For information on how to develop for `Az.Purview`, see [how-to.md](how-to.md).
 ``` yaml
 branch: ${commit}
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 # lock the commit
 input-file:
   - $(repo)/specification/purview/data-plane/Azure.Analytics.Purview.Scanning/preview/2021-10-01-preview/scanningService.json
