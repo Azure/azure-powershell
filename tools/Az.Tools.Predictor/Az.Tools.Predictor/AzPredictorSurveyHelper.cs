@@ -39,13 +39,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         {
             var host = powerShellRuntime.HostName;
 
-            Console.WriteLine($"Testing......... host: ${host}");
-
             if ((host.IndexOf("Visual Studio Code", StringComparison.InvariantCultureIgnoreCase) == -1) &&
                 !string.Equals(host, AzPredictorConstants.MockPSHostName, StringComparison.Ordinal))
             {
-                Console.WriteLine($"Registering event subscriber.");
-
                 var promptMessageScript = @"
                     if ([Microsoft.Azure.PowerShell.Tools.AzPredictor.AzPredictorData]::ShowSurveyOnIdle) {
                         [Microsoft.Azure.PowerShell.Tools.AzPredictor.AzPredictorData]::ShowSurveyOnIdle = $False
