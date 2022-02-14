@@ -14,11 +14,9 @@ Update or Create a Log Analytics workspace table.
 
 ```
 New-AzOperationalInsightsTable -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String>] [-Plan <TablePlanEnum>] [-RestoredLogsEndRestoreTime <DateTime>]
- [-RestoredLogsStartRestoreTime <DateTime>] [-RetentionInDay <Int32>] [-SchemaColumn <IColumn[]>]
- [-SchemaDescription <String>] [-SchemaDisplayName <String>] [-SchemaName <String>]
- [-SearchResultsDescription <String>] [-SearchResultsEndSearchTime <DateTime>] [-SearchResultsLimit <Int32>]
- [-SearchResultsQuery <String>] [-SearchResultsStartSearchTime <DateTime>] [-TotalRetentionInDay <Int32>]
+ [-SubscriptionId <String>] [-Plan <TablePlanEnum>] [-RestoredLogsSourceTable <String>]
+ [-RetentionInDay <Int32>] [-SchemaColumn <IColumn[]>] [-SchemaDescription <String>]
+ [-SchemaDisplayName <String>] [-SchemaName <String>] [-TotalRetentionInDay <Int32>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -41,6 +39,412 @@ Name             ResourceGroupName
 dabenhamKuku1_CL
 
 ```
+
+## PARAMETERS
+
+### -AsJob
+```powershell
+
+```
+
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+```powershell
+
+```
+
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+```powershell
+
+```
+
+Type: System.String
+Parameter Sets: (All)
+Aliases: TableName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+```powershell
+
+```
+
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Plan
+```powershell
+
+```
+
+Type: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.Support.TablePlanEnum
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+```powershell
+
+```
+
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RestoredLogsEndRestoreTime
+```powershell
+
+```
+
+Type: System.DateTime
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RestoredLogsStartRestoreTime
+```powershell
+
+```
+
+Type: System.DateTime
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RetentionInDay
+```powershell
+
+```
+
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SchemaColumn
+```powershell
+
+```
+
+Type: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.Models.Api20211201Preview.IColumn[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SchemaDescription
+```powershell
+
+```
+
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SchemaDisplayName
+```powershell
+
+```
+
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SchemaName
+```powershell
+
+```
+
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SearchResultsDescription
+```powershell
+
+```
+
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SearchResultsEndSearchTime
+```powershell
+
+```
+
+Type: System.DateTime
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SearchResultsLimit
+```powershell
+
+```
+
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SearchResultsQuery
+```powershell
+
+```
+
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SearchResultsStartSearchTime
+```powershell
+
+```
+
+Type: System.DateTime
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+```powershell
+
+```
+
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TotalRetentionInDay
+```powershell
+
+```
+
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WorkspaceName
+```powershell
+
+```
+
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+```powershell
+
+```
+
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+```powershell
+
+```
+
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+```powershell
+
+```
+
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+## OUTPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.Models.Api20211201Preview.ITable
+```powershell
+
+```
+
+## NOTES
+
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties.
+For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+SCHEMACOLUMN \<IColumn[]\>: A list of table custom columns.
+  - `[DataTypeHint \<ColumnDataTypeHintEnum?\>]`: Column data type logical hint.
+  - `[Description \<String\>]`: Column description.
+  - `[DisplayName \<String\>]`: Column display name.
+  - `[Name \<String\>]`: Column name.
+  - `[Type \<ColumnTypeEnum?\>]`: Column data type.
+
+## RELATED LINKS
 
 ## PARAMETERS
 
@@ -105,7 +509,7 @@ Accept wildcard characters: False
 ```
 
 ### -Plan
-The table plan.
+Instruct the system how to handle and charge the logs ingested to this table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.Support.TablePlanEnum
@@ -135,26 +539,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RestoredLogsEndRestoreTime
-The timestamp to end the restore by (UTC).
+### -RestoredLogsSourceTable
+The table to restore data from.
 
 ```yaml
-Type: System.DateTime
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RestoredLogsStartRestoreTime
-The timestamp to start the restore from (UTC).
-
-```yaml
-Type: System.DateTime
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -166,8 +555,8 @@ Accept wildcard characters: False
 ```
 
 ### -RetentionInDay
-The data table data retention in days, between 4 and 730.
-Setting this property to null will default to the workspace retention.
+The table retention in days, between 4 and 730.
+Setting this property to -1 will default to the workspace retention.
 
 ```yaml
 Type: System.Int32
@@ -242,81 +631,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SearchResultsDescription
-Search results table's Description.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SearchResultsEndSearchTime
-The timestamp to end the search by (UTC)
-
-```yaml
-Type: System.DateTime
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SearchResultsLimit
-Limit the search job to return up to specified number of rows.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SearchResultsQuery
-Search job query.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SearchResultsStartSearchTime
-The timestamp to start the search from (UTC)
-
-```yaml
-Type: System.DateTime
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
 The ID of the target subscription.
 
@@ -333,8 +647,8 @@ Accept wildcard characters: False
 ```
 
 ### -TotalRetentionInDay
-The table data total retention in days, between 4 and 2555.
-Setting this property to null will default to table retention.
+The table total retention in days, between 4 and 2555.
+Setting this property to -1 will default to table retention.
 
 ```yaml
 Type: System.Int32

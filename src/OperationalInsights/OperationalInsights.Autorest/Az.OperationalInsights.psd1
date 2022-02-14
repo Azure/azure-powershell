@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.OperationalInsights.private.dll'
   FormatsToProcess = './Az.OperationalInsights.format.ps1xml'
-  FunctionsToExport = 'Get-AzOperationalInsightsDeletedWorkspace', 'Get-AzOperationalInsightsTable', 'Get-AzOperationalInsightsWorkspace', 'New-AzOperationalInsightsTable', 'New-AzOperationalInsightsTableColumnObject', 'New-AzOperationalInsightsWorkspace', 'Remove-AzOperationalInsightsTable', 'Remove-AzOperationalInsightsWorkspace', 'Update-AzOperationalInsightsTable', 'Update-AzOperationalInsightsWorkspace', '*'
+  FunctionsToExport = 'Get-AzOperationalInsightsDeletedWorkspace', 'Get-AzOperationalInsightsTable', 'Get-AzOperationalInsightsWorkspace', 'Move-AzOperationalInsightsTable', 'New-AzOperationalInsightsTable', 'New-AzOperationalInsightsTableColumnObject', 'New-AzOperationalInsightsWorkspace', 'Remove-AzOperationalInsightsTable', 'Remove-AzOperationalInsightsWorkspace', 'Update-AzOperationalInsightsTable', 'Update-AzOperationalInsightsWorkspace', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

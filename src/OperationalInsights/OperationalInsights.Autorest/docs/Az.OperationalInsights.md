@@ -20,6 +20,9 @@ Gets a Log Analytics workspace table.
 ### [Get-AzOperationalInsightsWorkspace](Get-AzOperationalInsightsWorkspace.md)
 Gets a workspace instance.
 
+### [Move-AzOperationalInsightsTable](Move-AzOperationalInsightsTable.md)
+Migrate a Log Analytics table from support of the Data Collector API and Custom Fields features to support of Data Collection Rule-based Custom Logs.
+
 ### [New-AzOperationalInsightsTable](New-AzOperationalInsightsTable.md)
 Update or Create a Log Analytics workspace table.
 
