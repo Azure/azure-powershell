@@ -22,6 +22,7 @@
 * Added new property `SqlSetting` for Azure Firewall Policy cmdlets 
     - `Get-AzFirewallPolicy` 
     - `New-AzFirewallPolicy`
+    - `Set-AzFirewallPolicy`
 * Added new to create new `SqlSetting` object for creating Azure Firewall Policy
     - `New-AzFirewallPolicySqlSetting`
 

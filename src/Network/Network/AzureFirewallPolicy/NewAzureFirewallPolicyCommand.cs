@@ -80,8 +80,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The SQL related setting"
-        )]
+            HelpMessage = "The SQL related setting")]
         public PSAzureFirewallPolicySqlSettings SqlSetting { get; set; }
 
         [Parameter(
