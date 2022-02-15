@@ -59,7 +59,6 @@ stages:
     strategy:
       matrix: $[ dependencies.Build.outputs['autorestModuleList.autorestModuleList'] ]
     steps:
-    - checkout: none
     - powershell: |
         Write-Host "--------------------------------------------------"
         Write-Host $(module_name)
