@@ -44,7 +44,7 @@ stages:
       vmImage: ${{ variables.LinuxImage }}
     steps:
     - powershell: |
-        $moduleArray = Get-ChildItem -File -Recurse -Depth 4 -Path src test-module.ps1 | % { @{module_name = $_.Directory.BaseName; path = $_.FullName} }
+        $moduleArray = Get-ChildItem -File -Recurse -Path src test-module.ps1 | % { @{module_name = $_.Directory.BaseName; path = $_.FullName} }
         $moduleHashTable = @{}
         foreach($module in $moduleArray)
         {
@@ -55,13 +55,15 @@ stages:
       name: autorestModuleList
       
   - job: Runner
+    condition: succeeded()
     dependsOn: Build
     pool:
       vmImage: ${{ variables.LinuxImage }}
     strategy:
+      maxParallel: 2
       matrix: $[ dependencies.Build.outputs['autorestModuleList.autorestModuleList'] ]
     steps:
-    - checkout: none
+    # - checkout: none
     - powershell: |
         Write-Host "--------------------------------------------------"
         Write-Host $(module_name)
