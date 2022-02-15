@@ -44,7 +44,13 @@ stages:
       vmImage: ${{ variables.LinuxImage }}
     steps:
     - powershell: |
-        $var = Get-ChildItem -File -Recurse -Depth 4 -Path src test-module.ps1 | % { @{module_name = $_.Directory.BaseName; path = $_.FullName} } | ConvertTo-Json -Compress
+        $moduleArray = Get-ChildItem -File -Recurse -Depth 4 -Path src test-module.ps1 | % { @{module_name = $_.Directory.BaseName; path = $_.FullName} }
+        $moduleHashTable = @{}
+        foreach($module in $moduleArray)
+        {
+          $moduleHashTable.Add($module['module_name'], $module)
+        }
+        $var = $moduleHashTable | ConvertTo-Json -Compress
         Write-Host "##vso[task.setvariable variable=autorestModuleList;isOutput=true]$var"
       name: autorestModuleList
   - job: Runner
