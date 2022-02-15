@@ -105,7 +105,7 @@ stages:
       autorestModuleList: $[stageDependencies.Build.Build.outputs['passOutput.autorestModuleList']]
     steps:
     - powershell: |
-        $var = Get-ChildItem -File -Recurse -Depth 4 -Path artifacts/Debug test-module.ps1 | % {$_.DirectoryName}
+        $var = Get-ChildItem -File -Recurse -Depth 4 -Path src test-module.ps1 | % {$_.DirectoryName}
         Write-Host "##vso[task.setvariable variable=autorestModuleList]$var"
     # - template: util/test-steps.yml
     #   parameters:
