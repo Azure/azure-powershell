@@ -348,7 +348,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/5393f919-a68a-43d0-9063-4b2bda6bffdf/resourceGroups/ADETESTDDRG/providers/Microsoft.Compute/virtualMachineScaleSets/vmssadetestdd/virtualmachines/4/instanceView?api-version=2017-12-01",
+      "RequestUri": "/subscriptions/5393f919-a68a-43d0-9063-4b2bda6bffdf/resourceGroups/ADETESTDDRG/providers/Microsoft.Compute/virtualMachineScaleSets/vmssadetestdd/virtualMachines/4/instanceView?api-version=2017-12-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTM5M2Y5MTktYTY4YS00M2QwLTkwNjMtNGIyYmRhNmJmZmRmL3Jlc291cmNlR3JvdXBzL0FERVRFU1RERFJHL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS92aXJ0dWFsTWFjaGluZVNjYWxlU2V0cy92bXNzYWRldGVzdGRkL3ZpcnR1YWxtYWNoaW5lcy80L2luc3RhbmNlVmlldz9hcGktdmVyc2lvbj0yMDE3LTEyLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
