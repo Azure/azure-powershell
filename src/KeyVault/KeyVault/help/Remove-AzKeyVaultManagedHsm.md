@@ -84,6 +84,7 @@ If you do not specify the resource group name, the cmdlet searches for the named
  ```powershell
 PS C:\> Remove-AzKeyVaultManagedHsm -Name 'myhsm' -Location "eastus" -Force -PassThru
 ```
+
 ```output
 True
 ```
