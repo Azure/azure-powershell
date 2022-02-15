@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             {
                 throw new ArgumentException(Resources.DailyRetentionScheduleNullException);
             }
-
+            
             // for weekly schedule, daily retention policy should be NULL
             // AND weekly retention policy is required
             if (schPolicy.ScheduleRunFrequency == ScheduleRunType.Weekly &&
@@ -47,17 +47,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 throw new ArgumentException(Resources.WeeklyRetentionScheduleNullException);
             }
 
+            // validating retention duration counts for hourly policy
+            ValidateDurationCountsForHourlyPolicy(ltrPolicy, schPolicy);
+
             // validate daily retention schedule with schPolicy
             if (ltrPolicy.DailySchedule != null && ltrPolicy.IsDailyScheduleEnabled == true)
             {
-                ValidateRetentionAndBackupTimes(schPolicy.ScheduleRunTimes, ltrPolicy.DailySchedule.RetentionTimes);
+                ValidateRetentionAndBackupTimes(schPolicy.ScheduleRunTimes, ltrPolicy.DailySchedule.RetentionTimes, schPolicy.ScheduleRunFrequency);                
             }
-
+            
             // validate weekly retention schedule with schPolicy
             if (ltrPolicy.WeeklySchedule != null && ltrPolicy.IsWeeklyScheduleEnabled == true)
             {
-                ValidateRetentionAndBackupTimes(schPolicy.ScheduleRunTimes, ltrPolicy.WeeklySchedule.RetentionTimes);
-
+                ValidateRetentionAndBackupTimes(schPolicy.ScheduleRunTimes, ltrPolicy.WeeklySchedule.RetentionTimes, schPolicy.ScheduleRunFrequency);
+                
                 if (schPolicy.ScheduleRunFrequency == ScheduleRunType.Weekly)
                 {
                     // count of daysOfWeek should match for weekly schedule
@@ -70,11 +73,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     ValidateRetentionAndScheduleDaysOfWeek(schPolicy.ScheduleRunDays, ltrPolicy.WeeklySchedule.DaysOfTheWeek);
                 }
             }
-
+            
             // validate monthly retention schedule with schPolicy
             if (ltrPolicy.MonthlySchedule != null && ltrPolicy.IsMonthlyScheduleEnabled == true)
             {
-                ValidateRetentionAndBackupTimes(schPolicy.ScheduleRunTimes, ltrPolicy.MonthlySchedule.RetentionTimes);
+                ValidateRetentionAndBackupTimes(schPolicy.ScheduleRunTimes, ltrPolicy.MonthlySchedule.RetentionTimes, schPolicy.ScheduleRunFrequency);
 
                 // if backupSchedule is weekly, then user cannot choose 'Daily Retention format' 
                 if (schPolicy.ScheduleRunFrequency == ScheduleRunType.Weekly &&
@@ -83,7 +86,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 {
                     throw new ArgumentException(Resources.MonthlyYearlyInvalidDailyRetentionFormatTypeException);
                 }
-
+                
                 // for monthly and weeklyFormat, validate days of week
                 if (ltrPolicy.MonthlySchedule.RetentionScheduleFormatType
                         == RetentionScheduleFormat.Weekly &&
@@ -93,12 +96,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                                                            ltrPolicy.MonthlySchedule.RetentionScheduleWeekly.DaysOfTheWeek);
                 }
             }
-
             // validate yearly retention schedule with schPolicy
             if (ltrPolicy.YearlySchedule != null && ltrPolicy.IsYearlyScheduleEnabled == true)
             {
-                ValidateRetentionAndBackupTimes(schPolicy.ScheduleRunTimes, ltrPolicy.YearlySchedule.RetentionTimes);
-
+                ValidateRetentionAndBackupTimes(schPolicy.ScheduleRunTimes, ltrPolicy.YearlySchedule.RetentionTimes, schPolicy.ScheduleRunFrequency);
                 // if backupSchedule is weekly, then user cannot choose 'Daily Retention format' 
                 if (schPolicy.ScheduleRunFrequency == ScheduleRunType.Weekly &&
                     ltrPolicy.YearlySchedule.RetentionScheduleFormatType
@@ -106,7 +107,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 {
                     throw new ArgumentException(Resources.MonthlyYearlyInvalidDailyRetentionFormatTypeException);
                 }
-
                 // for yearly and weeklyFormat, validate days of week                 
                 if (ltrPolicy.YearlySchedule.RetentionScheduleFormatType
                         == RetentionScheduleFormat.Weekly &&
@@ -225,20 +225,41 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
         #region private
 
-        private static void ValidateRetentionAndBackupTimes(List<DateTime> schPolicyTimes, List<DateTime> retPolicyTimes)
+        private static void ValidateRetentionAndBackupTimes(List<DateTime> schPolicyTimes, List<DateTime> retPolicyTimes, ScheduleRunType scheduleRunFrequency = 0)
         {
-            //Currently supported BackupTimes & retentionTimes is 1
-            if (retPolicyTimes == null || retPolicyTimes.Count != 1)
+            if(scheduleRunFrequency != ScheduleRunType.Hourly)
             {
-                throw new ArgumentException(Resources.InvalidRetentionTimesInPolicyException);
-            }
-            if (schPolicyTimes == null || schPolicyTimes.Count != 1)
+                //Currently supported BackupTimes & retentionTimes is 1
+                if (retPolicyTimes == null || retPolicyTimes.Count != 1)
+                {
+                    throw new ArgumentException(Resources.InvalidRetentionTimesInPolicyException);
+                }
+                if (schPolicyTimes == null || schPolicyTimes.Count != 1)
+                {
+                    throw new ArgumentException(Resources.InvalidBackupTimesInSchedulePolicyException);
+                }
+                if (schPolicyTimes[0] != retPolicyTimes[0])
+                {
+                    throw new ArgumentException(Resources.BackupAndRetentionTimesMismatch);
+                }
+            }            
+        }
+
+        private static void ValidateDurationCountsForHourlyPolicy(LongTermRetentionPolicy ltrPolicy,
+            SimpleSchedulePolicy schPolicy)
+        {
+            if (ltrPolicy.DailySchedule != null && ltrPolicy.IsDailyScheduleEnabled == true)
             {
-                throw new ArgumentException(Resources.InvalidBackupTimesInSchedulePolicyException);
-            }
-            if (schPolicyTimes[0] != retPolicyTimes[0])
-            {
-                throw new ArgumentException(Resources.BackupAndRetentionTimesMismatch);
+                if ( schPolicy != null && schPolicy.ScheduleRunFrequency == ScheduleRunType.Hourly)
+                {
+                    int numberOfPointsPerDay = (int)((schPolicy.ScheduleWindowDuration / schPolicy.ScheduleInterval) + 1);
+                    int totalNumberOfScheduledPoints = numberOfPointsPerDay * (ltrPolicy.DailySchedule.DurationCountInDays + 1); //Incorporating GC delays for Hourly schedules
+
+                    if(totalNumberOfScheduledPoints > PolicyConstants.AfsDailyRetentionDaysMax)
+                    {
+                        throw new ArgumentException(String.Format(Resources.DailyRetentionPointsLimitExceeded, PolicyConstants.AfsDailyRetentionDaysMax));
+                    }
+                }
             }
         }
 

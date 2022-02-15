@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Migrated Azure AD features in Az.StorageSync to MSGraph APIs. The cmdlets will call MSGraph API according to input parameters: New-AzStorageSyncCloudEndpoint
+* Changed default parameter set of Invoke-AzStorageSyncChangeDetection to use full share detection
 
 ## Version 1.6.1
 * Fixed a bug where not all properties of PSSyncSessionStatus and PSSyncActivityStatus objects were being populated properly.

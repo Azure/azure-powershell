@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 // validate policy name
                 PolicyCmdletHelpers.ValidateProtectionPolicyName(Name);
-
+                
                 // Validate if policy already exists               
                 if (PolicyCmdletHelpers.GetProtectionPolicyByName(
                     Name,
@@ -110,21 +110,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     throw new ArgumentException(string.Format(Resources.PolicyAlreadyExistException, Name));
                 }
 
-                PsBackupProviderManager providerManager =
-                    new PsBackupProviderManager(new Dictionary<Enum, object>()
-                    {
-                        { VaultParams.VaultName, vaultName },
-                        { VaultParams.ResourceGroupName, resourceGroupName },
-                        { PolicyParams.PolicyName, Name },
-                        { PolicyParams.WorkloadType, WorkloadType },
-                        { PolicyParams.RetentionPolicy, RetentionPolicy },
-                        { PolicyParams.SchedulePolicy, SchedulePolicy },
-                    }, ServiceClientAdapter);
+                Dictionary<Enum, object> providerParameters = new Dictionary<Enum, object>();
+                providerParameters.Add(VaultParams.VaultName, vaultName);
+                providerParameters.Add(VaultParams.ResourceGroupName, resourceGroupName);
+                providerParameters.Add(PolicyParams.PolicyName, Name);
+                providerParameters.Add(PolicyParams.WorkloadType, WorkloadType);
+                providerParameters.Add(PolicyParams.RetentionPolicy, RetentionPolicy);
+                providerParameters.Add(PolicyParams.SchedulePolicy, SchedulePolicy);
+
+                PsBackupProviderManager providerManager = new PsBackupProviderManager(providerParameters, ServiceClientAdapter);                
 
                 IPsBackupProvider psBackupProvider =
                     providerManager.GetProviderInstance(WorkloadType, BackupManagementType);
+                
                 psBackupProvider.CreatePolicy();
-
+                
                 WriteDebug("Successfully created policy, now fetching it from service: " + Name);
 
                 // now get the created policy and return

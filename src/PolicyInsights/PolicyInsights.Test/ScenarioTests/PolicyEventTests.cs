@@ -39,9 +39,23 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ManagementGroupScope_Paging()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmPolicyEvent-ManagementGroupScope-Paging");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SubscriptionScope()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmPolicyEvent-SubscriptionScope");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SubscriptionScope_Paging()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmPolicyEvent-SubscriptionScope-Paging");
         }
 
         [Fact]

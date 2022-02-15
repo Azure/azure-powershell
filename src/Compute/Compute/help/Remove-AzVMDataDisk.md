@@ -24,10 +24,10 @@ The **Remove-AzVMDataDisk** cmdlet removes a data disk from a virtual machine.
 ## EXAMPLES
 
 ### Example 1: Remove a data disk from a virtual machine
-```
-PS C:\> $VirtualMachine = Get-AzVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" 
-PS C:\> Remove-AzVMDataDisk -VM $VirtualMachine -Name "Disk3"
-PS C:\> Update-AzVM -ResourceGroupName "ResourceGroup11" -VM $VirtualMachine
+```powershell
+$VirtualMachine = Get-AzVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" 
+Remove-AzVMDataDisk -VM $VirtualMachine -Name "Disk3"
+Update-AzVM -ResourceGroupName "ResourceGroup11" -VM $VirtualMachine
 ```
 
 The first command gets the virtual machine named VirtualMachine07 by using the **Get-AzVM** cmdlet.
