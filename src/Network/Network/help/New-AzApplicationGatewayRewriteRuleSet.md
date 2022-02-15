@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzApplicationGatewayRewriteRuleSet
 
 ## SYNOPSIS
-Creates a rewite rule set for an application gateway.
+Creates a rewrite rule set for an application gateway.
 
 ## SYNTAX
 
