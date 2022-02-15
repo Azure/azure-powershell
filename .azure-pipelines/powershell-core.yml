@@ -44,42 +44,10 @@ stages:
       vmImage: $(ImageName)
 
     steps:
-    # - template: util/build-steps.yml
-    #   parameters:
-    #     osName: $(OSName)
-    #     testFramework: ${{ variables.TestFramework }}
-    #     configuration: ${{ variables.Configuration }}
     - powershell: |
         $var = Get-ChildItem -File -Recurse -Depth 4 -Path src test-module.ps1 | % {$_}
         Write-Host "##vso[task.setvariable variable=autorestModuleList;isoutput=true]$var"
       name: passOutput
-
-# - stage: Analyze
-#   dependsOn: Build
-#   jobs:
-#   - job: Analyze
-#     displayName: Analyze
-#     condition: succeeded()
-#     timeoutInMinutes: ${{ variables.AnalysisTimeoutInMinutes }}
-#     strategy:
-#       matrix:
-#         windows:
-#           OSName: ${{ variables.WindowsName }}
-#           ImageName: ${{ variables.WindowsImage }}
-#         linux:
-#           OSName: ${{ variables.LinuxName }}
-#           ImageName: ${{ variables.LinuxImage }}
-#         macOS:
-#           OSName: ${{ variables.MacOSName }}
-#           ImageName: ${{ variables.MacOSImage }}
-#     pool:
-#       vmImage: $(ImageName)
-
-#     steps:
-#     - template: util/analyze-steps.yml
-#       parameters:
-#         osName: $(OSName)
-#         configuration: ${{ variables.Configuration }}
 
 - stage: Test
   dependsOn: Build
@@ -104,13 +72,10 @@ stages:
     variables:
       autorestModuleList: $[stageDependencies.Build.Build.outputs['passOutput.autorestModuleList']]
     steps:
-    - powershell: |
-        $var = Get-ChildItem -File -Recurse -Depth 4 -Path src test-module.ps1 | % {$_.DirectoryName}
-        Write-Host "##vso[task.setvariable variable=autorestModuleList]$var"
-    # - template: util/test-steps.yml
-    #   parameters:
-    #     osName: $(OSName)
-    #     testFramework: ${{ variables.TestFramework }}
-    #     testTarget: ${{ variables.TestTarget }}
-    #     configuration: ${{ variables.Configuration }}
-    #     autorestModuleList: ${{ variables.autorestModuleList }}
+    - template: util/test-steps.yml
+      parameters:
+        osName: $(OSName)
+        testFramework: ${{ variables.TestFramework }}
+        testTarget: ${{ variables.TestTarget }}
+        configuration: ${{ variables.Configuration }}
+        autorestModuleList: ${{ variables.autorestModuleList }}

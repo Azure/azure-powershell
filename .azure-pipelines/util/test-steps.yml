@@ -9,9 +9,6 @@ parameters:
 
 
 steps:
-- template: download-build-steps.yml
-  parameters:
-    osName: ${{ parameters.osName }}
 - pwsh: |
     Write-Host "---------------------------------------------------"
     Write-Host ${{parameters.autorestModuleList}}
