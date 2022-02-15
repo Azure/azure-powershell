@@ -42,14 +42,18 @@ stages:
         #   ImageName: ${{ variables.MacOSImage }}
     pool:
       vmImage: $(ImageName)
-
     steps:
     - powershell: |
-        $var = Get-ChildItem -File -Recurse -Depth 4 -Path src test-module.ps1 | % {$_}
-        Write-Host "##vso[task.setvariable variable=autorestModuleList]$var"
-        
-    - $(each image in autorestModuleList):
+        $var = Get-ChildItem -File -Recurse -Depth 4 -Path src test-module.ps1 | % { @{module_name = $_.Directory.BaseName; path = $_.FullName} } | ConvertTo-Json
+        Write-Host "##vso[task.setvariable variable=autorestModuleList;isoutput=true]$var"
+      name: passOutput
+  - job: Runner
+    dependsOn: Build
+    strategy:
+      matrix: $[ dependencies.Build.outputs['passOutput.autorestModuleList'] ]
+    steps:
       - powershell: |
-          Write-Host "---------------------------------------------------"
-          Write-Host $(image)
-          Write-Host "---------------------------------------------------"
+          Write-Host "--------------------------------------------------"
+          Write-Host $(module_name)
+          Write-Host $(path)
+          Write-Host "--------------------------------------------------"
