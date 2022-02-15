@@ -43,13 +43,6 @@ Get-AzDnsForwardingRuleset -ResourceGroupName <String> -VirtualNetworkName <Stri
  [<CommonParameters>]
 ```
 
-### List3
-```
-Get-AzDnsForwardingRuleset -DnsResolverName <String> -OutboundEndpointName <String>
- -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Top <Int32>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Gets a DNS forwarding ruleset properties.
 
@@ -133,21 +126,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DnsResolverName
-The name of the DNS resolver.
-
-```yaml
-Type: System.String
-Parameter Sets: List3
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -179,28 +157,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OutboundEndpointName
-The name of the outbound endpoint for the DNS resolver.
-
-```yaml
-Type: System.String
-Parameter Sets: List3
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List, List2, List3
+Parameter Sets: Get, List, List2
 Aliases:
 
 Required: True
@@ -215,7 +178,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1, List2, List3
+Parameter Sets: Get, List, List1, List2
 Aliases:
 
 Required: False
@@ -231,7 +194,7 @@ If not specified, returns up to 100 results.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: List, List1, List2, List3
+Parameter Sets: List, List1, List2
 Aliases:
 
 Required: False
@@ -297,8 +260,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsForwardingRuleset
-
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ISubResource
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IVirtualNetworkDnsForwardingRuleset
 
