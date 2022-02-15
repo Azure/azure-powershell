@@ -55,7 +55,6 @@ stages:
       name: autorestModuleList
       
   - job: Runner
-    condition: succeeded()
     dependsOn: Build
     pool:
       vmImage: ${{ variables.LinuxImage }}
@@ -63,9 +62,8 @@ stages:
       maxParallel: 2
       matrix: $[ dependencies.Build.outputs['autorestModuleList.autorestModuleList'] ]
     steps:
-    # - checkout: none
+    - checkout: none
     - powershell: |
         Write-Host "--------------------------------------------------"
-        Write-Host $(module_name)
         Write-Host "--------------------------------------------------"
       name: print
