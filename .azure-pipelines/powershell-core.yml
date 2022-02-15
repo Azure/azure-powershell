@@ -62,5 +62,5 @@ stages:
     - checkout: none
     - powershell: |
         Write-Host "--------------------------------------------------"
-        Write-Host $(autorestModuleList)
+        Write-Host $(module_name)
         Write-Host "--------------------------------------------------"
