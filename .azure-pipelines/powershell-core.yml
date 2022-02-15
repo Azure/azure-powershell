@@ -57,6 +57,6 @@ stages:
         Write-Host "--------------------------------------------------"
         Write-Host $(autorestModuleList)
         Write-Host "--------------------------------------------------"
-      # dependsOn: autorestModuleList
-      # strategy:
-      #   matrix: $[ dependencies.autorestModuleList.outputs['autorestModuleList.autorestModuleList'] ]
+      dependsOn: autorestModuleList
+      strategy:
+        matrix: $[ dependencies.autorestModuleList.outputs['autorestModuleList.autorestModuleList'] ]
