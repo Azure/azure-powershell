@@ -55,7 +55,7 @@ stages:
       name: autorestModuleList
       
   - job: Runner
-    dependsOn: autorestModuleList
+    dependsOn: Build
     strategy:
       matrix: $[ dependencies.Build.outputs['autorestModuleList.autorestModuleList'] ]
     steps:
