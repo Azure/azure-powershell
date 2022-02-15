@@ -69,8 +69,8 @@ stages:
         #   ImageName: ${{ variables.MacOSImage }}
     pool:
       vmImage: $(ImageName)
-    # variables:
-    #   autorestModuleList: $[stageDependencies.Build.Build.outputs['passOutput.autorestModuleList']]
+    variables:
+      autorestModuleList: $(passOutput)
     steps:
     - template: util/test-steps.yml
       parameters:
@@ -78,4 +78,4 @@ stages:
         testFramework: ${{ variables.TestFramework }}
         testTarget: ${{ variables.TestTarget }}
         configuration: ${{ variables.Configuration }}
-        autorestModuleList: ${{ passOutput }}
+        autorestModuleList: ${{ variables.autorestModuleList }}
