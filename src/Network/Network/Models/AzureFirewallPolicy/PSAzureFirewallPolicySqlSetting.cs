@@ -13,11 +13,9 @@
 // limitations under the License.
 //
 
-using System.Collections.Generic;
-
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSAzureFirewallPolicySqlSettings
+    public class PSAzureFirewallPolicySqlSetting
     {
         public bool? AllowSqlRedirect { get; set; }
     }

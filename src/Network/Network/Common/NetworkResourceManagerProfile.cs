@@ -1340,17 +1340,21 @@ namespace Microsoft.Azure.Commands.Network
 
                 // Azure Firewall Policies
                 // CNM to MNM
-                cfg.CreateMap<CNM.PSAzureFirewallPolicySqlSettings, MNM.FirewallPolicySQL>();
                 cfg.CreateMap<CNM.PSAzureFirewallPolicyRuleCollectionGroup, MNM.FirewallPolicyRuleCollectionGroup>();
                 cfg.CreateMap<CNM.PSAzureFirewallPolicy, MNM.FirewallPolicy>().ForCtorParam("dnsSettings", opt =>
                 {
                     opt.MapFrom(src => src.DnsSettings == null ? null : new MNM.DnsSettings(src.DnsSettings.Servers, src.DnsSettings.EnableProxy, null));
+                }).AfterMap((src, dst) =>
+                {
+                    dst.Sql = src.SqlSetting == null ? null : new MNM.FirewallPolicySQL(src.SqlSetting.AllowSqlRedirect);
                 });
 
                 // MNM to CNM
-                cfg.CreateMap<MNM.FirewallPolicySQL, CNM.PSAzureFirewallPolicySqlSettings>();
                 cfg.CreateMap<MNM.FirewallPolicyRuleCollectionGroup, CNM.PSAzureFirewallPolicyRuleCollectionGroup>();
-                cfg.CreateMap<MNM.FirewallPolicy, CNM.PSAzureFirewallPolicy>();
+                cfg.CreateMap<MNM.FirewallPolicy, CNM.PSAzureFirewallPolicy>().AfterMap((src, dst) =>
+                {
+                    dst.SqlSetting = src.Sql == null ? null : new CNM.PSAzureFirewallPolicySqlSetting { AllowSqlRedirect = src.Sql.AllowSqlRedirect };
+                });
 
                 // Virtual Network Tap
                 // CNM to MNM

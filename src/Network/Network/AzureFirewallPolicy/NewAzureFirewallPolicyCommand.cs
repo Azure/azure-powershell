@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "The SQL related setting")]
-        public PSAzureFirewallPolicySqlSettings SqlSetting { get; set; }
+        public PSAzureFirewallPolicySqlSetting SqlSetting { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Commands.Network
                 ThreatIntelWhitelist = this.ThreatIntelWhitelist,
                 BasePolicy = BasePolicy != null ? new Microsoft.Azure.Management.Network.Models.SubResource(BasePolicy) : null,
                 DnsSettings = this.DnsSetting,
-                SqlSettings = this.SqlSetting,
+                SqlSetting = this.SqlSetting,
                 Sku = new PSAzureFirewallPolicySku
                 {
                     Tier = this.SkuTier ?? MNM.FirewallPolicySkuTier.Standard

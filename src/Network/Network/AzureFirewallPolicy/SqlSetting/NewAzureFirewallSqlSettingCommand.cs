@@ -18,7 +18,7 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicySqlSetting", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallPolicySqlSettings))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicySqlSetting", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallPolicySqlSetting))]
     public class NewAzureFirewallSqlSettingCommand : NetworkBaseCmdlet
     {
 
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            var sqlSetting = new PSAzureFirewallPolicySqlSettings
+            var sqlSetting = new PSAzureFirewallPolicySqlSetting
             {
                 AllowSqlRedirect = this.AllowSqlRedirect.IsPresent ? true : (bool?)null,
             };

@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSAzureFirewallPolicyDnsSettings DnsSettings { get; set; }
 
-        public PSAzureFirewallPolicySqlSettings SqlSettings { get; set; }
+        public PSAzureFirewallPolicySqlSetting SqlSetting { get; set; }
 
         public PSAzureFirewallPolicyIntrusionDetection IntrusionDetection { get; set; }
 
