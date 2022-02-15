@@ -25,20 +25,6 @@ pr:
 stages:
 - stage: "Build"
   jobs:
-  - job: generator
-    steps:
-    - bash: echo "##vso[task.setVariable variable=legs;isOutput=true]{'a':{'myvar':'A'}, 'b':{'myvar':'B'}}"
-      name: mtrx
-  - job: runner
-    dependsOn: generator
-    strategy:
-      matrix: $[ dependencies.generator.outputs['mtrx.legs'] ]
-    steps:
-    - powershell: |
-        Write-Host "--------------------------------------------------"
-        Write-Host $(myvar)
-        Write-Host "--------------------------------------------------"
-
   - job: Build
     displayName: Build
     condition: succeeded()
@@ -57,10 +43,12 @@ stages:
     pool:
       vmImage: ${{ variables.LinuxImage }}
     steps:
-    - powershell: |
-        $var = Get-ChildItem -File -Recurse -Depth 4 -Path src test-module.ps1 | % { @{module_name = $_.Directory.BaseName; path = $_.FullName} } | ConvertTo-Json
-        Write-Host "##vso[task.setvariable variable=autorestModuleList;isOutput=true]{'a':{'module_name':'A'}, 'b':{'module_name':'B'}}"
-      name: passOutput
+    - bash: echo "##vso[task.setVariable variable=legs;isOutput=true]{'a':{'myvar':'A'}, 'b':{'myvar':'B'}}"
+      name: mtrx
+    # - powershell: |
+    #     $var = Get-ChildItem -File -Recurse -Depth 4 -Path src test-module.ps1 | % { @{module_name = $_.Directory.BaseName; path = $_.FullName} } | ConvertTo-Json
+    #     Write-Host "##vso[task.setvariable variable=autorestModuleList;isOutput=true]{'a':{'module_name':'A'}, 'b':{'module_name':'B'}}"
+    #   name: passOutput
   - job: Runner
     dependsOn: Build
     strategy:
