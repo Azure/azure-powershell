@@ -35,6 +35,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
+        [Parameter(Mandatory = false,
+            HelpMessage = "specifying whether protection against purge is enabled for this managed HSM pool. The setting is effective only if soft delete is also enabled. Enabling this functionality is irreversible")]
+        public SwitchParameter EnablePurgeProtection { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -64,11 +67,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
             }
             catch
             {
-                existingResource = null;
-            }
-
-            if (existingResource == null)
-            {
                 throw new Exception(string.Format(Resources.HsmNotFound, this.Name, this.ResourceGroupName));
             }
 
@@ -76,8 +74,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
             {
                 var result = KeyVaultManagementClient.UpdateManagedHsm(existingResource, 
                     new VaultCreationOrUpdateParameters 
-                    { 
-                        Tags = Tag
+                    {
+                        // false is not accepted
+                        EnablePurgeProtection = this.EnablePurgeProtection.IsPresent ? (true as bool?) : null,
+                        Tags = this.Tag
                     }, null);
                 WriteObject(result);
             }

@@ -14,9 +14,9 @@ Creates a managed HSM.
 
 ```
 New-AzKeyVaultManagedHsm [-Name] <String> [-ResourceGroupName] <String> [-Location] <String>
- [-Administrator] <String[]> [-Sku <String>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
- [<CommonParameters>]
+ [-Administrator] <String[]> [-Sku <String>] [-SoftDeleteRetentionInDays <Int32>] [-EnablePurgeProtection]
+ [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -102,6 +102,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnablePurgeProtection
+specifying whether protection against purge is enabled for this managed HSM pool. The setting is effective only if soft delete is also enabled. Enabling this functionality is irreversible.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 Specifies the Azure region in which to create the key vault.
 Use the command Get-AzResourceProvider with the ProviderNamespace parameter to see your choices.
@@ -163,6 +178,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SoftDeleteRetentionInDays
+Specifies how long the deleted managed hsm pool is retained, and how long until the managed hsm pool in the deleted state can be purged. The default is 90 days.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

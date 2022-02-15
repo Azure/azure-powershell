@@ -14,22 +14,23 @@ Update the state of an Azure managed HSM.
 
 ### UpdateByNameParameterSet (Default)
 ```
-Update-AzKeyVaultManagedHsm -Name <String> -ResourceGroupName <String> [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
+Update-AzKeyVaultManagedHsm -Name <String> -ResourceGroupName <String> [-EnablePurgeProtection]
+ [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
  [<CommonParameters>]
 ```
 
 ### UpdateByInputObjectParameterSet
 ```
-Update-AzKeyVaultManagedHsm -InputObject <PSManagedHsm> [-Tag <Hashtable>]
+Update-AzKeyVaultManagedHsm -InputObject <PSManagedHsm> [-EnablePurgeProtection] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
  [<CommonParameters>]
 ```
 
 ### UpdateByResourceIdParameterSet
 ```
-Update-AzKeyVaultManagedHsm -ResourceId <String> [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
+Update-AzKeyVaultManagedHsm -ResourceId <String> [-EnablePurgeProtection] [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,6 +80,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnablePurgeProtection
+specifying whether protection against purge is enabled for this managed HSM pool. The setting is effective only if soft delete is also enabled. Enabling this functionality is irreversible
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

@@ -19,9 +19,23 @@ Remove-AzKeyVaultManagedHsm [-Name] <String> [[-ResourceGroupName] <String>] [-F
  [<CommonParameters>]
 ```
 
+### RemoveDeletedManagedHsmByName
+```
+Remove-AzKeyVaultManagedHsm [-Name] <String> [-Location] <String> [-InRemovedState] [-Force] [-AsJob]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
+ [<CommonParameters>]
+```
+
 ### RemoveManagedHsmByInputObject
 ```
 Remove-AzKeyVaultManagedHsm [-InputObject] <PSManagedHsm> [-Force] [-AsJob] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
+ [<CommonParameters>]
+```
+
+### RemoveDeletedManagedHsmByInputObject
+```
+Remove-AzKeyVaultManagedHsm [-InputObject] <PSManagedHsm> [-InRemovedState] [-Force] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
  [<CommonParameters>]
 ```
@@ -30,6 +44,13 @@ Remove-AzKeyVaultManagedHsm [-InputObject] <PSManagedHsm> [-Force] [-AsJob] [-Pa
 ```
 Remove-AzKeyVaultManagedHsm [-ResourceId] <String> [-Force] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
+ [<CommonParameters>]
+```
+
+### RemoveDeletedManagedHsmByResourceId
+```
+Remove-AzKeyVaultManagedHsm [-ResourceId] <String> [-Location] <String> [-InRemovedState] [-Force] [-AsJob]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
  [<CommonParameters>]
 ```
 
@@ -112,7 +133,7 @@ Managed HSM object to be deleted.
 
 ```yaml
 Type: Microsoft.Azure.Commands.KeyVault.Models.PSManagedHsm
-Parameter Sets: RemoveManagedHsmByInputObject
+Parameter Sets: RemoveManagedHsmByInputObject, RemoveDeletedManagedHsmByInputObject
 Aliases:
 
 Required: True
@@ -122,12 +143,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -InRemovedState
+Remove the previously deleted managed HSM pool permanently.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: RemoveDeletedManagedHsmByName, RemoveDeletedManagedHsmByInputObject, RemoveDeletedManagedHsmByResourceId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+The location of the deleted managed HSM pool.
+
+```yaml
+Type: System.String
+Parameter Sets: RemoveDeletedManagedHsmByName, RemoveDeletedManagedHsmByResourceId
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the managed HSM to remove.
 
 ```yaml
 Type: System.String
-Parameter Sets: RemoveManagedHsmByName
+Parameter Sets: RemoveManagedHsmByName, RemoveDeletedManagedHsmByName
 Aliases: HsmName
 
 Required: True
@@ -173,7 +224,7 @@ ManagedHsm Resource Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: RemoveManagedHsmByResourceId
+Parameter Sets: RemoveManagedHsmByResourceId, RemoveDeletedManagedHsmByResourceId
 Aliases:
 
 Required: True

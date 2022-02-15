@@ -12,9 +12,22 @@ Get managed HSMs.
 
 ## SYNTAX
 
+### GetManagedHsm
 ```
 Get-AzKeyVaultManagedHsm [[-Name] <String>] [[-ResourceGroupName] <String>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-SubscriptionId <String>] [<CommonParameters>]
+```
+
+### GetDeletedManagedHsm
+```
+Get-AzKeyVaultManagedHsm [-Name] <String> [-Location] <String> [-InRemovedState] [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-SubscriptionId <String>] [<CommonParameters>]
+```
+
+### ListDeletedManagedHsms
+```
+Get-AzKeyVaultManagedHsm [-InRemovedState] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -87,15 +100,57 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InRemovedState
+Specifies whether to show the previously deleted managed HSM pool in the output.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: GetDeletedManagedHsm, ListDeletedManagedHsms
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+The location of the deleted managed HSM pool.
+
+```yaml
+Type: System.String
+Parameter Sets: GetDeletedManagedHsm
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Name
 HSM name. Cmdlet constructs the FQDN of a HSM based on the name and currently selected environment.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: GetManagedHsm
 Aliases: HsmName
 
 Required: False
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: True
+```
+
+```yaml
+Type: System.String
+Parameter Sets: GetDeletedManagedHsm
+Aliases: HsmName
+
+Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -107,7 +162,7 @@ Specifies the name of the resource group associated with the managed HSM being q
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: GetManagedHsm
 Aliases:
 
 Required: False
@@ -161,6 +216,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSManagedHsm
+
+### Microsoft.Azure.Commands.KeyVault.Models.PSDeletedManagedHsm
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultIdentityItem
 

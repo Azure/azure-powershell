@@ -18,5 +18,19 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-ManagedHsmCRUD");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManagedHsmSoftDelete()
+        {
+            TestRunner.RunTestScript("Test-ManagedHsmSoftDelete");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManagedHsmPurgeProtection()
+        {
+            TestRunner.RunTestScript("Test-ManagedHsmPurgeProtection");
+        }
     }
 }
