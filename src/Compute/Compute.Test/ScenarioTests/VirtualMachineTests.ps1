@@ -5591,7 +5591,7 @@ function Test-VirtualMachineHibernate
 
 <#
 .SYNOPSIS
-Test the VM vCPU feature in New-AzVm, and Update-AzVm.
+Test the VM vCPU feature in New-AzVm, New-AzVmConfig, and Update-AzVm.
 #>
 function Test-VMvCPUFeatures
 {
