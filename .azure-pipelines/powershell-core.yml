@@ -50,7 +50,6 @@ stages:
   - job: Runner
     dependsOn: Build
     strategy:
-      parallel: 5
       matrix: $[ dependencies.Build.outputs['passOutput.autorestModuleList'] ]
     steps:
     - powershell: |
