@@ -55,9 +55,8 @@ stages:
       name: autorestModuleList
     - powershell: |
         Write-Host "--------------------------------------------------"
-        Write-Host $(module_name)
+        Write-Host $(autorestModuleList)
         Write-Host "--------------------------------------------------"
-      dependsOn: autorestModuleList
-      strategy:
-        matrix: $[ dependencies.autorestModuleList.outputs['autorestModuleList.autorestModuleList'] ]
-      tasks:
+      # dependsOn: autorestModuleList
+      # strategy:
+      #   matrix: $[ dependencies.autorestModuleList.outputs['autorestModuleList.autorestModuleList'] ]
