@@ -43,16 +43,16 @@ stages:
     pool:
       vmImage: ${{ variables.LinuxImage }}
     steps:
-    - bash: echo "##vso[task.setVariable variable=legs;isOutput=true]{'a':{'myvar':'A'}, 'b':{'myvar':'B'}}"
+    # - bash: echo "##vso[task.setVariable variable=legs;isOutput=true]{'a':{'myvar':'A'}, 'b':{'myvar':'B'}}"
+    #   name: mtrx
+    - powershell: |
+        $var = Get-ChildItem -File -Recurse -Depth 4 -Path src test-module.ps1 | % { @{module_name = $_.Directory.BaseName; path = $_.FullName} } | ConvertTo-Json
+        Write-Host "##vso[task.setvariable variable=autorestModuleList;isOutput=true]{'a':{'module_name':'A'}, 'b':{'module_name':'B'}}"
       name: mtrx
-    # - powershell: |
-    #     $var = Get-ChildItem -File -Recurse -Depth 4 -Path src test-module.ps1 | % { @{module_name = $_.Directory.BaseName; path = $_.FullName} } | ConvertTo-Json
-    #     Write-Host "##vso[task.setvariable variable=autorestModuleList;isOutput=true]{'a':{'module_name':'A'}, 'b':{'module_name':'B'}}"
-    #   name: passOutput
   - job: Runner
     dependsOn: Build
     strategy:
-      matrix: $[ dependencies.Build.outputs['passOutput.autorestModuleList'] ]
+      matrix: $[ dependencies.Build.outputs['mtrx.autorestModuleList'] ]
     steps:
     - powershell: |
         Write-Host "--------------------------------------------------"
