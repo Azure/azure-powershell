@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.AlertsManagement.OutputModels;
 using Microsoft.Azure.Management.AlertsManagement.Models;
+using System;
 
 namespace Microsoft.Azure.Commands.AlertsManagement
 {
@@ -57,90 +58,112 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         public string ResourceGroupName { get; set; }
 
 
+        /// <summary>
+        /// Resource Id of Alert Processing rule
+        /// </summary>
+        [Parameter(Mandatory = true,
+                   ParameterSetName = ResourceIdParameterSet,
+                   HelpMessage = "Get Alert Processing rule by resource id.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
         #endregion
 
         protected override void ProcessRecordInternal()
         {
-            switch (ParameterSetName)
+            try
             {
-                case ListAlertProcessingRulesParameterSet:
-                case ListAlertProcessingRulesByResourceGroupParameterSet:
-                    IPage<AlertProcessingRule> pageResult = new Page<AlertProcessingRule>();
-                    List<AlertProcessingRule> resultList = new List<AlertProcessingRule>();
-                    bool listByResourceGroup = false;
+                switch (ParameterSetName)
+                {
+                    case ListAlertProcessingRulesParameterSet:
+                    case ListAlertProcessingRulesByResourceGroupParameterSet:
+                        IPage<AlertProcessingRule> pageResult = new Page<AlertProcessingRule>();
+                        List<AlertProcessingRule> resultList = new List<AlertProcessingRule>();
+                        bool listByResourceGroup = false;
 
-                    if (string.IsNullOrWhiteSpace(ResourceGroupName))
-                    {
-                        pageResult = this.AlertsManagementClient.AlertProcessingRules.ListBySubscriptionWithHttpMessagesAsync(
-                        ).Result.Body;
-
-                        listByResourceGroup = false;
-                    }
-                    else
-                    {
-                        pageResult = this.AlertsManagementClient.AlertProcessingRules.ListByResourceGroupWithHttpMessagesAsync(
-                            resourceGroupName: ResourceGroupName
-                        ).Result.Body;
-
-                        listByResourceGroup = true;
-                    }
-
-                    // Deal with paging in response
-                    ulong first = MyInvocation.BoundParameters.ContainsKey("First") ? this.PagingParameters.First : ulong.MaxValue;
-                    ulong skip = MyInvocation.BoundParameters.ContainsKey("Skip") ? this.PagingParameters.Skip : 0;
-
-                    // Any items before this count should be return
-                    ulong lastCount = MyInvocation.BoundParameters.ContainsKey("First") ? skip + first : ulong.MaxValue;
-                    ulong currentCount = 0;
-                    var nextPageLink = pageResult.NextPageLink;
-
-                    do
-                    {
-                        List<AlertProcessingRule> tempList = pageResult.ToList();
-                        if (currentCount + (ulong)tempList.Count - 1 < skip)
+                        if (string.IsNullOrWhiteSpace(ResourceGroupName))
                         {
-                            // skip the whole chunk if they are all in skip
-                            currentCount += (ulong)tempList.Count;
+                            pageResult = this.AlertsManagementClient.AlertProcessingRules.ListBySubscriptionWithHttpMessagesAsync(
+                            ).Result.Body;
+
+                            listByResourceGroup = false;
                         }
                         else
                         {
-                            foreach (AlertProcessingRule currentActionRule in tempList)
-                            {
-                                // not return "skip" count of items in the begin, and only return "first" count of items after that.
-                                if (currentCount >= skip && currentCount < lastCount)
-                                {
-                                    resultList.Add(currentActionRule);
-                                }
-                                currentCount++;
-                                if (currentCount >= lastCount)
-                                {
-                                    break;
-                                }
-                            }
+                            pageResult = this.AlertsManagementClient.AlertProcessingRules.ListByResourceGroupWithHttpMessagesAsync(
+                                resourceGroupName: ResourceGroupName
+                            ).Result.Body;
+
+                            listByResourceGroup = true;
                         }
 
-                        if (!string.IsNullOrEmpty(nextPageLink))
+                        // Deal with paging in response
+                        ulong first = MyInvocation.BoundParameters.ContainsKey("First") ? this.PagingParameters.First : ulong.MaxValue;
+                        ulong skip = MyInvocation.BoundParameters.ContainsKey("Skip") ? this.PagingParameters.Skip : 0;
+
+                        // Any items before this count should be return
+                        ulong lastCount = MyInvocation.BoundParameters.ContainsKey("First") ? skip + first : ulong.MaxValue;
+                        ulong currentCount = 0;
+                        var nextPageLink = pageResult.NextPageLink;
+
+                        do
                         {
-                            if (listByResourceGroup)
+                            List<AlertProcessingRule> tempList = pageResult.ToList();
+                            if (currentCount + (ulong)tempList.Count - 1 < skip)
                             {
-                                pageResult = this.AlertsManagementClient.AlertProcessingRules.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink).Result.Body;
+                                // skip the whole chunk if they are all in skip
+                                currentCount += (ulong)tempList.Count;
                             }
                             else
                             {
-                                pageResult = this.AlertsManagementClient.AlertProcessingRules.ListBySubscriptionNextWithHttpMessagesAsync(nextPageLink).Result.Body;
+                                foreach (AlertProcessingRule currentActionRule in tempList)
+                                {
+                                    // not return "skip" count of items in the begin, and only return "first" count of items after that.
+                                    if (currentCount >= skip && currentCount < lastCount)
+                                    {
+                                        resultList.Add(currentActionRule);
+                                    }
+                                    currentCount++;
+                                    if (currentCount >= lastCount)
+                                    {
+                                        break;
+                                    }
+                                }
                             }
-                            nextPageLink = pageResult.NextPageLink;
-                        }
 
-                    } while (!string.IsNullOrEmpty(nextPageLink) && currentCount < lastCount);
+                            if (!string.IsNullOrEmpty(nextPageLink))
+                            {
+                                if (listByResourceGroup)
+                                {
+                                    pageResult = this.AlertsManagementClient.AlertProcessingRules.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink).Result.Body;
+                                }
+                                else
+                                {
+                                    pageResult = this.AlertsManagementClient.AlertProcessingRules.ListBySubscriptionNextWithHttpMessagesAsync(nextPageLink).Result.Body;
+                                }
+                                nextPageLink = pageResult.NextPageLink;
+                            }
 
-                    WriteObject(resultList.Select((r) => TransformOutput(r)), enumerateCollection: true);
-                    break;
+                        } while (!string.IsNullOrEmpty(nextPageLink) && currentCount < lastCount);
 
-                case AlertProcessingRuleByNameParameterSet:
-                    var rulebyName = this.AlertsManagementClient.AlertProcessingRules.GetByNameWithHttpMessagesAsync(ResourceGroupName, Name).Result.Body;
-                    WriteObject(sendToPipeline: TransformOutput(rulebyName));
-                    break;
+                        WriteObject(resultList.Select((r) => TransformOutput(r)), enumerateCollection: true);
+                        break;
+
+                    case AlertProcessingRuleByNameParameterSet:
+                        var rulebyName = this.AlertsManagementClient.AlertProcessingRules.GetByNameWithHttpMessagesAsync(ResourceGroupName, Name).Result.Body;
+                        WriteObject(sendToPipeline: TransformOutput(rulebyName));
+                        break;
+
+                    case ResourceIdParameterSet:
+                        ExtractedInfo info = CommonUtils.ExtractFromActionRuleResourceId(ResourceId);
+                        var ruleById = this.AlertsManagementClient.AlertProcessingRules.GetByNameWithHttpMessagesAsync(info.ResourceGroupName, info.Resource).Result.Body;
+                        WriteObject(sendToPipeline: TransformOutput(ruleById));
+                        break;
+                }
+            }
+            catch (Exception e)
+            {
+                throw (e);
             }
         }
 

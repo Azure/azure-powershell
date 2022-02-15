@@ -88,58 +88,65 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         protected override void ProcessRecordInternal()
         {
             PSAlertProcessingRule updatedAlertProcessingRule = new PSAlertProcessingRule();
-            switch (ParameterSetName)
+            try
             {
-                case ByNameSimplifiedPatchParameterSet:
-                    if (ShouldProcess(
-                        target: string.Format(Resources.TargetWithRG, this.Name, this.ResourceGroupName),
-                        action: Resources.CreateOrUpdateAlertProcessingRule_Action))
-                    {
-                        updatedAlertProcessingRule = new PSAlertProcessingRule(this.AlertsManagementClient.AlertProcessingRules.UpdateWithHttpMessagesAsync(
-                        resourceGroupName: ResourceGroupName,
-                        alertProcessingRuleName: Name,
-                        alertProcessingRulePatch: new PatchObject(
-                                enabled: Enabled != null ? bool.Parse(Enabled) : (bool?)null,
-                                tags: ParseTags()
-                            )
-                        ).Result.Body);
-                    }
-                    break;
-
-                case ByInputObjectParameterSet:
-                    if (ShouldProcess(
-                        target: string.Format(Resources.Target, this.InputObject.Id),
-                        action: Resources.CreateOrUpdateAlertProcessingRule_Action))
-                    {
-                        var extractedInfo = CommonUtils.ExtractFromActionRuleResourceId(InputObject.Id);
-                        updatedAlertProcessingRule = new PSAlertProcessingRule(this.AlertsManagementClient.AlertProcessingRules.UpdateWithHttpMessagesAsync(
-                            resourceGroupName: extractedInfo.ResourceGroupName,
-                            alertProcessingRuleName: extractedInfo.Resource,
-                            alertProcessingRulePatch: new PatchObject(
-                                enabled: Enabled != null ? bool.Parse(Enabled) : (bool?)null,
-                                    tags: ParseTags()
-
-                                )
-                            ).Result.Body);
-                    }
-                    break;
-
-                case ByResourceIdParameterSet:
-                    if (ShouldProcess(
-                        target: string.Format(Resources.Target, this.ResourceId),
-                        action: Resources.CreateOrUpdateAlertProcessingRule_Action))
-                    {
-                        var info = CommonUtils.ExtractFromActionRuleResourceId(ResourceId);
-                        updatedAlertProcessingRule = new PSAlertProcessingRule(this.AlertsManagementClient.AlertProcessingRules.UpdateWithHttpMessagesAsync(
-                            resourceGroupName: info.ResourceGroupName,
-                            alertProcessingRuleName: info.Resource,
+                switch (ParameterSetName)
+                {
+                    case ByNameSimplifiedPatchParameterSet:
+                        if (ShouldProcess(
+                            target: string.Format(Resources.TargetWithRG, this.Name, this.ResourceGroupName),
+                            action: Resources.CreateOrUpdateAlertProcessingRule_Action))
+                        {
+                            updatedAlertProcessingRule = new PSAlertProcessingRule(this.AlertsManagementClient.AlertProcessingRules.UpdateWithHttpMessagesAsync(
+                            resourceGroupName: ResourceGroupName,
+                            alertProcessingRuleName: Name,
                             alertProcessingRulePatch: new PatchObject(
                                     enabled: Enabled != null ? bool.Parse(Enabled) : (bool?)null,
                                     tags: ParseTags()
                                 )
                             ).Result.Body);
-                    }
-                    break;
+                        }
+                        break;
+
+                    case ByInputObjectParameterSet:
+                        if (ShouldProcess(
+                            target: string.Format(Resources.Target, this.InputObject.Id),
+                            action: Resources.CreateOrUpdateAlertProcessingRule_Action))
+                        {
+                            var extractedInfo = CommonUtils.ExtractFromActionRuleResourceId(InputObject.Id);
+                            updatedAlertProcessingRule = new PSAlertProcessingRule(this.AlertsManagementClient.AlertProcessingRules.UpdateWithHttpMessagesAsync(
+                                resourceGroupName: extractedInfo.ResourceGroupName,
+                                alertProcessingRuleName: extractedInfo.Resource,
+                                alertProcessingRulePatch: new PatchObject(
+                                    enabled: Enabled != null ? bool.Parse(Enabled) : (bool?)null,
+                                        tags: ParseTags()
+
+                                    )
+                                ).Result.Body);
+                        }
+                        break;
+
+                    case ByResourceIdParameterSet:
+                        if (ShouldProcess(
+                            target: string.Format(Resources.Target, this.ResourceId),
+                            action: Resources.CreateOrUpdateAlertProcessingRule_Action))
+                        {
+                            var info = CommonUtils.ExtractFromActionRuleResourceId(ResourceId);
+                            updatedAlertProcessingRule = new PSAlertProcessingRule(this.AlertsManagementClient.AlertProcessingRules.UpdateWithHttpMessagesAsync(
+                                resourceGroupName: info.ResourceGroupName,
+                                alertProcessingRuleName: info.Resource,
+                                alertProcessingRulePatch: new PatchObject(
+                                        enabled: Enabled != null ? bool.Parse(Enabled) : (bool?)null,
+                                        tags: ParseTags()
+                                    )
+                                ).Result.Body);
+                        }
+                        break;
+                }
+            }
+            catch (System.Exception e)
+            {
+                throw (e);
             }
 
             WriteObject(sendToPipeline: updatedAlertProcessingRule);
@@ -147,15 +154,15 @@ namespace Microsoft.Azure.Commands.AlertsManagement
 
         private IDictionary<string, string> ParseTags()
         {
-            Dictionary<string, string> tagsDictionary = new Dictionary<string, string>();
-            if(Tags != null)
+            if (Tags == null)
             {
-                foreach (var key in Tags.Keys)
-                {
-                    tagsDictionary.Add((string)key, (string)Tags[key]);
-                }
+                return null;
             }
-           
+            Dictionary<string, string> tagsDictionary = new Dictionary<string, string>();
+            foreach (var key in Tags.Keys)
+            {
+                tagsDictionary.Add((string)key, (string)Tags[key]);
+            }
             return tagsDictionary;
         }
     }

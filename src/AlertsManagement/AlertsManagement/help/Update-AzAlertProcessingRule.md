@@ -136,6 +136,9 @@ Accept wildcard characters: False
 
 ### -Tags
 Alert Processing rule tags
+For eg.
+@{"tag1" = "key1";"tag2" = "key2"}
+Use {} to clear existing tags. 
 
 ```yaml
 Type: System.Collections.Hashtable

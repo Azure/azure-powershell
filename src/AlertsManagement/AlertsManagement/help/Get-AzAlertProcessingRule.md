@@ -18,6 +18,11 @@ Get-AzAlertProcessingRule [-Name <String>] [-ResourceGroupName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### ResourceId
+```
+Get-AzActionRule -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ### ListAlertProcessingRulesByResourceGroupName
 ```
 Get-AzAlertProcessingRule -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]

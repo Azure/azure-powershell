@@ -19,6 +19,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.AlertsManagement.OutputModels;
 using Microsoft.Azure.Management.AlertsManagement.Models;
 using Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement.Properties;
+using System;
 
 namespace Microsoft.Azure.Commands.AlertsManagement
 {
@@ -83,61 +84,70 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         protected override void ProcessRecordInternal()
         {
             bool? isDeleted = false;
-            switch (ParameterSetName)
+            try
             {
-                case ByResourceIdParameterSet:
-                    if (ShouldProcess(
-                        target: string.Format(Resources.Target, this.ResourceId),
-                        action: Resources.RemoveAlertProcessingRule_Action))
-                    {
-                        var extractedInfo = CommonUtils.ExtractFromActionRuleResourceId(ResourceId);
-                        isDeleted = this.AlertsManagementClient.AlertProcessingRules.DeleteWithHttpMessagesAsync(
-                            resourceGroupName: extractedInfo.ResourceGroupName,
-                            alertProcessingRuleName: extractedInfo.Resource)
-                            .Result.Response.IsSuccessStatusCode;
-                    }
 
-                    if (PassThru.IsPresent)
-                    {
-                        WriteObject(isDeleted);
-                    }
-                    break;
+              
+                switch (ParameterSetName)
+                {
+                    case ByResourceIdParameterSet:
+                        if (ShouldProcess(
+                            target: string.Format(Resources.Target, this.ResourceId),
+                            action: Resources.RemoveAlertProcessingRule_Action))
+                        {
+                            var extractedInfo = CommonUtils.ExtractFromActionRuleResourceId(ResourceId);
+                            isDeleted = this.AlertsManagementClient.AlertProcessingRules.DeleteWithHttpMessagesAsync(
+                                resourceGroupName: extractedInfo.ResourceGroupName,
+                                alertProcessingRuleName: extractedInfo.Resource)
+                                .Result.Response.IsSuccessStatusCode;
+                        }
+
+                        if (PassThru.IsPresent)
+                        {
+                            WriteObject(isDeleted);
+                        }
+                        break;
                 
-                case ByInputObjectParameterSet:
-                    if (ShouldProcess(
-                        target: string.Format(Resources.Target, this.InputObject.Id),
-                        action: Resources.RemoveAlertProcessingRule_Action))
-                    {
-                        var extractedInfo = CommonUtils.ExtractFromActionRuleResourceId(InputObject.Id);
-                        isDeleted = this.AlertsManagementClient.AlertProcessingRules.DeleteWithHttpMessagesAsync(
-                            resourceGroupName: extractedInfo.ResourceGroupName,
-                            alertProcessingRuleName: extractedInfo.Resource)
-                            .Result.Response.IsSuccessStatusCode;
-                    }
+                    case ByInputObjectParameterSet:
+                        if (ShouldProcess(
+                            target: string.Format(Resources.Target, this.InputObject.Id),
+                            action: Resources.RemoveAlertProcessingRule_Action))
+                        {
+                            var extractedInfo = CommonUtils.ExtractFromActionRuleResourceId(InputObject.Id);
+                            isDeleted = this.AlertsManagementClient.AlertProcessingRules.DeleteWithHttpMessagesAsync(
+                                resourceGroupName: extractedInfo.ResourceGroupName,
+                                alertProcessingRuleName: extractedInfo.Resource)
+                                .Result.Response.IsSuccessStatusCode;
+                        }
 
-                    if (PassThru.IsPresent)
-                    {
-                        WriteObject(isDeleted);
-                    }
+                        if (PassThru.IsPresent)
+                        {
+                            WriteObject(isDeleted);
+                        }
 
-                    break;
+                        break;
                 
-                case ByNameParameterSet:
-                    if (ShouldProcess(
-                       target: string.Format(Resources.TargetWithRG, this.Name, this.ResourceGroupName),
-                       action: Resources.RemoveAlertProcessingRule_Action))
-                    {
-                        isDeleted = this.AlertsManagementClient.AlertProcessingRules.DeleteWithHttpMessagesAsync(
-                            resourceGroupName: ResourceGroupName,
-                            alertProcessingRuleName: Name)
-                            .Result.Response.IsSuccessStatusCode;
-                    }
+                    case ByNameParameterSet:
+                        if (ShouldProcess(
+                           target: string.Format(Resources.TargetWithRG, this.Name, this.ResourceGroupName),
+                           action: Resources.RemoveAlertProcessingRule_Action))
+                        {
+                            isDeleted = this.AlertsManagementClient.AlertProcessingRules.DeleteWithHttpMessagesAsync(
+                                resourceGroupName: ResourceGroupName,
+                                alertProcessingRuleName: Name)
+                                .Result.Response.IsSuccessStatusCode;
+                        }
 
-                    if (PassThru.IsPresent)
-                    {
-                        WriteObject(isDeleted);
-                    }
-                    break;
+                        if (PassThru.IsPresent)
+                        {
+                            WriteObject(isDeleted);
+                        }
+                        break;
+                }
+            }
+            catch (Exception e)
+            {
+                throw (e);
             }
         }
     }

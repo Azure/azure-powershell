@@ -447,107 +447,113 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                 target: string.Format(Resources.TargetWithRG, this.Name, this.ResourceGroupName),
                 action: Resources.CreateOrUpdateAlertProcessingRule_Action))
             {
-                switch (ParameterSetName)
+                try
                 {
-                    case BySimplifiedFormatActionGroupAlertProcessingRuleParameterSet:
-                        if (AlertProcessingRuleType != "AddActionGroups")
-                        {
-                            throw new PSInvalidOperationException(string.Format(Resources.IncorrectActionRuleType_Exception, "AddActionGroups"));
-                        }
+                    switch (ParameterSetName)
+                    {
+                        case BySimplifiedFormatActionGroupAlertProcessingRuleParameterSet:
+                            if (AlertProcessingRuleType != "AddActionGroups")
+                            {
+                                throw new PSInvalidOperationException(string.Format(Resources.IncorrectActionRuleType_Exception, "AddActionGroups"));
+                            }
 
-                        // Create Alert Processing Rule
-                        AlertProcessingRule actionGroupAR = new AlertProcessingRule(
-                            location: "Global",
-                            tags: ParseTags(),
-                            properties: new AlertProcessingRuleProperties(
-                                scopes: Scopes,
-                                actions: ParseAddActionGroupsActions(),
-                                conditions: ParseConditions(),
-                                schedule: ValidateParseSchedule(),                     
-                                description: Description,
-                                enabled: Enabled == null ? true : bool.Parse(Enabled)
-                            )
-                        );
+                            // Create Alert Processing Rule
+                            AlertProcessingRule actionGroupAR = new AlertProcessingRule(
+                                location: "Global",
+                                tags: ParseTags(),
+                                properties: new AlertProcessingRuleProperties(
+                                    scopes: Scopes,
+                                    actions: ParseAddActionGroupsActions(),
+                                    conditions: ParseConditions(),
+                                    schedule: ValidateParseSchedule(),
+                                    description: Description,
+                                    enabled: Enabled == null ? true : bool.Parse(Enabled)
+                                )
+                            );
 
-                        result = this.AlertsManagementClient.AlertProcessingRules.CreateOrUpdateWithHttpMessagesAsync(
-                            resourceGroupName: ResourceGroupName, alertProcessingRuleName: Name, alertProcessingRule: actionGroupAR).Result.Body;
-                        break;
+                            result = this.AlertsManagementClient.AlertProcessingRules.CreateOrUpdateWithHttpMessagesAsync(
+                                resourceGroupName: ResourceGroupName, alertProcessingRuleName: Name, alertProcessingRule: actionGroupAR).Result.Body;
+                            break;
 
-                    case BySimplifiedFormatSuppressionAlertProcessingRuleParameterSet:
+                        case BySimplifiedFormatSuppressionAlertProcessingRuleParameterSet:
 
-                        if (AlertProcessingRuleType != "RemoveAllActionGroups")
-                        {
-                            throw new PSInvalidOperationException(string.Format(Resources.IncorrectActionRuleType_Exception, "RemoveAllActionGroups"));
-                        }
+                            if (AlertProcessingRuleType != "RemoveAllActionGroups")
+                            {
+                                throw new PSInvalidOperationException(string.Format(Resources.IncorrectActionRuleType_Exception, "RemoveAllActionGroups"));
+                            }
 
-                        // Create Action Rule
-                        AlertProcessingRule suppressionAR = new AlertProcessingRule(
-                            location: "Global",
-                            tags: ParseTags(),
-                            properties: new AlertProcessingRuleProperties(
-                                scopes: Scopes,
-                                actions: ParseRemoveAllActionGroupsActions(),
-                                conditions: ParseConditions(),
-                                schedule: ValidateParseSchedule(),
-                                description: Description,
-                                enabled:  Enabled == null ? true : bool.Parse(Enabled)
-                            )
-                        );
+                            // Create Action Rule
+                            AlertProcessingRule suppressionAR = new AlertProcessingRule(
+                                location: "Global",
+                                tags: ParseTags(),
+                                properties: new AlertProcessingRuleProperties(
+                                    scopes: Scopes,
+                                    actions: ParseRemoveAllActionGroupsActions(),
+                                    conditions: ParseConditions(),
+                                    schedule: ValidateParseSchedule(),
+                                    description: Description,
+                                    enabled: Enabled == null ? true : bool.Parse(Enabled)
+                                )
+                            );
 
-                        result = this.AlertsManagementClient.AlertProcessingRules.CreateOrUpdateWithHttpMessagesAsync(
-                            resourceGroupName: ResourceGroupName, alertProcessingRuleName: Name, alertProcessingRule: suppressionAR).Result.Body;
-                        break;
+                            result = this.AlertsManagementClient.AlertProcessingRules.CreateOrUpdateWithHttpMessagesAsync(
+                                resourceGroupName: ResourceGroupName, alertProcessingRuleName: Name, alertProcessingRule: suppressionAR).Result.Body;
+                            break;
 
-                    case ByInputObjectParameterSet:
-                        ExtractedInfo info = CommonUtils.ExtractFromActionRuleResourceId(InputObject.Id);
-                        switch (InputObject.AlertProcessingType)
-                        {
-                            case "AddActionGroups":
-                                // Create AlertProcessing Rule
-                                PSActionGroupAlertProcessingRule actionGroupInputObject = (PSActionGroupAlertProcessingRule)InputObject;
-                                AlertProcessingRule actionGroupAlertProcessingRuleFromInputObject = new AlertProcessingRule(
-                                    location: "Global",
-                                    tags: JsonConvert.DeserializeObject <IDictionary<string, string>> (actionGroupInputObject.Tags),
-                                    properties: new AlertProcessingRuleProperties(
-                                        scopes: JsonConvert.DeserializeObject<IList<string>>(actionGroupInputObject.Scopes),
-                                        actions: ExtractActions(actionGroupInputObject.ActionGroupIds),
-                                        conditions: JsonConvert.DeserializeObject<IList<Condition>>(actionGroupInputObject.Conditions),
-                                        schedule: JsonConvert.DeserializeObject<Schedule>(actionGroupInputObject.Schedule),
-                                        description: actionGroupInputObject.Description,
-                                        enabled: actionGroupInputObject.Enabled == "True" ? true : false
-                                    )
-                                );
+                        case ByInputObjectParameterSet:
+                            ExtractedInfo info = CommonUtils.ExtractFromActionRuleResourceId(InputObject.Id);
+                            switch (InputObject.AlertProcessingType)
+                            {
+                                case "AddActionGroups":
+                                    // Create AlertProcessing Rule
+                                    PSActionGroupAlertProcessingRule actionGroupInputObject = (PSActionGroupAlertProcessingRule)InputObject;
+                                    AlertProcessingRule actionGroupAlertProcessingRuleFromInputObject = new AlertProcessingRule(
+                                        location: "Global",
+                                        tags: JsonConvert.DeserializeObject<IDictionary<string, string>>(actionGroupInputObject.Tags),
+                                        properties: new AlertProcessingRuleProperties(
+                                            scopes: JsonConvert.DeserializeObject<IList<string>>(actionGroupInputObject.Scopes),
+                                            actions: ExtractActions(actionGroupInputObject.ActionGroupIds),
+                                            conditions: JsonConvert.DeserializeObject<IList<Condition>>(actionGroupInputObject.Conditions),
+                                            schedule: JsonConvert.DeserializeObject<Schedule>(actionGroupInputObject.Schedule),
+                                            description: actionGroupInputObject.Description,
+                                            enabled: actionGroupInputObject.Enabled == "True" ? true : false
+                                        )
+                                    );
 
-                                result = this.AlertsManagementClient.AlertProcessingRules.CreateOrUpdateWithHttpMessagesAsync(
-                                    resourceGroupName: info.ResourceGroupName, alertProcessingRuleName: info.Resource, alertProcessingRule: actionGroupAlertProcessingRuleFromInputObject).Result.Body;
-                                break;
+                                    result = this.AlertsManagementClient.AlertProcessingRules.CreateOrUpdateWithHttpMessagesAsync(
+                                        resourceGroupName: info.ResourceGroupName, alertProcessingRuleName: info.Resource, alertProcessingRule: actionGroupAlertProcessingRuleFromInputObject).Result.Body;
+                                    break;
 
-                            case "RemoveAllActionGroups":
-                                PSSuppressionAlertProcessingRule suppressionInputObject = (PSSuppressionAlertProcessingRule)InputObject;
+                                case "RemoveAllActionGroups":
+                                    PSSuppressionAlertProcessingRule suppressionInputObject = (PSSuppressionAlertProcessingRule)InputObject;
 
-                                // Create AlertProcessing Rule
-                                AlertProcessingRule suppressionARFromInputObject = new AlertProcessingRule(
-                                    location: "Global",
-                                    tags: JsonConvert.DeserializeObject<IDictionary<string, string>>(suppressionInputObject.Tags),
-                                    properties: new AlertProcessingRuleProperties(
-                                        scopes: JsonConvert.DeserializeObject<IList<string>>(suppressionInputObject.Scopes),
-                                        actions: ParseRemoveAllActionGroupsActions(),
-                                        conditions: JsonConvert.DeserializeObject<IList<Condition>>(suppressionInputObject.Conditions),
-                                        schedule: JsonConvert.DeserializeObject<Schedule>(suppressionInputObject.Schedule)                                                                                                                           ,
-                                        description: suppressionInputObject.Description,
-                                        enabled: suppressionInputObject.Enabled == "True" ? true : false
-                                    )
-                                );
+                                    // Create AlertProcessing Rule
+                                    AlertProcessingRule suppressionARFromInputObject = new AlertProcessingRule(
+                                        location: "Global",
+                                        tags: JsonConvert.DeserializeObject<IDictionary<string, string>>(suppressionInputObject.Tags),
+                                        properties: new AlertProcessingRuleProperties(
+                                            scopes: JsonConvert.DeserializeObject<IList<string>>(suppressionInputObject.Scopes),
+                                            actions: ParseRemoveAllActionGroupsActions(),
+                                            conditions: JsonConvert.DeserializeObject<IList<Condition>>(suppressionInputObject.Conditions),
+                                            schedule: JsonConvert.DeserializeObject<Schedule>(suppressionInputObject.Schedule),
+                                            description: suppressionInputObject.Description,
+                                            enabled: suppressionInputObject.Enabled == "True" ? true : false
+                                        )
+                                    );
 
-                                result = this.AlertsManagementClient.AlertProcessingRules.CreateOrUpdateWithHttpMessagesAsync(
-                                    resourceGroupName: info.ResourceGroupName, alertProcessingRuleName: info.Resource, alertProcessingRule: suppressionARFromInputObject).Result.Body;
-                                break;
+                                    result = this.AlertsManagementClient.AlertProcessingRules.CreateOrUpdateWithHttpMessagesAsync(
+                                        resourceGroupName: info.ResourceGroupName, alertProcessingRuleName: info.Resource, alertProcessingRule: suppressionARFromInputObject).Result.Body;
+                                    break;
 
-                            
-                        }
-                        break;
+
+                            }
+                            break;
+                    }
                 }
-
+                catch (System.Exception e)
+                {
+                    throw (e);
+                }
                 WriteObject(sendToPipeline: TransformOutput(result));
             }
         }
@@ -711,6 +717,8 @@ namespace Microsoft.Azure.Commands.AlertsManagement
             IList<Condition> conditions = new List<Condition>();
             if (FilterSeverity != null)
             {
+                string operatorProperty = FilterSeverity.Split(':')[0];
+                validateCondition(operatorProperty, "FilterSeverity");
                 conditions.Add(new Condition(
                         field: "severity",
                         operatorProperty: FilterSeverity.Split(':')[0],
@@ -720,6 +728,8 @@ namespace Microsoft.Azure.Commands.AlertsManagement
 
             if (FilterMonitorService != null)
             {
+                string operatorProperty = FilterMonitorService.Split(':')[0];
+                validateCondition(operatorProperty, "FilterMonitorService");
                 conditions.Add(new Condition(
                         field: "MonitorService",
                         operatorProperty: FilterMonitorService.Split(':')[0],
@@ -729,6 +739,8 @@ namespace Microsoft.Azure.Commands.AlertsManagement
 
             if (FilterMonitorCondition != null)
             {
+                string operatorProperty = FilterMonitorCondition.Split(':')[0];
+                validateCondition(operatorProperty, "FilterMonitorCondition");
                 conditions.Add(new Condition(
                         field: "MonitorCondition",
                         operatorProperty: FilterMonitorCondition.Split(':')[0],
@@ -738,6 +750,8 @@ namespace Microsoft.Azure.Commands.AlertsManagement
 
             if (FilterTargetResourceType != null)
             {
+                string operatorProperty = FilterTargetResourceType.Split(':')[0];
+                validateCondition(operatorProperty, "FilterTargetResourceType");
                 conditions.Add(new Condition(
                         field: "TargetResourceType",
                         operatorProperty: FilterTargetResourceType.Split(':')[0],
@@ -747,6 +761,8 @@ namespace Microsoft.Azure.Commands.AlertsManagement
 
             if (FilterDescription != null)
             {
+                string operatorProperty = FilterDescription.Split(':')[0];
+                validateCondition(operatorProperty, "FilterDescription");
                 conditions.Add(new Condition(
                         field: "Description",
                         operatorProperty: FilterDescription.Split(':')[0],
@@ -756,6 +772,8 @@ namespace Microsoft.Azure.Commands.AlertsManagement
 
              if (FilterAlertRuleName != null)
             {
+                string operatorProperty = FilterAlertRuleName.Split(':')[0];
+                validateCondition(operatorProperty, "FilterAlertRuleName");
                 conditions.Add(new Condition(
                         field: "AlertRuleName",
                         operatorProperty: FilterAlertRuleName.Split(':')[0],
@@ -765,6 +783,8 @@ namespace Microsoft.Azure.Commands.AlertsManagement
 
             if (FilterAlertRuleId != null)
             {
+                string operatorProperty = FilterAlertRuleId.Split(':')[0];
+                validateCondition(operatorProperty, "FilterAlertRuleId");
                 conditions.Add(new Condition(
                         field: "AlertRuleId",
                         operatorProperty: FilterAlertRuleId.Split(':')[0],
@@ -774,6 +794,8 @@ namespace Microsoft.Azure.Commands.AlertsManagement
             
             if (FilterAlertContext != null)
             {
+                string operatorProperty = FilterAlertContext.Split(':')[0];
+                validateCondition(operatorProperty, "FilterAlertContext");
                 conditions.Add(new Condition(
                         field: "AlertContext",
                         operatorProperty: FilterAlertContext.Split(':')[0],
@@ -783,6 +805,8 @@ namespace Microsoft.Azure.Commands.AlertsManagement
 
             if (FilterSignalType != null)
             {
+                string operatorProperty = FilterSignalType.Split(':')[0];
+                validateCondition(operatorProperty, "FilterSignalType");
                 conditions.Add(new Condition(
                         field: "SignalType",
                         operatorProperty: FilterSignalType.Split(':')[0],
@@ -799,6 +823,13 @@ namespace Microsoft.Azure.Commands.AlertsManagement
            
         }
 
+        private void validateCondition(string operatorProperty, string conditionType)
+        {
+            if(operatorProperty != "Equals" && operatorProperty != "NotEquals" && operatorProperty != "Contains" && operatorProperty != "DoesNotContain")
+            {
+                throw new PSInvalidOperationException(conditionType + ": uncorrect operatorProperty");
+            }
+        }
         private PSAlertProcessingRule TransformOutput(AlertProcessingRule input)
         {
             if (input.Properties.Actions[0] is AddActionGroups)
