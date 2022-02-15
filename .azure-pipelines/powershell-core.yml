@@ -47,7 +47,9 @@ stages:
     - powershell: |
         $var = Get-ChildItem -File -Recurse -Depth 4 -Path src test-module.ps1 | % {$_}
         Write-Host "##vso[task.setvariable variable=autorestModuleList]$var"
-    - powershell: |
-        Write-Host "---------------------------------------------------"
-        Write-Host $(autorestModuleList)
-        Write-Host "---------------------------------------------------"
+        
+    - $(each image in autorestModuleList):
+      - powershell: |
+          Write-Host "---------------------------------------------------"
+          Write-Host $(image)
+          Write-Host "---------------------------------------------------"
