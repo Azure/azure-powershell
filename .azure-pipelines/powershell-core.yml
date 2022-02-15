@@ -45,12 +45,12 @@ stages:
     steps:
     - powershell: |
         $var = Get-ChildItem -File -Recurse -Depth 4 -Path src test-module.ps1 | % { @{module_name = $_.Directory.BaseName; path = $_.FullName} } | ConvertTo-Json
-        Write-Host "##vso[task.setvariable variable=autorestModuleList;isOutput=true]{'a':{'module_name':'A'}, 'b':{'module_name':'B'}}"
-      name: mtrx
+        Write-Host "##vso[task.setvariable variable=autorestModuleList;isOutput=true]$var"
+      name: autorestModuleList
   - job: Runner
     dependsOn: Build
     strategy:
-      matrix: $[ dependencies.Build.outputs['mtrx.autorestModuleList'] ]
+      matrix: $[ dependencies.Build.outputs['autorestModuleList.autorestModuleList'] ]
     steps:
     - powershell: |
         Write-Host "--------------------------------------------------"
