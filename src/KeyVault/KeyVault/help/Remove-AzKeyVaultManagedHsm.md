@@ -80,8 +80,8 @@ True
 This command removes the managed HSM named myhsm from the resource group named myrg1.
 If you do not specify the resource group name, the cmdlet searches for the named managed HSM to delete in your current subscription.
 
- ### Example 3: Purge a deleted key vault
- ```powershell
+### Example 3: Purge a deleted managed hsm
+```powershell
 PS C:\> Remove-AzKeyVaultManagedHsm -Name 'myhsm' -Location "eastus" -Force -PassThru
 ```
 
