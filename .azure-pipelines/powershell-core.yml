@@ -53,10 +53,14 @@ stages:
         $var = $moduleHashTable | ConvertTo-Json -Compress
         Write-Host "##vso[task.setvariable variable=autorestModuleList;isOutput=true]$var"
       name: autorestModuleList
+      
+  - job: Runner
+    dependsOn: autorestModuleList
+    strategy:
+      matrix: $[ dependencies.Build.outputs['autorestModuleList.autorestModuleList'] ]
+    steps:
+    - checkout: none
     - powershell: |
         Write-Host "--------------------------------------------------"
         Write-Host $(autorestModuleList)
         Write-Host "--------------------------------------------------"
-      dependsOn: autorestModuleList
-      strategy:
-        matrix: $[ dependencies.autorestModuleList.outputs['autorestModuleList.autorestModuleList'] ]
