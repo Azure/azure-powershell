@@ -83,6 +83,21 @@ myhsm myrg1               eastus2euap StandardB1
 
 This command gets all managed HSMs in the subscription that start with "myhsm".
 
+### Example 5: List deleted managed HSMs
+```powershell
+PS C:\> Get-AzKeyVaultManagedHsm -InRemovedState
+```
+```output
+Name                     Location      DeletionDate           ScheduledPurgeDate    Purge Protection Enabled?
+----                     --------      ------------           ------------------    -------------------------
+xxxxxxxx-mhsm-4op2n2g4xe eastus2       12/30/2021 2:29:00 AM  3/30/2022 2:29:00 AM  True
+xxxxxxx-mhsm-ertopo7tnxa westus        12/29/2021 11:48:42 PM 3/29/2022 11:48:42 PM True
+xxxxxxx-mhsm-gg66fgctz67 westus        12/29/2021 11:48:42 PM 3/29/2022 11:48:42 PM False
+xxxxxxx-mhsm-2m5jiop6mfo westcentralus 12/30/2021 12:26:14 AM 3/30/2022 12:26:14 AM True
+```
+
+This command gets all deleted managed HSMs in current subscription.
+
 ## PARAMETERS
 
 ### -DefaultProfile

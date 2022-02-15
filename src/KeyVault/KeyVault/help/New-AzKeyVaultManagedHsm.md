@@ -50,8 +50,6 @@ Name  Resource Group Name Location    SKU
 myhsm myrg1               eastus2euap CustomB32
 ```
 
-                      
-
 This command creates a managed HSM, just like the previous example. However, it specifies a value of
 CustomB32 for the *SKU* parameter to create a CustomB32 managed HSM.
 

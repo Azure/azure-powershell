@@ -71,6 +71,30 @@ PS C:\> Get-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $resourceGrou
 
 Updates tags for the managed Hsm using piping syntax.
 
+### Example 3: Enable purge protection for a managed Hsm 
+```powershell
+PS C:\> Update-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $resourceGroupName -EnablePurgeProtection | fl
+```
+```output
+Managed HSM Name                    : testmhsm
+Resource Group Name                 : test-rg
+Location                            : eastus
+Resource ID                         : /subscriptions/xxxxxx71-1bf0-4dda-aec3-xxxxxxxxxxxx/resourceGroups/test-rg/provide
+                                      rs/Microsoft.KeyVault/managedHSMs/testmhsm
+HSM Pool URI                        :
+Tenant ID                           : 54xxxxxx-38d6-4fb2-bad9-xxxxxxxxxxxx
+Initial Admin Object Ids            : {xxxxxx9e-5be9-4f43-abd2-xxxxxxxxxxxx}
+SKU                                 : StandardB1
+Soft Delete Enabled?                : True
+Enabled Purge Protection?           : True
+Soft Delete Retention Period (days) : 70
+Provisioning State                  : Succeeded
+Status Message                      : The Managed HSM is provisioned and ready to use.
+Tags                                :
+```
+
+Enables purge protection for the managed Hsm named `$hsmName` in resource group `$resourceGroupName`.
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -89,7 +113,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnablePurgeProtection
-specifying whether protection against purge is enabled for this managed HSM pool. The setting is effective only if soft delete is also enabled. Enabling this functionality is irreversible
+specifying whether protection against purge is enabled for this managed HSM pool. The setting is effective only if soft delete is also enabled. Enabling this functionality is irreversible.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

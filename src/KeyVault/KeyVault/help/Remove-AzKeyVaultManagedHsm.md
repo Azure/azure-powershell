@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzKeyVaultManagedHsm
 
 ## SYNOPSIS
-Deletes a managed HSM.
+Deletes/Purges a managed HSM.
 
 ## SYNTAX
 
@@ -68,7 +68,7 @@ PS C:\> Remove-AzKeyVaultManagedHsm -HsmName 'myhsm' -Force
 True
 ```
 
-This command removes the managed hsm named myhsm from your current subscription.
+This command removes the managed HSM named myhsm from your current subscription.
 
 ### Example 2: Remove a managed hsm from a specified resource group
 ```powershell
@@ -77,8 +77,18 @@ PS C:\> Remove-AzKeyVaultManagedHsm -HsmName 'myhsm' -ResourceGroupName "myrg1" 
 True
 ```
 
-This command removes the managed hsm named myhsm from the resource group named myrg1.
+This command removes the managed HSM named myhsm from the resource group named myrg1.
 If you do not specify the resource group name, the cmdlet searches for the named managed HSM to delete in your current subscription.
+
+ ### Example 3: Purge a deleted key vault
+ ```powershell
+PS C:\> Remove-AzKeyVaultManagedHsm -Name 'myhsm' -Location "eastus" -Force -PassThru
+```
+```output
+True
+```
+
+This command purges the managed HSM named myhsm located at eastus.
 
 ## PARAMETERS
 

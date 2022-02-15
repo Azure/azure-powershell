@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         public string ResourceId { get; set; }
 
         [Parameter(Mandatory = false,
-            HelpMessage = "specifying whether protection against purge is enabled for this managed HSM pool. The setting is effective only if soft delete is also enabled. Enabling this functionality is irreversible")]
+            HelpMessage = "specifying whether protection against purge is enabled for this managed HSM pool. The setting is effective only if soft delete is also enabled. Enabling this functionality is irreversible.")]
         public SwitchParameter EnablePurgeProtection { get; set; }
 
         [Parameter(Mandatory = false,
