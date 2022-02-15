@@ -46,36 +46,8 @@ stages:
     steps:
     - powershell: |
         $var = Get-ChildItem -File -Recurse -Depth 4 -Path src test-module.ps1 | % {$_}
-        Write-Host "##vso[task.setvariable variable=autorestModuleList;isoutput=true]$var"
-      name: passOutput
-
-- stage: Test
-  dependsOn: Build
-  jobs:
-  - job: Test
-    displayName: Test
-    condition: succeeded()
-    timeoutInMinutes: 180
-    strategy:
-      matrix:
-        # windows:
-        #   OSName: ${{ variables.WindowsName }}
-        #   ImageName: ${{ variables.WindowsImage }}
-        linux:
-          OSName: ${{ variables.LinuxName }}
-          ImageName: ${{ variables.LinuxImage }}
-        # macOS:
-        #   OSName: ${{ variables.MacOSName }}
-        #   ImageName: ${{ variables.MacOSImage }}
-    pool:
-      vmImage: $(ImageName)
-    variables:
-      autorestModuleList: $[stageDependencies.Build.Build.outputs['passOutput.autorestModuleList']]
-    steps:
-    - template: util/test-steps.yml
-      parameters:
-        osName: $(OSName)
-        testFramework: ${{ variables.TestFramework }}
-        testTarget: ${{ variables.TestTarget }}
-        configuration: ${{ variables.Configuration }}
-        autorestModuleList: $(autorestModuleList)
+        Write-Host "##vso[task.setvariable variable=autorestModuleList]$var"
+    - powershell: |
+        Write-Host "---------------------------------------------------"
+        Write-Host $(autorestModuleList)
+        Write-Host "---------------------------------------------------"
