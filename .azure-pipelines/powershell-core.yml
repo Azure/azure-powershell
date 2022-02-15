@@ -31,7 +31,7 @@ stages:
     timeoutInMinutes: ${{ variables.BuildTimeoutInMinutes }}
     strategy:
       matrix:
-        windows:
+        # windows:
           # OSName: ${{ variables.WindowsName }}
           # ImageName: ${{ variables.WindowsImage }}
         linux:
