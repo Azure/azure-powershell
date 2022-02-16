@@ -1,4 +1,3 @@
-
 # ----------------------------------------------------------------------------------
 #
 # Copyright Microsoft Corporation
@@ -14,32 +13,38 @@
 # ----------------------------------------------------------------------------------
 <#
 .Synopsis
-Run assessment on given Sql Servers.
+Collect performance data for given SQL instance .
 .Description
-Run assessment on given Sql Servers.
+Collect performance data for given SQL instance over an extended period of time. The collected data can then be aggregated and analysed, and by examining the performance characteristics of your source instance, SKU recommendations can be determined for Azure SQL offerings.
 #>
 
-
-function Get-AzDataMigrationAssessment 
+function Get-AzDataMigrationPerformanceDataCollection
 {
     [OutputType([System.Boolean])]
     [CmdletBinding(PositionalBinding=$false)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Description('Start assessment on SQL Server instance(s)')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Description('Collect performance data for given SQL Server instance(s)')]
 
     param(
         [Parameter(ParameterSetName='CommandLine', Mandatory, HelpMessage='Sql Server Connection Strings')]
         [System.String[]]
-        ${ConnectionString},
+        ${SqlConnectionStrings},
 
-
-        [Parameter(ParameterSetName='CommandLine', HelpMessage='Output folder to store assessment report')]
+        [Parameter(ParameterSetName='CommandLine', HelpMessage='Folder which data and result reports will be written to/read from.')]
         [System.String]
         ${OutputFolder},
 
+        [Parameter(ParameterSetName='CommandLine', HelpMessage='Interval at which to query performance data, in seconds. (Default: 30)')]
+        [System.String]
+        ${PerfQueryInterval},
 
-        [Parameter(ParameterSetName='CommandLine', HelpMessage='Enable this parameter to overwrite the existing assessment report')]
-        [System.Management.Automation.SwitchParameter]
-        ${Overwrite},
+        [Parameter(ParameterSetName='CommandLine', HelpMessage='Interval at which to query and persist static configuration data, in seconds. (Default: 3600)')]
+        [System.String]
+        ${StaticQueryIntervalInSec},
+
+        [Parameter(ParameterSetName='CommandLine', HelpMessage='Number of iterations of performance data collection to perform before persisting to file. For example, with default values, performance data will be persisted every 30 seconds * 20 iterations = 10 minutes. (Default: 20, Minimum: 2)
+        ')]
+        [System.String]
+        ${NumberOfIterations},
 
         [Parameter(ParameterSetName='ConfigFile', Mandatory, HelpMessage='Path of the ConfigFile')]
         [System.String]
@@ -63,7 +68,6 @@ function Get-AzDataMigrationAssessment
                 throw "This command cannot be run in non-windows environment"
                 Break;
             }
-
             #Defining Default Output Path
             $DefaultOutputFolder = Get-DefaultOutputFolder
 
@@ -90,36 +94,40 @@ function Get-AzDataMigrationAssessment
                 Expand-Archive -Path $ZipDestination -DestinationPath $BaseFolder -Force;
             }
 
-            #Running Assessment
+            #Collecting performance data
             if(('CommandLine') -contains $PSCmdlet.ParameterSetName)
             {
-                if(($PSBoundParameters.ContainsKey("OutputFolder")))
-                {
-                    if($PSBoundParameters.ContainsKey("Overwrite"))
+                # The array list $splat contains all the parameters that will be passed to '.\SqlAssessment.exe PerfDataCollection'
+                [System.Collections.ArrayList] $splat = @(
+                '--sqlConnectionStrings', $SqlConnectionStrings
+                '--outputfolder', $OutputFolder
+                '--perfQueryInterval', $PerfQueryInterval
+                '--staticQueryIntervalInSec', $StaticQueryIntervalInSec
+                '--numberOfIterations', $NumberOfIterations
+                )
+                
+                # Removing the parameters for which the user did not provide any values
+                for($i = $splat.Count-1; $i -gt -1; $i = $i-2)
+                { 
+                   $currVal = $splat[$i]
+                    if($currVal -ne "")
                     {
-                        & $ExePath Assess --sqlConnectionStrings $PSBoundParameters.ConnectionString --outputFolder $PSBoundParameters.OutputFolder; 
+
                     }
-                    else
-                    {
-                        & $ExePath Assess --sqlConnectionStrings $PSBoundParameters.ConnectionString --outputFolder $PSBoundParameters.OutputFolder --overwrite False;
-                        
-                    }
+                    else {
+                        $splat.RemoveAt($i)
+                        $i2 = $i -1
+                        $splat.RemoveAt($i2)
+                    }                     
                 }
-                else
-                {
-                    if(($PSBoundParameters.ContainsKey("Overwrite")))
-                    {
-                        & $ExePath Assess --sqlConnectionStrings $PSBoundParameters.ConnectionString;
-                    }
-                    else 
-                    {
-                        & $ExePath Assess --sqlConnectionStrings $PSBoundParameters.ConnectionString --overwrite False;
-                    }
-                } 
+                
+                # Running PerfDataCollection
+                & $ExePath PerfDataCollection @splat
+                  
             }
             else
             {   
-                Test-ConfigFile $PSBoundParameters.ConfigFilePath "Assess"
+                Test-ConfigFile $PSBoundParameters.ConfigFilePath "PerfDataCollection"
                 & $ExePath --configFile $PSBoundParameters.ConfigFilePath
             }
 
@@ -137,3 +145,5 @@ function Get-AzDataMigrationAssessment
         }
     }
 }
+
+
