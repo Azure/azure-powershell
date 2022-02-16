@@ -1,0 +1,1430 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1?api-version=2018-11-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1BTLVRlc3RpbmcvcHJvdmlkZXJzL01pY3Jvc29mdC5NYW5hZ2VkSWRlbnRpdHkvdXNlckFzc2lnbmVkSWRlbnRpdGllcy9QUy1UZXN0aW5nLU1TSTE/YXBpLXZlcnNpb249MjAxOC0xMS0zMA==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "8f06993c-f28a-4632-92fb-50a998d87c99"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.ManagedServiceIdentity.ManagedServiceIdentityClient/0.11.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "508d79fc-bf0a-42c9-b317-698ead21f8a1"
+        ],
+        "x-ms-correlation-request-id": [
+          "508d79fc-bf0a-42c9-b317-698ead21f8a1"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20220216T104400Z:508d79fc-bf0a-42c9-b317-698ead21f8a1"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Feb 2022 10:44:00 GMT"
+        ],
+        "Content-Length": [
+          "447"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\",\r\n  \"name\": \"PS-Testing-MSI1\",\r\n  \"type\": \"Microsoft.ManagedIdentity/userAssignedIdentities\",\r\n  \"location\": \"northeurope\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"7663a339-be0b-4d47-8486-f66efca4a61a\",\r\n    \"clientId\": \"b83876ea-dcee-4643-9c34-c29cb7fb1eaa\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI2?api-version=2018-11-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1BTLVRlc3RpbmcvcHJvdmlkZXJzL01pY3Jvc29mdC5NYW5hZ2VkSWRlbnRpdHkvdXNlckFzc2lnbmVkSWRlbnRpdGllcy9QUy1UZXN0aW5nLU1TSTI/YXBpLXZlcnNpb249MjAxOC0xMS0zMA==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "03c1e2c8-f99c-4bdd-afb0-dadb74eacabd"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.ManagedServiceIdentity.ManagedServiceIdentityClient/0.11.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "cd6c3719-d0ae-4467-aa3a-7a81fc40f11e"
+        ],
+        "x-ms-correlation-request-id": [
+          "cd6c3719-d0ae-4467-aa3a-7a81fc40f11e"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20220216T104401Z:cd6c3719-d0ae-4467-aa3a-7a81fc40f11e"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Feb 2022 10:44:01 GMT"
+        ],
+        "Content-Length": [
+          "447"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI2\",\r\n  \"name\": \"PS-Testing-MSI2\",\r\n  \"type\": \"Microsoft.ManagedIdentity/userAssignedIdentities\",\r\n  \"location\": \"northeurope\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"e1e88643-0c2d-40b1-8654-7b8a8423d29b\",\r\n    \"clientId\": \"bb127be2-f38d-458b-83f4-ee1a475b91f1\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI3?api-version=2018-11-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1BTLVRlc3RpbmcvcHJvdmlkZXJzL01pY3Jvc29mdC5NYW5hZ2VkSWRlbnRpdHkvdXNlckFzc2lnbmVkSWRlbnRpdGllcy9QUy1UZXN0aW5nLU1TSTM/YXBpLXZlcnNpb249MjAxOC0xMS0zMA==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "436a9844-8d7d-4736-a331-1ad2c56472da"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.ManagedServiceIdentity.ManagedServiceIdentityClient/0.11.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "62e15aa9-648d-4191-ba62-bcda4b72e5a8"
+        ],
+        "x-ms-correlation-request-id": [
+          "62e15aa9-648d-4191-ba62-bcda4b72e5a8"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20220216T104403Z:62e15aa9-648d-4191-ba62-bcda4b72e5a8"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Feb 2022 10:44:02 GMT"
+        ],
+        "Content-Length": [
+          "447"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-msi3\",\r\n  \"name\": \"PS-Testing-msi3\",\r\n  \"type\": \"Microsoft.ManagedIdentity/userAssignedIdentities\",\r\n  \"location\": \"northeurope\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"fb67a29d-56ee-49cb-ba4a-e751e8e53037\",\r\n    \"clientId\": \"e710d435-a682-4c2f-a004-d98f1d426701\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PS-Testing/providers/Microsoft.ServiceBus/namespaces/Namespace1-7037?api-version=2021-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1BTLVRlc3RpbmcvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2aWNlQnVzL25hbWVzcGFjZXMvTmFtZXNwYWNlMS03MDM3P2FwaS12ZXJzaW9uPTIwMjEtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Premium\",\r\n    \"tier\": \"Premium\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\": {},\r\n      \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI2\": {}\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"encryption\": {\r\n      \"keyVaultProperties\": [\r\n        {\r\n          \"keyName\": \"key1\",\r\n          \"keyVaultUri\": \"https://ps-testing-kv1.vault.azure.net/\",\r\n          \"identity\": {\r\n            \"userAssignedIdentity\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\"\r\n          }\r\n        },\r\n        {\r\n          \"keyName\": \"key2\",\r\n          \"keyVaultUri\": \"https://ps-testing-kv1.vault.azure.net/\",\r\n          \"identity\": {\r\n            \"userAssignedIdentity\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\"\r\n          }\r\n        }\r\n      ],\r\n      \"keySource\": \"Microsoft.KeyVault\"\r\n    }\r\n  },\r\n  \"location\": \"northeurope\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1e191a05-f414-4236-b68e-d20690d0926c"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/3.0.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "1361"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "63f9edbc-e472-45aa-b8ae-8fc361d1c22f_M8CH3_M8CH3"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/CH3"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/CH3",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "61c2fcf7-4082-4f68-b6e2-ae397845b6cf"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20220216T104415Z:61c2fcf7-4082-4f68-b6e2-ae397845b6cf"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Feb 2022 10:44:14 GMT"
+        ],
+        "Content-Length": [
+          "969"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Premium\",\r\n    \"tier\": \"Premium\",\r\n    \"capacity\": 1\r\n  },\r\n  \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PS-Testing/providers/Microsoft.ServiceBus/namespaces/Namespace1-7037\",\r\n  \"name\": \"Namespace1-7037\",\r\n  \"type\": \"Microsoft.ServiceBus/Namespaces\",\r\n  \"location\": \"North Europe\",\r\n  \"tags\": {},\r\n  \"identity\": {\r\n    \"type\": \"UserAssigned\"\r\n  },\r\n  \"properties\": {\r\n    \"disableLocalAuth\": false,\r\n    \"zoneRedundant\": false,\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.KeyVault\",\r\n      \"keyVaultProperties\": [\r\n        {\r\n          \"keyName\": \"key1\",\r\n          \"keyVaultUri\": \"https://ps-testing-kv1.vault.azure.net\",\r\n          \"keyVersion\": \"\"\r\n        },\r\n        {\r\n          \"keyName\": \"key2\",\r\n          \"keyVaultUri\": \"https://ps-testing-kv1.vault.azure.net\",\r\n          \"keyVersion\": \"\"\r\n        }\r\n      ],\r\n      \"requireInfrastructureEncryption\": false\r\n    },\r\n    \"provisioningState\": \"EnablingEncryption\",\r\n    \"metricId\": \"326100e2-f69d-4268-8503-075374f62b6e:namespace1-7037\",\r\n    \"createdAt\": \"2022-02-16T10:44:13.87Z\",\r\n    \"updatedAt\": \"2022-02-16T10:44:13.87Z\",\r\n    \"serviceBusEndpoint\": \"https://Namespace1-7037.servicebus.windows.net:443/\",\r\n    \"status\": \"Activating\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PS-Testing/providers/Microsoft.ServiceBus/namespaces/Namespace1-7037?api-version=2021-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1BTLVRlc3RpbmcvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2aWNlQnVzL25hbWVzcGFjZXMvTmFtZXNwYWNlMS03MDM3P2FwaS12ZXJzaW9uPTIwMjEtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Premium\",\r\n    \"tier\": \"Premium\",\r\n    \"capacity\": 1\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\": {},\r\n      \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI2\": {}\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"zoneRedundant\": false,\r\n    \"encryption\": {\r\n      \"keyVaultProperties\": [\r\n        {\r\n          \"keyName\": \"key1\",\r\n          \"keyVaultUri\": \"https://ps-testing-kv1.vault.azure.net\",\r\n          \"keyVersion\": \"\",\r\n          \"identity\": {\r\n            \"userAssignedIdentity\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\"\r\n          }\r\n        },\r\n        {\r\n          \"keyName\": \"key2\",\r\n          \"keyVaultUri\": \"https://ps-testing-kv1.vault.azure.net\",\r\n          \"keyVersion\": \"\",\r\n          \"identity\": {\r\n            \"userAssignedIdentity\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\"\r\n          }\r\n        },\r\n        {\r\n          \"keyName\": \"key3\",\r\n          \"keyVaultUri\": \"https://ps-testing-kv1.vault.azure.net/\",\r\n          \"identity\": {\r\n            \"userAssignedIdentity\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\"\r\n          }\r\n        }\r\n      ],\r\n      \"keySource\": \"Microsoft.KeyVault\",\r\n      \"requireInfrastructureEncryption\": false\r\n    },\r\n    \"disableLocalAuth\": false\r\n  },\r\n  \"location\": \"northeurope\",\r\n  \"tags\": {}\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "f18474ee-3099-41a0-b4be-18dc0a8c132c"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/3.0.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "1914"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "f8c84fef-a4a8-4eb9-ac67-eddc668e73a9_M11SN1_M11SN1"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "0f33bcd6-8710-4c50-8b1a-188dab870cf8"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20220216T105215Z:0f33bcd6-8710-4c50-8b1a-188dab870cf8"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Feb 2022 10:52:14 GMT"
+        ],
+        "Content-Length": [
+          "2169"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Premium\",\r\n    \"tier\": \"Premium\",\r\n    \"capacity\": 1\r\n  },\r\n  \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PS-Testing/providers/Microsoft.ServiceBus/namespaces/Namespace1-7037\",\r\n  \"name\": \"Namespace1-7037\",\r\n  \"type\": \"Microsoft.ServiceBus/Namespaces\",\r\n  \"location\": \"North Europe\",\r\n  \"tags\": {},\r\n  \"identity\": {\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\": {\r\n        \"clientId\": \"b83876ea-dcee-4643-9c34-c29cb7fb1eaa\",\r\n        \"principalId\": \"7663a339-be0b-4d47-8486-f66efca4a61a\"\r\n      },\r\n      \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI2\": {\r\n        \"clientId\": \"bb127be2-f38d-458b-83f4-ee1a475b91f1\",\r\n        \"principalId\": \"e1e88643-0c2d-40b1-8654-7b8a8423d29b\"\r\n      }\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"disableLocalAuth\": false,\r\n    \"zoneRedundant\": false,\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.KeyVault\",\r\n      \"keyVaultProperties\": [\r\n        {\r\n          \"keyName\": \"key1\",\r\n          \"keyVaultUri\": \"https://ps-testing-kv1.vault.azure.net\",\r\n          \"keyVersion\": \"\",\r\n          \"identity\": {\r\n            \"userAssignedIdentity\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\"\r\n          }\r\n        },\r\n        {\r\n          \"keyName\": \"key2\",\r\n          \"keyVaultUri\": \"https://ps-testing-kv1.vault.azure.net\",\r\n          \"keyVersion\": \"\",\r\n          \"identity\": {\r\n            \"userAssignedIdentity\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\"\r\n          }\r\n        },\r\n        {\r\n          \"keyName\": \"key3\",\r\n          \"keyVaultUri\": \"https://ps-testing-kv1.vault.azure.net\",\r\n          \"keyVersion\": \"\",\r\n          \"identity\": {\r\n            \"userAssignedIdentity\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\"\r\n          }\r\n        }\r\n      ],\r\n      \"requireInfrastructureEncryption\": false\r\n    },\r\n    \"provisioningState\": \"Updating\",\r\n    \"metricId\": \"326100e2-f69d-4268-8503-075374f62b6e:namespace1-7037\",\r\n    \"createdAt\": \"2022-02-16T10:44:13.87Z\",\r\n    \"updatedAt\": \"2022-02-16T10:52:13.23Z\",\r\n    \"serviceBusEndpoint\": \"https://Namespace1-7037.servicebus.windows.net:443/\",\r\n    \"status\": \"Activating\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PS-Testing/providers/Microsoft.ServiceBus/namespaces/Namespace1-7037?api-version=2021-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1BTLVRlc3RpbmcvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2aWNlQnVzL25hbWVzcGFjZXMvTmFtZXNwYWNlMS03MDM3P2FwaS12ZXJzaW9uPTIwMjEtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1e191a05-f414-4236-b68e-d20690d0926c"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/3.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "95720654-e52c-4ee4-b887-83abb0b413d6_M1CH3_M1CH3"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/CH3"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/CH3",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "57ff53d1-22ae-4100-b371-09f44ff96437"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20220216T104446Z:57ff53d1-22ae-4100-b371-09f44ff96437"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Feb 2022 10:44:46 GMT"
+        ],
+        "Content-Length": [
+          "1694"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Premium\",\r\n    \"tier\": \"Premium\",\r\n    \"capacity\": 1\r\n  },\r\n  \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PS-Testing/providers/Microsoft.ServiceBus/namespaces/Namespace1-7037\",\r\n  \"name\": \"Namespace1-7037\",\r\n  \"type\": \"Microsoft.ServiceBus/Namespaces\",\r\n  \"location\": \"North Europe\",\r\n  \"tags\": {},\r\n  \"identity\": {\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\": {},\r\n      \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI2\": {}\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"disableLocalAuth\": false,\r\n    \"zoneRedundant\": false,\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.KeyVault\",\r\n      \"keyVaultProperties\": [\r\n        {\r\n          \"keyName\": \"key1\",\r\n          \"keyVaultUri\": \"https://ps-testing-kv1.vault.azure.net\",\r\n          \"keyVersion\": \"\",\r\n          \"identity\": {\r\n            \"userAssignedIdentity\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\"\r\n          }\r\n        },\r\n        {\r\n          \"keyName\": \"key2\",\r\n          \"keyVaultUri\": \"https://ps-testing-kv1.vault.azure.net\",\r\n          \"keyVersion\": \"\",\r\n          \"identity\": {\r\n            \"userAssignedIdentity\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\"\r\n          }\r\n        }\r\n      ],\r\n      \"requireInfrastructureEncryption\": false\r\n    },\r\n    \"provisioningState\": \"ActivatingIdentity\",\r\n    \"metricId\": \"326100e2-f69d-4268-8503-075374f62b6e:namespace1-7037\",\r\n    \"createdAt\": \"2022-02-16T10:44:13.87Z\",\r\n    \"updatedAt\": \"2022-02-16T10:44:13.87Z\",\r\n    \"serviceBusEndpoint\": \"https://Namespace1-7037.servicebus.windows.net:443/\",\r\n    \"status\": \"Activating\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PS-Testing/providers/Microsoft.ServiceBus/namespaces/Namespace1-7037?api-version=2021-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1BTLVRlc3RpbmcvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2aWNlQnVzL25hbWVzcGFjZXMvTmFtZXNwYWNlMS03MDM3P2FwaS12ZXJzaW9uPTIwMjEtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1e191a05-f414-4236-b68e-d20690d0926c"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/3.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "343e7ef1-9051-42d1-823e-2729bd0b506e_M1CH3_M1CH3"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/CH3"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/CH3",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "7c9805ec-df12-45ce-8652-6dc5421573ec"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20220216T104517Z:7c9805ec-df12-45ce-8652-6dc5421573ec"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Feb 2022 10:45:16 GMT"
+        ],
+        "Content-Length": [
+          "1694"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Premium\",\r\n    \"tier\": \"Premium\",\r\n    \"capacity\": 1\r\n  },\r\n  \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PS-Testing/providers/Microsoft.ServiceBus/namespaces/Namespace1-7037\",\r\n  \"name\": \"Namespace1-7037\",\r\n  \"type\": \"Microsoft.ServiceBus/Namespaces\",\r\n  \"location\": \"North Europe\",\r\n  \"tags\": {},\r\n  \"identity\": {\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\": {},\r\n      \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI2\": {}\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"disableLocalAuth\": false,\r\n    \"zoneRedundant\": false,\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.KeyVault\",\r\n      \"keyVaultProperties\": [\r\n        {\r\n          \"keyName\": \"key1\",\r\n          \"keyVaultUri\": \"https://ps-testing-kv1.vault.azure.net\",\r\n          \"keyVersion\": \"\",\r\n          \"identity\": {\r\n            \"userAssignedIdentity\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\"\r\n          }\r\n        },\r\n        {\r\n          \"keyName\": \"key2\",\r\n          \"keyVaultUri\": \"https://ps-testing-kv1.vault.azure.net\",\r\n          \"keyVersion\": \"\",\r\n          \"identity\": {\r\n            \"userAssignedIdentity\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\"\r\n          }\r\n        }\r\n      ],\r\n      \"requireInfrastructureEncryption\": false\r\n    },\r\n    \"provisioningState\": \"ActivatingIdentity\",\r\n    \"metricId\": \"326100e2-f69d-4268-8503-075374f62b6e:namespace1-7037\",\r\n    \"createdAt\": \"2022-02-16T10:44:13.87Z\",\r\n    \"updatedAt\": \"2022-02-16T10:44:13.87Z\",\r\n    \"serviceBusEndpoint\": \"https://Namespace1-7037.servicebus.windows.net:443/\",\r\n    \"status\": \"Activating\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PS-Testing/providers/Microsoft.ServiceBus/namespaces/Namespace1-7037?api-version=2021-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1BTLVRlc3RpbmcvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2aWNlQnVzL25hbWVzcGFjZXMvTmFtZXNwYWNlMS03MDM3P2FwaS12ZXJzaW9uPTIwMjEtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1e191a05-f414-4236-b68e-d20690d0926c"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/3.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "b74445c4-4964-45a6-b3be-c686e574202d_M6CH3_M6CH3"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/CH3"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/CH3",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "9c948950-9c63-4e4d-8ad3-99d435bf4128"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20220216T104547Z:9c948950-9c63-4e4d-8ad3-99d435bf4128"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Feb 2022 10:45:47 GMT"
+        ],
+        "Content-Length": [
+          "1691"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Premium\",\r\n    \"tier\": \"Premium\",\r\n    \"capacity\": 1\r\n  },\r\n  \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PS-Testing/providers/Microsoft.ServiceBus/namespaces/Namespace1-7037\",\r\n  \"name\": \"Namespace1-7037\",\r\n  \"type\": \"Microsoft.ServiceBus/Namespaces\",\r\n  \"location\": \"North Europe\",\r\n  \"tags\": {},\r\n  \"identity\": {\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\": {},\r\n      \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI2\": {}\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"disableLocalAuth\": false,\r\n    \"zoneRedundant\": false,\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.KeyVault\",\r\n      \"keyVaultProperties\": [\r\n        {\r\n          \"keyName\": \"key1\",\r\n          \"keyVaultUri\": \"https://ps-testing-kv1.vault.azure.net\",\r\n          \"keyVersion\": \"\",\r\n          \"identity\": {\r\n            \"userAssignedIdentity\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\"\r\n          }\r\n        },\r\n        {\r\n          \"keyName\": \"key2\",\r\n          \"keyVaultUri\": \"https://ps-testing-kv1.vault.azure.net\",\r\n          \"keyVersion\": \"\",\r\n          \"identity\": {\r\n            \"userAssignedIdentity\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\"\r\n          }\r\n        }\r\n      ],\r\n      \"requireInfrastructureEncryption\": false\r\n    },\r\n    \"provisioningState\": \"ActivatingIdentity\",\r\n    \"metricId\": \"326100e2-f69d-4268-8503-075374f62b6e:namespace1-7037\",\r\n    \"createdAt\": \"2022-02-16T10:44:13.87Z\",\r\n    \"updatedAt\": \"2022-02-16T10:45:36.927Z\",\r\n    \"serviceBusEndpoint\": \"https://Namespace1-7037.servicebus.windows.net:443/\",\r\n    \"status\": \"Active\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PS-Testing/providers/Microsoft.ServiceBus/namespaces/Namespace1-7037?api-version=2021-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1BTLVRlc3RpbmcvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2aWNlQnVzL25hbWVzcGFjZXMvTmFtZXNwYWNlMS03MDM3P2FwaS12ZXJzaW9uPTIwMjEtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1e191a05-f414-4236-b68e-d20690d0926c"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/3.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "2edb69cb-6e45-4d27-b62b-31a1a4cc2e3d_M6CH3_M6CH3"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/CH3"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/CH3",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-correlation-request-id": [
+          "f4d7ac34-b5cc-4641-84b7-b1aeef09463d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20220216T104617Z:f4d7ac34-b5cc-4641-84b7-b1aeef09463d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Feb 2022 10:46:17 GMT"
+        ],
+        "Content-Length": [
+          "1691"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Premium\",\r\n    \"tier\": \"Premium\",\r\n    \"capacity\": 1\r\n  },\r\n  \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PS-Testing/providers/Microsoft.ServiceBus/namespaces/Namespace1-7037\",\r\n  \"name\": \"Namespace1-7037\",\r\n  \"type\": \"Microsoft.ServiceBus/Namespaces\",\r\n  \"location\": \"North Europe\",\r\n  \"tags\": {},\r\n  \"identity\": {\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\": {},\r\n      \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI2\": {}\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"disableLocalAuth\": false,\r\n    \"zoneRedundant\": false,\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.KeyVault\",\r\n      \"keyVaultProperties\": [\r\n        {\r\n          \"keyName\": \"key1\",\r\n          \"keyVaultUri\": \"https://ps-testing-kv1.vault.azure.net\",\r\n          \"keyVersion\": \"\",\r\n          \"identity\": {\r\n            \"userAssignedIdentity\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\"\r\n          }\r\n        },\r\n        {\r\n          \"keyName\": \"key2\",\r\n          \"keyVaultUri\": \"https://ps-testing-kv1.vault.azure.net\",\r\n          \"keyVersion\": \"\",\r\n          \"identity\": {\r\n            \"userAssignedIdentity\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\"\r\n          }\r\n        }\r\n      ],\r\n      \"requireInfrastructureEncryption\": false\r\n    },\r\n    \"provisioningState\": \"ActivatingIdentity\",\r\n    \"metricId\": \"326100e2-f69d-4268-8503-075374f62b6e:namespace1-7037\",\r\n    \"createdAt\": \"2022-02-16T10:44:13.87Z\",\r\n    \"updatedAt\": \"2022-02-16T10:45:36.927Z\",\r\n    \"serviceBusEndpoint\": \"https://Namespace1-7037.servicebus.windows.net:443/\",\r\n    \"status\": \"Active\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PS-Testing/providers/Microsoft.ServiceBus/namespaces/Namespace1-7037?api-version=2021-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1BTLVRlc3RpbmcvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2aWNlQnVzL25hbWVzcGFjZXMvTmFtZXNwYWNlMS03MDM3P2FwaS12ZXJzaW9uPTIwMjEtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1e191a05-f414-4236-b68e-d20690d0926c"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/3.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "47ac941a-ad3e-4128-aada-73495fdd7b1e_M6CH3_M6CH3"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/CH3"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/CH3",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
+        ],
+        "x-ms-correlation-request-id": [
+          "79f67ee5-b3c3-4500-946d-06d940a7cc07"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20220216T104648Z:79f67ee5-b3c3-4500-946d-06d940a7cc07"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Feb 2022 10:46:48 GMT"
+        ],
+        "Content-Length": [
+          "1691"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Premium\",\r\n    \"tier\": \"Premium\",\r\n    \"capacity\": 1\r\n  },\r\n  \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PS-Testing/providers/Microsoft.ServiceBus/namespaces/Namespace1-7037\",\r\n  \"name\": \"Namespace1-7037\",\r\n  \"type\": \"Microsoft.ServiceBus/Namespaces\",\r\n  \"location\": \"North Europe\",\r\n  \"tags\": {},\r\n  \"identity\": {\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\": {},\r\n      \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI2\": {}\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"disableLocalAuth\": false,\r\n    \"zoneRedundant\": false,\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.KeyVault\",\r\n      \"keyVaultProperties\": [\r\n        {\r\n          \"keyName\": \"key1\",\r\n          \"keyVaultUri\": \"https://ps-testing-kv1.vault.azure.net\",\r\n          \"keyVersion\": \"\",\r\n          \"identity\": {\r\n            \"userAssignedIdentity\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\"\r\n          }\r\n        },\r\n        {\r\n          \"keyName\": \"key2\",\r\n          \"keyVaultUri\": \"https://ps-testing-kv1.vault.azure.net\",\r\n          \"keyVersion\": \"\",\r\n          \"identity\": {\r\n            \"userAssignedIdentity\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\"\r\n          }\r\n        }\r\n      ],\r\n      \"requireInfrastructureEncryption\": false\r\n    },\r\n    \"provisioningState\": \"ActivatingIdentity\",\r\n    \"metricId\": \"326100e2-f69d-4268-8503-075374f62b6e:namespace1-7037\",\r\n    \"createdAt\": \"2022-02-16T10:44:13.87Z\",\r\n    \"updatedAt\": \"2022-02-16T10:45:36.927Z\",\r\n    \"serviceBusEndpoint\": \"https://Namespace1-7037.servicebus.windows.net:443/\",\r\n    \"status\": \"Active\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PS-Testing/providers/Microsoft.ServiceBus/namespaces/Namespace1-7037?api-version=2021-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1BTLVRlc3RpbmcvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2aWNlQnVzL25hbWVzcGFjZXMvTmFtZXNwYWNlMS03MDM3P2FwaS12ZXJzaW9uPTIwMjEtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1e191a05-f414-4236-b68e-d20690d0926c"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/3.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "d4b84e0b-f9be-41e9-b8b3-c20061ba070b_M6CH3_M6CH3"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/CH3"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/CH3",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11994"
+        ],
+        "x-ms-correlation-request-id": [
+          "1846c2e6-d0a0-4000-af36-0c502b914e37"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20220216T104718Z:1846c2e6-d0a0-4000-af36-0c502b914e37"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Feb 2022 10:47:18 GMT"
+        ],
+        "Content-Length": [
+          "1691"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Premium\",\r\n    \"tier\": \"Premium\",\r\n    \"capacity\": 1\r\n  },\r\n  \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PS-Testing/providers/Microsoft.ServiceBus/namespaces/Namespace1-7037\",\r\n  \"name\": \"Namespace1-7037\",\r\n  \"type\": \"Microsoft.ServiceBus/Namespaces\",\r\n  \"location\": \"North Europe\",\r\n  \"tags\": {},\r\n  \"identity\": {\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\": {},\r\n      \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI2\": {}\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"disableLocalAuth\": false,\r\n    \"zoneRedundant\": false,\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.KeyVault\",\r\n      \"keyVaultProperties\": [\r\n        {\r\n          \"keyName\": \"key1\",\r\n          \"keyVaultUri\": \"https://ps-testing-kv1.vault.azure.net\",\r\n          \"keyVersion\": \"\",\r\n          \"identity\": {\r\n            \"userAssignedIdentity\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\"\r\n          }\r\n        },\r\n        {\r\n          \"keyName\": \"key2\",\r\n          \"keyVaultUri\": \"https://ps-testing-kv1.vault.azure.net\",\r\n          \"keyVersion\": \"\",\r\n          \"identity\": {\r\n            \"userAssignedIdentity\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\"\r\n          }\r\n        }\r\n      ],\r\n      \"requireInfrastructureEncryption\": false\r\n    },\r\n    \"provisioningState\": \"ActivatingIdentity\",\r\n    \"metricId\": \"326100e2-f69d-4268-8503-075374f62b6e:namespace1-7037\",\r\n    \"createdAt\": \"2022-02-16T10:44:13.87Z\",\r\n    \"updatedAt\": \"2022-02-16T10:45:36.927Z\",\r\n    \"serviceBusEndpoint\": \"https://Namespace1-7037.servicebus.windows.net:443/\",\r\n    \"status\": \"Active\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PS-Testing/providers/Microsoft.ServiceBus/namespaces/Namespace1-7037?api-version=2021-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1BTLVRlc3RpbmcvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2aWNlQnVzL25hbWVzcGFjZXMvTmFtZXNwYWNlMS03MDM3P2FwaS12ZXJzaW9uPTIwMjEtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1e191a05-f414-4236-b68e-d20690d0926c"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/3.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "de522728-75fe-4cfe-8fc3-fd56f13a4d2c_M4CH3_M4CH3"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/CH3"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/CH3",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11993"
+        ],
+        "x-ms-correlation-request-id": [
+          "eb79b03a-4b9f-47b2-818f-cb465bb76ae9"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20220216T104749Z:eb79b03a-4b9f-47b2-818f-cb465bb76ae9"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Feb 2022 10:47:49 GMT"
+        ],
+        "Content-Length": [
+          "1691"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Premium\",\r\n    \"tier\": \"Premium\",\r\n    \"capacity\": 1\r\n  },\r\n  \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PS-Testing/providers/Microsoft.ServiceBus/namespaces/Namespace1-7037\",\r\n  \"name\": \"Namespace1-7037\",\r\n  \"type\": \"Microsoft.ServiceBus/Namespaces\",\r\n  \"location\": \"North Europe\",\r\n  \"tags\": {},\r\n  \"identity\": {\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\": {},\r\n      \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI2\": {}\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"disableLocalAuth\": false,\r\n    \"zoneRedundant\": false,\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.KeyVault\",\r\n      \"keyVaultProperties\": [\r\n        {\r\n          \"keyName\": \"key1\",\r\n          \"keyVaultUri\": \"https://ps-testing-kv1.vault.azure.net\",\r\n          \"keyVersion\": \"\",\r\n          \"identity\": {\r\n            \"userAssignedIdentity\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\"\r\n          }\r\n        },\r\n        {\r\n          \"keyName\": \"key2\",\r\n          \"keyVaultUri\": \"https://ps-testing-kv1.vault.azure.net\",\r\n          \"keyVersion\": \"\",\r\n          \"identity\": {\r\n            \"userAssignedIdentity\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\"\r\n          }\r\n        }\r\n      ],\r\n      \"requireInfrastructureEncryption\": false\r\n    },\r\n    \"provisioningState\": \"ActivatingIdentity\",\r\n    \"metricId\": \"326100e2-f69d-4268-8503-075374f62b6e:namespace1-7037\",\r\n    \"createdAt\": \"2022-02-16T10:44:13.87Z\",\r\n    \"updatedAt\": \"2022-02-16T10:45:36.927Z\",\r\n    \"serviceBusEndpoint\": \"https://Namespace1-7037.servicebus.windows.net:443/\",\r\n    \"status\": \"Active\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PS-Testing/providers/Microsoft.ServiceBus/namespaces/Namespace1-7037?api-version=2021-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1BTLVRlc3RpbmcvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2aWNlQnVzL25hbWVzcGFjZXMvTmFtZXNwYWNlMS03MDM3P2FwaS12ZXJzaW9uPTIwMjEtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1e191a05-f414-4236-b68e-d20690d0926c"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/3.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "66fb119a-763f-4b7b-9ed3-2b9902a45a1a_M10CH3_M10CH3"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/CH3"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/CH3",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11992"
+        ],
+        "x-ms-correlation-request-id": [
+          "27ef3684-52a8-4c12-9b4e-fc173518b555"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20220216T104821Z:27ef3684-52a8-4c12-9b4e-fc173518b555"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Feb 2022 10:48:20 GMT"
+        ],
+        "Content-Length": [
+          "1691"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Premium\",\r\n    \"tier\": \"Premium\",\r\n    \"capacity\": 1\r\n  },\r\n  \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PS-Testing/providers/Microsoft.ServiceBus/namespaces/Namespace1-7037\",\r\n  \"name\": \"Namespace1-7037\",\r\n  \"type\": \"Microsoft.ServiceBus/Namespaces\",\r\n  \"location\": \"North Europe\",\r\n  \"tags\": {},\r\n  \"identity\": {\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\": {},\r\n      \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI2\": {}\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"disableLocalAuth\": false,\r\n    \"zoneRedundant\": false,\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.KeyVault\",\r\n      \"keyVaultProperties\": [\r\n        {\r\n          \"keyName\": \"key1\",\r\n          \"keyVaultUri\": \"https://ps-testing-kv1.vault.azure.net\",\r\n          \"keyVersion\": \"\",\r\n          \"identity\": {\r\n            \"userAssignedIdentity\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\"\r\n          }\r\n        },\r\n        {\r\n          \"keyName\": \"key2\",\r\n          \"keyVaultUri\": \"https://ps-testing-kv1.vault.azure.net\",\r\n          \"keyVersion\": \"\",\r\n          \"identity\": {\r\n            \"userAssignedIdentity\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\"\r\n          }\r\n        }\r\n      ],\r\n      \"requireInfrastructureEncryption\": false\r\n    },\r\n    \"provisioningState\": \"ActivatingIdentity\",\r\n    \"metricId\": \"326100e2-f69d-4268-8503-075374f62b6e:namespace1-7037\",\r\n    \"createdAt\": \"2022-02-16T10:44:13.87Z\",\r\n    \"updatedAt\": \"2022-02-16T10:45:36.927Z\",\r\n    \"serviceBusEndpoint\": \"https://Namespace1-7037.servicebus.windows.net:443/\",\r\n    \"status\": \"Active\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PS-Testing/providers/Microsoft.ServiceBus/namespaces/Namespace1-7037?api-version=2021-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1BTLVRlc3RpbmcvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2aWNlQnVzL25hbWVzcGFjZXMvTmFtZXNwYWNlMS03MDM3P2FwaS12ZXJzaW9uPTIwMjEtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1e191a05-f414-4236-b68e-d20690d0926c"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/3.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "54387385-043b-4721-b638-d6d7cbb6794e_M10CH3_M10CH3"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/CH3"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/CH3",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11991"
+        ],
+        "x-ms-correlation-request-id": [
+          "36b34153-ac0e-4194-9bea-bd609fbc037a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20220216T104851Z:36b34153-ac0e-4194-9bea-bd609fbc037a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Feb 2022 10:48:51 GMT"
+        ],
+        "Content-Length": [
+          "1691"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Premium\",\r\n    \"tier\": \"Premium\",\r\n    \"capacity\": 1\r\n  },\r\n  \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PS-Testing/providers/Microsoft.ServiceBus/namespaces/Namespace1-7037\",\r\n  \"name\": \"Namespace1-7037\",\r\n  \"type\": \"Microsoft.ServiceBus/Namespaces\",\r\n  \"location\": \"North Europe\",\r\n  \"tags\": {},\r\n  \"identity\": {\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\": {},\r\n      \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI2\": {}\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"disableLocalAuth\": false,\r\n    \"zoneRedundant\": false,\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.KeyVault\",\r\n      \"keyVaultProperties\": [\r\n        {\r\n          \"keyName\": \"key1\",\r\n          \"keyVaultUri\": \"https://ps-testing-kv1.vault.azure.net\",\r\n          \"keyVersion\": \"\",\r\n          \"identity\": {\r\n            \"userAssignedIdentity\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\"\r\n          }\r\n        },\r\n        {\r\n          \"keyName\": \"key2\",\r\n          \"keyVaultUri\": \"https://ps-testing-kv1.vault.azure.net\",\r\n          \"keyVersion\": \"\",\r\n          \"identity\": {\r\n            \"userAssignedIdentity\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\"\r\n          }\r\n        }\r\n      ],\r\n      \"requireInfrastructureEncryption\": false\r\n    },\r\n    \"provisioningState\": \"ActivatingIdentity\",\r\n    \"metricId\": \"326100e2-f69d-4268-8503-075374f62b6e:namespace1-7037\",\r\n    \"createdAt\": \"2022-02-16T10:44:13.87Z\",\r\n    \"updatedAt\": \"2022-02-16T10:45:36.927Z\",\r\n    \"serviceBusEndpoint\": \"https://Namespace1-7037.servicebus.windows.net:443/\",\r\n    \"status\": \"Active\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PS-Testing/providers/Microsoft.ServiceBus/namespaces/Namespace1-7037?api-version=2021-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1BTLVRlc3RpbmcvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2aWNlQnVzL25hbWVzcGFjZXMvTmFtZXNwYWNlMS03MDM3P2FwaS12ZXJzaW9uPTIwMjEtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1e191a05-f414-4236-b68e-d20690d0926c"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/3.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "240b4f40-2251-4166-bceb-42ea98b8c47e_M10CH3_M10CH3"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/CH3"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/CH3",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11990"
+        ],
+        "x-ms-correlation-request-id": [
+          "1e15c1be-288e-4cae-8909-8719e3ca5954"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20220216T104922Z:1e15c1be-288e-4cae-8909-8719e3ca5954"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Feb 2022 10:49:21 GMT"
+        ],
+        "Content-Length": [
+          "1691"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Premium\",\r\n    \"tier\": \"Premium\",\r\n    \"capacity\": 1\r\n  },\r\n  \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PS-Testing/providers/Microsoft.ServiceBus/namespaces/Namespace1-7037\",\r\n  \"name\": \"Namespace1-7037\",\r\n  \"type\": \"Microsoft.ServiceBus/Namespaces\",\r\n  \"location\": \"North Europe\",\r\n  \"tags\": {},\r\n  \"identity\": {\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\": {},\r\n      \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI2\": {}\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"disableLocalAuth\": false,\r\n    \"zoneRedundant\": false,\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.KeyVault\",\r\n      \"keyVaultProperties\": [\r\n        {\r\n          \"keyName\": \"key1\",\r\n          \"keyVaultUri\": \"https://ps-testing-kv1.vault.azure.net\",\r\n          \"keyVersion\": \"\",\r\n          \"identity\": {\r\n            \"userAssignedIdentity\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\"\r\n          }\r\n        },\r\n        {\r\n          \"keyName\": \"key2\",\r\n          \"keyVaultUri\": \"https://ps-testing-kv1.vault.azure.net\",\r\n          \"keyVersion\": \"\",\r\n          \"identity\": {\r\n            \"userAssignedIdentity\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\"\r\n          }\r\n        }\r\n      ],\r\n      \"requireInfrastructureEncryption\": false\r\n    },\r\n    \"provisioningState\": \"ActivatingIdentity\",\r\n    \"metricId\": \"326100e2-f69d-4268-8503-075374f62b6e:namespace1-7037\",\r\n    \"createdAt\": \"2022-02-16T10:44:13.87Z\",\r\n    \"updatedAt\": \"2022-02-16T10:45:36.927Z\",\r\n    \"serviceBusEndpoint\": \"https://Namespace1-7037.servicebus.windows.net:443/\",\r\n    \"status\": \"Active\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PS-Testing/providers/Microsoft.ServiceBus/namespaces/Namespace1-7037?api-version=2021-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1BTLVRlc3RpbmcvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2aWNlQnVzL25hbWVzcGFjZXMvTmFtZXNwYWNlMS03MDM3P2FwaS12ZXJzaW9uPTIwMjEtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1e191a05-f414-4236-b68e-d20690d0926c"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/3.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "417e2e59-d675-4a1e-bf76-77cef8d150ad_M10CH3_M10CH3"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/CH3"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/CH3",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11989"
+        ],
+        "x-ms-correlation-request-id": [
+          "2f72beb7-b8c8-44c1-bde3-bd9244aa7437"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20220216T104952Z:2f72beb7-b8c8-44c1-bde3-bd9244aa7437"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Feb 2022 10:49:52 GMT"
+        ],
+        "Content-Length": [
+          "1691"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Premium\",\r\n    \"tier\": \"Premium\",\r\n    \"capacity\": 1\r\n  },\r\n  \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PS-Testing/providers/Microsoft.ServiceBus/namespaces/Namespace1-7037\",\r\n  \"name\": \"Namespace1-7037\",\r\n  \"type\": \"Microsoft.ServiceBus/Namespaces\",\r\n  \"location\": \"North Europe\",\r\n  \"tags\": {},\r\n  \"identity\": {\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\": {},\r\n      \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI2\": {}\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"disableLocalAuth\": false,\r\n    \"zoneRedundant\": false,\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.KeyVault\",\r\n      \"keyVaultProperties\": [\r\n        {\r\n          \"keyName\": \"key1\",\r\n          \"keyVaultUri\": \"https://ps-testing-kv1.vault.azure.net\",\r\n          \"keyVersion\": \"\",\r\n          \"identity\": {\r\n            \"userAssignedIdentity\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\"\r\n          }\r\n        },\r\n        {\r\n          \"keyName\": \"key2\",\r\n          \"keyVaultUri\": \"https://ps-testing-kv1.vault.azure.net\",\r\n          \"keyVersion\": \"\",\r\n          \"identity\": {\r\n            \"userAssignedIdentity\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\"\r\n          }\r\n        }\r\n      ],\r\n      \"requireInfrastructureEncryption\": false\r\n    },\r\n    \"provisioningState\": \"ActivatingIdentity\",\r\n    \"metricId\": \"326100e2-f69d-4268-8503-075374f62b6e:namespace1-7037\",\r\n    \"createdAt\": \"2022-02-16T10:44:13.87Z\",\r\n    \"updatedAt\": \"2022-02-16T10:45:36.927Z\",\r\n    \"serviceBusEndpoint\": \"https://Namespace1-7037.servicebus.windows.net:443/\",\r\n    \"status\": \"Active\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PS-Testing/providers/Microsoft.ServiceBus/namespaces/Namespace1-7037?api-version=2021-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1BTLVRlc3RpbmcvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2aWNlQnVzL25hbWVzcGFjZXMvTmFtZXNwYWNlMS03MDM3P2FwaS12ZXJzaW9uPTIwMjEtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1e191a05-f414-4236-b68e-d20690d0926c"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/3.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "00fb09b6-043b-4481-891e-ebc15b89b9ed_M10CH3_M10CH3"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/CH3"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/CH3",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11988"
+        ],
+        "x-ms-correlation-request-id": [
+          "fcc3c523-7e70-432c-ad55-d504276b3e76"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20220216T105025Z:fcc3c523-7e70-432c-ad55-d504276b3e76"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Feb 2022 10:50:24 GMT"
+        ],
+        "Content-Length": [
+          "1691"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Premium\",\r\n    \"tier\": \"Premium\",\r\n    \"capacity\": 1\r\n  },\r\n  \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PS-Testing/providers/Microsoft.ServiceBus/namespaces/Namespace1-7037\",\r\n  \"name\": \"Namespace1-7037\",\r\n  \"type\": \"Microsoft.ServiceBus/Namespaces\",\r\n  \"location\": \"North Europe\",\r\n  \"tags\": {},\r\n  \"identity\": {\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\": {},\r\n      \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI2\": {}\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"disableLocalAuth\": false,\r\n    \"zoneRedundant\": false,\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.KeyVault\",\r\n      \"keyVaultProperties\": [\r\n        {\r\n          \"keyName\": \"key1\",\r\n          \"keyVaultUri\": \"https://ps-testing-kv1.vault.azure.net\",\r\n          \"keyVersion\": \"\",\r\n          \"identity\": {\r\n            \"userAssignedIdentity\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\"\r\n          }\r\n        },\r\n        {\r\n          \"keyName\": \"key2\",\r\n          \"keyVaultUri\": \"https://ps-testing-kv1.vault.azure.net\",\r\n          \"keyVersion\": \"\",\r\n          \"identity\": {\r\n            \"userAssignedIdentity\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\"\r\n          }\r\n        }\r\n      ],\r\n      \"requireInfrastructureEncryption\": false\r\n    },\r\n    \"provisioningState\": \"ActivatingIdentity\",\r\n    \"metricId\": \"326100e2-f69d-4268-8503-075374f62b6e:namespace1-7037\",\r\n    \"createdAt\": \"2022-02-16T10:44:13.87Z\",\r\n    \"updatedAt\": \"2022-02-16T10:45:36.927Z\",\r\n    \"serviceBusEndpoint\": \"https://Namespace1-7037.servicebus.windows.net:443/\",\r\n    \"status\": \"Active\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PS-Testing/providers/Microsoft.ServiceBus/namespaces/Namespace1-7037?api-version=2021-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1BTLVRlc3RpbmcvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2aWNlQnVzL25hbWVzcGFjZXMvTmFtZXNwYWNlMS03MDM3P2FwaS12ZXJzaW9uPTIwMjEtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1e191a05-f414-4236-b68e-d20690d0926c"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/3.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "706b2826-ad5b-4cf3-9157-53fe9e860543_M2CH3_M2CH3"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/CH3"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/CH3",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11987"
+        ],
+        "x-ms-correlation-request-id": [
+          "18a93fe2-779f-409e-abc9-74c1fe4d49e7"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20220216T105059Z:18a93fe2-779f-409e-abc9-74c1fe4d49e7"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Feb 2022 10:50:59 GMT"
+        ],
+        "Content-Length": [
+          "1691"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Premium\",\r\n    \"tier\": \"Premium\",\r\n    \"capacity\": 1\r\n  },\r\n  \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PS-Testing/providers/Microsoft.ServiceBus/namespaces/Namespace1-7037\",\r\n  \"name\": \"Namespace1-7037\",\r\n  \"type\": \"Microsoft.ServiceBus/Namespaces\",\r\n  \"location\": \"North Europe\",\r\n  \"tags\": {},\r\n  \"identity\": {\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\": {},\r\n      \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI2\": {}\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"disableLocalAuth\": false,\r\n    \"zoneRedundant\": false,\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.KeyVault\",\r\n      \"keyVaultProperties\": [\r\n        {\r\n          \"keyName\": \"key1\",\r\n          \"keyVaultUri\": \"https://ps-testing-kv1.vault.azure.net\",\r\n          \"keyVersion\": \"\",\r\n          \"identity\": {\r\n            \"userAssignedIdentity\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\"\r\n          }\r\n        },\r\n        {\r\n          \"keyName\": \"key2\",\r\n          \"keyVaultUri\": \"https://ps-testing-kv1.vault.azure.net\",\r\n          \"keyVersion\": \"\",\r\n          \"identity\": {\r\n            \"userAssignedIdentity\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\"\r\n          }\r\n        }\r\n      ],\r\n      \"requireInfrastructureEncryption\": false\r\n    },\r\n    \"provisioningState\": \"ActivatingIdentity\",\r\n    \"metricId\": \"326100e2-f69d-4268-8503-075374f62b6e:namespace1-7037\",\r\n    \"createdAt\": \"2022-02-16T10:44:13.87Z\",\r\n    \"updatedAt\": \"2022-02-16T10:45:36.927Z\",\r\n    \"serviceBusEndpoint\": \"https://Namespace1-7037.servicebus.windows.net:443/\",\r\n    \"status\": \"Active\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PS-Testing/providers/Microsoft.ServiceBus/namespaces/Namespace1-7037?api-version=2021-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1BTLVRlc3RpbmcvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2aWNlQnVzL25hbWVzcGFjZXMvTmFtZXNwYWNlMS03MDM3P2FwaS12ZXJzaW9uPTIwMjEtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1e191a05-f414-4236-b68e-d20690d0926c"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/3.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "f0bb00d5-dd62-475e-b57b-4f79bad7b00e_M7CH3_M7CH3"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/CH3"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/CH3",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11986"
+        ],
+        "x-ms-correlation-request-id": [
+          "ca6f6d7f-324f-4967-a2a0-153a698e3cf3"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20220216T105130Z:ca6f6d7f-324f-4967-a2a0-153a698e3cf3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Feb 2022 10:51:29 GMT"
+        ],
+        "Content-Length": [
+          "1793"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Premium\",\r\n    \"tier\": \"Premium\",\r\n    \"capacity\": 1\r\n  },\r\n  \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PS-Testing/providers/Microsoft.ServiceBus/namespaces/Namespace1-7037\",\r\n  \"name\": \"Namespace1-7037\",\r\n  \"type\": \"Microsoft.ServiceBus/Namespaces\",\r\n  \"location\": \"North Europe\",\r\n  \"tags\": {},\r\n  \"identity\": {\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\": {},\r\n      \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI2\": {\r\n        \"clientId\": \"bb127be2-f38d-458b-83f4-ee1a475b91f1\",\r\n        \"principalId\": \"e1e88643-0c2d-40b1-8654-7b8a8423d29b\"\r\n      }\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"disableLocalAuth\": false,\r\n    \"zoneRedundant\": false,\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.KeyVault\",\r\n      \"keyVaultProperties\": [\r\n        {\r\n          \"keyName\": \"key1\",\r\n          \"keyVaultUri\": \"https://ps-testing-kv1.vault.azure.net\",\r\n          \"keyVersion\": \"\",\r\n          \"identity\": {\r\n            \"userAssignedIdentity\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\"\r\n          }\r\n        },\r\n        {\r\n          \"keyName\": \"key2\",\r\n          \"keyVaultUri\": \"https://ps-testing-kv1.vault.azure.net\",\r\n          \"keyVersion\": \"\",\r\n          \"identity\": {\r\n            \"userAssignedIdentity\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\"\r\n          }\r\n        }\r\n      ],\r\n      \"requireInfrastructureEncryption\": false\r\n    },\r\n    \"provisioningState\": \"ActivatingIdentity\",\r\n    \"metricId\": \"326100e2-f69d-4268-8503-075374f62b6e:namespace1-7037\",\r\n    \"createdAt\": \"2022-02-16T10:44:13.87Z\",\r\n    \"updatedAt\": \"2022-02-16T10:51:18.663Z\",\r\n    \"serviceBusEndpoint\": \"https://Namespace1-7037.servicebus.windows.net:443/\",\r\n    \"status\": \"Active\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PS-Testing/providers/Microsoft.ServiceBus/namespaces/Namespace1-7037?api-version=2021-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1BTLVRlc3RpbmcvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2aWNlQnVzL25hbWVzcGFjZXMvTmFtZXNwYWNlMS03MDM3P2FwaS12ZXJzaW9uPTIwMjEtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1e191a05-f414-4236-b68e-d20690d0926c"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/3.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "46a259fa-f47b-4564-ab7b-890568930290_M7CH3_M7CH3"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/CH3"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/CH3",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11985"
+        ],
+        "x-ms-correlation-request-id": [
+          "7d784dce-a98b-40bf-a774-d6648daa1326"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20220216T105200Z:7d784dce-a98b-40bf-a774-d6648daa1326"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Feb 2022 10:51:59 GMT"
+        ],
+        "Content-Length": [
+          "1885"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Premium\",\r\n    \"tier\": \"Premium\",\r\n    \"capacity\": 1\r\n  },\r\n  \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PS-Testing/providers/Microsoft.ServiceBus/namespaces/Namespace1-7037\",\r\n  \"name\": \"Namespace1-7037\",\r\n  \"type\": \"Microsoft.ServiceBus/Namespaces\",\r\n  \"location\": \"North Europe\",\r\n  \"tags\": {},\r\n  \"identity\": {\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\": {\r\n        \"clientId\": \"b83876ea-dcee-4643-9c34-c29cb7fb1eaa\",\r\n        \"principalId\": \"7663a339-be0b-4d47-8486-f66efca4a61a\"\r\n      },\r\n      \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI2\": {\r\n        \"clientId\": \"bb127be2-f38d-458b-83f4-ee1a475b91f1\",\r\n        \"principalId\": \"e1e88643-0c2d-40b1-8654-7b8a8423d29b\"\r\n      }\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"disableLocalAuth\": false,\r\n    \"zoneRedundant\": false,\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.KeyVault\",\r\n      \"keyVaultProperties\": [\r\n        {\r\n          \"keyName\": \"key1\",\r\n          \"keyVaultUri\": \"https://ps-testing-kv1.vault.azure.net\",\r\n          \"keyVersion\": \"\",\r\n          \"identity\": {\r\n            \"userAssignedIdentity\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\"\r\n          }\r\n        },\r\n        {\r\n          \"keyName\": \"key2\",\r\n          \"keyVaultUri\": \"https://ps-testing-kv1.vault.azure.net\",\r\n          \"keyVersion\": \"\",\r\n          \"identity\": {\r\n            \"userAssignedIdentity\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\"\r\n          }\r\n        }\r\n      ],\r\n      \"requireInfrastructureEncryption\": false\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"metricId\": \"326100e2-f69d-4268-8503-075374f62b6e:namespace1-7037\",\r\n    \"createdAt\": \"2022-02-16T10:44:13.87Z\",\r\n    \"updatedAt\": \"2022-02-16T10:51:30.44Z\",\r\n    \"serviceBusEndpoint\": \"https://Namespace1-7037.servicebus.windows.net:443/\",\r\n    \"status\": \"Active\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PS-Testing/providers/Microsoft.ServiceBus/namespaces/Namespace1-7037?api-version=2021-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1BTLVRlc3RpbmcvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2aWNlQnVzL25hbWVzcGFjZXMvTmFtZXNwYWNlMS03MDM3P2FwaS12ZXJzaW9uPTIwMjEtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "f18474ee-3099-41a0-b4be-18dc0a8c132c"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/3.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "7d5b3840-51b4-4f3e-b913-61a2db8a3b72_M11SN1_M11SN1"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "1a5044d1-814b-4e96-9233-3ea1d1576853"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20220216T105201Z:1a5044d1-814b-4e96-9233-3ea1d1576853"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Feb 2022 10:52:00 GMT"
+        ],
+        "Content-Length": [
+          "1885"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Premium\",\r\n    \"tier\": \"Premium\",\r\n    \"capacity\": 1\r\n  },\r\n  \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PS-Testing/providers/Microsoft.ServiceBus/namespaces/Namespace1-7037\",\r\n  \"name\": \"Namespace1-7037\",\r\n  \"type\": \"Microsoft.ServiceBus/Namespaces\",\r\n  \"location\": \"North Europe\",\r\n  \"tags\": {},\r\n  \"identity\": {\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\": {\r\n        \"clientId\": \"b83876ea-dcee-4643-9c34-c29cb7fb1eaa\",\r\n        \"principalId\": \"7663a339-be0b-4d47-8486-f66efca4a61a\"\r\n      },\r\n      \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI2\": {\r\n        \"clientId\": \"bb127be2-f38d-458b-83f4-ee1a475b91f1\",\r\n        \"principalId\": \"e1e88643-0c2d-40b1-8654-7b8a8423d29b\"\r\n      }\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"disableLocalAuth\": false,\r\n    \"zoneRedundant\": false,\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.KeyVault\",\r\n      \"keyVaultProperties\": [\r\n        {\r\n          \"keyName\": \"key1\",\r\n          \"keyVaultUri\": \"https://ps-testing-kv1.vault.azure.net\",\r\n          \"keyVersion\": \"\",\r\n          \"identity\": {\r\n            \"userAssignedIdentity\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\"\r\n          }\r\n        },\r\n        {\r\n          \"keyName\": \"key2\",\r\n          \"keyVaultUri\": \"https://ps-testing-kv1.vault.azure.net\",\r\n          \"keyVersion\": \"\",\r\n          \"identity\": {\r\n            \"userAssignedIdentity\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\"\r\n          }\r\n        }\r\n      ],\r\n      \"requireInfrastructureEncryption\": false\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"metricId\": \"326100e2-f69d-4268-8503-075374f62b6e:namespace1-7037\",\r\n    \"createdAt\": \"2022-02-16T10:44:13.87Z\",\r\n    \"updatedAt\": \"2022-02-16T10:51:30.44Z\",\r\n    \"serviceBusEndpoint\": \"https://Namespace1-7037.servicebus.windows.net:443/\",\r\n    \"status\": \"Active\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PS-Testing/providers/Microsoft.ServiceBus/namespaces/Namespace1-7037?api-version=2021-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1BTLVRlc3RpbmcvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2aWNlQnVzL25hbWVzcGFjZXMvTmFtZXNwYWNlMS03MDM3P2FwaS12ZXJzaW9uPTIwMjEtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "f18474ee-3099-41a0-b4be-18dc0a8c132c"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/3.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "2264285b-5e5b-4856-9735-594582da6e1b_M11SN1_M11SN1"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "4da34b35-18c1-4565-b543-63f33fd075b0"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20220216T105245Z:4da34b35-18c1-4565-b543-63f33fd075b0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Feb 2022 10:52:45 GMT"
+        ],
+        "Content-Length": [
+          "2167"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Premium\",\r\n    \"tier\": \"Premium\",\r\n    \"capacity\": 1\r\n  },\r\n  \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PS-Testing/providers/Microsoft.ServiceBus/namespaces/Namespace1-7037\",\r\n  \"name\": \"Namespace1-7037\",\r\n  \"type\": \"Microsoft.ServiceBus/Namespaces\",\r\n  \"location\": \"North Europe\",\r\n  \"tags\": {},\r\n  \"identity\": {\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\": {\r\n        \"clientId\": \"b83876ea-dcee-4643-9c34-c29cb7fb1eaa\",\r\n        \"principalId\": \"7663a339-be0b-4d47-8486-f66efca4a61a\"\r\n      },\r\n      \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI2\": {\r\n        \"clientId\": \"bb127be2-f38d-458b-83f4-ee1a475b91f1\",\r\n        \"principalId\": \"e1e88643-0c2d-40b1-8654-7b8a8423d29b\"\r\n      }\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"disableLocalAuth\": false,\r\n    \"zoneRedundant\": false,\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.KeyVault\",\r\n      \"keyVaultProperties\": [\r\n        {\r\n          \"keyName\": \"key1\",\r\n          \"keyVaultUri\": \"https://ps-testing-kv1.vault.azure.net\",\r\n          \"keyVersion\": \"\",\r\n          \"identity\": {\r\n            \"userAssignedIdentity\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\"\r\n          }\r\n        },\r\n        {\r\n          \"keyName\": \"key2\",\r\n          \"keyVaultUri\": \"https://ps-testing-kv1.vault.azure.net\",\r\n          \"keyVersion\": \"\",\r\n          \"identity\": {\r\n            \"userAssignedIdentity\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\"\r\n          }\r\n        },\r\n        {\r\n          \"keyName\": \"key3\",\r\n          \"keyVaultUri\": \"https://ps-testing-kv1.vault.azure.net\",\r\n          \"keyVersion\": \"\",\r\n          \"identity\": {\r\n            \"userAssignedIdentity\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/PS-Testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1\"\r\n          }\r\n        }\r\n      ],\r\n      \"requireInfrastructureEncryption\": false\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"metricId\": \"326100e2-f69d-4268-8503-075374f62b6e:namespace1-7037\",\r\n    \"createdAt\": \"2022-02-16T10:44:13.87Z\",\r\n    \"updatedAt\": \"2022-02-16T10:52:16.547Z\",\r\n    \"serviceBusEndpoint\": \"https://Namespace1-7037.servicebus.windows.net:443/\",\r\n    \"status\": \"Active\"\r\n  }\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {
+    "": [
+      "Namespace1-7037",
+      "Namespace2-9758"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "326100e2-f69d-4268-8503-075374f62b6e"
+  }
+}
