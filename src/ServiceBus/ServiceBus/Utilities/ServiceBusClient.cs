@@ -174,7 +174,9 @@ namespace Microsoft.Azure.Commands.ServiceBus
         {
 
             var parameter = Client.Namespaces.Get(resourceGroupName, namespaceName);
-            parameter.Location = location;           
+
+            if (location != null)
+                parameter.Location = location;           
 
             if (tags != null)
             {
@@ -204,6 +206,10 @@ namespace Microsoft.Azure.Commands.ServiceBus
             {
                 parameter.Identity = new Identity();
                 parameter.Identity = FindIdentity(identityType);
+                if (parameter.Identity.Type == ManagedServiceIdentityType.None)
+                {
+                    parameter.Identity.UserAssignedIdentities = null;
+                }
             }
 
             if (identityIds != null)

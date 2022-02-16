@@ -40,11 +40,19 @@ namespace Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests
         {
             TestRunner.RunTestScript("ServiceBusNameSpaceAuthTests");
         }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ServiceBusNameSpaceAuth_CURD()
         {
             TestRunner.RunTestScript("DebugTest");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ServiceBusNameSpaceMSI()
+        {
+            TestRunner.RunTestScript("MSITest");
         }
     }
 }

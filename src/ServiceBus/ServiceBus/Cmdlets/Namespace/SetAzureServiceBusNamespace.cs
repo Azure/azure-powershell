@@ -57,12 +57,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
         public string Name { get; set; }
 
         /// <summary>
-        /// Namespace Object
-        /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Namespace Object")]
-        public PSNamespaceAttributes InputObject { get; set; }
-
-        /// <summary>
         /// Namespace Sku Name.
         /// </summary>
         [Parameter( Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Namespace Sku Name")]
@@ -107,52 +101,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
         {
             try
             {
-                bool? isDisableLocalAuth = null;
-
-                if(InputObject != null)
-                {
-                    if(SkuName == null)
-                    {
-                        SkuName = InputObject?.Sku?.Name.ToString();
-                    }
-
-                    if(SkuCapacity == null)
-                    {
-                        SkuCapacity = InputObject?.Sku?.Capacity;
-                    }
-
-                    isDisableLocalAuth = DisableLocalAuth == null ? InputObject?.DisableLocalAuth : DisableLocalAuth.IsPresent;
-
-
-                    if(Location == null)
-                    {
-                        Location = InputObject?.Location;
-                    }
-
-                    if(Tag == null)
-                    {
-                        Tag = InputObject?.Tag;
-                    }
-
-                    if(IdentityId == null)
-                    {
-                        IdentityId = InputObject?.IdentityId;
-                    }
-
-                    if(IdentityType == null)
-                    {
-                        if(InputObject.Identity != null)
-                        {
-                            IdentityType = ParseIdentityType(InputObject.Identity.Type);
-                        }
-                    }
-
-                    if(EncryptionConfig == null)
-                    {
-                        EncryptionConfig = InputObject?.EncryptionConfig;
-                    }
-                }
-
 
                 if (ShouldProcess(target: Name, action: string.Format(Resources.UpdateNamespace, Name, ResourceGroupName)))
                 {
@@ -164,7 +112,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
                                                            skuName: SkuName, 
                                                            skuCapacity: SkuCapacity, 
                                                            tags: Tag, 
-                                                           isDisableLocalAuth: isDisableLocalAuth, 
+                                                           isDisableLocalAuth: DisableLocalAuth.IsPresent, 
                                                            identityType: IdentityType, 
                                                            identityIds: IdentityId, 
                                                            encryptionconfigs: EncryptionConfig));
