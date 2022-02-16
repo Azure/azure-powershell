@@ -41,7 +41,7 @@ $rulesEngineRule1.Action
 
 RequestHeaderActions           ResponseHeaderActions RouteConfigurationOverride
 --------------------           --------------------- --------------------------
-{headeraction1, headeraction2} {}                    Microsoft.Azure.Commands.FrontDoor.Models.PSForwardingConfiguratiï¿½
+{headeraction1, headeraction2} {}                    Microsoft.Azure.Commands.FrontDoor.Models.PSForwardingConfiguration
 
 $rulesEngineRule1.MatchCondition[0]
 
