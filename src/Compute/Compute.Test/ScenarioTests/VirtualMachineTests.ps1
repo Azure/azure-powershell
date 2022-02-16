@@ -5606,20 +5606,21 @@ function Test-VMvCPUFeatures
         # VM Profile & Hardware
         $vmname = 'v' + $rgname;
         $domainNameLabel = "d1" + $rgname;
-        $vmSize = 'Standard_DS3_v2';
+        #$vmSize = 'Standard_DS3_v2';
+        $vmSize = 'Standard_D4s_v4';
         $vCPUsCore1 = 1;
         $vCPUsAvailable1 = 1;
-        $vCPUsCoreDefault = 1;
-        $vCPUsAvailableDefault = 4;
+        $vCPUsCoreInitial = 2;
+        $vCPUsAvailableInitial = 4;
 
         # Creating a VM using simple parameter set
         $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;  
         $user = "admin01";
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
-        $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -Size $vmSize;
-        Assert-AreEqual $vCPUsAvailableDefault $vm.HardwareProfile.VmSizeProperties.VCPUsAvailable;
-        Assert-AreEqual $vCPUsCoreDefault $vm.HardwareProfile.VmSizeProperties.VCPUsPerCore;
+        $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -Size $vmSize -vCPUsPerCore $vCPUsCoreInitial -vCPUsAvailable $vCPUsAvailableInitial;
+        Assert-AreEqual $vCPUsAvailableInitial $vm.HardwareProfile.VmSizeProperties.VCPUsAvailable;
+        Assert-AreEqual $vCPUsCoreInitial $vm.HardwareProfile.VmSizeProperties.VCPUsPerCore;
 
         $vmUp = Update-AzVm -ResourceGroupName $rgname -VM $vm -vCPUsAvailable $vCPUsAvailable1 -vCPUsPerCore $vCPUsCore1;
 
