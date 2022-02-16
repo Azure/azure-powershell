@@ -40,9 +40,11 @@ Specify the *InstanceView* parameter to get only the instance view of a virtual 
 ## EXAMPLES
 
 ### Example 1: Get the properties of a VMSS
+```powershell
+Get-AzVmss -ResourceGroupName "Group001" -VMScaleSetName "VMSS001"
 ```
-PS C:\> Get-AzVmss -ResourceGroupName "Group001" -VMScaleSetName "VMSS001"
 
+```output
 ResourceGroupName                           : Group001
 Sku                                         :
   Name                                      : Standard_DS1_v2
@@ -109,9 +111,11 @@ This command gets the properties of the VMSS named VMSS001 that belongs to the r
 Since the command does not specify the *InstanceView* switch parameter, the cmdlet gets the model view of the virtual machine scale set.
 
 ### Example 2: Get all Vmss in a resource group
+```powershell
+Get-AzVmss -ResourceGroupName "Group001"
 ```
-PS C:\> Get-AzVmss -ResourceGroupName "Group001"
 
+```output
 ResourceGroupName                               Name       Location             Sku Capacity ProvisioningState
 -----------------                               ----       --------             --- -------- -----------------
 Group001                                       VMSS001      eastus Standard_DS1_v2        2         Succeeded
@@ -121,9 +125,11 @@ Group001                                       VMSS002      eastus     Standard_
 Get all Vmss in resource group "Group001"
 
 ### Example 3: Get all Vmss in a subscription
+```powershell
+Get-AzVmss
 ```
-PS C:\> Get-AzVmss
 
+```output
 ResourceGroupName                               Name       Location             Sku Capacity ProvisioningState
 -----------------                               ----       --------             --- -------- -----------------
 Group001                                       VMSS001      eastus Standard_DS1_v2        2         Succeeded
@@ -135,9 +141,11 @@ Group002                                       VMSS004      eastus Standard_DS1_
 Get all Vmss in subscription.
 
 ### Example 4: Get all Vmss using filtering
+```powershell
+Get-AzVmss -Name VMSS00*
 ```
-PS C:\> Get-AzVmss -Name VMSS00*
 
+```output
 ResourceGroupName                               Name       Location             Sku Capacity ProvisioningState
 -----------------                               ----       --------             --- -------- -----------------
 Group001                                       VMSS001      eastus Standard_DS1_v2        2         Succeeded
@@ -149,9 +157,11 @@ Group002                                       VMSS004      eastus Standard_DS1_
 Get all Vmss in subscription that start with "VMSS00".
 
 ### Example 5: Get the Vmss with a UserData value
+```powershell
+Get-AzVmss -ResourceGroupName <RESOURCE GROUP NAME> -VMScaleSetName <VMSS NAME> -InstanceView:$false -UserData;
 ```
-PS C:\> Get-AzVmss -ResourceGroupName <RESOURCE GROUP NAME> -VMScaleSetName <VMSS NAME> -InstanceView:$false -UserData;
 
+```output
 ResourceGroupName                           : <RESOURCE GROUP NAME>
 Sku                                         :
   Name                                      : Standard_DS1_v2

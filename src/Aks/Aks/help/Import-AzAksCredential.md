@@ -39,8 +39,8 @@ Import and merge Kubectl config for a managed Kubernetes Cluster.
 ## EXAMPLES
 
 ### Import and merge Kubectl config
-```
-PS C:\> Import-AzAksCredential -ResourceGroupName group -Name myCluster
+```powershell
+Import-AzAksCredential -ResourceGroupName group -Name myCluster
 ```
 
 ## PARAMETERS

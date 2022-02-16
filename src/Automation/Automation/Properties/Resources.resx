@@ -497,4 +497,8 @@
   <data name="SoftwareUpdateConfigurationInvalidTagFormat" xml:space="preserve">
     <value>The Tag format is invalid. Valid Tag format is hashtable with string key and value of String or array of string.</value>
   </data>
+  <data name="InsufficientUserPermissions" xml:space="preserve">
+    <value>Insufficient user permissions. Please refer https://docs.microsoft.com/azure/role-based-access-control/built-in-roles for more details.</value>
+    <comment>Automation</comment>
+  </data>
 </root>

@@ -29,7 +29,11 @@ Remove-AzOperationalInsightsDataSource [-Workspace] <PSWorkspace> [-Name] <Strin
 The **Remove-AzOperationalInsightsDataSource** cmdlet deletes a data source.
 
 ## EXAMPLES
-
+### Example 1
+```powershell
+Remove-AzOperationalInsightsDataSource -ResourceGroupName testrg -WorkspaceName LogAnalyticsWorkspace -Name DataSource_CustomLog_Customlog_CL
+```
+Delete a data source.
 ## PARAMETERS
 
 ### -DefaultProfile
