@@ -43,9 +43,9 @@ namespace Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void ServiceBusNameSpaceAuth_CURD()
+        public void ServiceBusNameSpaceEncryption_CRUD()
         {
-            TestRunner.RunTestScript("DebugTest");
+            TestRunner.RunTestScript("EncryptionTest");
         }
 
         [Fact]

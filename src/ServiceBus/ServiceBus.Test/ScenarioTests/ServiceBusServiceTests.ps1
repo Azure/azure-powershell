@@ -324,6 +324,6 @@ function EncryptionTest{
     }
      
     finally{
-        Remove-AzEventHubNamespace -ResourceGroupName $resourceGroupName -Name $namespace1
+        Remove-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespace1
     }
 }
