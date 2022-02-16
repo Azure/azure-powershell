@@ -176,7 +176,7 @@ function Test-VirtualMachineScaleSetVMRunCommand
 
         $job = Invoke-AzVmssVMRunCommand -ResourceGroupName $rgname -Name $vmssName -InstanceId $vmssId -CommandId $commandId -ScriptPath $path -Parameter $param -AsJob;
         $result = $job | Wait-Job;
-        #Assert-AreEqual "Completed" $result.State;
+        Assert-AreEqual "Completed" $result.State;
         $st = $job | Receive-Job;
         Assert-NotNull $st.Value;
 
