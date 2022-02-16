@@ -146,13 +146,13 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the number of vCPUs available for the VM. When this property is not specified in the request body the default behavior is to set it to the value of vCPUs available for that VM size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).")]
-        public int vCPUsAvailable { get; set; }
+        public int vCPUCountAvailable { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the vCPU to physical core ratio. When this property is not specified in the request body the default behavior is set to the value of vCPUsPerCore for the VM Size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list). Setting this property to 1 also means that hyper-threading is disabled.")]
-        public int vCPUsPerCore { get; set; }
+        public int vCPUCountPerCore { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -305,7 +305,7 @@ namespace Microsoft.Azure.Commands.Compute
                         parameters.StorageProfile.ImageReference.Id = null;
                     }
 
-                    if (this.IsParameterBound(c => c.vCPUsAvailable))
+                    if (this.IsParameterBound(c => c.vCPUCountPerCore))
                     {
                         if (parameters.HardwareProfile == null)
                         {
@@ -315,10 +315,10 @@ namespace Microsoft.Azure.Commands.Compute
                         {
                             parameters.HardwareProfile.VmSizeProperties = new VMSizeProperties();
                         }
-                        parameters.HardwareProfile.VmSizeProperties.VCPUsAvailable = this.vCPUsAvailable;
+                        parameters.HardwareProfile.VmSizeProperties.VCPUsAvailable = this.vCPUCountPerCore;
                     }
 
-                    if (this.IsParameterBound(c => c.vCPUsAvailable))
+                    if (this.IsParameterBound(c => c.vCPUCountAvailable))
                     {
                         if (parameters.HardwareProfile == null)
                         {
@@ -328,7 +328,7 @@ namespace Microsoft.Azure.Commands.Compute
                         {
                             parameters.HardwareProfile.VmSizeProperties = new VMSizeProperties();
                         }
-                        parameters.HardwareProfile.VmSizeProperties.VCPUsPerCore = this.vCPUsPerCore;
+                        parameters.HardwareProfile.VmSizeProperties.VCPUsPerCore = this.vCPUCountAvailable;
                     }
 
                     if (NoWait.IsPresent)

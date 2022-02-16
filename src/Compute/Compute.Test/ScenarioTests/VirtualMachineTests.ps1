@@ -5618,11 +5618,11 @@ function Test-VMvCPUFeatures
         $user = "admin01";
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
-        $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -Size $vmSize -vCPUsPerCore $vCPUsCoreInitial -vCPUsAvailable $vCPUsAvailableInitial;
+        $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -Size $vmSize -vCPUCountPerCore $vCPUsCoreInitial -vCPUCountAvailable $vCPUsAvailableInitial;
         Assert-AreEqual $vCPUsAvailableInitial $vm.HardwareProfile.VmSizeProperties.VCPUsAvailable;
         Assert-AreEqual $vCPUsCoreInitial $vm.HardwareProfile.VmSizeProperties.VCPUsPerCore;
 
-        $vmUp = Update-AzVm -ResourceGroupName $rgname -VM $vm -vCPUsAvailable $vCPUsAvailable1 -vCPUsPerCore $vCPUsCore1;
+        $vmUp = Update-AzVm -ResourceGroupName $rgname -VM $vm -vCPUCountAvailable $vCPUsAvailable1 -vCPUCountPerCore $vCPUsCore1;
 
         $vmGet = Get-AzVm -ResourceGroupName $rgname -Name $vmname;
         Assert-AreEqual $vCPUsAvailable1 $vmGet.HardwareProfile.VmSizeProperties.VCPUsAvailable;
@@ -5637,7 +5637,7 @@ function Test-VMvCPUFeatures
         $identityType = "SystemAssigned";
 
         # Creating a VM 
-        $vmconfig = New-AzVmConfig -VMName $vmname -vmsize $vmsize -IdentityType $identityType -vCPUsAvailable $vCPUsAvailable1 -vCPUsPerCore $vCPUsCore1;
+        $vmconfig = New-AzVmConfig -VMName $vmname -vmsize $vmsize -IdentityType $identityType -vCPUCountAvailable $vCPUsAvailable1 -vCPUCountPerCore $vCPUsCore1;
 
         $publisherName = "MicrosoftWindowsServer";
         $offer = "WindowsServer";
