@@ -277,11 +277,11 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// </summary>
         [Parameter(Mandatory = false,
                ParameterSetName = BySimplifiedFormatActionGroupAlertProcessingRuleParameterSet,
-               HelpMessage = "Start Date Time. Format 12/09/2018 06:00:00\n +" +
+               HelpMessage = "Start Date Time. Format 2022-09-21 06:00:00\n +" +
                     "Should be mentioned in case of Reccurent  Schedule - Once, Daily, Weekly or Monthly.")]
         [Parameter(Mandatory = false,
                ParameterSetName = BySimplifiedFormatSuppressionAlertProcessingRuleParameterSet,
-               HelpMessage = "Start Date Time. Format 12/09/2018 06:00:00\n +" +
+               HelpMessage = "Start Date Time. Format 2022-09-21 06:00:00\n +" +
                     "Should be mentioned in case of Reccurent Schedule - Once, Daily, Weekly or Monthly.")]
         public string ScheduleStartDateTime { get; set; }
 
@@ -290,11 +290,11 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// </summary>
         [Parameter(Mandatory = false,
                ParameterSetName = BySimplifiedFormatActionGroupAlertProcessingRuleParameterSet,
-               HelpMessage = "End Date Time. Format 12/09/2018 06:00:00\n +" +
+               HelpMessage = "End Date Time. Format 2022-09-21 06:00:00\n +" +
                     "Should be mentioned in case of Reccurent  Schedule - Once, Daily, Weekly or Monthly.")]
         [Parameter(Mandatory = false,
                ParameterSetName = BySimplifiedFormatSuppressionAlertProcessingRuleParameterSet,
-               HelpMessage = "End Date Time. Format 12/09/2018 06:00:00\n +" +
+               HelpMessage = "End Date Time. Format 2022-09-21 06:00:00\n +" +
                     "Should be mentioned in case of Reccurent Schedule - Once, Daily, Weekly or Monthly.")]
         public string ScheduleEndDateTime { get; set; }
 
@@ -318,7 +318,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         [Parameter(Mandatory = false,
                 ParameterSetName = BySimplifiedFormatSuppressionAlertProcessingRuleParameterSet,
                 HelpMessage = "Specifies when the processing rule should be applied, Default to Always")]
-        [PSArgumentCompleter("Always", "Once", "Daily", "Weekly", "Monthly")]
+        [PSArgumentCompleter("Daily", "Weekly", "Monthly")]
         public string ScheduleReccurenceType { get; set; }
 
         /// <summary>
@@ -330,7 +330,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         [Parameter(Mandatory = false,
                 ParameterSetName = BySimplifiedFormatSuppressionAlertProcessingRuleParameterSet,
                 HelpMessage = "Specifies when the processing rule should be applied, Default to Always")]
-        [PSArgumentCompleter("Always", "Once", "Daily", "Weekly", "Monthly")]
+        [PSArgumentCompleter("Daily", "Weekly", "Monthly")]
         public string ScheduleReccurence2Type { get; set; }
 
         /// <summary>
@@ -591,15 +591,15 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         private Schedule ValidateParseSchedule()
         {
             Schedule schedule = new Schedule();
-            
-            if(ScheduleReccurenceType == null || ScheduleReccurenceType == "Always")
+
+            if (ScheduleReccurenceType == null && ScheduleStartDateTime == null && ScheduleEndDateTime == null)
             {
                 return null;
             }
 
             ValidateSchedule();          
                
-            if (ScheduleReccurenceType == "Once")
+            if (ScheduleReccurenceType == null)
             {
                 schedule = new Schedule(
                 effectiveFrom: ScheduleStartDateTime.Split(' ')[0] + "T" + ScheduleStartDateTime.Split(' ')[1],
@@ -627,6 +627,25 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                     var daysOfMonth = ScheduleReccurenceDaysOfMonth.Split(',').Select(i => (int?)int.Parse(i)).ToList();
                     recurrences.Add(new MonthlyRecurrence(daysOfMonth, ScheduleReccurenceStartTime, ScheduleReccurenceEndTime));
                 }
+                if(ScheduleReccurence2Type != null)
+                {
+                    if (ScheduleReccurence2Type == "Daily")
+                    {
+                        recurrences.Add(new DailyRecurrence(ScheduleReccurence2StartTime, ScheduleReccurence2EndTime));
+                    }
+
+                    if (ScheduleReccurence2Type == "Weekly")
+                    {
+                        IList<string> daysOfWeek = ScheduleReccurence2DaysOfWeek.Split(',');
+                        recurrences.Add(new WeeklyRecurrence(daysOfWeek, ScheduleReccurence2StartTime, ScheduleReccurence2EndTime));
+                    }
+
+                    if (ScheduleReccurence2Type == "Monthly")
+                    {
+                        var daysOfMonth = ScheduleReccurence2DaysOfMonth.Split(',').Select(i => (int?)int.Parse(i)).ToList();
+                        recurrences.Add(new MonthlyRecurrence(daysOfMonth, ScheduleReccurence2StartTime, ScheduleReccurence2EndTime));
+                    }
+                }
 
                 schedule = new Schedule(
                     effectiveFrom: ScheduleStartDateTime.Split(' ')[0] + "T" + ScheduleStartDateTime.Split(' ')[1],
@@ -646,44 +665,50 @@ namespace Microsoft.Azure.Commands.AlertsManagement
 
             if (ScheduleStartDateTime == null)
             {
-                throw new PSInvalidOperationException("StartDateTime must be provided");
+                throw new PSInvalidOperationException("ScheduleStartDateTime must be provided");
             }
 
             // check start and end date time Format
             if (System.DateTime.TryParseExact(ScheduleStartDateTime, format, CultureInfo.InvariantCulture, DateTimeStyles.None, out outDateTime) == false)
             {
-                throw new PSInvalidOperationException("Invalid StartDateTime Format");
+                throw new PSInvalidOperationException("Invalid ScheduleStartDateTime Format");
             }
             if (ScheduleEndDateTime != null)
             {
                 if (System.DateTime.TryParseExact(ScheduleStartDateTime, format, CultureInfo.InvariantCulture, DateTimeStyles.None, out outDateTime) == false)
                 {
-                    throw new PSInvalidOperationException("Invalid EndDateTime Format");
+                    throw new PSInvalidOperationException("Invalid ScheduleStartDateTime Format");
                 }
             }
-            if(ScheduleReccurenceType != "Once")
+            
+            if (ScheduleReccurenceType != null)
             {
+                if(ScheduleReccurenceType != "Daily" && ScheduleReccurenceType != "Weekly" && ScheduleReccurenceType != "Monthly")
+                {
+                    throw new PSInvalidOperationException("ScheduleReccurenceType is Invalid");
+                }
+
                 if (ScheduleReccurenceStartTime == null)
                 {
-                    throw new PSInvalidOperationException("ReccurenceStartTime must be provided");
+                    throw new PSInvalidOperationException("ScheduleReccurenceStartTime must be provided");
                 }
                 if (ScheduleReccurenceEndTime == null)
                 {
-                    throw new PSInvalidOperationException("ReccurenceEndTime must be provided");
+                    throw new PSInvalidOperationException("ScheduleReccurenceEndTime must be provided");
                 }
                 if (System.DateTime.TryParseExact("2022-01-12 " + ScheduleReccurenceStartTime, format, CultureInfo.InvariantCulture, DateTimeStyles.None, out outDateTime) == false)
                 {
-                    throw new PSInvalidOperationException("Invalid ReccurenceStartTime Format");
+                    throw new PSInvalidOperationException("Invalid ScheduleReccurenceStartTime Format");
                 }
                 if (System.DateTime.TryParseExact("2022-01-12 " + ScheduleReccurenceEndTime, format, CultureInfo.InvariantCulture, DateTimeStyles.None, out outDateTime) == false)
                 {
-                    throw new PSInvalidOperationException("Invalid ReccurenceEndTime Format");
+                    throw new PSInvalidOperationException("Invalid ScheduleReccurenceEndTime Format");
                 }
                 if (ScheduleReccurenceType == "Weekly")
                 {
                     if(ScheduleReccurenceDaysOfWeek == null)
                     {
-                        throw new PSInvalidOperationException("ReccurenceDaysOfWeek must be provided");
+                        throw new PSInvalidOperationException("ScheduleReccurenceDaysOfWeek must be provided");
                     }
                 }
 
@@ -691,7 +716,50 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                 {
                     if (ScheduleReccurenceDaysOfMonth == null)
                     {
-                        throw new PSInvalidOperationException("ReccurenceDaysOfMonth must be provided");
+                        throw new PSInvalidOperationException("ScheduleReccurenceDaysOfMonth must be provided");
+                    }
+                }
+            }
+            if (ScheduleReccurence2Type != null && ScheduleReccurenceType == null)
+            {
+                throw new PSInvalidOperationException("The scheduleReccurence must be provided first then you can use scheduleReccurence2");
+            }
+
+            if (ScheduleReccurence2Type != null)
+            {
+                if (ScheduleReccurence2Type != "Daily" && ScheduleReccurence2Type != "Weekly" && ScheduleReccurence2Type != "Monthly")
+                {
+                    throw new PSInvalidOperationException("ScheduleReccurence2Type is Invalid");
+                }
+                if (ScheduleReccurence2StartTime == null)
+                {
+                    throw new PSInvalidOperationException("ScheduleReccurence2StartTime must be provided");
+                }
+                if (ScheduleReccurence2EndTime == null)
+                {
+                    throw new PSInvalidOperationException("ScheduleReccurence2EndTime must be provided");
+                }
+                if (System.DateTime.TryParseExact("2022-01-12 " + ScheduleReccurence2StartTime, format, CultureInfo.InvariantCulture, DateTimeStyles.None, out outDateTime) == false)
+                {
+                    throw new PSInvalidOperationException("Invalid ScheduleReccurence2StartTime Format");
+                }
+                if (System.DateTime.TryParseExact("2022-01-12 " + ScheduleReccurence2EndTime, format, CultureInfo.InvariantCulture, DateTimeStyles.None, out outDateTime) == false)
+                {
+                    throw new PSInvalidOperationException("Invalid ScheduleReccurence2EndTime Format");
+                }
+                if (ScheduleReccurence2Type == "Weekly")
+                {
+                    if (ScheduleReccurence2DaysOfWeek == null)
+                    {
+                        throw new PSInvalidOperationException("ScheduleReccurence2DaysOfWeek must be provided");
+                    }
+                }
+
+                if (ScheduleReccurence2Type == "Monthly")
+                {
+                    if (ScheduleReccurence2DaysOfMonth == null)
+                    {
+                        throw new PSInvalidOperationException("ScheduleReccurence2DaysOfMonth must be provided");
                     }
                 }
             }

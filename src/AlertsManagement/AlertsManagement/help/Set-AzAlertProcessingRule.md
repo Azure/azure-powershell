@@ -16,11 +16,14 @@ Create or update an alert processing rule.
 ```
 Set-AzAlertProcessingRule -ResourceGroupName <String> -Name <String> [-Description <String>] -AlertProcessingRuleRuleType <String> 
  -Scopes <System.Collections.Generic.List`1[System.String]> -Enabled <String> [-Tags <Hashtable>] 
- [-SeverityCondition <String>] [-MonitorServiceCondition <String>] [-MonitorCondition <String>] [-TargetResourceTypeCondition <String>] 
- [-TargetResourceCondition <String>] [-TargetResourceGroupCondition <String>] [-AlertRuleIdCondition <String>] [-AlertRuleNameCondition <String>]
- [-DescriptionCondition <String>] [-AlertContextCondition <String>] [-SignalTypeCondition <String>]
- [-ReccurenceType <String>] [-ReccurenceDaysOfWeek <String>] [-ReccurenceDaysOfMonth <String>] [-ReccurenceStartTime <String>]
- [-ReccurenceEndTime <String>] [-StartDateTime <String>] [-EndDateTime <String>] [-TimeZone <String>]
+ [-FilterSeverity <String>] [-FilterMonitorService <String>] [-FilterMonitorCondition <String>] [-FilterTargetResourceType <String>] 
+ [-FilterTargetResource <String>] [-FilterTargetResourceGroup <String>] [-FilterAlertRuleId <String>] [-FilterAlertRuleNam <String>]
+ [-FilterDescription <String>] [-FilterAlertContext <String>] [-FilterSignalType <String>]
+ [-ScheduleStartDateTime <String>] [-ScheduleEndDateTime <String>] [-ScheduleTimeZone <String>]
+ [-ScheduleReccurenceType <String>] [-ScheduleReccurenceDaysOfWeek <String>] [-ScheduleReccurenceDaysOfMonth <String>] [-ScheduleReccurenceStartTime <String>]  
+ [-ScheduleReccurenceEndTime <String>]
+ [-ScheduleReccurence2Type <String>] [-ScheduleReccurence2DaysOfWeek <String>] [-ScheduleReccurence2DaysOfMonth <String>] [-ScheduleReccurence2StartTime <String>]
+  [-ScheduleReccurence2EndTime <String>] 
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -28,11 +31,14 @@ Set-AzAlertProcessingRule -ResourceGroupName <String> -Name <String> [-Descripti
 ```
 Set-AzAlertProcessingRule -ResourceGroupName <String> -Name <String> [-Description <String>] -AlertProcessingRuleRuleType <String> 
  -Scopes <System.Collections.Generic.List`1[System.String]> -Enabled <String> [-Tags <Hashtable>] 
- [-SeverityCondition <String>] [-MonitorServiceCondition <String>] [-MonitorCondition <String>] [-TargetResourceTypeCondition <String>] 
- [-TargetResourceCondition <String>] [-TargetResourceGroupCondition <String>] [-AlertRuleIdCondition <String>] [-AlertRuleNameCondition <String>]
- [-DescriptionCondition <String>] [-AlertContextCondition <String>] [-SignalTypeCondition <String>]
- [-ReccurenceType <String>] [-ReccurenceDaysOfWeek <String>] [-ReccurenceDaysOfMonth <String>] [-ReccurenceStartTime <String>]
- [-ReccurenceEndTime <String>] [-StartDateTime <String>] [-EndDateTime <String>] [-TimeZone <String>]
+ [-FilterSeverity <String>] [-FilterMonitorService <String>] [-FilterMonitorCondition <String>] [-FilterTargetResourceType <String>] 
+ [-FilterTargetResource <String>] [-FilterTargetResourceGroup <String>] [-FilterAlertRuleId <String>] [-FilterAlertRuleName <String>]
+ [-FilterDescription <String>] [-FilterAlertContext <String>] [-FilterSignalType <String>]
+ [-ScheduleStartDateTime <String>] [-ScheduleEndDateTime <String>] [-ScheduleTimeZone <String>]
+ [-ScheduleReccurenceType <String>] [-ScheduleReccurenceDaysOfWeek <String>] [-ScheduleReccurenceDaysOfMonth <String>] [-ScheduleReccurenceStartTime <String>]
+ [-ScheduleReccurenceEndTime <String>]
+ [-ScheduleReccurence2Type <String>] [-ScheduleReccurence2DaysOfWeek <String>] [-ScheduleReccurence2DaysOfMonth <String>] [-ScheduleReccurence2StartTime <String>]
+ [-ScheduleReccurence2EndTime <String>] 
  -ActionGroupIds <String> 
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -378,8 +384,8 @@ Accept wildcard characters: False
 ```
 
 ### -ScheduleStartDateTime
-Start Date Time. Format 12/09/2018 06:00:00
-Should be mentioned in case of Reccurent  Schedule - Once, Daily, Weekly or Monthly.
+Start Date Time. Format 2022-09-21 06:00:00
+Should be mentioned in case of Reccurent  Schedule - Daily, Weekly or Monthly.
 
 ```yaml
 Type: System.String
@@ -394,8 +400,8 @@ Accept wildcard characters: False
 ```
 
 ### -ScheduleEndDateTime
-End Date Time. Format 12/09/2018 06:00:00
-Should be mentioned in case of Reccurent  Schedule - Once, Daily, Weekly or Monthly.
+End Date Time. Format 2022-09-21 06:00:00
+Should be mentioned in case of Reccurent  Schedule - Daily, Weekly or Monthly.
 
 ```yaml
 Type: System.String
