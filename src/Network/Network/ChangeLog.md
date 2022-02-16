@@ -19,7 +19,7 @@
 --->
 
 ## Upcoming Release
-* Updated cmdlets to add new property of `HubRoutingPreference` on VirtualHub and set `PreferredRoutingGateway` deprecated .
+* Updated cmdlets to add new property of `HubRoutingPreference` in VirtualHub and set property of `PreferredRoutingGateway` deprecated .
     - `New-AzVirtualHub`
     - `Update-AzVirtualHub`
 
