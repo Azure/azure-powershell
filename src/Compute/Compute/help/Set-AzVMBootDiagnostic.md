@@ -31,10 +31,10 @@ The **Set-AzVMBootDiagnostic** cmdlet modifies boot diagnostics properties of a 
 ## EXAMPLES
 
 ### Example 1: Enable boot diagnostics
-```
-PS C:\> $VM = Get-AzVM -ResourceGroupName "ResourceGroup11" -Name "ContosoVM07"
-PS C:\> Set-AzVMBootDiagnostic -VM $VM -Enable -ResourceGroupName "ResourceGroup11" -StorageAccountName "DiagnosticStorage"
-PS C:\> Update-AzVM -VM $VM -ResourceGroupName "ResourceGroup11"
+```powershell
+$VM = Get-AzVM -ResourceGroupName "ResourceGroup11" -Name "ContosoVM07"
+Set-AzVMBootDiagnostic -VM $VM -Enable -ResourceGroupName "ResourceGroup11" -StorageAccountName "DiagnosticStorage"
+Update-AzVM -VM $VM -ResourceGroupName "ResourceGroup11"
 ```
 
 The first command gets the virtual machine named ContosoVM07 by using **Get-AzVM**.

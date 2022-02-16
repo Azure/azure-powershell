@@ -51,6 +51,30 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
         /// <inheritdoc />
         public PowerShell ConsoleRuntime { get; } = PowerShell.Create(System.Management.Automation.RunspaceMode.CurrentRunspace);
 
+        private string _hostname;
+        /// <inheritdoc />
+        public string HostName
+        {
+            get
+            {
+                if (_hostname == null)
+                {
+                    var results = PowerShellRuntime.ExecuteScript<string>(ConsoleRuntime, "$Host.Name");
+
+                    if (results == null || results.Count() == 0)
+                    {
+                        _hostname = string.Empty;
+                    }
+                    else
+                    {
+                        _hostname = results[0];
+                    }
+                }
+
+                return _hostname;
+            }
+        }
+
         public void Dispose()
         {
             if (_runtime is not null)
@@ -71,11 +95,14 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
         }
 
         /// <inheritdoc />
-        public IList<T> ExecuteScript<T>(string contents)
+        public IList<T> ExecuteScript<T>(string contents) => PowerShellRuntime.ExecuteScript<T>(Runtime, contents);
+
+        /// <inheritdoc />
+        private static IList<T> ExecuteScript<T>(PowerShell runtime, string contents)
         {
-            Runtime.Commands.Clear();
-            Runtime.AddScript(contents);
-            Collection<T> result = Runtime.Invoke<T>();
+            runtime.Commands.Clear();
+            runtime.AddScript(contents);
+            Collection<T> result = runtime.Invoke<T>();
 
             return result?.ToList() ?? new List<T>();
         }

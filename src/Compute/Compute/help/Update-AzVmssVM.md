@@ -41,10 +41,10 @@ Updates the state of a Vmss VM.  For now, the only allowed update is adding a ma
 
 ### Example 1: Add a managed data disk to a Vmss VM using New-AzVMDataDisk
 ```powershell
-PS C:\> $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname0
-PS C:\> $datadisk = New-AzVMDataDisk -Caching 'ReadOnly' -Lun 2 -CreateOption Attach -StorageAccountType Standard_LRS -ManagedDiskId $disk.Id
-PS C:\> $VmssVM = Get-AzVmssVM -ResourceGroupName "myrg" -VMScaleSetName "myvmss" -InstanceId 0
-PS C:\> Update-AzVmssVM -ResourceGroupName "myrg" -VMScaleSetName "myvmss" -InstanceId 0 -DataDisk $datadisk
+$disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname0
+$datadisk = New-AzVMDataDisk -Caching 'ReadOnly' -Lun 2 -CreateOption Attach -StorageAccountType Standard_LRS -ManagedDiskId $disk.Id
+$VmssVM = Get-AzVmssVM -ResourceGroupName "myrg" -VMScaleSetName "myvmss" -InstanceId 0
+Update-AzVmssVM -ResourceGroupName "myrg" -VMScaleSetName "myvmss" -InstanceId 0 -DataDisk $datadisk
 ```
 
 The first command gets an existing managed disk.
@@ -54,10 +54,10 @@ The final command updates the Vmss VM by adding a new data disk.
 
 ### Example 2: Add a managed data disk to a Vmss VM using Add-AzVMDataDisk
 ```powershell
-PS C:\> $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname0
-PS C:\> $VmssVM = Get-AzVmssVM -ResourceGroupName "myrg" -VMScaleSetName "myvmss" -InstanceId 0
-PS C:\> $VmssVM = Add-AzVMDataDisk -VirtualMachineScaleSetVM $VmssVM -Lun 0 -DiskSizeInGB 10 -CreateOption Attach -StorageAccountType Standard_LRS -ManagedDiskId $disk.Id
-PS C:\> Update-AzVmssVM -VirtualMachineScaleSetVM $VmssVM
+$disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname0
+$VmssVM = Get-AzVmssVM -ResourceGroupName "myrg" -VMScaleSetName "myvmss" -InstanceId 0
+$VmssVM = Add-AzVMDataDisk -VirtualMachineScaleSetVM $VmssVM -Lun 0 -DiskSizeInGB 10 -CreateOption Attach -StorageAccountType Standard_LRS -ManagedDiskId $disk.Id
+Update-AzVmssVM -VirtualMachineScaleSetVM $VmssVM
 ```
 
 The first command gets an existing managed disk.
