@@ -67,13 +67,19 @@ namespace Microsoft.Azure.Commands.Insights
                 topic,
                 message);
 
-            if (withTimeStamp)
+            string supressWarningOrErrorValue = System.Environment.GetEnvironmentVariable(BreakingChangeAttributeHelper.SUPPRESS_ERROR_OR_WARNING_MESSAGE_ENV_VARIABLE_NAME);
+            bool supressWarningOrError;
+            Boolean.TryParse(supressWarningOrErrorValue, out supressWarningOrError);
+            if (!supressWarningOrError)
             {
-                WriteWarningWithTimestamp(formattedMessage);
-            }
-            else
-            {
-                WriteWarning(formattedMessage);
+                if (withTimeStamp)
+                {
+                    WriteWarningWithTimestamp(formattedMessage);
+                }
+                else
+                {
+                    WriteWarning(formattedMessage);
+                }
             }
         }
 
