@@ -5617,7 +5617,7 @@ function Test-VMvCPUFeatures
         $user = "admin01";
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
-        $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -Size $vmSize ;#-vCPUsAvailable $vCPUsAvailable1 -vCPUsPerCore $vCPUsCore1;
+        $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -Size $vmSize;
         Assert-AreEqual $vCPUsAvailableDefault $vm.HardwareProfile.VmSizeProperties.VCPUsAvailable;
         Assert-AreEqual $vCPUsCoreDefault $vm.HardwareProfile.VmSizeProperties.VCPUsPerCore;
 
@@ -5664,7 +5664,7 @@ function Test-VMvCPUFeatures
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
 
-        $vmconfig = Set-AzVMOperatingSystem -VM $vmconfig -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
+        $vmconfig = Set-AzVMOperatingSystem -VM $vmconfig -Windows -ComputerName $computerName -Credential $cred;
 
         New-AzVM -ResourceGroupName $rgname -Location $loc -Vm $vmconfig;
         $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmname;
