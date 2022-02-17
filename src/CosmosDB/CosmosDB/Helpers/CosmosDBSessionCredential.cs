@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Azure.Core;
-using Azure.Identity;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System;

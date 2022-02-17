@@ -23,7 +23,6 @@ using Microsoft.Azure.Commands.CosmosDB.Exceptions;
 using Microsoft.Rest.Azure;
 using Microsoft.Azure.Management.CosmosDB;
 using Microsoft.Data.Encryption.AzureKeyVaultProvider;
-using Azure.Identity;
 using Microsoft.Data.Encryption.Cryptography;
 using Azure.Core;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
@@ -122,9 +121,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 if (EncryptionKeyStoreProvider != null)
                 {
-                    throw new ArgumentException("EncryptionKeyStoreProvider cannot be set if IsAzureKeyVaultKeyStoreProvider is true");
+                    throw new ArgumentException("EncryptionKeyStoreProvider cannot be set if IsAzureKeyVaultKeyStoreProvider is set to true");
                 }
 
+                // get the token credential for key vault audience.
                 TokenCredential tokenCredential = new CosmosDBSessionCredential(DefaultContext, AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId);
 
                 AzureKeyVaultKeyStoreProvider azureKeyVaultKeyStoreProvider = new AzureKeyVaultKeyStoreProvider(tokenCredential);
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 if (EncryptionKeyStoreProvider == null)
                 {
-                    throw new ArgumentException("EncryptionKeyStoreProvider cannot be null if IsAzureKeyVaultKeyStoreProvider is false");
+                    throw new ArgumentException("EncryptionKeyStoreProvider cannot be null if IsAzureKeyVaultKeyStoreProvider is set to false");
                 }
 
                 keyEncryptionKey = KeyEncryptionKey.GetOrCreate(
