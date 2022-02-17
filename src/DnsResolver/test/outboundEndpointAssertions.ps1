@@ -8,10 +8,10 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
 }
 . ($loadEnvPath)
 
-Function BeSuccessfullyCreatedInboundEndpoint {
+Function BeSuccessfullyCreatedOutboundEndpoint {
     <#
     .SYNOPSIS
-    Tests whether an inbound endpoint is created successfully
+    Tests whether an outbound endpoint is created successfully
     #>
         [CmdletBinding()]
         Param(
@@ -24,7 +24,7 @@ Function BeSuccessfullyCreatedInboundEndpoint {
         If ( $Negate ) { $Pass = -not($Pass) }
     
         If ( -not($Pass) ) {
-            $FailureMessage = 'The inbound endpoint is not created successfully.'
+            $FailureMessage = 'The outbound endpoint is not created successfully.'
         }
     
         $ObjProperties = @{
@@ -34,10 +34,10 @@ Function BeSuccessfullyCreatedInboundEndpoint {
         return New-Object PSObject -Property $ObjProperties
 }
 
-Function BeSameInboundEndpointAsExpected {
+Function BeSameOutboundEndpointAsExpected {
     <#
     .SYNOPSIS
-    Tests whether an inbound endpoint is created successfully
+    Tests whether an outbound endpoint is created successfully
     #>
         [CmdletBinding()]
         Param(
@@ -51,7 +51,7 @@ Function BeSameInboundEndpointAsExpected {
         If ( $Negate ) { $Pass = -not($Pass) }
     
         If ( -not($Pass) ) {
-            $FailureMessage = 'The inbound endpoint is different from the expected.'
+            $FailureMessage = 'The outbound endpoint is different from the expected.'
         }
     
         $ObjProperties = @{
