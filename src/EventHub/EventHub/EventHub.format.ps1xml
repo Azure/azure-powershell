@@ -72,43 +72,35 @@
               </ListItem>
               <ListItem>
                 <PropertyName>DisableLocalAuth</PropertyName>
-              </ListItem>              
-              <ListItem>
-                <Label>Identity</Label>
-                <PropertyName>Identity</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>Identity.PrincipalId</Label>
-                <ScriptBlock>$_.Identity.PrincipalId.ToString()</ScriptBlock>
-              </ListItem>
-              <ListItem>
-                <Label>Identity.TenantId</Label>
-                <ScriptBlock>$_.Identity.TenantId.ToString()</ScriptBlock>
-              </ListItem>
-              <ListItem>
-                <Label>Identity.Type</Label>
-                <ScriptBlock>$_.Identity.Type.ToString()</ScriptBlock>
-              </ListItem>              
-              <ListItem>
-                <Label>Encryption</Label>
-                <PropertyName>Encryption</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>Encryption.KeySource</Label>
                 <ScriptBlock>$_.Encryption.KeySource.ToString()</ScriptBlock>
               </ListItem>
-              <ListItem>
-                <Label>Encryption.KeyVaultProperties</Label>
-                <ScriptBlock>
-                  $keyvaultproperties = $_.Encryption.KeyVaultProperties;
-                  foreach ($item in $keyvaultproperties)
-                  {
-                  $item.KeyName.ToString();
-                  $item.KeyVaultUri.ToString();
-                  $item.KeyVersion.ToString();
-                  }
-                </ScriptBlock>
-              </ListItem>
+				<ListItem>
+					<Label>Identity</Label>
+					<ScriptBlock>
+						"PrinicipalId : "+ $_.Identity.PrincipalId + ",`nTenantId: "+ $_.Identity.TenantId + ",`nType: " + $_.IdentityType + ",`nUserAssignedIdentity: " + $_.IdentityId -join "`n"
+					</ScriptBlock>
+				</ListItem>
+				<ListItem>
+					<Label>IdentityType</Label>
+					<ScriptBlock>
+						$_.IdentityType
+					</ScriptBlock>
+				</ListItem>
+				<ListItem>
+					<Label>IdentityId</Label>
+					<ScriptBlock>
+						$_.IdentityId -join "`n"
+					</ScriptBlock>
+				</ListItem>
+				<ListItem>
+					<Label>EncryptionConfig</Label>
+					<ScriptBlock>
+						$_.EncryptionConfig.GetEnumerator() | ForEach-Object{ "{ KeyName: "+$_.KeyName+",`nKeyVaultUri: "+$_.KeyVaultUri+",`nKeyVersion: "+$_.KeyVersion+",`nUserAssignedIdentity: "+$_.UserAssignedIdentity+" }`n" }
+					</ScriptBlock>
+				</ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>

@@ -15,6 +15,7 @@
 using Microsoft.Azure.Management.EventHub.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.EventHub.Models
@@ -67,9 +68,43 @@ namespace Microsoft.Azure.Commands.EventHub.Models
                 if(evResource.Tags.Count > 0)
                     Tags = new Dictionary<string, string>(evResource.Tags);
 
+                if (evResource.Identity != null)
+                {
+                    Identity = new PSIdentityAttributes(evResource.Identity);
+
+                    IdentityType = evResource.Identity.Type.ToString();
+
+                    if (evResource.Identity.UserAssignedIdentities != null)
+                        IdentityId = evResource.Identity.UserAssignedIdentities.Keys.ToArray();
+                }
+
+
+                if (evResource.Encryption != null)
+                {
+
+                    if (evResource.Encryption.KeyVaultProperties != null)
+                    {
+                        EncryptionConfig = evResource.Encryption.KeyVaultProperties.Where(x => x != null).Select(x => {
+
+                            PSEncryptionConfigAttributes kvproperty = new PSEncryptionConfigAttributes();
+
+                            kvproperty.KeyName = x?.KeyName;
+
+                            kvproperty.KeyVaultUri = x?.KeyVaultUri;
+
+                            kvproperty.KeyVersion = x?.KeyVersion;
+
+                            if (x.Identity != null)
+                                if (x.Identity.UserAssignedIdentity != null)
+                                    kvproperty.UserAssignedIdentity = x.Identity.UserAssignedIdentity;
+
+                            return kvproperty;
+                        }).ToArray();
+                    }
+                }
+
                 ResourceGroup = Regex.Split(evResource.Id, @"/")[4];
                 ResourceGroupName = Regex.Split(evResource.Id, @"/")[4];
-                Identity = new PSIdentityAttributes(evResource.Identity);
                 ZoneRedundant = evResource.ZoneRedundant;
                 DisableLocalAuth = evResource.DisableLocalAuth;
                 ClusterArmId = evResource.ClusterArmId;
@@ -161,5 +196,11 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         /// Service Bus namespace.
         /// </summary>
         public bool? DisableLocalAuth { get; set; }
+
+        public string IdentityType { get; set; }
+
+        public string[] IdentityId { get; set; }
+
+        public PSEncryptionConfigAttributes[] EncryptionConfig { get; set; }
     }
 }
