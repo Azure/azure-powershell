@@ -19,9 +19,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-* Adding identity and encryption properties to New-AzServiceBusNamespace and Set-AzServiceBusNamespace.
-* Adding New-AzServiceBusEncryptionConfig
+* Added identity and encryption properties to New-AzServiceBusNamespace and Set-AzServiceBusNamespace.
+* Added New-AzServiceBusEncryptionConfig
 
 ## Version 1.7.0
 * Added support to Enable or Disable  Public Network Access as optional parameter 'PublicNetworkAccess' to `Set-AzServiceBusNetworkRuleSet`
