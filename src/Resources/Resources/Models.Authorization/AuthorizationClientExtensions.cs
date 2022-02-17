@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 DisplayName = adObject?.DisplayName,
                 SignInName = adObject is PSADUser user ? user.UserPrincipalName : null,
                 RoleDefinitionName = roleDefinition?.Name,
-                RoleDefinitionId = assignment.RoleDefinitionId,
+                RoleDefinitionId = assignment.RoleDefinitionId.GuidFromFullyQualifiedId(),
                 ObjectId = assignment.PrincipalId,
                 ObjectType = string.IsNullOrEmpty(assignment.PrincipalType) ? adObject?.Type?? UnknownType : assignment.PrincipalType,
                 // CanDelegate's value is absent from RoleAssignment
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                     RoleAssignmentName = assignment.Name,
                     RoleAssignmentId = assignment.Id,
                     DisplayName = adObject.DisplayName,
-                    RoleDefinitionId = roleDefinition.Id,
+                    RoleDefinitionId = assignment.RoleDefinitionId,
                     RoleDefinitionName = roleDefinition.Name,
                     Scope = assignment.Scope,
                     ObjectId = assignment.PrincipalId,
