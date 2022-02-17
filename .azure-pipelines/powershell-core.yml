@@ -22,6 +22,17 @@ pr:
     exclude:
       - Azs-tzl
 
+strategy:
+  matrix:
+    # windows:
+      # OSName: ${{ variables.WindowsName }}
+      # ImageName: ${{ variables.WindowsImage }}
+    linux:
+      OSName: ${{ variables.LinuxName }}
+      ImageName: ${{ variables.LinuxImage }}
+    # macOS:
+    #   OSName: ${{ variables.MacOSName }}
+    #   ImageName: ${{ variables.MacOSImage }}
 stages:
 - stage: "Build"
   jobs:
@@ -29,17 +40,6 @@ stages:
     displayName: Build
     condition: succeeded()
     timeoutInMinutes: ${{ variables.BuildTimeoutInMinutes }}
-    # strategy:
-    #   matrix:
-    #     # windows:
-    #       # OSName: ${{ variables.WindowsName }}
-    #       # ImageName: ${{ variables.WindowsImage }}
-    #     linux:
-    #       OSName: ${{ variables.LinuxName }}
-    #       ImageName: ${{ variables.LinuxImage }}
-    #     # macOS:
-    #     #   OSName: ${{ variables.MacOSName }}
-    #     #   ImageName: ${{ variables.MacOSImage }}
     pool:
       vmImage: ${{ variables.LinuxImage }}
     steps:
