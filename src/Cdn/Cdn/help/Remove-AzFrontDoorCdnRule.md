@@ -38,7 +38,7 @@ Removes the rule.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzFrontDoorCdnRule -ResourceId $ruleResourceId
+Remove-AzFrontDoorCdnRule -ResourceId $ruleResourceId
 ```
 
 Removes the rule.

@@ -20,6 +20,10 @@
 ## Upcoming Release
 * Adding MSI properties to New-AzEventHubNamespace and Set-AzEventHubNamespace. Adding New-AzEventHubEncryptionConfig.
 
+## Version 1.10.0
+* Added public network access to the `Set-AzEventHubNetworkRuleSet` set cmdlet
+* Added `New-AzEventHubSchemaGroup`, `Remove-AzEventHubSchemaGroup` and `Get-AzEventHubSchemaGroup` in the eventhubs PS.
+
 ## Version 1.9.1
 * Fixed the issue that `New-AzEventHubKey` always generates a new primary key instead of a secondary key since version 1.9.0 [#16362]
 

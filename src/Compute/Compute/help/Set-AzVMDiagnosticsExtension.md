@@ -27,8 +27,8 @@ The **Set-AzVMDiagnosticsExtension** cmdlet configures the Azure diagnostics ext
 ## EXAMPLES
 
 ### Example 1: Enable diagnostics using a storage account specified in a diagnostics configuration file
-```
-PS C:\> Set-AzVMDiagnosticsExtension -ResourceGroupName "ResourceGroup01" -VMName "VirtualMachine02" -DiagnosticsConfigurationPath "diagnostics_publicconfig.xml"
+```powershell
+Set-AzVMDiagnosticsExtension -ResourceGroupName "ResourceGroup01" -VMName "VirtualMachine02" -DiagnosticsConfigurationPath "diagnostics_publicconfig.xml"
 ```
 
 This command uses a diagnostics configuration file to enable diagnostics.
@@ -36,8 +36,8 @@ The file diagnostics_publicconfig.xml contains the public XML configuration for 
 The diagnostics storage account must be in the same subscription as the virtual machine.
 
 ### Example 2: Enable diagnostics using a storage account name
-```
-PS C:\> Set-AzVMDiagnosticsExtension -ResourceGroupName "ResourceGroup1" -VMName "VirtualMachine2" -DiagnosticsConfigurationPath diagnostics_publicconfig.xml -StorageAccountName "MyStorageAccount"
+```powershell
+Set-AzVMDiagnosticsExtension -ResourceGroupName "ResourceGroup1" -VMName "VirtualMachine2" -DiagnosticsConfigurationPath diagnostics_publicconfig.xml -StorageAccountName "MyStorageAccount"
 ```
 
 This command uses the storage account name to enable diagnostics.
@@ -45,8 +45,8 @@ If the diagnostics configuration does not specify a storage account name or if y
 The diagnostics storage account must be in the same subscription as the virtual machine.
 
 ### Example 3: Enable diagnostics using storage account name and key
-```
-PS C:\> Set-AzVMDiagnosticsExtension -ResourceGroupName "ResourceGroup01" -VMName "VirtualMachine02" -DiagnosticsConfigurationPath "diagnostics_publicconfig.xml" -StorageAccountName "MyStorageAccount" -StorageAccountKey $storage_key
+```powershell
+Set-AzVMDiagnosticsExtension -ResourceGroupName "ResourceGroup01" -VMName "VirtualMachine02" -DiagnosticsConfigurationPath "diagnostics_publicconfig.xml" -StorageAccountName "MyStorageAccount" -StorageAccountKey $storage_key
 ```
 
 This command uses the storage account name and key to enable diagnostics.

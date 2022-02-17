@@ -16,7 +16,7 @@ Creates an endpoint in a Traffic Manager profile.
 ```
 New-AzTrafficManagerEndpoint -Name <String> -ProfileName <String> -ResourceGroupName <String> -Type <String>
  [-TargetResourceId <String>] [-Target <String>] -EndpointStatus <String> [-Weight <UInt32>]
- [-Priority <UInt32>] [-EndpointLocation <String>] [-MinChildEndpoints <UInt32>]
+ [-Priority <UInt32>] [-EndpointLocation <String>] [-MinChildEndpoints <UInt32>] [-MinChildEndpointsIPv4 <UInt32>] [-MinChildEndpointsIPv6 <UInt32>]
  [-GeoMapping <System.Collections.Generic.List`1[System.String]>]
  [-SubnetMapping <System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange]>]
  [-CustomHeader <System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]>]
@@ -139,6 +139,14 @@ Accept wildcard characters: False
 ### -MinChildEndpoints
 Specify an Azure region name.
 For a full list of Azure regions, see Azure Regionshttp://azure.microsoft.com/regions/ (http://azure.microsoft.com/regions/).
+
+### -MinChildEndpointsIPv4
+The minimum number of IPv4 (DNS record type A) endpoints that must be available in the child profile in order for the Nested Endpoint in the parent profile to be considered available.
+Only applicable to endpoint of type 'NestedEndpoints'.
+
+### -MinChildEndpointsIPv6
+The minimum number of IPv6 (DNS record type AAAA) endpoints that must be available in the child profile in order for the Nested Endpoint in the parent profile to be considered available.
+Only applicable to endpoint of type 'NestedEndpoints'.
 
 ```yaml
 Type: System.Nullable`1[System.UInt32]

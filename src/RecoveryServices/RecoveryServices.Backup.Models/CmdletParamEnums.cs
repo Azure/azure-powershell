@@ -72,7 +72,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         DiskEncryptionSetId,
         RestoreAsManagedDisk,
         UseSystemAssignedIdentity,
-        UserAssignedIdentityId
+        UserAssignedIdentityId,
+        RestoreType,
+        TargetVMName,
+        TargetVNetName,
+        TargetVNetResourceGroup,
+        TargetSubnetName
     }
 
     public enum RestoreFSBackupItemParams
@@ -116,7 +121,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         ProtectionPolicy,
         ResourceGroupName,
         ResourceName,
-        FixForInconsistentItems
+        FixForInconsistentItems,
+        ScheduleRunFrequency
     }
 
     public enum ItemParams

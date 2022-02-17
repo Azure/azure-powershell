@@ -1,5 +1,6 @@
 {
-  "ProcessedTypes": {},
+  "ModuleName": "Az.Marketplace",
+  "ModuleVersion": "0.3.0",
   "Cmdlets": [
     {
       "VerbName": "Get",
@@ -8,7 +9,6 @@
       "ClassName": "Microsoft.Azure.Commands.Marketplace.Cmdlets.GetAzMarketplacePrivateStore",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
-      "HasForceSwitch": null,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [
@@ -25,17 +25,13 @@
               "Name": "System.String",
               "Type": "System.String"
             },
-            "ElementType": null,
-            "GenericTypeArguments": [],
             "Methods": [
               {
                 "Name": "GetType",
-                "Parameters": [],
                 "ReturnType": "System.Type"
               },
               {
                 "Name": "ToString",
-                "Parameters": [],
                 "ReturnType": "System.String"
               },
               {
@@ -50,15 +46,12 @@
               },
               {
                 "Name": "GetHashCode",
-                "Parameters": [],
                 "ReturnType": "System.Int32"
               }
             ],
             "Constructors": [
               {
-                "Name": "",
-                "Parameters": [],
-                "ReturnType": null
+                "Name": ""
               }
             ]
           },
@@ -84,21 +77,8 @@
               "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
               "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
               "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
-            },
-            "ElementType": null,
-            "GenericTypeArguments": [],
-            "Methods": [
-              {
-                "Name": "Clear",
-                "Parameters": [],
-                "ReturnType": "System.Void"
-              }
-            ],
-            "Constructors": []
+            }
           },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         }
       ],
@@ -123,21 +103,8 @@
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
                     "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
                     "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
-                  },
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [
-                    {
-                      "Name": "Clear",
-                      "Parameters": [],
-                      "ReturnType": "System.Void"
-                    }
-                  ],
-                  "Constructors": []
+                  }
                 },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -147,8 +114,7 @@
             }
           ]
         }
-      ],
-      "AliasList": []
+      ]
     },
     {
       "VerbName": "Get",
@@ -157,7 +123,6 @@
       "ClassName": "Microsoft.Azure.Commands.Marketplace.Cmdlets.GetAzMarketplacePrivateStoreOffer",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
-      "HasForceSwitch": null,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [
@@ -179,17 +144,13 @@
               "Name": "System.String",
               "Type": "System.String"
             },
-            "ElementType": null,
-            "GenericTypeArguments": [],
             "Methods": [
               {
                 "Name": "GetType",
-                "Parameters": [],
                 "ReturnType": "System.Type"
               },
               {
                 "Name": "ToString",
-                "Parameters": [],
                 "ReturnType": "System.String"
               },
               {
@@ -204,15 +165,12 @@
               },
               {
                 "Name": "GetHashCode",
-                "Parameters": [],
                 "ReturnType": "System.Int32"
               }
             ],
             "Constructors": [
               {
-                "Name": "",
-                "Parameters": [],
-                "ReturnType": null
+                "Name": ""
               }
             ]
           },
@@ -224,56 +182,29 @@
       "Parameters": [
         {
           "Name": "PrivateStoreId",
-          "AliasList": [],
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
           },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
           "Name": "OfferId",
-          "AliasList": [],
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
           },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
           "Name": "SubscriptionId",
-          "AliasList": [],
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
           },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
@@ -292,21 +223,8 @@
               "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
               "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
               "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
-            },
-            "ElementType": null,
-            "GenericTypeArguments": [],
-            "Methods": [
-              {
-                "Name": "Clear",
-                "Parameters": [],
-                "ReturnType": "System.Void"
-              }
-            ],
-            "Constructors": []
+            }
           },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         }
       ],
@@ -317,20 +235,11 @@
             {
               "ParameterMetadata": {
                 "Name": "PrivateStoreId",
-                "AliasList": [],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -341,20 +250,11 @@
             {
               "ParameterMetadata": {
                 "Name": "OfferId",
-                "AliasList": [],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": false,
@@ -365,20 +265,11 @@
             {
               "ParameterMetadata": {
                 "Name": "SubscriptionId",
-                "AliasList": [],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": false,
@@ -403,21 +294,8 @@
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
                     "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
                     "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
-                  },
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [
-                    {
-                      "Name": "Clear",
-                      "Parameters": [],
-                      "ReturnType": "System.Void"
-                    }
-                  ],
-                  "Constructors": []
+                  }
                 },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -427,8 +305,7 @@
             }
           ]
         }
-      ],
-      "AliasList": []
+      ]
     },
     {
       "VerbName": "Remove",
@@ -437,7 +314,6 @@
       "ClassName": "Microsoft.Azure.Commands.Marketplace.Cmdlets.RemoveAzMarketplacePrivateStoreOffer",
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
-      "HasForceSwitch": true,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [
@@ -445,12 +321,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.Boolean",
-            "AssemblyQualifiedName": "System.Boolean, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
+            "AssemblyQualifiedName": "System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -460,56 +331,29 @@
       "Parameters": [
         {
           "Name": "PrivateStoreId",
-          "AliasList": [],
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
           },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
           "Name": "OfferId",
-          "AliasList": [],
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
           },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
           "Name": "PassThru",
-          "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         },
         {
@@ -528,21 +372,8 @@
               "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
               "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
               "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
-            },
-            "ElementType": null,
-            "GenericTypeArguments": [],
-            "Methods": [
-              {
-                "Name": "Clear",
-                "Parameters": [],
-                "ReturnType": "System.Void"
-              }
-            ],
-            "Constructors": []
+            }
           },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         }
       ],
@@ -553,20 +384,11 @@
             {
               "ParameterMetadata": {
                 "Name": "PrivateStoreId",
-                "AliasList": [],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -577,20 +399,11 @@
             {
               "ParameterMetadata": {
                 "Name": "OfferId",
-                "AliasList": [],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -601,20 +414,11 @@
             {
               "ParameterMetadata": {
                 "Name": "PassThru",
-                "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -639,21 +443,8 @@
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
                     "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
                     "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
-                  },
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [
-                    {
-                      "Name": "Clear",
-                      "Parameters": [],
-                      "ReturnType": "System.Void"
-                    }
-                  ],
-                  "Constructors": []
+                  }
                 },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -663,8 +454,7 @@
             }
           ]
         }
-      ],
-      "AliasList": []
+      ]
     },
     {
       "VerbName": "Set",
@@ -673,7 +463,6 @@
       "ClassName": "Microsoft.Azure.Commands.Marketplace.Cmdlets.SetAzMarketplacePrivateStoreOffer",
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
-      "HasForceSwitch": null,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [
@@ -695,17 +484,13 @@
               "Name": "System.String",
               "Type": "System.String"
             },
-            "ElementType": null,
-            "GenericTypeArguments": [],
             "Methods": [
               {
                 "Name": "GetType",
-                "Parameters": [],
                 "ReturnType": "System.Type"
               },
               {
                 "Name": "ToString",
-                "Parameters": [],
                 "ReturnType": "System.String"
               },
               {
@@ -720,15 +505,12 @@
               },
               {
                 "Name": "GetHashCode",
-                "Parameters": [],
                 "ReturnType": "System.Int32"
               }
             ],
             "Constructors": [
               {
-                "Name": "",
-                "Parameters": [],
-                "ReturnType": null
+                "Name": ""
               }
             ]
           },
@@ -740,94 +522,50 @@
       "Parameters": [
         {
           "Name": "PrivateStoreId",
-          "AliasList": [],
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
           },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
           "Name": "OfferId",
-          "AliasList": [],
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
           },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
           "Name": "SpecificPlanIdsLimitation",
-          "AliasList": [],
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[System.String]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-            "Properties": {},
-            "ElementType": null,
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "GenericTypeArguments": [
               "System.String"
-            ],
-            "Methods": [],
-            "Constructors": []
+            ]
           },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
           "Name": "ETag",
-          "AliasList": [],
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
           },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
           "Name": "SubscriptionId",
-          "AliasList": [],
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
           },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
@@ -846,21 +584,8 @@
               "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
               "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
               "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
-            },
-            "ElementType": null,
-            "GenericTypeArguments": [],
-            "Methods": [
-              {
-                "Name": "Clear",
-                "Parameters": [],
-                "ReturnType": "System.Void"
-              }
-            ],
-            "Constructors": []
+            }
           },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         }
       ],
@@ -871,20 +596,11 @@
             {
               "ParameterMetadata": {
                 "Name": "PrivateStoreId",
-                "AliasList": [],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -895,20 +611,11 @@
             {
               "ParameterMetadata": {
                 "Name": "OfferId",
-                "AliasList": [],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -919,22 +626,14 @@
             {
               "ParameterMetadata": {
                 "Name": "SpecificPlanIdsLimitation",
-                "AliasList": [],
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "System.Collections.Generic.List`1[System.String]",
-                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-                  "Properties": {},
-                  "ElementType": null,
+                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "System.String"
-                  ],
-                  "Methods": [],
-                  "Constructors": []
+                  ]
                 },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -945,20 +644,11 @@
             {
               "ParameterMetadata": {
                 "Name": "ETag",
-                "AliasList": [],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": false,
@@ -969,20 +659,11 @@
             {
               "ParameterMetadata": {
                 "Name": "SubscriptionId",
-                "AliasList": [],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": false,
@@ -1007,21 +688,8 @@
                     "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
                     "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
                     "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
-                  },
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [
-                    {
-                      "Name": "Clear",
-                      "Parameters": [],
-                      "ReturnType": "System.Void"
-                    }
-                  ],
-                  "Constructors": []
+                  }
                 },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -1031,160 +699,56 @@
             }
           ]
         }
-      ],
-      "AliasList": []
+      ]
     }
   ],
   "TypeDictionary": {
     "System.String": {
-      "Namespace": null,
-      "Name": "System.String",
-      "AssemblyQualifiedName": null,
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [],
-      "Constructors": []
+      "Name": "System.String"
     },
     "System.Boolean": {
-      "Namespace": null,
-      "Name": "System.Boolean",
-      "AssemblyQualifiedName": null,
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [],
-      "Constructors": []
+      "Name": "System.Boolean"
     },
     "System.Byte": {
-      "Namespace": null,
-      "Name": "System.Byte",
-      "AssemblyQualifiedName": null,
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [],
-      "Constructors": []
+      "Name": "System.Byte"
     },
     "System.SByte": {
-      "Namespace": null,
-      "Name": "System.SByte",
-      "AssemblyQualifiedName": null,
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [],
-      "Constructors": []
+      "Name": "System.SByte"
     },
     "System.Int16": {
-      "Namespace": null,
-      "Name": "System.Int16",
-      "AssemblyQualifiedName": null,
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [],
-      "Constructors": []
+      "Name": "System.Int16"
     },
     "System.UInt16": {
-      "Namespace": null,
-      "Name": "System.UInt16",
-      "AssemblyQualifiedName": null,
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [],
-      "Constructors": []
+      "Name": "System.UInt16"
     },
     "System.Int32": {
-      "Namespace": null,
-      "Name": "System.Int32",
-      "AssemblyQualifiedName": null,
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [],
-      "Constructors": []
+      "Name": "System.Int32"
     },
     "System.UInt32": {
-      "Namespace": null,
-      "Name": "System.UInt32",
-      "AssemblyQualifiedName": null,
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [],
-      "Constructors": []
+      "Name": "System.UInt32"
     },
     "System.Int64": {
-      "Namespace": null,
-      "Name": "System.Int64",
-      "AssemblyQualifiedName": null,
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [],
-      "Constructors": []
+      "Name": "System.Int64"
     },
     "System.UInt64": {
-      "Namespace": null,
-      "Name": "System.UInt64",
-      "AssemblyQualifiedName": null,
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [],
-      "Constructors": []
+      "Name": "System.UInt64"
     },
     "System.Single": {
-      "Namespace": null,
-      "Name": "System.Single",
-      "AssemblyQualifiedName": null,
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [],
-      "Constructors": []
+      "Name": "System.Single"
     },
     "System.Double": {
-      "Namespace": null,
-      "Name": "System.Double",
-      "AssemblyQualifiedName": null,
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [],
-      "Constructors": []
+      "Name": "System.Double"
     },
     "System.Decimal": {
-      "Namespace": null,
-      "Name": "System.Decimal",
-      "AssemblyQualifiedName": null,
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [],
-      "Constructors": []
+      "Name": "System.Decimal"
     },
     "System.Char": {
-      "Namespace": null,
-      "Name": "System.Char",
-      "AssemblyQualifiedName": null,
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [],
-      "Constructors": []
+      "Name": "System.Char"
     },
     "System.Type": {
       "Namespace": "System",
       "Name": "System.Type",
-      "AssemblyQualifiedName": "System.Type, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [],
-      "Constructors": []
+      "AssemblyQualifiedName": "System.Type, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
     },
     "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext": {
       "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
@@ -1197,11 +761,7 @@
         "Tenant": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant",
         "TokenCache": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache",
         "VersionProfile": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [],
-      "Constructors": []
+      }
     },
     "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount": {
       "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
@@ -1212,24 +772,16 @@
         "Id": "System.String",
         "Credential": "System.String",
         "Type": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [],
-      "Constructors": []
+      }
     },
     "System.Collections.Generic.IDictionary`2[System.String,System.String]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "Properties": {},
-      "ElementType": null,
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "System.String",
         "System.String"
-      ],
-      "Methods": [],
-      "Constructors": []
+      ]
     },
     "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment": {
       "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
@@ -1259,23 +811,15 @@
         "ServiceManagementUrl": "System.String",
         "StorageEndpointSuffix": "System.String",
         "ContainerRegistryEndpointSuffix": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [],
-      "Constructors": []
+      }
     },
     "System.Collections.Generic.IList`1[System.String]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[System.String]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "Properties": {},
-      "ElementType": null,
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "System.String"
-      ],
-      "Methods": [],
-      "Constructors": []
+      ]
     },
     "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription": {
       "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
@@ -1285,11 +829,7 @@
         "Id": "System.String",
         "Name": "System.String",
         "State": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [],
-      "Constructors": []
+      }
     },
     "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant": {
       "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
@@ -1297,11 +837,7 @@
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Id": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [],
-      "Constructors": []
+      }
     },
     "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache": {
       "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
@@ -1310,72 +846,47 @@
       "Properties": {
         "CacheData": "System.Byte[]"
       },
-      "ElementType": null,
-      "GenericTypeArguments": [],
       "Methods": [
         {
           "Name": "Clear",
-          "Parameters": [],
           "ReturnType": "System.Void"
         }
-      ],
-      "Constructors": []
+      ]
     },
     "System.Byte[]": {
       "Namespace": "System",
       "Name": "System.Byte[]",
-      "AssemblyQualifiedName": "System.Byte[], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "Properties": {},
-      "ElementType": "System.Byte",
-      "GenericTypeArguments": [],
-      "Methods": [],
-      "Constructors": []
+      "AssemblyQualifiedName": "System.Byte[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "ElementType": "System.Byte"
     },
     "System.Void": {
       "Namespace": "System",
       "Name": "System.Void",
-      "AssemblyQualifiedName": "System.Void, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [],
-      "Constructors": []
+      "AssemblyQualifiedName": "System.Void, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
     },
     "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "Properties": {},
-      "ElementType": null,
+      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount"
-      ],
-      "Methods": [],
-      "Constructors": []
+      ]
     },
     "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "Properties": {},
-      "ElementType": null,
+      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment"
-      ],
-      "Methods": [],
-      "Constructors": []
+      ]
     },
     "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "Properties": {},
-      "ElementType": null,
+      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription"
-      ],
-      "Methods": [],
-      "Constructors": []
+      ]
     }
   }
 }

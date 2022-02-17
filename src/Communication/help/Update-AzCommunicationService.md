@@ -33,8 +33,10 @@ Operation to update an existing CommunicationService.
 
 ### Example 1: Update an existing ACS resource to have tags
 ```powershell
-PS C:\> Update-AzCommunicationService -Name ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -Tag @{ExampleKey1="ExampleValue1"}
+Update-AzCommunicationService -Name ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -Tag @{ExampleKey1="ExampleValue1"}
+```
 
+```output
 Location Name           Type                                          AzureAsyncOperation
 -------- ----           ----                                          -------------------
 Global   ContosoAcsResource1 Microsoft.Communication/communicationServices

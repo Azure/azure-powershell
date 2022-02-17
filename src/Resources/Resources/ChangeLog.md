@@ -19,8 +19,16 @@
 -->
 
 ## Upcoming Release
-* Updated parameter name `EnableAccount` to `AccountEnabled`, and added alias `EnableAccount` for `Update-AzADUser` [#16753]
-* Fix for https://github.com/Azure/azure-powershell/issues/15828 (Set-AzPolicyAssignment)
+* Fixed that `Get-AzRoleAssignment` shows empty RoleDefinitionName for custom roles when not specifying scope [#16991]
+* Unified the returned `RoleDefinitionId` in PSRoleAssignment to GUID [#16991]
+
+## Version 5.3.0
+* Added proeprties `onPremisesLastSyncDateTime`, `onPremisesSyncEnabled` to `User` object [#16892]
+* Added additional properties when creating request for `New-AzADServicePrincipal` and `Update-AzADServicePrincipal` [#16847] [#16841]
+* Fixed `DisplayName` and `ApplicationId` for `New-AzADAppCredential` [#16764]
+* Enabled password reset for `Update-AzADUser` [#16869]
+* Updated parameter name `EnableAccount` to `AccountEnabled`, and added alias `EnableAccount` for `Update-AzADUser` [#16753] [#16795]
+* Fixed `Set-AzPolicyAssignment` does not remove `notScope` if empty [#15828]
 
 ## Version 5.2.0
 * Fixed incorrect alias for `Get-AzADSpCredential` [#16592]

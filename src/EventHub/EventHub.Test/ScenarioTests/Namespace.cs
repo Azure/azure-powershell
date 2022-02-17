@@ -51,5 +51,12 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
         {
             TestRunner.RunTestScript("MSITest");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SchemaRegistry()
+        {
+            TestRunner.RunTestScript("SchemaRegistryTest");
+        }
     }
 }

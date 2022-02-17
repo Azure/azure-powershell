@@ -37,7 +37,7 @@ Update a gallery.
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -Description $galleryDescription
+Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -Description $galleryDescription
 ```
 
 Update a gallery.

@@ -39,7 +39,9 @@ Construct and perform HTTP request to Azure resource management endpoint only
 ### Example 1
 ```powershell
 Invoke-AzRestMethod -Path "/subscriptions/{subscription}/resourcegroups/{resourcegroup}/providers/microsoft.operationalinsights/workspaces/{workspace}?api-version={API}" -Method GET
+```
 
+```Output
 Headers    : {[Cache-Control, System.String[]], [Pragma, System.String[]], [x-ms-request-id, System.String[]], [Strict-Transport-Security, System.String[]]…}
 Version    : 1.1
 StatusCode : 200

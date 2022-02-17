@@ -24,6 +24,26 @@ The cmdlet returns the enabled or disabled status of the policy and the maximum 
 
 ## EXAMPLES
 
+### Example 1
+```powershell
+PS C:\> Get-AzDtlVMsPerUserPolicy -LabName debtestlab -ResourceGroupName yuzhi-rg
+
+Name               : MaxVmsAllowedPerUser
+Type               : Microsoft.DevTestLab/labs/policySets/policies
+Tags               : 
+Id                 : /subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/yuzhi-rg/providers/microsoft.devtestlab/labs/debte
+                     stlab/policysets/default/policies/maxvmsallowedperuser
+Location           : 
+Fact Name          : UserOwnedLabVmCount
+Threshold          : 1
+Evaluator Type     : MaxValuePolicy
+Description        : 
+Status             : Enabled
+Provisioning State : 
+```
+Gets the virtual machines per user policy of a lab in DevTest Labs.
+
+
 ## PARAMETERS
 
 ### -DefaultProfile

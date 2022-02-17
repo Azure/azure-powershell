@@ -46,14 +46,14 @@ Get-AzActionRule [-Name <String>] [-ResourceGroupName <String>] [-TargetResource
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzActionRule -ResourceGroupName "test-rg" -Severity "Sev2" -MonitorService "Platform"
+Get-AzActionRule -ResourceGroupName "test-rg" -Severity "Sev2" -MonitorService "Platform"
 ```
 
 List all action rules configured in resource group test-rg filtered on Sev2 severity and Platform Monitor Service. Use Format-List to get the details of each action rule in list.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzActionRule -ResourceGroupName "test-rg" -Name "Test-Action-Rule" | Format-List
+Get-AzActionRule -ResourceGroupName "test-rg" -Name "Test-Action-Rule" | Format-List
 ```
 
 Get the action rule with name Test-Action-Rule in test-rg resource group.

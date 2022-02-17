@@ -20,6 +20,11 @@
 -->
 ## Upcoming Release
 
+## Version 1.7.0
+* Added support to Enable or Disable  Public Network Access as optional parameter 'PublicNetworkAccess' to `Set-AzServiceBusNetworkRuleSet`
+* Fixed `Set-AzServiceBusNamespace` with Tags 
+
+
 ## Version 1.6.0
 * Added support for ZoneRedundant and optional switch parameter 'DisableLocalAuth' to `New-AzServiceBusNamespace` and `Set-AzServiceBusNamespace` 
 
