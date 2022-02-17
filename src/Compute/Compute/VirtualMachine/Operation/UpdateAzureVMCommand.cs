@@ -315,7 +315,7 @@ namespace Microsoft.Azure.Commands.Compute
                         {
                             parameters.HardwareProfile.VmSizeProperties = new VMSizeProperties();
                         }
-                        parameters.HardwareProfile.VmSizeProperties.VCPUsAvailable = this.vCPUCountPerCore;
+                        parameters.HardwareProfile.VmSizeProperties.VCPUsPerCore = this.vCPUCountPerCore;
                     }
 
                     if (this.IsParameterBound(c => c.vCPUCountAvailable))
@@ -328,7 +328,7 @@ namespace Microsoft.Azure.Commands.Compute
                         {
                             parameters.HardwareProfile.VmSizeProperties = new VMSizeProperties();
                         }
-                        parameters.HardwareProfile.VmSizeProperties.VCPUsPerCore = this.vCPUCountAvailable;
+                        parameters.HardwareProfile.VmSizeProperties.VCPUsAvailable = this.vCPUCountAvailable;
                     }
 
                     if (NoWait.IsPresent)
