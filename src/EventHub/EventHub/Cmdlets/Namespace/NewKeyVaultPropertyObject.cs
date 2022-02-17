@@ -20,7 +20,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
 
-namespace Microsoft.Azure.Commands.ServiceBus.Cmdlets.Namespace
+namespace Microsoft.Azure.Commands.EventHub.Cmdlets.Namespace
 {
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubEncryptionConfig", SupportsShouldProcess = false), OutputType(typeof(PSEncryptionConfigAttributes))]
     public class NewKeyVaultPropertyObject : AzureEventHubsCmdletBase
