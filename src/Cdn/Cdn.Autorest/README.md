@@ -52,6 +52,7 @@ subject-prefix: $(service-name)
 # identity-correction-for-post: true
 
 resourcegroup-append: true
+nested-object-to-string: true
 
 directive:
   # Following is two common directive which are normally required in all the RPs
@@ -64,6 +65,12 @@ directive:
   - where:
       verb: Set
     remove: true
+
+  # Hide Cdn profile
+  - where:
+      subject: CdnProfile
+    hide: true
+
 
   # https://github.com/Azure/autorest.powershell/issues/906
   - where:
