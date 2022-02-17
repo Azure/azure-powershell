@@ -97,7 +97,7 @@ This example is similar to Example 1, but also attaches a route table to the vir
 PS C:\> New-AzResourceGroup -Location "West US" -Name "testRG"
 PS C:\> $virtualWan = New-AzVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US"
 PS C:\> New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.1.0/24"
-PS C:\> Update-AzVirtualHub -ResourceGroupName "testRG" -Name "westushub" -PreferredRoutingGateway "VpnGateway" -HubRoutingPreference "VpnGateway"
+PS C:\> Update-AzVirtualHub -ResourceGroupName "testRG" -Name "westushub" -HubRoutingPreference "VpnGateway"
 
 VirtualWan                : /subscriptions/{subscriptionId}resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
 ResourceGroupName         : testRG
@@ -107,7 +107,6 @@ AddressPrefix             : 10.0.1.0/24
 RouteTable                :
 Location                  : West US
 Sku                  : Standard 
-PreferredRoutingGateway   : VpnGateway
 HubRoutingPreference      : VpnGateway
 VirtualNetworkConnections : {}
 Location                  : West US
@@ -210,7 +209,7 @@ Accept wildcard characters: False
 ```
 
 ### -PreferredRoutingGateway
-Preferred Routing Gateway to Route On-Prem traffic from VNET
+Preferred Routing Gateway to Route On-Prem traffic from VNET (Deprecated, please use HubRoutingPreference)
 
 ```yaml
 Type: System.String

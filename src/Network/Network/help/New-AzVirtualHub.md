@@ -233,7 +233,7 @@ Accept wildcard characters: False
 ```
 
 ### -PreferredRoutingGateway
-Preferred Routing Gateway to Route On-Prem traffic from VNET
+Preferred Routing Gateway to Route On-Prem traffic from VNET (Deprecated, please use HubRoutingPreference)
 
 ```yaml
 Type: System.String
