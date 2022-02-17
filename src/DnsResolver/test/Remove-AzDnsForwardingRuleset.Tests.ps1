@@ -1,7 +1,7 @@
 ."$PSScriptRoot\testDataGenerator.ps1"
 ."$PSScriptRoot\virtualNetworkClient.ps1"
 ."$PSScriptRoot\dnsForwardingRulesetAssertions.ps1"
-"$PSScriptRoot\Constants.ps1"
+."$PSScriptRoot\Constants.ps1"
 
 $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
 if (-Not (Test-Path -Path $loadEnvPath)) {

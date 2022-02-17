@@ -1,4 +1,5 @@
 ."$PSScriptRoot\dnsForwardingRulesetAssertions.ps1"
+."$PSScriptRoot\Constants.ps1"
 
 Add-AssertionOperator -Name 'BeSuccessfullyCreatedDnsForwardingRuleset' -Test $Function:BeSuccessfullyCreatedDnsForwardingRuleset
 

@@ -1,7 +1,7 @@
 ."$PSScriptRoot\testDataGenerator.ps1"
 ."$PSScriptRoot\virtualNetworkClient.ps1"
 ."$PSScriptRoot\dnsForwardingRulesetAssertions.ps1"
-"$PSScriptRoot\Constants.ps1"
+."$PSScriptRoot\Constants.ps1"
 
 Add-AssertionOperator -Name 'BeSuccessfullyCreatedDnsForwardingRuleset' -Test $Function:BeSuccessfullyCreatedDnsForwardingRuleset
 
