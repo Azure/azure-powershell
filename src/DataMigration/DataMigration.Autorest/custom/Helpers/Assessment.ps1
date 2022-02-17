@@ -20,7 +20,11 @@ function Test-ConfigFile{
     param(
         [Parameter(Mandatory=$true)]
         [System.String]
-        $path
+        $path,
+
+        [Parameter(Mandatory=$true)]
+        [System.String]
+        $action
     )
 
     process {
@@ -30,7 +34,7 @@ function Test-ConfigFile{
         } 
 
         $ConfigJson = Get-Content -Raw -Path $path | ConvertFrom-Json
-        if(-Not (($ConfigJson.action -eq "Assess") -Or ($ConfigJson.action -eq "assess")))
+        if(-Not (($ConfigJson.action -eq $action) ))
         {
             throw "The desired action was invalid.";
         }
