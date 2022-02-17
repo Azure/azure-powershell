@@ -8,7 +8,6 @@ using Microsoft.Azure.Management.KeyVault;
 using Microsoft.Azure.KeyVault;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.KeyVault.Models;
-using Microsoft.Azure.KeyVault.Models;
 using Microsoft.Azure.KeyVault.WebKey;
 using Microsoft.Azure.Management.Network;
 
@@ -111,12 +110,12 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
             if (HttpMockServer.Mode == HttpRecorderMode.Record)
             {
                 var environment = TestEnvironmentFactory.GetTestEnvironment();
-                HttpMockServer.Variables[ConnectionStringKeys.ServicePrincipalKey] = environment.ConnectionString.KeyValuePairs.GetValueUsingCaseInsensitiveKey(ConnectionStringKeys.ServicePrincipalKey);
-                servicePrincipalObjectId = HttpMockServer.Variables[ConnectionStringKeys.ServicePrincipalKey];
+                HttpMockServer.Variables[ConnectionStringKeys.AADClientIdKey] = environment.ConnectionString.KeyValuePairs.GetValueUsingCaseInsensitiveKey(ConnectionStringKeys.AADClientIdKey);
+                servicePrincipalObjectId = HttpMockServer.Variables[ConnectionStringKeys.AADClientIdKey];
             }
             else if (HttpMockServer.Mode == HttpRecorderMode.Playback)
             {
-                servicePrincipalObjectId = HttpMockServer.Variables[ConnectionStringKeys.ServicePrincipalKey];
+                servicePrincipalObjectId = HttpMockServer.Variables[ConnectionStringKeys.AADClientIdKey];
             }
             return servicePrincipalObjectId;
         }
@@ -128,7 +127,6 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
         public static KeyIdentifier CreateKeyVaultKey(Vault vault, string keyName)
         {
             string vaultUri = vault.Properties.VaultUri;
-            var attributes = new KeyAttributes();
             var createdKey = KeyVaultClient.CreateKeyAsync(vaultUri, keyName, JsonWebKeyType.Rsa,
                     keyOps: JsonWebKeyOperation.AllOperations).GetAwaiter().GetResult();
             return new KeyIdentifier(createdKey.Key.Kid);
@@ -139,15 +137,6 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
         /// </summary>
         /// <returns></returns>
         public static Vault GetAzureKeyVault(string resourceGroupName, string vaultName)
-        {
-            return KeyVaultManagementClient.Vaults.Get(resourceGroupName, vaultName);
-        }
-
-        /// <summary>
-        /// Get Vault using KeyVaultManagementClient.
-        /// </summary>
-        /// <returns></returns>
-        public static Vault GetVault(string resourceGroupName, string vaultName)
         {
             return KeyVaultManagementClient.Vaults.Get(resourceGroupName, vaultName);
         }

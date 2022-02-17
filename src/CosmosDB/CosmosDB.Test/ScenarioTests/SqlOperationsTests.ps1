@@ -880,7 +880,7 @@ function Create-KeyIdentity{
 		[string] $vaultName="cosmosdb-ae-keyvault",
 		[string] $keyName="key-cosmosdb-ae-ps-test"
 		)
-	$vault = [Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest.TestHelper]::GetVault($resourceGroupName,$vaultName)
+	$vault = [Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest.TestHelper]::GetAzureKeyVault($resourceGroupName,$vaultName)
 	$keyIdentity = [Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest.TestHelper]::CreateKeyVaultKey($vault,$keyName)
 	return $keyIdentity
 }
@@ -891,18 +891,17 @@ Test Client Encryption Key operations using Name parameter set
 #>
 function Test-ClientEncryptionKeyCmdlets
 {
-  $AccountName = "dbaccount60"
-  $rgName = "CosmosDBResourceGroup603"
+  $AccountName = "dbaccount60o"
+  $rgName = "CosmosDBResourceGoup60o"
   $DatabaseName = "dbNameCdbAE"
   $ClientEncryptionKeyName = "cek1"
   $EncryptionAlgorithm = "AEAD_AES_256_CBC_HMAC_SHA256"
-  $keywrapmetadataName = "key1_v1"
+  $keywrapmetadataName = "cmk1v1"
+  $keywrapmetadataName2 = "cmk1v2"
   $keywrapmetadataType = "AKV_KEY_VAULT"
-  $keywrapmetadataValue = "https://sakulk-akv.vault.azure.net/keys/sample2/525eff9690fe4df9b496c30d4833b11f"
-  $keywrapmetadataName2 = "key1_v2"
-  $keywrapmetadataValue2 = "https://sakulk-akv.vault.azure.net/keys/sample2/525eff9690fe4df9b496c30d4833b11f"
+  
 
-  $vaultName="cosmosdbaekeyvault123"
+  $vaultName="cdbAeAKV14"
 
   $location = "East US"
   $apiKind = "Sql"
@@ -922,44 +921,20 @@ function Test-ClientEncryptionKeyCmdlets
   $locations = @()
   $locations += New-AzCosmosDBLocationObject -LocationName "East Us" -FailoverPriority 0 -IsZoneRedundant 0
 
-  Try{
-        $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location  $location
-        $principalId = Get-PrincipalObjectId
-  
-        #Login-AzAccount
-        echo "AM here1==============================================="
-        $encryptionKeyVault=New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgName -Location $location
-        Start-Sleep -s 30
-        echo "AM here2---------------------------------------------------->>>>>>>>"
-        # add access police for key-vault
-        $encryptionKeyVault= Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ServicePrincipalName "DotNet_SDK_test" -PermissionsToKeys create,import,delete,list -PermissionsToSecrets Get,Set -PermissionsToCertificates Get,List
-        
-        Start-Sleep -s 120
-        <#
-      echo "AM here---------------------------->"
-      # new key identity
-      $encryptionKey= Create-KeyIdentity -resourceGroupName $rgName -vaultName $vaultName -keyName $ClientEncryptionKeyName
-      $encryptionVaultUri=$encryptionKey.Vault
-      $encryptionKeyVersion=$encryptionKey.Version
-      $encryptionKeyName=$encryptionKey.Name
-      echo "AM here333---------------------------->"
-       <#
-      $principalId = Get-PrincipalObjectId
-
-      
+  Try{ 
       $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location  $location
       $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel
 
       # new user-assigned identity
-      $principalId = Get-PrincipalObjectId
-      
-      $encryptionKeyVault=New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgName -Location $location
-      # add access police for key-vault
-      $encryptionKeyVault= Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ObjectId $principalId -PermissionsToKeys create,import,delete,list,Get,UnwrapKey,WrapKey -PermissionsToSecrets Get,Set -PermissionsToCertificates Get,List
+      $objectId = Get-PrincipalObjectId
 
+      $encryptionKeyVault=New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgName -Location $location
+
+      # add access police for key-vault
+      $encryptionKeyVault= Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ObjectId $objectId -PermissionsToKeys create,Get,UnwrapKey,WrapKey,sign -BypassObjectIdValidation
       
       # new key identity
-      $encryptionKey= Create-KeyIdentity -resourceGroupName $rgName -vaultName $vaultName -keyName $keyName
+      $encryptionKey= Create-KeyIdentity -resourceGroupName $rgName -vaultName $vaultName -keyName $keywrapmetadataName
       $encryptionVaultUri=$encryptionKey.Vault
       $encryptionKeyVersion=$encryptionKey.Version
       $encryptionKeyName=$encryptionKey.Name
@@ -969,16 +944,16 @@ function Test-ClientEncryptionKeyCmdlets
       Assert-AreEqual $NewDatabase.Name $DatabaseName
 
       # create KeyWrapMetadata object.
-      $NewKeyWrapMetaDataObject = [Microsoft.Azure.Commands.CosmosDB.Models.PSSqlKeyWrapMetadata]::new([Microsoft.Azure.Management.CosmosDB.Models.KeyWrapMetadata]::new($keywrapmetadataName,$keywrapmetadataType,$encryptionVaultUri))
+      $NewKeyWrapMetaDataObject = [Microsoft.Azure.Commands.CosmosDB.Models.PSSqlKeyWrapMetadata]::new([Microsoft.Azure.Management.CosmosDB.Models.KeyWrapMetadata]::new($keywrapmetadataName,$keywrapmetadataType,$encryptionKey))
       
       # create a new client encryption key
       $NewClientEncryptionKey = New-AzCosmosDbClientEncryptionKey -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ClientEncryptionKeyName $ClientEncryptionKeyName -EncryptionAlgorithmName "AEAD_AES_256_CBC_HMAC_SHA256" -KeyWrapMetadata $NewKeyWrapMetaDataObject      
 
       Assert-AreEqual $NewClientEncryptionKey.Resource.id $ClientEncryptionKeyName
       Assert-AreEqual $NewClientEncryptionKey.Resource.encryptionAlgorithm $EncryptionAlgorithm
-      Assert-AreEqual $NewClientEncryptionKey.Resource.keyWrapMetadata.name $keywrapmetadataName
+      Assert-AreEqual $NewClientEncryptionKey.Resource.keyWrapMetadata.name $encryptionKeyName
       Assert-AreEqual $NewClientEncryptionKey.Resource.keyWrapMetadata.type $keywrapmetadataType
-      Assert-AreEqual $NewClientEncryptionKey.Resource.keyWrapMetadata.value $keywrapmetadataValue
+      Assert-AreEqual $NewClientEncryptionKey.Resource.keyWrapMetadata.value $encryptionKey
 
       # fetch client encryption keys.
       $ListClientEncryptionKeys = Get-AzCosmosDbClientEncryptionKey -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName
@@ -988,8 +963,14 @@ function Test-ClientEncryptionKeyCmdlets
       $FetchedClientEncryptionKey = Get-AzCosmosDbClientEncryptionKey -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ClientEncryptionKeyName $ClientEncryptionKeyName
       Assert-AreEqual $FetchedClientEncryptionKey.Resource.id $ClientEncryptionKeyName
 
+      # new key identity
+      $encryptionKey2 = Create-KeyIdentity -resourceGroupName $rgName -vaultName $vaultName -keyName $keywrapmetadataName2
+      $encryptionVaultUri2=$encryptionKey.Vault
+      $encryptionKeyVersion2=$encryptionKey.Version
+      $encryptionKeyName2=$encryptionKey.Name
+
       # create updated KeyWrapMetadata object.
-      $UpdatedKeyWrapMetaDataObject = [Microsoft.Azure.Commands.CosmosDB.Models.PSSqlKeyWrapMetadata]::new([Microsoft.Azure.Management.CosmosDB.Models.KeyWrapMetadata]::new($keywrapmetadataName2,$keywrapmetadataType,$keywrapmetadataValue2))
+      $UpdatedKeyWrapMetaDataObject = [Microsoft.Azure.Commands.CosmosDB.Models.PSSqlKeyWrapMetadata]::new([Microsoft.Azure.Management.CosmosDB.Models.KeyWrapMetadata]::new($keywrapmetadataName2,$keywrapmetadataType,$encryptionKey2))
 
       # update client encryption key
       $UpdatedClientEncryptionKey = Update-AzCosmosDbClientEncryptionKey -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ClientEncryptionKeyName $ClientEncryptionKeyName -EncryptionAlgorithmName "AEAD_AES_256_CBC_HMAC_SHA256" -KeyWrapMetadata $UpdatedKeyWrapMetaDataObject      
@@ -997,10 +978,9 @@ function Test-ClientEncryptionKeyCmdlets
       Assert-AreEqual $UpdatedClientEncryptionKey.Resource.encryptionAlgorithm $EncryptionAlgorithm
       Assert-AreEqual $UpdatedClientEncryptionKey.Resource.keyWrapMetadata.name $keywrapmetadataName2
       Assert-AreEqual $UpdatedClientEncryptionKey.Resource.keyWrapMetadata.type $keywrapmetadataType
-      Assert-AreEqual $UpdatedClientEncryptionKey.Resource.keyWrapMetadata.value $keywrapmetadataValue2
-         #>
+      Assert-AreEqual $UpdatedClientEncryptionKey.Resource.keyWrapMetadata.value $encryptionKey2
   }
   Finally {
-    #Remove-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+    Remove-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
   }
 }
