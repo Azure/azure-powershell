@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "Web API protocols (http, https). Protocols over which API is made available. " +
+            HelpMessage = "Web API protocols (http, https, ws, wss). Protocols over which API is made available. " +
                           "This parameter is required. Default value is $null.")]
         [ValidateNotNullOrEmpty]
         public PsApiManagementSchema[] Protocols { get; set; }
