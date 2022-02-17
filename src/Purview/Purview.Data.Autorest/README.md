@@ -30,7 +30,7 @@ For information on how to develop for `Az.Purview`, see [how-to.md](how-to.md).
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: ${commit}
+branch: c599abd70c39fa417d97dc59cbf5822f44b47f11
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 # lock the commit
@@ -52,13 +52,17 @@ directive:
   - where:
       variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^Check$|^CheckViaIdentity$|^CheckViaIdentityExpanded$|^Set$|^AddViaIdentity$|^Add$
     remove: true
+# Remove the set-* cmdlet
+  - where:
+      verb: Set
+    remove: true
   - where:
       variant: ^Create$
-      subject: ^(?!.*ClassificationRule).*
+      subject: ^(?!.*(ClassificationRule|DataSource|KeyVaultConnection|Filter|Scan$|Trigger|ScanRuleset)).*
     remove: true
   - where:
       variant: ^CreateExpanded$
-      subject: ^ClassificationRule$
+      subject: ^ClassificationRule$|^DataSource$|^KeyVaultConnection$|^Filter$|^Scan$|^Trigger$|^ScanRuleset$
     remove: true
   - from: source-file-csharp
     where: $
@@ -67,10 +71,103 @@ directive:
     where: $
     transform: $ = $.split("{Endpoint}").join("{endpoint}");
   - where:
-        model-name: ClassificationRule
+        model-name: CustomClassificationRule
+    set:      
+        suppress-format: true
+  - where:
+        model-name: (.*)DataSource$
+    set:      
+        suppress-format: true
+  - where:
+        model-name: AzureKeyVault
+    set:      
+        suppress-format: true
+  - where:
+        model-name: Filter
+    set:      
+        suppress-format: true
+  - where:
+        model-name: ScanResult
+    set:      
+        suppress-format: true
+  - where:
+        model-name: (.*)Scan$
+    set:      
+        suppress-format: true
+  - where:
+        model-name: Trigger
+    set:      
+        suppress-format: true
+  - where:
+        model-name: (.*)ScanRuleset
+    set:      
+        suppress-format: true
+  - where:
+        model-name: (.*)SystemScanRuleset
     set:      
         suppress-format: true
   - model-cmdlet:
     - CustomClassificationRule
-    - SystemClassificationRule
+    - RegexClassificationRulePattern
+    - AzureKeyVault
+    - Filter
+    - AzureSubscriptionDataSource
+    - AzureResourceGroupDataSource
+    - AzureSynapseWorkspaceDataSource
+    - AdlsGen1DataSource
+    - AdlsGen2DataSource
+    - AmazonAccountDataSource
+    - AmazonS3DataSource
+    - AmazonSqlDataSource
+    - AzureCosmosDbDataSource
+    - AzureDataExplorerDataSource
+    - AzureFileServiceDataSource
+    - AzureSqlDatabaseDataSource
+    - AmazonPostgreSqlDataSource
+    - AzurePostgreSqlDataSource
+    - SqlServerDatabaseDataSource
+    - AzureSqlDatabaseManagedInstanceDataSource
+    - AzureSqlDataWarehouseDataSource
+    - AzureMySqlDataSource
+    - AzureStorageDataSource
+    - TeradataDataSource
+    - OracleDataSource
+    - SapS4HanaDataSource
+    - SapEccDataSource
+    - PowerBIDataSource
+    - AzureSubscriptionCredentialScan
+    - AzureSubscriptionMsiScan
+    - AzureResourceGroupCredentialScan
+    - AzureResourceGroupMsiScan
+    - AzureSynapseWorkspaceCredentialScan
+    - AzureSynapseWorkspaceMsiScan
+    - AdlsGen1CredentialScan
+    - AdlsGen1MsiScan
+    - AdlsGen2CredentialScan
+    - AdlsGen2MsiScan
+    - AmazonAccountCredentialScan
+    - AmazonS3CredentialScan
+    - AmazonSqlCredentialScan
+    - AzureCosmosDbCredentialScan
+    - AzureDataExplorerCredentialScan
+    - AzureDataExplorerMsiScan
+    - AzureFileServiceCredentialScan
+    - AzureSqlDatabaseCredentialScan
+    - AzureSqlDatabaseMsiScan
+    - AmazonPostgreSqlCredentialScan
+    - AzurePostgreSqlCredentialScan
+    - SqlServerDatabaseCredentialScan
+    - AzureSqlDatabaseManagedInstanceCredentialScan
+    - AzureSqlDatabaseManagedInstanceMsiScan
+    - AzureSqlDataWarehouseCredentialScan
+    - AzureSqlDataWarehouseMsiScan
+    - AzureMySqlCredentialScan
+    - AzureStorageCredentialScan
+    - AzureStorageMsiScan
+    - TeradataTeradataCredentialScan
+    - OracleOracleCredentialScan
+    - SapS4HanaSapS4HanaCredentialScan
+    - SapEccSapEccCredentialScan
+    - PowerBIDelegatedScan
+    - PowerBIMsiScan
 ```
