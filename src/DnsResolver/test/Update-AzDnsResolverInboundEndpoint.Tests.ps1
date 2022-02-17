@@ -4,7 +4,6 @@
 ."$PSScriptRoot\Constants.ps1"
 
 Add-AssertionOperator -Name 'BeSuccessfullyCreatedInboundEndpoint' -Test $Function:BeSuccessfullyCreatedInboundEndpoint
-Add-AssertionOperator -Name 'BeSameInboundEndpointAsExpected' -Test $Function:BeSameInboundEndpointAsExpected
 
 $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
 if (-Not (Test-Path -Path $loadEnvPath)) {
@@ -44,7 +43,6 @@ Describe 'Update-AzDnsResolverInboundEndpoint' {
 
         # ASSERT
         $updatedInboundEndpoint | Should -BeSuccessfullyCreatedInboundEndpoint
-        $updatedInboundEndpoint | Should -BeSameInboundEndpointAsExpected -ExpectedValue $originalInboundEndpoint
         $updatedInboundEndpoint.Tag.Count | Should -Be $tag.Count
     }
 }
