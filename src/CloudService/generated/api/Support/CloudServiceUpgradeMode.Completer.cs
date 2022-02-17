@@ -34,15 +34,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Auto".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Auto", "Auto", global::System.Management.Automation.CompletionResultType.ParameterValue, "Auto");
+                yield return new global::System.Management.Automation.CompletionResult("'Auto'", "Auto", global::System.Management.Automation.CompletionResultType.ParameterValue, "Auto");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Manual".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Manual", "Manual", global::System.Management.Automation.CompletionResultType.ParameterValue, "Manual");
+                yield return new global::System.Management.Automation.CompletionResult("'Manual'", "Manual", global::System.Management.Automation.CompletionResultType.ParameterValue, "Manual");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Simultaneous".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Simultaneous", "Simultaneous", global::System.Management.Automation.CompletionResultType.ParameterValue, "Simultaneous");
+                yield return new global::System.Management.Automation.CompletionResult("'Simultaneous'", "Simultaneous", global::System.Management.Automation.CompletionResultType.ParameterValue, "Simultaneous");
             }
         }
     }
