@@ -15,7 +15,8 @@ Lists all the restorable Azure Cosmos DB MongoDB collection available for a spec
 ### ByNameParameterSet (Default)
 ```
 Get-AzCosmosDBMongoDBRestorableCollection -Location <String> -DatabaseAccountInstanceId <String>
- -DatabaseRId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -DatabaseRId <String> [-StartTime <String>] [-EndTime <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
@@ -87,6 +88,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DatabaseRId
+ResourceId of the database.
+
+```yaml
+Type: System.String
+Parameter Sets: ByNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -102,15 +118,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DatabaseRId
-ResourceId of the database.
+### -EndTime
+Restorable MongoDB collections event feed end time.
 
 ```yaml
 Type: System.String
 Parameter Sets: ByNameParameterSet
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -141,6 +157,21 @@ Parameter Sets: ByNameParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StartTime
+Restorable MongoDB collections event feed start time.
+
+```yaml
+Type: System.String
+Parameter Sets: ByNameParameterSet
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -1,49 +1,49 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqlrestorableresource
+online version:
 schema: 2.0.0
 ---
 
-# Get-AzCosmosDBSqlRestorableResource
+# Get-AzCosmosDBTableRestorableResource
 
 ## SYNOPSIS
-Lists all the restorable Azure Cosmos DB SQL resources available for a specific database account at a given time and location.
+Lists all the restorable Azure Cosmos DB Table resources available for a specific database account at a given time and location.
 
 ## SYNTAX
 
 ### ByNameParameterSet (Default)
 ```
-Get-AzCosmosDBSqlRestorableResource -Location <String> -DatabaseAccountInstanceId <String>
+Get-AzCosmosDBTableRestorableResource -Location <String> -DatabaseAccountInstanceId <String>
  -RestoreTimestampInUtc <DateTime> -RestoreLocation <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Get-AzCosmosDBSqlRestorableResource -Location <String> -DatabaseAccountInstanceId <String>
+Get-AzCosmosDBTableRestorableResource -Location <String> -DatabaseAccountInstanceId <String>
  -RestoreTimestampInUtc <DateTime> -RestoreLocation <String>
  -InputObject <PSRestorableDatabaseAccountGetResult> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Lists all the restorable Azure Cosmos DB SQL resources available for a specific database account at a given time and location.
+Lists all the restorable Azure Cosmos DB Table resources available for a specific database account at a given time and location.
 The list is useful to know what resources exist in the source account at the given time. This will provide the user an indication of what to expect if the account is restored to the given time.
-The user can also use this list and provide a subset of restorable resources if the user wants to restore only specific databases/containers.
+The user can also use this list and provide a subset of restorable resources if the user wants to restore only specific tables.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCosmosDBSqlRestorableResource -LocationName {locationName} -DatabaseAccountInstanceId {DatabaseInstanceId} -RestoreLocation {Database} -RestoreTimestampInUtc {RestoreTimestamp}
+PS C:\> Get-AzCosmosDBTableRestorableResource -Location {location} -DatabaseAccountInstanceId {DatabaseInstanceId} -RestoreLocation {RestoreLocation} -RestoreTimestampInUtc {RestoreTimestamp}
 
-DatabaseName CollectionNames
------------- ---------------
-{DBName}     {Collection names}
+TableNames
+----------
+{table1, table2}
 ```
 
-Returns the list of all restorable Azure Cosmos DB SQL resources available for a specific database account at a given time and location.
+Returns the list of all restorable Azure Cosmos DB Tables available for a specific database account at a given time and location.
 
 ## PARAMETERS
 
@@ -144,11 +144,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### Microsoft.Azure.Management.CosmosDB.Models.PSRestorableDatabaseAccountGetResult
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.CosmosDB.Models.PSDatabaseToRestore
+### Microsoft.Azure.Commands.CosmosDB.Models.PSTablesToRestore
 
 ## NOTES
 

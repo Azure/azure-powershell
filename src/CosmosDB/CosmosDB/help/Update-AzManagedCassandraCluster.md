@@ -12,49 +12,31 @@ Update an existing Azure Managed Instances for Apache Cassandra cluster.
 
 ## SYNTAX
 
-### NameParameterSet (Default)
+### ByNameParameterSet (Default)
 ```
-Update-AzManagedCassandraCluster 
- -ResourceGroupName <String> 
- -ClusterName <String>
- [-ExternalGossipCertificate <String[]>]
- [-ClientCertificate <String[]>]
- [-RepairEnabled <bool>]
- [-TimeBetweenBackupInHours <int>]
- [-AuthenticationMethod <String>]
- [-CassandraVersion <String>]
- [-ExternalSeedNode <String[]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Update-AzManagedCassandraCluster -ResourceGroupName <String> -ClusterName <String> [-Tag <Hashtable>]
+ [-ExternalGossipCertificate <String[]>] [-ClientCertificate <String[]>] [-RepairEnabled <Boolean>]
+ [-TimeBetweenBackupInHours <Int32>] [-AuthenticationMethod <String>] [-CassandraVersion <String>]
+ [-ExternalSeedNode <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### ResourceIdParameterSet
+### ByResourceIdParameterSet
 ```
-Update-AzManagedCassandraCluster 
- -ResourceId <String> 
- [-Tag <Hashtable>]
- [-ExternalGossipCertificate <String[]>]
- [-ClientCertificate <String[]>]
- [-RepairEnabled <bool>]
- [-TimeBetweenBackupInHours <int>]
- [-AuthenticationMethod <String>]
- [-CassandraVersion <String>]
- [-ExternalSeedNode <String[]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Update-AzManagedCassandraCluster -ResourceId <String> [-Tag <Hashtable>]
+ [-ExternalGossipCertificate <String[]>] [-ClientCertificate <String[]>] [-RepairEnabled <Boolean>]
+ [-TimeBetweenBackupInHours <Int32>] [-AuthenticationMethod <String>] [-CassandraVersion <String>]
+ [-ExternalSeedNode <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### ObjectParameterSet
+### ByObjectParameterSet
 ```
-Update-AzManagedCassandraCluster 
- -InputObject <PSClusterResource> 
- [-Tag <Hashtable>]
- [-ExternalGossipCertificate <String[]>]
- [-ClientCertificate <String[]>]
- [-RepairEnabled <bool>]
- [-TimeBetweenBackupInHours <int>]
- [-AuthenticationMethod <String>]
- [-CassandraVersion <String>]
- [-ExternalSeedNode <String[]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Update-AzManagedCassandraCluster -InputObject <PSClusterResource> [-Tag <Hashtable>]
+ [-ExternalGossipCertificate <String[]>] [-ClientCertificate <String[]>] [-RepairEnabled <Boolean>]
+ [-TimeBetweenBackupInHours <Int32>] [-AuthenticationMethod <String>] [-CassandraVersion <String>]
+ [-ExternalSeedNode <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -97,6 +79,7 @@ How to authenticate clients, one of `Cassandra` (for password authentication), `
 ```yaml
 Type: System.String
 Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -111,6 +94,7 @@ Which version of Cassandra to run. Currently only 3.11 is supported.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -125,6 +109,7 @@ The list of TLS certificates to use to authenticate clients. If this is omitted,
 ```yaml
 Type: System.String[]
 Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -138,7 +123,7 @@ Name of the managed Cassandra cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByNameParameterSet
 Aliases:
 
 Required: True
@@ -169,6 +154,7 @@ A list of additional TLS certificates the managed Cassandra cluster will use to 
 ```yaml
 Type: System.String[]
 Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -183,6 +169,7 @@ List of IP addresses of external seed nodes to bridge this cluster to.
 ```yaml
 Type: System.String[]
 Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -191,18 +178,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-The location to create the managed Cassandra cluster in.
+### -InputObject
+Managed Cassandra Cluster object
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: Microsoft.Azure.Commands.CosmosDB.Models.PSClusterResource
+Parameter Sets: ByObjectParameterSet
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -210,11 +197,11 @@ Accept wildcard characters: False
 If true, managed Cassandra will run reaper to repair the database regularly. This should only be disabled for hybrid clusters which run their own repair process outside of Azure.
 
 ```yaml
-Type: System.Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: True
 Accept pipeline input: False
@@ -226,7 +213,22 @@ Name of resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+ResourceId of the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: ByResourceIdParameterSet
 Aliases:
 
 Required: True
@@ -240,7 +242,7 @@ Accept wildcard characters: False
 Hashtable of tags to set on the data center resource.
 
 ```yaml
-Type: System.Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -255,9 +257,39 @@ Accept wildcard characters: False
 Hours between taking full backups of the cluster.
 
 ```yaml
-Type: System.Integer
-Parameter Sets: (All))
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named
