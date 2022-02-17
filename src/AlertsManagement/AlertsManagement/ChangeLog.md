@@ -18,8 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-* This version supports the new alert processing rule API (changed from action rule) 
+* Substitute cmdlets:
+  - `Get-AzActionRule` with `Get-AzAlertProcessingRule`
+  - `Set-AzActionRule` with `Set-AzAlertProcessingRule`
+  - `Update-AzActionRule` with `Update-AzAlertProcessingRule`
+  - `Remove-AzActionRule` with `Remove-AzAlertProcessingRule`
 
 ## Version 0.3.0
 * Fixed bug for `Set-AzActionRule` when RecurrenceType is "Once" and no "ReccurentValue" provided [#14476]
