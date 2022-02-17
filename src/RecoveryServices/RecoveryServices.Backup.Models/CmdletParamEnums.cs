@@ -116,7 +116,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         ProtectionPolicy,
         ResourceGroupName,
         ResourceName,
-        FixForInconsistentItems
+        FixForInconsistentItems,
+        ScheduleRunFrequency
     }
 
     public enum ItemParams

@@ -31,16 +31,16 @@ The **New-AzBatchCertificate** cmdlet adds a certificate to the specified Azure 
 ## EXAMPLES
 
 ### Example 1: Add a certificate from a file
-```
-PS C:\>New-AzBatchCertificate -FilePath "E:\Certificates\MyCert.cer" -BatchContext $Context
+```powershell
+New-AzBatchCertificate -FilePath "E:\Certificates\MyCert.cer" -BatchContext $Context
 ```
 
 This command adds a certificate to the specified Batch account by using the file E:\Certificates\MyCert.cer.
 
 ### Example 2: Add a certificate from raw data
-```
-PS C:\>$RawData = [System.IO.File]::ReadAllBytes("E:\Certificates\MyCert.pfx")
-PS C:\> New-AzBatchCertificate -RawData $RawData -Password "Password1234" -BatchContext $Context
+```powershell
+$RawData = [System.IO.File]::ReadAllBytes("E:\Certificates\MyCert.pfx")
+New-AzBatchCertificate -RawData $RawData -Password "Password1234" -BatchContext $Context
 ```
 
 The first command reads the data from the file named MyCert.pfx into the $RawData variable.

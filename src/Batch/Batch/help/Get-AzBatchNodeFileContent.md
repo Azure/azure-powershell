@@ -61,8 +61,8 @@ The **Get-AzBatchNodeFileContent** cmdlet gets an Azure Batch node file and save
 ## EXAMPLES
 
 ### Example 1: Get a Batch node file associated with a task and save the file
-```
-PS C:\>Get-AzBatchNodeFileContent -JobId "Job01" -TaskId "Task01" -Path "StdOut.txt" -DestinationPath "E:\PowerShell\StdOut.txt" -BatchContext $Context
+```powershell
+Get-AzBatchNodeFileContent -JobId "Job01" -TaskId "Task01" -Path "StdOut.txt" -DestinationPath "E:\PowerShell\StdOut.txt" -BatchContext $Context
 ```
 
 This command gets the node file that is named StdOut.txt, and saves it to the E:\PowerShell\StdOut.txt file path on the local computer.
@@ -70,8 +70,8 @@ The StdOut.txt node file is associated with task that has the ID Task01 for the 
 Use the Get-AzBatchAccountKey cmdlet to assign a context to the $Context variable.
 
 ### Example 2: Get a Batch node file and save it to a specified file path using the pipeline
-```
-PS C:\>Get-AzBatchNodeFile -JobId "Job02" -TaskId "Task02" -Path "StdErr.txt" -BatchContext $Context | Get-AzBatchNodeFileContent -DestinationPath "E:\PowerShell\StdOut.txt" -BatchContext $Context
+```powershell
+Get-AzBatchNodeFile -JobId "Job02" -TaskId "Task02" -Path "StdErr.txt" -BatchContext $Context | Get-AzBatchNodeFileContent -DestinationPath "E:\PowerShell\StdOut.txt" -BatchContext $Context
 ```
 
 This command gets the node file that is named StdErr.txt by using the Get-AzBatchNodeFile cmdlet.
@@ -80,9 +80,9 @@ The current cmdlet saves that file to the E:\PowerShell\StdOut.txt file path on 
 The StdOut.txt node file is associated with the task that has the ID Task02 for the job that has the ID Job02.
 
 ### Example 3: Get a Batch node file associated with a task and direct it to a stream
-```
-PS C:\>$Stream = New-Object -TypeName "System.IO.MemoryStream"
-PS C:\> Get-AzBatchNodeFileContent -JobId "Job03" -TaskId "Task11" -Path "StdOut.txt" -DestinationStream $Stream -BatchContext $Context
+```powershell
+$Stream = New-Object -TypeName "System.IO.MemoryStream"
+Get-AzBatchNodeFileContent -JobId "Job03" -TaskId "Task11" -Path "StdOut.txt" -DestinationStream $Stream -BatchContext $Context
 ```
 
 The first command creates a stream by using the New-Object cmdlet, and then stores it in the $Stream variable.
@@ -90,16 +90,16 @@ The second command gets the node file that is named StdOut.txt from the task tha
 The command directs file contents to the stream in $Stream.
 
 ### Example 4: Get a node file from a compute node and save it
-```
-PS C:\>Get-AzBatchNodeFileContent -PoolId "Pool01" -ComputeNodeId "ComputeNode01" -Path "Startup\StdOut.txt" -DestinationPath "E:\PowerShell\StdOut.txt" -BatchContext $Context
+```powershell
+Get-AzBatchNodeFileContent -PoolId "Pool01" -ComputeNodeId "ComputeNode01" -Path "Startup\StdOut.txt" -DestinationPath "E:\PowerShell\StdOut.txt" -BatchContext $Context
 ```
 
 This command gets the node file Startup\StdOut.txt from the compute node that has the ID ComputeNode01 in the pool that has the ID Pool01.
 The command saves the file to the E:\PowerShell\StdOut.txt file path on the local computer.
 
 ### Example 5: Get a node file from a compute node and save it by using the pipeline
-```
-PS C:\>Get-AzBatchNodeFile -PoolId "Pool01" -ComputeNodeId "ComputeNode01" -Path "Startup\StdOut.txt" -BatchContext $Context | Get-AzBatchNodeFileContent -DestinationPath "E:\PowerShell\StdOut.txt" -BatchContext $Context
+```powershell
+Get-AzBatchNodeFile -PoolId "Pool01" -ComputeNodeId "ComputeNode01" -Path "Startup\StdOut.txt" -BatchContext $Context | Get-AzBatchNodeFileContent -DestinationPath "E:\PowerShell\StdOut.txt" -BatchContext $Context
 ```
 
 This command gets the node file Startup\StdOut.txt by using Get-AzBatchNodeFile from the compute node that has the ID ComputeNode01.
@@ -108,9 +108,9 @@ The command passes that node file to the current cmdlet.
 That cmdlet saves the file to the E:\PowerShell\StdOut.txt file path on the local computer.
 
 ### Example 6: Get a node file from a compute node and direct it to a stream
-```
-PS C:\>$Stream = New-Object -TypeName "System.IO.MemoryStream"
-PS C:\> Get-AzBatchNodeFileContent -PoolId "Pool01" -ComputeNodeId "ComputeNode01" -Path "startup\stdout.txt" -DestinationStream $Stream -BatchContext $Context
+```powershell
+$Stream = New-Object -TypeName "System.IO.MemoryStream"
+Get-AzBatchNodeFileContent -PoolId "Pool01" -ComputeNodeId "ComputeNode01" -Path "startup\stdout.txt" -DestinationStream $Stream -BatchContext $Context
 ```
 
 The first command creates a stream by using the New-Object cmdlet, and then stores it in the $Stream variable.

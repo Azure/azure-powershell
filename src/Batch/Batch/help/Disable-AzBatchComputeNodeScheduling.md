@@ -42,9 +42,9 @@ Tasks stopped in this manner will not be rescheduled.
 ## EXAMPLES
 
 ### Example 1: Disable task scheduling on a compute node
-```
-PS C:\>$Context = Get-AzBatchAccountKey -AccountName "contosobatchaccount"
-PS C:\> Disable-AzBatchComputeNodeScheduling -PoolId "myPool" -Id "tvm-1783593343_34-20151117t222514z" -BatchContext $Context
+```powershell
+$Context = Get-AzBatchAccountKey -AccountName "contosobatchaccount"
+Disable-AzBatchComputeNodeScheduling -PoolId "myPool" -Id "tvm-1783593343_34-20151117t222514z" -BatchContext $Context
 ```
 
 These commands disable task schedule on the compute node tvm-1783593343_34-20151117t222514z.
@@ -54,9 +54,9 @@ The second command then uses this object reference and the **Disable-AzBatchComp
 Because the *DisableComputeNodeSchedulingOptions* parameter was not included any tasks currently running on the compute node will be requeued.
 
 ### Example 2: Disable task scheduling on all compute nodes in a pool
-```
-PS C:\>$Context = Get-AzBatchAccountKey -AccountName "contosobatchaccount"
-PS C:\> Get-AzBatchComputeNode -PoolId "Pool06"  -BatchContext $Context | Disable-AzBatchComputeNodeScheduling -BatchContext $Context
+```powershell
+$Context = Get-AzBatchAccountKey -AccountName "contosobatchaccount"
+Get-AzBatchComputeNode -PoolId "Pool06"  -BatchContext $Context | Disable-AzBatchComputeNodeScheduling -BatchContext $Context
 ```
 
 These commands disable task scheduling on all the computer nodes in the batch pool Pool06.

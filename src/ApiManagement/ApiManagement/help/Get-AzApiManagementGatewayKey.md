@@ -22,10 +22,10 @@ The **Get-AzApiManagementGatewayKey** cmdlet gets keys of the existing Gateway
 
 ## EXAMPLES
 
-### Example 2: Get a gateway by ID
-```
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzApiManagementGatewayKey -Context $apimContext -GatewayId "0123456789"
+### Example 1: Get a gateway by ID
+```powershell
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Get-AzApiManagementGatewayKey -Context $apimContext -GatewayId "0123456789"
 ```
 
 This command gets the keys for a "0123456789" gateway.

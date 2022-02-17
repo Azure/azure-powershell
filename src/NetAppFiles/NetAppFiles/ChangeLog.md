@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.9.0
 * Added `Administrators` and `EncryptDCConnections` to `ActiveDirectory`
 * Added `Get-AzNetAppFilesQuotaLimit` to get the default and current limits for quotas
 * Added `CapacityPoolResourceId`, `ProximityPlacementGroup`, `VolumeSpecName` and `PlacementRules` to `Volume`

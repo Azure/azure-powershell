@@ -25,16 +25,16 @@ You are prompted for confirmation unless you use the *Force* parameter.
 ## EXAMPLES
 
 ### Example 1: Delete a Batch pool by pool ID
-```
-PS C:\>Remove-AzBatchPool -Id "MyPool" -BatchContext $Context
+```powershell
+Remove-AzBatchPool -Id "MyPool" -BatchContext $Context
 ```
 
 This command deletes the pool with ID MyPool.
 The user is prompted for confirmation before the delete operation takes place.
 
 ### Example 2: Delete all Batch pools by force
-```
-PS C:\>Get-AzBatchPool -BatchContext $Context | Remove-AzBatchPool -Force -BatchContext $Context
+```powershell
+Get-AzBatchPool -BatchContext $Context | Remove-AzBatchPool -Force -BatchContext $Context
 ```
 
 This command deletes all Batch pools.
