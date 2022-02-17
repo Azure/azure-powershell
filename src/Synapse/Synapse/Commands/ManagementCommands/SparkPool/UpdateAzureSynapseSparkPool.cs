@@ -138,9 +138,9 @@ namespace Microsoft.Azure.Commands.Synapse
         public List<PSSynapseWorkspacePackage> Package { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
-            HelpMessage = HelpMessages.ForeApplySettings)]
+            HelpMessage = HelpMessages.ForceApplySetting)]
         [ValidateNotNullOrEmpty]
-        public SwitchParameter ForeApplySettings { get; set; }
+        public SwitchParameter ForceApplySetting { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
@@ -252,15 +252,15 @@ namespace Microsoft.Azure.Commands.Synapse
                 }
             }
 
-            bool? isForceApplySettings = false;
-            if (ForeApplySettings.IsPresent)
+            bool? isForceApplySetting = false;
+            if (ForceApplySetting.IsPresent)
             {
-                isForceApplySettings = true;
+                isForceApplySetting = true;
             }
 
             if (this.ShouldProcess(this.Name, string.Format(Resources.UpdatingSynapseSparkPool, this.Name, this.ResourceGroupName, this.WorkspaceName)))
             {
-                var result = new PSSynapseSparkPool(this.SynapseAnalyticsClient.CreateOrUpdateSparkPool(this.ResourceGroupName, this.WorkspaceName, this.Name, existingSparkPool, isForceApplySettings));
+                var result = new PSSynapseSparkPool(this.SynapseAnalyticsClient.CreateOrUpdateSparkPool(this.ResourceGroupName, this.WorkspaceName, this.Name, existingSparkPool, isForceApplySetting));
                 WriteObject(result);
             }
         }

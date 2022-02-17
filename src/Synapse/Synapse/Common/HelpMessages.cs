@@ -563,6 +563,6 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
 
         public const string StorageAccountType = "The storage account type used to store backups for the sql pool. Possible values include: 'GRS', 'LRS'.";
 
-        public const string ForeApplySettings = "Whether to stop any running jobs in the Big Data pool.";
+        public const string ForceApplySetting = "Whether to stop any running jobs in the Big Data pool.";
     }
 }
