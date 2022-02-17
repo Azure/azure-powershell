@@ -14,7 +14,7 @@ Gives SKU recommendations for Azure SQL offerings
 
 ### CommandLine (Default)
 ```
-Get-AzDataMigrationSkuRecommendation [-DatabaseAllowList <String>] [-DatabaseDenyList <String[]>]
+Get-AzDataMigrationSkuRecommendation [-DatabaseAllowList <String>] [-DatabaseDenyList <String>]
  [-DisplayResult] [-ElasticStrategy] [-EndTime <String>] [-OutputFolder <String>] [-Overwrite]
  [-ScalingFactor <String>] [-StartTime <String>] [-TargetPercentile <String>] [-TargetPlatform <String>]
  [-TargetSqlInstance <String>] [-PassThru] [<CommonParameters>]
@@ -22,7 +22,7 @@ Get-AzDataMigrationSkuRecommendation [-DatabaseAllowList <String>] [-DatabaseDen
 
 ### ConfigFile
 ```
-Get-AzDataMigrationSkuRecommendation -ConfigFilePath <String[]> [-PassThru] [<CommonParameters>]
+Get-AzDataMigrationSkuRecommendation -ConfigFilePath <String> [-PassThru] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -90,7 +90,7 @@ This command runs Run SKU Recommendation on given SQL Server using the config fi
 Path of the ConfigFile
 
 ```yaml
-Type: System.String[]
+Type: System.String
 Parameter Sets: ConfigFile
 Aliases:
 
@@ -126,7 +126,7 @@ Only set one of the following or neither: databaseAllowList, databaseDenyList.
 (Default: null)
 
 ```yaml
-Type: System.String[]
+Type: System.String
 Parameter Sets: CommandLine
 Aliases:
 
