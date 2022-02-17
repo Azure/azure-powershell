@@ -31,9 +31,11 @@ that caused the error.
 ## EXAMPLES
 
 ### Example 1: Resolve the Last Error
+```powershell
+Resolve-AzError -Last
 ```
-PS C:\> Resolve-AzError -Last
 
+```Output
    HistoryId: 3
 
 
@@ -57,10 +59,11 @@ HistoryId      : 3
 Get details of the last error.
 
 ### Example 2: Resolve all Errors in the Session
+```powershell
+Resolve-AzError
 ```
-PS C:\> Resolve-AzError
 
-
+```Output
    HistoryId: 8
 
 
@@ -125,10 +128,11 @@ HistoryId      : 5
 Get details of all errors that have occurred in the current session.
 
 ### Example 3: Resolve a Specific Error
+```powershell
+Resolve-AzError $Error[0]
 ```
-PS C:\> Resolve-AzError $Error[0]
 
-
+```Output
    HistoryId: 8
 
 

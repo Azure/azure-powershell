@@ -36,7 +36,7 @@ Gets the origin.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzFrontDoorCdnOrigin -OriginGroupName $originGroupName -OriginName $originName -ProfileName $profileName -ResourceGroupName $resourceGroupName
+Get-AzFrontDoorCdnOrigin -OriginGroupName $originGroupName -OriginName $originName -ProfileName $profileName -ResourceGroupName $resourceGroupName
 ```
 
 Gets the origin.

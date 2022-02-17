@@ -26,8 +26,8 @@ The **New-AzApiManagementGroup** cmdlet creates an API management group.
 
 ### Example 1: Create a management group
 ```powershell
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>New-AzApiManagementGroup -Context $apimContext -Name "Group0001"
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+New-AzApiManagementGroup -Context $apimContext -Name "Group0001"
 ```
 
 This command creates a management group.

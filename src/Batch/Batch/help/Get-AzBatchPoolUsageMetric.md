@@ -25,11 +25,14 @@ You can get the statistics for a specific pool and for a time range.
 ## EXAMPLES
 
 ### Example 1: Get pool usage metrics for a time range
+```powershell
+$Context = Get-AzBatchAccountKey -AccountName "ContosoBatchAccount"
+$StartTime = Get-Date -Date "2016-05-16 00:00:00Z"
+$EndTime = Get-Date -Date "2016-05-16 01:00:00Z"
+Get-AzBatchPoolUsageMetric -StartTime $StartTime -EndTime $EndTime -BatchContext $context
 ```
-PS C:\>$Context = Get-AzBatchAccountKey -AccountName "ContosoBatchAccount"
-PS C:\> $StartTime = Get-Date -Date "2016-05-16 00:00:00Z"
-PS C:\> $EndTime = Get-Date -Date "2016-05-16 01:00:00Z"
-PS C:\> Get-AzBatchPoolUsageMetric -StartTime $StartTime -EndTime $EndTime -BatchContext $context
+
+```output
 DataEgressGiB      : 6.68875873088837E-06
 DataIngressGiB     : 1.9485130906105E-05
 EndTime            : 5/16/2016 12:30:00 AM
@@ -70,8 +73,11 @@ The commands store these values in the $StartTime and $EndTime variables for use
 The final command returns all of the pool usage metrics, aggregated by pool, across time interval between the specified start and end times.
 
 ### Example 2: Get pool usage metrics by using a filter
+```powershell
+Get-AzBatchPoolUsageMetric -Filter "poolId eq 'ContosoPool'" -BatchContext $Context
 ```
-PS C:\>Get-AzBatchPoolUsageMetric -Filter "poolId eq 'ContosoPool'" -BatchContext $Context
+
+```output
 DataEgressGiB      : 9.0496614575386E-06
 DataIngressGiB     : 2.60043889284134E-05
 EndTime            : 5/16/2016 5:30:00 PM

@@ -31,7 +31,7 @@ Get CommitmentPlan of a Cognitive Services account
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCognitiveServicesAccountCommitmentPlan -ResourceGroupName cognitive-services-resource-group -AccountName resource-name
+Get-AzCognitiveServicesAccountCommitmentPlan -ResourceGroupName cognitive-services-resource-group -AccountName resource-name
 ```
 
 Get CommitmentPlan of a Cognitive Services account

@@ -26,9 +26,9 @@ ApiProperties is required by certain account types.
 
 ### Example 1
 ```powershell
-PS C:\> $apiProperties = New-AzCognitiveServicesAccountApiProperty
-PS C:\> $apiProperties.QnaRuntimeEndpoint = "https://qnamaker.azurewebsites.net"
-PS C:\> New-AzCognitiveServicesAccount -ResourceGroupName cognitive-services-resource-group -name qnamaker -Type QnAMaker -SkuName S0 -Locatio WestUS -ApiProperty $apiProperties
+$apiProperties = New-AzCognitiveServicesAccountApiProperty
+$apiProperties.QnaRuntimeEndpoint = "https://qnamaker.azurewebsites.net"
+New-AzCognitiveServicesAccount -ResourceGroupName cognitive-services-resource-group -name qnamaker -Type QnAMaker -SkuName S0 -Locatio WestUS -ApiProperty $apiProperties
 ```
 
 Above example will create an QnAMaker account, with API property "QnaRuntimeEndpoint".

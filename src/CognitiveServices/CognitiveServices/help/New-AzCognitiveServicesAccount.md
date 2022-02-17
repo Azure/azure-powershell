@@ -43,11 +43,12 @@ specified type and SKU.
 ## EXAMPLES
 
 ### 1:
-```
-PS C:\> New-AzCognitiveServicesAccount -ResourceGroupName cognitive-services-resource-group -name myluis -Type LUIS -SkuName S0 -Locatio
+```powershell
+New-AzCognitiveServicesAccount -ResourceGroupName cognitive-services-resource-group -name myluis -Type LUIS -SkuName S0 -Locatio
 n 'WestUS'
+```
 
-
+```output
 ResourceGroupName : cognitive-services-resource-group
 AccountName       : myluis
 Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/cognitive-services-resource-group/providers/Microsoft.Cog

@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// Id of the active drectory.
         /// Value of this property can not be set by user.
         /// </summary>
-        /// <value>Id of the active directory.</value>
+        /// <value>Id of the Active Directory.</value>
         public string ActiveDirectoryId { get; set; }
 
         /// <summary>
@@ -64,14 +64,14 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         public string Dns { get; set; }
 
         /// <summary>
-        /// Status of the active drectory.
+        /// Status of the Active Directory.
         /// Value of this property can not be set by user.
         /// </summary>
         /// <value>Status of the active directory on the storage server.</value>
         public string Status { get; set; }
 
         /// <summary>
-        /// StatusDetails of the active drectory.
+        /// StatusDetails of the Active Directory.
         /// Value of this property can not be set by user.
         /// </summary>
         /// <value>Any details in regards to the Status of the Active Directory</value>
@@ -96,14 +96,14 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         public string Site { get; set; }
 
         /// <summary>
-        /// Users to be added to the Built-in Backup Operator active directory group. A list of unique usernames without domain specifier
+        /// Users to be added to the Built-in Backup Operator Active Directory group. A list of unique usernames without domain specifier
         /// </summary>
         public IList<string> BackupOperators { get; set; }
 
         /// <summary>
         /// Gets or sets kdcID
         /// </summary>
-        /// <value>Kdc server IP addresses for the active directory machine. This optional
+        /// <value>Kdc server IP addresses for the Active Directory machine. This optional
         /// parameter is used only while creating kerberos volume.
         /// </value>
         public string KdcIP { get; set; }
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// <summary>
         /// Gets or sets AdName
         /// </summary>
-        /// <value>Name of the active directory machine. This optional parameter is
+        /// <value>Name of the Active Directory machine. This optional parameter is
         /// parameter is used only while creating kerberos volume.
         /// </value>
         public string AdName { get; set; }
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// Gets or sets SecurityOperators
         /// </summary>
         /// <value>
-        /// Domain Users in the Active directory to be given Security Privilege (Needed for SMB Continuously available shares for SQL). A list of unique usernames without domain specifier
+        /// Domain Users in the Active Directory to be given Security Privilege (Needed for SMB Continuously available shares for SQL). A list of unique usernames without domain specifier
         /// </value>
         public IList<string> SecurityOperators { get; set; }
 
@@ -167,8 +167,15 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// Gets or sets Administrators
         /// </summary>
         /// <value>
-        /// Domain Users to be added to the Built-in Administrators active directory group. A list of unique usernames without domain specifier
+        /// Domain Users to be added to the Built-in Administrators Active Directory group. A list of unique usernames without domain specifier
         /// </value>
         public IList<string> Administrators { get; set; }
+
+        /// <summary>
+        /// Gets or sets EncryptDCConnections
+        /// </summary>
+        /// <value>If enabled, Traffic between the SMB server to Domain Controller (DC) will be encrypted
+        /// </value>
+        public bool? EncryptDCConnections { get; set; }
     }
 }

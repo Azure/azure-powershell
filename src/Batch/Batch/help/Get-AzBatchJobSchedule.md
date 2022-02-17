@@ -33,8 +33,11 @@ Specify the *Filter* parameter to get the job schedules that match an Open Data 
 ## EXAMPLES
 
 ### Example 1: Get a job schedule by specifying an ID
+```powershell
+Get-AzBatchJobSchedule -Id "JobSchedule23" -BatchContext $Context
 ```
-PS C:\>Get-AzBatchJobSchedule -Id "JobSchedule23" -BatchContext $Context
+
+```output
 CreationTime                : 7/25/2015 9:15:43 PM
 DisplayName                 :
 ETag                        : 0x8D2953633427FCA
@@ -56,8 +59,11 @@ This command gets the job schedule that has the ID JobSchedule23.
 Use the Get-AzBatchAccountKey cmdlet to assign a context to the $Context variable.
 
 ### Example 2: Get job schedules by using a filter
+```powershell
+Get-AzBatchJobSchedule -Filter "startswith(id,'Job')" -BatchContext $Context
 ```
-PS C:\>Get-AzBatchJobSchedule -Filter "startswith(id,'Job')" -BatchContext $Context
+
+```output
 CreationTime                : 7/25/2015 9:15:43 PM
 DisplayName                 :
 ETag                        : 0x8D2953633427FCA

@@ -23,7 +23,7 @@ FOR INTERNAL USE ONLY - Provide Runtime Support for AutoRest Generated cmdlets
 
 ### Example 1
 ```powershell
-PS C:\> Register-AzModule
+Register-AzModule
 ```
 
 Used Internally by AutoRest-generated cmdlets

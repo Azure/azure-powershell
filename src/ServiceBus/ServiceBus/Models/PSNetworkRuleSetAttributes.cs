@@ -50,6 +50,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
             Id = networkRuleSet.Id;
             Name = networkRuleSet.Name;
             Type = networkRuleSet.Type;
+            PublicNetworkAccess = networkRuleSet.PublicNetworkAccess;
         }
 
         /// <summary>
@@ -72,6 +73,12 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// include: 'Allow', 'Deny'
         /// </summary>
         public string DefaultAction { get; set; }
+
+        /// <summary>
+        /// Gets or sets default Action for Network Rule Set. Possible values
+        /// include: 'Enabled', 'Disabled'
+        /// </summary>
+        public string PublicNetworkAccess { get; set; }
 
         /// <summary>
         /// Gets or sets list VirtualNetwork Rules

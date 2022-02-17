@@ -82,6 +82,13 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void LargeRemediation()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Remediation-LargeRemediation");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ErrorHandling()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Remediation-ErrorHandling");
