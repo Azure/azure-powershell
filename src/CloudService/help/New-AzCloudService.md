@@ -134,7 +134,7 @@ $networkProfile = @{loadBalancerConfiguration = $loadBalancerConfig}
 
 # Read Configuration File
 $cscfgFile = "<Path to cscfg configuration file>"
-$cscfgContent = Get-Content $cscfgFile | Out-String
+ = Get-Content $cscfgFile | Out-String
 
 # Create cloud service
 $cloudService = New-AzCloudService                                              `
@@ -236,7 +236,7 @@ $cloudService = New-AzCloudService                                              
                           -Location EastUS                                              `
                           -ConfigurationFile C:\files\CS.cscfg                          `
                           -DefinitionFile C:\files\CS.csdef                             `
-                          -packageUrl $cspkgUrl
+                          -packageUrl $cspkgUrl                                         `
 
 ```
 
