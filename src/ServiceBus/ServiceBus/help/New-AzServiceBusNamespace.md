@@ -125,7 +125,7 @@ IdentityId         :
 EncryptionConfigs  :
 ```
 
-Creates a new Service Bus namespace with UserAssigned Encryption Enabled. IdentityType can take values "SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned", "None"
+Creates a new Service Bus namespace with SystemAssigned identity enabled. IdentityType can take values "SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned", "None"
 
 ## PARAMETERS
 
