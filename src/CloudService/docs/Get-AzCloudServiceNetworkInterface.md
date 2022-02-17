@@ -1,93 +1,85 @@
 ---
 external help file:
 Module Name: Az.CloudService
-online version: https://docs.microsoft.com/powershell/module/az.cloudservice/get-azcloudservice
+online version: https://docs.microsoft.com/powershell/module/az.cloudservice/get-azcloudservicenetworkinterface
 schema: 2.0.0
 ---
 
-# Get-AzCloudService
+# Get-AzCloudServiceNetworkInterface
 
 ## SYNOPSIS
-Display information about a cloud service.
+Get the specified network interface in a cloud service.
 
 ## SYNTAX
 
-### List (Default)
+### List1 (Default)
 ```
-Get-AzCloudService [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzCloudServiceNetworkInterface -CloudServiceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzCloudService -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzCloudServiceNetworkInterface -CloudServiceName <String> -Name <String> -ResourceGroupName <String>
+ -RoleInstanceName <String> [-SubscriptionId <String[]>] [-Expand <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzCloudService -InputObject <ICloudServiceIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzCloudServiceNetworkInterface -InputObject <ICloudServiceIdentity> [-Expand <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List1
+### List
 ```
-Get-AzCloudService -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzCloudServiceNetworkInterface -CloudServiceName <String> -ResourceGroupName <String>
+ -RoleInstanceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Display information about a cloud service.
+Get the specified network interface in a cloud service.
 
 ## EXAMPLES
 
-### Example 1: Get all cloud service under a resource group
+### Example 1: Get network interfaces by a cloud service name
 ```powershell
-Get-AzCloudService -ResourceGroupName "ContosOrg"
+Get-AzCloudServiceNetworkInterface -ResourceGroupName "BRGThree" -CloudServiceName BService -SubscriptionId 1133e0eb-b53c-1234-b478-2eac8f04afca
 ```
 
-```output
-ResourceGroupName Name              Location    ProvisioningState
------------------ ----              --------    -----------------
-ContosOrg         ContosoCS         eastus2euap Succeeded
-ContosOrg         ContosoCSTest     eastus2euap Failed
-```
+Gets all the network interfaces for a given cloud service name.
 
-This command gets all cloud services in resource group named ContosOrg
-
-### Example 2: Get cloud service
+### Example 2: Get network interfaces by a cloud service object
 ```powershell
-Get-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS"
-
-ResourceGroupName Name              Location    ProvisioningState
------------------ ----              --------    -----------------
-ContosOrg         ContosoCS         eastus2euap Succeeded
-
-$cloudService = Get-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS"
-$cloudService | Format-List
-ResourceGroupName : ContosOrg
-Configuration     : xxxxxxxx
-ConfigurationUrl  :
-ExtensionProfile  : xxxxxxxx
-Id                : xxxxxxxx
-Location          : East US
-Name              : ContosoCS
-NetworkProfile    : xxxxxxxx
-OSProfile         : xxxxxxxx
-PackageUrl        : xxxxxxxx
-ProvisioningState : Succeeded
-RoleProfile       : xxxxxxxx
-StartCloudService :
-Tag               : {
-                      "Owner": "Contos"
-                    }
-Type              : Microsoft.Compute/cloudServices
-UniqueId          : xxxxxxxx
-UpgradeMode       : Auto
-
+$cs = Get-AzCloudService -ResourceGroupName "BRGThree" -CloudServiceName BService -SubscriptionId 1133e0eb-b53c-1234-b478-2eac8f04afca
+Get-AzCloudServiceNetworkInterface -CloudService $cs
 ```
 
-This command gets cloud service named ContosoCS that belongs to the resource group named ContosOrg.
+Gets all the network interfaces for a given cloud service object.
+
+### Example 3: Get network interfaces by a cloud service object and role instance name.
+```powershell
+Get-AzCloudServiceNetworkInterface -CloudServiceName $cs -RoleInstanceName WebRole1_IN_0
+```
+
+Gets all the network interfaces for a given cloud service object and role instance name.
 
 ## PARAMETERS
+
+### -CloudServiceName
+The name of the cloud service.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, List, List1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -96,6 +88,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Expand
+Expands referenced resources.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, GetViaIdentity
+Aliases:
 
 Required: False
 Position: Named
@@ -121,12 +128,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the cloud service.
+The name of the network interface.
 
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases: CloudServiceName
+Aliases: NetworkInterfaceName
 
 Required: True
 Position: Named
@@ -136,11 +143,26 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of the resource group.
+The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List1
+Parameter Sets: Get, List, List1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RoleInstanceName
+The name of role instance.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -175,7 +197,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService
+### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.INetworkInterface
 
 ## NOTES
 
