@@ -120,7 +120,7 @@ This example is similar to Example 2, but also attaches a route table to the vir
 ```powershell
 PS C:\> New-AzResourceGroup -Location "West US" -Name "testRG"
 PS C:\> $virtualWan = New-AzVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US"
-PS C:\> New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.1.0/24" -PreferredRoutingGateway "VpnGateway" -HubRoutingPreference "VpnGateway"    
+PS C:\> New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.1.0/24" -HubRoutingPreference "VpnGateway"    
 
 VirtualWan                : /subscriptions/{subscriptionId}resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
 ResourceGroupName         : testRG
@@ -130,7 +130,6 @@ AddressPrefix             : 10.0.1.0/24
 RouteTable                :
 Location                  : West US
 Sku                  : Standard 
-PreferredRoutingGateway   : VpnGateway
 HubRoutingPreference      : VpnGateway
 VirtualNetworkConnections : {}
 Location                  : West US
