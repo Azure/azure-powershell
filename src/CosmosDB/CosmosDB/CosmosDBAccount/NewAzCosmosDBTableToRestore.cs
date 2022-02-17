@@ -22,11 +22,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
     public class NewAzCosmosDBTableToRestore : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = false, HelpMessage = Constants.RestoreTableNamesHelpMessage)]
-        public string[] TableNames { get; set; }
+        public string[] TableName { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            PSTablesToRestore tableToRestore = new PSTablesToRestore(TableNames);
+            PSTablesToRestore tableToRestore = new PSTablesToRestore(TableName);
             WriteObject(tableToRestore);
 
             return;
