@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Marked `ObjectType` as `Unknown` if object is not found or insufficient privileges to get object type for role assignment [#16981]
 
 ## Version 5.3.0
 * Added proeprties `onPremisesLastSyncDateTime`, `onPremisesSyncEnabled` to `User` object [#16892]

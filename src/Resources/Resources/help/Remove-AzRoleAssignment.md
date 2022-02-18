@@ -19,9 +19,12 @@ The cmdlet may call below Microsoft Graph API according to input parameters:
 - GET /directoryObjects/{id}
 - POST /directoryObjects/getByIds
 
+Please notice that this cmdlet will mark `ObjectType` as `Unknown` in output if the object of role assignment is not found or insufficient privileges to get object type.
+
 ## SYNTAX
 
-### EmptyParameterSet (Default)
+### EmptyParameterSet 
+(Default)
 ```
 Remove-AzRoleAssignment -ObjectId <String> [-Scope <String>] -RoleDefinitionName <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
