@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
             ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
-        [Fact]
+        [Fact(Skip = "True")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedCassandraClusterCreateUpdateGetCmdlets()
         {
