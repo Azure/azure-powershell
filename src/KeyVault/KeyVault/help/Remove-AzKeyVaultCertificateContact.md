@@ -38,8 +38,10 @@ The **Remove-AzKeyVaultCertificateContact** cmdlet deletes a contact that is reg
 
 ### Example 1: Remove a certificate contact
 ```powershell
-PS C:\> Remove-AzKeyVaultCertificateContact -VaultName "Contoso01" -EmailAddress "patti.fuller@contoso.com" -PassThru
+Remove-AzKeyVaultCertificateContact -VaultName "Contoso01" -EmailAddress "patti.fuller@contoso.com" -PassThru
+```
 
+```output
 Email               VaultName
 -----               ---------
 user1@microsoft.com mvault2

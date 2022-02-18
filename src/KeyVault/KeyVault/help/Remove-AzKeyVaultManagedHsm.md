@@ -42,8 +42,10 @@ Note that although specifying the resource group is optional for this cmdlet, yo
 
 ### Example 1: Remove a managed HSM
 ```powershell
-PS C:\> Remove-AzKeyVaultManagedHsm -HsmName 'myhsm' -Force
+Remove-AzKeyVaultManagedHsm -HsmName 'myhsm' -Force
+```
 
+```output
 True
 ```
 
@@ -51,8 +53,10 @@ This command removes the managed hsm named myhsm from your current subscription.
 
 ### Example 2: Remove a managed hsm from a specified resource group
 ```powershell
-PS C:\> Remove-AzKeyVaultManagedHsm -HsmName 'myhsm' -ResourceGroupName "myrg1" -PassThru
+Remove-AzKeyVaultManagedHsm -HsmName 'myhsm' -ResourceGroupName "myrg1" -PassThru
+```
 
+```output
 True
 ```
 
