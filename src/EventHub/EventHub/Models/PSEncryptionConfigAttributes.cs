@@ -36,6 +36,16 @@ namespace Microsoft.Azure.Commands.EventHub.Models
 
                 KeyVersion = keyVaultProperties?.KeyVersion;
 
+                if (KeyVersion == null)
+                {
+                    KeyVersion = "";
+                }
+
+                if (KeyVaultUri != null)
+                {
+                    KeyVaultUri = KeyVaultUri.EndsWith("/") ? KeyVaultUri.Substring(0, KeyVaultUri.Length - 1) : KeyVaultUri;
+                }
+
                 UserAssignedIdentity = keyVaultProperties?.Identity?.UserAssignedIdentity;
             }
         }

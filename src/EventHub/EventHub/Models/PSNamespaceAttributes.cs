@@ -86,17 +86,7 @@ namespace Microsoft.Azure.Commands.EventHub.Models
                     {
                         EncryptionConfig = evResource.Encryption.KeyVaultProperties.Where(x => x != null).Select(x => {
 
-                            PSEncryptionConfigAttributes kvproperty = new PSEncryptionConfigAttributes();
-
-                            kvproperty.KeyName = x?.KeyName;
-
-                            kvproperty.KeyVaultUri = x?.KeyVaultUri;
-
-                            kvproperty.KeyVersion = x?.KeyVersion;
-
-                            if (x.Identity != null)
-                                if (x.Identity.UserAssignedIdentity != null)
-                                    kvproperty.UserAssignedIdentity = x.Identity.UserAssignedIdentity;
+                            PSEncryptionConfigAttributes kvproperty = new PSEncryptionConfigAttributes(x);
 
                             return kvproperty;
                         }).ToArray();

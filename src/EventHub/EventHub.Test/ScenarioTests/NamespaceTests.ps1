@@ -430,13 +430,29 @@ function EncryptionTest{
         $kv1 = "PS-Testing-kv1"
         $kv2 = "PS-Testing-kv2"
         $kv1uri = "https://ps-testing-kv1.vault.azure.net/"
-        $kv2uri = "https://ps-testing-kv2.vault.azure.net/"
+        $kv2uri = "https://ps-testing-kv2.vault.azure.net"
         $namespace1 = getAssetName "Namespace1-"
         $namespace2 = getAssetName "Namespace2-"
 
         $uad1 = Get-AzUserAssignedIdentity -ResourceGroupName $resourceGroupName -Name $msi1
         $uad2 = Get-AzUserAssignedIdentity -ResourceGroupName $resourceGroupName -Name $msi2
         $uad3 = Get-AzUserAssignedIdentity -ResourceGroupName $resourceGroupName -Name $msi3
+
+        $namespace = New-AzEventHubNamespace -ResourceGroupName $resourceGroupName -Name $namespace2 -SkuName Premium -Location northeurope -IdentityType SystemAssigned
+        Assert-AreEqual $namespace.Name $namespace2
+        Assert-AreEqual $namespace.Sku.Name "Premium"
+        Assert-AreEqual $namespace.IdentityType "SystemAssigned"
+
+        Set-AzKeyVaultAccessPolicy -VaultName $kv1 -ObjectId $namespace.Identity.PrincipalId -PermissionsToKeys wrapkey,unwrapkey,get -BypassObjectIdValidation
+
+        $ec1 = New-AzEventHubEncryptionConfig -KeyName key1 -KeyVaultUri $kv1uri
+        $ec2 = New-AzEventHubEncryptionConfig -KeyName key2 -KeyVaultUri $kv1uri
+
+        $namespace = Set-AzEventHubNamespace -ResourceGroupName $resourceGroupName -Name $namespace2 -EncryptionConfig $ec1,$ec2
+        Assert-AreEqual $namespace.Name $namespace2
+        Assert-AreEqual $namespace.Sku.Name "Premium"
+        Assert-AreEqual $namespace.IdentityType "SystemAssigned"
+        Assert-True { $namespace.EncryptionConfig.Count -eq 2 }
 
         $ec1 = New-AzEventHubEncryptionConfig -KeyName key1 -KeyVaultUri $kv1uri -UserAssignedIdentity $uad1.Id
         $ec2 = New-AzEventHubEncryptionConfig -KeyName key2 -KeyVaultUri $kv1uri -UserAssignedIdentity $uad1.Id
@@ -448,10 +464,18 @@ function EncryptionTest{
         Assert-True { $namespace.IdentityId.Count -eq 2 }
         Assert-True { $namespace.EncryptionConfig.Count -eq 2 }
 
-        $ec3 = New-AzEventHubEncryptionConfig -KeyName key3 -KeyVaultUri $kv1uri -UserAssignedIdentity $uad1.id
+        $ec3 = New-AzEventHubEncryptionConfig -KeyName key1 -KeyVaultUri $kv2uri -UserAssignedIdentity $uad1.id
         $namespace.EncryptionConfig += $ec3
 
         $namespace = Set-AzEventHubNamespace -ResourceGroupName $resourceGroupName -Name $namespace1 -EncryptionConfig $namespace.EncryptionConfig -Location northeurope
+        Assert-AreEqual $namespace.Name $namespace1
+        Assert-AreEqual $namespace.Sku.Name "Premium"
+        Assert-AreEqual $namespace.IdentityType "UserAssigned"
+        Assert-True { $namespace.IdentityId.Count -eq 2 }
+        Assert-True { $namespace.EncryptionConfig.Count -eq 3 }
+
+
+        $namespace = Get-AzEventHubNamespace -ResourceGroupName $resourceGroupName -Name $namespace1
         Assert-AreEqual $namespace.Name $namespace1
         Assert-AreEqual $namespace.Sku.Name "Premium"
         Assert-AreEqual $namespace.IdentityType "UserAssigned"
