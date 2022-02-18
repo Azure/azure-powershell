@@ -18,18 +18,6 @@ Update-AzBareMetal -Name <String> -ResourceGroupName <String> [-SubscriptionId <
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Update
-```
-Update-AzBareMetal -Name <String> -ResourceGroupName <String> -TagsParameter <ITags1>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzBareMetal -InputObject <IBareMetalIdentity> -TagsParameter <ITags1> [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### UpdateViaIdentityExpanded
 ```
 Update-AzBareMetal -InputObject <IBareMetalIdentity> [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
@@ -41,23 +29,27 @@ Patches the Tags field of a Azure BareMetal instance for the specified subscript
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: UpdateExpanded
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzBareMetal -Name oraclerac53 -ResourceGroupName SAT09A-T530 -Tag @{"env"="test"}
 
-{{ Add output here }}
+Location       Name        ResourceGroupName
+--------       ----        -----------------
+southcentralus oraclerac53 SAT09A-T530
 ```
 
-{{ Add description here }}
+Patches the Tags field of a Azure BareMetal instance for the specified subscription, resource group, and instance name.
 
-### Example 2: {{ Add title here }}
+### Example 2: UpdateViaIdentityExpanded
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzBareMetal -Name oraclerac53 -ResourceGroupName SAT09A-T530 | Update-AzBareMetal -Tag @{"env"="test"}
 
-{{ Add output here }}
+Location       Name        ResourceGroupName
+--------       ----        -----------------
+southcentralus oraclerac53 SAT09A-T530
 ```
 
-{{ Add description here }}
+Patches the Tags field of a Azure BareMetal instance for the specified subscription, resource group, and instance name.
 
 ## PARAMETERS
 
@@ -82,7 +74,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IBareMetalIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -97,7 +89,7 @@ Name of the Azure BareMetal on Azure instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases: AzureBareMetalInstanceName
 
 Required: True
@@ -113,7 +105,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -128,7 +120,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -143,29 +135,13 @@ Tags field of the AzureBareMetal instance.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TagsParameter
-Tags field of the AzureBareMetal instance.
-To construct, see NOTES section for TAGSPARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api20210809.ITags1
-Parameter Sets: Update, UpdateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -205,8 +181,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api20210809.ITags1
-
 ### Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IBareMetalIdentity
 
 ## OUTPUTS
@@ -227,10 +201,6 @@ INPUTOBJECT <IBareMetalIdentity>: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
-
-TAGSPARAMETER <ITags1>: Tags field of the AzureBareMetal instance.
-  - `[Tag <ITags>]`: Tags field of the AzureBareMetal instance.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 

@@ -23,11 +23,6 @@ Get-AzBareMetal -Name <String> -ResourceGroupName <String> [-SubscriptionId <Str
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity
-```
-Get-AzBareMetal -InputObject <IBareMetalIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ### List1
 ```
 Get-AzBareMetal -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
@@ -39,23 +34,42 @@ Gets an Azure BareMetal instance for the specified subscription, resource group,
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzBareMetal
 
-{{ Add output here }}
+Location       Name         ResourceGroupName
+--------       ----         -----------------
+westus2        rhel79ora01  MWH03A-T210
+westus2        rhel79ora02  MWH03A-T210
+southcentralus oelnvmetest  SAT09A-T230
+centraluseuap  orcllabdsm01 DSM05A-T030
 ```
 
-{{ Add description here }}
+Gets Azure BareMetal instance.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzBareMetal -Name oelnvmetest -ResourceGroupName SAT09A-T230
 
-{{ Add output here }}
+Location       Name         ResourceGroupName
+--------       ----         -----------------
+southcentralus oelnvmetest  SAT09A-T230
 ```
 
-{{ Add description here }}
+Gets an Azure BareMetal instance for the specified subscription, resource group, and instance name.
+
+### Example 3: List1
+```powershell
+PS C:\> Get-AzBareMetal -ResourceGroupName MWH03A-T210
+
+Location Name        ResourceGroupName
+-------- ----        -----------------
+westus2  rhel79ora01 MWH03A-T210
+westus2  rhel79ora02 MWH03A-T210
+```
+
+Gets Azure BareMetal instance for the resource group.
 
 ## PARAMETERS
 
@@ -71,22 +85,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IBareMetalIdentity
-Parameter Sets: GetViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -126,7 +124,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -141,8 +139,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IBareMetalIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api20210809.IAzureBareMetalInstance
@@ -150,17 +146,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IBareMetalIdentity>: Identity Parameter
-  - `[AzureBareMetalInstanceName <String>]`: Name of the Azure BareMetal on Azure instance.
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

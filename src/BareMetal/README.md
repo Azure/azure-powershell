@@ -51,8 +51,8 @@ directive:
     set:
       subject: $1
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
-      subject-prefix: ConnectedKubernetes
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^GetViaIdentity$
+      subject-prefix: BareMetal
     remove: true
 
 ```
