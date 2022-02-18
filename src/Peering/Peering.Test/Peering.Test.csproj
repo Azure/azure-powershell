@@ -8,9 +8,8 @@
 
   <PropertyGroup>
     <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)$(AzTestAssemblySuffix)</RootNamespace>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
-  
+
   <ItemGroup>
     <ProjectReference Include="..\Peering\Peering.csproj" />
   </ItemGroup>
