@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 DisplayName = adObject?.DisplayName,
                 SignInName = adObject is PSADUser user ? user.UserPrincipalName : null,
                 RoleDefinitionName = roleDefinition?.Name,
-                RoleDefinitionId = assignment.RoleDefinitionId,
+                RoleDefinitionId = assignment.RoleDefinitionId.GuidFromFullyQualifiedId(),
                 ObjectId = assignment.PrincipalId,
                 // Use information from adObject first, assignment.PrincipalType is a cached information
                 ObjectType = adObject?.Type ?? assignment.PrincipalType,
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                     RoleAssignmentName = assignment.Name,
                     RoleAssignmentId = assignment.Id,
                     DisplayName = adObject.DisplayName,
-                    RoleDefinitionId = roleDefinition.Id,
+                    RoleDefinitionId = assignment.RoleDefinitionId,
                     RoleDefinitionName = roleDefinition.Name,
                     Scope = assignment.Scope,
                     ObjectId = assignment.PrincipalId,

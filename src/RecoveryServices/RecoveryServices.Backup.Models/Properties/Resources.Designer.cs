@@ -2161,6 +2161,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
             }
         }
 
+        /// <summary>
+        ///   Looks up a localized string similar to TargetResourceGroupName parameter should be empty for OriginalLocation in-place restore
+        /// </summary>
+        public static string TargetRGNotRequiredException
+        {
+            get
+            {
+                return ResourceManager.GetString("TargetRGNotRequiredException", resourceCulture);
+            }
+        }
 
+        /// <summary>
+        ///   Looks up a localized string similar to TargetVMName, TargetVNetName, TargetVNetResourceGroup, TargetSubnetName can't be empty for restoring to AlternateLocation with create new VM option
+        /// </summary>
+        public static string TargetParamsMissingException
+        {
+            get
+            {
+                return ResourceManager.GetString("TargetParamsMissingException", resourceCulture);
+            }
+        }
     }
 }
