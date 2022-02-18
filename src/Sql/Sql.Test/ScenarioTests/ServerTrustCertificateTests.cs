@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 				"Microsoft.Sql/servers"
 			};
 		}
-
+		
 		protected override void SetupManagementClients(RestTestFramework.MockContext context)
 		{
 			var newResourcesClient = GetResourcesClient(context);
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 		[Trait(Category.AcceptanceType, Category.CheckIn)]
 		public void TestServerTrustCertificateCreate()
 		{
-			RunPowerShellTest("Test-ServerTrustGroup");
+			RunPowerShellTest("Test-NewServerTrustCertificate");
 		}
 	}
 }
