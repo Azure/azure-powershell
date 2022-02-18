@@ -195,6 +195,7 @@ function NamespaceTests
 	$namespaceName = getAssetName "Eventhub-Namespace1-"
 	$namespaceName2 = getAssetName "Eventhub-Namespace2-"
     $namespaceName3 = getAssetName "Eventhub-Namespace3-"
+    $namespace4 = getAssetName "Eventhub-Namespace4-"
     $resourceGroupName = getAssetName "RGName1-"
 	$secondResourceGroup = getAssetName "RGName2-"
 	$namespaceNameKafka = getAssetName "Eh-NamespaceKafka-"
@@ -212,6 +213,25 @@ function NamespaceTests
 
 	$checkNameResult = Test-AzEventHubName -Namespace $namespaceName 
 	Assert-True {$checkNameResult.NameAvailable}
+
+    $result1 = New-AzEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespace4 -Location northeurope -SkuName Standard
+    Assert-AreEqual $result1.Name $namespace4
+    Assert-AreEqual $result1.Location "North Europe"
+
+    $result1 = Set-AzEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespace4 -EnableAutoInflate -MaximumThroughputUnits 12
+    Assert-AreEqual $result1.Name $namespace4
+    Assert-AreEqual $result1.Location "North Europe"
+    Assert-True {$result1.IsAutoInflateEnabled}
+    Assert-True {$result1.KafkaEnabled}
+    Assert-AreEqual $result1.MaximumThroughputUnits 12
+
+    $result1 = Set-AzEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespace4 -EnableKafka
+    Assert-AreEqual $result1.Name $namespace4
+    Assert-AreEqual $result1.Location "North Europe"
+    Assert-True {$result1.IsAutoInflateEnabled}
+    Assert-True {$result1.KafkaEnabled}
+    Assert-AreEqual $result1.MaximumThroughputUnits 12
+
 
 	Write-Debug " Create new Eventhub Kafka namespace"
     Write-Debug "Kafka Namespace name : $namespaceNameKafka"	
