@@ -80,10 +80,9 @@ $resourceCleanUpCommands = @(
 )
 
 $resourceTestCommands = @(
-    @{Name = "Az.Storage [ac MngmPlane]";     Command = {New-AzStorageAccount -Name $storageAccountName -SkuName Standard_LRS -Location westus -ResourceGroupName $resourceGroupName -ErrorAction Stop}},
-    @{Name = "Az.Storage [ac DataPlane]";     Command = {Get-Command New-AzStorageAccount -Name $storageAccountName -SkuName Standard_LRS -Location westus -ResourceGroupName $resourceGroupName -ErrorAction Stop}},
-    @{Name = "Az.Storage [ct MngmPlane]";     Command = {New-AzStorageContext -StorageAccountName $storageAccountName -StorageAccountKey 12345678 -ErrorAction Stop}},
-    @{Name = "Az.Storage [ct DataPlane]";     Command = {Get-Command New-AzStorageContext -StorageAccountName $storageAccountName -StorageAccountKey 12345678 -ErrorAction Stop}},
+    @{Name = "Az.Storage [Management]";       Command = {New-AzStorageAccount -Name $storageAccountName -SkuName Standard_LRS -Location westus -ResourceGroupName $resourceGroupName -ErrorAction Stop}},
+    @{Name = "Az.Storage [Data]";             Command = {New-AzStorageContext -StorageAccountName $storageAccountName -StorageAccountKey 12345678 -ErrorAction Stop}},
+    @{Name = "Az.Storage [Data 1]";           Command = {Get-Command Get-AzStorageBlob -ErrorAction Stop}},
     @{Name = "Az.Accounts";                   Command = {Get-AzDomain -ErrorAction Stop}},
     @{Name = "Az.Accounts [DefaultProfile]";  Command = {Get-AzSubscription -DefaultProfile (Get-AzContext)}},
     @{Name = "Az.Advisor";                    Command = {Get-AzAdvisorConfiguration -ErrorAction Stop}},
@@ -156,7 +155,7 @@ $resourceTestCommands = @(
     @{Name = "Az.StorageSync";                Command = {Get-AzStorageSyncService -ErrorAction Stop}},
     @{Name = "Az.Support";                    Command = {Get-AzSupportTicket -ErrorAction Stop}},
     @{Name = "Az.Resources [Tags]";           Command = {Get-AzTag -ErrorAction Stop}},
-    @{Name = "Az.Resources [DataPlane]";      Command = {Get-Command Get-AzAdGroup -ErrorAction Stop}},
+    @{Name = "Az.Resources [MSGraph]";        Command = {Get-AzAdGroup -First 1 -ErrorAction Stop}},
     @{Name = "Az.TrafficManager";             Command = {Get-AzTrafficManagerProfile -ErrorAction Stop}},
     @{Name = "Az.Billing [UsageAggregates]";  Command = {Get-UsageAggregates -ReportedStartTime '1/1/2018' -ReportedEndTime '1/2/2018' -ErrorAction Stop}},
     @{Name = "Az.Websites";                   Command = {Get-AzWebApp -ErrorAction Stop}}
