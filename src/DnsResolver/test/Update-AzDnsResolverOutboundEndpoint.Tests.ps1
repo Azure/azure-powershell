@@ -33,7 +33,7 @@ Describe 'Update-AzDnsResolverOutboundEndpoint' {
 
         New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkId $virtualNetwork.Id -Location $LOCATION
         
-        $originalOutboundEndpoint = New-AzDnsResolverOutboundEndpoint -DnsResolverName $dnsResolverName -Name $outboundEndpointName -ResourceGroupName $RESOURCE_GROUP_NAME -SubnetId $subnet.Id -Location $LOCATION
+        New-AzDnsResolverOutboundEndpoint -DnsResolverName $dnsResolverName -Name $outboundEndpointName -ResourceGroupName $RESOURCE_GROUP_NAME -SubnetId $subnet.Id -Location $LOCATION
 
         $tag  = GetRandomHashtable -size 5
 
