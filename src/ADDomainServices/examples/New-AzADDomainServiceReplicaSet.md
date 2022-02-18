@@ -6,8 +6,7 @@ New-AzADDomainServiceReplicaSet -Location eastus -SubnetId /subscriptions/******
 ```output
 DomainControllerIPAddress ExternalAccessIPAddress HealthLastEvaluated Location ServiceStatus SubnetId
 ------------------------- ----------------------- ------------------- -------- ------------- --------
-                                                                      eastus                 /subscriptions/****
-                                                                      ****-****-****-****-**********/resourceGroups/youriADDomain-rg-test/providers/M…
+                                                                      eastus                 /subscriptions/********-****-****-****-**********/resourceGroups/youriADDomain-rg-test/providers/M…
 ```
 
 Create ReplicaSet for AdDomain
