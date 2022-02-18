@@ -26,6 +26,7 @@ using Microsoft.Data.Encryption.AzureKeyVaultProvider;
 using Microsoft.Data.Encryption.Cryptography;
 using Azure.Core;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Azure.Identity;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
@@ -45,19 +46,19 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = Constants.ClientEncryptionKeyName)]
+        [Parameter(Mandatory = false, HelpMessage = Constants.ClientEncryptionKeyName)]
         [ValidateNotNullOrEmpty]
         public string ClientEncryptionKeyName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = Constants.EncryptionAlgorithmName)]
+        [Parameter(Mandatory = false, HelpMessage = Constants.EncryptionAlgorithmName)]
         [ValidateNotNullOrEmpty]
         public string EncryptionAlgorithmName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true,  HelpMessage = Constants.KeyWrapMetaData)]
+        [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = Constants.KeyWrapMetaData)]
         [ValidateNotNullOrEmpty]
         public PSSqlKeyWrapMetadata KeyWrapMetadata { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = Constants.IsAzureKeyVaultKeyStoreProvider)]
+        [Parameter(Mandatory = false, HelpMessage = Constants.IsAzureKeyVaultKeyStoreProvider)]
         [ValidateNotNullOrEmpty]
         public bool IsAzureKeyVaultKeyStoreProvider { get; set; } = true;
 
@@ -65,13 +66,13 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNullOrEmpty]
         public EncryptionKeyStoreProvider EncryptionKeyStoreProvider { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.ClientEncryptionKeyObjectHelpMessage)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.SqlDatabaseObjectHelpMessage)]
         [ValidateNotNull]
         public PSSqlDatabaseGetResults ParentObject { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.ClientEncryptionKeyObjectHelpMessage)]
         [ValidateNotNull]
-        public PSSqlContainerGetResults InputObject { get; set; }
+        public PSSqlClientEncryptionKeyGetResults InputObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -84,6 +85,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
             }            
             else if (ParameterSetName.Equals(ObjectParameterSet, StringComparison.Ordinal))
             {
+                ClientEncryptionKeyName = InputObject.Name;
+                EncryptionAlgorithmName = InputObject.Resource.EncryptionAlgorithm;
+                KeyWrapMetadata = new PSSqlKeyWrapMetadata(InputObject.Resource.KeyWrapMetaData);
+
                 ResourceIdentifier resourceIdentifier = new ResourceIdentifier(InputObject.Id);
                 ResourceGroupName = resourceIdentifier.ResourceGroupName;
                 DatabaseName = ResourceIdentifierExtensions.GetSqlDatabaseName(resourceIdentifier);

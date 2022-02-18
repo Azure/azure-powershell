@@ -136,6 +136,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string ClientEncryptionKeyName = "Client Encryption Key name.";
         public const string EncryptionAlgorithmName = "Client Encryption Algorithm name.";
         public const string KeyWrapMetaData = "KeyWrapMetaData Object of type Microsoft.Azure.Commands.CosmosDB.PSSqlKeyWrapMetadata.";
+        public const string WrappedDataEncryptionKey = "WrappedDataEncryptionKey Object of type System.Byte";
         public const string IsAzureKeyVaultKeyStoreProvider = "Specifies if KeyStoreProvider is of type AzureKeyVaultKeyStoreProvider";
 
         //MongoDB cmdlets help messages

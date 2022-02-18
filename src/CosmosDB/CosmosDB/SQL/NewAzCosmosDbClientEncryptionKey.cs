@@ -27,6 +27,7 @@ using Microsoft.Data.Encryption.AzureKeyVaultProvider;
 using Microsoft.Data.Encryption.Cryptography;
 using Azure.Core;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Azure.Identity;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
@@ -46,19 +47,23 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = Constants.ClientEncryptionKeyName)]
+        [Parameter(Mandatory = false, HelpMessage = Constants.ClientEncryptionKeyName)]
         [ValidateNotNullOrEmpty]
         public string ClientEncryptionKeyName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = Constants.EncryptionAlgorithmName)]
+        [Parameter(Mandatory = false, HelpMessage = Constants.EncryptionAlgorithmName)]
         [ValidateNotNullOrEmpty]
         public string EncryptionAlgorithmName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true,  HelpMessage = Constants.KeyWrapMetaData)]
+        [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = Constants.WrappedDataEncryptionKey)]
+        [ValidateNotNullOrEmpty]
+        public byte[] WrappedDataEncryptionKey { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipeline = true,  HelpMessage = Constants.KeyWrapMetaData)]
         [ValidateNotNullOrEmpty]
         public PSSqlKeyWrapMetadata KeyWrapMetadata { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = Constants.IsAzureKeyVaultKeyStoreProvider)]
+        [Parameter(Mandatory = false, HelpMessage = Constants.IsAzureKeyVaultKeyStoreProvider)]
         [ValidateNotNullOrEmpty]
         public bool IsAzureKeyVaultKeyStoreProvider { get; set; } = true;
 
@@ -66,7 +71,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNullOrEmpty]
         public EncryptionKeyStoreProvider EncryptionKeyStoreProvider { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.ClientEncryptionKeyObjectHelpMessage)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.SqlDatabaseObjectHelpMessage)]
         [ValidateNotNull]
         public PSSqlDatabaseGetResults ParentObject { get; set; }
 
@@ -108,43 +113,46 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 throw new ConflictingResourceException(message: string.Format(ExceptionMessage.Conflict, ClientEncryptionKeyName));
             }
 
-            KeyEncryptionKey keyEncryptionKey;
-            if (IsAzureKeyVaultKeyStoreProvider)
+            byte[] wrappedDataEncryptionKey = WrappedDataEncryptionKey;
+            if (wrappedDataEncryptionKey == null || wrappedDataEncryptionKey.Length == 0)
             {
-                if(EncryptionKeyStoreProvider != null)
+                KeyEncryptionKey keyEncryptionKey;
+                if (IsAzureKeyVaultKeyStoreProvider)
                 {
-                    throw new ArgumentException("EncryptionKeyStoreProvider cannot be set if IsAzureKeyVaultKeyStoreProvider is set to true");
+                    if (EncryptionKeyStoreProvider != null)
+                    {
+                        throw new ArgumentException("EncryptionKeyStoreProvider cannot be set if IsAzureKeyVaultKeyStoreProvider is set to true");
+                    }
+
+                    // get the token credential for key vault audience.
+                    TokenCredential tokenCredential = new CosmosDBSessionCredential(DefaultContext, AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId);
+
+                    AzureKeyVaultKeyStoreProvider azureKeyVaultKeyStoreProvider = new AzureKeyVaultKeyStoreProvider(tokenCredential);
+
+                    keyEncryptionKey = KeyEncryptionKey.GetOrCreate(
+                        encryptionKeyWrapMetadata.Name,
+                        encryptionKeyWrapMetadata.Value,
+                        azureKeyVaultKeyStoreProvider);
+                }
+                else
+                {
+                    if (EncryptionKeyStoreProvider == null)
+                    {
+                        throw new ArgumentException("EncryptionKeyStoreProvider cannot be null if IsAzureKeyVaultKeyStoreProvider is set to false");
+                    }
+
+                    keyEncryptionKey = KeyEncryptionKey.GetOrCreate(
+                        encryptionKeyWrapMetadata.Name,
+                        encryptionKeyWrapMetadata.Value,
+                        EncryptionKeyStoreProvider);
                 }
 
-                // get the token credential for key vault audience.
-                TokenCredential tokenCredential = new CosmosDBSessionCredential(DefaultContext, AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId);               
+                ProtectedDataEncryptionKey protectedDataEncryptionKey = new ProtectedDataEncryptionKey(
+                        ClientEncryptionKeyName,
+                        keyEncryptionKey);
 
-                AzureKeyVaultKeyStoreProvider azureKeyVaultKeyStoreProvider = new AzureKeyVaultKeyStoreProvider(tokenCredential);
-
-                keyEncryptionKey = KeyEncryptionKey.GetOrCreate(
-                    encryptionKeyWrapMetadata.Name,
-                    encryptionKeyWrapMetadata.Value,
-                    azureKeyVaultKeyStoreProvider);                
+                wrappedDataEncryptionKey = protectedDataEncryptionKey.EncryptedValue;
             }
-            else
-            {
-                if (EncryptionKeyStoreProvider == null)
-                {
-                    throw new ArgumentException("EncryptionKeyStoreProvider cannot be null if IsAzureKeyVaultKeyStoreProvider is set to false");
-                }
-
-                keyEncryptionKey = KeyEncryptionKey.GetOrCreate(
-                    encryptionKeyWrapMetadata.Name,
-                    encryptionKeyWrapMetadata.Value,
-                    EncryptionKeyStoreProvider);
-            }
-
-
-            ProtectedDataEncryptionKey protectedDataEncryptionKey = new ProtectedDataEncryptionKey(
-                    ClientEncryptionKeyName,
-                    keyEncryptionKey);
-
-            byte[] wrappedDataEncryptionKey = protectedDataEncryptionKey.EncryptedValue;
 
             ClientEncryptionKeyResource clientEncryptionKeyResource = new ClientEncryptionKeyResource
             {

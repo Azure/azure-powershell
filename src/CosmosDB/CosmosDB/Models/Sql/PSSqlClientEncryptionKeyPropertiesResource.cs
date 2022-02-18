@@ -41,21 +41,21 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
 
         //
         // Summary:
-        //     Gets or sets name of the Cosmos DB SQL container
+        //     Gets or sets name of the Cosmos DB Client Encryption Key.
         public string Id { get; set; }
         //
         // Summary:
-        //     Gets or sets name of the Cosmos DB SQL container
+        //     Gets or sets encryption algorithm that will be used along with this client encryption
+        //     key to encrypt/decrypt data.
         public string EncryptionAlgorithm { get; set; }
         //
         // Summary:
-        //     Gets or sets the configuration of the indexing policy. By default, the indexing
-        //     is automatic for all document paths within the container
+        //      Gets or sets metadata for the wrapping provider that can be used to unwrap the
+        //     wrapped client encryption key.
         public KeyWrapMetadata KeyWrapMetaData { get; set; }
         //
         // Summary:
-        //     Gets or sets the configuration of the partition key to be used for partitioning
-        //     data into multiple partitions
+        //     Gets or sets wrapped (encrypted) form of the key represented as a byte array.
         public byte[] WrappedDataEncryptionKey { get; set; }        
         //
         // Summary:

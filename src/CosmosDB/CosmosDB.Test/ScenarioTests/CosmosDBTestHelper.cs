@@ -13,12 +13,12 @@ using Microsoft.Azure.Management.Network;
 
 namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
 {
-    public class TestHelper
+    public class CosmosDBTestHelper
     {
         public static KeyVaultManagementClient KeyVaultManagementClient { get; set; }
         public static KeyVaultClient KeyVaultClient { get; set; }
 
-        public TestHelper(KeyVaultManagementClient keyVaultManagementClient, KeyVaultClient keyVaultClient)
+        public CosmosDBTestHelper(KeyVaultManagementClient keyVaultManagementClient, KeyVaultClient keyVaultClient)
         {
             KeyVaultManagementClient = keyVaultManagementClient;
             KeyVaultClient = keyVaultClient;

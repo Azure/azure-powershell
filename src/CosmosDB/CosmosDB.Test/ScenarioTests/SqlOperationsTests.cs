@@ -68,5 +68,12 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-ClientEncryptionKeyCmdlets");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestClientEncryptionKeyCmdletsUsingInputObject()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ClientEncryptionKeyCmdletsUsingInputObject");
+        }
     }
 }

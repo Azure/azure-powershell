@@ -23,6 +23,8 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
 {
     public class CosmosDBSessionCredential : TokenCredential
     {
+        private IAccessToken accessToken;
+
         public CosmosDBSessionCredential(IAzureContext DefaultContext, string endPointResourceId)
         {
             if (DefaultContext == null || DefaultContext.Account == null)
@@ -31,13 +33,15 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
             }
 
             IAccessToken accessToken1 = AzureSession.Instance.AuthenticationFactory.Authenticate(
-               DefaultContext.Account,
-               DefaultContext.Environment,
-               DefaultContext.Tenant.Id,
-               null,
-               ShowDialog.Never,
-               null,
-               endPointResourceId);
+               account: DefaultContext.Account,
+               environment: DefaultContext.Environment,
+               tenant: DefaultContext.Tenant.Id,
+               password: null,
+               promptBehavior: ShowDialog.Never,
+               promptAction: null,
+               resourceId: endPointResourceId);
+
+            // set the access token.
             accessToken = accessToken1;
         }
 
@@ -61,8 +65,6 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
             });
 
             return new ValueTask<AccessToken>(token);
-        }
-
-        private IAccessToken accessToken;
+        }        
     }
 }

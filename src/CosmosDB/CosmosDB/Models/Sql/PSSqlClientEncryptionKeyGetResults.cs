@@ -14,7 +14,6 @@
 
 namespace Microsoft.Azure.Commands.CosmosDB.Models
 {
-    using System.Collections.Generic;
     using Microsoft.Azure.Management.CosmosDB.Models;
 
     public class PSSqlClientEncryptionKeyGetResults
