@@ -39,7 +39,7 @@ function Get-AzDataMigrationPerformanceDataCollection
 
         [Parameter(ParameterSetName='CommandLine', HelpMessage='Interval at which to query and persist static configuration data, in seconds. (Default: 3600)')]
         [System.String]
-        ${StaticQueryIntervalInSec},
+        ${StaticQueryInterval},
 
         [Parameter(ParameterSetName='CommandLine', HelpMessage='Number of iterations of performance data collection to perform before persisting to file. For example, with default values, performance data will be persisted every 30 seconds * 20 iterations = 10 minutes. (Default: 20, Minimum: 2)
         ')]
@@ -101,8 +101,8 @@ function Get-AzDataMigrationPerformanceDataCollection
                 [System.Collections.ArrayList] $splat = @(
                 '--sqlConnectionStrings', $SqlConnectionStrings
                 '--outputfolder', $OutputFolder
-                '--perfQueryInterval', $PerfQueryInterval
-                '--staticQueryIntervalInSec', $StaticQueryIntervalInSec
+                '--perfQueryIntervalInSec', $PerfQueryInterval
+                '--staticQueryIntervalInSec', $StaticQueryInterval
                 '--numberOfIterations', $NumberOfIterations
                 )
                 

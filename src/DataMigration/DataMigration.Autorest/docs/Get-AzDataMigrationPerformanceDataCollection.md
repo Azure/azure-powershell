@@ -15,7 +15,7 @@ Collect performance data for given SQL Server instance(s)
 ### CommandLine (Default)
 ```
 Get-AzDataMigrationPerformanceDataCollection -SqlConnectionStrings <String[]> [-NumberOfIterations <String>]
- [-OutputFolder <String>] [-PerfQueryInterval <String>] [-StaticQueryIntervalInSec <String>] [-PassThru]
+ [-OutputFolder <String>] [-PerfQueryInterval <String>] [-StaticQueryInterval <String>] [-PassThru]
  [<CommonParameters>]
 ```
 
@@ -180,7 +180,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StaticQueryIntervalInSec
+### -StaticQueryInterval
 Interval at which to query and persist static configuration data, in seconds.
 (Default: 3600)
 
