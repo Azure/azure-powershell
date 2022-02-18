@@ -69,8 +69,7 @@ New-AzImageBuilderCustomizerObject -FileCustomizer -CustomizerName 'filecus' -De
 ```output
 Name    Type Destination                    Sha256Checksum SourceUri
 ----    ---- -----------                    -------------- ---------
-filecus File c:\\buildArtifacts\\index.html                https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/exampleArtifacts/buildArtifacts/â€¦
-
+filecus File c:\\buildArtifacts\\index.html                https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/exampleArtifacts/buildArtifacts/…
 ```
 
 This command creates a file customizer.
@@ -85,7 +84,6 @@ New-AzImageBuilderCustomizerObject -PowerShellCustomizer -CustomizerName setting
 Name                 Type       Inline                                                                                                  RunElevated ScriptUri Sha256Checksum
 ----                 ----       ------                                                                                                  ----------- --------- --------------
 settingUpMgmtAgtPath PowerShell {mkdir c:\\buildActions, echo Azure-Image-Builder-Was-Here  > c:\\buildActions\\buildActionsOutput.txt} False
-
 ```
 
 This command creates a powershell customizer.
