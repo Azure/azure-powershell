@@ -40,7 +40,7 @@ Get-AzContainerRegistryManifest -RegistryName registry -RepositoryName alpine
 ```output
 Registry                    ImageName                   ManifestsAttributes
 --------                    ---------                   -------------------
-registry.azurecr.io         alpine         {Microsoft.Azure.Commands.ContainerRegistry.Models.PSManifestAttributeBase, Microsoft.Azure.Commâ€¦}
+registry.azurecr.io         alpine         {Microsoft.Azure.Commands.ContainerRegistry.Models.PSManifestAttributeBase, Microsoft.Azure.Comm…}
 ```
 
 List manifests for repository alpine under registry.
