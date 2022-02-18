@@ -764,7 +764,7 @@ function Test-CortexExpressRouteCRUD
 		Assert-AreEqual $True $P2SVpnGateway.P2SConnectionConfigurations[0].EnableInternetSecurity
 		Assert-AreEqual $True $P2SVpnGateway.IsRoutingPreferenceInternet
 
-		$getPolicyGroup1 = Get-AzVpnVpnServerConfigurationPolicyGroup -ResourceGroupName $rgName -ParentResourceName $VpnServerConfiguration1Name -Name "PolicyGroup1"
+		$getPolicyGroup1 = Get-AzVpnVpnServerConfigurationPolicyGroup -ResourceGroupName $rgName -ServerConfigurationName $VpnServerConfiguration1Name -Name "PolicyGroup1"
 		Assert-AreEqual $getPolicyGroup1.Id	$P2SVpnGateway.P2SConnectionConfigurations[0].ConfigurationPolicyGroupAssociations[0].Id
 
 		# Reset/Reboot the P2SVpnGateway using Reset-AzP2sVpnGateway
@@ -842,22 +842,22 @@ function Test-CortexExpressRouteCRUD
 		Assert-AreEqual "PolicyGroup2" $VpnServerConfig2.ConfigurationPolicyGroups[0].Name
 
 		# Delete VpnServerConfiguration2 child PolicyGroup2 using Remove-AzVpnVpnServerConfigurationPolicyGroup		
-		$delete = Remove-AzVpnVpnServerConfigurationPolicyGroup  -ResourceGroupName $rgName -ParentResourceName $VpnServerConfiguration2Name -Name "PolicyGroup2" -Force -PassThru
+		$delete = Remove-AzVpnVpnServerConfigurationPolicyGroup  -ResourceGroupName $rgName -ServerConfigurationName $VpnServerConfiguration2Name -Name "PolicyGroup2" -Force -PassThru
 		Assert-AreEqual $True $delete
 		$VpnServerConfig2 = Get-AzVpnServerConfiguration -ResourceGroupName $rgName -Name $VpnServerConfiguration2Name
 		Assert-AreEqual 0 @($VpnServerConfig2.ConfigurationPolicyGroups).Count
 
 		# Create PolicyGroup2 for VpnServerConfiguration2 using New-AzVpnVpnServerConfigurationPolicyGroup
-		New-AzVpnVpnServerConfigurationPolicyGroup -ResourceGroupName $rgName -ParentResourceName $VpnServerConfiguration2Name -Name "PolicyGroup2"
-		$getPolicyGroup2 = Get-AzVpnVpnServerConfigurationPolicyGroup -ResourceGroupName $rgName -ParentResourceName $VpnServerConfiguration2Name -Name "PolicyGroup2"
+		New-AzVpnVpnServerConfigurationPolicyGroup -ResourceGroupName $rgName -ServerConfigurationName $VpnServerConfiguration2Name -Name "PolicyGroup2"
+		$getPolicyGroup2 = Get-AzVpnVpnServerConfigurationPolicyGroup -ResourceGroupName $rgName -ServerConfigurationName $VpnServerConfiguration2Name -Name "PolicyGroup2"
 		Assert-AreEqual "PolicyGroup2" $getPolicyGroup2.Name
 		Assert-AreEqual $true $getPolicyGroup2.IsDefault
 		$VpnServerConfig2 = Get-AzVpnServerConfiguration -ResourceGroupName $rgName -Name $VpnServerConfiguration2Name
 		Assert-AreEqual 1 @($VpnServerConfig2.ConfigurationPolicyGroups).Count
 
 		# Update PolicyGroup2 for VpnServerConfiguration2 using Update-AzVpnVpnServerConfigurationPolicyGroup
-		Update-AzVpnVpnServerConfigurationPolicyGroup -ResourceGroupName $rgName -ParentResourceName $VpnServerConfiguration2Name -Name "PolicyGroup2" -NotDefaultPolicyGroup
-		$getPolicyGroup2 = Get-AzVpnVpnServerConfigurationPolicyGroup -ResourceGroupName $rgName -ParentResourceName $VpnServerConfiguration2Name -Name "PolicyGroup2"
+		Update-AzVpnVpnServerConfigurationPolicyGroup -ResourceGroupName $rgName -ServerConfigurationName $VpnServerConfiguration2Name -Name "PolicyGroup2" -NotDefaultPolicyGroup
+		$getPolicyGroup2 = Get-AzVpnVpnServerConfigurationPolicyGroup -ResourceGroupName $rgName -ServerConfigurationName $VpnServerConfiguration2Name -Name "PolicyGroup2"
 		Assert-AreEqual $false $getPolicyGroup2.IsDefault
 
 		Update-AzVpnServerConfiguration -ResourceId  $VpnServerConfig2.Id -RadiusServerAddress "TestRadiusServer2"			
@@ -970,7 +970,7 @@ function Test-CortexExpressRouteCRUD
 		Assert-AreEqual 0 @($associatedVpnServerConfigs.VpnServerConfigurationResourceIds).Count
 
 		# Verify that PolicyGroup1 does not have any associated p2s connection configurations
-		$getPolicyGroup1 = Get-AzVpnVpnServerConfigurationPolicyGroup -ResourceGroupName $rgName -ParentResourceName $VpnServerConfiguration1Name -Name "PolicyGroup1"
+		$getPolicyGroup1 = Get-AzVpnVpnServerConfigurationPolicyGroup -ResourceGroupName $rgName -ServerConfigurationName $VpnServerConfiguration1Name -Name "PolicyGroup1"
 		Assert-AreEqual 0 @($getPolicyGroup1.P2SConnectionConfigurations).count
 
 		# Delete VpnServerConfiguration1 using Remove-AzVpnServerConfiguration      

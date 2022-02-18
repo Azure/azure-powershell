@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnServerConfiguration
             HelpMessage = "The parent resource name.")]
         [ResourceNameCompleter("Microsoft.Network/vpnServerConfigurations", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public string ParentResourceName { get; set; }
+        public string ServerConfigurationName { get; set; }
 
         [Alias("ResourceName", "VpnServerConfigurationPolicyGroupName")]
         [Parameter(
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnServerConfiguration
             ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationObject,
             HelpMessage = "The parent VpnServerConfiguration for this VpnServerConfigurationPolicyGroup.")]
         [ValidateNotNullOrEmpty]
-        public PSVpnServerConfiguration ParentObject { get; set; }
+        public PSVpnServerConfiguration ServerConfigurationObject { get; set; }
 
         [Alias("ParentVpnServerConfigurationId", "VpnServerConfigurationId")]
         [Parameter(
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnServerConfiguration
             HelpMessage = "The resource id of the parent VpnServerConfiguration for this VpnServerConfigurationPolicyGroup.")]
         [ValidateNotNullOrEmpty]
         [ResourceIdCompleter("Microsoft.Network/vpnServerConfigurations")]
-        public string ParentResourceId { get; set; }
+        public string ServerConfigurationResourceId { get; set; }
 
         public override void Execute()
         {
@@ -86,23 +86,23 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnServerConfiguration
 
             if (ParameterSetName.Equals(CortexParameterSetNames.ByVpnServerConfigurationObject, StringComparison.OrdinalIgnoreCase))
             {
-                this.ResourceGroupName = this.ParentObject.ResourceGroupName;
-                this.ParentResourceName = this.ParentObject.Name;
+                this.ResourceGroupName = this.ServerConfigurationObject.ResourceGroupName;
+                this.ServerConfigurationName = this.ServerConfigurationObject.Name;
             }
             else if (ParameterSetName.Equals(CortexParameterSetNames.ByVpnServerConfigurationResourceId, StringComparison.OrdinalIgnoreCase))
             {
-                var parsedResourceId = new ResourceIdentifier(this.ParentResourceId);
+                var parsedResourceId = new ResourceIdentifier(this.ServerConfigurationResourceId);
                 this.ResourceGroupName = parsedResourceId.ResourceGroupName;
-                this.ParentResourceName = parsedResourceId.ResourceName;
+                this.ServerConfigurationName = parsedResourceId.ResourceName;
             }
 
             if (ShouldGetByName(ResourceGroupName, Name))
             {
-                WriteObject(this.GetVpnServerConfigurationPolicyGroup(this.ResourceGroupName, this.ParentResourceName, this.Name));
+                WriteObject(this.GetVpnServerConfigurationPolicyGroup(this.ResourceGroupName, this.ServerConfigurationName, this.Name));
             }
             else
             {
-                WriteObject(SubResourceWildcardFilter(Name, this.ListVpnServerConfigurationPolicyGroups(this.ResourceGroupName, this.ParentResourceName)), true);
+                WriteObject(SubResourceWildcardFilter(Name, this.ListVpnServerConfigurationPolicyGroups(this.ResourceGroupName, this.ServerConfigurationName)), true);
             }
         }
     }

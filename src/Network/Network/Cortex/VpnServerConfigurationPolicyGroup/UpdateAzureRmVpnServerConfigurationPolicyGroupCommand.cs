@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
         [Alias("ParentVpnServerConfiguration", "VpnServerConfiguration")]
         [ResourceNameCompleter("Microsoft.Network/vpnServerConfigurations", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public string ParentResourceName { get; set; }
+        public string ServerConfigurationName { get; set; }
 
         [Alias("ResourceName", "VpnServerConfigurationPolicyGroupName")]
         [Parameter(
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
             HelpMessage = "The VpnServerConfiguration object this PolicyGroup is linked to.")]
         [Alias("ParentVpnServerConfiguration", "VpnServerConfiguration")]
         [ValidateNotNullOrEmpty]
-        public PSVpnServerConfiguration ParentObject { get; set; }
+        public PSVpnServerConfiguration ServerConfigurationObject { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
         [ResourceIdCompleter("Microsoft.Network/vpnServerConfigurations")]
         [Alias("ParentVpnServerConfigurationId", "VpnServerConfigurationId")]
         [ValidateNotNullOrEmpty]
-        public string ParentResourceId { get; set; }
+        public string ServerConfigurationResourceId { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
                 this.Name,
                 () =>
                 {
-                    WriteVerbose(String.Format(Properties.Resources.CreatingChildResourceLongRunningOperationMessage, this.ResourceGroupName, this.ParentResourceName, this.Name));
+                    WriteVerbose(String.Format(Properties.Resources.CreatingChildResourceLongRunningOperationMessage, this.ResourceGroupName, this.ServerConfigurationName, this.Name));
                     WriteObject(this.UpdatePolicyGroup());
                 });
         }
@@ -129,29 +129,29 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
 
             if (ParameterSetName.Equals(CortexParameterSetNames.ByVpnServerConfigurationObject, StringComparison.OrdinalIgnoreCase))
             {
-                this.ResourceGroupName = this.ParentObject.ResourceGroupName;
-                this.ParentResourceName = this.ParentObject.Name;
+                this.ResourceGroupName = this.ServerConfigurationObject.ResourceGroupName;
+                this.ServerConfigurationName = this.ServerConfigurationObject.Name;
             }
             else if (ParameterSetName.Equals(CortexParameterSetNames.ByVpnServerConfigurationResourceId, StringComparison.OrdinalIgnoreCase))
             {
-                var parsedResourceId = new ResourceIdentifier(this.ParentResourceId);
+                var parsedResourceId = new ResourceIdentifier(this.ServerConfigurationResourceId);
                 this.ResourceGroupName = parsedResourceId.ResourceGroupName;
-                this.ParentResourceName = parsedResourceId.ResourceName;
+                this.ServerConfigurationName = parsedResourceId.ResourceName;
             }
 
-            if (string.IsNullOrWhiteSpace(this.ResourceGroupName) || string.IsNullOrWhiteSpace(this.ParentResourceName))
+            if (string.IsNullOrWhiteSpace(this.ResourceGroupName) || string.IsNullOrWhiteSpace(this.ServerConfigurationName))
             {
                 throw new PSArgumentException(Properties.Resources.VpnServerConfigurationRequiredToCreateOrUpdatePolicyGroup);
             }
 
-            parentVpnServerConfiguration = GetVpnServerConfiguration(this.ResourceGroupName, this.ParentResourceName);
+            parentVpnServerConfiguration = GetVpnServerConfiguration(this.ResourceGroupName, this.ServerConfigurationName);
 
             if (parentVpnServerConfiguration == null)
             {
                 throw new PSArgumentException(Properties.Resources.VpnServerConfigurationRequiredToCreateOrUpdatePolicyGroup);
             }
 
-            policyGroupToUpdate = GetVpnServerConfigurationPolicyGroup(this.ResourceGroupName, this.ParentResourceName, this.Name);
+            policyGroupToUpdate = GetVpnServerConfigurationPolicyGroup(this.ResourceGroupName, this.ServerConfigurationName, this.Name);
 
             if (policyGroupToUpdate == null)
             {
@@ -186,9 +186,9 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
             var policyGroupModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VpnServerConfigurationPolicy>(policyGroupToUpdate);
             policyGroupModel.Tags = TagsConversionHelper.CreateTagDictionary(parentVpnServerConfiguration.Tag, validate: true);
 
-            this.CreateOrUpdateVpnServerConfigurationPolicyGroup(this.ResourceGroupName, this.ParentResourceName, this.Name, policyGroupModel);
+            this.CreateOrUpdateVpnServerConfigurationPolicyGroup(this.ResourceGroupName, this.ServerConfigurationName, this.Name, policyGroupModel);
 
-            return this.GetVpnServerConfigurationPolicyGroup(this.ResourceGroupName, this.ParentResourceName, this.Name);
+            return this.GetVpnServerConfigurationPolicyGroup(this.ResourceGroupName, this.ServerConfigurationName, this.Name);
         }
     }
 }

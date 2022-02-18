@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("ParentVpnServerConfiguration", "VpnServerConfiguration")]
         [ResourceNameCompleter("Microsoft.Network/vpnServerConfigurations", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public string ParentResourceName { get; set; }
+        public string ServerConfigurationName { get; set; }
 
         [Alias("ResourceName", "VpnServerConfigurationPolicyGroupName")]
         [Parameter(
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Network
         [ResourceIdCompleter("Microsoft.Network/vpnServerConfigurations")]
         [Alias("ParentVpnServerConfigurationId", "VpnServerConfigurationId")]
         [ValidateNotNullOrEmpty]
-        public string ParentResourceId { get; set; }
+        public string ServerConfigurationResourceId { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The VpnServerConfiguration object this PolicyGroup is linked to.")]
         [Alias("ParentVpnServerConfiguration", "VpnServerConfiguration")]
         [ValidateNotNullOrEmpty]
-        public PSVpnServerConfiguration ParentObject { get; set; }
+        public PSVpnServerConfiguration ServerConfigurationObject { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -95,18 +95,18 @@ namespace Microsoft.Azure.Commands.Network
         {
             if (ParameterSetName.Equals(CortexParameterSetNames.ByVpnServerConfigurationObject, StringComparison.OrdinalIgnoreCase))
             {
-                this.ResourceGroupName = this.ParentObject.ResourceGroupName;
-                this.ParentResourceName = this.ParentObject.Name;
+                this.ResourceGroupName = this.ServerConfigurationObject.ResourceGroupName;
+                this.ServerConfigurationName = this.ServerConfigurationObject.Name;
             }
             else if (ParameterSetName.Equals(CortexParameterSetNames.ByVpnServerConfigurationResourceId, StringComparison.OrdinalIgnoreCase))
             {
-                var parsedResourceId = new ResourceIdentifier(this.ParentResourceId);
+                var parsedResourceId = new ResourceIdentifier(this.ServerConfigurationResourceId);
                 this.ResourceGroupName = parsedResourceId.ResourceGroupName;
-                this.ParentResourceName = parsedResourceId.ResourceName;
+                this.ServerConfigurationName = parsedResourceId.ResourceName;
             }
 
             // Get the VpnServerConfigurationPolicyGroup object - this will throw not found if the object is not found
-            PSVpnServerConfigurationPolicyGroup configurationPolicyGroupToRemove = this.GetVpnServerConfigurationPolicyGroup(this.ResourceGroupName, this.ParentResourceName, this.Name);
+            PSVpnServerConfigurationPolicyGroup configurationPolicyGroupToRemove = this.GetVpnServerConfigurationPolicyGroup(this.ResourceGroupName, this.ServerConfigurationName, this.Name);
 
             if (configurationPolicyGroupToRemove == null)
             {
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.Network
                     this.Name,
                     () =>
                     {
-                        this.VpnServerConfigurationPolicyGroupClient.Delete(this.ResourceGroupName, this.ParentResourceName, this.Name);
+                        this.VpnServerConfigurationPolicyGroupClient.Delete(this.ResourceGroupName, this.ServerConfigurationName, this.Name);
 
                         if (PassThru)
                         {

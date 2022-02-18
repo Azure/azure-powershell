@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("ParentVpnServerConfiguration", "VpnServerConfiguration")]
         [ResourceNameCompleter("Microsoft.Network/vpnServerConfigurations", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public string ParentResourceName { get; set; }
+        public string ServerConfigurationName { get; set; }
 
         [Alias("ResourceName", "VpnServerConfigurationPolicyGroupName")]
         [Parameter(
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The VpnServerConfiguration object this PolicyGroup is linked to.")]
         [Alias("ParentVpnServerConfiguration", "VpnServerConfiguration")]
         [ValidateNotNullOrEmpty]
-        public PSVpnServerConfiguration ParentObject { get; set; }
+        public PSVpnServerConfiguration ServerConfigurationObject { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Network
         [ResourceIdCompleter("Microsoft.Network/vpnServerConfigurations")]
         [Alias("ParentVpnServerConfigurationId", "VpnServerConfigurationId")]
         [ValidateNotNullOrEmpty]
-        public string ParentResourceId { get; set; }
+        public string ServerConfigurationResourceId { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -123,33 +123,33 @@ namespace Microsoft.Azure.Commands.Network
             //// Resolve the VpnServerConfiguration
             if (ParameterSetName.Contains(CortexParameterSetNames.ByVpnServerConfigurationObject))
             {
-                this.ResourceGroupName = this.ParentObject.ResourceGroupName;
-                this.ParentResourceName = this.ParentObject.Name;
+                this.ResourceGroupName = this.ServerConfigurationObject.ResourceGroupName;
+                this.ServerConfigurationName = this.ServerConfigurationObject.Name;
             }
             else if (ParameterSetName.Contains(CortexParameterSetNames.ByVpnServerConfigurationResourceId))
             {
-                var parsedResourceId = new ResourceIdentifier(this.ParentResourceId);
+                var parsedResourceId = new ResourceIdentifier(this.ServerConfigurationResourceId);
                 this.ResourceGroupName = parsedResourceId.ResourceGroupName;
-                this.ParentResourceName = parsedResourceId.ResourceName;
+                this.ServerConfigurationName = parsedResourceId.ResourceName;
             }
 
-            if (string.IsNullOrWhiteSpace(this.ResourceGroupName) || string.IsNullOrWhiteSpace(this.ParentResourceName))
+            if (string.IsNullOrWhiteSpace(this.ResourceGroupName) || string.IsNullOrWhiteSpace(this.ServerConfigurationName))
             {
                 throw new PSArgumentException(Properties.Resources.VpnServerConfigurationRequiredToCreateOrUpdatePolicyGroup);
             }
 
             //// At this point, we should have the resource name and the resource group for the parent VpnServerConfiguration resolved.
             //// This will throw not found exception if the VpnServerConfiguration does not exist
-            parentVpnServerConfiguration = this.GetVpnServerConfiguration(this.ResourceGroupName, this.ParentResourceName);
+            parentVpnServerConfiguration = this.GetVpnServerConfiguration(this.ResourceGroupName, this.ServerConfigurationName);
             if (parentVpnServerConfiguration == null)
             {
                 throw new PSArgumentException(Properties.Resources.ParentVpnServerConfigurationNotFound);
             }
 
 
-            if (this.IsVpnServerConfigurationPolicyGroupPresent(this.ResourceGroupName, this.ParentResourceName, this.Name))
+            if (this.IsVpnServerConfigurationPolicyGroupPresent(this.ResourceGroupName, this.ServerConfigurationName, this.Name))
             {
-                throw new PSArgumentException(string.Format(Properties.Resources.ChildResourceAlreadyPresentInResourceGroup, this.Name, this.ResourceGroupName, this.ParentResourceName));
+                throw new PSArgumentException(string.Format(Properties.Resources.ChildResourceAlreadyPresentInResourceGroup, this.Name, this.ResourceGroupName, this.ServerConfigurationName));
             }
 
             // Create VpnServerConfigurationPolicyGroup
@@ -186,10 +186,10 @@ namespace Microsoft.Azure.Commands.Network
                 this.Name,
                 () =>
                 {
-                    WriteVerbose(String.Format(Properties.Resources.CreatingChildResourceLongRunningOperationMessage, this.ResourceGroupName, this.ParentResourceName, this.Name));
-                    this.CreateOrUpdateVpnServerConfigurationPolicyGroup(this.ResourceGroupName, this.ParentResourceName, this.Name, policyGroup, parentVpnServerConfiguration.Tag);
+                    WriteVerbose(String.Format(Properties.Resources.CreatingChildResourceLongRunningOperationMessage, this.ResourceGroupName, this.ServerConfigurationName, this.Name));
+                    this.CreateOrUpdateVpnServerConfigurationPolicyGroup(this.ResourceGroupName, this.ServerConfigurationName, this.Name, policyGroup, parentVpnServerConfiguration.Tag);
 
-                    policyGroupToReturn = this.GetVpnServerConfigurationPolicyGroup(this.ResourceGroupName, this.ParentResourceName, this.Name);
+                    policyGroupToReturn = this.GetVpnServerConfigurationPolicyGroup(this.ResourceGroupName, this.ServerConfigurationName, this.Name);
                 });
 
             return policyGroupToReturn;
