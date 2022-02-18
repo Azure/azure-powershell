@@ -21,7 +21,7 @@ Describe 'AzConnectedNetworkVendor' {
             $config.Name | Should -Be $env.VendorName1
 
             $config = New-AzConnectedNetworkVendor -Name $env.VendorName2 -SubscriptionId $env.subscriptionId
-            $config.Name | Should -Be $env.VendorName1
+            $config.Name | Should -Be $env.VendorName2
         } | Should -Not -Throw
     }
 

@@ -17,7 +17,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzConnectedNetworkDeviceRegis
 Describe 'AzConnectedNetworkDeviceRegistrationKey' {
     It 'List' {
         {
-            $config = Get-AzConnectedNetworkDeviceRegistrationKey -DeviceName $env.DeviceName3 -ResourceGroupName $env.ResourceGroupName3
+            $ase = New-AzConnectedNetworkAzureStackEdgeObject -AzureStackEdgeId $env.AzureStackEdgeId
+            $config = Get-AzConnectedNetworkDeviceRegistrationKey -DeviceName $env.existingDevice -ResourceGroupName $env.existingResourceGroup
             $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }

@@ -17,54 +17,54 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzConnectedNetworkVendorFunct
 Describe 'AzConnectedNetworkVendorFunctionRoleInstance' {
     It 'Start' {
         {
-            $config = Start-AzConnectedNetworkVendorFunctionRoleInstance -LocationName "centraluseuap" -ServiceKey $env.ServiceKey -SubscriptionId $env.subscriptionId -VendorName $env.VendorName3 -Name "role1"
-        } | Should -Not -Throw
-    }
-
-    It 'StartViaIdentity' {
-        {
-            $role = @{ RoleInstanceName = "role123"; LocationName = "centraluseuap"; SubscriptionId = $env.subscriptionId; VendorName = $env.VendorName3; serviceKey = $env.ServiceKey}
-            $config = Start-AzConnectedNetworkVendorFunctionRoleInstance -InputObject $role
-        } | Should -Not -Throw
-    }
-
-    It 'List' {
-        {
-            $config = Get-AzConnectedNetworkVendorFunctionRoleInstance -LocationName "centraluseuap" -ServiceKey $env.ServiceKey -VendorName $env.VendorName3
-            $config.Count | Should -BeGreaterThan 0
-        } | Should -Not -Throw
-    }
-
-    It 'Get' {
-        {
-            $config = Get-AzConnectedNetworkVendorFunctionRoleInstance -Name "role123" -LocationName "centraluseuap" -ServiceKey $env.ServiceKey -VendorName $env.VendorName3
-            $config.Count | Should -Be 1
-        } | Should -Not -Throw
-    }
-
-    It 'Stop' {
-        {
-            Stop-AzConnectedNetworkVendorFunctionRoleInstance -Name "role1" -LocationName "centraluseuap" -ServiceKey $env.ServiceKey -VendorName $env.VendorName3
-        } | Should -Not -Throw
-    }
-
-    It 'StopViaIdentity' {
-        {
-            $role = Get-AzConnectedNetworkVendorFunctionRoleInstance -Name "role123" -LocationName "centraluseuap" -ServiceKey $env.ServiceKey -VendorName $env.VendorName3
-            Stop-AzConnectedNetworkVendorFunctionRoleInstance -InputObject $role
+            $config = Start-AzConnectedNetworkVendorFunctionRoleInstance -Name $env.RoleName -LocationName $env.Location -ServiceKey $env.ServiceKey -VendorName $env.existingVendor -SubscriptionId $env.VendorSubscription
         } | Should -Not -Throw
     }
 
     It 'Restart' {
         {
-            Restart-AzConnectedNetworkVendorFunctionRoleInstance -Name "role1" -LocationName "centraluseuap" -ServiceKey $env.ServiceKey -VendorName $env.VendorName3
+            Restart-AzConnectedNetworkVendorFunctionRoleInstance -Name $env.RoleName -LocationName $env.Location -ServiceKey $env.ServiceKey -VendorName $env.existingVendor -SubscriptionId $env.VendorSubscription
+        } | Should -Not -Throw
+    }
+
+    It 'Stop' {
+        {
+            Stop-AzConnectedNetworkVendorFunctionRoleInstance -Name $env.RoleName -LocationName $env.Location -ServiceKey $env.ServiceKey -VendorName $env.existingVendor -SubscriptionId $env.VendorSubscription
+        } | Should -Not -Throw
+    }
+
+    It 'List' {
+        {
+            $config = Get-AzConnectedNetworkVendorFunctionRoleInstance -LocationName $env.Location -ServiceKey $env.ServiceKey -VendorName $env.existingVendor -SubscriptionId $env.VendorSubscription
+            $config.Count | Should -BeGreaterThan 0
+        } | Should -Not -Throw
+    }
+
+    It 'StartViaIdentity' {
+        {
+            $role = @{ RoleInstanceName = $env.RoleName; LocationName = $env.Location; SubscriptionId = $env.VendorSubscription; VendorName = $env.existingVendor; serviceKey = $env.ServiceKey}
+            $config = Start-AzConnectedNetworkVendorFunctionRoleInstance -InputObject $role
         } | Should -Not -Throw
     }
 
     It 'RestartViaIdentity' {
         {
-            $role = Get-AzConnectedNetworkVendorFunctionRoleInstance -Name "role123" -LocationName "centraluseuap" -ServiceKey $env.ServiceKey -VendorName $env.VendorName3
+            $role = @{ RoleInstanceName = $env.RoleName; LocationName = $env.Location; SubscriptionId = $env.VendorSubscription; VendorName = $env.existingVendor; serviceKey = $env.ServiceKey}
             Restart-AzConnectedNetworkVendorFunctionRoleInstance -InputObject $role
+        } | Should -Not -Throw
+    }
+
+    It 'StopViaIdentity' {
+        {
+            $role = @{ RoleInstanceName = $env.RoleName; LocationName = $env.Location; SubscriptionId = $env.VendorSubscription; VendorName = $env.existingVendor; serviceKey = $env.ServiceKey}
+            Stop-AzConnectedNetworkVendorFunctionRoleInstance -InputObject $role
+        } | Should -Not -Throw
+    }
+
+    It 'Get' {
+        {
+            $config = Get-AzConnectedNetworkVendorFunctionRoleInstance -Name $env.RoleName -LocationName $env.Location -ServiceKey $env.ServiceKey -VendorName $env.existingVendor -SubscriptionId $env.VendorSubscription
+            $config.Count | Should -Be 1
         } | Should -Not -Throw
     }
 }

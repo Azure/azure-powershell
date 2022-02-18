@@ -23,29 +23,29 @@ Describe 'AzConnectedNetworkVendorSku' {
             $ip2 = New-AzConnectedNetworkInterfaceObject -IPConfiguration $ipconf2 -Name "mrmlannic1" -VMSwitchType "Lan"
             $keyData = @{keyData = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCyMpVbBgu0kftv1k+z1c3NtcB5CVDoo/X9X1LE2JUjlLlo0luEkFGJk61i53BhiTSTeRmQXN8hAZ7sn4MDUmZK7fWcHouZ2fsJo+ehses3wQPLubWBFw2L/hoSTyXifXMbEBu9SxHgqf1CEKQcvdNiWf4U7npXwjweXW9DtsF5E7h4kxhKJKFI4sNFTIX0IwUB15QEVHoBs92kDwH3fBH3kZZCMBJE/u6kT+XB22crRKkIGlp3a9gcogtOCvP+3xmsP7hjw5+nHxMUwkc/6kYyfTeLwvfI4xrTWpnB5xufts5LW5/U5GOXVg97ix9EXgiV0czThowG5K2xQ649UlJb"; path = $Null}
             $key = @( $keyData)
-            $role = New-AzConnectedNetworkFunctionRoleConfigurationObject -NetworkInterface $ip1,$ip2 -OSDiskName "Disk1" -OSDiskOstype "Linux" -OSDiskSizeGb 40 -OSProfileCustomDataRequired $False -OSProfileAdminUsername "MecUser" -RoleName "hpehss" -RoleType "VirtualMachine" -VirtualMachineSize "Standard_D3_v2" -SshPublicKey $key -StorageProfileDataDisk $env.storage -VhdUri "https://mecvdrvhd.blob.core.windows/myvhd.vhd"
-            $config = New-AzConnectedNetworkVendorSku -SkuName "sku1" -VendorName $env.VendorName3 -SubscriptionId $env.subscriptionId -SkuType "VirtualMachine" -DeploymentMode "PrivateEdgeZone" -NetworkFunctionRoleConfigurationType @($role)
-            $config.VendorName | Should -Be $env.VendorName3
+            $role = New-AzConnectedNetworkFunctionRoleConfigurationObject -NetworkInterface $ip1,$ip2 -OSDiskName "Disk1" -OSDiskOstype "Linux" -OSDiskSizeGb 150 -OSProfileCustomDataRequired $False -OSProfileAdminUsername "MecUser" -RoleName $env.RoleName -RoleType "VirtualMachine" -VirtualMachineSize "Standard_D3_v2" -SshPublicKey $key -StorageProfileDataDisk $null -VhdUri "https://xy-abcde123.blob.core.windows.net/myvhd.vhdx"
+            $config = New-AzConnectedNetworkVendorSku -SkuName "sku1" -VendorName $env.existingVendor -SubscriptionId $env.VendorSubscription -SkuType "EvolvedPacketCore" -DeploymentMode "PrivateEdgeZone" -NetworkFunctionRoleConfigurationType @($role)
+            $config.Name | Should -Be "sku1"
         } | Should -Not -Throw
     }
 
     It 'List' {
         {
-            $config = Get-AzConnectedNetworkVendorSku -VendorName $env.VendorName3
+            $config = Get-AzConnectedNetworkVendorSku -VendorName $env.existingVendor -SubscriptionId $env.VendorSubscription
             $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
+    It 'Get' {
         {
-            $config = Get-AzConnectedNetworkVendorSku -SkuName "sku1" -VendorName $env.VendorName3
+            $config = Get-AzConnectedNetworkVendorSku -SkuName "sku1" -VendorName $env.existingVendor -SubscriptionId $env.VendorSubscription
             $config.Name | Should -Be "sku1"
         } | Should -Not -Throw
     }
 
     It 'Delete' {
         {
-            Remove-AzConnectedNetworkVendorSku -SkuName "sku1" -VendorName $env.VendorName3
+            Remove-AzConnectedNetworkVendorSku -SkuName "sku1" -VendorName $env.existingVendor -SubscriptionId $env.VendorSubscription
         } | Should -Not -Throw
     }
 }

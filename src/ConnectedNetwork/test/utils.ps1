@@ -21,47 +21,56 @@ function setupEnv() {
 
     # Please input this value, when you want run it
     $storage = ""
-    $ServiceKey = ""
-    $PreviewSubscription = ""
+    $ServiceKey = "xxxxx-33333-xxxxx-33333"
+    $VendorSubscription = "xxxxx-11111-xxxxx-11111"
+    $PreviewSubscription = "xxxxx-00000-xxxxx-00000"
+    $RoleName = "myRole"
+
+    # Also input the values of these existing resources. Create these resources before running the tests.
+    $existingDevice = "existingDevice"
+    $existingResourceGroup = "existingResourceGroup"
+    $existingVendor = "existingVendor"
+    $existingVnf = "existingVnf"
 
     $env.Add("storage", $storage)
     $env.Add("ServiceKey", $ServiceKey)
     $env.Add("PreviewSubscription", $PreviewSubscription)
-
+    $env.Add("VendorSubscription", $VendorSubscription)
+    $env.Add("RoleName", $RoleName)
     $env.Add("Location", "eastus")
+
+    $env.Add("existingDevice", $existingDevice)
+    $env.Add("existingResourceGroup", $existingResourceGroup)
+    $env.Add("existingVendor", $existingVendor)
+    $env.Add("existingVnf", $existingVnf)
 
     $ResourceGroupName1 = "testgroup-network1"
     $ResourceGroupName2 = "testgroup-network2"
-    $ResourceGroupName3 = "testgroup-network3"
     $env.Add("ResourceGroupName1", $ResourceGroupName1)
     $env.Add("ResourceGroupName2", $ResourceGroupName2)
-    $env.Add("ResourceGroupName3", $ResourceGroupName3)
 
     New-AzResourceGroup -Name $env.ResourceGroupName1 -Location $env.Location
     New-AzResourceGroup -Name $env.ResourceGroupName2 -Location $env.Location
-    New-AzResourceGroup -Name $env.ResourceGroupName3 -Location $env.Location
 
     $DeviceName1 = "testdevice1"
     $DeviceName2 = "testdevice2"
-    $DeviceName3 = "testdevice3"
     $env.Add("DeviceName1", $DeviceName1)
     $env.Add("DeviceName2", $DeviceName2)
-    $env.Add("DeviceName3", $DeviceName3)
 
-    $AzureStackEdgeId = "/subscriptions/${env.SubscriptionId}/resourcegroups/myResources/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/myAse"
+    $AzureStackEdgeId = "/subscriptions/xxxxx-00000-xxxxx-00000/resourcegroups/existingResourceGroup/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/existingAse"
     $env.Add("AzureStackEdgeId", $AzureStackEdgeId)
     
     $ase = New-AzConnectedNetworkAzureStackEdgeObject -AzureStackEdgeId $env.AzureStackEdgeId
-    New-AzConnectedNetworkDevice -Name $env.DeviceName3 -ResourceGroupName $env.ResourceGroupName3 -Location $env.Location -Property $ase
 
     $VendorName1 = "testvendor1"
     $VendorName2 = "testvendor2"
-    $VendorName3 = "testvendor3"
     $env.Add("VendorName1", $VendorName1)
     $env.Add("VendorName2", $VendorName2)
-    $env.Add("VendorName3", $VendorName3)
 
-    New-AzConnectedNetworkVendor -Name $env.VendorName3
+    $Vnf2 = "testvnf2"
+    $Vnf3 = "testvnf3"
+    $env.Add("Vnf2", $Vnf2)
+    $env.Add("Vnf3", $Vnf3)
 
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
@@ -74,6 +83,5 @@ function cleanupEnv() {
     # Clean resources you create for testing
     Remove-AzResourceGroup -Name $env.ResourceGroupName1
     Remove-AzResourceGroup -Name $env.ResourceGroupName2
-    Remove-AzResourceGroup -Name $env.ResourceGroupName3
 }
 

@@ -43,14 +43,14 @@ Describe 'AzConnectedNetworkDevice' {
     It 'List1' {
         {
             $config = Get-AzConnectedNetworkDevice -ResourceGroupName $env.ResourceGroupName2
-            $config.Count | Shoule -BeGreaterThan 0
+            $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }
 
     It 'UpdateExpanded' {
         {
-            $config = Update-AzConnectedNetworkDeviceTag -ResourceGroupName $env.ResourceGroupName2 -Name $env.DeviceName2 -Tag @{ "NewTag" = "NewTagValue"}
-            $config.Name | Sohuld -Be $env.DeviceName2
+            $config = Update-AzConnectedNetworkDeviceTag -ResourceGroupName $env.ResourceGroupName2 -DeviceName $env.DeviceName2 -Tag @{ "NewTag" = "NewTagValue"}
+            $config.Name | Should -Be $env.DeviceName2
         } | Should -Not -Throw
     }
 
