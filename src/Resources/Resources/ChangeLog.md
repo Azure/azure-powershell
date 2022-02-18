@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* Marked `ObjectType` as `Unknown` if object is not found or insufficient privileges to get object type for role assignment [#16981]
+* Marked `ObjectType` as `Unknown` if object is not found or current account has insufficient privileges to get object type for role assignment [#16981]
 * Fixed that `Get-AzRoleAssignment` shows empty RoleDefinitionName for custom roles when not specifying scope [#16991]
 * Unified the returned `RoleDefinitionId` in PSRoleAssignment to GUID [#16991]
 
