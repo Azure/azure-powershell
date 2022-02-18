@@ -27,6 +27,7 @@ using Microsoft.Data.Encryption.Cryptography;
 using Azure.Core;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Azure.Identity;
+using Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Exceptions;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
@@ -53,6 +54,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.EncryptionAlgorithmName)]
         [ValidateNotNullOrEmpty]
         public string EncryptionAlgorithmName { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = Constants.WrappedDataEncryptionKey)]
+        [ValidateNotNullOrEmpty]
+        public byte[] WrappedDataEncryptionKey { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = Constants.KeyWrapMetaData)]
         [ValidateNotNullOrEmpty]
@@ -112,62 +117,66 @@ namespace Microsoft.Azure.Commands.CosmosDB
             }
             catch (CloudException e)
             {
-                if (e.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
+                if (e.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
-                    throw;
+                    throw new ResourceNotFoundException(message: string.Format(ExceptionMessage.NotFound, ClientEncryptionKeyName), innerException: e);
                 }
             }
 
             ClientEncryptionKeyResource clientEncryptionKeyResource = UpdateAzCosmosDbClientEncryptionKey.PopulateSqlClientEncryptionKeyResource(readClientEncryptionKeyGetResults.Resource);
 
             KeyEncryptionKey keyEncryptionKey;
-            byte[] rewrappedKey;
-            if (IsAzureKeyVaultKeyStoreProvider)
+            byte[] rewrappedKey = WrappedDataEncryptionKey;
+
+            if (rewrappedKey == null || rewrappedKey.Length == 0)
             {
-                if (EncryptionKeyStoreProvider != null)
+                if (IsAzureKeyVaultKeyStoreProvider)
                 {
-                    throw new ArgumentException("EncryptionKeyStoreProvider cannot be set if IsAzureKeyVaultKeyStoreProvider is set to true");
+                    if (EncryptionKeyStoreProvider != null)
+                    {
+                        throw new ArgumentException("EncryptionKeyStoreProvider cannot be set if IsAzureKeyVaultKeyStoreProvider is set to true");
+                    }
+
+                    // get the token credential for key vault audience.
+                    TokenCredential tokenCredential = new CosmosDBSessionCredential(DefaultContext, AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId);
+
+                    AzureKeyVaultKeyStoreProvider azureKeyVaultKeyStoreProvider = new AzureKeyVaultKeyStoreProvider(tokenCredential);
+
+                    keyEncryptionKey = KeyEncryptionKey.GetOrCreate(
+                       clientEncryptionKeyResource.KeyWrapMetadata.Name,
+                       clientEncryptionKeyResource.KeyWrapMetadata.Value,
+                       azureKeyVaultKeyStoreProvider);
+
+                    byte[] unwrappedKey = keyEncryptionKey.DecryptEncryptionKey(clientEncryptionKeyResource.WrappedDataEncryptionKey);
+
+                    keyEncryptionKey = KeyEncryptionKey.GetOrCreate(
+                        newEncryptionKeyWrapMetadata.Name,
+                        newEncryptionKeyWrapMetadata.Value,
+                        azureKeyVaultKeyStoreProvider);
+
+                    rewrappedKey = keyEncryptionKey.EncryptEncryptionKey(unwrappedKey);
                 }
-
-                // get the token credential for key vault audience.
-                TokenCredential tokenCredential = new CosmosDBSessionCredential(DefaultContext, AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId);
-
-                AzureKeyVaultKeyStoreProvider azureKeyVaultKeyStoreProvider = new AzureKeyVaultKeyStoreProvider(tokenCredential);
-
-                keyEncryptionKey = KeyEncryptionKey.GetOrCreate(
-                   clientEncryptionKeyResource.KeyWrapMetadata.Name,
-                   clientEncryptionKeyResource.KeyWrapMetadata.Value,
-                   azureKeyVaultKeyStoreProvider);
-
-                byte[] unwrappedKey = keyEncryptionKey.DecryptEncryptionKey(clientEncryptionKeyResource.WrappedDataEncryptionKey);
-
-                keyEncryptionKey = KeyEncryptionKey.GetOrCreate(
-                    newEncryptionKeyWrapMetadata.Name,
-                    newEncryptionKeyWrapMetadata.Value,
-                    azureKeyVaultKeyStoreProvider);
-
-                rewrappedKey = keyEncryptionKey.EncryptEncryptionKey(unwrappedKey);
-            }
-            else
-            {
-                if (EncryptionKeyStoreProvider == null)
+                else
                 {
-                    throw new ArgumentException("EncryptionKeyStoreProvider cannot be null if IsAzureKeyVaultKeyStoreProvider is set to false");
+                    if (EncryptionKeyStoreProvider == null)
+                    {
+                        throw new ArgumentException("EncryptionKeyStoreProvider cannot be null if IsAzureKeyVaultKeyStoreProvider is set to false");
+                    }
+
+                    keyEncryptionKey = KeyEncryptionKey.GetOrCreate(
+                       clientEncryptionKeyResource.KeyWrapMetadata.Name,
+                       clientEncryptionKeyResource.KeyWrapMetadata.Value,
+                       EncryptionKeyStoreProvider);
+
+                    byte[] unwrappedKey = keyEncryptionKey.DecryptEncryptionKey(clientEncryptionKeyResource.WrappedDataEncryptionKey);
+
+                    keyEncryptionKey = KeyEncryptionKey.GetOrCreate(
+                        newEncryptionKeyWrapMetadata.Name,
+                        newEncryptionKeyWrapMetadata.Value,
+                        EncryptionKeyStoreProvider);
+
+                    rewrappedKey = keyEncryptionKey.EncryptEncryptionKey(unwrappedKey);
                 }
-
-                keyEncryptionKey = KeyEncryptionKey.GetOrCreate(
-                   clientEncryptionKeyResource.KeyWrapMetadata.Name,
-                   clientEncryptionKeyResource.KeyWrapMetadata.Value,
-                   EncryptionKeyStoreProvider);
-
-                byte[] unwrappedKey = keyEncryptionKey.DecryptEncryptionKey(clientEncryptionKeyResource.WrappedDataEncryptionKey);
-
-                keyEncryptionKey = KeyEncryptionKey.GetOrCreate(
-                    newEncryptionKeyWrapMetadata.Name,
-                    newEncryptionKeyWrapMetadata.Value,
-                    EncryptionKeyStoreProvider);
-
-                rewrappedKey = keyEncryptionKey.EncryptEncryptionKey(unwrappedKey);
             }
 
             clientEncryptionKeyResource = new ClientEncryptionKeyResource
