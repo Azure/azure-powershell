@@ -259,4 +259,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[AzureÃ¢â‚¬â€¹RM.Ã¢â‚¬â€¹KeyÃ¢â‚¬â€¹Vault](/powershell/module/az.keyvault/)
+[Azureâ€‹RM.â€‹Keyâ€‹Vault](/powershell/module/az.keyvault/)

@@ -50,7 +50,7 @@ Resource ID                         : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxx
                                       ers/Microsoft.KeyVault/managedHSMs/testmhsm
 HSM Pool URI                        :
 Tenant ID                           : xxxxxx-xxxx-xxxx-xxxxxxxxxxxx
-Initial Admin Object Ids            : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxâ€‹â€‹â€‹â€‹â€‹
+Initial Admin Object Ids            : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 SKU                                 : StandardB1
 Soft Delete Enabled?                : True
 Enabled Purge Protection?           : False
