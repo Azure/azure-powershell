@@ -1,7 +1,6 @@
 ## 7.2.1 - February 2022
 #### Az.Resources
-* Fixed that Get-AzRoleAssignment shows empty RoleDefinitionName for custom roles when not specifying scope [#16991]
-* Unified the returned RoleDefinitionId in PSRoleAssignment to GUID [#16991]
+* Fixed `New-AzADServicePrincipal` not working [#17054] [#17040]
 
 ## 7.2.0 - February 2022
 #### Az.Accounts
