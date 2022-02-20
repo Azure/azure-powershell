@@ -2,11 +2,8 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "keyvault_name": {
-      "value": "keyvalult-ot58pm"
-    },
-    "storageaccount_principalid": {
-      "value": "56cc843f-8fc9-479f-91ce-9e8d99fb7c2f"
+    "netbricksSG_id": {
+      "value": "vnet-security-yrjqtz"
     }
   }
 }

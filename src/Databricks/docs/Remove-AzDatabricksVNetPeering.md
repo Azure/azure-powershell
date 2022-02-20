@@ -237,8 +237,10 @@ To create the parameters described below, construct a hash table containing the 
 
 
 INPUTOBJECT <IDatabricksIdentity>: Identity Parameter
+  - `[GroupId <String>]`: The name of the private link resource
   - `[Id <String>]`: Resource identity path
   - `[PeeringName <String>]`: The name of the workspace vNet peering.
+  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[WorkspaceName <String>]`: The name of the workspace.

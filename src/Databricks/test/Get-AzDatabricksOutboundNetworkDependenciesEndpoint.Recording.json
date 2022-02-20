@@ -1,0 +1,43 @@
+{
+  "Get-AzDatabricksOutboundNetworkDependenciesEndpoint+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-rqb2yo/providers/Microsoft.Databricks/workspaces/workspacefnw9gd/outboundNetworkDependenciesEndpoints?api-version=2021-04-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-rqb2yo/providers/Microsoft.Databricks/workspaces/workspacefnw9gd/outboundNetworkDependenciesEndpoints?api-version=2021-04-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "9de9ecda-8f7b-42c5-a5cb-542415d574c6" ],
+        "CommandName": [ "Get-AzDatabricksOutboundNetworkDependenciesEndpoint" ],
+        "FullCommandName": [ "Get-AzDatabricksOutboundNetworkDependenciesEndpoint_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.Databricks/1.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "eastus:3493aa29-b71e-4a13-bf8d-44bdcd8a2df4" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-correlation-request-id": [ "d9a3895c-cb74-4651-b690-0e869a196d58" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220218T083143Z:d9a3895c-cb74-4651-b690-0e869a196d58" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 18 Feb 2022 08:31:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2397" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "[{\"category\":\"Webapp\",\"endpoints\":[{\"endpointDetails\":[{\"ipAddress\":\"40.70.58.221/32\",\"port\":443},{\"ipAddress\":\"20.42.4.209/32\",\"port\":443},{\"ipAddress\":\"20.42.4.211\",\"port\":443}]}]},{\"category\":\"Control Plane NAT\",\"endpoints\":[{\"endpointDetails\":[{\"ipAddress\":\"23.101.152.95/32\",\"port\":443},{\"ipAddress\":\"20.42.4.208/32\",\"port\":443},{\"ipAddress\":\"20.42.4.210\",\"port\":443}]}]},{\"category\":\"Extended infrastructure\",\"endpoints\":[{\"endpointDetails\":[{\"ipAddress\":\"20.57.106.0/28\",\"port\":443}]}]},{\"category\":\"Azure Storage\",\"endpoints\":[{\"domainName\":\"dbartifactsprodeastus.blob.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"arprodeastusa1.blob.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"arprodeastusa2.blob.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"arprodeastusa3.blob.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"arprodeastusa4.blob.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"arprodeastusa5.blob.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"arprodeastusa6.blob.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"dbartifactsprodeastus2.blob.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"dblogprodwestus.blob.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"dblogprodeastus.blob.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"dbstoragexykp64zcse5wo.blob.core.windows.net\",\"endpointDetails\":[{\"port\":443}]}]},{\"category\":\"Azure My SQL\",\"endpoints\":[{\"domainName\":\"consolidated-eastus-prod-metastore.mysql.database.azure.com\",\"endpointDetails\":[{\"port\":3306}]},{\"domainName\":\"consolidated-eastus-prod-metastore-addl-1.mysql.database.azure.com\",\"endpointDetails\":[{\"port\":3306}]},{\"domainName\":\"consolidated-eastusc2-prod-metastore-0.mysql.database.azure.com\",\"endpointDetails\":[{\"port\":3306}]},{\"domainName\":\"consolidated-eastusc3-prod-metastore-0.mysql.database.azure.com\",\"endpointDetails\":[{\"port\":3306}]}]},{\"category\":\"Azure Servicebus\",\"endpoints\":[{\"domainName\":\"prod-westus-observabilityEventHubs.servicebus.windows.net\",\"endpointDetails\":[{\"port\":9093}]},{\"domainName\":\"prod-eastusc2-observabilityeventhubs.servicebus.windows.net\",\"endpointDetails\":[{\"port\":9093}]},{\"domainName\":\"prod-eastusc3-observabilityeventhubs.servicebus.windows.net\",\"endpointDetails\":[{\"port\":9093}]}]}]",
+      "isContentBase64": false
+    }
+  }
+}
