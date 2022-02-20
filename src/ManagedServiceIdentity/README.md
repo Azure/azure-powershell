@@ -37,12 +37,19 @@ input-file:
   - $(repo)/specification/msi/resource-manager/Microsoft.ManagedIdentity/stable/2018-11-30/ManagedIdentity.json
 
 subject-prefix: ""
+resourcegroup-append: true
+nested-object-to-string: true
 identity-correction-for-post: true
 
 directive:
   - where:
       verb: Set
     remove: true
+
+  - where:
+      verb: Get
+      subject: SystemAssignedIdentity
+      
   - where:
       subject: UserAssignedIdentity
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
