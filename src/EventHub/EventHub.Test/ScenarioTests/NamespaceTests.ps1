@@ -195,6 +195,7 @@ function NamespaceTests
 	$namespaceName = getAssetName "Eventhub-Namespace1-"
 	$namespaceName2 = getAssetName "Eventhub-Namespace2-"
     $namespaceName3 = getAssetName "Eventhub-Namespace3-"
+    $namespace4 = getAssetName "Eventhub-Namespace4-"
     $resourceGroupName = getAssetName "RGName1-"
 	$secondResourceGroup = getAssetName "RGName2-"
 	$namespaceNameKafka = getAssetName "Eh-NamespaceKafka-"
@@ -212,6 +213,25 @@ function NamespaceTests
 
 	$checkNameResult = Test-AzEventHubName -Namespace $namespaceName 
 	Assert-True {$checkNameResult.NameAvailable}
+
+    $result1 = New-AzEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespace4 -Location northeurope -SkuName Standard
+    Assert-AreEqual $result1.Name $namespace4
+    Assert-AreEqual $result1.Location "North Europe"
+
+    $result1 = Set-AzEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespace4 -EnableAutoInflate -MaximumThroughputUnits 12
+    Assert-AreEqual $result1.Name $namespace4
+    Assert-AreEqual $result1.Location "North Europe"
+    Assert-True {$result1.IsAutoInflateEnabled}
+    Assert-True {$result1.KafkaEnabled}
+    Assert-AreEqual $result1.MaximumThroughputUnits 12
+
+    $result1 = Set-AzEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespace4 -EnableKafka
+    Assert-AreEqual $result1.Name $namespace4
+    Assert-AreEqual $result1.Location "North Europe"
+    Assert-True {$result1.IsAutoInflateEnabled}
+    Assert-True {$result1.KafkaEnabled}
+    Assert-AreEqual $result1.MaximumThroughputUnits 12
+
 
 	Write-Debug " Create new Eventhub Kafka namespace"
     Write-Debug "Kafka Namespace name : $namespaceNameKafka"	
@@ -278,6 +298,8 @@ function NamespaceTests
 	Write-Debug " Delete resourcegroup"
 	Remove-AzResourceGroup -Name $resourceGroupName -Force
 }
+
+
 
 function SchemaRegistryTest {
 
@@ -373,4 +395,116 @@ function SchemaRegistryTest {
 
 	Write-Debug " Delete resourcegroup"
 	Remove-AzResourceGroup -Name $resourceGroupName -Force
+}
+
+function MSITest{
+    $resourceGroupName = "PS-Testing"
+    $msi1 = "PS-Testing-MSI1"
+    $msi2 = "PS-Testing-MSI2"
+    $msi3 = "PS-Testing-MSI3"
+    $namespace1 = getAssetName "Namespace1-"
+    $namespace2 = getAssetName "Namespace2-"
+    try{
+
+        $uad1 = Get-AzUserAssignedIdentity -ResourceGroupName $resourceGroupName -Name $msi1
+        $uad2 = Get-AzUserAssignedIdentity -ResourceGroupName $resourceGroupName -Name $msi2
+        $uad3 = Get-AzUserAssignedIdentity -ResourceGroupName $resourceGroupName -Name $msi3
+
+        $namespace = New-AzEventHubNamespace -ResourceGroupName $resourceGroupName -Name $namespace1 -SkuName Standard -Location northeurope
+        Assert-AreEqual $namespace.Name $namespace1
+        Assert-AreEqual $namespace.Sku.Name "Standard"
+
+        $namespace = Set-AzEventHubNamespace -ResourceGroupName $resourceGroupName -Name $namespace1 -IdentityType "SystemAssigned"
+        Assert-AreEqual $namespace.Name $namespace1
+        Assert-AreEqual $namespace.Sku.Name "Standard"
+        Assert-AreEqual $namespace.IdentityType "SystemAssigned"
+
+        $namespace = Set-AzEventHubNamespace -ResourceGroupName $resourceGroupName -Name $namespace1 -IdentityType "UserAssigned" -IdentityId $uad1.Id,$uad2.Id
+        Assert-AreEqual $namespace.Name $namespace1
+        Assert-AreEqual $namespace.Sku.Name "Standard"
+        Assert-AreEqual $namespace.IdentityType "UserAssigned"
+        Assert-True { $namespace.IdentityId.Count -eq 2 }
+
+        $namespace = Set-AzEventHubNamespace -ResourceGroupName $resourceGroupName -Name $namespace1 -IdentityType "SystemAssigned, UserAssigned" -IdentityId $uad1.Id,$uad2.Id
+        Assert-AreEqual $namespace.Name $namespace1
+        Assert-AreEqual $namespace.Sku.Name "Standard"
+        Assert-AreEqual $namespace.IdentityType "SystemAssignedUserAssigned"
+        Assert-True { $namespace.IdentityId.Count -eq 2 }
+
+        $namespace = Set-AzEventHubNamespace -ResourceGroupName $resourceGroupName -Name $namespace1 -IdentityType "None"
+        Assert-AreEqual $namespace.Name $namespace1
+        Assert-AreEqual $namespace.Sku.Name "Standard"
+        Assert-Null $namespace.Identity
+    }
+    finally{
+        Remove-AzEventHubNamespace -ResourceGroupName $resourceGroupName -Name $namespace1
+    }
+}
+
+function EncryptionTest{
+    try{
+        $resourceGroupName = "PS-Testing"
+        $msi1 = "PS-Testing-MSI1"
+        $msi2 = "PS-Testing-MSI2"
+        $msi3 = "PS-Testing-MSI3"
+        $kv1 = "PS-Testing-kv1"
+        $kv2 = "PS-Testing-kv2"
+        $kv1uri = "https://ps-testing-kv1.vault.azure.net/"
+        $kv2uri = "https://ps-testing-kv2.vault.azure.net"
+        $namespace1 = getAssetName "Namespace1-"
+        $namespace2 = getAssetName "Namespace2-"
+
+        $uad1 = Get-AzUserAssignedIdentity -ResourceGroupName $resourceGroupName -Name $msi1
+        $uad2 = Get-AzUserAssignedIdentity -ResourceGroupName $resourceGroupName -Name $msi2
+        $uad3 = Get-AzUserAssignedIdentity -ResourceGroupName $resourceGroupName -Name $msi3
+
+        $namespace = New-AzEventHubNamespace -ResourceGroupName $resourceGroupName -Name $namespace2 -SkuName Premium -Location northeurope -IdentityType SystemAssigned
+        Assert-AreEqual $namespace.Name $namespace2
+        Assert-AreEqual $namespace.Sku.Name "Premium"
+        Assert-AreEqual $namespace.IdentityType "SystemAssigned"
+
+        Set-AzKeyVaultAccessPolicy -VaultName $kv1 -ObjectId $namespace.Identity.PrincipalId -PermissionsToKeys wrapkey,unwrapkey,get -BypassObjectIdValidation
+
+        $ec1 = New-AzEventHubEncryptionConfig -KeyName key1 -KeyVaultUri $kv1uri
+        $ec2 = New-AzEventHubEncryptionConfig -KeyName key2 -KeyVaultUri $kv1uri
+
+        $namespace = Set-AzEventHubNamespace -ResourceGroupName $resourceGroupName -Name $namespace2 -EncryptionConfig $ec1,$ec2
+        Assert-AreEqual $namespace.Name $namespace2
+        Assert-AreEqual $namespace.Sku.Name "Premium"
+        Assert-AreEqual $namespace.IdentityType "SystemAssigned"
+        Assert-True { $namespace.EncryptionConfig.Count -eq 2 }
+
+        $ec1 = New-AzEventHubEncryptionConfig -KeyName key1 -KeyVaultUri $kv1uri -UserAssignedIdentity $uad1.Id
+        $ec2 = New-AzEventHubEncryptionConfig -KeyName key2 -KeyVaultUri $kv1uri -UserAssignedIdentity $uad1.Id
+
+        $namespace = New-AzEventHubNamespace -ResourceGroupName $resourceGroupName -Name $namespace1 -SkuName Premium -Location northeurope -IdentityType UserAssigned -IdentityId $uad1.Id,$uad2.Id -EncryptionConfig $ec1,$ec2
+        Assert-AreEqual $namespace.Name $namespace1
+        Assert-AreEqual $namespace.Sku.Name "Premium"
+        Assert-AreEqual $namespace.IdentityType "UserAssigned"
+        Assert-True { $namespace.IdentityId.Count -eq 2 }
+        Assert-True { $namespace.EncryptionConfig.Count -eq 2 }
+
+        $ec3 = New-AzEventHubEncryptionConfig -KeyName key1 -KeyVaultUri $kv2uri -UserAssignedIdentity $uad1.id
+        $namespace.EncryptionConfig += $ec3
+
+        $namespace = Set-AzEventHubNamespace -ResourceGroupName $resourceGroupName -Name $namespace1 -EncryptionConfig $namespace.EncryptionConfig -Location northeurope
+        Assert-AreEqual $namespace.Name $namespace1
+        Assert-AreEqual $namespace.Sku.Name "Premium"
+        Assert-AreEqual $namespace.IdentityType "UserAssigned"
+        Assert-True { $namespace.IdentityId.Count -eq 2 }
+        Assert-True { $namespace.EncryptionConfig.Count -eq 3 }
+
+
+        $namespace = Get-AzEventHubNamespace -ResourceGroupName $resourceGroupName -Name $namespace1
+        Assert-AreEqual $namespace.Name $namespace1
+        Assert-AreEqual $namespace.Sku.Name "Premium"
+        Assert-AreEqual $namespace.IdentityType "UserAssigned"
+        Assert-True { $namespace.IdentityId.Count -eq 2 }
+        Assert-True { $namespace.EncryptionConfig.Count -eq 3 }
+
+    }
+     
+    finally{
+        Remove-AzEventHubNamespace -ResourceGroupName $resourceGroupName -Name $namespace1
+    }
 }
