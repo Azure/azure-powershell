@@ -118,4 +118,3 @@ function Test-ManagedCassandraCreateUpdateGetCmdlets
     Finally {
 	}
 }
-

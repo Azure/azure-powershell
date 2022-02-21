@@ -49,6 +49,12 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.DatabasesToRestoreHelpMessage)]
         public PSDatabaseToRestore[] DatabasesToRestore { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.GremlinDatabasesToRestoreHelpMessage)]
+        public PSGremlinDatabaseToRestore[] GremlinDatabasesToRestore { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.TablesToRestoreHelpMessage)]
+        public PSTablesToRestore TablesToRestore { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
 
@@ -153,7 +159,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 RestoreSource = sourceAccountToRestore.Id,
                 RestoreTimestampInUtc = utcRestoreDateTime,
-                DatabasesToRestore = DatabasesToRestore
+                DatabasesToRestore = DatabasesToRestore,
+                TablesToRestore = TablesToRestore,
+                GremlinDatabasesToRestore = GremlinDatabasesToRestore
             };
 
             Collection<Location> LocationCollection = new Collection<Location>();

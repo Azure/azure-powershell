@@ -38,11 +38,24 @@ Gets the throughput of a CosmosDB Gremlin Database.
 ### [Get-AzCosmosDBGremlinGraph](Get-AzCosmosDBGremlinGraph.md)
 Gets the CosmosDB Gremlin Graph.
 
+### [Get-AzCosmosDBGremlinGraphBackupInformation](Get-AzCosmosDBGremlinGraphBackupInformation.md)
+Retrieves the latest restorable timestamp for a gremlin graph.
+
 ### [Get-AzCosmosDBGremlinGraphThroughput](Get-AzCosmosDBGremlinGraphThroughput.md)
 Gets the throughput of a CosmosDB Gremlin Graph.
 
+### [Get-AzCosmosDBGremlinRestorableDatabase](Get-AzCosmosDBGremlinRestorableDatabase.md)
+Gets the list of all the restorable Azure Cosmos DB Gremlin databases available under the restorable account.
+
+### [Get-AzCosmosDBGremlinRestorableGraph](Get-AzCosmosDBGremlinRestorableGraph.md)
+Lists all the restorable Azure Cosmos DB Gremlin graphs available for a specific database.
+
+### [Get-AzCosmosDBGremlinRestorableResource](Get-AzCosmosDBGremlinRestorableResource.md)
+Lists all the restorable Azure Cosmos DB Gremlin resources available for a specific database account at a given time and location.
+
 ### [Get-AzCosmosDBLocation](Get-AzCosmosDBLocation.md)
-List Azure Cosmos DB locations and their properties. Get Azure Cosmos DB location properties for a specific location.
+List Azure Cosmos DB locations and their properties.
+Get Azure Cosmos DB location properties for a specific location.
 
 ### [Get-AzCosmosDBMongoDBCollection](Get-AzCosmosDBMongoDBCollection.md)
 Gets the CosmosDB MongoDB Collection.
@@ -113,8 +126,23 @@ Gets the CosmosDB Sql User Defined Function.
 ### [Get-AzCosmosDBTable](Get-AzCosmosDBTable.md)
 Gets a CosmosDB Table.
 
+### [Get-AzCosmosDBTableBackupInformation](Get-AzCosmosDBTableBackupInformation.md)
+Retrieves the latest restorable timestamp for a table.
+
+### [Get-AzCosmosDBTableRestorableResource](Get-AzCosmosDBTableRestorableResource.md)
+Lists all the restorable Azure Cosmos DB Table resources available for a specific database account at a given time and location.
+
+### [Get-AzCosmosDBTableRestorableTable](Get-AzCosmosDBTableRestorableTable.md)
+Lists all the restorable Azure Cosmos DB Tables available for a specific database.
+
 ### [Get-AzCosmosDBTableThroughput](Get-AzCosmosDBTableThroughput.md)
 Gets the throughput of a CosmosDB Table.
+
+### [Get-AzManagedCassandraCluster](Get-AzManagedCassandraCluster.md)
+Gets a Azure Managed Instances for Apache Cassandra cluster.
+
+### [Get-AzManagedCassandraDatacenter](Get-AzManagedCassandraDatacenter.md)
+Gets a Azure Managed Instances for Apache Cassandra data center.
 
 ### [Invoke-AzCosmosDBCassandraKeyspaceThroughputMigration](Invoke-AzCosmosDBCassandraKeyspaceThroughputMigration.md)
 Use this to migrate autoscale throughput to manual throughput and vice versa.
@@ -175,6 +203,9 @@ Creates a new object of type PSConflictResolutionPolicy. It can be passed as a p
 
 ### [New-AzCosmosDBGremlinDatabase](New-AzCosmosDBGremlinDatabase.md)
 Creates a new CosmosDB Gremlin Database.
+
+### [New-AzCosmosDBGremlinDatabaseToRestore](New-AzCosmosDBGremlinDatabaseToRestore.md)
+Creates a new CosmosDB Gremlin Database to Restore object(PSGremlinDatabaseToRestore)
 
 ### [New-AzCosmosDBGremlinGraph](New-AzCosmosDBGremlinGraph.md)
 Creates a new CosmosDB Gremlin Graph.
@@ -260,8 +291,17 @@ Creates a new CosmosDB Sql UserDefinedFunction.
 ### [New-AzCosmosDBTable](New-AzCosmosDBTable.md)
 Creates a new CosmosDB Table.
 
+### [New-AzCosmosDBTableToRestore](New-AzCosmosDBTableToRestore.md)
+Creates a new CosmosDB Table to Restore object(PSTableToRestore)
+
 ### [New-AzCosmosDBVirtualNetworkRule](New-AzCosmosDBVirtualNetworkRule.md)
 Create a new CosmosDB VirtualNetworkRule Object(PSVirtualNetworkRule).
+
+### [New-AzManagedCassandraCluster](New-AzManagedCassandraCluster.md)
+Creates a new Azure Managed Instances for Apache Cassandra cluster.
+
+### [New-AzManagedCassandraDatacenter](New-AzManagedCassandraDatacenter.md)
+Create a new Azure Managed Instances for Apache Cassandra data center.
 
 ### [Remove-AzCosmosDBAccount](Remove-AzCosmosDBAccount.md)
 Remove a CosmosDB Account.
@@ -308,6 +348,12 @@ Deletes the CosmosDB Sql UserDefinedFunction.
 ### [Remove-AzCosmosDBTable](Remove-AzCosmosDBTable.md)
 Deletes the CosmosDB Table.
 
+### [Remove-AzManagedCassandraCluster](Remove-AzManagedCassandraCluster.md)
+Deletes a Azure Managed Instances for Apache Cassandra cluster.
+
+### [Remove-AzManagedCassandraDatacenter](Remove-AzManagedCassandraDatacenter.md)
+Deletes a Azure Managed Instances for Apache Cassandra data center.
+
 ### [Restore-AzCosmosDBAccount](Restore-AzCosmosDBAccount.md)
 Restores an existing CosmosDB account (live or deleted) to a given timestamp to a new account
 
@@ -315,7 +361,7 @@ Restores an existing CosmosDB account (live or deleted) to a given timestamp to 
 Update a CosmosDB account attributes.
 
 ### [Update-AzCosmosDBAccountFailoverPriority](Update-AzCosmosDBAccountFailoverPriority.md)
-{{ Fill in the Synopsis }}
+Update Failover Region Priority of a CosmosDB Account.
 
 ### [Update-AzCosmosDBAccountRegion](Update-AzCosmosDBAccountRegion.md)
 Update Regions of a CosmosDB Account.
@@ -389,28 +435,9 @@ Updates the CosmosDB Table. Performs a client side patch operation by reading th
 ### [Update-AzCosmosDBTableThroughput](Update-AzCosmosDBTableThroughput.md)
 Updates the throughput value of a CosmosDB Table.
 
-## Azure Managed Instance for Apache Cassandra Cmdlets
-
-### [Get-AzManagedCassandraCluster](Get-AzManagedCassandraCluster.md)
-Gets a managed Cassandra cluster.
-
-### [Get-AzManagedCassandraDataCenter](Get-AzManagedCassandraDataCenter.md)
-Gets a managed Cassandra data center.
-
-### [New-AzManagedCassandraCluster](New-AzManagedCassandraCluster.md)
-Creates a new managed Cassandra cluster.
-
-### [New-AzManagedCassandraDataCenter](New-AzManagedCassandraDataCenter.md)
-Creates a new managed Cassandra data center.
-
-### [Remove-AzManagedCassandraCluster](Remove-AzManagedCassandraCluster.md)
-Remove a managed Cassandra cluster.
-
-### [Remove-AzManagedCassandraDataCenter](Remove-AzManagedCassandraDataCenter.md)
-Remove a managed Cassandra data center.
-
 ### [Update-AzManagedCassandraCluster](Update-AzManagedCassandraCluster.md)
-Update an existing managed Cassandra cluster.
+Update an existing Azure Managed Instances for Apache Cassandra cluster.
 
-### [Update-AzManagedCassandraDataCenter](Update-AzManagedCassandraDataCenter.md)
-Update an existing managed Cassandra data center.
+### [Update-AzManagedCassandraDatacenter](Update-AzManagedCassandraDatacenter.md)
+Update an existing Azure Managed Instances for Apache Cassandra data center.
+

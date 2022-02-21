@@ -40,6 +40,14 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNull]
         public PSRestorableSqlDatabaseGetResult InputObject { get; set; }
 
+        [Parameter(Mandatory = false, ParameterSetName = NameParameterSet, HelpMessage = Constants.RestorableMongoDBCollectionsFeedStartTimeHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public string StartTime { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = NameParameterSet, HelpMessage = Constants.RestorableMongoDBCollectionsFeedEndTimeHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public string EndTime { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName.Equals(ParentObjectParameterSet, StringComparison.Ordinal))
@@ -51,7 +59,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 DatabaseRId = InputObject.OwnerResourceId;
             }
 
-            IEnumerable restorableMongoDBCollections = CosmosDBManagementClient.RestorableMongodbCollections.ListWithHttpMessagesAsync(Location, DatabaseAccountInstanceId, DatabaseRId).GetAwaiter().GetResult().Body;
+            IEnumerable restorableMongoDBCollections = CosmosDBManagementClient.RestorableMongodbCollections.ListWithHttpMessagesAsync(Location, DatabaseAccountInstanceId, DatabaseRId, StartTime, EndTime).GetAwaiter().GetResult().Body;
             foreach (RestorableMongodbCollectionGetResult restorableMongoDBCollection in restorableMongoDBCollections)
             {
                 WriteObject(new PSRestorableMongodbCollectionGetResult(restorableMongoDBCollection));
