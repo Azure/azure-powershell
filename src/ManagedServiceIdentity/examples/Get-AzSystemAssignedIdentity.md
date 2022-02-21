@@ -1,18 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Gets the system assigned identity available under the specified RP scope
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzSystemAssignedIdentity -Scope "/subscriptions/00000000-0000-0000-00000000000/resourcegroups/lucas-rg-test/providers/Microsoft.Web/sites/functionportal01"
 
-{{ Add output here }}
+Name            Location ResourceGroupName
+----            -------- -----------------
+ubuntu-portal01 eastus   azure-rg-test
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command gets the system assigned identity available under the specified RP scope.

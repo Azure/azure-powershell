@@ -15,11 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSystemAssignedIdentity'
 }
 
 Describe 'Get-AzSystemAssignedIdentity' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        {
+             Get-AzSystemAssignedIdentity -Scope $env.appServiceId
+        } | Should -Not -Throw
     }
 }

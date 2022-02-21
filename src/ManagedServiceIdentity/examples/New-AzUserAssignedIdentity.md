@@ -1,18 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Creates an user assigned identity in the specified subscription and resource group
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzUserAssignedIdentity -ResourceGroupName azure-rg-test -Name uai-pwsh01 -Location eastus
 
-{{ Add output here }}
+Location Name       ResourceGroupName
+-------- ----       -----------------
+eastus   uai-pwsh01 azure-rg-test
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command creates an user assigned identity in the specified subscription and resource group

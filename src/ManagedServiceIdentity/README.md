@@ -49,7 +49,9 @@ directive:
   - where:
       verb: Get
       subject: SystemAssignedIdentity
-      
+      variant: ^GetViaIdentity$
+    remove: true
+    
   - where:
       subject: UserAssignedIdentity
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$

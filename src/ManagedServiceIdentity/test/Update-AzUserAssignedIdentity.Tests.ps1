@@ -15,19 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzUserAssignedIdentity
 }
 
 Describe 'Update-AzUserAssignedIdentity' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $ide = Update-AzUserAssignedIdentity -ResourceGroupName $env.resourceGroup -Name $env.userIdentityName01 -Tag @{"key01"="value01"; "key02" = "value02"}
+        $ide.Tag.Count | Should -Be 2
     }
 
-    It 'Update' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityExpanded' {
+        $ide = Get-AzUserAssignedIdentity -ResourceGroupName $env.resourceGroup -Name $env.userIdentityName01
+        $ide = Update-AzUserAssignedIdentity -InputObject $ide -Tag @{"key01"="value01"; "key02" = "value02"; "key03" = "value03"}
+        $ide.Tag.Count | Should -Be 3
     }
 }

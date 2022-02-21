@@ -15,19 +15,24 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzUserAssignedIdentity'))
 }
 
 Describe 'Get-AzUserAssignedIdentity' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $ideList = Get-AzUserAssignedIdentity
+        $ideList.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $ide = Get-AzUserAssignedIdentity -ResourceGroupName $env.resourceGroup -Name $env.userIdentityName01
+        $ide.Name | Should -Be $env.userIdentityName01
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List1' {
+        $ideList = Get-AzUserAssignedIdentity -ResourceGroupName $env.resourceGroup
+        $ideList.Count | Should -Be 1
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $ide = Get-AzUserAssignedIdentity -ResourceGroupName $env.resourceGroup -Name $env.userIdentityName01
+        $ide = Get-AzUserAssignedIdentity -InputObject $ide
+        $ide.Name | Should -Be $env.userIdentityName01
     }
 }

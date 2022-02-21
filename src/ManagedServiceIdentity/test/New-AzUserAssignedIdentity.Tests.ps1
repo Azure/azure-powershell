@@ -15,19 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzUserAssignedIdentity'))
 }
 
 Describe 'New-AzUserAssignedIdentity' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Create' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        $ide = New-AzUserAssignedIdentity -ResourceGroupName $env.resourceGroup -Name $env.userIdentityName02 -Location $env.location
+        $ide.Name | Should -Be $env.userIdentityName02
     }
 }
