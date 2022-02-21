@@ -41,9 +41,9 @@ Get-AzKustoAttachedDatabaseConfiguration -ResourceGroupName "testrg" -ClusterNam
 ```
 
 ```output
-Name                                 Type                                                    Location
-----                                 ----                                                    --------
-testnewkustoclusterf/myfollowerconfiguration Microsoft.Kusto/Clusters/AttachedDatabaseConfigurations East US
+Name                                          Type                                                    Location
+----                                          ----                                                    --------
+testnewkustoclusterf/myfollowerconfiguration  Microsoft.Kusto/Clusters/AttachedDatabaseConfigurations East US
 ```
 
 The above command lists all the AttachedDatabaseConfigurations in the cluster "testnewkustoclusterf".
@@ -54,9 +54,9 @@ Get-AzKustoAttachedDatabaseConfiguration -ResourceGroupName "testrg" -ClusterNam
 ```
 
 ```output
-Name                                 Type                                                    Location
-----                                 ----                                                    --------
-testnewkustoclusterf/myfollowerconfiguration Microsoft.Kusto/Clusters/AttachedDatabaseConfigurations East US
+Name                                          Type                                                    Location
+----                                          ----                                                    --------
+testnewkustoclusterf/myfollowerconfiguration  Microsoft.Kusto/Clusters/AttachedDatabaseConfigurations East US
 ```
 
 The above command returns the AttachedDatabaseConfigurations named "myfollowerconfiguration" in the cluster "testnewkustoclusterf".

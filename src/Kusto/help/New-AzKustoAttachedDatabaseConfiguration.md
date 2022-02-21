@@ -35,8 +35,8 @@ New-AzKustoAttachedDatabaseConfiguration -ResourceGroupName "testrg" -ClusterNam
 ```
 
 ```output
-Name                                 Type                                                    Location
-----                                 ----                                                    --------
+Name                                         Type                                                    Location
+----                                         ----                                                    --------
 testnewkustoclusterf/myfollowerconfiguration Microsoft.Kusto/Clusters/AttachedDatabaseConfigurations East US
 ```
 

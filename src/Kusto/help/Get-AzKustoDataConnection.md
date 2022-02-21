@@ -40,8 +40,8 @@ Get-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkusto
 ```
 
 ```output
-Kind     Location Name                                               Type
-----     -------- ----                                               ----
+Kind     Location Name                                                      Type
+----     -------- ----                                                      ----
 EventHub East US  testnewkustocluster/mykustodatabase/mykustodataconnection Microsoft.Kusto/Clusters/Databases/DataConnections
 ```
 
@@ -53,8 +53,8 @@ Get-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkusto
 ```
 
 ```output
-Kind     Location Name                                               Type
-----     -------- ----                                               ----
+Kind     Location Name                                                      Type
+----     -------- ----                                                      ----
 EventHub East US  testnewkustocluster/mykustodatabase/mykustodataconnection Microsoft.Kusto/Clusters/Databases/DataConnections
 ```
 
