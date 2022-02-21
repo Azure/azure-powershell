@@ -261,7 +261,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public string HostId { get; set; }
-        
+
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public string VmssId { get; set; }
@@ -291,7 +291,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false,
             HelpMessage = "EncryptionAtHost property can be used by user in the request to enable or disable the Host Encryption for the virtual machine. This will enable the encryption for all the disks including Resource/Temp disk at host itself.")]
         public SwitchParameter EncryptionAtHost { get; set; }
-        
+
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,
             HelpMessage = "The resource id of the dedicated host group, on which the customer wants their VM placed using automatic placement.",
             ValueFromPipelineByPropertyName = true)]
@@ -330,7 +330,7 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "Id of the capacity reservation Group that is used to allocate.")]
         [ResourceIdCompleter("Microsoft.Compute/capacityReservationGroups")]
         public string CapacityReservationGroupId { get; set; }
-        
+
         [Parameter(
             Mandatory = false,
             ParameterSetName = SimpleParameterSet,
@@ -344,12 +344,12 @@ namespace Microsoft.Azure.Commands.Compute
         public string UserData { get; set; }
 
         [Parameter(
-            ParameterSetName = SimpleParameterSet, 
+            ParameterSetName = SimpleParameterSet,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the fault domain of the virtual machine.")]
         [Parameter(
-            ParameterSetName = DiskFileParameterSet, 
+            ParameterSetName = DiskFileParameterSet,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the fault domain of the virtual machine.")]
@@ -361,7 +361,7 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The flag that enables or disables hibernation capability on the VM.")]
         [Parameter(
-            ParameterSetName = DiskFileParameterSet, 
+            ParameterSetName = DiskFileParameterSet,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The flag that enables or disables hibernation capability on the VM.")]
@@ -501,7 +501,7 @@ namespace Microsoft.Azure.Commands.Compute
                 if (string.IsNullOrEmpty(publicIpAddress.Name))
                 {
                     networkInterface = resourceGroup.CreateNetworkInterfaceConfigNoPublicIP(
-                        _cmdlet.Name, _cmdlet.EdgeZone, subnet, 
+                        _cmdlet.Name, _cmdlet.EdgeZone, subnet,
                         networkSecurityGroup, enableAcceleratedNetwork);
                 }
                 else
@@ -509,7 +509,7 @@ namespace Microsoft.Azure.Commands.Compute
                     networkInterface = resourceGroup.CreateNetworkInterfaceConfig(
                         _cmdlet.Name, _cmdlet.EdgeZone, subnet, publicIpAddress, networkSecurityGroup, enableAcceleratedNetwork);
                 }
-                
+
                 var ppgSubResourceFunc = resourceGroup.CreateProximityPlacementGroupSubResourceFunc(_cmdlet.ProximityPlacementGroupId);
 
                 var availabilitySet = _cmdlet.AvailabilitySetName == null
@@ -522,7 +522,7 @@ namespace Microsoft.Azure.Commands.Compute
                 List<SshPublicKey> sshPublicKeyList = null;
                 if (!String.IsNullOrEmpty(_cmdlet.SshKeyName))
                 {
-                    SshPublicKey sshPublicKey = _cmdlet.createPublicKeyObject(_cmdlet.Credential.UserName); 
+                    SshPublicKey sshPublicKey = _cmdlet.createPublicKeyObject(_cmdlet.Credential.UserName);
                     sshPublicKeyList = new List<SshPublicKey>()
                     {
                         sshPublicKey
@@ -818,7 +818,7 @@ namespace Microsoft.Azure.Commands.Compute
                     Rest.Azure.AzureOperationResponse<VirtualMachine> result;
 
                     if (this.IsParameterBound(c => c.SshKeyName))
-                    { 
+                    {
                         parameters = addSshPublicKey(parameters);
                     }
 
@@ -1257,7 +1257,7 @@ namespace Microsoft.Azure.Commands.Compute
                 {
                     throw new Exception("Please provide parameter '-SshKeyName' to be used with '-GenerateSshKey'");
                 }
-            }  
+            }
         }
     }
 }
