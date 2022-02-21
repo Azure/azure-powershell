@@ -13,22 +13,23 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.KeyVault.Models;
+
 using System;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    public class PSDeletedKeyVault : PSKeyVault
+    public class PSDeletedManagedHsm : PSManagedHsm
     {
-        internal PSDeletedKeyVault(DeletedVault vault)
+        public PSDeletedManagedHsm(DeletedManagedHsm managedHsm)
         {
-            Id = vault.Id;
-            VaultName = vault.Name;
-            ResourceId = vault.Properties.VaultId;
-            Location = vault.Properties.Location;
-            DeletionDate = vault.Properties.DeletionDate;
-            ScheduledPurgeDate = vault.Properties.ScheduledPurgeDate;
-            EnablePurgeProtection = vault.Properties.PurgeProtectionEnabled;
-            Tags = vault.Properties.Tags?.ConvertToHashtable();
+            Id = managedHsm.Id;
+            Name = managedHsm.Name;
+            ResourceId = managedHsm.Properties.MhsmId;
+            Location = managedHsm.Properties.Location;
+            DeletionDate = managedHsm.Properties.DeletionDate;
+            ScheduledPurgeDate = managedHsm.Properties.ScheduledPurgeDate;
+            EnablePurgeProtection = managedHsm.Properties.PurgeProtectionEnabled;
+            Tags = managedHsm.Properties.Tags?.ConvertToHashtable();
         }
         public string Id { get; private set; }
 
