@@ -73,7 +73,8 @@ namespace Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests
             {
                 {"Microsoft.Resources", null},
                 {"Microsoft.Features", null},
-                {"Microsoft.Authorization", null}
+                {"Microsoft.Authorization", null},
+                {"Microsoft.KeyVault", null}
             };
             var providersToIgnore = new Dictionary<string, string>
             {
