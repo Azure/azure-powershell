@@ -65,16 +65,58 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).RoleInstanceName = (string) content.GetValueForProperty("RoleInstanceName",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).RoleInstanceName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).CloudServiceName = (string) content.GetValueForProperty("CloudServiceName",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).CloudServiceName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).RoleName = (string) content.GetValueForProperty("RoleName",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).RoleName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).UpdateDomain = (int?) content.GetValueForProperty("UpdateDomain",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).UpdateDomain, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).Location, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).OSVersionName = (string) content.GetValueForProperty("OSVersionName",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).OSVersionName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).OSFamilyName = (string) content.GetValueForProperty("OSFamilyName",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).OSFamilyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).Id, global::System.Convert.ToString);
+            if (content.Contains("RoleInstanceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).RoleInstanceName = (string) content.GetValueForProperty("RoleInstanceName",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).RoleInstanceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceGroupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("CloudServiceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).CloudServiceName = (string) content.GetValueForProperty("CloudServiceName",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).CloudServiceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("RoleName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).RoleName = (string) content.GetValueForProperty("RoleName",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).RoleName, global::System.Convert.ToString);
+            }
+            if (content.Contains("UpdateDomain"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).UpdateDomain = (int?) content.GetValueForProperty("UpdateDomain",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).UpdateDomain, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("OSVersionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).OSVersionName = (string) content.GetValueForProperty("OSVersionName",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).OSVersionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("OSFamilyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).OSFamilyName = (string) content.GetValueForProperty("OSFamilyName",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).OSFamilyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("NetworkInterfaceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).NetworkInterfaceName = (string) content.GetValueForProperty("NetworkInterfaceName",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).NetworkInterfaceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("IPConfigurationName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).IPConfigurationName = (string) content.GetValueForProperty("IPConfigurationName",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).IPConfigurationName, global::System.Convert.ToString);
+            }
+            if (content.Contains("PublicIPAddressName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).PublicIPAddressName = (string) content.GetValueForProperty("PublicIPAddressName",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).PublicIPAddressName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).Id, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -92,16 +134,58 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).RoleInstanceName = (string) content.GetValueForProperty("RoleInstanceName",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).RoleInstanceName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).CloudServiceName = (string) content.GetValueForProperty("CloudServiceName",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).CloudServiceName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).RoleName = (string) content.GetValueForProperty("RoleName",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).RoleName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).UpdateDomain = (int?) content.GetValueForProperty("UpdateDomain",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).UpdateDomain, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).Location, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).OSVersionName = (string) content.GetValueForProperty("OSVersionName",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).OSVersionName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).OSFamilyName = (string) content.GetValueForProperty("OSFamilyName",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).OSFamilyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).Id, global::System.Convert.ToString);
+            if (content.Contains("RoleInstanceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).RoleInstanceName = (string) content.GetValueForProperty("RoleInstanceName",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).RoleInstanceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceGroupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("CloudServiceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).CloudServiceName = (string) content.GetValueForProperty("CloudServiceName",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).CloudServiceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("RoleName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).RoleName = (string) content.GetValueForProperty("RoleName",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).RoleName, global::System.Convert.ToString);
+            }
+            if (content.Contains("UpdateDomain"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).UpdateDomain = (int?) content.GetValueForProperty("UpdateDomain",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).UpdateDomain, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("OSVersionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).OSVersionName = (string) content.GetValueForProperty("OSVersionName",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).OSVersionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("OSFamilyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).OSFamilyName = (string) content.GetValueForProperty("OSFamilyName",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).OSFamilyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("NetworkInterfaceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).NetworkInterfaceName = (string) content.GetValueForProperty("NetworkInterfaceName",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).NetworkInterfaceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("IPConfigurationName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).IPConfigurationName = (string) content.GetValueForProperty("IPConfigurationName",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).IPConfigurationName, global::System.Convert.ToString);
+            }
+            if (content.Contains("PublicIPAddressName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).PublicIPAddressName = (string) content.GetValueForProperty("PublicIPAddressName",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).PublicIPAddressName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentityInternal)this).Id, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 
