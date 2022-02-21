@@ -37,8 +37,10 @@ Gets the details of the specified registration assignment.
 
 ### Example 1: List all Azure Lighthouse registration assignments in a subscription
 ```powershell
-PS C:\> Get-AzManagedServicesAssignment
+Get-AzManagedServicesAssignment
+```
 
+```output
 Name                                 Type
 ----                                 ----
 xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Microsoft.ManagedServices/registrationAssignments
@@ -50,8 +52,10 @@ Lists all the Azure Lighthouse registration assignments in a given subscription 
 
 ### Example 2: Get Azure Lighthouse registration assignment by name with selected properties
 ```powershell
-PS C:\> Get-AzManagedServicesAssignment -Name xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Format-List -Property Id, Name, Type, RegistrationDefinitionId, ProvisioningState
+Get-AzManagedServicesAssignment -Name xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Format-List -Property Id, Name, Type, RegistrationDefinitionId, ProvisioningState
+```
 
+```output
 Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.ManagedServices/registrationAssignments/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 Name                     : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 Type                     : Microsoft.ManagedServices/registrationAssignments
@@ -63,8 +67,10 @@ Gets Azure Lighthouse registration assignment by name with selected properties.
 
 ### Example 3: List all Azure Lighthouse registration assignments by scope
 ```powershell
-PS C:\>  Get-AzManagedServicesAssignment -Scope /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Format-List -Property Id, Name, Type, RegistrationDefinitionId, ProvisioningState
+Get-AzManagedServicesAssignment -Scope /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Format-List -Property Id, Name, Type, RegistrationDefinitionId, ProvisioningState
+```
 
+```output
 Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.ManagedServices/registrationAssignments/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 Name                     : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 Type                     : Microsoft.ManagedServices/registrationAssignments
