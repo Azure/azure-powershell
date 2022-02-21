@@ -65,28 +65,18 @@ namespace Microsoft.Azure.Commands.Insights
             Boolean.TryParse(supressWarningOrErrorValue, out supressWarningOrError);
             if (!supressWarningOrError)
             {
-                if (topic == "ExecuteCmdlet")
+                string formattedMessage = string.Format(
+                    CultureInfo.InvariantCulture, "{0}{1}{2}",
+                    string.IsNullOrEmpty(cmdletName) ? cmdletName : "[" + cmdletName + "] ",
+                    string.IsNullOrEmpty(topic) ? topic : topic + ": ",
+                    message);
+                if (withTimeStamp)
                 {
-                    WriteWarningWithTimestamp("The namespace for all the model classes will change from Microsoft.Azure.Management.Monitor.Management.Models to Microsoft.Azure.Management.Monitor.Models in future releases.");
-                    WriteWarningWithTimestamp("The namespace for output classes will be uniform for all classes in future releases to make it independent of modifications in the model classes.");
+                    WriteWarningWithTimestamp(formattedMessage);
                 }
                 else
                 {
-                    string formattedMessage = string.Format(
-                        CultureInfo.InvariantCulture,
-                        "[{0}] {1}: {2}",
-                        cmdletName,
-                        topic,
-                        message);
-
-                    if (withTimeStamp)
-                    {
-                        WriteWarningWithTimestamp(formattedMessage);
-                    }
-                    else
-                    {
-                        WriteWarning(formattedMessage);
-                    }
+                    WriteWarning(formattedMessage);
                 }
             }
         }
@@ -105,8 +95,14 @@ namespace Microsoft.Azure.Commands.Insights
             {
                 this.WriteIdentifiedWarning(
                     cmdletName: "",
-                    topic: "ExecuteCmdlet",
-                    message: "");
+                    topic: "",
+                    message: "*** The namespace for all the model classes will change from Microsoft.Azure.Management.Monitor.Management.Models to Microsoft.Azure.Management.Monitor.Models in future releases.",
+                    withTimeStamp: true);
+                this.WriteIdentifiedWarning(
+                    cmdletName: "",
+                    topic: "",
+                    message: "*** The namespace for output classes will be uniform for all classes in future releases to make it independent of modifications in the model classes.",
+                    withTimeStamp: true);
                 this.ProcessRecordInternal();
             }
             catch (AggregateException ex)
