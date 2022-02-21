@@ -86,7 +86,7 @@ function setupEnv() {
     $dbr3 = New-AzDatabricksWorkspace -Name $testWorkspace3 -ResourceGroupName $resourceGroup -PrepareEncryption -Location "East US 2 EUAP" -Sku premium
     $null = $env.Add("testWorkspace3", $testWorkspace3)
     $testWorkspace4 = "workspace" + $rstr8
-    $dbr3 = New-AzDatabricksWorkspace -Name $testWorkspace4 -ResourceGroupName $resourceGroup -Location eastus -Sku standard -VirtualNetworkId $env.virtualNetwork -PrivateSubnetName $env.PrivSubNet -PublicSubnetName $env.PubSubNet
+    $dbr4 = New-AzDatabricksWorkspace -Name $testWorkspace4 -ResourceGroupName $resourceGroup -Location eastus -Sku standard -VirtualNetworkId $env.virtualNetwork -PrivateSubnetName $env.PrivSubNet -PublicSubnetName $env.PubSubNet
     $null = $env.Add("testWorkspace4", $testWorkspace4)
     Write-Host -ForegroundColor Green "Create completed"
 

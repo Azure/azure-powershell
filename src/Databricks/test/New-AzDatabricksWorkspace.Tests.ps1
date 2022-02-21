@@ -20,7 +20,7 @@ Describe 'New-AzDatabricksWorkspace' {
     }
     It 'CreateExpandedWithEncryption' {
         $name = "databricks-test01-" + $env.rstr4
-        $res = New-AzDatabricksWorkspace -Name $name -ResourceGroupName $env.resourceGroup -Location eastus -VirtualNetworkId $env.virtualNetwork -PrivateSubnetName $env.PrivSubNet -PublicSubnetName $env.PubSubNet -Sku premium -RequireInfrastructureEncryption
+        $res = New-AzDatabricksWorkspace -Name $name -ResourceGroupName $env.resourceGroup -Location eastus -Sku premium -RequireInfrastructureEncryption
         $res.RequireInfrastructureEncryption | Should -Be $True
         { Remove-AzDatabricksWorkspace -Name $name -ResourceGroupName $env.resourceGroup } | Should -Not -Throw
     }

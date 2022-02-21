@@ -3,13 +3,13 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "virtualNetworks_name": {
-      "value": "databricks-vnet-7xqe65"
+      "value": "databricks-vnet-wbktoi"
     },
     "netSG_id": {
-      "value": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-2nfmc5/providers/Microsoft.Network/networkSecurityGroups/vnet-security-yrjqtz"
+      "value": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-xyv4k5/providers/Microsoft.Network/networkSecurityGroups/vnet-security-jtohsc"
     },
     "netbricksSG_id": {
-      "value": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-2nfmc5/providers/Microsoft.Network/networkSecurityGroups/vnet-security-yrjqtz"
+      "value": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-xyv4k5/providers/Microsoft.Network/networkSecurityGroups/vnet-security-jtohsc"
     }
   }
 }
