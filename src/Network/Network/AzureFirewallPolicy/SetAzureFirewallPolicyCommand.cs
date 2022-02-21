@@ -99,6 +99,11 @@ namespace Microsoft.Azure.Commands.Network
         public PSAzureFirewallPolicyDnsSettings DnsSetting { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            HelpMessage = "The SQL related setting")]
+        public PSAzureFirewallPolicySqlSetting SqlSetting { get; set; }
+
+        [Parameter(
                     Mandatory = true,
                     ValueFromPipelineByPropertyName = true,
                     HelpMessage = "location.", ParameterSetName = SetByNameParameterSet)]
@@ -231,6 +236,7 @@ namespace Microsoft.Azure.Commands.Network
                 this.ThreatIntelWhitelist = this.IsParameterBound(c => c.ThreatIntelWhitelist) ? ThreatIntelWhitelist : InputObject.ThreatIntelWhitelist;
                 this.BasePolicy = this.IsParameterBound(c => c.BasePolicy) ? BasePolicy : (InputObject.BasePolicy != null ? InputObject.BasePolicy.Id : null);
                 this.DnsSetting = this.IsParameterBound(c => c.DnsSetting) ? DnsSetting : (InputObject.DnsSettings != null ? InputObject.DnsSettings : null);
+                this.SqlSetting = this.IsParameterBound(c => c.SqlSetting) ? SqlSetting : (InputObject.SqlSetting != null ? InputObject.SqlSetting : null);
                 this.IntrusionDetection = this.IsParameterBound(c => c.IntrusionDetection) ? IntrusionDetection : (InputObject.IntrusionDetection != null ? InputObject.IntrusionDetection : null);
                 this.TransportSecurityName = this.IsParameterBound(c => c.TransportSecurityName) ? TransportSecurityName : (InputObject.TransportSecurity?.CertificateAuthority != null ? InputObject.TransportSecurity.CertificateAuthority.Name : null);
                 this.TransportSecurityKeyVaultSecretId = this.IsParameterBound(c => c.TransportSecurityKeyVaultSecretId) ? TransportSecurityKeyVaultSecretId : (InputObject.TransportSecurity?.CertificateAuthority != null ? InputObject.TransportSecurity.CertificateAuthority.KeyVaultSecretId : null);
@@ -248,6 +254,7 @@ namespace Microsoft.Azure.Commands.Network
                     ThreatIntelWhitelist = this.ThreatIntelWhitelist,
                     BasePolicy = this.BasePolicy != null ? new Microsoft.Azure.Management.Network.Models.SubResource(this.BasePolicy) : null,
                     DnsSettings = this.DnsSetting,
+                    SqlSetting = this.SqlSetting,
                     PrivateRange = this.PrivateRange
                 };
 
@@ -271,6 +278,7 @@ namespace Microsoft.Azure.Commands.Network
                     ThreatIntelWhitelist = this.ThreatIntelWhitelist,
                     BasePolicy = BasePolicy != null ? new Microsoft.Azure.Management.Network.Models.SubResource(BasePolicy) : null,
                     DnsSettings = this.DnsSetting,
+                    SqlSetting = this.SqlSetting,
                     PrivateRange = this.PrivateRange
                 };
 
