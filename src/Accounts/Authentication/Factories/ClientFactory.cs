@@ -12,12 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Azure.Core;
+using Azure.Core.Pipeline;
+using Azure.ResourceManager;
+
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 #if NETSTANDARD
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
+using Microsoft.Azure.Commands.Common.Authentication.Extensions;
 #endif
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Policy;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using System;
@@ -40,8 +46,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
         private Dictionary<Type, IClientAction> _actions;
         private OrderedDictionary _handlers;
+        private OrderedDictionary _policies;
         private ReaderWriterLockSlim _actionsLock;
         private ReaderWriterLockSlim _handlersLock;
+        private ReaderWriterLockSlim _policiesLock;
         private ConcurrentDictionary<ProductInfoHeaderValue, string> _userAgents { get; set; }
 
         public ClientFactory()
@@ -50,7 +58,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             _actionsLock = new ReaderWriterLockSlim();
             _userAgents = new ConcurrentDictionary<ProductInfoHeaderValue, string>();
             _handlers = new OrderedDictionary();
+            _policies = new OrderedDictionary();
             _handlersLock = new ReaderWriterLockSlim();
+            _policiesLock = new ReaderWriterLockSlim();
         }
 
         public virtual TClient CreateArmClient<TClient>(IAzureContext context, string endpoint) where TClient : Microsoft.Rest.ServiceClient<TClient>
@@ -70,6 +80,68 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             }
 
             return client;
+        }
+
+        public virtual ArmClient CreateArmClient(IAzureContext context, 
+            string endpoint = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
+        {
+            if (context == null)
+            {
+                throw new AzPSApplicationException(Resources.NoSubscriptionInContext, ErrorKind.UserError);
+            }
+
+            return CreateCustomArmClient(context, endpoint);
+        }
+
+        public virtual ArmClient CreateCustomArmClient(IAzureContext context,
+            string endpoint = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId,
+            ArmClientOptions option = null)
+        {
+            if (context == null)
+            {
+                throw new AzPSApplicationException(Resources.NoSubscriptionInContext, ErrorKind.UserError);
+            }
+            HttpClient client = new HttpClient();
+
+            option = option ?? new ArmClientOptions() {
+                /*                Transport = new HttpClientTransport(client)
+                */
+                Diagnostics =
+                {
+                    IsLoggingContentEnabled =true,
+                    IsTelemetryEnabled = false
+                }
+            };
+            // Add Azure PowerShell policy into option
+
+            // Add user agents
+            if (UserAgents != null && UserAgents.Length >= 0)
+            {
+                option.AddUserAgent(UserAgents);
+            }
+
+            foreach (var policy in GetCustomPolicies())
+            {
+                option.AddPolicy(policy, HttpPipelinePosition.PerCall);
+            }
+
+            // Set max retries
+            int? maxRetries = HttpRetryTimes.AzurePsHttpMaxRetries;
+            if (maxRetries != null && maxRetries >= 0)
+            {
+                option.SetMaxRetryCountofRetryOption((int)maxRetries);
+            }
+
+            // Set max delay
+
+            int? maxretriesfor429 = HttpRetryTimes.AzurePsHttpMaxRetriesFor429;
+            if (maxretriesfor429 != null && maxretriesfor429 >= 0)
+            {
+                option.SetMaxDelayForRetryOption((int)maxretriesfor429);
+            }
+            
+            var creds = AzureSession.Instance.AuthenticationFactory.GetTokenCredential(context, endpoint);
+            return new ArmClient(context.Subscription.Id.ToString(), creds, option);
         }
 
         public virtual TClient CreateCustomArmClient<TClient>(params object[] parameters) where TClient : Microsoft.Rest.ServiceClient<TClient>
@@ -380,6 +452,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             }
             return productInfoHeaderKey;
         }
+
         /// <summary>
         /// Adds user agent to UserAgents collection.
         /// </summary>
@@ -463,6 +536,67 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                     string value;
                     _userAgents.TryRemove(agent, out value);
                 }
+            }
+        }
+        public HttpPipelinePolicy[] GetCustomPolicies()
+        {
+            _policiesLock.EnterReadLock();
+            try
+            {
+                List<HttpPipelinePolicy> newPolicies = new List<HttpPipelinePolicy>();
+                var enumerator = _policies.GetEnumerator();
+                while (enumerator.MoveNext())
+                {
+                    var policy = enumerator.Value;
+                    ICloneable cloneablePolicy = policy as ICloneable;
+                    if (cloneablePolicy != null)
+                    {
+                        var newPolicy = cloneablePolicy.Clone();
+                        HttpPipelinePolicy convertedPolicy = newPolicy as HttpPipelinePolicy;
+                        if (convertedPolicy != null)
+                        {
+                            newPolicies.Add(convertedPolicy);
+                        }
+                    }
+                }
+
+                return newPolicies.ToArray();
+            }
+            finally
+            {
+                _policiesLock.ExitReadLock();
+            }
+        }
+
+        public void AddPolicy(HttpPipelinePolicy policy)
+        {
+            _policiesLock.EnterWriteLock();
+            try
+            {
+                if (policy != null)
+                {
+                    _policies[policy.GetType()] = policy;
+                }
+            }
+            finally
+            {
+                _policiesLock.ExitWriteLock();
+            }
+        }
+
+        public void RemovePolicy(Type policy)
+        {
+            _policiesLock.EnterWriteLock();
+            try
+            {
+                if (_policies.Contains(policy))
+                {
+                    _policies.Remove(policy);
+                }
+            }
+            finally
+            {
+                _policiesLock.ExitWriteLock();
             }
         }
     }

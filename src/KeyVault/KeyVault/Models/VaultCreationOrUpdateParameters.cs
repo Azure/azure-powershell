@@ -12,9 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.KeyVault.Models;
 using System;
 using System.Collections;
+using Track2ManagementSdk = Azure.ResourceManager.KeyVault.Models;
+using Track1ManagementSdk = Microsoft.Azure.Management.KeyVault.Models;
+using System.ComponentModel;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -34,9 +39,166 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public bool? EnableRbacAuthorization { get; set; }
         public int? SoftDeleteRetentionInDays { get; set; }
         public Guid TenantId { get; set; }
-        public AccessPolicyEntry AccessPolicy { get; set; }
-        public NetworkRuleSet NetworkAcls { get; set; }
-        public CreateMode? CreateMode { get; set; }
+        public Track1ManagementSdk.AccessPolicyEntry AccessPolicy { get; set; }
+        public Track1ManagementSdk.NetworkRuleSet NetworkAcls { get; set; }
+        public Track1ManagementSdk.CreateMode? CreateMode { get; set; }
         public string[] Administrator { get; set; }
+
+        public Track1ManagementSdk.VaultCreateOrUpdateParameters ToTrack1VaultCreateOrUpdateParameters(
+            PSKeyVaultNetworkRuleSet networkRuleSet = null)
+        {
+            if (string.IsNullOrWhiteSpace(Name))
+                throw new ArgumentNullException("parameters.Name");
+            if (string.IsNullOrWhiteSpace(ResourceGroupName))
+                throw new ArgumentNullException("parameters.ResourceGroupName");
+            if (string.IsNullOrWhiteSpace(Location))
+                throw new ArgumentNullException("parameters.Location");
+
+            var properties = new Track1ManagementSdk.VaultProperties();
+
+            if (CreateMode != Track1ManagementSdk.CreateMode.Recover)
+            {
+                if (string.IsNullOrWhiteSpace(SkuFamilyName))
+                    throw new ArgumentNullException("parameters.SkuFamilyName");
+                if (TenantId == Guid.Empty)
+                    throw new ArgumentException("parameters.TenantId");
+                if (!string.IsNullOrWhiteSpace(SkuName))
+                {
+                    if (Enum.TryParse(SkuName, true, out Track1ManagementSdk.SkuName skuName))
+                    {
+                        properties.Sku = new Track1ManagementSdk.Sku(skuName);
+                    }
+                    else
+                    {
+                        throw new InvalidEnumArgumentException("parameters.SkuName");
+                    }
+                }
+                properties.EnabledForDeployment = EnabledForDeployment;
+                properties.EnabledForTemplateDeployment = EnabledForTemplateDeployment;
+                properties.EnabledForDiskEncryption = EnabledForDiskEncryption;
+                properties.EnableSoftDelete = EnableSoftDelete;
+                properties.EnablePurgeProtection = EnablePurgeProtection;
+                properties.EnableRbacAuthorization = EnableRbacAuthorization;
+                properties.SoftDeleteRetentionInDays = SoftDeleteRetentionInDays;
+                properties.TenantId = TenantId;
+                properties.VaultUri = "";
+                properties.AccessPolicies = (AccessPolicy != null) ? new[] { AccessPolicy } : 
+                    new Track1ManagementSdk.AccessPolicyEntry[] { };
+
+                properties.NetworkAcls = NetworkAcls;
+                if (networkRuleSet != null)
+                {
+                    UpdateVaultNetworkRuleSetProperties(properties, networkRuleSet);
+                }
+            }
+            else
+            {
+                properties.CreateMode = Track1ManagementSdk.CreateMode.Recover;
+            }
+
+            return new Track1ManagementSdk.VaultCreateOrUpdateParameters
+            {
+                Location = Location,
+                Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
+                Properties = properties
+            };
+        }
+
+        public Track2ManagementSdk.VaultCreateOrUpdateParameters ToTrack2VaultCreateOrUpdateParameters()
+        {
+            if (this == null)
+                throw new ArgumentNullException("parameters");
+            if (string.IsNullOrWhiteSpace(Name))
+                throw new ArgumentNullException("parameters.Name");
+            if (string.IsNullOrWhiteSpace(ResourceGroupName))
+                throw new ArgumentNullException("parameters.ResourceGroupName");
+            if (string.IsNullOrWhiteSpace(Location))
+                throw new ArgumentNullException("parameters.Location");
+
+            Track2ManagementSdk.Sku sku = null;
+            Track2ManagementSdk.VaultProperties properties = null;
+
+            if (CreateMode != Track1ManagementSdk.CreateMode.Recover)
+            {
+                if (string.IsNullOrWhiteSpace(SkuFamilyName))
+                    throw new ArgumentNullException("parameters.SkuFamilyName");
+                if (TenantId == Guid.Empty)
+                    throw new ArgumentException("parameters.TenantId");
+
+                if (!string.IsNullOrWhiteSpace(SkuName) && !string.IsNullOrWhiteSpace(SkuFamilyName))
+                {
+                    if (Enum.TryParse(SkuName, true, out Track2ManagementSdk.SkuName skuName) &&
+                        Enum.TryParse(SkuFamilyName, true, out Track2ManagementSdk.SkuFamily skuFamily))
+                    {
+                        sku = new Track2ManagementSdk.Sku(skuFamily, skuName);
+                    }
+                    else
+                    {
+                        throw new InvalidEnumArgumentException("parameters.SkuName");
+                    }
+                }
+
+                properties = new Track2ManagementSdk.VaultProperties(TenantId, sku)
+                {
+                    EnabledForDeployment = EnabledForDeployment,
+                    EnabledForTemplateDeployment = EnabledForTemplateDeployment,
+                    EnabledForDiskEncryption = EnabledForDiskEncryption,
+                    EnableSoftDelete = EnableSoftDelete,
+                    EnablePurgeProtection = EnablePurgeProtection,
+                    EnableRbacAuthorization = EnableRbacAuthorization,
+                    SoftDeleteRetentionInDays = SoftDeleteRetentionInDays,
+                    TenantId = TenantId,
+                    VaultUri = ""
+                };
+                /*properties.AccessPolicies = (parameters.AccessPolicy != null) ? new[] { parameters.AccessPolicy } :
+                    new Track1ManagementSdk.AccessPolicyEntry[] { };
+
+                properties.NetworkAcls = parameters.NetworkAcls;
+                if (networkRuleSet != null)
+                {
+                    UpdateVaultNetworkRuleSetProperties(properties, networkRuleSet);
+                }*/
+            }
+            else
+            {
+                properties.CreateMode = Track2ManagementSdk.CreateMode.Recover;
+            }
+
+            return new Track2ManagementSdk.VaultCreateOrUpdateParameters(Location, properties);
+        }
+
+        private void UpdateVaultNetworkRuleSetProperties(Track1ManagementSdk.VaultProperties vaultProperties, PSKeyVaultNetworkRuleSet psRuleSet)
+        {
+            if (vaultProperties == null)
+                return;
+
+            var updatedRuleSet = new Track1ManagementSdk.NetworkRuleSet();       // It contains default settings
+            if (psRuleSet != null)
+            {
+                updatedRuleSet.DefaultAction = psRuleSet.DefaultAction.ToString();
+                updatedRuleSet.Bypass = psRuleSet.Bypass.ToString();
+
+                if (psRuleSet.IpAddressRanges != null && psRuleSet.IpAddressRanges.Count > 0)
+                {
+                    updatedRuleSet.IpRules = psRuleSet.IpAddressRanges.Select(ipAddress => new Track1ManagementSdk.IPRule { Value = ipAddress }).ToList();
+                }
+                else
+                {   // Send empty array [] to server to override default
+                    updatedRuleSet.IpRules = new List<Track1ManagementSdk.IPRule>();
+                }
+
+                if (psRuleSet.VirtualNetworkResourceIds != null && psRuleSet.VirtualNetworkResourceIds.Count > 0)
+                {
+                    updatedRuleSet.VirtualNetworkRules = psRuleSet.VirtualNetworkResourceIds.Select(resourceId => new Track1ManagementSdk.VirtualNetworkRule { Id = resourceId }).ToList();
+                }
+                else
+                {   // Send empty array [] to server to override default
+                    updatedRuleSet.VirtualNetworkRules = new List<Track1ManagementSdk.VirtualNetworkRule>();
+                }
+            }
+
+            vaultProperties.NetworkAcls = updatedRuleSet;
+        }
+
     }
 }

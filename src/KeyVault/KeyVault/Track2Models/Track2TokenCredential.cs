@@ -8,16 +8,21 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 {
     internal class Track2TokenCredential : TokenCredential
     {
-        private readonly DataServiceCredential dataServiceCredential;
+        private readonly string _token;
 
         public Track2TokenCredential(DataServiceCredential dataServiceCredential)
         {
-            this.dataServiceCredential = dataServiceCredential;
+            this._token = dataServiceCredential.GetToken();
+        }
+
+        public Track2TokenCredential(string token)
+        {
+            this._token = token;
         }
 
         public override AccessToken GetToken(TokenRequestContext requestContext, CancellationToken cancellationToken)
         {
-            return new AccessToken(dataServiceCredential.GetToken(), DateTimeOffset.UtcNow);
+            return new AccessToken(_token, DateTimeOffset.UtcNow);
         }
 
         public override ValueTask<AccessToken> GetTokenAsync(TokenRequestContext requestContext, CancellationToken cancellationToken)
