@@ -92,6 +92,8 @@ namespace Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     _helper.RMProfileModule,
                     _helper.GetRMModulePath(@"AzureRM.ServiceBus.psd1"),
+                    _helper.GetRMModulePath(@"AzureRM.KeyVault.psd1"),
+                    _helper.GetRMModulePath(@"AzureRM.ManagedServiceIdentity.psd1"),
                     "AzureRM.Resources.ps1");
                 try
                 {

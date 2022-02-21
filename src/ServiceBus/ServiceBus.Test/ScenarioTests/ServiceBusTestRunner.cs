@@ -19,11 +19,11 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
 {
-    public class EventHubTestRunner
+    public class ServiceBusTestRunner
     {
         protected readonly ITestRunner TestRunner;
 
-        protected EventHubTestRunner(ITestOutputHelper output)
+        protected ServiceBusTestRunner(ITestOutputHelper output)
         {
             TestRunner = TestFx.TestManager.CreateInstance(output)
                 .WithNewPsScriptFilename($"{GetType().Name}.ps1")
@@ -36,9 +36,10 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
                 .WithNewRmModules(helper => new[]
                {
                     helper.RMProfileModule,
-                    helper.GetRMModulePath("AzureRM.EventHub.psd1"),
+                    helper.GetRMModulePath("AzureRM.ServiceBus.psd1"),
                     helper.GetRMModulePath("AzureRM.KeyVault.psd1"),
                     helper.GetRMModulePath("AzureRM.ManagedServiceIdentity.psd1"),
+
                 })
                 .WithRecordMatcher(
                     (ignoreResourcesClient, resourceProviders, userAgentsToIgnore) =>
@@ -56,9 +57,9 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
                         {"Microsoft.Resources", null},
                         {"Microsoft.Features", null},
                         {"Microsoft.Authorization", null},
-                        {"Microsoft.EventHub", null},
+                        {"Microsoft.ServiceBus", null},
                         {"Microsoft.KeyVault", null},
-                        {"Microsoft.ManagedServiceIdentity", null}
+                        {"Microsoft.ManagedServiceIdentity", null},
                     }
                 )
                 .Build();
