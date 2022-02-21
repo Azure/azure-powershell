@@ -164,7 +164,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string TargetZone = "Target zone to restore the disks";
             public const string RestoreAsManagedDisk = "Use this switch to specify to restore as managed disks.";
             public const string UseSystemAssignedIdentity = "Use this switch to trigger MSI based restore with SystemAssigned Identity";
-            public const string UserAssignedIdentityId = "UserAssigned Identity Id to trigger MSI based restore with UserAssigned Identity"; 
+            public const string UserAssignedIdentityId = "UserAssigned Identity Id to trigger MSI based restore with UserAssigned Identity";            
+            public const string TargetVMName = "Name of the VM to which the data should be restored, in the case of Alternate Location restore to a new VM";
+            public const string TargetVNetName = "Name of the VNet in which the target VM should be created, in the case of Alternate Location restore to a new VM";
+            public const string TargetVNetResourceGroup = "Name of the resource group which contains the target VNet, in the case of Alternate Location restore to a new VM";
+            public const string TargetSubnetName = "Name of the subnet in which the target VM should be created, in the case of Alternate Location restore to a new VM";
         }
 
         internal static class RestoreFS

@@ -57,7 +57,7 @@ Location Name             Type
 eastus   firstruncommand2 Microsoft.Compute/virtualMachines/runCommands
 ```
 
-Get Run Command by it's name.
+Get Run Command by its name.
 
 ### Example 2: Get Run Commands by VM
 ```powershell
@@ -77,7 +77,7 @@ Get Run Commands by VM name
 ## PARAMETERS
 
 ### -CommandId
-The command id.
+The command ID.
 
 ```yaml
 Type: System.String
