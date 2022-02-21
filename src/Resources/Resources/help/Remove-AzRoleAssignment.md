@@ -23,8 +23,7 @@ Please notice that this cmdlet will mark `ObjectType` as `Unknown` in output if 
 
 ## SYNTAX
 
-### EmptyParameterSet 
-(Default)
+### EmptyParameterSet (Default)
 ```
 Remove-AzRoleAssignment -ObjectId <String> [-Scope <String>] -RoleDefinitionName <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
