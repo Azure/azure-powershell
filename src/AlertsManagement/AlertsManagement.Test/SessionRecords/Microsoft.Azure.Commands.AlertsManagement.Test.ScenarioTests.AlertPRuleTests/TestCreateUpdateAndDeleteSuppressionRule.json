@@ -7,7 +7,7 @@
       "RequestBody": "{\r\n  \"location\": \"eastus\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "58c42319-2034-4237-bec7-6a63a584bba9"
+          "91b68cab-a525-45ec-bdb5-0cf9e01d5103"
         ],
         "Accept-Language": [
           "en-US"
@@ -33,16 +33,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1197"
         ],
         "x-ms-request-id": [
-          "2d3d051c-210d-4f64-8913-1da56ff6346b"
+          "78d9d6ff-eb58-465b-8074-93cd0070c3a6"
         ],
         "x-ms-correlation-request-id": [
-          "2d3d051c-210d-4f64-8913-1da56ff6346b"
+          "78d9d6ff-eb58-465b-8074-93cd0070c3a6"
         ],
         "x-ms-routing-request-id": [
-          "GERMANYWESTCENTRAL:20220210T080026Z:2d3d051c-210d-4f64-8913-1da56ff6346b"
+          "GERMANYWESTCENTRAL:20220221T094705Z:78d9d6ff-eb58-465b-8074-93cd0070c3a6"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -51,7 +51,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 10 Feb 2022 08:00:25 GMT"
+          "Mon, 21 Feb 2022 09:47:04 GMT"
         ],
         "Content-Length": [
           "191"
@@ -73,7 +73,7 @@
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"scopes\": [\r\n      \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab\",\r\n      \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs\"\r\n    ],\r\n    \"conditions\": [\r\n      {\r\n        \"field\": \"severity\",\r\n        \"operator\": \"Equals\",\r\n        \"values\": [\r\n          \"Sev0\",\r\n          \"Sev1\"\r\n        ]\r\n      },\r\n      {\r\n        \"field\": \"MonitorCondition\",\r\n        \"operator\": \"NotEquals\",\r\n        \"values\": [\r\n          \"Resolved\"\r\n        ]\r\n      }\r\n    ],\r\n    \"schedule\": {\r\n      \"effectiveFrom\": \"2022-03-21T12:30:11\",\r\n      \"effectiveUntil\": \"2022-03-25T14:30:00\",\r\n      \"timeZone\": \"UTC\",\r\n      \"recurrences\": [\r\n        {\r\n          \"recurrenceType\": \"Daily\",\r\n          \"startTime\": \"02:30:00\",\r\n          \"endTime\": \"04:30:00\"\r\n        }\r\n      ]\r\n    },\r\n    \"actions\": [\r\n      {\r\n        \"actionType\": \"RemoveAllActionGroups\"\r\n      }\r\n    ],\r\n    \"description\": \"Test description\",\r\n    \"enabled\": true\r\n  },\r\n  \"location\": \"Global\",\r\n  \"tags\": {}\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c303a06e-ed56-4998-8d34-16d94e5378a3"
+          "26fe58d1-ad46-47d3-a3c5-24129108aa5d"
         ],
         "Accept-Language": [
           "en-US"
@@ -99,7 +99,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "69bf0b79-208a-436c-aa16-215f1348b428"
+          "ef9195c4-e97d-41ac-9074-5578539d7b76"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -117,13 +117,13 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "382e407c-bb05-412b-b6e3-596b5eb8b55a"
+          "ebea1deb-4f49-42c3-9c15-527ad8a71af1"
         ],
         "x-ms-routing-request-id": [
-          "GERMANYWESTCENTRAL:20220210T080031Z:382e407c-bb05-412b-b6e3-596b5eb8b55a"
+          "GERMANYWESTCENTRAL:20220221T094711Z:ebea1deb-4f49-42c3-9c15-527ad8a71af1"
         ],
         "Date": [
-          "Thu, 10 Feb 2022 08:00:31 GMT"
+          "Mon, 21 Feb 2022 09:47:10 GMT"
         ],
         "Content-Length": [
           "1172"
@@ -135,17 +135,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"scopes\": [\r\n      \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab\",\r\n      \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs\"\r\n    ],\r\n    \"schedule\": {\r\n      \"effectiveFrom\": \"2022-03-21T12:30:11\",\r\n      \"effectiveUntil\": \"2022-03-25T14:30:00\",\r\n      \"timeZone\": \"UTC\",\r\n      \"recurrences\": [\r\n        {\r\n          \"recurrenceType\": \"Daily\",\r\n          \"startTime\": \"02:30:00\",\r\n          \"endTime\": \"04:30:00\"\r\n        }\r\n      ]\r\n    },\r\n    \"conditions\": [\r\n      {\r\n        \"field\": \"Severity\",\r\n        \"operator\": \"Equals\",\r\n        \"values\": [\r\n          \"Sev0\",\r\n          \"Sev1\"\r\n        ]\r\n      },\r\n      {\r\n        \"field\": \"MonitorCondition\",\r\n        \"operator\": \"NotEquals\",\r\n        \"values\": [\r\n          \"Resolved\"\r\n        ]\r\n      }\r\n    ],\r\n    \"enabled\": true,\r\n    \"actions\": [\r\n      {\r\n        \"actionType\": \"RemoveAllActionGroups\"\r\n      }\r\n    ],\r\n    \"description\": \"Test description\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"2779d424-1072-48aa-94dc-2ae48ca79620\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2022-02-10T08:00:30.8066043Z\",\r\n    \"lastModifiedBy\": \"2779d424-1072-48aa-94dc-2ae48ca79620\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2022-02-10T08:00:30.8066043Z\"\r\n  },\r\n  \"location\": \"Global\",\r\n  \"id\": \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/pstestrgsuppression/providers/Microsoft.AlertsManagement/actionRules/pstestaprsuppression\",\r\n  \"type\": \"Microsoft.AlertsManagement/actionRules\",\r\n  \"name\": \"pstestaprsuppression\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"scopes\": [\r\n      \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab\",\r\n      \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs\"\r\n    ],\r\n    \"schedule\": {\r\n      \"effectiveFrom\": \"2022-03-21T12:30:11\",\r\n      \"effectiveUntil\": \"2022-03-25T14:30:00\",\r\n      \"timeZone\": \"UTC\",\r\n      \"recurrences\": [\r\n        {\r\n          \"recurrenceType\": \"Daily\",\r\n          \"startTime\": \"02:30:00\",\r\n          \"endTime\": \"04:30:00\"\r\n        }\r\n      ]\r\n    },\r\n    \"conditions\": [\r\n      {\r\n        \"field\": \"Severity\",\r\n        \"operator\": \"Equals\",\r\n        \"values\": [\r\n          \"Sev0\",\r\n          \"Sev1\"\r\n        ]\r\n      },\r\n      {\r\n        \"field\": \"MonitorCondition\",\r\n        \"operator\": \"NotEquals\",\r\n        \"values\": [\r\n          \"Resolved\"\r\n        ]\r\n      }\r\n    ],\r\n    \"enabled\": true,\r\n    \"actions\": [\r\n      {\r\n        \"actionType\": \"RemoveAllActionGroups\"\r\n      }\r\n    ],\r\n    \"description\": \"Test description\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"2779d424-1072-48aa-94dc-2ae48ca79620\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2022-02-21T09:47:09.7360637Z\",\r\n    \"lastModifiedBy\": \"2779d424-1072-48aa-94dc-2ae48ca79620\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2022-02-21T09:47:09.7360637Z\"\r\n  },\r\n  \"location\": \"Global\",\r\n  \"id\": \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/pstestrgsuppression/providers/Microsoft.AlertsManagement/actionRules/pstestaprsuppression\",\r\n  \"type\": \"Microsoft.AlertsManagement/actionRules\",\r\n  \"name\": \"pstestaprsuppression\"\r\n}",
       "StatusCode": 201
     },
     {
       "RequestUri": "/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/pstestrgsuppression/providers/Microsoft.AlertsManagement/actionRules/pstestaprsuppression?api-version=2021-08-08",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGQ5MWRlMDUtZDc5MS00Y2ViLWI2ZGMtOTg4NjgyZGM3ZDcyL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnc3VwcHJlc3Npb24vcHJvdmlkZXJzL01pY3Jvc29mdC5BbGVydHNNYW5hZ2VtZW50L2FjdGlvblJ1bGVzL3BzdGVzdGFwcnN1cHByZXNzaW9uP2FwaS12ZXJzaW9uPTIwMjEtMDgtMDg=",
       "RequestMethod": "PATCH",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"enabled\": false\r\n  },\r\n  \"tags\": {}\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"enabled\": false\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "25b2d1f7-061c-4458-af0f-a5f7f83bf5eb"
+          "fc957ccd-36de-4872-8290-8c8261e1c688"
         ],
         "Accept-Language": [
           "en-US"
@@ -160,7 +160,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "65"
+          "50"
         ]
       },
       "ResponseHeaders": {
@@ -171,7 +171,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "48887326-b4b8-4d86-a596-e472919000ed"
+          "2c9471b4-1a0d-493e-8965-786c2585ed27"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -189,13 +189,13 @@
           "1198"
         ],
         "x-ms-correlation-request-id": [
-          "0f6f0725-cbae-4440-a73f-9d6ee193fab7"
+          "a1fcad21-9f25-4fb2-bf1a-f8ae2086dad4"
         ],
         "x-ms-routing-request-id": [
-          "GERMANYWESTCENTRAL:20220210T080034Z:0f6f0725-cbae-4440-a73f-9d6ee193fab7"
+          "GERMANYWESTCENTRAL:20220221T094712Z:a1fcad21-9f25-4fb2-bf1a-f8ae2086dad4"
         ],
         "Date": [
-          "Thu, 10 Feb 2022 08:00:33 GMT"
+          "Mon, 21 Feb 2022 09:47:11 GMT"
         ],
         "Content-Length": [
           "1173"
@@ -207,7 +207,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"scopes\": [\r\n      \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab\",\r\n      \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs\"\r\n    ],\r\n    \"schedule\": {\r\n      \"effectiveFrom\": \"2022-03-21T12:30:11\",\r\n      \"effectiveUntil\": \"2022-03-25T14:30:00\",\r\n      \"timeZone\": \"UTC\",\r\n      \"recurrences\": [\r\n        {\r\n          \"recurrenceType\": \"Daily\",\r\n          \"startTime\": \"02:30:00\",\r\n          \"endTime\": \"04:30:00\"\r\n        }\r\n      ]\r\n    },\r\n    \"conditions\": [\r\n      {\r\n        \"field\": \"Severity\",\r\n        \"operator\": \"Equals\",\r\n        \"values\": [\r\n          \"Sev0\",\r\n          \"Sev1\"\r\n        ]\r\n      },\r\n      {\r\n        \"field\": \"MonitorCondition\",\r\n        \"operator\": \"NotEquals\",\r\n        \"values\": [\r\n          \"Resolved\"\r\n        ]\r\n      }\r\n    ],\r\n    \"enabled\": false,\r\n    \"actions\": [\r\n      {\r\n        \"actionType\": \"RemoveAllActionGroups\"\r\n      }\r\n    ],\r\n    \"description\": \"Test description\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"2779d424-1072-48aa-94dc-2ae48ca79620\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2022-02-10T08:00:30.8066043Z\",\r\n    \"lastModifiedBy\": \"2779d424-1072-48aa-94dc-2ae48ca79620\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2022-02-10T08:00:33.3966085Z\"\r\n  },\r\n  \"location\": \"Global\",\r\n  \"id\": \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/pstestrgsuppression/providers/Microsoft.AlertsManagement/actionRules/pstestaprsuppression\",\r\n  \"type\": \"Microsoft.AlertsManagement/actionRules\",\r\n  \"name\": \"pstestaprsuppression\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"scopes\": [\r\n      \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab\",\r\n      \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs\"\r\n    ],\r\n    \"schedule\": {\r\n      \"effectiveFrom\": \"2022-03-21T12:30:11\",\r\n      \"effectiveUntil\": \"2022-03-25T14:30:00\",\r\n      \"timeZone\": \"UTC\",\r\n      \"recurrences\": [\r\n        {\r\n          \"recurrenceType\": \"Daily\",\r\n          \"startTime\": \"02:30:00\",\r\n          \"endTime\": \"04:30:00\"\r\n        }\r\n      ]\r\n    },\r\n    \"conditions\": [\r\n      {\r\n        \"field\": \"Severity\",\r\n        \"operator\": \"Equals\",\r\n        \"values\": [\r\n          \"Sev0\",\r\n          \"Sev1\"\r\n        ]\r\n      },\r\n      {\r\n        \"field\": \"MonitorCondition\",\r\n        \"operator\": \"NotEquals\",\r\n        \"values\": [\r\n          \"Resolved\"\r\n        ]\r\n      }\r\n    ],\r\n    \"enabled\": false,\r\n    \"actions\": [\r\n      {\r\n        \"actionType\": \"RemoveAllActionGroups\"\r\n      }\r\n    ],\r\n    \"description\": \"Test description\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"2779d424-1072-48aa-94dc-2ae48ca79620\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2022-02-21T09:47:09.7360637Z\",\r\n    \"lastModifiedBy\": \"2779d424-1072-48aa-94dc-2ae48ca79620\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2022-02-21T09:47:12.0260741Z\"\r\n  },\r\n  \"location\": \"Global\",\r\n  \"id\": \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/pstestrgsuppression/providers/Microsoft.AlertsManagement/actionRules/pstestaprsuppression\",\r\n  \"type\": \"Microsoft.AlertsManagement/actionRules\",\r\n  \"name\": \"pstestaprsuppression\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -217,7 +217,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c557551c-e73c-4fdf-9dd4-651a117a98f8"
+          "bb0e8bf1-2aca-458a-932c-0c8fb1fcd9e0"
         ],
         "Accept-Language": [
           "en-US"
@@ -237,7 +237,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "db2bb4f6-3415-46d7-a9c7-076d3040373a"
+          "0341dcfa-7992-4e72-8fa2-c449638114b4"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -255,13 +255,13 @@
           "14999"
         ],
         "x-ms-correlation-request-id": [
-          "38547fa2-d003-4189-9a45-3d1d199e9f76"
+          "9f026b13-1b41-46aa-a43d-ba88dba45cef"
         ],
         "x-ms-routing-request-id": [
-          "GERMANYWESTCENTRAL:20220210T080036Z:38547fa2-d003-4189-9a45-3d1d199e9f76"
+          "GERMANYWESTCENTRAL:20220221T094714Z:9f026b13-1b41-46aa-a43d-ba88dba45cef"
         ],
         "Date": [
-          "Thu, 10 Feb 2022 08:00:35 GMT"
+          "Mon, 21 Feb 2022 09:47:13 GMT"
         ],
         "Expires": [
           "-1"
@@ -280,7 +280,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "7a7f21db-603b-4ef8-8e85-59c53bc87354"
+          "950c99fc-4e92-4afd-adf1-9f90a57bd323"
         ],
         "Accept-Language": [
           "en-US"
@@ -306,16 +306,16 @@
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14999"
+          "14998"
         ],
         "x-ms-request-id": [
-          "5912b1d0-dd08-47e4-9212-eea2cb47d86f"
+          "98655c3f-fdd1-4a47-ac12-7141f7a1178d"
         ],
         "x-ms-correlation-request-id": [
-          "5912b1d0-dd08-47e4-9212-eea2cb47d86f"
+          "98655c3f-fdd1-4a47-ac12-7141f7a1178d"
         ],
         "x-ms-routing-request-id": [
-          "GERMANYWESTCENTRAL:20220210T080038Z:5912b1d0-dd08-47e4-9212-eea2cb47d86f"
+          "GERMANYWESTCENTRAL:20220221T094715Z:98655c3f-fdd1-4a47-ac12-7141f7a1178d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -324,7 +324,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 10 Feb 2022 08:00:37 GMT"
+          "Mon, 21 Feb 2022 09:47:14 GMT"
         ],
         "Expires": [
           "-1"
@@ -360,13 +360,13 @@
           "11999"
         ],
         "x-ms-request-id": [
-          "e14455af-0656-4a73-aeba-ff197287236c"
+          "8091e2ad-dced-45e3-a920-89e693e5b96b"
         ],
         "x-ms-correlation-request-id": [
-          "e14455af-0656-4a73-aeba-ff197287236c"
+          "8091e2ad-dced-45e3-a920-89e693e5b96b"
         ],
         "x-ms-routing-request-id": [
-          "GERMANYWESTCENTRAL:20220210T080053Z:e14455af-0656-4a73-aeba-ff197287236c"
+          "GERMANYWESTCENTRAL:20220221T094730Z:8091e2ad-dced-45e3-a920-89e693e5b96b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -375,7 +375,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 10 Feb 2022 08:00:52 GMT"
+          "Mon, 21 Feb 2022 09:47:29 GMT"
         ],
         "Expires": [
           "-1"
@@ -411,13 +411,13 @@
           "11998"
         ],
         "x-ms-request-id": [
-          "14b145e5-1b34-427d-84e3-4357d2c05bed"
+          "97726fd4-71ea-4ad9-bd84-5c62a552a710"
         ],
         "x-ms-correlation-request-id": [
-          "14b145e5-1b34-427d-84e3-4357d2c05bed"
+          "97726fd4-71ea-4ad9-bd84-5c62a552a710"
         ],
         "x-ms-routing-request-id": [
-          "GERMANYWESTCENTRAL:20220210T080053Z:14b145e5-1b34-427d-84e3-4357d2c05bed"
+          "GERMANYWESTCENTRAL:20220221T094730Z:97726fd4-71ea-4ad9-bd84-5c62a552a710"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -426,7 +426,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 10 Feb 2022 08:00:53 GMT"
+          "Mon, 21 Feb 2022 09:47:30 GMT"
         ],
         "Expires": [
           "-1"
