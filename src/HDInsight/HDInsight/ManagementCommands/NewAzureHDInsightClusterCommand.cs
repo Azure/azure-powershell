@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
@@ -666,18 +667,18 @@ namespace Microsoft.Azure.Commands.HDInsight
             }
 
             MicrosoftGraphClient graphClient = AzureSession.Instance.ClientFactory.CreateArmClient<MicrosoftGraphClient>(
-                DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.Graph);
+                DefaultProfile.DefaultContext, AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl);
 
             graphClient.TenantID = DefaultProfile.DefaultContext.Tenant.Id.ToString();
 
             MicrosoftGraphServicePrincipal sp = null;
             try
             {
-                sp = graphClient.ServicePrincipals.GetServicePrincipalWithHttpMessagesAsync(ObjectId.ToString()).Result.Body;//graphClient.ServicePrincipals.Get(ObjectId.ToString());
+                sp = graphClient.ServicePrincipals.GetServicePrincipal(ObjectId.ToString());
             }
             catch (Exception e)
             {
-                string errorMessage = e.Message + ". Please specify Application Id explicitly by providing ApplicationId parameter and retry.";
+                string errorMessage =$"Can not find service princaipl per the parameter ObjectId:{ObjectId}, the error message is '{e.Message}'."+ " Please specify Application Id explicitly by providing ApplicationId parameter and retry.";
                 throw new Exception(errorMessage);
             }
 
