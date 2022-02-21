@@ -367,6 +367,18 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "The flag that enables or disables hibernation capability on the VM.")]
         public SwitchParameter HibernationEnabled { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the number of vCPUs available for the VM. When this property is not specified in the request body the default behavior is to set it to the value of vCPUs available for that VM size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).")]
+        public int vCPUCountAvailable { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the vCPU to physical core ratio. When this property is not specified in the request body the default behavior is set to the value of vCPUsPerCore for the VM Size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list). Setting this property to 1 also means that hyper-threading is disabled.")]
+        public int vCPUCountPerCore { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.IsParameterBound(c => c.UserData))
@@ -559,7 +571,9 @@ namespace Microsoft.Azure.Commands.Compute
                         dataDiskDeleteOption: _cmdlet.DataDiskDeleteOption,
                         userData: _cmdlet.UserData,
                         platformFaultDomain: _cmdlet.IsParameterBound(c => c.PlatformFaultDomain) ? _cmdlet.PlatformFaultDomain : (int?) null,
-                        additionalCapabilities: vAdditionalCapabilities
+                        additionalCapabilities: vAdditionalCapabilities,
+                        vCPUsAvailable: _cmdlet.IsParameterBound(c => c.vCPUCountAvailable) ? _cmdlet.vCPUCountAvailable : (int?)null,
+                        vCPUsPerCore: _cmdlet.IsParameterBound(c => c.vCPUCountPerCore) ? _cmdlet.vCPUCountPerCore : (int?)null
                         );
                 }
                 else
@@ -593,7 +607,9 @@ namespace Microsoft.Azure.Commands.Compute
                         dataDiskDeleteOption: _cmdlet.DataDiskDeleteOption,
                         userData: _cmdlet.UserData,
                         platformFaultDomain: _cmdlet.IsParameterBound(c => c.PlatformFaultDomain) ? _cmdlet.PlatformFaultDomain : (int?)null,
-                        additionalCapabilities: vAdditionalCapabilities
+                        additionalCapabilities: vAdditionalCapabilities,
+                        vCPUsAvailable: _cmdlet.IsParameterBound(c => c.vCPUCountAvailable) ? _cmdlet.vCPUCountAvailable : (int?)null,
+                        vCPUsPerCore: _cmdlet.IsParameterBound(c => c.vCPUCountPerCore) ? _cmdlet.vCPUCountPerCore : (int?)null
                     );
                 }
             }
