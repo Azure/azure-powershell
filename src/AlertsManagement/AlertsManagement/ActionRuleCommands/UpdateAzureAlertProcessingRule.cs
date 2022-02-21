@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         [Parameter(ParameterSetName = ByResourceIdParameterSet, Mandatory = false, HelpMessage = "Alert Processing rule tags")]
         [Parameter(ParameterSetName = ByInputObjectParameterSet, Mandatory = false, HelpMessage = "Alert Processing rule tags")]
         [Parameter(ParameterSetName = ByNameSimplifiedPatchParameterSet, Mandatory = false, HelpMessage = "Alert Processing rule tags")]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         #endregion
 
@@ -154,14 +154,14 @@ namespace Microsoft.Azure.Commands.AlertsManagement
 
         private IDictionary<string, string> ParseTags()
         {
-            if (Tags == null)
+            if (Tag == null)
             {
                 return null;
             }
             Dictionary<string, string> tagsDictionary = new Dictionary<string, string>();
-            foreach (var key in Tags.Keys)
+            foreach (var key in Tag.Keys)
             {
-                tagsDictionary.Add((string)key, (string)Tags[key]);
+                tagsDictionary.Add((string)key, (string)Tag[key]);
             }
             return tagsDictionary;
         }

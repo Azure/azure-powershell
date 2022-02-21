@@ -111,11 +111,11 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                 HelpMessage = "List of resource IDs, Comma separated list of values. " +
                                "The rule will apply to alerts that fired on resources within that scope")]
         [ValidateNotNullOrEmpty]
-        public List<string> Scopes { get; set; }
+        public List<string> Scope { get; set; }
 
 
         /// <summary>
-        /// Gets or sets simplified property of patch object : tags
+        /// Gets or sets simplified property of patch object : tag
         /// </summary>
         [Parameter(Mandatory = false, 
             ParameterSetName = BySimplifiedFormatActionGroupAlertProcessingRuleParameterSet, 
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
             ParameterSetName = BySimplifiedFormatSuppressionAlertProcessingRuleParameterSet,
             HelpMessage = "Alert Processing rule tags" +
             "For eg.@{<tag1> = <key1>;<tag2>= <key2>} Use {} to clear existing tags. ")]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         /// <summary>
         /// Alert Processing rule simplified format : Severity Condition
@@ -436,7 +436,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                 ParameterSetName = BySimplifiedFormatActionGroupAlertProcessingRuleParameterSet,
                 HelpMessage = "Action Group Ids which are to be notified, Comma separated list of values.\n" +
                               "Required only if alert processing rule type is AddActionGroups.")]
-        public string ActionGroupIds { get; set; }
+        public string ActionGroupId { get; set; }
 
         #endregion
 
@@ -462,7 +462,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                                 location: "Global",
                                 tags: ParseTags(),
                                 properties: new AlertProcessingRuleProperties(
-                                    scopes: Scopes,
+                                    scopes: Scope,
                                     actions: ParseAddActionGroupsActions(),
                                     conditions: ParseConditions(),
                                     schedule: ValidateParseSchedule(),
@@ -487,7 +487,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                                 location: "Global",
                                 tags: ParseTags(),
                                 properties: new AlertProcessingRuleProperties(
-                                    scopes: Scopes,
+                                    scopes: Scope,
                                     actions: ParseRemoveAllActionGroupsActions(),
                                     conditions: ParseConditions(),
                                     schedule: ValidateParseSchedule(),
@@ -571,7 +571,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         private IList<Action> ParseAddActionGroupsActions()
         {
             IList<Action> actions  = new List<Action>();
-            AddActionGroups addActionGroups = new AddActionGroups(ActionGroupIds.Split(',').ToList());
+            AddActionGroups addActionGroups = new AddActionGroups(ActionGroupId.Split(',').ToList());
             actions.Add(addActionGroups);
             return actions;
         }
@@ -768,11 +768,11 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         private IDictionary<string, string> ParseTags()
         {
             Dictionary<string, string> tagsDictionary = new Dictionary<string, string>();
-            if (Tags != null)
+            if (Tag != null)
             {
-                foreach (var key in Tags.Keys)
+                foreach (var key in Tag.Keys)
                 {
-                    tagsDictionary.Add((string)key, (string)Tags[key]);
+                    tagsDictionary.Add((string)key, (string)Tag[key]);
                 }
             }
 

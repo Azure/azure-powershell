@@ -14,19 +14,19 @@ Updates alert processing rule properties.
 
 ### ByNameSimplifiedPatch (Default)
 ```
-Update-AzAlertProcessingRule -Name <String> -ResourceGroupName <String> [-Enabled <String>] [-Tags <Hashtable>]
+Update-AzAlertProcessingRule -Name <String> -ResourceGroupName <String> [-Enabled <String>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Update-AzAlertProcessingRule -ResourceId <String> [-Enabled <String>] [-Tags <Hashtable>]
+Update-AzAlertProcessingRule -ResourceId <String> [-Enabled <String>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Update-AzAlertProcessingRule -InputObject <PSActionRule> [-Enabled <String>] [-Tags <Hashtable>]
+Update-AzAlertProcessingRule -InputObject <PSActionRule> [-Enabled <String>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -134,7 +134,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tags
+### -Tag
 Alert Processing rule tags
 For eg.
 @{"tag1" = "key1";"tag2" = "key2"}

@@ -35,7 +35,7 @@ function Test-CreateUpdateAndDeleteSuppressionRule
 		#Create Resource Group
 		New-AzResourceGroup -Name $resourceGroupName -Location $location -Force
 
-		$createdAlertProcessingRule = Set-AzAlertProcessingRule -ResourceGroupName $resourceGroupName -Name $alertProcessingRuleName -Scopes "/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab","/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs" -FilterSeverity "Equals:Sev0,Sev1" -FilterMonitorCondition "NotEquals:Resolved" -Description "Test description" -Enabled "True" -AlertProcessingRuleType "RemoveAllActionGroups" -ScheduleReccurenceType "Daily" -ScheduleStartDateTime "2022-03-21 12:30:11" -ScheduleEndDateTime "2022-03-25 14:30:00" -ScheduleReccurenceStartTime "02:30:00" -ScheduleReccurenceEndTime "04:30:00"
+		$createdAlertProcessingRule = Set-AzAlertProcessingRule -ResourceGroupName $resourceGroupName -Name $alertProcessingRuleName -Scope "/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab","/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs" -FilterSeverity "Equals:Sev0,Sev1" -FilterMonitorCondition "NotEquals:Resolved" -Description "Test description" -Enabled "True" -AlertProcessingRuleType "RemoveAllActionGroups" -ScheduleReccurenceType "Daily" -ScheduleStartDateTime "2022-03-21 12:30:11" -ScheduleEndDateTime "2022-03-25 14:30:00" -ScheduleReccurenceStartTime "02:30:00" -ScheduleReccurenceEndTime "04:30:00"
 
 		Assert-NotNull $createdAlertProcessingRule 
 
@@ -61,7 +61,7 @@ function Test-CreateUpdateAndDeleteActionGroupRule
 		#Create Resource Group
 		New-AzResourceGroup -Name $resourceGroupName -Location $location -Force
 
-		$createdAlertProcessingRule = Set-AzAlertProcessingRule -ResourceGroupName $resourceGroupName -Name $alertProcessingRuleName -Scopes "/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab","/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs" -FilterSeverity "Equals:Sev0,Sev1" -FilterMonitorCondition "NotEquals:Resolved" -Description "Test description" -AlertPRocessingRuleType "AddActionGroups" -ActionGroupIds "/subscriptions/1e3ff1c0-771a-4119-a03b-be82a51e232d/resourceGroups/alertscorrelationrg/providers/Microsoft.insights/actiongroups/testAG"
+		$createdAlertProcessingRule = Set-AzAlertProcessingRule -ResourceGroupName $resourceGroupName -Name $alertProcessingRuleName -Scope "/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab","/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs" -FilterSeverity "Equals:Sev0,Sev1" -FilterMonitorCondition "NotEquals:Resolved" -Description "Test description" -AlertPRocessingRuleType "AddActionGroups" -ActionGroupId "/subscriptions/1e3ff1c0-771a-4119-a03b-be82a51e232d/resourceGroups/alertscorrelationrg/providers/Microsoft.insights/actiongroups/testAG"
 
 		Assert-NotNull $createdAlertProcessingRule 
 
