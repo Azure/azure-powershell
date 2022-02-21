@@ -2,8 +2,10 @@
 
 ### Example 1: List all PrivateLinkResource in a cluster
 ```powershell
-PS C:\> Get-AzKustoPrivateLinkResource -ClusterName "mycluster" -ResourceGroupName "testrg"
+Get-AzKustoPrivateLinkResource -ClusterName "mycluster" -ResourceGroupName "testrg"
+```
 
+```output
 Name                                                       Type
 ----                                                       ----
 mycluster/cluster                                		   Microsoft.Kusto/Clusters/PrivateLinkResources
@@ -13,8 +15,10 @@ The above command returns all PrivateLinkResource in the cluster "mycluster" fou
 
 ### Example 2: Get a specific PrivateLinkResource by name
 ```powershell
-PS C:\> Get-AzKustoPrivateLinkResource -ClusterName "mycluster" -ResourceGroupName "testrg" -Name "ManagedPrivateEndpointName"
+Get-AzKustoPrivateLinkResource -ClusterName "mycluster" -ResourceGroupName "testrg" -Name "ManagedPrivateEndpointName"
+```
 
+```output
 Name                                                       Type
 ----                                                       ----
 mycluster/cluster                                		   Microsoft.Kusto/Clusters/PrivateLinkResources
