@@ -66,7 +66,7 @@ function Test-CreateUpdateAndDeleteActionGroupRule
 		Assert-NotNull $createdAlertProcessingRule 
 
 		# Update Enabled Status of Alert Processing Rule
-		$updatedAlertProcessingRule = Update-AzAlertPRocessingRule -ResourceGroupName $resourceGroupName -Name $alertProcessingRuleName -Enabled "False"
+		$updatedAlertProcessingRule = Update-AzAlertProcessingRule -ResourceGroupName $resourceGroupName -Name $alertProcessingRuleName -Enabled "False"
 		Assert-NotNull $updatedAlertProcessingRule 
 		Assert-AreEqual "False" $updatedAlertProcessingRule.Enabled
 	}

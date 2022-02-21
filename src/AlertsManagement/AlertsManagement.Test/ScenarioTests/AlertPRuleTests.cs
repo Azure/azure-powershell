@@ -21,11 +21,11 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.AlertsManagement.Test.ScenarioTests
 {
-    public class AlertProcessingRuleTests : RMTestBase
+    public class AlertPRuleTests : RMTestBase
     {
         public XunitTracingInterceptor _logger;
 
-        public AlertProcessingRuleTests(Xunit.Abstractions.ITestOutputHelper output)
+        public AlertPRuleTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             _logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(_logger);
