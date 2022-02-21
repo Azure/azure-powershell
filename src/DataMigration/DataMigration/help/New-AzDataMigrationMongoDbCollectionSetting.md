@@ -5,7 +5,6 @@ online version: https://docs.microsoft.com/powershell/module/az.datamigration/Ne
 schema: 2.0.0
 ---
 
-
 # New-AzDataMigrationMongoDbCollectionSetting
 
 ## SYNOPSIS
@@ -14,7 +13,9 @@ Creates collection setting for migration according for the mongoDb migration
 ## SYNTAX
 
 ```
-New-AzDataMigrationMongoDbCollectionSetting -Name <Name> [-TargetRequestUnit <TargetRequestUnit>] [-CanDelete] [-ShardKey <ShardKey>]
+New-AzDataMigrationMongoDbCollectionSetting [-TargetRequestUnit <Int32>] [-CanDelete] [-UniqueShard]
+ [-ShardKey <String>] [-DefaultProfile <IAzureContextContainer>] -Name <String> [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,10 +39,39 @@ PS C:\> $x.Setting
 CanDelete ShardKey                                                               TargetRUs
 --------- --------                                                               ---------
      True Microsoft.Azure.Management.DataMigration.Models.MongoDbShardKeySetting      1000
-
 ```
 
 ## PARAMETERS
+
+### -CanDelete
+Whether the target data is supposed to be deleted, if the switch is set, it will be cleaned up at migration
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: Clean
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Name of the collection
@@ -79,7 +109,7 @@ Accept wildcard characters: False
 The dedicated collection request unit value. If not set, that collection uses shared database RU.
 
 ```yaml
-Type: System.Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases: RU
 
@@ -90,13 +120,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CanDelete
-Whether the target data is supposed to be deleted, if the switch is set, it will be cleaned up at migration
+### -UniqueShard
+Whether to create a unique key for the shard key
 
 ```yaml
-Type: System.Boolean
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: Unique
 
 Required: False
 Position: Named
@@ -105,9 +135,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

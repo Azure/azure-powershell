@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.dll-Help.xml
 Module Name: Az.DataMigration
 online version: https://docs.microsoft.com/powershell/module/az.datamigration/New-AzDataMigrationTask
@@ -15,7 +15,7 @@ Creates and starts a data migration task in the Azure Database Migration Service
 ### ComponentNameParameterSet (Default)
 ```
 New-AzDataMigrationTask -TaskType <TaskTypeEnum> -ResourceGroupName <String> -ServiceName <String>
- -ProjectName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ -ProjectName <String> [-Wait] -Name <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -166,27 +166,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MigrationValidation 
-Task response object by validation call, optional but recommended.
-
-```yaml
-Type: Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Wait
 Whether to wait for task to finish. If the flag is set, checks every one seconds till the task finishes and return to user the task properties where output or error can be inspected. 
+
+
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: ComponentNameParameterSet
+Aliases:
 
 Required: False
 Position: Named
@@ -227,7 +214,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
