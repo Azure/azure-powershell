@@ -62,7 +62,7 @@ Get-AzLogzMonitor -ResourceGroupName logz-rg-test
 ```output
 Name          MonitoringStatus Location ResourceGroupName
 ----          ---------------- -------- -----------------
-logz-pwsh01 Enabled          westus2  logz-rg-test
+logz-pwsh01   Enabled          westus2  logz-rg-test
 ```
 
 This command lists all logz monitor resources under a resource group.
@@ -75,7 +75,7 @@ Get-AzLogzMonitor -ResourceGroupName logz-rg-test -Name logz-pwsh01
 ```output
 Name          MonitoringStatus Location ResourceGroupName
 ----          ---------------- -------- -----------------
-logz-pwsh01 Enabled          westus2  logz-rg-test
+logz-pwsh01   Enabled          westus2  logz-rg-test
 ```
 
 This command gets the properties of a specific logz monitor resource.
@@ -88,7 +88,7 @@ New-AzLogzMonitor -ResourceGroupName logz-rg-test -Name logz-pwsh01 -Location 'w
 ```output
 Name          MonitoringStatus Location ResourceGroupName
 ----          ---------------- -------- -----------------
-logz-pwsh01 Enabled          westus2  logz-rg-test
+logz-pwsh01   Enabled          westus2  logz-rg-test
 ```
 
 This command gets the properties of a specific logz monitor resource by pipeline.
