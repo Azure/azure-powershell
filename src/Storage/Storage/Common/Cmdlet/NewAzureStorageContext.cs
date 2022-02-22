@@ -93,6 +93,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         private const string OAuthEnvironmentParameterSet = "OAuthAccountEnvironment";
 
         /// <summary>
+        /// CustomEndpoint storage account parameter set name
+        /// </summary>
+        private const string CustomEndpointParameterSet = "CustomEndpoint";
+
+        /// <summary>
         /// Anonymous storage account with azure environment parameter set name
         /// </summary>
         private const string AnonymousEnvironmentParameterSet = "AnonymousAccountEnvironment";
@@ -172,6 +177,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         }
 
         private bool isOAuth = true;
+
+        [Parameter(HelpMessage = "Use custom endpoint", Mandatory = false, ParameterSetName = CustomEndpointParameterSet)]
+        public string UseEndpoint
+        {
+            get { return customEndpoint; }
+            set { customEndpoint = value; }
+        }
+
+        private string customEndpoint = string.Empty;
 
         private const string ProtocolHelpMessage = "Protocol specification (HTTP or HTTPS), default is HTTPS";
         [Parameter(HelpMessage = ProtocolHelpMessage,
@@ -308,6 +322,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         {
             StorageCredentials credential = new StorageCredentials();
             return GetStorageAccountWithEndPoint(credential, storageAccountName, useHttps, storageEndpoint);
+        }
+
+        internal CloudStorageAccount GetStorageAccountWithCustomEndpoint(bool useHttps, string customEndpoint)
+        {
+            StorageCredentials credential = new StorageCredentials();
+            return GetStorageAccountWithCustomEndPoint(credential, useHttps, customEndpoint);
         }
 
         /// <summary>
@@ -463,6 +483,29 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         }
 
         /// <summary>
+        /// Get storage account and use specific end point
+        /// </summary>
+        /// <param name="credential">Storage credential</param>
+        /// <param name="storageAccountName">Storage account name, it's used for build end point</param>
+        /// <param name="useHttps"></param>
+        /// <param name="endPoint"></param>
+        /// <returns>A storage account</returns>
+        internal CloudStorageAccount GetStorageAccountWithCustomEndPoint(StorageCredentials credential, bool useHttps, string endPoint)
+        {
+            if (string.IsNullOrEmpty(endPoint))
+            {
+                throw new ArgumentException(String.Format(Resources.ObjectCannotBeNull, "CustomEndpoint"));
+            }
+
+            string blobEndpoint = endPoint;
+            string tableEndpoint = endPoint;
+            string queueEndpoint = endPoint;
+            string fileEndpoint = endPoint;
+
+            return new CloudStorageAccount(credential, new Uri(blobEndpoint), new Uri(queueEndpoint), new Uri(tableEndpoint), new Uri(fileEndpoint));
+        }
+
+        /// <summary>
         /// Get storage account and use specific azure environment
         /// </summary>
         /// <param name="credential">Storage credential</param>
@@ -575,6 +618,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
                     break;
                 case OAuthEnvironmentParameterSet:
                     account = GetStorageAccountByOAuthFromAzureEnvironment(StorageAccountName, useHttps, environmentName);
+                    break;
+                case CustomEndpointParameterSet:
+                    account = GetStorageAccountWithCustomEndpoint(useHttps, customEndpoint);
                     break;
                 default:
                     throw new ArgumentException(Resources.DefaultStorageCredentialsNotFound);
