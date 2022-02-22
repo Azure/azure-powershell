@@ -51,7 +51,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             OriginalManagedHsm = managedHsm;
         }
 
-        public string Name { get; private set; }
+        public string Name 
+        { 
+            get { return VaultName; } 
+            internal set { VaultName = value; } 
+        }
+
         public string Sku { get; private set; }
         public Guid TenantId { get; private set; }
         public string TenantName { get; private set; }
@@ -59,7 +64,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public string HsmUri { get; private set; }
         public bool? EnableSoftDelete { get; private set; }
         public int? SoftDeleteRetentionInDays { get; private set; }
-        public bool? EnablePurgeProtection { get; private set; }
+        public bool? EnablePurgeProtection { get; internal set; }
         public string StatusMessage { get; private set; }
         public string ProvisioningState { get; private set; }
         public ManagedHsm OriginalManagedHsm { get; private set; }

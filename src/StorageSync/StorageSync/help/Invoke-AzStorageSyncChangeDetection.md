@@ -20,7 +20,14 @@ This command can be used to manually initiate the detection of namespace changes
 
 ## SYNTAX
 
-### StringAndDirectoryParameterSet (Default)
+### FullShareStringParameterSet (Default)
+```
+Invoke-AzStorageSyncChangeDetection [-ResourceGroupName] <String> [-StorageSyncServiceName] <String>
+ [-SyncGroupName] <String> -Name <String> [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### StringAndDirectoryParameterSet
 ```
 Invoke-AzStorageSyncChangeDetection [-ResourceGroupName] <String> [-StorageSyncServiceName] <String>
  [-SyncGroupName] <String> -Name <String> -DirectoryPath <String> [-Recursive] [-PassThru] [-AsJob]
@@ -32,13 +39,6 @@ Invoke-AzStorageSyncChangeDetection [-ResourceGroupName] <String> [-StorageSyncS
 Invoke-AzStorageSyncChangeDetection [-ResourceGroupName] <String> [-StorageSyncServiceName] <String>
  [-SyncGroupName] <String> -Name <String> -Path <String[]> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### FullShareStringParameterSet
-```
-Invoke-AzStorageSyncChangeDetection [-ResourceGroupName] <String> [-StorageSyncServiceName] <String>
- [-SyncGroupName] <String> -Name <String> [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdAndDirectoryParameterSet
@@ -178,7 +178,7 @@ Name of the CloudEndpoint. The name is a GUID, not the friendly name that's disp
 
 ```yaml
 Type: System.String
-Parameter Sets: StringAndDirectoryParameterSet, StringAndPathParameterSet, FullShareStringParameterSet
+Parameter Sets: FullShareStringParameterSet, StringAndDirectoryParameterSet, StringAndPathParameterSet
 Aliases: CloudEndpointName
 
 Required: True
@@ -238,7 +238,7 @@ Resource Group Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: StringAndDirectoryParameterSet, StringAndPathParameterSet, FullShareStringParameterSet
+Parameter Sets: FullShareStringParameterSet, StringAndDirectoryParameterSet, StringAndPathParameterSet
 Aliases:
 
 Required: True
@@ -268,7 +268,7 @@ Name of the StorageSyncService.
 
 ```yaml
 Type: System.String
-Parameter Sets: StringAndDirectoryParameterSet, StringAndPathParameterSet, FullShareStringParameterSet
+Parameter Sets: FullShareStringParameterSet, StringAndDirectoryParameterSet, StringAndPathParameterSet
 Aliases: ParentName
 
 Required: True
@@ -283,7 +283,7 @@ Name of the SyncGroup.
 
 ```yaml
 Type: System.String
-Parameter Sets: StringAndDirectoryParameterSet, StringAndPathParameterSet, FullShareStringParameterSet
+Parameter Sets: FullShareStringParameterSet, StringAndDirectoryParameterSet, StringAndPathParameterSet
 Aliases:
 
 Required: True

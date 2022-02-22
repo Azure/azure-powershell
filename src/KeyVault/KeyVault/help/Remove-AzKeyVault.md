@@ -85,17 +85,6 @@ True
 This command removes the key vault named Contoso03Vault from the named resource group.
 If you do not specify the resource group name, the cmdlet searches for the named key vault to delete in your current subscription.
 
-### Example 3: Remove a managed hsm
-```powershell
-Remove-AzKeyVault -Name "testManagedHsm" -Hsm -PassThru
-```
-
-```output
-True
-```
-
-This command removes the managed hsm named testManagedHsm from your current subscription.
-
 ## PARAMETERS
 
 ### -AsJob
