@@ -36,7 +36,7 @@ Start-AzMigrateTestMigrationCleanup -InputObject $ob
 ```
 
 ```output
-AllowedOperation            : {DisableMigration, TestMigrate, Migrate}
+AllowedOperation                 : {DisableMigration, TestMigrate, Migrate}
 
 ActivityId                       : da958651-96b3-4e65-a41e-897d4b06f7dd ActivityId: 3a4c8d4d-920a-47cd-82c3-f3dcce90a588
 AllowedAction                    : {Cancel}
