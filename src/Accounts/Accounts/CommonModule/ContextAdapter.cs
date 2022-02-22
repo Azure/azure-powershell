@@ -210,7 +210,10 @@ namespace Microsoft.Azure.Commands.Common
                             if (!string.IsNullOrEmpty(claimsChallenge))
                             {
                                 await processor.OnClaimsChallenageAsync(newRequest, claimsChallenge, cancelToken).ConfigureAwait(false);
-                                response = await next(newRequest, cancelToken, cancelAction, signal);
+                                using (var previousReponse = response)
+                                {
+                                    response = await next(newRequest, cancelToken, cancelAction, signal);
+                                }
                             }
                         }
                         catch (AuthenticationFailedException e)
