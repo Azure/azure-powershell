@@ -400,14 +400,14 @@ Accept wildcard characters: False
 ```
 
 ### -MaximumThroughputUnits
-Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 20 throughput units.
+Upper limit of throughput units when AutoInflate is enabled, value should be within 1 to 20 throughput units.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: AutoInflateParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: 7
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -556,5 +556,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes
 
 ## NOTES
+If -EnableAutoInflate is True, MaximumThroughputUnits must be specified because the default value '0' is out of range.
 
 ## RELATED LINKS
