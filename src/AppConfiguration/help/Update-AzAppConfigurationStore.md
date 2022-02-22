@@ -36,14 +36,8 @@ Updates a configuration store with the specified parameters.
 ### Example 1: Enable data encryption of the app configuration store by system-assigned managed identity
 ```powershell
 $key = Add-AzKeyVaultKey -VaultName kv-Name -Name key-Name -Destination 'Software'
-```
-```powershell
 $systemAssignedAppStore = New-AzAppConfigurationStore -Name appconfig-test11 -ResourceGroupName azpwsh-manual-test -Location $env.location -Sku 'standard' -IdentityType "SystemAssigned"
-```
-```powershell
 Set-AzKeyVaultAccessPolicy -VaultName kv-Name -ObjectId $systemAssignedAppStore.IdentityPrincipalId -PermissionsToKeys get,unwrapKey,wrapKey -PassThru
-```
-```powershell
 Update-AzAppConfigurationStore -Name appconfig-test11 -ResourceGroupName azpwsh-manual-test -EncryptionKeyIdentifier $key.Id
 ```
 ```output
@@ -58,17 +52,9 @@ The vault must have enabled soft-delete and purge-protection, and the managed id
 ### Example 2: Enable data encryption of the app configuration store by user-assigned managed identity
 ```powershell
 $key = Add-AzKeyVaultKey -VaultName kv-Name -Name key-Name -Destination 'Software'
-```
-```powershell
 $assignedIdentity = New-AzUserAssignedIdentity -ResourceGroupName azpwsh-manual-test -Name assignedIdentity
-```
-```powershell
 New-AzAppConfigurationStore -Name appconfig-test11 -ResourceGroupName azpwsh-manual-test -Location $env.location -Sku 'standard' -IdentityType "UserAssigned" -UserAssignedIdentity $assignedIdentity.Id
-```
-```powershell
 Set-AzKeyVaultAccessPolicy -VaultName kv-Name -ObjectId $assignedIdentity.PrincipalId -PermissionsToKeys get,unwrapKey,wrapKey -PassThru
-```
-```powershell
 Update-AzAppConfigurationStore -ResourceGroupName azpwsh-manual-test -Name appconfig-test11 -EncryptionKeyIdentifier $key.Id -KeyVaultIdentityClientId $assignedIdentity.ClientId
 ```
 ```output
