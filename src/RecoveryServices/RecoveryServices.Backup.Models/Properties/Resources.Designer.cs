@@ -2094,5 +2094,93 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
             }
         }
 
+        /// <summary>        
+        ///   Looks up a localized string similar to Number of restore points are more than <Limit>, please reduce the
+        ///   retention duration count for Daily Schedule or reduce number of backups per day
+        /// </summary>
+        public static string DailyRetentionPointsLimitExceeded
+        {
+            get
+            {
+                return ResourceManager.GetString("DailyRetentionPointsLimitExceeded", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ScheduleInterval, ScheduleWindowStartTime, ScheduleWindowDuration, ScheduleRunTimeZone can't be null for Hourly policy
+        /// </summary>
+        public static string HourlyScheduleNullValueException
+        {
+            get
+            {
+                return ResourceManager.GetString("HourlyScheduleNullValueException", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ScheduleWindowDuration should be less than or equal to (23:30 - ScheduleWindowStartTime)
+        /// </summary>
+        public static string InvalidLastBackupTime
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidLastBackupTime", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Incorrect value for ScheduleInterval, allowed values are {Valid List of Intervals}
+        /// </summary>
+        public static string InvalidScheduleInterval
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidScheduleInterval", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ScheduleWindowDuration can't be lesser than ScheduleInterval and should exist in range from MinDuration to MaxDuration
+        /// </summary>
+        public static string InvalidScheduleWindowDuration
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidScheduleWindowDuration", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ScheduleWindowStartTime is out of range, valid range is from MinstartTime to MaxStartTime
+        /// </summary>
+        public static string ScheduleWindowStartTimeOutOfRange
+        {
+            get
+            {
+                return ResourceManager.GetString("ScheduleWindowStartTimeOutOfRange", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to TargetResourceGroupName parameter should be empty for OriginalLocation in-place restore
+        /// </summary>
+        public static string TargetRGNotRequiredException
+        {
+            get
+            {
+                return ResourceManager.GetString("TargetRGNotRequiredException", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to TargetVMName, TargetVNetName, TargetVNetResourceGroup, TargetSubnetName can't be empty for restoring to AlternateLocation with create new VM option
+        /// </summary>
+        public static string TargetParamsMissingException
+        {
+            get
+            {
+                return ResourceManager.GetString("TargetParamsMissingException", resourceCulture);
+            }
+        }
     }
 }

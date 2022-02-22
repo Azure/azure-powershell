@@ -17,7 +17,8 @@ Creates an inbound NAT rule configuration for a load balancer.
 ```
 New-AzLoadBalancerInboundNatRuleConfig -Name <String> [-Protocol <String>] [-FrontendPort <Int32>]
  [-BackendPort <Int32>] [-IdleTimeoutInMinutes <Int32>] [-EnableFloatingIP] [-EnableTcpReset]
- [-FrontendIpConfiguration <PSFrontendIPConfiguration>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-FrontendIpConfiguration <PSFrontendIPConfiguration>] [-FrontendPortRangeStart <Int32>]
+ [-FrontendPortRangeEnd <Int32>] [-BackendAddressPool <PSBackendAddressPool>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -25,7 +26,8 @@ New-AzLoadBalancerInboundNatRuleConfig -Name <String> [-Protocol <String>] [-Fro
 ```
 New-AzLoadBalancerInboundNatRuleConfig -Name <String> [-Protocol <String>] [-FrontendPort <Int32>]
  [-BackendPort <Int32>] [-IdleTimeoutInMinutes <Int32>] [-EnableFloatingIP] [-EnableTcpReset]
- [-FrontendIpConfigurationId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-FrontendIpConfigurationId <String>] [-FrontendPortRangeStart <Int32>]
+ [-FrontendPortRangeEnd <Int32>] [-BackendAddressPoolId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -46,6 +48,15 @@ The second command creates a front-end IP configuration named FrontendIpConfig01
 The third command creates an inbound NAT rule configuration named MyInboundNatRule using the front-end object in $frontend.
 The TCP protocol is specified and the front-end port is 3389, the same as the backend port in this case.
 The *FrontendIpConfiguration*, *Protocol*, *FrontendPort*, and *BackendPort* parameters are all required to create an inbound NAT rule configuration.
+
+### Example 2: Create an inbound NAT rule V2 configuration for a load balancer
+```
+PS C:\>$slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
+PS C:\>$natRuleV2 = New-AzLoadBalancerInboundNatRuleConfig -Name natRuleV2 -Protocol "Tcp" -FrontendIpConfiguration $slb.FrontendIpConfigurations[0] -FrontendPortRangeStart 3390 -FrontendPortRangeEnd 4001 -BackendAddressPool $slb.BackendAddressPools[0] -IdleTimeoutInMinutes 4 -BackendPort 3389
+```
+
+The first command gets the load balancer named MyloadBalancer, and then stores it in the variable $slb.
+The second command creates an inbound NAT rule configuration named natRuleV2.The *FrontendIpConfiguration*, *BackendAddressPool*, *Protocol*, *FrontendPortRangeStart*, *FrontendPortRangeEnd* and *BackendPort* parameters are all required to create an inbound NAT rule V2 configuration.
 
 ## PARAMETERS
 
@@ -202,6 +213,66 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -FrontendPortRangeStart
+Specifies the first port number in the range of external ports that is used by a rule configuration. Acceptable values range between 1 and 65534.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -FrontendPortRangeEnd
+Specifies the last port number in the range of external ports that is used by a rule configuration. Acceptable values range between 1 and 65535.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -BackendAddressPool
+Specifies the backend address pool to associate with an inbound NAT rule configuration.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool
+Parameter Sets: SetByResource
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -BackendAddressPoolId
+Specifies the ID of a BackendAddressPool object to associate with an inbound NAT rule configuration.
+
+```yaml
+Type: System.String
+Parameter Sets: SetByResourceId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -241,7 +312,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Int32
 
+### Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
+
 ### Microsoft.Azure.Commands.Network.Models.PSFrontendIPConfiguration
+
+### Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool
 
 ## OUTPUTS
 
@@ -262,5 +337,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzLoadBalancerInboundNatRuleConfig](./Remove-AzLoadBalancerInboundNatRuleConfig.md)
 
 [Set-AzLoadBalancerInboundNatRuleConfig](./Set-AzLoadBalancerInboundNatRuleConfig.md)
-
-

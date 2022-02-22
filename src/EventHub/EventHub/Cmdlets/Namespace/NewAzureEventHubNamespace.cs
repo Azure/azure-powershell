@@ -128,6 +128,19 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, HelpMessage = "enabling or disabling SAS authentication for namespace")]
         public SwitchParameter DisableLocalAuth { get; set; }
 
+        [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Identity Type ('SystemAssigned', 'UserAssigned', 'SystemAssigned', 'UserAssigned', 'None')")]
+        [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Identity Type ('SystemAssigned', 'UserAssigned', 'SystemAssigned', 'UserAssigned', 'None')")]
+        [ValidateSet("SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned", "None", IgnoreCase = true)]
+        public string IdentityType { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "List of user assigned Identity Ids")]
+        [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "List of user assigned Identity Ids")]
+        public string[] IdentityId { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Key Property")]
+        [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Key Property")]
+        public PSEncryptionConfigAttributes[] EncryptionConfig { get; set; }
+
         /// <summary>
         /// 
         /// </summary>
@@ -153,7 +166,10 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
                         ClusterARMId,
                         ZoneRedundant.IsPresent,
                         DisableLocalAuth.IsPresent,
-                        Identity.IsPresent));
+                        Identity.IsPresent,
+                        IdentityType,
+                        IdentityId,
+                        EncryptionConfig));
                 }
                 catch (Management.EventHub.Models.ErrorResponseException ex)
                 {

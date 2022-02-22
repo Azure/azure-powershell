@@ -19,6 +19,12 @@
 -->
 
 ## Upcoming Release
+* Fixed the issue that authorization does not work in Dogfood environment
+* Enabled Continue Access Evaluation for MSGraph
+* Improved error message when login is blocked by AAD
+* Improved error message when silent reauthentication failed
+
+## Version 2.7.2
 * Removed legacy assembly System.Private.ServiceModel and System.ServiceModel.Primitives [#16063]
 
 ## Version 2.7.1

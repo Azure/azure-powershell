@@ -281,6 +281,7 @@ Workload type of the resource. The acceptable values for this parameter are:
 - AzureFiles
 - MSSQL
 - FileFolder
+- SAPHanaDatabase
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType

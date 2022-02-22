@@ -14,9 +14,9 @@ Creates a managed HSM.
 
 ```
 New-AzKeyVaultManagedHsm [-Name] <String> [-ResourceGroupName] <String> [-Location] <String>
- [-Administrator] <String[]> [-Sku <String>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
- [<CommonParameters>]
+ [-Administrator] <String[]> [-Sku <String>] [-SoftDeleteRetentionInDays <Int32>] [-EnablePurgeProtection]
+ [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,8 +49,6 @@ Name  Resource Group Name Location    SKU
 ----  ------------------- --------    ---
 myhsm myrg1               eastus2euap CustomB32
 ```
-
-                      
 
 This command creates a managed HSM, just like the previous example. However, it specifies a value of
 CustomB32 for the *SKU* parameter to create a CustomB32 managed HSM.
@@ -94,6 +92,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnablePurgeProtection
+specifying whether protection against purge is enabled for this managed HSM pool. The setting is effective only if soft delete is also enabled. Enabling this functionality is irreversible.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -163,6 +176,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SoftDeleteRetentionInDays
+Specifies how long the deleted managed hsm pool is retained, and how long until the managed hsm pool in the deleted state can be purged. The default is 90 days.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

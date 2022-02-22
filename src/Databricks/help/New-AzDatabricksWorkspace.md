@@ -14,10 +14,15 @@ Creates a new workspace.
 
 ```
 New-AzDatabricksWorkspace -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-EnableNoPublicIP] [-ManagedResourceGroupName <String>] [-PrepareEncryption]
- [-PrivateSubnetName <String>] [-PublicSubnetName <String>] [-RequireInfrastructureEncryption] [-Sku <String>]
- [-Tag <Hashtable>] [-VirtualNetworkId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-AmlWorkspaceId <String>] [-EnableNoPublicIP] [-EncryptionKeyName <String>]
+ [-EncryptionKeySource <KeySource>] [-EncryptionKeyVaultUri <String>] [-EncryptionKeyVersion <String>]
+ [-LoadBalancerBackendPoolName <String>] [-LoadBalancerId <String>] [-ManagedResourceGroupName <String>]
+ [-NatGatewayName <String>] [-PrepareEncryption] [-PrivateSubnetName <String>] [-PublicIPName <String>]
+ [-PublicNetworkAccess <PublicNetworkAccess>] [-PublicSubnetName <String>]
+ [-RequiredNsgRule <RequiredNsgRules>] [-RequireInfrastructureEncryption] [-Sku <String>] [-SkuTier <String>]
+ [-StorageAccountName <String>] [-StorageAccountSku <String>] [-Tag <Hashtable>] [-VirtualNetworkId <String>]
+ [-VnetAddressPrefix <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,11 +32,11 @@ Creates a new workspace.
 
 ### Example 1: Create a Databricks workspace
 ```powershell
-PS C:\> New-AzDatabricksWorkspace -Name databricks-test -ResourceGroupName testgroup -Location eastus -ManagedResourceGroupName databricks-group -Sku standard
+PS C:\> New-AzDatabricksWorkspace -Name workspace3miaeb -ResourceGroupName databricks-rg-rqb2yo -Location eastus -ManagedResourceGroupName databricks-group -Sku standard
 
-Location Name            Type
--------- ----            ----
-eastus   databricks-test Microsoft.Databricks/workspaces
+Name            ResourceGroupName    Location Managed Resource Group ID
+----            -----------------    -------- -------------------------
+workspace3miaeb databricks-rg-rqb2yo eastus   /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/databricks-rg-workspace3miaeb-3c0s2mbgrqv9k
 ```
 
 This command creates a Databricks workspace.
@@ -40,32 +45,47 @@ This command creates a Databricks workspace.
 ```powershell
 PS C:\> $dlg = New-AzDelegation -Name dbrdl -ServiceName "Microsoft.Databricks/workspaces"
 PS C:\> $rdpRule = New-AzNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" -Access Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389
-PS C:\> $networkSecurityGroup = New-AzNetworkSecurityGroup -ResourceGroupName testgroup -Location eastus -Name nsg-test -SecurityRules $rdpRule
+PS C:\> $networkSecurityGroup = New-AzNetworkSecurityGroup -ResourceGroupName databricks-rg-rqb2yo -Location eastus -Name nsg-test -SecurityRules $rdpRule
 PS C:\> $privSubnet = New-AzVirtualNetworkSubnetConfig -Name priv-sub -AddressPrefix "10.0.1.0/24" -NetworkSecurityGroup $networkSecurityGroup -Delegation $dlg
 PS C:\> $pubSubnet = New-AzVirtualNetworkSubnetConfig -Name pub-sub  -AddressPrefix "10.0.2.0/24" -NetworkSecurityGroup $networkSecurityGroup -Delegation $dlg
-PS C:\> $testVN = New-AzVirtualNetwork -Name testvn -ResourceGroupName testgroup -Location eastus -AddressPrefix "10.0.0.0/16" -Subnet $privSubnet,$pubSubnet
-PS C:\> New-AzDatabricksWorkspace -Name databricks-test-with-custom-vn -ResourceGroupName testgroup -Location eastus -VirtualNetworkId $testVN.Id -PrivateSubnetName $privSubnet.Name -PublicSubnetName $privSubnet.Name -Sku standard
+PS C:\> $testVN = New-AzVirtualNetwork -Name testvn -ResourceGroupName databricks-rg-rqb2yo -Location eastus -AddressPrefix "10.0.0.0/16" -Subnet $privSubnet,$pubSubnet
+PS C:\> New-AzDatabricksWorkspace -Name workspace3miaeb-with-custom-vn -ResourceGroupName databricks-rg-rqb2yo -Location eastus -VirtualNetworkId $testVN.Id -PrivateSubnetName $privSubnet.Name -PublicSubnetName $privSubnet.Name -Sku standard
 
-Location Name                           Type
--------- ----                           ----
-eastus   databricks-test-with-custom-vn Microsoft.Databricks/workspaces
+Name            ResourceGroupName    Location Managed Resource Group ID
+----            -----------------    -------- -------------------------
+workspace3miaeb databricks-rg-rqb2yo eastus   /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/databricks-rg-workspace3miaeb-3c0s2mbgrqv9k
 ```
 
 This command creates a Databricks workspace with customized virtual network in a resource group.
 
 ### Example 3: Create a Databricks workspace with enable encryption
 ```powershell
-PS C:\> New-AzDatabricksWorkspace -Name databricks-test02 -ResourceGroupName testgroup -PrepareEncryption -Location "East US 2 EUAP" -Sku premium
+PS C:\> New-AzDatabricksWorkspace -Name workspace3miaeb -ResourceGroupName databricks-rg-rqb2yo -PrepareEncryption -Location "East US 2 EUAP" -Sku premium
 
-Location Name            Type
--------- ----            ----
-eastus   databricks-test02 Microsoft.Databricks/workspaces
+Name            ResourceGroupName    Location Managed Resource Group ID
+----            -----------------    -------- -------------------------
+workspace3miaeb databricks-rg-rqb2yo eastus   /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/databricks-rg-workspace3miaeb-3c0s2mbgrqv9k
 ```
 
 This command creates a Databricks workspace and sets it to prepare for encryption.
 Please refer to the examples of Update-AzDatabricksWorkspace for more settings to encryption.
 
 ## PARAMETERS
+
+### -AmlWorkspaceId
+The value which should be used for this field.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run the command as a job
@@ -112,6 +132,97 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EncryptionKeyName
+The name of KeyVault key.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionKeySource
+The encryption keySource (provider).
+Possible values (case-insensitive): Default, Microsoft.Keyvault
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionKeyVaultUri
+The Uri of KeyVault.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionKeyVersion
+The version of KeyVault key.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LoadBalancerBackendPoolName
+The value which should be used for this field.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LoadBalancerId
+The value which should be used for this field.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 The geo-location where the resource lives
 
@@ -128,7 +239,7 @@ Accept wildcard characters: False
 ```
 
 ### -ManagedResourceGroupName
-The managed resource group name.
+The managed resource group Id.
 
 ```yaml
 Type: System.String
@@ -157,6 +268,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NatGatewayName
+The value which should be used for this field.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -173,8 +299,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrepareEncryption
-Prepare the workspace for encryption.
-Enables the Managed Identity for managed storage account.
+The value which should be used for this field.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -189,10 +314,41 @@ Accept wildcard characters: False
 ```
 
 ### -PrivateSubnetName
-The name of the Private Subnet within the Virtual Network.
+The value which should be used for this field.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicIPName
+The value which should be used for this field.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicNetworkAccess
+The network access type for accessing workspace.
+Set value to disabled to access workspace only via private link.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PublicNetworkAccess
 Parameter Sets: (All)
 Aliases:
 
@@ -204,7 +360,7 @@ Accept wildcard characters: False
 ```
 
 ### -PublicSubnetName
-The name of a Public Subnet within the Virtual Network.
+The value which should be used for this field.
 
 ```yaml
 Type: System.String
@@ -218,8 +374,25 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RequiredNsgRule
+Gets or sets a value indicating whether data plane (clusters) to control plane communication happen over private endpoint.
+Supported values are 'AllRules' and 'NoAzureDatabricksRules'.
+'NoAzureServiceRules' value is for internal use only.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.RequiredNsgRules
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RequireInfrastructureEncryption
-A boolean indicating whether or not the DBFS root file system will be enabled with secondary layer of encryption with platform managed keys for data at rest.
+The value which should be used for this field.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -264,6 +437,51 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SkuTier
+The SKU tier.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageAccountName
+The value which should be used for this field.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageAccountSku
+The value which should be used for this field.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The ID of the target subscription.
 
@@ -295,7 +513,22 @@ Accept wildcard characters: False
 ```
 
 ### -VirtualNetworkId
-The ID of a Virtual Network where this Databricks Cluster should be created.
+The value which should be used for this field.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VnetAddressPrefix
+The value which should be used for this field.
 
 ```yaml
 Type: System.String
@@ -347,7 +580,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspace
+### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20210401Preview.IWorkspace
 
 ## NOTES
 

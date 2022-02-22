@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
 
         /// <summary>
-        /// Fetches all existing role Definitions.
+        /// Fetches all existing role Definitions under scope. Please notice that if scope is null, this method will not return custom role.
         /// </summary>
         /// <returns>role Definitions</returns>
         public IEnumerable<PSRoleDefinition> ListRoleDefinitionsForScope(string scope, ulong first = ulong.MaxValue, ulong skip = 0)
@@ -220,7 +220,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             var roleAssignments = tempResult.FilterRoleAssignmentsOnRoleId(AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromSubscriptionAndIdAsGuid(currentSubscription, options.RoleDefinitionId)).ToList();
 
             // Filter out by RoleDefinitionName
-            result.AddRange(roleAssignments.ToPSRoleAssignments(this, ActiveDirectoryClient, options.Scope)) ;
+            result.AddRange(roleAssignments.ToPSRoleAssignments(this, ActiveDirectoryClient, options.Scope ?? AuthorizationHelper.GetSubscriptionScope(currentSubscription))) ;
 
             if (!string.IsNullOrEmpty(options.RoleDefinitionName))
             {

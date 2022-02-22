@@ -2,6 +2,7 @@
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using CrrModel = Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore.Models;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -58,11 +59,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <returns></returns>
         public CmdletModel.JobBase GetCrrJobObject(string secondaryRegion, string vaultId, string jobId)
         {
-            CrrJobRequest jobRequest = new CrrJobRequest();
+            CrrModel.CrrJobRequest jobRequest = new CrrModel.CrrJobRequest();
             jobRequest.JobName = jobId;
             jobRequest.ResourceId = vaultId;
-
-            JobBase job = JobConversions.GetPSJob(ServiceClientAdapter.GetCRRJobDetails(
+                        
+            JobBase job = JobConversions.GetPSJobCrr(ServiceClientAdapter.GetCRRJobDetails(
                 secondaryRegion,
                 jobRequest));
 

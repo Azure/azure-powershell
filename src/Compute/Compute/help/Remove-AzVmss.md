@@ -14,8 +14,9 @@ Removes the VMSS or a virtual machine that is within the VMSS.
 ## SYNTAX
 
 ```
-Remove-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String> [[-InstanceId] <String[]>] [-Force]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String> [[-InstanceId] <String[]>]
+ [-ForceDeletion <Boolean>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,15 +27,15 @@ You can use the *InstanceId* parameter to remove a specific virtual machine insi
 ## EXAMPLES
 
 ### Example 1: Remove a VMSS
-```
-PS C:\> Remove-AzVmss -ResourceGroupName "Group001" -VMScaleSetName "VMScaleSet001"
+```powershell
+Remove-AzVmss -ResourceGroupName "Group001" -VMScaleSetName "VMScaleSet001"
 ```
 
 This command removes the VMSS named VMScaleSet001 that belongs to the resource group named Group001.
 
 ### Example 2: Remove a virtual machine from within a VMSS
-```
-PS C:\> Remove-AzVmss -ResourceGroupName "Group002" -VMScaleSetName "VMScaleSet002" -InstanceId "3";
+```powershell
+Remove-AzVmss -ResourceGroupName "Group002" -VMScaleSetName "VMScaleSet002" -InstanceId "3";
 ```
 
 This command removes the virtual machine with instance ID 3 from the VMSS named VMScaleSet002 that belongs to the resource group named Group002.
@@ -76,6 +77,21 @@ Forces the command to run without asking for user confirmation.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ForceDeletion
+Optional parameter to force delete a VM.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 

@@ -15,17 +15,19 @@ Updates a workspace.
 ### UpdateExpanded (Default)
 ```
 Update-AzDatabricksWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-EncryptionKeyName <String>] [-EncryptionKeySource <KeySource>] [-EncryptionKeyVaultUri <String>]
- [-EncryptionKeyVersion <String>] [-PrepareEncryption] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AmlWorkspaceId <String>] [-EncryptionKeyName <String>] [-EncryptionKeySource <KeySource>]
+ [-EncryptionKeyVaultUri <String>] [-EncryptionKeyVersion <String>] [-KeyVaultKeyName <String>]
+ [-KeyVaultKeyVersion <String>] [-KeyVaultUri <String>] [-PrepareEncryption] [-SkuTier <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzDatabricksWorkspace -InputObject <IDatabricksIdentity> [-EncryptionKeyName <String>]
- [-EncryptionKeySource <KeySource>] [-EncryptionKeyVaultUri <String>] [-EncryptionKeyVersion <String>]
- [-PrepareEncryption] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzDatabricksWorkspace -InputObject <IDatabricksIdentity> [-AmlWorkspaceId <String>]
+ [-EncryptionKeyName <String>] [-EncryptionKeySource <KeySource>] [-EncryptionKeyVaultUri <String>]
+ [-EncryptionKeyVersion <String>] [-KeyVaultKeyName <String>] [-KeyVaultKeyVersion <String>]
+ [-KeyVaultUri <String>] [-PrepareEncryption] [-SkuTier <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,24 +37,24 @@ Updates a workspace.
 
 ### Example 1: Updates the tags of a Databricks workspace
 ```powershell
-PS C:\> $dbr = Get-AzDatabricksWorkspace -ResourceGroupName databricks-rg-952d47 -Name workspaceopsc46 -Tag @{'key'=1}
+PS C:\> $dbr = Get-AzDatabricksWorkspace -ResourceGroupName databricks-rg-rqb2yo -Name workspaceopsc46 -Tag @{'key'=1}
 PS C:\> Update-AzDatabricksWorkspace -InputObject $dbr -Tag @{key="value"}
 
-Name            Location Managed Resource Group ID
-----            -------- -------------------------
-workspaceopsc46 eastus   /subscriptions/0140911e-1040-48da-8bc9-b99fb3dd88a6/resourceGroups/databricks-rg-workspaceopsc46-wfgp3ayhu6jkn
+Name            ResourceGroupName    Location Managed Resource Group ID
+----            -----------------    -------- -------------------------
+workspace3miaeb databricks-rg-rqb2yo eastus   /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/databricks-rg-workspace3miaeb-3c0s2mbgrqv9k
 ```
 
 This command updates the tags of a Databricks workspace.
 
 ### Example 2: Enable encryption on a Databricks workspace
 ```powershell
-PS C:\> Update-AzDatabricksWorkspace -ResourceGroupName databricks-rg-952d47 -Name workspaceypae6l -PrepareEncryption
-PS C:\> Update-AzDatabricksWorkspace -ResourceGroupName databricks-rg-952d47 -Name workspaceypae6l -EncryptionKeySource 'Microsoft.KeyVault' -EncryptionKeyVaultUri https://keyvalult-j3kube.vault.azure.net/ -EncryptionKeyName key-p3bjsf -EncryptionKeyVersion 853999da89714fb4a1408681945135fd
+PS C:\> Update-AzDatabricksWorkspace -ResourceGroupName databricks-rg-rqb2yo -Name workspace3miaeb -PrepareEncryption
+PS C:\> Update-AzDatabricksWorkspace -ResourceGroupName databricks-rg-rqb2yo -Name workspace3miaeb -EncryptionKeySource 'Microsoft.KeyVault' -EncryptionKeyVaultUri https://keyvalult-j3kube.vault.azure.net/ -EncryptionKeyName key-p3bjsf -EncryptionKeyVersion 853999da89714fb4a1408681945135fd
 
-Name            Location       Managed Resource Group ID
-----            --------       -------------------------
-workspaceypae6l East US 2 EUAP /subscriptions/0140911e-1040-48da-8bc9-b99fb3dd88a6/resourceGroups/databricks-rg-workspaceypae6l-wzefrgv2b075t
+Name            ResourceGroupName    Location Managed Resource Group ID
+----            -----------------    -------- -------------------------
+workspace3miaeb databricks-rg-rqb2yo eastus   /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/databricks-rg-workspace3miaeb-3c0s2mbgrqv9k
 ```
 
 Enabling encryption on a Databricks workspace takes three steps:
@@ -70,12 +72,27 @@ Update the workspace again to fill in information about the encryption key:
 
 ### Example 3: Disable encryption on a Databricks workspace
 ```powershell
-PS C:\> Update-AzDatabricksWorkspace -ResourceGroupName databricks-rg-952d47 -Name workspaceypae6l -EncryptionKeySource 'Default'
+PS C:\> Update-AzDatabricksWorkspace -ResourceGroupName databricks-rg-rqb2yo -Name workspace3miaeb -EncryptionKeySource 'Default'
 ```
 
 To disable encryption, simply set `-EncryptionKeySource` to `'Default'`.
 
 ## PARAMETERS
+
+### -AmlWorkspaceId
+The value which should be used for this field.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run the command as a job
@@ -184,6 +201,51 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -KeyVaultKeyName
+The name of KeyVault key.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVaultKeyVersion
+The version of KeyVault key.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVaultUri
+The Uri of KeyVault.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the workspace.
 
@@ -240,6 +302,21 @@ Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuTier
+The SKU tier.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -316,7 +393,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspace
+### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20210401Preview.IWorkspace
 
 ## NOTES
 
@@ -328,8 +405,10 @@ To create the parameters described below, construct a hash table containing the 
 
 
 INPUTOBJECT <IDatabricksIdentity>: Identity parameter.
+  - `[GroupId <String>]`: The name of the private link resource
   - `[Id <String>]`: Resource identity path
   - `[PeeringName <String>]`: The name of the workspace vNet peering.
+  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[WorkspaceName <String>]`: The name of the workspace.
