@@ -187,8 +187,8 @@ Accept wildcard characters: False
 ```
 
 ### -StayProvisioned
-The cmdlet stops all the virtual machines within the VMSS but does not deallocate them. The account
-is charged for the stopped virtual machines.
+The cmdlet stops a virtual machine, but does not deallocate it. The account
+is charged for the stopped virtual machine.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

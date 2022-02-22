@@ -18,6 +18,8 @@ The cmdlet may call below Microsoft Graph API according to input parameters:
 - GET /directoryObjects/{id}
 - POST /directoryObjects/getByIds
 
+Please notice that this cmdlet will mark `ObjectType` as `Unknown` in output if the object of role assignment is not found or current account has insufficient privileges to get object type.
+
 ## SYNTAX
 
 ### RoleAssignmentParameterSet (Default)

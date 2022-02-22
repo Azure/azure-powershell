@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported create/upgrade storage account with ActiveDirectorySamAccountName and ActiveDirectoryAccountType
+    -  `New-AzStorageAccount`
+    -  `Set-AzStorageAccount`
 
 ## Version 4.2.0
 * Fixed the issue that output number in console when update/copy blob sometimes [#16783]

@@ -34,6 +34,8 @@ The `TestFramework` library is available on NuGet at https://www.nuget.org/packa
 
 Instructions on manually downloading the library are available on NuGet, however, `TestFramework` will automatically be downloaded as part of the build process, so the manual download is usually not necessary.
 
+The target framework of test is .Net Core 3.1, please ensure .Net runtime Microsoft.NETCore.App 3.1 is installed. You can list all installed version via `dotnet --info`.
+
 ## Setup prior to Record or Playback of tests
 
 In order to Record/Playback a test, you need to setup a connection string that consists of various key/value pairs that provide information to the test environment.  

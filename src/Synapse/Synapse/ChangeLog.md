@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Updated `Update-AzSynapseSparkPool` to support new parameter [-ForceApplySetting]
 
 ## Version 1.0.0
 * General availability of Az.Synapse

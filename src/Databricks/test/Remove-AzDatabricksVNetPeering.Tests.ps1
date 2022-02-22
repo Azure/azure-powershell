@@ -13,15 +13,15 @@ while(-not $mockingPath) {
 
 Describe 'Remove-AzDatabricksVNetPeering' {
     It 'Delete' {
-        Remove-AzDatabricksVNetPeering -Name $env.vnetpeeringname01 -WorkspaceName $env.testWorkspace2 -ResourceGroupName $env.resourceGroup
+        Remove-AzDatabricksVNetPeering -Name $env.vnetpeeringname02 -WorkspaceName $env.testWorkspace2 -ResourceGroupName $env.resourceGroup
         $vnetPeeringList = Get-AzDatabricksVNetPeering -WorkspaceName $env.testWorkspace2 -ResourceGroupName $env.resourceGroup
-        $vnetPeeringList.Name | Should -Not -Contain $env.vnetpeeringname01
+        $vnetPeeringList.Name | Should -Not -Contain $env.vnetpeeringname02
     }
 
     It 'DeleteViaIdentity' {
-        $ventPeering = New-AzDatabricksVNetPeering -Name $env.vnetpeeringname02 -WorkspaceName $env.testWorkspace2 -ResourceGroupName $env.resourceGroup -RemoteVirtualNetworkId $env.virtualNetwork
+        $ventPeering = New-AzDatabricksVNetPeering -Name $env.vnetpeeringname03 -WorkspaceName $env.testWorkspace3 -ResourceGroupName $env.resourceGroup -RemoteVirtualNetworkId $env.virtualNetwork
         Remove-AzDatabricksVNetPeering -InputObject $ventPeering
-        $vnetPeeringList = Get-AzDatabricksVNetPeering -WorkspaceName $env.testWorkspace2 -ResourceGroupName $env.resourceGroup
-        $vnetPeeringList.Name | Should -Not -Contain $env.vnetpeeringname02
+        $vnetPeeringList = Get-AzDatabricksVNetPeering -WorkspaceName $env.testWorkspace3 -ResourceGroupName $env.resourceGroup
+        $vnetPeeringList.Name | Should -Not -Contain $env.vnetpeeringname03
     }
 }
