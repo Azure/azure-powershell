@@ -25,7 +25,7 @@ Describe 'AzBareMetal' {
     It 'Get' {
         {
             $config = Get-AzBareMetal -Name $env.BareMetalName1 -ResourceGroupName $env.ResourceGroupName
-            $config.Name | Shoule -Be $env.BareMetalName1
+            $config.Name | Should  -Be $env.BareMetalName1
         } | Should -Not -Throw
     }
 
@@ -39,7 +39,7 @@ Describe 'AzBareMetal' {
     It 'UpdateExpanded' {
         {
             $config = Update-AzBareMetal -Name $env.BareMetalName1 -ResourceGroupName $env.ResourceGroupName -Tag @{"env"="test"}
-            $config.Name | Shoule -Be $env.BareMetalName1
+            $config.Name | Should  -Be $env.BareMetalName1
         } | Should -Not -Throw
     }
 
@@ -47,7 +47,7 @@ Describe 'AzBareMetal' {
         {
             $config = Get-AzBareMetal -Name $env.BareMetalName2 -ResourceGroupName $env.ResourceGroupName
             $config = Update-AzBareMetal -InputObject $config -Tag @{"env"="test"}
-            $config.Name | Shoule -Be $env.BareMetalName2
+            $config.Name | Should  -Be $env.BareMetalName2
         } | Should -Not -Throw
     }
 }
