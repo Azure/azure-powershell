@@ -217,7 +217,7 @@ function New-AzADAppCredential {
             $null = $PSBoundParameters.Remove('PasswordCredentials')
         } else {
             $kc = $PSBoundParameters['KeyCredentials']
-            $null = $PSBoundParameters.Remove('PasswordCredentials')
+            $null = $PSBoundParameters.Remove('KeyCredentials')
         }
 
         $param = @{}

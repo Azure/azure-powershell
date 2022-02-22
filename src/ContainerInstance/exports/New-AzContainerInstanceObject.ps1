@@ -26,9 +26,18 @@ Name
 ----
 test-container
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> New-AzContainerInstanceObject -Image alpine -Name "test-container" -LimitCpu 2 -LimitMemoryInGb 2.5
 
-{{ Add output here }}
+Name
+----
+test-container
+.Example
+PS C:\> $container = New-AzContainerInstanceObject -Name test-container -Image alpine
+PS C:\> New-AzContainerGroup -ResourceGroupName testrg-rg -Name test-cg -Location eastus -Container $container
+
+Location Name    Zone ResourceGroupName
+-------- ----    ---- -----------------
+eastus   test-cg      test-rg
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.Container

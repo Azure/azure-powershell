@@ -28,18 +28,23 @@ Add-AzVhd [-ResourceGroupName] <String> [-LocalFilePath] <FileInfo> -DiskName <S
 ```
 
 ## DESCRIPTION
-The **Add-AzVhd** cmdlet uploads an on-premise virtual hard disk to a managed disk or a blob storage account.<br/><br/>
+The **Add-AzVhd** cmdlet uploads an on-premise virtual hard disk to a managed disk or a blob storage account.<br/>
 
-The virtual hard disk being uploaded needs to be a .vhd file and in size N * Mib + 512 bytes. Using Hyper-V functionality, **Add-AzVhd** will 
-convert .vhdx file to a .vhd file before uploading. It will convert dynamically sized .vhd file to a fixed size .vhd and resize. 
-If Hyper-V is not found, an error will occur with a message including a link to directions on how to enable Hyper-V 
-and manual steps for resizing and converting. <br/><br/>
+The virtual hard disk being uploaded needs to be a .vhd file and in size N * Mib + 512 bytes. Using [Hyper-V](https://docs.microsoft.com/en-us/windows-server/virtualization/hyper-v/hyper-v-technology-overview) 
+functionality, **Add-AzVhd** will convert any .vhdx files to a .vhd file, convert dynamically sized .vhd file to a fixed size .vhd, and resize before uploading. 
+To allow this functionality, you will need to [enable Hyper-V](https://docs.microsoft.com/en-us/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server). 
+If you are using a Linux machine or choose to not use this functionality, you will need to [resize the Vhd file manually](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/create-upload-generic?branch=pr-en-us-185925#resizing-vhds). <br/>
 
 For Default Parameter set (upload to blob), also supported is the ability to upload a patched version of an on-premises .vhd file.
 When a base virtual hard disk has already been uploaded, you can upload differencing disks that use the base image as the parent.
 Shared access signature (SAS) URI is supported also. <br/>
+
 For Direct Upload to Managed Disk Parameter set, parameters: ResourceGroupName, DiskName, Location, DiskSku, and Zone will be used to 
-create a new disk, then the virtual hard disk will be uploaded to it.
+create a new disk, then the virtual hard disk will be uploaded to it. <br/>
+
+More information on [using Add-AzVhd to directly upload to a managed disk](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell#use-add-azvhd).
+
+For VHD files greater than 50 GB, we recommend using [AzCopy](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10?toc=/azure/storage/blobs/toc.json) for faster upload.
 
 ## EXAMPLES
 

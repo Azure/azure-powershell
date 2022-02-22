@@ -1,4 +1,18 @@
-﻿using Microsoft.Azure.Commands.KeyVault.Models;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
@@ -35,6 +49,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
+        [Parameter(Mandatory = false,
+            HelpMessage = "specifying whether protection against purge is enabled for this managed HSM pool. The setting is effective only if soft delete is also enabled. Enabling this functionality is irreversible.")]
+        public SwitchParameter EnablePurgeProtection { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -64,11 +81,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
             }
             catch
             {
-                existingResource = null;
-            }
-
-            if (existingResource == null)
-            {
                 throw new Exception(string.Format(Resources.HsmNotFound, this.Name, this.ResourceGroupName));
             }
 
@@ -76,8 +88,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
             {
                 var result = KeyVaultManagementClient.UpdateManagedHsm(existingResource, 
                     new VaultCreationOrUpdateParameters 
-                    { 
-                        Tags = Tag
+                    {
+                        // false is not accepted
+                        EnablePurgeProtection = this.EnablePurgeProtection.IsPresent ? (true as bool?) : null,
+                        Tags = this.Tag
                     }, null);
                 WriteObject(result);
             }
