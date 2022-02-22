@@ -30,13 +30,13 @@ For information on how to develop for `Az.HealthcareApis`, see [how-to.md](how-t
 > see https://aka.ms/autorest
 
 ``` yaml
-Branch: 2a6c840524573116aa549a3733fa2243baa4da3f
+Branch: 8b1817cb8141e67087be20abcabb02e666be77e3
+# Branch: 2a6c840524573116aa549a3733fa2243baa4da3f
 require:
   - $(this-folder)/../readme.azure.noprofile.md 
 input-file:
-  # - https://github.com/Azure/azure-rest-api-specs/blob/dev-healthcareapis-Microsoft.HealthcareApis-2021-11-01-changes/specification/healthcareapis/resource-manager/Microsoft.HealthcareApis/stable/2021-11-01/healthcare-apis.json
-  - $(repo)/specification/healthcareapis/resource-manager/Microsoft.HealthcareApis/preview/2021-06-01-preview/healthcare-apis.json
-  # - https://github.com/Azure/azure-rest-api-specs/blob/dev-healthcareapis-Microsoft.HealthcareApis-2021-11-01-changes/specification/healthcareapis/resource-manager/Microsoft.HealthcareApis/stable/2021-11-01/healthcare-apis.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/dev-healthcareapis-Microsoft.HealthcareApis-2021-11-01-changes/specification/healthcareapis/resource-manager/Microsoft.HealthcareApis/stable/2021-11-01/healthcare-apis.json
+  # - $(repo)/specification/healthcareapis/resource-manager/Microsoft.HealthcareApis/preview/2021-06-01-preview/healthcare-apis.json
 
 module-version: 0.3.0
 title: HealthcareApis

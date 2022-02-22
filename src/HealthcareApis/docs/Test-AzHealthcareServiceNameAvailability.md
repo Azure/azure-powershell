@@ -67,7 +67,7 @@ Input values.
 To construct, see NOTES section for CHECKNAMEAVAILABILITYINPUT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20210601Preview.ICheckNameAvailabilityParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.ICheckNameAvailabilityParameters
 Parameter Sets: Check, CheckViaIdentity
 Aliases:
 
@@ -190,13 +190,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20210601Preview.ICheckNameAvailabilityParameters
+### Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.ICheckNameAvailabilityParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IHealthcareApisIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20210601Preview.IServicesNameAvailabilityInfo
+### Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServicesNameAvailabilityInfo
 
 ## NOTES
 

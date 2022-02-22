@@ -15,12 +15,15 @@ Creates or updates a FHIR Service resource with the specified parameters.
 ```
 New-AzHealthcareFhirService -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
  [-SubscriptionId <String>] [-AccessPolicy <IFhirServiceAccessPolicyEntry[]>]
- [-AcrConfigurationLoginServer <String[]>] [-AuthenticationConfigurationAudience <String>]
- [-AuthenticationConfigurationAuthority <String>] [-AuthenticationConfigurationSmartProxyEnabled]
- [-CorConfigurationAllowCredentials] [-CorConfigurationHeader <String[]>] [-CorConfigurationMaxAge <Int32>]
- [-CorConfigurationMethod <String[]>] [-CorConfigurationOrigin <String[]>] [-Etag <String>]
- [-ExportConfigurationStorageAccountName <String>] [-IdentityType <ManagedServiceIdentityType>]
- [-Kind <FhirServiceKind>] [-Location <String>] [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>]
+ [-AcrConfigurationLoginServer <String[]>] [-AcrConfigurationOciArtifact <IServiceOciArtifactEntry[]>]
+ [-AuthenticationConfigurationAudience <String>] [-AuthenticationConfigurationAuthority <String>]
+ [-AuthenticationConfigurationSmartProxyEnabled] [-CorConfigurationAllowCredentials]
+ [-CorConfigurationHeader <String[]>] [-CorConfigurationMaxAge <Int32>] [-CorConfigurationMethod <String[]>]
+ [-CorConfigurationOrigin <String[]>] [-Etag <String>] [-ExportConfigurationStorageAccountName <String>]
+ [-IdentityType <ServiceManagedIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
+ [-Kind <FhirServiceKind>] [-Location <String>] [-PublicNetworkAccess <PublicNetworkAccess>]
+ [-ResourceVersionPolicyConfigurationDefault <FhirResourceVersionPolicy>]
+ [-ResourceVersionPolicyConfigurationResourceTypeOverride <Hashtable>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -54,7 +57,7 @@ Fhir Service access policies.
 To construct, see NOTES section for ACCESSPOLICY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20210601Preview.IFhirServiceAccessPolicyEntry[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IFhirServiceAccessPolicyEntry[]
 Parameter Sets: (All)
 Aliases:
 
@@ -70,6 +73,22 @@ The list of the Azure container registry login servers.
 
 ```yaml
 Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AcrConfigurationOciArtifact
+The list of Open Container Initiative (OCI) artifacts.
+To construct, see NOTES section for ACRCONFIGURATIONOCIARTIFACT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServiceOciArtifactEntry[]
 Parameter Sets: (All)
 Aliases:
 
@@ -264,7 +283,24 @@ Accept wildcard characters: False
 Type of identity being specified, currently SystemAssigned and None are allowed.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.ManagedServiceIdentityType
+Type: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.ServiceManagedIdentityType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityUserAssignedIdentity
+The set of user assigned identities associated with the resource.
+The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+The dictionary values can be empty objects ({}) in requests.
+
+```yaml
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -335,11 +371,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProvisioningState
-The provisioning state.
+### -PublicNetworkAccess
+Control permission for data plane traffic coming from public networks while private endpoint is enabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.ProvisioningState
+Type: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.PublicNetworkAccess
 Parameter Sets: (All)
 Aliases:
 
@@ -359,6 +395,36 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceVersionPolicyConfigurationDefault
+The default value for tracking history across all resources.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.FhirResourceVersionPolicy
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceVersionPolicyConfigurationResourceTypeOverride
+A list of FHIR Resources and their version policy overrides.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -448,7 +514,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20210601Preview.IFhirService
+### Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IFhirService
 
 ## NOTES
 
@@ -461,6 +527,11 @@ To create the parameters described below, construct a hash table containing the 
 
 ACCESSPOLICY <IFhirServiceAccessPolicyEntry[]>: Fhir Service access policies.
   - `ObjectId <String>`: An Azure AD object ID (User or Apps) that is allowed access to the FHIR service.
+
+ACRCONFIGURATIONOCIARTIFACT <IServiceOciArtifactEntry[]>: The list of Open Container Initiative (OCI) artifacts.
+  - `[Digest <String>]`: The artifact digest.
+  - `[ImageName <String>]`: The artifact name.
+  - `[LoginServer <String>]`: The Azure Container Registry login server.
 
 ## RELATED LINKS
 

@@ -14,7 +14,7 @@ Creates or updates a workspace resource with the specified parameters.
 
 ```
 New-AzHealthcareAPIsWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Etag <String>] [-Location <String>] [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>]
+ [-Etag <String>] [-Location <String>] [-PublicNetworkAccess <PublicNetworkAccess>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -126,11 +126,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProvisioningState
-The provisioning state.
+### -PublicNetworkAccess
+Control permission for data plane traffic coming from public networks while private endpoint is enabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.ProvisioningState
+Type: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.PublicNetworkAccess
 Parameter Sets: (All)
 Aliases:
 
@@ -224,7 +224,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20210601Preview.IWorkspace
+### Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IWorkspace
 
 ## NOTES
 

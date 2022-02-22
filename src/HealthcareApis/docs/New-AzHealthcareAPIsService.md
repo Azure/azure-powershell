@@ -15,15 +15,15 @@ Create or update the metadata of a service instance.
 ```
 New-AzHealthcareAPIsService -ResourceGroupName <String> -ResourceName <String> -Kind <Kind> -Location <String>
  [-SubscriptionId <String>] [-AccessPolicy <IServiceAccessPolicyEntry[]>]
- [-AcrConfigurationLoginServer <String[]>] [-AuthenticationConfigurationAudience <String>]
- [-AuthenticationConfigurationAuthority <String>] [-AuthenticationConfigurationSmartProxyEnabled]
- [-CorConfigurationAllowCredentials] [-CorConfigurationHeader <String[]>] [-CorConfigurationMaxAge <Int32>]
- [-CorConfigurationMethod <String[]>] [-CorConfigurationOrigin <String[]>]
- [-CosmoDbConfigurationKeyVaultKeyUri <String>] [-CosmoDbConfigurationOfferThroughput <Int32>]
- [-Etag <String>] [-ExportConfigurationStorageAccountName <String>]
- [-IdentityType <ManagedServiceIdentityType>] [-PrivateEndpointConnection <IPrivateEndpointConnection[]>]
- [-PublicNetworkAccess <PublicNetworkAccess>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AcrConfigurationLoginServer <String[]>] [-AcrConfigurationOciArtifact <IServiceOciArtifactEntry[]>]
+ [-AuthenticationConfigurationAudience <String>] [-AuthenticationConfigurationAuthority <String>]
+ [-AuthenticationConfigurationSmartProxyEnabled] [-CorConfigurationAllowCredentials]
+ [-CorConfigurationHeader <String[]>] [-CorConfigurationMaxAge <Int32>] [-CorConfigurationMethod <String[]>]
+ [-CorConfigurationOrigin <String[]>] [-CosmoDbConfigurationKeyVaultKeyUri <String>]
+ [-CosmoDbConfigurationOfferThroughput <Int32>] [-Etag <String>]
+ [-ExportConfigurationStorageAccountName <String>] [-IdentityType <ManagedServiceIdentityType>]
+ [-PrivateEndpointConnection <IPrivateEndpointConnection[]>] [-PublicNetworkAccess <PublicNetworkAccess>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,7 +56,7 @@ The access policies of the service instance.
 To construct, see NOTES section for ACCESSPOLICY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20210601Preview.IServiceAccessPolicyEntry[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServiceAccessPolicyEntry[]
 Parameter Sets: (All)
 Aliases:
 
@@ -72,6 +72,22 @@ The list of the ACR login servers.
 
 ```yaml
 Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AcrConfigurationOciArtifact
+The list of Open Container Initiative (OCI) artifacts.
+To construct, see NOTES section for ACRCONFIGURATIONOCIARTIFACT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServiceOciArtifactEntry[]
 Parameter Sets: (All)
 Aliases:
 
@@ -481,7 +497,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20210601Preview.IServicesDescription
+### Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServicesDescription
 
 ## NOTES
 
@@ -494,6 +510,11 @@ To create the parameters described below, construct a hash table containing the 
 
 ACCESSPOLICY <IServiceAccessPolicyEntry[]>: The access policies of the service instance.
   - `ObjectId <String>`: An Azure AD object ID (User or Apps) that is allowed access to the FHIR service.
+
+ACRCONFIGURATIONOCIARTIFACT <IServiceOciArtifactEntry[]>: The list of Open Container Initiative (OCI) artifacts.
+  - `[Digest <String>]`: The artifact digest.
+  - `[ImageName <String>]`: The artifact name.
+  - `[LoginServer <String>]`: The Azure Container Registry login server.
 
 PRIVATEENDPOINTCONNECTION <IPrivateEndpointConnection[]>: The list of private endpoint connections that are set up for this resource.
   - `[PrivateLinkServiceConnectionStateActionsRequired <String>]`: A message indicating if changes on the service provider require any updates on the consumer.
