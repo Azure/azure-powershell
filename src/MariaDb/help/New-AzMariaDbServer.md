@@ -29,13 +29,14 @@ Creates a new MariaDB.
 ### Example 1: Create a new MariaDB
 ```powershell
 New-AzMariaDbServer -Name mariadb-aassd-01 -ResourceGroupName lucas-manual-test -Sku 'B_Gen5_1' -Location eastus
+```
+
+```output
 cmdlet New-AzMariaDbServer at command pipeline position 1
 Supply values for the following parameters:
 AdministratorUsername: adminuser
 AdministratorLoginPassword: ************
-```
 
-```output
 Name             Location AdministratorLogin Version StorageProfileStorageMb SkuName  SkuTier SslEnforcement
 ----             -------- ------------------ ------- ----------------------- -------  ------- --------------
 mariadb-aassd-01 eastus   adminuser          10.2    5120                    B_Gen5_1 Basic   Enabled
