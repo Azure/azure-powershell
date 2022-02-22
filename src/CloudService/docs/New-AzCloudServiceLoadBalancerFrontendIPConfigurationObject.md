@@ -40,12 +40,12 @@ This command creates load balancer frontend IP configuration object which is use
 For more details see New-AzCloudService.
 
 ### Example 2: Create load balancer frontend IP configuration object with Private ID address
-
 ```powershell
 # Create role profile object
 $subnet = New-AzVirtualNetworkSubnetConfig -Name "WebTier" -AddressPrefix "10.0.0.0/24" -WarningAction SilentlyContinue 
 $feIpConfig = New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject -Name 'ContosoFe' -privateIPAddress '10.0.0.6' -subnetId $Subnet.Id
 $loadBalancerConfig = New-AzCloudServiceLoadBalancerConfigurationObject -Name 'ContosoLB' -FrontendIPConfiguration $feIpConfig
+
 ```
 
 This command creates load balancer frontend IP configuration object with a Private IP address
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubnetId
-Resource ID of the Subnet.
+Subnet ID
 
 ```yaml
 Type: System.String
