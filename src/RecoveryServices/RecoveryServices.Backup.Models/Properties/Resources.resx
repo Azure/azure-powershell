@@ -697,4 +697,10 @@ Please contact Microsoft for further assistance.</value>
   <data name="ScheduleWindowStartTimeOutOfRange" xml:space="preserve">
     <value>ScheduleWindowStartTime is out of range, valid range is from 00:00 to 19:30</value>
   </data>
+  <data name="TargetParamsMissingException" xml:space="preserve">
+    <value>TargetVMName, TargetVNetName, TargetVNetResourceGroup, TargetSubnetName can't be empty for restoring to AlternateLocation with create new VM option</value>
+  </data>
+  <data name="TargetRGNotRequiredException" xml:space="preserve">
+    <value>TargetResourceGroupName parameter should be empty for OriginalLocation in-place restore</value>
+  </data>
 </root>

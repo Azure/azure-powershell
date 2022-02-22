@@ -14,9 +14,9 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
 using Microsoft.Azure.Commands.StorageSync.Common;
 using Microsoft.Azure.Commands.StorageSync.Interfaces;
-using Microsoft.Azure.Graph.RBAC.Version1_6_20190326;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.ResourceManager.Version2021_01_01;
@@ -185,17 +185,17 @@ namespace ScenarioTests
             var subClient = context.GetServiceClient<SubscriptionClient>(TestEnvironmentFactory.GetTestEnvironment());
             var storageSyncClient = context.GetServiceClient<StorageSyncManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
             var storageClient = context.GetServiceClient<StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-            GraphRbacManagementClient rbacClient = GetGraphClient(context);
+            MicrosoftGraphClient microsoftGraphClient = GetGraphClient(context);
             var authClient = context.GetServiceClient<AuthorizationManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-            _helper.SetupManagementClients(rmClient, subClient, storageSyncClient, storageClient, rbacClient, authClient);
+            _helper.SetupManagementClients(rmClient, subClient, storageSyncClient, storageClient, microsoftGraphClient, authClient);
         }
 
         /// <summary>
         /// Gets the graph client.
         /// </summary>
         /// <param name="context">The context.</param>
-        /// <returns>GraphRbacManagementClient.</returns>
-        private GraphRbacManagementClient GetGraphClient(MockContext context)
+        /// <returns>MicrosoftGraphClient.</returns>
+        private MicrosoftGraphClient GetGraphClient(MockContext context)
         {
             var environment = TestEnvironmentFactory.GetTestEnvironment();
             string tenantId = null;
@@ -224,7 +224,7 @@ namespace ScenarioTests
                 }
             }
 
-            var client = context.GetGraphServiceClient<GraphRbacManagementClient>(environment);
+            var client = context.GetGraphServiceClient<MicrosoftGraphClient>(environment, true);
             client.TenantID = tenantId;
             if (AzureRmProfileProvider.Instance != null &&
                 AzureRmProfileProvider.Instance.Profile != null &&

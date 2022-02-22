@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventHub.dll-Help.xml
 Module Name: Az.EventHub
 online version: https://docs.microsoft.com/powershell/module/az.eventhub/new-azeventhubnamespace
@@ -12,14 +12,13 @@ Creates an Event Hubs namespace.
 
 ## SYNTAX
 
-## SYNTAX
-
 ### NamespaceParameterSet (Default)
 ```
 New-AzEventHubNamespace [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
  [[-SkuName] <String>] [[-SkuCapacity] <Int32>] [[-Tag] <Hashtable>] [-EnableKafka] [-ZoneRedundant]
- [[-ClusterARMId] <String>] [-Identity] [-DisableLocalAuth] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-ClusterARMId] <String>] [-Identity] [-DisableLocalAuth] [-IdentityType <String>] [-IdentityId <String[]>]
+ [-EncryptionConfig <PSEncryptionConfigAttributes[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### AutoInflateParameterSet
@@ -27,7 +26,9 @@ New-AzEventHubNamespace [-ResourceGroupName] <String> [-Name] <String> [-Locatio
 New-AzEventHubNamespace [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
  [[-SkuName] <String>] [[-SkuCapacity] <Int32>] [[-Tag] <Hashtable>] [-EnableAutoInflate]
  [[-MaximumThroughputUnits] <Int32>] [-EnableKafka] [-ZoneRedundant] [[-ClusterARMId] <String>] [-Identity]
- [-DisableLocalAuth] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DisableLocalAuth] [-IdentityType <String>] [-IdentityId <String[]>]
+ [-EncryptionConfig <PSEncryptionConfigAttributes[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -161,7 +162,7 @@ Creates an Event Hubs namespace \`MyNamespaceName\` in the specified geographic 
 
 ### Example 5: Creating Namespace with Manage Identity in a cluster 
 ```powershell
-PS C:\> New-AzEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Location MyLocation --EnableAutoInflate -MaximumThroughputUnits 12 -EnableKafka -ZoneRedundant -Identity
+PS C:\> New-AzEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Location MyLocation --EnableAutoInflate -MaximumThroughputUnits 12 -EnableKafka -ZoneRedundant -IdentityType SystemAssigned
 
 Name                          : MyNamespaceName
 Id                            : /subscriptions/{subscriptionId}/resourceGroups/Default-EventHub-WestCentralUS/providers/Microsoft.EventHub/namespaces/MyNamespaceName
@@ -185,23 +186,25 @@ Identity.Type                 : SystemAssigned
 Encryption                    : Microsoft.Azure.Commands.EventHub.Models.PSEncryptionAttributes
 Encryption.KeySource          :
 Encryption.KeyVaultProperties :
+```
+
+### Example 6: Creating Namespace with UserAssigned identity encryption enabled
 
 
-# Get created namespace
-PS C:\>$getnamespace = Get-AzEventHubNamespace -ResourceGroupName MyResourceGroupName -Name MyNamespaceName
+```
 
-# Create KeyVault
-PS C:\>$Keyvault = New-AzKeyVault -ResourceGroupName prod-by3-533-rg -Name testingnewCluster -EnableSoftDelete -EnablePurgeProtection -Location westus
+# Create encryption config that will create an in memory config object
+PS C:\> $config1 = New-AzEventHubEncryptionConfig -KeyName key1 -KeyVaultUri https://myvaultname.vault.azure.net -UserAssignedIdentity /subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName
 
-# Set Access policy on the KeyVault
-PS C:\> Set-AzKeyVaultAccessPolicy -VaultName testingnewCluster -ObjectId $getnamespace.Identity.PrincipalId -PermissionsToKeys wrapkey,unwrapkey,get -BypassObjectIdValidation
+# Create encryption config that will create an in memory config object
+PS C:\> $config2 = New-AzEventHubEncryptionConfig -KeyName key2 -KeyVaultUri https://myvaultname.vault.azure.net -UserAssignedIdentity /subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName
 
-# Add a key to KeyVault
-PS C:\> $key = New-AzKeyVault -ResourceGroupName prod-by3-533-rg -Name testingnewCluster -EnableSoftDelete -EnablePurgeProtection -Location westus
+PS C:\>$id1 = '/subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName'
+
+PS C:\>$id2 = '/subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName'
 
 # Update Namespace with KeyVault properties
-
-PS C:\> Set-AzEventHubNamespace -ResourceGroupName MyResourceGroupName -Name MyNamespaceName -Location westus -KeySource Microsoft.KeyVault -KeyProperties @(@($key.Name, $keyvault.VaultUri,""))
+PS C:\> New-AzEventHubNamespace -ResourceGroupName MyResourceGroupName -Name MyNamespaceName -Location westus -IdentityType "UserAssigned" -IdentityId $id1,$id2 -EncryptionConfig $config1,$config2
 
 Name                          : MyNamespaceName
 Id                            : /subscriptions/{subscriptionId}/resourceGroups/Default-EventHub-WestCentralUS/providers/Microsoft.EventHub/namespaces/MyNamespaceName
@@ -220,13 +223,27 @@ IsAutoInflateEnabled          : True
 MaximumThroughputUnits        : 10
 ZoneRedundant                 : False
 ClusterArmId                  : /subscriptions/{subscriptionId}/resourceGroups/Default-EventHub-WestCentralUS/providers/Microsoft.EventHub/clusters/TestCluster
-Identity                      : Microsoft.Azure.Commands.EventHub.Models.PSIdentityAttributes
-Identity.PrincipalId          : #########
-Identity.TenantId             : #########
-Identity.Type                 : SystemAssigned
 Encryption                    : Microsoft.Azure.Commands.EventHub.Models.PSEncryptionAttributes
 Encryption.KeySource          : MicrosoftKeyVault
-Encryption.KeyVaultProperties : {testkey, https://myvaultname.vault.azure.net, }
+Identity                      : PrinicipalId : ,
+                                TenantId: ,
+                                Type: UserAssigned,
+                                UserAssignedIdentity: /subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName 
+                                                      /subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName2
+IdentityType                  : UserAssigned
+IdentityId                    : /subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName
+                                /subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName2
+EncryptionConfig              : {{ KeyName: key1,
+                                   KeyVaultUri: https://myvaultname.vault.azure.net,
+                                   KeyVersion: ,
+                                   UserAssignedIdentity: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName
+                                 },
+                                 {
+                                   KeyName: key2,
+                                   KeyVaultUri: https://myvaultname.vault.azure.net,
+                                   KeyVersion: ,
+                                   UserAssignedIdentity: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName2
+                                 }}
 ```
 
 ## PARAMETERS
@@ -306,6 +323,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EncryptionConfig
+Key Property
+
+```yaml
+Type: Microsoft.Azure.Commands.EventHub.Models.PSEncryptionConfigAttributes[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Identity
 enabling or disabling Identity for namespace
 
@@ -318,6 +350,37 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityId
+List of user assigned Identity Ids
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -IdentityType
+Identity Type ('SystemAssigned', 'UserAssigned', 'SystemAssigned', 'UserAssigned', 'None')
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: SystemAssigned, UserAssigned, SystemAssigned, UserAssigned, None
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -483,6 +546,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ### System.Collections.Hashtable
+
+### System.String[]
+
+### Microsoft.Azure.Commands.EventHub.Models.PSEncryptionConfigAttributes[]
 
 ## OUTPUTS
 
