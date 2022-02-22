@@ -5,42 +5,42 @@ online version: https://docs.microsoft.com/powershell/module/az.alertsmanagement
 schema: 2.0.0
 ---
 
-# Remove-AzActionRule
+# Remove-AzAlertProcessingRule
 
 ## SYNOPSIS
-Deletes a action rule
+Deletes an alert processing rule
 
 ## SYNTAX
 
 ### ByName (Default)
 ```
-Remove-AzActionRule -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
+Remove-AzAlertProcessingRule -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
  [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Remove-AzActionRule -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-PassThru] [-WhatIf]
+Remove-AzAlertProcessingRule -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-PassThru] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Remove-AzActionRule -InputObject <PSActionRule> [-DefaultProfile <IAzureContextContainer>] [-PassThru]
+Remove-AzAlertProcessingRule -InputObject <PSActionRule> [-DefaultProfile <IAzureContextContainer>] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-**Remove-AzActionRule** cmdlet deletes a action rule.
+**Remove-AzAlertProcessingRule** cmdlet deletes an alert processing rule.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-Remove-AzActionRule -ResourceGroupName "test-rg" -Name "ActionRuleName"
+PS C:\> Remove-AzAlertProcessingRule -ResourceGroupName "test-rg" -Name "AlertProcessingRuleName"
 ```
 
-This cmdlet deletes the action rule with name ActionRuleName in resource group test-rg
+This cmdlet deletes the alert processing rule with name AlertProcessingRuleName in resource group test-rg
 
 ## PARAMETERS
 
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The action rule resource
+The alert processing rule resource
 
 ```yaml
 Type: Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSActionRule
@@ -75,7 +75,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of action rule
+Name of alert processing rule
 
 ```yaml
 Type: System.String
@@ -90,7 +90,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-PassThru returns an object representing the item with which you are working. By default, this cmdlet does not generate any output.
+PassThru returns True if the remove alertProcessing rule succeeded. By default, this cmdlet does not generate any output.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -120,7 +120,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Get Action rule by resource id.
+Get Alert Processing rule by resource id.
 
 ```yaml
 Type: System.String
@@ -170,7 +170,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSActionRule
+### Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule
 
 ## OUTPUTS
 

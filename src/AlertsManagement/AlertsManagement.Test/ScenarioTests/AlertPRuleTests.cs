@@ -21,11 +21,11 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.AlertsManagement.Test.ScenarioTests
 {
-    public class ActionRuleTests : RMTestBase
+    public class AlertPRuleTests : RMTestBase
     {
         public XunitTracingInterceptor _logger;
 
-        public ActionRuleTests(Xunit.Abstractions.ITestOutputHelper output)
+        public AlertPRuleTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             _logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(_logger);
@@ -33,9 +33,9 @@ namespace Microsoft.Azure.Commands.AlertsManagement.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetActionRulesFilteredByParameters()
+        public void TestGetAlertProcessingRulesByResourceGroupName()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetActionRulesFilteredByParameters");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetAlertProcessingRulesByResourceGroupName");
         }
 
         [Fact]
@@ -52,11 +52,5 @@ namespace Microsoft.Azure.Commands.AlertsManagement.Test.ScenarioTests
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateUpdateAndDeleteActionGroupRule");
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateUpdateAndDeleteDiagnosticsRule()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateUpdateAndDeleteDiagnosticsRule");
-        }
     }
 }

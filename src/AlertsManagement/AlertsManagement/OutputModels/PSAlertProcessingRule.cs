@@ -16,15 +16,16 @@ using System;
 using Newtonsoft.Json;
 using Microsoft.Azure.Management.AlertsManagement.Models;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
 {
-    public class PSActionRule
+    public class PSAlertProcessingRule
     {
         /// <summary>
         /// Initializes a new instance of PSActionRule
         /// </summary>
-        public PSActionRule()
+        public PSAlertProcessingRule()
         {
         }
 
@@ -32,19 +33,40 @@ namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
         /// Initializes a new instance of PSActionRule
         /// </summary>
         /// <param name="rule"></param>
-        public PSActionRule(ActionRule rule)
+        public PSAlertProcessingRule(AlertProcessingRule rule)
         {
             Id = rule.Id;
             Name = rule.Name;
             Description = rule.Properties.Description;
-            Status = rule.Properties.Status;
-            CreatedAt = rule.Properties.CreatedAt;
-            CreatedBy = rule.Properties.CreatedBy;
-            LastModifiedAt = rule.Properties.LastModifiedAt;
-            LastModifiedBy = rule.Properties.LastModifiedBy;
-            Scope = JsonConvert.SerializeObject(rule.Properties.Scope);
-            Conditions = JsonConvert.SerializeObject(rule.Properties.Conditions);
-            ActionRuleType = rule.Properties.GetType().Name;
+            Enabled = rule.Properties.Enabled.ToString();
+            CreatedAt = rule.SystemData.CreatedAt;
+            CreatedBy = rule.SystemData.CreatedBy;
+            LastModifiedAt = rule.SystemData.LastModifiedAt;
+            LastModifiedBy = rule.SystemData.LastModifiedBy;
+            Scopes = JsonConvert.SerializeObject(rule.Properties.Scopes);
+            if(rule.Tags != null)
+            {
+                Tags = JsonConvert.SerializeObject(rule.Tags);
+            }
+
+            if (rule.Properties.Conditions != null)
+            {
+                Conditions = JsonConvert.SerializeObject(rule.Properties.Conditions);
+            }
+
+            if (rule.Properties.Schedule != null)
+            {
+                Schedule = JsonConvert.SerializeObject(rule.Properties.Schedule);
+            }
+           
+            if (rule.Properties.Actions[0] is AddActionGroups)
+            {
+                AlertProcessingType = "AddActionGroups";
+            }
+            else
+            {
+                AlertProcessingType = "RemoveAllActionGroups";
+            }
         }
 
         public string Id { get; }
@@ -54,12 +76,16 @@ namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
 
         public string Description { get; }
 
-        [Ps1Xml(Label = "Status", Target = ViewControl.Table)]
-        public string Status { get; set; }
+        [Ps1Xml(Label = "Enabled", Target = ViewControl.Table)]
+        public string Enabled { get; set; }
 
-        public string Scope { get; }
+        public string Scopes { get; }
+
+        public string Tags { get; }
 
         public string Conditions { get; }
+
+        public string Schedule { get; }
 
         public DateTime? CreatedAt { get; }
 
@@ -72,6 +98,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
         public string LastModifiedBy { get; }
 
         [Ps1Xml(Label = "Type", Target = ViewControl.Table)]
-        public string ActionRuleType { get; }
+        public string AlertProcessingType { get; }
+
     }
 }

@@ -5,42 +5,42 @@ online version: https://docs.microsoft.com/powershell/module/az.alertsmanagement
 schema: 2.0.0
 ---
 
-# Update-AzActionRule
+# Update-AzAlertProcessingRule
 
 ## SYNOPSIS
-Updates action rule properties.
+Updates alert processing rule properties. 
 
 ## SYNTAX
 
 ### ByNameSimplifiedPatch (Default)
 ```
-Update-AzActionRule -Name <String> -ResourceGroupName <String> [-Status <String>] [-Tag <Hashtable>]
+Update-AzAlertProcessingRule -Name <String> -ResourceGroupName <String> [-Enabled <String>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Update-AzActionRule -ResourceId <String> [-Status <String>] [-Tag <Hashtable>]
+Update-AzAlertProcessingRule -ResourceId <String> [-Enabled <String>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Update-AzActionRule -InputObject <PSActionRule> [-Status <String>] [-Tag <Hashtable>]
+Update-AzAlertProcessingRule -InputObject <PSActionRule> [-Enabled <String>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-**Update-AzActionRule** cmdlet updates action rule properties - status and tags.
+**Update-AzAlertProcessingRule** cmdlet updates alert processing rule properties - enabled status and tags.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-Update-AzActionRule -ResourceGroupName "test-rg" -Name "Test-ActionRule" -Status "Disabled"
+PS C:\> Update-AzAlertProcessingRule -ResourceGroupName "test-rg" -Name "Test-AlertProcessingRule" -Enabled "False"
 ```
 
-This cmdlet disables the action rule. 
+This cmdlet disables the alert processing rule. 
 
 ## PARAMETERS
 
@@ -75,7 +75,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Action rule name
+Alert Processing rule name
 
 ```yaml
 Type: System.String
@@ -90,7 +90,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Action rule name
+Alert Processing rule name
 
 ```yaml
 Type: System.String
@@ -119,8 +119,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Status
-Action rule status
+### -Enabled
+Alert Processing rule status
 
 ```yaml
 Type: System.String
@@ -135,7 +135,10 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Action rule tags
+Alert Processing rule tags
+For eg.
+@{"tag1" = "key1";"tag2" = "key2"}
+Use {} to clear existing tags. 
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -187,11 +190,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSActionRule
+### Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSActionRule
+### Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule
 
 ## NOTES
 
