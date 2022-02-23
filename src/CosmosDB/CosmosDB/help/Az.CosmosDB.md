@@ -358,7 +358,7 @@ Updates the CosmosDB Cassandra Table. Performs a client side patch operation by 
 Updates the throughput value of a CosmosDB Cassandra Table.
 
 ### [Update-AzCosmosDbClientEncryptionKey](Update-AzCosmosDbClientEncryptionKey.md)
-The **Update-AzCosmosDbClientEncryptionKey** updates the CosmosDb Client Encryption Key. Performs a client side patch operation by reading the existing CosmosDB Client Encryption Key.
+Updates the CosmosDB Client Encryption Key. Performs a client side patch operation by reading the existing Client Encryption Key.
 
 ### [Update-AzCosmosDBGremlinDatabase](Update-AzCosmosDBGremlinDatabase.md)
 Updates the CosmosDB Gremlin Database. Performs a client side patch operation by reading the existing Database.
