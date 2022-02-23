@@ -24,15 +24,15 @@ The **New-AzAlertRuleWebhook** cmdlet creates an alert rule webhook.
 ## EXAMPLES
 
 ### Example 1: Create an alert rule webhook
-```
-PS C:\>New-AzAlertRuleWebhook -ServiceUri "http://contoso.com"
+```powershell
+New-AzAlertRuleWebhook -ServiceUri "http://contoso.com"
 ```
 
 This command creates an alert rule webhook by specifying only the service URI.
 
 ### Example 2: Create a webhook with one property
-```
-PS C:\>$Actual = New-AzAlertRuleWebhook -ServiceUri "http://contoso.com" -Property @{prop1 = 'value1'}
+```powershell
+$Actual = New-AzAlertRuleWebhook -ServiceUri "http://contoso.com" -Property @{prop1 = 'value1'}
 ```
 
 This command creates an alert rule webhook for Contoso.com that has one property, and then stores it in the $Actual variable.
