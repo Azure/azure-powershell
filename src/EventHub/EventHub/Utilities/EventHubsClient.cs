@@ -237,8 +237,23 @@ namespace Microsoft.Azure.Commands.Eventhub
             if (isKafkaEnabled)
                 parameter.KafkaEnabled = isKafkaEnabled;
 
-            if (isIdentity)
-                parameter.Identity = new Identity() { Type = ManagedServiceIdentityType.SystemAssigned };
+            if (isIdentity) { 
+                if(parameter.Identity == null)
+                {
+                    parameter.Identity = new Identity() { Type = ManagedServiceIdentityType.SystemAssigned };
+                }
+                else
+                {
+                    if(parameter.Identity.Type == ManagedServiceIdentityType.None)
+                    {
+                        parameter.Identity = new Identity() { Type = ManagedServiceIdentityType.SystemAssigned };
+                    }
+                    if (parameter.Identity.Type == ManagedServiceIdentityType.UserAssigned)
+                    {
+                        parameter.Identity = new Identity() { Type = ManagedServiceIdentityType.SystemAssignedUserAssigned };
+                    }
+                }
+            }
 
             if (isDisableLocalAuth)
                 parameter.DisableLocalAuth = isDisableLocalAuth;
