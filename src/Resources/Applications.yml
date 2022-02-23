@@ -1346,7 +1346,7 @@ components:
         key:
           type: string
           description: Value for the key credential. Should be a base 64 encoded value.
-          format: base64url
+          format: byte
           nullable: true
         keyId:
           pattern: '^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$'
