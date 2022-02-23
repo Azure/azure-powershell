@@ -155,6 +155,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             HelpMessage = "Api Revision of the source API. This parameter is optional.")]
         public String SourceApiRevision { get; set; }
 
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Type of API to create. This parameter is optional.")]
+        public String ApiType { get; set; }
+
         public override void ExecuteApiManagementCmdlet()
         {
             string id = ApiId ?? Guid.NewGuid().ToString("N");
@@ -172,6 +178,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 ApiVersionDescription,
                 ApiVersionSetId,
                 ApiVersion,
+                ApiType,
                 Protocols.Distinct().ToArray(),
                 AuthorizationServerId,
                 AuthorizationScope,

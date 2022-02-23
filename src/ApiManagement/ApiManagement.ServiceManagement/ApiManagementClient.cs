@@ -791,6 +791,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             string apiVersionDescription,
             string apiVersionSetId,
             string apiVersion,
+            string apiType,
             PsApiManagementSchema[] urlSchema,
             string authorizationServerId,
             string authorizationScope,
@@ -805,9 +806,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 Description = description,
                 ServiceUrl = serviceUrl,
                 Path = urlSuffix,
-                Protocols = Mapper.Map<IList<string>>(urlSchema),
+                Protocols = Mapper.Map<IList<string>>(urlSchema)
             };
-
+            if (!string.IsNullOrWhiteSpace(apiType))
+            {
+                api.ApiType = apiType;
+            }
             if (!string.IsNullOrWhiteSpace(authorizationServerId))
             {
                 api.AuthenticationSettings = new AuthenticationSettingsContract
