@@ -155,7 +155,7 @@ $resourceTestCommands = @(
     @{Name = "Az.StorageSync";                Command = {Get-AzStorageSyncService -ErrorAction Stop}},
     @{Name = "Az.Support";                    Command = {Get-AzSupportTicket -ErrorAction Stop}},
     @{Name = "Az.Resources [Tags]";           Command = {Get-AzTag -ErrorAction Stop}},
-    @{Name = "Az.Resources [MSGraph]";        Command = {Get-AzAdGroup -First 1 -ErrorAction Stop}},
+    #@{Name = "Az.Resources [MSGraph]";        Command = {Get-AzAdGroup -First 1 -ErrorAction Stop}},
     @{Name = "Az.TrafficManager";             Command = {Get-AzTrafficManagerProfile -ErrorAction Stop}},
     @{Name = "Az.Billing [UsageAggregates]";  Command = {Get-UsageAggregates -ReportedStartTime '1/1/2018' -ReportedEndTime '1/2/2018' -ErrorAction Stop}},
     @{Name = "Az.Websites";                   Command = {Get-AzWebApp -ErrorAction Stop}}
