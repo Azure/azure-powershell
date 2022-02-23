@@ -24,8 +24,10 @@ Create a new Remote Rendering Account in certain Subscription, Resource Group an
 
 ### Example 1
 ```powershell
-PS C:\> New-AzureRmRemoteRenderingAccount -ResourceGroup rg1 -Name example -Location centralus
+New-AzureRmRemoteRenderingAccount -ResourceGroup rg1 -Name example -Location centralus
+```
 
+```output
 ResourceGroupName   : rg1
 AccountId           : 5f70bc31-a5da-4dd7-b5ec-ccdf806ff0ef
 AccountEndpoint     : https://mrc-anchor-prod.trafficmanager.net/Accounts/5f70bc31-a5da-4dd7-b5ec-ccdf806ff0ef/
