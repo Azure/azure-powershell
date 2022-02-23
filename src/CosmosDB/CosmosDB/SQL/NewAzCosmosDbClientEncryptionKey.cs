@@ -47,21 +47,21 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.ClientEncryptionKeyName)]
+        [Parameter(Mandatory = true, HelpMessage = Constants.ClientEncryptionKeyName)]
         [ValidateNotNullOrEmpty]
         public string ClientEncryptionKeyName { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.EncryptionAlgorithmName)]
+        [Parameter(Mandatory = true, HelpMessage = Constants.EncryptionAlgorithmName)]
         [ValidateNotNullOrEmpty]
         public string EncryptionAlgorithmName { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = Constants.WrappedDataEncryptionKey)]
-        [ValidateNotNullOrEmpty]
-        public byte[] WrappedDataEncryptionKey { get; set; }
-
-        [Parameter(Mandatory = false, ValueFromPipeline = true,  HelpMessage = Constants.KeyWrapMetaData)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = Constants.KeyWrapMetaData)]
         [ValidateNotNullOrEmpty]
         public PSSqlKeyWrapMetadata KeyWrapMetadata { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = Constants.WrappedDataEncryptionKey)]
+        [ValidateNotNullOrEmpty]
+        public byte[] WrappedDataEncryptionKey { get; set; }        
 
         [Parameter(Mandatory = false, HelpMessage = Constants.IsAzureKeyVaultKeyStoreProvider)]
         [ValidateNotNullOrEmpty]
