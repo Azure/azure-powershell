@@ -126,11 +126,16 @@ namespace Microsoft.Azure.Commands.ServiceBus
 
                 if (parameter.Identity == null)
                 {
-                    parameter.Identity = new Identity() { Type = ManagedServiceIdentityType.UserAssigned, UserAssignedIdentities = UserAssignedIdentities };
+                    parameter.Identity = new Identity() { UserAssignedIdentities = UserAssignedIdentities };
                 }
                 else
                 {
                     parameter.Identity.UserAssignedIdentities = UserAssignedIdentities;
+                }
+
+                if (parameter.Identity.Type == ManagedServiceIdentityType.None || parameter.Identity.Type == ManagedServiceIdentityType.SystemAssigned)
+                {
+                    throw new Exception("Please change -IdentityType to 'UserAssigned' or 'SystemAssigned, UserAssigned' if you want to add User Assigned Identities");
                 }
             }
 
@@ -211,7 +216,7 @@ namespace Microsoft.Azure.Commands.ServiceBus
 
                 parameter.Identity.Type = FindIdentity(identityType);
 
-                if (parameter.Identity.Type == ManagedServiceIdentityType.None)
+                if (parameter.Identity.Type == ManagedServiceIdentityType.None || parameter.Identity.Type == ManagedServiceIdentityType.SystemAssigned)
                 {
                     parameter.Identity.UserAssignedIdentities = null;
                 }
@@ -225,15 +230,15 @@ namespace Microsoft.Azure.Commands.ServiceBus
                 
                 if (parameter.Identity == null)
                 {
-                    parameter.Identity = new Identity() { Type = ManagedServiceIdentityType.UserAssigned, UserAssignedIdentities = UserAssignedIdentities };
+                    parameter.Identity = new Identity() { UserAssignedIdentities = UserAssignedIdentities };
                 }
                 else
                 {
                     parameter.Identity.UserAssignedIdentities = UserAssignedIdentities;
                 }
-                if(identityIds.Length == 0)
+                if (parameter.Identity.Type == ManagedServiceIdentityType.None || parameter.Identity.Type == ManagedServiceIdentityType.SystemAssigned)
                 {
-                    parameter.Identity.UserAssignedIdentities = null;
+                    throw new Exception("Please change -IdentityType to 'UserAssigned' or 'SystemAssigned, UserAssigned' if you want to add User Assigned Identities");
                 }
             }
 
