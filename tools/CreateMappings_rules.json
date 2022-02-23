@@ -101,7 +101,6 @@
     "alias": "Route"
   },
   {
-    "regex": "DnsResolver",
     "group": "DnsResolver",
     "alias": "DnsResolver"
   },
@@ -677,7 +676,6 @@
     "module": "PrivateDns"
   },
   {
-    "regex": "Quota",
     "alias": "Quota",
     "module": "Quota"
   },
