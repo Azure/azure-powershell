@@ -35,7 +35,7 @@ The **New-AzExpressRoutePort** cmdlet creates an Azure ExpressRoutePort
 
 ### Example 1
 ```powershell
-PS C:\> $parameters = @{
+$parameters = @{
     Name='ExpressRoutePort'
     ResourceGroupName='ExpressRouteResourceGroup'
     Location='West US'
@@ -43,19 +43,19 @@ PS C:\> $parameters = @{
     BandwidthInGbps=100
     Encapsulation='QinQ'
 }
-PS C:\> New-AzExpressRoutePort @parameters
+New-AzExpressRoutePort @parameters
 ```
 
 ### Example 2
 ```powershell
-PS C:\> $parameters = @{
+$parameters = @{
     ResourceId='/subscriptions/<SubId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Network/expressRoutePorts/<PortName>'
     Location='West US'
     PeeringLocation='Silicon Valley'
     BandwidthInGbps=100
     Encapsulation='QinQ'
 }
-PS C:\> New-AzExpressRoutePort @parameters
+New-AzExpressRoutePort @parameters
 ```
 
 ## PARAMETERS

@@ -24,9 +24,11 @@ The **Get-AzApplicationGateway** cmdlet gets an application gateway.
 ## EXAMPLES
 
 ### Example 1: Get a specified application gateway
+```powershell
+$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
 ```
-PS C:\>$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
 
+```output
 Sku                                 : Microsoft.Azure.Commands.Network.Models.PSApplicationGatewaySku
 SslPolicy                           :
 GatewayIPConfigurations             : {appGatewayFrontendIP}
@@ -82,9 +84,11 @@ Id                                  : /subscriptions/00000000-0000-0000-0000-000
 This command gets the application gateway named ApplicationGateway01 that belongs to the resource group named ResourceGroup01 and stores it in the $AppGw variable.
 
 ### Example 2: Get a list of application gateways in a resource group
+```powershell
+$AppGwList = Get-AzApplicationGateway -ResourceGroupName "ResourceGroup01"
 ```
-PS C:\>$AppGwList = Get-AzApplicationGateway -ResourceGroupName "ResourceGroup01"
 
+```output
 Sku                                 : Microsoft.Azure.Commands.Network.Models.PSApplicationGatewaySku
 SslPolicy                           :
 GatewayIPConfigurations             : {appGatewayFrontendIP}
@@ -140,9 +144,11 @@ Id                                  : /subscriptions/00000000-0000-0000-0000-000
 This command gets a list of all the application gateways in the resource group named ResourceGroup01 and stores it in the $AppGwList variable.
 
 ### Example 3: Get a list of application gateways in a subscription
+```powershell
+$AppGwList = Get-AzApplicationGateway
 ```
-PS C:\>$AppGwList = Get-AzApplicationGateway
 
+```output
 Sku                                 : Microsoft.Azure.Commands.Network.Models.PSApplicationGatewaySku
 SslPolicy                           :
 GatewayIPConfigurations             : {appGatewayFrontendIP}
@@ -198,9 +204,11 @@ Id                                  : /subscriptions/00000000-0000-0000-0000-000
 This command gets a list of all the application gateways in the subscription and stores it in the $AppGwList variable.
 
 ### Example 4: Get a list of application gateways in a subscription using filtering
+```powershell
+$AppGwList = Get-AzApplicationGateway -Name ApplicationGateway*
 ```
-PS C:\>$AppGwList = Get-AzApplicationGateway -Name ApplicationGateway*
 
+```output
 Sku                                 : Microsoft.Azure.Commands.Network.Models.PSApplicationGatewaySku
 SslPolicy                           :
 GatewayIPConfigurations             : {appGatewayFrontendIP}

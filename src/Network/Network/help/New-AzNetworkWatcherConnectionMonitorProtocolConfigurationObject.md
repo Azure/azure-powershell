@@ -39,7 +39,7 @@ The New-AzNetworkWatcherConnectionMonitorProtocolConfigurationObject cmdlet crea
 
 ### Example 1
 ```powershell
-PS C:\>$TcpProtocolConfiguration = New-AzNetworkWatcherConnectionMonitorProtocolConfigurationObject -TcpProtocol -Port 80 -DisableTraceRoute $false
+$TcpProtocolConfiguration = New-AzNetworkWatcherConnectionMonitorProtocolConfigurationObject -TcpProtocol -Port 80 -DisableTraceRoute $false
 ```
 
 Port              : 80
