@@ -78,8 +78,8 @@ FunctionsToExport = @()
 CmdletsToExport = 'Get-AzAlert', 'Get-AzAlertObjectHistory', 'Update-AzAlertState', 
                'Measure-AzAlertStatistic', 'Get-AzSmartGroup', 
                'Get-AzSmartGroupHistory', 'Update-AzSmartGroupState', 
-               'Get-AzActionRule', 'Set-AzActionRule', 'Update-AzActionRule', 
-               'Remove-AzActionRule'
+               'Get-AzAlertProcessingRule', 'Set-AzAlertProcessingRule', 'Update-AzAlertProcessingRule', 
+               'Remove-AzAlertProcessingRule'
 
 # Variables to export from this module
 # VariablesToExport = @()

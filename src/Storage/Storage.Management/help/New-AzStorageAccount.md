@@ -42,7 +42,8 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-EnableActiveDirectoryDomainServicesForFile <Boolean>] [-ActiveDirectoryDomainName <String>]
  [-ActiveDirectoryNetBiosDomainName <String>] [-ActiveDirectoryForestName <String>]
  [-ActiveDirectoryDomainGuid <String>] [-ActiveDirectoryDomainSid <String>]
- [-ActiveDirectoryAzureStorageSid <String>] [-AsJob] [-EncryptionKeyTypeForTable <String>]
+ [-ActiveDirectoryAzureStorageSid <String>] [-ActiveDirectorySamAccountName <String>]
+ [-ActiveDirectoryAccountType <String>] [-AsJob] [-EncryptionKeyTypeForTable <String>]
  [-EncryptionKeyTypeForQueue <String>] [-RequireInfrastructureEncryption] [-SasExpirationPeriod <TimeSpan>]
  [-KeyExpirationPeriodInDay <Int32>] [-AllowBlobPublicAccess <Boolean>] [-MinimumTlsVersion <String>]
  [-AllowSharedKeyAccess <Boolean>] [-EnableNfsV3 <Boolean>] [-AllowCrossTenantReplication <Boolean>]
@@ -112,6 +113,8 @@ PS C:\>New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "m
         -ActiveDirectoryDomainGuid "12345678-1234-1234-1234-123456789012" `
         -ActiveDirectoryDomainSid "S-1-5-21-1234567890-1234567890-1234567890" `
         -ActiveDirectoryAzureStorageSid "S-1-5-21-1234567890-1234567890-1234567890-1234" `
+        -ActiveDirectorySamAccountName "samaccountname" `
+        -ActiveDirectoryAccountType User `
         -DefaultSharePermission StorageFileDataSmbShareElevatedContributor
 ```
 
@@ -306,6 +309,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ActiveDirectoryAccountType
+Specifies the Active Directory account type for Azure Storage. Possible values include: 'User', 'Computer'.
+
+```yaml
+Type: System.String
+Parameter Sets: ActiveDirectoryDomainServicesForFile
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ActiveDirectoryAzureStorageSid
 Specifies the security identifier (SID) for Azure Storage. This parameter must be set when -EnableActiveDirectoryDomainServicesForFile is set to true.
 
@@ -383,6 +401,21 @@ Accept wildcard characters: False
 
 ### -ActiveDirectoryNetBiosDomainName
 Specifies the NetBIOS domain name. This parameter must be set when -EnableActiveDirectoryDomainServicesForFile is set to true.
+
+```yaml
+Type: System.String
+Parameter Sets: ActiveDirectoryDomainServicesForFile
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ActiveDirectorySamAccountName
+Specifies the Active Directory SAMAccountName for Azure Storage.
 
 ```yaml
 Type: System.String

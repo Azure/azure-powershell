@@ -119,7 +119,7 @@ function Get-AzDataMigrationAssessment
             }
             else
             {   
-                Test-ConfigFile $PSBoundParameters.ConfigFilePath
+                Test-ConfigFile $PSBoundParameters.ConfigFilePath "Assess"
                 & $ExePath --configFile $PSBoundParameters.ConfigFilePath
             }
 

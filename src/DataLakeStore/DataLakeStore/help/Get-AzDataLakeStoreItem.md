@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll-Help.xml
 Module Name: Az.DataLakeStore
 ms.assetid: ECA70C6C-E0B0-445D-BCAD-041625FAC632
@@ -24,8 +24,8 @@ The **Get-AzDataLakeStoreItem** cmdlet gets the details of a file or folder in D
 ## EXAMPLES
 
 ### Example 1: Get details of a file from the Data Lake Store
-```
-PS C:\>Get-AzDataLakeStoreItem -AccountName "ContosoADL" -Path "/MyFiles/Test.csv"
+```powershell
+Get-AzDataLakeStoreItem -AccountName "ContosoADL" -Path "/MyFiles/Test.csv"
 ```
 
 This command gets the details of the file Test.csv from the Data Lake Store.
