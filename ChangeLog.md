@@ -1,3 +1,7 @@
+## 7.2.1 - February 2022
+#### Az.Resources
+* Fixed `New-AzADServicePrincipal` not working [#17054] [#17040]
+
 ## 7.2.0 - February 2022
 #### Az.Accounts
 * Removed legacy assembly System.Private.ServiceModel and System.ServiceModel.Primitives [#16063]
