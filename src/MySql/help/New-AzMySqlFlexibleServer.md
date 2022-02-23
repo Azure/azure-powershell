@@ -481,7 +481,7 @@ Accept wildcard characters: False
 
 ### -SubnetPrefix
 The subnet IP address prefix to use when creating a new vnet in CIDR format.
-Default value isâ€¯10.0.0.0/24.
+Default value is 10.0.0.0/24.
 
 ```yaml
 Type: System.String
