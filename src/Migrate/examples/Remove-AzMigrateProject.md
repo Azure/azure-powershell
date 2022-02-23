@@ -3,9 +3,5 @@
 Remove-AzMigrateProject -SubscriptionId xxx-xxx-xxx -ResourceGroupName BugBashAVSVMware -Name BugBashAVSVMware
 ```
 
-```output
---No output--
-```
-
 Delete the migrate project.
 Deleting non-existent project is a no-operation.
