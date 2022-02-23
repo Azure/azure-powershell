@@ -74,7 +74,7 @@ NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzCosmosDBSqlContainer',
+CmdletsToExport = 'Get-AzCosmosDBSqlContainer', 
                'Get-AzCosmosDBSqlContainerThroughput', 'Get-AzCosmosDBSqlDatabase', 
                'Get-AzCosmosDBSqlDatabaseThroughput', 
                'Get-AzCosmosDBSqlStoredProcedure', 'Get-AzCosmosDBSqlTrigger', 
@@ -181,8 +181,8 @@ CmdletsToExport = 'Get-AzCosmosDBSqlContainer',
                'Remove-AzManagedCassandraDataCenter', 
                'Update-AzManagedCassandraCluster', 
                'Update-AzManagedCassandraDataCenter',
-               'Get-AzCosmosDbClientEncryptionKey', 'New-AzCosmosDbClientEncryptionKey',
-               'Update-AzCosmosDbClientEncryptionKey'
+               'Get-AzCosmosDbClientEncryptionKey',
+               'New-AzCosmosDbClientEncryptionKey','Update-AzCosmosDbClientEncryptionKey'
 
 # Variables to export from this module
 # VariablesToExport = @()
