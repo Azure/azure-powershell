@@ -25,7 +25,7 @@ The **New-AzDataBoxEdgeUser** cmdlet creates a new user for the Data Box Edge de
 
 ### Example 1
 ```powershell
-New-AzDataBoxEdgeUser -ResourceGroupName resourceGroupName -DeviceName deviceName -Name username
+New-AzDataBoxEdgeUser -ResourceGroupName resourceGroupName -DeviceName deviceName -Name username `
  -Password password-secured-string -EncryptionKey encryption-key
  ```
 
@@ -36,7 +36,7 @@ username    Share resourceGroupName deviceName
 ```
 
 ```powershell
-New-AzDataBoxEdgeUser -ResourceGroupName resourceGroupName -DeviceName deviceName -Name username
+New-AzDataBoxEdgeUser -ResourceGroupName resourceGroupName -DeviceName deviceName -Name username `
  -Password password-secured-string -EncryptionKey encryption-key -Type Share
  ```
 

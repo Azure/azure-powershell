@@ -38,7 +38,7 @@ The **Set-AzDataBoxEdgeUser** cmdlet sets a new password for a user on the Data 
 
 ### Example 1
 ```powershell
-Set-AzDataBoxEdgeUser -ResourceGroupName resourceGroupName -DeviceName deviceName -Name username
+Set-AzDataBoxEdgeUser -ResourceGroupName resourceGroupName -DeviceName deviceName -Name username `
  -Password @SecureString -EncryptionKey @SecureString
 ```
 

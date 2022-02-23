@@ -49,7 +49,7 @@ The **New-AzDataBoxEdgeShare** cmdlet creates a new share on the Data Box Edge d
 
 ### Example 1
 ```powershell
-New-AzDataBoxEdgeShare -ResourceGroupName resourceGroupName -DeviceName deviceName -Name share-1 -SMB
+New-AzDataBoxEdgeShare -ResourceGroupName resourceGroupName -DeviceName deviceName -Name share-1 -SMB `
 -StorageAccountCredentialName storageCredentialName -DataFormat PageBlob
 ```
 
