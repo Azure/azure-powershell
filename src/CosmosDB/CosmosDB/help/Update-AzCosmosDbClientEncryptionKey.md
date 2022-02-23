@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzCosmosDbClientEncryptionKey
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+The **Update-AzCosmosDbClientEncryptionKey** updates the CosmosDb Client Encryption Key. Performs a client side patch operation by reading the existing CosmosDB Client Encryption Key.
 
 ## SYNTAX
 

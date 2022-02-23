@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzCosmosDbClientEncryptionKey
 
 ## SYNOPSIS
-Gets the CosmosDB Client Encryption Key
+Gets the CosmosDB Client Encryption Key.
 
 ## SYNTAX
 
