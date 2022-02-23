@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzRoleAssignmentSchedule'
 Describe 'Get-AzRoleAssignmentSchedule' {
     It 'List' {
         { 
-            $scope = "/subscriptions/" + (Get-AzContext).Subscription.Id
+            $scope = "/subscriptions/" + $env.SubscriptionId
             $assignmentSchedules = Get-AzRoleAssignmentSchedule -Scope $scope 
         } | Should -Not -Throw
     }
