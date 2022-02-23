@@ -101,6 +101,10 @@
     "alias": "Route"
   },
   {
+    "group": "DnsResolver",
+    "alias": "DnsResolver"
+  },
+  {
     "regex": "Dns",
     "group": "Network",
     "alias": "DNS"
@@ -670,6 +674,10 @@
   {
     "alias": "Private DNS",
     "module": "PrivateDns"
+  },
+  {
+    "alias": "Quota",
+    "module": "Quota"
   },
   {
     "regex": "ContainerInstance",
