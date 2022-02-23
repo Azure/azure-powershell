@@ -234,24 +234,10 @@ function Test-SetManagedInstance
 		Assert-AreEqual $managedInstance8.AdministratorLogin $managedInstance4.AdministratorLogin
 		Assert-AreEqual $managedInstance8.VCores $vCore
 		Assert-AreEqual $managedInstance8.StorageSizeInGB $managedInstance4.StorageSizeInGB
-		Assert-AreEqual $managedInstance8.Sku.Tier $edition
 		Assert-AreEqual $managedInstance8.Sku.Family $managedInstance4.Sku.Family
 		Assert-StartsWith ($managedInstance8.ManagedInstanceName + ".") $managedInstance6.FullyQualifiedDomainName
 		Assert-AreEqual $managedInstance8.CurrentBackupStorageRedundancy $bsr
 		Assert-AreEqual $managedInstance8.RequestedBackupStorageRedundancy $bsr
-
-		# Test cross-subnet update SLO. Since the feature is still not rolled-out, the operation should fail.
-		try
-		{
-			Set-AzSqlInstance -Name $managedInstance.ManagedInstanceName -ResourceGroupName $rg.ResourceGroupName -SubnetId $targetSubnetResourceId -Force
-		}
-		catch
-		{
-			$ErrorMessage = $_.Exception.Message
-			# Because of a backend error mapping, current error message is wrong. Here is the correct error message to use when the backend fix gets deployed:
-			# "Long running operation failed with status 'Failed'. Additional Info:'Subnet resource ID '"+$targetSubnetResourceId+"' is invalid. Please provide a correct resource Id for the target subnet.'"
-			Assert-AreEqual True $ErrorMessage.Contains("Long running operation failed with status 'Failed'. Additional Info:'An unexpected error occured while processing the request.")
-		}
 
 		# Test zone redundant update SLO. Since the feature is still not rolled-out, the operation should fail.
 		try
