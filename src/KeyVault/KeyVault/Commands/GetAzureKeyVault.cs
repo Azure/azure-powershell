@@ -14,6 +14,8 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.KeyVault.Helpers;
 using Microsoft.Azure.Commands.KeyVault.Models;
@@ -103,7 +105,13 @@ namespace Microsoft.Azure.Commands.KeyVault
             switch (ParameterSetName)
             {
                 case GetVaultParameterSet:
-                    ResourceGroupName = string.IsNullOrWhiteSpace(ResourceGroupName) ? GetResourceGroupName(VaultName) : ResourceGroupName;
+                    List<PSKeyVaultIdentityItem> vaults = new List<PSKeyVaultIdentityItem>();
+
+                    if (string.IsNullOrWhiteSpace(ResourceGroupName))
+                    {
+                        vaults.AddRange(ListVaults(ResourceGroupName, Tag));
+                        ResourceGroupName = vaults.FirstOrDefault(r => r.VaultName.Equals(VaultName, StringComparison.OrdinalIgnoreCase))?.ResourceGroupName;
+                    }
 
                     if (ShouldGetByName(ResourceGroupName, VaultName))
                     {
@@ -115,7 +123,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     }
                     else
                     {
-                        WriteObject(TopLevelWildcardFilter(ResourceGroupName, VaultName, ListVaults(ResourceGroupName, Tag)), true);
+                        WriteObject(TopLevelWildcardFilter(ResourceGroupName, VaultName, vaults), true);
                     }
 
                     break;

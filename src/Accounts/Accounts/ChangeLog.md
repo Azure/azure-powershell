@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed NextPageLink deserialization issue for ResourceManager
 * Fixed the issue that authorization does not work in Dogfood environment
 * Enabled Continue Access Evaluation for MSGraph
 * Improved error message when login is blocked by AAD

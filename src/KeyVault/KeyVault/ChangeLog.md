@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Continued NextPageLink when listing key vaults from ARM API
 * `New-AzKeyVaultManagedHsm`: supported specifying how long a deleted managed hsm is retained by `SoftDeleteRetentionInDays` and enabling purge protection by `EnablePurgeProtection`
 * `Update-AzKeyVaultManagedHsm`: supported enabling purge protection by `EnablePurgeProtection`
 * `Get-AzKeyVaultManagedHsm`: Supported getting or listing deleted managed HSM(s)
