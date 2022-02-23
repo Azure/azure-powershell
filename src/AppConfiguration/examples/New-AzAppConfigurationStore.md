@@ -13,8 +13,6 @@ This command creates an app configuration store.
 ### Example 2: Create an app configuration with the IdentityType set to "UserAssigned"
 ```powershell
 $assignedIdentity = New-AzUserAssignedIdentity -ResourceGroupName azpwsh-manual-test -Name assignedIdentity
-```
-```powershell
 New-AzAppConfigurationStore -Name appconfig-test10 -ResourceGroupName azpwsh-manual-test -Location eastus -Sku standard -IdentityType "UserAssigned" -UserAssignedIdentity $assignedIdentity.Id
 ```
 ```output
@@ -42,8 +40,6 @@ See the example of `Update-AzAppConfigurationStore` for the following steps to e
 ### Example 4: Create an app configuration with the IdentityType set to "SystemAssigned, UserAssigned"
 ```powershell
 $assignedIdentity = New-AzUserAssignedIdentity -ResourceGroupName azpwsh-manual-test -Name assignedIdentity
-```
-```powershell
 New-AzAppConfigurationStore -Name appconfig-test10 -ResourceGroupName azpwsh-manual-test -Location eastus -Sku standard -IdentityType "SystemAssigned, UserAssigned" -UserAssignedIdentity $assignedIdentity.Id
 ```
 ```output
