@@ -78,6 +78,15 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.DateTime]
+    # The timestamp type represents date and time information using ISO 8601 format and is always in UTC time.
+    # For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
+    # Read-only.
+    # Supports $filter (eq, ne, not, ge, le, and eq on null values) and $orderBy.
+    ${ApproximateLastSignInDateTime},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The city in which the user is located.
     # Maximum length is 128 characters.
@@ -91,6 +100,15 @@ param(
     # This property can be useful for describing the company that an external user comes from.
     # The maximum length of the company name is 64 characters.Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
     ${CompanyName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.DateTime]
+    # The timestamp when the device is no longer deemed compliant.
+    # The timestamp type represents date and time information using ISO 8601 format and is always in UTC time.
+    # For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
+    # Read-only.
+    ${ComplianceExpirationDateTime},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -121,6 +139,12 @@ param(
     # The name for the department in which the user works.
     # Maximum length is 64 characters.Supports $filter (eq, ne, NOT , ge, le, and in operators).
     ${Department},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.Int32]
+    # For internal use only.
+    ${DeviceVersion},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -242,6 +266,39 @@ param(
     ${OnPremisesImmutableId},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.DateTime]
+    # The last time at which the object was synced with the on-premises directory.
+    # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time.
+    # For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z Read-only.
+    # Supports $filter (eq, ne, not, ge, le, in).
+    ${OnPremisesLastSyncDateTime},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced; null if this object has never been synced from an on-premises directory (default).
+    # Read-only.
+    # Supports $filter (eq, ne, not, in, and eq on null values).
+    ${OnPremisesSyncEnabled},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Operating system of the device.
+    # Windows, iOS, etc.
+    # This property is read-only.
+    ${OperatingSystem},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Operating system version of the device.
+    # Required.
+    # Supports $filter (eq, ne, not, ge, le, startsWith, and eq on null values).
+    ${OperatingSystemVersion},
+
+    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
@@ -263,6 +320,15 @@ param(
     # passwordProfile
     # To construct, see NOTES section for PASSWORDPROFILE properties and create a hash table.
     ${PasswordProfile},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String[]]
+    # For internal use only.
+    # Not nullable.
+    # Supports $filter (eq, not, ge, le, startsWith).
+    ${PhysicalId},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -314,6 +380,15 @@ param(
     # Maximum length is 64 characters.
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
     ${Surname},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Type of trust for the joined device.
+    # Read-only.
+    # Possible values: Workplace (indicates bring your own personal devices), AzureAd (Cloud only joined devices), ServerAd (on-premises domain joined devices joined to Azure AD).
+    # For more details, see Introduction to device management in Azure Active Directory
+    ${TrustType},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]

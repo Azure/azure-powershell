@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version *
+* Added logic of returning error if insufficient user permissions are there for `GetAgentRegistrationInfo`
+
 ## Version 1.7.3
 * `New-AzAutomationSchedule` allows defnining StartTime with offsets.
 *  Fixed bug: updated 'Set-AzAutomationModule' to use PUT call while updating modules with specific versions   [#12552]

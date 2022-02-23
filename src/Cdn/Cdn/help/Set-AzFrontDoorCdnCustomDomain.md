@@ -33,7 +33,7 @@ Updates the custom domain.
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzFrontDoorCdnCustomDomain -AzureDnsZoneId $azureDnsZoneId -CustomDomainName $customDomainName -ProfileName $profileName -ResourceGroupName $resourceGroupName
+Set-AzFrontDoorCdnCustomDomain -AzureDnsZoneId $azureDnsZoneId -CustomDomainName $customDomainName -ProfileName $profileName -ResourceGroupName $resourceGroupName
 ```
 
 Updates the custom domain.

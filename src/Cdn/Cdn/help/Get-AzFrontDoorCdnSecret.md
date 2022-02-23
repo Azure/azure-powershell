@@ -36,7 +36,7 @@ Gets the secret.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzFrontDoorCdnSecret -ProfileName $profileName -ResourceGroupName $resourceGroupName -SecretName $secretName
+Get-AzFrontDoorCdnSecret -ProfileName $profileName -ResourceGroupName $resourceGroupName -SecretName $secretName
 ```
 
 Gets the secret.

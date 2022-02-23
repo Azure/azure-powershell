@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Utilities.Version2021_
             {
                 subscriptionClient = AzureSession.Instance.ClientFactory.CreateCustomArmClient<SubscriptionClient>(
                     environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
-                    new TokenCredentials(accessToken.AccessToken) as ServiceClientCredentials,
+                    new RenewingTokenCredential(accessToken),
                     AzureSession.Instance.ClientFactory.GetCustomHandlers());
 
                 var tenants = new GenericPageEnumerable<TenantIdDescription>(subscriptionClient.Tenants.List, subscriptionClient.Tenants.ListNext, ulong.MaxValue, 0).ToList();
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Utilities.Version2021_
         {
             using (var subscriptionClient = AzureSession.Instance.ClientFactory.CreateCustomArmClient<SubscriptionClient>(
                 environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
-                new TokenCredentials(accessToken.AccessToken) as ServiceClientCredentials,
+                new RenewingTokenCredential(accessToken),
                 AzureSession.Instance.ClientFactory.GetCustomHandlers()))
             {
                 return subscriptionClient.ListAllSubscriptions()?
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Utilities.Version2021_
         {
             using (var subscriptionClient = AzureSession.Instance.ClientFactory.CreateCustomArmClient<SubscriptionClient>(
                 environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
-                new TokenCredentials(accessToken.AccessToken) as ServiceClientCredentials,
+                new RenewingTokenCredential(accessToken),
                 AzureSession.Instance.ClientFactory.GetCustomHandlers()))
             {
                 var subscription = subscriptionClient.Subscriptions.Get(subscriptionId);

@@ -33,8 +33,8 @@ The **New-AzBatchComputeNodeUser** cmdlet creates a user account on an Azure Bat
 ## EXAMPLES
 
 ### Example 1: Create a user account that has administrative credentials
-```
-PS C:\>New-AzBatchComputeNodeUser -PoolId "MyPool01" -ComputeNodeId "ComputeNode01" -Name "TestUser" -Password "Password" -ExpiryTime ([DateTime]::Now.AddDays(7)) -IsAdmin -BatchContext $Context
+```powershell
+New-AzBatchComputeNodeUser -PoolId "MyPool01" -ComputeNodeId "ComputeNode01" -Name "TestUser" -Password "Password" -ExpiryTime ([DateTime]::Now.AddDays(7)) -IsAdmin -BatchContext $Context
 ```
 
 This command creates a user account on the compute node that has the ID ComputeNode01.
@@ -42,8 +42,8 @@ The node is in the pool that has the ID MyPool01.
 The user name is TestUser, the password is Password, the account expires in seven days, and the account is has administrative credentials.
 
 ### Example 2: Create a user account on a compute node by using the pipeline
-```
-PS C:\>Get-AzBatchComputeNode "MyPool01" -ComputeNodeId "ComputeNode01" -BatchContext $Context | New-AzBatchComputeNodeUser -Name "TestUser" -Password "Password" -BatchContext $Context
+```powershell
+Get-AzBatchComputeNode "MyPool01" -ComputeNodeId "ComputeNode01" -BatchContext $Context | New-AzBatchComputeNodeUser -Name "TestUser" -Password "Password" -BatchContext $Context
 ```
 
 This command gets the compute node named ComputeNode01 by using the **Get-AzBatchComputeNode** cmdlet.

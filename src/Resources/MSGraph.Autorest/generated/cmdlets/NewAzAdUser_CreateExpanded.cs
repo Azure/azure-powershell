@@ -65,6 +65,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string AgeGroup { get => Body.AgeGroup ?? null; set => Body.AgeGroup = value; }
 
+        /// <summary>
+        /// The timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example,
+        /// midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only. Supports $filter (eq, ne, not, ge, le, and eq on null
+        /// values) and $orderBy.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only. Supports $filter (eq, ne, not, ge, le, and eq on null values) and $orderBy.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only. Supports $filter (eq, ne, not, ge, le, and eq on null values) and $orderBy.",
+        SerializedName = @"approximateLastSignInDateTime",
+        PossibleTypes = new [] { typeof(global::System.DateTime) })]
+        public global::System.DateTime ApproximateLastSignInDateTime { get => Body.ApproximateLastSignInDateTime ?? default(global::System.DateTime); set => Body.ApproximateLastSignInDateTime = value; }
+
         /// <summary>Backing field for <see cref="Body" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser _body= new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphUser();
 
@@ -105,6 +120,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         SerializedName = @"companyName",
         PossibleTypes = new [] { typeof(string) })]
         public string CompanyName { get => Body.CompanyName ?? null; set => Body.CompanyName = value; }
+
+        /// <summary>
+        /// The timestamp when the device is no longer deemed compliant. The timestamp type represents date and time information using
+        /// ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The timestamp when the device is no longer deemed compliant. The timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The timestamp when the device is no longer deemed compliant. The timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.",
+        SerializedName = @"complianceExpirationDateTime",
+        PossibleTypes = new [] { typeof(global::System.DateTime) })]
+        public global::System.DateTime ComplianceExpirationDateTime { get => Body.ComplianceExpirationDateTime ?? default(global::System.DateTime); set => Body.ComplianceExpirationDateTime = value; }
 
         /// <summary>
         /// Sets whether consent has been obtained for minors. Allowed values: null, granted, denied and notRequired. Refer to the
@@ -167,6 +196,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         SerializedName = @"department",
         PossibleTypes = new [] { typeof(string) })]
         public string Department { get => Body.Department ?? null; set => Body.Department = value; }
+
+        /// <summary>For internal use only.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "For internal use only.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"For internal use only.",
+        SerializedName = @"deviceVersion",
+        PossibleTypes = new [] { typeof(int) })]
+        public int DeviceVersion { get => Body.DeviceVersion ?? default(int); set => Body.DeviceVersion = value; }
 
         /// <summary>The name displayed in directory</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The name displayed in directory")]
@@ -400,6 +440,60 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         public string OnPremisesImmutableId { get => Body.OnPremisesImmutableId ?? null; set => Body.OnPremisesImmutableId = value; }
 
         /// <summary>
+        /// The last time at which the object was synced with the on-premises directory. The Timestamp type represents date and time
+        /// information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+        /// Read-only. Supports $filter (eq, ne, not, ge, le, in).
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The last time at which the object was synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z Read-only. Supports $filter (eq, ne, not, ge, le, in).")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The last time at which the object was synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z Read-only. Supports $filter (eq, ne, not, ge, le, in).",
+        SerializedName = @"onPremisesLastSyncDateTime",
+        PossibleTypes = new [] { typeof(global::System.DateTime) })]
+        public global::System.DateTime OnPremisesLastSyncDateTime { get => Body.OnPremisesLastSyncDateTime ?? default(global::System.DateTime); set => Body.OnPremisesLastSyncDateTime = value; }
+
+        /// <summary>
+        /// true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises
+        /// directory but is no longer synced; null if this object has never been synced from an on-premises directory (default).
+        /// Read-only. Supports $filter (eq, ne, not, in, and eq on null values).
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced; null if this object has never been synced from an on-premises directory (default). Read-only. Supports $filter (eq, ne, not, in, and eq on null values).")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced; null if this object has never been synced from an on-premises directory (default). Read-only. Supports $filter (eq, ne, not, in, and eq on null values).",
+        SerializedName = @"onPremisesSyncEnabled",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter OnPremisesSyncEnabled { get => Body.OnPremisesSyncEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => Body.OnPremisesSyncEnabled = value; }
+
+        /// <summary>Operating system of the device. Windows, iOS, etc. This property is read-only.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Operating system of the device. Windows, iOS, etc. This property is read-only.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Operating system of the device. Windows, iOS, etc. This property is read-only.",
+        SerializedName = @"operatingSystem",
+        PossibleTypes = new [] { typeof(string) })]
+        public string OperatingSystem { get => Body.OperatingSystem ?? null; set => Body.OperatingSystem = value; }
+
+        /// <summary>
+        /// Operating system version of the device. Required. Supports $filter (eq, ne, not, ge, le, startsWith, and eq on null values).
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Operating system version of the device. Required. Supports $filter (eq, ne, not, ge, le, startsWith, and eq on null values).")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Operating system version of the device. Required. Supports $filter (eq, ne, not, ge, le, startsWith, and eq on null values).",
+        SerializedName = @"operatingSystemVersion",
+        PossibleTypes = new [] { typeof(string) })]
+        public string OperatingSystemVersion { get => Body.OperatingSystemVersion ?? null; set => Body.OperatingSystemVersion = value; }
+
+        /// <summary>
         /// A list of additional email addresses for the user; for example: ['bob@contoso.com', 'Robert@fabrikam.com'].NOTE: While
         /// this property can contain accent characters, they can cause access issues to first-party applications for the user.Supports
         /// $filter (eq, NOT, ge, le, in, startsWith).
@@ -441,6 +535,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         SerializedName = @"passwordProfile",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordProfile) })]
         public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordProfile PasswordProfile { get => Body.PasswordProfile ?? null /* object */; set => Body.PasswordProfile = value; }
+
+        /// <summary>
+        /// For internal use only. Not nullable. Supports $filter (eq, not, ge, le, startsWith).
+        /// </summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "For internal use only. Not nullable. Supports $filter (eq, not, ge, le, startsWith).")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"For internal use only. Not nullable. Supports $filter (eq, not, ge, le, startsWith).",
+        SerializedName = @"physicalIds",
+        PossibleTypes = new [] { typeof(string) })]
+        public string[] PhysicalId { get => Body.PhysicalId ?? null /* arrayOf */; set => Body.PhysicalId = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.HttpPipeline" /> that the remote call will use.
@@ -548,6 +656,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         SerializedName = @"surname",
         PossibleTypes = new [] { typeof(string) })]
         public string Surname { get => Body.Surname ?? null; set => Body.Surname = value; }
+
+        /// <summary>
+        /// Type of trust for the joined device. Read-only. Possible values: Workplace (indicates bring your own personal devices),
+        /// AzureAd (Cloud only joined devices), ServerAd (on-premises domain joined devices joined to Azure AD). For more details,
+        /// see Introduction to device management in Azure Active Directory
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Type of trust for the joined device. Read-only. Possible values: Workplace (indicates bring your own personal devices), AzureAd (Cloud only joined devices), ServerAd (on-premises domain joined devices joined to Azure AD). For more details, see Introduction to device management in Azure Active Directory")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Type of trust for the joined device. Read-only. Possible values: Workplace (indicates bring your own personal devices), AzureAd (Cloud only joined devices), ServerAd (on-premises domain joined devices joined to Azure AD). For more details, see Introduction to device management in Azure Active Directory",
+        SerializedName = @"trustType",
+        PossibleTypes = new [] { typeof(string) })]
+        public string TrustType { get => Body.TrustType ?? null; set => Body.TrustType = value; }
 
         /// <summary>
         /// A two letter country code (ISO standard 3166). Required for users that will be assigned licenses due to legal requirement
