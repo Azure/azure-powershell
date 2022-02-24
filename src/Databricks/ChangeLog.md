@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.2.0
 * Upgraded API version to 2021-04-01-preview
 
 ## Version 1.1.0

@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 3.0.1
 * Fixed Identity Bug in ImageRegistryCredential
 
 ## Version 3.0.0

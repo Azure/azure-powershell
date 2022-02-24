@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 5.4.0
 * Fixed keycredential key format, from base64url to byte [#17131]
 * Fixed add key credential overwrite existing one [#17088]
 * Deleted parameter sets cannot be reached for `New-AzADSericePrincipal`

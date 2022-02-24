@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.0.1
 * Added breaking change warning message due to update API version.
 
 ## Version 1.0.0

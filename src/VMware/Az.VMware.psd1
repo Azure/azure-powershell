@@ -12,7 +12,7 @@
 RootModule = './Az.VMware.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.3.0'
+ModuleVersion = '0.4.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -51,7 +51,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.7.2'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.7.3'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = './bin/Az.VMware.private.dll'
@@ -130,7 +130,12 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        # ReleaseNotes = ''
+        ReleaseNotes = '* Upgrade API version to 2021-12-01
+* Added cmdlet:
+    - ''Get-AzVMwareVirtualMachine''
+    - ''New-AzVMwarePlacementPolicy''
+    - ''Update-AzVMwarePlacementPolicy''
+    - ''Remove-AzVMwarePlacementPolicy'''
 
         # Prerelease string of this module
         # Prerelease = ''
