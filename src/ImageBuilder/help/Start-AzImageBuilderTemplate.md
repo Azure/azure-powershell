@@ -33,6 +33,10 @@ Create artifacts from a existing image template
 ### Example 1: Start an image template
 ```powershell
 Start-AzImageBuilderTemplate -ResourceGroupName wyunchi-imagebuilder -Name template-name-sn78hg
+
+Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
+--     ----            -------------   -----         -----------     --------             -------
+1      Start-AzImageB…                 Running       True            localhost            Start-AzImageBuilderTemp…
 ```
 
 This command starts an image template.
