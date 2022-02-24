@@ -4,9 +4,9 @@ New-AzKustoAttachedDatabaseConfiguration -ResourceGroupName "testrg" -ClusterNam
 ```
 
 ```output
-Name                                          Type                                                    Location
-----                                          ----                                                    --------
-testnewkustoclusterf/myfollowerconfiguration  Microsoft.Kusto/Clusters/AttachedDatabaseConfigurations East US
+Name                                         Type                                                    Location
+----                                         ----                                                    --------
+testnewkustoclusterf/myfollowerconfiguration Microsoft.Kusto/Clusters/AttachedDatabaseConfigurations East US
 ```
 
 The above command creates a ReadOnly database "mykustodatabase" in cluster "testnewkustoclusterf". It follows the database "mykustodatabase" from cluster "testnewkustocluster"
