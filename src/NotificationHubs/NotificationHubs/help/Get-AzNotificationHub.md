@@ -31,7 +31,7 @@ Other cmdlets, such as Get-AzNotificationHubAuthorizationRules, Get-AzNotificati
 
 ### Example 1: Get information for all notification hubs in a specific namespace
 ```powershell
-PS C:\>Get-AzNotificationHub -Namespace "ContosoNamespace" -ResourceGroup "ContosoNotificationsGroup"
+Get-AzNotificationHub -Namespace "ContosoNamespace" -ResourceGroup "ContosoNotificationsGroup"
 ```
 
 This command gets information for all the notification hubs in the namespace named ContosoNamespace that have been assigned to the resource group ContosoNotificationsGroup.
