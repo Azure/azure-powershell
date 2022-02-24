@@ -166,9 +166,7 @@ The cmdlet may call below Microsoft Graph API according to input parameters:
 ### Example 1: Grant permissions to a user for a key vault and modify the permissions
 ```powershell
 Set-AzKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalName 'PattiFuller@contoso.com' -PermissionsToKeys create,import,delete,list -PermissionsToSecrets set,delete -PassThru
-```
 
-```output
 Vault Name                       : Contoso03Vault
 Resource Group Name              : myrg
 Location                         : westus

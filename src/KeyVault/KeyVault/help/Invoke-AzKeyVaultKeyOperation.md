@@ -45,10 +45,11 @@ Invoke-AzKeyVaultKeyOperation cmdlet supports
 ### Encrypts using an encryption key
 ```powershell
 $result = Invoke-AzKeyVaultKeyOperation -Operation Encrypt -Algorithm RSA1_5 -VaultName test-kv -Name test-key -Value (ConvertTo-SecureString -String "test" -AsPlainText -Force) ult
-$result | fltps://test-kv.vault.azure.net/keys/test-key/375cdf20252043b79c8ca0c57b6c7679
+$result | fl
 ```
 
 ```output
+KeyId     : https://test-kv.vault.azure.net/keys/test-key/375cdf20252043b79c8ca0c57b6c7679
 Result    : e01HmkipqwCZyQd2QZ5XOTSA3rlZ719qqHHadzepFGtvTSoDwr+sBPmODVqScvq5/MBS9YyT+u6AM5hsFKD+h2FJOB6Pj/nwO5MZ/tZ8F974qAxXXT2qvdNm6pHKhREgPlCHmz+L6xK/8KOF+LS1E9wmuAt8ZPsJ7BtcT2bcvR4VmeOaUhvxcuNMV675nsFpwHBv6GWSfQA+RkDCIpmv6msdpK8NG6+la+fSPA6EKMJkmqF3SZ6RhSOjg00S7jXEWncIzdp6RRKYZFKY+QhqLgFVABL876IW4nDGYgdVSG7KnH0K56QqtK5L4MhvU4XYE69I4WiWbZ7rcVLE3cO/9A==
 Algorithm : RSA1_5
 ```
@@ -59,10 +60,11 @@ Encrypts string "test" using test-key stored in test-kv. The returned result is 
 ```powershell
 $result
 $result = Invoke-AzKeyVaultKeyOperation -Operation Decrypt -Algorithm RSA1_5 -VaultName test-kv -Name test-key -Value (ConvertTo-SecureString -String $result.Result -AsPlainText -Force) ult
-$result | fltps://test-kv.vault.azure.net/keys/test-key/375cdf20252043b79c8ca0c57b6c7679
+$result | fl
 ```
 
 ```output
+KeyId     : https://test-kv.vault.azure.net/keys/test-key/375cdf20252043b79c8ca0c57b6c7679
 Result    : test
 Algorithm : RSA1_5
 ```
