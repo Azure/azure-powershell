@@ -63,7 +63,7 @@ directive:
       verb: Test
       variant: ^Check$|^CheckViaIdentity$|^CheckViaIdentityExpanded$
     remove: true
-  - model-cmdlet:
+  - model-cmdlet: # Generate objects for common models.
     - AADBasedSecurityPrincipal
     - CertBasedSecurityPrincipal
 ```
