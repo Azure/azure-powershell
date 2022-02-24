@@ -26,3 +26,5 @@ PS C:\> Update-AzConfidentialLedger `
 Location Name
 eastus   test-ledger
 ```
+
+Updates metadata for an existing Confidential Ledger.

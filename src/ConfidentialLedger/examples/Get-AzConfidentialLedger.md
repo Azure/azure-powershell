@@ -9,6 +9,8 @@ eastus   testledger1
 eastus   testledger2
 ```
 
+Lists all the Confidential Ledgers under a subscription.
+
 ### Example 2: Get a Confidential Ledger
 ```powershell
 PS C:\> Get-AzConfidentialLedger `
@@ -18,3 +20,5 @@ PS C:\> Get-AzConfidentialLedger `
 Location Name
 eastus   test-ledger
 ```
+
+Lists all the Confidential Ledgers under a resource group.

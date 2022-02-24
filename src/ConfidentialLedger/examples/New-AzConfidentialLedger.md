@@ -23,3 +23,4 @@ Location Name
 eastus   test-ledger
 ```
 
+Creates a new Confidential Ledger.
