@@ -68,9 +68,8 @@ directive:
 
   # Hide Cdn profile
   - where:
-      subject: CdnProfile
+      subject: Profile
     hide: true
-
 
   # https://github.com/Azure/autorest.powershell/issues/906
   - where:
