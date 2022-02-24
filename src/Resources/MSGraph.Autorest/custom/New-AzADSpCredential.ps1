@@ -192,12 +192,12 @@ function New-AzADSpCredential {
         
         $param = @{}
         switch ($PSCmdlet.ParameterSetName) {
-            {$_ -in 'SpObjectIdWithPasswordParameterSet', 'SpObjectIdWithCredentialParameterSet', 'SpObjectIdWithCertValueParameterSet'} {
+            {$_ -in 'SpObjectIdWithPasswordParameterSet', 'SpObjectIdWithKeyCredentialParameterSet', 'SpObjectIdWithPasswordCredentialParameterSet', 'SpObjectIdWithCertValueParameterSet'} {
                 $id = $PSBoundParameters['ObjectId']
                 $null = $PSBoundParameters.Remove('ObjectId')
                 break
             }
-            {$_ -in 'SPNWithPasswordParameterSet', 'SPNWithCredentialParameterSet', 'SPNWithCertValueParameterSet'} {
+            {$_ -in 'SPNWithPasswordParameterSet', 'SPNWithKeyCredentialParameterSet', 'SPNWithPasswordCredentialParameterSet', 'SPNWithCertValueParameterSet'} {
                 $param['ServicePrincipalName'] = $PSBoundParameters['ServicePrincipalName']
                 $sp = Get-AzADServicePrincipal @param
                 if($sp) {
@@ -209,7 +209,7 @@ function New-AzADSpCredential {
                 }
                 break
             }
-            {$_ -in 'ServicePrincipalObjectWithPasswordParameterSet', 'ServicePrincipalObjectWithCredentialParameterSet', 'ServicePrincipalObjectWithCertValueParameterSet'} {
+            {$_ -in 'ServicePrincipalObjectWithPasswordParameterSet', 'ServicePrincipalObjectWithKeyCredentialParameterSet', 'ServicePrincipalObjectWithPasswordCredentialParameterSet', 'ServicePrincipalObjectWithCertValueParameterSet'} {
                 $id = $PSBoundParameters['ServicePrincipalObject'].Id
                 $null = $PSBoundParameters.Remove('ServicePrincipalObject')
                 break

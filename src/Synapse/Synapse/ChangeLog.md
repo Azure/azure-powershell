@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Fixed the issue that there should be an error message when removing a dependency pipeline
+* Updated `Update-AzSynapseSparkPool` to support new parameter [-ForceApplySetting]
 
 ## Version 1.0.0
 * General availability of Az.Synapse

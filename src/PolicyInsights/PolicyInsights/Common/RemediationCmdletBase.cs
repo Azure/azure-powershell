@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Common
     using System.Collections.Generic;
     using System.Globalization;
     using System.Management.Automation;
-    using System.Threading;
     using Microsoft.Azure.Commands.PolicyInsights.Models.Remediation;
     using Microsoft.Azure.Commands.PolicyInsights.Properties;
     using Microsoft.Azure.Management.PolicyInsights;
@@ -44,22 +43,6 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Common
         /// The fully qualified resource type of the remediations resource.
         /// </summary>
         protected const string RemediationsFullyQualifiedResourceType = "Microsoft.PolicyInsights/remediations";
-
-        /// <summary>
-        /// The cancellation source.
-        /// </summary>
-        private CancellationTokenSource cancellationSource;
-
-        /// <summary>
-        /// Gets the cancellation source.
-        /// </summary>
-        protected CancellationToken CancellationToken
-        {
-            get
-            {
-                return this.cancellationSource != null ? this.cancellationSource.Token : CancellationToken.None;
-            }
-        }
 
         /// <summary>
         /// Gets the root scope of the remediation that is being acted upon.
@@ -170,63 +153,6 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Common
         protected bool IsComplete(Remediation remediation)
         {
             return RemediationCmdletBase.TerminalStates.Contains(remediation.ProvisioningState);
-        }
-
-        /// <summary>
-        /// The <c>BeginProcessing</c> method.
-        /// </summary>
-        protected override void BeginProcessing()
-        {
-            try
-            {
-                if (this.cancellationSource == null)
-                {
-                    this.cancellationSource = new CancellationTokenSource();
-                }
-
-                base.BeginProcessing();
-            }
-            finally
-            {
-                this.DisposeOfCancellationSource();
-            }
-        }
-
-        /// <summary>
-        /// The <c>StopProcessing</c> method.
-        /// </summary>
-        protected override void StopProcessing()
-        {
-            try
-            {
-                if (this.cancellationSource != null && !this.cancellationSource.IsCancellationRequested)
-                {
-                    this.cancellationSource.Cancel();
-                }
-                
-                base.StopProcessing();
-            }
-            finally
-            {
-                this.DisposeOfCancellationSource();
-            }
-        }
-
-        /// <summary>
-        /// Disposes of the <see cref="CancellationTokenSource"/>.
-        /// </summary>
-        private void DisposeOfCancellationSource()
-        {
-            if (this.cancellationSource != null)
-            {
-                if (!this.cancellationSource.IsCancellationRequested)
-                {
-                    this.cancellationSource.Cancel();
-                }
-
-                this.cancellationSource.Dispose();
-                this.cancellationSource = null;
-            }
         }
     }
 }

@@ -1,3 +1,97 @@
+## 7.2.1 - February 2022
+#### Az.Resources
+* Fixed `New-AzADServicePrincipal` not working [#17054] [#17040]
+
+## 7.2.0 - February 2022
+#### Az.Accounts
+* Removed legacy assembly System.Private.ServiceModel and System.ServiceModel.Primitives [#16063]
+
+#### Az.Aks
+* Fixed the typo in 'New-AzAksCluster' [#16733]
+
+#### Az.Compute
+* Remove ProvisioningDetails property from PSRestorePoint object.
+* Updated 'Set-AzVmExtension' cmdlet to properly display '-Name' and '-Location' parameters as mandatory.
+* Edited 'New-AzVmssConfig' second example so it runs successfully by changing the Tag input to the correct format. 
+* Added 'Hibernate' parameter to 'Stop-AzVm' cmdlet. 
+* Added 'HibernationEnabled' parameter to 'New-AzVm', 'New-AzVmConfig', and 'Update-AzVm' cmdlets.
+* Added 'EnableHotpatching' parameter to the 'Set-AzVmssOSProfile' cmdlet.
+* Added 'ForceDeletion' parameter to Remove-AzVM and Remove-AzVMSS.
+
+#### Az.DataFactory
+* Updated ADF .Net SDK version to 5.1.0
+
+#### Az.EventHub
+* Added public network access to the 'Set-AzEventHubNetworkRuleSet' set cmdlet
+* Added 'New-AzEventHubSchemaGroup', 'Remove-AzEventHubSchemaGroup' and 'Get-AzEventHubSchemaGroup' in the eventhubs PS.
+
+#### Az.HealthcareApis
+* HealthcareApis cmdlets will bump up API version which may introduce breaking change. Please contact us for more information.
+
+#### Az.KeyVault
+* Improved the error message of Az.KeyVault.Extension [#16798]
+* Added default access policies for Key Vault key as 'All but purge'
+* Absorbed KeyOps from parameter when importing key from certificate on managed HSM [#16773]
+* Fixed a bug when updating key operations on managed HSM [#16774]
+* Fixed the issue when importing no-password certificate [#16742]
+
+#### Az.OperationalInsights
+* Added logic to prevent exceptions while using 'StorageInsight' cmdlets.
+
+#### Az.PolicyInsights
+* Added support for new remediation properties allowing the remediation of more resources with better control over the remediation rate and error handling
+* Added support of fetching very large sets of results by internally using paginated API calls for policy states and policy events commands
+
+#### Az.RecoveryServices
+* Reverted the configure backup per policy limit for VMs from 1000 to 100. This limit was previously relaxed but as Azure portal has a limit of 100 VMs per policy, we are reverting this limit.
+* Added support for multiple backups per day for FileShares.
+* Segregated some of the CRR and non-CRR flows based on the SDK update.
+* Add EdgeZone parameter to Azure Site recovery service cmdlet 'New-AzRecoveryServicesAsrRecoveryPlan'
+
+#### Az.Resources
+* Added proeprties 'onPremisesLastSyncDateTime', 'onPremisesSyncEnabled' to 'User' object [#16892]
+* Added additional properties when creating request for 'New-AzADServicePrincipal' and 'Update-AzADServicePrincipal' [#16847] [#16841]
+* Fixed 'DisplayName' and 'ApplicationId' for 'New-AzADAppCredential' [#16764]
+* Enabled password reset for 'Update-AzADUser' [#16869]
+* Updated parameter name 'EnableAccount' to 'AccountEnabled', and added alias 'EnableAccount' for 'Update-AzADUser' [#16753] [#16795]
+* Fixed 'Set-AzPolicyAssignment' does not remove 'notScope' if empty [#15828]
+
+#### Az.ServiceBus
+* Added support to Enable or Disable  Public Network Access as optional parameter 'PublicNetworkAccess' to 'Set-AzServiceBusNetworkRuleSet'
+* Fixed 'Set-AzServiceBusNamespace' with Tags 
+
+#### Az.Sql
+* Deprecation of Get-AzSqlDatabaseTransparentDataEncryptionActivity cmdlet
+* Fixed cmdlets for Azure Active Directory Admin 'AzureSqlServerActiveDirectoryAdministratorAdapter' and 'AzureSqlInstanceActiveDirectoryAdministratorAdapter' migrate from 'AzureEnvironment.Endpoint.AzureEnvironment.Endpoint.Graph' to 'AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl'
+
+#### Az.StackHCI
+* Adding support cmdlet for Remote Support 
+    - New cmdlets - Install-AzStackHCIRemoteSupport, Remove-AzStackHCIRemoteSupport, Enable-AzStackHCIRemoteSupport, Disable-AzStackHCIRemoteSupport, Get-AzStackHCIRemoteSupportAccess,Get-AzStackHCIRemoteSupportSessionHistory
+
+#### Az.Storage
+* Fixed the issue that output number in console when update/copy blob sometimes [#16783]
+    -  'Set-AzStorageBlobContent' 
+    -  'Copy-AzStorageBlob' 
+* Updated help file, added more description for the asynchronous blob copy.
+    -  'Start-AzStorageBlobCopy'
+
+#### Az.TrafficManager
+* Added two new optional parameters 'MinChildEndpointsIPv4' and 'MinChildEndpointsIPv6' for nested endpoints
+
+#### Az.Websites
+* Updated 'New-AzAppServicePlan'  to create an app service plan with host environment id #16094
+
+### Thanks to our community contributors
+* @adriancuadrado, Update New-AzADServicePrincipal.md (#16896)
+* Alan (@AlanFlorance), Update Get-AzDataLakeGen2ChildItem.md (#16292)
+* @geologyrocks, Duplicated header (#16876)
+* Hiroshi Yoshioka (@hyoshioka0128), Typo “Azure CosmosDB"→"Azure Cosmos DB” (#16561)
+* Jean-Paul Smit (@jeanpaulsmit), The -Force option is not documented and not accepted as parameter (#16910)
+* Kamil Konderak (@kamilkonderak), Fixed description for NodeOsDiskSize parameter (#16716)
+* Muralidhar Ranganathan (@rmuralidhar), Mitigate Get-AzKeyVaultSecret: Invalid Parameter AsPlainText (#16730)
+* Ørjan Landgraff (@theorjan), better PS example (#16748)
+* @ahbleite, The switch option was not updated to reflect the new ParameterSetName values, therefore the $id is always null. (#16818)
+
 ## 7.1.0 - January 2022
 #### Az.Accounts
 * Copied 'ServicePrincipalSecret' and 'CertificatePassword' from Az.Accounts buildin profile to customer set profile. [#16617]

@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.7.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.7.2'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'AutoMapper.dll', 'Microsoft.Azure.Management.Network.dll'
@@ -345,12 +345,13 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Get-AzLoadBalancerBackendAddressPoolConfig', 
                'Add-AzLoadBalancerBackendAddressPoolConfig', 
                'New-AzLoadBalancerBackendAddressPoolConfig', 
-               'Remove-AzLoadBalancerBackendAddressPoolConfig', 
+               'Remove-AzLoadBalancerBackendAddressPoolConfig',
+               'Get-AzLoadBalancerBackendAddressInboundNatRulePortMapping',
                'Set-AzLoadBalancerFrontendIpConfig', 
                'Get-AzLoadBalancerFrontendIpConfig', 
                'Add-AzLoadBalancerFrontendIpConfig', 
                'New-AzLoadBalancerFrontendIpConfig', 
-               'Remove-AzLoadBalancerFrontendIpConfig', 'Get-AzLoadBalancer', 
+               'Remove-AzLoadBalancerFrontendIpConfig', 'Get-AzLoadBalancer',
                'Set-AzLoadBalancerInboundNatRuleConfig', 
                'Get-AzLoadBalancerInboundNatRuleConfig', 
                'Add-AzLoadBalancerInboundNatRuleConfig', 
@@ -511,7 +512,8 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'New-AzFirewallPolicyIntrusionDetectionBypassTraffic', 
                'New-AzFirewallPolicyIntrusionDetectionSignatureOverride', 
                'New-AzFirewallPolicyThreatIntelWhitelist', 
-               'New-AzFirewallPolicyDnsSetting', 'New-AzVirtualRouter', 
+               'New-AzFirewallPolicyDnsSetting', 'New-AzFirewallPolicySqlSetting',
+               'New-AzVirtualRouter', 
                'Remove-AzVirtualRouter', 'Get-AzVirtualRouter', 
                'Update-AzVirtualRouter', 'Add-AzVirtualRouterPeer', 
                'Update-AzVirtualRouterPeer', 'Remove-AzVirtualRouterPeer', 

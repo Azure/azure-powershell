@@ -31,9 +31,11 @@ The **Get-AzVMImage** cmdlet gets all the versions of a VMImage.
 ## EXAMPLES
 
 ### Example 1: Get VMImage objects
+```powershell
+Get-AzVMImage -Location "Central US" -PublisherName "MicrosoftWindowsServer" -Offer "windowsserver" -Skus "2012-R2-Datacenter"
 ```
-PS C:\> Get-AzVMImage -Location "Central US" -PublisherName "MicrosoftWindowsServer" -Offer "windowsserver" -Skus "2012-R2-Datacenter"
 
+```output
 Version        Skus               Offer         PublisherName          Location  Id
 -------        ----               -----         -------------          --------  --
 4.127.20180315 2012-R2-Datacenter windowsserver MicrosoftWindowsServer centralus /Subscriptions/9e2...
@@ -51,9 +53,11 @@ Version        Skus               Offer         PublisherName          Location 
 This command gets all the versions of VMImage that match the specified values.
 
 ### Example 2: Get VMImage object
+```powershell
+Get-AzVMImage -Location "Central US" -PublisherName "MicrosoftWindowsServer" -Offer "windowsserver" -Skus "2012-R2-Datacenter" -Version 4.127.20180315
 ```
-PS C:\> Get-AzVMImage -Location "Central US" -PublisherName "MicrosoftWindowsServer" -Offer "windowsserver" -Skus "2012-R2-Datacenter" -Version 4.127.20180315
 
+```output
 Id               : /Subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/Providers/Microsoft.Compute/Locations/centralus/
                    Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2012-R2-Datacenter
                    /Versions/4.127.20180315
@@ -73,9 +77,11 @@ DataDiskImages   : []
 This command gets a specific version of VMImage that matches the specified values.
 
 ### Example 3: Get VMImage objects
+```powershell
+Get-AzVMImage -Location "Central US" -PublisherName "MicrosoftWindowsServer" -Offer "windowsserver" -Skus "2012-R2-Datacenter" -Version 4.127.2018*
 ```
-PS C:\> Get-AzVMImage -Location "Central US" -PublisherName "MicrosoftWindowsServer" -Offer "windowsserver" -Skus "2012-R2-Datacenter" -Version 4.127.2018*
 
+```output
 Version        Skus               Offer         PublisherName          Location  Id
 -------        ----               -----         -------------          --------  --
 4.127.20180315 2012-R2-Datacenter windowsserver MicrosoftWindowsServer centralus /Subscriptions/9e2...

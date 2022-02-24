@@ -36,7 +36,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Aks
 {
-    [CmdletDeprecation(ReplacementCmdletName = "Set-AzAksCluster")]
+    [GenericBreakingChange("Set-AzAks will be removed in the next major release. Please use Set-AzAksCluster instead of Set-AzAks")]
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AksCluster", DefaultParameterSetName = DefaultParamSet, SupportsShouldProcess = true)]
     [Alias("Set-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Aks")]
     [OutputType(typeof(PSKubernetesCluster))]

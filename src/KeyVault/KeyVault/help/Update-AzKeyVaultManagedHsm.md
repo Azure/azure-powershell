@@ -14,22 +14,23 @@ Update the state of an Azure managed HSM.
 
 ### UpdateByNameParameterSet (Default)
 ```
-Update-AzKeyVaultManagedHsm -Name <String> -ResourceGroupName <String> [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
+Update-AzKeyVaultManagedHsm -Name <String> -ResourceGroupName <String> [-EnablePurgeProtection]
+ [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
  [<CommonParameters>]
 ```
 
 ### UpdateByInputObjectParameterSet
 ```
-Update-AzKeyVaultManagedHsm -InputObject <PSManagedHsm> [-Tag <Hashtable>]
+Update-AzKeyVaultManagedHsm -InputObject <PSManagedHsm> [-EnablePurgeProtection] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
  [<CommonParameters>]
 ```
 
 ### UpdateByResourceIdParameterSet
 ```
-Update-AzKeyVaultManagedHsm -ResourceId <String> [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
+Update-AzKeyVaultManagedHsm -ResourceId <String> [-EnablePurgeProtection] [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -70,6 +71,30 @@ PS C:\> Get-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $resourceGrou
 
 Updates tags for the managed Hsm using piping syntax.
 
+### Example 3: Enable purge protection for a managed Hsm 
+```powershell
+PS C:\> Update-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $resourceGroupName -EnablePurgeProtection | fl
+```
+```output
+Managed HSM Name                    : testmhsm
+Resource Group Name                 : test-rg
+Location                            : eastus
+Resource ID                         : /subscriptions/xxxxxx71-1bf0-4dda-aec3-xxxxxxxxxxxx/resourceGroups/test-rg/provide
+                                      rs/Microsoft.KeyVault/managedHSMs/testmhsm
+HSM Pool URI                        :
+Tenant ID                           : 54xxxxxx-38d6-4fb2-bad9-xxxxxxxxxxxx
+Initial Admin Object Ids            : {xxxxxx9e-5be9-4f43-abd2-xxxxxxxxxxxx}
+SKU                                 : StandardB1
+Soft Delete Enabled?                : True
+Enabled Purge Protection?           : True
+Soft Delete Retention Period (days) : 70
+Provisioning State                  : Succeeded
+Status Message                      : The Managed HSM is provisioned and ready to use.
+Tags                                :
+```
+
+Enables purge protection for the managed Hsm named `$hsmName` in resource group `$resourceGroupName`.
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -79,6 +104,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnablePurgeProtection
+specifying whether protection against purge is enabled for this managed HSM pool. The setting is effective only if soft delete is also enabled. Enabling this functionality is irreversible.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

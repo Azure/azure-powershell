@@ -54,18 +54,18 @@ To apply a DCR to a virtual machine, you create an association for the virtual m
 ## EXAMPLES
 
 ### Example 1: Delete data collection rule association with name and target resource ID (associated virtual machine) parameters
-```
-PS C:\>Remove-AzDataCollectionRuleAssociation -TargetResourceId $vm.Id -AssociationName $assocName
+```powershell
+Remove-AzDataCollectionRuleAssociation -TargetResourceId $vm.Id -AssociationName $assocName
 ```
 
 ### Example 2: Delete data collection rule with Input Object
-```
-PS C:\>$dcrAssoc | Remove-AzDataCollectionRule
+```powershell
+$dcrAssoc | Remove-AzDataCollectionRule
 ```
 
 ### Example 3: Delete data collection rule with the association resource ID property
-```
-PS C:\>Remove-AzDataCollectionRule -AssociationId $dcrAssoc.Id
+```powershell
+Remove-AzDataCollectionRule -AssociationId $dcrAssoc.Id
 ```
 
 ## PARAMETERS

@@ -29,9 +29,11 @@ Paid tiers include S0, S1, S2, and so on.
 
 ### Example 1
 ```powershell
-PS C:\> (Get-AzCognitiveServicesAccountSku -Type 'TextAnalytics' -Location "westus").Value | Select-Object -E
+(Get-AzCognitiveServicesAccountSku -Type 'TextAnalytics' -Location "westus").Value | Select-Object -E
 xpandProperty Sku;
+```
 
+```output
 Name     Tier
 ----     ----
 F0       Free

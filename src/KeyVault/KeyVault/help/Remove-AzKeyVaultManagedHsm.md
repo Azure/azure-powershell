@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzKeyVaultManagedHsm
 
 ## SYNOPSIS
-Deletes a managed HSM.
+Deletes/Purges a managed HSM.
 
 ## SYNTAX
 
@@ -19,9 +19,23 @@ Remove-AzKeyVaultManagedHsm [-Name] <String> [[-ResourceGroupName] <String>] [-F
  [<CommonParameters>]
 ```
 
+### RemoveDeletedManagedHsmByName
+```
+Remove-AzKeyVaultManagedHsm [-Name] <String> [-Location] <String> [-InRemovedState] [-Force] [-AsJob]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
+ [<CommonParameters>]
+```
+
 ### RemoveManagedHsmByInputObject
 ```
 Remove-AzKeyVaultManagedHsm [-InputObject] <PSManagedHsm> [-Force] [-AsJob] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
+ [<CommonParameters>]
+```
+
+### RemoveDeletedManagedHsmByInputObject
+```
+Remove-AzKeyVaultManagedHsm [-InputObject] <PSManagedHsm> [-InRemovedState] [-Force] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
  [<CommonParameters>]
 ```
@@ -30,6 +44,13 @@ Remove-AzKeyVaultManagedHsm [-InputObject] <PSManagedHsm> [-Force] [-AsJob] [-Pa
 ```
 Remove-AzKeyVaultManagedHsm [-ResourceId] <String> [-Force] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
+ [<CommonParameters>]
+```
+
+### RemoveDeletedManagedHsmByResourceId
+```
+Remove-AzKeyVaultManagedHsm [-ResourceId] <String> [-Location] <String> [-InRemovedState] [-Force] [-AsJob]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
  [<CommonParameters>]
 ```
 
@@ -47,7 +68,7 @@ PS C:\> Remove-AzKeyVaultManagedHsm -HsmName 'myhsm' -Force
 True
 ```
 
-This command removes the managed hsm named myhsm from your current subscription.
+This command removes the managed HSM named myhsm from your current subscription.
 
 ### Example 2: Remove a managed hsm from a specified resource group
 ```powershell
@@ -56,8 +77,19 @@ PS C:\> Remove-AzKeyVaultManagedHsm -HsmName 'myhsm' -ResourceGroupName "myrg1" 
 True
 ```
 
-This command removes the managed hsm named myhsm from the resource group named myrg1.
+This command removes the managed HSM named myhsm from the resource group named myrg1.
 If you do not specify the resource group name, the cmdlet searches for the named managed HSM to delete in your current subscription.
+
+### Example 3: Purge a deleted managed hsm
+```powershell
+PS C:\> Remove-AzKeyVaultManagedHsm -Name 'myhsm' -Location "eastus" -Force -PassThru
+```
+
+```output
+True
+```
+
+This command purges the managed HSM named myhsm located at eastus.
 
 ## PARAMETERS
 
@@ -112,7 +144,7 @@ Managed HSM object to be deleted.
 
 ```yaml
 Type: Microsoft.Azure.Commands.KeyVault.Models.PSManagedHsm
-Parameter Sets: RemoveManagedHsmByInputObject
+Parameter Sets: RemoveManagedHsmByInputObject, RemoveDeletedManagedHsmByInputObject
 Aliases:
 
 Required: True
@@ -122,12 +154,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -InRemovedState
+Remove the previously deleted managed HSM pool permanently.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: RemoveDeletedManagedHsmByName, RemoveDeletedManagedHsmByInputObject, RemoveDeletedManagedHsmByResourceId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+The location of the deleted managed HSM pool.
+
+```yaml
+Type: System.String
+Parameter Sets: RemoveDeletedManagedHsmByName, RemoveDeletedManagedHsmByResourceId
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the managed HSM to remove.
 
 ```yaml
 Type: System.String
-Parameter Sets: RemoveManagedHsmByName
+Parameter Sets: RemoveManagedHsmByName, RemoveDeletedManagedHsmByName
 Aliases: HsmName
 
 Required: True
@@ -173,7 +235,7 @@ ManagedHsm Resource Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: RemoveManagedHsmByResourceId
+Parameter Sets: RemoveManagedHsmByResourceId, RemoveDeletedManagedHsmByResourceId
 Aliases:
 
 Required: True

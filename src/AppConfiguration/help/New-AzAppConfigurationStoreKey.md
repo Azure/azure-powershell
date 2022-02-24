@@ -32,8 +32,6 @@ Regenerates an access key for the specified configuration store.
 ### Example 1: Regenerate key of an app configuration store
 ```powershell
 $keys= Get-AzAppConfigurationStoreKey -Name appconfig-test01 -ResourceGroupName azpwsh-manual-test
-```
-```powershell
 New-AzAppConfigurationStoreKey -Name appconfig-test01 -ResourceGroupName azpwsh-manual-test -Id $keys[0].id
 ```
 ```output
@@ -47,11 +45,7 @@ This command regenerate key of an app configuration store.
 ### Example 2: Regenerate key of an app configuration store by object
 ```powershell
 $app= New-AzAppConfigurationStore -Name appconfig-test10 -ResourceGroupName azpwsh-manual-test
-```
-```powershell
 $keys= Get-AzAppConfigurationStoreKey -Name appconfig-test01 -ResourceGroupName azpwsh-manual-test
-```
-```powershell
 New-AzAppConfigurationStoreKey -InputObject $app -Id $keys[0].id
 ```
 ```output

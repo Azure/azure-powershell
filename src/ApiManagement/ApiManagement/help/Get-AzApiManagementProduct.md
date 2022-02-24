@@ -58,6 +58,15 @@ Get-AzApiManagementProduct -Context $apimContext -ProductId "0123456789"
 
 This command get an API Management product by ID.
 
+### Example 2: Get a product by Title
+```powershell
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+$product = Get-AzApiManagementProduct -Context $apimContext -Title 'Starter'
+$product | Select-Object -First 1
+```
+
+This command selects the first API Management product by Title.
+
 ## PARAMETERS
 
 ### -ApiId
