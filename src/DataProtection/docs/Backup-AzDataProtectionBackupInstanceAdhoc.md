@@ -49,11 +49,11 @@ $backupJob = Backup-AzDataProtectionBackupInstanceAdhoc -BackupInstanceName $ins
 $jobid = $backupJob.JobId.Split("/")[-1]
 $jobstatus = "InProgress"
 while($jobstatus -ne "Completed")
->> {
->>     Start-Sleep -Seconds 10
->>     $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName
->>     $jobstatus = $currentjob.Status
->> }
+ {
+     Start-Sleep -Seconds 10
+     $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName
+     $jobstatus = $currentjob.Status
+ }
 
 ```
 
