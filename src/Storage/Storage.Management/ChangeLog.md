@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported download blob from managed disk account with Sas Uri and bearer token
+    -  `Get-AzStorageBlobContent` 
+* Supported create/upgrade storage account with ActiveDirectorySamAccountName and ActiveDirectoryAccountType
+    -  `New-AzStorageAccount`
+    -  `Set-AzStorageAccount`
 
 ## Version 4.2.0
 * Fixed the issue that output number in console when update/copy blob sometimes [#16783]

@@ -722,7 +722,7 @@ function New-AzADServicePrincipal {
     }
 
     if ($PSBoundParameters['ApplicationObject']) {
-      $PSBoundParameters['ApplicationId'] = $PSBoundParameters['ApplicationObject'].AppId
+      $PSBoundParameters['AppId'] = $PSBoundParameters['ApplicationObject'].AppId
       $null = $PSBoundParameters.Remove('ApplicationObject')
     } elseif (!$PSBoundParameters['ApplicationId']) {
       if (!$PSBoundParameters['DisplayName']) {
@@ -746,7 +746,7 @@ function New-AzADServicePrincipal {
           $null = $PSBoundParameters.Remove('StartDate')
         }
         if (!$PSBoundParameters['EndDate']) {
-          $param['EndDate'] = $PSBoundParameters['StartDate'].AddYears(1)
+          $param['EndDate'] = $param['StartDate'].AddYears(1)
         } else {
           $param['EndDate'] = $PSBoundParameters['EndDate']
           $null = $PSBoundParameters.Remove('EndDate')
@@ -754,7 +754,10 @@ function New-AzADServicePrincipal {
       }
 
       $app = New-AzADApplication @param
-      $PSBoundParameters['ApplicationId'] = $app.AppId
+      $PSBoundParameters['AppId'] = $app.AppId
+    } else {
+      $PSBoundParameters['AppId'] = $PSBoundParameters['ApplicationId']
+      $null = $PSBoundParameters.Remove('ApplicationId')
     }
 
     $sp = Az.MSGraph.internal\New-AzADServicePrincipal @PSBoundParameters
