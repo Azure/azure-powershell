@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
                     ResourceGroupName = this.ResourceGroupName,
                     Name = this.Name,
                     Slot = string.IsNullOrEmpty(this.Slot) ? "Production" : this.Slot,
-                    SnapshotTime = DateTime.Parse(s.Time)
+                    SnapshotTime = DateTime.Parse(s.Time).ToLocalTime()
                 };
             }).OrderByDescending(s => s.SnapshotTime).ToArray();
             WriteObject(list, true);
