@@ -28,7 +28,7 @@ eastus     HostPoolName Microsoft.DesktopVirtualization/hostpools
 
 This command creates a Windows Virtual Desktop HostPool in a Resource Group.
 
-### Example 1: Create a Windows Virtual Desktop HostPool by name
+### Example 2: Create a Windows Virtual Desktop HostPool by name
 ```powershell
 New-AzWvdHostPool -ResourceGroupName ResourceGroupName `
                             -Name HostPoolName `
