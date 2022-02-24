@@ -16,21 +16,21 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzConfidentialLedger'))
 
 Describe 'New-AzConfidentialLedger' {
     It 'CreateExpanded' {
+        $aadSecurityPrincipal = New-AzConfidentialLedgerAadBasedSecurityPrincipalObject `
+            -LedgerRoleName $env.AadPrincipalRole `
+            -PrincipalId $env.AadPrincipalId `
+            -TenantId $env.AadPrincipalTenantId
+
+        $certSecurityPrincipal = New-AzConfidentialLedgerCertBasedSecurityPrincipalObject `
+            -Cert $env.CertPrincipalCert `
+            -LedgerRoleName $env.CertPrincipalRole
+
         New-AzConfidentialLedger `
             -Name $env.NewLedgerName `
             -ResourceGroupName $env.ResourceGroup `
             -SubscriptionId $env.SubscriptionId `
-            -AadBasedSecurityPrincipal `
-                @{
-                    LedgerRoleName=$env.AadPrincipalRole; 
-                    PrincipalId=$env.AadPrincipalId; 
-                    TenantId=$env.AadPrincipalTenantId
-                } `
-            -CertBasedSecurityPrincipal `
-                @{
-                    Cert=$env.CertPrincipalCert; 
-                    LedgerRoleName=$env.CertPrincipalRole
-                } `
+            -AadBasedSecurityPrincipal $aadSecurityPrincipal `
+            -CertBasedSecurityPrincipal $certSecurityPrincipal `
             -LedgerType $env.LedgerType `
             -Location $env.Location `
             -Tag @{Location=$env.Tag0}

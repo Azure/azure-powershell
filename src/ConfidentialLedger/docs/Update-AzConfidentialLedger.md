@@ -62,6 +62,8 @@ Location Name
 eastus   test-ledger
 ```
 
+Updates metadata for an existing Confidential Ledger.
+
 ## PARAMETERS
 
 ### -AadBasedSecurityPrincipal
@@ -306,7 +308,7 @@ AADBASEDSECURITYPRINCIPAL <IAadBasedSecurityPrincipal[]>: Array of all AAD based
   - `[TenantId <String>]`: UUID/GUID based Tenant Id of the Security Principal
 
 CERTBASEDSECURITYPRINCIPAL <ICertBasedSecurityPrincipal[]>: Array of all cert based Security Principals.
-  - `[Cert <String>]`: Base64 encoded public key of the user cert (.pem or .cer)
+  - `[Cert <String>]`: Public key of the user cert (.pem or .cer)
   - `[LedgerRoleName <LedgerRoleName?>]`: LedgerRole associated with the Security Principal of Ledger
 
 INPUTOBJECT <IConfidentialLedgerIdentity>: Identity Parameter

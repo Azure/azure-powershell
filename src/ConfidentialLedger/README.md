@@ -35,7 +35,8 @@ require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/confidentialledger/resource-manager/Microsoft.ConfidentialLedger/preview/2021-05-13-preview/confidentialledger.json
+  # - $(repo)/specification/confidentialledger/resource-manager/Microsoft.ConfidentialLedger/preview/2021-05-13-preview/confidentialledger.json
+  - $(this-folder)/../../../azure-rest-api-specs/specification/confidentialledger/resource-manager/Microsoft.ConfidentialLedger/preview/2021-05-13-preview/confidentialledger.json
 
 # For new RP, the version is 0.1.0
 module-version: 0.1.0
@@ -58,5 +59,11 @@ directive:
   - where:
       verb: Set
     remove: true
+  - model-cmdlet:
+    - AadBasedSecurityPrincipal
+    - CertBasedSecurityPrincipal
+  - where:
+      variant: ^NameAvailabilityExpanded$
+    hide: true
 
 ```

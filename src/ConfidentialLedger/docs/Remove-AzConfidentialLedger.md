@@ -38,6 +38,8 @@ PS C:\> Remove-AzConfidentialLedger `
 # No output
 ```
 
+Deletes the specified Confidential Ledger.
+
 ## PARAMETERS
 
 ### -AsJob
