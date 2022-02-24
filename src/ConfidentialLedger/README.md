@@ -30,13 +30,13 @@ For information on how to develop for `Az.ConfidentialLedger`, see [how-to.md](h
 > see https://aka.ms/autorest
 
 ``` yaml
+branch: 429a7ea873cc1bbd4df133f71427162e15e258b1
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  # - $(repo)/specification/confidentialledger/resource-manager/Microsoft.ConfidentialLedger/preview/2021-05-13-preview/confidentialledger.json
-  - $(this-folder)/../../../azure-rest-api-specs/specification/confidentialledger/resource-manager/Microsoft.ConfidentialLedger/preview/2021-05-13-preview/confidentialledger.json
+  - $(repo)/specification/confidentialledger/resource-manager/Microsoft.ConfidentialLedger/preview/2021-05-13-preview/confidentialledger.json
 
 # For new RP, the version is 0.1.0
 module-version: 0.1.0
