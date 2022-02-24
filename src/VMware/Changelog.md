@@ -18,7 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Upgrade API version to 2021-12-01, and added cmdlets `Get-AzVMwareVirtualMachine` and `Get/New/Update/Remove-AzVMwarePlacementPolicy`
+* Upgrade API version to 2021-12-01
+* Added cmdlet:
+    - `Get-AzVMwareVirtualMachine`
+    - `New-AzVMwarePlacementPolicy`
+    - `Update-AzVMwarePlacementPolicy`
+    - `Remove-AzVMwarePlacementPolicy`
 
 ## Version 0.3.0
 * Updated api version to `2021-06-01`.
