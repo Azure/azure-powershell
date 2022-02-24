@@ -21,7 +21,7 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchComputeNodeExtension"), OutputType(typeof(PSNodeVMExtension))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchComputeNodeExtension", DefaultParameterSetName = Constants.IdParameterSet), OutputType(typeof(PSNodeVMExtension))]
     public class GetBatchComputeNodeExtensionCommand : BatchObjectModelCmdletBase
     {
         private int maxCount = Constants.DefaultMaxCount;

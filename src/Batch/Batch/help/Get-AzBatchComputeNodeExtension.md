@@ -12,7 +12,7 @@ Gets Batch compute node extensions from a compute node.
 
 ## SYNTAX
 
-### Id
+### Id (Default)
 ```
 Get-AzBatchComputeNodeExtension [-PoolId] <String> [-ComputeNodeId] <String> [[-ExtensionName] <String>]
  [-Select <String>] [-MaxCount <Int32>] -BatchContext <BatchAccountContext>
