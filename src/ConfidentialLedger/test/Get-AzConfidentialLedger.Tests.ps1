@@ -15,17 +15,17 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzConfidentialLedger'))
 }
 
 Describe 'Get-AzConfidentialLedger' {
-    It 'List' -skip {
+    It 'List' {
         $ledgerList = Get-AzConfidentialLedger
         $ledgerList.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'List1' -skip {
+    It 'List1' {
         $ledgerList = Get-AzConfidentialLedger -ResourceGroupName $env.ResourceGroup
         $ledgerList.Count | Should -Be 1
     }
 
-    It 'Get' -skip {
+    It 'Get' {
         $ledger = Get-AzConfidentialLedger -ResourceGroupName $env.ResourceGroup -Name $env.LedgerName
         $ledger.Name | Should -Be $env.LedgerName
         $ledger.Tag["Tag0"] | Should -Be $env.Tag0

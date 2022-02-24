@@ -17,6 +17,12 @@ Retrieves the properties of a Confidential Ledger.
 ### [New-AzConfidentialLedger](New-AzConfidentialLedger.md)
 Creates a  Confidential Ledger with the specified ledger parameters.
 
+### [New-AzConfidentialLedgerAADBasedSecurityPrincipalObject](New-AzConfidentialLedgerAADBasedSecurityPrincipalObject.md)
+Create an in-memory object for AADBasedSecurityPrincipal.
+
+### [New-AzConfidentialLedgerCertBasedSecurityPrincipalObject](New-AzConfidentialLedgerCertBasedSecurityPrincipalObject.md)
+Create an in-memory object for CertBasedSecurityPrincipal.
+
 ### [Remove-AzConfidentialLedger](Remove-AzConfidentialLedger.md)
 Deletes an existing Confidential Ledger.
 

@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.ConfidentialLedger.private.dll'
   FormatsToProcess = './Az.ConfidentialLedger.format.ps1xml'
-  FunctionsToExport = 'Get-AzConfidentialLedger', 'New-AzConfidentialLedger', 'New-AzConfidentialLedgerAadBasedSecurityPrincipalObject', 'New-AzConfidentialLedgerCertBasedSecurityPrincipalObject', 'Remove-AzConfidentialLedger', 'Test-AzConfidentialLedgerNameAvailability', 'Update-AzConfidentialLedger', '*'
+  FunctionsToExport = 'Get-AzConfidentialLedger', 'New-AzConfidentialLedger', 'New-AzConfidentialLedgerAADBasedSecurityPrincipalObject', 'New-AzConfidentialLedgerCertBasedSecurityPrincipalObject', 'Remove-AzConfidentialLedger', 'Test-AzConfidentialLedgerNameAvailability', 'Update-AzConfidentialLedger', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

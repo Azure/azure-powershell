@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'New-AzConfidentialLedgerAadBasedSecurityPrincipalObject'))
+if(($null -eq $TestName) -or ($TestName -contains 'New-AzConfidentialLedgerAADBasedSecurityPrincipalObject'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzConfidentialLedgerAadBasedSecurityPrincipalObject.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzConfidentialLedgerAADBasedSecurityPrincipalObject.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzConfidentialLedgerAadBa
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzConfidentialLedgerAadBasedSecurityPrincipalObject' {
+Describe 'New-AzConfidentialLedgerAADBasedSecurityPrincipalObject' {
     It '__AllParameterSets' {
         $aadSecurityPrincipal = New-AzConfidentialLedgerAadBasedSecurityPrincipalObject `
             -LedgerRoleName "Administrator" `

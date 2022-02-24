@@ -25,7 +25,7 @@ eastus   test-ledger
 
 Creates a new Confidential Ledger.
 
-### Example 2: Create Using Model Objects
+### Example 2: Create Using Security Principal Objects
 ```powershell
 PS C:\> $aadSecurityPrincipal = New-AzConfidentialLedgerAadBasedSecurityPrincipalObject `
   -LedgerRoleName "Administrator" `
