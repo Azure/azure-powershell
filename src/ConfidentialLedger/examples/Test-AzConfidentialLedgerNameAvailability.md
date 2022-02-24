@@ -1,18 +1,27 @@
-### Example 1: {{ Add title here }}
+### Example 1: Name is available
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Test-AzConfidentialLedgerNameAvailability `
+  -NameAvailabilityRequest `
+      @{
+          Name="available-name";
+          Type="Microsoft.ConfidentialLedger/ledgers"
+      }
 
-{{ Add output here }}
+Message       :
+NameAvailable : True
+Reason        :
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Name is not available
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Test-AzConfidentialLedgerNameAvailability `
+  -NameAvailabilityRequest `
+      @{
+          Name="not-available-name";
+          Type="Microsoft.ConfidentialLedger/ledgers"
+      }
 
-{{ Add output here }}
+Message       : Resource name already exists
+NameAvailable : False
+Reason        : AlreadyExists
 ```
-
-{{ Add description here }}
-
