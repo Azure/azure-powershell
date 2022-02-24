@@ -40,6 +40,7 @@ input-file:
 root-module-name: $(prefix).Purview
 module-version: 0.1.0
 title: Purviewdata
+namespace: Microsoft.Azure.PowerShell.Cmdlets.Purview
 subject-prefix: Purview
 identity-correction-for-post: true 
 nested-object-to-string: true
