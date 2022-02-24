@@ -1,6 +1,6 @@
 ### Example 1: Update an extension
 ```powershell
-PS C:\> $splat = @{
+$splat = @{
             ResourceGroupName = "connectedMachines"
             MachineName = "linux-eastus1_1"
             Name = "customScript"
@@ -8,8 +8,10 @@ PS C:\> $splat = @{
                 commandToExecute = "ls -l"
             }
         }
-PS C:\> Update-AzConnectedMachineExtension @splat
+Update-AzConnectedMachineExtension @splat
+```
 
+```output
 Name         Location ProvisioningState
 ----         -------- -----------------
 customScript eastus   Succeeded
@@ -19,11 +21,13 @@ Updates an extension on a specific machine.
 
 ### Example 2: Update an extension with location specified via the pipeline
 ```powershell
-PS C:\> $extToUpdate = Get-AzConnectedMachineExtension -ResourceGroupName connectedMachines -MachineName linux-eastus1_1 -Name customScript
-PS C:\> $extToUpdate | Update-AzConnectedMachineExtension -Settings @{
+$extToUpdate = Get-AzConnectedMachineExtension -ResourceGroupName connectedMachines -MachineName linux-eastus1_1 -Name customScript
+$extToUpdate | Update-AzConnectedMachineExtension -Settings @{
                 commandToExecute = "ls -l"
             }
+```
 
+```output
 Name         Location ProvisioningState
 ----         -------- -----------------
 customScript eastus   Succeeded
@@ -34,16 +38,18 @@ Here we are using the extension passed in via the pipeline to help us identify w
 
 ### Example 3: Update an extension with extension parameters specified via the pipeline
 ```powershell
-PS C:\> $extToUpdate = Get-AzConnectedMachineExtension -ResourceGroupName connectedMachines -MachineName linux-eastus1_1 -Name customScript
-PS C:\> # Update the settings on the object that will be used via the pipeline
-PS C:\> $extToUpdate.Setting.commandToExecute = "ls -l"
-PS C:\> $splat = @{
+$extToUpdate = Get-AzConnectedMachineExtension -ResourceGroupName connectedMachines -MachineName linux-eastus1_1 -Name customScript
+# Update the settings on the object that will be used via the pipeline
+$extToUpdate.Setting.commandToExecute = "ls -l"
+$splat = @{
             ResourceGroupName = "connectedMachines"
             MachineName = "linux-eastus1_1"
             Name = "customScript"
         }
-PS C:\> $extToUpdate | Update-AzConnectedMachineExtension @splat
+$extToUpdate | Update-AzConnectedMachineExtension @splat
+```
 
+```output
 Name         Location ProvisioningState
 ----         -------- -----------------
 customScript eastus   Succeeded
@@ -54,11 +60,13 @@ Here we are using the extension passed in via the pipeline to provide the change
 
 ### Example 4: Using an extension object as both the location and parameters for updating
 ```powershell
-PS C:\> $extToUpdate = Get-AzConnectedMachineExtension -ResourceGroupName connectedMachines -MachineName linux-eastus1_1 -Name customScript
-PS C:\> # Update the settings on the object that will be used via the pipeline
-PS C:\> $extToUpdate.Setting.commandToExecute = "ls -l"
-PS C:\> $extToUpdate | Update-AzConnectedMachineExtension -ExtensionParameter $extToUpdate
+$extToUpdate = Get-AzConnectedMachineExtension -ResourceGroupName connectedMachines -MachineName linux-eastus1_1 -Name customScript
+# Update the settings on the object that will be used via the pipeline
+$extToUpdate.Setting.commandToExecute = "ls -l"
+$extToUpdate | Update-AzConnectedMachineExtension -ExtensionParameter $extToUpdate
+```
 
+```output
 Name         Location ProvisioningState
 ----         -------- -----------------
 customScript eastus   Succeeded

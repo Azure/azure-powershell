@@ -38,7 +38,7 @@ Get-AzApplicationInsightsWebTest -ResourceGroupName azpwsh-rg-test -AppInsightsN
 Name                                 Location WebTestKind ResourceGroupName   Enabled
 ----                                 -------- ----------- -----------------   -------
 bsaic-portal-appinsights-portal01    westus2  ping        azpwsh-rg-test      True
-basic-portal02-appinsights-portal01  westus2  ping        azpwsh-rg-test      True  
+basic-portal02-appinsights-portal01  westus2  ping        azpwsh-rg-test      True
 basic-portal03-appinsights-portal01  westus2  ping        azpwsh-rg-test      True
 standard-portal-appinsights-portal01 westus2  standard    azpwsh-rg-test      True
 standard-pwsh01                      westus2  standard    azpwsh-rg-test      True
@@ -64,7 +64,7 @@ $location01 = New-AzApplicationInsightsWebTestGeolocationObject -Location "emea-
 $location02 = New-AzApplicationInsightsWebTestGeolocationObject -Location "us-ca-sjc-azr"
 New-AzApplicationInsightsWebTest -ResourceGroup azpwsh-rg-test -Name standardwebtestpwsh03 -Location 'westus2' `
 -Tag @{"hidden-link:/subscriptions/xxxxxxxxxx-xxxx-xxxxx-xxxxxxxxxxxx/resourceGroups/azpwsh-rg-test/providers/microsoft.insights/components/appinsightsportal01" = "Resource"} `
--RequestUrl "https://docs.microsoft.com/"  -RequestHttpVerb "GET" `
+-RequestUrl "https://docs.microsoft.com/" -RequestHttpVerb "GET" `
 -NameInAppInsights 'standardwebtestpwsh03' `
 -RuleSslCheck -RuleSslCertRemainingLifetimeCheck 7 -RuleExpectedHttpStatusCode 200 `
 -Enabled -Frequency 300 -Timeout 120 -WebTestKind "standard" -RetryEnabled -GeoLocations $location01, $location02 ` |Get-AzApplicationInsightsWebTest

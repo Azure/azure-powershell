@@ -1,7 +1,9 @@
 ### Example 1: Get all AzCostManagementExports by scope
 ```powershell
-PS C:\> Get-AzCostManagementExport -Scope 'subscriptions/**********'
+Get-AzCostManagementExport -Scope 'subscriptions/**********'
+```
 
+```output
 ETag              Name                               Type
 ----              ----                               ----
 "************" TestExport                         Microsoft.CostManagement/exports
@@ -13,8 +15,10 @@ Get all AzCostManagementExports by Scope
 
 ### Example 2: Get AzCostManagementExport by Name and scope
 ```powershell
-PS C:\> Get-AzCostManagementExport -Name 'TestExport' -Scope 'subscriptions/**********'
+Get-AzCostManagementExport -Name 'TestExport' -Scope 'subscriptions/**********'
+```
 
+```output
 ETag              Name       Type
 ----              ----       ----
 "************" TestExport Microsoft.CostManagement/exports

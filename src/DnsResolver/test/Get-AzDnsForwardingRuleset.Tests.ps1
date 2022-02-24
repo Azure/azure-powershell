@@ -1,3 +1,10 @@
+."$PSScriptRoot\testDataGenerator.ps1"
+."$PSScriptRoot\virtualNetworkClient.ps1"
+."$PSScriptRoot\dnsForwardingRulesetAssertions.ps1"
+."$PSScriptRoot\Constants.ps1"
+
+Add-AssertionOperator -Name 'BeSuccessfullyCreatedDnsForwardingRuleset' -Test $Function:BeSuccessfullyCreatedDnsForwardingRuleset
+
 $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
 if (-Not (Test-Path -Path $loadEnvPath)) {
     $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
@@ -11,20 +18,53 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
+function CreateDnsForwardingRuleset([String]$DnsForwardingRulesetName, [String]$OutboundEndpointName, [String]$DnsResolverName, [String]$VirtualNetworkName)
+{
+    if ($TestMode -eq "Record")
+    {
+        $virtualNetwork = CreateVirtualNetwork -SubscriptionId $SUBSCRIPTION_ID -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkName $VirtualNetworkName;
+        $subnet = CreateSubnet -SubscriptionId $SUBSCRIPTION_ID -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkName $VirtualNetworkName;
+    }
+
+    New-AzDnsResolver -Name $DnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkId $virtualNetwork.Id -Location $LOCATION
+
+    $outboundEndpoint = New-AzDnsResolverOutboundEndpoint -Name $OutboundEndpointName -DnsResolverName $DnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME -SubnetId $subnet.Id -Location $LOCATION
+
+    New-AzDnsForwardingRuleset -Name $DnsForwardingRulesetName -ResourceGroupName $RESOURCE_GROUP_NAME -Location $LOCATION -DnsResolverOutboundEndpoint  @{id = $outboundEndpoint.id;}
+}
+
 Describe 'Get-AzDnsForwardingRuleset' {
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get single DNS Forwarding Ruleset by name, expect DNS Forwarding Ruleset by name retrieved' {
+        # ARRANGE
+        $dnsResolverName = "psdnsresolvername28";
+        $outboundEndpointName =  "psoutboundendpointname28";
+        $dnsForwardingRulesetName = "psdnsforwardingrulesetname28"
+        $virtualNetworkName = "psvirtualnetworkname28";
+        $virtualNetworkId = "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME/providers/Microsoft.Network/virtualNetworks/$virtualNetworkName"
+        
+        CreateDnsForwardingRuleset -DnsForwardingRulesetName $dnsForwardingRulesetName -OutboundEndpointName $outboundEndpointName -DnsResolverName $dnsResolverName -VirtualNetworkName $virtualNetworkName 
+
+        # ACT
+        $dnsForwardingRuleset =  Get-AzDnsForwardingRuleset -Name $dnsForwardingRulesetName -ResourceGroupName $RESOURCE_GROUP_NAME
+
+        # ASSERT
+        $dnsForwardingRuleset | Should -BeSuccessfullyCreatedDnsForwardingRuleset
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'List all DNS forwarding ruleset under the resouce group, expect all DNS forwarding rulesets retrieved' {
+        # ARRANGE
+        $dnsResolverName = "psdnsresolvername29";
+        $outboundEndpointName =  "psoutboundendpointname29";
+        $dnsForwardingRulesetName = "psdnsforwardingrulesetname29"
+        $virtualNetworkName = "psvirtualnetworkname29";
+        $virtualNetworkId = "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME/providers/Microsoft.Network/virtualNetworks/$virtualNetworkName"
+        
+        CreateDnsForwardingRuleset -DnsForwardingRulesetName $dnsForwardingRulesetName -OutboundEndpointName $outboundEndpointName -DnsResolverName $dnsResolverName -VirtualNetworkName $virtualNetworkName 
 
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+        # ACT
+        $dnsForwardingRuleset =  Get-AzDnsForwardingRuleset -Name $dnsForwardingRulesetName -ResourceGroupName $RESOURCE_GROUP_NAME
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        # ASSERT
+        $dnsForwardingRuleset.Count | Should -Be "1"
     }
 }

@@ -24,8 +24,9 @@ Lists the access key for the specified configuration store.
 
 ### Example 1: List all store keys of an app configuration store
 ```powershell
-PS C:\> Get-AzAppConfigurationStoreKey -Name appconfig-test01 -ResourceGroupName azpwsh-manual-test
-
+Get-AzAppConfigurationStoreKey -Name appconfig-test01 -ResourceGroupName azpwsh-manual-test
+```
+```output
 ConnectionString                                                                                                                     LastModified        Name                ReadOnly Value
 ----------------                                                                                                                     ------------        ----                -------- -----
 Endpoint=https://appconfig-test01.azconfig.io;Id=TvV0-l0-s0:osSixtp4xggJYFlsJyYl;Secret=Bfxnosrs952PTGxvb2bdFtlTDCBPFDTlBATuEO5kRbc= 5/7/2020 9:09:27 AM Primary             False    Bfxnosrs952PTGxvb2bdFtlTDCBPFDTlBATuEO5k...
