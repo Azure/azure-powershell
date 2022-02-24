@@ -108,6 +108,10 @@ directive:
       subject: ScriptExecution|WorkloadNetworkPublicIP|Datastore
     hide: true
   - where:
+      verb: Lock
+      subject: VirtualMachineMovement
+    hide: true
+  - where:
       verb: Get|New|Update|Remove
       subject: WorkloadNetworkDhcp|WorkloadNetworkDnsService|WorkloadNetworkDnsZone|WorkloadNetworkPortMirroring|WorkloadNetworkSegment|WorkloadNetworkVMGroup
     hide: true

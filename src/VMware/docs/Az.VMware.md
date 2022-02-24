@@ -38,9 +38,6 @@ List the admin credentials for the private cloud
 ### [Get-AzVMwareVirtualMachine](Get-AzVMwareVirtualMachine.md)
 Get a virtual machine by id in a private cloud cluster
 
-### [Lock-AzVMwareVirtualMachineMovement](Lock-AzVMwareVirtualMachineMovement.md)
-Enable or disable DRS-driven VM movement restriction
-
 ### [New-AzVMwareAddon](New-AzVMwareAddon.md)
 Create or update a addon in a private cloud
 
