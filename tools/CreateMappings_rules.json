@@ -726,5 +726,9 @@
   {
     "alias": "BareMetal",
     "module": "BareMetal"
+  },
+  {
+    "alias": "ConnectedNetwork",
+    "module": "ConnectedNetwork"
   }
 ]
