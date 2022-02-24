@@ -329,7 +329,7 @@ function Test-MongoDBCollectionBackupInformationCmdLets {
 function Test-UpdateCosmosDBAccountBackupPolicyCmdLet {
   $rgName = "CosmosDBResourceGroup20"
   $location = "Central US"
-  $cosmosDBAccountName = "cosmosdb-1220"
+  $cosmosDBAccountName = "cosmosdb-1220-1"
   $apiKind = "Sql"
   $consistencyLevel = "Session"
   $locations = @()
