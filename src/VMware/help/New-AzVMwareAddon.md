@@ -102,7 +102,7 @@ The properties of an addon resource
 To construct, see NOTES section for PROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.IAddonProperties
+Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddonProperties
 Parameter Sets: (All)
 Aliases:
 
@@ -182,7 +182,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.IAddon
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddon
 
 ## NOTES
 
