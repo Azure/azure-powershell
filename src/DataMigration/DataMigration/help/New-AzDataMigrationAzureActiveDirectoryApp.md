@@ -27,10 +27,12 @@ Create a new instance DataMigration Azure ActiveDirectory Application details.
 $secpasswd = ConvertTo-SecureString "Your Secret Key Here" -AsPlainText -Force
 New-AzDmsAadApp -ApplicationId "Your AppId/Service Principal ID here" -AppKey $secpasswd
 ```
+
+```output
 ApplicationId : "Your AppId/Service Principal Id here"
 AppKey        : System.Security.SecureString
 TenantId      : "Tenant Id"
-
+```
 ## PARAMETERS
 
 ### -AppKey
