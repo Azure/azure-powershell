@@ -1,10 +1,10 @@
 <!-- region Generated -->
-# Az.Purview
-This directory contains the PowerShell module for the Purview service.
+# Az.Purviewdata
+This directory contains the PowerShell module for the Purviewdata service.
 
 ---
 ## Status
-[![Az.Purview](https://img.shields.io/powershellgallery/v/Az.Purview.svg?style=flat-square&label=Az.Purview "Az.Purview")](https://www.powershellgallery.com/packages/Az.Purview/)
+[![Az.Purviewdata](https://img.shields.io/powershellgallery/v/Az.Purviewdata.svg?style=flat-square&label=Az.Purviewdata "Az.Purviewdata")](https://www.powershellgallery.com/packages/Az.Purviewdata/)
 
 ## Info
 - Modifiable: yes
@@ -23,7 +23,7 @@ This module was primarily generated via [AutoRest](https://github.com/Azure/auto
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
 
 ## Development
-For information on how to develop for `Az.Purview`, see [how-to.md](how-to.md).
+For information on how to develop for `Az.Purviewdata`, see [how-to.md](how-to.md).
 <!-- endregion -->
 
 ### AutoRest Configuration
@@ -37,9 +37,10 @@ require:
 input-file:
   - $(repo)/specification/purview/data-plane/Azure.Analytics.Purview.Scanning/preview/2021-10-01-preview/scanningService.json
 
+root-module-name: $(prefix).Purview
 module-version: 0.1.0
-title: Purview
-subject-prefix: $(service-name)
+title: Purviewdata
+subject-prefix: Purview
 identity-correction-for-post: true 
 nested-object-to-string: true
 resourcegroup-append: true
