@@ -34,26 +34,30 @@ Add a single IP rule to the NetworkRuleSet of the given Namespace
 ```powershell
 Add-AzEventHubIPRule -ResourceGroupName v-ajnavtest -Namespace Eventhub-Namespace1-2389 -IpMask "11.22.33.44" -Action Allow
 ```
+
+```output
 Name                : default
 DefaultAction       : Allow
 Id                  : /subscriptions/SubscriptionId/resourceGroups/RSG-TestAzEventhub/providers/Microsoft.Eventhub/namespaces/Eventhub-Namespace-2389/networkRuleSets/default
 Type                : Microsoft.Eventhub/Namespaces/NetworkRuleSet
 IpRules             : {11.22.33.44, Allow}
 VirtualNetworkRules : 
-
+```
 add the IPRule with IpMask "11.22.33.44" and Action Allow for the given namespace.
 
 ### Example 2
 ```powershell
 Add-AzEventHubIPRule -ResourceGroupName v-ajnavtest -Namespace Eventhub-Namespace1-2389 -IpRuleObject $ipruleobject
 ```
+
+```output
 Name                : default
 DefaultAction       : Allow
 Id                  : /subscriptions/SubscriptionId/resourceGroups/RSG-TestAzEventhub/providers/Microsoft.Eventhub/namespaces/Eventhub-Namespace-2389/networkRuleSets/default
 Type                : Microsoft.Eventhub/Namespaces/NetworkRuleSet
 IpRules             : {11.22.33.44, Allow}
 VirtualNetworkRules : 
-
+```
 add the IPRule with IpMask "11.22.33.44" and Action Allow for the given namespace.
 
 ## PARAMETERS

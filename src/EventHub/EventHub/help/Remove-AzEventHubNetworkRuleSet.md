@@ -39,13 +39,15 @@ Removes the NetworkRuleSet for the Given Namespace
 ```powershell
 Remove-AzEventHubNetworkRuleSet -ResourceGroupName  v-ajnavtest -Namespace Eventhub-Namespace1-1375 -PassThru
 ```
+
+```output
 Name                : default
 DefaultAction       : Allow
 Id                  : /subscriptions/subscriptionId/resourceGroups/ResourceGroup/providers/Microsoft.EventHub/namespaces/EventHub-Namespace-1375/networkRuleSets/default
 Type                : Microsoft.EventHub/Namespaces/NetworkRuleSet
 IpRules             : 
 VirtualNetworkRules : 
-
+```
 
 Deletes the NetworkRuleSet for the Given "Eventhub-Namespace1-1375" namespace 
 
@@ -60,13 +62,15 @@ Deletes the NetworkRuleSet using InputObject
 ```powershell
 Remove-AzEventHubNetworkRuleSet -ResourceId /SubscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace1-1375 -PassThru
 ```
+
+```output
 Name                : default
 DefaultAction       : Allow
 Id                  : /subscriptions/subscriptionId/resourceGroups/ResourceGroup/providers/Microsoft.EventHub/namespaces/EventHub-Namespace-1375/networkRuleSets/default
 Type                : Microsoft.EventHub/Namespaces/NetworkRuleSet
 IpRules             : 
 VirtualNetworkRules : 
-
+```
 Deletes the NetworkRuleSet using ResourceId of the Namespace
 
 
