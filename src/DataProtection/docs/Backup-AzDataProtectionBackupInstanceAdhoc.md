@@ -49,12 +49,11 @@ $backupJob = Backup-AzDataProtectionBackupInstanceAdhoc -BackupInstanceName $ins
 $jobid = $backupJob.JobId.Split("/")[-1]
 $jobstatus = "InProgress"
 while($jobstatus -ne "Completed")
- {
-     Start-Sleep -Seconds 10
-     $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName
-     $jobstatus = $currentjob.Status
- }
-
+{
+    Start-Sleep -Seconds 10
+    $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName
+    $jobstatus = $currentjob.Status
+}
 ```
 
 This Command Triggers Backup for a given backup instance using protection policy used to protect the backup instance. Then we track the backup job in a loop until it's completed.
