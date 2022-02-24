@@ -12,29 +12,9 @@ To check whether a resource name is available.
 
 ## SYNTAX
 
-### CheckExpanded (Default)
 ```
 Test-AzConfidentialLedgerNameAvailability [-SubscriptionId <String>] [-Name <String>] [-Type <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Check
-```
-Test-AzConfidentialLedgerNameAvailability -NameAvailabilityRequest <ICheckNameAvailabilityRequest>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CheckViaIdentity
-```
-Test-AzConfidentialLedgerNameAvailability -InputObject <IConfidentialLedgerIdentity>
- -NameAvailabilityRequest <ICheckNameAvailabilityRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CheckViaIdentityExpanded
-```
-Test-AzConfidentialLedgerNameAvailability -InputObject <IConfidentialLedgerIdentity> [-Name <String>]
- [-Type <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -95,50 +75,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.IConfidentialLedgerIdentity
-Parameter Sets: CheckViaIdentity, CheckViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Name
 The name of the resource for which availability needs to be checked.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NameAvailabilityRequest
-The check availability request body.
-To construct, see NOTES section for NAMEAVAILABILITYREQUEST properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.ICheckNameAvailabilityRequest
-Parameter Sets: Check, CheckViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -149,7 +97,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: Check, CheckExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -164,7 +112,7 @@ The resource type.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -210,10 +158,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.ICheckNameAvailabilityRequest
-
-### Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.IConfidentialLedgerIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.ICheckNameAvailabilityResponse
@@ -221,21 +165,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IConfidentialLedgerIdentity>: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[LedgerName <String>]`: Name of the Confidential Ledger
-  - `[ResourceGroupName <String>]`: The name of the resource group.
-  - `[SubscriptionId <String>]`: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
-
-NAMEAVAILABILITYREQUEST <ICheckNameAvailabilityRequest>: The check availability request body.
-  - `[Name <String>]`: The name of the resource for which availability needs to be checked.
-  - `[Type <String>]`: The resource type.
 
 ## RELATED LINKS
 

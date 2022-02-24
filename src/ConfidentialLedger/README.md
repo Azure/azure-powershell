@@ -59,11 +59,11 @@ directive:
   - where:
       verb: Set
     remove: true
+  - where:
+      verb: Test
+      variant: ^Check$|^CheckViaIdentity$|^CheckViaIdentityExpanded$
+    remove: true
   - model-cmdlet:
     - AadBasedSecurityPrincipal
     - CertBasedSecurityPrincipal
-  - where:
-      variant: ^NameAvailabilityExpanded$
-    hide: true
-
 ```
