@@ -11,7 +11,7 @@
 RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.5.0'
+ModuleVersion = '0.6.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -41,7 +41,7 @@ For more information on Az Predictor, please visit the following: https://aka.ms
 PowerShellVersion = '7.2'
 
 # Modules that must be imported into the global environment prior to importing this module
-# RequiredModules = @(@{ModuleName="PSReadLine"; ModuleVersion="2.2.0-beta2"})
+RequiredModules = @(@{ModuleName="PSReadLine"; ModuleVersion="2.2.2"})
 
 NestedModules = @("Microsoft.Azure.PowerShell.Tools.AzPredictor.dll")
 
@@ -78,7 +78,7 @@ PrivateData = @{
         # RequireLicenseAcceptance = $false
 
         # External dependent modules of this module
-        ExternalModuleDependencies = @('Az.Accounts', 'PSReadLine')
+        ExternalModuleDependencies = @('Az.Accounts')
 
     } # End of PSData hashtable
 
