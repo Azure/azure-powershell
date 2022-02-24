@@ -59,11 +59,11 @@ directive:
   - where:
       verb: Set
     remove: true
-  - where:
+  - where: # Only generate one version of CheckNameAvailability
       verb: Test
       variant: ^Check$|^CheckViaIdentity$|^CheckViaIdentityExpanded$
     remove: true
   - model-cmdlet:
-    - AadBasedSecurityPrincipal
+    - AADBasedSecurityPrincipal
     - CertBasedSecurityPrincipal
 ```
