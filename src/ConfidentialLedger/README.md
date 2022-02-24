@@ -35,9 +35,7 @@ require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  # - $(repo)/specification/databricks/resource-manager/Microsoft.Databricks/stable/2018-04-01/databricks.json
-# If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
-  - $(this-folder)/../../../azure-rest-api-specs/specification/confidentialledger/resource-manager/Microsoft.ConfidentialLedger/preview/2021-05-13-preview/confidentialledger.json
+  - $(repo)/specification/confidentialledger/resource-manager/Microsoft.ConfidentialLedger/preview/2021-05-13-preview/confidentialledger.json
 
 # For new RP, the version is 0.1.0
 module-version: 0.1.0
