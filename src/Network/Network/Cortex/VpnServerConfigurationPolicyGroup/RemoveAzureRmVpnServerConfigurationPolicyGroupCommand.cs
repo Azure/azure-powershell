@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipeline = true,
             ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName,
             HelpMessage = "The VpnServerConfiguration name this PolicyGroup is linked to.")]
-        [Alias("ParentVpnServerConfiguration", "VpnServerConfiguration")]
+        [Alias("ParentVpnServerConfigurationName", "VpnServerConfigurationName")]
         [ResourceNameCompleter("Microsoft.Network/vpnServerConfigurations", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string ServerConfigurationName { get; set; }
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.Network
                     this.Name,
                     () =>
                     {
-                        this.VpnServerConfigurationPolicyGroupClient.Delete(this.ResourceGroupName, this.ServerConfigurationName, this.Name);
+                        this.ConfigurationPolicyGroupClient.Delete(this.ResourceGroupName, this.ServerConfigurationName, this.Name);
 
                         if (PassThru)
                         {

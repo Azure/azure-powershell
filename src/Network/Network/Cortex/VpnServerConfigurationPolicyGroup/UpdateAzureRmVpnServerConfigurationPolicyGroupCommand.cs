@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
             ValueFromPipeline = true,
             ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName,
             HelpMessage = "The VpnServerConfiguration name this PolicyGroup is linked to.")]
-        [Alias("ParentVpnServerConfiguration", "VpnServerConfiguration")]
+        [Alias("ParentVpnServerConfigurationName", "VpnServerConfigurationName")]
         [ResourceNameCompleter("Microsoft.Network/vpnServerConfigurations", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string ServerConfigurationName { get; set; }
@@ -183,10 +183,7 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
                 policyGroupToUpdate.PolicyMembers.AddRange(this.PolicyMember);
             }
 
-            var policyGroupModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VpnServerConfigurationPolicy>(policyGroupToUpdate);
-            policyGroupModel.Tags = TagsConversionHelper.CreateTagDictionary(parentVpnServerConfiguration.Tag, validate: true);
-
-            this.CreateOrUpdateVpnServerConfigurationPolicyGroup(this.ResourceGroupName, this.ServerConfigurationName, this.Name, policyGroupModel);
+            this.CreateOrUpdateVpnServerConfigurationPolicyGroup(this.ResourceGroupName, this.ServerConfigurationName, this.Name, policyGroupToUpdate);
 
             return this.GetVpnServerConfigurationPolicyGroup(this.ResourceGroupName, this.ServerConfigurationName, this.Name);
         }

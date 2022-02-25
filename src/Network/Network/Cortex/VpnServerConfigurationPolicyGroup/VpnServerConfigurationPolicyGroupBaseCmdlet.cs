@@ -27,11 +27,11 @@ namespace Microsoft.Azure.Commands.Network
 
     public class VpnServerConfigurationPolicyGroupBaseCmdlet : VpnServerConfigurationBaseCmdlet
     {
-        public IVpnServerConfigurationPolicyGroupsOperations VpnServerConfigurationPolicyGroupClient
+        public IConfigurationPolicyGroupsOperations ConfigurationPolicyGroupClient
         {
             get
             {
-                return NetworkClient.NetworkManagementClient.VpnServerConfigurationPolicyGroups;
+                return NetworkClient.NetworkManagementClient.ConfigurationPolicyGroups;
             }
         }
 
@@ -42,24 +42,20 @@ namespace Microsoft.Azure.Commands.Network
 
         public PSVpnServerConfigurationPolicyGroup GetVpnServerConfigurationPolicyGroup(string resourceGroupName, string parentVpnServerConfigurationName, string name)
         {
-            var vpnServerConfigurationPolicyGroup = this.VpnServerConfigurationPolicyGroupClient.Get(resourceGroupName, parentVpnServerConfigurationName, name);
+            var vpnServerConfigurationPolicyGroup = this.ConfigurationPolicyGroupClient.Get(resourceGroupName, parentVpnServerConfigurationName, name);
             return this.ToPsVpnServerConfigurationPolicyGroup(vpnServerConfigurationPolicyGroup);
         }
 
         public List<PSVpnServerConfigurationPolicyGroup> ListVpnServerConfigurationPolicyGroups(string resourceGroupName, string parentVpnServerConfigurationName)
         {
-            List<PSVpnServerConfigurationPolicyGroup> vpnServerConfigurationPolicyGroupsToReturn = new List<PSVpnServerConfigurationPolicyGroup>();
             var vpnServerConfiguration = this.GetVpnServerConfiguration(resourceGroupName, parentVpnServerConfigurationName);
 
-            if (vpnServerConfiguration != null)
+            if (vpnServerConfiguration != null && vpnServerConfiguration.ConfigurationPolicyGroups != null)
             {
-                foreach (MNM.VpnServerConfigurationPolicyGroup vpnServerConfigurationPolicyGroup in vpnServerConfiguration.ConfigurationPolicyGroups)
-                {
-                    vpnServerConfigurationPolicyGroupsToReturn.Add(ToPsVpnServerConfigurationPolicyGroup(vpnServerConfigurationPolicyGroup));
-                }
+                return vpnServerConfiguration.ConfigurationPolicyGroups;
             }
 
-            return vpnServerConfigurationPolicyGroupsToReturn;
+            return new List<PSVpnServerConfigurationPolicyGroup>();
         }
 
         public bool IsVpnServerConfigurationPolicyGroupPresent(string resourceGroupName, string parentVpnServerConfigurationName, string name)
@@ -67,14 +63,12 @@ namespace Microsoft.Azure.Commands.Network
             return NetworkBaseCmdlet.IsResourcePresent(() => { GetVpnServerConfigurationPolicyGroup(resourceGroupName, parentVpnServerConfigurationName, name); });
         }
 
-        public PSVpnServerConfigurationPolicyGroup CreateOrUpdateVpnServerConfigurationPolicyGroup(string resourceGroupName, string parentVpnServerConfigurationName, string name, PSVpnServerConfigurationPolicyGroup vpnServerConfigurationPolicyGroup, Hashtable tags)
+        public PSVpnServerConfigurationPolicyGroup CreateOrUpdateVpnServerConfigurationPolicyGroup(string resourceGroupName, string parentVpnServerConfigurationName, string name, PSVpnServerConfigurationPolicyGroup vpnServerConfigurationPolicyGroup)
         {
             var vpnServerConfigurationPolicyGroupModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VpnServerConfigurationPolicyGroup>(vpnServerConfigurationPolicyGroup);
-            vpnServerConfigurationPolicyGroupModel.Tags = TagsConversionHelper.CreateTagDictionary(tags, validate: true);
 
-            var vpnServerConfigurationPolicyGroupCreatedOrUpdated = this.VpnServerConfigurationPolicyGroupClient.CreateOrUpdate(resourceGroupName, parentVpnServerConfigurationName, name, vpnServerConfigurationPolicyGroupModel);
+            var vpnServerConfigurationPolicyGroupCreatedOrUpdated = this.ConfigurationPolicyGroupClient.CreateOrUpdate(resourceGroupName, parentVpnServerConfigurationName, name, vpnServerConfigurationPolicyGroupModel);
             PSVpnServerConfigurationPolicyGroup vpnServerConfigurationPolicyGroupToReturn = this.ToPsVpnServerConfigurationPolicyGroup(vpnServerConfigurationPolicyGroupCreatedOrUpdated);
-            //vpnServerConfigurationPolicyGroupToReturn.ResourceGroupName = resourceGroupName;
 
             return vpnServerConfigurationPolicyGroupToReturn;
         }

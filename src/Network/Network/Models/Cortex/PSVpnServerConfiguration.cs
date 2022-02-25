@@ -100,5 +100,11 @@ namespace Microsoft.Azure.Commands.Network.Models
         {
             get { return JsonConvert.SerializeObject(P2SVpnGateways, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
+
+        [JsonIgnore]
+        public string ConfigurationPolicyGroupsText
+        {
+            get { return JsonConvert.SerializeObject(ConfigurationPolicyGroups, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
     }
 }
