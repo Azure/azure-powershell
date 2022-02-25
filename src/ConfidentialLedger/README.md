@@ -63,10 +63,10 @@ directive:
       verb: Test
       variant: ^Check$|^CheckViaIdentity$|^CheckViaIdentityExpanded$
     remove: true
-  - where: # Remove auto-generated Update since we implement a custom one requiring the 'Location' parameter.
+  - where: # Hide auto-generated Update since we implement a custom one requiring the 'Location' parameter.
       verb: Update
-      subject: ConfidentialLedger
-    remove: true
+      subject: ^ConfidentialLedger$
+    hide: true
   - model-cmdlet: # Generate objects for common models.
     - AADBasedSecurityPrincipal
     - CertBasedSecurityPrincipal
