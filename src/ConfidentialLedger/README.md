@@ -64,8 +64,7 @@ directive:
       variant: ^Check$|^CheckViaIdentity$|^CheckViaIdentityExpanded$
     remove: true
   - where: # Hide auto-generated Update since we implement a custom one requiring the 'Location' parameter.
-      verb: Update
-      subject: ^ConfidentialLedger$
+      variant: ^UpdateExpanded$|^UpdateViaIdentityExpanded$
     hide: true
   - model-cmdlet: # Generate objects for common models.
     - AADBasedSecurityPrincipal

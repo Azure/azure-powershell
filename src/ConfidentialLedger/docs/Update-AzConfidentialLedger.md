@@ -14,18 +14,18 @@ Updates properties of Confidential Ledger
 
 ### UpdateExpanded (Default)
 ```
-Update-AzConfidentialLedger -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AadBasedSecurityPrincipal <IAadBasedSecurityPrincipal[]>]
- [-CertBasedSecurityPrincipal <ICertBasedSecurityPrincipal[]>] [-LedgerType <LedgerType>] [-Location <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzConfidentialLedger -Name <String> -ResourceGroupName <String> -Location <String>
+ [-SubscriptionId <String>] [-AadBasedSecurityPrincipal <IAadBasedSecurityPrincipal[]>]
+ [-CertBasedSecurityPrincipal <ICertBasedSecurityPrincipal[]>] [-LedgerType <LedgerType>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzConfidentialLedger -InputObject <IConfidentialLedgerIdentity>
+Update-AzConfidentialLedger -InputObject <IConfidentialLedgerIdentity> -Location <String>
  [-AadBasedSecurityPrincipal <IAadBasedSecurityPrincipal[]>]
- [-CertBasedSecurityPrincipal <ICertBasedSecurityPrincipal[]>] [-LedgerType <LedgerType>] [-Location <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-CertBasedSecurityPrincipal <ICertBasedSecurityPrincipal[]>] [-LedgerType <LedgerType>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -167,7 +167,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
