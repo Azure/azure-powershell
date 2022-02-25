@@ -1,18 +1,8 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update a Sentinel data connector
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\>Update-AzSentinelDataConnector -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -DataConnectorId  3bd6c555-1412-4103-9b9d-2b0b40cda6b6 -SharePoint "Enabled"
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command updates a Sentinel data connector
 

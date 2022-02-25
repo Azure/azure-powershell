@@ -246,6 +246,10 @@ function Update-AzSentinelEntityQuery {
                     $null = $PSBoundParameters.Remove('Disabled')
                 }
             }
+            else {
+                Write-Error "This cmdlet only works with Entity Queries of the Activity kind."
+                break
+            }
     
             $null = $PSBoundParameters.Add('EntityQuery', $EntityQuery)
 

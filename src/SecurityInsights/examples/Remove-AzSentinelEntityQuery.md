@@ -1,18 +1,17 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove Entity Query
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzSentinelEntityQuery -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Id "myEntityQueryTemplateId"
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command removes a specific entity query based on the entity query Id
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove an Entity Query based on the title
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $queryTemplateId = Get-AzSentinelEntityQueryTemplate -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" | Where-Object {$_.Title -eq "The user has created an account"}
+Remove-AzSentinelEntityQuery -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Id $queryTemplateId.Name
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command removes a specific entity query based on the title
 

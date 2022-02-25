@@ -1,18 +1,7 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove an alert rule
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\>Remove-AzSentinelAlertRule -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -RuleId 4a21e485-75ae-48b3-a7b9-e6a92bcfe434
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+The command removes a Sentinel alert rule

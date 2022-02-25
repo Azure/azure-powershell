@@ -1,18 +1,8 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update a Bookmark relation
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\>Update-AzSentinelBookmarkRelation -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -BookmarkId 6a8d6ea6-04d5-49d7-8169-ffca8b0ced59 -RelationName f185b6f8-1a0d-43eb-97de-67720839ac67 -RelatedResourceId f185b6f8-1a0d-43eb-97de-67720839ac67
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command updates a bookmark relation
 

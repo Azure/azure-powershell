@@ -65,17 +65,17 @@ function New-AzSentinelEntityQuery {
         [System.String]
         ${Title},
 
-        [Parameter(ParameterSetName = 'Activity')]
+        [Parameter(ParameterSetName = 'Activity'), Mandatory]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
         ${Content},
 
-        [Parameter(ParameterSetName = 'Activity')]
+        [Parameter(ParameterSetName = 'Activity'), Mandatory]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
         ${Description},
 
-        [Parameter(ParameterSetName = 'Activity')]
+        [Parameter(ParameterSetName = 'Activity'), Mandatory]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
         ${QueryDefinitionQuery},
@@ -170,20 +170,14 @@ function New-AzSentinelEntityQuery {
                 $EntityQuery.Title = $PSBoundParameters['Title']
                 $null = $PSBoundParameters.Remove('Title')
 
-                If($PSBoundParameters['Content']){
-                    $EntityQuery.Content = $PSBoundParameters['Content']
-                    $null = $PSBoundParameters.Remove('Content')
-                }
+                $EntityQuery.Content = $PSBoundParameters['Content']
+                $null = $PSBoundParameters.Remove('Content')
 
-                If($PSBoundParameters['Description']){
-                    $EntityQuery.Description = $PSBoundParameters['Description']
-                    $null = $PSBoundParameters.Remove('Description')
-                }
+                $EntityQuery.Description = $PSBoundParameters['Description']
+                $null = $PSBoundParameters.Remove('Description')
 
-                If($PSBoundParameters['QueryDefinitionQuery']){
-                    $EntityQuery.QueryDefinitionQuery = $PSBoundParameters['QueryDefinitionQuery']
-                    $null = $PSBoundParameters.Remove('QueryDefinitionQuery')
-                }
+                $EntityQuery.QueryDefinitionQuery = $PSBoundParameters['QueryDefinitionQuery']
+                $null = $PSBoundParameters.Remove('QueryDefinitionQuery')
 
                 $EntityQuery.InputEntityType = $PSBoundParameters['InputEntityType']
                 $null = $PSBoundParameters.Remove('InputEntityType')
@@ -202,6 +196,10 @@ function New-AzSentinelEntityQuery {
                     $EntityQuery.TemplateName = $PSBoundParameters['TemplateName']
                     $null = $PSBoundParameters.Remove('TemplateName')
                 }
+            }
+            else {
+                Write-Error "This cmdlet only works with Entity Queries of the Activity kind."
+                break
             }
     
             #$EntityQuery.Kind = $PSBoundParameters['Kind']

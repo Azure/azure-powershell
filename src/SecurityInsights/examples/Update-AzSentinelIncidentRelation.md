@@ -1,18 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update an incident relation
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $bookmark = Get-AzSentinelBookmark -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Id "myBookmarkId"
+PS C:\> Update-AzSentinelIncidentRelation -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -IncidentId "myIncidentId" -RelationName ((New-Guid).Guid) -RelatedResourceId ($bookmark.Id)
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command updates an incident relation
 
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
