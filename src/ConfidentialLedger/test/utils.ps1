@@ -18,7 +18,7 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
-    $env.Location = 'eastus'
+    $env.Location = 'southcentralus'
 
     $env.Add('AadPrincipalRole', 'Administrator')
     $env.Add('AadPrincipalId', '34621747-6fc8-4771-a2eb-72f31c461f2e')

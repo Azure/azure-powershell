@@ -3,7 +3,7 @@
     "Request": {
       "Method": "POST",
       "RequestUri": "https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/providers/Microsoft.ConfidentialLedger/checkNameAvailability?api-version=2021-05-13-preview",
-      "Content": "{\n  \"name\": \"pwsh-xyr1iozn65wkl\",\n  \"type\": \"Microsoft.ConfidentialLedger/ledgers\"\n}",
+      "Content": "{\n  \"name\": \"pwsh-khzelpxmvu673\",\n  \"type\": \"Microsoft.ConfidentialLedger/ledgers\"\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -19,12 +19,12 @@
         "Pragma": [ "no-cache" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "712a2c96-67f0-4fc3-993f-e2e0a4b4cb49" ],
-        "x-ms-correlation-request-id": [ "3b5c0a56-4213-4c09-a543-1d6032feda2e" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20220210T185653Z:3b5c0a56-4213-4c09-a543-1d6032feda2e" ],
+        "x-ms-request-id": [ "06b1ed14-22ec-43f2-a680-1c5c8e62f770" ],
+        "x-ms-correlation-request-id": [ "01fc93e9-d904-422a-81c2-b052c9bcf379" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20220225T050941Z:01fc93e9-d904-422a-81c2-b052c9bcf379" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 10 Feb 2022 18:56:52 GMT" ]
+        "Date": [ "Fri, 25 Feb 2022 05:09:41 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "89" ],
@@ -39,7 +39,7 @@
     "Request": {
       "Method": "POST",
       "RequestUri": "https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/providers/Microsoft.ConfidentialLedger/checkNameAvailability?api-version=2021-05-13-preview",
-      "Content": "{\n  \"name\": \"pwsh-avail-vyrf650\",\n  \"type\": \"Microsoft.ConfidentialLedger/ledgers\"\n}",
+      "Content": "{\n  \"name\": \"pwsh-avail-hbq6pjw\",\n  \"type\": \"Microsoft.ConfidentialLedger/ledgers\"\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -55,12 +55,12 @@
         "Pragma": [ "no-cache" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "0fbf950f-2b8f-4ff6-bb84-ee6e3fd99ebc" ],
-        "x-ms-correlation-request-id": [ "d33489bd-5ba4-437b-9be5-953b515a95f8" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20220210T185654Z:d33489bd-5ba4-437b-9be5-953b515a95f8" ],
+        "x-ms-request-id": [ "20694cfa-7c6a-429a-83a1-7b6cb20eaf8b" ],
+        "x-ms-correlation-request-id": [ "c8fe9fc1-8cd9-4c3d-ba58-de052285dec5" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20220225T050942Z:c8fe9fc1-8cd9-4c3d-ba58-de052285dec5" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 10 Feb 2022 18:56:53 GMT" ]
+        "Date": [ "Fri, 25 Feb 2022 05:09:41 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "22" ],

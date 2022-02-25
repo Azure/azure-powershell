@@ -30,24 +30,4 @@ Describe 'Test-AzConfidentialLedgerNameAvailability' {
 
         $availabilityResult.NameAvailable | Should -Be $true
     }
-
-    It 'Check' {
-        $availabilityResult = Test-AzConfidentialLedgerNameAvailability `
-            -NameAvailabilityRequest `
-                @{
-                    Name=$env.LedgerName;
-                    Type="Microsoft.ConfidentialLedger/ledgers"
-                }
-
-        $availabilityResult.NameAvailable | Should -Be $false
-
-        $availabilityResult = Test-AzConfidentialLedgerNameAvailability `
-        -NameAvailabilityRequest `
-            @{
-                Name=$env.AvailableName;
-                Type="Microsoft.ConfidentialLedger/ledgers"
-            }
-
-        $availabilityResult.NameAvailable | Should -Be $true
-    }
 }
