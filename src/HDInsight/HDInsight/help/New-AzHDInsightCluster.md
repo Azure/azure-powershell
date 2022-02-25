@@ -103,8 +103,8 @@ The New-AzHDInsightCluster creates an Azure HDInsight cluster by using the speci
 ## EXAMPLES
 
 ### Example 1: Create an Azure HDInsight cluster
-```
-PS C:\&gt; # Primary storage account info
+```powershell
+        # Primary storage account info
         $storageAccountResourceGroupName = "Group"
         $storageAccountResourceId = "yourstorageaccountresourceid"
         $storageAccountName = "yourstorageacct001"
@@ -139,8 +139,8 @@ PS C:\&gt; # Primary storage account info
 This command creates a cluster in the current subscription.
 
 ### Example 2: Create cluster with customer-managed key disk encryption
-```
-PS C:\&gt; # Primary storage account info
+```powershell
+        # Primary storage account info
         $storageAccountResourceGroupName = "Group"
         $storageAccountResourceId = "yourstorageaccountresourceid"
         $storageAccountName = "yourstorageacct001"
@@ -183,8 +183,8 @@ PS C:\&gt; # Primary storage account info
 ```
 
 ### Example 3: Create an Azure HDInsight cluster which enables encryption in transit
-```
-PS C:\&gt; # Primary storage account info
+```powershell
+        # Primary storage account info
         $storageAccountResourceGroupName = "Group"
         $storageAccountResourceId = "yourstorageaccountresourceid"
         $storageAccountName = "yourstorageacct001"
@@ -218,8 +218,8 @@ PS C:\&gt; # Primary storage account info
 ```
 
 ### Example 4: Create an Azure HDInsight cluster with relay outbound and private link feature
-```
-PS C:\&gt; # Primary storage account info
+```powershell
+        # Primary storage account info
         $storageAccountResourceGroupName = "Group"
         $storageAccountResourceId = "yourstorageaccountresourceid"
         $storageAccountName = "yourstorageacct001"
@@ -258,8 +258,8 @@ PS C:\&gt; # Primary storage account info
 ```
 
 ### Example 5: Create an Azure HDInsight cluster which enables encryption at host
-```
-PS C:\&gt; # Primary storage account info
+```powershell
+        # Primary storage account info
         $storageAccountResourceGroupName = "Group"
         $storageAccountResourceId = "yourstorageaccountresourceid"
         $storageAccountName = "yourstorageacct001"
@@ -293,8 +293,8 @@ PS C:\&gt; # Primary storage account info
 ```
 
 ### Example 6: Create an Azure HDInsight cluster which enables autoscale.
-```
-PS C:\&gt; # Primary storage account info
+```powershell
+        # Primary storage account info
         $storageAccountResourceGroupName = "Group"
         $storageAccountResourceId = "yourstorageaccountresourceid"
         $storageAccountName = "yourstorageacct001"
@@ -332,8 +332,8 @@ PS C:\&gt; # Primary storage account info
 ```
 
 ### Example 7: Create an Azure HDInsight cluster with Kafka Rest Proxy.
-```
-PS C:\&gt; # Primary storage account info
+```powershell
+        # Primary storage account info
         $storageAccountResourceGroupName = "Group"
         $storageAccountResourceId = "yourstorageaccountresourceid"
         $storageAccountName = "yourstorageacct001"
@@ -374,8 +374,8 @@ PS C:\&gt; # Primary storage account info
 ```
 
 ### Example 8: Create an Azure HDInsight cluster with Azure Data Lake Gen2 storage.
-```
-PS C:\&gt; # Primary storage account info
+```powershell
+        # Primary storage account info
         $storageAccountResourceGroupName = "Group"
         $storageAccountResourceId = "yourstorageaccountresourceid"
         $storageManagedIdentity = "yourstorageusermanagedidentity"
@@ -407,8 +407,8 @@ PS C:\&gt; # Primary storage account info
 ```
 
 ### Example 9: Create an Azure HDInsight cluster with Enterprise Security Package(ESP) and Enable HDInsight ID Broker.
-```
-PS C:\&gt; # Primary storage account info
+```powershell
+        # Primary storage account info
         $storageAccountResourceGroupName = "Group"
         $storageAccountResourceId = "yourstorageaccountresourceid"
         $storageAccountKey = "yourstorageaccountaccesskey"
@@ -459,8 +459,8 @@ PS C:\&gt; # Primary storage account info
 ```
 
 ### Example 10: Create an Azure HDInsight cluster which enables compute isolation.
-```
-PS C:\&gt; # Primary storage account info
+```powershell
+        # Primary storage account info
         $storageAccountResourceGroupName = "Group"
         $storageAccountResourceId = "yourstorageaccountresourceid"
         $storageAccountName = "yourstorageacct001"
@@ -500,8 +500,8 @@ PS C:\&gt; # Primary storage account info
 ```
 
 ### Example 11: Create an Azure HDInsight cluster with private link configuration feature
-```
-PS C:\&gt; # Primary storage account info
+```powershell
+        # Primary storage account info
         $storageAccountResourceGroupName = "Group"
         $storageAccountResourceId = "yourstorageaccountresourceid"
         $storageAccountName = "yourstorageacct001"
@@ -551,8 +551,8 @@ PS C:\&gt; # Primary storage account info
 ```
 
 ### Example 12: Create an Azure HDInsight cluster availability feature
-```
-PS C:\&gt; # Primary storage account info
+```powershell
+        # Primary storage account info
         $storageAccountResourceGroupName = "Group"
         $storageAccountResourceId = "yourstorageaccountresourceid"
         $storageAccountName = "yourstorageacct001"
