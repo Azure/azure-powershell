@@ -47,19 +47,19 @@ The **Remove-AzManagedCassandraCluster** cmdlet deletes a managed Cassandra clus
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzManagedCassandraCluster `
+Remove-AzManagedCassandraCluster `
  -ResourceGroupName {resourceGroupName} `
  -ClusterName {clusterName}
 ```
 
 ### Example 2
 ```powershell
-PS C:\> Remove-AzManagedCassandraCluster -ResourceId {clusterResourceId}
+Remove-AzManagedCassandraCluster -ResourceId {clusterResourceId}
 ```
 
 ### Example 3
 ```powershell
-PS C:\> $clusterResource | Remove-AzManagedCassandraCluster
+$clusterResource | Remove-AzManagedCassandraCluster
 ```
 
 ## PARAMETERS

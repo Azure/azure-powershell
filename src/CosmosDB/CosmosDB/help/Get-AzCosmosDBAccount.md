@@ -30,9 +30,10 @@ The **Get-AzCosmosDBAccount** cmdlet gets the list of all existing CosmosDB acco
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCosmosDBAccount -ResourceGroupName {resourceGroupName} -Name {databaseAccountName}
+Get-AzCosmosDBAccount -ResourceGroupName {resourceGroupName} -Name {databaseAccountName}
+```
 
-
+```output
 Id                            : /subscriptions/{subscriptionid}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{databaseAccountName}
 Name                          : {databaseAccountName}
 FailoverPolicies              : {databaseAccountName-region1}

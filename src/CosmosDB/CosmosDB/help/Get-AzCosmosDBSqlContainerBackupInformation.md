@@ -25,8 +25,10 @@ Retrieves the latest restorable timestamp for a sql container. This is the lates
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCosmosDBSqlContainerBackupInformation -ResourceGroupName CosmosDBResourceGroup3668 -AccountName pitr-sql-stage-source -DatabaseName TestDB1 -Name TestCollectionInDB1 -Location "EAST US 2"
+Get-AzCosmosDBSqlContainerBackupInformation -ResourceGroupName CosmosDBResourceGroup3668 -AccountName pitr-sql-stage-source -DatabaseName TestDB1 -Name TestCollectionInDB1 -Location "EAST US 2"
+```
 
+```output
 LatestRestorableTimestamp
 -------------------------
 1623042210

@@ -37,17 +37,17 @@ The **Get-AzManagedCassandraDataCenter** cmdlet fetches the properties of an exi
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzManagedCassandraDataCenter -ResourceGroupName {resourceGroupName} -ClusterName {clusterName} -DataCenterName {dataCenterName}
+Get-AzManagedCassandraDataCenter -ResourceGroupName {resourceGroupName} -ClusterName {clusterName} -DataCenterName {dataCenterName}
 ```
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzManagedCassandraDataCenter -ResourceId {resourceId}
+Get-AzManagedCassandraDataCenter -ResourceId {resourceId}
 ```
 
 ### Example 3
 ```powershell
-PS C:\> $clusterResource | Get-AzManagedCassandraDataCenter
+$clusterResource | Get-AzManagedCassandraDataCenter
 ```
 
 ## PARAMETERS

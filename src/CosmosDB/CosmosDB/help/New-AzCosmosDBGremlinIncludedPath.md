@@ -24,8 +24,11 @@ Object corresponding to Gremlin API's IncludedPath.
 
 ### Example 1
 ```powershell
-PS C:\> $index1 = New-AzCosmosDBGremlinIncludedPathIndex -DataType String -Precision -1 -Kind Hash
+$index1 = New-AzCosmosDBGremlinIncludedPathIndex -DataType String -Precision -1 -Kind Hash
 New-AzCosmosDBGremlinIncludedPath -Path "/*" -Index $index1
+```
+
+```output
 Path Indexes
 ---- -------
 /*   {Microsoft.Azure.Commands.CosmosDB.Models.PSIndexes}
