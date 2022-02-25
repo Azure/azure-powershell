@@ -26,8 +26,9 @@ Creates a configuration store with the specified parameters.
 
 ### Example 1: Create an app configuration store
 ```powershell
-PS C:\> New-AzAppConfigurationStore -Name appconfig-test03 -ResourceGroupName azpwsh-manual-test -Location eastus -Sku free
-
+New-AzAppConfigurationStore -Name appconfig-test03 -ResourceGroupName azpwsh-manual-test -Location eastus -Sku free
+```
+```output
 Location Name             Type
 -------- ----             ----
 eastus   appconfig-test03 Microsoft.AppConfiguration/configurationStores
@@ -37,9 +38,10 @@ This command creates an app configuration store.
 
 ### Example 2: Create an app configuration with the IdentityType set to "UserAssigned"
 ```powershell
-PS C:\> $assignedIdentity = New-AzUserAssignedIdentity -ResourceGroupName azpwsh-manual-test -Name assignedIdentity
-PS C:\> New-AzAppConfigurationStore -Name appconfig-test10 -ResourceGroupName azpwsh-manual-test -Location eastus -Sku standard -IdentityType "UserAssigned" -UserAssignedIdentity $assignedIdentity.Id
-
+$assignedIdentity = New-AzUserAssignedIdentity -ResourceGroupName azpwsh-manual-test -Name assignedIdentity
+New-AzAppConfigurationStore -Name appconfig-test10 -ResourceGroupName azpwsh-manual-test -Location eastus -Sku standard -IdentityType "UserAssigned" -UserAssignedIdentity $assignedIdentity.Id
+```
+```output
 Location Name             Type
 -------- ----             ----
 eastus   appconfig-test03 Microsoft.AppConfiguration/configurationStores
@@ -50,8 +52,9 @@ See the example of `Update-AzAppConfigurationStore` for the following steps to e
 
 ### Example 3: Create an app configuration with the IdentityType set to "SystemAssigned" 
 ```powershell
-PS C:\> New-AzAppConfigurationStore -Name appconfig-test11 -ResourceGroupName azpwsh-manual-test -Location eastus -Sku standard -IdentityType "SystemAssigned"
-
+New-AzAppConfigurationStore -Name appconfig-test11 -ResourceGroupName azpwsh-manual-test -Location eastus -Sku standard -IdentityType "SystemAssigned"
+```
+```output
 Location Name             Type
 -------- ----             ----
 eastus   appconfig-test11 Microsoft.AppConfiguration/configurationStores
@@ -62,9 +65,10 @@ See the example of `Update-AzAppConfigurationStore` for the following steps to e
 
 ### Example 4: Create an app configuration with the IdentityType set to "SystemAssigned, UserAssigned"
 ```powershell
-PS C:\> $assignedIdentity = New-AzUserAssignedIdentity -ResourceGroupName azpwsh-manual-test -Name assignedIdentity
-PS C:\> New-AzAppConfigurationStore -Name appconfig-test10 -ResourceGroupName azpwsh-manual-test -Location eastus -Sku standard -IdentityType "SystemAssigned, UserAssigned" -UserAssignedIdentity $assignedIdentity.Id
-
+$assignedIdentity = New-AzUserAssignedIdentity -ResourceGroupName azpwsh-manual-test -Name assignedIdentity
+New-AzAppConfigurationStore -Name appconfig-test10 -ResourceGroupName azpwsh-manual-test -Location eastus -Sku standard -IdentityType "SystemAssigned, UserAssigned" -UserAssignedIdentity $assignedIdentity.Id
+```
+```output
 Location Name             Type
 -------- ----             ----
 eastus   appconfig-test10 Microsoft.AppConfiguration/configurationStores

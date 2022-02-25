@@ -32,7 +32,7 @@ The Reboot Role Instance asynchronous operation requests a reboot of a role inst
 
 ### Example 1: Restart role instance of a cloud service
 ```powershell
-PS C:\> Restart-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstanceName "ContosoFrontEnd_IN_0"
+Restart-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstanceName "ContosoFrontEnd_IN_0"
 ```
 
 This command restarts role instance named ContosoFrontEnd_IN_0 of cloud service named ContosoCS that belongs to the resource group named ContosOrg.
@@ -229,10 +229,13 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   - `[CloudServiceName <String>]`: 
+  - `[IPConfigurationName <String>]`: The IP configuration name.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: Name of the location that the OS version pertains to.
+  - `[NetworkInterfaceName <String>]`: The name of the network interface.
   - `[OSFamilyName <String>]`: Name of the OS family.
   - `[OSVersionName <String>]`: Name of the OS version.
+  - `[PublicIPAddressName <String>]`: The name of the public IP Address.
   - `[ResourceGroupName <String>]`: 
   - `[RoleInstanceName <String>]`: Name of the role instance.
   - `[RoleName <String>]`: Name of the role.
