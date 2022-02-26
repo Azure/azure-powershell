@@ -164,6 +164,36 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                             src => src.AuthenticationSettings != null && src.AuthenticationSettings.Openid != null && src.AuthenticationSettings.Openid.BearerTokenSendingMethods != null &&
                                 src.AuthenticationSettings.Openid.BearerTokenSendingMethods.Any()
                                 ? src.AuthenticationSettings.Openid.BearerTokenSendingMethods.ToArray()
+                                : null))
+                    .ForMember(
+                        dest => dest.ContactEmail,
+                        opt => opt.MapFrom(
+                            src => src.Contact != null
+                                ? src.Contact.Email
+                                : null))
+                    .ForMember(
+                        dest => dest.ContactName,
+                        opt => opt.MapFrom(
+                            src => src.Contact != null
+                                ? src.Contact.Name
+                                : null))
+                    .ForMember(
+                        dest => dest.ContactUrl,
+                        opt => opt.MapFrom(
+                            src => src.Contact != null
+                                ? src.Contact.Url
+                                : null))
+                    .ForMember(
+                        dest => dest.LicenseName,
+                        opt => opt.MapFrom(
+                            src => src.License != null
+                                ? src.License.Name
+                                : null))
+                    .ForMember(
+                        dest => dest.LicenseUrl,
+                        opt => opt.MapFrom(
+                            src => src.License != null
+                                ? src.License.Url
                                 : null));
 
                 cfg
@@ -184,7 +214,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                     .AfterMap((src, dest) =>
                         dest.AuthenticationSettings = Utils.ToAuthenticationSettings(src))
                     .AfterMap((src, dest) =>
-                        dest.SubscriptionKeyParameterNames = Utils.ToSubscriptionKeyParameterNamesContract(src));
+                        dest.SubscriptionKeyParameterNames = Utils.ToSubscriptionKeyParameterNamesContract(src))
+                    .AfterMap((src, dest) =>
+                        dest.Contact = Utils.ToContactInformation(src))
+                    .AfterMap((src, dest) =>
+                        dest.License = Utils.ToLicenseInformation(src));
 
                 cfg
                     .CreateMap<PsApiManagementApi, ApiCreateOrUpdateParameter>()
@@ -202,7 +236,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                     .AfterMap((src, dest) =>
                         dest.AuthenticationSettings = Utils.ToAuthenticationSettings(src))
                     .AfterMap((src, dest) =>
-                        dest.SubscriptionKeyParameterNames = Utils.ToSubscriptionKeyParameterNamesContract(src));
+                        dest.SubscriptionKeyParameterNames = Utils.ToSubscriptionKeyParameterNamesContract(src))
+                    .AfterMap((src, dest) =>
+                        dest.Contact = Utils.ToContactInformation(src))
+                    .AfterMap((src, dest) =>
+                        dest.License = Utils.ToLicenseInformation(src));
 
                 cfg.CreateMap<ApiContract, ApiCreateOrUpdateParameter>();
 
@@ -798,7 +836,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             string subscriptionKeyHeaderName,
             string subscriptionKeyQueryParamName,
             string openIdProviderId,
-            string[] bearerTokenSendingMethods)
+            string[] bearerTokenSendingMethods,
+            string termsOfServiceUrl,
+            string contactName,
+            string contactUrl,
+            string contactEmail,
+            string licenseName,
+            string licenseUrl)
         {
             var api = new ApiCreateOrUpdateParameter
             {
@@ -904,7 +948,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             string subscriptionKeyQueryParamName,
             string openIdProviderId,
             string[] bearerTokenSendingMethods,
-            PsApiManagementApi apiObject)
+            PsApiManagementApi apiObject, 
+            string apiType,
+            string termsOfServiceUrl,
+            string contactName,
+            string contactUrl,
+            string contactEmail,
+            string licenseName,
+            string licenseUrl)
         {
             ApiCreateOrUpdateParameter api;
             if (apiObject == null)
@@ -986,6 +1037,30 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 {
                     Header = subscriptionKeyHeaderName,
                     Query = subscriptionKeyQueryParamName
+                };
+            }
+
+            if (!string.IsNullOrEmpty(apiType))
+            {
+                api.ApiType = apiType;
+            }
+
+            if (!string.IsNullOrWhiteSpace(contactEmail) || !string.IsNullOrWhiteSpace(contactName) || !string.IsNullOrWhiteSpace(contactUrl))
+            {
+                api.Contact = new ApiContactInformation
+                {
+                    Email = contactEmail,
+                    Name = contactName,
+                    Url = contactUrl
+                };
+            }
+
+            if (!string.IsNullOrWhiteSpace(licenseName) || !string.IsNullOrWhiteSpace(licenseUrl))
+            {
+                api.License = new ApiLicenseInformation
+                {
+                    Name = licenseName,
+                    Url = licenseUrl
                 };
             }
 
