@@ -47,13 +47,13 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: main
+branch: 10ca36bf878188ce57ec102dd3d289c3f5105188
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 sanitize-names: true
 subject-prefix: 'Wvd'
 input-file:
-- $(repo)/specification/desktopvirtualization/resource-manager/Microsoft.DesktopVirtualization/preview\2021-09-03-preview/desktopvirtualization.json
+- $(repo)/specification/desktopvirtualization/resource-manager/Microsoft.DesktopVirtualization/preview/2021-09-03-preview/desktopvirtualization.json
 
 module-version: 2.1.0
 title: DesktopVirtualizationClient
