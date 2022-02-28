@@ -2,8 +2,10 @@
 
 ### Example 1: List all Kusto ManagedPrivateEndpoint in a cluster
 ```powershell
-PS C:\> Get-AzKustoClusterOutboundNetworkDependencyEndpoint -ClusterName "mycluster" -ResourceGroupName "testrg"
+Get-AzKustoClusterOutboundNetworkDependencyEndpoint -ClusterName "mycluster" -ResourceGroupName "testrg"
+```
 
+```output
 Name                                     Type                                                          Etag
 ----                                     ----                                                          ----
 mycluster/AzureActiveDirectory           Microsoft.Kusto/Clusters/OutboundNetworkDependenciesEndpoints
