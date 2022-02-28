@@ -203,7 +203,7 @@ param(
 
     process {
       try {
-        Az.ContainerInstance.internal\Invoke-AzContainerInstanceCommand @PSBoundParameters
+        Az.ConfidentialLedger.internal\Update-AzConfidentialLedger @PSBoundParameters
       } catch {
         throw
       }
