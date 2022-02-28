@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.Cdn.Common
     /// <summary>
     /// Base class of Azure Cdn Cmdlet.
     /// </summary>
+    [GenericBreakingChange("This command will be redesigned", "2.0.0")]
     public class AzureCdnCmdletBase : AzureRMCmdlet
     {
         private ICdnManagementClient _cdnManagementClient;
