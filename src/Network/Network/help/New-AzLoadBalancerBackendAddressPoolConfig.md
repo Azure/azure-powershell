@@ -24,7 +24,7 @@ The **New-AzLoadBalancerBackendAddressPoolConfig** cmdlet creates a backend addr
 ## EXAMPLES
 
 ### Example 1: Create a backend address pool configuration for a load balancer
-```
+```powershell
 New-AzLoadBalancerBackendAddressPoolConfig -Name "BackendAddressPool02"
 ```
 

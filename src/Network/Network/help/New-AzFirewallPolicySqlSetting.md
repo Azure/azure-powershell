@@ -22,7 +22,7 @@ The **New-AzFirewallPolicySqlSetting** cmdlet creates a SQL Setting Object for A
 
 ## EXAMPLES
 
-### 1. Create a SQL setting that allows SQL server redirect mode traffic
+### Example 1. Create a SQL setting that allows SQL server redirect mode traffic
 ```powershell
 New-AzFirewallPolicySqlSetting -AllowSqlRedirect
 ```

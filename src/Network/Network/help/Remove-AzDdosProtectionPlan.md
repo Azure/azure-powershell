@@ -23,7 +23,7 @@ The Remove-AzDdosProtectionPlan cmdlet removes a DDoS protection plan.
 ## EXAMPLES
 
 ### Example 1: Remove an empty DDoS protection plan
-```
+```powershell
 Remove-AzDdosProtectionPlan -ResourceGroupName ResourceGroupName -Name DdosProtectionPlan
 ```
 
@@ -35,9 +35,7 @@ $vnet = Get-AzVirtualNetwork -Name VnetName -ResourceGroupName ResourceGroupName
 $vnet.DdosProtectionPlan = $null
 $vnet.EnableDdosProtection = $false
 $vnet | Set-AzVirtualNetwork
-```
 
-```output
 Name                   : VnetName
 ResourceGroupName      : ResourceGroupName
 Location               : westus

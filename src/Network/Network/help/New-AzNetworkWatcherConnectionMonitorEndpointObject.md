@@ -66,6 +66,7 @@ $SrcEndpointScopeItem1 = New-AzNetworkWatcherConnectionMonitorEndpointScopeItemO
 $SourceEndpointObject1 = New-AzNetworkWatcherConnectionMonitorEndpointObject -Name "workspaceEndpoint" -MMAWorkspaceMachine -ResourceId $MySrcResourceId1 -IncludeItem $SrcEndpointScopeItem1
 ```
 
+```output
 Name       : workspaceEndpoint
 Type       : MMAWorkspaceMachine
 ResourceId : /subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myresourceGroup/providers/Microsoft.OperationalInsights/workspaces/myworkspace
@@ -77,7 +78,7 @@ Scope     : {
                  }
                ]
              }
-
+```
 ## PARAMETERS
 
 ### -Address

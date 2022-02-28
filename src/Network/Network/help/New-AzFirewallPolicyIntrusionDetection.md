@@ -24,14 +24,14 @@ The **New-AzFirewallPolicyIntrusionDetection** cmdlet creates an Azure Firewall 
 
 ## EXAMPLES
 
-### Example 1: 1. Create intrusion detection with mode
+### Example 1: Create intrusion detection with mode
 ```powershell
 New-AzFirewallPolicyIntrusionDetection -Mode "Alert"
 ```
 
 This example creates intrusion detection with Alert (detection) mode
 
-### Example 2: 2. Create intrusion detection with signature overrides
+### Example 2: Create intrusion detection with signature overrides
 ```powershell
 $signatureOverride = New-AzFirewallPolicyIntrusionDetectionSignatureOverride -Id "123456798" -Mode "Deny"
 New-AzFirewallPolicyIntrusionDetection -Mode "Alert" -SignatureOverride $signatureOverride
@@ -39,7 +39,7 @@ New-AzFirewallPolicyIntrusionDetection -Mode "Alert" -SignatureOverride $signatu
 
 This example creates intrusion detection with specific signature override
 
-### Example 3: 3. Create firewall policy with intrusion detection configured with bypass traffic setting
+### Example 3: Create firewall policy with intrusion detection configured with bypass traffic setting
 ```powershell
 $bypass = New-AzFirewallPolicyIntrusionDetectionBypassTraffic -Name "bypass-setting" -Protocol "TCP" -DestinationPort "80" -SourceAddress "10.0.0.0" -DestinationAddress "10.0.0.0"
 $intrusionDetection = New-AzFirewallPolicyIntrusionDetection -Mode "Deny" -BypassTraffic $bypass

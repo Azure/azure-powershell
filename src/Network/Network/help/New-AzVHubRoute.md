@@ -67,9 +67,7 @@ The above command will create a VHubRoute object with nextHop as the specified h
 $hub = Get-AzVirtualHub -ResourceGroupName {rgname} -Name {virtual-hub-name}
 $hubVnetConn = Get-AzVirtualHubVnetConnection -ParentObject $hub -Name {connection-name}
 $hubVnetConn
-```
 
-```output
 Name                   : conn_2
 Id                     : /subscriptions/{subscriptionID}/resourceGroups/{rgname}/providers/Microsoft.Network/virtualHubs/{virtual-hub-name}/hubVirtualNetworkConnections/conn_2
 RemoteVirtualNetwork   : /subscriptions/{subscriptionID}/resourceGroups/{rgname}/providers/Microsoft.Network/virtualNetworks/rVnet_2

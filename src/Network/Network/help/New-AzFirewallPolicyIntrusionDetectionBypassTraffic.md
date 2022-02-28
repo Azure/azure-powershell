@@ -24,7 +24,7 @@ The **New-AzFirewallPolicyIntrusionDetectionBypassTraffic** cmdlet creates an Az
 
 ## EXAMPLES
 
-### Example 1: 1. Create bypass traffic with specific port and source address
+### Example 1: Create bypass traffic with specific port and source address
 ```powershell
 $bypass = New-AzFirewallPolicyIntrusionDetectionBypassTraffic -Name "bypass-setting" -Protocol "TCP" -DestinationPort "80" -SourceAddress "10.0.0.0" -DestinationAddress "*"
 New-AzFirewallPolicyIntrusionDetection -Mode "Deny" -BypassTraffic $bypass

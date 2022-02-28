@@ -27,21 +27,21 @@ The **New-AzFirewallPolicy** cmdlet creates an Azure Firewall Policy.
 
 ## EXAMPLES
 
-### Example 1: 1. Create an empty policy
+### Example 1: Create an empty policy
 ```powershell
 New-AzFirewallPolicy -Name fp1 -ResourceGroupName TestRg
 ```
 
 This example creates an azure firewall policy
 
-### Example 2: 2. Create an empty policy with ThreatIntel Mode
+### Example 2: Create an empty policy with ThreatIntel Mode
 ```powershell
 New-AzFirewallPolicy -Name fp1 -ResourceGroupName TestRg -ThreatIntelMode "Deny"
 ```
 
 This example creates an azure firewall policy with a threat intel mode
 
-### Example 3: 3. Create an empty policy with ThreatIntel Whitelist
+### Example 3: Create an empty policy with ThreatIntel Whitelist
 ```powershell
 $threatIntelWhitelist = New-AzFirewallPolicyThreatIntelWhitelist -IpAddress 23.46.72.91,192.79.236.79 -FQDN microsoft.com
 New-AzFirewallPolicy -Name fp1 -ResourceGroupName TestRg -ThreatIntelWhitelist $threatIntelWhitelist
@@ -49,7 +49,7 @@ New-AzFirewallPolicy -Name fp1 -ResourceGroupName TestRg -ThreatIntelWhitelist $
 
 This example creates an azure firewall policy with a threat intel whitelist
 
-### Example 4: 4. Create policy with intrusion detection, identity and transport security
+### Example 4: Create policy with intrusion detection, identity and transport security
 ```powershell
 $bypass = New-AzFirewallPolicyIntrusionDetectionBypassTraffic -Name "bypass-setting" -Protocol "TCP" -DestinationPort "80" -SourceAddress "10.0.0.0" -DestinationAddress
 $signatureOverride = New-AzFirewallPolicyIntrusionDetectionSignatureOverride -Id "123456798" -Mode "Deny"
@@ -60,7 +60,7 @@ New-AzFirewallPolicy -Name fp1 -Location "westus2" -ResourceGroup TestRg -SkuTie
 
 This example creates an azure firewall policy with a intrusion detection in mode alert, user assigned identity and transport security
 
-### Example 5: 5. Create an empty Firewall Policy with customized private range setup
+### Example 5: Create an empty Firewall Policy with customized private range setup
 ```powershell
 New-AzFirewallPolicy -Name fp1 -ResourceGroupName TestRg -PrivateRange @("99.99.99.0/24", "66.66.0.0/16")
 ```

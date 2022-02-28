@@ -31,6 +31,7 @@ $httpProtocolConfiguration = New-AzNetworkWatcherConnectionMonitorProtocolConfig
 $httpTestConfiguration = New-AzNetworkWatcherConnectionMonitorTestConfigurationObject -Name httpTC -TestFrequencySec 120 -ProtocolConfiguration $httpProtocolConfiguration -SuccessThresholdChecksFailedPercent 20 -SuccessThresholdRoundTripTimeMs 30
 ```
 
+```output
 Name                  : httpTC
 TestFrequencySec      : 120
 PreferredIPVersion    :
@@ -53,7 +54,7 @@ SuccessThreshold      : {
                           "ChecksFailedPercent": 20,
                           "RoundTripTimeMs": 30
                         } 
-
+```
 ## PARAMETERS
 
 ### -DefaultProfile

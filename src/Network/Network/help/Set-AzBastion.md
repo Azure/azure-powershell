@@ -66,9 +66,7 @@ Updates BastionHost resource with Basic Sku and 2 Scale Units to Standard Sku an
 ```powershell
 $bastionObj = Get-AzBastion -ResourceGroupName "MyRg" -Name "MyBastion"
 $bastionObj
-```
 
-```output
 Name                 : MyBastion
 Id                   : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyRg/providers/Microsoft.Network/bastionHosts/MyBastion
 Etag                 : W/"000"

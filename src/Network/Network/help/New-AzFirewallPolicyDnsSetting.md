@@ -22,14 +22,14 @@ The **New-AzFirewallPolicyDnsSetting** cmdlet creates a DNS Setting Object for A
 
 ## EXAMPLES
 
-### 1. Create an empty policy
+### Example 1. Create an empty policy
 ```powershell
 New-AzFirewallPolicyDnsSetting -EnableProxy
 ```
 
 This example creates a dns Setting object with setting enabling dns proxy.
 
-### 2. Create an empty policy with ThreatIntel Mode
+### Example 2. Create an empty policy with ThreatIntel Mode
 ```powershell
 $dnsServers = @("10.10.10.1", "20.20.20.2")
 New-AzFirewallPolicyDnsSetting -EnableProxy -Server $dnsServers

@@ -47,6 +47,7 @@ $cmtest = New-AzNetworkWatcherConnectionMonitorObject -Location westcentralus -N
 $cmtest
 ```
 
+```output
 NetworkWatcherName : NetworkWatcher_westcentralus
 ResourceGroupName  : NetworkWatcherRG
 Name               : cmV2test
@@ -160,7 +161,7 @@ Notes              :
 Tags               : {
                        "name": "value"
                      }
-        
+```      
    
 
 ## PARAMETERS

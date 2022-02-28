@@ -27,11 +27,12 @@ The New-AzNetworkWatcherConnectionMonitorOutputObject cmdlet creates connection 
 New-AzNetworkWatcherConnectionMonitorOutputObject -OutputType "workspace" -WorkspaceResourceId MyWSResourceId
 ```
 
+```output
 Type              : "workspace"
 WorkspaceSettings : {
                       "WorkspaceResourceId": "MyWSResourceId"
                     }
-
+```
 ## PARAMETERS
 
 ### -DefaultProfile
