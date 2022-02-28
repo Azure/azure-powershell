@@ -25,9 +25,11 @@ If the namespace name is not provided, a list of namespaces is returned.
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Get-AzEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName
 ```
-PS C:\> Get-AzEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName
 
+```output
 Name                   : MyNamespaceName
 Id                     : /subscriptions/{subscriptionId}/resourceGroups/Default-EventHub-WestCentralUS/providers/Microsoft.EventHub/namespaces/MyNamespaceName
 ResourceGroupName      : Default-EventHub-WestCentralUS
