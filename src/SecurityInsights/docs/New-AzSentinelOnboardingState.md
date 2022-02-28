@@ -31,23 +31,13 @@ Create Sentinel onboarding state
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Add Sentinel onboarding state
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\>AzSentinelOnboardingState -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Name "default"
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command configures the onboarding state of Sentinel
 
 ## PARAMETERS
 

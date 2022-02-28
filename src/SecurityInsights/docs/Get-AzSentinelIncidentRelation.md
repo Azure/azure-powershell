@@ -40,7 +40,15 @@ Gets an incident relation.
 ```powershell
 PS C:\> Get-AzSentinelIncidentRelation -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -IncidentId "myIncidentId"
 
-{{ Add output here }}
+Name                : 8969f5ea-4e92-433a-9b67-2f9233d8113f_457a48b2-9dfc-7054-64a5-e8a9d17489d7
+RelatedResourceName : 457a48b2-9dfc-7054-64a5-e8a9d17489d7
+RelatedResourceKind : SecurityAlert
+RelatedResourceType : Microsoft.SecurityInsights/entities
+
+Name                : 076bda5c-7d94-b6d8-8ef4-b0b2a0830dac_df9493a7-4f2e-84da-1f41-4914e8c029ba
+RelatedResourceName : df9493a7-4f2e-84da-1f41-4914e8c029ba
+RelatedResourceKind : SecurityAlert
+RelatedResourceType : Microsoft.SecurityInsights/entities
 ```
 
 This command lists all Incident Relations for a given Incident.
@@ -49,7 +57,10 @@ This command lists all Incident Relations for a given Incident.
 ```powershell
 PS C:\> Get-AzSentinelIncidentRelation -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -IncidentId "myIncidentId" -Id "myIncidentRelationId"
 
-{{ Add output here }}
+Name                : 076bda5c-7d94-b6d8-8ef4-b0b2a0830dac_df9493a7-4f2e-84da-1f41-4914e8c029ba
+RelatedResourceName : df9493a7-4f2e-84da-1f41-4914e8c029ba
+RelatedResourceKind : SecurityAlert
+RelatedResourceType : Microsoft.SecurityInsights/entities
 ```
 
 This command gets a Incident Relation.
@@ -59,7 +70,10 @@ This command gets a Incident Relation.
 PS C:\> $Incidentrelations = Get-AzSentinelIncidentRelation -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -IncidentId "myIncidentId"
 PS C:\> $Incidentrelations[0] | Get-AzSentinelIncidentRelation
 
-{{ Add output here }}
+Name                : 076bda5c-7d94-b6d8-8ef4-b0b2a0830dac_df9493a7-4f2e-84da-1f41-4914e8c029ba
+RelatedResourceName : df9493a7-4f2e-84da-1f41-4914e8c029ba
+RelatedResourceKind : SecurityAlert
+RelatedResourceType : Microsoft.SecurityInsights/entities
 ```
 
 This command gets a Incident by object

@@ -39,35 +39,16 @@ Gets the action of alert rule.
 ```powershell
 PS C:\> Get-AzSentinelAlertRuleAction -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -RuleId "myRuleId"
 
-Etag                                   Id
-----                                   --
-"0400363c-0000-0300-0000-618daa370000" /subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup…
+LogicAppResourceId : /subscriptions/174b1a81-c53c-4092-8d4a-7210f6a44a0c/resourceGroups/myResourceGroup/providers/Microsoft.Logic/workflows/A-Demo-1
+Name               : f32239c5-cb9c-48da-a3f6-bd5bd3d924a4
+WorkflowId         : 3c73d72560fa4cb6a72a0f10d3a80940
+
+LogicAppResourceId : /subscriptions/274b1a41-c53c-4092-8d4a-7210f6a44a0c/resourceGroups/myResourceGroup/providers/Microsoft.Logic/workflows/EmptyPlaybook
+Name               : cf815c77-bc65-4c02-946f-d81e15e9a100
+WorkflowId         : 1ac8ccb8bd134253b4baf0c75fe3ecc6
 ```
 
 This command lists all Actions for a given Alert Rule.
-
-### Example 2: Get an Action for a given Alert Rule
-```powershell
-PS C:\> Get-AzSentinelAlertRuleAction -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -RuleId "myRuleId" -Id "myActionId"
-
-Etag                                   Id
-----                                   --
-"0400363c-0000-0300-0000-618daa370000" /subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup…
-```
-
-This command gets an Action for a given Alert Rule.
-
-### Example 3: Get an Action by object Id
-```powershell
-PS C:\> $actions = Get-AzSentinelAlertRuleAction -ResourceGroupName "myResourceGroupb5" -workspaceName "asptestk9wyb8" -RuleId "myRuleId" 
-PS C:\> $actions[0] | Get-AzSentinelAlertRuleAction
-
-Etag                                   Id
-----                                   --
-"0400363c-0000-0300-0000-618daa370000" /subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup…
-```
-
-This command gets an Action by object
 
 ## PARAMETERS
 

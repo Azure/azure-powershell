@@ -39,29 +39,29 @@ Gets a data connector.
 ```powershell
 PS C:\> Get-AzSentinelDataConnector -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
 
-{{ Add output here }}
+Kind : AzureActiveDirectory
+Name : 8207e1f9-a793-4869-afb1-5ad4540d66d1
+
+Kind : AzureAdvancedThreatProtection
+Name : 1d75aada-a558-4461-986b-c6822182e81d
+
+Kind : Office365
+Name : 6323c716-83ae-4cfd-bf93-58235c8beb23
+
 ```
 
 This command lists all DataConnectors under a Microsoft Sentinel workspace.
 
-### Example 2: Get a Data Connector
+### Example 2: Get a specific Data Connector
 ```powershell
-PS C:\> Get-AzSentinelDataConnector -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Id "myDataConnectorId"
+PS C:\> Get-AzSentinelDataConnector -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" | Where-Object {$_.kind -eq "Office365"}
 
-{{ Add output here }}
+Kind                         : Office365
+Name                         : 6323c716-83ae-4cfd-bf93-58235c8beb23
+SharePointState              : enabled
 ```
 
-This command gets a DataConnector.
-
-### Example 3: Get a Data Connector by object Id
-```powershell
-PS C:\> $DataConnectors = Get-AzSentinelDataConnector -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
-PS C:\> $DataConnectors[0] | Get-AzSentinelDataConnector
-
-{{ Add output here }}
-```
-
-This command gets a Data Connector by object
+This command gets a specific DataConnector based on kind
 
 ## PARAMETERS
 

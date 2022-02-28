@@ -117,23 +117,13 @@ Updates the alert rule.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update an scheduled alert rule
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\>Update-AzSentinelAlertRule -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -ruleId "4a21e485-75ae-48b3-a7b9-e6a92bcfe434" -Query "SecurityAlert | take 2"
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command updates a scheduled alert rule
 
 ## PARAMETERS
 

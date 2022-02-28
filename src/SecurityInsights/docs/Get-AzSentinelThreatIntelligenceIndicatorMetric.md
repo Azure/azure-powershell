@@ -26,7 +26,10 @@ Get threat intelligence indicators metrics (Indicators counts by Type, Threat Ty
 ```powershell
 PS C:\> Get-AzSentinelThreatIntelligenceIndicatorMetric -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
 
-{{ Add output here }}
+LastUpdatedTimeUtc : 2022-02-07T10:44:45.3919348Z
+PatternTypeMetric  : {network-traffic, url, ipv4-addr, file}
+SourceMetric       : {Microsoft Emerging Threat Feed, Bing Safety Phishing URL, Azure Sentinel, CyberCrime…}
+ThreatTypeMetric   : {botnet, maliciousurl, phishing, malicious-activity…}
 ```
 
 This command gets Threat Intelligence Indicator metrics.

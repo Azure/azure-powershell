@@ -39,7 +39,15 @@ Gets an entity query.
 ```powershell
 PS C:\> Get-AzSentinelEntityQuery -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
 
-{{ Add output here }}
+DisplayName     : Related entities
+DataSource      : {SecurityAlert}
+Name            : 98b974fd-cc64-48b8-9bd0-3a209f5b944b
+InputEntityType : SecurityAlert
+
+DisplayName     : Related alerts
+DataSource      : {SecurityAlert}
+Name            : 055a5692-555f-42bd-ac17-923a5a9994ed
+InputEntityType : Host
 ```
 
 This command lists all Entity Queries under a Microsoft Sentinel workspace.
@@ -48,7 +56,17 @@ This command lists all Entity Queries under a Microsoft Sentinel workspace.
 ```powershell
 PS C:\> Get-AzSentinelEntityQuery -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Id "myEntityQueryId"
 
-{{ Add output here }}
+DisplayName     : Related entities
+DataSource      : {SecurityAlert}
+Name            : 98b974fd-cc64-48b8-9bd0-3a209f5b944b
+InputEntityType : SecurityAlert
+QueryTemplate   : let GetAlertRelatedEntities = (v_SecurityAlert_SystemAlertId:string){
+                                              SecurityAlert
+                                              | where SystemAlertId == v_SecurityAlert_SystemAlertId
+                                              | project entities = todynamic(Entities)
+                                              | mv-expand entities
+                                              | project-rename entity=entities};
+                                              GetAlertRelatedEntities('<systemAlertId>')
 ```
 
 This command gets an Entity Query.
@@ -58,7 +76,17 @@ This command gets an Entity Query.
 PS C:\> $EntityQueries = Get-AzSentinelEntityQuery -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
 PS C:\> $EntityQueries[0] | Get-AzSentinelEntityQuery
 
-{{ Add output here }}
+DisplayName     : Related entities
+DataSource      : {SecurityAlert}
+Name            : 98b974fd-cc64-48b8-9bd0-3a209f5b944b
+InputEntityType : SecurityAlert
+QueryTemplate   : let GetAlertRelatedEntities = (v_SecurityAlert_SystemAlertId:string){
+                                              SecurityAlert
+                                              | where SystemAlertId == v_SecurityAlert_SystemAlertId
+                                              | project entities = todynamic(Entities)
+                                              | mv-expand entities
+                                              | project-rename entity=entities};
+                                              GetAlertRelatedEntities('<systemAlertId>')
 ```
 
 This command gets a Entity Query by object.

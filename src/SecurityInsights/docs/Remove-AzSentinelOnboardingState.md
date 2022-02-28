@@ -29,23 +29,13 @@ Delete Sentinel onboarding state
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove the Sentinel onboarding state
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\>Remove-AzSentinelOnboardingState -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Name "default"
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This commands removes the Sentinel onboarding state
 
 ## PARAMETERS
 

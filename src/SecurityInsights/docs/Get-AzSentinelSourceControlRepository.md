@@ -22,14 +22,23 @@ Gets a list of repositories metadata.
 
 ## EXAMPLES
 
-### Example 1: List all Repositories
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzSentinelSourceControlRepository -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -RepoType "GitHub"
+PS C:\> {{ Add code here }}
 
 {{ Add output here }}
 ```
 
-This command lists all Repositories.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 

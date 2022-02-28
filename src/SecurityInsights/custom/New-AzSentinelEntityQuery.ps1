@@ -65,17 +65,17 @@ function New-AzSentinelEntityQuery {
         [System.String]
         ${Title},
 
-        [Parameter(ParameterSetName = 'Activity'), Mandatory]
+        [Parameter(ParameterSetName = 'Activity', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
         ${Content},
 
-        [Parameter(ParameterSetName = 'Activity'), Mandatory]
+        [Parameter(ParameterSetName = 'Activity', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
         ${Description},
 
-        [Parameter(ParameterSetName = 'Activity'), Mandatory]
+        [Parameter(ParameterSetName = 'Activity', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
         ${QueryDefinitionQuery},

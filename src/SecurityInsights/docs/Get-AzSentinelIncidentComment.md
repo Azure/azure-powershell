@@ -38,31 +38,32 @@ Gets an incident comment.
 
 ### Example 1: List all Incident Comments for a given Incident 
 ```powershell
-PS C:\> Get-AzSentinelIncidentComment -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -IncidentId "myIncidentId"
+PS C:\> Get-AzSentinelIncidentComment -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -IncidentId "7a4c27ea-d61a-496b-b5c3-246770c857c1"
 
-{{ Add output here }}
+AuthorEmail             : john@contoso.com
+AuthorName              : John Contoso
+AuthorUserPrincipalName : john@contoso.com
+CreatedTimeUtc          : 1/6/2022 2:15:44 PM
+Message                 : This is my comment
+Name                    : da0957c9-2f1a-44a2-bc83-a2c0696b2bf1
+
 ```
 
 This command lists all Incident Comments for a given Incident.
 
 ### Example 2: Get an Incident Comment
 ```powershell
-PS C:\> Get-AzSentinelIncidentComment -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -IncidentId "myIncidentId" -Id "myIncidentCommentId"
+PS C:\> Get-AzSentinelIncidentComment -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -IncidentId "7a4c27ea-d61a-496b-b5c3-246770c857c1" -Id "da0957c9-2f1a-44a2-bc83-a2c0696b2bf1"
 
-{{ Add output here }}
+AuthorEmail             : john@contoso.com
+AuthorName              : John Contoso
+AuthorUserPrincipalName : john@contoso.com
+CreatedTimeUtc          : 1/6/2022 2:15:44 PM
+Message                 : This is my comment
+Name                    : da0957c9-2f1a-44a2-bc83-a2c0696b2bf1
 ```
 
 This command gets an Incident Comment.
-
-### Example 3: Get a Incident Comment by object Id
-```powershell
-PS C:\> $IncidentComments = Get-AzSentinelIncidentComment -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -IncidentId "myIncidentId"
-PS C:\> $IncidentComments[0] | Get-AzSentinelIncidentComment
-
-{{ Add output here }}
-```
-
-This command gets an Incident by object
 
 ## PARAMETERS
 

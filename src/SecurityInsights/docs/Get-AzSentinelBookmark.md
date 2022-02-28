@@ -39,29 +39,30 @@ Gets a bookmark.
 ```powershell
 PS C:\> Get-AzSentinelBookmark -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
 
-{{ Add output here }}
+DisplayName    	: SecurityAlert - 28b401e1e0c9
+CreatedByEmail	: john@contoso.com
+CreatedByName  	: John Contoso
+Label          	: {}
+Note           	: This needs further investigation
+Name           	: 515fc035-2ed8-4fa1-ad7d-28b401e1e0c9
+
 ```
 
 This command lists all Bookmarks under a Microsoft Sentinel workspace.
 
 ### Example 2: Get a Bookmark
 ```powershell
-PS C:\> Get-AzSentinelBookmark -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Id "myBookmarkId"
+PS C:\> Get-AzSentinelBookmark -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Id "515fc035-2ed8-4fa1-ad7d-28b401e1e0c9"
 
-{{ Add output here }}
+DisplayName    	: SecurityAlert - 28b401e1e0c9
+CreatedByEmail	: john@contoso.com
+CreatedByName  	: John Contoso
+Label          	: {}
+Note           	: This needs further investigation
+Name           	: 515fc035-2ed8-4fa1-ad7d-28b401e1e0c9
 ```
 
 This command gets a Bookmark.
-
-### Example 3: Get a Bookmark by object Id
-```powershell
-PS C:\> $Bookmarks = Get-AzSentinelBookmark -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
-PS C:\> $Bookmarks[0] | Get-AzSentinelBookmark
-
-{{ Add output here }}
-```
-
-This command gets a Bookmark by object
 
 ## PARAMETERS
 

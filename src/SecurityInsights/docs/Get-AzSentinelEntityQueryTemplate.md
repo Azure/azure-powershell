@@ -39,16 +39,29 @@ Gets an entity query.
 ```powershell
 PS C:\> Get-AzSentinelEntityQueryTemplate -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
 
-{{ Add output here }}
+Title           : The user has created an account
+Description     : This activity displays account creation events performed by the user
+InputEntityType : Account
+Kind            : Activity
+Name            : d6d08c94-455f-4ea5-8f76-fc6c0c442cfa
+
+Title           : The user has deleted an account
+Description     : This activity displays account deletion events performed by the user
+InputEntityType : Account
+Kind            : Activity
+Name            : e0459780-ac9d-4b72-8bd4-fecf6b46a0a1
 ```
 
 This command lists all Entity Query Templates under a Microsoft Sentinel workspace.
 
 ### Example 2: Get an Entity Query Template
 ```powershell
-PS C:\> Get-AzSentinelEntityQueryTemplate -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Id "myEntityQueryTemplateId"
+PS C:\> Get-AzSentinelEntityQueryTemplate -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Id "d6d08c94-455f-4ea5-8f76-fc6c0c442cfa"
 
-{{ Add output here }}
+Description     : This activity displays account creation events performed by the user
+InputEntityType : Account
+Kind            : Activity
+Name            : d6d08c94-455f-4ea5-8f76-fc6c0c442cfa
 ```
 
 This command gets an Entity Query Template.
@@ -58,7 +71,10 @@ This command gets an Entity Query Template.
 PS C:\> $EntityQueryTemplates = Get-AzSentinelEntityQueryTemplate -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
 PS C:\> $EntityQueryTemplates[0] | Get-AzSentinelEntityQueryTemplate
 
-{{ Add output here }}
+Description     : This activity displays account creation events performed by the user
+InputEntityType : Account
+Kind            : Activity
+Name            : d6d08c94-455f-4ea5-8f76-fc6c0c442cfa
 ```
 
 This command gets a Entity Query Template by object.

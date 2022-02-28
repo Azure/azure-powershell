@@ -72,7 +72,6 @@ Creates or updates the alert rule.
 PS C:\> $AlertRuleTemplateName = "f71aba3d-28fb-450b-b192-4e76a83015c8"
 PS C:\> New-AzSentinelAlertRule -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Kind Fusion -Enabled -AlertRuleTemplateName $AlertRuleTemplateName
 
-{{ Add output here }}
 ```
 
 This command creates an Alert Rule of the Fusion kind based on the template "Advanced Multistage Attack Detection"
@@ -82,7 +81,6 @@ This command creates an Alert Rule of the Fusion kind based on the template "Adv
 PS C:\> $AlertRuleTemplateName = "fa118b98-de46-4e94-87f9-8e6d5060b60b"
 PS C:\> New-AzSentinelAlertRule -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Kind MLBehaviorAnalytics -Enabled -AlertRuleTemplateName $AlertRuleTemplateName
 
-{{ Add output here }}
 ```
 
 This command creates an Alert Rule of the MLBehaviorAnalytics kind based on the template "Anomalous SSH Login Detection"
@@ -92,7 +90,6 @@ This command creates an Alert Rule of the MLBehaviorAnalytics kind based on the 
 PS C:\> $AlertRuleTemplateName = "0dd422ee-e6af-4204-b219-f59ac172e4c6"
 PS C:\> New-AzSentinelAlertRule -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Kind ThreatIntelligence -Enabled -AlertRuleTemplateName $AlertRuleTemplateName
 
-{{ Add output here }}
 ```
 
 This command creates an Alert Rule of the ThreatIntelligence kind based on the template "Microsoft Threat Intelligence Analytics"
@@ -102,7 +99,7 @@ This command creates an Alert Rule of the ThreatIntelligence kind based on the t
 PS C:\> $AlertRuleTemplateName = "a2e0eb51-1f11-461a-999b-cd0ebe5c7a72"
 PS C:\> New-AzSentinelAlertRule -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Kind MicrosoftSecurityIncidentCreation -Enabled -AlertRuleTemplateName $AlertRuleTemplateName -DisplayName "Create incidents based on Microsoft Defender for IoT" -ProductFilter "Azure Security Center for IoT"
 
-{{ Add output here }}
+
 ```
 
 This command creates an Alert Rule of the MicrosoftSecurityIncidentCreation kind based on the template for Create incidents based on Azure Security Center for IoT alerts.
@@ -111,7 +108,6 @@ This command creates an Alert Rule of the MicrosoftSecurityIncidentCreation kind
 ```powershell
 PS C:> New-AzSentinelAlertRule -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Kind Scheduled -Enabled -DisplayName "Powershell Exection Alert (Several Times per Hour)" -Severity Low -Query "SecurityEvent | where EventId == 4688" -QueryFrequency (New-TimeSpan -Hours 1) -QueryPeriod (New-TimeSpan -Hours 1) -TriggerThreshold 10
 
-{{ Add output here }}
 ```
 
 This command creates an Alert Rule of the Scheduled kind.
@@ -121,7 +117,6 @@ Please note that that query (parameter -Query) needs to be on a single line as a
 ```powershell
 PS C:> New-AzSentinelAlertRule -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Kind NRT -Enabled -DisplayName "Break glass account accessed" -Severity High -Query "let Break_Glass_Account = _GetWatchlist('break_glass_account')\n|project UPN;\nSigninLogs\n| where UserPrincipalName in (Break_Glass_Account)"
 
-{{ Add output here }}
 ```
 
 This command creates an Alert Rule of the NRT kind.

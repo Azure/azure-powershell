@@ -43,23 +43,14 @@ Updates setting.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update the Anomalies setting
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzSentinelSetting -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -SettingsName 'Anomalies' -Enabled
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command updates the Anomalies setting, other settings are:
+EyesOn, EntityAnalytics and Ueba
 
 ## PARAMETERS
 
