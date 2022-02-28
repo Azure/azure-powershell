@@ -18,7 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fixed `Get-AzWebApp` to return SiteConfig details in the response when requested the WebApps under subscreption #17184
+* Fixed `Get-AzWebApp` to return SiteConfig details in the response when requested the WebApps under subscription [#17184]
+
 ## Version 2.10.0
 * Updated `New-AzAppServicePlan`  to create an app service plan with host environment id #16094
 
