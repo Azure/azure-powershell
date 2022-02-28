@@ -40,7 +40,6 @@ input-file:
 root-module-name: $(prefix).Purview
 module-version: 0.1.0
 title: Purviewdata
-namespace: Microsoft.Azure.PowerShell.Cmdlets.Purview
 subject-prefix: Purview
 identity-correction-for-post: true 
 nested-object-to-string: true
@@ -68,7 +67,7 @@ directive:
     remove: true
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('public static Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.ScanAuthorizationType TeradataUserPass = @"TeradataTeradataUserPass";', 'public static Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.ScanAuthorizationType TeradataTeradataUserPass = @"TeradataTeradataUserPass";');
+    transform: $ = $.replace('public static Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType TeradataUserPass = @"TeradataTeradataUserPass";', 'public static Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType TeradataTeradataUserPass = @"TeradataTeradataUserPass";');
   - from: source-file-csharp
     where: $
     transform: $ = $.split("{Endpoint}").join("{endpoint}");

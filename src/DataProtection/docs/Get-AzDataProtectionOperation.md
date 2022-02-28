@@ -23,8 +23,10 @@ Returns the list of available operations.
 
 ### Example 1: Get the list of of available operations
 ```powershell
-PS C:\> Get-AzDataProtectionOperation
+Get-AzDataProtectionOperation
+```
 
+```output
 IsDataAction Name                                                                                                Origin
 ------------ ----                                                                                                ------
              Microsoft.DataProtection/locations/getBackupStatus/action                                           user
