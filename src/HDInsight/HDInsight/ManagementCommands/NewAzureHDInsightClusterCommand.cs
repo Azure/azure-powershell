@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
@@ -679,7 +680,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             catch (Exception e)
             {
                 string errorMessage =$"Can not find service princaipl per the parameter ObjectId:{ObjectId}, the error message is '{e.Message}'."+ " Please specify Application Id explicitly by providing ApplicationId parameter and retry.";
-                throw new Exception(errorMessage);
+                throw new AzPSArgumentException(errorMessage, nameof(ObjectId));
             }
 
             var spApplicationId = Guid.Empty;
