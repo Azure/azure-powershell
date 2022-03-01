@@ -1,8 +1,10 @@
 ### Example 1: Get details of specific productFamilies
 ```powershell
-PS C:\>  $familyDetails = Get-AzEdgeOrderProductFamily -SubscriptionId SubscriptionId -FilterableProperty  @{"azurestackedge"=@($filterableProperty)} -Expand "configurations"
-PS C:\> $familyDetails.ProductLine.Product.Configuration.HierarchyInformation
+$familyDetails = Get-AzEdgeOrderProductFamily -SubscriptionId SubscriptionId -FilterableProperty  @{"azurestackedge"=@($filterableProperty)} -Expand "configurations"
+$familyDetails.ProductLine.Product.Configuration.HierarchyInformation
+```
 
+```output
 ConfigurationName ProductFamilyName ProductLineName ProductName
 ----------------- ----------------- --------------- -----------
 edgep_high        azurestackedge    azurestackedge  azurestackedgegpu

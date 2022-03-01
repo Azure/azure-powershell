@@ -1,7 +1,9 @@
 ### Example 1: Contact details object
 ```powershell
 $contactDetail = New-AzEdgeOrderContactDetailsObject -ContactName ContactName -EmailList @("emailId") -Phone Phone
+```
 
+```output
 ContactName    : random
 EmailList      : {"emailId"}
 Mobile         :
