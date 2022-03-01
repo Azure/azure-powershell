@@ -1,0 +1,121 @@
+﻿# ----------------------------------------------------------------------------------
+#
+# Copyright Microsoft Corporation
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# ----------------------------------------------------------------------------------
+
+<#
+.SYNOPSIS
+ResourceManagementPrivateLinksTests
+#>
+
+function Test-RemoveResourceManagementPrivateLink
+{
+    $getresponse1 = Get-AzResourceManagementPrivateLink -ResourceGroupName PrivateLinkTestRG -PrivateLinkName NewPL
+    Remove-AzResourceManagementPrivateLink -ResourceGroupName PrivateLinkTestRG -PrivateLinkName NewPL
+    try
+    {
+      $getresponse2 = Get-AzResourceManagementPrivateLink -ResourceGroupName PrivateLinkTestRG -PrivateLinkName NewPL
+    }
+    catch
+    {
+	   Assert-Null $getresponse2
+    }
+
+    $expectedType =  "Microsoft.Authorization/resourceManagementPrivateLinks"
+    $expectedName = "NewPL"
+    $expectedLocation = "centralus"
+    $expectedId = "/subscriptions/e3a1f070-4fbe-428f-90cb-50dadce68bfb/resourceGroups/PrivateLinkTestRG/providers/Microsoft.Authorization/resourceManagementPrivateLinks/NewPL"
+    
+    Assert-NotNull $getresponse1
+    
+    Assert-AreEqual $getresponse1.Type $expectedType
+    Assert-AreEqual $getresponse1.Id $expectedId
+    Assert-AreEqual $getresponse1.Name $expectedName
+    Assert-AreEqual $getresponse1.Location $expectedLocation
+
+	Assert-Null $getresponse2
+}
+
+function Test-GetResourceManagementPrivateLink
+{
+    $getresponse = Get-AzResourceManagementPrivateLink -ResourceGroupName PrivateLinkTestRG -PrivateLinkName NewPL
+    
+    $expectedType =  "Microsoft.Authorization/resourceManagementPrivateLinks"
+    $expectedName = "NewPL"
+    $expectedLocation = "centralus"
+    $expectedId = "/subscriptions/e3a1f070-4fbe-428f-90cb-50dadce68bfb/resourceGroups/PrivateLinkTestRG/providers/Microsoft.Authorization/resourceManagementPrivateLinks/NewPL"
+    
+    Assert-NotNull $getresponse
+    
+    Assert-AreEqual $getresponse.Type $expectedType
+    Assert-AreEqual $getresponse.Id $expectedId
+    Assert-AreEqual $getresponse.Name $expectedName
+    Assert-AreEqual $getresponse.Location $expectedLocation
+}
+
+function Test-GetResourceManagementPrivateLinks
+{
+    $getresponse = Get-AzResourceManagementPrivateLinks
+
+    $expectedType =  "Microsoft.Authorization/resourceManagementPrivateLinks"
+    $expectedName1 = "NewPL"
+    $expectedName2 = "NewPL2"
+    $expectedLocation = "centralus"
+
+    Assert-NotNull $getresponse
+    Assert-AreEqual @($getresponse.ResourceManagementPrivateLinkList).Count 2
+    Assert-AreEqual @($getresponse.ResourceManagementPrivateLinkList)[0].Type $expectedType
+    Assert-AreEqual @($getresponse.ResourceManagementPrivateLinkList)[1].Type $expectedType
+    Assert-AreEqual @($getresponse.ResourceManagementPrivateLinkList)[0].Location $expectedLocation
+    Assert-AreEqual @($getresponse.ResourceManagementPrivateLinkList)[1].Location $expectedLocation
+    Assert-AreEqual @($getresponse.ResourceManagementPrivateLinkList)[0].Name $expectedName1
+    Assert-AreEqual @($getresponse.ResourceManagementPrivateLinkList)[1].Name $expectedName2
+}
+
+function Test-RemoveResourceManagementPrivateLinkAssociation
+{
+    $privateLinkAssociationId = "1d7942d1-288b-48de-8d0f-2d2aa8e03ad4"
+    $getresponse = Get-AzResourceManagementPrivateLinkAssociations -ManagementGroupId 24f15700-370c-45bc-86a7-aee1b0c4eb8a
+    Remove-AzResourceManagementPrivateLinkAssociation -ManagementGroupId 24f15700-370c-45bc-86a7-aee1b0c4eb8a -PrivateLinkAssociationId $privateLinkAssociationId
+    $getresponse1 = Get-AzResourceManagementPrivateLinkAssociations -ManagementGroupId 24f15700-370c-45bc-86a7-aee1b0c4eb8a
+
+    $expectedPublicNetworkAccess = "Enabled"
+    $expectedPrivateLinkResourceId = "/subscriptions/6dbb5850-64b4-49c0-ba85-d38f089c6fa4/resourceGroups/ARMPrivateLinkRG/providers/Microsoft.Authorization/resourceManagementPrivateLinks/DeepDiveRMPL"
+    $expectedPrivateLinkAssociationId = "1d7942d1-288b-48de-8d0f-2d2aa8e03ad4"
+    $expectedType = "Microsoft.Authorization/privateLinkAssociations"
+    
+    Assert-NotNull $getresponse
+    Assert-AreEqual @($getresponse.ResourceManagementPrivateLinkAssociationList).Count 1
+    Assert-AreEqual @($getresponse.ResourceManagementPrivateLinkAssociationList)[0].Type $expectedType
+    Assert-AreEqual @($getresponse.ResourceManagementPrivateLinkAssociationList)[0].Name $expectedPrivateLinkAssociationId
+    Assert-AreEqual @($getresponse.ResourceManagementPrivateLinkAssociationList)[0].Properties.PublicNetworkAccess $expectedPublicNetworkAccess
+    Assert-AreEqual @($getresponse.ResourceManagementPrivateLinkAssociationList)[0].Properties.PrivateLink $expectedPrivateLinkResourceId
+
+    Assert-NotNull $getresponse1
+    Assert-AreEqual @($getresponse1.ResourceManagementPrivateLinkAssociationList).Count 0
+}
+
+function Test-GetResourceManagementPrivateLinkAssociations
+{
+    $getresponse = Get-AzResourceManagementPrivateLinkAssociations -ManagementGroupId 24f15700-370c-45bc-86a7-aee1b0c4eb8a
+    $expectedPublicNetworkAccess = "Enabled"
+    $expectedPrivateLinkResourceId = "/subscriptions/6dbb5850-64b4-49c0-ba85-d38f089c6fa4/resourceGroups/ARMPrivateLinkRG/providers/Microsoft.Authorization/resourceManagementPrivateLinks/DeepDiveRMPL"
+    $expectedPrivateLinkAssociationId = "1d7942d1-288b-48de-8d0f-2d2aa8e03ad4"
+    $expectedType = "Microsoft.Authorization/privateLinkAssociations"
+    
+    Assert-NotNull $getresponse
+    Assert-AreEqual @($getresponse.ResourceManagementPrivateLinkAssociationList).Count 1
+    Assert-AreEqual @($getresponse.ResourceManagementPrivateLinkAssociationList)[0].Type $expectedType
+    Assert-AreEqual @($getresponse.ResourceManagementPrivateLinkAssociationList)[0].Name $expectedPrivateLinkAssociationId
+    Assert-AreEqual @($getresponse.ResourceManagementPrivateLinkAssociationList)[0].Properties.PublicNetworkAccess $expectedPublicNetworkAccess
+    Assert-AreEqual @($getresponse.ResourceManagementPrivateLinkAssociationList)[0].Properties.PrivateLink $expectedPrivateLinkResourceId
+}
