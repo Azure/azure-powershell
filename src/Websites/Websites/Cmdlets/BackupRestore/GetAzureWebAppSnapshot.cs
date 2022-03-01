@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
 
@@ -34,7 +35,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
                     ResourceGroupName = this.ResourceGroupName,
                     Name = this.Name,
                     Slot = string.IsNullOrEmpty(this.Slot) ? "Production" : this.Slot,
-                    SnapshotTime = DateTime.Parse(s.Time)
+                    SnapshotTime = DateTime.Parse(s.Time, CultureInfo.CurrentUICulture)
                 };
             }).OrderByDescending(s => s.SnapshotTime).ToArray();
             WriteObject(list, true);
