@@ -28,6 +28,7 @@ function Get-AzCdnProfile {
 
     process {
         $internalProfiles = Az.Cdn.internal\Get-AzCdnProfile @PSBoundParameters
+        Write-Host -ForegroundColor Green $internalProfiles.GetType()
 
         if ($null -eq $internalProfiles )
         {
@@ -36,22 +37,21 @@ function Get-AzCdnProfile {
         {
             if($internalProfiles -is [array]){
                 $profiles = @()
-                foreach ($internalProfiles in $internalProfiles)
+                foreach ($oneInternalProfile in $internalProfiles)
                 {
-                    if (($internalProfiles.Sku.Name -ne "Premium_AzureFrontDoor") -and ($internalProfiles.Sku.Name -ne "Standard_AzureFrontDoor"))
+                    if (($oneInternalProfile.SkuName -ne "Premium_AzureFrontDoor") -and ($oneInternalProfile.SkuName -ne "Standard_AzureFrontDoor"))
                     {
-                        $profiles += $internalProfiles
-                    }else{
-                        profiles = null
+                        $profiles += $oneInternalProfile
                     }
                 }
             }else
             {
-                if (($internalProfiles.Sku.Name -ne "Premium_AzureFrontDoor") -and ($internalProfiles.Sku.Name -ne "Standard_AzureFrontDoor"))
+                $oneInternalProfile = $internalProfiles
+                if (($oneInternalProfile.SkuName -ne "Premium_AzureFrontDoor") -and ($oneInternalProfile.SkuName -ne "Standard_AzureFrontDoor"))
                 {
                     $profiles = $internalProfiles
                 }else{
-                    profiles = null
+                    $profiles = $null
                 }
             }
         } 

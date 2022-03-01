@@ -16,8 +16,11 @@ Creates a new origin within the specified origin group.
 New-AzCdnAfdOrigin -OriginGroupName <String> -OriginName <String> -ProfileName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-AzureOriginId <String>]
  [-EnabledState <EnabledState>] [-EnforceCertificateNameCheck] [-HostName <String>] [-HttpPort <Int32>]
- [-HttpsPort <Int32>] [-OriginHostHeader <String>] [-Priority <Int32>] [-SharedPrivateLinkResource <IAny>]
- [-Weight <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-HttpsPort <Int32>] [-OriginHostHeader <String>] [-Priority <Int32>] [-PrivateLinkId <String>]
+ [-SharedPrivateLinkResourceGroupId <String>] [-SharedPrivateLinkResourcePrivateLinkLocation <String>]
+ [-SharedPrivateLinkResourceRequestMessage <String>]
+ [-SharedPrivateLinkResourceStatus <SharedPrivateLinkResourceStatus>] [-Weight <Int32>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -248,6 +251,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PrivateLinkId
+Resource ID.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ProfileName
 Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
 
@@ -278,11 +296,57 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SharedPrivateLinkResource
-The properties of the private link resource for private origin.
+### -SharedPrivateLinkResourceGroupId
+The group id from the provider of resource the shared private link resource is for.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAny
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SharedPrivateLinkResourcePrivateLinkLocation
+The location of the shared private link resource
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SharedPrivateLinkResourceRequestMessage
+The request message for requesting approval of the shared private link resource.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SharedPrivateLinkResourceStatus
+Status of the shared private link resource.
+Can be Pending, Approved, Rejected, Disconnected, or Timeout.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SharedPrivateLinkResourceStatus
 Parameter Sets: (All)
 Aliases:
 

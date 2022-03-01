@@ -15,9 +15,9 @@ Updates an existing route with the specified route name under the specified subs
 ### UpdateExpanded (Default)
 ```
 Update-AzCdnRoute -EndpointName <String> -Name <String> -ProfileName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-CacheConfigurationCompressionSetting <IAny>]
- [-CacheConfigurationQueryParameter <String>]
+ [-SubscriptionId <String>] [-CacheConfigurationQueryParameter <String>]
  [-CacheConfigurationQueryStringCachingBehavior <AfdQueryStringCachingBehavior>]
+ [-CompressionSettingContentTypesToCompress <String[]>] [-CompressionSettingIsCompressionEnabled]
  [-CustomDomain <IActivatedResourceReference[]>] [-EnabledState <EnabledState>]
  [-ForwardingProtocol <ForwardingProtocol>] [-HttpsRedirect <HttpsRedirect>]
  [-LinkToDefaultDomain <LinkToDefaultDomain>] [-OriginGroupId <String>] [-OriginPath <String>]
@@ -27,9 +27,9 @@ Update-AzCdnRoute -EndpointName <String> -Name <String> -ProfileName <String> -R
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzCdnRoute -InputObject <ICdnIdentity> [-CacheConfigurationCompressionSetting <IAny>]
- [-CacheConfigurationQueryParameter <String>]
+Update-AzCdnRoute -InputObject <ICdnIdentity> [-CacheConfigurationQueryParameter <String>]
  [-CacheConfigurationQueryStringCachingBehavior <AfdQueryStringCachingBehavior>]
+ [-CompressionSettingContentTypesToCompress <String[]>] [-CompressionSettingIsCompressionEnabled]
  [-CustomDomain <IActivatedResourceReference[]>] [-EnabledState <EnabledState>]
  [-ForwardingProtocol <ForwardingProtocol>] [-HttpsRedirect <HttpsRedirect>]
  [-LinkToDefaultDomain <LinkToDefaultDomain>] [-OriginGroupId <String>] [-OriginPath <String>]
@@ -77,21 +77,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CacheConfigurationCompressionSetting
-compression settings.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAny
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -CacheConfigurationQueryParameter
 query parameters to include or exclude (comma separated).
 
@@ -113,6 +98,40 @@ You can ignore any query strings when caching, ignore specific query strings, ca
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.AfdQueryStringCachingBehavior
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CompressionSettingContentTypesToCompress
+List of content types on which compression applies.
+The value should be a valid MIME type.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CompressionSettingIsCompressionEnabled
+Indicates whether content compression is enabled on AzureFrontDoor.
+Default value is false.
+If compression is enabled, content will be served as compressed if user requests for a compressed version.
+Content won't be compressed on AzureFrontDoor when requested content is smaller than 1 byte or larger than 1 MB.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 

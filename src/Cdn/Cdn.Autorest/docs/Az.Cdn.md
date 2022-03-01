@@ -171,6 +171,9 @@ Creates a new Secret within the specified profile.
 ### [New-AzCdnSecurityPolicy](New-AzCdnSecurityPolicy.md)
 Creates a new security policy within the specified profile.
 
+### [New-AzFrontDoorCdnProfile](New-AzFrontDoorCdnProfile.md)
+Creates a new Azure Front Door Standard or Azure Front Door Premium or CDN profile with a profile name under the specified subscription and resource group.
+
 ### [Remove-AzCdnAfdCustomDomain](Remove-AzCdnAfdCustomDomain.md)
 Deletes an existing AzureFrontDoor domain with the specified domain name under the specified subscription, resource group and profile.
 
