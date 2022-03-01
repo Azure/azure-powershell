@@ -9,7 +9,7 @@
 @{
 
     # Script module or binary module file associated with this manifest.
-    RootModule = './Az.Purview.psm1'
+    #RootModule = './Az.Purview.psm1'
     
     # Version number of this module.
     ModuleVersion = '0.2.0'
