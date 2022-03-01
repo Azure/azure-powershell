@@ -24,7 +24,7 @@ Lists all of the advertised prefixes for cdn in the specified peering location
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzPeeringCdnPeeringPrefix -PeeringLocation "Seattle"
+Get-AzPeeringCdnPeeringPrefix -PeeringLocation "Seattle"
 ```
 
 Lists all of the advertised prefixes for cdn in the specified physical peering location
