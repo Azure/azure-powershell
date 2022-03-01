@@ -178,7 +178,7 @@ Accept wildcard characters: False
 ```
 
 ### -ManagedResourceGroupName
-A container that holds ancillary resources. Created by default while the name can be specified. Note that this field must not be the same with ResearchGroupName
+A container that holds ancillary resources. Created by default while the name can be specified. Note that this field must not be the same with ResourceGroupName
 
 ```yaml
 Type: System.String

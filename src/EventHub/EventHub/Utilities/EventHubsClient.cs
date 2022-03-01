@@ -47,6 +47,11 @@ namespace Microsoft.Azure.Commands.Eventhub
             private set;
         }
 
+        public const string SystemAssigned = "SystemAssigned";
+        public const string UserAssigned = "UserAssigned";
+        public const string SystemAssignedUserAssigned = "SystemAssigned, UserAssigned";
+        public const string None = "None";
+
         #region Namespace
         public PSNamespaceAttributes GetNamespace(string resourceGroupName, string namespaceName)
         {
@@ -68,7 +73,8 @@ namespace Microsoft.Azure.Commands.Eventhub
             return resourceList;
         }
 
-        public PSNamespaceAttributes BeginCreateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, int? skuCapacity, Dictionary<string, string> tags, bool isAutoInflateEnabled, int? maximumThroughputUnits, bool isKafkaEnabled, string clusterARMId, bool isZoneRedundant, bool isDisableLocalAuth, bool isIdentity)
+        public PSNamespaceAttributes BeginCreateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, int? skuCapacity, Dictionary<string, string> tags, bool isAutoInflateEnabled, int? maximumThroughputUnits, bool isKafkaEnabled, string clusterARMId, bool isZoneRedundant, bool isDisableLocalAuth, bool isIdentity
+            , string identityType, string[] identityId, PSEncryptionConfigAttributes[] encryptionConfigs)
         {
             EHNamespace parameter = new EHNamespace();
             parameter.Location = location;
@@ -115,6 +121,59 @@ namespace Microsoft.Azure.Commands.Eventhub
             if (isIdentity)
                 parameter.Identity = new Identity() { Type = ManagedServiceIdentityType.SystemAssigned};
 
+            if (identityType != null)
+            {
+                parameter.Identity = new Identity();
+                parameter.Identity = FindIdentity(identityType);
+            }
+
+            if (identityId != null)
+            {
+
+                Dictionary<string, UserAssignedIdentity> UserAssignedIdentities = new Dictionary<string, UserAssignedIdentity>();
+
+                UserAssignedIdentities = identityId.Where(id => id != null).ToDictionary(id => id, id => new UserAssignedIdentity());
+
+                if (parameter.Identity == null)
+                {
+                    parameter.Identity = new Identity() { UserAssignedIdentities = UserAssignedIdentities };
+                }
+                else
+                {
+                    parameter.Identity.UserAssignedIdentities = UserAssignedIdentities;
+                }
+            }
+
+            if (encryptionConfigs != null)
+            {
+                if (parameter.Encryption == null)
+                {
+                    parameter.Encryption = new Encryption() { KeySource = KeySource.MicrosoftKeyVault };
+                }
+
+                parameter.Encryption.KeyVaultProperties = new List<KeyVaultProperties>();
+
+                parameter.Encryption.KeyVaultProperties = encryptionConfigs.Where(x => x != null)
+                                                                     .Select(x => {
+                                                                         KeyVaultProperties kvp = new KeyVaultProperties();
+
+                                                                         if (x.KeyName == null || x.KeyVaultUri == null)
+                                                                             throw new Exception("KeyName and KeyVaultUri cannot be null");
+
+                                                                         kvp.KeyName = x.KeyName;
+
+                                                                         kvp.KeyVaultUri = x.KeyVaultUri;
+
+                                                                         kvp.KeyVersion = x?.KeyVersion;
+
+                                                                         if (x.UserAssignedIdentity != null)
+                                                                             kvp.Identity = new UserAssignedIdentityProperties(x.UserAssignedIdentity);
+
+                                                                         return kvp;
+                                                                     })
+                                                                     .ToList();
+            }
+
             var response = Client.Namespaces.CreateOrUpdate(resourceGroupName, namespaceName, parameter);
             return new PSNamespaceAttributes(response);
         }
@@ -128,18 +187,22 @@ namespace Microsoft.Azure.Commands.Eventhub
             Dictionary<string, string> tags,
             bool isAutoInflateEnabled,
             int? maximumThroughputUnits,
-            bool isKafkaEnabled, bool isIdentity, string identityUserDefined, string keySource, List<string []> KeyProperties, bool isDisableLocalAuth)
+            bool isKafkaEnabled, bool isIdentity, string identityUserDefined, string keySource, List<string []> KeyProperties, bool isDisableLocalAuth, 
+            string[] identityId, string identityType, PSEncryptionConfigAttributes[] encryptionConfigs)
         {          
 
             EHNamespace parameter = Client.Namespaces.Get(resourceGroupName, namespaceName);
 
-            if (parameter.Identity != null && parameter.Encryption == null)
+            if (parameter.Identity != null && parameter.Encryption != null && KeyProperties != null)
             {
                 parameter.Encryption = new Encryption();
                 parameter.Encryption.KeyVaultProperties = new List<KeyVaultProperties>();
             }
 
-            parameter.Location = location;
+            if(location != null)
+            {
+                parameter.Location = location;
+            }
 
             if (tags != null)
             {
@@ -253,47 +316,84 @@ namespace Microsoft.Azure.Commands.Eventhub
                     }
                 }                
             }
+            if (identityType != null)
+            {
+                parameter.Identity = new Identity();
+                parameter.Identity = FindIdentity(identityType);
+                if(parameter.Identity.Type == ManagedServiceIdentityType.None)
+                {
+                    parameter.Identity.UserAssignedIdentities = null;
+                }
+            }
+
+            if (identityId != null)
+            {
+                Dictionary<string, UserAssignedIdentity> UserAssignedIdentities = new Dictionary<string, UserAssignedIdentity>();
+
+                UserAssignedIdentities = identityId.Where(id => id != null).ToDictionary(id => id, id => new UserAssignedIdentity());
+
+                if (parameter.Identity == null)
+                {
+                    parameter.Identity = new Identity() { UserAssignedIdentities = UserAssignedIdentities };
+                }
+                else
+                {
+                    parameter.Identity.UserAssignedIdentities = UserAssignedIdentities;
+                }
+            }
+
+            if (encryptionConfigs != null)
+            {
+                if (parameter.Encryption == null)
+                {
+                    parameter.Encryption = new Encryption() { KeySource = KeySource.MicrosoftKeyVault };
+                }
+
+                parameter.Encryption.KeyVaultProperties = new List<KeyVaultProperties>();
+
+                parameter.Encryption.KeyVaultProperties = encryptionConfigs.Where(x => x != null)
+                                                                     .Select(x =>
+                                                                     {
+                                                                         KeyVaultProperties kvp = new KeyVaultProperties();
+
+                                                                         if (x.KeyName == null || x.KeyVaultUri == null)
+                                                                             throw new Exception("KeyName and KeyVaultUri cannot be null");
+
+                                                                         kvp.KeyName = x.KeyName;
+
+                                                                         kvp.KeyVaultUri = x.KeyVaultUri;
+
+                                                                         kvp.KeyVersion = x?.KeyVersion;
+
+                                                                         if (x.UserAssignedIdentity != null)
+                                                                             kvp.Identity = new UserAssignedIdentityProperties(x.UserAssignedIdentity);
+
+                                                                         return kvp;
+                                                                     })
+                                                                     .ToList();
+            }
+
             var response = Client.Namespaces.CreateOrUpdate(resourceGroupName, namespaceName, parameter);
             return new PSNamespaceAttributes(response);
         }
 
-        public PSNamespaceAttributes UpdateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, int? skuCapacity, NamespaceState? state, Dictionary<string, string> tags, bool? isAutoInflateEnabled, int? maximumThroughputUnits)
+        public Identity FindIdentity(string identityType)
         {
+            Identity identity = new Identity();
 
-            var parameter = new EHNamespace()
-            {
-                Location = location
-            };
+            if (identityType == SystemAssigned)
+                identity.Type = ManagedServiceIdentityType.SystemAssigned;
 
-            Sku tempSku = new Sku();
+            else if (identityType == UserAssigned)
+                identity.Type = ManagedServiceIdentityType.UserAssigned;
 
-            if (skuName != null)
-            {
-                tempSku.Name = skuName;
-                tempSku.Tier = skuName;
-            }
+            else if (identityType == SystemAssignedUserAssigned)
+                identity.Type = ManagedServiceIdentityType.SystemAssignedUserAssigned;
 
-            if (skuCapacity.HasValue)
-            {
-                tempSku.Capacity = skuCapacity;
-            }
+            else if (identityType == None)
+                identity.Type = ManagedServiceIdentityType.None;
 
-            parameter.Sku = tempSku;
-
-            if (tags != null && tags.Count() > 0)
-            {
-                parameter.Tags = new Dictionary<string, string>(tags);
-            }
-
-            if (isAutoInflateEnabled.HasValue)
-                parameter.IsAutoInflateEnabled = isAutoInflateEnabled;
-
-            if (maximumThroughputUnits.HasValue)
-                parameter.MaximumThroughputUnits = maximumThroughputUnits;
-
-            var response = Client.Namespaces.CreateOrUpdate(resourceGroupName, namespaceName, parameter);
-
-            return new PSNamespaceAttributes(response);
+            return identity;
         }
 
         public void BeginDeleteNamespace(string resourceGroupName, string namespaceName)

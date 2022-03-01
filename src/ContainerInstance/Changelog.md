@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed Identity Bug in ImageRegistryCredential
 
 ## Version 3.0.0
 * Upgraded API version to 2021-09-01

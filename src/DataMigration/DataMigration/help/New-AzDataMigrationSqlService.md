@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataMigration-help.xml
 Module Name: Az.DataMigration
 online version: https://docs.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationsqlservice
 schema: 2.0.0
@@ -14,8 +14,8 @@ Create or Update Database Migration Service.
 
 ```
 New-AzDataMigrationSqlService -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Location <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Location <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -219,4 +219,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-

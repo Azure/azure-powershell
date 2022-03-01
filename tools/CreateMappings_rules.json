@@ -1,5 +1,9 @@
 [
   {
+    "alias": "Confidential Ledger",
+    "module": "ConfidentialLedger"
+  },
+  {
     "regex": "ApiManagement",
     "alias": "API Management"
   },

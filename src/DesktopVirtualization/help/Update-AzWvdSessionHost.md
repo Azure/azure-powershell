@@ -32,11 +32,13 @@ Update a session host.
 
 ### Example 1: Update a Windows Virtual Desktop SessionHost by name
 ```powershell
-PS C:\> Update-AzWvdSessionHost -ResourceGroupName ResourceGroupName `
+Update-AzWvdSessionHost -ResourceGroupName ResourceGroupName `
                             -HostPoolName HostPoolName `
                             -Name SessionHostName `
                             -AllowNewSession:$false
+```
 
+```output
 Name                                               Type
 ----                                               ----
 HostPoolName/SessionHostName Microsoft.DesktopVirtualization/hostpools/sessionhosts

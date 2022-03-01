@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Common
         public void OnNewRequest(InvocationInfo invocationInfo, string correlationId, string processRecordId, PipelineChangeDelegate prependStep, PipelineChangeDelegate appendStep)
         {
             appendStep(new UserAgent(invocationInfo).SendAsync);
-            appendStep(this.SendHandler(GetDefaultContext(_provider, invocationInfo), AzureEnvironment.Endpoint.ResourceManager));
+            appendStep(this.SendHandler(GetDefaultContext(_provider, invocationInfo), AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId));
         }
 
         internal void AddRequestUserAgentHandler(
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Common
             appendStep(
                 async (request, cancelToken, cancelAction, signal, next) =>
                 {
-                    endpointResourceIdKey = endpointResourceIdKey ?? AzureEnvironment.Endpoint.ResourceManager;
+                    endpointResourceIdKey = endpointResourceIdKey ?? AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId;
                     var context = GetDefaultContext(_provider, invocationInfo);
                     return await AuthenticationHelper(context, endpointResourceIdKey, endpointSuffixKey, request, cancelToken, cancelAction, signal, next);
                 });

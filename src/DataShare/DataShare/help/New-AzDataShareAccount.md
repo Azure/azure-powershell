@@ -23,8 +23,11 @@ New-AzDataShareAccount -ResourceGroupName <String> -Name <String> -Location <Str
 ## EXAMPLES
 
 ### Example 1
+```powershell
+New-AzDataShareAccount -ResourceGroupName "ADS" -Name "WikiADS" -Location "WestUS"
 ```
-PS C:\> New-AzDataShareAccount -ResourceGroupName "ADS" -Name "WikiADS" -Location "WestUS"
+
+```output
 DataShareAccountName   : WikiADS
 ResourceGroupName : ADS
 Location          : WestUS

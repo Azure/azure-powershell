@@ -33,9 +33,11 @@ The New-AzOperationalInsightsAzureActivityLogDataSource cmdlet enables Log Analy
 ## EXAMPLES
 
 ### Example 1
+```powershell
+New-AzOperationalInsightsAzureActivityLogDataSource -ResourceGroupName testrg -WorkspaceName LogAnalyticsworkspace -Name test -SubscriptionId 0b1f6471-1bf0-4dda-aec3-cb9272f09590
 ```
-PS C:\> New-AzOperationalInsightsAzureActivityLogDataSource -ResourceGroupName testrg -WorkspaceName LogAnalyticsworkspace -Name test -SubscriptionId 0b1f6471-1bf0-4dda-aec3-cb9272f09590
 
+```output
 Name              : test
 ResourceGroupName : testrg
 WorkspaceName     : LogAnalyticsworkspace

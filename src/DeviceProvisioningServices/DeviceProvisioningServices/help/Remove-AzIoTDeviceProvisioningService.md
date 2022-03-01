@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices.dll-Help.xml
 Module Name: Az.DeviceProvisioningServices
 online version: https://docs.microsoft.com/powershell/module/az.deviceprovisioningservices/remove-aziotdeviceprovisioningservice
@@ -36,17 +36,19 @@ For an introduction to Azure IoT Hub Device Provisioning Service, see https://do
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Remove-AzIoTDeviceProvisioningService -ResourceGroupName "myresourcegroup" -Name "myiotdps" -PassThru
 ```
-PS C:\> Remove-AzIoTDeviceProvisioningService -ResourceGroupName "myresourcegroup" -Name "myiotdps" -PassThru
 
+```output
 True
 ```
 
 Delete an Azure IoT Hub device provisioning service 'myiotdps'.
 
 ### Example 2
-```
-PS C:\> Get-AzIotDps -ResourceGroupName "myresourcegroup" -Name "myiotdps" | Remove-AzIotDps
+```powershell
+Get-AzIotDps -ResourceGroupName "myresourcegroup" -Name "myiotdps" | Remove-AzIotDps
 ```
 
 Delete an Azure IoT Hub device provisioning service 'myiotdps' using pipeline.

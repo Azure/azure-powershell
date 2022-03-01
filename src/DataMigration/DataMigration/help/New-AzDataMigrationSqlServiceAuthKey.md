@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataMigration-help.xml
 Module Name: Az.DataMigration
 online version: https://docs.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationsqlserviceauthkey
 schema: 2.0.0
@@ -15,7 +15,7 @@ Regenerate a new set of Authentication Keys for Self Hosted Integration Runtime.
 ```
 New-AzDataMigrationSqlServiceAuthKey -ResourceGroupName <String> -SqlMigrationServiceName <String>
  [-SubscriptionId <String>] [-AuthKey1 <String>] [-AuthKey2 <String>] [-KeyName <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -205,4 +205,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-

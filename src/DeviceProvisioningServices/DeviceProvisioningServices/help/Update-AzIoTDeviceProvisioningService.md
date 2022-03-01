@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices.dll-Help.xml
 Module Name: Az.DeviceProvisioningServices
 online version: https://docs.microsoft.com/powershell/module/az.deviceprovisioningservices/update-aziotdeviceprovisioningservice
@@ -56,9 +56,11 @@ For an introduction to Azure IoT Hub Device Provisioning Service, see https://do
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Update-AzIoTDeviceProvisioningService -ResourceGroupName "myresourcegroup" -Name "myiotdps" -AllocationPolicy "GeoLatency"
 ```
-PS C:\> Update-AzIoTDeviceProvisioningService -ResourceGroupName "myresourcegroup" -Name "myiotdps" -AllocationPolicy "GeoLatency"
 
+```output
 ResourceGroupName			: myresourcegroup
 Name						: myiotdps
 Type						: Microsoft.Devices/provisioningServices
@@ -75,11 +77,13 @@ Etag						: AAAAAAAT52k=
 Update Allocation Policy to "GeoLatency" of an Azure IoT Hub device provisioning service "myiotdps".
 
 ### Example 2
+```powershell
+$tag = @{}
+$tag.Add("key1","Value1")
+Update-AzIoTDeviceProvisioningService -ResourceGroupName "myresourcegroup" -Name "myiotdps" -Tag $tag
 ```
-PS C:\> $tag = @{}
-PS C:\> $tag.Add("key1","Value1")
-PS C:\> Update-AzIoTDeviceProvisioningService -ResourceGroupName "myresourcegroup" -Name "myiotdps" -Tag $tag
 
+```output
 ResourceGroupName			: myresourcegroup
 Name						: myiotdps
 Type						: Microsoft.Devices/provisioningServices
@@ -96,11 +100,13 @@ Etag						: AAAAAAAPoOk=
 Add tags to an Azure IoT Hub device provisioning service "myiotdps".
 
 ### Example 3
+```powershell
+$tag = @{}
+$tag.Add("key1","Value1")
+Get-AzIoTDps -ResourceGroupName "myresourcegroup" -Name "myiotdps" | Update-AzIoTDps -Tag $tag -Reset
 ```
-PS C:\> $tag = @{}
-PS C:\> $tag.Add("key1","Value1")
-PS C:\> Get-AzIoTDps -ResourceGroupName "myresourcegroup" -Name "myiotdps" | Update-AzIoTDps -Tag $tag -Reset
 
+```output
 ResourceGroupName			: myresourcegroup
 Name						: myiotdps
 Type						: Microsoft.Devices/provisioningServices

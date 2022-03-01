@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataMigration-help.xml
 Module Name: Az.DataMigration
 online version: https://docs.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationtosqlvm
 schema: 2.0.0
@@ -23,7 +23,7 @@ New-AzDataMigrationToSqlVM -ResourceGroupName <String> -SqlVirtualMachineName <S
  [-SourceSqlConnectionEncryptConnection] [-SourceSqlConnectionPassword <String>]
  [-SourceSqlConnectionTrustServerCertificate] [-SourceSqlConnectionUserName <String>]
  [-StorageAccountKey <String>] [-StorageAccountResourceId <String>] [-TargetDatabaseCollation <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -561,4 +561,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-

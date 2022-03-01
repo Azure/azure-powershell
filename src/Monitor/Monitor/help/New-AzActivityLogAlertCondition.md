@@ -24,11 +24,13 @@ The **New-AzActivityLogAlertCondition** cmdlet creates new activity log alert co
 ## EXAMPLES
 
 ### Example 1: Create a new activity log alert condition object in memory.
+```powershell
+$Condition = New-AzActivityLogAlertCondition -Field "Requests" -Equal "OtherField"
+Write-Host "Field property value: $($Condition.Field)"
+Write-Host "Equals property value: $($Condition.Equals)"
 ```
-PS C:\>$Condition = New-AzActivityLogAlertCondition -Field "Requests" -Equal "OtherField"
-PS C:\>Write-Host "Field property value: $($Condition.Field)"
-PS C:\>Write-Host "Equals property value: $($Condition.Equals)"
 
+```output
 Field property value: Requests
 Equals property value: OtherField
 ```

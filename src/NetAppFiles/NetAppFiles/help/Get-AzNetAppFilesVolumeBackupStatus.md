@@ -43,7 +43,7 @@ The **Get-AzNetAppFilesVolumeBackupStatus** cmdLet gets the status of the backup
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzNetAppFilesVolumeBackupStatus -ResourceGroupName MyGroup -AccountName MyAccount -PoolName MyPool -Name MyVolume
+Get-AzNetAppFilesVolumeBackupStatus -ResourceGroupName MyGroup -AccountName MyAccount -PoolName MyPool -Name MyVolume
 ```
 
 This command gets the status of a backup of volume named "MyVolume".

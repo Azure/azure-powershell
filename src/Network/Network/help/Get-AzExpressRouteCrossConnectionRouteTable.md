@@ -36,7 +36,7 @@ connectivity.
 ## EXAMPLES
 
 ### Example 1: Display the route table for the primary path
-```
+```powershell
 Get-AzExpressRouteCrossConnectionRouteTable -ResourceGroupName $RG -ExpressRouteCrossConnectionName $CircuitName -DevicePath 'Primary'
 ```
 
