@@ -24,7 +24,7 @@ The **Set-AzExpressRouteCircuit** cmdlet saves the modified ExpressRoute circuit
 ## EXAMPLES
 
 ### Example 1: Change the ServiceKey of an ExpressRoute circuit
-```
+```powershell
 $ckt = Get-AzExpressRouteCircuit -Name $CircuitName -ResourceGroupName $rg
 $ckt.ServiceKey = '64ce99dd-ee70-4e74-b6b8-91c6307433a0'
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt

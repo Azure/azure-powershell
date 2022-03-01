@@ -31,10 +31,12 @@ Gets a Virtual WAN or all Virtual WANs in a resource group or subscription.
 ### Example 1
 
 ```powershell
-PS C:\> New-AzResourceGroup -Location "West US" -Name "testRG" 
-PS C:\> New-AzVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US" -AllowBranchToBranchTraffic $true
-PS C:\> Get-AzVirtualWan -Name "myVirtualWAN" -ResourceGroupName "testRG"
+New-AzResourceGroup -Location "West US" -Name "testRG" 
+New-AzVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US" -AllowBranchToBranchTraffic $true
+Get-AzVirtualWan -Name "myVirtualWAN" -ResourceGroupName "testRG"
+```
 
+```output
 Name                       : myVirtualWAN
 Id                         : /subscriptions/{SubscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
 AllowVnetToVnetTraffic     : False
@@ -49,8 +51,10 @@ This command gets the Virtual WAN named myVirtualWAN in the resource group testR
 ### Example 2
 
 ```powershell
-PS C:\> Get-AzVirtualWan -Name test*
+Get-AzVirtualWan -Name test*
+```
 
+```output
 Name                       : test1
 Id                         : /subscriptions/{SubscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualWans/test1
 AllowVnetToVnetTraffic     : False
