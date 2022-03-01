@@ -169,7 +169,6 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                     {
                         foreach(var item in result)
                         {
-                            WebsitesClient.GetWebAppConfiguration(rg, item.Name, null, item);
                             list.Add(new PSSite(item));
                         }
                     }
