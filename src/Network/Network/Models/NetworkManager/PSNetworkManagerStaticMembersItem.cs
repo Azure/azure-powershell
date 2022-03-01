@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.Network.Models.NetworkManager
 {
-    public class PSNetworkManagerGroupMembersItem
+    public class PSNetworkManagerStaticMembersItem
     {
         public string ResourceId { get; set; }
     }

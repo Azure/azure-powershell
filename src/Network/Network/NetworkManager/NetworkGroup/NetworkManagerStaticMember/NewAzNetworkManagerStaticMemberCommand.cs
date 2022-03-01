@@ -27,8 +27,8 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerGroup", SupportsShouldProcess = true), OutputType(typeof(PSNetworkManagerGroup))]
-    public class NewAzNetworkGroupCommand : NetworkGroupBaseCmdlet
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerStaticMember", SupportsShouldProcess = true), OutputType(typeof(PSNetworkManagerStaticMember))]
+    public class NewAzNetworkManagerStaticMemberCommand : NetworkManagerStaticMemberBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -45,6 +45,14 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string NetworkManagerName { get; set; }
+
+        [Parameter(
+           Mandatory = true,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The network manager group name.")]
+        [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
+        public virtual string NetworkGroupName { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -67,10 +75,10 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string Description { get; set; }
 
         [Parameter(
-           Mandatory = true,
+           Mandatory = false,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "Member type.")]
-        public string MemberType { get; set; }
+           HelpMessage = "Static members.")]
+        public List<PSNetworkManagerStaticMembersItem> StaticMembers { get; set; }
 
         [Parameter(
            Mandatory = false,
@@ -89,7 +97,7 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            var present = this.IsNetworkGroupsPresent(this.ResourceGroupName, this.NetworkManagerName, this.Name);
+            var present = this.IsNetworkManagerStaticMemberPresent(this.ResourceGroupName, this.NetworkManagerName, this.NetworkGroupName, this.Name);
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(Properties.Resources.OverwritingResource, Name),
@@ -97,38 +105,38 @@ namespace Microsoft.Azure.Commands.Network
                 Name,
                 () =>
                 {
-                    var networkGroup = this.CreateNetworkGroup();
-                    WriteObject(networkGroup);
+                    var networkManagerStaticMember = this.CreateNetworkManagerStaticMember();
+                    WriteObject(networkManagerStaticMember);
                 },
                 () => present);
         }
 
-        private PSNetworkManagerGroup CreateNetworkGroup()
+        private PSNetworkManagerStaticMember CreateNetworkManagerStaticMember()
         {
-            var psNetworkGroup = new PSNetworkManagerGroup();
-            psNetworkGroup.Name = this.Name;
-            psNetworkGroup.MemberType = this.MemberType;
+            var psNetworkStaticMember = new PSNetworkManagerStaticMember();
+            psNetworkStaticMember.Name = this.Name;
+            psNetworkStaticMember.StaticMembers = this.StaticMembers;
 
             if (!string.IsNullOrEmpty(this.Description))
             {
-                psNetworkGroup.Description = this.Description;
+                psNetworkStaticMember.Description = this.Description;
             }
             if (!string.IsNullOrEmpty(this.DisplayName))
             {
-                psNetworkGroup.DisplayName = this.DisplayName;
+                psNetworkStaticMember.DisplayName = this.DisplayName;
             }
 
             // Map to the sdk object
-            var networkGroupModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkGroup>(psNetworkGroup);
+            var networkManagerStaticMemberModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkManagerStaticMember>(psNetworkStaticMember);
 
-            // Execute the Create NetworkGroup call
+            // Execute the Create NetworkManagerStaticMember call
             if(string.IsNullOrEmpty(this.IfMatch))
             {
                 this.IfMatch = null;
             }
 
-            var networkGroupResponse = this.NetworkGroupClient.CreateOrUpdate(networkGroupModel, this.ResourceGroupName, this.NetworkManagerName, this.Name, this.IfMatch);
-            var psNetworkManager = this.ToPsNetworkGroup(networkGroupResponse);
+            var networkManagerStaticMemberResponse = this.NetworkManagerStaticMemberClient.CreateOrUpdate(networkManagerStaticMemberModel, this.ResourceGroupName, this.NetworkManagerName, this.NetworkGroupName, this.Name, this.IfMatch);
+            var psNetworkManager = this.ToPsNetworkManagerStaticMember(networkManagerStaticMemberResponse);
 
             return psNetworkManager;
         }

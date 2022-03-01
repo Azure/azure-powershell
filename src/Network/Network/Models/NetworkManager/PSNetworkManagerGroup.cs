@@ -22,16 +22,6 @@ namespace Microsoft.Azure.Commands.Network.Models.NetworkManager
 
     public class PSNetworkManagerGroup : PSNetworkManagerBaseResource
     {
-        public List<PSNetworkManagerGroupMembersItem> GroupMembers { get; set; }
-
-        public string ConditionalMembership { get; set; }
-
         public string MemberType { get; set; }
-
-        [JsonIgnore]
-        public string GroupMembersText
-        {
-            get { return JsonConvert.SerializeObject(GroupMembers, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-        }
     }
 }

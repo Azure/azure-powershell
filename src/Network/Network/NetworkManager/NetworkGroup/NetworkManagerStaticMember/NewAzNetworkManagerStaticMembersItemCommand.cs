@@ -18,8 +18,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerGroupMembersItem"), OutputType(typeof(PSNetworkManagerGroupMembersItem))]
-    public class NewAzNetworkManagerGroupMembersItemCommand : NetworkGroupBaseCmdlet
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerStaticMembersItem"), OutputType(typeof(PSNetworkManagerStaticMembersItem))]
+    public class NewAzNetworkManagerStaticMembersItemCommand : NetworkManagerStaticMemberBaseCmdlet
     {
 
         [Parameter(
@@ -31,9 +31,9 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            var psNetworkManagerGroupMembersItem = new PSNetworkManagerGroupMembersItem();
-            psNetworkManagerGroupMembersItem.ResourceId = this.ResourceId;
-            WriteObject(psNetworkManagerGroupMembersItem);
+            var psNetworkManagerStaticMembersItem = new PSNetworkManagerStaticMembersItem();
+            psNetworkManagerStaticMembersItem.ResourceId = this.ResourceId;
+            WriteObject(psNetworkManagerStaticMembersItem);
         }
     }
 }

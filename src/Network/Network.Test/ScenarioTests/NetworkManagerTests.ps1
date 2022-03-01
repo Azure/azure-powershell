@@ -68,10 +68,13 @@ function Test-NetworkManagerGroupCRUD
     $rglocation = "centraluseuap"
     $subscriptionId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52"
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     $vnetId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ANMRG3495/providers/Microsoft.Network/virtualNetworks/testvnet"
     
 >>>>>>> 99a1f40ea5 (Add NetworkManager Service (#16085))
+=======
+>>>>>>> f45bac96bb (update network manager, network group, connectivity, and add static member)
 
     try{
         #Create the resource group
@@ -91,6 +94,7 @@ function Test-NetworkManagerGroupCRUD
         Assert-AreEqual $rglocation $networkManager.Location;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         New-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $networkGroupName -MemberType "Microsoft.Network/VirtualNetwork" -DisplayName "DISplayName" -Description "SampleDESCRIption" 
 =======
         $groupmem = New-AzNetworkManagerGroupMembersItem -ResourceId $vnetId
@@ -98,16 +102,22 @@ function Test-NetworkManagerGroupCRUD
         $groupMembers.Add($groupmem)
         New-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $networkGroupName -GroupMember $groupMembers -MemberType "Microsoft.Network/VirtualNetwork" -DisplayName "DISplayName" -Description "SampleDESCRIption" -ConditionalMembership "fakeconditionalmembership" 
 >>>>>>> 99a1f40ea5 (Add NetworkManager Service (#16085))
+=======
+        New-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $networkGroupName -MemberType "Microsoft.Network/VirtualNetwork" -DisplayName "DISplayName" -Description "SampleDESCRIption" 
+>>>>>>> f45bac96bb (update network manager, network group, connectivity, and add static member)
 
         $networkGroup = Get-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $networkGroupName 
         Assert-NotNull $networkGroup;
         Assert-AreEqual $networkGroupName $networkGroup.Name;
         Assert-AreEqual "DISplayName" $networkGroup.DisplayName;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         Assert-AreEqual "fakeconditionalmembership" $networkGroup.ConditionalMembership;
         Assert-AreEqual $vnetId $networkGroup.GroupMembers[0].ResourceId;
 >>>>>>> 99a1f40ea5 (Add NetworkManager Service (#16085))
+=======
+>>>>>>> f45bac96bb (update network manager, network group, connectivity, and add static member)
 
         $networkGroup.DisplayName = "Sample Group Name"
         $newNetworkGroup = Set-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -NetworkGroup $networkGroup
@@ -130,6 +140,9 @@ function Test-NetworkManagerGroupCRUD
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f45bac96bb (update network manager, network group, connectivity, and add static member)
 <#
 .SYNOPSIS
 Tests creating new simple public networkmanager staticmember
@@ -208,8 +221,11 @@ function Test-NetworkManagerStaticMemberCRUD
         Clean-ResourceGroup $rgname
 	}
 }
+<<<<<<< HEAD
 =======
 >>>>>>> 99a1f40ea5 (Add NetworkManager Service (#16085))
+=======
+>>>>>>> f45bac96bb (update network manager, network group, connectivity, and add static member)
 
 <#
 .SYNOPSIS
@@ -223,9 +239,13 @@ function Test-NetworkManagerConnectivityConfigurationCRUD
     $networkManagerName = Get-ResourceName
     $networkGroupName = Get-ResourceName
 <<<<<<< HEAD
+<<<<<<< HEAD
     $staticMemberName = Get-ResourceName
 =======
 >>>>>>> 99a1f40ea5 (Add NetworkManager Service (#16085))
+=======
+    $staticMemberName = Get-ResourceName
+>>>>>>> f45bac96bb (update network manager, network group, connectivity, and add static member)
     $connectivityConfigurationName = Get-ResourceName
     $rglocation = "eastus2euap"
     $subscriptionId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52"
@@ -252,11 +272,15 @@ function Test-NetworkManagerConnectivityConfigurationCRUD
         Assert-AreEqual $rglocation $networkManager.Location;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f45bac96bb (update network manager, network group, connectivity, and add static member)
         New-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $networkGroupName -MemberType "Microsoft.Network/VirtualNetwork" -DisplayName "DISplayName" -Description "SampleDESCRIption"
         $networkGroup = Get-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $networkGroupName 
         Assert-NotNull $networkGroup;
         Assert-AreEqual $networkGroupName $networkGroup.Name;
         Assert-AreEqual "DISplayName" $networkGroup.DisplayName;
+<<<<<<< HEAD
 
         $staticmembers = New-AzNetworkManagerStaticMembersItem -ResourceId $vnetId
         [System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerGroupMembersItem]]$staticmembers  = @()
@@ -270,6 +294,13 @@ function Test-NetworkManagerConnectivityConfigurationCRUD
 
         $networkGroup = Get-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $networkGroupName
 >>>>>>> 99a1f40ea5 (Add NetworkManager Service (#16085))
+=======
+
+        $staticmembers = New-AzNetworkManagerStaticMembersItem -ResourceId $vnetId
+        [System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerGroupMembersItem]]$staticmembers  = @()
+        $staticMembers.Add($staticmembers)
+        New-AzNetworkManagerStaticMember -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -NetworkGroupName $networkGroupName -Name $staticMemberName -StaticMembers $staticMembers -DisplayName "DISplayName" -Description "SampleDESCRIption"
+>>>>>>> f45bac96bb (update network manager, network group, connectivity, and add static member)
 
         $connectivityGroupItem = New-AzNetworkManagerConnectivityGroupItem -NetworkGroupId $networkGroup.Id -IsGlobal
         [System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerConnectivityGroupItem]]$connectivityGroup  = @()  
@@ -349,12 +380,18 @@ function Test-NetworkManagerConnectivityConfigurationCRUD
         $removeResult = $job | Receive-Job;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f45bac96bb (update network manager, network group, connectivity, and add static member)
         $job = Remove-AzNetworkManagerStaticMember -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -NetworkGroupName $networkGroupName -Name $staticMemberName -PassThru -Force -AsJob;
         $job | Wait-Job;
         $removeResult = $job | Receive-Job;
 
+<<<<<<< HEAD
 =======
 >>>>>>> 99a1f40ea5 (Add NetworkManager Service (#16085))
+=======
+>>>>>>> f45bac96bb (update network manager, network group, connectivity, and add static member)
         $job = Remove-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $networkGroupName -PassThru -Force -AsJob;
         $job | Wait-Job;
         $removeResult = $job | Receive-Job;
