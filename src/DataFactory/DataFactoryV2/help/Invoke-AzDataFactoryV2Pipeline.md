@@ -274,7 +274,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.DataFactoryV2.Models.PSPipeline
+### System.String
 
 ## NOTES
 
