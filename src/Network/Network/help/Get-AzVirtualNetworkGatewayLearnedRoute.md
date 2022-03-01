@@ -23,9 +23,11 @@ Enumerates routes learned by an Azure virtual network gateway from various sourc
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Get-AzVirtualNetworkGatewayLearnedRoute -ResourceGroupName resourceGroup -VirtualNetworkGatewayname gatewayName
 ```
-PS C:\> Get-AzVirtualNetworkGatewayLearnedRoute -ResourceGroupName resourceGroup -VirtualNetworkGatewayname gatewayName
 
+```output
 AsPath       :
 LocalAddress : 10.1.0.254
 Network      : 10.1.0.0/16

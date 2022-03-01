@@ -36,40 +36,37 @@ https://docs.microsoft.com/azure/azure-monitor/service-limits#log-queries-and-la
 ## EXAMPLES
 
 ### Example 1: Get search results using a query
-```
-PS C:\> $queryResults = Invoke-AzOperationalInsightsQuery -WorkspaceId "63613592-b6f7-4c3d-a390-22ba13102111" -Query "union * | take 10"
-PS C:\> $queryResults.Results
-...
+```powershell
+$queryResults = Invoke-AzOperationalInsightsQuery -WorkspaceId "63613592-b6f7-4c3d-a390-22ba13102111" -Query "union * | take 10"
+$queryResults.Results
 ```
 
 Once invoked, $queryResults.Results will contain all of the resulting rows from your query.
 
 ### Example 2: Convert $results.Result IEnumerable to an array
-```
-PS C:\> $queryResults = Invoke-AzOperationalInsightsQuery -WorkspaceId "63613592-b6f7-4c3d-a390-22ba13102111" -Query "union * | take 10"
-PS C:\> $resultsArray = [System.Linq.Enumerable]::ToArray($queryResults.Results)
-...
+```powershell
+$queryResults = Invoke-AzOperationalInsightsQuery -WorkspaceId "63613592-b6f7-4c3d-a390-22ba13102111" -Query "union * | take 10"
+$resultsArray = [System.Linq.Enumerable]::ToArray($queryResults.Results)
 ```
 
 Some queries can result in very large data sets being returned. Because of this, the default behavior of the cmdlet is to return an IEnumerable to reduce memory costs. If you'd prefer to have an array of results, you can use the LINQ Enumerable.ToArray() extension method to convert the IEnumerable to an array.
 
 ### Example 3: Get search results using a query over a specific timeframe
-```
-PS C:\> $queryResults = Invoke-AzOperationalInsightsQuery -WorkspaceId "63613592-b6f7-4c3d-a390-22ba13102111" -Query "union * | take 10" -Timespan (New-TimeSpan -Hours 24)
-PS C:\> $queryResults.Results
-...
+```powershell
+$queryResults = Invoke-AzOperationalInsightsQuery -WorkspaceId "63613592-b6f7-4c3d-a390-22ba13102111" -Query "union * | take 10" -Timespan (New-TimeSpan -Hours 24)
+$queryResults.Results
 ```
 
 The results from this query will be limited to the past 24 hours.
 
 ### Example 4: Include render & statistics in query result
-```
-PS C:\> $queryResults = Invoke-AzOperationalInsightsQuery -WorkspaceId "63613592-b6f7-4c3d-a390-22ba13102111" -Query "union * | take 10" -IncludeRender -IncludeStatistics
-PS C:\> $queryResults.Results
+```powershell
+$queryResults = Invoke-AzOperationalInsightsQuery -WorkspaceId "63613592-b6f7-4c3d-a390-22ba13102111" -Query "union * | take 10" -IncludeRender -IncludeStatistics
+$queryResults.Results
 ...
-PS C:\> $queryResults.Render
+$queryResults.Render
 ...
-PS C:\> $queryResults.Statistics
+$queryResults.Statistics
 ...
 ```
 

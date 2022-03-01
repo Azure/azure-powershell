@@ -24,8 +24,8 @@ The **New-AzApplicationGatewayTrustedRootCertificate** cmdlet creates a Trusted 
 
 ### Example 1
 ```powershell
-PS C:\> $certFilePath = ".\rootCA.cer"
-PS C:\> $trc = New-AzApplicationGatewayTrustedRootCertificate -Name "trc1" -CertificateFile $certFilePath
+$certFilePath = ".\rootCA.cer"
+$trc = New-AzApplicationGatewayTrustedRootCertificate -Name "trc1" -CertificateFile $certFilePath
 ```
 
 This command creates a Trusted Root Certificate named List "trc1" and stores the result in the variable named $trc.

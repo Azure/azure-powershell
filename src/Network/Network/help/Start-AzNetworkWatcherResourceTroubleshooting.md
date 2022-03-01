@@ -37,7 +37,7 @@ The Start-AzNetworkWatcherResourceTroubleshooting cmdlet starts troubleshooting 
 ## EXAMPLES
 
 ### Example 1: Start Troubleshooting on a Virtual Network Gateway
-```
+```powershell
 $nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
 $networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName 
 

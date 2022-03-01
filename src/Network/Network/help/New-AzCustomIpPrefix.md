@@ -26,7 +26,7 @@ The **New-AzCustomIpPrefix** cmdlet creates a CustomIpPrefix resource.
 
 ### Example 1
 ```powershell
-PS C:\> $myCustomIpPrefix = New-AzCustomIpPrefix -Name $prefixName -ResourceGroupName $rgName -Cidr 40.40.40.0/24 -Location westus -SignedMessage signedMessage -AuthorizationMessage authorizationMessage
+$myCustomIpPrefix = New-AzCustomIpPrefix -Name $prefixName -ResourceGroupName $rgName -Cidr 40.40.40.0/24 -Location westus -SignedMessage signedMessage -AuthorizationMessage authorizationMessage
 ```
 
 This command creates a new CustomIpPrefix resource with name $prefixName in resource group $rgName with a cidr of 40.40.40.0/24 in westus

@@ -24,8 +24,10 @@ Get Backup Vault storage setting object
 
 ### Example 1: Create a new vault storage setting object
 ```powershell
-PS C:\> New-AzDataProtectionBackupVaultStorageSettingObject -Type GeoRedundant -DataStoreType VaultStore
+New-AzDataProtectionBackupVaultStorageSettingObject -Type GeoRedundant -DataStoreType VaultStore
+```
 
+```output
 DatastoreType Type
 ------------- ----
 VaultStore    GeoRedundant

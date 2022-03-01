@@ -27,7 +27,9 @@ link service for workspace
 ### Example 1
 ```powershell
 Set-AzOperationalInsightsLinkedService -ResourceGroupName {rg-name} -WorkspaceName {workspace-name} -LinkedServiceName cluster -WriteAccessResourceId /subscriptions/{subscription}/resourceGroups/{rg-name}/providers/Microsoft.OperationalInsights/clusters/{cluster-name}
+```
 
+```output
 Id                    : /subscriptions/{subscription}/resourcegroups/{rg-name}/providers/microsoft.operationalinsights/workspaces/{workspace-name}/linkedservices/cluster
 Name                  : {cluster-name}/Cluster
 Type                  : Microsoft.OperationalInsights/workspaces/linkedServices

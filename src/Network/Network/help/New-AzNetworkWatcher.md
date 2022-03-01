@@ -23,10 +23,12 @@ The New-AzNetworkWatcher cmdlet creates a new Network Watcher resource.
 ## EXAMPLES
 
 ### Example 1: Create a Network Watcher
-```
+```powershell
 New-AzResourceGroup -Name NetworkWatcherRG -Location westcentralus
 New-AzNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup NetworkWatcherRG
+```
 
+```output
 Name              : NetworkWatcher_westcentralus
 Id                : /subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatchers/NetworkWatcher_westcentralus
 Etag              : W/"7cf1f2fe-8445-4aa7-9bf5-c15347282c39"

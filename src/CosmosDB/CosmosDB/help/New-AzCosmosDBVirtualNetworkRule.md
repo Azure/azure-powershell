@@ -24,7 +24,10 @@ Create a new CosmosDB VirtualNetworkRule Object(PSVirtualNetworkRule).
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCosmosDBVirtualNetworkRule -Id {id} -IgnoreMissingVNetServiceEndpoint 0
+New-AzCosmosDBVirtualNetworkRule -Id {id} -IgnoreMissingVNetServiceEndpoint 0
+```
+
+```output
 Id  IgnoreMissingVNetServiceEndpoint
 --   --------------------------------
 {id}                            False

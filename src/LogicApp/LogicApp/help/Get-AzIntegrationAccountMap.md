@@ -29,8 +29,11 @@ If you omit a required template parameter, the cmdlet prompts you for the value.
 ## EXAMPLES
 
 ### Example 1: Get an integration account map
+```powershell
+Get-AzIntegrationAccountMap -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -MapName "IntegrationAccountMap47"
 ```
-PS C:\>Get-AzIntegrationAccountMap -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -MapName "IntegrationAccountMap47"
+
+```output
 Id                   : /subscriptions/<SubscriptionId>/resourceGroups/ResourceGroup11/providers/Microsoft.Logic/integrationAccounts/IntegrationAccount31/maps/IntegrationAccountMap47
 Name                 : IntegrationAccountMap47
 Type                 : Microsoft.Logic/integrationAccounts/maps
@@ -47,8 +50,11 @@ Metadata             :
 This command gets an integration account map named IntegrationAccountMap47 in the specified resource group.
 
 ### Example 2: Get integration account maps by integration account name
+```powershell
+Get-AzIntegrationAccountMap -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31"
 ```
-PS C:\>Get-AzIntegrationAccountMap -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31"
+
+```output
 Id                   : /subscriptions/<SubscriptionId>/resourceGroups/ResourceGroup11/providers/Microsoft.Logic/integrationAccounts/IntegrationAccount31/maps/IntegrationAccountMap47
 Name                 : IntegrationAccountMap47
 Type                 : Microsoft.Logic/integrationAccounts/maps

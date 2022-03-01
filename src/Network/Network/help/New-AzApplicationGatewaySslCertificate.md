@@ -24,28 +24,28 @@ The **New-AzApplicationGatewaySslCertificate** cmdlet creates an SSL certificate
 ## EXAMPLES
 
 ### Example 1: Create an SSL certificate for an Azure application gateway.
-```
-PS C:\> $password = ConvertTo-SecureString $passwordPlainString -AsPlainText -Force
-PS C:\> $cert = New-AzApplicationGatewaySslCertificate -Name "Cert01" -CertificateFile "D:\cert01.pfx" -Password $password
+```powershell
+$password = ConvertTo-SecureString $passwordPlainString -AsPlainText -Force
+$cert = New-AzApplicationGatewaySslCertificate -Name "Cert01" -CertificateFile "D:\cert01.pfx" -Password $password
 ```
 
 This command creates a SSL certificate named Cert01 for the default application gateway and stores the result in the variable named $Cert.
 
 ### Example 2: Create an SSL certificate using KeyVault Secret (version-less secretId) and add to an application gateway.
-```
-PS C:\> $secret = Get-AzKeyVaultSecret -VaultName "keyvault01" -Name "sslCert01"
-PS C:\> $secretId = $secret.Id.Replace($secret.Version, "") # https://<keyvaultname>.vault.azure.net/secrets/
-PS C:\> $cert = New-AzApplicationGatewaySslCertificate -Name "Cert01" -KeyVaultSecretId $secretId
+```powershell
+$secret = Get-AzKeyVaultSecret -VaultName "keyvault01" -Name "sslCert01"
+$secretId = $secret.Id.Replace($secret.Version, "") # https://<keyvaultname>.vault.azure.net/secrets/
+$cert = New-AzApplicationGatewaySslCertificate -Name "Cert01" -KeyVaultSecretId $secretId
 ```
 
 Get the secret and create an SSL Certificate using `New-AzApplicationGatewaySslCertificate`.
 Note: As version-less secretId is provided here, Application Gateway will sync the certificate in regular intervals with the KeyVault.
 
 ### Example 3: Create an SSL certificate using KeyVault Secret and add to an Application Gateway.
-```
-PS C:\> $secret = Get-AzKeyVaultSecret -VaultName "keyvault01" -Name "sslCert01"
-PS C:\> $secretId = $secret.Id # https://<keyvaultname>.vault.azure.net/secrets/<hash>
-PS C:\> $cert = New-AzApplicationGatewaySslCertificate -Name "Cert01" -KeyVaultSecretId $secretId
+```powershell
+$secret = Get-AzKeyVaultSecret -VaultName "keyvault01" -Name "sslCert01"
+$secretId = $secret.Id # https://<keyvaultname>.vault.azure.net/secrets/<hash>
+$cert = New-AzApplicationGatewaySslCertificate -Name "Cert01" -KeyVaultSecretId $secretId
 ```
 
 Get the secret and create an SSL Certificate using `New-AzApplicationGatewaySslCertificate`.
