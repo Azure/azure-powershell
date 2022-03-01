@@ -24,8 +24,11 @@ The **New-AzDataShareTrigger** cmdlet creates a trigger for share subscription f
 ## EXAMPLES
 
 ### Example 1
+```powershell
+New-AzDataShareTrigger -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareSubscriptionName "AdsShareSubscription" -Name "AdsTrigger" -RecurrenceInterval "Day" -SynchronizationTime "9:00"
 ```
-PS C:\> New-AzDataShareTrigger -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareSubscriptionName "AdsShareSubscription" -Name "AdsTrigger" -RecurrenceInterval "Day" -SynchronizationTime "9:00"
+
+```output
 CreatedAt           : 7/10/2019 12:16:34 AM
 CreatedBy           : Ads test
 ProvisioningState   : Succeeded
