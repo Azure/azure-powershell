@@ -32,8 +32,10 @@ Checks that the database principal assignment is valid and is not already in use
 
 ### Example 1: Check the availability of a database principalassignment name which is in use
 ```powershell
-PS C:\> Test-AzKustoClusterPrincipalAssignmentNameAvailability -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -Name "myprincipal" -Type "Microsoft.Kusto/Clusters/Database/principalAssignments" 
+Test-AzKustoClusterPrincipalAssignmentNameAvailability -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -Name "myprincipal" -Type "Microsoft.Kusto/Clusters/Database/principalAssignments" 
+```
 
+```output
 Message                                                                                                                                   Name            NameAvailable Reason
 -------                                                                                                                                    ----            ------------- ------
 Database principal assignment myprincipal already exists in database mykustodatabase. Please select a different principal assignment name. myprincipal   False
@@ -43,8 +45,10 @@ The above command returns whether or not a PrincipalAssignment named "myprincipa
 
 ### Example 2: Check the availability of a database principalassignment name which is not in use
 ```powershell
-PS C:\> Test-AzKustoClusterPrincipalAssignmentNameAvailability -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -Name "newprincipal" -Type "Microsoft.Kusto/Clusters/Database/principalAssignments"
+Test-AzKustoClusterPrincipalAssignmentNameAvailability -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -Name "newprincipal" -Type "Microsoft.Kusto/Clusters/Database/principalAssignments"
+```
 
+```output
 Message Name                  NameAvailable Reason
 ------- ----                  ------------- ------
         availablekustocluster True

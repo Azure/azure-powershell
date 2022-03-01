@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
 online version: https://docs.microsoft.com/powershell/module/az.iothub/get-aziothubjob
@@ -25,15 +25,15 @@ You can either list all the jobs or filter the jobs by the Job Identifier.
 ## EXAMPLES
 
 ### Example 1 List all Jobs
-```
-PS C:\> Get-AzIotHubJob -ResourceGroupName "myresourcegroup" -Name "myiothub"
+```powershell
+Get-AzIotHubJob -ResourceGroupName "myresourcegroup" -Name "myiothub"
 ```
 
 Gets all the jobs for the IotHub named "myiothub"
 
 ### Example 2 Get a specific Job
-```
-PS C:\> Get-AzIotHubJob -ResourceGroupName "myresourcegroup" -Name "myiothub" -JobId 3630fc31-4caa-43e8-a232-ea0577221cb2
+```powershell
+Get-AzIotHubJob -ResourceGroupName "myresourcegroup" -Name "myiothub" -JobId 3630fc31-4caa-43e8-a232-ea0577221cb2
 ```
 
 Gets information about the job with the identifier "3630fc31-4caa-43e8-a232-ea0577221cb2" for the IotHub named "myiothub"

@@ -398,6 +398,68 @@ function Test-AzureFirewallPolicyWithDNSSettings {
 
 <#
 .SYNOPSIS
+Tests AzureFirewallPolicyWithSQLSettings
+#>
+function Test-AzureFirewallPolicyWithSQLSetting {
+    $rgname = Get-ResourceGroupName
+    $azureFirewallPolicyName = Get-ResourceName
+    $azureFirewallPolicyName2 = Get-ResourceName
+    $location = "eastus2euap"
+
+    try {
+
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
+
+        # test new AzureFirewallPolicy with sql redirect
+        $allowSql = New-AzFirewallPolicySqlSetting -AllowSqlRedirect
+        $azureFirewallPolicy = New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location -SqlSetting $allowSql
+        $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
+
+        # verification
+        Assert-AreEqual $rgName $getAzureFirewallPolicy.ResourceGroupName
+        Assert-AreEqual $azureFirewallPolicyName $getAzureFirewallPolicy.Name
+        Assert-NotNull $getAzureFirewallPolicy.Location
+        Assert-AreEqual (Normalize-Location $location) $getAzureFirewallPolicy.Location
+
+        # check sql setting
+        Assert-NotNull $getAzureFirewallPolicy.SqlSetting
+        Assert-AreEqual true $getAzureFirewallPolicy.SqlSetting.AllowSqlRedirect
+
+        # test set AzureFirewallPolicy without sql redirect
+        $disallowSql = New-AzFirewallPolicySqlSetting
+        $azureFirewallPolicy = Set-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location -SqlSetting $disallowSql
+        $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
+        Assert-Null $getAzureFirewallPolicy.SqlSetting.AllowSqlRedirect
+
+        # test set AzureFirewallPolicy with sql redirect
+        $azureFirewallPolicy = Set-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location -SqlSetting $allowSql
+        $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
+        Assert-NotNull $getAzureFirewallPolicy.SqlSetting
+        Assert-AreEqual true $getAzureFirewallPolicy.SqlSetting.AllowSqlRedirect
+
+        # test new AzureFirewallPolicy without sql redirect
+        $azureFirewallPolicy2 = New-AzFirewallPolicy -Name $azureFirewallPolicyName2 -ResourceGroupName $rgname -Location $location
+        $getAzureFirewallPolicy2 = Get-AzFirewallPolicy -Name $azureFirewallPolicyName2 -ResourceGroupName $rgname
+
+        # verification
+        Assert-AreEqual $rgName $getAzureFirewallPolicy2.ResourceGroupName
+        Assert-AreEqual $azureFirewallPolicyName2 $getAzureFirewallPolicy2.Name
+        Assert-NotNull $getAzureFirewallPolicy2.Location
+        Assert-AreEqual (Normalize-Location $location) $getAzureFirewallPolicy2.Location
+
+        # check sql setting
+        Assert-Null $getAzureFirewallPolicy2.SqlSetting
+        
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Tests function Test-AzureFirewallPolicyCRUDWithNetworkRuleDestinationFQDNs.
 #>
 function Test-AzureFirewallPolicyCRUDWithNetworkRuleDestinationFQDNs {

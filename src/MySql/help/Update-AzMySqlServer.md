@@ -42,8 +42,10 @@ Use Update-AzMySqlConfiguration instead if you want update server parameters suc
 
 ### Example 1: Update MySql server by resource group and server name
 ```powershell
-PS C:\> Update-AzMySqlServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -SslEnforcement Disabled
+Update-AzMySqlServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -SslEnforcement Disabled
+```
 
+```output
 Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
 ----          -------- ------------------ ------- ----------------------- -------   -------        --------------
 mysql-test    eastus   mysql_test         5.7     5120                    GP_Gen5_4 GeneralPurpose Disabled
@@ -53,8 +55,10 @@ This cmdlet updates MySql server by resource group and server name.
 
 ### Example 2: Update MySql server by identity.
 ```powershell
-PS C:\> Get-AzMySqlServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test | Update-AzMySqlServer -BackupRetentionDay 23 -StorageMb 10240
+Get-AzMySqlServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test | Update-AzMySqlServer -BackupRetentionDay 23 -StorageMb 10240
+```
 
+```output
 Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
 ----          -------- ------------------ ------- ----------------------- -------   -------        --------------
 mysql-test    eastus   mysql_test         5.7     10240                   GP_Gen5_4 GeneralPurpose Disabled

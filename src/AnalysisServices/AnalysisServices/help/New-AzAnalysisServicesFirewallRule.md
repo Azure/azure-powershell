@@ -23,8 +23,8 @@ The New-AzAnalysisServicesFirewallRule creates a new firewall rule object.
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> New-AzAnalysisServicesFirewallRule -FirewallRuleName rule1 -RangeStart 0.0.0.0 -RangeEnd 255.255.255.255
+```powershell
+New-AzAnalysisServicesFirewallRule -FirewallRuleName rule1 -RangeStart 0.0.0.0 -RangeEnd 255.255.255.255
 ```
 
 Creates a firewall rule named rule1 with start range 0.0.0.0 and end range 255.255.255.255

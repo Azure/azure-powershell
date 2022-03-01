@@ -73,8 +73,9 @@ function Update-AzADUser {
 
         [Parameter()]
         [System.Boolean]
+        [Alias('EnableAccount')]
         # true for enabling the account; otherwise, false.
-        ${EnableAccount},
+        ${AccountEnabled},
         
         [Parameter()]
         [SecureString]
@@ -450,9 +451,18 @@ function Update-AzADUser {
               break
           }
       }
+      if ($PSBoundParameters.ContainsKey('Password')) {
+        $passwordProfile = [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphPasswordProfile]::New()
+        $passwordProfile.ForceChangePasswordNextSignIn = $ForceChangePasswordNextLogin
+        $passwordProfile.Password = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['Password']
+        $null = $PSBoundParameters.Remove('Password')
+        $null = $PSBoundParameters.Remove('ForceChangePasswordNextLogin')
+        $PSBoundParameters['AccountEnabled'] = $true
+        $PSBoundParameters['PasswordProfile'] = $passwordProfile
+      }
       $PSBoundParameters['Id'] = $id
 
-      MSGraph.internal\Update-AzADUser @PSBoundParameters
+      Az.MSGraph.internal\Update-AzADUser @PSBoundParameters
     }
 }
     

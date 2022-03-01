@@ -235,7 +235,13 @@ namespace Microsoft.Azure.Commands.Synapse.Common
 
         public static Response Poll(this Operation operation)
         {
-            return operation.WaitForCompletionResponseAsync().Result;
+            var result = operation.WaitForCompletionResponseAsync().Result;
+            var responseContent = result.Content;
+            if (responseContent?.ToString().IsEmptyOrWhiteSpace() == false)
+            {
+                throw new Exception(responseContent?.ToString());
+            }
+            return result;
         }
 
         public static string GetItemTypeString(this WorkspaceItemType itemType)

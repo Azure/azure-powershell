@@ -18,14 +18,16 @@ Get-AzOperationalInsightsAvailableServiceTier [-ResourceGroupName] <String> [-Wo
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+This command gets all available service tiers for a given worksapce.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzOperationalInsightsAvailableServiceTier -ResourceGroupName ContosoResourceGroup -WorkspaceName MyWorkspace
+Get-AzOperationalInsightsAvailableServiceTier -ResourceGroupName ContosoResourceGroup -WorkspaceName MyWorkspace
+```
 
+```output
 ServiceTier              : PerGB2018
 Enabled                  : True
 MinimumRetention         : 30

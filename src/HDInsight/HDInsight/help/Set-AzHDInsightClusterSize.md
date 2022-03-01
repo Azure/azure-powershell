@@ -24,8 +24,8 @@ The **Set-AzHDInsightClusterSize** cmdlet sets the number of Worker nodes in a s
 ## EXAMPLES
 
 ### Example 1: Set the size of a specified cluster
-```
-PS C:\>Set-AzHDInsightClusterSize -ClusterName "your-hadoop-001" -TargetInstanceCount 6
+```powershell
+Set-AzHDInsightClusterSize -ClusterName "your-hadoop-001" -TargetInstanceCount 6
 ```
 
 This command sets the size of the cluster named your-hadoop-001.

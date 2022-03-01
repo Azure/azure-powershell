@@ -35,15 +35,15 @@ It does not apply any Virtual Hard Disk (VHD) format conversion.
 ## EXAMPLES
 
 ### Example 1: Download an image
-```
-PS C:\> Save-AzVhd -SourceUri "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd" -ResourceGroupName "rgname"
+```powershell
+Save-AzVhd -SourceUri "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd" -ResourceGroupName "rgname"
 ```
 
 This command downloads a .vhd file, and stores it in the local path C:\vhd\Win7Image.vhd.
 
 ### Example 2: Download an image and overwrite the local file
-```
-PS C:\> Save-AzVhd -SourceUri "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd" -Overwrite -ResourceGroupName "rgname"
+```powershell
+Save-AzVhd -SourceUri "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd" -Overwrite -ResourceGroupName "rgname"
 ```
 
 This command downloads a .vhd file, and stores it in the local path.
@@ -51,8 +51,8 @@ The command includes the *Overwrite* parameter.
 Therefore, if C:\vhd\Win7Image.vhd already exists, this command replaces it.
 
 ### Example 3: Download an image by using a specified number of threads
-```
-PS C:\> Save-AzVhd -SourceUri "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd" -NumberOfThreads 32 -ResourceGroupName "rgname"
+```powershell
+Save-AzVhd -SourceUri "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd" -NumberOfThreads 32 -ResourceGroupName "rgname"
 ```
 
 This command downloads a .vhd file, and stores it in the local path.
@@ -60,8 +60,8 @@ The command specifies a value of 32 for the *NumberOfThreads* parameter.
 Therefore, the cmdlet uses 32 threads for this action.
 
 ### Example 4: Download an image and specify the storage key
-```
-PS C:\> Save-AzVhd -SourceUri "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd" -StorageKey "zNvcH0r5vAGmC5AbwEtpcyWCMyBd3eMDbdaa4ua6kwxq6vTZH3Y+sw==" -ResourceGroupName "rgname"
+```powershell
+Save-AzVhd -SourceUri "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd" -StorageKey "zNvcH0r5vAGmC5AbwEtpcyWCMyBd3eMDbdaa4ua6kwxq6vTZH3Y+sw==" -ResourceGroupName "rgname"
 ```
 
 This command downloads a .vhd file and specifies the storage key.

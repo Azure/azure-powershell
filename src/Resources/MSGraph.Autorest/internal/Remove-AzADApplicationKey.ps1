@@ -141,8 +141,8 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Remove = 'Az.Resources.MSGraph.private\Remove-AzADApplicationKey_Remove';
-            RemoveExpanded = 'Az.Resources.MSGraph.private\Remove-AzADApplicationKey_RemoveExpanded';
+            Remove = 'Az.MSGraph.private\Remove-AzADApplicationKey_Remove';
+            RemoveExpanded = 'Az.MSGraph.private\Remove-AzADApplicationKey_RemoveExpanded';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

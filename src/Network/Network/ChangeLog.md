@@ -19,13 +19,28 @@
 --->
 
 ## Upcoming Release
-* Added new properties ApplicationSecurityGroup, IpConfiguration and CustomNetworkInterfaceName for Private Endpoint cmdlets
+* Added new property `SqlSetting` for Azure Firewall Policy cmdlets 
+    - `Get-AzFirewallPolicy` 
+    - `New-AzFirewallPolicy`
+    - `Set-AzFirewallPolicy`
+* Added new to create new `SqlSetting` object for creating Azure Firewall Policy
+    - `New-AzFirewallPolicySqlSetting`
+* Added new cmdlet to support query Load Balancer inbound nat rule port mapping lists for backend addresses
+    - `Get-AzLoadBalancerBackendAddressInboundNatRulePortMapping`
+    - Also updated cmdlets to support inbound nat rule V2 configurations
+        - `New-AzLoadBalancerInboundNatRuleConfig`
+        - `Set-AzLoadBalancerInboundNatRuleConfig`
+        - `Add-AzLoadBalancerInboundNatRuleConfig`
+
+## Version 4.14.0
+* Used case-insensitive comparison for ResourceId (Set/New-NetworkWatcherFlowLog)
+* Added new properties `ApplicationSecurityGroup`, `IpConfiguration` and `CustomNetworkInterfaceName` for Private Endpoint cmdlets
     - `Get-AzPrivateEndpoint`
     - `New-AzPrivateEndpoint`
-* Added new cmdlet to create new IpConfiguration object for building Private Endpoint
+* Added new cmdlet to create new `IpConfiguration` object for building Private Endpoint
     - `New-AzPrivateEndpointIpConfiguration`
-* Added OrdinalIgnoreCase for string comparison of resourceIdentifier type for flowlog cmdlets
-* Fixed typo in error message of InvalidWorkspaceResourceId
+* Added OrdinalIgnoreCase for string comparison of `ResourceIdentifier` type for FlowLog cmdlets
+* Fixed typo in error message of `InvalidWorkspaceResourceId`
 
 ## Version 4.13.0
 * Bugfix in PSAzureFirewallPolicyThreatIntelWhitelist for FirewallPolicy
@@ -171,10 +186,10 @@
     - `New-AzAzVpnGatewayNatRule`
     - `Update-AzAzVpnGatewayNatRule`
     - `Get-AzAzVpnGatewayNatRule`
-    - `Remove-AzAzVpnGatewayNatRule`	
+    - `Remove-AzAzVpnGatewayNatRule`
 * Updated cmdlets to set NATRule on VpnGateway resource and associate it with VpnSiteLinkConnection resource.
     - `New-AzVpnGateway`
-    - `Update-AzVpnGateway`	
+    - `Update-AzVpnGateway`
     - `New-AzVpnSiteLinkConnection`
 * Updated cmdlets to enable setting of ConnectionMode on Virtual Network Gateway Connections.
     - `New-AzVirtualNetworkGatewayConnection`
@@ -205,7 +220,7 @@
     - `Remove-AzExpressRouteCircuitPeeringConfig` and `Remove-AzExpressRouteCircuitConnectionConfig`
 
 ## Version 4.3.0
-* Updated below cmdlet 
+* Updated below cmdlet
     - `New-AzLoadBalancerFrontendIpConfigCommand`, `Set-AzLoadBalancerFrontendIpConfigCommand`, `Add-AzLoadBalancerFrontendIpConfigCommand`:
         - Added PublicIpAddressPrefix property
         - Added PublicIpAddressPrefixId property
@@ -235,10 +250,10 @@
     - `New-AzApplicationGatewayClientAuthConfiguration`
     - `Remove-AzApplicationGatewayClientAuthConfiguration`
     - `Set-AzApplicationGatewayClientAuthConfiguration`
-    - `Add-AzApplicationGatewayTrustedClientCertificate` 
-    - `Get-AzApplicationGatewayTrustedClientCertificate` 
-    - `New-AzApplicationGatewayTrustedClientCertificate` 
-    - `Remove-AzApplicationGatewayTrustedClientCertificate` 
+    - `Add-AzApplicationGatewayTrustedClientCertificate`
+    - `Get-AzApplicationGatewayTrustedClientCertificate`
+    - `New-AzApplicationGatewayTrustedClientCertificate`
+    - `Remove-AzApplicationGatewayTrustedClientCertificate`
     - `Set-AzApplicationGatewayTrustedClientCertificate`
     - `Add-AzApplicationGatewaySslProfile`
     - `Get-AzApplicationGatewaySslProfile`
@@ -278,8 +293,8 @@
 	- Added parameter `-Type`
 	- Added parameter `-CoverageLevel`
 	- Added parameter `-Scope`
-* Updated `New-AzNetworkWatcherConnectionMonitorProtocolConfigurationObject` cmdlet with new parameter `-DestinationPortBehavior` 
-    
+* Updated `New-AzNetworkWatcherConnectionMonitorProtocolConfigurationObject` cmdlet with new parameter `-DestinationPortBehavior`
+
 ## Version 3.5.0
 * Added Office365 Policy to VPNSite Resource
     - `New-AzO365PolicyProperty`
@@ -287,10 +302,10 @@
     - `Example details how to create a new routing config and static routes and apply it to a connection`
 * Added example to New-AzVHubRoute
     - `Example details how to set static route on HubVnet connection`
-    
+
 ## Version 3.4.0
 * [Breaking Change] Updated below cmdlets to align resource virtual router and virtual hub
-    - `New-AzVirtualRouter`: 
+    - `New-AzVirtualRouter`:
         - Added -HostedSubnet parameter to support IP configuration child resource
         - deleted -HostedGateway and -HostedGatewayId
     - `Get-AzVirtualRouter`:
@@ -456,7 +471,7 @@
 * Updated cmdlets to enable setting of DPD Timeout on Virtual Network Gateway Connections.
     - New-AzVirtualNetworkGatewayConnection
     - Set-AzVirtualNetworkGatewayConnection
-* Added resource type IpAllocation 
+* Added resource type IpAllocation
 * Added properties to Subnet
     - Added property 'IpAllocations' as type of PSResourceId to PSIpAllocation
 * Added properties to Virtual Network

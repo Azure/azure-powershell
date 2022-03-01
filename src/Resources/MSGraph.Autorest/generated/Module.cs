@@ -39,6 +39,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 
         private TokenAudienceConverterDelegate _tokenAudienceConverter = null;
 
+        public bool _useProxy = false;
+
         public global::System.Net.WebProxy _webProxy = new global::System.Net.WebProxy();
 
         /// <summary>The delegate to call before each new request to add authorization.</summary>
@@ -69,7 +71,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
         public static Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Module Instance => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Module._instance?? (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Module._instance = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Module());
 
         /// <summary>The Name of this module</summary>
-        public string Name => @"Az.Resources";
+        public string Name => @"Az.MSGraph";
 
         /// <summary>The delegate to call when this module is loaded (supporting a commmon module).</summary>
         public ModuleLoadPipelineDelegate OnModuleLoad { get; set; }
@@ -78,7 +80,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
         public global::System.String ProfileName { get; set; }
 
         /// <summary>The ResourceID for this module (azure arm).</summary>
-        public string ResourceId => @"Az.Resources";
+        public string ResourceId => @"Az.MSGraph";
 
         /// <param name="invocationInfo">The <see cref="System.Management.Automation.InvocationInfo" /> from the cmdlet</param>
         /// <param name="pipeline">The HttpPipeline for the request</param>
@@ -103,7 +105,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
         {
             Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.HttpPipeline pipeline = null;
             BeforeCreatePipeline(invocationInfo, ref pipeline);
-            pipeline = (pipeline ?? (_handler.UseProxy ? _pipelineWithProxy : _pipeline)).Clone();
+            pipeline = (pipeline ?? (_useProxy ? _pipelineWithProxy : _pipeline)).Clone();
             AfterCreatePipeline(invocationInfo, ref pipeline);
             pipeline.Append(new Runtime.CmdInfoHandler(processRecordId, invocationInfo, parameterSetName).SendAsync);
             AddRequestUserAgentHandler?.Invoke( invocationInfo, correlationId,processRecordId, (step)=> { pipeline.Prepend(step); } , (step)=> { pipeline.Append(step); } );
@@ -144,12 +146,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
         /// <param name="proxyUseDefaultCredentials">True if the proxy should use default credentials</param>
         public void SetProxyConfiguration(global::System.Uri proxy, global::System.Management.Automation.PSCredential proxyCredential, bool proxyUseDefaultCredentials)
         {
+            _useProxy = proxy != null;
+            if (proxy == null)
+            {
+                return;
+            }
             // set the proxy configuration
             _webProxy.Address = proxy;
             _webProxy.BypassProxyOnLocal = false;
-            _webProxy.Credentials = proxyCredential ?.GetNetworkCredential();
-            _webProxy.UseDefaultCredentials = proxyUseDefaultCredentials;
-            _handler.UseProxy = proxy != null;
+            if (proxyUseDefaultCredentials)
+            {
+                _webProxy.Credentials = null;
+                _webProxy.UseDefaultCredentials = true;
+            }
+            else
+            {
+                _webProxy.UseDefaultCredentials = false;
+                _webProxy.Credentials = proxyCredential ?.GetNetworkCredential();
+            }
         }
 
         /// <summary>Called to dispatch events to the common module listener</summary>

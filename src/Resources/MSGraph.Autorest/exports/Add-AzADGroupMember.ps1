@@ -183,12 +183,12 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            MemberObjectIdWithGroupObjectIdParameterSet = 'MSGraph.custom\Add-AzADGroupMember';
-            MemberUPNWithGroupObjectIdParameterSet = 'MSGraph.custom\Add-AzADGroupMember';
-            MemberUPNWithGroupDisplayNameParameterSet = 'MSGraph.custom\Add-AzADGroupMember';
-            MemberObjectIdWithGroupDisplayNameParameterSet = 'MSGraph.custom\Add-AzADGroupMember';
-            MemberUPNWithGroupObjectParameterSet = 'MSGraph.custom\Add-AzADGroupMember';
-            MemberObjectIdWithGroupObjectParameterSet = 'MSGraph.custom\Add-AzADGroupMember';
+            MemberObjectIdWithGroupObjectIdParameterSet = 'Az.MSGraph.custom\Add-AzADGroupMember';
+            MemberUPNWithGroupObjectIdParameterSet = 'Az.MSGraph.custom\Add-AzADGroupMember';
+            MemberUPNWithGroupDisplayNameParameterSet = 'Az.MSGraph.custom\Add-AzADGroupMember';
+            MemberObjectIdWithGroupDisplayNameParameterSet = 'Az.MSGraph.custom\Add-AzADGroupMember';
+            MemberUPNWithGroupObjectParameterSet = 'Az.MSGraph.custom\Add-AzADGroupMember';
+            MemberObjectIdWithGroupObjectParameterSet = 'Az.MSGraph.custom\Add-AzADGroupMember';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

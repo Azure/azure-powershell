@@ -37,8 +37,10 @@ Gets existing healthcareApis fhir service accounts created within the specified 
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzHealthcareApisService -Name "MyService" -ResourceGroupName "MyResourceGroup"
+Get-AzHealthcareApisService -Name "MyService" -ResourceGroupName "MyResourceGroup"
+```
 
+```output
 AccessPolicies          : {77777777-6666-5555-4444-1111111111111}
 Audience                : https://azurehealthcareapis.com
 Authority               : https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47
@@ -66,8 +68,10 @@ SmartProxyEnabled       : False
 Gets the metadata for all HealthcareApis services in the provided Resource Group.
 
 ```powershell
-PS C:\> Get-AzHealthcareApisService -ResourceGroupName "MyResourceGroup"
+Get-AzHealthcareApisService -ResourceGroupName "MyResourceGroup"
+```
 
+```output
 AccessPolicies          : {77777777-6666-5555-4444-1111111111111}
 Audience                : https://azurehealthcareapis.com
 Authority               : https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db48
@@ -116,8 +120,10 @@ SmartProxyEnabled       : False
 Gets the metadata for all HealthcareApis services in the given subscription
 
 ```powershell
-PS C:\> Get-AzHealthcareApisService
+Get-AzHealthcareApisService
+```
 
+```output
 AccessPolicies          : {77777777-6666-5555-4444-1111111111111}
 Audience                : https://azurehealthcareapis.com
 Authority               : https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db48

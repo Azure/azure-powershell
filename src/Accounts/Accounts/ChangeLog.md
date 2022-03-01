@@ -20,6 +20,18 @@
 
 ## Upcoming Release
 * Fixed the bug of cmdlet fails when -DefaultProfile is set to service principal login context. [#16617]
+* Fixed the issue that authorization does not work in Dogfood environment
+* Enabled Continue Access Evaluation for MSGraph
+* Improved error message when login is blocked by AAD
+* Improved error message when silent reauthentication failed
+* Loaded System.Private.ServiceModel and System.ServiceModel.Primitives on Windows PowerShell [#17087]
+
+## Version 2.7.2
+* Removed legacy assembly System.Private.ServiceModel and System.ServiceModel.Primitives [#16063]
+
+## Version 2.7.1
+* Copied `ServicePrincipalSecret` and `CertificatePassword` from Az.Accounts buildin profile to customer set profile. [#16617]
+* Updated help message and help markdown for parameter `Tenant` of the cmdlet `Set-AzContext`. [#16515]
 * Fixed the issue that Azure PowerShell could not work in a workflow. [#16408]
 * Fixed the doubled Api Version in the URI of the underlying request issued by `Invoke-AzRestMethod`. [#16615]
 

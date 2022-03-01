@@ -17,14 +17,32 @@ Add-AzStackHCIVMAttestation configures guests for AzureStack HCI IMDS Attestatio
 ### [Disable-AzStackHCIAttestation](Disable-AzStackHCIAttestation.md)
 Disable-AzStackHCIAttestation disables IMDS Attestation on the host
 
+### [Disable-AzStackHCIRemoteSupport](Disable-AzStackHCIRemoteSupport.md)
+Disables Remote Support.
+
 ### [Enable-AzStackHCIAttestation](Enable-AzStackHCIAttestation.md)
 Enable-AzStackHCIAttestation configures the host and enables specified guests for IMDS attestation.
+
+### [Enable-AzStackHCIRemoteSupport](Enable-AzStackHCIRemoteSupport.md)
+Enables Remote Support.
+
+### [Get-AzStackHCIRemoteSupportAccess](Get-AzStackHCIRemoteSupportAccess.md)
+Gets Remote Support Access.
+
+### [Get-AzStackHCIRemoteSupportSessionHistory](Get-AzStackHCIRemoteSupportSessionHistory.md)
+Gets Remote Support Session History Details.
 
 ### [Get-AzStackHCIVMAttestation](Get-AzStackHCIVMAttestation.md)
 Get-AzStackHCIVMAttestation shows a list of guests added to IMDS Attestation on a node.
 
+### [Install-AzStackHCIRemoteSupport](Install-AzStackHCIRemoteSupport.md)
+Installs Remote Support.
+
 ### [Register-AzStackHCI](Register-AzStackHCI.md)
 Register-AzStackHCI creates a Microsoft.AzureStackHCI cloud resource representing the on-premise cluster and registers the on-premise cluster with Azure.
+
+### [Remove-AzStackHCIRemoteSupport](Remove-AzStackHCIRemoteSupport.md)
+Removes Remote Support.
 
 ### [Remove-AzStackHCIVMAttestation](Remove-AzStackHCIVMAttestation.md)
 Remove-AzStackHCIVMAttestation removes guests from AzureStack HCI IMDS Attestation.

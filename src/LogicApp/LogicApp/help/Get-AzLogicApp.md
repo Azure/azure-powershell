@@ -36,8 +36,11 @@ If you omit a required template parameter, the cmdlet prompts you for the value.
 ## EXAMPLES
 
 ### Example 1: Get a logic app from a resource group
+```powershell
+Get-AzLogicApp -ResourceGroupName "ResourceGroup11" -Name "LogicApp03"
 ```
-PS C:\>Get-AzLogicApp -ResourceGroupName "ResourceGroup11" -Name "LogicApp03"
+
+```output
 Id                           : /subscriptions/57b7034d-72d4-433d-ace2-a7460aed6a99/resourceGroups/LogicAppCmdletTest/providers/Microsoft.Logic/workflows/LogicApp03
 Name                         : LogicApp03
 Type                         : Microsoft.Logic/workflows

@@ -32,21 +32,21 @@ operate on ExpressRoutePort.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzExpressRoutePort -Name $PortName -ResourceGroupName $rg
+Get-AzExpressRoutePort -Name $PortName -ResourceGroupName $rg
 ```
 
 Gets the ExpressRoutePort object with name $PortName in resource group $rg in your subscription.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzExpressRoutePort -Name test*
+Get-AzExpressRoutePort -Name test*
 ```
 
 Gets all of the ExpressRoutePort objects whose name starts with "test".
 
 ### Example 3
 ```powershell
-PS C:\> Get-AzExpressRoutePort -ResourceId $id
+Get-AzExpressRoutePort -ResourceId $id
 ```
 
 Gets the ExpressRoutePort object with ResourceId $id. 

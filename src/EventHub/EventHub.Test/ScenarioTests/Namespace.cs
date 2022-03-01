@@ -37,5 +37,26 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
         {
             TestRunner.RunTestScript("NamespaceAuthTests");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void MSIEncryptionTest()
+        {
+            TestRunner.RunTestScript("EncryptionTest");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void MSITest()
+        {
+            TestRunner.RunTestScript("MSITest");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SchemaRegistry()
+        {
+            TestRunner.RunTestScript("SchemaRegistryTest");
+        }
     }
 }

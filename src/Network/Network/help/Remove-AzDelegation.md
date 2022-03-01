@@ -25,16 +25,16 @@ The **Remove-AzDelegation** cmdlet takes in a Subnet with delegations and remove
 ### Example 1
 ```powershell
 # Add a delegation to an existing subnet
-PS C:\> $vnet = Get-AzVirtualNetwork -Name "myVNet" -ResourceGroupName "myResourceGroup"
-PS C:\> $subnet = Get-AzVirtualNetworkSubnetConfig -Name "mySubnet" -VirtualNetwork $vnet
-PS C:\> $subnet = Add-AzDelegation -Name "myDelegation" -ServiceName "Microsoft.Sql/servers" -Subnet $subnet
-PS C:\> Set-AzVirtualNetwork $vnet
+$vnet = Get-AzVirtualNetwork -Name "myVNet" -ResourceGroupName "myResourceGroup"
+$subnet = Get-AzVirtualNetworkSubnetConfig -Name "mySubnet" -VirtualNetwork $vnet
+$subnet = Add-AzDelegation -Name "myDelegation" -ServiceName "Microsoft.Sql/servers" -Subnet $subnet
+Set-AzVirtualNetwork $vnet
 
 # Remove the delegation
-PS C:\> $vnet = Get-AzVirtualNetwork -Name "myVNet" -ResourceGroupName "myResourceGroup"
-PS C:\> $subnet = Get-AzVirtualNetworkSubnetConfig -Name "mySubnet" -VirtualNetwork $vnet
-PS C:\> $subnet = Remove-AzDelegation -Name "myDelegation" -Subnet $subnet
-PS C:\> Set-AzVirtualNetwork $vnet
+$vnet = Get-AzVirtualNetwork -Name "myVNet" -ResourceGroupName "myResourceGroup"
+$subnet = Get-AzVirtualNetworkSubnetConfig -Name "mySubnet" -VirtualNetwork $vnet
+$subnet = Remove-AzDelegation -Name "myDelegation" -Subnet $subnet
+Set-AzVirtualNetwork $vnet
 ```
 
 In this example, the first half (found under _"Add a delegation to an existing subnet"_) is identical to [Add-AzDelegation](./Add-AzDelegation.md). In the second half, the first two cmdlets retrieve the subnet of interest, refreshing the local copy with what's on the server. The third cmdlet removes the delegation that was created in the first half from _mySubnet_ and stores the updated subnet in _$subnet_. The final cmdlet updates the server with the removed delegation.

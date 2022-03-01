@@ -45,9 +45,9 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         [Alias(AliasNamespaceName)]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = NamespaceParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "EventHub Namespace Location.")]
-        [Parameter(Mandatory = true, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "EventHub Namespace Location.")]
-        [Parameter(Mandatory = true, ParameterSetName = IdentityUpdateParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "EventHub Namespace Location.")]
+        [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "EventHub Namespace Location.")]
+        [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "EventHub Namespace Location.")]
+        [Parameter(Mandatory = false, ParameterSetName = IdentityUpdateParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "EventHub Namespace Location.")]
         [LocationCompleter("Microsoft.EventHub/namespaces")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         /// Indicates whether AutoInflate is enabled.
         /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = AutoInflateParameterSet, HelpMessage = "Indicates whether AutoInflate is enabled")]
-        [Parameter(Mandatory = true, ParameterSetName = IdentityUpdateParameterSet, HelpMessage = "Indicates whether AutoInflate is enabled")]
+        [Parameter(Mandatory = false, ParameterSetName = IdentityUpdateParameterSet, HelpMessage = "Indicates whether AutoInflate is enabled")]
         public SwitchParameter EnableAutoInflate { get; set; }
 
         /// <summary>
@@ -100,12 +100,33 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         [Parameter(Mandatory = false, ParameterSetName = IdentityUpdateParameterSet, HelpMessage = "enabling or disabling Kafka for namespace")]
         public SwitchParameter EnableKafka { get; set; }
 
+
+        /// <summary>
+        /// Indicates whether DisableLocalAuth is enabled.
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, HelpMessage = "enabling or disabling  SAS authentication for namespace")]
+        [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, HelpMessage = "enabling or disabling SAS authentication for namespace")]
+        public SwitchParameter DisableLocalAuth { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Identity Type ('SystemAssigned', 'UserAssigned', 'SystemAssigned', 'UserAssigned', 'None')")]
+        [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Identity Type ('SystemAssigned', 'UserAssigned', 'SystemAssigned', 'UserAssigned', 'None')")]
+        [ValidateSet("SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned", "None", IgnoreCase = true)]
+        public string IdentityType { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "List of user assigned Identity Ids")]
+        [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "List of user assigned Identity Ids")]
+        public string[] IdentityId { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Key Property")]
+        [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Key Property")]
+        public PSEncryptionConfigAttributes[] EncryptionConfig { get; set; }
+
         /// <summary>
         /// Indicates whether Identity is enabled.
         /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, HelpMessage = "enabling or disabling Identity for namespace")]
         [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, HelpMessage = "enabling or disabling Identity for namespace")]
-        [Parameter(Mandatory = false, ParameterSetName = IdentityUpdateParameterSet, HelpMessage = "enabling or disabling Identity for namespace")]
+        [Parameter(Mandatory = true, ParameterSetName = IdentityUpdateParameterSet, HelpMessage = "enabling or disabling Identity for namespace")]
         public SwitchParameter Identity { get; set; }
 
         /// <summary>
@@ -129,14 +150,9 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, HelpMessage = "List of Key Properties, @(@(KeyName,KeyVaultUri,Keyversion),@(KeyName,KeyVaultUri,Keyversion))")]
         [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, HelpMessage = "List of Key Properties, @(@(KeyName,KeyVaultUri,Keyversion),@(KeyName,KeyVaultUri,Keyversion))")]
-        public List<string []> KeyProperty { get; set; }
+        public List<string[]> KeyProperty { get; set; }
 
-        /// <summary>
-        /// Indicates whether DisableLocalAuth is enabled.
-        /// </summary>
-        [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, HelpMessage = "enabling or disabling  SAS authentication for namespace")]
-        [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, HelpMessage = "enabling or disabling SAS authentication for namespace")]
-        public SwitchParameter DisableLocalAuth { get; set; }
+
 
         public override void ExecuteCmdlet()
         {
@@ -149,13 +165,12 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
                 {
                     if (ParameterSetName.Equals(IdentityUpdateParameterSet))
                     {
-                        WriteObject(Client.BeginUpdateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, EnableAutoInflate.IsPresent, MaximumThroughputUnits, EnableKafka.IsPresent, Identity.IsPresent, null, null, null, DisableLocalAuth.IsPresent));
+                        WriteObject(Client.BeginUpdateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, EnableAutoInflate.IsPresent, MaximumThroughputUnits, EnableKafka.IsPresent, Identity.IsPresent, null, null, null, DisableLocalAuth.IsPresent, IdentityId, IdentityType, EncryptionConfig));
                     }
                     else
                     {
-                        WriteObject(Client.BeginUpdateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, EnableAutoInflate.IsPresent, MaximumThroughputUnits, EnableKafka.IsPresent, Identity.IsPresent, IdentityUserDefined, KeySource, KeyProperty, DisableLocalAuth.IsPresent));
-                    }                   
-                    
+                        WriteObject(Client.BeginUpdateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, EnableAutoInflate.IsPresent, MaximumThroughputUnits, EnableKafka.IsPresent, Identity.IsPresent, IdentityUserDefined, KeySource, KeyProperty, DisableLocalAuth.IsPresent, IdentityId, IdentityType, EncryptionConfig));
+                    }                     
                 }
                 catch (Management.EventHub.Models.ErrorResponseException ex)
                 {

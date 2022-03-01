@@ -30,6 +30,22 @@ The **Disable-AzOperationalInsightsIISLogCollection** cmdlet stops collection of
 
 ## EXAMPLES
 
+### Example 1
+```powershell
+Disable-AzOperationalInsightsIISLogCollection -ResourceGroupName test-rg -WorkspaceName OperationalInsight
+```
+
+```output
+Name              : DataSource_IISLogs
+ResourceGroupName : test-rg
+WorkspaceName     : OperationalInsight
+ResourceId        : /subscriptions/xxxx-xxxx-xxxx-xxxx-xxxx/resourceGroups/test-rg/providers/Microsoft.OperationalInsights/wo
+                    rkspaces/OperationalInsight/datasources/DataSource_IISLogs
+Kind              : IISLogs
+Properties        : {"state":"OnPremiseDisabled"}
+```
+ Stops collection of Internet Information Services (IIS) logs from connected computers in a workspace.
+
 ## PARAMETERS
 
 ### -DefaultProfile

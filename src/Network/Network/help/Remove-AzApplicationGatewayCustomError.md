@@ -23,10 +23,10 @@ The **Remove-AzApplicationGatewayCustomError** cmdlet removes a custom error fro
 ## EXAMPLES
 
 ### Example 1: Removes custom error from an application gateway
-```
-PS C:\> $AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> Remove-AzApplicationGatewayCustomError -ApplicationGateway $AppGw -StatusCode HttpStatus502
-PS C:\> Set-AzApplicationGateway -ApplicationGateway $AppGW
+```powershell
+$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+Remove-AzApplicationGatewayCustomError -ApplicationGateway $AppGw -StatusCode HttpStatus502
+Set-AzApplicationGateway -ApplicationGateway $AppGW
 ```
 The first command gets the application gateway named ApplicationGateway01 in the resource group named ResourceGroup01 and stores it in the $AppGw variable.
 The second command removes the custom error for HTTP Status Code 502 from the application gateway and returns the updated gateway.

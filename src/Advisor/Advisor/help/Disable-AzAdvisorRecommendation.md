@@ -37,8 +37,10 @@ Creates a suppression for recommendation(s), this enables a particular recommend
 
 ### Example 1
 ```powershell
-PS C:\> Disable-AzAdvisorRecommendation -Name "f380a3a8-9d18-cfad-78e0-55762c72a178"
+Disable-AzAdvisorRecommendation -Name "f380a3a8-9d18-cfad-78e0-55762c72a178"
+```
 
+```output
 SuppressionId : d1f70547-0e72-db29-443e-c1164d5d4377
 Ttl           : -1
 Id            : /subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommendations
@@ -47,12 +49,14 @@ Name          : HardCodedSupressionName
 Type          : Microsoft.Advisor/suppressions
 ```
 
-Create a suppression for the given recommendation name with a default-SuppressionName and default days as -1.
+Create a suppression for the given recommendation name with a default SuppressionName and default days as -1.
 
 ### Example 2
 ```powershell
-PS C:\> Disable-AzAdvisorRecommendation -ResourceId "/subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz" -Days 12
+Disable-AzAdvisorRecommendation -ResourceId "/subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz" -Days 12
+```
 
+```output
 SuppressionId : 7d1f0547-0e72-db29-443e-c1164d5d4377
 Ttl           : 12.00:00:00
 Id            : /subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommendations
@@ -61,13 +65,14 @@ Name          : HardCodedSupressionName
 Type          : Microsoft.Advisor/suppressions
 ```
 
-A suppression is created for the given recommendation-Id.
+A suppression is created for the given recommendation_id.
 
 ### Example 3
 ```powershell
-PS C:\>  Get-AzAdvisorRecommendation -ResourceId "/subscriptions/user_subscription/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz" | Disable-A
-zAdvisorRecommendation
+Get-AzAdvisorRecommendation -ResourceId "/subscriptions/user_subscription/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz" | Disable-AzAdvisorRecommendation
+```
 
+```output
 SuppressionId : daf24e78-af2d-e8d3-9c50-fa970edc2937
 Ttl           : -1
 Id            : /subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommendations

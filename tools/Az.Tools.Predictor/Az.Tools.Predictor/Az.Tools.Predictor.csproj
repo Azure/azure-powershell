@@ -26,8 +26,15 @@ For more information on Az Predictor, please visit the following: https://aka.ms
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="$(RepoArtifacts)..\Az.Tools.Predictor.SourceGenerator\Az.Tools.Predictor.SourceGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+ </ItemGroup>
+
+ <ItemGroup>
+   <AdditionalFiles Include="AzPredictorSettings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="Az.Tools.Predictor.psd1" CopyToOutputDirectory="PreserveNewest" />
-    <None Include="AzPredictorSettings.json" CopyToOutputDirectory="PreserveNewest" />
     <None Include="command_param_to_resource_map.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 </Project>

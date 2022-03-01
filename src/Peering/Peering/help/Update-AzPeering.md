@@ -53,19 +53,21 @@ Sets the PSPeering Object
 
 ## EXAMPLES
 
-### Update Md5 Authentication Key
+### Example 1: Update Md5 Authentication Key
 ```powershell
-PS C:> $peering = Get-AzPeering -ResourceGroupName rg1 -PeerName "ContosoPeering"  
-PS C:> $peering.Connections[0] = $peering.Connections[0] | Set-AzPeeringDirectConnectionObject -MD5AuthenticationKey $hash
-PS C:> $peering | Update-AzPeering
+$peering = Get-AzPeering -ResourceGroupName rg1 -PeerName "ContosoPeering"  
+$peering.Connections[0] = $peering.Connections[0] | Set-AzPeeringDirectConnectionObject -MD5AuthenticationKey $hash
+$peering | Update-AzPeering
 ```
 
 Sets the Md5 Authentication Key
 
-### Update UseForPeeringService
+### Example 2: Update UseForPeeringService
 ```powershell
-PS C:> Update-AzPeering -ResourceGroupName rg1 -Name ContosoPeering -UseForPeeringService $true
+Update-AzPeering -ResourceGroupName rg1 -Name ContosoPeering -UseForPeeringService $true
+```
 
+```output
 Name                 : ContosoPeering
 Sku.Name             : Premium_Direct_Free
 Kind                 : Direct
@@ -82,12 +84,14 @@ Tags                 : {[tag2, value2], [tag1, value1]}
 
 Sets the Use for Peering Service Flag
 
-### Update IPv4 Address for Exchange Peering
+### Example 3: Update IPv4 Address for Exchange Peering
 ```powershell
-PS C:> $peering = Get-AzPeering -ResourceGroupName rg1  -PeerName "ContosoExchangePeering" 
-PS C:> $peering.Connections[0] = $peering.Connections[0] | Set-AzPeeringExchangeConnectionObject -PeerSessionIPv4Address $ipv4Address
-PS C:> Update-AzPeering -ResourceId $peering.Id $peering.Connections
+$peering = Get-AzPeering -ResourceGroupName rg1  -PeerName "ContosoExchangePeering" 
+$peering.Connections[0] = $peering.Connections[0] | Set-AzPeeringExchangeConnectionObject -PeerSessionIPv4Address $ipv4Address
+Update-AzPeering -ResourceId $peering.Id $peering.Connections
+```
 
+```output
 Name              : ContosoExchangePeering
 Sku.Name          : Basic_Exchange_Free
 Kind              : Exchange

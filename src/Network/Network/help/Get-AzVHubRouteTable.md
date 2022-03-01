@@ -35,18 +35,20 @@ Gets the specified hub route table that is associated with the specified virtual
 ### Example 1
 
 ```powershell
-PS C:\> New-AzVirtualWan -ResourceGroupName "testRg" -Name "testWan" -Location "westcentralus" -VirtualWANType "Standard" -AllowVnetToVnetTraffic -AllowBranchToBranchTraffic
-PS C:\> $virtualWan = Get-AzVirtualWan -ResourceGroupName "testRg" -Name "testWan"
-PS C:\> New-AzVirtualHub -ResourceGroupName "testRg" -Name "testHub" -Location "westcentralus" -AddressPrefix "10.0.0.0/16" -VirtualWan $virtualWan
-PS C:\> $virtualHub = Get-AzVirtualHub -ResourceGroupName "testRg" -Name "testHub"
-PS C:\> $fwIp = New-AzFirewallHubPublicIpAddress -Count 1
-PS C:\> $hubIpAddresses = New-AzFirewallHubIpAddress -PublicIP $fwIp
-PS C:\> New-AzFirewall -Name "testFirewall" -ResourceGroupName "testRg" -Location "westcentralus" -Sku AZFW_Hub -VirtualHubId $virtualHub.Id -HubIPAddress $hubIpAddresses
-PS C:\> $firewall = Get-AzFirewall -Name "testFirewall" -ResourceGroupName "testRg"
-PS C:\> $route1 = New-AzVHubRoute -Name "private-traffic" -Destination @("10.30.0.0/16", "10.40.0.0/16") -DestinationType "CIDR" -NextHop $firewall.Id -NextHopType "ResourceId"
-PS C:\> New-AzVHubRouteTable -ResourceGroupName "testRg" -VirtualHubName "testHub" -Name "testRouteTable" -Route @($route1) -Label @("testLabel")
-PS C:\> Get-AzVHubRouteTable -ResourceGroupName "testRg" -VirtualHubName "testHub" -Name "testRouteTable"
+New-AzVirtualWan -ResourceGroupName "testRg" -Name "testWan" -Location "westcentralus" -VirtualWANType "Standard" -AllowVnetToVnetTraffic -AllowBranchToBranchTraffic
+$virtualWan = Get-AzVirtualWan -ResourceGroupName "testRg" -Name "testWan"
+New-AzVirtualHub -ResourceGroupName "testRg" -Name "testHub" -Location "westcentralus" -AddressPrefix "10.0.0.0/16" -VirtualWan $virtualWan
+$virtualHub = Get-AzVirtualHub -ResourceGroupName "testRg" -Name "testHub"
+$fwIp = New-AzFirewallHubPublicIpAddress -Count 1
+$hubIpAddresses = New-AzFirewallHubIpAddress -PublicIP $fwIp
+New-AzFirewall -Name "testFirewall" -ResourceGroupName "testRg" -Location "westcentralus" -Sku AZFW_Hub -VirtualHubId $virtualHub.Id -HubIPAddress $hubIpAddresses
+$firewall = Get-AzFirewall -Name "testFirewall" -ResourceGroupName "testRg"
+$route1 = New-AzVHubRoute -Name "private-traffic" -Destination @("10.30.0.0/16", "10.40.0.0/16") -DestinationType "CIDR" -NextHop $firewall.Id -NextHopType "ResourceId"
+New-AzVHubRouteTable -ResourceGroupName "testRg" -VirtualHubName "testHub" -Name "testRouteTable" -Route @($route1) -Label @("testLabel")
+Get-AzVHubRouteTable -ResourceGroupName "testRg" -VirtualHubName "testHub" -Name "testRouteTable"
+```
 
+```output
 Name                   : testRouteTable
 Id                     : /subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/testHub/hubRouteTables/testRouteTable
 ProvisioningState      : Succeeded
@@ -72,11 +74,12 @@ This command gets the hub route table of the virtual hub.
 ### Example 2
 
 ```powershell
-PS C:\> $rgName = "testRg"
-PS C:\> $virtualHubName = "testHub"
-PS C:\> Get-AzVHubRouteTable -ResourceGroupName $rgName -VirtualHubName $virtualHubName
+$rgName = "testRg"
+$virtualHubName = "testHub"
+Get-AzVHubRouteTable -ResourceGroupName $rgName -VirtualHubName $virtualHubName
+```
 
-
+```output
 Name                   : defaultRouteTable
 Id                     : /subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/testHub/hubRouteTables/defaultRouteTable
 ProvisioningState      : Succeeded

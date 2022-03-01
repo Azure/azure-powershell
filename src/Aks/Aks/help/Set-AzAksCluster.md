@@ -68,7 +68,7 @@ Update or create a managed Kubernetes cluster.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzAks -ResourceGroupName group -Name myCluster | Set-AzAks -NodeCount 5
+Get-AzAks -ResourceGroupName group -Name myCluster | Set-AzAks -NodeCount 5
 ```
 
 Set the number of nodes in the Kubernetes cluster to 5.
@@ -497,7 +497,7 @@ Accept wildcard characters: False
 ```
 
 ### -NodeOsDiskSize
-The default number of nodes for the node pools.
+Specifies the size, in GB, of the operating system disk.
 
 ```yaml
 Type: System.Int32

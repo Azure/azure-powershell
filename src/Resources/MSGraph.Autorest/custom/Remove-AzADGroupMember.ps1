@@ -160,7 +160,7 @@ function Remove-AzADGroupMember {
 
         foreach ($member in $members) {
             $PSBoundParameters['MemberId'] = $member
-            MSGraph.internal\Remove-AzADGroupRefMember @PSBoundParameters
+            Az.MSGraph.internal\Remove-AzADGroupRefMember @PSBoundParameters
         }
 
         if ($shouldPassThru) {

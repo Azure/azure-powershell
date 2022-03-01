@@ -50,14 +50,14 @@ The **Remove-AzNetAppFilesBackup** cmdlet deletes an ANF account.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzNetAppFilesBackup -ResourceGroupName "MyRG" -AccountName "MyAccount" -PoolName "MyPool" -VolumeName "MyVolume" -Name "MyBackup"
+Remove-AzNetAppFilesBackup -ResourceGroupName "MyRG" -AccountName "MyAccount" -PoolName "MyPool" -VolumeName "MyVolume" -Name "MyBackup"
 ```
 
 This command deletes the new ANF backup with a the name "MyBackup" for volume "MyVolume".
 
 ### Example 2
 ```powershell
-PS C:\> Remove-AzNetAppFilesBackup -ResourceGroupName "MyRG" -AccountName "MyAccount" -AccountBackupName "MyBackup"
+Remove-AzNetAppFilesBackup -ResourceGroupName "MyRG" -AccountName "MyAccount" -AccountBackupName "MyBackup"
 ```
 
 This command deletes the new ANF backup with a the name "MyBackup" for account "MyAccount".

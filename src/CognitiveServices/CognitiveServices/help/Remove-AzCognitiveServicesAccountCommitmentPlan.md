@@ -38,7 +38,7 @@ Delete a CommitmentPlan from a Cognitive Services account
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzCognitiveServicesAccountCommitmentPlan -ResourceGroupName cognitive-services-resource-group -AccountName resource-name -Name "plan"
+Remove-AzCognitiveServicesAccountCommitmentPlan -ResourceGroupName cognitive-services-resource-group -AccountName resource-name -Name "plan"
 ```
 
 Delete a CommitmentPlan from a Cognitive Services account
