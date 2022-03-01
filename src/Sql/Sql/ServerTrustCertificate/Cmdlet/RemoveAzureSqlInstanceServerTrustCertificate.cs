@@ -39,9 +39,9 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
             Position = 1,
             ValueFromPipeline = true,
             HelpMessage = "The name of the Azure SQL Managed Instance")]
-        [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
+        [ResourceNameCompleter("Microsoft.Sql/managedInstances", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
-        public string ManagedInstanceName { get; set; }
+        public string InstanceName { get; set; }
 
         /// <summary>
         /// Gets or sets the certificate name
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
             Position = 2,
             ValueFromPipeline = true,
             HelpMessage = "The name of the certificate")]
-        [ResourceNameCompleter("Microsoft.Sql/managedInstances/serverTrustCertificates", "ResourceGroupName")]
+        [ResourceNameCompleter("Microsoft.Sql/managedInstances/serverTrustCertificates", nameof(ResourceGroupName), nameof(InstanceName))]
         [ValidateNotNullOrEmpty]
         public string CertificateName { get; set; }
 
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
         protected override IEnumerable<AzureSqlInstanceServerTrustCertificateModel> GetEntity()
         {
             return new List<AzureSqlInstanceServerTrustCertificateModel>() {
-                ModelAdapter.GetServerTrustCertificate(ResourceGroupName, ManagedInstanceName, CertificateName)
+                ModelAdapter.GetServerTrustCertificate(ResourceGroupName, InstanceName, CertificateName)
             };
         }
 
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
         protected override IEnumerable<AzureSqlInstanceServerTrustCertificateModel> PersistChanges(IEnumerable<AzureSqlInstanceServerTrustCertificateModel> entity)
         {
             var entityToDelete = entity.First();
-            ModelAdapter.RemoveServerTrustCertificate(entityToDelete.ResourceGroupName, entityToDelete.ManagedInstanceName, entityToDelete.CertificateName);
+            ModelAdapter.RemoveServerTrustCertificate(entityToDelete.ResourceGroupName, entityToDelete.InstanceName, entityToDelete.CertificateName);
             return entity;
         }
 
@@ -109,8 +109,8 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
         public override void ExecuteCmdlet()
         {
             if (!Force.IsPresent && !ShouldProcess(
-               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlInstanceServerTrustCertificateDescription, this.CertificateName, this.ManagedInstanceName),
-               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlInstanceServerTrustCertificateWarning, this.CertificateName, this.ManagedInstanceName),
+               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlInstanceServerTrustCertificateDescription, CertificateName, InstanceName),
+               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlInstanceServerTrustCertificateWarning, CertificateName, InstanceName),
                Microsoft.Azure.Commands.Sql.Properties.Resources.ShouldProcessCaption))
             {
                 return;

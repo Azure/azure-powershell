@@ -11,13 +11,29 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
     /// <summary>
     /// Cmdlet to create a new Server Trust certificate
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceLink"), OutputType(typeof(AzureSqlManagedInstanceLinkModel))]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceLink",
+        DefaultParameterSetName = SetParameterSet), OutputType(typeof(AzureSqlManagedInstanceLinkModel))]
     public class SetAzureSqlManagedInstanceLink : AzureSqlManagedInstanceLinkCmdletBase
     {
+        private const string SetParameterSet = "SetParameterSet";
+
+        /// <summary>
+        /// Gets or sets the name of the resource group to use.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ParameterSetName = SetParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = "The name of the resource group.")]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
+        public override string ResourceGroupName { get; set; }
+
         /// <summary>
         /// Gets or sets the name of target managed instance
         /// </summary>
         [Parameter(Mandatory = true,
+            ParameterSetName = SetParameterSet,
             Position = 1,
             ValueFromPipeline = true,
             HelpMessage = "The name of the Azure SQL Managed Instance")]
@@ -29,9 +45,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// Gets or sets the link name
         /// </summary>
         [Parameter(Mandatory = true,
+            ParameterSetName = SetParameterSet,
             Position = 2,
             ValueFromPipeline = true,
             HelpMessage = "The name of the MI link")]
+        [ResourceNameCompleter("Microsoft.Sql/managedInstances/distributedAvailabilityGroups", nameof(ResourceGroupName), nameof(InstanceName))]
         [ValidateNotNullOrEmpty]
         public string LinkName { get; set; }
 
@@ -39,9 +57,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// Gets or sets the replication mode
         /// </summary>
         [Parameter(Mandatory = true,
+            ParameterSetName = SetParameterSet,
             Position = 3,
             ValueFromPipeline = true,
-            HelpMessage = "The value of replication mode")]
+            HelpMessage = "The value of replication mode. Possible values include 'Sync' and 'Async'")]
+        [PSArgumentCompleter("Sync", "Async")]
         [ValidateNotNullOrEmpty]
         public string ReplicationMode { get; set; }
 
@@ -62,16 +82,10 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// <returns>The model that was passed in</returns>
         protected override IEnumerable<AzureSqlManagedInstanceLinkModel> ApplyUserInputToModel(IEnumerable<AzureSqlManagedInstanceLinkModel> model)
         {
-            List<AzureSqlManagedInstanceLinkModel> newEntity = new List<AzureSqlManagedInstanceLinkModel>
-            {
-                new AzureSqlManagedInstanceLinkModel()
-                {
-                    ResourceGroupName = ResourceGroupName,
-                    ManagedInstanceName = InstanceName,
-                    DistributedAvailabilityGroupName = LinkName,
-                    ReplicationMode = ReplicationMode,
-                }
-            };
+            List<AzureSqlManagedInstanceLinkModel> newEntity = new List<AzureSqlManagedInstanceLinkModel> { };
+            var updatedModel = model.First();
+            updatedModel.ReplicationMode = ReplicationMode;
+            newEntity.Add(updatedModel);
             return newEntity;
         }
 
@@ -83,7 +97,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         protected override IEnumerable<AzureSqlManagedInstanceLinkModel> PersistChanges(IEnumerable<AzureSqlManagedInstanceLinkModel> entity)
         {
             return new List<AzureSqlManagedInstanceLinkModel>() {
-                ModelAdapter.CreateManagedInstanceLink(entity.First())
+                ModelAdapter.UpdateManagedInstanceLink(entity.First())
             };
         }
     }

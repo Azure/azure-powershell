@@ -1,11 +1,7 @@
 ﻿using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Model;
-using Microsoft.Rest.Azure;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
-using System.Text;
 
 namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
 {
@@ -36,15 +32,15 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
         /// Gets or sets the name of target managed instance
         /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = GetByNameParameterSet, Position = 1, ValueFromPipeline = true, HelpMessage = "The name of the Azure SQL Managed Instance.")]
-        [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
+        [ResourceNameCompleter("Microsoft.Sql/managedInstances", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
-        public string ManagedInstanceName { get; set; }
+        public string InstanceName { get; set; }
 
         /// <summary>
         /// Gets or sets the certificate name
         /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = GetByNameParameterSet, Position = 2, ValueFromPipeline = true, HelpMessage = "The name of the certificate.")]
-        [ResourceNameCompleter("Microsoft.Sql/managedInstances/serverTrustCertificates", "ResourceGroupName")]
+        [ResourceNameCompleter("Microsoft.Sql/managedInstances/serverTrustCertificates", nameof(ResourceGroupName), nameof(InstanceName))]
         [ValidateNotNullOrEmpty]
         public string CertificateName { get; set; }
 
@@ -57,11 +53,11 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
             ICollection<AzureSqlInstanceServerTrustCertificateModel> results = new List<AzureSqlInstanceServerTrustCertificateModel>();
             if (CertificateName != null)
             {
-                results.Add(ModelAdapter.GetServerTrustCertificate(ResourceGroupName, ManagedInstanceName, CertificateName));
+                results.Add(ModelAdapter.GetServerTrustCertificate(ResourceGroupName, InstanceName, CertificateName));
             }
             else
             {
-                results = ModelAdapter.ListServerTrustCertificates(ResourceGroupName, ManagedInstanceName);
+                results = ModelAdapter.ListServerTrustCertificates(ResourceGroupName, InstanceName);
             }
             return results;
         }

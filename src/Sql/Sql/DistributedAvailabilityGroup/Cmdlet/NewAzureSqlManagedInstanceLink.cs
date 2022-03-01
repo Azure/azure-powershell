@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
             Position = 1,
             ValueFromPipeline = true,
             HelpMessage = "The name of the Azure SQL Managed Instance")]
-        [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
+        [ResourceNameCompleter("Microsoft.Sql/managedInstances", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
         public string InstanceName { get; set; }
 
@@ -99,6 +99,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         [ValidateNotNullOrEmpty]
         public string SourceEndpoint { get; set; }
 
+        /// <summary>
+        /// Gets or sets whether or not to run this cmdlet in the background as a job
+        /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -144,8 +147,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
                 new AzureSqlManagedInstanceLinkModel()
                 {
                     ResourceGroupName = ResourceGroupName,
-                    ManagedInstanceName = InstanceName,
-                    DistributedAvailabilityGroupName = LinkName,
+                    InstanceName = InstanceName,
+                    LinkName = LinkName,
                     PrimaryAvailabilityGroupName = PrimaryAvailabilityGroupName,
                     SecondaryAvailabilityGroupName = SecondaryAvailabilityGroupName,
                     TargetDatabase = TargetDatabase,

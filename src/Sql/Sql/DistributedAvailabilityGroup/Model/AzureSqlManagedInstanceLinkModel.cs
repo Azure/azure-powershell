@@ -14,12 +14,22 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Model
         /// <summary>
         /// Gets or sets managed instance name
         /// </summary>
-        public string ManagedInstanceName { get; set; }
+        public string InstanceName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the mi link's type
+        /// </summary>
+        public string Type { get; set; }
+
+        /// <summary>
+        /// Gets or sets the mi link's resource id
+        /// </summary>
+        public string Id { get; set; }
 
         /// <summary>
         /// Gets or sets target database
         /// </summary>
-        public string DistributedAvailabilityGroupName { get; set; }
+        public string LinkName { get; set; }
 
         /// <summary>
         /// Gets or sets target database

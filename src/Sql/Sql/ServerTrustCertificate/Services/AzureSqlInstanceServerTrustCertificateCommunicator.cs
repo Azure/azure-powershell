@@ -46,32 +46,32 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Services
         /// <summary>
         /// Creates or updates a Managed instance
         /// </summary>
-        public Management.Sql.Models.ServerTrustCertificate CreateOrUpdate(string resourceGroupName, string managedInstanceName, string certificateName, Management.Sql.Models.ServerTrustCertificate parameters)
+        public Management.Sql.Models.ServerTrustCertificate CreateOrUpdate(string resourceGroupName, string instanceName, string certificateName, Management.Sql.Models.ServerTrustCertificate parameters)
         {
-            return GetCurrentSqlClient().ServerTrustCertificates.CreateOrUpdate(resourceGroupName, managedInstanceName, certificateName, parameters);
+            return GetCurrentSqlClient().ServerTrustCertificates.CreateOrUpdate(resourceGroupName, instanceName, certificateName, parameters);
         }
         /// <summary>
         /// Gets the Managed instance
         /// </summary>
-        public Management.Sql.Models.ServerTrustCertificate Get(string resourceGroupName, string managedInstanceName, string certificateName)
+        public Management.Sql.Models.ServerTrustCertificate Get(string resourceGroupName, string instanceName, string certificateName)
         {
-            return GetCurrentSqlClient().ServerTrustCertificates.Get(resourceGroupName, managedInstanceName, certificateName);
+            return GetCurrentSqlClient().ServerTrustCertificates.Get(resourceGroupName, instanceName, certificateName);
         }
 
         /// <summary>
         /// Lists Managed instances
         /// </summary>
-        public IList<Management.Sql.Models.ServerTrustCertificate> List(string resourceGroupName, string managedInstanceName)
+        public IList<Management.Sql.Models.ServerTrustCertificate> List(string resourceGroupName, string instanceName)
         {
-            return GetCurrentSqlClient().ServerTrustCertificates.ListByInstance(resourceGroupName, managedInstanceName).ToList();
+            return GetCurrentSqlClient().ServerTrustCertificates.ListByInstance(resourceGroupName, instanceName).ToList();
         }
 
         /// <summary>
         /// Deletes a user certificate from MI
         /// </summary>
-        public void Remove(string resourceGroupName, string managedInstanceName, string certificateName)
+        public void Remove(string resourceGroupName, string instanceName, string certificateName)
         {
-            GetCurrentSqlClient().ServerTrustCertificates.Delete(resourceGroupName, managedInstanceName, certificateName);
+            GetCurrentSqlClient().ServerTrustCertificates.Delete(resourceGroupName, instanceName, certificateName);
         }
 
         /// <summary>

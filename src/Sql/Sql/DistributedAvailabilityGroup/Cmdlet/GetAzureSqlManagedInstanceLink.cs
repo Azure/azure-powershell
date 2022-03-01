@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
             Position = 1,
             ValueFromPipeline = true,
             HelpMessage = "The name of the Azure SQL Managed Instance")]
-        [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
+        [ResourceNameCompleter("Microsoft.Sql/managedInstances", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
         public string InstanceName { get; set; }
 
@@ -49,6 +49,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
             Position = 2,
             ValueFromPipeline = true,
             HelpMessage = "The name of the MI link")]
+        [ResourceNameCompleter("Microsoft.Sql/managedInstances/distributedAvailabilityGroups", nameof(ResourceGroupName), nameof(InstanceName))]
         [ValidateNotNullOrEmpty]
         public string LinkName { get; set; }
 

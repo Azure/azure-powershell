@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Model
         /// <summary>
         /// Gets or sets managed instance name
         /// </summary>
-        public string ManagedInstanceName { get; set; }
+        public string InstanceName { get; set; }
 
         /// <summary>
         /// Gets or sets certificate name

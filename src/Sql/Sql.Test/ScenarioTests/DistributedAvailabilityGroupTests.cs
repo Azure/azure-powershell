@@ -20,15 +20,15 @@ using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-	public class ServerTrustCertificateTests : SqlTestsBase
+	public class DistributedAvailabilityGroupTests : SqlTestsBase
 	{
-		public ServerTrustCertificateTests(ITestOutputHelper output) : base(output)
+		public DistributedAvailabilityGroupTests(ITestOutputHelper output) : base(output)
 		{
 			base.resourceTypesToIgnoreApiVersion = new string[] {
 				"Microsoft.Sql/servers"
 			};
 		}
-		
+
 		protected override void SetupManagementClients(RestTestFramework.MockContext context)
 		{
 			var newResourcesClient = GetResourcesClient(context);
@@ -40,17 +40,16 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
 		[Fact]
 		[Trait(Category.AcceptanceType, Category.CheckIn)]
-		public void TestServerTrustCertificate()
+		public void TestManagedInstanceLink()
 		{
-			RunPowerShellTest("Test-ServerTrustCertificate");
+			RunPowerShellTest("Test-ManagedInstanceLink");
 		}
 
 		[Fact]
 		[Trait(Category.AcceptanceType, Category.CheckIn)]
-		public void TestServerTrustCertificateErrHandling()
+		public void TestManagedInstanceLinkErrHandling()
 		{
-			RunPowerShellTest("Test-ServerTrustCertificateErrHandling");
+			RunPowerShellTest("Test-ManagedInstanceLinkErrHandling");
 		}
-
 	}
 }

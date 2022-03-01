@@ -46,41 +46,41 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Services
         /// <summary>
         /// Creates or updates a Managed instance
         /// </summary>
-        public Management.Sql.Models.DistributedAvailabilityGroup CreateOrUpdate(string resourceGroupName, string managedInstanceName, string distributedAvailabilityGroupName, Management.Sql.Models.DistributedAvailabilityGroup parameters)
+        public Management.Sql.Models.DistributedAvailabilityGroup CreateOrUpdate(string resourceGroupName, string instanceName, string distributedAvailabilityGroupName, Management.Sql.Models.DistributedAvailabilityGroup parameters)
         {
-            return GetCurrentSqlClient().DistributedAvailabilityGroups.CreateOrUpdate(resourceGroupName, managedInstanceName, distributedAvailabilityGroupName, parameters);
+            return GetCurrentSqlClient().DistributedAvailabilityGroups.CreateOrUpdate(resourceGroupName, instanceName, distributedAvailabilityGroupName, parameters);
         }
 
         /// <summary>
         /// Creates or updates a Managed instance
         /// </summary>
-        public Management.Sql.Models.DistributedAvailabilityGroup Update(string resourceGroupName, string managedInstanceName, string distributedAvailabilityGroupName, Management.Sql.Models.DistributedAvailabilityGroup parameters)
+        public Management.Sql.Models.DistributedAvailabilityGroup Update(string resourceGroupName, string instanceName, string distributedAvailabilityGroupName, Management.Sql.Models.DistributedAvailabilityGroup parameters)
         {
-            return GetCurrentSqlClient().DistributedAvailabilityGroups.Update(resourceGroupName, managedInstanceName, distributedAvailabilityGroupName, parameters);
+            return GetCurrentSqlClient().DistributedAvailabilityGroups.Update(resourceGroupName, instanceName, distributedAvailabilityGroupName, parameters);
         }
 
         /// <summary>
         /// Gets the Managed instance
         /// </summary>
-        public Management.Sql.Models.DistributedAvailabilityGroup Get(string resourceGroupName, string managedInstanceName, string distributedAvailabilityGroupName)
+        public Management.Sql.Models.DistributedAvailabilityGroup Get(string resourceGroupName, string instanceName, string distributedAvailabilityGroupName)
         {
-            return GetCurrentSqlClient().DistributedAvailabilityGroups.Get(resourceGroupName, managedInstanceName, distributedAvailabilityGroupName);
+            return GetCurrentSqlClient().DistributedAvailabilityGroups.Get(resourceGroupName, instanceName, distributedAvailabilityGroupName);
         }
 
         /// <summary>
         /// Lists Managed instances
         /// </summary>
-        public IList<Management.Sql.Models.DistributedAvailabilityGroup> List(string resourceGroupName, string managedInstanceName)
+        public IList<Management.Sql.Models.DistributedAvailabilityGroup> List(string resourceGroupName, string instanceName)
         {
-            return GetCurrentSqlClient().DistributedAvailabilityGroups.ListByInstance(resourceGroupName, managedInstanceName).ToList();
+            return GetCurrentSqlClient().DistributedAvailabilityGroups.ListByInstance(resourceGroupName, instanceName).ToList();
         }
 
         /// <summary>
         /// Deletes a user certificate from MI
         /// </summary>
-        public void Remove(string resourceGroupName, string managedInstanceName, string distributedAvailabilityGroupName)
+        public void Remove(string resourceGroupName, string instanceName, string distributedAvailabilityGroupName)
         {
-            GetCurrentSqlClient().DistributedAvailabilityGroups.Delete(resourceGroupName, managedInstanceName, distributedAvailabilityGroupName);
+            GetCurrentSqlClient().DistributedAvailabilityGroups.Delete(resourceGroupName, instanceName, distributedAvailabilityGroupName);
         }
 
         /// <summary>

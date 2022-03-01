@@ -1,11 +1,9 @@
 ﻿using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Model;
 using Microsoft.Rest.Azure;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using System.Text;
 
 namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
 {
@@ -44,7 +42,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
             HelpMessage = "The name of the Azure SQL Managed Instance.")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public string ManagedInstanceName { get; set; }
+        public string InstanceName { get; set; }
 
         /// <summary>
         /// Gets or sets the certificate name
@@ -78,7 +76,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
             // We try to get the certificate. Since this is a create, we don't want the certificate to exist
             try
             {
-                ModelAdapter.GetServerTrustCertificate(this.ResourceGroupName, this.ManagedInstanceName, this.CertificateName);
+                ModelAdapter.GetServerTrustCertificate(ResourceGroupName, InstanceName, CertificateName);
             }
             catch (CloudException ex)
             {
@@ -94,7 +92,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
 
             // The certificate already exists
             throw new PSArgumentException(
-                string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.ServerTrustCertificateAlreadyExists, this.CertificateName, this.ManagedInstanceName),
+                string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.ServerTrustCertificateAlreadyExists, CertificateName, InstanceName),
                 "CertificateName");
         }
 
@@ -110,7 +108,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
                 new AzureSqlInstanceServerTrustCertificateModel()
                 {
                     ResourceGroupName = ResourceGroupName,
-                    ManagedInstanceName = ManagedInstanceName,
+                    InstanceName = InstanceName,
                     CertificateName = CertificateName,
                     PublicKey = PublicKey,
                 }
