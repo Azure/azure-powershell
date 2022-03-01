@@ -22,6 +22,7 @@ App Configuration                     | `Az.AppConfiguration`                   
 Application Insights                  | `Az.ApplicationInsights`                | [![ApplicationInsights]][ApplicationInsightsGallery]
 Attestation                           | `Az.Attestation`                        | [![Attestation]][AttestationGallery]
 Automation                            | `Az.Automation`                         | [![Automation]][AutomationGallery]
+BareMetal                             | `Az.BareMetal`                          | [![BareMetal]][BareMetalGallery]
 Batch                                 | `Az.Batch`                              | [![Batch]][BatchGallery]
 Billing                               | `Az.Billing`                            | [![Billing]][BillingGallery]
 Blueprints                            | `Az.Blueprint`                          | [![Blueprint]][BlueprintGallery]
@@ -35,6 +36,7 @@ Compute                               | `Az.Compute`                            
 Confluent                             | `Az.Confluent`                          | [![Confluent]][ConfluentGallery]
 Connected Kubernetes                  | `Az.ConnectedKubernetes`                | [![ConnectedKubernetes]][ConnectedKubernetesGallery]
 Connected Machine                     | `Az.ConnectedMachine`                   | [![ConnectedMachine]][ConnectedMachineGallery]
+ConnectedNetwork                      | `Az.ConnectedNetwork`                   | [![ConnectedNetwork]][ConnectedNetworkGallery]
 Container Instance                    | `Az.ContainerInstance`                  | [![ContainerInstance]][ContainerInstanceGallery]
 Container Registry                    | `Az.ContainerRegistry`                  | [![ContainerRegistry]][ContainerRegistryGallery]
 Cosmos DB                             | `Az.CosmosDB`                           | [![CosmosDB]][CosmosDBGallery]
@@ -60,6 +62,7 @@ DevTest Labs                          | `Az.DevTestLabs`                        
 Digital Twins                         | `Az.DigitalTwins`                       | [![DigitalTwins]][DigitalTwinsGallery]
 Disk Pool                             | `Az.DiskPool`                           | [![DiskPool]][DiskPoolGallery]
 DNS                                   | `Az.Dns`                                | [![Dns]][DnsGallery]
+DnsResolver                           | `Az.DnsResolver`                        | [![DnsResolver]][DnsResolverGallery]
 Stack Edge Order                      | `Az.EdgeOrder`                          | [![EdgeOrder]][EdgeOrderGallery]
 Elastic on Azure                      | `Az.Elastic`                            | [![Elastic]][ElasticGallery]
 Event Grid                            | `Az.EventGrid`                          | [![EventGrid]][EventGridGallery]
@@ -108,6 +111,7 @@ Power BI Embedded                     | `Az.PowerBIEmbedded`                    
 Private Dns                           | `Az.PrivateDns`                         | [![PrivateDns]][PrivateDnsGallery]
 Provider Hub                          | `Az.ProviderHub`                        | [![ProviderHub]][ProviderHubGallery]
 Purview                               | `Az.Purview`                            | [![Purview]][PurviewGallery]
+Quota                                 | `Az.Quota`                              | [![Quota]][QuotaGallery]
 Recovery Services                     | `Az.RecoveryServices`                   | [![RecoveryServices]][RecoveryServicesGallery]
 Redis Cache                           | `Az.RedisCache`                         | [![RedisCache]][RedisCacheGallery]
 Redis Enterprise Cache                | `Az.RedisEnterpriseCache`               | [![RedisEnterpriseCache]][RedisEnterpriseCacheGallery]
@@ -155,6 +159,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [ApplicationInsights]:        https://img.shields.io/powershellgallery/v/Az.ApplicationInsights.svg?style=flat-square&label=Az.ApplicationInsights
 [Attestation]:                https://img.shields.io/powershellgallery/v/Az.Attestation.svg?style=flat-square&label=Az.Attestation
 [Automation]:                 https://img.shields.io/powershellgallery/v/Az.Automation.svg?style=flat-square&label=Az.Automation
+[BareMetal]:                  https://img.shields.io/powershellgallery/v/Az.BareMetal.svg?style=flat-square&label=Az.BareMetal
 [Batch]:                      https://img.shields.io/powershellgallery/v/Az.Batch.svg?style=flat-square&label=Az.Batch
 [Billing]:                    https://img.shields.io/powershellgallery/v/Az.Billing.svg?style=flat-square&label=Az.Billing
 [Blueprint]:                  https://img.shields.io/powershellgallery/v/Az.Blueprint.svg?style=flat-square&label=Az.Blueprint
@@ -168,6 +173,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [Confluent]:                  https://img.shields.io/powershellgallery/v/Az.Confluent.svg?style=flat-square&label=Az.Confluent
 [ConnectedKubernetes]:        https://img.shields.io/powershellgallery/v/Az.ConnectedKubernetes.svg?style=flat-square&label=Az.ConnectedKubernetes
 [ConnectedMachine]:           https://img.shields.io/powershellgallery/v/Az.ConnectedMachine.svg?style=flat-square&label=Az.ConnectedMachine
+[ConnectedNetwork]:           https://img.shields.io/powershellgallery/v/Az.ConnectedNetwork.svg?style=flat-square&label=Az.ConnectedNetwork
 [ContainerInstance]:          https://img.shields.io/powershellgallery/v/Az.ContainerInstance.svg?style=flat-square&label=Az.ContainerInstance
 [ContainerRegistry]:          https://img.shields.io/powershellgallery/v/Az.ContainerRegistry.svg?style=flat-square&label=Az.ContainerRegistry
 [CosmosDB]:                   https://img.shields.io/powershellgallery/v/Az.CosmosDB.svg?style=flat-square&label=Az.CosmosDB
@@ -193,6 +199,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [DevSpaces]:                  https://img.shields.io/powershellgallery/v/Az.DevSpaces.svg?style=flat-square&label=Az.DevSpaces
 [DevTestLabs]:                https://img.shields.io/powershellgallery/v/Az.DevTestLabs.svg?style=flat-square&label=Az.DevTestLabs
 [Dns]:                        https://img.shields.io/powershellgallery/v/Az.Dns.svg?style=flat-square&label=Az.Dns
+[DnsResolver]:                https://img.shields.io/powershellgallery/v/Az.DnsResolver.svg?style=flat-square&label=Az.DnsResolver
 [EdgeOrder]:                  https://img.shields.io/powershellgallery/v/Az.EdgeOrder.svg?style=flat-square&label=Az.EdgeOrder
 [Elastic]:                    https://img.shields.io/powershellgallery/v/Az.Elastic.svg?style=flat-square&label=Az.Elastic
 [EventGrid]:                  https://img.shields.io/powershellgallery/v/Az.EventGrid.svg?style=flat-square&label=Az.EventGrid
@@ -241,6 +248,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [PrivateDns]:                 https://img.shields.io/powershellgallery/v/Az.PrivateDns.svg?style=flat-square&label=Az.PrivateDns
 [ProviderHub]:                https://img.shields.io/powershellgallery/v/Az.ProviderHub.svg?style=flat-square&label=Az.ProviderHub
 [Purview]:                    https://img.shields.io/powershellgallery/v/Az.Purview.svg?style=flat-square&label=Az.Purview
+[Quota]:                      https://img.shields.io/powershellgallery/v/Az.Quota.svg?style=flat-square&label=Az.Quota
 [RecoveryServices]:           https://img.shields.io/powershellgallery/v/Az.RecoveryServices.svg?style=flat-square&label=Az.RecoveryServices
 [RedisCache]:                 https://img.shields.io/powershellgallery/v/Az.RedisCache.svg?style=flat-square&label=Az.RedisCache
 [RedisEnterpriseCache]:       https://img.shields.io/powershellgallery/v/Az.RedisEnterpriseCache.svg?style=flat-square&label=Az.RedisEnterpriseCache
@@ -286,6 +294,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [ApplicationInsightsGallery]:        https://www.powershellgallery.com/packages/Az.ApplicationInsights/
 [AttestationGallery]:                https://www.powershellgallery.com/packages/Az.Attestation/
 [AutomationGallery]:                 https://www.powershellgallery.com/packages/Az.Automation/
+[BareMetalGallery]:                  https://www.powershellgallery.com/packages/Az.BareMetal/
 [BatchGallery]:                      https://www.powershellgallery.com/packages/Az.Batch/
 [BillingGallery]:                    https://www.powershellgallery.com/packages/Az.Billing/
 [BlueprintGallery]:                  https://www.powershellgallery.com/packages/Az.Blueprint/
@@ -299,6 +308,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [ConfluentGallery]:                  https://www.powershellgallery.com/packages/Az.Confluent/
 [ConnectedKubernetesGallery]:        https://www.powershellgallery.com/packages/Az.ConnectedKubernetes/
 [ConnectedMachineGallery]:           https://www.powershellgallery.com/packages/Az.ConnectedMachine/
+[ConnectedNetworkGallery]:           https://www.powershellgallery.com/packages/Az.ConnectedNetwork/
 [ContainerInstanceGallery]:          https://www.powershellgallery.com/packages/Az.ContainerInstance/
 [ContainerRegistryGallery]:          https://www.powershellgallery.com/packages/Az.ContainerRegistry/
 [CosmosDBGallery]:                   https://www.powershellgallery.com/packages/Az.CosmosDB/
@@ -324,6 +334,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [DevSpacesGallery]:                  https://www.powershellgallery.com/packages/Az.DevSpaces/
 [DevTestLabsGallery]:                https://www.powershellgallery.com/packages/Az.DevTestLabs/
 [DnsGallery]:                        https://www.powershellgallery.com/packages/Az.Dns/
+[DnsResolverGallery]:                https://www.powershellgallery.com/packages/Az.DnsResolver/
 [EdgeOrderGallery]:                  https://www.powershellgallery.com/packages/Az.EdgeOrder/
 [ElasticGallery]:                    https://www.powershellgallery.com/packages/Az.Elastic/
 [EventGridGallery]:                  https://www.powershellgallery.com/packages/Az.EventGrid/
@@ -372,6 +383,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [PrivateDnsGallery]:                 https://www.powershellgallery.com/packages/Az.PrivateDns/
 [ProviderHubGallery]:                https://www.powershellgallery.com/packages/Az.ProviderHub/
 [PurviewGallery]:                    https://www.powershellgallery.com/packages/Az.Purview/
+[QuotaGallery]:                      https://www.powershellgallery.com/packages/Az.Quota/
 [RecoveryServicesGallery]:           https://www.powershellgallery.com/packages/Az.RecoveryServices/
 [RedisCacheGallery]:                 https://www.powershellgallery.com/packages/Az.RedisCache/
 [RedisEnterpriseCacheGallery]:       https://www.powershellgallery.com/packages/Az.RedisEnterpriseCache/
