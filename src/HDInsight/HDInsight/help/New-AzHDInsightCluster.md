@@ -100,6 +100,10 @@ New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-Clus
 ## DESCRIPTION
 The New-AzHDInsightCluster creates an Azure HDInsight cluster by using the specified parameters or by using a configuration object that is created by using the New-AzHDInsightClusterConfig cmdlet.
 
+The cmdlet may call below Microsoft Graph API according to input parameters:
+
+- GET /servicePrincipals/{id}
+
 ## EXAMPLES
 
 ### Example 1: Create an Azure HDInsight cluster
