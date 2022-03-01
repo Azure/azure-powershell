@@ -676,6 +676,10 @@
     "module": "PrivateDns"
   },
   {
+    "alias": "Quota",
+    "module": "Quota"
+  },
+  {
     "regex": "ContainerInstance",
     "alias": "ContainerInstance"
   },
