@@ -24,11 +24,10 @@ Create an in-memory object for PowerBIDataSource.
 
 ### Example 1: Create PowerBI data source object
 ```powershell
-
+ New-AzPurviewPowerBIDataSourceObject -Kind 'PowerBI' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -Tenant 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx'
 ```
 
-PS C:\\> New-AzPurviewPowerBIDataSourceObject -Kind 'PowerBI' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -Tenant 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx'
-
+```output
 CollectionLastModifiedAt :
 CollectionReferenceName  : parv-brs-2
 CollectionType           : CollectionReference
