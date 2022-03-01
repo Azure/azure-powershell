@@ -12,7 +12,7 @@
     RootModule = './Az.Purview.psm1'
     
     # Version number of this module.
-    ModuleVersion = '0.1.0'
+    ModuleVersion = '0.2.0'
     
     # Supported PSEditions
     CompatiblePSEditions = 'Core', 'Desktop'
@@ -54,7 +54,7 @@
     RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.7.2'; })
     
     # Assemblies that must be loaded prior to importing this module
-    RequiredAssemblies = 'Purview.Autorest/bin/Az.Purview.private.dll', 'Purview.Data.Autorest/bin/Az.Purviewdata.private.dll'
+    RequiredAssemblies = 'Purview.Autorest/bin/Az.Purview.private.dll', 'Purviewdata.Autorest/bin/Az.Purviewdata.private.dll'
     
     # Script files (.ps1) that are run in the caller's environment prior to importing this module.
     # ScriptsToProcess = @()
@@ -63,10 +63,10 @@
     # TypesToProcess = @()
     
     # Format files (.ps1xml) to be loaded when importing this module
-    FormatsToProcess = 'Purview.Autorest/Az.Purview.format.ps1xml', 'Purview.Data.Autorest/Az.Purviewdata.format.ps1xml'
+    FormatsToProcess = 'Purview.Autorest/Az.Purview.format.ps1xml', 'Purviewdata.Autorest/Az.Purviewdata.format.ps1xml'
     
     # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-    NestedModules = 'Purview.Autorest/Az.Purview.psm1', 'Purview.Data.Autorest/Az.Purviewdata.psm1'
+    NestedModules = 'Purview.Autorest/Az.Purview.psm1', 'Purviewdata.Autorest/Az.Purviewdata.psm1'
     
     # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
     FunctionsToExport = 'Add-AzPurviewAccountRootCollectionAdmin', 'Get-AzPurviewAccount', 

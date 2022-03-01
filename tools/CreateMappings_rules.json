@@ -722,5 +722,9 @@
   {
     "alias": "Lab Services",
     "module": "LabServices"
+  },
+  {
+    "alias": "Purviewdata",
+    "module": "Purview"
   }
 ]
