@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.LogicApp.dll-Help.xml
 Module Name: Az.LogicApp
 online version: https://docs.microsoft.com/powershell/module/az.logicapp/get-azintegrationaccountreceivedicn
@@ -25,8 +25,11 @@ Please do provide the "-AgreementType" parameter to specify whether X12 or Edifa
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Get-AzIntegrationAccountReceivedIcn -AgreementType "X12" -ResourceGroupName "groupName" -Name "accountName" -AgreementName "X12AgreementName" -ControlNumberValue "000000641"
 ```
-PS C:\> Get-AzIntegrationAccountReceivedIcn -AgreementType "X12" -ResourceGroupName "groupName" -Name "accountName" -AgreementName "X12AgreementName" -ControlNumberValue "000000641"
+
+```output
 ControlNumber            : 000000641
 ControlNumberChangedTime : 2/15/2017 12:36:00 AM
 IsMessageProcessingFailed: False
@@ -35,8 +38,11 @@ IsMessageProcessingFailed: False
 This command gets the X12 integration account received interchange control number by agreement name and control number value.
 
 ### Example 2
+```powershell
+Get-AzIntegrationAccountReceivedIcn -AgreementType "Edifact" -ResourceGroupName "groupName" -Name "accountName" -AgreementName "EdifactAgreementName" -ControlNumberValue "000000641"
 ```
-PS C:\> Get-AzIntegrationAccountReceivedIcn -AgreementType "Edifact" -ResourceGroupName "groupName" -Name "accountName" -AgreementName "EdifactAgreementName" -ControlNumberValue "000000641"
+
+```output
 ControlNumber            : 000000641
 ControlNumberChangedTime : 2/15/2017 12:36:00 AM
 IsMessageProcessingFailed: False

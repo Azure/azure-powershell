@@ -10,6 +10,7 @@
     <Copyright>Microsoft Corporation. All rights reserved.</Copyright>
     <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <LangVersion>Latest</LangVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

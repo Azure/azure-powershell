@@ -37,8 +37,10 @@ Get developer keys of Remote Rendering Account.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzRemoteRenderingAccountKey -ResourceGroup rg1 -Name example
+Get-AzRemoteRenderingAccountKey -ResourceGroup rg1 -Name example
+```
 
+```output
 PrimaryKey                                   SecondaryKey
 ----------                                   ------------
 QTwT6LpnD6NuUfgfkCKFBmf89xWJ7tDC0Yx0yxxaejs= BGOP2NZN5ThHbDFKzW+FISSgxnnBqCPKpTsixAxkvXk=
@@ -48,8 +50,10 @@ Get developer keys of Remote Rendering Account "example" from current Subscripti
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzRemoteRenderingAccount -ResourceGroup rg1 -Name example | Get-AzRemoteRenderingAccountKey 
+Get-AzRemoteRenderingAccount -ResourceGroup rg1 -Name example | Get-AzRemoteRenderingAccountKey 
+```
 
+```output
 PrimaryKey                                   SecondaryKey
 ----------                                   ------------
 QTwT6LpnD6NuUfgfkCKFBmf89xWJ7tDC0Yx0yxxaejs= BGOP2NZN5ThHbDFKzW+FISSgxnnBqCPKpTsixAxkvXk=

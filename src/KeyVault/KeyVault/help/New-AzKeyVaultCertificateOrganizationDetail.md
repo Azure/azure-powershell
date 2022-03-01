@@ -26,9 +26,11 @@ The **New-AzKeyVaultCertificateOrganizationDetail** cmdlet creates an in-memory 
 
 ### Example 1: Create an organization details object
 ```powershell
-PS C:\> $AdminDetails = New-AzKeyVaultCertificateAdministratorDetail -FirstName "Patti" -LastName "Fuller" -EmailAddress "Patti.Fuller@contoso.com" -PhoneNumber "1234567890"
-PS C:\> New-AzKeyVaultCertificateOrganizationDetail -AdministratorDetails $AdminDetails
+$AdminDetails = New-AzKeyVaultCertificateAdministratorDetail -FirstName "Patti" -LastName "Fuller" -EmailAddress "Patti.Fuller@contoso.com" -PhoneNumber "1234567890"
+New-AzKeyVaultCertificateOrganizationDetail -AdministratorDetails $AdminDetails
+```
 
+```output
 Id AdministratorDetails
 -- --------------------
    {Patti}

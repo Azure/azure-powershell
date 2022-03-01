@@ -24,16 +24,16 @@ Public Ip assoicated to the firewall on virtual hub
 
 ### Example 1
 ```powershell
-PS C:\> New-AzFirewallHubPublicIpAddress -Count 2
+New-AzFirewallHubPublicIpAddress -Count 2
 ```
 
 This will create 2 public ips on the firewall attached to the virtual hub. This will create the ip address in the backend.We cannot provide the ipaddresses explicitly for a new firewall.
 
 ### Example 2
 ```powershell
-PS C:\> $publicIp1 = New-AzFirewallPublicIpAddress -Address 10.2.3.4
-PS C:\> $publicIp2 = New-AzFirewallPublicIpAddress -Address 20.56.37.46
-PS C:\> New-AzFirewallHubPublicIpAddress -Count 3 -Addresses $publicIp1, $publicIp2
+$publicIp1 = New-AzFirewallPublicIpAddress -Address 10.2.3.4
+$publicIp2 = New-AzFirewallPublicIpAddress -Address 20.56.37.46
+New-AzFirewallHubPublicIpAddress -Count 3 -Addresses $publicIp1, $publicIp2
 ```
 
 This will create 1 new public ip on the firewall by retain $publicIp1, $publicIp2 which are already exist on the firewall.

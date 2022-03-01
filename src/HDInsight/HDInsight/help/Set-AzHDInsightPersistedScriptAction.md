@@ -26,8 +26,8 @@ The script action will run each time the Azure HDInsight cluster is scaled up.
 ## EXAMPLES
 
 ### Example 1: Set a previously successful script action to be persisted, or run on cluster scale up
-```
-PS C:\>Set-AzHDInsightPersistedScriptAction `
+```powershell
+Set-AzHDInsightPersistedScriptAction `
             -ClusterName "your-hadoop-001" `
             -ScriptExecutionId "<id>"
 ```

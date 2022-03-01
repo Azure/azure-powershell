@@ -39,8 +39,10 @@ This will create or update all lab resources, such as virtual machines.
 
 ### Example 1: Publish the lab.
 ```powershell
-PS C:\> Publish-AzLabServicesLab -Name "Lab Name" -ResourceGroupName "Group Name"
+Publish-AzLabServicesLab -Name "Lab Name" -ResourceGroupName "Group Name"
+```
 
+```output
 Location Name
 -------- ----
 eastus2  Lab Name

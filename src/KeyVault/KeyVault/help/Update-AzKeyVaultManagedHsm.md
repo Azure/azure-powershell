@@ -40,8 +40,10 @@ This cmdlet updates the state of an Azure managed HSM.
 
 ### Example 1: Update a managed Hsm directly
 ```powershell
-PS C:\> Update-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $resourceGroupName -Tag @{testKey="testValue"} | fl
+Update-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $resourceGroupName -Tag @{testKey="testValue"} | fl
+```
 
+```output
 Managed HSM Name                    : testmhsm
 Resource Group Name                 : testmhsm
 Location                            : eastus2euap
@@ -49,7 +51,7 @@ Resource ID                         : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxx
                                       ers/Microsoft.KeyVault/managedHSMs/testmhsm
 HSM Pool URI                        :
 Tenant ID                           : xxxxxx-xxxx-xxxx-xxxxxxxxxxxx
-Initial Admin Object Ids            : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx​​​​​
+Initial Admin Object Ids            : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 SKU                                 : StandardB1
 Soft Delete Enabled?                : True
 Enabled Purge Protection?           : False
@@ -66,7 +68,7 @@ Updates tags for the managed Hsm named `$hsmName` in resource group `$resourceGr
 
 ### Example 2: Update a managed Hsm using piping
 ```powershell
-PS C:\> Get-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $resourceGroupName | Update-AzKeyVaultManagedHsm -Tag @{testKey="testValue"}
+Get-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $resourceGroupName | Update-AzKeyVaultManagedHsm -Tag @{testKey="testValue"}
 ```
 
 Updates tags for the managed Hsm using piping syntax.

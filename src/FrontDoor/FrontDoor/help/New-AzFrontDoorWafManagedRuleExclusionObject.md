@@ -24,8 +24,10 @@ Create managed rule exclusion object for WAF managed rule sets, groups, or rules
 
 ### Example 1
 ```powershell
-PS C:> New-AzFrontDoorWafManagedRuleExclusionObject -Variable QueryStringArgNames -Operator Equals -Selector "ParameterName"
+New-AzFrontDoorWafManagedRuleExclusionObject -Variable QueryStringArgNames -Operator Equals -Selector "ParameterName"
+```
 
+```output
 MatchVariable       SelectorMatchOperator Selector
 -------------       --------------------- --------
 QueryStringArgNames Equals                ParameterName
