@@ -19,6 +19,9 @@
         - Additional information about change #1
 
 -->
+## Version 4.24.0
+* Improve description and examples for Disk creation.
+
 ## Upcoming Release
 * Upgraded Compute .NET SDK package reference to version 52.0.0
 * Updated `New-AzSshKey` cmdlet to write file paths to generated keys to the Warning stream instead of the console.
