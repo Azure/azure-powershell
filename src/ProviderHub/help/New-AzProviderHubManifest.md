@@ -35,7 +35,7 @@ New-AzProviderHubManifest -ProviderNamespace "Microsoft.Contoso"space
 ```
 
 ```output
-ProviderType      ProviderVersion  RequiredFeature
+Namespace         ProviderType     ProviderVersion RequiredFeature
 ---------         ------------     --------------- ---------------
 Microsoft.Contoso Internal, Hidden 2.0
 ```
