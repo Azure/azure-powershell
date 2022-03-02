@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.ResourceManager.Models;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Resources.Models.PrivateLinks
 {
@@ -29,7 +30,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.PrivateLinks
 
         public string Location { get; private set; }
 
-        public ResourceManagementPrivateLinkEndpointConnections resourceManagementPrivateLinkEndpointConnections { get; private set; }
+        public IList<string> PrivateEndpointConnections { get; private set; }
 
         public PSResourceManagementPrivateLink()
         {
@@ -43,7 +44,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.PrivateLinks
                 Type = resourceManagementPrivateLink.Type;
                 Name = resourceManagementPrivateLink.Name;
                 Location = resourceManagementPrivateLink.Location;
-                resourceManagementPrivateLinkEndpointConnections = resourceManagementPrivateLink.Properties;
+                PrivateEndpointConnections = resourceManagementPrivateLink.Properties.PrivateEndpointConnections;
             }
         }
     }

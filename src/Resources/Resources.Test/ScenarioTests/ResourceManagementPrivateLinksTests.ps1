@@ -72,13 +72,13 @@ function Test-GetResourceManagementPrivateLinks
     $expectedLocation = "centralus"
 
     Assert-NotNull $getresponse
-    Assert-AreEqual @($getresponse.ResourceManagementPrivateLinkList).Count 2
-    Assert-AreEqual @($getresponse.ResourceManagementPrivateLinkList)[0].Type $expectedType
-    Assert-AreEqual @($getresponse.ResourceManagementPrivateLinkList)[1].Type $expectedType
-    Assert-AreEqual @($getresponse.ResourceManagementPrivateLinkList)[0].Location $expectedLocation
-    Assert-AreEqual @($getresponse.ResourceManagementPrivateLinkList)[1].Location $expectedLocation
-    Assert-AreEqual @($getresponse.ResourceManagementPrivateLinkList)[0].Name $expectedName1
-    Assert-AreEqual @($getresponse.ResourceManagementPrivateLinkList)[1].Name $expectedName2
+    Assert-AreEqual @($getresponse).Count 2
+    Assert-AreEqual @($getresponse)[0].Type $expectedType
+    Assert-AreEqual @($getresponse)[1].Type $expectedType
+    Assert-AreEqual @($getresponse)[0].Location $expectedLocation
+    Assert-AreEqual @($getresponse)[1].Location $expectedLocation
+    Assert-AreEqual @($getresponse)[0].Name $expectedName1
+    Assert-AreEqual @($getresponse)[1].Name $expectedName2
 }
 
 function Test-RemoveResourceManagementPrivateLinkAssociation
@@ -94,14 +94,17 @@ function Test-RemoveResourceManagementPrivateLinkAssociation
     $expectedType = "Microsoft.Authorization/privateLinkAssociations"
     
     Assert-NotNull $getresponse
-    Assert-AreEqual @($getresponse.ResourceManagementPrivateLinkAssociationList).Count 1
-    Assert-AreEqual @($getresponse.ResourceManagementPrivateLinkAssociationList)[0].Type $expectedType
-    Assert-AreEqual @($getresponse.ResourceManagementPrivateLinkAssociationList)[0].Name $expectedPrivateLinkAssociationId
-    Assert-AreEqual @($getresponse.ResourceManagementPrivateLinkAssociationList)[0].Properties.PublicNetworkAccess $expectedPublicNetworkAccess
-    Assert-AreEqual @($getresponse.ResourceManagementPrivateLinkAssociationList)[0].Properties.PrivateLink $expectedPrivateLinkResourceId
+    Assert-AreEqual @($getresponse).Count 1
+
+    $properties = @($getresponse)[0].Properties | ConvertFrom-Json
+
+    Assert-AreEqual @($getresponse)[0].Type $expectedType
+    Assert-AreEqual @($getresponse)[0].Name $expectedPrivateLinkAssociationId
+    Assert-AreEqual $properties.PublicNetworkAccess $expectedPublicNetworkAccess
+    Assert-AreEqual $properties.PrivateLink $expectedPrivateLinkResourceId
 
     Assert-NotNull $getresponse1
-    Assert-AreEqual @($getresponse1.ResourceManagementPrivateLinkAssociationList).Count 0
+    Assert-AreEqual @($getresponse1).Count 0
 }
 
 function Test-GetResourceManagementPrivateLinkAssociations
@@ -113,9 +116,12 @@ function Test-GetResourceManagementPrivateLinkAssociations
     $expectedType = "Microsoft.Authorization/privateLinkAssociations"
     
     Assert-NotNull $getresponse
-    Assert-AreEqual @($getresponse.ResourceManagementPrivateLinkAssociationList).Count 1
-    Assert-AreEqual @($getresponse.ResourceManagementPrivateLinkAssociationList)[0].Type $expectedType
-    Assert-AreEqual @($getresponse.ResourceManagementPrivateLinkAssociationList)[0].Name $expectedPrivateLinkAssociationId
-    Assert-AreEqual @($getresponse.ResourceManagementPrivateLinkAssociationList)[0].Properties.PublicNetworkAccess $expectedPublicNetworkAccess
-    Assert-AreEqual @($getresponse.ResourceManagementPrivateLinkAssociationList)[0].Properties.PrivateLink $expectedPrivateLinkResourceId
+    Assert-AreEqual @($getresponse).Count 1
+
+    $properties = @($getresponse)[0].Properties | ConvertFrom-Json
+
+    Assert-AreEqual @($getresponse)[0].Type $expectedType
+    Assert-AreEqual @($getresponse)[0].Name $expectedPrivateLinkAssociationId
+    Assert-AreEqual $properties.PublicNetworkAccess $expectedPublicNetworkAccess
+    Assert-AreEqual $properties.PrivateLink $expectedPrivateLinkResourceId
 }

@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added `Get-AzResourceManagementPrivateLink`,`Get-AzResourceManagementPrivateLinks`,`New-AzResourceManagementPrivateLink`,            `Remove-AzResourceManagementPrivateLink`, `Get-AzResourceManagementPrivateLinkAssociations` and          `Remove-AzResourceManagementPrivateLinkAssociation` cmdlets
 * Updated parameter name `EnableAccount` to `AccountEnabled`, and added alias `EnableAccount` for `Update-AzADUser` [#16753]
 * Fix for https://github.com/Azure/azure-powershell/issues/15828 (Set-AzPolicyAssignment)
 
