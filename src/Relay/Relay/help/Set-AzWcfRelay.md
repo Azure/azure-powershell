@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Relay.dll-Help.xml
 Module Name: Az.Relay
 online version: https://docs.microsoft.com/powershell/module/az.relay/set-azwcfrelay
@@ -31,13 +31,14 @@ The Set-AzWcfRelay cmdlet updates the description for the WcfRelay in the specif
 ## EXAMPLES
 
 ### Example 1 - InputObject
-```
-PS C:\>
-PS C:\> $getWcfRelay = Get-AzWcfRelay -ResourceGroupName Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -WcfRelayName TestWCFRelay
-PS C:\> $getWcfRelay.UserMetadata = "usermetadata is a placeholder to store user-defined string data for the HybridConnection endpoint.e.g. it can be used to store  desc
+```powershell
+$getWcfRelay = Get-AzWcfRelay -ResourceGroupName Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -WcfRelayName TestWCFRelay
+$getWcfRelay.UserMetadata = "usermetadata is a placeholder to store user-defined string data for the HybridConnection endpoint.e.g. it can be used to store  desc
 riptive data, such as list of teams and their contact information also user-defined configuration settings can be stored."
-PS C:\> Set-AzWcfRelay -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name TestWCFRelay1 -InputObject $getWcfRelay
+Set-AzWcfRelay -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name TestWCFRelay1 -InputObject $getWcfRelay
+```
 
+```output
 RelayType                   : Http
 CreatedAt                   : 4/26/2017 5:14:46 PM
 UpdatedAt                   : 4/26/2017 5:16:50 PM
@@ -54,9 +55,11 @@ Type                        : Microsoft.Relay/WcfRelays
 ```
 
 ### Example 2 - Properties
+```powershell
+Set-AzWcfRelay -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name TestWCFRelay1 -UserMetadata "User Meta data"
 ```
-PS C:\> Set-AzWcfRelay -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name TestWCFRelay1 -UserMetadata "User Meta data"
 
+```output
 RelayType                   : NetTcp
 CreatedAt                   : 4/26/2017 5:20:08 PM
 UpdatedAt                   : 4/26/2017 5:26:09 PM
