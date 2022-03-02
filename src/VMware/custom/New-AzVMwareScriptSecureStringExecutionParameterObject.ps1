@@ -20,12 +20,12 @@
     Create a in-memory object for ScriptSecureStringExecutionParameter
 
     .Outputs
-    Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.ScriptSecureStringExecutionParameter
+    Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ScriptSecureStringExecutionParameter
     .Link
     https://docs.microsoft.com/powershell/module/az.VMware/new-AzVMwareScriptSecureStringExecutionParameterObject
     #>
     function New-AzVMwareScriptSecureStringExecutionParameterObject {
-        [OutputType('Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.ScriptSecureStringExecutionParameter')]
+        [OutputType('Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ScriptSecureStringExecutionParameter')]
         [CmdletBinding(PositionalBinding=$false)]
         Param(
     
@@ -38,7 +38,7 @@
         )
 
         process {
-            $Object = [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.ScriptSecureStringExecutionParameter]::New()
+            $Object = [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ScriptSecureStringExecutionParameter]::New()
     
             $Object.SecureValue = $SecureValue
             $Object.Name = $Name
