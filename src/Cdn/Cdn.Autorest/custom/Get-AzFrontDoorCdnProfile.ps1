@@ -37,7 +37,7 @@ function Get-AzFrontDoorCdnProfile {
                 $profiles = @()
                 foreach ($oneInternalProfile in $internalProfiles)
                 {
-                    if (($oneInternalProfile.SkuName -eq "Premium_AzureFrontDoor") -or ($oneInternalProfile.SkuName -eq "Standard_AzureFrontDoor"))
+                    if(ISFrontDoorCdnProfile($oneInternalProfile.SkuName))
                     {
                         $profiles += $oneInternalProfile
                     }
@@ -45,7 +45,7 @@ function Get-AzFrontDoorCdnProfile {
             }else
             {
                 $oneInternalProfile = $internalProfiles
-                if (($oneInternalProfile.SkuName -eq "Premium_AzureFrontDoor") -or ($oneInternalProfile.SkuName -eq "Standard_AzureFrontDoor"))   
+                if(ISFrontDoorCdnProfile($oneInternalProfile.SkuName))
                 {
                     $profiles = $oneInternalProfile
                 }else{

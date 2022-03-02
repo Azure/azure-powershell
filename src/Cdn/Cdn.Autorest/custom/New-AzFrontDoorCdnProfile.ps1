@@ -101,12 +101,11 @@ function New-AzFrontDoorCdnProfile {
     )
     
     process {
-        if ($PSBoundParameters['SkuName'] -ne [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SkuName]::PremiumAzureFrontDoor -and
-        $PSBoundParameters['SkuName'] -ne [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SkuName]::StandardAzureFrontDoor) {
-            throw "$($PSBoundParameters['SkuName']) is not a valid SKU. Please use Premium_AzureFrontDoor or Standard_AzureFrontDoor.";
+        if(ISFrontDoorCdnProfile($PSBoundParameters['SkuName'])){
+            Az.Cdn.internal\New-AzCdnProfile @PSBoundParameters
+        }else{
+            throw "$($PSBoundParameters['SkuName']) is not a valid SKU. Please use a valid AzureFrontDoor SkuName.";
         }
-
-        Az.Cdn.internal\New-AzCdnProfile @PSBoundParameters
     }
 }
     
