@@ -39,27 +39,27 @@ Get-AzLoadBalancerBackendAddressPool retrieves inbound nat rule port mapping lis
 ### Example 1
 ```powershell
 ## Get inbound nat rule port mapping by NIC id
-PS C:\>Get-AzLoadBalancerBackendAddressInboundNatRulePortMapping -ResourceGroupName $rgname -LoadBalancerName $lbName -NetworkInterfaceIpConfigurationId $ipconfig.Id -Name pool1
+Get-AzLoadBalancerBackendAddressInboundNatRulePortMapping -ResourceGroupName $rgname -LoadBalancerName $lbName -NetworkInterfaceIpConfigurationId $ipconfig.Id -Name pool1
 ```
 
 ### Example 2
 ```powershell
 ## Get inbound nat rule port mapping by ip address
-PS C:\>$testIpAddress1 = "10.0.0.5"
-PS C:\>Get-AzLoadBalancerBackendAddressInboundNatRulePortMapping -ResourceGroupName $rgname -LoadBalancerName $lbName -Name $backendAddressPoolName -IpAddress $testIpAddress1
+$testIpAddress1 = "10.0.0.5"
+Get-AzLoadBalancerBackendAddressInboundNatRulePortMapping -ResourceGroupName $rgname -LoadBalancerName $lbName -Name $backendAddressPoolName -IpAddress $testIpAddress1
 ```
 
 ### Example 3
 ```powershell
 ## Get inbound nat rule port mapping by ip address and load balancer object
-PS C:\>$slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
-PS C:\>Get-AzLoadBalancerBackendAddressInboundNatRulePortMapping -LoadBalancer $slb -Name $backendAddressPoolName -IpAddress $testIpAddress1
+$slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
+Get-AzLoadBalancerBackendAddressInboundNatRulePortMapping -LoadBalancer $slb -Name $backendAddressPoolName -IpAddress $testIpAddress1
 ```
 
 ### Example 4
 ```powershell
 ## Get inbound nat rule port mapping by ip address and backend pool id
-PS C:\> Get-AzLoadBalancerBackendAddressInboundNatRulePortMapping -ResourceId $backendPool1.Id -IpAddress $testIpAddress1
+Get-AzLoadBalancerBackendAddressInboundNatRulePortMapping -ResourceId $backendPool1.Id -IpAddress $testIpAddress1
 ```
 
 ## PARAMETERS

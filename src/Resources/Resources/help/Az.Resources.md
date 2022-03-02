@@ -153,6 +153,8 @@ The cmdlet may call below Microsoft Graph API according to input parameters:
 - GET /directoryObjects/{id}
 - POST /directoryObjects/getByIds
 
+Please notice that this cmdlet will mark `ObjectType` as `Unknown` in output if the object of role assignment is not found or current account has insufficient privileges to get object type.
+
 ### [Get-AzRoleDefinition](Get-AzRoleDefinition.md)
 Lists all Azure RBAC roles that are available for assignment.
 
@@ -246,6 +248,8 @@ The cmdlet may call below Microsoft Graph API according to input parameters:
 - GET /servicePrincipals/{id}
 - GET /groups/{id}
 - GET /directoryObjects/{id}
+
+Please notice that this cmdlet will mark `ObjectType` as `Unknown` in output if the object of role assignment is not found or current account has insufficient privileges to get object type.
 
 ### [New-AzRoleDefinition](New-AzRoleDefinition.md)
 Creates a custom role in Azure RBAC.
@@ -359,6 +363,8 @@ The cmdlet may call below Microsoft Graph API according to input parameters:
 - GET /directoryObjects/{id}
 - POST /directoryObjects/getByIds
 
+Please notice that this cmdlet will mark `ObjectType` as `Unknown` in output if the object of role assignment is not found or current account has insufficient privileges to get object type.
+
 ### [Remove-AzRoleDefinition](Remove-AzRoleDefinition.md)
 Deletes a custom role in Azure RBAC.
 The role to be deleted is specified using the Id property of the role.
@@ -425,6 +431,8 @@ The cmdlet may call below Microsoft Graph API according to input parameters:
 - GET /groups/{id}
 - GET /directoryObjects/{id}
 - POST /directoryObjects/getByIds
+
+Please notice that this cmdlet will mark `ObjectType` as `Unknown` in output if the object of role assignment is not found or current account has insufficient privileges to get object type.
 
 ### [Set-AzRoleDefinition](Set-AzRoleDefinition.md)
 Modifies a custom role in Azure RBAC.

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.1.2
 * Updated the breaking change warning messages [#16805]
 
 ## Version 3.1.1

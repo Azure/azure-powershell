@@ -30,9 +30,11 @@ The **Get-AzDataShareSourceDataSet** cmdlet provides information about the sourc
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Get-AzDataShareSourceDataSet -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareSubscriptionName "AdsShareSubscription"
 ```
-PS C:\> Get-AzDataShareSourceDataSet -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareSubscriptionName "AdsShareSubscription"
 
+```output
 DataSetId   : 63116d3f-515a-47a2-9b18-d981b16a9d21
 DataSetName : filesystem1
 DataSetType : Blob

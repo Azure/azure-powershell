@@ -27,15 +27,15 @@ By default, **Get-AzVpnClientRootCertificate** returns information about all the
 ## EXAMPLES
 
 ### Example 1: Get information about all root certificates
-```
-PS C:\>Get-AzVpnClientRootCertificate -VirtualNetworkGatewayName "ContosoVirtualNetwork" -ResourceGroupName "ContosoResourceGroup"
+```powershell
+Get-AzVpnClientRootCertificate -VirtualNetworkGatewayName "ContosoVirtualNetwork" -ResourceGroupName "ContosoResourceGroup"
 ```
 
 This command gets information about all the root certificates assigned to a virtual network gateway named ContosoVirtualNetwork.
 
 ### Example 2: Get information about specific root certificates
-```
-PS C:\>Get-AzVpnClientRootCertificate -VirtualNetworkGatewayName "ContosoVirtualNetwork" -ResourceGroupName "ContosoResourceGroup" -VpnClientRootCertificateName "ContosoRootClientCertificate"
+```powershell
+Get-AzVpnClientRootCertificate -VirtualNetworkGatewayName "ContosoVirtualNetwork" -ResourceGroupName "ContosoResourceGroup" -VpnClientRootCertificateName "ContosoRootClientCertificate"
 ```
 
 This command is a variation of the command shown in Example 1.

@@ -30,15 +30,15 @@ The **Get-AzVirtualNetworkTap** cmdlet gets an Azure virtual network tap or a li
 ## EXAMPLES
 
 ### Example 1: Get a virtual network tap
-```
-PS C:\> Get-AzVirtualNetworkTap -ResourceGroupName "ResourceGroup1" -Name "VirtualTap1"
+```powershell
+Get-AzVirtualNetworkTap -ResourceGroupName "ResourceGroup1" -Name "VirtualTap1"
 ```
 
 This command gets a VirtualNetwork tap reference for given "VirtualTap1" in "ResourceGroup1".
 
 ### Example 2: Get all virtual network taps using filtering
-```
-PS C:\> Get-AzVirtualNetworkTap -Name "VirtualTap*"
+```powershell
+Get-AzVirtualNetworkTap -Name "VirtualTap*"
 ```
 
 This command gets all VirtualNetwork tap references that start with "VirtualTap".

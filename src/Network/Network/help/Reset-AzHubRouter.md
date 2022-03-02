@@ -38,7 +38,7 @@ Resets the Routing State of an existing VirtualHub resource only if the Routing 
 ### Example 1
 
 ```powershell
-PS C:\> Reset-AzHubRouter -ResourceGroupName "testRG" -Name "westushub"
+Reset-AzHubRouter -ResourceGroupName "testRG" -Name "westushub"
 ```
 
 Reset the routing state of the virtual hub using its ResourceGroupName and ResourceName.
@@ -46,7 +46,7 @@ Reset the routing state of the virtual hub using its ResourceGroupName and Resou
 ### Example 2
 
 ```powershell
-PS C:\> Reset-AzHubRouter -ResourceId "/subscriptions/testSub/resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub"
+Reset-AzHubRouter -ResourceId "/subscriptions/testSub/resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub"
 ```
 
 Reset the routing state of the virtual hub using its ResourceId.
@@ -54,7 +54,7 @@ Reset the routing state of the virtual hub using its ResourceId.
 ### Example 3
 
 ```powershell
-PS C:\> Reset-AzHubRouter -InputObject $virtualHub
+Reset-AzHubRouter -InputObject $virtualHub
 ```
 
 Reset the routing state of the virtual hub using an input object. The input object is of type PSVirtualHub.
@@ -62,7 +62,7 @@ Reset the routing state of the virtual hub using an input object. The input obje
 ### Example 4
 
 ```powershell
-PS C:\> Get-AzVirtualHub -ResourceGroupName "testRG" -Name "westushub" | Reset-AzHubRouter
+Get-AzVirtualHub -ResourceGroupName "testRG" -Name "westushub" | Reset-AzHubRouter
 ```
 
 An existing virtual hub object can be retrieved and then passed as input object to Reset-AzHubRouter.

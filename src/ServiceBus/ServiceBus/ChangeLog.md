@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.8.0
 * Added identity and encryption properties to New-AzServiceBusNamespace and Set-AzServiceBusNamespace.
 * Added New-AzServiceBusEncryptionConfig
 

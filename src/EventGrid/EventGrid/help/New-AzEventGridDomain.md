@@ -29,8 +29,10 @@ Creates a new Azure Event Grid Domain. Once the domain is created, an applicatio
 Creates an Event Grid domain \`Domain1\` in the specified geographic location \`westus2\`, in resource group \`MyResourceGroupName\`.
 
 ```powershell
-PS C:\> New-AzEventGridDomain -ResourceGroupName MyResourceGroupName -Name Domain1 -Location westus2
+New-AzEventGridDomain -ResourceGroupName MyResourceGroupName -Name Domain1 -Location westus2
+```
 
+```output
 ResourceGroupName : MyResourceGroupName
 DomainName        : Domain1
 Id                : /subscriptions/<Azure Subscription Id>/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/domains/domain1
@@ -46,8 +48,10 @@ Tags              :
 Creates an Event Grid domain \`Domain1\` in the specified geographic location \`westus2\`, in resource group \`MyResourceGroupName\` with the specified tags "Department" and "Environment".
 
 ```powershell
-PS C:\> New-AzEventGridDomain -ResourceGroupName MyResourceGroupName -Name Domain1 -Location westus2 -Tag @{ Department="Finance"; Environment="Test" }
+New-AzEventGridDomain -ResourceGroupName MyResourceGroupName -Name Domain1 -Location westus2 -Tag @{ Department="Finance"; Environment="Test" }
+```
 
+```output
 ResourceGroupName : MyResourceGroupName
 DomainName        : Domain1
 Id                : /subscriptions/<Azure Subscription Id>/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/domains/domain1

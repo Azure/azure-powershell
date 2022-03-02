@@ -1,0 +1,625 @@
+{
+  "AzConnectedNetworkVendor+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/testvendor1?api-version=2021-05-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/testvendor1?api-version=2021-05-01",
+      "Content": "{\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "4" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"38007b9e-0000-0700-0000-620c8f5a0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "d574ecf5-2d5b-478c-a15d-4e8c0dd81a03" ],
+        "x-ms-build-version": [ "" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.HybridNetwork/locations/SOUTHEASTASIA/operationStatuses/8a92f60b-28ce-4e44-982e-3beb1f4a46ff*48CA87D095F60DAED0B3D1334FB2D6925C4BAEA1CD956D941EFAACFA5B956590?api-version=2021-05-01" ],
+        "x-ms-correlation-request-id": [ "d9dd7971-1019-4ed2-b7d0-2e8027c90c8b" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20220216T054458Z:d9dd7971-1019-4ed2-b7d0-2e8027c90c8b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Feb 2022 05:44:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "468" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/testvendor1\",\"name\":\"testvendor1\",\"type\":\"microsoft.hybridnetwork/vendors\",\"systemData\":{\"createdBy\":\"existingResourceGroup@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-02-16T05:44:56.6964636Z\",\"lastModifiedBy\":\"existingResourceGroup@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-02-16T05:44:56.6964636Z\"},\"properties\":{\"provisioningState\":\"Accepted\",\"skus\":null}}",
+      "isContentBase64": false
+    }
+  },
+  "AzConnectedNetworkVendor+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Microsoft.HybridNetwork/locations/SOUTHEASTASIA/operationStatuses/8a92f60b-28ce-4e44-982e-3beb1f4a46ff*48CA87D095F60DAED0B3D1334FB2D6925C4BAEA1CD956D941EFAACFA5B956590?api-version=2021-05-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.HybridNetwork/locations/SOUTHEASTASIA/operationStatuses/8a92f60b-28ce-4e44-982e-3beb1f4a46ff*48CA87D095F60DAED0B3D1334FB2D6925C4BAEA1CD956D941EFAACFA5B956590?api-version=2021-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "38" ],
+        "x-ms-client-request-id": [ "6f40b760-6055-4f60-a2bc-c832a99d3ba2" ],
+        "CommandName": [ "New-AzConnectedNetworkVendor" ],
+        "FullCommandName": [ "New-AzConnectedNetworkVendor_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.ConnectedNetwork/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"d900be69-0000-1800-0000-620c8f5e0000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11998" ],
+        "x-ms-request-id": [ "a7b37368-e9d9-4910-80ee-bb21bdfed3ee" ],
+        "x-ms-correlation-request-id": [ "39d46f6d-0fff-4147-9df9-5a7ed59023d3" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20220216T054528Z:39d46f6d-0fff-4147-9df9-5a7ed59023d3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Feb 2022 05:45:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "542" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.HybridNetwork/locations/SOUTHEASTASIA/operationStatuses/8a92f60b-28ce-4e44-982e-3beb1f4a46ff*48CA87D095F60DAED0B3D1334FB2D6925C4BAEA1CD956D941EFAACFA5B956590\",\"name\":\"8a92f60b-28ce-4e44-982e-3beb1f4a46ff*48CA87D095F60DAED0B3D1334FB2D6925C4BAEA1CD956D941EFAACFA5B956590\",\"resourceId\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/testvendor1\",\"status\":\"Succeeded\",\"startTime\":\"2022-02-16T05:44:57.2209662Z\",\"endTime\":\"2022-02-16T05:45:02.7528285Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "AzConnectedNetworkVendor+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/testvendor1?api-version=2021-05-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/testvendor1?api-version=2021-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "39" ],
+        "x-ms-client-request-id": [ "6f40b760-6055-4f60-a2bc-c832a99d3ba2" ],
+        "CommandName": [ "New-AzConnectedNetworkVendor" ],
+        "FullCommandName": [ "New-AzConnectedNetworkVendor_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.ConnectedNetwork/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"38005c9f-0000-0700-0000-620c8f5e0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "e5ec8f5e-10c4-4fd0-8355-772df20ed34d" ],
+        "x-ms-correlation-request-id": [ "c9ff0598-3f3f-4549-a4ce-07b9aa13a00a" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20220216T054529Z:c9ff0598-3f3f-4549-a4ce-07b9aa13a00a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Feb 2022 05:45:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "479" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/testvendor1\",\"name\":\"testvendor1\",\"type\":\"microsoft.hybridnetwork/vendors\",\"systemData\":{\"createdBy\":\"existingResourceGroup@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-02-16T05:44:56.6964636Z\",\"lastModifiedBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2022-02-16T05:45:01.0457853Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzConnectedNetworkVendor+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/testvendor2?api-version=2021-05-01+4": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/testvendor2?api-version=2021-05-01",
+      "Content": "{\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "4" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"380010a4-0000-0700-0000-620c8f7b0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "59da2bb1-a199-430a-8ad4-1430f7dbde6a" ],
+        "x-ms-build-version": [ "" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.HybridNetwork/locations/SOUTHEASTASIA/operationStatuses/6bf70227-934e-403c-80bc-84599534042e*06BD58A7F404BA266AFE93FA2D250AAF20EFA9670E8584C83A7C272FB6C9BCFD?api-version=2021-05-01" ],
+        "x-ms-correlation-request-id": [ "d7012b2a-2178-4f36-a4aa-ea73a497c76b" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20220216T054531Z:d7012b2a-2178-4f36-a4aa-ea73a497c76b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Feb 2022 05:45:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "468" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/testvendor2\",\"name\":\"testvendor2\",\"type\":\"microsoft.hybridnetwork/vendors\",\"systemData\":{\"createdBy\":\"existingResourceGroup@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-02-16T05:45:30.3616467Z\",\"lastModifiedBy\":\"existingResourceGroup@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-02-16T05:45:30.3616467Z\"},\"properties\":{\"provisioningState\":\"Accepted\",\"skus\":null}}",
+      "isContentBase64": false
+    }
+  },
+  "AzConnectedNetworkVendor+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Microsoft.HybridNetwork/locations/SOUTHEASTASIA/operationStatuses/6bf70227-934e-403c-80bc-84599534042e*06BD58A7F404BA266AFE93FA2D250AAF20EFA9670E8584C83A7C272FB6C9BCFD?api-version=2021-05-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.HybridNetwork/locations/SOUTHEASTASIA/operationStatuses/6bf70227-934e-403c-80bc-84599534042e*06BD58A7F404BA266AFE93FA2D250AAF20EFA9670E8584C83A7C272FB6C9BCFD?api-version=2021-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "41" ],
+        "x-ms-client-request-id": [ "ee856353-11dc-4619-b8ec-7a8c69647186" ],
+        "CommandName": [ "New-AzConnectedNetworkVendor" ],
+        "FullCommandName": [ "New-AzConnectedNetworkVendor_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.ConnectedNetwork/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"d900ea6b-0000-1800-0000-620c8f800000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11997" ],
+        "x-ms-request-id": [ "eb276fc3-b23d-4293-ac04-518ac58f9728" ],
+        "x-ms-correlation-request-id": [ "d7b05fdc-f676-4337-8e2b-35b965554cda" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20220216T054601Z:d7b05fdc-f676-4337-8e2b-35b965554cda" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Feb 2022 05:46:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "542" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.HybridNetwork/locations/SOUTHEASTASIA/operationStatuses/6bf70227-934e-403c-80bc-84599534042e*06BD58A7F404BA266AFE93FA2D250AAF20EFA9670E8584C83A7C272FB6C9BCFD\",\"name\":\"6bf70227-934e-403c-80bc-84599534042e*06BD58A7F404BA266AFE93FA2D250AAF20EFA9670E8584C83A7C272FB6C9BCFD\",\"resourceId\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/testvendor2\",\"status\":\"Succeeded\",\"startTime\":\"2022-02-16T05:45:30.8891221Z\",\"endTime\":\"2022-02-16T05:45:36.2108365Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "AzConnectedNetworkVendor+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/testvendor2?api-version=2021-05-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/testvendor2?api-version=2021-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "42" ],
+        "x-ms-client-request-id": [ "ee856353-11dc-4619-b8ec-7a8c69647186" ],
+        "CommandName": [ "New-AzConnectedNetworkVendor" ],
+        "FullCommandName": [ "New-AzConnectedNetworkVendor_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.ConnectedNetwork/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"38000da5-0000-0700-0000-620c8f800000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "2483b0d4-2026-4b4e-ae4e-e633873dac2c" ],
+        "x-ms-correlation-request-id": [ "3eef8bef-148d-41ad-8f8e-0487834a6442" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20220216T054602Z:3eef8bef-148d-41ad-8f8e-0487834a6442" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Feb 2022 05:46:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "479" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/testvendor2\",\"name\":\"testvendor2\",\"type\":\"microsoft.hybridnetwork/vendors\",\"systemData\":{\"createdBy\":\"existingResourceGroup@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-02-16T05:45:30.3616467Z\",\"lastModifiedBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2022-02-16T05:45:34.4791506Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzConnectedNetworkVendor+[NoContext]+List+$GET+https://management.azure.com/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors?api-version=2021-05-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors?api-version=2021-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "43" ],
+        "x-ms-client-request-id": [ "bf030bfb-b516-477b-8295-79e987a1c8bf" ],
+        "CommandName": [ "Get-AzConnectedNetworkVendor" ],
+        "FullCommandName": [ "Get-AzConnectedNetworkVendor_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.ConnectedNetwork/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "20bde2b7-893d-4138-8332-4952d8a9e43f" ],
+        "x-ms-correlation-request-id": [ "4b4d4779-f778-4b25-85b8-c43a1148e53e" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20220216T054603Z:4b4d4779-f778-4b25-85b8-c43a1148e53e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Feb 2022 05:46:02 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "27424" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/vendorrbac01\",\"name\":\"vendorrbac01\",\"type\":\"microsoft.hybridnetwork/vendors\",\"systemData\":{\"createdBy\":\"user@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-04-07T21:11:42.2912068Z\",\"lastModifiedBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-04-07T21:11:45.9508939Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"skus\":null}},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/WSVendor\",\"name\":\"WSVendor\",\"type\":\"microsoft.hybridnetwork/vendors\",\"systemData\":{\"createdBy\":\"user@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-04-12T21:30:51.8516185Z\",\"lastModifiedBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-04-12T22:07:31.202528Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"skus\":[{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/WSVendor/vendorskus/WSSkus\"}]}},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/NFVendorTest\",\"name\":\"NFVendorTest\",\"type\":\"microsoft.hybridnetwork/vendors\",\"systemData\":{\"createdBy\":\"ykhazbak@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-04-30T21:03:18.1155805Z\",\"lastModifiedBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-05-04T16:46:47.1942653Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"skus\":[{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/NFVendorTest/vendorskus/ziti-1.0.0-snic\"},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/microsoft.hybridnetwork/vendors/NFVendorTest/vendorskus/netfoundrySkuTest04\"}]}},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/vendorABC\",\"name\":\"vendorABC\",\"type\":\"microsoft.hybridnetwork/vendors\",\"systemData\":{\"createdBy\":\"ykhazbak@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-05-07T04:14:31.9938016Z\",\"lastModifiedBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-05-07T04:14:36.4092881Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/TestV2\",\"name\":\"TestV2\",\"type\":\"Microsoft.HybridNetwork/vendors\",\"systemData\":{\"createdBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"createdByType\":\"Application\",\"createdAt\":\"2020-10-23T00:59:25.9973269Z\",\"lastModifiedBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2020-10-23T00:59:28.0959409Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"skus\":[]}},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/SeptVendor\",\"name\":\"SeptVendor\",\"type\":\"Microsoft.HybridNetwork/vendors\",\"systemData\":{\"createdBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"createdByType\":\"Application\",\"createdAt\":\"2020-10-23T00:02:52.9087832Z\",\"lastModifiedBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2020-10-23T00:59:45.291595Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"skus\":[{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/SeptVendor/vendorskus/1vm1nic2\"}]}},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/vendor1110\",\"name\":\"vendor1110\",\"type\":\"Microsoft.HybridNetwork/vendors\",\"systemData\":{\"createdBy\":\"user@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2020-11-10T16:36:59.5300654Z\",\"lastModifiedBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2020-11-10T16:38:24.8855857Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"skus\":[{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/vendor1110/vendorskus/sku1\"},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/vendor1110/vendorskus/sku2\"}]}},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/testFusionCoreVendor\",\"name\":\"testFusionCoreVendor\",\"type\":\"Microsoft.HybridNetwork/vendors\",\"systemData\":{\"createdBy\":\"nagou@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2020-11-26T13:26:01.1110952Z\",\"lastModifiedBy\":\"nagou@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2020-11-26T13:26:01.1110952Z\"},\"properties\":{\"provisioningState\":\"Accepted\",\"skus\":null}},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/testMetaswitchVendor\",\"name\":\"testMetaswitchVendor\",\"type\":\"Microsoft.HybridNetwork/vendors\",\"systemData\":{\"createdBy\":\"nagou@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2020-11-26T13:28:08.4681907Z\",\"lastModifiedBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2020-11-26T13:29:14.1292454Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"skus\":[{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/testMetaswitchVendor/vendorskus/fusioncore\"}]}},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/testFusionCoreVendorNew\",\"name\":\"testFusionCoreVendorNew\",\"type\":\"Microsoft.HybridNetwork/vendors\",\"systemData\":{\"createdBy\":\"nagou@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2020-11-26T14:27:05.885809Z\",\"lastModifiedBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-05-21T08:58:39.726641Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"skus\":[{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/testFusionCoreVendorNew/vendorskus/fusioncoreNew\"},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/testFusionCoreVendornew/vendorskus/094-01-lab\"},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/testFusionCoreVendornew/vendorskus/affirmed\"}]}},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/NFTestVendor\",\"name\":\"NFTestVendor\",\"type\":\"Microsoft.HybridNetwork/vendors\",\"systemData\":{\"createdBy\":\"user@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2020-12-12T00:22:30.0706271Z\",\"lastModifiedBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-03-13T21:28:50.6887828Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"skus\":[{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/NFTestVendor/vendorskus/loadtestsku\"},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/NFTestVendor/vendorskus/loadtestsku1\"}]}},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/chenven\",\"name\":\"chenven\",\"type\":\"Microsoft.HybridNetwork/vendors\",\"systemData\":{\"createdBy\":\"user@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-01-20T20:37:29.5373179Z\",\"lastModifiedBy\":\"user@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-01-20T20:37:29.5373179Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"skus\":null}},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/NFTestVendor1\",\"name\":\"NFTestVendor1\",\"type\":\"Microsoft.HybridNetwork/vendors\",\"systemData\":{\"createdBy\":\"qich@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-02-10T23:44:13.093005Z\",\"lastModifiedBy\":\"qich@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-02-10T23:44:13.093005Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"skus\":null}},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/user0324\",\"name\":\"user0324\",\"type\":\"microsoft.hybridnetwork/vendors\",\"systemData\":{\"createdBy\":\"user@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-03-24T19:56:42.2843963Z\",\"lastModifiedBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-06-09T17:49:10.9611389Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"skus\":[{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/user0324/vendorskus/UnityCloud-1.4.1-k8s-sersa\"}]}},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/user0609\",\"name\":\"user0609\",\"type\":\"microsoft.hybridnetwork/vendors\",\"systemData\":{\"createdBy\":\"user@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-06-09T16:58:43.059197Z\",\"lastModifiedBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-06-09T17:21:36.6897764Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"skus\":[{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/user0609/vendorskus/UnityCloud-1.4.1-k8s-sersa\"}]}},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/microsoft.hybridnetwork/vendors/affirmedtestvendor1\",\"name\":\"affirmedtestvendor1\",\"type\":\"microsoft.hybridnetwork/vendors\",\"systemData\":{\"createdBy\":\"user@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-06-13T21:26:31.6134919Z\",\"lastModifiedBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-06-13T21:43:28.0758877Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"skus\":[{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/microsoft.hybridnetwork/vendors/affirmedtestvendor1/vendorskus/Affirmed-HSS-0527\"},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/microsoft.hybridnetwork/vendors/affirmedtestvendor1/vendorskus/Affirmed-MCC-0515\"},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/microsoft.hybridnetwork/vendors/affirmedtestvendor1/vendorskus/Affirmed-MME-0515\"}]}},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/microsoft.hybridnetwork/vendors/vendorTest060921\",\"name\":\"vendorTest060921\",\"type\":\"microsoft.hybridnetwork/vendors\",\"systemData\":{\"createdBy\":\"pasaini@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-06-17T04:13:36.6064319Z\",\"lastModifiedBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-06-17T05:23:31.3122852Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"skus\":[{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/microsoft.hybridnetwork/vendors/vendorTest060921/vendorskus/skutest060921\"}]}},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.hybridnetwork/vendors/Swaggertestvendor1\",\"name\":\"Swaggertestvendor1\",\"type\":\"microsoft.hybridnetwork/vendors\",\"systemData\":{\"createdBy\":\"user@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-06-17T04:43:04.1980341Z\",\"lastModifiedBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-07-29T01:33:16.5478646Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"skus\":[{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.hybridnetwork/vendors/Swaggertestvendor1/vendorskus/Swaggertestvendorsku1\"}]}},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.hybridnetwork/vendors/SwaggerTesteastusVendor01\",\"name\":\"SwaggerTesteastusVendor01\",\"type\":\"microsoft.hybridnetwork/vendors\",\"systemData\":{\"createdBy\":\"user@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-06-21T22:32:46.6222225Z\",\"lastModifiedBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-06-22T00:58:25.7434761Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"skus\":[{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.hybridnetwork/vendors/SwaggerTesteastusVendor01/vendorskus/SwaggerTesteastusSku01\"},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.hybridnetwork/vendors/SwaggerTesteastusVendor01/vendorskus/SwaggerTesteastusSkuMix02\"}]}},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.hybridnetwork/vendors/SwaggerTesteastusVendorOld01\",\"name\":\"SwaggerTesteastusVendorOld01\",\"type\":\"microsoft.hybridnetwork/vendors\",\"systemData\":{\"createdBy\":\"user@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-06-21T22:33:47.1737326Z\",\"lastModifiedBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-06-22T00:38:48.3539271Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"skus\":[{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.hybridnetwork/vendors/SwaggerTesteastusVendorOld01/vendorskus/SwaggerTesteastusSkuOld01\"},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.hybridnetwork/vendors/SwaggerTesteastusVendorOld01/vendorskus/SwaggerTesteastusSkuMix01\"}]}},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.hybridnetwork/vendors/SwaggerTestEastusVendor01\",\"name\":\"SwaggerTestEastusVendor01\",\"type\":\"microsoft.hybridnetwork/vendors\",\"systemData\":{\"createdBy\":\"user@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-06-22T18:47:35.0475418Z\",\"lastModifiedBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-06-22T19:09:45.0738826Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"skus\":[{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.hybridnetwork/vendors/SwaggerTestEastusVendor01/vendorskus/SwaggerTestEastusSku01\"},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.hybridnetwork/vendors/SwaggerTestEastusVendor01/vendorskus/SwaggerTestEastusSkuMix02\"}]}},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.hybridnetwork/vendors/SwaggerTesEastusVendorOld01\",\"name\":\"SwaggerTesEastusVendorOld01\",\"type\":\"microsoft.hybridnetwork/vendors\",\"systemData\":{\"createdBy\":\"user@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-06-22T18:49:21.5645054Z\",\"lastModifiedBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-06-22T18:49:24.6354936Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.hybridnetwork/vendors/SwaggerTestEastusVendorOld01\",\"name\":\"SwaggerTestEastusVendorOld01\",\"type\":\"microsoft.hybridnetwork/vendors\",\"systemData\":{\"createdBy\":\"user@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-06-22T19:00:21.989578Z\",\"lastModifiedBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-06-22T19:08:47.6721616Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"skus\":[{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.hybridnetwork/vendors/SwaggerTestEastusVendorOld01/vendorskus/SwaggerTestEastusSkuOld01\"},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.hybridnetwork/vendors/SwaggerTestEastusVendorOld01/vendorskus/SwaggerTestEastusSkuMix01\"}]}},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.hybridnetwork/vendors/DTFtestvendor2\",\"name\":\"DTFtestvendor2\",\"type\":\"microsoft.hybridnetwork/vendors\",\"systemData\":{\"createdBy\":\"user@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-07-29T01:32:34.2395436Z\",\"lastModifiedBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-07-29T01:32:37.8048497Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.hybridnetwork/vendors/SEAsiaVendor02\",\"name\":\"SEAsiaVendor02\",\"type\":\"microsoft.hybridnetwork/vendors\",\"systemData\":{\"createdBy\":\"user@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-07-29T10:01:00.9334207Z\",\"lastModifiedBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-07-29T10:01:17.3877617Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"skus\":[{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.hybridnetwork/vendors/SEAsiaVendor02/vendorskus/SEAsiaVendorSKU02\"}]}},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.hybridnetwork/vendors/DTFTest01\",\"name\":\"DTFTest01\",\"type\":\"microsoft.hybridnetwork/vendors\",\"systemData\":{\"createdBy\":\"user@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-08-11T17:47:55.5026641Z\",\"lastModifiedBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-08-11T17:47:56.9833452Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.hybridnetwork/vendors/DTFTest02\",\"name\":\"DTFTest02\",\"type\":\"microsoft.hybridnetwork/vendors\",\"systemData\":{\"createdBy\":\"user@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-08-11T18:20:09.6492354Z\",\"lastModifiedBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-08-11T18:20:10.9689464Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/vendorHpnTest1\",\"name\":\"vendorHpnTest1\",\"type\":\"microsoft.hybridnetwork/vendors\",\"systemData\":{\"createdBy\":\"somahanta@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-08-13T13:21:58.5969091Z\",\"lastModifiedBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-08-13T13:22:02.851487Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.hybridnetwork/vendors/dtf99\",\"name\":\"dtf99\",\"type\":\"microsoft.hybridnetwork/vendors\",\"systemData\":{\"createdBy\":\"user@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-08-16T10:28:19.8900324Z\",\"lastModifiedBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-08-16T10:28:21.407132Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.hybridnetwork/vendors/dtfFinal02\",\"name\":\"dtfFinal02\",\"type\":\"microsoft.hybridnetwork/vendors\",\"systemData\":{\"createdBy\":\"user@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-08-18T08:13:23.5808593Z\",\"lastModifiedBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-08-18T08:13:24.552608Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/SigVendor01\",\"name\":\"SigVendor01\",\"type\":\"microsoft.hybridnetwork/vendors\",\"systemData\":{\"createdBy\":\"user@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-09-07T02:57:43.9469986Z\",\"lastModifiedBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-09-07T02:57:45.0037356Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/SigVendor02\",\"name\":\"SigVendor02\",\"type\":\"microsoft.hybridnetwork/vendors\",\"systemData\":{\"createdBy\":\"user@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-09-07T03:02:02.8247068Z\",\"lastModifiedBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-09-07T03:02:03.7754093Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/microsoft.hybridnetwork/vendors/RunnerTestVendorEastUstest1\",\"name\":\"RunnerTestVendorEastUstest1\",\"type\":\"microsoft.hybridnetwork/vendors\",\"systemData\":{\"createdBy\":\"user@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-09-16T17:54:51.3001545Z\",\"lastModifiedBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-09-16T18:04:54.1773123Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/newsigtestvendor01\",\"name\":\"newsigtestvendor01\",\"type\":\"microsoft.hybridnetwork/vendors\",\"systemData\":{\"createdBy\":\"user@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-09-23T03:10:30.8818935Z\",\"lastModifiedBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-09-23T03:12:25.5076881Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"skus\":[{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/newsigtestvendor01/vendorskus/newsigtestsku01\"}]}},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/sigtestvendor092201\",\"name\":\"sigtestvendor092201\",\"type\":\"microsoft.hybridnetwork/vendors\",\"systemData\":{\"createdBy\":\"user@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-09-23T03:57:24.3874141Z\",\"lastModifiedBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-09-23T03:58:29.5937237Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"skus\":[{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/sigtestvendor092201/vendorskus/sigtestsku01\"}]}},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/runnerlocalvendor062401\",\"name\":\"runnerlocalvendor062401\",\"type\":\"microsoft.hybridnetwork/vendors\",\"systemData\":{\"createdBy\":\"preetibayas@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-05T10:07:16.2945645Z\",\"lastModifiedBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-11-17T07:49:00.8343808Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"skus\":[{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/runnerlocalvendor062401/vendorskus/runnerlocalskuvnftest\"}]}},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/testvendor11\",\"name\":\"testvendor11\",\"type\":\"microsoft.hybridnetwork/vendors\",\"systemData\":{\"createdBy\":\"nagou@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-15T22:58:48.4996592Z\",\"lastModifiedBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-10-15T22:58:50.5337311Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/runner-test-vendor\",\"name\":\"runner-test-vendor\",\"type\":\"microsoft.hybridnetwork/vendors\",\"systemData\":{\"createdBy\":\"congl@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-29T00:48:25.5506338Z\",\"lastModifiedBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-10-29T00:48:29.4182145Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/user110221\",\"name\":\"user110221\",\"type\":\"microsoft.hybridnetwork/vendors\",\"systemData\":{\"createdBy\":\"user@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-11-03T02:52:48.9588586Z\",\"lastModifiedBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-11-03T02:56:04.546299Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/vendorPluginVersioning\",\"name\":\"vendorPluginVersioning\",\"type\":\"microsoft.hybridnetwork/vendors\",\"systemData\":{\"createdBy\":\"somahanta@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-12-15T10:07:11.6052515Z\",\"lastModifiedBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-12-15T10:12:04.2761149Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/testsku001\",\"name\":\"testsku001\",\"type\":\"microsoft.hybridnetwork/vendors\",\"systemData\":{\"createdBy\":\"nagou@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-01-28T02:55:00.9311867Z\",\"lastModifiedBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2022-01-28T02:55:03.9894267Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/cnftestvendor\",\"name\":\"cnftestvendor\",\"type\":\"microsoft.hybridnetwork/vendors\",\"systemData\":{\"createdBy\":\"nagou@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-02-01T20:08:09.0004473Z\",\"lastModifiedBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2022-02-01T20:08:10.5869011Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/microsoft.hybridnetwork/vendors/contoso\",\"name\":\"contoso\",\"type\":\"microsoft.hybridnetwork/vendors\",\"systemData\":{\"createdBy\":\"qich@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-02-03T07:31:21.6595041Z\",\"lastModifiedBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2022-02-03T07:31:26.5228623Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/existingVendor\",\"name\":\"existingVendor\",\"type\":\"microsoft.hybridnetwork/vendors\",\"systemData\":{\"createdBy\":\"existingResourceGroup@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-02-14T11:58:03.6870861Z\",\"lastModifiedBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2022-02-14T11:58:09.9616285Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/testvendor1\",\"name\":\"testvendor1\",\"type\":\"microsoft.hybridnetwork/vendors\",\"systemData\":{\"createdBy\":\"existingResourceGroup@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-02-16T05:44:56.6964636Z\",\"lastModifiedBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2022-02-16T05:45:01.0457853Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/testvendor2\",\"name\":\"testvendor2\",\"type\":\"microsoft.hybridnetwork/vendors\",\"systemData\":{\"createdBy\":\"existingResourceGroup@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-02-16T05:45:30.3616467Z\",\"lastModifiedBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2022-02-16T05:45:34.4791506Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "AzConnectedNetworkVendor+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/testvendor2?api-version=2021-05-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/testvendor2?api-version=2021-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "44" ],
+        "x-ms-client-request-id": [ "633a7dc3-3b9d-40fa-9d5b-cf9e2ad5adb6" ],
+        "CommandName": [ "Get-AzConnectedNetworkVendor" ],
+        "FullCommandName": [ "Get-AzConnectedNetworkVendor_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.ConnectedNetwork/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"38000da5-0000-0700-0000-620c8f800000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "298c272a-84f9-404c-895c-3c43aa9fff47" ],
+        "x-ms-correlation-request-id": [ "ca152fdf-7ede-4dde-a903-5384f6a57a95" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20220216T054604Z:ca152fdf-7ede-4dde-a903-5384f6a57a95" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Feb 2022 05:46:03 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "479" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/testvendor2\",\"name\":\"testvendor2\",\"type\":\"microsoft.hybridnetwork/vendors\",\"systemData\":{\"createdBy\":\"existingResourceGroup@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-02-16T05:45:30.3616467Z\",\"lastModifiedBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2022-02-16T05:45:34.4791506Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzConnectedNetworkVendor+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/testvendor1?api-version=2021-05-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/testvendor1?api-version=2021-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "45" ],
+        "x-ms-client-request-id": [ "581c22fe-bdcd-4157-bc56-67cc8d4ef847" ],
+        "CommandName": [ "Remove-AzConnectedNetworkVendor" ],
+        "FullCommandName": [ "Remove-AzConnectedNetworkVendor_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.ConnectedNetwork/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"38009da9-0000-0700-0000-620c8f9f0000\"" ],
+        "Location": [ "https://management.azure.com/providers/Microsoft.HybridNetwork/locations/SOUTHEASTASIA/operationStatuses/0a268fbd-664d-41c7-bdaf-059ed92ca519*48CA87D095F60DAED0B3D1334FB2D6925C4BAEA1CD956D941EFAACFA5B956590?api-version=2021-05-01" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "223a66bd-84de-4c91-912d-c8d202e55af5" ],
+        "x-ms-build-version": [ "" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.HybridNetwork/locations/SOUTHEASTASIA/operationStatuses/0a268fbd-664d-41c7-bdaf-059ed92ca519*48CA87D095F60DAED0B3D1334FB2D6925C4BAEA1CD956D941EFAACFA5B956590?api-version=2021-05-01" ],
+        "x-ms-correlation-request-id": [ "f485b555-9a37-4e1d-b7b3-f7e90512175e" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20220216T054607Z:f485b555-9a37-4e1d-b7b3-f7e90512175e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Feb 2022 05:46:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  },
+  "AzConnectedNetworkVendor+[NoContext]+Delete+$GET+https://management.azure.com/providers/Microsoft.HybridNetwork/locations/SOUTHEASTASIA/operationStatuses/0a268fbd-664d-41c7-bdaf-059ed92ca519*48CA87D095F60DAED0B3D1334FB2D6925C4BAEA1CD956D941EFAACFA5B956590?api-version=2021-05-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.HybridNetwork/locations/SOUTHEASTASIA/operationStatuses/0a268fbd-664d-41c7-bdaf-059ed92ca519*48CA87D095F60DAED0B3D1334FB2D6925C4BAEA1CD956D941EFAACFA5B956590?api-version=2021-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "46" ],
+        "x-ms-client-request-id": [ "581c22fe-bdcd-4157-bc56-67cc8d4ef847" ],
+        "CommandName": [ "Remove-AzConnectedNetworkVendor" ],
+        "FullCommandName": [ "Remove-AzConnectedNetworkVendor_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.ConnectedNetwork/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"d9007c6e-0000-1800-0000-620c8fa10000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11996" ],
+        "x-ms-request-id": [ "c41416f6-f454-4b5e-94f8-afc988f008e2" ],
+        "x-ms-correlation-request-id": [ "081d97c7-7a07-409b-baa2-1c9b0ab4afd9" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20220216T054637Z:081d97c7-7a07-409b-baa2-1c9b0ab4afd9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Feb 2022 05:46:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "542" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.HybridNetwork/locations/SOUTHEASTASIA/operationStatuses/0a268fbd-664d-41c7-bdaf-059ed92ca519*48CA87D095F60DAED0B3D1334FB2D6925C4BAEA1CD956D941EFAACFA5B956590\",\"name\":\"0a268fbd-664d-41c7-bdaf-059ed92ca519*48CA87D095F60DAED0B3D1334FB2D6925C4BAEA1CD956D941EFAACFA5B956590\",\"resourceId\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/testvendor1\",\"status\":\"Succeeded\",\"startTime\":\"2022-02-16T05:46:06.7597048Z\",\"endTime\":\"2022-02-16T05:46:09.1228897Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "AzConnectedNetworkVendor+[NoContext]+Delete+$GET+https://management.azure.com/providers/Microsoft.HybridNetwork/locations/SOUTHEASTASIA/operationStatuses/0a268fbd-664d-41c7-bdaf-059ed92ca519*48CA87D095F60DAED0B3D1334FB2D6925C4BAEA1CD956D941EFAACFA5B956590?api-version=2021-05-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.HybridNetwork/locations/SOUTHEASTASIA/operationStatuses/0a268fbd-664d-41c7-bdaf-059ed92ca519*48CA87D095F60DAED0B3D1334FB2D6925C4BAEA1CD956D941EFAACFA5B956590?api-version=2021-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "47" ],
+        "x-ms-client-request-id": [ "581c22fe-bdcd-4157-bc56-67cc8d4ef847" ],
+        "CommandName": [ "Remove-AzConnectedNetworkVendor" ],
+        "FullCommandName": [ "Remove-AzConnectedNetworkVendor_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.ConnectedNetwork/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"d9007c6e-0000-1800-0000-620c8fa10000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11995" ],
+        "x-ms-request-id": [ "b1e659e9-5f73-4058-a692-ea680cfe9481" ],
+        "x-ms-correlation-request-id": [ "a891bfbb-5be6-4a0c-afc9-77d4b0a015c6" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20220216T054637Z:a891bfbb-5be6-4a0c-afc9-77d4b0a015c6" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Feb 2022 05:46:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "542" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.HybridNetwork/locations/SOUTHEASTASIA/operationStatuses/0a268fbd-664d-41c7-bdaf-059ed92ca519*48CA87D095F60DAED0B3D1334FB2D6925C4BAEA1CD956D941EFAACFA5B956590\",\"name\":\"0a268fbd-664d-41c7-bdaf-059ed92ca519*48CA87D095F60DAED0B3D1334FB2D6925C4BAEA1CD956D941EFAACFA5B956590\",\"resourceId\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/testvendor1\",\"status\":\"Succeeded\",\"startTime\":\"2022-02-16T05:46:06.7597048Z\",\"endTime\":\"2022-02-16T05:46:09.1228897Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "AzConnectedNetworkVendor+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/testvendor2?api-version=2021-05-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/testvendor2?api-version=2021-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "48" ],
+        "x-ms-client-request-id": [ "7c9758ea-4652-41cd-935c-598f98cff0b9" ],
+        "CommandName": [ "Get-AzConnectedNetworkVendor" ],
+        "FullCommandName": [ "Get-AzConnectedNetworkVendor_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.ConnectedNetwork/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"38000da5-0000-0700-0000-620c8f800000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11988" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "e56731f2-620d-41a0-bdb9-9c36255e2c9c" ],
+        "x-ms-correlation-request-id": [ "3328bcf1-d7ff-4a7b-a97a-0409c4126db5" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20220216T054638Z:3328bcf1-d7ff-4a7b-a97a-0409c4126db5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Feb 2022 05:46:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "479" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/testvendor2\",\"name\":\"testvendor2\",\"type\":\"microsoft.hybridnetwork/vendors\",\"systemData\":{\"createdBy\":\"existingResourceGroup@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-02-16T05:45:30.3616467Z\",\"lastModifiedBy\":\"b8ed041c-aa91-418e-8f47-20c70abc2de1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2022-02-16T05:45:34.4791506Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzConnectedNetworkVendor+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/testvendor2?api-version=2021-05-01+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/testvendor2?api-version=2021-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "49" ],
+        "x-ms-client-request-id": [ "5d69dd1c-d202-4f7e-bc44-d8fe00526cc4" ],
+        "CommandName": [ "Remove-AzConnectedNetworkVendor" ],
+        "FullCommandName": [ "Remove-AzConnectedNetworkVendor_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.ConnectedNetwork/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"3800d2ae-0000-0700-0000-620c8fc00000\"" ],
+        "Location": [ "https://management.azure.com/providers/Microsoft.HybridNetwork/locations/SOUTHEASTASIA/operationStatuses/73163e7f-9aa4-471e-8fe1-49486a6de263*06BD58A7F404BA266AFE93FA2D250AAF20EFA9670E8584C83A7C272FB6C9BCFD?api-version=2021-05-01" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14997" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "4e29af00-20cb-451d-9226-12d29b5124db" ],
+        "x-ms-build-version": [ "" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.HybridNetwork/locations/SOUTHEASTASIA/operationStatuses/73163e7f-9aa4-471e-8fe1-49486a6de263*06BD58A7F404BA266AFE93FA2D250AAF20EFA9670E8584C83A7C272FB6C9BCFD?api-version=2021-05-01" ],
+        "x-ms-correlation-request-id": [ "25dd8826-9873-4f09-9d36-2bf13ea660a0" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20220216T054641Z:25dd8826-9873-4f09-9d36-2bf13ea660a0" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Feb 2022 05:46:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  },
+  "AzConnectedNetworkVendor+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Microsoft.HybridNetwork/locations/SOUTHEASTASIA/operationStatuses/73163e7f-9aa4-471e-8fe1-49486a6de263*06BD58A7F404BA266AFE93FA2D250AAF20EFA9670E8584C83A7C272FB6C9BCFD?api-version=2021-05-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.HybridNetwork/locations/SOUTHEASTASIA/operationStatuses/73163e7f-9aa4-471e-8fe1-49486a6de263*06BD58A7F404BA266AFE93FA2D250AAF20EFA9670E8584C83A7C272FB6C9BCFD?api-version=2021-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "50" ],
+        "x-ms-client-request-id": [ "5d69dd1c-d202-4f7e-bc44-d8fe00526cc4" ],
+        "CommandName": [ "Remove-AzConnectedNetworkVendor" ],
+        "FullCommandName": [ "Remove-AzConnectedNetworkVendor_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.ConnectedNetwork/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"d900d970-0000-1800-0000-620c8fc30000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11994" ],
+        "x-ms-request-id": [ "432a4755-b882-417a-8b6e-a27c838c5540" ],
+        "x-ms-correlation-request-id": [ "70fed9c3-bb89-481a-9a8d-c06a1c04cefe" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20220216T054711Z:70fed9c3-bb89-481a-9a8d-c06a1c04cefe" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Feb 2022 05:47:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "542" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.HybridNetwork/locations/SOUTHEASTASIA/operationStatuses/73163e7f-9aa4-471e-8fe1-49486a6de263*06BD58A7F404BA266AFE93FA2D250AAF20EFA9670E8584C83A7C272FB6C9BCFD\",\"name\":\"73163e7f-9aa4-471e-8fe1-49486a6de263*06BD58A7F404BA266AFE93FA2D250AAF20EFA9670E8584C83A7C272FB6C9BCFD\",\"resourceId\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/testvendor2\",\"status\":\"Succeeded\",\"startTime\":\"2022-02-16T05:46:40.6381001Z\",\"endTime\":\"2022-02-16T05:46:43.7280526Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "AzConnectedNetworkVendor+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Microsoft.HybridNetwork/locations/SOUTHEASTASIA/operationStatuses/73163e7f-9aa4-471e-8fe1-49486a6de263*06BD58A7F404BA266AFE93FA2D250AAF20EFA9670E8584C83A7C272FB6C9BCFD?api-version=2021-05-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.HybridNetwork/locations/SOUTHEASTASIA/operationStatuses/73163e7f-9aa4-471e-8fe1-49486a6de263*06BD58A7F404BA266AFE93FA2D250AAF20EFA9670E8584C83A7C272FB6C9BCFD?api-version=2021-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "51" ],
+        "x-ms-client-request-id": [ "5d69dd1c-d202-4f7e-bc44-d8fe00526cc4" ],
+        "CommandName": [ "Remove-AzConnectedNetworkVendor" ],
+        "FullCommandName": [ "Remove-AzConnectedNetworkVendor_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.ConnectedNetwork/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"d900d970-0000-1800-0000-620c8fc30000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11993" ],
+        "x-ms-request-id": [ "2d6b28e2-97ab-40f1-a130-a436dbe014b3" ],
+        "x-ms-correlation-request-id": [ "97302363-08d8-4889-9888-90f0b90bf303" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20220216T054711Z:97302363-08d8-4889-9888-90f0b90bf303" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Feb 2022 05:47:11 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "542" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.HybridNetwork/locations/SOUTHEASTASIA/operationStatuses/73163e7f-9aa4-471e-8fe1-49486a6de263*06BD58A7F404BA266AFE93FA2D250AAF20EFA9670E8584C83A7C272FB6C9BCFD\",\"name\":\"73163e7f-9aa4-471e-8fe1-49486a6de263*06BD58A7F404BA266AFE93FA2D250AAF20EFA9670E8584C83A7C272FB6C9BCFD\",\"resourceId\":\"/subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/testvendor2\",\"status\":\"Succeeded\",\"startTime\":\"2022-02-16T05:46:40.6381001Z\",\"endTime\":\"2022-02-16T05:46:43.7280526Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  }
+}

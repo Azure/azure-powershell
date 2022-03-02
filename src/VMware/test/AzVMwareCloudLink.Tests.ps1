@@ -16,17 +16,17 @@ Describe 'AzVMwareCloudLink' {
         {
             $Id2 = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup2)/providers/Microsoft.AVS/privateClouds/$($env.privateCloudName2)"
             $config = New-AzVMwareCloudLink -Name $env.rstr3 -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGroup1 -LinkedCloud $Id2
-            $config.Name | Should -Be $env.rstr3
+            $config.Name | Should -Be "cloudLink1"
 
             $config = Get-AzVMwareCloudLink -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGroup1
-            $config.Count | Should -Be 1
+            $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }
 
     It 'Get' {
         {
             $config = Get-AzVMwareCloudLink -Name $env.rstr3 -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGroup1
-            $config.Name | Should -Be $env.rstr3
+            $config.Name | Should -Be "cloudLink1"
         } | Should -Not -Throw
     }
 

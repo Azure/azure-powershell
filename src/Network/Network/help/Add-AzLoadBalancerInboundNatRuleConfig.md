@@ -38,9 +38,9 @@ The **Add-AzLoadBalancerInboundNatRuleConfig** cmdlet adds an inbound network ad
 
 ### Example 1: Add an inbound NAT rule configuration to a load balancer
 ```powershell
-PS C:\>$slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
-PS C:\> $slb | Add-AzLoadBalancerInboundNatRuleConfig -Name "NewNatRule" -FrontendIPConfiguration $slb.FrontendIpConfigurations[0] -Protocol "Tcp" -FrontendPort 3350 -BackendPort 3350 -EnableFloatingIP
-PS C:\> $slb | Set-AzLoadBalancer
+$slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
+$slb | Add-AzLoadBalancerInboundNatRuleConfig -Name "NewNatRule" -FrontendIPConfiguration $slb.FrontendIpConfigurations[0] -Protocol "Tcp" -FrontendPort 3350 -BackendPort 3350 -EnableFloatingIP
+$slb | Set-AzLoadBalancer
 ```
 
 The first command gets the load balancer named MyloadBalancer, and then stores it in the variable $slb.
@@ -49,9 +49,9 @@ The last command sets the configuration to the loadbalancer, if you don't perfor
 
 ### Example 2: Add an inbound NAT rule V2 configuration to a load balancer
 ```powershell
-PS C:\>$slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
-PS C:\> $slb | Add-AzLoadBalancerInboundNatRuleConfig -Name "NewNatRuleV2" -FrontendIPConfiguration $slb.FrontendIpConfigurations[0] -Protocol "Tcp" -IdleTimeoutInMinutes 10 -FrontendPortRangeStart 3389 -FrontendPortRangeEnd 4000 -BackendAddressPool $slb.BackendAddressPools[0] -BackendPort 3389
-PS C:\> $slb | Set-AzLoadBalancer
+$slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
+$slb | Add-AzLoadBalancerInboundNatRuleConfig -Name "NewNatRuleV2" -FrontendIPConfiguration $slb.FrontendIpConfigurations[0] -Protocol "Tcp" -IdleTimeoutInMinutes 10 -FrontendPortRangeStart 3389 -FrontendPortRangeEnd 4000 -BackendAddressPool $slb.BackendAddressPools[0] -BackendPort 3389
+$slb | Set-AzLoadBalancer
 ```
 
 The first command gets the load balancer named MyloadBalancer, and then stores it in the variable $slb.

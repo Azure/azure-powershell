@@ -105,6 +105,10 @@
     "alias": "Route"
   },
   {
+    "group": "DnsResolver",
+    "alias": "DnsResolver"
+  },
+  {
     "regex": "Dns",
     "group": "Network",
     "alias": "DNS"
@@ -724,7 +728,11 @@
     "module": "LabServices"
   },
   {
-    "alias": "Purviewdata",
-    "module": "Purview"
+    "alias": "BareMetal",
+    "module": "BareMetal"
+  },
+  {
+    "alias": "ConnectedNetwork",
+    "module": "ConnectedNetwork"
   }
 ]
