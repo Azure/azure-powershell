@@ -60,8 +60,8 @@ The **New-AzPolicySetDefinition** cmdlet creates a policy set definition.
 ]
 ```
 
-```
-PS C:\> New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"Virtual Machine"}' -PolicyDefinition C:\VMPolicySet.json
+```powershell
+New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"Virtual Machine"}' -PolicyDefinition C:\VMPolicySet.json
 ```
 
 This command creates a policy set definition named VMPolicySetDefinition with metadata indicating its category is "Virtual Machine" that contains the policy definitions specified in C:\VMPolicy.json. Example content of the VMPolicy.json is provided above.
@@ -86,8 +86,8 @@ This command creates a policy set definition named VMPolicySetDefinition with me
 ]
 ```
 
-```
-PS C:\> New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -PolicyDefinition C:\VMPolicySet.json -Parameter '{ "buTagValue": { "type": "string" } }'
+```powershell
+New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -PolicyDefinition C:\VMPolicySet.json -Parameter '{ "buTagValue": { "type": "string" } }'
 ```
 
 This command creates a parameterized policy set definition named VMPolicySetDefinition that contains the policy definitions specified in C:\VMPolicy.json. Example content of the VMPolicy.json is provided above.
@@ -106,9 +106,9 @@ This command creates a parameterized policy set definition named VMPolicySetDefi
 ]
 ```
 
-```
+```powershell
 $groupsJson = ConvertTo-Json @{ name = "group1" }, @{ name = "group2" }
-PS C:\> New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -GroupDefinition $groupsJson -PolicyDefinition C:\VMPolicySet.json
+New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -GroupDefinition $groupsJson -PolicyDefinition C:\VMPolicySet.json
 ```
 
 This command creates a policy set definition named VMPolicySetDefinition with grouping of policy definitions specified in C:\VMPolicy.json. Example content of the VMPolicy.json is provided above.
