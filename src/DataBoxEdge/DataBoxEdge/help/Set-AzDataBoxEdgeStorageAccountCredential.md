@@ -40,8 +40,11 @@ The **Set-AzDataBoxEdgeStorageAccountCredential** cmdlet updates the storage acc
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzDataBoxEdgeStorageAccountCredential -ResourceGroupName resourceGroupName -DeviceName deviceName -Name storageAcountCredentialName
+Set-AzDataBoxEdgeStorageAccountCredential -ResourceGroupName resourceGroupName -DeviceName deviceName -Name storageAcountCredentialName `
  -StorageAccountName storageaccountname -StorageAccountAccessKey @SecureString -EncryptionKey @SecureString
+ ```
+
+```output
 Name                        StorageAccount      SslStatus  ResourceGroupName
 --------------------------- ------------------- ---------- ---------------------
 storageAcountCredentialName storageaccountname  Enabled    resourceGroupName

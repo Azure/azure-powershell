@@ -23,10 +23,10 @@ The Remove-AzApplicationGatewayBackendHttpSetting cmdlet removes back-end Hypert
 ## EXAMPLES
 
 ### Example 1: Remove back-end HTTP settings from an application gateway
-```
-PS C:\>$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> Remove-AzApplicationGatewayBackendHttpSetting -ApplicationGateway $AppGw -Name "BackEndSetting02"
-PS C:\> Set-AzApplicationGateway -ApplicationGateway $AppGW
+```powershell
+$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+Remove-AzApplicationGatewayBackendHttpSetting -ApplicationGateway $AppGw -Name "BackEndSetting02"
+Set-AzApplicationGateway -ApplicationGateway $AppGW
 ```
 
 The first command gets an application gateway named ApplicationGateway01 that belongs to the resource group named ResourceGroup01 and stores it in the $AppGw variable.

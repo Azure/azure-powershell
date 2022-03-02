@@ -15,7 +15,7 @@ Describe 'AzVMwarePrivateCloudAdminCredential' {
     It 'List' {
         {
             $config = Get-AzVMwarePrivateCloudAdminCredential -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGroup1
-            $config.NsxtPassword | Should -Be "System.Security.SecureString"
+            $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }
 }

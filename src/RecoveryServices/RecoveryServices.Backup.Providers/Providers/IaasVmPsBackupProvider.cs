@@ -403,6 +403,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 ProviderData[RecoveryPointParams.RehydratePriority].ToString() : null;            
             bool useSystemAssignedIdentity = (bool)ProviderData[RestoreVMBackupItemParams.UseSystemAssignedIdentity];
             string userAssignedIdentityId = (string) ProviderData[RestoreVMBackupItemParams.UserAssignedIdentityId];
+            string restoreType = (string)ProviderData[RestoreVMBackupItemParams.RestoreType];
+            string targetVMName = (string)ProviderData[RestoreVMBackupItemParams.TargetVMName];
+            string targetVNetName = (string)ProviderData[RestoreVMBackupItemParams.TargetVNetName];
+            string targetVNetResourceGroup = (string)ProviderData[RestoreVMBackupItemParams.TargetVNetResourceGroup];
+            string targetSubnetName = (string)ProviderData[RestoreVMBackupItemParams.TargetSubnetName];
 
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(rp.Id);
             string containerUri = HelperUtils.GetContainerUri(uriDict, rp.Id);
@@ -420,8 +425,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 throw new Exception(string.Format(Resources.RestoreDiskStorageTypeError, vmType));
             }
 
-            // if the vm is managed virtual machine then either target rg or the unmanaged restore intent should be provided
-            if(rp.IsManagedVirtualMachine == true && targetResourceGroupName == null
+            // if the vm is managed virtual machine then either target rg or the unmanaged restore intent should be provided unless it is OLR
+            if(rp.IsManagedVirtualMachine == true && targetResourceGroupName == null && (string.Compare(restoreType, "OriginalLocation") != 0) 
                 && restoreAsUnmanagedDisks.IsPresent == false)
             {
                 throw new Exception(Resources.UnmanagedVMRestoreWarning);
@@ -474,7 +479,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     throw new NotSupportedException(Resources.MSIRestoreNotSupportedForUnmanagedVM);                    
                 }
             }
-
+            
+            string targetSubscription = ServiceClientAdapter.SubscriptionId;
+            
             IaasVMRestoreRequest restoreRequest = new IaasVMRestoreRequest()
             {
                 CreateNewCloudService = false,
@@ -483,9 +490,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 Region = vaultLocation ?? ServiceClientAdapter.BmsAdapter.GetResourceLocation(),
                 StorageAccountId = storageAccountResource.Id,
                 SourceResourceId = rp.SourceResourceId,
-                TargetResourceGroupId = targetResourceGroupName != null ?
-                    "/subscriptions/" + ServiceClientAdapter.SubscriptionId + "/resourceGroups/" + targetResourceGroupName :
-                    null,
+                TargetResourceGroupId = targetResourceGroupName != null ? "/subscriptions/" + targetSubscription + "/resourceGroups/" + targetResourceGroupName : null,
                 OriginalStorageAccountOption = useOsa,
                 RestoreDiskLunList = restoreDiskLUNS,
                 DiskEncryptionSetId = DiskEncryptionSetId,
@@ -504,7 +509,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 restoreRequest.Zones = targetZones;
             }
-            
+
+            if (restoreType == "OriginalLocation") // replace existing
+            {
+                restoreRequest.RecoveryType = RecoveryType.OriginalLocation;
+
+                if(targetResourceGroupName != null || restoreRequest.TargetResourceGroupId != null)
+                {                    
+                    throw new ArgumentException(String.Format(Resources.TargetRGNotRequiredException));
+                }                                
+            }
+            else if ( targetVMName != null || targetVNetName != null || targetVNetResourceGroup != null || targetSubnetName != null ) // create new VM
+            {
+                if(targetVMName == null || targetVNetName == null || targetVNetResourceGroup == null || targetSubnetName == null)
+                {                    
+                    throw new ArgumentException(String.Format(Resources.TargetParamsMissingException)); 
+                }
+
+                restoreRequest.RecoveryType = RecoveryType.AlternateLocation;
+                restoreRequest.TargetVirtualMachineId = "/subscriptions/" + targetSubscription + "/resourceGroups/" + targetResourceGroupName + "/providers/Microsoft.Compute/virtualMachines/" + targetVMName;
+                restoreRequest.VirtualNetworkId = "/subscriptions/" + targetSubscription + "/resourceGroups/" + targetVNetResourceGroup + "/providers/Microsoft.Network/virtualNetworks/" + targetVNetName;
+                restoreRequest.SubnetId = restoreRequest.VirtualNetworkId + "/subnets/" + targetSubnetName;
+            }
+
             RestoreRequestResource triggerRestoreRequest = new RestoreRequestResource();
             triggerRestoreRequest.Properties = restoreRequest;
             

@@ -1,0 +1,2 @@
+"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Az.Quota","New-AzQuotaLimitObject","New-AzQuotaLimitObject","1","8100","New-AzQuotaLimitObject Does not support ShouldProcess but the cmdlet verb New indicates that it should.","Determine if the cmdlet should implement ShouldProcess and if so determine if it should implement Force / ShouldContinue"

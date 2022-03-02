@@ -36,7 +36,7 @@ The Remove-AzNetworkWatcher cmdlet removes a Network Watcher resource.
 ## EXAMPLES
 
 ### Example 1: Create and delete a Network Watcher
-```
+```powershell
 New-AzResourceGroup -Name NetworkWatcherRG -Location westcentralus
 New-AzNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup NetworkWatcherRG -Location westcentralus
 Remove-AzNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup NetworkWatcherRG

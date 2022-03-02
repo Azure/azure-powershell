@@ -31,8 +31,10 @@ The **Get-AzCosmosDBGremlinDatabase** cmdlet gets the CosmosDB Gremlin Database.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCosmosDBGremlinDatabase -ResourceGroupName {rgName} -AccountName {accountName} -Name {databaseName}
+Get-AzCosmosDBGremlinDatabase -ResourceGroupName {rgName} -AccountName {accountName} -Name {databaseName}
+```
 
+```output
 Name    Id   Resource
 {name}  {id} Microsoft.Azure.Commands.CosmosDB.Models.PSGremlinDatabaseGetPropertiesResource
 ```

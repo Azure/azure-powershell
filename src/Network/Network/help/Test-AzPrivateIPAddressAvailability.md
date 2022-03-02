@@ -32,8 +32,8 @@ This cmdlet returns a list of available private IP addresses if the requested pr
 ## EXAMPLES
 
 ### Example 1: Test whether an IP address is available using the pipeline
-```
-PS C:\>Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Test-AzPrivateIPAddressAvailability -IPAddress "10.0.1.10"
+```powershell
+Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Test-AzPrivateIPAddressAvailability -IPAddress "10.0.1.10"
 ```
 
 This command gets a virtual network and uses the pipeline operator to pass it to **Test-AzPrivateIPAddressAvailability**, which tests whether the specified private IP address is available.

@@ -24,7 +24,7 @@ Gets status of an ongoing purge operation.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzOperationalInsightsPurgeWorkspaceStatus -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "MyWorkspace" -PurgeId "cd944bc7-ba11-447e-910c-c6393ac020a9"
+Get-AzOperationalInsightsPurgeWorkspaceStatus -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "MyWorkspace" -PurgeId "cd944bc7-ba11-447e-910c-c6393ac020a9"
 ```
 
 This command gets the status of an ongoing purge operation by resource group name, workspace name and the purge id returned from New-AzOperationalInsightsPurgeWorkspace command.

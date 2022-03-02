@@ -39,7 +39,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell
         public MarkdownHelpInfo(VariantGroup variantGroup, string examplesFolder, string externalHelpFilename = "")
         {
             ExternalHelpFilename = externalHelpFilename;
-            ModuleName = variantGroup.ModuleName;
+            ModuleName = variantGroup.RootModuleName != "" ? variantGroup.RootModuleName : variantGroup.ModuleName;
             var helpInfo = variantGroup.HelpInfo;
             var commentInfo = variantGroup.CommentInfo;
             Schema = Version.Parse("2.0.0");

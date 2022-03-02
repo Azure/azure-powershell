@@ -24,9 +24,10 @@ The **New-AzFrontDoorBackendpoolsSettingObject** cmdlet creates a new PSBackendP
 
 ### Example 1: Create BackendPoolsSettings object using defaults
 ```powershell
-PS C:\> New-AzFrontDoorBackendpoolsSettingObject
+New-AzFrontDoorBackendpoolsSettingObject
+```
 
-
+```output
 EnforceCertificateNameCheck : Enabled
 SendRecvTimeoutInSeconds      : 30
 Id                          :
@@ -36,9 +37,10 @@ Type                        :
 
 ### Example 2: Create BackendPoolsSettings object with user specified values
 ```powershell
-PS C:\> New-AzFrontDoorBackendpoolsSettingObject -SendRecvTimeoutInSeconds 60 -EnforceCertificateNameCheck Enabled
+New-AzFrontDoorBackendpoolsSettingObject -SendRecvTimeoutInSeconds 60 -EnforceCertificateNameCheck Enabled
+```
 
-
+```output
 EnforceCertificateNameCheck : Enabled
 SendRecvTimeoutInSeconds      : 60
 Id                          :

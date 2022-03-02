@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll-Help.xml
 Module Name: Az.DataLakeStore
 ms.assetid: FFB335D4-AE3E-4788-B6FD-9AFC36F52B61
@@ -25,18 +25,18 @@ The **Set-AzDataLakeStoreItemAcl** cmdlet modifies the access control list (ACL)
 ## EXAMPLES
 
 ### Example 1: Set the ACL for a file and a folder
-```
-PS C:\>$ACL = Get-AzDataLakeStoreItemAclEntry -AccountName "ContosoADL" -Path /
-PS C:\> Set-AzDataLakeStoreItemAcl -AccountName "ContosoADL" -Path "/MyFiles/Test.txt" -Acl $ACL
+```powershell
+$ACL = Get-AzDataLakeStoreItemAclEntry -AccountName "ContosoADL" -Path /
+Set-AzDataLakeStoreItemAcl -AccountName "ContosoADL" -Path "/MyFiles/Test.txt" -Acl $ACL
 ```
 
 The first command gets the ACL for the root directory of the ContosoADL account, and then stores it in the $ACL variable.
 The second command sets the ACL for the file Test.txt to the one in $ACL.
 
 ### Example 2: Set the ACL for folder recursively
-```
-PS C:\>$ACL = Get-AzDataLakeStoreItemAclEntry -AccountName "ContosoADL" -Path /Folder1
-PS C:\> Set-AzDataLakeStoreItemAcl -AccountName "ContosoADL" -Path "/Folder2" -Acl $ACL -Recurse -Concurrency 128
+```powershell
+$ACL = Get-AzDataLakeStoreItemAclEntry -AccountName "ContosoADL" -Path /Folder1
+Set-AzDataLakeStoreItemAcl -AccountName "ContosoADL" -Path "/Folder2" -Acl $ACL -Recurse -Concurrency 128
 ```
 
 The first command gets the ACL for the directory Folder1 of the ContosoADL account, and then stores it in the $ACL variable.

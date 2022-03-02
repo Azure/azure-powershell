@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Common
         public void OnNewRequest(InvocationInfo invocationInfo, string correlationId, string processRecordId, PipelineChangeDelegate prependStep, PipelineChangeDelegate appendStep)
         {
             appendStep(new UserAgent(invocationInfo).SendAsync);
-            appendStep(this.SendHandler(GetDefaultContext(_provider, invocationInfo), AzureEnvironment.Endpoint.ResourceManager));
+            appendStep(this.SendHandler(GetDefaultContext(_provider, invocationInfo), AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId));
         }
 
         internal void AddRequestUserAgentHandler(
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Common
             appendStep(
                 async (request, cancelToken, cancelAction, signal, next) =>
                 {
-                    endpointResourceIdKey = endpointResourceIdKey ?? AzureEnvironment.Endpoint.ResourceManager;
+                    endpointResourceIdKey = endpointResourceIdKey ?? AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId;
                     var context = GetDefaultContext(_provider, invocationInfo);
                     return await AuthenticationHelper(context, endpointResourceIdKey, endpointSuffixKey, request, cancelToken, cancelAction, signal, next);
                 });
@@ -195,30 +195,35 @@ namespace Microsoft.Azure.Commands.Common
         internal async Task<HttpResponseMessage> AuthenticationHelper(IAzureContext context, string endpointResourceIdKey, string endpointSuffixKey, HttpRequestMessage request, CancellationToken cancelToken, Action cancelAction, SignalDelegate signal, NextDelegate next, TokenAudienceConverterDelegate tokenAudienceConverter = null)
         {
             IAccessToken accessToken = await AuthorizeRequest(context, request, cancelToken, endpointResourceIdKey, endpointSuffixKey, tokenAudienceConverter);
-            var newRequest = await request.CloneWithContentAndDispose(request.RequestUri, request.Method);
-            var response = await next(request, cancelToken, cancelAction, signal);
-
-            if (response.MatchClaimsChallengePattern())
+            using (var newRequest = await request.CloneWithContent(request.RequestUri, request.Method))
             {
-                //get token again with claims challenge
-                if (accessToken is IClaimsChallengeProcessor processor)
+                var response = await next(request, cancelToken, cancelAction, signal);
+
+                if (response.MatchClaimsChallengePattern())
                 {
-                    try
+                    //get token again with claims challenge
+                    if (accessToken is IClaimsChallengeProcessor processor)
                     {
-                        var claimsChallenge = ClaimsChallengeUtilities.GetClaimsChallenge(response);
-                        if (!string.IsNullOrEmpty(claimsChallenge))
+                        try
                         {
-                            await processor.OnClaimsChallenageAsync(newRequest, claimsChallenge, cancelToken).ConfigureAwait(false);
-                            response = await next(newRequest, cancelToken, cancelAction, signal);
+                            var claimsChallenge = ClaimsChallengeUtilities.GetClaimsChallenge(response);
+                            if (!string.IsNullOrEmpty(claimsChallenge))
+                            {
+                                await processor.OnClaimsChallenageAsync(newRequest, claimsChallenge, cancelToken).ConfigureAwait(false);
+                                using (var previousReponse = response)
+                                {
+                                    response = await next(newRequest, cancelToken, cancelAction, signal);
+                                }
+                            }
+                        }
+                        catch (AuthenticationFailedException e)
+                        {
+                            throw e.WithAdditionalMessage(response?.GetWwwAuthenticateMessage());
                         }
                     }
-                    catch (AuthenticationFailedException e)
-                    {
-                        throw e.WithAdditionalMessage(response?.GetWwwAuthenticateMessage());
-                    }
                 }
+                return response;
             }
-            return response;
         }
 
         /// <summary>

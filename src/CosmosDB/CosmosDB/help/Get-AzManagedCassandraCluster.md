@@ -31,17 +31,17 @@ The **Get-AzManagedCassandraCluster** cmdlet fetches the properties of an existi
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzManagedCassandraCluster -ResourceGroupName {resourceGroupName} -ClusterName {clusterName}
+Get-AzManagedCassandraCluster -ResourceGroupName {resourceGroupName} -ClusterName {clusterName}
 ```
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzManagedCassandraCluster -ResourceId {resourceId}
+Get-AzManagedCassandraCluster -ResourceId {resourceId}
 ```
 
 ### Example 3
 ```powershell
-PS C:\> $clusterResource | Get-AzManagedCassandraCluster
+$clusterResource | Get-AzManagedCassandraCluster
 ```
 
 ## PARAMETERS

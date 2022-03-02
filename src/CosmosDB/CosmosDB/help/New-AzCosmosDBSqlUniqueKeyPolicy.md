@@ -24,8 +24,10 @@ The **New-AzCosmosDBSqlUniqueKeyPolicy** cmdlet creates a new object of type PSS
 
 ### Example 1
 ```powershell
-PS C:\>New-AzCosmosDBSqlUniqueKeyPolicy -UniqueKey {psUniqueKey1, psUniqueKey2}
+New-AzCosmosDBSqlUniqueKeyPolicy -UniqueKey {psUniqueKey1, psUniqueKey2}
+```
 
+```output
 UniqueKey
 ---------
 {Microsoft.Azure.Commands.CosmosDB.Models.PSSqlUniqueKey, Microsoft.Azure.Commands.CosmosDB.Models.PSSqlUniqueKey}
