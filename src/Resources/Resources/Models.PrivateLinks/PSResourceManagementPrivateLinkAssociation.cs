@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.ResourceManager.Models;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Resources.Models.PrivateLinks
 {
@@ -27,7 +28,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.PrivateLinks
 
         public string Name { get; private set; }
 
-        public PrivateLinkAssociationPropertiesExpanded Properties { get; private set; }
+        public string Properties { get; private set; }
 
         public PSResourceManagementPrivateLinkAssociation()
         {
@@ -40,7 +41,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.PrivateLinks
                 Id = privateLinkAssociation.Id;
                 Type = privateLinkAssociation.Type;
                 Name = privateLinkAssociation.Name;
-                Properties = privateLinkAssociation.Properties;
+                Properties = JsonConvert.SerializeObject(privateLinkAssociation.Properties);
             }
         }
     }

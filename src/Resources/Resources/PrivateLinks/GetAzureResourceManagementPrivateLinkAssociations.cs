@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Resources.Models.PrivateLinks;
 using Microsoft.Azure.Commands.Resources.PrivateLinks.Common;
@@ -27,7 +28,7 @@ namespace Microsoft.Azure.Commands.Resources.PrivateLinks
         VerbsCommon.Get,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ResourceManagementPrivateLinkAssociations",
         DefaultParameterSetName = Constants.ParameterSetNames.GetPLAssociationParameterSet,
-        SupportsShouldProcess = true), OutputType(typeof(PSResourceManagementPrivateLinkAssociationList))]
+        SupportsShouldProcess = true), OutputType(typeof(PSResourceManagementPrivateLinkAssociation))]
     public class GetAzureResourceManagementPrivateLinkAssociations : PrivateLinksCmdletBase
     {
         #region Cmdlet Parameters and Parameter Set Definitions
@@ -50,7 +51,9 @@ namespace Microsoft.Azure.Commands.Resources.PrivateLinks
                 {
                     var response = ResourceManagementPrivateLinkClient.PrivateLinkAssociation.Get(
                         groupId: ManagementGroupId);
-                    WriteObject(new PSResourceManagementPrivateLinkAssociationList(response));
+                    var items = response.Value.Select(privateLinkAssociation => new PSResourceManagementPrivateLinkAssociation(privateLinkAssociation))
+                        .ToList();
+                    WriteObject(items);
                 }
             }
             catch (Exception ex)

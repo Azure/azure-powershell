@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Resources.Models.PrivateLinks;
 using Microsoft.Azure.Commands.Resources.PrivateLinks.Common;
@@ -27,7 +28,7 @@ namespace Microsoft.Azure.Commands.Resources.PrivateLinks
         VerbsCommon.Get,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ResourceManagementPrivateLinks",
         DefaultParameterSetName = Constants.ParameterSetNames.ListParameterSet,
-        SupportsShouldProcess = true), OutputType(typeof(PSResourceManagementPrivateLinkList))]
+        SupportsShouldProcess = true), OutputType(typeof(PSResourceManagementPrivateLink))]
     public class GetAzureResourceManagementPrivateLinks : PrivateLinksCmdletBase
     {
         public override void ExecuteCmdlet()
@@ -36,7 +37,9 @@ namespace Microsoft.Azure.Commands.Resources.PrivateLinks
             {
                 //List all the private links in a subscription no parameters needed
                 var response = ResourceManagementPrivateLinkClient.ResourceManagementPrivateLink.List();
-                WriteObject(new PSResourceManagementPrivateLinkList(response));
+                var items = response.Value.Select(resourceManagementPrivateLink => new PSResourceManagementPrivateLink(resourceManagementPrivateLink))
+                    .ToList();
+                WriteObject(items);
             }
             catch (Exception ex)
             {
