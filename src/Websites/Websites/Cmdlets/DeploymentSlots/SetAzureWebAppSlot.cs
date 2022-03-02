@@ -136,6 +136,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         [ValidateNotNullOrEmpty]
         public string[] HostNames { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Health Check Path", ParameterSetName = ParameterSet1Name)]
+        [ValidateNotNullOrEmpty]
+        public string HealthCheckPath { get; set; }
+
 
         public override void ExecuteCmdlet()
         {
@@ -182,7 +186,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                             AutoSwapSlotName = parameters.Contains("AutoSwapSlotName") ? AutoSwapSlotName : null,
                             NumberOfWorkers = parameters.Contains("NumberOfWorkers") ? NumberOfWorkers : WebApp.SiteConfig.NumberOfWorkers,
                             AlwaysOn = parameters.Contains("AlwaysOn") ? (bool?)AlwaysOn : null,
-                            FtpsState = parameters.Contains("FtpsState") ? FtpsState : WebApp.SiteConfig.FtpsState
+                            FtpsState = parameters.Contains("FtpsState") ? FtpsState : WebApp.SiteConfig.FtpsState,
+                            HealthCheckPath = parameters.Contains("HealthCheckPath") ? HealthCheckPath : WebApp.SiteConfig.HealthCheckPath
                         };
                     }
 

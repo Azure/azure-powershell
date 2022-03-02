@@ -24,8 +24,8 @@ Set-AzWebApp [[-AppServicePlan] <String>] [[-DefaultDocuments] <String[]>] [[-Ne
  [-ContainerRegistryUser <String>] [-ContainerRegistryPassword <SecureString>]
  [-EnableContainerContinuousDeployment <Boolean>] [-HostNames <String[]>] [-NumberOfWorkers <Int32>] [-AsJob]
  [-AssignIdentity <Boolean>] [-HttpsOnly <Boolean>] [-AzureStoragePath <WebAppAzureStoragePath[]>]
- [-AlwaysOn <Boolean>] [-MinTlsVersion <String>] [-FtpsState <String>] [-ResourceGroupName] <String>
- [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-AlwaysOn <Boolean>] [-MinTlsVersion <String>] [-FtpsState <String>] [-HealthCheckPath <String>]
+ [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### S2
@@ -348,6 +348,21 @@ Aliases:
 
 Required: False
 Position: 11
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HealthCheckPath
+Container Image Name
+
+```yaml
+Type: System.String
+Parameter Sets: S1
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
