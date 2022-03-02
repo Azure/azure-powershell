@@ -64,7 +64,7 @@ function Test-GetResourceManagementPrivateLink
 
 function Test-GetResourceManagementPrivateLinks
 {
-    $getresponse = Get-AzResourceManagementPrivateLinks
+    $getresponse = Get-AzResourceManagementPrivateLink
 
     $expectedType =  "Microsoft.Authorization/resourceManagementPrivateLinks"
     $expectedName1 = "NewPL"
@@ -84,9 +84,9 @@ function Test-GetResourceManagementPrivateLinks
 function Test-RemoveResourceManagementPrivateLinkAssociation
 {
     $privateLinkAssociationId = "1d7942d1-288b-48de-8d0f-2d2aa8e03ad4"
-    $getresponse = Get-AzResourceManagementPrivateLinkAssociations -ManagementGroupId 24f15700-370c-45bc-86a7-aee1b0c4eb8a
+    $getresponse = Get-AzResourceManagementPrivateLinkAssociation -ManagementGroupId 24f15700-370c-45bc-86a7-aee1b0c4eb8a
     Remove-AzResourceManagementPrivateLinkAssociation -ManagementGroupId 24f15700-370c-45bc-86a7-aee1b0c4eb8a -PrivateLinkAssociationId $privateLinkAssociationId
-    $getresponse1 = Get-AzResourceManagementPrivateLinkAssociations -ManagementGroupId 24f15700-370c-45bc-86a7-aee1b0c4eb8a
+    $getresponse1 = Get-AzResourceManagementPrivateLinkAssociation -ManagementGroupId 24f15700-370c-45bc-86a7-aee1b0c4eb8a
 
     $expectedPublicNetworkAccess = "Enabled"
     $expectedPrivateLinkResourceId = "/subscriptions/6dbb5850-64b4-49c0-ba85-d38f089c6fa4/resourceGroups/ARMPrivateLinkRG/providers/Microsoft.Authorization/resourceManagementPrivateLinks/DeepDiveRMPL"
@@ -109,7 +109,7 @@ function Test-RemoveResourceManagementPrivateLinkAssociation
 
 function Test-GetResourceManagementPrivateLinkAssociations
 {
-    $getresponse = Get-AzResourceManagementPrivateLinkAssociations -ManagementGroupId 24f15700-370c-45bc-86a7-aee1b0c4eb8a
+    $getresponse = Get-AzResourceManagementPrivateLinkAssociation -ManagementGroupId 24f15700-370c-45bc-86a7-aee1b0c4eb8a
     $expectedPublicNetworkAccess = "Enabled"
     $expectedPrivateLinkResourceId = "/subscriptions/6dbb5850-64b4-49c0-ba85-d38f089c6fa4/resourceGroups/ARMPrivateLinkRG/providers/Microsoft.Authorization/resourceManagementPrivateLinks/DeepDiveRMPL"
     $expectedPrivateLinkAssociationId = "1d7942d1-288b-48de-8d0f-2d2aa8e03ad4"

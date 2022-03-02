@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Resources.Models.PrivateLinks;
 using Microsoft.Azure.Commands.Resources.PrivateLinks.Common;
@@ -34,7 +35,7 @@ namespace Microsoft.Azure.Commands.Resources.PrivateLinks
 
         [Parameter(
             ParameterSetName = Constants.ParameterSetNames.GetParameterSet,
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = Constants.HelpMessages.ResourceGroupName,
             Position = 0)]
         [ValidateNotNullOrEmpty]
@@ -42,7 +43,7 @@ namespace Microsoft.Azure.Commands.Resources.PrivateLinks
 
         [Parameter(
             ParameterSetName = Constants.ParameterSetNames.GetParameterSet,
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = Constants.HelpMessages.PrivateLinkName,
             Position = 1)]
         [ValidateNotNullOrEmpty]
@@ -59,6 +60,14 @@ namespace Microsoft.Azure.Commands.Resources.PrivateLinks
                         resourceGroupName: ResourceGroupName,
                         rmplName: PrivateLinkName);
                     WriteObject(new PSResourceManagementPrivateLink(response));
+                }
+                else if (string.IsNullOrEmpty(ResourceGroupName) && string.IsNullOrEmpty(PrivateLinkName))
+                {
+                    //List all the private links in a subscription no parameters needed
+                    var response = ResourceManagementPrivateLinkClient.ResourceManagementPrivateLink.List();
+                    var items = response.Value.Select(resourceManagementPrivateLink => new PSResourceManagementPrivateLink(resourceManagementPrivateLink))
+                        .ToList();
+                    WriteObject(items);
                 }
             }
             catch (Exception ex)

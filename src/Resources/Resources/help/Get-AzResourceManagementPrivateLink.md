@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzResourceManagementPrivateLink
 
 ## SYNOPSIS
-Gets Azure Resource Management Private Link
+Gets Azure Resource Management Private Link(s)
 
 ## SYNTAX
 
@@ -38,6 +38,28 @@ PrivateEndpointConnections : {}
 
 Get the resource management private link with the private endpoint connections associated with it.
 
+### Example 2
+```powershell
+PS C:\> Get-AzResourceManagementPrivateLinks
+
+
+Id                         : /subscriptions/aeb49941-36c3-4e7c-9ffd-16ba89d33ec4/resourceGroups/PrivateLinkTestRG/provi
+                             ders/Microsoft.Authorization/resourceManagementPrivateLinks/NewPL
+Type                       : Microsoft.Authorization/resourceManagementPrivateLinks
+Name                       : NewPL
+Location                   : centralus
+PrivateEndpointConnections : {}
+
+Id                         : /subscriptions/aeb49941-36c3-4e7c-9ffd-16ba89d33ec4/resourceGroups/PrivateLinkTestRG/provi
+                             ders/Microsoft.Authorization/resourceManagementPrivateLinks/NewPL2
+Type                       : Microsoft.Authorization/resourceManagementPrivateLinks
+Name                       : NewPL2
+Location                   : centralus
+PrivateEndpointConnections : {}
+```
+
+Gets all of the resoure management private links at the subscription scope.
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -63,7 +85,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 1
 Default value: None
 Accept pipeline input: False
@@ -78,7 +100,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 0
 Default value: None
 Accept pipeline input: False

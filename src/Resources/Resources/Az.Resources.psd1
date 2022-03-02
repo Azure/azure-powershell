@@ -160,9 +160,8 @@ CmdletsToExport = 'Get-AzProviderOperation', 'Remove-AzRoleAssignment',
                'New-AzTemplateSpec', 'Set-AzTemplateSpec', 'Export-AzTemplateSpec', 
                'Remove-AzTemplateSpec', 'Publish-AzBicepModule',
                'Get-AzResourceManagementPrivateLink',
-               'Get-AzResourceManagementPrivateLinks',
                'Remove-AzResourceManagementPrivateLink',
-               'Get-AzResourceManagementPrivateLinkAssociations',
+               'Get-AzResourceManagementPrivateLinkAssociation',
                'Remove-AzResourceManagementPrivateLinkAssociation'
 
 # Variables to export from this module
