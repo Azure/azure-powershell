@@ -30,8 +30,8 @@ The **Start-AzRecoveryServicesAsrResynchronizeReplicationJob** cmdlet start resy
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Start-AzRecoveryServicesAsrResynchronizeReplicationJob -ReplicationProtectedItem $rpi
+```powershell
+Start-AzRecoveryServicesAsrResynchronizeReplicationJob -ReplicationProtectedItem $rpi
 ```
 
 Starts job to resynchronize replication on passed replication protected item.
