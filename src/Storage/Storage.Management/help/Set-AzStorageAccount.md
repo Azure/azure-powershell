@@ -394,6 +394,16 @@ True
 This command updates a Storage account by enable Sftp and localuser. 
 To run the command succssfully, the Storage account should already enable Hierarchical Namespace.
 
+### Example 21: Update a Storage account by set AllowedCopyScope as PrivateLink 
+```
+PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -AllowedCopyScope PrivateLink
+
+PS C:\> $account.AllowedCopyScope
+PrivateLink
+```
+
+The command updates a Storage account by set AllowedCopyScope as PrivateLink. 
+
 ## PARAMETERS
 
 ### -AccessTier

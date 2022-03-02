@@ -2268,3 +2268,47 @@ function Test-AzureStorageLocalUserSftp
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Test Test-StorageAccountAllowedCopyScope
+.DESCRIPTION
+SmokeTest
+#>
+function Test-StorageAccountAllowedCopyScope
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_LRS';
+        $loc = Get-ProviderLocation ResourceManagement;
+        $kind = 'StorageV2'
+
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        Write-Output ("Resource Group created")
+		
+		# new account
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -SkuName $stotype -AllowedCopyScope AAD
+
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        Assert-AreEqual "AAD" $sto.AllowedCopyScope;
+
+        # Update account
+        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -AllowedCopyScope PrivateLink
+
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        Assert-AreEqual "PrivateLink" $sto.AllowedCopyScope;
+
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

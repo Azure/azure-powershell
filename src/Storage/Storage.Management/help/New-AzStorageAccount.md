@@ -302,6 +302,16 @@ ImmutabilityPeriodSinceCreationInDays State    AllowProtectedAppendWrites
 The command creates an account and enable account level immutability with versioning by '-EnableAccountLevelImmutability', then all the containers under this account will have object-level immutability enabled by default.
 The account is also created with a default account-level immutability policy which is inherited and applied to objects that do not possess an explicit immutability policy at the object level. 
 
+### Example 16: Create account with AllowedCopyScope as AAD 
+```
+PS C:\> $account = New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -SkuName Standard_LRS  -Location centraluseuap -Kind StorageV2 -AllowedCopyScope AAD 
+
+PS C:\> $account.AllowedCopyScope
+AAD
+```
+
+The command creates account with AllowedCopyScope as AAD.
+
 ## PARAMETERS
 
 ### -AccessTier

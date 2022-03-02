@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported create/upgrade storage account with AllowedCopyScope
+    -  `New-AzStorageAccount`
+    -  `Set-AzStorageAccount`
 
 ## Version 4.3.0
 * Supported download blob from managed disk account with Sas Uri and bearer token
