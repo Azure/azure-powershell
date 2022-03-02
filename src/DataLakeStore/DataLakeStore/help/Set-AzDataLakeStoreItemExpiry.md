@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll-Help.xml
 Module Name: Az.DataLakeStore
 online version: https://docs.microsoft.com/powershell/module/az.datalakestore/set-azdatalakestoreitemexpiry
@@ -32,25 +32,25 @@ The **Set-AzDataLakeStoreItemExpiry** cmdlet sets or removes the expire time for
 ## EXAMPLES
 
 ### Example 1: Set the expiration time for a file
-```
-PS C:\> Set-AzDataLakeStoreItemExpiry -AccountName "ContosoADL" -Path /myfile.txt -Expiration [DateTimeOffset]::Now.AddHours(2)
+```powershell
+Set-AzDataLakeStoreItemExpiry -AccountName "ContosoADL" -Path /myfile.txt -Expiration [DateTimeOffset]::Now.AddHours(2)
 ```
 
 Sets expiration on the file myfile.txt in account ContosoADL to be two hours from now.
 This will cause the file to expire (be marked for delete) in two hours.
 
 ### Example 2: Remove the expiration on a file
-```
-PS C:\> Set-AzDataLakeStoreItemExpiry -AccountName "ContosoADL" -Path /myfile.txt
+```powershell
+Set-AzDataLakeStoreItemExpiry -AccountName "ContosoADL" -Path /myfile.txt
 ```
 
 Removes any expiration that was previously set on file 'myfile.txt' in account 'ContosoADL'.
 This means the file will not automatically expire (be marked for delete) and will need to be manually deleted or set to expire again.
 
 ### Example 3: Set expiration time for a file relative to now
-```
-PS C:\> Set-AdlStoreItemExpiry -Account "ContosoADL" -path /myfile.txt -RelativeFileExpiryOption RelativeToNow -RelativeTime 240000
-PS C:\> Set-AdlStoreItemExpiry -Account "ContosoADL" -path /myfile.txt -RelativeFileExpiryOption RelativeToCreationDate -RelativeTime 240000
+```powershell
+Set-AdlStoreItemExpiry -Account "ContosoADL" -path /myfile.txt -RelativeFileExpiryOption RelativeToNow -RelativeTime 240000
+Set-AdlStoreItemExpiry -Account "ContosoADL" -path /myfile.txt -RelativeFileExpiryOption RelativeToCreationDate -RelativeTime 240000
 ```
 
 The first command sets the expiration time of the file /myfile.txt 240 seconds relative to current time at server.

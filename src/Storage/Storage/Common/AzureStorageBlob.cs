@@ -349,11 +349,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             privateClientOptions = options;
             if (privateBlobProperties is null)
             {
-                ICloudBlob = GetTrack1Blob(track2BlobClient, storageContext.StorageAccount.Credentials, null);
+                ICloudBlob = GetTrack1Blob(track2BlobClient, storageContext is null ? null : storageContext.StorageAccount.Credentials, null);
             }
             else
             {
-                ICloudBlob = GetTrack1Blob(track2BlobClient, storageContext.StorageAccount.Credentials, privateBlobProperties.BlobType);
+                ICloudBlob = GetTrack1Blob(track2BlobClient, storageContext is null ? null : storageContext.StorageAccount.Credentials, privateBlobProperties.BlobType);
             }
             if (!(ICloudBlob is InvalidCloudBlob))
             {
@@ -389,7 +389,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         /// <param name="track2BlobClient"></param>
         public static CloudBlob GetTrack1Blob(BlobBaseClient track2BlobClient, StorageCredentials credentials, global::Azure.Storage.Blobs.Models.BlobType? blobType = null)
         {
-            if (Util.GetVersionIdFromBlobUri(track2BlobClient.Uri) != null)
+            if ((Util.GetVersionIdFromBlobUri(track2BlobClient.Uri) != null)
+                || (track2BlobClient.Uri.Query.Contains("sig=") && (credentials == null || !credentials.IsSAS)))
             {
                 // Track1 SDK don't support blob VersionId
                 return new InvalidCloudBlob(track2BlobClient.Uri, credentials);

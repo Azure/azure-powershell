@@ -36,8 +36,11 @@ The **Remove-AzDataShareSubscription** cmdlet removes a share subscription
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Remove-AzDataShareSubscription -ResourceGroupName "ADS" -AccountName "WikiAds" -Name "AdsShareSubscription"
 ```
-PS C:\> Remove-AzDataShareSubscription -ResourceGroupName "ADS" -AccountName "WikiAds" -Name "AdsShareSubscription"
+
+```output
 Are you sure you want to remove sharesubscription "AdsShareSubscription"? 
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
 ```

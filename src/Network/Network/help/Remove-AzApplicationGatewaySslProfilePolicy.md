@@ -24,9 +24,9 @@ The Remove-AzApplicationGatewaySslProfilePolicy cmdlet removes an SSL policy fro
 
 ### Example 1
 ```powershell
-PS C:\>$AppGW = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> $profile  = Get-AzApplicationGatewaySslProfile -Name "Profile01" -ApplicationGateway $AppGw
-PS C:\> $profile = Remove-AzApplicationGatewaySslProfilePolicy -SslProfile $profile
+$AppGW = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+$profile  = Get-AzApplicationGatewaySslProfile -Name "Profile01" -ApplicationGateway $AppGw
+$profile = Remove-AzApplicationGatewaySslProfilePolicy -SslProfile $profile
 ```
 
 The first command gets the application gateway named ApplicationGateway01 in the resource group named ResourceGroup01 and stores it in the $AppGw variable. The second command gets the SSL profile named Profile01 for $AppGw and stores it in the $profile variable. The last command removes the ssl policy of the ssl profile stored in $profile.

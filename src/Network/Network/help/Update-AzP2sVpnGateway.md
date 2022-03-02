@@ -97,10 +97,12 @@ The **Update-AzP2sVpnGateway** cmdlet enables you to update an existing P2SVpnGa
 
 ### Example 1
 ```powershell
-PS C:\> $vpnClientAddressSpaces = New-Object string[] 1 
-PS C:\> $vpnClientAddressSpaces[0] = "101.10.0.0/16"
-PS C:\> Update-AzP2sVpnGateway -ResourceGroupName P2SCortexGATesting -Name 683482ade8564515aed4b8448c9757ea-westus-gw -VpnClientAddressPool $vpnClientAddressSpaces -EnableInternetSecurityFlag                                
+$vpnClientAddressSpaces = New-Object string[] 1 
+$vpnClientAddressSpaces[0] = "101.10.0.0/16"
+Update-AzP2sVpnGateway -ResourceGroupName P2SCortexGATesting -Name 683482ade8564515aed4b8448c9757ea-westus-gw -VpnClientAddressPool $vpnClientAddressSpaces -EnableInternetSecurityFlag                                
+```
 
+```output
 ResourceGroupName              : P2SCortexGATesting
 Name                           : 683482ade8564515aed4b8448c9757ea-westus-gw
 Id                             : /subscriptions/b1f1deed-af60-4bab-9223-65d340462e24/resourceGroups/P2SCortexGATesting/providers/Microsoft.Network/p2sVpnGateways/683482ade8564515a

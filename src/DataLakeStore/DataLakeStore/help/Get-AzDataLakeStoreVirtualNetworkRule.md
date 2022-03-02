@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll-Help.xml
 Module Name: Az.DataLakeStore
 online version: https://docs.microsoft.com/powershell/module/az.datalakestore/get-azdatalakestorevirtualnetworkrule
@@ -26,8 +26,10 @@ If no virtual network rule is specified, then lists all virtual network rules fo
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzDataLakeStoreVirtualNetworkRule -Account "dls" -Name "myVNET"
+Get-AzDataLakeStoreVirtualNetworkRule -Account "dls" -Name "myVNET"
+```
 
+```output
 ResourceGroupName                :
 AccountName                      :
 VirtualNetworkRuleName           : myVNET

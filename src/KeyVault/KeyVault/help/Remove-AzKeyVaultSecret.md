@@ -33,8 +33,10 @@ This cmdlet has a value of high for the **ConfirmImpact** property.
 
 ### Example 1: Remove a secret from a key vault
 ```powershell
-PS C:\> Remove-AzKeyVaultSecret -VaultName 'Contoso' -Name 'FinanceSecret' -PassThru
+Remove-AzKeyVaultSecret -VaultName 'Contoso' -Name 'FinanceSecret' -PassThru
+```
 
+```output
 Vault Name           : Contoso
 Name                 : FinanceSecret
 Version              : f622abc7b1394092812f1eb0f85dc91c
@@ -54,8 +56,10 @@ This command removes the secret named FinanceSecret from the key vault named Con
 
 ### Example 2: Remove a secret from a key vault without user confirmation
 ```powershell
-PS C:\> Remove-AzKeyVaultSecret -VaultName 'Contoso' -Name 'FinanceSecret' -PassThru -Force
+Remove-AzKeyVaultSecret -VaultName 'Contoso' -Name 'FinanceSecret' -PassThru -Force
+```
 
+```output
 Vault Name           : Contoso
 Name                 : FinanceSecret
 Version              : f622abc7b1394092812f1eb0f85dc91c
@@ -76,7 +80,7 @@ The command specifies the *Force* and *Confirm* parameters, and, therefore, the 
 
 ### Example 3: Purge deleted secret from the key vault permanently
 ```powershell
-PS C:\> Remove-AzKeyVaultSecret -VaultName 'Contoso' -Name 'FinanceSecret' -InRemovedState
+Remove-AzKeyVaultSecret -VaultName 'Contoso' -Name 'FinanceSecret' -InRemovedState
 ```
 
 This command premoves the secret named FinanceSecret from the key vault named Contoso permanently.

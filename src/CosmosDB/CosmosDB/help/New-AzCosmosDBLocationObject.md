@@ -24,8 +24,10 @@ Create a new CosmosDB Location Object(PSLocation).
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCosmosDBLocationObject -LocationName {locationName} -FailoverPriority 2 -IsZoneRedundant 0
+New-AzCosmosDBLocationObject -LocationName {locationName} -FailoverPriority 2 -IsZoneRedundant 0
+```
 
+```output
 LocationName     FailoverPriority IsZoneRedundant
 ------------     ---------------- ---------------
 {locationName}                 2           False

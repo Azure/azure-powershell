@@ -37,8 +37,11 @@ The **Remove-AzActionGroup** cmdlet removes an action group.
 ## EXAMPLES
 
 ### Example 1: Remove an action group
+```powershell
+Remove-AzActionGroup -ResourceGroup "Default-Web-CentralUS" -Name "myActionGroup"
 ```
-PS C:\>Remove-AzActionGroup -ResourceGroup "Default-Web-CentralUS" -Name "myActionGroup"
+
+```output
 RequestId                                                                                                    StatusCode
 ---------                                                                                                    ----------
 2c6c159b-0e73-4a01-a67b-c32c1a0008a3                                                                                 OK

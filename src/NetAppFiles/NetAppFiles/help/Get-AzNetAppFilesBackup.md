@@ -43,14 +43,14 @@ The **Get-AzNetAppFilesBackup** cmdlet gets details of an ANF backup.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzNetAppFilesBackup -ResourceGroupName "MyRG" -AccountName "MyAccount" -PoolName "MyPool" -VolumeName "MyVolume" -Name "MyBackup"
+Get-AzNetAppFilesBackup -ResourceGroupName "MyRG" -AccountName "MyAccount" -PoolName "MyPool" -VolumeName "MyVolume" -Name "MyBackup"
 ```
 
 This command gets the backup named "MyAnfAccount" from the volume named "MyVolume".
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzNetAppFilesBackup -ResourceGroupName "MyRG" -AccountName "MyAccount" -AccountBackupName "MyBackup"
+Get-AzNetAppFilesBackup -ResourceGroupName "MyRG" -AccountName "MyAccount" -AccountBackupName "MyBackup"
 ```
 
 This command gets the backup named "MyAnfAccount" from the Account named "MyAccount".

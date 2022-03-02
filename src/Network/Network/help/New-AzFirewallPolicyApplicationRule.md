@@ -67,14 +67,14 @@ The **New-AzFirewallPolicyApplicationRule** cmdlet creates an Application Rule f
 
 ### Example 1
 ```powershell
-PS C:\> New-AzFirewallPolicyApplicationRule -Name AR1 -SourceAddress "192.168.0.0/16" -Protocol "http:80","https:443" -TargetFqdn "*.ro", "*.com"
+New-AzFirewallPolicyApplicationRule -Name AR1 -SourceAddress "192.168.0.0/16" -Protocol "http:80","https:443" -TargetFqdn "*.ro", "*.com"
 ```
 
 This example creates an application rule with the source address, protocol and the target fqdns.
 
 ### Example 2
 ```powershell
-PS C:\> New-AzFirewallPolicyApplicationRule -Name AR1 -SourceAddress "192.168.0.0/16" -Protocol "http:80","https:443" -WebCategory "DatingAndPersonals", "Tasteless"
+New-AzFirewallPolicyApplicationRule -Name AR1 -SourceAddress "192.168.0.0/16" -Protocol "http:80","https:443" -WebCategory "DatingAndPersonals", "Tasteless"
 ```
 
 This example creates an application rule with the source address, protocol and web categories.

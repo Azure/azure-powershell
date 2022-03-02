@@ -28,7 +28,7 @@ Use cmdlet "New-AzFrontDoorRulesEngineMatchConditionObject" to create PSRulesEng
 
 ### Example 1
 ```powershell
-PS C:\> New-AzFrontDoorRulesEngineRuleObject -Name rules1 -Priority 0 -Action $rulesEngineAction -MatchProcessingBehavior Stop -MatchCondition $rulesEngineMatchCondition
+New-AzFrontDoorRulesEngineRuleObject -Name rules1 -Priority 0 -Action $rulesEngineAction -MatchProcessingBehavior Stop -MatchCondition $rulesEngineMatchCondition
 
 Name                    : rules1
 Priority                : 0
@@ -37,13 +37,13 @@ MatchCondition          : {Microsoft.Azure.Commands.FrontDoor.Models.PSRulesEngi
 Action                  : Microsoft.Azure.Commands.FrontDoor.Models.PSRulesEngineAction
 
 
-PS C:\> $rulesEngineRule1.Action
+$rulesEngineRule1.Action
 
 RequestHeaderActions           ResponseHeaderActions RouteConfigurationOverride
 --------------------           --------------------- --------------------------
-{headeraction1, headeraction2} {}                    Microsoft.Azure.Commands.FrontDoor.Models.PSForwardingConfigurati�
+{headeraction1, headeraction2} {}                    Microsoft.Azure.Commands.FrontDoor.Models.PSForwardingConfiguration
 
-PS C:\> $rulesEngineRule1.MatchCondition[0]
+$rulesEngineRule1.MatchCondition[0]
 
 RulesEngineMatchVariable : RequestHeader
 RulesEngineMatchValue    : {allowoverride}
@@ -57,7 +57,10 @@ Create new PSRulesEngineRule object and demonstrate how to see the subfields.
 
 ### Example 2
 ```powershell
-PS C:\> New-AzFrontDoorRulesEngineRuleObject -Name rules1 -Priority -1
+New-AzFrontDoorRulesEngineRuleObject -Name rules1 -Priority -1
+```
+
+```output
 New-AzFrontDoorRulesEngineRuleObject : Cannot validate argument on parameter 'Priority'. The -1 argument is less than the minimum allowed range of 0. Supply an argument that is greater than or equal to 0 and then try the command again.
 At line:1 char:81
 + ... ule1 = New-AzFrontDoorRulesEngineRuleObject -Name rules1 -Priority -1

@@ -24,8 +24,10 @@ Returns a list of databases that are owned by this cluster and were followed by 
 
 ### Example 1: List all followed databases
 ```powershell
-PS C:\>  Get-AzKustoClusterFollowerDatabase  -ResourceGroupName testrg -ClusterName testnewkustocluster
+Get-AzKustoClusterFollowerDatabase  -ResourceGroupName testrg -ClusterName testnewkustocluster
+```
 
+```output
 AttachedDatabaseConfigurationName ClusterResourceId                                                                                                                     DatabaseName
 --------------------------------- -----------------                                                                                                                     ------------
 myfollowerconfiguration             /subscriptions/xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx/resourceGroups/testrg/providers/Microsoft.Kusto/Clusters/testnewkustoclusterf mykustodatabase

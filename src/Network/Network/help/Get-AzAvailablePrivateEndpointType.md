@@ -25,7 +25,9 @@ The **Get-AzAvailablePrivateEndpointType** cmdlet returns all available private 
 ### Example 1
 ```powershell
 Get-AzAvailablePrivateEndpointType -Location eastus
+```
 
+```output
 [
   {
     "id": "subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/availablePrivateEndpointTypes/typename1",

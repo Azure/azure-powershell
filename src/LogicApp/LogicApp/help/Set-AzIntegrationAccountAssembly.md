@@ -76,45 +76,48 @@ The **Set-AzIntegrationAccountAssembly** cmdlet modifies an integration account 
 
 ### Example 1: Modify an assembly using local file
 ```powershell
-PS C:\> Set-AzIntegrationAccountAssembly -ResourceGroupName "sampleResourceGroup" -IntegrationAccountName "sampleIntegrationAccount" -AssemblyName "sampleAssembly" -AssemblyFilePath $localAssemblyFilePath
+Set-AzIntegrationAccountAssembly -ResourceGroupName "sampleResourceGroup" -IntegrationAccountName "sampleIntegrationAccount" -AssemblyName "sampleAssembly" -AssemblyFilePath $localAssemblyFilePath
+```
 
+```output
 Properties : Microsoft.Azure.Management.Logic.Models.AssemblyProperties
 Id         : /subscriptions/{SubscriptionId}/resourceGroups/sampleResourceGroup/providers/Microsoft.Logic/integrationAccounts/sampleIntegrationAccount/assemblies/sampleAssembly
 Name       : sampleAssembly
 Type       : Microsoft.Logic/integrationAccounts/assemblies
 Location   :
 Tags       :
-
 ```
 
 Modifies the assembly named "sampleAssembly" using the local file located at the file path contained in "$localAssemblyFilePath".
 
 ### Example 2: Modify an assembly using byte data
 ```powershell
-PS C:\> Set-AzIntegrationAccountAssembly -ResourceGroupName "sampleResourceGroup" -IntegrationAccountName "sampleIntegrationAccount" -AssemblyName "sampleAssembly" -AssemblyData $assemblyContent
+Set-AzIntegrationAccountAssembly -ResourceGroupName "sampleResourceGroup" -IntegrationAccountName "sampleIntegrationAccount" -AssemblyName "sampleAssembly" -AssemblyData $assemblyContent
+```
 
+```output
 Properties : Microsoft.Azure.Management.Logic.Models.AssemblyProperties
 Id         : /subscriptions/{SubscriptionId}/resourceGroups/sampleResourceGroup/providers/Microsoft.Logic/integrationAccounts/sampleIntegrationAccount/assemblies/sampleAssembly
 Name       : sampleAssembly
 Type       : Microsoft.Logic/integrationAccounts/assemblies
 Location   :
 Tags       :
-
 ```
 
 Modifies the assembly named "sampleAssembly" using the a byte array contained in "$assemblyContent".
 
 ### Example 3: Modify an assembly using a content link
 ```powershell
-PS C:\> Set-AzIntegrationAccountAssembly -ResourceGroupName "sampleResourceGroup" -IntegrationAccountName "sampleIntegrationAccount" -AssemblyName "sampleAssembly" -ContentLink $assemblyUrl
+Set-AzIntegrationAccountAssembly -ResourceGroupName "sampleResourceGroup" -IntegrationAccountName "sampleIntegrationAccount" -AssemblyName "sampleAssembly" -ContentLink $assemblyUrl
+```
 
+```output
 Properties : Microsoft.Azure.Management.Logic.Models.AssemblyProperties
 Id         : /subscriptions/{SubscriptionId}/resourceGroups/sampleResourceGroup/providers/Microsoft.Logic/integrationAccounts/sampleIntegrationAccount/assemblies/sampleAssembly
 Name       : sampleAssembly
 Type       : Microsoft.Logic/integrationAccounts/assemblies
 Location   :
 Tags       :
-
 ```
 
 Modifies the assembly named "sampleAssembly" using the a byte data located at the URL "$assemblyUrl". This is the suggested method for creating large sized assemblies.

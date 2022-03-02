@@ -35,7 +35,9 @@ first.
 ### Example 1
 ```powershell
 Get-AzContainerRegistryTag -RegistryName registry -RepositoryName alpine
+```
 
+```output
 Registry                    ImageName Tags
 --------                    --------- ----
 registry.azurecr.io alpine    {latest}
@@ -46,7 +48,9 @@ List tags for repository alpine under registry.
 ### Example 2
 ```powershell
 Get-AzContainerRegistryTag -RegistryName registry -RepositoryName alpine -name latest
+```
 
+```output
 Registry                    ImageName Attributes
 --------                    --------- ----------
 registry.azurecr.io alpine    Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagAttributeBase

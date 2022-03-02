@@ -38,7 +38,7 @@ Re-Initializes the connection on the destination volume
 
 ### Example 1
 ```powershell
-PS C:\> Initialize-AnfReplication -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyDestinationAnfVolume"
+Initialize-AnfReplication -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyDestinationAnfVolume"
 ```
 
 This command Re-Initializes the ANF Replication connection on volume "MyDestinationAnfVolume".

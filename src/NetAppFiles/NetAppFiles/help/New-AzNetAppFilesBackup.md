@@ -33,7 +33,7 @@ The **New-AzNetAppFilesBackup** cmdlet creates a backup for an ANF volume.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzNetAppFilesBackup -ResourceGroupName "MyRG" -l "westus2" -AccountName "MyAccount" -PoolName "MyPool" -VolumeName "MyVolume" -Name "MyVolumeBackup" -Label "ALabel"
+New-AzNetAppFilesBackup -ResourceGroupName "MyRG" -l "westus2" -AccountName "MyAccount" -PoolName "MyPool" -VolumeName "MyVolume" -Name "MyVolumeBackup" -Label "ALabel"
 ```
 
 This command creates the new ANF backup for volume named  account "MyVolume".

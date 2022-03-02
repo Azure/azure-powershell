@@ -49,7 +49,10 @@ The **Invoke-AzDataFactoryV2Pipeline** command starts a run on the specified pip
 
 ### Example 1: Invoke a pipeline to start a run
 ```powershell
-PS C:\> Invoke-AzDataFactoryV2Pipeline -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -PipelineName "DPWikisample"
+Invoke-AzDataFactoryV2Pipeline -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -PipelineName "DPWikisample"
+```
+
+```output
 867d9d9f-1efc-4fee-974d-d8e6320bfbcb
 ```
 

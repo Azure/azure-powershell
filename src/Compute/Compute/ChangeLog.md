@@ -20,7 +20,11 @@
 
 -->
 ## Upcoming Release
+
+## Version 4.24.0
+* Upgraded Compute .NET SDK package reference to version 52.0.0
 * Updated `New-AzSshKey` cmdlet to write file paths to generated keys to the Warning stream instead of the console.
+* Added `vCPUsAvailable` and `vCPUsPerCore` integer parameters to the `New-AzVm`, `New-AzVmConfig`, and `Update-AzVm` cmdlets.
 
 ## Version 4.23.0
 * Remove ProvisioningDetails property from PSRestorePoint object.
