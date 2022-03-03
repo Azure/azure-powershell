@@ -37,7 +37,7 @@ pg-restore     East US   Standard_D2s_v3 GeneralPurpose daeunyim           128
 
 These cmdlets restore PostgreSql server using PointInTime Restore.
 
-### Example 1: Restore PostgreSql server using PointInTime Restore with different network resource
+### Example 2: Restore PostgreSql server using PointInTime Restore with different network resource
 ```powershell
 
 $Subnet = '/subscriptions/00000000-0000-0000-0000-0000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.Network/virtualNetworks/vnetname/subnets/subnetname'
