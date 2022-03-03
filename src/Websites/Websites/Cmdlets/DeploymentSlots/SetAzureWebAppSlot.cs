@@ -136,6 +136,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         [ValidateNotNullOrEmpty]
         public string[] HostNames { get; set; }
 
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
