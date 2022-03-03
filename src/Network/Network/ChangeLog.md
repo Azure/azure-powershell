@@ -20,6 +20,10 @@
 
 ## Upcoming Release
 
+* Added support for accepting Vnet, Subnet and NIC resources as the TargetResourceId for the following cdmlets
+    - `Set-AzNetworkWatcherFlowLog`
+    - `New-AzNetworkWatcherFlowLog`
+
 ## Version 4.15.0
 * Added new property `SqlSetting` for Azure Firewall Policy cmdlets 
     - `Get-AzFirewallPolicy` 
@@ -33,7 +37,6 @@
         - `New-AzLoadBalancerInboundNatRuleConfig`
         - `Set-AzLoadBalancerInboundNatRuleConfig`
         - `Add-AzLoadBalancerInboundNatRuleConfig`
-* Added support for vnet flow logging feature at NIC, VNet and Subnet level
 
 ## Version 4.14.0
 * Used case-insensitive comparison for ResourceId (Set/New-NetworkWatcherFlowLog)
