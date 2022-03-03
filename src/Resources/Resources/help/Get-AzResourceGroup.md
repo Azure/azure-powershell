@@ -15,7 +15,7 @@ Gets resource groups.
 
 ### GetByResourceGroupName (Default)
 ```
-Get-AzResourceGroup [[-Name] <String>] [[-Location] <String>] [-Tag <Hashtable>] [-ApiVersion <String>] [-Pre]
+Get-AzResourceGroup [[-Name] <String>] [[-Location] <String>] [-Tags <Hashtable>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -49,7 +49,7 @@ This command gets the resource group named ContosoRG, and displays the tags asso
 
 ### Example 3: Get resource groups based on tag
 ```
-PS C:\> Get-AzResourceGroup -Tag @{'environment'='prod'}
+PS C:\> Get-AzResourceGroup -Tags @{'environment'='prod'}
 ```
 
 ### Example 4: Show the Resource groups by location
@@ -165,7 +165,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tag
+### -Tags
 The tag hashtable to filter resource groups by.
 
 ```yaml
