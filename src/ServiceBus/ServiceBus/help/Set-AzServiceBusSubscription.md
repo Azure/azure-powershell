@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.dll-Help.xml
 Module Name: Az.ServiceBus
 online version: https://docs.microsoft.com/powershell/module/az.servicebus/set-azservicebussubscription
@@ -24,11 +24,11 @@ The **Set-AzServiceBusSubscription** cmdlet updates the description of the subsc
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $subscriptionObj = Get-AzServiceBusSubscription -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -SubscriptionName SB-TopicSubscription-Example1
+```powershell
+$subscriptionObj = Get-AzServiceBusSubscription -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -SubscriptionName SB-TopicSubscription-Example1
 
-PS C:\> $subscriptionObj.DeadLetteringOnMessageExpiration = $True
-PS C:\> $subscriptionObj.MaxDeliveryCount = 9
+$subscriptionObj.DeadLetteringOnMessageExpiration = $True
+$subscriptionObj.MaxDeliveryCount = 9
 
 Name                                      : SB-TopicSubscription-Example1
 AccessedAt                                : 1/1/0001 12:00:00 AM
@@ -44,7 +44,7 @@ MessageCount                              : 0
 RequiresSession                           : False
 Status                                    : Active
 UpdatedAt                                 : 1/20/2017 9:59:15 PM
-PS C:\> Set-AzServiceBusSubscription -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -SubscriptionObj $subscriptionObj
+Set-AzServiceBusSubscription -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -SubscriptionObj $subscriptionObj
 ```
 
 Updates the description for the specified subscription to the given topic. This example updates the **DeadLetteringOnMessageExpiration** property to **true** and **MaxDeliveryCount** to 9.
