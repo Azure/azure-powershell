@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 4.15.0
 * Added new property `SqlSetting` for Azure Firewall Policy cmdlets 
     - `Get-AzFirewallPolicy` 
     - `New-AzFirewallPolicy`

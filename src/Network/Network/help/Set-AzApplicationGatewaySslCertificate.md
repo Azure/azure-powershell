@@ -25,28 +25,28 @@ The **Set-AzApplicationGatewaySslCertificate** cmdlet updates an SSL certificate
 ## EXAMPLES
 
 ### Example 1: Update an existing SSL certificate on Application Gateway
-```
-PS C:\> $appGW = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> $password = ConvertTo-SecureString $passwordPlainString -AsPlainText -Force
-PS C:\> $cert = Set-AzApplicationGatewaySslCertificate -ApplicationGateway $AppGW -Name "Cert01" -CertificateFile "D:\cert01.pfx" -Password $password
+```powershell
+$appGW = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+$password = ConvertTo-SecureString $passwordPlainString -AsPlainText -Force
+$cert = Set-AzApplicationGatewaySslCertificate -ApplicationGateway $AppGW -Name "Cert01" -CertificateFile "D:\cert01.pfx" -Password $password
 ```
 
 Update an existing SSL certificate for the application gateway named ApplicationGateway01.
 
 ### Example 2: Update an existing SSL certificate using KeyVault Secret (version-less secretId) on Application Gateway
-```
-PS C:\> $secret = Get-AzKeyVaultSecret -VaultName "keyvault01" -Name "sslCert01"
-PS C:\> $secretId = $secret.Id.Replace($secret.Version, "") # https://<keyvaultname>.vault.azure.net/secrets/
-PS C:\> $cert = Set-AzApplicationGatewaySslCertificate -ApplicationGateway $AppGW -Name "Cert01" -KeyVaultSecretId $secretId
+```powershell
+$secret = Get-AzKeyVaultSecret -VaultName "keyvault01" -Name "sslCert01"
+$secretId = $secret.Id.Replace($secret.Version, "") # https://<keyvaultname>.vault.azure.net/secrets/
+$cert = Set-AzApplicationGatewaySslCertificate -ApplicationGateway $AppGW -Name "Cert01" -KeyVaultSecretId $secretId
 ```
 
 Get the secret and update an existing SSL Certificate using `Set-AzApplicationGatewaySslCertificate`.
 
 ### Example 3: Update an existing SSL certificate using KeyVault Secret on Application Gateway
-```
-PS C:\> $secret = Get-AzKeyVaultSecret -VaultName "keyvault01" -Name "sslCert01"
-PS C:\> $secretId = $secret.Id # https://<keyvaultname>.vault.azure.net/secrets/<hash>
-PS C:\> $cert = Set-AzApplicationGatewaySslCertificate -ApplicationGateway $AppGW -Name "Cert01" -KeyVaultSecretId $secretId
+```powershell
+$secret = Get-AzKeyVaultSecret -VaultName "keyvault01" -Name "sslCert01"
+$secretId = $secret.Id # https://<keyvaultname>.vault.azure.net/secrets/<hash>
+$cert = Set-AzApplicationGatewaySslCertificate -ApplicationGateway $AppGW -Name "Cert01" -KeyVaultSecretId $secretId
 ```
 
 Get the secret and update an existing SSL Certificate using `Set-AzApplicationGatewaySslCertificate`.

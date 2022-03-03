@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV2.dll-Help.xml
 Module Name: Az.DataFactory
 online version: https://docs.microsoft.com/powershell/module/az.datafactory/start-azdatafactoryv2trigger
@@ -36,9 +36,11 @@ The **Start-AzDataFactoryV2Trigger** cmdlet starts a trigger in a data factory. 
 ## EXAMPLES
 
 ### Example 1: Start a trigger
-```
+```powershell
 Start-AzDataFactoryV2Trigger -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -TriggerName "ScheduledTrigger"
+```
 
+```output
 Confirm
 Are you sure you want to start trigger 'ScheduledTrigger' in data factory 'WikiADF'?
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y

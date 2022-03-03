@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.4.0
 * Substitute cmdlets:
   - `Get-AzActionRule` with `Get-AzAlertProcessingRule`
   - `Set-AzActionRule` with `Set-AzAlertProcessingRule`

@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 3.0.1
 * Fixed an issue where users could not correctly ignore warning messages after setting environment variables [#17013]
 
 ## Version 3.0.0

@@ -24,9 +24,9 @@ The **Get-AzLoadBalancerInboundNatRuleConfig** cmdlet gets one or more inbound n
 ## EXAMPLES
 
 ### Example 1: Get an inbound NAT rule configuration
-```
-PS C:\>$slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
-PS C:\> Get-AzLoadBalancerInboundNatRuleConfig -Name "MyInboundNatRule1" -LoadBalancer $slb
+```powershell
+$slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
+Get-AzLoadBalancerInboundNatRuleConfig -Name "MyInboundNatRule1" -LoadBalancer $slb
 ```
 
 The first command gets the load balancer named MyLoadBalancer, and stores it in the variable $slb.

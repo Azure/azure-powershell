@@ -41,8 +41,10 @@ managed HSM, you should do so for better performance.
 
 ### Example 1: Get all managed HSMs in your current subscription
 ```powershell
-PS C:\> Get-AzKeyVaultManagedHsm
+Get-AzKeyVaultManagedHsm
+```
 
+```output
 Name  Resource Group Name Location    SKU
 ----  ------------------- --------    ---
 myhsm myrg1               eastus2euap StandardB1
@@ -52,8 +54,10 @@ This command gets all managed HSMs in your current subscription.
 
 ### Example 2: Get a specific managed HSM
 ```powershell
-PS C:\> Get-AzKeyVaultManagedHsm -Name 'myhsm'
+Get-AzKeyVaultManagedHsm -Name 'myhsm'
+```
 
+```output
 Name  Resource Group Name Location    SKU
 ----  ------------------- --------    ---
 myhsm myrg1               eastus2euap StandardB1
@@ -63,8 +67,10 @@ This command gets the managed HSM named myhsm in your current subscription.
 
 ### Example 3: Get managed HSMs in a resource group
 ```powershell
-PS C:\> Get-AzKeyVaultManagedHsm -ResourceGroupName 'myrg1'
+Get-AzKeyVaultManagedHsm -ResourceGroupName 'myrg1'
+```
 
+```output
 Name  Resource Group Name Location    SKU
 ----  ------------------- --------    ---
 myhsm myrg1               eastus2euap StandardB1
@@ -74,8 +80,10 @@ This command gets all managed HSMs in the resource group named myrg1.
 
 ### Example 4: Get managed HSMs using filtering
 ```powershell
-PS C:\> Get-AzKeyVaultManagedHsm -Name 'myhsm*'
+Get-AzKeyVaultManagedHsm -Name 'myhsm*'
+```
 
+```output
 Name  Resource Group Name Location    SKU
 ----  ------------------- --------    ---
 myhsm myrg1               eastus2euap StandardB1

@@ -49,8 +49,10 @@ Finally, ODataQuery parameter is used to perform filtering for the search result
 Gets the details of Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\`.
 
 ```powershell
-PS C:\> Get-AzEventGridDomain -ResourceGroup MyResourceGroupName -Name Domain1
+Get-AzEventGridDomain -ResourceGroup MyResourceGroupName -Name Domain1
+```
 
+```output
 ResourceGroupName : MyResourceGroupName
 DomainName        : Domain1
 Id                : /subscriptions/<Azure Subscription Id>/resourceGroups/myresourcegroupname/providers/Microsoft.EventGrid/domains/domain1
@@ -66,8 +68,10 @@ Tags              : {[Tag1, Value1], [Tag2, Value2]}
 Gets the details of Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\` using ResourceId option.
 
 ```powershell
-PS C:\> Get-AzEventGridDomain -ResourceId "/subscriptions/$subscriptionId/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/domains/Domain1"
+Get-AzEventGridDomain -ResourceId "/subscriptions/$subscriptionId/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/domains/Domain1"
+```
 
+```output
 ResourceGroupName : MyResourceGroupName
 DomainName        : Domain1
 Id                : /subscriptions/<Azure Subscription Id>/resourceGroups/myresourcegroupname/providers/Microsoft.EventGrid/domains/domain1
@@ -83,9 +87,11 @@ Tags              : {[Tag1, Value1], [Tag2, Value2]}
 List all the Event Grid domains in resource group \`MyResourceGroupName\` without pagination (all domains are returned in one shot)
 
 ```powershell
-PS C:\> $result=Get-AzEventGridDomain -ResourceGroup MyResourceGroupName
-PS C:\> Write-Output $result.PsDomainsList
+$result=Get-AzEventGridDomain -ResourceGroup MyResourceGroupName
+Write-Output $result.PsDomainsList
+```
 
+```output
 ResourceGroupName : MyResourceGroupName
 DomainName        : Domain1
 Id                : /subscriptions/<Azure Subscription Id>/resourceGroups/myresourcegroupname/providers/Microsoft.EventGrid/domains/domain1
@@ -128,17 +134,17 @@ Tags              :
 List the Event Grid domains (if any) in resource group \`MyResourceGroupName\` that satisfies the $odataFilter query 10 domains at a time. If more results are available, the $result.NextLink will not be $null. In order to get next page(s) of domains, user is expected to re-call Get-AzEventGridDomain and uses result.NextLink obtained from the previous call. Caller should stop when result.NextLink becomes $null.
 
 ```powershell
-PS C:\> $total = 0
-PS C:\> $odataFilter = "Name ne 'ABCD'"
-PS C:\> $result = Get-AzEventGridDomain -ResourceGroup MyResourceGroupName -Top 10 -ODataQuery $odataFilter
-PS C:\> $total += $result.Count
-PS C:\> while ($null -ne $result.NextLink)
+$total = 0
+$odataFilter = "Name ne 'ABCD'"
+$result = Get-AzEventGridDomain -ResourceGroup MyResourceGroupName -Top 10 -ODataQuery $odataFilter
+$total += $result.Count
+while ($null -ne $result.NextLink)
     {
         $result = Get-AzEventGridDomain -NextLink $result.NextLink
         $total += $result.Count
     }
 
-PS C:\> Write-Output "Total number of domains is $Total"
+Write-Output "Total number of domains is $Total"
 ```
 
 ### Example 5
@@ -146,9 +152,11 @@ PS C:\> Write-Output "Total number of domains is $Total"
 List all the Event Grid domains in Azure Subscription without pagination (all domains are returned in one shot)
 
 ```powershell
-PS C:\> $result=Get-AzEventGridDomain
-PS C:\> Write-Output $result.PsDomainsList
+$result=Get-AzEventGridDomain
+Write-Output $result.PsDomainsList
+```
 
+```output
 ResourceGroupName : MyResourceGroupName
 DomainName        : Domain1
 Id                : /subscriptions/<Azure Subscription Id>/resourceGroups/myresourcegroupname1/providers/Microsoft.EventGrid/domains/domain1
@@ -191,16 +199,16 @@ Tags              :
 List the Event Grid domains (if any) in Azure Subscription that satisfies the $odataFilter query 20 domains at a time. If more results are available, the $result.NextLink will not be $null. In order to get next page(s) of domains, user is expected to re-call Get-AzEventGridDomain and uses result.NextLink obtained from the previous call. Caller should stop when result.NextLink becomes $null.
 
 ```powershell
-PS C:\> $total = 0
-PS C:\> $odataFilter = "Contains(Name, 'ABCD')"
-PS C:\> $result = Get-AzEventGridDomain -Top 20 -ODataQuery $odataFilter
-PS C:\> $total += $result.Count
-PS C:\> while ($null -ne $result.NextLink)
+$total = 0
+$odataFilter = "Contains(Name, 'ABCD')"
+$result = Get-AzEventGridDomain -Top 20 -ODataQuery $odataFilter
+$total += $result.Count
+while ($null -ne $result.NextLink)
     {
         $result = Get-AzEventGridDomain -NextLink $result.NextLink
         $total += $result.Count
     }
-PS C:\> Write-Output "Total number of domains is $Total"
+Write-Output "Total number of domains is $Total"
 ```
 
 ## PARAMETERS

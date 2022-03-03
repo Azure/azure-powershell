@@ -37,8 +37,10 @@ The Get-AzContainerRegistryWebhookEvent cmdlet lists all the events of a webhook
 
 ### Example 1: Gets all the events of a webhook.
 ```powershell
-PS C:\>Get-AzContainerRegistryWebhookEvent -ResourceGroupName mattacrtest001 -RegistryName premium001 -Name webhook001
+Get-AzContainerRegistryWebhookEvent -ResourceGroupName mattacrtest001 -RegistryName premium001 -Name webhook001
+```
 
+```output
    Webhook service Uri: http://www.bing.com/
 
 ID                                       Action   Timestamp                      Response

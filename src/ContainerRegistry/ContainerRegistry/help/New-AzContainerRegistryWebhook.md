@@ -40,9 +40,11 @@ The New-AzContainerRegistryWebhook cmdlet creates a container registry webhook.
 ## EXAMPLES
 
 ### Example 1: Create a container registry webhook.
+```powershell
+New-AzContainerRegistryWebhook -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry" -Name "webhook001" -Uri http://www.bing.com -Action Delete,Push -Header @{SpecialHeader='headerVal'} -Tag @{Key="val"} -Location "east us" -Status Enabled -Scope "foo:*"
 ```
-PS C:\> New-AzContainerRegistryWebhook -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry" -Name "webhook001" -Uri http://www.bing.com -Action Delete,Push -Header @{SpecialHeader='headerVal'} -Tag @{Key="val"} -Location "east us" -Status Enabled -Scope "foo:*"
 
+```output
 Name            Location   Status     Scope           Actions         Provisioni ServiceUri
                                                                       ngState
 ----            --------   ------     -----           -------         ---------- ----------

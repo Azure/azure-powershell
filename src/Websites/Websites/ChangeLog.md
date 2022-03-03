@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed DateTime conversion issue caused by culture 
 
 ## Version 2.10.0
 * Updated `New-AzAppServicePlan`  to create an app service plan with host environment id #16094

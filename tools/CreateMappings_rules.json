@@ -1,5 +1,9 @@
 [
   {
+    "alias": "Confidential Ledger",
+    "module": "ConfidentialLedger"
+  },
+  {
     "regex": "ApiManagement",
     "alias": "API Management"
   },
@@ -99,6 +103,10 @@
     "regex": "Route",
     "group": "Network",
     "alias": "Route"
+  },
+  {
+    "group": "DnsResolver",
+    "alias": "DnsResolver"
   },
   {
     "regex": "Dns",
@@ -672,6 +680,10 @@
     "module": "PrivateDns"
   },
   {
+    "alias": "Quota",
+    "module": "Quota"
+  },
+  {
     "regex": "ContainerInstance",
     "alias": "ContainerInstance"
   },
@@ -714,5 +726,13 @@
   {
     "alias": "Lab Services",
     "module": "LabServices"
+  },
+  {
+    "alias": "BareMetal",
+    "module": "BareMetal"
+  },
+  {
+    "alias": "ConnectedNetwork",
+    "module": "ConnectedNetwork"
   }
 ]

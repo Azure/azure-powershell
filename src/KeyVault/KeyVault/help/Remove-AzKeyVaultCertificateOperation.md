@@ -32,8 +32,10 @@ The **Remove-AzKeyVaultCertificateOperation** cmdlet deletes a certificate opera
 
 ### Example 1: Remove a certificate operation
 ```powershell
-PS C:\> Remove-AzKeyVaultCertificateOperation -VaultName "ContosoKV01" -Name "TestCert01" -Force
+Remove-AzKeyVaultCertificateOperation -VaultName "ContosoKV01" -Name "TestCert01" -Force
+```
 
+```output
 Id                        : https://contosokv01.vault.azure.net/certificates/testcert01/pending
 Status                    : completed
 StatusDetails             :

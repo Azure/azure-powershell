@@ -39,21 +39,21 @@ Optional parameter SkipSucceeded allows you to skip all the succeeded steps in t
 
 ### Example 1
 ```powershell
-PS C:\> Restart-AzDeploymentManagerRollout -ResourceGroupName ContosoResourceGroup -Name ContosoRollout -SkipSucceeded
+Restart-AzDeploymentManagerRollout -ResourceGroupName ContosoResourceGroup -Name ContosoRollout -SkipSucceeded
 ```
 
 This command restarts a rollout named ContosoRollout in the ContosoResourceGroup. The SkipSucceeded flag indicates that all the steps that already ran successfully should be skipped and the rollout should continue execution from where it last failed.
 
 ### Example 2: Restart a rollout using the resource identifier
 ```powershell
-PS C:\> Restart-AzDeploymentManagerRollout -ResourceId "/subscriptions/subscriptionId/resourcegroups/ContosoResourceGroup/providers/Microsoft.DeploymentManager/rollouts/ContosoRollout"
+Restart-AzDeploymentManagerRollout -ResourceId "/subscriptions/subscriptionId/resourcegroups/ContosoResourceGroup/providers/Microsoft.DeploymentManager/rollouts/ContosoRollout"
 ```
 
 This command restarts a rollout named ContosoRollout in the ContosoResourceGroup.
 
 ### Example 3: Restart a rollout using the rollout object.
 ```powershell
-PS C:\> Get-AzDeploymentManagerRollout -InputObject $rolloutObject
+Get-AzDeploymentManagerRollout -InputObject $rolloutObject
 ```
 
 This command restarts a rollout whose name and ResourceGroup match the Name and ResourceGroupName properties of the $rolloutObject, respectively.

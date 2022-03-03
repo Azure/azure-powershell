@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV2.dll-Help.xml
 Module Name: Az.DataFactory
 online version: https://docs.microsoft.com/powershell/module/az.datafactory/get-azdatafactoryv2activityrun
@@ -32,9 +32,11 @@ The **Get-AzDataFactoryV2ActivityRun** cmdlet gets information about runs in Azu
 ## EXAMPLES
 
 ### Example 1: Get all activity runs for a pipeline run
+```powershell
+Get-AzDataFactoryV2ActivityRun -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -PipelineRunId "f288712d-fb08-4cb8-96ef-82d3b9b30621" -RunStartedAfter "2017-09-01" -RunStartedBefore "2017-09-30"
 ```
-PS C:\> Get-AzDataFactoryV2ActivityRun -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -PipelineRunId "f288712d-fb08-4cb8-96ef-82d3b9b30621" -RunStartedAfter "2017-09-01" -RunStartedBefore "2017-09-30"
 
+```output
     ResourceGroupName : ADF
     DataFactoryName   : WikiADF
     ActivityName      : MyWebActivity
