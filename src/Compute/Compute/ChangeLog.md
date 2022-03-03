@@ -20,7 +20,7 @@
 
 -->
 ## Upcoming Release
-* Improve description and examples for Disk creation.
+* Improved description and examples for disk creation
 
 ## Version 4.24.0
 * Upgraded Compute .NET SDK package reference to version 52.0.0
