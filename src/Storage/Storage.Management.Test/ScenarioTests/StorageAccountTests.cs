@@ -280,6 +280,13 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         public void TestAzureStorageLocalUserSftp()
         {
             TestRunner.RunTestScript("Test-AzureStorageLocalUserSftp");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestStorageAccountAllowedCopyScope()
+        {
+            TestRunner.RunTestScript("Test-StorageAccountAllowedCopyScope");
         }        
     }
 }

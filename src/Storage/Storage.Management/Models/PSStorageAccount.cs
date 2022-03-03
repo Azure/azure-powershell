@@ -71,6 +71,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.ImmutableStorageWithVersioning = storageAccount.ImmutableStorageWithVersioning is null ? null : new PSImmutableStorageAccount(storageAccount.ImmutableStorageWithVersioning);
             this.EnableSftp = storageAccount.IsSftpEnabled;
             this.EnableLocalUser = storageAccount.IsLocalUserEnabled;
+            this.AllowedCopyScope = storageAccount.AllowedCopyScope;
         }
         public bool? AllowCrossTenantReplication { get; set; }
 
@@ -161,6 +162,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public string PublicNetworkAccess { get; set; }
 
         public PSImmutableStorageAccount ImmutableStorageWithVersioning { get; set; }
+        public string AllowedCopyScope { get; set; }
 
         public static PSStorageAccount Create(StorageModels.StorageAccount storageAccount, IStorageManagementClient client)
         {
