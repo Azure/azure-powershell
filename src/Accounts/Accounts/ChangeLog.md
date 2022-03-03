@@ -19,7 +19,9 @@
 -->
 
 ## Upcoming Release
-* Fixed the issue that authorization does not work in Dogfood environment
+
+## Version 2.7.3
+* Fixed the issue that authorization does not work in customized environment [#17157]
 * Enabled Continue Access Evaluation for MSGraph
 * Improved error message when login is blocked by AAD
 * Improved error message when silent reauthentication failed

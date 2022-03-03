@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.3.0
 * Supported download blob from managed disk account with Sas Uri and bearer token
     -  `Get-AzStorageBlobContent` 
 * Supported create/upgrade storage account with ActiveDirectorySamAccountName and ActiveDirectoryAccountType

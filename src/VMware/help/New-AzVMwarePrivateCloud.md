@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.VMware
-online version: https://docs.microsoft.com/powershell/module/az.VMware/new-azVMwareprivatecloud
+online version: https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwareprivatecloud
 schema: 2.0.0
 ---
 
@@ -302,7 +302,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.IPrivateCloud
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPrivateCloud
 
 ## NOTES
 
