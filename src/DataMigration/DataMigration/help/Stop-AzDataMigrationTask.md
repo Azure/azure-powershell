@@ -36,15 +36,15 @@ Stop-AzDataMigrationTask cmdlet stops database migration activity in running sta
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Stop-AzDataMigrationTask -ResourceGroupName MyResourceGroup  -ServiceName TestService -ProjectName myDMSProject -Name myDMSTask
+```powershell
+Stop-AzDataMigrationTask -ResourceGroupName MyResourceGroup  -ServiceName TestService -ProjectName myDMSProject -Name myDMSTask
 ```
 
 Above example stops Azure Database Migration Service task named myDMSTask associated with project myDMSProject and Azure Database Migration Service instance named TestService
 
 ### Example 2
-```
-PS C:\> Stop-AzDataMigrationTask -InputObject $MyDMSTask
+```powershell
+Stop-AzDataMigrationTask -InputObject $MyDMSTask
 ```
 
 Above example stops Azure Database Migration Service task passed in as input parameter PSProjectTask object
