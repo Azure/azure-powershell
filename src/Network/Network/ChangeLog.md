@@ -31,6 +31,7 @@
         - `New-AzLoadBalancerInboundNatRuleConfig`
         - `Set-AzLoadBalancerInboundNatRuleConfig`
         - `Add-AzLoadBalancerInboundNatRuleConfig`
+* Added support for vnet flow logging feature at NIC, VNet and Subnet level
 
 ## Version 4.14.0
 * Used case-insensitive comparison for ResourceId (Set/New-NetworkWatcherFlowLog)
