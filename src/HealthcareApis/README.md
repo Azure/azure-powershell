@@ -30,13 +30,12 @@ For information on how to develop for `Az.HealthcareApis`, see [how-to.md](how-t
 > see https://aka.ms/autorest
 
 ``` yaml
-Branch: 8b1817cb8141e67087be20abcabb02e666be77e3
-# Branch: 2a6c840524573116aa549a3733fa2243baa4da3f
+Branch: 672281444dd67605420fc9b3bcbd170040708380
 require:
   - $(this-folder)/../readme.azure.noprofile.md 
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/dev-healthcareapis-Microsoft.HealthcareApis-2021-11-01-changes/specification/healthcareapis/resource-manager/Microsoft.HealthcareApis/stable/2021-11-01/healthcare-apis.json
-  # - $(repo)/specification/healthcareapis/resource-manager/Microsoft.HealthcareApis/preview/2021-06-01-preview/healthcare-apis.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/healthcareapis/resource-manager/Microsoft.HealthcareApis/stable/2021-11-01/healthcare-apis.json
+  # - $(repo)/specification/healthcareapis/resource-manager/Microsoft.HealthcareApis/stable/2021-11-01/healthcare-apis.json
 
 module-version: 0.3.0
 title: HealthcareApis
@@ -95,8 +94,10 @@ directive:
       model-name: DicomService
     set:
       format-table:
-        exclude-properties:
-          - Etag
+        properties:
+          - Location
+          - Name
+          - ResourceGroupName
   - where:
       model-name: FhirService
     set:
@@ -109,4 +110,14 @@ directive:
       format-table:
         exclude-properties:
           - Etag
+
+  - from: swagger-document 
+    where: $.definitions.IotConnectorProperties.properties.deviceMapping
+    transform: >-
+      return {
+          "type": "object",
+          "description": "Device Mappings.",
+          "$ref": "#/definitions/IotMappingProperties"
+      }
+
 ```
