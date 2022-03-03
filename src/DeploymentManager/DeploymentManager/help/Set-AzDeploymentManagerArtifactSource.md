@@ -25,7 +25,7 @@ The cmdlet returns the updated ArtifactSource object.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzDeploymentManagerArtifactSource -InputObject $artifactSourceObject
+Get-AzDeploymentManagerArtifactSource -InputObject $artifactSourceObject
 ```
 
 This command updates an artifact source whose name and ResourceGroup match the Name and ResourceGroupName properties of the $artifactSourceObject, respectively.

@@ -36,15 +36,15 @@ The Start-AzDataMigrationService cmdlet starts an instance of the Azure Database
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Start-AzDataMigrationService -ResourceGroupName MyResourceGroup -ServiceName TestService
+```powershell
+Start-AzDataMigrationService -ResourceGroupName MyResourceGroup -ServiceName TestService
 ```
 
 The above example starts an Azure Database Migration Service instance named Test Service in a stopped state based on service name passed in as input
 
 ### Example 2
-```
-PS C:\> Start-AzDataMigrationService -InputObject $TestService
+```powershell
+Start-AzDataMigrationService -InputObject $TestService
 ```
 
 The above example starts an Azure Database Migration Service instance based on PSDataMigrationService passed in as input parameter
