@@ -1,7 +1,9 @@
 ### Example 1: Check if account name is available
 ```powershell
-PS C:\> Test-AzPurviewAccountNameAvailability -Name test-pa -Type Tenant
+Test-AzPurviewAccountNameAvailability -Name test-pa -Type Tenant
+```
 
+```output
 Message                                                 NameAvailable Reason
 -------                                                 ------------- ------
 The name test-pa is invalid, please use another name. False         Invalid
