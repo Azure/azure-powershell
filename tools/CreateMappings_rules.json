@@ -105,6 +105,10 @@
     "alias": "Route"
   },
   {
+    "group": "DnsResolver",
+    "alias": "DnsResolver"
+  },
+  {
     "regex": "Dns",
     "group": "Network",
     "alias": "DNS"
@@ -676,6 +680,10 @@
     "module": "PrivateDns"
   },
   {
+    "alias": "Quota",
+    "module": "Quota"
+  },
+  {
     "regex": "ContainerInstance",
     "alias": "ContainerInstance"
   },
@@ -718,5 +726,13 @@
   {
     "alias": "Lab Services",
     "module": "LabServices"
+  },
+  {
+    "alias": "BareMetal",
+    "module": "BareMetal"
+  },
+  {
+    "alias": "ConnectedNetwork",
+    "module": "ConnectedNetwork"
   }
 ]

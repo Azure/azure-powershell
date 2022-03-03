@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.Eventhub
             if (identityType != null)
             {
                 parameter.Identity = new Identity();
-                parameter.Identity = FindIdentity(identityType);
+                parameter.Identity.Type = FindIdentity(identityType);
             }
 
             if (identityId != null)
@@ -141,6 +141,10 @@ namespace Microsoft.Azure.Commands.Eventhub
                 else
                 {
                     parameter.Identity.UserAssignedIdentities = UserAssignedIdentities;
+                }
+                if (parameter.Identity.Type == ManagedServiceIdentityType.None || parameter.Identity.Type == ManagedServiceIdentityType.SystemAssigned)
+                {
+                    throw new Exception("Please change -IdentityType to 'UserAssigned' or 'SystemAssigned, UserAssigned' if you want to add User Assigned Identities");
                 }
             }
 
@@ -233,8 +237,23 @@ namespace Microsoft.Azure.Commands.Eventhub
             if (isKafkaEnabled)
                 parameter.KafkaEnabled = isKafkaEnabled;
 
-            if (isIdentity)
-                parameter.Identity = new Identity() { Type = ManagedServiceIdentityType.SystemAssigned };
+            if (isIdentity) { 
+                if(parameter.Identity == null)
+                {
+                    parameter.Identity = new Identity() { Type = ManagedServiceIdentityType.SystemAssigned };
+                }
+                else
+                {
+                    if(parameter.Identity.Type == ManagedServiceIdentityType.None)
+                    {
+                        parameter.Identity = new Identity() { Type = ManagedServiceIdentityType.SystemAssigned };
+                    }
+                    if (parameter.Identity.Type == ManagedServiceIdentityType.UserAssigned)
+                    {
+                        parameter.Identity = new Identity() { Type = ManagedServiceIdentityType.SystemAssignedUserAssigned };
+                    }
+                }
+            }
 
             if (isDisableLocalAuth)
                 parameter.DisableLocalAuth = isDisableLocalAuth;
@@ -318,9 +337,14 @@ namespace Microsoft.Azure.Commands.Eventhub
             }
             if (identityType != null)
             {
-                parameter.Identity = new Identity();
-                parameter.Identity = FindIdentity(identityType);
-                if(parameter.Identity.Type == ManagedServiceIdentityType.None)
+                if(parameter.Identity == null)
+                {
+                    parameter.Identity = new Identity();
+                }
+
+                parameter.Identity.Type = FindIdentity(identityType);
+
+                if(parameter.Identity.Type == ManagedServiceIdentityType.None || parameter.Identity.Type == ManagedServiceIdentityType.SystemAssigned)
                 {
                     parameter.Identity.UserAssignedIdentities = null;
                 }
@@ -339,6 +363,10 @@ namespace Microsoft.Azure.Commands.Eventhub
                 else
                 {
                     parameter.Identity.UserAssignedIdentities = UserAssignedIdentities;
+                }
+                if (parameter.Identity.Type == ManagedServiceIdentityType.None || parameter.Identity.Type == ManagedServiceIdentityType.SystemAssigned)
+                {
+                    throw new Exception("Please change -IdentityType to UserAssigned or 'SystemAssigned, UserAssigned' if you want to add User Assigned Identities");
                 }
             }
 
@@ -377,24 +405,24 @@ namespace Microsoft.Azure.Commands.Eventhub
             return new PSNamespaceAttributes(response);
         }
 
-        public Identity FindIdentity(string identityType)
+        public ManagedServiceIdentityType FindIdentity(string identityType)
         {
-            Identity identity = new Identity();
-
+            ManagedServiceIdentityType Type = ManagedServiceIdentityType.None;
             if (identityType == SystemAssigned)
-                identity.Type = ManagedServiceIdentityType.SystemAssigned;
+                Type = ManagedServiceIdentityType.SystemAssigned;
 
             else if (identityType == UserAssigned)
-                identity.Type = ManagedServiceIdentityType.UserAssigned;
+                Type = ManagedServiceIdentityType.UserAssigned;
 
             else if (identityType == SystemAssignedUserAssigned)
-                identity.Type = ManagedServiceIdentityType.SystemAssignedUserAssigned;
+                Type = ManagedServiceIdentityType.SystemAssignedUserAssigned;
 
             else if (identityType == None)
-                identity.Type = ManagedServiceIdentityType.None;
+                Type = ManagedServiceIdentityType.None;
 
-            return identity;
+            return Type;
         }
+
 
         public void BeginDeleteNamespace(string resourceGroupName, string namespaceName)
         {
