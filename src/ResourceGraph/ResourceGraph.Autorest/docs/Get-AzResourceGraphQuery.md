@@ -61,7 +61,7 @@ global   SharedQuery-t01 microsoft.resourcegraph/queries
 
 This command gets a resource graph query by name.
 
-### Example 2: Get a resource graph query by objecy
+### Example 3: Get a resource graph query by objecy
 ```powershell
 $query = New-AzResourceGraphQuery -ResourceGroupName azure-rg-test -Name query-t03 -Location 'global' -Query 'project id, name, type, location' -Description 'test'
 Get-AzResourceGraphQuery -InputObject $query
