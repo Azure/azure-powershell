@@ -24,8 +24,8 @@ The **Reset-AzPowerBIWorkspaceCollectionAccessKey** cmdlet resets the specified 
 ## EXAMPLES
 
 ### Example 1: Reset the primary access key
-```
-PS C:\>Reset-AzPowerBIWorkspaceCollectionAccessKey -ResourceGroupName "ResourceGroup17" -WorkspaceCollectionName "WCN11" -Key1
+```powershell
+Reset-AzPowerBIWorkspaceCollectionAccessKey -ResourceGroupName "ResourceGroup17" -WorkspaceCollectionName "WCN11" -Key1
 ```
 
 This command resets the primary access key for the workspace collection named WCN11 in the specified resource group.
