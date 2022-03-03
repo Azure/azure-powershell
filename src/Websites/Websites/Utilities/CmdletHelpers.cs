@@ -514,8 +514,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 WindowsFxVersion = config.WindowsFxVersion,
                 ManagedServiceIdentityId = config.ManagedServiceIdentityId,
                 MinTlsVersion = config.MinTlsVersion,
-                FtpsState = config.FtpsState,
-                HealthCheckPath = config.HealthCheckPath
+                FtpsState = config.FtpsState
             };
         }
 

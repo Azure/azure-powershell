@@ -140,10 +140,6 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [ValidateSet("AllAllowed", "Disabled", "FtpsOnly")]
         public string FtpsState { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Health Check Path", ParameterSetName = ParameterSet1Name)]
-        [ValidateNotNullOrEmpty]
-        public string HealthCheckPath { get; set; }
-
 
         public override void ExecuteCmdlet()
         {
@@ -190,8 +186,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                             NumberOfWorkers = parameters.Contains("NumberOfWorkers") ? NumberOfWorkers : WebApp.SiteConfig.NumberOfWorkers,
                             AlwaysOn = parameters.Contains("AlwaysOn") ? (bool?)AlwaysOn : null,
                             MinTlsVersion = parameters.Contains("MinTlsVersion") ? MinTlsVersion : WebApp.SiteConfig.MinTlsVersion,
-                            FtpsState = parameters.Contains("FtpsState") ? FtpsState: WebApp.SiteConfig.FtpsState,
-                            HealthCheckPath = parameters.Contains("HealthCheckPath") ? HealthCheckPath: WebApp.SiteConfig.HealthCheckPath
+                            FtpsState = parameters.Contains("FtpsState") ? FtpsState: WebApp.SiteConfig.FtpsState
                         };
                     }
 
