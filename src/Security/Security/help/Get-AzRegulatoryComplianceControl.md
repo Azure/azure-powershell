@@ -31,14 +31,16 @@ Get a spcific control details or list all the controls under specific regulatory
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzRegulatoryComplianceControl -StandardName "SOC TSP"
+Get-AzRegulatoryComplianceControl -StandardName "SOC TSP"
+```
 
+```output
 Id                 : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/regulatoryComplia
                      nceStandards/SOC-TSP/regulatoryComplianceControls/A1.1
 Name               : A1.1
 Type               : Microsoft.Security/regulatoryComplianceStandards/regulatoryComplianceControls
 Description        : Current processing capacity and usage are maintained, monitored, and evaluated to manage capacity
-                     demand and to enable the implementation of additional capacity to help meet the entity�s
+                     demand and to enable the implementation of additional capacity to help meet the entityï¿½s
                      availability commitments and system requirements.
 State              : Unsupported
 PassedAssessments  : 0
@@ -61,7 +63,7 @@ Id                 : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/provide
                      nceStandards/SOC-TSP/regulatoryComplianceControls/A1.3
 Name               : A1.3
 Type               : Microsoft.Security/regulatoryComplianceStandards/regulatoryComplianceControls
-Description        : Recovery plan procedures supporting system recovery are tested to help meet the entity�s
+Description        : Recovery plan procedures supporting system recovery are tested to help meet the entityï¿½s
                      availability commitments and system requirements.
 State              : Unsupported
 PassedAssessments  : 0
@@ -85,8 +87,10 @@ Get all controls under specific regulatory standard.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzRegulatoryComplianceControl -StandardName "SOC TSP" -Name "C1.2"
+Get-AzRegulatoryComplianceControl -StandardName "SOC TSP" -Name "C1.2"
+```
 
+```output
 Id                 : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/regulatoryComplia
                      nceStandards/SOC-TSP/regulatoryComplianceControls/C1.2
 Name               : C1.2
@@ -104,9 +108,11 @@ Get specific control details according to control id.
 
 ### Example 3
 ```powershell
-PS C:\> Get-AzRegulatoryComplianceControl -ResourceId "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/regulatoryComplia
+Get-AzRegulatoryComplianceControl -ResourceId "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/regulatoryComplia
                      nceStandards/SOC-TSP/regulatoryComplianceControls/C1.2"
+```
 
+```output
 Id                 : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/regulatoryComplia
                      nceStandards/SOC-TSP/regulatoryComplianceControls/C1.2
 Name               : C1.2
