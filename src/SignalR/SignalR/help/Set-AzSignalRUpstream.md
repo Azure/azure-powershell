@@ -44,7 +44,7 @@ Set-AzSignalRUpstream -name pssignalr -ResourceGroupName test_resource_group -Te
 ```output
 Templates
 ---------
-{Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate, Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplatâ€¦
+{Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate, Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplat…
 ```
 
 The following JSON represents the actual templates set. 

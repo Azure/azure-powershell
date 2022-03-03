@@ -40,7 +40,7 @@ Size                 :
 SkuCapacity          :
 Tier                 : Free
 
-CapacityAllowedValue : {0, 1, 2, 5â€¦}
+CapacityAllowedValue : {0, 1, 2, 5…}
 CapacityDefault      : 1
 CapacityMaximum      : 100
 CapacityMinimum      : 0
