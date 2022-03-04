@@ -3321,12 +3321,20 @@ function Test-VirtualMachineScaleSetRepairsAction
             -SubnetId $subnetId;
 
         $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName $vmssSize -UpgradePolicyMode 'Manual' -HealthProbeId $expectedLb.Probes[0].Id `
-            -EnableAutomaticRepair -AutomaticRepairGracePeriod "PT30M" -AutomaticRepairsAction "Replace" `
+            -EnableAutomaticRepair:$false -AutomaticRepairGracePeriod "PT30M" -AutomaticRepairsAction "Replace" `
             | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
             | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
             | Set-AzVmssStorageProfile -Name 'test' -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
             -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion 'latest' `
             -ImageReferencePublisher $imgRef.PublisherName -VhdContainer $vhdContainer;
+
+         #$vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName $vmssSize -UpgradePolicyMode 'Manual' -HealthProbeId $expectedLb.Probes[0].Id `
+         #   -EnableAutomaticRepair -AutomaticRepairGracePeriod "PT30M" `
+         #   | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
+         #   | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
+         #   | Set-AzVmssStorageProfile -Name 'test' -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
+         #   -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion 'latest' `
+         #   -ImageReferencePublisher $imgRef.PublisherName -VhdContainer $vhdContainer;
 
         New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
     }
