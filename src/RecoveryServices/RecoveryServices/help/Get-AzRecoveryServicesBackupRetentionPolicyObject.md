@@ -27,11 +27,11 @@ It is a temporary object that you can manipulate and use with the New-AzRecovery
 ## EXAMPLES
 
 ### Example 1: Create a backup protection policy
-```
-PS C:\>$RetPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureVM 
-PS C:\> $RetPol.DailySchedule.DurationCountInDays = 365
-PS C:\> $SchPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureVM 
-PS C:\> New-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -WorkloadType AzureVM -RetentionPolicy $RetPol -SchedulePolicy $SchPol
+```powershell
+$RetPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureVM 
+$RetPol.DailySchedule.DurationCountInDays = 365
+$SchPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureVM 
+New-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -WorkloadType AzureVM -RetentionPolicy $RetPol -SchedulePolicy $SchPol
 ```
 
 The first command gets the retention policy object, and then stores it in the $RetPol variable.
@@ -41,8 +41,8 @@ The last command creates a backup protection policy using the retention policy a
 
 ### Example 2: Get base hourly retention object for fileshare policy 
 ```powershell
-PS C:\> $retentionPolicy = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureFiles -BackupManagementType AzureStorage -ScheduleRunFrequency Hourly
-PS C:\> $retentionPolicy.DailySchedule.DurationCountInDays = 10
+$retentionPolicy = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureFiles -BackupManagementType AzureStorage -ScheduleRunFrequency Hourly
+$retentionPolicy.DailySchedule.DurationCountInDays = 10
 ```
 
 The first command gets a base hourly **RetentionPolicy** object, and then stores it in the $retentionPolicy variable.

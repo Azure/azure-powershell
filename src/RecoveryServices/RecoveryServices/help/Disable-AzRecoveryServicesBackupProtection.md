@@ -28,9 +28,9 @@ Set the vault context by using the Set-AzRecoveryServicesVaultContext cmdlet bef
 
 ### Example 1: Disable Backup protection
 ```powershell
-PS C:\> $Cont = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVM -Status Registered 
-PS C:\> $PI = Get-AzRecoveryServicesBackupItem -Container $Cont[0] -WorkloadType AzureVM 
-PS C:\> Disable-AzRecoveryServicesBackupProtection -Item $PI[0]
+$Cont = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVM -Status Registered 
+$PI = Get-AzRecoveryServicesBackupItem -Container $Cont[0] -WorkloadType AzureVM 
+Disable-AzRecoveryServicesBackupProtection -Item $PI[0]
 ```
 
 The first command gets an array of backup containers, and then stores it in the $Cont array.

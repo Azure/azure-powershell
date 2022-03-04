@@ -40,7 +40,7 @@ The **Start-AzRecoveryServicesAsrTestFailoverCleanupJob** cmdlet starts the test
 Job to track test failover Cleanup of an Azure Site Recovery recoveryPlan.
 
 ```powershell
-PS C:\> Start-AzRecoveryServicesAsrTestFailoverCleanupJob -RecoveryPlan $recoveryPlan -Comment "testing done"
+Start-AzRecoveryServicesAsrTestFailoverCleanupJob -RecoveryPlan $recoveryPlan -Comment "testing done"
 ```
 
 ### Example 2
