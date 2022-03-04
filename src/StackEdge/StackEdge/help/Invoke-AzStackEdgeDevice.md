@@ -67,7 +67,7 @@ Invoke-AzStackEdgeDevice -DeviceObject <PSStackEdgeDevice> [-InstallUpdate] [-As
 ```
 
 ## DESCRIPTION
-The **Invoke-AzStackEdgeDevice** cmdlet invokes actions to scan, download ï¿½and install the updates on the Stack Edge device. An automatic scan runs on the device daily, you can trigger the scan explicitly by running this cmdlet.
+The **Invoke-AzStackEdgeDevice** cmdlet invokes actions to scan, download and install the updates on the Stack Edge device. An automatic scan runs on the device daily, you can trigger the scan explicitly by running this cmdlet.
 
 ## EXAMPLES
 

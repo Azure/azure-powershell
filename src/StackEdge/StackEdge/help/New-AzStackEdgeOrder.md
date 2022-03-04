@@ -20,7 +20,7 @@ New-AzStackEdgeOrder [-ResourceGroupName] <String> [-DeviceName] <String> -Conta
 ```
 
 ## DESCRIPTION
-The **New-AzStackEdgeOrder** cmdlet creates a new order for a Stack Edge device. A Stack Edge device resource needs to be created first before creating an order. You can specify details like contact person, company name, email, address etc. as parameters for creating the order.ï¿½
+The **New-AzStackEdgeOrder** cmdlet creates a new order for a Stack Edge device. A Stack Edge device resource needs to be created first before creating an order. You can specify details like contact person, company name, email, address etc. as parameters for creating the order.
 
 ## EXAMPLES
 

@@ -56,7 +56,7 @@ $device.Alert
 
 Title                            Severity AppearedDateTime      Recommendation
 -----                            -------- ----------------      --------------
-Lost heartbeat from your device. Critical 02-Jan-20 10:35:20 AM If your device is offline, then the device is not able to communicate with the Azure service. This could be due to one of the following reasons: <br/> &nbsï¿½
+Lost heartbeat from your device. Critical 02-Jan-20 10:35:20 AM If your device is offline, then the device is not able to communicate with the Azure service. This could be due to one of the following reasons: <br/> &nbs
 
 
 $device.NetworkSetting
