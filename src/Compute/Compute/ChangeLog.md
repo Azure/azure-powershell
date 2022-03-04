@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Edited the documentation for the cmdlet `Set-AzVMADDomainExtension` to ensure the example is accurate. 
 
 ## Version 4.24.0
 * Upgraded Compute .NET SDK package reference to version 52.0.0
