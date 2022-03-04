@@ -19,7 +19,6 @@
 --->
 
 ## Upcoming Release
-
 * Added support for accepting Vnet, Subnet and NIC resources as the TargetResourceId for the following cdmlets
     - `Set-AzNetworkWatcherFlowLog`
     - `New-AzNetworkWatcherFlowLog`
