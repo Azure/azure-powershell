@@ -36,7 +36,12 @@ require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/applicationinsights/resource-manager/Microsoft.Insights/preview/2018-05-01-preview/webTests_API.json
-
+  - https://github.com/Azure/azure-rest-api-specs/blob/b4d86c9b275bc33e17184f6eddcbafa85b613e14/specification/applicationinsights/resource-manager/Microsoft.Insights/preview/2018-05-01-preview/components_API.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/e129012901bbd9cc0f182ec5b539bccf2440ef4a/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/componentApiKeys_API.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/8f0d54f788304518eca62ddf281b8c889ad9613c/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/componentAnnotations_API.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/e129012901bbd9cc0f182ec5b539bccf2440ef4a/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/componentFeaturesAndPricing_API.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/e129012901bbd9cc0f182ec5b539bccf2440ef4a/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/componentContinuousExport_API.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/e129012901bbd9cc0f182ec5b539bccf2440ef4a/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/aiOperations_API.json
 module-version: 0.1.0
 subject-prefix: $(service-name)
 
