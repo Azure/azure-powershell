@@ -37,9 +37,11 @@ The Remove-AzSqlElasticJob cmdlet removes a job
 
 ### Example 1: Removes a job
 ```powershell
-PS C:\> $agent = Get-AzSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent
+$agent = Get-AzSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent
 $agent | Remove-AzSqlElasticJob -Name job1
+```
 
+```output
 JobName Version Description StartTime           EndTime                ScheduleType Interval Enabled
 ------- ------- ----------- ---------           -------                ------------ -------- -------
 job1    0                   6/1/2018 9:46:29 PM 12/31/9999 11:59:59 AM Once                  False

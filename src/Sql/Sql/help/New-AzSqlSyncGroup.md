@@ -26,11 +26,14 @@ The **New-AzSqlSyncGroup** cmdlet creates an Azure SQL Database Sync Group.
 ## EXAMPLES
 
 ### Example 1: Create a sync group for an Azure SQL Database.
-```
-PS C:\> $credential = Get-Credential
-PS C:\> New-AzSqlSyncGroup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -Name "SyncGroup01" -ConflictResolutionPolicy "HubWin"
+```powershell
+$credential = Get-Credential
+New-AzSqlSyncGroup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -Name "SyncGroup01" -ConflictResolutionPolicy "HubWin"
 -DatabaseCredential $credential -IntervalInSeconds 100 -SyncDatabaseServerName "syncDatabaseServer01" -SyncDatabaseName "syncDatabaseName01"
 -SyncDatabaseResourceGroupName "syncDatabaseResourceGroup01" -Schema ".\schema.json" | Format-List
+```
+
+```output
 ResourceId                  : /subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/databases/{Database01}/syncGroups/{SyncGroup01}
 ResourceGroupName           : ResourceGroup01
 ServerName                  : Server01
