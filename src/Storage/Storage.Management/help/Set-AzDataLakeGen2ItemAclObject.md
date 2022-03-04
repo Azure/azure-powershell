@@ -24,12 +24,13 @@ If the new ACL entry with same AccessControlType/EntityId/DefaultScope not exist
 ## EXAMPLES
 
 ### Example 1: Create an ACL object with 3 ACL entry, and update ACL on a directory
+```powershell
+$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope
+$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
+$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission "rw-" -InputObject $acl
+Update-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/dir3" -ACL $acl
 ```
-PS C:\>$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope
-PS C:\>$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
-PS C:\>$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission "rw-" -InputObject $acl
-PS C:\>Update-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/dir3" -ACL $acl
-
+```output
    FileSystem Name: filesystem1
 
 Path                 IsDirectory  Length          LastModified         Permissions  Owner                Group               
@@ -40,12 +41,12 @@ dir1/dir3            True                         2020-03-23 09:34:31Z rwxrw-rw-
 This command creates an ACL object with 3 ACL entries (use -InputObject parameter to add acl entry to existing acl object), and updates ACL on a directory.
 
 ### Example 2: Create an ACL object with 4 ACL entries, and update permission of an existing ACL entry
-```
-PS C:\>$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope
-PS C:\>$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
-PS C:\>$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission "rw-" -InputObject $acl
-PS C:\>$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $id -Permission rwx -InputObject $acl 
-PS C:\>$acl
+```powershell
+$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope
+$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
+$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission "rw-" -InputObject $acl
+$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $id -Permission rwx -InputObject $acl 
+$acl
 
 DefaultScope AccessControlType EntityId                             Permissions
 ------------ ----------------- --------                             -----------
@@ -54,8 +55,8 @@ False        Group                                                  rw-
 False        Other                                                  rw-        
 False        User              ********-****-****-****-************ rwx        
 
-PS C:\>$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $id -Permission r-x -InputObject $acl 
-PS C:\>$acl  
+$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $id -Permission r-x -InputObject $acl 
+$acl  
 
 DefaultScope AccessControlType EntityId                             Permissions
 ------------ ----------------- --------                             -----------

@@ -56,45 +56,45 @@ The **New-AzRmStorageShare** cmdlet removes a Storage file share.
 ## EXAMPLES
 
 ### Example 1: Remove a Storage file share with Storage account name and share name
-```
-PS C:\>Remove-AzRmStorageShare -ResourceGroupName "myResourceGroup" -StorageAccountName "myStorageAccount" -Name "myshare"
+```powershell
+Remove-AzRmStorageShare -ResourceGroupName "myResourceGroup" -StorageAccountName "myStorageAccount" -Name "myshare"
 ```
 
 This command removes a Storage file share with Storage account name and share name.
 
 ### Example 2: Remove a Storage file share with Storage account object and share name
-```
-PS C:\>$accountObject = Get-AzStorageAccount -ResourceGroupName "myResourceGroup" -StorageAccountName "myStorageAccount"
-PS C:\>Remove-AzRmStorageShare -StorageAccount $accountObject -Name "myshare"
+```powershell
+$accountObject = Get-AzStorageAccount -ResourceGroupName "myResourceGroup" -StorageAccountName "myStorageAccount"
+Remove-AzRmStorageShare -StorageAccount $accountObject -Name "myshare"
 ```
 
 This command removes a Storage file share with Storage account object and share name.
 
 ### Example 3: Remove all Storage file shares in a Storage account with pipeline
-```
-PS C:\>Get-AzStorageShare -ResourceGroupName "myResourceGroup" -StorageAccountName "myStorageAccount" | Remove-AzRmStorageShare -Force
+```powershell
+Get-AzStorageShare -ResourceGroupName "myResourceGroup" -StorageAccountName "myStorageAccount" | Remove-AzRmStorageShare -Force
 ```
 
 This command removes all Storage file shares in a Storage account with pipeline.
 
 ### Example 4: Remove a single Storage file share snapshot
-```
-PS C:\>Remove-AzRmStorageShare -ResourceGroupName "myResourceGroup" -StorageAccountName "myStorageAccount" -Name "myshare" -SnapshotTime "2021-05-10T08:04:08Z"
+```powershell
+Remove-AzRmStorageShare -ResourceGroupName "myResourceGroup" -StorageAccountName "myStorageAccount" -Name "myshare" -SnapshotTime "2021-05-10T08:04:08Z"
 ```
 
 This command removes a single Storage file share snapshot with the specific share name and snapshot time
 
 ### Example 5: Remove a Storage file share and it's snapshots
-```
-PS C:\>Remove-AzRmStorageShare -ResourceGroupName "myResourceGroup" -StorageAccountName "myStorageAccount" -Name "myshare" -Include Snapshots
+```powershell
+Remove-AzRmStorageShare -ResourceGroupName "myResourceGroup" -StorageAccountName "myStorageAccount" -Name "myshare" -Include Snapshots
 ```
 
 This command removes a Storage file share and it's snapshots
 By default, the cmdlet will fail if the file share has snapshots without "-include" parameter.
 
 ### Example 6: Remove a Storage file share and all it's snapshots (include leased snapshots)
-```
-PS C:\>Remove-AzRmStorageShare -ResourceGroupName "myResourceGroup" -StorageAccountName "myStorageAccount" -Name "myshare" -Include Leased-Snapshots
+```powershell
+Remove-AzRmStorageShare -ResourceGroupName "myResourceGroup" -StorageAccountName "myStorageAccount" -Name "myshare" -Include Leased-Snapshots
 ```
 
 This command removes a Storage file share and all it's snapshots, include leased and not leased snapshots.

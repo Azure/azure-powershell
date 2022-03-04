@@ -24,9 +24,10 @@ This cmdlet only works after enabled Container softdelete with Enable-AzStorageB
 ## EXAMPLES
 
 ### Example 1: List containers include deleted containers, and restore all deleted containers with pipeline
+```powershell
+Get-AzStorageContainer -IncludeDeleted -Context $ctx | ? { $_.IsDeleted } | Restore-AzStorageContainer
 ```
-PS C:\> Get-AzStorageContainer -IncludeDeleted -Context $ctx | ? { $_.IsDeleted } | Restore-AzStorageContainer
-
+```output
    Storage Account Name: storageaccountname
 
 Name                 PublicAccess         LastModified                   IsDeleted  VersionId                                                                                                                                                                                                                                                         
@@ -38,8 +39,8 @@ container2           Off
 This command lists all containers include deleted containers, filter out all the deleted containers, then restore all deleted container to the same container name with pipeline.
 
 ### Example 2: Restore a single deleted container
-```
-PS C:\> Get-AzStorageContainer -IncludeDeleted -Context $ctx | ? { $_.IsDeleted } 
+```powershell
+Get-AzStorageContainer -IncludeDeleted -Context $ctx | ? { $_.IsDeleted } 
 
    Storage Account Name: storageaccountname
 
@@ -48,7 +49,7 @@ Name                 PublicAccess         LastModified                   IsDelet
 container1                                8/28/2020 10:18:13 AM +00:00   True       01D685BC91A88F22                                                                                                                                                                                                                                                                
 container2                                9/4/2020 12:52:37 PM +00:00    True       01D67D248986B6DA  
 
-PS C:\> Restore-AzStorageContainer -Name container1 -VersionId 01D685BC91A88F22 -Context $ctx
+Restore-AzStorageContainer -Name container1 -VersionId 01D685BC91A88F22 -Context $ctx
 
    Storage Account Name: storageaccountname
 

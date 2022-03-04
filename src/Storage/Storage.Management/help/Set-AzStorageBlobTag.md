@@ -42,9 +42,10 @@ The **Set-AzStorageBlobTag** sets blob tags of a specific blob.
 ## EXAMPLES
 
 ### Example 1: Set blob tags on a specific blob
+```powershell
+ Set-AzStorageBlobTag -Container "containername" -Blob testblob -Tag @{"tag1" = "value1"; "tag2" = "value2" }
 ```
-PS C:\> Set-AzStorageBlobTag -Container "containername" -Blob testblob -Tag @{"tag1" = "value1"; "tag2" = "value2" }
-
+```output
 Name                           Value                                                                                                                                                                                 
 ----                           -----                                                                                                                                                                                 
 tag2                           value2                                                                                                                                                                                
@@ -54,9 +55,10 @@ tag1                           value1
 This command sets blob tags on a specific blob.
 
 ### Example 2: Set blob tags on a specific blob with tag condition
+```powershell
+ Set-AzStorageBlobTag -Container "containername" -Blob testblob -Tag @{"tag1" = "value1"; "tag2" = "value2" } -TagCondition """tag1""='value1'"
 ```
-PS C:\> Set-AzStorageBlobTag -Container "containername" -Blob testblob -Tag @{"tag1" = "value1"; "tag2" = "value2" } -TagCondition """tag1""='value1'"
-
+```output
 Name                           Value                                                                                                                                                                                 
 ----                           -----                                                                                                                                                                                 
 tag2                           value2                                                                                                                                                                                

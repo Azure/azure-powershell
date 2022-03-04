@@ -24,15 +24,15 @@ The **Get-AzStorageTableStoredAccessPolicy** cmdlet lists the stored access poli
 ## EXAMPLES
 
 ### Example 1: Get a stored access policy in a storage table
-```
-PS C:\>Get-AzStorageTableStoredAccessPolicy -Table "Table02" -Policy "Policy50"
+```powershell
+Get-AzStorageTableStoredAccessPolicy -Table "Table02" -Policy "Policy50"
 ```
 
 This command gets the access policy named Policy50 in the storage table named Table02.
 
 ### Example 2: Get all stored access policies in a storage table
-```
-PS C:\>Get-AzStorageTableStoredAccessPolicy -Table "Table02"
+```powershell
+Get-AzStorageTableStoredAccessPolicy -Table "Table02"
 ```
 
 This command gets all access policies in the table named Table02.

@@ -27,8 +27,8 @@ The types of storage services for this cmdlet are Blob, Table, Queue, and File.
 ## EXAMPLES
 
 ### Example 1: Remove CORS rules for the blob service
-```
-PS C:\>Remove-AzStorageCORSRule -ServiceType Blob
+```powershell
+Remove-AzStorageCORSRule -ServiceType Blob
 ```
 
 This command removes CORS rules for the Blob service type.

@@ -58,9 +58,10 @@ The **Update-AzStorageEncryptionScope** cmdlet modifies an encryption scope for 
 ## EXAMPLES
 
 ### Example 1: Disable an encryption scope
+```powershell
+ Update-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"  -EncryptionScopeName testscope -State Disabled 
 ```
-PS C:\> Update-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"  -EncryptionScopeName testscope -State Disabled 
-
+```output
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
 Name      State    Source            KeyVaultKeyUri RequireInfrastructureEncryption                                         
@@ -71,9 +72,10 @@ testscope Disabled Microsoft.Storage
 This command disables an encryption scope.
 
 ### Example 2: Enable an encryption scope
+```powershell
+ Update-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"  -EncryptionScopeName testscope -State Enabled 
 ```
-PS C:\> Update-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"  -EncryptionScopeName testscope -State Enabled 
-
+```output
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
 Name      State    Source            KeyVaultKeyUri RequireInfrastructureEncryption                                                                           
@@ -84,9 +86,10 @@ testscope Enabled  Microsoft.Storage
 This command enables an encryption scope.
 
 ### Example 3: Update an encryption scope to use Storage Encryption
+```powershell
+ Update-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"  -EncryptionScopeName testscope -StorageEncryption
 ```
-PS C:\> Update-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"  -EncryptionScopeName testscope -StorageEncryption
-
+```output
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
 Name      State    Source            KeyVaultKeyUri RequireInfrastructureEncryption                                          
@@ -97,9 +100,10 @@ testscope Enabled  Microsoft.Storage
 This command updates an encryption scope to use Storage Encryption.
 
 ### Example 4: Update an encryption scope to use Keyvault Encryption
+```powershell
+Update-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -EncryptionScopeName testscope -KeyvaultEncryption -KeyUri "https://keyvalutname.vault.azure.net:443/keys/keyname/34a0ba563b4243d9a0ef2b1d3c0c7d57"
 ```
-PS C:\> Update-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -EncryptionScopeName testscope -KeyvaultEncryption -KeyUri "https://keyvalutname.vault.azure.net:443/keys/keyname/34a0ba563b4243d9a0ef2b1d3c0c7d57"
-
+```output
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
 Name      State    Source             KeyVaultKeyUri                                                                          RequireInfrastructureEncryption 

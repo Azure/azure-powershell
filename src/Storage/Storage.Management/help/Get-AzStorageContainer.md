@@ -35,24 +35,24 @@ The **Get-AzStorageContainer** cmdlet lists the storage containers associated wi
 ## EXAMPLES
 
 ### Example 1: Get Azure Storage container by name
-```
-PS C:\>Get-AzStorageContainer -Name container*
+```powershell
+Get-AzStorageContainer -Name container*
 ```
 
 This example uses a wildcard character to return a list of all containers with a name that starts with container.
 
 ### Example 2: Get Azure Storage container by container name prefix
-```
-PS C:\>Get-AzStorageContainer -Prefix "container"
+```powershell
+Get-AzStorageContainer -Prefix "container"
 ```
 
 This example uses the *Prefix* parameter to return a list of all containers with a name that starts with container.
 
 ### Example 3: List Azure Storage container, include deleted containers
-```
-PS C:\> $containers =  Get-AzStorageContainer -IncludeDeleted -Context $ctx 
+```powershell
+$containers =  Get-AzStorageContainer -IncludeDeleted -Context $ctx 
 
-PS C:\> $containers
+$containers
 
    Storage Account Name: storageaccountname
 
@@ -61,7 +61,7 @@ Name                 PublicAccess         LastModified                   IsDelet
 testcon              Off                  8/28/2020 10:18:13 AM +00:00                                                                                                                                                                                                                                                                   
 testcon2                                  9/4/2020 12:52:37 PM +00:00    True       01D67D248986B6DA  
 
-PS C:\> $c[1].BlobContainerProperties
+$c[1].BlobContainerProperties
 
 LastModified                   : 9/4/2020 12:52:37 PM +00:00
 LeaseStatus                    : Unlocked

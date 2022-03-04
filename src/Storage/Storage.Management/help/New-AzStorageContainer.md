@@ -34,28 +34,28 @@ The **New-AzStorageContainer** cmdlet creates an Azure storage container.
 ## EXAMPLES
 
 ### Example 1: Create an Azure storage container
-```
-PS C:\>New-AzStorageContainer -Name "ContainerName" -Permission Off
+```powershell
+New-AzStorageContainer -Name "ContainerName" -Permission Off
 ```
 
 This command creates a storage container.
 
 ### Example 2: Create multiple Azure storage containers
-```
-PS C:\>"container1 container2 container3".split() | New-AzStorageContainer -Permission Container
+```powershell
+"container1 container2 container3".split() | New-AzStorageContainer -Permission Container
 ```
 
 This example creates multiple storage containers.
 It uses the **Split** method of the .NET **String** class and then passes the names on the pipeline.
 
 ### Example 3: Create an Azure storage container with Encryption Scope
-```
-PS C:\> $container = New-AzStorageContainer  -Name "mycontainer" -DefaultEncryptionScope "myencryptscope" -PreventEncryptionScopeOverride $true 
+```powershell
+$container = New-AzStorageContainer  -Name "mycontainer" -DefaultEncryptionScope "myencryptscope" -PreventEncryptionScopeOverride $true 
 
-PS C:\> $container.BlobContainerProperties.DefaultEncryptionScope
+$container.BlobContainerProperties.DefaultEncryptionScope
 myencryptscope
 
-PS C:\> $container.BlobContainerProperties.PreventEncryptionScopeOverride
+$container.BlobContainerProperties.PreventEncryptionScopeOverride
 True
 ```
 

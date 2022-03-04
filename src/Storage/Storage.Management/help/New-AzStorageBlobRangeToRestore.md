@@ -24,28 +24,28 @@ The **New-AzStorageBlobRangeToRestore** cmdlet creates a Blob range object, whic
 
 ### Example 1: Creates a blob range to restore
 ```powershell
-PS C:\> $range = New-AzStorageBlobRangeToRestore -StartRange container1/blob1 -EndRange container2/blob2
+$range = New-AzStorageBlobRangeToRestore -StartRange container1/blob1 -EndRange container2/blob2
 ```
 
 This command creates a blob range to restore, which starts at container1/blob1 (include), and ends at container2/blob2 (exclude).
 
 ### Example 2: Creates a blob range which will restore from first blob in alphabetical order, to a specific blob (exclude)
 ```powershell
-PS C:\> $range = New-AzStorageBlobRangeToRestore -StartRange "" -EndRange container2/blob2
+$range = New-AzStorageBlobRangeToRestore -StartRange "" -EndRange container2/blob2
 ```
 
 This command creates a blob range which will restore from first blob of alphabetical order, to a specific blob container2/blob2 (exclude)
 
 ### Example 3: Creates a blob range which will restore from a specific blob (include), to the last blob in alphabetical order
 ```powershell
-PS C:\> $range = New-AzStorageBlobRangeToRestore -StartRange container1/blob1 -EndRange ""
+$range = New-AzStorageBlobRangeToRestore -StartRange container1/blob1 -EndRange ""
 ```
 
 This command creates a blob range which will restore from a specific blob container1/blob1 (include), to the last blob in alphabetical order.
 
 ### Example 4: Creates a blob range which will restore all blobs
 ```powershell
-PS C:\> $range = New-AzStorageBlobRangeToRestore -StartRange "" -EndRange ""
+$range = New-AzStorageBlobRangeToRestore -StartRange "" -EndRange ""
 ```
 
 This command creates a blob range which will restore all blobs.

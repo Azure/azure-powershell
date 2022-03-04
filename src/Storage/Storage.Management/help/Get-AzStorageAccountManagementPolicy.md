@@ -36,9 +36,10 @@ The **Get-AzStorageAccountManagementPolicy** cmdlet gets the management policy o
 ## EXAMPLES
 
 ### Example 1: Get the management policy of a Storage account.
+```powershell
+Get-AzStorageAccountManagementPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"
 ```
-PS C:\>Get-AzStorageAccountManagementPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"
-
+```output
 ResourceGroupName  : myresourcegroup
 StorageAccountName : mystorageaccount
 Id                 : /subscriptions/{subscription-id}/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/managementPolicies/default

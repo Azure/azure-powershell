@@ -38,35 +38,35 @@ The **Update-AzRmStorageContainer** cmdlet modifies a Storage blob container
 ## EXAMPLES
 
 ### Example 1: Modifies a Storage blob container's metadata and public access with Storage account name and container name
-```
-PS C:\>Update-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -ContainerName "myContainer" -PublicAccess Container -Metadata @{tag0="value0";tag1="value1"}
+```powershell
+Update-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -ContainerName "myContainer" -PublicAccess Container -Metadata @{tag0="value0";tag1="value1"}
 ```
 
 This command modifies a Storage blob container's metadata and public access with Storage account name and container name.
 
 ### Example 2: Disable public access on a Storage blob container with Storage account object and container name
-```
-PS C:\>$accountObject = Get-AzStorageAccount -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount"
-PS C:\>Update-AzRmStorageContainer -StorageAccount $accountObject -ContainerName "myContainer" -PublicAccess None
+```powershell
+$accountObject = Get-AzStorageAccount -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount"
+Update-AzRmStorageContainer -StorageAccount $accountObject -ContainerName "myContainer" -PublicAccess None
 ```
 
 This command disables public access on a Storage blob container with Storage account object and container name.
 
 ### Example 3: Set public access as Blob for all Storage blob containers in a Storage account with pipeline
-```
-PS C:\>Get-AzStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" | Update-AzRmStorageContainer -PublicAccess Blob
+```powershell
+Get-AzStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" | Update-AzRmStorageContainer -PublicAccess Blob
 ```
 
 This command set public access as Blob for all Storage blob containers in a Storage account with pipeline.
 
 ### Example 4: Update an Azure storage container with RootSquash
-```
-PS C:\> $container = Update-AzRmStorageContainer -ResourceGroupName "myersourcegroup" -AccountName "mystorageaccount" -Name "mycontainer" -RootSquash NoRootSquash
+```powershell
+$container = Update-AzRmStorageContainer -ResourceGroupName "myersourcegroup" -AccountName "mystorageaccount" -Name "mycontainer" -RootSquash NoRootSquash
 
-PS C:\> $container.EnableNfsV3AllSquash
+ $container.EnableNfsV3AllSquash
 False
 
-PS C:\> $container.EnableNfsV3RootSquash
+ $container.EnableNfsV3RootSquash
 False
 ```
 

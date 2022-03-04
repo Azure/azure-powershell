@@ -24,8 +24,8 @@ The **Get-AzStorageServiceLoggingProperty** cmdlet gets logging properties for A
 ## EXAMPLES
 
 ### Example 1: Get logging properties for the Blob service
-```
-C:\PS>Get-AzStorageServiceLoggingProperty -ServiceType Blob
+```powershell
+Get-AzStorageServiceLoggingProperty -ServiceType Blob
 ```
 
 This command gets logging properties for blob storage.

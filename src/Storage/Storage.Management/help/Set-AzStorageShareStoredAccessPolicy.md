@@ -27,8 +27,8 @@ The **Set-AzStorageShareStoredAccessPolicy** cmdlet updates stored access policy
 ## EXAMPLES
 
 ### Example 1: Update a stored access policy in Storage share
-```
-PS C:\>Set-AzStorageShareStoredAccessPolicy -ShareName "ContosoShare" -Policy "GeneralPolicy" -Permission "rwdl"
+```powershell
+Set-AzStorageShareStoredAccessPolicy -ShareName "ContosoShare" -Policy "GeneralPolicy" -Permission "rwdl"
 ```
 
 This command updates a stored access policy that has full permission in a share.

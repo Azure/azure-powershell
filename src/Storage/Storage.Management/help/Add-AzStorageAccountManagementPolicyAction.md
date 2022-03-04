@@ -43,12 +43,12 @@ The **Add-AzStorageAccountManagementPolicyAction** cmdlet adds an action to the 
 ## EXAMPLES
 
 ### Example 1: Creates a ManagementPolicy Action Group object with 4 actions, then add it to a management policy rule and set to a Storage account
-```
-PS C:\>$action = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction Delete -daysAfterModificationGreaterThan 100
-PS C:\>$action = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction TierToArchive -daysAfterModificationGreaterThan 50  -InputObject $action
-PS C:\>$action = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction TierToCool -DaysAfterLastAccessTimeGreaterThan 30  -EnableAutoTierToHotFromCool -InputObject $action
-PS C:\>$action = Add-AzStorageAccountManagementPolicyAction -SnapshotAction Delete -daysAfterCreationGreaterThan 100 -InputObject $action
-PS C:\>$action 
+```powershell
+$action = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction Delete -daysAfterModificationGreaterThan 100
+$action = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction TierToArchive -daysAfterModificationGreaterThan 50  -InputObject $action
+$action = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction TierToCool -DaysAfterLastAccessTimeGreaterThan 30  -EnableAutoTierToHotFromCool -InputObject $action
+$action = Add-AzStorageAccountManagementPolicyAction -SnapshotAction Delete -daysAfterCreationGreaterThan 100 -InputObject $action
+$action 
 
 BaseBlob.TierToCool.DaysAfterModificationGreaterThan      : 
 BaseBlob.TierToCool.DaysAfterLastAccessTimeGreaterThan    : 30
@@ -64,22 +64,22 @@ Version.TierToCool.DaysAfterCreationGreaterThan           :
 Version.TierToArchive.DaysAfterCreationGreaterThan        : 
 Version.Delete.DaysAfterCreationGreaterThan               : 
 
-PS C:\>$filter = New-AzStorageAccountManagementPolicyFilter
-PS C:\>$rule = New-AzStorageAccountManagementPolicyRule -Name Test -Action $action -Filter $filter
-PS C:\>$policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -Rule $rule
+$filter = New-AzStorageAccountManagementPolicyFilter
+$rule = New-AzStorageAccountManagementPolicyRule -Name Test -Action $action -Filter $filter
+$policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -Rule $rule
 ```
 
 The first command create a ManagementPolicy Action Group object, the following 3 commands add 3 actions to the object. Then add it to a management policy rule and set to a Storage account.
 
 ### Example 2: Creates a ManagementPolicy Action Group object with 6 actions on snapshot and blob version, then add it to a management policy rule and set to a Storage account
-```
-PS C:\> $action = Add-AzStorageAccountManagementPolicyAction  -SnapshotAction Delete -daysAfterCreationGreaterThan 40
-PS C:\> $action = Add-AzStorageAccountManagementPolicyAction -InputObject $action -SnapshotAction TierToArchive -daysAfterCreationGreaterThan 50
-PS C:\> $action = Add-AzStorageAccountManagementPolicyAction -InputObject $action -SnapshotAction TierToCool -daysAfterCreationGreaterThan 60
-PS C:\> $action = Add-AzStorageAccountManagementPolicyAction -InputObject $action -BlobVersionAction Delete -daysAfterCreationGreaterThan 70
-PS C:\> $action = Add-AzStorageAccountManagementPolicyAction -InputObject $action -BlobVersionAction TierToArchive -daysAfterCreationGreaterThan 80
-PS C:\> $action = Add-AzStorageAccountManagementPolicyAction -InputObject $action -BlobVersionAction TierToCool -daysAfterCreationGreaterThan 90
-PS C:\> $action
+```powershell
+$action = Add-AzStorageAccountManagementPolicyAction  -SnapshotAction Delete -daysAfterCreationGreaterThan 40
+$action = Add-AzStorageAccountManagementPolicyAction -InputObject $action -SnapshotAction TierToArchive -daysAfterCreationGreaterThan 50
+$action = Add-AzStorageAccountManagementPolicyAction -InputObject $action -SnapshotAction TierToCool -daysAfterCreationGreaterThan 60
+$action = Add-AzStorageAccountManagementPolicyAction -InputObject $action -BlobVersionAction Delete -daysAfterCreationGreaterThan 70
+$action = Add-AzStorageAccountManagementPolicyAction -InputObject $action -BlobVersionAction TierToArchive -daysAfterCreationGreaterThan 80
+$action = Add-AzStorageAccountManagementPolicyAction -InputObject $action -BlobVersionAction TierToCool -daysAfterCreationGreaterThan 90
+$action
 
 BaseBlob.TierToCool.DaysAfterModificationGreaterThan      : 
 BaseBlob.TierToCool.DaysAfterLastAccessTimeGreaterThan    : 
@@ -94,9 +94,9 @@ Version.TierToCool.DaysAfterCreationGreaterThan           : 90
 Version.TierToArchive.DaysAfterCreationGreaterThan        : 80
 Version.Delete.DaysAfterCreationGreaterThan               : 70
 
-PS C:\>$filter = New-AzStorageAccountManagementPolicyFilter
-PS C:\>$rule = New-AzStorageAccountManagementPolicyRule -Name Test -Action $action -Filter $filter
-PS C:\>$policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -Rule $rule
+$filter = New-AzStorageAccountManagementPolicyFilter
+$rule = New-AzStorageAccountManagementPolicyRule -Name Test -Action $action -Filter $filter
+$policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -Rule $rule
 ```
 
 The first command create a ManagementPolicy Action Group object, the following 5 commands add 5 actions on snapshot and blob version to the object. Then add it to a management policy rule and set to a Storage account.

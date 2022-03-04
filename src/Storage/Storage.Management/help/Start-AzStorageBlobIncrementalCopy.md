@@ -61,30 +61,30 @@ See more details of the feature in https://docs.microsoft.com/rest/api/storagese
 ## EXAMPLES
 
 ### Example 1: Start Incremental Copy Operation by blob name and snapshot time
-```
-PS C:\>Start-AzStorageBlobIncrementalCopy -SrcContainer container1 -SrcBlob blob1 -SrcBlobSnapshotTime "04/07/2017 09:55:36.1190229 AM +00:00" -DestContainer container2 -DestBlob blob2
+```powershell
+Start-AzStorageBlobIncrementalCopy -SrcContainer container1 -SrcBlob blob1 -SrcBlobSnapshotTime "04/07/2017 09:55:36.1190229 AM +00:00" -DestContainer container2 -DestBlob blob2
 ```
 
 This command start Incremental Copy Operation by blob name and snapshot time
 
 ### Example 2: Start Incremental copy operation using source uri
-```
-PS C:\>Start-AzStorageBlobIncrementalCopy -AbsoluteUri "http://www.somesite.com/somefile?snapshot=2017-04-07T10:05:40.2126635Z" -DestContainer container -DestBlob blob -DestContext $context
+```powershell
+Start-AzStorageBlobIncrementalCopy -AbsoluteUri "http://www.somesite.com/somefile?snapshot=2017-04-07T10:05:40.2126635Z" -DestContainer container -DestBlob blob -DestContext $context
 ```
 
 This command start Incremental Copy Operation using source uri
 
 ### Example 3:  Start Incremental copy operation using container pipeline from GetAzureStorageContainer
-```
-PS C:\>Get-AzStorageContainer -Container container1 | Start-AzStorageBlobIncrementalCopy -SrcBlob blob  -SrcBlobSnapshotTime "04/07/2017 09:55:36.1190229 AM +00:00" -DestContainer container2
+```powershell
+Get-AzStorageContainer -Container container1 | Start-AzStorageBlobIncrementalCopy -SrcBlob blob  -SrcBlobSnapshotTime "04/07/2017 09:55:36.1190229 AM +00:00" -DestContainer container2
 ```
 
 This command start Incremental Copy Operation using container pipeline from GetAzureStorageContainer
 
 ### Example 4:  start Incremental copy operation from CloudPageBlob object to destination blob with blob name
-```
-PS C:\>$srcBlobSnapshot = Get-AzStorageBlob -Container container1 -prefix blob1| ?{$_.ICloudBlob.IsSnapshot})[0]
-PS C:\>Start-AzStorageBlobIncrementalCopy -CloudBlob $srcBlobSnapshot.ICloudBlob -DestContainer container2 -DestBlob blob2
+```powershell
+$srcBlobSnapshot = Get-AzStorageBlob -Container container1 -prefix blob1| ?{$_.ICloudBlob.IsSnapshot})[0]
+Start-AzStorageBlobIncrementalCopy -CloudBlob $srcBlobSnapshot.ICloudBlob -DestContainer container2 -DestBlob blob2
 ```
 
 This command start Incremental Copy Operation from CloudPageBlob object to destination blob with blob name

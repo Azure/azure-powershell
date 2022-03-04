@@ -26,8 +26,8 @@ The **New-AzStorageShareStoredAccessPolicy** cmdlet creates a stored access poli
 ## EXAMPLES
 
 ### Example 1: Create a stored access policy in a share
-```
-PS C:\>New-AzStorageShareStoredAccessPolicy -ShareName "ContosoShare" -Policy "GeneralPolicy" -Permission "rwdl"
+```powershell
+New-AzStorageShareStoredAccessPolicy -ShareName "ContosoShare" -Policy "GeneralPolicy" -Permission "rwdl"
 ```
 
 This command creates a stored access policy that has full permission in a share.

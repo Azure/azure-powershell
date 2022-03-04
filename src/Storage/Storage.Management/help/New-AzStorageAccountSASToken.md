@@ -27,22 +27,22 @@ You can use the SAS token to delegate permissions for multiple services, or to d
 ## EXAMPLES
 
 ### Example 1: Create an account-level SAS token with full permission
-```
-PS C:\> New-AzStorageAccountSASToken -Service Blob,File,Table,Queue -ResourceType Service,Container,Object -Permission "racwdlup"
+```powershell
+New-AzStorageAccountSASToken -Service Blob,File,Table,Queue -ResourceType Service,Container,Object -Permission "racwdlup"
 ```
 
 This command creates an account-level SAS token with full permission.
 
 ### Example 2: Create an account-level SAS token for a range of IP addresses
-```
-PS C:\> New-AzStorageAccountSASToken -Service Blob,File,Table,Queue -ResourceType Service,Container,Object -Permission "racwdlup" -Protocol HttpsOnly -IPAddressOrRange 168.1.5.60-168.1.5.70
+```powershell
+New-AzStorageAccountSASToken -Service Blob,File,Table,Queue -ResourceType Service,Container,Object -Permission "racwdlup" -Protocol HttpsOnly -IPAddressOrRange 168.1.5.60-168.1.5.70
 ```
 
 This command creates an account-level SAS token for HTTPS-only requests from the specified range of IP addresses.
 
 ### Example 3: Create an account-level SAS token valid for 24 hours
-```
-PS C:\> New-AzStorageAccountSASToken -Service Blob -ResourceType Service,Container,Object -Permission "rl" -ExpiryTime (Get-Date).AddDays(1)
+```powershell
+New-AzStorageAccountSASToken -Service Blob -ResourceType Service,Container,Object -Permission "rl" -ExpiryTime (Get-Date).AddDays(1)
 ```
 
 This command creates an read-only account-level SAS token that is valid for 24 hours. 

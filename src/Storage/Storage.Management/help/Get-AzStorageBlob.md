@@ -52,16 +52,17 @@ The **Get-AzStorageBlob** cmdlet lists blobs in the specified container in an Az
 ## EXAMPLES
 
 ### Example 1: Get a blob by blob name
-```
-PS C:\>Get-AzStorageBlob -Container "ContainerName" -Blob blob*
+```powershell
+Get-AzStorageBlob -Container "ContainerName" -Blob blob*
 ```
 
 This command uses a blob name and wildcard to get a blob.
 
 ### Example 2: Get blobs in a container by using the pipeline
+```powershell
+Get-AzStorageContainer -Name container* | Get-AzStorageBlob -IncludeDeleted
 ```
-PS C:\>Get-AzStorageContainer -Name container* | Get-AzStorageBlob -IncludeDeleted
-
+```output
    Container Uri: https://storageaccountname.blob.core.windows.net/container1
 
 Name                 BlobType  Length          ContentType                    LastModified         AccessTier SnapshotTime         IsDeleted 
@@ -74,19 +75,19 @@ test2                BlockBlob 403116          application/octet-stream       20
 This command uses the pipeline to get all blobs (include blobs in Deleted status) in a container.
 
 ### Example 3: Get blobs by name prefix
-```
-PS C:\>Get-AzStorageBlob -Container "ContainerName" -Prefix "blob"
+```powershell
+Get-AzStorageBlob -Container "ContainerName" -Prefix "blob"
 ```
 
 This command uses a name prefix to get blobs.
 
 ### Example 4: List blobs in multiple batches
-```
-PS C:\>$MaxReturn = 10000
-PS C:\> $ContainerName = "abc"
-PS C:\> $Total = 0
-PS C:\> $Token = $Null
-PS C:\> do
+```powershell
+$MaxReturn = 10000
+$ContainerName = "abc"
+$Total = 0
+$Token = $Null
+do
  {
      $Blobs = Get-AzStorageBlob -Container $ContainerName -MaxCount $MaxReturn  -ContinuationToken $Token
      $Total += $Blobs.Count
@@ -94,7 +95,7 @@ PS C:\> do
      $Token = $Blobs[$blobs.Count -1].ContinuationToken;
  }
  While ($null -ne $Token)
-PS C:\> Echo "Total $Total blobs in container $ContainerName"
+Echo "Total $Total blobs in container $ContainerName"
 ```
 
 This example uses the *MaxCount* and *ContinuationToken* parameters to list Azure Storage blobs in multiple batches.
@@ -106,9 +107,10 @@ For more information, type `Get-Help About_Do`.
 The final command uses the **Echo** command to display the total.
 
 ### Example 5: Get all blobs in a container include blob version
+```powershell
+Get-AzStorageBlob -Container "containername"  -IncludeVersion 
 ```
-PS C:\>Get-AzStorageBlob -Container "containername"  -IncludeVersion 
-
+```output
    AccountName: storageaccountname, ContainerName: containername
 
 Name                 BlobType  Length          ContentType                    LastModified         AccessTier SnapshotTime                 IsDeleted  VersionId                     
@@ -123,9 +125,10 @@ blob2                BlockBlob 2097152         application/octet-stream       20
 This command gets all blobs in a container include blob version.
 
 ### Example 6: Get a single blob version
+```powershell
+Get-AzStorageBlob -Container "containername" -Blob blob2 -VersionId "2020-07-03T16:19:16.2883167Z" 
 ```
-PS C:\> Get-AzStorageBlob -Container "containername" -Blob blob2 -VersionId "2020-07-03T16:19:16.2883167Z" 
-
+```output
    AccountName: storageaccountname, ContainerName: containername
 
 Name                 BlobType  Length          ContentType                    LastModified         AccessTier SnapshotTime                 IsDeleted  VersionId                     
@@ -136,9 +139,10 @@ blob2                BlockBlob 2097152         application/octet-stream       20
 This command gets a single blobs verion with VersionId.
 
 ### Example 7: Get a single blob snapshot
+```powershell
+Get-AzStorageBlob -Container "containername" -Blob blob1 -SnapshotTime "2020-07-06T06:56:06.8588431Z"
 ```
-PS C:\> Get-AzStorageBlob -Container "containername" -Blob blob1 -SnapshotTime "2020-07-06T06:56:06.8588431Z"
-
+```output
    AccountName: storageaccountname, ContainerName: containername
 
 Name                 BlobType  Length          ContentType                    LastModified         AccessTier SnapshotTime                 IsDeleted  VersionId                     
@@ -149,10 +153,10 @@ blob1                BlockBlob 2097152         application/octet-stream       20
 This command gets a single blobs snapshot with SnapshotTime.
 
 ### Example 8: Get blob include blob tags
-```
-PS C:\> $blobs = Get-AzStorageBlob -Container "containername" -IncludeTag
+```powershell
+$blobs = Get-AzStorageBlob -Container "containername" -IncludeTag
 
-PS C:\> $blobs
+$blobs
 
    AccountName: storageaccountname, ContainerName: containername
 
@@ -162,7 +166,7 @@ testblob             BlockBlob 2097152         application/octet-stream       20
 testblob2            BlockBlob 2097152         application/octet-stream       2020-07-23 09:35:04Z Hot                                     False      2020-07-23T09:35:04.0856187Z *
 
 
-PS C:\> $blobs[0].Tags
+$blobs[0].Tags
 Name          Value 
 ----          -----
 tag1          value1
@@ -172,9 +176,10 @@ tag2          value2
 This command lists blobs from a container with blob tags, and show the tags of the first blob.
 
 ### Example 9: Get a single blob with blob tag condition
+```powershell
+Get-AzStorageBlob -Container "containername" -Blob testblob -TagCondition """tag1""='value1'"
 ```
-PS C:\> Get-AzStorageBlob -Container "containername" -Blob testblob -TagCondition """tag1""='value1'"
-
+```output
    AccountName: storageaccountname, ContainerName: containername
 
 Name                 BlobType  Length          ContentType                    LastModified         AccessTier SnapshotTime                 IsDeleted  VersionId                     

@@ -43,17 +43,17 @@ The **Set-AzStorageFileContent** cmdlet uploads the contents of a file to a file
 ## EXAMPLES
 
 ### Example 1: Upload a file in the current folder
-```
-PS C:\>Set-AzStorageFileContent -ShareName "ContosoShare06" -Source "DataFile37" -Path "ContosoWorkingFolder/CurrentDataFile"
+```powershell
+Set-AzStorageFileContent -ShareName "ContosoShare06" -Source "DataFile37" -Path "ContosoWorkingFolder/CurrentDataFile"
 ```
 
 This command uploads a file that is named DataFile37 in the current folder as a file that is named CurrentDataFile in the folder named ContosoWorkingFolder.
 
 ### Example 2: Upload all the files in the current folder
-```
-PS C:\>$CurrentFolder = (Get-Item .).FullName
-PS C:\> $Container = Get-AzStorageShare -Name "ContosoShare06"
-PS C:\> Get-ChildItem -Recurse | Where-Object { $_.GetType().Name -eq "FileInfo"} | ForEach-Object {
+```powershell
+$CurrentFolder = (Get-Item .).FullName
+$Container = Get-AzStorageShare -Name "ContosoShare06"
+Get-ChildItem -Recurse | Where-Object { $_.GetType().Name -eq "FileInfo"} | ForEach-Object {
     $path=$_.FullName.Substring($Currentfolder.Length+1).Replace("\","/")
     Set-AzStorageFileContent -Share $Container -Source $_.FullName -Path $path -Force
 }
@@ -69,8 +69,8 @@ The result has the same name and same relative position with regard to the other
 For more information about script blocks, type `Get-Help about_Script_Blocks`.
 
 ### Example 3: Upload a local file to an Azure file, and perserve the local File SMB properties (File Attributtes, File Creation Time, File Last Write Time) in the Azure file.
-```
-PS C:\>Get-AzStorageFileContent -source $localFilePath -ShareName sample -Path "dir1/file1" -PreserveSMBAttribute
+```powershell
+Get-AzStorageFileContent -source $localFilePath -ShareName sample -Path "dir1/file1" -PreserveSMBAttribute
 ```
 
 This example uploads a local file to an Azure file, and perserves the local File SMB properties (File Attributtes, File Creation Time, File Last Write Time) in the Azure file.

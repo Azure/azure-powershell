@@ -35,9 +35,10 @@ This cmdlet only works if Hierarchical Namespace is enabled for the Storage acco
 ## EXAMPLES
 
 ### Example 1: Create a directory with specified permission, Umask, properties, and metadata
+```powershell
+New-AzDataLakeGen2Item -FileSystem "testfilesystem" -Path "dir1/dir2/" -Directory -Permission rwxrwxrwx -Umask ---rw---- -Property @{"CacheControl" = "READ"; "ContentDisposition" = "True"} -Metadata  @{"tag1" = "value1"; "tag2" = "value2" }
 ```
-PS C:\>New-AzDataLakeGen2Item -FileSystem "testfilesystem" -Path "dir1/dir2/" -Directory -Permission rwxrwxrwx -Umask ---rw---- -Property @{"CacheControl" = "READ"; "ContentDisposition" = "True"} -Metadata  @{"tag1" = "value1"; "tag2" = "value2" }
-
+```output
    FileSystem Name: filesystem1
 
 Path                 IsDirectory  Length          LastModified         Permissions  Owner                Group               
@@ -48,11 +49,12 @@ dir1/dir2            True                         2020-03-23 09:15:56Z rwx---rwx
 This command creates a directory with specified Permission, Umask, properties, and metadata
 
 ### Example 2: Create(upload) a data lake file from a local source file, and the cmdlet runs in background
+```powershell
+$task = New-AzDataLakeGen2Item  -FileSystem "testfilesystem" -Path "dir1/dir2/file1" -Source "c:\sourcefile.txt" -Force -asjob
+$task | Wait-Job
+$task.Output
 ```
-PS C:\> $task = New-AzDataLakeGen2Item  -FileSystem "testfilesystem" -Path "dir1/dir2/file1" -Source "c:\sourcefile.txt" -Force -asjob
-PS C:\> $task | Wait-Job
-PS C:\> $task.Output
-
+```output
    FileSystem Name: filesystem1
 
 Path                 IsDirectory  Length          LastModified         Permissions  Owner                Group                

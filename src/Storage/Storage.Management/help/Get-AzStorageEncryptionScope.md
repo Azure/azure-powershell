@@ -30,10 +30,11 @@ The **Get-AzStorageEncryptionScope** cmdlet gets or lists encryption scopes from
 ## EXAMPLES
 
 ### Example 1: Get a single encryption scope
+```powershell
+Get-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -EncryptionScopeName $scopename
+
 ```
-PS C:\> Get-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -EncryptionScopeName $scopename
-
-
+```output
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
 Name      State    Source             KeyVaultKeyUri                                         
@@ -44,10 +45,11 @@ testscope Disabled Microsoft.Keyvault https://keyvalutname.vault.azure.net:443/k
 This command gets a single encryption scope.
 
 ### Example 2: List all encryption scopes of a Storage account
+```powershell
+Get-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" 
+
 ```
-PS C:\> Get-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" 
-
-
+```output
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
 Name      State    Source             KeyVaultKeyUri                                         

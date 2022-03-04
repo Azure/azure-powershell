@@ -42,8 +42,8 @@ The **Remove-AzStorageBlobInventoryPolicy** cmdlet removes blob inventory policy
 ## EXAMPLES
 
 ### Example 1: Remove blob inventory policy from a Storage account
-```
-PS C:\>Remove-AzStorageBlobInventoryPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"
+```powershell
+Remove-AzStorageBlobInventoryPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"
 ```
 
 This command removes blob inventory policy from a Storage account.

@@ -24,9 +24,9 @@ This cmdlet only works if Hierarchical Namespace is enabled for the Storage acco
 ## EXAMPLES
 
 ### Example 1: Get a directory from a Filesystem, and show the details
-```
-PS C:\> $dir1 = Get-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/"
-PS C:\> $dir1
+```powershell
+$dir1 = Get-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/"
+$dir1
 
    FileSystem Name: filesystem1
 
@@ -34,7 +34,7 @@ Path                 IsDirectory  Length          LastModified         Permissio
 ----                 -----------  ------          ------------         -----------  -----                -----               
 dir1                 True                         2020-03-23 09:15:56Z rwx---rwx    $superuser           $superuser     
  
-PS C:\WINDOWS\system32> $dir1.ACL
+$dir1.ACL
 
 DefaultScope AccessControlType EntityId Permissions
 ------------ ----------------- -------- -----------
@@ -42,7 +42,7 @@ False        User                       rwx
 False        Group                      ---        
 False        Other                      rwx      
 
-PS C:\WINDOWS\system32> $dir1.Permissions
+$dir1.Permissions
 
 Owner        : Execute, Write, Read
 Group        : None
@@ -50,7 +50,7 @@ Other        : Execute, Write, Read
 StickyBit    : False
 ExtendedAcls : False
 
-PS C:\WINDOWS\system32> $dir1.Properties.Metadata
+$dir1.Properties.Metadata
 
 Key          Value 
 ---          ----- 
@@ -58,7 +58,7 @@ hdi_isfolder true
 tag1         value1
 tag2         value2
 
-PS C:\WINDOWS\system32> $dir1.Properties
+$dir1.Properties
 
 LastModified          : 3/23/2020 9:15:56 AM +00:00
 CreatedOn             : 3/23/2020 9:15:56 AM +00:00
@@ -92,9 +92,10 @@ AccessTierChangedOn   : 1/1/0001 12:00:00 AM +00:00
 This command gets a directory from a Filesystem, and show the details.
 
 ### Example 2: Get a file from a Filesystem
+```powershell
+Get-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/file1"
 ```
-PS C:\> Get-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/file1"
-
+```output
    FileSystem Name: filesystem1
 
 Path                 IsDirectory  Length          LastModified         Permissions  Owner                Group               

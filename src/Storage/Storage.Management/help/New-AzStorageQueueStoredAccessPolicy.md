@@ -25,8 +25,8 @@ The **New-AzStorageQueueStoredAccessPolicy** cmdlet creates a stored access poli
 ## EXAMPLES
 
 ### Example 1: Create a stored access policy in a storage queue
-```
-PS C:\>New-AzStorageQueueStoredAccessPolicy -Queue "MyQueue" -Policy "Policy01"
+```powershell
+New-AzStorageQueueStoredAccessPolicy -Queue "MyQueue" -Policy "Policy01"
 ```
 
 This command creates an access policy named Policy01 in the storage queue named MyQueue.

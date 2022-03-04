@@ -30,9 +30,10 @@ The **Enable-AzStorageBlobLastAccessTimeTracking** cmdlet enables last access ti
 ## EXAMPLES
 
 ### Example 1: Enable last access time tracking for the Blob service
+```powershell
+Enable-AzStorageBlobLastAccessTimeTracking -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -PassThru 
 ```
-C:\PS>Enable-AzStorageBlobLastAccessTimeTracking -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -PassThru 
-
+```output
 Enable Name               TrackingGranularityInDays BlobType   
 ------ ----               ------------------------- --------   
   True AccessTimeTracking                         1 {blockBlob}

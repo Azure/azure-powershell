@@ -35,32 +35,32 @@ The **New-AzStorageContainerSASToken** cmdlet generates a Shared Access Signatur
 ## EXAMPLES
 
 ### Example 1: Generate a container SAS token with full container permission
-```
-PS C:\>New-AzStorageContainerSASToken -Name "Test" -Permission rwdl
+```powershell
+New-AzStorageContainerSASToken -Name "Test" -Permission rwdl
 ```
 
 This example generates a container SAS token with full container permission.
 
 ### Example 2: Generate multiple container SAS token by pipeline
-```
-PS C:\>Get-AzStorageContainer -Container test* | New-AzStorageContainerSASToken -Permission rwdl
+```powershell
+Get-AzStorageContainer -Container test* | New-AzStorageContainerSASToken -Permission rwdl
 ```
 
 This example generates multiple container SAS tokens by using the pipeline.
 
 ### Example 3: Generate container SAS token with shared access policy
-```
-PS C:\>New-AzStorageContainerSASToken -Name "Test" -Policy "PolicyName"
+```powershell
+New-AzStorageContainerSASToken -Name "Test" -Policy "PolicyName"
 ```
 
 This example generates a container SAS token with shared access policy.
 
-### Example 3: Generate a User Identity container SAS token with storage context based on OAuth authentication
-```
-PS C:\> $ctx = New-AzStorageContext -StorageAccountName $accountName -UseConnectedAccount
-PS C:\> $StartTime = Get-Date
-PS C:\> $EndTime = $startTime.AddDays(6)
-PS C:\> New-AzStorageContainerSASToken -Name "ContainerName" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime -context $ctx
+### Example 4: Generate a User Identity container SAS token with storage context based on OAuth authentication
+```powershell
+$ctx = New-AzStorageContext -StorageAccountName $accountName -UseConnectedAccount
+$StartTime = Get-Date
+$EndTime = $startTime.AddDays(6)
+New-AzStorageContainerSASToken -Name "ContainerName" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime -context $ctx
 ```
 
 This example generates a User Identity container SAS token with storage context based on OAuth authentication

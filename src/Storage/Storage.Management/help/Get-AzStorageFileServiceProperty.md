@@ -37,8 +37,9 @@ The **Get-AzStorageFileServiceProperty** cmdlet gets the service properties for 
 
 ### Example 1: Get  Azure Storage File services property of a specified Storage Account
 ```powershell
-PS C:\> Get-AzStorageFileServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"
-
+Get-AzStorageFileServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"
+```
+```output
 StorageAccountName                            : mystorageaccount
 ResourceGroupName                             : myresourcegroup
 ShareDeleteRetentionPolicy.Enabled            : True

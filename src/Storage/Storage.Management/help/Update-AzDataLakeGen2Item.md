@@ -35,12 +35,13 @@ This cmdlet only works if Hierarchical Namespace is enabled for the Storage acco
 ## EXAMPLES
 
 ### Example 1: Create an ACL object with 3 ACL entry, and update ACL to all items in a Filesystem recursively
+```powershell
+$acl = New-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx 
+$acl = New-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
+$acl = New-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission "rw-" -InputObject $acl
+Get-AzDataLakeGen2ChildItem -FileSystem "filesystem1" -Recurse | Update-AzDataLakeGen2Item -ACL $acl
 ```
-PS C:\>$acl = New-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx 
-PS C:\>$acl = New-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
-PS C:\>$acl = New-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission "rw-" -InputObject $acl
-PS C:\>Get-AzDataLakeGen2ChildItem -FileSystem "filesystem1" -Recurse | Update-AzDataLakeGen2Item -ACL $acl
-
+```output
    FileSystem Name: filesystem1
 
 Path                 IsDirectory  Length          LastModified         Permissions  Owner                Group               
@@ -53,8 +54,8 @@ dir2                 True                         2020-03-23 09:28:36Z rwxrw-rw-
 This command first creates an ACL object with 3 acl entry (use -InputObject parameter to add acl entry to existing acl object), then get all items in a filesystem and update acl on the items.
 
 ### Example 2: Update all properties on a file, and show them
-```
-PS C:\> $file = Update-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/file1" `
+```powershell
+ $file = Update-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/file1" `
                  -Acl $acl `
                  -Property @{"ContentType" = "image/jpeg"; "ContentMD5" = "i727sP7HigloQDsqadNLHw=="; "ContentEncoding" = "UDF8"; "CacheControl" = "READ"; "ContentDisposition" = "True"; "ContentLanguage" = "EN-US"} `
                  -Metadata  @{"tag1" = "value1"; "tag2" = "value2" } `
@@ -62,7 +63,7 @@ PS C:\> $file = Update-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/
                  -Owner '$superuser' `
                  -Group '$superuser'
 
-PS C:\> $file
+ $file
 
    FileSystem Name: filesystem1
 
@@ -70,7 +71,7 @@ Path                 IsDirectory  Length          LastModified         Permissio
 ----                 -----------  ------          ------------         -----------  -----                -----               
 dir1/file1           False        1024            2020-03-23 09:57:33Z rwxrw-rw-    $superuser           $superuser          
 
-PS C:\> $file.ACL
+$file.ACL
 
 DefaultScope AccessControlType EntityId Permissions
 ------------ ----------------- -------- -----------
@@ -78,7 +79,7 @@ False        User                       rwx
 False        Group                      rw-        
 False        Other                      rw-        
 
-PS C:\> $file.Permissions
+$file.Permissions
 
 Owner        : Execute, Write, Read
 Group        : Write, Read
@@ -86,14 +87,14 @@ Other        : Write, Read
 StickyBit    : False
 ExtendedAcls : False
 
-PS C:\> $file.Properties.Metadata
+$file.Properties.Metadata
 
 Key  Value 
 ---  ----- 
 tag2 value2
 tag1 value1
 
-PS C:\> $file.Properties
+$file.Properties
 
 
 LastModified          : 3/23/2020 9:57:33 AM +00:00
@@ -128,16 +129,17 @@ AccessTierChangedOn   : 1/1/0001 12:00:00 AM +00:00
 This command updates all properties on a file (ACL, permission,owner, group, metadata, property can be updated with any conbination), and show them in Powershell console.
 
 ### Example 3: Add an ACL entry to a directory
-```
+```powershell
 ## Get the origin ACL
-PS C:\> $acl = (Get-AzDataLakeGen2Item -FileSystem "filesystem1" -Path 'dir1/dir3/').ACL
+$acl = (Get-AzDataLakeGen2Item -FileSystem "filesystem1" -Path 'dir1/dir3/').ACL
 
 # Update permission of a new ACL entry (if ACL entry with same AccessControlType/EntityId/DefaultScope not exist, will add a new ACL entry, else update permission of existing ACL entry)
-PS C:\> $acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $id -Permission rw- -InputObject $acl  
+$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $id -Permission rw- -InputObject $acl  
 
 # set the new acl to the directory
-PS C:\> update-AzDataLakeGen2Item -FileSystem "filesystem1" -Path 'dir1/dir3/' -ACL $acl
-
+update-AzDataLakeGen2Item -FileSystem "filesystem1" -Path 'dir1/dir3/' -ACL $acl
+```
+```output
    FileSystem Name: filesystem1
 
 Path                 IsDirectory  Length          LastModified         Permissions  Owner                Group               

@@ -51,10 +51,10 @@ The cmdlet only works when the blob container has already enabled immutable Stor
 ## EXAMPLES
 
 ### Example 1: Enable legal hold on a Storage blob.
-```
-PS C:\> $blob = Set-AzStorageBlobLegalHold -Container $containerName -Blob $blobname  -EnableLegalHold
+```powershell
+ $blob = Set-AzStorageBlobLegalHold -Container $containerName -Blob $blobname  -EnableLegalHold
 
-PS C:\> $blob
+ $blob
 
    AccountName: mystorageaccount, ContainerName: mycontainer
 
@@ -62,7 +62,7 @@ Name                 BlobType  Length          ContentType                    La
 ----                 --------  ------          -----------                    ------------         ---------- ------------                 ---------  ---------                     
 testblob             BlockBlob 10485760        application/octet-stream       2021-07-19 08:56:00Z Hot                                     False      2021-07-19T08:56:01.8120788Z *
 
-PS C:\> $blob.BlobProperties.HasLegalHold
+ $blob.BlobProperties.HasLegalHold
 True
 ```
 
@@ -70,10 +70,10 @@ This command enables legal hold on a Storage blob, then show the result.
 The command only works when the blob container has already enabled immutable Storage with versioning.
 
 ### Example 2: Disable legal hold on a Storage blob with pipeline.
-```
-PS C:\> $blob = Get-AzStorageBlob -Container $containerName -Blob $blobname | Set-AzStorageBlobLegalHold -DisableLegalHold
+```powershell
+ $blob = Get-AzStorageBlob -Container $containerName -Blob $blobname | Set-AzStorageBlobLegalHold -DisableLegalHold
 
-PS C:\> $blob
+ $blob
 
    AccountName: mystorageaccount, ContainerName: mycontainer
 
@@ -81,7 +81,7 @@ Name                 BlobType  Length          ContentType                    La
 ----                 --------  ------          -----------                    ------------         ---------- ------------                 ---------  ---------                     
 testblob             BlockBlob 10485760        application/octet-stream       2021-07-19 08:56:00Z Hot                                     False      2021-07-19T08:56:01.8120788Z *
 
-PS C:\> $blob.BlobProperties.HasLegalHold
+ $blob.BlobProperties.HasLegalHold
 False
 ```
 

@@ -56,15 +56,15 @@ The **Set-AzStorageBlobInventoryPolicy** cmdlet creates or updates blob inventor
 ## EXAMPLES
 
 ### Example 1: Create or update the blob inventory policy with BlobInventoryPolicy rule objects.
-```
-PS C:\> $rule1 = New-AzStorageBlobInventoryPolicyRule -Name Test1 -Destination $containerName -Disabled -Format Csv -Schedule Daily -ContainerSchemaField Name,Metadata,PublicAccess,Last-mOdified,LeaseStatus,LeaseState,LeaseDuration,HasImmutabilityPolicy,HasLegalHold -PrefixMatch con1,con2
+```powershell
+$rule1 = New-AzStorageBlobInventoryPolicyRule -Name Test1 -Destination $containerName -Disabled -Format Csv -Schedule Daily -ContainerSchemaField Name,Metadata,PublicAccess,Last-mOdified,LeaseStatus,LeaseState,LeaseDuration,HasImmutabilityPolicy,HasLegalHold -PrefixMatch con1,con2
 
-PS C:\> $rule2 = New-AzStorageBlobInventoryPolicyRule -Name Test2 -Destination $containerName -Format Parquet -Schedule Weekly -IncludeBlobVersion -IncludeSnapshot -BlobType blockBlob,appendBlob -PrefixMatch aaa,bbb `
+$rule2 = New-AzStorageBlobInventoryPolicyRule -Name Test2 -Destination $containerName -Format Parquet -Schedule Weekly -IncludeBlobVersion -IncludeSnapshot -BlobType blockBlob,appendBlob -PrefixMatch aaa,bbb `
                 -BlobSchemaField name,Creation-Time,Last-Modified,Content-Length,Content-MD5,BlobType,AccessTier,AccessTierChangeTime,Expiry-Time,hdi_isfolder,Owner,Group,Permissions,Acl,Metadata
 
-PS C:\> $policy = Set-AzStorageBlobInventoryPolicy -ResourceGroupName myresourcegroup" -AccountName "mystorageaccount" -Disabled -Rule $rule1,$rule2
+$policy = Set-AzStorageBlobInventoryPolicy -ResourceGroupName myresourcegroup" -AccountName "mystorageaccount" -Disabled -Rule $rule1,$rule2
 
-PS C:\> $policy
+$policy
 
 StorageAccountName : mystorageaccount
 ResourceGroupName  : myresourcegroup
@@ -75,7 +75,7 @@ LastModifiedTime   : 5/12/2021 8:53:38 AM
 Enabled            : False
 Rules              : {Test1, Test2}
 
-PS C:\> $policy.Rules
+$policy.Rules
 
 Name  Enabled Destination   ObjectType Format  Schedule IncludeSnapshots IncludeBlobVersions BlobTypes               PrefixMatch  SchemaFields                                           
 ----  ------- -----------   ---------- ------  -------- ---------------- ------------------- ---------               -----------  ------------                                           
@@ -87,8 +87,8 @@ This first 2 commands create 2 BlobInventoryPolicy rule objects: rule "Test1" fo
 The following command sets blob inventory policy to a Storage account with the 2 rule objects, then show the updated policy and rules properties.
 
 ### Example 2: Create or update the blob inventory policy of a Storage account with a Json format policy.
-```
-PS C:\> $policy = Set-AzStorageBlobInventoryPolicy -ResourceGroupName $resourceGroupName  -StorageAccountName $accountName -Policy (@{
+```powershell
+$policy = Set-AzStorageBlobInventoryPolicy -ResourceGroupName $resourceGroupName  -StorageAccountName $accountName -Policy (@{
                 Enabled=$true;
                 Rules=(@{
                     Enabled=$true;
@@ -124,7 +124,7 @@ PS C:\> $policy = Set-AzStorageBlobInventoryPolicy -ResourceGroupName $resourceG
             })
 
 
-PS C:\> $policy
+ $policy
 
 StorageAccountName : weiadlscanary1
 ResourceGroupName  : weitry
@@ -135,7 +135,7 @@ LastModifiedTime   : 5/12/2021 9:02:21 AM
 Enabled            : True
 Rules              : {Test1, Test2}
 
-PS C:\> $policy.Rules 
+ $policy.Rules 
 
 Name  Enabled Destination   ObjectType Format  Schedule IncludeSnapshots IncludeBlobVersions BlobTypes               PrefixMatch        SchemaFields                                 
 ----  ------- -----------   ---------- ------  -------- ---------------- ------------------- ---------               -----------        ------------                                 
@@ -146,16 +146,16 @@ Test2 False   containername Container  Parquet Daily                            
 This command creates or updates the blob inventory policy of a Storage account with a json format policy.
 
 ### Example 3: Get the blob inventory policy from a Storage account, then set it to another Storage account.
-```
-PS C:\>$policy = Get-AzStorageBlobInventoryPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" | Set-AzStorageBlobInventoryPolicy -ResourceGroupName "myresourcegroup2" -AccountName "mystorageaccount2"
+```powershell
+$policy = Get-AzStorageBlobInventoryPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" | Set-AzStorageBlobInventoryPolicy -ResourceGroupName "myresourcegroup2" -AccountName "mystorageaccount2"
 ```
 
 This command first gets the blob inventory policy from a Storage account, then set it to another Storage account.
 The proeprties： Destination, Enabled, and Rules of the policy will be set to the destination account.
 
 ### Example 4: Get the blob inventory policy rules from a Storage account, then set it to another Storage account.
-```
-PS C:\>$policy = ,((Get-AzStorageBlobInventoryPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount").Rules) | Set-AzStorageBlobInventoryPolicy -ResourceGroupName "myresourcegroup2" -AccountName "mystorageaccount2" -Disabled
+```powershell
+$policy = ,((Get-AzStorageBlobInventoryPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount").Rules) | Set-AzStorageBlobInventoryPolicy -ResourceGroupName "myresourcegroup2" -AccountName "mystorageaccount2" -Disabled
 ```
 
 This command first gets the blob inventory policy from a Storage account, then set it's rules to another Storage account.

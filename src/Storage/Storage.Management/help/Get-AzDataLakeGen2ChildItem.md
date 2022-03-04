@@ -25,9 +25,10 @@ This cmdlet only works if Hierarchical Namespace is enabled for the Storage acco
 ## EXAMPLES
 
 ### Example 1: List the direct sub items from a Filesystem
+```powershell
+Get-AzDataLakeGen2ChildItem -FileSystem "filesystem1" 
 ```
-PS C:\>Get-AzDataLakeGen2ChildItem -FileSystem "filesystem1" 
-
+```output
    FileSystem Name: filesystem1
 
 Path                 IsDirectory  Length          LastModified         Permissions  Owner                Group               
@@ -39,9 +40,10 @@ dir2                 True                         2020-03-23 09:28:36Z rwxr-x---
 This command lists the direct sub items from a Filesystem
 
 ### Example 2: List recursively from a directory, and fetch Properties/ACL
+```powershell
+Get-AzDataLakeGen2ChildItem -FileSystem "filesystem1" -Path "dir1/" -Recurse -FetchProperty
 ```
-PS C:\>Get-AzDataLakeGen2ChildItem -FileSystem "filesystem1" -Path "dir1/" -Recurse -FetchProperty
-
+```output
    FileSystem Name: filesystem1
 
 Path                 IsDirectory  Length          LastModified         Permissions  Owner                Group               
@@ -54,12 +56,12 @@ dir1/testfile_1K_0   False        1024            2020-03-23 09:29:21Z rw-r-----
 This command lists the direct sub items from a Filesystem
 
 ### Example 3: List items recursively from a Filesystem in multiple batches
-```
-PS C:\> $MaxReturn = 1000
-PS C:\> $FileSystemName = "filesystem1"
-PS C:\> $Total = 0
-PS C:\> $Token = $Null
-PS C:\> do
+```powershell
+$MaxReturn = 1000
+$FileSystemName = "filesystem1"
+$Total = 0
+$Token = $Null
+do
  {
      $items = Get-AzDataLakeGen2ChildItem -FileSystem $FileSystemName -Recurse -MaxCount $MaxReturn  -ContinuationToken $Token
      $Total += $items.Count
@@ -67,7 +69,7 @@ PS C:\> do
      $Token = $items[$items.Count -1].ContinuationToken;
  }
  While ($null -ne $Token)
-PS C:\> Echo "Total $Total items in Filesystem $FileSystemName"
+Echo "Total $Total items in Filesystem $FileSystemName"
 ```
 
 This example uses the *MaxCount* and *ContinuationToken* parameters to list items recursively from a Filesystem in multiple batches.

@@ -37,8 +37,9 @@ The **Get-AzStorageBlobServiceProperty** cmdlet gets the service properties for 
 
 ### Example 1: Get  Azure Storage Blob services property of a specified Storage Account
 ```powershell
-PS C:\> Get-AzStorageBlobServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"
-
+Get-AzStorageBlobServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"
+```
+```output
 StorageAccountName            : mystorageaccount
 ResourceGroupName             : myresourcegroup
 DefaultServiceVersion         : 

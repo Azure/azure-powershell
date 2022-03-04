@@ -34,8 +34,8 @@ The **Stop-AzStorageFileCopy** cmdlet stops copying a file to a destination file
 ## EXAMPLES
 
 ### Example 1: Stop a copy operation
-```
-PS C:\>Stop-AzStorageFileCopy -ShareName "ContosoShare" -FilePath "FilePath" -CopyId "CopyId"
+```powershell
+Stop-AzStorageFileCopy -ShareName "ContosoShare" -FilePath "FilePath" -CopyId "CopyId"
 ```
 
 This command stops copying a file that has the specified name.
