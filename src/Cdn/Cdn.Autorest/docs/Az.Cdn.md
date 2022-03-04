@@ -216,6 +216,10 @@ Deletes an existing Secret within profile.
 ### [Remove-AzCdnSecurityPolicy](Remove-AzCdnSecurityPolicy.md)
 Deletes an existing security policy within profile.
 
+### [Remove-AzFrontDoorCdnProfile](Remove-AzFrontDoorCdnProfile.md)
+Deletes an existing  Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified parameters.
+Deleting a profile will result in the deletion of all of the sub-resources including endpoints, origins and custom domains.
+
 ### [Start-AzCdnEndpoint](Start-AzCdnEndpoint.md)
 Starts an existing CDN endpoint that is on a stopped state.
 

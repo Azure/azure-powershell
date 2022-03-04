@@ -82,4 +82,10 @@ directive:
       property-name: PreValidatedCustomDomainResourceIdId
     set:
       property-name: PreValidatedCustomDomainResourceId
+
+  # Delete 404
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}"].delete
+    transform: >-
+      $["x-ms-long-running-operation-options"] = {"final-state-via": "azure-async-operation"}
 ```
