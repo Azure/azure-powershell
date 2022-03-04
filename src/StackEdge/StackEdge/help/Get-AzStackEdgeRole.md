@@ -42,8 +42,10 @@ The **Get-AzStackEdgeRole** cmdlet fetches the available IoT roles for a Stack E
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzStackEdgeRole -ResourceGroupName resourceGroupName -DeviceName deviceName
+Get-AzStackEdgeRole -ResourceGroupName resourceGroupName -DeviceName deviceName
+```
 
+```output
 Name    IoTHostHub             Platform Status  IotEdgeDeviceId   IotDeviceId  ResourceGroupName
 ----    ----------             -------- ------  ---------------   -----------  -----------------
 iotrole ehub.azure-devices.net Linux    Enabled iotEdgeDeviceUd   iotDevice    resourceGroupName
