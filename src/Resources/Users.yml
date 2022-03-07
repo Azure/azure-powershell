@@ -1089,6 +1089,12 @@ components:
               type: string
               description: 'Sets the age group of the user. Allowed values: null, minor, notAdult and adult. Refer to the legal age group property definitions for further information. Supports $filter (eq, ne, NOT, and in).'
               nullable: true
+            approximateLastSignInDateTime:
+              pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+              type: string
+              description: 'The timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only. Supports $filter (eq, ne, not, ge, le, and eq on null values) and $orderBy.'
+              format: date-time
+              nullable: true
             businessPhones:
               type: array
               items:
@@ -1123,9 +1129,22 @@ components:
               readOnly: true
               description: 'Indicates whether the user account was created as a regular school or work account (null), an external account (Invitation), a local account for an Azure Active Directory B2C tenant (LocalAccount) or self-service sign-up using email verification (EmailVerified). Read-only. Supports $filter (eq, ne, NOT, and in).'
               nullable: true
+            complianceExpirationDateTime:
+              pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+              type: string
+              description: 'The timestamp when the device is no longer deemed compliant. The timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.'
+              format: date-time
+              nullable: true
             department:
               type: string
               description: 'The name for the department in which the user works. Maximum length is 64 characters.Supports $filter (eq, ne, NOT , ge, le, and in operators).'
+              nullable: true
+            deviceVersion:
+              maximum: 2147483647
+              minimum: -2147483648
+              type: integer
+              description: For internal use only.
+              format: int32
               nullable: true
             displayName:
               type: string
@@ -1221,6 +1240,24 @@ components:
               type: string
               description: 'This property is used to associate an on-premises Active Directory user account to their Azure AD user object. This property must be specified when creating a new user account in the Graph if you are using a federated domain for the user''s userPrincipalName (UPN) property. NOTE: The $ and _ characters cannot be used when specifying this property. Returned only on $select. Supports $filter (eq, ne, NOT, ge, le, in)..'
               nullable: true
+            onPremisesLastSyncDateTime:
+              pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+              type: string
+              description: 'The last time at which the object was synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z Read-only. Supports $filter (eq, ne, not, ge, le, in).'
+              format: date-time
+              nullable: true
+            onPremisesSyncEnabled:
+              type: boolean
+              description: 'true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced; null if this object has never been synced from an on-premises directory (default). Read-only. Supports $filter (eq, ne, not, in, and eq on null values).'
+              nullable: true
+            operatingSystem:
+              type: string
+              description: 'Operating system of the device. Windows, iOS, etc. This property is read-only.'
+              nullable: true
+            operatingSystemVersion:
+              type: string
+              description: 'Operating system version of the device. Required. Supports $filter (eq, ne, not, ge, le, startsWith, and eq on null values).'
+              nullable: true
             passwordPolicies:
               type: string
               description: 'Specifies password policies for the user. This value is an enumeration with one possible value being DisableStrongPassword, which allows weaker passwords than the default policy to be specified. DisablePasswordExpiration can also be specified. The two may be specified together; for example: DisablePasswordExpiration, DisableStrongPassword.Supports $filter (ne, NOT).'
@@ -1241,6 +1278,11 @@ components:
                 type: string
               readOnly: true
               description: 'For example: [''SMTP: bob@contoso.com'', ''smtp: bob@sales.contoso.com'']. Read-only, Not nullable. Supports $filter (eq, NOT, ge, le, startsWith).'
+            physicalIds:
+              type: array
+              items:
+                type: string
+              description: 'For internal use only. Not nullable. Supports $filter (eq, not, ge, le, startsWith).'
             showInAddressList:
               type: boolean
               description: 'true if the Outlook global address list should contain this user, otherwise false. If not set, this will be treated as true. For users invited through the invitation manager, this property will be set to false. Supports $filter (eq, ne, NOT, in).'
@@ -1263,6 +1305,10 @@ components:
             surname:
               type: string
               description: 'The user''s surname (family name or last name). Maximum length is 64 characters. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).'
+              nullable: true
+            trustType:
+              type: string
+              description: 'Type of trust for the joined device. Read-only. Possible values: Workplace (indicates bring your own personal devices), AzureAd (Cloud only joined devices), ServerAd (on-premises domain joined devices joined to Azure AD). For more details, see Introduction to device management in Azure Active Directory'
               nullable: true
             usageLocation:
               type: string

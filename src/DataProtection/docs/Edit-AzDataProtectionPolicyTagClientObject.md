@@ -31,9 +31,11 @@ Adds or removes schedule tag in an existing backup policy.
 
 ### Example 1: Add Weekly tag to Backup Policy
 ```powershell
-PS C:\> $criteria = New-AzDataProtectionPolicyTagCriteriaClientObject -AbsoluteCriteria FirstOfWeek
-PS C:\> Edit-AzDataProtectionPolicyTagClientObject -Policy $pol -Name Weekly -Criteria $criteria
+$criteria = New-AzDataProtectionPolicyTagCriteriaClientObject -AbsoluteCriteria FirstOfWeek
+Edit-AzDataProtectionPolicyTagClientObject -Policy $pol -Name Weekly -Criteria $criteria
+```
 
+```output
 DatasourceType            ObjectType
 --------------            ----------
 {Microsoft.Compute/disks} BackupPolicy
@@ -43,8 +45,10 @@ This command adds a weekly tag to given backup policy
 
 ### Example 2: Remove Weeky tag from Backup Policy
 ```powershell
-PS C:\> Edit-AzDataProtectionPolicyTagClientObject -Policy $pol -Name Weekly -RemoveRule
+Edit-AzDataProtectionPolicyTagClientObject -Policy $pol -Name Weekly -RemoveRule
+```
 
+```output
 DatasourceType            ObjectType
 --------------            ----------
 {Microsoft.Compute/disks} BackupPolicy

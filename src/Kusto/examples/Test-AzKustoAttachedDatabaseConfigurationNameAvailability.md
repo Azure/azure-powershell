@@ -1,7 +1,9 @@
 ### Example 1: Checks whether the attached database configuration name is available in the given cluster
 ```powershell
-PS C:\> Test-AzKustoAttachedDatabaseConfigurationNameAvailability -ResourceGroupName "testrg" -ClusterName "mycluster" -Name "testdatabase"
+Test-AzKustoAttachedDatabaseConfigurationNameAvailability -ResourceGroupName "testrg" -ClusterName "mycluster" -Name "testdatabase"
+```
 
+```output
 Message Name               NameAvailable Reason
 ------- ----               ------------- ------
         testdatabase       True
