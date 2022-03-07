@@ -60,7 +60,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                 if (ShouldGetByName(resourceGroupName, galleryName))
                 {
-                    var result = GalleriesClient.Get(resourceGroupName, galleryName, this.Select);
+                    var result = GalleriesClient.Get(resourceGroupName, galleryName, this.Expand);
+                    
                     var psObject = new PSGallery();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<Gallery, PSGallery>(result, psObject);
                     WriteObject(psObject);
@@ -202,8 +203,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            ParameterSetName = "DefaultParameter",
-           HelpMessage = "The select expression to apply on the operation.")]
+           HelpMessage = "The expand query option to apply on the operation.")]
         [PSArgumentCompleter("Permissions")]
-        public string Select { get; set; }
+        public string Expand { get; set; }
     }
 }
