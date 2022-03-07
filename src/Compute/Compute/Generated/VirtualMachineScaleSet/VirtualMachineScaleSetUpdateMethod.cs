@@ -1308,6 +1308,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.AutomaticRepairsPolicy.Enabled = this.EnableAutomaticRepair;
             }
 
+            if (this.IsParameterBound(c => c.AutomaticRepairsAction))
+            {
+                if (this.VirtualMachineScaleSetUpdate == null)
+                {
+                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
+                }
+                if (this.VirtualMachineScaleSetUpdate.AutomaticRepairsPolicy == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.AutomaticRepairsPolicy = new AutomaticRepairsPolicy();
+                }
+                this.VirtualMachineScaleSetUpdate.AutomaticRepairsPolicy.RepairAction = this.AutomaticRepairsAction;
+            }
+
+
             if (this.IsParameterBound(c => c.EnableAutomaticUpdate))
             {
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
@@ -1824,19 +1838,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
                 }
                 this.VirtualMachineScaleSet.VirtualMachineProfile.UserData = this.UserData;
-            }
-
-            if (this.IsParameterBound(c => c.EnableAutomaticRepair))
-            {
-                if (this.VirtualMachineScaleSetUpdate == null)
-                {
-                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
-                }
-                if (this.VirtualMachineScaleSetUpdate.AutomaticRepairsPolicy == null)
-                {
-                    this.VirtualMachineScaleSetUpdate.AutomaticRepairsPolicy = new AutomaticRepairsPolicy();
-                }
-                this.VirtualMachineScaleSetUpdate.AutomaticRepairsPolicy.RepairAction = this.AutomaticRepairsAction;
             }
 
             if (this.VirtualMachineScaleSet != null

@@ -3254,7 +3254,7 @@ function Test-RemoveVmssForceDeletion
 
 <#
 .SYNOPSIS
-Test Virtual Machine Scale Set DiffDiskPlacement feature. 
+Test Virtual Machine Scale Set test AutomaticRepairsAction feature.
 #>
 function Test-VirtualMachineScaleSetRepairsAction
 {
@@ -3336,7 +3336,9 @@ function Test-VirtualMachineScaleSetRepairsAction
          #   -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion 'latest' `
          #   -ImageReferencePublisher $imgRef.PublisherName -VhdContainer $vhdContainer;
 
-        New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
+        $vmss = New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
+
+        Update-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -VirtualMachineScaleSet $vmss -AutomaticRepairsAction "Restart";
     }
     finally
     {
