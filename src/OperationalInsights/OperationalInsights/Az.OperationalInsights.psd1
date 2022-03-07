@@ -135,7 +135,7 @@ CmdletsToExport = 'New-AzOperationalInsightsAzureActivityLogDataSource',
                'New-AzOperationalInsightsPurgeWorkspace',
                'Get-AzOperationalInsightsPurgeWorkspaceStatus',
                'Get-AzOperationalInsightsAvailableServiceTier',
-               'Update-AzOperationalInsightsTable'
+               'Set-AzOperationalInsightsTable'
 
 # Variables to export from this module
 # VariablesToExport = @()
