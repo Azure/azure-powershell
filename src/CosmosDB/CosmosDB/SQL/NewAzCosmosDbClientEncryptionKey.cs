@@ -20,14 +20,14 @@ using Microsoft.Azure.Commands.CosmosDB.Helpers;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.CosmosDB.Models;
 using Microsoft.Azure.Commands.CosmosDB.Exceptions;
-using Microsoft.Rest.Azure;
 using Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Exceptions;
 using Microsoft.Azure.Management.CosmosDB;
-using Microsoft.Data.Encryption.AzureKeyVaultProvider;
-using Microsoft.Data.Encryption.Cryptography;
-using Azure.Core;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Azure.Identity;
+using Azure.Core;
+using Azure.Core.Cryptography;
+using Azure.Security.KeyVault.Keys.Cryptography;
+using Microsoft.Rest.Azure;
+using System.Security.Cryptography;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
@@ -59,17 +59,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNullOrEmpty]
         public PSSqlKeyWrapMetadata KeyWrapMetadata { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = Constants.WrappedDataEncryptionKey)]
+        [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = Constants.IKeyEncryptionKeyResolver)]
         [ValidateNotNullOrEmpty]
-        public byte[] WrappedDataEncryptionKey { get; set; }        
-
-        [Parameter(Mandatory = false, HelpMessage = Constants.IsAzureKeyVaultKeyStoreProvider)]
-        [ValidateNotNullOrEmpty]
-        public bool IsAzureKeyVaultKeyStoreProvider { get; set; } = true;
-
-        [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = Constants.IsAzureKeyVaultKeyStoreProvider)]
-        [ValidateNotNullOrEmpty]
-        public EncryptionKeyStoreProvider EncryptionKeyStoreProvider { get; set; }
+        public IKeyEncryptionKeyResolver IKeyEncryptionKeyResolver { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.SqlDatabaseObjectHelpMessage)]
         [ValidateNotNull]
@@ -110,49 +102,36 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (readClientEncryptionKeyGetResults != null)
             {
-                throw new ConflictingResourceException(message: string.Format(ExceptionMessage.Conflict, ClientEncryptionKeyName));
+                //throw new ConflictingResourceException(message: string.Format(ExceptionMessage.Conflict, ClientEncryptionKeyName));
             }
-
-            byte[] wrappedDataEncryptionKey = WrappedDataEncryptionKey;
-            if (wrappedDataEncryptionKey == null || wrappedDataEncryptionKey.Length == 0)
+            
+            if (string.Equals(encryptionKeyWrapMetadata.Type, "AZURE_KEY_VAULT"))
             {
-                KeyEncryptionKey keyEncryptionKey;
-                if (IsAzureKeyVaultKeyStoreProvider)
+                if (IKeyEncryptionKeyResolver != null)
                 {
-                    if (EncryptionKeyStoreProvider != null)
-                    {
-                        throw new ArgumentException("EncryptionKeyStoreProvider cannot be set if IsAzureKeyVaultKeyStoreProvider is set to true");
-                    }
-
-                    // get the token credential for key vault audience.
-                    TokenCredential tokenCredential = new CosmosDBSessionCredential(DefaultContext, AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId);
-
-                    AzureKeyVaultKeyStoreProvider azureKeyVaultKeyStoreProvider = new AzureKeyVaultKeyStoreProvider(tokenCredential);
-
-                    keyEncryptionKey = KeyEncryptionKey.GetOrCreate(
-                        encryptionKeyWrapMetadata.Name,
-                        encryptionKeyWrapMetadata.Value,
-                        azureKeyVaultKeyStoreProvider);
-                }
-                else
-                {
-                    if (EncryptionKeyStoreProvider == null)
-                    {
-                        throw new ArgumentException("EncryptionKeyStoreProvider cannot be null if IsAzureKeyVaultKeyStoreProvider is set to false");
-                    }
-
-                    keyEncryptionKey = KeyEncryptionKey.GetOrCreate(
-                        encryptionKeyWrapMetadata.Name,
-                        encryptionKeyWrapMetadata.Value,
-                        EncryptionKeyStoreProvider);
+                    throw new ArgumentException("EncryptionKeyStoreProvider cannot be set if IsAzureKeyVaultKeyStoreProvider is set to true");
                 }
 
-                ProtectedDataEncryptionKey protectedDataEncryptionKey = new ProtectedDataEncryptionKey(
-                        ClientEncryptionKeyName,
-                        keyEncryptionKey);
+                // get the token credential for key vault audience.
+                TokenCredential tokenCredential = new CosmosDBSessionCredential(DefaultContext, AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId);
 
-                wrappedDataEncryptionKey = protectedDataEncryptionKey.EncryptedValue;
+                IKeyEncryptionKeyResolver = new KeyResolver(tokenCredential);
             }
+            else
+            {
+                if (IKeyEncryptionKeyResolver == null)
+                {
+                    throw new ArgumentException("IKeyEncryptionKeyResolver cannot be null.");
+                }
+            }
+
+            byte[] plainTextDataEncryptionKey = new byte[32];
+            RandomNumberGenerator rng = RandomNumberGenerator.Create();
+            rng.GetBytes(plainTextDataEncryptionKey);
+
+
+            byte[] wrappedDataEncryptionKey = IKeyEncryptionKeyResolver.Resolve(encryptionKeyWrapMetadata.Value)
+            .WrapKey(encryptionKeyWrapMetadata.Algorithm, plainTextDataEncryptionKey);
 
             ClientEncryptionKeyResource clientEncryptionKeyResource = new ClientEncryptionKeyResource
             {

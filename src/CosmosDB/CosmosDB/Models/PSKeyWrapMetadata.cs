@@ -12,9 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 using Microsoft.Azure.Management.CosmosDB.Models;
-using Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Models;
 using System;
-using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.CosmosDB.Models
 {
@@ -35,6 +33,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             Name = keyWrapMetadata.Name;
             Type = keyWrapMetadata.Type;
             Value = keyWrapMetadata.Value;
+            Algorithm = keyWrapMetadata.Algorithm;
         }
 
         //
@@ -49,6 +48,10 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         // Summary:
         //     Gets or sets reference / link to the KeyEncryptionKey.
         public string Value { get; set; }
+        // 
+        // Summary:
+        //      Gets or sets algorithm used in wrapping and unwrapping of the data encryption key.
+        public string Algorithm { get; set; }
 
 
         public static KeyWrapMetadata ToSDKModel(PSKeyWrapMetadata pSKeyWrapMetadata)
@@ -73,11 +76,17 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
                 throw new ArgumentNullException("Value cannot be null or empty");
             }
 
+            if (string.IsNullOrEmpty(pSKeyWrapMetadata.Algorithm))
+            {
+                throw new ArgumentNullException("Algorithm cannot be null or empty");
+            }
+
             KeyWrapMetadata keyWrapMetadata = new KeyWrapMetadata
             {
                 Name = pSKeyWrapMetadata.Name,
                 Type = pSKeyWrapMetadata.Type,
-                Value = pSKeyWrapMetadata.Value
+                Value = pSKeyWrapMetadata.Value,
+                Algorithm = pSKeyWrapMetadata.Algorithm
             };
 
             return keyWrapMetadata;

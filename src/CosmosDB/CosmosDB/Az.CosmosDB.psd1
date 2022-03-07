@@ -182,7 +182,8 @@ CmdletsToExport = 'Get-AzCosmosDBSqlContainer',
                'Update-AzManagedCassandraCluster', 
                'Update-AzManagedCassandraDataCenter',
                'Get-AzCosmosDbClientEncryptionKey',
-               'New-AzCosmosDbClientEncryptionKey','Update-AzCosmosDbClientEncryptionKey'
+               'New-AzCosmosDbClientEncryptionKey',
+               'Update-AzCosmosDbClientEncryptionKey'
 
 # Variables to export from this module
 # VariablesToExport = @()
