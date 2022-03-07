@@ -82,18 +82,14 @@ function Get-AzFrontDoorCdnProfile {
 
     process {
         $internalProfiles = Az.Cdn.internal\Get-AzCdnProfile @PSBoundParameters
-        if ($null -eq $internalProfiles )
-        {
-            $profiles = $null
-        }else
+        if ($null -ne $internalProfiles )
         {
             if($internalProfiles -is [array]){
-                $profiles = @()
                 foreach ($oneInternalProfile in $internalProfiles)
                 {
                     if(ISFrontDoorCdnProfile($oneInternalProfile.SkuName))
                     {
-                        $profiles += $oneInternalProfile
+                        Write-Output $oneInternalProfile
                     }
                 }
             }else
@@ -101,13 +97,9 @@ function Get-AzFrontDoorCdnProfile {
                 $oneInternalProfile = $internalProfiles
                 if(ISFrontDoorCdnProfile($oneInternalProfile.SkuName))
                 {
-                    $profiles = $oneInternalProfile
-                }else{
-                    $profiles = $null
+                    Write-Output $oneInternalProfile
                 }
             }
         } 
-
-        Write-Output $profiles
     }
 }

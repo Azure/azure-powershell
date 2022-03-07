@@ -82,20 +82,15 @@ function Get-AzCdnProfile {
 
     process {
         $internalProfiles = Az.Cdn.internal\Get-AzCdnProfile @PSBoundParameters
-        Write-Host -ForegroundColor Green $internalProfiles.GetType()
-
-        if ($null -eq $internalProfiles )
-        {
-            $profiles = $null
-        }else
+ 
+        if ($null -ne $internalProfiles )
         {
             if($internalProfiles -is [array]){
-                $profiles = @()
                 foreach ($oneInternalProfile in $internalProfiles)
                 {
                     if(-Not (ISFrontDoorCdnProfile($oneInternalProfile.SkuName)))
                     {
-                        $profiles += $oneInternalProfile
+                        Write-Output $oneInternalProfile
                     }
                 }
             }else
@@ -103,13 +98,9 @@ function Get-AzCdnProfile {
                 $oneInternalProfile = $internalProfiles
                 if(-Not (ISFrontDoorCdnProfile($oneInternalProfile.SkuName)))
                 {
-                    $profiles = $internalProfiles
-                }else{
-                    $profiles = $null
+                    Write-Output $oneInternalProfile
                 }
             }
         } 
-
-        Write-Output $profiles
     }
 }
