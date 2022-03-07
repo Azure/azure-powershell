@@ -35,7 +35,7 @@ The **New-AzCosmosDbClientEncryptionKey** creates a new CosmosDB Client Encrypti
 
 ### Example 1
 ```powershell
-PS C:\> $myKeyWrapMetadataObject = [Microsoft.Azure.Commands.CosmosDB.Models.PSSqlKeyWrapMetadata]::new([Microsoft.Azure.Management.CosmosDB.Models.KeyWrapMetadata]::new(myMetaataName,"AKV_KEY_VAULT", myMetadatavalue))
+PS C:\> $myKeyWrapMetadataObject = [Microsoft.Azure.Commands.CosmosDB.Models.PSSqlKeyWrapMetadata]::new([Microsoft.Azure.Management.CosmosDB.Models.KeyWrapMetadata]::new(myMetadataName,"AZURE_KEY_VAULT", myMetadatavalue, myAlgorithm))
 PS C:\> New-AzCosmosDbClientEncryptionKey -AccountName myAccountName -DatabaseName myDatabaseName -ResourceGroupName myRgName -Name myClientEncryptionKeyName -EncryptionAlgorithmName "AEAD_AES_256_CBC_HMAC_SHA256" -KeyWrapMetadata $myKeyWrapMetadataObject
 
 Name     : myContainerName

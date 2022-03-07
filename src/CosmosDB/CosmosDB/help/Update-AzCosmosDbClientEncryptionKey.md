@@ -43,7 +43,7 @@ The **Update-AzCosmosDbClientEncryptionKey** updates the CosmosDb Client Encrypt
 
 ### Example 1
 ```powershell
-PS C:\> $updatedKeyWrapMetadataObject = [Microsoft.Azure.Commands.CosmosDB.Models.PSSqlKeyWrapMetadata]::new([Microsoft.Azure.Management.CosmosDB.Models.KeyWrapMetadata]::new(myMetaataName,"AKV_KEY_VAULT", updatedMetadataValue))
+PS C:\> $updatedKeyWrapMetadataObject = [Microsoft.Azure.Commands.CosmosDB.Models.PSSqlKeyWrapMetadata]::new([Microsoft.Azure.Management.CosmosDB.Models.KeyWrapMetadata]::new(myMetadataName,"AZURE_KEY_VAULT", updatedMetadataValue, myAlgorithm))
 PS C:\> Update-AzCosmosDbClientEncryptionKey -AccountName myAccountName -DatabaseName myDatabaseName -ResourceGroupName myRgName -Name myClientEncryptionKeyName -EncryptionAlgorithmName "AEAD_AES_256_CBC_HMAC_SHA256" -KeyWrapMetadata $updatedKeyWrapMetadataObject
 
 Name     : myContainerName
