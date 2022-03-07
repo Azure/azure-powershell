@@ -76,15 +76,8 @@ directive:
     set:      
         suppress-format: true
   - where:
-      variant: GetViaIdentity1
-      subject: SystemScanRuleset
-    set:
-      variant: GetByVersionViaIdentity
-  - where:
-      variant: Get1
-      subject: SystemScanRuleset
-    set:
-      variant: GetByVersion
+      variant: ViaIdentity|ViaIdentity1
+    remove: true
   - where:
         model-name: (.*)DataSource$
     set:      
