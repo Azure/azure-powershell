@@ -20,14 +20,13 @@ using Microsoft.Azure.Commands.CosmosDB.Helpers;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.CosmosDB.Models;
 using Microsoft.Azure.Commands.CosmosDB.Exceptions;
-using Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Exceptions;
 using Microsoft.Azure.Management.CosmosDB;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Azure.Core;
 using Azure.Core.Cryptography;
-using Azure.Security.KeyVault.Keys.Cryptography;
 using Microsoft.Rest.Azure;
 using System.Security.Cryptography;
+using Azure.Security.KeyVault.Keys.Cryptography;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
