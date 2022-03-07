@@ -15,13 +15,13 @@ Update a session host.
 ### UpdateExpanded (Default)
 ```
 Update-AzWvdSessionHost -HostPoolName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Force] [-AllowNewSession] [-AssignedUser <String>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String>] [-AllowNewSession] [-AssignedUser <String>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzWvdSessionHost -InputObject <IDesktopVirtualizationIdentity> [-Force] [-AllowNewSession]
+Update-AzWvdSessionHost -InputObject <IDesktopVirtualizationIdentity> [-AllowNewSession]
  [-AssignedUser <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -83,21 +83,6 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Force
-Force flag to update assign, unassign or reassign personal desktop.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named
