@@ -14,7 +14,7 @@ Creates or updates an IoT Connector resource with the specified parameters.
 
 ```
 New-AzHealthcareIotConnector -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String>] [-DeviceMappingContent <IAny>] [-Etag <String>]
+ [-SubscriptionId <String>] [-DeviceMappingContent <Hashtable>] [-Etag <String>]
  [-IdentityType <ServiceManagedIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
  [-IngestionEndpointConfigurationConsumerGroup <String>]
  [-IngestionEndpointConfigurationEventHubName <String>]
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 The mapping.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IAny
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 

@@ -30,12 +30,11 @@ For information on how to develop for `Az.HealthcareApis`, see [how-to.md](how-t
 > see https://aka.ms/autorest
 
 ``` yaml
-Branch: 672281444dd67605420fc9b3bcbd170040708380
+branch: 672281444dd67605420fc9b3bcbd170040708380
 require:
   - $(this-folder)/../readme.azure.noprofile.md 
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/healthcareapis/resource-manager/Microsoft.HealthcareApis/stable/2021-11-01/healthcare-apis.json
-  # - $(repo)/specification/healthcareapis/resource-manager/Microsoft.HealthcareApis/stable/2021-11-01/healthcare-apis.json
+  - $(repo)/specification/healthcareapis/resource-manager/Microsoft.HealthcareApis/stable/2021-11-01/healthcare-apis.json
 
 module-version: 0.3.0
 title: HealthcareApis
@@ -88,8 +87,10 @@ directive:
       model-name: Workspace
     set:
       format-table:
-        exclude-properties:
-          - Etag
+        properties:
+          - Location
+          - Name
+          - ResourceGroupName
   - where:
       model-name: DicomService
     set:
@@ -102,22 +103,26 @@ directive:
       model-name: FhirService
     set:
       format-table:
-        exclude-properties:
-          - Etag
+        properties:
+          - Location
+          - Name
+          - Kind
+          - ResourceGroupName
   - where:
       model-name: IotConnector
     set:
       format-table:
-        exclude-properties:
-          - Etag
+        properties:
+          - Location
+          - Name
+          - Kind
+          - ResourceGroupName
 
   - from: swagger-document 
-    where: $.definitions.IotConnectorProperties.properties.deviceMapping
+    where: $.definitions.IotMappingProperties.properties.content
     transform: >-
       return {
-          "type": "object",
-          "description": "Device Mappings.",
-          "$ref": "#/definitions/IotMappingProperties"
+          "description": "The mapping.",
+          "additionalProperties": true
       }
-
 ```
