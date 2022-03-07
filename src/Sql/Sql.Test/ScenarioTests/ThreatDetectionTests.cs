@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-DisablingThreatDetection");
         }
 
-        [Fact(Skip = "System.Management.Automation.RuntimeException : No exception occurred")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void InvalidArgumentsThreatDetection()
         {
