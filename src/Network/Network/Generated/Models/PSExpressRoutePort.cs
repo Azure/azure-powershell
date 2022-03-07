@@ -49,6 +49,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string AllocationDate { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
+        public List<PSExpressRoutePortAuthorization> Authorizations { get; set; }
         public List<PSExpressRouteLink> Links { get; set; }
         public List<PSResourceId> Circuits { get; set; }
         public PSManagedServiceIdentity Identity { get; set; }
@@ -69,6 +70,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string IdentityText
         {
             get { return JsonConvert.SerializeObject(Identity, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string AuthorizationsText
+        {
+            get { return JsonConvert.SerializeObject(Authorizations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

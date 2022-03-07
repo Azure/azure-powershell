@@ -114,6 +114,12 @@ namespace Microsoft.Azure.Commands.Network
            HelpMessage = "User Assigned Identity for reading MacSec configuration")]
         public PSManagedServiceIdentity Identity { get; set; }
 
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public PSExpressRoutePortAuthorization[] Authorization { get; set; }
+
         public override void Execute()
         {
             base.Execute();
@@ -132,6 +138,7 @@ namespace Microsoft.Azure.Commands.Network
                 Encapsulation = this.Encapsulation,
                 Location = this.Location,
                 Links = this.Link?.ToList(),
+                Authorizations = this.Authorization?.ToList()
             };
 
             if (this.Identity != null)
