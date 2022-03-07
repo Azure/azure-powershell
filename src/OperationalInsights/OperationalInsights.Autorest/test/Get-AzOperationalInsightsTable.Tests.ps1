@@ -21,6 +21,7 @@ Describe 'Get-AzOperationalInsightsTable' {
         $wsName = "dabenham-PSH2"
         $tableName = "dabenhamKuku1_CL"
     }
+
     It 'List' {
         $allTablesForWs = Get-AzOperationalInsightsTable -ResourceGroupName $rgName -WorkspaceName $wsName  
         Write-Host -ForegroundColor Yellow "Get-AzOperationalInsightsTable List returned with: $($allTablesForWs.Count) results"

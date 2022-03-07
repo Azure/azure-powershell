@@ -16,8 +16,8 @@ $env | Add-Member -Type ScriptMethod -Value { param( [string]$key, [object]$val,
 function setupEnv() {
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
+    Connect-AzAccount -UseDeviceAuthentication
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
-    $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

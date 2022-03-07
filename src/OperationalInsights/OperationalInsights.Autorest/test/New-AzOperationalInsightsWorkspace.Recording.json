@@ -13,25 +13,25 @@
       }
     },
     "Response": {
-      "StatusCode": 200,
+      "StatusCode": 201,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "d07543c4-4913-4a27-81d9-f6439762f3cd" ],
+        "x-ms-request-id": [ "5555d699-9bda-4983-a0e6-d310642e8861" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Microsoft-IIS/10.0", "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
-        "x-ms-correlation-request-id": [ "f26f71ba-fad0-4b78-80a8-f6bfc28a7ae0" ],
-        "x-ms-routing-request-id": [ "SWITZERLANDNORTH:20220131T164040Z:f26f71ba-fad0-4b78-80a8-f6bfc28a7ae0" ],
-        "Date": [ "Mon, 31 Jan 2022 16:40:40 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-correlation-request-id": [ "472bb7a5-b486-418a-bfe2-f2d05806eec4" ],
+        "x-ms-routing-request-id": [ "SWITZERLANDWEST:20220307T083029Z:472bb7a5-b486-418a-bfe2-f2d05806eec4" ],
+        "Date": [ "Mon, 07 Mar 2022 08:30:28 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1000" ],
+        "Content-Length": [ "999" ],
         "Content-Type": [ "application/json" ]
       },
-      "Content": "{\r\n  \"properties\": {\r\n    \"source\": \"Azure\",\r\n    \"customerId\": \"be5b540f-8a65-485d-bf5f-9c378f7dce75\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"sku\": {\r\n      \"name\": \"pergb2018\"\r\n    },\r\n    \"retentionInDays\": 30,\r\n    \"features\": {\r\n      \"legacy\": 0,\r\n      \"searchVersion\": 1,\r\n      \"enableLogAccessUsingOnlyResourcePermissions\": true\r\n    },\r\n    \"workspaceCapping\": {\r\n      \"dailyQuotaGb\": -1.0,\r\n      \"quotaNextResetTime\": \"Tue, 01 Feb 2022 11:00:00 GMT\",\r\n      \"dataIngestionStatus\": \"RespectQuota\"\r\n    },\r\n    \"publicNetworkAccessForIngestion\": \"Enabled\",\r\n    \"publicNetworkAccessForQuery\": \"Enabled\",\r\n    \"createdDate\": \"Mon, 31 Jan 2022 15:12:40 GMT\",\r\n    \"modifiedDate\": \"Mon, 31 Jan 2022 16:36:30 GMT\"\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/microsoft.operationalinsights/workspaces/danielkukupsh\",\r\n  \"name\": \"danielKukuPsh\",\r\n  \"type\": \"Microsoft.OperationalInsights/workspaces\",\r\n  \"location\": \"EastUS\"\r\n}",
+      "Content": "{\r\n  \"properties\": {\r\n    \"source\": \"Azure\",\r\n    \"customerId\": \"ebf86d2a-21f9-4485-8dcd-3750568738a9\",\r\n    \"provisioningState\": \"Creating\",\r\n    \"sku\": {\r\n      \"name\": \"pergb2018\"\r\n    },\r\n    \"retentionInDays\": 30,\r\n    \"features\": {\r\n      \"legacy\": 0,\r\n      \"searchVersion\": 1,\r\n      \"enableLogAccessUsingOnlyResourcePermissions\": true\r\n    },\r\n    \"workspaceCapping\": {\r\n      \"dailyQuotaGb\": -1.0,\r\n      \"quotaNextResetTime\": \"Tue, 08 Mar 2022 00:00:00 GMT\",\r\n      \"dataIngestionStatus\": \"RespectQuota\"\r\n    },\r\n    \"publicNetworkAccessForIngestion\": \"Enabled\",\r\n    \"publicNetworkAccessForQuery\": \"Enabled\",\r\n    \"createdDate\": \"Mon, 07 Mar 2022 08:30:28 GMT\",\r\n    \"modifiedDate\": \"Mon, 07 Mar 2022 08:30:28 GMT\"\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/microsoft.operationalinsights/workspaces/danielkukupsh\",\r\n  \"name\": \"danielKukuPsh\",\r\n  \"type\": \"Microsoft.OperationalInsights/workspaces\",\r\n  \"location\": \"EastUS\"\r\n}",
       "isContentBase64": false
     }
   },
@@ -43,8 +43,8 @@
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "11" ],
-        "x-ms-client-request-id": [ "cc917209-9107-4b70-8a2d-20e7ef10b097" ],
+        "x-ms-unique-id": [ "16" ],
+        "x-ms-client-request-id": [ "45dc41a0-53f8-4ad6-9212-1a0a92887e8b" ],
         "CommandName": [ "New-AzOperationalInsightsWorkspace" ],
         "FullCommandName": [ "New-AzOperationalInsightsWorkspace_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -58,21 +58,21 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "1fabb5da-6d2e-425b-9f95-db2e7410c486" ],
+        "x-ms-request-id": [ "3cc7d40e-466a-4b74-acd8-4a26bff8b26b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Microsoft-IIS/10.0", "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
-        "x-ms-correlation-request-id": [ "a51cce7c-8af0-4580-8bda-1965947dca8b" ],
-        "x-ms-routing-request-id": [ "SWITZERLANDNORTH:20220131T164111Z:a51cce7c-8af0-4580-8bda-1965947dca8b" ],
-        "Date": [ "Mon, 31 Jan 2022 16:41:11 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11988" ],
+        "x-ms-correlation-request-id": [ "5b154831-c349-4fa1-a8d0-30a11e2fe679" ],
+        "x-ms-routing-request-id": [ "SWITZERLANDWEST:20220307T083059Z:5b154831-c349-4fa1-a8d0-30a11e2fe679" ],
+        "Date": [ "Mon, 07 Mar 2022 08:30:58 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1000" ],
         "Content-Type": [ "application/json" ]
       },
-      "Content": "{\r\n  \"properties\": {\r\n    \"source\": \"Azure\",\r\n    \"customerId\": \"be5b540f-8a65-485d-bf5f-9c378f7dce75\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"sku\": {\r\n      \"name\": \"pergb2018\"\r\n    },\r\n    \"retentionInDays\": 30,\r\n    \"features\": {\r\n      \"legacy\": 0,\r\n      \"searchVersion\": 1,\r\n      \"enableLogAccessUsingOnlyResourcePermissions\": true\r\n    },\r\n    \"workspaceCapping\": {\r\n      \"dailyQuotaGb\": -1.0,\r\n      \"quotaNextResetTime\": \"Tue, 01 Feb 2022 11:00:00 GMT\",\r\n      \"dataIngestionStatus\": \"RespectQuota\"\r\n    },\r\n    \"publicNetworkAccessForIngestion\": \"Enabled\",\r\n    \"publicNetworkAccessForQuery\": \"Enabled\",\r\n    \"createdDate\": \"Mon, 31 Jan 2022 15:12:40 GMT\",\r\n    \"modifiedDate\": \"Mon, 31 Jan 2022 16:40:40 GMT\"\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/microsoft.operationalinsights/workspaces/danielkukupsh\",\r\n  \"name\": \"danielKukuPsh\",\r\n  \"type\": \"Microsoft.OperationalInsights/workspaces\",\r\n  \"location\": \"EastUS\"\r\n}",
+      "Content": "{\r\n  \"properties\": {\r\n    \"source\": \"Azure\",\r\n    \"customerId\": \"ebf86d2a-21f9-4485-8dcd-3750568738a9\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"sku\": {\r\n      \"name\": \"pergb2018\"\r\n    },\r\n    \"retentionInDays\": 30,\r\n    \"features\": {\r\n      \"legacy\": 0,\r\n      \"searchVersion\": 1,\r\n      \"enableLogAccessUsingOnlyResourcePermissions\": true\r\n    },\r\n    \"workspaceCapping\": {\r\n      \"dailyQuotaGb\": -1.0,\r\n      \"quotaNextResetTime\": \"Tue, 08 Mar 2022 00:00:00 GMT\",\r\n      \"dataIngestionStatus\": \"RespectQuota\"\r\n    },\r\n    \"publicNetworkAccessForIngestion\": \"Enabled\",\r\n    \"publicNetworkAccessForQuery\": \"Enabled\",\r\n    \"createdDate\": \"Mon, 07 Mar 2022 08:30:28 GMT\",\r\n    \"modifiedDate\": \"Mon, 07 Mar 2022 08:30:29 GMT\"\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/microsoft.operationalinsights/workspaces/danielkukupsh\",\r\n  \"name\": \"danielKukuPsh\",\r\n  \"type\": \"Microsoft.OperationalInsights/workspaces\",\r\n  \"location\": \"EastUS\"\r\n}",
       "isContentBase64": false
     }
   },
@@ -84,8 +84,8 @@
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "12" ],
-        "x-ms-client-request-id": [ "cc917209-9107-4b70-8a2d-20e7ef10b097" ],
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "45dc41a0-53f8-4ad6-9212-1a0a92887e8b" ],
         "CommandName": [ "New-AzOperationalInsightsWorkspace" ],
         "FullCommandName": [ "New-AzOperationalInsightsWorkspace_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -99,21 +99,21 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "cd1bd941-788f-4d79-a22b-f89d5c54d879" ],
+        "x-ms-request-id": [ "acf87249-8d9e-4549-b751-c8224d47e503" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Microsoft-IIS/10.0", "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
-        "x-ms-correlation-request-id": [ "0ebb414c-621a-4278-9643-129ca0e84bcd" ],
-        "x-ms-routing-request-id": [ "SWITZERLANDNORTH:20220131T164111Z:0ebb414c-621a-4278-9643-129ca0e84bcd" ],
-        "Date": [ "Mon, 31 Jan 2022 16:41:11 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11987" ],
+        "x-ms-correlation-request-id": [ "8178934b-5001-4d10-b660-b5401cf4397b" ],
+        "x-ms-routing-request-id": [ "SWITZERLANDWEST:20220307T083059Z:8178934b-5001-4d10-b660-b5401cf4397b" ],
+        "Date": [ "Mon, 07 Mar 2022 08:30:58 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1000" ],
         "Content-Type": [ "application/json" ]
       },
-      "Content": "{\r\n  \"properties\": {\r\n    \"source\": \"Azure\",\r\n    \"customerId\": \"be5b540f-8a65-485d-bf5f-9c378f7dce75\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"sku\": {\r\n      \"name\": \"pergb2018\"\r\n    },\r\n    \"retentionInDays\": 30,\r\n    \"features\": {\r\n      \"legacy\": 0,\r\n      \"searchVersion\": 1,\r\n      \"enableLogAccessUsingOnlyResourcePermissions\": true\r\n    },\r\n    \"workspaceCapping\": {\r\n      \"dailyQuotaGb\": -1.0,\r\n      \"quotaNextResetTime\": \"Tue, 01 Feb 2022 11:00:00 GMT\",\r\n      \"dataIngestionStatus\": \"RespectQuota\"\r\n    },\r\n    \"publicNetworkAccessForIngestion\": \"Enabled\",\r\n    \"publicNetworkAccessForQuery\": \"Enabled\",\r\n    \"createdDate\": \"Mon, 31 Jan 2022 15:12:40 GMT\",\r\n    \"modifiedDate\": \"Mon, 31 Jan 2022 16:40:40 GMT\"\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/microsoft.operationalinsights/workspaces/danielkukupsh\",\r\n  \"name\": \"danielKukuPsh\",\r\n  \"type\": \"Microsoft.OperationalInsights/workspaces\",\r\n  \"location\": \"EastUS\"\r\n}",
+      "Content": "{\r\n  \"properties\": {\r\n    \"source\": \"Azure\",\r\n    \"customerId\": \"ebf86d2a-21f9-4485-8dcd-3750568738a9\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"sku\": {\r\n      \"name\": \"pergb2018\"\r\n    },\r\n    \"retentionInDays\": 30,\r\n    \"features\": {\r\n      \"legacy\": 0,\r\n      \"searchVersion\": 1,\r\n      \"enableLogAccessUsingOnlyResourcePermissions\": true\r\n    },\r\n    \"workspaceCapping\": {\r\n      \"dailyQuotaGb\": -1.0,\r\n      \"quotaNextResetTime\": \"Tue, 08 Mar 2022 00:00:00 GMT\",\r\n      \"dataIngestionStatus\": \"RespectQuota\"\r\n    },\r\n    \"publicNetworkAccessForIngestion\": \"Enabled\",\r\n    \"publicNetworkAccessForQuery\": \"Enabled\",\r\n    \"createdDate\": \"Mon, 07 Mar 2022 08:30:28 GMT\",\r\n    \"modifiedDate\": \"Mon, 07 Mar 2022 08:30:29 GMT\"\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/microsoft.operationalinsights/workspaces/danielkukupsh\",\r\n  \"name\": \"danielKukuPsh\",\r\n  \"type\": \"Microsoft.OperationalInsights/workspaces\",\r\n  \"location\": \"EastUS\"\r\n}",
       "isContentBase64": false
     }
   }

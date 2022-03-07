@@ -15,20 +15,20 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzOperationalInsightsDele
 }
 
 Describe 'Get-AzOperationalInsightsDeletedWorkspace' {
-        
+
     BeforeAll { 
         $rgName = "dabenham-dev"
         $wsName = "dabenham-PSH2"
     }
 
-    It 'List' -skip {
+    It 'List' {
         $deletedWorkspaces = Get-AzOperationalInsightsDeletedWorkspace -ResourceGroupName $rgName
         Write-Host -ForegroundColor Yellow "Get-AzOperationalInsightsDeletedWorkspace List for rg:${rgName}, workspaces:${wsName} returned with: $($deletedWorkspaces.Count) results"
         Write-Host -ForegroundColor Yellow $deletedWorkspaces
         $singleWorkspace.Count | Should BeGreaterThan 0
     }
 
-    It 'List1' -skip {
+    It 'List1' {
         $deletedWorkspaces = Get-AzOperationalInsightsDeletedWorkspace -ResourceGroupName $rgName -Name $wsName
         Write-Host -ForegroundColor Yellow "Get-AzOperationalInsightsWorkspace List1 for rg:${rgName}, workspaces:${wsName} returned with: $($deletedWorkspaces.Count) results"
         Write-Host -ForegroundColor Yellow $deletedWorkspaces
