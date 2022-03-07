@@ -5678,3 +5678,42 @@ function Test-VMvCPUFeatures
         Clean-ResourceGroup $rgname;
     }
 }
+
+<#
+.SYNOPSIS
+Test if I can change subscriptions in a test
+#>
+function Test-HappyPathNonWhitelisted
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # VM Profile & Hardware
+        $vmname = 'v' + $rgname;
+        $domainNameLabel = "d1" + $rgname;
+        $subscription = "88fd8cb2-8248-499e-9a2d-4929a4b0133c";
+
+        Set-AzContext -Subscription $subscription -Force;#just testing this line so far
+
+        # Creating a VM using simple parameterset
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;  
+        $user = "admin01";
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel;
+
+        Remove-AzVM -ResourceGroupName $rgname -Name $vmname -ForceDeletion $true -Force;
+
+    }
+    finally 
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+

@@ -486,5 +486,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VMvCPUFeatures");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestHappyPathNonWhitelisted()
+        {
+            TestRunner.RunTestScript("Test-HappyPathNonWhitelisted");
+        }
     }
 }
