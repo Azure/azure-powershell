@@ -43,7 +43,7 @@ The **Get-AzSynapseSqlPoolTransparentDataEncryption** cmdlet gets the state of T
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSynapseSqlPoolTransparentDataEncryption -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
+Get-AzSynapseSqlPoolTransparentDataEncryption -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
 ```
 
 This command gets the status of TDE for the SQL pool named ContosoSqlPool under the workspace named ContosoWorkspace.

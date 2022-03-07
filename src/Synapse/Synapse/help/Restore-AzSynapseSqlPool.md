@@ -64,63 +64,63 @@ The restored SQL pool is created as a new SQL pool.
 
 ### Example 1
 ```powershell
-PS C:\> # Transform Synapse SQL pool resource ID to SQL database ID because 
-PS C:\> # currently the command only accepts the SQL databse ID. For example: /subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Sql/servers/<WorkspaceName>/databases/<DatabaseName>
-PS C:\> $pool = Get-AzSynapseSqlPool -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
-PS C:\> $databaseId = $pool.Id -replace "Microsoft.Synapse", "Microsoft.Sql" `
-PS C:\> 	-replace "workspaces", "servers" `
-PS C:\> 	-replace "sqlPools", "databases"
-PS C:\> 
-PS C:\> # Get the latest restore point
-PS C:\> $restorePoint = $pool | Get-AzSynapseSqlPoolRestorePoint | Select -Last 1
-PS C:\> 
-PS C:\> # Restore to same workspace with source SQL pool
-PS C:\> $restoredPool = Restore-AzSynapseSqlPool -FromRestorePoint -RestorePoint $restorePoint.RestorePointCreationDate -TargetSqlPoolName ContosoRestoredSqlPool -ResourceGroupName $pool.ResourceGroupName -WorkspaceName $pool.WorkspaceName -ResourceId $databaseId -PerformanceLevel DW200c
+# Transform Synapse SQL pool resource ID to SQL database ID because 
+# currently the command only accepts the SQL databse ID. For example: /subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Sql/servers/<WorkspaceName>/databases/<DatabaseName>
+$pool = Get-AzSynapseSqlPool -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
+$databaseId = $pool.Id -replace "Microsoft.Synapse", "Microsoft.Sql" `
+	-replace "workspaces", "servers" `
+	-replace "sqlPools", "databases"
+ 
+# Get the latest restore point
+$restorePoint = $pool | Get-AzSynapseSqlPoolRestorePoint | Select -Last 1
+
+# Restore to same workspace with source SQL pool
+$restoredPool = Restore-AzSynapseSqlPool -FromRestorePoint -RestorePoint $restorePoint.RestorePointCreationDate -TargetSqlPoolName ContosoRestoredSqlPool -ResourceGroupName $pool.ResourceGroupName -WorkspaceName $pool.WorkspaceName -ResourceId $databaseId -PerformanceLevel DW200c
 ```
 
 This command creates an Azure Synapse Analytics SQL pool by leveraging a restore point from any existing SQL pool to recover or copy from a previous state.
 
 ### Example 2
 ```powershell
-PS C:\> # Transform Synapse SQL pool resource ID to SQL database ID because
-PS C:\> # currently the command only accepts the SQL databse ID. For example: /subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Sql/servers/<WorkspaceName>/recoverabledatabases/<DatabaseName>
-PS C:\> $pool = Get-AzSynapseSqlPoolGeoBackup -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
-PS C:\> $databaseId = $pool.Id -replace "Microsoft.Synapse", "Microsoft.Sql" `
-PS C:\>     -replace "workspaces", "servers"
-PS C:\> 
-PS C:\> # Restore to same workspace with source SQL pool
-PS C:\> $restoredPool = Restore-AzSynapseSqlPool -FromBackup -TargetSqlPoolName ContosoRestoredSqlPool -ResourceGroupName $pool.ResourceGroupName -WorkspaceName $pool.WorkspaceName -ResourceId $databaseId
+# Transform Synapse SQL pool resource ID to SQL database ID because
+# currently the command only accepts the SQL databse ID. For example: /subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Sql/servers/<WorkspaceName>/recoverabledatabases/<DatabaseName>
+$pool = Get-AzSynapseSqlPoolGeoBackup -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
+$databaseId = $pool.Id -replace "Microsoft.Synapse", "Microsoft.Sql" `
+    -replace "workspaces", "servers"
+
+# Restore to same workspace with source SQL pool
+$restoredPool = Restore-AzSynapseSqlPool -FromBackup -TargetSqlPoolName ContosoRestoredSqlPool -ResourceGroupName $pool.ResourceGroupName -WorkspaceName $pool.WorkspaceName -ResourceId $databaseId
 ```
 
 This command creates an Azure Synapse Analytics SQL pool which restores from the SQL pool backup.
 
 ### Example 3
 ```powershell
-PS C:\> # Transform Synapse dropped SQL pool resource ID to SQL pool resource ID
-PS C:\> $pool = Get-AzSynapseDroppedSqlPool -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
-PS C:\> $poolId = $pool.Id.Split(",")[0]
-PS C:\> $poolId = $poolId -replace "restorableDroppedSqlPools", "sqlPools"
-PS C:\> 
-PS C:\> # Restore to same workspace with source SQL pool
-PS C:\> $restoredPool = Restore-AzSynapseSqlPool -FromDroppedSqlPool -DeletionDate $pool.DeletionDate -TargetSqlPoolName ContosoRestoredSqlPool -ResourceGroupName $pool.ResourceGroupName -WorkspaceName $pool.WorkspaceName -ResourceId $poolId
+# Transform Synapse dropped SQL pool resource ID to SQL pool resource ID
+$pool = Get-AzSynapseDroppedSqlPool -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
+$poolId = $pool.Id.Split(",")[0]
+$poolId = $poolId -replace "restorableDroppedSqlPools", "sqlPools"
+
+# Restore to same workspace with source SQL pool
+$restoredPool = Restore-AzSynapseSqlPool -FromDroppedSqlPool -DeletionDate $pool.DeletionDate -TargetSqlPoolName ContosoRestoredSqlPool -ResourceGroupName $pool.ResourceGroupName -WorkspaceName $pool.WorkspaceName -ResourceId $poolId
 ```
 
 This command creates an Azure Synapse Analytics SQL pool which restores from the deleted SQL pool backup.
 
 ### Example 4
 ```powershell
-PS C:\> # Transform Synapse SQL pool resource ID to SQL database ID because 
-PS C:\> # currently the command only accepts the SQL databse ID. For example: /subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Sql/servers/<WorkspaceName>/databases/<DatabaseName>
-PS C:\> $pool = Get-AzSynapseSqlPool -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
-PS C:\> $databaseId = $pool.Id -replace "Microsoft.Synapse", "Microsoft.Sql" `
-PS C:\> 	-replace "workspaces", "servers" `
-PS C:\> 	-replace "sqlPools", "databases"
-PS C:\> 
-PS C:\> # Get the latest restore point
-PS C:\> $restorePoint = $pool | Get-AzSynapseSqlPoolRestorePoint | Select -Last 1
-PS C:\> 
-PS C:\> # Restore to same workspace with source SQL pool
-PS C:\> $restoredPool = Restore-AzSynapseSqlPool -FromRestorePoint -RestorePoint $restorePoint.RestorePointCreationDate -TargetSqlPoolName ContosoRestoredSqlPool -ResourceGroupName $pool.ResourceGroupName -WorkspaceName $pool.WorkspaceName -ResourceId $databaseId -PerformanceLevel DW200c -Tag @{"tagName" = "tagValue"} -StorageAccountType LRS
+# Transform Synapse SQL pool resource ID to SQL database ID because 
+# currently the command only accepts the SQL databse ID. For example: /subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Sql/servers/<WorkspaceName>/databases/<DatabaseName>
+$pool = Get-AzSynapseSqlPool -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
+$databaseId = $pool.Id -replace "Microsoft.Synapse", "Microsoft.Sql" `
+	-replace "workspaces", "servers" `
+	-replace "sqlPools", "databases"
+
+# Get the latest restore point
+$restorePoint = $pool | Get-AzSynapseSqlPoolRestorePoint | Select -Last 1
+
+# Restore to same workspace with source SQL pool
+$restoredPool = Restore-AzSynapseSqlPool -FromRestorePoint -RestorePoint $restorePoint.RestorePointCreationDate -TargetSqlPoolName ContosoRestoredSqlPool -ResourceGroupName $pool.ResourceGroupName -WorkspaceName $pool.WorkspaceName -ResourceId $databaseId -PerformanceLevel DW200c -Tag @{"tagName" = "tagValue"} -StorageAccountType LRS
 ```
 
 This command creates an Azure Synapse Analytics SQL pool with specified tags and storage account type by leveraging a restore point from any existing SQL pool to recover or copy from a previous state.

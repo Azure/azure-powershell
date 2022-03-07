@@ -24,7 +24,7 @@ The **Test-AzSynapseWorkspace** cmdlet checks for the existence of a Synapse Ana
 
 ### Example 1
 ```powershell
-PS C:\> Test-AzSynapseWorkspace -Name ContosoWorkspace
+Test-AzSynapseWorkspace -Name ContosoWorkspace
 ```
 
 This command checks for the existence of a Synapse Analytics workspace.
