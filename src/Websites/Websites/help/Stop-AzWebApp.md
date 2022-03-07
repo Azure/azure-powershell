@@ -30,8 +30,8 @@ The **Stop-AzWebApp** cmdlet stops an Azure Web App.
 ## EXAMPLES
 
 ### Example 1: Stop a Web App
-```
-PS C:\>Stop-AzWebApp -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp"
+```powershell
+Stop-AzWebApp -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp"
 ```
 
 This command stops the Web App named ContosoWebApp that belongs to the resource group named Default-Web-WestUS.

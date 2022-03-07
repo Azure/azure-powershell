@@ -31,7 +31,7 @@ The **Reset-AzWebAppSlotPublishingProfile** cmdlet resets the publishing profile
 
 ### Example 1
 ```powershell
-PS C:\> Reset-AzWebAppSlotPublishingProfile -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" -Slot "slot001"
+Reset-AzWebAppSlotPublishingProfile -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" -Slot "slot001"
 ```
 
 This command resets the publishing profile for the Slot named slot001 for the Web App ContosoWebApp associated with the resource group Default-Web-WestUS.

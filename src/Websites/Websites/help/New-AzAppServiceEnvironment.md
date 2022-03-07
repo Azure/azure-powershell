@@ -48,7 +48,7 @@ The **New-AzAppServiceEnvironment** cmdlet creates an App Service Environment.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzAppServiceEnvironment -ResourceGroupName MyResourceGroup -Name MyAseV2 -Location WestEurope 
+New-AzAppServiceEnvironment -ResourceGroupName MyResourceGroup -Name MyAseV2 -Location WestEurope 
         -VirtualNetworkName MyVirtualNetwork -SubnetName AseSubnet -LoadBalancerMode Internal
 ```
 
@@ -56,7 +56,7 @@ Create App Service Environment named MyAseV2 including recommended Route Table a
 
 ### Example 2
 ```powershell
-PS C:\> New-AzAppServiceEnvironment -ResourceGroupName MyResourceGroup -Name MyAseV2 -Location WestEurope 
+New-AzAppServiceEnvironment -ResourceGroupName MyResourceGroup -Name MyAseV2 -Location WestEurope 
         -VirtualNetworkName MyVirtualNetwork -SubnetName AseSubnet -LoadBalancerMode Internal
         -SkipRouteTable -SkipNetworkSecurityGroup
 ```

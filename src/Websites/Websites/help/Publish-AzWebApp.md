@@ -31,43 +31,43 @@ The **Publish-AzWebApp** cmdlet uploads content to an existing Azure Web App. Th
 
 ### Example 1
 ```powershell
-PS C:\> Publish-AzWebApp -ResourceGroupName Default-Web-WestUS -Name MyApp -ArchivePath C:\project\app.zip
+Publish-AzWebApp -ResourceGroupName Default-Web-WestUS -Name MyApp -ArchivePath C:\project\app.zip
 ```
 
 Uploads the contents of app.zip to the web app named MyApp belonging to the resource group Default-Web-WestUS.
 
 ### Example 2
 ```powershell
-PS C:\> Publish-AzWebApp -ResourceGroupName ContosoRG -Name ContosoApp -Slot Staging -ArchivePath C:\project\javaproject.war
+Publish-AzWebApp -ResourceGroupName ContosoRG -Name ContosoApp -Slot Staging -ArchivePath C:\project\javaproject.war
 ```
 
 Uploads the contents of javaproject.war to the Staging slot of the web app named ContosoApp belonging to the resource group ContosoRG.
 
 ### Example 3
 ```powershell
-PS C:\> $app = Get-AzWebApp -ResourceGroupName ContosoRG -Name ContosoApp
-PS C:\> Publish-AzWebApp -WebApp $app -ArchivePath C:\project\app.zip -AsJob
+$app = Get-AzWebApp -ResourceGroupName ContosoRG -Name ContosoApp
+Publish-AzWebApp -WebApp $app -ArchivePath C:\project\app.zip -AsJob
 ```
 
 Uploads the contents of app.zip to the web app named ContosoApp belonging to the resource group ContosoRG. The cmdlet will be run in a background job.
 
 ### Example 4
 ```powershell
-PS C:\> $app = Get-AzWebApp -ResourceGroupName ContosoRG -Name ContosoApp
-PS C:\> $app | Publish-AzWebApp -ArchivePath C:\project\java_app.jar
+$app = Get-AzWebApp -ResourceGroupName ContosoRG -Name ContosoApp
+$app | Publish-AzWebApp -ArchivePath C:\project\java_app.jar
 ```
 ### Example 5
 ```powershell
-PS C:\> $app = Get-AzWebApp -ResourceGroupName ContosoRG -Name ContosoApp
-PS C:\> Publish-AzWebApp -WebApp $app -ArchivePath C:\project\app.zip -Force
+$app = Get-AzWebApp -ResourceGroupName ContosoRG -Name ContosoApp
+Publish-AzWebApp -WebApp $app -ArchivePath C:\project\app.zip -Force
 ```
 
 Uploads the contents of java_app.jar to the web app named ContosoApp belonging to the resource group ContosoRG. If -Force is not specified it will prompt for the confirmation before the contents will be deployed.
 
 ### Example 6
 ```powershell
-PS C:\> $app = Get-AzWebApp -ResourceGroupName ContosoRG -Name ContosoApp
-PS C:\> Publish-AzWebApp -WebApp $app -ArchivePath C:\project\app.zip -Timeout 300000 -Force
+$app = Get-AzWebApp -ResourceGroupName ContosoRG -Name ContosoApp
+Publish-AzWebApp -WebApp $app -ArchivePath C:\project\app.zip -Timeout 300000 -Force
 ```
 
 Uploads the contents of java_app.jar to the web app named ContosoApp belonging to the resource group ContosoRG. User can Sets the timespan in Milliseconds to wait before the request times out. If -Force is not specified it will prompt for the confirmation before the contents will be deployed.
