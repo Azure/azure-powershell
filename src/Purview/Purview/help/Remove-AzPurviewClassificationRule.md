@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Purview-help.xml
 Module Name: Az.Purview
 online version: https://docs.microsoft.com/powershell/module/az.purview/remove-azpurviewclassificationrule
 schema: 2.0.0
@@ -15,13 +15,13 @@ Deletes a classification rule
 ### Delete (Default)
 ```
 Remove-AzPurviewClassificationRule -Endpoint <String> -Name <String> [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzPurviewClassificationRule -Endpoint <String> -InputObject <IPurviewdataIdentity>
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -94,7 +94,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.IPurviewdataIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IPurviewdataIdentity
 Parameter Sets: DeleteViaIdentity
 Aliases:
 
@@ -171,11 +171,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.IPurviewdataIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IPurviewdataIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20211001Preview.IClassificationRule
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRule
 
 ## NOTES
 
@@ -199,4 +199,3 @@ INPUTOBJECT <IPurviewdataIdentity>: Identity Parameter
   - `[Version <Int32?>]`: 
 
 ## RELATED LINKS
-

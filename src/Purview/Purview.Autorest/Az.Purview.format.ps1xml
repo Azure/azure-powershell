@@ -116,9 +116,6 @@
             <Label>SystemDataLastModifiedByType</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Type</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>ResourceGroupName</Label>
           </TableColumnHeader>
         </TableHeaders>
@@ -157,9 +154,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>SystemDataLastModifiedByType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Type</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
@@ -417,18 +411,12 @@
           <TableColumnHeader>
             <Label>Name</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Type</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Type</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -680,9 +668,6 @@
           <TableColumnHeader>
             <Label>TenantId</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Type</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -692,9 +677,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>TenantId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Type</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -964,9 +946,6 @@
             <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Type</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>ResourceGroupName</Label>
           </TableColumnHeader>
         </TableHeaders>
@@ -975,9 +954,6 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Type</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
@@ -1050,9 +1026,6 @@
           <TableColumnHeader>
             <Label>ResourceGroupName</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Type</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -1062,9 +1035,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Type</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1177,18 +1147,12 @@
           <TableColumnHeader>
             <Label>Name</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Type</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Type</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1260,9 +1224,6 @@
           <TableColumnHeader>
             <Label>Name</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Type</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -1272,9 +1233,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Type</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

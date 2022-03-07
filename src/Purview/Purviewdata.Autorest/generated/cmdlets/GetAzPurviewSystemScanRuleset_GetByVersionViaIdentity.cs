@@ -12,11 +12,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Cmdlets
     /// <remarks>
     /// [OpenAPI] GetByVersion=>GET:"/systemScanRulesets/versions/{version}"
     /// </remarks>
-    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzPurviewSystemScanRuleset_GetViaIdentity1")]
+    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzPurviewSystemScanRuleset_GetByVersionViaIdentity")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ISystemScanRuleset))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Description(@"Get a scan ruleset by version")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Generated]
-    public partial class GetAzPurviewSystemScanRuleset_GetViaIdentity1 : global::System.Management.Automation.PSCmdlet,
+    public partial class GetAzPurviewSystemScanRuleset_GetByVersionViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
@@ -176,9 +176,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="GetAzPurviewSystemScanRuleset_GetViaIdentity1" /> cmdlet class.
+        /// Intializes a new instance of the <see cref="GetAzPurviewSystemScanRuleset_GetByVersionViaIdentity" /> cmdlet class.
         /// </summary>
-        public GetAzPurviewSystemScanRuleset_GetViaIdentity1()
+        public GetAzPurviewSystemScanRuleset_GetByVersionViaIdentity()
         {
 
         }

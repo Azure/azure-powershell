@@ -20,27 +20,6 @@ Get an account
 ### [Get-AzPurviewAccountKey](Get-AzPurviewAccountKey.md)
 List the authorization keys associated with this account.
 
-### [Get-AzPurviewDefaultAccount](Get-AzPurviewDefaultAccount.md)
-Get the default account for the scope.
-
-### [New-AzPurviewAccount](New-AzPurviewAccount.md)
-Creates or updates an account
-
-### [Remove-AzPurviewAccount](Remove-AzPurviewAccount.md)
-Deletes an account resource
-
-### [Remove-AzPurviewDefaultAccount](Remove-AzPurviewDefaultAccount.md)
-Removes the default account from the scope.
-
-### [Set-AzPurviewDefaultAccount](Set-AzPurviewDefaultAccount.md)
-Sets the default account for the scope.
-
-### [Test-AzPurviewAccountNameAvailability](Test-AzPurviewAccountNameAvailability.md)
-Checks if account name is available.
-
-### [Update-AzPurviewAccount](Update-AzPurviewAccount.md)
-Updates an account
-
 ### [Get-AzPurviewClassificationRule](Get-AzPurviewClassificationRule.md)
 Get a classification rule
 
@@ -49,6 +28,9 @@ Lists the rule versions of a classification rule
 
 ### [Get-AzPurviewDataSource](Get-AzPurviewDataSource.md)
 Get a data source
+
+### [Get-AzPurviewDefaultAccount](Get-AzPurviewDefaultAccount.md)
+Get the default account for the scope.
 
 ### [Get-AzPurviewFilter](Get-AzPurviewFilter.md)
 Get a filter
@@ -79,6 +61,9 @@ Gets trigger information
 
 ### [Invoke-AzPurviewTagClassificationRuleClassificationVersion](Invoke-AzPurviewTagClassificationRuleClassificationVersion.md)
 Sets Classification Action on a specific classification rule version.
+
+### [New-AzPurviewAccount](New-AzPurviewAccount.md)
+Creates or updates an account
 
 ### [New-AzPurviewAdlsGen1CredentialScanObject](New-AzPurviewAdlsGen1CredentialScanObject.md)
 Create an in-memory object for AdlsGen1CredentialScan.
@@ -272,188 +257,8 @@ Creates or Updates a classification rule
 ### [New-AzPurviewCustomClassificationRuleObject](New-AzPurviewCustomClassificationRuleObject.md)
 Create an in-memory object for CustomClassificationRule.
 
-### [New-AzPurviewdataAdlsGen1CredentialScanObject](New-AzPurviewdataAdlsGen1CredentialScanObject.md)
-Create an in-memory object for AdlsGen1CredentialScan.
-
-### [New-AzPurviewdataAdlsGen1DataSourceObject](New-AzPurviewdataAdlsGen1DataSourceObject.md)
-Create an in-memory object for AdlsGen1DataSource.
-
-### [New-AzPurviewdataAdlsGen1MsiScanObject](New-AzPurviewdataAdlsGen1MsiScanObject.md)
-Create an in-memory object for AdlsGen1MsiScan.
-
-### [New-AzPurviewdataAdlsGen2CredentialScanObject](New-AzPurviewdataAdlsGen2CredentialScanObject.md)
-Create an in-memory object for AdlsGen2CredentialScan.
-
-### [New-AzPurviewdataAdlsGen2DataSourceObject](New-AzPurviewdataAdlsGen2DataSourceObject.md)
-Create an in-memory object for AdlsGen2DataSource.
-
-### [New-AzPurviewdataAdlsGen2MsiScanObject](New-AzPurviewdataAdlsGen2MsiScanObject.md)
-Create an in-memory object for AdlsGen2MsiScan.
-
-### [New-AzPurviewdataAmazonAccountCredentialScanObject](New-AzPurviewdataAmazonAccountCredentialScanObject.md)
-Create an in-memory object for AmazonAccountCredentialScan.
-
-### [New-AzPurviewdataAmazonAccountDataSourceObject](New-AzPurviewdataAmazonAccountDataSourceObject.md)
-Create an in-memory object for AmazonAccountDataSource.
-
-### [New-AzPurviewdataAmazonPostgreSqlCredentialScanObject](New-AzPurviewdataAmazonPostgreSqlCredentialScanObject.md)
-Create an in-memory object for AmazonPostgreSqlCredentialScan.
-
-### [New-AzPurviewdataAmazonPostgreSqlDataSourceObject](New-AzPurviewdataAmazonPostgreSqlDataSourceObject.md)
-Create an in-memory object for AmazonPostgreSqlDataSource.
-
-### [New-AzPurviewdataAmazonS3CredentialScanObject](New-AzPurviewdataAmazonS3CredentialScanObject.md)
-Create an in-memory object for AmazonS3CredentialScan.
-
-### [New-AzPurviewdataAmazonS3DataSourceObject](New-AzPurviewdataAmazonS3DataSourceObject.md)
-Create an in-memory object for AmazonS3DataSource.
-
-### [New-AzPurviewdataAmazonSqlCredentialScanObject](New-AzPurviewdataAmazonSqlCredentialScanObject.md)
-Create an in-memory object for AmazonSqlCredentialScan.
-
-### [New-AzPurviewdataAmazonSqlDataSourceObject](New-AzPurviewdataAmazonSqlDataSourceObject.md)
-Create an in-memory object for AmazonSqlDataSource.
-
-### [New-AzPurviewdataAzureCosmosDbCredentialScanObject](New-AzPurviewdataAzureCosmosDbCredentialScanObject.md)
-Create an in-memory object for AzureCosmosDbCredentialScan.
-
-### [New-AzPurviewdataAzureCosmosDbDataSourceObject](New-AzPurviewdataAzureCosmosDbDataSourceObject.md)
-Create an in-memory object for AzureCosmosDbDataSource.
-
-### [New-AzPurviewdataAzureDataExplorerCredentialScanObject](New-AzPurviewdataAzureDataExplorerCredentialScanObject.md)
-Create an in-memory object for AzureDataExplorerCredentialScan.
-
-### [New-AzPurviewdataAzureDataExplorerDataSourceObject](New-AzPurviewdataAzureDataExplorerDataSourceObject.md)
-Create an in-memory object for AzureDataExplorerDataSource.
-
-### [New-AzPurviewdataAzureDataExplorerMsiScanObject](New-AzPurviewdataAzureDataExplorerMsiScanObject.md)
-Create an in-memory object for AzureDataExplorerMsiScan.
-
-### [New-AzPurviewdataAzureFileServiceCredentialScanObject](New-AzPurviewdataAzureFileServiceCredentialScanObject.md)
-Create an in-memory object for AzureFileServiceCredentialScan.
-
-### [New-AzPurviewdataAzureFileServiceDataSourceObject](New-AzPurviewdataAzureFileServiceDataSourceObject.md)
-Create an in-memory object for AzureFileServiceDataSource.
-
-### [New-AzPurviewdataAzureKeyVaultObject](New-AzPurviewdataAzureKeyVaultObject.md)
-Create an in-memory object for AzureKeyVault.
-
-### [New-AzPurviewdataAzureMySqlCredentialScanObject](New-AzPurviewdataAzureMySqlCredentialScanObject.md)
-Create an in-memory object for AzureMySqlCredentialScan.
-
-### [New-AzPurviewdataAzureMySqlDataSourceObject](New-AzPurviewdataAzureMySqlDataSourceObject.md)
-Create an in-memory object for AzureMySqlDataSource.
-
-### [New-AzPurviewdataAzurePostgreSqlCredentialScanObject](New-AzPurviewdataAzurePostgreSqlCredentialScanObject.md)
-Create an in-memory object for AzurePostgreSqlCredentialScan.
-
-### [New-AzPurviewdataAzurePostgreSqlDataSourceObject](New-AzPurviewdataAzurePostgreSqlDataSourceObject.md)
-Create an in-memory object for AzurePostgreSqlDataSource.
-
-### [New-AzPurviewdataAzureResourceGroupCredentialScanObject](New-AzPurviewdataAzureResourceGroupCredentialScanObject.md)
-Create an in-memory object for AzureResourceGroupCredentialScan.
-
-### [New-AzPurviewdataAzureResourceGroupDataSourceObject](New-AzPurviewdataAzureResourceGroupDataSourceObject.md)
-Create an in-memory object for AzureResourceGroupDataSource.
-
-### [New-AzPurviewdataAzureResourceGroupMsiScanObject](New-AzPurviewdataAzureResourceGroupMsiScanObject.md)
-Create an in-memory object for AzureResourceGroupMsiScan.
-
-### [New-AzPurviewdataAzureSqlDatabaseCredentialScanObject](New-AzPurviewdataAzureSqlDatabaseCredentialScanObject.md)
-Create an in-memory object for AzureSqlDatabaseCredentialScan.
-
-### [New-AzPurviewdataAzureSqlDatabaseDataSourceObject](New-AzPurviewdataAzureSqlDatabaseDataSourceObject.md)
-Create an in-memory object for AzureSqlDatabaseDataSource.
-
-### [New-AzPurviewdataAzureSqlDatabaseManagedInstanceCredentialScanObject](New-AzPurviewdataAzureSqlDatabaseManagedInstanceCredentialScanObject.md)
-Create an in-memory object for AzureSqlDatabaseManagedInstanceCredentialScan.
-
-### [New-AzPurviewdataAzureSqlDatabaseManagedInstanceDataSourceObject](New-AzPurviewdataAzureSqlDatabaseManagedInstanceDataSourceObject.md)
-Create an in-memory object for AzureSqlDatabaseManagedInstanceDataSource.
-
-### [New-AzPurviewdataAzureSqlDatabaseManagedInstanceMsiScanObject](New-AzPurviewdataAzureSqlDatabaseManagedInstanceMsiScanObject.md)
-Create an in-memory object for AzureSqlDatabaseManagedInstanceMsiScan.
-
-### [New-AzPurviewdataAzureSqlDatabaseMsiScanObject](New-AzPurviewdataAzureSqlDatabaseMsiScanObject.md)
-Create an in-memory object for AzureSqlDatabaseMsiScan.
-
-### [New-AzPurviewdataAzureSqlDataWarehouseCredentialScanObject](New-AzPurviewdataAzureSqlDataWarehouseCredentialScanObject.md)
-Create an in-memory object for AzureSqlDataWarehouseCredentialScan.
-
-### [New-AzPurviewdataAzureSqlDataWarehouseDataSourceObject](New-AzPurviewdataAzureSqlDataWarehouseDataSourceObject.md)
-Create an in-memory object for AzureSqlDataWarehouseDataSource.
-
-### [New-AzPurviewdataAzureSqlDataWarehouseMsiScanObject](New-AzPurviewdataAzureSqlDataWarehouseMsiScanObject.md)
-Create an in-memory object for AzureSqlDataWarehouseMsiScan.
-
-### [New-AzPurviewdataAzureStorageCredentialScanObject](New-AzPurviewdataAzureStorageCredentialScanObject.md)
-Create an in-memory object for AzureStorageCredentialScan.
-
-### [New-AzPurviewdataAzureStorageDataSourceObject](New-AzPurviewdataAzureStorageDataSourceObject.md)
-Create an in-memory object for AzureStorageDataSource.
-
-### [New-AzPurviewdataAzureStorageMsiScanObject](New-AzPurviewdataAzureStorageMsiScanObject.md)
-Create an in-memory object for AzureStorageMsiScan.
-
-### [New-AzPurviewdataAzureSubscriptionCredentialScanObject](New-AzPurviewdataAzureSubscriptionCredentialScanObject.md)
-Create an in-memory object for AzureSubscriptionCredentialScan.
-
-### [New-AzPurviewdataAzureSubscriptionDataSourceObject](New-AzPurviewdataAzureSubscriptionDataSourceObject.md)
-Create an in-memory object for AzureSubscriptionDataSource.
-
-### [New-AzPurviewdataAzureSubscriptionMsiScanObject](New-AzPurviewdataAzureSubscriptionMsiScanObject.md)
-Create an in-memory object for AzureSubscriptionMsiScan.
-
-### [New-AzPurviewdataAzureSynapseWorkspaceCredentialScanObject](New-AzPurviewdataAzureSynapseWorkspaceCredentialScanObject.md)
-Create an in-memory object for AzureSynapseWorkspaceCredentialScan.
-
-### [New-AzPurviewdataAzureSynapseWorkspaceDataSourceObject](New-AzPurviewdataAzureSynapseWorkspaceDataSourceObject.md)
-Create an in-memory object for AzureSynapseWorkspaceDataSource.
-
-### [New-AzPurviewdataAzureSynapseWorkspaceMsiScanObject](New-AzPurviewdataAzureSynapseWorkspaceMsiScanObject.md)
-Create an in-memory object for AzureSynapseWorkspaceMsiScan.
-
-### [New-AzPurviewdataCustomClassificationRuleObject](New-AzPurviewdataCustomClassificationRuleObject.md)
-Create an in-memory object for CustomClassificationRule.
-
-### [New-AzPurviewdataFilterObject](New-AzPurviewdataFilterObject.md)
-Create an in-memory object for Filter.
-
-### [New-AzPurviewdataOracleDataSourceObject](New-AzPurviewdataOracleDataSourceObject.md)
-Create an in-memory object for OracleDataSource.
-
-### [New-AzPurviewdataPowerBIDataSourceObject](New-AzPurviewdataPowerBIDataSourceObject.md)
-Create an in-memory object for PowerBIDataSource.
-
-### [New-AzPurviewdataPowerBIDelegatedScanObject](New-AzPurviewdataPowerBIDelegatedScanObject.md)
-Create an in-memory object for PowerBIDelegatedScan.
-
-### [New-AzPurviewdataPowerBIMsiScanObject](New-AzPurviewdataPowerBIMsiScanObject.md)
-Create an in-memory object for PowerBIMsiScan.
-
-### [New-AzPurviewdataRegexClassificationRulePatternObject](New-AzPurviewdataRegexClassificationRulePatternObject.md)
-Create an in-memory object for RegexClassificationRulePattern.
-
-### [New-AzPurviewdataSapEccDataSourceObject](New-AzPurviewdataSapEccDataSourceObject.md)
-Create an in-memory object for SapEccDataSource.
-
-### [New-AzPurviewdataSapS4HanaDataSourceObject](New-AzPurviewdataSapS4HanaDataSourceObject.md)
-Create an in-memory object for SapS4HanaDataSource.
-
-### [New-AzPurviewdataSapS4HanaSapS4HanaCredentialScanObject](New-AzPurviewdataSapS4HanaSapS4HanaCredentialScanObject.md)
-Create an in-memory object for SapS4HanaSapS4HanaCredentialScan.
-
 ### [New-AzPurviewDataSource](New-AzPurviewDataSource.md)
 Creates or Updates a data source
-
-### [New-AzPurviewdataSqlServerDatabaseCredentialScanObject](New-AzPurviewdataSqlServerDatabaseCredentialScanObject.md)
-Create an in-memory object for SqlServerDatabaseCredentialScan.
-
-### [New-AzPurviewdataSqlServerDatabaseDataSourceObject](New-AzPurviewdataSqlServerDatabaseDataSourceObject.md)
-Create an in-memory object for SqlServerDatabaseDataSource.
-
-### [New-AzPurviewdataTeradataDataSourceObject](New-AzPurviewdataTeradataDataSourceObject.md)
-Create an in-memory object for TeradataDataSource.
 
 ### [New-AzPurviewFilter](New-AzPurviewFilter.md)
 Creates or updates a filter
@@ -512,11 +317,17 @@ Creates an instance of a trigger
 ### [New-AzPurviewTriggerObject](New-AzPurviewTriggerObject.md)
 Create an in-memory object for Trigger.
 
+### [Remove-AzPurviewAccount](Remove-AzPurviewAccount.md)
+Deletes an account resource
+
 ### [Remove-AzPurviewClassificationRule](Remove-AzPurviewClassificationRule.md)
 Deletes a classification rule
 
 ### [Remove-AzPurviewDataSource](Remove-AzPurviewDataSource.md)
 Deletes a data source
+
+### [Remove-AzPurviewDefaultAccount](Remove-AzPurviewDefaultAccount.md)
+Removes the default account from the scope.
 
 ### [Remove-AzPurviewKeyVaultConnection](Remove-AzPurviewKeyVaultConnection.md)
 Deletes the key vault connection associated with the account
@@ -530,8 +341,18 @@ Deletes a scan ruleset
 ### [Remove-AzPurviewTrigger](Remove-AzPurviewTrigger.md)
 Deletes the trigger associated with the scan
 
+### [Set-AzPurviewDefaultAccount](Set-AzPurviewDefaultAccount.md)
+Sets the default account for the scope.
+
 ### [Start-AzPurviewScanResultScan](Start-AzPurviewScanResultScan.md)
 Runs the scan
 
 ### [Stop-AzPurviewScanResultScan](Stop-AzPurviewScanResultScan.md)
 Cancels a scan
+
+### [Test-AzPurviewAccountNameAvailability](Test-AzPurviewAccountNameAvailability.md)
+Checks if account name is available.
+
+### [Update-AzPurviewAccount](Update-AzPurviewAccount.md)
+Updates an account
+

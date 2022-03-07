@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Purview-help.xml
 Module Name: Az.Purview
 online version: https://docs.microsoft.com/powershell/module/az.purview/start-azpurviewscanresultscan
 schema: 2.0.0
@@ -15,13 +15,13 @@ Runs the scan
 ### Run (Default)
 ```
 Start-AzPurviewScanResultScan -Endpoint <String> -DataSourceName <String> -RunId <String> -ScanName <String>
- [-ScanLevel <ScanLevelType>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ScanLevel <ScanLevelType>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RunViaIdentity
 ```
 Start-AzPurviewScanResultScan -Endpoint <String> -InputObject <IPurviewdataIdentity>
- [-ScanLevel <ScanLevelType>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ScanLevel <ScanLevelType>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -93,7 +93,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.IPurviewdataIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IPurviewdataIdentity
 Parameter Sets: RunViaIdentity
 Aliases:
 
@@ -123,7 +123,7 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.ScanLevelType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanLevelType
 Parameter Sets: (All)
 Aliases:
 
@@ -185,11 +185,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.IPurviewdataIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IPurviewdataIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20211001Preview.IOperationResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IOperationResponse
 
 ## NOTES
 
@@ -213,4 +213,3 @@ INPUTOBJECT <IPurviewdataIdentity>: Identity Parameter
   - `[Version <Int32?>]`: 
 
 ## RELATED LINKS
-

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Purview-help.xml
 Module Name: Az.Purview
 online version: https://docs.microsoft.com/powershell/module/az.purview/get-azpurviewsystemscanruleset
 schema: 2.0.0
@@ -17,28 +17,28 @@ Get a system scan ruleset for a data source
 Get-AzPurviewSystemScanRuleset -Endpoint <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### Get
+### GetByVersionViaIdentity
 ```
-Get-AzPurviewSystemScanRuleset -Endpoint <String> -DataSourceType <DataSourceType>
+Get-AzPurviewSystemScanRuleset -Endpoint <String> [-DataSourceType <DataSourceType>]
+ -InputObject <IPurviewdataIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetByVersion
+```
+Get-AzPurviewSystemScanRuleset -Endpoint <String> [-DataSourceType <DataSourceType>] -Version <Int32>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### Get1
+### Get
 ```
-Get-AzPurviewSystemScanRuleset -Endpoint <String> -Version <Int32> [-DataSourceType <DataSourceType>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPurviewSystemScanRuleset -Endpoint <String> -DataSourceType <DataSourceType> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzPurviewSystemScanRuleset -Endpoint <String> -InputObject <IPurviewdataIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity1
-```
-Get-AzPurviewSystemScanRuleset -Endpoint <String> -InputObject <IPurviewdataIdentity>
- [-DataSourceType <DataSourceType>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -121,8 +121,20 @@ Get system scanruleset for a data source type and specific version
 .
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.DataSourceType
-Parameter Sets: Get, Get1, GetViaIdentity1
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType
+Parameter Sets: GetByVersionViaIdentity, GetByVersion
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -168,8 +180,8 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.IPurviewdataIdentity
-Parameter Sets: GetViaIdentity, GetViaIdentity1
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IPurviewdataIdentity
+Parameter Sets: GetByVersionViaIdentity, GetViaIdentity
 Aliases:
 
 Required: True
@@ -184,7 +196,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Int32
-Parameter Sets: Get1
+Parameter Sets: GetByVersion
 Aliases:
 
 Required: True
@@ -199,11 +211,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.IPurviewdataIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IPurviewdataIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20211001Preview.ISystemScanRuleset
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ISystemScanRuleset
 
 ## NOTES
 
@@ -227,4 +239,3 @@ INPUTOBJECT <IPurviewdataIdentity>: Identity Parameter
   - `[Version <Int32?>]`: 
 
 ## RELATED LINKS
-

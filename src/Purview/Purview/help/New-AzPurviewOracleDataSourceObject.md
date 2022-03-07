@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Purview-help.xml
 Module Name: Az.Purview
 online version: https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewOracleDataSourceObject
 schema: 2.0.0
@@ -46,7 +46,6 @@ Create Azure Synapse workspace data source object
 
 ### -CollectionReferenceName
 
-
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -60,7 +59,6 @@ Accept wildcard characters: False
 ```
 
 ### -CollectionType
-
 
 ```yaml
 Type: System.String
@@ -76,7 +74,6 @@ Accept wildcard characters: False
 
 ### -Host
 
-
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -91,9 +88,8 @@ Accept wildcard characters: False
 
 ### -Kind
 
-
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.DataSourceType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType
 Parameter Sets: (All)
 Aliases:
 
@@ -105,7 +101,6 @@ Accept wildcard characters: False
 ```
 
 ### -Port
-
 
 ```yaml
 Type: System.String
@@ -120,7 +115,6 @@ Accept wildcard characters: False
 ```
 
 ### -Service
-
 
 ```yaml
 Type: System.String
@@ -141,11 +135,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20211001Preview.OracleDataSource
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.OracleDataSource
 
 ## NOTES
 
 ALIASES
 
 ## RELATED LINKS
-

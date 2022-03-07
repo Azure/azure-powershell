@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Purview-help.xml
 Module Name: Az.Purview
 online version: https://docs.microsoft.com/powershell/module/az.purview/add-azpurviewaccountrootcollectionadmin
 schema: 2.0.0
@@ -14,14 +14,15 @@ Add the administrator for root collection associated with this account.
 
 ### AddExpanded (Default)
 ```
-Add-AzPurviewAccountRootCollectionAdmin -AccountName <String> -ResourceGroupName <String> -ObjectId <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Add-AzPurviewAccountRootCollectionAdmin -AccountName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -ObjectId <String> [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### AddViaIdentityExpanded
 ```
 Add-AzPurviewAccountRootCollectionAdmin -InputObject <IPurviewIdentity> -ObjectId <String>
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -212,4 +213,3 @@ INPUTOBJECT <IPurviewIdentity>: Identity Parameter
   - `[SubscriptionId <String>]`: The subscription identifier
 
 ## RELATED LINKS
-

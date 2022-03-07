@@ -109,22 +109,22 @@ param(
     ${Endpoint},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='Get1')]
-    [Parameter(ParameterSetName='GetViaIdentity1')]
+    [Parameter(ParameterSetName='GetByVersion')]
+    [Parameter(ParameterSetName='GetByVersionViaIdentity')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
     # .
     ${DataSourceType},
 
-    [Parameter(ParameterSetName='Get1', Mandatory)]
+    [Parameter(ParameterSetName='GetByVersion', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Path')]
     [System.Int32]
     # .
     ${Version},
 
+    [Parameter(ParameterSetName='GetByVersionViaIdentity', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='GetViaIdentity1', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IPurviewdataIdentity]
     # Identity Parameter
@@ -188,9 +188,9 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
             Get = 'Az.Purviewdata.private\Get-AzPurviewSystemScanRuleset_Get';
-            Get1 = 'Az.Purviewdata.private\Get-AzPurviewSystemScanRuleset_Get1';
+            GetByVersion = 'Az.Purviewdata.private\Get-AzPurviewSystemScanRuleset_GetByVersion';
+            GetByVersionViaIdentity = 'Az.Purviewdata.private\Get-AzPurviewSystemScanRuleset_GetByVersionViaIdentity';
             GetViaIdentity = 'Az.Purviewdata.private\Get-AzPurviewSystemScanRuleset_GetViaIdentity';
-            GetViaIdentity1 = 'Az.Purviewdata.private\Get-AzPurviewSystemScanRuleset_GetViaIdentity1';
             List = 'Az.Purviewdata.private\Get-AzPurviewSystemScanRuleset_List';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Purview-help.xml
 Module Name: Az.Purview
 online version: https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewSapS4HanaSapS4HanaCredentialScanObject
 schema: 2.0.0
@@ -56,7 +56,6 @@ Create SAPS4 Hana Credential Scan Object
 
 ### -ClientId
 
-
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -70,7 +69,6 @@ Accept wildcard characters: False
 ```
 
 ### -CollectionReferenceName
-
 
 ```yaml
 Type: System.String
@@ -86,7 +84,6 @@ Accept wildcard characters: False
 
 ### -CollectionType
 
-
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -100,7 +97,6 @@ Accept wildcard characters: False
 ```
 
 ### -ConnectedViaReferenceName
-
 
 ```yaml
 Type: System.String
@@ -116,7 +112,6 @@ Accept wildcard characters: False
 
 ### -CredentialReferenceName
 
-
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -131,9 +126,8 @@ Accept wildcard characters: False
 
 ### -CredentialType
 
-
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.CredentialType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType
 Parameter Sets: (All)
 Aliases:
 
@@ -145,7 +139,6 @@ Accept wildcard characters: False
 ```
 
 ### -JCoLibraryPath
-
 
 ```yaml
 Type: System.String
@@ -161,9 +154,8 @@ Accept wildcard characters: False
 
 ### -Kind
 
-
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.ScanAuthorizationType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType
 Parameter Sets: (All)
 Aliases:
 
@@ -175,7 +167,6 @@ Accept wildcard characters: False
 ```
 
 ### -MaximumMemoryAllowedInGb
-
 
 ```yaml
 Type: System.String
@@ -191,7 +182,6 @@ Accept wildcard characters: False
 
 ### -MitiCache
 
-
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -205,7 +195,6 @@ Accept wildcard characters: False
 ```
 
 ### -ScanRulesetName
-
 
 ```yaml
 Type: System.String
@@ -221,9 +210,8 @@ Accept wildcard characters: False
 
 ### -ScanRulesetType
 
-
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.ScanRulesetType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType
 Parameter Sets: (All)
 Aliases:
 
@@ -235,7 +223,6 @@ Accept wildcard characters: False
 ```
 
 ### -Worker
-
 
 ```yaml
 Type: System.Int32
@@ -256,11 +243,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20211001Preview.SapS4HanaSapS4HanaCredentialScan
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SapS4HanaSapS4HanaCredentialScan
 
 ## NOTES
 
 ALIASES
 
 ## RELATED LINKS
-

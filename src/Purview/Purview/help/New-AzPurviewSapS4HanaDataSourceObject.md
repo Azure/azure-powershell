@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Purview-help.xml
 Module Name: Az.Purview
 online version: https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewSapS4HanaDataSourceObject
 schema: 2.0.0
@@ -45,7 +45,6 @@ Create SAPS4 data source object
 
 ### -ApplicationServer
 
-
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -59,7 +58,6 @@ Accept wildcard characters: False
 ```
 
 ### -CollectionReferenceName
-
 
 ```yaml
 Type: System.String
@@ -75,7 +73,6 @@ Accept wildcard characters: False
 
 ### -CollectionType
 
-
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -90,9 +87,8 @@ Accept wildcard characters: False
 
 ### -Kind
 
-
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.DataSourceType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType
 Parameter Sets: (All)
 Aliases:
 
@@ -104,7 +100,6 @@ Accept wildcard characters: False
 ```
 
 ### -SystemNumber
-
 
 ```yaml
 Type: System.String
@@ -125,11 +120,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20211001Preview.SapS4HanaDataSource
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SapS4HanaDataSource
 
 ## NOTES
 
 ALIASES
 
 ## RELATED LINKS
-
