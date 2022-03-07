@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 if (!string.Equals(newEncryptionKeyWrapMetadata.Type, "AZURE_KEY_VAULT"))
                 {
-                    throw new ArgumentException("Provider cannot be changed during rewrap operations.");
+                    throw new ArgumentException("Provider or Resolver type cannot be changed during rewrap operations.");
                 }
 
                 // get the token credential for key vault audience.
