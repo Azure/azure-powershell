@@ -26,9 +26,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Support
         /// </returns>
         public global::System.Collections.Generic.IEnumerable<global::System.Management.Automation.CompletionResult> CompleteArgument(global::System.String commandName, global::System.String parameterName, global::System.String wordToComplete, global::System.Management.Automation.Language.CommandAst commandAst, global::System.Collections.IDictionary fakeBoundParameters)
         {
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "INGRESS, EGRESS, BIDIRECTIONAL".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "INGRESS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("'INGRESS, EGRESS, BIDIRECTIONAL'", "INGRESS, EGRESS, BIDIRECTIONAL", global::System.Management.Automation.CompletionResultType.ParameterValue, "INGRESS, EGRESS, BIDIRECTIONAL");
+                yield return new global::System.Management.Automation.CompletionResult("'INGRESS'", "INGRESS", global::System.Management.Automation.CompletionResultType.ParameterValue, "INGRESS");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "EGRESS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'EGRESS'", "EGRESS", global::System.Management.Automation.CompletionResultType.ParameterValue, "EGRESS");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "BIDIRECTIONAL".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'BIDIRECTIONAL'", "BIDIRECTIONAL", global::System.Management.Automation.CompletionResultType.ParameterValue, "BIDIRECTIONAL");
             }
         }
     }

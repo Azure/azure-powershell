@@ -24,9 +24,9 @@ Restore a deleted workspace.
 
 ### Example 1
 ```powershell
-PS C:\> $workspace = New-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation
-PS C:\> $workspace | Remove-AzOperationalInsightsWorkspace
-PS C:\> $workspace = Restore-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation
+$workspace = New-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation
+$workspace | Remove-AzOperationalInsightsWorkspace
+$workspace = Restore-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation
 ```
 
 Restore deleted workspace.

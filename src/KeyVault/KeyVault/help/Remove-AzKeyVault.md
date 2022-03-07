@@ -64,8 +64,10 @@ Note that although specifying the resource group is optional for this cmdlet, yo
 
 ### Example 1: Remove a key vault
 ```powershell
-PS C:\> Remove-AzKeyVault -VaultName "Contoso03Vault" -PassThru
+Remove-AzKeyVault -VaultName "Contoso03Vault" -PassThru
+```
 
+```output
 True
 ```
 
@@ -73,8 +75,10 @@ This command removes the key vault named Contoso03Vault from your current subscr
 
 ### Example 2: Remove a key vault from a specified resource group
 ```powershell
-PS C:\> Remove-AzKeyVault -Name "Contoso03Vault" -ResourceGroupName "Group14" -PassThru
+Remove-AzKeyVault -Name "Contoso03Vault" -ResourceGroupName "Group14" -PassThru
+```
 
+```output
 True
 ```
 

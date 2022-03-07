@@ -34,8 +34,10 @@ For example, if user wants to restore the database account to a timestamp when a
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCosmosDBSqlRestorableContainer -Location {location} -DatabaseAccountInstanceId {DatabaseAccountInstanceIdInstanceId} -DatabaseRId {DatabaseRId}
+Get-AzCosmosDBSqlRestorableContainer -Location {location} -DatabaseAccountInstanceId {DatabaseAccountInstanceIdInstanceId} -DatabaseRId {DatabaseRId}
+```
 
+```output
 Id              : /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts
                     /{DatabaseAccountInstanceIdInstanceId}/restorableSqlContainers/6a0cb3e4-7d2b-4363-b585-04a3b14ada8c
 Name            : 6a0cb3e4-7d2b-4363-b585-04a3b14ada8c

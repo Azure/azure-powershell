@@ -41,8 +41,10 @@ Operation to update a lab resource.
 
 ### Example 1: Update existing lab.
 ```powershell
-PS C:\> Update-AzLabServicesLab -ResourceGroupName "Group Name" -Name "Lab Name" -AutoShutdownProfileShutdownOnDisconnect Enabled -AutoShutdownProfileDisconnectDelay "00:25:00"
+Update-AzLabServicesLab -ResourceGroupName "Group Name" -Name "Lab Name" -AutoShutdownProfileShutdownOnDisconnect Enabled -AutoShutdownProfileDisconnectDelay "00:25:00"
+```
 
+```output
 Location Name
 -------- ----
 westus2  Lab Name

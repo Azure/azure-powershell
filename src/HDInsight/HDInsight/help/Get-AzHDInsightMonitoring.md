@@ -23,36 +23,44 @@ The **Get-AzHDInsightMonitoring** cmdlet gets the status of the Classic Azure Mo
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Get-AzHDInsightMonitoring -Name testcluster
 ```
-PS C:\> Get-AzHDInsightMonitoring -Name testcluster
 
+```output
 {'ClusterMonitoringEnabled':'true', 'workspaceId':'1d364e89-bb71-4503-aa3d-a23535aea7bd'}
 ```
 
 Monitoring is enabled on the cluster because the ClusterMonitoringEnabled property is true. The monitoring workspace id where the logs are flowing is 1d364e89-bb71-4503-aa3d-a23535aea7bd
 
 ### Example 2
+```powershell
+Get-AzHDInsightMonitoring -Name testcluster -ResourceGroupName testrg
 ```
-PS C:\> Get-AzHDInsightMonitoring -Name testcluster -ResourceGroupName testrg
 
+```output
 {'ClusterMonitoringEnabled':'true', 'workspaceId':'1d364e89-bb71-4503-aa3d-a23535aea7bd'}
 ```
 
 Monitoring is enabled on the cluster because the ClusterMonitoringEnabled property is true. The monitoring workspace id where the logs are flowing is 1d364e89-bb71-4503-aa3d-a23535aea7bd
 
 ### Example 3
+```powershell
+Get-AzHDInsightMonitoring -Name testcluster
 ```
-PS C:\> Get-AzHDInsightMonitoring -Name testcluster
 
+```output
 {'ClusterMonitoringEnabled':'false', 'workspaceId': null}
 ```
 
 Monitoring is disabled on the cluster because the ClusterMonitoringEnabled property is false.
 
 ### Example 4
+```powershell
+Get-AzHDInsightMonitoring -Name testcluster -ResourceGroupName testrg
 ```
-PS C:\> Get-AzHDInsightMonitoring -Name testcluster -ResourceGroupName testrg
 
+```output
 {'ClusterMonitoringEnabled':'false', 'workspaceId': null}
 ```
 

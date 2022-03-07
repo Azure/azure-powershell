@@ -38,9 +38,9 @@ The **Set-AzApplicationGatewayRequestRoutingRule** cmdlet modifies a request rou
 ## EXAMPLES
 
 ### Example 1: Update a request routing rule
-```
-PS C:\>$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> $AppGw = Set-AzApplicationGatewayRequestRoutingRule -ApplicationGateway $AppGw -Name "Rule01" -RuleType Basic -Priority 100 -BackendHttpSettings $Setting -HttpListener $Listener -BackendAddressPool $Pool
+```powershell
+$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+$AppGw = Set-AzApplicationGatewayRequestRoutingRule -ApplicationGateway $AppGw -Name "Rule01" -RuleType Basic -Priority 100 -BackendHttpSettings $Setting -HttpListener $Listener -BackendAddressPool $Pool
 ```
 
 The first command gets the application gateway named ApplicationGateway01 and stores it in the $AppGw variable.

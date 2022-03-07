@@ -36,8 +36,8 @@ The **Remove-AzNetAppFilesAccount** cmdlet deletes an ANF account.
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\>Remove-AzNetAppFilesAccount -ResourceGroupName "MyRG" -Name "MyAnfAccount"
+```powershell
+Remove-AzNetAppFilesAccount -ResourceGroupName "MyRG" -Name "MyAnfAccount"
 ```
 
 This command deletes the ANF account "MyAnfAccount".

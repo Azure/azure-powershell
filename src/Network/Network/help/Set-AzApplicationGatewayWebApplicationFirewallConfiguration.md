@@ -28,9 +28,9 @@ The **Set-AzApplicationGatewayWebApplicationFirewallConfiguration** cmdlet modif
 ## EXAMPLES
 
 ### Example 1: Update the application gateway web application firewall configuration
-```
-PS C:\> $AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> Set-AzApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGateway $AppGw -Enabled $True -FirewallMode "Detection" -RuleSetType "OWASP" -RuleSetVersion "3.0"
+```powershell
+$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+Set-AzApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGateway $AppGw -Enabled $True -FirewallMode "Detection" -RuleSetType "OWASP" -RuleSetVersion "3.0"
 ```
 
 The first command gets the application gateway named ApplicationGateway01 and then stores it in the $AppGw variable.

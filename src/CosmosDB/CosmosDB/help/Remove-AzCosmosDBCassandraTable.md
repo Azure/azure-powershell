@@ -32,7 +32,7 @@ The **Remove-AzCosmosDBCassandraTable** delete a CosmosDB Cassandra Table.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzCosmosDBCassandraTable -ResourceGroupName {resourceGroup} -AccountName {account} -KeyspaceName {keyspace} -Name {tableName}
+Remove-AzCosmosDBCassandraTable -ResourceGroupName {resourceGroup} -AccountName {account} -KeyspaceName {keyspace} -Name {tableName}
 ```
 
 The cmdlet returns an object of type bool(when -PassThru is passed) which is true, if the delete was successful.

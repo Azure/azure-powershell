@@ -29,11 +29,11 @@ The **Get-AzUserAssignedIdentity** gets existing user assigned identities.
 ## EXAMPLES
 
 ### Example 1
-This example cmdlet gets the User Assigned Identity with name **ID1** under the resource group **PSRG**
-
 ```powershell
-PS C:\> Get-AzUserAssignedIdentity -ResourceGroupName PSRG -Name ID1
+Get-AzUserAssignedIdentity -ResourceGroupName PSRG -Name ID1
+```
 
+```output
 Id                : /subscriptions/586d0246-0344-49dc-a790-59c916b0c309/resourcegroups/PSRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1
 
 ResourceGroupName : PSRG
@@ -52,13 +52,14 @@ ClientSecretUrl   : https://control-westus.identity.azure.net/subscriptions/586d
 
 Type              : Microsoft.ManagedIdentity/userAssignedIdentities
 ```
+This example cmdlet gets the User Assigned Identity with name **ID1** under the resource group **PSRG**
 
 ### Example 2
-This example cmdlet gets all the User Assigned Identities under the resource group **PSRG**
-
 ```powershell
-PS C:\> Get-AzUserAssignedIdentity -ResourceGroupName PSRG
+Get-AzUserAssignedIdentity -ResourceGroupName PSRG
+```
 
+```output
 Id                : /subscriptions/586d0246-0344-49dc-a790-59c916b0c309/resourcegroups/PSRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1
 
 ResourceGroupName : PSRG
@@ -96,13 +97,14 @@ ClientSecretUrl   : https://control-westus.identity.azure.net/subscriptions/586d
 
 Type              : Microsoft.ManagedIdentity/userAssignedIdentities
 ```
+This example cmdlet gets all the User Assigned Identities under the resource group **PSRG**
 
 ### Example 3
-This example cmdlet gets all the User Assigned Identities under the subscription.
-
 ```powershell
-PS C:\> Get-AzUserAssignedIdentity
+Get-AzUserAssignedIdentity
+```
 
+```output
 Id                : /subscriptions/586d0246-0344-49dc-a790-59c916b0c309/resourcegroups/PSRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1
 
 ResourceGroupName : PSRG
@@ -159,6 +161,7 @@ ClientSecretUrl   : https://control-westus.identity.azure.net/subscriptions/586d
 
 Type              : Microsoft.ManagedIdentity/userAssignedIdentities
 ```
+This example cmdlet gets all the User Assigned Identities under the subscription.
 
 ## PARAMETERS
 

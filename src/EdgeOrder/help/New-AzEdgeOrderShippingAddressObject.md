@@ -25,10 +25,12 @@ Create an in-memory object for ShippingAddress.
 
 ### Example 1: Creates shipping address object
 ```powershell
-PS C:\> $ShippingDetails = New-AzEdgeOrderShippingAddressObject -StreetAddress1 "101 TOWNSEND ST" -StateOrProvince "CA" -Country "US" -City "San Francisco" -PostalCode "94107" -AddressType "Commercial"
+$ShippingDetails = New-AzEdgeOrderShippingAddressObject -StreetAddress1 "101 TOWNSEND ST" -StateOrProvince "CA" -Country "US" -City "San Francisco" -PostalCode "94107" -AddressType "Commercial"
 
 $ShippingDetails | fl
+```
 
+```output
 AddressType     : Commercial
 City            : San Francisco
 CompanyName     :

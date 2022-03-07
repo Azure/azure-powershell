@@ -58,7 +58,7 @@ $hourlySchedule = @{
         Minute = 1
         SnapshotsToKeep = 3
     }
-PS C:\> Update-AzNetAppFilesSnapshotPolicy -ResourceGroupName "MyRG" -AccountName "MyAccount" -Name "MySnapshotPolicy" -HourlySchedule $hourlySchedule
+Update-AzNetAppFilesSnapshotPolicy -ResourceGroupName "MyRG" -AccountName "MyAccount" -Name "MySnapshotPolicy" -HourlySchedule $hourlySchedule
 ```
 
 This command changes the ANF backup policy "MySnapshotPolicy" to have the given HourlySchedule.

@@ -24,8 +24,8 @@ The **Get-AzRedisCachePatchSchedule** cmdlet gets a patch schedule for a cache i
 ## EXAMPLES
 
 ### Example 1: Get the patch schedule
-```
-PS C:\>Get-AzRedisCachePatchSchedule -ResourceGroupName "ResourceGroup13" -Name "RedisCache06"
+```powershell
+Get-AzRedisCachePatchSchedule -ResourceGroupName "ResourceGroup13" -Name "RedisCache06"
 ```
 
 This command gets the patch schedule from the cache named RedisCache06.

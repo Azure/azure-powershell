@@ -39,11 +39,11 @@ The **Update-AzNetAppFilesAccount** cmdlet modifies an ANF account.
 ## EXAMPLES
 
 ### Example 1 : Updates an ANF account
+```powershell
+Update-AzNetAppFilesAccount -ResourceGroupName "MyRG" -l "westus2" -Name "MyAnfAccount" -Tag @{'Tag1' = 'Value1'}
 ```
-PS C:\>Update-AzNetAppFilesAccount -ResourceGroupName "MyRG" -l "westus2" -Name "MyAnfAccount" -Tag @{'Tag1' = 'Value1'}
 
-Output:
-
+```output
 Location          : westus2
 Id                : /subscriptions/subsId/resourceGroups/MyRG/providers/Microsoft.NetApp/netAppAccounts/MyAnfAccount
 Name              : MyAnfAccount

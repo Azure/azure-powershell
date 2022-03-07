@@ -25,7 +25,10 @@ The **New-AzDataBoxEdgeStorageAccountCredential** cmdlet creates a new edge stor
 
 ### Example 1
 ```powershell
-PS C:\> New-AzDataBoxEdgeStorageAccountCredential -ResourceGroupName resourceGroupName -DeviceName device-name -Name storage-acount-credential-name -StorageAccountName storageAccountName -StorageAccountType BlobStorage -StorageAccountAccessKey @SecureString -EncryptionKey @SecureString
+New-AzDataBoxEdgeStorageAccountCredential -ResourceGroupName resourceGroupName -DeviceName device-name -Name storage-acount-credential-name -StorageAccountName storageAccountName -StorageAccountType BlobStorage -StorageAccountAccessKey @SecureString -EncryptionKey @SecureString
+```
+
+```output
 Name                             StorageAccount    SslStatus  ResourceGroupName
 --------------------------- ---------------------- ---------- ---------------------
 storageAccountCredentalName storageAccountName     Enabled    resourceGroupName

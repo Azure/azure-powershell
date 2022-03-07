@@ -24,10 +24,10 @@ The **Add-AzApplicationGatewayAuthenticationCertificate** cmdlet adds an authent
 ## EXAMPLES
 
 ### Example 1: Add authentication certificate to an application gateway
-```
-PS C:\> $appgw = Get-AzApplicationGateway -ResourceGroupName "rg" -Name "appGwName"
-PS C:\> $appgw = Add-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $appgw -Name "cert01" -CertificateFile "C:\cert.cer"
-PS C:\> $appgw = Set-AzApplicationGateway -ApplicationGateway $appgw
+```powershell
+$appgw = Get-AzApplicationGateway -ResourceGroupName "rg" -Name "appGwName"
+$appgw = Add-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $appgw -Name "cert01" -CertificateFile "C:\cert.cer"
+$appgw = Set-AzApplicationGateway -ApplicationGateway $appgw
 ```
 
 The first command gets an application gateway named appGwName and stores it in $appgw variable.
