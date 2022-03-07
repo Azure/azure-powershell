@@ -16,16 +16,14 @@ Creates a new CosmosDB Client Encryption Key.
 ```
 New-AzCosmosDbClientEncryptionKey -ResourceGroupName <String> -AccountName <String> -DatabaseName <String>
  -ClientEncryptionKeyName <String> -EncryptionAlgorithmName <String> -KeyWrapMetadata <PSSqlKeyWrapMetadata>
- [-WrappedDataEncryptionKey <Byte[]>] [-IsAzureKeyVaultKeyStoreProvider <Boolean>]
- [-EncryptionKeyStoreProvider <EncryptionKeyStoreProvider>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-IKeyEncryptionKeyResolver <IKeyEncryptionKeyResolver>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
 New-AzCosmosDbClientEncryptionKey -ClientEncryptionKeyName <String> -EncryptionAlgorithmName <String>
- -KeyWrapMetadata <PSSqlKeyWrapMetadata> [-WrappedDataEncryptionKey <Byte[]>]
- [-IsAzureKeyVaultKeyStoreProvider <Boolean>] [-EncryptionKeyStoreProvider <EncryptionKeyStoreProvider>]
+ -KeyWrapMetadata <PSSqlKeyWrapMetadata> [-IKeyEncryptionKeyResolver <IKeyEncryptionKeyResolver>]
  -ParentObject <PSSqlDatabaseGetResults> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -122,11 +120,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EncryptionKeyStoreProvider
-Specifies if KeyStoreProvider is of type AzureKeyVaultKeyStoreProvider
+### -IKeyEncryptionKeyResolver
+IKeyEncryptionKeyResolver interface of type Azure.Core.Cryptography.IKeyEncryptionKeyResolver
 
 ```yaml
-Type: Microsoft.Data.Encryption.Cryptography.EncryptionKeyStoreProvider
+Type: Azure.Core.Cryptography.IKeyEncryptionKeyResolver
 Parameter Sets: (All)
 Aliases:
 
@@ -134,21 +132,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -IsAzureKeyVaultKeyStoreProvider
-Specifies if KeyStoreProvider is of type AzureKeyVaultKeyStoreProvider
-
-```yaml
-Type: System.Boolean
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -194,21 +177,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WrappedDataEncryptionKey
-WrappedDataEncryptionKey Object of type System.Byte
-
-```yaml
-Type: System.Byte[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
