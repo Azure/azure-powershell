@@ -23,7 +23,7 @@ Get-AzPurviewSystemScanRuleset -Endpoint <String> -DataSourceType <DataSourceTyp
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### Get1
+### GetByVersion
 ```
 Get-AzPurviewSystemScanRuleset -Endpoint <String> -Version <Int32> [-DataSourceType <DataSourceType>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -156,7 +156,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Int32
-Parameter Sets: Get1
+Parameter Sets: GetByVersion
 Aliases:
 
 Required: True
