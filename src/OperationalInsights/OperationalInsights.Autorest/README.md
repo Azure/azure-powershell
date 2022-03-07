@@ -30,7 +30,7 @@ For information on how to develop for `Az.OperationalInsights`, see [how-to.md](
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: main
+branch: 11126e93093e14fa30fd2bf314cc3992a6b1c4f1 
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
