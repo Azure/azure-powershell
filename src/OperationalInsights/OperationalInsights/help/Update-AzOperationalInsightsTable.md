@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzOperationalInsightsTable
 
 ## SYNOPSIS
-Update an existing table
+Update an existing table resource
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Update-AzOperationalInsightsTable [-ResourceGroupName] <String> [-WorkspaceName]
 ```
 
 ## DESCRIPTION
-Update an existing table
+Update an existing table's configurable properties. 
 
 ## EXAMPLES
 
