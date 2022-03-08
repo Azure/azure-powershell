@@ -1,9 +1,7 @@
 ### Example 1: List all deleted workspaces for a given resource group
 ```powershell
 Get-AzOperationalInsightsDeletedWorkspace -ResourceGroupName {RG-Name}
-```
 
-```output
 Name                            : {WS-Name1}
 ResourceId                      : /subscriptions/{SUB-id}/resourcegroups/{RG-Name}/providers/microsoft.operationalinsights/workspaces/{WS-Name1}
 ResourceGroupName               : {RG-Name}
@@ -43,11 +41,13 @@ CreatedDate                     : Tue, 12 Jan 2021 11:25:15 GMT
 ModifiedDate                    : Wed, 19 Jan 2022 20:50:32 GMT
 ForceCmkForQuery                :
 WorkspaceFeatures               : Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures
+```
+
+{Please add a description here}
 
 ### Example 2: Get a deleted workspace by resorce group and name
 ```powershell
 Get-AzOperationalInsightsDeletedWorkspace -ResourceGroupName {RG-Name} -Name {WS-Name1}
-```
 
 Name                            : {WS-Name1}
 ResourceId                      : /subscriptions/{SUB-id}/resourcegroups/{RG-Name}/providers/microsoft.operationalinsights/workspaces/{WS-Name1}
@@ -68,3 +68,6 @@ CreatedDate                     : Tue, 12 Jan 2021 11:25:15 GMT
 ModifiedDate                    : Wed, 19 Jan 2022 20:50:32 GMT
 ForceCmkForQuery                :
 WorkspaceFeatures               : Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures
+```
+
+{Please add a description here}
