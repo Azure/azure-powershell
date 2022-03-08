@@ -26,19 +26,13 @@ The **New-AzStackEdgeUser** cmdlet creates a new user for the Stack Edge device.
 ### Example 1
 ```powershell
 New-AzStackEdgeUser -ResourceGroupName resourceGroupName -DeviceName deviceName -Name username -Password password-secured-string -EncryptionKey encryption-key
- ```
 
-```output
 User name   Type  ResourceGroupName DeviceName
 ---------   ----  ----------------- ----------
 username    Share resourceGroupName deviceName
-```
 
-```powershell
 New-AzStackEdgeUser -ResourceGroupName resourceGroupName -DeviceName deviceName -Name username -Password password-secured-string -EncryptionKey encryption-key -Type Share
-```
 
-```output
 User name   Type  ResourceGroupName DeviceName
 ---------   ----  ----------------- ----------
 username    Share resourceGroupName deviceName

@@ -41,7 +41,7 @@ The **Get-AzStackEdgeStorageAccount** cmdlet gets the Edge Storage accounts avai
 
 ## EXAMPLES
 
-### Example 2
+### Example 1
 ```powershell
 Get-AzStackEdgeStorageAccount -ResourceGroupName rgpName -DeviceName db-edge -Name edgestoragegacount1
 ```
