@@ -43,9 +43,9 @@ ForceCmkForQuery                :
 WorkspaceFeatures               : Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures
 ```
 
-{Please add a description here}
+Get all deleted workspaces for a given resource group
 
-### Example 2: Get a deleted workspace by resorce group and name
+### Example 2: Get a deleted workspace by resource group and name
 ```powershell
 Get-AzOperationalInsightsDeletedWorkspace -ResourceGroupName {RG-Name} -Name {WS-Name1}
 
@@ -70,4 +70,4 @@ ForceCmkForQuery                :
 WorkspaceFeatures               : Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures
 ```
 
-{Please add a description here}
+Get a specific deleted workspace  by resource group and name

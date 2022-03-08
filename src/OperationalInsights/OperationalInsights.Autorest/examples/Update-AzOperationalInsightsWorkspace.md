@@ -10,7 +10,7 @@ PS C:\> $workspace.RetentionInDay
 42
 ```
 
-{{ Add description here }}
+Update a custom property - retention for a workspace
 
 ### Example 2: Update a workspace that does not exist
 ```powershell

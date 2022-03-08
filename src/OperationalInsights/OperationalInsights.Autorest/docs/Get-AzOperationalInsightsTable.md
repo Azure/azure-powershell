@@ -70,7 +70,7 @@ Gets a Log Analytics workspace table.
 ### Example 1: List tables for a given workspace name
 ```powershell
 Get-AzOperationalInsightsTable -ResourceGroupName {RG-Name} -WorkspaceName {WS-Name}
-```
+
 
 Name                                         Id                                                                                                                                                                                                      RetentionInDays
 ----                                         --                                                                                                                                                                                                      ---------------
@@ -79,9 +79,8 @@ BlockchainProxyLog                           /subscriptions/{SUB-id}/resourcegro
 BlockchainApplicationLog                     /subscriptions/{SUB-id}/resourcegroups/{RG-Name}/providers/Microsoft.OperationalInsights/workspaces/{WS-Name}/tables/BlockchainApplicationLog                                  30
 AADDomainServicesAccountLogon                /subscriptions/{SUB-id}/resourcegroups/{RG-Name}/providers/Microsoft.OperationalInsights/workspaces/{WS-Name}/tables/AADDomainServicesAccountLogon                             30
 AADDomainServicesAccountManagement           /subscriptions/{SUB-id}/resourcegroups/{RG-Name}/providers/Microsoft.OperationalInsights/workspaces/{WS-Name}/tables/AADDomainServicesAccountManagement                        30
-.
-.
-.
+
+```
 
 ### Example 2: Get a table by name
 ```powershell
