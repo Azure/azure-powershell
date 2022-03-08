@@ -93,4 +93,16 @@ directive:
       verb: Get
       subject: ActiveApplication
     remove: true
+  - where:
+      verb: Get
+      subject: PrivateLinkResource
+    remove: true
+  - where:
+      verb: Get
+      subject: PrivateEndpointConnection
+    remove: true
+  - where:
+      verb: Remove
+      subject: PrivateEndpointConnection
+    remove: true
 ```

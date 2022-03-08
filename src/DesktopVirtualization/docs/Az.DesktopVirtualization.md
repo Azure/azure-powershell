@@ -35,12 +35,6 @@ Registration token of the host pool.
 ### [Get-AzWvdMsixPackage](Get-AzWvdMsixPackage.md)
 Get a msixpackage.
 
-### [Get-AzWvdPrivateEndpointConnection](Get-AzWvdPrivateEndpointConnection.md)
-Get a private endpoint connection.
-
-### [Get-AzWvdPrivateLinkResource](Get-AzWvdPrivateLinkResource.md)
-List the private link resources available for this hostpool.
-
 ### [Get-AzWvdRegistrationInfo](Get-AzWvdRegistrationInfo.md)
 Get the Windows virtual desktop registration info.
 
@@ -94,9 +88,6 @@ Remove a host pool.
 
 ### [Remove-AzWvdMsixPackage](Remove-AzWvdMsixPackage.md)
 Remove an MSIX Package.
-
-### [Remove-AzWvdPrivateEndpointConnection](Remove-AzWvdPrivateEndpointConnection.md)
-Remove a connection.
 
 ### [Remove-AzWvdRegistrationInfo](Remove-AzWvdRegistrationInfo.md)
 Remove the Windows virtual desktop registration info.
