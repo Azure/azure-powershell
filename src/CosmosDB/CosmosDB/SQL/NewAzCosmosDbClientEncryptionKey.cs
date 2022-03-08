@@ -27,6 +27,7 @@ using Azure.Core.Cryptography;
 using Microsoft.Rest.Azure;
 using System.Security.Cryptography;
 using Azure.Security.KeyVault.Keys.Cryptography;
+using Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Exceptions;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
@@ -47,8 +48,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public string DatabaseName { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = Constants.ClientEncryptionKeyName)]
+        [Alias(Constants.ClientEncryptionKeyNameAlias)]
         [ValidateNotNullOrEmpty]
-        public string ClientEncryptionKeyName { get; set; }
+        public string Name { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = Constants.EncryptionAlgorithmName)]
         [ValidateNotNullOrEmpty]
@@ -89,7 +91,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             ClientEncryptionKeyGetResults readClientEncryptionKeyGetResults = null;
             try
             {
-                readClientEncryptionKeyGetResults = CosmosDBManagementClient.SqlResources.GetClientEncryptionKey(ResourceGroupName, AccountName, DatabaseName, ClientEncryptionKeyName);
+                readClientEncryptionKeyGetResults = CosmosDBManagementClient.SqlResources.GetClientEncryptionKey(ResourceGroupName, AccountName, DatabaseName, Name);
             }
             catch (CloudException e)
             {
@@ -101,7 +103,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (readClientEncryptionKeyGetResults != null)
             {
-                //throw new ConflictingResourceException(message: string.Format(ExceptionMessage.Conflict, ClientEncryptionKeyName));
+                throw new ConflictingResourceException(message: string.Format(ExceptionMessage.Conflict, Name));
             }
             
             if (string.Equals(encryptionKeyWrapMetadata.Type, "AZURE_KEY_VAULT"))
@@ -134,7 +136,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             ClientEncryptionKeyResource clientEncryptionKeyResource = new ClientEncryptionKeyResource
             {
-                Id = ClientEncryptionKeyName,
+                Id = Name,
                 EncryptionAlgorithm = EncryptionAlgorithmName,
                 KeyWrapMetadata = encryptionKeyWrapMetadata,
                 WrappedDataEncryptionKey = wrappedDataEncryptionKey
@@ -145,9 +147,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 Resource = clientEncryptionKeyResource
             };
 
-            if (ShouldProcess(ClientEncryptionKeyName, "Creating a new CosmosDB Client Encryption Key"))
+            if (ShouldProcess(Name, "Creating a new CosmosDB Client Encryption Key"))
             {
-                ClientEncryptionKeyGetResults clientEncryptionKeyGetResults = CosmosDBManagementClient.SqlResources.CreateUpdateClientEncryptionKeyWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName, ClientEncryptionKeyName, clientEncryptionKeyCreateUpdateParameters).GetAwaiter().GetResult().Body;
+                ClientEncryptionKeyGetResults clientEncryptionKeyGetResults = CosmosDBManagementClient.SqlResources.CreateUpdateClientEncryptionKeyWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName, Name, clientEncryptionKeyCreateUpdateParameters).GetAwaiter().GetResult().Body;
                 WriteObject(new PSSqlClientEncryptionKeyGetResults(clientEncryptionKeyGetResults));
             }
 

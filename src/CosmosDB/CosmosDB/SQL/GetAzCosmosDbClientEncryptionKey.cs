@@ -40,8 +40,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.ClientEncryptionKeyName)]
+        [Alias(Constants.ClientEncryptionKeyNameAlias)]
         [ValidateNotNullOrEmpty]
-        public string ClientEncryptionKeyName { get; set; }
+        public string Name { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.SqlDatabaseObjectHelpMessage)]
         [ValidateNotNull]
@@ -57,9 +58,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 AccountName = ResourceIdentifierExtensions.GetDatabaseAccountName(resourceIdentifier);
             }
 
-            if (!string.IsNullOrEmpty(ClientEncryptionKeyName))
+            if (!string.IsNullOrEmpty(Name))
             {
-                ClientEncryptionKeyGetResults clientEncryptionKeyGetResults = CosmosDBManagementClient.SqlResources.GetClientEncryptionKeyWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName, ClientEncryptionKeyName).GetAwaiter().GetResult().Body;
+                ClientEncryptionKeyGetResults clientEncryptionKeyGetResults = CosmosDBManagementClient.SqlResources.GetClientEncryptionKeyWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName, Name).GetAwaiter().GetResult().Body;
                 WriteObject(new PSSqlClientEncryptionKeyGetResults(clientEncryptionKeyGetResults));
             }
             else
