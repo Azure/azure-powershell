@@ -32,8 +32,9 @@ Rotate the NSX-T Manager password
 
 ### Example 1: Rotate the NSX-T Manager password
 ```powershell
-PS C:\> New-AzVMwarePrivateCloudNsxtPassword -ResourceGroupName azps_test_group -PrivateCloudName azps_test_cloud -PassThru
-
+New-AzVMwarePrivateCloudNsxtPassword -ResourceGroupName azps_test_group -PrivateCloudName azps_test_cloud -PassThru
+```
+```output
 True
 ```
 
