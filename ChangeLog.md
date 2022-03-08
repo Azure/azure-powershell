@@ -276,6 +276,24 @@
 #### Az.Storage
 * Fixed the failure of sync copy blob with long destination blob name [#16628]
     -  'Copy-AzStorageBlob' 
+* Supported AAD oauth storage context in storage table cmdlets.
+    - `Get-AzStorageCORSRule`
+    - `Get-AzStorageServiceLoggingProperty`
+    - `Get-AzStorageServiceMetricsProperty`
+    - `Get-AzStorageServiceProperty`
+    - `Get-AzStorageTable`
+    - `Get-AzStorageTableStoredAccessPolicy`
+    - `New-AzStorageTable`
+    - `New-AzStorageTableSASToken`
+    - `New-AzStorageTableStoredAccessPolicy`
+    - `Remove-AzStorageCORSRule`
+    - `Remove-AzStorageTableStoredAccessPolicy`
+    - `Set-AzStorageCORSRule`
+    - `Set-AzStorageServiceLoggingProperty`
+    - `Set-AzStorageServiceMetricsProperty`
+    - `Set-AzStorageServiceProperty`
+    - `Set-AzStorageTable`
+    - `Set-AzStorageTableStoredAccessPolicy`
 
 #### Az.Synapse
 * General availability of Az.Synapse
