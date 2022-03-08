@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Update-AzOperationalInsightsTable
+# Set-AzOperationalInsightsTable
 
 ## SYNOPSIS
 Update an existing table resource
@@ -13,7 +13,7 @@ Update an existing table resource
 ## SYNTAX
 
 ```
-Update-AzOperationalInsightsTable [-ResourceGroupName] <String> [-WorkspaceName] <String> [-TableName] <String>
+Set-AzOperationalInsightsTable [-ResourceGroupName] <String> [-WorkspaceName] <String> [-TableName] <String>
  [[-RetentionInDays] <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -25,7 +25,7 @@ Update an existing table's configurable properties.
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzOperationalInsightsTable -ResourceGroupName {RG-name} -WorkspaceName {WS-name} -TableName {Table-Name} -RetentionInDays {int_value}
+PS C:\> Set-AzOperationalInsightsTable -ResourceGroupName {RG-name} -WorkspaceName {WS-name} -TableName {Table-Name} -RetentionInDays {int_value}
 
 Name      Id                                                                                                                                                                   RetentionInDays
 ----      --                                                                                                                                                                   ---------------
