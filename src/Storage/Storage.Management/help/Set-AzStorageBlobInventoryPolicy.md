@@ -124,7 +124,7 @@ $policy = Set-AzStorageBlobInventoryPolicy -ResourceGroupName $resourceGroupName
             })
 
 
- $policy
+$policy
 
 StorageAccountName : weiadlscanary1
 ResourceGroupName  : weitry
@@ -135,7 +135,7 @@ LastModifiedTime   : 5/12/2021 9:02:21 AM
 Enabled            : True
 Rules              : {Test1, Test2}
 
- $policy.Rules 
+$policy.Rules 
 
 Name  Enabled Destination   ObjectType Format  Schedule IncludeSnapshots IncludeBlobVersions BlobTypes               PrefixMatch        SchemaFields                                 
 ----  ------- -----------   ---------- ------  -------- ---------------- ------------------- ---------               -----------        ------------                                 
@@ -155,7 +155,7 @@ The proeprties： Destination, Enabled, and Rules of the policy will be set to t
 
 ### Example 4: Get the blob inventory policy rules from a Storage account, then set it to another Storage account.
 ```powershell
-$policy = ,((Get-AzStorageBlobInventoryPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount").Rules) | Set-AzStorageBlobInventoryPolicy -ResourceGroupName "myresourcegroup2" -AccountName "mystorageaccount2" -Disabled
+$policy = ((Get-AzStorageBlobInventoryPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount").Rules) | Set-AzStorageBlobInventoryPolicy -ResourceGroupName "myresourcegroup2" -AccountName "mystorageaccount2" -Disabled
 ```
 
 This command first gets the blob inventory policy from a Storage account, then set it's rules to another Storage account.

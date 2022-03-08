@@ -30,7 +30,7 @@ The input ACL will merge the the original ACL: If ACL entry with same AccessCont
 $acl = New-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx 
 $acl = New-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
 $acl = New-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission "rw-" -InputObject $acl
- Update-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Acl $acl -Context $ctx
+Update-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Acl $acl -Context $ctx
 ```
 ```output
 FailedEntries                   : 
@@ -46,7 +46,7 @@ This command first creates an ACL object with 3 acl entries, then updates ACL re
 ```powershell
 $result = Update-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Path "dir1" -Acl $acl  -Context $ctx
 
- $result
+$result
 
 FailedEntries                   : {dir1/dir2/file4}
 TotalDirectoriesSuccessfulCount : 500

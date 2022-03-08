@@ -50,9 +50,9 @@ The second command assigns the rules in $CorsRules to the Blob service type.
 ### Example 2: Change properties of a CORS rule for blob service
 ```powershell
 $CorsRules = Get-AzStorageCORSRule -ServiceType Blob
- $CorsRules[0].AllowedHeaders = @("x-ms-blob-content-type", "x-ms-blob-content-disposition")
- $CorsRules[0].AllowedMethods = @("Get", "Connect", "Merge")
- Set-AzStorageCORSRule -ServiceType Blob -CorsRules $CorsRules
+$CorsRules[0].AllowedHeaders = @("x-ms-blob-content-type", "x-ms-blob-content-disposition")
+$CorsRules[0].AllowedMethods = @("Get", "Connect", "Merge")
+Set-AzStorageCORSRule -ServiceType Blob -CorsRules $CorsRules
 ```
 
 The first command gets the current CORS rules for the Blob type by using the **Get-AzStorageCORSRule** cmdlet.

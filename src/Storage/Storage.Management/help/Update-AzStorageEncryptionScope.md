@@ -59,7 +59,7 @@ The **Update-AzStorageEncryptionScope** cmdlet modifies an encryption scope for 
 
 ### Example 1: Disable an encryption scope
 ```powershell
- Update-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"  -EncryptionScopeName testscope -State Disabled 
+Update-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"  -EncryptionScopeName testscope -State Disabled 
 ```
 ```output
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
@@ -73,7 +73,7 @@ This command disables an encryption scope.
 
 ### Example 2: Enable an encryption scope
 ```powershell
- Update-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"  -EncryptionScopeName testscope -State Enabled 
+Update-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"  -EncryptionScopeName testscope -State Enabled 
 ```
 ```output
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
@@ -87,7 +87,7 @@ This command enables an encryption scope.
 
 ### Example 3: Update an encryption scope to use Storage Encryption
 ```powershell
- Update-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"  -EncryptionScopeName testscope -StorageEncryption
+Update-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"  -EncryptionScopeName testscope -StorageEncryption
 ```
 ```output
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount

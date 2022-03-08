@@ -46,7 +46,7 @@ The **Update-AzStorageFileServiceProperty** cmdlet modifies the service properti
 
 ### Example 1: Enable File share softdelete
 ```powershell
- Update-AzStorageFileServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -EnableShareDeleteRetentionPolicy $true -ShareRetentionDays 5
+Update-AzStorageFileServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -EnableShareDeleteRetentionPolicy $true -ShareRetentionDays 5
 ```
 ```output
 StorageAccountName                            : mystorageaccount
@@ -64,7 +64,7 @@ This command enables File share softdelete delete with retention days as 5
 
 ### Example 2: Enable Smb Multichannel
 ```powershell
- Update-AzStorageFileServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -EnableSmbMultichannel $true
+Update-AzStorageFileServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -EnableSmbMultichannel $true
 ```
 ```output
 StorageAccountName                            : mystorageaccount
@@ -82,7 +82,7 @@ This command enables Smb Multichannel, only supported on Premium FileStorage acc
 
 ### Example 3: Updates secure smb settings
 ```powershell
- Update-AzStorageFileServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" `
+Update-AzStorageFileServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" `
 			-SMBProtocolVersion SMB2.1,SMB3.0,SMB3.1.1  `
 			-SMBAuthenticationMethod Kerberos,NTLMv2 `
 			-SMBKerberosTicketEncryption RC4-HMAC,AES-256 `
@@ -104,7 +104,7 @@ This command updates secure smb settings.
 
 ### Example 4: Clear secure smb settings
 ```powershell
- Update-AzStorageFileServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" `
+Update-AzStorageFileServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" `
 			-SMBProtocolVersion @() `
 			-SMBAuthenticationMethod @() `
 			-SMBKerberosTicketEncryption @() `

@@ -65,7 +65,8 @@ $job = Restore-AzStorageBlobRange -ResourceGroupName "myresourcegoup" -StorageAc
 $job | Wait-Job
 
 $job.Output
-
+```
+```output
 Status   RestoreId                            FailureReason Parameters.TimeToRestore     Parameters.BlobRanges
 ------   ---------                            ------------- ------------------------     ---------------------
 Complete 0387953a-bbe6-4602-818d-e661581ee44b               2020-08-28T07:11:33.9843100Z ["" -> ""]
@@ -86,7 +87,6 @@ Status   RestoreId                            FailureReason Parameters.TimeToRes
 ------   ---------                            ------------- ------------------------     ---------------------   
 Complete d66d1d02-6e48-47ef-b516-0155dd8319c6               2020-02-10T14:17:46.8189116Z ["aaa/abc" -> "bbb/abc",...]
 ```
-
 
 This command restores blobs in a Storage account from 1 day ago, by input 2 blob ranges directly to the Restore-AzStorageBlobRange cmdlet. This command will wait for the restore complete.
 

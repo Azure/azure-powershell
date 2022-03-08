@@ -43,7 +43,7 @@ The **Set-AzStorageBlobTag** sets blob tags of a specific blob.
 
 ### Example 1: Set blob tags on a specific blob
 ```powershell
- Set-AzStorageBlobTag -Container "containername" -Blob testblob -Tag @{"tag1" = "value1"; "tag2" = "value2" }
+Set-AzStorageBlobTag -Container "containername" -Blob testblob -Tag @{"tag1" = "value1"; "tag2" = "value2" }
 ```
 ```output
 Name                           Value                                                                                                                                                                                 
@@ -56,7 +56,7 @@ This command sets blob tags on a specific blob.
 
 ### Example 2: Set blob tags on a specific blob with tag condition
 ```powershell
- Set-AzStorageBlobTag -Container "containername" -Blob testblob -Tag @{"tag1" = "value1"; "tag2" = "value2" } -TagCondition """tag1""='value1'"
+Set-AzStorageBlobTag -Container "containername" -Blob testblob -Tag @{"tag1" = "value1"; "tag2" = "value2" } -TagCondition """tag1""='value1'"
 ```
 ```output
 Name                           Value                                                                                                                                                                                 

@@ -40,7 +40,7 @@ The cmdlet only works when the blob container has already enabled immutable Stor
 ```powershell
 $blob = Set-AzStorageBlobImmutabilityPolicy -Container $containerName -Blob $blobname  -ExpiresOn (Get-Date).AddDays(100) -PolicyMode Unlocked
 
- $blob
+$blob
 
    AccountName: mystorageaccount, ContainerName: mycontainer
 

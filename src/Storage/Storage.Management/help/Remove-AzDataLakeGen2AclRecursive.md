@@ -30,9 +30,9 @@ The ACL entries in original ACL, which has same AccessControlType, DefaultScope 
 $acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $id -Permission r-x -DefaultScope
 $acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $id -Permission r-x -InputObject $acl
 Remove-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Acl $acl -Context $ctx
-WARNING: To find the ACL Entry to remove, will only compare AccessControlType, DefaultScope and EntityId, will omit Permission.
 ```
 ```output
+WARNING: To find the ACL Entry to remove, will only compare AccessControlType, DefaultScope and EntityId, will omit Permission.
 FailedEntries                   : 
 TotalDirectoriesSuccessfulCount : 7
 TotalFilesSuccessfulCount       : 5
@@ -45,6 +45,7 @@ This command first creates an ACL object with 2 acl entries, then removes ACL re
 ### Example 2: Remove ACL recursively on a directory
 ```powershell
 $result = Remove-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Path "dir1" -Acl $acl  -Context $ctx
+
 WARNING: To find the ACL Entry to remove, will only compare AccessControlType, DefaultScope and EntityId, will omit Permission.
 
 $result

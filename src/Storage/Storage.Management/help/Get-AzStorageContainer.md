@@ -61,7 +61,7 @@ Name                 PublicAccess         LastModified                   IsDelet
 testcon              Off                  8/28/2020 10:18:13 AM +00:00                                                                                                                                                                                                                                                                   
 testcon2                                  9/4/2020 12:52:37 PM +00:00    True       01D67D248986B6DA  
 
-$c[1].BlobContainerProperties
+$containers[1].BlobContainerProperties
 
 LastModified                   : 9/4/2020 12:52:37 PM +00:00
 LeaseStatus                    : Unlocked

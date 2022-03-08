@@ -85,7 +85,7 @@ The command uploads the file that is named ContosoPlanning as Planning2015.
 ### Example 5: Upload a file to page blob with metadata and PremiumPageBlobTier as P10
 ```powershell
 $Metadata = @{"key" = "value"; "name" = "test"}
- Set-AzStorageBlobContent -File "ContosoPlanning" -Container "ContosoUploads" -Metadata $Metadata -BlobType Page -PremiumPageBlobTier P10
+Set-AzStorageBlobContent -File "ContosoPlanning" -Container "ContosoUploads" -Metadata $Metadata -BlobType Page -PremiumPageBlobTier P10
 ```
 
 The first command creates a hash table that contains metadata for a blob, and stores that hash table in the $Metadata variable.
@@ -94,7 +94,7 @@ The blob includes the metadata stored in $Metadata, and has PremiumPageBlobTier 
 
 ### Example 6: Upload a file to blob with specified blob properties, and set StandardBlobTier as Cool
 ```powershell
- $filepath = "c:\temp\index.html"
+$filepath = "c:\temp\index.html"
 Set-AzStorageBlobContent -File $filepath -Container "contosouploads" -Properties @{"ContentType" = [System.Web.MimeMapping]::GetMimeMapping($filepath); "ContentMD5" = "i727sP7HigloQDsqadNLHw=="} -StandardBlobTier Cool
 ```
 ```output
@@ -110,9 +110,11 @@ This command gets ContentType value set to blob properties by [System.Web.MimeMa
 
 ### Example 7: Upload a file to a blob with Encryption Scope
 ```powershell
- $blob = Set-AzStorageBlobContent  -File "mylocalfile" -Container "mycontainer" -Blob "myblob"  -EncryptionScope "myencryptscope"
+$blob = Set-AzStorageBlobContent  -File "mylocalfile" -Container "mycontainer" -Blob "myblob"  -EncryptionScope "myencryptscope"
 
- $blob.BlobProperties.EncryptionScope
+$blob.BlobProperties.EncryptionScope
+```
+```output
 myencryptscope
 ```
 

@@ -55,7 +55,7 @@ This command first creates an ACL object with 3 acl entry (use -InputObject para
 
 ### Example 2: Update all properties on a file, and show them
 ```powershell
- $file = Update-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/file1" `
+$file = Update-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/file1" `
                  -Acl $acl `
                  -Property @{"ContentType" = "image/jpeg"; "ContentMD5" = "i727sP7HigloQDsqadNLHw=="; "ContentEncoding" = "UDF8"; "CacheControl" = "READ"; "ContentDisposition" = "True"; "ContentLanguage" = "EN-US"} `
                  -Metadata  @{"tag1" = "value1"; "tag2" = "value2" } `
@@ -63,7 +63,7 @@ This command first creates an ACL object with 3 acl entry (use -InputObject para
                  -Owner '$superuser' `
                  -Group '$superuser'
 
- $file
+$file
 
    FileSystem Name: filesystem1
 

@@ -37,10 +37,10 @@ This command gets the keys for the specified Azure Storage account.
 (Get-AzStorageAccountKey -ResourceGroupName "RG01" -AccountName "mystorageaccount")| Where-Object {$_.KeyName -eq "key1"}
 
 (Get-AzStorageAccountKey -ResourceGroupName "RG01" -AccountName "mystorageaccount").Key1
-```
-This command gets a specific key for a Storage account. This command works for Azure PowerShell version 1.4, and later versions.
-This command gets a specific key for a Storage account. This command works for Azure PowerShell version 1.3.2, and previous versions.
 
+#region This command gets a specific key for a Storage account. This command works for Azure PowerShell version 1.4, and later versions.
+#region This command gets a specific key for a Storage account. This command works for Azure PowerShell version 1.3.2, and previous versions.
+```
 ### Example 3: Lists the access keys for a Storage account, include the Kerberos keys (if active directory enabled)
 ```powershell
 Get-AzStorageAccountKey -ResourceGroupName "RG01" -AccountName "mystorageaccount" -ListKerbKey

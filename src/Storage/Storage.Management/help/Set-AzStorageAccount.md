@@ -137,24 +137,24 @@ This command sets NetworkRuleSet property of a Storage account with JSON
 
 ### Example 8: Get NetworkRuleSet property from a Storage account, and set it to another Storage account
 ```powershell
- $networkRuleSet = (Get-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount").NetworkRuleSet 
- Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount2" -NetworkRuleSet $networkRuleSet
+$networkRuleSet = (Get-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount").NetworkRuleSet 
+Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount2" -NetworkRuleSet $networkRuleSet
 ```
 
 This first command gets NetworkRuleSet property from a Storage account, and the second command sets it to another Storage account 
 
 ### Example 9: Upgrade a Storage account with Kind "Storage" or "BlobStorage" to "StorageV2" kind Storage account
 ```powershell
- Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -UpgradeToStorageV2
+Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -UpgradeToStorageV2
 ```
 
 The command upgrade a Storage account with Kind "Storage" or "BlobStorage" to "StorageV2" kind Storage account.
 
 ### Example 10: Update a Storage account by enable Azure Files AAD DS Authentication and set DefaultSharePermission.
 ```powershell
- $account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -EnableAzureActiveDirectoryDomainServicesForFile $true -DefaultSharePermission StorageFileDataSmbShareOwner
+$account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -EnableAzureActiveDirectoryDomainServicesForFile $true -DefaultSharePermission StorageFileDataSmbShareOwner
 
- $account.AzureFilesIdentityBasedAuth
+$account.AzureFilesIdentityBasedAuth
 ```
 ```output
 DirectoryServiceOptions ActiveDirectoryProperties                                                      DefaultSharePermission      
@@ -166,7 +166,7 @@ The command update a Storage account by enable Azure Files AAD DS Authentication
 
 ### Example 11: Update a Storage account by enable Files Active Directory Domain Service Authentication, and then show the File Identity Based authentication setting
 ```powershell
- $account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -EnableActiveDirectoryDomainServicesForFile $true `
+$account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -EnableActiveDirectoryDomainServicesForFile $true `
         -ActiveDirectoryDomainName "mydomain.com" `
         -ActiveDirectoryNetBiosDomainName "mydomain.com" `
         -ActiveDirectoryForestName "mydomain.com" `
@@ -176,10 +176,10 @@ The command update a Storage account by enable Azure Files AAD DS Authentication
         -ActiveDirectorySamAccountName "samaccountname" `
         -ActiveDirectoryAccountType Computer 
 		
- $account.AzureFilesIdentityBasedAuth.DirectoryServiceOptions
+$account.AzureFilesIdentityBasedAuth.DirectoryServiceOptions
 AD
 
- $account.AzureFilesIdentityBasedAuth.ActiveDirectoryProperties
+$account.AzureFilesIdentityBasedAuth.ActiveDirectoryProperties
 ```
 ```output
 DomainName        : mydomain.com
@@ -196,15 +196,15 @@ The command updates a Storage account by enable Azure Files Active Directory Dom
 
 ### Example 12: Set MinimumTlsVersion, AllowBlobPublicAccess and AllowSharedKeyAccess
 ```powershell
- $account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -MinimumTlsVersion TLS1_1 -AllowBlobPublicAccess $false -AllowSharedKeyAccess $true
+$account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -MinimumTlsVersion TLS1_1 -AllowBlobPublicAccess $false -AllowSharedKeyAccess $true
 
- $account.MinimumTlsVersion
+$account.MinimumTlsVersion
 TLS1_1
 
- $account.AllowBlobPublicAccess
+$account.AllowBlobPublicAccess
 False
 
- $a.AllowSharedKeyAccess
+$a.AllowSharedKeyAccess
 True
 ```
 
@@ -237,12 +237,12 @@ This command updates a Storage account with RoutingPreference setting: PublishMi
 
 ### Example 14: Update a Storage account with KeyExpirationPeriod and SasExpirationPeriod
 ```powershell
- $account = Set-AzStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -KeyExpirationPeriodInDay 5 -SasExpirationPeriod "1.12:05:06" -EnableHttpsTrafficOnly $true
+$account = Set-AzStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -KeyExpirationPeriodInDay 5 -SasExpirationPeriod "1.12:05:06" -EnableHttpsTrafficOnly $true
 
  $$account.KeyPolicy.KeyExpirationPeriodInDays
 5
 
- $$account.SasPolicy.SasExpirationPeriod
+$$account.SasPolicy.SasExpirationPeriod
 1.12:05:06
 ```
 
@@ -251,25 +251,24 @@ This command updates a Storage account with KeyExpirationPeriod and SasExpiratio
 ### Example 15: Update a Storage account to Keyvault encryption, and access Keyvault with user assigned identity
 ```powershell
 # Create KeyVault (no need if using exist keyvault)
- $keyVault = New-AzKeyVault -VaultName $keyvaultName -ResourceGroupName $resourceGroupName -Location eastus2euap -EnablePurgeProtection
+$keyVault = New-AzKeyVault -VaultName $keyvaultName -ResourceGroupName $resourceGroupName -Location eastus2euap -EnablePurgeProtection
 $key = Add-AzKeyVaultKey -VaultName $keyvaultName -Name $keyname -Destination 'Software'
 
 # create user assigned identity and grant access to keyvault (no need if using exist user assigned identity)
- $userId = New-AzUserAssignedIdentity -ResourceGroupName $resourceGroupName -Name $userIdName
+$userId = New-AzUserAssignedIdentity -ResourceGroupName $resourceGroupName -Name $userIdName
  Set-AzKeyVaultAccessPolicy -VaultName $keyvaultName -ResourceGroupName $resourceGroupName -ObjectId $userId.PrincipalId -PermissionsToKeys get,wrapkey,unwrapkey -BypassObjectIdValidation
- $useridentityId= $userId.Id
+$useridentityId= $userId.Id
 
 # Update Storage account with Keyvault encryption and access Keyvault with user assigned identity, then show properties
- $account = Update-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName `
+$account = Update-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName `
                 -IdentityType UserAssigned  -UserAssignedIdentityId $useridentityId  `
                 -KeyVaultUri $keyVault.VaultUri -KeyName $keyname -KeyVaultUserAssignedIdentityId $useridentityId
 
- $account.Encryption.EncryptionIdentity.EncryptionUserAssignedIdentity
+$account.Encryption.EncryptionIdentity.EncryptionUserAssignedIdentity
 /subscriptions/{subscription-id}/resourceGroups/myresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myuserid
 
- $account.Encryption.KeyVaultProperties
-```
-```output
+$account.Encryption.KeyVaultProperties
+
 KeyName                       : wrappingKey
 KeyVersion                    : 
 KeyVaultUri                   : https://mykeyvault.vault.azure.net:443
@@ -282,19 +281,19 @@ This command first creates a keyvault and a user assigned identity, then updates
 ### Example 16: Update a Keyvault encrypted Storage account, from access Keyvault with user assigned identity, to access Keyvault with system assigned identity
 ```powershell
 # Assign System identity to the account, and give the system assigned identity acces to the keyvault
- $account = Set-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName  -IdentityType SystemAssignedUserAssigned
+$account = Set-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName  -IdentityType SystemAssignedUserAssigned
  Set-AzKeyVaultAccessPolicy -VaultName $keyvaultName -ResourceGroupName $resourceGroupName -ObjectId $account.Identity.PrincipalId -PermissionsToKeys get,wrapkey,unwrapkey -BypassObjectIdValidation
 
 # Update account from access Keyvault with user assigned identity to access Keyvault with system assigned identity
 $account = Set-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName -IdentityType SystemAssignedUserAssigned -KeyName $keyname -KeyVaultUri $keyvaultUri -KeyVaultUserAssignedIdentityId ""
 
 # EncryptionUserAssignedIdentity is empty, so the account access keyvault with system assigned identity
- $account.Encryption.EncryptionIdentity
+$account.Encryption.EncryptionIdentity
 
 EncryptionUserAssignedIdentity                                                                                                                 
 ------------------------------ 
 
- $account.Encryption.KeyVaultProperties
+$account.Encryption.KeyVaultProperties
 
 KeyName                       : wrappingKey
 KeyVersion                    : 
@@ -308,7 +307,7 @@ This command first assigns System identity to the account, and give the system a
 ### Example 17: Update both Keyvault and the user assigned identity to access keyvault
 ```powershell
 # Update to another user assigned identity
- $account = Set-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName -IdentityType SystemAssignedUserAssigned -UserAssignedIdentityId $useridentity2 -KeyVaultUserAssignedIdentityId $useridentity2
+$account = Set-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName -IdentityType SystemAssignedUserAssigned -UserAssignedIdentityId $useridentity2 -KeyVaultUserAssignedIdentityId $useridentity2
 
 # Update to encrypt with another keyvault
 $account = Set-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName -KeyVaultUri $keyvaultUri2 -KeyName $keyname2 -KeyVersion $keyversion2
@@ -319,9 +318,9 @@ To update both both Keyvault and the user assigned identity, we need update with
 
 ### Example 18: Update a Storage account with AllowCrossTenantReplication
 ```powershell
- $account = Set-AzStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -AllowCrossTenantReplication $false -EnableHttpsTrafficOnly $true
+$account = Set-AzStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -AllowCrossTenantReplication $false -EnableHttpsTrafficOnly $true
 
-PS C:\> $account.AllowCrossTenantReplication
+$account.AllowCrossTenantReplication
 False
 ```
 
@@ -329,9 +328,11 @@ This command updates a Storage account by set AllowCrossTenantReplication to fal
 
 ### Example 19: Update a Storage account by enable PublicNetworkAccess
 ```powershell
- $account = Set-AzStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -PublicNetworkAccess Enabled
+$account = Set-AzStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -PublicNetworkAccess Enabled
 
- $account.PublicNetworkAccess
+$account.PublicNetworkAccess
+```
+```output
 Enabled
 ```
 
