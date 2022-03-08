@@ -1,5 +1,3 @@
-## EXAMPLES
-
 ### Example 1: Create a new Column which is used for New-AzOperationalInsightsTable cmdlet
 ```powershell
 PS C:\> 

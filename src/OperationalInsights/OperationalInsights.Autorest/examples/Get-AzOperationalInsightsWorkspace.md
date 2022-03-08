@@ -1,5 +1,3 @@
-## EXAMPLES
-
 ### Example 1: Get a worksapce by resource group and worksapce name
 ```powershell
 Get-AzOperationalInsightsWorkspace -name {WS_Name} -ResourceGroupName {RG_Name}

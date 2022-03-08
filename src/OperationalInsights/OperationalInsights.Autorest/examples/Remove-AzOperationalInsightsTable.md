@@ -1,5 +1,3 @@
-## EXAMPLES
-
 ### Example 1: Remove a table
 ```powershell
 PS C:\> Remove-AzOperationalInsightsTable -ResourceGroupName {RG-name} -Name {Table-name} -WorkspaceName {WS-name}

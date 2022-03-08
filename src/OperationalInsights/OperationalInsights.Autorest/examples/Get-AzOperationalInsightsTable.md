@@ -1,5 +1,3 @@
-## EXAMPLES
-
 ### Example 1: List tables for a given workspace name
 ```powershell
 Get-AzOperationalInsightsTable -ResourceGroupName {RG-Name} -WorkspaceName {WS-Name}

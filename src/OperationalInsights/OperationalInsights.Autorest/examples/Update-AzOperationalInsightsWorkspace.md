@@ -1,5 +1,3 @@
-## EXAMPLES
-
 ### Example 1: Update an existing Worksapce retrntion
 ```powershell
 PS C:\>$workspace =  Update-AzOperationalInsightsWorkspace -ResourceGroupName {RG-name} -Name {WS-name} -RetentionInDay 42

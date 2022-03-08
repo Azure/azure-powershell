@@ -1,5 +1,3 @@
-## EXAMPLES
-
 ### Example 1: Update table's retention 
 ```powershell
 PS C:\> Update-AzOperationalInsightsTable -ResourceGroupName {RG-name} -WorkspaceName {WS-name} -Name {TableName_CL} -RetentionInDay 40
