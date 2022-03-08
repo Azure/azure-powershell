@@ -28,6 +28,7 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using Microsoft.Azure.KeyVault;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
 using Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1;
 
 namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
