@@ -27,14 +27,8 @@ The **New-AzAutomationCredential** cmdlet creates a credential as a **PSCredenti
 ### Example 1: Create a credential
 ```powershell
 $User = "Contoso\PFuller"
-```
-```powershell
 $Password = ConvertTo-SecureString "Password" -AsPlainText -Force
-```
-```powershell
 $Credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $User, $Password
-```
-```powershell
 New-AzAutomationCredential -AutomationAccountName "Contoso17" -Name "ContosoCredential" -Value $Credential -ResourceGroupName "ResourceGroup01"
 ```
 

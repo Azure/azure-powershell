@@ -32,8 +32,8 @@ For more information about Automation accounts, see the New-AzAutomationAccount 
 ## EXAMPLES
 
 ### Example 1: Get all accounts
-```
-PS C:\>Get-AzAutomationAccount -ResourceGroupName "ResourceGroup03"
+```powershell
+Get-AzAutomationAccount -ResourceGroupName "ResourceGroup03"
 ```
 
 This command gets all Automation accounts in the resource group named ResourceGroup03.

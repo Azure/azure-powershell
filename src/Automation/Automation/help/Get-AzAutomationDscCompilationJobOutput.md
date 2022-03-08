@@ -27,8 +27,6 @@ The **Get-AzAutomationDscCompilationJobOutput** cmdlet gets the stream records o
 ### Example 1: Get the logs for a DSC compilation job
 ```powershell
 $Jobs = Get-AzAutomationDscCompilationJob -ResourceGroupName "ResourceGroup01" -AutomationAccountName "Contoso17"
-```
-```powershell
 $Jobs[0] | Get-AzAutomationDscCompilationJobOutput -Stream "Any"
 ```
 

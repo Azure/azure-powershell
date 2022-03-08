@@ -31,8 +31,6 @@ For wps_2 Workflow runbooks, the script must contain a single wps_2 Workflow def
 ### Example 1: Import a runbook from a file
 ```powershell
 $Tags = @{"tag01"="value01"; "tag02"="value02"}
-```
-```powershell
 Import-AzAutomationRunbook -Path .\GraphicalRunbook06.graphrunbook -Tags $Tags -ResourceGroup "ResourceGroup01" -AutomationAccountName "AutomationAccount01" -Type GraphicalPowershell
 ```
 

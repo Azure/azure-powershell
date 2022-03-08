@@ -56,22 +56,16 @@ $js= Get-AzAutomationDscNodeConfigurationDeploymentSchedule `
                  -AutomationAccountName "Contoso01" `
                  -ResourceGroupName "ResourceGroup01" `
                  -JobScheduleId 2b1d7738-093d-4ff7-b87b-e4b2321319e5
-```
-```powershell
 $js
-```
-```output
 
 ResourceGroupName     : ResourceGroup01
 AutomationAccountName : Contoso01
 JobScheduleId         : 2b1d7738-093d-4ff7-b87b-e4b2321319e5
 JobSchedule           : Microsoft.Azure.Commands.Automation.Model.JobSche
 RunbookName           : Deploy-NodeConfigurationToAutomationDscNodesV1
-```
-```powershell
+
 $js.JobSchedule
-```
-```output
+
 ResourceGroupName     : ResourceGroup01
 RunOn                 :
 AutomationAccountName : Contoso01

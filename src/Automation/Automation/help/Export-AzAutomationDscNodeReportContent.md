@@ -28,11 +28,7 @@ A DSC node sends a DSC report to Azure Automation.
 ### Example 1: Export a report from a DSC node
 ```powershell
 $Node = Get-AzAutomationDscNode -ResourceGroupName "ResourceGroup03" -AutomationAccountName "AutomationAccount01" -Name "Computer14"
-```
-```powershell
 $Report = Get-AzAutomationDscNodeReport -ResourceGroupName "ResourceGroup03" -AutomationAccountName "ContosoAutomationAccount" -NodeId $Node.Id -Latest
-```
-```powershell
 $Report | Export-AzAutomationDscNodeReportContent -OutputFolder "C:\Users\PattiFuller\Desktop"
 ```
 

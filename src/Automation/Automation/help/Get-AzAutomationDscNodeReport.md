@@ -40,8 +40,6 @@ The **Get-AzAutomationDscNodeReport** cmdlet gets reports sent from an APS Desir
 ### Example 1: Get all reports for a DSC node
 ```powershell
 $Node = Get-AzAutomationDscNode -ResourceGroupName "ResourceGroup03" -AutomationAccountName "Contoso17" -Name "Computer14"
-```
-```powershell
 Get-AzAutomationDscNodeReport -ResourceGroupName "ResourceGroup03" -AutomationAccountName "Contoso17" -NodeId $Node.Id
 ```
 
@@ -53,8 +51,6 @@ The command specifies the node by using the **Id** property of the $Node object.
 ### Example 2: Get a report for a DSC node by report ID
 ```powershell
 $Node = Get-AzAutomationDscNode -ResourceGroupName "ResourceGroup03" -AutomationAccountName "Contoso17" -Name "Computer14"
-```
-```powershell
 Get-AzAutomationDscNodeReport -ResourceGroupName "ResourceGroup03" -AutomationAccountName "Contoso17" -NodeId $Node.Id -Id c0a1718e-d8be-4fa3-91b6-82e1d3a36298
 ```
 
@@ -65,8 +61,6 @@ The second command gets metadata for the report identified by the specified ID s
 ### Example 3: Get the latest report for a DSC node
 ```powershell
 $Node = Get-AzAutomationDscNode -ResourceGroupName "ResourceGroup03" -AutomationAccountName "Contoso17" -Name "Computer14"
-```
-```powershell
 Get-AzAutomationDscNodeReport -ResourceGroupName "ResourceGroup03" -AutomationAccountName "Contoso17" -NodeId $Node.Id -Latest
 ```
 

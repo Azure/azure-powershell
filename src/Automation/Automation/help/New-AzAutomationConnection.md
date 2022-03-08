@@ -27,8 +27,6 @@ The **New-AzAutomationConnection** cmdlet creates a connection in Azure Automati
 ### Example 1: Create a connection for ConnectionTypeName=Azure
 ```powershell
 $FieldValues = @{"AutomationCertificateName"="ContosoCertificate";"SubscriptionID"="81b59010-dc55-45b7-89cd-5ca26db62472"}
-```
-```powershell
 New-AzAutomationConnection -Name "Connection12" -ConnectionTypeName Azure -ConnectionFieldValues $FieldValues -ResourceGroupName "ResourceGroup01" -AutomationAccountName "AutomationAccount01"
 ```
 

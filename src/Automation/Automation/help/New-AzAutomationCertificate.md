@@ -28,8 +28,6 @@ Provide the path to a certificate file to upload.
 ### Example 1: Create a new certificate
 ```powershell
 $Password = ConvertTo-SecureString -String "Password" -AsPlainText -Force
-```
-```powershell
 New-AzAutomationCertificate -AutomationAccountName "Contoso17" -Name "ContosoCertificate" -Path "./cert.pfx" -Password $Password -ResourceGroupName "ResourceGroup01"
 ```
 

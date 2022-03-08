@@ -30,8 +30,6 @@ You can run the Set-DscLocalConfigurationManager cmdlet for this folder to onboa
 ### Example 1: Onboard servers to Automation DSC
 ```powershell
 Get-AzAutomationDscOnboardingMetaconfig -ResourceGroupName "ResourceGroup03" -AutomationAccountName "Contoso17" -ComputerName "Server01", "Server02" -OutputFolder "C:\Users\PattiFuller\Desktop"
-```
-```powershell 
 Set-DscLocalConfigurationManager -Path "C:\Users\PattiFuller\Desktop\DscMetaConfigs" -ComputerName "Server01", "Server02"
 ```
 

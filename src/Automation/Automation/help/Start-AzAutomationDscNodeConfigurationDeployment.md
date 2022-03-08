@@ -37,17 +37,16 @@ The **Start-AzAutomationDscNodeConfigurationDeployment** cmdlet deploys a Desire
 $pilot = @("WebServerPilot1", "WebServerPilot2")
 $prod = @("WebServerProd1", "WebServerProd2")
 $nodes = @($pilot, $prod)
-PStart-AzAutomationDscNodeConfigurationDeployment `
+Start-AzAutomationDscNodeConfigurationDeployment `
             -NodeConfigurationName "Config01.Node1" `
             -AutomationAccountName "Contoso01"  `
             -ResourceGroupName "ResourceGroup01" `
             -NodeName $nodes `
-
+```
+```output
 Starting a node configuration deployment.
 Starting a node configuration deployment. It will override any existing node configurations assigned to the node.
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Yes
-```
-```output
 ResourceGroupName     : ResourceGroup01
 AutomationAccountName : Contoso01
 JobId                 : 35b14eb4-52b7-4a1d-ad62-8e9f84adc657
@@ -77,12 +76,11 @@ Start-AzAutomationDscNodeConfigurationDeployment `
             -ResourceGroupName "ResourceGroup01" `
             -NodeName $nodes `
             -Schedule $sched
-
+```
+```output
 Starting a node configuration deployment.
 Starting a node configuration deployment. It will override any existing node configurations assigned to the node.
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
-```
-```output
 ResourceGroupName     : ResourceGroup01
 AutomationAccountName : Contoso01
 JobId                 : 00000000-0000-0000-0000-000000000000

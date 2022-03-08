@@ -68,8 +68,6 @@ The **New-AzAutomationSchedule** cmdlet creates a schedule in Azure Automation.
 ### Example 1: Create a one-time schedule in local time
 ```powershell
 $TimeZone = ([System.TimeZoneInfo]::Local).Id
-```
-```powershell
 New-AzAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule01" -StartTime "23:00" -OneTime -ResourceGroupName "ResourceGroup01" -TimeZone $TimeZone
 ```
 
@@ -79,8 +77,6 @@ The second command creates a schedule that runs one time on the current date at 
 ### Example 2: Create a one-time schedule in another time zone
 ```powershell
 $TimeZone = "Europe/Paris"
-```
-```powershell
 New-AzAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule01" -StartTime "23:00Z" -OneTime -ResourceGroupName "ResourceGroup01" -TimeZone $TimeZone
 ```
 
@@ -91,11 +87,7 @@ The second command creates a schedule that runs one time on the current date at 
 ### Example 3: Create a recurring schedule
 ```powershell
 $StartTime = Get-Date "13:00:00"
-```
-```powershell
 $EndTime = $StartTime.AddYears(1)
-```
-```powershell
 New-AzAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule02" -StartTime $StartTime -ExpiryTime $EndTime -DayInterval 1 -ResourceGroupName "ResourceGroup01"
 ```
 

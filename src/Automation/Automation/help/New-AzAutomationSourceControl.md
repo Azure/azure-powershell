@@ -75,7 +75,7 @@ Create a source control configuration to link an Azure Automation account with a
 ```powershell
 # GitHub access token
 $token = "68b08011223aac8bdd3388913a44rrsaa84fdf"
-P$accessToken = ConvertTo-SecureString -String $token -AsPlainText -Force 
+$accessToken = ConvertTo-SecureString -String $token -AsPlainText -Force 
  New-AzAutomationSourceControl -ResourceGroupName "rg1" `
                                            -AutomationAccountName "devAccount" `
                                            -Name  "GitHub1" `

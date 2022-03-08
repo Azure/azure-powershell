@@ -34,8 +34,6 @@ To get a specific variable, specify its name.
 ### Example 1: Get a variable
 ```powershell
 $Variable = Get-AzAutomationVariable -AutomationAccountName "Contoso17" -Name "Variable06" -ResourceGroupName "ResourceGroup01"
-```
-```powershell
 $Value = $Variable.value
 ```
 
