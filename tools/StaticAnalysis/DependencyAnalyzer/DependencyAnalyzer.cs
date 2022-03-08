@@ -214,7 +214,7 @@ namespace StaticAnalysis.DependencyAnalyzer
             "Microsoft.Azure.PowerShell.Clients.Websites",
             "Microsoft.Azure.PowerShell.Common.Share",
             "Azure.Core",
-			"Azure.Security.KeyVault.Keys"
+			"Azure.Security.KeyVault.Keys",
             "Microsoft.ApplicationInsights",
             "Microsoft.Azure.Common",
             "Hyak.Common",
