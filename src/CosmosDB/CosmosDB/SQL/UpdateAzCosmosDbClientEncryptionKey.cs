@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = Constants.IKeyEncryptionKeyResolver)]
         [ValidateNotNullOrEmpty]
-        public IKeyEncryptionKeyResolver IKeyEncryptionKeyResolver { get; set; }
+        public IKeyEncryptionKeyResolver KeyEncryptionKeyResolver { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.SqlDatabaseObjectHelpMessage)]
         [ValidateNotNull]
@@ -121,6 +121,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (string.Equals(clientEncryptionKeyResource.KeyWrapMetadata.Type, "AZURE_KEY_VAULT"))
             {
+                if (KeyEncryptionKeyResolver != null)
+                {
+                    throw new ArgumentException("KeyEncryptionKeyResolver cannot be passed if IKeyEncryptionKeyResolver of type AZURE_KEY_VAULT is used. ");
+                }
+
                 if (!string.Equals(newEncryptionKeyWrapMetadata.Type, "AZURE_KEY_VAULT"))
                 {
                     throw new ArgumentException("IKeyEncryptionKeyResolver type cannot be changed during rewrap operations.");
@@ -129,22 +134,21 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 // get the token credential for key vault audience.
                 TokenCredential tokenCredential = new CosmosDBSessionCredential(DefaultContext, AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId);
 
-                IKeyEncryptionKeyResolver = new KeyResolver(tokenCredential);
-
-                byte[] unwrappedKey = IKeyEncryptionKeyResolver.Resolve(clientEncryptionKeyResource.KeyWrapMetadata.Value)
-                    .UnwrapKey(clientEncryptionKeyResource.KeyWrapMetadata.Algorithm, clientEncryptionKeyResource.WrappedDataEncryptionKey);
-
-                rewrappedKey = IKeyEncryptionKeyResolver.Resolve(newEncryptionKeyWrapMetadata.Value)
-                    .WrapKey(newEncryptionKeyWrapMetadata.Algorithm, unwrappedKey);
+                KeyEncryptionKeyResolver = new KeyResolver(tokenCredential);                
             }
             else
             {
-                byte[] unwrappedKey = IKeyEncryptionKeyResolver.Resolve(clientEncryptionKeyResource.KeyWrapMetadata.Value)
+                if (KeyEncryptionKeyResolver == null)
+                {
+                    throw new ArgumentException("KeyEncryptionKeyResolver cannot be null.");
+                }
+            }
+
+            byte[] unwrappedKey = KeyEncryptionKeyResolver.Resolve(clientEncryptionKeyResource.KeyWrapMetadata.Value)
                     .UnwrapKey(clientEncryptionKeyResource.KeyWrapMetadata.Algorithm, clientEncryptionKeyResource.WrappedDataEncryptionKey);
 
-                rewrappedKey = IKeyEncryptionKeyResolver.Resolve(newEncryptionKeyWrapMetadata.Value)
-                    .WrapKey(newEncryptionKeyWrapMetadata.Algorithm, unwrappedKey);
-            }
+            rewrappedKey = KeyEncryptionKeyResolver.Resolve(newEncryptionKeyWrapMetadata.Value)
+                .WrapKey(newEncryptionKeyWrapMetadata.Algorithm, unwrappedKey);
 
             clientEncryptionKeyResource = new ClientEncryptionKeyResource
             {

@@ -16,14 +16,14 @@ Updates the CosmosDB Client Encryption Key. Performs a client side patch operati
 ```
 Update-AzCosmosDbClientEncryptionKey -ResourceGroupName <String> -AccountName <String> -DatabaseName <String>
  [-Name <String>] [-EncryptionAlgorithmName <String>] [-KeyWrapMetadata <PSSqlKeyWrapMetadata>]
- [-IKeyEncryptionKeyResolver <IKeyEncryptionKeyResolver>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-KeyEncryptionKeyResolver <IKeyEncryptionKeyResolver>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
 Update-AzCosmosDbClientEncryptionKey [-Name <String>] [-EncryptionAlgorithmName <String>]
- [-KeyWrapMetadata <PSSqlKeyWrapMetadata>] [-IKeyEncryptionKeyResolver <IKeyEncryptionKeyResolver>]
+ [-KeyWrapMetadata <PSSqlKeyWrapMetadata>] [-KeyEncryptionKeyResolver <IKeyEncryptionKeyResolver>]
  -ParentObject <PSSqlDatabaseGetResults> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -31,7 +31,7 @@ Update-AzCosmosDbClientEncryptionKey [-Name <String>] [-EncryptionAlgorithmName 
 ### ByObjectParameterSet
 ```
 Update-AzCosmosDbClientEncryptionKey [-Name <String>] [-EncryptionAlgorithmName <String>]
- [-KeyWrapMetadata <PSSqlKeyWrapMetadata>] [-IKeyEncryptionKeyResolver <IKeyEncryptionKeyResolver>]
+ [-KeyWrapMetadata <PSSqlKeyWrapMetadata>] [-KeyEncryptionKeyResolver <IKeyEncryptionKeyResolver>]
  -InputObject <PSSqlClientEncryptionKeyGetResults> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -45,6 +45,16 @@ The **Update-AzCosmosDbClientEncryptionKey** updates the CosmosDb Client Encrypt
 ```powershell
 PS C:\> $updatedKeyWrapMetadataObject = [Microsoft.Azure.Commands.CosmosDB.Models.PSSqlKeyWrapMetadata]::new([Microsoft.Azure.Management.CosmosDB.Models.KeyWrapMetadata]::new(myMetadataName,"AZURE_KEY_VAULT", updatedMetadataValue, myAlgorithm))
 PS C:\> Update-AzCosmosDbClientEncryptionKey -AccountName myAccountName -DatabaseName myDatabaseName -ResourceGroupName myRgName -Name myClientEncryptionKeyName -EncryptionAlgorithmName "AEAD_AES_256_CBC_HMAC_SHA256" -KeyWrapMetadata $updatedKeyWrapMetadataObject
+
+Name     : myContainerName
+Id       : /subscriptions/mySubscriptionId/resourceGroups/myRgName/providers/Microsoft.DocumentDB/databaseAccounts/myAccountName/sqlDatabases/myDatabaseName/clientEncryptionKeys/myClientEncryptionKeyName
+Resource : Microsoft.Azure.Commands.CosmosDB.Models.PSSqlClientEncryptionKeyGetPropertiesResource
+```
+
+### Example 2
+```powershell
+PS C:\> $updatedKeyWrapMetadataObject = [Microsoft.Azure.Commands.CosmosDB.Models.PSSqlKeyWrapMetadata]::new([Microsoft.Azure.Management.CosmosDB.Models.KeyWrapMetadata]::new(myMetadataName,"AZURE_KEY_VAULT", updatedMetadataValue, myAlgorithm))
+PS C:\> Update-AzCosmosDbClientEncryptionKey -AccountName myAccountName -DatabaseName myDatabaseName -ResourceGroupName myRgName -Name myClientEncryptionKeyName -EncryptionAlgorithmName "AEAD_AES_256_CBC_HMAC_SHA256" -KeyWrapMetadata $updatedKeyWrapMetadataObject -KeyEncryptionKeyResolver $myKeyResolver
 
 Name     : myContainerName
 Id       : /subscriptions/mySubscriptionId/resourceGroups/myRgName/providers/Microsoft.DocumentDB/databaseAccounts/myAccountName/sqlDatabases/myDatabaseName/clientEncryptionKeys/myClientEncryptionKeyName
@@ -113,21 +123,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IKeyEncryptionKeyResolver
-IKeyEncryptionKeyResolver interface of type Azure.Core.Cryptography.IKeyEncryptionKeyResolver
-
-```yaml
-Type: Azure.Core.Cryptography.IKeyEncryptionKeyResolver
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Client Encryption Key object.
 
@@ -137,6 +132,21 @@ Parameter Sets: ByObjectParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -KeyEncryptionKeyResolver
+IKeyEncryptionKeyResolver interface of type Azure.Core.Cryptography.IKeyEncryptionKeyResolver
+
+```yaml
+Type: Azure.Core.Cryptography.IKeyEncryptionKeyResolver
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

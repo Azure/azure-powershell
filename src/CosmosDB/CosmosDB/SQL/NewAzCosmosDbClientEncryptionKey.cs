@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = Constants.IKeyEncryptionKeyResolver)]
         [ValidateNotNullOrEmpty]
-        public IKeyEncryptionKeyResolver IKeyEncryptionKeyResolver { get; set; }
+        public IKeyEncryptionKeyResolver KeyEncryptionKeyResolver { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.SqlDatabaseObjectHelpMessage)]
         [ValidateNotNull]
@@ -108,21 +108,21 @@ namespace Microsoft.Azure.Commands.CosmosDB
             
             if (string.Equals(encryptionKeyWrapMetadata.Type, "AZURE_KEY_VAULT"))
             {
-                if (IKeyEncryptionKeyResolver != null)
+                if (KeyEncryptionKeyResolver != null)
                 {
-                    throw new ArgumentException("EncryptionKeyStoreProvider cannot be set if IsAzureKeyVaultKeyStoreProvider is set to true");
+                    throw new ArgumentException("KeyEncryptionKeyResolver cannot be passed if IKeyEncryptionKeyResolver of type AZURE_KEY_VAULT is used. ");
                 }
 
                 // get the token credential for key vault audience.
                 TokenCredential tokenCredential = new CosmosDBSessionCredential(DefaultContext, AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId);
 
-                IKeyEncryptionKeyResolver = new KeyResolver(tokenCredential);
+                KeyEncryptionKeyResolver = new KeyResolver(tokenCredential);
             }
             else
             {
-                if (IKeyEncryptionKeyResolver == null)
+                if (KeyEncryptionKeyResolver == null)
                 {
-                    throw new ArgumentException("IKeyEncryptionKeyResolver cannot be null.");
+                    throw new ArgumentException("KeyEncryptionKeyResolver cannot be null.");
                 }
             }
 
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             rng.GetBytes(plainTextDataEncryptionKey);
 
 
-            byte[] wrappedDataEncryptionKey = IKeyEncryptionKeyResolver.Resolve(encryptionKeyWrapMetadata.Value)
+            byte[] wrappedDataEncryptionKey = KeyEncryptionKeyResolver.Resolve(encryptionKeyWrapMetadata.Value)
             .WrapKey(encryptionKeyWrapMetadata.Algorithm, plainTextDataEncryptionKey);
 
             ClientEncryptionKeyResource clientEncryptionKeyResource = new ClientEncryptionKeyResource
