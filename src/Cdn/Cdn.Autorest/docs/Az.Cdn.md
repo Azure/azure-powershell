@@ -292,3 +292,6 @@ Updates an existing delivery rule within a rule set.
 ### [Update-AzCdnSecurityPolicy](Update-AzCdnSecurityPolicy.md)
 Updates an existing security policy within a profile.
 
+### [Update-AzFrontDoorCdnProfile](Update-AzFrontDoorCdnProfile.md)
+Updates an existing Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified profile name under the specified subscription and resource group.
+

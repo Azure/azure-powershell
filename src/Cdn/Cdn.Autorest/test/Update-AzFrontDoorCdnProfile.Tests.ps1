@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzFrontDoorCdnProfile'))
+if(($null -eq $TestName) -or ($TestName -contains 'Update-AzFrontDoorCdnProfile'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Remove-AzFrontDoorCdnProfile.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzFrontDoorCdnProfile.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,8 +14,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzFrontDoorCdnProfile'
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzFrontDoorCdnProfile' {
-    It 'Delete' {
+Describe 'Update-AzFrontDoorCdnProfile' {
+    It 'UpdateExpanded' {
         { 
             $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
             try
@@ -27,8 +27,20 @@ Describe 'Remove-AzFrontDoorCdnProfile' {
                 Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
 
                 $profileSku = "Standard_AzureFrontDoor";
-                New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
-                Remove-AzFrontDoorCdnProfile -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName
+                $tags = @{
+                    Tag1 = 1
+                    Tag2  = 2
+                }
+                New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global -Tag $tags
+                $tags = @{
+                    Tag1 = 11
+                    Tag2  = 22
+                }
+                Update-AzFrontDoorCdnProfile -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Tag $tags
+                $updatedProfile = Get-AzFrontDoorCdnProfile -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName
+                
+                $updatedProfile.Tag["Tag1"] | Should -Be "11"
+                $updatedProfile.Tag["Tag2"] | Should -Be "22"
             } Finally
             {
                 Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
@@ -36,7 +48,7 @@ Describe 'Remove-AzFrontDoorCdnProfile' {
         } | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentity' {
+    It 'UpdateViaIdentityExpanded' {
         { 
             $PSDefaultParameterValues['Disabled'] = $true
             $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
@@ -49,8 +61,20 @@ Describe 'Remove-AzFrontDoorCdnProfile' {
                 Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
 
                 $profileSku = "Standard_AzureFrontDoor";
-                New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
-                Get-AzFrontDoorCdnProfile -ResourceGroupName $ResourceGroupName -Name $frontDoorCdnProfileName | Remove-AzFrontDoorCdnProfile
+                $tags = @{
+                    Tag1 = 1
+                    Tag2  = 2
+                }
+                New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global -Tag $tags
+                $tags = @{
+                    Tag1 = 11
+                    Tag2  = 22
+                }
+                Get-AzFrontDoorCdnProfile -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName | Update-AzFrontDoorCdnProfile -Tag $tags
+                $updatedProfile = Get-AzFrontDoorCdnProfile -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName
+                
+                $updatedProfile.Tag["Tag1"] | Should -Be "11"
+                $updatedProfile.Tag["Tag2"] | Should -Be "22"
             } Finally
             {
                 Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
