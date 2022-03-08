@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Purview-help.xml
 Module Name: Az.Purview
 online version: https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewRegexClassificationRulePatternObject
 schema: 2.0.0
@@ -36,7 +36,6 @@ Create Regex Classification Rule Pattern Object
 
 ### -Pattern
 
-
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -56,11 +55,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20211001Preview.RegexClassificationRulePattern
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.RegexClassificationRulePattern
 
 ## NOTES
 
 ALIASES
 
 ## RELATED LINKS
-

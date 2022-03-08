@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Purview-help.xml
 Module Name: Az.Purview
 online version: https://docs.microsoft.com/powershell/module/az.purview/new-azpurviewaccount
 schema: 2.0.0
@@ -13,10 +13,10 @@ Creates or updates an account
 ## SYNTAX
 
 ```
-New-AzPurviewAccount -Name <String> -ResourceGroupName <String> -IdentityType <Type> -Location <String>
- -SkuCapacity <Int32> -SkuName <Name> [-SubscriptionId <String>] [-ManagedResourceGroupName <String>]
+New-AzPurviewAccount -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -IdentityType <Type>
+ -Location <String> -SkuCapacity <Int32> -SkuName <Name> [-ManagedResourceGroupName <String>]
  [-PublicNetworkAccess <PublicNetworkAccess>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -280,4 +280,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-
