@@ -47,7 +47,6 @@ Set-AzPrivateDnsZone -Name "myzone.com" -ResourceGroupName "MyResourceGroup" -Ta
 ```
 
 ```output
-Updated zone would look something like this:
 
 Name                          : myzone.com
 ResourceId                    : "/subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/PrivateZones/myzone.com"
