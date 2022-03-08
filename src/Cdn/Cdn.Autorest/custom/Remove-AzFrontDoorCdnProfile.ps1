@@ -155,11 +155,10 @@ function Remove-AzFrontDoorCdnProfile {
     )
     
     process {
-
         if ($PSCmdlet.ParameterSetName -eq 'Delete') {
             $frontDoorCdnProfile = Get-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${Name}
         } elseif ($PSCmdlet.ParameterSetName -eq 'DeleteViaIdentity') {
-            $frontDoorCdnProfile = $InputObject
+            $frontDoorCdnProfile = Get-AzFrontDoorCdnProfile -InputObject $InputObject
         }else {
             throw "Not supported ParameterSetName."
         }
@@ -168,7 +167,6 @@ function Remove-AzFrontDoorCdnProfile {
         {
             throw "Provided FrontDoorCdnProfile does not exist."
         }else{
-            Write-Host -ForegroundColor Green "Skuname $($frontDoorCdnProfile.SkuName)"
             if(ISFrontDoorCdnProfile($frontDoorCdnProfile.SkuName)){
                 Az.Cdn.internal\Remove-AzCdnProfile @PSBoundParameters
             }else{
