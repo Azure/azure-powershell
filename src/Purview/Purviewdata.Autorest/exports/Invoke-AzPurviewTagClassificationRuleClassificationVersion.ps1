@@ -26,26 +26,8 @@ EndTime ScanResultId StartTime Status
 ------- ------------ --------- ------
                                Accepted
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IPurviewdataIdentity
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IOperationResponse
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IPurviewdataIdentity>: Identity Parameter
-  [ClassificationRuleName <String>]: 
-  [ClassificationRuleVersion <Int32?>]: 
-  [DataSourceName <String>]: 
-  [DataSourceType <DataSourceType?>]: 
-  [Id <String>]: Resource identity path
-  [KeyVaultName <String>]: 
-  [RunId <String>]: 
-  [ScanName <String>]: 
-  [ScanRulesetName <String>]: 
-  [Version <Int32?>]: 
 .Link
 https://docs.microsoft.com/powershell/module/az.purview/invoke-azpurviewtagclassificationruleclassificationversion
 #>
@@ -60,24 +42,17 @@ param(
     # Example: https://{accountName}.purview.azure.com
     ${Endpoint},
 
-    [Parameter(ParameterSetName='Tag', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Path')]
     [System.String]
     # .
     ${ClassificationRuleName},
 
-    [Parameter(ParameterSetName='Tag', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Path')]
     [System.Int32]
     # .
     ${ClassificationRuleVersion},
-
-    [Parameter(ParameterSetName='TagViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IPurviewdataIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
 
     [Parameter(Mandatory)]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ClassificationAction])]
@@ -143,7 +118,6 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
             Tag = 'Az.Purviewdata.private\Invoke-AzPurviewTagClassificationRuleClassificationVersion_Tag';
-            TagViaIdentity = 'Az.Purviewdata.private\Invoke-AzPurviewTagClassificationRuleClassificationVersion_TagViaIdentity';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
