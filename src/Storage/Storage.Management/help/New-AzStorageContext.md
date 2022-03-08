@@ -119,7 +119,7 @@ The command gets the Azure Storage container for the local developer storage acc
 ### Example 6: Get multiple containers
 ```powershell
 $Context01 = New-AzStorageContext -Local 
- $Context02 = New-AzStorageContext -StorageAccountName "ContosoGeneral" -StorageAccountKey "< Storage Key for ContosoGeneral ends with == >"
+$Context02 = New-AzStorageContext -StorageAccountName "ContosoGeneral" -StorageAccountKey "< Storage Key for ContosoGeneral ends with == >"
 ($Context01, $Context02) | Get-AzStorageContainer
 ```
 

@@ -180,8 +180,7 @@ $account.AzureFilesIdentityBasedAuth.DirectoryServiceOptions
 AD
 
 $account.AzureFilesIdentityBasedAuth.ActiveDirectoryProperties
-```
-```output
+
 DomainName        : mydomain.com
 NetBiosDomainName : mydomain.com
 ForestName        : mydomain.com
@@ -239,10 +238,10 @@ This command updates a Storage account with RoutingPreference setting: PublishMi
 ```powershell
 $account = Set-AzStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -KeyExpirationPeriodInDay 5 -SasExpirationPeriod "1.12:05:06" -EnableHttpsTrafficOnly $true
 
- $$account.KeyPolicy.KeyExpirationPeriodInDays
+$account.KeyPolicy.KeyExpirationPeriodInDays
 5
 
-$$account.SasPolicy.SasExpirationPeriod
+$account.SasPolicy.SasExpirationPeriod
 1.12:05:06
 ```
 
@@ -256,8 +255,8 @@ $key = Add-AzKeyVaultKey -VaultName $keyvaultName -Name $keyname -Destination 'S
 
 # create user assigned identity and grant access to keyvault (no need if using exist user assigned identity)
 $userId = New-AzUserAssignedIdentity -ResourceGroupName $resourceGroupName -Name $userIdName
- Set-AzKeyVaultAccessPolicy -VaultName $keyvaultName -ResourceGroupName $resourceGroupName -ObjectId $userId.PrincipalId -PermissionsToKeys get,wrapkey,unwrapkey -BypassObjectIdValidation
-$useridentityId= $userId.Id
+Set-AzKeyVaultAccessPolicy -VaultName $keyvaultName -ResourceGroupName $resourceGroupName -ObjectId $userId.PrincipalId -PermissionsToKeys get,wrapkey,unwrapkey -BypassObjectIdValidation
+$useridentityId = $userId.Id
 
 # Update Storage account with Keyvault encryption and access Keyvault with user assigned identity, then show properties
 $account = Update-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName `
@@ -282,7 +281,7 @@ This command first creates a keyvault and a user assigned identity, then updates
 ```powershell
 # Assign System identity to the account, and give the system assigned identity acces to the keyvault
 $account = Set-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName  -IdentityType SystemAssignedUserAssigned
- Set-AzKeyVaultAccessPolicy -VaultName $keyvaultName -ResourceGroupName $resourceGroupName -ObjectId $account.Identity.PrincipalId -PermissionsToKeys get,wrapkey,unwrapkey -BypassObjectIdValidation
+Set-AzKeyVaultAccessPolicy -VaultName $keyvaultName -ResourceGroupName $resourceGroupName -ObjectId $account.Identity.PrincipalId -PermissionsToKeys get,wrapkey,unwrapkey -BypassObjectIdValidation
 
 # Update account from access Keyvault with user assigned identity to access Keyvault with system assigned identity
 $account = Set-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName -IdentityType SystemAssignedUserAssigned -KeyName $keyname -KeyVaultUri $keyvaultUri -KeyVaultUserAssignedIdentityId ""
@@ -321,6 +320,8 @@ To update both both Keyvault and the user assigned identity, we need update with
 $account = Set-AzStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -AllowCrossTenantReplication $false -EnableHttpsTrafficOnly $true
 
 $account.AllowCrossTenantReplication
+```
+```output
 False
 ```
 

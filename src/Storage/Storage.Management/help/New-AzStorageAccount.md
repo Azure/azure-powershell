@@ -207,10 +207,10 @@ This command creates a Storage account with EdgeZone as "microsoftlosangeles1" a
 ```powershell
 $account = New-AzStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -SkuName Premium_LRS -Location eastus -KeyExpirationPeriodInDay 5 -SasExpirationPeriod "1.12:05:06"
 
-$$account.KeyPolicy.KeyExpirationPeriodInDays
+$account.KeyPolicy.KeyExpirationPeriodInDays
 5
 
-$$account.SasPolicy.SasExpirationPeriod
+$account.SasPolicy.SasExpirationPeriod
 1.12:05:06
 ```
 
@@ -225,7 +225,7 @@ $key = Add-AzKeyVaultKey -VaultName $keyvaultName -Name $keyname -Destination 'S
 # create user assigned identity and grant access to keyvault (no need if using exist user assigned identity)
 $userId = New-AzUserAssignedIdentity -ResourceGroupName $resourceGroupName -Name $userIdName
 Set-AzKeyVaultAccessPolicy -VaultName $keyvaultName -ResourceGroupName $resourceGroupName -ObjectId $userId.PrincipalId -PermissionsToKeys get,wrapkey,unwrapkey -BypassObjectIdValidation
-$useridentityId= $userId.Id
+$useridentityId = $userId.Id
 
 # create Storage account with Keyvault encryption (access Keyvault with user assigned identity), then show properties
 $account = New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName -Kind StorageV2 -SkuName Standard_LRS -Location eastus2euap `
@@ -255,6 +255,8 @@ $account = New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountNam
         virtualNetworkRules=(@{VirtualNetworkResourceId="$vnet1";Action="allow"});
         defaultAction="deny"}) 
 $account.EnableNfsV3
+```
+```output
 True
 ```
 
@@ -265,6 +267,8 @@ The command create account with EnableNfsV3 as true, and then show the EnableNfs
 $account = New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -SkuName Standard_LRS  -Location centraluseuap -Kind StorageV2 -PublicNetworkAccess Disabled
 
 $account.PublicNetworkAccess
+```
+```output
 Disabled
 ```
 

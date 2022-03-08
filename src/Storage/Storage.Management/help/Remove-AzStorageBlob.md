@@ -67,7 +67,7 @@ This command uses the asterisk (*) wildcard character and the pipeline to retrie
 
 ### Example 4: Remove a single blob version
 ```powershell
- Remove-AzStorageBlob -Container "containername" -Blob blob2 -VersionId "2020-07-03T16:19:16.2883167Z"
+Remove-AzStorageBlob -Container "containername" -Blob blob2 -VersionId "2020-07-03T16:19:16.2883167Z"
 ```
 
 This command removes a single blobs verion with VersionId.

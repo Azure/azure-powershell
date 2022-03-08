@@ -59,19 +59,19 @@ This example generates a blob SAS token with full blob permission.
 
 ### Example 2: Generate a blob SAS token with life time
 ```powershell
- $StartTime = Get-Date
- $EndTime = $startTime.AddHours(2.0)
- New-AzStorageBlobSASToken -Container "ContainerName" -Blob "BlobName" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime
+$StartTime = Get-Date
+$EndTime = $startTime.AddHours(2.0)
+New-AzStorageBlobSASToken -Container "ContainerName" -Blob "BlobName" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime
 ```
 
 This example generates a blob SAS token with life time.
 
 ### Example 3: Generate a User Identity SAS token with storage context based on OAuth authentication
 ```powershell
- $ctx = New-AzStorageContext -StorageAccountName $accountName -UseConnectedAccount
- $StartTime = Get-Date
- $EndTime = $startTime.AddDays(6)
- New-AzStorageBlobSASToken -Container "ContainerName" -Blob "BlobName" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime -context $ctx
+$ctx = New-AzStorageContext -StorageAccountName $accountName -UseConnectedAccount
+$StartTime = Get-Date
+$EndTime = $startTime.AddDays(6)
+New-AzStorageBlobSASToken -Container "ContainerName" -Blob "BlobName" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime -context $ctx
 ```
 
 This example generates a User Identity blob SAS token with storage context based on OAuth authentication
