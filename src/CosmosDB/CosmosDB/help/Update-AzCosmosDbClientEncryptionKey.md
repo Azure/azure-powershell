@@ -15,14 +15,14 @@ Updates the CosmosDB Client Encryption Key. Performs a client side patch operati
 ### ByNameParameterSet (Default)
 ```
 Update-AzCosmosDbClientEncryptionKey -ResourceGroupName <String> -AccountName <String> -DatabaseName <String>
- [-ClientEncryptionKeyName <String>] [-EncryptionAlgorithmName <String>]
- [-KeyWrapMetadata <PSSqlKeyWrapMetadata>] [-IKeyEncryptionKeyResolver <IKeyEncryptionKeyResolver>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Name <String>] [-EncryptionAlgorithmName <String>] [-KeyWrapMetadata <PSSqlKeyWrapMetadata>]
+ [-IKeyEncryptionKeyResolver <IKeyEncryptionKeyResolver>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Update-AzCosmosDbClientEncryptionKey [-ClientEncryptionKeyName <String>] [-EncryptionAlgorithmName <String>]
+Update-AzCosmosDbClientEncryptionKey [-Name <String>] [-EncryptionAlgorithmName <String>]
  [-KeyWrapMetadata <PSSqlKeyWrapMetadata>] [-IKeyEncryptionKeyResolver <IKeyEncryptionKeyResolver>]
  -ParentObject <PSSqlDatabaseGetResults> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -30,7 +30,7 @@ Update-AzCosmosDbClientEncryptionKey [-ClientEncryptionKeyName <String>] [-Encry
 
 ### ByObjectParameterSet
 ```
-Update-AzCosmosDbClientEncryptionKey [-ClientEncryptionKeyName <String>] [-EncryptionAlgorithmName <String>]
+Update-AzCosmosDbClientEncryptionKey [-Name <String>] [-EncryptionAlgorithmName <String>]
  [-KeyWrapMetadata <PSSqlKeyWrapMetadata>] [-IKeyEncryptionKeyResolver <IKeyEncryptionKeyResolver>]
  -InputObject <PSSqlClientEncryptionKeyGetResults> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
@@ -62,21 +62,6 @@ Parameter Sets: ByNameParameterSet
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ClientEncryptionKeyName
-Client Encryption Key name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -170,6 +155,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Client Encryption Key name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: ClientEncryptionKeyName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -14,13 +14,13 @@ Gets the CosmosDB Client Encryption Key.
 
 ### ByNameParameterSet (Default)
 ```
-Get-AzCosmosDbClientEncryptionKey -ResourceGroupName <String> [-ClientEncryptionKeyName <String>]
+Get-AzCosmosDbClientEncryptionKey -ResourceGroupName <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] -AccountName <String> -DatabaseName <String> [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Get-AzCosmosDbClientEncryptionKey [-ClientEncryptionKeyName <String>] -ParentObject <PSSqlDatabaseGetResults>
+Get-AzCosmosDbClientEncryptionKey [-Name <String>] -ParentObject <PSSqlDatabaseGetResults>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -55,21 +55,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ClientEncryptionKeyName
-Client Encryption Key name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DatabaseName
 Database name.
 
@@ -92,6 +77,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Client Encryption Key name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: ClientEncryptionKeyName
 
 Required: False
 Position: Named

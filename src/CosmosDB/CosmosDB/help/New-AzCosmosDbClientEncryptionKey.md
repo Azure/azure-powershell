@@ -15,14 +15,14 @@ Creates a new CosmosDB Client Encryption Key.
 ### ByNameParameterSet (Default)
 ```
 New-AzCosmosDbClientEncryptionKey -ResourceGroupName <String> -AccountName <String> -DatabaseName <String>
- -ClientEncryptionKeyName <String> -EncryptionAlgorithmName <String> -KeyWrapMetadata <PSSqlKeyWrapMetadata>
+ -Name <String> -EncryptionAlgorithmName <String> -KeyWrapMetadata <PSSqlKeyWrapMetadata>
  [-IKeyEncryptionKeyResolver <IKeyEncryptionKeyResolver>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-New-AzCosmosDbClientEncryptionKey -ClientEncryptionKeyName <String> -EncryptionAlgorithmName <String>
+New-AzCosmosDbClientEncryptionKey -Name <String> -EncryptionAlgorithmName <String>
  -KeyWrapMetadata <PSSqlKeyWrapMetadata> [-IKeyEncryptionKeyResolver <IKeyEncryptionKeyResolver>]
  -ParentObject <PSSqlDatabaseGetResults> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -51,21 +51,6 @@ Name of the Cosmos DB database account.
 ```yaml
 Type: System.String
 Parameter Sets: ByNameParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ClientEncryptionKeyName
-Client Encryption Key name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -147,6 +132,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Client Encryption Key name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: ClientEncryptionKeyName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
