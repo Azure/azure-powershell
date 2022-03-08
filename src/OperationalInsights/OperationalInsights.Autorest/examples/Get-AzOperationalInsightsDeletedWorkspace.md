@@ -1,5 +1,3 @@
-## EXAMPLES
-
 ### Example 1: List all deleted workspaces for a given resource group
 ```powershell
 Get-AzOperationalInsightsDeletedWorkspace -ResourceGroupName {RG-Name}
