@@ -228,3 +228,64 @@ function Test-ExpressRoutePortGenerateLOA
     }
 }
 
+<#
+.SYNOPSIS
+Tests ExpressRoutePortAuthorizationCRUD.
+#>
+function Test-ExpressRoutePortAuthorizationCRUD
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $rname = Get-ResourceName
+	$resourceTypeParent = "Microsoft.Network/expressRoutePorts"
+    $location = Get-ProviderLocation $resourceTypeParent
+	$peeringLocation = "Area51-ERDirect"
+	$encapsulation = "QinQ"
+	$bandwidthInGbps = 100.0
+    $authorizationName = "testkey"
+
+    try
+    {
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation
+
+        # Create the ExpressRoutePort with authorization
+        $authorization = New-AzExpressRoutePortAuthorization -Name $authorizationName
+        $expressRoutePort = New-AzExpressRoutePort -ResourceGroupName $rgname -Name $rname -Location $location -PeeringLocation $peeringLocation -Encapsulation $encapsulation -BandwidthInGbps $bandwidthInGbps -Authorization $authorization
+
+        #verification
+        Assert-NotNull $expressRoutePort
+        Assert-NotNull $expressRoutePort.Authorizations
+        Assert-True { $expressRoutePort.Authorizations.Count -eq 1 }
+        Assert-AreEqual $rname $expressRoutePort.Name
+
+        # Verify the authorization
+        Assert-AreEqual $authorizationName $expressRoutePort.Authorizations[0].Name
+
+        # get authorization
+        $a = $expressRoutePort | Get-AzExpressRoutePortAuthorization -Name $authorizationName
+        Assert-AreEqual $authorizationName $a.Name
+
+        # add a new authorization
+        $expressRoutePort = Get-AzExpressRoutePort -ResourceGroupName $rgname -Name $rname | Add-AzExpressRoutePortAuthorization -Name "testkey2" | Set-AzExpressRoutePort
+
+        $a = $expressRoutePort | Get-AzExpressRoutePortAuthorization -Name "testkey2"
+        Assert-AreEqual "testkey2" $a.Name
+
+        $listAuthorization = $expressRoutePort | Get-AzExpressRoutePortAuthorization
+        Assert-AreEqual 2 @($listAuthorization).Count
+
+        # Delete ExpressRoutePort
+        $removeExpressRoutePort = Remove-AzExpressRoutePort -ResourceGroupName $rgname -Name $rname -PassThru -Force
+        Assert-AreEqual $true $removeExpressRoutePort
+
+        $list = Get-AzExpressRoutePort -ResourceGroupName $rgname
+        Assert-AreEqual 0 @($list).Count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
