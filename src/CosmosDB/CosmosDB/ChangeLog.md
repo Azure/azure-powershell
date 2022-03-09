@@ -19,8 +19,6 @@
 -->
 
 ## Upcoming Release
-
-## Version 1.5.1
 * Introduced support for client encryption key resource management required for CosmosDB Client-Side Encryption:
   - Introduced support for creating, updating and retrieving client encryption keys.
   The following cmdlets are added:
