@@ -40,22 +40,22 @@ File namespace checks:
 
 ### Example 1
 ```powershell
-PS C:\> Invoke-AzStorageSyncCompatibilityCheck C:\DATA
+Invoke-AzStorageSyncCompatibilityCheck C:\DATA
 ```
 
 This command checks the compatibility of the system and also of files and folders in C:\DATA.
 
 ### Example 2
 ```powershell
-PS C:\> Invoke-AzStorageSyncCompatibilityCheck C:\DATA -SkipSystemChecks
+Invoke-AzStorageSyncCompatibilityCheck C:\DATA -SkipSystemChecks
 ```
 
 This command checks the compatibility of files and folders in C:\DATA, but does not perform a system compatibility check.
 
 ### Example 3
 ```powershell
-PS C:\> $validation = Invoke-AzStorageSyncCompatibilityCheck C:\DATA
-PS C:\> $validation.Results | Select-Object -Property Type, Path, Level, Description, Result | Export-Csv -Path C:\results.csv -Encoding utf8
+$validation = Invoke-AzStorageSyncCompatibilityCheck C:\DATA
+$validation.Results | Select-Object -Property Type, Path, Level, Description, Result | Export-Csv -Path C:\results.csv -Encoding utf8
 ```
 
 This command checks the compatibility of the system and also of files and folders in C:\DATA, and then exports the results as a CSV file to C:\results.

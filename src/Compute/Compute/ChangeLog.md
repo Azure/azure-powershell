@@ -20,6 +20,10 @@
 
 -->
 ## Upcoming Release
+* Updated New-AzVM feature for `vCPUsAvailable` and `vCPUsPerCore` parameters. Cmdlets will not try to use the new `VMCustomizationPreview` feature if the user does not have access to that feature. [#17370]
+* Improved description and examples for disk creation
+
+## Version 4.24.0
 * Upgraded Compute .NET SDK package reference to version 52.0.0
 * Updated `New-AzSshKey` cmdlet to write file paths to generated keys to the Warning stream instead of the console.
 * Added `vCPUsAvailable` and `vCPUsPerCore` integer parameters to the `New-AzVm`, `New-AzVmConfig`, and `Update-AzVm` cmdlets.

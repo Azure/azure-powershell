@@ -72,15 +72,15 @@ The Get-AzDataMigrationTask cmdlet retrieves the properties associated with an A
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Get -AzDataMigrationTask -TaskName myTestTask -ServiceName myTestService -ProjectName MyTestProject -ResourceGroupName MyResourceGroup -Expand
+```powershell
+Get-AzDataMigrationTask -TaskName myTestTask -ServiceName myTestService -ProjectName MyTestProject -ResourceGroupName MyResourceGroup -Expand
 ```
 
 The above example illustrates the use of Get-AzDataMigrationTask cmdlet to retrieve the properties associated with an Azure Database Migration Service migration task based on task name passed in as input parameter
 
 ### Example 2
-```
-PS C:\> Get -AzDataMigrationTask -Project $myProject
+```powershell
+Get-AzDataMigrationTask -Project $myProject
 ```
 
 The above example illustrates the use of Get-AzDataMigrationTask cmdlet to retrieve all of the migration tasks associated with PSProject object passed in as input parameter
