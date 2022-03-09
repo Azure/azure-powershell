@@ -53,7 +53,7 @@ PS C:\> {{ Add example code here }}
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -68,7 +68,7 @@ Accept wildcard characters: False
 The instance input object.
 
 ```yaml
-Type: AzureSqlManagedInstanceModel
+Type: Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
 Parameter Sets: GetByParentObjectParameterSet
 Aliases:
 
@@ -83,7 +83,7 @@ Accept wildcard characters: False
 The name of the Azure SQL Managed Instance.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByNameParameterSet
 Aliases:
 
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 The managed instance resource id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByInstanceResourceIdParameterSet
 Aliases:
 
@@ -113,7 +113,7 @@ Accept wildcard characters: False
 The name of the Managed Instance link.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByNameParameterSet, GetByParentObjectParameterSet, GetByInstanceResourceIdParameterSet
 Aliases:
 
@@ -128,7 +128,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByNameParameterSet
 Aliases:
 
@@ -143,7 +143,7 @@ Accept wildcard characters: False
 The Managed Instance Link resource id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByResourceIdParameterSet
 Aliases:
 

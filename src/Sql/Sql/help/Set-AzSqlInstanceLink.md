@@ -56,7 +56,7 @@ PS C:\> {{ Add example code here }}
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 The instance input object.
 
 ```yaml
-Type: AzureSqlManagedInstanceModel
+Type: Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
 Parameter Sets: SetByParentObjectParameterSet
 Aliases:
 
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 The name of the Azure SQL Managed Instance.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByNameParameterSet
 Aliases:
 
@@ -101,7 +101,7 @@ Accept wildcard characters: False
 The name of the Managed Instance link.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByNameParameterSet, SetByParentObjectParameterSet
 Aliases:
 
@@ -116,7 +116,7 @@ Accept wildcard characters: False
 The Managed Instance Link input object.
 
 ```yaml
-Type: AzureSqlManagedInstanceLinkModel
+Type: Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Model.AzureSqlManagedInstanceLinkModel
 Parameter Sets: SetByInputObjectParameterSet
 Aliases:
 
@@ -132,7 +132,7 @@ The value of replication mode.
 Possible values include 'Sync' and 'Async'.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByNameParameterSet, SetByParentObjectParameterSet, SetByResourceIdParameterSet
 Aliases:
 
@@ -144,7 +144,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByInputObjectParameterSet
 Aliases:
 
@@ -159,7 +159,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByNameParameterSet
 Aliases:
 
@@ -174,7 +174,7 @@ Accept wildcard characters: False
 The Managed Instance Link resource id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceIdParameterSet
 Aliases:
 
@@ -189,7 +189,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -205,7 +205,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

@@ -293,6 +293,9 @@ Gets the vulnerability assessment settings of a managed database.
 ### [Get-AzSqlInstanceKeyVaultKey](Get-AzSqlInstanceKeyVaultKey.md)
 Gets a SQL managed instance's Key Vault keys.
 
+### [Get-AzSqlInstanceLink](Get-AzSqlInstanceLink.md)
+{{ Fill in the Synopsis }}
+
 ### [Get-AzSqlInstanceOperation](Get-AzSqlInstanceOperation.md)
 Gets a SQL managed instance's operations.
 
@@ -301,6 +304,9 @@ Returns information about the Azure SQL Instance pool.
 
 ### [Get-AzSqlInstancePoolUsage](Get-AzSqlInstancePoolUsage.md)
 Returns information about an Azure SQL Instance pool's usage.
+
+### [Get-AzSqlInstanceServerTrustCertificate](Get-AzSqlInstanceServerTrustCertificate.md)
+{{ Fill in the Synopsis }}
 
 ### [Get-AzSqlInstanceTransparentDataEncryptionProtector](Get-AzSqlInstanceTransparentDataEncryptionProtector.md)
 Gets the Transparent Data Encryption (TDE) protector for a SQL managed instance.
@@ -452,8 +458,14 @@ Creates an Azure SQL Database Managed Instance.
 ### [New-AzSqlInstanceDatabase](New-AzSqlInstanceDatabase.md)
 Creates an Azure SQL Managed Instance database.
 
+### [New-AzSqlInstanceLink](New-AzSqlInstanceLink.md)
+{{ Fill in the Synopsis }}
+
 ### [New-AzSqlInstancePool](New-AzSqlInstancePool.md)
 Creates an Azure SQL Instance pool.
+
+### [New-AzSqlInstanceServerTrustCertificate](New-AzSqlInstanceServerTrustCertificate.md)
+{{ Fill in the Synopsis }}
 
 ### [New-AzSqlServer](New-AzSqlServer.md)
 Creates a SQL Database server.
@@ -560,8 +572,14 @@ Removes the information types and sensitivity labels of columns in the Azure SQL
 ### [Remove-AzSqlInstanceKeyVaultKey](Remove-AzSqlInstanceKeyVaultKey.md)
 Removes a Key Vault key from a SQL managed instance
 
+### [Remove-AzSqlInstanceLink](Remove-AzSqlInstanceLink.md)
+{{ Fill in the Synopsis }}
+
 ### [Remove-AzSqlInstancePool](Remove-AzSqlInstancePool.md)
 Removes an Azure SQL Instance pool.
+
+### [Remove-AzSqlInstanceServerTrustCertificate](Remove-AzSqlInstanceServerTrustCertificate.md)
+{{ Fill in the Synopsis }}
 
 ### [Remove-AzSqlServer](Remove-AzSqlServer.md)
 Removes an Azure SQL Database server.
@@ -703,6 +721,9 @@ Sets the information types and sensitivity labels of columns in the Azure SQL Ma
 
 ### [Set-AzSqlInstanceDatabaseVulnerabilityAssessmentRuleBaseline](Set-AzSqlInstanceDatabaseVulnerabilityAssessmentRuleBaseline.md)
 Sets the vulnerability assessment rule baseline.
+
+### [Set-AzSqlInstanceLink](Set-AzSqlInstanceLink.md)
+{{ Fill in the Synopsis }}
 
 ### [Set-AzSqlInstancePool](Set-AzSqlInstancePool.md)
 Sets properties for an Azure SQL Instance pool.
