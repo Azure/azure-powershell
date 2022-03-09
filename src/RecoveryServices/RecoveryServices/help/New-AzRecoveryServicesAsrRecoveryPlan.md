@@ -48,22 +48,22 @@ A recovery plan gathers virtual machines belonging to an application into a unit
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $currentJob = New-AzRecoveryServicesAsrRecoveryPlan -Name $RPName -PrimaryFabric $PrimaryFabric -RecoveryFabric $RecoveryFabric -ReplicationProtectedItem $RPI
+```powershell
+$currentJob = New-AzRecoveryServicesAsrRecoveryPlan -Name $RPName -PrimaryFabric $PrimaryFabric -RecoveryFabric $RecoveryFabric -ReplicationProtectedItem $RPI
 ```
 
 Starts the recovery plan creation operation with the specified parameters and returns the ASR job used to track the operation.
 
 ### Example 2
-```
-PS C:\> $currentJob = New-AzRecoveryServicesAsrRecoveryPlan -Name $RPName -PrimaryFabric $PrimaryFabric -PrimaryZone $pZone-RecoveryZone $rZone -ReplicationProtectedItem $RPI
+```powershell
+$currentJob = New-AzRecoveryServicesAsrRecoveryPlan -Name $RPName -PrimaryFabric $PrimaryFabric -PrimaryZone $pZone-RecoveryZone $rZone -ReplicationProtectedItem $RPI
 ```
 
 Starts the recovery plan creation operation for Azure zone to zone replicated items and returns the ASR job used to track the operation.
 
 ### Example 3
-```
-PS C:\> $currentJob = New-AzRecoveryServicesAsrRecoveryPlan -Name $RPName -PrimaryFabric $PrimaryFabric -PrimaryEdgeZone $pEdgeZone 
+```powershell
+$currentJob = New-AzRecoveryServicesAsrRecoveryPlan -Name $RPName -PrimaryFabric $PrimaryFabric -PrimaryEdgeZone $pEdgeZone 
 -RecoveryZone $rZone -ReplicationProtectedItem $RPI
 ```
 

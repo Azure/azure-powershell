@@ -20,6 +20,9 @@
 ## Upcoming Release
 * Updated ADF .Net SDK version to 5.3.0
 
+## Version 1.16.4
+* Updated ADF .Net SDK version to 5.2.0
+
 ## Version 1.16.3
 * Updated ADF .Net SDK version to 5.1.0
 

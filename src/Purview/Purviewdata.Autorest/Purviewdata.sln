@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accounts", "..\..\..\Accounts\Accounts\Accounts.csproj", "{0900C13E-17B7-493E-84FD-86CD5A1904D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication", "..\..\..\Accounts\Authentication\Authentication.csproj", "{D7410FD5-365A-4E0C-BCC9-DFCEC86A70FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication.ResourceManager", "..\..\..\Accounts\Authentication.ResourceManager\Authentication.ResourceManager.csproj", "{670F2DED-17A5-4A23-BC25-00F6A5B2E1B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationAssemblyLoadContext", "..\..\..\Accounts\AuthenticationAssemblyLoadContext\AuthenticationAssemblyLoadContext.csproj", "{103AEE16-FA16-445F-B4EF-1EF5869D2C1A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\..\..\Accounts\Authenticators\Authenticators.csproj", "{977461E0-C34A-4FBC-9355-25024857EA88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Purviewdata", "Az.Purviewdata.csproj", "{F6E350EF-FA38-4BCF-A06E-328A9AC74CA7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0900C13E-17B7-493E-84FD-86CD5A1904D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0900C13E-17B7-493E-84FD-86CD5A1904D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0900C13E-17B7-493E-84FD-86CD5A1904D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0900C13E-17B7-493E-84FD-86CD5A1904D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7410FD5-365A-4E0C-BCC9-DFCEC86A70FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7410FD5-365A-4E0C-BCC9-DFCEC86A70FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7410FD5-365A-4E0C-BCC9-DFCEC86A70FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7410FD5-365A-4E0C-BCC9-DFCEC86A70FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{670F2DED-17A5-4A23-BC25-00F6A5B2E1B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{670F2DED-17A5-4A23-BC25-00F6A5B2E1B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{670F2DED-17A5-4A23-BC25-00F6A5B2E1B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{670F2DED-17A5-4A23-BC25-00F6A5B2E1B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{103AEE16-FA16-445F-B4EF-1EF5869D2C1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{103AEE16-FA16-445F-B4EF-1EF5869D2C1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{103AEE16-FA16-445F-B4EF-1EF5869D2C1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{103AEE16-FA16-445F-B4EF-1EF5869D2C1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{977461E0-C34A-4FBC-9355-25024857EA88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{977461E0-C34A-4FBC-9355-25024857EA88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{977461E0-C34A-4FBC-9355-25024857EA88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{977461E0-C34A-4FBC-9355-25024857EA88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6E350EF-FA38-4BCF-A06E-328A9AC74CA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6E350EF-FA38-4BCF-A06E-328A9AC74CA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6E350EF-FA38-4BCF-A06E-328A9AC74CA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6E350EF-FA38-4BCF-A06E-328A9AC74CA7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

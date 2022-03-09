@@ -364,6 +364,11 @@ namespace Microsoft.Azure.Commands.Profile
                     break;
             }
 
+            if (!AzureSession.Instance.TryGetComponent(AzKeyStore.Name, out AzKeyStore keyStore))
+            {
+                keyStore = null;
+            }
+
             SecureString password = null;
             if (Credential != null)
             {
@@ -403,6 +408,7 @@ namespace Microsoft.Azure.Commands.Profile
                 if (CertificatePassword != null)
                 {
                     azureAccount.SetProperty(AzureAccount.Property.CertificatePassword, CertificatePassword.ConvertToString());
+                    keyStore?.SaveKey(new ServicePrincipalKey(AzureAccount.Property.CertificatePassword, azureAccount.Id, Tenant), CertificatePassword);
                 }
             }
 
@@ -433,6 +439,8 @@ namespace Microsoft.Azure.Commands.Profile
             if (azureAccount.Type == AzureAccount.AccountType.ServicePrincipal && password != null)
             {
                 azureAccount.SetProperty(AzureAccount.Property.ServicePrincipalSecret, password.ConvertToString());
+                keyStore?.SaveKey(new ServicePrincipalKey(AzureAccount.Property.ServicePrincipalSecret
+                    ,azureAccount.Id, Tenant), password);
                 if (GetContextModificationScope() == ContextModificationScope.CurrentUser)
                 {
                     var file = AzureSession.Instance.ARMProfileFile;
@@ -700,9 +708,10 @@ namespace Microsoft.Azure.Commands.Profile
                     autoSaveEnabled = false;
                 }
 
-                IServicePrincipalKeyStore keyStore =
-                    new AzureRmServicePrincipalKeyStore(AzureRmProfileProvider.Instance.Profile);
-                AzureSession.Instance.RegisterComponent(ServicePrincipalKeyStore.Name, () => keyStore);
+#pragma warning disable CS0618 // Type or member is obsolete
+                var keyStore = new AzKeyStore(AzureRmProfileProvider.Instance.Profile);
+#pragma warning restore CS0618 // Type or member is obsolete
+                AzureSession.Instance.RegisterComponent(AzKeyStore.Name, () => keyStore);
 
                 IAuthenticatorBuilder builder = null;
                 if (!AzureSession.Instance.TryGetComponent(AuthenticatorBuilder.AuthenticatorBuilderKey, out builder))

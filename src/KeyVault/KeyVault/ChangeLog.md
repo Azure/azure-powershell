@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.3.0
 * `New-AzKeyVaultManagedHsm`: supported specifying how long a deleted managed hsm is retained by `SoftDeleteRetentionInDays` and enabling purge protection by `EnablePurgeProtection`
 * `Update-AzKeyVaultManagedHsm`: supported enabling purge protection by `EnablePurgeProtection`
 * `Get-AzKeyVaultManagedHsm`: Supported getting or listing deleted managed HSM(s)
