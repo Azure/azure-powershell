@@ -40,6 +40,33 @@ namespace Microsoft.WindowsAzure.Commands.Common
         private const string DefaultPSVersion = "3.0.0.0";
         private const string EventName = "cmdletInvocation";
 
+        public static string SessionId { get; } = System.Guid.NewGuid().ToString();
+
+        /// <summary>
+        /// Set _telemetryId and _internalCalledCmdlets as thread local since we need an instance of them per thread.
+        /// </summary>
+        [ThreadStatic]
+        private static string _telemetryId = "";
+        [ThreadStatic]
+        private static string _internalCalledCmdlets = "";
+
+        public static string TelemetryId { get=> _telemetryId; set { _telemetryId = value; } }
+
+        public static string InternalCalledCmdlets { get => _internalCalledCmdlets; set { _internalCalledCmdlets = value; } }
+
+        public static bool IsCalledByUser() { return _telemetryId == "" ? true : false; }
+
+        public static void AppendInternalCalledCmdlet(string cmldetName) { _internalCalledCmdlets += (_internalCalledCmdlets == "" ? "" : ",") + cmldetName; }
+
+        /// <summary>
+        /// Clear telemetry context.
+        /// </summary>
+        public static void ClearTelemetryContext()
+        {
+            _telemetryId = "";
+            _internalCalledCmdlets = "";
+        }
+
         /// <summary>
         /// The collection of telemetry clients.
         /// </summary>
@@ -278,7 +305,8 @@ namespace Microsoft.WindowsAzure.Commands.Common
             eventProperties.Add("start-time", qos.StartTime.ToUniversalTime().ToString("o"));
             eventProperties.Add("end-time", qos.EndTime.ToUniversalTime().ToString("o"));
             eventProperties.Add("duration", qos.Duration.ToString("c"));
-            if(!string.IsNullOrWhiteSpace(SharedVariable.PredictorCorrelationId))
+            eventProperties.Add("InternalCalledCmdlets", MetricHelper.InternalCalledCmdlets);
+            if (!string.IsNullOrWhiteSpace(SharedVariable.PredictorCorrelationId))
             {
                 eventProperties.Add("predictor-correlation-id", SharedVariable.PredictorCorrelationId);
                 SharedVariable.PredictorCorrelationId = null;
@@ -580,7 +608,12 @@ public class AzurePSQoSEvent
 
     public override string ToString()
     {
+#if DEBUG
+        string ret = $"AzureQoSEvent: Module: {ModuleName}:{ModuleVersion}; Session:{SessionId}; CommandName: {CommandName}; PSVersion: {PSVersion}; InternalCalledCmdlets: {Microsoft.WindowsAzure.Commands.Common.MetricHelper.InternalCalledCmdlets}";
+#else
         string ret = $"AzureQoSEvent: Module: {ModuleName}:{ModuleVersion}; CommandName: {CommandName}; PSVersion: {PSVersion}";
+#endif 
+        
         ret += $"; IsSuccess: {IsSuccess}; Duration: {Duration}";
 
         if (Exception != null)
