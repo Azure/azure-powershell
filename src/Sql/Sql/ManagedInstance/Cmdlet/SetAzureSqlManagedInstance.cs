@@ -407,8 +407,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
 
             if (string.Equals(this.BackupStorageRedundancy, "Geo", StringComparison.OrdinalIgnoreCase))
             {
-                var model = GetEntity();
-                if (model.FirstOrDefault().CurrentBackupStorageRedundancy != "Geo" && !Force.IsPresent && !ShouldContinue(
+                ModelAdapter = InitModelAdapter();
+                var existingManagedInstance = ModelAdapter.GetManagedInstance(this.ResourceGroupName, this.Name);
+                if (existingManagedInstance.CurrentBackupStorageRedundancy != "Geo" && !Force.IsPresent && !ShouldContinue(
                     string.Format(CultureInfo.InvariantCulture, Properties.Resources.DoYouWantToProceed, this.Name),
                     string.Format(CultureInfo.InvariantCulture, Properties.Resources.BackupRedundancyChosenIsGeoWarning, this.Name)))
                 {

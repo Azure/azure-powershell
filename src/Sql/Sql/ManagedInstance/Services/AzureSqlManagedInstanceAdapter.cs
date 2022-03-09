@@ -252,6 +252,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
             managedInstance.InstancePoolName = resp.InstancePoolId != null ?
                 new ResourceIdentifier(resp.InstancePoolId).ResourceName : null;
             managedInstance.MinimalTlsVersion = resp.MinimalTlsVersion;
+            managedInstance.BackupStorageRedundancy = resp.CurrentBackupStorageRedundancy;
             managedInstance.RequestedBackupStorageRedundancy = resp.RequestedBackupStorageRedundancy;
             managedInstance.CurrentBackupStorageRedundancy = resp.CurrentBackupStorageRedundancy;
             managedInstance.MaintenanceConfigurationId = resp.MaintenanceConfigurationId;
