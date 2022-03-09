@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
                 Properties.Resources.ShouldProcessCaption))
             {
                 // message prompt requiring the customer to explicitly confirm the delete operation
-                if (Force || ShouldContinue(Properties.Resources.RemoveAzureSqlInstanceServerTrustCertificateAllowDataLoss, Properties.Resources.ShouldProcessCaption))
+                if (Force || ShouldContinue(Properties.Resources.RemoveAzureSqlInstanceLinkAllowDataLoss, Properties.Resources.ShouldProcessCaption))
                 {
                     base.ExecuteCmdlet();
                 }

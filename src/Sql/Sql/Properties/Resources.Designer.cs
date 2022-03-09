@@ -376,7 +376,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to create the Server Trust Certificate in resource group &apos;{0}&apos; under managed instance &apos;{1}&apos; with name &apos;{2}&apos;?.
+        ///   Looks up a localized string similar to Are you sure you want to create a new Server Trust Certificate in resource group &apos;{0}&apos; under managed instance &apos;{1}&apos; with name &apos;{2}&apos;?.
         /// </summary>
         internal static string CreateAzureSqlInstanceServerTrustCertificateWarning {
             get {
@@ -999,7 +999,16 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Permanently removing Azure Sql Managed Instance Link &apos;{0}&apos; on server &apos;{1}&apos;..
+        ///   Looks up a localized string similar to This operation may cause data loss if replicas last hardened LSNs are not in sync, are you sure you want to continue?.
+        /// </summary>
+        internal static string RemoveAzureSqlInstanceLinkAllowDataLoss {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlInstanceLinkAllowDataLoss", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Permanently removing Azure Sql Managed Instance Link in resource group &apos;{0}&apos; under managed instance &apos;{1}&apos; with name &apos;{2}&apos;..
         /// </summary>
         internal static string RemoveAzureSqlInstanceLinkDescription {
             get {
@@ -1008,7 +1017,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Instance Managed Instance Link &apos;{0}&apos; on server &apos;{1}&apos;?.
+        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Instance Managed Instance Link in resource group &apos;{0}&apos; under managed instance &apos;{1}&apos; with name &apos;{2}&apos;?.
         /// </summary>
         internal static string RemoveAzureSqlInstanceLinkWarning {
             get {
@@ -1017,16 +1026,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This operation may cause data loss if replicas last hardened LSNs are not in sync, are you sure you want to continue?.
-        /// </summary>
-        internal static string RemoveAzureSqlInstanceServerTrustCertificateAllowDataLoss {
-            get {
-                return ResourceManager.GetString("RemoveAzureSqlInstanceServerTrustCertificateAllowDataLoss", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Permanently removing Azure Sql Instance Server Trust Certificate &apos;{0}&apos; on server &apos;{1}&apos;..
+        ///   Looks up a localized string similar to Permanently removing Azure Sql Instance Server Trust Certificate in resource group &apos;{0}&apos; under managed instance &apos;{1}&apos; with name &apos;{2}&apos;..
         /// </summary>
         internal static string RemoveAzureSqlInstanceServerTrustCertificateDescription {
             get {
@@ -1035,7 +1035,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Instance Server Trust Certificate &apos;{0}&apos; on server &apos;{1}&apos;?.
+        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Instance Server Trust Certificate in resource group &apos;{0}&apos; under managed instance &apos;{1}&apos; with name &apos;{2}&apos;?.
         /// </summary>
         internal static string RemoveAzureSqlInstanceServerTrustCertificateWarning {
             get {

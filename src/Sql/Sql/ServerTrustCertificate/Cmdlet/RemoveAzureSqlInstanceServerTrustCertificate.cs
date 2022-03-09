@@ -112,8 +112,8 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
 
             // messages describing behavior with -WhatIf and -Confirm flags
             if (ShouldProcess(
-                string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveAzureSqlInstanceServerTrustCertificateDescription, CertificateName, InstanceName),
-                string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveAzureSqlInstanceServerTrustCertificateWarning, CertificateName, InstanceName),
+                string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveAzureSqlInstanceServerTrustCertificateDescription, ResourceGroupName, InstanceName, CertificateName),
+                string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveAzureSqlInstanceServerTrustCertificateWarning, ResourceGroupName, InstanceName, CertificateName),
                 Properties.Resources.ShouldProcessCaption))
             {
                 base.ExecuteCmdlet();
