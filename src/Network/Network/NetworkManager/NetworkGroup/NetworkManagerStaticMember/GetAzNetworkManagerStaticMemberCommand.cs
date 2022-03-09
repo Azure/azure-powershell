@@ -80,11 +80,11 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
-                IPage<NetworkManagerStaticMember> memberPage;
+                IPage<StaticMember> memberPage;
                 memberPage = this.NetworkManagerStaticMemberClient.List(this.ResourceGroupName, this.NetworkManagerName, this.NetworkGroupName);
 
                 // Get all resources by polling on next page link
-                var staticMemberList = ListNextLink<NetworkManagerStaticMember>.GetAllResourcesByPollingNextLink(memberPage, this.NetworkManagerStaticMemberClient.ListNext);
+                var staticMemberList = ListNextLink<StaticMember>.GetAllResourcesByPollingNextLink(memberPage, this.NetworkManagerStaticMemberClient.ListNext);
 
                 var psStaticMemberList = new List<PSNetworkManagerStaticMember>();
 

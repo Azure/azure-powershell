@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Network
                 parameter.SkipToken = this.SkipToken;
             }
 
-            var effectiveVirtualNetworksListResult = this.NetworkClient.NetworkManagementClient.EffectiveVirtualNetworks.ListByNetworkGroup(this.ResourceGroupName, this.NetworkManagerName, this.NetworkGroupName, parameter);
+            var effectiveVirtualNetworksListResult = this.NetworkClient.NetworkManagementClient.ListEffectiveVirtualNetworks.ByNetworkGroup(this.ResourceGroupName, this.NetworkManagerName, this.NetworkGroupName, parameter);
             var psEffectiveVirtualNetworksList = NetworkResourceManagerProfile.Mapper.Map<PSNetworkManagerEffectiveVirtualNetworksListResult>(effectiveVirtualNetworksListResult);
             WriteObject(psEffectiveVirtualNetworksList);
         }

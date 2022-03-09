@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Network
                 }
 
                 // Map to the sdk object
-                var staticMemberModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkManagerStaticMember>(this.StaticMember);
+                var staticMemberModel = NetworkResourceManagerProfile.Mapper.Map<MNM.StaticMember>(this.StaticMember);
 
                 // Execute the PUT NetworkManagerGroup call
                 var groupResponse = this.NetworkManagerStaticMemberClient.CreateOrUpdate(staticMemberModel, this.ResourceGroupName, this.NetworkManagerName, this.NetworkGroupName, this.StaticMember.Name);

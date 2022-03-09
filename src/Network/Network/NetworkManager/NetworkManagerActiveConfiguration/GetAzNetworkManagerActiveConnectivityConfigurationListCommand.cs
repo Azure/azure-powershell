@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Network
                 parameter.SkipToken = this.SkipToken;
             }
                 
-            var networkManagerActiveConnectivityConfiguration = this.NetworkClient.NetworkManagementClient.ActiveConnectivityConfigurations.List(this.ResourceGroupName, this.NetworkManagerName, parameter);
+            var networkManagerActiveConnectivityConfiguration = this.NetworkClient.NetworkManagementClient.ListActiveConnectivityConfigurations(parameter, this.ResourceGroupName, this.NetworkManagerName);
             var psActiveConnectivityConfigurationList = NetworkResourceManagerProfile.Mapper.Map<PSNetworkManagerActiveConnectivityConfigurationListResult>(networkManagerActiveConnectivityConfiguration);
             WriteObject(psActiveConnectivityConfigurationList);
         }

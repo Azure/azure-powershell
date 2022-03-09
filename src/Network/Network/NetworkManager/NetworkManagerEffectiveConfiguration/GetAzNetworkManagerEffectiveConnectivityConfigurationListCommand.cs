@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Network
                 parameter.SkipToken = this.SkipToken;
             }
                 
-            var networkManagerEffectiveConnectivityConfiguration = this.NetworkClient.NetworkManagementClient.EffectiveConnectivityConfigurations.List(this.ResourceGroupName, this.VirtualNetworkName, parameter);
+            var networkManagerEffectiveConnectivityConfiguration = this.NetworkClient.NetworkManagementClient.ListNetworkManagerEffectiveConnectivityConfigurations(parameter, this.ResourceGroupName, this.VirtualNetworkName);
             var psEffectiveConnectivityConfigurationList = NetworkResourceManagerProfile.Mapper.Map<PSNetworkManagerEffectiveConnectivityConfigurationListResult>(networkManagerEffectiveConnectivityConfiguration);
             WriteObject(psEffectiveConnectivityConfigurationList);
         }

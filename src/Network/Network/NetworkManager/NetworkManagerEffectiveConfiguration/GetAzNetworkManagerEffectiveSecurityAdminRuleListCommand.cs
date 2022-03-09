@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Network
                 parameter.SkipToken = this.SkipToken;
             }
                 
-            var networkManagerEffectiveAdminRuleListResult = this.NetworkClient.NetworkManagementClient.NetworkManagerEffectiveSecurityAdminRules.List(this.ResourceGroupName, this.VirtualNetworkName, parameter);
+            var networkManagerEffectiveAdminRuleListResult = this.NetworkClient.NetworkManagementClient.ListNetworkManagerEffectiveSecurityAdminRules(parameter, this.ResourceGroupName, this.VirtualNetworkName);
             var pSNetworkManagerEffectiveSecurityAdminRulesList = new List<PSNetworkManagerEffectiveBaseSecurityAdminRule>();
 
             foreach (var rule in networkManagerEffectiveAdminRuleListResult.Value)

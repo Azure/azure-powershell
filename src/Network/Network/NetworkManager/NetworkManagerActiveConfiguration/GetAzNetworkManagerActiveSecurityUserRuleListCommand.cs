@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Network
                 parameter.SkipToken = this.SkipToken;
             }
                 
-            var networkManagerActiveUserRuleListResult = this.NetworkClient.NetworkManagementClient.ActiveSecurityUserRules.List(this.ResourceGroupName, this.NetworkManagerName, parameter);
+            var networkManagerActiveUserRuleListResult = this.NetworkClient.NetworkManagementClient.ListActiveSecurityUserRules(parameter, this.ResourceGroupName, this.NetworkManagerName);
             var pSNetworkManagerActiveSecurityUserRules = new List<PSNetworkManagerActiveBaseSecurityUserRule>();
 
             foreach (var rule in networkManagerActiveUserRuleListResult.Value)

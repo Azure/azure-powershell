@@ -23,11 +23,11 @@ namespace Microsoft.Azure.Commands.Network
 {
     public abstract class NetworkManagerStaticMemberBaseCmdlet : NetworkBaseCmdlet
     {
-        public INetworkManagerStaticMemberOperations NetworkManagerStaticMemberClient
+        public IStaticMembersOperations NetworkManagerStaticMemberClient
         {
             get
             {
-                return NetworkClient.NetworkManagementClient.NetworkGroups.StaticMember;
+                return NetworkClient.NetworkManagementClient.StaticMembers;
             }
         }
 
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Network
             }
         }
 
-        public PSNetworkManagerStaticMember ToPsNetworkManagerStaticMember(NetworkGroup networkManagerStaticMember)
+        public PSNetworkManagerStaticMember ToPsNetworkManagerStaticMember(StaticMember networkManagerStaticMember)
         {
             var psNetworkManagerStaticMember = NetworkResourceManagerProfile.Mapper.Map<PSNetworkManagerStaticMember>(networkManagerStaticMember);
             return psNetworkManagerStaticMember;

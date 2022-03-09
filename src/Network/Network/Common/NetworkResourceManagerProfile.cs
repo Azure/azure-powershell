@@ -1513,7 +1513,6 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<ANM.PSNetworkManagerEffectiveVirtualNetworksParameter, MNM.EffectiveVirtualNetworksParameter>();
                 cfg.CreateMap<ANM.PSNetworkManagerGroup, MNM.NetworkGroup>();
                 cfg.CreateMap<ANM.PSNetworkManagerStaticMember, MNM.StaticMember>();
-                cfg.CreateMap<ANM.PSNetworkManagerStaticMembersItem, MNM.StaticMembersItems>();
                 cfg.CreateMap<ANM.PSNetworkManagerHub, MNM.Hub>();
                 cfg.CreateMap<ANM.PSNetworkManagerQueryRequestOptions, MNM.QueryRequestOptions>();
                 cfg.CreateMap<ANM.PSNetworkManagerScopes, MNM.NetworkManagerPropertiesNetworkManagerScopes>();
@@ -1560,7 +1559,6 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.EffectiveVirtualNetworksParameter, ANM.PSNetworkManagerEffectiveVirtualNetworksParameter>();
                 cfg.CreateMap<MNM.NetworkGroup, ANM.PSNetworkManagerGroup>();
                 cfg.CreateMap<MNM.StaticMember, ANM.PSNetworkManagerStaticMember>();
-                cfg.CreateMap<MNM.StaticMembersItems, ANM.PSNetworkManagerStaticMembersItem>();
                 cfg.CreateMap<MNM.Hub, ANM.PSNetworkManagerHub>();
                 cfg.CreateMap<MNM.QueryRequestOptions, ANM.PSNetworkManagerQueryRequestOptions>();
                 cfg.CreateMap<MNM.NetworkManagerPropertiesNetworkManagerScopes, ANM.PSNetworkManagerScopes>();

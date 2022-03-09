@@ -63,28 +63,10 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string ResourceGroupName { get; set; }
 
         [Parameter(
-         Mandatory = false,
-         ValueFromPipelineByPropertyName = true,
-         HelpMessage = "DisplayName.")]
-        public virtual string DisplayName { get; set; }
-
-        [Parameter(
-         Mandatory = false,
-         ValueFromPipelineByPropertyName = true,
-         HelpMessage = "Description.")]
-        public virtual string Description { get; set; }
-
-        [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "Static members.")]
-        public List<PSNetworkManagerStaticMembersItem> StaticMembers { get; set; }
-
-        [Parameter(
-           Mandatory = false,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "If match header.")]
-        public string IfMatch { get; set; }
+           HelpMessage = "Resource Id.")]
+        public string ResourceId { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -115,27 +97,12 @@ namespace Microsoft.Azure.Commands.Network
         {
             var psNetworkStaticMember = new PSNetworkManagerStaticMember();
             psNetworkStaticMember.Name = this.Name;
-            psNetworkStaticMember.StaticMembers = this.StaticMembers;
-
-            if (!string.IsNullOrEmpty(this.Description))
-            {
-                psNetworkStaticMember.Description = this.Description;
-            }
-            if (!string.IsNullOrEmpty(this.DisplayName))
-            {
-                psNetworkStaticMember.DisplayName = this.DisplayName;
-            }
+            psNetworkStaticMember.ResourceId = this.ResourceId;
 
             // Map to the sdk object
-            var networkManagerStaticMemberModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkManagerStaticMember>(psNetworkStaticMember);
+            var networkManagerStaticMemberModel = NetworkResourceManagerProfile.Mapper.Map<MNM.StaticMember>(psNetworkStaticMember);
 
-            // Execute the Create NetworkManagerStaticMember call
-            if(string.IsNullOrEmpty(this.IfMatch))
-            {
-                this.IfMatch = null;
-            }
-
-            var networkManagerStaticMemberResponse = this.NetworkManagerStaticMemberClient.CreateOrUpdate(networkManagerStaticMemberModel, this.ResourceGroupName, this.NetworkManagerName, this.NetworkGroupName, this.Name, this.IfMatch);
+            var networkManagerStaticMemberResponse = this.NetworkManagerStaticMemberClient.CreateOrUpdate(networkManagerStaticMemberModel, this.ResourceGroupName, this.NetworkManagerName, this.NetworkGroupName, this.Name);
             var psNetworkManager = this.ToPsNetworkManagerStaticMember(networkManagerStaticMemberResponse);
 
             return psNetworkManager;
