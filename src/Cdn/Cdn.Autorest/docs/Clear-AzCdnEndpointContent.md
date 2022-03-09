@@ -12,27 +12,27 @@ Removes a content from CDN.
 
 ## SYNTAX
 
-### PurgeExpanded (Default)
+### PurgeExpanded1 (Default)
 ```
 Clear-AzCdnEndpointContent -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
  -ContentPath <String[]> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Purge
+### Purge1
 ```
 Clear-AzCdnEndpointContent -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
  -ContentFilePath <IPurgeParameters> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### PurgeViaIdentity
+### PurgeViaIdentity1
 ```
 Clear-AzCdnEndpointContent -InputObject <ICdnIdentity> -ContentFilePath <IPurgeParameters>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### PurgeViaIdentityExpanded
+### PurgeViaIdentityExpanded1
 ```
 Clear-AzCdnEndpointContent -InputObject <ICdnIdentity> -ContentPath <String[]> [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -84,7 +84,7 @@ To construct, see NOTES section for CONTENTFILEPATH properties and create a hash
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IPurgeParameters
-Parameter Sets: Purge, PurgeViaIdentity
+Parameter Sets: Purge1, PurgeViaIdentity1
 Aliases:
 
 Required: True
@@ -100,7 +100,7 @@ Can describe a file path or a wild card directory.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: PurgeExpanded, PurgeViaIdentityExpanded
+Parameter Sets: PurgeExpanded1, PurgeViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -130,7 +130,7 @@ Name of the endpoint under the profile which is unique globally.
 
 ```yaml
 Type: System.String
-Parameter Sets: Purge, PurgeExpanded
+Parameter Sets: Purge1, PurgeExpanded1
 Aliases:
 
 Required: True
@@ -146,7 +146,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-Parameter Sets: PurgeViaIdentity, PurgeViaIdentityExpanded
+Parameter Sets: PurgeViaIdentity1, PurgeViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -191,7 +191,7 @@ Name of the CDN profile which is unique within the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Purge, PurgeExpanded
+Parameter Sets: Purge1, PurgeExpanded1
 Aliases:
 
 Required: True
@@ -206,7 +206,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Purge, PurgeExpanded
+Parameter Sets: Purge1, PurgeExpanded1
 Aliases:
 
 Required: True
@@ -221,7 +221,7 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Purge, PurgeExpanded
+Parameter Sets: Purge1, PurgeExpanded1
 Aliases:
 
 Required: False

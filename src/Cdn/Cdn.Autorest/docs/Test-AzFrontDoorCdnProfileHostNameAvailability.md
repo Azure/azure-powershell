@@ -1,41 +1,42 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.cdn/test-azcdnendpointcustomdomain
+online version: https://docs.microsoft.com/powershell/module/az.cdn/test-azfrontdoorcdnprofilehostnameavailability
 schema: 2.0.0
 ---
 
-# Test-AzCdnEndpointCustomDomain
+# Test-AzFrontDoorCdnProfileHostNameAvailability
 
 ## SYNOPSIS
 Validates the custom domain mapping to ensure it maps to the correct CDN endpoint in DNS.
 
 ## SYNTAX
 
-### ValidateExpanded1 (Default)
+### CheckExpanded (Default)
 ```
-Test-AzCdnEndpointCustomDomain -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
+Test-AzFrontDoorCdnProfileHostNameAvailability -ProfileName <String> -ResourceGroupName <String>
  -HostName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### Validate1
+### Check
 ```
-Test-AzCdnEndpointCustomDomain -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
- -CustomDomainProperty <IValidateCustomDomainInput> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ValidateViaIdentity1
-```
-Test-AzCdnEndpointCustomDomain -InputObject <ICdnIdentity> -CustomDomainProperty <IValidateCustomDomainInput>
+Test-AzFrontDoorCdnProfileHostNameAvailability -ProfileName <String> -ResourceGroupName <String>
+ -CheckHostNameAvailabilityInput <ICheckHostNameAvailabilityInput> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### ValidateViaIdentityExpanded1
+### CheckViaIdentity
 ```
-Test-AzCdnEndpointCustomDomain -InputObject <ICdnIdentity> -HostName <String> [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-AzFrontDoorCdnProfileHostNameAvailability -InputObject <ICdnIdentity>
+ -CheckHostNameAvailabilityInput <ICheckHostNameAvailabilityInput> [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### CheckViaIdentityExpanded
+```
+Test-AzFrontDoorCdnProfileHostNameAvailability -InputObject <ICdnIdentity> -HostName <String>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,13 +64,13 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -CustomDomainProperty
-Input of the custom domain to be validated for DNS mapping.
-To construct, see NOTES section for CUSTOMDOMAINPROPERTY properties and create a hash table.
+### -CheckHostNameAvailabilityInput
+Input of CheckHostNameAvailability API.
+To construct, see NOTES section for CHECKHOSTNAMEAVAILABILITYINPUT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IValidateCustomDomainInput
-Parameter Sets: Validate1, ValidateViaIdentity1
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ICheckHostNameAvailabilityInput
+Parameter Sets: Check, CheckViaIdentity
 Aliases:
 
 Required: True
@@ -94,28 +95,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EndpointName
-Name of the endpoint under the profile which is unique globally.
-
-```yaml
-Type: System.String
-Parameter Sets: Validate1, ValidateExpanded1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -HostName
-The host name of the custom domain.
-Must be a domain name.
+The host name to validate.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded1, ValidateViaIdentityExpanded1
+Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -131,7 +116,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-Parameter Sets: ValidateViaIdentity1, ValidateViaIdentityExpanded1
+Parameter Sets: CheckViaIdentity, CheckViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -142,11 +127,11 @@ Accept wildcard characters: False
 ```
 
 ### -ProfileName
-Name of the CDN profile which is unique within the resource group.
+Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Validate1, ValidateExpanded1
+Parameter Sets: Check, CheckExpanded
 Aliases:
 
 Required: True
@@ -161,7 +146,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Validate1, ValidateExpanded1
+Parameter Sets: Check, CheckExpanded
 Aliases:
 
 Required: True
@@ -176,7 +161,7 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Validate1, ValidateExpanded1
+Parameter Sets: Check, CheckExpanded
 Aliases:
 
 Required: False
@@ -222,13 +207,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IValidateCustomDomainInput
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ICheckHostNameAvailabilityInput
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IValidateCustomDomainOutput
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ICheckNameAvailabilityOutput
 
 ## NOTES
 
@@ -239,8 +224,8 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-CUSTOMDOMAINPROPERTY <IValidateCustomDomainInput>: Input of the custom domain to be validated for DNS mapping.
-  - `HostName <String>`: The host name of the custom domain. Must be a domain name.
+CHECKHOSTNAMEAVAILABILITYINPUT <ICheckHostNameAvailabilityInput>: Input of CheckHostNameAvailability API.
+  - `HostName <String>`: The host name to validate.
 
 INPUTOBJECT <ICdnIdentity>: Identity Parameter
   - `[CustomDomainName <String>]`: Name of the domain under the profile which is unique globally.

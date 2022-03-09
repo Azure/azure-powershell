@@ -1,45 +1,36 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.cdn/test-azcdnendpointcustomdomain
+online version: https://docs.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdncustomdomain
 schema: 2.0.0
 ---
 
-# Test-AzCdnEndpointCustomDomain
+# Update-AzFrontDoorCdnCustomDomain
 
 ## SYNOPSIS
-Validates the custom domain mapping to ensure it maps to the correct CDN endpoint in DNS.
+Updates an existing domain within a profile.
 
 ## SYNTAX
 
-### ValidateExpanded1 (Default)
+### UpdateExpanded (Default)
 ```
-Test-AzCdnEndpointCustomDomain -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
- -HostName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### Validate1
-```
-Test-AzCdnEndpointCustomDomain -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
- -CustomDomainProperty <IValidateCustomDomainInput> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzFrontDoorCdnCustomDomain -CustomDomainName <String> -ProfileName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-AzureDnsZoneId <String>]
+ [-PropertiesPreValidatedCustomDomainResourceId <String>] [-SecretId <String>]
+ [-TlSettingCertificateType <AfdCertificateType>] [-TlSettingMinimumTlsVersion <AfdMinimumTlsVersion>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### ValidateViaIdentity1
+### UpdateViaIdentityExpanded
 ```
-Test-AzCdnEndpointCustomDomain -InputObject <ICdnIdentity> -CustomDomainProperty <IValidateCustomDomainInput>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ValidateViaIdentityExpanded1
-```
-Test-AzCdnEndpointCustomDomain -InputObject <ICdnIdentity> -HostName <String> [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzFrontDoorCdnCustomDomain -InputObject <ICdnIdentity> [-AzureDnsZoneId <String>]
+ [-PropertiesPreValidatedCustomDomainResourceId <String>] [-SecretId <String>]
+ [-TlSettingCertificateType <AfdCertificateType>] [-TlSettingMinimumTlsVersion <AfdMinimumTlsVersion>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Validates the custom domain mapping to ensure it maps to the correct CDN endpoint in DNS.
+Updates an existing domain within a profile.
 
 ## EXAMPLES
 
@@ -63,19 +54,48 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -CustomDomainProperty
-Input of the custom domain to be validated for DNS mapping.
-To construct, see NOTES section for CUSTOMDOMAINPROPERTY properties and create a hash table.
+### -AsJob
+Run the command as a job
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IValidateCustomDomainInput
-Parameter Sets: Validate1, ValidateViaIdentity1
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AzureDnsZoneId
+Resource ID.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CustomDomainName
+Name of the domain under the profile which is unique globally
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -94,44 +114,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EndpointName
-Name of the endpoint under the profile which is unique globally.
-
-```yaml
-Type: System.String
-Parameter Sets: Validate1, ValidateExpanded1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HostName
-The host name of the custom domain.
-Must be a domain name.
-
-```yaml
-Type: System.String
-Parameter Sets: ValidateExpanded1, ValidateViaIdentityExpanded1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-Parameter Sets: ValidateViaIdentity1, ValidateViaIdentityExpanded1
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -141,15 +130,45 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ProfileName
-Name of the CDN profile which is unique within the resource group.
+Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Validate1, ValidateExpanded1
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PropertiesPreValidatedCustomDomainResourceId
+Resource ID.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -161,10 +180,25 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Validate1, ValidateExpanded1
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecretId
+Resource ID.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -176,12 +210,42 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Validate1, ValidateExpanded1
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TlSettingCertificateType
+Defines the source of the SSL certificate.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.AfdCertificateType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TlSettingMinimumTlsVersion
+TLS protocol version that will be used for Https
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.AfdMinimumTlsVersion
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -222,13 +286,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IValidateCustomDomainInput
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IValidateCustomDomainOutput
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IAfdDomain
 
 ## NOTES
 
@@ -238,9 +300,6 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-
-CUSTOMDOMAINPROPERTY <IValidateCustomDomainInput>: Input of the custom domain to be validated for DNS mapping.
-  - `HostName <String>`: The host name of the custom domain. Must be a domain name.
 
 INPUTOBJECT <ICdnIdentity>: Identity Parameter
   - `[CustomDomainName <String>]`: Name of the domain under the profile which is unique globally.

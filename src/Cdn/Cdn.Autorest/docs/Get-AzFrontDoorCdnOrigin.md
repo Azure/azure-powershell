@@ -1,45 +1,36 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.cdn/test-azcdnendpointcustomdomain
+online version: https://docs.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnorigin
 schema: 2.0.0
 ---
 
-# Test-AzCdnEndpointCustomDomain
+# Get-AzFrontDoorCdnOrigin
 
 ## SYNOPSIS
-Validates the custom domain mapping to ensure it maps to the correct CDN endpoint in DNS.
+Gets an existing origin within an origin group.
 
 ## SYNTAX
 
-### ValidateExpanded1 (Default)
+### List (Default)
 ```
-Test-AzCdnEndpointCustomDomain -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
- -HostName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### Validate1
-```
-Test-AzCdnEndpointCustomDomain -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
- -CustomDomainProperty <IValidateCustomDomainInput> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzFrontDoorCdnOrigin -OriginGroupName <String> -ProfileName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### ValidateViaIdentity1
+### Get
 ```
-Test-AzCdnEndpointCustomDomain -InputObject <ICdnIdentity> -CustomDomainProperty <IValidateCustomDomainInput>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzFrontDoorCdnOrigin -OriginGroupName <String> -OriginName <String> -ProfileName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### ValidateViaIdentityExpanded1
+### GetViaIdentity
 ```
-Test-AzCdnEndpointCustomDomain -InputObject <ICdnIdentity> -HostName <String> [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzFrontDoorCdnOrigin -InputObject <ICdnIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Validates the custom domain mapping to ensure it maps to the correct CDN endpoint in DNS.
+Gets an existing origin within an origin group.
 
 ## EXAMPLES
 
@@ -63,22 +54,6 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -CustomDomainProperty
-Input of the custom domain to be validated for DNS mapping.
-To construct, see NOTES section for CUSTOMDOMAINPROPERTY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IValidateCustomDomainInput
-Parameter Sets: Validate1, ValidateViaIdentity1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -94,44 +69,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EndpointName
-Name of the endpoint under the profile which is unique globally.
-
-```yaml
-Type: System.String
-Parameter Sets: Validate1, ValidateExpanded1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HostName
-The host name of the custom domain.
-Must be a domain name.
-
-```yaml
-Type: System.String
-Parameter Sets: ValidateExpanded1, ValidateViaIdentityExpanded1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-Parameter Sets: ValidateViaIdentity1, ValidateViaIdentityExpanded1
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
@@ -141,12 +85,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ProfileName
-Name of the CDN profile which is unique within the resource group.
+### -OriginGroupName
+Name of the origin group which is unique within the profile.
 
 ```yaml
 Type: System.String
-Parameter Sets: Validate1, ValidateExpanded1
+Parameter Sets: Get, List
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OriginName
+Name of the origin which is unique within the profile.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProfileName
+Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -161,7 +135,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Validate1, ValidateExpanded1
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -175,8 +149,8 @@ Accept wildcard characters: False
 Azure Subscription ID.
 
 ```yaml
-Type: System.String
-Parameter Sets: Validate1, ValidateExpanded1
+Type: System.String[]
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
@@ -186,49 +160,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IValidateCustomDomainInput
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IValidateCustomDomainOutput
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IAfdOrigin
 
 ## NOTES
 
@@ -238,9 +179,6 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-
-CUSTOMDOMAINPROPERTY <IValidateCustomDomainInput>: Input of the custom domain to be validated for DNS mapping.
-  - `HostName <String>`: The host name of the custom domain. Must be a domain name.
 
 INPUTOBJECT <ICdnIdentity>: Identity Parameter
   - `[CustomDomainName <String>]`: Name of the domain under the profile which is unique globally.

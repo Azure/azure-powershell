@@ -1,36 +1,30 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.cdn/update-azcdnorigin
+online version: https://docs.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnorigin
 schema: 2.0.0
 ---
 
-# Update-AzCdnOrigin
+# New-AzFrontDoorCdnOrigin
 
 ## SYNOPSIS
-Updates an existing origin within an endpoint.
+Creates a new origin within the specified origin group.
 
 ## SYNTAX
 
-### UpdateExpanded1 (Default)
 ```
-Update-AzCdnOrigin -EndpointName <String> -Name <String> -ProfileName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Enabled] [-HostName <String>] [-HttpPort <Int32>] [-HttpsPort <Int32>]
- [-OriginHostHeader <String>] [-Priority <Int32>] [-PrivateLinkAlias <String>]
- [-PrivateLinkApprovalMessage <String>] [-PrivateLinkLocation <String>] [-PrivateLinkResourceId <String>]
- [-Weight <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded1
-```
-Update-AzCdnOrigin -InputObject <ICdnIdentity> [-Enabled] [-HostName <String>] [-HttpPort <Int32>]
- [-HttpsPort <Int32>] [-OriginHostHeader <String>] [-Priority <Int32>] [-PrivateLinkAlias <String>]
- [-PrivateLinkApprovalMessage <String>] [-PrivateLinkLocation <String>] [-PrivateLinkResourceId <String>]
- [-Weight <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzFrontDoorCdnOrigin -OriginGroupName <String> -OriginName <String> -ProfileName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-AzureOriginId <String>]
+ [-EnabledState <EnabledState>] [-EnforceCertificateNameCheck] [-HostName <String>] [-HttpPort <Int32>]
+ [-HttpsPort <Int32>] [-OriginHostHeader <String>] [-Priority <Int32>] [-PrivateLinkId <String>]
+ [-SharedPrivateLinkResourceGroupId <String>] [-SharedPrivateLinkResourcePrivateLinkLocation <String>]
+ [-SharedPrivateLinkResourceRequestMessage <String>]
+ [-SharedPrivateLinkResourceStatus <SharedPrivateLinkResourceStatus>] [-Weight <Int32>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates an existing origin within an endpoint.
+Creates a new origin within the specified origin group.
 
 ## EXAMPLES
 
@@ -69,6 +63,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AzureOriginId
+Resource ID.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -84,11 +93,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Enabled
-Origin is enabled for load balancing or not
+### -EnabledState
+Whether to enable health probes to be made against backends defined under backendPools.
+Health probes can only be disabled if there is a single enabled backend in single enabled backend pool.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.EnabledState
 Parameter Sets: (All)
 Aliases:
 
@@ -99,15 +109,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EndpointName
-Name of the endpoint under the profile which is unique globally.
+### -EnforceCertificateNameCheck
+Whether to enable certificate name check at origin level
 
 ```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded1
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -162,37 +172,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-Parameter Sets: UpdateViaIdentityExpanded1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-Name of the origin which is unique within the endpoint.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded1
-Aliases: OriginName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -NoWait
 Run the command asynchronously
 
@@ -202,6 +181,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OriginGroupName
+Name of the origin group which is unique within the profile.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -226,6 +220,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -OriginName
+Name of the origin that is unique within the profile.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Priority
 Priority of origin in given origin group for load balancing.
 Higher priorities will not be used for load balancing if any lower priority origin is healthy.Must be between 1 and 5
@@ -242,56 +251,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PrivateLinkAlias
-The Alias of the Private Link resource.
-Populating this optional field indicates that this origin is 'Private'
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PrivateLinkApprovalMessage
-A custom message to be included in the approval request to connect to the Private Link.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PrivateLinkLocation
-The location of the Private Link resource.
-Required only if 'privateLinkResourceId' is populated
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PrivateLinkResourceId
-The Resource Id of the Private Link resource.
-Populating this optional field indicates that this backend is 'Private'
+### -PrivateLinkId
+Resource ID.
 
 ```yaml
 Type: System.String
@@ -306,11 +267,11 @@ Accept wildcard characters: False
 ```
 
 ### -ProfileName
-Name of the CDN profile which is unique within the resource group.
+Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -325,10 +286,71 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SharedPrivateLinkResourceGroupId
+The group id from the provider of resource the shared private link resource is for.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SharedPrivateLinkResourcePrivateLinkLocation
+The location of the shared private link resource
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SharedPrivateLinkResourceRequestMessage
+The request message for requesting approval of the shared private link resource.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SharedPrivateLinkResourceStatus
+Status of the shared private link resource.
+Can be Pending, Approved, Rejected, Disconnected, or Timeout.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SharedPrivateLinkResourceStatus
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -340,7 +362,7 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -402,36 +424,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IOrigin
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IAfdOrigin
 
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <ICdnIdentity>: Identity Parameter
-  - `[CustomDomainName <String>]`: Name of the domain under the profile which is unique globally.
-  - `[EndpointName <String>]`: Name of the endpoint under the profile which is unique globally.
-  - `[Id <String>]`: Resource identity path
-  - `[OriginGroupName <String>]`: Name of the origin group which is unique within the endpoint.
-  - `[OriginName <String>]`: Name of the origin which is unique within the profile.
-  - `[PolicyName <String>]`: The name of the CdnWebApplicationFirewallPolicy.
-  - `[ProfileName <String>]`: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
-  - `[ResourceGroupName <String>]`: Name of the Resource group within the Azure subscription.
-  - `[RouteName <String>]`: Name of the routing rule.
-  - `[RuleName <String>]`: Name of the delivery rule which is unique within the endpoint.
-  - `[RuleSetName <String>]`: Name of the rule set under the profile which is unique globally.
-  - `[SecretName <String>]`: Name of the Secret under the profile.
-  - `[SecurityPolicyName <String>]`: Name of the security policy under the profile.
-  - `[SubscriptionId <String>]`: Azure Subscription ID.
 
 ## RELATED LINKS
 

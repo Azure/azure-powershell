@@ -1,44 +1,49 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.cdn/update-azcdnorigingroup
+online version: https://docs.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdnorigingroup
 schema: 2.0.0
 ---
 
-# Update-AzCdnOriginGroup
+# Update-AzFrontDoorCdnOriginGroup
 
 ## SYNOPSIS
-Updates an existing origin group within an endpoint.
+Updates an existing origin group within a profile.
 
 ## SYNTAX
 
-### UpdateExpanded1 (Default)
+### UpdateExpanded (Default)
 ```
-Update-AzCdnOriginGroup -EndpointName <String> -Name <String> -ProfileName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-HealthProbeSettingProbeIntervalInSecond <Int32>]
+Update-AzFrontDoorCdnOriginGroup -OriginGroupName <String> -ProfileName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-HealthProbeSettingProbeIntervalInSecond <Int32>]
  [-HealthProbeSettingProbePath <String>] [-HealthProbeSettingProbeProtocol <ProbeProtocol>]
- [-HealthProbeSettingProbeRequestType <HealthProbeRequestType>] [-Origin <IResourceReference[]>]
- [-ResponseBasedOriginErrorDetectionSettingHttpErrorRange <IHttpErrorRangeParameters[]>]
- [-ResponseBasedOriginErrorDetectionSettingResponseBasedDetectedErrorType <ResponseBasedDetectedErrorTypes>]
- [-ResponseBasedOriginErrorDetectionSettingResponseBasedFailoverThresholdPercentage <Int32>]
- [-TrafficRestorationTimeToHealedOrNewEndpointsInMinute <Int32>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-HealthProbeSettingProbeRequestType <HealthProbeRequestType>]
+ [-LoadBalancingSettingAdditionalLatencyInMillisecond <Int32>] [-LoadBalancingSettingSampleSize <Int32>]
+ [-LoadBalancingSettingSuccessfulSamplesRequired <Int32>]
+ [-ResponseBasedAfdOriginErrorDetectionSettingHttpErrorRange <IHttpErrorRangeParameters[]>]
+ [-ResponseBasedAfdOriginErrorDetectionSettingResponseBasedDetectedErrorType <ResponseBasedDetectedErrorTypes>]
+ [-ResponseBasedAfdOriginErrorDetectionSettingResponseBasedFailoverThresholdPercentage <Int32>]
+ [-SessionAffinityState <EnabledState>] [-TrafficRestorationTimeToHealedOrNewEndpointsInMinute <Int32>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded1
+### UpdateViaIdentityExpanded
 ```
-Update-AzCdnOriginGroup -InputObject <ICdnIdentity> [-HealthProbeSettingProbeIntervalInSecond <Int32>]
- [-HealthProbeSettingProbePath <String>] [-HealthProbeSettingProbeProtocol <ProbeProtocol>]
- [-HealthProbeSettingProbeRequestType <HealthProbeRequestType>] [-Origin <IResourceReference[]>]
- [-ResponseBasedOriginErrorDetectionSettingHttpErrorRange <IHttpErrorRangeParameters[]>]
- [-ResponseBasedOriginErrorDetectionSettingResponseBasedDetectedErrorType <ResponseBasedDetectedErrorTypes>]
- [-ResponseBasedOriginErrorDetectionSettingResponseBasedFailoverThresholdPercentage <Int32>]
- [-TrafficRestorationTimeToHealedOrNewEndpointsInMinute <Int32>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzFrontDoorCdnOriginGroup -InputObject <ICdnIdentity>
+ [-HealthProbeSettingProbeIntervalInSecond <Int32>] [-HealthProbeSettingProbePath <String>]
+ [-HealthProbeSettingProbeProtocol <ProbeProtocol>]
+ [-HealthProbeSettingProbeRequestType <HealthProbeRequestType>]
+ [-LoadBalancingSettingAdditionalLatencyInMillisecond <Int32>] [-LoadBalancingSettingSampleSize <Int32>]
+ [-LoadBalancingSettingSuccessfulSamplesRequired <Int32>]
+ [-ResponseBasedAfdOriginErrorDetectionSettingHttpErrorRange <IHttpErrorRangeParameters[]>]
+ [-ResponseBasedAfdOriginErrorDetectionSettingResponseBasedDetectedErrorType <ResponseBasedDetectedErrorTypes>]
+ [-ResponseBasedAfdOriginErrorDetectionSettingResponseBasedFailoverThresholdPercentage <Int32>]
+ [-SessionAffinityState <EnabledState>] [-TrafficRestorationTimeToHealedOrNewEndpointsInMinute <Int32>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates an existing origin group within an endpoint.
+Updates an existing origin group within a profile.
 
 ## EXAMPLES
 
@@ -86,21 +91,6 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EndpointName
-Name of the endpoint under the profile which is unique globally.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded1
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -173,7 +163,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-Parameter Sets: UpdateViaIdentityExpanded1
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -183,15 +173,45 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-Name of the origin group which is unique within the endpoint.
+### -LoadBalancingSettingAdditionalLatencyInMillisecond
+The additional latency in milliseconds for probes to fall into the lowest latency bucket
 
 ```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded1
-Aliases: OriginGroupName
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LoadBalancingSettingSampleSize
+The number of samples to consider for load balancing decisions
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LoadBalancingSettingSuccessfulSamplesRequired
+The number of samples within the sample period that must succeed
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -213,16 +233,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Origin
-The source of the content being delivered via CDN within given origin group.
-To construct, see NOTES section for ORIGIN properties and create a hash table.
+### -OriginGroupName
+Name of the origin group which is unique within the profile.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IResourceReference[]
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -230,11 +249,11 @@ Accept wildcard characters: False
 ```
 
 ### -ProfileName
-Name of the CDN profile which is unique within the resource group.
+Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -249,7 +268,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -259,9 +278,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResponseBasedOriginErrorDetectionSettingHttpErrorRange
+### -ResponseBasedAfdOriginErrorDetectionSettingHttpErrorRange
 The list of Http status code ranges that are considered as server errors for origin and it is marked as unhealthy.
-To construct, see NOTES section for RESPONSEBASEDORIGINERRORDETECTIONSETTINGHTTPERRORRANGE properties and create a hash table.
+To construct, see NOTES section for RESPONSEBASEDAFDORIGINERRORDETECTIONSETTINGHTTPERRORRANGE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IHttpErrorRangeParameters[]
@@ -275,7 +294,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResponseBasedOriginErrorDetectionSettingResponseBasedDetectedErrorType
+### -ResponseBasedAfdOriginErrorDetectionSettingResponseBasedDetectedErrorType
 Type of response errors for real user requests for which origin will be deemed unhealthy
 
 ```yaml
@@ -290,11 +309,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResponseBasedOriginErrorDetectionSettingResponseBasedFailoverThresholdPercentage
+### -ResponseBasedAfdOriginErrorDetectionSettingResponseBasedFailoverThresholdPercentage
 The percentage of failed requests in the sample where failover should trigger.
 
 ```yaml
 Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SessionAffinityState
+Whether to allow session affinity on this host.
+Valid options are 'Enabled' or 'Disabled'
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.EnabledState
 Parameter Sets: (All)
 Aliases:
 
@@ -310,7 +345,7 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -377,7 +412,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IOriginGroup
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IAfdOriginGroup
 
 ## NOTES
 
@@ -404,10 +439,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   - `[SecurityPolicyName <String>]`: Name of the security policy under the profile.
   - `[SubscriptionId <String>]`: Azure Subscription ID.
 
-ORIGIN <IResourceReference[]>: The source of the content being delivered via CDN within given origin group.
-  - `[Id <String>]`: Resource ID.
-
-RESPONSEBASEDORIGINERRORDETECTIONSETTINGHTTPERRORRANGE <IHttpErrorRangeParameters[]>: The list of Http status code ranges that are considered as server errors for origin and it is marked as unhealthy.
+RESPONSEBASEDAFDORIGINERRORDETECTIONSETTINGHTTPERRORRANGE <IHttpErrorRangeParameters[]>: The list of Http status code ranges that are considered as server errors for origin and it is marked as unhealthy.
   - `[Begin <Int32?>]`: The inclusive start of the http status code range.
   - `[End <Int32?>]`: The inclusive end of the http status code range.
 

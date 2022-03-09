@@ -1,44 +1,42 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.cdn/update-azcdnorigingroup
+online version: https://docs.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdnorigin
 schema: 2.0.0
 ---
 
-# Update-AzCdnOriginGroup
+# Update-AzFrontDoorCdnOrigin
 
 ## SYNOPSIS
-Updates an existing origin group within an endpoint.
+Updates an existing origin within an origin group.
 
 ## SYNTAX
 
-### UpdateExpanded1 (Default)
+### UpdateExpanded (Default)
 ```
-Update-AzCdnOriginGroup -EndpointName <String> -Name <String> -ProfileName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-HealthProbeSettingProbeIntervalInSecond <Int32>]
- [-HealthProbeSettingProbePath <String>] [-HealthProbeSettingProbeProtocol <ProbeProtocol>]
- [-HealthProbeSettingProbeRequestType <HealthProbeRequestType>] [-Origin <IResourceReference[]>]
- [-ResponseBasedOriginErrorDetectionSettingHttpErrorRange <IHttpErrorRangeParameters[]>]
- [-ResponseBasedOriginErrorDetectionSettingResponseBasedDetectedErrorType <ResponseBasedDetectedErrorTypes>]
- [-ResponseBasedOriginErrorDetectionSettingResponseBasedFailoverThresholdPercentage <Int32>]
- [-TrafficRestorationTimeToHealedOrNewEndpointsInMinute <Int32>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzFrontDoorCdnOrigin -OriginGroupName <String> -OriginName <String> -ProfileName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-AzureOriginId <String>]
+ [-EnabledState <EnabledState>] [-EnforceCertificateNameCheck] [-HostName <String>] [-HttpPort <Int32>]
+ [-HttpsPort <Int32>] [-OriginHostHeader <String>] [-Priority <Int32>] [-PrivateLinkId <String>]
+ [-SharedPrivateLinkResourceGroupId <String>] [-SharedPrivateLinkResourcePrivateLinkLocation <String>]
+ [-SharedPrivateLinkResourceRequestMessage <String>]
+ [-SharedPrivateLinkResourceStatus <SharedPrivateLinkResourceStatus>] [-Weight <Int32>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded1
+### UpdateViaIdentityExpanded
 ```
-Update-AzCdnOriginGroup -InputObject <ICdnIdentity> [-HealthProbeSettingProbeIntervalInSecond <Int32>]
- [-HealthProbeSettingProbePath <String>] [-HealthProbeSettingProbeProtocol <ProbeProtocol>]
- [-HealthProbeSettingProbeRequestType <HealthProbeRequestType>] [-Origin <IResourceReference[]>]
- [-ResponseBasedOriginErrorDetectionSettingHttpErrorRange <IHttpErrorRangeParameters[]>]
- [-ResponseBasedOriginErrorDetectionSettingResponseBasedDetectedErrorType <ResponseBasedDetectedErrorTypes>]
- [-ResponseBasedOriginErrorDetectionSettingResponseBasedFailoverThresholdPercentage <Int32>]
- [-TrafficRestorationTimeToHealedOrNewEndpointsInMinute <Int32>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzFrontDoorCdnOrigin -InputObject <ICdnIdentity> [-AzureOriginId <String>]
+ [-EnabledState <EnabledState>] [-EnforceCertificateNameCheck] [-HostName <String>] [-HttpPort <Int32>]
+ [-HttpsPort <Int32>] [-OriginHostHeader <String>] [-Priority <Int32>] [-PrivateLinkId <String>]
+ [-SharedPrivateLinkResourceGroupId <String>] [-SharedPrivateLinkResourcePrivateLinkLocation <String>]
+ [-SharedPrivateLinkResourceRequestMessage <String>]
+ [-SharedPrivateLinkResourceStatus <SharedPrivateLinkResourceStatus>] [-Weight <Int32>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates an existing origin group within an endpoint.
+Updates an existing origin within an origin group.
 
 ## EXAMPLES
 
@@ -77,6 +75,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AzureOriginId
+Resource ID.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -92,23 +105,56 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EndpointName
-Name of the endpoint under the profile which is unique globally.
+### -EnabledState
+Whether to enable health probes to be made against backends defined under backendPools.
+Health probes can only be disabled if there is a single enabled backend in single enabled backend pool.
 
 ```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded1
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.EnabledState
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HealthProbeSettingProbeIntervalInSecond
-The number of seconds between health probes.Default is 240sec.
+### -EnforceCertificateNameCheck
+Whether to enable certificate name check at origin level
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HostName
+The address of the origin.
+Domain names, IPv4 addresses, and IPv6 addresses are supported.This should be unique across all origins in an endpoint.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HttpPort
+The value of the HTTP port.
+Must be between 1 and 65535.
 
 ```yaml
 Type: System.Int32
@@ -122,41 +168,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HealthProbeSettingProbePath
-The path relative to the origin that is used to determine the health of the origin.
+### -HttpsPort
+The value of the HTTPS port.
+Must be between 1 and 65535.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HealthProbeSettingProbeProtocol
-Protocol to use for health probe.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProbeProtocol
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HealthProbeSettingProbeRequestType
-The type of health probe request that is made.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.HealthProbeRequestType
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -173,28 +190,13 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-Parameter Sets: UpdateViaIdentityExpanded1
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-Name of the origin group which is unique within the endpoint.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded1
-Aliases: OriginGroupName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -213,12 +215,75 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Origin
-The source of the content being delivered via CDN within given origin group.
-To construct, see NOTES section for ORIGIN properties and create a hash table.
+### -OriginGroupName
+Name of the origin group which is unique within the profile.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IResourceReference[]
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OriginHostHeader
+The host header value sent to the origin with each request.
+If you leave this blank, the request hostname determines this value.
+Azure CDN origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin hostname by default.
+This overrides the host header defined at Endpoint
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OriginName
+Name of the origin which is unique within the profile.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Priority
+Priority of origin in given origin group for load balancing.
+Higher priorities will not be used for load balancing if any lower priority origin is healthy.Must be between 1 and 5
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrivateLinkId
+Resource ID.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -230,11 +295,11 @@ Accept wildcard characters: False
 ```
 
 ### -ProfileName
-Name of the CDN profile which is unique within the resource group.
+Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -249,7 +314,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -259,12 +324,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResponseBasedOriginErrorDetectionSettingHttpErrorRange
-The list of Http status code ranges that are considered as server errors for origin and it is marked as unhealthy.
-To construct, see NOTES section for RESPONSEBASEDORIGINERRORDETECTIONSETTINGHTTPERRORRANGE properties and create a hash table.
+### -SharedPrivateLinkResourceGroupId
+The group id from the provider of resource the shared private link resource is for.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IHttpErrorRangeParameters[]
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -275,11 +339,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResponseBasedOriginErrorDetectionSettingResponseBasedDetectedErrorType
-Type of response errors for real user requests for which origin will be deemed unhealthy
+### -SharedPrivateLinkResourcePrivateLinkLocation
+The location of the shared private link resource
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ResponseBasedDetectedErrorTypes
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -290,11 +354,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResponseBasedOriginErrorDetectionSettingResponseBasedFailoverThresholdPercentage
-The percentage of failed requests in the sample where failover should trigger.
+### -SharedPrivateLinkResourceRequestMessage
+The request message for requesting approval of the shared private link resource.
 
 ```yaml
-Type: System.Int32
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SharedPrivateLinkResourceStatus
+Status of the shared private link resource.
+Can be Pending, Approved, Rejected, Disconnected, or Timeout.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SharedPrivateLinkResourceStatus
 Parameter Sets: (All)
 Aliases:
 
@@ -310,7 +390,7 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -320,10 +400,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TrafficRestorationTimeToHealedOrNewEndpointsInMinute
-Time in minutes to shift the traffic to the endpoint gradually when an unhealthy endpoint comes healthy or a new endpoint is added.
-Default is 10 mins.
-This property is currently not supported.
+### -Weight
+Weight of the origin in given origin group for load balancing.
+Must be between 1 and 1000
 
 ```yaml
 Type: System.Int32
@@ -377,7 +456,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IOriginGroup
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IAfdOrigin
 
 ## NOTES
 
@@ -403,13 +482,6 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   - `[SecretName <String>]`: Name of the Secret under the profile.
   - `[SecurityPolicyName <String>]`: Name of the security policy under the profile.
   - `[SubscriptionId <String>]`: Azure Subscription ID.
-
-ORIGIN <IResourceReference[]>: The source of the content being delivered via CDN within given origin group.
-  - `[Id <String>]`: Resource ID.
-
-RESPONSEBASEDORIGINERRORDETECTIONSETTINGHTTPERRORRANGE <IHttpErrorRangeParameters[]>: The list of Http status code ranges that are considered as server errors for origin and it is marked as unhealthy.
-  - `[Begin <Int32?>]`: The inclusive start of the http status code range.
-  - `[End <Int32?>]`: The inclusive end of the http status code range.
 
 ## RELATED LINKS
 

@@ -1,41 +1,42 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.cdn/test-azcdnendpointcustomdomain
+online version: https://docs.microsoft.com/powershell/module/az.cdn/test-azfrontdoorcdnendpointcustomdomain
 schema: 2.0.0
 ---
 
-# Test-AzCdnEndpointCustomDomain
+# Test-AzFrontDoorCdnEndpointCustomDomain
 
 ## SYNOPSIS
 Validates the custom domain mapping to ensure it maps to the correct CDN endpoint in DNS.
 
 ## SYNTAX
 
-### ValidateExpanded1 (Default)
+### ValidateExpanded (Default)
 ```
-Test-AzCdnEndpointCustomDomain -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
- -HostName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### Validate1
-```
-Test-AzCdnEndpointCustomDomain -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
- -CustomDomainProperty <IValidateCustomDomainInput> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+Test-AzFrontDoorCdnEndpointCustomDomain -EndpointName <String> -ProfileName <String>
+ -ResourceGroupName <String> -HostName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### ValidateViaIdentity1
+### Validate
 ```
-Test-AzCdnEndpointCustomDomain -InputObject <ICdnIdentity> -CustomDomainProperty <IValidateCustomDomainInput>
+Test-AzFrontDoorCdnEndpointCustomDomain -EndpointName <String> -ProfileName <String>
+ -ResourceGroupName <String> -CustomDomainProperty <IValidateCustomDomainInput> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### ValidateViaIdentityExpanded1
+### ValidateViaIdentity
 ```
-Test-AzCdnEndpointCustomDomain -InputObject <ICdnIdentity> -HostName <String> [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-AzFrontDoorCdnEndpointCustomDomain -InputObject <ICdnIdentity>
+ -CustomDomainProperty <IValidateCustomDomainInput> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### ValidateViaIdentityExpanded
+```
+Test-AzFrontDoorCdnEndpointCustomDomain -InputObject <ICdnIdentity> -HostName <String>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -69,7 +70,7 @@ To construct, see NOTES section for CUSTOMDOMAINPROPERTY properties and create a
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IValidateCustomDomainInput
-Parameter Sets: Validate1, ValidateViaIdentity1
+Parameter Sets: Validate, ValidateViaIdentity
 Aliases:
 
 Required: True
@@ -99,7 +100,7 @@ Name of the endpoint under the profile which is unique globally.
 
 ```yaml
 Type: System.String
-Parameter Sets: Validate1, ValidateExpanded1
+Parameter Sets: Validate, ValidateExpanded
 Aliases:
 
 Required: True
@@ -115,7 +116,7 @@ Must be a domain name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded1, ValidateViaIdentityExpanded1
+Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -131,7 +132,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-Parameter Sets: ValidateViaIdentity1, ValidateViaIdentityExpanded1
+Parameter Sets: ValidateViaIdentity, ValidateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -142,11 +143,11 @@ Accept wildcard characters: False
 ```
 
 ### -ProfileName
-Name of the CDN profile which is unique within the resource group.
+Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Validate1, ValidateExpanded1
+Parameter Sets: Validate, ValidateExpanded
 Aliases:
 
 Required: True
@@ -161,7 +162,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Validate1, ValidateExpanded1
+Parameter Sets: Validate, ValidateExpanded
 Aliases:
 
 Required: True
@@ -176,7 +177,7 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Validate1, ValidateExpanded1
+Parameter Sets: Validate, ValidateExpanded
 Aliases:
 
 Required: False
