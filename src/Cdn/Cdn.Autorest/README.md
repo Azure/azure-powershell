@@ -71,6 +71,12 @@ directive:
       subject: Profile
     hide: true
 
+  - where:
+      subject: Afd(.*)
+    set:
+      subject-prefix: FrontDoorCdn
+      subject: $1
+
   # https://github.com/Azure/autorest.powershell/issues/906
   - where:
       model-name: AfdDomainUpdatePropertiesParameters
