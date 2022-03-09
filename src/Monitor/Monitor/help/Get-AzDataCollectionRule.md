@@ -52,9 +52,11 @@ Data Collection Rules (DCR) define data coming into Azure Monitor and specify wh
 ## EXAMPLES
 
 ### Example 1: Get data collection rules by subscription ID
+```powershell
+Get-AzDataCollectionRule
 ```
-PS C:\>Get-AzDataCollectionRule
 
+```output
 Description       : DCR description
 DataSources       : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDataSources
 Destinations      : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDestinations
@@ -71,9 +73,11 @@ Tags              : {[tag2, value2], [tag1, value1]}
 This command lists all the data collection rules for the current subscription.
 
 ### Example 2: Get data collection rules for the given resource group
+```powershell
+Get-AzDataCollectionRule -ResourceGroup "testgroup"
 ```
-PS C:\>Get-AzDataCollectionRule -ResourceGroup "testgroup"
 
+```output
 Description       : DCR description
 DataSources       : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDataSources
 Destinations      : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDestinations
@@ -90,9 +94,11 @@ Tags              : {[tag2, value2], [tag1, value1]}
 This command lists data collection rules for the given resource group.
 
 ### Example 3: Get a data collection rule
+```powershell
+Get-AzDataCollectionRule -ResourceGroup "testgroup" -RuleName "testDcr"
 ```
-PS C:\>Get-AzDataCollectionRule -ResourceGroup "testgroup" -RuleName "testDcr"
 
+```output
 Description       : DCR description
 DataSources       : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDataSources
 Destinations      : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDestinations
@@ -109,9 +115,11 @@ Tags              : {[tag2, value2], [tag1, value1]}
 This command lists one (a list with a single element) data collection rule.
 
 ### Example 4: Get a data collection rule by Rule ID
+```powershell
+Get-AzDataCollectionRule -RuleId "/subscriptions/{subId}/resourceGroups/testgroup/providers/Microsoft.Insights/dataCollectionRules/testDcr"
 ```
-PS C:\>Get-AzDataCollectionRule -RuleId "/subscriptions/{subId}/resourceGroups/testgroup/providers/Microsoft.Insights/dataCollectionRules/testDcr"
 
+```output
 Description       : DCR description
 DataSources       : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDataSources
 Destinations      : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDestinations

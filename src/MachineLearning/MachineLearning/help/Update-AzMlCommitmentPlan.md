@@ -24,7 +24,7 @@ Updates an existing commitment plan resource. Note that most properties of the c
 ## EXAMPLES
 
 ### Example 1: Update a commitment plan
-```
+```powershell
 Update-AzMlCommitmentPlan -ResourceGroupName "MyResourceGroup" -Name "MyCommitmentPlanName" -Tags @{'MyTagKey'='MyTagValue'}
 ```
 

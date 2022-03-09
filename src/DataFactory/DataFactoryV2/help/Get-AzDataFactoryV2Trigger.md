@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV2.dll-Help.xml
 Module Name: Az.DataFactory
 online version: https://docs.microsoft.com/powershell/module/az.datafactory/get-azdatafactoryv2trigger
@@ -36,9 +36,11 @@ The **Get-AzDataFactoryV2Trigger** cmdlet gets information about triggers in a d
 ## EXAMPLES
 
 ### Example 1: Get information about all triggers
+```powershell
+Get-AzDataFactoryV2Trigger -ResourceGroupName "ADF" -DataFactoryName "WikiADF"
 ```
-PS C:\> Get-AzDataFactoryV2Trigger -ResourceGroupName "ADF" -DataFactoryName "WikiADF"
 
+```output
     TriggerName       : ScheduledTrigger
     ResourceGroupName : ADF
     DataFactoryName   : WikiADF
@@ -55,9 +57,11 @@ PS C:\> Get-AzDataFactoryV2Trigger -ResourceGroupName "ADF" -DataFactoryName "Wi
 Gets a list of all triggers that have been created in the data factory "WikiADF".
 
 ### Example 2: Get information about a specific trigger
-```
+```powershell
 Get-AzDataFactoryV2Trigger -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -TriggerName "ScheduledTrigger"
+```
 
+```output
     TriggerName       : ScheduledTrigger
     ResourceGroupName : ADF
     DataFactoryName   : WikiADF

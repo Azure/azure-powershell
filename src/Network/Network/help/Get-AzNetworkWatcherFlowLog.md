@@ -43,7 +43,7 @@ Gets a flow log resource or a list of flow log resources in the specified subscr
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzNetworkWatcherFlowLog -Location eastus -Name pstest
+Get-AzNetworkWatcherFlowLog -Location eastus -Name pstest
 ```
 
 Name                       : pstest

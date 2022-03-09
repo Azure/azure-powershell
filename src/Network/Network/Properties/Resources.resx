@@ -645,7 +645,7 @@
     <value>Connection monitor is not found.</value>
   </data>
   <data name="InvalidTargetResourceId" xml:space="preserve">
-    <value>TargetResourceId specified in flow log is not a valid resource ID of Network security group.</value>
+    <value>TargetResourceId specified in flow log is not a valid resource ID of Network security group, Virtual Network, Subnet or Network Interface.</value>
   </data>
   <data name="InvalidStorageId" xml:space="preserve">
     <value>StorageId specified in flow log is not a valid ID of storage account.</value>

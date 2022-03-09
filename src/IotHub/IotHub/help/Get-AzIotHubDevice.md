@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
 online version: https://docs.microsoft.com/powershell/module/az.iothub/get-aziothubdevice
@@ -37,8 +37,10 @@ Get the details of an Iot Hub device or list all devices in an Iot Hub.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzIotHubDevice -ResourceGroupName "myresourcegroup" -IotHubName "myiothub"
+Get-AzIotHubDevice -ResourceGroupName "myresourcegroup" -IotHubName "myiothub"
+```
 
+```output
 Device Id Status   Connection State Authentication       Edge Enabled Last Activity Time
 --------- ------   ---------------- --------------       ------------ ------------------
 device1   Enabled  Disconnected     CertificateAuthority True         1/1/0001 12:00:00 AM
@@ -50,8 +52,10 @@ Show all devices in an Iot Hub.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzIotHubDevice -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1"
+Get-AzIotHubDevice -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1"
+```
 
+```output
 DeviceId                   : myDevice1
 GenerationId               : 637148941292917073
 ETag                       : "NzIyMDI4MTk3"

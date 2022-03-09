@@ -25,7 +25,7 @@ The New-AzNetworkWatcherPacketCapture cmdlet can accept multiple filter objects 
 ## EXAMPLES
 
 ### Example 1: Create a Packet Capture with multiple filters
-```
+```powershell
 $nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
 $networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName 
 

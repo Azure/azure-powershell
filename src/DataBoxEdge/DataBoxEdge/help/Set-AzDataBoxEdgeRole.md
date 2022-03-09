@@ -37,8 +37,10 @@ The **Set-AzDataBoxEdgeRole** cmdlet updates an IoT role for a Data Box Edge dev
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzDataBoxEdgeRole -ResourceGroupName resourceGroupName -DeviceName deviceName -Name IotRole -ShareName sharename1,sharename2,sharename3
+Set-AzDataBoxEdgeRole -ResourceGroupName resourceGroupName -DeviceName deviceName -Name IotRole -ShareName sharename1,sharename2,sharename3
+```
 
+```output
 Name    IoTHostHub             Platform Status  IotEdgeDeviceId   IotDeviceId  ResourceGroupName
 ----    ----------             -------- ------  ---------------   -----------  -----------------
 IotRole ehub.azure-devices.net Linux    Enabled iotEdgeDeviceUd   iotDevice    resourceGroupName
@@ -48,8 +50,10 @@ Share Names will replace the old mounted shares with the newly provided ones
 
 ### Example 2
 ```powershell
-PS C:\> Set-AzDataBoxEdgeRole -ResourceGroupName resourceGroupName -DeviceName deviceName -Name IotRole -ShareName @()
+Set-AzDataBoxEdgeRole -ResourceGroupName resourceGroupName -DeviceName deviceName -Name IotRole -ShareName @()
+```
 
+```output
 Name    IoTHostHub             Platform Status  IotEdgeDeviceId   IotDeviceId  ResourceGroupName
 ----    ----------             -------- ------  ---------------   -----------  -----------------
 IotRole ehub.azure-devices.net Linux    Enabled iotEdgeDeviceUd   iotDevice    resourceGroupName

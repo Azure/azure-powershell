@@ -54,7 +54,6 @@ Update the Bot by Name and ResourceGroupName
 $getAzbot = Get-AzBotService -Name 'youri-apptest' -ResourceGroupName 'youriBotTest'
 Update-AzBotService -InputObject $getAzbot -kind sdk
 ```
-
 ```output
 Etag                                   Kind Location Name            SkuName SkuTier Type
 ----                                   ---- -------- ----            ------- ------- ----

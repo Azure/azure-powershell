@@ -290,7 +290,7 @@ function Test-CreateClusterWithRelayOutoundAndPrivateLink{
 		$params= Prepare-ClusterCreateParameter -location "South Central US"
 
 		# Private Link requires vnet has firewall, this is difficult to create dynamically, just hardcode here
-		$vnetId="/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet"
+		$vnetId= "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/zzy-test-rg/providers/Microsoft.Network/virtualNetworks/zzytestvnet"#"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet"
 		$subnetName="default"
 
 		# create cluster
@@ -299,7 +299,7 @@ function Test-CreateClusterWithRelayOutoundAndPrivateLink{
 		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
 		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
 		-MinSupportedTlsVersion $params.minSupportedTlsVersion `
-		-VirtualNetworkId $vnetId -SubnetName $subnetName -Version 3.6 `
+		-VirtualNetworkId $vnetId -SubnetName $subnetName -Version 4.0 `
 		-ResourceProviderConnection Outbound -PrivateLink Enabled
 
 		Assert-AreEqual $cluster.NetworkProperties.ResourceProviderConnection Outbound
@@ -467,7 +467,7 @@ function Test-CreateClusterWithPrivateLinkConfiguration{
 		$params= Prepare-ClusterCreateParameter -location "South Central US"
 
 		# Private Link requires vnet has firewall, this is difficult to create dynamically, just hardcode here
-		$vnetId="/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet"
+		$vnetId= "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/zzy-test-rg/providers/Microsoft.Network/virtualNetworks/zzytestvnet"#"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet"
 		$subnetName="default"
 
 		$ipConfigName="ipconfig"

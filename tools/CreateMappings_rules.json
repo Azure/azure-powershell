@@ -1,5 +1,9 @@
 [
   {
+    "alias": "Confidential Ledger",
+    "module": "ConfidentialLedger"
+  },
+  {
     "regex": "ApiManagement",
     "alias": "API Management"
   },
@@ -722,5 +726,13 @@
   {
     "alias": "Lab Services",
     "module": "LabServices"
+  },
+  {
+    "alias": "BareMetal",
+    "module": "BareMetal"
+  },
+  {
+    "alias": "ConnectedNetwork",
+    "module": "ConnectedNetwork"
   }
 ]

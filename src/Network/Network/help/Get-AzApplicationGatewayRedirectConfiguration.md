@@ -23,9 +23,9 @@ The **Get-AzApplicationGatewayRedirectConfiguration** cmdlet gets an existing re
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\>$AppGW = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> $RedirectConfig = Get-AzApplicationGatewayRedirectConfiguration -Name "Redirect01" -ApplicationGateway $AppGW
+```powershell
+$AppGW = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+$RedirectConfig = Get-AzApplicationGatewayRedirectConfiguration -Name "Redirect01" -ApplicationGateway $AppGW
 ```
 
 The first command gets the Application Gateway named ApplicationGateway01 and stores the result in the variable named $AppGW.

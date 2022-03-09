@@ -55,23 +55,23 @@ The **Get-AzPolicyRemediation** cmdlet gets all policy remediations in a scope o
 ## EXAMPLES
 
 ### Example 1: Get all policy remediations in the current subscription
-```
-PS C:\> Select-AzSubscription -Subscription "My Subscription"
-PS C:\> Get-AzPolicyRemediation
+```powershell
+Select-AzSubscription -Subscription "My Subscription"
+Get-AzPolicyRemediation
 ```
 
 This command gets all the remediations created at or underneath a subscription named 'My Subscription'.
 
 ### Example 2: Get a specific policy remediation and the deployment details
-```
-PS C:\> Get-AzPolicyRemediation -ResourceGroupName "myResourceGroup" -Name "remediation1" -IncludeDetail
+```powershell
+Get-AzPolicyRemediation -ResourceGroupName "myResourceGroup" -Name "remediation1" -IncludeDetail
 ```
 
 This command gets the remediation named 'remediation1' from resource group 'myResourceGroup'. The details of the resources being remediated will be included.
 
 ### Example 3: Get 10 policy remediations in a management group with optional filters
-```
-PS C:\> Get-AzPolicyRemediation -ManagementGroupName "mg1" -Top 10 -Filter "PolicyAssignmentId eq '/providers/Microsoft.Management/managementGroups/mg1/providers/Microsoft.Authorization/policyAssignments/pa1'"
+```powershell
+Get-AzPolicyRemediation -ManagementGroupName "mg1" -Top 10 -Filter "PolicyAssignmentId eq '/providers/Microsoft.Management/managementGroups/mg1/providers/Microsoft.Authorization/policyAssignments/pa1'"
 ```
 
 This command gets a max of 10 policy remediations from a management group named 'mg1'. Only policy remediations for the given policy assignment will be retrieved.

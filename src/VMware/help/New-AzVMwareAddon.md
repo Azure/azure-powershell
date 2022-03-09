@@ -25,9 +25,10 @@ Create or update a addon in a private cloud
 
 ### Example 1: Create an addon in a private cloud
 ```powershell
-PS C:\> $data = New-AzVMwareAddonVrPropertiesObject -VrsCount 2
-PS C:\> New-AzVMwareAddon -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group -Property $data
-
+$data = New-AzVMwareAddonVrPropertiesObject -VrsCount 2
+New-AzVMwareAddon -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group -Property $data
+```
+```output
 Name Type                               ResourceGroupName
 ---- ----                               -----------------
 vr   Microsoft.AVS/privateClouds/addons azps_test_group
@@ -102,7 +103,7 @@ The properties of an addon resource
 To construct, see NOTES section for PROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.IAddonProperties
+Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddonProperties
 Parameter Sets: (All)
 Aliases:
 
@@ -182,7 +183,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.IAddon
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddon
 
 ## NOTES
 

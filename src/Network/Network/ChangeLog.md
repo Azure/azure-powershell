@@ -19,6 +19,11 @@
 --->
 
 ## Upcoming Release
+* Added support for accepting Vnet, Subnet and NIC resources as the TargetResourceId for the following cdmlets
+    - `Set-AzNetworkWatcherFlowLog`
+    - `New-AzNetworkWatcherFlowLog`
+
+## Version 4.15.0
 * Added new property `SqlSetting` for Azure Firewall Policy cmdlets 
     - `Get-AzFirewallPolicy` 
     - `New-AzFirewallPolicy`

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics.dll-Help.xml
 Module Name: Az.DataLakeAnalytics
 ms.assetid: 75E4E0FB-35A8-47DA-B606-45E073D04625
@@ -33,8 +33,8 @@ The Set-AzDataLakeAnalyticsCatalogCredential cmdlet modifies a credential passwo
 ## EXAMPLES
 
 ### Example 1: Modify a credential's password associated with an account
-```
-PS C:\> Set-AzDataLakeAnalyticsCatalogCredential -AccountName "ContosoAdlAccount" `
+```powershell
+Set-AzDataLakeAnalyticsCatalogCredential -AccountName "ContosoAdlAccount" `
                   -DatabaseName "databaseName" `
                   -CredentialName "credName" `
                   -Credential (Get-Credential) `

@@ -40,8 +40,7 @@ Set daily data volume cap for an application insights resource
 
 ### Example 1 Set daily data volume cap for an application insights resource
 ```powershell
-Set-AzApplicationInsightsDailyCap -ResourceGroupName "testgroup" -Name "test" -DailyCapGB 400
- -DisableNotificationWhenHitCap
+Set-AzApplicationInsightsDailyCap -ResourceGroupName "testgroup" -Name "test" -DailyCapGB 400 -DisableNotificationWhenHitCap
 ```
 ```output
  Cap ResetTime StopSendNotificationWhenHitCap

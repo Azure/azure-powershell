@@ -45,7 +45,7 @@ The **Edit-AzRecoveryServicesAsrRecoveryPlan** cmdlet edits an Azure Site Recove
 
 ### Example 1
 ```powershell
-PS C:\> $RP = Edit-AzRecoveryServicesAsrRecoveryPlan -RecoveryPlan $RP -AppendGroup
+$RP = Edit-AzRecoveryServicesAsrRecoveryPlan -RecoveryPlan $RP -AppendGroup
 ```
 
 Appends a group to existing Azure Site Recovery plan and returns the in-memory updated recovery plan. 
