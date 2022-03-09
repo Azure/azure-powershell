@@ -30,6 +30,10 @@ $subscriptionObj = Get-AzServiceBusSubscription -ResourceGroup Default-ServiceBu
 $subscriptionObj.DeadLetteringOnMessageExpiration = $True
 $subscriptionObj.MaxDeliveryCount = 9
 
+Set-AzServiceBusSubscription -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -SubscriptionObj $subscriptionObj
+```
+
+```output
 Name                                      : SB-TopicSubscription-Example1
 AccessedAt                                : 1/1/0001 12:00:00 AM
 AutoDeleteOnIdle                          : 10675199.02:48:05.4775807
@@ -44,7 +48,6 @@ MessageCount                              : 0
 RequiresSession                           : False
 Status                                    : Active
 UpdatedAt                                 : 1/20/2017 9:59:15 PM
-Set-AzServiceBusSubscription -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -SubscriptionObj $subscriptionObj
 ```
 
 Updates the description for the specified subscription to the given topic. This example updates the **DeadLetteringOnMessageExpiration** property to **true** and **MaxDeliveryCount** to 9.
