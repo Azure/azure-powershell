@@ -142,6 +142,9 @@ Creates a new origin group within the specified endpoint.
 ### [New-AzCdnPolicy](New-AzCdnPolicy.md)
 Create or update policy with specified rule set name within a resource group.
 
+### [New-AzCdnProfile](New-AzCdnProfile.md)
+Creates a new Azure Front Door Standard or Azure Front Door Premium or CDN profile with a profile name under the specified subscription and resource group.
+
 ### [New-AzCdnProfileSsoUri](New-AzCdnProfileSsoUri.md)
 Generates a dynamic SSO URI used to sign in to the CDN supplemental portal.
 Supplemental portal is used to configure advanced feature capabilities that are not yet available in the Azure portal, such as core reports in a standard profile; rules engine, advanced HTTP reports, and real-time stats and alerts in a premium profile.
@@ -188,6 +191,10 @@ Deletes an existing origin group within an endpoint.
 
 ### [Remove-AzCdnPolicy](Remove-AzCdnPolicy.md)
 Deletes Policy
+
+### [Remove-AzCdnProfile](Remove-AzCdnProfile.md)
+Deletes an existing  Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified parameters.
+Deleting a profile will result in the deletion of all of the sub-resources including endpoints, origins and custom domains.
 
 ### [Remove-AzCdnRoute](Remove-AzCdnRoute.md)
 Deletes an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
@@ -263,6 +270,9 @@ Updates an existing origin group within an endpoint.
 
 ### [Update-AzCdnPolicy](Update-AzCdnPolicy.md)
 Update an existing CdnWebApplicationFirewallPolicy with the specified policy name under the specified subscription and resource group
+
+### [Update-AzCdnProfile](Update-AzCdnProfile.md)
+Updates an existing Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified profile name under the specified subscription and resource group.
 
 ### [Update-AzCdnRoute](Update-AzCdnRoute.md)
 Updates an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.

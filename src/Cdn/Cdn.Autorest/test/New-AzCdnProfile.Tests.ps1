@@ -15,7 +15,25 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzCdnProfile'))
 }
 
 Describe 'New-AzCdnProfile' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
+        try
+        {
+            Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
+            New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
+
+            $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
+            Write-Host -ForegroundColor Green "Use CdnProfileName : $($cdnProfileName)"
+
+            $profileSku = "Standard_Microsoft";
+            $frontDoorCdnProfile = New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
+
+            $frontDoorCdnProfile.Name | Should -Be $cdnProfileName
+            $frontDoorCdnProfile.SkuName | Should -Be $profileSku
+            $frontDoorCdnProfile.Location | Should -Be "Global"
+        } Finally
+        {
+            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+        }
     }
 }

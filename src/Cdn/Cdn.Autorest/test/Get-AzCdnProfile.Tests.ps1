@@ -15,19 +15,83 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCdnProfile'))
 }
 
 Describe 'Get-AzCdnProfile' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { 
+            $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
+            try
+            {
+                Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
+                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
+    
+                $cdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
+                Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
+    
+                $profileSku = "Standard_Microsoft";
+                New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
+    
+                $cdnProfiles = Get-AzCdnProfile -ResourceGroupName $ResourceGroupName
+    
+                $cdnProfiles.Count | Should -BeGreaterOrEqual 1
+            } Finally
+            {
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            }
+        } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        { 
+            $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
+            try
+            {
+                Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
+                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
+
+                $cdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
+                Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
+
+                $profileSku = "Standard_Microsoft";
+                New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
+
+                $cdnProfile = Get-AzCdnProfile -ResourceGroupName $ResourceGroupName -Name $cdnProfileName
+
+                $cdnProfile.Name | Should -Be $cdnProfileName
+                $cdnProfile.SkuName | Should -Be $profileSku
+                $cdnProfile.Location | Should -Be "Global"
+            } Finally
+            {
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            }    
+        } | Should -Not -Throw
     }
 
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List1' {
+        { 
+            $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
+            try
+            {
+                Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
+                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
+
+                $cdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
+                Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
+
+                $profileSku = "Standard_Microsoft";
+                New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
+
+                $cdnProfiles = Get-AzCdnProfile -ResourceGroupName $ResourceGroupName
+
+                $cdnProfiles.Count | Should -Be 1
+            } Finally
+            {
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            }
+        } | Should -Not -Throw
     }
 
     It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        { 
+           
+        } | Should -Not -Throw
     }
 }
