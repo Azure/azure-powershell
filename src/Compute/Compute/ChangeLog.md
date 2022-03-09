@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Updated New-AzVM feature for `vCPUsAvailable` and `vCPUsPerCore` parameters. Cmdlets will not try to use the new `VMCustomizationPreview` feature if the user does not have access to that feature. [#17370]
 * Improved description and examples for disk creation
 
 ## Version 4.24.0
