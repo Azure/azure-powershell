@@ -349,6 +349,42 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Creating a new Managed Instance Hybrid Link in resource group &apos;{0}&apos; under managed instance &apos;{1}&apos; with name &apos;{2}&apos;..
+        /// </summary>
+        internal static string CreateAzureSqlInstanceLinkDescription {
+            get {
+                return ResourceManager.GetString("CreateAzureSqlInstanceLinkDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to create a new Managed Instance Hybrid Link in resource group &apos;{0}&apos; under managed instance &apos;{1}&apos; with name &apos;{2}&apos;?.
+        /// </summary>
+        internal static string CreateAzureSqlInstanceLinkWarning {
+            get {
+                return ResourceManager.GetString("CreateAzureSqlInstanceLinkWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating a new Server Trust Certificate in resource group &apos;{0}&apos; under managed instance &apos;{1}&apos; with name &apos;{2}&apos;..
+        /// </summary>
+        internal static string CreateAzureSqlInstanceServerTrustCertificateDescription {
+            get {
+                return ResourceManager.GetString("CreateAzureSqlInstanceServerTrustCertificateDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to create the Server Trust Certificate in resource group &apos;{0}&apos; under managed instance &apos;{1}&apos; with name &apos;{2}&apos;?.
+        /// </summary>
+        internal static string CreateAzureSqlInstanceServerTrustCertificateWarning {
+            get {
+                return ResourceManager.GetString("CreateAzureSqlInstanceServerTrustCertificateWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Database with name: &apos;{0}&apos; already exists in server &apos;{1}&apos;..
         /// </summary>
         internal static string DatabaseNameExists {
@@ -981,6 +1017,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This operation may cause data loss if replicas last hardened LSNs are not in sync, are you sure you want to continue?.
+        /// </summary>
+        internal static string RemoveAzureSqlInstanceServerTrustCertificateAllowDataLoss {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlInstanceServerTrustCertificateAllowDataLoss", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Permanently removing Azure Sql Instance Server Trust Certificate &apos;{0}&apos; on server &apos;{1}&apos;..
         /// </summary>
         internal static string RemoveAzureSqlInstanceServerTrustCertificateDescription {
@@ -1420,18 +1465,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("ServerOutboundFirewallRuleFQDNDoesNotExist", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Parameter &apos;{0}&apos; and &apos;{1}&apos; both being null is not allowed..
-        /// </summary>
-        internal static string SetAzSqlDatabaseBackupShortTermRetentionInvalidParameters
-        {
-            get
-            {
-                return ResourceManager.GetString("SetAzSqlDatabaseBackupShortTermRetentionInvalidParameters", resourceCulture);
-            }
-        }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Allowed FQDN with name &apos;{0}&apos; already exists in the list of Outbound Firewall Rules (Allowed FQDNs) for Azure SQL Database server &apos;{1}&apos;..
         /// </summary>
@@ -1487,11 +1521,38 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid parameters, &apos;{0}&apos; and &apos;{1}&apos; can&apos;t both be null..
+        /// </summary>
+        internal static string SetAzSqlDatabaseBackupShortTermRetentionInvalidParameters {
+            get {
+                return ResourceManager.GetString("SetAzSqlDatabaseBackupShortTermRetentionInvalidParameters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Setting Azure Sql Database Managed Instance &apos;{0}&apos;..
         /// </summary>
         internal static string SetAzureSqlInstanceDescription {
             get {
                 return ResourceManager.GetString("SetAzureSqlInstanceDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating Managed Instance Hybrid Link in resource group &apos;{0}&apos; under managed instance &apos;{1}&apos; with name &apos;{2}&apos;..
+        /// </summary>
+        internal static string SetAzureSqlInstanceLinkDescription {
+            get {
+                return ResourceManager.GetString("SetAzureSqlInstanceLinkDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to update Managed Instance Hybrid Link in resource group &apos;{0}&apos; under managed instance &apos;{1}&apos; with name &apos;{2}&apos;?.
+        /// </summary>
+        internal static string SetAzureSqlInstanceLinkWarning {
+            get {
+                return ResourceManager.GetString("SetAzureSqlInstanceLinkWarning", resourceCulture);
             }
         }
         

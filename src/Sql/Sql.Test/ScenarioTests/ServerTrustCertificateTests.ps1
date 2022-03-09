@@ -46,44 +46,98 @@ function Test-ServerTrustCertificate
 	$miName = "chimera-ps-cli-v2"
 	try
 	{
-		#temp cleanup
-		try { Remove-AzSqlInstanceServerTrustCertificate -ResourceGroupName CustomerExperienceTeam_RG -InstanceName chimera-ps-cli-v2 -CertificateName $certName1 } catch { }
-		try { Remove-AzSqlInstanceServerTrustCertificate -ResourceGroupName CustomerExperienceTeam_RG -InstanceName chimera-ps-cli-v2 -CertificateName $certName2 } catch { }
+        # temp cleanup
+		try { Get-AzSqlInstance -ResourceGroupName $rgName -Name $miName | Get-AzSqlInstanceServerTrustCertificate | Remove-AzSqlInstanceServerTrustCertificate } catch { }
 		
+		# generate expected cert ids
+		$instance = Get-AzSqlInstance -ResourceGroupName $rgName -Name $miName
+		$instanceId = $instance.Id
+		$certId1 = $instanceId + "/serverTrustCertificates/" + $certName1
+		$certId2 = $instanceId + "/serverTrustCertificates/" + $certName2
+		$certId3 = $instanceId + "/serverTrustCertificates/" + $certName3
+
 		# List 0 certs
 		$listCertsZero = Get-AzSqlInstanceServerTrustCertificate -ResourceGroupName $rgName -InstanceName $miName
 		Write-Debug ('$listCertsZero is ' + (ConvertTo-Json $listCertsZero))
 		Assert-Null $listCertsZero
 
-		# Upsert valid certificate #1
+		# Upsert valid certificate #1 via CreateByNameParameterSet
 		$newCert1 = New-AzSqlInstanceServerTrustCertificate -ResourceGroupName $rgName -InstanceName $miName -CertificateName $certName1 -PublicKey $certVal1
 		Write-Debug ('$newCert1 is ' + (ConvertTo-Json $newCert1))
 		Assert-NotNull $newCert1
 		Assert-AreEqual	$newCert1.ResourceGroupName $rgName
 		Assert-AreEqual	$newCert1.InstanceName $miName
+		Assert-AreEqual $newCert1.Id $certId1
+		Assert-AreEqual	$newCert1.Type $certType
 		Assert-AreEqual	$newCert1.CertificateName $certName1
 		Assert-AreEqual	$newCert1.Thumbprint $thumbprint1
 		Assert-AreEqual $newCert1.PublicKey $certVal1
 
-		# Upsert valid certificate #2
-		$newCert2 = New-AzSqlInstanceServerTrustCertificate -ResourceGroupName $rgName -InstanceName $miName -CertificateName $certName2 -PublicKey $certVal2
+		# Upsert valid certificate #2 via CreateByParentObjectParameterSet
+		$newCert2 = New-AzSqlInstanceServerTrustCertificate -Instance $instance -CertificateName $certName2 -PublicKey $certVal2
 		Write-Debug ('$newCert2 is ' + (ConvertTo-Json $newCert2))
 		Assert-NotNull $newCert2
 		Assert-AreEqual	$newCert2.ResourceGroupName $rgName
 		Assert-AreEqual	$newCert2.InstanceName $miName
+		Assert-AreEqual $newCert2.Id $certId2
+		Assert-AreEqual	$newCert2.Type $certType
 		Assert-AreEqual	$newCert2.CertificateName $certName2
 		Assert-AreEqual	$newCert2.Thumbprint $thumbprint2
 		Assert-AreEqual $newCert2.PublicKey $certVal2
 
-		# Get valid certificate #1
-		$getCert1 = Get-AzSqlInstanceServerTrustCertificate -ResourceGroupName $rgName -InstanceName $miName -CertificateName $certName1
-		Write-Debug ('$getCert1 is ' + (ConvertTo-Json $getCert1))
-		Assert-NotNull $getCert1
-		Assert-AreEqual	$getCert1.ResourceGroupName $rgName
-		Assert-AreEqual	$getCert1.InstanceName $miName
-		Assert-AreEqual	$getCert1.CertificateName $certName1
-		Assert-AreEqual	$getCert1.Thumbprint $thumbprint1
-		Assert-AreEqual $getCert1.PublicKey $certVal1
+		# Test all 4 parameter sets for GET:
+		# GetByNameParameterSet
+		# GetByParentObjectParameterSet
+		# GetByResourceIdParameterSet
+		# GetByInstanceResourceIdParameterSet
+
+		# Get valid certificate #1 - (GetByNameParameterSet)
+		$getCert1ByNameParameterSet = Get-AzSqlInstanceServerTrustCertificate -ResourceGroupName $rgName -InstanceName $miName -CertificateName $certName1
+		Write-Debug ('$getCert1ByNameParameterSet is ' + (ConvertTo-Json $getCert1ByNameParameterSet))
+		Assert-NotNull $getCert1ByNameParameterSet
+		Assert-AreEqual	$getCert1ByNameParameterSet.ResourceGroupName $rgName
+		Assert-AreEqual	$getCert1ByNameParameterSet.InstanceName $miName
+		Assert-AreEqual $getCert1ByNameParameterSet.Id $certId1
+		Assert-AreEqual	$getCert1ByNameParameterSet.Type $certType
+		Assert-AreEqual	$getCert1ByNameParameterSet.CertificateName $certName1
+		Assert-AreEqual	$getCert1ByNameParameterSet.Thumbprint $thumbprint1
+		Assert-AreEqual $getCert1ByNameParameterSet.PublicKey $certVal1
+
+		# Get valid certificate #1 - (GetByParentObjectParameterSet)
+		$getCert1ByParentObjectParameterSet = Get-AzSqlInstanceServerTrustCertificate -Instance $instance -CertificateName $certName1
+		Write-Debug ('$getCert1ByParentObjectParameterSet is ' + (ConvertTo-Json $getCert1ByParentObjectParameterSet))
+		Assert-NotNull $getCert1ByParentObjectParameterSet
+		Assert-AreEqual	$getCert1ByParentObjectParameterSet.ResourceGroupName $rgName
+		Assert-AreEqual	$getCert1ByParentObjectParameterSet.InstanceName $miName
+		Assert-AreEqual $getCert1ByParentObjectParameterSet.Id $certId1
+		Assert-AreEqual	$getCert1ByParentObjectParameterSet.Type $certType
+		Assert-AreEqual	$getCert1ByParentObjectParameterSet.CertificateName $certName1
+		Assert-AreEqual	$getCert1ByParentObjectParameterSet.Thumbprint $thumbprint1
+		Assert-AreEqual $getCert1ByParentObjectParameterSet.PublicKey $certVal1
+
+		# Get valid certificate #1 - (GetByResourceIdParameterSet)
+		$getCert1ByResourceIdParameterSet = Get-AzSqlInstanceServerTrustCertificate -ResourceId $certId1
+		Write-Debug ('$getCert1ByResourceIdParameterSet is ' + (ConvertTo-Json $getCert1ByResourceIdParameterSet))
+		Assert-NotNull $getCert1ByResourceIdParameterSet
+		Assert-AreEqual	$getCert1ByResourceIdParameterSet.ResourceGroupName $rgName
+		Assert-AreEqual	$getCert1ByResourceIdParameterSet.InstanceName $miName
+		Assert-AreEqual $getCert1ByResourceIdParameterSet.Id $certId1
+		Assert-AreEqual	$getCert1ByResourceIdParameterSet.Type $certType
+		Assert-AreEqual	$getCert1ByResourceIdParameterSet.CertificateName $certName1
+		Assert-AreEqual	$getCert1ByResourceIdParameterSet.Thumbprint $thumbprint1
+		Assert-AreEqual $getCert1ByResourceIdParameterSet.PublicKey $certVal1
+
+		# Get valid certificate #1 - (GetByInstanceResourceIdParameterSet)
+		$getCert1ByInstanceResourceIdParameterSet = Get-AzSqlInstanceServerTrustCertificate -InstanceResourceId $instanceId -CertificateName $certName1
+		Write-Debug ('$getCert1ByInstanceResourceIdParameterSet is ' + (ConvertTo-Json $getCert1ByInstanceResourceIdParameterSet))
+		Assert-NotNull $getCert1ByInstanceResourceIdParameterSet
+		Assert-AreEqual	$getCert1ByInstanceResourceIdParameterSet.ResourceGroupName $rgName
+		Assert-AreEqual	$getCert1ByInstanceResourceIdParameterSet.InstanceName $miName
+		Assert-AreEqual $getCert1ByInstanceResourceIdParameterSet.Id $certId1
+		Assert-AreEqual	$getCert1ByInstanceResourceIdParameterSet.Type $certType
+		Assert-AreEqual	$getCert1ByInstanceResourceIdParameterSet.CertificateName $certName1
+		Assert-AreEqual	$getCert1ByInstanceResourceIdParameterSet.Thumbprint $thumbprint1
+		Assert-AreEqual $getCert1ByInstanceResourceIdParameterSet.PublicKey $certVal1
 
 		# Get valid certificate #2
 		$getCert2 = Get-AzSqlInstanceServerTrustCertificate -ResourceGroupName $rgName -InstanceName $miName -CertificateName $certName2
@@ -91,6 +145,8 @@ function Test-ServerTrustCertificate
 		Assert-NotNull $getCert2
 		Assert-AreEqual	$getCert2.ResourceGroupName $rgName
 		Assert-AreEqual	$getCert2.InstanceName $miName
+		Assert-AreEqual $getCert2.Id $certId2
+		Assert-AreEqual	$getCert2.Type $certType
 		Assert-AreEqual	$getCert2.CertificateName $certName2
 		Assert-AreEqual	$getCert2.Thumbprint $thumbprint2
 		Assert-AreEqual $getCert2.PublicKey $certVal2
@@ -101,30 +157,38 @@ function Test-ServerTrustCertificate
 		Assert-NotNull $listCerts
 		Assert-AreEqual	$listCerts.Count 2
 
-		# Delete certificate #1
+		# Delete certificate #1 via DeleteByNameParameterSet
 		$delCert1 = Remove-AzSqlInstanceServerTrustCertificate -ResourceGroupName $rgName -InstanceName $miName -CertificateName $certName1
 		Write-Debug ('$delCert1 is ' + (ConvertTo-Json $delCert1))
 		Assert-NotNull $delCert1
 		Assert-AreEqual	$delCert1.ResourceGroupName $rgName
 		Assert-AreEqual	$delCert1.InstanceName $miName
+		Assert-AreEqual $delCert1.Id $certId1
+		Assert-AreEqual	$delCert1.Type $certType
 		Assert-AreEqual	$delCert1.CertificateName $certName1
 		Assert-AreEqual	$delCert1.Thumbprint $thumbprint1
 		Assert-AreEqual $delCert1.PublicKey $certVal1
 
-		# Delete non existant cert #1 THROWS
+		# Delete non existant cert #1 THROWS (via DeleteByParentObjectParameterSet)
 		$msgExcDel = "The requested resource of type '" + $certType + "' with name '" + $certName1 + "' was not found."
-		Assert-Throws { Remove-AzSqlInstanceServerTrustCertificate -ResourceGroupName $rgName -InstanceName $miName -CertificateName $certName1 } $msgExc
+		Assert-Throws { Remove-AzSqlInstanceServerTrustCertificate -Instance $instance -CertificateName $certName1 } $msgExc
 		
-		# Get non existant cert #1 THROWS
+		# Delete non existant cert #1 THROWS (via DeleteByInputObjectParameterSet)
+		$msgExcDel = "The requested resource of type '" + $certType + "' with name '" + $certName1 + "' was not found."
+		Assert-Throws { Remove-AzSqlInstanceServerTrustCertificate -Certificate $getCert1ByInstanceResourceIdParameterSet} $msgExc
+
+		# Get non existant cert #1 THROWS (via DeleteByInputObjectParameterSet)
 		$msgExcGet = "The requested resource of type '" + $certType + "' with name '" + $certName1 + "' was not found."
-		Assert-Throws { Get-AzSqlInstanceServerTrustCertificate -ResourceGroupName $rgName -InstanceName $miName -CertificateName $certName1 } $msgExc
+		Assert-Throws { Get-AzSqlInstanceServerTrustCertificate -Certificate $getCert1ByInstanceResourceIdParameterSet } $msgExc
 		
-		# Delete certificate #2
-		$delCert2 = Remove-AzSqlInstanceServerTrustCertificate -ResourceGroupName $rgName -InstanceName $miName -CertificateName $certName2
+		# Delete certificate #2 via DeleteByResourceIdParameterSet
+		$delCert2 = Remove-AzSqlInstanceServerTrustCertificate -ResourceId $certId2
 		Write-Debug ('$delCert2 is ' + (ConvertTo-Json $delCert2))
 		Assert-NotNull $delCert2
 		Assert-AreEqual	$delCert2.ResourceGroupName $rgName
 		Assert-AreEqual	$delCert2.InstanceName $miName
+		Assert-AreEqual $delCert2.Id $certId2
+		Assert-AreEqual	$delCert2.Type $certType
 		Assert-AreEqual	$delCert2.CertificateName $certName2
 		Assert-AreEqual	$delCert2.Thumbprint $thumbprint2
 		Assert-AreEqual $delCert2.PublicKey $certVal2
@@ -153,14 +217,9 @@ function Test-ServerTrustCertificateErrHandling
 	$rgName = "CustomerExperienceTeam_RG"
 	$miName = "chimera-ps-cli-v2"
 	try
-	{
-		#temp cleanup
-		try { Remove-AzSqlInstanceServerTrustCertificate -ResourceGroupName CustomerExperienceTeam_RG -InstanceName chimera-ps-cli-v2 -CertificateName $invalidCertName1 } catch { }
-		try { Remove-AzSqlInstanceServerTrustCertificate -ResourceGroupName CustomerExperienceTeam_RG -InstanceName chimera-ps-cli-v2 -CertificateName $invalidCertName2 } catch { }
-		try { Remove-AzSqlInstanceServerTrustCertificate -ResourceGroupName CustomerExperienceTeam_RG -InstanceName chimera-ps-cli-v2 -CertificateName $invalidCertName3 } catch { }
-		try { Remove-AzSqlInstanceServerTrustCertificate -ResourceGroupName CustomerExperienceTeam_RG -InstanceName chimera-ps-cli-v2 -CertificateName $certName1 } catch { }
-		try { Remove-AzSqlInstanceServerTrustCertificate -ResourceGroupName CustomerExperienceTeam_RG -InstanceName chimera-ps-cli-v2 -CertificateName $certName2 } catch { }
-		try { Remove-AzSqlInstanceServerTrustCertificate -ResourceGroupName CustomerExperienceTeam_RG -InstanceName chimera-ps-cli-v2 -CertificateName $certName3 } catch { }
+	{		
+        # temp cleanup
+		try { Get-AzSqlInstance -ResourceGroupName $rgName -Name $miName | Get-AzSqlInstanceServerTrustCertificate | Remove-AzSqlInstanceServerTrustCertificate } catch { }
 		
 		# List 0 certs
 		$listCertsZero = Get-AzSqlInstanceServerTrustCertificate -ResourceGroupName $rgName -InstanceName $miName
@@ -177,7 +236,7 @@ function Test-ServerTrustCertificateErrHandling
 		$newCert1 = New-AzSqlInstanceServerTrustCertificate -ResourceGroupName $rgName -InstanceName $miName -CertificateName $certName1 -PublicKey $certVal1
 		Assert-NotNull $newCert1
 		# Upsert Cert with a public blob that already exist on the instance under a different name
-		$exc3 = "Long running operation failed with status 'Failed'. Additional Info:'An unexpected error occured while processing the request."
+		$exc3 = "Long running operation failed with status 'Failed'"
 		Assert-ThrowsContains { New-AzSqlInstanceServerTrustCertificate -ResourceGroupName $rgName -InstanceName $miName -CertificateName $invalidCertName3 -PublicKey $certVal1 } $exc3
         # Upsert Cert blob empty
 		$exc4 = "Cannot validate argument on parameter 'PublicKey'. The argument is null or empty."
@@ -204,6 +263,56 @@ function Test-ServerTrustCertificateErrHandling
 		$listCertsZero = Get-AzSqlInstanceServerTrustCertificate -ResourceGroupName $rgName -InstanceName $miName
 		Write-Debug ('$listCertsZero is ' + (ConvertTo-Json $listCertsZero))
 		Assert-Null $listCertsZero
+
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+
+<#
+	.SYNOPSIS
+	Tests creating a server trust certificate
+#>
+function Test-ServerTrustCertificatePiping
+{
+	# Setup
+	#$rg = Create-ResourceGroupForTest $instanceLocation
+	#$mi = Create-ManagedInstanceForTest $rg
+	$rgName = "CustomerExperienceTeam_RG"
+	$miName = "chimera-ps-cli-v2"
+	try
+	{
+        # temp cleanup
+		try { Get-AzSqlInstance -ResourceGroupName $rgName -Name $miName | Get-AzSqlInstanceServerTrustCertificate | Remove-AzSqlInstanceServerTrustCertificate } catch { }
+		
+		$instance = Get-AzSqlInstance -ResourceGroupName $rgName -Name $miName 
+
+		# Upsert certificate #1 and #2 via ParentObject piping
+		$newCert1 = $instance | New-AzSqlInstanceServerTrustCertificate -CertificateName $certName1 -PublicKey $certVal1
+		$newCert2 = $instance | New-AzSqlInstanceServerTrustCertificate -CertificateName $certName2 -PublicKey $certVal2
+		Write-Debug ('$newCert1 is ' + (ConvertTo-Json $newCert1))
+		Write-Debug ('$newCert2 is ' + (ConvertTo-Json $newCert2))
+		Assert-NotNull $newCert1
+		Assert-NotNull $newCert2
+
+		# Grab certificates #1 and #2 via ParentObject piping
+		$listCertRespByParentObjectPipe = $instance | Get-AzSqlInstanceServerTrustCertificate
+		$getCertRespByParentObjectPipe =  $instance | Get-AzSqlInstanceServerTrustCertificate -CertificateName $certName1
+		$getCertRespByParentObjectPipe =  $instance | Get-AzSqlInstanceServerTrustCertificate -CertificateName $certName2
+		Write-Debug ('$listCertRespByParentObjectPipe is ' + (ConvertTo-Json $listCertRespByParentObjectPipe))
+		Write-Debug ('$getCertRespByParentObjectPipe is ' + (ConvertTo-Json $getCertRespByParentObjectPipe))
+		Write-Debug ('$getCertRespByParentObjectPipe is ' + (ConvertTo-Json $getCertRespByParentObjectPipe))
+		Assert-NotNull $listCertRespByParentObjectPipe
+		Assert-NotNull $getCertRespByParentObjectPipe
+		Assert-NotNull $getCertRespByParentObjectPipe
+
+		# Delete certificates
+		$removeCertCollectionPipe = $listCertRespByParentObjectPipe | Remove-AzSqlInstanceServerTrustCertificate
+		Write-Debug ('$removeCertCollectionPipe is ' + (ConvertTo-Json $removeCertCollectionPipe))
+		Assert-NotNull $removeCertCollectionPipe
 
 	}
 	finally

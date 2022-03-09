@@ -93,6 +93,8 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Services
             {
                 ResourceGroupName = resourceGroupName,
                 InstanceName = instanceName,
+                Id = serverTrustCertificate.Id,
+                Type = serverTrustCertificate.Type,
                 CertificateName = serverTrustCertificate.CertificateName,
                 PublicKey = "0x" + serverTrustCertificate.PublicBlob,
                 Thumbprint = "0x" + serverTrustCertificate.Thumbprint

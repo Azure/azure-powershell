@@ -17,6 +17,16 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Model
         public string InstanceName { get; set; }
 
         /// <summary>
+        /// Gets or sets certificate id
+        /// </summary>
+        public string Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets certificate type
+        /// </summary>
+        public string Type { get; set; }
+
+        /// <summary>
         /// Gets or sets certificate name
         /// </summary>
         public string CertificateName { get; set; }

@@ -51,5 +51,12 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 		{
 			RunPowerShellTest("Test-ManagedInstanceLinkErrHandling");
 		}
+
+		[Fact]
+		[Trait(Category.AcceptanceType, Category.CheckIn)]
+		public void TestManagedInstanceLinkPiping()
+		{
+			RunPowerShellTest("Test-ManagedInstanceLinkPiping");
+		}
 	}
 }

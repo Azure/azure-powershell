@@ -52,5 +52,12 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 			RunPowerShellTest("Test-ServerTrustCertificateErrHandling");
 		}
 
+		[Fact]
+		[Trait(Category.AcceptanceType, Category.CheckIn)]
+		public void TestServerTrustCertificatePiping()
+		{
+			RunPowerShellTest("Test-ServerTrustCertificatePiping");
+		}
+
 	}
 }

@@ -25,7 +25,12 @@ $secondaryAGName = "testcl"
 $linkType = "Microsoft.Sql/managedInstances/distributedAvailabilityGroups"
 $rgName = "CustomerExperienceTeam_RG"
 $miName = "chimera-ps-cli-v2"
-  
+ 
+$linkNamePipe = "TestDAG_Pipe"
+$targetDatabasePipe = "testdb_Pipe"
+$sourceEndpointPipe = "TCP://SERVERPipe:7022"
+$primaryAGNamePipe = "BoxLocalAg1_Pipe"
+$secondaryAGNamePipe = "testcl_Pipe"
 
 <#
 	.SYNOPSIS
@@ -36,8 +41,12 @@ function Test-ManagedInstanceLink
 	try
 	{
 		#temp cleanup
-		try { Remove-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $linkName } catch { }
-		try { Remove-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $invalidLinkName1 } catch { }
+		try { Get-AzSqlInstance -ResourceGroupName $rgName -Name $miName | Get-AzSqlInstanceLink | Remove-AzSqlInstanceLink -Force } catch { }
+				
+		# generate expected link ids
+		$instance = Get-AzSqlInstance -ResourceGroupName $rgName -Name $miName
+		$instanceId = $instance.Id
+		$linkId = $instanceId + "/distributedAvailabilityGroups/" + $linkName
 
 		# List 0 links
 		$listLinksZero = Get-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName
@@ -52,19 +61,64 @@ function Test-ManagedInstanceLink
 			Wait-Seconds 30
 			$listResp = Get-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName
 		}
+		
+		# Test all 4 parameter sets for GET:
+		# GetByNameParameterSet
+		# GetByParentObjectParameterSet
+		# GetByResourceIdParameterSet
+		# GetByInstanceResourceIdParameterSet
 
-		# Link is created
-		$getLink = Get-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $linkName
-		Write-Debug ('$getLink is ' + (ConvertTo-Json $getLink))
-		Assert-NotNull $getLink
-        Assert-AreEqual $getLink.ResourceGroupName $rgName
-        Assert-AreEqual $getLink.InstanceName $miName
-		Assert-AreEqual $getLink.Type $linkType
-        Assert-AreEqual $getLink.LinkName $linkName
-        Assert-AreEqual $getLink.TargetDatabase $targetDatabase
-        Assert-AreEqual $getLink.SourceEndpoint $sourceEndpoint
-        Assert-AreEqual $getLink.ReplicationMode Async
-		# "Id": "/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/managedInstances/chimera-ps-cli-v2/distributedAvailabilityGroups/TestDAG",
+		# Get the created link - (GetByNameParameterSet)
+		$getLinkByNameParameterSet = Get-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $linkName
+		Write-Debug ('$getLinkByNameParameterSet is ' + (ConvertTo-Json $getLinkByNameParameterSet))
+		Assert-NotNull $getLinkByNameParameterSet
+        Assert-AreEqual $getLinkByNameParameterSet.ResourceGroupName $rgName
+        Assert-AreEqual $getLinkByNameParameterSet.InstanceName $miName
+		Assert-AreEqual $getLinkByNameParameterSet.Type $linkType
+		Assert-AreEqual $getLinkByNameParameterSet.Id $linkId
+        Assert-AreEqual $getLinkByNameParameterSet.LinkName $linkName
+        Assert-AreEqual $getLinkByNameParameterSet.TargetDatabase $targetDatabase
+        Assert-AreEqual $getLinkByNameParameterSet.SourceEndpoint $sourceEndpoint
+        Assert-AreEqual $getLinkByNameParameterSet.ReplicationMode Async
+
+		# Get the created link - (GetByParentObjectParameterSet)
+		$getLinkByParentObjectParameterSet = Get-AzSqlInstanceLink -Instance $instance -LinkName $linkName
+		Write-Debug ('$getLinkByParentObjectParameterSet is ' + (ConvertTo-Json $getLinkByParentObjectParameterSet))
+		Assert-NotNull $getLinkByParentObjectParameterSet
+        Assert-AreEqual $getLinkByParentObjectParameterSet.ResourceGroupName $rgName
+        Assert-AreEqual $getLinkByParentObjectParameterSet.InstanceName $miName
+		Assert-AreEqual $getLinkByParentObjectParameterSet.Type $linkType
+		Assert-AreEqual $getLinkByParentObjectParameterSet.Id $linkId
+        Assert-AreEqual $getLinkByParentObjectParameterSet.LinkName $linkName
+        Assert-AreEqual $getLinkByParentObjectParameterSet.TargetDatabase $targetDatabase
+        Assert-AreEqual $getLinkByParentObjectParameterSet.SourceEndpoint $sourceEndpoint
+        Assert-AreEqual $getLinkByParentObjectParameterSet.ReplicationMode Async
+
+		# Get the created link - (GetByResourceIdParameterSet)
+		$getLinkByResourceIdParameterSet = Get-AzSqlInstanceLink -ResourceId $linkId
+		Write-Debug ('$getLinkByResourceIdParameterSet is ' + (ConvertTo-Json $getLinkByResourceIdParameterSet))
+		Assert-NotNull $getLinkByResourceIdParameterSet
+        Assert-AreEqual $getLinkByResourceIdParameterSet.ResourceGroupName $rgName
+        Assert-AreEqual $getLinkByResourceIdParameterSet.InstanceName $miName
+		Assert-AreEqual $getLinkByResourceIdParameterSet.Type $linkType
+		Assert-AreEqual $getLinkByResourceIdParameterSet.Id $linkId
+        Assert-AreEqual $getLinkByResourceIdParameterSet.LinkName $linkName
+        Assert-AreEqual $getLinkByResourceIdParameterSet.TargetDatabase $targetDatabase
+        Assert-AreEqual $getLinkByResourceIdParameterSet.SourceEndpoint $sourceEndpoint
+        Assert-AreEqual $getLinkByResourceIdParameterSet.ReplicationMode Async
+
+		# Get the created link - (GetByInstanceResourceIdParameterSet)
+		$getLinkByInstanceResourceIdParameterSet = Get-AzSqlInstanceLink -InstanceResourceId $instanceId -LinkName $linkName
+		Write-Debug ('$getLinkByInstanceResourceIdParameterSet is ' + (ConvertTo-Json $getLinkByInstanceResourceIdParameterSet))
+		Assert-NotNull $getLinkByInstanceResourceIdParameterSet
+        Assert-AreEqual $getLinkByInstanceResourceIdParameterSet.ResourceGroupName $rgName
+        Assert-AreEqual $getLinkByInstanceResourceIdParameterSet.InstanceName $miName
+		Assert-AreEqual $getLinkByInstanceResourceIdParameterSet.Type $linkType
+		Assert-AreEqual $getLinkByInstanceResourceIdParameterSet.Id $linkId
+        Assert-AreEqual $getLinkByInstanceResourceIdParameterSet.LinkName $linkName
+        Assert-AreEqual $getLinkByInstanceResourceIdParameterSet.TargetDatabase $targetDatabase
+        Assert-AreEqual $getLinkByInstanceResourceIdParameterSet.SourceEndpoint $sourceEndpoint
+        Assert-AreEqual $getLinkByInstanceResourceIdParameterSet.ReplicationMode Async
 
 		# List all links on instance
 		$listLink = Get-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName
@@ -72,8 +126,16 @@ function Test-ManagedInstanceLink
 		Assert-NotNull $listLink
 		Assert-AreEqual	$listLink.Count 1
 
+		# Delete non existant link THROWS (via DeleteByParentObjectParameterSet)
+		$msgExcDel = "The requested resource of type '" + $certType + "' with name '" + $certName1 + "' was not found."
+		Assert-Throws { Remove-AzSqlInstanceServerTrustCertificate -Instance $instance -CertificateName $certName1 -Force } $msgExc
+
+		# Delete non existant link THROWS (via DeleteByInputObjectParameterSet)
+		$msgExcDel = "The requested resource of type '" + $certType + "' with name '" + $certName1 + "' was not found."
+		Assert-Throws { Remove-AzSqlInstanceServerTrustCertificate -ManagedInstanceLink $getLinkByParentObjectParameterSet -Force } $msgExc
+
 		# Remove the Link
-		$rmLink = Remove-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $linkName
+		$rmLink = Remove-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $linkName -Force 
 		Write-Debug ('$rmLink is ' + (ConvertTo-Json $rmLink))
 		Assert-NotNull $rmLink
         Assert-AreEqual $rmLink.ResourceGroupName $rgName
@@ -104,8 +166,12 @@ function Test-ManagedInstanceLinkErrHandling
 	try
 	{
 		#temp cleanup
-		try { Remove-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $linkName } catch { }
-		try { Remove-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $invalidLinkName1 } catch { }
+		try { Get-AzSqlInstance -ResourceGroupName $rgName -Name $miName | Get-AzSqlInstanceLink | Remove-AzSqlInstanceLink -Force } catch { }		
+
+		# generate expected link ids
+		$instance = Get-AzSqlInstance -ResourceGroupName $rgName -Name $miName
+		$instanceId = $instance.Id
+		$linkId = $instanceId + "/distributedAvailabilityGroups/" + $linkName
 		
 		# List 0 links
 		$listLinksZero = Get-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName
@@ -126,7 +192,7 @@ function Test-ManagedInstanceLinkErrHandling
 		
 		# Should throw when deleting non existant mi link
 		$msgExcNotFound = "The requested resource of type 'Microsoft.Sql/managedInstances/distributedAvailabilityGroups' with name '" + $invalidLinkName1 + "' was not found."
-		Assert-ThrowsContains { Remove-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $invalidLinkName1 } $msgExcNotFound
+		Assert-ThrowsContains { Remove-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $invalidLinkName1 -Force} $msgExcNotFound
 		
 		# Should throw when getting non existant mi link
 		$msgExcNotFound = "The requested resource of type 'Microsoft.Sql/managedInstances/distributedAvailabilityGroups' with name '" + $invalidLinkName1 + "' was not found."
@@ -141,7 +207,8 @@ function Test-ManagedInstanceLinkErrHandling
 		Write-Debug ('$listLinksZero is ' + (ConvertTo-Json $listLinksZero))
 		Assert-Null $listLinksZero
 
-		$upsertJ = New-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $linkName -PrimaryAvailabilityGroupName $primaryAGName -SecondaryAvailabilityGroupName $secondaryAGName -TargetDatabase $targetDatabase -SourceEndpoint $sourceEndpoint -AsJob
+		# upsert via CreateByParentObjectParameterSet
+		$upsertJ = New-AzSqlInstanceLink -Instance $instance -LinkName $linkName -PrimaryAvailabilityGroupName $primaryAGName -SecondaryAvailabilityGroupName $secondaryAGName -TargetDatabase $targetDatabase -SourceEndpoint $sourceEndpoint -AsJob
 		$listResp = Get-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName
 		$tries = 1
 		while ($listResp.Count -eq 0 -And $tries -le 3) {
@@ -161,17 +228,27 @@ function Test-ManagedInstanceLinkErrHandling
         Assert-AreEqual $getLink.TargetDatabase $targetDatabase
         Assert-AreEqual $getLink.SourceEndpoint $sourceEndpoint
         Assert-AreEqual $getLink.ReplicationMode Async
-		# "Id": "/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/managedInstances/chimera-ps-cli-v2/distributedAvailabilityGroups/TestDAG",
-  
+		Assert-AreEqual $getLink.Id $linkId
+
+		# Confirm that ShouldContinue message is triggered on Remove (tests don't support user interaction so we'll validate the exception)
+		$msgExcDataLoss = "may cause data loss"
+		Assert-ThrowsContains { Remove-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $invalidLinkName1 } $msgExcDataLoss
+
 		# validate forbidden updates in current link state
 		$exSet1 = "The 'parameters.properties.replicationMode' segment in the url is invalid."
 		Assert-ThrowsContains { Set-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $linkName -ReplicationMode RandomValue } $exSet1
 		$exSet2 = "The operation cannot be performed since the database '" + $targetDatabase +"' is in a replication relationship."
 		Assert-ThrowsContains { Set-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $linkName -ReplicationMode Sync } $exSet2
 		Assert-ThrowsContains { Set-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $linkName -ReplicationMode Async } $exSet2
+		# Repeat with different input sets
+		$exSet1 = "The 'parameters.properties.replicationMode' segment in the url is invalid."
+		Assert-ThrowsContains { Set-AzSqlInstanceLink -Instance $instance -LinkName $linkName -ReplicationMode RandomValue } $exSet1
+		$exSet2 = "The operation cannot be performed since the database '" + $targetDatabase +"' is in a replication relationship."
+		Assert-ThrowsContains { Set-AzSqlInstanceLink -ManagedInstanceLink $getLink -ReplicationMode Sync } $exSet2
+		Assert-ThrowsContains { Set-AzSqlInstanceLink -ResourceId $linkId -ReplicationMode Async } $exSet2
 
 		# Cleanup link
-		$rmLink = Remove-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $linkName
+		$rmLink = Remove-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $linkName -Force
 		Write-Debug ('$rmLink is ' + (ConvertTo-Json $rmLink))
 		Assert-NotNull $rmLink
         Assert-AreEqual $rmLink.ResourceGroupName $rgName
@@ -181,11 +258,60 @@ function Test-ManagedInstanceLinkErrHandling
         Assert-AreEqual $rmLink.TargetDatabase $targetDatabase
         Assert-AreEqual $rmLink.SourceEndpoint $sourceEndpoint
         Assert-AreEqual $rmLink.ReplicationMode Async
+		Assert-AreEqual $rmLink.Id $linkId
 		
 		# List 0 links
 		$listLinksZero = Get-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName
 		Write-Debug ('$listLinksZero is ' + (ConvertTo-Json $listLinksZero))
 		Assert-Null $listLinksZero
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+
+<#
+	.SYNOPSIS
+	Tests creating a server trust certificate
+#>
+function Test-ManagedInstanceLinkPiping
+{
+	# Setup
+	#$rg = Create-ResourceGroupForTest $instanceLocation
+	#$mi = Create-ManagedInstanceForTest $rg
+	$rgName = "CustomerExperienceTeam_RG"
+	$miName = "chimera-ps-cli-v2"
+	try
+	{
+		$instance = Get-AzSqlInstance -ResourceGroupName $rgName -Name $miName
+		#temp cleanup
+		try { $instance | Get-AzSqlInstanceLink | Remove-AzSqlInstanceLink -Force } catch { }
+		
+		# Upsert and get with parent instance Piping
+		$upsertJ = $instance | New-AzSqlInstanceLink -LinkName $linkNamePipe -PrimaryAvailabilityGroupName $primaryAGNamePipe -SecondaryAvailabilityGroupName $secondaryAGNamePipe -TargetDatabase $targetDatabasePipe -SourceEndpoint $sourceEndpointPipe -AsJob
+		$listResp = $instance | Get-AzSqlInstanceLink
+		$tries = 1
+		while ($listResp.Count -eq 0 -And $tries -le 5) {
+			$tries = $tries + 1
+			Wait-Seconds 30
+			$listResp = $instance | Get-AzSqlInstanceLink
+		}
+
+		$getLink = $instance | Get-AzSqlInstanceLink -LinkName $linkNamePipe
+		Write-Debug ('$getLink is ' + (ConvertTo-Json $getLink))
+		Assert-NotNull $getLink
+		
+		# validate forbidden updates in current link state
+		$exSet2 = "The operation cannot be performed since the database '" + $targetDatabasePipe +"' is in a replication relationship."
+		Assert-ThrowsContains { $getLink | Set-AzSqlInstanceLink -ReplicationMode Sync } $exSet2
+		Assert-ThrowsContains { $getLink | Set-AzSqlInstanceLink -ReplicationMode Async } $exSet2
+
+		# validate delete pipe working
+		$removeCertCollectionPipe = $getLink | Remove-AzSqlInstanceLink -Force
+		Write-Debug ('$removeCertCollectionPipe is ' + (ConvertTo-Json $removeCertCollectionPipe))
+		Assert-NotNull $removeCertCollectionPipe
 	}
 	finally
 	{

@@ -1,7 +1,9 @@
 ﻿using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.Sql.ManagedInstance.Model;
 using Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Model;
 using Microsoft.Rest.Azure;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
 
@@ -13,21 +15,19 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
     /// </summary>
     [Cmdlet(
         VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceServerTrustCertificate",
-        DefaultParameterSetName = CreateParameterSet
+        DefaultParameterSetName = CreateByNameParameterSet,
+        SupportsShouldProcess = true
         ),
         OutputType(typeof(AzureSqlInstanceServerTrustCertificateModel))]
     public class NewAzureSqlInstanceServerTrustCertificate : AzureSqlInstanceServerTrustCertificateCmdletBase
     {
-        private const string CreateParameterSet = "CreateParameterSet";
+        private const string CreateByNameParameterSet = "CreateByNameParameterSet";
+        private const string CreateByParentObjectParameterSet = "CreateByParentObjectParameterSet";
 
         /// <summary>
         /// Gets or sets the name of the resource group to use.
         /// </summary>
-        [Parameter(Mandatory = true,
-            ParameterSetName = CreateParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "The name of the resource group.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, Position = 0, HelpMessage = "The name of the resource group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public override string ResourceGroupName { get; set; }
@@ -35,11 +35,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
         /// <summary>
         /// Gets or sets the name of target managed instance
         /// </summary>
-        [Parameter(Mandatory = true,
-            ParameterSetName = CreateParameterSet,
-            Position = 1,
-            ValueFromPipeline = true,
-            HelpMessage = "The name of the Azure SQL Managed Instance.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, Position = 1, HelpMessage = "The name of the Azure SQL Managed Instance.")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string InstanceName { get; set; }
@@ -47,25 +43,57 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
         /// <summary>
         /// Gets or sets the certificate name
         /// </summary>
-        [Parameter(Mandatory = true,
-            ParameterSetName = CreateParameterSet,
-            Position = 2,
-            ValueFromPipeline = true,
-            HelpMessage = "The name of the certificate.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, Position = 2, HelpMessage = "The name of the certificate.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, Position = 1, HelpMessage = "The name of the certificate.")]
         [ValidateNotNullOrEmpty]
         public string CertificateName { get; set; }
 
         /// <summary>
         /// Gets or sets the public key
         /// </summary>
-        [Parameter(Mandatory = true,
-            ParameterSetName = CreateParameterSet,
-            Position = 3,
-            ValueFromPipeline = true,
-            HelpMessage = "The value of certificate encoded public key.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, Position = 3, HelpMessage = "The value of certificate encoded public key.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, Position = 2, HelpMessage = "The value of certificate encoded public key.")]
         [ValidateNotNullOrEmpty]
         [ValidatePattern("^0x[0-9a-fA-F]+$")]
         public string PublicKey { get; set; }
+
+        /// <summary>
+        /// Gets or sets the instance Object
+        /// </summary>
+        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "The instance input object.")]
+        [ValidateNotNullOrEmpty]
+        public AzureSqlManagedInstanceModel Instance { get; set; }
+
+        /// <summary>
+        /// Entry point for the cmdlet
+        /// </summary>
+        public override void ExecuteCmdlet()
+        {
+            switch (ParameterSetName)
+            {
+                case CreateByNameParameterSet:
+                    // default case, we're getting RG, MI, Cert name and Public key directly from args
+                    break;
+                case CreateByParentObjectParameterSet:
+                    // we need to extract RG and MI name from the Instance object, Cert name and Public key received directly from arg
+                    ResourceGroupName = Instance.ResourceGroupName;
+                    InstanceName = Instance.ManagedInstanceName;
+                    break;
+                default:
+                    break;
+            }
+
+            // messages describing behavior with -WhatIf and -Confirm flags
+            if (!ShouldProcess(
+              string.Format(CultureInfo.InvariantCulture, Properties.Resources.CreateAzureSqlInstanceServerTrustCertificateDescription, ResourceGroupName, InstanceName, CertificateName),
+              string.Format(CultureInfo.InvariantCulture, Properties.Resources.CreateAzureSqlInstanceServerTrustCertificateWarning, ResourceGroupName, InstanceName, CertificateName),
+              Properties.Resources.ShouldProcessCaption))
+            {
+                return;
+            }
+
+            base.ExecuteCmdlet();
+        }
 
         /// <summary>
         /// Get the entities from the service
@@ -91,9 +119,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
             }
 
             // The certificate already exists
-            throw new PSArgumentException(
-                string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.ServerTrustCertificateAlreadyExists, CertificateName, InstanceName),
-                "CertificateName");
+            throw new PSArgumentException(string.Format(Properties.Resources.ServerTrustCertificateAlreadyExists, CertificateName, InstanceName), "CertificateName");
         }
 
         /// <summary>

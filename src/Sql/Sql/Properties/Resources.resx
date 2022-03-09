@@ -709,4 +709,28 @@
   <data name="RemoveAzureSqlInstanceLinkWarning" xml:space="preserve">
     <value>Are you sure you want to remove the Azure Sql Instance Managed Instance Link '{0}' on server '{1}'?</value>
   </data>
+  <data name="CreateAzureSqlInstanceServerTrustCertificateDescription" xml:space="preserve">
+    <value>Creating a new Server Trust Certificate in resource group '{0}' under managed instance '{1}' with name '{2}'.</value>
+  </data>
+  <data name="CreateAzureSqlInstanceServerTrustCertificateWarning" xml:space="preserve">
+    <value>Are you sure you want to create the Server Trust Certificate in resource group '{0}' under managed instance '{1}' with name '{2}'?</value>
+  </data>
+  <data name="SetAzSqlDatabaseBackupShortTermRetentionInvalidParameters" xml:space="preserve">
+    <value>Invalid parameters, '{0}' and '{1}' can't both be null.</value>
+  </data>
+  <data name="CreateAzureSqlInstanceLinkDescription" xml:space="preserve">
+    <value>Creating a new Managed Instance Hybrid Link in resource group '{0}' under managed instance '{1}' with name '{2}'.</value>
+  </data>
+  <data name="CreateAzureSqlInstanceLinkWarning" xml:space="preserve">
+    <value>Are you sure you want to create a new Managed Instance Hybrid Link in resource group '{0}' under managed instance '{1}' with name '{2}'?</value>
+  </data>
+  <data name="RemoveAzureSqlInstanceServerTrustCertificateAllowDataLoss" xml:space="preserve">
+    <value>This operation may cause data loss if replicas last hardened LSNs are not in sync, are you sure you want to continue?</value>
+  </data>
+  <data name="SetAzureSqlInstanceLinkDescription" xml:space="preserve">
+    <value>Updating Managed Instance Hybrid Link in resource group '{0}' under managed instance '{1}' with name '{2}'.</value>
+  </data>
+  <data name="SetAzureSqlInstanceLinkWarning" xml:space="preserve">
+    <value>Are you sure you want to update Managed Instance Hybrid Link in resource group '{0}' under managed instance '{1}' with name '{2}'?</value>
+  </data>
 </root>
