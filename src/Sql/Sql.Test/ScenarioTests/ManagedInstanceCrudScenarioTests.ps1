@@ -64,6 +64,7 @@ function Test-CreateManagedInstance
 		Assert-AreEqual $managedInstance1.ProxyOverride $proxyOverride
 		Assert-AreEqual $managedInstance1.RequestedBackupStorageRedundancy $backupStorageRedundancy
 		Assert-AreEqual $managedInstance1.CurrentBackupStorageRedundancy $backupStorageRedundancy
+		Assert-AreEqual $managedInstance1.BackupStorageRedundancy $backupStorageRedundancy
  		Assert-StartsWith ($managedInstance1.ManagedInstanceName + ".") $managedInstance1.FullyQualifiedDomainName
         Assert-NotNull $managedInstance1.DnsZone
 
@@ -223,21 +224,6 @@ function Test-SetManagedInstance
 		Assert-AreEqual $managedInstance7.Sku.Family $managedInstance6.Sku.Family
 		Assert-StartsWith ($managedInstance7.ManagedInstanceName + ".") $managedInstance6.FullyQualifiedDomainName
 		Assert-AreEqual $managedInstance7.SubnetId $targetSubnetResourceId
-		
-		# Test redundacy change
-		$credentials = Get-ServerCredential
-		$bsr = "Local"
-
-		$managedInstance8 = Set-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstance.ManagedInstanceName -BackupStorageRedundancy $bsr -Force
-
-		Assert-AreEqual $managedInstance8.ManagedInstanceName $managedInstance.ManagedInstanceName
-		Assert-AreEqual $managedInstance8.AdministratorLogin $managedInstance4.AdministratorLogin
-		Assert-AreEqual $managedInstance8.VCores $vCore
-		Assert-AreEqual $managedInstance8.StorageSizeInGB $managedInstance4.StorageSizeInGB
-		Assert-AreEqual $managedInstance8.Sku.Family $managedInstance4.Sku.Family
-		Assert-StartsWith ($managedInstance8.ManagedInstanceName + ".") $managedInstance6.FullyQualifiedDomainName
-		Assert-AreEqual $managedInstance8.CurrentBackupStorageRedundancy $bsr
-		Assert-AreEqual $managedInstance8.RequestedBackupStorageRedundancy $bsr
 
 		# Test zone redundant update SLO. Since the feature is still not rolled-out, the operation should fail.
 		try
@@ -253,6 +239,41 @@ function Test-SetManagedInstance
 	finally
 	{
 		Remove-ResourceGroupForTest $rg -AsJob
+	}
+}
+
+function Test-SetRedundancy
+{
+	# Setup
+	$rg = Create-ResourceGroupForTest
+
+	try
+	{
+		$bsr = "Geo"
+
+		# Test using parameters
+		$managedInstance1 = Create-ManagedInstanceForTest $rg
+		Assert-AreEqual $managedInstance1.CurrentBackupStorageRedundancy $bsr
+		Assert-AreEqual $managedInstance1.BackupStorageRedundancy $bsr
+		Assert-AreEqual $managedInstance1.RequestedBackupStorageRedundancy $bsr
+		
+		$bsr = "Local"
+		$managedInstance2 = Set-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstance1.ManagedInstanceName -BackupStorageRedundancy $bsr -Force
+
+		Assert-AreEqual $managedInstance2.CurrentBackupStorageRedundancy $bsr
+		Assert-AreEqual $managedInstance2.BackupStorageRedundancy $bsr
+		Assert-AreEqual $managedInstance2.RequestedBackupStorageRedundancy $bsr
+
+		$bsr = "Geo"
+		$managedInstance3 = Set-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstance1.ManagedInstanceName -BackupStorageRedundancy $bsr -Force
+
+		Assert-AreEqual $managedInstance3.CurrentBackupStorageRedundancy $bsr
+		Assert-AreEqual $managedInstance3.BackupStorageRedundancy $bsr
+		Assert-AreEqual $managedInstance3.RequestedBackupStorageRedundancy $bsr
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
 	}
 }
 

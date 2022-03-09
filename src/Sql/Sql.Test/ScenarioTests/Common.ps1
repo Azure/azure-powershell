@@ -85,7 +85,7 @@ function Create-BlobAuditingTestEnvironment ($testSuffix, $location = "West Cent
 {
 	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 	Create-TestEnvironmentWithParams $params $location $serverVersion $denyAsNetworkRuleDefaultAction
-	New-AzOperationalInsightsWorkspace -ResourceGroupName $params.rgname -Name $params.workspaceName -Sku "Standard" -Location "eastus"
+	New-AzOperationalInsightsWorkspace -ResourceGroupName $params.rgname -Name $params.workspaceName -Location "eastus"
 	New-AzEventHubNamespace -ResourceGroupName $params.rgname -NamespaceName $params.eventHubNamespace -Location $location
 }
 
