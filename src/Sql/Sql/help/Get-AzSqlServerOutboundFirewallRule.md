@@ -13,8 +13,8 @@ Gets outbound firewall rules (Allowed FQDNs) for a SQL Database server.
 ## SYNTAX
 
 ```
-Get-AzSqlServerOutboundFirewallRule [-ResourceGroupName] <String> [-ServerName] <String>
- [-AllowedFQDN] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Get-AzSqlServerOutboundFirewallRule [[-AllowedFQDN] <String>] [-ServerName] <String>
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -50,6 +50,21 @@ AllowedFQDN       : OutboundFirewallRule03
 This command gets all the allowed FQDNs from the list of Outbound Firewall Rules for the server named Server01 in the resource group named ResourceGroup01.
 
 ## PARAMETERS
+
+### -AllowedFQDN
+Specifies the allowed fully qualified domain name (FQDN) in the list of outbound firewall rules.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: Name
+
+Required: False
+Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: True
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -94,21 +109,6 @@ Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
-```
-
-### -AllowedFQDN
-Specifies the allowed fully qualified domain name (FQDN) in the list of outbound firewall rules.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: Name
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
 ```
 
 ### -Confirm

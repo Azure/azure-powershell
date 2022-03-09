@@ -12,7 +12,7 @@ Enables uploading ledger digests to an Azure Storage account or to Azure Confide
 
 ## SYNTAX
 
-### DatabaseParameterSet
+### DatabaseParameterSet (Default)
 ```
 Enable-AzSqlDatabaseLedgerDigestUpload [-Endpoint] <String> [-ResourceGroupName] <String>
  [-ServerName] <String> [-DatabaseName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
@@ -38,7 +38,7 @@ The Enable-AzSqlDatabaseLedgerDigestUpload cmdlet enables uploading ledger diges
 
 ### Example 1
 ```powershell
-PS C:\> Enable-AzSqlDatabaseLedgerDigestUpload -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -Endpoint "https://mystorage.blob.core.windows.net" 
+PS C:\> Enable-AzSqlDatabaseLedgerDigestUpload -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -Endpoint "https://mystorage.blob.core.windows.net"
 ```
 
 ResourceGroupName ServerName DatabaseName State   Endpoint

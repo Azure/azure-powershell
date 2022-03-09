@@ -16,9 +16,11 @@ Creates a SQL Database server.
 ```
 New-AzSqlServer -ServerName <String> [-SqlAdministratorCredentials <PSCredential>] -Location <String>
  [-Tags <Hashtable>] [-ServerVersion <String>] [-AssignIdentity] [-PublicNetworkAccess <String>]
- [-MinimalTlsVersion <String>] [-RestrictOutboundNetworkAccess <String>] [-AsJob] 
- [-EnableActiveDirectoryOnlyAuthentication] [-ExternalAdminName <String>] [-ExternalAdminSID <Guid>] 
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] 
+ [-RestrictOutboundNetworkAccess <String>] [-MinimalTlsVersion <String>]
+ [-PrimaryUserAssignedIdentityId <String>] [-KeyId <String>]
+ [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>] [-IdentityType <String>] [-AsJob]
+ [-EnableActiveDirectoryOnlyAuthentication] [-ExternalAdminName <String>] [-ExternalAdminSID <Guid>]
+ [-FederatedClientId <Guid>] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -166,6 +168,51 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -FederatedClientId
+Specifies the Federated client ID of the server when using Cross-Tenant CMK, Do not set this value if you do not intent to use Cross-Tenant CMK
+
+```yaml
+Type: System.Nullable`1[System.Guid]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityType
+Type of identity to be assigned to the server. Possible values are SystemAsssigned, UserAssigned, 'SystemAssigned,UserAssigned' and None.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyId
+The Azure Key Vault URI that is used for encryption.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 Specifies the location of the data center where this cmdlet creates the server.
 
@@ -197,9 +244,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PublicNetworkAccess
-Takes a flag, enabled/disabled, to specify whether public network access to server is allowed or not.
-When disabled, only connections made through Private Links can reach this server.
+### -PrimaryUserAssignedIdentityId
+The primary User Managed Identity(UMI) id.
 
 ```yaml
 Type: System.String
@@ -213,8 +259,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RestrictOutboundNetworkAccess
-When enabled, only outbound connections allowed by the outbound firewall rules will succeed.
+### -PublicNetworkAccess
+Takes a flag, enabled/disabled, to specify whether public network access to server is allowed or not.
+When disabled, only connections made through Private Links can reach this server.
 
 ```yaml
 Type: System.String
@@ -240,6 +287,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RestrictOutboundNetworkAccess
+When enabled, only outbound connections allowed by the outbound firewall rules will succeed.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -291,28 +353,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PrimaryUserAssignedIdentityId
-The primary User Managed Identity(UMI) id.
+### -Tags
+Key-value pairs in the form of a hash table. For example:
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
-Type: System.String
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -KeyId
-The Azure Key Vault URI that is used for encryption.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
+Aliases: Tag
 
 Required: False
 Position: Named
@@ -325,40 +373,9 @@ Accept wildcard characters: False
 The list of user assigned identities.
 
 ```yaml
-Type: System.Collections.Generic.List
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityType
-Type of identity to be assigned to the server. Possible values are SystemAsssigned, UserAssigned, 'SystemAssigned,UserAssigned' and None.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tags
-Key-value pairs in the form of a hash table. For example:
-@{key0="value0";key1=$null;key2="value2"}
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases: Tag
 
 Required: False
 Position: Named

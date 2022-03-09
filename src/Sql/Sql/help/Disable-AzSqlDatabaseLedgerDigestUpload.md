@@ -12,7 +12,7 @@ Disables uploading ledger digests to Azure Blob storage or to Azure Confidential
 
 ## SYNTAX
 
-### DatabaseParameterSet
+### DatabaseParameterSet (Default)
 ```
 Disable-AzSqlDatabaseLedgerDigestUpload [-ResourceGroupName] <String> [-ServerName] <String>
  [-DatabaseName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -37,7 +37,7 @@ The Disable-AzSqlDatabaseLedgerDigestUpload cmdlet disables uploading ledger dig
 
 ### Example 1
 ```powershell
-PS C:\> Disable-AzSqlDatabaseLedgerDigestUpload -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" 
+PS C:\> Disable-AzSqlDatabaseLedgerDigestUpload -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
 ```
 
 ResourceGroupName ServerName DatabaseName State    Endpoint
