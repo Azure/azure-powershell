@@ -39,22 +39,23 @@ $thumbprint3 = "0xC8002E47F5BC5A3D3692B57D6987C7D9D79863DA";
 #>
 function Test-ServerTrustCertificate
 {
-	# Setup
-	#$rg = Create-ResourceGroupForTest $instanceLocation
-	#$mi = Create-ManagedInstanceForTest $rg
-	$rgName = "CustomerExperienceTeam_RG"
-	$miName = "chimera-ps-cli-v2"
 	try
 	{
-        # temp cleanup
-		try { Get-AzSqlInstance -ResourceGroupName $rgName -Name $miName | Get-AzSqlInstanceServerTrustCertificate | Remove-AzSqlInstanceServerTrustCertificate } catch { }
-		
+		# Setup
+		$rg = Create-ResourceGroupForTest
+		$managedInstance = Create-ManagedInstanceForTest $rg
+		$rgName = $rg.ResourceGroupName
+		$miName = $managedInstance.ManagedInstanceName
+				
 		# generate expected cert ids
 		$instance = Get-AzSqlInstance -ResourceGroupName $rgName -Name $miName
 		$instanceId = $instance.Id
 		$certId1 = $instanceId + "/serverTrustCertificates/" + $certName1
 		$certId2 = $instanceId + "/serverTrustCertificates/" + $certName2
 		$certId3 = $instanceId + "/serverTrustCertificates/" + $certName3
+
+        # temp cleanup
+		# try { Get-AzSqlInstance -ResourceGroupName $rgName -Name $miName | Get-AzSqlInstanceServerTrustCertificate | Remove-AzSqlInstanceServerTrustCertificate } catch { }
 
 		# List 0 certs
 		$listCertsZero = Get-AzSqlInstanceServerTrustCertificate -ResourceGroupName $rgName -InstanceName $miName
@@ -211,15 +212,16 @@ function Test-ServerTrustCertificate
 #>
 function Test-ServerTrustCertificateErrHandling
 {
-	# Setup
-	#$rg = Create-ResourceGroupForTest $instanceLocation
-	#$mi = Create-ManagedInstanceForTest $rg
-	$rgName = "CustomerExperienceTeam_RG"
-	$miName = "chimera-ps-cli-v2"
 	try
 	{		
+		# Setup
+		$rg = Create-ResourceGroupForTest
+		$managedInstance = Create-ManagedInstanceForTest $rg
+		$rgName = $rg.ResourceGroupName
+		$miName = $managedInstance.ManagedInstanceName
+
         # temp cleanup
-		try { Get-AzSqlInstance -ResourceGroupName $rgName -Name $miName | Get-AzSqlInstanceServerTrustCertificate | Remove-AzSqlInstanceServerTrustCertificate } catch { }
+		#try { Get-AzSqlInstance -ResourceGroupName $rgName -Name $miName | Get-AzSqlInstanceServerTrustCertificate | Remove-AzSqlInstanceServerTrustCertificate } catch { }
 		
 		# List 0 certs
 		$listCertsZero = Get-AzSqlInstanceServerTrustCertificate -ResourceGroupName $rgName -InstanceName $miName
@@ -278,15 +280,16 @@ function Test-ServerTrustCertificateErrHandling
 #>
 function Test-ServerTrustCertificatePiping
 {
-	# Setup
-	#$rg = Create-ResourceGroupForTest $instanceLocation
-	#$mi = Create-ManagedInstanceForTest $rg
-	$rgName = "CustomerExperienceTeam_RG"
-	$miName = "chimera-ps-cli-v2"
 	try
 	{
+		# Setup
+		$rg = Create-ResourceGroupForTest
+		$managedInstance = Create-ManagedInstanceForTest $rg
+		$rgName = $rg.ResourceGroupName
+		$miName = $managedInstance.ManagedInstanceName
+
         # temp cleanup
-		try { Get-AzSqlInstance -ResourceGroupName $rgName -Name $miName | Get-AzSqlInstanceServerTrustCertificate | Remove-AzSqlInstanceServerTrustCertificate } catch { }
+		#try { Get-AzSqlInstance -ResourceGroupName $rgName -Name $miName | Get-AzSqlInstanceServerTrustCertificate | Remove-AzSqlInstanceServerTrustCertificate } catch { }
 		
 		$instance = Get-AzSqlInstance -ResourceGroupName $rgName -Name $miName 
 

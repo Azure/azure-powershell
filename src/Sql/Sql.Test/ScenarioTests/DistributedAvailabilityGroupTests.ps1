@@ -23,8 +23,6 @@ $sourceEndpoint = "TCP://SERVER:7022"
 $primaryAGName = "BoxLocalAg1"
 $secondaryAGName = "testcl"
 $linkType = "Microsoft.Sql/managedInstances/distributedAvailabilityGroups"
-$rgName = "CustomerExperienceTeam_RG"
-$miName = "chimera-ps-cli-v2"
  
 $linkNamePipe = "TestDAG_Pipe"
 $targetDatabasePipe = "testdb_Pipe"
@@ -40,8 +38,14 @@ function Test-ManagedInstanceLink
 {
 	try
 	{
+		# Setup
+		$rg = Create-ResourceGroupForTest
+		$managedInstance = Create-ManagedInstanceForTest $rg
+		$rgName = $rg.ResourceGroupName
+		$miName = $managedInstance.ManagedInstanceName
+
 		#temp cleanup
-		try { Get-AzSqlInstance -ResourceGroupName $rgName -Name $miName | Get-AzSqlInstanceLink | Remove-AzSqlInstanceLink -Force } catch { }
+		#try { Get-AzSqlInstance -ResourceGroupName $rgName -Name $miName | Get-AzSqlInstanceLink | Remove-AzSqlInstanceLink -Force } catch { }
 				
 		# generate expected link ids
 		$instance = Get-AzSqlInstance -ResourceGroupName $rgName -Name $miName
@@ -165,8 +169,14 @@ function Test-ManagedInstanceLinkErrHandling
 {
 	try
 	{
+		# Setup
+		$rg = Create-ResourceGroupForTest
+		$managedInstance = Create-ManagedInstanceForTest $rg
+		$rgName = $rg.ResourceGroupName
+		$miName = $managedInstance.ManagedInstanceName
+
 		#temp cleanup
-		try { Get-AzSqlInstance -ResourceGroupName $rgName -Name $miName | Get-AzSqlInstanceLink | Remove-AzSqlInstanceLink -Force } catch { }		
+		#try { Get-AzSqlInstance -ResourceGroupName $rgName -Name $miName | Get-AzSqlInstanceLink | Remove-AzSqlInstanceLink -Force } catch { }		
 
 		# generate expected link ids
 		$instance = Get-AzSqlInstance -ResourceGroupName $rgName -Name $miName
@@ -278,16 +288,17 @@ function Test-ManagedInstanceLinkErrHandling
 #>
 function Test-ManagedInstanceLinkPiping
 {
-	# Setup
-	#$rg = Create-ResourceGroupForTest $instanceLocation
-	#$mi = Create-ManagedInstanceForTest $rg
-	$rgName = "CustomerExperienceTeam_RG"
-	$miName = "chimera-ps-cli-v2"
 	try
 	{
+		# Setup
+		$rg = Create-ResourceGroupForTest
+		$managedInstance = Create-ManagedInstanceForTest $rg
+		$rgName = $rg.ResourceGroupName
+		$miName = $managedInstance.ManagedInstanceName
+
 		$instance = Get-AzSqlInstance -ResourceGroupName $rgName -Name $miName
 		#temp cleanup
-		try { $instance | Get-AzSqlInstanceLink | Remove-AzSqlInstanceLink -Force } catch { }
+		#try { $instance | Get-AzSqlInstanceLink | Remove-AzSqlInstanceLink -Force } catch { }
 		
 		# Upsert and get with parent instance Piping
 		$upsertJ = $instance | New-AzSqlInstanceLink -LinkName $linkNamePipe -PrimaryAvailabilityGroupName $primaryAGNamePipe -SecondaryAvailabilityGroupName $secondaryAGNamePipe -TargetDatabase $targetDatabasePipe -SourceEndpoint $sourceEndpointPipe -AsJob
