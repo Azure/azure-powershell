@@ -44,26 +44,8 @@ ScheduleMonthDay           : {10}
 ScheduleMonthlyOccurrence  :
 ScheduleWeekDay            :
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IPurviewdataIdentity
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ITrigger
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IPurviewdataIdentity>: Identity Parameter
-  [ClassificationRuleName <String>]: 
-  [ClassificationRuleVersion <Int32?>]: 
-  [DataSourceName <String>]: 
-  [DataSourceType <DataSourceType?>]: 
-  [Id <String>]: Resource identity path
-  [KeyVaultName <String>]: 
-  [RunId <String>]: 
-  [ScanName <String>]: 
-  [ScanRulesetName <String>]: 
-  [Version <Int32?>]: 
 .Link
 https://docs.microsoft.com/powershell/module/az.purview/remove-azpurviewtrigger
 #>
@@ -78,24 +60,17 @@ param(
     # Example: https://{accountName}.purview.azure.com
     ${Endpoint},
 
-    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Path')]
     [System.String]
     # .
     ${DataSourceName},
 
-    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Path')]
     [System.String]
     # .
     ${ScanName},
-
-    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IPurviewdataIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -160,7 +135,6 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
             Delete = 'Az.Purviewdata.private\Remove-AzPurviewTrigger_Delete';
-            DeleteViaIdentity = 'Az.Purviewdata.private\Remove-AzPurviewTrigger_DeleteViaIdentity';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

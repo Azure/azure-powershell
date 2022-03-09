@@ -26,26 +26,8 @@ EndTime ScanResultId StartTime            Status
 ------- ------------ ---------            ------
                      2/15/2022 2:47:55 PM Accepted
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IPurviewdataIdentity
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IOperationResponse
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IPurviewdataIdentity>: Identity Parameter
-  [ClassificationRuleName <String>]: 
-  [ClassificationRuleVersion <Int32?>]: 
-  [DataSourceName <String>]: 
-  [DataSourceType <DataSourceType?>]: 
-  [Id <String>]: Resource identity path
-  [KeyVaultName <String>]: 
-  [RunId <String>]: 
-  [ScanName <String>]: 
-  [ScanRulesetName <String>]: 
-  [Version <Int32?>]: 
 .Link
 https://docs.microsoft.com/powershell/module/az.purview/stop-azpurviewscanresultscan
 #>
@@ -60,30 +42,23 @@ param(
     # Example: https://{accountName}.purview.azure.com
     ${Endpoint},
 
-    [Parameter(ParameterSetName='Cancel', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Path')]
     [System.String]
     # .
     ${DataSourceName},
 
-    [Parameter(ParameterSetName='Cancel', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Path')]
     [System.String]
     # .
     ${RunId},
 
-    [Parameter(ParameterSetName='Cancel', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Path')]
     [System.String]
     # .
     ${ScanName},
-
-    [Parameter(ParameterSetName='CancelViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IPurviewdataIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -142,7 +117,6 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
             Cancel = 'Az.Purviewdata.private\Stop-AzPurviewScanResultScan_Cancel';
-            CancelViaIdentity = 'Az.Purviewdata.private\Stop-AzPurviewScanResultScan_CancelViaIdentity';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

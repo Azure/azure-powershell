@@ -76,6 +76,9 @@ directive:
     set:      
         suppress-format: true
   - where:
+      variant: ViaIdentity|ViaIdentity1
+    remove: true
+  - where:
         model-name: (.*)DataSource$
     set:      
         suppress-format: true

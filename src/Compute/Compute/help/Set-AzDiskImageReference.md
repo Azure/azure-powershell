@@ -24,10 +24,10 @@ The **Set-AzDiskImageReference** cmdlet sets the image reference properties on a
 
 ### Example 1
 ```powershell
-$diskconfig = New-AzDiskConfig -DiskSizeGB 10 -AccountType PremiumLRS -OsType Windows -CreateOption FromImage;
-$image = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.Compute/images/TestImage123';        
-$diskconfig = Set-AzDiskImageReference -Disk $diskconfig -Id $image -Lun 0;
-New-AzDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -Disk $diskconfig;
+$diskconfig = New-AzDiskConfig -Location "East US" -DiskSizeGB 10 -AccountType Premium_LRS -OsType Windows -CreateOption FromImage
+$image = '/Subscriptions/00000000-0000-0000-0000-000000000000/Providers/Microsoft.Compute/Locations/westeurope/Publishers/MicrosoftWindowsDesktop/ArtifactTypes/VMImage/Offers/Windows-10/Skus/win10-21h2-avd-g2/Versions/19044.1526.220204'
+$diskconfig = Set-AzDiskImageReference -Disk $diskconfig -Id $image -Lun 0
+New-AzDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -Disk $diskconfig
 ```
 
 The first command creates a local disk object with size 10GB in Premium_LRS storage account type.  It also sets Windows OS type.
@@ -67,7 +67,7 @@ Accept wildcard characters: False
 ```
 
 ### -Id
-Specifies the ID.
+Specifies the ID of PIR or user image.
 
 ```yaml
 Type: System.String
@@ -82,7 +82,7 @@ Accept wildcard characters: False
 ```
 
 ### -Lun
-Specifies the logical unit number (LUN).
+Specifies the logical unit number (LUN). If the disk is created from an image's data disk, this is an index that indicates which of the data disks in the image to use. For OS disks, this field is null.
 
 ```yaml
 Type: System.Int32

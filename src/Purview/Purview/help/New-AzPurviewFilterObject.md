@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Purview-help.xml
 Module Name: Az.Purview
 online version: https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewFilterObject
 schema: 2.0.0
@@ -38,7 +38,6 @@ Create filter object
 
 ### -ExcludeUriPrefix
 
-
 ```yaml
 Type: System.String[]
 Parameter Sets: (All)
@@ -52,7 +51,6 @@ Accept wildcard characters: False
 ```
 
 ### -IncludeUriPrefix
-
 
 ```yaml
 Type: System.String[]
@@ -73,11 +71,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20211001Preview.Filter
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.Filter
 
 ## NOTES
 
 ALIASES
 
 ## RELATED LINKS
-

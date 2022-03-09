@@ -1,0 +1,217 @@
+---
+external help file:
+Module Name: Az.Purview
+online version: https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureDataExplorerCredentialScanObject
+schema: 2.0.0
+---
+
+# New-AzPurviewAzureDataExplorerCredentialScanObject
+
+## SYNOPSIS
+Create an in-memory object for AzureDataExplorerCredentialScan.
+
+## SYNTAX
+
+```
+New-AzPurviewAzureDataExplorerCredentialScanObject -Kind <ScanAuthorizationType>
+ [-CollectionReferenceName <String>] [-CollectionType <String>] [-ConnectedViaReferenceName <String>]
+ [-CredentialReferenceName <String>] [-CredentialType <CredentialType>] [-Database <String>]
+ [-ScanRulesetName <String>] [-ScanRulesetType <ScanRulesetType>] [-Worker <Int32>] [<CommonParameters>]
+```
+
+## DESCRIPTION
+Create an in-memory object for AzureDataExplorerCredentialScan.
+
+## EXAMPLES
+
+### Example 1: Create Azure Data Explorer Credential scan object
+```powershell
+PS C:\> New-AzPurviewAzureDataExplorerCredentialScanObject -Kind 'AzureDataExplorerCredential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'svcp' -CredentialType 'ServicePrincipal' -ScanRulesetName 'AzureDataExplorer' -ScanRulesetType 'System'
+
+CollectionLastModifiedAt  :
+CollectionReferenceName   : parv-brs-2
+CollectionType            : CollectionReference
+ConnectedViaReferenceName :
+CreatedAt                 :
+CredentialReferenceName   : svcp
+CredentialType            : ServicePrincipal
+Database                  :
+Id                        :
+Kind                      : AzureDataExplorerCredential
+LastModifiedAt            :
+Name                      :
+Result                    :
+ScanRulesetName           : AzureDataExplorer
+ScanRulesetType           : System
+Worker                    :
+```
+
+Create Azure Data Explorer Credential scan object
+
+## PARAMETERS
+
+### -CollectionReferenceName
+
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CollectionType
+
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConnectedViaReferenceName
+
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CredentialReferenceName
+
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CredentialType
+
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Database
+
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Kind
+
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScanRulesetName
+
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScanRulesetType
+
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Worker
+
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+## OUTPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureDataExplorerCredentialScan
+
+## NOTES
+
+ALIASES
+
+## RELATED LINKS
+
