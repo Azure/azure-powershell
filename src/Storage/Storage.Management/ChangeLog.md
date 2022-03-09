@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed copy blob failure on Premium Storage account, or account enabled hierarchical namespace
+    -  `Copy-AzStorageBlob` 
 
 ## Version 4.3.0
 * Supported download blob from managed disk account with Sas Uri and bearer token
