@@ -4,12 +4,12 @@ using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System.Threading.Tasks;
 using System.Net.Http;
-using Microsoft.Azure.KeyVault;
 using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.Azure.KeyVault.WebKey;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1;
 using Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1.Models;
+using Microsoft.Azure.KeyVault;
+using Microsoft.Azure.KeyVault.WebKey;
 
 namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
 {
