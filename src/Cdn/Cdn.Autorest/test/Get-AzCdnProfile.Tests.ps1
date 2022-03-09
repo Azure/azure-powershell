@@ -23,7 +23,7 @@ Describe 'Get-AzCdnProfile' {
                 Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
                 New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
     
-                $cdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
+                $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
     
                 $profileSku = "Standard_Microsoft";
@@ -47,7 +47,7 @@ Describe 'Get-AzCdnProfile' {
                 Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
                 New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
 
-                $cdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
+                $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
 
                 $profileSku = "Standard_Microsoft";
@@ -73,7 +73,7 @@ Describe 'Get-AzCdnProfile' {
                 Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
                 New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
 
-                $cdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
+                $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
 
                 $profileSku = "Standard_Microsoft";
@@ -89,9 +89,30 @@ Describe 'Get-AzCdnProfile' {
         } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' -skip {
+    It 'GetViaIdentity' {
         { 
-           
+            $PSDefaultParameterValues['Disabled'] = $true
+            $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
+            try
+            {
+                Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
+                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
+
+                $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
+                Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
+
+                $profileSku = "Standard_Microsoft";
+                New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
+
+                $cdnProfile = Get-AzCdnProfile -ResourceGroupName $ResourceGroupName -Name $cdnProfileName | Get-AzCdnProfile
+
+                $cdnProfile.Name | Should -Be $cdnProfileName
+                $cdnProfile.SkuName | Should -Be $profileSku
+                $cdnProfile.Location | Should -Be "Global"
+            } Finally
+            {
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            }    
         } | Should -Not -Throw
     }
 }
