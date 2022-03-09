@@ -19,9 +19,8 @@
 -->
 
 ## Upcoming Release
-* Output braking change for Managed Instance CRUD commands
-    - Instead of BackupStorageRedundancy, we now return CurrentBackupStorageRedundancy and RequestedBackupStorageRedundancy.
-    - `Get-AzSqlDatabaseTransparentDataEncryptionActivity` is now removed.
+* [Breaking change] Removed `Get-AzSqlDatabaseTransparentDataEncryptionActivity`
+* Added property `CurrentBackupStorageRedundancy` and `RequestedBackupStorageRedundancy` in  the outputs of Managed Instance CRUD commands
 
 ## Version 3.7.1
 * Deprecation of Get-AzSqlDatabaseTransparentDataEncryptionActivity cmdlet
