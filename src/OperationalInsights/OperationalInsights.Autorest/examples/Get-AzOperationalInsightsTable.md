@@ -13,11 +13,15 @@ AADDomainServicesAccountManagement           /subscriptions/{SUB-id}/resourcegro
 
 ```
 
+Get all tables for a given workspace name
+
 ### Example 2: Get a table by name
 ```powershell
 Get-AzOperationalInsightsTable -ResourceGroupName {RG-Name} -WorkspaceName {WS-Name} -TableName {Table-Name}
-```
 
 Name  Id                                                                                                                                                               RetentionInDays
 ----  --                                                                                                                                                               ---------------
 {Table-Name} /subscriptions/{SUB-id}/resourcegroups/{RG-Name}/providers/Microsoft.OperationalInsights/workspaces/{WS-Name}/tables/{Table-Name}              90
+```
+
+Get a specific table by name for a given workspace

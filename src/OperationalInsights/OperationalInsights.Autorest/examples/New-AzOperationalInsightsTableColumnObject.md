@@ -17,3 +17,4 @@ DataTypeHint Description                           DisplayName IsDefaultDisplay 
              Date and time the record was created.                                       TimeGenerated
 
 ```
+Creates a TableColumnObject which is required to use "New-AzOperationalInsightsTable" cmdlet.

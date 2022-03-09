@@ -8,6 +8,7 @@ Location Name             ETag
 eastus   WS_Name
 
 ```
+Get a Log-Analytics workspace
 
 ### Example 2: List all worksapces for a given resource group name
 ```powershell
@@ -21,3 +22,4 @@ eastus      WS_Name2
 eastus      WS_Name3
 
 ```
+List al Log-Analytics workspaces for a given resource group name
