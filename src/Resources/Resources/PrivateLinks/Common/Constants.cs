@@ -22,9 +22,11 @@ namespace Microsoft.Azure.Commands.Resources.PrivateLinks.Common
             public const string ListParameterSet = "ListOperation";
             public const string PutParameterSet = "PutOperation";
             public const string DeleteParameterSet = "DeleteOperation";
+            public const string ObjectParameterSet = "PrivateLinkObject";
             public const string PutPLAssociationParameterSet = "PutPLAOperation";
             public const string GetPLAssociationParameterSet = "GetPLAOperation";
             public const string DeletePLAssociationParameterSet = "DeletePLAOperation";
+            public const string PLAObjectParameterSet = "PrivateLinkAssociationObject";
         }
 
         public class HelpMessages
@@ -32,10 +34,13 @@ namespace Microsoft.Azure.Commands.Resources.PrivateLinks.Common
             public const string SubscriptionId = "Subscription Id of the subscription";
             public const string ResourceGroupName = "The name of the resource group.";
             public const string PrivateLinkName = "The name of the private link.";
+            public const string PrivateLinkObject = "The private link object.";
             public const string ManagementGroupId = "The management group Id.";
             public const string PrivateLinkAssociationId = "The private link association Id.";
             public const string PrivateLinkResourceId = "The resource management private link resource Id.";
             public const string PublicNetworkAccess = "The public network access is enabled/disabled.";
+            public const string PrivateLinkAssociationObject = "The private link association object.";
+            public const string HelpMessage = "Do not ask for confirmation.";
         }
     }
 }

@@ -14,7 +14,9 @@
 
 using System;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Resources.Models.PrivateLinks;
 using Microsoft.Azure.Commands.Resources.PrivateLinks.Common;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.ResourceManager;
 
 namespace Microsoft.Azure.Commands.Resources.PrivateLinks
@@ -49,14 +51,39 @@ namespace Microsoft.Azure.Commands.Resources.PrivateLinks
         public string Name { get; set; }
 
         [Parameter(ParameterSetName = Constants.ParameterSetNames.DeletePLAssociationParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = Constants.ParameterSetNames.PLAObjectParameterSet, Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
+        [Parameter(ParameterSetName = Constants.ParameterSetNames.DeletePLAssociationParameterSet,
+            Mandatory = false,
+            HelpMessage = Constants.HelpMessages.HelpMessage)]
+        [Parameter(ParameterSetName = Constants.ParameterSetNames.PLAObjectParameterSet,
+            Mandatory = false,
+            HelpMessage = Constants.HelpMessages.HelpMessage)]
         public SwitchParameter Force { get; set; }
+
+        [Parameter(ParameterSetName = Constants.ParameterSetNames.PLAObjectParameterSet, Mandatory = true,
+            HelpMessage = Constants.HelpMessages.PrivateLinkAssociationObject, ValueFromPipeline = true)]
+        [ValidateNotNullOrEmpty]
+        public PSResourceManagementPrivateLinkAssociation InputObject { get; set; }
         #endregion
 
         public override void ExecuteCmdlet()
         {
+            if (ParameterSetName.Equals(Constants.ParameterSetNames.ObjectParameterSet))
+            {
+                this.Name = InputObject.Name;
+                try
+                {
+                    // Retrieve only the management group  from the Id
+                    this.ManagementGroupId = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components.ResourceIdUtility.GetManagementGroupId(InputObject.Id);
+                }
+                catch (Exception ex)
+                {
+                    this.WriteExceptionError(ex);
+                }
+            }
+
             this.ConfirmAction(
                 this.Force,
                 string.Format("Are you sure you want to delete the following private link association: {0}", Name),

@@ -14,7 +14,9 @@
 
 using System;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Resources.Models.PrivateLinks;
 using Microsoft.Azure.Commands.Resources.PrivateLinks.Common;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.ResourceManager;
 
 namespace Microsoft.Azure.Commands.Resources.PrivateLinks
@@ -49,14 +51,41 @@ namespace Microsoft.Azure.Commands.Resources.PrivateLinks
         public string Name { get; set; }
 
         [Parameter(ParameterSetName = Constants.ParameterSetNames.DeleteParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = Constants.ParameterSetNames.ObjectParameterSet, Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
+        [Parameter(ParameterSetName = Constants.ParameterSetNames.DeleteParameterSet,
+            Mandatory = false,
+            HelpMessage = Constants.HelpMessages.HelpMessage)]
+        [Parameter(ParameterSetName = Constants.ParameterSetNames.ObjectParameterSet,
+            Mandatory = false,
+            HelpMessage = Constants.HelpMessages.HelpMessage)]
         public SwitchParameter Force { get; set; }
+
+        [Parameter(ParameterSetName = Constants.ParameterSetNames.ObjectParameterSet, Mandatory = true,
+            HelpMessage = Constants.HelpMessages.PrivateLinkObject, ValueFromPipeline = true)]
+        [ValidateNotNullOrEmpty]
+        public PSResourceManagementPrivateLink InputObject { get; set; }
         #endregion
 
         public override void ExecuteCmdlet()
         {
+            if (ParameterSetName.Equals(Constants.ParameterSetNames.ObjectParameterSet))
+            {
+                this.Name = InputObject.Name;
+                try
+                {
+                    ResourceIdentifier resourceIdentifier = new ResourceIdentifier(InputObject.Id);
+
+                    // Retrieve only the resource group name from the Id
+                    this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                }
+                catch (Exception ex)
+                {
+                    this.WriteExceptionError(ex);
+                }
+            }
+
             this.ConfirmAction(
                 this.Force,
                 string.Format("Are you sure you want to delete the following resource management private link: {0}", Name),
