@@ -35,23 +35,27 @@ Gets the properties of the specified FHIR Service.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List the properties of the specified FHIR Service.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzHealthcareFhirService -ResourceGroupName azps_test_group -WorkspaceName azpshcws
 
-{{ Add output here }}
+Location Name                     Kind    ResourceGroupName
+-------- ----                     ----    -----------------
+eastus2  azpshcws/azpsfhirservice fhir-R4 azps_test_group
 ```
 
-{{ Add description here }}
+List the properties of the specified FHIR Service.
 
-### Example 2: {{ Add title here }}
+### Example 2: Gets the properties of the specified FHIR Service.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzHealthcareFhirService -Name azpsfhirservice -ResourceGroupName azps_test_group -WorkspaceName azpshcws
 
-{{ Add output here }}
+Location Name                     Kind    ResourceGroupName
+-------- ----                     ----    -----------------
+eastus2  azpshcws/azpsfhirservice fhir-R4 azps_test_group
 ```
 
-{{ Add description here }}
+Gets the properties of the specified FHIR Service.
 
 ## PARAMETERS
 

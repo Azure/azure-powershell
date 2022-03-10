@@ -1,18 +1,32 @@
-### Example 1: {{ Add title here }}
+### Example 1: List the metadata of service instance.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\>  Get-AzHealthcareAPIsService
 
-{{ Add output here }}
+Location Name           Kind ResourceGroupName
+-------- ----           ---- -----------------
+eastus2  azpsapiservice fhir azps_test_group
 ```
 
-{{ Add description here }}
+List the metadata of service instance.
 
-### Example 2: {{ Add title here }}
+### Example 2: List the metadata of service instance by resource group.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzHealthcareAPIsService -ResourceGroupName azps_test_group
 
-{{ Add output here }}
+Location Name           Kind ResourceGroupName
+-------- ----           ---- -----------------
+eastus2  azpsapiservice fhir azps_test_group
 ```
 
-{{ Add description here }}
+List the metadata of service instance by resource group.
 
+### Example 3: Get the metadata of a service instance.
+```powershell
+PS C:\> Get-AzHealthcareAPIsService -ResourceGroupName azps_test_group -ResourceName azpsapiservice
+
+Location Name           Kind ResourceGroupName
+-------- ----           ---- -----------------
+eastus2  azpsapiservice fhir azps_test_group
+```
+
+Get the metadata of a service instance.

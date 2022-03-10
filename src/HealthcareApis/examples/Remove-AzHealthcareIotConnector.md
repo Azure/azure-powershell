@@ -1,18 +1,15 @@
-### Example 1: {{ Add title here }}
+### Example 1: Deletes an IoT Connector.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzHealthcareIotConnector -Name azpsiotconnector -ResourceGroupName azps_test_group -WorkspaceName azpshcws
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+Deletes an IoT Connector.
 
-### Example 2: {{ Add title here }}
+### Example 2: Deletes an IoT Connector.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzHealthcareIotConnector -Name azpsiotconnector -ResourceGroupName azps_test_group -WorkspaceName azpshcws | Remove-AzHealthcareIotConnector
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
+Deletes an IoT Connector.

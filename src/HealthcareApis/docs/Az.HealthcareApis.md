@@ -29,6 +29,9 @@ Gets the properties of the specified FHIR Service.
 ### [Get-AzHealthcareIotConnector](Get-AzHealthcareIotConnector.md)
 Gets the properties of the specified IoT Connector.
 
+### [Get-AzHealthcareIotConnectorFhirDestination](Get-AzHealthcareIotConnectorFhirDestination.md)
+Gets the properties of the specified Iot Connector FHIR destination.
+
 ### [New-AzHealthcareAPIsService](New-AzHealthcareAPIsService.md)
 Create or update the metadata of a service instance.
 
@@ -44,6 +47,9 @@ Creates or updates a FHIR Service resource with the specified parameters.
 ### [New-AzHealthcareIotConnector](New-AzHealthcareIotConnector.md)
 Creates or updates an IoT Connector resource with the specified parameters.
 
+### [New-AzHealthcareIotConnectorFhirDestination](New-AzHealthcareIotConnectorFhirDestination.md)
+Creates or updates an IoT Connector FHIR destination resource with the specified parameters.
+
 ### [Remove-AzHealthcareAPIsService](Remove-AzHealthcareAPIsService.md)
 Delete a service instance.
 
@@ -58,6 +64,9 @@ Deletes a FHIR Service.
 
 ### [Remove-AzHealthcareIotConnector](Remove-AzHealthcareIotConnector.md)
 Deletes an IoT Connector.
+
+### [Remove-AzHealthcareIotConnectorFhirDestination](Remove-AzHealthcareIotConnectorFhirDestination.md)
+Deletes an IoT Connector FHIR destination.
 
 ### [Test-AzHealthcareServiceNameAvailability](Test-AzHealthcareServiceNameAvailability.md)
 Check if a service instance name is available.

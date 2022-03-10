@@ -32,23 +32,27 @@ Patch an IoT Connector.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Patch an IoT Connector.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzHealthcareIotConnector -Name azpsiotconnector -ResourceGroupName azps_test_group -WorkspaceName azpshcws -Tag @{"123"="abc"}
 
-{{ Add output here }}
+Location Name                      ResourceGroupName
+-------- ----                      -----------------
+eastus2  azpshcws/azpsiotconnector azps_test_group
 ```
 
-{{ Add description here }}
+Patch an IoT Connector.
 
-### Example 2: {{ Add title here }}
+### Example 2: Patch an IoT Connector.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzHealthcareIotConnector -Name azpsiotconnector -ResourceGroupName azps_test_group -WorkspaceName azpshcws | Update-AzHealthcareIotConnector -Tag @{"123"="abc"}
 
-{{ Add output here }}
+Location Name                      ResourceGroupName
+-------- ----                      -----------------
+eastus2  azpshcws/azpsiotconnector azps_test_group
 ```
 
-{{ Add description here }}
+Patch an IoT Connector.
 
 ## PARAMETERS
 

@@ -1,18 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: Creates or updates an IoT Connector resource with the specified parameters.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $arr = @()
+PS C:\> New-AzHealthcareIotConnector -Name azpsiotconnector -ResourceGroupName azps_test_group -WorkspaceName azpshcws -Location eastus2 -IngestionEndpointConfigurationConsumerGroup "sajob-01-portal_input-01_consumer_group" -IngestionEndpointConfigurationEventHubName "sajob01portaleventhub" -IngestionEndpointConfigurationFullyQualifiedEventHubNamespace "sdk-Namespace-4761" -DeviceMappingContent @{"templateType"="CollectionContent";"template"=$arr}
 
-{{ Add output here }}
+Location Name                      ResourceGroupName
+-------- ----                      -----------------
+eastus2  azpshcws/azpsiotconnector azps_test_group
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Creates or updates an IoT Connector resource with the specified parameters.

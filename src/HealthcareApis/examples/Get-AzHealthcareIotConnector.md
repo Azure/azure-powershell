@@ -1,18 +1,21 @@
-### Example 1: {{ Add title here }}
+### Example 1: List the properties of the specified IoT Connector.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzHealthcareIotConnector -ResourceGroupName azps_test_group -WorkspaceName azpshcws
 
-{{ Add output here }}
+Location Name                      ResourceGroupName
+-------- ----                      -----------------
+eastus2  azpshcws/azpsiotconnector azps_test_group
 ```
 
-{{ Add description here }}
+List the properties of the specified IoT Connector.
 
-### Example 2: {{ Add title here }}
+### Example 2: Gets the properties of the specified IoT Connector.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzHealthcareIotConnector -Name azpsiotconnector -ResourceGroupName azps_test_group -WorkspaceName azpshcws
 
-{{ Add output here }}
+Location Name                      ResourceGroupName
+-------- ----                      -----------------
+eastus2  azpshcws/azpsiotconnector azps_test_group
 ```
 
-{{ Add description here }}
-
+Gets the properties of the specified IoT Connector.

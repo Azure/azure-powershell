@@ -73,9 +73,6 @@ directive:
       subject: WorkspacePrivateLinkResource
     hide: true
   - where:
-      subject: IotConnectorFhirDestination
-    hide: true
-  - where:
       subject: Workspace
     set:
       subject: APIsWorkspace
@@ -109,6 +106,15 @@ directive:
           - Kind
           - ResourceGroupName
   - where:
+      model-name: ServicesDescription
+    set:
+      format-table:
+        properties:
+          - Location
+          - Name
+          - Kind
+          - ResourceGroupName
+  - where:
       model-name: IotConnector
     set:
       format-table:
@@ -117,12 +123,39 @@ directive:
           - Name
           - Kind
           - ResourceGroupName
-
+  - where:
+      model-name: IotFhirDestination
+    set:
+      format-table:
+        properties:
+          - Location
+          - Name
+          - ResourceGroupName
   - from: swagger-document 
     where: $.definitions.IotMappingProperties.properties.content
     transform: >-
       return {
           "description": "The mapping.",
           "additionalProperties": true
+      }
+  - from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services/{resourceName}"].delete.responses
+    transform: >-
+      return {
+          "200": {
+            "description": "The request was successful; the request was well-formed and received properly."
+          },
+          "202": {
+            "description": "Accepted - Delete request accepted; the operation will complete asynchronously."
+          },
+          "204": {
+            "description": "The resource does not exist."
+          },
+          "default": {
+            "description": "DefaultErrorResponse",
+            "schema": {
+              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/672281444dd67605420fc9b3bcbd170040708380/specification/healthcareapis/resource-manager/Microsoft.HealthcareApis/stable/2021-11-01/healthcare-apis.json#/definitions/ErrorDetails"
+            }
+          }
       }
 ```

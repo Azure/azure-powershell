@@ -31,23 +31,16 @@ Create or update the metadata of a service instance.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create or update the metadata of a service instance.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzHealthcareAPIsService -ResourceGroupName azps_test_group -ResourceName azpsapiservice -Kind 'fhir' -Location eastus2 -CosmoDbConfigurationOfferThroughput 400
 
-{{ Add output here }}
+Location Name           Kind ResourceGroupName
+-------- ----           ---- -----------------
+eastus2  azpsapiservice fhir azps_test_group
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create or update the metadata of a service instance.
 
 ## PARAMETERS
 

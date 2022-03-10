@@ -22,23 +22,16 @@ Lists all FHIR destinations for the given IoT Connector
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Lists all FHIR destinations for the given IoT Connector
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzHealthcareFhirDestination -IotConnectorName azpsiotconnector -ResourceGroupName azps_test_group -WorkspaceName azpshcws
 
-{{ Add output here }}
+Location Name                                          ResourceGroupName
+-------- ----                                          -----------------
+eastus2  azpshcws/azpsiotconnector/azpsfhirdestination azps_test_group
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Lists all FHIR destinations for the given IoT Connector
 
 ## PARAMETERS
 

@@ -1,61 +1,45 @@
 ---
 external help file:
 Module Name: Az.HealthcareApis
-online version: https://docs.microsoft.com/powershell/module/az.healthcareapis/get-azhealthcareiotconnector
+online version: https://docs.microsoft.com/powershell/module/az.healthcareapis/get-azhealthcareiotconnectorfhirdestination
 schema: 2.0.0
 ---
 
-# Get-AzHealthcareIotConnector
+# Get-AzHealthcareIotConnectorFhirDestination
 
 ## SYNOPSIS
-Gets the properties of the specified IoT Connector.
+Gets the properties of the specified Iot Connector FHIR destination.
 
 ## SYNTAX
 
-### List (Default)
+### Get (Default)
 ```
-Get-AzHealthcareIotConnector -ResourceGroupName <String> -WorkspaceName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzHealthcareIotConnector -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzHealthcareIotConnectorFhirDestination -FhirDestinationName <String> -IotConnectorName <String>
+ -ResourceGroupName <String> -WorkspaceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzHealthcareIotConnector -InputObject <IHealthcareApisIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzHealthcareIotConnectorFhirDestination -InputObject <IHealthcareApisIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets the properties of the specified IoT Connector.
+Gets the properties of the specified Iot Connector FHIR destination.
 
 ## EXAMPLES
 
-### Example 1: List the properties of the specified IoT Connector.
+### Example 1: Gets the properties of the specified Iot Connector FHIR destination.
 ```powershell
-PS C:\> Get-AzHealthcareIotConnector -ResourceGroupName azps_test_group -WorkspaceName azpshcws
+PS C:\> Get-AzHealthcareIotConnectorFhirDestination -FhirDestinationName azpsfhirdestination -IotConnectorName azpsiotconnector -ResourceGroupName azps_test_group -WorkspaceName azpshcws
 
-Location Name                      ResourceGroupName
--------- ----                      -----------------
-eastus2  azpshcws/azpsiotconnector azps_test_group
+Location Name                                          ResourceGroupName
+-------- ----                                          -----------------
+eastus2  azpshcws/azpsiotconnector/azpsfhirdestination azps_test_group
 ```
 
-List the properties of the specified IoT Connector.
-
-### Example 2: Gets the properties of the specified IoT Connector.
-```powershell
-PS C:\> Get-AzHealthcareIotConnector -Name azpsiotconnector -ResourceGroupName azps_test_group -WorkspaceName azpshcws
-
-Location Name                      ResourceGroupName
--------- ----                      -----------------
-eastus2  azpshcws/azpsiotconnector azps_test_group
-```
-
-Gets the properties of the specified IoT Connector.
+Gets the properties of the specified Iot Connector FHIR destination.
 
 ## PARAMETERS
 
@@ -68,6 +52,21 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FhirDestinationName
+The name of IoT Connector FHIR destination resource.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -90,13 +89,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
+### -IotConnectorName
 The name of IoT Connector resource.
 
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases: IotConnectorName
+Aliases:
 
 Required: True
 Position: Named
@@ -110,7 +109,7 @@ The name of the resource group that contains the service instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -125,7 +124,7 @@ The subscription identifier.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: False
@@ -140,7 +139,7 @@ The name of workspace resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -159,7 +158,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IIotConnector
+### Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IIotFhirDestination
 
 ## NOTES
 

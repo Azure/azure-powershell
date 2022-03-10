@@ -1,18 +1,21 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update the metadata of a service instance.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzHealthcareAPIsService -ResourceGroupName azps_test_group -ResourceName azpsapiservice -Tag @{"abc"="123"}
 
-{{ Add output here }}
+Location Name           Kind ResourceGroupName
+-------- ----           ---- -----------------
+eastus2  azpsapiservice fhir azps_test_group
 ```
 
-{{ Add description here }}
+Update the metadata of a service instance.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update the metadata of a service instance.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzHealthcareAPIsService -ResourceGroupName azps_test_group -ResourceName azpsapiservice | Update-AzHealthcareAPIsService -Tag @{"abc"="123"}
 
-{{ Add output here }}
+Location Name           Kind ResourceGroupName
+-------- ----           ---- -----------------
+eastus2  azpsapiservice fhir azps_test_group
 ```
 
-{{ Add description here }}
-
+Update the metadata of a service instance.

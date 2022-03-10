@@ -1,63 +1,67 @@
 ---
 external help file:
 Module Name: Az.HealthcareApis
-online version: https://docs.microsoft.com/powershell/module/az.healthcareapis/get-azhealthcareiotconnector
+online version: https://docs.microsoft.com/powershell/module/az.healthcareapis/remove-azhealthcareiotconnectorfhirdestination
 schema: 2.0.0
 ---
 
-# Get-AzHealthcareIotConnector
+# Remove-AzHealthcareIotConnectorFhirDestination
 
 ## SYNOPSIS
-Gets the properties of the specified IoT Connector.
+Deletes an IoT Connector FHIR destination.
 
 ## SYNTAX
 
-### List (Default)
+### Delete (Default)
 ```
-Get-AzHealthcareIotConnector -ResourceGroupName <String> -WorkspaceName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzHealthcareIotConnector -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Remove-AzHealthcareIotConnectorFhirDestination -FhirDestinationName <String> -IotConnectorName <String>
+ -ResourceGroupName <String> -WorkspaceName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### DeleteViaIdentity
 ```
-Get-AzHealthcareIotConnector -InputObject <IHealthcareApisIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Remove-AzHealthcareIotConnectorFhirDestination -InputObject <IHealthcareApisIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets the properties of the specified IoT Connector.
+Deletes an IoT Connector FHIR destination.
 
 ## EXAMPLES
 
-### Example 1: List the properties of the specified IoT Connector.
+### Example 1: Deletes an IoT Connector FHIR destination.
 ```powershell
-PS C:\> Get-AzHealthcareIotConnector -ResourceGroupName azps_test_group -WorkspaceName azpshcws
+PS C:\> Remove-AzHealthcareIotConnectorFhirDestination -FhirDestinationName azpsfhirdestination -IotConnectorName azpsiotconnector -ResourceGroupName azps_test_group -WorkspaceName azpshcws
 
-Location Name                      ResourceGroupName
--------- ----                      -----------------
-eastus2  azpshcws/azpsiotconnector azps_test_group
 ```
 
-List the properties of the specified IoT Connector.
+Deletes an IoT Connector FHIR destination.
 
-### Example 2: Gets the properties of the specified IoT Connector.
+### Example 2: Deletes an IoT Connector FHIR destination.
 ```powershell
-PS C:\> Get-AzHealthcareIotConnector -Name azpsiotconnector -ResourceGroupName azps_test_group -WorkspaceName azpshcws
+PS C:\> Get-AzHealthcareIotConnectorFhirDestination -FhirDestinationName azpsfhirdestination -IotConnectorName azpsiotconnector -ResourceGroupName azps_test_group -WorkspaceName azpshcws | Remove-AzHealthcareIotConnectorFhirDestination
 
-Location Name                      ResourceGroupName
--------- ----                      -----------------
-eastus2  azpshcws/azpsiotconnector azps_test_group
 ```
 
-Gets the properties of the specified IoT Connector.
+Deletes an IoT Connector FHIR destination.
 
 ## PARAMETERS
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -74,13 +78,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -FhirDestinationName
+The name of IoT Connector FHIR destination resource.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IHealthcareApisIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -90,15 +109,45 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
+### -IotConnectorName
 The name of IoT Connector resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
-Aliases: IotConnectorName
+Parameter Sets: Delete
+Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -110,7 +159,7 @@ The name of the resource group that contains the service instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -124,8 +173,8 @@ Accept wildcard characters: False
 The subscription identifier.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: Get, List
+Type: System.String
+Parameter Sets: Delete
 Aliases:
 
 Required: False
@@ -140,10 +189,41 @@ The name of workspace resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Delete
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -159,7 +239,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IIotConnector
+### System.Boolean
 
 ## NOTES
 

@@ -1,18 +1,15 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete a service instance.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzHealthcareAPIsService -ResourceGroupName azps_test_group -ResourceName azpsapiservice
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+Delete a service instance.
 
-### Example 2: {{ Add title here }}
+### Example 2: Delete a service instance.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzHealthcareAPIsService -ResourceGroupName azps_test_group -ResourceName azpsapiservice | Remove-AzHealthcareAPIsService
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
+Delete a service instance.

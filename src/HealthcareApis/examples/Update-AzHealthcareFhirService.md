@@ -1,18 +1,21 @@
-### Example 1: {{ Add title here }}
+### Example 1: Patch FHIR Service details.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzHealthcareFhirService -Name azpsfhirservice -ResourceGroupName azps_test_group -WorkspaceName azpshcws -Tag @{"123"="abc"}
 
-{{ Add output here }}
+Location Name                     Kind    ResourceGroupName
+-------- ----                     ----    -----------------
+eastus2  azpshcws/azpsfhirservice fhir-R4 azps_test_group
 ```
 
-{{ Add description here }}
+Patch FHIR Service details.
 
-### Example 2: {{ Add title here }}
+### Example 2: Patch FHIR Service details.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\>  Get-AzHealthcareFhirService -Name azpsfhirservice -ResourceGroupName azps_test_group -WorkspaceName azpshcws | Update-AzHealthcareFhirService -Tag @{"123"="abc"}
 
-{{ Add output here }}
+Location Name                     Kind    ResourceGroupName
+-------- ----                     ----    -----------------
+eastus2  azpshcws/azpsfhirservice fhir-R4 azps_test_group
 ```
 
-{{ Add description here }}
-
+Patch FHIR Service details.

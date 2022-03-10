@@ -2,21 +2,21 @@
 ```powershell
 PS C:\> Get-AzHealthcareAPIsWorkspace
 
-Location Name                        ResourceGroupName
--------- ----                        -----------------
-eastus2  azps_healthcare_workspace   azps_test_group
-eastus2  azps_healthcare_workspace02 azps_test_group
+Location Name       ResourceGroupName
+-------- ----       -----------------
+eastus2  azpshcws   azps_test_group
+eastus2  azpshcws02 azps_test_group
 ```
 
 Gets the properties of the specified workspace.
 
 ### Example 2: Get
 ```powershell
-PS C:\> Get-AzHealthcareAPIsWorkspace -Name azps_healthcare_workspace -ResourceGroupName azps_test_group
+PS C:\> Get-AzHealthcareAPIsWorkspace -Name azpshcws -ResourceGroupName azps_test_group
 
-Location Name                      ResourceGroupName
--------- ----                      -----------------
-eastus2  azps_healthcare_workspace azps_test_group
+Location Name     ResourceGroupName
+-------- ----     -----------------
+eastus2  azpshcws azps_test_group
 ```
 
 Gets the properties of the specified workspace.
@@ -25,10 +25,10 @@ Gets the properties of the specified workspace.
 ```powershell
 PS C:\> Get-AzHealthcareAPIsWorkspace -ResourceGroupName azps_test_group
 
-Location Name                        ResourceGroupName
--------- ----                        -----------------
-eastus2  azps_healthcare_workspace   azps_test_group
-eastus2  azps_healthcare_workspace02 azps_test_group
+Location Name       ResourceGroupName
+-------- ----       -----------------
+eastus2  azpshcws   azps_test_group
+eastus2  azpshcws02 azps_test_group
 ```
 
 Gets the properties of the specified workspace.

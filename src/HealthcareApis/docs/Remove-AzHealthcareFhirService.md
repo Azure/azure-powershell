@@ -30,23 +30,21 @@ Deletes a FHIR Service.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Deletes a FHIR Service.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzHealthcareFhirService -Name azpsfhirservice -ResourceGroupName azps_test_group -WorkspaceName azpshcws
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+Deletes a FHIR Service.
 
-### Example 2: {{ Add title here }}
+### Example 2: Deletes a FHIR Service.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzHealthcareFhirService -Name azpsfhirservice -ResourceGroupName azps_test_group -WorkspaceName azpshcws | Remove-AzHealthcareFhirService
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+Deletes a FHIR Service.
 
 ## PARAMETERS
 
