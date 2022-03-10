@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/get-azresourcemanagementprivatelinkassociation/
+online version: https://docs.microsoft.com/powershell/module/az.resources/get-azprivatelinkassociation/
 schema: 2.0.0
 ---
 
-# Get-AzResourceManagementPrivateLinkAssociation
+# Get-AzPrivateLinkAssociation
 
 ## SYNOPSIS
 Gets all the Azure Resource Management Private Link Association(s).
@@ -13,18 +13,18 @@ Gets all the Azure Resource Management Private Link Association(s).
 ## SYNTAX
 
 ```
-Get-AzResourceManagementPrivateLinkAssociation [-ManagementGroupId] <String>
+Get-AzPrivateLinkAssociation [-ManagementGroupId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzResourceManagementPrivateLinkAssociation cmdlet gets all of resource management private link at the scope.
+The Get-AzPrivateLinkAssociation cmdlet gets all of resource management private link at the scope.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\>  Get-AzResourceManagementPrivateLinkAssociation -ManagementGroupId fc096d27-0434-4460-a3ea-110df0422a2d | fl
+PS C:\>  Get-AzPrivateLinkAssociation -ManagementGroupId fc096d27-0434-4460-a3ea-110df0422a2d | fl
 
 
 
@@ -127,4 +127,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Remove-AzResourceManagementPrivateLinkAssociation](./Remove-AzResourceManagementPrivateLinkAssociation.md)
+[Remove-AzPrivateLinkAssociation](./Remove-AzPrivateLinkAssociation.md)

@@ -16,20 +16,19 @@ using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Resources.Models.PrivateLinks;
 using Microsoft.Azure.Commands.Resources.PrivateLinks.Common;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.ResourceManager;
 
 namespace Microsoft.Azure.Commands.Resources.PrivateLinks
 {
     /// <summary>
-    /// Remove-AzResourceManagementPrivateLinkAssociation Cmdlet
+    /// Remove-AzPrivateLinkAssociation Cmdlet
     /// </summary>
     [Cmdlet(
         VerbsCommon.Remove,
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ResourceManagementPrivateLinkAssociation",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateLinkAssociation",
         DefaultParameterSetName = Constants.ParameterSetNames.DeletePLAssociationParameterSet,
         SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class DeleteAzureResourceManagementPrivateLinkAssociation : PrivateLinksCmdletBase
+    public class DeleteAzurePrivateLinkAssociation : PrivateLinksCmdletBase
     {
         #region Cmdlet Parameters and Parameter Set Definitions
 

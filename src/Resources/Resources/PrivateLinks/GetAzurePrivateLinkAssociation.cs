@@ -22,14 +22,14 @@ using Microsoft.Azure.Management.ResourceManager;
 namespace Microsoft.Azure.Commands.Resources.PrivateLinks
 {
     /// <summary>
-    /// Get-AzResourceManagementPrivateLinkAssociation Cmdlet
+    /// Get-AzPrivateLinkAssociation Cmdlet
     /// </summary>
     [Cmdlet(
         VerbsCommon.Get,
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ResourceManagementPrivateLinkAssociation",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateLinkAssociation",
         DefaultParameterSetName = Constants.ParameterSetNames.GetPLAssociationParameterSet,
         SupportsShouldProcess = true), OutputType(typeof(PSResourceManagementPrivateLinkAssociation))]
-    public class GetAzureResourceManagementPrivateLinkAssociation : PrivateLinksCmdletBase
+    public class GetAzurePrivateLinkAssociation : PrivateLinksCmdletBase
     {
         #region Cmdlet Parameters and Parameter Set Definitions
 

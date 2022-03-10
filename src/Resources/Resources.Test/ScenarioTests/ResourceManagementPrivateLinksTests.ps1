@@ -20,7 +20,7 @@ ResourceManagementPrivateLinksTests
 function Test-RemoveResourceManagementPrivateLink
 {
     $getresponse1 = Get-AzResourceManagementPrivateLink -ResourceGroupName PrivateLinkTestRG -Name NewPL
-    Remove-AzResourceManagementPrivateLink -ResourceGroupName PrivateLinkTestRG -Name NewPL -Force
+    $getresponse1 | Remove-AzResourceManagementPrivateLink -Force
     try
     {
       $getresponse2 = Get-AzResourceManagementPrivateLink -ResourceGroupName PrivateLinkTestRG -Name NewPL
@@ -95,9 +95,9 @@ function Test-GetResourceManagementPrivateLinks
 function Test-RemoveResourceManagementPrivateLinkAssociation
 {
     $privateLinkAssociationId = "1d7942d1-288b-48de-8d0f-2d2aa8e03ad4"
-    $getresponse = Get-AzResourceManagementPrivateLinkAssociation -ManagementGroupId 24f15700-370c-45bc-86a7-aee1b0c4eb8a
-    Remove-AzResourceManagementPrivateLinkAssociation -ManagementGroupId 24f15700-370c-45bc-86a7-aee1b0c4eb8a -Name $privateLinkAssociationId -Force
-    $getresponse1 = Get-AzResourceManagementPrivateLinkAssociation -ManagementGroupId 24f15700-370c-45bc-86a7-aee1b0c4eb8a
+    $getresponse = Get-AzPrivateLinkAssociation -ManagementGroupId 24f15700-370c-45bc-86a7-aee1b0c4eb8a
+    Remove-AzPrivateLinkAssociation -ManagementGroupId 24f15700-370c-45bc-86a7-aee1b0c4eb8a -Name $privateLinkAssociationId -Force
+    $getresponse1 = Get-AzPrivateLinkAssociation -ManagementGroupId 24f15700-370c-45bc-86a7-aee1b0c4eb8a
 
     $expectedPublicNetworkAccess = "Enabled"
     $expectedPrivateLinkResourceId = "/subscriptions/6dbb5850-64b4-49c0-ba85-d38f089c6fa4/resourceGroups/ARMPrivateLinkRG/providers/Microsoft.Authorization/resourceManagementPrivateLinks/DeepDiveRMPL"
@@ -120,7 +120,7 @@ function Test-RemoveResourceManagementPrivateLinkAssociation
 
 function Test-GetResourceManagementPrivateLinkAssociations
 {
-    $getresponse = Get-AzResourceManagementPrivateLinkAssociation -ManagementGroupId 24f15700-370c-45bc-86a7-aee1b0c4eb8a
+    $getresponse = Get-AzPrivateLinkAssociation -ManagementGroupId 24f15700-370c-45bc-86a7-aee1b0c4eb8a
     $expectedPublicNetworkAccess = "Enabled"
     $expectedPrivateLinkResourceId = "/subscriptions/6dbb5850-64b4-49c0-ba85-d38f089c6fa4/resourceGroups/ARMPrivateLinkRG/providers/Microsoft.Authorization/resourceManagementPrivateLinks/DeepDiveRMPL"
     $expectedPrivateLinkAssociationId = "1d7942d1-288b-48de-8d0f-2d2aa8e03ad4"
