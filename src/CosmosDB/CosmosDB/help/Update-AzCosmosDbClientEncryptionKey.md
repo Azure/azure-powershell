@@ -268,3 +268,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzCosmosDbClientEncryptionKey](./Get-AzCosmosDbClientEncryptionKey.md)
+
+[New-AzCosmosDbClientEncryptionKey](./New-AzCosmosDbClientEncryptionKey.md)
