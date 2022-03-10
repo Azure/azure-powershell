@@ -751,3 +751,60 @@ function Test-NetworkManagerEffectiveVirtualNetworkList
     finally{
 	}
 }
+
+<#
+.SYNOPSIS
+Tests creating new simple public network manager scope connection
+#>
+function Test-NetworkManagerScopeConnectionCRUD
+{
+    # Setup
+    # Need to update $subscriptionId and vnetid before running in live mode
+    $rgName = Get-ResourceGroupName
+    $networkManagerName = Get-ResourceName
+    $scopeConnectionName = Get-ResourceName
+    $rglocation = "centraluseuap"
+    $subscriptionId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52"
+
+    try{
+        #Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+        
+        # Create Scope
+        [System.Collections.Generic.List[string]]$group  = @()
+        $group.Add($subscriptionId)
+        [System.Collections.Generic.List[String]]$access  = @()
+        $access.Add("Connectivity");
+        $scope = New-AzNetworkManagerScope -Subscription $group
+        New-AzNetworkManager -ResourceGroupName $rgname -Name $networkManagerName -NetworkManagerScope $scope -NetworkManagerScopeAccess $access -Location $rglocation
+
+        $networkManager = Get-AzNetworkManager -ResourceGroupName $rgname -Name $networkManagerName
+        Assert-NotNull $networkManager;
+        Assert-AreEqual $networkManagerName $networkManager.Name;
+        Assert-AreEqual $rglocation $networkManager.Location;
+
+        New-AzNetworkManagerScopeConnection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $scopeConnectionName -TenantId "72f988bf-86f1-41af-91ab-2d7cd011db47" -ResourceId $subscriptionId -Description "SampleDescription" 
+
+        $scopeConnection = Get-AzNetworkManagerScopeConnection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $scopeConnectionName 
+        Assert-NotNull $scopeConnection;
+        Assert-AreEqual $scopeConnectionName $scopeConnection.Name;
+
+        $scopeConnection.Description = "A Different Description."
+        $newScopeConnection = Set-AzNetworkManagerScopeConnection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -NetworkManagerScopeConnection $scopeConnection
+        Assert-NotNull $newScopeConnection;
+        Assert-AreEqual "A Different Description." $newScopeConnection.Description;
+        Assert-AreEqual $scopeConnectionName $newScopeConnection.Name;
+
+        $job = Remove-AzNetworkManagerScopeConnection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $scopeConnectionName -PassThru -Force -AsJob;
+        $job | Wait-Job;
+        $removeResult = $job | Receive-Job;
+
+        $job = Remove-AzNetworkManager -ResourceGroupName $rgname -Name $networkManagerName -PassThru -Force -AsJob;
+        $job | Wait-Job;
+        $removeResult = $job | Receive-Job;
+	}
+    finally{
+        # Cleanup
+        Clean-ResourceGroup $rgname
+	}
+}

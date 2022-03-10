@@ -74,5 +74,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-NetworkManagerEffectiveVirtualNetworkList");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        public void NetworkManagerScopeConnectionCRUD()
+        {
+            TestRunner.RunTestScript("Test-NetworkManagerScopeConnectionCRUD");
+        }
     }
 }
