@@ -606,11 +606,15 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'New-AzNetworkManagerScope', 
                'New-AzNetworkManagerSecurityGroupItem', 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 7640126025 (add helper)
                'New-AzNetworkManagerHub', 
                'New-AzNetworkManagerConnectivityGroupItem',
                'New-AzNetworkManagerStaticMember',
                'Get-AzNetworkManagerStaticMember', 
                'Remove-AzNetworkManagerStaticMember',
+<<<<<<< HEAD
                'Set-AzNetworkManagerStaticMember',
 	           'New-AzNetworkManagerSubscriptionConnection',
                'Get-AzNetworkManagerSubscriptionConnection', 
@@ -625,6 +629,10 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'New-AzNetworkManagerGroupMembersItem', 'New-AzNetworkManagerHub', 
                'New-AzNetworkManagerConnectivityGroupItem'
 >>>>>>> 53097c2e2b (Bump version for Az.Network (#16227))
+=======
+               'Set-AzNetworkManagerStaticMember'
+               
+>>>>>>> 7640126025 (add helper)
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -727,12 +735,16 @@ PrivateData = @{
     - ''New-AzNetworkManagerAddressPrefixItem'' 
     - ''New-AzNetworkManagerScope'' 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 7640126025 (add helper)
     - ''New-AzNetworkManagerSecurityGroupItem''
     - ''New-AzNetworkManagerHub''
     - ''New-AzNetworkManagerConnectivityGroupItem''
     - ''New-AzNetworkManagerStaticMember''
     - ''Get-AzNetworkManagerStaticMember''
     - ''Remove-AzNetworkManagerStaticMember''
+<<<<<<< HEAD
     - ''Set-AzNetworkManagerStaticMember''
     - ''New-AzNetworkManagerSubscriptionConnection''
     - ''Get-AzNetworkManagerSubscriptionConnection''
@@ -748,6 +760,9 @@ PrivateData = @{
     - ''New-AzNetworkManagerHub'' 
     - ''New-AzNetworkManagerConnectivityGroupItem'''
 >>>>>>> 53097c2e2b (Bump version for Az.Network (#16227))
+=======
+    - ''Set-AzNetworkManagerStaticMember'''
+>>>>>>> 7640126025 (add helper)
 
         # Prerelease string of this module
         Prerelease = 'preview'

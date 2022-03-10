@@ -21,13 +21,71 @@
 ## Upcoming Release
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 * Added support for retreiving the state of packet capture even when the provisioning state of the packet capture was failure
     - `Get-AzNetworkWatcherPacketCapture`
+=======
+* Onboard Azure Virtual Network Manager Cmdlets for preview
+    - `Get-AzNetworkManager` 
+    - `New-AzNetworkManager` 
+    - `Remove-AzNetworkManager` 
+    - `Get-AzNetworkManagerGroup` 
+    - `New-AzNetworkManagerGroup` 
+    - `Remove-AzNetworkManagerGroup` 
+    - `Set-AzNetworkManagerGroup` 
+    - `Get-AzNetworkManagerConnectivityConfiguration` 
+    - `New-AzNetworkManagerConnectivityConfiguration` 
+    - `Remove-AzNetworkManagerConnectivityConfiguration` 
+    - `Set-AzNetworkManagerConnectivityConfiguration` 
+    - `Get-AzNetworkManagerSecurityAdminConfiguration` 
+    - `New-AzNetworkManagerSecurityAdminConfiguration` 
+    - `Remove-AzNetworkManagerSecurityAdminConfiguration` 
+    - `Set-AzNetworkManagerSecurityAdminConfiguration` 
+    - `Get-AzNetworkManagerSecurityAdminRuleCollection` 
+    - `New-AzNetworkManagerSecurityAdminRuleCollection` 
+    - `Remove-AzNetworkManagerSecurityAdminRuleCollection` 
+    - `Set-AzNetworkManagerSecurityAdminRuleCollection` 
+    - `Get-AzNetworkManagerSecurityAdminRule` 
+    - `New-AzNetworkManagerSecurityAdminRule` 
+    - `Remove-AzNetworkManagerSecurityAdminRule` 
+    - `Set-AzNetworkManagerSecurityAdminRule` 
+    - `Get-AzNetworkManagerSecurityUserConfiguration` 
+    - `New-AzNetworkManagerSecurityUserConfiguration` 
+    - `Remove-AzNetworkManagerSecurityUserConfiguration` 
+    - `Set-AzNetworkManagerSecurityUserConfiguration` 
+    - `Get-AzNetworkManagerSecurityUserRuleCollection` 
+    - `New-AzNetworkManagerSecurityUserRuleCollection` 
+    - `Remove-AzNetworkManagerSecurityUserRuleCollection` 
+    - `Set-AzNetworkManagerSecurityUserRuleCollection` 
+    - `Get-AzNetworkManagerSecurityUserRule` 
+    - `New-AzNetworkManagerSecurityUserRule` 
+    - `Remove-AzNetworkManagerSecurityUserRule` 
+    - `Set-AzNetworkManagerSecurityUserRule` 
+    - `Get-AzNetworkManagerActiveConnectivityConfigurationList` 
+    - `Get-AzNetworkManagerActiveSecurityAdminRuleList` 
+    - `Get-AzNetworkManagerActiveSecurityUserRuleList` 
+    - `Get-AzNetworkManagerEffectiveConnectivityConfigurationList` 
+    - `Get-AzNetworkManagerEffectiveSecurityAdminRuleList` 
+    - `Get-AzNetworkManagerEffectiveSecurityAdminRuleList` 
+    - `Deploy-AzNetworkManagerCommit` 
+    - `Get-AzNetworkManagerEffectiveVirtualNetworkList` 
+    - `Get-AzNetworkManagerEffectiveVirtualNetworkByNetworkGroupList` 
+    - `Get-AzNetworkManagerDeploymentStatusList` 
+    - `New-AzNetworkManagerAddressPrefixItem` 
+    - `New-AzNetworkManagerScope` 
+    - `New-AzNetworkManagerSecurityGroupItem`
+    - `New-AzNetworkManagerHub` 
+    - `New-AzNetworkManagerConnectivityGroupItem`
+    - `Get-AzNetworkManagerStaticMember` 
+    - `New-AzNetworkManagerStaticMember` 
+    - `Remove-AzNetworkManagerStaticMember` 
+    - `Set-AzNetworkManagerStaticMember` 
+
+## Version 4.15.0
+>>>>>>> 7640126025 (add helper)
 * Added support for accepting Vnet, Subnet and NIC resources as the TargetResourceId for the following cdmlets
     - `Set-AzNetworkWatcherFlowLog`
     - `New-AzNetworkWatcherFlowLog`
-
-## Version 4.15.0
 * Added new property `SqlSetting` for Azure Firewall Policy cmdlets 
     - `Get-AzFirewallPolicy` 
     - `New-AzFirewallPolicy`

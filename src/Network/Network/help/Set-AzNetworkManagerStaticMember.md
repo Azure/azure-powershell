@@ -1,34 +1,35 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-aznetworkmanagergroup
+online version: https://docs.microsoft.com/powershell/module/az.network/set-aznetworkmanagerstaticmember
 schema: 2.0.0
 ---
 
-# New-AzNetworkManagerGroup
+# Set-AzNetworkManagerStaticMember
 
 ## SYNOPSIS
-Creates a network manager group.
+Updates a network manager static member.
 
 ## SYNTAX
 
 ```
-New-AzNetworkManagerGroup -Name <String> -NetworkManagerName <String> -ResourceGroupName <String>
- [-DisplayName <String>] [-Description <String>]
-  -MemberType <String> [-IfMatch <String>] [-Force] [-AsJob]
+Set-AzNetworkManagerStaticMember -NetworkManagerName <String> -ResourceGroupName <String>
+ -NetworkGroupName <String> -StaticMember <PSNetworkManagerStaticMember> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzNetworkManagerGroup** cmdlet creates a network manager group.
+The **Set-AzNetworkManagerStaticMember** cmdlet updates a network manager static member.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> New-AzNetworkManagerGroup -ResourceGroupName TestRGName -NetworkManagerName TestNetworkManagerName -Name TestNetworkGroupName -MemberType "Microsoft.Network/VirtualNetwork" -DisplayName "TestDISplayName" -Description "TestDescription"
+Expand
+PS C:\> Set-AzNetworkManagerStaticMember -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG" -NetworkGroupName "TestNetworkGroup" -StaticMember  $staticMember
 
 ```
+
 
 ## PARAMETERS
 
@@ -62,68 +63,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Description
-Description.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -DisplayName
-DisplayName.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Force
-Do not ask for confirmation if you want to overwrite a resource
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IfMatch
-If match header.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -MemberType
-Member type.
+### -NetworkGroupName
+The Network Group
 
 ```yaml
 Type: System.String
@@ -133,22 +74,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Name
-The resource name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: ResourceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -179,6 +105,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -StaticMember
+The Network Manager Static Member
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerStaticMember
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -220,20 +161,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerGroupMembersItem, Microsoft.Azure.PowerShell.Cmdlets.Network, Version=4.11.0.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerStaticMember
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerGroup
+### Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerStaticMember
 
 ## NOTES
 
 ## RELATED LINKS
 
-[New-AzNetworkManagerGroupMembersItem](./New-AzNetworkManagerGroupMembersItem.md)
+[New-AzNetworkManagerStaticMember](./New-AzNetworkManagerStaticMember.md)
 
-[Get-AzNetworkManagerGroup](./Get-AzNetworkManagerGroup.md)
+[Get-AzNetworkManagerStaticMember](./Get-AzNetworkManagerStaticMember.md)
 
-[Remove-AzNetworkManagerGroup](./Remove-AzNetworkManagerGroup.md)
-
-[Set-AzNetworkManagerGroup](./Set-AzNetworkManagerGroup.md)
+[Remove-AzNetworkManagerStaticMember](./Remove-AzNetworkManagerStaticMember.md)

@@ -1,34 +1,34 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-aznetworkmanagergroup
+online version:
 schema: 2.0.0
 ---
 
-# New-AzNetworkManagerGroup
+# New-AzNetworkManagerStaticMember
 
 ## SYNOPSIS
-Creates a network manager group.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ```
-New-AzNetworkManagerGroup -Name <String> -NetworkManagerName <String> -ResourceGroupName <String>
- [-DisplayName <String>] [-Description <String>]
-  -MemberType <String> [-IfMatch <String>] [-Force] [-AsJob]
+New-AzNetworkManagerStaticMember -Name <String> -NetworkManagerName <String> -NetworkGroupName <String>
+ -ResourceGroupName <String> [-ResourceId <String>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzNetworkManagerGroup** cmdlet creates a network manager group.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> New-AzNetworkManagerGroup -ResourceGroupName TestRGName -NetworkManagerName TestNetworkManagerName -Name TestNetworkGroupName -MemberType "Microsoft.Network/VirtualNetwork" -DisplayName "TestDISplayName" -Description "TestDescription"
-
+PS C:\> {{ Add example code here }}
 ```
+
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -62,36 +62,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Description
-Description.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -DisplayName
-DisplayName.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Force
 Do not ask for confirmation if you want to overwrite a resource
 
@@ -107,28 +77,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IfMatch
-If match header.
+### -Name
+The resource name.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -MemberType
-Member type.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
+Aliases: ResourceName
 
 Required: True
 Position: Named
@@ -137,13 +92,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Name
-The resource name.
+### -NetworkGroupName
+The network manager group name.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: ResourceName
+Aliases:
 
 Required: True
 Position: Named
@@ -176,6 +131,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Resource Id.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -220,20 +190,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerGroupMembersItem, Microsoft.Azure.PowerShell.Cmdlets.Network, Version=4.11.0.0, Culture=neutral, PublicKeyToken=null]]
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerGroup
+### Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerStaticMember
 
 ## NOTES
 
 ## RELATED LINKS
-
-[New-AzNetworkManagerGroupMembersItem](./New-AzNetworkManagerGroupMembersItem.md)
-
-[Get-AzNetworkManagerGroup](./Get-AzNetworkManagerGroup.md)
-
-[Remove-AzNetworkManagerGroup](./Remove-AzNetworkManagerGroup.md)
-
-[Set-AzNetworkManagerGroup](./Set-AzNetworkManagerGroup.md)

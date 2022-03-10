@@ -6975,6 +6975,10 @@
                 <PropertyName>Id</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>ResourceId</Label>
+                <PropertyName>ResourceId</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>DisplayName</Label>
                 <PropertyName>DisplayName</PropertyName>
               </ListItem>
@@ -6993,10 +6997,6 @@
               <ListItem>
                 <Label>ProvisioningState</Label>
                 <PropertyName>ProvisioningState</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>StaticMembers</Label>
-                <PropertyName>StaticMembersText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -8425,14 +8425,6 @@
                <ListItem>
                 <Label>MemberType</Label>
                 <PropertyName>MemberType</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>GroupMembers</Label>
-                <PropertyName>GroupMembersText</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>ConditionalMembership</Label>
-                <PropertyName>ConditionalMembership</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>ProvisioningState</Label>
