@@ -71,6 +71,12 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
+           HelpMessage = "NetworkIntentPolicyBasedService.")]
+        public List<string> NetworkIntentPolicyBasedService { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
            HelpMessage = "DeleteExistingNSGs Flag.")]
         public SwitchParameter DeleteExistingNSG { get; set; }
 
@@ -103,6 +109,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             var securityConfig = new PSNetworkManagerSecurityConfiguration();
             securityConfig.Name = this.Name;
+            securityConfig.NetworkIntentPolicyBasedService = this.NetworkIntentPolicyBasedService;
             if (!string.IsNullOrEmpty(this.Description))
             {
                 securityConfig.Description = this.Description;

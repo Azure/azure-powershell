@@ -451,11 +451,12 @@ function Test-NetworkManagerSecurityAdminRuleCRUD
 
         $networkGroup = Get-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $networkGroupName
 
-        New-AzNetworkManagerSecurityAdminConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $SecurityConfigurationName -DisplayName "DISplayName" -Description "DESCription" -DeleteExistingNSG
+        New-AzNetworkManagerSecurityAdminConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $SecurityConfigurationName -DisplayName "DISplayName" -Description "DESCription" -DeleteExistingNSG -NetworkIntentPolicyBasedService ["None"]
         
-        $securityConfig = Get-AzNetworkManagerSecurityAdminConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $SecurityConfigurationName 
+        $securityConfig = Get-AzNetworkManagerSecurityAdminConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $SecurityConfigurationName
         Assert-NotNull $securityConfig;
         Assert-AreEqual $SecurityConfigurationName $securityConfig.Name;
+        Assert-AreEqual ["None"] $securityConfig.NetworkIntentPolicyBasedService;
 
         $securityConfig.DisplayName = "sample Config DisplayName"
         $securityConfig = Set-AzNetworkManagerSecurityAdminConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -NetworkManagerSecurityAdminConfiguration $securityConfig

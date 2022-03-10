@@ -23,6 +23,8 @@ namespace Microsoft.Azure.Commands.Network.Models.NetworkManager
     {
         public string SecurityType { get; set; }
 
+        public List<string> NetworkIntentPolicyBasedService { get; set; }
+
         public string DeleteExistingNSGs { get; set; }
     }
 }
