@@ -72,5 +72,4 @@
     <Copy SourceFiles="internal\Az.$(PsModuleName).internal.psm1" DestinationFolder="$(RepoArtifacts)$(Configuration)\Az.$(PsRootModuleName)\$(PsModuleName).Autorest\internal" />
     <Copy SourceFiles="@(UtilsFiles)" DestinationFiles="@(UtilsFiles->'$(RepoArtifacts)$(Configuration)\Az.$(PsRootModuleName)\$(PsModuleName).Autorest\utils\%(RecursiveDir)%(Filename)%(Extension)')" Condition="Exists('utils')"/>
   </Target>
-
 </Project>
