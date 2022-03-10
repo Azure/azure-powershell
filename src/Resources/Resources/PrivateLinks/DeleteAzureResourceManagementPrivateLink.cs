@@ -44,26 +44,45 @@ namespace Microsoft.Azure.Commands.Resources.PrivateLinks
             Mandatory = true,
             HelpMessage = Constants.HelpMessages.PrivateLinkName,
             Position = 1)]
+        [Alias("PrivateLinkName")]
         [ValidateNotNullOrEmpty]
-        public string PrivateLinkName { get; set; }
+        public string Name { get; set; }
+
+        [Parameter(ParameterSetName = Constants.ParameterSetNames.DeleteParameterSet, Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
         #endregion
 
         public override void ExecuteCmdlet()
         {
-            try
-            {
-                if (!string.IsNullOrEmpty(ResourceGroupName) && !string.IsNullOrEmpty(PrivateLinkName))
+            this.ConfirmAction(
+                this.Force,
+                string.Format("Are you sure you want to delete the following resource management private link: {0}", Name),
+                "Deleting the resource management private link...",
+                Name,
+                () =>
                 {
-                    ResourceManagementPrivateLinkClient.ResourceManagementPrivateLink.Delete(
-                        resourceGroupName: ResourceGroupName,
-                        rmplName: PrivateLinkName);
-                    WriteObject(true);
-                }
-            }
-            catch (Exception ex)
-            {
-                this.WriteExceptionError(ex);
-            }
+                    try
+                    {
+                        if (!string.IsNullOrEmpty(ResourceGroupName) && !string.IsNullOrEmpty(Name))
+                        {
+                            ResourceManagementPrivateLinkClient.ResourceManagementPrivateLink.Delete(
+                                resourceGroupName: ResourceGroupName,
+                                rmplName: Name);
+
+                            if (PassThru.IsPresent)
+                            {
+                                WriteObject(true);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        this.WriteExceptionError(ex);
+                    }
+                });
         }
     }
 }

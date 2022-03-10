@@ -24,7 +24,7 @@ The Remove-AzResourceManagementPrivateLink cmdlet deletes a specific resource ma
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzResourceManagementPrivateLink -ResourceGroupName PrivateLinkTestRG -PrivateLinkName NewPL
+PS C:\> Remove-AzResourceManagementPrivateLink -ResourceGroupName PrivateLinkTestRG -Name NewPL
 True
 ```
 
@@ -122,3 +122,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzResourceManagementPrivateLink](./Get-AzResourceManagementPrivateLink.md)

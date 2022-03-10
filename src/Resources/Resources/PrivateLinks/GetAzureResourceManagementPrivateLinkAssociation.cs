@@ -41,13 +41,21 @@ namespace Microsoft.Azure.Commands.Resources.PrivateLinks
         [ValidateNotNullOrEmpty]
         public string ManagementGroupId { get; set; } = null;
 
+        [Parameter(
+            ParameterSetName = Constants.ParameterSetNames.DeletePLAssociationParameterSet,
+            Mandatory = false,
+            HelpMessage = Constants.HelpMessages.PrivateLinkAssociationId,
+            Position = 1)]
+        [Alias("PrivateLinkAssociationId")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
         #endregion
 
         public override void ExecuteCmdlet()
         {
             try
             {
-                if (!string.IsNullOrEmpty(ManagementGroupId))
+                if (!string.IsNullOrEmpty(ManagementGroupId) && string.IsNullOrEmpty(Name))
                 {
                     var response = ResourceManagementPrivateLinkClient.PrivateLinkAssociation.Get(
                         groupId: ManagementGroupId);

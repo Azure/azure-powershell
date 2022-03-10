@@ -25,7 +25,7 @@ The Remove-AzResourceManagementPrivateLinkAssociation cmdlet deletes a specific 
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzResourceManagementPrivateLinkAssociation -ManagementGroupId 24f15700-370c-45bc-86a7-aee1b0c4eb8a -PrivateLinkAssociationId 1d7942d1-288b-48de-8d0f-2d2aa8e03ad4
+PS C:\> Remove-AzResourceManagementPrivateLinkAssociation -ManagementGroupId 24f15700-370c-45bc-86a7-aee1b0c4eb8a -Name 1d7942d1-288b-48de-8d0f-2d2aa8e03ad4
 
 
 True
@@ -125,3 +125,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzResourceManagementPrivateLinkAssociation](./Get-AzResourceManagementPrivateLinkAssociation.md)

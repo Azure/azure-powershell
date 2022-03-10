@@ -46,26 +46,36 @@ namespace Microsoft.Azure.Commands.Resources.PrivateLinks
             Mandatory = false,
             HelpMessage = Constants.HelpMessages.PrivateLinkName,
             Position = 1)]
+        [Alias("PrivateLinkName")]
         [ValidateNotNullOrEmpty]
-        public string PrivateLinkName { get; set; }
+        public string Name { get; set; }
         #endregion
 
         public override void ExecuteCmdlet()
         {
             try
             {
-                if (!string.IsNullOrEmpty(ResourceGroupName) && !string.IsNullOrEmpty(PrivateLinkName))
+                if (!string.IsNullOrEmpty(ResourceGroupName) && !string.IsNullOrEmpty(Name))
                 {
                     var response = ResourceManagementPrivateLinkClient.ResourceManagementPrivateLink.Get(
                         resourceGroupName: ResourceGroupName,
-                        rmplName: PrivateLinkName);
+                        rmplName: Name);
                     WriteObject(new PSResourceManagementPrivateLink(response));
                 }
-                else if (string.IsNullOrEmpty(ResourceGroupName) && string.IsNullOrEmpty(PrivateLinkName))
+                else if (string.IsNullOrEmpty(ResourceGroupName) && string.IsNullOrEmpty(Name))
                 {
                     //List all the private links in a subscription no parameters needed
                     var response = ResourceManagementPrivateLinkClient.ResourceManagementPrivateLink.List();
                     var items = response.Value.Select(resourceManagementPrivateLink => new PSResourceManagementPrivateLink(resourceManagementPrivateLink))
+                        .ToList();
+                    WriteObject(items);
+                }
+                else if (!string.IsNullOrEmpty(ResourceGroupName) && string.IsNullOrEmpty(Name))
+                {
+                    //List all the private links in a resource group
+                    var response = ResourceManagementPrivateLinkClient.ResourceManagementPrivateLink.List();
+                    var items = response.Value.Select(resourceManagementPrivateLink => new PSResourceManagementPrivateLink(resourceManagementPrivateLink))
+                        .Where(psResourceManagementPrivateLink => psResourceManagementPrivateLink.Id.Contains($"/resourceGroups/{ResourceGroupName}/"))
                         .ToList();
                     WriteObject(items);
                 }

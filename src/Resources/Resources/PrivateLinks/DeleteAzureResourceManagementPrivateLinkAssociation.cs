@@ -44,27 +44,45 @@ namespace Microsoft.Azure.Commands.Resources.PrivateLinks
             Mandatory = true,
             HelpMessage = Constants.HelpMessages.PrivateLinkAssociationId,
             Position = 1)]
+        [Alias("PrivateLinkAssociationId")]
         [ValidateNotNullOrEmpty]
-        public string PrivateLinkAssociationId { get; set; }
+        public string Name { get; set; }
 
+        [Parameter(ParameterSetName = Constants.ParameterSetNames.DeletePLAssociationParameterSet, Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
         #endregion
 
         public override void ExecuteCmdlet()
         {
-            try
-            {
-                 if (!string.IsNullOrEmpty(ManagementGroupId) && !string.IsNullOrEmpty(PrivateLinkAssociationId))
-                 {
-                     ResourceManagementPrivateLinkClient.PrivateLinkAssociation.Delete(
-                         groupId: ManagementGroupId,
-                         plaId: PrivateLinkAssociationId);
-                     WriteObject(true);
-                 }
-            }
-            catch (Exception ex)
-            {
-                this.WriteExceptionError(ex);
-            }
+            this.ConfirmAction(
+                this.Force,
+                string.Format("Are you sure you want to delete the following private link association: {0}", Name),
+                "Deleting the private link association...",
+                Name,
+                () =>
+                {
+                    try
+                    {
+                        if (!string.IsNullOrEmpty(ManagementGroupId) && !string.IsNullOrEmpty(Name))
+                        {
+                            ResourceManagementPrivateLinkClient.PrivateLinkAssociation.Delete(
+                                groupId: ManagementGroupId,
+                                plaId: Name);
+
+                            if (PassThru.IsPresent)
+                            {
+                                WriteObject(true);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        this.WriteExceptionError(ex);
+                    }
+                });
         }
     }
 }

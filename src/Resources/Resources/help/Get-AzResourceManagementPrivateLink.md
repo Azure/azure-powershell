@@ -25,7 +25,7 @@ The Get-AzResourceManagementPrivateLink cmdlet gets a specific resource manageme
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzResourceManagementPrivateLink -ResourceGroupName PrivateLinkTestRG -PrivateLinkName NewPL
+PS C:\> Get-AzResourceManagementPrivateLink -ResourceGroupName PrivateLinkTestRG -Name NewPL
 
 
 Id                         : /subscriptions/aeb49941-36c3-4e7c-9ffd-16ba89d33ec4/resourceGroups/PrivateLinkTestRG/provi
@@ -40,7 +40,7 @@ Get the resource management private link with the private endpoint connections a
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzResourceManagementPrivateLinks
+PS C:\> Get-AzResourceManagementPrivateLink
 
 
 Id                         : /subscriptions/aeb49941-36c3-4e7c-9ffd-16ba89d33ec4/resourceGroups/PrivateLinkTestRG/provi
@@ -59,6 +59,28 @@ PrivateEndpointConnections : {}
 ```
 
 Gets all of the resoure management private links at the subscription scope.
+
+### Example 3
+```powershell
+PS C:\> Get-AzResourceManagementPrivateLink -ResourceGroupName PrivateLinkTestRG
+
+
+Id                         : /subscriptions/aeb49941-36c3-4e7c-9ffd-16ba89d33ec4/resourceGroups/PrivateLinkTestRG/provi
+                             ders/Microsoft.Authorization/resourceManagementPrivateLinks/NewPL
+Type                       : Microsoft.Authorization/resourceManagementPrivateLinks
+Name                       : NewPL
+Location                   : centralus
+PrivateEndpointConnections : {}
+
+Id                         : /subscriptions/aeb49941-36c3-4e7c-9ffd-16ba89d33ec4/resourceGroups/PrivateLinkTestRG/provi
+                             ders/Microsoft.Authorization/resourceManagementPrivateLinks/NewPL2
+Type                       : Microsoft.Authorization/resourceManagementPrivateLinks
+Name                       : NewPL2
+Location                   : centralus
+PrivateEndpointConnections : {}
+```
+
+Gets all of the resoure management private links at the resource group scope.
 
 ## PARAMETERS
 
@@ -152,3 +174,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Remove-AzResourceManagementPrivateLink](./Remove-AzResourceManagementPrivateLink.md)
