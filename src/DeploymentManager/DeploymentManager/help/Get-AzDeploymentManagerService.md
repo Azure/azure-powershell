@@ -53,21 +53,21 @@ You can modify this object locally, and then apply changes to the service by usi
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzDeploymentManagerService -ResourceGroupName ContosoResourceGroup -ServiceTopologyName ContosoServiceTopology -Name ContosoService1
+Get-AzDeploymentManagerService -ResourceGroupName ContosoResourceGroup -ServiceTopologyName ContosoServiceTopology -Name ContosoService1
 ```
 
 This command gets a service named ContosoService1 in a service topology named ContosoServiceTopology in the ContosoResourceGroup.
 
 ### Example 2: Get a service using the resource identifier.
 ```powershell
-PS C:\> Get-AzDeploymentManagerService -ResourceId "/subscriptions/subscriptionId/resourcegroups/ContosoResourceGroup/providers/Microsoft.DeploymentManager/serviceTopologies/ContosoServiceTopology/services/ContosoService1"
+Get-AzDeploymentManagerService -ResourceId "/subscriptions/subscriptionId/resourcegroups/ContosoResourceGroup/providers/Microsoft.DeploymentManager/serviceTopologies/ContosoServiceTopology/services/ContosoService1"
 ```
 
 This command gets a service named ContosoService1 in a service topology named ContosoServiceTopology in the ContosoResourceGroup.
 
 ### Example 3: Get a service using the service object.
 ```powershell
-PS C:\> Get-AzDeploymentManagerService -InputObject $serviceObject
+Get-AzDeploymentManagerService -InputObject $serviceObject
 ```
 
 This command gets a service whose name, service topology name and ResourceGroup match the Name, ServiceTopologyName and ResourceGroupName properties of the $serviceObject, respectively.

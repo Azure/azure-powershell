@@ -24,8 +24,8 @@ The **New-AzPowerBIWorkspaceCollection** cmdlet creates a Power BI workspace col
 ## EXAMPLES
 
 ### Example 1: Create a workspace collection
-```
-PS C:\>New-AzPowerBIWorkspaceCollection -ResourceGroupName "ResourceGroup17" -WorkspaceCollectionName "WCN11" -Location "Japan West"
+```powershell
+New-AzPowerBIWorkspaceCollection -ResourceGroupName "ResourceGroup17" -WorkspaceCollectionName "WCN11" -Location "Japan West"
 ```
 
 This command creates a workspace collection named WCN11 in the specified resource group in the specified location.

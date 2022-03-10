@@ -23,8 +23,8 @@ The **Remove-AzRecoveryServicesAsrStorageClassificationMapping** cmdlet deletes 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $currentJob = Remove-AzRecoveryServicesAsrStorageClassificationMapping -StorageClassificationMapping $StorageClassificationMapping
+```powershell
+$currentJob = Remove-AzRecoveryServicesAsrStorageClassificationMapping -StorageClassificationMapping $StorageClassificationMapping
 ```
 
 Starts the deletion of specified storage classification mapping and returns the ASR job used to track the operation.

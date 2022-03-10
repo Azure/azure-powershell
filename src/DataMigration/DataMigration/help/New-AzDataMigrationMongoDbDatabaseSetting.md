@@ -25,9 +25,11 @@ The output is a key value pair with name of collection and value of the setting,
 ## EXAMPLES
 
 ### Example 1
+```powershell
+New-AzDataMigrationMongoDbDatabaseSetting  -Name mycollection -RU 1000 -CollectionSetting @($coll1, $coll2)
 ```
-PS C:\> New-AzDataMigrationMongoDbDatabaseSetting  -Name mycollection -RU 1000 -CollectionSetting @($coll1, $coll2)
 
+```output
 Name Setting
 ---- -------
 test Microsoft.Azure.Management.DataMigration.Models.MongoDbDatabaseSettings
