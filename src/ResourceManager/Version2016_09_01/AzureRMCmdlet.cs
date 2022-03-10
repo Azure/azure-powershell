@@ -641,17 +641,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
         private void WriteDebugSender(object sender, StreamEventArgs args)
         {
-            WriteDebug(args.Message);
+            WriteDebugWithTimestamp(args.Message);
         }
 
         private void WriteVerboseSender(object sender, StreamEventArgs args)
         {
-            WriteVerbose(args.Message);
+            WriteVerboseWithTimestamp(args.Message);
         }
 
         private void WriteWarningSender(object sender, StreamEventArgs args)
         {
-            WriteWarning(args.Message);
+            WriteWarningWithTimestamp(args.Message);
         }
 
         private void EnqueueDebugSender(object sender, StreamEventArgs args)
