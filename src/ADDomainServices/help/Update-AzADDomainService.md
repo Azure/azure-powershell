@@ -48,8 +48,7 @@ The update call only supports the properties listed in the PATCH body.
 
 ### Example 1: Update AzADDomainService By ResourceGroupName and Name
 ```powershell
-$ADDomainSetting = New-AzADDomainServiceDomainSecuritySettingObject -TlsV1 Disabled
-Update-AzADDomainService -Name youriADdomain -ResourceGroupName youriADdomain -DomainSecuritySetting $ADDomainSetting
+Update-AzADDomainService -Name youriADdomain -ResourceGroupName youriADdomain -DomainSecuritySettingTlsV1 Disabled
 ```
 
 ```output
@@ -63,8 +62,7 @@ Update AzADDomainService By ResourceGroupName and Name
 ### Example 2: Update AzADDomainService By InputObject
 ```powershell
 $getAzAddomain = Get-AzADDomainService -Name youriADdomain -ResourceGroupName youriADdomain
-$ADDomainSetting = New-AzADDomainServiceDomainSecuritySettingObject -TlsV1 Disabled
-Update-AzADDomainService -InputObject $getAzAddomain -DomainSecuritySetting $ADDomainSetting
+Update-AzADDomainService -InputObject $getAzAddomain -DomainSecuritySettingTlsV1 Disabled
 ```
 
 ```output
