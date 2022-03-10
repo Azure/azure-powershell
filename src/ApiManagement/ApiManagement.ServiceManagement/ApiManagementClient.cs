@@ -916,6 +916,36 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 api.ApiVersion = apiVersion;
             }
 
+            if (!string.IsNullOrWhiteSpace(apiType))
+            {
+                api.ApiType = apiType;
+            }
+
+            if (!string.IsNullOrWhiteSpace(termsOfServiceUrl))
+            {
+                api.TermsOfServiceUrl = termsOfServiceUrl;
+            }
+
+            if (!string.IsNullOrWhiteSpace(contactEmail) || !string.IsNullOrWhiteSpace(contactName) || !string.IsNullOrWhiteSpace(contactUrl))
+            {
+                api.Contact = new ApiContactInformation
+                {
+                    Email = contactEmail,
+                    Name = contactName,
+                    Url = contactUrl
+                };
+            }
+
+            if (!string.IsNullOrWhiteSpace(licenseName) || !string.IsNullOrWhiteSpace(licenseUrl))
+            {
+                api.License = new ApiLicenseInformation
+                {
+                    Name = licenseName,
+                    Url = licenseUrl
+                };
+            }
+
+
             var getResponse = Client.Api.CreateOrUpdate(context.ResourceGroupName, context.ServiceName, id, api, null);
 
             return Mapper.Map<PsApiManagementApi>(getResponse);
@@ -1043,6 +1073,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             if (!string.IsNullOrEmpty(apiType))
             {
                 api.ApiType = apiType;
+            }
+
+            if (!string.IsNullOrWhiteSpace(termsOfServiceUrl))
+            {
+                api.TermsOfServiceUrl = termsOfServiceUrl;
             }
 
             if (!string.IsNullOrWhiteSpace(contactEmail) || !string.IsNullOrWhiteSpace(contactName) || !string.IsNullOrWhiteSpace(contactUrl))
