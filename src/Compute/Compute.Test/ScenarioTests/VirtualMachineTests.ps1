@@ -108,7 +108,6 @@ function Test-VirtualMachine
         # $p.StorageProfile.OSDisk = $null;
         $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
 
-        # $imgRef = Get-DefaultCRPImage -loc $loc;
         $imgRef = Create-ComputeVMImageObject -loc "eastus2euap" -publisherName "MicrosoftWindowsServer" -offer "WindowsServer" -skus "2012-R2-Datacenter" -version "4.127.20180315";
         $p = ($imgRef | Set-AzVMSourceImage -VM $p);
 
@@ -159,9 +158,6 @@ function Test-VirtualMachine
         Assert-AreEqual $vm1.OSProfile.ComputerName $computerName;
         Assert-AreEqual $vm1.HardwareProfile.VmSize $vmsize;
 
-        # try comment out Assert-AreEqual $true $vm1.DiagnosticsProfile.BootDiagnostics.Enabled "error message fail assert boot diag"; #adam, here? yes this is the first error for MAnaged. 
-        # commenting out same as above as this should also fail Assert-AreEqual $stoaccount.PrimaryEndpoints.Blob $vm1.DiagnosticsProfile.BootDiagnostics.StorageUri;
-
         Assert-AreEqual "BGInfo" $vm1.Extensions[0].VirtualMachineExtensionType
         Assert-AreEqual "Microsoft.Compute" $vm1.Extensions[0].Publisher
 
@@ -202,9 +198,6 @@ function Test-VirtualMachine
         Assert-AreEqual $vm2.OSProfile.ComputerName $computerName;
         Assert-AreEqual $vm2.HardwareProfile.VmSize $vmsize;
         Assert-NotNull $vm2.Location;
-
-        # removing for managed Assert-AreEqual $true $vm2.DiagnosticsProfile.BootDiagnostics.Enabled "second boot diag fail"; # addam , or here? 
-        # removing too Assert-AreEqual $stoaccount.PrimaryEndpoints.Blob $vm2.DiagnosticsProfile.BootDiagnostics.StorageUri;
 
         $vms = Get-AzVM -ResourceGroupName $rgname;
         $a = $vms | Out-String;
@@ -345,9 +338,7 @@ Test Virtual Machines
 function Test-VirtualMachineInEdgeZone
 {
     $ResourceGroup = Get-ComputeTestResourceName;
-    # adam$LocationName = "westus";
     $LocationName = "eastus2euap";
-    #adam $EdgeZone = "microsoftlosangeles1";
     $EdgeZone = "microsoftrrdclab1";
     $VMName = "MyVM";
 
@@ -2905,7 +2896,6 @@ function Test-VirtualMachineReapply
 
         $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
 
-        # adam $imgRef = Get-DefaultCRPImage -loc $loc;
         $imgRef = Create-ComputeVMImageObject -loc "eastus" -publisherName "MicrosoftWindowsServerHPCPack" -offer "WindowsServerHPCPack" -skus "2012R2" -version "4.5.5198";
 
 
@@ -4060,7 +4050,6 @@ function Test-VirtualMachineRemoteDesktop
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
-        #adam $vmsize = 'Standard_DS2_v2';
         $vmSize = "Standard_E64s_v3";
         $vmname = 'vm' + $rgname;
 
@@ -4086,16 +4075,11 @@ function Test-VirtualMachineRemoteDesktop
 
         $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
 
-        # adam $imgRef = Get-DefaultCRPImage -loc $loc;
-        # $imgRef = Create-ComputeVMImageObject -loc "southeastasia" -publisherName "MicrosoftWindowsServer" -offer "WindowsServer" -skus "2019-Datacenter" -version "17763.1637.2012040632";
         $imgRef = Create-ComputeVMImageObject -loc "eastus" -publisherName "MicrosoftWindowsServerHPCPack" -offer "WindowsServerHPCPack" -skus "2012R2" -version "4.5.5198";
 
         $p = ($imgRef | Set-AzVMSourceImage -VM $p);
 
         # Virtual Machine
-        # adam Assert-ThrowsContains { `
-            #New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p; } `
-            #"'Microsoft.Compute/UltraSSD' feature is not enabled for this subscription.";
 
         $p.AdditionalCapabilities.UltraSSDEnabled = $false;
         New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
@@ -4463,7 +4447,7 @@ function Test-SetAzVMOperatingSystem
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
 
-        $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -EnableAutoUpdate:$false -PatchMode "Manual"; # adam aedit
+        $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -EnableAutoUpdate:$false -PatchMode "Manual";
         $p2 = Set-AzVMOperatingSystem -VM $p2 -Windows -ComputerName $computerName -Credential $cred -EnableAutoUpdate;
         $p3 = Set-AzVMOperatingSystem -VM $p3 -Windows -ComputerName $computerName -Credential $cred -EnableAutoUpdate -PatchMode "AutomaticByPlatform";
 
@@ -4698,7 +4682,6 @@ function Test-VirtualMachineBootDiagnostics
         # Windows OS test case. 
         $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
 
-        # adam $imgRef = Get-DefaultCRPImage -loc $loc;
         $imgRef = Create-ComputeVMImageObject -loc "eastus" -publisherName "MicrosoftWindowsServerHPCPack" -offer "WindowsServerHPCPack" -skus "2012R2" -version "4.5.5198";
 
 
