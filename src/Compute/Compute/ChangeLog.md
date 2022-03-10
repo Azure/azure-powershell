@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added `AutomaticRepairAction` string parameter to the `New-AzVmssConfig` and `Update-AzVmss` cmdlets.
 
 ## Version 4.24.0
 * Upgraded Compute .NET SDK package reference to version 52.0.0

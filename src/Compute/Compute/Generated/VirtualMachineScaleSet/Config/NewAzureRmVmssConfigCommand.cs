@@ -290,7 +290,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "Type of repair action (replace, restart, reimage) that will be used for repairing unhealthy virtual machines in the scale set. Default value is replace.",
             ValueFromPipelineByPropertyName = true)]
         [PSArgumentCompleter("Replace", "Restart", "Reimage")]
-        public string AutomaticRepairsAction { get; set; }
+        public string AutomaticRepairAction { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -702,13 +702,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vVirtualMachineProfile.UserData = this.UserData;
             }
 
-            if (this.IsParameterBound(c => c.AutomaticRepairsAction))
+            if (this.IsParameterBound(c => c.AutomaticRepairAction))
             {
                 if (vAutomaticRepairsPolicy == null)
                 {
                     vAutomaticRepairsPolicy = new AutomaticRepairsPolicy();
                 }
-                vAutomaticRepairsPolicy.RepairAction = this.AutomaticRepairsAction;
+                vAutomaticRepairsPolicy.RepairAction = this.AutomaticRepairAction;
             }
 
             var vVirtualMachineScaleSet = new PSVirtualMachineScaleSet
