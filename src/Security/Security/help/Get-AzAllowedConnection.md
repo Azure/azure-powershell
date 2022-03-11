@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
 online version: https://docs.microsoft.com/powershell/module/az.security/Get-AzAllowedConnection
@@ -37,7 +37,10 @@ Gets the list of all possible traffic between resources for the subscription and
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzAllowedConnection
+Get-AzAllowedConnection
+```
+
+```output
 Id:	/subscriptions/3eeab341-f466-499c-a8be-85427e154baf7612f869/resourceGroups/myService1/providers/Microsoft.Security/locations/centralus/allowedConnections/virtualMachines
 Name:	Internal
 Type:	Microsoft.Security/locations/allowedConnections
@@ -47,7 +50,10 @@ ConnectableResources:	/subscriptions/3eeab341-f466-499c-a8be-85427e154baf7612f86
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzAllowedConnection -ResourceGroupName "myService1" -Location "centralus" -Name "Internal"
+Get-AzAllowedConnection -ResourceGroupName "myService1" -Location "centralus" -Name "Internal"
+```
+
+```output
 Id:	/subscriptions/3eeab341-f466-499c-a8be-85427e154baf7612f869/resourceGroups/myService1/providers/Microsoft.Security/locations/centralus/allowedConnections/Internal
 Name:	virtualMachines
 Type:	Microsoft.Security/locations/allowedConnections
