@@ -35,7 +35,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
     /// </summary>
     [CmdletOutputBreakingChange(
         deprecatedCmdletOutputTypeName: typeof(AzureSqlManagedInstanceModel),
+<<<<<<< Updated upstream
         deprecateByVersion: "4.0.0",
+=======
+        deprecateByVersion: "3.8.0",
+>>>>>>> Stashed changes
         DeprecatedOutputProperties = new String[] { "BackupStorageRedundancy" },
         NewOutputProperties = new String[] { "CurrentBackupStorageRedundancy", "RequestedBackupStorageRedundancy" })]
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstance",
@@ -266,6 +270,16 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         [Parameter(Mandatory = false, HelpMessage = "Use zone redundant storage")]
         public SwitchParameter ZoneRedundant { get; set; }
 
+        // <summary>
+        /// List of user assigned identities.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Type of Service Principal to be used. Possible values are SystemAssigned and None.")]
+        [ValidateSet("None", "SystemAssigned")]
+        [PSArgumentCompleter("SystemAssigned", "None")]
+        public string ServicePrincipalType { get; set; }
+
+
         /// <summary>
         /// Get the instance to update
         /// </summary>
@@ -352,6 +366,10 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             updateData[0].SubnetId = this.SubnetId ?? model.FirstOrDefault().SubnetId;
             updateData[0].ZoneRedundant = this.ZoneRedundant.IsPresent ? this.ZoneRedundant.ToBool() : (bool?)null;
             updateData[0].RequestedBackupStorageRedundancy = this.BackupStorageRedundancy ?? updateData[0].CurrentBackupStorageRedundancy;
+<<<<<<< Updated upstream
+=======
+            updateData[0].ServicePrincipal = ResourceServicePrincipalHelper.GetServicePrincipalObjectFromType(this.ServicePrincipalType ?? null); 
+>>>>>>> Stashed changes
             return updateData;
         }
 
