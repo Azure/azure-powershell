@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.dll-Help.xml
 Module Name: Az.ServiceBus
 online version: https://docs.microsoft.com/powershell/module/az.servicebus/remove-azservicebusmigration
@@ -37,7 +37,7 @@ The **Remove-AzServiceBusMigration** cmdlet deletes the Migration configuration 
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzServiceBusMigration -ResourceGroupName ResourceGroup -Name TestingNamespaceStandardMigration
+Remove-AzServiceBusMigration -ResourceGroupName ResourceGroup -Name TestingNamespaceStandardMigration
 ```
 
 Deletes the 'TestingNamespaceStandardMigration' migration configuration
