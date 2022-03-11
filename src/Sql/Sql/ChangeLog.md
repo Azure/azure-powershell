@@ -17,7 +17,6 @@
     * Overview of change #1
         - Additional information about change #1
 -->
-
 ## Upcoming Release
 * [Breaking change] Removed `Get-AzSqlDatabaseTransparentDataEncryptionActivity`
 * Added property `CurrentBackupStorageRedundancy` and `RequestedBackupStorageRedundancy` in  the outputs of Managed Instance CRUD commands
