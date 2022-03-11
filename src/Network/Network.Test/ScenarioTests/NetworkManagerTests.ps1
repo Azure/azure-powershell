@@ -809,3 +809,28 @@ function Test-NetworkManagerScopeConnectionCRUD
         Clean-ResourceGroup $rgname
 	}
 }
+
+function Test-NetworkManagerSubscriptionConnectionCRUD
+{
+    # Setup
+    $networkManagerConnectionName = Get-ResourceName
+    $networkManagerId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/PSTestResources/providers/Microsoft.Network/networkManagers/PSTestNM"
+
+    try{
+        New-AzNetworkManagerSubscriptionConnection -Name $networkManagerConnectionName -NetworkManagerID $networkManagerId -Description "SampleDescription" 
+
+        $networkManagerConnection = Get-AzNetworkManagerSubscriptionConnection -Name $networkManagerConnectionName
+        Assert-NotNull $networkManagerConnection;
+        Assert-AreEqual $networkManagerConnectionName $networkManagerConnection.Name;
+
+        $networkManagerConnection.Description = "A Different Description."
+        $newNetworkManagerConnection = Set-AzNetworkManagerSubscriptionConnection -NetworkManagerSubscriptionConnection $networkManagerConnection
+        Assert-NotNull $newNetworkManagerConnection;
+        Assert-AreEqual "A Different Description." $newNetworkManagerConnection.Description;
+        Assert-AreEqual $networkManagerConnectionName $newNetworkManagerConnection.Name;
+
+        $job = Remove-AzNetworkManagerSubscriptionConnection -Name $networkManagerConnectionName -PassThru -Force -AsJob;
+        $job | Wait-Job;
+        $removeResult = $job | Receive-Job;
+	}
+}
