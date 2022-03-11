@@ -1,3 +1,10 @@
+## 7.3.1 - March 2022
+#### Az.Accounts
+* Changed target framework of AuthenticationAssemblyLoadContext to netcoreapp2.1 [#17428]
+
+#### Az.Compute
+* Updated New-AzVM feature for `vCPUsAvailable` and `vCPUsPerCore` parameters. Cmdlets will not try to use the new `VMCustomizationPreview` feature if the user does not have access to that feature. [#17370]
+
 ## 7.3.0 - March 2022
 #### Az.Accounts
 * Fixed the issue that authorization does not work in customized environment [#17157]
