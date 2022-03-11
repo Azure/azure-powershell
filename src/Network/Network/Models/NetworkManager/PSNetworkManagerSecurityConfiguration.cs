@@ -17,6 +17,7 @@
 namespace Microsoft.Azure.Commands.Network.Models.NetworkManager
 {
     using System.Collections;
+    using System.Collections.Generic;
     using WindowsAzure.Commands.Common.Attributes;
 
     public class PSNetworkManagerSecurityConfiguration : PSNetworkManagerBaseResource

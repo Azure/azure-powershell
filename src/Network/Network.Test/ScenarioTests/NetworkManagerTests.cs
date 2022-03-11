@@ -46,6 +46,14 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        public void TestNetworkManagerStaticMemberCRUD()
+        {
+            TestRunner.RunTestScript("Test-NetworkManagerStaticMemberCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestNetworkManagerConnectivityConfigurationCRUD()
         {
             TestRunner.RunTestScript("Test-NetworkManagerConnectivityConfigurationCRUD");

@@ -615,6 +615,9 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Get-AzNetworkManagerStaticMember', 
                'Remove-AzNetworkManagerStaticMember',
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 7cee8b20bf (adding changes needed for testing:)
                'Set-AzNetworkManagerStaticMember',
 	           'New-AzNetworkManagerSubscriptionConnection',
                'Get-AzNetworkManagerSubscriptionConnection', 
@@ -624,6 +627,7 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Get-AzNetworkManagerScopeConnection', 
                'Remove-AzNetworkManagerScopeConnection',
                'Set-AzNetworkManagerScopeConnection'
+<<<<<<< HEAD
                
 =======
                'New-AzNetworkManagerGroupMembersItem', 'New-AzNetworkManagerHub', 
@@ -631,6 +635,8 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
 >>>>>>> 53097c2e2b (Bump version for Az.Network (#16227))
 =======
                'Set-AzNetworkManagerStaticMember'
+=======
+>>>>>>> 7cee8b20bf (adding changes needed for testing:)
                
 >>>>>>> 7640126025 (add helper)
 
@@ -745,6 +751,9 @@ PrivateData = @{
     - ''Get-AzNetworkManagerStaticMember''
     - ''Remove-AzNetworkManagerStaticMember''
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 7cee8b20bf (adding changes needed for testing:)
     - ''Set-AzNetworkManagerStaticMember''
     - ''New-AzNetworkManagerSubscriptionConnection''
     - ''Get-AzNetworkManagerSubscriptionConnection''
@@ -753,6 +762,7 @@ PrivateData = @{
     - ''New-AzNetworkManagerScopeConnection''
     - ''Get-AzNetworkManagerScopeConnection''
     - ''Remove-AzNetworkManagerScopeConnection''
+<<<<<<< HEAD
     - ''Set-AzNetworkManagerScopeConnection'''
 =======
     - ''New-AzNetworkManagerSecurityGroupItem'' 
@@ -763,6 +773,9 @@ PrivateData = @{
 =======
     - ''Set-AzNetworkManagerStaticMember'''
 >>>>>>> 7640126025 (add helper)
+=======
+    - ''Set-AzNetworkManagerScopeConnection''
+>>>>>>> 7cee8b20bf (adding changes needed for testing:)
 
         # Prerelease string of this module
         Prerelease = 'preview'

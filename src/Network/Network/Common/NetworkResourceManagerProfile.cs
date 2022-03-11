@@ -1525,6 +1525,9 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<ANM.PSNetworkManagerSecurityGroupItem, MNM.NetworkManagerSecurityGroupItem>();
                 cfg.CreateMap<ANM.PSNetworkManagerSecurityRuleCollection, MNM.RuleCollection>();
                 cfg.CreateMap<ANM.PSNetworkManagerSecurityUserRule, MNM.UserRule>();
+                cfg.CreateMap<ANM.PSNetworkManagerSecurityUserRule, MNM.UserRule>();
+                cfg.CreateMap<ANM.PSNetworkManagerScopeConnection, MNM.ScopeConnection>();
+                cfg.CreateMap<ANM.PSNetworkManagerConnection, MNM.NetworkManagerConnection>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.NetworkManager, ANM.PSNetworkManager>();
@@ -1571,6 +1574,8 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.NetworkManagerSecurityGroupItem, ANM.PSNetworkManagerSecurityGroupItem>();
                 cfg.CreateMap<MNM.RuleCollection, ANM.PSNetworkManagerSecurityRuleCollection>();
                 cfg.CreateMap<MNM.UserRule, ANM.PSNetworkManagerSecurityUserRule>();
+                cfg.CreateMap<MNM.ScopeConnection, ANM.PSNetworkManagerScopeConnection>();
+                cfg.CreateMap<MNM.NetworkManagerConnection, ANM.PSNetworkManagerConnection>();
             });
 
             _mapper = config.CreateMapper();
