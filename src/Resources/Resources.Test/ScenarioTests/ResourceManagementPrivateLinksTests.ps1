@@ -136,3 +136,22 @@ function Test-GetResourceManagementPrivateLinkAssociations
     Assert-AreEqual $properties.PublicNetworkAccess $expectedPublicNetworkAccess
     Assert-AreEqual $properties.PrivateLink $expectedPrivateLinkResourceId
 }
+
+function Test-GetResourceManagementPrivateLinkAssociation
+{
+    $getresponse = Get-AzPrivateLinkAssociation -ManagementGroupId 24f15700-370c-45bc-86a7-aee1b0c4eb8a -Name 1d7942d1-288b-48de-8d0f-2d2aa8e03ad4
+    $expectedPublicNetworkAccess = "Enabled"
+    $expectedPrivateLinkResourceId = "/subscriptions/6dbb5850-64b4-49c0-ba85-d38f089c6fa4/resourceGroups/ARMPrivateLinkRG/providers/Microsoft.Authorization/resourceManagementPrivateLinks/DeepDiveRMPL"
+    $expectedPrivateLinkAssociationId = "1d7942d1-288b-48de-8d0f-2d2aa8e03ad4"
+    $expectedType = "Microsoft.Authorization/privateLinkAssociations"
+
+    Assert-NotNull $getresponse
+    Assert-AreEqual @($getresponse).Count 1
+
+    $properties = @($getresponse)[0].Properties | ConvertFrom-Json
+
+    Assert-AreEqual @($getresponse)[0].Type $expectedType
+    Assert-AreEqual @($getresponse)[0].Name $expectedPrivateLinkAssociationId
+    Assert-AreEqual $properties.PublicNetworkAccess $expectedPublicNetworkAccess
+    Assert-AreEqual $properties.PrivateLink $expectedPrivateLinkResourceId
+}

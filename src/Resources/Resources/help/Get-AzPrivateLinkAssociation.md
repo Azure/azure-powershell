@@ -49,6 +49,24 @@ Properties : {"privateLink":"/subscriptions/aeb49941-36c3-4e7c-9ffd-16ba89d33ec4
 
 Get all the private link associations at the managment group scope.
 
+### Example 2
+```powershell
+PS C:\>  Get-AzPrivateLinkAssociation -ManagementGroupId fc096d27-0434-4460-a3ea-110df0422a2d -Name 1d7942d1-288b-48de-8d0f-2d2aa8e03ad4 | fl
+
+
+
+Id         : /providers/Microsoft.Management/managementGroups/fc096d27-0434-4460-a3ea-110df0422a2d/providers/Microsoft.
+             Authorization/privateLinkAssociations/1d7942d1-288b-48de-8d0f-2d2aa8e03ad4
+Type       : Microsoft.Authorization/privateLinkAssociations
+Name       : 1d7942d1-288b-48de-8d0f-2d2aa8e03ad4
+Properties : {"privateLink":"/subscriptions/aeb49941-36c3-4e7c-9ffd-16ba89d33ec4/resourceGroups/nrp-validate/providers/
+             Microsoft.Authorization/resourceManagementPrivateLinks/DeepDiveRMPL","publicNetworkAc
+             cess":"Enabled","tenantID":"fc096d27-0434-4460-a3ea-110df0422a2d","scope":"/providers/Microsoft.Management
+             /managementGroups/fc096d27-0434-4460-a3ea-110df0422a2d"}
+```
+
+Get the specific private link associations at the managment group scope.
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -76,6 +94,21 @@ Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The private link association Id.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: PrivateLinkAssociationId
+
+Required: False
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

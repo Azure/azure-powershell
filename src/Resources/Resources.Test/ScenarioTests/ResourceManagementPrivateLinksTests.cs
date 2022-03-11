@@ -57,5 +57,12 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-GetResourceManagementPrivateLinkAssociations");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetResourceManagementPrivateLinkAssociation()
+        {
+            TestRunner.RunTestScript("Test-GetResourceManagementPrivateLinkAssociation");
+        }
     }
 }

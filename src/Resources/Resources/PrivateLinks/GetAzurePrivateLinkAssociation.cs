@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Resources.PrivateLinks
         public string ManagementGroupId { get; set; } = null;
 
         [Parameter(
-            ParameterSetName = Constants.ParameterSetNames.DeletePLAssociationParameterSet,
+            ParameterSetName = Constants.ParameterSetNames.GetPLAssociationParameterSet,
             Mandatory = false,
             HelpMessage = Constants.HelpMessages.PrivateLinkAssociationId,
             Position = 1)]
@@ -60,6 +60,15 @@ namespace Microsoft.Azure.Commands.Resources.PrivateLinks
                     var response = ResourceManagementPrivateLinkClient.PrivateLinkAssociation.Get(
                         groupId: ManagementGroupId);
                     var items = response.Value.Select(privateLinkAssociation => new PSResourceManagementPrivateLinkAssociation(privateLinkAssociation))
+                        .ToList();
+                    WriteObject(items);
+                }
+                else if (!string.IsNullOrEmpty(ManagementGroupId) && !string.IsNullOrEmpty(Name))
+                {
+                    var response = ResourceManagementPrivateLinkClient.PrivateLinkAssociation.Get(
+                        groupId: ManagementGroupId);
+                    var items = response.Value.Select(privateLinkAssociation => new PSResourceManagementPrivateLinkAssociation(privateLinkAssociation))
+                        .Where(privateLinkAssociation => privateLinkAssociation.Name.Contains(Name))
                         .ToList();
                     WriteObject(items);
                 }
