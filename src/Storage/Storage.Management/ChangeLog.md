@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.3.1
 * Supported create/upgrade storage account with AllowedCopyScope
     -  `New-AzStorageAccount`
     -  `Set-AzStorageAccount`
