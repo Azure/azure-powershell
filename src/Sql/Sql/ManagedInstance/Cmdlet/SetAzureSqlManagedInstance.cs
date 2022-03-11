@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.Common;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
@@ -25,13 +26,18 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter;
 using Microsoft.Azure.Commands.Sql.ManagedInstance.Model;
 using Microsoft.Azure.Management.Sql.Models;
-using System;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
 {
     /// <summary>
     /// Defines the Set-AzSqlInstance cmdlet
     /// </summary>
+    [CmdletOutputBreakingChange(
+        deprecatedCmdletOutputTypeName: typeof(AzureSqlManagedInstanceModel),
+        deprecateByVersion: "4.0.0",
+        DeprecatedOutputProperties = new String[] { "BackupStorageRedundancy" },
+        NewOutputProperties = new String[] { "CurrentBackupStorageRedundancy", "RequestedBackupStorageRedundancy" })]
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstance",
         DefaultParameterSetName = SetByNameAndResourceGroupParameterSet,
         SupportsShouldProcess = true),
@@ -241,6 +247,14 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public string IdentityType { get; set; }
 
         /// <summary>
+        /// Gets or sets the managed instance backup storage redundancy
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The Backup storage redundancy used to store backups for the Sql Azure Managed Instance. Options are: Local, Zone and Geo ")]
+        [ValidateSet("Local", "Zone", "Geo", "GeoZone")]
+        public string BackupStorageRedundancy { get; set; }
+
+        /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
@@ -337,6 +351,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             updateData[0].KeyId = this.KeyId ?? updateData[0].KeyId;
             updateData[0].SubnetId = this.SubnetId ?? model.FirstOrDefault().SubnetId;
             updateData[0].ZoneRedundant = this.ZoneRedundant.IsPresent ? this.ZoneRedundant.ToBool() : (bool?)null;
+            updateData[0].RequestedBackupStorageRedundancy = this.BackupStorageRedundancy ?? updateData[0].CurrentBackupStorageRedundancy;
             return updateData;
         }
 
@@ -387,6 +402,18 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                     {
                         return;
                     }
+                }
+            }
+
+            if (string.Equals(this.BackupStorageRedundancy, "Geo", StringComparison.OrdinalIgnoreCase))
+            {
+                ModelAdapter = InitModelAdapter();
+                var existingManagedInstance = ModelAdapter.GetManagedInstance(this.ResourceGroupName, this.Name);
+                if (existingManagedInstance.CurrentBackupStorageRedundancy != "Geo" && !Force.IsPresent && !ShouldContinue(
+                    string.Format(CultureInfo.InvariantCulture, Properties.Resources.DoYouWantToProceed, this.Name),
+                    string.Format(CultureInfo.InvariantCulture, Properties.Resources.BackupRedundancyChosenIsGeoWarning, this.Name)))
+                {
+                    return;
                 }
             }
 
