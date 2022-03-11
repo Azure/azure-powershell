@@ -28,8 +28,8 @@ The **New-AzWebAppSlot** cmdlet creates an Azure Web App Slot in a given a resou
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> New-AzWebAppSlot -ResourceGroupName Default-Web-WestUS -Name "ContosoSite" -AppServicePlan "ContosoServicePlan" -Slot "Slot001"
+```powershell
+New-AzWebAppSlot -ResourceGroupName Default-Web-WestUS -Name "ContosoSite" -AppServicePlan "ContosoServicePlan" -Slot "Slot001"
 ```
 
 This command creates a Slot named Slot001 under an existing Web App names ContosoSite in the existing resource group named Default-Web-WestUS in data center West US.

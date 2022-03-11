@@ -31,8 +31,8 @@ The **Remove-AzAppServicePlan** cmdlet removes an Azure App Service plan.
 ## EXAMPLES
 
 ### Example 1: Remove an App Service plan
-```
-PS C:\>Remove-AzAppServicePlan -ResourceGroupName "Default-Web-WestUS" -Name "ContosoASP"
+```powershell
+Remove-AzAppServicePlan -ResourceGroupName "Default-Web-WestUS" -Name "ContosoASP"
 ```
 
 This command removes the Azure App Service plan named ContosoASP that belongs to the resource group named Default-Web-WestUS.

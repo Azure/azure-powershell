@@ -55,6 +55,13 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetBackupStorageRedundancy()
+        {
+            RunPowerShellTest("Test-SetRedundancy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveManagedInstance()
         {
             RunPowerShellTest("Test-RemoveManagedInstance");

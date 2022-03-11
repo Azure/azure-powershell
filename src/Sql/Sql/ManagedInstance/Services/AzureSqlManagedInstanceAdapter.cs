@@ -252,6 +252,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
             managedInstance.InstancePoolName = resp.InstancePoolId != null ?
                 new ResourceIdentifier(resp.InstancePoolId).ResourceName : null;
             managedInstance.MinimalTlsVersion = resp.MinimalTlsVersion;
+            managedInstance.BackupStorageRedundancy = resp.CurrentBackupStorageRedundancy;
             managedInstance.RequestedBackupStorageRedundancy = resp.RequestedBackupStorageRedundancy;
             managedInstance.CurrentBackupStorageRedundancy = resp.CurrentBackupStorageRedundancy;
             managedInstance.MaintenanceConfigurationId = resp.MaintenanceConfigurationId;
@@ -291,51 +292,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
             }
 
             return SqlSkuUtils.GetVcoreSkuPrefix(tier) ?? "Unknown";
-        }
-
-        /// <summary>
-        /// Map external BackupStorageRedundancy to Internal
-        /// </summary>
-        /// <param name="backupStorageRedundancy">Backup storage redundancy</param>
-        /// <returns>internal backupStorageRedundancy</returns>
-        public static string MapExternalBackupStorageRedundancyToInternal(string backupStorageRedundancy)
-        {
-            if (string.IsNullOrWhiteSpace(backupStorageRedundancy))
-            {
-                return null;
-            }
-
-            switch (backupStorageRedundancy.ToLower())
-            {
-                case "geo":
-                    return "GRS";
-                case "local":
-                    return "LRS";
-                case "zone":
-                    return "ZRS";
-                default:
-                    return null;
-            }
-        }
-
-        /// <summary>
-        /// Map internal BackupStorageRedundancy to external
-        /// </summary>
-        /// <param name="backupStorageRedundancy">Backup storage redundancy</param>
-        /// <returns>internal backupStorageRedundancy</returns>
-        public static string MapInternalBackupStorageRedundancyToExternal(string backupStorageRedundancy)
-        {
-            switch (backupStorageRedundancy)
-            {
-                case "GRS":
-                    return "Geo";
-                case "LRS":
-                    return "Local";
-                case "ZRS":
-                    return "Zone";
-                default:
-                    return null;
-            }
         }
 
         /// <summary>

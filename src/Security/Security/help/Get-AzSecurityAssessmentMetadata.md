@@ -35,7 +35,7 @@ Gets security assessments types and metadta in a subscription. Security Assessme
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSecurityAssessmentMetadata
+Get-AzSecurityAssessmentMetadata
 ```
 
 Gets all the built in assessments and the custom assessments that were configured on the current subscription.

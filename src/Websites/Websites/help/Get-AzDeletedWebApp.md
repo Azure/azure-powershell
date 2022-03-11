@@ -24,7 +24,7 @@ The **Get-AzDeletedWebApp** cmdlet returns all deleted web apps in the subscript
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzDeletedWebApp -ResourceGroupName "Default-Web-WestUS" -Name "ContosoSite"
+Get-AzDeletedWebApp -ResourceGroupName "Default-Web-WestUS" -Name "ContosoSite"
 ```
 
 This command gets the deleted apps named ContosoSite belonging to the resource group Default-Web-WestUS.

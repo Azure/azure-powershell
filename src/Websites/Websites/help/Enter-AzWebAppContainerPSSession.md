@@ -30,8 +30,8 @@ opens a remote PowerShell session into the windows container specified in a give
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Enter-AzWebAppContainerPSSession -ResourceGroupName "Default-Web-WestUS" -Name "ContosoASP"
+```powershell
+Enter-AzWebAppContainerPSSession -ResourceGroupName "Default-Web-WestUS" -Name "ContosoASP"
 ```
 
 This command opens a remote PowerShell session into the windows container app ContosoASP

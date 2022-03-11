@@ -18,7 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added new cmdlets for managing ServerTrustCertificates
+* [Breaking change] Removed `Get-AzSqlDatabaseTransparentDataEncryptionActivity`
+* Added property `CurrentBackupStorageRedundancy` and `RequestedBackupStorageRedundancy` in  the outputs of Managed Instance CRUD commands
+* Added new cmdlets for managing Server Trust Certificates
     - `New-AzSqlInstanceServerTrustCertificate`
     - `Get-AzSqlInstanceServerTrustCertificate`
     - `Remove-AzSqlInstanceServerTrustCertificate`

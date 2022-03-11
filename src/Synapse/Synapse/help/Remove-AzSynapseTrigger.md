@@ -37,23 +37,23 @@ The **Remove-AzSynapseTrigger** cmdlet removes a trigger from a workspace.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSynapseTrigger -WorkspaceName ContosoWorkspace -Name ContosoTrigger
+Remove-AzSynapseTrigger -WorkspaceName ContosoWorkspace -Name ContosoTrigger
 ```
 
 Remove a trigger called ContosoTrigger from the workspace ContosoWorkspace.
 
 ### Example 2
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Remove-AzSynapseTrigger -Name ContosoTrigger
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Remove-AzSynapseTrigger -Name ContosoTrigger
 ```
 
 Remove a trigger called ContosoTrigger from the workspace ContosoWorkspace through pipeline.
 
 ### Example 3
 ```powershell
-PS C:\> $trigger = Get-AzSynapseTrigger -WorkspaceName ContosoWorkspace -Name ContosoTrigger
-PS C:\> $trigger | Remove-AzSynapseTrigger
+$trigger = Get-AzSynapseTrigger -WorkspaceName ContosoWorkspace -Name ContosoTrigger
+$trigger | Remove-AzSynapseTrigger
 ```
 
 Remove a trigger called ContosoTrigger from the workspace ContosoWorkspace through pipeline.
