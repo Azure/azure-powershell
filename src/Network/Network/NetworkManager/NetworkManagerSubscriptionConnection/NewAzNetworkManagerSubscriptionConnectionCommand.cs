@@ -26,8 +26,8 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerScopeConnection", SupportsShouldProcess = true), OutputType(typeof(PSNetworkManagerScopeConnection))]
-    public class NewAzNetworkManagerScopeConnectionCommand : NetworkManagerScopeConnectionBaseCmdlet
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerSubscriptionConnection", SupportsShouldProcess = true), OutputType(typeof(PSNetworkManagerConnection))]
+    public class NewAzNetworkManagerSubscriptionConnectionCommand : NetworkManagerSubscriptionConnectionBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -40,30 +40,8 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The network manager name.")]
-        [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
-        public virtual string NetworkManagerName { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.")]
-        [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty]
-        public virtual string ResourceGroupName { get; set; }
-
-        [Parameter(
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "Tenant ID of the resource you'd like to manage.")]
-        public string TenantID { get; set; }
-
-        [Parameter(
-         Mandatory = true,
-         ValueFromPipelineByPropertyName = true,
-         HelpMessage = "Resource ID of the subscription or management group to be managed. Resource IDs should be in the form '/subscriptions/{subscriptionId}' or '/providers/Microsoft.Management/managementGroups/{managementGroupId}'.")]
-        public string ResourceID { get; set; }
+           HelpMessage = "Network Manager ID of the resource you'd like to manage.")]
+        public string NetworkManagerID { get; set; }
 
         [Parameter(
          Mandatory = false,
@@ -84,7 +62,7 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            var present = this.IsNetworkManagerScopeConnectionPresent(this.ResourceGroupName, this.NetworkManagerName, this.Name);
+            var present = this.IsNetworkManagerSubscriptionConnectionPresent(this.Name);
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(Properties.Resources.OverwritingResource, Name),
@@ -92,17 +70,16 @@ namespace Microsoft.Azure.Commands.Network
                 Name,
                 () =>
                 {
-                    var scopeConnection = this.CreateNetworkManagerScopeConnection();
-                    WriteObject(scopeConnection);
+                    var networkManagerSubscriptionConnection = this.CreateNetworkManagerSubscriptionConnection();
+                    WriteObject(networkManagerSubscriptionConnection);
                 },
                 () => present);
         }
 
-        private PSNetworkManagerScopeConnection CreateNetworkManagerScopeConnection()
+        private PSNetworkManagerConnection CreateNetworkManagerSubscriptionConnection()
         {
-            var mncc = new PSNetworkManagerScopeConnection();
-            mncc.TenantId = this.TenantID;
-            mncc.ResourceId = this.ResourceID;
+            var mncc = new PSNetworkManagerConnection();
+            mncc.NetworkManagerId = this.NetworkManagerID;
 
             if (!string.IsNullOrEmpty(this.Description))
             {
@@ -110,13 +87,13 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             // Map to the sdk object
-            var mnccModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ScopeConnection>(mncc);
-            this.NullifyNetworkManagerScopeConnectionIfAbsent(mnccModel);
+            var mnccModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkManagerConnection>(mncc);
+            this.NullifyNetworkManagerSubscriptionConnectionIfAbsent(mnccModel);
 
-            // Execute the Create NetworkManagerScopeConnection call
-            var networkManagerScopeConnectionResponse = this.NetworkManagerScopeConnectionClient.CreateOrUpdate(mnccModel, this.ResourceGroupName, this.NetworkManagerName, this.Name);
-            var psNetworkManagerScopeConnection = this.ToPsNetworkManagerScopeConnection(networkManagerScopeConnectionResponse);
-            return psNetworkManagerScopeConnection;
+            // Execute the Create NetworkManagerSubscriptionConnection call
+            var networkManagerSubscriptionConnectionResponse = this.NetworkManagerSubscriptionConnectionClient.CreateOrUpdate(mnccModel, this.Name);
+            var psNetworkManagerSubscriptionConnection = this.ToPsNetworkManagerSubscriptionConnection(networkManagerSubscriptionConnectionResponse);
+            return psNetworkManagerSubscriptionConnection;
         }
     }
 }
