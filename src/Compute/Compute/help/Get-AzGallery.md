@@ -14,7 +14,7 @@ Get or list galleries.
 
 ### DefaultParameter (Default)
 ```
-Get-AzGallery [[-ResourceGroupName] <String>] [[-Name] <String>] [-Select <String>]
+Get-AzGallery [[-ResourceGroupName] <String>] [[-Name] <String>] [-Expand <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -171,7 +171,7 @@ Get all galleries in subscription that start with "gallery".
 
 ### Example 5
 ```powershell
-PS C:\> Get-AzGallery -Name galleryName -ResourceGroupName rg -Select Permissions
+PS C:\> Get-AzGallery -Name galleryName -ResourceGroupName rg -Expand SharingProfile/Groups
 
 ```
 
@@ -284,8 +284,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Select
-The select expression to apply on the operation.
+### -Expand
+The expand query option to apply on the operation. Possible value(s): "SharingProfile/Groups"
 
 ```yaml
 Type: System.String

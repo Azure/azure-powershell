@@ -725,7 +725,7 @@ function Test-GalleryDirectSharing
         New-AzGallery -ResourceGroupName $rgname -Location $loc -Name $galleryName -Permission 'Groups'
 
         # get that gallery check for SharingProfile
-        $gal = Get-AzGallery -ResourceGroupName $rgname -Name $galleryName -Select 'Permissions'
+        $gal = Get-AzGallery -ResourceGroupName $rgname -Name $galleryName -Expand 'SharingProfile/Groups'
         Assert-AreEqual $gal.sharingProfile.Permissions 'Groups'
 
         # Reset that gallery

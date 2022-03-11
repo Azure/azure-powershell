@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                 if (ShouldGetByName(resourceGroupName, galleryName))
                 {
-                    var result = GalleriesClient.Get(resourceGroupName, galleryName, this.Expand);
+                    var result = GalleriesClient.Get(resourceGroupName, galleryName, null, this.Expand);
                     
                     var psObject = new PSGallery();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<Gallery, PSGallery>(result, psObject);
@@ -204,7 +204,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
            ValueFromPipelineByPropertyName = true,
            ParameterSetName = "DefaultParameter",
            HelpMessage = "The expand query option to apply on the operation.")]
-        [PSArgumentCompleter("Permissions")]
+        [PSArgumentCompleter("SharingProfile/Groups")]
         public string Expand { get; set; }
     }
 }
