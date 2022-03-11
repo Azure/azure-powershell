@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
     /// </summary>
     [CmdletOutputBreakingChange(
         deprecatedCmdletOutputTypeName: typeof(AzureSqlManagedInstanceModel),
-        deprecateByVersion: "3.8.0",
+        deprecateByVersion: "4.0.0",
         DeprecatedOutputProperties = new String[] { "BackupStorageRedundancy" },
         NewOutputProperties = new String[] { "CurrentBackupStorageRedundancy", "RequestedBackupStorageRedundancy" })]
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstance",
@@ -361,6 +361,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             updateData[0].KeyId = this.KeyId ?? updateData[0].KeyId;
             updateData[0].SubnetId = this.SubnetId ?? model.FirstOrDefault().SubnetId;
             updateData[0].ZoneRedundant = this.ZoneRedundant.IsPresent ? this.ZoneRedundant.ToBool() : (bool?)null;
+            updateData[0].RequestedBackupStorageRedundancy = this.BackupStorageRedundancy ?? updateData[0].CurrentBackupStorageRedundancy;
             return updateData;
         }
 
