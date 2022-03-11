@@ -13,7 +13,7 @@ Deletes the Resource Manangement Private Link.
 ## SYNTAX
 
 ```
-Remove-AzResourceManagementPrivateLink [-ResourceGroupName] <String> [-PrivateLinkName] <String>
+Remove-AzResourceManagementPrivateLink [-ResourceGroupName] <String> [-Name] <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -26,6 +26,13 @@ The Remove-AzResourceManagementPrivateLink cmdlet deletes a specific resource ma
 ```powershell
 PS C:\> Remove-AzResourceManagementPrivateLink -ResourceGroupName PrivateLinkTestRG -Name NewPL
 True
+```
+
+Delete the specific Resource Management Private Link.
+
+### Example 2
+```powershell
+PS C:\> Get-AzResourceManagementPrivateLink -ResourceGroupName PrivateLinkTestRG -Name NewPL | Remove-AzResourceManagementPrivateLink -Force
 ```
 
 Delete the specific Resource Management Private Link.
@@ -47,7 +54,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PrivateLinkName
+### -Name
 The name of the private link.
 
 ```yaml

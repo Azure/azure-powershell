@@ -27,8 +27,7 @@ namespace Microsoft.Azure.Commands.Resources.PrivateLinks
     [Cmdlet(
         VerbsCommon.Get,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ResourceManagementPrivateLink",
-        DefaultParameterSetName = Constants.ParameterSetNames.GetParameterSet,
-        SupportsShouldProcess = true), OutputType(typeof(PSResourceManagementPrivateLink))]
+        DefaultParameterSetName = Constants.ParameterSetNames.GetParameterSet), OutputType(typeof(PSResourceManagementPrivateLink))]
     public class GetAzureResourceManagementPrivateLink : PrivateLinksCmdletBase
     {
         #region Cmdlet Parameters and Parameter Set Definitions

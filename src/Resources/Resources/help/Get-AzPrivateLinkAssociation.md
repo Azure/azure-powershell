@@ -13,7 +13,7 @@ Gets all the Azure Resource Management Private Link Association(s).
 ## SYNTAX
 
 ```
-Get-AzPrivateLinkAssociation [-ManagementGroupId] <String>
+Get-AzPrivateLinkAssociation [-ManagementGroupId] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 

@@ -13,7 +13,7 @@ Gets Azure Resource Management Private Link(s)
 ## SYNTAX
 
 ```
-Get-AzResourceManagementPrivateLink [-ResourceGroupName] <String> [-PrivateLinkName] <String>
+Get-AzResourceManagementPrivateLink [-ResourceGroupName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -99,13 +99,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PrivateLinkName
+### -Name
 The name of the private link.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: PrivateLinkName
 
 Required: False
 Position: 1
