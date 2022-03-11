@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.7.4
 * Changed target framework of AuthenticationAssemblyLoadContext to netcoreapp2.1 [#17428]
 
 ## Version 2.7.3
