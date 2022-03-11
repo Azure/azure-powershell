@@ -134,8 +134,11 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
             TransparentDataEncryption.DatabaseName = databaseName;
 
             TransparentDataEncryptionStateType State = TransparentDataEncryptionStateType.Disabled;
-            Enum.TryParse<TransparentDataEncryptionStateType>(resp.State.ToString(), true, out State);
-            TransparentDataEncryption.State = State;
+            if (resp != null)
+            {
+                Enum.TryParse<TransparentDataEncryptionStateType>(resp.State.ToString(), true, out State);
+                TransparentDataEncryption.State = State;
+            }
 
             return TransparentDataEncryption;
         }

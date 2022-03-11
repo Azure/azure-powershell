@@ -48,7 +48,7 @@ The **Set-AzWebApp** cmdlet sets an Azure Web App Slot.
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzWebAppSlot -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" -Slot "Slot001" -AppServicePlan "ContosoPlan"
+Set-AzWebAppSlot -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" -Slot "Slot001" -AppServicePlan "ContosoPlan"
 ```
 
 This command changes the appservice plan associated with the Slot001, on the Webapp ContosoWebApp associated with the resource group Default-Web-WestUS. Use the link to learn more about changing the appservice plan and constraints associated with it.
@@ -56,7 +56,7 @@ https://docs.microsoft.com/azure/app-service/app-service-plan-manage#move-an-app
 
 ### Example 2
 ```powershell
-PS C:\> Set-AzWebAppSlot -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" -Slot "Slot001" -HttpLoggingEnabled $true
+Set-AzWebAppSlot -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" -Slot "Slot001" -HttpLoggingEnabled $true
 ```
 
 This command sets HttpLoggingEnabled to true for Slot Slot001 pertaining to Web App ContosoWebApp associated with the resource group Default-Web-WestUS

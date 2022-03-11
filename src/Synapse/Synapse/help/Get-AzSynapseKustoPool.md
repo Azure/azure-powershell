@@ -36,8 +36,10 @@ Gets a Kusto pool.
 
 ### Example 1: List all Kusto pools in a workspace
 ```powershell
-PS C:\> Get-AzSynapseKustoPool -ResourceGroupName testrg -WorkspaceName testws
+Get-AzSynapseKustoPool -ResourceGroupName testrg -WorkspaceName testws
+```
 
+```output
 Location  Name                     Type                                    Etag
 --------  ----                     ----                                    ----
 East US 2 testws/testnewkustopool  Microsoft.Synapse/workspaces/kustoPools 
@@ -48,8 +50,10 @@ The above command lists all Kusto pools in the resource group "testrg".
 
 ### Example 2: Get a specific Kusto pool by name
 ```powershell
-PS C:\> Get-AzSynapseKustoPool -ResourceGroupName testrg -WorkspaceName testws -Name testnewkustopool
+Get-AzSynapseKustoPool -ResourceGroupName testrg -WorkspaceName testws -Name testnewkustopool
+```
 
+```output
 Location  Name                    Type                                    Etag
 --------  ----                    ----                                    ----
 East US 2 testws/testnewkustopool Microsoft.Synapse/workspaces/kustoPools 

@@ -30,9 +30,9 @@ New-AzWebAppContainerPSSession will create new remote PowerShell Session into th
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $s = New-AzWebAppContainerPSSession -ResourceGroupName "Default-Web-WestUS" -Name "ContosoASP"
-PS C:\> Invoke-Command -Session $s -ScriptBlock{Get-Process}
+```powershell
+$s = New-AzWebAppContainerPSSession -ResourceGroupName "Default-Web-WestUS" -Name "ContosoASP"
+Invoke-Command -Session $s -ScriptBlock{Get-Process}
 ```
 
 This will create a new remote PowerShell Session into the windows container app ContosoASP and show the processes that are running on the container ContosoASP

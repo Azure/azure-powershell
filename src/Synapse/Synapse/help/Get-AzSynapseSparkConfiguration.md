@@ -31,22 +31,22 @@ The **Get-AzSynapseSparkConfiguration** cmdlet gets information about spark conf
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSynapseSparkConfiguration -WorkspaceName ContosoWorkspace
+Get-AzSynapseSparkConfiguration -WorkspaceName ContosoWorkspace
 ```
 
 Gets a list of all spark configurations in the workspace ContosoWorkspace.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzSynapseSparkConfiguration -WorkspaceName ContosoWorkspace -Name ContosoSparkConfiguration
+Get-AzSynapseSparkConfiguration -WorkspaceName ContosoWorkspace -Name ContosoSparkConfiguration
 ```
 
 Gets a single spark configuration called ContosoSparkConfiguration in the workspace ContosoWorkspace.
 
 ### Example 3
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Get-AzSynapseSparkConfiguration -Name ContosoSparkConfiguration
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Get-AzSynapseSparkConfiguration -Name ContosoSparkConfiguration
 ```
 
 Gets a single spark configuration called ContosoSparkConfiguration in the workspace ContosoWorkspace through pipeline.

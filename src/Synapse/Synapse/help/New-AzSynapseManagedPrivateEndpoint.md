@@ -33,15 +33,15 @@ The **New-AzSynapseManagedPrivateEndpoint** cmdlet creates or updates a managed 
 
 ### Example 1
 ```powershell
-PS C:\> New-AzSynapseManagedPrivateEndpoint -WorkspaceName ContosoWorkspace -Name ContosoManagedPrivateEndpoint -DefinitionFile "C:\\endpoint.json"
+New-AzSynapseManagedPrivateEndpoint -WorkspaceName ContosoWorkspace -Name ContosoManagedPrivateEndpoint -DefinitionFile "C:\\endpoint.json"
 ```
 
 This command creates or updates a managed private endpoint from json file in the workspace named ContosoWorkspace.
 
 ### Example 2
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | New-AzSynapseManagedPrivateEndpoint -Name ContosoManagedPrivateEndpoint -DefinitionFile "C:\\endpoint.json"
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | New-AzSynapseManagedPrivateEndpoint -Name ContosoManagedPrivateEndpoint -DefinitionFile "C:\\endpoint.json"
 ```
 
 This command creates or updates a managed private endpoint from json file in the workspace named ContosoWorkspace through pipeline.

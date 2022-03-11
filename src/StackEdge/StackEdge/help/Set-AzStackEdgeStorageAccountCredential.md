@@ -40,8 +40,10 @@ The **Set-AzStackEdgeStorageAccountCredential** cmdlet updates the storage accou
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzStackEdgeStorageAccountCredential -ResourceGroupName resourceGroupName -DeviceName deviceName -Name storageAcountCredentialName
- -StorageAccountName storageaccountname -StorageAccountAccessKey @SecureString -EncryptionKey @SecureString
+Set-AzStackEdgeStorageAccountCredential -ResourceGroupName resourceGroupName -DeviceName deviceName -Name storageAcountCredentialName -StorageAccountName storageaccountname -StorageAccountAccessKey @SecureString -EncryptionKey @SecureString
+ ```
+
+```output
 Name                        StorageAccount      SslStatus  ResourceGroupName
 --------------------------- ------------------- ---------- ---------------------
 storageAcountCredentialName storageaccountname  Enabled    resourceGroupName

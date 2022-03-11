@@ -29,12 +29,18 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Sql.Instance_Pools.Services;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
 {
     /// <summary>
     /// Defines the New-AzSqlInstance cmdlet
     /// </summary>
+    [CmdletOutputBreakingChange(
+        deprecatedCmdletOutputTypeName: typeof(AzureSqlManagedInstanceModel),
+        deprecateByVersion: "4.0.0",
+        DeprecatedOutputProperties = new String[] { "BackupStorageRedundancy" },
+        NewOutputProperties = new String[] { "CurrentBackupStorageRedundancy", "RequestedBackupStorageRedundancy" })]
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstance",
         DefaultParameterSetName = NewByEditionAndComputeGenerationParameterSet,
         SupportsShouldProcess = true),
@@ -313,7 +319,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The Backup storage redundancy used to store backups for the Sql Azure Managed Instance. Options are: Local, Zone and Geo ")]
-        [ValidateSet("Local", "Zone", "Geo")]
+        [ValidateSet("Local", "Zone", "Geo", "GeoZone")]
         public string BackupStorageRedundancy { get; set; }
 
         /// <summary>
@@ -548,7 +554,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 DnsZonePartner = this.DnsZonePartner,
                 InstancePoolName = this.InstancePoolName,
                 MinimalTlsVersion = this.MinimalTlsVersion,
-                BackupStorageRedundancy = this.BackupStorageRedundancy,
+                RequestedBackupStorageRedundancy = this.BackupStorageRedundancy,
                 MaintenanceConfigurationId = this.MaintenanceConfigurationId,
                 PrimaryUserAssignedIdentityId = this.PrimaryUserAssignedIdentityId,
                 KeyId = this.KeyId,

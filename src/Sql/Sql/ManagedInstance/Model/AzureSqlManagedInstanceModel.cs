@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Model
         /// Gets or sets the managed instance current backup storage redundancy
         /// </summary>
         public string CurrentBackupStorageRedundancy { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the managed instance maintenance configuration id
         /// </summary>
