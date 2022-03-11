@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Resources.PrivateLinks
                     var response = ResourceManagementPrivateLinkClient.PrivateLinkAssociation.Get(
                         groupId: ManagementGroupId);
                     var items = response.Value.Select(privateLinkAssociation => new PSResourceManagementPrivateLinkAssociation(privateLinkAssociation))
-                        .Where(privateLinkAssociation => privateLinkAssociation.Name.Contains(Name))
+                        .Where(privateLinkAssociation => privateLinkAssociation.Name.Equals(Name))
                         .ToList();
                     WriteObject(items);
                 }
