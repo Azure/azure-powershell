@@ -29,11 +29,11 @@ This extension lets your virtual machine join a domain.
 ### Example 1
 ```powershell
 # Create a Resource Group and Virtual Machine before this.
-$extensionName = "extensionName";
-$virtualMachineName = "vmName";
-$resourceGroupName = "resourceGroupName";
-$domainName = "domain.com";
-Set-AzVMADDomainExtension -ResourceGroupName $resourceGroupName -VMName $virtualMachineName -Name $extensionName -DomainName $domainName;
+$extensionName = "extensionName"
+$virtualMachineName = "vmName"
+$resourceGroupName = "resourceGroupName"
+$domainName = "domain.com"
+Set-AzVMADDomainExtension -ResourceGroupName $resourceGroupName -VMName $virtualMachineName -Name $extensionName -DomainName $domainName
 ```
 
 ```Output
