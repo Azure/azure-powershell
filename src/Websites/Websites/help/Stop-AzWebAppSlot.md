@@ -30,8 +30,8 @@ The **Stop-AzWebAppSlot** cmdlet stops an Azure Web App Slot.
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\>Stop-AzWebAppSlot -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" -Slot "Slot001"
+```powershell
+Stop-AzWebAppSlot -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" -Slot "Slot001"
 ```
 
 This command stops the slot Slot001 pertaining to the Web App named ContosoWebApp that belongs to the resource group named Default-Web-WestUS.

@@ -31,7 +31,7 @@ The **Get-AzWebAppBackupConfiguration** cmdlet gets the backup configuration of 
 
 ### Example 1
 ```powershell
-PS C:\>Get-AzWebAppBackupConfiguration -ResourceGroupName "Default-Web-WestUS" -Name "WebAppStandard"
+Get-AzWebAppBackupConfiguration -ResourceGroupName "Default-Web-WestUS" -Name "WebAppStandard"
 ```
 
 This command gets the backup configuration from the Web App named WebAppStandard that belongs to the resource group Default-Web-WestUS.
