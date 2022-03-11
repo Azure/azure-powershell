@@ -445,4 +445,80 @@ function Test-MongoMigrateThroughputCmdlets
       Remove-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName
       Remove-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
   }
+
+  <#
+.SYNOPSIS
+Test MongoDB RBAC cmdlets using Name paramter set
+#>
+function Test-MongoRBACCmdlets
+{
+  $AccountName = "mongo-db00044"
+  $rgName = "CosmosDBResourceGroup44"
+  $DatabaseName = "dbName"
+  $CollectionName = "collection1"
+  $shardKey = "partitionkey1"
+  $partitionKeys = @("partitionkey1", "partitionkey2")
+  $partitionKeys2 = @("partitionkey1", "partitionkey2", "partitionkey3")
+  $capabilities = @("EnableMongo", "EnableMongoRoleBasedAccessControl")
+  $ttlKeys = @("_ts")
+  $ttlInSeconds = 604800
+  $ttlInSeconds = 1204800
+  $DatabaseName2 = "dbName2"
+  $CollectionName2 = "collection2"
+  $ThroughputValue = 500
+  $UpdatedCollectionThroughputValue = 600
+  $location = "West US 2"
+  $apiKind = "MongoDB"
+  $serverVersion = "3.6" #3.2 or 3.6
+  $consistencyLevel = "Session"
+  $locations = @()
+  $locations += New-AzCosmosDBLocationObject -LocationName "West Us 2" -FailoverPriority 0 -IsZoneRedundant 0
+  $subscriptionId = $(getVariable "SubscriptionId")
+  $RoleName1 = "mongoPSRole1"
+  $RoleDefinitionId = $DatabaseName + "." + $RoleName1
+  $FullyQualifiedRoleDefinitionId1 = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.DocumentDB/databaseAccounts/$AccountName/mongodbRoleDefinitions/$RoleDefinitionId1"
+  $actions1 = 'insert', 'find'
+  $Resource1 = New-AzCosmosDBMongoDBPrivilegeResource -Database $DatabaseName -Collection $CollectionName
+  $Privilege1 = New-AzCosmosDBMongoDBPrivilege -PrivilegeResource $Resource1 -Actions $actions1
+
+Try {
+
+      $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
+      New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Capabilities $capabilities -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel
+
+            
+      # create a new database
+      $NewDatabase =  New-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+      Assert-AreEqual $NewDatabase.Name $DatabaseName
+
+      #create a new Collection
+      $NewCollection = New-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName
+      Assert-AreEqual $NewCollection.Name $CollectionName
+
+      #create a new Mongo Role
+      $RoleDef = New-AzCosmosDBMongoDBRoleDefinition -ResourceGroupName $rgName -AccountName $AccountName -Id $FullyQualifiedRoleDefinitionId1 -RoleName $RoleName1 -Type "CustomRole" -DatabaseName $DatabaseName -Privileges $Privilege1
+      Assert-AreEqual $RoleDef.Id $FullyQualifiedRoleDefinitionId1
+
+      # get existing Mongo Role
+      $GetRole = Get-AzCosmosDBMongoDBRoleDefinition -AccountName $AccountName -ResourceGroupName $rgName -Id $RoleDefinitionId1
+      Assert-AreEqual $RoleDef.Id $FullyQualifiedRoleDefinitionId1
+
+      # delete existing Role
+      $IsRemoved = Remove-AzCosmosDBMongoDBRoleDefinition -AccountName $AccountName -ResourceGroupName $rgName -Id $RoleDefinitionId1
+      Assert-AreEqual $IsRemoved true
+
+      #delete a Collection
+      $IsCollectionRemoved =  Remove-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName -PassThru
+      Assert-AreEqual $IsCollectionRemoved true
+       
+      #delete a database
+      $IsRemoved = Remove-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -PassThru
+      Assert-AreEqual $IsRemoved true
+    }
+
+    Finally {
+        Remove-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName
+        Remove-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+	}
+}
 }
