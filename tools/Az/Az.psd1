@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '7.3.1'
+ModuleVersion = '7.3.2'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -66,7 +66,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.7.4'; },
                @{ModuleName = 'Az.Cdn'; RequiredVersion = '1.8.1'; }, 
                @{ModuleName = 'Az.CloudService'; RequiredVersion = '1.1.0'; }, 
                @{ModuleName = 'Az.CognitiveServices'; RequiredVersion = '1.10.0'; }, 
-               @{ModuleName = 'Az.Compute'; RequiredVersion = '4.24.0'; }, 
+               @{ModuleName = 'Az.Compute'; RequiredVersion = '4.24.1'; }, 
                @{ModuleName = 'Az.ContainerInstance'; RequiredVersion = '3.0.1'; }, 
                @{ModuleName = 'Az.ContainerRegistry'; RequiredVersion = '2.2.3'; }, 
                @{ModuleName = 'Az.CosmosDB'; RequiredVersion = '1.5.1'; }, 
@@ -181,12 +181,12 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '7.3.1 - March 2022
+        ReleaseNotes = '7.3.2 - March 2022
 Az.Accounts
 * Changed target framework of AuthenticationAssemblyLoadContext to netcoreapp2.1 [#17428]
 
 Az.Compute
-* Updated New-AzVM feature for `vCPUsAvailable` and `vCPUsPerCore` parameters. Cmdlets will not try to use the new `VMCustomizationPreview` feature if the user does not have access to that feature. [#17370]
+* Updated New-AzVM feature for ''vCPUsAvailable'' and ''vCPUsPerCore'' parameters. Cmdlets will not try to use the new ''VMCustomizationPreview'' feature if the user does not have access to that feature. [#17370]
 '
 
         # Prerelease string of this module
