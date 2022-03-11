@@ -51,32 +51,32 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// <summary>
         /// Gets or sets the primary availability group name
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, Position = 3, HelpMessage = "The name of the primary availability group.")]
-        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, Position = 2, HelpMessage = "The name of the primary availability group.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, HelpMessage = "The name of the primary availability group.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "The name of the primary availability group.")]
         [ValidateNotNullOrEmpty]
         public string PrimaryAvailabilityGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the secondary availability group name
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, Position = 4, HelpMessage = "The name of the secondary availability group.")]
-        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, Position = 3, HelpMessage = "The name of the secondary availability group.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, HelpMessage = "The name of the secondary availability group.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "The name of the secondary availability group.")]
         [ValidateNotNullOrEmpty]
         public string SecondaryAvailabilityGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the target database
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, Position = 5, HelpMessage = "The name of the target database.")]
-        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, Position = 4, HelpMessage = "The name of the target database.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, HelpMessage = "The name of the target database.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "The name of the target database.")]
         [ValidateNotNullOrEmpty]
         public string TargetDatabase { get; set; }
 
         /// <summary>
         /// Gets or sets the source endpoint
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, Position = 6, HelpMessage = "The adress of the source endpoint.")]
-        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, Position = 5, HelpMessage = "The adress of the source endpoint.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, HelpMessage = "The adress of the source endpoint.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "The adress of the source endpoint.")]
         [ValidateNotNullOrEmpty]
         public string SourceEndpoint { get; set; }
 
