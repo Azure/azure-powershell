@@ -323,6 +323,7 @@ Function Move-Generation2MasterHybrid {
         Import-Module "$DestPath\..\..\artifacts\Debug\Az.$ModuleName\Az.$ModuleName.psd1"
         Update-MarkdownHelpModule -Path "$DestPath\$ModuleName\help" -RefreshModulePage -AlphabeticParamsOrder -UseFullTypeName -ExcludeDontShow
     }
+    
 }
 
 Function Update-MappingJson {
