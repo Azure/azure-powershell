@@ -728,12 +728,6 @@ function Test-GalleryDirectSharing
         $gal = Get-AzGallery -ResourceGroupName $rgname -Name $galleryName -Expand 'SharingProfile/Groups'
         Assert-AreEqual $gal.sharingProfile.Permissions 'Groups'
 
-        # Reset that gallery
-        $gal = Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -Share -Reset
-
-        # check 
-        Assert-AreEqual $gal.SharingProfile.Permissions 'Private'
-
         # Add 2 subscriptions to share with 
         $gal = Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -Permission 'Groups' -Share -Subscription '88fd8cb2-8248-499e-9a2d-4929a4b0133c','54b875cc-a81a-4914-8bfd-1a36bc7ddf4d'
 
@@ -747,6 +741,12 @@ function Test-GalleryDirectSharing
         # check 
         Assert-AreEqual $gal.SharingProfile.Groups[0].Type 'Subscriptions'
         Assert-AreEqual $gal.SharingProfile.Groups[0].Ids.count 1
+
+        # Reset that gallery
+        $gal = Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -Share -Reset
+
+        # check 
+        Assert-AreEqual $gal.SharingProfile.Permissions 'Private'
     }
     finally
     {
