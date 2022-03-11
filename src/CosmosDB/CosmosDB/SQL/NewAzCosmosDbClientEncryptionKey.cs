@@ -86,25 +86,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             else
             {
                 throw new ArgumentException("KeyWrapMetadata cannot be null");
-            }
-
-            ClientEncryptionKeyGetResults readClientEncryptionKeyGetResults = null;
-            try
-            {
-                readClientEncryptionKeyGetResults = CosmosDBManagementClient.SqlResources.GetClientEncryptionKey(ResourceGroupName, AccountName, DatabaseName, Name);
-            }
-            catch (CloudException e)
-            {
-                if (e.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
-                {
-                    throw;
-                }
-            }
-
-            if (readClientEncryptionKeyGetResults != null)
-            {
-                throw new ConflictingResourceException(message: string.Format(ExceptionMessage.Conflict, Name));
-            }
+            }            
             
             if (string.Equals(encryptionKeyWrapMetadata.Type, "AZURE_KEY_VAULT"))
             {
@@ -132,7 +114,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
 
             byte[] wrappedDataEncryptionKey = KeyEncryptionKeyResolver.Resolve(encryptionKeyWrapMetadata.Value)
-            .WrapKey(encryptionKeyWrapMetadata.Algorithm, plainTextDataEncryptionKey);
+                .WrapKey(encryptionKeyWrapMetadata.Algorithm, plainTextDataEncryptionKey);
 
             ClientEncryptionKeyResource clientEncryptionKeyResource = new ClientEncryptionKeyResource
             {
@@ -149,6 +131,24 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (ShouldProcess(Name, "Creating a new CosmosDB Client Encryption Key"))
             {
+                ClientEncryptionKeyGetResults readClientEncryptionKeyGetResults = null;
+                try
+                {
+                    readClientEncryptionKeyGetResults = CosmosDBManagementClient.SqlResources.GetClientEncryptionKey(ResourceGroupName, AccountName, DatabaseName, Name);
+                }
+                catch (CloudException e)
+                {
+                    if (e.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
+                    {
+                        throw;
+                    }
+                }
+
+                if (readClientEncryptionKeyGetResults != null)
+                {
+                    throw new ConflictingResourceException(message: string.Format(ExceptionMessage.Conflict, Name));
+                }
+
                 ClientEncryptionKeyGetResults clientEncryptionKeyGetResults = CosmosDBManagementClient.SqlResources.CreateUpdateClientEncryptionKeyWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName, Name, clientEncryptionKeyCreateUpdateParameters).GetAwaiter().GetResult().Body;
                 WriteObject(new PSSqlClientEncryptionKeyGetResults(clientEncryptionKeyGetResults));
             }
