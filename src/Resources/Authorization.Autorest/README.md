@@ -46,15 +46,8 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/0023223a23b7a8c1693f7d88678787e50fee6c96/specification/authorization/resource-manager/Microsoft.Authorization/preview/2020-10-01-preview/RoleManagementPolicy.json
   - https://github.com/Azure/azure-rest-api-specs/blob/23800927d61999e655f6fd7fd054deaa80385683/specification/authorization/resource-manager/Microsoft.Authorization/preview/2020-10-01-preview/RoleManagementPolicyAssignment.json
 
-module-name: $(prefix).Resources
+root-module-name: $(prefix).Resources
 title: Authorization
-# module-version: 4.2.0
-dll-name: Az.Resources.Authorization.private
-csproj: Authorization.csproj
-psm1: Authorization.psm1
-psm1-internal: internal/Authorization.internal.psm1
-psm1-custom: custom/Authorization.custom.psm1
-format-ps1xml: Authorization.format.ps1xml
 namespace: Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization
 # remove subject-prefix for all generated cmdlets.
 subject-prefix: ''
