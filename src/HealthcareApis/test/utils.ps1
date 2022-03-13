@@ -19,30 +19,55 @@ function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
 
-    $rstr1 = RandomString -allChars $false -len 6
-    $rstr2 = RandomString -allChars $false -len 6
-    $rstr3 = RandomString -allChars $false -len 6
-    $rstr4 = RandomString -allChars $false -len 6
+    $apiService1 = RandomString -allChars $false -len 6
+    $apiService2 = RandomString -allChars $false -len 6
+    $env.Add("apiService1", $apiService1)
+    $env.Add("apiService2", $apiService2)
 
-    $env.Add("rstr1", $rstr1)
-    $env.Add("rstr2", $rstr2)
-    $env.Add("rstr3", $rstr3)
-    $env.Add("rstr4", $rstr4)
+    $apiWorkspace1 = "cngwrj" #RandomString -allChars $false -len 6
+    $apiWorkspace2 = RandomString -allChars $false -len 6
+    $apiWorkspace3 = RandomString -allChars $false -len 6
+    $env.Add("apiWorkspace1", $apiWorkspace1)
+    $env.Add("apiWorkspace2", $apiWorkspace2)
+    $env.Add("apiWorkspace3", $apiWorkspace3)
 
     $dicom1 = RandomString -allChars $false -len 6
     $dicom2 = RandomString -allChars $false -len 6
-
     $env.Add("dicom1", $dicom1)
     $env.Add("dicom2", $dicom2)
+
+    $fhirService1 = "t2ra0e" #RandomString -allChars $false -len 6
+    $fhirService2 = RandomString -allChars $false -len 6
+    $fhirService3 = RandomString -allChars $false -len 6
+    $env.Add("fhirService1", $fhirService1)
+    $env.Add("fhirService2", $fhirService2)
+    $env.Add("fhirService3", $fhirService3)
+
+    $iotConnector1 = "nfeac9" #RandomString -allChars $false -len 6
+    $iotConnector2 = RandomString -allChars $false -len 6
+    $iotConnector3 = RandomString -allChars $false -len 6
+    $env.Add("iotConnector1", $iotConnector1)
+    $env.Add("iotConnector2", $iotConnector2)
+    $env.Add("iotConnector3", $iotConnector3)
+
+    $iotFhirDestination1 = RandomString -allChars $false -len 6
+    $iotFhirDestination2 = RandomString -allChars $false -len 6
+    $env.Add("iotFhirDestination1", $iotFhirDestination1)
+    $env.Add("iotFhirDestination2", $iotFhirDestination2)
 
     $env.Add("location", "eastus2")
 
     # Create the test group
     write-host "start to create test group"
-    $resourceGroup = "testgroup" + $env.rstr4
+    $resourceGroup = "azpstestgroup"
     $env.Add("resourceGroup", $resourceGroup)
-    
-    New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
+
+    # New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
+
+    # New-AzHealthcareAPIsWorkspace -Name $env.apiWorkspace1 -ResourceGroupName $env.resourceGroup -Location $env.location
+    # New-AzHealthcareFhirService -Name $env.fhirService1 -ResourceGroupName $env.resourceGroup -WorkspaceName $env.apiWorkspace1 -Location $env.location -Kind 'fhir-R4' -AuthenticationConfigurationAuthority "https://login.microsoftonline.com/$($env.Tenant)" -AuthenticationConfigurationAudience "https://azpshcws-$($env.fhirService1).fhir.azurehealthcareapis.com"
+    # $arr = @()
+    # New-AzHealthcareIotConnector -Name $env.iotConnector1 -ResourceGroupName $env.resourceGroup -WorkspaceName $env.apiWorkspace1 -Location $env.location -IngestionEndpointConfigurationConsumerGroup "sajob-01-portal_input-01_consumer_group" -IngestionEndpointConfigurationEventHubName "sajob01portaleventhub" -IngestionEndpointConfigurationFullyQualifiedEventHubNamespace "sdk-Namespace-4761" -DeviceMappingContent @{"templateType"="CollectionContent";"template"=$arr}
 
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
@@ -53,6 +78,6 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
-    Remove-AzResourceGroup -Name $env.resourceGroup
+    # Remove-AzResourceGroup -Name $env.resourceGroup
 }
 

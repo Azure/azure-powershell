@@ -17,11 +17,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzHealthcareAPIsWorkspace'))
 Describe 'AzHealthcareAPIsWorkspace' {
     It 'CreateExpanded' {
         {
-            $config = New-AzHealthcareAPIsWorkspace -Name $env.rstr1 -ResourceGroupName $env.resourceGroup -Location $env.location
-            $config.Name | Should -Be $env.rstr1
-            
-            $config = New-AzHealthcareAPIsWorkspace -Name $env.rstr2 -ResourceGroupName $env.resourceGroup -Location $env.location
-            $config.Name | Should -Be $env.rstr2
+            $config = New-AzHealthcareAPIsWorkspace -Name $env.apiWorkspace2 -ResourceGroupName $env.resourceGroup -Location $env.location
+            $config.Name | Should -Be $env.apiWorkspace2
+
+            $config = New-AzHealthcareAPIsWorkspace -Name $env.apiWorkspace3 -ResourceGroupName $env.resourceGroup -Location $env.location
+            $config.Name | Should -Be $env.apiWorkspace3
         } | Should -Not -Throw
     }
 
@@ -34,23 +34,23 @@ Describe 'AzHealthcareAPIsWorkspace' {
 
     It 'Get' {
         {
-            $config = Get-AzHealthcareAPIsWorkspace -Name $env.rstr1 -ResourceGroupName $env.resourceGroup
-            $config.Name | Should -Be $env.rstr1
+            $config = Get-AzHealthcareAPIsWorkspace -Name $env.apiWorkspace2 -ResourceGroupName $env.resourceGroup
+            $config.Name | Should -Be $env.apiWorkspace2
         } | Should -Not -Throw
     }
 
     It 'UpdateExpanded' {
         {
-            $config = Update-AzHealthcareAPIsWorkspace -Name $env.rstr1 -ResourceGroupName $env.resourceGroup -Tag @{"abc"="123"}
-            $config.Name | Should -Be $env.rstr1
+            $config = Update-AzHealthcareAPIsWorkspace -Name $env.apiWorkspace2 -ResourceGroupName $env.resourceGroup -Tag @{"abc"="123"}
+            $config.Name | Should -Be $env.apiWorkspace2
         } | Should -Not -Throw
     }
 
     It 'UpdateViaIdentityExpanded' {
         {
-            $config = Get-AzHealthcareAPIsWorkspace -Name $env.rstr2 -ResourceGroupName $env.resourceGroup
+            $config = Get-AzHealthcareAPIsWorkspace -Name $env.apiWorkspace3 -ResourceGroupName $env.resourceGroup
             $config = Update-AzHealthcareAPIsWorkspace -InputObject $config -Tag @{"abc"="123"}
-            $config.Name | Should -Be $env.rstr2
+            $config.Name | Should -Be $env.apiWorkspace3
         } | Should -Not -Throw
     }
 
@@ -63,13 +63,13 @@ Describe 'AzHealthcareAPIsWorkspace' {
 
     It 'Delete' {
         {
-            Remove-AzHealthcareAPIsWorkspace -Name $env.rstr1 -ResourceGroupName $env.resourceGroup
+            Remove-AzHealthcareAPIsWorkspace -Name $env.apiWorkspace2 -ResourceGroupName $env.resourceGroup
         } | Should -Not -Throw
     }
 
     It 'DeleteViaIdentity' {
         {
-            $config = Get-AzHealthcareAPIsWorkspace -Name $env.rstr2 -ResourceGroupName $env.resourceGroup
+            $config = Get-AzHealthcareAPIsWorkspace -Name $env.apiWorkspace3 -ResourceGroupName $env.resourceGroup
             Remove-AzHealthcareAPIsWorkspace -InputObject $config
         } | Should -Not -Throw
     }

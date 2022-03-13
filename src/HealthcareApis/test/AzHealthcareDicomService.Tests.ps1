@@ -17,64 +17,53 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzHealthcareDicomService'))
 Describe 'AzHealthcareDicomService' {
     It 'CreateExpanded' {
         {
-            $config = New-AzHealthcareAPIsWorkspace -Name $env.rstr3 -ResourceGroupName $env.resourceGroup -Location $env.location
-            $config.Name | Should -Be $env.rstr3
+            $config = New-AzHealthcareDicomService -Name $env.dicom1 -ResourceGroupName $env.resourceGroup -WorkspaceName $env.apiWorkspace1 -Location $env.location
+            $config.Name | Should -Be "$($env.apiWorkspace1)/$($env.dicom1)"
 
-            $config = New-AzHealthcareDicomService -Name $env.dicom1 -ResourceGroupName $env.resourceGroup -WorkspaceName $env.rstr3 -Location $env.location
-            $config.Name | Should -Be "$($env.rstr3)/$($env.dicom1)"
-
-            $config = New-AzHealthcareAPIsWorkspace -Name $env.rstr4 -ResourceGroupName $env.resourceGroup -Location $env.location
-            $config.Name | Should -Be $env.rstr4
-
-            $config = New-AzHealthcareDicomService -Name $env.dicom2 -ResourceGroupName $env.resourceGroup -WorkspaceName $env.rstr4 -Location $env.location
-            $config.Name | Should -Be "$($env.rstr4)/$($env.dicom2)"
+            $config = New-AzHealthcareDicomService -Name $env.dicom2 -ResourceGroupName $env.resourceGroup -WorkspaceName $env.apiWorkspace1 -Location $env.location
+            $config.Name | Should -Be "$($env.apiWorkspace1)/$($env.dicom2)"
         } | Should -Not -Throw
     }
 
     It 'List' {
         {
-            $config = Get-AzHealthcareDicomService -ResourceGroupName $env.resourceGroup -WorkspaceName $env.rstr3
+            $config = Get-AzHealthcareDicomService -ResourceGroupName $env.resourceGroup -WorkspaceName $env.apiWorkspace1
             $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }
 
     It 'Get' {
         {
-            $config = Get-AzHealthcareDicomService -Name $env.dicom2 -ResourceGroupName $env.resourceGroup -WorkspaceName $env.rstr4
-            $config.Name | Should -Be "$($env.rstr4)/$($env.dicom2)"
+            $config = Get-AzHealthcareDicomService -Name $env.dicom2 -ResourceGroupName $env.resourceGroup -WorkspaceName $env.apiWorkspace1
+            $config.Name | Should -Be "$($env.apiWorkspace1)/$($env.dicom2)"
         } | Should -Not -Throw
     }
 
     It 'UpdateExpanded' {
         {
-            $config = Update-AzHealthcareDicomService -Name $env.dicom2 -ResourceGroupName $env.resourceGroup -WorkspaceName $env.rstr4 -Tag @{"123"="abc"}
-            $config.Name | Should -Be "$($env.rstr4)/$($env.dicom2)"
+            $config = Update-AzHealthcareDicomService -Name $env.dicom2 -ResourceGroupName $env.resourceGroup -WorkspaceName $env.apiWorkspace1 -Tag @{"123"="abc"}
+            $config.Name | Should -Be "$($env.apiWorkspace1)/$($env.dicom2)"
         } | Should -Not -Throw
     }
 
     It 'UpdateViaIdentityExpanded' {
         {
-            $config = Get-AzHealthcareDicomService -Name $env.dicom1 -ResourceGroupName $env.resourceGroup -WorkspaceName $env.rstr3
+            $config = Get-AzHealthcareDicomService -Name $env.dicom1 -ResourceGroupName $env.resourceGroup -WorkspaceName $env.apiWorkspace1
             $config = Update-AzHealthcareDicomService -InputObject $config -Tag @{"123"="abc"}
-            $config.Name | Should -Be "$($env.rstr3)/$($env.dicom1)"
+            $config.Name | Should -Be "$($env.apiWorkspace1)/$($env.dicom1)"
         } | Should -Not -Throw
     }
 
     It 'Delete' {
         {
-            Remove-AzHealthcareDicomService -Name $env.dicom1 -ResourceGroupName $env.resourceGroup -WorkspaceName $env.rstr3
-
-            Remove-AzHealthcareAPIsWorkspace -Name $env.rstr3 -ResourceGroupName $env.resourceGroup
+            Remove-AzHealthcareDicomService -Name $env.dicom1 -ResourceGroupName $env.resourceGroup -WorkspaceName $env.apiWorkspace1
         } | Should -Not -Throw
     }
 
     It 'DeleteViaIdentity' {
         {
-            $config = Get-AzHealthcareDicomService -Name $env.dicom2 -ResourceGroupName $env.resourceGroup -WorkspaceName $env.rstr4
+            $config = Get-AzHealthcareDicomService -Name $env.dicom2 -ResourceGroupName $env.resourceGroup -WorkspaceName $env.apiWorkspace1
             Remove-AzHealthcareDicomService -InputObject $config
-
-            Remove-AzHealthcareAPIsWorkspace -Name $env.rstr4 -ResourceGroupName $env.resourceGroup
         } | Should -Not -Throw
     }
 }
- 
