@@ -78,24 +78,6 @@ A user can create an endpoint with an optimization type from the listed values.
 ### [Get-AzCdnResourceUsage](Get-AzCdnResourceUsage.md)
 Check the quota and actual usage of the CDN profiles under the given subscription.
 
-### [Get-AzCdnRoute](Get-AzCdnRoute.md)
-Gets an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
-
-### [Get-AzCdnRule](Get-AzCdnRule.md)
-Gets an existing delivery rule within a rule set.
-
-### [Get-AzCdnRuleSet](Get-AzCdnRuleSet.md)
-Gets an existing AzureFrontDoor rule set with the specified rule set name under the specified subscription, resource group and profile.
-
-### [Get-AzCdnRuleSetResourceUsage](Get-AzCdnRuleSetResourceUsage.md)
-Checks the quota and actual usage of endpoints under the given CDN profile.
-
-### [Get-AzCdnSecret](Get-AzCdnSecret.md)
-Gets an existing Secret within a profile.
-
-### [Get-AzCdnSecurityPolicy](Get-AzCdnSecurityPolicy.md)
-Gets an existing security policy within a profile.
-
 ### [Get-AzFrontDoorCdnCustomDomain](Get-AzFrontDoorCdnCustomDomain.md)
 Gets an existing AzureFrontDoor domain with the specified domain name under the specified subscription, resource group and profile.
 
@@ -119,6 +101,24 @@ Checks the quota and actual usage of endpoints under the given CDN profile.
 
 ### [Get-AzFrontDoorCdnProfileResourceUsage](Get-AzFrontDoorCdnProfileResourceUsage.md)
 Checks the quota and actual usage of endpoints under the given CDN profile.
+
+### [Get-AzFrontDoorCdnRoute](Get-AzFrontDoorCdnRoute.md)
+Gets an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
+
+### [Get-AzFrontDoorCdnRule](Get-AzFrontDoorCdnRule.md)
+Gets an existing delivery rule within a rule set.
+
+### [Get-AzFrontDoorCdnRuleSet](Get-AzFrontDoorCdnRuleSet.md)
+Gets an existing AzureFrontDoor rule set with the specified rule set name under the specified subscription, resource group and profile.
+
+### [Get-AzFrontDoorCdnRuleSetResourceUsage](Get-AzFrontDoorCdnRuleSetResourceUsage.md)
+Checks the quota and actual usage of endpoints under the given CDN profile.
+
+### [Get-AzFrontDoorCdnSecret](Get-AzFrontDoorCdnSecret.md)
+Gets an existing Secret within a profile.
+
+### [Get-AzFrontDoorCdnSecurityPolicy](Get-AzFrontDoorCdnSecurityPolicy.md)
+Gets an existing security policy within a profile.
 
 ### [Import-AzCdnEndpointContent](Import-AzCdnEndpointContent.md)
 Pre-loads a content to CDN.
@@ -150,18 +150,6 @@ Generates a dynamic SSO URI used to sign in to the CDN supplemental portal.
 Supplemental portal is used to configure advanced feature capabilities that are not yet available in the Azure portal, such as core reports in a standard profile; rules engine, advanced HTTP reports, and real-time stats and alerts in a premium profile.
 The SSO URI changes approximately every 10 minutes.
 
-### [New-AzCdnRoute](New-AzCdnRoute.md)
-Creates a new route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
-
-### [New-AzCdnRule](New-AzCdnRule.md)
-Creates a new delivery rule within the specified rule set.
-
-### [New-AzCdnSecret](New-AzCdnSecret.md)
-Creates a new Secret within the specified profile.
-
-### [New-AzCdnSecurityPolicy](New-AzCdnSecurityPolicy.md)
-Creates a new security policy within the specified profile.
-
 ### [New-AzFrontDoorCdnCustomDomain](New-AzFrontDoorCdnCustomDomain.md)
 Creates a new domain within the specified profile.
 
@@ -176,6 +164,18 @@ Creates a new origin group within the specified profile.
 
 ### [New-AzFrontDoorCdnProfile](New-AzFrontDoorCdnProfile.md)
 Creates a new Azure Front Door Standard or Azure Front Door Premium or CDN profile with a profile name under the specified subscription and resource group.
+
+### [New-AzFrontDoorCdnRoute](New-AzFrontDoorCdnRoute.md)
+Creates a new route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
+
+### [New-AzFrontDoorCdnRule](New-AzFrontDoorCdnRule.md)
+Creates a new delivery rule within the specified rule set.
+
+### [New-AzFrontDoorCdnSecret](New-AzFrontDoorCdnSecret.md)
+Creates a new Secret within the specified profile.
+
+### [New-AzFrontDoorCdnSecurityPolicy](New-AzFrontDoorCdnSecurityPolicy.md)
+Creates a new security policy within the specified profile.
 
 ### [Remove-AzCdnCustomDomain](Remove-AzCdnCustomDomain.md)
 Deletes an existing custom domain within an endpoint.
@@ -196,21 +196,6 @@ Deletes Policy
 Deletes an existing  Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified parameters.
 Deleting a profile will result in the deletion of all of the sub-resources including endpoints, origins and custom domains.
 
-### [Remove-AzCdnRoute](Remove-AzCdnRoute.md)
-Deletes an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
-
-### [Remove-AzCdnRule](Remove-AzCdnRule.md)
-Deletes an existing delivery rule within a rule set.
-
-### [Remove-AzCdnRuleSet](Remove-AzCdnRuleSet.md)
-Deletes an existing AzureFrontDoor rule set with the specified rule set name under the specified subscription, resource group and profile.
-
-### [Remove-AzCdnSecret](Remove-AzCdnSecret.md)
-Deletes an existing Secret within profile.
-
-### [Remove-AzCdnSecurityPolicy](Remove-AzCdnSecurityPolicy.md)
-Deletes an existing security policy within profile.
-
 ### [Remove-AzFrontDoorCdnCustomDomain](Remove-AzFrontDoorCdnCustomDomain.md)
 Deletes an existing AzureFrontDoor domain with the specified domain name under the specified subscription, resource group and profile.
 
@@ -226,6 +211,21 @@ Deletes an existing origin group within a profile.
 ### [Remove-AzFrontDoorCdnProfile](Remove-AzFrontDoorCdnProfile.md)
 Deletes an existing  Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified parameters.
 Deleting a profile will result in the deletion of all of the sub-resources including endpoints, origins and custom domains.
+
+### [Remove-AzFrontDoorCdnRoute](Remove-AzFrontDoorCdnRoute.md)
+Deletes an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
+
+### [Remove-AzFrontDoorCdnRule](Remove-AzFrontDoorCdnRule.md)
+Deletes an existing delivery rule within a rule set.
+
+### [Remove-AzFrontDoorCdnRuleSet](Remove-AzFrontDoorCdnRuleSet.md)
+Deletes an existing AzureFrontDoor rule set with the specified rule set name under the specified subscription, resource group and profile.
+
+### [Remove-AzFrontDoorCdnSecret](Remove-AzFrontDoorCdnSecret.md)
+Deletes an existing Secret within profile.
+
+### [Remove-AzFrontDoorCdnSecurityPolicy](Remove-AzFrontDoorCdnSecurityPolicy.md)
+Deletes an existing security policy within profile.
 
 ### [Start-AzCdnEndpoint](Start-AzCdnEndpoint.md)
 Starts an existing CDN endpoint that is on a stopped state.
@@ -274,15 +274,6 @@ Update an existing CdnWebApplicationFirewallPolicy with the specified policy nam
 ### [Update-AzCdnProfile](Update-AzCdnProfile.md)
 Updates an existing Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified profile name under the specified subscription and resource group.
 
-### [Update-AzCdnRoute](Update-AzCdnRoute.md)
-Updates an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
-
-### [Update-AzCdnRule](Update-AzCdnRule.md)
-Updates an existing delivery rule within a rule set.
-
-### [Update-AzCdnSecurityPolicy](Update-AzCdnSecurityPolicy.md)
-Updates an existing security policy within a profile.
-
 ### [Update-AzFrontDoorCdnCustomDomain](Update-AzFrontDoorCdnCustomDomain.md)
 Updates an existing domain within a profile.
 
@@ -304,4 +295,13 @@ Updates an existing origin group within a profile.
 
 ### [Update-AzFrontDoorCdnProfile](Update-AzFrontDoorCdnProfile.md)
 Updates an existing Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified profile name under the specified subscription and resource group.
+
+### [Update-AzFrontDoorCdnRoute](Update-AzFrontDoorCdnRoute.md)
+Updates an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
+
+### [Update-AzFrontDoorCdnRule](Update-AzFrontDoorCdnRule.md)
+Updates an existing delivery rule within a rule set.
+
+### [Update-AzFrontDoorCdnSecurityPolicy](Update-AzFrontDoorCdnSecurityPolicy.md)
+Updates an existing security policy within a profile.
 

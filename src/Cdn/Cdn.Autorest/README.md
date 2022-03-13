@@ -77,6 +77,37 @@ directive:
       subject-prefix: FrontDoorCdn
       subject: $1
 
+  - where:
+      subject: Route
+    set:
+      subject-prefix: FrontDoorCdn
+      subject: Route
+  - where:
+      subject: RuleSet
+    set:
+      subject-prefix: FrontDoorCdn
+      subject: RuleSet  
+  - where:
+      subject: Rule
+    set:
+      subject-prefix: FrontDoorCdn
+      subject: Rule
+  - where:
+      subject: RuleSetResourceUsage
+    set:
+      subject-prefix: FrontDoorCdn
+      subject: RuleSetResourceUsage    
+  - where:
+      subject: Secret
+    set:
+      subject-prefix: FrontDoorCdn
+      subject: Secret   
+  - where:
+      subject: SecurityPolicy
+    set:
+      subject-prefix: FrontDoorCdn
+      subject: SecurityPolicy   
+
   # https://github.com/Azure/autorest.powershell/issues/906
   - where:
       model-name: AfdDomainUpdatePropertiesParameters
