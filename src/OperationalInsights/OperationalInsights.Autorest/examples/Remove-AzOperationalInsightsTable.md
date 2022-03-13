@@ -4,6 +4,7 @@ PS C:\> Remove-AzOperationalInsightsTable -ResourceGroupName {RG-name} -Name {Ta
 
 --no output--
 ```
+Remove a table by name
 
 
 ### Example 2: Remove a default 'Heartbeat' table - fail
