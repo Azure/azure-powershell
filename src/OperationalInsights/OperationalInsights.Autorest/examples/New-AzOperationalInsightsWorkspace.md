@@ -6,3 +6,5 @@ Location Name                   ETag ResourceGroupName
 -------- ----                   ---- -----------------
 {Resource-location}   {WS-name}
 ```
+
+Creates a new LogAnalytics workspace for provided resource-group in the provided location.

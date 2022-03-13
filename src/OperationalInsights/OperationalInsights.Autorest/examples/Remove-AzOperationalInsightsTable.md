@@ -23,3 +23,5 @@ PS C:\> $tempTable = Get-AzOperationalInsightsTable -ResourceGroupName dabenham-
 PS C:\> $tempTable.RetentionInDay
 30
 ```
+
+Using Remove-AzOperationalInsightsTable cmdlet to delete a default table is used to restore table to default state. if default state was not changed - the cmdlet will fail.
