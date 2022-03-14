@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSqlInstanceLink
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a new Azure SQL Managed Instance Link.
 
 ## SYNTAX
 
@@ -29,16 +29,78 @@ New-AzSqlInstanceLink [-LinkName] <String> [-PrimaryAvailabilityGroupName] <Stri
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzSqlInstanceLink** cmdlet creates an Azure SQL Managed Instance Link by join Distributed Availability Group on SQL Server based on the parameters passed.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create a new Managed Instance Link
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "Instance01" -LinkName "Link01" -PrimaryAvailabilityGroupName "Link01PrimaryAG" -SecondaryAvailabilityGroupName "Link01SecondaryAG" -TargetDatabase "Link01DB" -SourceEndpoint "TCP://SERVER01:7022"		
+ResourceGroupName              : ResourceGroup01
+InstanceName                   : Instance01
+Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
+Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link01
+LinkName                       : Link01
+TargetDatabase                 : Link01DB
+SourceEndpoint                 : TCP://SERVER01:7022
+PrimaryAvailabilityGroupName   : Link01PrimaryAG
+SecondaryAvailabilityGroupName : Link01SecondaryAG
+ReplicationMode                : Async
+DistributedAvailabilityGroupId : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+SourceReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+LinkState                      : Copying
+LastHardenedLsn                :
 ```
 
-{{ Add example description here }}
+This command creates a new managed instance link with name Link01.
+
+### Example 2: Create a new Managed Instance Link in an instance using an instance object
+```powershell
+PS C:\> $instance = Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -Name "Instance01"
+PS C:\> New-AzSqlInstanceLink -Instance $instance -LinkName "Link01" -PrimaryAvailabilityGroupName "Link01PrimaryAG" -SecondaryAvailabilityGroupName "Link01SecondaryAG" -TargetDatabase "Link01DB" -SourceEndpoint "TCP://SERVER01:7022"		
+ResourceGroupName              : ResourceGroup01
+InstanceName                   : Instance01
+Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
+Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link01
+LinkName                       : Link01
+TargetDatabase                 : Link01DB
+SourceEndpoint                 : TCP://SERVER01:7022
+PrimaryAvailabilityGroupName   : Link01PrimaryAG
+SecondaryAvailabilityGroupName : Link01SecondaryAG
+ReplicationMode                : Async
+DistributedAvailabilityGroupId : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+SourceReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+LinkState                      : Copying
+LastHardenedLsn                :
+```
+
+This command creates a new managed instance link using an instance object.
+
+### Example 3: Create a new Managed Instance Link by piping an instance object
+```powershell
+PS C:\> $instance = Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -Name "Instance01"
+PS C:\> $instance | New-AzSqlInstanceLink -LinkName "Link01" -PrimaryAvailabilityGroupName "Link01PrimaryAG" -SecondaryAvailabilityGroupName "Link01SecondaryAG" -TargetDatabase "Link01DB" -SourceEndpoint "TCP://SERVER01:7022"		
+ResourceGroupName              : ResourceGroup01
+InstanceName                   : Instance01
+Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
+Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link01
+LinkName                       : Link01
+TargetDatabase                 : Link01DB
+SourceEndpoint                 : TCP://SERVER01:7022
+PrimaryAvailabilityGroupName   : Link01PrimaryAG
+SecondaryAvailabilityGroupName : Link01SecondaryAG
+ReplicationMode                : Async
+DistributedAvailabilityGroupId : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+SourceReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+LinkState                      : Copying
+LastHardenedLsn                :
+```
+
+This command creates a new managed instance link using an instance object.
+
 
 ## PARAMETERS
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzSqlInstanceLink
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Sets properties for an Azure SQL Instance Link.
 
 ## SYNTAX
 
@@ -39,16 +39,132 @@ Set-AzSqlInstanceLink [-ReplicationMode] <String> [-ResourceId] <String>
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Set-AzSqlInstanceLink** cmdlet modifies properties of an Azure SQL Managed Instance Link.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Set Replication mode of a Managed Instance Link to Sync
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Set-AzSqlInstanceLink -ResourceGroupName "ResourceGroup1" -InstanceName "Instance01" -LinkName "Link01" -ReplicationMode "Sync"
+ResourceGroupName              : ResourceGroup01
+InstanceName                   : Instance01
+Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
+Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link01
+LinkName                       : Link01
+TargetDatabase                 : Link01DB
+SourceEndpoint                 : TCP://SERVER01:7022
+PrimaryAvailabilityGroupName   :
+SecondaryAvailabilityGroupName :
+ReplicationMode                : Sync
+DistributedAvailabilityGroupId : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+SourceReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+LinkState                      : Copying
+LastHardenedLsn                :
 ```
 
-{{ Add example description here }}
+### Example 2: Set Replication mode of a Managed Instance Link to Async
+```powershell
+PS C:\> Set-AzSqlInstanceLink -ResourceGroupName "ResourceGroup1" -InstanceName "Instance01" -LinkName "Link01" -ReplicationMode "Async"
+ResourceGroupName              : ResourceGroup01
+InstanceName                   : Instance01
+Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
+Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link01
+LinkName                       : Link01
+TargetDatabase                 : Link01DB
+SourceEndpoint                 : TCP://SERVER01:7022
+PrimaryAvailabilityGroupName   :
+SecondaryAvailabilityGroupName :
+ReplicationMode                : Async
+DistributedAvailabilityGroupId : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+SourceReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+LinkState                      : Copying
+LastHardenedLsn                :
+```
+### Example 3: Set replication mode of a Managed Instance Link by its resource identifier
+```powershell
+PS C:\> Set-AzSqlInstanceLink -ResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link01" -ReplicationMode "Async"
+ResourceGroupName              : ResourceGroup01
+InstanceName                   : Instance01
+Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
+Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link01
+LinkName                       : Link01
+TargetDatabase                 : Link01DB
+SourceEndpoint                 : TCP://SERVER01:7022
+PrimaryAvailabilityGroupName   :
+SecondaryAvailabilityGroupName :
+ReplicationMode                : Async
+DistributedAvailabilityGroupId : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+SourceReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+LinkState                      : Copying
+LastHardenedLsn                :
+```
+
+### Example 4: Set replication mode of a Managed Instance Link by its object
+```powershell
+PS C:\> $managedInstanceLink = Get-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "Instance01" -LinkName "Link01" 
+PS C:\> Set-AzSqlInstanceLink -ManagedInstanceLink $managedInstanceLink -ReplicationMode "Async"
+ResourceGroupName              : ResourceGroup01
+InstanceName                   : Instance01
+Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
+Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link01
+LinkName                       : Link01
+TargetDatabase                 : Link01DB
+SourceEndpoint                 : TCP://SERVER01:7022
+PrimaryAvailabilityGroupName   :
+SecondaryAvailabilityGroupName :
+ReplicationMode                : Async
+DistributedAvailabilityGroupId : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+SourceReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+LinkState                      : Copying
+LastHardenedLsn                :
+```
+
+### Example 5: Set replication mode of a Managed Instance Link by mutating its object
+```powershell
+PS C:\> $managedInstanceLink = Get-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "Instance01" -LinkName "Link01" 
+PS C:\> $managedInstanceLink.ReplicationMode = "Async"
+PS C:\> Set-AzSqlInstanceLink -ManagedInstanceLink $managedInstanceLink
+ResourceGroupName              : ResourceGroup01
+InstanceName                   : Instance01
+Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
+Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link01
+LinkName                       : Link01
+TargetDatabase                 : Link01DB
+SourceEndpoint                 : TCP://SERVER01:7022
+PrimaryAvailabilityGroupName   :
+SecondaryAvailabilityGroupName :
+ReplicationMode                : Async
+DistributedAvailabilityGroupId : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+SourceReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+LinkState                      : Copying
+LastHardenedLsn                :
+```
+
+### Example 6: Set replication mode of a Managed Instance Link by its parent instance object
+```powershell
+PS C:\> $instance = Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -Name "Instance01" 
+PS C:\> Set-AzSqlInstanceLink -Instance $instance -LinkName "Link01" -ReplicationMode "Async"
+ResourceGroupName              : ResourceGroup01
+InstanceName                   : Instance01
+Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
+Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link01
+LinkName                       : Link01
+TargetDatabase                 : Link01DB
+SourceEndpoint                 : TCP://SERVER01:7022
+PrimaryAvailabilityGroupName   :
+SecondaryAvailabilityGroupName :
+ReplicationMode                : Async
+DistributedAvailabilityGroupId : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+SourceReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+LinkState                      : Copying
+LastHardenedLsn                :
+```
 
 ## PARAMETERS
 

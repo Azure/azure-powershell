@@ -294,7 +294,7 @@ Gets the vulnerability assessment settings of a managed database.
 Gets a SQL managed instance's Key Vault keys.
 
 ### [Get-AzSqlInstanceLink](Get-AzSqlInstanceLink.md)
-{{ Fill in the Synopsis }}
+Returns information about Azure SQL Managed Instance Link.
 
 ### [Get-AzSqlInstanceOperation](Get-AzSqlInstanceOperation.md)
 Gets a SQL managed instance's operations.
@@ -306,7 +306,7 @@ Returns information about the Azure SQL Instance pool.
 Returns information about an Azure SQL Instance pool's usage.
 
 ### [Get-AzSqlInstanceServerTrustCertificate](Get-AzSqlInstanceServerTrustCertificate.md)
-{{ Fill in the Synopsis }}
+Returns information about Azure SQL Server Trust Certificate.
 
 ### [Get-AzSqlInstanceTransparentDataEncryptionProtector](Get-AzSqlInstanceTransparentDataEncryptionProtector.md)
 Gets the Transparent Data Encryption (TDE) protector for a SQL managed instance.
@@ -459,13 +459,13 @@ Creates an Azure SQL Database Managed Instance.
 Creates an Azure SQL Managed Instance database.
 
 ### [New-AzSqlInstanceLink](New-AzSqlInstanceLink.md)
-{{ Fill in the Synopsis }}
+Creates a new Azure SQL Managed Instance Link.
 
 ### [New-AzSqlInstancePool](New-AzSqlInstancePool.md)
 Creates an Azure SQL Instance pool.
 
 ### [New-AzSqlInstanceServerTrustCertificate](New-AzSqlInstanceServerTrustCertificate.md)
-{{ Fill in the Synopsis }}
+Creates a new Azure SQL Server Trust Certificate.
 
 ### [New-AzSqlServer](New-AzSqlServer.md)
 Creates a SQL Database server.
@@ -573,13 +573,13 @@ Removes the information types and sensitivity labels of columns in the Azure SQL
 Removes a Key Vault key from a SQL managed instance
 
 ### [Remove-AzSqlInstanceLink](Remove-AzSqlInstanceLink.md)
-{{ Fill in the Synopsis }}
+Removes an Azure SQL Instance Link.
 
 ### [Remove-AzSqlInstancePool](Remove-AzSqlInstancePool.md)
 Removes an Azure SQL Instance pool.
 
 ### [Remove-AzSqlInstanceServerTrustCertificate](Remove-AzSqlInstanceServerTrustCertificate.md)
-{{ Fill in the Synopsis }}
+Removes an Azure SQL Server Trust Certificate.
 
 ### [Remove-AzSqlServer](Remove-AzSqlServer.md)
 Removes an Azure SQL Database server.
@@ -723,7 +723,7 @@ Sets the information types and sensitivity labels of columns in the Azure SQL Ma
 Sets the vulnerability assessment rule baseline.
 
 ### [Set-AzSqlInstanceLink](Set-AzSqlInstanceLink.md)
-{{ Fill in the Synopsis }}
+Sets properties for an Azure SQL Instance Link.
 
 ### [Set-AzSqlInstancePool](Set-AzSqlInstancePool.md)
 Sets properties for an Azure SQL Instance pool.

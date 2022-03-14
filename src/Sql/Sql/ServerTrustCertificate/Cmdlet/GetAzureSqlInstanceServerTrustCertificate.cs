@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
 {
 
     /// <summary>
-    /// Cmdlet to create a new Server Trust certificate
+    /// Cmdlet to get a new Server Trust certificate
     /// </summary>
     [Cmdlet(
         VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceServerTrustCertificate",
