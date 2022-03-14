@@ -111,8 +111,10 @@ The **ResourceId** property of $ResourceGroup identifies the resource group.
 
 ### Example 4: Policy assignment at resource group level with policy parameter file
 Create a file called _AllowedLocations.json_ in the local working directory with the following content.
-```
-{
+
+
+```powershell
+<#{
     "listOfAllowedLocations":  {
       "value": [
         "westus",
@@ -120,10 +122,7 @@ Create a file called _AllowedLocations.json_ in the local working directory with
         "japanwest"
       ]
     }
-}
-```
-
-```powershell
+}#>
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
 $Policy = Get-AzPolicyDefinition -BuiltIn | Where-Object {$_.Properties.DisplayName -eq 'Allowed locations'}
 New-AzPolicyAssignment -Name 'RestrictLocationPolicyAssignment' -PolicyDefinition $Policy -Scope $ResourceGroup.ResourceId -PolicyParameter .\AllowedLocations.json

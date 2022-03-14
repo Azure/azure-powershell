@@ -40,8 +40,9 @@ The **New-AzPolicyDefinition** cmdlet creates a policy definition that includes 
 ## EXAMPLES
 
 ### Example 1: Create a policy definition by using a policy file
-```
-{
+
+```powershell
+<#{
    "if": {
       "field": "location",
       "notIn": ["eastus", "westus", "centralus"]
@@ -49,10 +50,7 @@ The **New-AzPolicyDefinition** cmdlet creates a policy definition that includes 
    "then": {
       "effect": "audit"
    }
-}
-```
-
-```powershell
+}#>
 New-AzPolicyDefinition -Name 'LocationDefinition' -Policy C:\LocationPolicy.json
 ```
 
@@ -64,8 +62,10 @@ This command creates a policy definition named LocationDefinition that contains 
 Note: Values provided on the command line (e.g. parameters, metadata) override corresponding values present in the file.
 
 ### Example 2: Create a parameterized policy definition using inline parameters
-```
-{
+
+
+```powershell
+<#{
    "if": {
       "field": "location",
       "notIn": "[parameters('listOfAllowedLocations')]"
@@ -73,10 +73,7 @@ Note: Values provided on the command line (e.g. parameters, metadata) override c
    "then": {
       "effect": "audit"
    }
-}
-```
-
-```powershell
+}#>
 New-AzPolicyDefinition -Name 'LocationDefinition' -Policy C:\LocationPolicy.json -Parameter '{ "listOfAllowedLocations": { "type": "array" } }'
 ```
 
