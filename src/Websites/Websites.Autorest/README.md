@@ -1613,4 +1613,15 @@ directive:
           - Status
           - Kind
           - WebJobType
+# Becaue add webjob swagger, according to the modle has two id properties. one is resource id, other is job history id. For keep origin id(resource id).
+  - where:
+      model-name: WebsitesIdentity
+      property-name: Id
+    set:
+      property-name: JobHistoryId
+  - where:
+      model-name: WebsitesIdentity
+      property-name: Id1
+    set:
+      property-name: Id
 ```
