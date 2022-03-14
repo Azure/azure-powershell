@@ -130,14 +130,6 @@ function Test-ManagedInstanceLink
 		Assert-NotNull $listLink
 		Assert-AreEqual	$listLink.Count 1
 
-		# Delete non existant link THROWS (via DeleteByParentObjectParameterSet)
-		$msgExcDel = "The requested resource of type '" + $certType + "' with name '" + $certName1 + "' was not found."
-		Assert-Throws { Remove-AzSqlInstanceServerTrustCertificate -Instance $instance -CertificateName $certName1 -Force } $msgExc
-
-		# Delete non existant link THROWS (via DeleteByInputObjectParameterSet)
-		$msgExcDel = "The requested resource of type '" + $certType + "' with name '" + $certName1 + "' was not found."
-		Assert-Throws { Remove-AzSqlInstanceServerTrustCertificate -ManagedInstanceLink $getLinkByParentObjectParameterSet -Force } $msgExc
-
 		# Remove the Link
 		$rmLink = Remove-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $linkName -Force 
 		Write-Debug ('$rmLink is ' + (ConvertTo-Json $rmLink))
@@ -154,6 +146,14 @@ function Test-ManagedInstanceLink
 		$listLinksZero = Get-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName
 		Write-Debug ('$listLinksZero is ' + (ConvertTo-Json $listLinksZero))
 		Assert-Null $listLinksZero
+		
+		# Delete non existant link THROWS (via DeleteByParentObjectParameterSet)
+		$msgExcDel = "The requested resource of type '" + $linkType + "' with name '" + $linkName + "' was not found."
+		Assert-Throws { Remove-AzSqlInstanceLink -Instance $instance -LinkName $certName1 -Force } $msgExc
+
+		# Delete non existant link THROWS (via DeleteByInputObjectParameterSet)
+		$msgExcDel = "The requested resource of type '" + $linkType + "' with name '" + $linkName + "' was not found."
+		Assert-Throws { Remove-AzSqlInstanceLink -ManagedInstanceLink $getLinkByParentObjectParameterSet -Force } $msgExc
 	}
 	finally
 	{
@@ -284,7 +284,7 @@ function Test-ManagedInstanceLinkErrHandling
 
 <#
 	.SYNOPSIS
-	Tests creating a server trust certificate
+	Tests creating a managed instance link
 #>
 function Test-ManagedInstanceLinkPiping
 {
