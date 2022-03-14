@@ -2134,11 +2134,6 @@ function Test-NewAzStorageContext
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_LRS';
         $kind = 'StorageV2'
-        $containerName = "container"+ $rgname
-        $blobEndpoint = 'https://' + $stoname + '.blob.core.windows.net/'
-        $tableEndpoint = 'https://' + $stoname + '.table.core.windows.net/'
-        $queueEndpoint = 'https://' + $stoname + '.queue.core.windows.net/'
-        $fileEndpoint = 'https://' + $stoname + '.file.core.windows.net/'
 
         $loc = Get-ProviderLocation ResourceManagement;
         New-AzResourceGroup -Name $rgname -Location $loc;
@@ -2146,6 +2141,10 @@ function Test-NewAzStorageContext
         New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind;
 
         $sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname;
+        $blobEndpoint = $sto.PrimaryEndpoints.Blob
+        $tableEndpoint = $sto.PrimaryEndpoints.Table
+        $queueEndpoint = $sto.PrimaryEndpoints.Queue
+        $fileEndpoint = $sto.PrimaryEndpoints.File
         Assert-AreEqual $stoname $sto.StorageAccountName;
 
         $stokey = (Get-AzStorageAccountKey -ResourceGroupName $rgname -StorageAccountName $sto.StorageAccountName)[0].Value

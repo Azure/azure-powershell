@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fixed the issue that custom URIs are not supported for context creation [#17285]
+* Supported create storage context with customized blob, queue, file, table service endpoint
     - `New-AzStorageContext`
 
 ## Version 4.3.0

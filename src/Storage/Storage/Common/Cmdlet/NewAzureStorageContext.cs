@@ -256,31 +256,31 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         private string environmentName = string.Empty;
 
         private const string BlobServiceEndPointHelpMessage = "Azure storage blob service endpoint";
-        [Parameter(Mandatory = true, HelpMessage = EndPointHelpMessage, ParameterSetName = AccountNameKeyServiceEndpointParameterSet)]
-        [Parameter(HelpMessage = EndPointHelpMessage, ParameterSetName = AnonymousServiceEndpointParameterSet)]
-        [Parameter(HelpMessage = EndPointHelpMessage, ParameterSetName = SasTokenServiceEndpointParameterSet)]
-        [Parameter(HelpMessage = EndPointHelpMessage, ParameterSetName = OAuthServiceEndpointParameterSet)]
+        [Parameter(Mandatory = true, HelpMessage = BlobServiceEndPointHelpMessage, ParameterSetName = AccountNameKeyServiceEndpointParameterSet)]
+        [Parameter(HelpMessage = BlobServiceEndPointHelpMessage, ParameterSetName = AnonymousServiceEndpointParameterSet)]
+        [Parameter(HelpMessage = BlobServiceEndPointHelpMessage, ParameterSetName = SasTokenServiceEndpointParameterSet)]
+        [Parameter(HelpMessage = BlobServiceEndPointHelpMessage, ParameterSetName = OAuthServiceEndpointParameterSet)]
         public string BlobEndpoint { get; set; }
 
         private const string FileServiceEndPointHelpMessage = "Azure storage file service endpoint";
-        [Parameter(HelpMessage = EndPointHelpMessage, ParameterSetName = AccountNameKeyServiceEndpointParameterSet)]
-        [Parameter(HelpMessage = EndPointHelpMessage, ParameterSetName = AnonymousServiceEndpointParameterSet)]
-        [Parameter(HelpMessage = EndPointHelpMessage, ParameterSetName = SasTokenServiceEndpointParameterSet)]
-        [Parameter(HelpMessage = EndPointHelpMessage, ParameterSetName = OAuthServiceEndpointParameterSet)]
+        [Parameter(HelpMessage = FileServiceEndPointHelpMessage, ParameterSetName = AccountNameKeyServiceEndpointParameterSet)]
+        [Parameter(HelpMessage = FileServiceEndPointHelpMessage, ParameterSetName = AnonymousServiceEndpointParameterSet)]
+        [Parameter(HelpMessage = FileServiceEndPointHelpMessage, ParameterSetName = SasTokenServiceEndpointParameterSet)]
+        [Parameter(HelpMessage = FileServiceEndPointHelpMessage, ParameterSetName = OAuthServiceEndpointParameterSet)]
         public string FileEndpoint { get; set; }
 
         private const string QueueServiceEndPointHelpMessage = "Azure storage queue service endpoint";
-        [Parameter(HelpMessage = EndPointHelpMessage, ParameterSetName = AccountNameKeyServiceEndpointParameterSet)]
-        [Parameter(HelpMessage = EndPointHelpMessage, ParameterSetName = AnonymousServiceEndpointParameterSet)]
-        [Parameter(HelpMessage = EndPointHelpMessage, ParameterSetName = SasTokenServiceEndpointParameterSet)]
-        [Parameter(HelpMessage = EndPointHelpMessage, ParameterSetName = OAuthServiceEndpointParameterSet)]
+        [Parameter(HelpMessage = QueueServiceEndPointHelpMessage, ParameterSetName = AccountNameKeyServiceEndpointParameterSet)]
+        [Parameter(HelpMessage = QueueServiceEndPointHelpMessage, ParameterSetName = AnonymousServiceEndpointParameterSet)]
+        [Parameter(HelpMessage = QueueServiceEndPointHelpMessage, ParameterSetName = SasTokenServiceEndpointParameterSet)]
+        [Parameter(HelpMessage = QueueServiceEndPointHelpMessage, ParameterSetName = OAuthServiceEndpointParameterSet)]
         public string QueueEndpoint { get; set; }
 
         private const string TableServiceEndPointHelpMessage = "Azure storage table service endpoint";
-        [Parameter(HelpMessage = EndPointHelpMessage, ParameterSetName = AccountNameKeyServiceEndpointParameterSet)]
-        [Parameter(HelpMessage = EndPointHelpMessage, ParameterSetName = AnonymousServiceEndpointParameterSet)]
-        [Parameter(HelpMessage = EndPointHelpMessage, ParameterSetName = SasTokenServiceEndpointParameterSet)]
-        [Parameter(HelpMessage = EndPointHelpMessage, ParameterSetName = OAuthServiceEndpointParameterSet)]
+        [Parameter(HelpMessage = TableServiceEndPointHelpMessage, ParameterSetName = AccountNameKeyServiceEndpointParameterSet)]
+        [Parameter(HelpMessage = TableServiceEndPointHelpMessage, ParameterSetName = AnonymousServiceEndpointParameterSet)]
+        [Parameter(HelpMessage = TableServiceEndPointHelpMessage, ParameterSetName = SasTokenServiceEndpointParameterSet)]
+        [Parameter(HelpMessage = TableServiceEndPointHelpMessage, ParameterSetName = OAuthServiceEndpointParameterSet)]
         public string TableEndpoint { get; set; }
 
         /// <summary>
