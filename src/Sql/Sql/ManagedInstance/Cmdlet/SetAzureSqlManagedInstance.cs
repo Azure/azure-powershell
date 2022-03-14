@@ -275,7 +275,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         [PSArgumentCompleter("SystemAssigned", "None")]
         public string ServicePrincipalType { get; set; }
 
-
         /// <summary>
         /// Get the instance to update
         /// </summary>
