@@ -37,8 +37,10 @@ Gets a Kusto cluster principalAssignment.
 
 ### Example 1: List all Kusto cluster principalAssignment
 ```powershell
-PS C:\> Get-AzKustoClusterPrincipalAssignment -ResourceGroupName testrg -ClusterName testnewkustocluster
+Get-AzKustoClusterPrincipalAssignment -ResourceGroupName testrg -ClusterName testnewkustocluster
+```
 
+```output
 Name                                Type
 ----                                ----
 testnewkustocluster/kustoprincipal1 Microsoft.Kusto/Clusters/PrincipalAssignments
@@ -48,8 +50,10 @@ The above command lists all principalAssignment in the cluster "testnewkustoclus
 
 ### Example 2: Gets a Kusto cluster principalAssignment by name
 ```powershell
-PS C:\> Get-AzKustoClusterPrincipalAssignment -ResourceGroupName testrg -ClusterName testnewkustocluster -PrincipalAssignmentName kustoprincipal1
+Get-AzKustoClusterPrincipalAssignment -ResourceGroupName testrg -ClusterName testnewkustocluster -PrincipalAssignmentName kustoprincipal1
+```
 
+```output
 Name                                Type
 ----                                ----
 testnewkustocluster/kustoprincipal1 Microsoft.Kusto/Clusters/PrincipalAssignments

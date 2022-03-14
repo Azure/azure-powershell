@@ -27,13 +27,13 @@ Please note some properties can be set only during cloud service creation.
 ### Example 1: Add RDP extension to existing cloud service
 ```powershell
 # Create RDP extension object
-PS C:\> $rdpExtension = New-AzCloudServiceRemoteDesktopExtensionObject -Name "RDPExtension" -Credential $credential -Expiration $expiration -TypeHandlerVersion "1.2.1"
+$rdpExtension = New-AzCloudServiceRemoteDesktopExtensionObject -Name "RDPExtension" -Credential $credential -Expiration $expiration -TypeHandlerVersion "1.2.1"
 # Get existing cloud service
-PS C:\> $cloudService = Get-AzCloudService -ResourceGroup "ContosOrg" -CloudServiceName "ContosoCS"
+$cloudService = Get-AzCloudService -ResourceGroup "ContosOrg" -CloudServiceName "ContosoCS"
 # Add RDP extension to existing cloud service extension object
-PS C:\> $cloudService.ExtensionProfile.Extension = $cloudService.ExtensionProfile.Extension + $rdpExtension
+$cloudService.ExtensionProfile.Extension = $cloudService.ExtensionProfile.Extension + $rdpExtension
 # Update cloud service
-PS C:\> $cloudService | Update-AzCloudService
+$cloudService | Update-AzCloudService
 ```
 
 Above set of commands adds a RDP extension to already existing cloud service named ContosoCS that belongs to the resource group named ContosOrg.
@@ -41,11 +41,11 @@ Above set of commands adds a RDP extension to already existing cloud service nam
 ### Example 2: Remove all extensions from cloud service
 ```powershell
 # Get existing cloud service
-PS C:\> $cloudService = Get-AzCloudService -ResourceGroup "ContosOrg" -CloudServiceName "ContosoCS"
+$cloudService = Get-AzCloudService -ResourceGroup "ContosOrg" -CloudServiceName "ContosoCS"
 # Set extension to empty list
-PS C:\> $cloudService.ExtensionProfile.Extension = @()
+$cloudService.ExtensionProfile.Extension = @()
 # Update cloud service
-PS C:\> $cloudService | Update-AzCloudService
+$cloudService | Update-AzCloudService
 ```
 
 Above set of commands removes all extensions from existing cloud service named ContosoCS that belongs to the resource group named ContosOrg.
@@ -53,11 +53,11 @@ Above set of commands removes all extensions from existing cloud service named C
 ### Example 3: Remove RDP extension from cloud service
 ```powershell
 # Get existing cloud service
-PS C:\> $cloudService = Get-AzCloudService -ResourceGroup "ContosOrg" -CloudServiceName "ContosoCS"
+$cloudService = Get-AzCloudService -ResourceGroup "ContosOrg" -CloudServiceName "ContosoCS"
 # Remove extension by name RDPExtension
-PS C:\> $cloudService.ExtensionProfile.Extension = $cloudService.ExtensionProfile.Extension | Where-Object { $_.Name -ne "RDPExtension" }
+$cloudService.ExtensionProfile.Extension = $cloudService.ExtensionProfile.Extension | Where-Object { $_.Name -ne "RDPExtension" }
 # Update cloud service
-PS C:\> $cloudService | Update-AzCloudService
+$cloudService | Update-AzCloudService
 ```
 
 Above set of commands removes RDP extension from existing cloud service named ContosoCS that belongs to the resource group named ContosOrg.
@@ -65,20 +65,20 @@ Above set of commands removes RDP extension from existing cloud service named Co
 ### Example 4: Scale-Out / Scale-In role instances
 ```powershell
 # Get existing cloud service
-PS C:\> $cloudService = Get-AzCloudService -ResourceGroup "ContosOrg" -CloudServiceName "ContosoCS"
+$cloudService = Get-AzCloudService -ResourceGroup "ContosOrg" -CloudServiceName "ContosoCS"
 
 # Scale-out all role instance count by 1
-PS C:\> $cloudService.RoleProfile.Role | ForEach-Object {$_.SkuCapacity += 1}
+$cloudService.RoleProfile.Role | ForEach-Object {$_.SkuCapacity += 1}
 
 # Scale-in ContosoFrontend role instance count by 1
-PS C:\> $role = $cloudService.RoleProfile.Role | Where-Object {$_.Name -eq "ContosoFrontend"}
-PS C:\> $role.SkuCapacity -= 1
+$role = $cloudService.RoleProfile.Role | Where-Object {$_.Name -eq "ContosoFrontend"}
+$role.SkuCapacity -= 1
 
 # Update cloud service configuration as per the new role instance count
-PS C:\> $cloudService.Configuration = $configuration
+$cloudService.Configuration = $configuration
 
 # Update cloud service
-PS C:\> $cloudService | Update-AzCloudService
+$cloudService | Update-AzCloudService
 ```
 
 Above set of commands shows how to scale-out and scale-in role instance count for cloud service named ContosoCS that belongs to the resource group named ContosOrg.
@@ -217,10 +217,13 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   - `[CloudServiceName <String>]`: 
+  - `[IPConfigurationName <String>]`: The IP configuration name.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: Name of the location that the OS version pertains to.
+  - `[NetworkInterfaceName <String>]`: The name of the network interface.
   - `[OSFamilyName <String>]`: Name of the OS family.
   - `[OSVersionName <String>]`: Name of the OS version.
+  - `[PublicIPAddressName <String>]`: The name of the public IP Address.
   - `[ResourceGroupName <String>]`: 
   - `[RoleInstanceName <String>]`: Name of the role instance.
   - `[RoleName <String>]`: Name of the role.

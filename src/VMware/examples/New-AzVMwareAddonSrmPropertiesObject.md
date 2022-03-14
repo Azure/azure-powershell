@@ -1,7 +1,8 @@
 ### Example 1: Create a local SRM object for the Addon Property parameter
 ```powershell
-PS C:\> New-AzVMwareAddonSrmPropertiesObject -LicenseKey "YourLicenseKeyValue"
-
+New-AzVMwareAddonSrmPropertiesObject -LicenseKey "YourLicenseKeyValue"
+```
+```output
 AddonType ProvisioningState LicenseKey
 --------- ----------------- ----------
 SRM                         YourLicenseKeyValue
