@@ -1,9 +1,7 @@
 ### Example 1: Create a configuration for kubernetes cluster
 ```powershell
-New-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azps_test_cluster -Name azpstestk8s01 -RepositoryUrl http://github.com/xxxx
-```
+PS C:\> New-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azps_test_cluster -Name azpstestk8s01 -RepositoryUrl http://github.com/xxxx
 
-```output
 Name          Type
 ----          ----
 azpstestk8s01 Microsoft.KubernetesConfiguration/sourceControlConfigurations
@@ -13,10 +11,8 @@ This command creates a configuration for kubernetes cluster.
 
 ### Example 2: Create a configuration for kubernetes cluster with specify paramter OperatorNamespace
 ```powershell
-New-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azps_test_cluster -Name azpstestk8s02 -RepositoryUrl http://github.com/xxxx -OperatorNamespace namespace-t01
-```
+PS C:\> New-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azps_test_cluster -Name azpstestk8s02 -RepositoryUrl http://github.com/xxxx -OperatorNamespace namespace-t01
 
-```output
 Name          Type
 ----          ----
 azpstestk8s02 Microsoft.KubernetesConfiguration/sourceControlConfigurations
