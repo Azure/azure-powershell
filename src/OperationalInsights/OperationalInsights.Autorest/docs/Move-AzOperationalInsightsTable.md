@@ -33,7 +33,7 @@ Migrate a Log Analytics table from support of the Data Collector API and Custom 
 ```powershell
 PS C:\> Move-AzOperationalInsightsTable -ResourceGroupName {RG-name} -Name {Table-name} -WorkspaceName {WS-name}
 
-no output if command is successful 
+no output if command is successfull 
 ```
 
 Migrate classic table

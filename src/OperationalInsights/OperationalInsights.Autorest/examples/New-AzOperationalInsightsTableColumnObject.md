@@ -7,6 +7,7 @@ DataTypeHint Description                                                        
              Type of agent the data was collected from. Possible values are OpsManager (Windows agent) or Linux.                                       SourceSystem
 
 ```
+Creates a TableColumnObject(1 of 2 that are required) which is required to use "New-AzOperationalInsightsTable" cmdlet.
 
 ### Example 2: Create a new Column which is used for New-AzOperationalInsightsTable cmdlet
 ```powershell
@@ -17,4 +18,4 @@ DataTypeHint Description                           DisplayName IsDefaultDisplay 
              Date and time the record was created.                                       TimeGenerated
 
 ```
-Creates a TableColumnObject which is required to use "New-AzOperationalInsightsTable" cmdlet.
+Creates a TableColumnObject(2 of 2 that are required) which is required to use "New-AzOperationalInsightsTable" cmdlet.
