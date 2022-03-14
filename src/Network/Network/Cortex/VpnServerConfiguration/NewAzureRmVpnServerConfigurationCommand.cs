@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "The list of VpnServerConfigurationPolicyGroups that this P2SVpnGateway needs to have.")]
-        public PSVpnServerConfigurationPolicyGroup[] ConfigurationPolicyGroups { get; set; }
+        public PSVpnServerConfigurationPolicyGroup[] ConfigurationPolicyGroup { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Commands.Network
                 this.AadAudience,
                 this.AadIssuer,
                 this.VpnClientIpsecPolicy,
-                this.ConfigurationPolicyGroups);
+                this.ConfigurationPolicyGroup);
 
             ConfirmAction(
                 Properties.Resources.CreatingResourceMessage,

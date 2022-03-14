@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "The list of VpnServerConfigurationPolicyGroups that this P2SVpnGateway needs to have.")]
-        public PSVpnServerConfigurationPolicyGroup[] ConfigurationPolicyGroups { get; set; }
+        public PSVpnServerConfigurationPolicyGroup[] ConfigurationPolicyGroup { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -302,10 +302,10 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             // Modify the vpnServerConfigurationPolicyGroups
-            if (this.ConfigurationPolicyGroups != null)
+            if (this.ConfigurationPolicyGroup != null)
             {
                 vpnServerConfigurationToUpdate.ConfigurationPolicyGroups = new List<PSVpnServerConfigurationPolicyGroup>();
-                vpnServerConfigurationToUpdate.ConfigurationPolicyGroups.AddRange(this.ConfigurationPolicyGroups);
+                vpnServerConfigurationToUpdate.ConfigurationPolicyGroups.AddRange(this.ConfigurationPolicyGroup);
             }
 
             // VpnAuthenticationType = Certificate related validations.
