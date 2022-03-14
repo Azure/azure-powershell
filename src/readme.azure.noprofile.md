@@ -7,7 +7,7 @@ powershell: true
 help-link-prefix: https://docs.microsoft.com/powershell/module/
 license-header: MICROSOFT_MIT_NO_VERSION
 pwsh-license-header: MICROSOFT_APACHE_NO_VERSION
-branch: master
+branch: main
 repo: https://github.com/Azure/azure-rest-api-specs/blob/$(branch)
 metadata:
   authors: Microsoft Corporation

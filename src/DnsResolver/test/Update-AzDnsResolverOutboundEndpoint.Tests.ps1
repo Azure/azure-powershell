@@ -1,3 +1,10 @@
+."$PSScriptRoot\testDataGenerator.ps1"
+."$PSScriptRoot\virtualNetworkClient.ps1"
+."$PSScriptRoot\outboundEndpointAssertions.ps1"
+."$PSScriptRoot\Constants.ps1"
+
+Add-AssertionOperator -Name 'BeSuccessfullyCreatedOutboundEndpoint' -Test $Function:BeSuccessfullyCreatedOutboundEndpoint
+
 $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
 if (-Not (Test-Path -Path $loadEnvPath)) {
     $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
@@ -12,11 +19,29 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-AzDnsResolverOutboundEndpoint' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'Update outbound endpoint by adding tag, expect outbound endpoint updated' {
+        # ARRANGE
+        $dnsResolverName = "psdnsresolvername50";
+        $outboundEndpointName =  "psinboundendpointname50";
+        $virtualNetworkName = "psvirtualnetworkname50";
+        
+        if ($TestMode -eq "Record")
+        {
+            $virtualNetwork = CreateVirtualNetwork -SubscriptionId $SUBSCRIPTION_ID -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkName $virtualNetworkName;
+            $subnet = CreateSubnet -SubscriptionId $SUBSCRIPTION_ID -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkName $virtualNetworkName;
+        }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkId $virtualNetwork.Id -Location $LOCATION
+        
+        New-AzDnsResolverOutboundEndpoint -DnsResolverName $dnsResolverName -Name $outboundEndpointName -ResourceGroupName $RESOURCE_GROUP_NAME -SubnetId $subnet.Id -Location $LOCATION
+
+        $tag  = GetRandomHashtable -size 5
+
+        # ACT
+        $updatedOutboundEndpoint = Update-AzDnsResolverOutboundEndpoint -Name $outboundEndpointName -DnsResolverName $dnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME -Tag $tag
+
+        # ASSERT
+        $updatedOutboundEndpoint | Should -BeSuccessfullyCreatedOutboundEndpoint
+        $updatedOutboundEndpoint.Tag.Count | Should -Be $tag.Count
     }
 }

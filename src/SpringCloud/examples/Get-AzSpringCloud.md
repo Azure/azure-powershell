@@ -1,6 +1,9 @@
 ### Example 1: Get Spring Cloud Service by name
 ```powershell
-PS C:\> Get-AzSpringCloud -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service
+Get-AzSpringCloud -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service
+```
+
+```output
 ConfigServerPropertiesErrorCode                  :
 ConfigServerPropertiesErrorMessage               :
 ConfigServerPropertyState                        : Succeeded
@@ -50,7 +53,10 @@ Get Spring Cloud Service by name
 
 ### Example 2: List all the spring cloud service under the resource group.
 ```powershell
-PS C:\> Get-AzSpringCloud -ResourceGroupName spring-cloud-rg
+Get-AzSpringCloud -ResourceGroupName spring-cloud-rg
+```
+
+```output
 Location Name                Type
 -------- ----                ----
 eastus   spring-cloud-rg Microsoft.AppPlatform/Spring

@@ -24,8 +24,10 @@ Returns a list of language extensions that can run within KQL queries.
 
 ### Example 1: List all language extensions set for a cluster
 ```powershell
-PS C:\> Get-AzKustoClusterLanguageExtension -ResourceGroupName testrg -ClusterName testnewkustocluster
+Get-AzKustoClusterLanguageExtension -ResourceGroupName testrg -ClusterName testnewkustocluster
+```
 
+```output
 Name
 ----
 R

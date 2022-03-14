@@ -184,9 +184,6 @@ function Update-AzADServicePrincipal {
     ${InputObject},
 
     [Parameter(ParameterSetName = 'SPNWithDisplayNameParameterSet', Mandatory)]
-    [Parameter(ParameterSetName = 'SpObjectIdWithDisplayNameParameterSet')]
-    [Parameter(ParameterSetName = 'SpApplicationIdWithDisplayNameParameterSet')]
-    [Parameter(ParameterSetName = 'InputObjectWithDisplayNameParameterSet')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
@@ -560,6 +557,7 @@ function Update-AzADServicePrincipal {
   )
 
   process {
+    $param = @{}
     if ($PSBoundParameters['PassThru']) {
       $shouldPassThru = $PSBoundParameters['PassThru']
       $null = $PSBoundParameters.Remove('PassThru')
@@ -574,51 +572,63 @@ function Update-AzADServicePrincipal {
       $null = $PSBoundParameters.Remove('PasswordCredential')
     }
     if ($PSBoundParameters['IdentifierUri']) {
-      $iu = $PSBoundParameters['IdentifierUri']
+      $param['IdentifierUri'] = $PSBoundParameters['IdentifierUri']
       $null = $PSBoundParameters.Remove('IdentifierUri')
     }
+    if ($PSBoundParameters['Displayname']) {
+      $param['Displayname'] = $PSBoundParameters['Displayname']
+      $null = $PSBoundParameters.Remove('Displayname')
+    }
+    if ($PSBoundParameters['Homepage']) {
+      $param['Homepage'] = $PSBoundParameters['Homepage']
+      $null = $PSBoundParameters.Remove('Homepage')
+    }
 
-    $param = @{}
     switch ($PSCmdlet.ParameterSetName) {
       'SpObjectIdWithDisplayNameParameterSet' {
+        $sp = (Get-AzADServicePrincipal -ObjectId $PSBoundParameters['ObjectId'])
+        $param['ApplicationId'] = $sp.AppId
         $PSBoundParameters['Id'] = $PSBoundParameters['ObjectId']
         $null = $PSBoundParameters.Remove('ObjectId')
         break
       } 
       'SpApplicationIdWithDisplayNameParameterSet' {
-        try {
-          $param['ApplicationId'] = $PSBoundParameters['ApplicationId']
-          $PSBoundParameters['Id'] = (Get-AzADServicePrincipal @param).Id
-        }
-        catch {
-          throw
-        }
+        $param['ApplicationId'] = $PSBoundParameters['ApplicationId']
+        $sp = Get-AzADServicePrincipal -ApplicationId $PSBoundParameters['ApplicationId']
+        $PSBoundParameters['Id'] = $sp.Id
         $null = $PSBoundParameters.Remove('ApplicationId')
         break
       }
       'SPNWithDisplayNameParameterSet' {
-        try {
-          $param['ServicePrincipalName'] = $PSBoundParameters['ServicePrincipalName']
-          $PSBoundParameters['Id'] = (Get-AzADServicePrincipal @param).Id
-        }
-        catch {
-          throw
-        }
+        [System.Array]$list = Get-AzADServicePrincipal -ServicePrincipalName $PSBoundParameters['ServicePrincipalName']
+        if(1 -lt $list.Count) {
+          Write-Error "More than one service principal found with service principal Name '$($PSBoundParameters['ServicePrincipalName'])'. Please use the Get-AzADServicePrincipal cmdlet to get the object id of the desired service principal."
+          return
+        } elseif (1 -eq $list.Count) {
+          $PSBoundParameters['Id'] = $list[0].Id
+          $param['ApplicationId'] = $list[0].AppId
+        } else {
+          Write-Error "Service principal with service principal name '$($PSBoundParameters['ServicePrincipalName'])' does not exist."
+          return
+      }
         $null = $PSBoundParameters.Remove('ServicePrincipalName')
+        break
+      }
+      'InputObjectWithDisplayNameParameterSet' {
+        $PSBoundParameters['Id'] = $PSBoundParameters['InputObject'].Id
+        $param['ApplicationId'] = $PSBoundParameters['InputObject'].AppId
+        $null = $PSBoundParameters.Remove('InputObject')
+        break
       }
     }
 
-    MSGraph.internal\Update-AzADServicePrincipal @PSBoundParameters
-
-    $param = @{'ObjectId'=$PSBoundParameters['Id']}
     if ($PSBoundParameters['Debug']) {
       $param['Debug'] = $PSBoundParameters['Debug']
     }
-    if ($iu) {
-      $param['IdentifierUri'] = $iu
-      Update-AzADApplication @param
-      $null = $param.Remove('IdentifierUri')
-    }
+    Update-AzADApplication @param
+    $appid = $param['ApplicationId']
+    $param=@{'ApplicationId'=$appid}
+
     if ($pc) {
       $param['PasswordCredentials'] = $pc
     }
@@ -626,8 +636,10 @@ function Update-AzADServicePrincipal {
       $param['KeyCredentials'] = $kc
     }
     if ($pc -or $kc) {
-      New-AzADAppCredential @param
+      $null = New-AzADAppCredential @param
     }
+
+    $sp=Az.MSGraph.internal\Update-AzADServicePrincipal @PSBoundParameters
 
     if ($shouldPassThru) {
       $PSCmdlet.WriteObject($true)

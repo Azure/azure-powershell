@@ -250,35 +250,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 }
             }
 
-            if (suggestionCount > 1)
-            {
-                // Add the survey/feedback cmdlet at the end if the user isn't typing it.
-                bool isSurveyCmdletFound = false;
-
-                if (result != null)
-                {
-                    foreach (var predictiveCommand in result.SourceTexts)
-                    {
-                        if (string.Equals(predictiveCommand, _surveyCmdlets[_azContext.Cohort].Command, StringComparison.Ordinal))
-                        {
-                            isSurveyCmdletFound = true;
-                            break;
-                        }
-                    }
-                }
-                else
-                {
-                    result = new CommandLineSuggestion();
-                }
-
-                if (!isSurveyCmdletFound)
-                {
-                    var toAddCmdlet = _surveyCmdlets[_azContext.Cohort].Command;
-                    var toAddDescription = _surveyCmdlets[_azContext.Cohort].Description;
-                    result.AddSuggestion(new PredictiveSuggestion($"{toAddCmdlet} # {toAddDescription}", toAddCmdlet), toAddCmdlet, SuggestionSource.StaticCommands);
-                }
-            }
-
             return result;
         }
 

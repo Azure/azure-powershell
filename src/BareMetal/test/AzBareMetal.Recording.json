@@ -1,0 +1,243 @@
+{
+  "AzBareMetal+[NoContext]+List+$GET+https://management.azure.com/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/providers/Microsoft.BareMetalInfrastructure/bareMetalInstances?api-version=2021-08-09+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/providers/Microsoft.BareMetalInfrastructure/bareMetalInstances?api-version=2021-08-09",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "d620ca88-8c3d-4347-8ecf-a28c5b14c670" ],
+        "CommandName": [ "Get-AzBareMetal" ],
+        "FullCommandName": [ "Get-AzBareMetal_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.BareMetal/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "43f7578d-189e-4a90-b3f0-69fd1f11d116", "aae70fff-7605-42c2-8e30-e20bbf4abbc9", "63703ffd-577c-4337-8557-dc80a1df6e9b" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-request-id": [ "5656617b-0f19-4bdb-952b-6a82e67bdd6d" ],
+        "x-ms-correlation-request-id": [ "5656617b-0f19-4bdb-952b-6a82e67bdd6d" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20220222T084932Z:5656617b-0f19-4bdb-952b-6a82e67bdd6d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 22 Feb 2022 08:49:31 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "13393" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/resourceGroups/MWH03A-T210/providers/Microsoft.BareMetalInfrastructure/bareMetalInstances/oel82ora03\",\"location\":\"westus2\",\"name\":\"oel82ora03\",\"tags\":{},\"type\":\"Microsoft.BareMetalInfrastructure/bareMetalInstances\",\"systemData\":{},\"properties\":{\"azureBareMetalInstanceId\":\"ec0cd7aa-aed7-4bd6-92d3-2530cb7da75a\",\"powerState\":\"started\",\"proximityPlacementGroup\":\"/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/resourcegroups/MWH03A-T210/providers/Microsoft.Compute/proximityPlacementGroups/oel82ora03-ppg\",\"hwRevision\":\"Rev 4.2\",\"hardwareProfile\":{\"hardwareType\":\"Cisco_UCS\",\"azureBareMetalInstanceSize\":\"S192\"},\"networkProfile\":{\"networkInterfaces\":[{\"ipAddress\":\"10.205.0.51\"}],\"circuitId\":\"/subscriptions/9ac7c2c4-2141-41b8-af3e-e4937ae12158/resourceGroups/T210_SOLLAB_2-USW02-Circuits/providers/Microsoft.Network/expressRouteCircuits/T210_SOLLAB_2-USW02-10Gb\"},\"storageProfile\":{\"nfsIpAddress\":\"10.28.211.51\",\"osDisks\":[{\"name\":\"t210_li_oel_boot_oel82ora03_lun\",\"diskSizeGB\":50}]},\"osProfile\":{\"computerName\":\"oel82ora03\",\"osType\":\"RedHat: RHEL 7.9\",\"version\":\"7.9\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/resourceGroups/MWH03A-T210/providers/Microsoft.BareMetalInfrastructure/bareMetalInstances/oel82ora04\",\"location\":\"westus2\",\"name\":\"oel82ora04\",\"tags\":{},\"type\":\"Microsoft.BareMetalInfrastructure/bareMetalInstances\",\"systemData\":{},\"properties\":{\"azureBareMetalInstanceId\":\"abbe0bb5-b176-444c-87ad-c408cf7b462e\",\"powerState\":\"started\",\"proximityPlacementGroup\":\"/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/resourcegroups/MWH03A-T210/providers/Microsoft.Compute/proximityPlacementGroups/oel82ora04-ppg\",\"hwRevision\":\"Rev 4.2\",\"hardwareProfile\":{\"hardwareType\":\"Cisco_UCS\",\"azureBareMetalInstanceSize\":\"S32m\"},\"networkProfile\":{\"networkInterfaces\":[{\"ipAddress\":\"10.205.0.54\"}],\"circuitId\":\"/subscriptions/9ac7c2c4-2141-41b8-af3e-e4937ae12158/resourceGroups/T210_SOLLAB_2-USW02-Circuits/providers/Microsoft.Network/expressRouteCircuits/T210_SOLLAB_2-USW02-10Gb\"},\"storageProfile\":{\"nfsIpAddress\":\"10.28.211.54\",\"osDisks\":[{\"name\":\"t210_li_oel_boot_oel82ora04_lun\",\"diskSizeGB\":50}]},\"osProfile\":{\"computerName\":\"oel82ora04\",\"osType\":\"RedHat: RHEL 7.9\",\"version\":\"7.9\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/resourceGroups/MWH03A-T210/providers/Microsoft.BareMetalInfrastructure/bareMetalInstances/rhel79ora01\",\"location\":\"westus2\",\"name\":\"rhel79ora01\",\"tags\":{},\"type\":\"Microsoft.BareMetalInfrastructure/bareMetalInstances\",\"systemData\":{},\"properties\":{\"azureBareMetalInstanceId\":\"427c87f6-2d96-42a8-9e72-cf209252054c\",\"powerState\":\"started\",\"proximityPlacementGroup\":\"/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/resourcegroups/MWH03A-T210/providers/Microsoft.Compute/proximityPlacementGroups/rhel79ora01-ppg\",\"hwRevision\":\"Rev 4.2\",\"hardwareProfile\":{\"hardwareType\":\"Cisco_UCS\",\"azureBareMetalInstanceSize\":\"S32m\"},\"networkProfile\":{\"networkInterfaces\":[{\"ipAddress\":\"10.205.0.52\"}],\"circuitId\":\"/subscriptions/9ac7c2c4-2141-41b8-af3e-e4937ae12158/resourceGroups/T210_SOLLAB_2-USW02-Circuits/providers/Microsoft.Network/expressRouteCircuits/T210_SOLLAB_2-USW02-10Gb\"},\"storageProfile\":{\"nfsIpAddress\":\"10.28.211.52\",\"osDisks\":[{\"name\":\"t210_li_rhel_yaml_rhel79ora01_lun\",\"diskSizeGB\":50}]},\"osProfile\":{\"computerName\":\"rhel79ora01\",\"osType\":\"RedHat: RHEL 7.9\",\"version\":\"7.9\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/resourceGroups/MWH03A-T210/providers/Microsoft.BareMetalInfrastructure/bareMetalInstances/rhel79ora02\",\"location\":\"westus2\",\"name\":\"rhel79ora02\",\"tags\":{},\"type\":\"Microsoft.BareMetalInfrastructure/bareMetalInstances\",\"systemData\":{},\"properties\":{\"azureBareMetalInstanceId\":\"cba1e132-c9fb-4173-a8f1-3867466cad5b\",\"powerState\":\"started\",\"proximityPlacementGroup\":\"/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/resourcegroups/MWH03A-T210/providers/Microsoft.Compute/proximityPlacementGroups/rhel79ora02-ppg\",\"hwRevision\":\"Rev 4.2\",\"hardwareProfile\":{\"hardwareType\":\"Cisco_UCS\",\"azureBareMetalInstanceSize\":\"S32m\"},\"networkProfile\":{\"networkInterfaces\":[{\"ipAddress\":\"10.205.0.53\"}],\"circuitId\":\"/subscriptions/9ac7c2c4-2141-41b8-af3e-e4937ae12158/resourceGroups/T210_SOLLAB_2-USW02-Circuits/providers/Microsoft.Network/expressRouteCircuits/T210_SOLLAB_2-USW02-10Gb\"},\"storageProfile\":{\"nfsIpAddress\":\"10.28.211.53\",\"osDisks\":[{\"name\":\"t210_li_rhel_boot_rhel79ora02_lun\",\"diskSizeGB\":50}]},\"osProfile\":{\"computerName\":\"rhel79ora02\",\"osType\":\"RedHat: RHEL 7.9\",\"version\":\"7.9\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/resourceGroups/MWH03A-T220/providers/Microsoft.BareMetalInfrastructure/bareMetalInstances/ontaptest\",\"location\":\"westus2\",\"name\":\"ontaptest\",\"tags\":{},\"type\":\"Microsoft.BareMetalInfrastructure/bareMetalInstances\",\"systemData\":{\"lastModifiedBy\":\"kbhalaki@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-01-18T12:05:46.1064642Z\"},\"properties\":{\"azureBareMetalInstanceId\":\"137ac193-dfaf-4e94-9c63-1447fdcd44f8\",\"powerState\":\"started\",\"proximityPlacementGroup\":\"/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/resourcegroups/MWH03A-T220/providers/Microsoft.Compute/proximityPlacementGroups/ontaptest-ppg\",\"hwRevision\":\"Rev 4.2\",\"hardwareProfile\":{\"hardwareType\":\"Cisco_UCS\",\"azureBareMetalInstanceSize\":\"S192\"},\"networkProfile\":{\"networkInterfaces\":[{\"ipAddress\":\"10.206.0.51\"}],\"circuitId\":\"/subscriptions/9ac7c2c4-2141-41b8-af3e-e4937ae12158/resourceGroups/T220_SOLLAB-USW02-Circuits/providers/Microsoft.Network/expressRouteCircuits/T220_SOLLAB-USW02-10Gb\"},\"storageProfile\":{\"nfsIpAddress\":\"10.28.221.51\",\"osDisks\":[{\"name\":\"t220_li_sles_boot_ontaptest_lun\",\"diskSizeGB\":50}]},\"osProfile\":{\"computerName\":\"ontaptest\",\"osType\":\"SLES 15 SP1\",\"version\":\"SLES 15 SP1\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/resourceGroups/SAT09A-T230/providers/Microsoft.BareMetalInfrastructure/bareMetalInstances/oelnvmetest\",\"location\":\"southcentralus\",\"name\":\"oelnvmetest\",\"tags\":{},\"type\":\"Microsoft.BareMetalInfrastructure/bareMetalInstances\",\"systemData\":{},\"properties\":{\"azureBareMetalInstanceId\":\"a7edc3e1-631f-4d1c-92ff-a6d4236b3988\",\"powerState\":\"started\",\"proximityPlacementGroup\":\"/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/resourcegroups/SAT09A-T230/providers/Microsoft.Compute/proximityPlacementGroups/oelnvmetest-ppg\",\"hwRevision\":\"Rev 4.2\",\"hardwareProfile\":{\"hardwareType\":\"Cisco_UCS\",\"azureBareMetalInstanceSize\":\"S64m\"},\"networkProfile\":{\"networkInterfaces\":[{\"ipAddress\":\"10.207.0.51\"}],\"circuitId\":\"/subscriptions/84d94110-0e23-44fd-a49d-1c5f8dd60ea8/resourceGroups/T230_Cloud_AI-SAT09-Circuits/providers/Microsoft.Network/expressRouteCircuits/T230_Cloud_AI-SAT09-10GB\"},\"storageProfile\":{\"nfsIpAddress\":\"10.26.231.51\",\"osDisks\":[{\"name\":\"t230_li_oel_boot_oelnvmetest_lun\",\"diskSizeGB\":50}]},\"osProfile\":{\"computerName\":\"oelnvmetest\",\"osType\":\"RedHat: RHEL 7.6\",\"version\":\"OEL 8.2\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/resourceGroups/SAT09A-T530/providers/Microsoft.BareMetalInfrastructure/bareMetalInstances/oraclerac51\",\"location\":\"southcentralus\",\"name\":\"oraclerac51\",\"tags\":{},\"type\":\"Microsoft.BareMetalInfrastructure/bareMetalInstances\",\"systemData\":{\"lastModifiedBy\":\"chauhany@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-02-08T06:27:15.2807943Z\"},\"properties\":{\"azureBareMetalInstanceId\":\"45ff831d-0101-4268-9d11-ec04a63adbf3\",\"powerState\":\"started\",\"proximityPlacementGroup\":\"/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/resourcegroups/SAT09A-T530/providers/Microsoft.Compute/proximityPlacementGroups/oraclerac51-ppg\",\"hwRevision\":\"Rev 4.2\",\"hardwareProfile\":{\"hardwareType\":\"Cisco_UCS\",\"azureBareMetalInstanceSize\":\"S64m\"},\"networkProfile\":{\"networkInterfaces\":[{\"ipAddress\":\"10.100.0.51\"}],\"circuitId\":\"/subscriptions/84d94110-0e23-44fd-a49d-1c5f8dd60ea8/resourceGroups/T530_OracleTest-SAT09-Circuits/providers/Microsoft.Network/expressRouteCircuits/T530_OracleTest-SAT09-10Gb\"},\"storageProfile\":{\"nfsIpAddress\":\"10.26.221.51\",\"osDisks\":[{\"name\":\"t530_li_rhel_boot_oraclerac51_lun\",\"diskSizeGB\":50}]},\"osProfile\":{\"computerName\":\"oraclerac51\",\"osType\":\"OEL 8.2\",\"version\":\"8.2\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/resourceGroups/SAT09A-T530/providers/Microsoft.BareMetalInfrastructure/bareMetalInstances/oraclerac52\",\"location\":\"southcentralus\",\"name\":\"oraclerac52\",\"tags\":{\"env\":\"test\"},\"type\":\"Microsoft.BareMetalInfrastructure/bareMetalInstances\",\"systemData\":{\"lastModifiedBy\":\"chauhany@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-02-22T08:44:54.3294999Z\"},\"properties\":{\"azureBareMetalInstanceId\":\"5b789a6c-0958-4db6-a244-406e8ea5a427\",\"powerState\":\"started\",\"proximityPlacementGroup\":\"/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/resourcegroups/SAT09A-T530/providers/Microsoft.Compute/proximityPlacementGroups/oraclerac52-ppg\",\"hwRevision\":\"Rev 4.2\",\"hardwareProfile\":{\"hardwareType\":\"Cisco_UCS\",\"azureBareMetalInstanceSize\":\"S192m\"},\"networkProfile\":{\"networkInterfaces\":[{\"ipAddress\":\"10.100.0.52\"}],\"circuitId\":\"/subscriptions/84d94110-0e23-44fd-a49d-1c5f8dd60ea8/resourceGroups/T530_OracleTest-SAT09-Circuits/providers/Microsoft.Network/expressRouteCircuits/T530_OracleTest-SAT09-10Gb\"},\"storageProfile\":{\"nfsIpAddress\":\"10.26.221.52\",\"osDisks\":[{\"diskSizeGB\":50}]},\"osProfile\":{\"computerName\":\"oraclerac52\",\"osType\":\"RedHat: RHEL 7.9\",\"version\":\"7.9\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/resourceGroups/SAT09A-T530/providers/Microsoft.BareMetalInfrastructure/bareMetalInstances/oraclerac53\",\"location\":\"southcentralus\",\"name\":\"oraclerac53\",\"tags\":{\"env\":\"test\"},\"type\":\"Microsoft.BareMetalInfrastructure/bareMetalInstances\",\"systemData\":{\"lastModifiedBy\":\"chauhany@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-02-22T08:45:02.1295356Z\"},\"properties\":{\"azureBareMetalInstanceId\":\"0a6e700d-24e8-43e2-9d4e-a71ca3f2dfeb\",\"powerState\":\"started\",\"proximityPlacementGroup\":\"/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/resourcegroups/SAT09A-T530/providers/Microsoft.Compute/proximityPlacementGroups/oraclerac53-ppg\",\"hwRevision\":\"Rev 4.2\",\"hardwareProfile\":{\"hardwareType\":\"Cisco_UCS\",\"azureBareMetalInstanceSize\":\"S192m\"},\"networkProfile\":{\"networkInterfaces\":[{\"ipAddress\":\"10.100.0.53\"}],\"circuitId\":\"/subscriptions/84d94110-0e23-44fd-a49d-1c5f8dd60ea8/resourceGroups/T530_OracleTest-SAT09-Circuits/providers/Microsoft.Network/expressRouteCircuits/T530_OracleTest-SAT09-10Gb\"},\"storageProfile\":{\"nfsIpAddress\":\"10.26.221.53\",\"osDisks\":[{\"diskSizeGB\":50}]},\"osProfile\":{\"computerName\":\"oraclerac53\",\"osType\":\"RedHat: RHEL 7.9\",\"version\":\"7.9\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/resourceGroups/DSM05A-T030/providers/Microsoft.BareMetalInfrastructure/bareMetalInstances/orcllabdsm04\",\"location\":\"centraluseuap\",\"name\":\"orcllabdsm04\",\"tags\":{},\"type\":\"Microsoft.BareMetalInfrastructure/bareMetalInstances\",\"systemData\":{},\"properties\":{\"azureBareMetalInstanceId\":\"154f361e-6d90-40be-940e-a2365c7aea6d\",\"powerState\":\"started\",\"proximityPlacementGroup\":\"/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/resourcegroups/DSM05A-T030/providers/Microsoft.Compute/proximityPlacementGroups/orcllabdsm04-ppg\",\"hwRevision\":\"Rev 4.2\",\"hardwareProfile\":{\"hardwareType\":\"Cisco_UCS\",\"azureBareMetalInstanceSize\":\"S192m\"},\"networkProfile\":{\"networkInterfaces\":[{\"ipAddress\":\"10.200.0.37\"}],\"circuitId\":\"/subscriptions/cf471ca4-2535-48fb-b676-684d8f7bfc6e/resourceGroups/T030_Cloud_AI_DSM05-Circuits/providers/Microsoft.Network/expressRouteCircuits/T030_Cloud_AI-DSM05-10Gb\"},\"storageProfile\":{\"nfsIpAddress\":\"10.20.31.52\",\"osDisks\":[{\"name\":\"t030_oel_boot_orcllabdsm04_vol/t030_oel_boot_orcllabdsm04_lun\",\"diskSizeGB\":50}]},\"osProfile\":{\"computerName\":\"orcllabdsm04\",\"osType\":\"OEL 8.2\",\"version\":\"OEL8.2\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/resourceGroups/DSM05A-T030/providers/Microsoft.BareMetalInfrastructure/bareMetalInstances/orcllabdsm05\",\"location\":\"centraluseuap\",\"name\":\"orcllabdsm05\",\"tags\":{},\"type\":\"Microsoft.BareMetalInfrastructure/bareMetalInstances\",\"systemData\":{},\"properties\":{\"azureBareMetalInstanceId\":\"1e7b7873-00e1-44d2-a555-0643c735a899\",\"powerState\":\"started\",\"proximityPlacementGroup\":\"/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/resourcegroups/DSM05A-T030/providers/Microsoft.Compute/proximityPlacementGroups/orcllabdsm05-ppg\",\"hwRevision\":\"Rev 4.2\",\"hardwareProfile\":{\"hardwareType\":\"Cisco_UCS\",\"azureBareMetalInstanceSize\":\"S192\"},\"networkProfile\":{\"networkInterfaces\":[{\"ipAddress\":\"10.200.0.38\"}],\"circuitId\":\"/subscriptions/cf471ca4-2535-48fb-b676-684d8f7bfc6e/resourceGroups/T030_Cloud_AI_DSM05-Circuits/providers/Microsoft.Network/expressRouteCircuits/T030_Cloud_AI-DSM05-10Gb\"},\"storageProfile\":{\"nfsIpAddress\":\"10.20.31.51\",\"osDisks\":[{\"name\":\"t030_oel_boot_orcllabdsm05_vol/t030_oel_boot_orcllabdsm05_lun\",\"diskSizeGB\":50}]},\"osProfile\":{\"computerName\":\"orcllabdsm05\",\"osType\":\"OEL 8.2\",\"version\":\"8.2\"},\"provisioningState\":\"Succeeded\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "AzBareMetal+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/resourceGroups/SAT09A-T530/providers/Microsoft.BareMetalInfrastructure/bareMetalInstances/oraclerac52?api-version=2021-08-09+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/resourceGroups/SAT09A-T530/providers/Microsoft.BareMetalInfrastructure/bareMetalInstances/oraclerac52?api-version=2021-08-09",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "df475120-132c-41a4-8bed-7747d4affb27" ],
+        "CommandName": [ "Get-AzBareMetal" ],
+        "FullCommandName": [ "Get-AzBareMetal_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.BareMetal/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20220222T084933Z:1e9bb3c9-bc32-4b3e-a5cf-fe593b61b4d5" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-correlation-request-id": [ "1e9bb3c9-bc32-4b3e-a5cf-fe593b61b4d5" ],
+        "x-ms-request-id": [ "c95dc7f5-4c2e-4ef5-ab1d-106918ea3e19" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx/1.19.1" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 22 Feb 2022 08:49:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1494" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"id\": \"/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/resourceGroups/SAT09A-T530/providers/Microsoft.BareMetalInfrastructure/bareMetalInstances/oraclerac52\",\n  \"location\": \"southcentralus\",\n  \"name\": \"oraclerac52\",\n  \"tags\": {\n   \"env\": \"test\"\n  },\n  \"type\": \"Microsoft.BareMetalInfrastructure/bareMetalInstances\",\n  \"systemData\": {\n   \"lastModifiedBy\": \"chauhany@microsoft.com\",\n   \"lastModifiedByType\": \"User\",\n   \"lastModifiedAt\": \"2022-02-22T08:44:54.3294999Z\"\n  },\n  \"properties\": {\n   \"azureBareMetalInstanceId\": \"5b789a6c-0958-4db6-a244-406e8ea5a427\",\n   \"powerState\": \"started\",\n   \"proximityPlacementGroup\": \"/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/resourcegroups/SAT09A-T530/providers/Microsoft.Compute/proximityPlacementGroups/oraclerac52-ppg\",\n   \"hwRevision\": \"Rev 4.2\",\n   \"hardwareProfile\": {\n    \"hardwareType\": \"Cisco_UCS\",\n    \"azureBareMetalInstanceSize\": \"S192m\"\n   },\n   \"networkProfile\": {\n    \"networkInterfaces\": [\n     {\n      \"ipAddress\": \"10.100.0.52\"\n     }\n    ],\n    \"circuitId\": \"/subscriptions/84d94110-0e23-44fd-a49d-1c5f8dd60ea8/resourceGroups/T530_OracleTest-SAT09-Circuits/providers/Microsoft.Network/expressRouteCircuits/T530_OracleTest-SAT09-10Gb\"\n   },\n   \"storageProfile\": {\n    \"nfsIpAddress\": \"10.26.221.52\",\n    \"osDisks\": [\n     {\n      \"diskSizeGB\": 50\n     }\n    ]\n   },\n   \"osProfile\": {\n    \"computerName\": \"oraclerac52\",\n    \"osType\": \"RedHat: RHEL 7.9\",\n    \"version\": \"7.9\"\n   },\n   \"provisioningState\": \"Succeeded\"\n  }\n }",
+      "isContentBase64": false
+    }
+  },
+  "AzBareMetal+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/resourceGroups/SAT09A-T530/providers/Microsoft.BareMetalInfrastructure/bareMetalInstances?api-version=2021-08-09+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/resourceGroups/SAT09A-T530/providers/Microsoft.BareMetalInfrastructure/bareMetalInstances?api-version=2021-08-09",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "9dadf575-9e6f-424f-b303-9e401f0d73fb" ],
+        "CommandName": [ "Get-AzBareMetal" ],
+        "FullCommandName": [ "Get-AzBareMetal_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.BareMetal/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20220222T084934Z:96523b7e-576e-4f05-80a8-420f873b3f60" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-correlation-request-id": [ "96523b7e-576e-4f05-80a8-420f873b3f60" ],
+        "x-ms-request-id": [ "61bf7847-f5b5-4fd7-a4d2-0e048db17660" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx/1.19.1" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 22 Feb 2022 08:49:34 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4806" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"value\": [\n   {\n    \"id\": \"/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/resourceGroups/SAT09A-T530/providers/Microsoft.BareMetalInfrastructure/bareMetalInstances/oraclerac51\",\n    \"location\": \"southcentralus\",\n    \"name\": \"oraclerac51\",\n    \"tags\": {},\n    \"type\": \"Microsoft.BareMetalInfrastructure/bareMetalInstances\",\n    \"systemData\": {\n     \"lastModifiedBy\": \"chauhany@microsoft.com\",\n     \"lastModifiedByType\": \"User\",\n     \"lastModifiedAt\": \"2022-02-08T06:27:15.2807943Z\"\n    },\n    \"properties\": {\n     \"azureBareMetalInstanceId\": \"45ff831d-0101-4268-9d11-ec04a63adbf3\",\n     \"powerState\": \"started\",\n     \"proximityPlacementGroup\": \"/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/resourcegroups/SAT09A-T530/providers/Microsoft.Compute/proximityPlacementGroups/oraclerac51-ppg\",\n     \"hwRevision\": \"Rev 4.2\",\n     \"hardwareProfile\": {\n      \"hardwareType\": \"Cisco_UCS\",\n      \"azureBareMetalInstanceSize\": \"S64m\"\n     },\n     \"networkProfile\": {\n      \"networkInterfaces\": [\n       {\n        \"ipAddress\": \"10.100.0.51\"\n       }\n      ],\n      \"circuitId\": \"/subscriptions/84d94110-0e23-44fd-a49d-1c5f8dd60ea8/resourceGroups/T530_OracleTest-SAT09-Circuits/providers/Microsoft.Network/expressRouteCircuits/T530_OracleTest-SAT09-10Gb\"\n     },\n     \"storageProfile\": {\n      \"nfsIpAddress\": \"10.26.221.51\",\n      \"osDisks\": [\n       {\n        \"name\": \"t530_li_rhel_boot_oraclerac51_lun\",\n        \"diskSizeGB\": 50\n       }\n      ]\n     },\n     \"osProfile\": {\n      \"computerName\": \"oraclerac51\",\n      \"osType\": \"OEL 8.2\",\n      \"version\": \"8.2\"\n     },\n     \"provisioningState\": \"Succeeded\"\n    }\n   },\n   {\n    \"id\": \"/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/resourceGroups/SAT09A-T530/providers/Microsoft.BareMetalInfrastructure/bareMetalInstances/oraclerac52\",\n    \"location\": \"southcentralus\",\n    \"name\": \"oraclerac52\",\n    \"tags\": {\n     \"env\": \"test\"\n    },\n    \"type\": \"Microsoft.BareMetalInfrastructure/bareMetalInstances\",\n    \"systemData\": {\n     \"lastModifiedBy\": \"chauhany@microsoft.com\",\n     \"lastModifiedByType\": \"User\",\n     \"lastModifiedAt\": \"2022-02-22T08:44:54.3294999Z\"\n    },\n    \"properties\": {\n     \"azureBareMetalInstanceId\": \"5b789a6c-0958-4db6-a244-406e8ea5a427\",\n     \"powerState\": \"started\",\n     \"proximityPlacementGroup\": \"/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/resourcegroups/SAT09A-T530/providers/Microsoft.Compute/proximityPlacementGroups/oraclerac52-ppg\",\n     \"hwRevision\": \"Rev 4.2\",\n     \"hardwareProfile\": {\n      \"hardwareType\": \"Cisco_UCS\",\n      \"azureBareMetalInstanceSize\": \"S192m\"\n     },\n     \"networkProfile\": {\n      \"networkInterfaces\": [\n       {\n        \"ipAddress\": \"10.100.0.52\"\n       }\n      ],\n      \"circuitId\": \"/subscriptions/84d94110-0e23-44fd-a49d-1c5f8dd60ea8/resourceGroups/T530_OracleTest-SAT09-Circuits/providers/Microsoft.Network/expressRouteCircuits/T530_OracleTest-SAT09-10Gb\"\n     },\n     \"storageProfile\": {\n      \"nfsIpAddress\": \"10.26.221.52\",\n      \"osDisks\": [\n       {\n        \"diskSizeGB\": 50\n       }\n      ]\n     },\n     \"osProfile\": {\n      \"computerName\": \"oraclerac52\",\n      \"osType\": \"RedHat: RHEL 7.9\",\n      \"version\": \"7.9\"\n     },\n     \"provisioningState\": \"Succeeded\"\n    }\n   },\n   {\n    \"id\": \"/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/resourceGroups/SAT09A-T530/providers/Microsoft.BareMetalInfrastructure/bareMetalInstances/oraclerac53\",\n    \"location\": \"southcentralus\",\n    \"name\": \"oraclerac53\",\n    \"tags\": {\n     \"env\": \"test\"\n    },\n    \"type\": \"Microsoft.BareMetalInfrastructure/bareMetalInstances\",\n    \"systemData\": {\n     \"lastModifiedBy\": \"chauhany@microsoft.com\",\n     \"lastModifiedByType\": \"User\",\n     \"lastModifiedAt\": \"2022-02-22T08:45:02.1295356Z\"\n    },\n    \"properties\": {\n     \"azureBareMetalInstanceId\": \"0a6e700d-24e8-43e2-9d4e-a71ca3f2dfeb\",\n     \"powerState\": \"started\",\n     \"proximityPlacementGroup\": \"/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/resourcegroups/SAT09A-T530/providers/Microsoft.Compute/proximityPlacementGroups/oraclerac53-ppg\",\n     \"hwRevision\": \"Rev 4.2\",\n     \"hardwareProfile\": {\n      \"hardwareType\": \"Cisco_UCS\",\n      \"azureBareMetalInstanceSize\": \"S192m\"\n     },\n     \"networkProfile\": {\n      \"networkInterfaces\": [\n       {\n        \"ipAddress\": \"10.100.0.53\"\n       }\n      ],\n      \"circuitId\": \"/subscriptions/84d94110-0e23-44fd-a49d-1c5f8dd60ea8/resourceGroups/T530_OracleTest-SAT09-Circuits/providers/Microsoft.Network/expressRouteCircuits/T530_OracleTest-SAT09-10Gb\"\n     },\n     \"storageProfile\": {\n      \"nfsIpAddress\": \"10.26.221.53\",\n      \"osDisks\": [\n       {\n        \"diskSizeGB\": 50\n       }\n      ]\n     },\n     \"osProfile\": {\n      \"computerName\": \"oraclerac53\",\n      \"osType\": \"RedHat: RHEL 7.9\",\n      \"version\": \"7.9\"\n     },\n     \"provisioningState\": \"Succeeded\"\n    }\n   }\n  ]\n }",
+      "isContentBase64": false
+    }
+  },
+  "AzBareMetal+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/resourceGroups/SAT09A-T530/providers/Microsoft.BareMetalInfrastructure/bareMetalInstances/oraclerac52?api-version=2021-08-09+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/resourceGroups/SAT09A-T530/providers/Microsoft.BareMetalInfrastructure/bareMetalInstances/oraclerac52?api-version=2021-08-09",
+      "Content": "{\r\n  \"tags\": {\r\n    \"env\": \"test\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "41" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20220222T084942Z:c6f88e08-89ca-4885-a943-7e4fbad116ec" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "c6f88e08-89ca-4885-a943-7e4fbad116ec" ],
+        "x-ms-request-id": [ "1e4c74fd-e0fa-4af2-9861-49d07e6ba688" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx/1.19.1" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 22 Feb 2022 08:49:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1494" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"id\": \"/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/resourceGroups/SAT09A-T530/providers/Microsoft.BareMetalInfrastructure/bareMetalInstances/oraclerac52\",\n  \"location\": \"southcentralus\",\n  \"name\": \"oraclerac52\",\n  \"tags\": {\n   \"env\": \"test\"\n  },\n  \"type\": \"Microsoft.BareMetalInfrastructure/bareMetalInstances\",\n  \"systemData\": {\n   \"lastModifiedBy\": \"chauhany@microsoft.com\",\n   \"lastModifiedByType\": \"User\",\n   \"lastModifiedAt\": \"2022-02-22T08:49:39.7312679Z\"\n  },\n  \"properties\": {\n   \"azureBareMetalInstanceId\": \"5b789a6c-0958-4db6-a244-406e8ea5a427\",\n   \"powerState\": \"started\",\n   \"proximityPlacementGroup\": \"/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/resourcegroups/SAT09A-T530/providers/Microsoft.Compute/proximityPlacementGroups/oraclerac52-ppg\",\n   \"hwRevision\": \"Rev 4.2\",\n   \"hardwareProfile\": {\n    \"hardwareType\": \"Cisco_UCS\",\n    \"azureBareMetalInstanceSize\": \"S192m\"\n   },\n   \"networkProfile\": {\n    \"networkInterfaces\": [\n     {\n      \"ipAddress\": \"10.100.0.52\"\n     }\n    ],\n    \"circuitId\": \"/subscriptions/84d94110-0e23-44fd-a49d-1c5f8dd60ea8/resourceGroups/T530_OracleTest-SAT09-Circuits/providers/Microsoft.Network/expressRouteCircuits/T530_OracleTest-SAT09-10Gb\"\n   },\n   \"storageProfile\": {\n    \"nfsIpAddress\": \"10.26.221.52\",\n    \"osDisks\": [\n     {\n      \"diskSizeGB\": 50\n     }\n    ]\n   },\n   \"osProfile\": {\n    \"computerName\": \"oraclerac52\",\n    \"osType\": \"RedHat: RHEL 7.9\",\n    \"version\": \"7.9\"\n   },\n   \"provisioningState\": \"Succeeded\"\n  }\n }",
+      "isContentBase64": false
+    }
+  },
+  "AzBareMetal+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/resourceGroups/SAT09A-T530/providers/Microsoft.BareMetalInfrastructure/bareMetalInstances/oraclerac53?api-version=2021-08-09+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/resourceGroups/SAT09A-T530/providers/Microsoft.BareMetalInfrastructure/bareMetalInstances/oraclerac53?api-version=2021-08-09",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "10d157e2-d1a1-4006-b77b-8c2bf862f724" ],
+        "CommandName": [ "Get-AzBareMetal" ],
+        "FullCommandName": [ "Get-AzBareMetal_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.BareMetal/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20220222T084943Z:3f2048d9-4a34-4b08-95eb-2b37a7c91dc8" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-correlation-request-id": [ "3f2048d9-4a34-4b08-95eb-2b37a7c91dc8" ],
+        "x-ms-request-id": [ "54a3d9c5-54ca-4841-9c62-9664a0b1b3e9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx/1.19.1" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 22 Feb 2022 08:49:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1494" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"id\": \"/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/resourceGroups/SAT09A-T530/providers/Microsoft.BareMetalInfrastructure/bareMetalInstances/oraclerac53\",\n  \"location\": \"southcentralus\",\n  \"name\": \"oraclerac53\",\n  \"tags\": {\n   \"env\": \"test\"\n  },\n  \"type\": \"Microsoft.BareMetalInfrastructure/bareMetalInstances\",\n  \"systemData\": {\n   \"lastModifiedBy\": \"chauhany@microsoft.com\",\n   \"lastModifiedByType\": \"User\",\n   \"lastModifiedAt\": \"2022-02-22T08:45:02.1295356Z\"\n  },\n  \"properties\": {\n   \"azureBareMetalInstanceId\": \"0a6e700d-24e8-43e2-9d4e-a71ca3f2dfeb\",\n   \"powerState\": \"started\",\n   \"proximityPlacementGroup\": \"/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/resourcegroups/SAT09A-T530/providers/Microsoft.Compute/proximityPlacementGroups/oraclerac53-ppg\",\n   \"hwRevision\": \"Rev 4.2\",\n   \"hardwareProfile\": {\n    \"hardwareType\": \"Cisco_UCS\",\n    \"azureBareMetalInstanceSize\": \"S192m\"\n   },\n   \"networkProfile\": {\n    \"networkInterfaces\": [\n     {\n      \"ipAddress\": \"10.100.0.53\"\n     }\n    ],\n    \"circuitId\": \"/subscriptions/84d94110-0e23-44fd-a49d-1c5f8dd60ea8/resourceGroups/T530_OracleTest-SAT09-Circuits/providers/Microsoft.Network/expressRouteCircuits/T530_OracleTest-SAT09-10Gb\"\n   },\n   \"storageProfile\": {\n    \"nfsIpAddress\": \"10.26.221.53\",\n    \"osDisks\": [\n     {\n      \"diskSizeGB\": 50\n     }\n    ]\n   },\n   \"osProfile\": {\n    \"computerName\": \"oraclerac53\",\n    \"osType\": \"RedHat: RHEL 7.9\",\n    \"version\": \"7.9\"\n   },\n   \"provisioningState\": \"Succeeded\"\n  }\n }",
+      "isContentBase64": false
+    }
+  },
+  "AzBareMetal+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/resourceGroups/SAT09A-T530/providers/Microsoft.BareMetalInfrastructure/bareMetalInstances/oraclerac53?api-version=2021-08-09+2": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/resourceGroups/SAT09A-T530/providers/Microsoft.BareMetalInfrastructure/bareMetalInstances/oraclerac53?api-version=2021-08-09",
+      "Content": "{\r\n  \"tags\": {\r\n    \"env\": \"test\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "41" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20220222T084948Z:34c3a0a1-3666-4e48-baef-2aa90be3d3f7" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-correlation-request-id": [ "34c3a0a1-3666-4e48-baef-2aa90be3d3f7" ],
+        "x-ms-request-id": [ "065bd25c-c46e-4bf5-9376-acf442d28ba6" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx/1.19.1" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 22 Feb 2022 08:49:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1494" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"id\": \"/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/resourceGroups/SAT09A-T530/providers/Microsoft.BareMetalInfrastructure/bareMetalInstances/oraclerac53\",\n  \"location\": \"southcentralus\",\n  \"name\": \"oraclerac53\",\n  \"tags\": {\n   \"env\": \"test\"\n  },\n  \"type\": \"Microsoft.BareMetalInfrastructure/bareMetalInstances\",\n  \"systemData\": {\n   \"lastModifiedBy\": \"chauhany@microsoft.com\",\n   \"lastModifiedByType\": \"User\",\n   \"lastModifiedAt\": \"2022-02-22T08:49:46.4113403Z\"\n  },\n  \"properties\": {\n   \"azureBareMetalInstanceId\": \"0a6e700d-24e8-43e2-9d4e-a71ca3f2dfeb\",\n   \"powerState\": \"started\",\n   \"proximityPlacementGroup\": \"/subscriptions/ee8d7e36-73db-471b-a065-1d2af8211a55/resourcegroups/SAT09A-T530/providers/Microsoft.Compute/proximityPlacementGroups/oraclerac53-ppg\",\n   \"hwRevision\": \"Rev 4.2\",\n   \"hardwareProfile\": {\n    \"hardwareType\": \"Cisco_UCS\",\n    \"azureBareMetalInstanceSize\": \"S192m\"\n   },\n   \"networkProfile\": {\n    \"networkInterfaces\": [\n     {\n      \"ipAddress\": \"10.100.0.53\"\n     }\n    ],\n    \"circuitId\": \"/subscriptions/84d94110-0e23-44fd-a49d-1c5f8dd60ea8/resourceGroups/T530_OracleTest-SAT09-Circuits/providers/Microsoft.Network/expressRouteCircuits/T530_OracleTest-SAT09-10Gb\"\n   },\n   \"storageProfile\": {\n    \"nfsIpAddress\": \"10.26.221.53\",\n    \"osDisks\": [\n     {\n      \"diskSizeGB\": 50\n     }\n    ]\n   },\n   \"osProfile\": {\n    \"computerName\": \"oraclerac53\",\n    \"osType\": \"RedHat: RHEL 7.9\",\n    \"version\": \"7.9\"\n   },\n   \"provisioningState\": \"Succeeded\"\n  }\n }",
+      "isContentBase64": false
+    }
+  }
+}
