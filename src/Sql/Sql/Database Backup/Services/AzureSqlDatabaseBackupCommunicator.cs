@@ -19,15 +19,13 @@ using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.LegacySdk;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System.Collections.Generic;
-using Microsoft.Azure.Commands.Sql.Database.Model;
-using Microsoft.Azure.Management.Internal.Resources.Models;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Services
 {
-    /// <summary>
-    /// This class is responsible for all the REST communication with the database backup REST endpoints.
-    /// </summary>
-    public class AzureSqlDatabaseBackupCommunicator
+	/// <summary>
+	/// This class is responsible for all the REST communication with the database backup REST endpoints.
+	/// </summary>
+	public class AzureSqlDatabaseBackupCommunicator
     {
         /// <summary>
         /// The Sql client to be used by this end points communicator
@@ -461,10 +459,23 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="serverName">The name of the Azure SQL Server</param>
         /// <param name="databaseName">The name of the Azure SQL database</param>
         /// <param name="model">Sql Database Model with required parameters</param>
+        /// <param name="customHeaders">Custom headers</param>
         /// <returns>Restored database object</returns>
-        public Management.Sql.Models.Database RestoreDatabase(string resourceGroupName, string serverName, string databaseName, Management.Sql.Models.Database model)
+        public Management.Sql.Models.Database RestoreDatabase(string resourceGroupName, string serverName, string databaseName, Management.Sql.Models.Database model, Dictionary<string, List<string>> customHeaders = null)
         {
-            return GetCurrentSqlClient().Databases.CreateOrUpdate(resourceGroupName, serverName, databaseName, model);
+            if (customHeaders == null)
+            {
+                // Execute the create call without the custom headers. 
+                return GetCurrentSqlClient().Databases.CreateOrUpdate(resourceGroupName, serverName, databaseName, model);
+            }
+            else
+            {
+                // Execute the create call and pass the custom headers. 
+                using (var _result = GetCurrentSqlClient().Databases.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, model, customHeaders).ConfigureAwait(false).GetAwaiter().GetResult())
+                {
+                    return _result.Body;
+                }
+            }
         }
 
         /// <summary>
