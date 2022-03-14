@@ -42,8 +42,9 @@ WorkspaceName     : OperationalInsight
 ResourceId        : /subscriptions/xxxx-xxxx-xxxx-xxxx-xxxx/resourceGroups/test-rg/providers/Microsoft.OperationalInsights/wo
                     rkspaces/OperationalInsight/datasources/DataSource_IISLogs
 Kind              : IISLogs
-Properties        : {"state":"OnPremiseEnabled"} 
+Properties        : {"state":"OnPremiseEnabled"}
 ```
+
 Starts collection of Internet Information Services (IIS) logs from connected computers in a workspace.
 
 ## PARAMETERS

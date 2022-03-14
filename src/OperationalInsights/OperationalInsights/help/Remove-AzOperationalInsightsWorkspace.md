@@ -1,7 +1,6 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-help.xml
 Module Name: Az.OperationalInsights
-ms.assetid: 0C35E679-B991-49A8-890F-C8DAB68A8240
 online version: https://docs.microsoft.com/powershell/module/az.operationalinsights/remove-azoperationalinsightsworkspace
 schema: 2.0.0
 ---
@@ -9,53 +8,54 @@ schema: 2.0.0
 # Remove-AzOperationalInsightsWorkspace
 
 ## SYNOPSIS
-Removes a workspace.
+Deletes a workspace resource.
+To recover the workspace, create it again with the same name, in the same subscription, resource group and location.
+The name is kept for 14 days and cannot be used for another workspace.
+To remove the workspace completely and release the name, use the force flag.
 
 ## SYNTAX
 
+### Delete (Default)
 ```
-Remove-AzOperationalInsightsWorkspace [-ResourceGroupName] <String> [-Name] <String> [-ForceDelete] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzOperationalInsightsWorkspace [-Name] <String> [-ResourceGroupName] <String> [-SubscriptionId <String>]
+ [-ForceDelete] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### DeleteViaIdentity
+```
+Remove-AzOperationalInsightsWorkspace -InputObject <IOperationalInsightsIdentity> [-ForceDelete]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzOperationalInsightsWorkspace** cmdlet deletes an existing workspace.
-If this workspace was linked to an existing account via the *CustomerId* parameter at creation time the original account is not deleted in the Operational Insights portal.
+Deletes a workspace resource.
+To recover the workspace, create it again with the same name, in the same subscription, resource group and location.
+The name is kept for 14 days and cannot be used for another workspace.
+To remove the workspace completely and release the name, use the force flag.
 
 ## EXAMPLES
 
-### Example 1: Remove a workspace by name
+### Example 1: Remove a workapce by resource group name and workspace name
 ```powershell
-Remove-AzOperationalInsightsWorkspace -ResourceGroupName "ContosResourceGroup" -Name "MyWorkspace"
+Remove-AzOperationalInsightsWorkspace -ResourceGroupName {RG-Name} -Name {WS-Name}
+
+Confirm
+Are you sure you want to remove workspace '{WS-Name}' in resource group '{RG-Name}'?
+[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
 ```
 
-This command removes the workspace named MyWorkspace from the resource group named ContosoResourceGroup.
-
-### Example 2: Remove a workspace by using the pipeline and without confirmation
-```powershell
-Get-AzOperationalInsightsWorkspace -ResourceGroupName "ContosResourceGroup" -Name "MyWorkspace" | Remove-AzOperationalInsightsWorkspace -Force
-```
-
-This command uses the Get-AzOperationalInsightsWorkspace cmdlet to get the workspace named MyWorkspace, and then passes it to the **Remove-AzOperationalInsightsWorkspace** cmdlet by using the pipeline operator to remove it.
-Since the *Force* parameter is specified, the command does not prompt you before removing the workspace.
-
-### Example 3: Force delete workspace (cannot be recovered)
-```powershell
-$workspace = New-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation
-$workspace | Remove-AzOperationalInsightsWorkspace -ForceDelete
-```
-
-Force delete a workspace.
+Removes a Log-Analytics workspace.
 
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+### -AsJob
+Run the command as a job
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases:
 
 Required: False
 Position: Named
@@ -64,13 +64,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Forces the command to run without asking for user confirmation.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases:
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -80,7 +80,8 @@ Accept wildcard characters: False
 ```
 
 ### -ForceDelete
-Force delete workspace.
+Deletes the workspace without the recovery option.
+A workspace that was deleted with this flag cannot be recovered.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -94,33 +95,95 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.Models.IOperationalInsightsIdentity
+Parameter Sets: DeleteViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
-Specifies the name of the workspace.
+The name of the workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
+Parameter Sets: Delete
+Aliases: WorkspaceName
 
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of an Azure resource group.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Delete
 Aliases:
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -134,7 +197,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -150,7 +213,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -160,18 +223,26 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.Models.IOperationalInsightsIdentity
 
 ## OUTPUTS
 
-### System.Void
+### System.Boolean
 
 ## NOTES
 
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+INPUTOBJECT <IOperationalInsightsIdentity>: Identity Parameter
+  - `[Id <String>]`: Resource identity path
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
+  - `[TableName <String>]`: The name of the table.
+  - `[WorkspaceName <String>]`: The name of the workspace.
+
 ## RELATED LINKS
-
-[Azure Operational Insights Cmdlets](./Az.OperationalInsights.md)
-
-[Get-AzOperationalInsightsWorkspace](./Get-AzOperationalInsightsWorkspace.md)
-
-
