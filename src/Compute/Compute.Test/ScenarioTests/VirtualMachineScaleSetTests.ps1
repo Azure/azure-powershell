@@ -3240,10 +3240,55 @@ function Test-RemoveVmssForceDeletion
 
         # Create VMSS with minimal inputs to allow defaulting
         $vmss = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname  -ImageName 'Win2016Datacenter' -Credential $credential -InstanceCount 1 -DomainNameLabel $domainNameLabel
-        #$vmss = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -Credential $credential -OrchestrationMode $omode -DomainNameLabel $domainNameLabel;
         
         Remove-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -ForceDeletion $true -Force
 
+    } 
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
+Test Vmss vCPUCountPerCore and vCPUCountAvailable feature. 
+#>
+function Test-VmssvCPUCountFeatures
+{
+
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+
+    try
+    {
+        # Common
+        $loc = "eastus";
+
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        
+        # Setup variables
+        $vmssname = "vmss" + $rgname;
+        $domainNameLabel = "dnl" + $rgname;
+        $username = "admin01";
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
+        $vCPUsCore1 = 1;
+        $vCPUsAvailable1 = 1;
+        $vCPUsCoreInitial = 2;
+        $vCPUsAvailableInitial = 4;
+        $vmssSize = 'Standard_D4s_v4';
+
+        $credential = New-Object System.Management.Automation.PSCredential ($username, $securePassword);
+
+        # Create VMSS
+        $vmss = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname  -ImageName 'Win2016Datacenter' `
+                -Credential $credential -InstanceCount 1 -DomainNameLabel $domainNameLabel `
+                -VmSize $vmssSize -vCPUCountAvailable $vCPUsAvailableInitial -vCPUCountPerCore $vCPUsCoreInitial;
+
+        Assert-AreEqual $vCPUsAvailableInitial $vmss.HardwareProfile.VmSizeProperties.VCPUsAvailable;
+        Assert-AreEqual $vCPUsCoreInitial $vmss.HardwareProfile.VmSizeProperties.VCPUsPerCore;
     } 
     finally
     {

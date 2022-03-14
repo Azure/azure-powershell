@@ -67,7 +67,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string edgeZone,
             string orchestrationMode,
             string capacityReservationId,
-            string userData
+            string userData,
+            int? vCPUsAvailable = null,
+            int? vCPUsPerCore = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -140,7 +142,15 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         {
                             CapacityReservationGroup = new Microsoft.Azure.Management.Compute.Models.SubResource(capacityReservationId)
                         },
-                        UserData = userData
+                        UserData = userData,
+                        HardwareProfile = (vCPUsPerCore == null && vCPUsAvailable == null) ? null : new VirtualMachineScaleSetHardwareProfile()
+                        {
+                            VmSizeProperties = new VMSizeProperties
+                            {
+                                VCPUsPerCore = vCPUsPerCore,
+                                VCPUsAvailable = vCPUsAvailable
+                            }
+                        }
                     },
                     ProximityPlacementGroup = proximityPlacementGroup(engine),
                     HostGroup = hostGroup(engine),

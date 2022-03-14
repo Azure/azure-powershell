@@ -285,6 +285,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         public string UserData { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the number of vCPUs available for the VM. When this property is not specified in the request body the default behavior is to set it to the value of vCPUs available for that VM size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).")]
+        public int vCPUCountAvailable { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the vCPU to physical core ratio. When this property is not specified in the request body the default behavior is set to the value of vCPUsPerCore for the VM Size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list). Setting this property to 1 also means that hyper-threading is disabled.")]
+        public int vCPUCountPerCore { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("VirtualMachineScaleSet", "New"))
@@ -695,6 +707,40 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vVirtualMachineProfile.UserData = this.UserData;
             }
 
+            if (this.IsParameterBound(c => c.vCPUCountAvailable))
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.HardwareProfile == null)
+                {
+                    vVirtualMachineProfile.HardwareProfile = new VirtualMachineScaleSetHardwareProfile();
+                }
+                if (vVirtualMachineProfile.HardwareProfile.VmSizeProperties == null)
+                {
+                    vVirtualMachineProfile.HardwareProfile.VmSizeProperties = new VMSizeProperties();
+                }
+                vVirtualMachineProfile.HardwareProfile.VmSizeProperties.VCPUsAvailable = this.vCPUCountAvailable;
+            }
+
+            if (this.IsParameterBound(c => c.vCPUCountPerCore))
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.HardwareProfile == null)
+                {
+                    vVirtualMachineProfile.HardwareProfile = new VirtualMachineScaleSetHardwareProfile();
+                }
+                if (vVirtualMachineProfile.HardwareProfile.VmSizeProperties == null)
+                {
+                    vVirtualMachineProfile.HardwareProfile.VmSizeProperties = new VMSizeProperties();
+                }
+                vVirtualMachineProfile.HardwareProfile.VmSizeProperties.VCPUsPerCore = this.vCPUCountPerCore;
+            }
+
             var vVirtualMachineScaleSet = new PSVirtualMachineScaleSet
             {
                 Overprovision = this.IsParameterBound(c => c.Overprovision) ? this.Overprovision : (bool?)null,
@@ -716,7 +762,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 ScaleInPolicy = vScaleInPolicy,
                 Identity = vIdentity,
                 OrchestrationMode = this.IsParameterBound(c => c.OrchestrationMode) ? this.OrchestrationMode : null,
-                SpotRestorePolicy = this.IsParameterBound(c => c.EnableSpotRestore) ? new SpotRestorePolicy(true, this.SpotRestoreTimeout) : null
+                SpotRestorePolicy = this.IsParameterBound(c => c.EnableSpotRestore) ? new SpotRestorePolicy(true, this.SpotRestoreTimeout) : null,
+
             };
 
             WriteObject(vVirtualMachineScaleSet);

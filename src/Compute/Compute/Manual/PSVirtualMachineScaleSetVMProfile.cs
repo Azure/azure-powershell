@@ -39,5 +39,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public CapacityReservationProfile CapacityReservation { get; set; }
         public string UserData { get; set; }
         public PSApplicationProfile ApplicationProfile { get; set; }
+
+        public VirtualMachineScaleSetHardwareProfile HardwareProfile { get; set; }
     }
 }

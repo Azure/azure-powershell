@@ -256,5 +256,11 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             TestRunner.RunTestScript("Test-RemoveVmssForceDeletion");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVmssvCPUCountFeatures()
+        {
+            TestRunner.RunTestScript("Test-VmssvCPUCountFeatures");
+        }
     }
 }
