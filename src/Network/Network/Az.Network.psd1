@@ -763,6 +763,7 @@ PrivateData = @{
     - ''Get-AzNetworkManagerScopeConnection''
     - ''Remove-AzNetworkManagerScopeConnection''
 <<<<<<< HEAD
+<<<<<<< HEAD
     - ''Set-AzNetworkManagerScopeConnection'''
 =======
     - ''New-AzNetworkManagerSecurityGroupItem'' 
@@ -776,6 +777,9 @@ PrivateData = @{
 =======
     - ''Set-AzNetworkManagerScopeConnection''
 >>>>>>> 7cee8b20bf (adding changes needed for testing:)
+=======
+    - ''Set-AzNetworkManagerScopeConnection'''
+>>>>>>> f8bd5e655e (fix test cases)
 
         # Prerelease string of this module
         Prerelease = 'preview'

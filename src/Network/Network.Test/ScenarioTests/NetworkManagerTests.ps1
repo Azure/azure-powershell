@@ -126,7 +126,7 @@ function Test-NetworkManagerGroupCRUD
         Assert-AreEqual $networkGroupName $newNetworkGroup.Name;
 
         $job = Remove-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $networkGroupName -PassThru -Force -AsJob;
-        $job | Wait-Job;
+        $job | Wait-Job; 
         $removeResult = $job | Receive-Job;
 
         $job = Remove-AzNetworkManager -ResourceGroupName $rgname -Name $networkManagerName -PassThru -Force -AsJob;
@@ -157,7 +157,7 @@ function Test-NetworkManagerStaticMemberCRUD
     $staticMemberName = Get-ResourceName
     $rglocation = "centraluseuap"
     $subscriptionId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52"
-    $vnetId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ANMRG3495/providers/Microsoft.Network/virtualNetworks/testvnet"
+    $vnetId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/testRG/providers/Microsoft.Network/virtualNetworks/testvnet"
 
     try{
         #Create the resource group
@@ -185,20 +185,14 @@ function Test-NetworkManagerStaticMemberCRUD
         Assert-AreEqual "DISplayName" $networkGroup.DisplayName;
 
         # Create static member
-        $staticmembers = New-AzNetworkManagerStaticMembersItem -ResourceId $vnetId
-        [System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerGroupMembersItem]]$staticmembers  = @()
-        $staticMembers.Add($staticmembers)
-        New-AzNetworkManagerStaticMember -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -NetworkGroupName $networkGroupName -Name $staticMemberName -StaticMembers $staticMembers -DisplayName "DISplayName" -Description "SampleDESCRIption"
+        New-AzNetworkManagerStaticMember -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -NetworkGroupName $networkGroupName -Name $staticMemberName -ResourceId $vnetId
 
         $networkManagerStaticMember = Get-AzNetworkManagerStaticMember -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -NetworkGroupName $networkGroupName -Name $staticMemberName
         Assert-NotNull $networkManagerStaticMember;
         Assert-AreEqual $staticMemberName $networkManagerStaticMember.Name;
-        Assert-AreEqual "DISplayName" $networkManagerStaticMember.DisplayName;
 
-        $networkManagerStaticMember.DisplayName = "Sample Group Name"
         $newNetworkStaticMember = Set-AzNetworkManagerStaticMember -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -NetworkGroupName $networkGroupName -StaticMember $networkManagerStaticMember
         Assert-NotNull $newNetworkStaticMember;
-        Assert-AreEqual "Sample Group Name" $newNetworkStaticMember.DisplayName;
         Assert-AreEqual $staticMemberName $newNetworkStaticMember.Name;
 
         # Remove static member
@@ -249,10 +243,10 @@ function Test-NetworkManagerConnectivityConfigurationCRUD
     $connectivityConfigurationName = Get-ResourceName
     $rglocation = "eastus2euap"
     $subscriptionId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52"
-    $vnetId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ANMRG3495/providers/Microsoft.Network/virtualNetworks/testvnet"
-    $hubId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ANMRG3495/providers/Microsoft.Network/virtualNetworks/hub" 
+    $vnetId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/testRG/providers/Microsoft.Network/virtualNetworks/testvnet"
+    $hubId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/testRG/providers/Microsoft.Network/virtualNetworks/hub" 
     $vnet = "testvnet"
-    $vnetRG = "ANMRG3495"
+    $vnetRG = "testRG"
     
     try{
         #Create the resource group
@@ -282,6 +276,7 @@ function Test-NetworkManagerConnectivityConfigurationCRUD
         Assert-AreEqual "DISplayName" $networkGroup.DisplayName;
 <<<<<<< HEAD
 
+<<<<<<< HEAD
         $staticmembers = New-AzNetworkManagerStaticMembersItem -ResourceId $vnetId
         [System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerGroupMembersItem]]$staticmembers  = @()
         $staticMembers.Add($staticmembers)
@@ -301,8 +296,11 @@ function Test-NetworkManagerConnectivityConfigurationCRUD
         $staticMembers.Add($staticmembers)
         New-AzNetworkManagerStaticMember -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -NetworkGroupName $networkGroupName -Name $staticMemberName -StaticMembers $staticMembers -DisplayName "DISplayName" -Description "SampleDESCRIption"
 >>>>>>> f45bac96bb (update network manager, network group, connectivity, and add static member)
+=======
+        New-AzNetworkManagerStaticMember -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -NetworkGroupName $networkGroupName -Name $staticMemberName -ResourceId $vnetId
+>>>>>>> f8bd5e655e (fix test cases)
 
-        $connectivityGroupItem = New-AzNetworkManagerConnectivityGroupItem -NetworkGroupId $networkGroup.Id -IsGlobal
+        $connectivityGroupItem = New-AzNetworkManagerConnectivityGroupItem -NetworkGroupId $networkGroup.Id
         [System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerConnectivityGroupItem]]$connectivityGroup  = @()  
         $connectivityGroup.Add($connectivityGroupItem)   
 
@@ -318,7 +316,7 @@ function Test-NetworkManagerConnectivityConfigurationCRUD
         Assert-AreEqual "HubAndSpoke" $connConfig.ConnectivityTopology;
         Assert-AreEqual $networkGroup.Id $connConfig.AppliesToGroups[0].NetworkGroupId;
         Assert-AreEqual "None"  $connConfig.AppliesToGroups[0].GroupConnectivity;
-        Assert-AreEqual "True"  $connConfig.AppliesToGroups[0].IsGlobal;
+        Assert-AreEqual "False"  $connConfig.AppliesToGroups[0].IsGlobal;
         Assert-AreEqual "False"  $connConfig.AppliesToGroups[0].UseHubGateway;
         Assert-AreEqual $hubId  $connConfig.Hubs[0].ResourceId;
         Assert-AreEqual "Microsoft.Network/virtualNetworks" $connConfig.Hubs[0].ResourceType;
@@ -337,7 +335,7 @@ function Test-NetworkManagerConnectivityConfigurationCRUD
         [System.Collections.Generic.List[String]]$regions = @()  
         $regions.Add($rglocation)
         Deploy-AzNetworkManagerCommit -ResourceGroupName $rgname -Name $networkManagerName -TargetLocation $regions -ConfigurationId $configids -CommitType "Connectivity" 
-        #Start-Sleep -Seconds 600
+        Start-Sleep -Seconds 600
          
         $deploymentStatus = Get-AzNetworkManagerDeploymentStatusList -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Region $regions -DeploymentType "Connectivity"
         Assert-NotNull $deploymentStatus;
@@ -351,7 +349,7 @@ function Test-NetworkManagerConnectivityConfigurationCRUD
         Assert-AreEqual "HubAndSpoke" $activeConnectivityConfig.Value[0].ConnectivityTopology
         Assert-AreEqual $networkGroup.Id $activeConnectivityConfig.Value[0].AppliesToGroups[0].NetworkGroupId;
         Assert-AreEqual "None"   $activeConnectivityConfig.Value[0].AppliesToGroups[0].GroupConnectivity;
-        Assert-AreEqual "True"   $activeConnectivityConfig.Value[0].AppliesToGroups[0].IsGlobal;
+        Assert-AreEqual "False"   $activeConnectivityConfig.Value[0].AppliesToGroups[0].IsGlobal;
         Assert-AreEqual "False"   $activeConnectivityConfig.Value[0].AppliesToGroups[0].UseHubGateway;
         Assert-AreEqual $hubId   $activeConnectivityConfig.Value[0].Hubs[0].ResourceId;
         Assert-AreEqual "Microsoft.Network/virtualNetworks"  $activeConnectivityConfig.Value[0].Hubs[0].ResourceType;
@@ -365,7 +363,7 @@ function Test-NetworkManagerConnectivityConfigurationCRUD
         Assert-AreEqual "HubAndSpoke" $effectiveConnectivityConfig.Value[0].ConnectivityTopology
         Assert-AreEqual $networkGroup.Id $effectiveConnectivityConfig.Value[0].AppliesToGroups[0].NetworkGroupId;
         Assert-AreEqual "None"   $effectiveConnectivityConfig.Value[0].AppliesToGroups[0].GroupConnectivity;
-        Assert-AreEqual "True"   $effectiveConnectivityConfig.Value[0].AppliesToGroups[0].IsGlobal;
+        Assert-AreEqual "False"   $effectiveConnectivityConfig.Value[0].AppliesToGroups[0].IsGlobal;
         Assert-AreEqual "False"   $effectiveConnectivityConfig.Value[0].AppliesToGroups[0].UseHubGateway;
         Assert-AreEqual $hubId   $effectiveConnectivityConfig.Value[0].Hubs[0].ResourceId;
         Assert-AreEqual "Microsoft.Network/virtualNetworks"  $effectiveConnectivityConfig.Value[0].Hubs[0].ResourceType;
@@ -373,7 +371,7 @@ function Test-NetworkManagerConnectivityConfigurationCRUD
         Assert-AreEqual "True"   $effectiveConnectivityConfig.Value[0].DeleteExistingPeering;
 
         Deploy-AzNetworkManagerCommit -ResourceGroupName $rgname -Name $networkManagerName -TargetLocation $regions -CommitType "Connectivity" 
-        #Start-Sleep -Seconds 600
+        Start-Sleep -Seconds 600
 
         $job = Remove-AzNetworkManagerConnectivityConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $connectivityConfigurationName -PassThru -Force -AsJob;
         $job | Wait-Job;
@@ -444,10 +442,9 @@ function Test-NetworkManagerSecurityAdminRuleCRUD
         Assert-AreEqual $networkManagerName $networkManager.Name;
         Assert-AreEqual $rglocation $networkManager.Location;
 
-        $groupmem = New-AzNetworkManagerGroupMembersItem -ResourceId $vnetId
-        [System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerGroupMembersItem]]$groupMembers  = @()
-        $groupMembers.Add($groupmem)
         New-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $networkGroupName -GroupMember $groupMembers -MemberType "Microsoft.Network/VirtualNetwork" -DisplayName "DISplayName" -Description "SampleConfigDESCRIption"
+
+        New-AzNetworkManagerStaticMember -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -NetworkGroupName $networkGroupName -Name $staticMemberName -ResourceId $vnetId
 
         $networkGroup = Get-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $networkGroupName
 
