@@ -15,15 +15,97 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzFrontDoorCdnOriginGroup
 }
 
 Describe 'Get-AzFrontDoorCdnOriginGroup' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
+        try
+        {
+            Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
+            New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
+
+            $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
+            Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
+
+            $profileSku = "Standard_AzureFrontDoor";
+            New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
+
+            $originGroupName = 'org' + (RandomString -allChars $false -len 6);
+            New-AzFrontDoorCdnOriginGroup -OriginGroupName $originGroupName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName `
+            -LoadBalancingSettingSampleSize 5 `
+            -LoadBalancingSettingSuccessfulSamplesRequired 4 `
+            -LoadBalancingSettingAdditionalLatencyInMillisecond 200 `
+            -HealthProbeSettingProbeIntervalInSecond 1 `
+            -HealthProbeSettingProbePath "/" `
+            -HealthProbeSettingProbeProtocol $([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProbeProtocol]::Https) `
+            -HealthProbeSettingProbeRequestType $([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.HealthProbeRequestType]::Get) `
+
+            $originGroups = Get-AzFrontDoorCdnOriginGroup -ResourceGroupName $ResourceGroupName -ProfileName $frontDoorCdnProfileName
+            $originGroups.Count | Should -Be 1
+        } Finally
+        {
+            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+        }
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
+        try
+        {
+            Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
+            New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
+
+            $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
+            Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
+
+            $profileSku = "Standard_AzureFrontDoor";
+            New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
+
+            $originGroupName = 'org' + (RandomString -allChars $false -len 6);
+            New-AzFrontDoorCdnOriginGroup -OriginGroupName $originGroupName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName `
+            -LoadBalancingSettingSampleSize 5 `
+            -LoadBalancingSettingSuccessfulSamplesRequired 4 `
+            -LoadBalancingSettingAdditionalLatencyInMillisecond 200 `
+            -HealthProbeSettingProbeIntervalInSecond 1 `
+            -HealthProbeSettingProbePath "/" `
+            -HealthProbeSettingProbeProtocol $([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProbeProtocol]::Https) `
+            -HealthProbeSettingProbeRequestType $([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.HealthProbeRequestType]::Get) `
+
+            $originGroup = Get-AzFrontDoorCdnOriginGroup -ResourceGroupName $ResourceGroupName -ProfileName $frontDoorCdnProfileName -OriginGroupName $originGroupName
+            $originGroup.Name | Should -Be $originGroupName
+        } Finally
+        {
+            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+        }
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $PSDefaultParameterValues['Disabled'] = $true
+        $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
+        try
+        {
+            Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
+            New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
+
+            $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
+            Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
+
+            $profileSku = "Standard_AzureFrontDoor";
+            New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
+
+            $originGroupName = 'org' + (RandomString -allChars $false -len 6);
+            New-AzFrontDoorCdnOriginGroup -OriginGroupName $originGroupName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName `
+            -LoadBalancingSettingSampleSize 5 `
+            -LoadBalancingSettingSuccessfulSamplesRequired 4 `
+            -LoadBalancingSettingAdditionalLatencyInMillisecond 200 `
+            -HealthProbeSettingProbeIntervalInSecond 1 `
+            -HealthProbeSettingProbePath "/" `
+            -HealthProbeSettingProbeProtocol $([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProbeProtocol]::Https) `
+            -HealthProbeSettingProbeRequestType $([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.HealthProbeRequestType]::Get) `
+
+            $originGroup = Get-AzFrontDoorCdnOriginGroup -ResourceGroupName $ResourceGroupName -ProfileName $frontDoorCdnProfileName -OriginGroupName $originGroupName | Get-AzFrontDoorCdnOriginGroup
+            $originGroup.Name | Should -Be $originGroupName
+        } Finally
+        {
+            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+        }
     }
 }
