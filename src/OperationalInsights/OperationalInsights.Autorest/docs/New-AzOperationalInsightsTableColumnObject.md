@@ -24,8 +24,7 @@ Create an in-memory object for Column.
 
 ### Example 1: Create a new Column which is used for New-AzOperationalInsightsTable cmdlet
 ```powershell
-PS C:\> 
-New-AzOperationalInsightsTableColumnObject -Name 'SourceSystem' -Description 'Type of agent the data was collected from. Possible values are OpsManager (Windows agent) or Linux.' -Type 'string'
+PS C:\> New-AzOperationalInsightsTableColumnObject -Name 'SourceSystem' -Description 'Type of agent the data was collected from. Possible values are OpsManager (Windows agent) or Linux.' -Type 'string'
 
 DataTypeHint Description                                                                                         DisplayName IsDefaultDisplay IsHidden Name
 ------------ -----------                                                                                         ----------- ---------------- -------- ----
@@ -45,110 +44,7 @@ DataTypeHint Description                           DisplayName IsDefaultDisplay 
 
 ```
 
-## PARAMETERS
-
-### -DataTypeHint
-```powershell
-
-```
-
-Type: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.Support.ColumnDataTypeHintEnum
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Description
-```powershell
-
-```
-
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DisplayName
-```powershell
-
-```
-
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-```powershell
-
-```
-
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Type
-```powershell
-
-```
-
-Type: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.Support.ColumnTypeEnum
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### CommonParameters
-```powershell
-
-```
-
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
-
-## INPUTS
-
-## OUTPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.Models.Api20211201Preview.Column
-```powershell
-
-```
-
-## NOTES
-
-ALIASES
-
-## RELATED LINKS
+Creates a TableColumnObject which is required to use "New-AzOperationalInsightsTable" cmdlet.
 
 ## PARAMETERS
 

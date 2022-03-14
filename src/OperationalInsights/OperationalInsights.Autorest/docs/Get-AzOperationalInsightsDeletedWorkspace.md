@@ -29,33 +29,9 @@ Gets recently deleted workspaces in a subscription, available for recovery.
 
 ## EXAMPLES
 
-### List (Default)
-```powershell
-
-```
-
-Get-AzOperationalInsightsDeletedWorkspace [-SubscriptionId \<String[]\>] [-DefaultProfile \<PSObject\>]
- [\<CommonParameters\>]
-```
-
-### List1
-```powershell
-
-```
-
-Get-AzOperationalInsightsDeletedWorkspace -ResourceGroupName \<String\> [-SubscriptionId \<String[]\>]
- [-DefaultProfile \<PSObject\>] [\<CommonParameters\>]
-```
-
-## DESCRIPTION
-Gets recently deleted workspaces in a subscription, available for recovery.
-
-## EXAMPLES
-
 ### Example 1: List all deleted workspaces for a given resource group
 ```powershell
 Get-AzOperationalInsightsDeletedWorkspace -ResourceGroupName {RG-Name}
-```
 
 Name                            : {WS-Name1}
 ResourceId                      : /subscriptions/{SUB-id}/resourcegroups/{RG-Name}/providers/microsoft.operationalinsights/workspaces/{WS-Name1}
@@ -96,11 +72,13 @@ CreatedDate                     : Tue, 12 Jan 2021 11:25:15 GMT
 ModifiedDate                    : Wed, 19 Jan 2022 20:50:32 GMT
 ForceCmkForQuery                :
 WorkspaceFeatures               : Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures
+```
 
-### Example 2: Get a deleted workspace by resorce group and name
+Get all deleted workspaces for a given resource group
+
+### Example 2: Get a deleted workspace by resource group and name
 ```powershell
 Get-AzOperationalInsightsDeletedWorkspace -ResourceGroupName {RG-Name} -Name {WS-Name1}
-```
 
 Name                            : {WS-Name1}
 ResourceId                      : /subscriptions/{SUB-id}/resourcegroups/{RG-Name}/providers/microsoft.operationalinsights/workspaces/{WS-Name1}
@@ -121,79 +99,9 @@ CreatedDate                     : Tue, 12 Jan 2021 11:25:15 GMT
 ModifiedDate                    : Wed, 19 Jan 2022 20:50:32 GMT
 ForceCmkForQuery                :
 WorkspaceFeatures               : Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures
-
-## PARAMETERS
-
-### -DefaultProfile
-```powershell
-
 ```
 
-Type: System.Management.Automation.PSObject
-Parameter Sets: (All)
-Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-```powershell
-
-```
-
-Type: System.String
-Parameter Sets: List1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SubscriptionId
-```powershell
-
-```
-
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### CommonParameters
-```powershell
-
-```
-
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
-
-## INPUTS
-
-## OUTPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.Models.Api20211201Preview.IWorkspace
-```powershell
-
-```
-
-## NOTES
-
-ALIASES
-
-## RELATED LINKS
+Get a specific deleted workspace  by resource group and name
 
 ## PARAMETERS
 
