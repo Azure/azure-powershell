@@ -41,12 +41,13 @@ Start-AzAutomationDscNodeConfigurationDeployment `
             -NodeConfigurationName "Config01.Node1" `
             -AutomationAccountName "Contoso01"  `
             -ResourceGroupName "ResourceGroup01" `
-            -NodeName $nodes `
+            -NodeName $nodes
 ```
 ```output
 Starting a node configuration deployment.
 Starting a node configuration deployment. It will override any existing node configurations assigned to the node.
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Yes
+
 ResourceGroupName     : ResourceGroup01
 AutomationAccountName : Contoso01
 JobId                 : 35b14eb4-52b7-4a1d-ad62-8e9f84adc657
@@ -81,6 +82,7 @@ Start-AzAutomationDscNodeConfigurationDeployment `
 Starting a node configuration deployment.
 Starting a node configuration deployment. It will override any existing node configurations assigned to the node.
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
+
 ResourceGroupName     : ResourceGroup01
 AutomationAccountName : Contoso01
 JobId                 : 00000000-0000-0000-0000-000000000000

@@ -25,10 +25,10 @@ Creates a software update configuration azure queries object that will be used t
 
 ### Example 1
 ```powershell
-$query1Scope = @(        
-"/subscriptions/22e2445a-0984-4fa5-86a4-0280d76c4b2c/resourceGroups/resourceGroupName",
-"/subscriptions/32e2445a-0984-4fa5-86a4-0280d76c4b2d/"
-    )
+$query1Scope = @(
+    "/subscriptions/22e2445a-0984-4fa5-86a4-0280d76c4b2c/resourceGroups/resourceGroupName",
+    "/subscriptions/32e2445a-0984-4fa5-86a4-0280d76c4b2d/"
+)
 $query1Location =@("Japan East", "UK South")
 $query1FilterOperator = "All"
 $tag1 = @{"tag1"= @("tag1Value1", "tag1Value2")}
