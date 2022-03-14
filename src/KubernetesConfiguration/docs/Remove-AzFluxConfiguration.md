@@ -1,34 +1,32 @@
 ---
 external help file:
 Module Name: Az.KubernetesConfiguration
-online version: https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/remove-azkubernetesextension
+online version: https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/remove-azfluxconfiguration
 schema: 2.0.0
 ---
 
-# Remove-AzKubernetesExtension
+# Remove-AzFluxConfiguration
 
 ## SYNOPSIS
-Delete a Kubernetes Cluster Extension.
-This will cause the Agent to Uninstall the extension from the cluster.
+This will delete the YAML file used to set up the Flux Configuration, thus stopping future sync from the source repo.
 
 ## SYNTAX
 
 ### Delete (Default)
 ```
-Remove-AzKubernetesExtension -ClusterName <String> -ClusterType <String> -Name <String>
+Remove-AzFluxConfiguration -ClusterName <String> -ClusterRp <String> -ClusterType <String> -Name <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-ForceDelete] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzKubernetesExtension -InputObject <IKubernetesConfigurationIdentity> [-ForceDelete]
+Remove-AzFluxConfiguration -InputObject <IKubernetesConfigurationIdentity> [-ForceDelete]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete a Kubernetes Cluster Extension.
-This will cause the Agent to Uninstall the extension from the cluster.
+This will delete the YAML file used to set up the Flux Configuration, thus stopping future sync from the source repo.
 
 ## EXAMPLES
 
@@ -69,6 +67,22 @@ Accept wildcard characters: False
 
 ### -ClusterName
 The name of the kubernetes cluster.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ClusterRp
+The Kubernetes cluster RP - i.e.
+Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
 
 ```yaml
 Type: System.String
@@ -145,12 +159,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the Extension.
+Name of the Flux Configuration.
 
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases: ExtensionName
+Aliases: FluxConfigurationName
 
 Required: True
 Position: Named
@@ -265,8 +279,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-Remove-AzK8sExtension
 
 COMPLEX PARAMETER PROPERTIES
 

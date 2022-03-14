@@ -35,28 +35,23 @@ Gets details of the Source Control Configuration.
 
 ## EXAMPLES
 
-### Example 1: List details of the Source Control Configuration.
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azps_test_cluster -ClusterType ConnectedClusters
+PS C:\> {{ Add code here }}
 
-Name          Type
-----          ----
-azpstestk8s01 Microsoft.KubernetesConfiguration/sourceControlConfigurations
-azpstestk8s02 Microsoft.KubernetesConfiguration/sourceControlConfigurations
+{{ Add output here }}
 ```
 
-List details of the Source Control Configuration.
+{{ Add description here }}
 
-### Example 2: Gets details of the Source Control Configuration.
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azps_test_cluster -ClusterType ConnectedClusters -Name azpstestk8s01
+PS C:\> {{ Add code here }}
 
-Name          Type
-----          ----
-azpstestk8s01 Microsoft.KubernetesConfiguration/sourceControlConfigurations
+{{ Add output here }}
 ```
 
-Gets details of the Source Control Configuration.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -76,7 +71,8 @@ Accept wildcard characters: False
 ```
 
 ### -ClusterType
-The Kubernetes cluster resource name - either managedClusters (for AKS clusters) or connectedClusters (for OnPrem K8S clusters).
+The Kubernetes cluster resource name - i.e.
+managedClusters, connectedClusters, provisionedClusters.
 
 ```yaml
 Type: System.String
@@ -138,6 +134,7 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -152,9 +149,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The Azure subscription ID.
-This is a GUID-formatted string (e.g.
-00000000-0000-0000-0000-000000000000)
+The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
@@ -177,7 +172,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.ISourceControlConfiguration
 
 ## NOTES
 
@@ -192,14 +187,15 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IKubernetesConfigurationIdentity>: Identity Parameter
   - `[ClusterName <String>]`: The name of the kubernetes cluster.
-  - `[ClusterResourceName <String>]`: The Kubernetes cluster resource name - either managedClusters (for AKS clusters) or connectedClusters (for OnPrem K8S clusters).
-  - `[ClusterRp <String>]`: The Kubernetes cluster RP - either Microsoft.ContainerService (for AKS clusters) or Microsoft.Kubernetes (for OnPrem K8S clusters).
+  - `[ClusterResourceName <String>]`: The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
+  - `[ClusterRp <String>]`: The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
   - `[ExtensionName <String>]`: Name of the Extension.
+  - `[FluxConfigurationName <String>]`: Name of the Flux Configuration.
   - `[Id <String>]`: Resource identity path
   - `[OperationId <String>]`: operation Id
-  - `[ResourceGroupName <String>]`: The name of the resource group.
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SourceControlConfigurationName <String>]`: Name of the Source Control Configuration.
-  - `[SubscriptionId <String>]`: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

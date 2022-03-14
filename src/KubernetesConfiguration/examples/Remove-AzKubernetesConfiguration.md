@@ -1,16 +1,18 @@
-### Example 1: Remove a configuation of kubernetes cluster by name
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Remove-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azps_test_cluster -Name  azpstestk8s01 -ClusterType ConnectedClusters
+PS C:\> {{ Add code here }}
 
+{{ Add output here }}
 ```
 
-This command removes a configuation of kubernetes cluster by name.
+{{ Add description here }}
 
-### Example 2: Remove a configuation of kubernetes cluster by object
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> $kubConf = Get-AzKubernetesConfiguration -ClusterName azps_test_cluster -ClusterType ConnectedClusters -ResourceGroupName azps_test_group -Name azpstestk8s02
-PS C:\> Remove-AzKubernetesConfiguration -InputObject $kubConf
+PS C:\> {{ Add code here }}
 
+{{ Add output here }}
 ```
 
-This command removes a configuation of kubernetes cluster by object.
+{{ Add description here }}
+

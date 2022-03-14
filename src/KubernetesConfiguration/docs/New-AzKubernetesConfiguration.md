@@ -13,12 +13,12 @@ Create a new Kubernetes Source Control Configuration.
 ## SYNTAX
 
 ```
-New-AzKubernetesConfiguration -ClusterName <String> -Name <String> -ResourceGroupName <String>
- -RepositoryUrl <String> [-ClusterType <String>] [-SubscriptionId <String>] [-ClusterScoped]
+New-AzKubernetesConfiguration -ClusterName <String> -ClusterType <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-ClusterScoped]
  [-ConfigurationProtectedSetting <Hashtable>] [-EnableHelmOperator] [-HelmOperatorChartValue <String>]
  [-HelmOperatorChartVersion <String>] [-OperatorInstanceName <String>] [-OperatorNamespace <String>]
- [-OperatorParameter <String>] [-SshKnownHost <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-OperatorParam <String>] [-RepositoryUrl <String>] [-SshKnownHost <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,28 +26,23 @@ Create a new Kubernetes Source Control Configuration.
 
 ## EXAMPLES
 
-### Example 1: Create a configuration for kubernetes cluster
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> New-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azps_test_cluster -Name azpstestk8s01 -RepositoryUrl http://github.com/xxxx
+PS C:\> {{ Add code here }}
 
-Name          Type
-----          ----
-azpstestk8s01 Microsoft.KubernetesConfiguration/sourceControlConfigurations
+{{ Add output here }}
 ```
 
-This command creates a configuration for kubernetes cluster.
+{{ Add description here }}
 
-### Example 2: Create a configuration for kubernetes cluster with specify paramter OperatorNamespace
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> New-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azps_test_cluster -Name azpstestk8s02 -RepositoryUrl http://github.com/xxxx -OperatorNamespace namespace-t01
+PS C:\> {{ Add code here }}
 
-Name          Type
-----          ----
-azpstestk8s02 Microsoft.KubernetesConfiguration/sourceControlConfigurations
+{{ Add output here }}
 ```
 
-This command creates a configuration in the new operator namespace for kubernetes cluster.
-Note, Unable to create a configuration in an existing operator namespace.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -82,14 +77,15 @@ Accept wildcard characters: False
 ```
 
 ### -ClusterType
-The Kubernetes cluster resource name - either managedClusters (for AKS clusters) or connectedClusters (for OnPrem K8S clusters).
+The Kubernetes cluster resource name - i.e.
+managedClusters, connectedClusters, provisionedClusters.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -217,7 +213,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OperatorParameter
+### -OperatorParam
 Any Parameters for the Operator instance in string format.
 
 ```yaml
@@ -240,7 +236,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -249,6 +245,7 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -263,7 +260,7 @@ Accept wildcard characters: False
 ```
 
 ### -SshKnownHost
-If passed set the scope of the Configuration to Cluster (default is nameSpace).
+Base64-encoded known_hosts contents containing public SSH keys required to access private Git instances
 
 ```yaml
 Type: System.String
@@ -278,7 +275,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The Azure subscription ID.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
@@ -330,7 +327,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.ISourceControlConfiguration
 
 ## NOTES
 

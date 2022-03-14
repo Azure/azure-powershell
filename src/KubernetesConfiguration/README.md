@@ -47,12 +47,14 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: fa0a95854a551be7fdb04367e2e7b6500ab2e341
+branch: 791255f0c5dd775015cd51f3e642549190fb3803
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2021-03-01/kubernetesconfiguration.json
-  - $(repo)/specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2021-09-01/extensions.json
+  - $(repo)/specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2022-03-01/extensions.json
+  - $(repo)/specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2022-03-01/fluxconfiguration.json
+  - $(repo)/specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2022-03-01/operations.json
+  - $(repo)/specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2022-03-01/kubernetesconfiguration.json
 
 title: KubernetesConfiguration
 module-version: 0.1.0
@@ -79,17 +81,10 @@ directive:
             "$ref": "#/definitions/Extension"
           }
         },
-        "409": {
-          "description": "Conflict",
-          "x-ms-error-response": true,
-          "schema": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/fa0a95854a551be7fdb04367e2e7b6500ab2e341/specification/common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
-          }
-        },
         "default": {
           "description": "Error response describing why the operation failed.",
           "schema": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/fa0a95854a551be7fdb04367e2e7b6500ab2e341/specification/common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/791255f0c5dd775015cd51f3e642549190fb3803/specification/common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
           }
         }
       }
@@ -97,13 +92,14 @@ directive:
     where: $.definitions.Extension.properties.properties.properties.statuses
     transform: >-
       return {
-          "description": "Status from this extension.",
-          "type": "array",
-          "readOnly": true,
-          "x-nullable": true,
-          "items": {
-            "$ref": "#/definitions/ExtensionStatus"
-          }
+        "description": "Status from this extension.",
+        "type": "array",
+        "readOnly": true,
+        "x-nullable": true,
+        "items": {
+          "$ref": "#/definitions/ExtensionStatus"
+        },
+        "x-ms-identifiers": []
       }
   - from: swagger-document
     where: $.definitions.EnableHelmOperatorDefinition.type
