@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed the issue that custom URIs are not supported for context creation [#17285]
+    - `New-AzStorageContext`
 
 ## Version 4.3.0
 * Supported download blob from managed disk account with Sas Uri and bearer token

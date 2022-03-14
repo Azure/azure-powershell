@@ -61,6 +61,18 @@ New-AzStorageContext [-StorageAccountName] <String> [-UseConnectedAccount] [-Pro
  -Environment <String> [<CommonParameters>]
 ```
 
+### AccountNameAndKeySeviceEndpoint
+```
+New-AzStorageContext [-StorageAccountName] <String> [-StorageAccountKey] <String> -BlobEndpoint <String>
+ [-FileEndpoint <String>] [-QueueEndpoint <String>] [-TableEndpoint <String>] [<CommonParameters>]
+```
+
+### SasTokenSeviceEndpoint
+```
+New-AzStorageContext -SasToken <String> [-BlobEndpoint <String>] [-FileEndpoint <String>]
+ [-QueueEndpoint <String>] [-TableEndpoint <String>] [<CommonParameters>]
+```
+
 ### ConnectionString
 ```
 New-AzStorageContext -ConnectionString <String> [<CommonParameters>]
@@ -69,6 +81,18 @@ New-AzStorageContext -ConnectionString <String> [<CommonParameters>]
 ### LocalDevelopment
 ```
 New-AzStorageContext [-Local] [<CommonParameters>]
+```
+
+### AnonymousAccountSeviceEndpoint
+```
+New-AzStorageContext [-Anonymous] [-BlobEndpoint <String>] [-FileEndpoint <String>] [-QueueEndpoint <String>]
+ [-TableEndpoint <String>] [<CommonParameters>]
+```
+
+### OAuthAccountSeviceEndpoint
+```
+New-AzStorageContext [-UseConnectedAccount] [-BlobEndpoint <String>] [-FileEndpoint <String>]
+ [-QueueEndpoint <String>] [-TableEndpoint <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -163,6 +187,36 @@ PS C:\> $Context = New-AzStorageContext -StorageAccountName "myaccountname" -Use
 
 This command creates a context by using the OAuth (Azure AD) Authentication.
 
+### Example 11: Create a context by specifying a storage account name, storage account key and custom blob endpoint
+```
+PS C:\> New-AzStorageContext -StorageAccountName "MyAccountName" -StorageAccountKey "< Storage Key for MyAccountName ends with == >" -BlobEndpoint "https://MyAccountName.blob.core.windows.net/"
+```
+
+This command creates a context for the account named MyAccountName with a key for the account, and specified blob endpoint and table endpoint.
+
+### Example 12: Create a context for an anonymous storage accouont with specified file and queue endpoints 
+```
+PS C:\> New-AzStorageContext -StorageAccountName "MyAccountName" -Anonymous -Protocol "http" -FileEndpoint "https://MyAccountName.file.core.windows.net/" -QueueEndpoint "https://MyAccountName.queue.core.windows.net/"
+```
+
+This command creates a context for anonymous use for the account named ContosoGeneral, with specified file and queue endpoints.
+
+### Example 13: Create a context by using an SAS token with specified endpoints
+```
+PS C:\>$SasToken = New-AzStorageContainerSASToken -Name "MyContainer" -Permission "rad"
+PS C:\> New-AzStorageContext -StorageAccountName "MyAccountName" -SasToken $SasToken -BlobEndpoint "https://MyAccountName.blob.core.windows.net/" -TableEndpoint "https://MyAccountName.table.core.windows.net/" -FileEndpoint "https://MyAccountName.file.core.windows.net/" -QueueEndpoint "https://MyAccountName.queue.core.windows.net/"
+```
+
+The first command generates an SAS token by using the New-AzStorageContainerSASToken cmdlet for the container named MyContainer, and then stores that token in the $SasToken variable.
+The second command creates a context for the account named ContosoGeneral that uses the SAS token and a specified blob endpoint, table endpoint, file endpoint, and queue endpoint. 
+
+### Example 14: Create ea context by using the OAuth Authentication with a specified blob endpoint 
+```
+PS C:\> New-AzStorageContext -UseConnectedAccount -BlobEndpoint  "https://MyAccountName.blob.core.windows.net/"
+```
+
+This command creates a context by using the OAuth authentication with a specified blob endpoint.
+
 ## PARAMETERS
 
 ### -Anonymous
@@ -170,10 +224,37 @@ Indicates that this cmdlet creates an Azure Storage context for anonymous logon.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: AnonymousAccount, AnonymousAccountEnvironment
+Parameter Sets: AnonymousAccount, AnonymousAccountEnvironment, AnonymousAccountSeviceEndpoint
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BlobEndpoint
+Azure storage endpoint
+
+```yaml
+Type: System.String
+Parameter Sets: AccountNameAndKeySeviceEndpoint
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: SasTokenSeviceEndpoint, AnonymousAccountSeviceEndpoint, OAuthAccountSeviceEndpoint
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -239,6 +320,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -FileEndpoint
+Azure storage endpoint
+
+```yaml
+Type: System.String
+Parameter Sets: AccountNameAndKeySeviceEndpoint, SasTokenSeviceEndpoint, AnonymousAccountSeviceEndpoint, OAuthAccountSeviceEndpoint
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Local
 Indicates that this cmdlet creates a context by using the local development storage account.
 
@@ -270,12 +366,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -QueueEndpoint
+Azure storage endpoint
+
+```yaml
+Type: System.String
+Parameter Sets: AccountNameAndKeySeviceEndpoint, SasTokenSeviceEndpoint, AnonymousAccountSeviceEndpoint, OAuthAccountSeviceEndpoint
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SasToken
 Specifies a Shared Access Signature (SAS) token for the context.
 
 ```yaml
 Type: System.String
-Parameter Sets: SasToken, SasTokenWithAzureEnvironment
+Parameter Sets: SasToken, SasTokenWithAzureEnvironment, SasTokenSeviceEndpoint
 Aliases:
 
 Required: True
@@ -291,7 +402,7 @@ This cmdlet creates a context for the key that this parameter specifies.
 
 ```yaml
 Type: System.String
-Parameter Sets: AccountNameAndKey, AccountNameAndKeyEnvironment
+Parameter Sets: AccountNameAndKey, AccountNameAndKeyEnvironment, AccountNameAndKeySeviceEndpoint
 Aliases:
 
 Required: True
@@ -307,11 +418,26 @@ This cmdlet creates a context for the account that this parameter specifies.
 
 ```yaml
 Type: System.String
-Parameter Sets: OAuthAccount, AccountNameAndKey, AccountNameAndKeyEnvironment, AnonymousAccount, AnonymousAccountEnvironment, SasToken, SasTokenWithAzureEnvironment, OAuthAccountEnvironment
+Parameter Sets: OAuthAccount, AccountNameAndKey, AccountNameAndKeyEnvironment, AnonymousAccount, AnonymousAccountEnvironment, SasToken, SasTokenWithAzureEnvironment, OAuthAccountEnvironment, AccountNameAndKeySeviceEndpoint
 Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TableEndpoint
+Azure storage endpoint
+
+```yaml
+Type: System.String
+Parameter Sets: AccountNameAndKeySeviceEndpoint, SasTokenSeviceEndpoint, AnonymousAccountSeviceEndpoint, OAuthAccountSeviceEndpoint
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -323,7 +449,7 @@ The cmdlet will use OAuth Authentication by default, when other authentication n
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: OAuthAccount, OAuthAccountEnvironment
+Parameter Sets: OAuthAccount, OAuthAccountEnvironment, OAuthAccountSeviceEndpoint
 Aliases:
 
 Required: False
@@ -334,7 +460,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
