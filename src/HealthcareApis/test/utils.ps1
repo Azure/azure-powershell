@@ -24,7 +24,7 @@ function setupEnv() {
     $env.Add("apiService1", $apiService1)
     $env.Add("apiService2", $apiService2)
 
-    $apiWorkspace1 = "cngwrj" #RandomString -allChars $false -len 6
+    $apiWorkspace1 = RandomString -allChars $false -len 6
     $apiWorkspace2 = RandomString -allChars $false -len 6
     $apiWorkspace3 = RandomString -allChars $false -len 6
     $env.Add("apiWorkspace1", $apiWorkspace1)
@@ -36,14 +36,14 @@ function setupEnv() {
     $env.Add("dicom1", $dicom1)
     $env.Add("dicom2", $dicom2)
 
-    $fhirService1 = "t2ra0e" #RandomString -allChars $false -len 6
+    $fhirService1 = RandomString -allChars $false -len 6
     $fhirService2 = RandomString -allChars $false -len 6
     $fhirService3 = RandomString -allChars $false -len 6
     $env.Add("fhirService1", $fhirService1)
     $env.Add("fhirService2", $fhirService2)
     $env.Add("fhirService3", $fhirService3)
 
-    $iotConnector1 = "nfeac9" #RandomString -allChars $false -len 6
+    $iotConnector1 = RandomString -allChars $false -len 6
     $iotConnector2 = RandomString -allChars $false -len 6
     $iotConnector3 = RandomString -allChars $false -len 6
     $env.Add("iotConnector1", $iotConnector1)
@@ -62,12 +62,12 @@ function setupEnv() {
     $resourceGroup = "azpstestgroup"
     $env.Add("resourceGroup", $resourceGroup)
 
-    # New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
+    New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
 
-    # New-AzHealthcareAPIsWorkspace -Name $env.apiWorkspace1 -ResourceGroupName $env.resourceGroup -Location $env.location
-    # New-AzHealthcareFhirService -Name $env.fhirService1 -ResourceGroupName $env.resourceGroup -WorkspaceName $env.apiWorkspace1 -Location $env.location -Kind 'fhir-R4' -AuthenticationConfigurationAuthority "https://login.microsoftonline.com/$($env.Tenant)" -AuthenticationConfigurationAudience "https://azpshcws-$($env.fhirService1).fhir.azurehealthcareapis.com"
-    # $arr = @()
-    # New-AzHealthcareIotConnector -Name $env.iotConnector1 -ResourceGroupName $env.resourceGroup -WorkspaceName $env.apiWorkspace1 -Location $env.location -IngestionEndpointConfigurationConsumerGroup "sajob-01-portal_input-01_consumer_group" -IngestionEndpointConfigurationEventHubName "sajob01portaleventhub" -IngestionEndpointConfigurationFullyQualifiedEventHubNamespace "sdk-Namespace-4761" -DeviceMappingContent @{"templateType"="CollectionContent";"template"=$arr}
+    New-AzHealthcareAPIsWorkspace -Name $env.apiWorkspace1 -ResourceGroupName $env.resourceGroup -Location $env.location
+    New-AzHealthcareFhirService -Name $env.fhirService1 -ResourceGroupName $env.resourceGroup -WorkspaceName $env.apiWorkspace1 -Location $env.location -Kind 'fhir-R4' -AuthenticationConfigurationAuthority "https://login.microsoftonline.com/$($env.Tenant)" -AuthenticationConfigurationAudience "https://azpshcws-$($env.fhirService1).fhir.azurehealthcareapis.com"
+    $arr = @()
+    New-AzHealthcareIotConnector -Name $env.iotConnector1 -ResourceGroupName $env.resourceGroup -WorkspaceName $env.apiWorkspace1 -Location $env.location -IngestionEndpointConfigurationConsumerGroup "sajob-01-portal_input-01_consumer_group" -IngestionEndpointConfigurationEventHubName "sajob01portaleventhub" -IngestionEndpointConfigurationFullyQualifiedEventHubNamespace "sdk-Namespace-4761" -DeviceMappingContent @{"templateType"="CollectionContent";"template"=$arr}
 
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
