@@ -31,7 +31,7 @@ The **Get-AzWebAppSlotConfigName** cmdlet retrieves the list of App Setting and 
 
 ### Example 1
 ```powershell
-PS C:\>Get-AzWebAppSlotConfigName -ResourceGroupName "Default-Web-WestUS" -Name "ContosoSite"
+Get-AzWebAppSlotConfigName -ResourceGroupName "Default-Web-WestUS" -Name "ContosoSite"
 ```
 
 This command gets App Settings and Connection strings pertaining to the Web App named ContosoSite associated with the resource group Default-Web-WestUS

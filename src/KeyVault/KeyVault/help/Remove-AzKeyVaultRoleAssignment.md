@@ -78,14 +78,14 @@ The cmdlet may call below Microsoft Graph API according to input parameters:
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzKeyVaultRoleAssignment -HsmName myHsm -RoleDefinitionName "Managed HSM Policy Administrator" -SignInName user1@microsoft.com -Scope "/keys"
+Remove-AzKeyVaultRoleAssignment -HsmName myHsm -RoleDefinitionName "Managed HSM Policy Administrator" -SignInName user1@microsoft.com -Scope "/keys"
 ```
 
 This example revokes "Managed HSM Policy Administrator" role of "user1@microsoft.com" at "/keys" scope.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzKeyVaultRoleAssignment -HsmName myHsm -SignInName user1@microsoft.com | Remove-AzKeyVaultRoleAssignment
+Get-AzKeyVaultRoleAssignment -HsmName myHsm -SignInName user1@microsoft.com | Remove-AzKeyVaultRoleAssignment
 ```
 
 This example revokes all roles of "user1@microsoft.com" at all scopes.

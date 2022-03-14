@@ -29,11 +29,11 @@ The **Get-AzNetAppFilesAccount** cmdlet gets details of an ANF account.
 ## EXAMPLES
 
 ### Example 1: Get an ANF account
+```powershell
+Get-AzNetAppFilesAccount -ResourceGroupName "MyRG" -Name "MyAnfAccount"
 ```
-PS C:\>Get-AzNetAppFilesAccount -ResourceGroupName "MyRG" -Name "MyAnfAccount"
 
-Output:
-
+```output
 Location          : westus2
 Id                : /subscriptions/mySubs/resourceGroups/MyRG/providers/Microsoft.NetApp/netAppAccounts/MyAnfAccount
 Name              : MyAnfAccount

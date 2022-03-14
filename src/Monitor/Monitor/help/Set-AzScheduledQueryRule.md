@@ -43,8 +43,10 @@ Updates a Log Alert Rule by PUT semantics
 
 ### Example 1: Set by rule name
 ```powershell
-PS C:\> Set-AzScheduledQueryRule -ResourceGroupName "MyResourceGroup" -Name "LogAlertRule1" -Enabled $true -Location "centralindia" -Action $alertingAction -Description "log alert description" -Schedule $schedule -Source $source
+Set-AzScheduledQueryRule -ResourceGroupName "MyResourceGroup" -Name "LogAlertRule1" -Enabled $true -Location "centralindia" -Action $alertingAction -Description "log alert description" -Schedule $schedule -Source $source
+```
 
+```output
 Description       : log alert description
 Enabled           : true
 LastUpdatedTime   : 19-Apr-19 12:45:04 PM
@@ -61,8 +63,10 @@ Tags              : {[hidden-link:/subscriptions/ad825170-845c-47db-8f00-1197894
 
 ### Example 2: Set by Input Object
 ```powershell
-PS C:\> Set-AzScheduledQueryRule -InputObject $sqr -Description "changed description"
+Set-AzScheduledQueryRule -InputObject $sqr -Description "changed description"
+```
 
+```output
 Description       : changed description
 Enabled           : true
 LastUpdatedTime   : 19-Apr-19 12:46:38 PM
@@ -79,8 +83,10 @@ Tags              : {[hidden-link:/subscriptions/ad825170-845c-47db-8f00-1197894
 
 ### Example 3: Set by resource Id
 ```powershell
-PS C:\> Set-AzScheduledQueryRule -ResourceId "/subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/MyResourceGroup/providers/Microsoft.Insights/scheduledqueryrules/LogAlertRule1" -Enabled $true -Location "centralindia" -Action $alertingAction -Description "change description again" -Schedule $schedule -Source $source
+Set-AzScheduledQueryRule -ResourceId "/subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/MyResourceGroup/providers/Microsoft.Insights/scheduledqueryrules/LogAlertRule1" -Enabled $true -Location "centralindia" -Action $alertingAction -Description "change description again" -Schedule $schedule -Source $source
+```
 
+```output
 Description       : change description again
 Enabled           : true
 LastUpdatedTime   : 19-Apr-19 12:47:59 PM

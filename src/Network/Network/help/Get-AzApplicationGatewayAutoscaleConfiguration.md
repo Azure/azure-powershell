@@ -24,9 +24,9 @@ The **Get-AzApplicationGatewayAutoscaleConfiguration** cmdlet gets Autoscale Con
 
 ### Example 1
 ```powershell
-PS C:\> $gw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $resgpName
-PS C:\> $autoscaleConfiguration = Get-AzApplicationGatewayAutoscaleConfiguration -ApplicationGateway $gw
-PS C:\> $autoscaleConfiguration.MinCapacity
+$gw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $resgpName
+$autoscaleConfiguration = Get-AzApplicationGatewayAutoscaleConfiguration -ApplicationGateway $gw
+$autoscaleConfiguration.MinCapacity
 ```
 
 The first command gets the application gateway and stores it in $gw variable.

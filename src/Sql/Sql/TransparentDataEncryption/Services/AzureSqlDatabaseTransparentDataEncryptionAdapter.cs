@@ -74,16 +74,16 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
         /// <returns>The updated server model</returns>
         public AzureSqlDatabaseTransparentDataEncryptionModel UpsertTransparentDataEncryption(AzureSqlDatabaseTransparentDataEncryptionModel model)
         {
-            TransparentDataEncryptionStatus status = TransparentDataEncryptionStatus.Enabled;
+            TransparentDataEncryptionState state = TransparentDataEncryptionState.Enabled;
 
-            if (model.State.ToString().Equals(TransparentDataEncryptionStatus.Disabled.ToString()))
+            if (model.State.ToString().Equals(TransparentDataEncryptionState.Disabled.ToString()))
             {
-                status = TransparentDataEncryptionStatus.Disabled;
+                state = TransparentDataEncryptionState.Disabled;
             }
 
-            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.DatabaseName, new Management.Sql.Models.TransparentDataEncryption()
+            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.DatabaseName, new Management.Sql.Models.LogicalDatabaseTransparentDataEncryption()
             {
-                Status = status
+                State = state
 
             }); ;
 
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
         /// <param name="serverName">The name of the server</param>
         /// <param name="resp">The management client server response to convert</param>
         /// <returns>The converted server model</returns>
-        private static AzureSqlDatabaseTransparentDataEncryptionModel CreateTransparentDataEncryptionModelFromResponse(string resourceGroup, string serverName, string databaseName, Management.Sql.Models.TransparentDataEncryption resp)
+        private static AzureSqlDatabaseTransparentDataEncryptionModel CreateTransparentDataEncryptionModelFromResponse(string resourceGroup, string serverName, string databaseName, Management.Sql.Models.LogicalDatabaseTransparentDataEncryption resp)
         {
             AzureSqlDatabaseTransparentDataEncryptionModel TransparentDataEncryption = new AzureSqlDatabaseTransparentDataEncryptionModel();
 
@@ -134,52 +134,13 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
             TransparentDataEncryption.DatabaseName = databaseName;
 
             TransparentDataEncryptionStateType State = TransparentDataEncryptionStateType.Disabled;
-            Enum.TryParse<TransparentDataEncryptionStateType>(resp.Status.ToString(), true, out State);
-            TransparentDataEncryption.State = State;
+            if (resp != null)
+            {
+                Enum.TryParse<TransparentDataEncryptionStateType>(resp.State.ToString(), true, out State);
+                TransparentDataEncryption.State = State;
+            }
 
             return TransparentDataEncryption;
-        }
-
-        /// <summary>
-        /// Convert a Management.Sql.LegacySdk.Models.TransparentDataEncryption to AzureSqlDatabaseTransparentDataEncryptionModel
-        /// </summary>
-        /// <param name="resourceGroup">The resource group the server is in</param>
-        /// <param name="serverName">The name of the server</param>
-        /// <param name="resp">The management client server response to convert</param>
-        /// <returns>The converted server model</returns>
-        private static AzureSqlDatabaseTransparentDataEncryptionActivityModel CreateTransparentDataEncryptionActivityModelFromResponse(string resourceGroup, string serverName, string databaseName, Management.Sql.Models.TransparentDataEncryptionActivity resp)
-        {
-            AzureSqlDatabaseTransparentDataEncryptionActivityModel TransparentDataEncryptionActivity = new AzureSqlDatabaseTransparentDataEncryptionActivityModel();
-
-            TransparentDataEncryptionActivity.ResourceGroupName = resourceGroup;
-            TransparentDataEncryptionActivity.ServerName = serverName;
-            TransparentDataEncryptionActivity.DatabaseName = databaseName;
-
-            TransparentDataEncryptionActivityStatusType status = TransparentDataEncryptionActivityStatusType.Decrypting;
-            Enum.TryParse<TransparentDataEncryptionActivityStatusType>(resp.Status, true, out status);
-            TransparentDataEncryptionActivity.Status = status;
-            TransparentDataEncryptionActivity.PercentComplete = (float)resp.PercentComplete;
-
-            return TransparentDataEncryptionActivity;
-        }
-
-        /// <summary>
-        /// Gets a list of Transparent Data Encryption Activity
-        /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group</param>
-        /// <param name="serverName">The name of the Azure Sql Database Server</param>
-        /// <param name="databaseName">The name of the Azure Sql Database</param>
-        /// <returns>A list of Transparent Data Encryption Activities</returns>
-        internal IList<AzureSqlDatabaseTransparentDataEncryptionActivityModel> ListTransparentDataEncryptionActivity(string resourceGroupName, string serverName, string databaseName)
-        {
-            List<AzureSqlDatabaseTransparentDataEncryptionActivityModel> list = new List<AzureSqlDatabaseTransparentDataEncryptionActivityModel>();
-
-            var resp = Communicator.ListActivity(resourceGroupName, serverName, databaseName);
-
-            return resp.Select((tdeActivity) =>
-            {
-                return CreateTransparentDataEncryptionActivityModelFromResponse(resourceGroupName, serverName, databaseName, tdeActivity);
-            }).ToList();
         }
 
         /// <summary>

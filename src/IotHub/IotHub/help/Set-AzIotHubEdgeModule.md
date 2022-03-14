@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
 online version: https://docs.microsoft.com/powershell/module/az.iothub/set-aziothubedgemodule
@@ -39,8 +39,8 @@ Note: Upon execution the command will output the collection of modules applied t
 
 ### Example 1
 ```powershell
-PS C:\> $content = Get-Content "C:/Edge/modules.json" | ConvertFrom-Json -AsHashtable
-PS C:\> Set-AzIotHubEdgeModule -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myEdgeDevice1" -ModulesContent $content
+$content = Get-Content "C:/Edge/modules.json" | ConvertFrom-Json -AsHashtable
+Set-AzIotHubEdgeModule -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myEdgeDevice1" -ModulesContent $content
 ```
 
 Test edge modules while in development by setting modules on a target device.

@@ -24,8 +24,10 @@ The New-AzDeviceSecurityGroupAllowlistCustomAlertRuleObject cmdlet creates a new
 
 ### Example 1
 ```powershell
-PS C:\> New-AzDeviceSecurityGroupAllowlistCustomAlertRuleObject -Enabled $false -Type "LocalUserNotAllowed" -AllowlistValue @()
+New-AzDeviceSecurityGroupAllowlistCustomAlertRuleObject -Enabled $false -Type "LocalUserNotAllowed" -AllowlistValue @()
+```
 
+```output
 RuleType: "LocalUserNotAllowed"
 DisplayName: "Login by a local user that isn't allowed"
 Description: "Get an alert when a local user that isn't allowed logins to the device"

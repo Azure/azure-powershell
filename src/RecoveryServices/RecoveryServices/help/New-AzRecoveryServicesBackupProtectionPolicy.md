@@ -33,13 +33,13 @@ Set the vault context by using the Set-AzRecoveryServicesVaultContext cmdlet bef
 
 ### Example 1: Create a Backup protection policy
 ```powershell
-PS C:\> $SchPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM" 
-PS C:\> $SchPol.ScheduleRunTimes.Clear()
-PS C:\> $Dt = Get-Date
-PS C:\> $SchPol.ScheduleRunTimes.Add($Dt.ToUniversalTime())
-PS C:\> $RetPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureVM" 
-PS C:\> $RetPol.DailySchedule.DurationCountInDays = 365
-PS C:\> New-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -WorkloadType AzureVM -RetentionPolicy $RetPol -SchedulePolicy $SchPol
+$SchPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM" 
+$SchPol.ScheduleRunTimes.Clear()
+$Dt = Get-Date
+$SchPol.ScheduleRunTimes.Add($Dt.ToUniversalTime())
+$RetPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureVM" 
+$RetPol.DailySchedule.DurationCountInDays = 365
+New-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -WorkloadType AzureVM -RetentionPolicy $RetPol -SchedulePolicy $SchPol
 ```
 
 The first command gets a base **SchedulePolicyObject**, and then stores it in the $SchPol variable.
@@ -52,16 +52,16 @@ The final command creates a **BackupProtectionPolicy** object based on the sched
 
 ### Example 2: Create a fileshare policy for multiple backups per day
 ```powershell
-PS C:\> $schedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureFiles -BackupManagementType AzureStorage -ScheduleRunFrequency Hourly
-PS C:\> $timeZone = Get-TimeZone
-PS C:\> $schedulePolicy.ScheduleRunTimeZone = $timeZone.Id
-PS C:\> $startTime = Get-Date -Date "2021-12-22T06:00:00.00+00:00"
-PS C:\> $schedulePolicy.ScheduleWindowStartTime = $startTime.ToUniversalTime()
-PS C:\> $schedulePolicy.ScheduleInterval = 6
-PS C:\> $schedulePolicy.ScheduleWindowDuration = 14
-PS C:\> $retentionPolicy = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureFiles -BackupManagementType AzureStorage -ScheduleRunFrequency Hourly
-PS C:\> $retentionPolicy.DailySchedule.DurationCountInDays = 10
-PS C:\> New-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -WorkloadType AzureVM -RetentionPolicy $retentionPolicy -SchedulePolicy $schedulePolicy
+$schedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureFiles -BackupManagementType AzureStorage -ScheduleRunFrequency Hourly
+$timeZone = Get-TimeZone
+$schedulePolicy.ScheduleRunTimeZone = $timeZone.Id
+$startTime = Get-Date -Date "2021-12-22T06:00:00.00+00:00"
+$schedulePolicy.ScheduleWindowStartTime = $startTime.ToUniversalTime()
+$schedulePolicy.ScheduleInterval = 6
+$schedulePolicy.ScheduleWindowDuration = 14
+$retentionPolicy = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureFiles -BackupManagementType AzureStorage -ScheduleRunFrequency Hourly
+$retentionPolicy.DailySchedule.DurationCountInDays = 10
+New-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -WorkloadType AzureVM -RetentionPolicy $retentionPolicy -SchedulePolicy $schedulePolicy
 ```
 
 The first command gets a base hourly **SchedulePolicyObject**, and then stores it in the $schedulePolicy variable.

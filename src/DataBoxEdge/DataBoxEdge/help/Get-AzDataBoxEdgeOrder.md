@@ -36,7 +36,10 @@ The **Get-AzDataBoxEdgeOrder** cmdlet gets the order details for a Data Box Edge
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzDataBoxEdgeOrder -ResourceGroupName resourceGroupName -DeviceName deviceName
+Get-AzDataBoxEdgeOrder -ResourceGroupName resourceGroupName -DeviceName deviceName
+```
+
+```output
 DeviceName  ResourceGroupName Status    UpdatedDatetime
 ----------  ----------------- ------    ---------------
 deviceName  resourceGroupName Untracked 01-Jan-01 12:00:00 AM

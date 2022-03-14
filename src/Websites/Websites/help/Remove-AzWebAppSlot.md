@@ -30,8 +30,8 @@ This cmdlet, by default, also removes all slots and metrics.
 ## EXAMPLES
 
 ### Example 1: Remove a Web App Slot
-```
-PS C:\>Remove-AzWebAppSlot -ResourceGroupName "Default-Web-WestUS" -Name "ContosoSite" -Slot "Slot001"
+```powershell
+Remove-AzWebAppSlot -ResourceGroupName "Default-Web-WestUS" -Name "ContosoSite" -Slot "Slot001"
 ```
 
 This command removes the Slot named Slot001 associated with Web App ContosoSite that belongs to the resource group named Default-Web-WestUS.

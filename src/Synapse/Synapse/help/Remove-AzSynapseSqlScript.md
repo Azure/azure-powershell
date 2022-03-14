@@ -37,23 +37,23 @@ The **Remove-AzSynapseSqlScript** cmdlet removes a sql script from a Synapse wor
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSynapseSqlScript -WorkspaceName ContosoWorkspace -Name ContosoSqlScript
+Remove-AzSynapseSqlScript -WorkspaceName ContosoWorkspace -Name ContosoSqlScript
 ```
 
 Remove a sql script called ContosoSqlScript from the workspace ContosoWorkspace.
 
 ### Example 2
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Remove-AzSynapseSqlScript -Name ContosoSqlScript
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Remove-AzSynapseSqlScript -Name ContosoSqlScript
 ```
 
 Remove a sql script called ContosoSqlScript from the workspace ContosoWorkspace through pipeline.
 
 ### Example 3
 ```powershell
-PS C:\> $sqlscript = Get-AzSynapseSqlScript -WorkspaceName ContosoWorkspace -Name ContosoSqlScript
-PS C:\> $sqlscript | Remove-AzSynapseSqlScript
+$sqlscript = Get-AzSynapseSqlScript -WorkspaceName ContosoWorkspace -Name ContosoSqlScript
+$sqlscript | Remove-AzSynapseSqlScript
 ```
 
 Remove a sql script called ContosoSqlScript from the workspace ContosoWorkspace through pipeline.

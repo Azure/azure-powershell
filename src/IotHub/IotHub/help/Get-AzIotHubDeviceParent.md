@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
 online version: https://docs.microsoft.com/powershell/module/az.iothub/get-aziothubdeviceparent
@@ -37,8 +37,10 @@ Get the parent device of the specified non-edge device.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzIotHubDeviceParent -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1"
+Get-AzIotHubDeviceParent -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1"
+```
 
+```output
 DeviceId                   : myParentDevice1
 GenerationId               : 637148941292917073
 ETag                       : "NzIyMDI4MTk3"

@@ -40,8 +40,8 @@ Stop-AzSynapseDataFlowDebugSession
 
 ### Example 1
 ```powershell
-PS C:\> $result = Invoke-AzSynapseDataFlowDebugSessionCommand -WorkspaceName ContosoWorkspace -Command executePreviewQuery -SessionId 3afb278e-ac5f-469f-a0b6-2f04c3ab59bc -StreamName source1 -RowLimit 100 -AsJob
-PS C:\> $result | ft -wrap
+$result = Invoke-AzSynapseDataFlowDebugSessionCommand -WorkspaceName ContosoWorkspace -Command executePreviewQuery -SessionId 3afb278e-ac5f-469f-a0b6-2f04c3ab59bc -StreamName source1 -RowLimit 100 -AsJob
+$result | ft -wrap
 
 Id     Name                       PSJobTypeName          State         HasMoreData     Location         Command
 --     ----                       -------------          -----         -----------     --------         -------
@@ -49,8 +49,8 @@ Id     Name                       PSJobTypeName          State         HasMoreDa
        for 'Invoke-AzSynapseD                                                             
        ataFlowDebugSessionCommand'            
 
-PS C:\> $output = ConvertFrom-Json($result.Output.Data)
-PS C:\> $output.output
+$output = ConvertFrom-Json($result.Output.Data)
+$output.output
 
     {
       "schema": "output(ResourceAgencyNum as string, PublicName as string)" ,
@@ -62,8 +62,8 @@ This example invokes data preview command for debug session "3afb278e-ac5f-469f-
 
 ### Example 2
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Invoke-AzSynapseDataFlowDebugSessionCommand -Command executePreviewQuery -SessionId 3afb278e-ac5f-469f-a0b6-2f04c3ab59bc -StreamName source1 -RowLimit 100
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Invoke-AzSynapseDataFlowDebugSessionCommand -Command executePreviewQuery -SessionId 3afb278e-ac5f-469f-a0b6-2f04c3ab59bc -StreamName source1 -RowLimit 100
 ```
 
 This example invokes data preview command for debug session "3afb278e-ac5f-469f-a0b6-2f04c3ab59bc" in Synapse workspace "ContosoWorkspace" through pipeline. 

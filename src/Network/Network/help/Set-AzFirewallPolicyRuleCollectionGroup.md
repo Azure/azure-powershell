@@ -47,7 +47,7 @@ The **Set-AzFirewallPolicyRuleCollectionGroup** cmdlet updates a rule collection
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzFirewallPolicyRuleCollectionGroup -Name rg1 -ResourceGroupName TestRg -Priority 200 -RuleCollection $filterRule1 -FirewallPolicyName "firewallPolicy"
+Set-AzFirewallPolicyRuleCollectionGroup -Name rg1 -ResourceGroupName TestRg -Priority 200 -RuleCollection $filterRule1 -FirewallPolicyName "firewallPolicy"
 ```
 
 This example updates a rule collection group in the firewall policy $fp

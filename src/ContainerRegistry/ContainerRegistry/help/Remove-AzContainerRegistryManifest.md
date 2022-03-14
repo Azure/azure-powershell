@@ -35,6 +35,9 @@ first.
 ### Example 1
 ```powershell
 Remove-AzContainerRegistryManifest -RegistryName registry -RepositoryName test/busybox27 -Manifest sha256:31a54a0cf86d7354788a8265f60ae6acb4b348a67efbcf7c1007dd3cf7af05ab
+```
+
+```output
 True
 ```
 
@@ -43,6 +46,9 @@ Delete manifest sha256:31a54a0cf86d7354788a8265f60ae6acb4b348a67efbcf7c1007dd3cf
 ### Example 2
 ```powershell
 Remove-AzContainerRegistryManifest -RegistryName registry -RepositoryName test/busybox27 -Tag latest
+```
+
+```output
 True
 ```
 

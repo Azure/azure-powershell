@@ -37,7 +37,7 @@ This command lists all servers registered to a given storage sync service. It ca
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzStorageSyncServer -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName"
+Get-AzStorageSyncServer -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName"
 ```
 
 This command gets all servers registered to a specific storage sync service.

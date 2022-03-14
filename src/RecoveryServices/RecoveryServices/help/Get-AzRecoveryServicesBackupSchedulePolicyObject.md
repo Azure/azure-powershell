@@ -27,11 +27,11 @@ It is temporary object that you can manipulate and use with the New-AzRecoverySe
 ## EXAMPLES
 
 ### Example 1: Set the schedule frequency to weekly
-```
-PS C:\>$RetPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureVM" 
-PS C:\> $SchPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM" 
-PS C:\> $SchPol.ScheduleRunFrequency = "Weekly"
-PS C:\> New-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -WorkloadType AzureVM -RetentionPolicy $RetPol -SchedulePolicy $SchPol
+```powershell
+$RetPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureVM" 
+$SchPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM" 
+$SchPol.ScheduleRunFrequency = "Weekly"
+New-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -WorkloadType AzureVM -RetentionPolicy $RetPol -SchedulePolicy $SchPol
 ```
 
 The first command gets the retention policy object, and then stores it in the $RetPol variable.
@@ -40,12 +40,12 @@ The third command changes the frequency for the schedule policy to weekly.
 The last command creates a backup protection policy with the updated schedule.
 
 ### Example 2: Set the backup time
-```
-PS C:\>$SchPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM" 
-PS C:\> $SchPol.ScheduleRunTimes.RemoveAll()
-PS C:\> $DT = Get-Date
-PS C:\> $SchPol.ScheduleRunTimes.Add($DT.ToUniversalTime())
-PS C:\> New-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -WorkloadType AzureVM -RetentionPolicy $RetPol -SchedulePolicy $SchPol
+```powershell
+$SchPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM" 
+$SchPol.ScheduleRunTimes.RemoveAll()
+$DT = Get-Date
+$SchPol.ScheduleRunTimes.Add($DT.ToUniversalTime())
+New-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -WorkloadType AzureVM -RetentionPolicy $RetPol -SchedulePolicy $SchPol
 ```
 
 The first command gets the schedule policy object, and then stores it in the $SchPol variable.
@@ -57,13 +57,13 @@ The last command creates a backup protection policy using the new schedule.
 
 ### Example 3: Get hourly schedule for fileshare policy 
 ```powershell
-PS C:\> $schedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureFiles -BackupManagementType AzureStorage -ScheduleRunFrequency Hourly
-PS C:\> $timeZone = Get-TimeZone
-PS C:\> $schedulePolicy.ScheduleRunTimeZone = $timeZone.Id
-PS C:\> $startTime = Get-Date -Date "2021-12-22T06:00:00.00+00:00"
-PS C:\> $schedulePolicy.ScheduleWindowStartTime = $startTime.ToUniversalTime()
-PS C:\> $schedulePolicy.ScheduleInterval = 6
-PS C:\> $schedulePolicy.ScheduleWindowDuration = 14
+$schedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureFiles -BackupManagementType AzureStorage -ScheduleRunFrequency Hourly
+$timeZone = Get-TimeZone
+$schedulePolicy.ScheduleRunTimeZone = $timeZone.Id
+$startTime = Get-Date -Date "2021-12-22T06:00:00.00+00:00"
+$schedulePolicy.ScheduleWindowStartTime = $startTime.ToUniversalTime()
+$schedulePolicy.ScheduleInterval = 6
+$schedulePolicy.ScheduleWindowDuration = 14
 ```
 
 The first command gets a base hourly **SchedulePolicyObject**, and then stores it in the $schedulePolicy variable.

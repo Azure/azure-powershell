@@ -30,15 +30,15 @@ The **Get-AzAppServicePlan** cmdlet gets an Azure App Service plan in the specif
 ## EXAMPLES
 
 ### Example 1: Get an App Service plan from a resource group
-```
-PS C:\>Get-AzAppServicePlan -ResourceGroupName "Default-Web-WestUS" -Name "ContosoASP"
+```powershell
+Get-AzAppServicePlan -ResourceGroupName "Default-Web-WestUS" -Name "ContosoASP"
 ```
 
 This command gets the App Service plan named ContosoASP that belongs to the resource group named Default-Web-WestUS.
 
 ### Example 2: Get all App Service plans in a location
-```
-PS C:\>Get-AzAppServicePlan -Location "West US"
+```powershell
+Get-AzAppServicePlan -Location "West US"
 ```
 
 This command gets all App Service plans located in the "West US" region.

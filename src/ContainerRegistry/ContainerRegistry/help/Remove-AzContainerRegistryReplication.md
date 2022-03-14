@@ -37,7 +37,7 @@ The Remove-AzContainerRegistryReplication cmdlet removes a container registry re
 
 ### Example 1: Removes a container registry replication.
 ```powershell
-PS C:\> Remove-AzContainerRegistryReplication -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry" -Name "replication001"
+Remove-AzContainerRegistryReplication -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry" -Name "replication001"
 ```
 
 Removes a container registry replication.

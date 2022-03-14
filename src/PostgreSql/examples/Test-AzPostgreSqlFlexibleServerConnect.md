@@ -1,8 +1,10 @@
 ### Example 1: Test connection by name
 ```powershell
-PS C:\> $password = ConvertTo-SecureString <YourPassword> -AsPlainText
-PS C:\> Get-AzPostgreSqlFlexibleServerConnect -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test -AdministratorLoginPassword $password
+ $password = ConvertTo-SecureString <YourPassword> -AsPlainText
+ Get-AzPostgreSqlFlexibleServerConnect -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test -AdministratorLoginPassword $password
+```
 
+```output
 The connection testing to postgresql-test.database.azure.com was successful!
 ```
 
@@ -10,9 +12,11 @@ Test connection by the resource group and the server name
 
 ### Example 2: Test connection by identity
 ```powershell
-PS C:\> $password = ConvertTo-SecureString <YourPassword> -AsPlainText
-PS C:\> Get-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test | Test-AzPostgreSqlFlexibleServerConnect -AdministratorLoginPassword $password
+ $password = ConvertTo-SecureString <YourPassword> -AsPlainText
+ Get-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test | Test-AzPostgreSqlFlexibleServerConnect -AdministratorLoginPassword $password
+```
 
+```output
 The connection testing to postgresql-test.database.azure.com was successful!
 ```
 
@@ -20,9 +24,11 @@ Test connection by the identity
 
 ### Example 3: Test query by name
 ```powershell
-PS C:\> $password = ConvertTo-SecureString <YourPassword> -AsPlainText
-PS C:\> Test-AzPostgreSqlFlexibleServerConnect -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test -AdministratorLoginPassword $password -Query "SELECT * FROM test"
+ $password = ConvertTo-SecureString <YourPassword> -AsPlainText
+ Test-AzPostgreSqlFlexibleServerConnect -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test -AdministratorLoginPassword $password -Query "SELECT * FROM test"
+```
 
+```output
 col
 -----
 1
@@ -34,8 +40,10 @@ Test a query by the resource group and the server name
 
 ### Example 4: Test connection by identity
 ```powershell
-PS C:\> Get-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test | Test-AzPostgreSqlFlexibleServerConnect -Query "SELECT * FROM test" -AdministratorLoginPassword $password
+ Get-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test | Test-AzPostgreSqlFlexibleServerConnect -Query "SELECT * FROM test" -AdministratorLoginPassword $password
+```
 
+```output
 col
 -----
 1

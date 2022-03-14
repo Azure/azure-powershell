@@ -43,8 +43,10 @@ The **Set-AzRecoveryServicesAsrNotificationSetting** cmdlet configures Azure Sit
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzRecoveryServicesAsrAlertSetting -DisableNotification
+Set-AzRecoveryServicesAsrAlertSetting -DisableNotification
+```
 
+```output
 CustomEmailAddress EmailSubscriptionOwner Locale
 ------------------ ---------------------- ------
 {}                 Off                    en-US
@@ -54,8 +56,10 @@ Disable notification.
 
 ### Example 2
 ```powershell
-PS C:\> Set-AzRecoveryServicesAsrAlertSetting -CustomEmailAddress "abcxxxx@xxxx.com" -EnableEmailSubscriptionOwner
+Set-AzRecoveryServicesAsrAlertSetting -CustomEmailAddress "abcxxxx@xxxx.com" -EnableEmailSubscriptionOwner
+```
 
+```output
 CustomEmailAddress     EmailSubscriptionOwner Locale
 ------------------     ---------------------- ------
 {abcxxxx@xxxx.com} On                     en-US

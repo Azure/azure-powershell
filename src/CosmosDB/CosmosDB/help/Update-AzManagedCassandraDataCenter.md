@@ -62,7 +62,7 @@ The **Update-AzManagedCassandraDataCenter** cmdlet updates an existing managed C
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzManagedCassandraDataCenter `
+Update-AzManagedCassandraDataCenter `
  -ResourceGroupName {resourceGroupName} `
  -ClusterName {clusterName} `
  -DataCenterName {dataCenterName} `

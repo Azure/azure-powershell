@@ -37,7 +37,7 @@ The **Remove-AzDataBoxEdgeStorageAccount** cmdlet removes an associated Edge Sto
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzDataBoxEdgeStorageAccount -ResourceGroupName resourceGroupName -DeviceName deviceName -Name edgestorageaccountname
+Remove-AzDataBoxEdgeStorageAccount -ResourceGroupName resourceGroupName -DeviceName deviceName -Name edgestorageaccountname
 ```
 
 ## PARAMETERS

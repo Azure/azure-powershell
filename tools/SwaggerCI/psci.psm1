@@ -27,7 +27,7 @@ function Invoke-SwaggerCI {
             $rdContent | Out-File -Path (Join-Path $moduleFolder "readme.md") 
 
             #generate code
-            autorest (Join-Path $moduleFolder "readme.md") --version:3.0.6371
+            autorest (Join-Path $moduleFolder "readme.md") --version:3.7.6
             #Build the module
             . (Join-Path $moduleFolder "build-module.ps1")
             #Override the generated .gitignore file

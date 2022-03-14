@@ -40,7 +40,7 @@ Gets security assessment and their results on subscription. Security assessments
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSecurityAssessment
+Get-AzSecurityAssessment
 ```
 
 Gets all the security assessment in a subscription

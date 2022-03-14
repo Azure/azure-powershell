@@ -24,8 +24,10 @@ List all available skus of the resource.
 
 ### Example 1: List all available SKUs of a Web PubSub resource
 ```powershell
-PS C:\>  Get-AzWebPubSubSku -ResourceGroupName psdemo -ResourceName psdemo-wps | Format-List
+Get-AzWebPubSubSku -ResourceGroupName psdemo -ResourceName psdemo-wps | Format-List
+```
 
+```output
 CapacityAllowedValue : {0, 1}
 CapacityDefault      : 1
 CapacityMaximum      : 1

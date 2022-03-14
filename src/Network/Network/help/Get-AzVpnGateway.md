@@ -31,12 +31,14 @@ Gets a VpnGateway resource using ResourceGroupName and GatewayName OR lists all 
 ### Example 1
 
 ```powershell
-PS C:\> New-AzResourceGroup -Location "West US" -Name "testRG"
-PS C:\> $virtualWan = New-AzVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West US"
-PS C:\> $virtualHub = New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.0.1/24"
-PS C:\> New-AzVpnGateway -ResourceGroupName "testRG" -Name "testvpngw" -VirtualHubId $virtualHub.Id -BGPPeeringWeight 10 -VpnGatewayScaleUnit 2
-PS C:\> Get-AzVpnGateway -ResourceGroupName "testRG" -Name "testvpngw"
+New-AzResourceGroup -Location "West US" -Name "testRG"
+$virtualWan = New-AzVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West US"
+$virtualHub = New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.0.1/24"
+New-AzVpnGateway -ResourceGroupName "testRG" -Name "testvpngw" -VirtualHubId $virtualHub.Id -BGPPeeringWeight 10 -VpnGatewayScaleUnit 2
+Get-AzVpnGateway -ResourceGroupName "testRG" -Name "testvpngw"
+```
 
+```output
 ResourceGroupName   : testRG
 Name                : testvpngw
 Id                  : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/vpnGateways/testvpngw
@@ -57,8 +59,10 @@ It then gets the VpnGateway using its resourceGroupName and the gateway name.
 ### Example 2
 
 ```powershell
-PS C:\> Get-AzVpnGateway -Name test*
+Get-AzVpnGateway -Name test*
+```
 
+```output
 ResourceGroupName   : testRG
 Name                : test1
 Id                  : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/vpnGateways/test1

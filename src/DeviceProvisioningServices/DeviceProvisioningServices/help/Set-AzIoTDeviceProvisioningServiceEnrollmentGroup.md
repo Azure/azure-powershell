@@ -52,25 +52,25 @@ Update an enrollment group in an Azure IoT Hub Device Provisioning Service.
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzIoTDeviceProvisioningServiceEnrollmentGroup -ResourceGroupName "myresourcegroup" -DpsName "mydps" -Name "enroll1" -AllocationPolicy Hashed -IotHub "hub1","hub2"
+Set-AzIoTDeviceProvisioningServiceEnrollmentGroup -ResourceGroupName "myresourcegroup" -DpsName "mydps" -Name "enroll1" -AllocationPolicy Hashed -IotHub "hub1","hub2"
 ```
 
 Update allocation policy and hubs for an enrollment group.
 
 ### Example 2
 ```powershell
-PS C:\> $tag = @{}
-PS C:\> $tag.Add("environment","updatedenv")
-PS C:\> $desired = @{}
-PS C:\> $desired.add("version_dps", "updateddps")
-PS C:\> Set-AzIoTDeviceProvisioningServiceEnrollmentGroup -ResourceGroupName "myresourcegroup" -DpsName "mydps" -Name "enroll1" -tag $tag -Desired $desired
+$tag = @{}
+$tag.Add("environment","updatedenv")
+$desired = @{}
+$desired.add("version_dps", "updateddps")
+Set-AzIoTDeviceProvisioningServiceEnrollmentGroup -ResourceGroupName "myresourcegroup" -DpsName "mydps" -Name "enroll1" -tag $tag -Desired $desired
 ```
 
 Update an enrollment group's initial twin state.
 
 ### Example 3
 ```powershell
-PS C:\> Set-AzIoTDeviceProvisioningServiceEnrollmentGroup -ResourceGroupName "myresourcegroup" -DpsName "mydps" -Name "enroll1" -PrimaryKey "newPrimaryKey" -SecondaryKey "newSecondaryKey"
+Set-AzIoTDeviceProvisioningServiceEnrollmentGroup -ResourceGroupName "myresourcegroup" -DpsName "mydps" -Name "enroll1" -PrimaryKey "newPrimaryKey" -SecondaryKey "newSecondaryKey"
 ```
 
 Update a symmetric key enrollment group's primary and secondary keys

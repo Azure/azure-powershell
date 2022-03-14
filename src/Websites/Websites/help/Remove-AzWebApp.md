@@ -32,8 +32,8 @@ This cmdlet, by default, also removes all slots and metrics.
 ## EXAMPLES
 
 ### Example 1: Remove a Web App
-```
-PS C:\>Remove-AzWebApp -ResourceGroupName "Default-Web-WestUS" -Name "ContosoSite"
+```powershell
+Remove-AzWebApp -ResourceGroupName "Default-Web-WestUS" -Name "ContosoSite"
 ```
 
 This command removes the Azure Web App named ContosoSite that belongs to the resource group named Default-Web-WestUS.

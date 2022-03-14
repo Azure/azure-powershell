@@ -24,8 +24,8 @@ The **New-AzApplicationGatewayCustomError** cmdlet creates a custom error.
 
 ### Example 1
 ```powershell
-PS C:\> $customError403Url = "https://mycustomerrorpages.blob.core.windows.net/errorpages/403-another.htm"
-PS C:\> $ce = New-AzApplicationGatewayCustomError -StatusCode HttpStatus403 -CustomErrorPageUrl $customError403Url
+$customError403Url = "https://mycustomerrorpages.blob.core.windows.net/errorpages/403-another.htm"
+$ce = New-AzApplicationGatewayCustomError -StatusCode HttpStatus403 -CustomErrorPageUrl $customError403Url
 ```
 
 This command creates the custom error of http status code 403.

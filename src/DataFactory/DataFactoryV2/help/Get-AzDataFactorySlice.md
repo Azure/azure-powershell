@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactories.dll-Help.xml
 Module Name: Az.DataFactory
 ms.assetid: C102232A-C9C8-4CEE-8535-7C7A70057B06
@@ -57,7 +57,10 @@ For each of the slices, you can see more information about the run that produces
 
 ### Example 1: Get data slices for a dataset
 ```powershell
-PS C:\>Get-AzDataFactorySlice -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -DatasetName "DAWikiAggregatedData" -StartDateTime 2014-05-20T10:00:00Z
+Get-AzDataFactorySlice -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -DatasetName "DAWikiAggregatedData" -StartDateTime 2014-05-20T10:00:00Z
+```
+
+```output
 ResourceGroupName : ADF
 DataFactoryName   : WikiADF
 DatasetName         : DAWikiAggregatedData

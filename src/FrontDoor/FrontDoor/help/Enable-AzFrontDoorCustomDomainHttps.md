@@ -60,9 +60,10 @@ The **Enable-AzFrontDoorCustomDomainHttps** enables HTTPS for a custom domain.
 
 ### Example 1: Enable HTTPS for a custom domain with FrontDoorName and ResourceGroupName using Front Door managed certificate.
 ```powershell
-PS C:\> Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -FrontendEndpointName "frontendpointname1-custom-xyz" -MinimumTlsVersion "1.2"
+Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -FrontendEndpointName "frontendpointname1-custom-xyz" -MinimumTlsVersion "1.2"
+```
 
-
+```output
 HostName                         : frontendpointname1.custom.xyz
 SessionAffinityEnabledState      : Disabled
 SessionAffinityTtlSeconds        : 0
@@ -88,10 +89,11 @@ Enable HTTPS for a custom domain "frontendpointname1-custom-xyz" that is part of
 
 ### Example 2: Enable HTTPS for a custom domain with FrontDoorName and ResourceGroupName using customer's own certificate in Key Vault with the specific version.
 ```powershell
-PS C:\> $vaultId = (Get-AzKeyVault -VaultName $vaultName).ResourceId
-PS C:\> Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -FrontendEndpointName "frontendpointname1-custom-xyz" -Vault $vaultId -secretName $secretName -SecretVersion $secretVersion -MinimumTlsVersion "1.0"
+$vaultId = (Get-AzKeyVault -VaultName $vaultName).ResourceId
+Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -FrontendEndpointName "frontendpointname1-custom-xyz" -Vault $vaultId -secretName $secretName -SecretVersion $secretVersion -MinimumTlsVersion "1.0"
+```
 
-
+```output
 HostName                         : frontendpointname1.custom.xyz
 SessionAffinityEnabledState      : Disabled
 SessionAffinityTtlSeconds        : 0
@@ -117,9 +119,10 @@ Enable HTTPS for a custom domain "frontendpointname1-custom-xyz" that is part of
 
 ### Example 3: Enable HTTPS for a custom domain with PSFrontendEndpoint object using Front Door managed certificate.
 ```powershell
-PS C:\> Get-AzFrontDoorFrontendEndpoint -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -Name "frontendpointname1-custom-xyz" | Enable-AzFrontDoorCustomDomainHttps 
+Get-AzFrontDoorFrontendEndpoint -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -Name "frontendpointname1-custom-xyz" | Enable-AzFrontDoorCustomDomainHttps 
+```
 
-
+```output
 HostName                         : frontendpointname1.custom.xyz
 SessionAffinityEnabledState      : Disabled
 SessionAffinityTtlSeconds        : 0
@@ -145,9 +148,10 @@ Enable HTTPS for a custom domain with PSFrontendEndpoint object using Front Door
 
 ### Example 4: Enable HTTPS for a custom domain with resource id using Front Door managed certificate.
 ```powershell
-PS C:\> Enable-AzFrontDoorCustomDomainHttps -ResourceId $resourceId
+Enable-AzFrontDoorCustomDomainHttps -ResourceId $resourceId
+```
 
-
+```output
 HostName                         : frontendpointname1.custom.xyz
 SessionAffinityEnabledState      : Disabled
 SessionAffinityTtlSeconds        : 0
@@ -173,10 +177,11 @@ Enable HTTPS for a custom domain "frontendpointname1-custom-xyz" with resource i
 
 ### Example 5: Enable HTTPS for a custom domain with FrontDoorName and ResourceGroupName using customer's own certificate in Key Vault with the latest version to enable certificate auto-rotation.
 ```powershell
-PS C:\> $vaultId = (Get-AzKeyVault -VaultName $vaultName).ResourceId
-PS C:\> Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -FrontendEndpointName "frontendpointname1-custom-xyz" -Vault $vaultId -secretName $secretName -MinimumTlsVersion "1.0"
+$vaultId = (Get-AzKeyVault -VaultName $vaultName).ResourceId
+Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -FrontendEndpointName "frontendpointname1-custom-xyz" -Vault $vaultId -secretName $secretName -MinimumTlsVersion "1.0"
+```
 
-
+```output
 HostName                         : frontendpointname1.custom.xyz
 SessionAffinityEnabledState      : Disabled
 SessionAffinityTtlSeconds        : 0
