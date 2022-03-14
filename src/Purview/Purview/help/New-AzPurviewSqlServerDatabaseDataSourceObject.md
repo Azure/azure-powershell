@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Purview-help.xml
 Module Name: Az.Purview
 online version: https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewSqlServerDatabaseDataSourceObject
 schema: 2.0.0
@@ -49,7 +49,6 @@ Create SQL Server Database data source object
 
 ### -CollectionReferenceName
 
-
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -63,7 +62,6 @@ Accept wildcard characters: False
 ```
 
 ### -CollectionType
-
 
 ```yaml
 Type: System.String
@@ -79,9 +77,8 @@ Accept wildcard characters: False
 
 ### -Kind
 
-
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.DataSourceType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType
 Parameter Sets: (All)
 Aliases:
 
@@ -93,7 +90,6 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-
 
 ```yaml
 Type: System.String
@@ -109,7 +105,6 @@ Accept wildcard characters: False
 
 ### -ResourceGroup
 
-
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -123,7 +118,6 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceName
-
 
 ```yaml
 Type: System.String
@@ -139,7 +133,6 @@ Accept wildcard characters: False
 
 ### -ServerEndpoint
 
-
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -153,7 +146,6 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-
 
 ```yaml
 Type: System.String
@@ -174,11 +166,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20211001Preview.SqlServerDatabaseDataSource
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SqlServerDatabaseDataSource
 
 ## NOTES
 
 ALIASES
 
 ## RELATED LINKS
-

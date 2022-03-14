@@ -30,8 +30,8 @@ The **Start-AzWebApp** cmdlet starts an Azure Web App.
 ## EXAMPLES
 
 ### Example 1: Start a Web App
-```
-PS C:\>Start-AzWebApp -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp"
+```powershell
+Start-AzWebApp -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp"
 ```
 
 This command starts the Web App named ContosoWebApp that belongs to the resource group named Default-Web-WestUS.

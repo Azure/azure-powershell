@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     HardwareProfile = new HardwareProfile
                     {
                         VmSize = size,
-                        VmSizeProperties = new VMSizeProperties
+                        VmSizeProperties = (vCPUsPerCore == null && vCPUsAvailable == null) ? null : new VMSizeProperties
                         {
                             VCPUsPerCore = vCPUsPerCore,
                             VCPUsAvailable = vCPUsAvailable
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     HardwareProfile = new HardwareProfile
                     {
                         VmSize = size,
-                        VmSizeProperties = new VMSizeProperties
+                        VmSizeProperties = (vCPUsPerCore == null && vCPUsAvailable == null) ? null : new VMSizeProperties
                         {
                             VCPUsPerCore = vCPUsPerCore,
                             VCPUsAvailable = vCPUsAvailable

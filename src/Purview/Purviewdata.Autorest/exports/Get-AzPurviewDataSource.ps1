@@ -69,26 +69,8 @@ ResourceName             : datascantest
 Scan                     :
 SubscriptionId           : 4348d67b-ffc5-465d-b5dd-xxxxxxxxx
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IPurviewdataIdentity
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IDataSource
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IPurviewdataIdentity>: Identity Parameter
-  [ClassificationRuleName <String>]: 
-  [ClassificationRuleVersion <Int32?>]: 
-  [DataSourceName <String>]: 
-  [DataSourceType <DataSourceType?>]: 
-  [Id <String>]: Resource identity path
-  [KeyVaultName <String>]: 
-  [RunId <String>]: 
-  [ScanName <String>]: 
-  [ScanRulesetName <String>]: 
-  [Version <Int32?>]: 
 .Link
 https://docs.microsoft.com/powershell/module/az.purview/get-azpurviewdatasource
 #>
@@ -109,13 +91,6 @@ param(
     [System.String]
     # .
     ${Name},
-
-    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IPurviewdataIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -174,7 +149,6 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
             Get = 'Az.Purviewdata.private\Get-AzPurviewDataSource_Get';
-            GetViaIdentity = 'Az.Purviewdata.private\Get-AzPurviewDataSource_GetViaIdentity';
             List = 'Az.Purviewdata.private\Get-AzPurviewDataSource_List';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]

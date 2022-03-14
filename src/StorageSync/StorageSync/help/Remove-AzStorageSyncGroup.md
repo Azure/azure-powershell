@@ -38,7 +38,7 @@ This command will delete the specified sync group. A sync group can only be remo
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzStorageSyncGroup -Force -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -Name "mySyncGroupName"
+Remove-AzStorageSyncGroup -Force -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -Name "mySyncGroupName"
 ```
 
 This command will remove the sync group.

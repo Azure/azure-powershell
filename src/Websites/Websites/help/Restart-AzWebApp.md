@@ -31,8 +31,8 @@ If the Web App is in a stopped state, use the Start-AzWebApp cmdlet.
 ## EXAMPLES
 
 ### Example 1: Restart a Web App
-```
-PS C:\>Restart-AzWebApp -ResourceGroupName "Default-Web-WestUS" -Name "ContosoSite"
+```powershell
+Restart-AzWebApp -ResourceGroupName "Default-Web-WestUS" -Name "ContosoSite"
 ```
 
 This command stops the Azure Web App named ContosoSite that belongs to the resource group named Default-Web-WestUS and then restarts it.

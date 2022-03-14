@@ -38,13 +38,16 @@ The **Invoke-AzStackEdgeShare** cmdlet invokes action to refresh data on a share
 
 ### Example 1
 ```powershell
-PS C:\> Invoke-AzStackEdgeShare -ResourceGroupName resourceGroupName -DeviceName deviceName -Name share1 -PassThru
-PS C:\> true
+Invoke-AzStackEdgeShare -ResourceGroupName resourceGroupName -DeviceName deviceName -Name share1 -PassThru
+```
+
+```output
+true
 ```
 
 ### Example 2
 ```powershell
-PS C:\> Invoke-AzStackEdgeShare -ResourceGroupName resourceGroupName -DeviceName deviceName -Name share1 | Invoke-AzStackEdgeShare
+Invoke-AzStackEdgeShare -ResourceGroupName resourceGroupName -DeviceName deviceName -Name share1 | Invoke-AzStackEdgeShare
 ```
 
 ## PARAMETERS

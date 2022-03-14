@@ -38,7 +38,7 @@ For details about Azure Defender and the available plans, see [Introduction to A
 ### Example 1
 
 ```powershell
-PS C:\> Set-AzSecurityPricing -Name "virtualmachines" -PricingTier "Standard"
+Set-AzSecurityPricing -Name "virtualmachines" -PricingTier "Standard"
 ```
 
 Enables **Azure Defender for servers** for the subscription.

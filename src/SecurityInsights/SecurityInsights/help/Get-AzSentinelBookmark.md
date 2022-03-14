@@ -41,14 +41,14 @@ You can use the Bookmark object to update the Bookmark, for example you can add 
 
 ### Example 1
 ```powershell
-PS C:\> $Bookmarks = Get-AzSentinelBookmark -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName"
+$Bookmarks = Get-AzSentinelBookmark -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName"
 ```
 
 This example gets all of the Bookmarks in the specified workspace, and then stores it in the $Bookmarks variable.
 
 ### Example 2
 ```powershell
-PS C:\> $Bookmark = Get-AzSentinelBookmark -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -BookmarkId "MyBookmarkId"
+$Bookmark = Get-AzSentinelBookmark -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -BookmarkId "MyBookmarkId"
 ```
 
 This example gets an Bookmark in the specified workspace, and then stores it in the $Bookmark variable.

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Purview-help.xml
 Module Name: Az.Purview
 online version: https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonSqlDataSourceObject
 schema: 2.0.0
@@ -47,7 +47,6 @@ Create Amazon SQL data source object
 
 ### -CollectionReferenceName
 
-
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -61,7 +60,6 @@ Accept wildcard characters: False
 ```
 
 ### -CollectionType
-
 
 ```yaml
 Type: System.String
@@ -77,9 +75,8 @@ Accept wildcard characters: False
 
 ### -Kind
 
-
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.DataSourceType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType
 Parameter Sets: (All)
 Aliases:
 
@@ -91,7 +88,6 @@ Accept wildcard characters: False
 ```
 
 ### -Port
-
 
 ```yaml
 Type: System.Int32
@@ -107,7 +103,6 @@ Accept wildcard characters: False
 
 ### -ServerEndpoint
 
-
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -121,7 +116,6 @@ Accept wildcard characters: False
 ```
 
 ### -VpcEndpointServiceName
-
 
 ```yaml
 Type: System.String
@@ -142,11 +136,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20211001Preview.AmazonSqlDataSource
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonSqlDataSource
 
 ## NOTES
 
 ALIASES
 
 ## RELATED LINKS
-

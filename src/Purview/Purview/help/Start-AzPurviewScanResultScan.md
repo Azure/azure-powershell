@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Purview-help.xml
 Module Name: Az.Purview
 online version: https://docs.microsoft.com/powershell/module/az.purview/start-azpurviewscanresultscan
 schema: 2.0.0
@@ -12,16 +12,9 @@ Runs the scan
 
 ## SYNTAX
 
-### Run (Default)
 ```
 Start-AzPurviewScanResultScan -Endpoint <String> -DataSourceName <String> -RunId <String> -ScanName <String>
- [-ScanLevel <ScanLevelType>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### RunViaIdentity
-```
-Start-AzPurviewScanResultScan -Endpoint <String> -InputObject <IPurviewdataIdentity>
- [-ScanLevel <ScanLevelType>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ScanLevel <ScanLevelType>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,7 +40,7 @@ Start a Scan Run with scanResultId '758a0499-b45e-40e3-9c06-408e2f3ac050'
 
 ```yaml
 Type: System.String
-Parameter Sets: Run
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -88,28 +81,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.IPurviewdataIdentity
-Parameter Sets: RunViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -RunId
 .
 
 ```yaml
 Type: System.String
-Parameter Sets: Run
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -123,7 +100,7 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.ScanLevelType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanLevelType
 Parameter Sets: (All)
 Aliases:
 
@@ -139,7 +116,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: Run
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -185,32 +162,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.IPurviewdataIdentity
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20211001Preview.IOperationResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IOperationResponse
 
 ## NOTES
 
 ALIASES
 
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IPurviewdataIdentity>: Identity Parameter
-  - `[ClassificationRuleName <String>]`: 
-  - `[ClassificationRuleVersion <Int32?>]`: 
-  - `[DataSourceName <String>]`: 
-  - `[DataSourceType <DataSourceType?>]`: 
-  - `[Id <String>]`: Resource identity path
-  - `[KeyVaultName <String>]`: 
-  - `[RunId <String>]`: 
-  - `[ScanName <String>]`: 
-  - `[ScanRulesetName <String>]`: 
-  - `[Version <Int32?>]`: 
-
 ## RELATED LINKS
-

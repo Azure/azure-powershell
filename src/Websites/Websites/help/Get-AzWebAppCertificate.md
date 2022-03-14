@@ -25,15 +25,15 @@ If you know the certificate thumbprint you can also use this cmdlet to get infor
 ## EXAMPLES
 
 ### Example 1: Get Web App certificates in a resource group
-```
-PS C:\>Get-AzWebAppCertificate -ResourceGroupName "ContosoResourceGroup"
+```powershell
+Get-AzWebAppCertificate -ResourceGroupName "ContosoResourceGroup"
 ```
 
 This command returns information about the uploaded Web App certificates associated with the resource group ContosoResourceGroup.
 
 ### Example 2: Get a specified web app certificate
-```
-PS C:\>Get-AzWebAppCertificate -ResourceGroupName "ContosoResourceGroup" -Thumbprint "E3A38EBA60CAA1C162785A2E1C44A15AD450199C3"
+```powershell
+Get-AzWebAppCertificate -ResourceGroupName "ContosoResourceGroup" -Thumbprint "E3A38EBA60CAA1C162785A2E1C44A15AD450199C3"
 ```
 
 This command gets the ContosoResourceGroup Web App certificate with the thumbprint E3A38EBA60CAA1C162785A2E1C44A15AD450199C3.

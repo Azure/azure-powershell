@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Purview.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.Extensions;
+    using System;
 
     /// <summary>Checks if account name is available.</summary>
     /// <remarks>
