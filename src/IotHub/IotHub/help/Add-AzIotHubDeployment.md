@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
 online version: https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubdeployment
@@ -41,41 +41,41 @@ See https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring for m
 
 ### Example 1
 ```powershell
-PS C:\> Add-AzIotHubDeployment -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -Name "deploy1"
+Add-AzIotHubDeployment -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -Name "deploy1"
 ```
 
 Create an Edge deployment with default metadata.
 
 ### Example 2
 ```powershell
-PS C:\> Add-AzIotHubDeployment -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -Name "deploy1" -Priority 3 -TargetCondition "tags.building=9 and tags.environment='test'"
+Add-AzIotHubDeployment -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -Name "deploy1" -Priority 3 -TargetCondition "tags.building=9 and tags.environment='test'"
 ```
 
 Create an Edge deployment with a priority of 3 that applies on condition when a device is tagged in building 9 and the environment is 'test'.
 
 ### Example 2
 ```powershell
-PS C:\> $metrics = @{}
-PS C:\> $metrics.add("query1", "select deviceId from devices where tags.location='US'")
-PS C:\> Add-AzIotHubDeployment -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -Name "deploy1" -Metric $metrics
+$metrics = @{}
+$metrics.add("query1", "select deviceId from devices where tags.location='US'")
+Add-AzIotHubDeployment -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -Name "deploy1" -Metric $metrics
 ```
 
 Create an Edge deployment with user metrics.
 
 ### Example 3
 ```powershell
-PS C:\> $labels = @{}
-PS C:\> $labels.add("key0","value0")
-PS C:\> $labels.add("key1","value1")
-PS C:\> Add-AzIotHubDeployment -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -Name "deploy1" -Label $labels
+$labels = @{}
+$labels.add("key0","value0")
+$labels.add("key1","value1")
+Add-AzIotHubDeployment -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -Name "deploy1" -Label $labels
 ```
 
 Create an Edge deployment with labels.
 
 ### Example 4
 ```powershell
-PS C:\> $content = Get-Content "C:/Edge/modules.json" | ConvertFrom-Json -AsHashtable
-PS C:\> Add-AzIotHubDeployment -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -Name "deploy1" -ModulesContent $content -TargetCondition "from devices.modules where tags.environment='test'"
+$content = Get-Content "C:/Edge/modules.json" | ConvertFrom-Json -AsHashtable
+Add-AzIotHubDeployment -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -Name "deploy1" -ModulesContent $content -TargetCondition "from devices.modules where tags.environment='test'"
 ```
 
 Create an Edge deployment with content.

@@ -37,7 +37,7 @@ The **Remove-AzStackEdgeEdgeShare** cmdlet removes the associated edge shares fo
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzStackEdgeShare -ResourceGroupName resourceGroupName -DeviceName deviceName -Name shareName
+Remove-AzStackEdgeShare -ResourceGroupName resourceGroupName -DeviceName deviceName -Name shareName
 ```
 
 ## PARAMETERS

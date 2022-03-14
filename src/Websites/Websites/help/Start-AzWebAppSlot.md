@@ -30,8 +30,8 @@ The **Start-AzWebAppSlot** cmdlet starts an Azure Web App Slot.
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\>Start-AzWebAppSlot -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" -Slot "Slot001"
+```powershell
+Start-AzWebAppSlot -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" -Slot "Slot001"
 ```
 
 This command starts the Slot named Slot001 pertaining to the Web App named ContosoWebApp that belongs to the resource group named Default-Web-WestUS.

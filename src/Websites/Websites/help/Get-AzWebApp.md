@@ -36,8 +36,8 @@ The **Get-AzWebApp** cmdlet gets information about an Azure Web App.
 ## EXAMPLES
 
 ### Example 1: Get a Web App from a resource group
-```
-PS C:\>Get-AzWebApp -ResourceGroupName "Default-Web-WestUS" -Name "ContosoSite"
+```powershell
+Get-AzWebApp -ResourceGroupName "Default-Web-WestUS" -Name "ContosoSite"
 ```
 
 This command gets the Web App named ContosoSite that belongs to the resource group Default-Web-WestUS.

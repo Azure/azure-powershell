@@ -31,8 +31,10 @@ The **Get-AzCosmosDBSqlTrigger** cmdlet gets the list of all existing CosmosDB S
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCosmosDBSqlTrigger -AccountName {accountName} -ResourceGroupName {resourceGroupName} -DatabaseName {databaseName} -Name {triggerName} -ContainerName {containerName} 
+Get-AzCosmosDBSqlTrigger -AccountName {accountName} -ResourceGroupName {resourceGroupName} -DatabaseName {databaseName} -Name {triggerName} -ContainerName {containerName} 
+```
 
+```output
 Name                   : {triggerName}
 Id                     : {triggerId}
 Resource               : Microsoft.Azure.Commands.CosmosDB.Models.PSSqlTriggerGetPropertiesResource

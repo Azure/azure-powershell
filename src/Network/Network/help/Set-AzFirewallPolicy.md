@@ -52,22 +52,22 @@ The **Set-AzFirewallPolicy** cmdlet updates an Azure Firewall Policy.
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzFirewallPolicy -InputObject $fp
+Set-AzFirewallPolicy -InputObject $fp
 ```
 
 This example sets the firewall policy with the new firewall policy value
 
 ### Example 2
 ```powershell
-PS C:\> Set-AzFirewallPolicy -Name firewallPolicy1 -ResourceGroupName TestRg -Location westcentralus -ThreatIntelMode "Alert"
+Set-AzFirewallPolicy -Name firewallPolicy1 -ResourceGroupName TestRg -Location westcentralus -ThreatIntelMode "Alert"
 ```
 
 This example sets the firewall policy with the new threat intel mode
 
 ### Example 3
 ```powershell
-PS C:\> $threatIntelWhitelist = New-AzFirewallPolicyThreatIntelWhitelist -IpAddress 23.46.72.91,192.79.236.79 -FQDN microsoft.com
-PS C:\> Set-AzFirewallPolicy -Name firewallPolicy1 -ResourceGroupName TestRg -Location westcentralus -ThreatIntelWhitelist $threatIntelWhitelist
+$threatIntelWhitelist = New-AzFirewallPolicyThreatIntelWhitelist -IpAddress 23.46.72.91,192.79.236.79 -FQDN microsoft.com
+Set-AzFirewallPolicy -Name firewallPolicy1 -ResourceGroupName TestRg -Location westcentralus -ThreatIntelWhitelist $threatIntelWhitelist
 ```
 
 This example sets the firewall policy with the new threat intel whitelist

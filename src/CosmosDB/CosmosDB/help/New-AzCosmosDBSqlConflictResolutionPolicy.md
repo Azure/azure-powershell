@@ -24,8 +24,10 @@ Object corresponding to Sql API's ConflictResolutionPolicy.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCosmosDBSqlConflictResolutionPolicy -Type LastWriterWins -Path "/myPath"
+New-AzCosmosDBSqlConflictResolutionPolicy -Type LastWriterWins -Path "/myPath"
+```
 
+```output
 Mode           ConflictResolutionPath ConflictResolutionProcedure
 ----           ---------------------- ---------------------------
 LastWriterWins /myPath

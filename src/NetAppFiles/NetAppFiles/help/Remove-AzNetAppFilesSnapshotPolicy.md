@@ -43,7 +43,7 @@ The **Remove-AzNetAppFilesSnapshotPolicy** cmdlet deletes an ANF snapshot policy
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzNetAppFilesSnapshotPolicy -ResourceGroupName "MyRG" -AccountName "MyAccount" -Name "MySnapshotPolicy"
+Remove-AzNetAppFilesSnapshotPolicy -ResourceGroupName "MyRG" -AccountName "MyAccount" -Name "MySnapshotPolicy"
 ```
 
 This command deletes the new ANF backup policy with a the name "MyBackupPolicy" for account "MyAccount".

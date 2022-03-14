@@ -24,7 +24,10 @@ The **New-AzStackEdgeDevice** cmdlet configures a new Stack Edge device
 
 ### Example 1
 ```powershell
-PS C:\> New-AzStackEdgeDevice -ResourceGroupName resourceGroupName -Name deviceName -Location eastus -Sku Edge
+New-AzStackEdgeDevice -ResourceGroupName resourceGroupName -Name deviceName -Location eastus -Sku Edge
+```
+
+```output
 Name            ResourceGroupName    Model   Location
 ----            -----------------    -----   --------
 deviceName      resourceGroupName    Edge    eastus

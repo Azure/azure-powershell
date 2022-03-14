@@ -37,7 +37,7 @@ The **Remove-AzStackEdgeBandwidthSchedule** cmdlet removes the Bandwidth schedul
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzStackEdgeBandwidthSchedule -ResourceGroupName resourceGroupName -DeviceName deviceName -Name bandwidthSchedule
+Remove-AzStackEdgeBandwidthSchedule -ResourceGroupName resourceGroupName -DeviceName deviceName -Name bandwidthSchedule
 ```
 
 ## PARAMETERS

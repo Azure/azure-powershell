@@ -25,8 +25,8 @@ Azure Redis Cache patch schedule cmdlets, such as the New-AzRedisCachePatchSched
 ## EXAMPLES
 
 ### Example 1: Create a schedule entry for weekends
-```
-PS C:\>New-AzRedisCacheScheduleEntry -DayOfWeek "Weekend" -StartHourUtc 2 -MaintenanceWindow "06:00:00"
+```powershell
+New-AzRedisCacheScheduleEntry -DayOfWeek "Weekend" -StartHourUtc 2 -MaintenanceWindow "06:00:00"
 ```
 
 This command creates a **PSScheduleEntry** object that represents a weekend schedule that has the specified start time and window.

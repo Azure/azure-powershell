@@ -17,7 +17,10 @@
     * Overview of change #1
         - Additional information about change #1
 -->
+
 ## Upcoming Release
+* Bug fix - prevent exceptions while using StorageInsight cmdlets.
+* Bug fix - when updating a cluster, it's SKU was set even if no value was passed.
 
 ## Version 3.0.1
 * Added logic to prevent exceptions while using `StorageInsight` cmdlets.

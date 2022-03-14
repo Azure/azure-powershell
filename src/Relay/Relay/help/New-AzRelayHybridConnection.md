@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Relay.dll-Help.xml
 Module Name: Az.Relay
 online version: https://docs.microsoft.com/powershell/module/az.relay/new-azrelayhybridconnection
@@ -32,12 +32,14 @@ The New-AzRelayHybridConnection cmdlet creates a HybridConnection in the specifi
 ## EXAMPLES
 
 ### Example 1 - InputObject
+```powershell
+$getHybirdConnection = Get-AzRelayHybridConnection -ResourceGroupName Default-ServiceBus-WestUS -NamespaceName TestNameSpace-HybirdConnection -Name TestHybirdConnection1
+$getHybirdConnection.UserMetadata = "TestHybirdConnection2"
+$getHybirdConnection.RequiresClientAuthorization = $False
+New-AzRelayHybridConnection -ResourceGroupName Default-Storage-WestUS -Namespace TestNameSpace-HybirdConnection -Name TestHybirdConnection2 -InputObject $getHybirdConnection
 ```
-PS C:\> $getHybirdConnection = Get-AzRelayHybridConnection -ResourceGroupName Default-ServiceBus-WestUS -NamespaceName TestNameSpace-HybirdConnection -Name TestHybirdConnection1
-PS C:\> $getHybirdConnection.UserMetadata = "TestHybirdConnection2"
-PS C:\> $getHybirdConnection.RequiresClientAuthorization = $False
-PS C:\> New-AzRelayHybridConnection -ResourceGroupName Default-Storage-WestUS -Namespace TestNameSpace-HybirdConnection -Name TestHybirdConnection2 -InputObject $getHybirdConnection
 
+```output
 CreatedAt                   : 4/26/2017 10:04:15 PM
 UpdatedAt                   : 4/26/2017 10:04:15 PM
 ListenerCount               :
@@ -53,9 +55,11 @@ Type                        : Microsoft.Relay/HybridConnections
 Creates a new HybirdConnection \`TestHybirdConnection2\` in the specified Relay namespace \`TestNameSpace-HybirdConnection\`.
 
 ### Example 2 - Properties
+```powershell
+New-AzWcfRelay -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-HybirdConnection -Name TestHybirdConnection1 -RequiresClientAuthorization $True -UserMetadata "User Meta data"
 ```
-PS C:\> New-AzWcfRelay -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-HybirdConnection -Name TestHybirdConnection1 -RequiresClientAuthorization $True -UserMetadata "User Meta data"
 
+```output
 CreatedAt                   : 4/26/2017 10:04:15 PM
 UpdatedAt                   : 4/26/2017 10:04:15 PM
 ListenerCount               :

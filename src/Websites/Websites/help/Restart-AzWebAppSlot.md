@@ -30,8 +30,8 @@ If the Web App Slot is in a stopped state, use the Start-AzWebAppSlot cmdlet.
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Restart-AzWebAppSlot -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" -Slot "Slot001"
+```powershell
+Restart-AzWebAppSlot -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" -Slot "Slot001"
 ```
 
 This command restarts the slot Slot001 for the web app ContosoWebApp associated with the resource group Default-Web-WestUS

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll-Help.xml
 Module Name: Az.DataLakeStore
 ms.assetid: 30C10687-F172-4663-8D4A-F0DDEA5C3741
@@ -25,8 +25,8 @@ The **Remove-AzDataLakeStoreTrustedIdProvider** cmdlet removes the specified tru
 ## EXAMPLES
 
 ### Example 1: Remove a trusted identity provider.
-```
-PS C:\> Remove-AzDataLakeStoreTrustedIdProvider -AccountName "ContosoADL" -Name MyProvider
+```powershell
+Remove-AzDataLakeStoreTrustedIdProvider -AccountName "ContosoADL" -Name MyProvider
 ```
 
 Removes the provider "MyProvider" from account "ContosoADL"

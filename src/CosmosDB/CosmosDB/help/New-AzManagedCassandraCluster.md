@@ -40,7 +40,7 @@ The **New-AzManagedCassandraCluster** cmdlet creates a new managed Cassandra clu
 
 ### Example 1
 ```powershell
-PS C:\> New-AzManagedCassandraCluster `
+New-AzManagedCassandraCluster `
  -ResourceGroupName {resourceGroupName} `
  -ClusterName {clusterName} `
  -DelegatedManagementSubnetId {resourceId} `

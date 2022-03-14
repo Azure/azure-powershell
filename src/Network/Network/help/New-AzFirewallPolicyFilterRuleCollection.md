@@ -24,7 +24,7 @@ The **New-AzFirewallPolicyFilterRuleCollection** cmdlet creates a Filter rule co
 
 ### Example 1
 ```powershell
-PS C:\> New-AzFirewallPolicyFilterRuleCollection -Name FR1 -Priority 400 -Rule $appRule1 ,$appRule2 -ActionType "Allow"
+New-AzFirewallPolicyFilterRuleCollection -Name FR1 -Priority 400 -Rule $appRule1 ,$appRule2 -ActionType "Allow"
 ```
 
 This example creates a Filter rule with 2 rule conditions

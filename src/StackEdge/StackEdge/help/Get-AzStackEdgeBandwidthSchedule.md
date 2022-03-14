@@ -43,8 +43,10 @@ The **Get-AzStackEdgeBandwidthSchedule** cmdlet gets the information about the B
 
 ### Example 1
 ```powershell
-PS C:\>Get-AzStackEdgeBandwidthSchedule -ResourceGroupname resource-group-name -DeviceName device-name
+Get-AzStackEdgeBandwidthSchedule -ResourceGroupname resource-group-name -DeviceName device-name
+```
 
+```output
 Name              DaysOfWeek         RateInMbps StartTime StopTime
 ----              ----------         ---------- --------- --------
 schedule-name     Sunday,Saturday    unlimited  13:00:00  14:00:00
@@ -54,8 +56,10 @@ Schedule-2        Thursday           50         00:01:00  05:00:00
 
 ### Example 2
 ```powershell
-PS C:\>Get-AzStackEdgeBandwidthSchedule -ResourceGroupname resource-group-name -DeviceName device-name -Name Schedule-1
+Get-AzStackEdgeBandwidthSchedule -ResourceGroupname resource-group-name -DeviceName device-name -Name Schedule-1
+```
 
+```output
 Name              DaysOfWeek      RateInMbps StartTime StopTime
 ----              ----------      ---------- --------- --------
 Schedule-1        Sunday,Saturday unlimited  13:00:00  14:00:00
