@@ -15,11 +15,10 @@ Create a new Kubernetes Cluster Extension.
 ```
 New-AzKubernetesExtension -ClusterName <String> -ClusterType <String> -Name <String>
  -ResourceGroupName <String> -ExtensionType <String> [-SubscriptionId <String>]
- [-AkAssignedIdentityType <ResourceIdentityType>] [-AutoUpgradeMinorVersion]
- [-ClusterReleaseNamespace <String>] [-ConfigurationProtectedSetting <Hashtable>]
- [-ConfigurationSetting <Hashtable>] [-IdentityType <ResourceIdentityType>]
- [-NamespaceTargetNamespace <String>] [-ReleaseTrain <String>] [-Version <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AkAssignedIdentityType <AksIdentityType>] [-AutoUpgradeMinorVersion] [-ClusterReleaseNamespace <String>]
+ [-ConfigurationProtectedSetting <Hashtable>] [-ConfigurationSetting <Hashtable>]
+ [-IdentityType <ResourceIdentityType>] [-NamespaceTargetNamespace <String>] [-ReleaseTrain <String>]
+ [-Version <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,7 +45,7 @@ Create a new Kubernetes Cluster Extension.
 The identity type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.ResourceIdentityType
+Type: Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.AksIdentityType
 Parameter Sets: (All)
 Aliases:
 
@@ -119,7 +118,8 @@ Accept wildcard characters: False
 ```
 
 ### -ClusterType
-The Kubernetes cluster resource name - either managedClusters (for AKS clusters) or connectedClusters (for OnPrem K8S clusters).
+The Kubernetes cluster resource name - i.e.
+managedClusters, connectedClusters, provisionedClusters.
 
 ```yaml
 Type: System.String
@@ -288,9 +288,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The Azure subscription ID.
-This is a GUID-formatted string (e.g.
-00000000-0000-0000-0000-000000000000)
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
@@ -305,8 +303,8 @@ Accept wildcard characters: False
 ```
 
 ### -Version
-Version of the extension for this extension, if it is 'pinned' to a specific version.
-autoUpgradeMinorVersion must be 'false'.
+User-specified version of the extension for this extension to 'pin'.
+To use 'version', autoUpgradeMinorVersion must be 'false'.
 
 ```yaml
 Type: System.String
@@ -358,7 +356,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210901.IExtension
+### Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtension
 
 ## NOTES
 
