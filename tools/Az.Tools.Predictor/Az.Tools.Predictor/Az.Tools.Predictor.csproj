@@ -9,7 +9,7 @@
 
   <PropertyGroup>
     <PackageId>Az.Tools.Predictor</PackageId>
-    <Description>Microsoft Azure PowerShell - Module providing recommendations to PSReadLine v2.2.0 or above for cmdlets comprised in the Az module - This module is compatible with PowerShell 7.1 or above.
+    <Description>Microsoft Azure PowerShell - Module providing recommendations to PSReadLine v2.2.2 or above for cmdlets comprised in the Az module - This module is compatible with PowerShell 7.2 or above.
 
 For more information on Az Predictor, please visit the following: https://aka.ms/azpredictordocs</Description>
   </PropertyGroup>
