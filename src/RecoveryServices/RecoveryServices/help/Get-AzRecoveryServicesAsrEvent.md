@@ -43,17 +43,18 @@ The **Get-AzRecoveryServicesAsrEvent** gets the list of events in the vault base
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Get-AzRecoveryServicesAsrEvent
+```powershell
+Get-AzRecoveryServicesAsrEvent
 ```
 
 List of all events.
 
 ### Example 2
+```powershell
+Get-AzRecoveryServicesAsrEvent -EventName "VmMonitoringEvent;9091897569816476200_84576304-bafc-4714-8ba6-197a5d09d84f"
 ```
-PS C:\> Get-AzRecoveryServicesAsrEvent -EventName "VmMonitoringEvent;9091897569816476200_84576304-bafc-4714-8ba6-197a5d09d84f"
 
-
+```output
 AffectedObjectFriendlyName   : V2A-W2K12-400
 Description                  : Virtual machine health is in Critical state.
 EventCode                    : SRSVMHealthChanged
@@ -70,15 +71,15 @@ TimeOfOccurence              : 8/17/2017 12:31:43 PM
 Get event by name.
 
 ### Example 3
-```
-PS C:\> Get-AzRecoveryServicesAsrEvent -AffectedObjectName xxxxxxxxxxxxx
+```powershell
+Get-AzRecoveryServicesAsrEvent -AffectedObjectName xxxxxxxxxxxxx
 ```
 
 List of event for affected Object.
 
 ### Example 4
-```
-PS C:\> Get-AzRecoveryServicesAsrEvent -AffectedObjectName xxxxxxxxxxxx -StartTime "8/17/2017 12:31:40 PM" -EndTime "8/17/2017 12:31:44 PM" -Severity Critical -EventType VmHealth
+```powershell
+Get-AzRecoveryServicesAsrEvent -AffectedObjectName xxxxxxxxxxxx -StartTime "8/17/2017 12:31:40 PM" -EndTime "8/17/2017 12:31:44 PM" -Severity Critical -EventType VmHealth
 ```
 
 List of event between time start time and end time , severity critical and health type VmHealth.

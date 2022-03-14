@@ -37,7 +37,7 @@ The **Remove-AzStackEdgeRole** cmdlet removes the associated IoT role for a Stac
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzStackEdgeRole -ResourceGroupName resourceGroupName -DeviceName deviceName -Name roleName
+Remove-AzStackEdgeRole -ResourceGroupName resourceGroupName -DeviceName deviceName -Name roleName
 ```
 
 ## PARAMETERS

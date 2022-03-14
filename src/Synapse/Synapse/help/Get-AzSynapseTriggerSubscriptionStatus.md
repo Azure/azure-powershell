@@ -37,23 +37,23 @@ The **Get-AzSynapseTriggerSubscriptionStatus** cmdlet gets the status of the sub
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSynapseTriggerSubscriptionStatus -WorkspaceName ContosoWorkspace -Name ContosoTrigger
+Get-AzSynapseTriggerSubscriptionStatus -WorkspaceName ContosoWorkspace -Name ContosoTrigger
 ```
 
 This command will get the status of the subscribtion for trigger called ContosoTrigger to the external service events.
 
 ### Example 2
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Get-AzSynapseTriggerSubscriptionStatus -Name ContosoTrigger
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Get-AzSynapseTriggerSubscriptionStatus -Name ContosoTrigger
 ```
 
 This command will get the status of the subscribtion for trigger called ContosoTrigger to the external service events through pipeline.
 
 ### Example 3
 ```powershell
-PS C:\> $trigger = Get-AzSynapseTrigger -WorkspaceName ContosoWorkspace -Name ContosoTrigger
-PS C:\> $trigger | Get-AzSynapseTriggerSubscriptionStatus
+$trigger = Get-AzSynapseTrigger -WorkspaceName ContosoWorkspace -Name ContosoTrigger
+$trigger | Get-AzSynapseTriggerSubscriptionStatus
 ```
 
 This command will get the status of the subscribtion for trigger called ContosoTrigger to the external service events through pipeline.

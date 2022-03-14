@@ -30,6 +30,8 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.DBforMariaDB/servers", "2018-06-01", true, true);
             RegisterConfiguration("Microsoft.DBforMySQL/servers", "2018-06-01", true, true);
             RegisterConfiguration("Microsoft.DBforPostgreSQL/servers", "2018-06-01", true, true);
+            RegisterConfiguration("Microsoft.DesktopVirtualization/hostpools", "2021-09-03-preview", true, false);
+            RegisterConfiguration("Microsoft.DesktopVirtualization/workspaces", "2021-09-03-preview", true, false);
             RegisterConfiguration("Microsoft.Devices/IotHubs", "2020-03-01", true, true);
             RegisterConfiguration("Microsoft.Devices/ProvisioningServices", "2020-03-01", true, true);
             RegisterConfiguration("Microsoft.DigitalTwins/digitalTwinsInstances", "2020-12-01", true, true);

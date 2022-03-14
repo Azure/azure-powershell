@@ -34,9 +34,9 @@ The **Set-AzRecoveryServicesVaultProperty** cmdlet updates properties of a Recov
 ## EXAMPLES
 
 ### Example 1: Update SoftDeleteFeatureState of a vault
-```
-PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "rgName" -Name "vaultName"
-PS C:\> $props = Set-AzRecoveryServicesVaultProperty -VaultId $vault.Id -SoftDeleteFeatureState Enable
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "rgName" -Name "vaultName"
+$props = Set-AzRecoveryServicesVaultProperty -VaultId $vault.Id -SoftDeleteFeatureState Enable
 ```
 
 The first command gets a Vault object and then stores it in the $vault variable.
@@ -44,11 +44,11 @@ The second command Updates the SoftDeleteFeatureState property of the vault to "
 
 ### Example 2: Update CMK encryption of a vault to use SystemAssigned MSIdentity
 
-```
-PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "rgName" -Name "vaultName"
-PS C:\> $keyVault = Get-AzKeyVault -VaultName "keyVaultName" -ResourceGroupName "RGName" 
-PS C:\> $key = Get-AzKeyVaultKey -VaultName "keyVaultName" -Name "keyName" 
-PS C:\> Set-AzRecoveryServicesVaultProperty -EncryptionKeyId $key.ID -InfrastructureEncryption -VaultId $vault.ID -UseSystemAssignedIdentity $true
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "rgName" -Name "vaultName"
+$keyVault = Get-AzKeyVault -VaultName "keyVaultName" -ResourceGroupName "RGName" 
+$key = Get-AzKeyVaultKey -VaultName "keyVaultName" -Name "keyName" 
+Set-AzRecoveryServicesVaultProperty -EncryptionKeyId $key.ID -InfrastructureEncryption -VaultId $vault.ID -UseSystemAssignedIdentity $true
 ```
 
 First cmdlet gets the RSVault to update encryption properties. Second cmdlet gets the azure key vault. Third cmdlet gets the key from the key vault.
@@ -56,11 +56,11 @@ Fourth cmdlet updates the customer managed encryption key within the RSVault to 
 
 ### Example 3: Update CMK encryption of a vault to use userAssigned MSIdentity
 
-```
-PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "rgName" -Name "vaultName"
-PS C:\> $keyVault = Get-AzKeyVault -VaultName "keyVaultName" -ResourceGroupName "RGName" 
-PS C:\> $key = Get-AzKeyVaultKey -VaultName "keyVaultName" -Name "keyName" 
-PS C:\> Set-AzRecoveryServicesVaultProperty -EncryptionKeyId $key.ID -VaultId $vault.ID -UseSystemAssignedIdentity $false -UserAssignedIdentity $vault.Identity.UserAssignedIdentities.Keys[0]
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "rgName" -Name "vaultName"
+$keyVault = Get-AzKeyVault -VaultName "keyVaultName" -ResourceGroupName "RGName" 
+$key = Get-AzKeyVaultKey -VaultName "keyVaultName" -Name "keyName" 
+Set-AzRecoveryServicesVaultProperty -EncryptionKeyId $key.ID -VaultId $vault.ID -UseSystemAssignedIdentity $false -UserAssignedIdentity $vault.Identity.UserAssignedIdentities.Keys[0]
 ```
 
 First cmdlet gets the RSVault to update encryption properties. Second cmdlet gets the azure key vault. Third cmdlet gets the key from the key vault.

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Relay.dll-Help.xml
 Module Name: Az.Relay
 online version: https://docs.microsoft.com/powershell/module/az.relay/set-azrelaynamespace
@@ -24,9 +24,11 @@ The **Set-AzRelayNamespace** cmdlet updates the description of the specified Rel
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Set-AzRelayNamespace -ResourceGroupName Default-ServiceBus-WestUS -Name TestNameSpace-Relay1 -Tag @{Tag2="Tag2Value"}
 ```
-PS C:\> Set-AzRelayNamespace -ResourceGroupName Default-ServiceBus-WestUS -Name TestNameSpace-Relay1 -Tag @{Tag2="Tag2Value"}
 
+```output
 ProvisioningState  :
 CreatedAt          : 4/12/2017 12:38:47 AM
 UpdatedAt          : 4/12/2017 12:39:10 AM

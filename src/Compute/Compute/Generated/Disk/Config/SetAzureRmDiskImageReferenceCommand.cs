@@ -44,13 +44,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             Position = 1,
-            ValueFromPipelineByPropertyName = true)]
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the ID of PIR or user image.")]
         public string Id { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 2,
-            ValueFromPipelineByPropertyName = true)]
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the logical unit number (LUN). If the disk is created from an image's data disk, this is an index that indicates which of the data disks in the image to use. For OS disks, this field is null.")]
         public int Lun { get; set; }
 
         protected override void ProcessRecord()

@@ -30,8 +30,8 @@ The **Get-AzWebAppSnapshot** cmdlet returns all snapshots for a web app. Snapsho
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Get-AzWebAppSnapshot -ResourceGroupName "Default-Web-WestUS" -Name "ContosoApp" -Slot "Staging"
+```powershell
+Get-AzWebAppSnapshot -ResourceGroupName "Default-Web-WestUS" -Name "ContosoApp" -Slot "Staging"
 ```
 
 Get the snapshots for a web app named "ContosoApp" with a slot named "Staging" in the "Default-Web-WestUS" resource group

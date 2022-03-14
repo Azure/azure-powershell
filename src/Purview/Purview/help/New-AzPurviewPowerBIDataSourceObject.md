@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Purview-help.xml
 Module Name: Az.Purview
 online version: https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewPowerBIDataSourceObject
 schema: 2.0.0
@@ -24,10 +24,7 @@ Create an in-memory object for PowerBIDataSource.
 
 ### Example 1: Create PowerBI data source object
 ```powershell
-
-```
-
-PS C:\\> New-AzPurviewPowerBIDataSourceObject -Kind 'PowerBI' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -Tenant 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx'
+PS C:\> New-AzPurviewPowerBIDataSourceObject -Kind 'PowerBI' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -Tenant 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx'
 
 CollectionLastModifiedAt :
 CollectionReferenceName  : parv-brs-2
@@ -47,7 +44,6 @@ Create PowerBI data source object
 
 ### -CollectionReferenceName
 
-
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -61,7 +57,6 @@ Accept wildcard characters: False
 ```
 
 ### -CollectionType
-
 
 ```yaml
 Type: System.String
@@ -77,9 +72,8 @@ Accept wildcard characters: False
 
 ### -Kind
 
-
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.DataSourceType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType
 Parameter Sets: (All)
 Aliases:
 
@@ -91,7 +85,6 @@ Accept wildcard characters: False
 ```
 
 ### -Tenant
-
 
 ```yaml
 Type: System.String
@@ -112,11 +105,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20211001Preview.PowerBiDataSource
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.PowerBiDataSource
 
 ## NOTES
 
 ALIASES
 
 ## RELATED LINKS
-

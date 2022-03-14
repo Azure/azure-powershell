@@ -251,7 +251,7 @@ function Test-RestoreDeletedManagedDatabase
 
 		# Once database is created, backup service will automatically take log backups every 5 minutes. We are waiting 450s to ensure backups are taken to which we can restore.
 		if([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq "Record"){
-			Wait-Seconds 450
+			Wait-Seconds 800
 		}
 
 		# Test remove using all parameters

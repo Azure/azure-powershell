@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
 online version: https://docs.microsoft.com/powershell/module/az.security/Get-AzSecurityAdaptiveApplicationControl
@@ -25,7 +25,10 @@ Adaptive Application Controls are automatically calculated by Azure Security Cen
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSecurityAdaptiveApplicationControl
+Get-AzSecurityAdaptiveApplicationControl
+```
+
+```output
 Id         : /subscriptions/3eeab341-f466-499c-a8be-85427e154baf7612f869/providers/Microsoft.Security/locations/centralus/applicationWhitelistings/GROUP2
 Name       : GROUP2
 Type       : Microsoft.Security/applicationWhitelistings
