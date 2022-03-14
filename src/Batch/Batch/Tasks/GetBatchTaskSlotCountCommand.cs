@@ -23,12 +23,22 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchTaskSlotCount", DefaultParameterSetName = Constants.IdParameterSet), OutputType(typeof(PSTaskSlotCounts))]
     public class GetBatchTaskSlotCountCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true,
-            ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the job for which to get task slot counts.")]
+        [Parameter(
+            Position = 0,
+            ParameterSetName = Constants.IdParameterSet,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The id of the job for which to get task slot counts."
+        )]
         [ValidateNotNullOrEmpty]
         public string JobId { get; set; }
 
-        [Parameter(Position = 0, ParameterSetName = Constants.ParentObjectParameterSet, ValueFromPipeline = true)]
+        [Parameter(
+            Position = 0, 
+            ParameterSetName = Constants.ParentObjectParameterSet,
+            ValueFromPipeline = true,
+            HelpMessage = "Specifies the job that contains tasks that this cmdlet gets. To obtain a **PSCloudJob** object, use the Get-AzBatchJob cmdlet."
+        )]
         [ValidateNotNullOrEmpty]
         public PSCloudJob Job { get; set; }
 

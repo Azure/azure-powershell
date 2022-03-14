@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodeExtensions
             cmdlet.BatchContext = context;
             cmdlet.PoolId = "testPool";
             cmdlet.ComputeNodeId = "testComputeNode";
-            cmdlet.ExtensionName = extensionName;
+            cmdlet.Name = extensionName;
 
             VMExtension extension = new VMExtension(extensionName, publisher, type);
 
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodeExtensions
             cmdlet.BatchContext = context;
             cmdlet.PoolId = "testPool";
             cmdlet.ComputeNodeId = "testComputeNode";
-            cmdlet.ExtensionName = extensionName;
+            cmdlet.Name = extensionName;
             cmdlet.Select = "ExtensionName,Publisher";
 
             VMExtension extension = new VMExtension(extensionName, publisher, type);

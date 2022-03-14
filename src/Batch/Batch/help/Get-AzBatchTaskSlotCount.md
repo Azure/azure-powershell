@@ -82,8 +82,7 @@ Accept wildcard characters: False
 ```
 
 ### -Job
-Specifies the job that contains tasks that this cmdlet gets.
-To obtain a **PSCloudJob** object, use the Get-AzBatchJob cmdlet.
+Specifies the job that contains tasks that this cmdlet gets. To obtain a **PSCloudJob** object, use the Get-AzBatchJob cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.Models.PSCloudJob

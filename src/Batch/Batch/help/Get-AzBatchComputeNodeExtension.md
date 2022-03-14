@@ -14,14 +14,14 @@ Gets Batch compute node extensions from a compute node.
 
 ### Id (Default)
 ```
-Get-AzBatchComputeNodeExtension [-PoolId] <String> [-ComputeNodeId] <String> [[-ExtensionName] <String>]
+Get-AzBatchComputeNodeExtension [-PoolId] <String> [-ComputeNodeId] <String> [[-Name] <String>]
  [-Select <String>] [-MaxCount <Int32>] -BatchContext <BatchAccountContext>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ParentObject
 ```
-Get-AzBatchComputeNodeExtension [-Pool] <PSCloudPool> [-ComputeNodeId] <String> [[-ExtensionName] <String>]
+Get-AzBatchComputeNodeExtension [-Pool] <PSCloudPool> [-ComputeNodeId] <String> [[-Name] <String>]
  [-Select <String>] [-MaxCount <Int32>] -BatchContext <BatchAccountContext>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -102,7 +102,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExtensionName
+### -MaxCount
+Specifies the maximum number of compute node extensions to return.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
 The name of the extension to get.
 
 ```yaml
@@ -114,21 +129,6 @@ Required: False
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -MaxCount
-{{ Fill MaxCount Description }}
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -163,7 +163,8 @@ Accept wildcard characters: False
 ```
 
 ### -Select
-{{ Fill Select Description }}
+Specifies an OData select clause.
+Specify a value for this parameter to get specific properties rather than all object properties.
 
 ```yaml
 Type: System.String

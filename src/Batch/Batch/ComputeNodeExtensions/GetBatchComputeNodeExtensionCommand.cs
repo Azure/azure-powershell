@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter(Position = 2, ParameterSetName = Constants.IdParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the extension to get.")]
         [Parameter(Position = 2, ParameterSetName = Constants.ParentObjectParameterSet, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public string ExtensionName { get; set; }
+        public string Name { get; set; }
 
         [Parameter(ParameterSetName = Constants.IdParameterSet)]
         [Parameter(ParameterSetName = Constants.ParentObjectParameterSet)]
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Batch
 
         protected override void ExecuteCmdletImpl()
         {
-            ListComputeNodeExtensionParameters options = new ListComputeNodeExtensionParameters(BatchContext, PoolId, Pool, ComputeNodeId, ExtensionName, AdditionalBehaviors)
+            ListComputeNodeExtensionParameters options = new ListComputeNodeExtensionParameters(BatchContext, PoolId, Pool, ComputeNodeId, Name, AdditionalBehaviors)
             {
                 Select = Select,
                 MaxCount = MaxCount,

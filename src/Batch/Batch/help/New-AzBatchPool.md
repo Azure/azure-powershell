@@ -416,7 +416,8 @@ Accept wildcard characters: False
 ```
 
 ### -TaskSlotsPerNode
-{{ Fill TaskSlotsPerNode Description }}
+The number of task slots that can be used to run concurrent tasks on a single compute node in the pool.
+The default value is 1. The maximum value is the smaller of 4 times the number of cores of the vmSize of the pool or 256.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]

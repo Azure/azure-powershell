@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Batch
 
         [Parameter]
         [ValidateNotNullOrEmpty]
-        [GenericBreakingChange("MaxTasksPerComputeNode alias will be removed in an upcoming breaking change release", "4.2.0")]
+        [CmdletParameterBreakingChange("MaxTasksPerComputeNode", "MaxTasksPerComputeNode alias will be removed in an upcoming breaking change release.")]
         [Alias("MaxTasksPerComputeNode")]
         public int? TaskSlotsPerNode { get; set; }
 
