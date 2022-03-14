@@ -31,8 +31,8 @@ The **Get-AzWebAppSlot** cmdlet gets information about an Azure Web App Slot.
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Get-AzWebAppSlot -ResourceGroupName "Default-Web-WestUS" -Name "WebAppStandard" -Slot "Slot001"
+```powershell
+Get-AzWebAppSlot -ResourceGroupName "Default-Web-WestUS" -Name "WebAppStandard" -Slot "Slot001"
 ```
 
 This command gets the slot named Slot001 from the Web App named WebAppStandard that belongs to the

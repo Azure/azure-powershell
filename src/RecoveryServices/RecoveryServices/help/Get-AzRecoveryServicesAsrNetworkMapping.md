@@ -30,16 +30,16 @@ The **Get-AzRecoveryServicesAsrNetworkMapping** cmdlet gets information about Az
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $Networkmappings = Get-AzRecoveryServicesAsrNetworkMapping -Network $Network
+```powershell
+$Networkmappings = Get-AzRecoveryServicesAsrNetworkMapping -Network $Network
 ```
 
 Gets all networks mappings for the passed Network.
 
 ### Example 2
-```
-PS C:\> $primaryFabric = Get-AzRecoveryServicesAsrFabric -Name xxxx
-PS C:\> $Networkmappings = Get-AzRecoveryServicesAsrNetworkMapping -Name $networkMappingName -PrimaryFabric $primaryFabric
+```powershell
+$primaryFabric = Get-AzRecoveryServicesAsrFabric -Name xxxx
+$Networkmappings = Get-AzRecoveryServicesAsrNetworkMapping -Name $networkMappingName -PrimaryFabric $primaryFabric
 ```
 
 Gets networks mapping with provided name in specified azure site recovery fabric.

@@ -42,7 +42,10 @@ For details about Azure Defender and the available plans, see [Introduction to A
 ### Example 1
 
 ```powershell
-PS C:\> Get-AzSecurityPricing
+Get-AzSecurityPricing
+```
+
+```output
 Id                                                                                                                   Name                      PricingTier    FreeTrialRemainingTime
 --                                                                                                                   ----                      -----------    ----------------------
 /subscriptions/fbaa2b23-e9dd-4bed-93c1-9e2a44f64bc0/providers/Microsoft.Security/pricings/VirtualMachines            VirtualMachines           Free           00:00:00
@@ -62,7 +65,7 @@ Gets the status of each Azure Defender plan for the subscription.
 ### Example 2
 
 ```powershell
-PS C:\> Get-AzSecurityPricing -ResourceId
+Get-AzSecurityPricing -ResourceId
 ```
 
 Gets pricing details of the specific resource ID. Where ResourceId is one of the IDs returned by `Get-AzSecurityPricing`.
@@ -70,7 +73,7 @@ Gets pricing details of the specific resource ID. Where ResourceId is one of the
 ### Example 3
 
 ```powershell
-PS C:\> Get-AzSecurityPricing -Name
+Get-AzSecurityPricing -Name
 ```
 
 Gets pricing details of the named Azure Defender plan. Where `name` is one of the names returned by `Get-AzSecurityPricing`.

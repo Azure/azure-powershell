@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Purview-help.xml
 Module Name: Az.Purview
 online version: https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewTriggerObject
 schema: 2.0.0
@@ -60,7 +60,6 @@ Create trigger object
 
 ### -IncrementalScanStartTime
 
-
 ```yaml
 Type: System.DateTime
 Parameter Sets: (All)
@@ -74,7 +73,6 @@ Accept wildcard characters: False
 ```
 
 ### -Interval
-
 
 ```yaml
 Type: System.Int32
@@ -90,7 +88,6 @@ Accept wildcard characters: False
 
 ### -RecurrenceEndTime
 
-
 ```yaml
 Type: System.DateTime
 Parameter Sets: (All)
@@ -105,9 +102,8 @@ Accept wildcard characters: False
 
 ### -RecurrenceFrequency
 
-
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.TriggerFrequency
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.TriggerFrequency
 Parameter Sets: (All)
 Aliases:
 
@@ -119,7 +115,6 @@ Accept wildcard characters: False
 ```
 
 ### -RecurrenceInterval
-
 
 ```yaml
 Type: System.String
@@ -135,7 +130,6 @@ Accept wildcard characters: False
 
 ### -RecurrenceStartTime
 
-
 ```yaml
 Type: System.DateTime
 Parameter Sets: (All)
@@ -149,7 +143,6 @@ Accept wildcard characters: False
 ```
 
 ### -RecurrenceTimeZone
-
 
 ```yaml
 Type: System.String
@@ -165,9 +158,8 @@ Accept wildcard characters: False
 
 ### -ScanLevel
 
-
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.ScanLevelType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanLevelType
 Parameter Sets: (All)
 Aliases:
 
@@ -183,7 +175,7 @@ Dictionary of \<any\>.
 To construct, see NOTES section for SCHEDULEADDITIONALPROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20211001Preview.IRecurrenceScheduleAdditionalProperties
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IRecurrenceScheduleAdditionalProperties
 Parameter Sets: (All)
 Aliases:
 
@@ -195,7 +187,6 @@ Accept wildcard characters: False
 ```
 
 ### -ScheduleHour
-
 
 ```yaml
 Type: System.Int32[]
@@ -211,7 +202,6 @@ Accept wildcard characters: False
 
 ### -ScheduleMinute
 
-
 ```yaml
 Type: System.Int32[]
 Parameter Sets: (All)
@@ -225,7 +215,6 @@ Accept wildcard characters: False
 ```
 
 ### -ScheduleMonthDay
-
 
 ```yaml
 Type: System.Int32[]
@@ -243,7 +232,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for SCHEDULEMONTHLYOCCURRENCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20211001Preview.IRecurrenceScheduleOccurrence[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IRecurrenceScheduleOccurrence[]
 Parameter Sets: (All)
 Aliases:
 
@@ -256,9 +245,8 @@ Accept wildcard characters: False
 
 ### -ScheduleWeekDay
 
-
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.DaysOfWeek[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DaysOfWeek[]
 Parameter Sets: (All)
 Aliases:
 
@@ -276,7 +264,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20211001Preview.Trigger
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.Trigger
 
 ## NOTES
 
@@ -297,4 +285,3 @@ SCHEDULEMONTHLYOCCURRENCE <IRecurrenceScheduleOccurrence[]>:
   - `[Occurrence <Int32?>]`: 
 
 ## RELATED LINKS
-

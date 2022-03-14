@@ -37,7 +37,7 @@ This command creates a new sync group within a specified storage sync service. A
 
 ### Example 1
 ```powershell
-PS C:\> New-AzStorageSyncGroup -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -Name "mySyncGroupName"
+New-AzStorageSyncGroup -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -Name "mySyncGroupName"
 ```
 
 This command creates a new sync group within a specified storage sync service.

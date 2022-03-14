@@ -36,8 +36,10 @@ The Set-AzSecuritySetting cmdlet updates a specific security setting in Azure Se
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzSecuritySetting -SettingName "MCAS" -SettingKind "DataExportSettings" -Enabled $true
+Set-AzSecuritySetting -SettingName "MCAS" -SettingKind "DataExportSettings" -Enabled $true
+```
 
+```output
 Id: "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/settings/MCAS"
 Name: "MCAS"
 Type: "Microsoft.Security/settings"
