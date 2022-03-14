@@ -1,18 +1,6 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete a Kubernetes Cluster Extension.
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Remove-AzKubernetesExtension -ClusterName azps_test_cluster -ClusterType ConnectedClusters -Name azps_test_extension -ResourceGroupName azps_test_group
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Delete a Kubernetes Cluster Extension.

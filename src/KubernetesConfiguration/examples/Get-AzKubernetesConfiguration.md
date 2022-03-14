@@ -1,18 +1,26 @@
-### Example 1: {{ Add title here }}
+### Example 1: List details of the Source Control Configuration.
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Get-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azps_test_cluster -ClusterType ConnectedClusters
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+```output
+Name          Type
+----          ----
+azpstestk8s01 Microsoft.KubernetesConfiguration/sourceControlConfigurations
+azpstestk8s02 Microsoft.KubernetesConfiguration/sourceControlConfigurations
 ```
 
-{{ Add description here }}
+List details of the Source Control Configuration.
 
+### Example 2: Gets details of the Source Control Configuration.
+```powershell
+Get-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azps_test_cluster -ClusterType ConnectedClusters -Name azpstestk8s01
+```
+
+```output
+Name          Type
+----          ----
+azpstestk8s01 Microsoft.KubernetesConfiguration/sourceControlConfigurations
+```
+
+Gets details of the Source Control Configuration.

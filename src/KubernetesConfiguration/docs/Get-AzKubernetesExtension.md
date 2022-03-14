@@ -35,23 +35,31 @@ Gets Kubernetes Cluster Extension.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Gets Kubernetes Cluster Extension.
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Get-AzKubernetesExtension -ClusterName azps_test_cluster -ClusterType ConnectedClusters -Name azps_test_extension -ResourceGroupName azps_test_group
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+```output
+Name                ExtensionType             Version      ProvisioningState AutoUpgradeMinorVersion ReleaseTrain ResourceGroupName
+----                -------------             -------      ----------------- ----------------------- ------------ -----------------
+azps_test_extension microsoft.arcdataservices 1.0.16701001 Succeeded         True                    Stable       azps_test_group
 ```
 
-{{ Add description here }}
+Gets Kubernetes Cluster Extension.
+
+### Example 2: List Kubernetes Cluster Extension.
+```powershell
+Get-AzKubernetesExtension -ClusterName azps_test_cluster -ClusterType ConnectedClusters -ResourceGroupName azps_test_group
+```
+
+```output
+Name                ExtensionType             Version      ProvisioningState AutoUpgradeMinorVersion ReleaseTrain ResourceGroupName
+----                -------------             -------      ----------------- ----------------------- ------------ -----------------
+azps_test_extension microsoft.arcdataservices 1.0.16701001 Succeeded         True                    Stable       azps_test_group
+```
+
+List Kubernetes Cluster Extension.
 
 ## PARAMETERS
 

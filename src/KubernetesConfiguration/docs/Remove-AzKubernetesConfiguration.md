@@ -30,23 +30,20 @@ This will delete the YAML file used to set up the Source control configuration, 
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a configuation of kubernetes cluster by name
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Remove-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azps_test_cluster -Name  azpstestk8s01 -ClusterType ConnectedClusters
 ```
 
-{{ Add description here }}
+This command removes a configuation of kubernetes cluster by name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove a configuation of kubernetes cluster by object
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+$kubConf = Get-AzKubernetesConfiguration -ClusterName azps_test_cluster -ClusterType ConnectedClusters -ResourceGroupName azps_test_group -Name azpstestk8s02
+Remove-AzKubernetesConfiguration -InputObject $kubConf
 ```
 
-{{ Add description here }}
+This command removes a configuation of kubernetes cluster by object.
 
 ## PARAMETERS
 

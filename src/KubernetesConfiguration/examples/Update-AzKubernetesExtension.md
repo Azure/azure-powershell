@@ -1,18 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update an existing Kubernetes Cluster Extension.
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Update-AzKubernetesExtension -ClusterName azps_test_cluster -ClusterType ConnectedClusters -Name azps_test_extension -ResourceGroupName azps_test_group -ConfigurationProtectedSetting @{"aa"="bb"}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+```output
+Name                ExtensionType             Version      ProvisioningState AutoUpgradeMinorVersion ReleaseTrain ResourceGroupName
+----                -------------             -------      ----------------- ----------------------- ------------ -----------------
+azps_test_extension microsoft.arcdataservices 1.0.16701001 Succeeded         True                    Stable       azps_test_group
 ```
 
-{{ Add description here }}
-
+Update an existing Kubernetes Cluster Extension.
