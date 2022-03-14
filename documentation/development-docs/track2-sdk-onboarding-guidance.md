@@ -1,17 +1,16 @@
-Create new management client using track 2 APIs 
+# Track 2 SDK Onboarding Guidance
+This guildance is used to help Azure Service Team to switch from track 1 SDK to track 2 SDK. Full content takes the implementation of Az.KeyVault as example to demonstrate the details of onboarding track 2 SDK. Generally, onborading track 2 SDK includes steps below: 
 
-Change the cmdlet implementation according to client APIs. 
+- [Track 2 Management Client Creation](#track-2-management-client-creation) 
+- [Cmdlet Implementation by Track 2 SDK](#cmdlet-implementation-by-track-2-sdk)
+- [Updating Wrapped SDK Types between PowerShell Model and Track 2 SDK Model](#updating-wrapped-sdk-types-between-powerShell-model-and-track-2-sdk-model)
+- [Breaking change detection](#breaking-change-detection)
+- [Test Recording](#test-recoding)
 
-Add or update the conversion between PowerShell model and track 2 SDK model. 
-
-Check whether breaking change will be introduced. 
-
-Re-record test case. 
-
-Create new management client using track 2 APIs  
-
+## Track 2 Management Client Creation
+Firstly, we need to switch track 1 management client to track 2 management client.
 Before: 
-
+```c#
     public class VaultManagementClient 
 
     { 
@@ -35,9 +34,9 @@ Before:
         } 
 
     } 
-
+```
 After: 
-
+```c#
     internal class Track2KeyVaultManagementClient 
 
     { 
@@ -63,8 +62,9 @@ After:
         } 
 
 } 
+```
 
-Change the cmdlet implementation according to client APIs 
+## Cmdlet Implementation by Track 2 SDK
 
 Take the management plane of KeyVault as example, 12 cmdlets will be affected: 
 
@@ -79,7 +79,7 @@ Add/Update/Remove-AzKeyVaultAccessPolicy
 Their implementations should be adapted according to the track 2 SDK APIs. Taking the implementation of getting specific key vault as example: 
 
 Before: 
-
+```c#
     public class VaultManagementClient 
 
     { 
@@ -131,9 +131,9 @@ public PSKeyVault GetVault(string vaultName, string resourceGroupName, IMicrosof
         } 
 
 } 
-
+```
 After: 
-
+```c#
     internal class Track2KeyVaultManagementClient 
 
     { 
@@ -147,13 +147,13 @@ After:
             _armClient.GetVault(Vault.CreateResourceIdentifier(_subscription, resourcegroup, vaultName)); 
 
 } 
+```
+## Updating Wrapped SDK Types between PowerShell Model and Track 2 SDK Model
 
-Add or update conversion between PS model and track 2 SDK model 
-
-Azure PowerShell team recommends wrapping SDK models with PS models to avoid breaking change. S PS model should adapt track 2 SDK. Take PSKeyVault, the output of cmdlet Get-AzKeyVault, as example, the following code demonstrates how we wrap a SDK model with a PS model: 
+Azure PowerShell team recommends wrapping SDK models with PS models to avoid breaking change. So PS model should adapt track 2 SDK. Take PSKeyVault, the output of cmdlet Get-AzKeyVault, as instance, the following code demonstrates how we wrap a SDK model with a PS model: 
 
 Before: 
-
+```c#
         public PSKeyVault(Vault vault, IMicrosoftGraphClient graphClient) 
 
         { 
@@ -199,9 +199,9 @@ Before:
             OriginalVault = vault; 
 
         } 
-
+```
 After: 
-
+```c#
         public PSKeyVault(Track2ManagementSdk.Vault vault, IMicrosoftGraphClient graphClient) 
 
         { 
@@ -257,13 +257,13 @@ After:
             OriginalVault = vault; 
 
         } 
+```
+## Breaking change detection
 
-Check whether breaking change will be introduced 
-
-To check whether breaking change will be introduced. Service teams need to pay attention to the following points: 
+To detect whether breaking change will be introduced. Service teams need to pay attention to the following points: 
 
 If API version used by track 1 and track 2 SDK are same, check SDK object whether was exposed directly as cmdlet input and output. In this case, breaking change warning message should be pre-announced in advance. For instance, PSKeyVault contains a property called OriginalVault. It is from track 1 SDK. It should be replaced with track 2 model or be removed. A breaking change message should be added for this. 
-
+```c#
     [CmdletOutputBreakingChange(typeof(PSKeyVault), ChangeDescription = "The type of property OriginalVault is changing from Microsoft.Azure.Management.KeyVault.Models.Vault to Azure.ResourceManager.KeyVault.Vault")] 
 
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KeyVault", DefaultParameterSetName = GetVaultParameterSet)] 
@@ -273,9 +273,9 @@ If API version used by track 1 and track 2 SDK are same, check SDK object whethe
     public class GetAzureKeyVault : KeyVaultManagementCmdletBase 
 
     {…} 
-
+```
 If API version used by track 1 and track 2 SDK are different, check the swagger definition to see if there is any property in returned model removed, or any parameter changes to required or removes. In this case, please see breaking change guideline: https://eng.ms/docs/cloud-ai-platform/azure/azure-core-compute/control-plane-bburns/azure-cli-tools-azure-cli-powershell-and-terraform/azure-cli-tools/teams_docs/azps_docs/breakingchange_release_process 
 
-Re-record test case 
+## Test Recording
 
 Investigating 
