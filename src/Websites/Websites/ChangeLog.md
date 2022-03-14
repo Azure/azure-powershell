@@ -20,6 +20,25 @@
 ## Upcoming Release
 * Fixed `Set-AzWebApp`,`Set-AzWebAppSlot`, `Get-AzWebApp`, `Get-AzWebAppSlot` to expose HealthCheckPath property in SiteConfig [#16325]
 * Fixed DateTime conversion issue caused by culture [#17253]
+* Added support for the web job feature [#661]
+	* Get-AzWebAppContinuousWebJob
+	* Get-AzWebAppSlotContinuousWebJob
+	* Get-AzWebAppSlotTriggeredWebJob
+	* Get-AzWebAppSlotTriggeredWebJobHistory
+	* Get-AzWebAppSlotWebJob
+	* Get-AzWebAppTriggeredWebJob
+	* Get-AzWebAppTriggeredWebJobHistory
+	* Get-AzWebAppWebJob
+	* Remove-AzWebAppContinuousWebJob
+	* Remove-AzWebAppSlotContinuousWebJob
+	* Remove-AzWebAppSlotTriggeredWebJob
+	* Remove-AzWebAppTriggeredWebJob
+	* Start-AzWebAppContinuousWebJob
+	* Start-AzWebAppSlotContinuousWebJob
+	* Start-AzWebAppSlotTriggeredWebJob
+	* Start-AzWebAppTriggeredWebJob
+	* Stop-AzWebAppContinuousWebJob
+	* Stop-AzWebAppSlotContinuousWebJob
 
 ## Version 2.10.0
 * Updated `New-AzAppServicePlan`  to create an app service plan with host environment id #16094
