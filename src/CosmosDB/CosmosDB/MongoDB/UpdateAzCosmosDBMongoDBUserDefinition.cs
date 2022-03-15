@@ -80,6 +80,8 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         public override void ExecuteCmdlet()
         {
+            IList<Role> roles = null;
+
             if (ParameterSetName.Equals(ParentObjectParameterSet, StringComparison.Ordinal))
             {
                 ResourceIdentifier resourceIdentifier = new ResourceIdentifier(ParentObject.Id);
@@ -88,6 +90,14 @@ namespace Microsoft.Azure.Commands.CosmosDB
             }
             else if (ParameterSetName.Equals(ObjectParameterSet))
             {
+                UserName = InputObject.UserName;
+                Password = InputObject.Password;
+                Id = InputObject.Id;
+                Mechanisms = InputObject.Mechanisms;
+                DatabaseName = InputObject.DatabaseName;
+                CustomData = InputObject.CustomData;
+                roles = new List<Role>(InputObject.Roles);
+
                 ResourceIdentifier resourceIdentifier = new ResourceIdentifier(InputObject.Id);
                 ResourceGroupName = resourceIdentifier.ResourceGroupName;
                 AccountName = resourceIdentifier.GetDatabaseAccountName();
@@ -112,7 +122,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 }
             }
 
-            IList<Role> roles = Roles != null ? Roles.Select(role => PSMongoRole.ToSDKModel(role)).ToList() : mongoUserDefinitionGetResults.Roles;
+            roles = Roles != null ? Roles.Select(role => PSMongoRole.ToSDKModel(role)).ToList() : mongoUserDefinitionGetResults.Roles;
 
             MongoUserDefinitionCreateUpdateParameters mongoUserDefinitionCreateUpdateParameters = new MongoUserDefinitionCreateUpdateParameters(
                 userName: UserName ?? mongoUserDefinitionGetResults.UserName,

@@ -76,6 +76,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         public override void ExecuteCmdlet()
         {
+            IList<Privilege> privileges = null;
+            IList<Role> roles = null;
+
             if (ParameterSetName.Equals(ParentObjectParameterSet, StringComparison.Ordinal))
             {
                 ResourceIdentifier resourceIdentifier = new ResourceIdentifier(ParentObject.Id);
@@ -84,6 +87,13 @@ namespace Microsoft.Azure.Commands.CosmosDB
             }
             else if (ParameterSetName.Equals(ObjectParameterSet))
             {
+                RoleName = InputObject.RoleName;
+                Type = InputObject.Type;
+                Id = InputObject.Id;
+                DatabaseName = InputObject.DatabaseName;
+                privileges = new List<Privilege>(InputObject.Privileges);
+                roles = new List<Role>(InputObject.Roles);
+
                 ResourceIdentifier resourceIdentifier = new ResourceIdentifier(InputObject.Id);
                 ResourceGroupName = resourceIdentifier.ResourceGroupName;
                 AccountName = resourceIdentifier.GetDatabaseAccountName();
@@ -108,11 +118,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 }
             }
 
-            IList<Privilege> privileges = Privileges != null ?
+            privileges = Privileges != null ?
                 Privileges.Select(privilege => PSMongoPrivilege.ToSDKModel(privilege)).ToList() :
                 mongoRoleDefinitionGetResults.Privileges;
 
-            IList<Role> roles = Roles != null ? Roles.Select(role => PSMongoRole.ToSDKModel(role)).ToList() : mongoRoleDefinitionGetResults.Roles;
+            roles = Roles != null ? Roles.Select(role => PSMongoRole.ToSDKModel(role)).ToList() : mongoRoleDefinitionGetResults.Roles;
 
             MongoRoleDefinitionCreateUpdateParameters mongoRoleDefinitionCreateUpdateParameters = new MongoRoleDefinitionCreateUpdateParameters(
                 roleName: RoleName ?? mongoRoleDefinitionGetResults.RoleName,

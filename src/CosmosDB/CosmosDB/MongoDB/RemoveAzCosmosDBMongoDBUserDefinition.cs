@@ -44,6 +44,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.AccountObjectHelpMessage)]
         public PSDatabaseAccountGetResults ParentObject { get; set; }
 
+        [ValidateNotNullOrEmpty]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.MongoDBUserDefinitionHelpMessage)]
+        public PSMongoDBUserDefinitionGetResults InputObject { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = Constants.PassThruHelpMessage)]
         public SwitchParameter PassThru { get; set; }
 
@@ -54,6 +58,13 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 ResourceIdentifier resourceIdentifier = new ResourceIdentifier(ParentObject.Id);
                 AccountName = resourceIdentifier.ResourceName;
                 ResourceGroupName = resourceIdentifier.ResourceGroupName;
+            }
+            else if (ParameterSetName.Equals(ObjectParameterSet, StringComparison.Ordinal))
+            {
+                Id = InputObject.Id;
+                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(InputObject.Id);
+                ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                AccountName = resourceIdentifier.GetDatabaseAccountName();
             }
 
             if (ShouldProcess(Id, "Deleting CosmosDB MongoDB User Definition"))
