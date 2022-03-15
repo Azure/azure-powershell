@@ -298,7 +298,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// Gets or sets the tags associated with the Azure Sql Database
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The tags to associate with the Azure Sql Database Server")]
+            HelpMessage = "The tags to associate with the Azure Sql Database")]
         [Alias("Tag")]
         public Hashtable Tags { get; set; }
 
