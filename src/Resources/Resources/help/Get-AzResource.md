@@ -42,9 +42,10 @@ The **Get-AzResource** cmdlet gets Azure resources.
 
 ### Example 1: Get all resources in the current subscription
 
+```powershell
+Get-AzResource | ft
 ```
-PS C:\> Get-AzResource | ft
-
+```output
 Name    ResourceGroupName  ResourceType                            Location
 ----    -----------------  ------------                            --------
 testVM  testRG             Microsoft.Compute/virtualMachines       westus
@@ -62,9 +63,10 @@ This command gets all of the resources in the current subscription.
 
 ### Example 2: Get all resources in a resource group
 
+```powershell
+Get-AzResource -ResourceGroupName testRG | ft
 ```
-PS C:\> Get-AzResource -ResourceGroupName testRG | ft
-
+```output
 Name   ResourceGroupName ResourceType                            Location
 ----   ----------------- ------------                            --------
 testVM testRG            Microsoft.Compute/virtualMachines       westus
@@ -79,9 +81,10 @@ This command gets all of the resources in the resource group "testRG".
 
 ### Example 3: Get all resources whose resource group matches the provided wildcard
 
+```powershell
+Get-AzResource -ResourceGroupName other* | ft
 ```
-PS C:\> Get-AzResource -ResourceGroupName other* | ft
-
+```output
 Name    ResourceGroupName  ResourceType                      Location
 ----    -----------------  ------------                      --------
 testKV  otherRG            Microsoft.KeyVault/vaults         eastus
@@ -93,9 +96,10 @@ This command gets all of the resources whose resource group they belong in being
 
 ### Example 4: Get all resources with a given name
 
+```powershell
+Get-AzResource -Name testVM | fl
 ```
-PS C:\> Get-AzResource -Name testVM | fl
-
+```output
 Name              : testVM
 ResourceGroupName : testRG
 ResourceType      : Microsoft.Compute/virtualMachines
@@ -113,9 +117,10 @@ This command gets all of the resources whose resource name is "testVM".
 
 ### Example 5: Get all resources whose name matches the provided wildcard
 
+```powershell
+Get-AzResource -Name test* | ft
 ```
-PS C:\> Get-AzResource -Name test* | ft
-
+```output
 Name    ResourceGroupName  ResourceType                      Location
 ----    -----------------  ------------                      --------
 testVM  testRG             Microsoft.Compute/virtualMachines westus
@@ -127,9 +132,10 @@ This command gets all of the resources whose resource name begins with "test".
 
 ### Example 6: Get all resources of a given resource type
 
+```powershell
+Get-AzResource -ResourceType Microsoft.Compute/virtualMachines | ft
 ```
-PS C:\> Get-AzResource -ResourceType Microsoft.Compute/virtualMachines | ft
-
+```output
 Name    ResourceGroupName  ResourceType                      Location
 ----    -----------------  ------------                      --------
 testVM  testRG             Microsoft.Compute/virtualMachines westus
@@ -140,9 +146,10 @@ This command gets all of the resources in the current subscriptions that are vir
 
 ### Example 7: Get a resource by resource id
 
+```powershell
+Get-AzResource -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM
 ```
-PS C:\> Get-AzResource -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM
-
+```output
 Name              : testVM
 ResourceGroupName : testRG
 ResourceType      : Microsoft.Compute/virtualMachines

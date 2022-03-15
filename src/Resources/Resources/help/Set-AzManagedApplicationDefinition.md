@@ -34,7 +34,7 @@ The **Set-AzManagedApplicationDefinition** cmdlet updates managed application de
 
 ### Example 1: Update managed application definition description
 ```powershell
-PS C:\>Set-AzManagedApplicationDefinition -ResourceId "/subscriptions/mySubId/resourcegroups/myRG/Microsoft.Solutions/applicationDefinitions/myAppDef" -Description "Updated description here"
+Set-AzManagedApplicationDefinition -ResourceId "/subscriptions/mySubId/resourcegroups/myRG/Microsoft.Solutions/applicationDefinitions/myAppDef" -Description "Updated description here"
 ```
 
 This command updates the managed application definition description
