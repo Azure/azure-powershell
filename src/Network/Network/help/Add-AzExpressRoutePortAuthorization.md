@@ -13,7 +13,7 @@ Adds an ExpressRoutePort authorization.
 ## SYNTAX
 
 ```
-Add-AzExpressRoutePortAuthorization -Name <String> -ExpressRoutePort <PSExpressRoutePort>
+Add-AzExpressRoutePortAuthorization -Name <String> -ExpressRoutePort <PSExpressRoutePort> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -27,10 +27,6 @@ adds a new authorization to a ExpressRoutePort and, at the same time, generates 
 authorization key. These keys can be viewed at any time by running the
 **Get-AzExpressRoutePortAuthorization** cmdlet and, as needed, can then be copied and forwarded
 to the appropriate circuit owner.
-Note that, after running **Add-AzExpressRoutePortAuthorization**, you must call the
-**Set-AzExpressRoutePort** cmdlet to activate the key. If you do not call
-**Set-AzExpressRoutePort** the authorization will be added to the ExpressRoutePort but will not be
-enabled for use.
 
 ## EXAMPLES
 
@@ -38,18 +34,30 @@ enabled for use.
 ```powershell
 $ERPort = Get-AzExpressRoutePort -Name "ContosoPort" -ResourceGroupName "ContosoResourceGroup"
 Add-AzExpressRoutePortAuthorization -Name "ContosoPortAuthorization" -ExpressRoutePort $ERPort
-Set-AzExpressRoutePort -ExpressRoutePort $ERPort
 ```
 
 The commands in this example add a new authorization to an existing ExpressRoutePort. The first
 command uses **Get-AzExpressRoutePort** to create an object reference to a ExpressRoutePort named
 ContosoPort. That object reference is stored in a variable named $ERPort.
 In the second command, the **Add-AzExpressRoutePortAuthorization** cmdlet is used to add a
-new authorization (ContosoPortAuthorization) to the ExpressRoutePort. This command adds the
-authorization but does not activate that authorization. Activating an authorization requires the
-**Set-AzExpressRoutePort** shown in the final command in the example.
+new authorization (ContosoPortAuthorization) to the ExpressRoutePort.
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -105,7 +113,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSExpressRoutePort
+### Microsoft.Azure.Commands.Network.Models.PSExpressRoutePortAuthorization
 
 ## NOTES
 

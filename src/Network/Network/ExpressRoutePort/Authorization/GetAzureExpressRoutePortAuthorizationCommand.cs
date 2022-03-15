@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Network.Models;
+using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 
@@ -38,20 +39,21 @@ namespace Microsoft.Azure.Commands.Network
             base.Execute();
             if (!string.IsNullOrEmpty(this.Name))
             {
-                var authorization =
-                    this.ExpressRoutePort.Authorizations.First(
-                        resource =>
-                        string.Equals(
-                            resource.Name,
-                            this.Name,
-                            System.StringComparison.CurrentCultureIgnoreCase));
-
-                WriteObject(authorization);
+                var getExpressRoutePortAuthorization = this.NetworkClient.NetworkManagementClient.ExpressRoutePortAuthorizations.GetWithHttpMessagesAsync(this.ExpressRoutePort.ResourceGroupName, this.ExpressRoutePort.Name, this.Name).GetAwaiter().GetResult().Body;
+                var psExpressRoutePortAuthorization = NetworkResourceManagerProfile.Mapper.Map<PSExpressRoutePortAuthorization>(getExpressRoutePortAuthorization);
+                WriteObject(psExpressRoutePortAuthorization);
             }
             else
             {
-                var authorizations = this.ExpressRoutePort.Authorizations;
-                WriteObject(authorizations, true);
+
+                var listExpressRoutePortAuthorizations = this.NetworkClient.NetworkManagementClient.ExpressRoutePortAuthorizations.ListWithHttpMessagesAsync(this.ExpressRoutePort.ResourceGroupName, this.ExpressRoutePort.Name).GetAwaiter().GetResult().Body;
+                var psExpressRoutePortAuthorizations = new List<PSExpressRoutePortAuthorization>();
+                if (listExpressRoutePortAuthorizations != null)
+                {
+                    psExpressRoutePortAuthorizations = NetworkResourceManagerProfile.Mapper.Map<List<PSExpressRoutePortAuthorization>>(listExpressRoutePortAuthorizations);
+                }
+
+                WriteObject(psExpressRoutePortAuthorizations, true);
             }
         }
     }

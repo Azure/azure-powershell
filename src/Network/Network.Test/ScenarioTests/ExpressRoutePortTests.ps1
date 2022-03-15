@@ -249,31 +249,36 @@ function Test-ExpressRoutePortAuthorizationCRUD
     {
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation
 
-        # Create the ExpressRoutePort with authorization
-        $authorization = New-AzExpressRoutePortAuthorization -Name $authorizationName
-        $expressRoutePort = New-AzExpressRoutePort -ResourceGroupName $rgname -Name $rname -Location $location -PeeringLocation $peeringLocation -Encapsulation $encapsulation -BandwidthInGbps $bandwidthInGbps -Authorization $authorization
+        # Create the ExpressRoutePort
+        $expressRoutePort = New-AzExpressRoutePort -ResourceGroupName $rgname -Name $rname -Location $location -PeeringLocation $peeringLocation -Encapsulation $encapsulation -BandwidthInGbps $bandwidthInGbps
 
         #verification
         Assert-NotNull $expressRoutePort
-        Assert-NotNull $expressRoutePort.Authorizations
-        Assert-True { $expressRoutePort.Authorizations.Count -eq 1 }
         Assert-AreEqual $rname $expressRoutePort.Name
 
-        # Verify the authorization
-        Assert-AreEqual $authorizationName $expressRoutePort.Authorizations[0].Name
-
-        # get authorization
-        $a = $expressRoutePort | Get-AzExpressRoutePortAuthorization -Name $authorizationName
-        Assert-AreEqual $authorizationName $a.Name
-
         # add a new authorization
-        $expressRoutePort = Get-AzExpressRoutePort -ResourceGroupName $rgname -Name $rname | Add-AzExpressRoutePortAuthorization -Name "testkey2" | Set-AzExpressRoutePort
+        Get-AzExpressRoutePort -ResourceGroupName $rgname -Name $rname | Add-AzExpressRoutePortAuthorization -Name "testkey1"
+
+        # get the authorization
+        $a = $expressRoutePort | Get-AzExpressRoutePortAuthorization -Name "testkey1"
+        Assert-AreEqual "testkey1" $a.Name
+
+        # add another new authorization
+        Get-AzExpressRoutePort -ResourceGroupName $rgname -Name $rname | Add-AzExpressRoutePortAuthorization -Name "testkey2"
 
         $a = $expressRoutePort | Get-AzExpressRoutePortAuthorization -Name "testkey2"
         Assert-AreEqual "testkey2" $a.Name
 
+        # list authorizations
         $listAuthorization = $expressRoutePort | Get-AzExpressRoutePortAuthorization
         Assert-AreEqual 2 @($listAuthorization).Count
+
+        # delete an authorization
+        Get-AzExpressRoutePort -ResourceGroupName $rgname -Name $rname | Remove-AzExpressRoutePortAuthorization -Name "testkey1"
+
+        # list authorizations again
+        $listAuthorization = $expressRoutePort | Get-AzExpressRoutePortAuthorization
+        Assert-AreEqual 1 @($listAuthorization).Count
 
         # Delete ExpressRoutePort
         $removeExpressRoutePort = Remove-AzExpressRoutePort -ResourceGroupName $rgname -Name $rname -PassThru -Force

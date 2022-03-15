@@ -10,7 +10,6 @@ schema: 2.0.0
 ## SYNOPSIS
 Gets information about ExpressRoutePort authorizations.
 
-
 ## SYNTAX
 
 ```

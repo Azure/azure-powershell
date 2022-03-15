@@ -16,10 +16,12 @@ using Microsoft.Azure.Commands.Network.Models;
 using System;
 using System.Linq;
 using System.Management.Automation;
+using System.Net;
+using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRoutePortAuthorization"), OutputType(typeof(PSExpressRoutePort))]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRoutePortAuthorization"), OutputType(typeof(PSExpressRoutePortAuthorization))]
     public class AddAzureExpressRoutePortAuthorizationCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -34,22 +36,43 @@ namespace Microsoft.Azure.Commands.Network
            HelpMessage = "The ExpressRoutePort")]
         public PSExpressRoutePort ExpressRoutePort { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         public override void Execute()
         {
             base.Execute();
-            var authorization = this.ExpressRoutePort.Authorizations.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+            var present = true;
 
-            if (authorization != null)
+            try
+            {
+                this.NetworkClient.NetworkManagementClient.ExpressRoutePortAuthorizations.GetWithHttpMessagesAsync(this.ExpressRoutePort.ResourceGroupName, this.ExpressRoutePort.Name, this.Name).GetAwaiter().GetResult();
+            }
+            catch (Microsoft.Rest.Azure.CloudException exception)
+            {
+                if (exception.Response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    // Resource is not present
+                    present = false;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            if (present)
             {
                 throw new ArgumentException("Authorization with the specified name already exists");
             }
 
-            authorization = new PSExpressRoutePortAuthorization();
+            var authorizationParameters = new MNM.ExpressRoutePortAuthorization();
+            authorizationParameters.Name = this.Name;
 
-            authorization.Name = this.Name;
-            this.ExpressRoutePort.Authorizations.Add(authorization);
-
-            WriteObject(this.ExpressRoutePort);
+            // Execute the PUT ExpressRoutePortAuthorizations call
+            var putExpressRoutePortAuthorization = this.NetworkClient.NetworkManagementClient.ExpressRoutePortAuthorizations.CreateOrUpdateWithHttpMessagesAsync(this.ExpressRoutePort.ResourceGroupName, this.ExpressRoutePort.Name, this.Name, authorizationParameters).GetAwaiter().GetResult().Body;
+            var psExpressRoutePortAuthorization = NetworkResourceManagerProfile.Mapper.Map<PSExpressRoutePortAuthorization>(putExpressRoutePortAuthorization);
+            WriteObject(psExpressRoutePortAuthorization, true);
         }
     }
 }

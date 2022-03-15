@@ -3288,10 +3288,6 @@
                 <Label>Circuits</Label>
                 <PropertyName>CircuitsText</PropertyName>
               </ListItem>
-              <ListItem>
-                <Label>Authorizations</Label>
-                <PropertyName>AuthorizationsText</PropertyName>
-              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>

@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRoutePortAuthorization"), OutputType(typeof(PSExpressRoutePort))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRoutePortAuthorization"), OutputType(typeof(bool))]
     public class RemoveAzureExpressRoutePortAuthorizationCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -34,17 +34,20 @@ namespace Microsoft.Azure.Commands.Network
              HelpMessage = "The ExpressRoutePort")]
         public PSExpressRoutePort ExpressRoutePort { get; set; }
 
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         public override void Execute()
         {
             base.Execute();
-            var authorization = this.ExpressRoutePort.Authorizations.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
-
-            if (authorization != null)
+            this.NetworkClient.NetworkManagementClient.ExpressRoutePortAuthorizations.DeleteWithHttpMessagesAsync(this.ExpressRoutePort.ResourceGroupName, this.ExpressRoutePort.Name, this.Name).GetAwaiter().GetResult();
+            if (PassThru)
             {
-                this.ExpressRoutePort.Authorizations.Remove(authorization);
+                WriteObject(true);
             }
-
-            WriteObject(this.ExpressRoutePort);
         }
     }
 }

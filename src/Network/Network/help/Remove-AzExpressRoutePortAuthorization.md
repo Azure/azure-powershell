@@ -13,13 +13,12 @@ Removes an existing ExpressRoutePort authorization.
 ## SYNTAX
 
 ```
-Remove-AzExpressRoutePortAuthorization -Name <String> -ExpressRoutePort <PSExpressRoutePort>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Remove-AzExpressRoutePortAuthorization -Name <String> -ExpressRoutePort <PSExpressRoutePort> [-PassThru]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzExpressRoutePortAuthorization** cmdlet removes an authorization assigned to
-an ExpressRoutePort.
+The **Remove-AzExpressRoutePortAuthorization** cmdlet removes an authorization assigned to an ExpressRoutePort.
 
 ## EXAMPLES
 
@@ -27,17 +26,30 @@ an ExpressRoutePort.
 ```powershell
 $ERPort = Get-AzExpressRoutePort -Name "ContosoPort" -ResourceGroupName "ContosoResourceGroup"
 Remove-AzExpressRoutePortAuthorization -Name "ContosoPortAuthorization" -ExpressRoutePort $ERPort
-Set-AzExpressRoutePort -ExpressRoutePort $ERPort
 ```
 
 This example removes an authorization from an ExpressRoutePort. The first command uses
 the **Get-AzExpressRoutePort** cmdlet to create an object reference to an ExpressRoutePort
 named ContosoPort and stores the result in the variable named $ERPort.
-The second command marks the ExpressRoutePort authorization ContosoPortAuthorization for removal.
-The third command uses the **Set-AzExpressRoutePort** cmdlet to confirm the removal of the 
-authorization stored in the $ERPort variable.
+The second command removes the ExpressRoutePort authorization ContosoPortAuthorization from
+the ContosoPort.
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -84,6 +96,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PassThru
+Returns an object representing the item with which you are working. By default, this cmdlet does not generate any output.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -93,7 +120,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSExpressRoutePort
+### System.Boolean
 
 ## NOTES
 
