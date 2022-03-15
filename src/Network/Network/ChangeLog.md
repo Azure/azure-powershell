@@ -18,6 +18,10 @@
         - Additional information about change #1
 --->
 
+## Next Release
+* Added support for retreiving the State of Packet Capture even when the Provisioning State of the Packet Capture was Failure.
+    - `Get-AzNetworkWatcherPacketCapture`
+
 ## Upcoming Release
 * Added support for accepting Vnet, Subnet and NIC resources as the TargetResourceId for the following cdmlets
     - `Set-AzNetworkWatcherFlowLog`
