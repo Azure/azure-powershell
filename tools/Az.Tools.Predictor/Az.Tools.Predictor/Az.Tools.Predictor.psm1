@@ -35,7 +35,7 @@ elseif ($psReadlineModule -eq $null) {
     }
     catch {
         $shouldImportPredictor = $false
-        throw "This module requires PSReadLine version $minimumRequiredVersion. Please install PSReadLine $minimumRequiredVersion or highe. For more information, consult the Az.Tools.Predictor documentation: https://go.microsoft.com/fwlink/?linkid=2189739."
+        throw "This module requires PSReadLine version $minimumRequiredVersion. Please install PSReadLine $minimumRequiredVersion or higher. For more information, consult the Az.Tools.Predictor documentation: https://go.microsoft.com/fwlink/?linkid=2189739."
     }
 }
 
