@@ -70,7 +70,7 @@ function Test-ServerTrustCertificate
 		Assert-AreEqual	$newCert1.InstanceName $miName
 		Assert-AreEqual $newCert1.Id $certId1
 		Assert-AreEqual	$newCert1.Type $certType
-		Assert-AreEqual	$newCert1.CertificateName $certName1
+		Assert-AreEqual	$newCert1.Name $certName1
 		Assert-AreEqual	$newCert1.Thumbprint $thumbprint1
 		Assert-AreEqual $newCert1.PublicKey $certVal1
 
@@ -82,7 +82,7 @@ function Test-ServerTrustCertificate
 		Assert-AreEqual	$newCert2.InstanceName $miName
 		Assert-AreEqual $newCert2.Id $certId2
 		Assert-AreEqual	$newCert2.Type $certType
-		Assert-AreEqual	$newCert2.CertificateName $certName2
+		Assert-AreEqual	$newCert2.Name $certName2
 		Assert-AreEqual	$newCert2.Thumbprint $thumbprint2
 		Assert-AreEqual $newCert2.PublicKey $certVal2
 
@@ -100,7 +100,7 @@ function Test-ServerTrustCertificate
 		Assert-AreEqual	$getCert1ByNameParameterSet.InstanceName $miName
 		Assert-AreEqual $getCert1ByNameParameterSet.Id $certId1
 		Assert-AreEqual	$getCert1ByNameParameterSet.Type $certType
-		Assert-AreEqual	$getCert1ByNameParameterSet.CertificateName $certName1
+		Assert-AreEqual	$getCert1ByNameParameterSet.Name $certName1
 		Assert-AreEqual	$getCert1ByNameParameterSet.Thumbprint $thumbprint1
 		Assert-AreEqual $getCert1ByNameParameterSet.PublicKey $certVal1
 
@@ -112,7 +112,7 @@ function Test-ServerTrustCertificate
 		Assert-AreEqual	$getCert1ByParentObjectParameterSet.InstanceName $miName
 		Assert-AreEqual $getCert1ByParentObjectParameterSet.Id $certId1
 		Assert-AreEqual	$getCert1ByParentObjectParameterSet.Type $certType
-		Assert-AreEqual	$getCert1ByParentObjectParameterSet.CertificateName $certName1
+		Assert-AreEqual	$getCert1ByParentObjectParameterSet.Name $certName1
 		Assert-AreEqual	$getCert1ByParentObjectParameterSet.Thumbprint $thumbprint1
 		Assert-AreEqual $getCert1ByParentObjectParameterSet.PublicKey $certVal1
 
@@ -124,7 +124,7 @@ function Test-ServerTrustCertificate
 		Assert-AreEqual	$getCert1ByResourceIdParameterSet.InstanceName $miName
 		Assert-AreEqual $getCert1ByResourceIdParameterSet.Id $certId1
 		Assert-AreEqual	$getCert1ByResourceIdParameterSet.Type $certType
-		Assert-AreEqual	$getCert1ByResourceIdParameterSet.CertificateName $certName1
+		Assert-AreEqual	$getCert1ByResourceIdParameterSet.Name $certName1
 		Assert-AreEqual	$getCert1ByResourceIdParameterSet.Thumbprint $thumbprint1
 		Assert-AreEqual $getCert1ByResourceIdParameterSet.PublicKey $certVal1
 
@@ -136,7 +136,7 @@ function Test-ServerTrustCertificate
 		Assert-AreEqual	$getCert1ByInstanceResourceIdParameterSet.InstanceName $miName
 		Assert-AreEqual $getCert1ByInstanceResourceIdParameterSet.Id $certId1
 		Assert-AreEqual	$getCert1ByInstanceResourceIdParameterSet.Type $certType
-		Assert-AreEqual	$getCert1ByInstanceResourceIdParameterSet.CertificateName $certName1
+		Assert-AreEqual	$getCert1ByInstanceResourceIdParameterSet.Name $certName1
 		Assert-AreEqual	$getCert1ByInstanceResourceIdParameterSet.Thumbprint $thumbprint1
 		Assert-AreEqual $getCert1ByInstanceResourceIdParameterSet.PublicKey $certVal1
 
@@ -148,7 +148,7 @@ function Test-ServerTrustCertificate
 		Assert-AreEqual	$getCert2.InstanceName $miName
 		Assert-AreEqual $getCert2.Id $certId2
 		Assert-AreEqual	$getCert2.Type $certType
-		Assert-AreEqual	$getCert2.CertificateName $certName2
+		Assert-AreEqual	$getCert2.Name $certName2
 		Assert-AreEqual	$getCert2.Thumbprint $thumbprint2
 		Assert-AreEqual $getCert2.PublicKey $certVal2
 
@@ -159,14 +159,14 @@ function Test-ServerTrustCertificate
 		Assert-AreEqual	$listCerts.Count 2
 
 		# Delete certificate #1 via DeleteByNameParameterSet
-		$delCert1 = Remove-AzSqlInstanceServerTrustCertificate -ResourceGroupName $rgName -InstanceName $miName -CertificateName $certName1 -PassThru
+		$delCert1 = Remove-AzSqlInstanceServerTrustCertificate -ResourceGroupName $rgName -InstanceName $miName -Name $certName1 -PassThru
 		Write-Debug ('$delCert1 is ' + (ConvertTo-Json $delCert1))
 		Assert-NotNull $delCert1
 		Assert-AreEqual	$delCert1.ResourceGroupName $rgName
 		Assert-AreEqual	$delCert1.InstanceName $miName
 		Assert-AreEqual $delCert1.Id $certId1
 		Assert-AreEqual	$delCert1.Type $certType
-		Assert-AreEqual	$delCert1.CertificateName $certName1
+		Assert-AreEqual	$delCert1.Name $certName1
 		Assert-AreEqual	$delCert1.Thumbprint $thumbprint1
 		Assert-AreEqual $delCert1.PublicKey $certVal1
 
@@ -190,7 +190,7 @@ function Test-ServerTrustCertificate
 		Assert-AreEqual	$delCert2.InstanceName $miName
 		Assert-AreEqual $delCert2.Id $certId2
 		Assert-AreEqual	$delCert2.Type $certType
-		Assert-AreEqual	$delCert2.CertificateName $certName2
+		Assert-AreEqual	$delCert2.Name $certName2
 		Assert-AreEqual	$delCert2.Thumbprint $thumbprint2
 		Assert-AreEqual $delCert2.PublicKey $certVal2
 
@@ -247,7 +247,7 @@ function Test-ServerTrustCertificateErrHandling
 		$exc5 = "Certificate with name '" + $certName1 + "' already exists on Azure Sql Managed Instance '" + $miName + "'."
 		Assert-ThrowsContains { New-AzSqlInstanceServerTrustCertificate -ResourceGroupName $rgName -InstanceName $miName -CertificateName $certName1 -PublicKey $certVal3 } $exc5
         # Upsert Cert name empty
-		$exc6 = "Cannot validate argument on parameter 'CertificateName'. The argument is null or empty."
+		$exc6 = "Cannot validate argument on parameter 'Name'. The argument is null or empty."
 		Assert-ThrowsContains { New-AzSqlInstanceServerTrustCertificate -ResourceGroupName $rgName -InstanceName $miName -CertificateName "" -PublicKey $certVal1 } $exc6
 
 		# Delete certificate #1
