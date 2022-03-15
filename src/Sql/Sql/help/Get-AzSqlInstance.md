@@ -325,9 +325,7 @@ This command gets information about the instance named managedInstance1.
 ### Example 8: Get all instances assigned to a resource group with external administrator information
 ```powershell
 $val = Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -ExpandActiveDirectoryAdministrator
-```
 
-```output
 Location                 : westcentralus
 Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
 ResourceGroupName        : resourcegroup01
@@ -384,9 +382,7 @@ This command gets information about all instances assigned to the resource group
 ### Example 9: Get information about an instance with external administrator information
 ```powershell
 $val = Get-AzSqlInstance -Name "managedInstance1" -ResourceGroupName "ResourceGroup01" -ExpandActiveDirectoryAdministrator
-```
 
-```output
 Location                 : westcentralus
 Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
 ResourceGroupName        : resourcegroup01
