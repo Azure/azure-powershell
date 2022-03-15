@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNullOrEmpty]
         public PSSqlKeyWrapMetadata KeyWrapMetadata { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = Constants.IKeyEncryptionKeyResolver)]
+        [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = Constants.KeyEncryptionKeyResolver)]
         [ValidateNotNullOrEmpty]
         public IKeyEncryptionKeyResolver KeyEncryptionKeyResolver { get; set; }
 
@@ -86,15 +86,15 @@ namespace Microsoft.Azure.Commands.CosmosDB
             else
             {
                 throw new ArgumentException("KeyWrapMetadata cannot be null");
-            }            
-            
-            if (string.Equals(encryptionKeyWrapMetadata.Type, "AZURE_KEY_VAULT"))
-            {
-                if (KeyEncryptionKeyResolver != null)
-                {
-                    throw new ArgumentException("KeyEncryptionKeyResolver cannot be passed if IKeyEncryptionKeyResolver of type AZURE_KEY_VAULT is used. ");
-                }
+            }
 
+            if (!string.Equals(encryptionKeyWrapMetadata.Algorithm, "RSA-OAEP"))
+            {
+                throw new ArgumentException($"Invalid key wrap algorithm '{encryptionKeyWrapMetadata.Algorithm}' passed. Please refer to https://aka.ms/CosmosClientEncryption for more details.");
+            }
+
+            if (string.Equals(encryptionKeyWrapMetadata.Type, "AZURE_KEY_VAULT") && KeyEncryptionKeyResolver == null)
+            {
                 // get the token credential for key vault audience.
                 TokenCredential tokenCredential = new CosmosDBSessionCredential(DefaultContext, AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId);
 
@@ -131,6 +131,8 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (ShouldProcess(Name, "Creating a new CosmosDB Client Encryption Key"))
             {
+                // FIXME : This requires a backend fix since its not honoring If-None-Match header with a *. This is required to prevent a race which might result in 
+                // accidental replace of a key. This is a best effort approach to check for resource conflict.
                 ClientEncryptionKeyGetResults readClientEncryptionKeyGetResults = null;
                 try
                 {

@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNullOrEmpty]
         public PSSqlKeyWrapMetadata KeyWrapMetadata { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = Constants.IKeyEncryptionKeyResolver)]
+        [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = Constants.KeyEncryptionKeyResolver)]
         [ValidateNotNullOrEmpty]
         public IKeyEncryptionKeyResolver KeyEncryptionKeyResolver { get; set; }
 
@@ -117,18 +117,18 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             ClientEncryptionKeyResource clientEncryptionKeyResource = UpdateAzCosmosDbClientEncryptionKey.PopulateSqlClientEncryptionKeyResource(readClientEncryptionKeyGetResults.Resource);
 
+            if (!string.Equals(newEncryptionKeyWrapMetadata.Algorithm, "RSA-OAEP"))
+            {
+                throw new ArgumentException($"Invalid key wrap algorithm '{newEncryptionKeyWrapMetadata.Algorithm}' passed. Please refer to https://aka.ms/CosmosClientEncryption for more details.");
+            }
+
             byte[] rewrappedKey;
 
-            if (string.Equals(clientEncryptionKeyResource.KeyWrapMetadata.Type, "AZURE_KEY_VAULT"))
+            if (string.Equals(clientEncryptionKeyResource.KeyWrapMetadata.Type, "AZURE_KEY_VAULT") && KeyEncryptionKeyResolver == null)
             {
-                if (KeyEncryptionKeyResolver != null)
-                {
-                    throw new ArgumentException("KeyEncryptionKeyResolver cannot be passed if IKeyEncryptionKeyResolver of type AZURE_KEY_VAULT is used. ");
-                }
-
                 if (!string.Equals(newEncryptionKeyWrapMetadata.Type, "AZURE_KEY_VAULT"))
                 {
-                    throw new ArgumentException("IKeyEncryptionKeyResolver type cannot be changed during rewrap operations.");
+                    throw new ArgumentException("KeyEncryptionKeyResolver type cannot be changed during rewrap operations. Please refer to https://aka.ms/CosmosClientEncryption for more details.");
                 }
 
                 // get the token credential for key vault audience.
