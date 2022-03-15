@@ -10,14 +10,14 @@ Set-StrictMode -Version Latest
 
 if ($true -and ($PSEdition -eq 'Desktop'))
 {
-    throw "Windows PowerShell is not supported in Az. Please install PowerShell Core 7.2 or higher version."
+    throw "Windows PowerShell is not supported in Az. Please install PowerShell Core 7.2 or higher version. For more information, consult the Az.Tools.Predictor documentation: https://go.microsoft.com/fwlink/?linkid=2189739."
 }
 
 if ($true -and ($PSEdition -eq 'Core'))
 {
     if ($PSVersionTable.PSVersion -lt [Version]'7.2.0')
     {
-        throw "Current Az.Tools.Predictor version doesn't support PowerShell Core versions lower than 7.2.0. Please upgrade to PowerShell Core 7.2.0 or higher."
+        throw "Current Az.Tools.Predictor version doesn't support PowerShell Core versions lower than 7.2.0. Please upgrade to PowerShell Core 7.2.0 or higher. For more information, consult the Az.Tools.Predictor documentation: https://go.microsoft.com/fwlink/?linkid=2189739."
     }
 }
 
@@ -27,7 +27,7 @@ $shouldImportPredictor = $true
 
 if ($psReadlineModule -ne $null -and $psReadlineModule.Version -lt $minimumRequiredVersion) {
     $shouldImportPredictor = $false
-    throw "This module requires PSReadLine version $minimumRequiredVersion. An earlier version of PSReadLine is imported in the current PowerShell session. Please open a new session before importing this module."
+    throw "This module requires PSReadLine version $minimumRequiredVersion. An earlier version of PSReadLine is imported in the current PowerShell session. Please open a new session before importing this module. For more information, consult the Az.Tools.Predictor documentation: https://go.microsoft.com/fwlink/?linkid=2189739."
 }
 elseif ($psReadlineModule -eq $null) {
     try {
@@ -35,7 +35,7 @@ elseif ($psReadlineModule -eq $null) {
     }
     catch {
         $shouldImportPredictor = $false
-        throw "This module requires PSReadLine version $minimumRequiredVersion. Please install PSReadLine $minimumRequiredVersion or higher."
+        throw "This module requires PSReadLine version $minimumRequiredVersion. Please install PSReadLine $minimumRequiredVersion or highe. For more information, consult the Az.Tools.Predictor documentation: https://go.microsoft.com/fwlink/?linkid=2189739."
     }
 }
 
