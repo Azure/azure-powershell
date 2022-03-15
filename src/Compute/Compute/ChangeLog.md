@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Updated `Get-AzVm` to include GetVirtualMachineById parameter set
 * Improved description and examples for disk creation
 
 ## Version 4.24.1
