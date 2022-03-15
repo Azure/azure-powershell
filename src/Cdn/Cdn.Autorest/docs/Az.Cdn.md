@@ -171,6 +171,9 @@ Creates a new route with the specified route name under the specified subscripti
 ### [New-AzFrontDoorCdnRule](New-AzFrontDoorCdnRule.md)
 Creates a new delivery rule within the specified rule set.
 
+### [New-AzFrontDoorCdnRuleSet](New-AzFrontDoorCdnRuleSet.md)
+Creates a new rule set within the specified profile.
+
 ### [New-AzFrontDoorCdnSecret](New-AzFrontDoorCdnSecret.md)
 Creates a new Secret within the specified profile.
 

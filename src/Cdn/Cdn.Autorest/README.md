@@ -60,6 +60,11 @@ directive:
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      subject: ^(?!RuleSet).+$
+    remove: true
+  - where:
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      subject: ^RuleSet$
     remove: true
   # Remove the set-* cmdlet
   - where:
@@ -78,25 +83,23 @@ directive:
       subject: $1
 
   - where:
-      subject: Route
+      subject: Rule
     set:
-      subject-prefix: FrontDoorCdn
-      subject: Route
+      subject-prefix: FrontDoorCdn  
   - where:
       subject: RuleSet
     set:
       subject-prefix: FrontDoorCdn
-      subject: RuleSet  
-  - where:
-      subject: Rule
-    set:
-      subject-prefix: FrontDoorCdn
-      subject: Rule
   - where:
       subject: RuleSetResourceUsage
     set:
       subject-prefix: FrontDoorCdn
-      subject: RuleSetResourceUsage    
+    
+  - where:
+      subject: Route
+    set:
+      subject-prefix: FrontDoorCdn
+      subject: Route
   - where:
       subject: Secret
     set:
