@@ -23,16 +23,17 @@ The **Get-AzLocation** cmdlet gets all locations and the supported resource prov
 ## EXAMPLES
 
 ### Example 1: Get all locations and the supported resource providers
-```
-PS C:\>Get-AzLocation
+```powershell
+Get-AzLocation
 ```
 
 This command gets all locations and the supported resource providers for each location.
 
 ### Example 2: Get all locations supporting resource provider Microsoft.AppConfiguration
+```powershell
+Get-AzLocation | Where-Object {$_.Providers -contains "Microsoft.AppConfiguration"}
 ```
-PS C:\>Get-AzLocation | Where-Object {$_.Providers -contains "Microsoft.AppConfiguration"}
-
+```output
 Location    : eastasia
 DisplayName : East Asia
 Providers   : {Microsoft.Devices, Microsoft.Cache, Microsoft.AppConfiguration, microsoft.insights…}

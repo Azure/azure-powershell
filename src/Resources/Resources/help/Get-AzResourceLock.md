@@ -56,15 +56,15 @@ The **Get-AzResourceLock** cmdlet gets Azure resource locks.
 ## EXAMPLES
 
 ### Example 1: Get a lock
-```
-PS C:\>Get-AzResourceLock -LockName "ContosoSiteLock" -ResourceName "ContosoSite" -ResourceType "microsoft.web/sites" -ResourceGroupName "ResourceGroup11"
+```powershell
+Get-AzResourceLock -LockName "ContosoSiteLock" -ResourceName "ContosoSite" -ResourceType "microsoft.web/sites" -ResourceGroupName "ResourceGroup11"
 ```
 
 This command gets the resource lock named ContosoSiteLock.
 
 ### Example 2: Get locks at resource group level or higher
-```
-PS C:\> Get-AzResourceLock -ResourceGroupName "ResourceGroup11" -AtScope
+```powershell
+Get-AzResourceLock -ResourceGroupName "ResourceGroup11" -AtScope
 ```
 
 This command gets the resource locks on the resource group or the subscription.
