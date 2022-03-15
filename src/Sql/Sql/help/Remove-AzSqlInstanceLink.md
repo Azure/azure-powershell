@@ -217,7 +217,7 @@ Skip confirmation message for performing the action
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: AllowDataLoss
 
 Required: False
 Position: Named
