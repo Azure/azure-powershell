@@ -14,19 +14,19 @@ Returns information about Azure SQL Managed Instance Link.
 
 ### GetByNameParameterSet (Default)
 ```
-Get-AzSqlInstanceLink [-ResourceGroupName] <String> [-InstanceName] <String> [[-LinkName] <String>]
+Get-AzSqlInstanceLink [-ResourceGroupName] <String> [-InstanceName] <String> [[-Name] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByParentObjectParameterSet
 ```
-Get-AzSqlInstanceLink [[-LinkName] <String>] [-Instance] <AzureSqlManagedInstanceModel>
+Get-AzSqlInstanceLink [[-Name] <String>] [-InstanceObject] <AzureSqlManagedInstanceModel>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByInstanceResourceIdParameterSet
 ```
-Get-AzSqlInstanceLink [[-LinkName] <String>] [-InstanceResourceId] <String>
+Get-AzSqlInstanceLink [[-Name] <String>] [-InstanceResourceId] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -47,7 +47,7 @@ ResourceGroupName              : ResourceGroup01
 InstanceName                   : Instance01
 Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
 Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link01
-LinkName                       : Link01
+Name                           : Link01
 TargetDatabase                 : Link01DB
 SourceEndpoint                 : TCP://SERVER01:7022
 PrimaryAvailabilityGroupName   :
@@ -63,7 +63,7 @@ ResourceGroupName              : ResourceGroup01
 InstanceName                   : Instance01
 Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
 Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link02
-LinkName                       : Link02
+Name                           : Link02
 TargetDatabase                 : Link02DB
 SourceEndpoint                 : TCP://SERVER02:7022
 PrimaryAvailabilityGroupName   :
@@ -80,12 +80,12 @@ This command gets information about all Managed Instance Links on instance  Inst
 
 ### Example 2: Get information about a Managed Instance Link
 ```powershell
-PS C:\> Get-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "Instance01" -LinkName "Link01"
+PS C:\> Get-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "Instance01" -Name "Link01"
 ResourceGroupName              : ResourceGroup01
 InstanceName                   : Instance01
 Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
 Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link01
-LinkName                       : Link01
+Name                           : Link01
 TargetDatabase                 : Link01DB
 SourceEndpoint                 : TCP://SERVER01:7022
 PrimaryAvailabilityGroupName   :
@@ -103,12 +103,12 @@ This command gets information about the Managed Instance Link named Link01 on in
 ### Example 3: Get all Managed Instance Links within an instance using instance object
 ```powershell
 PS C:\> $instance = Get-AzSqlInstance -Name "Instance01" -ResourceGroupName "ResourceGroup01"
-PS C:\> Get-AzSqlInstanceLink -Instance $instance
+PS C:\> Get-AzSqlInstanceLink -InstanceObject $instance
 ResourceGroupName              : ResourceGroup01
 InstanceName                   : Instance01
 Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
 Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link01
-LinkName                       : Link01
+Name                           : Link01
 TargetDatabase                 : Link01DB
 SourceEndpoint                 : TCP://SERVER01:7022
 PrimaryAvailabilityGroupName   :
@@ -124,7 +124,7 @@ ResourceGroupName              : ResourceGroup01
 InstanceName                   : Instance01
 Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
 Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link02
-LinkName                       : Link02
+Name                           : Link02
 TargetDatabase                 : Link02DB
 SourceEndpoint                 : TCP://SERVER02:7022
 PrimaryAvailabilityGroupName   :
@@ -146,7 +146,7 @@ ResourceGroupName              : ResourceGroup01
 InstanceName                   : Instance01
 Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
 Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link01
-LinkName                       : Link01
+Name                           : Link01
 TargetDatabase                 : Link01DB
 SourceEndpoint                 : TCP://SERVER01:7022
 PrimaryAvailabilityGroupName   :
@@ -162,7 +162,7 @@ ResourceGroupName              : ResourceGroup01
 InstanceName                   : Instance01
 Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
 Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link02
-LinkName                       : Link02
+Name                           : Link02
 TargetDatabase                 : Link02DB
 SourceEndpoint                 : TCP://SERVER02:7022
 PrimaryAvailabilityGroupName   :
@@ -184,7 +184,7 @@ ResourceGroupName              : ResourceGroup01
 InstanceName                   : Instance01
 Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
 Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link01
-LinkName                       : Link01
+Name                           : Link01
 TargetDatabase                 : Link01DB
 SourceEndpoint                 : TCP://SERVER01:7022
 PrimaryAvailabilityGroupName   :
@@ -206,7 +206,7 @@ ResourceGroupName              : ResourceGroup01
 InstanceName                   : Instance01
 Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
 Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link01
-LinkName                       : Link01
+Name                           : Link01
 TargetDatabase                 : Link01DB
 SourceEndpoint                 : TCP://SERVER01:7022
 PrimaryAvailabilityGroupName   :
@@ -222,7 +222,7 @@ ResourceGroupName              : ResourceGroup01
 InstanceName                   : Instance01
 Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
 Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link02
-LinkName                       : Link02
+Name                           : Link02
 TargetDatabase                 : Link02DB
 SourceEndpoint                 : TCP://SERVER02:7022
 PrimaryAvailabilityGroupName   :
@@ -237,15 +237,14 @@ LastHardenedLsn                :
 
 This command gets information about all managed instance links within the instance Instance01.
 
-
 ### Example 7: Get a specific Managed Instance Link within an instance by piping an instance object and specifying link name
 ```powershell
-PS C:\> Get-AzSqlInstance -Name "Instance01" -ResourceGroupName "ResourceGroup01" | Get-AzSqlInstanceLink -LinkName "Link01"
+PS C:\> Get-AzSqlInstance -Name "Instance01" -ResourceGroupName "ResourceGroup01" | Get-AzSqlInstanceLink -Name "Link01"
 ResourceGroupName              : ResourceGroup01
 InstanceName                   : Instance01
 Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
 Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link01
-LinkName                       : Link01
+Name                           : Link01
 TargetDatabase                 : Link01DB
 SourceEndpoint                 : TCP://SERVER01:7022
 PrimaryAvailabilityGroupName   :
@@ -255,7 +254,7 @@ DistributedAvailabilityGroupId : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 SourceReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 LinkState                      : Copying
-LastHardenedLsn                : 
+LastHardenedLsn                :
 ```
 
 This command gets information about a managed instance links named Link01 within the instance Instance01.
@@ -267,7 +266,7 @@ ResourceGroupName              : ResourceGroup01
 InstanceName                   : Instance01
 Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
 Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link01
-LinkName                       : Link01
+Name                           : Link01
 TargetDatabase                 : Link01DB
 SourceEndpoint                 : TCP://SERVER01:7022
 PrimaryAvailabilityGroupName   :
@@ -299,21 +298,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Instance
-The instance input object.
-
-```yaml
-Type: Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
-Parameter Sets: GetByParentObjectParameterSet
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -InstanceName
 The name of the Azure SQL Managed Instance.
 
@@ -326,6 +310,21 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InstanceObject
+The instance input object.
+
+```yaml
+Type: Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
+Parameter Sets: GetByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -344,13 +343,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -LinkName
+### -Name
 The name of the Managed Instance link.
 
 ```yaml
 Type: System.String
 Parameter Sets: GetByNameParameterSet, GetByParentObjectParameterSet, GetByInstanceResourceIdParameterSet
-Aliases:
+Aliases: LinkName
 
 Required: False
 Position: 2

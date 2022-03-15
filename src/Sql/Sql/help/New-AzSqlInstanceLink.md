@@ -14,17 +14,17 @@ Creates a new Azure SQL Managed Instance Link.
 
 ### CreateByNameParameterSet (Default)
 ```
-New-AzSqlInstanceLink [-ResourceGroupName] <String> [-InstanceName] <String> [-LinkName] <String>
- [-PrimaryAvailabilityGroupName] <String> [-SecondaryAvailabilityGroupName] <String> [-TargetDatabase] <String>
- [-SourceEndpoint] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+New-AzSqlInstanceLink [-ResourceGroupName] <String> [-InstanceName] <String> [-Name] <String>
+ -PrimaryAvailabilityGroupName <String> -SecondaryAvailabilityGroupName <String> -TargetDatabase <String>
+ -SourceEndpoint <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### CreateByParentObjectParameterSet
 ```
-New-AzSqlInstanceLink [-LinkName] <String> [-PrimaryAvailabilityGroupName] <String>
- [-SecondaryAvailabilityGroupName] <String> [-TargetDatabase] <String> [-SourceEndpoint] <String>
- [-Instance] <AzureSqlManagedInstanceModel> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+New-AzSqlInstanceLink [-Name] <String> -PrimaryAvailabilityGroupName <String>
+ -SecondaryAvailabilityGroupName <String> -TargetDatabase <String> -SourceEndpoint <String>
+ [-InstanceObject] <AzureSqlManagedInstanceModel> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -35,12 +35,12 @@ The **New-AzSqlInstanceLink** cmdlet creates an Azure SQL Managed Instance Link 
 
 ### Example 1: Create a new Managed Instance Link
 ```powershell
-PS C:\> New-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "Instance01" -LinkName "Link01" -PrimaryAvailabilityGroupName "Link01PrimaryAG" -SecondaryAvailabilityGroupName "Link01SecondaryAG" -TargetDatabase "Link01DB" -SourceEndpoint "TCP://SERVER01:7022"		
+PS C:\> New-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "Instance01" -Name "Link01" -PrimaryAvailabilityGroupName "Link01PrimaryAG" -SecondaryAvailabilityGroupName "Link01SecondaryAG" -TargetDatabase "Link01DB" -SourceEndpoint "TCP://SERVER01:7022"		
 ResourceGroupName              : ResourceGroup01
 InstanceName                   : Instance01
 Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
 Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link01
-LinkName                       : Link01
+Name                           : Link01
 TargetDatabase                 : Link01DB
 SourceEndpoint                 : TCP://SERVER01:7022
 PrimaryAvailabilityGroupName   : Link01PrimaryAG
@@ -58,12 +58,12 @@ This command creates a new managed instance link with name Link01.
 ### Example 2: Create a new Managed Instance Link in an instance using an instance object
 ```powershell
 PS C:\> $instance = Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -Name "Instance01"
-PS C:\> New-AzSqlInstanceLink -Instance $instance -LinkName "Link01" -PrimaryAvailabilityGroupName "Link01PrimaryAG" -SecondaryAvailabilityGroupName "Link01SecondaryAG" -TargetDatabase "Link01DB" -SourceEndpoint "TCP://SERVER01:7022"		
+PS C:\> New-AzSqlInstanceLink -InstanceObject $instance -Name "Link01" -PrimaryAvailabilityGroupName "Link01PrimaryAG" -SecondaryAvailabilityGroupName "Link01SecondaryAG" -TargetDatabase "Link01DB" -SourceEndpoint "TCP://SERVER01:7022"		
 ResourceGroupName              : ResourceGroup01
 InstanceName                   : Instance01
 Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
 Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link01
-LinkName                       : Link01
+Name                           : Link01
 TargetDatabase                 : Link01DB
 SourceEndpoint                 : TCP://SERVER01:7022
 PrimaryAvailabilityGroupName   : Link01PrimaryAG
@@ -81,12 +81,12 @@ This command creates a new managed instance link using an instance object.
 ### Example 3: Create a new Managed Instance Link by piping an instance object
 ```powershell
 PS C:\> $instance = Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -Name "Instance01"
-PS C:\> $instance | New-AzSqlInstanceLink -LinkName "Link01" -PrimaryAvailabilityGroupName "Link01PrimaryAG" -SecondaryAvailabilityGroupName "Link01SecondaryAG" -TargetDatabase "Link01DB" -SourceEndpoint "TCP://SERVER01:7022"		
+PS C:\> $instance | New-AzSqlInstanceLink -Name "Link01" -PrimaryAvailabilityGroupName "Link01PrimaryAG" -SecondaryAvailabilityGroupName "Link01SecondaryAG" -TargetDatabase "Link01DB" -SourceEndpoint "TCP://SERVER01:7022"		
 ResourceGroupName              : ResourceGroup01
 InstanceName                   : Instance01
 Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
 Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link01
-LinkName                       : Link01
+Name                           : Link01
 TargetDatabase                 : Link01DB
 SourceEndpoint                 : TCP://SERVER01:7022
 PrimaryAvailabilityGroupName   : Link01PrimaryAG
@@ -100,7 +100,6 @@ LastHardenedLsn                :
 ```
 
 This command creates a new managed instance link using an instance object.
-
 
 ## PARAMETERS
 
@@ -134,21 +133,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Instance
-The instance input object.
-
-```yaml
-Type: Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
-Parameter Sets: CreateByParentObjectParameterSet
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -InstanceName
 The name of the Azure SQL Managed Instance.
 
@@ -164,13 +148,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LinkName
+### -InstanceObject
+The instance input object.
+
+```yaml
+Type: Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
+Parameter Sets: CreateByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
 The name of the Managed Instance link.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: LinkName
 
 Required: True
 Position: 2
@@ -188,7 +187,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -218,7 +217,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -233,7 +232,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 6
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -248,7 +247,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 5
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

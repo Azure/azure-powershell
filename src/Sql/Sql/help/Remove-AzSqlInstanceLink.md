@@ -14,26 +14,26 @@ Removes an Azure SQL Instance Link.
 
 ### DeleteByNameParameterSet (Default)
 ```
-Remove-AzSqlInstanceLink [-ResourceGroupName] <String> [-InstanceName] <String> [-LinkName] <String> [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzSqlInstanceLink [-ResourceGroupName] <String> [-InstanceName] <String> [-Name] <String> [-Force]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteByParentObjectParameterSet
 ```
-Remove-AzSqlInstanceLink [-LinkName] <String> [-Instance] <AzureSqlManagedInstanceModel> [-Force]
+Remove-AzSqlInstanceLink [-Name] <String> [-InstanceObject] <AzureSqlManagedInstanceModel> [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteByInputObjectParameterSet
 ```
-Remove-AzSqlInstanceLink [-ManagedInstanceLink] <AzureSqlManagedInstanceLinkModel> [-Force]
+Remove-AzSqlInstanceLink [-InputObject] <AzureSqlManagedInstanceLinkModel> [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteByResourceIdParameterSet
 ```
-Remove-AzSqlInstanceLink [-ResourceId] <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzSqlInstanceLink [-ResourceId] <String> [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,14 +43,14 @@ The **Remove-AzSqlInstanceLink** cmdlet removes an Azure SQL Managed Instance Li
 
 ### Example 1: Remove a Managed Instance Link
 ```powershell
-PS C:\> Remove-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "Instance01" -LinkName "Link01"
+PS C:\> Remove-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "Instance01" -Name "Link01"
 This operation may cause data loss if replicas last hardened LSNs are not in sync, are you sure you want to continue?
 [Y] Yes  [N] No  [?] Help (default is "Y"): Y
 ResourceGroupName              : ResourceGroup01
 InstanceName                   : Instance01
 Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
 Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link01
-LinkName                       : Link01
+Name                           : Link01
 TargetDatabase                 : Link01DB
 SourceEndpoint                 : TCP://SERVER01:7022
 PrimaryAvailabilityGroupName   :
@@ -62,14 +62,15 @@ TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 LinkState                      : Copying
 LastHardenedLsn                :
 ```
+
 ### Example 2: Remove a Managed Instance Link with an explicit -Force flag
 ```powershell
-PS C:\> Remove-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "Instance01" -LinkName "Link01" -Force
+PS C:\> Remove-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "Instance01" -Name "Link01" -Force
 ResourceGroupName              : ResourceGroup01
 InstanceName                   : Instance01
 Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
 Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link01
-LinkName                       : Link01
+Name                           : Link01
 TargetDatabase                 : Link01DB
 SourceEndpoint                 : TCP://SERVER01:7022
 PrimaryAvailabilityGroupName   :
@@ -81,6 +82,7 @@ TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 LinkState                      : Copying
 LastHardenedLsn                :
 ```
+
 ### Example 3: Remove a Managed Instance Link by its resource identifier
 ```powershell
 PS C:\> Remove-AzSqlInstanceLink -ResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link01"
@@ -90,7 +92,7 @@ ResourceGroupName              : ResourceGroup01
 InstanceName                   : Instance01
 Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
 Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link01
-LinkName                       : Link01
+Name                           : Link01
 TargetDatabase                 : Link01DB
 SourceEndpoint                 : TCP://SERVER01:7022
 PrimaryAvailabilityGroupName   :
@@ -105,15 +107,15 @@ LastHardenedLsn                :
 
 ### Example 4: Remove a Managed Instance Link by its object
 ```powershell
-PS C:\> $managedInstanceLink = Get-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "Instance01" -LinkName "Link01" 
-PS C:\> Remove-AzSqlInstanceLink -ManagedInstanceLink $managedInstanceLink
+PS C:\> $managedInstanceLink = Get-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "Instance01" -Name "Link01" 
+PS C:\> Remove-AzSqlInstanceLink -InputObject $managedInstanceLink
 This operation may cause data loss if replicas last hardened LSNs are not in sync, are you sure you want to continue?
 [Y] Yes  [N] No  [?] Help (default is "Y"): Y
 ResourceGroupName              : ResourceGroup01
 InstanceName                   : Instance01
 Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
 Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link01
-LinkName                       : Link01
+Name                           : Link01
 TargetDatabase                 : Link01DB
 SourceEndpoint                 : TCP://SERVER01:7022
 PrimaryAvailabilityGroupName   :
@@ -129,14 +131,14 @@ LastHardenedLsn                :
 ### Example 5: Remove a Managed Instance Link by its parent instance object
 ```powershell
 PS C:\> $instance = Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -Name "Instance01" 
-PS C:\> Remove-AzSqlInstanceLink -Instance $instance -LinkName "Link01"
+PS C:\> Remove-AzSqlInstanceLink -InstanceObject $instance -Name "Link01"
 This operation may cause data loss if replicas last hardened LSNs are not in sync, are you sure you want to continue?
 [Y] Yes  [N] No  [?] Help (default is "Y"): Y
 ResourceGroupName              : ResourceGroup01
 InstanceName                   : Instance01
 Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
 Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link01
-LinkName                       : Link01
+Name                           : Link01
 TargetDatabase                 : Link01DB
 SourceEndpoint                 : TCP://SERVER01:7022
 PrimaryAvailabilityGroupName   :
@@ -150,7 +152,7 @@ LastHardenedLsn                :
 ```
 
 ### Example 6: Remove a Managed Instance Link using positional parameters
-```powershell 
+```powershell
 PS C:\> Remove-AzSqlInstanceLink "ResourceGroup01" "Instance01" "Link01"
 This operation may cause data loss if replicas last hardened LSNs are not in sync, are you sure you want to continue?
 [Y] Yes  [N] No  [?] Help (default is "Y"): Y
@@ -158,7 +160,7 @@ ResourceGroupName              : ResourceGroup01
 InstanceName                   : Instance01
 Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
 Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link01
-LinkName                       : Link01
+Name                           : Link01
 TargetDatabase                 : Link01DB
 SourceEndpoint                 : TCP://SERVER01:7022
 PrimaryAvailabilityGroupName   :
@@ -179,7 +181,7 @@ ResourceGroupName              : ResourceGroup01
 InstanceName                   : Instance01
 Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
 Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link01
-LinkName                       : Link01
+Name                           : Link01
 TargetDatabase                 : Link01DB
 SourceEndpoint                 : TCP://SERVER01:7022
 PrimaryAvailabilityGroupName   :
@@ -224,12 +226,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Instance
-The instance input object.
+### -InputObject
+The Managed Instance Link input object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
-Parameter Sets: DeleteByParentObjectParameterSet
+Type: Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Model.AzureSqlManagedInstanceLinkModel
+Parameter Sets: DeleteByInputObjectParameterSet
 Aliases:
 
 Required: True
@@ -254,13 +256,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LinkName
+### -InstanceObject
+The instance input object.
+
+```yaml
+Type: Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
+Parameter Sets: DeleteByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
 The name of the Managed Instance link
 
 ```yaml
 Type: System.String
 Parameter Sets: DeleteByNameParameterSet, DeleteByParentObjectParameterSet
-Aliases:
+Aliases: LinkName
 
 Required: True
 Position: 2
@@ -269,18 +286,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ManagedInstanceLink
-The Managed Instance Link input object.
+### -PassThru
+Defines whether to return the removed Managed Instance Link
 
 ```yaml
-Type: Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Model.AzureSqlManagedInstanceLinkModel
-Parameter Sets: DeleteByInputObjectParameterSet
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: 0
+Required: False
+Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
