@@ -27,8 +27,8 @@ Add a new node type to a existing cluster.
 
 ### Example 1
 ```powershell
-PS c:\> $pwd = ConvertTo-SecureString -String 'Password$123456' -AsPlainText -Force
-PS C:\> Add-AzServiceFabricNodeType -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -NodeType 'n2' -Capacity 5 -VmUserName 'adminName' -VmPassword $pwd
+$pwd = ConvertTo-SecureString -String 'Password$123456' -AsPlainText -Force
+Add-AzServiceFabricNodeType -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -NodeType 'n2' -Capacity 5 -VmUserName 'adminName' -VmPassword $pwd
 ```
 
 This command will add a new NodeType 'n2' with capacity of 5, and the vm admin name is 'adminName'.
@@ -41,11 +41,11 @@ discovered preexiting Node Type VMSS, substituting ImageSku with 18.04-LTS.
 
 
 ```powershell
-PS c:\> $pwd = ConvertTo-SecureString -String 'Password$123456' -AsPlainText -Force
-PS c:\> $resourceGroup = "Group2"
-PS c:\> $clusterName = "Contoso01SFCluster"
-PS c:\> $nodeTypeName = "n3"
-PS C:\> Add-AzServiceFabricNodeType -ResourceGroupName $resourceGroup -Name $clusterName -NodeType $nodeTypeName -Capacity 5 -VmUserName 'adminName' -VmPassword $pwd -DurabilityLevel Silver -Verbose -VMImageSku 18.04-LTS -IsPrimaryNodeType $true
+$pwd = ConvertTo-SecureString -String 'Password$123456' -AsPlainText -Force
+$resourceGroup = "Group2"
+$clusterName = "Contoso01SFCluster"
+$nodeTypeName = "n3"
+Add-AzServiceFabricNodeType -ResourceGroupName $resourceGroup -Name $clusterName -NodeType $nodeTypeName -Capacity 5 -VmUserName 'adminName' -VmPassword $pwd -DurabilityLevel Silver -Verbose -VMImageSku 18.04-LTS -IsPrimaryNodeType $true
 ```
 
 This command will add a new NodeType 'n3' with capacity of 5, the vm admin name is 'adminName', Durability level Silver (tenant and infrastructure jobs are safely brokered using the Infrastructure Service), and VMSS is created using VM image profile publisher-offer-sku-version with sku interchanged to '18.04-LTS'.
