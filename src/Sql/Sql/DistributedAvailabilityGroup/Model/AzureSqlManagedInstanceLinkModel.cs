@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Model
 {
@@ -29,7 +27,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Model
         /// <summary>
         /// Gets or sets target database
         /// </summary>
-        public string LinkName { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets target database

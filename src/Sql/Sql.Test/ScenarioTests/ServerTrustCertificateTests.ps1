@@ -75,7 +75,7 @@ function Test-ServerTrustCertificate
 		Assert-AreEqual $newCert1.PublicKey $certVal1
 
 		# Upsert valid certificate #2 via CreateByParentObjectParameterSet
-		$newCert2 = New-AzSqlInstanceServerTrustCertificate -Instance $instance -CertificateName $certName2 -PublicKey $certVal2
+		$newCert2 = New-AzSqlInstanceServerTrustCertificate -InstanceObject $instance -CertificateName $certName2 -PublicKey $certVal2
 		Write-Debug ('$newCert2 is ' + (ConvertTo-Json $newCert2))
 		Assert-NotNull $newCert2
 		Assert-AreEqual	$newCert2.ResourceGroupName $rgName
@@ -105,7 +105,7 @@ function Test-ServerTrustCertificate
 		Assert-AreEqual $getCert1ByNameParameterSet.PublicKey $certVal1
 
 		# Get valid certificate #1 - (GetByParentObjectParameterSet)
-		$getCert1ByParentObjectParameterSet = Get-AzSqlInstanceServerTrustCertificate -Instance $instance -CertificateName $certName1
+		$getCert1ByParentObjectParameterSet = Get-AzSqlInstanceServerTrustCertificate -InstanceObject $instance -CertificateName $certName1
 		Write-Debug ('$getCert1ByParentObjectParameterSet is ' + (ConvertTo-Json $getCert1ByParentObjectParameterSet))
 		Assert-NotNull $getCert1ByParentObjectParameterSet
 		Assert-AreEqual	$getCert1ByParentObjectParameterSet.ResourceGroupName $rgName
@@ -159,7 +159,7 @@ function Test-ServerTrustCertificate
 		Assert-AreEqual	$listCerts.Count 2
 
 		# Delete certificate #1 via DeleteByNameParameterSet
-		$delCert1 = Remove-AzSqlInstanceServerTrustCertificate -ResourceGroupName $rgName -InstanceName $miName -CertificateName $certName1
+		$delCert1 = Remove-AzSqlInstanceServerTrustCertificate -ResourceGroupName $rgName -InstanceName $miName -CertificateName $certName1 -PassThru
 		Write-Debug ('$delCert1 is ' + (ConvertTo-Json $delCert1))
 		Assert-NotNull $delCert1
 		Assert-AreEqual	$delCert1.ResourceGroupName $rgName
@@ -172,18 +172,18 @@ function Test-ServerTrustCertificate
 
 		# Delete non existant cert #1 THROWS (via DeleteByParentObjectParameterSet)
 		$msgExcDel = "The requested resource of type '" + $certType + "' with name '" + $certName1 + "' was not found."
-		Assert-Throws { Remove-AzSqlInstanceServerTrustCertificate -Instance $instance -CertificateName $certName1 } $msgExc
+		Assert-Throws { Remove-AzSqlInstanceServerTrustCertificate -InstanceObject $instance -CertificateName $certName1 } $msgExc
 		
 		# Delete non existant cert #1 THROWS (via DeleteByInputObjectParameterSet)
 		$msgExcDel = "The requested resource of type '" + $certType + "' with name '" + $certName1 + "' was not found."
-		Assert-Throws { Remove-AzSqlInstanceServerTrustCertificate -Certificate $getCert1ByInstanceResourceIdParameterSet} $msgExc
+		Assert-Throws { Remove-AzSqlInstanceServerTrustCertificate -InputObject $getCert1ByInstanceResourceIdParameterSet} $msgExc
 
 		# Get non existant cert #1 THROWS (via DeleteByInputObjectParameterSet)
 		$msgExcGet = "The requested resource of type '" + $certType + "' with name '" + $certName1 + "' was not found."
-		Assert-Throws { Get-AzSqlInstanceServerTrustCertificate -Certificate $getCert1ByInstanceResourceIdParameterSet } $msgExc
+		Assert-Throws { Get-AzSqlInstanceServerTrustCertificate -InputObject $getCert1ByInstanceResourceIdParameterSet } $msgExc
 		
 		# Delete certificate #2 via DeleteByResourceIdParameterSet
-		$delCert2 = Remove-AzSqlInstanceServerTrustCertificate -ResourceId $certId2
+		$delCert2 = Remove-AzSqlInstanceServerTrustCertificate -ResourceId $certId2 -PassThru
 		Write-Debug ('$delCert2 is ' + (ConvertTo-Json $delCert2))
 		Assert-NotNull $delCert2
 		Assert-AreEqual	$delCert2.ResourceGroupName $rgName
@@ -251,7 +251,7 @@ function Test-ServerTrustCertificateErrHandling
 		Assert-ThrowsContains { New-AzSqlInstanceServerTrustCertificate -ResourceGroupName $rgName -InstanceName $miName -CertificateName "" -PublicKey $certVal1 } $exc6
 
 		# Delete certificate #1
-		$delCert1 = Remove-AzSqlInstanceServerTrustCertificate -ResourceGroupName $rgName -InstanceName $miName -CertificateName $certName1
+		$delCert1 = Remove-AzSqlInstanceServerTrustCertificate -ResourceGroupName $rgName -InstanceName $miName -CertificateName $certName1 -PassThru
 		Assert-NotNull $delCert1
 		# Delete non existant cert #1 THROWS
 		$msgExcDel = "The requested resource of type '" + $certType + "' with name '" + $certName1 + "' was not found."
@@ -313,7 +313,7 @@ function Test-ServerTrustCertificatePiping
 		Assert-NotNull $getCertRespByParentObjectPipe
 
 		# Delete certificates
-		$removeCertCollectionPipe = $listCertRespByParentObjectPipe | Remove-AzSqlInstanceServerTrustCertificate
+		$removeCertCollectionPipe = $listCertRespByParentObjectPipe | Remove-AzSqlInstanceServerTrustCertificate -PassThru
 		Write-Debug ('$removeCertCollectionPipe is ' + (ConvertTo-Json $removeCertCollectionPipe))
 		Assert-NotNull $removeCertCollectionPipe
 

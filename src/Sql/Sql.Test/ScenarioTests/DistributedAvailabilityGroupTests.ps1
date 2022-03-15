@@ -73,27 +73,27 @@ function Test-ManagedInstanceLink
 		# GetByInstanceResourceIdParameterSet
 
 		# Get the created link - (GetByNameParameterSet)
-		$getLinkByNameParameterSet = Get-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $linkName
+		$getLinkByNameParameterSet = Get-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -Name $linkName
 		Write-Debug ('$getLinkByNameParameterSet is ' + (ConvertTo-Json $getLinkByNameParameterSet))
 		Assert-NotNull $getLinkByNameParameterSet
         Assert-AreEqual $getLinkByNameParameterSet.ResourceGroupName $rgName
         Assert-AreEqual $getLinkByNameParameterSet.InstanceName $miName
 		Assert-AreEqual $getLinkByNameParameterSet.Type $linkType
 		Assert-AreEqual $getLinkByNameParameterSet.Id $linkId
-        Assert-AreEqual $getLinkByNameParameterSet.LinkName $linkName
+        Assert-AreEqual $getLinkByNameParameterSet.Name $linkName
         Assert-AreEqual $getLinkByNameParameterSet.TargetDatabase $targetDatabase
         Assert-AreEqual $getLinkByNameParameterSet.SourceEndpoint $sourceEndpoint
         Assert-AreEqual $getLinkByNameParameterSet.ReplicationMode Async
 
 		# Get the created link - (GetByParentObjectParameterSet)
-		$getLinkByParentObjectParameterSet = Get-AzSqlInstanceLink -Instance $instance -LinkName $linkName
+		$getLinkByParentObjectParameterSet = Get-AzSqlInstanceLink -InstanceObject $instance -LinkName $linkName
 		Write-Debug ('$getLinkByParentObjectParameterSet is ' + (ConvertTo-Json $getLinkByParentObjectParameterSet))
 		Assert-NotNull $getLinkByParentObjectParameterSet
         Assert-AreEqual $getLinkByParentObjectParameterSet.ResourceGroupName $rgName
         Assert-AreEqual $getLinkByParentObjectParameterSet.InstanceName $miName
 		Assert-AreEqual $getLinkByParentObjectParameterSet.Type $linkType
 		Assert-AreEqual $getLinkByParentObjectParameterSet.Id $linkId
-        Assert-AreEqual $getLinkByParentObjectParameterSet.LinkName $linkName
+        Assert-AreEqual $getLinkByParentObjectParameterSet.Name $linkName
         Assert-AreEqual $getLinkByParentObjectParameterSet.TargetDatabase $targetDatabase
         Assert-AreEqual $getLinkByParentObjectParameterSet.SourceEndpoint $sourceEndpoint
         Assert-AreEqual $getLinkByParentObjectParameterSet.ReplicationMode Async
@@ -106,7 +106,7 @@ function Test-ManagedInstanceLink
         Assert-AreEqual $getLinkByResourceIdParameterSet.InstanceName $miName
 		Assert-AreEqual $getLinkByResourceIdParameterSet.Type $linkType
 		Assert-AreEqual $getLinkByResourceIdParameterSet.Id $linkId
-        Assert-AreEqual $getLinkByResourceIdParameterSet.LinkName $linkName
+        Assert-AreEqual $getLinkByResourceIdParameterSet.Name $linkName
         Assert-AreEqual $getLinkByResourceIdParameterSet.TargetDatabase $targetDatabase
         Assert-AreEqual $getLinkByResourceIdParameterSet.SourceEndpoint $sourceEndpoint
         Assert-AreEqual $getLinkByResourceIdParameterSet.ReplicationMode Async
@@ -119,7 +119,7 @@ function Test-ManagedInstanceLink
         Assert-AreEqual $getLinkByInstanceResourceIdParameterSet.InstanceName $miName
 		Assert-AreEqual $getLinkByInstanceResourceIdParameterSet.Type $linkType
 		Assert-AreEqual $getLinkByInstanceResourceIdParameterSet.Id $linkId
-        Assert-AreEqual $getLinkByInstanceResourceIdParameterSet.LinkName $linkName
+        Assert-AreEqual $getLinkByInstanceResourceIdParameterSet.Name $linkName
         Assert-AreEqual $getLinkByInstanceResourceIdParameterSet.TargetDatabase $targetDatabase
         Assert-AreEqual $getLinkByInstanceResourceIdParameterSet.SourceEndpoint $sourceEndpoint
         Assert-AreEqual $getLinkByInstanceResourceIdParameterSet.ReplicationMode Async
@@ -131,13 +131,13 @@ function Test-ManagedInstanceLink
 		Assert-AreEqual	$listLink.Count 1
 
 		# Remove the Link
-		$rmLink = Remove-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $linkName -Force 
+		$rmLink = Remove-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $linkName -Force -PassThru
 		Write-Debug ('$rmLink is ' + (ConvertTo-Json $rmLink))
 		Assert-NotNull $rmLink
         Assert-AreEqual $rmLink.ResourceGroupName $rgName
         Assert-AreEqual $rmLink.InstanceName $miName
 		Assert-AreEqual $rmLink.Type $linkType
-        Assert-AreEqual $rmLink.LinkName $linkName
+        Assert-AreEqual $rmLink.Name $linkName
         Assert-AreEqual $rmLink.TargetDatabase $targetDatabase
         Assert-AreEqual $rmLink.SourceEndpoint $sourceEndpoint
         Assert-AreEqual $rmLink.ReplicationMode Async
@@ -149,11 +149,11 @@ function Test-ManagedInstanceLink
 		
 		# Delete non existant link THROWS (via DeleteByParentObjectParameterSet)
 		$msgExcDel = "The requested resource of type '" + $linkType + "' with name '" + $linkName + "' was not found."
-		Assert-Throws { Remove-AzSqlInstanceLink -Instance $instance -LinkName $certName1 -Force } $msgExc
+		Assert-Throws { Remove-AzSqlInstanceLink -InstanceObject $instance -LinkName $certName1 -Force } $msgExc
 
 		# Delete non existant link THROWS (via DeleteByInputObjectParameterSet)
 		$msgExcDel = "The requested resource of type '" + $linkType + "' with name '" + $linkName + "' was not found."
-		Assert-Throws { Remove-AzSqlInstanceLink -ManagedInstanceLink $getLinkByParentObjectParameterSet -Force } $msgExc
+		Assert-Throws { Remove-AzSqlInstanceLink -InputObject $getLinkByParentObjectParameterSet -Force } $msgExc
 	}
 	finally
 	{
@@ -218,7 +218,7 @@ function Test-ManagedInstanceLinkErrHandling
 		Assert-Null $listLinksZero
 
 		# upsert via CreateByParentObjectParameterSet
-		$upsertJ = New-AzSqlInstanceLink -Instance $instance -LinkName $linkName -PrimaryAvailabilityGroupName $primaryAGName -SecondaryAvailabilityGroupName $secondaryAGName -TargetDatabase $targetDatabase -SourceEndpoint $sourceEndpoint -AsJob
+		$upsertJ = New-AzSqlInstanceLink -InstanceObject $instance -LinkName $linkName -PrimaryAvailabilityGroupName $primaryAGName -SecondaryAvailabilityGroupName $secondaryAGName -TargetDatabase $targetDatabase -SourceEndpoint $sourceEndpoint -AsJob
 		$listResp = Get-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName
 		$tries = 1
 		while ($listResp.Count -eq 0 -And $tries -le 3) {
@@ -234,7 +234,7 @@ function Test-ManagedInstanceLinkErrHandling
         Assert-AreEqual $getLink.ResourceGroupName $rgName
         Assert-AreEqual $getLink.InstanceName $miName
 		Assert-AreEqual $getLink.Type $linkType
-        Assert-AreEqual $getLink.LinkName $linkName
+        Assert-AreEqual $getLink.Name $linkName
         Assert-AreEqual $getLink.TargetDatabase $targetDatabase
         Assert-AreEqual $getLink.SourceEndpoint $sourceEndpoint
         Assert-AreEqual $getLink.ReplicationMode Async
@@ -242,7 +242,7 @@ function Test-ManagedInstanceLinkErrHandling
 
 		# Confirm that ShouldContinue message is triggered on Remove (tests don't support user interaction so we'll validate the exception)
 		$msgExcDataLoss = "may cause data loss"
-		Assert-ThrowsContains { Remove-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $invalidLinkName1 } $msgExcDataLoss
+		Assert-ThrowsContains { Remove-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -Name $invalidLinkName1 } $msgExcDataLoss
 
 		# validate forbidden updates in current link state
 		$exSet1 = "The 'parameters.properties.replicationMode' segment in the url is invalid."
@@ -252,19 +252,19 @@ function Test-ManagedInstanceLinkErrHandling
 		Assert-ThrowsContains { Set-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $linkName -ReplicationMode Async } $exSet2
 		# Repeat with different input sets
 		$exSet1 = "The 'parameters.properties.replicationMode' segment in the url is invalid."
-		Assert-ThrowsContains { Set-AzSqlInstanceLink -Instance $instance -LinkName $linkName -ReplicationMode RandomValue } $exSet1
+		Assert-ThrowsContains { Set-AzSqlInstanceLink -InstanceObject $instance -LinkName $linkName -ReplicationMode RandomValue } $exSet1
 		$exSet2 = "The operation cannot be performed since the database '" + $targetDatabase +"' is in a replication relationship."
-		Assert-ThrowsContains { Set-AzSqlInstanceLink -ManagedInstanceLink $getLink -ReplicationMode Sync } $exSet2
+		Assert-ThrowsContains { Set-AzSqlInstanceLink -InputObject $getLink -ReplicationMode Sync } $exSet2
 		Assert-ThrowsContains { Set-AzSqlInstanceLink -ResourceId $linkId -ReplicationMode Async } $exSet2
 
 		# Cleanup link
-		$rmLink = Remove-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $linkName -Force
+		$rmLink = Remove-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $linkName -Force -PassThru
 		Write-Debug ('$rmLink is ' + (ConvertTo-Json $rmLink))
 		Assert-NotNull $rmLink
         Assert-AreEqual $rmLink.ResourceGroupName $rgName
         Assert-AreEqual $rmLink.InstanceName $miName
 		Assert-AreEqual $rmLink.Type $linkType
-        Assert-AreEqual $rmLink.LinkName $linkName
+        Assert-AreEqual $rmLink.Name $linkName
         Assert-AreEqual $rmLink.TargetDatabase $targetDatabase
         Assert-AreEqual $rmLink.SourceEndpoint $sourceEndpoint
         Assert-AreEqual $rmLink.ReplicationMode Async
@@ -320,7 +320,7 @@ function Test-ManagedInstanceLinkPiping
 		Assert-ThrowsContains { $getLink | Set-AzSqlInstanceLink -ReplicationMode Async } $exSet2
 
 		# validate delete pipe working
-		$removeCertCollectionPipe = $getLink | Remove-AzSqlInstanceLink -Force
+		$removeCertCollectionPipe = $getLink | Remove-AzSqlInstanceLink -Force -PassThru
 		Write-Debug ('$removeCertCollectionPipe is ' + (ConvertTo-Json $removeCertCollectionPipe))
 		Assert-NotNull $removeCertCollectionPipe
 	}

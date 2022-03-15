@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
-using System.Text;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
 {
@@ -16,8 +15,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceLink",
         DefaultParameterSetName = DeleteByNameParameterSet,
-        SupportsShouldProcess = true
-        ),
+        SupportsShouldProcess = true),
         OutputType(typeof(AzureSqlManagedInstanceLinkModel))]
     public class RemoveAzureSqlManagedInstanceLink : AzureSqlManagedInstanceLinkCmdletBase
     {
@@ -49,21 +47,22 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         [Parameter(Mandatory = true, ParameterSetName = DeleteByParentObjectParameterSet, Position = 1, HelpMessage = "The name of the Managed Instance link")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances/distributedAvailabilityGroups", nameof(ResourceGroupName), nameof(InstanceName))]
         [ValidateNotNullOrEmpty]
-        public string LinkName { get; set; }
+        [Alias("LinkName")]
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the instance Object
         /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = DeleteByParentObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "The instance input object.")]
         [ValidateNotNullOrEmpty]
-        public AzureSqlManagedInstanceModel Instance { get; set; }
+        public AzureSqlManagedInstanceModel InstanceObject { get; set; }
 
         /// <summary>
         /// Gets or sets the instance Object
         /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = DeleteByInputObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "The Managed Instance Link input object.")]
         [ValidateNotNullOrEmpty]
-        public AzureSqlManagedInstanceLinkModel ManagedInstanceLink { get; set; }
+        public AzureSqlManagedInstanceLinkModel InputObject { get; set; }
 
         /// <summary>
         /// Gets or sets the MI Link Resource Id
@@ -79,6 +78,20 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         public SwitchParameter Force { get; set; }
 
         /// <summary>
+        /// Defines whether the cmdlets will output the model object at the end of its execution.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Defines whether to return the removed Managed Instance Link")]
+        public SwitchParameter PassThru { get; set; }
+
+        /// <summary>
+        /// Returns true if the model object that was constructed by this cmdlet should be written out.
+        /// </summary>
+        protected override bool WriteResult()
+        { 
+            return PassThru.IsPresent;
+        }
+
+        /// <summary>
         /// Entry point for the cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
@@ -91,21 +104,21 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
                     break;
                 case DeleteByParentObjectParameterSet:
                     // we need to extract RG and MI name from the Instance object, Link name received directly from arg
-                    ResourceGroupName = Instance.ResourceGroupName;
-                    InstanceName = Instance.ManagedInstanceName;
+                    ResourceGroupName = InstanceObject.ResourceGroupName;
+                    InstanceName = InstanceObject.ManagedInstanceName;
                     break;
                 case DeleteByInputObjectParameterSet:
                     // we need to extract RG, MI and MiLink name directly from the MiLink object
-                    ResourceGroupName = ManagedInstanceLink.ResourceGroupName;
-                    InstanceName = ManagedInstanceLink.InstanceName;
-                    LinkName = ManagedInstanceLink.LinkName;
+                    ResourceGroupName = InputObject.ResourceGroupName;
+                    InstanceName = InputObject.InstanceName;
+                    Name = InputObject.Name;
                     break;
                 case DeleteByResourceIdParameterSet:
                     // we need to derive RG, MI and Link name from resource id
                     var resourceInfo = new ResourceIdentifier(ResourceId);
                     ResourceGroupName = resourceInfo.ResourceGroupName;
                     InstanceName = resourceInfo.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
-                    LinkName = resourceInfo.ResourceName;
+                    Name = resourceInfo.ResourceName;
                     break;
                 default:
                     break;
@@ -113,8 +126,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
 
             // messages describing behavior with -WhatIf and -Confirm flags
             if (ShouldProcess(
-                string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveAzureSqlInstanceLinkDescription, ResourceGroupName, InstanceName, LinkName),
-                string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveAzureSqlInstanceLinkWarning, ResourceGroupName, InstanceName, LinkName),
+                string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveAzureSqlInstanceLinkDescription, ResourceGroupName, InstanceName, Name),
+                string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveAzureSqlInstanceLinkWarning, ResourceGroupName, InstanceName, Name),
                 Properties.Resources.ShouldProcessCaption))
             {
                 // message prompt requiring the customer to explicitly confirm the delete operation
@@ -133,7 +146,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         protected override IEnumerable<AzureSqlManagedInstanceLinkModel> GetEntity()
         {
             return new List<AzureSqlManagedInstanceLinkModel>() {
-                ModelAdapter.GetManagedInstanceLink(ResourceGroupName, InstanceName, LinkName)
+                ModelAdapter.GetManagedInstanceLink(ResourceGroupName, InstanceName, Name)
             };
         }
 
@@ -154,7 +167,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// <returns>The instance that was deleted</returns>
         protected override IEnumerable<AzureSqlManagedInstanceLinkModel> PersistChanges(IEnumerable<AzureSqlManagedInstanceLinkModel> entity)
         {
-            ModelAdapter.RemoveManagedInstanceLink(ResourceGroupName, InstanceName, LinkName);
+            ModelAdapter.RemoveManagedInstanceLink(ResourceGroupName, InstanceName, Name);
             return entity;
         }
 

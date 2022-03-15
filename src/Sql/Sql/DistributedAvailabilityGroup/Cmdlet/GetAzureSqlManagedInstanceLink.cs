@@ -6,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using System.Text;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
 {
@@ -14,8 +13,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
     /// Cmdlet to get a Manged Instance Link
     /// </summary>
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceLink",
-        DefaultParameterSetName = GetByNameParameterSet
-        ),
+        DefaultParameterSetName = GetByNameParameterSet),
         OutputType(typeof(AzureSqlManagedInstanceLinkModel))]
     public class GetAzureSqlManagedInstanceLink : AzureSqlManagedInstanceLinkCmdletBase
     {
@@ -48,14 +46,15 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         [Parameter(Mandatory = false, ParameterSetName = GetByInstanceResourceIdParameterSet, Position = 1, HelpMessage = "The name of the Managed Instance link.")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances/distributedAvailabilityGroups", nameof(ResourceGroupName), nameof(InstanceName))]
         [ValidateNotNullOrEmpty]
-        public string LinkName { get; set; }
+        [Alias("LinkName")]
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the instance Object
         /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = GetByParentObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "The instance input object.")]
         [ValidateNotNullOrEmpty]
-        public AzureSqlManagedInstanceModel Instance { get; set; }
+        public AzureSqlManagedInstanceModel InstanceObject { get; set; }
 
         /// <summary>
         /// Gets or sets the instance Resource Id
@@ -83,15 +82,15 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
                     break;
                 case GetByParentObjectParameterSet:
                     // we need to extract RG and MI name from the Instance object, Link name received directly from arg
-                    ResourceGroupName = Instance.ResourceGroupName;
-                    InstanceName = Instance.ManagedInstanceName;
+                    ResourceGroupName = InstanceObject.ResourceGroupName;
+                    InstanceName = InstanceObject.ManagedInstanceName;
                     break;
                 case GetByResourceIdParameterSet:
                     // we need to derive RG, MI and Link name from resource id
                     var resourceInfo = new ResourceIdentifier(ResourceId);
                     ResourceGroupName = resourceInfo.ResourceGroupName;
                     InstanceName = resourceInfo.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
-                    LinkName = resourceInfo.ResourceName;
+                    Name = resourceInfo.ResourceName;
                     break;
                 case GetByInstanceResourceIdParameterSet:
                     // we need to derive RG and MI name from managed instance resource id, link name passed from arg
@@ -112,9 +111,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         protected override IEnumerable<AzureSqlManagedInstanceLinkModel> GetEntity()
         {
             ICollection<AzureSqlManagedInstanceLinkModel> results = new List<AzureSqlManagedInstanceLinkModel>();
-            if (LinkName != null)
+            if (Name != null)
             {
-                results.Add(ModelAdapter.GetManagedInstanceLink(ResourceGroupName, InstanceName, LinkName));
+                results.Add(ModelAdapter.GetManagedInstanceLink(ResourceGroupName, InstanceName, Name));
             }
             else
             {

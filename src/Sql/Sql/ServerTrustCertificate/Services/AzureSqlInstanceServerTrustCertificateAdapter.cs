@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Services
         /// <returns>The upserted Azure Sql Database ElasticPool</returns>
         internal AzureSqlInstanceServerTrustCertificateModel UpsertServerTrustCertificate(AzureSqlInstanceServerTrustCertificateModel model)
         {
-            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.InstanceName, model.CertificateName, new Management.Sql.Models.ServerTrustCertificate
+            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.InstanceName, model.Name, new Management.Sql.Models.ServerTrustCertificate
             {
                 PublicBlob = model.PublicKey,
             });
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Services
                 InstanceName = instanceName,
                 Id = serverTrustCertificate.Id,
                 Type = serverTrustCertificate.Type,
-                CertificateName = serverTrustCertificate.CertificateName,
+                Name = serverTrustCertificate.CertificateName,
                 PublicKey = "0x" + serverTrustCertificate.PublicBlob,
                 Thumbprint = "0x" + serverTrustCertificate.Thumbprint
             };

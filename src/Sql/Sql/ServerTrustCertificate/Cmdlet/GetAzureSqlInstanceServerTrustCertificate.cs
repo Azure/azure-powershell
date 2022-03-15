@@ -15,8 +15,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
     /// </summary>
     [Cmdlet(
         VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceServerTrustCertificate",
-        DefaultParameterSetName = GetByNameParameterSet
-        ), 
+        DefaultParameterSetName = GetByNameParameterSet), 
         OutputType(typeof(AzureSqlInstanceServerTrustCertificateModel))]
     public class GetAzureSqlInstanceServerTrustCertificate : AzureSqlInstanceServerTrustCertificateCmdletBase
     {
@@ -49,14 +48,15 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
         [Parameter(Mandatory = false, ParameterSetName = GetByInstanceResourceIdParameterSet, Position = 1, HelpMessage = "The name of the certificate.")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances/serverTrustCertificates", nameof(ResourceGroupName), nameof(InstanceName))]
         [ValidateNotNullOrEmpty]
-        public string CertificateName { get; set; }
+        [Alias("CertificateName")]
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the instance Object
         /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = GetByParentObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "The instance input object.")]
         [ValidateNotNullOrEmpty]
-        public AzureSqlManagedInstanceModel Instance { get; set; }
+        public AzureSqlManagedInstanceModel InstanceObject { get; set; }
 
         /// <summary>
         /// Gets or sets the certificate Resource Id
@@ -84,15 +84,15 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
                     break;
                 case GetByParentObjectParameterSet:
                     // we need to extract RG and MI name from the Instance object, Cert name received directly from arg
-                    ResourceGroupName = Instance.ResourceGroupName;
-                    InstanceName = Instance.ManagedInstanceName;
+                    ResourceGroupName = InstanceObject.ResourceGroupName;
+                    InstanceName = InstanceObject.ManagedInstanceName;
                     break;
                 case GetByResourceIdParameterSet:
                     // we need to derive RG, MI and Cert name from resource id
                     var resourceInfo = new ResourceIdentifier(ResourceId);
                     ResourceGroupName = resourceInfo.ResourceGroupName;
                     InstanceName = resourceInfo.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
-                    CertificateName = resourceInfo.ResourceName;
+                    Name = resourceInfo.ResourceName;
                     break;
                 case GetByInstanceResourceIdParameterSet:
                     // we need to derive RG and MI name from managed instance resource id, cert name passed from arg
@@ -113,9 +113,9 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
         protected override IEnumerable<AzureSqlInstanceServerTrustCertificateModel> GetEntity()
         {
             ICollection<AzureSqlInstanceServerTrustCertificateModel> results = new List<AzureSqlInstanceServerTrustCertificateModel>();
-            if (CertificateName != null)
+            if (Name != null)
             {
-                results.Add(ModelAdapter.GetServerTrustCertificate(ResourceGroupName, InstanceName, CertificateName));
+                results.Add(ModelAdapter.GetServerTrustCertificate(ResourceGroupName, InstanceName, Name));
             }
             else
             {

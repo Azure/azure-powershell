@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Model
+﻿namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Model
 {
     public class AzureSqlInstanceServerTrustCertificateModel
     {
@@ -29,7 +25,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Model
         /// <summary>
         /// Gets or sets certificate name
         /// </summary>
-        public string CertificateName { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets certificate thumbprint

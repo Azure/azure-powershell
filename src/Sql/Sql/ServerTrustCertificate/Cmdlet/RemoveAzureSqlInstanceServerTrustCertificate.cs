@@ -17,8 +17,8 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
     [Cmdlet(
         VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceServerTrustCertificate",
         DefaultParameterSetName = DeleteByNameParameterSet,
-        SupportsShouldProcess = true
-        ), OutputType(typeof(AzureSqlInstanceServerTrustCertificateModel))]
+        SupportsShouldProcess = true),
+        OutputType(typeof(AzureSqlInstanceServerTrustCertificateModel))]
     public class RemoveAzureSqlInstanceServerTrustCertificate : AzureSqlInstanceServerTrustCertificateCmdletBase
     {
         private const string DeleteByNameParameterSet = "DeleteByNameParameterSet";
@@ -49,21 +49,22 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
         [Parameter(Mandatory = true, ParameterSetName = DeleteByParentObjectParameterSet, Position = 1, HelpMessage = "The name of the certificate.")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances/serverTrustCertificates", nameof(ResourceGroupName), nameof(InstanceName))]
         [ValidateNotNullOrEmpty]
-        public string CertificateName { get; set; }
+        [Alias("CertificateName")]
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the instance Object
         /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = DeleteByParentObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "The instance input object.")]
         [ValidateNotNullOrEmpty]
-        public AzureSqlManagedInstanceModel Instance { get; set; }
+        public AzureSqlManagedInstanceModel InstanceObject { get; set; }
 
         /// <summary>
         /// Gets or sets the instance Object
         /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = DeleteByInputObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "The certificate input object.")]
         [ValidateNotNullOrEmpty]
-        public AzureSqlInstanceServerTrustCertificateModel Certificate { get; set; }
+        public AzureSqlInstanceServerTrustCertificateModel InputObject { get; set; }
 
         /// <summary>
         /// Gets or sets the certificate Resource Id
@@ -79,6 +80,20 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
         public SwitchParameter AsJob { get; set; }
 
         /// <summary>
+        /// Defines whether the cmdlets will output the model object at the end of its execution.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Defines whether to return the removed Server Trust Certificate")]
+        public SwitchParameter PassThru { get; set; }
+
+        /// <summary>
+        /// Returns true if the model object that was constructed by this cmdlet should be written out.
+        /// </summary>
+        protected override bool WriteResult()
+        {
+            return PassThru.IsPresent;
+        }
+
+        /// <summary>
         /// Entry point for the cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
@@ -90,21 +105,21 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
                     break;
                 case DeleteByParentObjectParameterSet:
                     // we need to extract RG and MI name from the Instance object, Cert name received directly from arg
-                    ResourceGroupName = Instance.ResourceGroupName;
-                    InstanceName = Instance.ManagedInstanceName;
+                    ResourceGroupName = InstanceObject.ResourceGroupName;
+                    InstanceName = InstanceObject.ManagedInstanceName;
                     break;
                 case DeleteByInputObjectParameterSet:
                     // we need to extract RG, MI and Certificate name directly from the Certificate object
-                    ResourceGroupName = Certificate.ResourceGroupName;
-                    InstanceName = Certificate.InstanceName;
-                    CertificateName = Certificate.CertificateName;
+                    ResourceGroupName = InputObject.ResourceGroupName;
+                    InstanceName = InputObject.InstanceName;
+                    Name = InputObject.Name;
                     break;
                 case DeleteByResourceIdParameterSet:
                     // we need to derive RG, MI and Cert name from resource id
                     var resourceInfo = new ResourceIdentifier(ResourceId);
                     ResourceGroupName = resourceInfo.ResourceGroupName;
                     InstanceName = resourceInfo.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
-                    CertificateName = resourceInfo.ResourceName;
+                    Name = resourceInfo.ResourceName;
                     break;
                 default:
                     break;
@@ -112,8 +127,8 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
 
             // messages describing behavior with -WhatIf and -Confirm flags
             if (ShouldProcess(
-                string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveAzureSqlInstanceServerTrustCertificateDescription, ResourceGroupName, InstanceName, CertificateName),
-                string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveAzureSqlInstanceServerTrustCertificateWarning, ResourceGroupName, InstanceName, CertificateName),
+                string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveAzureSqlInstanceServerTrustCertificateDescription, ResourceGroupName, InstanceName, Name),
+                string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveAzureSqlInstanceServerTrustCertificateWarning, ResourceGroupName, InstanceName, Name),
                 Properties.Resources.ShouldProcessCaption))
             {
                 base.ExecuteCmdlet();
@@ -127,7 +142,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
         protected override IEnumerable<AzureSqlInstanceServerTrustCertificateModel> GetEntity()
         {
             return new List<AzureSqlInstanceServerTrustCertificateModel>() {
-                ModelAdapter.GetServerTrustCertificate(ResourceGroupName, InstanceName, CertificateName)
+                ModelAdapter.GetServerTrustCertificate(ResourceGroupName, InstanceName, Name)
             };
         }
 
@@ -149,7 +164,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
         protected override IEnumerable<AzureSqlInstanceServerTrustCertificateModel> PersistChanges(IEnumerable<AzureSqlInstanceServerTrustCertificateModel> entity)
         {
             var entityToDelete = entity.First();
-            ModelAdapter.RemoveServerTrustCertificate(entityToDelete.ResourceGroupName, entityToDelete.InstanceName, entityToDelete.CertificateName);
+            ModelAdapter.RemoveServerTrustCertificate(entityToDelete.ResourceGroupName, entityToDelete.InstanceName, entityToDelete.Name);
             return entity;
         }
     }

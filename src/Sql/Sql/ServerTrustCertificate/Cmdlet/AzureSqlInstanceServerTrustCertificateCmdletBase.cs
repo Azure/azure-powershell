@@ -1,9 +1,7 @@
 ﻿using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Model;
 using Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Services;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
 {

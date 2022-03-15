@@ -41,8 +41,6 @@ The Get-AzSqlInstanceServerTrustCertificate cmdlet returns information about one
 
 ## EXAMPLES
 
-
-
 ### Example 1: Get all Server Trust Certificates on an Instance
 ```powershell
 PS C:\> Get-AzSqlInstanceServerTrustCertificate -ResourceGroupName "ResourceGroup01" -InstanceName "Instance01"

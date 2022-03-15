@@ -16,8 +16,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
     [Cmdlet(
         VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceServerTrustCertificate",
         DefaultParameterSetName = CreateByNameParameterSet,
-        SupportsShouldProcess = true
-        ),
+        SupportsShouldProcess = true),
         OutputType(typeof(AzureSqlInstanceServerTrustCertificateModel))]
     public class NewAzureSqlInstanceServerTrustCertificate : AzureSqlInstanceServerTrustCertificateCmdletBase
     {
@@ -46,7 +45,8 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
         [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, Position = 2, HelpMessage = "The name of the certificate.")]
         [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, Position = 1, HelpMessage = "The name of the certificate.")]
         [ValidateNotNullOrEmpty]
-        public string CertificateName { get; set; }
+        [Alias("CertificateName")]
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the public key
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
         /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "The instance input object.")]
         [ValidateNotNullOrEmpty]
-        public AzureSqlManagedInstanceModel Instance { get; set; }
+        public AzureSqlManagedInstanceModel InstanceObject { get; set; }
 
         /// <summary>
         /// Entry point for the cmdlet
@@ -76,8 +76,8 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
                     break;
                 case CreateByParentObjectParameterSet:
                     // we need to extract RG and MI name from the Instance object, Cert name and Public key received directly from arg
-                    ResourceGroupName = Instance.ResourceGroupName;
-                    InstanceName = Instance.ManagedInstanceName;
+                    ResourceGroupName = InstanceObject.ResourceGroupName;
+                    InstanceName = InstanceObject.ManagedInstanceName;
                     break;
                 default:
                     break;
@@ -85,8 +85,8 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
 
             // messages describing behavior with -WhatIf and -Confirm flags
             if (!ShouldProcess(
-              string.Format(CultureInfo.InvariantCulture, Properties.Resources.CreateAzureSqlInstanceServerTrustCertificateDescription, ResourceGroupName, InstanceName, CertificateName),
-              string.Format(CultureInfo.InvariantCulture, Properties.Resources.CreateAzureSqlInstanceServerTrustCertificateWarning, ResourceGroupName, InstanceName, CertificateName),
+              string.Format(CultureInfo.InvariantCulture, Properties.Resources.CreateAzureSqlInstanceServerTrustCertificateDescription, ResourceGroupName, InstanceName, Name),
+              string.Format(CultureInfo.InvariantCulture, Properties.Resources.CreateAzureSqlInstanceServerTrustCertificateWarning, ResourceGroupName, InstanceName, Name),
               Properties.Resources.ShouldProcessCaption))
             {
                 return;
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
             // We try to get the certificate. Since this is a create, we don't want the certificate to exist
             try
             {
-                ModelAdapter.GetServerTrustCertificate(ResourceGroupName, InstanceName, CertificateName);
+                ModelAdapter.GetServerTrustCertificate(ResourceGroupName, InstanceName, Name);
             }
             catch (CloudException ex)
             {
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
             }
 
             // The certificate already exists
-            throw new PSArgumentException(string.Format(Properties.Resources.ServerTrustCertificateAlreadyExists, CertificateName, InstanceName), "CertificateName");
+            throw new PSArgumentException(string.Format(Properties.Resources.ServerTrustCertificateAlreadyExists, Name, InstanceName), "CertificateName");
         }
 
         /// <summary>
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
                 {
                     ResourceGroupName = ResourceGroupName,
                     InstanceName = InstanceName,
-                    CertificateName = CertificateName,
+                    Name = Name,
                     PublicKey = PublicKey,
                 }
             };

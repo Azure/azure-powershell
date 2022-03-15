@@ -38,11 +38,11 @@ The Disable-AzSqlDatabaseLedgerDigestUpload cmdlet disables uploading ledger dig
 ### Example 1
 ```powershell
 PS C:\> Disable-AzSqlDatabaseLedgerDigestUpload -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
-```
 
 ResourceGroupName ServerName DatabaseName State    Endpoint
 ----------------- ---------- ------------ -----    --------
 ResourceGroup01   Server01   Database01   Disabled
+```
 
 ## PARAMETERS
 

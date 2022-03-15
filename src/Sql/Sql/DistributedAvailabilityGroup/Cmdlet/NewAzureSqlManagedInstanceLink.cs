@@ -2,12 +2,10 @@
 using Microsoft.Azure.Commands.Sql.ManagedInstance.Model;
 using Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Model;
 using Microsoft.Rest.Azure;
-using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
-using System.Text;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
 {
@@ -16,8 +14,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceLink",
         DefaultParameterSetName = CreateByNameParameterSet,
-        SupportsShouldProcess = true
-        ),
+        SupportsShouldProcess = true),
         OutputType(typeof(AzureSqlManagedInstanceLinkModel))]
     public class NewAzureSqlManagedInstanceLink : AzureSqlManagedInstanceLinkCmdletBase
     {
@@ -46,7 +43,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, Position = 2, HelpMessage = "The name of the Managed Instance link.")]
         [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, Position = 1, HelpMessage = "The name of the Managed Instance link.")]
         [ValidateNotNullOrEmpty]
-        public string LinkName { get; set; }
+        [Alias("LinkName")]
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the primary availability group name
@@ -85,7 +83,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "The instance input object.")]
         [ValidateNotNullOrEmpty]
-        public AzureSqlManagedInstanceModel Instance { get; set; }
+        public AzureSqlManagedInstanceModel InstanceObject { get; set; }
 
         /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
@@ -105,8 +103,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
                     break;
                 case CreateByParentObjectParameterSet:
                     // we need to extract RG and MI name from the Instance object, rest is received directly from args
-                    ResourceGroupName = Instance.ResourceGroupName;
-                    InstanceName = Instance.ManagedInstanceName;
+                    ResourceGroupName = InstanceObject.ResourceGroupName;
+                    InstanceName = InstanceObject.ManagedInstanceName;
                     break;
                 default:
                     break;
@@ -114,8 +112,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
 
             // messages describing behavior with -WhatIf and -Confirm flags
             if (ShouldProcess(
-                string.Format(CultureInfo.InvariantCulture, Properties.Resources.CreateAzureSqlInstanceLinkDescription, ResourceGroupName, InstanceName, LinkName),
-                string.Format(CultureInfo.InvariantCulture, Properties.Resources.CreateAzureSqlInstanceLinkWarning, ResourceGroupName, InstanceName, LinkName),
+                string.Format(CultureInfo.InvariantCulture, Properties.Resources.CreateAzureSqlInstanceLinkDescription, ResourceGroupName, InstanceName, Name),
+                string.Format(CultureInfo.InvariantCulture, Properties.Resources.CreateAzureSqlInstanceLinkWarning, ResourceGroupName, InstanceName, Name),
                 Properties.Resources.ShouldProcessCaption))
             {
                 base.ExecuteCmdlet();
@@ -132,7 +130,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
             // We try to get the MI Link. Since this is a create, we don't want the link to exist
             try
             {
-                ModelAdapter.GetManagedInstanceLink(ResourceGroupName, InstanceName, LinkName);
+                ModelAdapter.GetManagedInstanceLink(ResourceGroupName, InstanceName, Name);
             }
             catch (CloudException ex)
             {
@@ -148,8 +146,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
 
             // The Link already exists
             throw new PSArgumentException(
-                string.Format(Properties.Resources.ManagedInstanceLinkAlreadyExists, LinkName, InstanceName),
-                "LinkName");
+                string.Format(Properties.Resources.ManagedInstanceLinkAlreadyExists, Name, InstanceName),
+                "Name");
         }
 
 
@@ -166,7 +164,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
                 {
                     ResourceGroupName = ResourceGroupName,
                     InstanceName = InstanceName,
-                    LinkName = LinkName,
+                    Name = Name,
                     PrimaryAvailabilityGroupName = PrimaryAvailabilityGroupName,
                     SecondaryAvailabilityGroupName = SecondaryAvailabilityGroupName,
                     TargetDatabase = TargetDatabase,

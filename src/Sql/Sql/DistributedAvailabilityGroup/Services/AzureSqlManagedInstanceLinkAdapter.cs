@@ -1,9 +1,7 @@
 ﻿using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Model;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Services
 {
@@ -65,7 +63,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Services
         /// <returns>The upserted Azure Sql Managed Instance Link</returns>
         internal AzureSqlManagedInstanceLinkModel CreateManagedInstanceLink(AzureSqlManagedInstanceLinkModel model)
         {
-            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.InstanceName, model.LinkName, new Management.Sql.Models.DistributedAvailabilityGroup
+            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.InstanceName, model.Name, new Management.Sql.Models.DistributedAvailabilityGroup
             {
                 TargetDatabase = model.TargetDatabase,
                 SourceEndpoint = model.SourceEndpoint, 
@@ -83,7 +81,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Services
         /// <returns>The updated Azure Sql Managed Instance Link</returns>
         internal AzureSqlManagedInstanceLinkModel UpdateManagedInstanceLink(AzureSqlManagedInstanceLinkModel model)
         {
-            var resp = Communicator.Update(model.ResourceGroupName, model.InstanceName, model.LinkName, new Management.Sql.Models.DistributedAvailabilityGroup
+            var resp = Communicator.Update(model.ResourceGroupName, model.InstanceName, model.Name, new Management.Sql.Models.DistributedAvailabilityGroup
             {
                 //TargetDatabase = "testdb",
                 //SourceEndpoint = "TCP://SERVER:7022",
@@ -119,7 +117,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Services
                 InstanceName = instanceName,
                 Id = managedInstanceLink.Id,
                 Type = managedInstanceLink.Type,
-                LinkName = managedInstanceLink.Name,
+                Name = managedInstanceLink.Name,
                 TargetDatabase = managedInstanceLink.TargetDatabase,
                 SourceEndpoint = managedInstanceLink.SourceEndpoint,
                 ReplicationMode = managedInstanceLink.ReplicationMode,

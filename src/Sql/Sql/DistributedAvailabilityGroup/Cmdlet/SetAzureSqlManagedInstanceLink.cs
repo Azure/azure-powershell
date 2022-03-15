@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
-using System.Text;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
 {
@@ -48,7 +47,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         [Parameter(Mandatory = true, ParameterSetName = SetByParentObjectParameterSet, Position = 1, HelpMessage = "The name of the Managed Instance link.")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances/distributedAvailabilityGroups", nameof(ResourceGroupName), nameof(InstanceName))]
         [ValidateNotNullOrEmpty]
-        public string LinkName { get; set; }
+        [Alias("LinkName")]
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the replication mode
@@ -73,14 +73,14 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = SetByParentObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "The instance input object.")]
         [ValidateNotNullOrEmpty]
-        public AzureSqlManagedInstanceModel Instance { get; set; }
+        public AzureSqlManagedInstanceModel InstanceObject { get; set; }
 
         /// <summary>
         /// Gets or set the input mi link object
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = SetByInputObjectParameterSet, Position = 0, HelpMessage = "The Managed Instance Link input object.")]
         [ValidateNotNull]
-        public AzureSqlManagedInstanceLinkModel ManagedInstanceLink { get; set; }
+        public AzureSqlManagedInstanceLinkModel InputObject { get; set; }
 
         /// <summary>
         /// Get the entities from the service
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// <returns>The list of entities</returns>
         protected override IEnumerable<AzureSqlManagedInstanceLinkModel> GetEntity()
         {
-            return new List<AzureSqlManagedInstanceLinkModel>() { ModelAdapter.GetManagedInstanceLink(ResourceGroupName, InstanceName, LinkName) };
+            return new List<AzureSqlManagedInstanceLinkModel>() { ModelAdapter.GetManagedInstanceLink(ResourceGroupName, InstanceName, Name) };
         }
 
         public override void ExecuteCmdlet()
@@ -100,22 +100,22 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
                     break;
                 case SetByParentObjectParameterSet:
                     // we need to extract RG and MI name from the Instance object, MiLink name received directly from arg
-                    ResourceGroupName = Instance.ResourceGroupName;
-                    InstanceName = Instance.ManagedInstanceName;
+                    ResourceGroupName = InstanceObject.ResourceGroupName;
+                    InstanceName = InstanceObject.ManagedInstanceName;
                     break;
                 case SetByInputObjectParameterSet:
                     // we need to extract RG, MI and MiLink name directly from the MiLink object but replication mode can be either from the object or from arg
-                    ResourceGroupName = ManagedInstanceLink.ResourceGroupName;
-                    InstanceName = ManagedInstanceLink.InstanceName;
-                    LinkName = ManagedInstanceLink.LinkName;
-                    ReplicationMode = this.IsParameterBound(c => c.ReplicationMode) ? ReplicationMode : ManagedInstanceLink.ReplicationMode;
+                    ResourceGroupName = InputObject.ResourceGroupName;
+                    InstanceName = InputObject.InstanceName;
+                    Name = InputObject.Name;
+                    ReplicationMode = this.IsParameterBound(c => c.ReplicationMode) ? ReplicationMode : InputObject.ReplicationMode;
                     break;
                 case SetByResourceIdParameterSet:
                     // we need to derive RG, MI and MiLink name from resource id
                     var resourceInfo = new ResourceIdentifier(ResourceId);
                     ResourceGroupName = resourceInfo.ResourceGroupName;
                     InstanceName = resourceInfo.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
-                    LinkName = resourceInfo.ResourceName;
+                    Name = resourceInfo.ResourceName;
                     break;
                 default:
                     break;
@@ -123,8 +123,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
 
             // messages describing behavior with -WhatIf and -Confirm flags
             if (ShouldProcess(
-                string.Format(CultureInfo.InvariantCulture, Properties.Resources.SetAzureSqlInstanceLinkDescription, ResourceGroupName, InstanceName, LinkName),
-                string.Format(CultureInfo.InvariantCulture, Properties.Resources.SetAzureSqlInstanceLinkWarning, ResourceGroupName, InstanceName, LinkName),
+                string.Format(CultureInfo.InvariantCulture, Properties.Resources.SetAzureSqlInstanceLinkDescription, ResourceGroupName, InstanceName, Name),
+                string.Format(CultureInfo.InvariantCulture, Properties.Resources.SetAzureSqlInstanceLinkWarning, ResourceGroupName, InstanceName, Name),
                 Properties.Resources.ShouldProcessCaption))
             {
                 base.ExecuteCmdlet();
