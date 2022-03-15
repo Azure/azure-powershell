@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Added cmdlets: `Move-AzOperationalInsightsTable`, `New-AzOperationalInsightsTable`, `New-AzOperationalInsightsTableColumnObject`, `Remove-AzOperationalInsightsTable` and
+`Update-AzOperationalInsightsTable`
 * Bug fix - prevent exceptions while using StorageInsight cmdlets.
 * Bug fix - when updating a cluster, it's SKU was set even if no value was passed.
 
