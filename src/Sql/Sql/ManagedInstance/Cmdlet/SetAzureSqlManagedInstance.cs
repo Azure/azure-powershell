@@ -267,7 +267,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public SwitchParameter ZoneRedundant { get; set; }
 
         // <summary>
-        /// List of user assigned identities.
+        /// Gets or sets service principal type
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "Type of Service Principal to be used. Possible values are SystemAssigned and None.")]
@@ -361,6 +361,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             updateData[0].SubnetId = this.SubnetId ?? model.FirstOrDefault().SubnetId;
             updateData[0].ZoneRedundant = this.ZoneRedundant.IsPresent ? this.ZoneRedundant.ToBool() : (bool?)null;
             updateData[0].RequestedBackupStorageRedundancy = this.BackupStorageRedundancy ?? updateData[0].CurrentBackupStorageRedundancy;
+            updateData[0].ServicePrincipal = ResourceServicePrincipalHelper.GetServicePrincipalObjectFromType(this.ServicePrincipalType ?? null);
             return updateData;
         }
 

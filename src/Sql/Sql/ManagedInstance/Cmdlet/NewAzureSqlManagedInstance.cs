@@ -397,6 +397,15 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         [Parameter(Mandatory = false, HelpMessage = "Use zone redundant storage")]
         public SwitchParameter ZoneRedundant { get; set; }
 
+        // <summary>
+        /// Gets or sets service principal type
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Type of Service Principal to be used. Possible values are SystemAssigned and None.")]
+        [ValidateSet("None", "SystemAssigned")]
+        [PSArgumentCompleter("SystemAssigned", "None")]
+        public string ServicePrincipalType { get; set; }
+
         /// <summary>
         /// Overriding to add warning message
         /// </summary>
@@ -564,7 +573,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                     Login = this.ExternalAdminName,
                     Sid = this.ExternalAdminSID
                 },
-                ZoneRedundant = this.ZoneRedundant.IsPresent ? this.ZoneRedundant.ToBool() : (bool?)null
+                ZoneRedundant = this.ZoneRedundant.IsPresent ? this.ZoneRedundant.ToBool() : (bool?)null,
+                ServicePrincipal = ResourceServicePrincipalHelper.GetServicePrincipalObjectFromType(this.ServicePrincipalType ?? null)
             }); ;
             return newEntity;
         }
