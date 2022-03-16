@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.KubernetesConfiguration
-online version: https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/get-azfluxconfiguration
+online version: https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/get-azkubernetesconfigurationflux
 schema: 2.0.0
 ---
 
-# Get-AzFluxConfiguration
+# Get-AzKubernetesConfigurationFlux
 
 ## SYNOPSIS
 Gets details of the Flux Configuration.
@@ -14,19 +14,19 @@ Gets details of the Flux Configuration.
 
 ### List (Default)
 ```
-Get-AzFluxConfiguration -ClusterName <String> -ClusterRp <String> -ClusterType <String>
- -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzKubernetesConfigurationFlux -ClusterName <String> -ClusterType <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzFluxConfiguration -ClusterName <String> -ClusterRp <String> -ClusterType <String> -Name <String>
+Get-AzKubernetesConfigurationFlux -ClusterName <String> -ClusterType <String> -Name <String>
  -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzFluxConfiguration -InputObject <IKubernetesConfigurationIdentity> [-DefaultProfile <PSObject>]
+Get-AzKubernetesConfigurationFlux -InputObject <IKubernetesConfigurationIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -57,22 +57,6 @@ PS C:\> {{ Add code here }}
 
 ### -ClusterName
 The name of the kubernetes cluster.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, List
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ClusterRp
-The Kubernetes cluster RP - i.e.
-Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
 
 ```yaml
 Type: System.String
@@ -193,6 +177,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+Get-AzK8sConfigurationFlux
 
 COMPLEX PARAMETER PROPERTIES
 

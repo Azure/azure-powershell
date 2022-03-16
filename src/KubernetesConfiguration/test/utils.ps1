@@ -66,7 +66,8 @@ function setupEnv() {
     write-host "2. az aks get-credentials..."
     az aks get-credentials --resource-group $env.resourceGroupCUS --name $env.k8sNameCUS
     write-host "2. az connectedk8s connect..."
-    az connectedk8s connect --name $env.clusterNameCUS --resource-group $env.resourceGroupCUS --location $env.locationCUS
+    # az connectedk8s connect --name $env.clusterNameCUS --resource-group $env.resourceGroupCUS --location $env.locationCUS
+    New-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Location eastus2
 
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'

@@ -1,32 +1,32 @@
 ---
 external help file:
 Module Name: Az.KubernetesConfiguration
-online version: https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/get-azfluxconfigoperationstatus
+online version: https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/remove-azkubernetesconfigurationflux
 schema: 2.0.0
 ---
 
-# Get-AzFluxConfigOperationStatus
+# Remove-AzKubernetesConfigurationFlux
 
 ## SYNOPSIS
-Get Async Operation status
+This will delete the YAML file used to set up the Flux Configuration, thus stopping future sync from the source repo.
 
 ## SYNTAX
 
-### Get (Default)
+### Delete (Default)
 ```
-Get-AzFluxConfigOperationStatus -ClusterName <String> -ClusterRp <String> -ClusterType <String>
- -FluxConfigurationName <String> -OperationId <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Remove-AzKubernetesConfigurationFlux -ClusterName <String> -ClusterType <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-ForceDelete] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### DeleteViaIdentity
 ```
-Get-AzFluxConfigOperationStatus -InputObject <IKubernetesConfigurationIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Remove-AzKubernetesConfigurationFlux -InputObject <IKubernetesConfigurationIdentity> [-ForceDelete]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get Async Operation status
+This will delete the YAML file used to set up the Flux Configuration, thus stopping future sync from the source repo.
 
 ## EXAMPLES
 
@@ -50,28 +50,27 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -ClusterName
-The name of the kubernetes cluster.
+### -AsJob
+Run the command as a job
 
 ```yaml
-Type: System.String
-Parameter Sets: Get
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ClusterRp
-The Kubernetes cluster RP - i.e.
-Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
+### -ClusterName
+The name of the kubernetes cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -87,7 +86,7 @@ managedClusters, connectedClusters, provisionedClusters.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -112,15 +111,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FluxConfigurationName
-Name of the Flux Configuration.
+### -ForceDelete
+Delete the extension resource in Azure - not the normal asynchronous delete.
 
 ```yaml
-Type: System.String
-Parameter Sets: Get
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -133,7 +132,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IKubernetesConfigurationIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -143,15 +142,45 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -OperationId
-operation Id
+### -Name
+Name of the Flux Configuration.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
-Aliases:
+Parameter Sets: Delete
+Aliases: FluxConfigurationName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -164,7 +193,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -178,13 +207,44 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: Get
+Type: System.String
+Parameter Sets: Delete
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -198,11 +258,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IOperationStatusResult
+### System.Boolean
 
 ## NOTES
 
 ALIASES
+
+Remove-AzK8sConfigurationFlux
 
 COMPLEX PARAMETER PROPERTIES
 

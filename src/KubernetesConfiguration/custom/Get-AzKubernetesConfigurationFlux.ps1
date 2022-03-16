@@ -16,27 +16,22 @@
 
 <#
 .Synopsis
-Gets details of the Source Control Configuration.
+Gets details of the Flux Configuration.
 .Description
-Gets details of the Source Control Configuration.
+Gets details of the Flux Configuration.
 .Example
-PS C:\> Get-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azps_test_cluster -ClusterType ConnectedClusters
+PS C:\> {{ Add code here }}
 
-Name          Type
-----          ----
-azpstestk8s01 Microsoft.KubernetesConfiguration/sourceControlConfigurations
-azpstestk8s02 Microsoft.KubernetesConfiguration/sourceControlConfigurations
+{{ Add output here }}
 .Example
-PS C:\> Get-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azps_test_cluster -ClusterType ConnectedClusters -Name azpstestk8s01
+PS C:\> {{ Add code here }}
 
-Name          Type
-----          ----
-azpstestk8s01 Microsoft.KubernetesConfiguration/sourceControlConfigurations
+{{ Add output here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IKubernetesConfigurationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.ISourceControlConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfiguration
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -54,13 +49,13 @@ INPUTOBJECT <IKubernetesConfigurationIdentity>: Identity Parameter
   [SourceControlConfigurationName <String>]: Name of the Source Control Configuration.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/get-azkubernetesconfiguration
+https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/get-azkubernetesconfigurationflux
 #>
-function Get-AzKubernetesConfiguration {
-        [Alias('Get-AzK8sConfiguration')]
-        [OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.ISourceControlConfiguration])]
-        [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
-        param(
+function Get-AzKubernetesConfigurationFlux {
+    [Alias('Get-AzK8sConfigurationFlux')]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfiguration])]
+    [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+    param(
         [Parameter(ParameterSetName='Get', Mandatory)]
         [Parameter(ParameterSetName='List', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
@@ -78,10 +73,10 @@ function Get-AzKubernetesConfiguration {
         ${ClusterType},
 
         [Parameter(ParameterSetName='Get', Mandatory)]
-        [Alias('SourceControlConfigurationName')]
+        [Alias('FluxConfigurationName')]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [System.String]
-        # Name of the Source Control Configuration.
+        # Name of the Flux Configuration.
         ${Name},
 
         [Parameter(ParameterSetName='Get', Mandatory)]
@@ -153,7 +148,7 @@ function Get-AzKubernetesConfiguration {
         [System.Management.Automation.SwitchParameter]
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
-    )
+)
 
     process {
         if ($ClusterType -eq 'ManagedClusters') {
@@ -163,6 +158,6 @@ function Get-AzKubernetesConfiguration {
             $PSBoundParameters.Add('ClusterRp', 'Microsoft.Kubernetes')
         }
 
-        Az.KubernetesConfiguration.internal\Get-AzKubernetesConfiguration @PSBoundParameters
+        Az.KubernetesConfiguration.internal\Get-AzKubernetesConfigurationFlux @PSBoundParameters
     }
 }

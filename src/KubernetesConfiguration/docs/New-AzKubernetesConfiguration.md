@@ -45,9 +45,9 @@ New-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName az
 ```
 
 ```output
-Name          Type
-----          ----
-azpstestk8s02 Microsoft.KubernetesConfiguration/sourceControlConfigurations
+Name          RepositoryUrl          ResourceGroupName
+----          -------------          -----------------
+azpstestk8s02 http://github.com/xxxx azps_test_group
 ```
 
 This command creates a configuration in the new operator namespace for kubernetes cluster.

@@ -81,6 +81,13 @@ directive:
             "$ref": "#/definitions/Extension"
           }
         },
+        "409": {
+          "description": "Conflict",
+          "x-ms-error-response": true,
+          "schema": {
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/791255f0c5dd775015cd51f3e642549190fb3803/specification/common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
+          }
+        },
         "default": {
           "description": "Error response describing why the operation failed.",
           "schema": {
@@ -101,6 +108,26 @@ directive:
         },
         "x-ms-identifiers": []
       }
+  - from: swagger-document 
+    where: $.definitions.BucketDefinition.properties.accessKey
+    transform: >-
+      return {
+        "description": "Plaintext access key used to securely access the S3 bucket",
+        "type": "string",
+        "format": "password",
+        "x-ms-secret": true,
+        "x-nullable": true
+      }
+  - from: swagger-document 
+    where: $.definitions.BucketPatchDefinition.properties.accessKey
+    transform: >-
+      return {
+        "description": "Plaintext access key used to securely access the S3 bucket",
+        "type": "string",
+        "format": "password",
+        "x-ms-secret": true,
+        "x-nullable": true
+      }
   - from: swagger-document
     where: $.definitions.EnableHelmOperatorDefinition.type
     transform: return "string"
@@ -111,6 +138,14 @@ directive:
       subject: SourceControlConfiguration
     set:
       subject: KubernetesConfiguration
+  - where:
+      subject: FluxConfiguration
+    set:
+      subject: KubernetesConfigurationFlux
+  - where:
+      subject: FluxConfigOperationStatus
+    set:
+      subject: KubernetesConfigFluxOperationStatus
   - where:
       parameter-name: ClusterResourceName
     set:
@@ -162,6 +197,12 @@ directive:
       subject: KubernetesExtension
     hide: true
   - where:
+      subject: KubernetesConfigurationFlux
+    hide: true
+  - where:
+      subject: KubernetesConfigFluxOperationStatus
+    hide: true
+  - where:
       verb: Get
       subject: KubernetesExtension
     set:
@@ -197,6 +238,31 @@ directive:
     set:
       alias: Remove-AzK8sConfiguration
   - where:
+      verb: New
+      subject: KubernetesConfigurationFlux
+    set:
+      alias: New-AzK8sConfigurationFlux
+  - where:
+      verb: Get
+      subject: KubernetesConfigurationFlux
+    set:
+      alias: Get-AzK8sConfigurationFlux
+  - where:
+      verb: Remove
+      subject: KubernetesConfigurationFlux
+    set:
+      alias: Remove-AzK8sConfigurationFlux
+  - where:
+      verb: Update
+      subject: KubernetesConfigurationFlux
+    set:
+      alias: Update-AzK8sConfigurationFlux
+  - where:
+      verb: Get
+      subject: KubernetesConfigFluxOperationStatus
+    set:
+      alias: Get-AzK8sConfigFluxOperationStatus
+  - where:
       model-name: Extension
     set:
       format-table:
@@ -207,4 +273,12 @@ directive:
           - ProvisioningState
           - AutoUpgradeMinorVersion
           - ReleaseTrain
+  - where:
+      model-name: SourceControlConfiguration
+    set:
+      format-table:
+        properties:
+          - Name
+          - RepositoryUrl
+          - ResourceGroupName
 ```

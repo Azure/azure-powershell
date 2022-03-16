@@ -163,13 +163,11 @@ function Remove-AzKubernetesConfiguration {
     )
 
     process {
-        
-        if ($PSBoundParameters.ContainsKey('ClusterType')) {
-            if ($ClusterType -eq 'ManagedClusters') {
-                $PSBoundParameters.Add('ClusterRp', 'Microsoft.ContainerService')
-            } elseif ($ClusterType -eq 'ConnectedClusters') {
-                $PSBoundParameters.Add('ClusterRp', 'Microsoft.Kubernetes')
-            }
+        if ($ClusterType -eq 'ManagedClusters') {
+            $PSBoundParameters.Add('ClusterRp', 'Microsoft.ContainerService')
+        }
+        elseif ($ClusterType -eq 'ConnectedClusters') {
+            $PSBoundParameters.Add('ClusterRp', 'Microsoft.Kubernetes')
         }
 
         Az.KubernetesConfiguration.internal\Remove-AzKubernetesConfiguration @PSBoundParameters

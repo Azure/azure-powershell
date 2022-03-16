@@ -1,33 +1,47 @@
 ---
 external help file:
 Module Name: Az.KubernetesConfiguration
-online version: https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/set-azfluxconfiguration
+online version: https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/update-azkubernetesconfigurationflux
 schema: 2.0.0
 ---
 
-# Set-AzFluxConfiguration
+# Update-AzKubernetesConfigurationFlux
 
 ## SYNOPSIS
-Create a new Kubernetes Flux Configuration.
+Update an existing Kubernetes Flux Configuration.
 
 ## SYNTAX
 
+### UpdateExpanded (Default)
 ```
-Set-AzFluxConfiguration -ClusterName <String> -ClusterRp <String> -ClusterType <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-BucketAccessKey <String>] [-BucketInsecure]
+Update-AzKubernetesConfigurationFlux -ClusterName <String> -ClusterType <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-BucketAccessKey <SecureString>] [-BucketInsecure]
  [-BucketLocalAuthRef <String>] [-BucketName <String>] [-BucketSyncIntervalInSecond <Int64>]
  [-BucketTimeoutInSecond <Int64>] [-BucketUrl <String>] [-ConfigurationProtectedSetting <Hashtable>]
  [-GitRepositoryHttpsCaCert <String>] [-GitRepositoryHttpsUser <String>] [-GitRepositoryLocalAuthRef <String>]
  [-GitRepositorySshKnownHost <String>] [-GitRepositorySyncIntervalInSecond <Int64>]
  [-GitRepositoryTimeoutInSecond <Int64>] [-GitRepositoryUrl <String>] [-Kustomization <Hashtable>]
- [-Namespace <String>] [-RepositoryRefBranch <String>] [-RepositoryRefCommit <String>]
- [-RepositoryRefSemver <String>] [-RepositoryRefTag <String>] [-Scope <ScopeType>]
- [-SourceKind <SourceKindType>] [-Suspend] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-RepositoryRefBranch <String>] [-RepositoryRefCommit <String>] [-RepositoryRefSemver <String>]
+ [-RepositoryRefTag <String>] [-SourceKind <SourceKindType>] [-Suspend] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzKubernetesConfigurationFlux -InputObject <IKubernetesConfigurationIdentity>
+ [-BucketAccessKey <SecureString>] [-BucketInsecure] [-BucketLocalAuthRef <String>] [-BucketName <String>]
+ [-BucketSyncIntervalInSecond <Int64>] [-BucketTimeoutInSecond <Int64>] [-BucketUrl <String>]
+ [-ConfigurationProtectedSetting <Hashtable>] [-GitRepositoryHttpsCaCert <String>]
+ [-GitRepositoryHttpsUser <String>] [-GitRepositoryLocalAuthRef <String>]
+ [-GitRepositorySshKnownHost <String>] [-GitRepositorySyncIntervalInSecond <Int64>]
+ [-GitRepositoryTimeoutInSecond <Int64>] [-GitRepositoryUrl <String>] [-Kustomization <Hashtable>]
+ [-RepositoryRefBranch <String>] [-RepositoryRefCommit <String>] [-RepositoryRefSemver <String>]
+ [-RepositoryRefTag <String>] [-SourceKind <SourceKindType>] [-Suspend] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a new Kubernetes Flux Configuration.
+Update an existing Kubernetes Flux Configuration.
 
 ## EXAMPLES
 
@@ -70,7 +84,7 @@ Accept wildcard characters: False
 Plaintext access key used to securely access the S3 bucket
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -176,23 +190,7 @@ The name of the kubernetes cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ClusterRp
-The Kubernetes cluster RP - i.e.
-Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -208,7 +206,7 @@ managedClusters, connectedClusters, provisionedClusters.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -353,6 +351,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IKubernetesConfigurationIdentity
+Parameter Sets: UpdateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Kustomization
 Array of kustomizations used to reconcile the artifact pulled by the source type on the cluster.
 
@@ -373,26 +387,10 @@ Name of the Flux Configuration.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases: FluxConfigurationName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Namespace
-The namespace to which this configuration is installed to.
-Maximum of 253 lower case alphanumeric characters, hyphen and period only.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -484,25 +482,10 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Scope
-Scope at which the operator will be installed.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.ScopeType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -529,7 +512,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -590,13 +573,34 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IKubernetesConfigurationIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfiguration
+### System.Boolean
 
 ## NOTES
 
 ALIASES
+
+Update-AzK8sConfigurationFlux
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+INPUTOBJECT <IKubernetesConfigurationIdentity>: Identity Parameter
+  - `[ClusterName <String>]`: The name of the kubernetes cluster.
+  - `[ClusterResourceName <String>]`: The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
+  - `[ClusterRp <String>]`: The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
+  - `[ExtensionName <String>]`: Name of the Extension.
+  - `[FluxConfigurationName <String>]`: Name of the Flux Configuration.
+  - `[Id <String>]`: Resource identity path
+  - `[OperationId <String>]`: operation Id
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[SourceControlConfigurationName <String>]`: Name of the Source Control Configuration.
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

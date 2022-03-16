@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.KubernetesConfiguration
-online version: https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/new-azfluxconfiguration
+online version: https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/new-azkubernetesconfigurationflux
 schema: 2.0.0
 ---
 
-# New-AzFluxConfiguration
+# New-AzKubernetesConfigurationFlux
 
 ## SYNOPSIS
 Create a new Kubernetes Flux Configuration.
@@ -13,8 +13,8 @@ Create a new Kubernetes Flux Configuration.
 ## SYNTAX
 
 ```
-New-AzFluxConfiguration -ClusterName <String> -ClusterRp <String> -ClusterType <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-BucketAccessKey <String>] [-BucketInsecure]
+New-AzKubernetesConfigurationFlux -ClusterName <String> -ClusterType <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-BucketAccessKey <SecureString>] [-BucketInsecure]
  [-BucketLocalAuthRef <String>] [-BucketName <String>] [-BucketSyncIntervalInSecond <Int64>]
  [-BucketTimeoutInSecond <Int64>] [-BucketUrl <String>] [-ConfigurationProtectedSetting <Hashtable>]
  [-GitRepositoryHttpsCaCert <String>] [-GitRepositoryHttpsUser <String>] [-GitRepositoryLocalAuthRef <String>]
@@ -70,7 +70,7 @@ Accept wildcard characters: False
 Plaintext access key used to securely access the S3 bucket
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -173,22 +173,6 @@ Accept wildcard characters: False
 
 ### -ClusterName
 The name of the kubernetes cluster.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ClusterRp
-The Kubernetes cluster RP - i.e.
-Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
 
 ```yaml
 Type: System.String
@@ -597,6 +581,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+New-AzK8sConfigurationFlux
 
 ## RELATED LINKS
 
