@@ -722,9 +722,6 @@ Sets the information types and sensitivity labels of columns in the Azure SQL Ma
 ### [Set-AzSqlInstanceDatabaseVulnerabilityAssessmentRuleBaseline](Set-AzSqlInstanceDatabaseVulnerabilityAssessmentRuleBaseline.md)
 Sets the vulnerability assessment rule baseline.
 
-### [Set-AzSqlInstanceLink](Set-AzSqlInstanceLink.md)
-Sets properties for an Azure SQL Instance Link.
-
 ### [Set-AzSqlInstancePool](Set-AzSqlInstancePool.md)
 Sets properties for an Azure SQL Instance pool.
 
@@ -823,6 +820,9 @@ Updates the vulnerability assessment settings of a database.
 
 ### [Update-AzSqlInstanceDatabaseVulnerabilityAssessmentSetting](Update-AzSqlInstanceDatabaseVulnerabilityAssessmentSetting.md)
 Updates the vulnerability assessment settings of a managed database.
+
+### [Update-AzSqlInstanceLink](Update-AzSqlInstanceLink.md)
+Updates the properties of a managed instance link.
 
 ### [Update-AzSqlInstanceVulnerabilityAssessmentSetting](Update-AzSqlInstanceVulnerabilityAssessmentSetting.md)
 Updates the vulnerability assessment settings of a managed instance.

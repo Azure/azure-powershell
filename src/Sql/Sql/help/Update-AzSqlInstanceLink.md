@@ -1,58 +1,58 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.sql/update-azsqlinstancelink
 schema: 2.0.0
 ---
 
-# Set-AzSqlInstanceLink
+# Update-AzSqlInstanceLink
 
 ## SYNOPSIS
-Sets properties for an Azure SQL Instance Link.
+Updates the properties of a managed instance link.
 
 ## SYNTAX
 
-### SetByNameParameterSet (Default)
+### UpdateByNameParameterSet (Default)
 ```
-Set-AzSqlInstanceLink [-ResourceGroupName] <String> [-InstanceName] <String> [-Name] <String>
+Update-AzSqlInstanceLink [-ResourceGroupName] <String> [-InstanceName] <String> [-Name] <String>
  [-ReplicationMode] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### SetByParentObjectParameterSet
+### UpdateByParentObjectParameterSet
 ```
-Set-AzSqlInstanceLink [-Name] <String> [-ReplicationMode] <String>
+Update-AzSqlInstanceLink [-Name] <String> [-ReplicationMode] <String>
  [-InstanceObject] <AzureSqlManagedInstanceModel> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
-### SetByInputObjectParameterSet
+### UpdateByInputObjectParameterSet
 ```
-Set-AzSqlInstanceLink [[-ReplicationMode] <String>] [-InputObject] <AzureSqlManagedInstanceLinkModel>
+Update-AzSqlInstanceLink [[-ReplicationMode] <String>] [-InputObject] <AzureSqlManagedInstanceLinkModel>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### SetByResourceIdParameterSet
+### UpdateByResourceIdParameterSet
 ```
-Set-AzSqlInstanceLink [-ReplicationMode] <String> [-ResourceId] <String>
+Update-AzSqlInstanceLink [-ReplicationMode] <String> [-ResourceId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzSqlInstanceLink** cmdlet modifies properties of an Azure SQL Managed Instance Link.
+The **Update-AzSqlInstanceLink** cmdlet modifies properties of an Azure SQL Managed Instance link.
 
 ## EXAMPLES
 
-### Example 1: Set Replication mode of a Managed Instance Link to Sync
+### Example 1: Set replication mode of an instance link to Sync
 ```powershell
-PS C:\> Set-AzSqlInstanceLink -ResourceGroupName "ResourceGroup1" -InstanceName "Instance01" -Name "Link01" -ReplicationMode "Sync"
+PS C:\> Update-AzSqlInstanceLink -ResourceGroupName "ResourceGroup1" -InstanceName "ManagedInstance01" -Name "Link01" -ReplicationMode "Sync"
 ResourceGroupName              : ResourceGroup01
-InstanceName                   : Instance01
+InstanceName                   : ManagedInstance01
 Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
-Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link01
+Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01
 Name                           : Link01
-TargetDatabase                 : Link01DB
-SourceEndpoint                 : TCP://SERVER01:7022
+TargetDatabase                 : Database01
+SourceEndpoint                 : TCP://SERVER01:5022
 PrimaryAvailabilityGroupName   :
 SecondaryAvailabilityGroupName :
 ReplicationMode                : Sync
@@ -62,17 +62,18 @@ TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 LinkState                      : Copying
 LastHardenedLsn                :
 ```
+This command sets the replication mode of an instance link to "Sync".
 
-### Example 2: Set Replication mode of a Managed Instance Link to Async
+### Example 2: Set replication mode of an instance link to Async
 ```powershell
-PS C:\> Set-AzSqlInstanceLink -ResourceGroupName "ResourceGroup1" -InstanceName "Instance01" -Name "Link01" -ReplicationMode "Async"
+PS C:\> Update-AzSqlInstanceLink -ResourceGroupName "ResourceGroup1" -InstanceName "ManagedInstance01" -Name "Link01" -ReplicationMode "Async"
 ResourceGroupName              : ResourceGroup01
-InstanceName                   : Instance01
+InstanceName                   : ManagedInstance01
 Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
-Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link01
+Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01
 Name                           : Link01
-TargetDatabase                 : Link01DB
-SourceEndpoint                 : TCP://SERVER01:7022
+TargetDatabase                 : Database01
+SourceEndpoint                 : TCP://SERVER01:5022
 PrimaryAvailabilityGroupName   :
 SecondaryAvailabilityGroupName :
 ReplicationMode                : Async
@@ -82,17 +83,18 @@ TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 LinkState                      : Copying
 LastHardenedLsn                :
 ```
+This command sets the replication mode of an instance link to "Aync".
 
-### Example 3: Set replication mode of a Managed Instance Link by its resource identifier
+### Example 3: Set replication mode of an instance link by its resource identifier
 ```powershell
-PS C:\> Set-AzSqlInstanceLink -ResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link01" -ReplicationMode "Async"
+PS C:\> Update-AzSqlInstanceLink -ResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01" -ReplicationMode "Async"
 ResourceGroupName              : ResourceGroup01
-InstanceName                   : Instance01
+InstanceName                   : ManagedInstance01
 Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
-Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link01
+Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01
 Name                           : Link01
-TargetDatabase                 : Link01DB
-SourceEndpoint                 : TCP://SERVER01:7022
+TargetDatabase                 : Database01
+SourceEndpoint                 : TCP://SERVER01:5022
 PrimaryAvailabilityGroupName   :
 SecondaryAvailabilityGroupName :
 ReplicationMode                : Async
@@ -102,18 +104,19 @@ TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 LinkState                      : Copying
 LastHardenedLsn                :
 ```
+This command sets the replication mode of an instance link to "Sync" by its resource identifier.
 
-### Example 4: Set replication mode of a Managed Instance Link by its object
+### Example 4: Set replication mode of an instance link by its object
 ```powershell
-PS C:\> $managedInstanceLink = Get-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "Instance01" -Name "Link01" 
-PS C:\> Set-AzSqlInstanceLink -InputObject $managedInstanceLink -ReplicationMode "Async"
+PS C:\> $managedInstanceLink = Get-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "Link01" 
+PS C:\> Update-AzSqlInstanceLink -InputObject $managedInstanceLink -ReplicationMode "Async"
 ResourceGroupName              : ResourceGroup01
-InstanceName                   : Instance01
+InstanceName                   : ManagedInstance01
 Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
-Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link01
+Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01
 Name                           : Link01
-TargetDatabase                 : Link01DB
-SourceEndpoint                 : TCP://SERVER01:7022
+TargetDatabase                 : Database01
+SourceEndpoint                 : TCP://SERVER01:5022
 PrimaryAvailabilityGroupName   :
 SecondaryAvailabilityGroupName :
 ReplicationMode                : Async
@@ -123,19 +126,20 @@ TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 LinkState                      : Copying
 LastHardenedLsn                :
 ```
+This command sets the replication mode of an instance link to "Async" using the input object.
 
-### Example 5: Set replication mode of a Managed Instance Link by mutating its object
+### Example 5: Set replication mode of an instance link by mutating its object
 ```powershell
-PS C:\> $managedInstanceLink = Get-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "Instance01" -Name "Link01" 
+PS C:\> $managedInstanceLink = Get-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "Link01" 
 PS C:\> $managedInstanceLink.ReplicationMode = "Async"
-PS C:\> Set-AzSqlInstanceLink -InputObject $managedInstanceLink
+PS C:\> Update-AzSqlInstanceLink -InputObject $managedInstanceLink
 ResourceGroupName              : ResourceGroup01
-InstanceName                   : Instance01
+InstanceName                   : ManagedInstance01
 Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
-Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link01
+Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01
 Name                           : Link01
-TargetDatabase                 : Link01DB
-SourceEndpoint                 : TCP://SERVER01:7022
+TargetDatabase                 : Database01
+SourceEndpoint                 : TCP://SERVER01:5022
 PrimaryAvailabilityGroupName   :
 SecondaryAvailabilityGroupName :
 ReplicationMode                : Async
@@ -145,18 +149,19 @@ TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 LinkState                      : Copying
 LastHardenedLsn                :
 ```
+This command sets the instance link using input object.
 
-### Example 6: Set replication mode of a Managed Instance Link by its parent instance object
+### Example 6: Set replication mode of an instance link by its parent instance object
 ```powershell
-PS C:\> $instance = Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -Name "Instance01" 
-PS C:\> Set-AzSqlInstanceLink -InstanceObject $instance -Name "Link01" -ReplicationMode "Async"
+PS C:\> $instance = Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -Name "ManagedInstance01" 
+PS C:\> Update-AzSqlInstanceLink -InstanceObject $instance -Name "Link01" -ReplicationMode "Async"
 ResourceGroupName              : ResourceGroup01
-InstanceName                   : Instance01
+InstanceName                   : ManagedInstance01
 Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
-Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link01
+Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01
 Name                           : Link01
-TargetDatabase                 : Link01DB
-SourceEndpoint                 : TCP://SERVER01:7022
+TargetDatabase                 : Database01
+SourceEndpoint                 : TCP://SERVER01:5022
 PrimaryAvailabilityGroupName   :
 SecondaryAvailabilityGroupName :
 ReplicationMode                : Async
@@ -166,6 +171,7 @@ TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 LinkState                      : Copying
 LastHardenedLsn                :
 ```
+This command sets the replication mode of a instance link to "Async" using parent instance object.
 
 ## PARAMETERS
 
@@ -189,7 +195,7 @@ The Managed Instance Link input object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Model.AzureSqlManagedInstanceLinkModel
-Parameter Sets: SetByInputObjectParameterSet
+Parameter Sets: UpdateByInputObjectParameterSet
 Aliases:
 
 Required: True
@@ -204,7 +210,7 @@ The name of the Azure SQL Managed Instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByNameParameterSet
+Parameter Sets: UpdateByNameParameterSet
 Aliases:
 
 Required: True
@@ -219,7 +225,7 @@ The instance input object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
-Parameter Sets: SetByParentObjectParameterSet
+Parameter Sets: UpdateByParentObjectParameterSet
 Aliases:
 
 Required: True
@@ -234,7 +240,7 @@ The name of the Managed Instance link.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByNameParameterSet, SetByParentObjectParameterSet
+Parameter Sets: UpdateByNameParameterSet, UpdateByParentObjectParameterSet
 Aliases: LinkName
 
 Required: True
@@ -250,7 +256,7 @@ Possible values include 'Sync' and 'Async'.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByNameParameterSet, SetByParentObjectParameterSet, SetByResourceIdParameterSet
+Parameter Sets: UpdateByNameParameterSet, UpdateByParentObjectParameterSet, UpdateByResourceIdParameterSet
 Aliases:
 
 Required: True
@@ -262,7 +268,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByInputObjectParameterSet
+Parameter Sets: UpdateByInputObjectParameterSet
 Aliases:
 
 Required: False
@@ -277,7 +283,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByNameParameterSet
+Parameter Sets: UpdateByNameParameterSet
 Aliases:
 
 Required: True
@@ -292,7 +298,7 @@ The Managed Instance Link resource id.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByResourceIdParameterSet
+Parameter Sets: UpdateByResourceIdParameterSet
 Aliases:
 
 Required: True

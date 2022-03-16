@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancelink
 schema: 2.0.0
 ---
 
 # Get-AzSqlInstanceLink
 
 ## SYNOPSIS
-Returns information about Azure SQL Managed Instance Link.
+Returns information about an instance link.
 
 ## SYNTAX
 
@@ -40,16 +40,38 @@ The Get-AzSqlInstanceLink cmdlet returns information about one or more Azure SQL
 
 ## EXAMPLES
 
-### Example 1: Get all Managed Instance Links on an Instance
+### Example 1: Get information about an instance link
 ```powershell
-PS C:\> Get-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "Instance01"
+PS C:\> Get-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "Link01"
 ResourceGroupName              : ResourceGroup01
-InstanceName                   : Instance01
+InstanceName                   : ManagedInstance01
 Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
-Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link01
+Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01
 Name                           : Link01
-TargetDatabase                 : Link01DB
-SourceEndpoint                 : TCP://SERVER01:7022
+TargetDatabase                 : Database01
+SourceEndpoint                 : TCP://SERVER01:5022
+PrimaryAvailabilityGroupName   :
+SecondaryAvailabilityGroupName :
+ReplicationMode                : Async
+DistributedAvailabilityGroupId : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+SourceReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+LinkState                      : Copying
+LastHardenedLsn                :
+```
+
+This command gets information about an instance link named "Link01" on instance "ManagedInstance01" and resource group "ResourceGroup01".
+
+### Example 2: Get information on all instance links on Azure SQL Managed Instance
+```powershell
+PS C:\> Get-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01"
+ResourceGroupName              : ResourceGroup01
+InstanceName                   : ManagedInstance01
+Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
+Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01
+Name                           : Link01
+TargetDatabase                 : Database01
+SourceEndpoint                 : TCP://SERVER01:5022
 PrimaryAvailabilityGroupName   :
 SecondaryAvailabilityGroupName :
 ReplicationMode                : Async
@@ -60,12 +82,12 @@ LinkState                      : Copying
 LastHardenedLsn                :
 
 ResourceGroupName              : ResourceGroup01
-InstanceName                   : Instance01
+InstanceName                   : ManagedInstance01
 Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
-Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link02
+Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link02
 Name                           : Link02
-TargetDatabase                 : Link02DB
-SourceEndpoint                 : TCP://SERVER02:7022
+TargetDatabase                 : Database02
+SourceEndpoint                 : TCP://SERVER02:5022
 PrimaryAvailabilityGroupName   :
 SecondaryAvailabilityGroupName :
 ReplicationMode                : Async
@@ -76,41 +98,19 @@ LinkState                      : Copying
 LastHardenedLsn                :
 ```
 
-This command gets information about all Managed Instance Links on instance  Instance01 and resource group ResourceGroup01.
+This command gets information about all instance links on instance "ManagedInstance01" and resource group "ResourceGroup01".
 
-### Example 2: Get information about a Managed Instance Link
+### Example 3: Get information on all instance links on Azure SQL Managed Instance using instance object
 ```powershell
-PS C:\> Get-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "Instance01" -Name "Link01"
-ResourceGroupName              : ResourceGroup01
-InstanceName                   : Instance01
-Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
-Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link01
-Name                           : Link01
-TargetDatabase                 : Link01DB
-SourceEndpoint                 : TCP://SERVER01:7022
-PrimaryAvailabilityGroupName   :
-SecondaryAvailabilityGroupName :
-ReplicationMode                : Async
-DistributedAvailabilityGroupId : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-SourceReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-LinkState                      : Copying
-LastHardenedLsn                :
-```
-
-This command gets information about the Managed Instance Link named Link01 on instance Instance01 and resource group ResourceGroup01.
-
-### Example 3: Get all Managed Instance Links within an instance using instance object
-```powershell
-PS C:\> $instance = Get-AzSqlInstance -Name "Instance01" -ResourceGroupName "ResourceGroup01"
+PS C:\> $instance = Get-AzSqlInstance -Name "ManagedInstance01" -ResourceGroupName "ResourceGroup01"
 PS C:\> Get-AzSqlInstanceLink -InstanceObject $instance
 ResourceGroupName              : ResourceGroup01
-InstanceName                   : Instance01
+InstanceName                   : ManagedInstance01
 Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
-Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link01
+Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01
 Name                           : Link01
-TargetDatabase                 : Link01DB
-SourceEndpoint                 : TCP://SERVER01:7022
+TargetDatabase                 : Database01
+SourceEndpoint                 : TCP://SERVER01:5022
 PrimaryAvailabilityGroupName   :
 SecondaryAvailabilityGroupName :
 ReplicationMode                : Async
@@ -121,12 +121,12 @@ LinkState                      : Copying
 LastHardenedLsn                :
 
 ResourceGroupName              : ResourceGroup01
-InstanceName                   : Instance01
+InstanceName                   : ManagedInstance01
 Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
-Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link02
+Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link02
 Name                           : Link02
-TargetDatabase                 : Link02DB
-SourceEndpoint                 : TCP://SERVER02:7022
+TargetDatabase                 : Database02
+SourceEndpoint                 : TCP://SERVER02:5022
 PrimaryAvailabilityGroupName   :
 SecondaryAvailabilityGroupName :
 ReplicationMode                : Async
@@ -137,18 +137,18 @@ LinkState                      : Copying
 LastHardenedLsn                :
 ```
 
-This command gets information about all managed instance links within the managed instance "Instance01".
+This command gets information about all managed instance links within the managed instance "ManagedInstance01".
 
-### Example 4: Get all Managed Instance Links within an instance using instance resource identifier
+### Example 4: Get information on all instance links on Azure SQL Managed Instance using instance resource identifier
 ```powershell
-PS C:\> Get-AzSqlInstanceLink -InstanceResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01"
+PS C:\> Get-AzSqlInstanceLink -InstanceResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01"
 ResourceGroupName              : ResourceGroup01
-InstanceName                   : Instance01
+InstanceName                   : ManagedInstance01
 Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
-Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link01
+Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01
 Name                           : Link01
-TargetDatabase                 : Link01DB
-SourceEndpoint                 : TCP://SERVER01:7022
+TargetDatabase                 : Database01
+SourceEndpoint                 : TCP://SERVER01:5022
 PrimaryAvailabilityGroupName   :
 SecondaryAvailabilityGroupName :
 ReplicationMode                : Async
@@ -159,12 +159,12 @@ LinkState                      : Copying
 LastHardenedLsn                :
 
 ResourceGroupName              : ResourceGroup01
-InstanceName                   : Instance01
+InstanceName                   : ManagedInstance01
 Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
-Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link02
+Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link02
 Name                           : Link02
-TargetDatabase                 : Link02DB
-SourceEndpoint                 : TCP://SERVER02:7022
+TargetDatabase                 : Database02
+SourceEndpoint                 : TCP://SERVER02:5022
 PrimaryAvailabilityGroupName   :
 SecondaryAvailabilityGroupName :
 ReplicationMode                : Async
@@ -175,18 +175,18 @@ LinkState                      : Copying
 LastHardenedLsn                :
 ```
 
-This command gets information about all managed instance links within the instance Instance01.
+This command gets information about all managed instance links within the instance "ManagedInstance01".
 
-### Example 5: Get a managed instance link using its resource identifier
+### Example 5: Get an instance link using its resource identifier
 ```powershell
-PS C:\> Get-AzSqlInstanceLink -ResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link01"
+PS C:\> Get-AzSqlInstanceLink -ResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01"
 ResourceGroupName              : ResourceGroup01
-InstanceName                   : Instance01
+InstanceName                   : ManagedInstance01
 Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
-Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link01
+Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01
 Name                           : Link01
-TargetDatabase                 : Link01DB
-SourceEndpoint                 : TCP://SERVER01:7022
+TargetDatabase                 : Database01
+SourceEndpoint                 : TCP://SERVER01:5022
 PrimaryAvailabilityGroupName   :
 SecondaryAvailabilityGroupName :
 ReplicationMode                : Async
@@ -197,18 +197,18 @@ LinkState                      : Copying
 LastHardenedLsn                :
 ```
 
-This command gets information about the managed instance link named Link01.
+This command gets information about the managed instance link named "Link01".
 
-### Example 6: Get all Managed Instance Links within an instance by piping an instance object
+### Example 6: Get information on all instance links on Azure SQL Managed Instance by piping an instance object
 ```powershell
-PS C:\> Get-AzSqlInstance -Name "Instance01" -ResourceGroupName "ResourceGroup01" | Get-AzSqlInstanceLink
+PS C:\> Get-AzSqlInstance -Name "ManagedInstance01" -ResourceGroupName "ResourceGroup01" | Get-AzSqlInstanceLink
 ResourceGroupName              : ResourceGroup01
-InstanceName                   : Instance01
+InstanceName                   : ManagedInstance01
 Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
-Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link01
+Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01
 Name                           : Link01
-TargetDatabase                 : Link01DB
-SourceEndpoint                 : TCP://SERVER01:7022
+TargetDatabase                 : Database01
+SourceEndpoint                 : TCP://SERVER01:5022
 PrimaryAvailabilityGroupName   :
 SecondaryAvailabilityGroupName :
 ReplicationMode                : Async
@@ -219,12 +219,12 @@ LinkState                      : Copying
 LastHardenedLsn                :
 
 ResourceGroupName              : ResourceGroup01
-InstanceName                   : Instance01
+InstanceName                   : ManagedInstance01
 Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
-Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link02
+Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link02
 Name                           : Link02
-TargetDatabase                 : Link02DB
-SourceEndpoint                 : TCP://SERVER02:7022
+TargetDatabase                 : Database02
+SourceEndpoint                 : TCP://SERVER02:5022
 PrimaryAvailabilityGroupName   :
 SecondaryAvailabilityGroupName :
 ReplicationMode                : Async
@@ -235,18 +235,18 @@ LinkState                      : Copying
 LastHardenedLsn                :
 ```
 
-This command gets information about all managed instance links within the instance Instance01.
+This command gets information about all managed instance links within the instance "ManagedInstance01".
 
-### Example 7: Get a specific Managed Instance Link within an instance by piping an instance object and specifying link name
+### Example 7: Get a specific instance link within an instance by piping an instance object and specifying link name
 ```powershell
-PS C:\> Get-AzSqlInstance -Name "Instance01" -ResourceGroupName "ResourceGroup01" | Get-AzSqlInstanceLink -Name "Link01"
+PS C:\> Get-AzSqlInstance -Name "ManagedInstance01" -ResourceGroupName "ResourceGroup01" | Get-AzSqlInstanceLink -Name "Link01"
 ResourceGroupName              : ResourceGroup01
-InstanceName                   : Instance01
+InstanceName                   : ManagedInstance01
 Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
-Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link01
+Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01
 Name                           : Link01
-TargetDatabase                 : Link01DB
-SourceEndpoint                 : TCP://SERVER01:7022
+TargetDatabase                 : Database01
+SourceEndpoint                 : TCP://SERVER01:5022
 PrimaryAvailabilityGroupName   :
 SecondaryAvailabilityGroupName :
 ReplicationMode                : Async
@@ -257,18 +257,18 @@ LinkState                      : Copying
 LastHardenedLsn                :
 ```
 
-This command gets information about a managed instance links named Link01 within the instance Instance01.
+This command gets information about a managed instance links named "Link01" within the instance "ManagedInstance01".
 
-### Example 8: Get information about a Managed Instance Link using positional parameters
+### Example 8: Get information about an instance link using positional parameters
 ```powershell
-PS C:\> Get-AzSqlInstanceLink "ResourceGroup01" "Instance01" "Link01"
+PS C:\> Get-AzSqlInstanceLink "ResourceGroup01" "ManagedInstance01" "Link01"
 ResourceGroupName              : ResourceGroup01
-InstanceName                   : Instance01
+InstanceName                   : ManagedInstance01
 Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
-Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/Instance01/distributedAvailabilityGroups/Link01
+Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01
 Name                           : Link01
-TargetDatabase                 : Link01DB
-SourceEndpoint                 : TCP://SERVER01:7022
+TargetDatabase                 : Database01
+SourceEndpoint                 : TCP://SERVER01:5022
 PrimaryAvailabilityGroupName   :
 SecondaryAvailabilityGroupName :
 ReplicationMode                : Async
@@ -279,7 +279,7 @@ LinkState                      : Copying
 LastHardenedLsn                :
 ```
 
-This command gets information about the Managed Instance Link named Link01 on instance Instance01 and resource group ResourceGroup01.
+This command gets information about an instance link named "Link01" on instance "ManagedInstance01" and resource group "ResourceGroup01".
 
 ## PARAMETERS
 

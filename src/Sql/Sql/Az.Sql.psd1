@@ -287,7 +287,7 @@ CmdletsToExport = 'Get-AzSqlDatabaseTransparentDataEncryption',
                'New-AzSqlInstanceLink',
                'Get-AzSqlInstanceLink',
                'Remove-AzSqlInstanceLink',
-               'Set-AzSqlInstanceLink'
+               'Update-AzSqlInstanceLink'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -315,7 +315,8 @@ AliasesToExport = 'Get-AzSqlDatabaseServerAuditingPolicy',
                'Set-AzSqlDatabaseThreatDetectionSetting', 
                'Remove-AzSqlDatabaseThreatDetectionSetting', 
                'Set-AzSqlInstanceTDEProtector', 'Get-AzSqlInstanceTDEProtector', 
-               'Set-AzSqlServerTrustGroup'
+               'Set-AzSqlServerTrustGroup',
+               'Set-AzSqlInstanceLink'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

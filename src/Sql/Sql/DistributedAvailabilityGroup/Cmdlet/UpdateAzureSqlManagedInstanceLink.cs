@@ -14,20 +14,22 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
     /// <summary>
     /// Cmdlet to update Managed Instance Link
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceLink",
-        DefaultParameterSetName = SetByNameParameterSet, SupportsShouldProcess = true),
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceLink",
+        DefaultParameterSetName = UpdateByNameParameterSet, SupportsShouldProcess = true),
         OutputType(typeof(AzureSqlManagedInstanceLinkModel))]
-    public class SetAzureSqlManagedInstanceLink : AzureSqlManagedInstanceLinkCmdletBase
+    [Alias(VerbsCommon.Set + "-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceLink")]
+
+    public class UpdateAzureSqlManagedInstanceLink : AzureSqlManagedInstanceLinkCmdletBase
     {
-        private const string SetByNameParameterSet = "SetByNameParameterSet";
-        private const string SetByParentObjectParameterSet = "SetByParentObjectParameterSet";
-        private const string SetByInputObjectParameterSet = "SetByInputObjectParameterSet";
-        private const string SetByResourceIdParameterSet = "SetByResourceIdParameterSet";
+        private const string UpdateByNameParameterSet = "UpdateByNameParameterSet";
+        private const string UpdateByParentObjectParameterSet = "UpdateByParentObjectParameterSet";
+        private const string UpdateByInputObjectParameterSet = "UpdateByInputObjectParameterSet";
+        private const string UpdateByResourceIdParameterSet = "UpdateByResourceIdParameterSet";
 
         /// <summary>
         /// Gets or sets the name of the resource group to use.
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = SetByNameParameterSet, Position = 0, HelpMessage = "The name of the resource group.")]
+        [Parameter(Mandatory = true, ParameterSetName = UpdateByNameParameterSet, Position = 0, HelpMessage = "The name of the resource group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public override string ResourceGroupName { get; set; }
@@ -35,7 +37,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// <summary>
         /// Gets or sets the name of target managed instance
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = SetByNameParameterSet, Position = 1, HelpMessage = "The name of the Azure SQL Managed Instance.")]
+        [Parameter(Mandatory = true, ParameterSetName = UpdateByNameParameterSet, Position = 1, HelpMessage = "The name of the Azure SQL Managed Instance.")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string InstanceName { get; set; }
@@ -43,8 +45,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// <summary>
         /// Gets or sets the link name
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = SetByNameParameterSet, Position = 2, HelpMessage = "The name of the Managed Instance link.")]
-        [Parameter(Mandatory = true, ParameterSetName = SetByParentObjectParameterSet, Position = 1, HelpMessage = "The name of the Managed Instance link.")]
+        [Parameter(Mandatory = true, ParameterSetName = UpdateByNameParameterSet, Position = 2, HelpMessage = "The name of the Managed Instance link.")]
+        [Parameter(Mandatory = true, ParameterSetName = UpdateByParentObjectParameterSet, Position = 1, HelpMessage = "The name of the Managed Instance link.")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances/distributedAvailabilityGroups", nameof(ResourceGroupName), nameof(InstanceName))]
         [ValidateNotNullOrEmpty]
         [Alias("LinkName")]
@@ -53,10 +55,10 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// <summary>
         /// Gets or sets the replication mode
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = SetByNameParameterSet, Position = 3, HelpMessage = "The value of replication mode. Possible values include 'Sync' and 'Async'.")]
-        [Parameter(Mandatory = true, ParameterSetName = SetByParentObjectParameterSet, Position = 2, HelpMessage = "The value of replication mode. Possible values include 'Sync' and 'Async'.")]
-        [Parameter(Mandatory = false, ParameterSetName = SetByInputObjectParameterSet, Position = 1, HelpMessage = "The value of replication mode. Possible values include 'Sync' and 'Async'.")]
-        [Parameter(Mandatory = true, ParameterSetName = SetByResourceIdParameterSet, Position = 1, HelpMessage = "The value of replication mode. Possible values include 'Sync' and 'Async'.")]
+        [Parameter(Mandatory = true, ParameterSetName = UpdateByNameParameterSet, Position = 3, HelpMessage = "The value of replication mode. Possible values include 'Sync' and 'Async'.")]
+        [Parameter(Mandatory = true, ParameterSetName = UpdateByParentObjectParameterSet, Position = 2, HelpMessage = "The value of replication mode. Possible values include 'Sync' and 'Async'.")]
+        [Parameter(Mandatory = false, ParameterSetName = UpdateByInputObjectParameterSet, Position = 1, HelpMessage = "The value of replication mode. Possible values include 'Sync' and 'Async'.")]
+        [Parameter(Mandatory = true, ParameterSetName = UpdateByResourceIdParameterSet, Position = 1, HelpMessage = "The value of replication mode. Possible values include 'Sync' and 'Async'.")]
         [PSArgumentCompleter("Sync", "Async")]
         [ValidateNotNullOrEmpty]
         public string ReplicationMode { get; set; }
@@ -64,21 +66,21 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// <summary>
         /// Gets or sets the instance Resource Id
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = SetByResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The Managed Instance Link resource id.")]
+        [Parameter(Mandatory = true, ParameterSetName = UpdateByResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The Managed Instance Link resource id.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the instance Object
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = SetByParentObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "The instance input object.")]
+        [Parameter(Mandatory = true, ParameterSetName = UpdateByParentObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "The instance input object.")]
         [ValidateNotNullOrEmpty]
         public AzureSqlManagedInstanceModel InstanceObject { get; set; }
 
         /// <summary>
         /// Gets or set the input mi link object
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = SetByInputObjectParameterSet, Position = 0, HelpMessage = "The Managed Instance Link input object.")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = UpdateByInputObjectParameterSet, Position = 0, HelpMessage = "The Managed Instance Link input object.")]
         [ValidateNotNull]
         public AzureSqlManagedInstanceLinkModel InputObject { get; set; }
 
@@ -95,22 +97,22 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         {
             switch (ParameterSetName)
             {
-                case SetByNameParameterSet:
+                case UpdateByNameParameterSet:
                     // default case, we're getting RG, MI and MiLink names directly from args
                     break;
-                case SetByParentObjectParameterSet:
+                case UpdateByParentObjectParameterSet:
                     // we need to extract RG and MI name from the Instance object, MiLink name received directly from arg
                     ResourceGroupName = InstanceObject.ResourceGroupName;
                     InstanceName = InstanceObject.ManagedInstanceName;
                     break;
-                case SetByInputObjectParameterSet:
+                case UpdateByInputObjectParameterSet:
                     // we need to extract RG, MI and MiLink name directly from the MiLink object but replication mode can be either from the object or from arg
                     ResourceGroupName = InputObject.ResourceGroupName;
                     InstanceName = InputObject.InstanceName;
                     Name = InputObject.Name;
                     ReplicationMode = this.IsParameterBound(c => c.ReplicationMode) ? ReplicationMode : InputObject.ReplicationMode;
                     break;
-                case SetByResourceIdParameterSet:
+                case UpdateByResourceIdParameterSet:
                     // we need to derive RG, MI and MiLink name from resource id
                     var resourceInfo = new ResourceIdentifier(ResourceId);
                     ResourceGroupName = resourceInfo.ResourceGroupName;
