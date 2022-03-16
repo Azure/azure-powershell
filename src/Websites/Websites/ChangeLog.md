@@ -18,7 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fixed `Set-AzWebApp`,`Set-AzWebAppSlot`, `Get-AzWebApp`, `Get-AzWebAppSlot` to expose HealthCheckPath property in SiteConfig [#16325]
+* Fixed `Set-AzWebApp`,`Set-AzWebAppSlot`, `Get-AzWebApp` and `Get-AzWebAppSlot` to expose `VnetRouteAllEnabled` property in `SiteConfig` [#15663]
+* Fixed `Set-AzWebApp`, `Set-AzWebAppSlot`, `Get-AzWebApp` and `Get-AzWebAppSlot` to expose `HealthCheckPath` property in `SiteConfig` [#16325]
 * Fixed DateTime conversion issue caused by culture [#17253]
 * Added support for the web job feature [#661]
     - Get-AzWebAppContinuousWebJob
