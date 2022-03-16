@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
-             HelpMessage = "Join Options")]
+             HelpMessage = "Specifies the join option. For join options see [JoinOptions](https://docs.microsoft.com/windows/desktop/api/lmjoin/nf-lmjoin-netjoindomain)")]
         [ValidateNotNull]
         public uint? JoinOption { get; set; }
 
