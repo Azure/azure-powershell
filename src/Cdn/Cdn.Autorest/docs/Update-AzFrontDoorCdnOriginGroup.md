@@ -19,12 +19,9 @@ Update-AzFrontDoorCdnOriginGroup -OriginGroupName <String> -ProfileName <String>
  [-HealthProbeSettingProbePath <String>] [-HealthProbeSettingProbeProtocol <ProbeProtocol>]
  [-HealthProbeSettingProbeRequestType <HealthProbeRequestType>]
  [-LoadBalancingSettingAdditionalLatencyInMillisecond <Int32>] [-LoadBalancingSettingSampleSize <Int32>]
- [-LoadBalancingSettingSuccessfulSamplesRequired <Int32>]
- [-ResponseBasedAfdOriginErrorDetectionSettingHttpErrorRange <IHttpErrorRangeParameters[]>]
- [-ResponseBasedAfdOriginErrorDetectionSettingResponseBasedDetectedErrorType <ResponseBasedDetectedErrorTypes>]
- [-ResponseBasedAfdOriginErrorDetectionSettingResponseBasedFailoverThresholdPercentage <Int32>]
- [-SessionAffinityState <EnabledState>] [-TrafficRestorationTimeToHealedOrNewEndpointsInMinute <Int32>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-LoadBalancingSettingSuccessfulSamplesRequired <Int32>] [-SessionAffinityState <EnabledState>]
+ [-TrafficRestorationTimeToHealedOrNewEndpointsInMinute <Int32>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -34,12 +31,9 @@ Update-AzFrontDoorCdnOriginGroup -InputObject <ICdnIdentity>
  [-HealthProbeSettingProbeProtocol <ProbeProtocol>]
  [-HealthProbeSettingProbeRequestType <HealthProbeRequestType>]
  [-LoadBalancingSettingAdditionalLatencyInMillisecond <Int32>] [-LoadBalancingSettingSampleSize <Int32>]
- [-LoadBalancingSettingSuccessfulSamplesRequired <Int32>]
- [-ResponseBasedAfdOriginErrorDetectionSettingHttpErrorRange <IHttpErrorRangeParameters[]>]
- [-ResponseBasedAfdOriginErrorDetectionSettingResponseBasedDetectedErrorType <ResponseBasedDetectedErrorTypes>]
- [-ResponseBasedAfdOriginErrorDetectionSettingResponseBasedFailoverThresholdPercentage <Int32>]
- [-SessionAffinityState <EnabledState>] [-TrafficRestorationTimeToHealedOrNewEndpointsInMinute <Int32>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-LoadBalancingSettingSuccessfulSamplesRequired <Int32>] [-SessionAffinityState <EnabledState>]
+ [-TrafficRestorationTimeToHealedOrNewEndpointsInMinute <Int32>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -278,52 +272,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResponseBasedAfdOriginErrorDetectionSettingHttpErrorRange
-The list of Http status code ranges that are considered as server errors for origin and it is marked as unhealthy.
-To construct, see NOTES section for RESPONSEBASEDAFDORIGINERRORDETECTIONSETTINGHTTPERRORRANGE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IHttpErrorRangeParameters[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResponseBasedAfdOriginErrorDetectionSettingResponseBasedDetectedErrorType
-Type of response errors for real user requests for which origin will be deemed unhealthy
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ResponseBasedDetectedErrorTypes
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResponseBasedAfdOriginErrorDetectionSettingResponseBasedFailoverThresholdPercentage
-The percentage of failed requests in the sample where failover should trigger.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SessionAffinityState
 Whether to allow session affinity on this host.
 Valid options are 'Enabled' or 'Disabled'
@@ -438,10 +386,6 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   - `[SecretName <String>]`: Name of the Secret under the profile.
   - `[SecurityPolicyName <String>]`: Name of the security policy under the profile.
   - `[SubscriptionId <String>]`: Azure Subscription ID.
-
-RESPONSEBASEDAFDORIGINERRORDETECTIONSETTINGHTTPERRORRANGE <IHttpErrorRangeParameters[]>: The list of Http status code ranges that are considered as server errors for origin and it is marked as unhealthy.
-  - `[Begin <Int32?>]`: The inclusive start of the http status code range.
-  - `[End <Int32?>]`: The inclusive end of the http status code range.
 
 ## RELATED LINKS
 

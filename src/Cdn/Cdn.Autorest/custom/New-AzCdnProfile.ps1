@@ -62,22 +62,7 @@ function New-AzCdnProfile {
         [System.String]
         # Resource location.
         ${Location},
-    
-        [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ManagedServiceIdentityType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ManagedServiceIdentityType]
-        # Type of managed service identity.
-        ${IdentityType},
-    
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IManagedServiceIdentityUserAssignedIdentities]))]
-        [System.Collections.Hashtable]
-        # The list of user assigned identities associated with the resource.
-        # The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}
-        ${IdentityUserAssignedIdentity},
-    
+        
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
         [System.Int32]
