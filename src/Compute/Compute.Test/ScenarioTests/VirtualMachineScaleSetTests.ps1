@@ -3322,7 +3322,7 @@ function Test-VirtualMachineScaleSetRepairsAction
 
         # New-AzVmssConfig and New-AzVmss test
         $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName $vmssSize -UpgradePolicyMode 'Manual' -HealthProbeId $expectedLb.Probes[0].Id `
-            -EnableAutomaticRepair -AutomaticRepairGracePeriod "PT30M" -AutomaticRepairsAction $repairAction1 `
+            -EnableAutomaticRepair -AutomaticRepairGracePeriod "PT30M" -AutomaticRepairAction $repairAction1 `
             | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
             | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
             | Set-AzVmssStorageProfile -Name 'test' -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
@@ -3335,7 +3335,7 @@ function Test-VirtualMachineScaleSetRepairsAction
 
         # Update Vmss test
         Update-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -VirtualMachineScaleSet $vmss -EnableAutomaticRepair:$false;
-        Update-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -VirtualMachineScaleSet $vmss -AutomaticRepairsAction $repairAction2;
+        Update-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -VirtualMachineScaleSet $vmss -AutomaticRepairAction $repairAction2;
 
         $vmssUp = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
         Assert-AreEqual $repairAction2 $vmssUp.AutomaticRepairsPolicy.RepairAction;
