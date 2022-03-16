@@ -1,17 +1,17 @@
 # Common Assemblies
 It is common scenario that 2 different modules take dependency on different versions of one assembly. It won't be big issue for Windows PowerShell as .NET Framework allows to load different versions of one assembly into one process. However, .NET Core and .NET 5+ do not allow to load 2 different versions of one assembly into the same [AssemblyLoadContext](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.loader.assemblyloadcontext).
 
-As a platform, PowerShell allows user to import modules on demand. Modules may probably share the same dependency but with different versions. Assembly conflict is common problem in PowerShell. Although Azure PowerShell cannot resolve it completely, we introduce techniques across modules of Azure PowerShell to mitigate this problem. The ideas come from [Resolving PowerShell Module Assembly Dependency Conflicts](https://devblogs.microsoft.com/powershell/resolving-powershell-module-assembly-dependency-conflicts/)
+As a platform, PowerShell allows user to import modules on demand. Modules may probably share the same dependency but with different versions. Assembly conflict is common problem in PowerShell. Although Azure PowerShell cannot resolve it completely, we introduce techniques across modules of Azure PowerShell to mitigate this problem. The idea come from [Resolving PowerShell Module Assembly Dependency Conflicts](https://devblogs.microsoft.com/powershell/resolving-powershell-module-assembly-dependency-conflicts/)
 
 To minimize conflicts among modules, shared assemblies are loaded by Az.Accounts during being imported. All assemblies should be referenced by `Common.Netcore.Dependencies.targets` and stored under `src/lib/NetFxPreloadAssemblies` or `src/lib/NetCorePreloadAssemblies` according to target framework.
 
-## PowerShell 7+ with .NET Core/.Net 5/.Net 6
-Since .NET Core and above cannot load 2 different versions of one assembly into the same load context. `Az.Accounts` creates separate assembly load context at initialization and loads all shared assemblies into it. We select shared assemblies according to their popularity, such as Microsoft Authentication Library(MSAL), `Azure.Core`, and `Azure.Identity`.
+## PowerShell 7+ with .Net 5/.Net 6
+Since .NET Core and above cannot load 2 different versions of one assembly into the same load context. `Az.Accounts` creates separate assembly load context during initialization and loads all shared assemblies into it. We selected shared assemblies according to their popularity, such as Microsoft Authentication Library(MSAL), `Azure.Core`, and `Azure.Identity`.
 
 Service module of Azure PowerShell also can create its assembly load context when it must depend on a assembly with different version from other modules. The page [How to define AssemblyLoadContext for module](/src/Accounts/AuthenticationAssemblyLoadContext) provides a comprehensive sample used by `Az.Compute`. 
 
 ## Windows PowerShell with .NET Framework
-Azure PowerShell uses a different approach for Windows PowerShell with .NET Framework because, instead of assembly conflict, the major problem is required assembly may not be provided by Windows PowerShell. `Az.Accounts` registers a handler in `CustomAssemblyResolver` to handle event that required assembly could not be resolved. It means target assembly cannot be found from the probing path of .NET Framework or Windows PowerShell. Then, resolver compares expected version and loads target from directory `/PreloadAssemblies`  (`src/lib/NetCorePreloadAssemblies`) in `Az.Accounts` if major version is the same. Here, we assume there is no breaking change across minor or patch versions, but it cannot be guaranteed.
+Azure PowerShell uses a different approach for Windows PowerShell with .NET Framework because, instead of assembly conflict, the major problem is required assembly may not be offered by Windows PowerShell or .NET Framework. `Az.Accounts` registers a handler in `CustomAssemblyResolver` to handle event that required assembly could not be resolved. It means target assembly cannot be found from the probing path of .NET Framework or Windows PowerShell. Then, resolver compares expected version and loads target from directory `/PreloadAssemblies`  (`src/lib/NetCorePreloadAssemblies`) in `Az.Accounts` if major version is the same. Here, we assume there is no breaking change across minor or patch versions, but it cannot be guaranteed.
 
 For further reading, please visit https://docs.microsoft.com/en-us/dotnet/standard/assembly/resolve-loads#how-the-assemblyresolve-event-works
 
@@ -25,25 +25,26 @@ For further reading, please visit https://docs.microsoft.com/en-us/dotnet/standa
 5. Extract DLL file in nuget package folder `lib/net461` of `Azure.Core` and changed dependencies and copy them to `src/lib/NetFxPreloadAssemblies`.
 6. Update version of `Azure.Core` and changed dependencies to .NET Framework in `/src/Accounts/Authentication/Utilities/CustomAssemblyResolver.cs`.
 7. Verify built `Az.Accounts` can work with existing Azure PowerShell modules on PowerShell 7 and Windows PowerShell.
- - Import module into PowerShell 7 or Windows PowerShell.
-```
-Import-Module .\artifacts\Release\Az.Accounts\Az.Accounts.psd1
-```
- - Connect to Azure and switch to your test subscription
-```
-Connect-AzAccount
-Set-AzContext -Subscription <target subscription name>
-```
- - Execute sanity test and ensure all modules can be imported correctly
-```
- (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/main/tools/Test/SmokeTest/RmCoreSmokeTests.ps1").Content | Invoke-Expression
-```
+   - Import module into PowerShell 7 or Windows PowerShell.
+   ```powershell
+   Import-Module .\artifacts\Release\Az.Accounts\Az.Accounts.psd1
+   ```
+   - Connect to Azure and switch to your test subscription
+    ```powershell
+    Connect-AzAccount
+    Set-AzContext -Subscription <target subscription name>
+    ```
+   - Execute sanity test and ensure all modules can be imported correctly
+    ```powershell
+    (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/main/tools/Test/SmokeTest/RmCoreSmokeTests.ps1").Content | Invoke-Expression
+    ```
+
+Please note `Azure.Core` **CANNOT** be upgraded till the next Az major release if above test is failed. 
 
 ## FAQ
 ### How to list all loaded assemblies in PowerShell session?
-Below script can be used to list all loaded assemblies when modules are imported. It is also used to detect the imported module which loads lower version of assembly and block Azure PowerShell.  
-
-```
+Below script can be used to list all loaded assemblies when modules are imported. It is also used to detect the imported module which loads lower version of assembly and blocks Azure PowerShell modules.
+```powershell
 [System.AppDomain]::CurrentDomain.GetAssemblies() | Where-Object Location | Sort-Object -Property FullName | Select-Object -Property FullName, Location
 ```
 
