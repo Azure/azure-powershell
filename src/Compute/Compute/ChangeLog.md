@@ -21,6 +21,7 @@
 -->
 ## Upcoming Release
 * Updated `Get-AzVm` to include GetVirtualMachineById parameter set
+* Edited the documentation for the cmdlet `Set-AzVMADDomainExtension` to ensure the example is accurate. 
 * Improved description and examples for disk creation
 
 ## Version 4.24.1
