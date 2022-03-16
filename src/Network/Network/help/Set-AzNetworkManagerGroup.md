@@ -156,8 +156,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzNetworkManagerGroup]()
+[Get-AzNetworkManagerGroup](./Get-AzNetworkManagerGroup.md)
 
-[New-AzNetworkManagerGroup]()
+[New-AzNetworkManagerGroup](./New-AzNetworkManagerGroup.md)
 
-[Remove-AzNetworkManagerGroup]()
+[Remove-AzNetworkManagerGroup](./Remove-AzNetworkManagerGroup.md)

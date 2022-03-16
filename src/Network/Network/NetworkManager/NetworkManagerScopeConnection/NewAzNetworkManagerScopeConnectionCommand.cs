@@ -56,14 +56,14 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "Tenant ID of the resource you'd like to manage.")]
-        public string TenantID { get; set; }
+           HelpMessage = "Tenant Id of the resource you'd like to manage.")]
+        public string TenantId { get; set; }
 
         [Parameter(
          Mandatory = true,
          ValueFromPipelineByPropertyName = true,
-         HelpMessage = "Resource ID of the subscription or management group to be managed. Resource IDs should be in the form '/subscriptions/{subscriptionId}' or '/providers/Microsoft.Management/managementGroups/{managementGroupId}'.")]
-        public string ResourceID { get; set; }
+         HelpMessage = "Resource Id of the subscription or management group to be managed. Resource IDs should be in the form '/subscriptions/{subscriptionId}' or '/providers/Microsoft.Management/managementGroups/{managementGroupId}'.")]
+        public string ResourceId { get; set; }
 
         [Parameter(
          Mandatory = false,
@@ -101,8 +101,8 @@ namespace Microsoft.Azure.Commands.Network
         private PSNetworkManagerScopeConnection CreateNetworkManagerScopeConnection()
         {
             var mncc = new PSNetworkManagerScopeConnection();
-            mncc.TenantId = this.TenantID;
-            mncc.ResourceId = this.ResourceID;
+            mncc.TenantId = this.TenantId;
+            mncc.ResourceId = this.ResourceId;
 
             if (!string.IsNullOrEmpty(this.Description))
             {

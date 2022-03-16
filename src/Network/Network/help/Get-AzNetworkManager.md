@@ -25,7 +25,7 @@ Get-AzNetworkManager -Name <String> -ResourceGroupName <String> [-DefaultProfile
 ```
 
 ## DESCRIPTION
-The **Get-AzNetworkManager** cmdlet gets one or more virtual networks in a resource group.
+The **Get-AzNetworkManager** cmdlet gets one or more network managers in a resource group.
 
 ## EXAMPLES
 

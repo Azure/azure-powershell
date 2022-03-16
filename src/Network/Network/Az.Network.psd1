@@ -710,6 +710,7 @@ PrivateData = @{
     - ''New-AzNetworkManagerSecurityAdminRule'' 
     - ''Remove-AzNetworkManagerSecurityAdminRule'' 
 <<<<<<< HEAD
+<<<<<<< HEAD
     - ''Set-AzNetworkManagerSecurityAdminRule''
     - ''Get-AzNetworkManagerActiveConnectivityConfigurationList'' 
     - ''Get-AzNetworkManagerActiveSecurityAdminRuleList''
@@ -731,6 +732,11 @@ PrivateData = @{
     - ''Get-AzNetworkManagerActiveSecurityAdminRuleList'' 
     - ''Get-AzNetworkManagerActiveSecurityUserRuleList'' 
 >>>>>>> 53097c2e2b (Bump version for Az.Network (#16227))
+=======
+    - ''Set-AzNetworkManagerSecurityAdminRule''
+    - ''Get-AzNetworkManagerActiveConnectivityConfigurationList'' 
+    - ''Get-AzNetworkManagerActiveSecurityAdminRuleList''
+>>>>>>> beede5670b (fix tests and remove userrule)
     - ''Get-AzNetworkManagerEffectiveConnectivityConfigurationList'' 
     - ''Get-AzNetworkManagerEffectiveSecurityAdminRuleList'' 
     - ''Get-AzNetworkManagerEffectiveSecurityAdminRuleList'' 

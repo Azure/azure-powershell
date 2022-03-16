@@ -34,6 +34,16 @@ The **Get-AzNetworkManagerStaticMember** cmdlet gets a network manager static me
 Expand
 PS C:\> Get-AzNetworkManagerStaticMember  -Name "TestStaticMember" -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG" -NetworkGroupName "TestNetworkGroup"
 
+Name              : TestSM
+Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Netwo
+                    rk/networkManagers/TestNMName/networkGroups/TestNetworkGroup/staticMembers/TestStaticMember
+ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Netwo
+                    rk/virtualNetworks/vnet1
+DisplayName       :
+Description       :
+Type              : Microsoft.Network/networkManagers/networkGroups/staticMembers
+Etag              :
+ProvisioningState :
 ```
 
 ### Example 2
@@ -41,6 +51,16 @@ PS C:\> Get-AzNetworkManagerStaticMember  -Name "TestStaticMember" -NetworkManag
 NoExpand
 PS C:\> Get-AzNetworkManagerStaticMember -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG" -NetworkGroupName "TestNetworkGroup"
 
+Name              : TestSM
+Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Netwo
+                    rk/networkManagers/TestNMName/networkGroups/TestNetworkGroup/staticMembers/TestStaticMember
+ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Netwo
+                    rk/virtualNetworks/vnet1
+DisplayName       :
+Description       :
+Type              : Microsoft.Network/networkManagers/networkGroups/staticMembers
+Etag              :
+ProvisioningState :
 ```
 
 ## PARAMETERS

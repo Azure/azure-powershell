@@ -1,32 +1,34 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/remove-aznetworkmanagersecurityuserrule
+online version:  https://docs.microsoft.com/powershell/module/az.network/remove-aznetworkmanagerscopeconnection
 schema: 2.0.0
 ---
 
-# Remove-AzNetworkManagerSecurityUserRule
+# Remove-AzNetworkManagerScopeConnection
 
 ## SYNOPSIS
-Removes a security user rule.
+Removes a network manager scope connection.
 
 ## SYNTAX
 
 ```
-Remove-AzNetworkManagerSecurityUserRule -Name <String> -RuleCollectionName <String>
- -SecurityUserConfigurationName <String> -NetworkManagerName <String> -ResourceGroupName <String> [-Force]
- [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzNetworkManagerScopeConnection -Name <String> -NetworkManagerName <String> -ResourceGroupName <String>
+ [-Force] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzNetworkManagerSecurityUserRule** cmdlet removes a security user rule.
+The **Remove-AzNetworkManagerScopeConnection** cmdlet removes an Azure network manager scope connection.
+
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzNetworkManagerSecurityUserRule -Name TestUserRuleName -RuleCollectionName TestRuleCollectionName -SecurityUserConfigurationName TestUserConfigName -NetworkManagerName TestNMName -ResourceGroupName TestRGName
+PS C:\> Remove-AzNetworkManagerScopeConnection -ResourceGroupName "testRG" -NetworkManagerName "TestNM" -Name "TestScopeConn" -PassThru -Force -AsJob
 ```
+
 
 ## PARAMETERS
 
@@ -34,7 +36,7 @@ PS C:\> Remove-AzNetworkManagerSecurityUserRule -Name TestUserRuleName -RuleColl
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -49,7 +51,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -64,7 +66,7 @@ Accept wildcard characters: False
 Do not ask for confirmation.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -79,7 +81,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -94,7 +96,7 @@ Accept wildcard characters: False
 The network manager name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -109,7 +111,7 @@ Accept wildcard characters: False
 {{ Fill PassThru Description }}
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -124,39 +126,9 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -RuleCollectionName
-The network manager security user rule collection name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -SecurityUserConfigurationName
-The network manager security user configuration name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: ConfigName
 
 Required: True
 Position: Named
@@ -169,7 +141,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -185,7 +157,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -210,9 +182,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+[Get-AzNetworkManagerScopeConnection](./Get-AzNetworkManagerScopeConnection.md)
 
-[Get-AzNetworkManagerSecurityUserRule](./Get-AzNetworkManagerSecurityUserRule.md)
+[New-AzNetworkManagerScopeConnection](./New-AzNetworkManagerScopeConnection.md)
 
-[New-AzNetworkManagerSecurityUserRule](./New-AzNetworkManagerSecurityUserRule.md)
-
-[Set-AzNetworkManagerSecurityUserRule](./Set-AzNetworkManagerSecurityUserRule.md)
+[Set-AzNetworkManagerScopeConnection](./Set-AzNetworkManagerScopeConnection.md)

@@ -1484,17 +1484,13 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<ANM.PSNetworkManagerScopes, MNM.NetworkManagerPropertiesNetworkManagerScopes>();
                 cfg.CreateMap<ANM.PSSystemData, MNM.SystemData>();
                 cfg.CreateMap<ANM.PSNetworkManagerActiveBaseSecurityAdminRule, MNM.ActiveBaseSecurityAdminRule>();
-                cfg.CreateMap<ANM.PSNetworkManagerActiveBaseSecurityUserRule, MNM.ActiveBaseSecurityUserRule>();
                 cfg.CreateMap<ANM.PSNetworkManagerActiveConfigurationParameter, MNM.ActiveConfigurationParameter>();
                 cfg.CreateMap<ANM.PSNetworkManagerActiveConfigurationParameter, MNM.ActiveConfigurationParameter>();
                 cfg.CreateMap<ANM.PSNetworkManagerActiveConnectivityConfiguration, MNM.ActiveConnectivityConfiguration>();
                 cfg.CreateMap<ANM.PSNetworkManagerActiveConnectivityConfigurationListResult, MNM.ActiveConnectivityConfigurationsListResult>();
                 cfg.CreateMap<ANM.PSNetworkManagerActiveDefaultSecurityAdminRule, MNM.ActiveDefaultSecurityAdminRule>();
-                cfg.CreateMap<ANM.PSNetworkManagerActiveDefaultSecurityUserRule, MNM.ActiveDefaultSecurityUserRule>();
                 cfg.CreateMap<ANM.PSNetworkManagerActiveSecurityAdminRule, MNM.ActiveSecurityAdminRule>();
                 cfg.CreateMap<ANM.PSNetworkManagerActiveSecurityAdminRuleListResult, MNM.ActiveSecurityAdminRulesListResult>();
-                cfg.CreateMap<ANM.PSNetworkManagerActiveSecurityUserRule, MNM.ActiveSecurityUserRule>();
-                cfg.CreateMap<ANM.PSNetworkManagerActiveSecurityUserRuleListResult, MNM.ActiveSecurityUserRulesListResult>();
                 cfg.CreateMap<ANM.PSNetworkManagerAddressPrefixItem, MNM.AddressPrefixItem>();
                 cfg.CreateMap<ANM.PSNetworkManagerCommit, MNM.NetworkManagerCommit>();
                 cfg.CreateMap<ANM.PSNetworkManagerConfigurationGroup, MNM.ConfigurationGroup>();
@@ -1518,13 +1514,14 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<ANM.PSNetworkManagerScopes, MNM.NetworkManagerPropertiesNetworkManagerScopes>();
                 cfg.CreateMap<ANM.PSNetworkManagerSecurityAdminRule, MNM.AdminRule>();
                 cfg.CreateMap<ANM.PSNetworkManagerSecurityBaseAdminRule, MNM.BaseAdminRule>();
-                cfg.CreateMap<ANM.PSNetworkManagerSecurityBaseUserRule, MNM.BaseUserRule>();
                 cfg.CreateMap<ANM.PSNetworkManagerSecurityConfiguration, MNM.SecurityConfiguration>();
                 cfg.CreateMap<ANM.PSNetworkManagerSecurityDefaultAdminRule, MNM.DefaultAdminRule>();
-                cfg.CreateMap<ANM.PSNetworkManagerSecurityDefaultUserRule, MNM.DefaultUserRule>();
                 cfg.CreateMap<ANM.PSNetworkManagerSecurityGroupItem, MNM.NetworkManagerSecurityGroupItem>();
                 cfg.CreateMap<ANM.PSNetworkManagerSecurityRuleCollection, MNM.RuleCollection>();
+<<<<<<< HEAD
                 cfg.CreateMap<ANM.PSNetworkManagerSecurityUserRule, MNM.UserRule>();
+=======
+>>>>>>> beede5670b (fix tests and remove userrule)
                 cfg.CreateMap<ANM.PSNetworkManagerScopeConnection, MNM.ScopeConnection>();
                 cfg.CreateMap<ANM.PSNetworkManagerConnection, MNM.NetworkManagerConnection>();
 
@@ -1533,16 +1530,12 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.NetworkManagerPropertiesNetworkManagerScopes, ANM.PSNetworkManagerScopes>();
                 cfg.CreateMap<MNM.SystemData, ANM.PSSystemData>();
                 cfg.CreateMap<MNM.ActiveBaseSecurityAdminRule, ANM.PSNetworkManagerActiveBaseSecurityAdminRule>();
-                cfg.CreateMap<MNM.ActiveBaseSecurityUserRule, ANM.PSNetworkManagerActiveBaseSecurityUserRule>();
                 cfg.CreateMap<MNM.ActiveConfigurationParameter, ANM.PSNetworkManagerActiveConfigurationParameter>();
                 cfg.CreateMap<MNM.ActiveConnectivityConfiguration, ANM.PSNetworkManagerActiveConnectivityConfiguration>();
                 cfg.CreateMap<MNM.ActiveConnectivityConfigurationsListResult, ANM.PSNetworkManagerActiveConnectivityConfigurationListResult>();
                 cfg.CreateMap<MNM.ActiveDefaultSecurityAdminRule, ANM.PSNetworkManagerActiveDefaultSecurityAdminRule>();
-                cfg.CreateMap<MNM.ActiveDefaultSecurityUserRule, ANM.PSNetworkManagerActiveDefaultSecurityUserRule>();
                 cfg.CreateMap<MNM.ActiveSecurityAdminRule, ANM.PSNetworkManagerActiveSecurityAdminRule>();
                 cfg.CreateMap<MNM.ActiveSecurityAdminRulesListResult, ANM.PSNetworkManagerActiveSecurityAdminRuleListResult>();
-                cfg.CreateMap<MNM.ActiveSecurityUserRule, ANM.PSNetworkManagerActiveSecurityUserRule>();
-                cfg.CreateMap<MNM.ActiveSecurityUserRulesListResult, ANM.PSNetworkManagerActiveSecurityUserRuleListResult>();
                 cfg.CreateMap<MNM.AddressPrefixItem, ANM.PSNetworkManagerAddressPrefixItem>();
                 cfg.CreateMap<MNM.NetworkManagerCommit, ANM.PSNetworkManagerCommit>();
                 cfg.CreateMap<MNM.ConfigurationGroup, ANM.PSNetworkManagerConfigurationGroup>();
@@ -1566,13 +1559,10 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.NetworkManagerPropertiesNetworkManagerScopes, ANM.PSNetworkManagerScopes>();
                 cfg.CreateMap<MNM.AdminRule, ANM.PSNetworkManagerSecurityAdminRule>();
                 cfg.CreateMap<MNM.BaseAdminRule, ANM.PSNetworkManagerSecurityBaseAdminRule>();
-                cfg.CreateMap<MNM.BaseUserRule, ANM.PSNetworkManagerSecurityBaseUserRule>();
                 cfg.CreateMap<MNM.SecurityConfiguration, ANM.PSNetworkManagerSecurityConfiguration>();
                 cfg.CreateMap<MNM.DefaultAdminRule, ANM.PSNetworkManagerSecurityDefaultAdminRule>();
-                cfg.CreateMap<MNM.DefaultUserRule, ANM.PSNetworkManagerSecurityDefaultUserRule>();
                 cfg.CreateMap<MNM.NetworkManagerSecurityGroupItem, ANM.PSNetworkManagerSecurityGroupItem>();
                 cfg.CreateMap<MNM.RuleCollection, ANM.PSNetworkManagerSecurityRuleCollection>();
-                cfg.CreateMap<MNM.UserRule, ANM.PSNetworkManagerSecurityUserRule>();
                 cfg.CreateMap<MNM.ScopeConnection, ANM.PSNetworkManagerScopeConnection>();
                 cfg.CreateMap<MNM.NetworkManagerConnection, ANM.PSNetworkManagerConnection>();
             });

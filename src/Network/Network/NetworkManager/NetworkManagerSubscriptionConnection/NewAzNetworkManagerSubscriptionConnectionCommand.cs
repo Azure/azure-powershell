@@ -40,8 +40,8 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "Network Manager ID of the resource you'd like to manage.")]
-        public string NetworkManagerID { get; set; }
+           HelpMessage = "Network Manager Id of the resource you'd like to manage.")]
+        public string NetworkManagerId { get; set; }
 
         [Parameter(
          Mandatory = false,
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Network
         private PSNetworkManagerConnection CreateNetworkManagerSubscriptionConnection()
         {
             var mncc = new PSNetworkManagerConnection();
-            mncc.NetworkManagerId = this.NetworkManagerID;
+            mncc.NetworkManagerId = this.NetworkManagerId;
 
             if (!string.IsNullOrEmpty(this.Description))
             {

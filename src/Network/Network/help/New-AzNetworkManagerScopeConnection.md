@@ -1,42 +1,40 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/remove-aznetworkmanagersecurityuserconfiguration
+online version: https://docs.microsoft.com/powershell/module/az.network/new-aznetworkmanagerscopeconnection
 schema: 2.0.0
 ---
 
-# Remove-AzNetworkManagerSecurityUserConfiguration
+# New-AzNetworkManagerScopeConnection
 
 ## SYNOPSIS
-Removes a security user configuration.
+Creates a scope connection.
 
 ## SYNTAX
 
 ```
-Remove-AzNetworkManagerSecurityUserConfiguration -Name <String> -NetworkManagerName <String>
- -ResourceGroupName <String> [-Force] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzNetworkManagerScopeConnection -Name <String> -NetworkManagerName <String> -ResourceGroupName <String>
+ -TenantId <String> -ResourceId <String> [-Description <String>] [-AsJob] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzNetworkManagerSecurityUserConfiguration** cmdlet removes a security user configuration.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzNetworkManagerSecurityUserConfiguration -Name TestUserConfigName -NetworkManagerName TestNMName -ResourceGroupName TestRGName
+PS C:\> New-AzNetworkManagerScopeConnection -ResourceGroupName "TestRG" -NetworkManagerName "TestNM" -Name "TestScopeConn" -TenantId "00000000-0000-0000-0000-000000000000" -ResourceId "00000000-0000-0000-0000-000000000000" -Description "SampleDescription" 
 ```
-
-{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -AsJob
-Run cmdlet in the background
+Run cmdlet in the background.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -51,7 +49,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -62,11 +60,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Do not ask for confirmation.
+### -Description
+Description.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Force
+Do not ask for confirmation if you want to overwrite a resource.
+
+```yaml
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -81,7 +94,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -96,7 +109,7 @@ Accept wildcard characters: False
 The network manager name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -107,26 +120,42 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -PassThru
-{{ Fill PassThru Description }}
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Resource Id of the subscription or management group to be managed.
+Resource IDs should be in the form '/subscriptions/{subscriptionId}' or '/providers/Microsoft.Management/managementGroups/{managementGroupId}'.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -TenantId
+Tenant Id of the resource you'd like to manage.
+
+```yaml
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -141,7 +170,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -157,7 +186,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -177,14 +206,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerScopeConnection
 
 ## NOTES
 
 ## RELATED LINKS
+[Get-AzNetworkManagerScopeConnection](./Get-AzNetworkManagerScopeConnection.md)
 
-[Get-AzNetworkManagerSecurityUserConfiguration](./Get-AzNetworkManagerSecurityUserConfiguration.md)
+[Remove-AzNetworkManagerScopeConnection](./Remove-AzNetworkManagerScopeConnection.md)
 
-[New-AzNetworkManagerSecurityUserConfiguration](./New-AzNetworkManagerSecurityUserConfiguration.md)
-
-[Set-AzNetworkManagerSecurityUserConfiguration](./Set-AzNetworkManagerSecurityUserConfiguration.md)
+[Set-AzNetworkManagerScopeConnection](./Set-AzNetworkManagerScopeConnection.md)

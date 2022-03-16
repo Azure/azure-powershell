@@ -65,9 +65,17 @@ namespace Microsoft.Azure.Commands.Network
                     throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.NetworkManagerScopeConnection.Name));
                 }
 
-                // Map to the sdk object
-                var scopeConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ScopeConnection>(this.NetworkManagerScopeConnection);
+                var psScopeConnectionModel = new PSNetworkManagerScopeConnection();
+                psScopeConnectionModel.TenantId = this.NetworkManagerScopeConnection.TenantId;
+                psScopeConnectionModel.ResourceId = this.NetworkManagerScopeConnection.ResourceId;
 
+                if (!string.IsNullOrEmpty(this.NetworkManagerScopeConnection.Description))
+                {
+                    psScopeConnectionModel.Description = this.NetworkManagerScopeConnection.Description;
+                }
+
+                // Map to the sdk object
+                var scopeConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ScopeConnection>(psScopeConnectionModel);
                 // Execute the PUT NetworkManagerScopeConnection call
                 var scopeConnectionResponse = this.NetworkManagerScopeConnectionClient.CreateOrUpdate(scopeConnectionModel, this.ResourceGroupName, this.NetworkManagerName, this.NetworkManagerScopeConnection.Name);
                 var psScopeConnection = this.ToPsNetworkManagerScopeConnection(scopeConnectionResponse);
