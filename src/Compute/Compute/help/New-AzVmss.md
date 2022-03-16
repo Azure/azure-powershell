@@ -186,6 +186,29 @@ The complex example above creates a VMSS, following is an explanation of what is
 * The eighteenth command uses the **New-AzVmssConfig** cmdlet to create a VMSS configuration object and stores the result in the variable named $VMSS.
 * The nineteenth command uses the **New-AzVmss** cmdlet to create the VMSS.
 
+### Example 4: Create a VMSS with the Hyperthreading disabled.
+```powershell
+$resourceGroupName = <RESOURCE GROUP NAME>;
+$vmssName = <VMSSNAME>
+$region = <REGION>
+$domainNameLabel = "dnl" + $rgname
+$username = <USERNAME>
+$password = <PASSWORD>
+$vmssSize = 'Standard_D4s_v4'
+
+# These 1 values will ensure Hyperthreading is disabled on the VM. 
+$vCPUCountPerCore = 1
+$vCPUCountAvailable = 1
+
+$vmPassword = ConvertTo-SecureString $password -AsPlainText -Force
+$vmCred = New-Object System.Management.Automation.PSCredential($username, $vmPassword)
+
+#Create a VMSS 
+$vmssNew = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname  -ImageName 'Win2016Datacenter' `
+    -Credential $credential -InstanceCount 1 -DomainNameLabel $domainNameLabel `
+    -VmSize $vmssSize -vCPUCountAvailable $vCPUsAvailableInitial -vCPUCountPerCore $vCPUsCoreInitial
+```
+
 ## PARAMETERS
 
 ### -AllocationMethod

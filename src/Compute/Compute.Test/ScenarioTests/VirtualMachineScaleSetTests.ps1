@@ -3264,8 +3264,6 @@ function Test-VmssvCPUCountFeatures
     try
     {
         # Common
-        $loc = "eastus";
-
         $loc = Get-ComputeVMLocation;
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
         
