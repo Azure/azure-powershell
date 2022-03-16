@@ -15,7 +15,36 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzCdnEndpoint'))
 }
 
 Describe 'New-AzCdnEndpoint' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        { 
+            $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
+            try
+            {
+                Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
+                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
+
+                $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
+                Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
+
+                $profileSku = "Standard_Microsoft";
+                New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
+                
+                $endpointName = 'e-' + (RandomString -allChars $false -len 6);
+                $origin = @{
+                    Name = "origin1"
+                    HostName = "host1.hello.com"
+                };
+                Write-Host -ForegroundColor Green "Create endpointName : $($endpointName), origin.Name : $($origin.Name), origin.HostName : $($origin.HostName)"
+
+                $endpoint = New-AzCdnEndpoint -Name $endpointName -ResourceGroupName $ResourceGroupName -ProfileName $cdnProfileName -Location $env.location -Origin $origin
+                $endpoint.Name | Should -Be $endpointName
+                $endpoint.Location | Should -Be $env.location
+                $endpoint.Origin.Name | Should -Be $origin.Name
+                $endpoint.Origin.HostName | Should -Be $origin.HostName
+            } Finally
+            {
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            }
+        } | Should -Not -Throw
     }
 }
