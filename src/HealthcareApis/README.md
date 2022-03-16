@@ -81,6 +81,11 @@ directive:
     set:
       subject: APIsService
   - where:
+      subject: ^APIsService$
+      parameter-name: ResourceName
+    set:
+      parameter-name: Name
+  - where:
       model-name: Workspace
     set:
       format-table:

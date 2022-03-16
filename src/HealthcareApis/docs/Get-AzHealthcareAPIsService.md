@@ -19,7 +19,7 @@ Get-AzHealthcareAPIsService [-SubscriptionId <String[]>] [-DefaultProfile <PSObj
 
 ### Get
 ```
-Get-AzHealthcareAPIsService -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String[]>]
+Get-AzHealthcareAPIsService -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -64,7 +64,7 @@ List the metadata of service instance by resource group.
 
 ### Example 3: Get the metadata of a service instance.
 ```powershell
-PS C:\> Get-AzHealthcareAPIsService -ResourceGroupName azps_test_group -ResourceName azpsapiservice
+PS C:\> Get-AzHealthcareAPIsService -ResourceGroupName azps_test_group -Name azpsapiservice
 
 Location Name           Kind ResourceGroupName
 -------- ----           ---- -----------------
@@ -106,12 +106,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group that contains the service instance.
+### -Name
+The name of the service instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List1
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -121,12 +121,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceName
-The name of the service instance.
+### -ResourceGroupName
+The name of the resource group that contains the service instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True

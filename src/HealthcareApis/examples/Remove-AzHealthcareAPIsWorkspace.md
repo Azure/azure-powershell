@@ -1,4 +1,4 @@
-### Example 1: Delete
+### Example 1: Deletes a specified workspace.
 ```powershell
 PS C:\> Remove-AzHealthcareAPIsWorkspace -Name azpshcws -ResourceGroupName azps_test_group
 
@@ -6,7 +6,7 @@ PS C:\> Remove-AzHealthcareAPIsWorkspace -Name azpshcws -ResourceGroupName azps_
 
 Deletes a specified workspace.
 
-### Example 2: DeleteViaIdentity
+### Example 2: Deletes a specified workspace.
 ```powershell
 PS C:\> Get-AzHealthcareAPIsWorkspace -Name azpshcws -ResourceGroupName azps_test_group | Remove-AzHealthcareAPIsWorkspace
 

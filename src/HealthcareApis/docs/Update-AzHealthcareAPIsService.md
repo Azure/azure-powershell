@@ -14,7 +14,7 @@ Update the metadata of a service instance.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzHealthcareAPIsService -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String>]
+Update-AzHealthcareAPIsService -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-PublicNetworkAccess <PublicNetworkAccess>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -33,7 +33,7 @@ Update the metadata of a service instance.
 
 ### Example 1: Update the metadata of a service instance.
 ```powershell
-PS C:\> Update-AzHealthcareAPIsService -ResourceGroupName azps_test_group -ResourceName azpsapiservice -Tag @{"abc"="123"}
+PS C:\> Update-AzHealthcareAPIsService -ResourceGroupName azps_test_group -Name azpsapiservice -Tag @{"abc"="123"}
 
 Location Name           Kind ResourceGroupName
 -------- ----           ---- -----------------
@@ -44,7 +44,7 @@ Update the metadata of a service instance.
 
 ### Example 2: Update the metadata of a service instance.
 ```powershell
-PS C:\> Get-AzHealthcareAPIsService -ResourceGroupName azps_test_group -ResourceName azpsapiservice | Update-AzHealthcareAPIsService -Tag @{"abc"="123"}
+PS C:\> Get-AzHealthcareAPIsService -ResourceGroupName azps_test_group -Name azpsapiservice | Update-AzHealthcareAPIsService -Tag @{"abc"="123"}
 
 Location Name           Kind ResourceGroupName
 -------- ----           ---- -----------------
@@ -101,6 +101,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Name
+The name of the service instance.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -133,21 +148,6 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 The name of the resource group that contains the service instance.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceName
-The name of the service instance.
 
 ```yaml
 Type: System.String

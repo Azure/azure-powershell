@@ -22,7 +22,7 @@ List the metadata of service instance by resource group.
 
 ### Example 3: Get the metadata of a service instance.
 ```powershell
-PS C:\> Get-AzHealthcareAPIsService -ResourceGroupName azps_test_group -ResourceName azpsapiservice
+PS C:\> Get-AzHealthcareAPIsService -ResourceGroupName azps_test_group -Name azpsapiservice
 
 Location Name           Kind ResourceGroupName
 -------- ----           ---- -----------------

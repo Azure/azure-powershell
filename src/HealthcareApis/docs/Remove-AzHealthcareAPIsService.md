@@ -14,7 +14,7 @@ Delete a service instance.
 
 ### Delete (Default)
 ```
-Remove-AzHealthcareAPIsService -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String>]
+Remove-AzHealthcareAPIsService -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Delete a service instance.
 
 ### Example 1: Delete a service instance.
 ```powershell
-PS C:\> Remove-AzHealthcareAPIsService -ResourceGroupName azps_test_group -ResourceName azpsapiservice
+PS C:\> Remove-AzHealthcareAPIsService -ResourceGroupName azps_test_group -Name azpsapiservice
 
 ```
 
@@ -39,7 +39,7 @@ Delete a service instance.
 
 ### Example 2: Delete a service instance.
 ```powershell
-PS C:\> Get-AzHealthcareAPIsService -ResourceGroupName azps_test_group -ResourceName azpsapiservice | Remove-AzHealthcareAPIsService
+PS C:\> Get-AzHealthcareAPIsService -ResourceGroupName azps_test_group -Name azpsapiservice | Remove-AzHealthcareAPIsService
 
 ```
 
@@ -93,6 +93,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Name
+The name of the service instance.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -125,21 +140,6 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 The name of the resource group that contains the service instance.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceName
-The name of the service instance.
 
 ```yaml
 Type: System.String

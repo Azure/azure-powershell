@@ -13,7 +13,7 @@ Create or update the metadata of a service instance.
 ## SYNTAX
 
 ```
-New-AzHealthcareAPIsService -ResourceGroupName <String> -ResourceName <String> -Kind <Kind> -Location <String>
+New-AzHealthcareAPIsService -Name <String> -ResourceGroupName <String> -Kind <Kind> -Location <String>
  [-SubscriptionId <String>] [-AccessPolicy <IServiceAccessPolicyEntry[]>]
  [-AcrConfigurationLoginServer <String[]>] [-AcrConfigurationOciArtifact <IServiceOciArtifactEntry[]>]
  [-AuthenticationConfigurationAudience <String>] [-AuthenticationConfigurationAuthority <String>]
@@ -33,7 +33,7 @@ Create or update the metadata of a service instance.
 
 ### Example 1: Create or update the metadata of a service instance.
 ```powershell
-PS C:\> New-AzHealthcareAPIsService -ResourceGroupName azps_test_group -ResourceName azpsapiservice -Kind 'fhir' -Location eastus2 -CosmoDbConfigurationOfferThroughput 400
+PS C:\> New-AzHealthcareAPIsService -ResourceGroupName azps_test_group -Name azpsapiservice -Kind 'fhir' -Location eastus2 -CosmoDbConfigurationOfferThroughput 400
 
 Location Name           Kind ResourceGroupName
 -------- ----           ---- -----------------
@@ -346,6 +346,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Name
+The name of the service instance.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -394,21 +409,6 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 The name of the resource group that contains the service instance.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceName
-The name of the service instance.
 
 ```yaml
 Type: System.String
