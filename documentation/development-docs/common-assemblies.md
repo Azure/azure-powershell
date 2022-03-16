@@ -20,7 +20,7 @@ For further reading, please visit https://docs.microsoft.com/en-us/dotnet/standa
 `Azure.Core` is common library used by management plane and data plane SDKs. Below are steps to upgrade its version.
 1. Navigate to [Common.Netcore.Dependencies.targets](/tools/Common.Netcore.Dependencies.targets) to check current version of `Azure.Core` used by latest code and bump version to expected.
 2. Compare dependencies of `Azure.Core` on [Nuget.Org](https://www.nuget.org/packages/Azure.Core/) between current version and expected version.
-3. Extract DLL file in nuget package folder `lib/netstandard2.0` of `Azure.Core` and changed dependencies and copy them to `src/lib/NetCorePreloadAssemblies`.
+3. Extract DLL file in nuget package folder `lib/netcoreapp2.1` of `Azure.Core` and changed dependencies and copy them to `src/lib/NetCorePreloadAssemblies`.
 4. Update version of `Azure.Core` and changed dependencies to .NET Stardard 2.0 in `/src/Accounts/AuthenticationAssemblyLoadContext/AzAssemblyLoadContextInitializer.cs`.
 5. Extract DLL file in nuget package folder `lib/net461` of `Azure.Core` and changed dependencies and copy them to `src/lib/NetFxPreloadAssemblies`.
 6. Update version of `Azure.Core` and changed dependencies to .NET Framework in `/src/Accounts/Authentication/Utilities/CustomAssemblyResolver.cs`.
