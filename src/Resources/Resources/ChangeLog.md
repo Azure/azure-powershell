@@ -19,6 +19,24 @@
 -->
 
 ## Upcoming Release
+* Added authorization related cmdlets:
+    - `Get-AzRoleAssignmentSchedule`
+    - `Get-AzRoleAssignmentScheduleInstance`
+    - `Get-AzRoleAssignmentScheduleRequest`
+    - `Get-AzRoleEligibilitySchedule`
+    - `Get-AzRoleEligibilityScheduleInstance`
+    - `Get-AzRoleEligibilityScheduleRequest` 
+    - `Get-AzRoleEligibleChildResource`
+    - `Get-AzRoleManagementPolicy` 
+    - `Get-AzRoleManagementPolicyAssignment`
+    - `New-AzRoleAssignmentScheduleRequest` 
+    - `New-AzRoleEligibilityScheduleRequest`
+    - `New-AzRoleManagementPolicyAssignment` 
+    - `Remove-AzRoleManagementPolicy`
+    - `Remove-AzRoleManagementPolicyAssignment` 
+    - `Stop-AzRoleAssignmentScheduleRequest`
+    - `Stop-AzRoleEligibilityScheduleRequest` 
+    - `Update-AzRoleManagementPolicy`
 
 ## Version 5.4.0
 * Fixed keycredential key format, from base64url to byte [#17131]
