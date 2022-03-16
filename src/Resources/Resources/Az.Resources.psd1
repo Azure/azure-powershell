@@ -54,7 +54,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.7.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.7.4'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.Authorization.dll', 
@@ -170,7 +170,11 @@ CmdletsToExport = 'Get-AzProviderOperation', 'Remove-AzRoleAssignment',
                'Get-AzManagementGroupDeploymentWhatIfResult', 
                'Get-AzTenantDeploymentWhatIfResult', 'Get-AzTemplateSpec', 
                'New-AzTemplateSpec', 'Set-AzTemplateSpec', 'Export-AzTemplateSpec', 
-               'Remove-AzTemplateSpec', 'Publish-AzBicepModule'
+               'Remove-AzTemplateSpec', 'Publish-AzBicepModule',
+               'Get-AzResourceManagementPrivateLink',
+               'Remove-AzResourceManagementPrivateLink',
+               'Get-AzPrivateLinkAssociation',
+               'Remove-AzPrivateLinkAssociation'
 
 # Variables to export from this module
 VariablesToExport = '*'

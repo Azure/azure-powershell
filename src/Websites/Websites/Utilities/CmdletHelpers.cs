@@ -514,7 +514,9 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 WindowsFxVersion = config.WindowsFxVersion,
                 ManagedServiceIdentityId = config.ManagedServiceIdentityId,
                 MinTlsVersion = config.MinTlsVersion,
-                FtpsState = config.FtpsState
+                FtpsState = config.FtpsState,
+                VnetRouteAllEnabled = config.VnetRouteAllEnabled,
+                HealthCheckPath=config.HealthCheckPath
             };
         }
 
@@ -571,6 +573,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 ScmIpSecurityRestrictions = config.ScmIpSecurityRestrictions,
                 ScmIpSecurityRestrictionsUseMain = config.ScmIpSecurityRestrictionsUseMain,
                 Http20Enabled = config.Http20Enabled,
+                VnetRouteAllEnabled = config.VnetRouteAllEnabled,
                 HealthCheckPath = config.HealthCheckPath
             };
         }

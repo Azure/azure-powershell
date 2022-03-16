@@ -29,9 +29,10 @@ The Get-AzManagementGroup cmdlet Gets all or a specific Management Group.
 ## EXAMPLES
 
 ### Example 1: Get all Management Groups
+```powershell
+Get-AzManagementGroup
 ```
-PS C:\> Get-AzManagementGroup
-
+```output
 Id          : /providers/Microsoft.Management/managementGroups/TestGroup
 Type        : /providers/Microsoft.Management/managementGroups
 Name        : TestGroup
@@ -46,9 +47,10 @@ DisplayName : TestGroupChildDisplayName
 ```
 
 ### Example 2: Get specific Management Group
+```powershell
+Get-AzManagementGroup -GroupName TestGroup
 ```
-PS C:\> Get-AzManagementGroup -GroupName TestGroup
-
+```output
 Id                : /providers/Microsoft.Management/managementGroups/TestGroup
 Type              : /providers/Microsoft.Management/managementGroups
 Name              : TestGroup
@@ -62,9 +64,9 @@ ParentDisplayName : TestGroupParent
 ```
 
 ### Example 3: Get specific Management Group and first level of hierarchy
-```
-PS C:\> $reponse = Get-AzManagementGroup -GroupName TestGroupParent -Expand
-PS C:\> $response
+```powershell
+$reponse = Get-AzManagementGroup -GroupName TestGroupParent -Expand
+$response
 
 Id                : /providers/Microsoft.Management/managementGroups/TestGroupParent
 Type              : /providers/Microsoft.Management/managementGroups
@@ -78,7 +80,7 @@ ParentName        : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
 ParentDisplayName : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
 Children          : {TestGroup1DisplayName, TestGroup2DisplayName}
 
-PS C:\> $response.Children[0]
+$response.Children[0]
 
 Type        : /managementGroup
 Id          : /providers/Microsoft.Management/managementGroups/TestGroup1
@@ -90,9 +92,9 @@ Children    :
 With the `Expand` flag, one can navigate through the `Children` array and get details for each child. For example, `Children[0]` will give details for the group with display name `TestGroup1DisplayName`.
 
 ### Example 4: Get specific Management Group and all levels of hierarchy
-```
-PS C:\> $response = Get-AzManagementGroup -GroupName TestGroupParent -Expand -Recurse
-PS C:\> $response
+```powershell
+$response = Get-AzManagementGroup -GroupName TestGroupParent -Expand -Recurse
+$response
 
 Id                : /providers/Microsoft.Management/managementGroups/TestGroupParent
 Type              : /providers/Microsoft.Management/managementGroups
@@ -106,7 +108,7 @@ ParentName        : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
 ParentDisplayName : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
 Children          : {TestGroup1DisplayName, TestGroup2DisplayName}
 
-PS C:\> $response.Children[0]
+$response.Children[0]
 
 Type        : /managementGroup
 Id          : /providers/Microsoft.Management/managementGroups/TestGroup1
@@ -114,7 +116,7 @@ Name        : TestGroup1
 DisplayName : TestGroup1DisplayName
 Children    : {TestRecurseChild}
 
-PS C:\> $response.Children[0].Children[0]
+$response.Children[0].Children[0]
 
 Type        : /managementGroup
 Id          : /providers/Microsoft.Management/managementGroups/TestRecurseChild
