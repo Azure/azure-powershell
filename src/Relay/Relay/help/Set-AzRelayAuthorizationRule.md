@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Relay.dll-Help.xml
 Module Name: Az.Relay
 online version: https://docs.microsoft.com/powershell/module/az.relay/set-azrelayauthorizationrule
@@ -52,13 +52,14 @@ The **Set-AzRelayAuthorizationRule** cmdlet updates the description for the spec
 ## EXAMPLES
 
 ### Example 1.1 - Namespace with InputObject
-```
-PS C:\>
-PS C:\> $getAutoRule = Get-AzRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -AuthorizationRuleName
+```powershell
+$getAutoRule = Get-AzRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -AuthorizationRuleName
  AuthoRule1
-PS C:\> $getAutoRule.Rights.Add("Send")
-PS C:\> Set-AzRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -AuthorizationRule AuthoRule1 -InputObject $getAutoRule
+$getAutoRule.Rights.Add("Send")
+Set-AzRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -AuthorizationRule AuthoRule1 -InputObject $getAutoRule
+```
 
+```output
 Rights : {Listen, Send}
 Name   : AuthoRule1
 Type   : Microsoft.Relay/AuthorizationRules
@@ -68,9 +69,11 @@ Id     : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Defa
 Adds **Send** from the access rights of the authorization rule `AuthoRule1` in namespace `TestNameSpace-Relay1`.
 
 ### Example 1.2 - Namespace with Rights parameter
+```powershell
+Set-AzRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -AuthorizationRule AuthoRule1 -Rights "Send"
 ```
-PS C:\> Set-AzRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -AuthorizationRule AuthoRule1 -Rights "Send"
 
+```output
 Rights : {Listen, Send}
 Name   : AuthoRule1
 Type   : Microsoft.Relay/AuthorizationRules
@@ -80,11 +83,13 @@ Id     : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Defa
 Adds **Send** from the access rights of the authorization rule `AuthoRule1` in namespace `TestNameSpace-Relay1`.
 
 ### Example 2.1 - WcfRelay with InputObject
+```powershell
+$getWcfRelayAutho = Get-AzRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -WcfRelay TestWCFRelay1 -Name AuthoRule1
+$getWcfRelayAutho.Rights.Add("Send")
+Set-AzRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -WcfRelay TestWCFRelay1 -Name AuthoRule1 -InputObject $getWcfRelayAutho
 ```
-PS C:\> $getWcfRelayAutho = Get-AzRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -WcfRelay TestWCFRelay1 -Name AuthoRule1
-PS C:\> $getWcfRelayAutho.Rights.Add("Send")
-PS C:\> Set-AzRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -WcfRelay TestWCFRelay1 -Name AuthoRule1 -InputObject $getWcfRelayAutho
 
+```output
 Rights : {Listen, Send}
 Name   : AuthoRule1
 Type   : Microsoft.Relay/AuthorizationRules
@@ -94,9 +99,11 @@ Id     : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Defa
 Adds **Send** to the access rights of the authorization rule `AuthoRule1` of the WcfRelay `TestWCFRelay1`.
 
 ### Example 2.2 - WcfRelay with Rights parameter
+```powershell
+Set-AzRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -WcfRelay TestWCFRelay1 -Name AuthoRule1 -Rights "Send"
 ```
-PS C:\> Set-AzRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -WcfRelay TestWCFRelay1 -Name AuthoRule1 -Rights "Send"
 
+```output
 Rights : {Listen, Send}
 Name   : AuthoRule1
 Type   : Microsoft.Relay/AuthorizationRules
@@ -106,11 +113,13 @@ Id     : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Defa
 Adds **Send** to the access rights of the authorization rule `AuthoRule1` of the WcfRelay `TestWCFRelay1`.
 
 ### Example 3.1 - HybridConnection with InputObject
+```powershell
+$GetHybirdAutho = Get-AzRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -HybridConnection TestHybridConnection -Name AuthoRule1
+$GetHybirdAutho.Rights.Add("Send")
+Set-AzRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -HybridConnection TestHybridConnection -Name AuthoRule1 -InputObject $GetHybirdAutho
 ```
-PS C:\> $GetHybirdAutho = Get-AzRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -HybridConnection TestHybridConnection -Name AuthoRule1
-PS C:\> $GetHybirdAutho.Rights.Add("Send")
-PS C:\> Set-AzRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -HybridConnection TestHybridConnection -Name AuthoRule1 -InputObject $GetHybirdAutho
 
+```output
 Rights : {Listen, Send}
 Name   : AuthoRule1
 Type   : Microsoft.Relay/AuthorizationRules
@@ -120,9 +129,11 @@ Id     : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Defa
 Adds **Send** to the access rights of the authorization rule `AuthoRule1` of the HybridConnection `TestHybridConnection`.
 
 ### Example 3.2 - HybridConnection with Rights parameter
+```powershell
+Set-AzRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -HybridConnection TestHybridConnection -Name AuthoRule1 -Rights "Send"
 ```
-PS C:\> Set-AzRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -HybridConnection TestHybridConnection -Name AuthoRule1 -Rights "Send"
 
+```output
 Rights : {Listen, Send}
 Name   : AuthoRule1
 Type   : Microsoft.Relay/AuthorizationRules

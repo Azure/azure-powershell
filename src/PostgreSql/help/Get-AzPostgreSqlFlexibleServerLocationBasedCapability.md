@@ -24,8 +24,10 @@ Get the available SKU information for the location
 
 ### Example 1: Get location capabilities by location name
 ```powershell
-PS C:\> Get-AzPostgreSqlFlexibleServerLocationBasedCapability -Location eastus
+Get-AzPostgreSqlFlexibleServerLocationBasedCapability -Location eastus
+```
 
+```output
 SKU               Memory vCore Tier
 ---               ------ ----- ----
 Standard_B1ms       2048     1 Burstable

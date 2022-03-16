@@ -88,9 +88,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
 
             parameters.Tags = parameters.Tags ?? existingCluster.Tags;
 
-            parameters.BillingType = string.IsNullOrEmpty(parameters.BillingType)    
-                ? existingCluster.BillingType    
+            parameters.BillingType = string.IsNullOrEmpty(parameters.BillingType)
+                ? existingCluster.BillingType
                 : parameters.BillingType;
+
+            parameters.Sku = parameters.Sku != null ? parameters.Sku : existingCluster.Sku;
 
             if (parameters.KeyVaultProperties != null)
             {
@@ -107,20 +109,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                     : parameters.KeyVaultProperties.KeyVersion;
             }
 
-            if (parameters.Sku != null)
-            {
-                parameters.Sku.Name = string.IsNullOrEmpty(parameters.Sku?.Name)
-                    ? existingCluster.Sku?.Name
-                    : parameters.Sku.Name;
+            var response = this.OperationalInsightsManagementClient.Clusters.Update(resourceGroupName, clusterName, parameters.GetClusterPatch());
 
-                parameters.Sku.Capacity = parameters.Sku?.Capacity == 0
-                    ? existingCluster.Sku?.Capacity
-                    : parameters.Sku.Capacity;
-            }
-
-            var response =
-                this.OperationalInsightsManagementClient.Clusters.Update(resourceGroupName, clusterName,
-                    parameters.GetClusterPatch());
             return new PSCluster(response);
         }
 

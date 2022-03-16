@@ -38,21 +38,21 @@ Specify the step by its name and the resource group name. Alternately, you can p
 
 ### Example 1: Remove a step
 ```powershell
-PS C:\> Remove-AzDeploymentManagerStep -ResourceGroupName ContosoResourceGroup -Name ContosoService1WaitStep
+Remove-AzDeploymentManagerStep -ResourceGroupName ContosoResourceGroup -Name ContosoService1WaitStep
 ```
 
 This command deletes a step named ContosoService1WaitStep in ContosoResourceGroup.
 
 ### Example 2: Remove a step using the resource identifier
 ```powershell
-PS C:\> Remove-AzDeploymentManagerStep -ResourceId "/subscriptions/subscriptionId/resourcegroups/ContosoResourceGroup/providers/Microsoft.DeploymentManager/steps/ContosoService1WaitStep"
+Remove-AzDeploymentManagerStep -ResourceId "/subscriptions/subscriptionId/resourcegroups/ContosoResourceGroup/providers/Microsoft.DeploymentManager/steps/ContosoService1WaitStep"
 ```
 
 This command deletes a step named ContosoService1WaitStep in ContosoResourceGroup.
 
 ### Example 3: Remove a step using an object returned by New-AzDeploymentManagerStep
 ```powershell
-PS C:\> Remove-AzDeploymentManagerStep -InputObject $stepObject
+Remove-AzDeploymentManagerStep -InputObject $stepObject
 ```
 
  This command deletes a step whose name and ResourceGroup match the Name and ResourceGroupName properties of the $stepObject, respectively.
