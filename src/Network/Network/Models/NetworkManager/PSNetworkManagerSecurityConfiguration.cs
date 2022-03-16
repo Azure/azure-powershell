@@ -18,13 +18,20 @@ namespace Microsoft.Azure.Commands.Network.Models.NetworkManager
 {
     using System.Collections;
     using System.Collections.Generic;
+    using Newtonsoft.Json;
     using WindowsAzure.Commands.Common.Attributes;
 
     public class PSNetworkManagerSecurityConfiguration : PSNetworkManagerBaseResource
     {
         public string SecurityType { get; set; }
 
-        public List<string> NetworkIntentPolicyBasedService { get; set; }
+        public List<string> ApplyOnNetworkIntentPolicyBasedServices { get; set; }
+
+        [JsonIgnore]
+        public string NetworkIntentPolicyBasedServicesText
+        {
+            get { return JsonConvert.SerializeObject(ApplyOnNetworkIntentPolicyBasedServices, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
 
         public string DeleteExistingNSGs { get; set; }
     }

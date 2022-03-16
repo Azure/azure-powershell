@@ -71,8 +71,8 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "NetworkIntentPolicyBasedService.")]
-        public List<string> NetworkIntentPolicyBasedService { get; set; }
+           HelpMessage = "ApplyOnNetworkIntentPolicyBasedServices.")]
+        public List<string> ApplyOnNetworkIntentPolicyBasedServices { get; set; }
 
         [Parameter(
            Mandatory = false,
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             var securityConfig = new PSNetworkManagerSecurityConfiguration();
             securityConfig.Name = this.Name;
-            securityConfig.NetworkIntentPolicyBasedService = this.NetworkIntentPolicyBasedService;
+            securityConfig.ApplyOnNetworkIntentPolicyBasedServices = this.ApplyOnNetworkIntentPolicyBasedServices;
             if (!string.IsNullOrEmpty(this.Description))
             {
                 securityConfig.Description = this.Description;

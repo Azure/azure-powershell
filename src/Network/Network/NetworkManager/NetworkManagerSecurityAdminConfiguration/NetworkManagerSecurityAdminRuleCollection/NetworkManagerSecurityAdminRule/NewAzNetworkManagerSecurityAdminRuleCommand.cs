@@ -142,11 +142,11 @@ namespace Microsoft.Azure.Commands.Network
         public List<string> DestinationPortRange { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Priority of Rule.",
             ParameterSetName = "Custom")]
-        public int? Priority { get; set; }
+        public int Priority { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -192,10 +192,7 @@ namespace Microsoft.Azure.Commands.Network
                 securityAdminRule.Protocol = this.Protocol;
                 securityAdminRule.Access = this.Access;
                 securityAdminRule.Direction = this.Direction;
-                if (this.Priority != null)
-                {
-                    securityAdminRule.Priority = this.Priority;
-                }
+                securityAdminRule.Priority = this.Priority;
                 if (this.SourcePortRange != null)
                 {
                     securityAdminRule.SourcePortRanges = this.SourcePortRange;
