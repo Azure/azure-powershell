@@ -244,7 +244,7 @@ function Test-ServerTrustCertificateErrHandling
         $exc4 = "Cannot validate argument on parameter 'PublicKey'. The argument is null or empty."
         Assert-ThrowsContains { New-AzSqlInstanceServerTrustCertificate -ResourceGroupName $rgName -InstanceName $miName -CertificateName $invalidCertName3 -PublicKey "" } $exc4
         # Upsert Cert name exists, different blob
-        $exc5 = "Certificate with name '" + $certName1 + "' already exists on Azure Sql Managed Instance '" + $miName + "'."
+        $exc5 = "Certificate with name '" + $certName1 + "' already exists on managed instance '" + $miName + "'."
         Assert-ThrowsContains { New-AzSqlInstanceServerTrustCertificate -ResourceGroupName $rgName -InstanceName $miName -CertificateName $certName1 -PublicKey $certVal3 } $exc5
         # Upsert Cert name empty
         $exc6 = "Cannot validate argument on parameter 'Name'. The argument is null or empty."
