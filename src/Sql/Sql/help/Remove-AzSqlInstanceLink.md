@@ -46,21 +46,6 @@ Remove-AzSqlInstanceLink [-ResourceId] <String> [-Force] [-PassThru] [-DefaultPr
 PS C:\> Remove-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "Link01"
 This operation may cause data loss if replica's last hardened LSN is not in sync with the primary. Are you sure you want to proceed?
 [Y] Yes  [N] No  [?] Help (default is "Y"): Y
-ResourceGroupName              : ResourceGroup01
-InstanceName                   : ManagedInstance01
-Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
-Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01
-Name                           : Link01
-TargetDatabase                 : Database01
-SourceEndpoint                 : TCP://SERVER01:5022
-PrimaryAvailabilityGroupName   :
-SecondaryAvailabilityGroupName :
-ReplicationMode                : Async
-DistributedAvailabilityGroupId : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-SourceReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-LinkState                      : Copying
-LastHardenedLsn                :
 ```
 
 This command removes the instance link "Link01" from the managed instance "ManagedInstance01".
@@ -68,21 +53,6 @@ This command removes the instance link "Link01" from the managed instance "Manag
 ### Example 2: Remove instance link with an explicit -Force flag
 ```powershell
 PS C:\> Remove-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "Link01" -Force
-ResourceGroupName              : ResourceGroup01
-InstanceName                   : ManagedInstance01
-Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
-Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01
-Name                           : Link01
-TargetDatabase                 : Database01
-SourceEndpoint                 : TCP://SERVER01:5022
-PrimaryAvailabilityGroupName   :
-SecondaryAvailabilityGroupName :
-ReplicationMode                : Async
-DistributedAvailabilityGroupId : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-SourceReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-LinkState                      : Copying
-LastHardenedLsn                :
 ```
 
 This command forcefully removes the instance link "Link01" from the managed instance "ManagedInstance01", ignoring the data loss warning.
@@ -92,21 +62,6 @@ This command forcefully removes the instance link "Link01" from the managed inst
 PS C:\> Remove-AzSqlInstanceLink -ResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01"
 This operation may cause data loss if replica's last hardened LSN is not in sync with the primary. Are you sure you want to proceed?
 [Y] Yes  [N] No  [?] Help (default is "Y"): Y
-ResourceGroupName              : ResourceGroup01
-InstanceName                   : ManagedInstance01
-Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
-Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01
-Name                           : Link01
-TargetDatabase                 : Database01
-SourceEndpoint                 : TCP://SERVER01:5022
-PrimaryAvailabilityGroupName   :
-SecondaryAvailabilityGroupName :
-ReplicationMode                : Async
-DistributedAvailabilityGroupId : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-SourceReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-LinkState                      : Copying
-LastHardenedLsn                :
 ```
 
 This command removes the instance link with specified resource ID.
@@ -117,21 +72,6 @@ PS C:\> $managedInstanceLink = Get-AzSqlInstanceLink -ResourceGroupName "Resourc
 PS C:\> Remove-AzSqlInstanceLink -InputObject $managedInstanceLink
 This operation may cause data loss if replica's last hardened LSN is not in sync with the primary. Are you sure you want to proceed?
 [Y] Yes  [N] No  [?] Help (default is "Y"): Y
-ResourceGroupName              : ResourceGroup01
-InstanceName                   : ManagedInstance01
-Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
-Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01
-Name                           : Link01
-TargetDatabase                 : Database01
-SourceEndpoint                 : TCP://SERVER01:5022
-PrimaryAvailabilityGroupName   :
-SecondaryAvailabilityGroupName :
-ReplicationMode                : Async
-DistributedAvailabilityGroupId : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-SourceReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-LinkState                      : Copying
-LastHardenedLsn                :
 ```
 
 This command removes the instance link specified by instance link object.
@@ -142,21 +82,6 @@ PS C:\> $instance = Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -Name
 PS C:\> Remove-AzSqlInstanceLink -InstanceObject $instance -Name "Link01"
 This operation may cause data loss if replica's last hardened LSN is not in sync with the primary. Are you sure you want to proceed?
 [Y] Yes  [N] No  [?] Help (default is "Y"): Y
-ResourceGroupName              : ResourceGroup01
-InstanceName                   : ManagedInstance01
-Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
-Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01
-Name                           : Link01
-TargetDatabase                 : Database01
-SourceEndpoint                 : TCP://SERVER01:5022
-PrimaryAvailabilityGroupName   :
-SecondaryAvailabilityGroupName :
-ReplicationMode                : Async
-DistributedAvailabilityGroupId : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-SourceReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-LinkState                      : Copying
-LastHardenedLsn                :
 ```
 
 This command removes the instance link "Link01" from the managed instance specified by the instance object.
@@ -166,21 +91,6 @@ This command removes the instance link "Link01" from the managed instance specif
 PS C:\> Remove-AzSqlInstanceLink "ResourceGroup01" "ManagedInstance01" "Link01"
 This operation may cause data loss if replica's last hardened LSN is not in sync with the primary. Are you sure you want to proceed?
 [Y] Yes  [N] No  [?] Help (default is "Y"): Y
-ResourceGroupName              : ResourceGroup01
-InstanceName                   : ManagedInstance01
-Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
-Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01
-Name                           : Link01
-TargetDatabase                 : Database01
-SourceEndpoint                 : TCP://SERVER01:5022
-PrimaryAvailabilityGroupName   :
-SecondaryAvailabilityGroupName :
-ReplicationMode                : Async
-DistributedAvailabilityGroupId : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-SourceReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-LinkState                      : Copying
-LastHardenedLsn                :
 ```
 
 This command removes the instance link "Link01" from the managed instance "ManagedInstance01" using positional parameters.
@@ -189,6 +99,13 @@ This command removes the instance link "Link01" from the managed instance "Manag
 ```powershell
 PS C:\> $instance = Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -Name "ManagedInstance01" 
 PS C:\> $instance | Get-AzSqlInstanceLink | Remove-AzSqlInstanceLink -Force
+```
+
+This command removes all instance links from the managed instance "ManagedInstance01" .
+
+### Example 8: Remove instance link with an explicit -Force flag and output the deleted instance link object
+```powershell
+PS C:\> Remove-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "Link01" -Force -PassThru
 ResourceGroupName              : ResourceGroup01
 InstanceName                   : ManagedInstance01
 Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
@@ -206,7 +123,7 @@ LinkState                      : Copying
 LastHardenedLsn                :
 ```
 
-This command removes all instance links from the managed instance "ManagedInstance01".
+This command removes an instance link from the managed instance "ManagedInstance01" and outputs the deleted instance link object.
 
 ## PARAMETERS
 

@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
         /// <summary>
         /// Gets or sets the name of the resource group to use.
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = DeleteByNameParameterSet, Position = 0, HelpMessage = "The name of the resource group.")]
+        [Parameter(Mandatory = true, ParameterSetName = DeleteByNameParameterSet, Position = 0, HelpMessage = "Name of the resource group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public override string ResourceGroupName { get; set; }
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
         /// <summary>
         /// Gets or sets the name of target managed instance
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = DeleteByNameParameterSet, Position = 1, HelpMessage = "The name of the Azure SQL Managed Instance.")]
+        [Parameter(Mandatory = true, ParameterSetName = DeleteByNameParameterSet, Position = 1, HelpMessage = "Name of Azure SQL Managed Instance.")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
         public string InstanceName { get; set; }
@@ -45,8 +45,8 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
         /// <summary>
         /// Gets or sets the certificate name
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = DeleteByNameParameterSet, Position = 2, HelpMessage = "The name of the certificate.")]
-        [Parameter(Mandatory = true, ParameterSetName = DeleteByParentObjectParameterSet, Position = 1, HelpMessage = "The name of the certificate.")]
+        [Parameter(Mandatory = true, ParameterSetName = DeleteByNameParameterSet, Position = 2, HelpMessage = "Name of the certificate.")]
+        [Parameter(Mandatory = true, ParameterSetName = DeleteByParentObjectParameterSet, Position = 1, HelpMessage = "Name of the certificate.")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances/serverTrustCertificates", nameof(ResourceGroupName), nameof(InstanceName))]
         [ValidateNotNullOrEmpty]
         [Alias("CertificateName")]
@@ -55,21 +55,21 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
         /// <summary>
         /// Gets or sets the instance Object
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = DeleteByParentObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "The instance input object.")]
+        [Parameter(Mandatory = true, ParameterSetName = DeleteByParentObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "Instance input object.")]
         [ValidateNotNullOrEmpty]
         public AzureSqlManagedInstanceModel InstanceObject { get; set; }
 
         /// <summary>
         /// Gets or sets the instance Object
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = DeleteByInputObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "The certificate input object.")]
+        [Parameter(Mandatory = true, ParameterSetName = DeleteByInputObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "Certificate input object.")]
         [ValidateNotNullOrEmpty]
         public AzureSqlInstanceServerTrustCertificateModel InputObject { get; set; }
 
         /// <summary>
         /// Gets or sets the certificate Resource Id
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = DeleteByResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The certificate resource id.")]
+        [Parameter(Mandatory = true, ParameterSetName = DeleteByResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Certificate resource id.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 

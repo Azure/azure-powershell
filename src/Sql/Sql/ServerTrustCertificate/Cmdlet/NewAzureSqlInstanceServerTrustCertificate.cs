@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
         /// <summary>
         /// Gets or sets the name of the resource group to use.
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, Position = 0, HelpMessage = "The name of the resource group.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, Position = 0, HelpMessage = "Name of the resource group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public override string ResourceGroupName { get; set; }
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
         /// <summary>
         /// Gets or sets the name of target managed instance
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, Position = 1, HelpMessage = "The name of the Azure SQL Managed Instance.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, Position = 1, HelpMessage = "Name of Azure SQL Managed Instance.")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string InstanceName { get; set; }
@@ -42,8 +42,8 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
         /// <summary>
         /// Gets or sets the certificate name
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, Position = 2, HelpMessage = "The name of the certificate.")]
-        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, Position = 1, HelpMessage = "The name of the certificate.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, Position = 2, HelpMessage = "Name of the certificate.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, Position = 1, HelpMessage = "Name of the certificate.")]
         [ValidateNotNullOrEmpty]
         [Alias("CertificateName")]
         public string Name { get; set; }
@@ -51,8 +51,8 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
         /// <summary>
         /// Gets or sets the public key
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, Position = 3, HelpMessage = "The value of certificate encoded public key.")]
-        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, Position = 2, HelpMessage = "The value of certificate encoded public key.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, Position = 3, HelpMessage = "Value of certificate encoded public key.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, Position = 2, HelpMessage = "Value of certificate encoded public key.")]
         [ValidateNotNullOrEmpty]
         [ValidatePattern("^0x[0-9a-fA-F]+$")]
         public string PublicKey { get; set; }
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
         /// <summary>
         /// Gets or sets the instance Object
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "The instance input object.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "Instance input object.")]
         [ValidateNotNullOrEmpty]
         public AzureSqlManagedInstanceModel InstanceObject { get; set; }
 

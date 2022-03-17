@@ -306,7 +306,7 @@ Returns information about the Azure SQL Instance pool.
 Returns information about an Azure SQL Instance pool's usage.
 
 ### [Get-AzSqlInstanceServerTrustCertificate](Get-AzSqlInstanceServerTrustCertificate.md)
-Returns information about Azure SQL Server Trust Certificate.
+Returns information about server trust certificate.
 
 ### [Get-AzSqlInstanceTransparentDataEncryptionProtector](Get-AzSqlInstanceTransparentDataEncryptionProtector.md)
 Gets the Transparent Data Encryption (TDE) protector for a SQL managed instance.
@@ -465,7 +465,7 @@ Creates a new instance link.
 Creates an Azure SQL Instance pool.
 
 ### [New-AzSqlInstanceServerTrustCertificate](New-AzSqlInstanceServerTrustCertificate.md)
-Creates a new Azure SQL Server Trust Certificate.
+Creates a new server trust certificate.
 
 ### [New-AzSqlServer](New-AzSqlServer.md)
 Creates a SQL Database server.
@@ -579,7 +579,7 @@ Removes an instance link.
 Removes an Azure SQL Instance pool.
 
 ### [Remove-AzSqlInstanceServerTrustCertificate](Remove-AzSqlInstanceServerTrustCertificate.md)
-Removes an Azure SQL Server Trust Certificate.
+Removes a server trust certificate.
 
 ### [Remove-AzSqlServer](Remove-AzSqlServer.md)
 Removes an Azure SQL Database server.

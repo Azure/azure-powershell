@@ -36,7 +36,7 @@ Get-AzSqlInstanceLink [-ResourceId] <String> [-DefaultProfile <IAzureContextCont
 ```
 
 ## DESCRIPTION
-The **Get-AzSqlInstanceLink** cmdlet returns information about one or more instance Azure SQL Managed Instance links. Specify the name of a link to see information for that link only.
+The **Get-AzSqlInstanceLink** cmdlet returns information about one or more instance of Azure SQL Managed Instance links. Specify the name of a link to see information for that link only.
 
 ## EXAMPLES
 
