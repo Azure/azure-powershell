@@ -20,9 +20,9 @@
 
 -->
 ## Upcoming Release
+* Added `AutomaticRepairAction` string parameter to the `New-AzVmssConfig` and `Update-AzVmss` cmdlets.
 * Updated New-AzVM feature for `vCPUsAvailable` and `vCPUsPerCore` parameters. Cmdlets will not try to use the new `VMCustomizationPreview` feature if the user does not have access to that feature. [#17370]
 * Improved description and examples for disk creation
-* Added `AutomaticRepairAction` string parameter to the `New-AzVmssConfig` and `Update-AzVmss` cmdlets.
 
 ## Version 4.24.0
 * Upgraded Compute .NET SDK package reference to version 52.0.0
