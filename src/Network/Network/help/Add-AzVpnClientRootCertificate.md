@@ -32,10 +32,10 @@ Multiple root certificates are often deployed by organizations that include user
 ## EXAMPLES
 
 ### Example 1: Add a client root certificate to a virtual gateway
-```
-PS C:\>$Text = Get-Content -Path "C:\Azure\Certificates\ExportedCertificate.cer"
-PS C:\> $CertificateText = for ($i=1; $i -lt $Text.Length -1 ; $i++){$Text[$i]}
-PS C:\> Add-AzVpnClientRootCertificate -PublicCertData $CertificateText -ResourceGroupName "ContosoResourceGroup" -VirtualNetworkGatewayName "ContosoVirtualGateway" -VpnClientRootCertificateName "ContosoClientRootCertificate"
+```powershell
+$Text = Get-Content -Path "C:\Azure\Certificates\ExportedCertificate.cer"
+$CertificateText = for ($i=1; $i -lt $Text.Length -1 ; $i++){$Text[$i]}
+Add-AzVpnClientRootCertificate -PublicCertData $CertificateText -ResourceGroupName "ContosoResourceGroup" -VirtualNetworkGatewayName "ContosoVirtualGateway" -VpnClientRootCertificateName "ContosoClientRootCertificate"
 ```
 
 This example adds a client root certificate to a virtual gateway named ContosoVirtualGateway.

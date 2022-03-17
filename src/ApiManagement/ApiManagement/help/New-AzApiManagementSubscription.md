@@ -43,13 +43,13 @@ This command subscribes an existing user to a product.
 ### Example 2: Create a subscription for all Api Scope
 ```powershell
 $apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-New-AzApiManagementSubscription -Context $context -Scope "/apis" -Name "GlobalApiScope"
+New-AzApiManagementSubscription -Context $apimContext -Scope "/apis" -Name "GlobalApiScope"
 ```
 
 ### Example 3: Create a subscription for Product Scope
 ```powershell
 $apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-New-AzApiManagementSubscription -Context $context -Scope "/products/starter" -Name "UnlimitedProductSub"
+New-AzApiManagementSubscription -Context $apimContext -Scope "/products/starter" -Name "UnlimitedProductSub"
 ```
 
 ## PARAMETERS

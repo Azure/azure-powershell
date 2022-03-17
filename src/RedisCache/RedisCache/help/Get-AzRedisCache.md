@@ -25,9 +25,11 @@ If you specify no parameters, this operation gets every Redis Cache for the curr
 ## EXAMPLES
 
 ### Example 1: Get a Redis Cache by name
+```powershell
+Get-AzRedisCache -Name "myexists"
 ```
-PS C:\>Get-AzRedisCache -Name "myexists"
 
+```output
         ResourceGroupName  : myGroup
         Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup/providers/Microsoft.Cache/Redis/myexists
         Location           : North Central US
@@ -49,9 +51,11 @@ PS C:\>Get-AzRedisCache -Name "myexists"
 This command gets the Redis Cache named myexists.
 
 ### Example 2: Get every Redis Cache in a resource group
+```powershell
+Get-AzRedisCache -ResourceGroupName "myGroup"
 ```
-PS C:\>Get-AzRedisCache -ResourceGroupName "myGroup"
 
+```output
         ResourceGroupName  : myGroup
         Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup/providers/Microsoft.Cache/Redis/myexists
         Location           : North Central US
@@ -90,9 +94,11 @@ PS C:\>Get-AzRedisCache -ResourceGroupName "myGroup"
 This command gets every Redis Cache in the specified resource group.
 
 ### Example 3: Get every Redis Cache in the current subscription
+```powershell
+Get-AzRedisCache
 ```
-PS C:\>Get-AzRedisCache
 
+```output
         ResourceGroupName  : myGroup
         Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup/providers/Microsoft.Cache/Redis/myexists
         Location           : North Central US

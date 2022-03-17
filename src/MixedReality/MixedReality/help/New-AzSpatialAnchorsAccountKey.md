@@ -55,8 +55,10 @@ Regenerate primary key or secondary key of Spatial Anchors Account.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzSpatialAnchorsAccountKey -ResourceGroupName rg1 -Name example -Secondary
+New-AzSpatialAnchorsAccountKey -ResourceGroupName rg1 -Name example -Secondary
+```
 
+```output
 PrimaryKey                                   SecondaryKey
 ----------                                   ------------
 QTwT6LpnD6NuUfgfkCKFBmf89xWJ7tDC0Yx0yxxaejs= mF8lsBeEbs51H/jLe4COW4zUiEyg9lDM1XHQ03jtxZU=
@@ -66,8 +68,10 @@ Regenerate secondary key of Spatial Anchors Account "example" in Resource Group 
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzSpatialAnchorsAccount -ResourceGroup rg1 -Name example | New-AzSpatialAnchorsAccountKey -Secondary
+Get-AzSpatialAnchorsAccount -ResourceGroup rg1 -Name example | New-AzSpatialAnchorsAccountKey -Secondary
+```
 
+```output
 PrimaryKey                                   SecondaryKey
 ----------                                   ------------
 QTwT6LpnD6NuUfgfkCKFBmf89xWJ7tDC0Yx0yxxaejs= BGOP2NZN5ThHbDFKzW+FISSgxnnBqCPKpTsixAxkvXk=

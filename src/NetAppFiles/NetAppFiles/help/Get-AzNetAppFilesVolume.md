@@ -35,11 +35,11 @@ The **Get-AzNetAppFilesVolume** cmdlet gets details of an ANF volume.
 ## EXAMPLES
 
 ### Example 1: Get an ANF volume
+```powershell
+Get-AzNetAppFilesVolume -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -Name "MyAnfVolume"
 ```
-PS C:\>Get-AzNetAppFilesVolume -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -Name "MyAnfVolume"
 
-Output:
-
+```output
 ResourceGroupName : MyRG
 Location          : westus2
 Id                : /subscriptions/subsId/resourceGroups/MyRG/providers/Microsoft.NetApp/netAppAccounts/MyAnfAccount/capacityPools/MyAnfPool/volumes/MyAnfVolume

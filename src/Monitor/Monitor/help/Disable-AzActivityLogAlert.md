@@ -38,24 +38,24 @@ This cmdlet implements the ShouldProcess pattern, i.e. it might request confirma
 ## EXAMPLES
 
 ### Example 1: Disable an activity log alert
-```
-PS C:\>Disable-AzActivityLogAlert -Name "alert1" -ResourceGroupName "Default-ActivityLogsAlerts"
+```powershell
+Disable-AzActivityLogAlert -Name "alert1" -ResourceGroupName "Default-ActivityLogsAlerts"
 ```
 
 This command disables the activity log alert called alert1 in the resource group Default-ActivityLogsAlerts.
 This command changes the tags property of the activity log alert called alert1 and disables it.
 
 ### Example 2: Disable an activity log alert using a PSActivityLogAlertResource object as input
-```
-PS C:\>$obj = Get-AzActivityLogAlert -ResourceGroup "Default-activityLogAlerts" -Name "alert1"
-PS C:\>Disable-AzActivityLogAlert -InputObject $obj
+```powershell
+$obj = Get-AzActivityLogAlert -ResourceGroup "Default-activityLogAlerts" -Name "alert1"
+Disable-AzActivityLogAlert -InputObject $obj
 ```
 
 This command disables an activity log alert called alert1. For this it uses a PSActivityLogAlertResource object as input argument.
 
 ### Example 3: Disable the ActivityLogAlert using the ResourceId parameter
-```
-PS C:\>Get-AzResource -ResourceGroupName "myResourceGroup" -Name "myLogAlert" | Disable-AzActivityLogAlert
+```powershell
+Get-AzResource -ResourceGroupName "myResourceGroup" -Name "myLogAlert" | Disable-AzActivityLogAlert
 ```
 
 This command disables the ActivityLogAlert using the ResourceId parameter from the pipe.

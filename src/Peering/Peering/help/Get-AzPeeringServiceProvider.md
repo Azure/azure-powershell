@@ -23,8 +23,10 @@ List peering service providers
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzPeeringServiceProvider
+Get-AzPeeringServiceProvider
+```
 
+```output
 ServiceProviderName Name      Id Type
 ------------------- ----      -- ----
 TestPeer1           TestPeer1    Microsoft.Peering/peeringServiceProviders

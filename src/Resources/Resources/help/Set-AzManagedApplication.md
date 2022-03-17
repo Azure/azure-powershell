@@ -34,8 +34,8 @@ The **Set-AzManagedApplication** cmdlet updates managed applications
 ## EXAMPLES
 
 ### Example 1: Update managed application definition description
-```
-PS C:\>Set-AzManagedApplication -ResourceId "/subscriptions/mySubId/resourcegroups/myRG/Microsoft.Solutions/applications/myApp" -Description "Updated description here"
+```powershell
+Set-AzManagedApplication -ResourceId "/subscriptions/mySubId/resourcegroups/myRG/Microsoft.Solutions/applications/myApp" -Description "Updated description here"
 ```
 
 This command updates the managed application description

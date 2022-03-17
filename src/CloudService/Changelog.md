@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.0
+* Fixed the issue of `Get-AzCloudServiceNetworkInterface` and `Get-AzCloudServicePublicIPAddress`.
+
 ## Version 1.0.0
 * General availability of 'Az.CloudService' module
 

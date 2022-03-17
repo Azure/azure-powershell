@@ -479,5 +479,19 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineHibernate");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVMvCPUFeatures()
+        {
+            TestRunner.RunTestScript("Test-VMvCPUFeatures");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetVirtualMachineById()
+        {
+            TestRunner.RunTestScript("Test-GetVirtualMachineById");
+        }
     }
 }

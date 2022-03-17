@@ -361,6 +361,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot find deleted managed HSM &apos;{0}&apos; in location &apos;{1}&apos;.
+        /// </summary>
+        internal static string DeletedManagedHsmNotFound {
+            get {
+                return ResourceManager.GetString("DeletedManagedHsmNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot find deleted vault &apos;{0}&apos; in location &apos;{1}&apos;.
         /// </summary>
         internal static string DeletedVaultNotFound {
@@ -852,6 +861,24 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         internal static string PublicKeySavedAt {
             get {
                 return ResourceManager.GetString("PublicKeySavedAt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove managed HSM &apos;{0}&apos; forever..
+        /// </summary>
+        internal static string PurgeManagedHsmWarning {
+            get {
+                return ResourceManager.GetString("PurgeManagedHsmWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Purge managed HSM.
+        /// </summary>
+        internal static string PurgeManagedHsmWarningWhatIf {
+            get {
+                return ResourceManager.GetString("PurgeManagedHsmWarningWhatIf", resourceCulture);
             }
         }
         

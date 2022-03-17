@@ -25,7 +25,7 @@ The cmdlet **New-AzApiManagementPipelineDiagnosticSetting** creates the Diagnost
 
 ### Example 1
 ```powershell
-$httpMessageDiagnostic = New-AzApiManagementHttpMessageDiagnostic -Headers 'Content-Type', 'UserAgent' -BodyBytes 100
+$httpMessageDiagnostic = New-AzApiManagementHttpMessageDiagnostic -HeadersToLog 'Content-Type', 'UserAgent' -BodyBytesToLog 100
 New-AzApiManagementPipelineDiagnosticSetting -Request $httpMessageDiagnostic -Response $httpMessageDiagnostic
 ```
 

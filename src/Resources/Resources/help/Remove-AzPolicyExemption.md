@@ -36,9 +36,9 @@ The **Remove-AzPolicyExemption** cmdlet removes the specified policy exemption.
 ## EXAMPLES
 
 ### Example 1: Remove policy exemption by name and scope
-```
-PS C:\> $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
-PS C:\> Remove-AzPolicyExemption -Name 'PolicyExemption07' -Scope $ResourceGroup.ResourceId -Confirm
+```powershell
+$ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
+Remove-AzPolicyExemption -Name 'PolicyExemption07' -Scope $ResourceGroup.ResourceId -Confirm
 ```
 
 The first command gets a resource group named ResourceGroup11 by using the Get-AzResourceGroup cmdlet.
@@ -47,10 +47,10 @@ The second command removes the policy exemption named PolicyExemption07 that was
 The **ResourceId** property of $ResourceGroup identifies the resource group.
 
 ### Example 2: Remove policy exemption by ID
-```
-PS C:\> $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11' 
-PS C:\> $PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07' -Scope $ResourceGroup.ResourceId
-PS C:\> Remove-AzPolicyExemption -Id $PolicyExemption.ResourceId -Confirm
+```powershell
+$ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11' 
+$PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07' -Scope $ResourceGroup.ResourceId
+Remove-AzPolicyExemption -Id $PolicyExemption.ResourceId -Confirm
 ```
 
 The first command gets a resource group named ResourceGroup11, and then stores that object in the $ResourceGroup variable.

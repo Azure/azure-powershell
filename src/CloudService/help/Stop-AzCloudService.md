@@ -215,10 +215,13 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   - `[CloudServiceName <String>]`: 
+  - `[IPConfigurationName <String>]`: The IP configuration name.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: Name of the location that the OS version pertains to.
+  - `[NetworkInterfaceName <String>]`: The name of the network interface.
   - `[OSFamilyName <String>]`: Name of the OS family.
   - `[OSVersionName <String>]`: Name of the OS version.
+  - `[PublicIPAddressName <String>]`: The name of the public IP Address.
   - `[ResourceGroupName <String>]`: 
   - `[RoleInstanceName <String>]`: Name of the role instance.
   - `[RoleName <String>]`: Name of the role.

@@ -44,8 +44,8 @@ The PowerShell command sequence for data flow debug workflow should be:
 
 ### Example 1
 ```powershell
-PS C:\WINDOWS\system32> $job = Start-AzDataFactoryV2DataFlowDebugSession -ResourceGroupName adf -DataFactoryName jikma0601sea -AsJob
-PS C:\WINDOWS\system32> $job 
+$job = Start-AzDataFactoryV2DataFlowDebugSession -ResourceGroupName adf -DataFactoryName jikma0601sea -AsJob
+$job 
 
 Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
 --     ----            -------------   -----         -----------     --------             -------
@@ -53,14 +53,14 @@ Id     Name            PSJobTypeName   State         HasMoreData     Location   
 
 (After 5 minutes)
 
-PS C:\WINDOWS\system32> $job
+$job
 
 Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
 --     ----            -------------   -----         -----------     --------             -------
 1      Long Running... AzureLongRun... Completed     True            localhost            Start-AzDataFactoryV2D...
 
 
-PS C:\WINDOWS\system32> $job.Output
+$job.Output
 
 SessionId                            Status
 ---------                            ------

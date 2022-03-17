@@ -18,6 +18,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Runtime.InteropServices;
 using System.Security;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -363,6 +364,11 @@ namespace Microsoft.Azure.Commands.Profile
                     break;
             }
 
+            if (!AzureSession.Instance.TryGetComponent(AzKeyStore.Name, out AzKeyStore keyStore))
+            {
+                keyStore = null;
+            }
+
             SecureString password = null;
             if (Credential != null)
             {
@@ -402,6 +408,7 @@ namespace Microsoft.Azure.Commands.Profile
                 if (CertificatePassword != null)
                 {
                     azureAccount.SetProperty(AzureAccount.Property.CertificatePassword, CertificatePassword.ConvertToString());
+                    keyStore?.SaveKey(new ServicePrincipalKey(AzureAccount.Property.CertificatePassword, azureAccount.Id, Tenant), CertificatePassword);
                 }
             }
 
@@ -432,6 +439,8 @@ namespace Microsoft.Azure.Commands.Profile
             if (azureAccount.Type == AzureAccount.AccountType.ServicePrincipal && password != null)
             {
                 azureAccount.SetProperty(AzureAccount.Property.ServicePrincipalSecret, password.ConvertToString());
+                keyStore?.SaveKey(new ServicePrincipalKey(AzureAccount.Property.ServicePrincipalSecret
+                    ,azureAccount.Id, Tenant), password);
                 if (GetContextModificationScope() == ContextModificationScope.CurrentUser)
                 {
                     var file = AzureSession.Instance.ARMProfileFile;
@@ -511,10 +520,16 @@ namespace Microsoft.Azure.Commands.Profile
                    }
                    catch (AuthenticationFailedException ex)
                    {
+                       string message = string.Empty;
                        if (IsUnableToOpenWebPageError(ex))
                        {
                            WriteWarning(Resources.InteractiveAuthNotSupported);
                            WriteDebug(ex.ToString());
+                       }
+                       else if (TryParseUnknownAuthenticationException(ex, out message))
+                       {
+                           WriteDebug(ex.ToString());
+                           throw ex.WithAdditionalMessage(message);
                        }
                        else
                        {
@@ -552,6 +567,21 @@ namespace Microsoft.Azure.Commands.Profile
         {
             return exception.InnerException is MsalClientException && ((MsalClientException)exception.InnerException)?.ErrorCode == MsalError.LinuxXdgOpen
                             || (exception.Message?.ToLower()?.Contains("unable to open a web page") ?? false);
+        }
+
+        private bool TryParseUnknownAuthenticationException(AuthenticationFailedException exception, out string message)
+        {
+
+            var innerException = exception?.InnerException as MsalServiceException;
+            bool isUnknownMsalServiceException = string.Equals(innerException?.ErrorCode, "access_denied", StringComparison.OrdinalIgnoreCase);
+            message = null;
+            if(isUnknownMsalServiceException)
+            {
+                StringBuilder messageBuilder = new StringBuilder(nameof(innerException.ErrorCode));
+                messageBuilder.Append(": ").Append(innerException.ErrorCode);
+                message = messageBuilder.ToString();
+            }
+            return isUnknownMsalServiceException;
         }
 
         private ConcurrentQueue<Task> _tasks = new ConcurrentQueue<Task>();
@@ -678,9 +708,10 @@ namespace Microsoft.Azure.Commands.Profile
                     autoSaveEnabled = false;
                 }
 
-                IServicePrincipalKeyStore keyStore =
-                    new AzureRmServicePrincipalKeyStore(AzureRmProfileProvider.Instance.Profile);
-                AzureSession.Instance.RegisterComponent(ServicePrincipalKeyStore.Name, () => keyStore);
+#pragma warning disable CS0618 // Type or member is obsolete
+                var keyStore = new AzKeyStore(AzureRmProfileProvider.Instance.Profile);
+#pragma warning restore CS0618 // Type or member is obsolete
+                AzureSession.Instance.RegisterComponent(AzKeyStore.Name, () => keyStore);
 
                 IAuthenticatorBuilder builder = null;
                 if (!AzureSession.Instance.TryGetComponent(AuthenticatorBuilder.AuthenticatorBuilderKey, out builder))
@@ -707,6 +738,7 @@ namespace Microsoft.Azure.Commands.Profile
                 AzureSession.Instance.RegisterComponent(nameof(IAzureEventListenerFactory), () => azureEventListenerFactory);
                 AzureSession.Instance.RegisterComponent(nameof(AzureCredentialFactory), () => new AzureCredentialFactory());
                 AzureSession.Instance.RegisterComponent(nameof(MsalAccessTokenAcquirerFactory), () => new MsalAccessTokenAcquirerFactory());
+                AzureSession.Instance.RegisterComponent<ISshCredentialFactory>(nameof(ISshCredentialFactory), () => new SshCredentialFactory());
 #if DEBUG
             }
             catch (Exception) when (TestMockSupport.RunningMocked)

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Dns.dll-Help.xml
 Module Name: Az.Dns
 ms.assetid: 505562A4-30BC-44E7-94EF-579763B8D794
@@ -44,23 +44,23 @@ You can suppress this by using the *Overwrite* parameter, which deletes the reco
 ## EXAMPLES
 
 ### Example 1: Remove a record set
-```
-PS C:\> $RecordSet = Get-AzDnsRecordSet -Name "www" -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com"
-PS C:\> Remove-AzDnsRecordSet -RecordSet $RecordSet
+```powershell
+$RecordSet = Get-AzDnsRecordSet -Name "www" -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com"
+Remove-AzDnsRecordSet -RecordSet $RecordSet
 ```
 
 The first command gets the specified record set, and then stores it in the $RecordSet variable.The second command removes the record set in $RecordSet.
 
 ### Example 2: Remove a record set and suppress all confirmation
-```
-PS C:\> $RecordSet = Get-AzDnsRecordSet -Name "www" -ZoneName "myzone.com" -ResourceGroupName "MyResourceGroup"
-PS C:\> Remove-AzDnsRecordSet -RecordSet $RecordSet -Confirm:$False -Overwrite
+```powershell
+$RecordSet = Get-AzDnsRecordSet -Name "www" -ZoneName "myzone.com" -ResourceGroupName "MyResourceGroup"
+Remove-AzDnsRecordSet -RecordSet $RecordSet -Confirm:$False -Overwrite
 
 # Alternatively, the record set can be removed as follows.  In this case,
 # because the record set is specified by name rather than by object, the
 # Overwrite parameter is not applicable.
 
-PS C:\> Remove-AzDnsRecordSet -Name "www" -ZoneName "myzone.com" -ResourceGroupName "MyResourceGroup" -Confirm:$False
+Remove-AzDnsRecordSet -Name "www" -ZoneName "myzone.com" -ResourceGroupName "MyResourceGroup" -Confirm:$False
 ```
 
 The first command gets the specified record set.

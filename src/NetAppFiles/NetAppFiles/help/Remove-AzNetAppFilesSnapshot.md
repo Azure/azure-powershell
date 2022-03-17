@@ -43,8 +43,8 @@ The **Remove-AzNetAppFilesSnapshot** cmdlet deletes an ANF snapshot.
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\>Remove-AzNetAppFilesSnapshot -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyAnfVolume" -Name "MyAnfSnapshot"
+```powershell
+Remove-AzNetAppFilesSnapshot -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyAnfVolume" -Name "MyAnfSnapshot"
 ```
 
 This command deletes the ANF snapshot "MyAnfSnapshot".

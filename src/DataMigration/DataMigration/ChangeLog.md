@@ -19,6 +19,11 @@
 -->
 ## Upcoming Release
 
+## Version 0.9.0
+* Added custom cmdlets for SKU recommendation
+    - `Get-AzDataMigrationPerformanceDataCollection`
+    - `Get-AzDataMigrationSkuRecommendation`
+
 ## Version 0.8.0
 * Added cmdlets:
  - `Get-AzDataMigrationAssessment`

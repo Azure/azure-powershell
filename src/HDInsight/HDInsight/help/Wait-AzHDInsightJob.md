@@ -25,17 +25,17 @@ The **Wait-AzHDInsightJob** cmdlet awaits the completion or failure of an Azure 
 ## EXAMPLES
 
 ### Example 1: Wait for the completion or failure of a job
-```
-PS C:\># Cluster info
-PS C:\> $clusterResourceGroupName = "Group"
-PS C:\> $clusterName = "your-hadoop-001"
-PS C:\> $clusterCreds = Get-Credential
+```powershell
+# Cluster info
+$clusterResourceGroupName = "Group"
+$clusterName = "your-hadoop-001"
+$clusterCreds = Get-Credential
 
 # Hive job details
-PS C:\> $statusFolder = "tempStatusFolder/"
-PS C:\> $query = "SHOW TABLES"
+$statusFolder = "tempStatusFolder/"
+$query = "SHOW TABLES"
 
-PS C:\> New-AzHDInsightHiveJobDefinition -StatusFolder $statusFolder `
+New-AzHDInsightHiveJobDefinition -StatusFolder $statusFolder `
             -Query $query `
         | Start-AzHDInsightJob -ResourceGroupName $clusterResourceGroupName `
             -ClusterName $clusterName `

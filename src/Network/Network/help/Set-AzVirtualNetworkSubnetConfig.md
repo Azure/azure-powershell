@@ -39,7 +39,7 @@ The **Set-AzVirtualNetworkSubnetConfig** cmdlet updates a subnet configuration f
 ## EXAMPLES
 
 ### 1: Modify the address prefix of a subnet
-```
+```powershell
 New-AzResourceGroup -Name TestResourceGroup -Location centralus
 
 $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24"
@@ -58,7 +58,7 @@ This example creates a virtual network with one subnet. Then is calls
     Set-AzVirtualNetwork is then called to modify the virtual network in Azure.
 
 ### 2: Add a network security group to a subnet
-```
+```powershell
 New-AzResourceGroup -Name TestResourceGroup -Location centralus
 
 $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24"
@@ -86,7 +86,7 @@ This example creates a resource group with one virtual network containing just o
     state back to the service.
 
 ### 3: Attach a Nat Gateway to a subnet
-```
+```powershell
 $pip = New-AzPublicIpAddress -Name "pip" -ResourceGroupName "natgateway_test" `
    -Location "eastus2" -Sku "Standard" -IdleTimeoutInMinutes 4 -AllocationMethod "static"
 

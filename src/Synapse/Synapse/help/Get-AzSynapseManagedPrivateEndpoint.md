@@ -31,22 +31,22 @@ The **Get-AzSynapseManagedPrivateEndpoint** cmdlet gets information about manang
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSynapseManagedPrivateEndpoint -WorkspaceName ContosoWorkspace -Name ContosoManagedPrivateEndpoint
+Get-AzSynapseManagedPrivateEndpoint -WorkspaceName ContosoWorkspace -Name ContosoManagedPrivateEndpoint
 ```
 
 Gets a single mananged private endpoint called ContosoManagedPrivateEndpoint in the workspace ContosoWorkspace.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzSynapseManagedPrivateEndpoint -WorkspaceName ContosoWorkspace
+Get-AzSynapseManagedPrivateEndpoint -WorkspaceName ContosoWorkspace
 ```
 
 Gets a list of all mananged private endpoints in the workspace ContosoWorkspace.
 
 ### Example 3
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Get-AzSynapseManagedPrivateEndpoint -Name ContosoManagedPrivateEndpoint
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Get-AzSynapseManagedPrivateEndpoint -Name ContosoManagedPrivateEndpoint
 ```
 
 Gets a single mananged private endpoint called ContosoManagedPrivateEndpoint in the workspace ContosoWorkspace through pipeline.
