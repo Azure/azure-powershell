@@ -28,19 +28,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "1".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("1", "1", global::System.Management.Automation.CompletionResultType.ParameterValue, "1");
+                yield return new global::System.Management.Automation.CompletionResult("'1'", "1", global::System.Management.Automation.CompletionResultType.ParameterValue, "1");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "2".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("2", "2", global::System.Management.Automation.CompletionResultType.ParameterValue, "2");
+                yield return new global::System.Management.Automation.CompletionResult("'2'", "2", global::System.Management.Automation.CompletionResultType.ParameterValue, "2");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "3".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("3", "3", global::System.Management.Automation.CompletionResultType.ParameterValue, "3");
+                yield return new global::System.Management.Automation.CompletionResult("'3'", "3", global::System.Management.Automation.CompletionResultType.ParameterValue, "3");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NA".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NA", "NA", global::System.Management.Automation.CompletionResultType.ParameterValue, "NA");
+                yield return new global::System.Management.Automation.CompletionResult("'NA'", "NA", global::System.Management.Automation.CompletionResultType.ParameterValue, "NA");
             }
         }
     }

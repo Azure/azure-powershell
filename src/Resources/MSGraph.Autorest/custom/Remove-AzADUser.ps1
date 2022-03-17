@@ -161,6 +161,6 @@ function Remove-AzADUser {
         }
         $PSBoundParameters['Id'] = $id
 
-        MSGraph.internal\Remove-AzADUser @PSBoundParameters
+        Az.MSGraph.internal\Remove-AzADUser @PSBoundParameters
     }
 }

@@ -99,7 +99,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IPolicyParametersInternal)this).DataStoreParametersList = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDataStoreParameters[]) content.GetValueForProperty("DataStoreParametersList",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IPolicyParametersInternal)this).DataStoreParametersList, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDataStoreParameters>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.DataStoreParametersTypeConverter.ConvertFrom));
+            if (content.Contains("DataStoreParametersList"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IPolicyParametersInternal)this).DataStoreParametersList = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDataStoreParameters[]) content.GetValueForProperty("DataStoreParametersList",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IPolicyParametersInternal)this).DataStoreParametersList, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDataStoreParameters>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.DataStoreParametersTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -117,7 +120,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IPolicyParametersInternal)this).DataStoreParametersList = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDataStoreParameters[]) content.GetValueForProperty("DataStoreParametersList",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IPolicyParametersInternal)this).DataStoreParametersList, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDataStoreParameters>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.DataStoreParametersTypeConverter.ConvertFrom));
+            if (content.Contains("DataStoreParametersList"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IPolicyParametersInternal)this).DataStoreParametersList = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDataStoreParameters[]) content.GetValueForProperty("DataStoreParametersList",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IPolicyParametersInternal)this).DataStoreParametersList, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDataStoreParameters>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.DataStoreParametersTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
 

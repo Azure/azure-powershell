@@ -24,9 +24,11 @@ This cmdlet will create a Host group.
 ## EXAMPLES
 
 ### Example 1
+```powershell
+New-AzHostGroup -ResourceGroupName $resourceGroupName -Name $hostGroupName -Location $location -Zone $zone
 ```
-PS C:\> New-AzHostGroup -ResourceGroupName $resourceGroupName -Name $hostGroupName -Location $location -Zone $zone
 
+```output
 ResourceGroupName        : myrg01
 PlatformFaultDomainCount : 2
 Hosts                    : {/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg01/providers/Microsoft.Compute/hostGroups/myhostgroup01/hosts/myhost01}

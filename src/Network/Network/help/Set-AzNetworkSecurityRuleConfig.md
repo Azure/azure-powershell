@@ -67,6 +67,16 @@ Updates a network security rule configuration for a network security group. (aut
 Set-AzNetworkSecurityRuleConfig -Access Allow -Description 'Allow RDP' -DestinationAddressPrefix * -DestinationPortRange 3389 -Direction Inbound -Name 'rdp-rule' -NetworkSecurityGroup <PSNetworkSecurityGroup> -Priority 1 -Protocol Tcp -SourceAddressPrefix 'Internet' -SourcePortRange *
 ```
 
+### Example 4
+
+Updates a network security rule configuration for a network security group (Source IP address)
+
+```powershell
+$nsg = Get-AzNetworkSecurityGroup -ResourceGroupName "MyResource" -Name "MyNsg"
+($nsg.SecurityRules | Where-Object {$_.Name -eq "RuleName"}).SourceAddressPrefix = ([System.String[]] @("xxx.xxx.xxx.xxx"))
+$nsg | Set-AzNetworkSecurityGroup | Get-AzNetworkSecurityRuleConfig -Name "RuleName"
+```
+
 ## PARAMETERS
 
 ### -Access

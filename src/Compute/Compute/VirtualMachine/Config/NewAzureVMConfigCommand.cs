@@ -141,13 +141,25 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = false,
             ParameterSetName = ExplicitIdentityParameterSet,
             HelpMessage = "UserData for the VM, which will be Base64 encoded. Customer should not pass any secrets in here.",
-            ValueFromPipeline = true)]
+            ValueFromPipelineByPropertyName = true)]
         [Parameter(
             Mandatory = false,
             ParameterSetName = DefaultParameterSetName,
             HelpMessage = "UserData for the VM, which will be Base64 encoded. Customer should not pass any secrets in here.",
-            ValueFromPipeline = true)]
+            ValueFromPipelineByPropertyName = true)]
         public string UserData { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the fault domain of the virtual machine.")]
+        public int PlatformFaultDomain { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The flag that enables or disables hibernation capability on the VM.")]
+        public SwitchParameter HibernationEnabled { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -194,7 +206,20 @@ namespace Microsoft.Azure.Commands.Compute
 
             if (this.EnableUltraSSD.IsPresent)
             {
-                vm.AdditionalCapabilities = new AdditionalCapabilities(true);
+                if (vm.AdditionalCapabilities == null)
+                {
+                    vm.AdditionalCapabilities = new AdditionalCapabilities();
+                }
+                vm.AdditionalCapabilities.UltraSSDEnabled = this.EnableUltraSSD;
+            }
+
+            if (this.HibernationEnabled.IsPresent)
+            {
+                if (vm.AdditionalCapabilities == null)
+                {
+                    vm.AdditionalCapabilities = new AdditionalCapabilities();
+                }
+                vm.AdditionalCapabilities.HibernationEnabled = this.HibernationEnabled;
             }
 
             if (this.IsParameterBound(c => c.ProximityPlacementGroupId))
@@ -239,6 +264,11 @@ namespace Microsoft.Azure.Commands.Compute
                     this.WriteInformation(ValidateBase64EncodedString.UserDataEncodeNotification, new string[] { "PSHOST" });
                 }
                 vm.UserData = this.UserData;
+            }
+
+            if (this.IsParameterBound(c => c.PlatformFaultDomain))
+            {
+                vm.PlatformFaultDomain = this.PlatformFaultDomain;
             }
 
             WriteObject(vm);

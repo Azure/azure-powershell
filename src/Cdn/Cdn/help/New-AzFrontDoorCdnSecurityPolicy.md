@@ -25,7 +25,7 @@ Creates the security policy.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzFrontDoorCdnSecurityPolicy -ProfileName $profileName -ResourceGroupName $resourceGroupName -SecurityPolicyName $securityPolicyName -WafPolicyId $wafPolicyId -DomainId $domainId
+New-AzFrontDoorCdnSecurityPolicy -ProfileName $profileName -ResourceGroupName $resourceGroupName -SecurityPolicyName $securityPolicyName -WafPolicyId $wafPolicyId -DomainId $domainId
 ```
 
 Creates the security policy.

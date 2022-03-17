@@ -37,7 +37,7 @@ Remove-AzActionRule -InputObject <PSActionRule> [-DefaultProfile <IAzureContextC
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzActionRule -ResourceGroupName "test-rg" -Name "ActionRuleName"
+Remove-AzActionRule -ResourceGroupName "test-rg" -Name "ActionRuleName"
 ```
 
 This cmdlet deletes the action rule with name ActionRuleName in resource group test-rg

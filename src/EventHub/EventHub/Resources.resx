@@ -129,6 +129,9 @@
   <data name="CreateEventhubCluster" xml:space="preserve">
     <value>Creating new Eventhub Cluster in ResourceGroup {0} with Name {1}</value>
   </data>
+  <data name="CreateEventHubSchemaGroup" xml:space="preserve">
+    <value>Creating Schema Group named:{0} for Namespace: {1}</value>
+  </data>
   <data name="CreateNamespace" xml:space="preserve">
     <value>Create a new EvetntHub-Namespace:{0} under Resource Group:{1}</value>
   </data>
@@ -168,6 +171,9 @@
   <data name="RemoveEventhubcluster" xml:space="preserve">
     <value>Deleteing Eventhub Cluster {1} from ResourceGroup {0}</value>
   </data>
+  <data name="RemoveEventHubSchemaGroup" xml:space="preserve">
+    <value>Removing Schema Group named:{0} of Namespace: {1}</value>
+  </data>
   <data name="RemoveNamespaceAuthorizationRule" xml:space="preserve">
     <value>Removing AtuhorizationRule:{0} of Namespace: {1}</value>
   </data>
@@ -197,6 +203,9 @@
   </data>
   <data name="UpdateEventHubAuthorizationrule" xml:space="preserve">
     <value>Updating AuthorizationRule named:{0} for EventHub: {1}</value>
+  </data>
+  <data name="UpdateEventHubSchemaGroup" xml:space="preserve">
+    <value>Updating Schema Group named:{0} of Namespace: {1}</value>
   </data>
   <data name="UpdateNamespace" xml:space="preserve">
     <value>Update Namespace:{0} from ResourceGroup:{1}</value>

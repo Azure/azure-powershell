@@ -28,51 +28,51 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "April".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("April", "April", global::System.Management.Automation.CompletionResultType.ParameterValue, "April");
+                yield return new global::System.Management.Automation.CompletionResult("'April'", "April", global::System.Management.Automation.CompletionResultType.ParameterValue, "April");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "August".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("August", "August", global::System.Management.Automation.CompletionResultType.ParameterValue, "August");
+                yield return new global::System.Management.Automation.CompletionResult("'August'", "August", global::System.Management.Automation.CompletionResultType.ParameterValue, "August");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "December".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("December", "December", global::System.Management.Automation.CompletionResultType.ParameterValue, "December");
+                yield return new global::System.Management.Automation.CompletionResult("'December'", "December", global::System.Management.Automation.CompletionResultType.ParameterValue, "December");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "February".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("February", "February", global::System.Management.Automation.CompletionResultType.ParameterValue, "February");
+                yield return new global::System.Management.Automation.CompletionResult("'February'", "February", global::System.Management.Automation.CompletionResultType.ParameterValue, "February");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "January".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("January", "January", global::System.Management.Automation.CompletionResultType.ParameterValue, "January");
+                yield return new global::System.Management.Automation.CompletionResult("'January'", "January", global::System.Management.Automation.CompletionResultType.ParameterValue, "January");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "July".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("July", "July", global::System.Management.Automation.CompletionResultType.ParameterValue, "July");
+                yield return new global::System.Management.Automation.CompletionResult("'July'", "July", global::System.Management.Automation.CompletionResultType.ParameterValue, "July");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "June".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("June", "June", global::System.Management.Automation.CompletionResultType.ParameterValue, "June");
+                yield return new global::System.Management.Automation.CompletionResult("'June'", "June", global::System.Management.Automation.CompletionResultType.ParameterValue, "June");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "March".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("March", "March", global::System.Management.Automation.CompletionResultType.ParameterValue, "March");
+                yield return new global::System.Management.Automation.CompletionResult("'March'", "March", global::System.Management.Automation.CompletionResultType.ParameterValue, "March");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "May".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("May", "May", global::System.Management.Automation.CompletionResultType.ParameterValue, "May");
+                yield return new global::System.Management.Automation.CompletionResult("'May'", "May", global::System.Management.Automation.CompletionResultType.ParameterValue, "May");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "November".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("November", "November", global::System.Management.Automation.CompletionResultType.ParameterValue, "November");
+                yield return new global::System.Management.Automation.CompletionResult("'November'", "November", global::System.Management.Automation.CompletionResultType.ParameterValue, "November");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "October".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("October", "October", global::System.Management.Automation.CompletionResultType.ParameterValue, "October");
+                yield return new global::System.Management.Automation.CompletionResult("'October'", "October", global::System.Management.Automation.CompletionResultType.ParameterValue, "October");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "September".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("September", "September", global::System.Management.Automation.CompletionResultType.ParameterValue, "September");
+                yield return new global::System.Management.Automation.CompletionResult("'September'", "September", global::System.Management.Automation.CompletionResultType.ParameterValue, "September");
             }
         }
     }

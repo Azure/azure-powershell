@@ -19,7 +19,25 @@
 -->
 
 ## Upcoming Release
-* Remove isUser operation filter from GetAzureProviderOperation Cmdlet
+
+## Version 5.3.0
+* Added proeprties `onPremisesLastSyncDateTime`, `onPremisesSyncEnabled` to `User` object [#16892]
+* Added additional properties when creating request for `New-AzADServicePrincipal` and `Update-AzADServicePrincipal` [#16847] [#16841]
+* Fixed `DisplayName` and `ApplicationId` for `New-AzADAppCredential` [#16764]
+* Enabled password reset for `Update-AzADUser` [#16869]
+* Updated parameter name `EnableAccount` to `AccountEnabled`, and added alias `EnableAccount` for `Update-AzADUser` [#16753] [#16795]
+* Fixed `Set-AzPolicyAssignment` does not remove `notScope` if empty [#15828]
+
+## Version 5.2.0
+* Fixed incorrect alias for `Get-AzADSpCredential` [#16592]
+* Fixed `ServicePrincipalName` and `InputObject` parameters for `Update-AzADServicePrincipal` [#16620]
+* Fixed example for `New-AzADAppCredential` [#16682]
+* Added parameter `Web` for `New-AzADApplication` [#16659]
+* Added secret text in response of `New-AzADApplication` and `New-AzADServicePrincipal` [#16659]
+* Deserialized the `Value` in `DeploymentVariable` as object array if its type is Array [#16523]
+* Fixed the usage of `SignInName` in `New-AzRoleAssignment` [#16627]
+* Formatted the output format of `DeploymentVariable`
+* Remove `isUser` operation filter from GetAzureProviderOperation Cmdlet
 
 ## Version 5.1.0
 * Added 'Get-AzProviderPreviewFeature', 'Register-AzProviderPreviewFeature' and 'Unregister-AzProviderPreviewFeature' cmdlets.

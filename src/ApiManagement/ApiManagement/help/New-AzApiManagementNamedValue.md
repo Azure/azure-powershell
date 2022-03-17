@@ -24,10 +24,10 @@ The **New-AzApiManagementNamedValue** cmdlet creates an Azure API Management **N
 ## EXAMPLES
 
 ### Example 1: Create a named value that includes tags
-```
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>$Tags = 'sdk', 'powershell'
-PS C:\> New-AzApiManagementNamedValue -Context $apimContext -NamedValueId "Property11" -Name "Property Name" -Value "Property Value" -Tags $Tags
+```powershell
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+$Tags = 'sdk', 'powershell'
+New-AzApiManagementNamedValue -Context $apimContext -NamedValueId "Property11" -Name "Property Name" -Value "Property Value" -Tags $Tags
 ```
 
 The first command assigns two values to the $Tags variable.
@@ -35,17 +35,17 @@ The second command creates a named value and assigns the strings in $Tags as tag
 
 ### Example 2: Create a named value that has a secret value
 ```powershell
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>New-AzApiManagementNamedValue -Context $apimContext -NamedValueId "Property12" -Name "Secret Property" -Value "Secret Property Value" -Secret
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+New-AzApiManagementNamedValue -Context $apimContext -NamedValueId "Property12" -Name "Secret Property" -Value "Secret Property Value" -Secret
 ```
 
 This command creates a **Named Value** that has a value that is encrypted.
 
 ### Example 3 : Create a keyVault Namedvalue
 ```powershell
-PS C:\>$secretIdentifier = 'https://contoso.vault.azure.net/secrets/xxxx'
-PS C:\>$keyvault = New-AzApiManagementKeyVaultObject -SecretIdentifier $secretIdentifier 
-PS C:\>$keyVaultNamedValue = New-AzApiManagementNamedValue -Context $context -NamedValueId $keyVaultNamedValueId -Name $keyVaultNamedValueName -keyVault $keyvault -Secret
+$secretIdentifier = 'https://contoso.vault.azure.net/secrets/xxxx'
+$keyvault = New-AzApiManagementKeyVaultObject -SecretIdentifier $secretIdentifier 
+$keyVaultNamedValue = New-AzApiManagementNamedValue -Context $context -NamedValueId $keyVaultNamedValueId -Name $keyVaultNamedValueName -keyVault $keyvault -Secret
 ```
 
 The first command creates a keyvault.

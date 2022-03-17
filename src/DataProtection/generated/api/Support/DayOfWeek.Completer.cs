@@ -28,31 +28,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Friday".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Friday", "Friday", global::System.Management.Automation.CompletionResultType.ParameterValue, "Friday");
+                yield return new global::System.Management.Automation.CompletionResult("'Friday'", "Friday", global::System.Management.Automation.CompletionResultType.ParameterValue, "Friday");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Monday".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Monday", "Monday", global::System.Management.Automation.CompletionResultType.ParameterValue, "Monday");
+                yield return new global::System.Management.Automation.CompletionResult("'Monday'", "Monday", global::System.Management.Automation.CompletionResultType.ParameterValue, "Monday");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Saturday".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Saturday", "Saturday", global::System.Management.Automation.CompletionResultType.ParameterValue, "Saturday");
+                yield return new global::System.Management.Automation.CompletionResult("'Saturday'", "Saturday", global::System.Management.Automation.CompletionResultType.ParameterValue, "Saturday");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Sunday".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Sunday", "Sunday", global::System.Management.Automation.CompletionResultType.ParameterValue, "Sunday");
+                yield return new global::System.Management.Automation.CompletionResult("'Sunday'", "Sunday", global::System.Management.Automation.CompletionResultType.ParameterValue, "Sunday");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Thursday".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Thursday", "Thursday", global::System.Management.Automation.CompletionResultType.ParameterValue, "Thursday");
+                yield return new global::System.Management.Automation.CompletionResult("'Thursday'", "Thursday", global::System.Management.Automation.CompletionResultType.ParameterValue, "Thursday");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Tuesday".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Tuesday", "Tuesday", global::System.Management.Automation.CompletionResultType.ParameterValue, "Tuesday");
+                yield return new global::System.Management.Automation.CompletionResult("'Tuesday'", "Tuesday", global::System.Management.Automation.CompletionResultType.ParameterValue, "Tuesday");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Wednesday".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Wednesday", "Wednesday", global::System.Management.Automation.CompletionResultType.ParameterValue, "Wednesday");
+                yield return new global::System.Management.Automation.CompletionResult("'Wednesday'", "Wednesday", global::System.Management.Automation.CompletionResultType.ParameterValue, "Wednesday");
             }
         }
     }

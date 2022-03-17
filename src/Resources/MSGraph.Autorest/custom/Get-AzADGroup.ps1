@@ -174,7 +174,7 @@ function Get-AzADGroup {
             }
         }
 
-        MSGraph.internal\Get-AzAdGroup @PSBoundParameters
+        Az.MSGraph.internal\Get-AzAdGroup @PSBoundParameters
     }
 
 }

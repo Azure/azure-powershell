@@ -99,8 +99,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISecretStoreResourceInternal)this).Uri = (string) content.GetValueForProperty("Uri",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISecretStoreResourceInternal)this).Uri, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISecretStoreResourceInternal)this).SecretStoreType = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SecretStoreType) content.GetValueForProperty("SecretStoreType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISecretStoreResourceInternal)this).SecretStoreType, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SecretStoreType.CreateFrom);
+            if (content.Contains("Uri"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISecretStoreResourceInternal)this).Uri = (string) content.GetValueForProperty("Uri",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISecretStoreResourceInternal)this).Uri, global::System.Convert.ToString);
+            }
+            if (content.Contains("SecretStoreType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISecretStoreResourceInternal)this).SecretStoreType = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SecretStoreType) content.GetValueForProperty("SecretStoreType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISecretStoreResourceInternal)this).SecretStoreType, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SecretStoreType.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -118,8 +124,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISecretStoreResourceInternal)this).Uri = (string) content.GetValueForProperty("Uri",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISecretStoreResourceInternal)this).Uri, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISecretStoreResourceInternal)this).SecretStoreType = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SecretStoreType) content.GetValueForProperty("SecretStoreType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISecretStoreResourceInternal)this).SecretStoreType, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SecretStoreType.CreateFrom);
+            if (content.Contains("Uri"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISecretStoreResourceInternal)this).Uri = (string) content.GetValueForProperty("Uri",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISecretStoreResourceInternal)this).Uri, global::System.Convert.ToString);
+            }
+            if (content.Contains("SecretStoreType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISecretStoreResourceInternal)this).SecretStoreType = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SecretStoreType) content.GetValueForProperty("SecretStoreType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISecretStoreResourceInternal)this).SecretStoreType, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SecretStoreType.CreateFrom);
+            }
             AfterDeserializePSObject(content);
         }
 

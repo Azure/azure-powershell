@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 2.10.0
+* Updated `New-AzAppServicePlan`  to create an app service plan with host environment id #16094
+
 ## Version 2.9.0
 * Updated the Microsoft.Azure.Management.Websites SDK to 3.1.2
 ## Version 2.8.3

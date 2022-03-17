@@ -99,12 +99,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).CreatedBy = (string) content.GetValueForProperty("CreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).CreatedBy, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).CreatedByType = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.CreatedByType?) content.GetValueForProperty("CreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).CreatedByType, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.CreatedByType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).CreatedAt = (global::System.DateTime?) content.GetValueForProperty("CreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).CreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).LastModifiedBy = (string) content.GetValueForProperty("LastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).LastModifiedBy, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).LastModifiedByType = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.CreatedByType?) content.GetValueForProperty("LastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).LastModifiedByType, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.CreatedByType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).LastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("LastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).LastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            if (content.Contains("CreatedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).CreatedBy = (string) content.GetValueForProperty("CreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).CreatedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("CreatedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).CreatedByType = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.CreatedByType?) content.GetValueForProperty("CreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).CreatedByType, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.CreatedByType.CreateFrom);
+            }
+            if (content.Contains("CreatedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).CreatedAt = (global::System.DateTime?) content.GetValueForProperty("CreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).CreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("LastModifiedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).LastModifiedBy = (string) content.GetValueForProperty("LastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).LastModifiedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("LastModifiedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).LastModifiedByType = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.CreatedByType?) content.GetValueForProperty("LastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).LastModifiedByType, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.CreatedByType.CreateFrom);
+            }
+            if (content.Contains("LastModifiedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).LastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("LastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).LastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -122,12 +140,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).CreatedBy = (string) content.GetValueForProperty("CreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).CreatedBy, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).CreatedByType = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.CreatedByType?) content.GetValueForProperty("CreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).CreatedByType, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.CreatedByType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).CreatedAt = (global::System.DateTime?) content.GetValueForProperty("CreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).CreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).LastModifiedBy = (string) content.GetValueForProperty("LastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).LastModifiedBy, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).LastModifiedByType = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.CreatedByType?) content.GetValueForProperty("LastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).LastModifiedByType, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.CreatedByType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).LastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("LastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).LastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            if (content.Contains("CreatedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).CreatedBy = (string) content.GetValueForProperty("CreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).CreatedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("CreatedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).CreatedByType = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.CreatedByType?) content.GetValueForProperty("CreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).CreatedByType, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.CreatedByType.CreateFrom);
+            }
+            if (content.Contains("CreatedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).CreatedAt = (global::System.DateTime?) content.GetValueForProperty("CreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).CreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("LastModifiedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).LastModifiedBy = (string) content.GetValueForProperty("LastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).LastModifiedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("LastModifiedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).LastModifiedByType = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.CreatedByType?) content.GetValueForProperty("LastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).LastModifiedByType, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.CreatedByType.CreateFrom);
+            }
+            if (content.Contains("LastModifiedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).LastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("LastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.ISystemDataInternal)this).LastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             AfterDeserializePSObject(content);
         }
 

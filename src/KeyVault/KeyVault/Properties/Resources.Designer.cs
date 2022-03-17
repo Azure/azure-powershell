@@ -1279,6 +1279,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rotate Key.
+        /// </summary>
+        internal static string RotateKey {
+            get {
+                return ResourceManager.GetString("RotateKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed to selective restore key {0} of managed HSM {1}..
         /// </summary>
         internal static string SelectiveRestoreFailed {
@@ -1320,6 +1329,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         internal static string SetKeyAttribute {
             get {
                 return ResourceManager.GetString("SetKeyAttribute", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set key rotation policy.
+        /// </summary>
+        internal static string SetKeyRotationPolicy {
+            get {
+                return ResourceManager.GetString("SetKeyRotationPolicy", resourceCulture);
             }
         }
         

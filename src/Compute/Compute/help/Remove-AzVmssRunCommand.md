@@ -24,7 +24,7 @@ Remove RunCommand from the VMSS
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzVmssRunCommand -ResourceGroupName $rgname -VMScaleSetName $vmssname -Name myruncommand
+Remove-AzVmssRunCommand -ResourceGroupName $rgname -VMScaleSetName $vmssname -Name myruncommand
 ```
 
 Remove Run Command from Vmss

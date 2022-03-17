@@ -20,7 +20,23 @@
 
 -->
 ## Upcoming Release
-* Changed New-AzVm cmdlet when using the SimpleParameterSet to not create a PublicIPAddress when a PUblicIPAddress name is not provided. 
+* Updated `New-AzSshKey` cmdlet to write file paths to generated keys to the Warning stream instead of the console.
+
+## Version 4.23.0
+* Remove ProvisioningDetails property from PSRestorePoint object.
+* Updated `Set-AzVmExtension` cmdlet to properly display `-Name` and `-Location` parameters as mandatory.
+* Edited `New-AzVmssConfig` second example so it runs successfully by changing the Tag input to the correct format. 
+* Added `Hibernate` parameter to `Stop-AzVm` cmdlet. 
+* Added `HibernationEnabled` parameter to `New-AzVm`, `New-AzVmConfig`, and `Update-AzVm` cmdlets.
+* Added `EnableHotpatching` parameter to the `Set-AzVmssOSProfile` cmdlet.
+* Added 'ForceDeletion' parameter to Remove-AzVM and Remove-AzVMSS.
+
+## Version 4.22.0
+* Updated `UserData` parameter in VM and VMSS cmdlets to pipe by the Property Name to ensure piping scenarios occur correctly.
+* Changed `New-AzVM` cmdlet when using the SimpleParameterSet to not create a `PublicIPAddress` when a `PublicIPAddress` name is not provided.
+* Added `PlatformFaultDomain` parameter to cmdlets: `New-AzVM` and `New-AzVMConfig`
+* Added `-Feature` parameter for `New-AzGalleryImageDefinition`
+* Added `DiffDiskPlacement` string parameter to `Set-AzVmOSDisk` and `Set-AzVmssStorageProfile` cmdlets.
 
 ## Version 4.21.0
 * Contains updates to the following powershell cmdlets

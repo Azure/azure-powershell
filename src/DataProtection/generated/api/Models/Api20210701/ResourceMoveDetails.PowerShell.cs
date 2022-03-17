@@ -99,11 +99,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceMoveDetailsInternal)this).OperationId = (string) content.GetValueForProperty("OperationId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceMoveDetailsInternal)this).OperationId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceMoveDetailsInternal)this).StartTimeUtc = (string) content.GetValueForProperty("StartTimeUtc",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceMoveDetailsInternal)this).StartTimeUtc, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceMoveDetailsInternal)this).CompletionTimeUtc = (string) content.GetValueForProperty("CompletionTimeUtc",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceMoveDetailsInternal)this).CompletionTimeUtc, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceMoveDetailsInternal)this).SourceResourcePath = (string) content.GetValueForProperty("SourceResourcePath",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceMoveDetailsInternal)this).SourceResourcePath, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceMoveDetailsInternal)this).TargetResourcePath = (string) content.GetValueForProperty("TargetResourcePath",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceMoveDetailsInternal)this).TargetResourcePath, global::System.Convert.ToString);
+            if (content.Contains("OperationId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceMoveDetailsInternal)this).OperationId = (string) content.GetValueForProperty("OperationId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceMoveDetailsInternal)this).OperationId, global::System.Convert.ToString);
+            }
+            if (content.Contains("StartTimeUtc"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceMoveDetailsInternal)this).StartTimeUtc = (string) content.GetValueForProperty("StartTimeUtc",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceMoveDetailsInternal)this).StartTimeUtc, global::System.Convert.ToString);
+            }
+            if (content.Contains("CompletionTimeUtc"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceMoveDetailsInternal)this).CompletionTimeUtc = (string) content.GetValueForProperty("CompletionTimeUtc",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceMoveDetailsInternal)this).CompletionTimeUtc, global::System.Convert.ToString);
+            }
+            if (content.Contains("SourceResourcePath"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceMoveDetailsInternal)this).SourceResourcePath = (string) content.GetValueForProperty("SourceResourcePath",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceMoveDetailsInternal)this).SourceResourcePath, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetResourcePath"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceMoveDetailsInternal)this).TargetResourcePath = (string) content.GetValueForProperty("TargetResourcePath",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceMoveDetailsInternal)this).TargetResourcePath, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -121,11 +136,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceMoveDetailsInternal)this).OperationId = (string) content.GetValueForProperty("OperationId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceMoveDetailsInternal)this).OperationId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceMoveDetailsInternal)this).StartTimeUtc = (string) content.GetValueForProperty("StartTimeUtc",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceMoveDetailsInternal)this).StartTimeUtc, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceMoveDetailsInternal)this).CompletionTimeUtc = (string) content.GetValueForProperty("CompletionTimeUtc",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceMoveDetailsInternal)this).CompletionTimeUtc, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceMoveDetailsInternal)this).SourceResourcePath = (string) content.GetValueForProperty("SourceResourcePath",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceMoveDetailsInternal)this).SourceResourcePath, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceMoveDetailsInternal)this).TargetResourcePath = (string) content.GetValueForProperty("TargetResourcePath",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceMoveDetailsInternal)this).TargetResourcePath, global::System.Convert.ToString);
+            if (content.Contains("OperationId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceMoveDetailsInternal)this).OperationId = (string) content.GetValueForProperty("OperationId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceMoveDetailsInternal)this).OperationId, global::System.Convert.ToString);
+            }
+            if (content.Contains("StartTimeUtc"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceMoveDetailsInternal)this).StartTimeUtc = (string) content.GetValueForProperty("StartTimeUtc",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceMoveDetailsInternal)this).StartTimeUtc, global::System.Convert.ToString);
+            }
+            if (content.Contains("CompletionTimeUtc"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceMoveDetailsInternal)this).CompletionTimeUtc = (string) content.GetValueForProperty("CompletionTimeUtc",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceMoveDetailsInternal)this).CompletionTimeUtc, global::System.Convert.ToString);
+            }
+            if (content.Contains("SourceResourcePath"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceMoveDetailsInternal)this).SourceResourcePath = (string) content.GetValueForProperty("SourceResourcePath",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceMoveDetailsInternal)this).SourceResourcePath, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetResourcePath"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceMoveDetailsInternal)this).TargetResourcePath = (string) content.GetValueForProperty("TargetResourcePath",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IResourceMoveDetailsInternal)this).TargetResourcePath, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

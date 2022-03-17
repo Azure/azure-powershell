@@ -106,7 +106,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IVirtualNetworkSubnetUsageParameterInternal)this).VirtualNetworkResourceId = (string) content.GetValueForProperty("VirtualNetworkResourceId",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IVirtualNetworkSubnetUsageParameterInternal)this).VirtualNetworkResourceId, global::System.Convert.ToString);
+            if (content.Contains("VirtualNetworkResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IVirtualNetworkSubnetUsageParameterInternal)this).VirtualNetworkResourceId = (string) content.GetValueForProperty("VirtualNetworkResourceId",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IVirtualNetworkSubnetUsageParameterInternal)this).VirtualNetworkResourceId, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -124,7 +127,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IVirtualNetworkSubnetUsageParameterInternal)this).VirtualNetworkResourceId = (string) content.GetValueForProperty("VirtualNetworkResourceId",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IVirtualNetworkSubnetUsageParameterInternal)this).VirtualNetworkResourceId, global::System.Convert.ToString);
+            if (content.Contains("VirtualNetworkResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IVirtualNetworkSubnetUsageParameterInternal)this).VirtualNetworkResourceId = (string) content.GetValueForProperty("VirtualNetworkResourceId",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IVirtualNetworkSubnetUsageParameterInternal)this).VirtualNetworkResourceId, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
     }

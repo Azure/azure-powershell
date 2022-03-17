@@ -24,7 +24,7 @@ Creates a PurchasePlan Object
 
 ### Example 1
 ```powershell
-$diskPurchasePlan = New-AzDiskPurchasePlanConfig -Name ìplanNameî -Publisher ìplanPublisherî -Product ìplanPorductî -PromotionCode ìplanPromotionCodeî
+$diskPurchasePlan = New-AzDiskPurchasePlanConfig -Name ‚ÄúplanName‚Äù -Publisher ‚ÄúplanPublisher‚Äù -Product ‚ÄúplanPorduct‚Äù -PromotionCode ‚ÄúplanPromotionCode‚Äù
 $diskConfig = New-AzDiskConfig -Location 'eastus2euap' -AccountType 'Premium_LRS' -CreateOption 'Empty' -DiskSizeGB 32 -PurchasePlan $diskPurchasePlan
 New-AzDisk -ResourceGroupName 'ResourceGroup02' -DiskName 'Disk02' -Disk $diskConfig
 $disk = Get-AzDisk -ResourceGroupName 'ResourceGroup02' -DiskName 'Disk02'

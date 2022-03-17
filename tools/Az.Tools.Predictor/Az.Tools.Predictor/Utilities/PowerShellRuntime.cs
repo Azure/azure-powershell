@@ -27,7 +27,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
     /// <summary>
     /// A PowerShell environment to run PowerShell cmdlets and scripts.
     /// </summary>
-    internal class PowerShellRuntime : IDisposable
+    internal class PowerShellRuntime : IPowerShellRuntime, IDisposable
     {
         private PowerShell _runtime;
         private PowerShell Runtime
@@ -43,37 +43,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
             }
         }
 
-        private readonly Lazy<Runspace> _defaultRunspace = new(() =>
-                {
-                    // Create a mini runspace by remove the types and formats
-                    InitialSessionState minimalState = InitialSessionState.CreateDefault2();
-                    // Refer to the remarks for the property DefaultRunspace.
-                    minimalState.Types.Clear();
-                    minimalState.Formats.Clear();
-                    var runspace = RunspaceFactory.CreateRunspace(minimalState);
-                    runspace.Open();
-                    return runspace;
-                });
+        private readonly Lazy<Runspace> _defaultRunspace = new(() => PowerShellRunspaceUtilities.GetMinimalRunspace());
 
         /// <inheritdoc />
-        /// <remarks>
-        /// We don't pre-load Az service modules since they may not always be installed.
-        /// Creating the instance is at the first time this is called.
-        /// It can be slow. So the first call must not be in the path of the user interaction.
-        /// Loading too many modules can also impact user experience because that may add to much memory pressure at the same
-        /// time.
-        /// </remarks>
         public Runspace DefaultRunspace => _defaultRunspace.Value;
 
-        /// <summary>
-        /// The PowerShell environment that the module is imported into.
-        /// </summary>
-        /// <remarks>
-        /// The usage of <see cref="ConsoleRuntime"/> has to be in the context of the running PowerShell thread, for example,
-        /// the callback of <see cref="PredictorInitializer.OnImport"/>.
-        /// The callbacks of <see cref="AzPredictor"/> are on a thread pool and it must not be used there.
-        /// </remarks>
-        internal PowerShell ConsoleRuntime = PowerShell.Create(System.Management.Automation.RunspaceMode.CurrentRunspace);
+        /// <inheritdoc />
+        public PowerShell ConsoleRuntime { get; } = PowerShell.Create(System.Management.Automation.RunspaceMode.CurrentRunspace);
 
         public void Dispose()
         {
@@ -94,9 +70,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
             }
         }
 
-        /// <summary>
-        /// Executes the PowerShell cmdlet in the current powershell session.
-        /// </summary>
+        /// <inheritdoc />
         public IList<T> ExecuteScript<T>(string contents)
         {
             Runtime.Commands.Clear();

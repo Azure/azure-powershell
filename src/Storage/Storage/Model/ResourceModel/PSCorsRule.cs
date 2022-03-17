@@ -17,6 +17,7 @@ using XTable = Microsoft.Azure.Cosmos.Table;
 using System.Collections.Generic;
 using System;
 using System.Linq;
+using Azure.Data.Tables.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel
 {
@@ -76,6 +77,32 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel
                     psCorsRule.AllowedHeaders = ListToArray(corsRule.AllowedHeaders);
                     psCorsRule.ExposedHeaders = ListToArray(corsRule.ExposedHeaders);
                     psCorsRule.AllowedMethods = ConvertCorsHttpMethodToString(corsRule.AllowedMethods);
+                    psCorsRule.MaxAgeInSeconds = corsRule.MaxAgeInSeconds;
+                    ruleList.Add(psCorsRule);
+                }
+            }
+
+            return ruleList.ToArray();
+        }
+
+        /// <summary>
+        /// Parse Cors Rules from OLD XSCL to PSCorsRule Array
+        /// </summary>
+        /// <param name="tableCorsRules">Cors Rules from XSCL</param>
+        /// <returns>PSCorsRule Array</returns>
+        public static PSCorsRule[] ParseCorsRules(IList<TableCorsRule> tableCorsRules)
+        {
+            List<PSCorsRule> ruleList = new List<PSCorsRule>();
+
+            if (tableCorsRules != null)
+            {
+                foreach (TableCorsRule corsRule in tableCorsRules)
+                {
+                    PSCorsRule psCorsRule = new PSCorsRule();
+                    psCorsRule.AllowedOrigins = corsRule.AllowedOrigins.Split(',');
+                    psCorsRule.AllowedHeaders = corsRule.AllowedHeaders.Split(',');
+                    psCorsRule.ExposedHeaders = corsRule.ExposedHeaders.Split(',');
+                    psCorsRule.AllowedMethods = corsRule.AllowedMethods.Split(',');
                     psCorsRule.MaxAgeInSeconds = corsRule.MaxAgeInSeconds;
                     ruleList.Add(psCorsRule);
                 }

@@ -66,7 +66,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBackupTriggerOptionInternal)this).RetentionTagOverride = (string) content.GetValueForProperty("RetentionTagOverride",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBackupTriggerOptionInternal)this).RetentionTagOverride, global::System.Convert.ToString);
+            if (content.Contains("RetentionTagOverride"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBackupTriggerOptionInternal)this).RetentionTagOverride = (string) content.GetValueForProperty("RetentionTagOverride",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBackupTriggerOptionInternal)this).RetentionTagOverride, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -84,7 +87,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBackupTriggerOptionInternal)this).RetentionTagOverride = (string) content.GetValueForProperty("RetentionTagOverride",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBackupTriggerOptionInternal)this).RetentionTagOverride, global::System.Convert.ToString);
+            if (content.Contains("RetentionTagOverride"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBackupTriggerOptionInternal)this).RetentionTagOverride = (string) content.GetValueForProperty("RetentionTagOverride",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAdhocBackupTriggerOptionInternal)this).RetentionTagOverride, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 
