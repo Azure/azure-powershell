@@ -62,7 +62,6 @@ The **New-AzVM** cmdlet will create a new storage account for boot diagnostics i
 Other cmdlets can be used to configure the virtual machine, such as Set-AzVMOperatingSystem, Set-AzVMSourceImage, Add-AzVMNetworkInterface, and Set-AzVMOSDisk.
 The `SimpleParameterSet` provides a convenient method to create a VM by making common VM creation arguments optional.
 
-
 ## EXAMPLES
 
 ### Example 1: Create a virtual machine
