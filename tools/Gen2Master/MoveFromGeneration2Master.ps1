@@ -210,12 +210,25 @@ Function Move-Generation2MasterHybrid {
         }
         #EndRegion
         If (-not (Test-Path $DestPath)) {
-            throw "$DestPath does not exist"
+            New-Item -Type Directory -Path $DestPath -Force
         }
         $Dir2Copy = @('custom', 'examples', 'exports', 'generated', 'internal', 'test', 'utils', 'docs')
         $submoduleDirs = Get-ChildItem -Filter *.Autorest -Directory -Path $SourcePath
         foreach ($submoduleDir in $submoduleDirs) {
-            $submoduleName = $submoduleDir.Name.Split('.')[0]
+            $SolutionPath = Join-Path -Path $DestPath -ChildPath "$ModuleName.sln"
+
+            if (-not (Test-Path -path $SolutionPath)) {
+                # It means there is no handcraft module for this module, so we need to create the solution file and other related files
+                Copy-Template -SourceName ModuleName.sln -DestPath $DestPath -DestName "$ModuleName.sln" -ModuleName $ModuleName
+                Copy-Template -SourceName Changelog.md -DestPath $DestPath\$ModuleName -DestName Changelog.md -ModuleName $ModuleName
+                Copy-Template -SourceName Module.psd1 -DestPath $DestPath\$ModuleName -DestName "Az.$ModuleName.psd1" -ModuleName $ModuleName
+                Copy-Template -SourceName HandcraftedModule.csproj -DestPath $DestPath\$ModuleName -DestName "$ModuleName.csproj" -ModuleName $ModuleName
+                Copy-Template -SourceName ModulePage.md -DestPath $DestPath\$ModuleName\help -DestName "Az.$ModuleName.md" -ModuleName $ModuleName
+                Copy-Template -SourceName AssemblyInfo.cs -DestPath $DestPath\$ModuleName\Properties -DestName AssemblyInfo.cs -ModuleName $ModuleName
+            }
+            $psd1File = Get-ChildItem -Filter *.psd1 -File -Path $submoduleDir
+            write-host ("psd1 file name {0}" -f $psd1File.Name)
+            $submoduleName = $psd1File.Name.Split('.')[-2]
             Foreach ($Dir in $Dir2Copy) {
                 $SourceItem = Join-Path -Path (Join-Path -Path $SourcePath -ChildPath $submoduleDir.Name) -ChildPath $Dir
                 $DestItem = Join-Path -Path (Join-Path -Path $DestPath -ChildPath $submoduleDir.Name) -ChildPath $Dir
@@ -246,7 +259,7 @@ Function Move-Generation2MasterHybrid {
             }
 
             #copy generated docs to help folder
-            Copy-Item -Path "$SourcePath\$submoduleName.Autorest\docs\*" -Destination "$DestPath\$ModuleName\help" -Filter *-*
+            Copy-Item -Path ("$SourcePath\{0}\docs\*" -f $submoduleDir.Name) -Destination "$DestPath\$ModuleName\help" -Filter *-*
 
             #Region generate-info.json Here have a issue that user may not use latest version to generate the code.
             $generateInfo = @{}
@@ -280,9 +293,8 @@ Function Move-Generation2MasterHybrid {
             #EndRegion
 
             # Generate csproj file and add the dependency in the solution file
-            Copy-Template -SourceName Az.ModuleName.hybrid.csproj -DestPath (Join-Path $DestPath $submoduleDir.Name) -DestName "Az.$submoduleName.csproj" -RootModuleName $ModuleName -ModuleName $submoduleName
+            Copy-Template -SourceName Az.ModuleName.hybrid.csproj -DestPath (Join-Path $DestPath $submoduleDir.Name) -DestName "Az.$submoduleName.csproj" -RootModuleName $ModuleName -ModuleName $submoduleName -ModuleFolder $submoduleDir.Name
 
-            $SolutionPath = Join-Path -Path $DestPath -ChildPath $ModuleName.sln
 
             dotnet sln $SolutionPath add (Join-Path -Path (Join-Path -Path $DestPath -ChildPath $submoduleDir.Name) -ChildPath Az.$submoduleName.csproj)
 
@@ -290,14 +302,14 @@ Function Move-Generation2MasterHybrid {
             $DestPsd1Path = Join-Path -Path (Join-Path -Path $DestPath -ChildPath $ModuleName) -ChildPath "Az.$ModuleName.psd1"
             $Psd1Metadata = Import-LocalizedData -BaseDirectory (Join-Path -Path $DestPath -ChildPath $ModuleName) -FileName "Az.$ModuleName.psd1"
             $SubModulePsd1MetaData = Import-LocalizedData -BaseDirectory (Join-Path -Path $SourcePath -ChildPath $submoduleDir.Name) -FileName "Az.$submoduleName.psd1"
-            if (!@($Psd1Metadata.RequiredAssemblies).Contains("${submoduleName}.Autorest\bin\Az.${submoduleName}.private.dll")) {
-                $Psd1Metadata.RequiredAssemblies = @($Psd1Metadata.RequiredAssemblies) + "${submoduleName}.Autorest\bin\Az.${submoduleName}.private.dll"
+            if (!@($Psd1Metadata.RequiredAssemblies).Contains(("{0}\bin\Az.${submoduleName}.private.dll" -f $submoduleDir.Name))) {
+                $Psd1Metadata.RequiredAssemblies = @($Psd1Metadata.RequiredAssemblies) + ("{0}\bin\Az.${submoduleName}.private.dll" -f $submoduleDir.Name)
             }
-            if (!@($Psd1Metadata.FormatsToProcess).Contains("${submoduleName}.Autorest\Az.${submoduleName}.format.ps1xml")) {
-                $Psd1Metadata.FormatsToProcess = @($Psd1Metadata.FormatsToProcess) + "${submoduleName}.Autorest\Az.${submoduleName}.format.ps1xml"
+            if (!@($Psd1Metadata.FormatsToProcess).Contains(("{0}\Az.${submoduleName}.format.ps1xml" -f $submoduleDir.Name))) {
+                $Psd1Metadata.FormatsToProcess = @($Psd1Metadata.FormatsToProcess) + ("{0}\Az.${submoduleName}.format.ps1xml" -f $submoduleDir.Name)
             }
-            if (!@($Psd1Metadata.NestedModules).Contains("${submoduleName}.Autorest\Az.${submoduleName}.psm1")) {
-                $Psd1Metadata.NestedModules = @($Psd1Metadata.NestedModules) + "${submoduleName}.Autorest\Az.${submoduleName}.psm1"
+            if (!@($Psd1Metadata.NestedModules).Contains(("{0}\Az.${submoduleName}.psm1" -f $submoduleDir.Name))) {
+                $Psd1Metadata.NestedModules = @($Psd1Metadata.NestedModules) + ("{0}\Az.${submoduleName}.psm1" -f $submoduleDir.Name)
             }
             foreach ($func in $SubModulePsd1MetaData.FunctionsToExport) {
                 if (!@($Psd1Metadata.FunctionsToExport).Contains($func) -and ($func -ne '*')) {
@@ -310,7 +322,7 @@ Function Move-Generation2MasterHybrid {
                 }
             }
             if ($null -ne $Psd1Metadata.PrivateData) {
-                foreach($pKey in $Psd1Metadata.PrivateData.PSData.Keys) {
+                foreach ($pKey in $Psd1Metadata.PrivateData.PSData.Keys) {
                     $Psd1Metadata.$pKey = $Psd1Metadata.PrivateData.PSData.$pKey
                 }
                 $Psd1Metadata.Remove("PrivateData")
@@ -323,8 +335,19 @@ Function Move-Generation2MasterHybrid {
 
         #update module page
         dotnet build "$DestPath\$ModuleName.sln"
-        Import-Module "$DestPath\..\..\artifacts\Debug\Az.$ModuleName\Az.$ModuleName.psd1"
-        Update-MarkdownHelpModule -Path "$DestPath\$ModuleName\help" -RefreshModulePage -AlphabeticParamsOrder -UseFullTypeName -ExcludeDontShow
+        # start a job to update markdown help module, since we can not uninstall a module in the same process.
+        $job = start-job {
+            param(
+                [string] $ModuleName,
+                [string] $DestPath
+            )
+            Import-Module "$DestPath\..\..\artifacts\Debug\Az.$ModuleName\Az.$ModuleName.psd1"
+            Update-MarkdownHelpModule -Path "$DestPath\$ModuleName\help" -RefreshModulePage -AlphabeticParamsOrder -UseFullTypeName -ExcludeDontShow         
+        } -ArgumentList $ModuleName, $DestPath
+
+        $job | Wait-Job | Receive-Job
+        # Import-Module "$DestPath\..\..\artifacts\Debug\Az.$ModuleName\Az.$ModuleName.psd1"
+        # Update-MarkdownHelpModule -Path "$DestPath\$ModuleName\help" -RefreshModulePage -AlphabeticParamsOrder -UseFullTypeName -ExcludeDontShow
     }
 }
 
@@ -358,7 +381,9 @@ Function Copy-Template {
         [string]
         $ModuleName,
         [string]
-        $RootModuleName
+        $RootModuleName,
+        [string]
+        $ModuleFolder
     )
     process {
         $DestPath = Join-Path -Path $DestPath -ChildPath $DestName
@@ -373,7 +398,12 @@ Function Copy-Template {
             if ($null -eq $RootModuleName) {
                 $RootModuleName = $ModuleName
             }
+            if ($null -eq $ModuleFolder) {
+                $ModuleFolder = $ModuleName + ".Autorest"
+            }
             $TemplateContent = $TemplateContent -replace '{ModuleNamePlaceHolder}', $ModuleName
+            $TemplateContent = $TemplateContent -replace '{LowCaseModuleNamePlaceHolder}', $ModuleName.ToLower()
+            $TemplateContent = $TemplateContent -replace '{ModuleFolderPlaceHolder}', $ModuleFolder
             $TemplateContent -replace '{RootModuleNamePlaceHolder}', $RootModuleName | Set-Content -Path $DestPath
 
         }
