@@ -23,6 +23,9 @@ Add a routing Rule to the Slot.
 ### [Enter-AzWebAppContainerPSSession](Enter-AzWebAppContainerPSSession.md)
 Opens a remote PowerShell session into the windows container specified in a given site or slot and given resource group
 
+### [Get-AzAppServiceEnvironment](Get-AzAppServiceEnvironment.md)
+Gets App Service Environment. If only Resource Group is specified, it will return a list of ASE in the Resource Group.
+
 ### [Get-AzAppServicePlan](Get-AzAppServicePlan.md)
 Gets an Azure App Service plan in the specified resource group.
 
@@ -89,6 +92,9 @@ Gets an Azure Web App certificate.
 ### [Get-AzWebAppContainerContinuousDeploymentUrl](Get-AzWebAppContainerContinuousDeploymentUrl.md)
 Get-AzWebAppContainerContinuousDeploymentUrl will return container continuous deployment url
 
+### [Get-AzWebAppContinuousWebJob](Get-AzWebAppContinuousWebJob.md)
+Get or list continuous web for an app.
+
 ### [Get-AzWebAppPublishingProfile](Get-AzWebAppPublishingProfile.md)
 Gets an Azure Web App publishing profile.
 
@@ -98,8 +104,20 @@ Gets an Azure Web App slot.
 ### [Get-AzWebAppSlotConfigName](Get-AzWebAppSlotConfigName.md)
 Get the list of Web App Slot Config names
 
+### [Get-AzWebAppSlotContinuousWebJob](Get-AzWebAppSlotContinuousWebJob.md)
+Get or list continuous web for a deployment slot.
+
 ### [Get-AzWebAppSlotPublishingProfile](Get-AzWebAppSlotPublishingProfile.md)
 Gets an Azure Web App slot publishing profile.
+
+### [Get-AzWebAppSlotTriggeredWebJob](Get-AzWebAppSlotTriggeredWebJob.md)
+Get or list triggered web for a deployment slot.
+
+### [Get-AzWebAppSlotTriggeredWebJobHistory](Get-AzWebAppSlotTriggeredWebJobHistory.md)
+Get or list triggered web job's history for a deployment slot.
+
+### [Get-AzWebAppSlotWebJob](Get-AzWebAppSlotWebJob.md)
+List webjobs for a deployment slot.
 
 ### [Get-AzWebAppSnapshot](Get-AzWebAppSnapshot.md)
 Gets the snapshots available for a web app.
@@ -109,6 +127,24 @@ Gets an Azure Web App certificate SSL binding.
 
 ### [Get-AzWebAppTrafficRouting](Get-AzWebAppTrafficRouting.md)
 Get a routing Rule for the given Slot name.
+
+### [Get-AzWebAppTriggeredWebJob](Get-AzWebAppTriggeredWebJob.md)
+Get or list triggered web for an app.
+
+### [Get-AzWebAppTriggeredWebJobHistory](Get-AzWebAppTriggeredWebJobHistory.md)
+Get or list triggered web job's history for an app.
+
+### [Get-AzWebAppWebJob](Get-AzWebAppWebJob.md)
+List webjobs for an app.
+
+### [Import-AzWebAppKeyVaultCertificate](Import-AzWebAppKeyVaultCertificate.md)
+Import an SSL certificate to a web app from Key Vault.
+
+### [New-AzAppServiceEnvironment](New-AzAppServiceEnvironment.md)
+Creates an App Service Environment including the recommended Route Table and Network Security Group
+
+### [New-AzAppServiceEnvironmentInboundServices](New-AzAppServiceEnvironmentInboundServices.md)
+Creates inbound services for App Service Environment. For ASEv2 ILB, this will create an Azure Private DNS Zone and records to map to the internal IP. For ASEv3 it will in addition ensure subnet has Network Policy disabled and will create a private endpoint.
 
 ### [New-AzAppServicePlan](New-AzAppServicePlan.md)
 Creates an Azure App Service plan in a given Geo location.
@@ -143,6 +179,9 @@ Creates an object that represents an Azure Storage path to be mounted in a Web A
 ### [New-AzWebAppBackup](New-AzWebAppBackup.md)
 
 
+### [New-AzWebAppCertificate](New-AzWebAppCertificate.md)
+Creates an App service managed certificate for an Azure Web App. 
+
 ### [New-AzWebAppContainerPSSession](New-AzWebAppContainerPSSession.md)
 New-AzWebAppContainerPSSession will create new remote PowerShell Session into the windows container specified in a given site or slot and given resource group
 
@@ -160,6 +199,9 @@ Deploys an Azure Web App from a ZIP, JAR, or WAR file using zipdeploy.
 
 ### [Register-AzStaticWebAppUserProvidedFunctionApp](Register-AzStaticWebAppUserProvidedFunctionApp.md)
 Description for Register a user provided function app with a static site build
+
+### [Remove-AzAppServiceEnvironment](Remove-AzAppServiceEnvironment.md)
+Remove App Service Environment.
 
 ### [Remove-AzAppServicePlan](Remove-AzAppServicePlan.md)
 Removes an Azure App Service plan.
@@ -188,14 +230,29 @@ Removes an Access Restriction rule from an Azure Web App.
 ### [Remove-AzWebAppBackup](Remove-AzWebAppBackup.md)
 
 
+### [Remove-AzWebAppCertificate](Remove-AzWebAppCertificate.md)
+Removes an App service managed certificate for an Azure Web App. 
+
+### [Remove-AzWebAppContinuousWebJob](Remove-AzWebAppContinuousWebJob.md)
+Delete a continuous web job for an app.
+
 ### [Remove-AzWebAppSlot](Remove-AzWebAppSlot.md)
 
+
+### [Remove-AzWebAppSlotContinuousWebJob](Remove-AzWebAppSlotContinuousWebJob.md)
+Delete a continuous web job for a deployment slot.
+
+### [Remove-AzWebAppSlotTriggeredWebJob](Remove-AzWebAppSlotTriggeredWebJob.md)
+Delete a triggered web job for a deployment slot.
 
 ### [Remove-AzWebAppSSLBinding](Remove-AzWebAppSSLBinding.md)
 Removes an SSL binding from an uploaded certificate.
 
 ### [Remove-AzWebAppTrafficRouting](Remove-AzWebAppTrafficRouting.md)
 Remove a routing Rule from the Slot.
+
+### [Remove-AzWebAppTriggeredWebJob](Remove-AzWebAppTriggeredWebJob.md)
+Delete a triggered web job for an app.
 
 ### [Reset-AzStaticWebAppApiKey](Reset-AzStaticWebAppApiKey.md)
 Description for Resets the api key for an existing static site.
@@ -236,17 +293,35 @@ Set Web App Slot Config names
 ### [Start-AzWebApp](Start-AzWebApp.md)
 Starts an Azure Web App.
 
+### [Start-AzWebAppContinuousWebJob](Start-AzWebAppContinuousWebJob.md)
+Start a continuous web job for an app.
+
 ### [Start-AzWebAppSlot](Start-AzWebAppSlot.md)
 Starts an Azure Web App slot.
+
+### [Start-AzWebAppSlotContinuousWebJob](Start-AzWebAppSlotContinuousWebJob.md)
+Start a continuous web job for a deployment slot.
+
+### [Start-AzWebAppSlotTriggeredWebJob](Start-AzWebAppSlotTriggeredWebJob.md)
+Run a triggered web job for a deployment slot.
+
+### [Start-AzWebAppTriggeredWebJob](Start-AzWebAppTriggeredWebJob.md)
+Run a triggered web job for an app.
 
 ### [Stop-AzWebApp](Stop-AzWebApp.md)
 Stops an Azure Web App.
 
+### [Stop-AzWebAppContinuousWebJob](Stop-AzWebAppContinuousWebJob.md)
+Stop a continuous web job for an app.
+
 ### [Stop-AzWebAppSlot](Stop-AzWebAppSlot.md)
 Stops an Azure Web App slot.
 
+### [Stop-AzWebAppSlotContinuousWebJob](Stop-AzWebAppSlotContinuousWebJob.md)
+Stop a continuous web job for a deployment slot.
+
 ### [Switch-AzWebAppSlot](Switch-AzWebAppSlot.md)
-Swap two slots with a Web App
+Swap two slots within a Web App
 
 ### [Test-AzStaticWebAppCustomDomain](Test-AzStaticWebAppCustomDomain.md)
 Description for Validates a particular custom domain can be added to a static site.
@@ -268,3 +343,4 @@ Updates the inheritance of Main site Access Restiction config to SCM Site for an
 
 ### [Update-AzWebAppTrafficRouting](Update-AzWebAppTrafficRouting.md)
 Update a routing Rule to the Slot.
+

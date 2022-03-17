@@ -144,6 +144,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
 [Update-AzWebAppTrafficRouting](./Update-AzWebAppTrafficRouting.md)
 
 [Get-AzWebAppTrafficRouting](./Get-AzWebAppTrafficRouting.md)

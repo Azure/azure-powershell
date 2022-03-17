@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added `Get-AzResourceManagementPrivateLink`, `Remove-AzResourceManagementPrivateLink`, `Get-AzResourceManagementPrivateLinkAssociation` and  `Remove-AzResourceManagementPrivateLinkAssociation` cmdlets
 
 ## Version 5.4.0
 * Fixed keycredential key format, from base64url to byte [#17131]
