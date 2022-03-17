@@ -16,11 +16,11 @@ Creates a security admin rule.
 ```
 New-AzNetworkManagerSecurityAdminRule -Name <String> -RuleCollectionName <String>
  -SecurityAdminConfigurationName <String> -NetworkManagerName <String> -ResourceGroupName <String>
- [-DisplayName <String>] [-Description <String>] -Protocol <String> -Direction <String> -Access <String>
+ [-DisplayName <String>] [-Description <String>] -Protocol <String> -Direction <String> -Access <String> -Priority <Int32> 
  [-Source <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerAddressPrefixItem]>]
  [-Destination <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerAddressPrefixItem]>]
  [-SourcePortRange <System.Collections.Generic.List`1[System.String]>]
- [-DestinationPortRange <System.Collections.Generic.List`1[System.String]>] [-Priority <Int32>] [-Force]
+ [-DestinationPortRange <System.Collections.Generic.List`1[System.String]>][-Force]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -245,7 +245,7 @@ Type: System.Nullable`1[System.Int32]
 Parameter Sets: Custom
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

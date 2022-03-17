@@ -14,8 +14,10 @@ Creates a security admin configuration.
 
 ```
 New-AzNetworkManagerSecurityAdminConfiguration -Name <String> -NetworkManagerName <String>
- -ResourceGroupName <String> [-DisplayName <String>] [-Description <String>] [-DeleteExistingNSG] [-Force]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ResourceGroupName <String> [-DisplayName <String>] [-Description <String>]
+ [-ApplyOnNetworkIntentPolicyBasedService <System.Collections.Generic.List`1[System.String]>]
+ [-DeleteExistingNSG] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,18 +27,33 @@ The **New-AzNetworkManagerSecurityAdminConfiguration** cmdlet creates a security
 
 ### Example 1
 ```powershell
-PS C:\> New-AzNetworkManagerSecurityAdminConfiguration -ResourceGroupName TestRGName -NetworkManagerName TestNMName -Name TestAdminConfigName -DisplayName "TestDisplayName" -Description "TestDescription" -DeleteExistingNSG
+PS C:\> New-AzNetworkManagerSecurityAdminConfiguration -ResourceGroupName TestRGName -NetworkManagerName TestNMName -Name TestAdminConfigName -DisplayName "TestDisplayName" -Description "TestDescription" -DeleteExistingNSG  -ApplyOnNetworkIntentPolicyBasedService $ApplyOnNetworkIntentPolicyBasedService
 
 ```
 
 
 ## PARAMETERS
 
+### -ApplyOnNetworkIntentPolicyBasedService
+ApplyOnNetworkIntentPolicyBasedServices.
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -AsJob
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -51,7 +68,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -66,7 +83,7 @@ Accept wildcard characters: False
 DeleteExistingNSGs Flag.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -81,7 +98,7 @@ Accept wildcard characters: False
 Description.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -96,7 +113,7 @@ Accept wildcard characters: False
 DisplayName.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -111,7 +128,7 @@ Accept wildcard characters: False
 Do not ask for confirmation if you want to overwrite a resource
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -126,7 +143,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -141,7 +158,7 @@ Accept wildcard characters: False
 The network manager name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -156,7 +173,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -171,7 +188,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -187,7 +204,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -204,6 +221,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+
+### System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 
 ### System.Management.Automation.SwitchParameter
 

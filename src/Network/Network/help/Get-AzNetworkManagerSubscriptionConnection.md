@@ -31,10 +31,40 @@ Get-AzNetworkManagerSubscriptionConnection -Name <String> [-DefaultProfile <IAzu
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzNetworkManagerSubscriptionConnection -Name "testsc"
+
+NetworkManagerId  : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PSTestResources/providers/Micros
+                    oft.Network/networkManagers/PSTestNM
+ConnectionState   : Pending
+DisplayName       :
+Description       : SampleDescription
+Type              : Microsoft.Network/networkManagers/networkManagerConnections
+ProvisioningState :
+SystemData        :
+SystemDataText    : null
+Name              : testsc
+Etag              :
+Id                : /subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/networkManagerConne
+                    ctions/testsc
 ```
 
-{{ Add example description here }}
+```powershell
+PS C:\> Get-AzNetworkManagerSubscriptionConnection
+
+NetworkManagerId  : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PSTestResources/providers/Micros
+                    oft.Network/networkManagers/PSTestNM
+ConnectionState   : Pending
+DisplayName       :
+Description       : SampleDescription
+Type              : Microsoft.Network/networkManagers/networkManagerConnections
+ProvisioningState :
+SystemData        :
+SystemDataText    : null
+Name              : testsc
+Etag              :
+Id                : /subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/networkManagerConne
+                    ctions/testsc
+```
 
 ## PARAMETERS
 
@@ -94,3 +124,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzNetworkManagerSubscriptionConnection](./New-AzNetworkManagerSubscriptionConnection.md)
+
+[Set-AzNetworkManagerSubscriptionConnection](./Set-AzNetworkManagerSubscriptionConnection.md)
+
+[Remove-AzNetworkManagerSubscriptionConnection](./Remove-AzNetworkManagerSubscriptionConnection.md)
