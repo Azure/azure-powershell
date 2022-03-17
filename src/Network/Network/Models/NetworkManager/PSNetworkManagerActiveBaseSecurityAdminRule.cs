@@ -21,6 +21,8 @@ namespace Microsoft.Azure.Commands.Network.Models.NetworkManager
 
         public string RuleCollectionDescription { get; set; }
 
+        public List<string> ApplyOnNetworkIntentPolicyBasedServices { get; set; }
+
         public IList<PSNetworkManagerSecurityGroupItem> RuleCollectionAppliesToGroups { get; set; }
 
         public IList<PSNetworkManagerConfigurationGroup> RuleGroups { get; set; }
@@ -35,6 +37,12 @@ namespace Microsoft.Azure.Commands.Network.Models.NetworkManager
         public string RuleGroupsText
         {
             get { return JsonConvert.SerializeObject(RuleGroups, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string ApplyOnNetworkIntentPolicyBasedServicesText
+        {
+            get { return JsonConvert.SerializeObject(ApplyOnNetworkIntentPolicyBasedServices, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

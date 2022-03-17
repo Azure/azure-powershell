@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Network.Models.NetworkManager
 
         public string Access { get; private set; }
 
-        public int? Priority { get; private set; }
+        public int Priority { get; private set; }
 
         [JsonIgnore]
         public string SourcesText

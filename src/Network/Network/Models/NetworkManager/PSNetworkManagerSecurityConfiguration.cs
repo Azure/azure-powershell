@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Network.Models.NetworkManager
         public List<string> ApplyOnNetworkIntentPolicyBasedServices { get; set; }
 
         [JsonIgnore]
-        public string NetworkIntentPolicyBasedServicesText
+        public string ApplyOnNetworkIntentPolicyBasedServicesText
         {
             get { return JsonConvert.SerializeObject(ApplyOnNetworkIntentPolicyBasedServices, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }

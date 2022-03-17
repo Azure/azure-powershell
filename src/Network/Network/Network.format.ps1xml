@@ -7119,6 +7119,10 @@
                 <PropertyName>SecurityType</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>ApplyOnNetworkIntentPolicyBasedServices</Label>
+                <PropertyName>ApplyOnNetworkIntentPolicyBasedServicesText</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>SystemData</Label>
                 <PropertyName>SystemDataText</PropertyName>
               </ListItem>
@@ -7476,6 +7480,10 @@
                 <Label>RuleGroups</Label>
                 <PropertyName>RuleGroupsText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>ApplyOnNetworkIntentPolicyBasedServices</Label>
+                <PropertyName>ApplyOnNetworkIntentPolicyBasedServicesText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -7565,6 +7573,10 @@
               <ListItem>
                 <Label>RuleGroups</Label>
                 <PropertyName>RuleGroupsText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ApplyOnNetworkIntentPolicyBasedServices</Label>
+                <PropertyName>ApplyOnNetworkIntentPolicyBasedServicesText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -7726,6 +7738,10 @@
                 <Label>RuleGroups</Label>
                 <PropertyName>RuleGroupsText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>ApplyOnNetworkIntentPolicyBasedServices</Label>
+                <PropertyName>ApplyOnNetworkIntentPolicyBasedServicesText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -7819,6 +7835,10 @@
               <ListItem>
                 <Label>RuleGroups</Label>
                 <PropertyName>RuleGroupsText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ApplyOnNetworkIntentPolicyBasedServices</Label>
+                <PropertyName>ApplyOnNetworkIntentPolicyBasedServicesText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

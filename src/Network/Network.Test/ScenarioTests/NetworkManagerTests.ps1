@@ -423,9 +423,9 @@ function Test-NetworkManagerSecurityAdminRuleCRUD
     $RuleName = Get-ResourceName
     $rglocation = "centraluseuap"
     $subscriptionId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52"
-    $vnetId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/PSTestResources/providers/Microsoft.Network/virtualNetworks/PSTestVnet"
-    $vnetName = "PSTestVnet"
-    $vnetRG = "PSTestResources"
+    $vnetId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/testRG/providers/Microsoft.Network/virtualNetworks/vnet3"
+    $vnetName = "vnet3"
+    $vnetRG = "testRG"
 
     try{
         #Create the resource group
@@ -452,7 +452,7 @@ function Test-NetworkManagerSecurityAdminRuleCRUD
 
         [System.Collections.Generic.List[string]]$ApplyOnNetworkIntentPolicyBasedServices  = @()
         $ApplyOnNetworkIntentPolicyBasedServices.Add("None")
-        New-AzNetworkManagerSecurityAdminConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $SecurityConfigurationName -DisplayName "DISplayName" -Description "DESCription" -DeleteExistingNSG -ApplyOnNetworkIntentPolicyBasedServices $ApplyOnNetworkIntentPolicyBasedServices
+        New-AzNetworkManagerSecurityAdminConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $SecurityConfigurationName -DisplayName "DISplayName" -Description "DESCription" -DeleteExistingNSG -ApplyOnNetworkIntentPolicyBasedService $ApplyOnNetworkIntentPolicyBasedServices
         
         $securityConfig = Get-AzNetworkManagerSecurityAdminConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $SecurityConfigurationName
         Assert-NotNull $securityConfig;
@@ -516,7 +516,7 @@ function Test-NetworkManagerSecurityAdminRuleCRUD
         [System.Collections.Generic.List[String]]$regions = @()  
         $regions.Add($rglocation)
         Deploy-AzNetworkManagerCommit -ResourceGroupName $rgname -Name $networkManagerName -TargetLocation $regions -ConfigurationId $configids -CommitType "SecurityAdmin" 
-        #Start-Sleep -Seconds 600
+        Start-Sleep -Seconds 600
        
         $deploymentStatus = Get-AzNetworkManagerDeploymentStatusList -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Region $regions -DeploymentType "SecurityAdmin"
         Assert-NotNull $deploymentStatus;
@@ -567,7 +567,7 @@ function Test-NetworkManagerSecurityAdminRuleCRUD
         Assert-AreEqual "Internet" $effectiveSecurityAdminRule.Value[0].Sources[0].AddressPrefix
 
         Deploy-AzNetworkManagerCommit -ResourceGroupName $rgname -Name $networkManagerName -TargetLocation $regions -CommitType "SecurityAdmin" 
-        #Start-Sleep -Seconds 600
+        Start-Sleep -Seconds 600
 
         $job = Remove-AzNetworkManagerSecurityAdminRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -SecurityAdminConfigurationName $SecurityConfigurationName -RuleCollectionName $RuleCollectionName -Name $RuleName -PassThru -Force -AsJob;
         $job | Wait-Job;

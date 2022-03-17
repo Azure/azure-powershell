@@ -25,7 +25,5 @@ namespace Microsoft.Azure.Commands.Network.Models.NetworkManager
         public string NetworkManagerId { get; set; }
 
         public string ConnectionState { get; set; }
-
-        public new string Description { get; set; }
     }
 }
