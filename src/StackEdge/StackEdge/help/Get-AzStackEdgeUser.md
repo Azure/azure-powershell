@@ -42,7 +42,10 @@ The **Get-AzStackEdgeUser** cmdlet lists the users configured for a Stack Edge d
 
 ### Example 1
 ```powershell
-PS C:\>  Get-AzStackEdgeUser -ResourceGroupName resourceGroupName -DeviceName deviceName
+Get-AzStackEdgeUser -ResourceGroupName resourceGroupName -DeviceName deviceName
+```
+
+```output
 User name  Type  ResourceGroupName DeviceName
 ---------  ----  ----------------- ----------
 deviceName Share resourceGroupName deviceName

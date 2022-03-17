@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported create storage context with customized blob, queue, file, table service endpoint
+    - `New-AzStorageContext`
 * Fixed copy blob failure on Premium Storage account, or account enabled hierarchical namespace
     -  `Copy-AzStorageBlob` 
 

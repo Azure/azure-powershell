@@ -36,17 +36,19 @@ The PowerShell command sequence for data flow debug workflow should be:
 
 ### Example 1
 ```powershell
-PS C:\> Start-AzSynapseDataFlowDebugSession -WorkspaceName ContosoWorkspace
+Start-AzSynapseDataFlowDebugSession -WorkspaceName ContosoWorkspace
 ```
 
 This command starts an Azure Synapse Analytics data flow debug session.
 
 ### Example 2
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Workspacename ContosoWorkspace -ResourceGroupName GroupName  
-PS C:\> $result = $ws | Start-AzSynapseDataFlowDebugSession  
-PS C:\> $result
+$ws = Get-AzSynapseWorkspace -Workspacename ContosoWorkspace -ResourceGroupName GroupName  
+$result = $ws | Start-AzSynapseDataFlowDebugSession  
+$result
+```
 
+```output
 SessionId
 ---------
 b75f917c-1a5e-432e-a1b9-ec6aabb1f546

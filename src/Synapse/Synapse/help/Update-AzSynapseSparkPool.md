@@ -65,14 +65,14 @@ The **Update-AzSynapseSparkPool** cmdlet updates an Apache Spark pool in Azure S
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -Tag @{"key" = "value"} -NodeCount 5 -NodeSize Medium
+Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -Tag @{"key" = "value"} -NodeCount 5 -NodeSize Medium
 ```
 
 This command updates an Apache Spark pool in Azure Synapse Analytics.
 
 ### Example 2
 ```powershell
-PS C:\> $pool = Get-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool
+$pool = Get-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool
 $pool | Update-AzSynapseSparkPool -Tag @{"key" = "value1"}
 ```
 
@@ -80,89 +80,89 @@ This command updates an Apache Spark pool in Azure Synapse Analytics through pip
 
 ### Example 3
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Update-AzSynapseSparkPool -Name ContosoSparkPool -Tag @{"key" = "value2"}
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Update-AzSynapseSparkPool -Name ContosoSparkPool -Tag @{"key" = "value2"}
 ```
 
 This command updates an Apache Spark pool in Azure Synapse Analytics through pipeline.
 
 ### Example 4
 ```powershell
-PS C:\> Update-AzSynapseSparkPool -ResourceId /subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd/resourceGroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace/bigDataPools/ContosoSparkPool -Tag @{"key" = "value3"}
+Update-AzSynapseSparkPool -ResourceId /subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd/resourceGroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace/bigDataPools/ContosoSparkPool -Tag @{"key" = "value3"}
 ```
 
 This command updates an Apache Spark pool in Azure Synapse Analytics with resource ID.
 
 ### Example 5
 ```powershell
-PS C:\> Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -EnableAutoScale $true -AutoScaleMinNodeCount 3 -AutoScaleMaxNodeCount 7
+Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -EnableAutoScale $true -AutoScaleMinNodeCount 3 -AutoScaleMaxNodeCount 7
 ```
 
 This command enables auto-scale for an Apache Spark pool in Azure Synapse Analytics.
 
 ### Example 6
 ```powershell
-PS C:\> Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -EnableAutoScale $false
+Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -EnableAutoScale $false
 ```
 
 This command disables auto-scale for an Apache Spark pool in Azure Synapse Analytics.
 
 ### Example 7
 ```powershell
-PS C:\> Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -EnableAutoPause $true -AutoPauseDelayInMinute 15
+Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -EnableAutoPause $true -AutoPauseDelayInMinute 15
 ```
 
 This command enables auto-pause for an Apache Spark pool in Azure Synapse Analytics.
 
 ### Example 8
 ```powershell
-PS C:\> Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -EnableAutoPause $false
+Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -EnableAutoPause $false
 ```
 
 This command disables auto-pause for an Apache Spark pool in Azure Synapse Analytics.
 
 ### Example 9
 ```powershell
-PS C:\> $packages = Get-AzSynapseWorkspacePackage -WorkspaceName ContosoWorkspace
-PS C:\> Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -PackageAction Add -Package $packages
+$packages = Get-AzSynapseWorkspacePackage -WorkspaceName ContosoWorkspace
+Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -PackageAction Add -Package $packages
 ```
 
 The first command retrieves workspace packages. The second command links these workspace packages to an Apache Spark pool in Azure Synapse Analytics.
 
 ### Example 10
 ```powershell
-PS C:\> $package = Get-AzSynapseWorkspacePackage -WorkspaceName ContosoWorkspace -Name ContosoPackage
-PS C:\> Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -PackageAction Remove -Package $package
+$package = Get-AzSynapseWorkspacePackage -WorkspaceName ContosoWorkspace -Name ContosoPackage
+Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -PackageAction Remove -Package $package
 ```
 
 The first command retrieves workspace packages named ContosoPackage. The second command removes the workspace package from an Apache Spark pool in Azure Synapse Analytics.
 
 ### Example 11
 ```powershell
-PS C:\> $pool = Get-AzSynapseSparkPool -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace -Name ContosoSparkPool
-PS C:\> $pool | Update-AzSynapseSparkPool -PackageAction Remove -Package $pool.WorkspacePackages
+$pool = Get-AzSynapseSparkPool -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace -Name ContosoSparkPool
+$pool | Update-AzSynapseSparkPool -PackageAction Remove -Package $pool.WorkspacePackages
 ```
 
 The first command retrieves an Apache Spark pool in Azure Synapse Analytics. The second command removes all workspace packages that are linked to that Apache Spark pool.
 
-### Example 11
+### Example 12
 ```powershell
-PS C:\> Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -Tag @{"key" = "value"} -NodeCount 5 -NodeSize Medium -SparkConfigFilePath "c:\sparkconfig.txt"
+Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -Tag @{"key" = "value"} -NodeCount 5 -NodeSize Medium -SparkConfigFilePath "c:\sparkconfig.txt"
 ```
 
 This command updates an Apache Spark pool in Azure Synapse Analytics and upload a spark configuration file for the spark pool.
 
-### Example 12
+### Example 13
 ```powershell
-PS C:\> Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -NodeSize small -ForceApplySetting
+Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -NodeSize small -ForceApplySetting
 ```
 
 This command updates an Apache Spark pool in Azure Synapse Analytics, set NodeSize to small for the spark pool and force stop any running jobs in the Spark pool to apply this new setting.
 
-### Example 13
+### Example 14
 ```powershell
-PS C:\> $pool = Get-AzSynapseSparkPool -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace -Name ContosoSparkPool
-PS C:\> $pool | Update-AzSynapseSparkPool -PackageAction Remove -Package $pool.WorkspacePackages -ForceApplySetting
+$pool = Get-AzSynapseSparkPool -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace -Name ContosoSparkPool
+$pool | Update-AzSynapseSparkPool -PackageAction Remove -Package $pool.WorkspacePackages -ForceApplySetting
 ```
 
 The first command retrieves an Apache Spark pool in Azure Synapse Analytics. The second command removes all workspace packages that are linked to that Apache Spark pool and force stop any running jobs in the Spark pool to apply this new setting.

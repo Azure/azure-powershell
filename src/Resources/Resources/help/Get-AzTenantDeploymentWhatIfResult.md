@@ -131,7 +131,7 @@ The **Get-AzTenantDeploymentWhatIfResult** cmdlet gets the ARM template What-If 
 
 ### Example 1: Get a What-If result at tenant scope
 ```powershell
-PS C:\> Get-AzTenantDeploymentWhatIfResult `
+Get-AzTenantDeploymentWhatIfResult `
     -DeploymentName "deploy-01" `
     -Location "West US" `
     -TemplateFile "D:\Azure\Templates\ServiceTemplate.json" `
@@ -147,7 +147,7 @@ The command uses the *ResultFormat* parameter to set the What-If result to inclu
 
 ### Example 2: Get a What-If result at tenant scope with ResourceIdOnly
 ```powershell
-PS C:\> Get-AzTenantDeploymentWhatIfResult `
+Get-AzTenantDeploymentWhatIfResult `
     -DeploymentName "deploy-01" `
     -Location "West US" `
     -TemplateFile "D:\Azure\Templates\ServiceTemplate.json" `

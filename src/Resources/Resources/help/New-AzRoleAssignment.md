@@ -124,43 +124,43 @@ ResourceName, ResourceType, ResourceGroupName and (optionally) ParentResource - 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> New-AzRoleAssignment -ResourceGroupName rg1 -SignInName allen.young@live.com -RoleDefinitionName Reader -AllowDelegation
+```powershell
+New-AzRoleAssignment -ResourceGroupName rg1 -SignInName allen.young@live.com -RoleDefinitionName Reader -AllowDelegation
 ```
 
 Grant Reader role access to a user at a resource group scope with the Role Assignment being available for delegation
 
 ### Example 2
-```
-PS C:\> Get-AzADGroup -SearchString "Christine Koch Team"
+```powershell
+Get-AzADGroup -SearchString "Christine Koch Team"
 
           DisplayName                    Type                           Id
           -----------                    ----                           --------
           Christine Koch Team                                           2f9d4375-cbf1-48e8-83c9-2a0be4cb33fb
 
-PS C:\> New-AzRoleAssignment -ObjectId 2f9d4375-cbf1-48e8-83c9-2a0be4cb33fb -RoleDefinitionName Contributor  -ResourceGroupName rg1
+New-AzRoleAssignment -ObjectId 2f9d4375-cbf1-48e8-83c9-2a0be4cb33fb -RoleDefinitionName Contributor  -ResourceGroupName rg1
 ```
 
 Grant access to a security group
 
 ### Example 3
-```
-PS C:\> New-AzRoleAssignment -SignInName john.doe@contoso.com -RoleDefinitionName Owner -Scope "/subscriptions/86f81fc3-b00f-48cd-8218-3879f51ff362/resourcegroups/rg1/providers/Microsoft.Web/sites/site1"
+```powershell
+New-AzRoleAssignment -SignInName john.doe@contoso.com -RoleDefinitionName Owner -Scope "/subscriptions/86f81fc3-b00f-48cd-8218-3879f51ff362/resourcegroups/rg1/providers/Microsoft.Web/sites/site1"
 ```
 
 Grant access to a user at a resource (website)
 
 ### Example 4
-```
-PS C:\> New-AzRoleAssignment -ObjectId 5ac84765-1c8c-4994-94b2-629461bd191b -RoleDefinitionName "Virtual Machine Contributor" -ResourceName Devices-Engineering-ProjectRND -ResourceType Microsoft.Network/virtualNetworks/subnets -ParentResource virtualNetworks/VNET-EASTUS-01 -ResourceGroupName Network
+```powershell
+New-AzRoleAssignment -ObjectId 5ac84765-1c8c-4994-94b2-629461bd191b -RoleDefinitionName "Virtual Machine Contributor" -ResourceName Devices-Engineering-ProjectRND -ResourceType Microsoft.Network/virtualNetworks/subnets -ParentResource virtualNetworks/VNET-EASTUS-01 -ResourceGroupName Network
 ```
 
 Grant access to a group at a nested resource (subnet)
 
 ### Example 5
-```
-PS C:\> $servicePrincipal = New-AzADServicePrincipal -DisplayName "testServiceprincipal"
-PS C:\> New-AzRoleAssignment -RoleDefinitionName "Reader" -ApplicationId $servicePrincipal.ApplicationId
+```powershell
+$servicePrincipal = New-AzADServicePrincipal -DisplayName "testServiceprincipal"
+New-AzRoleAssignment -RoleDefinitionName "Reader" -ApplicationId $servicePrincipal.ApplicationId
 ```
 
 Grant reader access to a service principal
