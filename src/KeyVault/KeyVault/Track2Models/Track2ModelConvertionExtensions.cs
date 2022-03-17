@@ -116,12 +116,22 @@ namespace Microsoft.Azure.Commands.KeyVault
             };
 
         public static Track1ManagementSdk.Models.VaultProperties ToTrack1VaultProperties(this Track2ManagementSdk.Models.VaultProperties track2VaultProperties) =>
-            new Track1ManagementSdk.Models.VaultProperties(track2VaultProperties.TenantId, track2VaultProperties.Sku?.ToTrack1Sku(),
-                track2VaultProperties.AccessPolicies.Select(ap => ap?.ToTrack1AccessPolicyEntry()).ToList(), track2VaultProperties.VaultUri,
-                track2VaultProperties.EnabledForDeployment, track2VaultProperties.EnabledForDiskEncryption, track2VaultProperties.EnabledForTemplateDeployment,
-                track2VaultProperties.EnableSoftDelete, track2VaultProperties.SoftDeleteRetentionInDays, track2VaultProperties.EnableRbacAuthorization,
-                track2VaultProperties.CreateMode?.ToTrack1CreateMode(), track2VaultProperties.EnablePurgeProtection,
-                track2VaultProperties.NetworkAcls?.ToTrack1NetworkRuleSet(), track2VaultProperties.PrivateEndpointConnections.Select(peCon => peCon?.ToTrack1PrivateEndpointConnectionItem()).ToList());
+            new Track1ManagementSdk.Models.VaultProperties(){
+                TenantId = track2VaultProperties.TenantId,
+                Sku = track2VaultProperties.Sku?.ToTrack1Sku(),
+                AccessPolicies = track2VaultProperties.AccessPolicies.Select(ap => ap?.ToTrack1AccessPolicyEntry()).ToList(),
+                VaultUri = track2VaultProperties.VaultUri,
+                EnabledForDeployment = track2VaultProperties.EnabledForDeployment,
+                EnabledForDiskEncryption = track2VaultProperties.EnabledForDiskEncryption,
+                EnabledForTemplateDeployment = track2VaultProperties.EnabledForTemplateDeployment,
+                EnableSoftDelete = track2VaultProperties.EnableSoftDelete,
+                SoftDeleteRetentionInDays = track2VaultProperties.SoftDeleteRetentionInDays,
+                EnableRbacAuthorization = track2VaultProperties.EnableRbacAuthorization,
+                CreateMode = track2VaultProperties.CreateMode?.ToTrack1CreateMode(),
+                EnablePurgeProtection = track2VaultProperties.EnablePurgeProtection,
+                NetworkAcls = track2VaultProperties.NetworkAcls?.ToTrack1NetworkRuleSet(),
+                // PrivateEndpointConnections = track2VaultProperties.PrivateEndpointConnections.Select(peCon => peCon?.ToTrack1PrivateEndpointConnectionItem()).ToList()
+            };
 
         public static Track1ManagementSdk.Models.Vault ToTrack1Vault(this Track2ManagementSdk.Vault track2Vault) =>
             new Track1ManagementSdk.Models.Vault(
