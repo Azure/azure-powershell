@@ -40,7 +40,7 @@ Describe 'Get-AzCdnEndpoint' {
                 New-AzCdnEndpoint -Name $endpointName -ResourceGroupName $ResourceGroupName -ProfileName $cdnProfileName -Location $location -Origin $origin
                 $endpoints = Get-AzCdnEndpoint -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName
                 
-                $endpoints.Count | Should -Be 1
+                $endpoints.Count | Should -BeGreaterOrEqual 1
             } Finally
             {
                 Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
