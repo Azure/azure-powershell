@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '7.3.0'
+ModuleVersion = '7.3.2'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -52,7 +52,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.7.3'; }, 
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.7.4'; }, 
             @{ModuleName = 'Az.ADDomainServices'; RequiredVersion = '0.1.0'; }, 
             @{ModuleName = 'Az.Advisor'; RequiredVersion = '1.1.2'; }, 
             @{ModuleName = 'Az.Aks'; RequiredVersion = '3.1.2'; }, 
@@ -73,7 +73,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.7.3'; },
             @{ModuleName = 'Az.CloudService'; RequiredVersion = '1.1.0'; }, 
             @{ModuleName = 'Az.CognitiveServices'; RequiredVersion = '1.10.0'; }, 
             @{ModuleName = 'Az.Communication'; RequiredVersion = '0.2.0'; }, 
-            @{ModuleName = 'Az.Compute'; RequiredVersion = '4.24.0'; }, 
+            @{ModuleName = 'Az.Compute'; RequiredVersion = '4.24.1'; }, 
             @{ModuleName = 'Az.Confluent'; RequiredVersion = '0.2.0'; }, 
             @{ModuleName = 'Az.ConnectedKubernetes'; RequiredVersion = '0.3.0'; }, 
             @{ModuleName = 'Az.ConnectedMachine'; RequiredVersion = '0.3.0'; }, 
