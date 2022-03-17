@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzSqlInstanceLink
 
 ## SYNOPSIS
-Updates the properties of a managed instance link.
+Updates the properties of an instance link.
 
 ## SYNTAX
 
@@ -39,7 +39,7 @@ Update-AzSqlInstanceLink [-ReplicationMode] <String> [-ResourceId] <String>
 ```
 
 ## DESCRIPTION
-The **Update-AzSqlInstanceLink** cmdlet modifies properties of an Azure SQL Managed Instance link.
+**Update-AzSqlInstanceLink** cmdlet modifies properties of an instance link.
 
 ## EXAMPLES
 
@@ -62,6 +62,7 @@ TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 LinkState                      : Copying
 LastHardenedLsn                :
 ```
+
 This command sets the replication mode of an instance link to "Sync".
 
 ### Example 2: Set replication mode of an instance link to Async
@@ -83,6 +84,7 @@ TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 LinkState                      : Copying
 LastHardenedLsn                :
 ```
+
 This command sets the replication mode of an instance link to "Aync".
 
 ### Example 3: Set replication mode of an instance link by its resource identifier
@@ -104,9 +106,10 @@ TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 LinkState                      : Copying
 LastHardenedLsn                :
 ```
+
 This command sets the replication mode of an instance link to "Sync" by its resource identifier.
 
-### Example 4: Set replication mode of an instance link by its object
+### Example 4: Set replication mode of instance link by its PowerShell object
 ```powershell
 PS C:\> $managedInstanceLink = Get-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "Link01" 
 PS C:\> Update-AzSqlInstanceLink -InputObject $managedInstanceLink -ReplicationMode "Async"
@@ -126,9 +129,10 @@ TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 LinkState                      : Copying
 LastHardenedLsn                :
 ```
+
 This command sets the replication mode of an instance link to "Async" using the input object.
 
-### Example 5: Set replication mode of an instance link by mutating its object
+### Example 5: Set replication mode of instance link by mutating its object
 ```powershell
 PS C:\> $managedInstanceLink = Get-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "Link01" 
 PS C:\> $managedInstanceLink.ReplicationMode = "Async"
@@ -149,6 +153,7 @@ TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 LinkState                      : Copying
 LastHardenedLsn                :
 ```
+
 This command sets the instance link using input object.
 
 ### Example 6: Set replication mode of an instance link by its parent instance object
@@ -171,6 +176,7 @@ TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 LinkState                      : Copying
 LastHardenedLsn                :
 ```
+
 This command sets the replication mode of a instance link to "Async" using parent instance object.
 
 ## PARAMETERS
@@ -191,7 +197,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The Managed Instance Link input object.
+Instance link input object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Model.AzureSqlManagedInstanceLinkModel
@@ -206,7 +212,7 @@ Accept wildcard characters: False
 ```
 
 ### -InstanceName
-The name of the Azure SQL Managed Instance.
+Name of Azure SQL Managed Instance.
 
 ```yaml
 Type: System.String
@@ -221,7 +227,7 @@ Accept wildcard characters: False
 ```
 
 ### -InstanceObject
-The instance input object.
+Instance input object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
@@ -236,7 +242,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the Managed Instance link.
+Name of the instance link.
 
 ```yaml
 Type: System.String
@@ -251,7 +257,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReplicationMode
-The value of replication mode.
+Replication mode value.
 Possible values include 'Sync' and 'Async'.
 
 ```yaml
@@ -279,7 +285,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
+Name of the resource group.
 
 ```yaml
 Type: System.String
@@ -294,7 +300,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The Managed Instance Link resource id.
+The instance link resource ID.
 
 ```yaml
 Type: System.String

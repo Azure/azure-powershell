@@ -294,7 +294,7 @@ Gets the vulnerability assessment settings of a managed database.
 Gets a SQL managed instance's Key Vault keys.
 
 ### [Get-AzSqlInstanceLink](Get-AzSqlInstanceLink.md)
-Returns information about Azure SQL Managed Instance Link.
+Returns information about link feature for Azure SQL Managed Instance.
 
 ### [Get-AzSqlInstanceOperation](Get-AzSqlInstanceOperation.md)
 Gets a SQL managed instance's operations.
@@ -459,7 +459,7 @@ Creates an Azure SQL Database Managed Instance.
 Creates an Azure SQL Managed Instance database.
 
 ### [New-AzSqlInstanceLink](New-AzSqlInstanceLink.md)
-Creates a new Azure SQL Managed Instance Link.
+Creates a new instance link.
 
 ### [New-AzSqlInstancePool](New-AzSqlInstancePool.md)
 Creates an Azure SQL Instance pool.
@@ -573,7 +573,7 @@ Removes the information types and sensitivity labels of columns in the Azure SQL
 Removes a Key Vault key from a SQL managed instance
 
 ### [Remove-AzSqlInstanceLink](Remove-AzSqlInstanceLink.md)
-Removes an Azure SQL Instance Link.
+Removes an instance link.
 
 ### [Remove-AzSqlInstancePool](Remove-AzSqlInstancePool.md)
 Removes an Azure SQL Instance pool.
@@ -822,7 +822,7 @@ Updates the vulnerability assessment settings of a database.
 Updates the vulnerability assessment settings of a managed database.
 
 ### [Update-AzSqlInstanceLink](Update-AzSqlInstanceLink.md)
-Updates the properties of a managed instance link.
+Updates the properties of an instance link.
 
 ### [Update-AzSqlInstanceVulnerabilityAssessmentSetting](Update-AzSqlInstanceVulnerabilityAssessmentSetting.md)
 Updates the vulnerability assessment settings of a managed instance.

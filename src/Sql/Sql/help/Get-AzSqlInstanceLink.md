@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzSqlInstanceLink
 
 ## SYNOPSIS
-Returns information about an instance link.
+Returns information about link feature for Azure SQL Managed Instance.
 
 ## SYNTAX
 
@@ -36,11 +36,11 @@ Get-AzSqlInstanceLink [-ResourceId] <String> [-DefaultProfile <IAzureContextCont
 ```
 
 ## DESCRIPTION
-The Get-AzSqlInstanceLink cmdlet returns information about one or more Azure SQL Managed Instance Links. Specify the name of a link to see information for only that link.
+The **Get-AzSqlInstanceLink** cmdlet returns information about one or more instance Azure SQL Managed Instance links. Specify the name of a link to see information for that link only.
 
 ## EXAMPLES
 
-### Example 1: Get information about an instance link
+### Example 1: Get information about an active link on Azure SQL Managed Instance
 ```powershell
 PS C:\> Get-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "Link01"
 ResourceGroupName              : ResourceGroup01
@@ -60,9 +60,9 @@ LinkState                      : Copying
 LastHardenedLsn                :
 ```
 
-This command gets information about an instance link named "Link01" on instance "ManagedInstance01" and resource group "ResourceGroup01".
+This command gets information about the instance link named "Link01" on instance "Instance01" and resource group "ResourceGroup01".
 
-### Example 2: Get information on all instance links on Azure SQL Managed Instance
+### Example 2: Get information about all active links on Azure SQL Managed Instance
 ```powershell
 PS C:\> Get-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01"
 ResourceGroupName              : ResourceGroup01
@@ -98,9 +98,9 @@ LinkState                      : Copying
 LastHardenedLsn                :
 ```
 
-This command gets information about all instance links on instance "ManagedInstance01" and resource group "ResourceGroup01".
+This command gets information about all active instance links on instance "ManagedInstance01" and resource group "ResourceGroup01".
 
-### Example 3: Get information on all instance links on Azure SQL Managed Instance using instance object
+### Example 3: Get all instance links on Azure SQL Managed Instance using Instance object
 ```powershell
 PS C:\> $instance = Get-AzSqlInstance -Name "ManagedInstance01" -ResourceGroupName "ResourceGroup01"
 PS C:\> Get-AzSqlInstanceLink -InstanceObject $instance
@@ -137,9 +137,9 @@ LinkState                      : Copying
 LastHardenedLsn                :
 ```
 
-This command gets information about all managed instance links within the managed instance "ManagedInstance01".
+This command gets information on all active instance links on the instance "ManagedInstance01".
 
-### Example 4: Get information on all instance links on Azure SQL Managed Instance using instance resource identifier
+### Example 4: Get all instance links on Azure SQL Managed Instance using resource identifier
 ```powershell
 PS C:\> Get-AzSqlInstanceLink -InstanceResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01"
 ResourceGroupName              : ResourceGroup01
@@ -175,7 +175,7 @@ LinkState                      : Copying
 LastHardenedLsn                :
 ```
 
-This command gets information about all managed instance links within the instance "ManagedInstance01".
+This command gets information about all instance links for the instance "ManagedInstance01".
 
 ### Example 5: Get an instance link using its resource identifier
 ```powershell
@@ -197,9 +197,9 @@ LinkState                      : Copying
 LastHardenedLsn                :
 ```
 
-This command gets information about the managed instance link named "Link01".
+This command gets information about the instance link named "Link01".
 
-### Example 6: Get information on all instance links on Azure SQL Managed Instance by piping an instance object
+### Example 6: Get all instance links for a Managed Instance by piping an instance object
 ```powershell
 PS C:\> Get-AzSqlInstance -Name "ManagedInstance01" -ResourceGroupName "ResourceGroup01" | Get-AzSqlInstanceLink
 ResourceGroupName              : ResourceGroup01
@@ -235,9 +235,9 @@ LinkState                      : Copying
 LastHardenedLsn                :
 ```
 
-This command gets information about all managed instance links within the instance "ManagedInstance01".
+This command gets information about all instance links within the instance "ManagedInstance01".
 
-### Example 7: Get a specific instance link within an instance by piping an instance object and specifying link name
+### Example 7: Get a specific instance link for an instance by piping an instance object and specifying the link name
 ```powershell
 PS C:\> Get-AzSqlInstance -Name "ManagedInstance01" -ResourceGroupName "ResourceGroup01" | Get-AzSqlInstanceLink -Name "Link01"
 ResourceGroupName              : ResourceGroup01
@@ -257,9 +257,9 @@ LinkState                      : Copying
 LastHardenedLsn                :
 ```
 
-This command gets information about a managed instance links named "Link01" within the instance "ManagedInstance01".
+This command gets information about the instance link named "Link01: within the instance "Instance01".
 
-### Example 8: Get information about an instance link using positional parameters
+### Example 8: Get information about instance link using positional parameters
 ```powershell
 PS C:\> Get-AzSqlInstanceLink "ResourceGroup01" "ManagedInstance01" "Link01"
 ResourceGroupName              : ResourceGroup01
@@ -279,7 +279,7 @@ LinkState                      : Copying
 LastHardenedLsn                :
 ```
 
-This command gets information about an instance link named "Link01" on instance "ManagedInstance01" and resource group "ResourceGroup01".
+This command gets information about the instance link named "Link01" on instance "Instance01" and resource group "ResourceGroup01".
 
 ## PARAMETERS
 
@@ -299,7 +299,7 @@ Accept wildcard characters: False
 ```
 
 ### -InstanceName
-The name of the Azure SQL Managed Instance.
+Name of Azure SQL Managed Instance.
 
 ```yaml
 Type: System.String
@@ -314,7 +314,7 @@ Accept wildcard characters: False
 ```
 
 ### -InstanceObject
-The instance input object.
+Instance input object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
@@ -329,7 +329,7 @@ Accept wildcard characters: False
 ```
 
 ### -InstanceResourceId
-The managed instance resource id
+Managed instance resource ID.
 
 ```yaml
 Type: System.String
@@ -344,7 +344,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the Managed Instance link.
+Name of the instance link.
 
 ```yaml
 Type: System.String
@@ -359,7 +359,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
+Name of the resource group.
 
 ```yaml
 Type: System.String
@@ -374,7 +374,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The Managed Instance Link resource id.
+The instance link resource ID.
 
 ```yaml
 Type: System.String

@@ -37,7 +37,7 @@ Get-AzSqlInstanceServerTrustCertificate [-ResourceId] <String> [-DefaultProfile 
 ```
 
 ## DESCRIPTION
-The Get-AzSqlInstanceServerTrustCertificate cmdlet returns information about one or more Azure SQL Server Trust Certificates. Specify the name of the certificate to see the information only for that certificate.
+The **Get-AzSqlInstanceServerTrustCertificate** cmdlet returns information about one or more Azure SQL Server Trust Certificates. Specify the name of the certificate to see the information only for that certificate.
 
 ## EXAMPLES
 

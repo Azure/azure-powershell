@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// <summary>
         /// Gets or sets the name of the resource group to use.
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = GetByNameParameterSet, Position = 0, HelpMessage = "The name of the resource group.")]
+        [Parameter(Mandatory = true, ParameterSetName = GetByNameParameterSet, Position = 0, HelpMessage = "Name of the resource group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public override string ResourceGroupName { get; set; }
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// <summary>
         /// Gets or sets the name of target managed instance
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = GetByNameParameterSet, Position = 1, HelpMessage = "The name of the Azure SQL Managed Instance.")]
+        [Parameter(Mandatory = true, ParameterSetName = GetByNameParameterSet, Position = 1, HelpMessage = "Name of Azure SQL Managed Instance.")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
         public string InstanceName { get; set; }
@@ -41,9 +41,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// <summary>
         /// Gets or sets the link name
         /// </summary>
-        [Parameter(Mandatory = false, ParameterSetName = GetByNameParameterSet, Position = 2, HelpMessage = "The name of the Managed Instance link.")]
-        [Parameter(Mandatory = false, ParameterSetName = GetByParentObjectParameterSet, Position = 1, HelpMessage = "The name of the Managed Instance link.")]
-        [Parameter(Mandatory = false, ParameterSetName = GetByInstanceResourceIdParameterSet, Position = 1, HelpMessage = "The name of the Managed Instance link.")]
+        [Parameter(Mandatory = false, ParameterSetName = GetByNameParameterSet, Position = 2, HelpMessage = "Name of the instance link.")]
+        [Parameter(Mandatory = false, ParameterSetName = GetByParentObjectParameterSet, Position = 1, HelpMessage = "Name of the instance link.")]
+        [Parameter(Mandatory = false, ParameterSetName = GetByInstanceResourceIdParameterSet, Position = 1, HelpMessage = "Name of the instance link.")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances/distributedAvailabilityGroups", nameof(ResourceGroupName), nameof(InstanceName))]
         [ValidateNotNullOrEmpty]
         [Alias("LinkName")]
@@ -52,21 +52,21 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// <summary>
         /// Gets or sets the instance Object
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = GetByParentObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "The instance input object.")]
+        [Parameter(Mandatory = true, ParameterSetName = GetByParentObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "Instance input object.")]
         [ValidateNotNullOrEmpty]
         public AzureSqlManagedInstanceModel InstanceObject { get; set; }
 
         /// <summary>
-        /// Gets or sets the instance Resource Id
+        /// Gets or sets the instance link resource id
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = GetByResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The Managed Instance Link resource id.")]
+        [Parameter(Mandatory = true, ParameterSetName = GetByResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The instance link resource ID.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
         /// <summary>
-        /// Gets or sets the instance Resource Id
+        /// Gets or sets the instance resource id
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = GetByInstanceResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The managed instance resource id")]
+        [Parameter(Mandatory = true, ParameterSetName = GetByInstanceResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Managed instance resource ID.")]
         [ValidateNotNullOrEmpty]
         public string InstanceResourceId { get; set; }
 

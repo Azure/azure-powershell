@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSqlInstanceLink
 
 ## SYNOPSIS
-Creates a new managed instance link.
+Creates a new instance link.
 
 ## SYNTAX
 
@@ -53,7 +53,7 @@ LinkState                      : Copying
 LastHardenedLsn                :
 ```
 
-This command creates a new managed instance link with name "Link01".
+This command creates a new instance link with name "Link01".
 
 ### Example 2: Create a new instance link using an instance object
 ```powershell
@@ -76,7 +76,7 @@ LinkState                      : Copying
 LastHardenedLsn                :
 ```
 
-This command creates a new managed instance link using an instance object.
+This command creates a new instance link using a managed instance object as a parameter.
 
 ### Example 3: Create a new instance link by piping an instance object
 ```powershell
@@ -99,7 +99,7 @@ LinkState                      : Copying
 LastHardenedLsn                :
 ```
 
-This command creates a new managed instance link using an instance object.
+This command creates a new instance link by piping an instance object.
 
 ## PARAMETERS
 
@@ -134,7 +134,7 @@ Accept wildcard characters: False
 ```
 
 ### -InstanceName
-The name of the Azure SQL Managed Instance.
+Name of Azure SQL Managed Instance.
 
 ```yaml
 Type: System.String
@@ -149,7 +149,7 @@ Accept wildcard characters: False
 ```
 
 ### -InstanceObject
-The instance input object.
+Instance input object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
@@ -164,7 +164,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the Managed Instance link.
+Name of the instance link.
 
 ```yaml
 Type: System.String
@@ -179,7 +179,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrimaryAvailabilityGroupName
-The name of the primary availability group.
+Name of the primary availability group.
 
 ```yaml
 Type: System.String
@@ -194,7 +194,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
+Name of the resource group.
 
 ```yaml
 Type: System.String
@@ -209,7 +209,7 @@ Accept wildcard characters: False
 ```
 
 ### -SecondaryAvailabilityGroupName
-The name of the secondary availability group.
+Name of the secondary availability group.
 
 ```yaml
 Type: System.String
@@ -224,7 +224,7 @@ Accept wildcard characters: False
 ```
 
 ### -SourceEndpoint
-The adress of the source endpoint.
+IP adress of the source endpoint.
 
 ```yaml
 Type: System.String
@@ -239,7 +239,7 @@ Accept wildcard characters: False
 ```
 
 ### -TargetDatabase
-The name of the target database.
+Name of the target database.
 
 ```yaml
 Type: System.String

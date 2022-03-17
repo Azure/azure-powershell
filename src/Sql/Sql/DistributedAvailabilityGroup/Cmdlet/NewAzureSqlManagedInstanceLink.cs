@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// <summary>
         /// Gets or sets the name of the resource group to use.
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, Position = 0, HelpMessage = "The name of the resource group.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, Position = 0, HelpMessage = "Name of the resource group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public override string ResourceGroupName { get; set; }
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// <summary>
         /// Gets or sets the name of target managed instance
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, Position = 1, HelpMessage = "The name of the Azure SQL Managed Instance.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, Position = 1, HelpMessage = "Name of Azure SQL Managed Instance.")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
         public string InstanceName { get; set; }
@@ -40,8 +40,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// <summary>
         /// Gets or sets the link name
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, Position = 2, HelpMessage = "The name of the Managed Instance link.")]
-        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, Position = 1, HelpMessage = "The name of the Managed Instance link.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, Position = 2, HelpMessage = "Name of the instance link.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, Position = 1, HelpMessage = "Name of the instance link.")]
         [ValidateNotNullOrEmpty]
         [Alias("LinkName")]
         public string Name { get; set; }
@@ -49,39 +49,39 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// <summary>
         /// Gets or sets the primary availability group name
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, HelpMessage = "The name of the primary availability group.")]
-        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "The name of the primary availability group.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, HelpMessage = "Name of the primary availability group.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "Name of the primary availability group.")]
         [ValidateNotNullOrEmpty]
         public string PrimaryAvailabilityGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the secondary availability group name
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, HelpMessage = "The name of the secondary availability group.")]
-        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "The name of the secondary availability group.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, HelpMessage = "Name of the secondary availability group.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "Name of the secondary availability group.")]
         [ValidateNotNullOrEmpty]
         public string SecondaryAvailabilityGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the target database
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, HelpMessage = "The name of the target database.")]
-        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "The name of the target database.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, HelpMessage = "Name of the target database.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "Name of the target database.")]
         [ValidateNotNullOrEmpty]
         public string TargetDatabase { get; set; }
 
         /// <summary>
         /// Gets or sets the source endpoint
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, HelpMessage = "The adress of the source endpoint.")]
-        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "The adress of the source endpoint.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, HelpMessage = "IP adress of the source endpoint.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "IP adress of the source endpoint.")]
         [ValidateNotNullOrEmpty]
         public string SourceEndpoint { get; set; }
 
         /// <summary>
         /// Gets or sets the instance Object
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "The instance input object.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "Instance input object.")]
         [ValidateNotNullOrEmpty]
         public AzureSqlManagedInstanceModel InstanceObject { get; set; }
 

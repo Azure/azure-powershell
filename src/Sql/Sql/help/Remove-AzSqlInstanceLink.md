@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzSqlInstanceLink
 
 ## SYNOPSIS
-Removes a managed instance link.
+Removes an instance link.
 
 ## SYNTAX
 
@@ -37,14 +37,14 @@ Remove-AzSqlInstanceLink [-ResourceId] <String> [-Force] [-PassThru] [-DefaultPr
 ```
 
 ## DESCRIPTION
-The **Remove-AzSqlInstanceLink** cmdlet removes an Azure SQL Managed Instance link. This command may cause data loss if we drop the link and replicas are not synchronized, thus user must explicitly confirm the command when prompted, or use -Force parameter.
+**Remove-AzSqlInstanceLink** cmdlet drops an instance link. This command may cause data loss if the link is dropped and replica's LSNs are not synchronized with the primary, thus user must explicitly confirm the command when prompted, or use -Force parameter.
 
 ## EXAMPLES
 
-### Example 1: Remove an instance link
+### Example 1: Remove instance link
 ```powershell
 PS C:\> Remove-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "Link01"
-This operation may cause data loss if replicas last hardened LSNs are not in sync, are you sure you want to continue?
+This operation may cause data loss if replica's last hardened LSN is not in sync with the primary. Are you sure you want to proceed?
 [Y] Yes  [N] No  [?] Help (default is "Y"): Y
 ResourceGroupName              : ResourceGroup01
 InstanceName                   : ManagedInstance01
@@ -62,9 +62,10 @@ TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 LinkState                      : Copying
 LastHardenedLsn                :
 ```
+
 This command removes the instance link "Link01" from the managed instance "ManagedInstance01".
 
-### Example 2: Remove an instance link with an explicit -Force flag
+### Example 2: Remove instance link with an explicit -Force flag
 ```powershell
 PS C:\> Remove-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "Link01" -Force
 ResourceGroupName              : ResourceGroup01
@@ -83,12 +84,13 @@ TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 LinkState                      : Copying
 LastHardenedLsn                :
 ```
+
 This command forcefully removes the instance link "Link01" from the managed instance "ManagedInstance01", ignoring the data loss warning.
 
-### Example 3: Remove an instance link by its resource identifier
+### Example 3: Remove instance link by its resource identifier
 ```powershell
 PS C:\> Remove-AzSqlInstanceLink -ResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01"
-This operation may cause data loss if replicas last hardened LSNs are not in sync, are you sure you want to continue?
+This operation may cause data loss if replica's last hardened LSN is not in sync with the primary. Are you sure you want to proceed?
 [Y] Yes  [N] No  [?] Help (default is "Y"): Y
 ResourceGroupName              : ResourceGroup01
 InstanceName                   : ManagedInstance01
@@ -106,13 +108,14 @@ TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 LinkState                      : Copying
 LastHardenedLsn                :
 ```
-This command removes the instance link with specified resource id.
 
-### Example 4: Remove an instance link by its object
+This command removes the instance link with specified resource ID.
+
+### Example 4: Remove instance link by its PowerShell object
 ```powershell
 PS C:\> $managedInstanceLink = Get-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "Link01" 
 PS C:\> Remove-AzSqlInstanceLink -InputObject $managedInstanceLink
-This operation may cause data loss if replicas last hardened LSNs are not in sync, are you sure you want to continue?
+This operation may cause data loss if replica's last hardened LSN is not in sync with the primary. Are you sure you want to proceed?
 [Y] Yes  [N] No  [?] Help (default is "Y"): Y
 ResourceGroupName              : ResourceGroup01
 InstanceName                   : ManagedInstance01
@@ -130,13 +133,14 @@ TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 LinkState                      : Copying
 LastHardenedLsn                :
 ```
+
 This command removes the instance link specified by instance link object.
 
-### Example 5: Remove an instance link by its parent instance object
+### Example 5: Remove instance link by its parent instance object
 ```powershell
 PS C:\> $instance = Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -Name "ManagedInstance01" 
 PS C:\> Remove-AzSqlInstanceLink -InstanceObject $instance -Name "Link01"
-This operation may cause data loss if replicas last hardened LSNs are not in sync, are you sure you want to continue?
+This operation may cause data loss if replica's last hardened LSN is not in sync with the primary. Are you sure you want to proceed?
 [Y] Yes  [N] No  [?] Help (default is "Y"): Y
 ResourceGroupName              : ResourceGroup01
 InstanceName                   : ManagedInstance01
@@ -154,12 +158,13 @@ TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 LinkState                      : Copying
 LastHardenedLsn                :
 ```
+
 This command removes the instance link "Link01" from the managed instance specified by the instance object.
 
-### Example 6: Remove an instance link using positional parameters
+### Example 6: Remove instance link using positional parameters
 ```powershell
 PS C:\> Remove-AzSqlInstanceLink "ResourceGroup01" "ManagedInstance01" "Link01"
-This operation may cause data loss if replicas last hardened LSNs are not in sync, are you sure you want to continue?
+This operation may cause data loss if replica's last hardened LSN is not in sync with the primary. Are you sure you want to proceed?
 [Y] Yes  [N] No  [?] Help (default is "Y"): Y
 ResourceGroupName              : ResourceGroup01
 InstanceName                   : ManagedInstance01
@@ -177,9 +182,10 @@ TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 LinkState                      : Copying
 LastHardenedLsn                :
 ```
+
 This command removes the instance link "Link01" from the managed instance "ManagedInstance01" using positional parameters.
 
-### Example 7: Remove all instance links from its parent instance by piping link object
+### Example 7: Remove all instance links from its parent instance by piping link objects
 ```powershell
 PS C:\> $instance = Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -Name "ManagedInstance01" 
 PS C:\> $instance | Get-AzSqlInstanceLink | Remove-AzSqlInstanceLink -Force
@@ -199,6 +205,7 @@ TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 LinkState                      : Copying
 LastHardenedLsn                :
 ```
+
 This command removes all instance links from the managed instance "ManagedInstance01".
 
 ## PARAMETERS
@@ -219,7 +226,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Skip confirmation message for performing the action
+Skip confirmation message for performing the action.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -234,7 +241,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The Managed Instance Link input object.
+Instance link input object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Model.AzureSqlManagedInstanceLinkModel
@@ -249,7 +256,7 @@ Accept wildcard characters: False
 ```
 
 ### -InstanceName
-The name of the Azure SQL Managed Instance
+Name of Azure SQL Managed Instance.
 
 ```yaml
 Type: System.String
@@ -264,7 +271,7 @@ Accept wildcard characters: False
 ```
 
 ### -InstanceObject
-The instance input object.
+Instance input object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
@@ -279,7 +286,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the Managed Instance link
+Name of the instance link.
 
 ```yaml
 Type: System.String
@@ -294,7 +301,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Defines whether to return the removed Managed Instance Link
+Defines whether to return the removed instance link.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -309,7 +316,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
+Name of the resource group.
 
 ```yaml
 Type: System.String
@@ -324,7 +331,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The Managed Instance Link resource id.
+The instance link resource ID.
 
 ```yaml
 Type: System.String

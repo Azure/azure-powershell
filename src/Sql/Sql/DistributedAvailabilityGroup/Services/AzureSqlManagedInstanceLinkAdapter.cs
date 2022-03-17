@@ -33,9 +33,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Services
         /// <summary>
         /// Gets a managed instance link in a managed instance
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group</param>
-        /// <param name="instanceName">The name of the managed instance</param>
-        /// <param name="distributedAvailabilityGroupName">The name of the DAG</param>
+        /// <param name="resourceGroupName">Name of the resource group</param>
+        /// <param name="instanceName">Name of the managed instance</param>
+        /// <param name="distributedAvailabilityGroupName">Name of the DAG</param>
         /// <returns>The managed instance link</returns>
         public AzureSqlManagedInstanceLinkModel GetManagedInstanceLink(string resourceGroupName, string instanceName, string distributedAvailabilityGroupName)
         {
@@ -83,10 +83,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Services
         {
             var resp = Communicator.Update(model.ResourceGroupName, model.InstanceName, model.Name, new Management.Sql.Models.DistributedAvailabilityGroup
             {
-                //TargetDatabase = "testdb",
-                //SourceEndpoint = "TCP://SERVER:7022",
-                //PrimaryAvailabilityGroupName = "BoxLocalAg1",
-                //SecondaryAvailabilityGroupName = "testcl",
                 ReplicationMode = model.ReplicationMode,
             });
 
@@ -96,9 +92,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Services
         /// <summary>
         /// Deletes a managed instance link
         /// </summary>
-        /// <param name="resourceGroupName">The resource group the managed instance is in</param>
-        /// <param name="instanceName">The name of the managed instance</param>
-        /// <param name="managedInstanceLinkName">The name of the MI Link to delete</param>
+        /// <param name="resourceGroupName">Resource group used by the managed instance</param>
+        /// <param name="instanceName">Name of the managed instance</param>
+        /// <param name="managedInstanceLinkName">Name of the instance link to delete</param>
         public void RemoveManagedInstanceLink(string resourceGroupName, string instanceName, string managedInstanceLinkName)
         {
             Communicator.Remove(resourceGroupName, instanceName, managedInstanceLinkName);
