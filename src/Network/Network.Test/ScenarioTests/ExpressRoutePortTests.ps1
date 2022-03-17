@@ -274,7 +274,7 @@ function Test-ExpressRoutePortAuthorizationCRUD
         Assert-AreEqual 2 @($listAuthorization).Count
 
         # delete an authorization
-        Get-AzExpressRoutePort -ResourceGroupName $rgname -Name $rname | Remove-AzExpressRoutePortAuthorization -Name "testkey1"
+        Get-AzExpressRoutePort -ResourceGroupName $rgname -Name $rname | Remove-AzExpressRoutePortAuthorization -Name "testkey1" -Force
 
         # list authorizations again
         $listAuthorization = $expressRoutePort | Get-AzExpressRoutePortAuthorization

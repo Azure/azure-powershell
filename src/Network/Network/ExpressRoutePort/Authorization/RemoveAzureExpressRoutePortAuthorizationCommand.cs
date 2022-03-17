@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRoutePortAuthorization"), OutputType(typeof(bool))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRoutePortAuthorization", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureExpressRoutePortAuthorizationCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -34,6 +34,11 @@ namespace Microsoft.Azure.Commands.Network
              HelpMessage = "The ExpressRoutePort")]
         public PSExpressRoutePort ExpressRoutePort { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Do not ask for confirmation if you want to delete resource")]
+        public SwitchParameter Force { get; set; }
+
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
@@ -43,11 +48,20 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            this.NetworkClient.NetworkManagementClient.ExpressRoutePortAuthorizations.DeleteWithHttpMessagesAsync(this.ExpressRoutePort.ResourceGroupName, this.ExpressRoutePort.Name, this.Name).GetAwaiter().GetResult();
-            if (PassThru)
-            {
-                WriteObject(true);
-            }
+
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(Properties.Resources.RemovingResource, Name),
+                Properties.Resources.RemoveResourceMessage,
+                Name,
+                () =>
+                {
+                    this.NetworkClient.NetworkManagementClient.ExpressRoutePortAuthorizations.DeleteWithHttpMessagesAsync(ExpressRoutePort.ResourceGroupName, ExpressRoutePort.Name, Name).GetAwaiter().GetResult();
+                    if (PassThru)
+                    {
+                        WriteObject(true);
+                    }
+                });
         }
     }
 }

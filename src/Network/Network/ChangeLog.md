@@ -23,8 +23,7 @@
     - `Add-AzExpressRoutePortAuthorization`
     - `Get-AzExpressRoutePortAuthorization`
     - `Remove-AzExpressRoutePortAuthorization`
-* Added option parameter `AuthorizationKey` to cmdlet `New-AzExpressRouteCircuit` to allow creating
-ExpressRoute Circuit on a ExpressRoutePort with a different owner.
+* Added option parameter `AuthorizationKey` to cmdlet `New-AzExpressRouteCircuit` to allow creating ExpressRoute Circuit on a ExpressRoutePort with a different owner.
 
 ## Version 4.14.0
 * Used case-insensitive comparison for ResourceId (Set/New-NetworkWatcherFlowLog)

@@ -21,7 +21,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRoutePortAuthorization"), OutputType(typeof(PSExpressRoutePortAuthorization))]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRoutePortAuthorization", SupportsShouldProcess = true), OutputType(typeof(PSExpressRoutePortAuthorization))]
     public class AddAzureExpressRoutePortAuthorizationCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -35,9 +35,6 @@ namespace Microsoft.Azure.Commands.Network
            ValueFromPipeline = true,
            HelpMessage = "The ExpressRoutePort")]
         public PSExpressRoutePort ExpressRoutePort { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
-        public SwitchParameter AsJob { get; set; }
 
         public override void Execute()
         {
