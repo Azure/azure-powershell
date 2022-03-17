@@ -20,6 +20,7 @@
 ## Upcoming Release
 * [Breaking change] Removed `Get-AzSqlDatabaseTransparentDataEncryptionActivity`
 * Added property `CurrentBackupStorageRedundancy` and `RequestedBackupStorageRedundancy` in  the outputs of Managed Instance CRUD commands
+* Added parameter `ServicePrinipalType` to New-AzSqlInstance and Set-AzSqlInstance
 
 ## Version 3.7.1
 * Deprecation of Get-AzSqlDatabaseTransparentDataEncryptionActivity cmdlet
