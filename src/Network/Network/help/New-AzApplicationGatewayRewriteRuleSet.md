@@ -25,7 +25,7 @@ New-AzApplicationGatewayRewriteRuleSet -Name <String>
 
 ### Example 1
 ```powershell
-PS C:\> $ruleset = New-AzApplicationGatewayRewriteRuleSet -Name ruleset1 -RewriteRule $rule
+$ruleset = New-AzApplicationGatewayRewriteRuleSet -Name ruleset1 -RewriteRule $rule
 ```
 
 This command creates a rewrite rule set named ruleset1 and stores the result in the variable named $ruleset.

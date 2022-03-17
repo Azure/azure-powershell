@@ -43,7 +43,7 @@ The **Update-AzHpcCache** cmdlet updates a Azure HPC Cache.
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzHpcCache -ResourceGroupName testRG -CacheName testCache
+Update-AzHpcCache -ResourceGroupName testRG -CacheName testCache
 ```
 
 ## PARAMETERS

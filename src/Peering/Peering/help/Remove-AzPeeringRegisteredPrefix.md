@@ -38,7 +38,7 @@ Allows the removal of registered prefix from parent peering resource.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzPeeringRegisteredPrefix -ResourceId $resourceId
+Remove-AzPeeringRegisteredPrefix -ResourceId $resourceId
 ```
 
 Remove a registerd prefix by resource id.

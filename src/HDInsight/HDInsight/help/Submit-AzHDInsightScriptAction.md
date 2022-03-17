@@ -27,8 +27,8 @@ Use *PersistOnSuccess* to have the script action run each time the cluster is sc
 ## EXAMPLES
 
 ### Example 1: Submit a new script action to a running HDInsight cluster
-```
-PS C:\>Submit-AzHDInsightScriptAction `
+```powershell
+Submit-AzHDInsightScriptAction `
             -ClusterName "your-hadoop-001" `
             -Name "scriptaction" `
             -Uri "<script action URI>" `

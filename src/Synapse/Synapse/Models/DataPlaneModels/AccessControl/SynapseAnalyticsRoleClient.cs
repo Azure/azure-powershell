@@ -50,9 +50,20 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             _graphClient.TenantID = context.Tenant.Id.ToString();
         }
 
-        public IReadOnlyList<RoleAssignmentDetails> ListRoleAssignments(string roleDefinitionId = null, string objectId = null, string scope = null)
+        public List<RoleAssignmentDetails> ListRoleAssignments(string roleDefinitionId = null, string objectId = null, string scope = null)
         {
-            return _roleAssignmentsClient.ListRoleAssignments(roleDefinitionId, objectId, scope).Value.Value;
+            List<RoleAssignmentDetails> roleAssignmentList = new List<RoleAssignmentDetails>();
+            string continuationToken = null;
+            do
+            {
+                var response = _roleAssignmentsClient.ListRoleAssignments(roleDefinitionId, objectId, scope, continuationToken);
+                var roleAssignments = response.Value.Value;
+                roleAssignmentList.AddRange(roleAssignments);
+                response.GetRawResponse().Headers.TryGetValue("x-ms-continuation", out continuationToken);
+            }
+            while (!string.IsNullOrWhiteSpace(continuationToken));
+
+            return roleAssignmentList;
         }
 
         public RoleAssignmentDetails GetRoleAssignmentById(string roleAssignmentId)

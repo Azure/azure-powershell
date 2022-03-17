@@ -24,8 +24,11 @@ The **Remove-AzRouteTable** cmdlet removes an Azure route table.
 ## EXAMPLES
 
 ### Example 1: Remove a route table
+```powershell
+Remove-AzRouteTable -ResourceGroupName "ResourceGroup11" -Name "RouteTable01"
 ```
-PS C:\>Remove-AzRouteTable -ResourceGroupName "ResourceGroup11 -Name "RouteTable01"
+
+```output
 Confirm
 Are you sure you want to remove resource 'RouteTable01'
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y

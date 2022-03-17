@@ -1,3 +1,109 @@
+## 7.3.2 - March 2022
+#### Az.Accounts
+* Changed target framework of AuthenticationAssemblyLoadContext to netcoreapp2.1 [#17428]
+
+#### Az.Compute
+* Updated New-AzVM feature for 'vCPUsAvailable' and 'vCPUsPerCore' parameters. Cmdlets will not try to use the new 'VMCustomizationPreview' feature if the user does not have access to that feature. [#17370]
+
+## 7.3.0 - March 2022
+#### Az.Accounts
+* Fixed the issue that authorization does not work in customized environment [#17157]
+* Enabled Continue Access Evaluation for MSGraph
+* Improved error message when login is blocked by AAD
+* Improved error message when silent reauthentication failed
+* Loaded System.Private.ServiceModel and System.ServiceModel.Primitives on Windows PowerShell [#17087]
+
+#### Az.Aks
+* Updated the breaking change warning messages [#16805]
+
+#### Az.CloudService
+* Fixed the issue of 'Get-AzCloudServiceNetworkInterface' and 'Get-AzCloudServicePublicIPAddress'.
+
+#### Az.Compute
+* Upgraded Compute .NET SDK package reference to version 52.0.0
+* Updated 'New-AzSshKey' cmdlet to write file paths to generated keys to the Warning stream instead of the console.
+* Added 'vCPUsAvailable' and 'vCPUsPerCore' integer parameters to the 'New-AzVm', 'New-AzVmConfig', and 'Update-AzVm' cmdlets.
+
+#### Az.ContainerInstance
+* Fixed Identity Bug in ImageRegistryCredential
+
+#### Az.Databricks
+* Upgraded API version to 2021-04-01-preview
+
+#### Az.DataFactory
+* Updated ADF .Net SDK version to 5.2.0
+
+#### Az.DataShare
+* Added breaking change warning message due to update API version.
+
+#### Az.EventHub
+* Added MSI properties to New-AzEventHubNamespace and Set-AzEventHubNamespace. Adding New-AzEventHubEncryptionConfig.
+
+#### Az.KeyVault
+* 'New-AzKeyVaultManagedHsm': supported specifying how long a deleted managed hsm is retained by 'SoftDeleteRetentionInDays' and enabling purge protection by 'EnablePurgeProtection'
+* 'Update-AzKeyVaultManagedHsm': supported enabling purge protection by 'EnablePurgeProtection'
+* 'Get-AzKeyVaultManagedHsm': Supported getting or listing deleted managed HSM(s)
+* 'Remove-AzKeyVaultManagedHsm': Supported purging a specified deleted managed HSM
+
+#### Az.Monitor
+* Fixed an issue where users could not correctly ignore warning messages after setting environment variables [#17013]
+
+#### Az.Network
+* Added new property 'SqlSetting' for Azure Firewall Policy cmdlets 
+    - 'Get-AzFirewallPolicy' 
+    - 'New-AzFirewallPolicy'
+    - 'Set-AzFirewallPolicy'
+* Added new to create new 'SqlSetting' object for creating Azure Firewall Policy
+    - 'New-AzFirewallPolicySqlSetting'
+* Added new cmdlet to support query Load Balancer inbound nat rule port mapping lists for backend addresses
+    - 'Get-AzLoadBalancerBackendAddressInboundNatRulePortMapping'
+    - Also updated cmdlets to support inbound nat rule V2 configurations
+        - 'New-AzLoadBalancerInboundNatRuleConfig'
+        - 'Set-AzLoadBalancerInboundNatRuleConfig'
+        - 'Add-AzLoadBalancerInboundNatRuleConfig'
+
+#### Az.RecoveryServices
+* Azure Backup added support for 'Create new virtual machine' and 'Replace existing virtual machine' experience for Managed VMs in Restore-AzRecoveryServicesBackupItem cmdlet. To perform a VM restore to AlternateLocation use TargetVMName, TargetVNetName, TargetVNetResourceGroup, TargetSubnetName parameters. To perform a restore to a VM in OriginalLocation, do not provide TargetResourceGroupName and RestoreAsUnmanagedDisks parameters, refer examples for more details.
+
+#### Az.Resources
+* Fixed keycredential key format, from base64url to byte [#17131]
+* Fixed add key credential overwrite existing one [#17088]
+* Deleted parameter sets cannot be reached for 'New-AzADSericePrincipal'
+* Marked 'ObjectType' as 'Unknown' if object is not found or current account has insufficient privileges to get object type for role assignment [#16981]
+* Fixed that 'Get-AzRoleAssignment' shows empty RoleDefinitionName for custom roles when not specifying scope [#16991]
+* Unified the returned 'RoleDefinitionId' in PSRoleAssignment to GUID [#16991]
+
+#### Az.ServiceBus
+* Added identity and encryption properties to New-AzServiceBusNamespace and Set-AzServiceBusNamespace.
+* Added New-AzServiceBusEncryptionConfig
+
+#### Az.Storage
+* Supported download blob from managed disk account with Sas Uri and bearer token
+    -  'Get-AzStorageBlobContent' 
+* Supported create/upgrade storage account with ActiveDirectorySamAccountName and ActiveDirectoryAccountType
+    -  'New-AzStorageAccount'
+    -  'Set-AzStorageAccount'
+
+#### Az.StorageSync
+* Migrated Azure AD features in Az.StorageSync to MSGraph APIs. The cmdlets will call MSGraph API according to input parameters: New-AzStorageSyncCloudEndpoint
+* Changed default parameter set of Invoke-AzStorageSyncChangeDetection to use full share detection
+
+#### Az.Synapse
+* Updated 'Update-AzSynapseSparkPool' to support new parameter [-ForceApplySetting]
+
+### Thanks to our community contributors
+* Aleksandar Nikolić (@alexandair)
+  * Fix the StayProvisioned parameter (#17070)
+  * Fix a typo (#17069)
+* Joel Greijer (@greijer), Clarified special case on TemplateParameterUri (#17004)
+* Aman Sharma (@HarvestingClouds), Added Workload Type to the bullets to match the accepted values (#17041)
+* @hsrivast, Hsrivastava/breaking change msg (#16985)
+* Chris (@isjwuk), Update New-AzAutomationUpdateManagementAzureQuery.md (#16365)
+* @MSakssharm, Returning error if insufficient user permissions are there for GetAgentRegistrationInfo (#16965)
+* Emanuel Palm (@PalmEmanuel), New-AzSshKey should log to Warning stream instead of console (#16988)
+* Pavel Safonov (@PSafonov), Fixed a typo in ManagedResourceGroupName parameter description (#17039)
+* Michael Arnwine (@vsmike), Update New-AzApplicationGatewayRewriteRuleSet.md Description Text is incorrect (#17102)
+
 ## 7.2.1 - February 2022
 #### Az.Resources
 * Fixed `New-AzADServicePrincipal` not working [#17054] [#17040]
@@ -177,6 +283,24 @@
 #### Az.Storage
 * Fixed the failure of sync copy blob with long destination blob name [#16628]
     -  'Copy-AzStorageBlob' 
+* Supported AAD oauth storage context in storage table cmdlets.
+    - `Get-AzStorageCORSRule`
+    - `Get-AzStorageServiceLoggingProperty`
+    - `Get-AzStorageServiceMetricsProperty`
+    - `Get-AzStorageServiceProperty`
+    - `Get-AzStorageTable`
+    - `Get-AzStorageTableStoredAccessPolicy`
+    - `New-AzStorageTable`
+    - `New-AzStorageTableSASToken`
+    - `New-AzStorageTableStoredAccessPolicy`
+    - `Remove-AzStorageCORSRule`
+    - `Remove-AzStorageTableStoredAccessPolicy`
+    - `Set-AzStorageCORSRule`
+    - `Set-AzStorageServiceLoggingProperty`
+    - `Set-AzStorageServiceMetricsProperty`
+    - `Set-AzStorageServiceProperty`
+    - `Set-AzStorageTable`
+    - `Set-AzStorageTableStoredAccessPolicy`
 
 #### Az.Synapse
 * General availability of Az.Synapse

@@ -33,10 +33,11 @@ The **Add-AzVirtualNetworkGatewayIpConfig** cmdlet adds an IP configuration to a
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 Add-AzVirtualNetworkGatewayIpConfig -VirtualNetworkGateway $gw -Name GWIPConfig2 -Subnet $subnet -PublicIpAddress $gwpip2
+```
 
-
+```output
 Name                   : VNet7GW
 ResourceGroupName      : VPNGatewayV3
 Location               : eastus

@@ -24,17 +24,17 @@ The **Get-AzApplicationGatewayHttpListener** cmdlet gets the HTTP listener of an
 ## EXAMPLES
 
 ### Example 1: Get a specific HTTP listener
-```
-PS C:\>$Appgw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> $Listener = Get-AzApplicationGatewayHttpListener -Name "Listener01" -ApplicationGateway $Appgw
+```powershell
+$Appgw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+$Listener = Get-AzApplicationGatewayHttpListener -Name "Listener01" -ApplicationGateway $Appgw
 ```
 
 This command gets an HTTP listener named Listener01.
 
 ### Example 2: Get a list of HTTP listeners
-```
-PS C:\>$Appgw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> $Listeners = Get-AzApplicationGatewayHttpListener -ApplicationGateway $Appgw
+```powershell
+$Appgw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+$Listeners = Get-AzApplicationGatewayHttpListener -ApplicationGateway $Appgw
 ```
 
 This command gets a list of HTTP listeners.

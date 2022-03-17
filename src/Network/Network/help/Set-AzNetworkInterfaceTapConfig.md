@@ -23,10 +23,10 @@ The **Set-AzNetworkInterfaceTapConfig** updates a tap configuration for a networ
 ## EXAMPLES
 
 ### Example 1: Set the TapConfiguration with updated TapConfig name
-```
-PS C:\>$tapConfig = Get-AzNetworkInterface -ResourceGroupName "ResourceGroup1" -NetworkInterface "sourceNicName" -Name "tapconfigName"
-PS C:\>$tapConfig.Name = "NewTapName"
-PS C:\>Set-AzNetworkInterfaceTapConfig -NetworkInterfaceTapConfig $tapConfig
+```powershell
+$tapConfig = Get-AzNetworkInterface -ResourceGroupName "ResourceGroup1" -NetworkInterface "sourceNicName" -Name "tapconfigName"
+$tapConfig.Name = "NewTapName"
+Set-AzNetworkInterfaceTapConfig -NetworkInterfaceTapConfig $tapConfig
 ```
 
 ## PARAMETERS

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Dns.dll-Help.xml
 Module Name: Az.Dns
 ms.assetid: B831ABE6-348C-4DD6-9295-18D23A1FDF63
@@ -33,22 +33,22 @@ You can use the **DnsZone** object to update the zone, for example you can add *
 ## EXAMPLES
 
 ### Example 1: Get a zone
-```
-PS C:\> $Zone = Get-AzDnsZone -ResourceGroupName "MyResourceGroup" -Name "myzone.com"
+```powershell
+$Zone = Get-AzDnsZone -ResourceGroupName "MyResourceGroup" -Name "myzone.com"
 ```
 
 This example gets the DNS zone named myzone.com from the specified resource group, and then stores it in the $Zone variable.
 
 ### Example 2: Get all of the zones in a resource group
-```
-PS C:\> $Zones = Get-AzDnsZone -ResourceGroupName "MyResourceGroup"
+```powershell
+$Zones = Get-AzDnsZone -ResourceGroupName "MyResourceGroup"
 ```
 
 This example gets all of the DNS zones in the specified resource group, and then stores it in the $Zones variable.
 
 ### Example 3: Get all of the zones in a subscription
-```
-PS C:\> $Zones = Get-AzDnsZone
+```powershell
+$Zones = Get-AzDnsZone
 ```
 
 This example gets all of the DNS zones in the current Azure subscription, and then stores them in the $Zones variable.

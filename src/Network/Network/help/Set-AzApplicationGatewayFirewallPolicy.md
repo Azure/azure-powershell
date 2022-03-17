@@ -46,7 +46,7 @@ The **Set-AzApplicationGatewayFirewallPolicy** cmdlet updates an Azure applicati
 
 ### Example 1
 ```powershell
-PS C:\> $UpdatedAppGwFirewallPolicy = Set-AzApplicationGatewayFirewallPolicy -InputObject $AppGwFirewallPolicy
+$UpdatedAppGwFirewallPolicy = Set-AzApplicationGatewayFirewallPolicy -InputObject $AppGwFirewallPolicy
 ```
 
 This command updates the application gateway firewall policy with settings in the $AppGwFirewallPolicy variable and stores the updated application gateway firewall policy in the $UpdatedAppGwFirewallPolicy variable.

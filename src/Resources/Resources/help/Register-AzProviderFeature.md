@@ -24,8 +24,8 @@ The **Register-AzProviderFeature** cmdlet registers an Azure provider feature in
 ## EXAMPLES
 
 ### Example 1: Register a feature
-```
-PS C:\>Register-AzProviderFeature -FeatureName AllowApplicationSecurityGroups -ProviderNamespace Microsoft.Network
+```powershell
+Register-AzProviderFeature -FeatureName AllowApplicationSecurityGroups -ProviderNamespace Microsoft.Network
 ```
 
 This adds the AllowApplicationSecurityGroups feature for Microsoft.Network to your account.

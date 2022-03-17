@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.2.0
+* Preview release for module Az.DnsResolver
+
 ## Version 0.1.0
 * First preview release for module Az.DnsResolver
 

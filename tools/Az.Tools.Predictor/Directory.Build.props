@@ -4,12 +4,13 @@
     <TargetFramework>net6.0</TargetFramework>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <Version>0.5.0</Version>
+    <Version>0.6.0</Version>
     <Authors>Microsoft Corporation</Authors>
     <Company>Microsoft Corporation</Company>
     <Copyright>Microsoft Corporation. All rights reserved.</Copyright>
     <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <LangVersion>Latest</LangVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
