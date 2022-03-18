@@ -66,7 +66,7 @@ function New-AzAppConfigurationStore {
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support.IdentityType]
         # The type of managed identity used.
-        # The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities.
+        # The type 'SystemAssignedAndUserAssigned' includes both an implicitly created identity and a set of user-assigned identities.
         # The type 'None' will remove any identities.
         ${IdentityType},
 
