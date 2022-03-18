@@ -130,6 +130,78 @@ Validate a Secret in the profile.
 ### [New-AzCdnCustomDomain](New-AzCdnCustomDomain.md)
 Creates a new custom domain within an endpoint.
 
+### [New-AzCdnDeliveryRuleCacheExpirationActionObject](New-AzCdnDeliveryRuleCacheExpirationActionObject.md)
+Create an in-memory object for DeliveryRuleCacheExpirationAction.
+
+### [New-AzCdnDeliveryRuleCacheKeyQueryStringActionObject](New-AzCdnDeliveryRuleCacheKeyQueryStringActionObject.md)
+Create an in-memory object for DeliveryRuleCacheKeyQueryStringAction.
+
+### [New-AzCdnDeliveryRuleClientPortConditionObject](New-AzCdnDeliveryRuleClientPortConditionObject.md)
+Create an in-memory object for DeliveryRuleClientPortCondition.
+
+### [New-AzCdnDeliveryRuleCookiesConditionObject](New-AzCdnDeliveryRuleCookiesConditionObject.md)
+Create an in-memory object for DeliveryRuleCookiesCondition.
+
+### [New-AzCdnDeliveryRuleHostNameConditionObject](New-AzCdnDeliveryRuleHostNameConditionObject.md)
+Create an in-memory object for DeliveryRuleHostNameCondition.
+
+### [New-AzCdnDeliveryRuleHttpVersionConditionObject](New-AzCdnDeliveryRuleHttpVersionConditionObject.md)
+Create an in-memory object for DeliveryRuleHttpVersionCondition.
+
+### [New-AzCdnDeliveryRuleIsDeviceConditionObject](New-AzCdnDeliveryRuleIsDeviceConditionObject.md)
+Create an in-memory object for DeliveryRuleIsDeviceCondition.
+
+### [New-AzCdnDeliveryRulePostArgsConditionObject](New-AzCdnDeliveryRulePostArgsConditionObject.md)
+Create an in-memory object for DeliveryRulePostArgsCondition.
+
+### [New-AzCdnDeliveryRuleQueryStringConditionObject](New-AzCdnDeliveryRuleQueryStringConditionObject.md)
+Create an in-memory object for DeliveryRuleQueryStringCondition.
+
+### [New-AzCdnDeliveryRuleRemoteAddressConditionObject](New-AzCdnDeliveryRuleRemoteAddressConditionObject.md)
+Create an in-memory object for DeliveryRuleRemoteAddressCondition.
+
+### [New-AzCdnDeliveryRuleRequestBodyConditionObject](New-AzCdnDeliveryRuleRequestBodyConditionObject.md)
+Create an in-memory object for DeliveryRuleRequestBodyCondition.
+
+### [New-AzCdnDeliveryRuleRequestHeaderActionObject](New-AzCdnDeliveryRuleRequestHeaderActionObject.md)
+Create an in-memory object for DeliveryRuleRequestHeaderAction.
+
+### [New-AzCdnDeliveryRuleRequestHeaderConditionObject](New-AzCdnDeliveryRuleRequestHeaderConditionObject.md)
+Create an in-memory object for DeliveryRuleRequestHeaderCondition.
+
+### [New-AzCdnDeliveryRuleRequestMethodConditionObject](New-AzCdnDeliveryRuleRequestMethodConditionObject.md)
+Create an in-memory object for DeliveryRuleRequestMethodCondition.
+
+### [New-AzCdnDeliveryRuleRequestSchemeConditionObject](New-AzCdnDeliveryRuleRequestSchemeConditionObject.md)
+Create an in-memory object for DeliveryRuleRequestSchemeCondition.
+
+### [New-AzCdnDeliveryRuleRequestUriConditionObject](New-AzCdnDeliveryRuleRequestUriConditionObject.md)
+Create an in-memory object for DeliveryRuleRequestUriCondition.
+
+### [New-AzCdnDeliveryRuleResponseHeaderActionObject](New-AzCdnDeliveryRuleResponseHeaderActionObject.md)
+Create an in-memory object for DeliveryRuleResponseHeaderAction.
+
+### [New-AzCdnDeliveryRuleRouteConfigurationOverrideActionObject](New-AzCdnDeliveryRuleRouteConfigurationOverrideActionObject.md)
+Create an in-memory object for DeliveryRuleRouteConfigurationOverrideAction.
+
+### [New-AzCdnDeliveryRuleServerPortConditionObject](New-AzCdnDeliveryRuleServerPortConditionObject.md)
+Create an in-memory object for DeliveryRuleServerPortCondition.
+
+### [New-AzCdnDeliveryRuleSocketAddrConditionObject](New-AzCdnDeliveryRuleSocketAddrConditionObject.md)
+Create an in-memory object for DeliveryRuleSocketAddrCondition.
+
+### [New-AzCdnDeliveryRuleSslProtocolConditionObject](New-AzCdnDeliveryRuleSslProtocolConditionObject.md)
+Create an in-memory object for DeliveryRuleSslProtocolCondition.
+
+### [New-AzCdnDeliveryRuleUrlFileExtensionConditionObject](New-AzCdnDeliveryRuleUrlFileExtensionConditionObject.md)
+Create an in-memory object for DeliveryRuleUrlFileExtensionCondition.
+
+### [New-AzCdnDeliveryRuleUrlFileNameConditionObject](New-AzCdnDeliveryRuleUrlFileNameConditionObject.md)
+Create an in-memory object for DeliveryRuleUrlFileNameCondition.
+
+### [New-AzCdnDeliveryRuleUrlPathConditionObject](New-AzCdnDeliveryRuleUrlPathConditionObject.md)
+Create an in-memory object for DeliveryRuleUrlPathCondition.
+
 ### [New-AzCdnEndpoint](New-AzCdnEndpoint.md)
 Creates a new CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 
@@ -138,6 +210,9 @@ Creates a new origin within the specified endpoint.
 
 ### [New-AzCdnOriginGroup](New-AzCdnOriginGroup.md)
 Creates a new origin group within the specified endpoint.
+
+### [New-AzCdnOriginGroupOverrideActionObject](New-AzCdnOriginGroupOverrideActionObject.md)
+Create an in-memory object for OriginGroupOverrideAction.
 
 ### [New-AzCdnPolicy](New-AzCdnPolicy.md)
 Create or update policy with specified rule set name within a resource group.
@@ -149,6 +224,15 @@ Creates a new Azure Front Door Standard or Azure Front Door Premium or CDN profi
 Generates a dynamic SSO URI used to sign in to the CDN supplemental portal.
 Supplemental portal is used to configure advanced feature capabilities that are not yet available in the Azure portal, such as core reports in a standard profile; rules engine, advanced HTTP reports, and real-time stats and alerts in a premium profile.
 The SSO URI changes approximately every 10 minutes.
+
+### [New-AzCdnUrlRedirectActionObject](New-AzCdnUrlRedirectActionObject.md)
+Create an in-memory object for UrlRedirectAction.
+
+### [New-AzCdnUrlRewriteActionObject](New-AzCdnUrlRewriteActionObject.md)
+Create an in-memory object for UrlRewriteAction.
+
+### [New-AzCdnUrlSigningActionObject](New-AzCdnUrlSigningActionObject.md)
+Create an in-memory object for UrlSigningAction.
 
 ### [New-AzFrontDoorCdnCustomDomain](New-AzFrontDoorCdnCustomDomain.md)
 Creates a new domain within the specified profile.
