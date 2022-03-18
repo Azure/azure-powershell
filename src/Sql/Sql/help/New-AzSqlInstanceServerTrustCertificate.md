@@ -214,3 +214,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzSqlInstanceServerTrustCertificate](./Get-AzSqlInstanceServerTrustCertificate.md)
+
+[Remove-AzSqlInstanceServerTrustCertificate](./Remove-AzSqlInstanceServerTrustCertificate.md)

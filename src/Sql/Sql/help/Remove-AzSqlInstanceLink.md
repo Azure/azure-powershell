@@ -311,3 +311,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzSqlInstanceLink](./Get-AzSqlInstanceLink.md)
+
+[New-AzSqlInstanceLink](./New-AzSqlInstanceLink.md)
+
+[Update-AzSqlInstanceLink](./Update-AzSqlInstanceLink.md)
