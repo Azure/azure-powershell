@@ -1,34 +1,32 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.network/new-aznetworkmanagerstaticmember
 schema: 2.0.0
 ---
 
 # New-AzNetworkManagerStaticMember
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a network manager static member.
 
 ## SYNTAX
 
 ```
 New-AzNetworkManagerStaticMember -Name <String> -NetworkManagerName <String> -NetworkGroupName <String>
- -ResourceGroupName <String> [-ResourceId <String>] [-Force] [-AsJob]
+ -ResourceGroupName <String> -ResourceId <String> [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzNetworkManagerStaticMember** cmdlet creates a network manager static member.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzNetworkManagerStaticMember -ResourceGroupName TestRGName -NetworkManagerName TestNetworkManagerName -Name TestNetworkGroupName -ResourceId "TestVnetId"
 ```
-
-{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -145,7 +143,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -197,3 +195,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzNetworkManagerStaticMember](./Get-AzNetworkManagerStaticMember.md)
+
+[Remove-AzNetworkManagerStaticMember](./Remove-AzNetworkManagerStaticMember.md)
+
+[Set-AzNetworkManagerStaticMember](./Set-AzNetworkManagerStaticMember.md)

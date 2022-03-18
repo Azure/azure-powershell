@@ -19,7 +19,7 @@ New-AzNetworkManagerScopeConnection -Name <String> -NetworkManagerName <String> 
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzNetworkManagerScopeConnection** cmdlet creates a scope connection.
 
 ## EXAMPLES
 
