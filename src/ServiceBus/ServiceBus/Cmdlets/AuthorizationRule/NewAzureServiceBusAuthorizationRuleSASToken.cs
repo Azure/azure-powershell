@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
                                                 "SharedAccessSignature sr={0}&sig={1}&se={2}&skn={3}",
                                                 HttpUtility.UrlEncode(resourceUri),
                                                 HttpUtility.UrlEncode(signature),
-                                                ExpiryTime,
+                                                expiry,
                                                 KeyType);
 
                 PSSharedAccessSignatureAttributes psSastoken = new PSSharedAccessSignatureAttributes(sasToken);

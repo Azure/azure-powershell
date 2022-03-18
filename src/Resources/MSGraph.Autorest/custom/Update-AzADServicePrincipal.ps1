@@ -639,6 +639,8 @@ function Update-AzADServicePrincipal {
       $null = New-AzADAppCredential @param
     }
 
+    $sp=Az.MSGraph.internal\Update-AzADServicePrincipal @PSBoundParameters
+
     if ($shouldPassThru) {
       $PSCmdlet.WriteObject($true)
     }

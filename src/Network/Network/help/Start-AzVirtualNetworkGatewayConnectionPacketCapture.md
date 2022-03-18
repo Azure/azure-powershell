@@ -40,7 +40,9 @@ Starts Packet Capture Operation on a Virtual Network Gateway Connection.
 ### Example 1
 ```powershell
 Start-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "PktCaptureTestSite2RG" -Name "PktCaptureTestSite2Site1Cn"
+```
 
+```output
 Code              : Succeeded
 EndTime           : 10/1/2019 12:52:37 AM
 StartTime         : 10/1/2019 12:52:25 AM
@@ -59,7 +61,9 @@ Id                :
 ```powershell
 $a="{`"TracingFlags`":11,`"MaxPacketBufferSize`":120,`"MaxFileSize`":500,`"Filters`":[{`"SourceSubnets`":[`"10.19.0.4/32`",`"10.20.0.4/32`"],`"DestinationSubnets`":[`"10.20.0.4/32`",`"10.19.0.4/32`"],`"TcpFlags`":-1,`"Protocol`":[6],`"CaptureSingleDirectionTrafficOnly`":true}]}"
 Start-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "PktCaptureTestSite2RG" -Name "PktCaptureTestSite2Site1Cn" -FilterData $a
+```
 
+```output
 Code              : Succeeded
 EndTime           : 10/1/2019 12:52:37 AM
 StartTime         : 10/1/2019 12:52:25 AM
@@ -79,7 +83,9 @@ Packet Capture example for capture all inner and outer packets
 ```powershell
 $a = "{`"TracingFlags`": 11,`"MaxPacketBufferSize`": 120,`"MaxFileSize`": 500,`"Filters`" :[{`"CaptureSingleDirectionTrafficOnly`": false}]}"
 Start-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "PktCaptureTestSite2RG" -Name "PktCaptureTestSite2Site1Cn" -FilterData $a
+```
 
+```output
 Code              : Succeeded
 EndTime           : 10/1/2019 12:52:37 AM
 StartTime         : 10/1/2019 12:52:25 AM

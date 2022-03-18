@@ -25,18 +25,18 @@ This cmdlet **New-AzHDInsightPrivateLinkConfiguration** creates the private link
 
 ### Example 1
 ```powershell
-PS C:\> $vnetId="/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/Microsoft.Network/virtualNetworks/testvnet"
-PS C:\> $subnetName="default"
-PS C:\> $ipConfigName="ipconfig"
-PS C:\> $privateIPAllocationMethod="dynamic"
-PS C:\> $subnetId=$vnetId+"/subnets/"+$subnetName
-PS C:\> # Create Private IP configuration
-PS C:\> $ipConfiguration= New-AzHDInsightIPConfiguration -Name $ipConfigName PrivateIPAllocationMethod $privateIPAllocationMethod -SubnetId $subnetId -Primary
+$vnetId="/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/Microsoft.Network/virtualNetworks/testvnet"
+$subnetName="default"
+$ipConfigName="ipconfig"
+$privateIPAllocationMethod="dynamic"
+$subnetId=$vnetId+"/subnets/"+$subnetName
+# Create Private IP configuration
+$ipConfiguration= New-AzHDInsightIPConfiguration -Name $ipConfigName PrivateIPAllocationMethod $privateIPAllocationMethod -SubnetId $subnetId -Primary
 
-PS C:\> $privateLinkConfigurationName="plconfig"
-PS C:\> $groupId="headnode"
-PS C:\> # Create private link configuration
-PS C:\> $privateLinkConfiguration= New-AzHDInsightPrivateLinkConfiguration -Name $privateLinkConfigurationName -GroupId $groupId -IPConfiguration $ipConfiguration
+$privateLinkConfigurationName="plconfig"
+$groupId="headnode"
+# Create private link configuration
+$privateLinkConfiguration= New-AzHDInsightPrivateLinkConfiguration -Name $privateLinkConfigurationName -GroupId $groupId -IPConfiguration $ipConfiguration
 ```
 
 This cmdlet creates the private link configuration in memory.

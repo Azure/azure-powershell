@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Subscription.Cmdlets
         {
             if (this.ShouldProcess(target: this.AliasName, action: "New subscription Alias"))
             {
-                PutAliasResponse result = new PutAliasResponse();
+                SubscriptionAliasResponse result = new SubscriptionAliasResponse();
 
                 // Create the subscription.
                 result = this.SubscriptionClient.Alias.Create(

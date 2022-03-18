@@ -39,7 +39,7 @@ The **Remove-AzApiManagementGatewayHostnameConfiguration** cmdlet removes a host
 ### Example 1: Remove an existing gateway hostname configuration
 ```powershell
 $apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-Remove-AzApiManagementGatewayHostnameConfiguration -Context $apimContext -GatewayId "g0001" -GatewayHostnameConfigurationId "h0001" -Force
+Remove-AzApiManagementGatewayHostnameConfiguration -Context $apimContext -GatewayId "g0001" -GatewayHostnameConfigurationId "h0001"
 ```
 
 This command removes an existing gateway hostname configuration and does not prompt the user for confirmation.

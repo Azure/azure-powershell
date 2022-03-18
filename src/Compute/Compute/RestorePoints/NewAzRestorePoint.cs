@@ -70,14 +70,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     string restorePointCollectionName = this.RestorePointCollectionName;
                     List<ApiEntityReference> disksExclude = new List<ApiEntityReference>();
 
-
+                    RestorePoint restorePoint = new RestorePoint();
                     if (this.IsParameterBound(c => c.DisksToExclude))
                     {
                         foreach (string s in DisksToExclude)
                         {
                             disksExclude.Add(new ApiEntityReference(s));
                         }
-                        var result = RestorePointClient.Create(resourceGroup, restorePointCollectionName, restorePointName, disksExclude);
+                        restorePoint.ExcludeDisks = disksExclude;
+                        var result = RestorePointClient.Create(resourceGroup, restorePointCollectionName, restorePointName, restorePoint);
                         var psObject = new PSRestorePoint();
                         ComputeAutomationAutoMapperProfile.Mapper.Map<RestorePoint, PSRestorePoint>(result, psObject);
                         WriteObject(psObject);
@@ -85,7 +86,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
                     else
                     {
-                        var result = RestorePointClient.Create(resourceGroup, restorePointCollectionName, restorePointName);
+                        var result = RestorePointClient.Create(resourceGroup, restorePointCollectionName, restorePointName, restorePoint);
                         var psObject = new PSRestorePoint();
                         ComputeAutomationAutoMapperProfile.Mapper.Map<RestorePoint, PSRestorePoint>(result, psObject);
                         WriteObject(psObject);

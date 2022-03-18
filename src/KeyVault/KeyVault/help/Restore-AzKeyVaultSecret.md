@@ -44,8 +44,10 @@ See the Microsoft Azure Trust Center (https://azure.microsoft.com/support/trust-
 
 ### Example 1: Restore a backed-up secret
 ```powershell
-PS C:\> Restore-AzKeyVaultSecret -VaultName 'contoso' -InputFile "C:\Backup.blob"
+Restore-AzKeyVaultSecret -VaultName 'contoso' -InputFile "C:\Backup.blob"
+```
 
+```output
 Vault Name   : contoso
 Name         : secret1
 Version      : 7128133570f84a71b48d7d0550deb74c

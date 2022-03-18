@@ -24,9 +24,11 @@ Resets the shared key of the virtual network gateway connection.
 ## EXAMPLES
 
 ### Example 1:
-```
+```powershell
 Reset-AzVirtualNetworkGatewayConnectionSharedKey -ResourceGroupName myRG -Name myConnection -KeyLength 32
+```
 
+```output
 Confirm
 Are you sure you want to overwrite resource 'myConnection'
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y

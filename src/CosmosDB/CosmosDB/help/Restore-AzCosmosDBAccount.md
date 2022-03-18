@@ -26,8 +26,10 @@ Creates a new CosmosDB account by restoring an existing account with the given n
 
 ### Example 1
 ```powershell
-PS C:\> Restore-AzCosmosDBAccount -TargetResourceGroupName resourceGroupName -TargetDatabaseAccountName restored-account-name  -SourceDatabaseAccountName sourceDatabaseAccountName -RestoreTimestampInUtc 2020-07-20T17:19:25+0000 -Location "West US"
+Restore-AzCosmosDBAccount -TargetResourceGroupName resourceGroupName -TargetDatabaseAccountName restored-account-name  -SourceDatabaseAccountName sourceDatabaseAccountName -RestoreTimestampInUtc 2020-07-20T17:19:25+0000 -Location "West US"
+```
 
+```output
 Id                                 : /subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/restored-account-name
 Name                               : restored-account-name
 InstanceId                         : eeb45f7f-4c05-4b52-9f42-6807d8eb8703

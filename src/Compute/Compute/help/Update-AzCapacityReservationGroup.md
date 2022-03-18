@@ -43,14 +43,14 @@ Update the Capacity Reservation Group.
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $capResGroup -Tag @{ CreatedBy = "John" }
+Update-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $capResGroup -Tag @{ CreatedBy = "John" }
 ```
 
 Updating the Capacity Reservation Group's tags.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $capResGroup | Update-AzCapacityReservationGroup -Tag @{ CreatedBy = "John" }
+Get-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $capResGroup | Update-AzCapacityReservationGroup -Tag @{ CreatedBy = "John" }
 ```
 
 Updating the Capacity Reservation Group's tags using the InputObject parameter set. 

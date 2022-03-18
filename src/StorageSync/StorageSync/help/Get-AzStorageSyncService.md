@@ -31,7 +31,7 @@ This command lists all storage sync services within a given scope of subscriptio
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzStorageSyncService -ResourceGroupName "myResourceGroup"
+Get-AzStorageSyncService -ResourceGroupName "myResourceGroup"
 ```
 
 This command lists all storage sync service resources within a given resource group. It can be used to also list the attributes of each storage sync service. Specify -StorageSyncServiceName to return a specific one.

@@ -43,8 +43,8 @@ The **Restart-AzVM** cmdlet restarts an Azure virtual machine.
 ## EXAMPLES
 
 ### Example 1: Restart a virtual machine
-```
-PS C:\> Restart-AzVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
+```powershell
+Restart-AzVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
 ```
 
 This command restarts the virtual machine named VirtualMachine07 in ResourceGroup11.

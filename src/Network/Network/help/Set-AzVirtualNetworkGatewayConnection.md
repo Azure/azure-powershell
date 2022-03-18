@@ -39,10 +39,12 @@ The **Set-AzVirtualNetworkGatewayConnection** cmdlet configures a virtual networ
 ## EXAMPLES
 
 ### Example 1:
-```
+```powershell
 $conn = Get-AzVirtualNetworkGatewayConnection -Name 1 -ResourceGroupName myRG
 Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $conn
+```
 
+```output
 Confirm
 Are you sure you want to overwrite resource '1'
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
@@ -73,10 +75,12 @@ TunnelConnectionStatus  : []
 ```
 
 ### Example 2: Add/Update tags to an existing VirtualNetworkGatewayConnection
-```
+```powershell
 $conn = Get-AzVirtualNetworkGatewayConnection -Name 1 -ResourceGroupName myRG
 Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $conn -Tag @{ testtagKey="SomeTagKey"; testtagValue="SomeKeyValue" }
+```
 
+```output
 Confirm
 Are you sure you want to overwrite resource '1'
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
@@ -110,11 +114,13 @@ IngressBytesTransferred : 100386089
 TunnelConnectionStatus  : []
 ```
 ### Example 3: Add/Remove natRules to an existing VirtualNetworkGatewayConnection
-```
+```powershell
 $conn = Get-AzVirtualNetworkGatewayConnection -Name 1 -ResourceGroupName myRG
 $egressNatrule = get-azVirtualNetworkGatewayNatRule -ResourceGroupName myRG -Name "natRule1" -ParentResourceName "gw1"
 Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $conn -IngressNatRule @() -EgressNatRule $egressNatrule
+```
 
+```output
 Confirm
 Are you sure you want to overwrite resource '1'
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y

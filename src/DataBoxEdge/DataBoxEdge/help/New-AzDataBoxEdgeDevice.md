@@ -24,7 +24,10 @@ The **New-AzDataBoxEdgeDevice** cmdlet configures a new Data Box Edge device
 
 ### Example 1
 ```powershell
-PS C:\> New-AzDataBoxEdgeDevice -ResourceGroupName resourceGroupName -Name deviceName -Location eastus -Sku Edge
+New-AzDataBoxEdgeDevice -ResourceGroupName resourceGroupName -Name deviceName -Location eastus -Sku Edge
+```
+
+```output
 Name            ResourceGroupName    Model   Location
 ----            -----------------    -----   --------
 deviceName      resourceGroupName    Edge    eastus

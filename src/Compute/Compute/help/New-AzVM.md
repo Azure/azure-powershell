@@ -25,8 +25,9 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
  [-EnableUltraSSD] [-ProximityPlacementGroupId <String>] [-HostId <String>] [-VmssId <String>]
  [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-EncryptionAtHost]
  [-HostGroupId <String>] [-SshKeyName <String>] [-GenerateSshKey] [-CapacityReservationGroupId <String>]
- [-UserData <String>] [-PlatformFaultDomain <Int32>] [-HibernationEnabled]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-UserData <String>] [-PlatformFaultDomain <Int32>] [-HibernationEnabled] [-vCPUCountAvailable <Int32>]
+ [-vCPUCountPerCore <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### DefaultParameterSet
@@ -34,7 +35,8 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
 New-AzVM [-ResourceGroupName] <String> [-Location] <String> [-EdgeZone <String>] [-VM] <PSVirtualMachine>
  [[-Zone] <String[]>] [-DisableBginfoExtension] [-Tag <Hashtable>] [-LicenseType <String>] [-AsJob]
  [-OSDiskDeleteOption <String>] [-DataDiskDeleteOption <String>] [-SshKeyName <String>] [-GenerateSshKey]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### DiskFileParameterSet
@@ -48,23 +50,26 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
  [-DataDiskDeleteOption <String>] [-EnableUltraSSD] [-ProximityPlacementGroupId <String>] [-HostId <String>]
  [-VmssId <String>] [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-EncryptionAtHost]
  [-HostGroupId <String>] [-CapacityReservationGroupId <String>] [-UserData <String>]
- [-PlatformFaultDomain <Int32>] [-HibernationEnabled] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-PlatformFaultDomain <Int32>] [-HibernationEnabled] [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **New-AzVM** cmdlet creates a virtual machine in Azure.
 This cmdlet takes a virtual machine object as input.
 Use the New-AzVMConfig cmdlet to create a virtual machine object.
+The **New-AzVM** cmdlet will create a new storage account for boot diagnostics if one does not already exist. 
 Other cmdlets can be used to configure the virtual machine, such as Set-AzVMOperatingSystem, Set-AzVMSourceImage, Add-AzVMNetworkInterface, and Set-AzVMOSDisk.
 The `SimpleParameterSet` provides a convenient method to create a VM by making common VM creation arguments optional.
 
 ## EXAMPLES
 
 ### Example 1: Create a virtual machine
+```powershell
+New-AzVM -Name MyVm -Credential (Get-Credential)
 ```
-PS C:\> New-AzVM -Name MyVm -Credential (Get-Credential)
 
+```output
 VERBOSE: Use 'mstsc /v:myvm-222222.eastus.cloudapp.azure.com' to connect to the VM.
 
 ResourceGroupName        : MyVm
@@ -88,8 +93,8 @@ The script will ask a user name and password for the VM.
 This script uses several other cmdlets.
 
 ### Example 2: Create a virtual machine from a custom user image
-```
-PS C:\> ## VM Account
+```powershell
+## VM Account
 # Credentials for Local Admin account you created in the sysprepped (generalized) vhd image
 $VMLocalAdminUser = "LocalAdminUser"
 $VMLocalAdminSecurePassword = ConvertTo-SecureString "Password" -AsPlainText -Force
@@ -142,7 +147,7 @@ This script assumes that you are already logged into your Azure account.
 You can confirm your login status by using the **Get-AzSubscription** cmdlet.
 
 ### Example 3: Create a VM from a marketplace image without a Public IP
-```
+```powershell
 $VMLocalAdminUser = "LocalAdminUser"
 $VMLocalAdminSecurePassword = ConvertTo-SecureString <password> -AsPlainText -Force
 $LocationName = "westus"
@@ -172,8 +177,7 @@ New-AzVM -ResourceGroupName $ResourceGroupName -Location $LocationName -VM $Virt
 ```
 
 ### Example 4: Create a VM with a UserData value:
-```
-PS C:\> 
+```powershell
 ## VM Account
 $VMLocalAdminUser = "LocalAdminUser";
 $VMLocalAdminSecurePassword = ConvertTo-SecureString "Password" -AsPlainText -Force;
@@ -875,6 +879,36 @@ UserData for the VM, which will be base-64 encoded. Customer should not pass any
 ```yaml
 Type: System.String
 Parameter Sets: SimpleParameterSet, DiskFileParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -vCPUCountAvailable
+Specifies the number of vCPUs available for the VM. When this property is not specified in the request body the default behavior is to set it to the value of vCPUs available for that VM size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -vCPUCountPerCore
+Specifies the vCPU to physical core ratio. When this property is not specified in the request body the default behavior is set to the value of vCPUsPerCore for the VM Size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list). Setting this property to 1 also means that hyper-threading is disabled.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
 Aliases:
 
 Required: False

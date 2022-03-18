@@ -61,8 +61,10 @@ Update the properties of a CosmosDB account. Cannot update Account Regions simul
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzCosmosDBAccount -ResourceGroupName resourceGroupName -Name accountName -DefaultConsistencyLevel "Strong" -EnableAutomaticFailover 1 -EnableMultipleWriteLocations 1 -EnableVirtualNetwork 1
+Update-AzCosmosDBAccount -ResourceGroupName resourceGroupName -Name accountName -DefaultConsistencyLevel "Strong" -EnableAutomaticFailover 1 -EnableMultipleWriteLocations 1 -EnableVirtualNetwork 1
+```
 
+```output
 Kind                          : GlobalDocumentDB
 ProvisioningState             : Initializing
 DocumentEndpoint              :

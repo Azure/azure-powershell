@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll-Help.xml
 Module Name: Az.DataLakeStore
 ms.assetid: 0EB5C25C-D0A1-4444-AEA2-C963D5069CFC
@@ -27,7 +27,7 @@ The **Set-AzDataLakeStoreAccount** cmdlet modifies a Data Lake Store account.
 
 ### Example 1: Add a tag to an account
 ```powershell
-PS C:\>Set-AzDataLakeStoreAccount -Name "ContosoADL" -Tags @{"stage"="production"}
+Set-AzDataLakeStoreAccount -Name "ContosoADL" -Tags @{"stage"="production"}
 ```
 
 This command adds the specified tag to the Data Lake Store account named ContosoADL.

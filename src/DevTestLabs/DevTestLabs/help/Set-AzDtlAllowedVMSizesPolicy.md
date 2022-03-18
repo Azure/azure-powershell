@@ -35,8 +35,10 @@ The cmdlet uses the specified resource group and name of the lab to set the poli
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzDtlAllowedVMSizesPolicy -LabName debtestlab -ResourceGroupName yuzhi-rg
+Set-AzDtlAllowedVMSizesPolicy -LabName debtestlab -ResourceGroupName yuzhi-rg
+```
 
+```output
 Name               : AllowedVmSizesInLab
 Type               : Microsoft.DevTestLab/labs/policySets/policies
 Tags               : 

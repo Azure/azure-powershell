@@ -249,5 +249,19 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetEnableHotPatching");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveVmssForceDeletion()
+        {
+            TestRunner.RunTestScript("Test-RemoveVmssForceDeletion");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetRepairsAction()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetRepairsAction");
+        }
+
     }
 }

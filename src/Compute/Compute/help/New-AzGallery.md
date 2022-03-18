@@ -25,7 +25,7 @@ Create a gallery.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzGallery -ResourceGroupName $rgname -Name $galleryName -Location $location -Description $galleryDescription
+New-AzGallery -ResourceGroupName $rgname -Name $galleryName -Location $location -Description $galleryDescription
 ```
 
 Create a gallery.

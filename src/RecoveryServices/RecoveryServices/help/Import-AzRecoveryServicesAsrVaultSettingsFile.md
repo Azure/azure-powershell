@@ -23,8 +23,8 @@ The **Import-AzRecoveryServicesAsrVaultSettingsFile** cmdlet imports the Azure S
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $VaultSettings = Import-AzRecoveryServicesAsrVaultSettingsFile -Path $FilePath
+```powershell
+$VaultSettings = Import-AzRecoveryServicesAsrVaultSettingsFile -Path $FilePath
 ```
 
 Imports the specified Recovery Services vault settings file and returns settings of the imported vault.

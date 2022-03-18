@@ -25,10 +25,12 @@ The **New-AzKeyVaultCertificateAdministratorDetail** cmdlet creates an in-memory
 ## EXAMPLES
 
 ### Example 1: Create a certificate administrator details object
+```powershell
+$AdminDetails = New-AzKeyVaultCertificateAdministratorDetail -FirstName "Patti" -LastName "Fuller" -EmailAddress "patti.fuller@contoso.com" -PhoneNumber "5553334444"
+$AdminDetails
 ```
-PS C:\> $AdminDetails = New-AzKeyVaultCertificateAdministratorDetail -FirstName "Patti" -LastName "Fuller" -EmailAddress "patti.fuller@contoso.com" -PhoneNumber "5553334444"
-PS C:\> $AdminDetails
 
+```output
 FirstName LastName EmailAddress             PhoneNumber
 --------- -------- ------------             -----------
 Patti     Fuller   patti.fuller@contoso.com 5553334444

@@ -23,9 +23,11 @@ The **Get-AzImage** cmdlet gets the properties of an image.
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Get-AzImage -ResourceGroupName 'ResourceGroup01' -ImageName 'Image01'
 ```
-PS C:\> Get-AzImage -ResourceGroupName 'ResourceGroup01' -ImageName 'Image01'
 
+```output
 ResourceGroupName    : ResourceGroup01
 SourceVirtualMachine : Microsoft.Azure.Management.Compute.Models.SubResource
 StorageProfile       : Microsoft.Azure.Management.Compute.Models.ImageStorageProfile
@@ -41,9 +43,11 @@ Tags                 : {}
 This command gets the properties of the image named 'Image01' in the resource group 'ResourceGroup01'.
 
 ### Example 2
+```powershell
+Get-AzImage -ResourceGroupName 'ResourceGroup01'
 ```
-PS C:\> Get-AzImage -ResourceGroupName 'ResourceGroup01'
 
+```output
 ResourceGroupName    : ResourceGroup01
 SourceVirtualMachine : Microsoft.Azure.Management.Compute.Models.SubResource
 StorageProfile       : Microsoft.Azure.Management.Compute.Models.ImageStorageProfile
@@ -70,9 +74,11 @@ Tags                 : {}
 This command gets the properties of all images in the resource group 'ResourceGroup01'.
 
 ### Example 3
+```powershell
+Get-AzImage
 ```
-PS C:\> Get-AzImage
 
+```output
 ResourceGroupName    : ResourceGroup01
 SourceVirtualMachine : Microsoft.Azure.Management.Compute.Models.SubResource
 StorageProfile       : Microsoft.Azure.Management.Compute.Models.ImageStorageProfile
@@ -110,9 +116,11 @@ Tags                 : {}
 This command gets the properties of all images under the subscription.
 
 ### Example 4
+```powershell
+Get-AzImage -Name "Image*"
 ```
-PS C:\> Get-AzImage -Name "Image*"
 
+```output
 ResourceGroupName    : ResourceGroup01
 SourceVirtualMachine : Microsoft.Azure.Management.Compute.Models.SubResource
 StorageProfile       : Microsoft.Azure.Management.Compute.Models.ImageStorageProfile

@@ -43,7 +43,7 @@ The **Remove-AzManagedCassandraDataCenter** cmdlet deletes a managed Cassandra d
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzManagedCassandraDataCenter `
+Remove-AzManagedCassandraDataCenter `
  -ResourceGroupName {resourceGroupName} `
  -ClusterName {clusterName}
  -DataCenterName {dataCenterName}
@@ -51,12 +51,12 @@ PS C:\> Remove-AzManagedCassandraDataCenter `
 
 ### Example 2
 ```powershell
-PS C:\> Remove-AzManagedCassandraDataCenter -ResourceId {dataCenterResourceId}
+Remove-AzManagedCassandraDataCenter -ResourceId {dataCenterResourceId}
 ```
 
 ### Example 3
 ```powershell
-PS C:\> $dataCenterResource | Remove-AzManagedCassandraDataCenter
+$dataCenterResource | Remove-AzManagedCassandraDataCenter
 ```
 
 ## PARAMETERS

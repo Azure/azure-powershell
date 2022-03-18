@@ -37,7 +37,7 @@ The **New-AzManagedCassandraDataCenter** cmdlet creates a new managed Cassandra 
 
 ### Example 1
 ```powershell
-PS C:\> New-AzManagedCassandraDataCenter `
+New-AzManagedCassandraDataCenter `
  -ResourceGroupName {resourceGroupName} `
  -ClusterName {clusterName} `
  -DataCenterName {dataCenterName} `

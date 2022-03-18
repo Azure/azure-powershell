@@ -20,11 +20,11 @@ Deletes the virtual network rule with the given name.
 .Description
 Deletes the virtual network rule with the given name.
 .Example
-PS C:\> Remove-AzPostgreSqlVirtualNetworkRule -Name vnet -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
+ Remove-AzPostgreSqlVirtualNetworkRule -Name vnet -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
 
 .Example
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/virtualNetworkRules/vnet"
-PS C:\> Remove-AzPostgreSqlVirtualNetworkRule -InputObject $ID
+ $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/virtualNetworkRules/vnet"
+ Remove-AzPostgreSqlVirtualNetworkRule -InputObject $ID
  
 
 .Inputs

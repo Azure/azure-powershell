@@ -28,7 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "instanceView".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("instanceView", "instanceView", global::System.Management.Automation.CompletionResultType.ParameterValue, "instanceView");
+                yield return new global::System.Management.Automation.CompletionResult("'instanceView'", "instanceView", global::System.Management.Automation.CompletionResultType.ParameterValue, "instanceView");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "userData".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'userData'", "userData", global::System.Management.Automation.CompletionResultType.ParameterValue, "userData");
             }
         }
     }

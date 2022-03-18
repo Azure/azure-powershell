@@ -19,9 +19,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed that `New-AzServiceBusAuthorizationRuleSASToken` returns invalid token. [#12975]
+ 
+## Version 1.8.0
+* Added identity and encryption properties to New-AzServiceBusNamespace and Set-AzServiceBusNamespace.
+* Added New-AzServiceBusEncryptionConfig
+
+## Version 1.7.0
 * Added support to Enable or Disable  Public Network Access as optional parameter 'PublicNetworkAccess' to `Set-AzServiceBusNetworkRuleSet`
 * Fixed `Set-AzServiceBusNamespace` with Tags 
-
 
 ## Version 1.6.0
 * Added support for ZoneRedundant and optional switch parameter 'DisableLocalAuth' to `New-AzServiceBusNamespace` and `Set-AzServiceBusNamespace` 

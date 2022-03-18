@@ -115,6 +115,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).AgeGroup = (string) content.GetValueForProperty("AgeGroup",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).AgeGroup, global::System.Convert.ToString);
             }
+            if (content.Contains("ApproximateLastSignInDateTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).ApproximateLastSignInDateTime = (global::System.DateTime?) content.GetValueForProperty("ApproximateLastSignInDateTime",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).ApproximateLastSignInDateTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             if (content.Contains("BusinessPhone"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).BusinessPhone = (string[]) content.GetValueForProperty("BusinessPhone",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).BusinessPhone, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
@@ -143,9 +147,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).CreationType = (string) content.GetValueForProperty("CreationType",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).CreationType, global::System.Convert.ToString);
             }
+            if (content.Contains("ComplianceExpirationDateTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).ComplianceExpirationDateTime = (global::System.DateTime?) content.GetValueForProperty("ComplianceExpirationDateTime",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).ComplianceExpirationDateTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             if (content.Contains("Department"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).Department = (string) content.GetValueForProperty("Department",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).Department, global::System.Convert.ToString);
+            }
+            if (content.Contains("DeviceVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).DeviceVersion = (int?) content.GetValueForProperty("DeviceVersion",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).DeviceVersion, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("EmployeeHireDate"))
             {
@@ -223,6 +235,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).OnPremisesImmutableId = (string) content.GetValueForProperty("OnPremisesImmutableId",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).OnPremisesImmutableId, global::System.Convert.ToString);
             }
+            if (content.Contains("OnPremisesLastSyncDateTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).OnPremisesLastSyncDateTime = (global::System.DateTime?) content.GetValueForProperty("OnPremisesLastSyncDateTime",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).OnPremisesLastSyncDateTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("OnPremisesSyncEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).OnPremisesSyncEnabled = (bool?) content.GetValueForProperty("OnPremisesSyncEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).OnPremisesSyncEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("OperatingSystem"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).OperatingSystem = (string) content.GetValueForProperty("OperatingSystem",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).OperatingSystem, global::System.Convert.ToString);
+            }
+            if (content.Contains("OperatingSystemVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).OperatingSystemVersion = (string) content.GetValueForProperty("OperatingSystemVersion",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).OperatingSystemVersion, global::System.Convert.ToString);
+            }
             if (content.Contains("PasswordPolicy"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).PasswordPolicy = (string) content.GetValueForProperty("PasswordPolicy",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).PasswordPolicy, global::System.Convert.ToString);
@@ -243,6 +271,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).ProxyAddress = (string[]) content.GetValueForProperty("ProxyAddress",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).ProxyAddress, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
             }
+            if (content.Contains("PhysicalId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).PhysicalId = (string[]) content.GetValueForProperty("PhysicalId",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).PhysicalId, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
             if (content.Contains("ShowInAddressList"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).ShowInAddressList = (bool?) content.GetValueForProperty("ShowInAddressList",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).ShowInAddressList, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
@@ -262,6 +294,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
             if (content.Contains("Surname"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).Surname = (string) content.GetValueForProperty("Surname",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).Surname, global::System.Convert.ToString);
+            }
+            if (content.Contains("TrustType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).TrustType = (string) content.GetValueForProperty("TrustType",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).TrustType, global::System.Convert.ToString);
             }
             if (content.Contains("UsageLocation"))
             {
@@ -322,6 +358,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).AgeGroup = (string) content.GetValueForProperty("AgeGroup",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).AgeGroup, global::System.Convert.ToString);
             }
+            if (content.Contains("ApproximateLastSignInDateTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).ApproximateLastSignInDateTime = (global::System.DateTime?) content.GetValueForProperty("ApproximateLastSignInDateTime",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).ApproximateLastSignInDateTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             if (content.Contains("BusinessPhone"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).BusinessPhone = (string[]) content.GetValueForProperty("BusinessPhone",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).BusinessPhone, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
@@ -350,9 +390,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).CreationType = (string) content.GetValueForProperty("CreationType",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).CreationType, global::System.Convert.ToString);
             }
+            if (content.Contains("ComplianceExpirationDateTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).ComplianceExpirationDateTime = (global::System.DateTime?) content.GetValueForProperty("ComplianceExpirationDateTime",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).ComplianceExpirationDateTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             if (content.Contains("Department"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).Department = (string) content.GetValueForProperty("Department",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).Department, global::System.Convert.ToString);
+            }
+            if (content.Contains("DeviceVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).DeviceVersion = (int?) content.GetValueForProperty("DeviceVersion",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).DeviceVersion, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("EmployeeHireDate"))
             {
@@ -430,6 +478,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).OnPremisesImmutableId = (string) content.GetValueForProperty("OnPremisesImmutableId",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).OnPremisesImmutableId, global::System.Convert.ToString);
             }
+            if (content.Contains("OnPremisesLastSyncDateTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).OnPremisesLastSyncDateTime = (global::System.DateTime?) content.GetValueForProperty("OnPremisesLastSyncDateTime",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).OnPremisesLastSyncDateTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("OnPremisesSyncEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).OnPremisesSyncEnabled = (bool?) content.GetValueForProperty("OnPremisesSyncEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).OnPremisesSyncEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("OperatingSystem"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).OperatingSystem = (string) content.GetValueForProperty("OperatingSystem",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).OperatingSystem, global::System.Convert.ToString);
+            }
+            if (content.Contains("OperatingSystemVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).OperatingSystemVersion = (string) content.GetValueForProperty("OperatingSystemVersion",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).OperatingSystemVersion, global::System.Convert.ToString);
+            }
             if (content.Contains("PasswordPolicy"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).PasswordPolicy = (string) content.GetValueForProperty("PasswordPolicy",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).PasswordPolicy, global::System.Convert.ToString);
@@ -450,6 +514,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).ProxyAddress = (string[]) content.GetValueForProperty("ProxyAddress",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).ProxyAddress, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
             }
+            if (content.Contains("PhysicalId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).PhysicalId = (string[]) content.GetValueForProperty("PhysicalId",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).PhysicalId, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
             if (content.Contains("ShowInAddressList"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).ShowInAddressList = (bool?) content.GetValueForProperty("ShowInAddressList",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).ShowInAddressList, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
@@ -469,6 +537,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
             if (content.Contains("Surname"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).Surname = (string) content.GetValueForProperty("Surname",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).Surname, global::System.Convert.ToString);
+            }
+            if (content.Contains("TrustType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).TrustType = (string) content.GetValueForProperty("TrustType",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).TrustType, global::System.Convert.ToString);
             }
             if (content.Contains("UsageLocation"))
             {
