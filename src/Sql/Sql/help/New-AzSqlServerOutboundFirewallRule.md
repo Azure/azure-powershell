@@ -24,9 +24,11 @@ The **New-AzSqlServerOutboundFirewallRule** cmdlet adds the allowed FQDN to the 
 ## EXAMPLES
 
 ### Example 1: Create a new outbound firewall rule
+```powershell
+New-AzSqlServerOutboundFirewallRule -ServerName "Server01" -ResourceGroupName "ResourceGroup01" -AllowedFQDN "OutboundFirewallRule01"
 ```
-PS C:\>New-AzSqlServerOutboundFirewallRule -ServerName "Server01" -ResourceGroupName "ResourceGroup01" -AllowedFQDN "OutboundFirewallRule01"
 
+```output
 ResourceGroupName : ResourceGroup01
 ServerName        : Server01
 AllowedFQDN       : OutboundFirewallRule01

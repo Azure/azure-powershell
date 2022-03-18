@@ -25,14 +25,14 @@ If you specify the name of an allowed FQDN, this cmdlet gets information about t
 ## EXAMPLES
 
 ### Example 1: Get outbound firewall rule(s) for a server
-```
-PS C:\>Get-AzSqlServerOutboundFirewallRule -ServerName "Server01" -ResourceGroupName "ResourceGroup01" -AllowedFQDN "OutboundFirewallRule01"
+```powershell
+Get-AzSqlServerOutboundFirewallRule -ServerName "Server01" -ResourceGroupName "ResourceGroup01" -AllowedFQDN "OutboundFirewallRule01"
 
 ResourceGroupName : ResourceGroup01
 ServerName        : Server01
 AllowedFQDN       : OutboundFirewallRule01
 
-PS C:\>Get-AzSqlServerOutboundFirewallRule -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
+Get-AzSqlServerOutboundFirewallRule -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
 
 ResourceGroupName : ResourceGroup01
 ServerName        : Server01

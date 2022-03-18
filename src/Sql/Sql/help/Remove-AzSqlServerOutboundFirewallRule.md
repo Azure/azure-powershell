@@ -24,9 +24,11 @@ The **Remove-AzSqlServerOutboundFirewallRule** cmdlet deletes the specified allo
 ## EXAMPLES
 
 ### Example 1: Delete a outbound firewall rule
+```powershell
+Remove-AzSqlServerOutboundFirewallRule -ServerName "Server01" -ResourceGroupName "ResourceGroup01" -AllowedFQDN "OutboundFirewallRule01"
 ```
-PS C:\>Remove-AzSqlServerOutboundFirewallRule -ServerName "Server01" -ResourceGroupName "ResourceGroup01" -AllowedFQDN "OutboundFirewallRule01"
 
+```output
 ResourceGroupName : ResourceGroup01
 ServerName        : Server01
 AllowedFQDN       : OutboundFirewallRule01

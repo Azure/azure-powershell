@@ -30,8 +30,11 @@ The **New-AzSqlServer** cmdlet creates an Azure SQL Database server.
 ## EXAMPLES
 
 ### Example 1: Create a new Azure SQL Database server
+```powershell
+New-AzSqlServer -ResourceGroupName "ResourceGroup01" -Location "Central US" -ServerName "server01" -ServerVersion "12.0" -SqlAdministratorCredentials (Get-Credential)
 ```
-PS C:\>New-AzSqlServer -ResourceGroupName "ResourceGroup01" -Location "Central US" -ServerName "server01" -ServerVersion "12.0" -SqlAdministratorCredentials (Get-Credential)
+
+```output
 ResourceGroupName        : resourcegroup01
 ServerName               : server01
 Location                 : Central US
@@ -44,8 +47,8 @@ Tags                     :
 This command creates a version 12 Azure SQL Database server.
 
 ### Example 2: Create a new Azure SQL Database server with External(Azure Active Directory) Administrator, Azure Active Directory Only Authentication and no SqlAdministratorCredentials
-```
-PS C:\>New-AzSqlServer -ResourceGroupName "ResourceGroup01" -Location "Central US" -ServerName "server01" -ServerVersion "12.0" -ExternalAdminName DummyLogin -EnableActiveDirectoryOnlyAuthentication
+```powershell
+New-AzSqlServer -ResourceGroupName "ResourceGroup01" -Location "Central US" -ServerName "server01" -ServerVersion "12.0" -ExternalAdminName DummyLogin -EnableActiveDirectoryOnlyAuthentication
 ResourceGroupName        : resourcegroup01
 ServerName               : server01
 Location                 : Central US
@@ -55,7 +58,7 @@ ServerVersion            : 12.0
 Tags                     :
 Administrators           :
 
-PS C:\>$val = Get-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "server01" -ExpandActiveDirectoryAdministrator
+$val = Get-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "server01" -ExpandActiveDirectoryAdministrator
 ResourceGroupName        : resourcegroup01
 ServerName               : server01
 Location                 : Central US
@@ -65,7 +68,7 @@ ServerVersion            : 12.0
 Tags                     :
 Administrators           : Microsoft.Azure.Management.Sql.Models.ServerExternalAdministrator
 
-PS C:\>$val.Administrators
+$val.Administrators
 AdministratorType         : ActiveDirectory
 PrincipalType             : Group
 Login                     : DummyLogin

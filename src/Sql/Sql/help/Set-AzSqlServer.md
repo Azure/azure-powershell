@@ -30,9 +30,12 @@ The **Set-AzSqlServer** cmdlet modifies properties of an Azure SQL Database serv
 
 ### Example 1: Reset the administrator password
 ```powershell
-PS C:\>$ServerPassword = "newpassword"
-PS C:\> $SecureString = ConvertTo-SecureString $ServerPassword -AsPlainText -Force
-PS C:\> Set-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -SqlAdministratorPassword $secureString
+$ServerPassword = "newpassword"
+$SecureString = ConvertTo-SecureString $ServerPassword -AsPlainText -Force
+Set-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -SqlAdministratorPassword $secureString
+```
+
+```output
 ResourceGroupName        : ResourceGroup01
 ServerName               : Server01
 Location                 : Australia East

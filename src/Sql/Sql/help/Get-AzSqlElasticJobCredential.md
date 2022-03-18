@@ -37,9 +37,11 @@ The Get-AzSqlElasticJobCredential cmdlet gets one or more job credentials
 
 ### Example 1
 ```powershell
-PS C:\> $agent = Get-AzSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent
+$agent = Get-AzSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent
 $agent | Get-AzSqlElasticJobCredential -Name cred1
+```
 
+```output
 CredentialName UserName
 -------------- --------
 cred1          user1

@@ -37,9 +37,11 @@ The Get-AzSqlElasticJobTargetGroup cmdlet gets a target group and it's targets
 
 ### Example 1
 ```powershell
-PS C:\> $agent = Get-AzSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent
+$agent = Get-AzSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent
 $agent | Get-AzSqlElasticJobTargetGroup -Name tg1
+```
 
+```output
 TargetGroupName Targets
 --------------- -------
 tg1             (s1,db1)
