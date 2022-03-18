@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string ResourceGroupName { get; set; }
 
         [Parameter(
-           Mandatory = false,
+           Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "Resource Id.")]
         public string ResourceId { get; set; }
