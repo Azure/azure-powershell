@@ -1060,7 +1060,7 @@ function Test-ClientEncryptionKeyCmdletsUsingInputObject
       $NewKeyWrapMetaDataObject = [Microsoft.Azure.Commands.CosmosDB.Models.PSSqlKeyWrapMetadata]::new([Microsoft.Azure.Management.CosmosDB.Models.KeyWrapMetadata]::new($keywrapmetadataName,$keywrapmetadataType,$encryptionKey,$keywrapmetadataAlgo))
       
       # Test1 - create a new client encryption key pass Parent object/Database object
-      $NewClientEncryptionKey = New-AzCosmosDbClientEncryptionKey -ParentObject $NewDatabase -ClientEncryptionKeyName $ClientEncryptionKeyName -EncryptionAlgorithmName "AEAD_AES_256_CBC_HMAC_SHA256" -KeyWrapMetadata $NewKeyWrapMetaDataObject      
+      $NewClientEncryptionKey = New-AzCosmosDbClientEncryptionKey -SqlDatabaseObject $NewDatabase -ClientEncryptionKeyName $ClientEncryptionKeyName -EncryptionAlgorithmName "AEAD_AES_256_CBC_HMAC_SHA256" -KeyWrapMetadata $NewKeyWrapMetaDataObject      
 
       Assert-AreEqual $NewClientEncryptionKey.Resource.id $ClientEncryptionKeyName
       Assert-AreEqual $NewClientEncryptionKey.Resource.encryptionAlgorithm $EncryptionAlgorithm
@@ -1070,11 +1070,11 @@ function Test-ClientEncryptionKeyCmdletsUsingInputObject
       Assert-AreEqual $NewClientEncryptionKey.Resource.keyWrapMetadata.algorithm $keywrapmetadataAlgo
 
       # Test2 - fetch/list client encryption keys, pass Parent object/Database object
-      $ListClientEncryptionKeys = Get-AzCosmosDbClientEncryptionKey -ParentObject $NewDatabase
+      $ListClientEncryptionKeys = Get-AzCosmosDbClientEncryptionKey -SqlDatabaseObject $NewDatabase
       Assert-NotNull($ListClientEncryptionKeys)
 
       # Test3 - fetch a specific client encryption key, pass Parent object/Database object
-      $FetchedClientEncryptionKey = Get-AzCosmosDbClientEncryptionKey -ParentObject $NewDatabase -ClientEncryptionKeyName $ClientEncryptionKeyName
+      $FetchedClientEncryptionKey = Get-AzCosmosDbClientEncryptionKey -SqlDatabaseObject $NewDatabase -ClientEncryptionKeyName $ClientEncryptionKeyName
       Assert-AreEqual $FetchedClientEncryptionKey.Resource.id $ClientEncryptionKeyName
 
       # new key identity
@@ -1087,7 +1087,7 @@ function Test-ClientEncryptionKeyCmdletsUsingInputObject
       $UpdatedKeyWrapMetaDataObject = [Microsoft.Azure.Commands.CosmosDB.Models.PSSqlKeyWrapMetadata]::new([Microsoft.Azure.Management.CosmosDB.Models.KeyWrapMetadata]::new($keywrapmetadataName2,$keywrapmetadataType,$encryptionKey2,$keywrapmetadataAlgo))
 
       # Test4 - update client encryption key, pass Parent object/Database object
-      $UpdatedClientEncryptionKey = Update-AzCosmosDbClientEncryptionKey -ParentObject $NewDatabase -ClientEncryptionKeyName $ClientEncryptionKeyName -KeyWrapMetadata $UpdatedKeyWrapMetaDataObject      
+      $UpdatedClientEncryptionKey = Update-AzCosmosDbClientEncryptionKey -SqlDatabaseObject $NewDatabase -ClientEncryptionKeyName $ClientEncryptionKeyName -KeyWrapMetadata $UpdatedKeyWrapMetaDataObject      
       Assert-AreEqual $UpdatedClientEncryptionKey.Resource.id $ClientEncryptionKeyName
       Assert-AreEqual $UpdatedClientEncryptionKey.Resource.encryptionAlgorithm $EncryptionAlgorithm
       Assert-AreEqual $UpdatedClientEncryptionKey.Resource.keyWrapMetadata.name $keywrapmetadataName2
