@@ -334,7 +334,7 @@ Accept wildcard characters: False
 ```
 
 ### -RetentionEnabled
-Indicates whether retention of diagnostic information is enabled.
+Indicates whether retention of diagnostic information is enabled. Note that this only applies when saving data to a Storage account.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
@@ -349,7 +349,7 @@ Accept wildcard characters: False
 ```
 
 ### -RetentionInDays
-Specifies the retention policy, in days.
+Specifies the retention policy, in days. Note that this only applies when saving data to a Storage account.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]

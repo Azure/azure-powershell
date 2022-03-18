@@ -38,7 +38,7 @@ The **Remove-AzApiManagementGateway** cmdlet detaches an API from a Gateway.
 ### Example 1: Remove an existing gateway
 ```powershell
 $apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-Remove-AzApiManagementGateway -Context $apimContext -GatewayId "g0001" -Force
+Remove-AzApiManagementGateway -Context $apimContext -GatewayId "g0001"
 ```
 
 This command removes an existing gateway and does not prompt the user for confirmation.
