@@ -297,17 +297,11 @@ function New-AzADServicePrincipal {
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith), $search, and $orderBy.
     ${DisplayName},
 
-    [Parameter(ParameterSetName = 'ApplicationObjectWithPasswordCredentialParameterSet', Mandatory, ValueFromPipeline, HelpMessage = "The application object, could be used as pipeline input.")]
-    [Parameter(ParameterSetName = 'ApplicationObjectWithKeyCredentialParameterSet', Mandatory, ValueFromPipeline, HelpMessage = "The application object, could be used as pipeline input.")]
-    [Parameter(ParameterSetName = 'ApplicationObjectWithPasswordPlainParameterSet', Mandatory, ValueFromPipeline, HelpMessage = "The application object, could be used as pipeline input.")]
-    [Parameter(ParameterSetName = 'ApplicationObjectWithKeyPlainParameterSet', Mandatory, ValueFromPipeline, HelpMessage = "The application object, could be used as pipeline input.")]
+    [Parameter(ParameterSetName = 'ApplicationObjectParameterSet', Mandatory, ValueFromPipeline, HelpMessage = "The application object, could be used as pipeline input.")]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication]
     ${ApplicationObject},
 
-    [Parameter(ParameterSetName = 'ApplicationWithPasswordCredentialParameterSet', Mandatory)]
-    [Parameter(ParameterSetName = 'ApplicationWithKeyCredentialParameterSet', Mandatory)]
-    [Parameter(ParameterSetName = 'ApplicationWithKeyPlainParameterSet', Mandatory)]
     [Parameter(ParameterSetName = 'SimpleParameterSet')]
     [Alias('AppId')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -341,33 +335,23 @@ function New-AzADServicePrincipal {
     # Not nullable.
     ${ReplyUrl},
 
-    [Parameter(ParameterSetName = 'ApplicationWithKeyPlainParameterSet', Mandatory, HelpMessage = "The value of the 'asymmetric' credential type. It represents the base 64 encoded certificate.")]
-    [Parameter(ParameterSetName = 'ApplicationObjectWithKeyPlainParameterSet', Mandatory, HelpMessage = "The value of the 'asymmetric' credential type. It represents the base 64 encoded certificate.")]
     [Parameter(ParameterSetName = 'DisplayNameWithKeyPlainParameterSet', Mandatory, HelpMessage = "The value of the 'asymmetric' credential type. It represents the base 64 encoded certificate.")]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     ${CertValue},
 
-    [Parameter(ParameterSetName = 'ApplicationWithKeyPlainParameterSet', HelpMessage = "The effective start date of the credential usage. The default start date value is today. For an 'asymmetric' type credential, this must be set to on or after the date that the X509 certificate is valid from.")]
-    [Parameter(ParameterSetName = 'ApplicationObjectWithPasswordPlainParameterSet', HelpMessage = "The effective start date of the credential usage. The default start date value is today. For an 'asymmetric' type credential, this must be set to on or after the date that the X509 certificate is valid from.")]
-    [Parameter(ParameterSetName = 'ApplicationObjectWithKeyPlainParameterSet', HelpMessage = "The effective start date of the credential usage. The default start date value is today. For an 'asymmetric' type credential, this must be set to on or after the date that the X509 certificate is valid from.")]
     [Parameter(ParameterSetName = 'DisplayNameWithKeyPlainParameterSet', HelpMessage = "The effective start date of the credential usage. The default start date value is today. For an 'asymmetric' type credential, this must be set to on or after the date that the X509 certificate is valid from.")]
     [Parameter(ParameterSetName = 'SimpleParameterSet')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.DateTime]
     ${StartDate},
 
-    [Parameter(ParameterSetName = 'ApplicationWithKeyPlainParameterSet', HelpMessage = "The effective end date of the credential usage. The default end date value is one year from today. For an 'asymmetric' type credential, this must be set to on or before the date that the X509 certificate is valid.")]
-    [Parameter(ParameterSetName = 'ApplicationObjectWithPasswordPlainParameterSet', HelpMessage = "The effective end date of the credential usage. The default end date value is one year from today. For an 'asymmetric' type credential, this must be set to on or before the date that the X509 certificate is valid.")]
-    [Parameter(ParameterSetName = 'ApplicationObjectWithKeyPlainParameterSet', HelpMessage = "The effective end date of the credential usage. The default end date value is one year from today. For an 'asymmetric' type credential, this must be set to on or before the date that the X509 certificate is valid.")]
     [Parameter(ParameterSetName = 'DisplayNameWithKeyPlainParameterSet', HelpMessage = "The effective end date of the credential usage. The default end date value is one year from today. For an 'asymmetric' type credential, this must be set to on or before the date that the X509 certificate is valid.")]
     [Parameter(ParameterSetName = 'SimpleParameterSet', HelpMessage = "The effective end date of the credential usage. The default end date value is one year from today. For an 'asymmetric' type credential, this must be set to on or before the date that the X509 certificate is valid.")]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.DateTime]
     ${EndDate},
 
-    [Parameter(ParameterSetName = 'ApplicationWithKeyCredentialParameterSet', Mandatory, HelpMessage = "key credentials associated with the service principal.")]
-    [Parameter(ParameterSetName = 'ApplicationObjectWithKeyCredentialParameterSet', Mandatory, HelpMessage = "key credentials associated with the service principal.")]
     [Parameter(ParameterSetName = 'DisplayNameWithKeyCredentialParameterSet', Mandatory, HelpMessage = "key credentials associated with the service principal.")]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -379,8 +363,6 @@ function New-AzADServicePrincipal {
     # To construct, see NOTES section for KEYCREDENTIALS properties and create a hash table.
     ${KeyCredential},
 
-    [Parameter(ParameterSetName = 'ApplicationWithPasswordCredentialParameterSet', Mandatory, HelpMessage = "Password credentials associated with the service principal.")]
-    [Parameter(ParameterSetName = 'ApplicationObjectWithPasswordCredentialParameterSet', Mandatory, HelpMessage = "Password credentials associated with the service principal.")]
     [Parameter(ParameterSetName = 'DisplayNameWithPasswordCredentialParameterSet', Mandatory, HelpMessage = "Password credentials associated with the service principal.")]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -724,7 +706,10 @@ function New-AzADServicePrincipal {
     if ($PSBoundParameters['ApplicationObject']) {
       $PSBoundParameters['AppId'] = $PSBoundParameters['ApplicationObject'].AppId
       $null = $PSBoundParameters.Remove('ApplicationObject')
-    } elseif (!$PSBoundParameters['ApplicationId']) {
+    } elseif ($PSBoundParameters['ApplicationId']) {
+      $PSBoundParameters['AppId'] = $PSBoundParameters['ApplicationId']
+      $null = $PSBoundParameters.Remove('ApplicationId')
+    } else {
       if (!$PSBoundParameters['DisplayName']) {
         $param['DisplayName'] = "azure-powershell-" + (Get-Date).ToString("MM-dd-yyyy-HH-mm-ss")
       } else {
@@ -751,13 +736,14 @@ function New-AzADServicePrincipal {
           $param['EndDate'] = $PSBoundParameters['EndDate']
           $null = $PSBoundParameters.Remove('EndDate')
         }
+        if ($PSBoundParameters['CertValue']) {
+          $param['CertValue'] = $PSBoundParameters['CertValue']
+          $null = $PSBoundParameters.Remove('CertValue') 
+        }
       }
 
       $app = New-AzADApplication @param
       $PSBoundParameters['AppId'] = $app.AppId
-    } else {
-      $PSBoundParameters['AppId'] = $PSBoundParameters['ApplicationId']
-      $null = $PSBoundParameters.Remove('ApplicationId')
     }
 
     $sp = Az.MSGraph.internal\New-AzADServicePrincipal @PSBoundParameters

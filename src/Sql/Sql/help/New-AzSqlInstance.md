@@ -367,7 +367,7 @@ The Backup storage redundancy used to store backups for the Sql Azure Managed In
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Local, Zone, Geo
+Accepted values: Local, Zone, Geo, GeoZone
 
 Required: False
 Position: Named

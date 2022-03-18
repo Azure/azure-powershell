@@ -48,9 +48,12 @@ The **New-AzStackEdgeShare** cmdlet creates a new share on the Stack Edge device
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> New-AzStackEdgeShare -ResourceGroupName resourceGroupName -DeviceName deviceName -Name share-1 -SMB
+```powershell
+New-AzStackEdgeShare -ResourceGroupName resourceGroupName -DeviceName deviceName -Name share-1 -SMB
 -StorageAccountCredentialName storageCredentialName -DataFormat PageBlob
+```
+
+```output
 Name       Type       DataPolicy       DataFormat       ResourceGroupName     StorageAccountName
 ---------- ---------- ---------------- ---------------- --------------------- -------------------
 share-1    SMB        Cloud            PageBlob         resourceGroupName     storageAccountName

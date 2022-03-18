@@ -58,6 +58,7 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
 The **New-AzVM** cmdlet creates a virtual machine in Azure.
 This cmdlet takes a virtual machine object as input.
 Use the New-AzVMConfig cmdlet to create a virtual machine object.
+The **New-AzVM** cmdlet will create a new storage account for boot diagnostics if one does not already exist. 
 Other cmdlets can be used to configure the virtual machine, such as Set-AzVMOperatingSystem, Set-AzVMSourceImage, Add-AzVMNetworkInterface, and Set-AzVMOSDisk.
 The `SimpleParameterSet` provides a convenient method to create a VM by making common VM creation arguments optional.
 

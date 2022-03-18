@@ -1,0 +1,140 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/e3a1f070-4fbe-428f-90cb-50dadce68bfb/providers/Microsoft.Authorization/resourceManagementPrivateLinks?api-version=2020-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTNhMWYwNzAtNGZiZS00MjhmLTkwY2ItNTBkYWRjZTY4YmZiL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9yZXNvdXJjZU1hbmFnZW1lbnRQcml2YXRlTGlua3M/YXBpLXZlcnNpb249MjAyMC0wNS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d43a0b55-866c-4810-a31c-977fa289d2da"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.ResourceManager.ResourcePrivateLinkClient/3.17.2.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "centralus:a44a109f-9e95-4141-8375-0428015e2da6"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "35f7e6d0-9034-4fce-b7fe-bdce967d29ce"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20220225T021326Z:35f7e6d0-9034-4fce-b7fe-bdce967d29ce"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 25 Feb 2022 02:13:26 GMT"
+        ],
+        "Content-Length": [
+          "641"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"privateEndpointConnections\": []\r\n      },\r\n      \"id\": \"/subscriptions/e3a1f070-4fbe-428f-90cb-50dadce68bfb/resourceGroups/PrivateLinkTestRG/providers/Microsoft.Authorization/resourceManagementPrivateLinks/NewPL\",\r\n      \"name\": \"NewPL\",\r\n      \"type\": \"Microsoft.Authorization/resourceManagementPrivateLinks\",\r\n      \"location\": \"centralus\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"privateEndpointConnections\": []\r\n      },\r\n      \"id\": \"/subscriptions/e3a1f070-4fbe-428f-90cb-50dadce68bfb/resourceGroups/PrivateLinkTestRG/providers/Microsoft.Authorization/resourceManagementPrivateLinks/NewPL2\",\r\n      \"name\": \"NewPL2\",\r\n      \"type\": \"Microsoft.Authorization/resourceManagementPrivateLinks\",\r\n      \"location\": \"centralus\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/e3a1f070-4fbe-428f-90cb-50dadce68bfb/providers/Microsoft.Authorization/resourceManagementPrivateLinks?api-version=2020-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTNhMWYwNzAtNGZiZS00MjhmLTkwY2ItNTBkYWRjZTY4YmZiL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9yZXNvdXJjZU1hbmFnZW1lbnRQcml2YXRlTGlua3M/YXBpLXZlcnNpb249MjAyMC0wNS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d43a0b55-866c-4810-a31c-977fa289d2da"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.ResourceManager.ResourcePrivateLinkClient/3.17.2.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "centralus:a44a109f-9e95-4141-8375-0428015e2da6"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "35f7e6d0-9034-4fce-b7fe-bdce967d29ce"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20220225T021326Z:35f7e6d0-9034-4fce-b7fe-bdce967d29ce"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 25 Feb 2022 02:13:26 GMT"
+        ],
+        "Content-Length": [
+          "641"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"privateEndpointConnections\": []\r\n      },\r\n      \"id\": \"/subscriptions/e3a1f070-4fbe-428f-90cb-50dadce68bfb/resourceGroups/PrivateLinkTestRG/providers/Microsoft.Authorization/resourceManagementPrivateLinks/NewPL\",\r\n      \"name\": \"NewPL\",\r\n      \"type\": \"Microsoft.Authorization/resourceManagementPrivateLinks\",\r\n      \"location\": \"centralus\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"privateEndpointConnections\": []\r\n      },\r\n      \"id\": \"/subscriptions/e3a1f070-4fbe-428f-90cb-50dadce68bfb/resourceGroups/PrivateLinkTestRG/providers/Microsoft.Authorization/resourceManagementPrivateLinks/NewPL2\",\r\n      \"name\": \"NewPL2\",\r\n      \"type\": \"Microsoft.Authorization/resourceManagementPrivateLinks\",\r\n      \"location\": \"centralus\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"privateEndpointConnections\": []\r\n      },\r\n      \"id\": \"/subscriptions/e3a1f070-4fbe-428f-90cb-50dadce68bfb/resourceGroups/PrivateLinkTestRG2/providers/Microsoft.Authorization/resourceManagementPrivateLinks/NewPL\",\r\n      \"name\": \"NewPL\",\r\n      \"type\": \"Microsoft.Authorization/resourceManagementPrivateLinks\",\r\n      \"location\": \"centralus\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "e3a1f070-4fbe-428f-90cb-50dadce68bfb"
+  }
+}

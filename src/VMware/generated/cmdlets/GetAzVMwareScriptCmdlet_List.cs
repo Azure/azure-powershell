@@ -9,15 +9,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
     using System;
 
     /// <summary>
-    /// Return script cmdlet resources available for a private cloud to create a script execution resource on their Private Cloud
+    /// List script cmdlet resources available for a private cloud to create a script execution resource on a private cloud
     /// </summary>
     /// <remarks>
     /// [OpenAPI] List=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptPackages/{scriptPackageName}/scriptCmdlets"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzVMwareScriptCmdlet_List")]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.IScriptCmdlet))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"Return script cmdlet resources available for a private cloud to create a script execution resource on their Private Cloud")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptCmdlet))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"List script cmdlet resources available for a private cloud to create a script execution resource on a private cloud")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Generated]
     public partial class GetAzVMwareScriptCmdlet_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener
@@ -35,6 +35,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
+
+        /// <summary>A flag to tell whether it is the first onOK call.</summary>
+        private bool _isFirst = true;
+
+        /// <summary>Link to retrieve next page.</summary>
+        private string _nextLink;
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -162,24 +168,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.ICloudError"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ICloudError"
         /// /> from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.IScriptCmdletsList"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptCmdletsList"
         /// /> from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.IScriptCmdletsList> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptCmdletsList> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -351,12 +357,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.ICloudError"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ICloudError"
         /// /> from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.ICloudError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ICloudError> response)
         {
             using( NoSynchronizationContext )
             {
@@ -373,7 +379,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.ICloudError>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ICloudError>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, PrivateCloudName=PrivateCloudName, ScriptPackageName=ScriptPackageName })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
@@ -391,12 +397,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.IScriptCmdletsList"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptCmdletsList"
         /// /> from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.IScriptCmdletsList> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptCmdletsList> response)
         {
             using( NoSynchronizationContext )
             {
@@ -412,13 +418,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
                 // pageable / value / nextLink
                 var result = await response;
                 WriteObject(result.Value,true);
-                if (result.NextLink != null)
+                _nextLink = result.NextLink;
+                if (_isFirst)
                 {
-                    if (responseMessage.RequestMessage is System.Net.Http.HttpRequestMessage requestMessage )
+                    _isFirst = false;
+                    while (_nextLink != null)
                     {
-                        requestMessage = requestMessage.Clone(new global::System.Uri( result.NextLink ),Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Method.Get );
-                        await ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.FollowingNextLink); if( ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                        await this.Client.ScriptCmdletsList_Call(requestMessage, onOk, onDefault, this, Pipeline);
+                        if (responseMessage.RequestMessage is System.Net.Http.HttpRequestMessage requestMessage )
+                        {
+                            requestMessage = requestMessage.Clone(new global::System.Uri( _nextLink ),Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Method.Get );
+                            await ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.FollowingNextLink); if( ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+                            await this.Client.ScriptCmdletsList_Call(requestMessage, onOk, onDefault, this, Pipeline);
+                        }
                     }
                 }
             }

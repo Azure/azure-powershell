@@ -57,8 +57,11 @@ This **Set-AzStackEdgeShare** will replace the access rights
 
 ### Example 1
 ```powershell
-PS C:\> $AccessRights = @(@{"ClientId"="192.168.10.10";"AccessRight"="NoAccess"}, @{"ClientId"="192.168.10.11";"AccessRight"="ReadOnly"})
-PS C:\> Set-AzStackEdgeShare -ResourceGroupName resource-group-name -ClientAccessRight $AccessRights
+$AccessRights = @(@{"ClientId"="192.168.10.10";"AccessRight"="NoAccess"}, @{"ClientId"="192.168.10.11";"AccessRight"="ReadOnly"})
+Set-AzStackEdgeShare -ResourceGroupName resource-group-name -ClientAccessRight $AccessRights
+```
+
+```output
 Name       Type       DataPolicy       DataFormat       ResourceGroupName     StorageAccountName
 ---------- ---------- ---------------- ---------------- --------------------- -------------------
 share-2    NFS        Cloud            PageBlob         resource-group-name   storage-account-name
@@ -68,8 +71,11 @@ share-2    NFS        Cloud            PageBlob         resource-group-name   st
 
 ### Example 2
 ```powershell
-PS C:\> $AccessRights = @(@{"Username"="user-name-1";"AccessRight"="Read"}, @{"Username"="user-name-2";"AccessRight"="Read"}, @{"Username"="user-name-3";"AccessRight"="Custom"})
-PS C:\> Set-AzStackEdgeShare -ResourceGroupName resource-group-name -UserAccessRight $AccessRights
+$AccessRights = @(@{"Username"="user-name-1";"AccessRight"="Read"}, @{"Username"="user-name-2";"AccessRight"="Read"}, @{"Username"="user-name-3";"AccessRight"="Custom"})
+Set-AzStackEdgeShare -ResourceGroupName resource-group-name -UserAccessRight $AccessRights
+```
+
+```output
 Name       Type       DataPolicy       DataFormat       ResourceGroupName     StorageAccountName
 ---------- ---------- ---------------- ---------------- --------------------- -------------------
 share-1    SMB        Cloud            PageBlob         resource-group-name   storage-account-name

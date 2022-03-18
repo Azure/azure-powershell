@@ -42,7 +42,7 @@ https://docs.microsoft.com/azure/azure-monitor/app/pricing#legacy-enterprise-per
 
 ### Example 1 Set pricing plan and daily data volume information for an application insights resource
 ```powershell
-Set-AzApplicationInsightsDailyCap -ResourceGroupName "testgroup" -Name "test" -PricingPlan "Basic" -DailyCapGB 400
+Set-AzApplicationInsightsPricingPlan -ResourceGroupName "testgroup" -Name "test" -PricingPlan "Basic" -DailyCapGB 400
 ```
 ```output
  Cap ResetTime StopSendNotificationWhenHitCap PricingPlan

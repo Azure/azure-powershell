@@ -27,9 +27,11 @@ The **Set-AzRedisCache** cmdlet modifies an Azure Cache for Redis.
 ## EXAMPLES
 
 ### Example 1: Modify Azure Cache for Redis
+```powershell
+Set-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -RedisConfiguration @{"maxmemory-policy" = "allkeys-random"}
 ```
-PS C:\>Set-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -RedisConfiguration @{"maxmemory-policy" = "allkeys-random"}
 
+```output
           PrimaryKey         : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
           SecondaryKey       : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
           ResourceGroupName  : mygroup
@@ -53,9 +55,11 @@ PS C:\>Set-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -RedisConfi
 This command updates the maxmemory-policy for your Azure Cache fo Redis named *MyCache*.
 
 ### Example 2: Modify Azure Cache for Redis - If you want to Disable RDB or AOF Data Persistence.
+```powershell
+Set-AzRedisCache -Name "MyCache"  -RedisConfiguration @{"rdb-backup-enabled" = "false"}
 ```
-PS C:\>Set-AzRedisCache -Name "MyCache"  -RedisConfiguration @{"rdb-backup-enabled" = "false"}
 
+```output
           PrimaryKey         : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
           SecondaryKey       : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
           ResourceGroupName  : MyGroup
@@ -82,9 +86,11 @@ PS C:\>Set-AzRedisCache -Name "MyCache"  -RedisConfiguration @{"rdb-backup-enabl
 This cmdlet disables RDB backup data persistence for Azure Cache for Redis. You can also disable AOF backup persistent cache.
 
 ### Example 3: Modify Azure Cache for Redis - If you want to add data persistence after azure redis cache created.
+```powershell
+Set-AzRedisCache -Name "MyCache" -RedisConfiguration @{"rdb-backup-enabled" = "true"; "rdb-storage-connection-string" = "DefaultEndpointsProtocol=https;AccountName=mystorageaccount;AccountKey=pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=;EndpointSuffix=core.windows.net"; "rdb-backup-frequency" = "30"}
 ```
-PS C:\>Set-AzRedisCache -Name "MyCache" -RedisConfiguration @{"rdb-backup-enabled" = "true"; "rdb-storage-connection-string" = "DefaultEndpointsProtocol=https;AccountName=mystorageaccount;AccountKey=pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=;EndpointSuffix=core.windows.net"; "rdb-backup-frequency" = "30"}
 
+```output
           PrimaryKey         : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
           SecondaryKey       : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
           ResourceGroupName  : MyGroup
@@ -112,9 +118,11 @@ This cmdlet enables rdb-backup persistence on an already existing cache. You can
 
 For example - Currently you are taking RDB snapshot in every 30 minute, but you want to change to take snapshot 15 minutes.
 
+```powershell
+Set-AzRedisCache -Name "MyCache" -RedisConfiguration @{"rdb-backup-frequency" = "15"}
 ```
-PS C:\>Set-AzRedisCache -Name "MyCache" -RedisConfiguration @{"rdb-backup-frequency" = "15"}
 
+```output
           PrimaryKey         : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
           SecondaryKey       : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
           ResourceGroupName  : MyGroup
@@ -138,9 +146,11 @@ PS C:\>Set-AzRedisCache -Name "MyCache" -RedisConfiguration @{"rdb-backup-freque
 
 ### Example 5: Modify Azure Cache for Redis - If you want to change AOF back up data persistence to RDB back up.
 
+```powershell
+Set-AzRedisCache -Name "MyCache"  -RedisConfiguration @{"aof-backup-enabled"= "false"; "rdb-backup-enabled" = "true"; "rdb-storage-connection-string" = "DefaultEndpointsProtocol=https;AccountName=mystorageaccount;AccountKey=pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=;EndpointSuffix=core.windows.net"; "rdb-backup-frequency" = "30"}
 ```
-PS C:\>Set-AzRedisCache -Name "MyCache"  -RedisConfiguration @{"aof-backup-enabled"= "false"; "rdb-backup-enabled" = "true"; "rdb-storage-connection-string" = "DefaultEndpointsProtocol=https;AccountName=mystorageaccount;AccountKey=pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=;EndpointSuffix=core.windows.net"; "rdb-backup-frequency" = "30"}
 
+```output
           PrimaryKey         : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
           SecondaryKey       : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
           ResourceGroupName  : MyGroup
@@ -167,9 +177,11 @@ This cmdlet helps in changing persistence method.
 
 ### Example 6: Scale an Azure Cache for Redis Instance - Update to different size.
 
+```powershell
+Set-AzRedisCache -Name "MyCache" -Size "P2" -Sku "Premium"
 ```
-PS C:\>Set-AzRedisCache -Name "MyCache" -Size "P2" -Sku "Premium"
 
+```output
           PrimaryKey         : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
           SecondaryKey       : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
           ResourceGroupName  : MyGroup
@@ -195,9 +207,11 @@ This command increases or decreases the memory size of your instance.
 
 ### Example 7: Scale an Azure Cache for Redis Instance - Update to different tier.
 
+```powershell
+Set-AzRedisCache -Name "MyCache" -Size "P1" -Sku "Premium" 
 ```
-PS C:\>Set-AzRedisCache -Name "MyCache" -Size "P1" -Sku "Premium" 
 
+```output
           PrimaryKey         : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
           SecondaryKey       : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
           ResourceGroupName  : MyGroup
@@ -223,9 +237,11 @@ This command helps you change the tier of your cache. You can change from Basic 
 
 ### Example 8: Scale an Azure Cache for Redis Instance - Enable Redis Clustering.
 
+```powershell
+Set-AzRedisCache -Name "MyCache" -ShardCount 1
 ```
-PS C:\>Set-AzRedisCache -Name "MyCache" -ShardCount 1
 
+```output
           PrimaryKey         : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
           SecondaryKey       : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
           ResourceGroupName  : MyGroup
@@ -252,9 +268,11 @@ This cmdlet helps you in enable clustering for your Azure Cache for Redis instan
 
 ### Example 9: Scale an Azure Cache for Redis Instance - Use Redis Cluster to scale in/out.
 
+```powershell
+Set-AzRedisCache -Name "MyCache" -ShardCount 2
 ```
-PS C:\>Set-AzRedisCache -Name "MyCache" -ShardCount 2
 
+```output
           PrimaryKey         : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
           SecondaryKey       : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
           ResourceGroupName  : MyGroup

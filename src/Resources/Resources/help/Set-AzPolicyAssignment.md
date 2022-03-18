@@ -84,10 +84,10 @@ Specify an assignment by ID or by name and scope.
 ## EXAMPLES
 
 ### Example 1: Update the display name
-```
-PS C:\> $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
-PS C:\> $PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment' -Scope $ResourceGroup.ResourceId
-PS C:\> Set-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -DisplayName 'Do not allow VM creation'
+```powershell
+$ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
+$PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment' -Scope $ResourceGroup.ResourceId
+Set-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -DisplayName 'Do not allow VM creation'
 ```
 
 The first command gets a resource group named ResourceGroup11 by using the Get-AzResourceGroup cmdlet.
@@ -97,9 +97,9 @@ The command stores that object in the $PolicyAssignment variable.
 The final command updates the display name on the policy assignment on the resource group identified by the **ResourceId** property of $ResourceGroup.
 
 ### Example 2: Add a system assigned managed identity to the policy assignment
-```
-PS C:\> $PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment'
-PS C:\> Set-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -IdentityType 'SystemAssigned' -Location 'westus'
+```powershell
+$PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment'
+Set-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -IdentityType 'SystemAssigned' -Location 'westus'
 ```
 
 The first command gets the policy assignment named PolicyAssignment from the current subscription by using the Get-AzPolicyAssignment cmdlet.
@@ -107,10 +107,10 @@ The command stores that object in the $PolicyAssignment variable.
 The final command assigns a system assigned managed identity to the policy assignment.
 
 ### Example 3: Add a user assigned managed identity to the policy assignment
-```
-PS C:\> $PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment'
-PS C:\> $UserAssignedIdentity = Get-AzUserAssignedIdentity -ResourceGroupName 'ResourceGroup1' -Name 'UserAssignedIdentity1'
-PS C:\> Set-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -IdentityType 'UserAssigned' -Location 'westus' -IdentityId $UserAssignedIdentity.Id
+```powershell
+$PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment'
+$UserAssignedIdentity = Get-AzUserAssignedIdentity -ResourceGroupName 'ResourceGroup1' -Name 'UserAssignedIdentity1'
+ Set-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -IdentityType 'UserAssigned' -Location 'westus' -IdentityId $UserAssignedIdentity.Id
 ```
 
 The first command gets the policy assignment named PolicyAssignment from the current subscription by using the Get-AzPolicyAssignment cmdlet.
@@ -119,11 +119,11 @@ The second command gets the user assigned managed identity named UserAssignedIde
 The final command assigns the user assigned managed identity identified by the **Id** property of $UserAssignedIdentity to the policy assignment.
 
 ### Example 4: Update policy assignment parameters with new policy parameter object
-```
-PS C:\> $Locations = Get-AzLocation | where {($_.displayname -like 'france*') -or ($_.displayname -like 'uk*')}
-PS C:\> $AllowedLocations = @{'listOfAllowedLocations'=($Locations.location)}
-PS C:\> $PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment'
-PS C:\> Set-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -PolicyParameterObject $AllowedLocations
+```powershell
+$Locations = Get-AzLocation | where {($_.displayname -like 'france*') -or ($_.displayname -like 'uk*')}
+$AllowedLocations = @{'listOfAllowedLocations'=($Locations.location)}
+$PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment'
+Set-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -PolicyParameterObject $AllowedLocations
 ```
 
 The first and second commands create an object containing all Azure regions whose names start with "france" or "uk".
@@ -148,17 +148,17 @@ Create a file called _AllowedLocations.json_ in the local working directory with
 }
 ```
 
-```
-PS C:\> Set-AzPolicyAssignment -Name 'PolicyAssignment' -PolicyParameter .\AllowedLocations.json
+```powershell
+Set-AzPolicyAssignment -Name 'PolicyAssignment' -PolicyParameter .\AllowedLocations.json
 ```
 
 The command updates the policy assignment named 'PolicyAssignment' using the policy parameter file AllowedLocations.json from the local working directory.
 
 ### Example 6: Update an enforcementMode
-```
-PS C:\> $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
-PS C:\> $PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment' -Scope $ResourceGroup.ResourceId
-PS C:\> Set-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -EnforcementMode Default
+```powershell
+$ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
+$PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment' -Scope $ResourceGroup.ResourceId
+Set-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -EnforcementMode Default
 ```
 
 The first command gets a resource group named ResourceGroup11 by using the Get-AzResourceGroup cmdlet.
@@ -168,9 +168,9 @@ The command stores that object in the $PolicyAssignment variable.
 The final command updates the enforcementMode property on the policy assignment on the resource group identified by the **ResourceId** property of $ResourceGroup.
 
 ### Example 7: Update non-compliance messages
-```
-PS C:\> $PolicyAssignment = Get-AzPolicyAssignment -Name 'VirtualMachinePolicy'
-PS C:\> Set-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -NonComplianceMessage @{Message="All resources must follow resource naming guidelines."}
+```powershell
+$PolicyAssignment = Get-AzPolicyAssignment -Name 'VirtualMachinePolicy'
+Set-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -NonComplianceMessage @{Message="All resources must follow resource naming guidelines."}
 ```
 
 The first command gets the policy assignment named VirtualMachinePolicy by using the Get-AzPolicyAssignment cmdlet and stores it in the $PolicyAssignment variable.
