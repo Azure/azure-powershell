@@ -19,6 +19,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
+using Track2ManagementSdk = Azure.ResourceManager.KeyVault;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -27,6 +28,36 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public PSKeyVault()
         {
         }
+
+        public PSKeyVault(Track2ManagementSdk.Vault vault, IMicrosoftGraphClient graphClient)
+        {
+            if (!vault.HasData) 
+            {
+                vault = vault.Get();
+            }
+
+            VaultName = vault.Data.Name;
+            Location = vault.Data.Location;
+            ResourceId = vault.Data.Id;
+            ResourceGroupName = new ResourceIdentifier(ResourceId).ResourceGroupName;
+            Tags = TagsConversionHelper.CreateTagHashtable(vault.Data.Tags.ToDictionary(pair => pair.Key, pair => pair.Value));
+            Sku = vault.Data.Properties.Sku.Name.ToString();
+            TenantId = vault.Data.Properties.TenantId;
+            var vaultTenantDisplayName = ModelExtensions.GetDisplayNameForTenant(vault.Data.Properties.TenantId, graphClient);
+            TenantName = vaultTenantDisplayName;
+            VaultUri = vault.Data.Properties.VaultUri;
+            EnabledForDeployment = vault.Data.Properties.EnabledForDeployment ?? false;
+            EnabledForTemplateDeployment = vault.Data.Properties.EnabledForTemplateDeployment;
+            EnabledForDiskEncryption = vault.Data.Properties.EnabledForDiskEncryption;
+            EnableSoftDelete = vault.Data.Properties.EnableSoftDelete;
+            EnablePurgeProtection = vault.Data.Properties.EnablePurgeProtection;
+            EnableRbacAuthorization = vault.Data.Properties.EnableRbacAuthorization;
+            SoftDeleteRetentionInDays = vault.Data.Properties.SoftDeleteRetentionInDays;
+            AccessPolicies = vault.Data.Properties.AccessPolicies.Select(ap => new PSKeyVaultAccessPolicy(ap.ToTrack1AccessPolicyEntry(), graphClient)).ToArray();
+            NetworkAcls = InitNetworkRuleSet(vault.Data.Properties.ToTrack1VaultProperties());
+            OriginalVault = vault.ToTrack1Vault();
+        }
+
 
         public PSKeyVault(Vault vault, IMicrosoftGraphClient graphClient)
         {

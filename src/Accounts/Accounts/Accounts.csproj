@@ -46,9 +46,9 @@
   <ItemGroup>
     <ProjectReference Include="..\Authentication.ResourceManager\Authentication.ResourceManager.csproj" />
     <ProjectReference Include="..\Authentication\Authentication.csproj" />
-    <ProjectReference Include="..\Authenticators\Authenticators.csproj" />  
+    <ProjectReference Include="..\Authenticators\Authenticators.csproj" />
   </ItemGroup>
-   
+  
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
