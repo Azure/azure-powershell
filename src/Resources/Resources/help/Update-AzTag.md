@@ -29,9 +29,10 @@ This operation allows replacing, merging or selectively deleting tags on the spe
 ### Example 1: Selectively updates the set of tags on a subscription with "Merge" Operation
 
 ```powershell
-PS C:\>$mergedTags = @{"key1"="value1"; "key3"="value3";}
-PS C:\>Update-AzTag -ResourceId /subscriptions/{subId} -Tag $mergedTags -Operation Merge
-
+$mergedTags = @{"key1"="value1"; "key3"="value3";}
+Update-AzTag -ResourceId /subscriptions/{subId} -Tag $mergedTags -Operation Merge
+```
+```output
 Id         : {Id}
 Name       : {Name}
 Type       : {Type}
@@ -48,9 +49,10 @@ This command Merges the set of tags on the subscription with {subId}.
 ### Example 2: Selectively updates the set of tags on a subscription with "Replace" Operation
 
 ```powershell
-PS C:\>$replacedTags = @{"key1"="value1"; "key3"="value3";}
-PS C:\>Update-AzTag -ResourceId /subscriptions/{subId} -Tag $replacedTags -Operation Replace
-
+$replacedTags = @{"key1"="value1"; "key3"="value3";}
+Update-AzTag -ResourceId /subscriptions/{subId} -Tag $replacedTags -Operation Replace
+```
+```output
 Id         : {Id}
 Name       : {Name}
 Type       : {Type}
@@ -66,9 +68,10 @@ This command Replaces the set of tags on the subscription with {subId}.
 ### Example 3: Selectively updates the set of tags on a subscription with "Delete" Operation
 
 ```powershell
-PS C:\>$deletedTags = @{"key1"="value1"}
-PS C:\>Update-AzTag -ResourceId /subscriptions/{subId} -Tag $deletedTags -Operation Delete
-
+$deletedTags = @{"key1"="value1"}
+Update-AzTag -ResourceId /subscriptions/{subId} -Tag $deletedTags -Operation Delete
+```
+```output
 Id         : {Id}
 Name       : {Name}
 Type       : {Type}

@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported create storage context with customized blob, queue, file, table service endpoint
+    - `New-AzStorageContext`
+* Fixed copy blob failure on Premium Storage account, or account enabled hierarchical namespace
+    -  `Copy-AzStorageBlob` 
 
 ## Version 4.3.0
 * Supported download blob from managed disk account with Sas Uri and bearer token

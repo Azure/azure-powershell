@@ -37,9 +37,9 @@ The **Remove-AzPolicyAssignment** cmdlet removes the specified policy assignment
 ## EXAMPLES
 
 ### Example 1: Remove policy assignment by name and scope
-```
-PS C:\> $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
-PS C:\> Remove-AzPolicyAssignment -Name 'PolicyAssignment07' -Scope $ResourceGroup.ResourceId -Confirm
+```powershell
+$ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
+Remove-AzPolicyAssignment -Name 'PolicyAssignment07' -Scope $ResourceGroup.ResourceId -Confirm
 ```
 
 The first command gets a resource group named ResourceGroup11 by using the Get-AzResourceGroup cmdlet.
@@ -48,10 +48,10 @@ The second command removes the policy assignment named PolicyAssignment07 that w
 The **ResourceId** property of $ResourceGroup identifies the resource group.
 
 ### Example 2: Remove policy assignment by ID
-```
-PS C:\> $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11' 
-PS C:\> $PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment07' -Scope $ResourceGroup.ResourceId
-PS C:\> Remove-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -Confirm
+```powershell
+$ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11' 
+$PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment07' -Scope $ResourceGroup.ResourceId
+Remove-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -Confirm
 ```
 
 The first command gets a resource group named ResourceGroup11, and then stores that object in the $ResourceGroup variable.

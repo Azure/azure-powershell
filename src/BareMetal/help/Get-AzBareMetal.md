@@ -36,8 +36,10 @@ Gets an Azure BareMetal instance for the specified subscription, resource group,
 
 ### Example 1: List
 ```powershell
-PS C:\> Get-AzBareMetal
+Get-AzBareMetal
+```
 
+```output
 Location       Name         ResourceGroupName
 --------       ----         -----------------
 westus2        rhel79ora01  MWH03A-T210
@@ -50,8 +52,10 @@ Gets Azure BareMetal instance.
 
 ### Example 2: Get
 ```powershell
-PS C:\> Get-AzBareMetal -Name oelnvmetest -ResourceGroupName SAT09A-T230
+Get-AzBareMetal -Name oelnvmetest -ResourceGroupName SAT09A-T230
+```
 
+```output
 Location       Name         ResourceGroupName
 --------       ----         -----------------
 southcentralus oelnvmetest  SAT09A-T230
@@ -61,8 +65,10 @@ Gets an Azure BareMetal instance for the specified subscription, resource group,
 
 ### Example 3: List1
 ```powershell
-PS C:\> Get-AzBareMetal -ResourceGroupName MWH03A-T210
+Get-AzBareMetal -ResourceGroupName MWH03A-T210
+```
 
+```output
 Location Name        ResourceGroupName
 -------- ----        -----------------
 westus2  rhel79ora01 MWH03A-T210

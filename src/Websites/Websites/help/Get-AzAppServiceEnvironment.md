@@ -24,7 +24,7 @@ The **Get-AzAppServiceEnvironment** cmdlet return ASE(s) matching the query.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzAppServiceEnvironment -ResourceGroupName MyResourceGroup -Name MyAseName
+Get-AzAppServiceEnvironment -ResourceGroupName MyResourceGroup -Name MyAseName
 ```
 
 Returns a specific App Service Environment named <MyAseName> in <MyResourceGroup>

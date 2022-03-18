@@ -25,7 +25,7 @@ Use **Update-AzServiceFabricReliability** to update reliability of the primary n
 
 ### Example 1
 ```powershell
-PS c:> Update-AzServiceFabricReliability -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -ReliabilityLevel Silver
+Update-AzServiceFabricReliability -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -ReliabilityLevel Silver
 ```
 
 This command changes the reliability tier of the primary node type to silver.
