@@ -57,11 +57,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public string EncryptionAlgorithmName { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = Constants.KeyWrapMetaData)]
-        [ValidateNotNullOrEmpty]
+        [ValidateNotNull]
         public PSSqlKeyWrapMetadata KeyWrapMetadata { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = Constants.KeyEncryptionKeyResolver)]
-        [ValidateNotNullOrEmpty]
+        [ValidateNotNull]
         public IKeyEncryptionKeyResolver KeyEncryptionKeyResolver { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.SqlDatabaseObjectHelpMessage)]
