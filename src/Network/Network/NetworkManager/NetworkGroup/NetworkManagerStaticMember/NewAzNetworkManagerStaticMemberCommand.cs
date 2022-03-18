@@ -103,9 +103,9 @@ namespace Microsoft.Azure.Commands.Network
             var networkManagerStaticMemberModel = NetworkResourceManagerProfile.Mapper.Map<MNM.StaticMember>(psNetworkStaticMember);
 
             var networkManagerStaticMemberResponse = this.NetworkManagerStaticMemberClient.CreateOrUpdate(networkManagerStaticMemberModel, this.ResourceGroupName, this.NetworkManagerName, this.NetworkGroupName, this.Name);
-            var psNetworkManager = this.ToPsNetworkManagerStaticMember(networkManagerStaticMemberResponse);
+            var psStaticMember = this.ToPsNetworkManagerStaticMember(networkManagerStaticMemberResponse);
 
-            return psNetworkManager;
+            return psStaticMember;
         }
     }
 }
