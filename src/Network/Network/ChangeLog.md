@@ -61,6 +61,14 @@
     - `New-AzNetworkManagerStaticMember` 
     - `Remove-AzNetworkManagerStaticMember` 
     - `Set-AzNetworkManagerStaticMember` 
+    - `Get-AzNetworkManagerScopeConnection` 
+    - `New-AzNetworkManagerScopeConnection` 
+    - `Remove-AzNetworkManagerScopeConnection` 
+    - `Set-AzNetworkManagerScopeConnection` 
+    - `Get-AzNetworkManagerSubscriptionConnection` 
+    - `New-AzNetworkManagerSubscriptionConnection` 
+    - `Remove-AzNetworkManagerSubscriptionConnection` 
+    - `Set-AzNetworkManagerSubscriptionConnection` 
 
 ## Version 4.15.0
 * Added support for accepting Vnet, Subnet and NIC resources as the TargetResourceId for the following cdmlets
