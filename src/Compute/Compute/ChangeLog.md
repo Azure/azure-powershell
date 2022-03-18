@@ -20,8 +20,7 @@
 
 -->
 ## Upcoming Release
-* Edited `New-AzVM` to create a new storage account for boot diagnostics if one does not exist. 
-  This will prevent the cmdlet from using a random storage account in the current subscription to use for boot diagnostics.
+* Updated `New-AzVM` to create a new storage account for boot diagnostics if one does not exist. This will prevent the cmdlet from using a random storage account in the current subscription to use for boot diagnostics.
 * Updated `Get-AzVm` to include GetVirtualMachineById parameter set
 * Edited the documentation for the cmdlet `Set-AzVMADDomainExtension` to ensure the example is accurate. 
 * Improved description and examples for disk creation
