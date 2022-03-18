@@ -978,7 +978,7 @@ function Test-ClientEncryptionKeyCmdlets
       $UpdatedKeyWrapMetaDataObject = [Microsoft.Azure.Commands.CosmosDB.Models.PSSqlKeyWrapMetadata]::new([Microsoft.Azure.Management.CosmosDB.Models.KeyWrapMetadata]::new($keywrapmetadataName2,$keywrapmetadataType,$encryptionKey2,$keywrapmetadataAlgo))
 
       # Test4 - update client encryption key
-      $UpdatedClientEncryptionKey = Update-AzCosmosDbClientEncryptionKey -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ClientEncryptionKeyName $ClientEncryptionKeyName -EncryptionAlgorithmName "AEAD_AES_256_CBC_HMAC_SHA256" -KeyWrapMetadata $UpdatedKeyWrapMetaDataObject      
+      $UpdatedClientEncryptionKey = Update-AzCosmosDbClientEncryptionKey -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ClientEncryptionKeyName $ClientEncryptionKeyName -KeyWrapMetadata $UpdatedKeyWrapMetaDataObject      
       Assert-AreEqual $UpdatedClientEncryptionKey.Resource.id $ClientEncryptionKeyName
       Assert-AreEqual $UpdatedClientEncryptionKey.Resource.encryptionAlgorithm $EncryptionAlgorithm
       Assert-AreEqual $UpdatedClientEncryptionKey.Resource.keyWrapMetadata.name $keywrapmetadataName2
@@ -1006,6 +1006,7 @@ function Test-ClientEncryptionKeyCmdletsUsingInputObject
   $EncryptionAlgorithm = "AEAD_AES_256_CBC_HMAC_SHA256"
   $keywrapmetadataName = "cmk1v1"
   $keywrapmetadataName2 = "cmk1v2"
+  $keywrapmetadataName3 = "cmk1v3"
   $keywrapmetadataType = "AZURE_KEY_VAULT"
   $keywrapmetadataAlgo = "RSA-OAEP"
   $vaultName="CosmosDBAeAkv60"
@@ -1086,7 +1087,7 @@ function Test-ClientEncryptionKeyCmdletsUsingInputObject
       $UpdatedKeyWrapMetaDataObject = [Microsoft.Azure.Commands.CosmosDB.Models.PSSqlKeyWrapMetadata]::new([Microsoft.Azure.Management.CosmosDB.Models.KeyWrapMetadata]::new($keywrapmetadataName2,$keywrapmetadataType,$encryptionKey2,$keywrapmetadataAlgo))
 
       # Test4 - update client encryption key, pass Parent object/Database object
-      $UpdatedClientEncryptionKey = Update-AzCosmosDbClientEncryptionKey -ParentObject $NewDatabase -ClientEncryptionKeyName $ClientEncryptionKeyName -EncryptionAlgorithmName "AEAD_AES_256_CBC_HMAC_SHA256" -KeyWrapMetadata $UpdatedKeyWrapMetaDataObject      
+      $UpdatedClientEncryptionKey = Update-AzCosmosDbClientEncryptionKey -ParentObject $NewDatabase -ClientEncryptionKeyName $ClientEncryptionKeyName -KeyWrapMetadata $UpdatedKeyWrapMetaDataObject      
       Assert-AreEqual $UpdatedClientEncryptionKey.Resource.id $ClientEncryptionKeyName
       Assert-AreEqual $UpdatedClientEncryptionKey.Resource.encryptionAlgorithm $EncryptionAlgorithm
       Assert-AreEqual $UpdatedClientEncryptionKey.Resource.keyWrapMetadata.name $keywrapmetadataName2
@@ -1094,10 +1095,12 @@ function Test-ClientEncryptionKeyCmdletsUsingInputObject
       Assert-AreEqual $UpdatedClientEncryptionKey.Resource.keyWrapMetadata.value $encryptionKey2
       Assert-AreEqual $UpdatedClientEncryptionKey.Resource.keyWrapMetadata.algorithm $keywrapmetadataAlgo
 
-      $UpdatedClientEncryptionKey2 = Update-AzCosmosDbClientEncryptionKey -InputObject $UpdatedClientEncryptionKey
+      # Test5 - update client encryption key, pass Input object as key with new WrapMetadata
+      $UpdatedKeyWrapMetaDataObject = [Microsoft.Azure.Commands.CosmosDB.Models.PSSqlKeyWrapMetadata]::new([Microsoft.Azure.Management.CosmosDB.Models.KeyWrapMetadata]::new($keywrapmetadataName3,$keywrapmetadataType,$encryptionKey2,$keywrapmetadataAlgo))
+      $UpdatedClientEncryptionKey2 = Update-AzCosmosDbClientEncryptionKey -InputObject $UpdatedClientEncryptionKey -KeyWrapMetadata $UpdatedKeyWrapMetaDataObject
       Assert-AreEqual $UpdatedClientEncryptionKey2.Resource.id $ClientEncryptionKeyName
       Assert-AreEqual $UpdatedClientEncryptionKey2.Resource.encryptionAlgorithm $EncryptionAlgorithm
-      Assert-AreEqual $UpdatedClientEncryptionKey2.Resource.keyWrapMetadata.name $keywrapmetadataName2
+      Assert-AreEqual $UpdatedClientEncryptionKey2.Resource.keyWrapMetadata.name $keywrapmetadataName3
       Assert-AreEqual $UpdatedClientEncryptionKey2.Resource.keyWrapMetadata.type $keywrapmetadataType
       Assert-AreEqual $UpdatedClientEncryptionKey2.Resource.keyWrapMetadata.value $encryptionKey2
       Assert-AreEqual $UpdatedClientEncryptionKey2.Resource.keyWrapMetadata.algorithm $keywrapmetadataAlgo
