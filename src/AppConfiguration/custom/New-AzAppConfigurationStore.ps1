@@ -43,7 +43,7 @@ function New-AzAppConfigurationStore {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         # The Microsoft Azure subscription ID.
         ${SubscriptionId},
@@ -66,9 +66,28 @@ function New-AzAppConfigurationStore {
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support.IdentityType]
         # The type of managed identity used.
-        # The type 'SystemAssignedAndUserAssigned' includes both an implicitly created identity and a set of user-assigned identities.
+        # The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities.
         # The type 'None' will remove any identities.
         ${IdentityType},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+        [System.String]
+        # The URI of the key vault key used to encrypt data.
+        ${EncryptionKeyIdentifier},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+        [System.String]
+        # The client id of the identity which will be used to access key vault.
+        ${KeyVaultIdentityClientId},
+
+        [Parameter()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support.PublicNetworkAccess])]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support.PublicNetworkAccess]
+        # Control permission for data plane traffic coming from public networks while private endpoint is enabled.
+        ${PublicNetworkAccess},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
@@ -79,7 +98,7 @@ function New-AzAppConfigurationStore {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IResourceTags]))]
         [System.Collections.Hashtable]
         # The tags of the resource.
         ${Tag},

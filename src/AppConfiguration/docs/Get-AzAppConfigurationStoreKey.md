@@ -26,6 +26,7 @@ Lists the access key for the specified configuration store.
 ```powershell
 Get-AzAppConfigurationStoreKey -Name appconfig-test01 -ResourceGroupName azpwsh-manual-test
 ```
+
 ```output
 ConnectionString                                                                                                                     LastModified        Name                ReadOnly Value
 ----------------                                                                                                                     ------------        ----                -------- -----
