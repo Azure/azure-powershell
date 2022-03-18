@@ -21,34 +21,34 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.CosmosDB.Helpers
 {
-    public class CosmosDBSessionCredential : TokenCredential
+    internal class CosmosDBSessionCredential : TokenCredential
     {
         private IAccessToken accessToken;
 
-        public CosmosDBSessionCredential(IAzureContext DefaultContext, string endPointResourceId)
+        public CosmosDBSessionCredential(IAzureContext defaultContext, string endPointResourceId)
         {
-            if (DefaultContext == null || DefaultContext.Account == null)
+            if (defaultContext == null || defaultContext.Account == null)
             {
                 throw new InvalidOperationException();
             }
 
             IAccessToken accessToken1 = AzureSession.Instance.AuthenticationFactory.Authenticate(
-               account: DefaultContext.Account,
-               environment: DefaultContext.Environment,
-               tenant: DefaultContext.Tenant.Id,
+               account: defaultContext.Account,
+               environment: defaultContext.Environment,
+               tenant: defaultContext.Tenant.Id,
                password: null,
                promptBehavior: ShowDialog.Never,
                promptAction: null,
                resourceId: endPointResourceId);
 
             // set the access token.
-            accessToken = accessToken1;
+            this.accessToken = accessToken1;
         }
 
         public override AccessToken GetToken(TokenRequestContext requestContext, CancellationToken cancellationToken)
         {
             AccessToken token;
-            accessToken.AuthorizeRequest((tokenType, tokenValue) =>
+            this.accessToken.AuthorizeRequest((tokenType, tokenValue) =>
             {
                 token = new AccessToken(tokenValue, DateTimeOffset.UtcNow);
             });
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public override ValueTask<AccessToken> GetTokenAsync(TokenRequestContext requestContext, CancellationToken cancellationToken)
         {
             AccessToken token;
-            accessToken.AuthorizeRequest((tokenType, tokenValue) =>
+            this.accessToken.AuthorizeRequest((tokenType, tokenValue) =>
             {
                 token = new AccessToken(tokenValue, DateTimeOffset.UtcNow);
             });

@@ -152,7 +152,7 @@ Client Encryption Key name.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: ClientEncryptionKeyName. 
+Aliases: ClientEncryptionKeyName
 
 Required: True
 Position: Named

@@ -46,21 +46,18 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.ClientEncryptionKeyName)]
+        [Parameter(Mandatory = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.ClientEncryptionKeyName)]
+        [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.ClientEncryptionKeyName)]
         [Alias(Constants.ClientEncryptionKeyNameAlias)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.EncryptionAlgorithmName)]
-        [ValidateNotNullOrEmpty]
-        public string EncryptionAlgorithmName { get; set; }
-
-        [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = Constants.KeyWrapMetaData)]
-        [ValidateNotNullOrEmpty]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = Constants.KeyWrapMetaData)]
+        [ValidateNotNull]
         public PSSqlKeyWrapMetadata KeyWrapMetadata { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = Constants.KeyEncryptionKeyResolver)]
-        [ValidateNotNullOrEmpty]
+        [ValidateNotNull]
         public IKeyEncryptionKeyResolver KeyEncryptionKeyResolver { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.SqlDatabaseObjectHelpMessage)]
@@ -82,14 +79,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
             }            
             else if (ParameterSetName.Equals(ObjectParameterSet, StringComparison.Ordinal))
             {
-                Name = InputObject.Name;
-                EncryptionAlgorithmName = InputObject.Resource.EncryptionAlgorithm;
-                KeyWrapMetadata = new PSSqlKeyWrapMetadata(InputObject.Resource.KeyWrapMetaData);
-
                 ResourceIdentifier resourceIdentifier = new ResourceIdentifier(InputObject.Id);
                 ResourceGroupName = resourceIdentifier.ResourceGroupName;
                 DatabaseName = ResourceIdentifierExtensions.GetSqlDatabaseName(resourceIdentifier);
                 AccountName = ResourceIdentifierExtensions.GetDatabaseAccountName(resourceIdentifier);
+                Name = InputObject.Name;
             }
 
             KeyWrapMetadata newEncryptionKeyWrapMetadata;
@@ -163,13 +157,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 Resource = clientEncryptionKeyResource
             };
 
-            if (ShouldProcess(Name, "Updating an exisitng CosmosDB Client Encryption Key"))
+            if (ShouldProcess(Name, "Updating an existing CosmosDB Client Encryption Key"))
             {
                 ClientEncryptionKeyGetResults clientEncryptionKeyGetResults = CosmosDBManagementClient.SqlResources.CreateUpdateClientEncryptionKeyWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName, Name, clientEncryptionKeyCreateUpdateParameters).GetAwaiter().GetResult().Body;
                 WriteObject(new PSSqlClientEncryptionKeyGetResults(clientEncryptionKeyGetResults));
             }
-
-            return;
         }
 
         private static ClientEncryptionKeyResource PopulateSqlClientEncryptionKeyResource(ClientEncryptionKeyGetPropertiesResource clientEncryptionKeyGetPropertiesResource)

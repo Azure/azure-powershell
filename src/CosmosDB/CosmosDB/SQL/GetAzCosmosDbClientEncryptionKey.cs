@@ -65,10 +65,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
             }
             else
             {
-                IEnumerable<ClientEncryptionKeyGetResults> clientEncryptionKeyNames = CosmosDBManagementClient.SqlResources.ListClientEncryptionKeysWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName).GetAwaiter().GetResult().Body;
+                IEnumerable<ClientEncryptionKeyGetResults> clientEncryptionKeys = CosmosDBManagementClient.SqlResources.ListClientEncryptionKeysWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName).GetAwaiter().GetResult().Body;
 
-                foreach (ClientEncryptionKeyGetResults clientEncryptionKeyName in clientEncryptionKeyNames)
-                    WriteObject(new PSSqlClientEncryptionKeyGetResults(clientEncryptionKeyName));
+                foreach (ClientEncryptionKeyGetResults clientEncryptionKey in clientEncryptionKeys)
+                    WriteObject(new PSSqlClientEncryptionKeyGetResults(clientEncryptionKey));
             }
 
             return;

@@ -133,12 +133,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string ClientEncryptionKeyObjectHelpMessage = "Client Encryption Key object.";
 
         //SQL Client Side Encryption
-        public const string ClientEncryptionKeyName = "Client Encryption Key name. ";
-        public const string ClientEncryptionKeyNameAlias = "ClientEncryptionKeyName. ";
-        public const string EncryptionAlgorithmName = "Client Encryption Algorithm name. ";
-        public const string KeyWrapMetaData = "KeyWrapMetaData Object of type Microsoft.Azure.Commands.CosmosDB.PSSqlKeyWrapMetadata. ";
-        public const string WrappedDataEncryptionKey = "WrappedDataEncryptionKey Object of type System.Byte. ";
-        public const string KeyEncryptionKeyResolver = "KeyEncryptionKeyResolver interface of type Azure.Core.Cryptography.IKeyEncryptionKeyResolver. If KeyEncryptionKeyResolver is not passed Azure Key Vault KeyResolver is used. ";
+        public const string ClientEncryptionKeyName = "Client Encryption Key name.";
+        public const string ClientEncryptionKeyNameAlias = "ClientEncryptionKeyName";
+        public const string EncryptionAlgorithmName = "Client Encryption Algorithm name.";
+        public const string KeyWrapMetaData = "KeyWrapMetaData Object of type Microsoft.Azure.Commands.CosmosDB.PSSqlKeyWrapMetadata.";
+        public const string KeyEncryptionKeyResolver = "KeyEncryptionKeyResolver interface of type Azure.Core.Cryptography.IKeyEncryptionKeyResolver. If KeyEncryptionKeyResolver is not passed Azure Key Vault KeyResolver is used.";
 
         //MongoDB cmdlets help messages
         public const string CollectionNameHelpMessage = "Collection name.";

@@ -88,6 +88,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 throw new ArgumentException("KeyWrapMetadata cannot be null");
             }
 
+            if(!string.Equals(EncryptionAlgorithmName, "AEAD_AES_256_CBC_HMAC_SHA256"))
+            {
+                throw new ArgumentException($"Invalid encryption algorithm '{EncryptionAlgorithmName}' passed. Please refer to https://aka.ms/CosmosClientEncryption for more details.");
+            }
+
             if (!string.Equals(encryptionKeyWrapMetadata.Algorithm, "RSA-OAEP"))
             {
                 throw new ArgumentException($"Invalid key wrap algorithm '{encryptionKeyWrapMetadata.Algorithm}' passed. Please refer to https://aka.ms/CosmosClientEncryption for more details.");
@@ -154,8 +159,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 ClientEncryptionKeyGetResults clientEncryptionKeyGetResults = CosmosDBManagementClient.SqlResources.CreateUpdateClientEncryptionKeyWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName, Name, clientEncryptionKeyCreateUpdateParameters).GetAwaiter().GetResult().Body;
                 WriteObject(new PSSqlClientEncryptionKeyGetResults(clientEncryptionKeyGetResults));
             }
-
-            return;
         }
     }   
 

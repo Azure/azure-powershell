@@ -15,25 +15,22 @@ Updates the CosmosDB Client Encryption Key. Performs a client side patch operati
 ### ByNameParameterSet (Default)
 ```
 Update-AzCosmosDbClientEncryptionKey -ResourceGroupName <String> -AccountName <String> -DatabaseName <String>
- [-Name <String>] [-EncryptionAlgorithmName <String>] [-KeyWrapMetadata <PSSqlKeyWrapMetadata>]
- [-KeyEncryptionKeyResolver <IKeyEncryptionKeyResolver>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -Name <String> -KeyWrapMetadata <PSSqlKeyWrapMetadata> [-KeyEncryptionKeyResolver <IKeyEncryptionKeyResolver>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Update-AzCosmosDbClientEncryptionKey [-Name <String>] [-EncryptionAlgorithmName <String>]
- [-KeyWrapMetadata <PSSqlKeyWrapMetadata>] [-KeyEncryptionKeyResolver <IKeyEncryptionKeyResolver>]
- -ParentObject <PSSqlDatabaseGetResults> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzCosmosDbClientEncryptionKey -Name <String> -KeyWrapMetadata <PSSqlKeyWrapMetadata>
+ [-KeyEncryptionKeyResolver <IKeyEncryptionKeyResolver>] -ParentObject <PSSqlDatabaseGetResults>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Update-AzCosmosDbClientEncryptionKey [-Name <String>] [-EncryptionAlgorithmName <String>]
- [-KeyWrapMetadata <PSSqlKeyWrapMetadata>] [-KeyEncryptionKeyResolver <IKeyEncryptionKeyResolver>]
- -InputObject <PSSqlClientEncryptionKeyGetResults> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Update-AzCosmosDbClientEncryptionKey -KeyWrapMetadata <PSSqlKeyWrapMetadata>
+ [-KeyEncryptionKeyResolver <IKeyEncryptionKeyResolver>] -InputObject <PSSqlClientEncryptionKeyGetResults>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,7 +41,7 @@ The **Update-AzCosmosDbClientEncryptionKey** updates the CosmosDb Client Encrypt
 ### Example 1
 ```powershell
 PS C:\> $updatedKeyWrapMetadataObject = [Microsoft.Azure.Commands.CosmosDB.Models.PSSqlKeyWrapMetadata]::new([Microsoft.Azure.Management.CosmosDB.Models.KeyWrapMetadata]::new("myKekV2","AZURE_KEY_VAULT", "https://contoso.vault.azure.net/keys/myKekV2/78deebed173b48e48f55abf87ed4cf71", "RSA-OAEP"))
-PS C:\> Update-AzCosmosDbClientEncryptionKey -AccountName myAccountName -DatabaseName myDatabaseName -ResourceGroupName myRgName -Name myClientEncryptionKeyName -EncryptionAlgorithmName "AEAD_AES_256_CBC_HMAC_SHA256" -KeyWrapMetadata $updatedKeyWrapMetadataObject
+PS C:\> Update-AzCosmosDbClientEncryptionKey -AccountName myAccountName -DatabaseName myDatabaseName -ResourceGroupName myRgName -Name myClientEncryptionKeyName -KeyWrapMetadata $updatedKeyWrapMetadataObject
 
 Name     : myContainerName
 Id       : /subscriptions/mySubscriptionId/resourceGroups/myRgName/providers/Microsoft.DocumentDB/databaseAccounts/myAccountName/sqlDatabases/myDatabaseName/clientEncryptionKeys/myClientEncryptionKeyName
@@ -55,7 +52,17 @@ Resource : Microsoft.Azure.Commands.CosmosDB.Models.PSSqlClientEncryptionKeyGetP
 ```powershell
 PS C:\> $updatedKeyWrapMetadataObject = [Microsoft.Azure.Commands.CosmosDB.Models.PSSqlKeyWrapMetadata]::new([Microsoft.Azure.Management.CosmosDB.Models.KeyWrapMetadata]::new("myKekV2","AZURE_KEY_VAULT", "https://contoso.vault.azure.net/keys/myKekV2/78deebed173b48e48f55abf87ed4cf71", "RSA-OAEP"))
 PS C:\> $azureKeyVaultKeyResolver = [Azure.Security.KeyVault.Keys.Cryptography.KeyResolver]::new([Azure.Identity.DefaultAzureCredential]::new())
-PS C:\> Update-AzCosmosDbClientEncryptionKey -AccountName myAccountName -DatabaseName myDatabaseName -ResourceGroupName myRgName -Name myClientEncryptionKeyName -EncryptionAlgorithmName "AEAD_AES_256_CBC_HMAC_SHA256" -KeyWrapMetadata $updatedKeyWrapMetadataObject -KeyEncryptionKeyResolver $azureKeyVaultKeyResolver
+PS C:\> Update-AzCosmosDbClientEncryptionKey -AccountName myAccountName -DatabaseName myDatabaseName -ResourceGroupName myRgName -Name myClientEncryptionKeyName -KeyWrapMetadata $updatedKeyWrapMetadataObject -KeyEncryptionKeyResolver $azureKeyVaultKeyResolver
+
+Name     : myContainerName
+Id       : /subscriptions/mySubscriptionId/resourceGroups/myRgName/providers/Microsoft.DocumentDB/databaseAccounts/myAccountName/sqlDatabases/myDatabaseName/clientEncryptionKeys/myClientEncryptionKeyName
+Resource : Microsoft.Azure.Commands.CosmosDB.Models.PSSqlClientEncryptionKeyGetPropertiesResource
+```
+### Example 3
+```powershell
+PS C:\> $updatedKeyWrapMetadataObject = [Microsoft.Azure.Commands.CosmosDB.Models.PSSqlKeyWrapMetadata]::new([Microsoft.Azure.Management.CosmosDB.Models.KeyWrapMetadata]::new("myKekV2","AZURE_KEY_VAULT", "https://contoso.vault.azure.net/keys/myKekV2/78deebed173b48e48f55abf87ed4cf71", "RSA-OAEP"))
+PS C:\> $keyToUpdate = Get-AzCosmosDbClientEncryptionKey -AccountName myAccountName -DatabaseName myDatabaseName -ResourceGroupName myRgName -ClientEncryptionKeyName myClientEncryptionKeyName
+PS C:\> Update-AzCosmosDbClientEncryptionKey -InputObject $keyToUpdate -KeyWrapMetadata $updatedKeyWrapMetadataObject -KeyEncryptionKeyResolver $azureKeyVaultKeyResolver
 
 Name     : myContainerName
 Id       : /subscriptions/mySubscriptionId/resourceGroups/myRgName/providers/Microsoft.DocumentDB/databaseAccounts/myAccountName/sqlDatabases/myDatabaseName/clientEncryptionKeys/myClientEncryptionKeyName
@@ -109,21 +116,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EncryptionAlgorithmName
-Client Encryption Algorithm name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Client Encryption Key object.
 
@@ -162,7 +154,7 @@ Type: Microsoft.Azure.Commands.CosmosDB.Models.PSSqlKeyWrapMetadata
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -174,10 +166,10 @@ Client Encryption Key name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases: ClientEncryptionKeyName. 
+Parameter Sets: ByNameParameterSet, ByParentObjectParameterSet
+Aliases: ClientEncryptionKeyName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

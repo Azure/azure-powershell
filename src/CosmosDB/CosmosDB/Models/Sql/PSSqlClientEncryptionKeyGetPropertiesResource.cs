@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
 
             Id = clientEncryptionKeyGetPropertiesResource.Id;
             EncryptionAlgorithm = clientEncryptionKeyGetPropertiesResource.EncryptionAlgorithm;
-            KeyWrapMetaData = clientEncryptionKeyGetPropertiesResource.KeyWrapMetadata;
+            KeyWrapMetaData = new PSKeyWrapMetadata(clientEncryptionKeyGetPropertiesResource.KeyWrapMetadata);
             WrappedDataEncryptionKey = clientEncryptionKeyGetPropertiesResource.WrappedDataEncryptionKey;
             _rid = clientEncryptionKeyGetPropertiesResource._rid;
             _ts = clientEncryptionKeyGetPropertiesResource._ts;
@@ -50,9 +50,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         public string EncryptionAlgorithm { get; set; }
         //
         // Summary:
-        //      Gets or sets metadata for the wrapping provider that can be used to unwrap the
+        //     Gets or sets metadata for the wrapping provider that can be used to unwrap the
         //     wrapped client encryption key.
-        public KeyWrapMetadata KeyWrapMetaData { get; set; }
+        public PSKeyWrapMetadata KeyWrapMetaData { get; set; }
         //
         // Summary:
         //     Gets or sets wrapped (encrypted) form of the key represented as a byte array.
