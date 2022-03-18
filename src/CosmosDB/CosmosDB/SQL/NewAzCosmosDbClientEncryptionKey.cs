@@ -17,7 +17,6 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.CosmosDB.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.CosmosDB.Models;
 using Microsoft.Azure.Commands.CosmosDB.Exceptions;
 using Microsoft.Azure.Management.CosmosDB;
@@ -28,6 +27,7 @@ using Microsoft.Rest.Azure;
 using System.Security.Cryptography;
 using Azure.Security.KeyVault.Keys.Cryptography;
 using Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Exceptions;
+using ResourceIdentifier = Microsoft.Azure.Management.Internal.Resources.Utilities.Models.ResourceIdentifier;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
