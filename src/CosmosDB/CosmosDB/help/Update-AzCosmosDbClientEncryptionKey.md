@@ -48,6 +48,10 @@ Id       : /subscriptions/mySubscriptionId/resourceGroups/myRgName/providers/Mic
 Resource : Microsoft.Azure.Commands.CosmosDB.Models.PSSqlClientEncryptionKeyGetPropertiesResource
 ```
 
+This example shows how a key is updated. If KeyEncryptionKeyResolver is not passed Azure Key Vault KeyResolver is used by default.
+The first command creates a KeyWrapMetadata object with name myKekV2 of type AZURE_KEY_VAULT with value set to key id https://contoso.vault.azure.net/keys/myKekV2/78deebed173b48e48f55abf87ed4cf71 and algorithm type "RSA-OAEP" used to encrypt the key.
+In the second command a key with name as set in myClientEncryptionKeyName variable is updated with KeyWrapMetadata set to value returned by first command.
+
 ### Example 2
 ```powershell
 PS C:\> $updatedKeyWrapMetadataObject = [Microsoft.Azure.Commands.CosmosDB.Models.PSSqlKeyWrapMetadata]::new([Microsoft.Azure.Management.CosmosDB.Models.KeyWrapMetadata]::new("myKekV2","AZURE_KEY_VAULT", "https://contoso.vault.azure.net/keys/myKekV2/78deebed173b48e48f55abf87ed4cf71", "RSA-OAEP"))
@@ -58,6 +62,12 @@ Name     : myContainerName
 Id       : /subscriptions/mySubscriptionId/resourceGroups/myRgName/providers/Microsoft.DocumentDB/databaseAccounts/myAccountName/sqlDatabases/myDatabaseName/clientEncryptionKeys/myClientEncryptionKeyName
 Resource : Microsoft.Azure.Commands.CosmosDB.Models.PSSqlClientEncryptionKeyGetPropertiesResource
 ```
+
+This example shows how a key is updated and how KeyEncryptionKeyResolver can be passed as a parameter.
+The first command creates a KeyWrapMetadata object with name myKekV2 of type AZURE_KEY_VAULT with value set to key id https://contoso.vault.azure.net/keys/myKekV2/78deebed173b48e48f55abf87ed4cf71 and algorithm type "RSA-OAEP" used to encrypt the key.
+The second command creates a Azure Key Vault KeyResolver object using the Azure Default credentials.
+In the third command a key with name as set in myClientEncryptionKeyName variable is updated with KeyWrapMetadata set to value returned by first command and KeyEncryptionKeyResolver value set to KeyResolver object obtained via the second command.
+
 ### Example 3
 ```powershell
 PS C:\> $updatedKeyWrapMetadataObject = [Microsoft.Azure.Commands.CosmosDB.Models.PSSqlKeyWrapMetadata]::new([Microsoft.Azure.Management.CosmosDB.Models.KeyWrapMetadata]::new("myKekV2","AZURE_KEY_VAULT", "https://contoso.vault.azure.net/keys/myKekV2/78deebed173b48e48f55abf87ed4cf71", "RSA-OAEP"))
@@ -68,6 +78,11 @@ Name     : myContainerName
 Id       : /subscriptions/mySubscriptionId/resourceGroups/myRgName/providers/Microsoft.DocumentDB/databaseAccounts/myAccountName/sqlDatabases/myDatabaseName/clientEncryptionKeys/myClientEncryptionKeyName
 Resource : Microsoft.Azure.Commands.CosmosDB.Models.PSSqlClientEncryptionKeyGetPropertiesResource
 ```
+
+This example shows how a key is updated using an InputObject which is obtained by reading the key which has to be updated.
+The first command creates a KeyWrapMetadata object with name myKekV2 of type AZURE_KEY_VAULT with value set to key id https://contoso.vault.azure.net/keys/myKekV2/78deebed173b48e48f55abf87ed4cf71 and algorithm type "RSA-OAEP" used to encrypt the key.
+In the second command reads the key which is to be updated.
+The third command updates the key which was read earlier in the second command. The object read in the second command is passed as the InputObject along with the updated KeyWrapMetadata obtained in the first command.
 
 ## PARAMETERS
 
