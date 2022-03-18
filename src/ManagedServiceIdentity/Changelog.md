@@ -18,7 +18,14 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Bumped API Version to 2018-11-30
+* Added new cmdlets `Get-AzSystemAssignedIdentity` and `Update-AzUserAssignedIdentity`
 
-## Version 0.1.0
-* First preview release for module Az.ManagedServiceIdentity
+## Version 0.7.3
+* Update references in .psd1 to use relative path
 
+## Version 0.7.2
+* Fixed miscellaneous typos across module
+
+## Version 0.7.1
+* Update release with latest service features and serialization fixes
