@@ -22,7 +22,7 @@ Update-AzCosmosDbClientEncryptionKey -ResourceGroupName <String> -AccountName <S
 ### ByParentObjectParameterSet
 ```
 Update-AzCosmosDbClientEncryptionKey -Name <String> -KeyWrapMetadata <PSSqlKeyWrapMetadata>
- [-KeyEncryptionKeyResolver <IKeyEncryptionKeyResolver>] -ParentObject <PSSqlDatabaseGetResults>
+ [-KeyEncryptionKeyResolver <IKeyEncryptionKeyResolver>] -SqlDatabaseObject <PSSqlDatabaseGetResults>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -191,21 +191,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ParentObject
-Sql Database object.
-
-```yaml
-Type: Microsoft.Azure.Commands.CosmosDB.Models.PSSqlDatabaseGetResults
-Parameter Sets: ByParentObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Name of resource group.
 
@@ -218,6 +203,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SqlDatabaseObject
+Sql Database object.
+
+```yaml
+Type: Microsoft.Azure.Commands.CosmosDB.Models.PSSqlDatabaseGetResults
+Parameter Sets: ByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
