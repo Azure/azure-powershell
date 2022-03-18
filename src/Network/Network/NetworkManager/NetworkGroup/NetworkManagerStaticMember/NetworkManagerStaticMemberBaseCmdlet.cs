@@ -31,11 +31,11 @@ namespace Microsoft.Azure.Commands.Network
             }
         }
 
-        public bool IsNetworkManagerStaticMemberPresent(string resourceGroupName, string networkManagerName, string networkManagerStaticMember, string name)
+        public bool IsNetworkManagerStaticMemberPresent(string resourceGroupName, string networkManagerName, string networkManagerGroupName, string name)
         {
             try
             {
-                GetNetworkManagerStaticMember(resourceGroupName, networkManagerName, networkManagerStaticMember, name);
+                GetNetworkManagerStaticMember(resourceGroupName, networkManagerName, networkManagerGroupName, name);
             }
             catch (Microsoft.Rest.Azure.CloudException exception)
             {
@@ -59,9 +59,9 @@ namespace Microsoft.Azure.Commands.Network
         }
 
         // Temporary - to be removed
-        public void NullifyNetworkGroupIfAbsent(NetworkGroup networkGroup)
+        public void NullifyNetworkManagerStaticMemberIfAbsent(StaticMember staticMember)
         {
-            if (networkGroup == null)
+            if (staticMember == null)
             {
                 return;
             }

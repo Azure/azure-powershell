@@ -61,6 +61,14 @@
     - `New-AzNetworkManagerStaticMember` 
     - `Remove-AzNetworkManagerStaticMember` 
     - `Set-AzNetworkManagerStaticMember` 
+    - `Get-AzNetworkManagerScopeConnection` 
+    - `New-AzNetworkManagerScopeConnection` 
+    - `Remove-AzNetworkManagerScopeConnection` 
+    - `Set-AzNetworkManagerScopeConnection` 
+    - `Get-AzNetworkManagerSubscriptionConnection` 
+    - `New-AzNetworkManagerSubscriptionConnection` 
+    - `Remove-AzNetworkManagerSubscriptionConnection` 
+    - `Set-AzNetworkManagerSubscriptionConnection` 
 
 ## Version 4.15.0
 * Added support for retreiving the state of packet capture even when the provisioning state of the packet capture was failure

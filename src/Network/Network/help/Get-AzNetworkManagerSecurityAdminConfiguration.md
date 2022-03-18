@@ -42,6 +42,7 @@ Type               : Microsoft.Network/networkManagers/securityAdminConfiguratio
 Etag               : "00000000-0000-0000-0000-000000000000"
 ProvisioningState  : Succeeded
 DeleteExistingNSGs :
+ApplyOnNetworkIntentPolicyBasedServices:
 SecurityType       :
 SystemData         : {
                        "CreatedBy": "00000000-0000-0000-0000-000000000000",
@@ -66,6 +67,7 @@ Type               : Microsoft.Network/networkManagers/securityAdminConfiguratio
 Etag               : "00000000-0000-0000-0000-000000000000"
 ProvisioningState  : Succeeded
 DeleteExistingNSGs :
+ApplyOnNetworkIntentPolicyBasedServices:
 SecurityType       :
 SystemData         : {
                        "CreatedBy": "00000000-0000-0000-0000-000000000000",
