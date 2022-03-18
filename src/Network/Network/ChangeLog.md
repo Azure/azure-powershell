@@ -19,12 +19,6 @@
 --->
 
 ## Upcoming Release
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-* Added support for retreiving the state of packet capture even when the provisioning state of the packet capture was failure
-    - `Get-AzNetworkWatcherPacketCapture`
-=======
 * Onboard Azure Virtual Network Manager Cmdlets for preview
     - `Get-AzNetworkManager` 
     - `New-AzNetworkManager` 
@@ -69,7 +63,8 @@
     - `Set-AzNetworkManagerStaticMember` 
 
 ## Version 4.15.0
->>>>>>> 7640126025 (add helper)
+* Added support for retreiving the state of packet capture even when the provisioning state of the packet capture was failure
+    - `Get-AzNetworkWatcherPacketCapture`
 * Added support for accepting Vnet, Subnet and NIC resources as the TargetResourceId for the following cdmlets
     - `Set-AzNetworkWatcherFlowLog`
     - `New-AzNetworkWatcherFlowLog`
@@ -114,11 +109,8 @@
     - Also updated cmdlet to add the property for configuring ExclusionManagedRuleSet within Exclusions
         - `New-AzApplicationGatewayFirewallPolicyExclusion`
 * Bug Fix in Application Gateway Trusted Client Certificate cmdlets to load the entire cert chain from file.
-=======
-=======
 
 ## Version 4.12.1
->>>>>>> 53097c2e2b (Bump version for Az.Network (#16227))
 * Onboard Azure Virtual Network Manager Cmdlets for preview
     - `Get-AzNetworkManager` 
     - `New-AzNetworkManager` 
@@ -171,7 +163,6 @@
     - `New-AzNetworkManagerGroupMembersItem` 
     - `New-AzNetworkManagerHub` 
     - `New-AzNetworkManagerConnectivityGroupItem`
->>>>>>> 99a1f40ea5 (Add NetworkManager Service (#16085))
 
 ## Version 4.12.0
 * Support for Sku, ScaleUnits parameters of BastionHost resource.

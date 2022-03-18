@@ -1518,10 +1518,6 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<ANM.PSNetworkManagerSecurityDefaultAdminRule, MNM.DefaultAdminRule>();
                 cfg.CreateMap<ANM.PSNetworkManagerSecurityGroupItem, MNM.NetworkManagerSecurityGroupItem>();
                 cfg.CreateMap<ANM.PSNetworkManagerSecurityRuleCollection, MNM.RuleCollection>();
-<<<<<<< HEAD
-                cfg.CreateMap<ANM.PSNetworkManagerSecurityUserRule, MNM.UserRule>();
-=======
->>>>>>> beede5670b (fix tests and remove userrule)
                 cfg.CreateMap<ANM.PSNetworkManagerScopeConnection, MNM.ScopeConnection>();
                 cfg.CreateMap<ANM.PSNetworkManagerConnection, MNM.NetworkManagerConnection>();
 
