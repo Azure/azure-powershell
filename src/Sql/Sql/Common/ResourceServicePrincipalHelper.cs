@@ -28,26 +28,50 @@ namespace Microsoft.Azure.Commands.Sql.Common
 
     public class ResourceServicePrincipalHelper
     {
-        public static Management.Sql.Models.ServicePrincipal GetServicePrincipalObjectFromType(string resourceServicePrincipalType)
+        public static ServicePrincipal GetServicePrincipalObjectFromType(string resourceServicePrincipalType)
         {
-            Management.Sql.Models.ServicePrincipal servicePrincipalResult = null;
+            ServicePrincipal servicePrincipalResult = null;
 
             if (resourceServicePrincipalType != null && resourceServicePrincipalType.Equals(ResourceServicePrincipalType.None.ToString()))
             {
-                servicePrincipalResult = new Management.Sql.Models.ServicePrincipal()
+                servicePrincipalResult = new ServicePrincipal()
                 {
                     Type = ResourceIdentityType.None.ToString()
                 };
             }
             else if (resourceServicePrincipalType != null && resourceServicePrincipalType.Equals(ResourceServicePrincipalType.SystemAssigned.ToString()))
             {
-                servicePrincipalResult = new Management.Sql.Models.ServicePrincipal()
+                servicePrincipalResult = new ServicePrincipal()
                 {
                     Type = ResourceIdentityType.SystemAssigned.ToString()
                 };
             }
 
             return servicePrincipalResult;
+        }
+
+        public static Management.Sql.Models.ServicePrincipal UnwrapServicePrincipalObject(ServicePrincipal servicePrincipal)
+        {
+            if (servicePrincipal == null)
+                return null;
+
+            return new Management.Sql.Models.ServicePrincipal(
+                servicePrincipal.PrincipalId,
+                servicePrincipal.ClientId,
+                servicePrincipal.TenantId,
+                servicePrincipal.Type);
+        }
+
+        public static ServicePrincipal WrapServicePrincipalObject(Management.Sql.Models.ServicePrincipal servicePrincipal)
+        {
+            if (servicePrincipal == null)
+                return null;
+
+            return new ServicePrincipal(
+                servicePrincipal.PrincipalId,
+                servicePrincipal.ClientId,
+                servicePrincipal.TenantId,
+                servicePrincipal.Type);
         }
     }
 }

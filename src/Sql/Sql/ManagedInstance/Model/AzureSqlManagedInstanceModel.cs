@@ -178,6 +178,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Model
         /// <summary>
         /// Gets or sets the service principal object
         /// </summary>
-        public Management.Sql.Models.ServicePrincipal ServicePrincipal { get; set; }
+        public Common.ServicePrincipal ServicePrincipal { get; set; }
     }
 }
