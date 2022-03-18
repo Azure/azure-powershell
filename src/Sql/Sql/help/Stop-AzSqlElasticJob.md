@@ -39,8 +39,11 @@ Returns the current status of the job execution
 
 ### Example 1: Stops a job with a running job execution
 ```powershell
-PS C:\> $je = Get-AzSqlElasticJobExecution -ResourceGroupName rg -ServerName elasticjobserver -AgentName agent -JobName job1 -JobExecutionId dab0ebe8-fd52-42e9-bacf-e5f27577039b
+$je = Get-AzSqlElasticJobExecution -ResourceGroupName rg -ServerName elasticjobserver -AgentName agent -JobName job1 -JobExecutionId dab0ebe8-fd52-42e9-bacf-e5f27577039b
 $je | Stop-AzSqlElasticJob
+```
+
+```output
 JobName JobExecutionId                       Lifecycle                    StartTime            EndTime
 ------- --------------                       ---------                    ---------            -------
 job1    dab0ebe8-fd52-42e9-bacf-e5f27577039b WaitingForChildJobExecutions 6/1/2018 10:13:56 PM

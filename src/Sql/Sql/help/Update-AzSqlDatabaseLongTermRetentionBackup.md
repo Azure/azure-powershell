@@ -41,9 +41,10 @@ Updates the properties of a long term retention backup.
 
 ### Example 1: Update Backup Storage Redundancy of a long term retention backup.
 ```powershell
-PS C:\> Update-AzSqlDatabaseLongTermRetentionBackup -Location southeastasia -ServerName ayang-stage-seas -DatabaseName ltr3 -BackupName 'e5c20f43-494c-4925-89d1-58e0f4569fb3;132579992320000000' -ResourceGroupName testrg -BackupStorageRedundancy Geo
+Update-AzSqlDatabaseLongTermRetentionBackup -Location southeastasia -ServerName ayang-stage-seas -DatabaseName ltr3 -BackupName 'e5c20f43-494c-4925-89d1-58e0f4569fb3;132579992320000000' -ResourceGroupName testrg -BackupStorageRedundancy Geo
+```
 
-
+```output
 BackupExpirationTime             : 3/19/2021 1:33:52 AM
 BackupName                       : e5c20f43-494c-4925-89d1-58e0f4569fb3;132579992320000000
 BackupTime                       : 2/17/2021 1:33:52 AM
@@ -61,9 +62,10 @@ This command sets the Backup Storage Redundancy of the specified backup using lo
 
 ### Example 2: Update Backup Storage Redundancy of a long term retention backup (using Resource Id).
 ```powershell
-PS C:\> Update-AzSqlDatabaseLongTermRetentionBackup -ResourceId '/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionServers/ayang-stage-seas/longTermRetentionDatabases/ltr3/longTermRetentionBackups/e5c20f43-494c-4925-89d1-58e0f4569fb3;132579992320000000' -BackupStorageRedundancy Geo
+Update-AzSqlDatabaseLongTermRetentionBackup -ResourceId '/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionServers/ayang-stage-seas/longTermRetentionDatabases/ltr3/longTermRetentionBackups/e5c20f43-494c-4925-89d1-58e0f4569fb3;132579992320000000' -BackupStorageRedundancy Geo
+```
 
-
+```output
 BackupExpirationTime             : 3/19/2021 1:33:52 AM
 BackupName                       : e5c20f43-494c-4925-89d1-58e0f4569fb3;132579992320000000
 BackupTime                       : 2/17/2021 1:33:52 AM
