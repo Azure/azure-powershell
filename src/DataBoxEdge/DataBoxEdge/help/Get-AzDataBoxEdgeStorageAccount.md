@@ -66,7 +66,7 @@ edgestoragegacount2 0              OK     https://edgestoragegacount2.blob.db-ed
 
 ### Example 3
 ```powershell
-Get-AzDataBoxEdgeDevice -ResourceGroupName rgpName -DeviceName db-edge | Get-AzDataBoxEdgeStorageAccount
+Get-AzDataBoxEdgeDevice -ResourceGroupName rgpName -Name db-edge | Get-AzDataBoxEdgeStorageAccount
 ```
 
 ```output
