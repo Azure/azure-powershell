@@ -620,7 +620,7 @@ function Test-NetworkManagerSubscriptionConnectionCRUD
     $networkManagerId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/PSTestResources/providers/Microsoft.Network/networkManagers/PSTestNM"
 
     try{
-        New-AzNetworkManagerSubscriptionConnection -Name $networkManagerConnectionName -NetworkManagerID $networkManagerId -Description "SampleDescription" 
+        New-AzNetworkManagerSubscriptionConnection -Name $networkManagerConnectionName -NetworkManagerId $networkManagerId -Description "SampleDescription" 
         $networkManagerConnection = Get-AzNetworkManagerSubscriptionConnection -Name $networkManagerConnectionName
         Assert-NotNull $networkManagerConnection;
         Assert-AreEqual $networkManagerConnectionName $networkManagerConnection.Name;

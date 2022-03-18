@@ -44,12 +44,6 @@ Etag                  : "00000000-0000-0000-0000-000000000000"
 ProvisioningState     : Succeeded
 ConditionalMembership :
 MemberType            :
-GroupMembers          : [
-                          {
-                            "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG
-                        /providers/Microsoft.Network/virtualNetworks/testvnet"
-                          }
-                        ]
 SystemData            : {
                           "CreatedBy": "00000000-0000-0000-0000-000000000000",
                           "CreatedByType": "Application",
@@ -74,12 +68,6 @@ Etag                  : "00000000-0000-0000-0000-000000000000"
 ProvisioningState     : Succeeded
 ConditionalMembership :
 MemberType            :
-GroupMembers          : [
-                          {
-                            "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG
-                        /providers/Microsoft.Network/virtualNetworks/testvnet"
-                          }
-                        ]
 SystemData            : {
                           "CreatedBy": "00000000-0000-0000-0000-000000000000",
                           "CreatedByType": "Application",

@@ -59,9 +59,9 @@ namespace Microsoft.Azure.Commands.Network
         }
 
         // Temporary - to be removed
-        public void NullifyNetworkGroupIfAbsent(NetworkGroup networkGroup)
+        public void NullifyNetworkManagerStaticMemberIfAbsent(StaticMember staticMember)
         {
-            if (networkGroup == null)
+            if (staticMember == null)
             {
                 return;
             }

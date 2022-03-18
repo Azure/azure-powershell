@@ -24,7 +24,7 @@ The **New-AzNetworkManagerSubscriptionConnection** cmdlet creates a network mana
 
 ### Example 1
 ```powershell
-PS C:\> New-AzNetworkManagerSubscriptionConnection -Name $networkManagerConnectionName -NetworkManagerID $networkManagerId -Description "SampleDescription"
+PS C:\> New-AzNetworkManagerSubscriptionConnection -Name $networkManagerConnectionName -NetworkManagerId $networkManagerId -Description "SampleDescription"
 ```
 
 ## PARAMETERS
