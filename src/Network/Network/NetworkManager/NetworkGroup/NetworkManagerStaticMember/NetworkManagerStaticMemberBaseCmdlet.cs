@@ -31,11 +31,11 @@ namespace Microsoft.Azure.Commands.Network
             }
         }
 
-        public bool IsNetworkManagerStaticMemberPresent(string resourceGroupName, string networkManagerName, string networkManagerGroup, string name)
+        public bool IsNetworkManagerStaticMemberPresent(string resourceGroupName, string networkManagerName, string networkManagerGroupName, string name)
         {
             try
             {
-                GetNetworkManagerStaticMember(resourceGroupName, networkManagerName, networkManagerGroup, name);
+                GetNetworkManagerStaticMember(resourceGroupName, networkManagerName, networkManagerGroupName, name);
             }
             catch (Microsoft.Rest.Azure.CloudException exception)
             {
