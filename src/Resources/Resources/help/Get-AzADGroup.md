@@ -64,6 +64,13 @@ Get-AzADGroup -ObjectId $id -Select groupTypes -AppendSelected
 
 Get group by object id and append property 'groupTypes' after default properties: 'DisplayName', 'Id', 'DeletedDateTime', 'SecurityEnabled', 'MailEnabled', 'MailNickname', 'Description'
 
+### Example 4: Get group by search
+```powershell
+Get-AzADGroup -Search "displayName:trainees" -ConsistencyLevel eventual
+```
+
+Search for groups with the word trainees in the displayName. Filter does not support contains, use Search like this instead. Setting ConsistencyLevel to eventual is required to make Search work.
+
 ## PARAMETERS
 
 ### -AppendSelected
