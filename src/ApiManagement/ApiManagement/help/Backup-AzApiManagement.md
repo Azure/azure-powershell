@@ -15,8 +15,8 @@ Backs up an API Management service.
 
 ```
 Backup-AzApiManagement -ResourceGroupName <String> -Name <String> -StorageContext <IStorageContext>
- -TargetContainerName <String> [-TargetBlobName <String>] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -TargetContainerName <String> [-TargetBlobName <String>] [-AccessType <String>] [-IdentityClientId <String>]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,6 +37,21 @@ This command backs up an API Management service to a Storage blob.
 
 ## PARAMETERS
 
+### -AccessType
+The type of access to be used for the storage account.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
 
@@ -44,6 +59,21 @@ The credentials, account, tenant, and subscription used for communication with a
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityClientId
+The Client ID of user assigned managed identity. Required only if accessType is set to UserAssignedManagedIdentity.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

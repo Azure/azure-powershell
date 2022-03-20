@@ -12,20 +12,20 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-using System;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Management.Storage.Version2017_10_01;
+using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using Microsoft.Azure.Management.Storage.Version2017_10_01;
-using Microsoft.Azure.ServiceManagement.Common.Models;
-using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
-using ResourceManagementClient = Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient;
 using Xunit;
+using ResourceManagementClient = Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient;
+using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 
 namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 {
@@ -87,6 +87,18 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
             RunPowerShellTest("Test-BackupRestoreApiManagement");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Storage version out-of-date: Awaiting Storage.Management.Common")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestBackupRestoreApiManagementUsingManagedIdentity()
+        {
+            RunPowerShellTest("Test-BackupRestoreApiManagementUsingManagedIdentity");
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestApiManagementHostnamesCrud()
@@ -99,6 +111,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
         public void TestCrudApiManagementWithVirtualNetwork()
         {
             RunPowerShellTest("Test-ApiManagementVirtualNetworkCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCrudApiManagementVirtualNetworkStv2CRUD()
+        {
+            RunPowerShellTest("Test-ApiManagementVirtualNetworkStv2CRUD");
         }
 
         [Fact]
