@@ -455,7 +455,6 @@ Accept wildcard characters: False
 ```
 
 ### -PublicIpAddressId
-
 Standard SKU PublicIpAddress ResoureId for integration into stv2 Virtual Network Deployments
 
 ```yaml
@@ -471,7 +470,6 @@ Accept wildcard characters: False
 ```
 
 ### -PublicNetworkAccess
-
 Whether or not public endpoint access is allowed for this service.Possible values include: 'Enabled', 'Disabled'
 
 ```yaml
