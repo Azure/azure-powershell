@@ -23,7 +23,8 @@ New-AzApiManagement -ResourceGroupName <String> -Name <String> -Location <String
  [-SystemCertificateConfiguration <PsApiManagementSystemCertificate[]>]
  [-SslSetting <PsApiManagementSslSetting>] [-SystemAssignedIdentity] [-UserAssignedIdentity <String[]>]
  [-EnableClientCertificate] [-Zone <String[]>] [-DisableGateway <Boolean>]
- [-MinimalControlPlaneApiVersion <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-MinimalControlPlaneApiVersion <String>] [-PublicNetworkAccess <String>] [-PublicIpAddressId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -214,6 +215,7 @@ DisableGateway                        : False
 MinimalControlPlaneApiVersion         :
 ResourceGroupName                     : contoso-rg
 ```
+
 This command creates a Premium SKU Api Management service in Zones
 
 ## PARAMETERS
@@ -384,6 +386,36 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PublicIpAddressId
+Standard SKU PublicIpAddress ResoureId for integration into stv2 Virtual Network Deployments
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicNetworkAccess
+Whether or not public endpoint access is allowed for this service.Possible values include: 'Enabled', 'Disabled'
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

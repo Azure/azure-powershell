@@ -617,3 +617,162 @@ function Test-CrudApiManagementWithExternalVpn {
         Clean-ResourceGroup $resourceGroupName
     }
 }
+
+<#
+.SYNOPSIS
+Tests ApiManagementVirtualNetworkCRUD
+#>
+function Test-ApiManagementVirtualNetworkStv2CRUD {
+    # Setup
+    $primarylocation = "East US"
+    $secondarylocation = "South Central US"
+    $resourceGroupName = Get-ResourceGroupName
+    $apiManagementName = Get-ApiManagementServiceName
+    $organization = "apimpowershellorg"
+    $adminEmail = "apim@powershell.org"
+    $sku = "Developer"
+    $capacity = 1
+    $primarySubnetResourceId = "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.Network/virtualNetworks/powershellvneteastus/subnets/stv2subnet"
+    $primaryPublicIPAddressId = "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.Network/publicIPAddresses/powershellvneteastusip";
+    $primaryPublicIPAddressId2 = "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.Network/publicIPAddresses/powershellvneteastusip2";
+    $additionalSubnetResourceId = "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.Network/virtualNetworks/powershellvnetscu/subnets/stv2subnet"
+    $additionalPublicIPAddressId = "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.Network/publicIPAddresses/powershellvnetscuip";
+    $vpnType = "External" 
+ 
+    try {
+        # Create Resource Group
+        New-AzResourceGroup -Name $resourceGroupName -Location $primarylocation
+ 
+        # Create a Virtual Network Object
+        $virtualNetwork = New-AzApiManagementVirtualNetwork -SubnetResourceId $primarySubnetResourceId
+         
+        # Create API Management service in External VNET
+        $result = New-AzApiManagement -ResourceGroupName $resourceGroupName -Location $primarylocation -Name $apiManagementName -Organization $organization -AdminEmail $adminEmail -VpnType $vpnType `
+                    -VirtualNetwork $virtualNetwork -PublicIpAddressId $primaryPublicIPAddressId -Sku $sku -Capacity $capacity 
+ 
+        Assert-AreEqual $resourceGroupName $result.ResourceGroupName
+        Assert-AreEqual $apiManagementName $result.Name
+        Assert-AreEqual $primarylocation $result.Location
+        Assert-AreEqual $sku $result.Sku
+        Assert-AreEqual 1 $result.Capacity
+        Assert-AreEqual $vpnType $result.VpnType
+        Assert-Null $result.PrivateIPAddresses
+        Assert-NotNull $result.PublicIPAddresses
+        Assert-AreEqual $primarySubnetResourceId $result.VirtualNetwork.SubnetResourceId
+        
+
+		$networkStatus = Get-AzApiManagementNetworkStatus -ResourceGroupName $resourceGroupName -Name $apiManagementName
+        Assert-NotNull $networkStatus
+		Assert-NotNull $networkStatus.DnsServers
+		Assert-NotNull $networkStatus.ConnectivityStatus
+
+        # Get the service and switch to internal Virtual Network
+        $service = Get-AzApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName
+        $vpnType = "Internal"
+        $service.VirtualNetwork = $virtualNetwork
+        $service.PublicIpAddressId = $primaryPublicIPAddressId2
+        $service.VpnType = $vpnType
+        # update the SKU to Premium SKU
+        $sku = "Premium"
+        $service.Sku = $sku
+        
+        # Create Virtual Network Object for Additional region
+        $additionalRegionVirtualNetwork = New-AzApiManagementVirtualNetwork -SubnetResourceId $additionalSubnetResourceId
+
+        $service = Add-AzApiManagementRegion -ApiManagement $service -Location $secondarylocation `
+                    -VirtualNetwork $additionalRegionVirtualNetwork -PublicIpAddressId $additionalPublicIPAddressId
+        # Update the Deployment into Internal Virtual Network
+        $service = Set-AzApiManagement -InputObject $service -PassThru
+
+        Assert-AreEqual $resourceGroupName $service.ResourceGroupName
+        Assert-AreEqual $apiManagementName $service.Name
+        Assert-AreEqual $sku $service.Sku
+        Assert-AreEqual $primarylocation $service.Location
+        Assert-AreEqual "Succeeded" $service.ProvisioningState
+        Assert-AreEqual $vpnType $service.VpnType
+        Assert-NotNull $service.VirtualNetwork
+        Assert-NotNull $service.VirtualNetwork.SubnetResourceId
+        Assert-NotNull $service.PrivateIPAddresses
+        Assert-NotNull $service.PublicIPAddresses
+        Assert-AreEqual $primarySubnetResourceId $service.VirtualNetwork.SubnetResourceId
+
+        # Validate the additional region
+        Assert-AreEqual 1 $service.AdditionalRegions.Count
+        $found = 0
+        for ($i = 0; $i -lt $service.AdditionalRegions.Count; $i++) {
+            if ($service.AdditionalRegions[$i].Location -eq $secondarylocation) {
+                $found = $found + 1
+                Assert-AreEqual $sku $service.AdditionalRegions[$i].Sku
+                Assert-AreEqual 1 $service.AdditionalRegions[$i].Capacity
+                Assert-NotNull $service.AdditionalRegions[$i].VirtualNetwork
+                Assert-AreEqual $additionalSubnetResourceId $service.AdditionalRegions[$i].VirtualNetwork.SubnetResourceId
+                Assert-NotNull $service.AdditionalRegions[$i].PrivateIPAddresses
+                Assert-NotNull $service.AdditionalRegions[$i].PublicIPAddresses
+                Assert-NotNull $service.AdditionalRegions[$i].PublicIpAddressId
+            }
+        }
+        
+        Assert-True {$found -eq 1} "Api Management regions created earlier is not found."
+
+		# check the network status for the service.
+		$networkStatus = Get-AzApiManagementNetworkStatus -ApiManagementObject $service
+        Assert-NotNull $networkStatus
+		Assert-NotNull $networkStatus.DnsServers
+		Assert-NotNull $networkStatus.ConnectivityStatus
+
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $resourceGroupName    
+    }
+}
+
+<#
+.SYNOPSIS
+Tests API Management Backup/Restore operations.
+#>
+function Test-BackupRestoreApiManagementUsingManagedIdentity {
+    # Setup
+    $location = Get-ProviderLocation "Microsoft.ApiManagement/service"
+    $resourceGroupName = Get-ResourceGroupName
+    $storageLocation = "westus2"
+    $storageAccountName = "apimbackupmsi"
+    $msiClientId = "a6270d0c-7d86-478b-8cbe-dc9047ba54f7"
+    $msiUserAssignedId = "/subscriptions/4f5285a3-9fd7-40ad-91b1-d8fc3823983d/resourceGroups/net-sdk-backup-restore/providers/Microsoft.ManagedIdentity/userAssignedIdentities/apim-backup-restore-msi"
+    $apiManagementName = Get-ApiManagementServiceName
+    $organization = "apimpowershellorg"
+    $adminEmail = "apim@powershell.org"
+    $containerName = "backups"
+    $backupName = $apiManagementName + ".apimbackup"
+
+    
+    try {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location -Force
+
+        # Create storage account context
+        $storageContext = New-AzStorageContext -StorageAccountName $storageAccountName
+        
+        # Create API Management service
+        $apiManagementService = New-AzApiManagement -ResourceGroupName $resourceGroupName -Location $location -Name $apiManagementName `
+                -Organization $organization -AdminEmail $adminEmail -UserAssignedIdentity @($msiUserAssignedId)
+
+        # Backup API Management service
+        Backup-AzApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -StorageContext $storageContext `
+                    -TargetContainerName $containerName -TargetBlobName $backupName -AccessType "UserAssignedManagedIdentity" -IdentityClientId $msiClientId
+
+        # Restore API Management service
+        $restoreResult = Restore-AzApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -StorageContext $storageContext `
+                -SourceContainerName $containerName -SourceBlobName $backupName -AccessType "UserAssignedManagedIdentity" -IdentityClientId $msiClientId -PassThru
+
+        Assert-AreEqual $resourceGroupName $restoreResult.ResourceGroupName
+        Assert-AreEqual $apiManagementName $restoreResult.Name
+        Assert-AreEqual $location $restoreResult.Location
+        Assert-AreEqual "Developer" $restoreResult.Sku
+        Assert-AreEqual 1 $restoreResult.Capacity
+        Assert-AreEqual "Succeeded" $restoreResult.ProvisioningState
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $resourceGroupName    
+    }   
+}
