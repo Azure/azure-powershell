@@ -61,16 +61,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
 
         public string IdentityClientId { get; set; }
 
-        //
-        // Summary:
-        //     Gets or sets certificate Status. Possible values include: 'Completed', 'Failed',
-        //     'InProgress'
         public string CertificateStatus { get; set; }
 
-        //
-        // Summary:
-        //     Gets or sets certificate Source. Possible values include: 'Managed', 'KeyVault',
-        //     'Custom', 'BuiltIn'
         public string CertificateSource { get; set; }
     }
 }
