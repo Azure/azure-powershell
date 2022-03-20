@@ -58,6 +58,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             "Default behavior is to make the region live immediately. ")]
         public bool? DisableGateway { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Standard SKU PublicIpAddress ResoureId for integration into stv2 Virtual Network Deployments.")]
+        public string PublicIpAddressId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             WriteObject(
@@ -68,7 +71,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                     Capacity = Capacity.HasValue ? Capacity.Value : 1,
                     VirtualNetwork = VirtualNetwork,
                     Zone = Zone,
-                    DisableGateway = DisableGateway
+                    DisableGateway = DisableGateway,
+                    PublicIpAddressId = PublicIpAddressId
                 });
         }
     }
