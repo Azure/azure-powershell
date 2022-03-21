@@ -67,7 +67,7 @@ The **Close-AzStorageFileHandle** cmdlet closes file handles of a  file share, o
 
 ### Example 1: Close all file handles on a file
 ```
-PS C:\>Close-AzStorageFileHandle -ShareName "mysharename" -Path 'dir1/dir2/test.txt' -CloseAll
+PS C:\> Close-AzStorageFileHandle -ShareName "mysharename" -Path 'dir1/dir2/test.txt' -CloseAll
 ```
 
 This command closes all file handles on a file.
