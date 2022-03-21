@@ -29,59 +29,18 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public partial class PSApplicationSummary
+    public partial class PSStatusLevelTypes
     {
         
-        internal Microsoft.Azure.Batch.ApplicationSummary omObject;
+        internal Microsoft.Azure.Batch.Common.StatusLevelTypes omObject;
         
-        private IReadOnlyList<System.String> versions;
-        
-        internal PSApplicationSummary(Microsoft.Azure.Batch.ApplicationSummary omObject)
+        internal PSStatusLevelTypes(Microsoft.Azure.Batch.Common.StatusLevelTypes omObject)
         {
             if ((omObject == null))
             {
                 throw new System.ArgumentNullException("omObject");
             }
             this.omObject = omObject;
-        }
-        
-        public string DisplayName
-        {
-            get
-            {
-                return this.omObject.DisplayName;
-            }
-        }
-        
-        public string Id
-        {
-            get
-            {
-                return this.omObject.Id;
-            }
-        }
-        
-        public IReadOnlyList<System.String> Versions
-        {
-            get
-            {
-                if (((this.versions == null) 
-                            && (this.omObject.Versions != null)))
-                {
-                    List<System.String> list;
-                    list = new List<System.String>();
-                    IEnumerator<System.String> enumerator;
-                    enumerator = this.omObject.Versions.GetEnumerator();
-                    for (
-                    ; enumerator.MoveNext(); 
-                    )
-                    {
-                        list.Add(enumerator.Current);
-                    }
-                    this.versions = list;
-                }
-                return this.versions;
-            }
         }
     }
 }
