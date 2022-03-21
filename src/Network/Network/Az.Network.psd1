@@ -599,7 +599,7 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Get-AzNetworkManagerStaticMember', 
                'Remove-AzNetworkManagerStaticMember',
                'Set-AzNetworkManagerStaticMember',
-	           'New-AzNetworkManagerSubscriptionConnection',
+               'New-AzNetworkManagerSubscriptionConnection',
                'Get-AzNetworkManagerSubscriptionConnection', 
                'Remove-AzNetworkManagerSubscriptionConnection',
                'Set-AzNetworkManagerSubscriptionConnection',
@@ -655,59 +655,20 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Onboard Azure Virtual Network Manager Cmdlets for preview
-    - ''Get-AzNetworkManager'' 
-    - ''New-AzNetworkManager'' 
-    - ''Remove-AzNetworkManager'' 
-    - ''Get-AzNetworkManagerGroup'' 
-    - ''New-AzNetworkManagerGroup'' 
-    - ''Remove-AzNetworkManagerGroup'' 
-    - ''Set-AzNetworkManagerGroup'' 
-    - ''Get-AzNetworkManagerConnectivityConfiguration'' 
-    - ''New-AzNetworkManagerConnectivityConfiguration'' 
-    - ''Remove-AzNetworkManagerConnectivityConfiguration'' 
-    - ''Set-AzNetworkManagerConnectivityConfiguration'' 
-    - ''Get-AzNetworkManagerSecurityAdminConfiguration'' 
-    - ''New-AzNetworkManagerSecurityAdminConfiguration'' 
-    - ''Remove-AzNetworkManagerSecurityAdminConfiguration'' 
-    - ''Set-AzNetworkManagerSecurityAdminConfiguration'' 
-    - ''Get-AzNetworkManagerSecurityAdminRuleCollection'' 
-    - ''New-AzNetworkManagerSecurityAdminRuleCollection'' 
-    - ''Remove-AzNetworkManagerSecurityAdminRuleCollection'' 
-    - ''Set-AzNetworkManagerSecurityAdminRuleCollection'' 
-    - ''Get-AzNetworkManagerSecurityAdminRule'' 
-    - ''New-AzNetworkManagerSecurityAdminRule'' 
-    - ''Remove-AzNetworkManagerSecurityAdminRule'' 
-    - ''Set-AzNetworkManagerSecurityAdminRule''
-    - ''Get-AzNetworkManagerActiveConnectivityConfigurationList'' 
-    - ''Get-AzNetworkManagerActiveSecurityAdminRuleList''
-    - ''Get-AzNetworkManagerEffectiveConnectivityConfigurationList'' 
-    - ''Get-AzNetworkManagerEffectiveSecurityAdminRuleList'' 
-    - ''Get-AzNetworkManagerEffectiveSecurityAdminRuleList'' 
-    - ''Deploy-AzNetworkManagerCommit'' 
-    - ''Get-AzNetworkManagerEffectiveVirtualNetworkList'' 
-    - ''Get-AzNetworkManagerEffectiveVirtualNetworkByNetworkGroupList'' 
-    - ''Get-AzNetworkManagerDeploymentStatusList'' 
-    - ''New-AzNetworkManagerAddressPrefixItem'' 
-    - ''New-AzNetworkManagerScope'' 
-    - ''New-AzNetworkManagerSecurityGroupItem''
-    - ''New-AzNetworkManagerHub''
-    - ''New-AzNetworkManagerConnectivityGroupItem''
-    - ''New-AzNetworkManagerStaticMember''
-    - ''Get-AzNetworkManagerStaticMember''
-    - ''Remove-AzNetworkManagerStaticMember''
-    - ''Set-AzNetworkManagerStaticMember''
-    - ''New-AzNetworkManagerSubscriptionConnection''
-    - ''Get-AzNetworkManagerSubscriptionConnection''
-    - ''Remove-AzNetworkManagerSubscriptionConnection''
-    - ''Set-AzNetworkManagerSubscriptionConnection''
-    - ''New-AzNetworkManagerScopeConnection''
-    - ''Get-AzNetworkManagerScopeConnection''
-    - ''Remove-AzNetworkManagerScopeConnection''
-    - ''Set-AzNetworkManagerScopeConnection'''
-
+        ReleaseNotes = '* Added new property ''SqlSetting'' for Azure Firewall Policy cmdlets 
+    - ''Get-AzFirewallPolicy'' 
+    - ''New-AzFirewallPolicy''
+    - ''Set-AzFirewallPolicy''
+* Added new to create new ''SqlSetting'' object for creating Azure Firewall Policy
+    - ''New-AzFirewallPolicySqlSetting''
+* Added new cmdlet to support query Load Balancer inbound nat rule port mapping lists for backend addresses
+    - ''Get-AzLoadBalancerBackendAddressInboundNatRulePortMapping''
+    - Also updated cmdlets to support inbound nat rule V2 configurations
+        - ''New-AzLoadBalancerInboundNatRuleConfig''
+        - ''Set-AzLoadBalancerInboundNatRuleConfig''
+        - ''Add-AzLoadBalancerInboundNatRuleConfig'''
         # Prerelease string of this module
-        Prerelease = 'preview'
+        Prerelease = ''
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false

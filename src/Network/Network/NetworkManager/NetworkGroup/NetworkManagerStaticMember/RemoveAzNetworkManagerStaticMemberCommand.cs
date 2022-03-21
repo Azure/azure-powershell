@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Network
                 () =>
                 {
                     this.NetworkManagerStaticMemberClient.Delete(this.ResourceGroupName, this.NetworkManagerName, this.NetworkGroupName, this.Name);
-                    if (PassThru)
+                    if (PassThru.IsPresent)
                     {
                         WriteObject(true);
                     }

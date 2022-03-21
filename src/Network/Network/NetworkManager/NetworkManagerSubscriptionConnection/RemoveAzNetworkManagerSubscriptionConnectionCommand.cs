@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Network
                 () =>
                 {
                     this.NetworkManagerSubscriptionConnectionClient.Delete(this.Name);
-                    if (PassThru)
+                    if (PassThru.IsPresent)
                     {
                         WriteObject(true);
                     }

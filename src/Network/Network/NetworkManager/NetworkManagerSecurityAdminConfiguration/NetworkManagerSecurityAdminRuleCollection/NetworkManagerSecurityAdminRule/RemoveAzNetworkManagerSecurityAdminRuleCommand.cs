@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.Network
                 () =>
                 {
                     this.NetworkManagerSecurityAdminRuleOperationClient.Delete(this.ResourceGroupName, this.NetworkManagerName, this.SecurityAdminConfigurationName, this.RuleCollectionName, this.Name);
-                    if (PassThru)
+                    if (PassThru.IsPresent)
                     {
                         WriteObject(true);
                     }

@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Network
                 () =>
                 {
                     this.NetworkManagerSecurityAdminConfigurationClient.Delete(this.ResourceGroupName, this.NetworkManagerName, this.Name);
-                    if (PassThru)
+                    if (PassThru.IsPresent)
                     {
                         WriteObject(true);
                     }
