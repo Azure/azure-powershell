@@ -55,6 +55,37 @@ resourcegroup-append: true
 nested-object-to-string: true
 
 directive:
+  # Generate memory object as parameter of the cmelet.
+  - model-cmdlet:
+    - DeliveryRuleRemoteAddressCondition
+    - DeliveryRuleRequestMethodCondition
+    - DeliveryRuleQueryStringCondition
+    - DeliveryRulePostArgsCondition
+    - DeliveryRuleRequestUriCondition
+    - DeliveryRuleRequestHeaderCondition
+    - DeliveryRuleRequestBodyCondition
+    - DeliveryRuleRequestSchemeCondition
+    - DeliveryRuleUrlPathCondition
+    - DeliveryRuleUrlFileExtensionCondition
+    - DeliveryRuleUrlFileNameCondition
+    - DeliveryRuleHttpVersionCondition
+    - DeliveryRuleCookiesCondition
+    - DeliveryRuleIsDeviceCondition
+    - DeliveryRuleSocketAddrCondition
+    - DeliveryRuleClientPortCondition
+    - DeliveryRuleServerPortCondition
+    - DeliveryRuleHostNameCondition
+    - DeliveryRuleSslProtocolCondition
+    - UrlRedirectAction
+    - UrlSigningAction
+    - OriginGroupOverrideAction
+    - UrlRewriteAction
+    - DeliveryRuleRequestHeaderAction
+    - DeliveryRuleResponseHeaderAction
+    - DeliveryRuleCacheExpirationAction
+    - DeliveryRuleCacheKeyQueryStringAction
+    - DeliveryRuleRouteConfigurationOverrideAction
+
   # Following is two common directive which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
