@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added `New-AzResourceManagementPrivateLink`, and `New-AzPrivateLinkAssociation` cmdlets
 * Added authorization related cmdlets:
     - `Get-AzRoleAssignmentSchedule`
     - `Get-AzRoleAssignmentScheduleInstance`
