@@ -1,44 +1,44 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/remove-azprivatelinkassociation
+online version: https://docs.microsoft.com/powershell/module/az.resources/new-azprivatelinkassociation
 schema: 2.0.0
 ---
 
-# Remove-AzPrivateLinkAssociation
+# New-AzPrivateLinkAssociation
 
 ## SYNOPSIS
-Delete a specific azure private link association.
+Creates the Azure Resource Management Private Link Association.
 
 ## SYNTAX
 
 ```
-Remove-AzPrivateLinkAssociation [-ManagementGroupId] <String>
- [-Name] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+New-AzPrivateLinkAssociation [-ManagementGroupId] <String> [-Name] <String> [-PrivateLink] <String>
+ [-PublicNetworkAccess] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Remove-AzPrivateLinkAssociation cmdlet deletes a specific resource management private link association.
+The New-AzPrivateLinkAssociation cmdlet creates the private link assocaition at the scope.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzPrivateLinkAssociation -ManagementGroupId 24f15700-370c-45bc-86a7-aee1b0c4eb8a -Name 1d7942d1-288b-48de-8d0f-2d2aa8e03ad4
+PS C:\> New-AzPrivateLinkAssociation -ManagementGroupId fc096d27-0434-4460-a3ea-110df0422a2d -Name 1d7942d1-288b-48de-8d0f-2d2aa8e03ad4 | fl
 
 
-True
+Id         : /providers/Microsoft.Management/managementGroups/fc096d27-0434-4460-a3ea-110df0422a2d/providers/Microsoft.
+             Authorization/privateLinkAssociations/1d7942d1-288b-48de-8d0f-2d2aa8e03ad4
+Type       : Microsoft.Authorization/privateLinkAssociations
+Name       : 1d7942d1-288b-48de-8d0f-2d2aa8e03ad4
+Properties : {"privateLink":"/subscriptions/aeb49941-36c3-4e7c-9ffd-16ba89d33ec4/resourceGroups/nrp-validate/providers/
+             Microsoft.Authorization/resourceManagementPrivateLinks/DeepDiveRMPL","publicNetworkAc
+             cess":"Enabled","tenantID":"fc096d27-0434-4460-a3ea-110df0422a2d","scope":"/providers/Microsoft.Management
+             /managementGroups/fc096d27-0434-4460-a3ea-110df0422a2d"}
 ```
 
-Delete a specific private link association.
-
-### Example 2
-```powershell
-PS C:\> Get-AzPrivateLinkAssociation -ManagementGroupId 24f15700-370c-45bc-86a7-aee1b0c4eb8a -Name 1d7942d1-288b-48de-8d0f-2d2aa8e03ad4 | Remove-AzPrivateLinkAssociation -Force
-```
-
-Delete a specific private link association.
+Creates the specific private link associations at the managment group scope.
 
 ## PARAMETERS
 
@@ -46,7 +46,7 @@ Delete a specific private link association.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 The management group Id.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -76,9 +76,9 @@ Accept wildcard characters: False
 The private link association Id.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: PrivateLinkAssociationId
 
 Required: True
 Position: 1
@@ -87,31 +87,31 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-The private link association object.
+### -PrivateLink
+The name of the private link.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Resources.Models.PrivateLinks.PSResourceManagementPrivateLinkAssociation
-Parameter Sets: ManagementGroupObject
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -PassThru
-Do not ask for confirmation.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: Named
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicNetworkAccess
+The public network access is enabled/disabled.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -121,7 +121,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -137,7 +137,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -157,11 +157,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.Commands.Resources.Models.PrivateLinks.PSResourceManagementPrivateLinkAssociation
 
 ## NOTES
 
 ## RELATED LINKS
 
+[Remove-AzPrivateLinkAssociation](./Remove-AzPrivateLinkAssociation.md)
 [Get-AzPrivateLinkAssociation](./Get-AzPrivateLinkAssociation.md)
-[New-AzPrivateLinkAssociation](./New-AzPrivateLinkAssociation.md)

@@ -12,28 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Linq;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Resources.Models.PrivateLinks;
 using Microsoft.Azure.Commands.Resources.PrivateLinks.Common;
 using Microsoft.Azure.Management.ResourceManager;
+using Microsoft.Azure.Management.ResourceManager.Models;
+using System;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Resources.PrivateLinks
 {
     /// <summary>
-    /// Get-AzPrivateLinkAssociation Cmdlet
+    /// New-AzPrivateLinkAssociation Cmdlet
     /// </summary>
     [Cmdlet(
-        VerbsCommon.Get,
+        VerbsCommon.New,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateLinkAssociation",
-        DefaultParameterSetName = Constants.ParameterSetNames.GetPLAssociationParameterSet), OutputType(typeof(PSResourceManagementPrivateLinkAssociation))]
-    public class GetAzurePrivateLinkAssociation : PrivateLinksCmdletBase
+        DefaultParameterSetName = Constants.ParameterSetNames.PutPLAssociationParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSResourceManagementPrivateLinkAssociation))]
+    public class NewAzurePrivateLinkAssociation : PrivateLinksCmdletBase
     {
         #region Cmdlet Parameters and Parameter Set Definitions
 
         [Parameter(
-            ParameterSetName = Constants.ParameterSetNames.GetPLAssociationParameterSet,
+            ParameterSetName = Constants.ParameterSetNames.PutPLAssociationParameterSet,
             Mandatory = true,
             HelpMessage = Constants.HelpMessages.ManagementGroupId,
             Position = 0)]
@@ -41,32 +41,41 @@ namespace Microsoft.Azure.Commands.Resources.PrivateLinks
         public string ManagementGroupId { get; set; } = null;
 
         [Parameter(
-            ParameterSetName = Constants.ParameterSetNames.GetPLAssociationParameterSet,
-            Mandatory = false,
+            ParameterSetName = Constants.ParameterSetNames.PutPLAssociationParameterSet,
+            Mandatory = true,
             HelpMessage = Constants.HelpMessages.PrivateLinkAssociationId,
             Position = 1)]
         [Alias("PrivateLinkAssociationId")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        [Parameter(
+           ParameterSetName = Constants.ParameterSetNames.PutPLAssociationParameterSet,
+           Mandatory = true,
+           HelpMessage = Constants.HelpMessages.PrivateLinkName,
+           Position = 2)]
+        [ValidateNotNullOrEmpty]
+        public string PrivateLink { get; set; }
+
+        [Parameter(
+           ParameterSetName = Constants.ParameterSetNames.PutPLAssociationParameterSet,
+           Mandatory = true,
+           HelpMessage = Constants.HelpMessages.PublicNetworkAccess,
+           Position = 3)]
+        [ValidateNotNullOrEmpty]
+        public string PublicNetworkAccess { get; set; }
         #endregion
 
         public override void ExecuteCmdlet()
         {
             try
             {
-                if (!string.IsNullOrEmpty(ManagementGroupId) && string.IsNullOrEmpty(Name))
+                if (!string.IsNullOrEmpty(ManagementGroupId) && !string.IsNullOrEmpty(Name))
                 {
-                    var response = ResourceManagementPrivateLinkClient.PrivateLinkAssociation.List(
-                        groupId: ManagementGroupId);
-                    var items = response.Value.Select(privateLinkAssociation => new PSResourceManagementPrivateLinkAssociation(privateLinkAssociation))
-                        .ToList();
-                    WriteObject(items);
-                }
-                else if (!string.IsNullOrEmpty(ManagementGroupId) && !string.IsNullOrEmpty(Name))
-                {
-                    var response = ResourceManagementPrivateLinkClient.PrivateLinkAssociation.Get(
+                    var response = ResourceManagementPrivateLinkClient.PrivateLinkAssociation.Put(
                         groupId: ManagementGroupId,
-                        plaId: Name);
+                        plaId: Name,
+                        parameters: new PrivateLinkAssociationObject(new PrivateLinkAssociationProperties(PrivateLink, PublicNetworkAccess)));
                     WriteObject(new PSResourceManagementPrivateLinkAssociation(response));
                 }
             }

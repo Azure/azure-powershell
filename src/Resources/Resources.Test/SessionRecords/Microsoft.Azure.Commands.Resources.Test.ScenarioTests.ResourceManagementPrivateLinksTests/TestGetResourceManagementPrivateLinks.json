@@ -67,7 +67,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e3a1f070-4fbe-428f-90cb-50dadce68bfb/providers/Microsoft.Authorization/resourceManagementPrivateLinks?api-version=2020-05-01",
+      "RequestUri": "/subscriptions/e3a1f070-4fbe-428f-90cb-50dadce68bfb/resourceGroups/PrivateLinkTestRG/providers/Microsoft.Authorization/resourceManagementPrivateLinks?api-version=2020-05-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTNhMWYwNzAtNGZiZS00MjhmLTkwY2ItNTBkYWRjZTY4YmZiL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9yZXNvdXJjZU1hbmFnZW1lbnRQcml2YXRlTGlua3M/YXBpLXZlcnNpb249MjAyMC0wNS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",

@@ -1,0 +1,77 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/e3a1f070-4fbe-428f-90cb-50dadce68bfb/resourceGroups/PrivateLinkTestRG/providers/Microsoft.Authorization/resourceManagementPrivateLinks/NewPL?api-version=2020-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTNhMWYwNzAtNGZiZS00MjhmLTkwY2ItNTBkYWRjZTY4YmZiL3Jlc291cmNlR3JvdXBzL1ByaXZhdGVMaW5rVGVzdFJHL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9yZXNvdXJjZU1hbmFnZW1lbnRQcml2YXRlTGlua3MvTmV3UEwyP2FwaS12ZXJzaW9uPTIwMjAtMDUtMDE=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"centralus\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "2db25fea-10d1-41f9-85f6-dd5d6e3333fe"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.ResourceManager.ResourcePrivateLinkClient/3.17.2.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "31"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "westus:6adfa9ea-fc62-44ed-8bdc-1551f97a5e22"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "c5ec452c-e5d7-4102-b07e-2d256aeea810"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220301T075335Z:c5ec452c-e5d7-4102-b07e-2d256aeea810"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 01 Mar 2022 07:53:35 GMT"
+        ],
+        "Content-Length": [
+          "315"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"privateEndpointConnections\": []\r\n  },\r\n  \"id\": \"/subscriptions/e3a1f070-4fbe-428f-90cb-50dadce68bfb/resourceGroups/PrivateLinkTestRG/providers/Microsoft.Authorization/resourceManagementPrivateLinks/NewPL\",\r\n  \"name\": \"NewPL\",\r\n  \"type\": \"Microsoft.Authorization/resourceManagementPrivateLinks\",\r\n  \"location\": \"centralus\"\r\n}",
+      "StatusCode": 201
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "e3a1f070-4fbe-428f-90cb-50dadce68bfb"
+  }
+}

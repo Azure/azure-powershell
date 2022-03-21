@@ -12,28 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Linq;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Resources.Models.PrivateLinks;
 using Microsoft.Azure.Commands.Resources.PrivateLinks.Common;
 using Microsoft.Azure.Management.ResourceManager;
+using Microsoft.Azure.Management.ResourceManager.Models;
+using System;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Resources.PrivateLinks
 {
     /// <summary>
-    /// Get-AzResourceManagementPrivateLink Cmdlet
+    /// New-AzResourceManagementPrivateLink Cmdlet
     /// </summary>
     [Cmdlet(
-        VerbsCommon.Get,
+        VerbsCommon.New,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ResourceManagementPrivateLink",
-        DefaultParameterSetName = Constants.ParameterSetNames.GetParameterSet), OutputType(typeof(PSResourceManagementPrivateLink))]
-    public class GetAzureResourceManagementPrivateLink : PrivateLinksCmdletBase
+        DefaultParameterSetName = Constants.ParameterSetNames.PutParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSResourceManagementPrivateLink))]
+    public class NewAzureResourceManagementPrivateLink : PrivateLinksCmdletBase
     {
         #region Cmdlet Parameters and Parameter Set Definitions
 
         [Parameter(
-            ParameterSetName = Constants.ParameterSetNames.GetParameterSet,
+            ParameterSetName = Constants.ParameterSetNames.PutParameterSet,
             Mandatory = false,
             HelpMessage = Constants.HelpMessages.ResourceGroupName,
             Position = 0)]
@@ -41,13 +41,21 @@ namespace Microsoft.Azure.Commands.Resources.PrivateLinks
         public string ResourceGroupName { get; set; } = null;
 
         [Parameter(
-            ParameterSetName = Constants.ParameterSetNames.GetParameterSet,
-            Mandatory = false,
+            ParameterSetName = Constants.ParameterSetNames.PutParameterSet,
+            Mandatory = true,
             HelpMessage = Constants.HelpMessages.PrivateLinkName,
             Position = 1)]
         [Alias("PrivateLinkName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        [Parameter(
+            ParameterSetName = Constants.ParameterSetNames.PutParameterSet,
+            Mandatory = true,
+            HelpMessage = Constants.HelpMessages.PrivateLinkLocation,
+            Position = 2)]
+        [ValidateNotNullOrEmpty]
+        public string Location { get; set; }
         #endregion
 
         public override void ExecuteCmdlet()
@@ -56,27 +64,11 @@ namespace Microsoft.Azure.Commands.Resources.PrivateLinks
             {
                 if (!string.IsNullOrEmpty(ResourceGroupName) && !string.IsNullOrEmpty(Name))
                 {
-                    var response = ResourceManagementPrivateLinkClient.ResourceManagementPrivateLink.Get(
+                    var response = ResourceManagementPrivateLinkClient.ResourceManagementPrivateLink.Put(
                         resourceGroupName: ResourceGroupName,
-                        rmplName: Name);
+                        rmplName: Name,
+                        parameters: new ResourceManagementPrivateLinkLocation(Location));
                     WriteObject(new PSResourceManagementPrivateLink(response));
-                }
-                else if (string.IsNullOrEmpty(ResourceGroupName) && string.IsNullOrEmpty(Name))
-                {
-                    //List all the private links in a subscription no parameters needed
-                    var response = ResourceManagementPrivateLinkClient.ResourceManagementPrivateLink.List();
-                    var items = response.Value.Select(resourceManagementPrivateLink => new PSResourceManagementPrivateLink(resourceManagementPrivateLink))
-                        .ToList();
-                    WriteObject(items);
-                }
-                else if (!string.IsNullOrEmpty(ResourceGroupName) && string.IsNullOrEmpty(Name))
-                {
-                    //List all the private links in a resource group
-                    var response = ResourceManagementPrivateLinkClient.ResourceManagementPrivateLink.ListByResourceGroup(resourceGroupName: ResourceGroupName);
-                    var items = response.Value.Select(resourceManagementPrivateLink => new PSResourceManagementPrivateLink(resourceManagementPrivateLink))
-                        .Where(psResourceManagementPrivateLink => psResourceManagementPrivateLink.Id.Contains($"/resourceGroups/{ResourceGroupName}/"))
-                        .ToList();
-                    WriteObject(items);
                 }
             }
             catch (Exception ex)
