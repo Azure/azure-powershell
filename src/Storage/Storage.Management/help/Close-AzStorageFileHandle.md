@@ -89,7 +89,7 @@ This command closes all file handles on a file directory and shows the closed fi
 
 ### Example 4: Close all file handles on a file share 
 ```
-PS C:\>Close-AzStorageFileHandle -ShareName "mysharename" -CloseAll -Recursive
+PS C:\> Close-AzStorageFileHandle -ShareName "mysharename" -CloseAll -Recursive
 ```
 
 This command closes all file handles on a specific file share recursively.
