@@ -1431,7 +1431,7 @@ function Test-AzureFirewallPolicyPremiumFeatures {
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
         
         # Create Managed Identity
-		$identity = New-AzUserAssignedIdentity -Name $identityName -Location $location -ResourceGroup $rgname
+        $identity = New-AzUserAssignedIdentity -Name $identityName -Location $location -ResourceGroup $rgname
 
         # Intrusion Detection Settings
         $bypass = New-AzFirewallPolicyIntrusionDetectionBypassTraffic -Name $bypassTestName -Protocol "TCP" -DestinationPort "80" -SourceAddress "10.0.0.0" -DestinationAddress "10.0.0.0"
