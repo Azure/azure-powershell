@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         internal Microsoft.Azure.Batch.InstanceViewStatus omObject;
         
-        private PSStatusLevelTypes? level;
+        private PSStatusLevelTypes level;
         
         public PSInstanceViewStatus()
         {
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public PSStatusLevelTypes? Level
+        public PSStatusLevelTypes Level
         {
             get
             {
