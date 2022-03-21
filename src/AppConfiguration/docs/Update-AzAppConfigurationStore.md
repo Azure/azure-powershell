@@ -40,6 +40,7 @@ $systemAssignedAppStore = New-AzAppConfigurationStore -Name appconfig-test11 -Re
 Set-AzKeyVaultAccessPolicy -VaultName kv-Name -ObjectId $systemAssignedAppStore.IdentityPrincipalId -PermissionsToKeys get,unwrapKey,wrapKey -PassThru
 Update-AzAppConfigurationStore -Name appconfig-test11 -ResourceGroupName azpwsh-manual-test -EncryptionKeyIdentifier $key.Id
 ```
+
 ```output
 Location Name             Type
 -------- ----             ----
@@ -57,6 +58,7 @@ New-AzAppConfigurationStore -Name appconfig-test11 -ResourceGroupName azpwsh-man
 Set-AzKeyVaultAccessPolicy -VaultName kv-Name -ObjectId $assignedIdentity.PrincipalId -PermissionsToKeys get,unwrapKey,wrapKey -PassThru
 Update-AzAppConfigurationStore -ResourceGroupName azpwsh-manual-test -Name appconfig-test11 -EncryptionKeyIdentifier $key.Id -KeyVaultIdentityClientId $assignedIdentity.ClientId
 ```
+
 ```output
 Location Name             Type
 -------- ----             ----
@@ -71,6 +73,7 @@ The vault must have enabled soft-delete and purge-protection, and the managed id
 ```powershell
 $appConf = Get-AzAppConfigurationStore -ResourceGroupName azpwsh-manual-test -Name appconfig-test10 | Update-AzAppConfigurationStore -EncryptionKeyIdentifier $null
 ```
+
 ```output
 Location Name             Type
 -------- ----             ----
@@ -83,6 +86,7 @@ This command disables encryption of an app conifguration store.
 ```powershell
 Get-AzAppConfigurationStore -ResourceGroupName azpwsh-manual-test -Name appconfig-test10 | Update-AzAppConfigurationStore -Sku 'standard' -Tag @{'key'='update'}
 ```
+
 ```output
 Location Name             Type
 -------- ----             ----
