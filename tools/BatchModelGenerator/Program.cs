@@ -502,11 +502,6 @@ namespace PSModelGenerator
         {
             if (t.IsEnum)
             {
-                if (OMtoPSClassMappings.ContainsKey(t.FullName))
-                {
-                    return OMtoPSClassMappings[t.FullName];
-                }
-
                 return t.FullName;
             }
             else if (t == typeof(string) || t.IsPrimitive || t == typeof(DateTime) || t == typeof(TimeSpan) || t == typeof(object))
@@ -516,6 +511,11 @@ namespace PSModelGenerator
             else if (IsGenericNullable(t))
             {
                 Type argType = t.GetGenericArguments()[0];
+                if (argType.IsEnum && OMtoPSClassMappings.ContainsKey(argType.FullName))
+                {
+                    return OMtoPSClassMappings[argType.FullName];
+                }
+
                 return string.Format("{0}?", GetPropertyType(argType));
             }
             else if (t.IsGenericType && t.GetGenericTypeDefinition() == typeof(IList<>))
