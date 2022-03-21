@@ -12,7 +12,7 @@ Gets the ledger digest upload settings of an Azure SQL database.
 
 ## SYNTAX
 
-### DatabaseParameterSet
+### DatabaseParameterSet (Default)
 ```
 Get-AzSqlDatabaseLedgerDigestUpload [-ResourceGroupName] <String> [-ServerName] <String>
  [-DatabaseName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]

@@ -12,7 +12,7 @@ Enables uploading ledger digests to an Azure Storage account or to Azure Confide
 
 ## SYNTAX
 
-### DatabaseParameterSet
+### DatabaseParameterSet (Default)
 ```
 Enable-AzSqlDatabaseLedgerDigestUpload [-Endpoint] <String> [-ResourceGroupName] <String>
  [-ServerName] <String> [-DatabaseName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
