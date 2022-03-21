@@ -41,6 +41,23 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                 createTime: createTime,
                 compulsoryLocation: true);
 
+        public static ResourceStrategy<TModel> CreateV2<TModel, TOperations>(
+            string provider,
+            Func<ComputeManagementClient, TOperations> getOperations,
+            Func<TOperations, GetAsyncParams, Task<TModel>> getAsync,
+            Func<TOperations, CreateOrUpdateAsyncParams<TModel>, Task<TModel>> createOrUpdateV2Async,
+            Func<TModel, int> createTime)
+            where TModel : Resource
+            => ResourceStrategy.Create(
+                type: new ResourceType(Namespace, provider),
+                getOperations: getOperations,
+                getAsync: getAsync,
+                createOrUpdateAsync: createOrUpdateV2Async,
+                getLocation: config => config.Location,
+                setLocation: (config, location) => config.Location = location,
+                createTime: createTime,
+                compulsoryLocation: true);
+
         public static string GetConnectionString(
             this ImageAndOsType imageAndOsType, string fqdn, string user, string port = null)
             => imageAndOsType.OsType == OperatingSystemTypes.Windows

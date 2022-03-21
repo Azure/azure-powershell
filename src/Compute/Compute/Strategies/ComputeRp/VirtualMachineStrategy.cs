@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.Common.Strategies;
 using System.Collections.Generic;
 using System;
 using SubResource = Microsoft.Azure.Management.Compute.Models.SubResource;
+using Microsoft.Azure.Commands.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
@@ -34,6 +35,19 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     p.ResourceGroupName, p.Name, null, p.CancellationToken),
                 createOrUpdateAsync: (o, p) => o.CreateOrUpdateAsync(
                     p.ResourceGroupName, p.Name, p.Model, p.CancellationToken),
+                createTime: c =>
+                    c != null && c.OsProfile != null && c.OsProfile.WindowsConfiguration != null
+                        ? 240
+                        : 120);
+
+        public static ResourceStrategy<VirtualMachineWrapper> Strategy_2 { get; }
+            = ComputeStrategy.CreateV2(
+                provider: "virtualMachines",
+                getOperations: client => client.VirtualMachines,
+                getAsync: (o, p) => o.GetAsync(
+                    p.ResourceGroupName, p.Name, null, p.CancellationToken),
+                createOrUpdateV2Async: (o, p) => o.CreateOrUpdateV2Async(
+                    p.ResourceGroupName, p.Name, p.Model.VirtualMachine, p.Model.CustomHeaders, p.CancellationToken),
                 createTime: c =>
                     c != null && c.OsProfile != null && c.OsProfile.WindowsConfiguration != null
                         ? 240
