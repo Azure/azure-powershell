@@ -3251,3 +3251,99 @@ function Test-RemoveVmssForceDeletion
         Clean-ResourceGroup $rgname;
     }
 }
+
+<#
+.SYNOPSIS
+Test Virtual Machine Scale Set test AutomaticRepairsAction feature.
+#>
+function Test-VirtualMachineScaleSetRepairsAction
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+
+    try
+    {
+        # Common
+        $loc = "eastus";
+
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # SRP
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_GRS';
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        $stoaccount = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname;
+
+        # NRP
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+        $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+
+        # Create LoadBalancer
+        $frontendName = Get-ResourceName
+        $backendAddressPoolName = Get-ResourceName
+        $probeName = Get-ResourceName
+        $inboundNatPoolName = Get-ResourceName
+        $lbruleName = Get-ResourceName
+        $lbName = Get-ResourceName
+
+        $frontend = New-AzLoadBalancerFrontendIpConfig -Name $frontendName -PublicIpAddress $pubip
+        $backendAddressPool = New-AzLoadBalancerBackendAddressPoolConfig -Name $backendAddressPoolName
+        $probe = New-AzLoadBalancerProbeConfig -Name $probeName -RequestPath healthcheck.aspx -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
+        $inboundNatPool = New-AzLoadBalancerInboundNatPoolConfig -Name $inboundNatPoolName -FrontendIPConfigurationId `
+            $frontend.Id -Protocol Tcp -FrontendPortRangeStart 3360 -FrontendPortRangeEnd 3368 -BackendPort 3370;
+        $lbrule = New-AzLoadBalancerRuleConfig -Name $lbruleName `
+            -FrontendIPConfiguration $frontend -BackendAddressPool $backendAddressPool `
+            -Probe $probe -Protocol Tcp -FrontendPort 80 -BackendPort 80 `
+            -IdleTimeoutInMinutes 15 -EnableFloatingIP -LoadDistribution SourceIP;
+        $actualLb = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $loc `
+            -FrontendIpConfiguration $frontend -BackendAddressPool $backendAddressPool `
+            -Probe $probe -LoadBalancingRule $lbrule -InboundNatPool $inboundNatPool;
+        $expectedLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname
+
+        # New VMSS Parameters
+        $vmssName = 'vmss' + $rgname;
+        $adminUsername = 'Foo12';
+        $adminPassword = $PLACEHOLDER;
+        $vmssSize = 'Standard_B1s';
+        $repairAction1 = "Replace";
+        $repairAction2 = "Restart";
+
+        $imgRef = Create-ComputeVMImageObject -loc "eastus" -publisherName "MicrosoftWindowsServerHPCPack" -offer "WindowsServerHPCPack" -skus "2012R2" -version "4.5.5198";
+        $vhdContainer = "https://" + $stoname + ".blob.core.windows.net/" + $vmssName;
+
+        $ipCfg = New-AzVmssIPConfig -Name 'test' `
+            -LoadBalancerInboundNatPoolsId $expectedLb.InboundNatPools[0].Id `
+            -LoadBalancerBackendAddressPoolsId $expectedLb.BackendAddressPools[0].Id `
+            -SubnetId $subnetId;
+
+        # New-AzVmssConfig and New-AzVmss test
+        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName $vmssSize -UpgradePolicyMode 'Manual' -HealthProbeId $expectedLb.Probes[0].Id `
+            -EnableAutomaticRepair -AutomaticRepairGracePeriod "PT30M" -AutomaticRepairAction $repairAction1 `
+            | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
+            | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
+            | Set-AzVmssStorageProfile -Name 'test' -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
+            -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion 'latest' `
+            -ImageReferencePublisher $imgRef.PublisherName -VhdContainer $vhdContainer;
+
+        $vmss = New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
+        $vmssNew = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        Assert-AreEqual $repairAction1 $vmssNew.AutomaticRepairsPolicy.RepairAction;
+
+        # Update Vmss test
+        Update-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -VirtualMachineScaleSet $vmss -EnableAutomaticRepair:$false;
+        Update-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -VirtualMachineScaleSet $vmss -AutomaticRepairAction $repairAction2;
+
+        $vmssUp = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        Assert-AreEqual $repairAction2 $vmssUp.AutomaticRepairsPolicy.RepairAction;
+
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}

@@ -66,9 +66,10 @@ The **Get-AzSqlInstanceDatabaseLongTermRetentionBackup** cmdlet gets long term r
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location southeastasia -ResourceGroupName testResourceGroup -InstanceName testInstance -DatabaseName test
+Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location southeastasia -ResourceGroupName testResourceGroup -InstanceName testInstance -DatabaseName test
+```
 
-
+```output
 BackupExpirationTime : 3/10/2020 1:10:45 PM
 BackupName           : 15be823c-7e2c-49d8-819f-a3fdcad92215;132268250550000000
 BackupTime           : 2/22/2020 6:04:15 AM

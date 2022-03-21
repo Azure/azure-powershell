@@ -25,10 +25,12 @@ The **Disable-AzSqlInstanceAdvancedDataSecurity** cmdlet disables Advanced Data 
 
 ### Example 1 - Disable managed instance Advanced Data Security
 ```powershell
-PS C:\>  Disable-AzSqlInstanceAdvancedDataSecurity `
+Disable-AzSqlInstanceAdvancedDataSecurity `
             -ResourceGroupName "ResourceGroup01" `
             -InstanceName "ManagedInstance01" `
+```
 
+```output
 ResourceGroupName	         : ResourceGroup01
 ManagedInstanceName		     : ManagedInstance01
 IsEnabled		             : False
@@ -36,11 +38,13 @@ IsEnabled		             : False
 
 ### Example 2 - Disable server Advanced Data Security from managed instance resource
 ```powershell
-PS C:\>  Get-AzSqlInstance `
+Get-AzSqlInstance `
            -ResourceGroupName "ResourceGroup01" `
            -Name "ManagedInstance01" `
            | Disable-AzSqlInstanceAdvancedDataSecurity
+```
 
+```output
 ResourceGroupName	         : ResourceGroup01
 ManagedInstanceName		     : ManagedInstance01
 IsEnabled		             : False
