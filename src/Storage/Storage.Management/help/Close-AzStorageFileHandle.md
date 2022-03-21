@@ -81,7 +81,7 @@ This command lists all file handles on a file directory recursively, filters out
 
 ### Example 3: Close all file handles on a file directory recursively and show the closed file handle count
 ```
-PS C:\>Close-AzStorageFileHandle -ShareName "mysharename" -Path 'dir1/dir2' -Recursive -CloseAll -PassThru
+PS C:\> Close-AzStorageFileHandle -ShareName "mysharename" -Path 'dir1/dir2' -Recursive -CloseAll -PassThru
 10
 ```
 
