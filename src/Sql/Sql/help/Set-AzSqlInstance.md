@@ -19,8 +19,9 @@ Set-AzSqlInstance [-Name] <String> [-ResourceGroupName] <String> [-Administrator
  [-PublicDataEndpointEnabled <Boolean>] [-ProxyOverride <String>] [-Tag <Hashtable>] [-AssignIdentity]
  [-InstancePoolName <String>] [-MinimalTlsVersion <String>] [-PrimaryUserAssignedIdentityId <String>]
  [-KeyId <String>] [-Force] [-ComputeGeneration <String>] [-MaintenanceConfigurationId <String>]
- [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>] [-IdentityType <String>] [-AsJob]
- [-ZoneRedundant] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>] [-IdentityType <String>]
+ [-AsJob] [-ZoneRedundant] [-ServicePrincipalType <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetInstanceFromAzureSqlManagedInstanceModelInstanceDefinition
@@ -30,8 +31,9 @@ Set-AzSqlInstance [-InputObject] <AzureSqlManagedInstanceModel> [-AdministratorP
  [-PublicDataEndpointEnabled <Boolean>] [-ProxyOverride <String>] [-Tag <Hashtable>] [-AssignIdentity]
  [-InstancePoolName <String>] [-MinimalTlsVersion <String>] [-PrimaryUserAssignedIdentityId <String>]
  [-KeyId <String>] [-Force] [-ComputeGeneration <String>] [-MaintenanceConfigurationId <String>]
- [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>] [-IdentityType <String>] [-AsJob]
- [-ZoneRedundant] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>] [-IdentityType <String>]
+ [-AsJob] [-ZoneRedundant] [-ServicePrincipalType <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetInstanceFromAzureResourceId
@@ -41,8 +43,9 @@ Set-AzSqlInstance [-ResourceId] <String> [-AdministratorPassword <SecureString>]
  [-PublicDataEndpointEnabled <Boolean>] [-ProxyOverride <String>] [-Tag <Hashtable>] [-AssignIdentity]
  [-InstancePoolName <String>] [-MinimalTlsVersion <String>] [-PrimaryUserAssignedIdentityId <String>]
  [-KeyId <String>] [-Force] [-ComputeGeneration <String>] [-MaintenanceConfigurationId <String>]
- [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>] [-IdentityType <String>] [-AsJob]
- [-ZoneRedundant] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>] [-IdentityType <String>]
+ [-AsJob] [-ZoneRedundant] [-ServicePrincipalType <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -566,6 +569,22 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ServicePrincipalType
+Type of Service Principal to be used. Possible values are SystemAssigned and None.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: None, SystemAssigned
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

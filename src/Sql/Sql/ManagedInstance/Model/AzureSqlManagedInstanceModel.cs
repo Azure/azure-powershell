@@ -174,5 +174,10 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Model
         /// Gets or sets whether or not the multi-az is enabled
         /// </summary>
         public bool? ZoneRedundant { get; set; }
+
+        /// <summary>
+        /// Gets or sets the service principal object
+        /// </summary>
+        public Common.ServicePrincipal ServicePrincipal { get; set; }
     }
 }

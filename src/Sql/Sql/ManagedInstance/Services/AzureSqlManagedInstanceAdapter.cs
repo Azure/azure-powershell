@@ -176,7 +176,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                 Administrators = GetActiveDirectoryInformation(model.Administrators),
                 PrimaryUserAssignedIdentityId = model.PrimaryUserAssignedIdentityId,
                 KeyId = model.KeyId,
-                ZoneRedundant = model.ZoneRedundant
+                ZoneRedundant = model.ZoneRedundant,
+                ServicePrincipal = ResourceServicePrincipalHelper.UnwrapServicePrincipalObject(model.ServicePrincipal)
             });
 
             return CreateManagedInstanceModelFromResponse(resp);
@@ -201,7 +202,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                 VCores = model.VCores,
                 PublicDataEndpointEnabled = model.PublicDataEndpointEnabled,
                 ProxyOverride = model.ProxyOverride,
-        });
+            });
 
             return CreateManagedInstanceModelFromResponse(resp);
         }
@@ -256,6 +257,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
             managedInstance.RequestedBackupStorageRedundancy = resp.RequestedBackupStorageRedundancy;
             managedInstance.CurrentBackupStorageRedundancy = resp.CurrentBackupStorageRedundancy;
             managedInstance.MaintenanceConfigurationId = resp.MaintenanceConfigurationId;
+            managedInstance.ServicePrincipal = ResourceServicePrincipalHelper.WrapServicePrincipalObject(resp.ServicePrincipal);
 
             Management.Internal.Resources.Models.Sku sku = new Management.Internal.Resources.Models.Sku();
             sku.Name = resp.Sku.Name;
