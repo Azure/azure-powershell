@@ -163,7 +163,7 @@ This command creates a data factory named WikiADF in the resource group named AD
 
 ### Example 3: Create a data factory with GitHub repo configuration details using a new factory object.
 ```powershell
-New-AzDataFactoryV2 -ResourceGroupName "ADF" -Name "WikiADF" -Location 'EastUS' -HostName 'https://github.com' -AccountName msdata -RepositoryName ADFRepo -CollaborationBranch master -RootFolder /
+Set-AzDataFactoryV2 -ResourceGroupName "ADF" -Name "WikiADF" -Location 'EastUS' -HostName 'https://github.com' -AccountName msdata -RepositoryName ADFRepo -CollaborationBranch master -RootFolder /
 ```
 
 ```output
