@@ -77,7 +77,8 @@ This commands creates a container group with a container instance, whose image i
 ### Example 6: Create a container group that mounts Azure File volume
 ```powershell
 $volume = New-AzContainerGroupVolumeObject -Name "myvolume" -AzureFileShareName "myshare" -AzureFileStorageAccountName "username" -AzureFileStorageAccountKey (ConvertTo-SecureString "PlainTextPassword" -AsPlainText -Force)
-$container = New-AzContainerInstanceObject -Name test-container -Image alpine
+$mount = New-AzContainerInstanceVolumeMountObject -MountPath "/aci/logs" -Name "myvolume"
+$container = New-AzContainerInstanceObject -Name test-container -Image alpine -VolumeMount $mount
 $containerGroup = New-AzContainerGroup -ResourceGroupName test-rg -Name test-cg -Location eastus -Container $container -Volume $volume
 ```
 
@@ -87,7 +88,7 @@ Location Name    Zone ResourceGroupName
 eastus   test-cg      test-rg
 ```
 
-This commands creates a container group with a container instance, whose image is a custom image from a custom container image registry.
+This commands creates a container group with a container instance, whose image is a custom image from a custom container image registry. For the volume property, AzureFile and GitRepo are recommanded. The EmptyDir property isn't supported.
 
 ### Example 7: Create a container group with system assigned and user assigned identity
 ```powershell
