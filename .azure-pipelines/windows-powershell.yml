@@ -59,7 +59,7 @@ jobs:
 - job: Test
   displayName: Test
   dependsOn: Build
-  condition: succeeded()
+  condition: and(eq(variables.IsGenerateBased, false), succeeded())
   timeoutInMinutes: 180
   strategy:
     matrix:
