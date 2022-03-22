@@ -207,6 +207,16 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string ActiveDirectoryOnlyAuthentication = nameof(ActiveDirectoryOnlyAuthentication);
 
+        public const string LinkConnectionTable = nameof(LinkConnectionTable);
+
+        public const string LinkConnectionLinkTables = nameof(LinkConnectionLinkTables);
+
+        public const string LinkTableRequest = nameof(LinkTableRequest);
+
+        public const string LinkConnectionLinkTablesStatus = nameof(LinkConnectionLinkTablesStatus);
+
+        public const string LinkConnectionLandingZoneCredential = nameof(LinkConnectionLandingZoneCredential);
+
         public static Dictionary<string, ComputeNodeSize> ComputeNodeSizes = new Dictionary<string, ComputeNodeSize>
         {
             {

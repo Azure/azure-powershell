@@ -809,4 +809,7 @@ Failed: {2}.</value>
   <data name="EnablingAzureADOnlyAuthentication" xml:space="preserve">
     <value>Enabling Azure AD only authentication for workspace '{0}' .</value>
   </data>
+  <data name="SettingSynapseLinkConnectionLinkTable" xml:space="preserve">
+    <value>Setting LinkTable '{0}' in workspace '{1}'.</value>
+  </data>
 </root>

@@ -228,7 +228,11 @@ CmdletsToExport = 'Get-AzSynapseSparkJob', 'Stop-AzSynapseSparkJob',
                'Export-AzSynapseKqlScript', 
                'Get-AzSynapseActiveDirectoryOnlyAuthentication', 
                'Enable-AzSynapseActiveDirectoryOnlyAuthentication', 
-               'Disable-AzSynapseActiveDirectoryOnlyAuthentication'
+               'Disable-AzSynapseActiveDirectoryOnlyAuthentication',
+               'New-AzSynapseLinkTableRequest','Set-AzSynapseLinkConnectionLinkTables',
+               'Get-AzSynapseLinkConnectionLinkTables','Get-AzSynapseLinkConnectionLinkTablesStatus',
+               'Update-AzSynapseLinkConnectionLandingZoneCredential'
+
 
 # Variables to export from this module
 # VariablesToExport = @()
