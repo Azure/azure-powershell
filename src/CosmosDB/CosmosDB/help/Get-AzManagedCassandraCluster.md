@@ -12,16 +12,22 @@ Gets a Azure Managed Instances for Apache Cassandra cluster.
 
 ## SYNTAX
 
-### NameParameterSet (Default)
+### ByNameParameterSet (Default)
 ```
-Get-AzManagedCassandraCluster -ResourceGroupName <String> -ClusterName <String>
+Get-AzManagedCassandraCluster [-ResourceGroupName <String>] [-ClusterName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ResourceIdParameterSet
+### ByResourceIdParameterSet
 ```
-Get-AzManagedCassandraCluster -ResourceId <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzManagedCassandraCluster -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### ByObjectParameterSet
+```
+Get-AzManagedCassandraCluster -InputObject <PSClusterResource> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,10 +57,10 @@ Name of the managed Cassandra cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: NameParameterSet
+Parameter Sets: ByNameParameterSet
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -76,15 +82,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Managed Cassandra Cluster object
+
+```yaml
+Type: Microsoft.Azure.Commands.CosmosDB.Models.PSClusterResource
+Parameter Sets: ByObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Name of resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: NameParameterSet
+Parameter Sets: ByNameParameterSet
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -96,7 +117,7 @@ Resource id of the managed Cassandra cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceIdParameterSet
+Parameter Sets: ByResourceIdParameterSet
 Aliases:
 
 Required: True
