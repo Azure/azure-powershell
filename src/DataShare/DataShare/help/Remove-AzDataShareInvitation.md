@@ -38,7 +38,7 @@ The **Remove-AzDataShareInvitation** cmdlet removes a datashare invitation.
 
 ### Example 1
 ```powershell
-Remove-AzDataShareDataSetMapping -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareName "AdsShare" -Name "ADSInvite"
+Remove-AzDataShareDataSetMapping -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareSubscriptionName "AdsShare" -Name "ADSInvite"
 ```
 
 ```output
