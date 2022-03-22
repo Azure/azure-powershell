@@ -88,6 +88,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                           " Use the parameter to give more details on parameters like description, type, possible values.")]
         public PsApiManagementParameter[] TemplateParameters { get; set; }
 
+        [CmdletParameterBreakingChange("Sample", ReplaceMentCmdletParameterName = "Example")]
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
