@@ -32,12 +32,6 @@ jobs:
       windows:
         OSName: ${{ variables.WindowsName }}
         ImageName: ${{ variables.WindowsImage }}
-      linux:
-        OSName: ${{ variables.LinuxName }}
-        ImageName: ${{ variables.LinuxImage }}
-      macOS:
-        OSName: ${{ variables.MacOSName }}
-        ImageName: ${{ variables.MacOSImage }}
   pool:
     vmImage: $(ImageName)
 
@@ -45,8 +39,8 @@ jobs:
   - template: util/build-steps.yml
     parameters:
       osName: $(OSName)
-      testFramework: ${{ variables.TestFramework }}
       configuration: ${{ variables.Configuration }}
+      testFramework: ${{ variables.TestFramework }}
 
 - job: Analyze
   displayName: Analyze
@@ -58,12 +52,6 @@ jobs:
       windows:
         OSName: ${{ variables.WindowsName }}
         ImageName: ${{ variables.WindowsImage }}
-      linux:
-        OSName: ${{ variables.LinuxName }}
-        ImageName: ${{ variables.LinuxImage }}
-      macOS:
-        OSName: ${{ variables.MacOSName }}
-        ImageName: ${{ variables.MacOSImage }}
   pool:
     vmImage: $(ImageName)
 
@@ -72,6 +60,7 @@ jobs:
     parameters:
       osName: $(OSName)
       configuration: ${{ variables.Configuration }}
+      testFramework: ${{ variables.TestFramework }}
 
 - job: Test
   displayName: Test
