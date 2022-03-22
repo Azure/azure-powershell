@@ -12,7 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.NetApp" Version="1.15.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="21.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="20.6.1-Beta.2" />
   </ItemGroup>
 
 </Project>

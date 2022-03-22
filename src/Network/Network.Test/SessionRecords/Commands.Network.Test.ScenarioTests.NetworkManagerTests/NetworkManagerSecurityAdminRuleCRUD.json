@@ -1,0 +1,2619 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourcegroups/ps4421?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDg2MTViNGItYmM5Yy00YTcwLWJlMWItMmVhMTBiYzk3YjUyL3Jlc291cmNlZ3JvdXBzL3BzNDQyMT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"tags\": {\r\n    \"testtag\": \"testval\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "171f1f74-22b2-43f2-aea5-5b310d00da18"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.11601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.56"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "80"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-request-id": [
+          "4287a215-32e3-4832-a7b6-706b6ded5a11"
+        ],
+        "x-ms-correlation-request-id": [
+          "4287a215-32e3-4832-a7b6-706b6ded5a11"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220317T042114Z:4287a215-32e3-4832-a7b6-706b6ded5a11"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 17 Mar 2022 04:21:14 GMT"
+        ],
+        "Content-Length": [
+          "201"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421\",\r\n  \"name\": \"ps4421\",\r\n  \"location\": \"centraluseuap\",\r\n  \"tags\": {\r\n    \"testtag\": \"testval\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346?api-version=2021-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDg2MTViNGItYmM5Yy00YTcwLWJlMWItMmVhMTBiYzk3YjUyL3Jlc291cmNlR3JvdXBzL3BzNDQyMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya01hbmFnZXJzL3BzMzM0Nj9hcGktdmVyc2lvbj0yMDIxLTA1LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ff30cdf8-14b2-4564-a109-856b12283ca9"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.11601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.6.1.0.Beta.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "6e2f9490-85de-4179-a998-2dfb7036c8b2"
+        ],
+        "x-ms-correlation-request-id": [
+          "6e2f9490-85de-4179-a998-2dfb7036c8b2"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220317T042115Z:6e2f9490-85de-4179-a998-2dfb7036c8b2"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 17 Mar 2022 04:21:14 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "218"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Network/networkManagers/ps3346' under resource group 'ps4421' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346?api-version=2021-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDg2MTViNGItYmM5Yy00YTcwLWJlMWItMmVhMTBiYzk3YjUyL3Jlc291cmNlR3JvdXBzL3BzNDQyMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya01hbmFnZXJzL3BzMzM0Nj9hcGktdmVyc2lvbj0yMDIxLTA1LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "2607784f-12e3-4f39-b3d0-18983143a472"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.11601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.6.1.0.Beta.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "283a68ce-f787-48a7-8893-f77383558fea"
+        ],
+        "x-ms-correlation-request-id": [
+          "283a68ce-f787-48a7-8893-f77383558fea"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220317T042121Z:283a68ce-f787-48a7-8893-f77383558fea"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 17 Mar 2022 04:21:21 GMT"
+        ],
+        "Content-Length": [
+          "882"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"ps3346\",\r\n  \"id\": \"/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346\",\r\n  \"location\": \"centraluseuap\",\r\n  \"type\": \"Microsoft.Network/networkManagers\",\r\n  \"tags\": {},\r\n  \"etag\": \"\\\"0100b7c2-0000-3300-0000-6232b7410000\\\"\",\r\n  \"properties\": {\r\n    \"displayName\": \"\",\r\n    \"description\": \"\",\r\n    \"networkManagerScopes\": {\r\n      \"managementGroups\": [],\r\n      \"subscriptions\": [\r\n        \"/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52\"\r\n      ],\r\n      \"multiTenantScopes\": []\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"networkManagerScopeAccesses\": [\r\n      \"SecurityAdmin\"\r\n    ],\r\n    \"resourceGuid\": \"8e251895-b3bf-4f13-9d21-d7fc76d3c533\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"3d35ae98-0bbc-4e0d-89b7-a926b109b6da\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2022-03-17T04:21:18.68081Z\",\r\n    \"lastModifiedBy\": \"3d35ae98-0bbc-4e0d-89b7-a926b109b6da\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2022-03-17T04:21:18.68081Z\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346?api-version=2021-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDg2MTViNGItYmM5Yy00YTcwLWJlMWItMmVhMTBiYzk3YjUyL3Jlc291cmNlR3JvdXBzL3BzNDQyMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya01hbmFnZXJzL3BzMzM0Nj9hcGktdmVyc2lvbj0yMDIxLTA1LTAxLXByZXZpZXc=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"networkManagerScopes\": {\r\n      \"managementGroups\": [],\r\n      \"subscriptions\": [\r\n        \"/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52\"\r\n      ]\r\n    },\r\n    \"networkManagerScopeAccesses\": [\r\n      \"SecurityAdmin\"\r\n    ]\r\n  },\r\n  \"location\": \"centraluseuap\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ff30cdf8-14b2-4564-a109-856b12283ca9"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.11601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.6.1.0.Beta.2"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "296"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "be384cc9-cfd8-47ab-9ec6-af8d05dc4325"
+        ],
+        "x-ms-correlation-request-id": [
+          "be384cc9-cfd8-47ab-9ec6-af8d05dc4325"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220317T042121Z:be384cc9-cfd8-47ab-9ec6-af8d05dc4325"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 17 Mar 2022 04:21:21 GMT"
+        ],
+        "Content-Length": [
+          "842"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"ps3346\",\r\n  \"id\": \"/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346\",\r\n  \"location\": \"centraluseuap\",\r\n  \"type\": \"Microsoft.Network/networkManagers\",\r\n  \"tags\": {},\r\n  \"etag\": \"\",\r\n  \"properties\": {\r\n    \"displayName\": \"\",\r\n    \"description\": \"\",\r\n    \"networkManagerScopes\": {\r\n      \"managementGroups\": [],\r\n      \"subscriptions\": [\r\n        \"/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52\"\r\n      ],\r\n      \"multiTenantScopes\": []\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"networkManagerScopeAccesses\": [\r\n      \"SecurityAdmin\"\r\n    ],\r\n    \"resourceGuid\": \"8e251895-b3bf-4f13-9d21-d7fc76d3c533\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"3d35ae98-0bbc-4e0d-89b7-a926b109b6da\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2022-03-17T04:21:18.68081Z\",\r\n    \"lastModifiedBy\": \"3d35ae98-0bbc-4e0d-89b7-a926b109b6da\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2022-03-17T04:21:18.68081Z\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/networkGroups/ps2548?api-version=2021-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDg2MTViNGItYmM5Yy00YTcwLWJlMWItMmVhMTBiYzk3YjUyL3Jlc291cmNlR3JvdXBzL3BzNDQyMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya01hbmFnZXJzL3BzMzM0Ni9uZXR3b3JrR3JvdXBzL3BzMjU0OD9hcGktdmVyc2lvbj0yMDIxLTA1LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "4300b741-16e6-412d-8955-03b5d3b72b8a"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.11601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.6.1.0.Beta.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "5f158374-4fef-4390-81f0-55cec8a71a4b"
+        ],
+        "x-ms-correlation-request-id": [
+          "5f158374-4fef-4390-81f0-55cec8a71a4b"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220317T042122Z:5f158374-4fef-4390-81f0-55cec8a71a4b"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 17 Mar 2022 04:21:21 GMT"
+        ],
+        "Content-Length": [
+          "234"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"NotFound\",\r\n    \"message\": \"Resource  [/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/networkGroups/ps2548] does not exist or has been deleted\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/networkGroups/ps2548?api-version=2021-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDg2MTViNGItYmM5Yy00YTcwLWJlMWItMmVhMTBiYzk3YjUyL3Jlc291cmNlR3JvdXBzL3BzNDQyMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya01hbmFnZXJzL3BzMzM0Ni9uZXR3b3JrR3JvdXBzL3BzMjU0OD9hcGktdmVyc2lvbj0yMDIxLTA1LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a9f2b185-6ee9-4a53-8554-2e0e5023b488"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.11601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.6.1.0.Beta.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "64f5c0bb-1ad2-4c9b-b7df-ee4b46081e74"
+        ],
+        "x-ms-correlation-request-id": [
+          "64f5c0bb-1ad2-4c9b-b7df-ee4b46081e74"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220317T042123Z:64f5c0bb-1ad2-4c9b-b7df-ee4b46081e74"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 17 Mar 2022 04:21:22 GMT"
+        ],
+        "Content-Length": [
+          "724"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"ps2548\",\r\n  \"id\": \"/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/networkGroups/ps2548\",\r\n  \"type\": \"Microsoft.Network/networkManagers/networkGroups\",\r\n  \"etag\": \"\\\"0100b8c2-0000-3300-0000-6232b7420000\\\"\",\r\n  \"properties\": {\r\n    \"displayName\": \"DISplayName\",\r\n    \"description\": \"SampleConfigDESCRIption\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"91389389-3ce9-44f5-8c1b-034949f0aca2\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"3d35ae98-0bbc-4e0d-89b7-a926b109b6da\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2022-03-17T04:21:22.3683743Z\",\r\n    \"lastModifiedBy\": \"3d35ae98-0bbc-4e0d-89b7-a926b109b6da\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2022-03-17T04:21:22.3683743Z\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/networkGroups/ps2548?api-version=2021-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDg2MTViNGItYmM5Yy00YTcwLWJlMWItMmVhMTBiYzk3YjUyL3Jlc291cmNlR3JvdXBzL3BzNDQyMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya01hbmFnZXJzL3BzMzM0Ni9uZXR3b3JrR3JvdXBzL3BzMjU0OD9hcGktdmVyc2lvbj0yMDIxLTA1LTAxLXByZXZpZXc=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"DISplayName\",\r\n    \"description\": \"SampleConfigDESCRIption\",\r\n    \"memberType\": \"Microsoft.Network/VirtualNetwork\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "4300b741-16e6-412d-8955-03b5d3b72b8a"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.11601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.6.1.0.Beta.2"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "164"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "7ed38e36-0cf2-4fb2-b763-d770c19cc859"
+        ],
+        "x-ms-correlation-request-id": [
+          "7ed38e36-0cf2-4fb2-b763-d770c19cc859"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220317T042122Z:7ed38e36-0cf2-4fb2-b763-d770c19cc859"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 17 Mar 2022 04:21:21 GMT"
+        ],
+        "Content-Length": [
+          "729"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"ps2548\",\r\n  \"id\": \"/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/networkGroups/ps2548\",\r\n  \"type\": \"Microsoft.Network/networkManagers/networkGroups\",\r\n  \"etag\": \"\",\r\n  \"properties\": {\r\n    \"displayName\": \"DISplayName\",\r\n    \"description\": \"SampleConfigDESCRIption\",\r\n    \"groupMembers\": [],\r\n    \"conditionalMembership\": \"\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"91389389-3ce9-44f5-8c1b-034949f0aca2\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"3d35ae98-0bbc-4e0d-89b7-a926b109b6da\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2022-03-17T04:21:22.3683743Z\",\r\n    \"lastModifiedBy\": \"3d35ae98-0bbc-4e0d-89b7-a926b109b6da\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2022-03-17T04:21:22.3683743Z\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/networkGroups/ps2548/staticMembers/ps8487?api-version=2021-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDg2MTViNGItYmM5Yy00YTcwLWJlMWItMmVhMTBiYzk3YjUyL3Jlc291cmNlR3JvdXBzL3BzNDQyMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya01hbmFnZXJzL3BzMzM0Ni9uZXR3b3JrR3JvdXBzL3BzMjU0OC9zdGF0aWNNZW1iZXJzL3BzODQ4Nz9hcGktdmVyc2lvbj0yMDIxLTA1LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1e4d4ff6-d3ba-41f7-9441-b0ed1c7ac569"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.11601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.6.1.0.Beta.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "eaee3df1-d348-46ba-bec3-961aed3115ae"
+        ],
+        "x-ms-correlation-request-id": [
+          "eaee3df1-d348-46ba-bec3-961aed3115ae"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220317T042122Z:eaee3df1-d348-46ba-bec3-961aed3115ae"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 17 Mar 2022 04:21:22 GMT"
+        ],
+        "Content-Length": [
+          "166"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"NotFound\",\r\n    \"message\": \"Resource  [00000000-0000-0000-0000-000000000000/networkGroups/ps2548/staticMembersps8487] does not exist or has been deleted\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/networkGroups/ps2548/staticMembers/ps8487?api-version=2021-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDg2MTViNGItYmM5Yy00YTcwLWJlMWItMmVhMTBiYzk3YjUyL3Jlc291cmNlR3JvdXBzL3BzNDQyMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya01hbmFnZXJzL3BzMzM0Ni9uZXR3b3JrR3JvdXBzL3BzMjU0OC9zdGF0aWNNZW1iZXJzL3BzODQ4Nz9hcGktdmVyc2lvbj0yMDIxLTA1LTAxLXByZXZpZXc=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"resourceId\": \"/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/testRG/providers/Microsoft.Network/virtualNetworks/vnet3\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1e4d4ff6-d3ba-41f7-9441-b0ed1c7ac569"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.11601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.6.1.0.Beta.2"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "173"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1197"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "30851823-edff-40b5-a771-4fb8903268c5"
+        ],
+        "x-ms-correlation-request-id": [
+          "30851823-edff-40b5-a771-4fb8903268c5"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220317T042123Z:30851823-edff-40b5-a771-4fb8903268c5"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 17 Mar 2022 04:21:22 GMT"
+        ],
+        "Content-Length": [
+          "704"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"ps8487\",\r\n  \"id\": \"/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/networkGroups/ps2548/staticMembers/ps8487\",\r\n  \"type\": \"Microsoft.Network/networkManagers/networkGroups/staticMembers\",\r\n  \"etag\": \"\",\r\n  \"properties\": {\r\n    \"resourceId\": \"/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/testRG/providers/Microsoft.Network/virtualNetworks/vnet3\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"3d35ae98-0bbc-4e0d-89b7-a926b109b6da\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2022-03-17T04:21:22.899636Z\",\r\n    \"lastModifiedBy\": \"3d35ae98-0bbc-4e0d-89b7-a926b109b6da\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2022-03-17T04:21:22.899636Z\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/securityAdminConfigurations/ps2850?api-version=2021-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDg2MTViNGItYmM5Yy00YTcwLWJlMWItMmVhMTBiYzk3YjUyL3Jlc291cmNlR3JvdXBzL3BzNDQyMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya01hbmFnZXJzL3BzMzM0Ni9zZWN1cml0eUFkbWluQ29uZmlndXJhdGlvbnMvcHMyODUwP2FwaS12ZXJzaW9uPTIwMjEtMDUtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9c9ec231-3b47-4c42-9cce-992804a76e2e"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.11601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.6.1.0.Beta.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11994"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "4d533e99-11f7-471c-94d1-664d67d4bfc6"
+        ],
+        "x-ms-correlation-request-id": [
+          "4d533e99-11f7-471c-94d1-664d67d4bfc6"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220317T042123Z:4d533e99-11f7-471c-94d1-664d67d4bfc6"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 17 Mar 2022 04:21:22 GMT"
+        ],
+        "Content-Length": [
+          "188"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"NotFound\",\r\n    \"message\": \"Resource  [Id=/internalNetworkManagers/8e251895-b3bf-4f13-9d21-d7fc76d3c533/securityAdminConfigurations/ps2850] does not exist or has been deleted\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/securityAdminConfigurations/ps2850?api-version=2021-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDg2MTViNGItYmM5Yy00YTcwLWJlMWItMmVhMTBiYzk3YjUyL3Jlc291cmNlR3JvdXBzL3BzNDQyMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya01hbmFnZXJzL3BzMzM0Ni9zZWN1cml0eUFkbWluQ29uZmlndXJhdGlvbnMvcHMyODUwP2FwaS12ZXJzaW9uPTIwMjEtMDUtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1c69178b-cf9a-411a-bba9-8dab8e2057bc"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.11601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.6.1.0.Beta.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11993"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "034e8cbd-caf0-4a1f-ae2c-b5b8c9cd80e9"
+        ],
+        "x-ms-correlation-request-id": [
+          "034e8cbd-caf0-4a1f-ae2c-b5b8c9cd80e9"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220317T042123Z:034e8cbd-caf0-4a1f-ae2c-b5b8c9cd80e9"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 17 Mar 2022 04:21:23 GMT"
+        ],
+        "Content-Length": [
+          "791"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"ps2850\",\r\n  \"id\": \"/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/securityAdminConfigurations/ps2850\",\r\n  \"type\": \"Microsoft.Network/networkManagers/securityAdminConfigurations\",\r\n  \"etag\": \"\\\"0100bac2-0000-3300-0000-6232b7430000\\\"\",\r\n  \"properties\": {\r\n    \"displayName\": \"DISplayName\",\r\n    \"description\": \"DESCription\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"71269ebf-fd14-4960-8e0f-4dea17510f68\",\r\n    \"applyOnNetworkIntentPolicyBasedServices\": [\r\n      \"None\"\r\n    ]\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"3d35ae98-0bbc-4e0d-89b7-a926b109b6da\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2022-03-17T04:21:23.6028104Z\",\r\n    \"lastModifiedBy\": \"3d35ae98-0bbc-4e0d-89b7-a926b109b6da\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2022-03-17T04:21:23.6028104Z\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/securityAdminConfigurations/ps2850?api-version=2021-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDg2MTViNGItYmM5Yy00YTcwLWJlMWItMmVhMTBiYzk3YjUyL3Jlc291cmNlR3JvdXBzL3BzNDQyMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya01hbmFnZXJzL3BzMzM0Ni9zZWN1cml0eUFkbWluQ29uZmlndXJhdGlvbnMvcHMyODUwP2FwaS12ZXJzaW9uPTIwMjEtMDUtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "97f6946f-be86-4659-80f7-70fa605a30a1"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.11601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.6.1.0.Beta.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11992"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "49fae400-dc9a-49ab-a03a-182142d6d302"
+        ],
+        "x-ms-correlation-request-id": [
+          "49fae400-dc9a-49ab-a03a-182142d6d302"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220317T042124Z:49fae400-dc9a-49ab-a03a-182142d6d302"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 17 Mar 2022 04:21:23 GMT"
+        ],
+        "Content-Length": [
+          "791"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"ps2850\",\r\n  \"id\": \"/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/securityAdminConfigurations/ps2850\",\r\n  \"type\": \"Microsoft.Network/networkManagers/securityAdminConfigurations\",\r\n  \"etag\": \"\\\"0100bac2-0000-3300-0000-6232b7430000\\\"\",\r\n  \"properties\": {\r\n    \"displayName\": \"DISplayName\",\r\n    \"description\": \"DESCription\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"71269ebf-fd14-4960-8e0f-4dea17510f68\",\r\n    \"applyOnNetworkIntentPolicyBasedServices\": [\r\n      \"None\"\r\n    ]\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"3d35ae98-0bbc-4e0d-89b7-a926b109b6da\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2022-03-17T04:21:23.6028104Z\",\r\n    \"lastModifiedBy\": \"3d35ae98-0bbc-4e0d-89b7-a926b109b6da\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2022-03-17T04:21:23.6028104Z\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/securityAdminConfigurations/ps2850?api-version=2021-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDg2MTViNGItYmM5Yy00YTcwLWJlMWItMmVhMTBiYzk3YjUyL3Jlc291cmNlR3JvdXBzL3BzNDQyMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya01hbmFnZXJzL3BzMzM0Ni9zZWN1cml0eUFkbWluQ29uZmlndXJhdGlvbnMvcHMyODUwP2FwaS12ZXJzaW9uPTIwMjEtMDUtMDEtcHJldmlldw==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"DISplayName\",\r\n    \"description\": \"DESCription\",\r\n    \"applyOnNetworkIntentPolicyBasedServices\": [\r\n      \"None\"\r\n    ],\r\n    \"deleteExistingNSGs\": \"True\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9c9ec231-3b47-4c42-9cce-992804a76e2e"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.11601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.6.1.0.Beta.2"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "204"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1196"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "eaaca5b2-1fd5-4fbf-9956-3bee80eec545"
+        ],
+        "x-ms-correlation-request-id": [
+          "eaaca5b2-1fd5-4fbf-9956-3bee80eec545"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220317T042123Z:eaaca5b2-1fd5-4fbf-9956-3bee80eec545"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 17 Mar 2022 04:21:23 GMT"
+        ],
+        "Content-Length": [
+          "751"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"ps2850\",\r\n  \"id\": \"/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/securityAdminConfigurations/ps2850\",\r\n  \"type\": \"Microsoft.Network/networkManagers/securityAdminConfigurations\",\r\n  \"etag\": \"\",\r\n  \"properties\": {\r\n    \"displayName\": \"DISplayName\",\r\n    \"description\": \"DESCription\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"71269ebf-fd14-4960-8e0f-4dea17510f68\",\r\n    \"applyOnNetworkIntentPolicyBasedServices\": [\r\n      \"None\"\r\n    ]\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"3d35ae98-0bbc-4e0d-89b7-a926b109b6da\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2022-03-17T04:21:23.6028104Z\",\r\n    \"lastModifiedBy\": \"3d35ae98-0bbc-4e0d-89b7-a926b109b6da\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2022-03-17T04:21:23.6028104Z\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/securityAdminConfigurations/ps2850?api-version=2021-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDg2MTViNGItYmM5Yy00YTcwLWJlMWItMmVhMTBiYzk3YjUyL3Jlc291cmNlR3JvdXBzL3BzNDQyMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya01hbmFnZXJzL3BzMzM0Ni9zZWN1cml0eUFkbWluQ29uZmlndXJhdGlvbnMvcHMyODUwP2FwaS12ZXJzaW9uPTIwMjEtMDUtMDEtcHJldmlldw==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"sample Config DisplayName\",\r\n    \"description\": \"DESCription\",\r\n    \"applyOnNetworkIntentPolicyBasedServices\": [\r\n      \"None\"\r\n    ]\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "97f6946f-be86-4659-80f7-70fa605a30a1"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.11601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.6.1.0.Beta.2"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "183"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1195"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "0e8c13de-3e7f-403f-a68f-645023ec7cc3"
+        ],
+        "x-ms-correlation-request-id": [
+          "0e8c13de-3e7f-403f-a68f-645023ec7cc3"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220317T042124Z:0e8c13de-3e7f-403f-a68f-645023ec7cc3"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 17 Mar 2022 04:21:23 GMT"
+        ],
+        "Content-Length": [
+          "765"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"ps2850\",\r\n  \"id\": \"/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/securityAdminConfigurations/ps2850\",\r\n  \"type\": \"Microsoft.Network/networkManagers/securityAdminConfigurations\",\r\n  \"etag\": \"\",\r\n  \"properties\": {\r\n    \"displayName\": \"sample Config DisplayName\",\r\n    \"description\": \"DESCription\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"71269ebf-fd14-4960-8e0f-4dea17510f68\",\r\n    \"applyOnNetworkIntentPolicyBasedServices\": [\r\n      \"None\"\r\n    ]\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"3d35ae98-0bbc-4e0d-89b7-a926b109b6da\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2022-03-17T04:21:23.6028104Z\",\r\n    \"lastModifiedBy\": \"3d35ae98-0bbc-4e0d-89b7-a926b109b6da\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2022-03-17T04:21:24.1497021Z\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/securityAdminConfigurations/ps2850/ruleCollections/ps5389?api-version=2021-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDg2MTViNGItYmM5Yy00YTcwLWJlMWItMmVhMTBiYzk3YjUyL3Jlc291cmNlR3JvdXBzL3BzNDQyMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya01hbmFnZXJzL3BzMzM0Ni9zZWN1cml0eUFkbWluQ29uZmlndXJhdGlvbnMvcHMyODUwL3J1bGVDb2xsZWN0aW9ucy9wczUzODk/YXBpLXZlcnNpb249MjAyMS0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "67b988aa-2706-4222-bfc3-00c199e71f8a"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.11601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.6.1.0.Beta.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11991"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "98709892-19b8-446e-a96f-2c8bedc9ffeb"
+        ],
+        "x-ms-correlation-request-id": [
+          "98709892-19b8-446e-a96f-2c8bedc9ffeb"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220317T042124Z:98709892-19b8-446e-a96f-2c8bedc9ffeb"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 17 Mar 2022 04:21:23 GMT"
+        ],
+        "Content-Length": [
+          "211"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"NotFound\",\r\n    \"message\": \"Resource  [Id=/internalNetworkManagers/8e251895-b3bf-4f13-9d21-d7fc76d3c533/securityAdminConfigurations/ps2850/ruleCollections/ps5389] does not exist or has been deleted\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/securityAdminConfigurations/ps2850/ruleCollections/ps5389?api-version=2021-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDg2MTViNGItYmM5Yy00YTcwLWJlMWItMmVhMTBiYzk3YjUyL3Jlc291cmNlR3JvdXBzL3BzNDQyMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya01hbmFnZXJzL3BzMzM0Ni9zZWN1cml0eUFkbWluQ29uZmlndXJhdGlvbnMvcHMyODUwL3J1bGVDb2xsZWN0aW9ucy9wczUzODk/YXBpLXZlcnNpb249MjAyMS0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "f1cb1de9-82a9-4f7a-9c1b-8b0d99245425"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.11601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.6.1.0.Beta.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11990"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "43d6cc7a-40d1-4c02-be4b-113731d84e4c"
+        ],
+        "x-ms-correlation-request-id": [
+          "43d6cc7a-40d1-4c02-be4b-113731d84e4c"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220317T042124Z:43d6cc7a-40d1-4c02-be4b-113731d84e4c"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 17 Mar 2022 04:21:24 GMT"
+        ],
+        "Content-Length": [
+          "944"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"ps5389\",\r\n  \"id\": \"/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/securityAdminConfigurations/ps2850/ruleCollections/ps5389\",\r\n  \"type\": \"Microsoft.Network/networkManagers/securityAdminConfigurations/ruleCollections\",\r\n  \"etag\": \"\\\"0100bcc2-0000-3300-0000-6232b7440000\\\"\",\r\n  \"properties\": {\r\n    \"displayName\": \"\",\r\n    \"description\": \"\",\r\n    \"appliesToGroups\": [\r\n      {\r\n        \"networkGroupId\": \"/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/networkGroups/ps2548\"\r\n      }\r\n    ],\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"aeb6f997-5b59-4237-8f5e-2883dd6cfd64\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"3d35ae98-0bbc-4e0d-89b7-a926b109b6da\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2022-03-17T04:21:24.6184626Z\",\r\n    \"lastModifiedBy\": \"3d35ae98-0bbc-4e0d-89b7-a926b109b6da\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2022-03-17T04:21:24.6184626Z\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/securityAdminConfigurations/ps2850/ruleCollections/ps5389?api-version=2021-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDg2MTViNGItYmM5Yy00YTcwLWJlMWItMmVhMTBiYzk3YjUyL3Jlc291cmNlR3JvdXBzL3BzNDQyMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya01hbmFnZXJzL3BzMzM0Ni9zZWN1cml0eUFkbWluQ29uZmlndXJhdGlvbnMvcHMyODUwL3J1bGVDb2xsZWN0aW9ucy9wczUzODk/YXBpLXZlcnNpb249MjAyMS0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1c30f53c-74ba-43d6-be74-42902d642474"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.11601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.6.1.0.Beta.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11989"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "a310b654-22cd-440d-88ba-f089463699dc"
+        ],
+        "x-ms-correlation-request-id": [
+          "a310b654-22cd-440d-88ba-f089463699dc"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220317T042125Z:a310b654-22cd-440d-88ba-f089463699dc"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 17 Mar 2022 04:21:24 GMT"
+        ],
+        "Content-Length": [
+          "944"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"ps5389\",\r\n  \"id\": \"/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/securityAdminConfigurations/ps2850/ruleCollections/ps5389\",\r\n  \"type\": \"Microsoft.Network/networkManagers/securityAdminConfigurations/ruleCollections\",\r\n  \"etag\": \"\\\"0100bcc2-0000-3300-0000-6232b7440000\\\"\",\r\n  \"properties\": {\r\n    \"displayName\": \"\",\r\n    \"description\": \"\",\r\n    \"appliesToGroups\": [\r\n      {\r\n        \"networkGroupId\": \"/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/networkGroups/ps2548\"\r\n      }\r\n    ],\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"aeb6f997-5b59-4237-8f5e-2883dd6cfd64\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"3d35ae98-0bbc-4e0d-89b7-a926b109b6da\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2022-03-17T04:21:24.6184626Z\",\r\n    \"lastModifiedBy\": \"3d35ae98-0bbc-4e0d-89b7-a926b109b6da\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2022-03-17T04:21:24.6184626Z\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/securityAdminConfigurations/ps2850/ruleCollections/ps5389?api-version=2021-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDg2MTViNGItYmM5Yy00YTcwLWJlMWItMmVhMTBiYzk3YjUyL3Jlc291cmNlR3JvdXBzL3BzNDQyMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya01hbmFnZXJzL3BzMzM0Ni9zZWN1cml0eUFkbWluQ29uZmlndXJhdGlvbnMvcHMyODUwL3J1bGVDb2xsZWN0aW9ucy9wczUzODk/YXBpLXZlcnNpb249MjAyMS0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"appliesToGroups\": [\r\n      {\r\n        \"networkGroupId\": \"/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/networkGroups/ps2548\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "67b988aa-2706-4222-bfc3-00c199e71f8a"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.11601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.6.1.0.Beta.2"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "254"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1194"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "8d28be36-f598-4abd-b333-7cfd920c238d"
+        ],
+        "x-ms-correlation-request-id": [
+          "8d28be36-f598-4abd-b333-7cfd920c238d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220317T042124Z:8d28be36-f598-4abd-b333-7cfd920c238d"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 17 Mar 2022 04:21:24 GMT"
+        ],
+        "Content-Length": [
+          "904"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"ps5389\",\r\n  \"id\": \"/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/securityAdminConfigurations/ps2850/ruleCollections/ps5389\",\r\n  \"type\": \"Microsoft.Network/networkManagers/securityAdminConfigurations/ruleCollections\",\r\n  \"etag\": \"\",\r\n  \"properties\": {\r\n    \"displayName\": \"\",\r\n    \"description\": \"\",\r\n    \"appliesToGroups\": [\r\n      {\r\n        \"networkGroupId\": \"/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/networkGroups/ps2548\"\r\n      }\r\n    ],\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"aeb6f997-5b59-4237-8f5e-2883dd6cfd64\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"3d35ae98-0bbc-4e0d-89b7-a926b109b6da\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2022-03-17T04:21:24.6184626Z\",\r\n    \"lastModifiedBy\": \"3d35ae98-0bbc-4e0d-89b7-a926b109b6da\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2022-03-17T04:21:24.6184626Z\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/securityAdminConfigurations/ps2850/ruleCollections/ps5389?api-version=2021-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDg2MTViNGItYmM5Yy00YTcwLWJlMWItMmVhMTBiYzk3YjUyL3Jlc291cmNlR3JvdXBzL3BzNDQyMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya01hbmFnZXJzL3BzMzM0Ni9zZWN1cml0eUFkbWluQ29uZmlndXJhdGlvbnMvcHMyODUwL3J1bGVDb2xsZWN0aW9ucy9wczUzODk/YXBpLXZlcnNpb249MjAyMS0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"Sample rule Collection displayName\",\r\n    \"description\": \"Sample rule Collection Description\",\r\n    \"appliesToGroups\": [\r\n      {\r\n        \"networkGroupId\": \"/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/networkGroups/ps2548\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1c30f53c-74ba-43d6-be74-42902d642474"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.11601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.6.1.0.Beta.2"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "370"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1193"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "707055b8-5c99-46fa-b987-ec30b5ecb3b1"
+        ],
+        "x-ms-correlation-request-id": [
+          "707055b8-5c99-46fa-b987-ec30b5ecb3b1"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220317T042125Z:707055b8-5c99-46fa-b987-ec30b5ecb3b1"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 17 Mar 2022 04:21:24 GMT"
+        ],
+        "Content-Length": [
+          "972"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"ps5389\",\r\n  \"id\": \"/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/securityAdminConfigurations/ps2850/ruleCollections/ps5389\",\r\n  \"type\": \"Microsoft.Network/networkManagers/securityAdminConfigurations/ruleCollections\",\r\n  \"etag\": \"\",\r\n  \"properties\": {\r\n    \"displayName\": \"Sample rule Collection displayName\",\r\n    \"description\": \"Sample rule Collection Description\",\r\n    \"appliesToGroups\": [\r\n      {\r\n        \"networkGroupId\": \"/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/networkGroups/ps2548\"\r\n      }\r\n    ],\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"aeb6f997-5b59-4237-8f5e-2883dd6cfd64\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"3d35ae98-0bbc-4e0d-89b7-a926b109b6da\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2022-03-17T04:21:24.6184626Z\",\r\n    \"lastModifiedBy\": \"3d35ae98-0bbc-4e0d-89b7-a926b109b6da\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2022-03-17T04:21:25.1965886Z\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/securityAdminConfigurations/ps2850/ruleCollections/ps5389/rules/ps7215?api-version=2021-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDg2MTViNGItYmM5Yy00YTcwLWJlMWItMmVhMTBiYzk3YjUyL3Jlc291cmNlR3JvdXBzL3BzNDQyMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya01hbmFnZXJzL3BzMzM0Ni9zZWN1cml0eUFkbWluQ29uZmlndXJhdGlvbnMvcHMyODUwL3J1bGVDb2xsZWN0aW9ucy9wczUzODkvcnVsZXMvcHM3MjE1P2FwaS12ZXJzaW9uPTIwMjEtMDUtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c76294b1-0a57-4866-ae6b-3e4b3513e8ff"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.11601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.6.1.0.Beta.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11988"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "1d5fbd2b-285c-46d5-aecb-d4c0429cdcd4"
+        ],
+        "x-ms-correlation-request-id": [
+          "1d5fbd2b-285c-46d5-aecb-d4c0429cdcd4"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220317T042125Z:1d5fbd2b-285c-46d5-aecb-d4c0429cdcd4"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 17 Mar 2022 04:21:24 GMT"
+        ],
+        "Content-Length": [
+          "224"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"NotFound\",\r\n    \"message\": \"Resource  [Id=/internalNetworkManagers/8e251895-b3bf-4f13-9d21-d7fc76d3c533/securityAdminConfigurations/ps2850/ruleCollections/ps5389/rules/ps7215] does not exist or has been deleted\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/securityAdminConfigurations/ps2850/ruleCollections/ps5389/rules/ps7215?api-version=2021-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDg2MTViNGItYmM5Yy00YTcwLWJlMWItMmVhMTBiYzk3YjUyL3Jlc291cmNlR3JvdXBzL3BzNDQyMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya01hbmFnZXJzL3BzMzM0Ni9zZWN1cml0eUFkbWluQ29uZmlndXJhdGlvbnMvcHMyODUwL3J1bGVDb2xsZWN0aW9ucy9wczUzODkvcnVsZXMvcHM3MjE1P2FwaS12ZXJzaW9uPTIwMjEtMDUtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9fa79b1d-e098-4865-a815-aba9c37b9391"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.11601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.6.1.0.Beta.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11987"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "333b1de9-e937-49fc-a786-6645a7704acc"
+        ],
+        "x-ms-correlation-request-id": [
+          "333b1de9-e937-49fc-a786-6645a7704acc"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220317T042126Z:333b1de9-e937-49fc-a786-6645a7704acc"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 17 Mar 2022 04:21:25 GMT"
+        ],
+        "Content-Length": [
+          "1100"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"ps7215\",\r\n  \"id\": \"/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/securityAdminConfigurations/ps2850/ruleCollections/ps5389/rules/ps7215\",\r\n  \"type\": \"Microsoft.Network/networkManagers/securityAdminConfigurations/ruleCollections/rules\",\r\n  \"etag\": \"\\\"0100bfc2-0000-3300-0000-6232b7460000\\\"\",\r\n  \"properties\": {\r\n    \"displayName\": \"DISPLay\",\r\n    \"description\": \"Description\",\r\n    \"flag\": \"\",\r\n    \"priority\": 100,\r\n    \"protocol\": \"Tcp\",\r\n    \"direction\": \"Inbound\",\r\n    \"access\": \"Allow\",\r\n    \"sources\": [\r\n      {\r\n        \"addressPrefixType\": \"ServiceTag\",\r\n        \"addressPrefix\": \"Internet\"\r\n      }\r\n    ],\r\n    \"destinations\": [\r\n      {\r\n        \"addressPrefixType\": \"IPPrefix\",\r\n        \"addressPrefix\": \"10.0.0.1\"\r\n      }\r\n    ],\r\n    \"sourcePortRanges\": [\r\n      \"100\"\r\n    ],\r\n    \"destinationPortRanges\": [\r\n      \"99\"\r\n    ],\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"46dfa912-f908-459d-8e0a-ea1c06c00196\"\r\n  },\r\n  \"kind\": \"Custom\",\r\n  \"systemData\": {\r\n    \"createdBy\": \"3d35ae98-0bbc-4e0d-89b7-a926b109b6da\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2022-03-17T04:21:25.7590997Z\",\r\n    \"lastModifiedBy\": \"3d35ae98-0bbc-4e0d-89b7-a926b109b6da\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2022-03-17T04:21:25.7590997Z\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/securityAdminConfigurations/ps2850/ruleCollections/ps5389/rules/ps7215?api-version=2021-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDg2MTViNGItYmM5Yy00YTcwLWJlMWItMmVhMTBiYzk3YjUyL3Jlc291cmNlR3JvdXBzL3BzNDQyMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya01hbmFnZXJzL3BzMzM0Ni9zZWN1cml0eUFkbWluQ29uZmlndXJhdGlvbnMvcHMyODUwL3J1bGVDb2xsZWN0aW9ucy9wczUzODkvcnVsZXMvcHM3MjE1P2FwaS12ZXJzaW9uPTIwMjEtMDUtMDEtcHJldmlldw==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"kind\": \"Custom\",\r\n  \"properties\": {\r\n    \"displayName\": \"DISPLay\",\r\n    \"description\": \"Description\",\r\n    \"protocol\": \"TCP\",\r\n    \"sources\": [\r\n      {\r\n        \"addressPrefix\": \"Internet\",\r\n        \"addressPrefixType\": \"ServiceTag\"\r\n      }\r\n    ],\r\n    \"destinations\": [\r\n      {\r\n        \"addressPrefix\": \"10.0.0.1\",\r\n        \"addressPrefixType\": \"IPPrefix\"\r\n      }\r\n    ],\r\n    \"sourcePortRanges\": [\r\n      \"100\"\r\n    ],\r\n    \"destinationPortRanges\": [\r\n      \"99\"\r\n    ],\r\n    \"access\": \"Allow\",\r\n    \"priority\": 100,\r\n    \"direction\": \"Inbound\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c76294b1-0a57-4866-ae6b-3e4b3513e8ff"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.11601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.6.1.0.Beta.2"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "566"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1192"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "b2098b9c-b76d-4de1-b646-a64667c4479f"
+        ],
+        "x-ms-correlation-request-id": [
+          "b2098b9c-b76d-4de1-b646-a64667c4479f"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220317T042126Z:b2098b9c-b76d-4de1-b646-a64667c4479f"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 17 Mar 2022 04:21:25 GMT"
+        ],
+        "Content-Length": [
+          "1060"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"ps7215\",\r\n  \"id\": \"/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/securityAdminConfigurations/ps2850/ruleCollections/ps5389/rules/ps7215\",\r\n  \"type\": \"Microsoft.Network/networkManagers/securityAdminConfigurations/ruleCollections/rules\",\r\n  \"etag\": \"\",\r\n  \"properties\": {\r\n    \"displayName\": \"DISPLay\",\r\n    \"description\": \"Description\",\r\n    \"flag\": \"\",\r\n    \"priority\": 100,\r\n    \"protocol\": \"Tcp\",\r\n    \"direction\": \"Inbound\",\r\n    \"access\": \"Allow\",\r\n    \"sources\": [\r\n      {\r\n        \"addressPrefixType\": \"ServiceTag\",\r\n        \"addressPrefix\": \"Internet\"\r\n      }\r\n    ],\r\n    \"destinations\": [\r\n      {\r\n        \"addressPrefixType\": \"IPPrefix\",\r\n        \"addressPrefix\": \"10.0.0.1\"\r\n      }\r\n    ],\r\n    \"sourcePortRanges\": [\r\n      \"100\"\r\n    ],\r\n    \"destinationPortRanges\": [\r\n      \"99\"\r\n    ],\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"46dfa912-f908-459d-8e0a-ea1c06c00196\"\r\n  },\r\n  \"kind\": \"Custom\",\r\n  \"systemData\": {\r\n    \"createdBy\": \"3d35ae98-0bbc-4e0d-89b7-a926b109b6da\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2022-03-17T04:21:25.7590997Z\",\r\n    \"lastModifiedBy\": \"3d35ae98-0bbc-4e0d-89b7-a926b109b6da\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2022-03-17T04:21:25.7590997Z\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/securityAdminConfigurations/ps2850/ruleCollections/ps5389/rules/ps7215?api-version=2021-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDg2MTViNGItYmM5Yy00YTcwLWJlMWItMmVhMTBiYzk3YjUyL3Jlc291cmNlR3JvdXBzL3BzNDQyMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya01hbmFnZXJzL3BzMzM0Ni9zZWN1cml0eUFkbWluQ29uZmlndXJhdGlvbnMvcHMyODUwL3J1bGVDb2xsZWN0aW9ucy9wczUzODkvcnVsZXMvcHM3MjE1P2FwaS12ZXJzaW9uPTIwMjEtMDUtMDEtcHJldmlldw==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"kind\": \"Custom\",\r\n  \"properties\": {\r\n    \"displayName\": \"Sample Rule Name\",\r\n    \"description\": \"Description\",\r\n    \"protocol\": \"Tcp\",\r\n    \"sources\": [\r\n      {\r\n        \"addressPrefix\": \"Internet\",\r\n        \"addressPrefixType\": \"ServiceTag\"\r\n      }\r\n    ],\r\n    \"destinations\": [\r\n      {\r\n        \"addressPrefix\": \"10.0.0.1\",\r\n        \"addressPrefixType\": \"IPPrefix\"\r\n      }\r\n    ],\r\n    \"sourcePortRanges\": [\r\n      \"100\"\r\n    ],\r\n    \"destinationPortRanges\": [\r\n      \"99\"\r\n    ],\r\n    \"access\": \"Allow\",\r\n    \"priority\": 100,\r\n    \"direction\": \"Inbound\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "408457bf-ce50-4448-95cd-a06893364d76"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.11601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.6.1.0.Beta.2"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "575"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1191"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "7efc8883-f647-4b01-8b92-8eed1788f147"
+        ],
+        "x-ms-correlation-request-id": [
+          "7efc8883-f647-4b01-8b92-8eed1788f147"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220317T042126Z:7efc8883-f647-4b01-8b92-8eed1788f147"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 17 Mar 2022 04:21:25 GMT"
+        ],
+        "Content-Length": [
+          "1069"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"ps7215\",\r\n  \"id\": \"/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/securityAdminConfigurations/ps2850/ruleCollections/ps5389/rules/ps7215\",\r\n  \"type\": \"Microsoft.Network/networkManagers/securityAdminConfigurations/ruleCollections/rules\",\r\n  \"etag\": \"\",\r\n  \"properties\": {\r\n    \"displayName\": \"Sample Rule Name\",\r\n    \"description\": \"Description\",\r\n    \"flag\": \"\",\r\n    \"priority\": 100,\r\n    \"protocol\": \"Tcp\",\r\n    \"direction\": \"Inbound\",\r\n    \"access\": \"Allow\",\r\n    \"sources\": [\r\n      {\r\n        \"addressPrefixType\": \"ServiceTag\",\r\n        \"addressPrefix\": \"Internet\"\r\n      }\r\n    ],\r\n    \"destinations\": [\r\n      {\r\n        \"addressPrefixType\": \"IPPrefix\",\r\n        \"addressPrefix\": \"10.0.0.1\"\r\n      }\r\n    ],\r\n    \"sourcePortRanges\": [\r\n      \"100\"\r\n    ],\r\n    \"destinationPortRanges\": [\r\n      \"99\"\r\n    ],\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"46dfa912-f908-459d-8e0a-ea1c06c00196\"\r\n  },\r\n  \"kind\": \"Custom\",\r\n  \"systemData\": {\r\n    \"createdBy\": \"3d35ae98-0bbc-4e0d-89b7-a926b109b6da\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2022-03-17T04:21:25.7590997Z\",\r\n    \"lastModifiedBy\": \"3d35ae98-0bbc-4e0d-89b7-a926b109b6da\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2022-03-17T04:21:26.3997769Z\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/commit?api-version=2021-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDg2MTViNGItYmM5Yy00YTcwLWJlMWItMmVhMTBiYzk3YjUyL3Jlc291cmNlR3JvdXBzL3BzNDQyMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya01hbmFnZXJzL3BzMzM0Ni9jb21taXQ/YXBpLXZlcnNpb249MjAyMS0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n  \"targetLocations\": [\r\n    \"centraluseuap\"\r\n  ],\r\n  \"configurationIds\": [\r\n    \"/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/securityAdminConfigurations/ps2850\"\r\n  ],\r\n  \"commitType\": \"SecurityAdmin\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c8d63cd5-0f91-4a79-8890-cde15ba6d0d4"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.11601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.6.1.0.Beta.2"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "286"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "97129c3e-4d62-404b-b001-34f494c58694"
+        ],
+        "x-ms-correlation-request-id": [
+          "97129c3e-4d62-404b-b001-34f494c58694"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220317T042126Z:97129c3e-4d62-404b-b001-34f494c58694"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 17 Mar 2022 04:21:26 GMT"
+        ],
+        "Content-Length": [
+          "475"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/commit/21fe65a2-3c57-452c-a1b9-46eb30194882\",\r\n  \"type\": \"Microsoft.Network/networkManagers/commit\",\r\n  \"configurationIds\": [\r\n    \"/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/securityAdminConfigurations/ps2850\"\r\n  ],\r\n  \"targetLocations\": [\r\n    \"centraluseuap\"\r\n  ],\r\n  \"commitType\": \"SecurityAdmin\"\r\n}",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/commit?api-version=2021-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDg2MTViNGItYmM5Yy00YTcwLWJlMWItMmVhMTBiYzk3YjUyL3Jlc291cmNlR3JvdXBzL3BzNDQyMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya01hbmFnZXJzL3BzMzM0Ni9jb21taXQ/YXBpLXZlcnNpb249MjAyMS0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n  \"targetLocations\": [\r\n    \"centraluseuap\"\r\n  ],\r\n  \"configurationIds\": [],\r\n  \"commitType\": \"SecurityAdmin\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "94594cd2-f8a8-44a1-a057-388d4dcee8c3"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.11601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.6.1.0.Beta.2"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "115"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1196"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "c62e3a29-54c5-4369-8e08-b8fc26e2a808"
+        ],
+        "x-ms-correlation-request-id": [
+          "c62e3a29-54c5-4369-8e08-b8fc26e2a808"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20220317T043128Z:c62e3a29-54c5-4369-8e08-b8fc26e2a808"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 17 Mar 2022 04:31:28 GMT"
+        ],
+        "Content-Length": [
+          "314"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/commit/12d611ca-9846-44d4-b8c1-2317e1941c85\",\r\n  \"type\": \"Microsoft.Network/networkManagers/commit\",\r\n  \"configurationIds\": [],\r\n  \"targetLocations\": [\r\n    \"centraluseuap\"\r\n  ],\r\n  \"commitType\": \"SecurityAdmin\"\r\n}",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/listDeploymentStatus?api-version=2021-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDg2MTViNGItYmM5Yy00YTcwLWJlMWItMmVhMTBiYzk3YjUyL3Jlc291cmNlR3JvdXBzL3BzNDQyMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya01hbmFnZXJzL3BzMzM0Ni9saXN0RGVwbG95bWVudFN0YXR1cz9hcGktdmVyc2lvbj0yMDIxLTA1LTAxLXByZXZpZXc=",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n  \"regions\": [\r\n    \"centraluseuap\"\r\n  ],\r\n  \"deploymentTypes\": [\r\n    \"SecurityAdmin\"\r\n  ]\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "f8d4ea24-e0a4-4ca4-aa08-0cf3e0b90289"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.11601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.6.1.0.Beta.2"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "97"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "22d44e82-bb8b-4463-aef6-f7b85552621b"
+        ],
+        "x-ms-correlation-request-id": [
+          "22d44e82-bb8b-4463-aef6-f7b85552621b"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20220317T043127Z:22d44e82-bb8b-4463-aef6-f7b85552621b"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 17 Mar 2022 04:31:27 GMT"
+        ],
+        "Content-Length": [
+          "361"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"skipToken\": \"\",\r\n  \"value\": [\r\n    {\r\n      \"deploymentType\": \"SecurityAdmin\",\r\n      \"configurationIds\": [\r\n        \"/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/securityAdminConfigurations/ps2850\"\r\n      ],\r\n      \"region\": \"centraluseuap\",\r\n      \"deploymentStatus\": \"Deployed\",\r\n      \"errorMessage\": \"\",\r\n      \"commitTime\": \"2022-03-17T04:21:26Z\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/listActiveSecurityAdminRules?api-version=2021-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDg2MTViNGItYmM5Yy00YTcwLWJlMWItMmVhMTBiYzk3YjUyL3Jlc291cmNlR3JvdXBzL3BzNDQyMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya01hbmFnZXJzL3BzMzM0Ni9saXN0QWN0aXZlU2VjdXJpdHlBZG1pblJ1bGVzP2FwaS12ZXJzaW9uPTIwMjEtMDUtMDEtcHJldmlldw==",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n  \"regions\": [\r\n    \"centraluseuap\"\r\n  ]\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3065ce5c-db5b-4d13-a428-b389ec9bf9f4"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.11601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.6.1.0.Beta.2"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "46"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "4115efe1-e701-4ec5-9f16-fc9578d660e7"
+        ],
+        "x-ms-correlation-request-id": [
+          "4115efe1-e701-4ec5-9f16-fc9578d660e7"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20220317T043127Z:4115efe1-e701-4ec5-9f16-fc9578d660e7"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 17 Mar 2022 04:31:27 GMT"
+        ],
+        "Content-Length": [
+          "1535"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"skipToken\": \"\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/securityAdminConfigurations/ps2850/ruleCollections/ps5389/rules/ps7215\",\r\n      \"region\": \"centraluseuap\",\r\n      \"configurationDisplayName\": \"sample Config DisplayName\",\r\n      \"configurationDescription\": \"DESCription\",\r\n      \"ruleCollectionDisplayName\": \"Sample rule Collection displayName\",\r\n      \"ruleCollectionDescription\": \"Sample rule Collection Description\",\r\n      \"kind\": \"Custom\",\r\n      \"properties\": {\r\n        \"displayName\": \"Sample Rule Name\",\r\n        \"description\": \"Description\",\r\n        \"flag\": \"\",\r\n        \"priority\": 100,\r\n        \"protocol\": \"Tcp\",\r\n        \"direction\": \"Inbound\",\r\n        \"access\": \"Allow\",\r\n        \"sources\": [\r\n          {\r\n            \"addressPrefixType\": \"ServiceTag\",\r\n            \"addressPrefix\": \"Internet\"\r\n          }\r\n        ],\r\n        \"destinations\": [\r\n          {\r\n            \"addressPrefixType\": \"IPPrefix\",\r\n            \"addressPrefix\": \"10.0.0.1\"\r\n          }\r\n        ],\r\n        \"sourcePortRanges\": [\r\n          \"100\"\r\n        ],\r\n        \"destinationPortRanges\": [\r\n          \"99\"\r\n        ],\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"resourceGuid\": \"46dfa912-f908-459d-8e0a-ea1c06c00196\"\r\n      },\r\n      \"ruleCollectionAppliesToGroups\": [\r\n        {\r\n          \"networkGroupId\": \"/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/networkGroups/ps2548\"\r\n        }\r\n      ],\r\n      \"ruleGroups\": [\r\n        {\r\n          \"id\": \"/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/networkGroups/ps2548\",\r\n          \"properties\": {\r\n            \"displayName\": \"DISplayName\",\r\n            \"description\": \"SampleConfigDESCRIption\",\r\n            \"groupMembers\": [],\r\n            \"conditionalMembership\": \"\",\r\n            \"provisioningState\": \"Succeeded\",\r\n            \"resourceGuid\": \"91389389-3ce9-44f5-8c1b-034949f0aca2\"\r\n          }\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/testRG/providers/Microsoft.Network/virtualNetworks/vnet3/listNetworkManagerEffectiveSecurityAdminRules?api-version=2021-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDg2MTViNGItYmM5Yy00YTcwLWJlMWItMmVhMTBiYzk3YjUyL3Jlc291cmNlR3JvdXBzL3Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbE5ldHdvcmtzL3ZuZXQzL2xpc3ROZXR3b3JrTWFuYWdlckVmZmVjdGl2ZVNlY3VyaXR5QWRtaW5SdWxlcz9hcGktdmVyc2lvbj0yMDIxLTA1LTAxLXByZXZpZXc=",
+      "RequestMethod": "POST",
+      "RequestBody": "{}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "49c978a4-2bbb-4fb9-816a-57af1d217955"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.11601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.6.1.0.Beta.2"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1197"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "f1993f0f-03bf-410d-9038-90bc458c18db"
+        ],
+        "x-ms-correlation-request-id": [
+          "f1993f0f-03bf-410d-9038-90bc458c18db"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20220317T043128Z:f1993f0f-03bf-410d-9038-90bc458c18db"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 17 Mar 2022 04:31:28 GMT"
+        ],
+        "Content-Length": [
+          "1510"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"skipToken\": \"\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/securityAdminConfigurations/ps2850/ruleCollections/ps5389/rules/ps7215\",\r\n      \"configurationDisplayName\": \"sample Config DisplayName\",\r\n      \"configurationDescription\": \"DESCription\",\r\n      \"ruleCollectionDisplayName\": \"Sample rule Collection displayName\",\r\n      \"ruleCollectionDescription\": \"Sample rule Collection Description\",\r\n      \"kind\": \"Custom\",\r\n      \"properties\": {\r\n        \"displayName\": \"Sample Rule Name\",\r\n        \"description\": \"Description\",\r\n        \"flag\": \"\",\r\n        \"priority\": 100,\r\n        \"protocol\": \"Tcp\",\r\n        \"direction\": \"Inbound\",\r\n        \"access\": \"Allow\",\r\n        \"sources\": [\r\n          {\r\n            \"addressPrefixType\": \"ServiceTag\",\r\n            \"addressPrefix\": \"Internet\"\r\n          }\r\n        ],\r\n        \"destinations\": [\r\n          {\r\n            \"addressPrefixType\": \"IPPrefix\",\r\n            \"addressPrefix\": \"10.0.0.1\"\r\n          }\r\n        ],\r\n        \"sourcePortRanges\": [\r\n          \"100\"\r\n        ],\r\n        \"destinationPortRanges\": [\r\n          \"99\"\r\n        ],\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"resourceGuid\": \"46dfa912-f908-459d-8e0a-ea1c06c00196\"\r\n      },\r\n      \"ruleCollectionAppliesToGroups\": [\r\n        {\r\n          \"networkGroupId\": \"/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/networkGroups/ps2548\"\r\n        }\r\n      ],\r\n      \"ruleGroups\": [\r\n        {\r\n          \"id\": \"/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/networkGroups/ps2548\",\r\n          \"properties\": {\r\n            \"displayName\": \"DISplayName\",\r\n            \"description\": \"SampleConfigDESCRIption\",\r\n            \"groupMembers\": [],\r\n            \"conditionalMembership\": \"\",\r\n            \"provisioningState\": \"Succeeded\",\r\n            \"resourceGuid\": \"91389389-3ce9-44f5-8c1b-034949f0aca2\"\r\n          }\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/securityAdminConfigurations/ps2850/ruleCollections/ps5389/rules/ps7215?api-version=2021-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDg2MTViNGItYmM5Yy00YTcwLWJlMWItMmVhMTBiYzk3YjUyL3Jlc291cmNlR3JvdXBzL3BzNDQyMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya01hbmFnZXJzL3BzMzM0Ni9zZWN1cml0eUFkbWluQ29uZmlndXJhdGlvbnMvcHMyODUwL3J1bGVDb2xsZWN0aW9ucy9wczUzODkvcnVsZXMvcHM3MjE1P2FwaS12ZXJzaW9uPTIwMjEtMDUtMDEtcHJldmlldw==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "063d0e06-6bff-4462-9ca5-a4baa135ef72"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.11601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.6.1.0.Beta.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-request-id": [
+          "42c5861e-20d9-47c6-bb9d-b3271ddcec62"
+        ],
+        "x-ms-correlation-request-id": [
+          "42c5861e-20d9-47c6-bb9d-b3271ddcec62"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20220317T044130Z:42c5861e-20d9-47c6-bb9d-b3271ddcec62"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 17 Mar 2022 04:41:29 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/securityAdminConfigurations/ps2850/ruleCollections/ps5389?api-version=2021-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDg2MTViNGItYmM5Yy00YTcwLWJlMWItMmVhMTBiYzk3YjUyL3Jlc291cmNlR3JvdXBzL3BzNDQyMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya01hbmFnZXJzL3BzMzM0Ni9zZWN1cml0eUFkbWluQ29uZmlndXJhdGlvbnMvcHMyODUwL3J1bGVDb2xsZWN0aW9ucy9wczUzODk/YXBpLXZlcnNpb249MjAyMS0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b477f1a9-dfc3-4796-a434-a1ae66a77899"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.11601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.6.1.0.Beta.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14998"
+        ],
+        "x-ms-request-id": [
+          "962fab63-9010-4840-bd40-c39d8b6506c5"
+        ],
+        "x-ms-correlation-request-id": [
+          "962fab63-9010-4840-bd40-c39d8b6506c5"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20220317T044130Z:962fab63-9010-4840-bd40-c39d8b6506c5"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 17 Mar 2022 04:41:30 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/securityAdminConfigurations/ps2850?api-version=2021-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDg2MTViNGItYmM5Yy00YTcwLWJlMWItMmVhMTBiYzk3YjUyL3Jlc291cmNlR3JvdXBzL3BzNDQyMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya01hbmFnZXJzL3BzMzM0Ni9zZWN1cml0eUFkbWluQ29uZmlndXJhdGlvbnMvcHMyODUwP2FwaS12ZXJzaW9uPTIwMjEtMDUtMDEtcHJldmlldw==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "08af7b77-2073-4dfd-a9d3-a58887b8966b"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.11601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.6.1.0.Beta.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14997"
+        ],
+        "x-ms-request-id": [
+          "5970f880-89f0-4f8f-a886-e45730bc2945"
+        ],
+        "x-ms-correlation-request-id": [
+          "5970f880-89f0-4f8f-a886-e45730bc2945"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20220317T044130Z:5970f880-89f0-4f8f-a886-e45730bc2945"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 17 Mar 2022 04:41:30 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/networkGroups/ps2548/staticMembers/ps8487?api-version=2021-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDg2MTViNGItYmM5Yy00YTcwLWJlMWItMmVhMTBiYzk3YjUyL3Jlc291cmNlR3JvdXBzL3BzNDQyMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya01hbmFnZXJzL3BzMzM0Ni9uZXR3b3JrR3JvdXBzL3BzMjU0OC9zdGF0aWNNZW1iZXJzL3BzODQ4Nz9hcGktdmVyc2lvbj0yMDIxLTA1LTAxLXByZXZpZXc=",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "831d620a-285c-4d09-a801-d993cdc6cf4d"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.11601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.6.1.0.Beta.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14996"
+        ],
+        "x-ms-request-id": [
+          "fe06bd5f-2abb-4582-9a19-4ce87283a0a8"
+        ],
+        "x-ms-correlation-request-id": [
+          "fe06bd5f-2abb-4582-9a19-4ce87283a0a8"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20220317T044131Z:fe06bd5f-2abb-4582-9a19-4ce87283a0a8"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 17 Mar 2022 04:41:30 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346/networkGroups/ps2548?api-version=2021-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDg2MTViNGItYmM5Yy00YTcwLWJlMWItMmVhMTBiYzk3YjUyL3Jlc291cmNlR3JvdXBzL3BzNDQyMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya01hbmFnZXJzL3BzMzM0Ni9uZXR3b3JrR3JvdXBzL3BzMjU0OD9hcGktdmVyc2lvbj0yMDIxLTA1LTAxLXByZXZpZXc=",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d9ca535e-652d-4d1e-abcf-b1520b989fa8"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.11601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.6.1.0.Beta.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14995"
+        ],
+        "x-ms-request-id": [
+          "12e0bed0-29a4-429a-801a-295e44dc4864"
+        ],
+        "x-ms-correlation-request-id": [
+          "12e0bed0-29a4-429a-801a-295e44dc4864"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20220317T044131Z:12e0bed0-29a4-429a-801a-295e44dc4864"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 17 Mar 2022 04:41:31 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/ps4421/providers/Microsoft.Network/networkManagers/ps3346?api-version=2021-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDg2MTViNGItYmM5Yy00YTcwLWJlMWItMmVhMTBiYzk3YjUyL3Jlc291cmNlR3JvdXBzL3BzNDQyMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya01hbmFnZXJzL3BzMzM0Nj9hcGktdmVyc2lvbj0yMDIxLTA1LTAxLXByZXZpZXc=",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "318f2545-3aa4-4dd2-9690-7b8e1e76d9ce"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.11601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.6.1.0.Beta.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14994"
+        ],
+        "x-ms-request-id": [
+          "95763f84-2f63-461f-afac-bf4d4deb1b0b"
+        ],
+        "x-ms-correlation-request-id": [
+          "95763f84-2f63-461f-afac-bf4d4deb1b0b"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20220317T044139Z:95763f84-2f63-461f-afac-bf4d4deb1b0b"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 17 Mar 2022 04:41:39 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourcegroups/ps4421?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDg2MTViNGItYmM5Yy00YTcwLWJlMWItMmVhMTBiYzk3YjUyL3Jlc291cmNlZ3JvdXBzL3BzNDQyMT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "4e736862-4277-4034-9f89-510fd6473b2e"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.11601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.56"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzQ0MjEtQ0VOVFJBTFVTRVVBUCIsImpvYkxvY2F0aW9uIjoiY2VudHJhbHVzZXVhcCJ9?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-request-id": [
+          "ecdba6a6-6d7f-457d-9074-3e533700417c"
+        ],
+        "x-ms-correlation-request-id": [
+          "ecdba6a6-6d7f-457d-9074-3e533700417c"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20220317T044141Z:ecdba6a6-6d7f-457d-9074-3e533700417c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 17 Mar 2022 04:41:41 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzQ0MjEtQ0VOVFJBTFVTRVVBUCIsImpvYkxvY2F0aW9uIjoiY2VudHJhbHVzZXVhcCJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDg2MTViNGItYmM5Yy00YTcwLWJlMWItMmVhMTBiYzk3YjUyL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpRME1qRXRRMFZPVkZKQlRGVlRSVlZCVUNJc0ltcHZZa3h2WTJGMGFXOXVJam9pWTJWdWRISmhiSFZ6WlhWaGNDSjk/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.700.22.11601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.56"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzQ0MjEtQ0VOVFJBTFVTRVVBUCIsImpvYkxvY2F0aW9uIjoiY2VudHJhbHVzZXVhcCJ9?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "a425d835-0b64-4a36-b46d-a038daf8c0a5"
+        ],
+        "x-ms-correlation-request-id": [
+          "a425d835-0b64-4a36-b46d-a038daf8c0a5"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20220317T044156Z:a425d835-0b64-4a36-b46d-a038daf8c0a5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 17 Mar 2022 04:41:56 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzQ0MjEtQ0VOVFJBTFVTRVVBUCIsImpvYkxvY2F0aW9uIjoiY2VudHJhbHVzZXVhcCJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDg2MTViNGItYmM5Yy00YTcwLWJlMWItMmVhMTBiYzk3YjUyL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpRME1qRXRRMFZPVkZKQlRGVlRSVlZCVUNJc0ltcHZZa3h2WTJGMGFXOXVJam9pWTJWdWRISmhiSFZ6WlhWaGNDSjk/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.700.22.11601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.56"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzQ0MjEtQ0VOVFJBTFVTRVVBUCIsImpvYkxvY2F0aW9uIjoiY2VudHJhbHVzZXVhcCJ9?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-request-id": [
+          "55b0930f-d290-4066-b0c1-85968b242045"
+        ],
+        "x-ms-correlation-request-id": [
+          "55b0930f-d290-4066-b0c1-85968b242045"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20220317T044211Z:55b0930f-d290-4066-b0c1-85968b242045"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 17 Mar 2022 04:42:11 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzQ0MjEtQ0VOVFJBTFVTRVVBUCIsImpvYkxvY2F0aW9uIjoiY2VudHJhbHVzZXVhcCJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDg2MTViNGItYmM5Yy00YTcwLWJlMWItMmVhMTBiYzk3YjUyL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpRME1qRXRRMFZPVkZKQlRGVlRSVlZCVUNJc0ltcHZZa3h2WTJGMGFXOXVJam9pWTJWdWRISmhiSFZ6WlhWaGNDSjk/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.700.22.11601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.56"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzQ0MjEtQ0VOVFJBTFVTRVVBUCIsImpvYkxvY2F0aW9uIjoiY2VudHJhbHVzZXVhcCJ9?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-request-id": [
+          "4f2de3e0-aa5e-4d2d-a04a-734868b04f97"
+        ],
+        "x-ms-correlation-request-id": [
+          "4f2de3e0-aa5e-4d2d-a04a-734868b04f97"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20220317T044226Z:4f2de3e0-aa5e-4d2d-a04a-734868b04f97"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 17 Mar 2022 04:42:26 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzQ0MjEtQ0VOVFJBTFVTRVVBUCIsImpvYkxvY2F0aW9uIjoiY2VudHJhbHVzZXVhcCJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDg2MTViNGItYmM5Yy00YTcwLWJlMWItMmVhMTBiYzk3YjUyL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpRME1qRXRRMFZPVkZKQlRGVlRSVlZCVUNJc0ltcHZZa3h2WTJGMGFXOXVJam9pWTJWdWRISmhiSFZ6WlhWaGNDSjk/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.700.22.11601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.56"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzQ0MjEtQ0VOVFJBTFVTRVVBUCIsImpvYkxvY2F0aW9uIjoiY2VudHJhbHVzZXVhcCJ9?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-request-id": [
+          "f2112417-8772-4739-9e94-7a98ab2af251"
+        ],
+        "x-ms-correlation-request-id": [
+          "f2112417-8772-4739-9e94-7a98ab2af251"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20220317T044242Z:f2112417-8772-4739-9e94-7a98ab2af251"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 17 Mar 2022 04:42:41 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzQ0MjEtQ0VOVFJBTFVTRVVBUCIsImpvYkxvY2F0aW9uIjoiY2VudHJhbHVzZXVhcCJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDg2MTViNGItYmM5Yy00YTcwLWJlMWItMmVhMTBiYzk3YjUyL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpRME1qRXRRMFZPVkZKQlRGVlRSVlZCVUNJc0ltcHZZa3h2WTJGMGFXOXVJam9pWTJWdWRISmhiSFZ6WlhWaGNDSjk/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.700.22.11601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.56"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
+        ],
+        "x-ms-request-id": [
+          "a4efeeaf-b056-4495-ad00-10be6a30a078"
+        ],
+        "x-ms-correlation-request-id": [
+          "a4efeeaf-b056-4495-ad00-10be6a30a078"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20220317T044257Z:a4efeeaf-b056-4495-ad00-10be6a30a078"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 17 Mar 2022 04:42:56 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzQ0MjEtQ0VOVFJBTFVTRVVBUCIsImpvYkxvY2F0aW9uIjoiY2VudHJhbHVzZXVhcCJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDg2MTViNGItYmM5Yy00YTcwLWJlMWItMmVhMTBiYzk3YjUyL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpRME1qRXRRMFZPVkZKQlRGVlRSVlZCVUNJc0ltcHZZa3h2WTJGMGFXOXVJam9pWTJWdWRISmhiSFZ6WlhWaGNDSjk/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.700.22.11601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.56"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11994"
+        ],
+        "x-ms-request-id": [
+          "37e56203-8661-4c4a-8da9-9abce8137d93"
+        ],
+        "x-ms-correlation-request-id": [
+          "37e56203-8661-4c4a-8da9-9abce8137d93"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20220317T044257Z:37e56203-8661-4c4a-8da9-9abce8137d93"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 17 Mar 2022 04:42:57 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {
+    "Test-NetworkManagerSecurityAdminRuleCRUD": [
+      "ps4421",
+      "ps3346",
+      "ps2548",
+      "ps2850",
+      "ps8487",
+      "ps5389",
+      "ps7215"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "08615b4b-bc9c-4a70-be1b-2ea10bc97b52"
+  }
+}

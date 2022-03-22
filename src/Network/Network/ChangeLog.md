@@ -19,6 +19,57 @@
 --->
 
 ## Upcoming Release
+* Onboard Azure Virtual Network Manager Cmdlets for preview
+    - `Get-AzNetworkManager` 
+    - `New-AzNetworkManager` 
+    - `Remove-AzNetworkManager` 
+    - `Get-AzNetworkManagerGroup` 
+    - `New-AzNetworkManagerGroup` 
+    - `Remove-AzNetworkManagerGroup` 
+    - `Set-AzNetworkManagerGroup` 
+    - `Get-AzNetworkManagerConnectivityConfiguration` 
+    - `New-AzNetworkManagerConnectivityConfiguration` 
+    - `Remove-AzNetworkManagerConnectivityConfiguration` 
+    - `Set-AzNetworkManagerConnectivityConfiguration` 
+    - `Get-AzNetworkManagerSecurityAdminConfiguration` 
+    - `New-AzNetworkManagerSecurityAdminConfiguration` 
+    - `Remove-AzNetworkManagerSecurityAdminConfiguration` 
+    - `Set-AzNetworkManagerSecurityAdminConfiguration` 
+    - `Get-AzNetworkManagerSecurityAdminRuleCollection` 
+    - `New-AzNetworkManagerSecurityAdminRuleCollection` 
+    - `Remove-AzNetworkManagerSecurityAdminRuleCollection` 
+    - `Set-AzNetworkManagerSecurityAdminRuleCollection` 
+    - `Get-AzNetworkManagerSecurityAdminRule` 
+    - `New-AzNetworkManagerSecurityAdminRule` 
+    - `Remove-AzNetworkManagerSecurityAdminRule` 
+    - `Set-AzNetworkManagerSecurityAdminRule` 
+    - `Get-AzNetworkManagerActiveConnectivityConfigurationList` 
+    - `Get-AzNetworkManagerActiveSecurityAdminRuleList` 
+    - `Get-AzNetworkManagerEffectiveConnectivityConfigurationList` 
+    - `Get-AzNetworkManagerEffectiveSecurityAdminRuleList` 
+    - `Get-AzNetworkManagerEffectiveSecurityAdminRuleList` 
+    - `Deploy-AzNetworkManagerCommit` 
+    - `Get-AzNetworkManagerEffectiveVirtualNetworkList` 
+    - `Get-AzNetworkManagerEffectiveVirtualNetworkByNetworkGroupList` 
+    - `Get-AzNetworkManagerDeploymentStatusList` 
+    - `New-AzNetworkManagerAddressPrefixItem` 
+    - `New-AzNetworkManagerScope` 
+    - `New-AzNetworkManagerSecurityGroupItem`
+    - `New-AzNetworkManagerHub` 
+    - `New-AzNetworkManagerConnectivityGroupItem`
+    - `Get-AzNetworkManagerStaticMember` 
+    - `New-AzNetworkManagerStaticMember` 
+    - `Remove-AzNetworkManagerStaticMember` 
+    - `Set-AzNetworkManagerStaticMember` 
+    - `Get-AzNetworkManagerScopeConnection` 
+    - `New-AzNetworkManagerScopeConnection` 
+    - `Remove-AzNetworkManagerScopeConnection` 
+    - `Set-AzNetworkManagerScopeConnection` 
+    - `Get-AzNetworkManagerSubscriptionConnection` 
+    - `New-AzNetworkManagerSubscriptionConnection` 
+    - `Remove-AzNetworkManagerSubscriptionConnection` 
+    - `Set-AzNetworkManagerSubscriptionConnection` 
+
 * Added support for retreiving the state of packet capture even when the provisioning state of the packet capture was failure
     - `Get-AzNetworkWatcherPacketCapture`
 * Added support for accepting Vnet, Subnet and NIC resources as the TargetResourceId for the following cdmlets

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>Network</PsModuleName>
@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Graph.RBAC" Version="3.4.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="21.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="20.6.1-Beta.2" />
     <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.5" />
     <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="4.0.0-preview.1" />
     <PackageReference Include="Microsoft.Azure.Insights" Version="0.16.0-preview" />
@@ -47,4 +47,8 @@
     <Folder Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkVirtualApplianceTests\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkManagerTests\" />
+  </ItemGroup>
+  
 </Project>
