@@ -173,6 +173,26 @@ This example provisions a new network and deploys a Windows VM from the Marketpl
 This script can be used for automatic provisioning because it uses the local virtual machine admin credentials inline instead of calling **Get-Credential** which requires user interaction.
 
 
+### Example 4: Creating a New VM in RG1 with an existing subnet in RG2
+```
+$UserName = "User"
+$Password = ConvertTo-SecureString "############" -AsPlainText -Force
+$psCred = New-Object System.Management.Automation.PSCredential($UserName, $Password)
+
+$Vnet = $(Get-AzVirtualNetwork -ResourceGroupName ResourceGroup2 -Name VnetName)
+$PIP = (Get-AzPublicIpAddress -ResourceGroupName ResourceGroup2 -Name PublicIPName)
+
+$NIC = New-AzNetworkInterface -Name NICname -ResourceGroupName ResourceGroup2 -Location SouthCentralUS -SubnetId $Vnet.Subnets[1].Id -PublicIpAddressId $PIP.Id
+$VirtualMachine = New-AzVMConfig -VMName VirtualMachineName -VMSize Standard_D4s_v3
+$VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName computerName -Credential $psCred -ProvisionVMAgent -EnableAutoUpdate
+$VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $NIC.Id
+$VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'WindowsServer' -Skus '2012-R2-Datacenter' -Version latest
+New-AzVm -ResourceGroupName ResourceGroup1 -Location SouthCentralUS -VM $VirtualMachine
+```
+
+This example deploys a Windows VM from the marketplace in one resource group with an existing subnet in another resource group.
+
+
 ## PARAMETERS
 
 ### -AddressPrefix
