@@ -165,7 +165,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Resource Group Name
+Device Name
 
 ```yaml
 Type: System.String
