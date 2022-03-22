@@ -27,7 +27,7 @@ The **Set-AzDataLakeStoreAccount** cmdlet modifies a Data Lake Store account.
 
 ### Example 1: Add a tag to an account
 ```powershell
-Set-AzDataLakeStoreAccount -Name "ContosoADL" -Tags @{"stage"="production"}
+Set-AzDataLakeStoreAccount -Name "ContosoADL" -Tag @{"stage"="production"}
 ```
 
 This command adds the specified tag to the Data Lake Store account named ContosoADL.
