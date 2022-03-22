@@ -22,6 +22,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ResourceManager\ResourceManager.csproj" />
     <ProjectReference Include="..\Resources\Resources.csproj" />
+    <ProjectReference Include="..\..\ManagedServiceIdentity\Az.ManagedServiceIdentity.csproj" />
   </ItemGroup>
 
   <ItemGroup>
