@@ -38,7 +38,7 @@ The New-AzDataMigrationTask cmdlet creates data migration task. This cmdlet take
 
 ### Example 1
 ```powershell
-New-AzDataMigrationTask -TaskType MigrateSqlServerSqlDb -ResourceGroupName myResourceGroup -ServiceName TestService -ProjectName myDMSProject -Name MyMigrationTask
+New-AzDataMigrationTask -TaskType MigrateSqlServerSqlDb -ResourceGroupName myResourceGroup -ServiceName TestService -ProjectName myDMSProject -TaskName MyMigrationTask
 ```
 
 This example script shows how to create a new Data Migration Task named MyMigrationTask in the project named myDMSProject and service named TestService. 
