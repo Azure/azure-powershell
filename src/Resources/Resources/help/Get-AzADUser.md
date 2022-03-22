@@ -81,6 +81,13 @@ Get-AzADUser -DisplayName $name
 
 Get user by display name
 
+### Example 4: Get user by search
+```powershell
+Get-AzADUser -Search "jobTitle:trainee" -ConsistencyLevel eventual
+```
+
+Search for users with the word trainees in the jobTitle. Filter does not support contains, use Search like this instead. Setting ConsistencyLevel to eventual is required to make Search work.
+
 ## PARAMETERS
 
 ### -AppendSelected
