@@ -123,7 +123,7 @@ Location Name    Zone ResourceGroupName
 eastus   test-cg      test-rg
 ```
 
-This commands creates a container group with a container instance, whose image is a custom image from a custom container image registry. For the volume property, AzureFile and GitRepo are recommanded. The EmptyDir property isn't supported.
+This commands creates a container group with a container instance, whose image is a custom image from a custom container image registry. For the volume property, AzureFile and GitRepo are recommended. The EmptyDir property isn't supported.
 
 ### Example 7: Create a container group with system assigned and user assigned identity
 ```powershell
