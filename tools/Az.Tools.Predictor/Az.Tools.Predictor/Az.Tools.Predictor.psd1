@@ -65,9 +65,9 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Improvements in command parsing mechanism
-* Fixed end of user input detection when - character is used
-* Optimized collection of anonymized data'
+        ReleaseNotes = '* Updated dependency on PSReadline 2.2.2 
+* Updated dependency on PowerShell 7.2
+* Added validation of pre-requisites before loading module'
 
         # Prerelease string of this module
         # Prerelease = ''
