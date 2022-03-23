@@ -155,3 +155,30 @@ function Test-GetResourceManagementPrivateLinkAssociation
     Assert-AreEqual $properties.PublicNetworkAccess $expectedPublicNetworkAccess
     Assert-AreEqual $properties.PrivateLink $expectedPrivateLinkResourceId
 }
+
+function Test-NewResourceManagementPrivateLinkAssociation
+{
+    $privateLinkResourceId = "/subscriptions/6dbb5850-64b4-49c0-ba85-d38f089c6fa4/resourceGroups/ARMPrivateLinkRG/providers/Microsoft.Authorization/resourceManagementPrivateLinks/DeepDiveRMPL"
+    $privateLinkAssociationId = "1d7942d1-288b-48de-8d0f-2d2aa8e03ad4"
+    $response = New-AzPrivateLinkAssociation -ManagementGroupId 24f15700-370c-45bc-86a7-aee1b0c4eb8a -Name $privateLinkAssociationId -PrivateLink $privateLinkResourceId -PublicNetworkAccess Enabled
+
+    $properties = $response.Properties | ConvertFrom-Json
+    $expectedPublicNetworkAccess = "Enabled"
+    Assert-AreEqual $response.PublicNetworkAccess $expectedPublicNetworkAcess
+    Assert-AreEqual $properties.PrivateLink $privateLinkResourceId
+}
+
+function Test-NewResourceManagementPrivateLink
+{
+    $response = New-AzResourceManagementPrivateLink -ResourceGroupName PrivateLinkTestRG -Name NewPL -Location centralus
+
+    $expectedType =  "Microsoft.Authorization/resourceManagementPrivateLinks"
+    $expectedId = "/subscriptions/e3a1f070-4fbe-428f-90cb-50dadce68bfb/resourceGroups/PrivateLinkTestRG/providers/Microsoft.Authorization/resourceManagementPrivateLinks/NewPL"
+    $expectedName = "NewPL"
+    $expectedLocation = "centralus"
+
+    Assert-AreEqual $response.Type $expectedType
+    Assert-AreEqual $response.Id $expectedId
+    Assert-AreEqual $response.Name $expectedName
+    Assert-AreEqual $response.Location $expectedLocation
+}

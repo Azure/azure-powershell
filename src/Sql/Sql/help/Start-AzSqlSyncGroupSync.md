@@ -24,8 +24,8 @@ The **Start-AzSqlSyncGroupSync** cmdlet starts a sync group synchronization.
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Start-AzSqlSyncGroupSync -SyncGroupName mysg [-ServerName] mysrv [-DatabaseName] mydb [-ResourceGroupName] myrg
+```powershell
+Start-AzSqlSyncGroupSync -SyncGroupName mysg [-ServerName] mysrv [-DatabaseName] mydb [-ResourceGroupName] myrg
 ```
 
 This command starts a round of synchronization for the sync group mysg.

@@ -37,7 +37,7 @@ Updates a workspace.
 
 ### Example 1: Updates the tags of a Databricks workspace
 ```powershell
-$dbr = Get-AzDatabricksWorkspace -ResourceGroupName databricks-rg-rqb2yo -Name workspaceopsc46 -Tag @{'key'=1}
+$dbr = Get-AzDatabricksWorkspace -ResourceGroupName databricks-rg-rqb2yo -Name workspaceopsc46
 Update-AzDatabricksWorkspace -InputObject $dbr -Tag @{key="value"}
 ```
 

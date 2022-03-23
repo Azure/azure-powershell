@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Resources.PrivateLinks
                 else if (!string.IsNullOrEmpty(ResourceGroupName) && string.IsNullOrEmpty(Name))
                 {
                     //List all the private links in a resource group
-                    var response = ResourceManagementPrivateLinkClient.ResourceManagementPrivateLink.List();
+                    var response = ResourceManagementPrivateLinkClient.ResourceManagementPrivateLink.ListByResourceGroup(resourceGroupName: ResourceGroupName);
                     var items = response.Value.Select(resourceManagementPrivateLink => new PSResourceManagementPrivateLink(resourceManagementPrivateLink))
                         .Where(psResourceManagementPrivateLink => psResourceManagementPrivateLink.Id.Contains($"/resourceGroups/{ResourceGroupName}/"))
                         .ToList();

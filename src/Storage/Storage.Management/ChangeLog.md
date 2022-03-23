@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated examples in reference documentation for `Close-AzStorageFileHandle`
+* Supported create storage context with customized blob, queue, file, table service endpoint
+    - `New-AzStorageContext`
 * Fixed copy blob failure on Premium Storage account, or account enabled hierarchical namespace
     -  `Copy-AzStorageBlob` 
 

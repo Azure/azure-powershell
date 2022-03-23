@@ -33,7 +33,7 @@ You register the gateway with a cloud service by using this key.
 
 ### Example 1: Creates a gateway auth key for Key1
 ```powershell
-New-AzDataFactoryGatewayAuthKey -ResourceGroup ADFResource -GatewayName 'MyGateway' -DataFactoryName MyADF -KeyName key1
+New-AzDataFactoryGatewayAuthKey -ResourceGroupName ADFResource -GatewayName 'MyGateway' -DataFactoryName MyADF -KeyName key1
 ```
 
 ```output

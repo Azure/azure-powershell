@@ -39,7 +39,7 @@ This command removes a vnet peering of databricks by name
 
 ### Example 2: Remove a vnet peering of databricks by object
 ```powershell
-Get-AzDatabricksVNetPeering -ResourceGroupName lucas-manual-test -WorkspaceName databricks-test01 -PeeringName MyPeering-test01 | Remove-AzDatabricksVNetPeering
+Get-AzDatabricksVNetPeering -ResourceGroupName lucas-manual-test -WorkspaceName databricks-test01 -Name vnetpeering-t01 | Remove-AzDatabricksVNetPeering
 ```
 
 This command removes a vnet peering of databricks by object

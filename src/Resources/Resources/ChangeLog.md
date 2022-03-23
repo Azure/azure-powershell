@@ -19,6 +19,25 @@
 -->
 
 ## Upcoming Release
+* Added `New-AzResourceManagementPrivateLink`, and `New-AzPrivateLinkAssociation` cmdlets
+* Added authorization related cmdlets:
+    - `Get-AzRoleAssignmentSchedule`
+    - `Get-AzRoleAssignmentScheduleInstance`
+    - `Get-AzRoleAssignmentScheduleRequest`
+    - `Get-AzRoleEligibilitySchedule`
+    - `Get-AzRoleEligibilityScheduleInstance`
+    - `Get-AzRoleEligibilityScheduleRequest` 
+    - `Get-AzRoleEligibleChildResource`
+    - `Get-AzRoleManagementPolicy` 
+    - `Get-AzRoleManagementPolicyAssignment`
+    - `New-AzRoleAssignmentScheduleRequest` 
+    - `New-AzRoleEligibilityScheduleRequest`
+    - `New-AzRoleManagementPolicyAssignment` 
+    - `Remove-AzRoleManagementPolicy`
+    - `Remove-AzRoleManagementPolicyAssignment` 
+    - `Stop-AzRoleAssignmentScheduleRequest`
+    - `Stop-AzRoleEligibilityScheduleRequest` 
+    - `Update-AzRoleManagementPolicy`
 * Added `Get-AzResourceManagementPrivateLink`, `Remove-AzResourceManagementPrivateLink`, `Get-AzResourceManagementPrivateLinkAssociation` and  `Remove-AzResourceManagementPrivateLinkAssociation` cmdlets
 
 ## Version 5.4.0

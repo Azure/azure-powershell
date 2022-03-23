@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support
 {
 
-    /// <summary>Argument completer implementation for ActionsRequired.</summary>
+    /// <summary>Any action that is required beyond basic workflow (approve/ reject/ disconnect)</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support.ActionsRequiredTypeConverter))]
     public partial struct ActionsRequired :
         System.Management.Automation.IArgumentCompleter
@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "None".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("None", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
+                yield return new global::System.Management.Automation.CompletionResult("'None'", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Recreate".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Recreate", "Recreate", global::System.Management.Automation.CompletionResultType.ParameterValue, "Recreate");
+                yield return new global::System.Management.Automation.CompletionResult("'Recreate'", "Recreate", global::System.Management.Automation.CompletionResultType.ParameterValue, "Recreate");
             }
         }
     }

@@ -7,7 +7,7 @@
   <Import Project="$(MSBuildThisFileDirectory)\Common.Netcore.Dependencies.targets" />
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="3.17.2-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="3.17.3-preview" />
     <PackageReference Include="Microsoft.Azure.Test.HttpRecorder" Version="1.13.3" />
     <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication" Version="2.3.7" />
     <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework" Version="1.7.6" />

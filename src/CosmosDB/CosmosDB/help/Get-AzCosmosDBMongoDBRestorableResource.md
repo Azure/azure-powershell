@@ -80,6 +80,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+CosmosDB Restorable Database Account object
+
+```yaml
+Type: Microsoft.Azure.Management.CosmosDB.Models.PSRestorableDatabaseAccountGetResult
+Parameter Sets: ByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Location
+Name of the Location in string.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RestoreLocation
 The location of the source account from which restore is triggered.
 This will also be the write region of the restored account
@@ -101,36 +131,6 @@ The timestamp to which the source account has to be restored to.
 
 ```yaml
 Type: System.DateTimeOffset
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-CosmosDB Restorable Database Account object
-
-```yaml
-Type: Microsoft.Azure.Management.CosmosDB.Models.PSRestorableDatabaseAccountGetResult
-Parameter Sets: ByParentObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Location
-Name of the Location in string.
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 

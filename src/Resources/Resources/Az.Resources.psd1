@@ -66,7 +66,8 @@ RequiredAssemblies = 'Microsoft.Azure.Management.Authorization.dll',
                'Microsoft.Extensions.Options.dll', 
                'Microsoft.Extensions.Primitives.dll', 
                'System.Runtime.CompilerServices.Unsafe.dll', 'AutoMapper.dll', 
-               'MSGraph.Autorest\bin\Az.MSGraph.private.dll'
+               'MSGraph.Autorest\bin\Az.MSGraph.private.dll',
+               'Authorization.Autorest\bin\Az.Authorization.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -77,13 +78,15 @@ RequiredAssemblies = 'Microsoft.Azure.Management.Authorization.dll',
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = 'Resources.format.ps1xml', 'ResourceManager.format.ps1xml', 
                'ResourceManager.generated.format.ps1xml', 'Tags.format.ps1xml', 
-               'MSGraph.Autorest\Az.MSGraph.format.ps1xml'
+               'MSGraph.Autorest\Az.MSGraph.format.ps1xml',
+               'Authorization.Autorest\Az.Authorization.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Resources.dll', 
                'Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll', 
                'Microsoft.Azure.PowerShell.Cmdlets.Tags.dll', 
-               'MSGraph.Autorest\Az.MSGraph.psm1')
+               'MSGraph.Autorest\Az.MSGraph.psm1',
+               'Authorization.Autorest\Az.Authorization.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = 'Add-AzADAppPermission', 'Add-AzADGroupMember', 
@@ -97,7 +100,16 @@ FunctionsToExport = 'Add-AzADAppPermission', 'Add-AzADGroupMember',
                'Remove-AzADGroupMember', 'Remove-AzADServicePrincipal', 
                'Remove-AzADSpCredential', 'Remove-AzADUser', 
                'Update-AzADApplication', 'Update-AzADServicePrincipal', 
-               'Update-AzADUser'
+               'Update-AzADUser',
+               'Get-AzRoleAssignmentSchedule', 'Get-AzRoleAssignmentScheduleInstance', 
+               'Get-AzRoleAssignmentScheduleRequest', 'Get-AzRoleEligibilitySchedule', 
+               'Get-AzRoleEligibilityScheduleInstance', 'Get-AzRoleEligibilityScheduleRequest', 
+               'Get-AzRoleEligibleChildResource', 'Get-AzRoleManagementPolicy', 
+               'Get-AzRoleManagementPolicyAssignment', 'New-AzRoleAssignmentScheduleRequest', 
+               'New-AzRoleEligibilityScheduleRequest', 'New-AzRoleManagementPolicyAssignment', 
+               'Remove-AzRoleManagementPolicy', 'Remove-AzRoleManagementPolicyAssignment', 
+               'Stop-AzRoleAssignmentScheduleRequest', 'Stop-AzRoleEligibilityScheduleRequest', 
+               'Update-AzRoleManagementPolicy'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Get-AzProviderOperation', 'Remove-AzRoleAssignment', 
@@ -161,6 +173,8 @@ CmdletsToExport = 'Get-AzProviderOperation', 'Remove-AzRoleAssignment',
                'Remove-AzTemplateSpec', 'Publish-AzBicepModule',
                'Get-AzResourceManagementPrivateLink',
                'Remove-AzResourceManagementPrivateLink',
+               'New-AzResourceManagementPrivateLink',
+               'New-AzPrivateLinkAssociation',
                'Get-AzPrivateLinkAssociation',
                'Remove-AzPrivateLinkAssociation'
 

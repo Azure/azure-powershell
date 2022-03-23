@@ -27,7 +27,7 @@ The **Set-AzDataLakeAnalyticsAccount** cmdlet modifies an Azure Data Lake Analyt
 
 ### Example 1: Modify the data source of an account
 ```powershell
-Set-AzDataLakeAnalyticsAccount -Name "ContosoAdlAcct" -DefaultDataLakeStore "ContosoAdlStore01" -Tags @{"stage"="production"}
+Set-AzDataLakeAnalyticsAccount -Name "ContosoAdlAcct" -Tag @{"stage"="production"}
 ```
 
 This command changes the default data source and the Tags property of the account.

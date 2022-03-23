@@ -26,15 +26,15 @@ The **Update-AzSqlSyncSchema** cmdlet updates the sync schema for a sync member 
 ## EXAMPLES
 
 ### Example 1: Update the sync schema for a hub database
-```
-PS C:\>Update-AzSqlSyncSchema -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "database01" -SyncGroupName "syncGroup01"
+```powershell
+Update-AzSqlSyncSchema -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "database01" -SyncGroupName "syncGroup01"
 ```
 
 This command updates the sync schema for the hub database in the sync group syncGroup01
 
 ### Example 2: Update the sync schema for a member database
-```
-PS C:\>Update-AzSqlSyncSchema -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "database01" -SyncGroupName "syncGroup01" -SyncMemberName "syncMember01"
+```powershell
+Update-AzSqlSyncSchema -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "database01" -SyncGroupName "syncGroup01" -SyncMemberName "syncMember01"
 ```
 
 This command updates the sync schema for the member database in the sync member syncMember01

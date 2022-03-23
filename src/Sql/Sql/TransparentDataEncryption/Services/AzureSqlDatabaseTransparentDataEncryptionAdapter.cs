@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
             {
                 State = state
 
-            }); ;
+            });
 
             return CreateTransparentDataEncryptionModelFromResponse(model.ResourceGroupName, model.ServerName, model.DatabaseName, resp);
         }

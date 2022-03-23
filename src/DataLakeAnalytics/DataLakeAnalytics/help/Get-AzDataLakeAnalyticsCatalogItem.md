@@ -32,7 +32,7 @@ This command gets the specified database.
 
 ### Example 2: Get tables in a specified database and schema
 ```powershell
-Get-AzDataLakeAnalyticsDataSource -AccountName "contosoadla" -ItemType Table -Path "databaseName.schemaName"
+Get-AzDataLakeAnalyticsCatalogItem -AccountName "contosoadla" -ItemType Table -Path "databaseName.schemaName"
 ```
 
 This command gets a list of tables in the specified database.
