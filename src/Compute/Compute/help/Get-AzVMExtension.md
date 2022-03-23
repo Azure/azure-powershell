@@ -119,7 +119,7 @@ ForceUpdateTag          :
 
 ### Example 4: Get properties of an extension using the VM parameter
 ```powershell
-$vm = Get-AzVMExtension -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine22"
+$vm = Get-AzVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine22"
 Get-AzVMExtension -VMObject $vm
 ```
 

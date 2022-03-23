@@ -42,7 +42,7 @@ This command gets the settings of the SQL Server extension on a virtual machine 
 
 ### Example 2: Get the settings by using the pipeline
 ```powershell
-Get-AzVM -Name "ContosoVM22" | Get-AzVMSqlServerExtension
+Get-AzVM -ResourceGroupName "testrg" -Name "ContosoVM22" | Get-AzVMSqlServerExtension
 ```
 
 ```output
@@ -55,7 +55,7 @@ AutoPatchingSettings : Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Ex
 AutoBackupSettings   : Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.AutoBackupSettings
 ```
 
-This command gets the virtual machine named ContosoVM22 on the service Service08 by using the Get-AzVM cmdlet.
+This command gets the virtual machine named ContosoVM22 in the Resource Group testrg by using the Get-AzVM cmdlet.
 The command passes the results to the current cmdlet by using the pipeline operator.
 The current command gets the settings of the SQL Server IaaS Agent on that virtual machine.
 
