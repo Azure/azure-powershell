@@ -31,6 +31,7 @@
     - `Get-AzSqlInstanceLink`
     - `Remove-AzSqlInstanceLink`
     - `Set-AzSqlInstanceLink`
+* Added support for cross tenant and cross subscription restore operations for `Restore-AzSqlDatabase`
 
 ## Version 3.7.1
 * Deprecation of Get-AzSqlDatabaseTransparentDataEncryptionActivity cmdlet
