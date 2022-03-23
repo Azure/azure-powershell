@@ -195,7 +195,7 @@ Validate if managed private endpoint is valid
 function Validate_ManagedPrivateEndpoint {
 	Param ([Object]$ManagedPrivateEndpoint,
 		[string]$Name)
-		$ManagedPrivateEndpoint.Name | Should -Be $Name
+		$ManagedPrivateEndpoint.Name -Match $Name | Should -Be $true
 }
 
 <#

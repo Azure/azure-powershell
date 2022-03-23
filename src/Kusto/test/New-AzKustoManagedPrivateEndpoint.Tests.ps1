@@ -16,8 +16,12 @@ Describe 'New-AzKustoManagedPrivateEndpoint' {
         . ($mockingPath | Select-Object -First 1).FullName
     }
 
-    It 'CreateExpanded' -skip {        
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        { Remove-AzKustoManagedPrivateEndpoint -ClusterName $env.clusterNetwork -Name $env.managedPrivateEndpointName -ResourceGroupName $env.resourceGroupNamefordc -SubscriptionId $env.networkClustersTestsSubscriptionId }
+        $privateLinkResourceId = "/subscriptions/" + $env.networkClustersTestsSubscriptionId + "/resourceGroups/" + $env.resourceGroupNamefordc + "/providers/Microsoft.EventHub/namespaces/" + $env.eventhubNSNameForEventGridfordc
+        $ManagedPrivateEndpoint = New-AzKustoManagedPrivateEndpoint -ClusterName $env.clusterNetwork -Name $env.managedPrivateEndpointName -ResourceGroupName $env.resourceGroupNamefordc -GroupId "namespace" -RequestMessage $env.managedPrivateEndpointRequestMessage -PrivateLinkResourceRegion $env.locationfordc -PrivateLinkResourceId $privateLinkResourceId -SubscriptionId $env.networkClustersTestsSubscriptionId
+        Validate_ManagedPrivateEndpoint $ManagedPrivateEndpoint $env.managedPrivateEndpointName
+        { Remove-AzKustoManagedPrivateEndpoint -ClusterName $env.clusterNetwork -Name $env.managedPrivateEndpointName -ResourceGroupName $env.resourceGroupNamefordc -SubscriptionId $env.networkClustersTestsSubscriptionId }
     }
 
     It 'Create' -skip {
