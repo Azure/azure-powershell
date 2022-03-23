@@ -35,31 +35,37 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         private DateTime _lastCheckedTime = DateTime.MinValue;
         private Timer _promptDelayTimer;
 
-        public AzPredictorSurveyHelper(PowerShellRuntime powerShellRuntime)
+        public AzPredictorSurveyHelper(IPowerShellRuntime powerShellRuntime)
         {
-            var promptMessageScript = @"
-                if ([Microsoft.Azure.PowerShell.Tools.AzPredictor.AzPredictorData]::ShowSurveyOnIdle) {
-                    [Microsoft.Azure.PowerShell.Tools.AzPredictor.AzPredictorData]::ShowSurveyOnIdle = $False
-                    Write-Host ''
-                    Write-Host ''; Write-Host `Survey: -ForegroundColor $Host.PrivateData.VerboseBackgroundColor -BackgroundColor $host.PrivateData.VerboseForegroundColor -NoNewLine; Write-Host ' How was your experience using the Az Predictor module?'
-                    Write-Host ''
-                    Write-Host 'Run ' -NoNewline; Write-Host Open-AzPredictorSurvey -ForegroundColor $Host.PrivateData.VerboseBackgroundColor -BackgroundColor $host.PrivateData.VerboseForegroundColor -NoNewline; Write-Host ' to give us your feedback.'
-                    Write-Host ''
-                    Write-Host '(Use ""Ctrl + C"" to return to the prompt)'
-                }";
+            var host = powerShellRuntime.HostName;
 
-            ScriptBlock scriptBlock = ScriptBlock.Create(promptMessageScript);
-            _powerShellEventManager = powerShellRuntime.ConsoleRuntime.Runspace.Events;
-            _idleEventSubscriber = _powerShellEventManager.SubscribeEvent(source: null,
-                eventName: null,
-                sourceIdentifier: PSEngineEvent.OnIdle,
-                data: null,
-                action: scriptBlock,
-                supportEvent: true,
-                forwardEvent: false);
+            if ((host.IndexOf("Visual Studio Code", StringComparison.InvariantCultureIgnoreCase) == -1) &&
+                !string.Equals(host, AzPredictorConstants.MockPSHostName, StringComparison.Ordinal))
+            {
+                var promptMessageScript = @"
+                    if ([Microsoft.Azure.PowerShell.Tools.AzPredictor.AzPredictorData]::ShowSurveyOnIdle) {
+                        [Microsoft.Azure.PowerShell.Tools.AzPredictor.AzPredictorData]::ShowSurveyOnIdle = $False
+                        Write-Host ''
+                        Write-Host ''; Write-Host `Survey: -ForegroundColor $Host.PrivateData.VerboseBackgroundColor -BackgroundColor $host.PrivateData.VerboseForegroundColor -NoNewLine; Write-Host ' How was your experience using the Az Predictor module?'
+                        Write-Host ''
+                        Write-Host 'Run ' -NoNewline; Write-Host Open-AzPredictorSurvey -ForegroundColor $Host.PrivateData.VerboseBackgroundColor -BackgroundColor $host.PrivateData.VerboseForegroundColor -NoNewline; Write-Host ' to give us your feedback.'
+                        Write-Host ''
+                        Write-Host '(Use ""Ctrl + C"" to return to the prompt)'
+                    }";
 
-            _promptDelayTimer = new Timer(TimeSpan.FromSeconds(1).TotalMilliseconds);
-            _promptDelayTimer.Elapsed += OnPromptDelayTimer;
+                ScriptBlock scriptBlock = ScriptBlock.Create(promptMessageScript);
+                _powerShellEventManager = powerShellRuntime.ConsoleRuntime.Runspace.Events;
+                _idleEventSubscriber = _powerShellEventManager.SubscribeEvent(source: null,
+                    eventName: null,
+                    sourceIdentifier: PSEngineEvent.OnIdle,
+                    data: null,
+                    action: scriptBlock,
+                    supportEvent: true,
+                    forwardEvent: false);
+
+                _promptDelayTimer = new Timer(TimeSpan.FromSeconds(1).TotalMilliseconds);
+                _promptDelayTimer.Elapsed += OnPromptDelayTimer;
+            }
         }
 
         public void Dispose()

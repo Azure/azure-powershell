@@ -13,8 +13,9 @@ Get All ADDomainService By default
 
 ### Example 2: Get ADDomainService By ResourceGroup and name
 ```powershell
- Get-AzADDomainService -Name youriADdomain -ResourceGroupName youriADdomain
+Get-AzADDomainService -Name youriADdomain -ResourceGroupName youriADdomain
 ```
+
 ```output
 Name          Domain Name       Location Sku
 ----          -----------       -------- ---
@@ -25,8 +26,8 @@ Get ADDomainService By ResourceGroup and name
 
 ### Example 3: Get all ADDomainService By ResourceGroup
 ```powershell
- Get-AzADDomainService -ResourceGroupName youriADdomain
- ```
+Get-AzADDomainService -ResourceGroupName youriADdomain
+```
 
 ```output
 Name          Domain Name       Location Sku
@@ -38,7 +39,7 @@ Get all ADDomainService By ResourceGroup
 
 ### Example 4: Get ADDomainService By InputObject
 ```powershell
- $getAzAddomain = Get-AzADDomainService -Name youriADdomain -ResourceGroupName youriADdomain
+$getAzAddomain = Get-AzADDomainService -Name youriADdomain -ResourceGroupName youriADdomain
 Get-AzADDomainService -InputObject $getAzAddomain
 ```
 

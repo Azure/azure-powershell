@@ -1,7 +1,9 @@
 ### Example 1: List the currents usage of a resource
 ```powershell
-PS C:\> Get-AzQuotaUsage -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus" 
+Get-AzQuotaUsage -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus" 
+```
 
+```output
 Name                                                ResourceGroupName UsageUsagesType UsageValue ETag
 ----                                                ----------------- --------------- ---------- ----
 VirtualNetworks                                                                       0
@@ -25,8 +27,10 @@ This command lists the currents usage of a resource
 
 ### Example 2: Get the current usage of a resource
 ```powershell
-PS C:\> Get-AzQuotaUsage -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus" -Name "MinPublicIpInterNetworkPrefixLength"
+Get-AzQuotaUsage -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus" -Name "MinPublicIpInterNetworkPrefixLength"
+```
 
+```output
 Name                                NameLocalizedValue        UsageUsagesType UsageValue ETag
 ----                                ------------------        --------------- ---------- ----
 MinPublicIpInterNetworkPrefixLength Public IPv4 Prefix Length                 0

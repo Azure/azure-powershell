@@ -318,7 +318,7 @@
                         "supportedFunctionsExtensionVersions": [
                             "~4"
                         ],
-                        "isDefault": true,
+                        "isDefault": false,
                         "minorVersions": [],
                         "applicationInsights": true,
                         "appSettingsDictionary": {
@@ -330,7 +330,7 @@
                         },
                         "isPreview": true,
                         "isDeprecated": false,
-                        "isHidden": true
+                        "isHidden": false
                     }
                 ],
                 "frameworks": [],

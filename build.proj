@@ -316,7 +316,7 @@
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(DockerTools)/CleanArtifacts.ps1 -Docker $(DockerRoot) &quot;" />
   </Target>
 
-  <Target Name="Test" DependsOnTargets="FilterBuild">
+  <Target Name="Test" DependsOnTargets="FilterBuild" Condition="'$(IsGenerateBased)' == 'false'">
     <Message Importance="high" Text="Running check in tests..." />
     <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
     <!-- https://github.com/Microsoft/msbuild/issues/3157#issuecomment-378002971 -->
