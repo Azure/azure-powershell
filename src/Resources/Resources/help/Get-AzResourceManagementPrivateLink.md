@@ -176,3 +176,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [Remove-AzResourceManagementPrivateLink](./Remove-AzResourceManagementPrivateLink.md)
+[New-AzResourceManagementPrivateLink](./New-AzResourceManagementPrivateLink.md)
