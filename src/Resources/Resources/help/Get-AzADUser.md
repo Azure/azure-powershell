@@ -62,24 +62,31 @@ Lists entities from users or get entity from users by key
 
 ### Example 1: Get signin user
 ```powershell
-PS C:\> Get-AzADUser -SignedIn
+Get-AzADUser -SignedIn
 ```
 
 Get signin user
 
 ### Example 2: List users
 ```powershell
-PS C:\> Get-AzADUser -First 10 -Select 'City' -AppendSelected
+Get-AzADUser -First 10 -Select 'City' -AppendSelected
 ```
 
 List first 10 users and append property 'City' after default properties: 'DisplayName', 'Id', 'DeletedDateTime', 'UserPrincipalName', 'UsageLocation', 'GivenName', 'SurName', 'AccountEnabled', 'MailNickName', 'Mail'
 
 ### Example 3: Get user by display name
 ```powershell
-PS C:\> Get-AzADUser -DisplayName $name
+Get-AzADUser -DisplayName $name
 ```
 
 Get user by display name
+
+### Example 4: Get user by search
+```powershell
+Get-AzADUser -Search "jobTitle:trainee" -ConsistencyLevel eventual
+```
+
+Search for users with the word trainees in the jobTitle. Filter does not support contains, use Search like this instead. Setting ConsistencyLevel to eventual is required to make Search work.
 
 ## PARAMETERS
 

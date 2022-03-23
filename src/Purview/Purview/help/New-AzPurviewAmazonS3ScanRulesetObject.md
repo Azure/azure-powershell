@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Purview-help.xml
 Module Name: Az.Purview
 online version: https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonS3ScanRulesetObject
 schema: 2.0.0
@@ -49,7 +49,6 @@ Create AmazonS3 custom scanruleset object
 
 ### -Description
 
-
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -63,7 +62,6 @@ Accept wildcard characters: False
 ```
 
 ### -ExcludedSystemClassification
-
 
 ```yaml
 Type: System.String[]
@@ -79,7 +77,6 @@ Accept wildcard characters: False
 
 ### -IncludedCustomClassificationRuleName
 
-
 ```yaml
 Type: System.String[]
 Parameter Sets: (All)
@@ -94,9 +91,8 @@ Accept wildcard characters: False
 
 ### -Kind
 
-
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.DataSourceType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType
 Parameter Sets: (All)
 Aliases:
 
@@ -111,7 +107,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for SCANNINGRULECUSTOMFILEEXTENSION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20211001Preview.ICustomFileExtension[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ICustomFileExtension[]
 Parameter Sets: (All)
 Aliases:
 
@@ -124,9 +120,8 @@ Accept wildcard characters: False
 
 ### -ScanningRuleFileExtension
 
-
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.FileExtensionsType[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.FileExtensionsType[]
 Parameter Sets: (All)
 Aliases:
 
@@ -139,9 +134,8 @@ Accept wildcard characters: False
 
 ### -Type
 
-
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.ScanRulesetType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType
 Parameter Sets: (All)
 Aliases:
 
@@ -159,7 +153,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20211001Preview.AmazonS3ScanRuleset
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonS3ScanRuleset
 
 ## NOTES
 
@@ -178,4 +172,3 @@ SCANNINGRULECUSTOMFILEEXTENSION <ICustomFileExtension[]>:
   - `[FileExtension <String>]`: 
 
 ## RELATED LINKS
-

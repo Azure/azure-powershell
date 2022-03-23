@@ -31,7 +31,7 @@ The **Get-AzCosmosDBMongoDBCollection** cmdlet gets the CosmosDB MongoDB Collect
 
 ### Example 1
 ```powershell
-Get-AzCosmosDBMongoDBCollection -ResourceGroupName {rgName} -AccountName {accountName} -Database {dbName} -Name {collectionName} 
+Get-AzCosmosDBMongoDBCollection -ResourceGroupName {rgName} -AccountName {accountName} -Database {dbName} -Name {collectionName}
 ```
 
 ```output
@@ -43,7 +43,7 @@ Resource Object contains MongoIndexes, _rid, _ts, _etag properties.
 
 ### Example 2
 ```powershell
-(Get-AzCosmosDBMongoDBCollection -ResourceGroupName {rgName} -AccountName {accountName} -Database {dbName} -Name {collectionName}).Resource.ShardKey 
+(Get-AzCosmosDBMongoDBCollection -ResourceGroupName {rgName} -AccountName {accountName} -Database {dbName} -Name {collectionName}).Resource.ShardKey
 ```
 
 ```output

@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.30011.22
+VisualStudioVersion = 16.0.32126.315
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CosmosDB", "CosmosDB\CosmosDB.csproj", "{42656543-77AD-4968-BA4B-BE0778705625}"
 EndProject
@@ -30,6 +30,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.MSGraph", "..\Resources\MSGraph.Autorest\Az.MSGraph.csproj", "{266CBF7F-4C80-4D7A-A415-44C142369101}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tags", "..\Resources\Tags\Tags.csproj", "{6BD4D521-DAFB-472B-A803-81F053AB1396}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeyVault", "..\KeyVault\KeyVault\KeyVault.csproj", "{1C67BD60-FE24-482C-BE67-E400FCF0BAC2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -119,14 +121,35 @@ Global
 		{4AB38158-DCAF-4FEA-BB2B-F69E175E782F}.Release|x64.Build.0 = Release|Any CPU
 		{266CBF7F-4C80-4D7A-A415-44C142369101}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{266CBF7F-4C80-4D7A-A415-44C142369101}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{266CBF7F-4C80-4D7A-A415-44C142369101}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{266CBF7F-4C80-4D7A-A415-44C142369101}.Debug|x64.Build.0 = Debug|Any CPU
 		{266CBF7F-4C80-4D7A-A415-44C142369101}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{266CBF7F-4C80-4D7A-A415-44C142369101}.Release|Any CPU.Build.0 = Release|Any CPU
+		{266CBF7F-4C80-4D7A-A415-44C142369101}.Release|x64.ActiveCfg = Release|Any CPU
+		{266CBF7F-4C80-4D7A-A415-44C142369101}.Release|x64.Build.0 = Release|Any CPU
+		{6BD4D521-DAFB-472B-A803-81F053AB1396}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BD4D521-DAFB-472B-A803-81F053AB1396}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BD4D521-DAFB-472B-A803-81F053AB1396}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{6BD4D521-DAFB-472B-A803-81F053AB1396}.Debug|x64.Build.0 = Debug|Any CPU
+		{6BD4D521-DAFB-472B-A803-81F053AB1396}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BD4D521-DAFB-472B-A803-81F053AB1396}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BD4D521-DAFB-472B-A803-81F053AB1396}.Release|x64.ActiveCfg = Release|Any CPU
+		{6BD4D521-DAFB-472B-A803-81F053AB1396}.Release|x64.Build.0 = Release|Any CPU
+		{1C67BD60-FE24-482C-BE67-E400FCF0BAC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C67BD60-FE24-482C-BE67-E400FCF0BAC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C67BD60-FE24-482C-BE67-E400FCF0BAC2}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1C67BD60-FE24-482C-BE67-E400FCF0BAC2}.Debug|x64.Build.0 = Debug|Any CPU
+		{1C67BD60-FE24-482C-BE67-E400FCF0BAC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C67BD60-FE24-482C-BE67-E400FCF0BAC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C67BD60-FE24-482C-BE67-E400FCF0BAC2}.Release|x64.ActiveCfg = Release|Any CPU
+		{1C67BD60-FE24-482C-BE67-E400FCF0BAC2}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{5E5BBB82-2D69-4A12-93AA-E5753F87AF03} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
+		{1C67BD60-FE24-482C-BE67-E400FCF0BAC2} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F9B3D96E-9680-40BE-A917-02EE655D6030}

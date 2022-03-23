@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added parameter PublicNetworkAccess for PostgreSQL single server related cmdlets [#17263]
 
 ## Version 1.0.0
 * General availability of Az.PostgreSql

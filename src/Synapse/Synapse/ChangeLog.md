@@ -19,6 +19,12 @@
 -->
 
 ## Upcoming Release
+* Upgraded Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.14
+* Fixed the issue that following cmdlets only shows 100 entries
+    - `Get-AzSynapseRoleAssignment` cmdlet
+    - `Get-AzSynapsePipelineRun` cmdlet
+    - `Get-AzSynapseTriggerRun` cmdlet
+    - `Get-AzSynapseActivityRun` cmdlet
 * Fixed the issue that there should be an error message when removing a dependency pipeline
 
 ## Version 1.1.0

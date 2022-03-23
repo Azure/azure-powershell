@@ -126,17 +126,17 @@ The **Test-AzTenantDeployment** cmdlet determines whether a deployment template 
 ## EXAMPLES
 
 ### Example 1: Test deployment with a custom template and parameter file
-```
-PS C:\> Test-AzTenantDeployment -Location "West US" -TemplateFile "D:\Azure\Templates\OrgSetup.json" -TemplateParameterFile "D:\Azure\Templates\OrgParms.json"
+```powershell
+Test-AzTenantDeployment -Location "West US" -TemplateFile "D:\Azure\Templates\OrgSetup.json" -TemplateParameterFile "D:\Azure\Templates\OrgParms.json"
 ```
 
 This command tests a deployment at the current tenant scope using the given template file and parameters file.
 
 ### Example 2: Test deployment with a custom template object and parameter file
-```
-PS C:\> $TemplateFileText = [System.IO.File]::ReadAllText("D:\Azure\Templates\OrgSetup.json")
-PS C:\> $TemplateObject = ConvertFrom-Json $TemplateFileText -AsHashtable
-PS C:\> Test-AzTenantDeployment -Location "West US" -TemplateObject $TemplateObject -TemplateParameterFile "D:\Azure\Templates\EngSiteParams.json"
+```powershell
+$TemplateFileText = [System.IO.File]::ReadAllText("D:\Azure\Templates\OrgSetup.json")
+$TemplateObject = ConvertFrom-Json $TemplateFileText -AsHashtable
+Test-AzTenantDeployment -Location "West US" -TemplateObject $TemplateObject -TemplateParameterFile "D:\Azure\Templates\EngSiteParams.json"
 ```
 
 This command tests a deployment at the current tenant scope using the an in-memory hashtable created from the given template file and a parameter file.

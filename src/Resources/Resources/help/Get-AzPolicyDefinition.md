@@ -55,36 +55,36 @@ The **Get-AzPolicyDefinition** cmdlet gets a collection of policy definitions or
 ## EXAMPLES
 
 ### Example 1: Get all policy definitions
-```
-PS C:\> Get-AzPolicyDefinition
+```powershell
+Get-AzPolicyDefinition
 ```
 
 This command gets all the policy definitions.
 
 ### Example 2: Get policy definition from current subscription by name
-```
-PS C:\> Get-AzPolicyDefinition -Name 'VMPolicyDefinition'
+```powershell
+Get-AzPolicyDefinition -Name 'VMPolicyDefinition'
 ```
 
 This command gets the policy definition named VMPolicyDefinition from the current default subscription.
 
 ### Example 3: Get policy definition from management group by name
-```
-PS C:\> Get-AzPolicyDefinition -Name 'VMPolicyDefinition' -ManagementGroupName 'Dept42'
+```powershell
+Get-AzPolicyDefinition -Name 'VMPolicyDefinition' -ManagementGroupName 'Dept42'
 ```
 
 This command gets the policy definition named VMPolicyDefinition from the management group named Dept42.
 
 ### Example 4: Get all built-in policy definitions from subscription
-```
-PS C:\> Get-AzPolicyDefinition -SubscriptionId '3bf44b72-c631-427a-b8c8-53e2595398ca' -Builtin
+```powershell
+Get-AzPolicyDefinition -SubscriptionId '3bf44b72-c631-427a-b8c8-53e2595398ca' -Builtin
 ```
 
 This command gets all built-in policy definitions from the subscription with ID 3bf44b72-c631-427a-b8c8-53e2595398ca.
 
 ### Example 5: Get policy definitions from a given category
-```
-PS C:\> Get-AzPolicyDefinition | where-object {$_.Properties.metadata.category -eq "Virtual Machine"}
+```powershell
+Get-AzPolicyDefinition | where-object {$_.Properties.metadata.category -eq "Virtual Machine"}
 ```
 
 This command gets all policy definitions in category "Virtual Machine".

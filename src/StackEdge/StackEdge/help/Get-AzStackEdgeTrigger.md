@@ -44,7 +44,10 @@ The **Get-AzStackEdgeTriger** cmdlet gets the triggers for a device. You can spe
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzStackEdgeTrigger -ResourceGroupName resourceGroupName -DeviceName deviceName
+Get-AzStackEdgeTrigger -ResourceGroupName resourceGroupName -DeviceName deviceName
+```
+
+```output
 Name                  Kind               
 ----                  ----               
 triggerName          PeriodicTimerEvent

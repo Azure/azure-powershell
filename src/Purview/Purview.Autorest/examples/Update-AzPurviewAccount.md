@@ -1,7 +1,9 @@
 ### Example 1: Update a purview account
 ```powershell
-PS C:\>  Update-AzPurviewAccount -Name test-pa -ResourceGroupName test-rg -Tag @{"k"="v"} | fl 
+Update-AzPurviewAccount -Name test-pa -ResourceGroupName test-rg -Tag @{"k"="v"} | fl 
+```
 
+```output
 CloudConnectorAwsExternalId      : xxxxxxxxxx-d074-4f8f-9d7f-10811b250738
 CreatedAt                        : 8/17/2021 6:18:57 AM
 CreatedBy                        : xxxxx.Zhou@microsoft.com
@@ -58,9 +60,11 @@ Update the tag of a purview account named 'test-pa'
 
 ### Example 2: Update a purview account by InputObject
 ```powershell
-PS C:\>  $get = Get-AzPurviewAccount -Name test-pa -ResourceGroupName test-rg 
-PS C:\> Update-AzPurviewAccount -InputObject $get -Tag @{"k"="v"}
+$get = Get-AzPurviewAccount -Name test-pa -ResourceGroupName test-rg 
+Update-AzPurviewAccount -InputObject $get -Tag @{"k"="v"}
+```
 
+```output
 CloudConnectorAwsExternalId      : xxxxxxxxxx-d074-4f8f-9d7f-10811b250738
 CreatedAt                        : 8/17/2021 6:18:57 AM
 CreatedBy                        : xxxxx.Zhou@microsoft.com
