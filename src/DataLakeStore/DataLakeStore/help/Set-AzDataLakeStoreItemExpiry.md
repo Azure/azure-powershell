@@ -49,8 +49,8 @@ This means the file will not automatically expire (be marked for delete) and wil
 
 ### Example 3: Set expiration time for a file relative to now
 ```powershell
-Set-AdlStoreItemExpiry -Account "ContosoADL" -path /myfile.txt -RelativeFileExpiryOption RelativeToNow -RelativeTime 240000
-Set-AdlStoreItemExpiry -Account "ContosoADL" -path /myfile.txt -RelativeFileExpiryOption RelativeToCreationDate -RelativeTime 240000
+Set-AzDataLakeStoreItemExpiry -Account "ContosoADL" -path /myfile.txt -RelativeFileExpiryOption RelativeToNow -RelativeTime 240000
+Set-AzDataLakeStoreItemExpiry -Account "ContosoADL" -path /myfile.txt -RelativeFileExpiryOption RelativeToCreationDate -RelativeTime 240000
 ```
 
 The first command sets the expiration time of the file /myfile.txt 240 seconds relative to current time at server.
