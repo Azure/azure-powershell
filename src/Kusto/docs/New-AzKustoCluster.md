@@ -21,10 +21,10 @@ New-AzKustoCluster -Name <String> -ResourceGroupName <String> -Location <String>
  [-KeyVaultPropertyKeyName <String>] [-KeyVaultPropertyKeyVaultUri <String>]
  [-KeyVaultPropertyKeyVersion <String>] [-KeyVaultPropertyUserIdentity <String>]
  [-OptimizedAutoscaleIsEnabled] [-OptimizedAutoscaleMaximum <Int32>] [-OptimizedAutoscaleMinimum <Int32>]
- [-OptimizedAutoscaleVersion <Int32>] [-PublicNetworkAccess <PublicNetworkAccess>]
- [-RestrictOutboundNetworkAccess <ClusterNetworkAccessFlag>] [-SkuCapacity <Int32>] [-Tag <Hashtable>]
- [-TrustedExternalTenant <ITrustedExternalTenant[]>]
- [-VirtualNetworkConfigurationDataManagementPublicIPId <String>]
+ [-OptimizedAutoscaleVersion <Int32>] [-PublicIPType <PublicIPType>]
+ [-PublicNetworkAccess <PublicNetworkAccess>] [-RestrictOutboundNetworkAccess <ClusterNetworkAccessFlag>]
+ [-SkuCapacity <Int32>] [-Tag <Hashtable>] [-TrustedExternalTenant <ITrustedExternalTenant[]>]
+ [-VirtualClusterGraduationProperty <String>] [-VirtualNetworkConfigurationDataManagementPublicIPId <String>]
  [-VirtualNetworkConfigurationEnginePublicIPId <String>] [-VirtualNetworkConfigurationSubnetId <String>]
  [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -52,7 +52,7 @@ The cluster's accepted audiences.
 To construct, see NOTES section for ACCEPTEDAUDIENCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20210827.IAcceptedAudiences[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IAcceptedAudiences[]
 Parameter Sets: (All)
 Aliases:
 
@@ -444,6 +444,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PublicIPType
+Indicates what public IP type to create - IPv4 (default), or DualStack (both IPv4 and IPv6)
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.PublicIPType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PublicNetworkAccess
 Public network access to the cluster is enabled by default.
 When disabled, only private endpoint connection to the cluster is allowed
@@ -572,7 +587,22 @@ The cluster's external tenants.
 To construct, see NOTES section for TRUSTEDEXTERNALTENANT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20210827.ITrustedExternalTenant[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ITrustedExternalTenant[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VirtualClusterGraduationProperty
+Virtual Cluster graduation properties
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -681,7 +711,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20210827.ICluster
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ICluster
 
 ## NOTES
 

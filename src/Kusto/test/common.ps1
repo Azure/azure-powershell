@@ -297,7 +297,7 @@ function Validate_AttachedDatabaseConfiguration {
 		$AttachedDatabaseConfigurationCreated.Location | Should -Be $Location
 		$AttachedDatabaseConfigurationCreated.ClusterResourceId | Should -Be $ClusterResourceId
 		$AttachedDatabaseConfigurationCreated.DatabaseName | Should -Be $DatabaseName
-		$AttachedDatabaseConfigurationCreated.DefaultPrincipalsModificationKind | Should -Be $DefaultPrincipalsModificationKind
+		$AttachedDatabaseConfigurationCreated.DefaultPrincipalsModificationKind | Should -Be $env.DefaultPrincipalsModificationKind
 }
 
 
