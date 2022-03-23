@@ -163,11 +163,13 @@ function Validate_PrincipalAssignment {
 		[string]$PrincipalAssignmentFullName,
 		[string]$PrincipalId,
 		[string]$PrincipalType,
-		[string]$Role)
+		[string]$Role, 
+		[string]$AadObjectId)
 		$PrincipalAssignment.Name | Should -Be $PrincipalAssignmentFullName
 		$PrincipalAssignment.PrincipalId | Should -Be $PrincipalId
 		$PrincipalAssignment.PrincipalType | Should -Be $PrincipalType
 		$PrincipalAssignment.Role | Should -Be $Role
+		$PrincipalAssignment.AadObjectId -match("^(\{){0,1}[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}(\}){0,1}$") | Should -Be $true
 }
 
 <#
