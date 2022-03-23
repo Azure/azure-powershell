@@ -25,8 +25,10 @@ The cmdlet **New-AzApiManagementCache** creates a new cache entity in Api Manage
 
 ### Example 1 : Create a new Cache entity
 ```powershell
-PS c:\> New-AzApiManagementCache -Context $context -ConnectionString "teamdemo.redis.cache.windows.net:6380,password=xxxxxx+xxxxx=,ssl=True,abortConnect=False" -Description "Team Cache"
+New-AzApiManagementCache -Context $context -ConnectionString "teamdemo.redis.cache.windows.net:6380,password=xxxxxx+xxxxx=,ssl=True,abortConnect=False" -Description "Team Cache"
+```
 
+```output
 CacheId           : centralus
 Description       : Team Cache
 ConnectionString  : {{5cc19889e6ed3b0524c3f7d3}}

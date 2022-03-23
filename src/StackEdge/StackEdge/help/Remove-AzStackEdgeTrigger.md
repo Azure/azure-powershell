@@ -37,7 +37,7 @@ The **Remove-AzStackEdgeTrigger** cmdlet removes an existing trigger on the Stac
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzStackEdgeTrigger -ResourceGroupName resourceGroupName -DeviceName deviceName -Name triggerName
+Remove-AzStackEdgeTrigger -ResourceGroupName resourceGroupName -DeviceName deviceName -Name triggerName
 ```
 
 ## PARAMETERS

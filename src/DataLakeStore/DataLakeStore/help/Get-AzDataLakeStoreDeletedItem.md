@@ -28,9 +28,11 @@ This could be a long running operation as it may have to search through millions
 ## EXAMPLES
 
 ### Example: Get details of a file from the Data Lake Store
+```powershell
+Get-AzDataLakeStoreDeletedItem -Account ml1ptrashtest -Filter test0/file_123
 ```
-PS> Get-AzDataLakeStoreDeletedItem -Account ml1ptrashtest -Filter test0/file_123
 
+```output
 TrashDirPath                         OriginalPath                                          Type CreationTime
 ------------                         ------------                                          ---- ------------
 cd6ad5ce-792b-4812-8a33-8f9ed19eb532 adl://ml1ptrashtest.azuredatalake.com/test0/file_1230 FILE 2/8/2019 8:12:18 AM

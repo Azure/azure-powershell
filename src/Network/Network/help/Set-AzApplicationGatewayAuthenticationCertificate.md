@@ -24,10 +24,10 @@ The **Set-AzApplicationGatewayAuthenticationCertificate** cmdlet updates an auth
 ## EXAMPLES
 
 ### Example 1: Update an authentication certificate
-```
-PS C:\> $appgw = Get-AzApplicationGateway -ResourceGroupName "rg" -Name "appGwName"
-PS C:\> $appgw = Set-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $appgw -Name "cert01" -CertificateFile "C:\cert2.cer"
-PS C:\> $appgw = Set-AzApplicationGateway -ApplicationGateway $appgw
+```powershell
+$appgw = Get-AzApplicationGateway -ResourceGroupName "rg" -Name "appGwName"
+$appgw = Set-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $appgw -Name "cert01" -CertificateFile "C:\cert2.cer"
+$appgw = Set-AzApplicationGateway -ApplicationGateway $appgw
 ```
 
 The first command gets the application gateway named appGwName and stores the result in the $appgw variable.

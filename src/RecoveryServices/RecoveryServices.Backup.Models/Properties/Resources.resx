@@ -572,7 +572,7 @@ Please contact Microsoft for further assistance.</value>
     <value>RetentionDuration in Days should be from 7 - 9999</value>
   </data>
   <data name="ProtectedItemsCountExceededException" xml:space="preserve">
-    <value>Cannot configure backup for more than 1000 VMs per policy</value>
+    <value>Cannot configure backup for more than 100 VMs per policy</value>
   </data>
   <data name="SoftdeleteNotImplementedException" xml:space="preserve">
     <value>Undo-deletion is only supported for AzureVMs. This method is not supported for other workloads.</value>
@@ -678,5 +678,29 @@ Please contact Microsoft for further assistance.</value>
   </data>
   <data name="UnregisterContainer" xml:space="preserve">
     <value>Unregister container</value>
+  </data>
+  <data name="DailyRetentionPointsLimitExceeded" xml:space="preserve">
+    <value>Number of restore points are more than {0}, please reduce the retention duration count for Daily Schedule or reduce number of backups per day</value>
+  </data>
+  <data name="HourlyScheduleNullValueException" xml:space="preserve">
+    <value>ScheduleInterval, ScheduleWindowStartTime, ScheduleWindowDuration, ScheduleRunTimeZone can't be null for Hourly policy</value>
+  </data>
+  <data name="InvalidLastBackupTime" xml:space="preserve">
+    <value>ScheduleWindowDuration should be less than or equal to (23:30 - ScheduleWindowStartTime)</value>
+  </data>
+  <data name="InvalidScheduleInterval" xml:space="preserve">
+    <value>Incorrect value for ScheduleInterval, allowed values are {0}</value>
+  </data>
+  <data name="InvalidScheduleWindowDuration" xml:space="preserve">
+    <value>ScheduleWindowDuration can't be lesser than ScheduleInterval and should exist in range from {0} to {1}</value>
+  </data>
+  <data name="ScheduleWindowStartTimeOutOfRange" xml:space="preserve">
+    <value>ScheduleWindowStartTime is out of range, valid range is from 00:00 to 19:30</value>
+  </data>
+  <data name="TargetParamsMissingException" xml:space="preserve">
+    <value>TargetVMName, TargetVNetName, TargetVNetResourceGroup, TargetSubnetName can't be empty for restoring to AlternateLocation with create new VM option</value>
+  </data>
+  <data name="TargetRGNotRequiredException" xml:space="preserve">
+    <value>TargetResourceGroupName parameter should be empty for OriginalLocation in-place restore</value>
   </data>
 </root>

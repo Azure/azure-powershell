@@ -37,6 +37,8 @@ This command creates a variable named StringVariable22 with a string value in th
 ```powershell
 $VirtualMachine = Get-AzVM -ServiceName "VirtualMachine" -Name "VirtualMachine03"
 New-AzAutomationVariable -AutomationAccountName "Contoso17" -Name "ComplexVariable01" -Encrypted $False -Value $VirtualMachine -ResourceGroupName "ResourceGroup01"
+$VirtualMachine = Get-AzVM -Name "VirtualMachine03"
+New-AzAutomationVariable -AutomationAccountName "Contoso17" -Name "ComplexVariable01" -Encrypted $False -Value $VirtualMachine -ResourceGroupName "ResourceGroup01"
 ```
 
 The first command gets a virtual machine by using the Get-AzVM cmdlet.

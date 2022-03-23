@@ -22,8 +22,11 @@ The Restart-AzAnalysisServicesInstance cmdlet restarts an instance of Azure Anal
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Restart-AzAnalysisServicesInstance
 ```
-PS C:\>Restart-AzAnalysisServicesInstance
+
+```output
 Instance: testserver
 ```
 

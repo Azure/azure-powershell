@@ -32,6 +32,8 @@ For wps_2 Workflow runbooks, the script must contain a single wps_2 Workflow def
 ```powershell
 $Tags = @{"tag01"="value01"; "tag02"="value02"}
 Import-AzAutomationRunbook -Path .\GraphicalRunbook06.graphrunbook -Tags $Tags -ResourceGroup "ResourceGroup01" -AutomationAccountName "AutomationAccount01" -Type GraphicalPowershell
+$Tags = @{"tag01"="value01"; "tag02"="value02"}
+Import-AzAutomationRunbook -Path .\GraphicalRunbook06.graphrunbook -Tags $Tags -ResourceGroupName "ResourceGroup01" -AutomationAccountName "AutomationAccount01" -Type GraphicalPowershell
 ```
 
 The first command assigns two key/value pairs to the $Tags variable.

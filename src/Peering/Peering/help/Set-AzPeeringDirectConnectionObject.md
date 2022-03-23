@@ -47,24 +47,26 @@ Used in conjunction with Update-AzPeering, this is an in memory operation and wi
 
 ## EXAMPLES
 
-### Upgrade Bandwidth
+### Example 1: Upgrade Bandwidth
 ```powershell
-PS C:> $update = Get-AzPeering -PeerName "ContosoPeering" -ResourceGroupName rg1 | Set-AzPeeringDirectConnectionObject -BandwidthInMbps 30000
+$update = Get-AzPeering -PeerName "ContosoPeering" -ResourceGroupName rg1 | Set-AzPeeringDirectConnectionObject -BandwidthInMbps 30000
 ```
 
 Upgrades the bandwidth for the first connection in the Peering object in memory. 
 
-### Update Bgp Session Address
+### Example 2: Update Bgp Session Address
 ```powershell
-PS C:> $update = Get-AzPeering -PeerName "ContosoPeering" -ResourceGroupName rg1 | Set-AzPeeringDirectConnectionObject -SessionPrefixV4 "192.168.0.1" -MaxPrefixesAdvertisedIPv4 20000
+$update = Get-AzPeering -PeerName "ContosoPeering" -ResourceGroupName rg1 | Set-AzPeeringDirectConnectionObject -SessionPrefixV4 "192.168.0.1" -MaxPrefixesAdvertisedIPv4 20000
 ```
 
 Updates the Peering Address for the first connection in the Peering object in memory. 
 
-### Update Use for peering service
+### Example 3: Update Use for peering service
 ```powershell
-PS C:> $update = Get-AzPeering -PeerName "ContosoPeering" -ResourceGroupName rg1 | Set-AzPeeringDirectConnectionObject -UseForPeeringService $true
+$update = Get-AzPeering -PeerName "ContosoPeering" -ResourceGroupName rg1 | Set-AzPeeringDirectConnectionObject -UseForPeeringService $true
+```
 
+```output
 PeeringDBFacilityId    : 99999
 UseForPeeringService   : True
 SessionAddressProvider : Microsoft

@@ -37,7 +37,7 @@ Deletes a security assessment metadata from a subscription. This action will del
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSecurityAssessmentMetadata -Name 4FB6C0A0-1137-42C7-A1C7-4BD37C91DE8D
+Remove-AzSecurityAssessmentMetadata -Name 4FB6C0A0-1137-42C7-A1C7-4BD37C91DE8D
 ```
 
 Deletes an assessment type from a subscription

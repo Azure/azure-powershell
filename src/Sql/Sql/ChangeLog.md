@@ -18,8 +18,23 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Hotfix for Azure Active Directory Admin
-    - AzureSqlServerActiveDirectoryAdministratorAdapter and AzureSqlInstanceActiveDirectoryAdministratorAdapter both used AzureEnvironment.Endpoint.AzureEnvironment.Endpoint.Graph instead of AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl
+* Added parameter `ServicePrinipalType` to `New-AzSqlInstance` and `Set-AzSqlInstance`
+* [Breaking change] Removed `Get-AzSqlDatabaseTransparentDataEncryptionActivity`
+* Added property `CurrentBackupStorageRedundancy` and `RequestedBackupStorageRedundancy` in  the outputs of Managed Instance CRUD commands
+* Added optional property `Tag` to `Restore-AzSqlDatabase`
+* Added new cmdlets for managing Server Trust Certificates
+    - `New-AzSqlInstanceServerTrustCertificate`
+    - `Get-AzSqlInstanceServerTrustCertificate`
+    - `Remove-AzSqlInstanceServerTrustCertificate`
+* Added new cmdlets for managing Managed Instance Link
+    - `New-AzSqlInstanceLink`
+    - `Get-AzSqlInstanceLink`
+    - `Remove-AzSqlInstanceLink`
+    - `Set-AzSqlInstanceLink`
+
+## Version 3.7.1
+* Deprecation of Get-AzSqlDatabaseTransparentDataEncryptionActivity cmdlet
+* Fixed cmdlets for Azure Active Directory Admin `AzureSqlServerActiveDirectoryAdministratorAdapter` and `AzureSqlInstanceActiveDirectoryAdministratorAdapter` migrate from `AzureEnvironment.Endpoint.AzureEnvironment.Endpoint.Graph` to `AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl`
 
 ## Version 3.7.0
 * Added `ZoneRedundant` parameter to `New-AzSqlDatabaseCopy`, `New-AzSqlDatabaseSecondary` and `Restore-AzSqlDatabase` to enable zone redundant copy, geo secondary and PITR support for hyperscale databases

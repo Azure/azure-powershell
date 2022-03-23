@@ -18,6 +18,14 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.3.0
+* `New-AzKeyVaultManagedHsm`: supported specifying how long a deleted managed hsm is retained by `SoftDeleteRetentionInDays` and enabling purge protection by `EnablePurgeProtection`
+* `Update-AzKeyVaultManagedHsm`: supported enabling purge protection by `EnablePurgeProtection`
+* `Get-AzKeyVaultManagedHsm`: Supported getting or listing deleted managed HSM(s)
+* `Remove-AzKeyVaultManagedHsm`: Supported purging a specified deleted managed HSM
+
+## Version 4.2.1
 * Improved the error message of Az.KeyVault.Extension [#16798]
 * Added default access policies for Key Vault key as "All but purge"
 * Absorbed KeyOps from parameter when importing key from certificate on managed HSM [#16773]

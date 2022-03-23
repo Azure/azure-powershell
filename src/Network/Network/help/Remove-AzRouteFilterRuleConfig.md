@@ -24,8 +24,8 @@ The **Remove-AzRouteFilterRuleConfig** cmdlet removes a route filter rule from a
 
 ### Example 1
 ```powershell
-PS C:\> $rf = Get-AzRouteFilter -Name "RouteFilter01" -ResourceGroupName "ResourceGroup01"
-PS C:\> Remove-AzRouteFilterRuleConfig -RouteFilter $rf -Name "Rule01"
+$rf = Get-AzRouteFilter -Name "RouteFilter01" -ResourceGroupName "ResourceGroup01"
+Remove-AzRouteFilterRuleConfig -RouteFilter $rf -Name "Rule01"
 ```
 
 The first command gets a route filter named RouteFilter01 that belongs to the resource group named ResourceGroup01 and stores it in the $rf variable.

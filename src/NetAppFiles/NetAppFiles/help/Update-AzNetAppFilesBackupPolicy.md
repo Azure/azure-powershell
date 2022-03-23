@@ -50,7 +50,7 @@ The **Update-AzNetAppFilesBackupPolicy** cmdlet modifies an ANF backup policy .
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzNetAppFilesBackupPolicy -ResourceGroupName "MyRG" -AccountName "MyAccount" -Name "MyBackupPolicy" -DailyBackupsToKeep 2
+Update-AzNetAppFilesBackupPolicy -ResourceGroupName "MyRG" -AccountName "MyAccount" -Name "MyBackupPolicy" -DailyBackupsToKeep 2
 ```
 
 This command changes the ANF backup policy "MyBackupPolicy" to have the given DailyBackupsToKeep.

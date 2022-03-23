@@ -30,9 +30,11 @@ The **Get-AzDataShareDataSetMapping** cmdlet gets information about a particular
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Get-AzDataShareDataSetMapping -ResourceGroupName "ADS" -AccountName "WikiAdsAccount" -ShareSubscriptionName "WikiADS"
 ```
-PS C:\> Get-AzDataShareDataSetMapping -ResourceGroupName "ADS" -AccountName "WikiAdsAccount" -ShareSubscriptionName "WikiADS"
 
+```output
 ContainerName        : testing
 Prefix               : providercontainer
 DataSetId            : 372899d4-5e67-4c85-bc60-21168b484424

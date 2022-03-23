@@ -43,9 +43,9 @@ Value will not be included into result details if the named value marked as a se
 ## EXAMPLES
 
 ### Example 1: Get Named Value by name
-```
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzApiManagementNamedValue -Context $apimContext -Name "sql-connectionstring"
+```powershell
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Get-AzApiManagementNamedValue -Context $apimContext -Name "sql-connectionstring"
 ```
 
 This command gets the named value details given the named value name.

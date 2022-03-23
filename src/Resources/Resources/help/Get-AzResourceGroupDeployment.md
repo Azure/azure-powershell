@@ -39,16 +39,16 @@ For debugging, use this cmdlet with the Get-AzLog cmdlet.
 ## EXAMPLES
 
 ### Example 1: Get all deployments for a resource group
-```
-PS C:\>Get-AzResourceGroupDeployment -ResourceGroupName "ContosoLabsRG"
+```powershell
+Get-AzResourceGroupDeployment -ResourceGroupName "ContosoLabsRG"
 ```
 
 This command gets all deployments for the ContosoLabsRG resource group.
 The output shows a deployment for a WordPress blog that used a gallery template.
 
 ### Example 2: Get a deployment by name
-```
-PS C:\>Get-AzResourceGroupDeployment -ResourceGroupName "ContosoLabsRG" -Name "DeployWebsite01"
+```powershell
+Get-AzResourceGroupDeployment -ResourceGroupName "ContosoLabsRG" -Name "DeployWebsite01"
 ```
 
 This command gets the DeployWebsite01 deployment of the ContosoLabsRG resource group.
@@ -56,8 +56,8 @@ You can assign a name to a deployment when you create it by using the **New-AzRe
 If you do not assign a name, the cmdlets provide a default name based on the template that is used to create the deployment.
 
 ### Example 3: Get the deployments of all resource groups
-```
-PS C:\>Get-AzResourceGroup | Get-AzResourceGroupDeployment | Format-Table ResourceGroupName, DeploymentName, ProvisioningState
+```powershell
+Get-AzResourceGroup | Get-AzResourceGroupDeployment | Format-Table ResourceGroupName, DeploymentName, ProvisioningState
 ```
 
 This command gets all resource groups in your subscription by using the Get-AzResourceGroup cmdlet.

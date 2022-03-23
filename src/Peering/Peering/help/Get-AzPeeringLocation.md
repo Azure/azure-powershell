@@ -37,8 +37,10 @@ Gets the Peering Facilities where users can connect with ARM.
 
 ### Example 1
 ```powershell
-PS C:> Get-AzPeeringLocation -Kind Direct
+Get-AzPeeringLocation -Kind Direct
+```
 
+```output
 #...More above
 PeeringLocation       : Dublin
 Address               : Unit 2, North West Business Park
@@ -60,8 +62,10 @@ Its a long list of locations. Gets the all the Direct Peering Facilities.
 
 ### Example 2
 ```powershell
-PS C:> Get-AzPeeringLocation -Kind Exchange -PeeringLocation "Honolulu" 
+Get-AzPeeringLocation -Kind Exchange -PeeringLocation "Honolulu" 
+```
 
+```output
 ExchangeName          : DRF IX
 PeeringLocation       : Honolulu
 Country               : US
@@ -77,8 +81,10 @@ Gets the exchange peering location for Honolulu.
 
 ### Example 3
 ```powershell
-PS C:> Get-AzPeeringLocation -Kind Exchange -PeeringDbFacilityId 71 
+Get-AzPeeringLocation -Kind Exchange -PeeringDbFacilityId 71 
+```
 
+```output
 ExchangeName          : NIX.CZ
 PeeringLocation       : Prague
 Country               : CZ

@@ -243,7 +243,7 @@ This example creates a Firewall attached to virtual hub "hub" in the same resour
 The Firewall will be assigned 2 public IPs that are created implicitly.
 
 ### Example 16:  Create a Firewall with Allow Active FTP.
-```
+```powershell
 $rgName = "resourceGroupName"
 $vnet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name "vnet"
 $pip = Get-AzPublicIpAddress -ResourceGroupName $rgName -Name "publicIpName"

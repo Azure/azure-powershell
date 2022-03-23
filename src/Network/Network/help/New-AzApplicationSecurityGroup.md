@@ -23,8 +23,8 @@ The **New-AzApplicationSecurityGroup** cmdlet creates an application security gr
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> New-AzApplicationSecurityGroup -ResourceGroupName "MyResourceGroup" -Name "MyApplicationSecurityGroup" -Location "West US"
+```powershell
+New-AzApplicationSecurityGroup -ResourceGroupName "MyResourceGroup" -Name "MyApplicationSecurityGroup" -Location "West US"
 ```
 
 This example creates an application security group with no associations. Once it is created, IP configurations in the network interface can be included in the group. Security rules may also refer to the group as their sources or destinations.

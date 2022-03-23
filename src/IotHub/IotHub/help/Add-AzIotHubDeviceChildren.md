@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
 online version: https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubdevicechildren
@@ -38,8 +38,10 @@ Add specified comma-separated list of non edge device ids as children of specifi
 
 ### Example 1
 ```powershell
-PS C:\> Add-AzIotHubDeviceChildren -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1" -Children device1,device2
+Add-AzIotHubDeviceChildren -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1" -Children device1,device2
+```
 
+```output
 DeviceId  ChildrenDeviceId
 --------  ----------------
 myDevice1 {device1, device2}
@@ -49,8 +51,10 @@ Add non-edge devices as a children to the edge device.
 
 ### Example 2
 ```powershell
-PS C:\> Add-AzIotHubDeviceChildren -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice2" -Children "device1,device2" -Force
+Add-AzIotHubDeviceChildren -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice2" -Children "device1,device2" -Force
+```
 
+```output
 DeviceId  ChildrenDeviceId
 --------  ----------------
 myDevice2 {device1, device2}
