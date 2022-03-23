@@ -26,7 +26,6 @@ The webhook is deleted.
 
 ### Example 1: Remove a webhook
 ```powershell
-Remove-AzAutomationWebhook -Name "Webhook11" -ResourceGroup "ResourceGroup01" -AutomationAccountName "AutomationAccount01" -Force
 Remove-AzAutomationWebhook -Name "Webhook11" -ResourceGroupName "ResourceGroup01" -AutomationAccountName "AutomationAccount01"
 ```
 

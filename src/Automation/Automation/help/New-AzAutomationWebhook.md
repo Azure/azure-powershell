@@ -28,7 +28,6 @@ Be sure to save the webhook URL that this cmdlet returns, because it cannot be r
 
 ### Example 1: Create a webhook
 ```powershell
-$Webhook = New-AzAutomationWebhook -Name "Webhook06" -IsEnabled $True -ExpiryTime "10/2/2016" -RunbookName "ContosoRunbook" -ResourceGroup "ResourceGroup01" -AutomationAccountName "AutomationAccount01" -Force
 $Webhook = New-AzAutomationWebhook -Name "Webhook06" -IsEnabled $True -ExpiryTime "10/2/2016" -RunbookName "ContosoRunbook" -ResourceGroupName "ResourceGroup01" -AutomationAccountName "AutomationAccount01" -Force
 ```
 
@@ -42,8 +41,6 @@ Therefore, it does not prompt you for confirmation.
 
 ### Example 2: Create a webhook with parameters
 ```powershell
-$Params = @{"StringParam"="Hello World";"IntegerParam"=32}
-$Webhook = New-AzAutomationWebhook -Name "Webhook11" -Parameters $Params -IsEnabled $True -ExpiryTime "10/2/2016" -RunbookName "ContosoRunbook" -ResourceGroup "ResourceGroup01" -AutomationAccountName "AutomationAccount01" -Force
 $Params = @{"StringParam"="Hello World";"IntegerParam"=32}
 $Webhook = New-AzAutomationWebhook -Name "Webhook11" -Parameters $Params -IsEnabled $True -ExpiryTime "10/2/2016" -RunbookName "ContosoRunbook" -ResourceGroupName "ResourceGroup01" -AutomationAccountName "AutomationAccount01" -Force
 ```
