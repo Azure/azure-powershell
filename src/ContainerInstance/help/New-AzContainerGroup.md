@@ -29,7 +29,7 @@ New-AzContainerGroup -Name <String> -ResourceGroupName <String> -Container <ICon
 ```
 
 ## DESCRIPTION
-Create or update container groups with specified configurations.
+Create or update container groups with specified configurations. For property Volume, we support mounting Azure File share as a volume or specifying git repository as volume directory. The empty directory volume and secret volume are not supported yet.
 
 ## EXAMPLES
 
