@@ -423,6 +423,11 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// <returns>Source Subscription Id</returns>
         private string ParseSourceSubscriptionIdFromResourceId(string resourceId)
         {
+            if (string.IsNullOrEmpty(resourceId))
+            {
+            return null;
+            }
+
             string[] words = resourceId.Split('/');
             string sourceSubscriptionId = "";
             for (int i = 0; i < words.Length; i++)
