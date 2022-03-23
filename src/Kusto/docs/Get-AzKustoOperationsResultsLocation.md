@@ -1,55 +1,55 @@
 ---
 external help file:
 Module Name: Az.Kusto
-online version: https://docs.microsoft.com/powershell/module/az.kusto/test-azkustoclusternameavailability
+online version: https://docs.microsoft.com/powershell/module/az.kusto/get-azkustooperationsresultslocation
 schema: 2.0.0
 ---
 
-# Test-AzKustoClusterNameAvailability
+# Get-AzKustoOperationsResultsLocation
 
 ## SYNOPSIS
-Checks that the cluster name is valid and is not already in use.
+Returns operation results.
 
 ## SYNTAX
 
-### CheckExpanded (Default)
+### Get (Default)
 ```
-Test-AzKustoClusterNameAvailability -Location <String> -Name <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzKustoOperationsResultsLocation -Location <String> -OperationId <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
-### CheckViaIdentityExpanded
+### GetViaIdentity
 ```
-Test-AzKustoClusterNameAvailability -InputObject <IKustoIdentity> -Name <String> [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzKustoOperationsResultsLocation -InputObject <IKustoIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Checks that the cluster name is valid and is not already in use.
+Returns operation results.
 
 ## EXAMPLES
 
-### Example 1: Check the availability of a Kusto cluster name which is in use
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Test-AzKustoClusterNameAvailability -Name testnewkustocluster -Location 'East US' -Type Microsoft.Kusto/clusters
-
-Message                                                                                       Name                NameAvailable Reason
--------                                                                                       ----                ------------- ------
-Name 'testnewkustocluster' with type Engine is already taken. Please specify a different name testnewkustocluster False
+{{ Add code here }}
 ```
 
-The above command returns whether or not a Kusto cluster named "testnewkustocluster" exists in the "East US" region.
-
-### Example 2: Check the availability of a Kusto cluster name which is not in use
-```powershell
-PS C:\> Test-AzKustoClusterNameAvailability -Name availablekustocluster -Location 'East US' -Type Microsoft.Kusto/clusters
-
-Message Name                  NameAvailable Reason
-------- ----                  ------------- ------
-        availablekustocluster True
+```output
+{{ Add output here }}
 ```
 
-The above command returns whether or not a Kusto cluster named "availablekustocluster" exists in the "East US" region.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -74,7 +74,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
-Parameter Sets: CheckViaIdentityExpanded
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
@@ -89,7 +89,7 @@ Azure location (region) name.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -99,15 +99,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Cluster name.
+### -OperationId
+The Guid of the operation ID
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -119,44 +134,13 @@ Gets subscription credentials which uniquely identify Microsoft Azure subscripti
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
-Parameter Sets: CheckExpanded
+Type: System.String[]
+Parameter Sets: Get
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -170,7 +154,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ICheckNameResult
+### System.Boolean
 
 ## NOTES
 
