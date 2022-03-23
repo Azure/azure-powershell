@@ -1,7 +1,7 @@
 ### Example 1: Get address details
 ```powershell
 $address = Get-AzEdgeOrderAddress -SubscriptionId SubscriptionId -ResourceGroupName "resourceGroupName"
-$address | fl
+$address | Format-List
 ```
 
 ```output
