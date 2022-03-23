@@ -25,6 +25,7 @@ Create an in-memory object for WebTestGeolocation.
 ```powershell
 New-AzApplicationInsightsWebTestGeolocationObject -Location "emea-nl-ams-azr"
 ```
+
 ```output
 Location
 --------

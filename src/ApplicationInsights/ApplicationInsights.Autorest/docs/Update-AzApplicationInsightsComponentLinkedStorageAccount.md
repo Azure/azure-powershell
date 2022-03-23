@@ -1,61 +1,70 @@
 ---
 external help file:
 Module Name: Az.ApplicationInsights
-online version: https://docs.microsoft.com/powershell/module/az.applicationinsights/update-azapplicationinsightswebtesttag
+online version: https://docs.microsoft.com/powershell/module/az.applicationinsights/update-azapplicationinsightscomponentlinkedstorageaccount
 schema: 2.0.0
 ---
 
-# Update-AzApplicationInsightsWebTestTag
+# Update-AzApplicationInsightsComponentLinkedStorageAccount
 
 ## SYNOPSIS
-Creates or updates an Application Insights web test definition.
+Update linked storage accounts for an Application Insights component.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
-Update-AzApplicationInsightsWebTestTag -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzApplicationInsightsComponentLinkedStorageAccount -ComponentName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-LinkedStorageAccountResourceId <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzApplicationInsightsWebTestTag -InputObject <IApplicationInsightsIdentity> [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzApplicationInsightsComponentLinkedStorageAccount -InputObject <IApplicationInsightsIdentity>
+ [-LinkedStorageAccountResourceId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates or updates an Application Insights web test definition.
+Update linked storage accounts for an Application Insights component.
 
 ## EXAMPLES
 
-### Example 1: Updates Application Insights link of the Web test
+### Example 1: {{ Add title here }}
 ```powershell
-Update-AzApplicationInsightsWebTestTag -ResourceGroupName azpwsh-rg-test -Name webtest01-lucasappinsights -Tag @{"hidden-link:/subscriptions/xxxxxxxxxx-xxxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azpwsh-rg-test/providers/microsoft.insights/components/lucasappinsights" = "Resource"}
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-```output
-Location Name                       WebTestKind   ResourceGroupName   Enabled
--------- ----                       -----------   -----------------   -------
-westus2  webtest01-lucasappinsights standard      azpwsh-rg-test      True
-```
+{{ Add description here }}
 
-This command updates Application Insights link of the Web test.
-
-### Example 2: Updates Application Insights link of the Web test by pipeline
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzApplicationInsightsWebTest -ResourceGroupName azpwsh-rg-test -WebTestName webtest01-lucasappinsights | Update-AzApplicationInsightsWebTestTag -Tag @{"hidden-link:/subscriptions/xxxxxxxxxx-xxxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azpwsh-rg-test/providers/microsoft.insights/components/appinsightsportal01" = "Resource"}
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-```output
-Location Name                       WebTestKind   ResourceGroupName     Enabled
--------- ----                       -----------   -----------------     -------
-westus2  webtest01-lucasappinsights standard      azpwsh-rg-test        True
-```
-
-This command updates Application Insights link of the Web test by pipeline.
+{{ Add description here }}
 
 ## PARAMETERS
+
+### -ComponentName
+The name of the Application Insights component resource.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -88,15 +97,15 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the Application Insights WebTest resource.
+### -LinkedStorageAccountResourceId
+Linked storage account resource ID
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -130,21 +139,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Resource tags
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -189,7 +183,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20180501Preview.IWebTest
+### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20200301Preview.IComponentLinkedStorageAccounts
 
 ## NOTES
 

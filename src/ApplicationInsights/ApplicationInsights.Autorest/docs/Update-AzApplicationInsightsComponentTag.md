@@ -1,59 +1,54 @@
 ---
 external help file:
 Module Name: Az.ApplicationInsights
-online version: https://docs.microsoft.com/powershell/module/az.applicationinsights/update-azapplicationinsightswebtesttag
+online version: https://docs.microsoft.com/powershell/module/az.applicationinsights/update-azapplicationinsightscomponenttag
 schema: 2.0.0
 ---
 
-# Update-AzApplicationInsightsWebTestTag
+# Update-AzApplicationInsightsComponentTag
 
 ## SYNOPSIS
-Creates or updates an Application Insights web test definition.
+Updates an existing component's tags.
+To update other fields use the CreateOrUpdate method.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
-Update-AzApplicationInsightsWebTestTag -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzApplicationInsightsComponentTag -ResourceGroupName <String> -ResourceName <String>
+ [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzApplicationInsightsWebTestTag -InputObject <IApplicationInsightsIdentity> [-Tag <Hashtable>]
+Update-AzApplicationInsightsComponentTag -InputObject <IApplicationInsightsIdentity> [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates or updates an Application Insights web test definition.
+Updates an existing component's tags.
+To update other fields use the CreateOrUpdate method.
 
 ## EXAMPLES
 
-### Example 1: Updates Application Insights link of the Web test
+### Example 1: {{ Add title here }}
 ```powershell
-Update-AzApplicationInsightsWebTestTag -ResourceGroupName azpwsh-rg-test -Name webtest01-lucasappinsights -Tag @{"hidden-link:/subscriptions/xxxxxxxxxx-xxxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azpwsh-rg-test/providers/microsoft.insights/components/lucasappinsights" = "Resource"}
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-```output
-Location Name                       WebTestKind   ResourceGroupName   Enabled
--------- ----                       -----------   -----------------   -------
-westus2  webtest01-lucasappinsights standard      azpwsh-rg-test      True
-```
+{{ Add description here }}
 
-This command updates Application Insights link of the Web test.
-
-### Example 2: Updates Application Insights link of the Web test by pipeline
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzApplicationInsightsWebTest -ResourceGroupName azpwsh-rg-test -WebTestName webtest01-lucasappinsights | Update-AzApplicationInsightsWebTestTag -Tag @{"hidden-link:/subscriptions/xxxxxxxxxx-xxxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azpwsh-rg-test/providers/microsoft.insights/components/appinsightsportal01" = "Resource"}
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-```output
-Location Name                       WebTestKind   ResourceGroupName     Enabled
--------- ----                       -----------   -----------------     -------
-westus2  webtest01-lucasappinsights standard      azpwsh-rg-test        True
-```
-
-This command updates Application Insights link of the Web test by pipeline.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -88,8 +83,9 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the Application Insights WebTest resource.
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -103,9 +99,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+### -ResourceName
+The name of the Application Insights component resource.
 
 ```yaml
 Type: System.String
@@ -189,7 +184,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20180501Preview.IWebTest
+### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent
 
 ## NOTES
 
