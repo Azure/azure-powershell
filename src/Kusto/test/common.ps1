@@ -188,6 +188,18 @@ function Validate_Script {
 		$Script.Url | Should -Be $ScriptUrl
 }
 
+function Validate_Inline_Script {
+	Param ([Object]$Script,
+		[string]$forceUpdateTag,
+		[bool]$continueOnErros,
+		[string]$clusterName,
+		[string]$databaseName,
+		[string]$scriptName)
+		$ScriptFullName = "$clusterName/$databaseName/$scriptName"
+		$Script.Name | Should -Be $ScriptFullName
+		$Script.ForceUpdateTag | Should -Be $forceUpdateTag
+}
+
 <#
 .SYNOPSIS
 Validate if managed private endpoint is valid
