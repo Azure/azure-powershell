@@ -35,7 +35,7 @@ The **Get-AzAutomationDscNodeConfigurationDeployment** cmdlet deploys an APS Des
 ```powershell
 $deployment = Get-AzAutomationDscNodeConfigurationDeployment `
                          -JobId 35b14eb4-52b7-4a1d-ad62-8e9f84adc657 `
-                         -AutomationAccountName "Contoso01"  `
+                         -AutomationAccountName "Contoso01" `
                          -ResourceGroupName "ResourceGroup01"
 
 ResourceGroupName     : ResourceGroup01
@@ -48,7 +48,7 @@ NodeConfigurationName : Config01.Node1
 JobSchedule           :
 JobScheduleId         : 00000000-0000-0000-0000-000000000000
 
-$deployment | Select-Object -expandproperty nodeStatus
+$deployment | Select-Object -ExpandProperty nodeStatus
 
 Key        Value
 ---        -----
