@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Purview-help.xml
 Module Name: Az.Purview
 online version: https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureFileServiceCredentialScanObject
 schema: 2.0.0
@@ -52,7 +52,6 @@ Create Azure File Service Credential scan object
 
 ### -CollectionReferenceName
 
-
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -66,7 +65,6 @@ Accept wildcard characters: False
 ```
 
 ### -CollectionType
-
 
 ```yaml
 Type: System.String
@@ -82,7 +80,6 @@ Accept wildcard characters: False
 
 ### -ConnectedViaReferenceName
 
-
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -96,7 +93,6 @@ Accept wildcard characters: False
 ```
 
 ### -CredentialReferenceName
-
 
 ```yaml
 Type: System.String
@@ -112,9 +108,8 @@ Accept wildcard characters: False
 
 ### -CredentialType
 
-
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.CredentialType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType
 Parameter Sets: (All)
 Aliases:
 
@@ -127,9 +122,8 @@ Accept wildcard characters: False
 
 ### -Kind
 
-
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.ScanAuthorizationType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType
 Parameter Sets: (All)
 Aliases:
 
@@ -141,7 +135,6 @@ Accept wildcard characters: False
 ```
 
 ### -ScanRulesetName
-
 
 ```yaml
 Type: System.String
@@ -157,9 +150,8 @@ Accept wildcard characters: False
 
 ### -ScanRulesetType
 
-
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.ScanRulesetType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType
 Parameter Sets: (All)
 Aliases:
 
@@ -171,7 +163,6 @@ Accept wildcard characters: False
 ```
 
 ### -ShareName
-
 
 ```yaml
 Type: System.String
@@ -186,7 +177,6 @@ Accept wildcard characters: False
 ```
 
 ### -Worker
-
 
 ```yaml
 Type: System.Int32
@@ -207,11 +197,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20211001Preview.AzureFileServiceCredentialScan
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureFileServiceCredentialScan
 
 ## NOTES
 
 ALIASES
 
 ## RELATED LINKS
-

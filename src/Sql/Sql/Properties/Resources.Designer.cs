@@ -349,6 +349,42 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Creating a new Managed Instance Hybrid Link in resource group &apos;{0}&apos; under managed instance &apos;{1}&apos; with name &apos;{2}&apos;..
+        /// </summary>
+        internal static string CreateAzureSqlInstanceLinkDescription {
+            get {
+                return ResourceManager.GetString("CreateAzureSqlInstanceLinkDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to create a new Managed Instance Hybrid Link in resource group &apos;{0}&apos; under managed instance &apos;{1}&apos; with name &apos;{2}&apos;?.
+        /// </summary>
+        internal static string CreateAzureSqlInstanceLinkWarning {
+            get {
+                return ResourceManager.GetString("CreateAzureSqlInstanceLinkWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating a new Server Trust Certificate in resource group &apos;{0}&apos; under managed instance &apos;{1}&apos; with name &apos;{2}&apos;..
+        /// </summary>
+        internal static string CreateAzureSqlInstanceServerTrustCertificateDescription {
+            get {
+                return ResourceManager.GetString("CreateAzureSqlInstanceServerTrustCertificateDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to create a new Server Trust Certificate in resource group &apos;{0}&apos; under managed instance &apos;{1}&apos; with name &apos;{2}&apos;?.
+        /// </summary>
+        internal static string CreateAzureSqlInstanceServerTrustCertificateWarning {
+            get {
+                return ResourceManager.GetString("CreateAzureSqlInstanceServerTrustCertificateWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Database with name: &apos;{0}&apos; already exists in server &apos;{1}&apos;..
         /// </summary>
         internal static string DatabaseNameExists {
@@ -720,6 +756,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Managed instance link with name &apos;{0}&apos; already exists on Azure Sql Managed Instance &apos;{1}&apos;.
+        /// </summary>
+        internal static string ManagedInstanceLinkAlreadyExists {
+            get {
+                return ResourceManager.GetString("ManagedInstanceLinkAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ExternalAdminName must be provided when Azure Active Directory Only Authentication is enabled via -EnableActiveDirectoryOnlyAuthentication..
         /// </summary>
         internal static string MissingExternalAdmin {
@@ -950,6 +995,51 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string RemoveAzureSqlInstanceDatabaseLongTermRetentionBackupWarning {
             get {
                 return ResourceManager.GetString("RemoveAzureSqlInstanceDatabaseLongTermRetentionBackupWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This operation may cause data loss if replicas last hardened LSNs are not in sync, are you sure you want to continue?.
+        /// </summary>
+        internal static string RemoveAzureSqlInstanceLinkAllowDataLoss {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlInstanceLinkAllowDataLoss", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Permanently removing Azure Sql Managed Instance Link in resource group &apos;{0}&apos; under managed instance &apos;{1}&apos; with name &apos;{2}&apos;..
+        /// </summary>
+        internal static string RemoveAzureSqlInstanceLinkDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlInstanceLinkDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Instance Managed Instance Link in resource group &apos;{0}&apos; under managed instance &apos;{1}&apos; with name &apos;{2}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureSqlInstanceLinkWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlInstanceLinkWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Permanently removing Azure Sql Instance Server Trust Certificate in resource group &apos;{0}&apos; under managed instance &apos;{1}&apos; with name &apos;{2}&apos;..
+        /// </summary>
+        internal static string RemoveAzureSqlInstanceServerTrustCertificateDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlInstanceServerTrustCertificateDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Instance Server Trust Certificate in resource group &apos;{0}&apos; under managed instance &apos;{1}&apos; with name &apos;{2}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureSqlInstanceServerTrustCertificateWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlInstanceServerTrustCertificateWarning", resourceCulture);
             }
         }
         
@@ -1386,6 +1476,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Certificate with name &apos;{0}&apos; already exists on Azure Sql Managed Instance &apos;{1}&apos;..
+        /// </summary>
+        internal static string ServerTrustCertificateAlreadyExists {
+            get {
+                return ResourceManager.GetString("ServerTrustCertificateAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Request for upgrade of server &apos;{0}&apos; already exists..
         /// </summary>
         internal static string ServerUpgradeExists {
@@ -1422,7 +1521,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Parameter &apos;{0}&apos; and &apos;{1}&apos; both being null is not allowed..
+        ///   Looks up a localized string similar to Invalid parameters, &apos;{0}&apos; and &apos;{1}&apos; can&apos;t both be null..
         /// </summary>
         internal static string SetAzSqlDatabaseBackupShortTermRetentionInvalidParameters {
             get {
@@ -1436,6 +1535,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string SetAzureSqlInstanceDescription {
             get {
                 return ResourceManager.GetString("SetAzureSqlInstanceDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating Managed Instance Hybrid Link in resource group &apos;{0}&apos; under managed instance &apos;{1}&apos; with name &apos;{2}&apos;..
+        /// </summary>
+        internal static string SetAzureSqlInstanceLinkDescription {
+            get {
+                return ResourceManager.GetString("SetAzureSqlInstanceLinkDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to update Managed Instance Hybrid Link in resource group &apos;{0}&apos; under managed instance &apos;{1}&apos; with name &apos;{2}&apos;?.
+        /// </summary>
+        internal static string SetAzureSqlInstanceLinkWarning {
+            get {
+                return ResourceManager.GetString("SetAzureSqlInstanceLinkWarning", resourceCulture);
             }
         }
         

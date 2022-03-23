@@ -24,8 +24,11 @@ Specify the name of a sync member to see information for only that sync member.
 ## EXAMPLES
 
 ### Example 1: Get all instances of Azure SQL Sync Member assigned to a sync group
+```powershell
+Get-AzSqlSyncMember -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01" | Format-List
 ```
-PS C:\> Get-AzSqlSyncMember -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01" | Format-List
+
+```output
 ResourceId                  : subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/databases/{Database01}/syncGroups/{SyncGroup01}/syncMembers/{SyncMember01}
 ResourceGroupName           : ResourceGroup01
 ServerName                  : Server01
@@ -62,8 +65,11 @@ SyncState                   : Good
 This command gets information about all the Azure SQL Database Sync Member assigned to the sync group SyncGroup01.
 
 ### Example 2: Get information about an Azure SQL Database Sync Member
+```powershell
+Get-AzSqlSyncMember -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01" -Name "SyncMember01" | Format-List
 ```
-PS C:\> Get-AzSqlSyncMember -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01" -Name "SyncMember01" | Format-List
+
+```output
 ResourceId                  : subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/databases/{Database01}/syncGroups/{SyncGroup01}/syncMembers/{SyncMember01}
 ResourceGroupName           : ResourceGroup01
 ServerName                  : Server01
@@ -84,8 +90,11 @@ SyncState                   : Good
 This command gets information about the Azure SQL Database Sync Member with name "SyncMember01"
 
 ### Example 3: Get all instances of Azure SQL Sync Member assigned to a sync group using filtering
+```powershell
+Get-AzSqlSyncMember -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01" -Name "SyncMember*" | Format-List
 ```
-PS C:\> Get-AzSqlSyncMember -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01" -Name "SyncMember*" | Format-List
+
+```output
 ResourceId                  : subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/databases/{Database01}/syncGroups/{SyncGroup01}/syncMembers/{SyncMember01}
 ResourceGroupName           : ResourceGroup01
 ServerName                  : Server01

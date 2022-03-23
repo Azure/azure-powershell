@@ -37,29 +37,29 @@ The **Get-AzSynapseSqlDatabase** cmdlet gets information about an Azure Synapse 
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSynapseSqlDatabase -WorkspaceName ContosoWorkspace
+Get-AzSynapseSqlDatabase -WorkspaceName ContosoWorkspace
 ```
 
 This command gets all SQL databases under a workspace.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzSynapseSqlDatabase -WorkspaceName ContosoWorkspace -Name ContosoSqlDatabase
+Get-AzSynapseSqlDatabase -WorkspaceName ContosoWorkspace -Name ContosoSqlDatabase
 ```
 
 This command gets the SQL database under workspace ContosoWorkspace with name ContosoSqlDatabase.
 
 ### Example 3
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Get-AzSynapseSqlDatabase
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Get-AzSynapseSqlDatabase
 ```
 
 This command gets all the SQL databases under a workspace through pipeline.
 
 ### Example 4
 ```powershell
-PS C:\> Get-AzSynapseSqlDatabase -ResourceId "/subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd/resourceGroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace/sqlDatabases/ContosoSqlDatabase"
+Get-AzSynapseSqlDatabase -ResourceId "/subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd/resourceGroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace/sqlDatabases/ContosoSqlDatabase"
 ```
 
 This command gets the SQL database with the specified resource ID.

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Purview-help.xml
 Module Name: Az.Purview
 online version: https://docs.microsoft.com/powershell/module/az.purview/get-azpurviewdefaultaccount
 schema: 2.0.0
@@ -33,7 +33,7 @@ AccountName ResourceGroupName Scope                                ScopeTenantId
 test-pa      test-rg            xxxxxxxx-38d6-4fb2-bad9-b7b93a3e9c5a xxxxxxxx-38d6-4fb2-bad9-b7b93a3e9c5a Tenant    xxxxxxxx-1bf0-4dda-aec3
 ```
 
-Get the default account for the scope Tenant
+ Get the default account for the scope Tenant
 
 ## PARAMETERS
 
@@ -111,4 +111,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-

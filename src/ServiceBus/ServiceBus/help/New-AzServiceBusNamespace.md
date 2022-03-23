@@ -25,9 +25,11 @@ The **New-AzServiceBusNamespace** cmdlet creates a new Service Bus namespace. On
 ## EXAMPLES
 
 ### Example 1
+```powershell
+New-AzServiceBusNamespace -ResourceGroupName Default-ServiceBus-WestUS -Name SB-Example1 -Location WestUS -SkuName "Standard" -Tag @{Tag1="Tag1Value"}
 ```
-PS C:\> New-AzServiceBusNamespace -ResourceGroupName Default-ServiceBus-WestUS -Name SB-Example1 -Location WestUS -SkuName "Standard" -Tag @{Tag1="Tag1Value"}
 
+```output
 Name               : SB-Example1
 Id                 : /subscriptions/{SubscriptionId}/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1
 ResourceGroupName  : Default-ServiceBus-WestUS
@@ -43,9 +45,11 @@ ServiceBusEndpoint : https://SB-Example1.servicebus.windows.net:443/
 Creates a new Service Bus namespace within the specified resource group.
 
 ### Example 2 - ZoneRedundant and DisableLocalAuth
+```powershell
+New-AzServiceBusNamespace -ResourceGroupName Default-ServiceBus-WestUS -Name SB-Example1 -Location WestUS2 -SkuName "Premium" -Tag @{Tag1="Tag1Value"} -ZoneRedundant - DisableLocalAuth
 ```
-PS C:\> New-AzServiceBusNamespace -ResourceGroupName Default-ServiceBus-WestUS -Name SB-Example1 -Location WestUS2 -SkuName "Premium" -Tag @{Tag1="Tag1Value"} -ZoneRedundant - DisableLocalAuth
 
+```output
 Name               : SB-Example1
 Id                 : /subscriptions/{SubscriptionId}/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1
 ResourceGroupName  : Default-ServiceBus-WestUS
@@ -61,17 +65,19 @@ ServiceBusEndpoint : https://SB-Example1.servicebus.windows.net:443/
 Creates a new Service Bus namespace within the specified resource group.
 
 ### Example 3 - Create namespace with user assigned identity encryption enabled
+```powershell
+$config1 = New-AzServiceBusEncryptionConfig -KeyName key1 -KeyVaultUri https://myvaultname.vault.azure.net -UserAssignedIdentity /subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName
+
+$config1 = New-AzServiceBusEncryptionConfig -KeyName key2 -KeyVaultUri https://myvaultname.vault.azure.net -UserAssignedIdentity /subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName
+
+$id1 = '/subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName'
+
+$id2 = '/subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName2'
+
+New-AzServiceBusNamespace -ResourceGroupName Default-ServiceBus-WestUS -Name SB-Example1 -Location WestUS2 -SkuName "Premium" -IdentityType UserAssigned -IdentityId $id1,$id2 -EncryptionConfig $ec1,$ec2
 ```
-PS C:\> $config1 = New-AzServiceBusEncryptionConfig -KeyName key1 -KeyVaultUri https://myvaultname.vault.azure.net -UserAssignedIdentity /subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName
 
-PS C:\> $config1 = New-AzServiceBusEncryptionConfig -KeyName key2 -KeyVaultUri https://myvaultname.vault.azure.net -UserAssignedIdentity /subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName
-
-PS C:\> $id1 = '/subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName'
-
-PS C:\> $id2 = '/subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName2'
-
-PS C:\> New-AzServiceBusNamespace -ResourceGroupName Default-ServiceBus-WestUS -Name SB-Example1 -Location WestUS2 -SkuName "Premium" -IdentityType UserAssigned -IdentityId $id1,$id2 -EncryptionConfig $ec1,$ec2
-
+```output
 Name               : SB-Example1
 Id                 : /subscriptions/{subscriptionId}/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1
 ResourceGroupName  : Default-ServiceBus-WestUS
@@ -104,9 +110,11 @@ EncryptionConfigs  : {{ KeyName: key1,
 Creates a new Service Bus namespace with UserAssigned Encryption Enabled. IdentityType can take values "SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned", "None"
 
 ### Example 4 - Create namespace with system assigned identity enabled.
+```powershell
+New-AzServiceBusNamespace -ResourceGroupName Default-ServiceBus-WestUS -Name SB-Example1 -Location WestUS2 -SkuName "Premium" -IdentityType SystemAssigned
 ```
-PS C:\> New-AzServiceBusNamespace -ResourceGroupName Default-ServiceBus-WestUS -Name SB-Example1 -Location WestUS2 -SkuName "Premium" -IdentityType SystemAssigned
 
+```output
 Name               : SB-Example1
 Id                 : /subscriptions/{subscriptionId}/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1
 ResourceGroupName  : Default-ServiceBus-WestUS

@@ -691,4 +691,46 @@
   <data name="ServerOutboundFirewallRuleFQDNDoesNotExist" xml:space="preserve">
     <value>Allowed FQDN with name '{0}' does not exist in the list of Outbound Firewall Rules (Allowed FQDNs) for Azure SQL Database server '{1}'.</value>
   </data>
+  <data name="ManagedInstanceLinkAlreadyExists" xml:space="preserve">
+    <value>Instance link with name '{0}' already exists on managed instance '{1}'</value>
+  </data>
+  <data name="ServerTrustCertificateAlreadyExists" xml:space="preserve">
+    <value>Certificate with name '{0}' already exists on managed instance '{1}'.</value>
+  </data>
+  <data name="RemoveAzureSqlInstanceServerTrustCertificateDescription" xml:space="preserve">
+    <value>Permanently removing SQL Server trust certificate named '{2}' from managed instance '{1}' located in resource group '{0}'.</value>
+  </data>
+  <data name="RemoveAzureSqlInstanceServerTrustCertificateWarning" xml:space="preserve">
+    <value>Are you sure you want to remove SQL Server trust certificate named '{2}' from managed instance '{1}' located in resource group '{0}'?</value>
+  </data>
+  <data name="RemoveAzureSqlInstanceLinkDescription" xml:space="preserve">
+    <value>Permanently removing instance link named '{2}' from managed instance '{1}' in resource group '{0}'.</value>
+  </data>
+  <data name="RemoveAzureSqlInstanceLinkWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the instance link named '{2}' from managed instance '{1}' located in resource group '{0}'?</value>
+  </data>
+  <data name="CreateAzureSqlInstanceServerTrustCertificateDescription" xml:space="preserve">
+    <value>Creating a new SQL Server trust certificate named '{2}' on managed instance '{1}' located in resource group '{0}'.</value>
+  </data>
+  <data name="CreateAzureSqlInstanceServerTrustCertificateWarning" xml:space="preserve">
+    <value>Are you sure you want to create a new SQL Server trust certificate named '{2}' on managed instance '{1}' located in resource group '{0}'?</value>
+  </data>
+  <data name="SetAzSqlDatabaseBackupShortTermRetentionInvalidParameters" xml:space="preserve">
+    <value>Invalid parameters, '{0}' and '{1}' can't both be null.</value>
+  </data>
+  <data name="CreateAzureSqlInstanceLinkDescription" xml:space="preserve">
+    <value>Creating a new instance link named '{2}' on managed instance '{1}' located in resource group '{0}'.</value>
+  </data>
+  <data name="CreateAzureSqlInstanceLinkWarning" xml:space="preserve">
+    <value>Are you sure you want to create a new instance link named '{2}' on managed instance '{1}' located in resource group '{0}'?</value>
+  </data>
+  <data name="RemoveAzureSqlInstanceLinkAllowDataLoss" xml:space="preserve">
+    <value>This operation may cause data loss if replica's last hardened LSN is not in sync with the primary. Are you sure you want to proceed?</value>
+  </data>
+  <data name="SetAzureSqlInstanceLinkDescription" xml:space="preserve">
+    <value>Updating instance link named '{2}' on managed instance '{1}' located in resource group '{0}'.</value>
+  </data>
+  <data name="SetAzureSqlInstanceLinkWarning" xml:space="preserve">
+    <value>Are you sure you want to update instance link named '{2}' on managed instance '{1}' located in resource group '{0}'?</value>
+  </data>
 </root>

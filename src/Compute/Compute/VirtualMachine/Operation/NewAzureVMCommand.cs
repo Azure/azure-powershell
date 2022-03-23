@@ -1007,15 +1007,9 @@ namespace Microsoft.Azure.Commands.Compute
                 }
             }
 
-            var storageAccount = TryToChooseExistingStandardStorageAccount(storageClient);
-
-            if (storageAccount == null)
-            {
-                return CreateStandardStorageAccount(storageClient);
-            }
-
-            WriteWarning(string.Format(Properties.Resources.UsingExistingStorageAccountForBootDiagnostics, storageAccount.Name));
-            return storageAccount.PrimaryEndpoints.Blob;
+            var storagePrimaryEndpointBlob = CreateStandardStorageAccount(storageClient);
+            return storagePrimaryEndpointBlob;
+            
         }
 
         private string GetStorageAccountNameFromStorageProfile()

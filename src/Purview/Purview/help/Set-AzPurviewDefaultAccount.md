@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Purview-help.xml
 Module Name: Az.Purview
 online version: https://docs.microsoft.com/powershell/module/az.purview/set-azpurviewdefaultaccount
 schema: 2.0.0
@@ -14,8 +14,8 @@ Sets the default account for the scope.
 
 ```
 Set-AzPurviewDefaultAccount -AccountName <String> -ResourceGroupName <String> -ScopeTenantId <String>
- [-Scope <String>] [-ScopeType <ScopeType>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-Scope <String>] [-ScopeType <ScopeType>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -189,4 +189,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-

@@ -24,7 +24,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storage", "..\Storage\Stora
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storage.Management", "..\Storage\Storage.Management\Storage.Management.csproj", "{7225B0EB-9EFA-4592-AE13-B40CABC66CA3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ManagedServiceIdentity", "..\ManagedServiceIdentity\ManagedServiceIdentity\ManagedServiceIdentity.csproj", "{228EB071-FA04-43B3-95F9-7D76DBF0B850}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ManagedServiceIdentity", "..\ManagedServiceIdentity\Az.ManagedServiceIdentity.csproj", "{228EB071-FA04-43B3-95F9-7D76DBF0B850}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resources", "..\Resources\Resources\Resources.csproj", "{E1F5201D-6067-430E-B303-4E367652991B}"
 EndProject

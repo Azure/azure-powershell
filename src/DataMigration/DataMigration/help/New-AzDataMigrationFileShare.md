@@ -24,7 +24,7 @@ The New-AzDataMigrationFileShare cmdlet creates the FileShare object that specif
 
 ### Example 1
 ```powershell
-New-AzDmsFileShare -Path $fileSharePath -Credential $fileShareCred
+New-AzDataMigrationFileShare -Path $fileSharePath -Credential $fileShareCred
 ```
 
 ```output

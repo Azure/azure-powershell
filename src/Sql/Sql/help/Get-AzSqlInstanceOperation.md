@@ -37,8 +37,10 @@ The Get-AzSqlInstanceOperation cmdlet gets information about the operations on a
 
 ### Example 1: Get all instance's operations
 ```powershell
-PS C:\> Get-AzSqlInstanceOperation -ResourceGroupName ps3753 -ManagedInstanceName ps3698
+Get-AzSqlInstanceOperation -ResourceGroupName ps3753 -ManagedInstanceName ps3698
+```
 
+```output
 Id                      : /subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ps3753/providers/Microsoft.Sql/managedInstances/ps3698/operations/5870c6d8-6703-4b27-8ae4-687b4ca7caea
 ResourceGroupName       : ps3753
 ManagedInstanceName     : ps3698
@@ -82,8 +84,10 @@ This command gets all operations a SQL managed instance.
 
 ### Example 2: Get a specific operation
 ```powershell
-PS C:\> Get-AzSqlInstanceOperation -ResourceGroupName ps3753 -ManagedInstanceName ps3698 -Name 5870c6d8-6703-4b27-8ae4-687b4ca7caea
+Get-AzSqlInstanceOperation -ResourceGroupName ps3753 -ManagedInstanceName ps3698 -Name 5870c6d8-6703-4b27-8ae4-687b4ca7caea
+```
 
+```output
 Id                      : /subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ps3753/providers/Microsoft.Sql/managedInstances/ps3698/operations/5870c6d8-6703-4b27-8ae4-687b4ca7caea
 ResourceGroupName       : ps3753
 ManagedInstanceName     : ps3698
@@ -108,9 +112,11 @@ This command gets operation with name '5870c6d8-6703-4b27-8ae4-687b4ca7caea' on 
 
 ### Example 3: Using operation resource id
 ```powershell
-PS C:\> $managedInstanceOperation = Get-AzSqlInstanceOperation -ResourceGroupName ps3753 -ManagedInstanceName ps3698 -Name 5870c6d8-6703-4b27-8ae4-687b4ca7caea
-PS C:\> Get-AzSqlInstanceOperation -ResourceId $managedInstanceOperation.Id
+$managedInstanceOperation = Get-AzSqlInstanceOperation -ResourceGroupName ps3753 -ManagedInstanceName ps3698 -Name 5870c6d8-6703-4b27-8ae4-687b4ca7caea
+Get-AzSqlInstanceOperation -ResourceId $managedInstanceOperation.Id
+```
 
+```output
 Id                      : /subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ps3753/providers/Microsoft.Sql/managedInstances/ps3698/operations/5870c6d8-6703-4b27-8ae4-687b4ca7caea
 ResourceGroupName       : ps3753
 ManagedInstanceName     : ps3698

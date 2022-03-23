@@ -17,7 +17,7 @@
 .Synopsis
 Create a in-memory object for Volume
 .Description
-Create a in-memory object for Volume
+Create a in-memory object for Volume. Currently, we support mounting Azure File share as a volume or specifying git repository as volume directory. The empty directory volume and secret volume are not supported yet.
 .Link
 https://docs.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerGroupVolumeObject
 #>
