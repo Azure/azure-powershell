@@ -96,6 +96,7 @@ This command restores the API Management service using the Managed Identity cred
 ## PARAMETERS
 
 ### -AccessType
+
 The type of access to be used for the storage account. The default value is AccessKey.
 
 ```yaml
@@ -127,6 +128,7 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityClientId
+
 The Client ID of user assigned managed identity. Required only if accessType is set to UserAssignedManagedIdentity.
 
 ```yaml

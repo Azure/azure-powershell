@@ -93,6 +93,7 @@ This command backs up an API Management service to a Storage blob using UserAssi
 ## PARAMETERS
 
 ### -AccessType
+
 The type of access to be used for the storage account.
 
 ```yaml
@@ -124,6 +125,7 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityClientId
+
 The Client ID of user assigned managed identity. Required only if accessType is set to UserAssignedManagedIdentity.
 
 ```yaml
