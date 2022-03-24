@@ -30,4 +30,8 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Config\Definitions\" />
+  </ItemGroup>
+
 </Project>
