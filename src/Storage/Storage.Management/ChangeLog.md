@@ -29,6 +29,10 @@
     -  `New-AzStorageBlobSASToken` 
 * Supported asynchronous blob copy run on new API version
     -  `Start-AzStorageBlobCopy`
+* Fixed IpRule examples in help
+    -  `Add-AzStorageAccountNetworkRule`
+    -  `Remove-AzStorageAccountNetworkRule`
+    -  `Update-AzStorageAccountNetworkRuleSet`
 
 ## Version 4.3.0
 * Supported download blob from managed disk account with Sas Uri and bearer token
