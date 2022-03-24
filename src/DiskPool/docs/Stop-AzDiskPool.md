@@ -10,6 +10,8 @@ schema: 2.0.0
 ## SYNOPSIS
 Shuts down the Disk Pool and releases the compute resources.
 You are not billed for the compute resources that this Disk Pool uses.
+This operation can take 10 minutes to complete.
+This is expected service behavior.
 
 ## SYNTAX
 
@@ -28,21 +30,21 @@ Stop-AzDiskPool -InputObject <IDiskPoolIdentity> [-DefaultProfile <PSObject>] [-
 ## DESCRIPTION
 Shuts down the Disk Pool and releases the compute resources.
 You are not billed for the compute resources that this Disk Pool uses.
+This operation can take 10 minutes to complete.
+This is expected service behavior.
 
 ## EXAMPLES
 
 ### Example 1: Stop a Disk Pool
 ```powershell
-PS C:\> Stop-AzDiskPool -Name 'disk-pool-1' -ResourceGroupName 'storagepool-rg-test'
-
+Stop-AzDiskPool -Name 'disk-pool-1' -ResourceGroupName 'storagepool-rg-test'
 ```
 
 This command deallocates a Disk Pool.
 
 ### Example 2: Stop a Disk Pool by object
 ```powershell
-PS C:\> Get-AzDiskPool -Name 'disk-pool-1' -ResourceGroupName 'storagepool-rg-test' | Stop-AzDiskPool
-
+Get-AzDiskPool -Name 'disk-pool-1' -ResourceGroupName 'storagepool-rg-test' | Stop-AzDiskPool
 ```
 
 This command deallocates a Disk Pool by object.

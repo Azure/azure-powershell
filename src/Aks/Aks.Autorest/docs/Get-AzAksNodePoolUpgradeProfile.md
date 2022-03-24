@@ -30,8 +30,10 @@ Gets the details of the upgrade profile for an agent pool with a specified resou
 
 ### Example 1: Get Aks node pool upgrade profile with resource group name and cluster name
 ```powershell
-PS C:\> Get-AzAksNodePoolUpgradeProfile -ResourceGroupName group -ClusterName myCluster -AgentPoolName default
+Get-AzAksNodePoolUpgradeProfile -ResourceGroupName group -ClusterName myCluster -AgentPoolName default
+```
 
+```output
 Name    Type
 ----    ----
 default Microsoft.ContainerService/managedClusters/agentPools/upgradeProfiles
@@ -93,7 +95,7 @@ The name of the agent pool.
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases:
+Aliases: AgentPoolName
 
 Required: True
 Position: Named
@@ -156,6 +158,7 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IAksIdentity>: Identity Parameter
   - `[AgentPoolName <String>]`: The name of the agent pool.
   - `[Id <String>]`: Resource identity path
+  - `[Location <String>]`: The name of a supported Azure region.
   - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection.
   - `[ResourceGroupName <String>]`: The name of the resource group.
   - `[ResourceName <String>]`: The name of the managed cluster resource.

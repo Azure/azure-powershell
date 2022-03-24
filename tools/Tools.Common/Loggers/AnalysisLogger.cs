@@ -116,12 +116,10 @@ namespace Tools.Common.Loggers
             if (_exceptionsDirectory != null && Directory.Exists(_exceptionsDirectory))
             {
                 var exceptionsPath = Path.Combine(_exceptionsDirectory, fileName);
-                WriteWarning("Using exceptions file {0}", exceptionsPath);
                 logger = new ReportLogger<T>(filePath, exceptionsPath, this);
             }
             else
             {
-                WriteWarning("Using no exceptions file.");
                 logger = new ReportLogger<T>(filePath, this);
             }
 

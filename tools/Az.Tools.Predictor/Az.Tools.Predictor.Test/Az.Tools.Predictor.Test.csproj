@@ -1,16 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
     <AssemblyName>Microsoft.Azure.PowerShell.Tools.AzPredictor.Test</AssemblyName>
     <RootNamespace>Microsoft.Azure.PowerShell.Tools.AzPredictor.Test</RootNamespace>
     <IsPackable>false</IsPackable>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <RepoArtifacts>$(MSBuildThisFileDirectory)</RepoArtifacts>
     <OutputPath>$(RepoArtifacts)..\..\..\artifacts\Tools\Az.Tools.Predictor.Test\</OutputPath>
-    <DocumentationFile>$(OutputPath)\Microsoft.Azure.PowerShell.AzPredictor.Tools.Test.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DocumentationFile>$(OutputPath)\Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

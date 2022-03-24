@@ -31,7 +31,10 @@ Delete Organization resource
 
 ### Example 1: Remove a confluent organization by name
 ```powershell
-PS C:\> Remove-AzConfluentOrganization -ResourceGroupName azure-rg-test -Name confluentorg-01-portal
+Remove-AzConfluentOrganization -ResourceGroupName azure-rg-test -Name confluentorg-01-portal
+```
+
+```output
 - This action cannot be undone.
 - This will permanently delete ‘<resource_name>’ and its Azure subscription
 - Stop billing for the selected Confluent organization through Azure Marketplace
@@ -42,7 +45,10 @@ This command removes a confluent organization by name
 
 ### Example 2: Remove a confluent organization by pipeline
 ```powershell
-PS C:\>  Get-AzConfluentOrganization -ResourceGroupName azure-rg-test -Name confluentorg-02-pwsh | Remove-AzConfluentOrganization
+Get-AzConfluentOrganization -ResourceGroupName azure-rg-test -Name confluentorg-02-pwsh | Remove-AzConfluentOrganization
+```
+
+```output
 - This action cannot be undone.
 - This will permanently delete ‘<resource_name>’ and its Azure subscription
 - Stop billing for the selected Confluent organization through Azure Marketplace

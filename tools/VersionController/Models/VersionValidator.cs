@@ -358,7 +358,7 @@ namespace VersionController.Models
         /// </summary>
         private void ValidateSerialization()
         {
-            Version version = _metadataHelper.GetVersionBumpUsingSerialized(false);
+            Version version = _metadataHelper.GetVersionBumpUsingSerialized();
             if (version != Version.PATCH)
             {
                 throw new Exception("The JSON containing the serialized module metadata has not been re-serialized.");

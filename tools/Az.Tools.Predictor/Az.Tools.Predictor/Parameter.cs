@@ -46,7 +46,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <param name="isPositional">The value indicating whether it's a positional parameter.</param>
         public Parameter(string name, string value, bool isPositional)
         {
-            Validation.CheckArgument(!string.IsNullOrWhiteSpace(name), $"{nameof(name)} cannot be null or whitespace");
+            Validation.CheckArgument(!string.IsNullOrWhiteSpace(name) || string.Equals(name, AzPredictorConstants.DashParameterName, StringComparison.Ordinal), $"{nameof(name)} cannot be null or whitespace");
 
             Name = name;
             Value = value;
