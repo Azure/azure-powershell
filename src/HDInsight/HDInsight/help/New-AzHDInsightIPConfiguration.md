@@ -31,7 +31,7 @@ $ipConfigName="ipconfig"
 $privateIPAllocationMethod="dynamic"
 $subnetId=$vnetId+"/subnets/"+$subnetName
 # Create Private IP configuration
-$ipConfiguration= New-AzHDInsightIPConfiguration -Name $ipConfigName PrivateIPAllocationMethod $privateIPAllocationMethod -SubnetId $subnetId -Primary
+$ipConfiguration= New-AzHDInsightIPConfiguration -Name $ipConfigName -PrivateIPAllocationMethod $privateIPAllocationMethod -SubnetId $subnetId -Primary
 ```
 
 This creates the ip configuration object in memory.

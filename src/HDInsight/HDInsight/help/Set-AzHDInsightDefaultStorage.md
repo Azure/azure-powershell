@@ -49,7 +49,6 @@ New-AzHDInsightClusterConfig `
             | Set-AzHDInsightDefaultStorage `
                 -StorageAccountResourceId $storageAccountResourceId `
                 -StorageAccountKey $key2 `
-                -StorageContainer $storageContainer `
             | New-AzHDInsightCluster `
                 -ClusterType Hadoop `
                 -OSType Windows `
