@@ -31,6 +31,7 @@
     - `Get-AzSqlInstanceLink`
     - `Remove-AzSqlInstanceLink`
     - `Set-AzSqlInstanceLink`
+* Added support for DataWarehouse cross tenant and cross subscription restore operations to `Restore-AzSqlDatabase` cmdlet
 
 ## Version 3.7.1
 * Deprecation of Get-AzSqlDatabaseTransparentDataEncryptionActivity cmdlet
