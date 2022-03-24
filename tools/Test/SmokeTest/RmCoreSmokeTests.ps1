@@ -174,27 +174,25 @@ $resourceCommands | ForEach-Object {
     $script = $_.Command
     $retry = if($null -eq $_.retry) {0} Else {$_.retry}
     $sleep = if($null -eq $_.sleep) {30} Else {$_.sleep}
-    if($null -ne $_.Since -and "Core" -eq $PSVersionTable.PSEdition) {
-        if($PSVersionTable.PSVersion -lt [System.Version]$_.Since) {
-            Write-Output "Skip test $testName"
-            $testInfo.SkippedCount += 1
-            return
-        }
+    if($null -ne $_.Since -and "Core" -eq $PSVersionTable.PSEdition -and $PSVersionTable.PSVersion -lt [System.Version]$_.Since) {
+        Write-Output "Skip test $testName"
+        $testInfo.SkippedCount += 1
+        return
     }
     Write-Output "Running test $testName"
     $testStart = Get-Date
     try
     {
         Retry-AzCommand -Name $testName -Command $script -Retry $retry -Sleep $sleep
-         $testInfo.PassedCount += 1
-         $testInfo.PassedTests += $testName
+        $testInfo.PassedCount += 1
+        $testInfo.PassedTests += $testName
     }
     catch
     {
-         Write-Error $_.Exception
-         $detail = Resolve-AzError -Last
-         $testInfo.FailureDetails += (New-Object PSObject -Property @{Name = $testName; Details = $detail})
-         $testInfo.FailedTests += $testName
+        Write-Error $_.Exception
+        $detail = Resolve-AzError -Last
+        $testInfo.FailureDetails += (New-Object PSObject -Property @{Name = $testName; Details = $detail})
+        $testInfo.FailedTests += $testName
     }
     finally
     {
