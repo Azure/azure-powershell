@@ -1,0 +1,89 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/providers/Microsoft.Management/checkNameAvailability?api-version=2018-03-01-preview",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9jaGVja05hbWVBdmFpbGFiaWxpdHk/YXBpLXZlcnNpb249MjAxOC0wMy0wMS1wcmV2aWV3",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n  \"name\": \"testMG3\",\r\n  \"type\": \"/providers/Microsoft.Management/managementGroups\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1578577b-1702-4240-80f7-af73d28cb1c0"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/5.0.1522.11506",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.1.1.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "88"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "westcentralus:77948d6e-1632-4d32-b9d9-ceaf0004aeb0"
+        ],
+        "x-ba-restapi": [
+          "0.0.0.0"
+        ],
+        "client-request-id": [
+          "77948d6e-1632-4d32-b9d9-ceaf0004aeb0"
+        ],
+        "request-id": [
+          "77948d6e-1632-4d32-b9d9-ceaf0004aeb0"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-tenant-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "77948d6e-1632-4d32-b9d9-ceaf0004aeb0"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20220324T001510Z:77948d6e-1632-4d32-b9d9-ceaf0004aeb0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 24 Mar 2022 00:15:10 GMT"
+        ],
+        "Content-Length": [
+          "109"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"nameAvailable\": false,\r\n  \"reason\": \"AlreadyExists\",\r\n  \"message\": \"The group with the specified name already exists\"\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "5602fbd9-fb0d-4fbb-98b3-10c8ea20b6de"
+  }
+}

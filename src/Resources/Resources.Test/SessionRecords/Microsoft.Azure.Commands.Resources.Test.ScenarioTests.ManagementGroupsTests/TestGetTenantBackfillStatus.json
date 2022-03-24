@@ -1,0 +1,83 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/providers/Microsoft.Management/tenantBackfillStatus?api-version=2018-03-01-preview",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC90ZW5hbnRCYWNrZmlsbFN0YXR1cz9hcGktdmVyc2lvbj0yMDE4LTAzLTAxLXByZXZpZXc=",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "82928757-ee5e-4cf0-a534-0aa04772f1d0"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/5.0.1522.11506",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.1.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "westcentralus:dcfb7109-b0eb-4e99-8b36-ca4d6f0576b2"
+        ],
+        "x-ba-restapi": [
+          "0.0.0.0"
+        ],
+        "client-request-id": [
+          "dcfb7109-b0eb-4e99-8b36-ca4d6f0576b2"
+        ],
+        "request-id": [
+          "dcfb7109-b0eb-4e99-8b36-ca4d6f0576b2"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-tenant-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "dcfb7109-b0eb-4e99-8b36-ca4d6f0576b2"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20220324T173701Z:dcfb7109-b0eb-4e99-8b36-ca4d6f0576b2"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 24 Mar 2022 17:37:00 GMT"
+        ],
+        "Content-Length": [
+          "72"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"tenantId\": \"c7a87cda-9a66-4920-b0f8-869baa04efe0\",\r\n  \"status\": \"Completed\"\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "5602fbd9-fb0d-4fbb-98b3-10c8ea20b6de"
+  }
+}

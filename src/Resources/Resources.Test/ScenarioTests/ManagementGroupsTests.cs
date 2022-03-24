@@ -107,5 +107,47 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-NewRemoveManagementGroupSubscription");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetEntities()
+        {
+            TestRunner.RunTestScript("Test-GetEntities");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCheckNameAvailabilityTrue()
+        {
+            TestRunner.RunTestScript("Test-CheckNameAvailabilityTrue");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCheckNameAvailabilityFalse()
+        {
+            TestRunner.RunTestScript("Test-CheckNameAvailabilityFalse");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCheckNameWithInvalidCharacters()
+        {
+            TestRunner.RunTestScript("Test-CheckNameWithInvalidCharacters");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetTenantBackfillStatus()
+        {
+            TestRunner.RunTestScript("Test-GetTenantBackfillStatus");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestStartTenantBackfill()
+        {
+            TestRunner.RunTestScript("Test-StartTenantBackfill");
+        }
     }
 }

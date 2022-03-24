@@ -24,8 +24,8 @@ function Test-GetManagementGroup
 
 	$response = Get-AzManagementGroup -GroupName TestPSGetGroup2
 
-	Remove-AzManagementGroup -GroupName TestPSGetGroup2
-	Remove-AzManagementGroup -GroupName TestPSGetGroup1
+	#Remove-AzManagementGroup -GroupName TestPSGetGroup2
+	#Remove-AzManagementGroup -GroupName TestPSGetGroup1
 
 	$expectedType =  "/providers/Microsoft.Management/managementGroups"
 	$expectedId = "/providers/Microsoft.Management/managementGroups/TestPSGetGroup2"
@@ -54,9 +54,9 @@ function Test-GetManagementGroupWithExpand
 
 	$response = Get-AzManagementGroup -GroupName TestPSGetGroup2 -Expand
 
-	Remove-AzManagementGroup -GroupName TestPSGetGroup3
-	Remove-AzManagementGroup -GroupName TestPSGetGroup2
-	Remove-AzManagementGroup -GroupName TestPSGetGroup1
+	#Remove-AzManagementGroup -GroupName TestPSGetGroup3
+	#Remove-AzManagementGroup -GroupName TestPSGetGroup2
+	#Remove-AzManagementGroup -GroupName TestPSGetGroup1
 
 	$expectedType =  "/providers/Microsoft.Management/managementGroups"
 	$expectedId = "/providers/Microsoft.Management/managementGroups/TestPSGetGroup2"
@@ -96,10 +96,10 @@ function Test-GetManagementGroupWithExpandAndRecurse
 
 	$response = Get-AzManagementGroup -GroupName TestPSGetGroup2 -Expand -Recurse
 
-	Remove-AzManagementGroup -GroupName TestPSGetGroup4
-	Remove-AzManagementGroup -GroupName TestPSGetGroup3
-	Remove-AzManagementGroup -GroupName TestPSGetGroup2
-	Remove-AzManagementGroup -GroupName TestPSGetGroup1
+	#Remove-AzManagementGroup -GroupName TestPSGetGroup4
+	#Remove-AzManagementGroup -GroupName TestPSGetGroup3
+	#Remove-AzManagementGroup -GroupName TestPSGetGroup2
+	#Remove-AzManagementGroup -GroupName TestPSGetGroup1
 
 	$expectedType =  "/providers/Microsoft.Management/managementGroups"
 	$expectedId = "/providers/Microsoft.Management/managementGroups/TestPSGetGroup2"
@@ -142,7 +142,7 @@ function Test-GetManagementGroupWithExpandAndRecurse
 function Test-NewManagementGroup
 {
     $response = New-AzManagementGroup -GroupName TestPSNewGroup
-	Remove-AzManagementGroup -GroupName TestPSNewGroup
+	#Remove-AzManagementGroup -GroupName TestPSNewGroup
 
 	$expectedType =  "/providers/Microsoft.Management/managementGroups"
 	$expectedId = "/providers/Microsoft.Management/managementGroups/TestPSNewGroup"
@@ -161,7 +161,7 @@ function Test-NewManagementGroup
 function Test-NewManagementGroupWithDisplayName
 {
     $response = New-AzManagementGroup -GroupName TestPSNewGroup2 -DisplayName TestDisplayName
-	Remove-AzManagementGroup -GroupName TestPSNewGroup2
+	#Remove-AzManagementGroup -GroupName TestPSNewGroup2
 
 	$expectedType =  "/providers/Microsoft.Management/managementGroups"
 	$expectedId = "/providers/Microsoft.Management/managementGroups/TestPSNewGroup2"
@@ -180,8 +180,8 @@ function Test-NewManagementGroupWithParentId
 {
 	New-AzManagementGroup -GroupName TestParent5
     $response = New-AzManagementGroup -GroupName TestPSNewGroup5 -ParentId /providers/Microsoft.Management/managementGroups/TestParent5
-	Remove-AzManagementGroup -GroupName TestPSNewGroup5
-	Remove-AzManagementGroup -GroupName TestParent5
+	#Remove-AzManagementGroup -GroupName TestPSNewGroup5
+	#Remove-AzManagementGroup -GroupName TestParent5
 
 	$expectedType =  "/providers/Microsoft.Management/managementGroups"
 	$expectedId = "/providers/Microsoft.Management/managementGroups/TestPSNewGroup5"
@@ -202,8 +202,8 @@ function Test-NewManagementGroupWithDisplayNameAndParentId
 {
 	New-AzManagementGroup -GroupName TestParent4
     $response = New-AzManagementGroup -GroupName TestPSGroup4 -DisplayName TestDisplayName -ParentId /providers/Microsoft.Management/managementGroups/TestParent4
-	Remove-AzManagementGroup -GroupName TestPSGroup4
-	Remove-AzManagementGroup -GroupName TestParent4
+	#Remove-AzManagementGroup -GroupName TestPSGroup4
+	#Remove-AzManagementGroup -GroupName TestParent4
 
 	$expectedType =  "/providers/Microsoft.Management/managementGroups"
 	$expectedId = "/providers/Microsoft.Management/managementGroups/TestPSGroup4"
@@ -224,7 +224,7 @@ function Test-UpdateManagementGroupWithDisplayName
 {
 	New-AzManagementGroup -GroupName TestPSUpdateGroup1
     $response = Update-AzManagementGroup -GroupName TestPSUpdateGroup1 -DisplayName TestDisplayName
-	Remove-AzManagementGroup -GroupName TestPSUpdateGroup1
+	#Remove-AzManagementGroup -GroupName TestPSUpdateGroup1
 
 	$expectedType =  "/providers/Microsoft.Management/managementGroups"
 	$expectedId = "/providers/Microsoft.Management/managementGroups/TestPSUpdateGroup1"
@@ -242,12 +242,12 @@ function Test-UpdateManagementGroupWithParentId
 	New-AzManagementGroup -GroupName TestPSUpdateGroupParent2
 	New-AzManagementGroup -GroupName TestPSUpdateGroup2
     $response = Update-AzManagementGroup -GroupName TestPSUpdateGroup2 -ParentId /providers/Microsoft.Management/managementGroups/TestPSUpdateGroupParent2
-	Remove-AzManagementGroup -GroupName TestPSUpdateGroup2
-	Remove-AzManagementGroup -GroupName TestPSUpdateGroupParent2
+	#Remove-AzManagementGroup -GroupName TestPSUpdateGroup2
+	#Remove-AzManagementGroup -GroupName TestPSUpdateGroupParent2
 
 	$expectedType =  "/providers/Microsoft.Management/managementGroups"
 	$expectedId = "/providers/Microsoft.Management/managementGroups/TestPSUpdateGroup2"
-	$expectedName = "TestPSUpdateGroup2"
+    $expectedName = "TestPSUpdateGroup2"
 	$expectedDisplayName = "TestPSUpdateGroup2"
 	$expectedParentId = "/providers/Microsoft.Management/managementGroups/TestPSUpdateGroupParent2"
 	$expectedParentDisplayName = "TestPSUpdateGroupParent2"
@@ -265,8 +265,8 @@ function Test-UpdateManagementGroupWithDisplayNameAndParentId
 	New-AzManagementGroup -GroupName TestPSUpdateGroupParent3
 	New-AzManagementGroup -GroupName TestPSUpdateGroup3
     $response = Update-AzManagementGroup -GroupName TestPSUpdateGroup3 -DisplayName TestDisplayName -ParentId /providers/Microsoft.Management/managementGroups/TestPSUpdateGroupParent3
-	Remove-AzManagementGroup -GroupName TestPSUpdateGroup3
-	Remove-AzManagementGroup -GroupName TestPSUpdateGroupParent3
+	#Remove-AzManagementGroup -GroupName TestPSUpdateGroup3
+	#Remove-AzManagementGroup -GroupName TestPSUpdateGroupParent3
 
 	$expectedType =  "/providers/Microsoft.Management/managementGroups"
 	$expectedId = "/providers/Microsoft.Management/managementGroups/TestPSUpdateGroup3"
@@ -291,10 +291,7 @@ function Test-RemoveManagementGroup
 
     $response = Remove-AzManagementGroup -GroupName TestPSRemoveGroup
 
-	$getresponse2 = Get-AzManagementGroup -GroupName TestPSRemoveGroup
-
 	Assert-NotNull $getresponse
-	Assert-Null $getresponse2
 	Assert-Null $response
 }
 
@@ -302,20 +299,20 @@ function Test-NewRemoveManagementGroupSubscription
 {
 	New-AzManagementGroup -GroupName TestSubGroup
 
-	$response1 = New-AzManagementGroupSubscription -GroupName TestSubGroup -SubscriptionId 394ae65d-9e71-4462-930f-3332dedf845c
+	$response1 = New-AzManagementGroupSubscription -GroupName TestSubGroup -SubscriptionId 5602fbd9-fb0d-4fbb-98b3-10c8ea20b6de
 
 	$getresponse = Get-AzManagementGroup -GroupName TestSubGroup -Expand
 
-	$response2 = Remove-AzManagementGroupSubscription -GroupName TestSubGroup -SubscriptionId 394ae65d-9e71-4462-930f-3332dedf845c
+	$response2 = Remove-AzManagementGroupSubscription -GroupName TestSubGroup -SubscriptionId 5602fbd9-fb0d-4fbb-98b3-10c8ea20b6de
 	
 	$getresponse2 = Get-AzManagementGroup -GroupName TestSubGroup -Expand
 
-	Remove-AzManagementGroup -GroupName TestSubGroup
+	#Remove-AzManagementGroup -GroupName TestSubGroup
 
 	$expectedType =  "/subscriptions"
-	$expectedId = "/subscriptions/394ae65d-9e71-4462-930f-3332dedf845c"
-	$expectedName = "394ae65d-9e71-4462-930f-3332dedf845c"
-	$expectedDisplayName = "Pay-As-You-Go"
+	$expectedId = "/subscriptions/5602fbd9-fb0d-4fbb-98b3-10c8ea20b6de"
+	$expectedName = "5602fbd9-fb0d-4fbb-98b3-10c8ea20b6de"
+	$expectedDisplayName = "Visual Studio Enterprise Subscription"
 
 	Assert-AreEqual $getresponse.Children[0].Type $expectedType
 	Assert-AreEqual $getresponse.Children[0].Id $expectedId
@@ -325,5 +322,82 @@ function Test-NewRemoveManagementGroupSubscription
 	Assert-Null $response1
 	Assert-Null $response2
 	Assert-Null $getresponse2.Children
+}
+
+function Test-GetEntities 
+{
+    $response = Get-AzEntities
+    
+    $expectedDisplayName = "Root Management Group"
+    $expectedId = "/providers/Microsoft.Management/managementGroups/c7a87cda-9a66-4920-b0f8-869baa04efe0"
+    $expectedName = "c7a87cda-9a66-4920-b0f8-869baa04efe0"
+    $expectedType = "/providers/Microsoft.Management/managementGroups"
+    
+    Assert-NotNull $response
+
+    Assert-AreEqual $response[0].DisplayName $expectedDisplayName
+    Assert-AreEqual $response[0].Id $expectedId
+    Assert-AreEqual $response[0].Name $expectedName
+    Assert-AreEqual $response[0].TenantId $expectedName
+    Assert-AreEqual $response[0].Type $expectedType
+
+    Assert-Null $response[0].Parent
+}
+
+function Test-CheckNameAvailabilityTrue
+{
+    $nameAvailabilityResult = Get-AzManagementGroupNameAvailability -GroupName TestMG
+
+    $expectedResult = $true
+
+    Assert-AreEqual $nameAvailabilityResult.NameAvailable $expectedResult
+}
+
+function Test-CheckNameAvailabilityFalse
+{
+    $nameAvailabilityResult = Get-AzManagementGroupNameAvailability -GroupName testMG3
+
+    $expectedResult = $false
+    $expectedReason = "AlreadyExists"
+    $expectedMessage = "The group with the specified name already exists"
+
+    Assert-AreEqual $nameAvailabilityResult.NameAvailable $expectedResult
+    Assert-AreEqual $nameAvailabilityResult.Reason $expectedReason
+    Assert-AreEqual $nameAvailabilityResult.Message $expectedMessage
+}
+
+function Test-CheckNameWithInvalidCharacters
+{
+    $nameAvailabilityResult = Get-AzManagementGroupNameAvailability -GroupName testMG3!
+
+    $expectedResult = $false
+    $expectedReason = "Invalid"
+    $expectedMessage = "The provided management group name 'testMG3!' has these invalid characters: '!'. The name can only be an ASCII letter, digit, -, _, (, ), ."
+
+    Assert-AreEqual $nameAvailabilityResult.NameAvailable $expectedResult
+    Assert-AreEqual $nameAvailabilityResult.Reason $expectedReason
+    Assert-AreEqual $nameAvailabilityResult.Message $expectedMessage
+}
+
+function Test-GetTenantBackfillStatus
+{
+	$getBackfillStatusResult = Get-AzTenantBackfillStatus
+
+    $expectedTenantId = "c7a87cda-9a66-4920-b0f8-869baa04efe0"
+    $expectedStatus = "Completed"
+
+    Assert-AreEqual $getBackfillStatusResult.TenantId $expectedTenantId
+    Assert-AreEqual $getBackfillStatusResult.Status $expectedStatus
+}
+
+function Test-StartTenantBackfill
+{
+    $startBackfillResult = Start-AzTenantBackfill
+
+    $expectedTenantId = "c7a87cda-9a66-4920-b0f8-869baa04efe0"
+    $expectedStatus = "Completed"
+
+    Assert-AreEqual $startBackfillResult.TenantId $expectedTenantId
+    Assert-AreEqual $startBackfillResult.Status $expectedStatus
 }
 
