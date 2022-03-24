@@ -35,8 +35,6 @@ Get-AzAutomationSourceControlSyncJobOutput -ResourceGroupName "rg1" `
                                                         -Stream Output | ForEach-Object {$_.summary}
 ```
 ```output
-========================================================================================================
-
 Azure Automation Source Control Public Preview.
 Supported runbooks to sync: PowerShell Workflow, PowerShell Scripts, DSC Configurations, Graphical, and Python 2.
 Setting AzureRmEnvironment.
@@ -62,11 +60,6 @@ File is not a runbook:
 
 File size exceeds 1Mb:
  - RunbookD_GreatherThan1MB.ps1
-
-Invalid runbook name:
- - RunbookZ_ĈĦŕĬŞ.ps1
-
-========================================================================================================
 ```
 
 ## PARAMETERS
