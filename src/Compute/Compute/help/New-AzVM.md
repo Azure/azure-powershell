@@ -205,7 +205,7 @@ $vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName -UserData;
 
 The UserData value must always be Base64 encoded. 
 
-### Example 5: Creating a new VM with an existing subnet in another resouce group
+### Example 5: Creating a new VM with an existing subnet in another resource group
 ```
 $UserName = "User"
 $Password = ConvertTo-SecureString "############" -AsPlainText -Force
