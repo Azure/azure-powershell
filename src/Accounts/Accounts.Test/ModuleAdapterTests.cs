@@ -414,7 +414,13 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
         [Theory]
         [InlineData("x-ms-client-request-id")]
+        [InlineData("client-request-id")]
+        [InlineData("x-ms-request-id")]
+        [InlineData("request-id")]
         [InlineData("X-MS-CLIENT-REQUEST-ID")]
+        [InlineData("CLIENT-REQUEST-ID")]
+        [InlineData("X-MS-REQUEST-ID")]
+        [InlineData("REQUEST-ID")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestResponseCreatedHandler(string headerName)
         {

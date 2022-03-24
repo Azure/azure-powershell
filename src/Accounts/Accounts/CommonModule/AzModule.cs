@@ -184,9 +184,13 @@ namespace Microsoft.Azure.Commands.Common
                 if (_telemetry.TryGetValue(processRecordId, out qos) && null != response?.Headers)
                 {
                     IEnumerable<string> headerValues;
-                    if (response.Headers.TryGetValues("x-ms-client-request-id", out headerValues) && headerValues.Any())
+                    foreach (var headerName in ClientHeaders)
                     {
-                        qos.ClientRequestId = headerValues.First();
+                        if (response.Headers.TryGetValues(headerName, out headerValues) && headerValues.Any())
+                        {
+                            qos.ClientRequestId = headerValues.First();
+                            break;
+                        }
                     }
                 }
 
