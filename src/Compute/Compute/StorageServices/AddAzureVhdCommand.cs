@@ -37,6 +37,7 @@ using Microsoft.Samples.HyperV.Storage;
 using Microsoft.Samples.HyperV.Common;
 using System.Threading;
 
+
 namespace Microsoft.Azure.Commands.Compute.StorageServices
 {
     /// <summary>
@@ -49,6 +50,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
         private const int DefaultNumberOfUploaderThreads = 8;
         private const string DefaultParameterSet = "DefaultParameterSet";
         private const string DirectUploadToManagedDiskSet = "DirectUploadToManagedDiskSet";
+        private bool ConvertedResized = false;
 
         [Parameter(
             Position = 0,
@@ -155,7 +157,12 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             Mandatory = false,
             ParameterSetName = DefaultParameterSet,
             HelpMessage = "Skips the resizing of VHD")]
-        public SwitchParameter skipResizing { get; set; }
+        public SwitchParameter SkipResizing { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Use this switch parameter to keep the VHD file that is resized/converted by Hyper-V.")]
+        public SwitchParameter KeepConvertedResizedVhd { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -165,113 +172,127 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("To be compatible with Azure, Add-AzVhd will automatically try to convert VHDX files to VHD, and resize VHD files to N * Mib using Hyper-V Platform, a Windows naitive virtualization product. \nFor more information visit https://aka.ms/usingAdd-AzVhd \n");
-                Console.ResetColor();
-
-
-                Program.SyncOutput = new PSSyncOutputEvents(this);
-                // 1.              CONVERT VHDX TO VHD
-                if (this.LocalFilePath.Extension == ".vhdx")
+                try
                 {
-                    convertVhd();
-                }
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("To be compatible with Azure, Add-AzVhd will automatically try to convert VHDX files to VHD, and resize VHD files to N * Mib using Hyper-V Platform, a Windows naitive virtualization product. \nFor more information visit https://aka.ms/usingAdd-AzVhd \n");
+                    Console.ResetColor();
 
-                checkForCorruptedAndDynamicallySizedVhd();
-                checkVhdFileSize(this.LocalFilePath);
 
-                // 2.            RESIZE VHD
-                if (this.skipResizing.IsPresent)
-                {
-                    Console.WriteLine("Skipping VHD resizing.");
-                }
-                else
-                {
-                    if ((this.LocalFilePath.Length - 512) % 1048576 != 0)
+                    Program.SyncOutput = new PSSyncOutputEvents(this);
+                    // 1.              CONVERT VHDX TO VHD
+                    if (this.LocalFilePath.Extension == ".vhdx")
                     {
-                        resizeVhdFile();
+                        convertVhd();
                     }
-                    else // does not need resizing
+
+                    checkForCorruptedAndDynamicallySizedVhd();
+                    checkVhdFileSize(this.LocalFilePath);
+
+                    // 2.            RESIZE VHD
+                    if (this.SkipResizing.IsPresent)
                     {
-                        WriteVerbose("Vhd file already sized correctly. Proceeding to uploading.");
-                    }
-                }
-
-                if (this.ParameterSetName == DirectUploadToManagedDiskSet)
-                {
-
-                    // 3. DIRECT UPLOAD TO MANAGED DISK
-
-                    // 3-1. CREATE DISK CONFIG 
-                    checkForExistingDisk(this.ResourceGroupName, this.DiskName);
-                    var diskConfig = CreateDiskConfig();
-
-                    // 3-2: CREATE DISK
-                    createManagedDisk(this.ResourceGroupName, this.DiskName, diskConfig);
-
-                    // 3-3: GENERATE SAS
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine("Generating SAS");
-                    Console.ResetColor();
-                    var grantAccessData = new GrantAccessData();
-                    grantAccessData.Access = "Write";
-                    long gbInBytes = 1073741824;
-                    int gb = (int)(this.LocalFilePath.Length / gbInBytes);
-                    grantAccessData.DurationInSeconds = 86400 * Math.Max(gb / 100, 1);   // 24h per 100gb
-                    var accessUri = this.ComputeClient.ComputeManagementClient.Disks.GrantAccess(this.ResourceGroupName, this.DiskName, grantAccessData);
-                    Uri sasUri = new Uri(accessUri.AccessSAS);
-                    Console.WriteLine("SAS generated: " + accessUri.AccessSAS);
-
-                    // 3-4: UPLOAD                  
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine("Preparing for Upload");
-                    Console.ResetColor();
-                    PSPageBlobClient managedDisk = new PSPageBlobClient(sasUri);
-                    DiskUploadCreator diskUploadCreator = new DiskUploadCreator();
-                    var uploadContext = diskUploadCreator.Create(this.LocalFilePath, managedDisk, false);
-                    var synchronizer = new DiskSynchronizer(uploadContext, this.NumberOfUploaderThreads ?? DefaultNumberOfUploaderThreads);
-
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine("Uploading");
-                    Console.ResetColor();
-                    if (synchronizer.Synchronize())
-                    {
-                        var result = new VhdUploadContext { LocalFilePath = this.LocalFilePath, DestinationUri = sasUri };
-                        WriteObject(result);
+                        Console.WriteLine("Skipping VHD resizing.");
                     }
                     else
                     {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("Upload failed");
+                        if ((this.LocalFilePath.Length - 512) % 1048576 != 0)
+                        {
+                            resizeVhdFile();
+                        }
+                        else // does not need resizing
+                        {
+                            WriteVerbose("Vhd file already sized correctly. Proceeding to uploading.");
+                        }
+                    }
+
+                    if (this.ParameterSetName == DirectUploadToManagedDiskSet)
+                    {
+
+                        // 3. DIRECT UPLOAD TO MANAGED DISK
+
+
+                        // 3-1. CREATE DISK CONFIG 
+                        checkForExistingDisk(this.ResourceGroupName, this.DiskName);
+                        var diskConfig = CreateDiskConfig();
+
+                        // 3-2: CREATE DISK
+                        createManagedDisk(this.ResourceGroupName, this.DiskName, diskConfig);
+
+                        // 3-3: GENERATE SAS
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("Generating SAS");
                         Console.ResetColor();
+                        var grantAccessData = new GrantAccessData();
+                        grantAccessData.Access = "Write";
+                        long gbInBytes = 1073741824;
+                        int gb = (int)(this.LocalFilePath.Length / gbInBytes);
+                        grantAccessData.DurationInSeconds = 86400 * Math.Max(gb / 100, 1);   // 24h per 100gb
+                        var accessUri = this.ComputeClient.ComputeManagementClient.Disks.GrantAccess(this.ResourceGroupName, this.DiskName, grantAccessData);
+                        Uri sasUri = new Uri(accessUri.AccessSAS);
+                        Console.WriteLine("SAS generated: " + accessUri.AccessSAS);
+
+
+                        // 3-4: UPLOAD                  
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("Preparing for Upload");
+                        Console.ResetColor();
+                        PSPageBlobClient managedDisk = new PSPageBlobClient(sasUri);
+                        DiskUploadCreator diskUploadCreator = new DiskUploadCreator();
+                        var uploadContext = diskUploadCreator.Create(this.LocalFilePath, managedDisk, false);
+                        var synchronizer = new DiskSynchronizer(uploadContext, this.NumberOfUploaderThreads ?? DefaultNumberOfUploaderThreads);
+
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("Uploading");
+                        Console.ResetColor();
+                        if (synchronizer.Synchronize())
+                        {
+                            var result = new VhdUploadContext { LocalFilePath = this.LocalFilePath, DestinationUri = sasUri };
+                            WriteObject(result);
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("Upload failed");
+                            Console.ResetColor();
+                        }
+
+                        // 3-5: REVOKE SAS
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("Revoking SAS");
+                        Console.ResetColor();
+                        var RevokeResult = this.ComputeClient.ComputeManagementClient.Disks.RevokeAccessWithHttpMessagesAsync(this.ResourceGroupName, this.DiskName).GetAwaiter().GetResult();
+                        PSOperationStatusResponse output = new PSOperationStatusResponse
+                        {
+                            StartTime = this.StartTime,
+                            EndTime = DateTime.Now
+                        };
+                        if (RevokeResult != null && RevokeResult.Request != null && RevokeResult.Request.RequestUri != null)
+                        {
+                            output.Name = GetOperationIdFromUrlString(RevokeResult.Request.RequestUri.ToString());
+                        }
+
+                        Console.WriteLine("SAS revoked.");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("\nUpload complete.");
+                        Console.ResetColor();
+
                     }
-
-                    // 3-5: REVOKE SAS
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine("Revoking SAS");
-                    Console.ResetColor();
-                    var RevokeResult = this.ComputeClient.ComputeManagementClient.Disks.RevokeAccessWithHttpMessagesAsync(this.ResourceGroupName, this.DiskName).GetAwaiter().GetResult();
-                    PSOperationStatusResponse output = new PSOperationStatusResponse
+                    else
                     {
-                        StartTime = this.StartTime,
-                        EndTime = DateTime.Now
-                    };
-                    if (RevokeResult != null && RevokeResult.Request != null && RevokeResult.Request.RequestUri != null)
-                    {
-                        output.Name = GetOperationIdFromUrlString(RevokeResult.Request.RequestUri.ToString());
+                        var parameters = ValidateParameters();
+                        var vhdUploadContext = VhdUploaderModel.Upload(parameters);
+                        WriteObject(vhdUploadContext);
                     }
-
-                    Console.WriteLine("SAS revoked.");
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("\nUpload complete.");
-                    Console.ResetColor();
-
                 }
-                else
+                finally
                 {
-                    var parameters = ValidateParameters();
-                    var vhdUploadContext = VhdUploaderModel.Upload(parameters);
-                    WriteObject(vhdUploadContext);
+                    if (!this.KeepConvertedResizedVhd.IsPresent && ConvertedResized == true)
+                    {
+                        Console.WriteLine("Deleting file: " + this.LocalFilePath.FullName);
+                        File.Delete(this.LocalFilePath.FullName);
+                        
+                    }
                 }
             });
 
@@ -386,7 +407,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             string resizedFileName = returnAvailExtensionName(filePath, "_resized", ".vhd");
             System.IO.File.Move(filePath, resizedFileName);
             this.LocalFilePath = new FileInfo(resizedFileName);
-            if (filePath.Contains("_FixedSize") || filePath.Contains("_Converted"))
+            if (filePath.Contains("_FixedSize") || filePath.Contains("_converted"))
             {
                 return;
             }
@@ -513,7 +534,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
 
         private void convertVhd()
         {
-            string ConvertedPath = returnAvailExtensionName(this.LocalFilePath.FullName, "_Converted", ".vhd");
+            string ConvertedPath = returnAvailExtensionName(this.LocalFilePath.FullName, "_converted", ".vhd");
             FileInfo vhdFileInfo = new FileInfo(ConvertedPath);
             ManagementScope scope = new ManagementScope(@"\root\virtualization\V2");
             VirtualHardDiskSettingData settingData = new VirtualHardDiskSettingData(VirtualHardDiskType.FixedSize, VirtualHardDiskFormat.Vhd, vhdFileInfo.FullName, null, 0, 0, 0, 0);
@@ -555,6 +576,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                     }
                     Console.WriteLine("Converted file: " + ConvertedPath);
                     this.LocalFilePath = new FileInfo(vhdFileInfo.FullName);
+                    ConvertedResized = true;
                 }
             }
             catch (System.Management.ManagementException ex)
@@ -618,6 +640,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                         }
                         Console.WriteLine("Fixed VHD file: " + FixedSizePath);
                         this.LocalFilePath = FixedFileInfo;
+                        ConvertedResized = true;
                     }
                 }
             }
@@ -683,6 +706,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                     }
                     Console.WriteLine("Resized " + this.LocalFilePath + " from " + sizeBefore + " bytes to " + FullFileSize + " bytes.");
                     this.LocalFilePath = new FileInfo(this.LocalFilePath.FullName);
+                    ConvertedResized = true;
                 }
             }
             catch (System.Management.ManagementException ex)

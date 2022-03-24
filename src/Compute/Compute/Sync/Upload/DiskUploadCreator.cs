@@ -171,6 +171,7 @@ namespace Microsoft.Azure.Commands.Compute.Sync.Upload
 
                 var bs = new BufferedStream(vds);
                 // linear still
+                //var uploadableRanges = IndexRangeHelper.ChunkRangesBySize(ranges.Take(3000), PageSizeInBytes).ToArray();
                 var uploadableRanges = IndexRangeHelper.ChunkRangesBySize(ranges, PageSizeInBytes).ToArray();
 
                 // detecting empty data blocks line. Takes long 
