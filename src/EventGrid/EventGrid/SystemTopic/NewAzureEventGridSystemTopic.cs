@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridSystemTopic",
         SupportsShouldProcess = true,
         DefaultParameterSetName = TopicNameParameterSet),
-    OutputType(typeof(PSTopic))]
+    OutputType(typeof(PSSystemTopic))]
 
     public class NewAzureEventGridSystemTopic : AzureEventGridCmdletBase
     {
@@ -181,26 +181,27 @@ namespace Microsoft.Azure.Commands.EventGrid
         {
             // Create a new Event Grid Topic
             Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(this.Tag, true);
-            Dictionary<string, string> inputMappingFieldsDictionary = TagsConversionHelper.CreateTagDictionary(this.InputMappingField, true);
-            Dictionary<string, string> inputMappingDefaultValuesDictionary = TagsConversionHelper.CreateTagDictionary(this.InputMappingDefaultValue, true);
-            Dictionary<string, string> inboundIpRuleDictionary = TagsConversionHelper.CreateTagDictionary(this.InboundIpRule, true);
-
-            EventGridUtils.ValidateInputMappingInfo(this.InputSchema, inputMappingFieldsDictionary, inputMappingDefaultValuesDictionary);
+            Dictionary<string, UserIdentityProperties> userAssignedIdentities = new Dictionary<string, UserIdentityProperties>();
 
             if (this.ShouldProcess(this.Name, $"Create a new EventGrid topic {this.Name} in Resource Group {this.ResourceGroupName}"))
             {
-                Topic topic = this.Client.CreateTopic(
+                SystemTopic topic = this.Client.CreateSystemTopic(
                     this.ResourceGroupName,
                     this.Name,
+                    this.ResourceId,
+                    this.ResourceName,
+                    this.ResourceType,
                     this.Location,
-                    tagDictionary,
-                    InputSchema,
-                    inputMappingFieldsDictionary,
-                    inputMappingDefaultValuesDictionary,
-                    inboundIpRuleDictionary,
-                    this.PublicNetworkAccess);
+                    this.Source,
+                    this.TopicType,
+                    this.MetricResourceId,
+                    this.IdentityType,
+                    this.PrincipalId,
+                    this.TenantId,
+                    userAssignedIdentities,
+                    tagDictionary);
 
-                PSTopic psTopic = new PSTopic(topic);
+                PSSystemTopic psTopic = new PSSystemTopic(topic);
                 this.WriteObject(psTopic);
             }
         }
