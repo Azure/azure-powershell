@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the UpdateAdmin service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.6.0 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -50,6 +50,12 @@ require:
   - $(this-folder)/../readme.azurestack.md
   - $(repo)/specification/azsadmin/resource-manager/update/readme.azsautogen.md
 
+input-file:
+  - $(repo)/specification/azsadmin/resource-manager/update/Microsoft.Update.Admin/stable/2021-07-01/Update.json
+  - $(repo)/specification/azsadmin/resource-manager/update/Microsoft.Update.Admin/stable/2021-07-01/UpdateLocations.json
+  - $(repo)/specification/azsadmin/resource-manager/update/Microsoft.Update.Admin/stable/2021-07-01/UpdateRuns.json
+  - $(repo)/specification/azsadmin/resource-manager/update/Microsoft.Update.Admin/stable/2021-07-01/Updates.json
+
 subject-prefix: ''
 module-version: 0.0.1
 
@@ -65,32 +71,90 @@ sanitize-names: true
 ``` yaml
 directive:
   - where:
-      parameter-name: UpdateLocation
-    set:
-      parameter-name: Location
-  - where:
       parameter-name: ResourceGroupName
     set:
       default:
         script: -join("System.",(Get-AzLocation)[0].Location)
+
+  - where:
+      parameter-name: UpdateLocation
+    set:
+      parameter-name: Location
+
   - where:
       verb: Add
     set:
       verb: Install
+
   - where:
       verb: Invoke
       subject: RerunUpdateRun
     set:
       verb: Resume
       subject: UpdateRun
+
+  - where:
+      verb: Invoke
+      subject: PrepareUpdate
+    set:
+      verb: Prepare
+      subject: Update
+
+  - where:
+      subject: Update
+      parameter-name: UpdateName
+    set:
+      parameter-name: Name
+
+  - where:
+      verb: Test
+      subject: UpdateHealth
+    set:
+      verb: Start
+      subject: UpdateHealthCheck
+
+  - where:
+      subject: UpdateHealthCheck
+    hide: true
+
+  - where:
+      subject: UpdateHealthCheck
+      parameter-name: UpdateName
+    set:
+      parameter-name: Name
+
+  - where:
+      subject: AzsUpdateRun
+      parameter-name: UpdateName
+    set:
+      parameter-name: Name
+
+  - where:
+      subject: Update
+    hide: true
+
+  - where:
+      subject: UpdateLocation
+    hide: true
+
+  - where:
+      subject: UpdateRun
+    hide: true
+
+  - where:
+      subject: UpdateRunTopLevel
+    hide: true
+
   - where:
       subject: Update 
       parameter-name: Location
     clear-alias: true
+
   - where:
       subject: Update 
       parameter-name: Name
     clear-alias: true
+    
   - where:
       subject: UpdateLocation 
       parameter-name: Location
@@ -98,6 +162,7 @@ directive:
       parameter-name: Name
       default:
         script: (Get-AzLocation)[0].Location
+
   - where:
       subject: (.*)Run$
       parameter-name: RunName
