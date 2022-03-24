@@ -248,6 +248,126 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         #endregion
 
+        #region SystemTopic
+        public SystemTopic GetSystemTopic(string resourceGroupName, string systemTopicName)
+        {
+            var systemTopic = this.Client.SystemTopics.Get(resourceGroupName, systemTopicName);
+            return systemTopic;
+        }
+
+        public (IEnumerable<SystemTopic>, string) ListSystemTopicBySubscription(string oDataQuery, int? top)
+        {
+            List<SystemTopic> topicsList = new List<SystemTopic>();
+            IPage<SystemTopic> topicsPage = this.Client.SystemTopics.ListBySubscription(oDataQuery, top);
+            bool isAllResultsNeeded = top == null;
+            string nextLink = null;
+
+            if (topicsPage != null)
+            {
+                topicsList.AddRange(topicsPage);
+                nextLink = topicsPage.NextPageLink;
+                while (nextLink != null && isAllResultsNeeded)
+                {
+                    IEnumerable<SystemTopic> newTopicsList;
+                    (newTopicsList, nextLink) = this.ListSystemTopicBySubscriptionNext(nextLink);
+                    topicsList.AddRange(newTopicsList);
+                }
+            }
+            return (topicsList, nextLink);
+        }
+
+        public (IEnumerable<SystemTopic>, string) ListSystemTopicBySubscriptionNext(string nextLink)
+        {
+            List<SystemTopic> topicsList = new List<SystemTopic>();
+            string newNextLink = null;
+            IPage<SystemTopic> topicsPage = this.Client.SystemTopics.ListBySubscriptionNext(nextLink);
+            if (topicsPage != null)
+            {
+                topicsList.AddRange(topicsPage);
+                newNextLink = topicsPage.NextPageLink;
+            }
+
+            return (topicsList, newNextLink);
+        }
+
+        public (IEnumerable<SystemTopic>, string) ListSystemTopicByResourceGroup(string resourceGroupname, string oDataQuery, int? top)
+        {
+            List<SystemTopic> topicsList = new List<SystemTopic>();
+            IPage<SystemTopic> topicsPage = this.Client.SystemTopics.ListByResourceGroup(resourceGroupname, oDataQuery, top);
+            bool isAllResultsNeeded = top == null;
+            string nextLink = null;
+
+            if (topicsPage != null)
+            {
+                topicsList.AddRange(topicsPage);
+                nextLink = topicsPage.NextPageLink;
+                while (nextLink != null && isAllResultsNeeded)
+                {
+                    IEnumerable<SystemTopic> newTopicsList;
+                    (newTopicsList, nextLink) = this.ListSystemTopicByResourceGroupNext(nextLink);
+                    topicsList.AddRange(newTopicsList);
+                }
+            }
+            return (topicsList, nextLink);
+        }
+
+        public (IEnumerable<SystemTopic>, string) ListSystemTopicByResourceGroupNext(string nextLink)
+        {
+            List<SystemTopic> topicsList = new List<SystemTopic>();
+            string newNextLink = null;
+            IPage<SystemTopic> topicsPage = this.Client.SystemTopics.ListByResourceGroupNext(nextLink);
+            if (topicsPage != null)
+            {
+                topicsList.AddRange(topicsPage);
+                newNextLink = topicsPage.NextPageLink;
+            }
+
+            return (topicsList, newNextLink);
+        }
+
+        public SystemTopic CreateSystemTopic(
+            string resourceGroupName,
+            string systemTopicName,
+            string resourceId,
+            string resourceName,
+            string resourceType,
+            string location,
+            string source,
+            string topicType,
+            string metricResourceId,
+            string identityType,
+            string principalId,
+            string tenantId,
+            IDictionary<string, UserIdentityProperties> userAssignedIdentities,
+            Dictionary<string, string> tags)
+        {
+            IdentityInfo identityInfo = new IdentityInfo(identityType, principalId, tenantId, userAssignedIdentities);
+            SystemTopic systemTopic = new SystemTopic(location, resourceId, resourceName, resourceType, tags, null, source, topicType, metricResourceId, identityInfo, null);
+            return this.Client.SystemTopics.CreateOrUpdate(resourceGroupName, systemTopicName, systemTopic);
+        }
+
+        public SystemTopic UpdateSystemTopic(
+            string resourceGroupName,
+            string systemTopicName,
+            string identityType,
+            string principalId,
+            string tenantId,
+            IDictionary<string, UserIdentityProperties> userAssignedIdentities,
+            Dictionary<string, string> tags)
+        {
+            IdentityInfo identityInfo = new IdentityInfo(identityType, principalId, tenantId, userAssignedIdentities);
+            SystemTopicUpdateParameters systemTopicUpdateParameters = new SystemTopicUpdateParameters(tags, identityInfo);
+            return this.Client.SystemTopics.Update(resourceGroupName, systemTopicName, systemTopicUpdateParameters);
+        }
+
+        public void DeleteSystemTopic(string resourceGroupName, string systemTopicName)
+        {
+            this.Client.SystemTopics.Delete(resourceGroupName, systemTopicName);
+        }
+
+
+        #endregion
+
         #region Domain
         public Domain GetDomain(string resourceGroupName, string domainName)
         {
