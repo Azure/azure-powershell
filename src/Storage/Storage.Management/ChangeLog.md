@@ -27,6 +27,8 @@
     -  `New-AzStorageAccountSASToken` 
     -  `New-AzStorageContainerSASToken` 
     -  `New-AzStorageBlobSASToken` 
+* Supported asynchronous blob copy run on new API version
+    -  `Start-AzStorageBlobCopy`
 
 ## Version 4.3.0
 * Supported download blob from managed disk account with Sas Uri and bearer token
