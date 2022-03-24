@@ -19,6 +19,10 @@
 -->
 
 ## Upcoming Release
+* Added a preview feature allowing user to control the configurations of Azure PowerShell by using the following cmdlets:
+    - `Get-AzConfig`
+    - `Update-AzConfig`
+    - `Clear-AzConfig`
 * Added `SshCredentialFactory` to support get ssh credential of vm from msal.
 * Fixed the bug of cmdlet fails when -DefaultProfile is set to service principal login context. [#16617]
 * Fixed the issue that authorization does not work in Dogfood environment
@@ -209,7 +213,7 @@
 * Updated Add-AzEnvironment and Set-AzEnvironment to accept parameters AzureAttestationServiceEndpointResourceId and AzureAttestationServiceEndpointSuffix
 
 ## Version 1.6.6
-* Add client-side telemetry info for Az 4.0 preview
+* Add client-side telemetry info for Az 4.0 `preview`
 
 ## Version 1.6.5
 * Update references in .psd1 to use relative path
