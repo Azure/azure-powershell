@@ -41,15 +41,15 @@ namespace Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests
             TestRunner.RunTestScript("ServiceBusNameSpaceAuthTests");
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact(Skip = "Skip as current test framework does not support recording generated cmdlets.")]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void ServiceBusNameSpaceEncryption_CRUD()
         {
             TestRunner.RunTestScript("EncryptionTest");
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact(Skip = "Skip as current test framework does not support recording generated cmdlets.")]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void ServiceBusNameSpaceMSI()
         {
             TestRunner.RunTestScript("MSITest");

@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.Sql.Database.Services;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
@@ -398,7 +399,45 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                 model.Edition = Edition;
             }
 
-            return ModelAdapter.RestoreDatabase(this.ResourceGroupName, restorePointInTime, ResourceId, model);
+            /// get auth headers for cross-sub and cross-tenant restore operations
+            string targetSubscriptionId = ModelAdapter.Context?.Subscription.Id;
+            string sourceSubscriptionId = ParseSourceSubscriptionIdFromResourceId(ResourceId);
+            Dictionary<string, List<string>> auxAuthHeader = null;
+            if (!string.IsNullOrEmpty(ResourceId) && targetSubscriptionId!=sourceSubscriptionId)
+            {
+                List<string> resourceIds = new List<string>();
+                resourceIds.Add(ResourceId);
+                var auxHeaderDictionary = GetAuxilaryAuthHeaderFromResourceIds(resourceIds);
+                if (auxHeaderDictionary != null && auxHeaderDictionary.Count > 0)
+                {
+                    auxAuthHeader = new Dictionary<string, List<string>>(auxHeaderDictionary);
+                }
+            }
+
+            return ModelAdapter.RestoreDatabase(this.ResourceGroupName, restorePointInTime, ResourceId, model, sourceSubscriptionId, auxAuthHeader);
+        }
+
+        /// <summary>
+        /// Parse source subscription id from ResourceId
+        /// </summary>
+        /// <returns>Source Subscription Id</returns>
+        private string ParseSourceSubscriptionIdFromResourceId(string resourceId)
+        {
+            if (string.IsNullOrEmpty(resourceId))
+            {
+            return null;
+            }
+
+            string[] words = resourceId.Split('/');
+            string sourceSubscriptionId = "";
+            for (int i = 0; i < words.Length; i++)
+            {
+                if (words[i] == "subscriptions")
+                {
+                    sourceSubscriptionId = words[i + 1];
+                }
+            }
+            return sourceSubscriptionId;
         }
     }
 }

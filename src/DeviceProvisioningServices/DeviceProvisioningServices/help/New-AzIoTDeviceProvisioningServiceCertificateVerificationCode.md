@@ -60,7 +60,7 @@ Generate a verification code for "mycertificate".
 
 ### Example 2
 ```powershell
-Get-AzIoTDpsCertificate -ResourceGroupName "myresourcegroup" -Name "myiotdps" -CertificateName "mycertificate" | New-AzIoTDpsCVC
+Get-AzIoTDeviceProvisioningServiceCertificate -ResourceGroupName "myresourcegroup" -Name "myiotdps" -CertificateName "mycertificate" | New-AzIoTDeviceProvisioningServiceCertificateVerificationCode
 ```
 
 ```output

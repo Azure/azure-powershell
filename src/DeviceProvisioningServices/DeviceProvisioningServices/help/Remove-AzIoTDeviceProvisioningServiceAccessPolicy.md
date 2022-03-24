@@ -50,7 +50,7 @@ Delete shared access policy "mypolicy" in an Azure IoT Hub device provisioning s
 
 ### Example 2
 ```powershell
-Get-AzIoTDpsAccessPolicy -ResourceGroupName "myresourcegroup" -Name "myiotdps" -KeyName "mypolicy" | Remove-AzIoTDpsAccessPolicy
+Get-AzIoTDeviceProvisioningServiceAccessPolicy -ResourceGroupName "myresourcegroup" -Name "myiotdps" -KeyName "mypolicy" | Remove-AzIoTDeviceProvisioningServiceAccessPolicy
 ```
 
 Delete shared access policy "mypolicy" in an Azure IoT Hub device provisioning service using pipeline.

@@ -24,8 +24,8 @@ Creates an Azure SQL Server Virtual Network Rule. Virtual Network Rules are used
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $virtualNetworkRule = New-AzSqlServerVirtualNetworkRule -ResourceGroupName rg -ServerName serverName -VirtualNetworkRuleName virtualNetworkRuleName -VirtualNetworkSubnetId virtualNetworkSubnetId
+```powershell
+$virtualNetworkRule = New-AzSqlServerVirtualNetworkRule -ResourceGroupName rg -ServerName serverName -VirtualNetworkRuleName virtualNetworkRuleName -VirtualNetworkSubnetId virtualNetworkSubnetId
 ```
 
 Creates an Azure SQL Server virtual network rule

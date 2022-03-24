@@ -20,7 +20,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Storage\Storage.Management\Storage.Management.csproj" />
     <ProjectReference Include="..\..\Storage\Storage\Storage.csproj" />
-    <ProjectReference Include="..\..\ManagedServiceIdentity\ManagedServiceIdentity\ManagedServiceIdentity.csproj" />
+    <ProjectReference Include="..\..\ManagedServiceIdentity\Az.ManagedServiceIdentity.csproj" />
     <ProjectReference Include="..\DeploymentManager\DeploymentManager.csproj" />
   </ItemGroup>
 
@@ -52,7 +52,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Update="Microsoft.Azure.Management.ResourceManager" Version="3.17.2-preview" />
+    <PackageReference Update="Microsoft.Azure.Management.ResourceManager" Version="3.17.3-preview" />
   </ItemGroup>
 
 </Project>

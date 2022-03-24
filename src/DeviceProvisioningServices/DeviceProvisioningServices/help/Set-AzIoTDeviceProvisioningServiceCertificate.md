@@ -59,7 +59,7 @@ Verify ownership of the "mycertificate" private key.
 
 ### Example 2
 ```powershell
-Get-AzIoTDpsCertificate -ResourceGroupName "myresourcegroup" -Name "myiotdps" -CertificateName "mycertificate" | Set-AzIoTDpsCertificate -Path "c:\mycertificate.cer"
+Get-AzIoTDeviceProvisioningServiceCertificate -ResourceGroupName "myresourcegroup" -Name "myiotdps" -CertificateName "mycertificate" | Set-AzIoTDeviceProvisioningServiceCertificate -Path "c:\mycertificate.cer"
 ```
 
 ```output

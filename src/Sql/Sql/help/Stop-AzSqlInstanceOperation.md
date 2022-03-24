@@ -37,8 +37,10 @@ The Stop-AzSqlInstanceOperation cmdlet stops operation with provided operation n
 
 ### Example 1: Get a specific operation
 ```powershell
-PS C:\> Stop-AzSqlInstanceOperation -ResourceGroupName ps3753 -ManagedInstanceName ps3698 -Name d0f5bef5-e2b1-4ef8-bb42-2e54073874f9
+Stop-AzSqlInstanceOperation -ResourceGroupName ps3753 -ManagedInstanceName ps3698 -Name d0f5bef5-e2b1-4ef8-bb42-2e54073874f9
+```
 
+```output
 Id                      : /subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ps3753/providers/Microsoft.Sql/managedInstances/ps3698/operations/d0f5bef5-e2b1-4ef8-bb42-2e54073874f9
 ResourceGroupName       : ps3753
 ManagedInstanceName     : ps3698
@@ -61,9 +63,11 @@ This command stops operation with name 'd0f5bef5-e2b1-4ef8-bb42-2e54073874f9' on
 
 ### Example 2: Using operation resource id
 ```powershell
-PS C:\> $managedInstanceOperation = Get-AzSqlInstanceOperation -ResourceGroupName ps3753 -ManagedInstanceName ps3698 -Name 4253bf58-34f1-4499-80c6-198d94c659f7
-PS C:\> Get-AzSqlInstanceOperation -ResourceId $managedInstanceOperation.Id
+$managedInstanceOperation = Get-AzSqlInstanceOperation -ResourceGroupName ps3753 -ManagedInstanceName ps3698 -Name 4253bf58-34f1-4499-80c6-198d94c659f7
+Get-AzSqlInstanceOperation -ResourceId $managedInstanceOperation.Id
+```
 
+```output
 Id                      : /subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ps3753/providers/Microsoft.Sql/managedInstances/ps3698/operations/4253bf58-34f1-4499-80c6-198d94c659f7
 ResourceGroupName       : ps3753
 ManagedInstanceName     : ps3698
@@ -86,9 +90,11 @@ This command stops operation with resource id $managedInstanceOperation.Id.
 
 ### Example 3: Using operation object
 ```powershell
-PS C:\> $managedInstanceOperation = Get-AzSqlInstanceOperation -ResourceGroupName ps3753 -ManagedInstanceName ps3698 -Name b15a2b78-c42c-4e00-bf87-7ef4737552dc
-PS C:\> Stop-AzSqlInstanceOperation -InputObject $managedInstanceOperation
+$managedInstanceOperation = Get-AzSqlInstanceOperation -ResourceGroupName ps3753 -ManagedInstanceName ps3698 -Name b15a2b78-c42c-4e00-bf87-7ef4737552dc
+Stop-AzSqlInstanceOperation -InputObject $managedInstanceOperation
+```
 
+```output
 Id                      : /subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ps3753/providers/Microsoft.Sql/managedInstances/ps3698/operations/b15a2b78-c42c-4e00-bf87-7ef4737552dc
 ResourceGroupName       : ps3753
 ManagedInstanceName     : ps3698

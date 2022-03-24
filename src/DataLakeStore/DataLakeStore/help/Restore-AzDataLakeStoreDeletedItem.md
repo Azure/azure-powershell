@@ -42,7 +42,7 @@ This command restores a file from the Data Lake Store using -force option
 
 ### Example 2: Restore a file from Data Lake Store using user confirmation
 ```powershell
-Restore-azdatalakestoredeleteditem -Account ml1ptrashtest -Path 927e8fb1-a287-4353-b50e-3b4a39ae4088 -Destination adl://ml1ptrashtest.azuredatalake.com/test4/file_1115 -Type file
+Restore-AzDataLakeStoreDeletedItem -Account ml1ptrashtest -Path 927e8fb1-a287-4353-b50e-3b4a39ae4088 -Destination adl://ml1ptrashtest.azuredatalake.com/test4/file_1115 -Type file
 ```
 
 ```output

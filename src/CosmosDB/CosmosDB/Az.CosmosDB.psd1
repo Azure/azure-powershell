@@ -56,7 +56,8 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.7.4'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'Microsoft.Azure.Management.CosmosDB.dll'
+RequiredAssemblies = 'Microsoft.Azure.Management.CosmosDB.dll',
+                     'Azure.Security.KeyVault.Keys.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -180,7 +181,10 @@ CmdletsToExport = 'Get-AzCosmosDBSqlContainer',
                'Remove-AzManagedCassandraCluster', 
                'Remove-AzManagedCassandraDataCenter', 
                'Update-AzManagedCassandraCluster', 
-               'Update-AzManagedCassandraDataCenter'
+               'Update-AzManagedCassandraDataCenter',
+               'Get-AzCosmosDbClientEncryptionKey',
+               'New-AzCosmosDbClientEncryptionKey',
+               'Update-AzCosmosDbClientEncryptionKey'
 
 # Variables to export from this module
 # VariablesToExport = @()

@@ -42,7 +42,7 @@ $DebugPreference = "Continue"
 #   }
 # } 
 $address = New-AzEdgeOrderAddress -Name "TestPwAddress" -ResourceGroupName "resourceGroupName" -ContactDetail $contactDetail -SubscriptionId SubscriptionId -ShippingAddress $ShippingDetails -Location "eastus"
-$address | fl
+$address | Format-List
 ```
 
 ```output

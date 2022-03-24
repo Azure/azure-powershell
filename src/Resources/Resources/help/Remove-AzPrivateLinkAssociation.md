@@ -164,3 +164,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [Get-AzPrivateLinkAssociation](./Get-AzPrivateLinkAssociation.md)
+[New-AzPrivateLinkAssociation](./New-AzPrivateLinkAssociation.md)
