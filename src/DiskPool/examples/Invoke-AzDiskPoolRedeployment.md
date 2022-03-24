@@ -1,6 +1,6 @@
 ### Example 1: Redeploy a Disk Pool
 ```powershell
-Invoke-AzDiskPoolRedeployment -Name 'disk-pool-1' -ResourceGroupName 'storagepool-rg-test'
+Invoke-AzDiskPoolRedeployment -DiskPoolName 'disk-pool-1' -ResourceGroupName 'storagepool-rg-test'
 ```
 
 This command redeploys a Disk Pool.
