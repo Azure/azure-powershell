@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.PowerShell.Common.Config;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
 {
     [Cmdlet("Clear", "AzConfig", SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
+    [CmdletPreview(PreviewMessage)]
     public class ClearConfigCommand : ConfigCommandBase, IDynamicParameters
     {
         private const string ClearByKey = "ClearByKey";

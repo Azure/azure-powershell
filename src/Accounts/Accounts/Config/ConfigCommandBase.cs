@@ -15,7 +15,6 @@
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.PowerShell.Common.Config;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,9 +22,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Config
 {
-    [CmdletPreview("The cmdlet group \"AzConfig\" is in preview. Feedback is welcome: https://aka.ms/azpsissue")]
     public abstract class ConfigCommandBase : AzureRMCmdlet
     {
+        protected const string PreviewMessage = "The cmdlet group \"AzConfig\" is in preview. Feedback is welcome: https://aka.ms/azpsissue";
+
         private readonly RuntimeDefinedParameterDictionary _dynamicParameters = new RuntimeDefinedParameterDictionary();
 
         protected IConfigManager ConfigManager { get; }
