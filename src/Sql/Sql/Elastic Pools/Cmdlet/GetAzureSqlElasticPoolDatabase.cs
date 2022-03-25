@@ -66,6 +66,26 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
 
             return SubResourceWildcardFilter(DatabaseName, results);
         }
+        
+        /// <summary>
+        /// No user input to apply to model
+        /// </summary>
+        /// <param name="model">Model retrieved from service</param>
+        /// <returns>The model that was passed in</returns>
+        protected override IEnumerable<AzureSqlDatabaseModel> ApplyUserInputToModel(IEnumerable<AzureSqlDatabaseModel> model)
+        {
+            return model;
+        }
+
+        /// <summary>
+        /// No changes to persist to server
+        /// </summary>
+        /// <param name="entity">The output of apply user input to model</param>
+        /// <returns>The input entity</returns>
+        protected override IEnumerable<AzureSqlDatabaseModel> PersistChanges(IEnumerable<AzureSqlDatabaseModel> entity)
+        {
+            return entity;
+        }
 
         /// <summary>
         /// Executes the cmdlet.
