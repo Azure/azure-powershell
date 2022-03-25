@@ -14,8 +14,8 @@ Adds new entity to servicePrincipals
 
 ### SimpleParameterSet (Default)
 ```
-New-AzADServicePrincipal [-DisplayName <String>] [-ApplicationId <Guid>] [-Role <String>] [-Scope <String>]
- [-Homepage <String>] [-ReplyUrl <String[]>] [-StartDate <DateTime>] [-EndDate <DateTime>] [-AccountEnabled]
+New-AzADServicePrincipal [-DisplayName <String>] [-Role <String>] [-Scope <String>] [-Homepage <String>]
+ [-ReplyUrl <String[]>] [-StartDate <DateTime>] [-EndDate <DateTime>] [-AccountEnabled]
  [-AddIn <IMicrosoftGraphAddIn[]>] [-AlternativeName <String[]>] [-AppDescription <String>]
  [-AppOwnerOrganizationId <String>] [-AppRole <IMicrosoftGraphAppRole[]>]
  [-AppRoleAssignedTo <IMicrosoftGraphAppRoleAssignment[]>]
@@ -130,6 +130,29 @@ New-AzADServicePrincipal [-Role <String>] [-Scope <String>] [-Homepage <String>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### ApplicationIdParameterSet
+```
+New-AzADServicePrincipal [-Role <String>] [-Scope <String>] [-Homepage <String>] [-ReplyUrl <String[]>]
+ [-AccountEnabled] [-AddIn <IMicrosoftGraphAddIn[]>] [-AlternativeName <String[]>] [-AppDescription <String>]
+ [-AppOwnerOrganizationId <String>] [-AppRole <IMicrosoftGraphAppRole[]>]
+ [-AppRoleAssignedTo <IMicrosoftGraphAppRoleAssignment[]>]
+ [-AppRoleAssignment <IMicrosoftGraphAppRoleAssignment[]>] [-AppRoleAssignmentRequired]
+ [-ClaimsMappingPolicy <IMicrosoftGraphClaimsMappingPolicy[]>]
+ [-DelegatedPermissionClassification <IMicrosoftGraphDelegatedPermissionClassification[]>]
+ [-DeletedDateTime <DateTime>] [-Description <String>] [-DisabledByMicrosoftStatus <String>]
+ [-Endpoint <IMicrosoftGraphEndpoint[]>]
+ [-HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>]
+ [-Info <IMicrosoftGraphInformationalUrl>] [-LoginUrl <String>] [-LogoutUrl <String>] [-Note <String>]
+ [-NotificationEmailAddress <String[]>] [-Oauth2PermissionScope <IMicrosoftGraphPermissionScope[]>]
+ [-PreferredSingleSignOnMode <String>] [-PreferredTokenSigningKeyThumbprint <String>]
+ [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-ServicePrincipalName <String[]>]
+ [-ServicePrincipalType <String>] [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
+ [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
+ [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
+ [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] [-ApplicationId <Guid>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Adds new entity to servicePrincipals
 
@@ -228,7 +251,7 @@ The unique identifier for the associated application (its appId property).
 
 ```yaml
 Type: System.Guid
-Parameter Sets: SimpleParameterSet
+Parameter Sets: ApplicationIdParameterSet
 Aliases: AppId
 
 Required: False

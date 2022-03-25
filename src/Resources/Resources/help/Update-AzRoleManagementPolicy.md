@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resources-help.xml
 Module Name: Az.Resources
 online version: https://docs.microsoft.com/powershell/module/az.resources/update-azrolemanagementpolicy
 schema: 2.0.0
@@ -15,15 +15,15 @@ Update a role management policy
 ### UpdateExpanded (Default)
 ```
 Update-AzRoleManagementPolicy -Name <String> -Scope <String> [-Description <String>] [-DisplayName <String>]
- [-IsOrganizationDefault] [-Rule <IRoleManagementPolicyRule[]>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-IsOrganizationDefault] [-Rule <IRoleManagementPolicyRule[]>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzRoleManagementPolicy -InputObject <IAuthorizationIdentity> [-Description <String>]
  [-DisplayName <String>] [-IsOrganizationDefault] [-Rule <IRoleManagementPolicyRule[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,7 +52,6 @@ PS C:\> Update-AzRoleManagementPolicy -Scope $scope -Name "33b520ea-3544-4abc-85
 Name                                 Type                                           Scope
 ----                                 ----                                           -----
 33b520ea-3544-4abc-8565-3588deb8e68e Microsoft.Authorization/roleManagementPolicies /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d
-
 ```
 
 Each individual `Rule` on a policy can be update independently.
@@ -93,7 +92,6 @@ PS C:\> Update-AzRoleManagementPolicy -Scope $scope -Name "33b520ea-3544-4abc-85
 Name                                 Type                                           Scope
 ----                                 ----                                           -----
 33b520ea-3544-4abc-8565-3588deb8e68e Microsoft.Authorization/roleManagementPolicies /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d
-
 ```
 
 Multiple `Rule` can be updated together.
@@ -296,4 +294,3 @@ RULE <IRoleManagementPolicyRule[]>: The rule applied to the policy.
   - `[TargetOperation <String[]>]`: The type of operation.
 
 ## RELATED LINKS
-

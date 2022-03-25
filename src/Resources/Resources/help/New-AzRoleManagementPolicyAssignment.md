@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resources-help.xml
 Module Name: Az.Resources
 online version: https://docs.microsoft.com/powershell/module/az.resources/new-azrolemanagementpolicyassignment
 schema: 2.0.0
@@ -14,7 +14,7 @@ Create a role management policy assignment
 
 ```
 New-AzRoleManagementPolicyAssignment -Name <String> -Scope <String> [-PolicyId <String>]
- [-RoleDefinitionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-RoleDefinitionId <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -154,4 +154,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-
