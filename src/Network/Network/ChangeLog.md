@@ -22,7 +22,8 @@
 * Onboard Azure Virtual Network Manager Cmdlets for preview
     - `Get-AzNetworkManager` 
     - `New-AzNetworkManager` 
-    - `Remove-AzNetworkManager` 
+    - `Remove-AzNetworkManager`
+    - `Set-AzNetworkManager` 
     - `Get-AzNetworkManagerGroup` 
     - `New-AzNetworkManagerGroup` 
     - `Remove-AzNetworkManagerGroup` 
