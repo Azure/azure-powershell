@@ -15,15 +15,155 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCdnOriginGroup'))
 }
 
 Describe 'Get-AzCdnOriginGroup' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { 
+            $subId = $env.SubscriptionId
+            $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
+            try
+            {
+                Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
+                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
+
+                $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
+                Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
+
+                $profileSku = "Standard_Microsoft";
+                New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
+
+                $endpointName = 'e-' + (RandomString -allChars $false -len 6);
+                Write-Host -ForegroundColor Green "Create endpointName : $($endpointName)"
+                
+                $location = "westus"
+                $origin = @{
+                    Name = "origin1"
+                    HostName = "host1.hello.com"
+                };
+                $originId = "/subscriptions/$subId/resourcegroups/$ResourceGroupName/providers/Microsoft.Cdn/profiles/$cdnProfileName/endpoints/$endpointName/origins/$($origin.Name)"
+                $originGroup = @{
+                    Name = "originGroup1"
+                    HealthProbeSettingProbeIntervalInSecond = 240
+                    HealthProbeSettingProbePath = "/health.aspx"
+                    HealthProbeSettingProbeProtocol = "Https"
+                    HealthProbeSettingProbeRequestType = "GET" 
+                    Origin = @(@{
+                        Id = $originId
+                    })
+                }
+                $defaultOriginGroup = "/subscriptions/$subId/resourcegroups/$ResourceGroupName/providers/Microsoft.Cdn/profiles/$cdnProfileName/endpoints/$endpointName/origingroups/$($originGroup.Name)"
+                New-AzCdnEndpoint -Name $endpointName -ResourceGroupName $ResourceGroupName -ProfileName $cdnProfileName -Location $location `
+                    -Origin $origin -OriginGroup $originGroup -DefaultOriginGroupId $defaultOriginGroup
+                $originGroups = Get-AzCdnOriginGroup -EndpointName $endpointName -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName
+                
+                $originGroups.Count | Should -Be 1
+            } Finally
+            {
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            }
+        } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        { 
+            $subId = $env.SubscriptionId
+            $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
+            try
+            {
+                Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
+                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
+
+                $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
+                Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
+
+                $profileSku = "Standard_Microsoft";
+                New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
+
+                $endpointName = 'e-' + (RandomString -allChars $false -len 6);
+                Write-Host -ForegroundColor Green "Create endpointName : $($endpointName)"
+                
+                $location = "westus"
+                $origin = @{
+                    Name = "origin1"
+                    HostName = "host1.hello.com"
+                };
+                $originId = "/subscriptions/$subId/resourcegroups/$ResourceGroupName/providers/Microsoft.Cdn/profiles/$cdnProfileName/endpoints/$endpointName/origins/$($origin.Name)"
+                $originGroup = @{
+                    Name = "originGroup1"
+                    HealthProbeSettingProbeIntervalInSecond = 240
+                    HealthProbeSettingProbePath = "/health.aspx"
+                    HealthProbeSettingProbeProtocol = "Https"
+                    HealthProbeSettingProbeRequestType = "GET" 
+                    Origin = @(@{
+                        Id = $originId
+                    })
+                }
+                $defaultOriginGroup = "/subscriptions/$subId/resourcegroups/$ResourceGroupName/providers/Microsoft.Cdn/profiles/$cdnProfileName/endpoints/$endpointName/origingroups/$($originGroup.Name)"
+                New-AzCdnEndpoint -Name $endpointName -ResourceGroupName $ResourceGroupName -ProfileName $cdnProfileName -Location $location `
+                    -Origin $origin -OriginGroup $originGroup -DefaultOriginGroupId $defaultOriginGroup
+                $endpointOriginGroup = Get-AzCdnOriginGroup -Name $originGroup.Name -EndpointName $endpointName -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName
+                
+                $endpointOriginGroup.Name | Should -Be $originGroup.Name
+                $endpointOriginGroup.HealthProbeSettingProbeIntervalInSecond | Should -Be $originGroup.HealthProbeSettingProbeIntervalInSecond
+                $endpointOriginGroup.HealthProbeSettingProbePath | Should -Be $originGroup.HealthProbeSettingProbePath
+                $endpointOriginGroup.HealthProbeSettingProbeProtocol | Should -Be $originGroup.HealthProbeSettingProbeProtocol
+                $endpointOriginGroup.HealthProbeSettingProbeRequestType | Should -Be  $originGroup.HealthProbeSettingProbeRequestType
+                $endpointOriginGroup.Origin[0].Id | Should -Be $originGroup.Origin[0].Id
+            } Finally
+            {
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            }
+        } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        { 
+            $PSDefaultParameterValues['Disabled'] = $true
+            $subId = $env.SubscriptionId
+            $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
+            try
+            {
+                Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
+                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
+
+                $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
+                Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
+
+                $profileSku = "Standard_Microsoft";
+                New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
+
+                $endpointName = 'e-' + (RandomString -allChars $false -len 6);
+                Write-Host -ForegroundColor Green "Create endpointName : $($endpointName)"
+                
+                $location = "westus"
+                $origin = @{
+                    Name = "origin1"
+                    HostName = "host1.hello.com"
+                };
+                $originId = "/subscriptions/$subId/resourcegroups/$ResourceGroupName/providers/Microsoft.Cdn/profiles/$cdnProfileName/endpoints/$endpointName/origins/$($origin.Name)"
+                $originGroup = @{
+                    Name = "originGroup1"
+                    HealthProbeSettingProbeIntervalInSecond = 240
+                    HealthProbeSettingProbePath = "/health.aspx"
+                    HealthProbeSettingProbeProtocol = "Https"
+                    HealthProbeSettingProbeRequestType = "GET" 
+                    Origin = @(@{
+                        Id = $originId
+                    })
+                }
+                $defaultOriginGroup = "/subscriptions/$subId/resourcegroups/$ResourceGroupName/providers/Microsoft.Cdn/profiles/$cdnProfileName/endpoints/$endpointName/origingroups/$($originGroup.Name)"
+                New-AzCdnEndpoint -Name $endpointName -ResourceGroupName $ResourceGroupName -ProfileName $cdnProfileName -Location $location `
+                    -Origin $origin -OriginGroup $originGroup -DefaultOriginGroupId $defaultOriginGroup
+                $endpointOriginGroup = Get-AzCdnOriginGroup -Name $originGroup.Name -EndpointName $endpointName -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName | Get-AzCdnOriginGroup
+                
+                $endpointOriginGroup.Name | Should -Be $originGroup.Name
+                $endpointOriginGroup.HealthProbeSettingProbeIntervalInSecond | Should -Be $originGroup.HealthProbeSettingProbeIntervalInSecond
+                $endpointOriginGroup.HealthProbeSettingProbePath | Should -Be $originGroup.HealthProbeSettingProbePath
+                $endpointOriginGroup.HealthProbeSettingProbeProtocol | Should -Be $originGroup.HealthProbeSettingProbeProtocol
+                $endpointOriginGroup.HealthProbeSettingProbeRequestType | Should -Be  $originGroup.HealthProbeSettingProbeRequestType
+                $endpointOriginGroup.Origin[0].Id | Should -Be $originGroup.Origin[0].Id
+            } Finally
+            {
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            }
+        } | Should -Not -Throw
     }
 }
