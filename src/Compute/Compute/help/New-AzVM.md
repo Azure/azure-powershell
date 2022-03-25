@@ -176,6 +176,8 @@ $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'Micros
 New-AzVM -ResourceGroupName $ResourceGroupName -Location $LocationName -VM $VirtualMachine -Verbose
 ```
 
+This command creates a VM from a marketplace image without a Public IP.
+
 ### Example 4: Create a VM with a UserData value:
 ```powershell
 ## VM Account
@@ -203,8 +205,7 @@ $vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName -UserData;
 
 The UserData value must always be Base64 encoded. 
 
-
-### Example 4: Creating a New VM in RG1 with an existing subnet in RG2
+### Example 5: Creating a new VM with an existing subnet in another resource group
 ```
 $UserName = "User"
 $Password = ConvertTo-SecureString "############" -AsPlainText -Force
@@ -222,7 +223,6 @@ New-AzVm -ResourceGroupName ResourceGroup1 -Location SouthCentralUS -VM $Virtual
 ```
 
 This example deploys a Windows VM from the marketplace in one resource group with an existing subnet in another resource group.
-
 
 ## PARAMETERS
 
