@@ -302,7 +302,7 @@ function New-AzADServicePrincipal {
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication]
     ${ApplicationObject},
 
-    [Parameter(ParameterSetName = 'SimpleParameterSet')]
+    [Parameter(ParameterSetName = 'ApplicationIdParameterSet')]
     [Alias('AppId')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Guid]

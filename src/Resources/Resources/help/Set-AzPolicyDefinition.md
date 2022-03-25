@@ -75,8 +75,8 @@ set its mode property to 'All'.
 ```powershell
 Set-AzPolicyDefinition -Name 'VMPolicyDefinition' -Metadata '{"category":"Virtual Machine"}'
 ```
-```output
 
+```output
 Name               : VMPolicyDefinition
 ResourceId         : /subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/policyDefinitions/VMPolicyDefinition
 ResourceName       : VMPolicyDefinition

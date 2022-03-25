@@ -20,9 +20,9 @@ Removes key credentials or password credentials for an application.
 .Description
 Removes key credentials or password credentials for an application.
 .Example
-PS C:\> Remove-AzADAppCredential -DisplayName $name -KeyId $keyid
+Remove-AzADAppCredential -DisplayName $name -KeyId $keyid
 .Example
-PS C:\> Get-AzADApplication -DisplayName $name | Remove-AzADAppCredential
+Get-AzADApplication -DisplayName $name | Remove-AzADAppCredential
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication

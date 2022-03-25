@@ -20,12 +20,7 @@ Lists API permissions the application has requested.
 .Description
 Lists API permissions the application has requested.
 .Example
-PS C:\> Get-AzADAppPermission -ObjectId 18797549-86a9-4906-b2a9-54f08cd3c427
-
-ApiId                                Id                                   Type
------                                --                                   ----
-00000003-0000-0000-c000-000000000000 df021288-bdef-4463-88db-98f22de89214 Scope
-00000003-0000-0000-c000-000000000000 5b567255-7703-4780-807c-7be8301ae99b Scope
+Get-AzADAppPermission -ObjectId 18797549-86a9-4906-b2a9-54f08cd3c427
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.MicrosoftGraphApplicationApiPermission

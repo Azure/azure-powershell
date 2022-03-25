@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resources-help.xml
 Module Name: Az.Resources
 online version: https://docs.microsoft.com/powershell/module/az.resources/get-azrolemanagementpolicy
 schema: 2.0.0
@@ -113,7 +113,7 @@ The scope of the role management policy.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -156,4 +156,3 @@ INPUTOBJECT <IAuthorizationIdentity>: Identity Parameter
   - `[Scope <String>]`: The scope of the role management policy.
 
 ## RELATED LINKS
-
