@@ -78,39 +78,39 @@ You can pass the **RecordSet** object to this cmdlet as a parameter or by using 
 
 ### Example 1: Add an A record to a record set
 ```powershell
-$RecordSet = Get-AzDnsRecordSet -Name www -RecordType A -ResouceGroupName MyResourceGroup -ZoneName myzone.com
+$RecordSet = Get-AzDnsRecordSet -Name www -RecordType A -ResourceGroupName MyResourceGroup -ZoneName myzone.com
 Add-AzDnsRecordConfig -RecordSet $RecordSet -Ipv4Address 1.2.3.4
 Set-AzDnsRecordSet -RecordSet $RecordSet
 
 # You can also pipe the above sequence:
 
-Get-AzDnsRecordSet -Name www -RecordType A -ResouceGroupName MyResourceGroup -ZoneName myzone.com | Add-AzDnsRecordConfig -Ipv4Address 1.2.3.4 | Set-AzDnsRecordSet
+Get-AzDnsRecordSet -Name www -RecordType A -ResourceGroupName MyResourceGroup -ZoneName myzone.com | Add-AzDnsRecordConfig -Ipv4Address 1.2.3.4 | Set-AzDnsRecordSet
 ```
 
 This example adds an A record to an existing record set.
 
 ### Example 2: Add an AAAA record to a record set
 ```powershell
-$RecordSet = Get-AzDnsRecordSet -Name www -RecordType AAAA -ResouceGroupName MyResourceGroup -ZoneName myzone.com
+$RecordSet = Get-AzDnsRecordSet -Name www -RecordType AAAA -ResourceGroupName MyResourceGroup -ZoneName myzone.com
 Add-AzDnsRecordConfig -RecordSet $RecordSet -Ipv6Address 2001:DB80:4009:1803::1005
 Set-AzDnsRecordSet -RecordSet $RecordSet
 
 # You can also pipe the above sequence:
 
-Get-AzDnsRecordSet -Name www -RecordType AAAA -ResouceGroupName MyResourceGroup -ZoneName myzone.com | Add-AzDnsRecordConfig -Ipv6Address 2001:DB80:4009:1803::1005 | Set-AzDnsRecordSet
+Get-AzDnsRecordSet -Name www -RecordType AAAA -ResourceGroupName MyResourceGroup -ZoneName myzone.com | Add-AzDnsRecordConfig -Ipv6Address 2001:DB80:4009:1803::1005 | Set-AzDnsRecordSet
 ```
 
 This example adds an AAAA record to an existing record set.
 
 ### Example 3: Add a CNAME record to a record set
 ```powershell
-$RecordSet = Get-AzDnsRecordSet -Name www -RecordType CNAME -ResouceGroupName MyResourceGroup -ZoneName myzone.com
+$RecordSet = Get-AzDnsRecordSet -Name www -RecordType CNAME -ResourceGroupName MyResourceGroup -ZoneName myzone.com
 Add-AzDnsRecordConfig -RecordSet $RecordSet -Cname contoso.com
 Set-AzDnsRecordSet -RecordSet $RecordSet
 
 # You can also pipe the above sequence:
 
-Get-AzDnsRecordSet -Name www -RecordType CNAME -ResouceGroupName MyResourceGroup -ZoneName myzone.com | Add-AzDnsRecordConfig -Cname contoso.com | Set-AzDnsRecordSet
+Get-AzDnsRecordSet -Name www -RecordType CNAME -ResourceGroupName MyResourceGroup -ZoneName myzone.com | Add-AzDnsRecordConfig -Cname contoso.com | Set-AzDnsRecordSet
 ```
 
 This example adds a CNAME record to an existing record set.
@@ -118,13 +118,13 @@ Because a CNAME record set can contain at most one record, it must initially be 
 
 ### Example 4: Add an MX record to a record set
 ```powershell
-$RecordSet = Get-AzDnsRecordSet -Name "@" -RecordType MX -ResouceGroupName MyResourceGroup -ZoneName myzone.com
+$RecordSet = Get-AzDnsRecordSet -Name "@" -RecordType MX -ResourceGroupName MyResourceGroup -ZoneName myzone.com
 Add-AzDnsRecordConfig -Exchange mail.microsoft.com -Preference 5 -RecordSet $RecordSet
 Set-AzDnsRecordSet -RecordSet $RecordSet
 
 # You can also pipe the above sequence:
 
-Get-AzDnsRecordSet -Name "@" -RecordType MX -ResouceGroupName MyResourceGroup -ZoneName myzone.com | Add-AzDnsRecordConfig -Exchange mail.microsoft.com -Preference 5 | Set-AzDnsRecordSet
+Get-AzDnsRecordSet -Name "@" -RecordType MX -ResourceGroupName MyResourceGroup -ZoneName myzone.com | Add-AzDnsRecordConfig -Exchange mail.microsoft.com -Preference 5 | Set-AzDnsRecordSet
 ```
 
 This example adds an MX record to an existing record set.
@@ -132,52 +132,52 @@ The record name "@" indicates a record set at the zone apex.
 
 ### Example 5: Add an NS record to a record set
 ```powershell
-$RecordSet = Get-AzDnsRecordSet -Name abc -RecordType NS -ResouceGroupName MyResourceGroup -ZoneName myzone.com
+$RecordSet = Get-AzDnsRecordSet -Name abc -RecordType NS -ResourceGroupName MyResourceGroup -ZoneName myzone.com
 Add-AzDnsRecordConfig -Nsdname ns1.myzone.com -RecordSet $RecordSet
 Set-AzDnsRecordSet -RecordSet $RecordSet
 
 # You can also pipe the above sequence:
 
-Get-AzDnsRecordSet -Name abc -RecordType NS -ResouceGroupName MyResourceGroup -ZoneName myzone.com | Add-AzDnsRecordConfig -Nsdname ns1.myzone.com | Set-AzDnsRecordSet
+Get-AzDnsRecordSet -Name abc -RecordType NS -ResourceGroupName MyResourceGroup -ZoneName myzone.com | Add-AzDnsRecordConfig -Nsdname ns1.myzone.com | Set-AzDnsRecordSet
 ```
 
 This example adds an NS record to an existing record set.
 
 ### Example 6: Add a PTR record to a record set
 ```powershell
-$RecordSet = Get-AzDnsRecordSet -Name 4 -RecordType PTR -ResouceGroupName MyResourceGroup -ZoneName 3.2.1.in-addr.arpa
+$RecordSet = Get-AzDnsRecordSet -Name 4 -RecordType PTR -ResourceGroupName MyResourceGroup -ZoneName 3.2.1.in-addr.arpa
 Add-AzDnsRecordConfig -Ptrdname www.contoso.com -RecordSet $RecordSet
 Set-AzDnsRecordSet -RecordSet $RecordSet
 
 # The above sequence can also be piped:
 
-Get-AzDnsRecordSet -Name 4 -RecordType PTR -ResouceGroupName MyResourceGroup -ZoneName 3.2.1.in-addr.arpa | Add-AzDnsRecordConfig -Ptrdname www.contoso.com | Set-AzDnsRecordSet
+Get-AzDnsRecordSet -Name 4 -RecordType PTR -ResourceGroupName MyResourceGroup -ZoneName 3.2.1.in-addr.arpa | Add-AzDnsRecordConfig -Ptrdname www.contoso.com | Set-AzDnsRecordSet
 ```
 
 This example adds a PTR record to an existing record set.
 
 ### Example 7: Add an SRV record to a record set
 ```powershell
-$RecordSet = Get-AzDnsRecordSet -Name _sip._tcp -RecordType SRV -ResouceGroupName MyResourceGroup -ZoneName myzone.com
+$RecordSet = Get-AzDnsRecordSet -Name _sip._tcp -RecordType SRV -ResourceGroupName MyResourceGroup -ZoneName myzone.com
 Add-AzDnsRecordConfig -RecordSet $RecordSet -Priority 0 -Weight 5 -Port 8080 -Target target.example.com
 Set-AzDnsRecordSet -RecordSet $RecordSet
 
 # The above sequence can also be piped:
 
-Get-AzDnsRecordSet -Name _sip._tcp -RecordType SRV -ResouceGroupName MyResourceGroup -ZoneName myzone.com | Add-AzDnsRecordConfig -Priority 0 -Weight 5 -Port 8080 -Target target.example.com  | Set-AzDnsRecordSet
+Get-AzDnsRecordSet -Name _sip._tcp -RecordType SRV -ResourceGroupName MyResourceGroup -ZoneName myzone.com | Add-AzDnsRecordConfig -Priority 0 -Weight 5 -Port 8080 -Target target.example.com  | Set-AzDnsRecordSet
 ```
 
 This example adds an SRV record to an existing record set.
 
 ### Example 8: Add a TXT record to a record set
 ```powershell
-$RecordSet = Get-AzDnsRecordSet -Name text -RecordType TXT -ResouceGroupName MyResourceGroup -ZoneName myzone.com
+$RecordSet = Get-AzDnsRecordSet -Name text -RecordType TXT -ResourceGroupName MyResourceGroup -ZoneName myzone.com
 Add-AzDnsRecordConfig -RecordSet $RecordSet -Value "This is a TXT Record"
 Set-AzDnsRecordSet -RecordSet $RecordSet
 
 # The above sequence can also be piped:
 
-Get-AzDnsRecordSet -Name text -RecordType TXT -ResouceGroupName MyResourceGroup -ZoneName myzone.com | Add-AzDnsRecordConfig -Value "This is a TXT Record" | Set-AzDnsRecordSet
+Get-AzDnsRecordSet -Name text -RecordType TXT -ResourceGroupName MyResourceGroup -ZoneName myzone.com | Add-AzDnsRecordConfig -Value "This is a TXT Record" | Set-AzDnsRecordSet
 ```
 
 This example adds a TXT record to an existing record set.

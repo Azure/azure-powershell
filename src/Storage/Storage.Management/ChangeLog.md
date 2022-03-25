@@ -23,6 +23,10 @@
     - `New-AzStorageContext`
 * Fixed copy blob failure on Premium Storage account, or account enabled hierarchical namespace
     -  `Copy-AzStorageBlob` 
+* Supported create account SAS token, container SAS token, blob  SAS token with EncrptionScope
+    -  `New-AzStorageAccountSASToken` 
+    -  `New-AzStorageContainerSASToken` 
+    -  `New-AzStorageBlobSASToken` 
 
 ## Version 4.3.0
 * Supported download blob from managed disk account with Sas Uri and bearer token

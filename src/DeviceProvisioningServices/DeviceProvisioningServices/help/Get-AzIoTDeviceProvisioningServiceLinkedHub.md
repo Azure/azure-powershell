@@ -51,7 +51,7 @@ List all linked IoT hubs in "myiotdps".
 
 ### Example 2
 ```powershell
-Get-AzIoTDpsHub -ResourceGroupName "myresourcegroup" -Name "myiotdps" -LinkedHubName "myiothub1"
+Get-AzIoTDeviceProvisioningServiceLinkedHub -ResourceGroupName "myresourcegroup" -Name "myiotdps" -LinkedHubName "myiothub1"
 ```
 
 ```output

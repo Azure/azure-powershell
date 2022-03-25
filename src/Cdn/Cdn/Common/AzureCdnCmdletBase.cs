@@ -18,12 +18,14 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Cdn;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Cdn.Common
 {
     /// <summary>
     /// Base class of Azure Cdn Cmdlet.
     /// </summary>
+    [GenericBreakingChange("When you bump up Az.CDN module version, there will be changes to parameters and output, please use the new version", "2.0.0")]
     public class AzureCdnCmdletBase : AzureRMCmdlet
     {
         private ICdnManagementClient _cdnManagementClient;
