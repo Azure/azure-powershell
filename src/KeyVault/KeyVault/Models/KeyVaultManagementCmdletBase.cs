@@ -141,8 +141,8 @@ namespace Microsoft.Azure.Commands.KeyVault
             if (ShouldListByResourceGroup(resourceGroupName, null))
             {
                 listResult = ListByResourceGroup(resourceGroupName,
-                    new Rest.Azure.OData.ODataQuery<GenericResourceFilter>(
-                        r => r.ResourceType == resourceType));
+                      new Rest.Azure.OData.ODataQuery<GenericResourceFilter>(
+                          r => r.ResourceType == resourceType));
             }
             else
             {
@@ -161,22 +161,36 @@ namespace Microsoft.Azure.Commands.KeyVault
             return vaults;
         }
 
-        public virtual IEnumerable<PSKeyVaultIdentityItem> ListResources(Rest.Azure.OData.ODataQuery<GenericResourceFilter> filter = null, ulong first = ulong.MaxValue, ulong skip = ulong.MinValue)
+        public virtual IEnumerable<PSKeyVaultIdentityItem> ListResources(Rest.Azure.OData.ODataQuery<GenericResourceFilter> filter = null)
         {
             IResourceManagementClient armClient = ResourceClient;
-
-            return new GenericPageEnumerable<GenericResource>(() => armClient.Resources.List(filter), armClient.Resources.ListNext, first, skip).Select(r => new PSKeyVaultIdentityItem(r));
+            var response = armClient.Resources.List(filter);
+            var results = new List<PSKeyVaultIdentityItem>();
+            results.AddRange(response.Select(r => new PSKeyVaultIdentityItem(r)));
+            while (!string.IsNullOrEmpty(response.NextPageLink))
+            {
+                response = armClient.Resources.ListNext(response.NextPageLink);
+                results.AddRange(response.Select(r => new PSKeyVaultIdentityItem(r)));
+            }
+            return results;
         }
 
         private IEnumerable<PSKeyVaultIdentityItem> ListByResourceGroup(
             string resourceGroupName,
-            Rest.Azure.OData.ODataQuery<GenericResourceFilter> filter,
-            ulong first = ulong.MaxValue,
-            ulong skip = ulong.MinValue)
+            Rest.Azure.OData.ODataQuery<GenericResourceFilter> filter)
         {
             IResourceManagementClient armClient = ResourceClient;
 
-            return new GenericPageEnumerable<GenericResource>(() => armClient.ResourceGroups.ListResources(resourceGroupName, filter), armClient.ResourceGroups.ListResourcesNext, first, skip).Select(r => new PSKeyVaultIdentityItem(r));
+            var response = armClient.ResourceGroups.ListResources(resourceGroupName, filter);
+            var results = new List<PSKeyVaultIdentityItem>();
+            results.AddRange(response.Select(r => new PSKeyVaultIdentityItem(r)));
+
+            while (!string.IsNullOrEmpty(response.NextPageLink))
+            {
+                response = armClient.ResourceGroups.ListResourcesNext(response.NextPageLink);
+                results.AddRange(response.Select(r => new PSKeyVaultIdentityItem(r)));
+            }
+            return results;
         }
 
         protected string GetResourceGroupName(string name, bool isHsm = false)
