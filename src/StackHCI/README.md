@@ -72,4 +72,19 @@ directive:
       verb: Set
       subject: Workspace
     remove: true
+  # Hide aadClientId from Update-AzStackHCICluster
+  - where:
+      verb: Update
+      subject: Cluster
+      parameter-name: AadClientId
+    hide: true
+  # Hide name from arcSettings 
+  - where:
+      verb: New
+      subject: ArcSetting
+      parameter-name: Name
+    hide: true
+    set:
+      default:
+        script: '"default"'
 ```
