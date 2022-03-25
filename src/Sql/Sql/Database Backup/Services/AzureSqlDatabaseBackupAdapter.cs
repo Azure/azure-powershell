@@ -581,10 +581,10 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="restorePointInTime">A point to time to restore to (for PITR and dropped DB restore)</param>
         /// <param name="resourceId">The resource ID of the DB to restore (live, geo backup, deleted database, long term retention backup, etc.)</param>
         /// <param name="model">An object modeling the database to create via restore</param>
-        /// <param name="sourceSubscriptionId">Source Subscription Id</param>
+        /// <param name="isCrossSubscriptionRestore">Is cross subscription restore</param>
         /// <param name="customHeaders">Custom headers</param>
         /// <returns>Restored database object</returns>
-        internal AzureSqlDatabaseModel RestoreDatabase(string resourceGroup, DateTime restorePointInTime, string resourceId, AzureSqlDatabaseModel model, string sourceSubscriptionId, Dictionary<string, List<string>> customHeaders = null)
+        internal AzureSqlDatabaseModel RestoreDatabase(string resourceGroup, DateTime restorePointInTime, string resourceId, AzureSqlDatabaseModel model, bool isCrossSubscriptionRestore, Dictionary<string, List<string>> customHeaders = null)
         {
             // Construct the ARM resource Id of the pool
             string elasticPoolId = string.IsNullOrWhiteSpace(model.ElasticPoolName) ? null : AzureSqlDatabaseModel.PoolIdTemplate.FormatInvariant(
@@ -613,16 +613,16 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
             };
             
             // check if restore operation is cross subscription or same subscription
-            if (_subscription.Id != sourceSubscriptionId)
+            if (isCrossSubscriptionRestore)
             {
                 // cross subscription path
                 if (dbModel.CreateMode != Management.Sql.Models.CreateMode.Recovery 
                     && dbModel.CreateMode != Management.Sql.Models.CreateMode.Restore 
-                    && dbModel.CreateMode != Management.Sql.Models.CreateMode.PointInTimeRestore 
-                    && dbModel.CreateMode != Management.Sql.Models.CreateMode.RestoreLongTermRetentionBackup)
+                    && dbModel.CreateMode != Management.Sql.Models.CreateMode.PointInTimeRestore)
 				{
-                    throw new ArgumentException("Restore mode not supported");
+                    throw new ArgumentException("Restore mode not supported for cross subscription restore. Supported restore modes for cross subscription are Recovery, Restore, PointInTimeRestore.");
                 }
+
                 dbModel.SourceResourceId = resourceId;
             }
             else
