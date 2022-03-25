@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Operation request details. This parameter is optional.")]
-        public const String ChangeDesc = "Change Request.Representations.Sample to Request.Representations.Example";
+        public const String ChangeDesc = "Change description Request.Representations.Sample Request.Representations.Example";
         [CmdletParameterBreakingChange("Request.Representations.Sample", ChangeDescription = ChangeDesc)]
         public PsApiManagementRequest Request { get; set; }
         
