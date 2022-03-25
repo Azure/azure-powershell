@@ -23,7 +23,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Config
 {
-    [CmdletPreview("The cmdlet group \"AzConfig\" is in preview. Feedback is welcome: https://github.com/Azure/azure-powershell/discussions")]
+    [CmdletPreview("The cmdlet group \"AzConfig\" is in preview. Feedback is welcome: https://aka.ms/azpsissue")]
     public abstract class ConfigCommandBase : AzureRMCmdlet
     {
         private readonly RuntimeDefinedParameterDictionary _dynamicParameters = new RuntimeDefinedParameterDictionary();

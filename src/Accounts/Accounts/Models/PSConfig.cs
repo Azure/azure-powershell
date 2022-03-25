@@ -14,11 +14,11 @@
 
 using Microsoft.Azure.PowerShell.Common.Config;
 
-/// <summary>
-/// The output model of config-related cmdlets.
-/// </summary>
-namespace Microsoft.Azure.Commands.Common.Authentication.Config
+namespace Microsoft.Azure.Commands.Profile.Models
 {
+    /// <summary>
+    /// The output model of config-related cmdlets.
+    /// </summary>
     public class PSConfig
     {
         public string Key { get; }

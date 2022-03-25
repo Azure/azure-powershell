@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.PowerShell.Common.Config;
 using System;
 using System.Collections.Generic;

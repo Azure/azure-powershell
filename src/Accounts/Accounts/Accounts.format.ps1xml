@@ -277,9 +277,9 @@
       </ListControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Commands.Common.Authentication.Config.PSConfig</Name>
+      <Name>Microsoft.Azure.Commands.Profile.Models.PSConfig</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.Common.Authentication.Config.PSConfig</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Profile.Models.PSConfig</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
