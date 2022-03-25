@@ -40,7 +40,7 @@ Returns the details of the Event Hub \`MyEventHubName\`.
 
 ### Example 2: List of EventHub in specified Namespace
 ```powershell
-Get-AzEventHub -ResourceGroup MyResourceGroupName -NamespaceName MyNamespaceName
+Get-AzEventHub -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName
 ```
 
 Returns a list of Event Hubs in the namespace \`MyNamespaceName\`.
