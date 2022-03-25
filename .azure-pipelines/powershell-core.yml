@@ -12,6 +12,7 @@ variables:
   IsGenerateBased: $[eq(variables['system.pullRequest.targetBranch'], 'generation')]
   BuildTimeoutInMinutes: 120
   AnalysisTimeoutInMinutes: 120
+  TestTimeoutInMinutes: 180
 
 trigger: none
 
@@ -66,7 +67,7 @@ jobs:
   displayName: Test
   dependsOn: Build
   condition: succeeded()
-  timeoutInMinutes: 180
+  timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
   strategy:
     matrix:
       windows:

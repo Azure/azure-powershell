@@ -63,4 +63,4 @@ steps:
 
 - template: publish-artifacts-steps.yml
   parameters:
-    artifactName: test-${{ parameters.testFramework }}
+    artifactName: test-${{ parameters.testFramework }}-{{ parameters.osName }}
