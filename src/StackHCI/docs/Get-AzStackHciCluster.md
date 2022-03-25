@@ -65,10 +65,7 @@ eastus   myCluster
 ```
 
 Gets the details of a particular cluster.
-To see the details use :
-```powershell
-Write-Host( $cluster | Format-List | Out-String)
-```
+To see the details use : "Write-Host( $cluster | Format-List | Out-String)"
 
 ## PARAMETERS
 

@@ -9,7 +9,4 @@ Name
 default
 ```
 
-Gets arcSettings in a cluster. To see the details use :
-```powershell
-Write-Host( $arcSettings | Format-List | Out-String)
-```
+Gets arcSettings in a cluster. To see the details use : "Write-Host( $arcSettings | Format-List | Out-String)"

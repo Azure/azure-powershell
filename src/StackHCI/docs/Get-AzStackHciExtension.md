@@ -46,10 +46,7 @@ MicrosoftMonitoringAgent
 ```
 
 Gets extensions in an arcSetting of a cluster.
-To see the details use :
-```powershell
-Write-Host( $extension | Format-List | Out-String)
-```
+To see the details use : "Write-Host( $extension | Format-List | Out-String)"
 
 ## PARAMETERS
 
