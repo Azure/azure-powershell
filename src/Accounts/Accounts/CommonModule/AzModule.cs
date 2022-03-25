@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.Common
                     await OnProcessRecordAsyncStart(id, cancellationToken, getEventData, signal, processRecordId, invocationInfo, parameterSetName, correlationId);
                     break;
                 case Events.CmdletProcessRecordAsyncEnd:
-                    await OnProcessRecordAsyncEnd(id, cancellationToken, getEventData, signal, processRecordId);
+                    await OnProcessRecordAsyncEnd(id, cancellationToken, getEventData, signal, correlationId);
                     break;
                 case Events.CmdletException:
                     await OnCmdletException(id, cancellationToken, getEventData, signal, correlationId, exception);
@@ -282,7 +282,7 @@ namespace Microsoft.Azure.Commands.Common
             }
         }
 
-        internal async Task OnProcessRecordAsyncEnd(string id, CancellationToken cancellationToken, GetEventData getEventData, SignalDelegate signal, string processRecordId)
+        internal async Task OnProcessRecordAsyncEnd(string id, CancellationToken cancellationToken, GetEventData getEventData, SignalDelegate signal, string correlationId)
         {
             await signal(Events.Debug, cancellationToken,
                 () => EventHelper.CreateLogEvent($"[{id}]: Finish HTTP process"));
