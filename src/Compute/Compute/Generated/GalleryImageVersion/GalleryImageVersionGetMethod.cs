@@ -163,6 +163,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ParameterSetName = "SharedGalleryParameterSet",
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
+        [Alias("GalleryImageName")]
         public string GalleryImageDefinitionName { get; set; }
 
         [Alias("GalleryImageVersionName")]

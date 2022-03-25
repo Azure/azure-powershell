@@ -89,6 +89,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
                 else
                 {
+                    if(this.IsParameterBound(c => c.Name))
+                    {
+                        WriteWarning("To retrieve a specific Gallery resource, please provide '-ResourceGroupName'.\nUsing '-Name' parameter without '-ResourceGroupName' will default to listing all gallery resources in your current subscription.");
+                    }
                     var result = GalleriesClient.List();
                     var resultList = result.ToList();
                     var nextPageLink = result.NextPageLink;
