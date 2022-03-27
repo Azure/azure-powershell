@@ -1,9 +1,7 @@
 ### Example 1: List all language extensions set for a cluster
 ```powershell
-Get-AzKustoClusterLanguageExtension -ResourceGroupName testrg -ClusterName testnewkustocluster
-```
+PS C:\> Get-AzKustoClusterLanguageExtension -ResourceGroupName testrg -ClusterName testnewkustocluster
 
-```output
 Name
 ----
 R

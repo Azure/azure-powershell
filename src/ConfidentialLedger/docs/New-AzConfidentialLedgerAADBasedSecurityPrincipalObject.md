@@ -1,24 +1,24 @@
 ---
 external help file:
 Module Name: Az.ConfidentialLedger
-online version: https://docs.microsoft.com/powershell/module/az.ConfidentialLedger/new-AzConfidentialLedgerAADBasedSecurityPrincipalObject
+online version: https://docs.microsoft.com/powershell/module/az.ConfidentialLedger/new-AzConfidentialLedgerAadBasedSecurityPrincipalObject
 schema: 2.0.0
 ---
 
-# New-AzConfidentialLedgerAADBasedSecurityPrincipalObject
+# New-AzConfidentialLedgerAadBasedSecurityPrincipalObject
 
 ## SYNOPSIS
-Create an in-memory object for AADBasedSecurityPrincipal.
+Create an in-memory object for AadBasedSecurityPrincipal.
 
 ## SYNTAX
 
 ```
-New-AzConfidentialLedgerAADBasedSecurityPrincipalObject [-LedgerRoleName <LedgerRoleName>]
+New-AzConfidentialLedgerAadBasedSecurityPrincipalObject [-LedgerRoleName <LedgerRoleName>]
  [-PrincipalId <String>] [-TenantId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for AADBasedSecurityPrincipal.
+Create an in-memory object for AadBasedSecurityPrincipal.
 
 ## EXAMPLES
 

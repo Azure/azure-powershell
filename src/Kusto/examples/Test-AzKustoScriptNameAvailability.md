@@ -1,25 +1,18 @@
-### Example 1: Check that the script name which is not in use
+### Example 1: {{ Add title here }}
 ```powershell
-Test-AzKustoScriptNameAvailability -ClusterName testnewkustocluster -DatabaseName mykustodatabase -ResourceGroupName testrg -Name newkustoscript
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-```output
-Message Name           NameAvailable Reason
-------- ----           ------------- ------
-        newkustoscript True
-```
+{{ Add description here }}
 
-The above command checks that the script name which is not in use.
-
-### Example 2: Check that the script name which is not valid
+### Example 2: {{ Add title here }}
 ```powershell
-Test-AzKustoScriptNameAvailability -ClusterName testnewkustocluster -DatabaseName mykustodatabase -ResourceGroupName testrg -Name newkustoscript!
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-```output
-Message                                                                                                           Name            NameAvailable Reason
--------                                                                                                           ----            ------------- ------
-Script: Name='newkustoscript!' does not comply with naming rules (contains invalid characters or format mismatch) newkustoscript! False
-```
+{{ Add description here }}
 
-The above command checks that the script name which is not valid.

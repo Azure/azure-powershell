@@ -1,9 +1,7 @@
 ### Example 1: List all Kusto databases in a cluster by name
 ```powershell
-Get-AzKustoDatabase -ResourceGroupName testrg -ClusterName testnewkustocluster
-```
+PS C:\> Get-AzKustoDatabase -ResourceGroupName testrg -ClusterName testnewkustocluster
 
-```output
 Kind      Location Name                                 Type
 ----      -------- ----                                 ----
 ReadWrite East US  testnewkustocluster/mykustodatabase  Microsoft.Kusto/Clusters/Databases
@@ -14,10 +12,8 @@ The above command returns all Kusto databases in the cluster "testnewkustocluste
 
 ### Example 2: Get a specific Kusto database by name
 ```powershell
-Get-AzKustoDatabase -ResourceGroupName testrg -ClusterName testnewkustocluster -Name mykustodatabase
-```
+PS C:\> Get-AzKustoDatabase -ResourceGroupName testrg -ClusterName testnewkustocluster -Name mykustodatabase
 
-```output
 Kind      Location Name                                Type
 ----      -------- ----                                ----
 ReadWrite East US  testnewkustocluster/mykustodatabase Microsoft.Kusto/Clusters/Databases

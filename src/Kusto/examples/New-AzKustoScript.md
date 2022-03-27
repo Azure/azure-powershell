@@ -1,12 +1,18 @@
-### Example 1: Create a Kusto database script
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzKustoScript -ClusterName testnewkustocluster -DatabaseName mykustodatabase -Name newkustoscript -ResourceGroupName testrg -ScriptUrl $BlobSASURL -ScriptUrlSasToken $BlobSASToken
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-```output
-Name                                               Type
-----                                               ----
-testnewkustocluster/mykustodatabase/newkustoscript Microsoft.Kusto/Clusters/Databases/Scripts
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-The above command creates a Kusto database script named "newkustocript" in the resource group "testrg".
+{{ Add description here }}
+
