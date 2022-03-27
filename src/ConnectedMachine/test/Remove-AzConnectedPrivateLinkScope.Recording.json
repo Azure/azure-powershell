@@ -1,0 +1,355 @@
+{
+  "Remove-AzConnectedPrivateLinkScope+[NoContext]+Create, Get and Remove a Private Link Scope+$PUT+https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/test-az-powershell-rg-oexvhm/providers/Microsoft.HybridCompute/privateLinkScopes/scope-sjr2n3?api-version=2021-05-20+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/test-az-powershell-rg-oexvhm/providers/Microsoft.HybridCompute/privateLinkScopes/scope-sjr2n3?api-version=2021-05-20",
+      "Content": "{\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"publicNetworkAccess\": \"Enabled\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "96" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "34662382-2a42-40ca-85a0-93824e2563a6" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "9041baf9-4870-440d-9a14-2db6714b22f4" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211101T234524Z:9041baf9-4870-440d-9a14-2db6714b22f4" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 01 Nov 2021 23:45:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "406" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/test-az-powershell-rg-oexvhm/providers/Microsoft.HybridCompute/privateLinkScopes/scope-sjr2n3\",\"name\":\"scope-sjr2n3\",\"type\":\"Microsoft.HybridCompute/privateLinkScopes\",\"location\":\"eastus2euap\",\"properties\":{\"privateLinkScopeId\":\"16d641f0-8c18-4c26-aa9b-f7ea4fcd728c\",\"publicNetworkAccess\":\"Enabled\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzConnectedPrivateLinkScope+[NoContext]+Create, Get and Remove a Private Link Scope+$GET+https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/test-az-powershell-rg-oexvhm/providers/Microsoft.HybridCompute/privateLinkScopes?api-version=2021-05-20+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/test-az-powershell-rg-oexvhm/providers/Microsoft.HybridCompute/privateLinkScopes?api-version=2021-05-20",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "87" ],
+        "x-ms-client-request-id": [ "2322f1f7-a94f-4e42-9fe2-00dcb5ba4a16" ],
+        "CommandName": [ "Get-AzConnectedPrivateLinkScope" ],
+        "FullCommandName": [ "Get-AzConnectedPrivateLinkScope_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "ce873323-8923-4b9f-878e-e61d94de2b21" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "f18f0238-907a-4b06-969f-e94f1d2cdb5f" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211101T234525Z:f18f0238-907a-4b06-969f-e94f1d2cdb5f" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 01 Nov 2021 23:45:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "418" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/test-az-powershell-rg-oexvhm/providers/Microsoft.HybridCompute/privateLinkScopes/scope-sjr2n3\",\"name\":\"scope-sjr2n3\",\"type\":\"Microsoft.HybridCompute/privateLinkScopes\",\"location\":\"eastus2euap\",\"properties\":{\"privateLinkScopeId\":\"16d641f0-8c18-4c26-aa9b-f7ea4fcd728c\",\"publicNetworkAccess\":\"Enabled\",\"provisioningState\":\"Succeeded\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzConnectedPrivateLinkScope+[NoContext]+Create, Get and Remove a Private Link Scope+$GET+https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/test-az-powershell-rg-oexvhm/providers/Microsoft.HybridCompute/privateLinkScopes/scope-sjr2n3?api-version=2021-05-20+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/test-az-powershell-rg-oexvhm/providers/Microsoft.HybridCompute/privateLinkScopes/scope-sjr2n3?api-version=2021-05-20",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "88" ],
+        "x-ms-client-request-id": [ "6aea5aae-1f4a-442a-863f-e9923875ee36" ],
+        "CommandName": [ "Get-AzConnectedPrivateLinkScope" ],
+        "FullCommandName": [ "Get-AzConnectedPrivateLinkScope_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "540a721b-87b7-4449-aae9-8384e50c1ded" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "f138b8e3-9976-4497-bfa4-a8f6db2fa59c" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211101T234526Z:f138b8e3-9976-4497-bfa4-a8f6db2fa59c" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 01 Nov 2021 23:45:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "406" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/test-az-powershell-rg-oexvhm/providers/Microsoft.HybridCompute/privateLinkScopes/scope-sjr2n3\",\"name\":\"scope-sjr2n3\",\"type\":\"Microsoft.HybridCompute/privateLinkScopes\",\"location\":\"eastus2euap\",\"properties\":{\"privateLinkScopeId\":\"16d641f0-8c18-4c26-aa9b-f7ea4fcd728c\",\"publicNetworkAccess\":\"Enabled\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzConnectedPrivateLinkScope+[NoContext]+Create, Get and Remove a Private Link Scope+$PUT+https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/test-az-powershell-rg-oexvhm/providers/Microsoft.HybridCompute/privateLinkScopes/scope-sjr2n3?api-version=2021-05-20+4": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/test-az-powershell-rg-oexvhm/providers/Microsoft.HybridCompute/privateLinkScopes/scope-sjr2n3?api-version=2021-05-20",
+      "Content": "{\r\n  \"location\": \"eastus2euap\",\r\n  \"tags\": {\r\n    \"Tag1\": \"tag1\",\r\n    \"Tag2\": \"tag2\"\r\n  },\r\n  \"properties\": {\r\n    \"publicNetworkAccess\": \"Disabled\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "157" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "097c0ac2-07bd-49f5-8fdd-31ca4ab03869" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "0b5e60b7-2506-4ecf-b544-5f64bc7200f7" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211101T234528Z:0b5e60b7-2506-4ecf-b544-5f64bc7200f7" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 01 Nov 2021 23:45:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "444" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/test-az-powershell-rg-oexvhm/providers/Microsoft.HybridCompute/privateLinkScopes/scope-sjr2n3\",\"name\":\"scope-sjr2n3\",\"type\":\"Microsoft.HybridCompute/privateLinkScopes\",\"location\":\"eastus2euap\",\"properties\":{\"privateLinkScopeId\":\"16d641f0-8c18-4c26-aa9b-f7ea4fcd728c\",\"publicNetworkAccess\":\"Disabled\",\"provisioningState\":\"Succeeded\"},\"tags\":{\"Tag1\":\"tag1\",\"Tag2\":\"tag2\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzConnectedPrivateLinkScope+[NoContext]+Create, Get and Remove a Private Link Scope+$GET+https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/test-az-powershell-rg-oexvhm/providers/Microsoft.HybridCompute/privateLinkScopes/scope-sjr2n3?api-version=2021-05-20+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/test-az-powershell-rg-oexvhm/providers/Microsoft.HybridCompute/privateLinkScopes/scope-sjr2n3?api-version=2021-05-20",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "90" ],
+        "x-ms-client-request-id": [ "f4840f34-b137-491e-a8dc-0a723c2d4726" ],
+        "CommandName": [ "Get-AzConnectedPrivateLinkScope" ],
+        "FullCommandName": [ "Get-AzConnectedPrivateLinkScope_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "5c5072b8-81f3-48da-81d0-abf6018461fd" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "101b0e4d-f26c-41f1-a175-2041744e3cbe" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211101T234529Z:101b0e4d-f26c-41f1-a175-2041744e3cbe" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 01 Nov 2021 23:45:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "444" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/test-az-powershell-rg-oexvhm/providers/Microsoft.HybridCompute/privateLinkScopes/scope-sjr2n3\",\"name\":\"scope-sjr2n3\",\"type\":\"Microsoft.HybridCompute/privateLinkScopes\",\"location\":\"eastus2euap\",\"properties\":{\"privateLinkScopeId\":\"16d641f0-8c18-4c26-aa9b-f7ea4fcd728c\",\"publicNetworkAccess\":\"Disabled\",\"provisioningState\":\"Succeeded\"},\"tags\":{\"Tag1\":\"tag1\",\"Tag2\":\"tag2\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzConnectedPrivateLinkScope+[NoContext]+Create, Get and Remove a Private Link Scope+$PATCH+https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/test-az-powershell-rg-oexvhm/providers/Microsoft.HybridCompute/privateLinkScopes/scope-sjr2n3?api-version=2021-05-20+6": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/test-az-powershell-rg-oexvhm/providers/Microsoft.HybridCompute/privateLinkScopes/scope-sjr2n3?api-version=2021-05-20",
+      "Content": "{\r\n  \"tags\": {\r\n    \"hello\": \"hello\",\r\n    \"world\": \"world\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "67" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "ca2671e0-db49-4450-939e-31796e83ab5b" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "562ab1b6-c06c-414a-a847-0c062c678c47" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211101T234531Z:562ab1b6-c06c-414a-a847-0c062c678c47" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 01 Nov 2021 23:45:31 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "448" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/test-az-powershell-rg-oexvhm/providers/Microsoft.HybridCompute/privateLinkScopes/scope-sjr2n3\",\"name\":\"scope-sjr2n3\",\"type\":\"Microsoft.HybridCompute/privateLinkScopes\",\"location\":\"eastus2euap\",\"properties\":{\"privateLinkScopeId\":\"16d641f0-8c18-4c26-aa9b-f7ea4fcd728c\",\"publicNetworkAccess\":\"Disabled\",\"provisioningState\":\"Succeeded\"},\"tags\":{\"hello\":\"hello\",\"world\":\"world\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzConnectedPrivateLinkScope+[NoContext]+Create, Get and Remove a Private Link Scope+$GET+https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/test-az-powershell-rg-oexvhm/providers/Microsoft.HybridCompute/privateLinkScopes/scope-sjr2n3?api-version=2021-05-20+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/test-az-powershell-rg-oexvhm/providers/Microsoft.HybridCompute/privateLinkScopes/scope-sjr2n3?api-version=2021-05-20",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "92" ],
+        "x-ms-client-request-id": [ "a321b4cd-771e-4baf-8dc1-912b4721093e" ],
+        "CommandName": [ "Get-AzConnectedPrivateLinkScope" ],
+        "FullCommandName": [ "Get-AzConnectedPrivateLinkScope_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "f8a524ff-c7d7-4908-adfb-b812248201f4" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "86d6690a-94d1-4b98-9246-69e072d67dd1" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211101T234532Z:86d6690a-94d1-4b98-9246-69e072d67dd1" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 01 Nov 2021 23:45:32 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "448" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/test-az-powershell-rg-oexvhm/providers/Microsoft.HybridCompute/privateLinkScopes/scope-sjr2n3\",\"name\":\"scope-sjr2n3\",\"type\":\"Microsoft.HybridCompute/privateLinkScopes\",\"location\":\"eastus2euap\",\"properties\":{\"privateLinkScopeId\":\"16d641f0-8c18-4c26-aa9b-f7ea4fcd728c\",\"publicNetworkAccess\":\"Disabled\",\"provisioningState\":\"Succeeded\"},\"tags\":{\"hello\":\"hello\",\"world\":\"world\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzConnectedPrivateLinkScope+[NoContext]+Create, Get and Remove a Private Link Scope+$DELETE+https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/test-az-powershell-rg-oexvhm/providers/Microsoft.HybridCompute/privateLinkScopes/scope-sjr2n3?api-version=2021-05-20+8": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/test-az-powershell-rg-oexvhm/providers/Microsoft.HybridCompute/privateLinkScopes/scope-sjr2n3?api-version=2021-05-20",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "93" ],
+        "x-ms-client-request-id": [ "ae08f6cb-4232-4cbb-9873-d86f6a126f14" ],
+        "CommandName": [ "Remove-AzConnectedPrivateLinkScope" ],
+        "FullCommandName": [ "Remove-AzConnectedPrivateLinkScope_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "55db0c8c-5af5-40e7-adc0-594480a7bc58" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-correlation-request-id": [ "d751f3ea-e0ba-4294-9925-30dcfde01e22" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211101T234534Z:d751f3ea-e0ba-4294-9925-30dcfde01e22" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 01 Nov 2021 23:45:34 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzConnectedPrivateLinkScope+[NoContext]+Create, Get and Remove a Private Link Scope+$GET+https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/test-az-powershell-rg-oexvhm/providers/Microsoft.HybridCompute/privateLinkScopes?api-version=2021-05-20+9": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/test-az-powershell-rg-oexvhm/providers/Microsoft.HybridCompute/privateLinkScopes?api-version=2021-05-20",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "94" ],
+        "x-ms-client-request-id": [ "fc80fe76-38f4-4c6d-b66b-5c2029710ae9" ],
+        "CommandName": [ "Get-AzConnectedPrivateLinkScope" ],
+        "FullCommandName": [ "Get-AzConnectedPrivateLinkScope_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
+        "x-ms-request-id": [ "d1b38f24-d2f5-4416-b177-3b967be72c77" ],
+        "x-ms-correlation-request-id": [ "d1b38f24-d2f5-4416-b177-3b967be72c77" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211101T234535Z:d1b38f24-d2f5-4416-b177-3b967be72c77" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 01 Nov 2021 23:45:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "12" ]
+      },
+      "Content": "{\"value\":[]}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -63,11 +63,18 @@ jobs:
 
   - task: NuGetCommand@2
     condition: and(succeeded(), eq(variables['GalleryName'], 'LocalRepo'))
-    displayName: 'Download Previous Release .nupkg Files'
+    displayName: 'Download Previous Az .nupkg Files'
     inputs:
       command: custom
       arguments: 'install Az -directdownload -packagesavemode nupkg -source https://www.powershellgallery.com/api/v2 -OutputDirectory packages'
 
+  - task: NuGetCommand@2
+    condition: and(succeeded(), eq(variables['GalleryName'], 'LocalRepo'))
+    displayName: 'Download Previous Az.Compute .nupkg Files'
+    inputs:
+      command: custom
+      arguments: 'install Az.Compute -directdownload -packagesavemode nupkg -source https://www.powershellgallery.com/api/v2 -OutputDirectory packages'
+      
   - task: PowerShell@2
     condition: and(succeeded(), eq(variables['GalleryName'], 'LocalRepo'))
     displayName: 'Copy Previous Release .nupkg files to LocalRepo'

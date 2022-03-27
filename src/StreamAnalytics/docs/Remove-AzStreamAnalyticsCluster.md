@@ -31,7 +31,7 @@ Deletes the specified cluster.
 
 ### Example 1: Remove a stream analytics by name
 ```powershell
-PS C:\> Remove-AzStreamAnalyticsCluster -ResourceGroupName pwshaz-rg-test -Name sac-m-test02
+Remove-AzStreamAnalyticsCluster -ResourceGroupName pwshaz-rg-test -Name sac-m-test02
 
 ```
 
@@ -40,7 +40,7 @@ This command removes a stream analytics by name.
 
 ### Example 2: Remove a stream analytics by pipeline
 ```powershell
-PS C:\> Get-AzStreamAnalyticsCluster -ResourceGroupName pwshaz-rg-test -Name sac-m-test01 | Remove-AzStreamAnalyticsCluster
+Get-AzStreamAnalyticsCluster -ResourceGroupName pwshaz-rg-test -Name sac-m-test01 | Remove-AzStreamAnalyticsCluster
 
 ```
 

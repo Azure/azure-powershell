@@ -14,8 +14,8 @@ Executes a command for a specific container instance in a specified resource gro
 
 ```
 Invoke-AzContainerInstanceCommand -ContainerGroupName <String> -ContainerName <String>
- -ResourceGroupName <String> -Command <String> -TerminalSizeCol <Int32> -TerminalSizeRow <Int32>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ResourceGroupName <String> -Command <String> [-SubscriptionId <String>] [-TerminalSizeCol <Int32>]
+ [-TerminalSizeRow <Int32>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,11 +25,11 @@ Executes a command for a specific container instance in a specified resource gro
 
 ### Example 1: Execute a command in a specific container instance
 ```powershell
-PS C:\> Invoke-AzContainerInstanceCommand -ContainerGroupName test-cg -ContainerName test-container -ResourceGroupName　test-rg -Command "echo hello" -TerminalSizeCol 12 -TerminalSizeRow 12
+Invoke-AzContainerInstanceCommand -ContainerGroupName test-cg -ContainerName test-container -ResourceGroupName test-rg -Command "echo hello"
+```
 
-Password                                           WebSocketUri
---------                                           ------------
-****************** wss://bridge-linux-xx.eastus.management.azurecontainer.io/exec/caas-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/bridge-xxxxxxxxxxxxxxx?rows=12&cols=12api-version=2018-02-01-preview
+```output
+hello
 ```
 
 Executes command "echo hello" in a container instance `test-container`.
@@ -96,6 +96,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PassThru
+Returns last execution result when the command succeeds.
+By default the cmdlet returns nothing.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
@@ -135,9 +151,9 @@ Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: $host.UI.RawUI.WindowSize.Width
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -150,9 +166,9 @@ Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: $host.UI.RawUI.WindowSize.Height
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -195,7 +211,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IContainerExecResponse
+### System.String
 
 ## NOTES
 

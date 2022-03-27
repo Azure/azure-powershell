@@ -1,4 +1,18 @@
-﻿using Newtonsoft.Json;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using Newtonsoft.Json;
 using StaticAnalysis.BreakingChangeAnalyzer;
 using System;
 using System.Collections.Generic;
@@ -7,7 +21,6 @@ using System.Linq;
 using System.Management.Automation;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using Tools.Common.Helpers;
 using Tools.Common.Issues;
 using Tools.Common.Loaders;
 using Tools.Common.Loggers;
@@ -19,11 +32,15 @@ namespace VersionController.Models
     {
         private VersionFileHelper _fileHelper;
         private AnalysisLogger _logger;
+        private ModuleMetadata _newModuleMetadata;
+
+        public ModuleMetadata NewModuleMetadata { get { return _newModuleMetadata; } }
 
         public VersionMetadataHelper(VersionFileHelper fileHelper)
         {
             _fileHelper = fileHelper;
             _logger = new AnalysisLogger(_fileHelper.ArtifactsVersionControllerDirectory, _fileHelper.ExceptionsDirectory);
+            _newModuleMetadata = MetadataLoader.GetModuleMetadata(_fileHelper.ModuleName);
         }
 
         /// <summary>
@@ -41,9 +58,14 @@ namespace VersionController.Models
         /// </summary>
         /// <param name="fileName">Name of the file cmdlets are being serialized to.</param>
         /// <param name="cmdlets">List of cmdlets that are to be serialized.</param>
-        private void SerializeCmdlets(string fileName, ModuleMetadata moduleMetadata)
+        public static void SerializeCmdlets(string fileName, ModuleMetadata moduleMetadata)
         {
-            string json = JsonConvert.SerializeObject(moduleMetadata, Formatting.Indented);
+            string json = JsonConvert.SerializeObject(moduleMetadata, new JsonSerializerSettings
+            {
+                Formatting = Formatting.Indented,
+                NullValueHandling = NullValueHandling.Ignore,
+                ContractResolver = VersionMetadataContractResolver.Instance
+            });
             File.WriteAllText(fileName, json);
         }
 
@@ -254,20 +276,18 @@ namespace VersionController.Models
         /// </summary>
         /// <param name="serialize">Whether or not the module metadata should be serialized.</param>
         /// <returns>Version enum representing the version bump to be applied.</returns>
-        public Version GetVersionBumpUsingSerialized(bool serialize = true)
+        public Version GetVersionBumpUsingSerialized()
         {
-            Console.WriteLine("Comparing the cmdlet assemblies with metadata from JSON file...");
             var outputModuleManifestPath = _fileHelper.OutputModuleManifestPath;
             var outputModuleDirectory = _fileHelper.OutputModuleDirectory;
             var outputDirectories = _fileHelper.OutputDirectories;
             var serializedCmdletsDirectory = _fileHelper.SerializedCmdletsDirectory;
             var moduleName = _fileHelper.ModuleName;
 
-            Version versionBump = Version.PATCH;
             var tempVersionBump = Version.PATCH;
             var issueLogger = _logger.CreateLogger<BreakingChangeIssue>("BreakingChangeIssues.csv");
 
-            var newModuleMetadata = MetadataLoader.GetModuleMetadata(moduleName);
+            var newModuleMetadata = _newModuleMetadata;
             var serializedCmdletName = $"{moduleName}.json";
             var serializedCmdletFile = Directory.GetFiles(serializedCmdletsDirectory, serializedCmdletName).FirstOrDefault();
             if (serializedCmdletFile == null)
@@ -300,21 +320,7 @@ namespace VersionController.Models
                 tempVersionBump = Version.MINOR;
             }
 
-            if (tempVersionBump != Version.PATCH && serialize)
-            {
-                SerializeCmdlets(serializedCmdletFile, newModuleMetadata);
-            }
-
-            if (tempVersionBump == Version.MAJOR)
-            {
-                versionBump = Version.MAJOR;
-            }
-            else if (tempVersionBump == Version.MINOR && versionBump == Version.PATCH)
-            {
-                versionBump = Version.MINOR;
-            }
-
-            return versionBump;
+            return tempVersionBump;
         }
 
         /// <summary>

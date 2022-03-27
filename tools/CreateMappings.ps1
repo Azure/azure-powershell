@@ -46,17 +46,25 @@ $cmdlets | ForEach-Object {
         $matchedRule = $possibleBetterMatch;
     }
 
-    if($matchedRule -ne $null) {
-        $results[$cmdlet] = $matchedRule.Alias;
+    $matchedModuleRule = $null; # clear before using
+    [System.Array]$matchedModuleRules = @($rules | Where-Object { $_.Module -ne $null -and $module -eq $_.Module });
+    if($matchedModuleRules.Length -eq 1) {
+        # If only one rule maps to module, module name is prior than other rules.
+        $matchedModuleRule = $matchedModuleRules[0];
+    } elseif ($matchedModuleRules.Length -gt 1) {
+        # If multiple rules map to module, the first regex is prior.
+        $matchedModuleRule = @($matchedModuleRules | Where-Object { $_.Regex -ne $null -and $cmdlet -cmatch ".*$($_.Regex).*" })[0];
+        if($null -eq $matchedModuleRule) {
+            $matchedModuleRule = $matchedModuleRules[0];
+        }
     }
 
-    $matchedModuleRule = @($rules | Where-Object { $_.Module -ne $null -and $module -eq $_.Module })[0];
-    if($matchedModuleRule -ne $null) {
+    if($null -ne $matchedModuleRule) {
         $results[$cmdlet] = $matchedModuleRule.Alias;
-    }
-
-    # Take note of unmatched cmdlets and write to outputs.
-    if($matchedRule -eq $null -and $matchedModuleRule -eq $null) {
+    } elseif ($null -ne $matchedRule) {
+        $results[$cmdlet] = $matchedRule.Alias;
+    } else {
+        # Take note of unmatched cmdlets and write to outputs.
         $warnings += $cmdlet;
         $results[$cmdlet] = "Other";
     }
