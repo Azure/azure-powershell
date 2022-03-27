@@ -1,8 +1,8 @@
 {
-  "Get-AzMySqlFlexibleServerLocationBasedCapability+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/929287ae-832a-4946-8006-a6cc2a3f7244/providers/Microsoft.DBforMySQL/locations/westus2/capabilities?api-version=2021-05-01-preview+1": {
+  "Get-AzMySqlFlexibleServerLocationBasedCapability+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/929287ae-832a-4946-8006-a6cc2a3f7244/providers/Microsoft.DBforMySQL/locations/westus2/capabilities?api-version=2021-05-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/929287ae-832a-4946-8006-a6cc2a3f7244/providers/Microsoft.DBforMySQL/locations/westus2/capabilities?api-version=2021-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/929287ae-832a-4946-8006-a6cc2a3f7244/providers/Microsoft.DBforMySQL/locations/westus2/capabilities?api-version=2021-05-01",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "131" ],

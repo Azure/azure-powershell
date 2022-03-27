@@ -1,0 +1,1460 @@
+openapi: 3.0.1
+info:
+  title: Users
+  version: v1.0
+servers:
+  - url: https://graph.microsoft.com/v1.0/
+    description: Core
+paths:
+  /users:
+    get:
+      tags:
+        - users.user
+      summary: Get entities from users
+      operationId: users.user_ListUser
+      parameters:
+        - name: ConsistencyLevel
+          in: header
+          description: 'Indicates the requested consistency level. Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-graph-advanced-queries-for-directory-objects-are-now-generally-available/'
+          schema:
+            type: string
+          examples:
+            example-1:
+              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
+              value: eventual
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - name: $orderby
+          in: query
+          description: Order items by property values
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - id
+                - id desc
+                - deletedDateTime
+                - deletedDateTime desc
+                - accountEnabled
+                - accountEnabled desc
+                - ageGroup
+                - ageGroup desc
+                - assignedLicenses
+                - assignedLicenses desc
+                - assignedPlans
+                - assignedPlans desc
+                - businessPhones
+                - businessPhones desc
+                - city
+                - city desc
+                - companyName
+                - companyName desc
+                - consentProvidedForMinor
+                - consentProvidedForMinor desc
+                - country
+                - country desc
+                - createdDateTime
+                - createdDateTime desc
+                - creationType
+                - creationType desc
+                - department
+                - department desc
+                - displayName
+                - displayName desc
+                - employeeHireDate
+                - employeeHireDate desc
+                - employeeId
+                - employeeId desc
+                - employeeOrgData
+                - employeeOrgData desc
+                - employeeType
+                - employeeType desc
+                - externalUserState
+                - externalUserState desc
+                - externalUserStateChangeDateTime
+                - externalUserStateChangeDateTime desc
+                - faxNumber
+                - faxNumber desc
+                - givenName
+                - givenName desc
+                - identities
+                - identities desc
+                - imAddresses
+                - imAddresses desc
+                - isResourceAccount
+                - isResourceAccount desc
+                - jobTitle
+                - jobTitle desc
+                - lastPasswordChangeDateTime
+                - lastPasswordChangeDateTime desc
+                - legalAgeGroupClassification
+                - legalAgeGroupClassification desc
+                - licenseAssignmentStates
+                - licenseAssignmentStates desc
+                - mail
+                - mail desc
+                - mailNickname
+                - mailNickname desc
+                - mobilePhone
+                - mobilePhone desc
+                - officeLocation
+                - officeLocation desc
+                - onPremisesDistinguishedName
+                - onPremisesDistinguishedName desc
+                - onPremisesDomainName
+                - onPremisesDomainName desc
+                - onPremisesExtensionAttributes
+                - onPremisesExtensionAttributes desc
+                - onPremisesImmutableId
+                - onPremisesImmutableId desc
+                - onPremisesLastSyncDateTime
+                - onPremisesLastSyncDateTime desc
+                - onPremisesProvisioningErrors
+                - onPremisesProvisioningErrors desc
+                - onPremisesSamAccountName
+                - onPremisesSamAccountName desc
+                - onPremisesSecurityIdentifier
+                - onPremisesSecurityIdentifier desc
+                - onPremisesSyncEnabled
+                - onPremisesSyncEnabled desc
+                - onPremisesUserPrincipalName
+                - onPremisesUserPrincipalName desc
+                - otherMails
+                - otherMails desc
+                - passwordPolicies
+                - passwordPolicies desc
+                - passwordProfile
+                - passwordProfile desc
+                - postalCode
+                - postalCode desc
+                - preferredLanguage
+                - preferredLanguage desc
+                - provisionedPlans
+                - provisionedPlans desc
+                - proxyAddresses
+                - proxyAddresses desc
+                - showInAddressList
+                - showInAddressList desc
+                - signInSessionsValidFromDateTime
+                - signInSessionsValidFromDateTime desc
+                - state
+                - state desc
+                - streetAddress
+                - streetAddress desc
+                - surname
+                - surname desc
+                - usageLocation
+                - usageLocation desc
+                - userPrincipalName
+                - userPrincipalName desc
+                - userType
+                - userType desc
+                - mailboxSettings
+                - mailboxSettings desc
+                - deviceEnrollmentLimit
+                - deviceEnrollmentLimit desc
+                - aboutMe
+                - aboutMe desc
+                - birthday
+                - birthday desc
+                - hireDate
+                - hireDate desc
+                - interests
+                - interests desc
+                - mySite
+                - mySite desc
+                - pastProjects
+                - pastProjects desc
+                - preferredName
+                - preferredName desc
+                - responsibilities
+                - responsibilities desc
+                - schools
+                - schools desc
+                - skills
+                - skills desc
+              type: string
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - id
+                - deletedDateTime
+                - accountEnabled
+                - ageGroup
+                - assignedLicenses
+                - assignedPlans
+                - businessPhones
+                - city
+                - companyName
+                - consentProvidedForMinor
+                - country
+                - createdDateTime
+                - creationType
+                - department
+                - displayName
+                - employeeHireDate
+                - employeeId
+                - employeeOrgData
+                - employeeType
+                - externalUserState
+                - externalUserStateChangeDateTime
+                - faxNumber
+                - givenName
+                - identities
+                - imAddresses
+                - isResourceAccount
+                - jobTitle
+                - lastPasswordChangeDateTime
+                - legalAgeGroupClassification
+                - licenseAssignmentStates
+                - mail
+                - mailNickname
+                - mobilePhone
+                - officeLocation
+                - onPremisesDistinguishedName
+                - onPremisesDomainName
+                - onPremisesExtensionAttributes
+                - onPremisesImmutableId
+                - onPremisesLastSyncDateTime
+                - onPremisesProvisioningErrors
+                - onPremisesSamAccountName
+                - onPremisesSecurityIdentifier
+                - onPremisesSyncEnabled
+                - onPremisesUserPrincipalName
+                - otherMails
+                - passwordPolicies
+                - passwordProfile
+                - postalCode
+                - preferredLanguage
+                - provisionedPlans
+                - proxyAddresses
+                - showInAddressList
+                - signInSessionsValidFromDateTime
+                - state
+                - streetAddress
+                - surname
+                - usageLocation
+                - userPrincipalName
+                - userType
+                - mailboxSettings
+                - deviceEnrollmentLimit
+                - aboutMe
+                - birthday
+                - hireDate
+                - interests
+                - mySite
+                - pastProjects
+                - preferredName
+                - responsibilities
+                - schools
+                - skills
+                - appRoleAssignments
+                - createdObjects
+                - directReports
+                - licenseDetails
+                - manager
+                - memberOf
+                - oauth2PermissionGrants
+                - ownedDevices
+                - ownedObjects
+                - registeredDevices
+                - scopedRoleMemberOf
+                - transitiveMemberOf
+                - calendar
+                - calendarGroups
+                - calendars
+                - calendarView
+                - contactFolders
+                - contacts
+                - events
+                - inferenceClassification
+                - mailFolders
+                - messages
+                - outlook
+                - people
+                - photo
+                - photos
+                - drive
+                - drives
+                - followedSites
+                - extensions
+                - agreementAcceptances
+                - managedDevices
+                - managedAppRegistrations
+                - deviceManagementTroubleshootingEvents
+                - planner
+                - insights
+                - settings
+                - onenote
+                - activities
+                - onlineMeetings
+                - presence
+                - authentication
+                - chats
+                - joinedTeams
+                - teamwork
+                - todo
+              type: string
+        - name: $expand
+          in: query
+          description: Expand related entities
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - '*'
+                - appRoleAssignments
+                - createdObjects
+                - directReports
+                - licenseDetails
+                - manager
+                - memberOf
+                - oauth2PermissionGrants
+                - ownedDevices
+                - ownedObjects
+                - registeredDevices
+                - scopedRoleMemberOf
+                - transitiveMemberOf
+                - calendar
+                - calendarGroups
+                - calendars
+                - calendarView
+                - contactFolders
+                - contacts
+                - events
+                - inferenceClassification
+                - mailFolders
+                - messages
+                - outlook
+                - people
+                - photo
+                - photos
+                - drive
+                - drives
+                - followedSites
+                - extensions
+                - agreementAcceptances
+                - managedDevices
+                - managedAppRegistrations
+                - deviceManagementTroubleshootingEvents
+                - planner
+                - insights
+                - settings
+                - onenote
+                - activities
+                - onlineMeetings
+                - presence
+                - authentication
+                - chats
+                - joinedTeams
+                - teamwork
+                - todo
+              type: string
+      responses:
+        '200':
+          description: Retrieved entities
+          content:
+            application/json:
+              schema:
+                title: Collection of user
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/microsoft.graph.user'
+                  '@odata.nextLink':
+                    type: string
+                additionalProperties:
+                  type: object
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-pageable:
+        nextLinkName: '@odata.nextLink'
+        operationName: listMore
+      x-ms-docs-operation-type: operation
+    post:
+      tags:
+        - users.user
+      summary: Add new entity to users
+      operationId: users.user_CreateUser
+      requestBody:
+        description: New entity
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/microsoft.graph.user'
+        required: true
+      responses:
+        '201':
+          description: Created entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/microsoft.graph.user'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+  '/users/{user-id}':
+    get:
+      tags:
+        - users.user
+      summary: Get entity from users by key
+      description: Represents an Azure Active Directory user object.
+      operationId: users.user_GetUser
+      parameters:
+        - name: user-id
+          in: path
+          description: 'key: id of user'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - name: ConsistencyLevel
+          in: header
+          description: 'Indicates the requested consistency level. Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-graph-advanced-queries-for-directory-objects-are-now-generally-available/'
+          schema:
+            type: string
+          examples:
+            example-1:
+              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
+              value: eventual
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - id
+                - deletedDateTime
+                - accountEnabled
+                - ageGroup
+                - assignedLicenses
+                - assignedPlans
+                - businessPhones
+                - city
+                - companyName
+                - consentProvidedForMinor
+                - country
+                - createdDateTime
+                - creationType
+                - department
+                - displayName
+                - employeeHireDate
+                - employeeId
+                - employeeOrgData
+                - employeeType
+                - externalUserState
+                - externalUserStateChangeDateTime
+                - faxNumber
+                - givenName
+                - identities
+                - imAddresses
+                - isResourceAccount
+                - jobTitle
+                - lastPasswordChangeDateTime
+                - legalAgeGroupClassification
+                - licenseAssignmentStates
+                - mail
+                - mailNickname
+                - mobilePhone
+                - officeLocation
+                - onPremisesDistinguishedName
+                - onPremisesDomainName
+                - onPremisesExtensionAttributes
+                - onPremisesImmutableId
+                - onPremisesLastSyncDateTime
+                - onPremisesProvisioningErrors
+                - onPremisesSamAccountName
+                - onPremisesSecurityIdentifier
+                - onPremisesSyncEnabled
+                - onPremisesUserPrincipalName
+                - otherMails
+                - passwordPolicies
+                - passwordProfile
+                - postalCode
+                - preferredLanguage
+                - provisionedPlans
+                - proxyAddresses
+                - showInAddressList
+                - signInSessionsValidFromDateTime
+                - state
+                - streetAddress
+                - surname
+                - usageLocation
+                - userPrincipalName
+                - userType
+                - mailboxSettings
+                - deviceEnrollmentLimit
+                - aboutMe
+                - birthday
+                - hireDate
+                - interests
+                - mySite
+                - pastProjects
+                - preferredName
+                - responsibilities
+                - schools
+                - skills
+                - appRoleAssignments
+                - createdObjects
+                - directReports
+                - licenseDetails
+                - manager
+                - memberOf
+                - oauth2PermissionGrants
+                - ownedDevices
+                - ownedObjects
+                - registeredDevices
+                - scopedRoleMemberOf
+                - transitiveMemberOf
+                - calendar
+                - calendarGroups
+                - calendars
+                - calendarView
+                - contactFolders
+                - contacts
+                - events
+                - inferenceClassification
+                - mailFolders
+                - messages
+                - outlook
+                - people
+                - photo
+                - photos
+                - drive
+                - drives
+                - followedSites
+                - extensions
+                - agreementAcceptances
+                - managedDevices
+                - managedAppRegistrations
+                - deviceManagementTroubleshootingEvents
+                - planner
+                - insights
+                - settings
+                - onenote
+                - activities
+                - onlineMeetings
+                - presence
+                - authentication
+                - chats
+                - joinedTeams
+                - teamwork
+                - todo
+              type: string
+        - name: $expand
+          in: query
+          description: Expand related entities
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - '*'
+                - appRoleAssignments
+                - createdObjects
+                - directReports
+                - licenseDetails
+                - manager
+                - memberOf
+                - oauth2PermissionGrants
+                - ownedDevices
+                - ownedObjects
+                - registeredDevices
+                - scopedRoleMemberOf
+                - transitiveMemberOf
+                - calendar
+                - calendarGroups
+                - calendars
+                - calendarView
+                - contactFolders
+                - contacts
+                - events
+                - inferenceClassification
+                - mailFolders
+                - messages
+                - outlook
+                - people
+                - photo
+                - photos
+                - drive
+                - drives
+                - followedSites
+                - extensions
+                - agreementAcceptances
+                - managedDevices
+                - managedAppRegistrations
+                - deviceManagementTroubleshootingEvents
+                - planner
+                - insights
+                - settings
+                - onenote
+                - activities
+                - onlineMeetings
+                - presence
+                - authentication
+                - chats
+                - joinedTeams
+                - teamwork
+                - todo
+              type: string
+      responses:
+        '200':
+          description: Retrieved entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/microsoft.graph.user'
+          links:
+            appRoleAssignments:
+              operationId: users.ListAppRoleAssignments
+              parameters:
+                user-id: $request.path.user-id
+            createdObjects:
+              operationId: users.ListCreatedObjects
+              parameters:
+                user-id: $request.path.user-id
+            directReports:
+              operationId: users.ListDirectReports
+              parameters:
+                user-id: $request.path.user-id
+            licenseDetails:
+              operationId: users.ListLicenseDetails
+              parameters:
+                user-id: $request.path.user-id
+            manager:
+              operationId: users.GetManager
+              parameters:
+                user-id: $request.path.user-id
+            memberOf:
+              operationId: users.ListMemberOf
+              parameters:
+                user-id: $request.path.user-id
+            oauth2PermissionGrants:
+              operationId: users.ListOauth2PermissionGrants
+              parameters:
+                user-id: $request.path.user-id
+            ownedDevices:
+              operationId: users.ListOwnedDevices
+              parameters:
+                user-id: $request.path.user-id
+            ownedObjects:
+              operationId: users.ListOwnedObjects
+              parameters:
+                user-id: $request.path.user-id
+            registeredDevices:
+              operationId: users.ListRegisteredDevices
+              parameters:
+                user-id: $request.path.user-id
+            scopedRoleMemberOf:
+              operationId: users.ListScopedRoleMemberOf
+              parameters:
+                user-id: $request.path.user-id
+            transitiveMemberOf:
+              operationId: users.ListTransitiveMemberOf
+              parameters:
+                user-id: $request.path.user-id
+            calendar:
+              operationId: users.GetCalendar
+              parameters:
+                user-id: $request.path.user-id
+            calendarGroups:
+              operationId: users.ListCalendarGroups
+              parameters:
+                user-id: $request.path.user-id
+            calendars:
+              operationId: users.ListCalendars
+              parameters:
+                user-id: $request.path.user-id
+            calendarView:
+              operationId: users.ListCalendarView
+              parameters:
+                user-id: $request.path.user-id
+            contactFolders:
+              operationId: users.ListContactFolders
+              parameters:
+                user-id: $request.path.user-id
+            contacts:
+              operationId: users.ListContacts
+              parameters:
+                user-id: $request.path.user-id
+            events:
+              operationId: users.ListEvents
+              parameters:
+                user-id: $request.path.user-id
+            inferenceClassification:
+              operationId: users.GetInferenceClassification
+              parameters:
+                user-id: $request.path.user-id
+            mailFolders:
+              operationId: users.ListMailFolders
+              parameters:
+                user-id: $request.path.user-id
+            messages:
+              operationId: users.ListMessages
+              parameters:
+                user-id: $request.path.user-id
+            outlook:
+              operationId: users.GetOutlook
+              parameters:
+                user-id: $request.path.user-id
+            people:
+              operationId: users.ListPeople
+              parameters:
+                user-id: $request.path.user-id
+            photo:
+              operationId: users.GetPhoto
+              parameters:
+                user-id: $request.path.user-id
+            photos:
+              operationId: users.ListPhotos
+              parameters:
+                user-id: $request.path.user-id
+            drive:
+              operationId: users.GetDrive
+              parameters:
+                user-id: $request.path.user-id
+            drives:
+              operationId: users.ListDrives
+              parameters:
+                user-id: $request.path.user-id
+            followedSites:
+              operationId: users.ListFollowedSites
+              parameters:
+                user-id: $request.path.user-id
+            extensions:
+              operationId: users.ListExtensions
+              parameters:
+                user-id: $request.path.user-id
+            agreementAcceptances:
+              operationId: users.ListAgreementAcceptances
+              parameters:
+                user-id: $request.path.user-id
+            managedDevices:
+              operationId: users.ListManagedDevices
+              parameters:
+                user-id: $request.path.user-id
+            managedAppRegistrations:
+              operationId: users.ListManagedAppRegistrations
+              parameters:
+                user-id: $request.path.user-id
+            deviceManagementTroubleshootingEvents:
+              operationId: users.ListDeviceManagementTroubleshootingEvents
+              parameters:
+                user-id: $request.path.user-id
+            planner:
+              operationId: users.GetPlanner
+              parameters:
+                user-id: $request.path.user-id
+            insights:
+              operationId: users.GetInsights
+              parameters:
+                user-id: $request.path.user-id
+            settings:
+              operationId: users.GetSettings
+              parameters:
+                user-id: $request.path.user-id
+            onenote:
+              operationId: users.GetOnenote
+              parameters:
+                user-id: $request.path.user-id
+            activities:
+              operationId: users.ListActivities
+              parameters:
+                user-id: $request.path.user-id
+            onlineMeetings:
+              operationId: users.ListOnlineMeetings
+              parameters:
+                user-id: $request.path.user-id
+            presence:
+              operationId: users.GetPresence
+              parameters:
+                user-id: $request.path.user-id
+            authentication:
+              operationId: users.GetAuthentication
+              parameters:
+                user-id: $request.path.user-id
+            chats:
+              operationId: users.ListChats
+              parameters:
+                user-id: $request.path.user-id
+            joinedTeams:
+              operationId: users.ListJoinedTeams
+              parameters:
+                user-id: $request.path.user-id
+            teamwork:
+              operationId: users.GetTeamwork
+              parameters:
+                user-id: $request.path.user-id
+            todo:
+              operationId: users.GetTodo
+              parameters:
+                user-id: $request.path.user-id
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+    patch:
+      tags:
+        - users.user
+      summary: Update entity in users
+      description: Represents an Azure Active Directory user object.
+      operationId: users.user_UpdateUser
+      parameters:
+        - name: user-id
+          in: path
+          description: 'key: id of user'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+      requestBody:
+        description: New property values
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/microsoft.graph.user'
+        required: true
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+    delete:
+      tags:
+        - users.user
+      summary: Delete entity from users
+      description: Represents an Azure Active Directory user object.
+      operationId: users.user_DeleteUser
+      parameters:
+        - name: user-id
+          in: path
+          description: 'key: id of user'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: user
+        - name: If-Match
+          in: header
+          description: ETag
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+  /me:
+     get:
+      tags:
+        - users.user
+      summary: Get current signed-in user
+      description: Represents current signed-in user object.
+      operationId: users.user_GetSignedInUser
+      parameters:
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - id
+                - deletedDateTime
+                - accountEnabled
+                - ageGroup
+                - assignedLicenses
+                - assignedPlans
+                - businessPhones
+                - city
+                - companyName
+                - consentProvidedForMinor
+                - country
+                - createdDateTime
+                - creationType
+                - department
+                - displayName
+                - employeeHireDate
+                - employeeId
+                - employeeOrgData
+                - employeeType
+                - externalUserState
+                - externalUserStateChangeDateTime
+                - faxNumber
+                - givenName
+                - identities
+                - imAddresses
+                - isResourceAccount
+                - jobTitle
+                - lastPasswordChangeDateTime
+                - legalAgeGroupClassification
+                - licenseAssignmentStates
+                - mail
+                - mailNickname
+                - mobilePhone
+                - officeLocation
+                - onPremisesDistinguishedName
+                - onPremisesDomainName
+                - onPremisesExtensionAttributes
+                - onPremisesImmutableId
+                - onPremisesLastSyncDateTime
+                - onPremisesProvisioningErrors
+                - onPremisesSamAccountName
+                - onPremisesSecurityIdentifier
+                - onPremisesSyncEnabled
+                - onPremisesUserPrincipalName
+                - otherMails
+                - passwordPolicies
+                - passwordProfile
+                - postalCode
+                - preferredLanguage
+                - provisionedPlans
+                - proxyAddresses
+                - showInAddressList
+                - signInSessionsValidFromDateTime
+                - state
+                - streetAddress
+                - surname
+                - usageLocation
+                - userPrincipalName
+                - userType
+                - mailboxSettings
+                - deviceEnrollmentLimit
+                - aboutMe
+                - birthday
+                - hireDate
+                - interests
+                - mySite
+                - pastProjects
+                - preferredName
+                - responsibilities
+                - schools
+                - skills
+                - appRoleAssignments
+                - createdObjects
+                - directReports
+                - licenseDetails
+                - manager
+                - memberOf
+                - oauth2PermissionGrants
+                - ownedDevices
+                - ownedObjects
+                - registeredDevices
+                - scopedRoleMemberOf
+                - transitiveMemberOf
+                - calendar
+                - calendarGroups
+                - calendars
+                - calendarView
+                - contactFolders
+                - contacts
+                - events
+                - inferenceClassification
+                - mailFolders
+                - messages
+                - outlook
+                - people
+                - photo
+                - photos
+                - drive
+                - drives
+                - followedSites
+                - extensions
+                - agreementAcceptances
+                - managedDevices
+                - managedAppRegistrations
+                - deviceManagementTroubleshootingEvents
+                - planner
+                - insights
+                - settings
+                - onenote
+                - activities
+                - onlineMeetings
+                - presence
+                - authentication
+                - chats
+                - joinedTeams
+                - teamwork
+                - todo
+              type: string
+        - name: $expand
+          in: query
+          description: Expand related entities
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - '*'
+                - appRoleAssignments
+                - createdObjects
+                - directReports
+                - licenseDetails
+                - manager
+                - memberOf
+                - oauth2PermissionGrants
+                - ownedDevices
+                - ownedObjects
+                - registeredDevices
+                - scopedRoleMemberOf
+                - transitiveMemberOf
+                - calendar
+                - calendarGroups
+                - calendars
+                - calendarView
+                - contactFolders
+                - contacts
+                - events
+                - inferenceClassification
+                - mailFolders
+                - messages
+                - outlook
+                - people
+                - photo
+                - photos
+                - drive
+                - drives
+                - followedSites
+                - extensions
+                - agreementAcceptances
+                - managedDevices
+                - managedAppRegistrations
+                - deviceManagementTroubleshootingEvents
+                - planner
+                - insights
+                - settings
+                - onenote
+                - activities
+                - onlineMeetings
+                - presence
+                - authentication
+                - chats
+                - joinedTeams
+                - teamwork
+                - todo
+              type: string
+      responses:
+        '200':
+          description: Retrieved entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/microsoft.graph.user'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation   
+components:
+  schemas:
+    microsoft.graph.user:
+      title: user
+      allOf:
+        - $ref: 'CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
+        - title: userinternal
+          type: object
+          properties:
+            accountEnabled:
+              type: boolean
+              description: 'true if the account is enabled; otherwise, false. This property is required when a user is created. Supports $filter (eq, ne, NOT, and in).'
+              nullable: true
+            ageGroup:
+              type: string
+              description: 'Sets the age group of the user. Allowed values: null, minor, notAdult and adult. Refer to the legal age group property definitions for further information. Supports $filter (eq, ne, NOT, and in).'
+              nullable: true
+            approximateLastSignInDateTime:
+              pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+              type: string
+              description: 'The timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only. Supports $filter (eq, ne, not, ge, le, and eq on null values) and $orderBy.'
+              format: date-time
+              nullable: true
+            businessPhones:
+              type: array
+              items:
+                type: string
+              readOnly: true
+              description: The telephone numbers for the user. Only one number can be set for this property. Read-only for users synced from on-premises directory. Supports $filter (eq and NOT).
+            city:
+              type: string
+              description: 'The city in which the user is located. Maximum length is 128 characters. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).'
+              nullable: true
+            companyName:
+              type: string
+              description: 'The company name which the user is associated. This property can be useful for describing the company that an external user comes from. The maximum length of the company name is 64 characters.Supports $filter (eq, ne, NOT, ge, le, in, startsWith).'
+              nullable: true
+            consentProvidedForMinor:
+              type: string
+              description: 'Sets whether consent has been obtained for minors. Allowed values: null, granted, denied and notRequired. Refer to the legal age group property definitions for further information. Supports $filter (eq, ne, NOT, and in).'
+              nullable: true
+            country:
+              type: string
+              description: 'The country/region in which the user is located; for example, US or UK. Maximum length is 128 characters. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).'
+              nullable: true
+            createdDateTime:
+              pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+              type: string
+              readOnly: true
+              description: 'The date and time the user was created. The value cannot be modified and is automatically populated when the entity is created. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. Property is nullable. A null value indicates that an accurate creation time couldn''t be determined for the user. Read-only. Supports $filter (eq, ne, NOT , ge, le, and in operators).'
+              format: date-time
+              nullable: true
+            creationType:
+              type: string
+              readOnly: true
+              description: 'Indicates whether the user account was created as a regular school or work account (null), an external account (Invitation), a local account for an Azure Active Directory B2C tenant (LocalAccount) or self-service sign-up using email verification (EmailVerified). Read-only. Supports $filter (eq, ne, NOT, and in).'
+              nullable: true
+            complianceExpirationDateTime:
+              pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+              type: string
+              description: 'The timestamp when the device is no longer deemed compliant. The timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.'
+              format: date-time
+              nullable: true
+            department:
+              type: string
+              description: 'The name for the department in which the user works. Maximum length is 64 characters.Supports $filter (eq, ne, NOT , ge, le, and in operators).'
+              nullable: true
+            deviceVersion:
+              maximum: 2147483647
+              minimum: -2147483648
+              type: integer
+              description: For internal use only.
+              format: int32
+              nullable: true
+            displayName:
+              type: string
+              description: 'The name displayed in the address book for the user. This value is usually the combination of the user''s first name, middle initial, and last name. This property is required when a user is created and it cannot be cleared during updates. Maximum length is 256 characters. Supports $filter (eq, ne, NOT , ge, le, in, startsWith), $orderBy, and $search.'
+              nullable: true
+            employeeHireDate:
+              pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+              type: string
+              description: 'The date and time when the user was hired or will start work in case of a future hire. Supports $filter (eq, ne, NOT , ge, le, in).'
+              format: date-time
+              nullable: true
+            employeeId:
+              type: string
+              description: 'The employee identifier assigned to the user by the organization. Supports $filter (eq, ne, NOT , ge, le, in, startsWith).'
+              nullable: true
+            employeeType:
+              type: string
+              description: 'Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor. Supports $filter (eq, ne, NOT , ge, le, in, startsWith).'
+              nullable: true
+            externalUserState:
+              type: string
+              description: 'For an external user invited to the tenant using the invitation API, this property represents the invited user''s invitation status. For invited users, the state can be PendingAcceptance or Accepted, or null for all other users. Supports $filter (eq, ne, NOT , in).'
+              nullable: true
+            externalUserStateChangeDateTime:
+              pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+              type: string
+              description: 'Shows the timestamp for the latest change to the externalUserState property. Supports $filter (eq, ne, NOT , in).'
+              format: date-time
+              nullable: true
+            faxNumber:
+              type: string
+              description: 'The fax number of the user. Supports $filter (eq, ne, NOT , ge, le, in, startsWith).'
+              nullable: true
+            givenName:
+              type: string
+              description: 'The given name (first name) of the user. Maximum length is 64 characters. Supports $filter (eq, ne, NOT , ge, le, in, startsWith).'
+              nullable: true
+            identities:
+              type: array
+              items:
+                $ref: '#/components/schemas/microsoft.graph.objectIdentity'
+              description: 'Represents the identities that can be used to sign in to this user account. An identity can be provided by Microsoft (also known as a local account), by organizations, or by social identity providers such as Facebook, Google, and Microsoft, and tied to a user account. May contain multiple items with the same signInType value. Supports $filter (eq) only where the signInType is not userPrincipalName.'
+            imAddresses:
+              type: array
+              items:
+                type: string
+                nullable: true
+              readOnly: true
+              description: 'The instant message voice over IP (VOIP) session initiation protocol (SIP) addresses for the user. Read-only. Supports $filter (eq, NOT, ge, le, startsWith).'
+            isResourceAccount:
+              type: boolean
+              description: Do not use – reserved for future use.
+              nullable: true
+            jobTitle:
+              type: string
+              description: 'The user''s job title. Maximum length is 128 characters. Supports $filter (eq, ne, NOT , ge, le, in, startsWith).'
+              nullable: true
+            lastPasswordChangeDateTime:
+              pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+              type: string
+              readOnly: true
+              description: 'The time when this Azure AD user last changed their password. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only. Returned only on $select.'
+              format: date-time
+              nullable: true
+            legalAgeGroupClassification:
+              type: string
+              readOnly: true
+              description: 'Used by enterprise applications to determine the legal age group of the user. This property is read-only and calculated based on ageGroup and consentProvidedForMinor properties. Allowed values: null, minorWithOutParentalConsent, minorWithParentalConsent, minorNoParentalConsentRequired, notAdult and adult. Refer to the legal age group property definitions for further information. Returned only on $select.'
+              nullable: true
+            mail:
+              type: string
+              description: 'The SMTP address for the user, for example, admin@contoso.com. Changes to this property will also update the user''s proxyAddresses collection to include the value as an SMTP address. While this property can contain accent characters, using them can cause access issues with other Microsoft applications for the user. Supports $filter (eq, ne, NOT, ge, le, in, startsWith, endsWith).'
+              nullable: true
+            mailNickname:
+              type: string
+              description: 'The mail alias for the user. This property must be specified when a user is created. Maximum length is 64 characters. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).'
+              nullable: true
+            mobilePhone:
+              type: string
+              readOnly: true
+              description: 'The primary cellular telephone number for the user. Read-only for users synced from on-premises directory.  Supports $filter (eq, ne, NOT, ge, le, in, startsWith).'
+              nullable: true
+            officeLocation:
+              type: string
+              description: 'The office location in the user''s place of business. Maximum length is 128 characters. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).'
+              nullable: true
+            otherMails:
+              type: array
+              items:
+                type: string
+              description: 'A list of additional email addresses for the user; for example: [''bob@contoso.com'', ''Robert@fabrikam.com''].NOTE: While this property can contain accent characters, they can cause access issues to first-party applications for the user.Supports $filter (eq, NOT, ge, le, in, startsWith).'
+            onPremisesImmutableId:
+              type: string
+              description: 'This property is used to associate an on-premises Active Directory user account to their Azure AD user object. This property must be specified when creating a new user account in the Graph if you are using a federated domain for the user''s userPrincipalName (UPN) property. NOTE: The $ and _ characters cannot be used when specifying this property. Returned only on $select. Supports $filter (eq, ne, NOT, ge, le, in)..'
+              nullable: true
+            onPremisesLastSyncDateTime:
+              pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+              type: string
+              description: 'The last time at which the object was synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z Read-only. Supports $filter (eq, ne, not, ge, le, in).'
+              format: date-time
+              nullable: true
+            onPremisesSyncEnabled:
+              type: boolean
+              description: 'true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced; null if this object has never been synced from an on-premises directory (default). Read-only. Supports $filter (eq, ne, not, in, and eq on null values).'
+              nullable: true
+            operatingSystem:
+              type: string
+              description: 'Operating system of the device. Windows, iOS, etc. This property is read-only.'
+              nullable: true
+            operatingSystemVersion:
+              type: string
+              description: 'Operating system version of the device. Required. Supports $filter (eq, ne, not, ge, le, startsWith, and eq on null values).'
+              nullable: true
+            passwordPolicies:
+              type: string
+              description: 'Specifies password policies for the user. This value is an enumeration with one possible value being DisableStrongPassword, which allows weaker passwords than the default policy to be specified. DisablePasswordExpiration can also be specified. The two may be specified together; for example: DisablePasswordExpiration, DisableStrongPassword.Supports $filter (ne, NOT).'
+              nullable: true
+            passwordProfile:
+              $ref: '#/components/schemas/microsoft.graph.passwordProfile'
+            postalCode:
+              type: string
+              description: 'The postal code for the user''s postal address. The postal code is specific to the user''s country/region. In the United States of America, this attribute contains the ZIP code. Maximum length is 40 characters. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).'
+              nullable: true
+            preferredLanguage:
+              type: string
+              description: 'The preferred language for the user. Should follow ISO 639-1 Code; for example en-US. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).'
+              nullable: true
+            proxyAddresses:
+              type: array
+              items:
+                type: string
+              readOnly: true
+              description: 'For example: [''SMTP: bob@contoso.com'', ''smtp: bob@sales.contoso.com'']. Read-only, Not nullable. Supports $filter (eq, NOT, ge, le, startsWith).'
+            physicalIds:
+              type: array
+              items:
+                type: string
+              description: 'For internal use only. Not nullable. Supports $filter (eq, not, ge, le, startsWith).'
+            showInAddressList:
+              type: boolean
+              description: 'true if the Outlook global address list should contain this user, otherwise false. If not set, this will be treated as true. For users invited through the invitation manager, this property will be set to false. Supports $filter (eq, ne, NOT, in).'
+              nullable: true
+            signInSessionsValidFromDateTime:
+              pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+              type: string
+              readOnly: true
+              description: 'Any refresh tokens or sessions tokens (session cookies) issued before this time are invalid, and applications will get an error when using an invalid refresh or sessions token to acquire a delegated access token (to access APIs such as Microsoft Graph).  If this happens, the application will need to acquire a new refresh token by making a request to the authorize endpoint. Read-only. Use revokeSignInSessions to reset.'
+              format: date-time
+              nullable: true
+            state:
+              type: string
+              description: 'The state or province in the user''s address. Maximum length is 128 characters. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).'
+              nullable: true
+            streetAddress:
+              type: string
+              description: 'The street address of the user''s place of business. Maximum length is 1024 characters. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).'
+              nullable: true
+            surname:
+              type: string
+              description: 'The user''s surname (family name or last name). Maximum length is 64 characters. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).'
+              nullable: true
+            trustType:
+              type: string
+              description: 'Type of trust for the joined device. Read-only. Possible values: Workplace (indicates bring your own personal devices), AzureAd (Cloud only joined devices), ServerAd (on-premises domain joined devices joined to Azure AD). For more details, see Introduction to device management in Azure Active Directory'
+              nullable: true
+            usageLocation:
+              type: string
+              description: 'A two letter country code (ISO standard 3166). Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries.  Examples include: US, JP, and GB. Not nullable. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).'
+              nullable: true
+            userPrincipalName:
+              type: string
+              description: 'The user principal name (UPN) of the user. The UPN is an Internet-style login name for the user based on the Internet standard RFC 822. By convention, this should map to the user''s email name. The general format is alias@domain, where domain must be present in the tenant''s collection of verified domains. This property is required when a user is created. The verified domains for the tenant can be accessed from the verifiedDomains property of organization.NOTE: While this property can contain accent characters, they can cause access issues to first-party applications for the user. Supports $filter (eq, ne, NOT, ge, le, in, startsWith, endsWith) and $orderBy.'
+              nullable: true
+            userType:
+              type: string
+              description: 'A string value that can be used to classify user types in your directory, such as Member and Guest. Supports $filter (eq, ne, NOT, in,).'
+              nullable: true
+          additionalProperties:
+            type: object
+          description: Represents an Azure Active Directory user object.
+    microsoft.graph.objectIdentity:
+      title: objectIdentity
+      type: object
+      properties:
+        issuer:
+          type: string
+          description: 'Specifies the issuer of the identity, for example facebook.com.For local accounts (where signInType is not federated), this property is the local B2C tenant default domain name, for example contoso.onmicrosoft.com.For external users from other Azure AD organization, this will be the domain of the federated organization, for example contoso.com.Supports $filter. 512 character limit.'
+          nullable: true
+        issuerAssignedId:
+          type: string
+          description: 'Specifies the unique identifier assigned to the user by the issuer. The combination of issuer and issuerAssignedId must be unique within the organization. Represents the sign-in name for the user, when signInType is set to emailAddress or userName (also known as local accounts).When signInType is set to: emailAddress, (or a custom string that starts with emailAddress like emailAddress1) issuerAssignedId must be a valid email addressuserName, issuerAssignedId must be a valid local part of an email addressSupports $filter. 100 character limit.'
+          nullable: true
+        signInType:
+          type: string
+          description: 'Specifies the user sign-in types in your directory, such as emailAddress, userName or federated. Here, federated represents a unique identifier for a user from an issuer, that can be in any format chosen by the issuer. Additional validation is enforced on issuerAssignedId when the sign-in type is set to emailAddress or userName. This property can also be set to any custom string.'
+          nullable: true
+      additionalProperties:
+        type: object
+    microsoft.graph.passwordProfile:
+      title: passwordProfile
+      type: object
+      properties:
+        forceChangePasswordNextSignIn:
+          type: boolean
+          description: 'true if the user must change her password on the next login; otherwise false. If not set, default is false. NOTE:  For Azure B2C tenants, set to false and instead use custom policies and user flows to force password reset at first sign in. See Force password reset at first logon.'
+          nullable: true
+        forceChangePasswordNextSignInWithMfa:
+          type: boolean
+          description: 'If true, at next sign-in, the user must perform a multi-factor authentication (MFA) before being forced to change their password. The behavior is identical to forceChangePasswordNextSignIn except that the user is required to first perform a multi-factor authentication before password change. After a password change, this property will be automatically reset to false. If not set, default is false.'
+          nullable: true
+        password:
+          type: string
+          description: 'The password for the user. This property is required when a user is created. It can be updated, but the user will be required to change the password on the next login. The password must satisfy minimum requirements as specified by the user’s passwordPolicies property. By default, a strong password is required.'
+          nullable: true
+      additionalProperties:
+        type: object
+    odata.error:
+      required:
+        - error
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/odata.error.main'
+      additionalProperties:
+        type: object
+    odata.error.main:
+      required:
+        - code
+        - message
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        target:
+          type: string
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/odata.error.detail'
+        innererror:
+          type: object
+          additionalProperties:
+            type: object
+          description: The structure of this object is service-specific
+      additionalProperties:
+        type: object
+    odata.error.detail:
+      required:
+        - code
+        - message
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        target:
+          type: string
+      additionalProperties:
+        type: object
+  responses:
+    error:
+      description: error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/odata.error'
+  parameters:
+    top:
+      name: $top
+      in: query
+      description: Show only the first n items
+      schema:
+        minimum: 0
+        type: integer
+      example: 50
+    skip:
+      name: $skip
+      in: query
+      description: Skip the first n items
+      schema:
+        minimum: 0
+        type: integer
+    search:
+      name: $search
+      in: query
+      description: Search items by search phrases
+      schema:
+        type: string
+    filter:
+      name: $filter
+      in: query
+      description: Filter items by property values
+      schema:
+        type: string
+    count:
+      name: $count
+      in: query
+      description: Include count of items
+      schema:
+        type: boolean
+  securitySchemes:
+    azureaadv2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+          tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+          scopes: { }
+security:
+  - azureaadv2: [ ]

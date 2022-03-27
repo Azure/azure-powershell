@@ -1,11 +1,11 @@
 ### Example 1: Check quota availability
 ```powershell
-PS C:\> Test-AzVMwareLocationQuotaAvailability -Location eastus
-
+Test-AzVMwareLocationQuotaAvailability -Location centralus
+```
+```output
 Enabled
 -------
-Disabled
+Enabled
 ```
 
 Check quota availability
-

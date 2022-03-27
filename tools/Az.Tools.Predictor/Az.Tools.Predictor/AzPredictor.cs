@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.PowerShell.Common.Share;
 using Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry;
 using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities;
 using System;
@@ -62,12 +63,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 },
                 StringComparer.InvariantCultureIgnoreCase);
 
-        private static readonly PredictiveSuggestion[] _surveySuggestions = new PredictiveSuggestion[AzPredictorConstants.CohortCount]
-        {
-            new PredictiveSuggestion("Open-AzPredictorSurvey # Run this command to tell us about your experience with Az Predictor"),
-            new PredictiveSuggestion("Send-AzPredictorRating # Run this command followed by your rating of Az Predictor: 1 (poor) - 5 (great)"),
-        };
-
         private IAzPredictorService _service;
         private ITelemetryClient _telemetryClient;
         private Settings _settings;
@@ -82,6 +77,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
         private List<IDisposable> _externalDisposableObjects = new List<IDisposable>();
 
+        private ISurveyHelper _surveyHelper;
+        private PowerShellRuntime _powerShellRuntime;
+
         private bool _isInitialized;
 
         /// <summary>
@@ -89,22 +87,22 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// </summary>
         public AzPredictor()
         {
+            _powerShellRuntime = new PowerShellRuntime();
+            _surveyHelper = new AzPredictorSurveyHelper(_powerShellRuntime);
+
             // To make import-module fast, we'll do all the initialization in a task.
             // Slow initialization may make opening a PowerShell window slow if "Import-Module" is added to the user's profile.
             Task.Run(() =>
                     {
                         _settings = Settings.GetSettings();
-                        var azContext = new AzContext()
+                        _azContext = new AzContext(_powerShellRuntime)
                         {
                             IsInternal = (_settings.SetAsInternal == true) ? true : false,
-                            SurveyId = _settings.SurveyId?.ToString(CultureInfo.InvariantCulture) ?? string.Empty,
                         };
 
-                        RegisterDisposableObject(azContext);
-
-                        _azContext = azContext;
-
                         _azContext.UpdateContext();
+                        // This will run the script in the right context.
+                        var _ = _azContext.PowerShellVersion;
                         _telemetryClient = new AzPredictorTelemetryClient(_azContext);
                         _service = new AzPredictorService(_settings.ServiceUri, _telemetryClient, _azContext);
                         _isInitialized = true;
@@ -136,6 +134,18 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 _predictionRequestCancellationSource = null;
             }
 
+            if (_surveyHelper is IDisposable disposableSurveyHelper)
+            {
+                disposableSurveyHelper.Dispose();
+                _surveyHelper = null;
+            }
+
+            if (_powerShellRuntime != null)
+            {
+                _powerShellRuntime.Dispose();
+                _powerShellRuntime = null;
+            }
+
             _externalDisposableObjects.ForEach((o) => o?.Dispose());
             _externalDisposableObjects.Clear();
         }
@@ -165,6 +175,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         {
             _commandLineExecutedCompletion = new TaskCompletionSource();
 
+            SharedVariable.PredictorCorrelationId = _telemetryClient.CommandId;
+
             if (history.Count > 0)
             {
                 // We try to find the commands to request predictions for.
@@ -182,7 +194,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 // workflow. We want to predict only by Az commands. So we don't send the request until the command 4.
                 // That's to use commands 1 and 4 to request prediction.
 
-                bool ShouldRequestPrediction = false;
+                bool shouldRequestPrediction = false;
 
                 if (_lastTwoMaskedCommands.Count == 0)
                 {
@@ -207,7 +219,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                         // So we don't need to do that for a placeholder.
                     }
 
-                    ShouldRequestPrediction = true;
+                    shouldRequestPrediction = true;
                 }
 
                 string lastLine = history.Last();
@@ -225,20 +237,20 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     }
 
                     _lastTwoMaskedCommands.Enqueue(lastCommand.MaskedCommandLine);
-                    ShouldRequestPrediction = true;
+                    shouldRequestPrediction = true;
 
                     _service.RecordHistory(lastCommand.Ast);
                 }
                 else if (_lastTwoMaskedCommands.Count == 1)
                 {
-                    ShouldRequestPrediction = true;
+                    shouldRequestPrediction = true;
                     var existingInQueue = _lastTwoMaskedCommands.Dequeue();
                     _lastTwoMaskedCommands.Enqueue(AzPredictorConstants.CommandPlaceholder);
                     _lastTwoMaskedCommands.Enqueue(existingInQueue);
                 }
 
 
-                if (ShouldRequestPrediction)
+                if (shouldRequestPrediction)
                 {
                     // When it's called multiple times, we only need to keep the one for the latest command.
 
@@ -247,37 +259,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     // Need to create a new object to hold the string. They're used in a seperate thread the the contents in
                     // _lastTwoMaskedCommands may change when the method is called again.
                     var lastTwoMaskedCommands = new List<string>(_lastTwoMaskedCommands);
-                    Exception exception = null;
-                    var hasSentHttpRequest = false;
 
                     // We don't need to block on the task. It sends the HTTP request and update prediction list. That can run at the background.
-                    Task.Run(async () =>
-                            {
-                                var localCommandLineExecutedCompletion = _commandLineExecutedCompletion;
-                                var requestId = Guid.NewGuid().ToString();
-
-                                try
-                                {
-                                    hasSentHttpRequest = await _service.RequestPredictionsAsync(lastTwoMaskedCommands, requestId,  _predictionRequestCancellationSource.Token);
-                                }
-                                catch (ServiceRequestException e)
-                                {
-                                    hasSentHttpRequest = e.IsRequestSent;
-                                    exception = e.InnerException;
-                                }
-                                catch (Exception e)
-                                {
-                                    exception = e;
-                                }
-                                finally
-                                {
-                                    await localCommandLineExecutedCompletion.Task;
-                                    _telemetryClient.RequestId = requestId;
-                                    _telemetryClient.OnRequestPrediction(new RequestPredictionTelemetryData(client, lastTwoMaskedCommands,
-                                                hasSentHttpRequest,
-                                                (exception is OperationCanceledException ? null : exception)));
-                                }
-                            }, _predictionRequestCancellationSource.Token);
+                    var _ = AzPredictorUtilities.RequestPredictionAndCollectTelemetryAync(_service, _telemetryClient, client, lastTwoMaskedCommands, _commandLineExecutedCompletion, _predictionRequestCancellationSource.Token);
                 }
             }
         }
@@ -298,6 +282,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 // OnCommandLineAccepted.
                 _parsedCommandLineHistory.Clear();
                 parsedResult = GetAstAndMaskedCommandLine(commandLine);
+            }
+
+            if (parsedResult.IsSupported && _surveyHelper?.ShouldPromptSurvey() == true)
+            {
+                _surveyHelper.PromptSurvey();
             }
 
             _telemetryClient.OnHistory(new HistoryTelemetryData(client, parsedResult.MaskedCommandLine ?? AzPredictorConstants.CommandPlaceholder, success));
@@ -347,17 +336,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     return default(SuggestionPackage);
                 }
 
-                // Replace the last suggestion with "Open-AzPredictorSurvey".
-
-                if (suggestions.Count == _settings.SuggestionCount.Value)
-                {
-                    suggestions[suggestions.Count - 1] = _surveySuggestions[_azContext?.Cohort ?? 0];
-                }
-                else
-                {
-                    suggestions.Add(_surveySuggestions[_azContext?.Cohort ?? 0]);
-                }
-
                 return new SuggestionPackage(localSuggestionSessionId, suggestions);
             }
         }
@@ -392,9 +370,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
         private ParsedCommandLineHistory GetAstAndMaskedCommandLine(string commandLine)
         {
-            var asts = Parser.ParseInput(commandLine, out _, out _);
-            var allNestedAsts = asts?.FindAll((ast) => ast is CommandAst, true);
-            var commandAst = allNestedAsts?.LastOrDefault() as CommandAst;
+            var commandAst = CommandLineUtilities.GetCommandAst(commandLine);
 
             var commandName = commandAst?.CommandElements?.FirstOrDefault().ToString();
             bool isSupported = _service.IsSupportedCommand(commandName);

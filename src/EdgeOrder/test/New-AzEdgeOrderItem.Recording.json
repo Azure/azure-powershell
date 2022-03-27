@@ -1,0 +1,125 @@
+{
+  "New-AzEdgeOrderItem+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-ny/providers/Microsoft.EdgeOrder/orderItems/powershellItemTestdk4i?api-version=2021-12-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-ny/providers/Microsoft.EdgeOrder/orderItems/powershellItemTestdk4i?api-version=2021-12-01",
+      "Content": "{\n  \"location\": \"eastus\",\n  \"properties\": {\n    \"addressDetails\": {\n      \"forwardAddress\": {\n        \"shippingAddress\": {\n          \"streetAddress1\": \"101 TOWNSEND ST\",\n          \"city\": \"San Francisco\",\n          \"stateOrProvince\": \"CA\",\n          \"country\": \"US\",\n          \"postalCode\": \"94107\",\n          \"addressType\": \"Commercial\"\n        },\n        \"contactDetails\": {\n          \"contactName\": \"random\",\n          \"phone\": \"1234567891\",\n          \"emailList\": [ \"dhja@microsoft.com\" ]\n        }\n      }\n    },\n    \"orderItemDetails\": {\n      \"productDetails\": {\n        \"hierarchyInformation\": {\n          \"productFamilyName\": \"azurestackedge\",\n          \"productLineName\": \"azurestackedge\",\n          \"productName\": \"azurestackedgegpu\",\n          \"configurationName\": \"EdgeP_High\"\n        }\n      },\n      \"orderItemType\": \"Purchase\"\n    },\n    \"orderId\": \"/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-ny/providers/Microsoft.EdgeOrder/locations/eastus/orders/powershellOrderTestl7qc\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "1036" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.EdgeOrder/locations/eastus/operationResults/3115b856-5180-46c0-a8fc-96e9d0e4c2ef?api-version=2021-12-01" ],
+        "Retry-After": [ "10" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "8c24fdfa-5896-43ef-8bd8-eada59f245e5" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-request-id": [ "bba1cfef-8513-4363-88ee-34ba94f8d0bf" ],
+        "x-ms-correlation-request-id": [ "bba1cfef-8513-4363-88ee-34ba94f8d0bf" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20211123T092404Z:bba1cfef-8513-4363-88ee-34ba94f8d0bf" ],
+        "Date": [ "Tue, 23 Nov 2021 09:24:03 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "New-AzEdgeOrderItem+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.EdgeOrder/locations/eastus/operationResults/3115b856-5180-46c0-a8fc-96e9d0e4c2ef?api-version=2021-12-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.EdgeOrder/locations/eastus/operationResults/3115b856-5180-46c0-a8fc-96e9d0e4c2ef?api-version=2021-12-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "8c24fdfa-5896-43ef-8bd8-eada59f245e5" ],
+        "CommandName": [ "New-AzEdgeOrderItem" ],
+        "FullCommandName": [ "New-AzEdgeOrderItem_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-ny/providers/Microsoft.EdgeOrder/orderItems/powershellItemTestdk4i?api-version=2021-12-01" ],
+        "Retry-After": [ "10" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "8c24fdfa-5896-43ef-8bd8-eada59f245e5" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
+        "x-ms-request-id": [ "40fef7e1-60ab-4f8c-9077-8194e432898b" ],
+        "x-ms-correlation-request-id": [ "40fef7e1-60ab-4f8c-9077-8194e432898b" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20211123T092415Z:40fef7e1-60ab-4f8c-9077-8194e432898b" ],
+        "Date": [ "Tue, 23 Nov 2021 09:24:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "New-AzEdgeOrderItem+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-ny/providers/Microsoft.EdgeOrder/orderItems/powershellItemTestdk4i?api-version=2021-12-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-ny/providers/Microsoft.EdgeOrder/orderItems/powershellItemTestdk4i?api-version=2021-12-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "15" ],
+        "x-ms-client-request-id": [ "8c24fdfa-5896-43ef-8bd8-eada59f245e5" ],
+        "CommandName": [ "New-AzEdgeOrderItem" ],
+        "FullCommandName": [ "New-AzEdgeOrderItem_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "8c24fdfa-5896-43ef-8bd8-eada59f245e5" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "22bba6c6-3ac3-4aac-883a-7128caee030e" ],
+        "x-ms-correlation-request-id": [ "22bba6c6-3ac3-4aac-883a-7128caee030e" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20211123T092425Z:22bba6c6-3ac3-4aac-883a-7128caee030e" ],
+        "Date": [ "Tue, 23 Nov 2021 09:24:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "3095" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"properties\": {\r\n    \"orderItemDetails\": {\r\n      \"productDetails\": {\r\n        \"displayInfo\": {\r\n          \"productFamilyDisplayName\": \"Azure Stack Edge\",\r\n          \"configurationDisplayName\": \"Azure Stack Edge Pro - 2 GPU\"\r\n        },\r\n        \"hierarchyInformation\": {\r\n          \"productFamilyName\": \"azurestackedge\",\r\n          \"productLineName\": \"azurestackedge\",\r\n          \"productName\": \"azurestackedgegpu\",\r\n          \"configurationName\": \"edgep_high\"\r\n        },\r\n        \"count\": 0,\r\n        \"productDoubleEncryptionStatus\": \"Disabled\"\r\n      },\r\n      \"orderItemType\": \"Purchase\",\r\n      \"currentStage\": {\r\n        \"stageStatus\": \"Succeeded\",\r\n        \"stageName\": \"Placed\",\r\n        \"startTime\": \"2021-11-23T09:24:09.0051589+00:00\"\r\n      },\r\n      \"orderItemStageHistory\": [\r\n        {\r\n          \"stageStatus\": \"Succeeded\",\r\n          \"stageName\": \"Placed\",\r\n          \"startTime\": \"2021-11-23T09:24:09.0051589+00:00\"\r\n        },\r\n        {\r\n          \"stageStatus\": \"None\",\r\n          \"stageName\": \"Confirmed\"\r\n        },\r\n        {\r\n          \"stageStatus\": \"None\",\r\n          \"stageName\": \"ReadyToShip\"\r\n        },\r\n        {\r\n          \"stageStatus\": \"None\",\r\n          \"stageName\": \"Shipped\"\r\n        },\r\n        {\r\n          \"stageStatus\": \"None\",\r\n          \"stageName\": \"Delivered\"\r\n        },\r\n        {\r\n          \"stageStatus\": \"None\",\r\n          \"stageName\": \"InUse\"\r\n        }\r\n      ],\r\n      \"notificationEmailList\": [],\r\n      \"cancellationStatus\": \"Cancellable\",\r\n      \"deletionStatus\": \"NotAllowed\",\r\n      \"returnStatus\": \"NotReturnable\",\r\n      \"managementRpDetailsList\": [\r\n        {\r\n          \"resourceProviderNamespace\": \"Microsoft.DataBoxEdge\"\r\n        }\r\n      ]\r\n    },\r\n    \"addressDetails\": {\r\n      \"forwardAddress\": {\r\n        \"shippingAddress\": {\r\n          \"streetAddress1\": \"101 TOWNSEND ST\",\r\n          \"city\": \"San Francisco\",\r\n          \"stateOrProvince\": \"CA\",\r\n          \"country\": \"US\",\r\n          \"postalCode\": \"94107\",\r\n          \"addressType\": \"Commercial\"\r\n        },\r\n        \"contactDetails\": {\r\n          \"contactName\": \"random\",\r\n          \"phone\": \"1234567891\",\r\n          \"emailList\": [\r\n            \"dhja@microsoft.com\"\r\n          ]\r\n        },\r\n        \"addressValidationStatus\": \"Valid\"\r\n      }\r\n    },\r\n    \"startTime\": \"2021-11-23T09:24:03.765135+00:00\",\r\n    \"orderId\": \"/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-ny/providers/Microsoft.EdgeOrder/locations/eastus/orders/powershellOrderTestl7qc\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"dhja@microsoft.com\",\r\n    \"createdByType\": \"User\",\r\n    \"createdAt\": \"2021-11-23T09:24:03.6330687+00:00\",\r\n    \"lastModifiedBy\": \"dhja@microsoft.com\",\r\n    \"lastModifiedByType\": \"User\",\r\n    \"lastModifiedAt\": \"2021-11-23T09:24:03.6330687+00:00\"\r\n  },\r\n  \"location\": \"eastus\",\r\n  \"tags\": {},\r\n  \"name\": \"powershellItemTestdk4i\",\r\n  \"id\": \"/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-ny/providers/Microsoft.EdgeOrder/orderItems/powershellItemTestdk4i\",\r\n  \"type\": \"Microsoft.EdgeOrder/orderItems\"\r\n}",
+      "isContentBase64": false
+    }
+  }
+}

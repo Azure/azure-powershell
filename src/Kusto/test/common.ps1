@@ -250,6 +250,70 @@ function Validate_PrivateLinkList {
 
 <#
 .SYNOPSIS
+Validate if script is valid
+#>
+function Validate_Script {
+	Param ([Object]$Script,
+		[string]$ScriptUrl,
+		[string]$forceUpdateTag,
+		[bool]$continueOnErros,
+		[string]$clusterName,
+		[string]$databaseName,
+		[string]$scriptName)
+		$ScriptFullName = "$clusterName/$databaseName/$scriptName"
+		$Script.Name | Should -Be $ScriptFullName
+		$Script.ForceUpdateTag | Should -Be $forceUpdateTag
+		$Script.Url | Should -Be $ScriptUrl
+}
+
+<#
+.SYNOPSIS
+Validate if managed private endpoint is valid
+#>
+function Validate_ManagedPrivateEndpoint {
+	Param ([Object]$ManagedPrivateEndpoint,
+		[string]$Name)
+		$ManagedPrivateEndpoint.Name | Should -Be $Name
+}
+
+<#
+.SYNOPSIS
+Validate if private endpoint connection is valid
+#>
+function Validate_PrivateEndpointConnection {
+	Param ([Object]$PrivateEndpointConnection,
+		[string]$Name)
+		$PrivateEndpointConnection.ResourceName | Should -Be $Name
+}
+
+<#
+.SYNOPSIS
+Validate if private link is valid
+#>
+function Validate_PrivateLink {
+	Param ([Object]$PrivateLink,
+		[string]$resourceId,
+		[string]$Name)
+		$PrivateLink.Id | Should -Be $resourceId
+		$PrivateLink.Type | Should -Be "Microsoft.Kusto/Clusters/PrivateLinkResources"		
+		$PrivateLink.Name | Should -Be $Name
+}
+
+<#
+.SYNOPSIS
+Validate if private link list is valid
+#>
+function Validate_PrivateLinkList {
+	Param ([Object]$PrivateLinkList,
+		[string]$resourceId,
+		[string]$Name)
+		$PrivateLinkList.Id | Should -Be $resourceId
+		$PrivateLinkList.Type | Should -Be "Microsoft.Kusto/Clusters/PrivateLinkResources"		
+		$PrivateLinkList.Name | Should -Be $Name
+}
+
+<#
+.SYNOPSIS
 Validate if data connection is valid for EventHub
 #>
 function Validate_EventHubDataConnection {

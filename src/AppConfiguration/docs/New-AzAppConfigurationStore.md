@@ -14,7 +14,8 @@ Creates a configuration store with the specified parameters.
 
 ```
 New-AzAppConfigurationStore -Name <String> -ResourceGroupName <String> -Location <String> -Sku <String>
- [-SubscriptionId <String>] [-IdentityType <IdentityType>] [-Tag <Hashtable>]
+ [-SubscriptionId <String>] [-EncryptionKeyIdentifier <String>] [-IdentityType <IdentityType>]
+ [-KeyVaultIdentityClientId <String>] [-PublicNetworkAccess <PublicNetworkAccess>] [-Tag <Hashtable>]
  [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -26,8 +27,10 @@ Creates a configuration store with the specified parameters.
 
 ### Example 1: Create an app configuration store
 ```powershell
-PS C:\> New-AzAppConfigurationStore -Name appconfig-test03 -ResourceGroupName azpwsh-manual-test -Location eastus -Sku free
+New-AzAppConfigurationStore -Name appconfig-test03 -ResourceGroupName azpwsh-manual-test -Location eastus -Sku free
+```
 
+```output
 Location Name             Type
 -------- ----             ----
 eastus   appconfig-test03 Microsoft.AppConfiguration/configurationStores
@@ -37,9 +40,11 @@ This command creates an app configuration store.
 
 ### Example 2: Create an app configuration with the IdentityType set to "UserAssigned"
 ```powershell
-PS C:\> $assignedIdentity = New-AzUserAssignedIdentity -ResourceGroupName azpwsh-manual-test -Name assignedIdentity
-PS C:\> New-AzAppConfigurationStore -Name appconfig-test10 -ResourceGroupName azpwsh-manual-test -Location eastus -Sku standard -IdentityType "UserAssigned" -UserAssignedIdentity $assignedIdentity.Id
+$assignedIdentity = New-AzUserAssignedIdentity -ResourceGroupName azpwsh-manual-test -Name assignedIdentity
+New-AzAppConfigurationStore -Name appconfig-test10 -ResourceGroupName azpwsh-manual-test -Location eastus -Sku standard -IdentityType "UserAssigned" -UserAssignedIdentity $assignedIdentity.Id
+```
 
+```output
 Location Name             Type
 -------- ----             ----
 eastus   appconfig-test03 Microsoft.AppConfiguration/configurationStores
@@ -50,8 +55,10 @@ See the example of `Update-AzAppConfigurationStore` for the following steps to e
 
 ### Example 3: Create an app configuration with the IdentityType set to "SystemAssigned" 
 ```powershell
-PS C:\> New-AzAppConfigurationStore -Name appconfig-test11 -ResourceGroupName azpwsh-manual-test -Location eastus -Sku standard -IdentityType "SystemAssigned"
+New-AzAppConfigurationStore -Name appconfig-test11 -ResourceGroupName azpwsh-manual-test -Location eastus -Sku standard -IdentityType "SystemAssigned"
+```
 
+```output
 Location Name             Type
 -------- ----             ----
 eastus   appconfig-test11 Microsoft.AppConfiguration/configurationStores
@@ -62,9 +69,11 @@ See the example of `Update-AzAppConfigurationStore` for the following steps to e
 
 ### Example 4: Create an app configuration with the IdentityType set to "SystemAssigned, UserAssigned"
 ```powershell
-PS C:\> $assignedIdentity = New-AzUserAssignedIdentity -ResourceGroupName azpwsh-manual-test -Name assignedIdentity
-PS C:\> New-AzAppConfigurationStore -Name appconfig-test10 -ResourceGroupName azpwsh-manual-test -Location eastus -Sku standard -IdentityType "SystemAssigned, UserAssigned" -UserAssignedIdentity $assignedIdentity.Id
+$assignedIdentity = New-AzUserAssignedIdentity -ResourceGroupName azpwsh-manual-test -Name assignedIdentity
+New-AzAppConfigurationStore -Name appconfig-test10 -ResourceGroupName azpwsh-manual-test -Location eastus -Sku standard -IdentityType "SystemAssigned, UserAssigned" -UserAssignedIdentity $assignedIdentity.Id
+```
 
+```output
 Location Name             Type
 -------- ----             ----
 eastus   appconfig-test10 Microsoft.AppConfiguration/configurationStores
@@ -105,6 +114,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EncryptionKeyIdentifier
+The URI of the key vault key used to encrypt data.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -IdentityType
 The type of managed identity used.
 The type 'SystemAssignedAndUserAssigned' includes both an implicitly created identity and a set of user-assigned identities.
@@ -112,6 +136,21 @@ The type 'None' will remove any identities.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support.IdentityType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVaultIdentityClientId
+The client id of the identity which will be used to access key vault.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -158,6 +197,21 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicNetworkAccess
+Control permission for data plane traffic coming from public networks while private endpoint is enabled.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support.PublicNetworkAccess
 Parameter Sets: (All)
 Aliases:
 

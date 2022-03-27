@@ -80,6 +80,10 @@ function New-AzMigrateNicMapping {
         }
        
         if ($PSBoundParameters.ContainsKey('TargetNicIP')) {
+            $isValidIpAddress = [ipaddress]::TryParse($TargetNicIP,[ref][ipaddress]::Loopback)
+            if(!$isValidIpAddress) {
+                throw "(InvalidPrivateIPAddressFormat) Static IP address value '$($TargetNicIP)' is invalid."
+            }
             $NicObject.TargetStaticIPAddress = $TargetNicIP
         }
 

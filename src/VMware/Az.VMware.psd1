@@ -1,7 +1,7 @@
 @{
-  GUID = '78d2fac8-ec90-47ad-b8aa-a27106b158f5'
+  GUID = '6ced3ed2-fb86-4a72-aca7-369161b12fea'
   RootModule = './Az.VMware.psm1'
-  ModuleVersion = '0.1.0'
+  ModuleVersion = '0.4.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'
@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.VMware.private.dll'
   FormatsToProcess = './Az.VMware.format.ps1xml'
-  FunctionsToExport = 'Get-AzVMwareAuthorization', 'Get-AzVMwareCluster', 'Get-AzVMwarePrivateCloud', 'Get-AzVMwarePrivateCloudAdminCredentials', 'New-AzVMwareAuthorization', 'New-AzVMwareCluster', 'New-AzVMwarePrivateCloud', 'Remove-AzVMwareAuthorization', 'Remove-AzVMwareCluster', 'Remove-AzVMwarePrivateCloud', 'Test-AzVMwareLocationQuotaAvailability', 'Test-AzVMwareLocationTrialAvailability', 'Update-AzVMwareCluster', 'Update-AzVMwarePrivateCloud', '*'
+  FunctionsToExport = 'Get-AzVMwareAddon', 'Get-AzVMwareAuthorization', 'Get-AzVMwareCloudLink', 'Get-AzVMwareCluster', 'Get-AzVMwareGlobalReachConnection', 'Get-AzVMwarePlacementPolicy', 'Get-AzVMwarePrivateCloud', 'Get-AzVMwarePrivateCloudAdminCredential', 'Get-AzVMwareVirtualMachine', 'New-AzVMwareAddon', 'New-AzVMwareAddonSrmPropertiesObject', 'New-AzVMwareAddonVrPropertiesObject', 'New-AzVMwareAuthorization', 'New-AzVMwareCloudLink', 'New-AzVMwareCluster', 'New-AzVMwareGlobalReachConnection', 'New-AzVMwarePlacementPolicy', 'New-AzVMwarePrivateCloud', 'New-AzVMwarePrivateCloudNsxtPassword', 'New-AzVMwarePrivateCloudVcenterPassword', 'New-AzVMwarePSCredentialExecutionParameterObject', 'New-AzVMwareScriptSecureStringExecutionParameterObject', 'New-AzVMwareScriptStringExecutionParameterObject', 'New-AzVMwareVmHostPlacementPolicyPropertiesObject', 'New-AzVMwareVMPlacementPolicyPropertiesObject', 'Remove-AzVMwareAddon', 'Remove-AzVMwareAuthorization', 'Remove-AzVMwareCloudLink', 'Remove-AzVMwareCluster', 'Remove-AzVMwareGlobalReachConnection', 'Remove-AzVMwarePlacementPolicy', 'Remove-AzVMwarePrivateCloud', 'Test-AzVMwareLocationQuotaAvailability', 'Test-AzVMwareLocationTrialAvailability', 'Update-AzVMwareCluster', 'Update-AzVMwarePlacementPolicy', 'Update-AzVMwarePrivateCloud', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

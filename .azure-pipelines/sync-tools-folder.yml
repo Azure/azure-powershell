@@ -17,6 +17,7 @@ trigger:
 variables:
   GenerationBranchName: generation
   AzureStackBranchName: Azs-tzl
+  GithubToken: $(GITHUB_TOKEN)
 
 jobs:
 - job: Sync
@@ -30,6 +31,10 @@ jobs:
         BranchName: ${{ variables.AzureStackBranchName }}
 
   steps:
-  - template: util/sync-tools-folder-template.yml
-    parameters:
-      BranchName: $(BranchName)
+  - task: PowerShell@2
+    displayName: Sync branch
+    inputs:
+      targetType: inline
+      script: >-
+        ./tools/SyncFromMainBranch.ps1 -BranchName $(BranchName) -GithubToken $(GithubToken)
+      pwsh: true

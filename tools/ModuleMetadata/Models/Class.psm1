@@ -165,6 +165,17 @@ class TypeMetadata : BaseMetadata
 
     TypeMetadata([Type] $InputType, [ModuleMetadata] $ModuleMetadata)
     {
+        $this.LoadType($InputType, $ModuleMetadata, $False)
+    }
+
+    TypeMetadata([Type] $InputType, [ModuleMetadata] $ModuleMetadata, [Switch]$ExcludeMethod)
+    {
+        $this.LoadType($InputType, $ModuleMetadata, $ExcludeMethod)
+    }
+
+    hidden LoadType([Type] $InputType, [ModuleMetadata] $ModuleMetadata, [Switch]$ExcludeMethod)
+    {
+
         $this.Namespace = $InputType.Namespace
         $this.Name = $InputType.ToString()
         $this.AssemblyQualifiedName = $InputType.AssemblyQualifiedName
@@ -174,8 +185,12 @@ class TypeMetadata : BaseMetadata
         $this.Constructors = [System.Collections.Generic.List[MethodSignature]]::New()
 
         $_Properties = $InputType.GetProperties() | Sort-Object -Property PropertyType
-        $_Methods = $InputType.GetMethods() | Where-Object { -not $_.IsSpecialName }
-        $_Constructors = $InputType.GetConstructors()
+        $_Methods = @()
+        $_Constructors = @()
+        if ($ExcludeMethod -ne $true) {
+            $_Methods = $InputType.GetMethods() | Where-Object { -not $_.IsSpecialName }
+            $_Constructors = $InputType.GetConstructors()
+        }
 
         if ($InputType.HasElementType)
         {

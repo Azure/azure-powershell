@@ -24,6 +24,10 @@ Get the list of cached images on specific OS type for a subscription in a region
 ### [Get-AzContainerInstanceCapability](Get-AzContainerInstanceCapability.md)
 Get the list of CPU/memory/GPU capabilities of a region.
 
+### [Get-AzContainerInstanceContainerGroupOutboundNetworkDependencyEndpoint](Get-AzContainerInstanceContainerGroupOutboundNetworkDependencyEndpoint.md)
+Gets all the network dependencies for this container group to allow complete control of network setting and configuration.
+For container groups, this will always be an empty list.
+
 ### [Get-AzContainerInstanceLog](Get-AzContainerInstanceLog.md)
 Get the logs for a specified container instance in a specified resource group and container group.
 
@@ -48,6 +52,9 @@ Create a in-memory object for Volume
 ### [New-AzContainerInstanceEnvironmentVariableObject](New-AzContainerInstanceEnvironmentVariableObject.md)
 Create a in-memory object for EnvironmentVariable
 
+### [New-AzContainerInstanceHttpHeaderObject](New-AzContainerInstanceHttpHeaderObject.md)
+Create a in-memory object for HttpHeader
+
 ### [New-AzContainerInstanceInitDefinitionObject](New-AzContainerInstanceInitDefinitionObject.md)
 Create a in-memory object for InitContainerDefinition
 
@@ -63,6 +70,10 @@ Create a in-memory object for VolumeMount
 ### [Remove-AzContainerGroup](Remove-AzContainerGroup.md)
 Delete the specified container group in the specified subscription and resource group.
 The operation does not delete other resources provided by the user, such as volumes.
+
+### [Restart-AzContainerGroup](Restart-AzContainerGroup.md)
+Restarts all containers in a container group in place.
+If container image has updates, new image will be downloaded.
 
 ### [Start-AzContainerGroup](Start-AzContainerGroup.md)
 Starts all containers in a container group.

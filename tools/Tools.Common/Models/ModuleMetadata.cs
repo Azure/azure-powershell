@@ -23,6 +23,10 @@ namespace Tools.Common.Models
     [Serializable]
     public class ModuleMetadata
     {
+        [JsonProperty(Order = -99)]
+        public string ModuleName { get; set; }
+        [JsonProperty(Order = -98)] 
+        public string ModuleVersion { get; set; }
         private List<CmdletMetadata> _cmdlets = new List<CmdletMetadata>();
         private Dictionary<string, TypeMetadata> _typeDictionary = new Dictionary<string, TypeMetadata>();
         private Dictionary<string, bool> _processedTypes = new Dictionary<string, bool>();

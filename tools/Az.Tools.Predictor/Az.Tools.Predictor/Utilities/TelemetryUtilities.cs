@@ -60,7 +60,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
                 { "Cohort", azContext.Cohort.ToString(CultureInfo.InvariantCulture) },
                 { "UserId", azContext.HashUserId },
                 { "IsInternal", azContext.IsInternal.ToString(CultureInfo.InvariantCulture) },
-                { "SurveyId", (azContext as AzContext)?.SurveyId }, // This is supposed to be temporarily. We should remove SurveyId.
                 { "HashMacAddress", azContext.MacAddress },
                 { "PowerShellVersion", azContext.PowerShellVersion.ToString() },
                 { "ModuleVersion", azContext.ModuleVersion.ToString() },

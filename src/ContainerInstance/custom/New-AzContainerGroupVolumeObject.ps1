@@ -17,15 +17,12 @@
 .Synopsis
 Create a in-memory object for Volume
 .Description
-Create a in-memory object for Volume
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.Volume
+Create a in-memory object for Volume. Currently, we support mounting Azure File share as a volume or specifying git repository as volume directory. The empty directory volume and secret volume are not supported yet.
 .Link
 https://docs.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerGroupVolumeObject
 #>
 function New-AzContainerGroupVolumeObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.Volume')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.Volume')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -58,12 +55,12 @@ function New-AzContainerGroupVolumeObject {
         $Name
         # ,
         # [Parameter(HelpMessage="The secret volume.")]
-        # [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.ISecretVolume]
+        # [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.ISecretVolume]
         # $Secret
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.Volume]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.Volume]::New()
 
         $Object.AzureFileShareName = $AzureFileShareName
         if ($PSBoundParameters.ContainsKey('AzureFileStorageAccountKey')) {

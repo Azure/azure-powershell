@@ -34,18 +34,16 @@ WARNING: This operation cannot be undone.
 
 ### Example 1: Remove Inbound Endpoint by name
 ```powershell
-PS C:\> Remove-AzDnsResolverInboundEndpoint  -DnsResolverName pstestdnsresolvername -Name sampleInboundEndpoint -ResourceGroupName powershell-test-rg
-
-PS C:\> 
+Remove-AzDnsResolverInboundEndpoint  -DnsResolverName pstestdnsresolvername -Name sampleInboundEndpoint -ResourceGroupName powershell-test-rg
 ```
 
 This command removes Inbound Endpoint by name
 
 ### Example 2: Remove Inbound Endpoint via identity
 ```powershell
-PS C:\> $inputobject = Get-AzDnsResolverInboundEndpoint -DnsResolverName pstestdnsresolvername -Name sampleInboundEndpoint -ResourceGroupName powershell-test-rg
+$inputobject = Get-AzDnsResolverInboundEndpoint -DnsResolverName pstestdnsresolvername -Name sampleInboundEndpoint -ResourceGroupName powershell-test-rg
 
-PS C:\>  Remove-AzDnsResolverInboundEndpoint -InputObject $inputObject
+Remove-AzDnsResolverInboundEndpoint -InputObject $inputObject
 ```
 
 This command removes Inbound Endpoint via identity
@@ -267,6 +265,7 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[VirtualNetworkLinkName <String>]`: The name of the virtual network link.
+  - `[VirtualNetworkName <String>]`: The name of the virtual network.
 
 ## RELATED LINKS
 

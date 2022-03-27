@@ -6,7 +6,8 @@ azure: true
 powershell: true
 help-link-prefix: https://docs.microsoft.com/powershell/module/
 license-header: MICROSOFT_MIT_NO_VERSION
-branch: master
+pwsh-license-header: MICROSOFT_APACHE_NO_VERSION
+branch: main
 repo: https://github.com/Azure/azure-rest-api-specs/blob/$(branch)
 metadata:
   authors: Microsoft Corporation
@@ -32,6 +33,17 @@ namespace: Microsoft.Azure.PowerShell.Cmdlets.$(service-name)
 ``` yaml
 clear-output-folder: true
 output-folder: .
+```
+
+> Exclude some properties in table view
+``` yaml
+# For a specific module, we could override this configuration by setting default-exclude-tableview-properties to false in readme.md of that module.
+default-exclude-tableview-properties: true
+```
+``` yaml $(default-exclude-tableview-properties)
+exclude-tableview-properties:
+  - Id
+  - Type
 ```
 
 > Directives
