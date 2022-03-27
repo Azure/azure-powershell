@@ -1,43 +1,30 @@
 ---
 external help file:
 Module Name: Az.Functions
-online version: https://docs.microsoft.com/powershell/module/az.functions/get-azwebappsettingkeyvaultreference
+online version: https://docs.microsoft.com/powershell/module/az.functions/get-azsystemassignedidentity
 schema: 2.0.0
 ---
 
-# Get-AzWebAppSettingKeyVaultReference
+# Get-AzSystemAssignedIdentity
 
 ## SYNOPSIS
-Description for Gets the config reference app settings and status of an app
+Gets the systemAssignedIdentity available under the specified RP scope.
 
 ## SYNTAX
 
 ### Get (Default)
 ```
-Get-AzWebAppSettingKeyVaultReference -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get1
-```
-Get-AzWebAppSettingKeyVaultReference -AppSettingKey <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzSystemAssignedIdentity -Scope <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzWebAppSettingKeyVaultReference -InputObject <IFunctionsIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### GetViaIdentity1
-```
-Get-AzWebAppSettingKeyVaultReference -InputObject <IFunctionsIdentity> [-DefaultProfile <PSObject>]
+Get-AzSystemAssignedIdentity -InputObject <IFunctionsIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Description for Gets the config reference app settings and status of an app
+Gets the systemAssignedIdentity available under the specified RP scope.
 
 ## EXAMPLES
 
@@ -65,21 +52,6 @@ Description for Gets the config reference app settings and status of an app
 
 ## PARAMETERS
 
-### -AppSettingKey
-App Setting key name.
-
-```yaml
-Type: System.String
-Parameter Sets: Get1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -101,7 +73,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
-Parameter Sets: GetViaIdentity, GetViaIdentity1
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
@@ -111,49 +83,18 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-Name of the app.
+### -Scope
+The resource provider scope of the resource.
+Parent resource being extended by Managed Identities.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, Get1
+Parameter Sets: Get
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Name of the resource group to which the resource belongs.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, Get1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SubscriptionId
-Your Azure subscription ID.
-This is a GUID-formatted string (e.g.
-00000000-0000-0000-0000-000000000000).
-
-```yaml
-Type: System.String[]
-Parameter Sets: Get, Get1
-Aliases:
-
-Required: False
-Position: Named
-Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -167,9 +108,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IKeyVaultReferenceCollection
-
-### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IKeyVaultReferenceResource
+### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ISystemAssignedIdentity
 
 ## NOTES
 
