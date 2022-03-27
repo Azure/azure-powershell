@@ -1,11 +1,9 @@
 ### Example 1: List all the AttachedDatabaseConfigurations in a cluster
 ```powershell
-Get-AzKustoAttachedDatabaseConfiguration -ResourceGroupName "testrg" -ClusterName "testnewkustoclusterf"
-```
+PS C:\> Get-AzKustoAttachedDatabaseConfiguration -ResourceGroupName "testrg" -ClusterName "testnewkustoclusterf"
 
-```output
-Name                                         Type                                                    Location
-----                                         ----                                                    --------
+Name                                 Type                                                    Location
+----                                 ----                                                    --------
 testnewkustoclusterf/myfollowerconfiguration Microsoft.Kusto/Clusters/AttachedDatabaseConfigurations East US
 ```
 
@@ -13,12 +11,10 @@ The above command lists all the AttachedDatabaseConfigurations in the cluster "t
 
 ### Example 2: Get a specific AttachedDatabaseConfiguration in a cluster
 ```powershell
-Get-AzKustoAttachedDatabaseConfiguration -ResourceGroupName "testrg" -ClusterName "testnewkustoclusterf" -Name "myfollowerconfiguration" 
-```
+PS C:\>  Get-AzKustoAttachedDatabaseConfiguration -ResourceGroupName "testrg" -ClusterName "testnewkustoclusterf" -Name "myfollowerconfiguration" 
 
-```output
-Name                                         Type                                                    Location
-----                                         ----                                                    --------
+Name                                 Type                                                    Location
+----                                 ----                                                    --------
 testnewkustoclusterf/myfollowerconfiguration Microsoft.Kusto/Clusters/AttachedDatabaseConfigurations East US
 ```
 
