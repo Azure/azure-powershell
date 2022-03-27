@@ -20,6 +20,7 @@
 ## Upcoming Release
 * Added cmdlet Update-AzOperationalInsightsTable.
 * Added exception content for better understanding failed activation of cmdlets 
+* removed Cluster capacity validation on client side
 
 ## Version 3.0.1
 * Added logic to prevent exceptions while using `StorageInsight` cmdlets.
