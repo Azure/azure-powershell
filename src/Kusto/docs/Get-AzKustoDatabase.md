@@ -36,10 +36,8 @@ Returns a database.
 
 ### Example 1: List all Kusto databases in a cluster by name
 ```powershell
-Get-AzKustoDatabase -ResourceGroupName testrg -ClusterName testnewkustocluster
-```
+PS C:\> Get-AzKustoDatabase -ResourceGroupName testrg -ClusterName testnewkustocluster
 
-```output
 Kind      Location Name                                 Type
 ----      -------- ----                                 ----
 ReadWrite East US  testnewkustocluster/mykustodatabase  Microsoft.Kusto/Clusters/Databases
@@ -50,10 +48,8 @@ The above command returns all Kusto databases in the cluster "testnewkustocluste
 
 ### Example 2: Get a specific Kusto database by name
 ```powershell
-Get-AzKustoDatabase -ResourceGroupName testrg -ClusterName testnewkustocluster -Name mykustodatabase
-```
+PS C:\> Get-AzKustoDatabase -ResourceGroupName testrg -ClusterName testnewkustocluster -Name mykustodatabase
 
-```output
 Kind      Location Name                                Type
 ----      -------- ----                                ----
 ReadWrite East US  testnewkustocluster/mykustodatabase Microsoft.Kusto/Clusters/Databases
@@ -164,7 +160,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20210827.IDatabase
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDatabase
 
 ## NOTES
 

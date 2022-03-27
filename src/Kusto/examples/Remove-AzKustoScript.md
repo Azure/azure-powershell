@@ -1,6 +1,18 @@
-### Example 1: Delete a Kusto script 
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzKustoScript -ClusterName testnewkustocluster -ResourceGroupName testrg -DatabaseName mykustodatabase -Name newkustoscript
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-The above command deletes the Kusto script named "newkustoscript" in the cluster "testnewkustocluster" found in the resource group "testrg".
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+```
+
+{{ Add description here }}
+

@@ -1,9 +1,7 @@
 ### Example 1: List all followed databases
 ```powershell
-Get-AzKustoClusterFollowerDatabase  -ResourceGroupName testrg -ClusterName testnewkustocluster
-```
+PS C:\>  Get-AzKustoClusterFollowerDatabase  -ResourceGroupName testrg -ClusterName testnewkustocluster
 
-```output
 AttachedDatabaseConfigurationName ClusterResourceId                                                                                                                     DatabaseName
 --------------------------------- -----------------                                                                                                                     ------------
 myfollowerconfiguration             /subscriptions/xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx/resourceGroups/testrg/providers/Microsoft.Kusto/Clusters/testnewkustoclusterf mykustodatabase

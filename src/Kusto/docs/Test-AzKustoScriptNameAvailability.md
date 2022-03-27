@@ -30,32 +30,23 @@ Checks that the script name is valid and is not already in use.
 
 ## EXAMPLES
 
-### Example 1: Check that the script name which is not in use
+### Example 1: {{ Add title here }}
 ```powershell
-Test-AzKustoScriptNameAvailability -ClusterName testnewkustocluster -DatabaseName mykustodatabase -ResourceGroupName testrg -Name newkustoscript
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-```output
-Message Name           NameAvailable Reason
-------- ----           ------------- ------
-        newkustoscript True
-```
+{{ Add description here }}
 
-The above command checks that the script name which is not in use.
-
-### Example 2: Check that the script name which is not valid
+### Example 2: {{ Add title here }}
 ```powershell
-Test-AzKustoScriptNameAvailability -ClusterName testnewkustocluster -DatabaseName mykustodatabase -ResourceGroupName testrg -Name newkustoscript!
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-```output
-Message                                                                                                           Name            NameAvailable Reason
--------                                                                                                           ----            ------------- ------
-Script: Name='newkustoscript!' does not comply with naming rules (contains invalid characters or format mismatch) newkustoscript! False
-```
-
-The above command checks that the script name which is not valid.
-
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -206,7 +197,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20210827.ICheckNameResult
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ICheckNameResult
 
 ## NOTES
 
