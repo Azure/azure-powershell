@@ -228,3 +228,4 @@ launchSettings.json
 /tools/Modules/tmp
 /tools/Az/Az.psm1
 /Azure.PowerShell.sln
+/src/ConfidentialLedger
