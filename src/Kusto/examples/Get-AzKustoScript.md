@@ -1,26 +1,18 @@
-### Example 1: List all Kusto cluster database scripts
-
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzKustoScript -ClusterName testnewkustocluster -ResourceGroupName testrg -DatabaseName mykustodatabase
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-```output
-Name                                               Type
-----                                               ----
-testnewkustocluster/mykustodatabase/newkustoscript Microsoft.Kusto/Clusters/Databases/Scripts
-```
+{{ Add description here }}
 
-The above command returns all Kusto cluster database scripts in the cluster "testnewkustocluster" found in the resource group "testrg".
-
-### Example 2: Get a specific Kusto database script by name
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzKustoScript -ClusterName testnewkustocluster -ResourceGroupName testrg -DatabaseName mykustodatabase -Name newkustoscript
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-```output
-Name                                               Type
-----                                               ----
-testnewkustocluster/mykustodatabase/newkustoscript Microsoft.Kusto/Clusters/Databases/Scripts
-```
+{{ Add description here }}
 
-The above command returns the Kusto database script named "newkustoscript" in the cluster "testnewkustocluster" found in the resource group "testrg".
