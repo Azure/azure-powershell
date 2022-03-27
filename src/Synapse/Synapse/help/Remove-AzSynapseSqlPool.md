@@ -44,30 +44,30 @@ The **Remove-AzSynapseSqlPool** cmdlet permanently deletes an Azure Synapse Anal
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
+Remove-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
 ```
 
 This command deletes an Azure Synapse Analytics SQL pool.
 
 ### Example 2
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Remove-AzSynapseSqlPool -Name ContosoSqlPool
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Remove-AzSynapseSqlPool -Name ContosoSqlPool
 ```
 
 This command deletes an Azure Synapse Analytics SQL pool through pipeline.
 
 ### Example 3
 ```powershell
-PS C:\> $pool = Get-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
-PS C:\> $pool | Remove-AzSynapseSqlPool
+$pool = Get-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
+$pool | Remove-AzSynapseSqlPool
 ```
 
 This command deletes an Azure Synapse Analytics SQL pool through pipeline.
 
 ### Example 4
 ```powershell
-PS C:\> Remove-AzSynapseSqlPool -ResourceId /subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd/resourceGroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace/sqlPools/ContosoSqlPool
+Remove-AzSynapseSqlPool -ResourceId /subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd/resourceGroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace/sqlPools/ContosoSqlPool
 ```
 
 This command deletes an Azure Synapse Analytics SQL pool with the specified resource ID.

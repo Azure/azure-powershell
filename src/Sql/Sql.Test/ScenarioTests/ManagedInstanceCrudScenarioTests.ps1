@@ -62,6 +62,8 @@ function Test-CreateManagedInstance
 		Assert-AreEqual $managedInstance1.TimezoneId $timezoneId
 		Assert-AreEqual $managedInstance1.PublicDataEndpointEnabled $true
 		Assert-AreEqual $managedInstance1.ProxyOverride $proxyOverride
+		Assert-AreEqual $managedInstance1.RequestedBackupStorageRedundancy $backupStorageRedundancy
+		Assert-AreEqual $managedInstance1.CurrentBackupStorageRedundancy $backupStorageRedundancy
 		Assert-AreEqual $managedInstance1.BackupStorageRedundancy $backupStorageRedundancy
  		Assert-StartsWith ($managedInstance1.ManagedInstanceName + ".") $managedInstance1.FullyQualifiedDomainName
         Assert-NotNull $managedInstance1.DnsZone
@@ -134,6 +136,9 @@ function Test-SetManagedInstance
 		$credentials = Get-ServerCredential
 		$licenseType = "BasePrice"
 		$storageSizeInGB = 64
+		$targetSubnetResourceId = "/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Network/virtualNetworks/vnet-mi-tooling/subnets/ManagedInstance2"
+		$generalPurpose = "GeneralPurpose"
+		$businessCritical = "BusinessCritical"
 
 		$managedInstance1 = Set-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstance.ManagedInstanceName `
 			-AdministratorPassword $credentials.Password -LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Force
@@ -197,30 +202,44 @@ function Test-SetManagedInstance
 
 		# Test edition change using Edition
 		$credentials = Get-ServerCredential
-		$edition = "BusinessCritical"
 
-		$managedInstance6 = Set-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstance.ManagedInstanceName -Edition $edition -Force
+		$managedInstance6 = Set-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstance.ManagedInstanceName -Edition $businessCritical -Force
 
 		Assert-AreEqual $managedInstance6.ManagedInstanceName $managedInstance.ManagedInstanceName
 		Assert-AreEqual $managedInstance6.AdministratorLogin $managedInstance4.AdministratorLogin
 		Assert-AreEqual $managedInstance6.VCores $vCore
 		Assert-AreEqual $managedInstance6.StorageSizeInGB $managedInstance4.StorageSizeInGB
-		Assert-AreEqual $managedInstance6.Sku.Tier $edition
+		Assert-AreEqual $managedInstance6.Sku.Tier $businessCritical
 		Assert-AreEqual $managedInstance6.Sku.Family $managedInstance4.Sku.Family
 		Assert-StartsWith ($managedInstance6.ManagedInstanceName + ".") $managedInstance6.FullyQualifiedDomainName
 
-		# Test cross-subnet update SLO. Since the feature is still not rolled-out, the operation should fail.
-		try
-		{
-			Set-AzSqlInstance -Name $managedInstance.ManagedInstanceName -ResourceGroupName $rg.ResourceGroupName -SubnetId $targetSubnetResourceId -Force
-		}
-		catch
-		{
-			$ErrorMessage = $_.Exception.Message
-			# Because of a backend error mapping, current error message is wrong. Here is the correct error message to use when the backend fix gets deployed:
-			# "Long running operation failed with status 'Failed'. Additional Info:'Subnet resource ID '"+$targetSubnetResourceId+"' is invalid. Please provide a correct resource Id for the target subnet.'"
-			Assert-AreEqual True $ErrorMessage.Contains("Long running operation failed with status 'Failed'. Additional Info:'An unexpected error occured while processing the request.")
-		}
+		# Test cross-subnet update SLO using subnetId
+		$managedInstance7 = Set-AzSqlInstance -Name $managedInstance.ManagedInstanceName -ResourceGroupName $rg.ResourceGroupName -Edition $generalPurpose -SubnetId $targetSubnetResourceId -Force
+
+		Assert-AreEqual $managedInstance7.ManagedInstanceName $managedInstance.ManagedInstanceName
+		Assert-AreEqual $managedInstance7.AdministratorLogin $managedInstance6.AdministratorLogin
+		Assert-AreEqual $managedInstance7.VCores $vCore
+		Assert-AreEqual $managedInstance7.StorageSizeInGB $managedInstance6.StorageSizeInGB
+		Assert-AreEqual $managedInstance7.Sku.Tier $generalPurpose
+		Assert-AreEqual $managedInstance7.Sku.Family $managedInstance6.Sku.Family
+		Assert-StartsWith ($managedInstance7.ManagedInstanceName + ".") $managedInstance6.FullyQualifiedDomainName
+		Assert-AreEqual $managedInstance7.SubnetId $targetSubnetResourceId
+
+		# Test service principal update
+		$servicePrincipalType = "SystemAssigned"
+
+		$managedInstance8 = Set-AzSqlInstance -Name $managedInstance.ManagedInstanceName -ResourceGroupName $rg.ResourceGroupName -ServicePrincipalType $servicePrincipalType -Force
+
+		Assert-AreEqual $managedInstance8.ManagedInstanceName $managedInstance.ManagedInstanceName
+		Assert-AreEqual $managedInstance8.AdministratorLogin $managedInstance6.AdministratorLogin
+		Assert-AreEqual $managedInstance8.VCores $vCore
+		Assert-AreEqual $managedInstance8.StorageSizeInGB $managedInstance6.StorageSizeInGB
+		Assert-AreEqual $managedInstance8.Sku.Tier $generalPurpose
+		Assert-AreEqual $managedInstance8.Sku.Family $managedInstance6.Sku.Family
+		Assert-StartsWith ($managedInstance8.ManagedInstanceName + ".") $managedInstance6.FullyQualifiedDomainName
+		Assert-AreEqual $managedInstance8.SubnetId $targetSubnetResourceId
+		Assert-AreEqual $managedInstance8.ServicePrincipal.Type $servicePrincipalType
+		Assert-AreEqual $managedInstance8.Identity.Type $managedInstance6.Identity.Type
 
 		# Test zone redundant update SLO. Since the feature is still not rolled-out, the operation should fail.
 		try
@@ -236,6 +255,41 @@ function Test-SetManagedInstance
 	finally
 	{
 		Remove-ResourceGroupForTest $rg -AsJob
+	}
+}
+
+function Test-SetRedundancy
+{
+	# Setup
+	$rg = Create-ResourceGroupForTest
+
+	try
+	{
+		$bsr = "Geo"
+
+		# Test using parameters
+		$managedInstance1 = Create-ManagedInstanceForTest $rg
+		Assert-AreEqual $managedInstance1.CurrentBackupStorageRedundancy $bsr
+		Assert-AreEqual $managedInstance1.BackupStorageRedundancy $bsr
+		Assert-AreEqual $managedInstance1.RequestedBackupStorageRedundancy $bsr
+		
+		$bsr = "Local"
+		$managedInstance2 = Set-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstance1.ManagedInstanceName -BackupStorageRedundancy $bsr -Force
+
+		Assert-AreEqual $managedInstance2.CurrentBackupStorageRedundancy $bsr
+		Assert-AreEqual $managedInstance2.BackupStorageRedundancy $bsr
+		Assert-AreEqual $managedInstance2.RequestedBackupStorageRedundancy $bsr
+
+		$bsr = "Geo"
+		$managedInstance3 = Set-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstance1.ManagedInstanceName -BackupStorageRedundancy $bsr -Force
+
+		Assert-AreEqual $managedInstance3.CurrentBackupStorageRedundancy $bsr
+		Assert-AreEqual $managedInstance3.BackupStorageRedundancy $bsr
+		Assert-AreEqual $managedInstance3.RequestedBackupStorageRedundancy $bsr
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
 	}
 }
 

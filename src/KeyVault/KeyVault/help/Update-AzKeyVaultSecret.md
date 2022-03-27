@@ -33,12 +33,14 @@ The **Update-AzKeyVaultSecret** cmdlet updates editable attributes of a secret i
 
 ### Example 1: Modify the attributes of a secret
 ```powershell
-PS C:\> $Expires = (Get-Date).AddYears(2).ToUniversalTime()
-PS C:\> $Nbf = (Get-Date).ToUniversalTime()
-PS C:\> $Tags = @{ 'Severity' = 'medium'; 'HR' = 'true'}
-PS C:\> $ContentType= 'xml'
-PS C:\> Update-AzKeyVaultSecret -VaultName 'ContosoVault' -Name 'HR' -Expires $Expires -NotBefore $Nbf -ContentType $ContentType -Enable $True -Tag $Tags -PassThru
+$Expires = (Get-Date).AddYears(2).ToUniversalTime()
+$Nbf = (Get-Date).ToUniversalTime()
+$Tags = @{ 'Severity' = 'medium'; 'HR' = 'true'}
+$ContentType= 'xml'
+Update-AzKeyVaultSecret -VaultName 'ContosoVault' -Name 'HR' -Expires $Expires -NotBefore $Nbf -ContentType $ContentType -Enable $True -Tag $Tags -PassThru
+```
 
+```output
 Vault Name   : ContosoVault
 Name         : HR
 Version      : d476edfcd3544017a03bc49c1f3abec0
@@ -60,18 +62,18 @@ The final command modifies the attributes for the secret named HR in the key vau
 ContosoVault, using the stored variables.
 
 ### Example 2: Delete the tags and content type for a secret
-```
-PS C:\> Update-AzKeyVaultSecret -VaultName 'ContosoVault' -Name 'HR' -Version '9EEA45C6EE50490B9C3176A80AC1A0DF' -ContentType '' -Tag -@{}
+```powershell
+Update-AzKeyVaultSecret -VaultName 'ContosoVault' -Name 'HR' -Version '9EEA45C6EE50490B9C3176A80AC1A0DF' -ContentType '' -Tag -@{}
 ```
 
 This command deletes the tags and the content type for the specified version of the secret named HR
 in the key vault named Contoso.
 
 ### Example 3: Disable the current version of secrets whose name begins with IT
-```
-PS C:\> $Vault = 'ContosoVault'
-PS C:\> $Prefix = 'IT'
-PS C:\> Get-AzKeyVaultSecret $Vault | Where-Object {$_.Name -like $Prefix + '*'} | Update-AzKeyVaultSecret -Enable $False
+```powershell
+$Vault = 'ContosoVault'
+$Prefix = 'IT'
+Get-AzKeyVaultSecret $Vault | Where-Object {$_.Name -like $Prefix + '*'} | Update-AzKeyVaultSecret -Enable $False
 ```
 
 The first command stores the string value Contoso in the $Vault variable.
@@ -82,11 +84,11 @@ filters the secrets for names that begin with the characters IT. The command pip
 match the filter to the Update-AzKeyVaultSecret cmdlet, which disables them.
 
 ### Example 4: Set the ContentType for all versions of a secret
-```
-PS C:\> $VaultName = 'ContosoVault'
-PS C:\> $Name = 'HR'
-PS C:\> $ContentType = 'xml'
-PS C:\> Get-AzKeyVaultKey -VaultName $VaultName -Name $Name -IncludeVersions | Update-AzKeyVaultSecret -ContentType $ContentType
+```powershell
+$VaultName = 'ContosoVault'
+$Name = 'HR'
+$ContentType = 'xml'
+Get-AzKeyVaultKey -VaultName $VaultName -Name $Name -IncludeVersions | Update-AzKeyVaultSecret -ContentType $ContentType
 ```
 
 The first three commands define string variables to use for the *VaultName*, *Name*, and

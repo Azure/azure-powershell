@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added parameter "PublicNetworkAccess" in `New-AzAppConfigurationStore` and `Update-AzAppConfigurationStore`
 
 ## Version 1.0.0
 * General availability of 'Az.AppConfiguration' module

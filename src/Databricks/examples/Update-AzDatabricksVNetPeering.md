@@ -20,5 +20,3 @@ vnetpeering-t01
 ```
 
 This command updates AllowForwardedTraffic of vnet peering by object.
-
-

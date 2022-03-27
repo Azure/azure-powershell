@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Websites-help.xml
 Module Name: Az.Websites
 online version: https://docs.microsoft.com/powershell/module/az.websites/reset-azstaticwebappapikey
 schema: 2.0.0
@@ -16,13 +16,13 @@ Description for Resets the api key for an existing static site.
 ```
 Reset-AzStaticWebAppApiKey -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Kind <String>] [-RepositoryToken <String>] [-ShouldUpdateRepository] [-DefaultProfile <PSObject>]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResetViaIdentityExpanded
 ```
 Reset-AzStaticWebAppApiKey -InputObject <IWebsitesIdentity> [-Kind <String>] [-RepositoryToken <String>]
- [-ShouldUpdateRepository] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ShouldUpdateRepository] [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,16 +32,14 @@ Description for Resets the api key for an existing static site.
 
 ### Example 1: Reset the api key for an existing static site.
 ```powershell
-PS C:\> Reset-AzStaticWebAppApiKey -ResourceGroupName azure-rg-test -Name staticweb-portal01
-
+Reset-AzStaticWebAppApiKey -ResourceGroupName azure-rg-test -Name staticweb-portal01
 ```
 
 This command resets the api key for an existing static site.
 
 ### Example 2: Reset the api key for an existing static site by pipeline
 ```powershell
-PS C:\> Get-AzStaticWebApp -ResourceGroupName azure-rg-test -Name staticweb-portal01 | Reset-AzStaticWebAppApiKey
-
+Get-AzStaticWebApp -ResourceGroupName azure-rg-test -Name staticweb-portal01 | Reset-AzStaticWebAppApiKey
 ```
 
 This command resets the api key for an existing static site by pipeline.
@@ -243,12 +241,14 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   - `[EnvironmentName <String>]`: The stage site identifier.
   - `[FunctionAppName <String>]`: Name of the function app registered with the static site build.
   - `[Id <String>]`: Resource identity path
+  - `[JobHistoryId <String>]`: History ID.
   - `[Location <String>]`: Location where you plan to create the static site.
   - `[Name <String>]`: Name of the static site.
   - `[PrivateEndpointConnectionName <String>]`: Name of the private endpoint connection.
   - `[ResourceGroupName <String>]`: Name of the resource group to which the resource belongs.
+  - `[Slot <String>]`: Name of the deployment slot. If a slot is not specified, the API deletes a deployment for the production slot.
   - `[SubscriptionId <String>]`: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
   - `[Userid <String>]`: The user id of the user.
+  - `[WebJobName <String>]`: Name of Web Job.
 
 ## RELATED LINKS
-

@@ -31,7 +31,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
 
 namespace Commands.HDInsight.Test.ScenarioTests

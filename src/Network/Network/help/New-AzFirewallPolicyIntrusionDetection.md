@@ -24,26 +24,26 @@ The **New-AzFirewallPolicyIntrusionDetection** cmdlet creates an Azure Firewall 
 
 ## EXAMPLES
 
-### Example 1: 1. Create intrusion detection with mode
+### Example 1: Create intrusion detection with mode
 ```powershell
-PS C:\> New-AzFirewallPolicyIntrusionDetection -Mode "Alert"
+New-AzFirewallPolicyIntrusionDetection -Mode "Alert"
 ```
 
 This example creates intrusion detection with Alert (detection) mode
 
-### Example 2: 2. Create intrusion detection with signature overrides
+### Example 2: Create intrusion detection with signature overrides
 ```powershell
-PS C:\> $signatureOverride = New-AzFirewallPolicyIntrusionDetectionSignatureOverride -Id "123456798" -Mode "Deny"
-PS C:\> New-AzFirewallPolicyIntrusionDetection -Mode "Alert" -SignatureOverride $signatureOverride
+$signatureOverride = New-AzFirewallPolicyIntrusionDetectionSignatureOverride -Id "123456798" -Mode "Deny"
+New-AzFirewallPolicyIntrusionDetection -Mode "Alert" -SignatureOverride $signatureOverride
 ```
 
 This example creates intrusion detection with specific signature override
 
-### Example 3: 3. Create firewall policy with intrusion detection configured with bypass traffic setting
+### Example 3: Create firewall policy with intrusion detection configured with bypass traffic setting
 ```powershell
-PS C:\> $bypass = New-AzFirewallPolicyIntrusionDetectionBypassTraffic -Name "bypass-setting" -Protocol "TCP" -DestinationPort "80" -SourceAddress "10.0.0.0" -DestinationAddress "10.0.0.0"
-PS C:\> $intrusionDetection = New-AzFirewallPolicyIntrusionDetection -Mode "Deny" -BypassTraffic $bypass
-PS C:\> New-AzFirewallPolicy -Name fp1 -Location "westus2" -ResourceGroup TestRg -SkuTier "Premium" -IntrusionDetection $intrusionDetection
+$bypass = New-AzFirewallPolicyIntrusionDetectionBypassTraffic -Name "bypass-setting" -Protocol "TCP" -DestinationPort "80" -SourceAddress "10.0.0.0" -DestinationAddress "10.0.0.0"
+$intrusionDetection = New-AzFirewallPolicyIntrusionDetection -Mode "Deny" -BypassTraffic $bypass
+New-AzFirewallPolicy -Name fp1 -Location "westus2" -ResourceGroup TestRg -SkuTier "Premium" -IntrusionDetection $intrusionDetection
 ```
 
 This example creates intrusion detection with bypass traffic setting

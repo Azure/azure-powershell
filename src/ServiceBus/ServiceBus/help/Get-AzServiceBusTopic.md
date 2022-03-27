@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.dll-Help.xml
 Module Name: Az.ServiceBus
 online version: https://docs.microsoft.com/powershell/module/az.servicebus/get-azservicebustopic
@@ -23,9 +23,11 @@ The **Get-AzServiceBusTopic** cmdlet returns a topic description for the specifi
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Get-AzServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1
 ```
-PS C:\> Get-AzServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1
 
+```output
 Name                                : SB-Topic_example1
 Id                                  : /subscriptions/{subscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.ServiceBus/namespaces/SB-Example1/topics/SB-Topic_example1
 Type                                : Microsoft.ServiceBus/Namespaces/Topics
@@ -50,15 +52,15 @@ UpdatedAt                           : 10/11/2018 11:51:24 PM
 Returns the description of the specified topic for the given Service Bus namespace.
 
 ### Example 2
-```
-PS C:\> Get-AzServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1
+```powershell
+Get-AzServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1
 ```
 
 Returns list of topics for given Service Bus namespace. By default 100 topics will be returned, if more than 100 topics to be returned, please use -MaxCount Parameter.
 
 ### Example 3
-```
-PS C:\> Get-AzServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -MaxCount 150
+```powershell
+Get-AzServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -MaxCount 150
 ```
 
 Returns list of first 150 topics for given Service Bus namespace.

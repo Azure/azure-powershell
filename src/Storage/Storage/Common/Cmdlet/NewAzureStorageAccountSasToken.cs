@@ -51,6 +51,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         [ValidateNotNull]
         public DateTime? ExpiryTime { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Encryption scope to use when sending requests authorized with this SAS URI.")]
+        [ValidateNotNullOrEmpty]
+        public string EncryptionScope { get; set; }
+
         // Overwrite the useless parameter
         public override int? ServerTimeoutPerRequest { get; set; }
         public override int? ClientTimeoutPerRequest { get; set; }
@@ -108,7 +112,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
             }
             else
             {
-                AccountSasBuilder sasBuilder = SasTokenHelper.SetAccountSasBuilder(this.Service, this.ResourceType, Permission, this.StartTime, this.ExpiryTime, this.IPAddressOrRange, this.Protocol);
+                AccountSasBuilder sasBuilder = SasTokenHelper.SetAccountSasBuilder(this.Service, this.ResourceType, Permission, this.StartTime, this.ExpiryTime, this.IPAddressOrRange, this.Protocol, this.EncryptionScope);
                 string sasToken = sasBuilder.ToSasQueryParameters(new StorageSharedKeyCredential(Channel.StorageContext.StorageAccountName, Channel.StorageContext.StorageAccount.Credentials.ExportBase64EncodedKey())).ToString();
                 if (sasToken[0] != '?')
                 {

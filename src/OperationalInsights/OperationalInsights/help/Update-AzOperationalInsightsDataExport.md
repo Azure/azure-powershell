@@ -38,8 +38,10 @@ Updates a data export.
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzOperationalInsightsDataExport -ResourceGroupName {rg-name} -WorkspaceName {workspace-name} -DataExportName {dataExportName} -TableNames {table_names} -Enable $true
+Update-AzOperationalInsightsDataExport -ResourceGroupName {rg-name} -WorkspaceName {workspace-name} -DataExportName {dataExportName} -TableNames {table_names} -Enable $true
+```
 
+```output
 Name             : {dataExportName}
 Id               : /subscriptions/{subscription}/resourcegroups/{rg-name}/providers/microsoft.operationalinsights/workspaces/{workspace-name}/dataexports/{dataExportName}
 Type             : Microsoft.OperationalInsights/workspaces/export

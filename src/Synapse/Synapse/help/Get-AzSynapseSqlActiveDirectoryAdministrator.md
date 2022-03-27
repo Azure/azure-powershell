@@ -37,7 +37,7 @@ The **Get-AzSynapseSqlActiveDirectoryAdministrator** cmdlet gets information abo
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSynapseSqlActiveDirectoryAdministrator -WorkspaceName ContosoWorkspace
+Get-AzSynapseSqlActiveDirectoryAdministrator -WorkspaceName ContosoWorkspace
 ```
 
 This command gets information about an Azure AD administrator for a workspace named ContosoWorkspace.

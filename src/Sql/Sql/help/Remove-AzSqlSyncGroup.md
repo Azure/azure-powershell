@@ -24,8 +24,8 @@ The **Remove-AzSqlSyncGroup** cmdlet removes an Azure SQL Database Sync Group.
 ## EXAMPLES
 
 ### Example 1: Remove a sync group
-```
-PS C:\>Remove-AzSqlSyncGroup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "database01" -Name "syncGroup01"
+```powershell
+Remove-AzSqlSyncGroup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "database01" -Name "syncGroup01"
 ```
 
 This command removes the Azure SQL Database Sync Group named syncGroup01.

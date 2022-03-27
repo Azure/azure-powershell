@@ -135,9 +135,9 @@ namespace Commands.HDInsight.Test.ScenarioTests
         public static KeyIdentifier GenerateVaultKey(Vault vault, string keyName)
         {
             string vaultUri = vault.Properties.VaultUri;
-            var attributes = new KeyAttributes();
-            var createdKey = KeyVaultClient.CreateKeyAsync(vaultUri, keyName, JsonWebKeyType.Rsa,
-                    keyOps: JsonWebKeyOperation.AllOperations).GetAwaiter().GetResult();
+            var attributes = new Microsoft.Azure.KeyVault.Models.KeyAttributes();
+            var createdKey = KeyVaultClient.CreateKeyAsync(vaultUri, keyName, Microsoft.Azure.KeyVault.WebKey.JsonWebKeyType.Rsa,
+                    keyOps: Microsoft.Azure.KeyVault.WebKey.JsonWebKeyOperation.AllOperations).GetAwaiter().GetResult();
             return new KeyIdentifier(createdKey.Key.Kid);
         }
 

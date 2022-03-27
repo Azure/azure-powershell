@@ -29,9 +29,11 @@ The **Get-AzDataShareTrigger** cmdlet gets information about trigger for share s
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Get-AzDataShareTrigger -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareSubscriptionName "AdsShareSubscription" -Name "AdsTrigger"
 ```
-PS C:\> Get-AzDataShareTrigger -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareSubscriptionName "AdsShareSubscription" -Name "AdsTrigger"
 
+```output
 CreatedAt           : 7/10/2019 12:16:34 AM
 CreatedBy           : Ads test
 ProvisioningState   : Succeeded

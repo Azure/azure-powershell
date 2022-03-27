@@ -20,9 +20,9 @@ Removes key credentials or password credentials for an service principal.
 .Description
 Removes key credentials or password credentials for an service principal.
 .Example
-PS C:\> Remove-AzADSpCredential -DisplayName $name -KeyId $keyid
+Remove-AzADSpCredential -DisplayName $name -KeyId $keyid
 .Example
-PS C:\> Get-AzADServicePrincipal -DisplayName $name | Remove-AzADSpCredential
+Get-AzADServicePrincipal -DisplayName $name | Remove-AzADSpCredential
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal

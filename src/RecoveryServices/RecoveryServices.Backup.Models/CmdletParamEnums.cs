@@ -72,7 +72,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         DiskEncryptionSetId,
         RestoreAsManagedDisk,
         UseSystemAssignedIdentity,
-        UserAssignedIdentityId
+        UserAssignedIdentityId,
+        RestoreType,
+        TargetVMName,
+        TargetVNetName,
+        TargetVNetResourceGroup,
+        TargetSubnetName
     }
 
     public enum RestoreFSBackupItemParams

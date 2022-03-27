@@ -383,6 +383,9 @@ function Test-DeleteVaultByName {
         $deletedVault = Get-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgName
         Assert-Null $deletedVault
 
+        # purge deleted vault
+        Remove-AzKeyVault -VaultName $vaultName -Location $rgLocation -InRemovedState -Force
+
         # Test piping
         New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $vaultLocation
 

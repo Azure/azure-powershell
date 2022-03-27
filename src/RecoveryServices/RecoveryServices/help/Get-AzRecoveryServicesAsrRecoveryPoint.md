@@ -30,8 +30,8 @@ The **Get-AzRecoveryServicesAsrRecoveryPoint** cmdlet gets the list of available
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $RecoveryPoints = Get-AzRecoveryServicesAsrRecoveryPoint -ReplicationProtectedItem $ReplicationProtectedItem
+```powershell
+$RecoveryPoints = Get-AzRecoveryServicesAsrRecoveryPoint -ReplicationProtectedItem $ReplicationProtectedItem
 ```
 
 Gets recovery points for the specified ASR replication protected item. $RecoveryPoints[0] will have the Latest Processed Recovery Point (for Lowest RTO).

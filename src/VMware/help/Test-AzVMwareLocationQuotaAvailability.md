@@ -24,8 +24,9 @@ Return quota for subscription by region
 
 ### Example 1: Check quota availability
 ```powershell
-PS C:\> Test-AzVMwareLocationQuotaAvailability -Location centralus
-
+Test-AzVMwareLocationQuotaAvailability -Location centralus
+```
+```output
 Enabled
 -------
 Enabled
@@ -118,7 +119,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.IQuota
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IQuota
 
 ## NOTES
 

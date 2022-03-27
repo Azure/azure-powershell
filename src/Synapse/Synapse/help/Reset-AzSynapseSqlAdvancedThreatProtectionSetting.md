@@ -37,7 +37,7 @@ The **Reset-AzSynapseSqlAdvancedThreatProtectionSetting** cmdlet removes the adv
 
 ### Example 1
 ```powershell
-PS C:\> Reset-AzSynapseSqlAdvancedThreatProtectionSetting -WorkspaceName ContosoWorkspace
+Reset-AzSynapseSqlAdvancedThreatProtectionSetting -WorkspaceName ContosoWorkspace
 ```
 
 This command removes the advanced threat protection settings from a workspace named ContosoWorkspace.

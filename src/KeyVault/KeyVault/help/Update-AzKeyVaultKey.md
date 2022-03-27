@@ -40,10 +40,12 @@ The **Update-AzKeyVaultKey** cmdlet updates the editable attributes of a key in 
 
 ### Example 1: Modify a key to enable it, and set the expiration date and tags
 ```powershell
-PS C:\> $Expires = (Get-Date).AddYears(2).ToUniversalTime()
-PS C:\> $Tags = @{'Severity' = 'high'; 'Accounting' = 'true'}
-PS C:\> Update-AzKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -Expires $Expires -Enable $True -Tag $Tags -PassThru
+$Expires = (Get-Date).AddYears(2).ToUniversalTime()
+$Tags = @{'Severity' = 'high'; 'Accounting' = 'true'}
+Update-AzKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -Expires $Expires -Enable $True -Tag $Tags -PassThru
+```
 
+```output
 Vault Name     : Contoso
 Name           : ITSoftware
 Version        : 394f9379a47a4e2086585468de6c7ae5
@@ -68,8 +70,10 @@ time to the time stored in $Expires, and sets the tags that are stored in $Tags.
 
 ### Example 2: Modify a key to delete all tags
 ```powershell
-PS C:\> Update-AzKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -Version '394f9379a47a4e2086585468de6c7ae5' -Tag @{}
+Update-AzKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -Version '394f9379a47a4e2086585468de6c7ae5' -Tag @{}
+```
 
+```output
 Vault Name     : Contoso
 Name           : ITSoftware
 Version        : 394f9379a47a4e2086585468de6c7ae5

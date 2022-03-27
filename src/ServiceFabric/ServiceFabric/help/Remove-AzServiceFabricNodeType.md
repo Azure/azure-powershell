@@ -24,7 +24,7 @@ Use the **Remove-AzServiceFabricNodeType** to remove all nodes from a specific n
 
 ### Example 1
 ```powershell
-PS c:> Remove-AzServiceFabricNodeType -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -NodeType 'nt1'
+Remove-AzServiceFabricNodeType -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -NodeType 'nt1'
 ```
 
 This command will remove NodeType 'nt1' from the cluster.

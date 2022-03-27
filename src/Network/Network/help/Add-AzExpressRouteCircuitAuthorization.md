@@ -37,7 +37,7 @@ enabled for use.
 ## EXAMPLES
 
 ### Example 1: Add an authorization to the specified ExpressRoute circuit
-```
+```powershell
 $Circuit = Get-AzExpressRouteCircuit -Name "ContosoCircuit" -ResourceGroupName "ContosoResourceGroup"
 Add-AzExpressRouteCircuitAuthorization -Name "ContosoCircuitAuthorization" -Circuit $Circuit
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $Circuit
