@@ -43,7 +43,10 @@ The **Get-AzStackEdgeStorageAccountCredential** cmdlet gets the storage account 
 
 ### Example 1
 ```powershell
-PS C:\>  Get-AzStackEdgeStorageAccountCredential -ResourceGroupName resourceGroupName -DeviceName deviceName
+Get-AzStackEdgeStorageAccountCredential -ResourceGroupName resourceGroupName -DeviceName deviceName
+```
+
+```output
 Name                          StorageAccount          SslStatus  ResourceGroupName
 ----------------------------- ---------------------- ---------- ---------------------
 storageAccountCredentialName  StorageAccountName     Enabled    resourceGroupName

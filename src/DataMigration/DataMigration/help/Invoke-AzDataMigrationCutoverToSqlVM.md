@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataMigration-help.xml
 Module Name: Az.DataMigration
 online version: https://docs.microsoft.com/powershell/module/az.datamigration/invoke-azdatamigrationcutovertosqlvm
 schema: 2.0.0
@@ -15,7 +15,7 @@ Initiate cutover for in-progress online database migration to SQL VM.
 ```
 Invoke-AzDataMigrationCutoverToSqlVM -ResourceGroupName <String> -SqlVirtualMachineName <String>
  -TargetDbName <String> [-SubscriptionId <String>] [-MigrationOperationId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,10 +25,12 @@ Initiate cutover for in-progress online database migration to SQL VM.
 
 ### Example 1: Initiate cutover for the specified in-progress online migration to SQL Virtual Machine
 ```powershell
-PS C:\> $vmMigration = Get-AzDataMigrationToSqlVM -ResourceGroupName "MyResourceGroup" -SqlVirtualMachineName "MySqlVM" -TargetDbName "MyDatabase"
-PS C:\> Invoke-AzDataMigrationCutoverToSqlVM -ResourceGroupName "MyResourceGroup" -SqlVirtualMachineName "MySqlVM" -TargetDbName "MyDatabase" -MigrationOperationId $vmMigration.MigrationOperationId
-PS C:\> Get-AzDataMigrationToSqlVM -InputObject $vmMigration
+$vmMigration = Get-AzDataMigrationToSqlVM -ResourceGroupName "MyResourceGroup" -SqlVirtualMachineName "MySqlVM" -TargetDbName "MyDatabase"
+Invoke-AzDataMigrationCutoverToSqlVM -ResourceGroupName "MyResourceGroup" -SqlVirtualMachineName "MySqlVM" -TargetDbName "MyDatabase" -MigrationOperationId $vmMigration.MigrationOperationId
+Get-AzDataMigrationToSqlVM -InputObject $vmMigration
+```
 
+```output
 Name                 Type                                       Kind  ProvisioningState MigrationStatus
 ----                 ----                                       ----  ----------------- ---------------
 MyDatabase           Microsoft.DataMigration/databaseMigrations SqlVm Completing        Completing
@@ -219,4 +221,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-

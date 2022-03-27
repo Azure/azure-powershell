@@ -37,7 +37,7 @@ The **Get-AzNetAppFilesSnapshotPolicy** cmdlet gets details of an ANF snapshot p
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzNetAppFilesSnapshotPolicy -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -Name "MySnapshotPolicy"
+Get-AzNetAppFilesSnapshotPolicy -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -Name "MySnapshotPolicy"
 ```
 
 This command gets the backup policy named "MyBackupPolicy" for account "MyAnfAccount".

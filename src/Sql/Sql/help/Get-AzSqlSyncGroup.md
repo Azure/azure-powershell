@@ -24,8 +24,11 @@ Specify the name of a sync group to see information for only that sync group.
 ## EXAMPLES
 
 ### Example 1: Get all instances of Azure SQL Sync Group assigned to an Azure SQL Database
+```powershell
+Get-AzSqlSyncGroup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" | Format-List
 ```
-PS C:\>Get-AzSqlSyncGroup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" | Format-List
+
+```output
 ResourceId                  : /subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/databases/{Database01}/syncGroups/{SyncGroup01}
 ResourceGroupName           : ResourceGroup01
 ServerName                  : Server01
@@ -58,8 +61,11 @@ Schema                      :
 This command gets information about all the Azure SQL Database Sync Groups assigned to an Azure SQL Database.
 
 ### Example 2: Get information about an Azure SQL Database Sync Group
+```powershell
+Get-AzSqlSyncGroup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -Name "SyncGroup01" | Format-List
 ```
-PS C:\>Get-AzSqlSyncGroup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -Name "SyncGroup01" | Format-List
+
+```output
 ResourceId                  : /subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/databases/{Database01}/syncGroups/{SyncGroup02}
 ResourceGroupName           : ResourceGroup01
 ServerName                  : Server01
@@ -78,8 +84,11 @@ Schema                      :
 This command gets information about the Azure SQL Database Sync Group with name "SyncGroup01"
 
 ### Example 3: Get all instances of Azure SQL Sync Group assigned to an Azure SQL Database using filtering
+```powershell
+Get-AzSqlSyncGroup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -Name "SyncGroup*" | Format-List
 ```
-PS C:\>Get-AzSqlSyncGroup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -Name "SyncGroup*" | Format-List
+
+```output
 ResourceId                  : /subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/databases/{Database01}/syncGroups/{SyncGroup01}
 ResourceGroupName           : ResourceGroup01
 ServerName                  : Server01

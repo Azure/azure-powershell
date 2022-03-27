@@ -26,12 +26,12 @@ Copy-AzRecoveryServicesVault cmdlet. This cmdlet is useful for cross tenant DS m
 
 ### Example 1: Initialize DS Move for cross subscription copy
 ```powershell
-PS C:\> Set-AzContext -SubscriptionName $targetSubscription
-PS C:\> $validated = Test-AzRecoveryServicesDSMove -SourceVault $srcVault -TargetVault $trgVault -Force
-PS C:\> Set-AzContext -SubscriptionName $sourceSubscription
-PS C:\> if($validated) {
->>  $corr = Initialize-AzRecoveryServicesDSMove  -SourceVault $srcVault -TargetVault $trgVault
->> }
+Set-AzContext -SubscriptionName $targetSubscription
+$validated = Test-AzRecoveryServicesDSMove -SourceVault $srcVault -TargetVault $trgVault -Force
+Set-AzContext -SubscriptionName $sourceSubscription
+if($validated) {
+  $corr = Initialize-AzRecoveryServicesDSMove  -SourceVault $srcVault -TargetVault $trgVault
+ }
 ```
 
 First cmdlet sets target subscription context. 

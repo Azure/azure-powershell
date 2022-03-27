@@ -31,7 +31,7 @@ The **Deny-AzPrivateEndpointConnection** cmdlet denies a private endpoint connec
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 Deny-AzPrivateEndpointConnection -Name TestPrivateEndpointConnection -ResourceGroupName TestResourceGroup -ServiceName TestPrivateLinkService
 ```
 

@@ -10,7 +10,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Support
     public partial struct VMTypeEnum :
         System.IEquatable<VMTypeEnum>
     {
-        public static Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.VMTypeEnum RegularEdgeService = @"REGULAR, EDGE, SERVICE";
+        public static Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.VMTypeEnum Edge = @"EDGE";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.VMTypeEnum Regular = @"REGULAR";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.VMTypeEnum Service = @"SERVICE";
 
         /// <summary>the value for an instance of the <see cref="VMTypeEnum" /> Enum.</summary>
         private string _value { get; set; }

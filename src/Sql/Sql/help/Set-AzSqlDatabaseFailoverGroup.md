@@ -28,15 +28,15 @@ During preview of the Failover Groups feature, only values greater than or equal
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $failoverGroup = Set-AzSqlDatabaseFailoverGroup -ResourceGroupName rg -ServerName primaryserver -FailoverGroupName fg -FailoverPolicy Automatic -GracePeriodWithDataLossHours 1
+```powershell
+$failoverGroup = Set-AzSqlDatabaseFailoverGroup -ResourceGroupName rg -ServerName primaryserver -FailoverGroupName fg -FailoverPolicy Automatic -GracePeriodWithDataLossHours 1
 ```
 
 Sets a Failover Group's failover policy to 'Automatic.'
 
 ### Example 2
-```
-PS C:\> $failoverGroup = Get-AzSqlDatabaseFailoverGroup -ResourceGroupName rg -ServerName primaryserver -FailoverGroupName fg | Set-AzSqlDatabaseFailoverGroup -FailoverPolicy Manual
+```powershell
+$failoverGroup = Get-AzSqlDatabaseFailoverGroup -ResourceGroupName rg -ServerName primaryserver -FailoverGroupName fg | Set-AzSqlDatabaseFailoverGroup -FailoverPolicy Manual
 ```
 
 Sets a Failover Group's failover policy to 'Manual' by piping in the Failover Group.

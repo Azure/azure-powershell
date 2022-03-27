@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.dll-Help.xml
 Module Name: Az.ServiceBus
 online version: https://docs.microsoft.com/powershell/module/az.servicebus/get-azservicebusoperation
@@ -22,8 +22,8 @@ The **Get-AzServiceBusOperation** cmdlet Lists the ServiceBus supported Operatio
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Get-AzServiceBusOperation
+```powershell
+Get-AzServiceBusOperation
 ```
 
 Lists ServiceBus supported operations

@@ -37,6 +37,11 @@ Get-AzVM [-Status] [-NextLink] <Uri> [-UserData] [-DefaultProfile <IAzureContext
  [<CommonParameters>]
 ```
 
+### GetVirtualMachineById
+```
+Get-AzVM [-Status] -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Get-AzVM** cmdlet gets the model view or the instance view of an Azure virtual machine.
 The model view is the user specified properties of the virtual machine.
@@ -322,7 +327,7 @@ Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
+Accept wildcard characters: False
 ```
 
 ```yaml
@@ -334,7 +339,7 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
+Accept wildcard characters: False
 ```
 
 ### -NextLink
@@ -364,7 +369,7 @@ Required: False
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
+Accept wildcard characters: False
 ```
 
 ```yaml
@@ -376,7 +381,22 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Id of the VM
+
+```yaml
+Type: System.String
+Parameter Sets: GetVirtualMachineById
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
 ```
 
 ### -Status
@@ -399,7 +419,7 @@ UserData for the VM, which will be base-64 encoded. Customer should not pass any
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: DefaultParamSet, GetVirtualMachineInResourceGroupParamSet, ListLocationVirtualMachinesParamSet, ListNextLinkVirtualMachinesParamSet
 Aliases:
 
 Required: False

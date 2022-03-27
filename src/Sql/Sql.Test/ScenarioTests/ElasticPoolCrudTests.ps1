@@ -19,7 +19,7 @@
 function Test-CreateElasticPool
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
@@ -58,7 +58,7 @@ function Test-CreateElasticPool
 function Test-CreateVcoreElasticPool
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
@@ -224,7 +224,7 @@ function Test-CreateElasticPoolWithMaintenanceConfigurationId
 function Test-UpdateElasticPool
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
@@ -280,7 +280,7 @@ function Test-UpdateElasticPool
 function Test-UpdateVcoreElasticPool
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
@@ -348,13 +348,13 @@ function Test-UpdateVcoreElasticPool
 function Test-UpdateVcoreElasticPoolWithLicenseType
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
 	# Create a Vcore Pool
 	$poolName = Get-ElasticPoolName
-	$ep1 = New-AzSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -ElasticPoolName $poolName -VCore 2 -Edition GeneralPurpose -ComputeGeneration Gen4
+	$ep1 = New-AzSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -ElasticPoolName $poolName -VCore 2 -Edition GeneralPurpose -ComputeGeneration Gen5
 	Assert-NotNull $ep1
 
 	try
@@ -452,7 +452,7 @@ function Test-UpdateElasticPoolWithMaintenanceConfigurationId
 function Test-GetElasticPool
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
@@ -584,7 +584,7 @@ function Test-GetElasticPoolWithMaintenanceConfigurationId
 function Test-RemoveElasticPool
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
@@ -622,7 +622,7 @@ function Test-RemoveElasticPool
 function Test-ListAndCancelElasticPoolOperation
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 

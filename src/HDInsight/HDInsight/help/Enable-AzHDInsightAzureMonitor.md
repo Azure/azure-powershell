@@ -37,24 +37,24 @@ This cmdlet **Enable-AzHDInsightAzureMonitor** enables Azure Monitor in a specif
 
 ### Example 1
 ```powershell
-PS C:\> # Cluster info
-PS C:\> $clusterName = "your-hadoop-001"
-PS C:\> $resourceGroupName = "Group"
-PS C:\> $workspaceId = "your-workspace-id"
-PS C:\> $primaryKey = "your-primary-key"
-PS C:\> Enable-AzHDInsightAzureMonitor -ClusterName $clusterName -ResourceGroup $resourceGroupName -WorkspaceId $workspaceId -PrimaryKey $primaryKey
+# Cluster info
+$clusterName = "your-hadoop-001"
+$resourceGroupName = "Group"
+$workspaceId = "your-workspace-id"
+$primaryKey = "your-primary-key"
+Enable-AzHDInsightAzureMonitor -ClusterName $clusterName -ResourceGroup $resourceGroupName -WorkspaceId $workspaceId -PrimaryKey $primaryKey
 ```
 
 This cmdlet enables the azure monitor in a specified HDInsight cluster.
 
 ### Example 2
 ```powershell
-PS C:\> # Cluster info
-PS C:\> $clusterName = "your-hadoop-001"
-PS C:\> $cluster=Get-AzHDInsightCluster -ClusterName $clusterName
-PS C:\> $workspaceId = "your-workspace-id"
-PS C:\> $primaryKey = "your-primary-key"
-PS C:\> $cluster | Enable-AzHDInsightAzureMonitor -WorkspaceId $workspaceId -PrimaryKey $primaryKey
+# Cluster info
+$clusterName = "your-hadoop-001"
+$cluster=Get-AzHDInsightCluster -ClusterName $clusterName
+$workspaceId = "your-workspace-id"
+$primaryKey = "your-primary-key"
+$cluster | Enable-AzHDInsightAzureMonitor -WorkspaceId $workspaceId -PrimaryKey $primaryKey
 ```
 
 This cmdlet enables the azure monitor in a specified HDInsight cluster with pipeline.

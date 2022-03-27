@@ -30,8 +30,8 @@ The **Update-AzRecoveryServicesAsrNetworkMapping** cmdlet updates the specified 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $currentJob = Update-AzRecoveryServicesAsrNetworkMapping -Mapping $NetworkMapping -RecoveryNetwork $RecoveryNetwork
+```powershell
+$currentJob = Update-AzRecoveryServicesAsrNetworkMapping -Mapping $NetworkMapping -RecoveryNetwork $RecoveryNetwork
 ```
 
 Starts the update network mapping operation using the specified parameters and returns the ASR job used to track the operation.

@@ -53,9 +53,11 @@ The **New-AzOperationalInsightsApplicationInsightsDataSource** cmdlet enables th
 ## EXAMPLES
 
 ### Example 1: Create application-insights data source in workspace
+```powershell
+New-AzOperationalInsightsApplicationInsightsDataSource -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "MyWorkspace" -ApplicationSubscriptionId "e791a474-ee54-46a2-bb06-5e058302d234" -ApplicationResourceGroupName "ContosoResourceGroup" -ApplicationName "MyAIApplication"
 ```
-PS C:\> New-AzOperationalInsightsApplicationInsightsDataSource -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "MyWorkspace" -ApplicationSubscriptionId "e791a474-ee54-46a2-bb06-5e058302d234" -ApplicationResourceGroupName "ContosoResourceGroup" -ApplicationName "MyAIApplication"
 
+```output
 Name              : subscriptions/e791a474-ee54-46a2-bb06-5e058302d234/resourceGroups/ContosoResourceGroup/providers/microsoft.insights/components/MyAIApplication
 ResourceGroupName : ContosoResourceGroup
 WorkspaceName     : MyWorkspace
@@ -67,9 +69,11 @@ Properties        : {"linkedResourceId":"subscriptions/e791a474-ee54-46a2-bb06-5
 This command creates an application-insights data source of a given application in a given log analytics workspace. This enables the collection of logs from given application to the log analytics workspace.
 
 ### Example 2: Get workspace object and create application-insights data source by the application resource id
+```powershell
+Get-AzureRmOperationalInsightsWorkspace -Name "MyWorkspace" -ResourceGroupName "ContosoResourceGroup" | New-AzOperationalInsightsApplicationInsightsDataSource -ApplicationResourceId "/subscriptions/e791a474-ee54-46a2-bb06-5e058302d234/resourceGroups/ContosoResourceGroup/providers/microsoft.insights/components/MyAIApplication"
 ```
-PS C:\> Get-AzureRmOperationalInsightsWorkspace -Name "MyWorkspace" -ResourceGroupName "ContosoResourceGroup" | New-AzOperationalInsightsApplicationInsightsDataSource -ApplicationResourceId "/subscriptions/e791a474-ee54-46a2-bb06-5e058302d234/resourceGroups/ContosoResourceGroup/providers/microsoft.insights/components/MyAIApplication"
 
+```output
 Name              : subscriptions/aaaaa474-ee54-4aaa-bb06-5e058302daaa/resourceGroups/ContosoResourceGroup/providers/microsoft.insights/components/MyAIApplication
 ResourceGroupName : ContosoResourceGroup
 WorkspaceName     : MyWorkspace

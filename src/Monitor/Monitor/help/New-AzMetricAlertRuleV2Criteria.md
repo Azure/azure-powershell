@@ -42,8 +42,10 @@ The **New-AzMetricAlertRuleV2Criteria** cmdlet creates a local metric criteria o
 ### Example 1: Create a simple metric alert criteria
 
 ```powershell
-PS C:\> New-AzMetricAlertRuleV2Criteria -MetricName "Percentage CPU" -MetricNameSpace "Microsoft.Compute/virtualMachines" -TimeAggregation Average -Operator GreaterThan -Threshold 5
+New-AzMetricAlertRuleV2Criteria -MetricName "Percentage CPU" -MetricNameSpace "Microsoft.Compute/virtualMachines" -TimeAggregation Average -Operator GreaterThan -Threshold 5
+```
 
+```output
 CriterionType        : StaticThresholdCriterion
 OperatorProperty     : GreaterThan
 Threshold            : 5
@@ -60,7 +62,10 @@ This command creates a simple metric alert criteria that can be used in a metric
 ### Example 2: Create a dynamic metric alert criteria
 
 ```powershell
-PS C:\>New-AzMetricAlertRuleV2Criteria -Dynamic -MetricName "Percentage CPU" -MetricNameSpace "Microsoft.Compute/virtualMachines" -TimeAggregation Average -Operator GreaterThan -ThresholdSensitivity Medium -ViolationCount 2 -ExaminedAggregatedPointCount 4
+New-AzMetricAlertRuleV2Criteria -Dynamic -MetricName "Percentage CPU" -MetricNameSpace "Microsoft.Compute/virtualMachines" -TimeAggregation Average -Operator GreaterThan -ThresholdSensitivity Medium -ViolationCount 2 -ExaminedAggregatedPointCount 4
+```
+
+```output
 CriterionType        : DynamicThresholdCriterion
 OperatorProperty     : GreaterThan
 AlertSensitivity     : Medium
@@ -79,7 +84,10 @@ This command creates a Dynamic metric alert criteria that can be used in a metri
 ### Example 3: Create a more complex metric alert criteria
 
 ```powershell
-PS C:\>New-AzMetricAlertRuleV2DimensionSelection -DimensionName "availabilityResult/name" -ValuesToInclude "gdtest" | New-AzMetricAlertRuleV2Criteria -MetricName "availabilityResults/availabilityPercentage" -TimeAggregation Average -Operator GreaterThan -Threshold 2
+New-AzMetricAlertRuleV2DimensionSelection -DimensionName "availabilityResult/name" -ValuesToInclude "gdtest" | New-AzMetricAlertRuleV2Criteria -MetricName "availabilityResults/availabilityPercentage" -TimeAggregation Average -Operator GreaterThan -Threshold 2
+```
+
+```output
 CriterionType        : StaticThresholdCriterion
 OperatorProperty     : GreaterThan
 Threshold            : 2
@@ -96,7 +104,10 @@ This set of commands creates a more complex metric alert criteria which includes
 ### Example 4: Create a webtest availability criteria
 
 ```powershell
-PS C:\>New-AzMetricAlertRuleV2Criteria -WebTest -WebTestId "/subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/012345/providers/Microsoft.Insights/webtests/PingTest-appInsights" -ApplicationInsightsId "/subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/012345/providers/Microsoft.Insights/components/appInsights" -FailedLocationCount 3
+New-AzMetricAlertRuleV2Criteria -WebTest -WebTestId "/subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/012345/providers/Microsoft.Insights/webtests/PingTest-appInsights" -ApplicationInsightsId "/subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/012345/providers/Microsoft.Insights/components/appInsights" -FailedLocationCount 3
+```
+
+```output
 CriterionType        : WebtestLocationAvailabilityCriterion
 WebTestId            : /subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/012345/providers/Microsoft.Insights/webtests/PingTest-appInsights
 ComponentId          : /subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/012345/providers/Microsoft.Insights/components/appInsights
