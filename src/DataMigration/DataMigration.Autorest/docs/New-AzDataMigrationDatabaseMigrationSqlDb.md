@@ -1,50 +1,49 @@
 ---
 external help file:
 Module Name: Az.DataMigration
-online version: https://docs.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationtosqlvm
+online version: https://docs.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationdatabasemigrationsqldb
 schema: 2.0.0
 ---
 
-# New-AzDataMigrationToSqlVM
+# New-AzDataMigrationDatabaseMigrationSqlDb
 
 ## SYNOPSIS
-Create a new database migration to a given SQL VM.
+Create or Update Database Migration resource.
 
 ## SYNTAX
 
 ```
-New-AzDataMigrationToSqlVM -ResourceGroupName <String> -SqlVirtualMachineName <String> -TargetDbName <String>
- [-SubscriptionId <String>] [-AzureBlobAccountKey <String>] [-AzureBlobContainerName <String>]
- [-AzureBlobStorageAccountResourceId <String>] [-FileSharePassword <String>] [-FileSharePath <String>]
- [-FileShareUsername <String>] [-Kind <ResourceType>] [-MigrationOperationId <String>]
- [-MigrationService <String>] [-Offline] [-OfflineConfigurationLastBackupName <String>]
- [-ProvisioningError <String>] [-Scope <String>] [-SourceDatabaseName <String>]
+New-AzDataMigrationDatabaseMigrationSqlDb -ResourceGroupName <String> -SqlDbInstanceName <String>
+ -TargetDbName <String> [-SubscriptionId <String>] [-Kind <ResourceType>] [-MigrationOperationId <String>]
+ [-MigrationService <String>] [-ProvisioningError <String>] [-Scope <String>] [-SourceDatabaseName <String>]
  [-SourceSqlConnectionAuthentication <String>] [-SourceSqlConnectionDataSource <String>]
  [-SourceSqlConnectionEncryptConnection] [-SourceSqlConnectionPassword <String>]
  [-SourceSqlConnectionTrustServerCertificate] [-SourceSqlConnectionUserName <String>]
- [-StorageAccountKey <String>] [-StorageAccountResourceId <String>] [-TargetDatabaseCollation <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SqlDataCopyThresholdCidxKbsThreshold <Int32>] [-SqlDataCopyThresholdCidxRowThreshold <Int32>]
+ [-TableList <String[]>] [-TargetDatabaseCollation <String>] [-TargetSqlConnectionAuthentication <String>]
+ [-TargetSqlConnectionDataSource <String>] [-TargetSqlConnectionEncryptConnection]
+ [-TargetSqlConnectionPassword <String>] [-TargetSqlConnectionTrustServerCertificate]
+ [-TargetSqlConnectionUserName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a new database migration to a given SQL VM.
+Create or Update Database Migration resource.
 
 ## EXAMPLES
 
-### Example 1: Start a Database Migration from the on-premise Source Sql Server to target Sql VM
+### Example 1: Start a Database Migration from the on-premise Source Sql Server to target SQL DB
 ```powershell
-New-AzDataMigrationToSqlVM -ResourceGroupName "MyResourceGroup" -SqlVirtualMachineName "MyVM" -TargetDbName "MyDb" -Kind "SqlVm" -Scope "/subscriptions/0000-1111-2222-3333-4444/resourceGroups/MyResourceGroup/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachine/MyVM" -MigrationService "/subscriptions/0000-1111-2222-3333-4444/resourceGroups/MyResourceGroup/providers/Microsoft.DataMigration/SqlMigrationServices/MySqlMigrationService" -StorageAccountResourceId "/subscriptions/0000-1111-2222-3333-4444/resourceGroups/MyResourceGroup/providers/Microsoft.Storage/storageAccounts/MyStorageAccount" -StorageAccountKey "aaaaaccccoooouuunnntttkkkeeeyy" -FileSharePath "\\filesharepath.com\SharedBackup\MyBackUps" -FileShareUsername "filesharepath\User" -FileSharePassword "password" -SourceSqlConnectionAuthentication "SqlAuthentication" -SourceSqlConnectionDataSource "LabServer.database.net" -SourceSqlConnectionUserName "User" -SourceSqlConnectionPassword "password" -SourceDatabaseName "AdventureWorks"
+New-AzDataMigrationDatabaseMigrationSqlDb -ResourceGroupName "myRG" -SqlDbInstanceName "mySqlDb" -MigrationService  "/subscriptions/1111-2222-3333-4444/resourceGroups/myRG/providers/Microsoft.DataMigration/SqlMigrationServices/mydms" -TargetSqlConnectionAuthentication "SqlAuthentication" -TargetSqlConnectionDataSource "mySqlDb.database.windows.net" -TargetSqlConnectionPassword "password" -TargetSqlConnectionUserName "user" -SourceSqlConnectionAuthentication "SqlAuthentication" -SourceSqlConnectionDataSource "Server.COM" -SourceSqlConnectionUserName "testuser" -SourceSqlConnectionPassword "password" -SourceDatabaseName "AdventureWorks" -Scope  "/subscriptions/1111-222-3333-4444/resourceGroups/myRG/providers/Microsoft.Sql/servers/mySqlDb" -TargetDbName "mydb1"
 ```
 
 ```output
-Name                 Type                                       Kind  ProvisioningState MigrationStatus
-----                 ----                                       ----  ----------------- ---------------
-MyDb                 Microsoft.DataMigration/databaseMigrations SqlVm Succeeded         InProgress
+Name             
+----               
+mydb1               
 ```
 
-This command starts a Database Migration from the Source Sql Server to target Sql VM.
-This example is for online migration.
-To make it offline add -Offline to the parameters.
+This command starts a Database Migration from the Source Sql Server to target SQL DB.
 
 ## PARAMETERS
 
@@ -63,51 +62,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AzureBlobAccountKey
-Storage Account Key.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AzureBlobContainerName
-Blob container name where backups are stored.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AzureBlobStorageAccountResourceId
-Resource Id of the storage account where backups are stored.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -115,51 +69,6 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FileSharePassword
-Password for username to access file share location.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FileSharePath
-Location as SMB share or local drive where backups are placed.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FileShareUsername
-Username to access the file share location for backups.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named
@@ -218,38 +127,6 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Offline
-Offline migration
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -OfflineConfigurationLastBackupName
-Last backup name for offline migration.
-This is optional for migrations from file share.
-If it is not provided, then the service will determine the last backup file name based on latest backup files present in file share.
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -426,7 +303,37 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SqlVirtualMachineName
+### -SqlDataCopyThresholdCidxKbsThreshold
+Minimum required size in kbs of a table with a clustered index to perform parallel data copy
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SqlDataCopyThresholdCidxRowThreshold
+Minimum row count of a table with clustered index to perform parallel data copy
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SqlDbInstanceName
 .
 
 ```yaml
@@ -435,36 +342,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StorageAccountKey
-Storage Account Key.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StorageAccountResourceId
-Resource Id of the storage account copying backups.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -482,6 +359,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TableList
+List of tables to copy.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -510,6 +402,96 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetSqlConnectionAuthentication
+Authentication type.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetSqlConnectionDataSource
+Data source.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetSqlConnectionEncryptConnection
+Whether to encrypt connection or not.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetSqlConnectionPassword
+Password to connect to source SQL.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetSqlConnectionTrustServerCertificate
+Whether to trust server certificate or not.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetSqlConnectionUserName
+User name to connect to source SQL.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -554,7 +536,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220130Preview.IDatabaseMigrationSqlVM
+### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220130Preview.IDatabaseMigrationSqlDb
 
 ## NOTES
 

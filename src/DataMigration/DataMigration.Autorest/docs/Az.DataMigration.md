@@ -14,6 +14,9 @@ Microsoft Azure PowerShell: DataMigration cmdlets
 ### [Get-AzDataMigrationAssessment](Get-AzDataMigrationAssessment.md)
 Start assessment on SQL Server instance(s)
 
+### [Get-AzDataMigrationDatabaseMigrationsSqlDb](Get-AzDataMigrationDatabaseMigrationsSqlDb.md)
+Retrieve the Database Migration resource.
+
 ### [Get-AzDataMigrationPerformanceDataCollection](Get-AzDataMigrationPerformanceDataCollection.md)
 Collect performance data for given SQL Server instance(s)
 
@@ -44,6 +47,9 @@ Initiate cutover for in-progress online database migration to SQL Managed Instan
 ### [Invoke-AzDataMigrationCutoverToSqlVM](Invoke-AzDataMigrationCutoverToSqlVM.md)
 Initiate cutover for in-progress online database migration to SQL VM.
 
+### [New-AzDataMigrationDatabaseMigrationSqlDb](New-AzDataMigrationDatabaseMigrationSqlDb.md)
+Create or Update Database Migration resource.
+
 ### [New-AzDataMigrationSqlService](New-AzDataMigrationSqlService.md)
 Create or Update Database Migration Service.
 
@@ -59,11 +65,17 @@ Create a new database migration to a given SQL VM.
 ### [Register-AzDataMigrationIntegrationRuntime](Register-AzDataMigrationIntegrationRuntime.md)
 Registers Sql Migration Service on Integration Runtime
 
+### [Remove-AzDataMigrationDatabaseMigrationsSqlDb](Remove-AzDataMigrationDatabaseMigrationsSqlDb.md)
+Delete Database Migration resource.
+
 ### [Remove-AzDataMigrationSqlService](Remove-AzDataMigrationSqlService.md)
 Delete Database Migration Service.
 
 ### [Remove-AzDataMigrationSqlServiceNode](Remove-AzDataMigrationSqlServiceNode.md)
 Delete the integration runtime node.
+
+### [Stop-AzDataMigrationDatabaseMigrationsSqlDb](Stop-AzDataMigrationDatabaseMigrationsSqlDb.md)
+Stop on going migration for the database.
 
 ### [Stop-AzDataMigrationToSqlManagedInstance](Stop-AzDataMigrationToSqlManagedInstance.md)
 Stop in-progress database migration to SQL Managed Instance.

@@ -114,7 +114,7 @@ Event and Error Logs Folder Path: C:\Users\vmanhas\AppData\Local\Microsoft\SqlAs
 
 This command runs Performance Data Collection in a new console on given SQL Server using the config file.
 
-### Example 1: Run Performance Data Collection in a new console on given SQL Server using connection string
+### Example 4: Run Performance Data Collection in a new console on given SQL Server using connection string
 ```powershell
 PS C:\> Get-AzDataMigrationPerformanceDataCollection -SqlConnectionStrings "Data Source=AALAB03-2K8.REDMOND.CORP.MICROSOFT.COM;Initial Catalog=master;Integrated Security=False;User Id=dummyUserId;Password=dummyPassword" -NumberOfIterations 2 -NewConsole
 

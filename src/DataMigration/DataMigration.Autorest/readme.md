@@ -34,7 +34,7 @@ branch: 7086ee861c3a6196bb98f8b327af11d03e545a05
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2021-10-30-preview/sqlmigration.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/dev-datamigration-2022-03-30-preview/specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-03-30-preview/sqlmigration.json
 
 title: DataMigration
 module-version: 0.1.0
@@ -42,6 +42,10 @@ module-version: 0.1.0
 directive:
 
   #Swagger description changes
+  - from: swagger-document
+    where: $.info
+    transform: $["version"] = "2022-01-30-preview"
+
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}"].get
     transform: $["description"] = "Retrieve the Database Migration Service."
@@ -226,6 +230,16 @@ directive:
           - MigrationStatus
   - where:
       model-name: DatabaseMigrationSqlVm
+    set:
+      format-table:
+        properties:
+          - Name
+          - Type
+          - Kind
+          - ProvisioningState
+          - MigrationStatus
+  - where:
+      model-name: DatabaseMigrationSqlDb
     set:
       format-table:
         properties:

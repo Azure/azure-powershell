@@ -1,49 +1,73 @@
 ---
 external help file:
 Module Name: Az.DataMigration
-online version: https://docs.microsoft.com/powershell/module/az.datamigration/remove-azdatamigrationsqlservicenode
+online version: https://docs.microsoft.com/powershell/module/az.datamigration/remove-azdatamigrationdatabasemigrationssqldb
 schema: 2.0.0
 ---
 
-# Remove-AzDataMigrationSqlServiceNode
+# Remove-AzDataMigrationDatabaseMigrationsSqlDb
 
 ## SYNOPSIS
-Delete the integration runtime node.
+Delete Database Migration resource.
 
 ## SYNTAX
 
-### DeleteExpanded (Default)
+### Delete (Default)
 ```
-Remove-AzDataMigrationSqlServiceNode -ResourceGroupName <String> -SqlMigrationServiceName <String>
- [-SubscriptionId <String>] [-IntegrationRuntimeName <String>] [-NodeName <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzDataMigrationDatabaseMigrationsSqlDb -ResourceGroupName <String> -SqlDbInstanceName <String>
+ -TargetDbName <String> [-SubscriptionId <String>] [-Force] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteViaIdentityExpanded
+### DeleteViaIdentity
 ```
-Remove-AzDataMigrationSqlServiceNode -InputObject <IDataMigrationIdentity> [-IntegrationRuntimeName <String>]
- [-NodeName <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzDataMigrationDatabaseMigrationsSqlDb -InputObject <IDataMigrationIdentity> [-Force]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete the integration runtime node.
+Delete Database Migration resource.
 
 ## EXAMPLES
 
-### Example 1: Remove the specified Intergration Runtime Node for a Sql Migration Service
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzDataMigrationSqlServiceNode -ResourceGroupName "MyResourceGroup" -SqlMigrationServiceName "MySqlMigrationService" -NodeName "WIN-AKLAB" | Select *
+{{ Add code here }}
 ```
 
 ```output
-Name       Node
-----       ----
-default-ir {}
+{{ Add output here }}
 ```
 
-This command removes the specified Intergration Runtime Node for the given Sql Migration Service.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -60,27 +84,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+### -Force
+Optional force delete boolean.
+If this is provided as true, migration will be deleted even if active.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity
-Parameter Sets: DeleteViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -IntegrationRuntimeName
-The name of integration runtime.
-
-```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -91,11 +100,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NodeName
-The name of node to delete.
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity
+Parameter Sets: DeleteViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -127,7 +152,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteExpanded
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -137,12 +162,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SqlMigrationServiceName
-Name of the SQL Migration Service.
+### -SqlDbInstanceName
+.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteExpanded
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -157,12 +182,27 @@ Subscription ID that identifies an Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteExpanded
+Parameter Sets: Delete
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetDbName
+The name of the target database.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -207,7 +247,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220130Preview.IDeleteNode
+### System.Boolean
 
 ## NOTES
 
