@@ -24,17 +24,17 @@ Depending on the parameters passed, the cmdlet returns the definition for a spec
 ## EXAMPLES
 
 ### Example 1: Get details of specific web service
-```
+```powershell
 Get-AzMlWebService -ResourceGroupName "myresourcegroup" -Name "mywebservicename"
 ```
 
 ### Example 2: Get all web service resources in current subscription
-```
+```powershell
 Get-AzMlWebService
 ```
 
 ### Example 3: Get all web services in the current subscription and given resource group
-```
+```powershell
 Get-AzMlWebService -ResourceGroupName "myresourcegroup"
 ```
 

@@ -24,15 +24,15 @@ The **Set-AzMediaServiceKey** cmdlet regenerates a key used for accessing the Re
 ## EXAMPLES
 
 ### Example 1: Regenerate the primary key used for accessing the Media Service
-```
-PS C:\>Set-AzMediaServiceKey -ResourceGroupName "ResourceGroup004" -AccountName "MediaService001" -KeyType Primary
+```powershell
+Set-AzMediaServiceKey -ResourceGroupName "ResourceGroup004" -AccountName "MediaService001" -KeyType Primary
 ```
 
 This command regenerates the primary key for the media service named MediaService001 that belongs to the resource group named ResourceGroup004.
 
 ### Example 2: Regenerates the secondary key used for accessing the Media Service
-```
-PS C:\>Set-AzMediaServiceKey -ResourceGroupName "Resourcegroup123" -AccountName "MediaService002" -KeyType Secondary
+```powershell
+Set-AzMediaServiceKey -ResourceGroupName "Resourcegroup123" -AccountName "MediaService002" -KeyType Secondary
 ```
 
 This command regenerates the secondary key for the media service named MediaService002 that belongs to the resource group named Resourcegroup123.

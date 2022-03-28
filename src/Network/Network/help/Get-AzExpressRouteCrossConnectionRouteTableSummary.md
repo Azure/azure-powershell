@@ -36,7 +36,7 @@ router.
 ## EXAMPLES
 
 ### Example 1: Display the route summary for the primary path
-```
+```powershell
 Get-AzExpressRouteCrossConnectionRouteTableSummary -ResourceGroupName $RG -ExpressRouteCrossConnectionName $CrossConnectionName -DevicePath 'Primary'
 ```
 

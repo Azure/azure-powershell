@@ -37,7 +37,7 @@ The **Remove-AzServiceEndpointPolicy** cmdlet removes a service endpoint policy.
 ## EXAMPLES
 
 ### Example 1: Removes a service endpoint policy using name
-```
+```powershell
 Remove-AzServiceEndpointPolicyDefinition -Name "PolicyDef1"
 ```
 

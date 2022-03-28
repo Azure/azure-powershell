@@ -37,22 +37,22 @@ The **Get-AzSynapseManagedIdentitySqlControlSetting** cmdlet gets gets the manag
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSynapseManagedIdentitySqlControlSetting -WorkspaceName ContosoWorkspace
+Get-AzSynapseManagedIdentitySqlControlSetting -WorkspaceName ContosoWorkspace
 ```
 
 This command gets the managed identity SQL control setting for a workspace.
 
 ### Example 2
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Get-AzSynapseManagedIdentitySqlControlSetting
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Get-AzSynapseManagedIdentitySqlControlSetting
 ```
 
 This command gets the managed identity SQL control setting for a workspace through pipeline.
 
-### Example 2
+### Example 3
 ```powershell
-PS C:\> Get-AzSynapseManagedIdentitySqlControlSetting -ResourceId '/subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd3/resourcegroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace'
+Get-AzSynapseManagedIdentitySqlControlSetting -ResourceId '/subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd3/resourcegroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace'
 ```
 
 This command gets the managed identity SQL control setting for a workspace through workspace resource ID.

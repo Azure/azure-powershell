@@ -20,9 +20,9 @@ Deletes entity from users.
 .Description
 Deletes entity from users.
 .Example
-PS C:\> Remove-AzADUser -DisplayName $name
+Remove-AzADUser -DisplayName $name
 .Example
-PS C:\> Get-AzADUser -UserPrincipalName $id | Remove-AzADUser
+Get-AzADUser -UserPrincipalName $id | Remove-AzADUser
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser

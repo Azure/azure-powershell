@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 online version: https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgatewayfirewallpolicyexclusionmanagedrulegroup
@@ -25,14 +25,14 @@ The **New-AzApplicationGatewayFirewallPolicyExclusionManagedRuleGroup** creates 
 
 ### Example 1
 ```powershell
-PS C:\> $ruleGroupEntry = New-AzApplicationGatewayFirewallPolicyExclusionManagedRuleGroup -RuleGroupName $ruleName -Rules $rule1,$rule2
+$ruleGroupEntry = New-AzApplicationGatewayFirewallPolicyExclusionManagedRuleGroup -RuleGroupName $ruleName -Rules $rule1,$rule2
 ```
 
 Creates an ExclusionManagedRuleGroup entry with group name as $ruleName and Rules as $rule1, $rule2. Assigns the same to $ruleGroupEntry
 
 ### Example 2
 ```powershell
-PS C:\> $ruleGroupEntry = New-AzApplicationGatewayFirewallPolicyExclusionManagedRuleGroup -RuleGroupName $ruleName
+$ruleGroupEntry = New-AzApplicationGatewayFirewallPolicyExclusionManagedRuleGroup -RuleGroupName $ruleName
 ```
 
 Creates an ExclusionManagedRuleGroup entry with group name as $ruleName. Assigns the same to $ruleGroupEntry

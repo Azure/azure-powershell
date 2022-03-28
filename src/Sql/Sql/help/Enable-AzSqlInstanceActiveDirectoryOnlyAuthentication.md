@@ -37,7 +37,10 @@ The **Enable-AzSqlInstanceActiveDirectoryOnlyAuthentication** cmdlet enables Azu
 
 ### Example 1
 ```powershell
-PS C:\>Enable-AzSqlInstanceActiveDirectoryOnlyAuthentication -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01"
+Enable-AzSqlInstanceActiveDirectoryOnlyAuthentication -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01"
+```
+
+```output
 ResourceGroupName InstanceName        AzureADOnlyAuthentication
 ----------------- ---------- ----------- -------- -----------
 ResourceGroup01   ManagedInstance01   True

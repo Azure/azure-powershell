@@ -24,8 +24,8 @@ The **Remove-AzApplicationGateway** cmdlet removes an application gateway.
 ## EXAMPLES
 
 ### Example 1: Remove a specified application gateway
-```
-PS C:\>Remove-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+```powershell
+Remove-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
 ```
 
 This command removes the application gateway named ApplicationGateway01 in the resource group named ResourceGroup01.

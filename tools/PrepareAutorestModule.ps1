@@ -21,7 +21,7 @@ $ChangedFiles = Get-Content -Path "$PSScriptRoot\..\FilesChanged.txt"
 
 $ALL_MODULE = "ALL_MODULE"
 
-$SKIP_MODULES = @("Resources")
+$SKIP_MODULES = @("OperationalInsights")
 
 #Region Detect which module should be processed
 $ModuleSet = New-Object System.Collections.Generic.HashSet[string]
@@ -54,6 +54,8 @@ else
 }
 #EndRegion
 
+Install-Module -Name platyPS -RequiredVersion 0.14.2 -Force
+
 Import-Module "$PSScriptRoot\..\tools\Gen2Master\MoveFromGeneration2Master.ps1" -Force
 $TmpFolder = "$PSScriptRoot\..\tmp"
 New-Item -ItemType Directory -Force -Path $TmpFolder
@@ -64,14 +66,14 @@ Set-Location -Path $TmpFolder
 git init
 git remote add -f origin https://github.com/Azure/azure-powershell.git
 git config core.sparseCheckout true
-Add-Content -Path .git/info/sparse-checkout -Value "src/Accounts/"
+Add-Content -Path .git/info/sparse-checkout -Value "src/"
 Add-Content -Path .git/info/sparse-checkout -Value "tools/"
-git pull origin main
-Move-Item -Path "$TmpFolder\src\Accounts" -Destination "$TmpFolder\Accounts" -Force
+Add-Content -Path .git/info/sparse-checkout -Value "Repo.props"
+Add-Content -Path .git/info/sparse-checkout -Value "build.proj"
+git pull origin main --depth=1
+Copy-Item -Path "$TmpFolder\src\Accounts" -Destination "$TmpFolder\Accounts" -Force -Recurse
 Copy-Item "$TmpFolder\Accounts" "$PSScriptRoot\..\src" -Recurse -Force
-Remove-Item -Path "$TmpFolder\src" -Recurse -Force
-Move-Item -Path "$TmpFolder\tools\Common*.targets" -Destination "$PSScriptRoot\..\tools" -Force
-Remove-Item -Path "$TmpFolder\tools" -Recurse -Force
+Copy-Item -Path "$TmpFolder\tools\Common*.targets" -Destination "$PSScriptRoot\..\tools" -Force
 Install-Module Az.Accounts -Repository PSGallery -Force
 Import-Module Az.Accounts
 Copy-Item "$PSScriptRoot\..\src\*.props" $TmpFolder
@@ -82,28 +84,43 @@ $AutorestOutputDir = "$PSScriptRoot\..\artifacts\autorest"
 New-Item -ItemType Directory -Force -Path $AutorestOutputDir
 foreach ($Module in $ModuleList)
 {
-    $ModuleFolder = "$PSScriptRoot\..\src\$Module\"
-    $ModuleFolder = (Get-ChildItem -path $ModuleFolder -filter Az.$Module.psd1 -Recurse).Directory
-    if ($Null -eq $ModuleFolder)
+    $RootModuleFolder = "$PSScriptRoot\..\src\$Module\"
+    $ModuleFolders = (Get-ChildItem -path $RootModuleFolder -filter Az.*.psd1 -Recurse).Directory
+    if ($Null -eq $ModuleFolders)
     {
         # Module is not found maybe it's deleted in this PR
-        Write-Warning "Cannot find Az.$Module.psd1 in $ModuleFolder."
+        Write-Warning "Cannot find any psd1 files in $RootModuleFolder."
         continue
     }
-    Set-Location -Path $ModuleFolder
-    
-    # Msbuild will regard autorest's output stream who contains "xx error xx:" as an fault by mistake.
-    # We need to redirect output stream to file to avoid the mistake.
-    npx autorest --max-memory-size=8192 > "$AutorestOutputDir\$Module.log"
-    # Exit if generation fails
-    if ($lastexitcode -ne 0)
-    {
-        exit $lastexitcode
+    # Go through the module including nested modules.
+    foreach ($ModuleFolder in $ModuleFolders) {
+        Set-Location -Path $ModuleFolder
+        # Msbuild will regard autorest's output stream who contains "xx error xx:" as an fault by mistake.
+        # We need to redirect output stream to file to avoid the mistake.
+        npx autorest --max-memory-size=8192 >> "$AutorestOutputDir\$Module.log"
+        # Exit if generation fails
+        if ($lastexitcode -ne 0)
+        {
+            exit $lastexitcode
+        }
+
+        ./build-module.ps1
     }
-    
-    ./build-module.ps1
-    Move-Generation2Master -SourcePath "$PSScriptRoot\..\src\$Module\" -DestPath $TmpFolder
-    Remove-Item "$ModuleFolder\*" -Recurse -Force
+    $subModuleFolders =  Get-ChildItem -path $RootModuleFolder -Directory -Filter *.Autorest
+    if ($null -eq $subModuleFolders) {
+        write-host "autogen module"
+        Move-Generation2Master -SourcePath "$PSScriptRoot\..\src\$Module\" -DestPath $TmpFolder\src
+    } else {
+        #New-Item -ItemType Directory -Path $TmpFolder\$Module -Force
+        Write-Host "hybrid module"
+        Move-Generation2MasterHybrid -SourcePath "$PSScriptRoot\..\src\$Module\" -DestPath $TmpFolder\src\$Module
+    }
+    Set-Location -Path $TmpFolder
+    Remove-Item "$RootModuleFolder\*" -Recurse -Force
+    Copy-Item -Path "$TmpFolder\src\$Module" "$TmpFolder\src\.."  -Recurse -Force
 }
 #EndRegion
-Copy-Item "$TmpFolder\*" "$PSScriptRoot\..\src" -Recurse -Force
+Remove-Item -Path "$TmpFolder\src" -Recurse -Force
+Remove-Item -Path "$TmpFolder\artifacts" -Recurse -Force
+Remove-Item -Path "$TmpFolder\tools" -Recurse -Force
+Copy-Item "$TmpFolder\*" "$PSScriptRoot\..\src" -Exclude src,.git,tools,build.proj -Recurse -Force

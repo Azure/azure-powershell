@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Introduced support for client encryption key resource management required for CosmosDB Client-Side Encryption by adding support for creating, updating and retrieving client encryption keys with following cmdlets: `Get-AzCosmosDbClientEncryptionKey`, `New-AzCosmosDbClientEncryptionKey` and `Update-AzCosmosDbClientEncryptionKey`
 
 ## Version 1.5.1
 * Exposed BackupPolicyMigrationState as a part of Get-AzCosmosDBAccount response.

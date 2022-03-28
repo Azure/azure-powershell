@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll-Help.xml
 Module Name: Az.DataLakeStore
 ms.assetid: 415C5854-FE03-4D4E-BE84-408EA5F95E34
@@ -24,8 +24,8 @@ The **Set-AzDataLakeStoreItemOwner** cmdlet modifies the owner of a file or fold
 ## EXAMPLES
 
 ### Example 1: Set the owner for an item
-```
-PS C:\>Set-AzDataLakeStoreItemOwner -AccountName "ContosoADL" -Path / -Type User -Id (Get-AzADUser -Mail "PattiFuller@contoso.com").ObjectId
+```powershell
+Set-AzDataLakeStoreItemOwner -AccountName "ContosoADL" -Path / -Type User -Id (Get-AzADUser -Mail "PattiFuller@contoso.com").ObjectId
 ```
 
 This command sets the owner for the root directory to Patti Fuller.

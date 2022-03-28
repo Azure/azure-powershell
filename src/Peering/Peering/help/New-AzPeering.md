@@ -43,12 +43,14 @@ Creates an ARM Peering for the subscription. See [New-AzPeeringDirectConnectionO
 ### Create New Direct Peering
 ```powershell
 #Gets the ASN
-PS C:> $asn = Get-AzPeerAsn -PeerName Contoso
+$asn = Get-AzPeerAsn -PeerName Contoso
 #Gets the Direct Peering Location
-PS C:> $location = Get-AzPeeringLocation Direct -PeeringLocation Seattle
+$location = Get-AzPeeringLocation Direct -PeeringLocation Seattle
 #Creates the ARM Resource
-PS C:> New-AzPeering -Name ContosoSeattlePeering -ResourceGroupName testCarrier -PeeringLocation $location.PeeringLocation -PeerAsnResourceId $asn.Id -DirectConnection $connection
+New-AzPeering -Name ContosoSeattlePeering -ResourceGroupName testCarrier -PeeringLocation $location.PeeringLocation -PeerAsnResourceId $asn.Id -DirectConnection $connection
+```
 
+```output
 Name                 : ContosoSeattlePeering
 Sku.Name             : Basic_Direct_Free
 Kind                 : Direct
@@ -68,12 +70,14 @@ Create a new Direct Peering with a single connection at the Seattle facility usi
 ### Create New Exchange Peering
 ```powershell
 #Gets the ASN
-PS C:> $asn = Get-AzPeerAsn -PeerName Contoso
+$asn = Get-AzPeerAsn -PeerName Contoso
 #Gets the Exchange Peering Location
-PS C:> $location = Get-AzPeeringLocation Exchange -PeeringLocation Seattle
+$location = Get-AzPeeringLocation Exchange -PeeringLocation Seattle
 #Creates the ARM Resource
-PS C:> New-AzPeering -Name ContosoSeattlePeering -ResourceGroupName testCarrier -PeeringLocation $location.PeeringLocation -PeerAsnResourceId $asn.Id -ExchangeConnection $connection
+New-AzPeering -Name ContosoSeattlePeering -ResourceGroupName testCarrier -PeeringLocation $location.PeeringLocation -PeerAsnResourceId $asn.Id -ExchangeConnection $connection
+```
 
+```output
 Name              : myExchangePeering1
 Sku.Name          : Basic_Exchange_Free
 Kind              : Exchange
@@ -92,10 +96,12 @@ Create a new exchange peering
 ### Convert Legacy Peering to ARM Peering
 ```powershell
 #Gets the ASN
-PS C:> $asn = Get-AzPeerAsn -PeerName Contoso
+$asn = Get-AzPeerAsn -PeerName Contoso
 #Gets the legacy Peering
-PS C:> $legacy = Get-AzLegacyPeering -PeeringLocation Amsterdam -Kind Direct | New-AzPeering -Name ContosoAmsterdamPeering -ResourceGroupName testCarrier -PeeringLocation $location.PeeringLocation -PeerAsnResourceId $asn.Id
+$legacy = Get-AzLegacyPeering -PeeringLocation Amsterdam -Kind Direct | New-AzPeering -Name ContosoAmsterdamPeering -ResourceGroupName testCarrier -PeeringLocation $location.PeeringLocation -PeerAsnResourceId $asn.Id
+```
 
+```output
 Name              : ContosoAmsterdamPeering
 Sku.Name          : Basic_Direct_Free
 Kind              : Direct

@@ -32,8 +32,10 @@ Regenerates the specified key of Key Vault managed Azure Storage Account and set
 
 ### Example 1: Regenerate a key
 ```powershell
-PS C:\> Update-AzKeyVaultManagedStorageAccountKey -VaultName 'myvault' -AccountName 'mystorageaccount' -KeyName 'key1'
+Update-AzKeyVaultManagedStorageAccountKey -VaultName 'myvault' -AccountName 'mystorageaccount' -KeyName 'key1'
+```
 
+```output
 Id                  : https://myvault.vault.azure.net:443/storage/mystorageaccount
 Vault Name          : myvault
 AccountName         : mystorageaccount

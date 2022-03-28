@@ -38,7 +38,7 @@ The **Remove-AzNetAppFilesActiveDirectory** cmdlet deletes an ANF active directo
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzNetAppFilesActiveDirectory -ResourceGroupName "MyRG" -AccountName "MyAccount" -Name "MyADName"
+Remove-AzNetAppFilesActiveDirectory -ResourceGroupName "MyRG" -AccountName "MyAccount" -Name "MyADName"
 ```
 
 This command deletes the new ANF active directory configuration with a the name "MyADName".

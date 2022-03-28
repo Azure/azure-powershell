@@ -20,26 +20,11 @@ Gets information about a database.
 .Description
 Gets information about a database.
 .Example
-PS C:\> Get-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test
-
-Name              Charset Collation
-----              ------- ---------
-azure_maintenance UTF8    en_US.utf8
-postgres          UTF8    en_US.utf8
-azure_sys         UTF8    en_US.utf8
-flexibleserverdb  UTF8    en_US.utf8
+Get-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test
 .Example
-PS C:\> Get-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test -Name flexibleserverdb
-
-Name             Charset Collation
-----             ------- ---------
-flexibleserverdb UTF8    en_US.utf8
+Get-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test -Name flexibleserverdb
 .Example
-PS C:\> Get-AzPostgreSqlFlexibleServerDatabase -InputObject /subscriptions/0000000000-0000-0000-0000-000000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-test/databases/flexibleserverdb
-
-Name             Charset Collation
-----             ------- ---------
-flexibleserverdb UTF8    en_US.utf8
+Get-AzPostgreSqlFlexibleServerDatabase -InputObject /subscriptions/0000000000-0000-0000-0000-000000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-test/databases/flexibleserverdb
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity

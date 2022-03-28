@@ -28,10 +28,10 @@ HTTP Methods: GET (supported for all groups), POST (supported for security group
 Nullable.
 Supports $expand.
 .Example
-PS C:\> $members = @()
-PS C:\> $members += (Get-AzADUser -DisplayName $uname).Id
-PS C:\> $members += (Get-AzADServicePrincipal -ApplicationId $appid).Id
-PS C:\> Get-AzADGroupMember -DisplayName $gname | Remove-AzADGroupMember -MemberObjectId $member
+$members = @()
+$members += (Get-AzADUser -DisplayName $uname).Id
+$members += (Get-AzADServicePrincipal -ApplicationId $appid).Id
+Get-AzADGroupMember -DisplayName $gname | Remove-AzADGroupMember -MemberObjectId $member
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphGroup

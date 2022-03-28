@@ -24,8 +24,10 @@ Creates a new CosmosDB DatabaseToRestore object(PSDatabaseToRestore). This retur
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCosmosDBDatabaseToRestore -DatabaseName database1 -CollectionName collection1,collection2,collection3
+New-AzCosmosDBDatabaseToRestore -DatabaseName database1 -CollectionName collection1,collection2,collection3
+```
 
+```output
 DatabaseName CollectionNames
 ------------ ---------------
 database1    {collection1, collection2, collection3}

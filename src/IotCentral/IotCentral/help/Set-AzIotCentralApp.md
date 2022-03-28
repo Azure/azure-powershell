@@ -40,13 +40,10 @@ Update the metadata for an IoT Central Application.
 
 ### Example 1 Update Display Name
 ```powershell
-PS C:\> Set-AzureRmIotCentralApp -ResourceGroupName "MyResourceGroupName" -Name "MyAppResourceName" -DisplayName "My New Custom Display Name"
+Set-AzureRmIotCentralApp -ResourceGroupName "MyResourceGroupName" -Name "MyAppResourceName" -DisplayName "My New Custom Display Name"
 ```
 
-Update the Display name on an existing IoT Central Application.
-
-Example Output:
-
+```output
 ResourceId        : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroupName/providers/Microsoft
                     .IoTCentral/IoTApps/MyAppResourceName
 Name              : MyAppResourceName
@@ -61,16 +58,14 @@ Template          : iotc-default@1.0.0
 SubscriptionId    : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 ResourceGroupName : MyResourceGroupName
 Identity          : Microsoft.Azure.Management.IotCentral.Models.SystemAssignedServiceIdentity
-
+```
+Update the Display name on an existing IoT Central Application.
 ### Example 2 Update Subdomain
 ```powershell
-PS C:\> Set-AzureRmIotCentralApp -ResourceGroupName "MyResourceGroupName" -Name "MyAppResourceName" -Subdomain "new-subdomain"
+Set-AzureRmIotCentralApp -ResourceGroupName "MyResourceGroupName" -Name "MyAppResourceName" -Subdomain "new-subdomain"
 ```
 
-Update the Display name on an existing IoT Central Application.
-
-Example Output:
-
+```output
 ResourceId        : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroupName/providers/Microsoft
                     .IoTCentral/IoTApps/MyAppResourceName
 Name              : MyAppResourceName
@@ -85,16 +80,14 @@ Template          : iotc-default@1.0.0
 SubscriptionId    : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 ResourceGroupName : MyResourceGroupName
 Identity          : Microsoft.Azure.Management.IotCentral.Models.SystemAssignedServiceIdentity
-
+```
+Update the Display name on an existing IoT Central Application.
 ### Example 3 Update App Sku Info
 ```powershell
-PS C:\> Set-AzureRmIotCentralApp -ResourceGroupName "MyResourceGroupName" -Name "MyAppResourceName" -Sku "ST2"
+Set-AzureRmIotCentralApp -ResourceGroupName "MyResourceGroupName" -Name "MyAppResourceName" -Sku "ST2"
 ```
 
-Update the sku on an existing IoT Central Application.
-
-Example Output:
-
+```output
 ResourceId        : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroupName/providers/Microsoft
                     .IoTCentral/IoTApps/MyAppResourceName
 Name              : MyAppResourceName
@@ -109,7 +102,8 @@ Template          : iotc-default@1.0.0
 SubscriptionId    : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 ResourceGroupName : MyResourceGroupName
 Identity          : Microsoft.Azure.Management.IotCentral.Models.SystemAssignedServiceIdentity
-
+```
+Update the sku on an existing IoT Central Application.
 ## PARAMETERS
 
 ### -AsJob

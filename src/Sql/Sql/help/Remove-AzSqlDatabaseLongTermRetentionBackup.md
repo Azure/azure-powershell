@@ -38,9 +38,10 @@ The **Remove-AzSqlDatabaseLongTermRetentionBackup** cmdlet deletes the backup sp
 
 ### Example 1: Delete a single backup with resource group
 ```powershell
-PS C:\> Remove-AzSqlDatabaseLongTermRetentionBackup -Location northeurope -ServerName server01 -DatabaseName database01 -BackupName "601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000" -ResourceGrouName resourcegroup01
+Remove-AzSqlDatabaseLongTermRetentionBackup -Location northeurope -ServerName server01 -DatabaseName database01 -BackupName "601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000" -ResourceGrouName resourcegroup01
+```
 
-
+```output
 BackupExpirationTime : 3/22/2018 5:50:55 AM
 BackupName           : 601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
 BackupTime           : 3/15/2018 5:50:55 AM
@@ -56,9 +57,10 @@ Deletes the backup with name 601061b7-d10b-46e0-bf77-a2bfb16a6add;13165566655000
 
 ### Example 2: Delete a single backup without resource group
 ```powershell
-PS C:\> Remove-AzSqlDatabaseLongTermRetentionBackup -Location northeurope -ServerName server02 -DatabaseName database02 -BackupName "55970792-164c-4a4a-88e5-7158d092d503;131656309980000000"
+Remove-AzSqlDatabaseLongTermRetentionBackup -Location northeurope -ServerName server02 -DatabaseName database02 -BackupName "55970792-164c-4a4a-88e5-7158d092d503;131656309980000000"
+```
 
-
+```output
 BackupExpirationTime : 3/22/2018 11:43:18 PM
 BackupName           : 55970792-164c-4a4a-88e5-7158d092d503;131656309980000000
 BackupTime           : 3/15/2018 11:43:18 PM
@@ -74,9 +76,10 @@ Deletes the backup with name 601061b7-d10b-46e0-bf77-a2bfb16a6add;13165566655000
 
 ### Example 3: Delete all backups for a location
 ```powershell
-PS C:\> Get-AzSqlDatabaseLongTermRetentionBackup -Location northeurope | Remove-AzSqlDatabaseLongTermRetentionBackup
+Get-AzSqlDatabaseLongTermRetentionBackup -Location northeurope | Remove-AzSqlDatabaseLongTermRetentionBackup
+```
 
-
+```output
 BackupExpirationTime : 3/22/2018 5:50:55 AM
 BackupName           : 601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
 BackupTime           : 3/15/2018 5:50:55 AM

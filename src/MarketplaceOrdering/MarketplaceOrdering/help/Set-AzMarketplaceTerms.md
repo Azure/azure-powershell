@@ -44,21 +44,15 @@ The **Set-AzMarketplaceTerms** cmdlet saves the terms object for given publisher
 ## EXAMPLES
 
 ### Example 1
-Get the marketplace publisher agreement
-
-
+```powershell
+Get-AzMarketplaceTerms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016" | Set-AzMarketplaceTerms -Accept
 ```
-PS C:\> Get-AzMarketplaceTerms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016" | Set-AzMarketplaceTerms -Accept
-```
-
+This command gets the marketplace publisher agreement
 ### Example 2
-Set the publisher agreement to 'Accept'. Get the value for the 'Terms' parameter from the 'Get-AzMarketplaceTerms' cmdlet
-
-
+```powershell
+Set-AzMarketplaceTerms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016" -Terms $agreementTerms -Accept
 ```
-PS C:\> Set-AzMarketplaceTerms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016" -Terms $agreementTerms -Accept
-```
-
+This command sets the publisher agreement to 'Accept', and it gets the value for the 'Terms' parameter from the 'Get-AzMarketplaceTerms' cmdlet
 ## PARAMETERS
 
 ### -Accept

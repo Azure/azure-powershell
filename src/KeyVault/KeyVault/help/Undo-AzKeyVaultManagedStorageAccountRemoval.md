@@ -31,9 +31,11 @@ The **Undo-AzKeyVaultManagedStorageAccountRemoval** command recovers a previousl
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzKeyVaultManagedStorageAccount -VaultName myVault -Name myAccount -InRemovedState
-PS C:\> Undo-AzKeyVaultManagedStorageAccountRemoval -VaultName myVault -Name myAccount
+Get-AzKeyVaultManagedStorageAccount -VaultName myVault -Name myAccount -InRemovedState
+Undo-AzKeyVaultManagedStorageAccountRemoval -VaultName myVault -Name myAccount
+```
 
+```output
 Id                  : https://myvault.vault.azure.net:443/storage/myaccount
 Vault Name          : myVault
 AccountName         : myAccount

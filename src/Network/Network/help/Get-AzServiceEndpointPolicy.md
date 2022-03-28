@@ -30,21 +30,21 @@ The **Get-AzServiceEndpointPolicy** cmdlet gets a service endpoint policy.
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 $policy = Get-AzServiceEndpointPolicy -Name "ServiceEndpointPolicy1" -ResourceGroupName "ResourceGroup01"
 ```
 
 This command gets the service endpoint policy named ServiceEndpointPolicy1 that belongs to the resource group named ResourceGroup01 and stores it in the $policy variable.
 
 ### Example 2
-```
+```powershell
 $policyList = Get-AzServiceEndpointPolicy -ResourceGroupName "ResourceGroup01"
 ```
 
 This command gets a list of all the service endpoint policies in the resource group named ResourceGroup01 and stores it in the $policyList variable.
 
 ### Example 3
-```
+```powershell
 $policyList = Get-AzServiceEndpointPolicy -ResourceGroupName "ServiceEndpointPolicy*"
 ```
 

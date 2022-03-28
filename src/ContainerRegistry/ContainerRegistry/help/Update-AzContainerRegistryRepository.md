@@ -26,7 +26,9 @@ Update ACR repository.
 ### Example 1
 ```powershell
 Update-AzContainerRegistryRepository -RegistryName registry -Name test/busybox8 -DeleteEnabled $false -WriteEnabled $true -ListEnabled $true -ReadEnabled $true
+```
 
+```output
 Registry             : registry.azurecr.io
 ImageName            : test/busybox8
 CreatedTime          : 2020-12-11T08:57:56.2070002Z

@@ -36,7 +36,7 @@ You can use this cmdlet to view the ASR jobs in the Recovery Services vault.
 
 ### Example 1
 ```powershell
-PS C:\> $jobs = Get-AzRecoveryServicesAsrJob -TargetObjectId $ASRObjectId
+$jobs = Get-AzRecoveryServicesAsrJob -TargetObjectId $ASRObjectId
 ```
 
 Returns all the jobs on a particular ASR object(reference the ASR object such as replicated item or recovery plan by its ID.) 

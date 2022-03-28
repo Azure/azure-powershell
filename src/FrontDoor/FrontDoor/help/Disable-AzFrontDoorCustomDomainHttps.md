@@ -38,8 +38,10 @@ The **Disable-AzFrontDoorCustomDomainHttps** disables HTTPS for a custom domain.
 
 ### Example 1: Disable HTTPS for a custom domain with FrontDoorName and ResourceGroupName.
 ```powershell
-PS C:\> Disable-AzFrontDoorCustomDomainHttps -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -FrontendEndpointName "frontendpointname1-custom-xyz"
+Disable-AzFrontDoorCustomDomainHttps -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -FrontendEndpointName "frontendpointname1-custom-xyz"
+```
 
+```output
 HostName                         : frontendpointname1.custom.xyz
 SessionAffinityEnabledState      : Disabled
 SessionAffinityTtlSeconds        : 0
@@ -64,8 +66,10 @@ Disable HTTPS for a custom domain "frontendpointname1-custom-xyz" with FrontDoor
 
 ### Example 2: Disable HTTPS for a custom domain with PSFrontendEndpoint object.
 ```powershell
-PS C:\> Get-AzFrontDoorFrontendEndpoint -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -FrontendEndpointName "frontendpointname1-custom-xyz" | Disable-AzFrontDoorCustomDomainHttps -InputObject $frontendEndpointObj 
+Get-AzFrontDoorFrontendEndpoint -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -FrontendEndpointName "frontendpointname1-custom-xyz" | Disable-AzFrontDoorCustomDomainHttps -InputObject $frontendEndpointObj 
+```
 
+```output
 HostName                         : frontendpointname1.custom.xyz
 SessionAffinityEnabledState      : Disabled
 SessionAffinityTtlSeconds        : 0
@@ -90,8 +94,10 @@ Disable HTTPS for a custom domain with PSFrontendEndpoint object.
 
 ### Example 3: Disable HTTPS for a custom domain with ResourceId.
 ```powershell
-PS C:\> Disable-AzFrontDoorCustomDomainHttps -ResourceId $resourceId 
+Disable-AzFrontDoorCustomDomainHttps -ResourceId $resourceId 
+```
 
+```output
 HostName                         : frontendpointname1.custom.xyz
 SessionAffinityEnabledState      : Disabled
 SessionAffinityTtlSeconds        : 0

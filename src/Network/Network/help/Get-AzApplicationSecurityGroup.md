@@ -23,9 +23,11 @@ The **Get-AzApplicationSecurityGroup** cmdlet gets an application security group
 ## EXAMPLES
 
 ### Example 1: Retrieve all application security groups.
+```powershell
+Get-AzApplicationSecurityGroup
 ```
-PS C:\> Get-AzApplicationSecurityGroup
 
+```output
 ProvisioningState : Succeeded
 ResourceGroupName : MyResourceGroup
 Location          : southcentralus
@@ -54,9 +56,11 @@ Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resource
 The command above returns the all application security groups in the subscription.
 
 ### Example 2: Retrieve application security groups in a resource group.
+```powershell
+Get-AzApplicationSecurityGroup -ResourceGroupName MyResourceGroup
 ```
-PS C:\> Get-AzApplicationSecurityGroup -ResourceGroupName MyResourceGroup
 
+```output
 ProvisioningState : Succeeded
 ResourceGroupName : MyResourceGroup
 Location          : southcentralus
@@ -85,9 +89,11 @@ Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resource
 The command above returns all application security groups that belong to the resource group MyResourceGroup.
 
 ### Example 3: Retrieve a specific application security group.
+```powershell
+Get-AzApplicationSecurityGroup -ResourceGroupName MyResourceGroup -Name MyApplicationSecurityGroup1
 ```
-PS C:\> Get-AzApplicationSecurityGroup -ResourceGroupName MyResourceGroup -Name MyApplicationSecurityGroup1
 
+```output
 ProvisioningState : Succeeded
 ResourceGroupName : MyResourceGroup
 Location          : southcentralus
@@ -104,9 +110,11 @@ Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resource
 The command above returns the application security group MyApplicationSecurityGroup under the resource group MyResourceGroup.
 
 ### Example 4: Retrieve application security groups using filtering.
+```powershell
+Get-AzApplicationSecurityGroup -Name MyApplicationSecurityGroup*
 ```
-PS C:\> Get-AzApplicationSecurityGroup -Name MyApplicationSecurityGroup*
 
+```output
 ProvisioningState : Succeeded
 ResourceGroupName : MyResourceGroup
 Location          : southcentralus

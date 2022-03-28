@@ -34,10 +34,11 @@ Get a specific SignalR service or all the SignalR services in a resource group o
 ## EXAMPLES
 
 ### Get all SignalR services in the subscription
+```powershell
+Get-AzSignalR
 ```
-PS C:\> Get-AzSignalR
 
-
+```output
 HostName                                           Location       ServerPort PublicPort ProvisioningState Version
 --------                                           --------       ---------- ---------- ----------------- -------
 mysignalr1.service.signalr.net                     eastus         5002       5001       Succeeded         1.0
@@ -46,9 +47,11 @@ mysignalr3.service.signalr.net                     eastus         5002       500
 ```
 
 ### Get all SignalR services in a resource group
+```powershell
+Get-AzSignalR -ResourceGroupName myResourceGroup
 ```
-PS C:\> Get-AzSignalR -ResourceGroupName myResourceGroup
 
+```output
 HostName                                           Location       ServerPort PublicPort ProvisioningState Version
 --------                                           --------       ---------- ---------- ----------------- -------
 mysignalr1.service.signalr.net                     eastus         5002       5001       Succeeded         1.0
@@ -56,18 +59,22 @@ mysignalr2.service.signalr.net                     eastus         5002       500
 ```
 
 ### Get a specific SignalR service
+```powershell
+Get-AzSignalR -ResourceGroupName myResourceGroup -Name mysignalr1
 ```
-PS C:\> Get-AzSignalR -ResourceGroupName myResourceGroup -Name mysignalr1
 
+```output
 HostName                                           Location       ServerPort PublicPort ProvisioningState Version
 --------                                           --------       ---------- ---------- ----------------- -------
 mysignalr1.service.signalr.net                     eastus         5002       5001       Succeeded         1.0
 ```
 
 ### Get a specific SignalR service from the default resource group
+```powershell
+Get-AzSignalR -Name mysignalr2
 ```
-PS C:\> Get-AzSignalR -Name mysignalr2
 
+```output
 HostName                                           Location       ServerPort PublicPort ProvisioningState Version
 --------                                           --------       ---------- ---------- ----------------- -------
 mysignalr2.service.signalr.net                     eastus         5002       5001       Succeeded         1.0

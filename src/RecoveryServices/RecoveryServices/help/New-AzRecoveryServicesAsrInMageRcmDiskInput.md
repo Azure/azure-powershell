@@ -25,8 +25,10 @@ Creates a disk mapping object that maps an VMware virtual machine disk to the ca
 
 ### Example 1
 ```powershell
-PS C:\> New-AzRecoveryServicesAsrInMageRcmDiskInput -DiskId $diskId -LogStorageAccountId $logStorageAccountId -DiskType $diskType -DiskEncryptionSetId $diskEncryptionSetId
+New-AzRecoveryServicesAsrInMageRcmDiskInput -DiskId $diskId -LogStorageAccountId $logStorageAccountId -DiskType $diskType -DiskEncryptionSetId $diskEncryptionSetId
+```
 
+```output
 DiskId				: 6000C296-91a1-f649-6714-a02903020cbc
 LogStorageAccountId	: /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourceGroups/xxxxxxxxxxxx/providers/Microsoft.Storage/storageAccounts/xxxxxxxxxxxx
 DiskType			: Standard_LRS

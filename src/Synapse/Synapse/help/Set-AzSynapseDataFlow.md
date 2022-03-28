@@ -31,7 +31,7 @@ The **Set-AzSynapseDataFlow** cmdlet creates a data flow or updates an existing 
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzSynapseDataFlow -WorkspaceName ContosoWorkspace -Name ContosoDataFlow -DefinitionFile "C:\\samples\\DataFlow.json"
+Set-AzSynapseDataFlow -WorkspaceName ContosoWorkspace -Name ContosoDataFlow -DefinitionFile "C:\\samples\\DataFlow.json"
 ```
 
 This command creates a data flow named ContosoDataFlow in the workspace named ContosoWorkspace.
