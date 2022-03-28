@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.dll-Help.xml
 Module Name: Az.ServiceBus
 online version: https://docs.microsoft.com/powershell/module/az.servicebus/remove-azservicebusrule
@@ -32,33 +32,33 @@ The **Remove-AzServiceBusRule** cmdlet removes the rule of a subscription of giv
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzServiceBusRule -ResourceGroup Default-ServiceBus-WestUS -Namespace SBExample1 -Topic SBTopic -Subscription SBSubscription -Name SBRule
+Remove-AzServiceBusRule -ResourceGroup Default-ServiceBus-WestUS -Namespace SBExample1 -Topic SBTopic -Subscription SBSubscription -Name SBRule
 ```
 
 Removes the rule `SBRule` of subscription `SBSubscription` of specified topic `SBTopic`.
 
 ### Example 2: InputObject - Using Variable:
 ```powershell
-PS C:\> $inputobject = Get-AzServiceBusRule <params>
-PS C:\> Remove-AzServiceBusRule -InputObject $inputobject
+$inputobject = Get-AzServiceBusRule <params>
+Remove-AzServiceBusRule -InputObject $inputobject
 ```
 
 Removes the rule provided through $inputobject for -InputObject parameter
 
 ### Example 3: InputObject - Using Piping:
 ```powershell
-PS C:\> Get-AzServiceBusRule <params> | Remove-AzServiceBusRule
+Get-AzServiceBusRule <params> | Remove-AzServiceBusRule
 ```
 
 ### Example 4: ResourceId - Using Variable
 ```powershell
-PS C:\> $resourceid = Get-AzServiceBusRule <params>
-PS C:\> Remove-AzServiceBusRule -ResourceId $resourceid.Id
+$resourceid = Get-AzServiceBusRule <params>
+Remove-AzServiceBusRule -ResourceId $resourceid.Id
 ```
 
 ### Example 5: ResourceId - Using string value
 ```powershell
-PS C:\> Remove-AzServiceBusRule -ResourceId "/subscriptions/xxx-xxxxx-xxxxxx-xxxxxx/resourceGroups/ResourceGroupName/providers/Microsoft.ServiceBus/namespaces/NamespaceName/topics/TopicName/subscriptions/SubscriptionName/rules/RuleName"
+Remove-AzServiceBusRule -ResourceId "/subscriptions/xxx-xxxxx-xxxxxx-xxxxxx/resourceGroups/ResourceGroupName/providers/Microsoft.ServiceBus/namespaces/NamespaceName/topics/TopicName/subscriptions/SubscriptionName/rules/RuleName"
 ```
 
 Removes the rule provided through ARM Id in $resourceid/string for -ResourceId parameter 

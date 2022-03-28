@@ -68,7 +68,7 @@ Update or create a managed Kubernetes cluster.
 
 ### Example 1
 ```powershell
-Get-AzAks -ResourceGroupName group -Name myCluster | Set-AzAks -NodeCount 5
+Get-AzAksCluster -ResourceGroupName group -Name myCluster | Set-AzAksCluster -NodeCount 5
 ```
 
 Set the number of nodes in the Kubernetes cluster to 5.

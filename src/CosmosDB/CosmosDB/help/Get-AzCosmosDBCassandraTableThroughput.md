@@ -31,7 +31,7 @@ The **Get-AzCosmosDBCassandraTableThroughput** cmdlet gets the throughput object
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCosmosDBCassandraTableThroughput -ResourceGroupName {resourceGroupName} -AccountName {accountName} -Keyspace {keyspaceName} -Name {tableName}
+Get-AzCosmosDBCassandraTableThroughput -ResourceGroupName {resourceGroupName} -AccountName {accountName} -Keyspace {keyspaceName} -Name {tableName}
 ```
 
 ## PARAMETERS

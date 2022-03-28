@@ -68,7 +68,7 @@ You can check whether the job succeeded by using the Get-AzRecoveryServicesAsrJo
 
 ### Example 1
 ```powershell
-PS C:\> $currentJob = Start-AzRecoveryServicesAsrTestFailoverJob -RecoveryPlan $RP -Direction PrimaryToRecovery -VMNetwork $TestRecoveryNetwork
+$currentJob = Start-AzRecoveryServicesAsrTestFailoverJob -RecoveryPlan $RP -Direction PrimaryToRecovery -VMNetwork $TestRecoveryNetwork
 ```
 
 Starts the test failover operation for the recovery plan with the specified parameters and returns the ASR job used to track the operation.

@@ -29,8 +29,11 @@ If you omit a required template parameter, the cmdlet prompts you for the value.
 ## EXAMPLES
 
 ### Example 1: Modify an integration account
+```powershell
+Set-AzIntegrationAccount -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -Sku "Free"
 ```
-PS C:\>Set-AzIntegrationAccount -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -Sku "Free"
+
+```output
 Id          : /subscriptions/<SubscriptionId>/resourceGroups/ResourceGroup11/providers/Microsoft.Logic/integrationAccounts/IntegrationAccount31
 Name        : IntegrationAccount31
 Type        : Microsoft.Logic/integrationAccounts

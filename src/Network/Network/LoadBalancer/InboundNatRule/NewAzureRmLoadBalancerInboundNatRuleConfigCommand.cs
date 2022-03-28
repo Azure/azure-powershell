@@ -84,6 +84,31 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true)]
         public PSFrontendIPConfiguration FrontendIpConfiguration { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The first port number in the range of external ports that will be used to provide Inbound Nat to NICs associated with a load balancer. Acceptable values range between 1 and 65534.",
+            ValueFromPipelineByPropertyName = true)]
+        public int? FrontendPortRangeStart { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The last port number in the range of external ports that will be used to provide Inbound Nat to NICs associated with a load balancer. Acceptable values range between 1 and 65535.",
+            ValueFromPipelineByPropertyName = true)]
+        public int? FrontendPortRangeEnd { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = "SetByResourceId",
+            HelpMessage = "A reference to backend address pool.",
+            ValueFromPipelineByPropertyName = true)]
+        public string BackendAddressPoolId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = "SetByResource",
+            HelpMessage = "A reference to backend address pool.",
+            ValueFromPipelineByPropertyName = true)]
+        public PSBackendAddressPool BackendAddressPool { get; set; }
 
         public override void Execute()
         {
@@ -93,6 +118,11 @@ namespace Microsoft.Azure.Commands.Network
                 if (this.FrontendIpConfiguration != null)
                 {
                     this.FrontendIpConfigurationId = this.FrontendIpConfiguration.Id;
+                }
+
+                if (this.BackendAddressPool != null)
+                {
+                    this.BackendAddressPoolId = this.BackendAddressPool.Id;
                 }
             }
             var vInboundNatRules = new PSInboundNatRule();
@@ -104,6 +134,9 @@ namespace Microsoft.Azure.Commands.Network
             vInboundNatRules.EnableFloatingIP = this.EnableFloatingIP;
             vInboundNatRules.EnableTcpReset = this.EnableTcpReset;
             vInboundNatRules.Name = this.Name;
+            vInboundNatRules.FrontendPortRangeStart = this.FrontendPortRangeStart;
+            vInboundNatRules.FrontendPortRangeEnd = this.FrontendPortRangeEnd;
+
             if(!string.IsNullOrEmpty(this.FrontendIpConfigurationId))
             {
                 // FrontendIPConfiguration
@@ -113,6 +146,17 @@ namespace Microsoft.Azure.Commands.Network
                 }
                 vInboundNatRules.FrontendIPConfiguration.Id = this.FrontendIpConfigurationId;
             }
+
+            if (!string.IsNullOrEmpty(this.BackendAddressPoolId))
+            {
+                // BackendAddressPool
+                if (vInboundNatRules.BackendAddressPool == null)
+                {
+                    vInboundNatRules.BackendAddressPool = new PSResourceId();
+                }
+                vInboundNatRules.BackendAddressPool.Id = this.BackendAddressPoolId;
+            }
+
             var generatedId = string.Format(
                 "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/loadBalancers/{2}/{3}/{4}",
                 this.NetworkClient.NetworkManagementClient.SubscriptionId,

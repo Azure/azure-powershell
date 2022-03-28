@@ -110,8 +110,8 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             TestRunner.RunTestScript("Test-AEMExtensionAdvancedLinuxMD_D");
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact(Skip = "Skip as current test framework does not support recording generated cmdlets.")]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestWithUserAssignedIdentity()
         {
             TestRunner.RunTestScript("Test-WithUserAssignedIdentity");

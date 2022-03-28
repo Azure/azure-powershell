@@ -35,26 +35,26 @@ Set the vault context by using the Set-AzRecoveryServicesVaultContext cmdlet bef
 ## EXAMPLES
 
 ### Example 1: Modify a Backup protection policy
-```
-PS C:\> $SchPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM" 
-PS C:\> $SchPol.ScheduleRunTimes.Clear()
-PS C:\> $Time = Get-Date
-PS C:\> $Time1 = Get-Date -Year $Time.Year -Month $Time.Month -Day $Time.Day -Hour $Time.Hour -Minute 0 -Second 0 -Millisecond 0
-PS C:\> $Time1 = $Time1.ToUniversalTime()
-PS C:\> $SchPol.ScheduleRunTimes.Add($Time1)
-PS C:\> $SchPol.ScheduleRunFrequency.Clear
-PS C:\> $SchPol.ScheduleRunDays.Add("Monday")
-PS C:\> $SchPol.ScheduleRunFrequency="Weekly"
-PS C:\> $RetPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureVM" 
-PS C:\> $RetPol.IsDailyScheduleEnabled=$false
-PS C:\> $RetPol.DailySchedule.DurationCountInDays = 0
-PS C:\> $RetPol.IsWeeklyScheduleEnabled=$true 
-PS C:\> $RetPol.WeeklySchedule.DaysOfTheWeek.Add("Monday")
-PS C:\> $RetPol.WeeklySchedule.DurationCountInWeeks = 365
-PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "azurefiles" -Name "azurefilesvault"
-PS C:\> $Pol= Get-AzRecoveryServicesBackupProtectionPolicy -Name "TestPolicy" -VaultId $vault.ID
-PS C:\> $Pol.SnapshotRetentionInDays=5
-PS C:\> Set-AzRecoveryServicesBackupProtectionPolicy -Policy $Pol -SchedulePolicy $SchPol -RetentionPolicy $RetPol
+```powershell
+$SchPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM" 
+$SchPol.ScheduleRunTimes.Clear()
+$Time = Get-Date
+$Time1 = Get-Date -Year $Time.Year -Month $Time.Month -Day $Time.Day -Hour $Time.Hour -Minute 0 -Second 0 -Millisecond 0
+$Time1 = $Time1.ToUniversalTime()
+$SchPol.ScheduleRunTimes.Add($Time1)
+$SchPol.ScheduleRunFrequency.Clear
+$SchPol.ScheduleRunDays.Add("Monday")
+$SchPol.ScheduleRunFrequency="Weekly"
+$RetPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureVM" 
+$RetPol.IsDailyScheduleEnabled=$false
+$RetPol.DailySchedule.DurationCountInDays = 0
+$RetPol.IsWeeklyScheduleEnabled=$true 
+$RetPol.WeeklySchedule.DaysOfTheWeek.Add("Monday")
+$RetPol.WeeklySchedule.DurationCountInWeeks = 365
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "azurefiles" -Name "azurefilesvault"
+$Pol= Get-AzRecoveryServicesBackupProtectionPolicy -Name "TestPolicy" -VaultId $vault.ID
+$Pol.SnapshotRetentionInDays=5
+Set-AzRecoveryServicesBackupProtectionPolicy -Policy $Pol -SchedulePolicy $SchPol -RetentionPolicy $RetPol
 ```
 
 Here is the high-level description of the steps to be followed for modifying a protection policy: 
@@ -65,17 +65,17 @@ Here is the high-level description of the steps to be followed for modifying a p
 
 ### Example 2: Modify Azure fileshare policy for multiple backups per day
 ```powershell
-PS C:\> $schedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureFiles -BackupManagementType AzureStorage -ScheduleRunFrequency Hourly
-PS C:\>	$retentionPolicy = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureFiles -BackupManagementType AzureStorage -ScheduleRunFrequency Hourly
-PS C:\> $timeZone = Get-TimeZone
-PS C:\> $schedulePolicy.ScheduleRunTimeZone = $timeZone.Id
-PS C:\> $startTime = Get-Date -Date "2021-12-22T06:00:00.00+00:00"
-PS C:\> $schedulePolicy.ScheduleWindowStartTime = $startTime.ToUniversalTime()
-PS C:\> $schedulePolicy.ScheduleInterval = 6
-PS C:\> $schedulePolicy.ScheduleWindowDuration = 14
-PS C:\> $retentionPolicy.DailySchedule.DurationCountInDays = 6
-PS C:\> $policy = Get-AzRecoveryServicesBackupProtectionPolicy -Name "TestPolicy" -VaultId $vault.ID
-PS C:\> Set-AzRecoveryServicesBackupProtectionPolicy -Policy $policy -VaultId $vault.ID -SchedulePolicy $schedulePolicy -RetentionPolicy $retentionPolicy
+$schedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureFiles -BackupManagementType AzureStorage -ScheduleRunFrequency Hourly
+$retentionPolicy = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureFiles -BackupManagementType AzureStorage -ScheduleRunFrequency Hourly
+$timeZone = Get-TimeZone
+$schedulePolicy.ScheduleRunTimeZone = $timeZone.Id
+$startTime = Get-Date -Date "2021-12-22T06:00:00.00+00:00"
+$schedulePolicy.ScheduleWindowStartTime = $startTime.ToUniversalTime()
+$schedulePolicy.ScheduleInterval = 6
+$schedulePolicy.ScheduleWindowDuration = 14
+$retentionPolicy.DailySchedule.DurationCountInDays = 6
+$policy = Get-AzRecoveryServicesBackupProtectionPolicy -Name "TestPolicy" -VaultId $vault.ID
+Set-AzRecoveryServicesBackupProtectionPolicy -Policy $policy -VaultId $vault.ID -SchedulePolicy $schedulePolicy -RetentionPolicy $retentionPolicy
 ```
 
 Here is the high-level description of the steps to be followed for modifying a fileshare policy for multiple backups per day: 

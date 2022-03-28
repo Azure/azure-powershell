@@ -55,6 +55,7 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-ActiveDirectoryDomainName <String>] [-ActiveDirectoryNetBiosDomainName <String>]
  [-ActiveDirectoryForestName <String>] [-ActiveDirectoryDomainGuid <String>]
  [-ActiveDirectoryDomainSid <String>] [-ActiveDirectoryAzureStorageSid <String>]
+ [-ActiveDirectorySamAccountName <String>] [-ActiveDirectoryAccountType <String>]
  [-AllowBlobPublicAccess <Boolean>] [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>]
  [-SasExpirationPeriod <TimeSpan>] [-KeyExpirationPeriodInDay <Int32>] [-AllowCrossTenantReplication <Boolean>]
  [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>] [-ImmutabilityPeriod <Int32>]
@@ -170,7 +171,9 @@ PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Ac
         -ActiveDirectoryForestName "mydomain.com" `
         -ActiveDirectoryDomainGuid "12345678-1234-1234-1234-123456789012" `
         -ActiveDirectoryDomainSid "S-1-5-21-1234567890-1234567890-1234567890" `
-        -ActiveDirectoryAzureStorageSid "S-1-5-21-1234567890-1234567890-1234567890-1234"
+        -ActiveDirectoryAzureStorageSid "S-1-5-21-1234567890-1234567890-1234567890-1234" `
+        -ActiveDirectorySamAccountName "samaccountname" `
+        -ActiveDirectoryAccountType Computer 
 		
 PS C:\> $account.AzureFilesIdentityBasedAuth.DirectoryServiceOptions
 AD
@@ -183,6 +186,8 @@ ForestName        : mydomain.com
 DomainGuid        : 12345678-1234-1234-1234-123456789012
 DomainSid         : S-1-5-21-1234567890-1234567890-1234567890
 AzureStorageSid   : S-1-5-21-1234567890-1234567890-1234567890-1234
+SamAccountName    : samaccountname
+AccountType       : Computer
 ```
 
 The command updates a Storage account by enable Azure Files Active Directory Domain Service Authentication, and then shows the File Identity Based authentication setting
@@ -370,6 +375,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ActiveDirectoryAccountType
+Specifies the Active Directory account type for Azure Storage. Possible values include: 'User', 'Computer'.
+
+```yaml
+Type: System.String
+Parameter Sets: ActiveDirectoryDomainServicesForFile
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ActiveDirectoryAzureStorageSid
 Specifies the security identifier (SID) for Azure Storage. This parameter must be set when -EnableActiveDirectoryDomainServicesForFile is set to true.
 
@@ -447,6 +467,21 @@ Accept wildcard characters: False
 
 ### -ActiveDirectoryNetBiosDomainName
 Specifies the NetBIOS domain name. This parameter must be set when -EnableActiveDirectoryDomainServicesForFile is set to true.
+
+```yaml
+Type: System.String
+Parameter Sets: ActiveDirectoryDomainServicesForFile
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ActiveDirectorySamAccountName
+Specifies the Active Directory SAMAccountName for Azure Storage.
 
 ```yaml
 Type: System.String

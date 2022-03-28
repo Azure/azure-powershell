@@ -36,12 +36,12 @@ The **Get-AzHpcCacheStorageTarget** cmdlet gets storage target(s) that exist on 
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzHpcCacheStorageTarget -ResourceGroupName rgTest -CacheName cacheTest
+Get-AzHpcCacheStorageTarget -ResourceGroupName rgTest -CacheName cacheTest
 ```
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzHpcCacheStorageTarget -ResourceGroupName rgTest -CacheName cacheTest -StorageTargetName stTest
+Get-AzHpcCacheStorageTarget -ResourceGroupName rgTest -CacheName cacheTest -StorageTargetName stTest
 ```
 
 ## PARAMETERS

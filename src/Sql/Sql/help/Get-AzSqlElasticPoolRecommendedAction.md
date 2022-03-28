@@ -25,8 +25,11 @@ The **Get-AzSqlElasticPoolRecommendedAction** cmdlet gets one or more recommende
 ## EXAMPLES
 
 ### Example 1: List all recommended actions for an Advisor
+```powershell
+Get-AzSqlElasticPoolRecommendedAction -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -ElasticPoolName "WIRunnerPool" -AdvisorName "CreateIndex"
 ```
-PS C:\>Get-AzSqlElasticPoolRecommendedAction -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -ElasticPoolName "WIRunnerPool" -AdvisorName "CreateIndex"
+
+```output
 ElasticPoolName            : WIRunnerPool
 ResourceGroupName          : WIRunnersProd
 ServerName                 : wi-runner-australia-east
@@ -121,8 +124,11 @@ ValidSince                 : 4/21/2016 3:24:47 PM
 This command gets a list of all recommended actions of the Advisor named CreateIndex available for the elastic pool named WIRunnerPool.
 
 ### Example 2: Get a single recommended action for an Advisor
+```powershell
+Get-AzSqlElasticPoolRecommendedAction -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -ElasticPoolName "WIRunnerPool" -AdvisorName "CreateIndex" -RecommendedActionName "IR_[test_schema]_[test_table_0.0361551]_6C7AE8CC9C87E7FD5893"
 ```
-PS C:\>Get-AzSqlElasticPoolRecommendedAction -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -ElasticPoolName "WIRunnerPool" -AdvisorName "CreateIndex" -RecommendedActionName "IR_[test_schema]_[test_table_0.0361551]_6C7AE8CC9C87E7FD5893"
+
+```output
 ElasticPoolName            : WIRunnerPool
 ResourceGroupName          : WIRunnersProd
 ServerName                 : wi-runner-australia-east

@@ -35,7 +35,7 @@ The **New-AzFirewallPolicyRuleCollectionGroup** cmdlet creates a rule collection
 
 ### Example 1
 ```powershell
-PS C:\> New-AzFirewallPolicyRuleCollectionGroup -Name rg1 -ResourceGroupName TestRg -Priority 200 -RuleCollection $filterRule1 -FirewallPolicyObject $fp
+New-AzFirewallPolicyRuleCollectionGroup -Name rg1 -ResourceGroupName TestRg -Priority 200 -RuleCollection $filterRule1 -FirewallPolicyObject $fp
 ```
 
 This example creates a rule collection group in the firewall policy $fp

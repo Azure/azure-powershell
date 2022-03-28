@@ -26,8 +26,8 @@ Media service names are globally unique.
 ## EXAMPLES
 
 ### Example 1: Check whether a Media Service name is available
-```
-PS C:\>Get-AzMediaServiceNameAvailability -AccountName "MediaService1"
+```powershell
+Get-AzMediaServiceNameAvailability -AccountName "MediaService1"
 ```
 
 This command checks if the name MediaService1 is available.

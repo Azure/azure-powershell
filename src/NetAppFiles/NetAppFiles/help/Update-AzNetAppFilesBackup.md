@@ -45,7 +45,7 @@ The **Update-AzNetAppFilesBackup** cmdlet modifies an ANF backup.
 
 ### Example 1
 ```powershell
-PS C:\>  Update-AzNetAppFilesBackup -ResourceGroupName "MyRG" -AccountName $accName1 -Name $backupPolicyObject -Label "updatedLabel"
+Update-AzNetAppFilesBackup -ResourceGroupName "MyRG" -AccountName $accName1 -Name $backupPolicyObject -Label "updatedLabel"
 ```
 
 This command performs an update on the given backup modifying the username to that provided.

@@ -47,26 +47,26 @@ whether the cmdlet prompts you for confirmation.
 ## EXAMPLES
 
 ### Example 1: Create a DNS zone
-```
-PS C:\>$Zone = New-AzDnsZone -Name "myzone.com" -ResourceGroupName "MyResourceGroup"
+```powershell
+$Zone = New-AzDnsZone -Name "myzone.com" -ResourceGroupName "MyResourceGroup"
 ```
 
 This command creates a new DNS zone named myzone.com in the specified resource group, and then
 stores it in the $Zone variable.
 
 ### Example 2: Create a Private DNS zone by specifying virtual network IDs
-```
-PS C:\>$ResVirtualNetworkId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testresgroup/providers/Microsoft.Network/virtualNetworks/resvnet"
-PS C:\>$Zone = New-AzDnsZone -Name "myprivatezone.com" -ResourceGroupName "MyResourceGroup" -ZoneType Private -ResolutionVirtualNetworkId @($ResVirtualNetworkId)
+```powershell
+$ResVirtualNetworkId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testresgroup/providers/Microsoft.Network/virtualNetworks/resvnet"
+$Zone = New-AzDnsZone -Name "myprivatezone.com" -ResourceGroupName "MyResourceGroup" -ZoneType Private -ResolutionVirtualNetworkId @($ResVirtualNetworkId)
 ```
 
 This command creates a new Private DNS zone named myprivatezone.com in the specified resource group with
 an associated resolution virtual network (specifying its ID), and then stores it in the $Zone variable.
 
 ### Example 3: Create a Private DNS zone by specifying virtual network objects
-```
-PS C:\>$ResVirtualNetwork = Get-AzVirtualNetwork -Name "resvnet" -ResourceGroupName "testresgroup"
-PS C:\>$Zone = New-AzDnsZone -Name "myprivatezone.com" -ResourceGroupName "MyResourceGroup" -ZoneType Private -ResolutionVirtualNetwork @($ResVirtualNetwork)
+```powershell
+$ResVirtualNetwork = Get-AzVirtualNetwork -Name "resvnet" -ResourceGroupName "testresgroup"
+$Zone = New-AzDnsZone -Name "myprivatezone.com" -ResourceGroupName "MyResourceGroup" -ZoneType Private -ResolutionVirtualNetwork @($ResVirtualNetwork)
 ```
 
 This command creates a new Private DNS zone named myprivatezone.com in the specified resource group with
@@ -74,8 +74,8 @@ an associated resolution virtual network (referred to by $ResVirtualNetwork vari
 in the $Zone variable.
 
 ### Example 4: Create a DNS zone with delegation by specifying parent zone name
-```
-PS C:\>$Zone = New-AzDnsZone -Name "mychild.zone.com" -ResourceGroupName "MyResourceGroup" -ParentZoneName "zone.com"
+```powershell
+$Zone = New-AzDnsZone -Name "mychild.zone.com" -ResourceGroupName "MyResourceGroup" -ParentZoneName "zone.com"
 ```
 
 This command creates a new child DNS zone named mychild.zone.com in the specified resource group and stores 
@@ -83,8 +83,8 @@ in the $Zone variable.
 It also adds delegation in the parent DNS zone named zone.com residing in the same subscription and resource group as child zone.
 
 ### Example 5: Create a DNS zone with delegation by specifying parent zone id
-```
-PS C:\>$Zone = New-AzDnsZone -Name "mychild.zone.com" -ResourceGroupName "MyResourceGroup" -ParentZoneId "/subscriptions/**67e2/resourceGroups/other-rg/providers/Microsoft.Network/dnszones/zone.com"
+```powershell
+$Zone = New-AzDnsZone -Name "mychild.zone.com" -ResourceGroupName "MyResourceGroup" -ParentZoneId "/subscriptions/**67e2/resourceGroups/other-rg/providers/Microsoft.Network/dnszones/zone.com"
 ```
 
 This command creates a new child DNS zone named mychild.zone.com in the specified resource group and stores 
@@ -92,9 +92,9 @@ in the $Zone variable.
 It also adds delegation in the parent DNS zone named zone.com in resource group other-rg provided subscription is same as that of child zone created.
 
 ### Example 6: Create a DNS zone with delegation by specifying parent zone object
-```
-PS C:\>$PZone = New-AzDnsZone -Name "zone.com" -ResourceGroupName "MyResourceGroup" 
-PS C:\>$Zone = New-AzDnsZone -Name "mychild.zone.com" -ResourceGroupName "MyResourceGroup" -ParentZone @($PZone)
+```powershell
+$PZone = New-AzDnsZone -Name "zone.com" -ResourceGroupName "MyResourceGroup" 
+$Zone = New-AzDnsZone -Name "mychild.zone.com" -ResourceGroupName "MyResourceGroup" -ParentZone @($PZone)
 ```
 
 This command creates a new child DNS zone named mychild.zone.com in the specified resource group and stores 

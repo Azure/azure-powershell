@@ -37,7 +37,7 @@ Stops Packet Capture Operation on a Vpn Gateway and will upload the result on gi
 
 ### Example 1
 ```powershell
-PS C:\> $rgname = "testRg"
+$rgname = "testRg"
  $storeName = "teststorage"
  $containerName = "packetcaptureresults"
  $key = Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $storeName
@@ -46,7 +46,10 @@ PS C:\> $rgname = "testRg"
  $container = Get-AzStorageContainer -Name $containerName -Context $context
  $now=get-date
  $sasurl = New-AzureStorageContainerSASToken -Name $containerName -Context $context -Permission "rwd" -StartTime $now.AddHours(-1) -ExpiryTime $now.AddDays(1) -FullUri
-PS C:\> Stop-AzVpnGatewayPacketCapture -ResourceGroupName $rgname -Name "testgw" -SasUrl $sasurl
+Stop-AzVpnGatewayPacketCapture -ResourceGroupName $rgname -Name "testgw" -SasUrl $sasurl
+```
+
+```output
 Code              : Succeeded
 EndTime           : 10/1/2019 12:59:37 AM
 StartTime         : 10/1/2019 12:58:26 AM
@@ -64,7 +67,7 @@ Id                :
 
 ### Example 2
 ```powershell
-PS C:\> $rgname = "testRg"
+$rgname = "testRg"
  $storeName = "teststorage"
  $containerName = "packetcaptureresults"
  $key = Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $storeName
@@ -73,7 +76,10 @@ PS C:\> $rgname = "testRg"
  $now=get-date
  $sasurl = New-AzureStorageContainerSASToken -Name $containerName -Context $context -Permission "rwd" -StartTime $now.AddHours(-1) -ExpiryTime $now.AddDays(1) -FullUri
  $gw = Get-AzVpnGateway -ResourceGroupName $rgname -name "testGw"
-PS C:\> Stop-AzVpnGatewayPacketCapture -InputObject $gw -SasUrl $sasurl
+Stop-AzVpnGatewayPacketCapture -InputObject $gw -SasUrl $sasurl
+```
+
+```output
 Code              : Succeeded
 EndTime           : 10/1/2019 12:59:37 AM
 StartTime         : 10/1/2019 12:58:26 AM

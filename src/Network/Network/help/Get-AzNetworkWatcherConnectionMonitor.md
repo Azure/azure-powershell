@@ -43,7 +43,7 @@ The Get-AzNetworkWatcherConnectionMonitor cmdlet returns the connection monitor 
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzNetworkWatcherConnectionMonitor -Location centraluseuap -Name cm
+Get-AzNetworkWatcherConnectionMonitor -Location centraluseuap -Name cm
 ```
 
 Name                        : cm

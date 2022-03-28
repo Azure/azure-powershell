@@ -127,6 +127,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [Parameter(Mandatory = false, HelpMessage = "Display full uri with sas token")]
         public SwitchParameter FullUri { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Encryption scope to use when sending requests authorized with this SAS URI.")]
+        [ValidateNotNullOrEmpty]
+        public string EncryptionScope { get; set; }
+
         // Overwrite the useless parameter
         public override int? ServerTimeoutPerRequest { get; set; }
         public override int? ClientTimeoutPerRequest { get; set; }
@@ -241,7 +245,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 }
 
                 //Create SAS builder
-                BlobSasBuilder sasBuilder = SasTokenHelper.SetBlobSasBuilder_FromBlob(blobClient, identifier, this.Permission, this.StartTime, this.ExpiryTime, this.IPAddressOrRange, this.Protocol);                
+                BlobSasBuilder sasBuilder = SasTokenHelper.SetBlobSasBuilder_FromBlob(blobClient, identifier, this.Permission, this.StartTime, this.ExpiryTime, this.IPAddressOrRange, this.Protocol, this.EncryptionScope);                
 
                 //Create SAS and ourput
                 string sasToken = SasTokenHelper.GetBlobSharedAccessSignature(Channel.StorageContext, sasBuilder, generateUserDelegationSas, ClientOptions, CmdletCancellationToken);

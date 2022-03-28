@@ -28,7 +28,12 @@ This extension lets your virtual machine join a domain.
 
 ### Example 1
 ```powershell
-Set-AzVMADDomainExtension -ResourceGroupName "ResourceGroup11" -VMName "VirtualMachine07" -DomainName "abc.com"
+# Create a Resource Group and Virtual Machine before this.
+$extensionName = "extensionName"
+$virtualMachineName = "vmName"
+$resourceGroupName = "resourceGroupName"
+$domainName = "domain.com"
+Set-AzVMADDomainExtension -ResourceGroupName $resourceGroupName -VMName $virtualMachineName -Name $extensionName -DomainName $domainName
 ```
 
 ```Output
@@ -119,7 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### -JoinOption
-Specifies the join option. For join options see [fJoinOptions](https://docs.microsoft.com/windows/desktop/api/lmjoin/nf-lmjoin-netjoindomain)
+Specifies the join option. For join options see [JoinOptions](https://docs.microsoft.com/windows/desktop/api/lmjoin/nf-lmjoin-netjoindomain)
 
 ```yaml
 Type: System.Nullable`1[System.UInt32]

@@ -24,9 +24,9 @@ The **Get-AzLoadBalancerRuleConfig** cmdlet gets one or more rule configurations
 ## EXAMPLES
 
 ### Example 1: Get the rule configuration of a load balancer
-```
-PS C:\>$slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
-PS C:\> Get-AzLoadBalancerRuleConfig -Name "MyLBrulename" -LoadBalancer $slb
+```powershell
+$slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
+Get-AzLoadBalancerRuleConfig -Name "MyLBrulename" -LoadBalancer $slb
 ```
 
 The first command gets the load balancer named MyLoadBalancer, and then stores it in the variable $slb.

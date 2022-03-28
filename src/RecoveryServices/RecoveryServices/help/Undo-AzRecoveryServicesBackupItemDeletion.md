@@ -24,11 +24,11 @@ The Undo-AzRecoveryServicesBackupItemDeletion cmdlet reverts a soft-deleted item
 
 ### Example 1
 ```powershell
-PS C:\> $Cont = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVM
-PS C:\> $PI = Get-AzRecoveryServicesBackupItem -Container $Cont[0] -WorkloadType AzureVM 
-PS C:\> Disable-AzRecoveryServicesBackupProtection -Item $PI[0] -RemoveRecoveryPoints
-PS C:\> $PI = Get-AzRecoveryServicesBackupItem -Container $Cont[0] -WorkloadType AzureVM | Where-Object {$_.DeleteState -eq "ToBeDeleted"}
-PS C:\> Undo-AzRecoveryServicesBackupItemDeletion -Item $PI[0]
+$Cont = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVM
+$PI = Get-AzRecoveryServicesBackupItem -Container $Cont[0] -WorkloadType AzureVM 
+Disable-AzRecoveryServicesBackupProtection -Item $PI[0] -RemoveRecoveryPoints
+$PI = Get-AzRecoveryServicesBackupItem -Container $Cont[0] -WorkloadType AzureVM | Where-Object {$_.DeleteState -eq "ToBeDeleted"}
+Undo-AzRecoveryServicesBackupItemDeletion -Item $PI[0]
 ```
 
 The first command gets an array of backup containers, and then stores it in the $Cont array.

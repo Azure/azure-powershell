@@ -534,3 +534,155 @@ function Test-LoadBalancerBackendAddressConfig
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Tests
+#>
+function Test-IPBasedBackendPoolQueryInboundNatRulePortMapping
+{
+
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rglocation = "eastus2euap"
+
+    $subnetName = Get-ResourceName
+    $vnetName = Get-ResourceName
+    $location = "eastus2euap"
+
+    $publicIpName = Get-ResourceName
+    $domainNameLabel = Get-ResourceName
+
+    $frontendName = Get-ResourceName
+    $backendAddressPoolName = Get-ResourceName
+    $inboundNatRuleV2Name = Get-ResourceName
+    $lbName = Get-ResourceName
+
+    $testIpAddress1 = "10.0.0.5"
+    $testIpAddress2 = "10.0.0.6"
+
+    $backendAddressConfigName1 = Get-ResourceName
+    $backendAddressConfigName2 = Get-ResourceName
+
+    try
+    {
+        # Create the regional resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval"}
+
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+
+        # Create the publicip
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -DomainNameLabel $domainNameLabel -SKU Standard
+
+        # Create regional loadbalancer
+        $frontend = New-AzLoadBalancerFrontendIpConfig -Name $frontendName -PublicIpAddress $publicip
+        $backendAddressPool = New-AzLoadBalancerBackendAddressPoolConfig -Name $backendAddressPoolName
+        $lb = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -FrontendIpConfiguration $frontend -SKU Standard -BackendAddressPool $backendAddressPool
+        $lb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname
+
+        $ip1 = New-AzLoadBalancerBackendAddressConfig -IpAddress $testIpAddress1 -Name $backendAddressConfigName1 -VirtualNetworkId $vnet.Id
+        $ip2 = New-AzLoadBalancerBackendAddressConfig -IpAddress $testIpAddress2 -Name $backendAddressConfigName2 -VirtualNetworkId $vnet.Id
+        $ips = @($ip1, $ip2)
+        $lb | Set-AzLoadBalancerBackendAddressPool -LoadBalancerBackendAddress $ips -Name $backendAddressPoolName
+        $lb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname
+        $lb | Add-AzLoadBalancerInboundNatRuleConfig -Name $inboundNatRuleV2Name -FrontendIPConfiguration $frontend -Protocol Tcp -BackendPort 3390 -IdleTimeoutInMinutes 15 -EnableFloatingIP -FrontendPortRangeStart 3390 -FrontendPortRangeEnd 4001 -BackendAddressPool $lb.BackendAddressPools[0]
+        $lb | Set-AzLoadBalancer
+
+        # Query port mapping
+        $portMapping1 = Get-AzLoadBalancerBackendAddressInboundNatRulePortMapping -ResourceGroupName $rgname -LoadBalancerName $lbName -Name $backendAddressPoolName -IpAddress $testIpAddress1
+        Assert-AreEqual $portMapping1.inboundNatRuleName $lb.InboundNatRules[0].Name
+        Assert-AreEqual $portMapping1.protocol "Tcp"
+        Assert-AreEqual $portMapping1.frontendPort 3390
+        Assert-AreEqual $portMapping1.BackendPort 3390
+
+        $portMapping2 = Get-AzLoadBalancerBackendAddressInboundNatRulePortMapping -ResourceGroupName $rgname -LoadBalancerName $lbName -Name $backendAddressPoolName -IpAddress $testIpAddress2
+        Assert-AreEqual $portMapping2.inboundNatRuleName $lb.InboundNatRules[0].Name
+        Assert-AreEqual $portMapping2.protocol "Tcp"
+        Assert-AreEqual $portMapping2.frontendPort 3391
+        Assert-AreEqual $portMapping2.BackendPort 3390
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests
+#>
+function Test-NICBasedBackendPoolQueryInboundNatRulePortMapping
+{
+
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rglocation = "eastus2euap"
+
+    $vnetName = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $location = "eastus2euap"
+
+    $publicIpName = Get-ResourceName
+    $domainNameLabel = Get-ResourceName
+
+    $frontendName = Get-ResourceName
+    $backendAddressPoolName = Get-ResourceName
+    $inboundNatRuleV2Name = Get-ResourceName
+    $lbName = Get-ResourceName
+
+    $nicname1 = Get-ResourceName
+    $nicname2 = Get-ResourceName
+    $ipconfigname1 = Get-ResourceName
+    $ipconfigname2 = Get-ResourceName
+
+    try
+    {
+        # Create the regional resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval"}
+
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+
+        # Create the publicip
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -DomainNameLabel $domainNameLabel -SKU Standard
+
+        # Create regional loadbalancer
+        $frontend = New-AzLoadBalancerFrontendIpConfig -Name $frontendName -PublicIpAddress $publicip
+        $backendAddressPool = New-AzLoadBalancerBackendAddressPoolConfig -Name $backendAddressPoolName
+        $lb = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -FrontendIpConfiguration $frontend -SKU Standard -BackendAddressPool $backendAddressPool
+        $lb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname
+
+        # Create 2 network interfaces and accociate to loadbalancer
+        $nic1 = New-AzNetworkInterface -Name $nicname1 -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -IpConfigurationName $ipconfigname1
+        $nic2 = New-AzNetworkInterface -Name $nicname2 -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -IpConfigurationName $ipconfigname2
+        $nic1.IpConfigurations[0].LoadBalancerBackendAddressPools.Add($lb.BackendAddressPools[0]);
+        $nic2.IpConfigurations[0].LoadBalancerBackendAddressPools.Add($lb.BackendAddressPools[0]);
+        $nic1 = $nic1 | Set-AzNetworkInterface
+        $nic2 = $nic2 | Set-AzNetworkInterface
+
+        # Create InboundNatRuleV2
+        $lb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname
+        $lb | Add-AzLoadBalancerInboundNatRuleConfig -Name $inboundNatRuleV2Name -FrontendIPConfiguration $frontend -Protocol Tcp -BackendPort 3390 -IdleTimeoutInMinutes 15 -EnableFloatingIP -FrontendPortRangeStart 3390 -FrontendPortRangeEnd 4001 -BackendAddressPool $lb.BackendAddressPools[0]
+        $lb | Set-AzLoadBalancer
+
+        # Query port mapping
+        $portMapping1 = Get-AzLoadBalancerBackendAddressInboundNatRulePortMapping -ResourceGroupName $rgname -LoadBalancerName $lbName -Name $backendAddressPoolName -NetworkInterfaceIpConfigurationId $nic1.IpConfigurations[0].Id
+        Assert-AreEqual $portMapping1.inboundNatRuleName $inboundNatRuleV2Name
+        Assert-AreEqual $portMapping1.protocol "Tcp"
+        Assert-AreEqual $portMapping1.frontendPort 3390
+        Assert-AreEqual $portMapping1.BackendPort 3390
+
+        $portMapping2 = Get-AzLoadBalancerBackendAddressInboundNatRulePortMapping -ResourceGroupName $rgname -LoadBalancerName $lbName -Name $backendAddressPoolName -NetworkInterfaceIpConfigurationId $nic2.IpConfigurations[0].Id
+        Assert-AreEqual $portMapping2.inboundNatRuleName $inboundNatRuleV2Name
+        Assert-AreEqual $portMapping2.protocol "Tcp"
+        Assert-AreEqual $portMapping2.frontendPort 3391
+        Assert-AreEqual $portMapping2.BackendPort 3390
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

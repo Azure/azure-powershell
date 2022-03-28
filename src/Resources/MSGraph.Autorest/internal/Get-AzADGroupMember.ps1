@@ -26,9 +26,9 @@ HTTP Methods: GET (supported for all groups), POST (supported for security group
 Nullable.
 Supports $expand.
 .Example
-PS C:\> Get-AzADGroupMember -GroupDisplayName $name
+Get-AzADGroupMember -GroupDisplayName $name
 .Example
-PS C:\> Get-AzADGroup -DisplayName $name | Get-AzADGroupMember
+Get-AzADGroup -DisplayName $name | Get-AzADGroupMember
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject

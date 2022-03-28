@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataMigration-help.xml
 Module Name: Az.DataMigration
 online version: https://docs.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationtosqlmanagedinstance
 schema: 2.0.0
@@ -15,16 +15,16 @@ Create a new database migration to a given SQL Managed Instance.
 ```
 New-AzDataMigrationToSqlManagedInstance -ManagedInstanceName <String> -ResourceGroupName <String>
  -TargetDbName <String> [-SubscriptionId <String>] [-AzureBlobAccountKey <String>]
- [-AzureBlobContainerName <String>] [-AzureBlobStorageAccountResourceId <String>]
- [-FileSharePassword <String>] [-FileSharePath <String>] [-FileShareUsername <String>] [-Kind <ResourceType>]
+ [-AzureBlobContainerName <String>] [-AzureBlobStorageAccountResourceId <String>] [-FileSharePassword <String>]
+ [-FileSharePath <String>] [-FileShareUsername <String>] [-Kind <ResourceType>]
  [-MigrationOperationId <String>] [-MigrationService <String>] [-Offline]
  [-OfflineConfigurationLastBackupName <String>] [-ProvisioningError <String>] [-Scope <String>]
  [-SourceDatabaseName <String>] [-SourceSqlConnectionAuthentication <String>]
  [-SourceSqlConnectionDataSource <String>] [-SourceSqlConnectionEncryptConnection]
  [-SourceSqlConnectionPassword <String>] [-SourceSqlConnectionTrustServerCertificate]
  [-SourceSqlConnectionUserName <String>] [-StorageAccountKey <String>] [-StorageAccountResourceId <String>]
- [-TargetDatabaseCollation <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-TargetDatabaseCollation <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,8 +34,10 @@ Create a new database migration to a given SQL Managed Instance.
 
 ### Example 1: Start a Database Migration from the on-premise Source Sql Server to target Managed Instance
 ```powershell
-PS C:\> New-AzDataMigrationToSqlManagedInstance -ResourceGroupName "MyResourceGroup" -ManagedInstanceName "MyManagedInstance" -TargetDbName "MyDb" -Kind "SqlMI" -Scope "/subscriptions/0000-1111-2222-3333-4444/resourceGroups/MyResourceGroup/providers/Microsoft.Sql/managedInstances/MyManagedInstance" -MigrationService "/subscriptions/0000-1111-2222-3333-4444/resourceGroups/MyRG/providers/Microsoft.DataMigration/SqlMigrationServices/MySqlMigrationService" -StorageAccountResourceId "/subscriptions/0000-1111-2222-3333-4444/resourceGroups/MyResourceGroup/providers/Microsoft.Storage/storageAccounts/MyStorageAccount" -StorageAccountKey "aaaaacccccoouunntkkkkeeeyyy" -FileSharePath "\\filesharepath.com\SharedBackup\MyBackUps" -FileShareUsername "filesharepath\User" -FileSharePassword "password" -SourceSqlConnectionAuthentication "SqlAuthentication" -SourceSqlConnectionDataSource "LabServer.database.net" -SourceSqlConnectionUserName "User" -SourceSqlConnectionPassword "password" -SourceDatabaseName "AdventureWorks"
+New-AzDataMigrationToSqlManagedInstance -ResourceGroupName "MyResourceGroup" -ManagedInstanceName "MyManagedInstance" -TargetDbName "MyDb" -Kind "SqlMI" -Scope "/subscriptions/0000-1111-2222-3333-4444/resourceGroups/MyResourceGroup/providers/Microsoft.Sql/managedInstances/MyManagedInstance" -MigrationService "/subscriptions/0000-1111-2222-3333-4444/resourceGroups/MyRG/providers/Microsoft.DataMigration/SqlMigrationServices/MySqlMigrationService" -StorageAccountResourceId "/subscriptions/0000-1111-2222-3333-4444/resourceGroups/MyResourceGroup/providers/Microsoft.Storage/storageAccounts/MyStorageAccount" -StorageAccountKey "aaaaacccccoouunntkkkkeeeyyy" -FileSharePath "\\filesharepath.com\SharedBackup\MyBackUps" -FileShareUsername "filesharepath\User" -FileSharePassword "password" -SourceSqlConnectionAuthentication "SqlAuthentication" -SourceSqlConnectionDataSource "LabServer.database.net" -SourceSqlConnectionUserName "User" -SourceSqlConnectionPassword "password" -SourceDatabaseName "AdventureWorks"
+```
 
+```output
 Name               Type                                       Kind  ProvisioningState MigrationStatus
 ----               ----                                       ----  ----------------- ---------------
 MyDb               Microsoft.DataMigration/databaseMigrations SqlMi Succeeded         InProgress
@@ -560,4 +562,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-

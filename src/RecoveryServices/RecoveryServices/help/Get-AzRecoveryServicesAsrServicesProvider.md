@@ -37,7 +37,7 @@ The **Get-AzRecoveryServicesAsrServicesProvider** cmdlet gets information on the
 
 ### Example 1
 ```powershell
-PS C:\> $RSPs = Get-AzRecoveryServicesAsrFabric | Get-AzRecoveryServicesAsrServicesProvider
+$RSPs = Get-AzRecoveryServicesAsrFabric | Get-AzRecoveryServicesAsrServicesProvider
 ```
 
 List all ASR replication services providers registered to the Recovery Services vault corresponding to the specified fabric.

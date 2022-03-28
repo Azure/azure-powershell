@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the AppConfiguration service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.8.1 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -53,7 +53,7 @@ require:
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/5d7c9b734d462cc3b111757957c7d2cc027dff80/specification/appconfiguration/resource-manager/Microsoft.AppConfiguration/stable/2020-06-01/appconfiguration.json
 
-module-version: 0.1.4
+module-version: 1.0.0
 title: AppConfiguration
 
 # If there are post APIs for some kinds of actions in the RP, you may need to

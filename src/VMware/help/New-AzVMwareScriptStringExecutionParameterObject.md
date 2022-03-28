@@ -23,8 +23,9 @@ Create a in-memory object for ScriptStringExecutionParameter
 
 ### Example 1: Create a local Script String Execution object
 ```powershell
-PS C:\> New-AzVMwareScriptStringExecutionParameterObject -Name azps_test_stringvalue -Value "stringValue"
-
+New-AzVMwareScriptStringExecutionParameterObject -Name azps_test_stringvalue -Value "stringValue"
+```
+```output
 Name                  Type   Value
 ----                  ----   -----
 azps_test_stringvalue Value  stringValue
@@ -71,7 +72,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.ScriptStringExecutionParameter
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ScriptStringExecutionParameter
 
 ## NOTES
 

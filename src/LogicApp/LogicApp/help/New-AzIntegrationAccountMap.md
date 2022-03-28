@@ -33,7 +33,10 @@ If you omit a required template parameter, the cmdlet prompts you for the value.
 
 ### Example 1: Create an integration account map
 ```powershell
-PS C:\>New-AzIntegrationAccountMap -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -MapName "IntegrationAccountMap47" -MapDefinition $MapContent
+New-AzIntegrationAccountMap -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -MapName "IntegrationAccountMap47" -MapDefinition $MapContent
+```
+
+```output
 Id          : /subscriptions/<SubscriptionId>/resourceGroups/ResourceGroup11/providers/Microsoft.Logic/integrationAccounts/IntegrationAccount31/maps/IntegrationAccountMap47
 Name        : IntegrationAccountMap47
 Type        : Microsoft.Logic/integrationAccounts/maps

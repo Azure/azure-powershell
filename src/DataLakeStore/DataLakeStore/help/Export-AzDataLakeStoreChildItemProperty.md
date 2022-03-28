@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll-Help.xml
 Module Name: Az.DataLakeStore
 online version: https://docs.microsoft.com/powershell/module/az.datalakestore/export-azdatalakestorechilditemproperty
@@ -42,19 +42,19 @@ The **Export-AzDataLakeStoreChildItemProperty** is used to report the ADLS space
 ## EXAMPLES
 
 ### Example 1: Get the disk usage and ACL usage for all subdirectories and files
-```
-PS C:\> Export-AzDataLakeStoreChildItemProperty -Account ContosoADL -Path /a -OutputPath "C:\Users\contoso\Desktop\DumpFile.txt" -GetAcl -GetDiskUsage -IncludeFile
+```powershell
+Export-AzDataLakeStoreChildItemProperty -Account ContosoADL -Path /a -OutputPath "C:\Users\contoso\Desktop\DumpFile.txt" -GetAcl -GetDiskUsage -IncludeFile
 ```
 
 Get the disk usage and ACL usage for all subdirectories and files under /a. IncludeFile ensures the usage is reported for files also
 
 ### Example 2: Get the ACL usage for all subdirectories and files with the consistent ACL hidden
-```
-PS C:\> $fullAcl="user:contoso-userid:--x|user::rwx|other::---|group::rwx"
-PS C:\> $newFullAcl = $fullAcl.Split("{|}");
-PS C:\> Set-AzDataLakeStoreItemAcl -Account ContosoADL -Path /a -Acl $newFullAcl -Recurse -Debug
+```powershell
+$fullAcl="user:contoso-userid:--x|user::rwx|other::---|group::rwx"
+$newFullAcl = $fullAcl.Split("{|}");
+Set-AzDataLakeStoreItemAcl -Account ContosoADL -Path /a -Acl $newFullAcl -Recurse -Debug
 
-PS C:\> Export-AzDataLakeStoreChildItemProperty -Account ContosoADL -Path /a -OutputPath "C:\Users\contoso\Desktop\DumpFile.txt" -GetAcl -HideConsistentAcl -IncludeFile
+Export-AzDataLakeStoreChildItemProperty -Account ContosoADL -Path /a -OutputPath "C:\Users\contoso\Desktop\DumpFile.txt" -GetAcl -HideConsistentAcl -IncludeFile
 ```
 
 Get the ACL usage for all subdirectories and files under /a. IncludeFile ensures the usage is reported for files also. HideconsistentAcl in this case will show the Acl of /a, not it's children since all of the children has same acl as /a. This flag skips the acl output of subtree if all it's acls are same as the root.

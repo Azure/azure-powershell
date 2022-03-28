@@ -36,9 +36,11 @@ This command gets the status of the subscription for the event trigger to the sp
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName ADF -DataFactoryName WikiADF -Name Trigger1
 ```
-PS C:\> Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName ADF -DataFactoryName WikiADF -Name Trigger1
 
+```output
 TriggerName Status
 ----------- ------
 Trigger1    Enabled

@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support
 {
 
-    /// <summary>TypeConverter implementation for ProvisioningState.</summary>
+    /// <summary>The provisioning state of the configuration store.</summary>
     public partial class ProvisioningStateTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

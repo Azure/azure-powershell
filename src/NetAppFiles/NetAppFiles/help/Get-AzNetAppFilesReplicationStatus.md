@@ -37,10 +37,10 @@ Get the status of the replication
 
 ### Example 1
 ```powershell
-PS C:\> Get-AnfReplicationStatus -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -PoolName "MyDestinationPool" -VolumeName "MyVol"
+Get-AnfReplicationStatus -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -PoolName "MyDestinationPool" -VolumeName "MyVol"
+```
 
-Output:
-
+```output
 Healthy            : true
 RelationshipStatus : Idle
 MirrorState        : Mirrored

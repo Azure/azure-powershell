@@ -37,9 +37,11 @@ This command subscribes the event trigger to the specified external service even
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Add-AzDataFactoryV2TriggerSubscription -ResourceGroupName ADF -DataFactoryName WikiADF -Name Trigger1
 ```
-PS C:\> Add-AzDataFactoryV2TriggerSubscription -ResourceGroupName ADF -DataFactoryName WikiADF -Name Trigger1
 
+```output
 TriggerName Status
 ----------- ------
 Trigger1    Provisioning

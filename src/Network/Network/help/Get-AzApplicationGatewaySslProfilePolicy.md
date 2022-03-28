@@ -24,9 +24,9 @@ The **Get-AzApplicationGatewaySslProfilePolicy** cmdlet gets the SSL policy of a
 
 ### Example 1
 ```powershell
-PS C:\>$AppGW = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> $SslProfile  = Get-AzApplicationGatewaySslProfile -Name "SslProfile01" -ApplicationGateway $AppGw
-PS C:\> $sslpolicy = Get-AzApplicationGatewaySslProfilePolicy -SslProfile $SslProfile
+$AppGW = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+$SslProfile  = Get-AzApplicationGatewaySslProfile -Name "SslProfile01" -ApplicationGateway $AppGw
+$sslpolicy = Get-AzApplicationGatewaySslProfilePolicy -SslProfile $SslProfile
 ```
 
 The first command gets the application gateway named ApplicationGateway01 in the resource group named ResourceGroup01 and stores it in the $AppGw variable. The second command gets the SSL profile named SslProfile01 for $AppGw and stores it $SslProfile variable. The last command gets the SSL policy from the SSL profile $SslProfile and stores it in the $sslpolicy variable.

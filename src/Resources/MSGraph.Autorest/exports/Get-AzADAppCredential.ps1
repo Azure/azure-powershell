@@ -20,7 +20,7 @@ Lists key credentials and password credentials for an application.
 .Description
 Lists key credentials and password credentials for an application.
 .Example
-PS C:\> Get-AzADAppCredential -DisplayName $name
+Get-AzADAppCredential -DisplayName $name
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication

@@ -20,7 +20,7 @@ Represents an Azure Active Directory user object.
 .Description
 Represents an Azure Active Directory user object.
 .Example
-PS C:\> Update-AzADUser -UPNOrObjectId $upn -City $city
+Update-AzADUser -UPNOrObjectId $upn -City $city
 
 .Outputs
 System.Boolean

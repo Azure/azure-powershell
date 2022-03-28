@@ -30,10 +30,12 @@ Set the vault context by using the -VaultId parameter.
 ### Example 1: Get all in-progress jobs
 
 ```powershell
-PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
-PS C:\> $Joblist = Get-AzRecoveryServicesBackupJob -Status InProgress -VaultId $vault.ID
-PS C:\> $Joblist[0]
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+$Joblist = Get-AzRecoveryServicesBackupJob -Status InProgress -VaultId $vault.ID
+$Joblist[0]
+```
 
+```output
 WorkloadName     Operation            Status               StartTime                 EndTime
 ------------     ---------            ------               ---------                 -------
 V2VM             Backup               InProgress           4/23/2016 5:00:30 PM      1/1/2001 12:00:00
@@ -45,8 +47,8 @@ The second command displays the first item in the $Joblist array.
 ### Example 2: Get all failed jobs in the last 7 days
 
 ```powershell
-PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
-PS C:\> Get-AzRecoveryServicesBackupJob -From (Get-Date).AddDays(-7).ToUniversalTime() -Status Failed -VaultId $vault.ID
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+Get-AzRecoveryServicesBackupJob -From (Get-Date).AddDays(-7).ToUniversalTime() -Status Failed -VaultId $vault.ID
 ```
 
 This command gets failed jobs from the last week in the vault.
@@ -66,7 +68,9 @@ While ( $Job.Status -ne Completed ) {
     $Job = Get-AzRecoveryServicesBackupJob -Job $Job -VaultId $vault.ID
 }
 Write-Host -Object "Done!"
+```
 
+```output
 Waiting for completion... 
 Waiting for completion... 
 Waiting for completion... 

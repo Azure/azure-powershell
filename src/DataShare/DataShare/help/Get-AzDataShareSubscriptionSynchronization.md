@@ -30,9 +30,11 @@ The **Get-AzDataShareSubscriptionSynchronization** cmdlet provides informaiton a
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Get-AzDataShareSubscriptionSynchronization -ResourceGroupName "ADS" -AccountName "WikiAds"  -ShareSubscriptionName "AdsShareSubscription"
 ```
-PS C:\> Get-AzDataShareSubscriptionSynchronization -ResourceGroupName "ADS" -AccountName "WikiAds"  -ShareSubscriptionName "AdsShareSubscription"
 
+```output
 durationMs        : 83660
 endTime           : 7/10/2019 9:01:23 AM
 message           :

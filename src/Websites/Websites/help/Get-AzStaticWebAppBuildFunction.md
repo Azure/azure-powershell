@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Websites-help.xml
 Module Name: Az.Websites
 online version: https://docs.microsoft.com/powershell/module/az.websites/get-azstaticwebappbuildfunction
 schema: 2.0.0
@@ -24,8 +24,10 @@ Description for Gets the functions of a particular static site build.
 
 ### Example 1: List all functions of a particular static site build
 ```powershell
-PS C:\> Get-AzStaticWebAppBuildFunction -ResourceGroupName lucas-rg-test -Name staticweb-portal04 -EnvironmentName 'default'
+Get-AzStaticWebAppBuildFunction -ResourceGroupName lucas-rg-test -Name staticweb-portal04 -EnvironmentName 'default'
+```
 
+```output
 Kind Name            Type
 ---- ----            ----
      WeatherForecast Microsoft.Web/staticSites/builds/functions
@@ -126,4 +128,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-

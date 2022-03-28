@@ -138,6 +138,8 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string Send = "Send";
         protected const string Listen = "Listen";
 
+        
+
         protected struct SKU
         {
             internal const string Basic = "Basic";
@@ -193,6 +195,27 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
                 tspan = TimeSpan.Parse(strTimespan);
             }
             return tspan;
+        }
+
+        public string ParseIdentityType(ManagedServiceIdentityType? managedServiceIdentityType)
+        {
+            if(managedServiceIdentityType == ManagedServiceIdentityType.SystemAssigned)
+            {
+                return ServiceBusClient.SystemAssigned;
+            }
+            if (managedServiceIdentityType == ManagedServiceIdentityType.UserAssigned)
+            {
+                return ServiceBusClient.UserAssigned;
+            }
+            if (managedServiceIdentityType == ManagedServiceIdentityType.SystemAssignedUserAssigned)
+            {
+                return ServiceBusClient.SystemAssignedUserAssigned;
+            }
+            if (managedServiceIdentityType == ManagedServiceIdentityType.None)
+            {
+                return ServiceBusClient.None;
+            }
+            return "";
         }
 
         public Microsoft.Azure.Commands.ServiceBus.ServiceBusClient Client
@@ -331,6 +354,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         }
 
         #endregion
+
     }
 
 

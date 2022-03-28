@@ -24,8 +24,8 @@ The **Get-AzPowerBIWorkspace** cmdlet gets the workspaces in a Power BI workspac
 ## EXAMPLES
 
 ### Example 1: Get workspaces of a workspace collection
-```
-PS C:\>Get-AzPowerBIWorkspace -ResourceGroupName "ResourceGroup17" -WorkspaceCollectionName "WCN11"
+```powershell
+Get-AzPowerBIWorkspace -ResourceGroupName "ResourceGroup17" -WorkspaceCollectionName "WCN11"
 ```
 
 This command gets the workspaces that belong to the workspace collection named WCN11 in the specified resource group.

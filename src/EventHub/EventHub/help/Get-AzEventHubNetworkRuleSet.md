@@ -37,21 +37,21 @@ Gets the details of an Event Hubs NetworkruleSet of namespace in the current Azu
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzEventHubNetworkRuleSet -ResourceGroupName  v-ajnavtest -Namespace Eventhub-Namespace1-1375
+Get-AzEventHubNetworkRuleSet -ResourceGroupName  v-ajnavtest -Namespace Eventhub-Namespace1-1375
 ```
 
 Get the details of Event Hubs NetworkruleSet of namespace using ResourceGroup and Namespace parameters. 
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzEventHubNetworkRuleSet -Namespace Eventhub-Namespace1-2389
+Get-AzEventHubNetworkRuleSet -Namespace Eventhub-Namespace1-2389
 ```
 
 Get the details of Event Hubs NetworkruleSet of namespace using  Namespace which is in the current subscription.
 
 ### Example 3
 ```powershell
-PS C:\> Get-AzEventHubNetworkRuleSet -ResourceId /SubscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace1-2389
+Get-AzEventHubNetworkRuleSet -ResourceId /SubscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace1-2389
 ```
 
 Get the details of Event Hubs NetworkruleSet of namespace using Resource Id of other Namespace 

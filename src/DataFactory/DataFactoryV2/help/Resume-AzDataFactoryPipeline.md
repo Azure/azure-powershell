@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactories.dll-Help.xml
 Module Name: Az.DataFactory
 ms.assetid: F522841A-4246-4028-A754-393D8DADD924
@@ -32,7 +32,10 @@ The **Resume-AzDataFactoryPipeline** cmdlet resumes a suspended pipeline in Azur
 
 ### Example 1: Resume a pipeline
 ```powershell
-PS C:\>Resume-AzDataFactoryPipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF"
+Resume-AzDataFactoryPipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF"
+```
+
+```output
 Confirm
 Are you sure you want to resume pipeline 'DPWikisample' in data factory 'WikiADF'? 
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
