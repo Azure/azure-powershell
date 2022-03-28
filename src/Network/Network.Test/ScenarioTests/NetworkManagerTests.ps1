@@ -44,6 +44,11 @@ function Test-NetworkManagerCRUD
         Assert-AreEqual  $networkmanager.NetworkManagerScopeAccesses[0] "Connectivity";
         Assert-AreEqual $networkManager.NetworkManagerScopes.Subscriptions[0] $subscriptionId;
 
+        $networkManager.NetworkManagerScopeAccesses.Add("SecurityAdmin");
+        $newNetworkManager = Set-AzNetworkManager -ResourceGroupName $rgname -NetworkManager $networkManager
+        Assert-AreEqual  $networkmanager.NetworkManagerScopeAccesses[0] "Connectivity";
+        Assert-AreEqual  $networkmanager.NetworkManagerScopeAccesses[1] "SecurityAdmin";
+
         $job = Remove-AzNetworkManager -ResourceGroupName $rgname -Name $networkManagerName -PassThru -Force -AsJob;
         $job | Wait-Job;
         $removeResult = $job | Receive-Job;
