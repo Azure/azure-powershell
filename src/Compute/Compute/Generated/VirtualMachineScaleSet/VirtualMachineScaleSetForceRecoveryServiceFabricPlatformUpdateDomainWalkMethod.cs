@@ -62,8 +62,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             break;
                     }
                     int platformUpdateDomain = this.PlatformUpdateDomain;
+                    string zone = this.Zone;
+                    string placementgroupid = this.PlacementGroupId ;
 
-                    var result = VirtualMachineScaleSetsClient.ForceRecoveryServiceFabricPlatformUpdateDomainWalk(resourceGroupName, vmScaleSetName, platformUpdateDomain);
+                    var result = VirtualMachineScaleSetsClient.ForceRecoveryServiceFabricPlatformUpdateDomainWalk(resourceGroupName, vmScaleSetName, platformUpdateDomain, zone:zone, placementGroupId: placementgroupid);
                     var psObject = new PSRecoveryWalkResponse();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<RecoveryWalkResponse, PSRecoveryWalkResponse>(result, psObject);
                     WriteObject(psObject);
@@ -92,6 +94,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 2,
             Mandatory = true)]
         public int PlatformUpdateDomain { get; set; }
+
+        [Parameter(
+            Mandatory = false)]
+        public string Zone { get; set; }
+
+        [Parameter(
+            Mandatory = false)]
+        public string PlacementGroupId { get; set; }
 
         [Parameter(
             ParameterSetName = "ResourceIdParameter",
