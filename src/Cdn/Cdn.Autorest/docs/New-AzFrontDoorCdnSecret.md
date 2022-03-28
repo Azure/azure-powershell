@@ -14,7 +14,7 @@ Creates a new Secret within the specified profile.
 
 ```
 New-AzFrontDoorCdnSecret -Name <String> -ProfileName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-ParameterType <SecretType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-SubscriptionId <String>] [-Parameter <ISecretParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -103,11 +103,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ParameterType
-The type of the secret resource.
+### -Parameter
+object which contains secret parameters
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SecretType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ISecretParameters
 Parameter Sets: (All)
 Aliases:
 
@@ -206,6 +207,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+PARAMETER <ISecretParameters>: object which contains secret parameters
+  - `Type <SecretType>`: The type of the secret resource.
 
 ## RELATED LINKS
 

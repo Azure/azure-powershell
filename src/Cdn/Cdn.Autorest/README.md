@@ -55,8 +55,17 @@ resourcegroup-append: true
 nested-object-to-string: true
 
 directive:
+  - no-inline:
+    - SecurityPolicyPropertiesParameters
+    - SecretParameters
   # Generate memory object as parameter of the cmelet.
   - model-cmdlet:
+    - SecurityPolicyWebApplicationFirewallAssociation
+    - SecurityPolicyWebApplicationFirewallParameters
+    - AzureFirstPartyManagedCertificateParameters
+    - CustomerCertificateParameters
+    - ManagedCertificateParameters
+    - UrlSigningKeyParameters
     - DeliveryRuleRemoteAddressCondition
     - DeliveryRuleRequestMethodCondition
     - DeliveryRuleQueryStringCondition

@@ -127,8 +127,14 @@ Available for Verizon Profiles.
 ### [Invoke-AzCdnSecretValidate](Invoke-AzCdnSecretValidate.md)
 Validate a Secret in the profile.
 
+### [New-AzCdnAzureFirstPartyManagedCertificateParametersObject](New-AzCdnAzureFirstPartyManagedCertificateParametersObject.md)
+Create an in-memory object for AzureFirstPartyManagedCertificateParameters.
+
 ### [New-AzCdnCustomDomain](New-AzCdnCustomDomain.md)
 Creates a new custom domain within an endpoint.
+
+### [New-AzCdnCustomerCertificateParametersObject](New-AzCdnCustomerCertificateParametersObject.md)
+Create an in-memory object for CustomerCertificateParameters.
 
 ### [New-AzCdnDeliveryRuleCacheExpirationActionObject](New-AzCdnDeliveryRuleCacheExpirationActionObject.md)
 Create an in-memory object for DeliveryRuleCacheExpirationAction.
@@ -205,6 +211,9 @@ Create an in-memory object for DeliveryRuleUrlPathCondition.
 ### [New-AzCdnEndpoint](New-AzCdnEndpoint.md)
 Creates a new CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 
+### [New-AzCdnManagedCertificateParametersObject](New-AzCdnManagedCertificateParametersObject.md)
+Create an in-memory object for ManagedCertificateParameters.
+
 ### [New-AzCdnOrigin](New-AzCdnOrigin.md)
 Creates a new origin within the specified endpoint.
 
@@ -225,6 +234,12 @@ Generates a dynamic SSO URI used to sign in to the CDN supplemental portal.
 Supplemental portal is used to configure advanced feature capabilities that are not yet available in the Azure portal, such as core reports in a standard profile; rules engine, advanced HTTP reports, and real-time stats and alerts in a premium profile.
 The SSO URI changes approximately every 10 minutes.
 
+### [New-AzCdnSecurityPolicyWebApplicationFirewallAssociationObject](New-AzCdnSecurityPolicyWebApplicationFirewallAssociationObject.md)
+Create an in-memory object for SecurityPolicyWebApplicationFirewallAssociation.
+
+### [New-AzCdnSecurityPolicyWebApplicationFirewallParametersObject](New-AzCdnSecurityPolicyWebApplicationFirewallParametersObject.md)
+Create an in-memory object for SecurityPolicyWebApplicationFirewallParameters.
+
 ### [New-AzCdnUrlRedirectActionObject](New-AzCdnUrlRedirectActionObject.md)
 Create an in-memory object for UrlRedirectAction.
 
@@ -233,6 +248,9 @@ Create an in-memory object for UrlRewriteAction.
 
 ### [New-AzCdnUrlSigningActionObject](New-AzCdnUrlSigningActionObject.md)
 Create an in-memory object for UrlSigningAction.
+
+### [New-AzCdnUrlSigningKeyParametersObject](New-AzCdnUrlSigningKeyParametersObject.md)
+Create an in-memory object for UrlSigningKeyParameters.
 
 ### [New-AzFrontDoorCdnCustomDomain](New-AzFrontDoorCdnCustomDomain.md)
 Creates a new domain within the specified profile.
