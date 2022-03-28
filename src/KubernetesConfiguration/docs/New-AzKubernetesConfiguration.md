@@ -41,13 +41,13 @@ This command creates a configuration for kubernetes cluster.
 
 ### Example 2: Create a configuration for kubernetes cluster with specify paramter OperatorNamespace
 ```powershell
-New-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azps_test_cluster -Name azpstestk8s02 -RepositoryUrl http://github.com/xxxx -OperatorNamespace namespace-t01
+New-AzKubernetesConfiguration -ResourceGroupName azpstestgroup -ClusterName azpstestcluster -Name azpstestk8s02 -RepositoryUrl http://github.com/xxxx -OperatorNamespace namespace-t01 -ClusterType ConnectedClusters
 ```
 
 ```output
 Name          RepositoryUrl          ResourceGroupName
 ----          -------------          -----------------
-azpstestk8s02 http://github.com/xxxx azps_test_group
+azpstestk8s02 http://github.com/xxxx azpstestgroup
 ```
 
 This command creates a configuration in the new operator namespace for kubernetes cluster.

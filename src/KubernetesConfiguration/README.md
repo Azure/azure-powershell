@@ -57,7 +57,7 @@ input-file:
   - $(repo)/specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2022-03-01/kubernetesconfiguration.json
 
 title: KubernetesConfiguration
-module-version: 0.1.0
+module-version: 0.2.0
 subject-prefix: ''
 
 identity-correction-for-post: true
@@ -82,6 +82,36 @@ directive:
           }
         },
         "409": {
+          "description": "Conflict",
+          "x-ms-error-response": true,
+          "schema": {
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/791255f0c5dd775015cd51f3e642549190fb3803/specification/common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
+          }
+        },
+        "default": {
+          "description": "Error response describing why the operation failed.",
+          "schema": {
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/791255f0c5dd775015cd51f3e642549190fb3803/specification/common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
+          }
+        }
+      }
+  - from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/fluxConfigurations/{fluxConfigurationName}"].put.responses
+    transform: >-
+      return {
+        "200": {
+          "description": "Request received successfully for an existing resource.",
+          "schema": {
+            "$ref": "#/definitions/FluxConfiguration"
+          }
+        },
+        "201": {
+          "description": "Request received successfully.",
+          "schema": {
+            "$ref": "#/definitions/FluxConfiguration"
+          }
+        },
+        "400": {
           "description": "Conflict",
           "x-ms-error-response": true,
           "schema": {
