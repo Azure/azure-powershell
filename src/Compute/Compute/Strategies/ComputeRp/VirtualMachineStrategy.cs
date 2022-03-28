@@ -40,16 +40,16 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         ? 240
                         : 120);
 
-        public static ResourceStrategy<VirtualMachineWrapper> Strategy_2 { get; }
-            = ComputeStrategy.CreateV2(
+        public static ResourceStrategy<VirtualMachineWrapper> StrategyWithCustomHeader { get; }
+            = ComputeStrategy.CreateWithCustomHeader(
                 provider: "virtualMachines",
                 getOperations: client => client.VirtualMachines,
-                getAsync: (o, p) => o.GetAsync(
+                getAsync: (o, p) => o.GetVMWrapperAsync(
                     p.ResourceGroupName, p.Name, null, p.CancellationToken),
-                createOrUpdateV2Async: (o, p) => o.CreateOrUpdateV2Async(
-                    p.ResourceGroupName, p.Name, p.Model.VirtualMachine, p.Model.CustomHeaders, p.CancellationToken),
+                createOrUpdateAsync: (o, p) => o.CreateOrUpdateWithCustomHeaderAsync(
+                    p.ResourceGroupName, p.Name, p.Model, p.CancellationToken),
                 createTime: c =>
-                    c != null && c.OsProfile != null && c.OsProfile.WindowsConfiguration != null
+                    c != null && c.VirtualMachine.OsProfile != null && c.VirtualMachine.OsProfile.WindowsConfiguration != null
                         ? 240
                         : 120);
 

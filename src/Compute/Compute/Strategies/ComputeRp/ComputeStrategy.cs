@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
@@ -41,20 +42,20 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                 createTime: createTime,
                 compulsoryLocation: true);
 
-        public static ResourceStrategy<TModel> CreateV2<TModel, TOperations>(
+        public static ResourceStrategy<TModel> CreateWithCustomHeader<TModel, TOperations>(
             string provider,
             Func<ComputeManagementClient, TOperations> getOperations,
             Func<TOperations, GetAsyncParams, Task<TModel>> getAsync,
-            Func<TOperations, CreateOrUpdateAsyncParams<TModel>, Task<TModel>> createOrUpdateV2Async,
+            Func<TOperations, CreateOrUpdateAsyncParams<TModel>, Task<TModel>> createOrUpdateAsync,
             Func<TModel, int> createTime)
-            where TModel : Resource
+            where TModel : VirtualMachineWrapper
             => ResourceStrategy.Create(
                 type: new ResourceType(Namespace, provider),
                 getOperations: getOperations,
                 getAsync: getAsync,
-                createOrUpdateAsync: createOrUpdateV2Async,
-                getLocation: config => config.Location,
-                setLocation: (config, location) => config.Location = location,
+                createOrUpdateAsync: createOrUpdateAsync,
+                getLocation: config => config.VirtualMachine.Location,
+                setLocation: (config, location) => config.VirtualMachine.Location = location,
                 createTime: createTime,
                 compulsoryLocation: true);
 
