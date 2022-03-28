@@ -23,15 +23,15 @@ Get Ids of applicable `ReservationOrder`s that can be applied to this subscripti
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Get-AzReservationOrderId
+```powershell
+Get-AzReservationOrderId
 ```
 
 Get applied `ReservationOrder` for default subscription
 
 ### Example 2
-```
-PS C:\> Get-AzReservationOrderId -SubscriptionId "1111aaaa-b1b2-c0c2-d0d2-00000fffff"
+```powershell
+Get-AzReservationOrderId -SubscriptionId "1111aaaa-b1b2-c0c2-d0d2-00000fffff"
 ```
 
 Get applied `ReservationOrder` for specified subscription

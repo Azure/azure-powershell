@@ -27,7 +27,7 @@ The **New-AzRecoveryServicesAsrVMNicIPConfig** cmdlet creates an IP Config objec
 
 ### Example 1
 ```powershell
-PS C:\> $ipConfig = New-AzRecoveryServicesAsrVMNicIPConfig -IpConfigName "ipconfig1" -RecoverySubnetName "default" `
+$ipConfig = New-AzRecoveryServicesAsrVMNicIPConfig -IpConfigName "ipconfig1" -RecoverySubnetName "default" `
 -TfoSubnetName "default" -RecoveryStaticIPAddress "10.1.40.10" -TfoStaticIPAddress "10.3.4.33"
 ```
 

@@ -24,14 +24,19 @@ Check the availability of a name. Alias: Test-AzSignal.
 
 ### Check an existed name.
 ```powershell
-PS C:\> Test-AzSignalRName -Name existedsignalr -Location eastus
+Test-AzSignalRName -Name existedsignalr -Location eastus
+```
+
+```output
 False
 ```
 
 ### Check an unexisted name.
+```powershell
+Test-AzSignalR unexistedsignalr eastus
 ```
-powershell
-PS C:\> Test-AzSignalR unexistedsignalr eastus
+
+```output
 True
 ```
 

@@ -61,5 +61,19 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-SqlRoleCmdlets");
         }
+
+        [Fact(Skip = "Cannot acquire token credential for a specific audience. No support from test framework. I have verified the tests manually.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestClientEncryptionKeyCmdlets()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ClientEncryptionKeyCmdlets");
+        }
+
+        [Fact(Skip = "Cannot acquire token credential for a specific audience. No support from test framework. I have verified the tests manually.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestClientEncryptionKeyCmdletsUsingInputObject()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ClientEncryptionKeyCmdletsUsingInputObject");
+        }
     }
 }

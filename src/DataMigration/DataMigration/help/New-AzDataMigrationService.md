@@ -23,8 +23,8 @@ The New-AzDataMigrationService cmdlet creates a new instance of the Azure Databa
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> New-AzDataMigrationService -ResourceGroupName myResourceGroup -Name TestService -Location "Central US" -Sku Basic_2vCores -VirtualSubnetId $virtualSubNetId
+```powershell
+New-AzDataMigrationService -ResourceGroupName myResourceGroup -Name TestService -Location "Central US" -Sku Basic_2vCores -VirtualSubnetId $virtualSubNetId
 ```
 
 The above example shows how to create a new instance of the Azure Database Migration Service named TestService in Central US region.

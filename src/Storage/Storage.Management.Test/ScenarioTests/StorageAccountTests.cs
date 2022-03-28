@@ -288,5 +288,12 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-StorageAccountAllowedCopyScope");
         }        
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewAzStorageContext()
+        {
+            TestRunner.RunTestScript("Test-NewAzStorageContext");
+        }
     }
 }

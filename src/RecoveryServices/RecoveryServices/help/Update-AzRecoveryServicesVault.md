@@ -32,19 +32,21 @@ This cmdlet is used to add or remove the MSI from the recovery services vault. U
 
 ### Example 1: Add SystemAssigned identity to the recovery services vault
 ```powershell
-PS C:\> Update-AzRecoveryServicesVault -ResourceGroupName "rgName" -Name "vaultName" -IdentityType SystemAssigned
+Update-AzRecoveryServicesVault -ResourceGroupName "rgName" -Name "vaultName" -IdentityType SystemAssigned
 ```
 
 This cmdlet is used to add a SystemAssigned identity to a recovery services vault.
 
 ### Example 2: Add UserAssigned identity to the recovery services vault
 ```powershell
-PS C:\> $vault = Get-AzRecoveryServicesVault -Name "vaultName" -ResourceGroupName "resourceGroupName"
-PS C:\> $identity1 = Get-AzUserAssignedIdentity -ResourceGroupName "resourceGroupName" -Name "UserIdentity1"
-PS C:\> $identity2 = Get-AzUserAssignedIdentity -ResourceGroupName "resourceGroupName" -Name "UserIdentity2"
-PS C:\> $updatedVault = Update-AzRecoveryServicesVault -ResourceGroupName $vault.ResourceGroupName -Name $vault.Name -IdentityType UserAssigned -IdentityId $identity1.Id, $identity2.Id
-PS C:\>  $updatedVault.Identity | fl
+$vault = Get-AzRecoveryServicesVault -Name "vaultName" -ResourceGroupName "resourceGroupName"
+$identity1 = Get-AzUserAssignedIdentity -ResourceGroupName "resourceGroupName" -Name "UserIdentity1"
+$identity2 = Get-AzUserAssignedIdentity -ResourceGroupName "resourceGroupName" -Name "UserIdentity2"
+$updatedVault = Update-AzRecoveryServicesVault -ResourceGroupName $vault.ResourceGroupName -Name $vault.Name -IdentityType UserAssigned -IdentityId $identity1.Id, $identity2.Id
+$updatedVault.Identity | fl
+```
 
+```output
 PrincipalId            :
 TenantId               : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 Type                   : UserAssigned
@@ -61,12 +63,14 @@ The fifth cmdlet shows the Identities added to the vault.
 
 ### Example 3: Remove SystemAssigned and UserAssigned identities from the vault
 ```powershell
-PS C:\> $vault = Get-AzRecoveryServicesVault -Name "vaultName" -ResourceGroupName "resourceGroupName"
-PS C:\> $updatedVault = Update-AzRecoveryServicesVault -ResourceGroupName $vault.ResourceGroupName -Name $vault.Name -RemoveSystemAssigned
-PS C:\> $AllUserIdentities =  $vault.Identity.UserAssignedIdentities.Keys | foreach {$_} 
-PS C:\> $updatedVault = Update-AzRecoveryServicesVault -ResourceGroupName $vault.ResourceGroupName -Name $vault.Name -RemoveUserAssigned -IdentityId $AllUserIdentities
-PS C:\> $updatedVault.Identity | fl
+$vault = Get-AzRecoveryServicesVault -Name "vaultName" -ResourceGroupName "resourceGroupName"
+$updatedVault = Update-AzRecoveryServicesVault -ResourceGroupName $vault.ResourceGroupName -Name $vault.Name -RemoveSystemAssigned
+$AllUserIdentities =  $vault.Identity.UserAssignedIdentities.Keys | foreach {$_} 
+$updatedVault = Update-AzRecoveryServicesVault -ResourceGroupName $vault.ResourceGroupName -Name $vault.Name -RemoveUserAssigned -IdentityId $AllUserIdentities
+$updatedVault.Identity | fl
+```
 
+```output
 PrincipalId            :
 TenantId               :
 Type                   : None

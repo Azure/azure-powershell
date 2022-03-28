@@ -69,24 +69,24 @@ This cmdlet allows to creating  stateless or stateful services under the specifi
 
 ### Example 1
 ```powershell
-PS C:\> $resourceGroupName = "testRG"
-PS C:\> $clusterName = "testCluster"
-PS C:\> $appName = "testApp"
-PS C:\> $serviceName = "testApp~testService1"
-PS C:\> $serviceTypeName = "testStateless"
-PS C:\> New-AzServiceFabricService -ResourceGroupName $resourceGroupName -ClusterName $clusterName -ApplicationName $appName -Name $serviceName -Type $serviceTypeName -Stateless -InstanceCount -1 -PartitionSchemaSingleton -Verbose
+$resourceGroupName = "testRG"
+$clusterName = "testCluster"
+$appName = "testApp"
+$serviceName = "testApp~testService1"
+$serviceTypeName = "testStateless"
+New-AzServiceFabricService -ResourceGroupName $resourceGroupName -ClusterName $clusterName -ApplicationName $appName -Name $serviceName -Type $serviceTypeName -Stateless -InstanceCount -1 -PartitionSchemaSingleton -Verbose
 ```
 
 This example will create a new stateless service "testApp~testService1" with instance count -1 (on all the nodes).
 
 ### Example 2
 ```powershell
-PS C:\> $resourceGroupName = "testRG"
-PS C:\> $clusterName = "testCluster"
-PS C:\> $appName = "testApp"
-PS C:\> $serviceName = "testApp~testService2"
-PS C:\> $serviceTypeName = "testStatefulType"
-PS C:\> New-AzServiceFabricService -ResourceGroupName $resourceGroupName -ClusterName $clusterName -ApplicationName $appName -Name $serviceName -Type $serviceTypeName -Stateful -TargetReplicaSetSize 3 MinReplicaSetSize 5
+$resourceGroupName = "testRG"
+$clusterName = "testCluster"
+$appName = "testApp"
+$serviceName = "testApp~testService2"
+$serviceTypeName = "testStatefulType"
+New-AzServiceFabricService -ResourceGroupName $resourceGroupName -ClusterName $clusterName -ApplicationName $appName -Name $serviceName -Type $serviceTypeName -Stateful -TargetReplicaSetSize 3 MinReplicaSetSize 5
 ```
 
 This example will create a new stateful service "testApp~testService2" with a target of 5 nodes.

@@ -1,0 +1,40 @@
+{
+  "New-AzRoleEligibilityScheduleRequest+[NoContext]+CreateExpanded+$PUT+https://management.azure.com//subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d//providers/Microsoft.Authorization/roleEligibilityScheduleRequests/47f8978c-5d8d-4fbf-b4b6-2f43eeb43eca?api-version=2020-10-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com//subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d//providers/Microsoft.Authorization/roleEligibilityScheduleRequests/47f8978c-5d8d-4fbf-b4b6-2f43eeb43eca?api-version=2020-10-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"scheduleInfo\": {\r\n      \"expiration\": {\r\n        \"type\": \"AfterDuration\",\r\n        \"duration\": \"PT1H\"\r\n      },\r\n      \"startDateTime\": \"2022-02-10T16:20:39.8817269-08:00\"\r\n    },\r\n    \"roleDefinitionId\": \"subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7\",\r\n    \"principalId\": \"5a4bdd72-ab3e-4d8e-ab0f-8dd8917481a2\",\r\n    \"requestType\": \"AdminAssign\"\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "474" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "mspimslice": [ "PROD" ],
+        "x-ms-client-request-id": [ "8dcfd481-eb82-48b7-8a59-50fb60df0b27" ],
+        "Access-Control-Allow-Origin": [ "*" ],
+        "Access-Control-Allow-Methods": [ "POST, PUT, DELETE, GET, OPTIONS, PATCH" ],
+        "Access-Control-Allow-Headers": [ "content-Type, accept, origin, X-Requested-With, Authorization, name, x-ms-client-session-id, accept-language, x-ms-client-request-id, x-ms-effective-locale" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-request-id": [ "c605725b-5777-4f98-b18b-7955ed015847" ],
+        "x-ms-correlation-request-id": [ "c605725b-5777-4f98-b18b-7955ed015847" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20220211T002043Z:c605725b-5777-4f98-b18b-7955ed015847" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 11 Feb 2022 00:20:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1619" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"targetRoleEligibilityScheduleId\":\"/providers/Microsoft.Subscription/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/providers/Microsoft.Authorization/roleEligibilitySchedules/47f8978c-5d8d-4fbf-b4b6-2f43eeb43eca\",\"scope\":\"/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d\",\"roleDefinitionId\":\"/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7\",\"principalId\":\"5a4bdd72-ab3e-4d8e-ab0f-8dd8917481a2\",\"principalType\":\"User\",\"requestType\":\"AdminAssign\",\"status\":\"Provisioned\",\"scheduleInfo\":{\"startDateTime\":\"2022-02-11T00:20:42.8288753+00:00\",\"expiration\":{\"type\":\"AfterDuration\",\"duration\":\"PT1H\"}},\"ticketInfo\":{},\"requestorId\":\"a2cc980e-9a66-442e-8755-fd5648ed19f2\",\"createdOn\":\"2022-02-11T00:20:41.3288419Z\",\"expandedProperties\":{\"principal\":{\"id\":\"5a4bdd72-ab3e-4d8e-ab0f-8dd8917481a2\",\"displayName\":\"Aman Swaika secondary\",\"email\":\"aman.swaika@gmail.com\",\"type\":\"User\"},\"roleDefinition\":{\"id\":\"/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7\",\"displayName\":\"Reader\",\"type\":\"BuiltInRole\"},\"scope\":{\"id\":\"/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d\",\"displayName\":\"Wingtip Toys\",\"type\":\"subscription\"}}},\"name\":\"47f8978c-5d8d-4fbf-b4b6-2f43eeb43eca\",\"id\":\"/providers/Microsoft.Subscription/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/providers/Microsoft.Authorization/roleEligibilityScheduleRequests/47f8978c-5d8d-4fbf-b4b6-2f43eeb43eca\",\"type\":\"Microsoft.Authorization/roleEligibilityScheduleRequests\"}"
+    }
+  }
+}

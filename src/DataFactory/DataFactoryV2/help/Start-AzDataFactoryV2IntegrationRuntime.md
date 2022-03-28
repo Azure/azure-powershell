@@ -38,7 +38,7 @@ The **Start-AzDataFactoryV2IntegrationRuntime** cmdlet starts a managed dedicate
 
 ### Example 1: Start an integration runtime
 ```powershell
-Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName 'rg-test-dfv2' -DataFactoryName 'test-df-eu2' -Name test-dedicated-ir' -Force
+Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName 'rg-test-dfv2' -DataFactoryName 'test-df-eu2' -Name 'test-dedicated-ir' -Force
 ```
 
 ```output

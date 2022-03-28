@@ -42,7 +42,10 @@ The **Get-AzStackEdgeShare** cmdlet gets the available shares for a Stack Edge d
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzStackEdgeShare -ResourceGroupName resourceGroupName -DeviceName deviceName
+Get-AzStackEdgeShare -ResourceGroupName resourceGroupName -DeviceName deviceName
+```
+
+```output
 Name       Type       DataPolicy       DataFormat       ResourceGroupName     StorageAccountName
 ---------- ---------- ---------------- ---------------- --------------------- -------------------
 share-1    SMB        Cloud            PageBlob         resourceGroupName     storageAccountName

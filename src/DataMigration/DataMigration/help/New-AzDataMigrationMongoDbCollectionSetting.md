@@ -26,15 +26,15 @@ the database level settings for migration.
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $x = New-AzDataMigrationMongoDbCollectionSetting -Name myCollection -TargetRequestUnit 1000 -CanDelete -ShardKey "_id:-1,age:1,name"
-PS C:\> $x
+```powershell
+$x = New-AzDataMigrationMongoDbCollectionSetting -Name myCollection -TargetRequestUnit 1000 -CanDelete -ShardKey "_id:-1,age:1,name"
+$x
 
 Name         Setting
 ----         -------
 myCollection Microsoft.Azure.Management.DataMigration.Models.MongoDbCollectionSettings
 
-PS C:\> $x.Setting
+$x.Setting
 
 CanDelete ShardKey                                                               TargetRUs
 --------- --------                                                               ---------

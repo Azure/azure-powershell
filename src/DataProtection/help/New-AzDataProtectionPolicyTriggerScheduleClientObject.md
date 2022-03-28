@@ -24,7 +24,7 @@ Creates new Schedule object
 
 ### Example 1: Create a daily schedule object
 ```powershell
-$date = get-date
+$date = Get-Date
 New-AzDataProtectionPolicyTriggerScheduleClientObject -ScheduleDays $date -IntervalType Daily -IntervalCount 1
 ```
 
@@ -36,7 +36,7 @@ This command creates a daily schedule for Azure Backup Rule
 
 ### Example 2: Create an hourly schedule object
 ```powershell
-$date = get-date
+$date = Get-Date
 New-AzDataProtectionPolicyTriggerScheduleClientObject -ScheduleDays $date -IntervalType Hourly -IntervalCount 4
 ```
 

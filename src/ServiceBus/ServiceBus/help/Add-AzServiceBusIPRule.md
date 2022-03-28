@@ -32,7 +32,7 @@ Add a single IP rule to the NetworkRuleSet of the given Namespace
 
 ### Example 1
 ```powershell
-PS C:\> Add-AzServiceBusIPRule -ResourceGroupName v-ajnavtest -Namespace ServiceBus-Namespace1-2389 -IpMask "11.22.33.44" -Action Allow
+Add-AzServiceBusIPRule -ResourceGroupName v-ajnavtest -Namespace ServiceBus-Namespace1-2389 -IpMask "11.22.33.44" -Action Allow
 ```
 Name                : default
 DefaultAction       : Allow
@@ -45,7 +45,7 @@ add the IPRule with IpMask "11.22.33.44" and Action Allow fro the given namespac
 
 ### Example 2
 ```powershell
-PS C:\> Add-AzServiceBusIPRule -ResourceGroupName v-ajnavtest -Namespace ServiceBus-Namespace1-2389 -IpRuleObject $ipruleObject
+Add-AzServiceBusIPRule -ResourceGroupName v-ajnavtest -Namespace ServiceBus-Namespace1-2389 -IpRuleObject $ipruleObject
 ```
 Name                : default
 DefaultAction       : Allow

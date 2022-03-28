@@ -47,7 +47,7 @@ This command gets the hybrid runbook worker group named HybridRunbookWorkerGroup
 
 ### Example 3: Get the workers in a hybrid runbook worker group
 ```
-PS C:\>(Get-AzAutomationHybridWorker -ResourceGroupName ResourceGroupName01 -AutomationAccountName Contoso17 -Name "HybridRunbookWorkerGroup01" ).RunbookWorker
+PS C:\>(Get-AzAutomationHybridWorkerGroup -ResourceGroupName ResourceGroupName01 -AutomationAccountName Contoso17 -Name "HybridRunbookWorkerGroup01" ).RunbookWorker
 ```
 
 This command gets the hybrid runbook workers in the hybrid runbook worker group named HybridRunbookWorkerGroup01 in the Automation account named Contoso17.

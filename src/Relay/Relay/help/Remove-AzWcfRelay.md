@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Relay.dll-Help.xml
 Module Name: Az.Relay
 online version: https://docs.microsoft.com/powershell/module/az.relay/remove-azwcfrelay
@@ -23,8 +23,8 @@ The **Remove-AzWcfRelay** cmdlet removes the WcfRelay from the specified Relay n
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Remove-AzWcfRelay -ResourceGroupName Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -Name TestWCFRelay1
+```powershell
+Remove-AzWcfRelay -ResourceGroupName Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -Name TestWCFRelay1
 ```
 
 Removes the WcfRelay `TestWCFRelay1` from the namespace `TestNameSpace-Relay1`.

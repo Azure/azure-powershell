@@ -24,8 +24,11 @@ The **Get-AzSqlServerActiveDirectoryAdministrator** cmdlet gets information abou
 ## EXAMPLES
 
 ### Example 1: Gets information about an administrator for a server
+```powershell
+Get-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
 ```
-PS C:\>Get-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
+
+```output
 ResourceGroupName ServerName DisplayName ObjectId IsAzureADOnlyAuthentication
 ----------------- ---------- ----------- -------- -----------
 ResourceGroup01   Server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b true

@@ -24,7 +24,7 @@ The **New-AzDataShare** cmdlet creates a data share within a specified azure dat
 
 ### Example 1 : Create a data share
 ```powershell
-New-AzDataShare -ResourceGroupName "ADS" -AccountName "WikiAdsAccount" -Name "AdsShare" -ShareKind "CopyBased" -Description "Example of description" -TermsOfUse "This should not be shared"
+New-AzDataShare -ResourceGroupName "ADS" -AccountName "WikiAdsAccount" -Name "AdsShare" -Description "Example of description" -TermsOfUse "This should not be shared"
 ```
 
 ```output
