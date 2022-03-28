@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* remove capacity validation in new and update cluster cmdlets - validation exists on server side.
+* extended error message on base class for extended info.
 
 ## Version 3.0.1
 * Added logic to prevent exceptions while using `StorageInsight` cmdlets.
