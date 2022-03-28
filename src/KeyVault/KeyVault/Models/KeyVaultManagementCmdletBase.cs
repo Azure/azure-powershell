@@ -138,18 +138,10 @@ namespace Microsoft.Azure.Commands.KeyVault
             IEnumerable<PSKeyVaultIdentityItem> listResult;
             var resourceType = resourceTypeName.Equals(ResourceTypeName.Hsm) ?
                 KeyVaultManagementClient.ManagedHsmResourceType : KeyVaultManagementClient.VaultsResourceType;
-            if (ShouldListByResourceGroup(resourceGroupName, null))
-            {
-                listResult = ListByResourceGroup(resourceGroupName,
-                      new Rest.Azure.OData.ODataQuery<GenericResourceFilter>(
-                          r => r.ResourceType == resourceType));
-            }
-            else
-            {
-                listResult = ListResources(
-                    new Rest.Azure.OData.ODataQuery<GenericResourceFilter>(
-                        r => r.ResourceType == resourceType));
-            }
+
+            listResult = ListPagable(resourceGroupName,
+                new Rest.Azure.OData.ODataQuery<GenericResourceFilter>(
+                    r => r.ResourceType == resourceType));
 
             if (listResult != null)
             {
@@ -161,36 +153,40 @@ namespace Microsoft.Azure.Commands.KeyVault
             return vaults;
         }
 
-        public virtual IEnumerable<PSKeyVaultIdentityItem> ListResources(Rest.Azure.OData.ODataQuery<GenericResourceFilter> filter = null)
+        IEnumerable<PSKeyVaultIdentityItem> ListPagable(string resourceGroupName, Rest.Azure.OData.ODataQuery<GenericResourceFilter> filter = null)
         {
-            IResourceManagementClient armClient = ResourceClient;
-            var response = armClient.Resources.List(filter);
+            string nextPageLink = null;
             var results = new List<PSKeyVaultIdentityItem>();
-            results.AddRange(response.Select(r => new PSKeyVaultIdentityItem(r)));
-            while (!string.IsNullOrEmpty(response.NextPageLink))
+            do
             {
-                response = armClient.Resources.ListNext(response.NextPageLink);
+                var response = ShouldListByResourceGroup(resourceGroupName, null) ?
+                    ListByResourceGroup(resourceGroupName, filter, nextPageLink) :
+                    ListResources(filter, nextPageLink);
                 results.AddRange(response.Select(r => new PSKeyVaultIdentityItem(r)));
-            }
+                nextPageLink = response?.NextPageLink;
+            } while (!string.IsNullOrEmpty(nextPageLink));
             return results;
         }
 
-        private IEnumerable<PSKeyVaultIdentityItem> ListByResourceGroup(
-            string resourceGroupName,
-            Rest.Azure.OData.ODataQuery<GenericResourceFilter> filter)
+        public virtual Rest.Azure.IPage<GenericResource> ListResources(
+            Rest.Azure.OData.ODataQuery<GenericResourceFilter> filter = null, 
+            string NextPageLink = null)
         {
             IResourceManagementClient armClient = ResourceClient;
+            return string.IsNullOrEmpty(NextPageLink) ? 
+                armClient.Resources.List(filter) : 
+                armClient.Resources.ListNext(NextPageLink);
+        }
 
-            var response = armClient.ResourceGroups.ListResources(resourceGroupName, filter);
-            var results = new List<PSKeyVaultIdentityItem>();
-            results.AddRange(response.Select(r => new PSKeyVaultIdentityItem(r)));
-
-            while (!string.IsNullOrEmpty(response.NextPageLink))
-            {
-                response = armClient.ResourceGroups.ListResourcesNext(response.NextPageLink);
-                results.AddRange(response.Select(r => new PSKeyVaultIdentityItem(r)));
-            }
-            return results;
+        private Rest.Azure.IPage<GenericResource> ListByResourceGroup(
+            string resourceGroupName,
+            Rest.Azure.OData.ODataQuery<GenericResourceFilter> filter = null,
+            string NextPageLink = null)
+        {
+            IResourceManagementClient armClient = ResourceClient;
+            return string.IsNullOrEmpty(NextPageLink) ? 
+                armClient.ResourceGroups.ListResources(resourceGroupName, filter) :
+                armClient.ResourceGroups.ListResourcesNext(NextPageLink);
         }
 
         protected string GetResourceGroupName(string name, bool isHsm = false)
