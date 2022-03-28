@@ -146,6 +146,13 @@ directive:
       parameter-name: Force
     set:
       parameter-name: ForceDelete
+	  
+   - where:
+      verb: Set
+      subject: AzOperationalInsightsWorkspace
+    set:
+      alias: Update-AzOperationalInsightsWorkspace
+	  
   # For memory object that generate cmdlet.  
   #- model-cmdlet:
     # - Column # Successfull generated after hide it for custom.
