@@ -15,7 +15,26 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorCdnSecret'))
 }
 
 Describe 'New-AzFrontDoorCdnSecret' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
+        try
+        {
+            Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
+            New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
+
+            $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
+            Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
+
+            $profileSku = "Standard_AzureFrontDoor";
+            $frontDoorCdnProfile = New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
+
+            $secretName = "se-" + (RandomString -allChars $false -len 6);
+            Write-Host -ForegroundColor Green "Use secretName : $($secretName)"
+
+            New-AzFrontDoorCdnSecret -Name $secretName -ProfileName $frontDoorCdnProfile -ResourceGroupName $ResourceGroupName `
+        } Finally
+        {
+            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+        }
     }
 }
