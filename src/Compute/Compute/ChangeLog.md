@@ -25,6 +25,7 @@
 * Updated `Get-AzVm` to include `GetVirtualMachineById` parameter set.
 * Edited the documentation for the cmdlet `Set-AzVMADDomainExtension` to ensure the example is accurate. 
 * Improved description and examples for disk creation.
+* Edited `New-AzVmss` logic to better check for null properties when the parameter `OrchestrationMode` parameter is used.
 
 ## Version 4.24.1
 * Updated New-AzVM feature for `vCPUsAvailable` and `vCPUsPerCore` parameters. Cmdlets will not try to use the new `VMCustomizationPreview` feature if the user does not have access to that feature. [#17370]
