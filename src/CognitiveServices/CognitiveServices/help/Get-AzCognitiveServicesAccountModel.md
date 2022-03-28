@@ -32,6 +32,24 @@ Get Models available for a Cognitive Services account
 ### Example 1
 ```powershell
 PS C:\> Get-AzCognitiveServicesAccountModel -ResourceGroupName cognitive-services-resource-group -AccountName resource-name
+
+BaseModel    :
+MaxCapacity  : 3
+Capabilities : {[fineTune, true]}
+Deprecation  : Microsoft.Azure.Management.CognitiveServices.Models.ModelDeprecationInfo
+SystemData   : Microsoft.Azure.Management.CognitiveServices.Models.SystemData
+Format       : OpenAI
+Name         : ada
+Version      : 1
+
+BaseModel    :
+MaxCapacity  : 3
+Capabilities : {[fineTune, true]}
+Deprecation  : Microsoft.Azure.Management.CognitiveServices.Models.ModelDeprecationInfo
+SystemData   : Microsoft.Azure.Management.CognitiveServices.Models.SystemData
+Format       : OpenAI
+Name         : davinci
+Version      : 1
 ```
 
 Get Models available for a Cognitive Services account
@@ -112,3 +130,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzCognitiveServicesAccountDeployment](./New-AzCognitiveServicesAccountDeployment)
