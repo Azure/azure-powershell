@@ -135,11 +135,10 @@ namespace Microsoft.Azure.Commands.KeyVault
                 return vaults;
             }
 
-            IEnumerable<PSKeyVaultIdentityItem> listResult;
             var resourceType = resourceTypeName.Equals(ResourceTypeName.Hsm) ?
                 KeyVaultManagementClient.ManagedHsmResourceType : KeyVaultManagementClient.VaultsResourceType;
 
-            listResult = ListPagable(resourceGroupName,
+            IEnumerable<PSKeyVaultIdentityItem> listResult = ListPagable(resourceGroupName,
                 new Rest.Azure.OData.ODataQuery<GenericResourceFilter>(
                     r => r.ResourceType == resourceType));
 
