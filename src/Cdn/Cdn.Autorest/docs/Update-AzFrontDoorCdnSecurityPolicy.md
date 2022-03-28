@@ -15,8 +15,8 @@ Updates an existing security policy within a profile.
 ### PatchExpanded (Default)
 ```
 Update-AzFrontDoorCdnSecurityPolicy -Name <String> -ProfileName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-Parameter <ISecurityPolicyPropertiesParameters>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Patch
@@ -35,8 +35,9 @@ Update-AzFrontDoorCdnSecurityPolicy -InputObject <ICdnIdentity>
 
 ### PatchViaIdentityExpanded
 ```
-Update-AzFrontDoorCdnSecurityPolicy -InputObject <ICdnIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzFrontDoorCdnSecurityPolicy -InputObject <ICdnIdentity>
+ [-Parameter <ISecurityPolicyPropertiesParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -140,6 +141,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Parameter
+object which contains security policy parameters
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ISecurityPolicyPropertiesParameters
+Parameter Sets: PatchExpanded, PatchViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ProfileName
 Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
 
@@ -172,6 +188,7 @@ Accept wildcard characters: False
 
 ### -SecurityPolicyUpdateProperty
 The JSON object containing security policy update parameters.
+To construct, see NOTES section for SECURITYPOLICYUPDATEPROPERTY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ISecurityPolicyUpdateParameters
@@ -268,6 +285,9 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   - `[SecretName <String>]`: Name of the Secret under the profile.
   - `[SecurityPolicyName <String>]`: Name of the security policy under the profile.
   - `[SubscriptionId <String>]`: Azure Subscription ID.
+
+SECURITYPOLICYUPDATEPROPERTY <ISecurityPolicyUpdateParameters>: The JSON object containing security policy update parameters.
+  - `[Parameter <ISecurityPolicyPropertiesParameters>]`: object which contains security policy parameters
 
 ## RELATED LINKS
 
