@@ -24,8 +24,40 @@ The **Set-AzNetworkManager** cmdlet updates a network manager.
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzNetworkManager -ResourceGroupName "testRG" -NetworkManager $networkManager
+PS C:\> $networkManager = Get-AzNetworkManager -ResourceGroupName "TestResourceGroup" -Name "TestNM"
+PS C:\> $networkManager.Description = "Sampel Desc"
+PS C:\> Set-AzNetworkManager -ResourceGroupName "TestResourceGroup" -NetworkManager $networkManager
+
+DisplayName                     :
+Description                     : Sampel Desc
+Location                        : eastus2euap
+Id                              : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestResourceGroup/provider
+                                  s/Microsoft.Network/networkManagers/TestNM
+Type                            : Microsoft.Network/networkManagers
+Tag                             : {}
+ProvisioningState               : Succeeded
+NetworkManagerScopeAccesses     : [
+                                    "SecurityAdmin",
+                                    "SecurityUser"
+                                  ]
+NetworkManagerScopes            : {
+                                    "ManagementGroups": [],
+                                    "Subscriptions": [
+                                      "/subscriptions/00000000-0000-0000-0000-000000000000"
+                                    ]
+                                  }
+SystemData                      : {
+                                    "CreatedBy": "user@microsoft.com",
+                                    "CreatedByType": "User",
+                                    "CreatedAt": "2021-10-05T04:15:42",
+                                    "LastModifiedBy": "user@microsoft.com",
+                                    "LastModifiedByType": "User",
+                                    "LastModifiedAt": "2021-10-05T04:15:42"
+                                  }
+Name                            : TestNM
+Etag                            : W/"00000000-0000-0000-0000-000000000000"
 ```
+Example to update the description of a network manager TestNM
 
 ## PARAMETERS
 
