@@ -12,14 +12,6 @@ This cmdlet can create a New Restore Point
 
 ## SYNTAX
 
-### DefaultParameter (Default)
-```
-New-AzRestorePoint [-ResourceGroupName] <String> -RestorePointCollectionName <String> -Name <String>
- [-DisksToExclude <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### RestorePointId
 ```
 New-AzRestorePoint [-ResourceGroupName] <String> -RestorePointCollectionName <String> -Name <String>
  [-Location <String>] -RestorePointId <String> [-DisksToExclude <String[]>]
@@ -75,7 +67,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: RestorePointId
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -135,7 +127,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: RestorePointId
+Parameter Sets: (All)
 Aliases:
 
 Required: True

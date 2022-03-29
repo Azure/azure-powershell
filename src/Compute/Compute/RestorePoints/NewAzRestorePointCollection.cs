@@ -32,6 +32,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
 
         [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 0,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            ParameterSetName = "RestorePointCollectionId",
             Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
@@ -39,6 +45,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string ResourceGroupName { get; set; }
 
         [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            ParameterSetName = "RestorePointCollectionId",
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         [Alias("RestorePointCollectionName")]
@@ -57,6 +68,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string RestorePointCollectionId { get; set; }
 
         [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Mandatory = false,
+            ValueFromPipeline = true)]
+        [Parameter(
+            ParameterSetName = "RestorePointCollectionId",
             Mandatory = true,
             ValueFromPipeline = true)]
         public string Location { get; set; }
@@ -73,10 +89,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         string resourceGroup = this.ResourceGroupName;
                         string restorePointCollectionName = this.Name;
                         string vmId = this.VmId;
-                        string location = this.Location;
+                        RestorePointCollection restorePointCollection;
+                        if (this.IsParameterBound(c => c.Location))
+                        {
+                            string location = this.Location;
+                            restorePointCollection = new RestorePointCollection(location);
+                            restorePointCollection.Source = new RestorePointCollectionSourceProperties() { Id = vmId };
 
-                        RestorePointCollection restorePointCollection = new RestorePointCollection(location);
-                        restorePointCollection.Source = new RestorePointCollectionSourceProperties() { Id = vmId };
+                        }
+                        else
+                        {
+                            restorePointCollection = new RestorePointCollection();
+                            restorePointCollection.Source = new RestorePointCollectionSourceProperties() { Id = vmId };
+
+                        }
 
                         var result = RestorePointCollectionsClient.CreateOrUpdate(resourceGroup, restorePointCollectionName, restorePointCollection);
                         var psObject = new PSRestorePointCollection();

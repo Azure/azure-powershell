@@ -14,7 +14,7 @@ Creates a New Restore Point Collection
 
 ### DefaultParameter (Default)
 ```
-New-AzRestorePointCollection [-ResourceGroupName] <String> -Name <String> -VmId <String> -Location <String>
+New-AzRestorePointCollection [-ResourceGroupName] <String> -Name <String> -VmId <String> [-Location <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -58,7 +58,19 @@ location of the source resource used to create this restore point collection.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: DefaultParameter
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: RestorePointCollectionId
 Aliases:
 
 Required: True
