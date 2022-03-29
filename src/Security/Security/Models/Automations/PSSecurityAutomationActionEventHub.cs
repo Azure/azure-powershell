@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
+using System.Security;
 
 namespace Microsoft.Azure.Commands.Security.Models.Automations
 {
@@ -32,6 +32,6 @@ namespace Microsoft.Azure.Commands.Security.Models.Automations
         /// Gets or sets the target Event Hub connection string (it will not be
         /// included in any response).
         /// </summary>
-        public string ConnectionString { get; set; }
+        public SecureString ConnectionString { get; set; }
     }
 }

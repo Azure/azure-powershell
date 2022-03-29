@@ -19,6 +19,31 @@ namespace Microsoft.Azure.Commands.Security.Models.Automations
     public class PSSecurityAutomation
     {
         /// <summary>
+        /// Gets or sets the Azure identifier
+        /// </summary>
+        public string Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the resource
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Azure resource type.
+        /// </summary>
+        public string Type { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Azure location.
+        /// </summary>
+        public string Location { get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource tags
+        /// </summary>
+        public IDictionary<string, string> Tags { get; set; }
+
+        /// <summary>
         /// Gets or sets the security automation description.
         /// </summary>
         public string Description { get; set; }

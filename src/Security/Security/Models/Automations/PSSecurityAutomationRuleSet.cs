@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Commands.Security.Models.Automations
     public class PSSecurityAutomationRuleSet
     {
         /// <summary>
+        /// Gets or sets the rules.
         /// </summary>
         public IList<PSSecurityAutomationTriggeringRule> Rules { get; set; }
     }

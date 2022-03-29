@@ -12,16 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-
 namespace Microsoft.Azure.Commands.Security.Models.Automations
 {
     public class PSSecurityAutomationActionWorkspace : PSSecurityAutomationAction
     {
         /// <summary>
-        /// Gets or sets the fully qualified Log Analytics Workspace Azure
-        /// Resource ID.
+        /// Gets or sets the triggered Logic App Azure Resource ID. This can
+        /// also reside on other subscriptions, given that you have permissions
+        /// to trigger the Logic App
         /// </summary>
-        public string WorkspaceResourceId { get; set; }
+        public string LogicAppResourceId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Logic App trigger URI endpoint (it will not be
+        /// included in any response).
+        /// </summary>
+        public string Uri { get; set; }
     }
 }
