@@ -37,18 +37,18 @@ The **Remove-AzSqlInstancePool** cmdlet removes an Azure SQL Instance pool.
 
 ### Example 1: Remove an instance pool
 ```powershell
-PS C:\> Remove-AzSqlInstancePool -ResourceGroup resourcegroup01 -Name instancePool0
+Remove-AzSqlInstancePool -ResourceGroup resourcegroup01 -Name instancePool0
 ```
 
 ### Example 2: Remove an instance pool by its resource identifier
 ```powershell
-PS C:\> Remove-AzSqlInstancePool -ResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/instancePools/instancePool0"
+Remove-AzSqlInstancePool -ResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/instancePools/instancePool0"
 ```
 
 ### Example 3: Remove an instance pool by an instance pool object
 ```powershell
-PS C:\> Get-AzSqlInstancePool -ResourceGroup resourcegroup01 -Name instancePool0
-PS C:\> Remove-AzSqlInstancePool -InputObject $instancePool
+Get-AzSqlInstancePool -ResourceGroup resourcegroup01 -Name instancePool0
+Remove-AzSqlInstancePool -InputObject $instancePool
 ```
 
 This command removes an instance pool named instancePool0.

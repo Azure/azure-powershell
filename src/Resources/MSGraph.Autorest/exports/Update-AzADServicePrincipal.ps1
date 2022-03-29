@@ -20,9 +20,9 @@ Updates entity in service principal
 .Description
 Updates entity in service principal
 .Example
-PS C:\> Update-AzADServicePrincipal -DisplayName $name -IdentifierUri $uri
+Update-AzADServicePrincipal -DisplayName $name -IdentifierUri $uri
 .Example
-PS C:\> Get-AzADServicePrincipal -ObjectId $id | Update-AzADServicePrincipal -Note $note
+Get-AzADServicePrincipal -ObjectId $id | Update-AzADServicePrincipal -Note $note
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal

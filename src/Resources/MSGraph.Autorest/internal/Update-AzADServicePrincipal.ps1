@@ -22,9 +22,9 @@ The directoryObject type is the base type for many other directory entity types.
 Represents an Azure Active Directory object.
 The directoryObject type is the base type for many other directory entity types.
 .Example
-PS C:\> Update-AzADServicePrincipal -DisplayName $name -IdentifierUri $uri
+Update-AzADServicePrincipal -DisplayName $name -IdentifierUri $uri
 .Example
-PS C:\> Get-AzADServicePrincipal -ObjectId $id | Update-AzADServicePrincipal -Note $note
+Get-AzADServicePrincipal -ObjectId $id | Update-AzADServicePrincipal -Note $note
 
 .Outputs
 System.Boolean

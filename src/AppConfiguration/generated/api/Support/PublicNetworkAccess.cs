@@ -6,6 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support
 {
 
+    /// <summary>
+    /// Control permission for data plane traffic coming from public networks while private endpoint is enabled.
+    /// </summary>
     public partial struct PublicNetworkAccess :
         System.IEquatable<PublicNetworkAccess>
     {
@@ -20,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support
         /// <param name="value">the value to convert to an instance of <see cref="PublicNetworkAccess" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new PublicNetworkAccess(System.Convert.ToString(value));
+            return new PublicNetworkAccess(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type PublicNetworkAccess</summary>

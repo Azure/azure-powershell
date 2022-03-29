@@ -59,9 +59,11 @@ The Get-AzSqlElasticJobExecution cmdlet gets one or more job executions
 
 ### Example 1: Gets one or more job executions across all jobs
 ```powershell
-PS C:\> $agent = Get-AzSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent
+$agent = Get-AzSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent
 $agent | Get-AzSqlElasticJobExecution -Count 3
+```
 
+```output
 JobName JobExecutionId                       Lifecycle StartTime            EndTime
 ------- --------------                       --------- ---------            -------
 job1    dab0ebe8-fd52-42e9-bacf-e5f27577039b Canceled  6/1/2018 10:13:56 PM 6/1/2018 10:13:59 PM
@@ -71,9 +73,11 @@ job2    433f798e-f35c-41de-a23c-f2b43801d7b4 Succeeded 6/1/2018 10:11:36 PM 6/1/
 
 ### Example 2: Gets one or more job executions for a job
 ```powershell
-PS C:\> $agent = Get-AzSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent
+$agent = Get-AzSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent
 $agent | Get-AzSqlElasticJobExecution -Count 3 -JobName job2
+```
 
+```output
 JobName JobExecutionId                       Lifecycle StartTime            EndTime
 ------- --------------                       --------- ---------            -------
 job2    433f798e-f35c-41de-a23c-f2b43801d7b4 Succeeded 6/1/2018 10:11:36 PM 6/1/2018 10:11:41 PM

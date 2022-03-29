@@ -54,8 +54,10 @@ $ConditionVersion = "2.0"
   $roleAssignment.ConditionVersion = $ConditionVersion
 
   Set-AzRoleAssignment -InputObject $roleAssignment -PassThru
+```
 
-  RoleAssignmentId   : /providers/Microsoft.Management/managementGroups/1273adef-00a3
+```output
+RoleAssignmentId   : /providers/Microsoft.Management/managementGroups/1273adef-00a3
                      -4086-a51a-dbcce1857d36/providers/Microsoft.Authorization/role
                      Assignments/926c2a76-be19-4281-94de-38777629b9dc
   Scope              : /subscriptions/4e5329a6-39ce-4e13-b12e-11b30f015986/resourceGroups/contoso_rg
@@ -76,8 +78,10 @@ Update an existing role assignment by modifying an object
 ### Example 2
 ```powershell
 Set-AzRoleAssignment -InputFile "C:\RoleAssignments\example.json" -PassThru
+```
 
-  RoleAssignmentId   : /providers/Microsoft.Management/managementGroups/1273adef-00a3
+```output
+RoleAssignmentId   : /providers/Microsoft.Management/managementGroups/1273adef-00a3
                      -4086-a51a-dbcce1857d36/providers/Microsoft.Authorization/role
                      Assignments/926c2a76-be19-4281-94de-38777629b9dc
   Scope              : /subscriptions/4e5329a6-39ce-4e13-b12e-11b30f015986/resourceGroups/contoso_rg

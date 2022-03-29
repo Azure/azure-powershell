@@ -37,7 +37,7 @@ This command lists all sync groups within a given storage sync service. It can b
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzStorageSyncGroup New-AzStorageSyncCloudEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName"
+Get-AzStorageSyncGroup New-AzStorageSyncCloudEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName"
 ```
 
 This command gets all sync groups contained within the specified storage sync service. Specify -Name to return a specific one.

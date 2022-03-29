@@ -1,0 +1,203 @@
+{
+  "Get-AzUserAssignedIdentity+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.ManagedIdentity/userAssignedIdentities?api-version=2018-11-30+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.ManagedIdentity/userAssignedIdentities?api-version=2018-11-30",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "8225deb8-bd55-4335-ac0c-af4078f2ed71" ],
+        "CommandName": [ "Get-AzUserAssignedIdentity" ],
+        "FullCommandName": [ "Get-AzUserAssignedIdentity_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.ManagedServiceIdentity/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "", "", "", "", "", "", "" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "x-ms-request-id": [ "f7f29a2a-6e61-4949-ac21-1bb731df9ed3" ],
+        "x-ms-correlation-request-id": [ "f7f29a2a-6e61-4949-ac21-1bb731df9ed3" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220221T102002Z:f7f29a2a-6e61-4949-ac21-1bb731df9ed3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 21 Feb 2022 10:20:02 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "3890" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/identity-2i6h7t1a/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityji06x9\",\"name\":\"identityji06x9\",\"type\":\"Microsoft.ManagedIdentity/userAssignedIdentities\",\"location\":\"centralus\",\"tags\":{\"key01\":\"value01\",\"key02\":\"value02\",\"key03\":\"value03\"},\"properties\":{\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"principalId\":\"f50b12f1-597c-4d9c-b7e3-9a0f5adc9138\",\"clientId\":\"bcb33f0e-303b-40e2-ab80-5ac18d6808fb\"}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/AzSecPackAutoConfigRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/AzSecPackAutoConfigUA-eastus\",\"name\":\"AzSecPackAutoConfigUA-eastus\",\"type\":\"Microsoft.ManagedIdentity/userAssignedIdentities\",\"location\":\"eastus\",\"tags\":{},\"properties\":{\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"principalId\":\"cd349ef9-b5ab-4dfc-9bb7-00c0e34b2fbd\",\"clientId\":\"cc6bd77d-5775-4b68-91e1-bbf7d6697662\"}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/lucas-rg-test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity-portal01\",\"name\":\"identity-portal01\",\"type\":\"Microsoft.ManagedIdentity/userAssignedIdentities\",\"location\":\"eastus\",\"tags\":{},\"properties\":{\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"principalId\":\"a686ad3d-106e-4a63-bb43-0ab5f5d0c094\",\"clientId\":\"5323cc56-3fd1-4e69-b010-4506602426bd\"}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/AzSecPackAutoConfigRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/AzSecPackAutoConfigUA-eastus2\",\"name\":\"AzSecPackAutoConfigUA-eastus2\",\"type\":\"Microsoft.ManagedIdentity/userAssignedIdentities\",\"location\":\"eastus2\",\"tags\":{},\"properties\":{\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"principalId\":\"e2253808-8e1f-4ed9-be3a-85369eeb1a74\",\"clientId\":\"bb36c474-cc2d-4807-b135-e77994614bc6\"}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/AzSecPackAutoConfigRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/AzSecPackAutoConfigUA-westus2\",\"name\":\"AzSecPackAutoConfigUA-westus2\",\"type\":\"Microsoft.ManagedIdentity/userAssignedIdentities\",\"location\":\"westus2\",\"tags\":{},\"properties\":{\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"principalId\":\"4d64f55d-8b8d-4d39-9571-c45715daeec8\",\"clientId\":\"6fdbce5b-5a2e-4da4-9e25-f31ce74b0bc0\"}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/AzSecPackAutoConfigRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/AzSecPackAutoConfigUA-westus3\",\"name\":\"AzSecPackAutoConfigUA-westus3\",\"type\":\"Microsoft.ManagedIdentity/userAssignedIdentities\",\"location\":\"westus3\",\"tags\":{},\"properties\":{\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"principalId\":\"f26649bc-8242-438e-b3e2-d324e605a6ea\",\"clientId\":\"228653f5-d1c7-4ae6-9de8-53ca15ccf7d0\"}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/AzSecPackAutoConfigRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/AzSecPackAutoConfigUA-eastus2euap\",\"name\":\"AzSecPackAutoConfigUA-eastus2euap\",\"type\":\"Microsoft.ManagedIdentity/userAssignedIdentities\",\"location\":\"eastus2euap\",\"tags\":{},\"properties\":{\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"principalId\":\"bfc3bd81-059c-4a82-981c-88169b9e0672\",\"clientId\":\"4b18c080-c880-4d9b-80e1-0b4bab659b8b\"}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/AzSecPackAutoConfigRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/AzSecPackAutoConfigUA-centraluseuap\",\"name\":\"AzSecPackAutoConfigUA-centraluseuap\",\"type\":\"Microsoft.ManagedIdentity/userAssignedIdentities\",\"location\":\"centraluseuap\",\"tags\":{},\"properties\":{\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"principalId\":\"3e4cbc11-b5c6-4c42-a134-d82d52c743b6\",\"clientId\":\"2edfe7dd-c48a-46f0-9a5b-54b276a9b25e\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzUserAssignedIdentity+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/identity-2i6h7t1a/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityji06x9?api-version=2018-11-30+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/identity-2i6h7t1a/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityji06x9?api-version=2018-11-30",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "10f75064-72c3-4078-9ba0-9df32337e01d" ],
+        "CommandName": [ "Get-AzUserAssignedIdentity" ],
+        "FullCommandName": [ "Get-AzUserAssignedIdentity_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.ManagedServiceIdentity/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
+        "x-ms-request-id": [ "6e84abf8-c3d8-48cc-af3b-6d08831395d6" ],
+        "x-ms-correlation-request-id": [ "6e84abf8-c3d8-48cc-af3b-6d08831395d6" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220221T102004Z:6e84abf8-c3d8-48cc-af3b-6d08831395d6" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 21 Feb 2022 10:20:03 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "503" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/identity-2i6h7t1a/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityji06x9\",\"name\":\"identityji06x9\",\"type\":\"Microsoft.ManagedIdentity/userAssignedIdentities\",\"location\":\"centralus\",\"tags\":{\"key01\":\"value01\",\"key02\":\"value02\",\"key03\":\"value03\"},\"properties\":{\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"principalId\":\"f50b12f1-597c-4d9c-b7e3-9a0f5adc9138\",\"clientId\":\"bcb33f0e-303b-40e2-ab80-5ac18d6808fb\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzUserAssignedIdentity+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/identity-2i6h7t1a/providers/Microsoft.ManagedIdentity/userAssignedIdentities?api-version=2018-11-30+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/identity-2i6h7t1a/providers/Microsoft.ManagedIdentity/userAssignedIdentities?api-version=2018-11-30",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "443b3808-1152-4a9a-9265-913c0a81f641" ],
+        "CommandName": [ "Get-AzUserAssignedIdentity" ],
+        "FullCommandName": [ "Get-AzUserAssignedIdentity_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.ManagedServiceIdentity/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
+        "x-ms-request-id": [ "74f5103c-d073-40eb-a5fd-521574e3546b" ],
+        "x-ms-correlation-request-id": [ "74f5103c-d073-40eb-a5fd-521574e3546b" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220221T102005Z:74f5103c-d073-40eb-a5fd-521574e3546b" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 21 Feb 2022 10:20:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "515" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/identity-2i6h7t1a/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityji06x9\",\"name\":\"identityji06x9\",\"type\":\"Microsoft.ManagedIdentity/userAssignedIdentities\",\"location\":\"centralus\",\"tags\":{\"key01\":\"value01\",\"key02\":\"value02\",\"key03\":\"value03\"},\"properties\":{\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"principalId\":\"f50b12f1-597c-4d9c-b7e3-9a0f5adc9138\",\"clientId\":\"bcb33f0e-303b-40e2-ab80-5ac18d6808fb\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzUserAssignedIdentity+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/identity-2i6h7t1a/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityji06x9?api-version=2018-11-30+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/identity-2i6h7t1a/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityji06x9?api-version=2018-11-30",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "239c956b-2a5f-45df-9ab1-06235343699c" ],
+        "CommandName": [ "Get-AzUserAssignedIdentity" ],
+        "FullCommandName": [ "Get-AzUserAssignedIdentity_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.ManagedServiceIdentity/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
+        "x-ms-request-id": [ "f0cdbbde-ce7e-4988-a086-472ff196d0b2" ],
+        "x-ms-correlation-request-id": [ "f0cdbbde-ce7e-4988-a086-472ff196d0b2" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220221T102006Z:f0cdbbde-ce7e-4988-a086-472ff196d0b2" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 21 Feb 2022 10:20:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "503" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/identity-2i6h7t1a/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityji06x9\",\"name\":\"identityji06x9\",\"type\":\"Microsoft.ManagedIdentity/userAssignedIdentities\",\"location\":\"centralus\",\"tags\":{\"key01\":\"value01\",\"key02\":\"value02\",\"key03\":\"value03\"},\"properties\":{\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"principalId\":\"f50b12f1-597c-4d9c-b7e3-9a0f5adc9138\",\"clientId\":\"bcb33f0e-303b-40e2-ab80-5ac18d6808fb\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzUserAssignedIdentity+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/identity-2i6h7t1a/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityji06x9?api-version=2018-11-30+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/identity-2i6h7t1a/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityji06x9?api-version=2018-11-30",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "695d506b-baa4-4a29-a9eb-1be756039890" ],
+        "CommandName": [ "Get-AzUserAssignedIdentity" ],
+        "FullCommandName": [ "Get-AzUserAssignedIdentity_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.ManagedServiceIdentity/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
+        "x-ms-request-id": [ "37df7456-b164-4b20-9e7c-9120dfcf568c" ],
+        "x-ms-correlation-request-id": [ "37df7456-b164-4b20-9e7c-9120dfcf568c" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220221T102007Z:37df7456-b164-4b20-9e7c-9120dfcf568c" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 21 Feb 2022 10:20:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "503" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/identity-2i6h7t1a/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityji06x9\",\"name\":\"identityji06x9\",\"type\":\"Microsoft.ManagedIdentity/userAssignedIdentities\",\"location\":\"centralus\",\"tags\":{\"key01\":\"value01\",\"key02\":\"value02\",\"key03\":\"value03\"},\"properties\":{\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"principalId\":\"f50b12f1-597c-4d9c-b7e3-9a0f5adc9138\",\"clientId\":\"bcb33f0e-303b-40e2-ab80-5ac18d6808fb\"}}",
+      "isContentBase64": false
+    }
+  }
+}

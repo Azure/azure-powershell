@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
     public class PSIdentity
     {
-        public PSIdentity(string type, string principalId = default(string), string tenantId = default(string))
+        public PSIdentity(string type, string principalId = default, string tenantId = default)
         {
             PrincipalId = principalId;
             TenantId = tenantId;
