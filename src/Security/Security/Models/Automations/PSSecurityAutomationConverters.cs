@@ -18,10 +18,16 @@ using System.Security;
 using Microsoft.Azure.Commands.Security.Models.Automations;
 using Microsoft.Azure.Management.Security.Models;
 
-namespace Microsoft.Azure.Commands.Security.Models.Assessments
+namespace Microsoft.Azure.Commands.Security.Models.Automations
 {
     public static class PSSecurityAutomationConverters
     {
+
+        public static List<PSSecurityAutomation> ConvertToPSType(this IEnumerable<Automation> value)
+        {
+            return value.Select(aps => aps.ConvertToPSType()).ToList();
+        }
+
         public static PSSecurityAutomation ConvertToPSType(this Automation value)
         {
             return new PSSecurityAutomation()

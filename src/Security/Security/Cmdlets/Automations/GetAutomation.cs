@@ -16,7 +16,6 @@ using System.Management.Automation;
 using Commands.Security;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Security.Common;
-using Microsoft.Azure.Commands.Security.Models.Alerts;
 using Microsoft.Azure.Commands.Security.Models.Automations;
 using Microsoft.Azure.Commands.SecurityCenter.Common;
 
@@ -28,11 +27,13 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Automations
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupScope, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceGroupName)]
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceGroupName)]
         [ValidateNotNullOrEmpty]
+        [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceName)]
         [Parameter(ParameterSetName = ParameterSetNames.SubscriptionLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceName)]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.Security/automations", nameof(ResourceGroupName))]
         public string Name { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ResourceId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ResourceId)]
@@ -46,55 +47,39 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Automations
             {
                 case ParameterSetNames.SubscriptionScope:
                     var automations = SecurityCenterClient.Automations.ListWithHttpMessagesAsync().GetAwaiter().GetResult().Body;
-                    var PSTypeAlerts = alerts.ConvertToPSType();
-                    WriteObject(PSTypeAlerts, enumerateCollection: true);
-                    nextLink = alerts?.NextPageLink;
+                    var PSTypeAutomations = automations.ConvertToPSType();
+                    WriteObject(PSTypeAutomations, enumerateCollection: true);
+                    nextLink = automations?.NextPageLink;
                     while (!string.IsNullOrWhiteSpace(nextLink))
                     {
-                        alerts = SecurityCenterClient.Alerts.ListNextWithHttpMessagesAsync(alerts.NextPageLink).GetAwaiter().GetResult().Body;
-                        PSTypeAlerts = alerts.ConvertToPSType();
-                        WriteObject(PSTypeAlerts, enumerateCollection: true);
-                        nextLink = alerts?.NextPageLink;
+                        automations = SecurityCenterClient.Automations.ListNextWithHttpMessagesAsync(nextLink).GetAwaiter().GetResult().Body;
+                        PSTypeAutomations = automations.ConvertToPSType();
+                        WriteObject(PSTypeAutomations, enumerateCollection: true);
+                        nextLink = automations?.NextPageLink;
                     }
                     break;
                 case ParameterSetNames.ResourceGroupScope:
-                    alerts = SecurityCenterClient.Alerts.ListByResourceGroupWithHttpMessagesAsync(ResourceGroupName).GetAwaiter().GetResult().Body;
-                    PSTypeAlerts = alerts.ConvertToPSType();
-                    WriteObject(PSTypeAlerts, enumerateCollection: true);
-                    nextLink = alerts?.NextPageLink;
+                    automations = SecurityCenterClient.Automations.ListByResourceGroupWithHttpMessagesAsync(ResourceGroupName).GetAwaiter().GetResult().Body;
+                    PSTypeAutomations = automations.ConvertToPSType();
+                    WriteObject(PSTypeAutomations, enumerateCollection: true);
+                    nextLink = automations?.NextPageLink;
                     while (!string.IsNullOrWhiteSpace(nextLink))
                     {
-                        alerts = SecurityCenterClient.Alerts.ListNextWithHttpMessagesAsync(alerts.NextPageLink).GetAwaiter().GetResult().Body;
-                        PSTypeAlerts = alerts.ConvertToPSType();
-                        WriteObject(PSTypeAlerts, enumerateCollection: true);
-                        nextLink = alerts?.NextPageLink;
+                        automations = SecurityCenterClient.Automations.ListByResourceGroupNextWithHttpMessagesAsync(nextLink).GetAwaiter().GetResult().Body;
+                        PSTypeAutomations = automations.ConvertToPSType();
+                        WriteObject(PSTypeAutomations, enumerateCollection: true);
+                        nextLink = automations?.NextPageLink;
                     }
-                    break;
-                case ParameterSetNames.SubscriptionLevelResource:
-                    SecurityCenterClient.AscLocation = Location;
-                    var alert = SecurityCenterClient.Alerts.GetSubscriptionLevelWithHttpMessagesAsync(Name).GetAwaiter().GetResult().Body;
-                    WriteObject(alert.ConvertToPSType(), enumerateCollection: false);
                     break;
                 case ParameterSetNames.ResourceGroupLevelResource:
-                    SecurityCenterClient.AscLocation = Location;
-                    alert = SecurityCenterClient.Alerts.GetResourceGroupLevelWithHttpMessagesAsync(Name, ResourceGroupName).GetAwaiter().GetResult().Body;
-                    WriteObject(alert.ConvertToPSType(), enumerateCollection: false);
+                    var automation = SecurityCenterClient.Automations.GetWithHttpMessagesAsync(ResourceGroupName, Name).GetAwaiter().GetResult().Body;
+                    var PSTypeAutomation = automation.ConvertToPSType();
+                    WriteObject(PSTypeAutomation, enumerateCollection: false);
                     break;
                 case ParameterSetNames.ResourceId:
-                    SecurityCenterClient.AscLocation = AzureIdUtilities.GetResourceLocation(ResourceId);
-
-                    var rg = AzureIdUtilities.GetResourceGroup(ResourceId);
-
-                    if (string.IsNullOrEmpty(rg))
-                    {
-                        alert = SecurityCenterClient.Alerts.GetSubscriptionLevelWithHttpMessagesAsync(AzureIdUtilities.GetResourceName(ResourceId)).GetAwaiter().GetResult().Body;
-                    }
-                    else
-                    {
-                        alert = SecurityCenterClient.Alerts.GetResourceGroupLevelWithHttpMessagesAsync(AzureIdUtilities.GetResourceName(ResourceId), rg).GetAwaiter().GetResult().Body;
-                    }
-
-                    WriteObject(alert.ConvertToPSType(), enumerateCollection: false);
+                    automation = SecurityCenterClient.Automations.GetWithHttpMessagesAsync(AzureIdUtilities.GetResourceGroup(ResourceId), AzureIdUtilities.GetResourceName(ResourceId)).GetAwaiter().GetResult().Body;
+                    PSTypeAutomation = automation.ConvertToPSType();
+                    WriteObject(PSTypeAutomation, enumerateCollection: false);
                     break;
                 default:
                     throw new PSInvalidOperationException();
