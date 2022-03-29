@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
         public string DiskName { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false, 
             Position = 1,
             ParameterSetName = DirectUploadToManagedDiskSet,
             ValueFromPipelineByPropertyName = true,
@@ -122,6 +122,12 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             ParameterSetName = DirectUploadToManagedDiskSet,
             ValueFromPipelineByPropertyName = true)]
         public string[] Zone { get; set; }
+
+        [Parameter(
+            Mandatory = false, 
+            ParameterSetName = DirectUploadToManagedDiskSet,
+            ValueFromPipeline = true)]
+        public PSDisk Disk { get; set; }
 
         [Parameter(
             Position = 3,
@@ -359,47 +365,90 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
 
         private PSDisk CreateDiskConfig()
         {
-
-            // Sku
-            DiskSku vSku = null;
-
-            // CreationData
-            CreationData vCreationData = null;
-
-            if (this.IsParameterBound(c => c.DiskSku))
+            if (this.IsParameterBound(c => c.Disk))
             {
-                if (vSku == null)
+                if (this.IsParameterBound(c => c.Zone))
                 {
-                    vSku = new DiskSku();
+                    if (this.Disk.Zones == null)
+                    {
+                        this.Disk.Zones = this.Zone;
+                    }
+                    else if (this.Disk.Zones != this.Zone)
+                    {
+                        throw new Exception("You provided different 'Zone' values from '-Disk' and '-Zone' parameters. Please provide just one of the parameters or pass in same 'Zone' values.");
+                    }
                 }
-                vSku.Name = this.DiskSku;
+
+                if (this.IsParameterBound(c => c.Location))
+                {
+                    if (this.Disk.Location == null)
+                    {
+                        this.Disk.Location = this.Location;
+                    }
+                    else if (this.Disk.Location != this.Location)
+                    {
+                        throw new Exception("You provided different 'Location' values from '-Disk' and '-Location' parameters. Please provide just one of the parameters or pass in same 'Location' values.");
+                    }
+                }
+
+                if (this.IsParameterBound(c => c.DiskSku))
+                {
+                    if (this.Disk.Sku == null)
+                    {
+
+                        this.Disk.Sku = new DiskSku();
+                        this.Disk.Sku.Name = this.DiskSku;
+                    }
+                    else if (this.Disk.Sku.Name != this.DiskSku)
+                    {
+                        throw new Exception("You provided different 'Sku' values from '-Disk' and '-DiskSku' parameters. Please provide just one of the parameters or pass in same 'Sku' values.");
+                    }
+                }
+                return this.Disk;
             }
-
-            vCreationData = new CreationData();
-            vCreationData.CreateOption = "upload";
-            vCreationData.UploadSizeBytes = this.LocalFilePath.Length;
-
-            var vDisk = new PSDisk
+            else
             {
-                Zones = this.IsParameterBound(c => c.Zone) ? this.Zone : null,
-                OsType = OperatingSystemTypes.Windows,
-                HyperVGeneration = null,
-                DiskSizeGB = null,
-                DiskIOPSReadWrite = null,
-                DiskMBpsReadWrite = null,
-                DiskIOPSReadOnly = null,
-                DiskMBpsReadOnly = null,
-                MaxShares = null,
-                Location = this.IsParameterBound(c => c.Location) ? this.Location : null,
-                Tags = null,
-                Sku = vSku,
-                CreationData = vCreationData,
-                EncryptionSettingsCollection = null,
-                Encryption = null,
-                NetworkAccessPolicy = null,
-                DiskAccessId = null
-            };
-            return vDisk;
+                // Sku
+                DiskSku vSku = null;
+
+                // CreationData
+                CreationData vCreationData = null;
+
+                if (this.IsParameterBound(c => c.DiskSku))
+                {
+                    if (vSku == null)
+                    {
+                        vSku = new DiskSku();
+                    }
+                    vSku.Name = this.DiskSku;
+                }
+
+                vCreationData = new CreationData();
+                vCreationData.CreateOption = "upload";
+                vCreationData.UploadSizeBytes = this.LocalFilePath.Length;
+
+                var vDisk = new PSDisk
+                {
+                    Zones = this.IsParameterBound(c => c.Zone) ? this.Zone : null,
+                    OsType = OperatingSystemTypes.Windows,
+                    HyperVGeneration = null,
+                    DiskSizeGB = null,
+                    DiskIOPSReadWrite = null,
+                    DiskMBpsReadWrite = null,
+                    DiskIOPSReadOnly = null,
+                    DiskMBpsReadOnly = null,
+                    MaxShares = null,
+                    Location = this.IsParameterBound(c => c.Location) ? this.Location : null,
+                    Tags = null,
+                    Sku = vSku,
+                    CreationData = vCreationData,
+                    EncryptionSettingsCollection = null,
+                    Encryption = null,
+                    NetworkAccessPolicy = null,
+                    DiskAccessId = null
+                };
+                return vDisk;
+            }
         }
 
         private void createBackUp(string filePath)
