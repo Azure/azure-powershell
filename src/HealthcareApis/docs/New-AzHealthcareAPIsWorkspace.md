@@ -13,8 +13,8 @@ Creates or updates a workspace resource with the specified parameters.
 ## SYNTAX
 
 ```
-New-AzHealthcareAPIsWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Etag <String>] [-Location <String>] [-PublicNetworkAccess <PublicNetworkAccess>] [-Tag <Hashtable>]
+New-AzHealthcareAPIsWorkspace -Name <String> -ResourceGroupName <String> -Location <String>
+ [-SubscriptionId <String>] [-Etag <String>] [-PublicNetworkAccess <PublicNetworkAccess>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -89,7 +89,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

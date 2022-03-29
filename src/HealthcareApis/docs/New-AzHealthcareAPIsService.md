@@ -13,14 +13,14 @@ Create or update the metadata of a service instance.
 ## SYNTAX
 
 ```
-New-AzHealthcareAPIsService -Name <String> -ResourceGroupName <String> -Kind <Kind> -Location <String>
- [-SubscriptionId <String>] [-AccessPolicy <IServiceAccessPolicyEntry[]>]
- [-AcrConfigurationLoginServer <String[]>] [-AcrConfigurationOciArtifact <IServiceOciArtifactEntry[]>]
- [-AuthenticationConfigurationAudience <String>] [-AuthenticationConfigurationAuthority <String>]
- [-AuthenticationConfigurationSmartProxyEnabled] [-CorConfigurationAllowCredentials]
- [-CorConfigurationHeader <String[]>] [-CorConfigurationMaxAge <Int32>] [-CorConfigurationMethod <String[]>]
- [-CorConfigurationOrigin <String[]>] [-CosmoDbConfigurationKeyVaultKeyUri <String>]
- [-CosmoDbConfigurationOfferThroughput <Int32>] [-Etag <String>]
+New-AzHealthcareAPIsService -Name <String> -ResourceGroupName <String>
+ -CosmoDbConfigurationOfferThroughput <Int32> -Kind <Kind> -Location <String> [-SubscriptionId <String>]
+ [-AccessPolicy <IServiceAccessPolicyEntry[]>] [-AcrConfigurationLoginServer <String[]>]
+ [-AcrConfigurationOciArtifact <IServiceOciArtifactEntry[]>] [-AuthenticationConfigurationAudience <String>]
+ [-AuthenticationConfigurationAuthority <String>] [-AuthenticationConfigurationSmartProxyEnabled]
+ [-CorConfigurationAllowCredentials] [-CorConfigurationHeader <String[]>] [-CorConfigurationMaxAge <Int32>]
+ [-CorConfigurationMethod <String[]>] [-CorConfigurationOrigin <String[]>]
+ [-CosmoDbConfigurationKeyVaultKeyUri <String>] [-Etag <String>]
  [-ExportConfigurationStorageAccountName <String>] [-IdentityType <ManagedServiceIdentityType>]
  [-PrivateEndpointConnection <IPrivateEndpointConnection[]>] [-PublicNetworkAccess <PublicNetworkAccess>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -249,7 +249,7 @@ Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

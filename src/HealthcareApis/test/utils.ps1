@@ -59,7 +59,7 @@ function setupEnv() {
 
     # Create the test group
     write-host "start to create test group"
-    $resourceGroup = "azpstestgroup"
+    $resourceGroup = "azpstestgroup-eus2"
     $env.Add("resourceGroup", $resourceGroup)
 
     New-AzResourceGroup -Name $env.resourceGroup -Location $env.location

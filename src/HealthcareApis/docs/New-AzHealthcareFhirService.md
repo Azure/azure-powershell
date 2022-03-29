@@ -14,14 +14,14 @@ Creates or updates a FHIR Service resource with the specified parameters.
 
 ```
 New-AzHealthcareFhirService -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String>] [-AccessPolicy <IFhirServiceAccessPolicyEntry[]>]
- [-AcrConfigurationLoginServer <String[]>] [-AcrConfigurationOciArtifact <IServiceOciArtifactEntry[]>]
- [-AuthenticationConfigurationAudience <String>] [-AuthenticationConfigurationAuthority <String>]
- [-AuthenticationConfigurationSmartProxyEnabled] [-CorConfigurationAllowCredentials]
- [-CorConfigurationHeader <String[]>] [-CorConfigurationMaxAge <Int32>] [-CorConfigurationMethod <String[]>]
- [-CorConfigurationOrigin <String[]>] [-Etag <String>] [-ExportConfigurationStorageAccountName <String>]
- [-IdentityType <ServiceManagedIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-Kind <FhirServiceKind>] [-Location <String>] [-PublicNetworkAccess <PublicNetworkAccess>]
+ -Kind <FhirServiceKind> -Location <String> [-SubscriptionId <String>]
+ [-AccessPolicy <IFhirServiceAccessPolicyEntry[]>] [-AcrConfigurationLoginServer <String[]>]
+ [-AcrConfigurationOciArtifact <IServiceOciArtifactEntry[]>] [-AuthenticationConfigurationAudience <String>]
+ [-AuthenticationConfigurationAuthority <String>] [-AuthenticationConfigurationSmartProxyEnabled]
+ [-CorConfigurationAllowCredentials] [-CorConfigurationHeader <String[]>] [-CorConfigurationMaxAge <Int32>]
+ [-CorConfigurationMethod <String[]>] [-CorConfigurationOrigin <String[]>] [-Etag <String>]
+ [-ExportConfigurationStorageAccountName <String>] [-IdentityType <ServiceManagedIdentityType>]
+ [-IdentityUserAssignedIdentity <Hashtable>] [-PublicNetworkAccess <PublicNetworkAccess>]
  [-ResourceVersionPolicyConfigurationDefault <FhirResourceVersionPolicy>]
  [-ResourceVersionPolicyConfigurationResourceTypeOverride <Hashtable>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -312,7 +312,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.FhirServiceKind
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -327,7 +327,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -14,12 +14,12 @@ Creates or updates an IoT Connector resource with the specified parameters.
 
 ```
 New-AzHealthcareIotConnector -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String>] [-DeviceMappingContent <Hashtable>] [-Etag <String>]
+ -Location <String> [-SubscriptionId <String>] [-DeviceMappingContent <Hashtable>] [-Etag <String>]
  [-IdentityType <ServiceManagedIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
  [-IngestionEndpointConfigurationConsumerGroup <String>]
  [-IngestionEndpointConfigurationEventHubName <String>]
- [-IngestionEndpointConfigurationFullyQualifiedEventHubNamespace <String>] [-Location <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-IngestionEndpointConfigurationFullyQualifiedEventHubNamespace <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -186,7 +186,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

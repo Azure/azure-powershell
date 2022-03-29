@@ -163,4 +163,28 @@ directive:
             }
           }
       }
+  - where:
+      verb: New
+      subject: APIsService
+    hide: true
+  - where:
+      verb: New
+      subject: APIsWorkspace
+    hide: true
+  - where:
+      verb: New
+      subject: DicomService
+    hide: true
+  - where:
+      verb: New
+      subject: FhirService
+    hide: true
+  - where:
+      verb: New
+      subject: IotConnector
+    hide: true
+  - where:
+      verb: New
+      subject: IotConnectorFhirDestination
+    hide: true
 ```

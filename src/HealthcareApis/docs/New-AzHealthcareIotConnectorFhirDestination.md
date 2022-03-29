@@ -14,10 +14,10 @@ Creates or updates an IoT Connector FHIR destination resource with the specified
 
 ```
 New-AzHealthcareIotConnectorFhirDestination -FhirDestinationName <String> -IotConnectorName <String>
- -ResourceGroupName <String> -WorkspaceName <String> -FhirServiceResourceId <String>
+ -ResourceGroupName <String> -WorkspaceName <String> -FhirMappingContent <Hashtable>
+ -FhirServiceResourceId <String> -Location <String>
  -ResourceIdentityResolutionType <IotIdentityResolutionType> [-SubscriptionId <String>] [-Etag <String>]
- [-FhirMappingContent <Hashtable>] [-Location <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -107,7 +107,7 @@ Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -152,7 +152,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
