@@ -19,7 +19,6 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
-using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Rest.Azure.OData;
 using Newtonsoft.Json;
 using System;
@@ -99,8 +98,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 ValidateProtectedItemCount(azureVmPolicy);
             }
-
-            string vmSecurityType = null;
+                        
             if (itemBase == null)
             {
                 isComputeAzureVM = string.IsNullOrEmpty(azureVMCloudServiceName) ? true : false;
@@ -114,9 +112,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     azureVMCloudServiceName,
                     azureVMResourceGroupName,
                     policy);
-
-                VirtualMachine virtualMachine = ServiceClientAdapter.GetAzureVirtualMachine(azureVMRGName, azureVMName);
-                vmSecurityType = (virtualMachine != null && virtualMachine.SecurityProfile != null && virtualMachine.SecurityProfile.SecurityType != null) ? virtualMachine.SecurityProfile.SecurityType : null;
 
                 WorkloadProtectableItemResource protectableObjectResource =
                     GetAzureVMProtectableObject(
@@ -144,10 +139,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             else if(isDiskExclusionParamPresent && parameterSetName.Contains("Modify"))
             {
                 isComputeAzureVM = IsComputeAzureVM(item.VirtualMachineId);
-
-                // Extract virtual machine security type
-                vmSecurityType = GetVMsecurityType(item.VirtualMachineId);
-                
+                                
                 Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(item.Id);
                 containerUri = HelperUtils.GetContainerUri(keyValueDict, item.Id);
                 protectedItemUri = HelperUtils.GetProtectedItemUri(keyValueDict, item.Id);
@@ -159,9 +151,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 ValidateAzureVMModifyProtectionRequest(itemBase, policy);
 
                 isComputeAzureVM = IsComputeAzureVM(item.VirtualMachineId);
-
-                // Extract virtual machine security type
-                vmSecurityType = GetVMsecurityType(item.VirtualMachineId);
 
                 Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(item.Id);
                 containerUri = HelperUtils.GetContainerUri(keyValueDict, item.Id);
@@ -183,9 +172,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             if (policy != null)
             {
                 properties.PolicyId = policy.Id;
-
-                // validate TVM can only be protected with Enhanced policy
-                ValidateTVMPolicyType(vmSecurityType, ((AzureVmPolicy)policy).PolicySubType);                
             }
             else
             {
@@ -1288,35 +1274,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                                             type.ToString()));
             }
         }
-
-        private string GetVMsecurityType(string virtualMachineId)
-        {
-            // Extract virtual machine security type
-            if (virtualMachineId != null && virtualMachineId != "")
-            {
-                Dictionary<UriEnums, string> vmDict = HelperUtils.ParseUri(virtualMachineId);
-                string vmName = HelperUtils.GetVMNameFromId(vmDict, virtualMachineId);
-                string vmResourceGroup = HelperUtils.GetResourceGroupNameFromId(vmDict, virtualMachineId);
-
-                VirtualMachine virtualMachine = ServiceClientAdapter.GetAzureVirtualMachine(vmResourceGroup, vmName);
-                string vmSecurityType = (virtualMachine != null && virtualMachine.SecurityProfile != null && virtualMachine.SecurityProfile.SecurityType != null) ? virtualMachine.SecurityProfile.SecurityType : null;
-                return vmSecurityType;
-            }
-            return null;
-        }
-
-        private void ValidateTVMPolicyType(string vmSecurityType, CmdletModel.PSPolicyType policySubType)
-        {
-            // validate Enhaced policy is used for TVM
-            if (vmSecurityType != null && vmSecurityType.ToLower() == "trustedlaunch")
-            {
-                if (policySubType == CmdletModel.PSPolicyType.Standard)
-                {
-                    throw new ArgumentException(Resources.InvalidPolicyForTrustedVMProtection);
-                }
-            }
-        }
-
+        
         private void ValidateAzureVMWorkloadType(CmdletModel.WorkloadType itemWorkloadType,
             CmdletModel.WorkloadType policyWorkloadType)
         {

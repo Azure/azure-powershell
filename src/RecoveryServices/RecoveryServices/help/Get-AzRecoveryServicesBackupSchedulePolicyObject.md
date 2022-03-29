@@ -16,7 +16,7 @@ Gets a base schedule policy object.
 ```
 Get-AzRecoveryServicesBackupSchedulePolicyObject [-WorkloadType] <WorkloadType>
  [[-BackupManagementType] <BackupManagementType>] [-DefaultProfile <IAzureContextContainer>]
- [[-ScheduleRunFrequency] <ScheduleRunType>] [[-PolicySubType] <PolicyType>] [<CommonParameters>]
+ [[-ScheduleRunFrequency] <ScheduleRunType>] [[-PolicySubType] <PSPolicyType>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 Type of schedule policy to be fetched: Standard, Enhanced
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyType
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PSPolicyType
 Parameter Sets: (All)
 Aliases:
 Accepted values: Standard, Enhanced

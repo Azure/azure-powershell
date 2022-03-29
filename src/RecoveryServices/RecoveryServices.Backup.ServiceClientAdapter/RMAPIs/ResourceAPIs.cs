@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Management.Internal.Resources.Models;
-using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Rest.Azure.OData;
 using System;
 using System.Collections.Generic;
@@ -37,19 +36,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 null,
                 cancellationToken: RMAdapter.CmdletCancellationToken).Result.Body;
             return resource;
-        }
-
-        /// <summary>
-        /// Get azure virtual machine
-        /// </summary>
-        /// <param name="resourceGroup"></param>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        public VirtualMachine GetAzureVirtualMachine(string resourceGroup, string name)
-        {
-            VirtualMachine vm = ComputeAdapter.Client.VirtualMachines.GetWithHttpMessagesAsync(resourceGroup, name).Result.Body;                
-            return vm;
-        }
+        }       
 
         /// <summary>
         /// Get storage accounts according to the query params

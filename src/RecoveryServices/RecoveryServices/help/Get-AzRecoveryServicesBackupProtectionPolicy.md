@@ -16,26 +16,26 @@ Gets Backup protection policies for a vault.
 ### NoParamSet (Default)
 ```
 Get-AzRecoveryServicesBackupProtectionPolicy [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
- [-PolicySubType <PolicyType>] [<CommonParameters>]
+ [-PolicySubType <PSPolicyType>] [<CommonParameters>]
 ```
 
 ### PolicyNameParamSet
 ```
 Get-AzRecoveryServicesBackupProtectionPolicy [-Name] <String> [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-PolicySubType <PolicyType>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-PolicySubType <PSPolicyType>] [<CommonParameters>]
 ```
 
 ### WorkloadParamSet
 ```
 Get-AzRecoveryServicesBackupProtectionPolicy [-WorkloadType] <WorkloadType> [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-PolicySubType <PolicyType>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-PolicySubType <PSPolicyType>] [<CommonParameters>]
 ```
 
 ### WorkloadBackupManagementTypeParamSet
 ```
 Get-AzRecoveryServicesBackupProtectionPolicy [-WorkloadType] <WorkloadType>
  [-BackupManagementType] <BackupManagementType> [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
- [-PolicySubType <PolicyType>] [<CommonParameters>]
+ [-PolicySubType <PSPolicyType>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 Type of policy to be fetched: Standard, Enhanced
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyType
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PSPolicyType
 Parameter Sets: (All)
 Aliases:
 Accepted values: Standard, Enhanced
