@@ -21,9 +21,9 @@ Creates a configuration store with the specified parameters.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IConfigurationStore
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/new-azappconfigurationstore
+https://docs.microsoft.com/powershell/module/az.appconfiguration/new-azappconfigurationstore
 .LINK
-[New-AzUserAssignedIdentity](https://docs.microsoft.com/en-us/powershell/module/az.managedserviceidentity/new-azuserassignedidentity?view=azps-4.4.0)
+[New-AzUserAssignedIdentity](https://docs.microsoft.com/powershell/module/az.managedserviceidentity/new-azuserassignedidentity?view=azps-4.4.0)
 #>
 function New-AzAppConfigurationStore {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IConfigurationStore])]
@@ -43,7 +43,7 @@ function New-AzAppConfigurationStore {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         # The Microsoft Azure subscription ID.
         ${SubscriptionId},
@@ -72,6 +72,25 @@ function New-AzAppConfigurationStore {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+        [System.String]
+        # The URI of the key vault key used to encrypt data.
+        ${EncryptionKeyIdentifier},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+        [System.String]
+        # The client id of the identity which will be used to access key vault.
+        ${KeyVaultIdentityClientId},
+
+        [Parameter()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support.PublicNetworkAccess])]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support.PublicNetworkAccess]
+        # Control permission for data plane traffic coming from public networks while private endpoint is enabled.
+        ${PublicNetworkAccess},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
         [System.String[]]
         # The list of user-assigned identities associated with the resource.
         # The user-assigned identity dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
@@ -79,7 +98,7 @@ function New-AzAppConfigurationStore {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IResourceTags]))]
         [System.Collections.Hashtable]
         # The tags of the resource.
         ${Tag},

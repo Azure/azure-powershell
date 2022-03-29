@@ -27,6 +27,14 @@
     - Get-AzGallery
     - Get-AzGalleryImageDefinition
     - Get-AzGalleryImageVersion
+* Updated `New-AzVM` to create a new storage account for boot diagnostics if one does not exist. This will prevent the cmdlet from using a random storage account in the current subscription to use for boot diagnostics.
+* Added `AutomaticRepairAction` string parameter to the `New-AzVmssConfig` and `Update-AzVmss` cmdlets.
+* Updated `Get-AzVm` to include `GetVirtualMachineById` parameter set.
+* Edited the documentation for the cmdlet `Set-AzVMADDomainExtension` to ensure the example is accurate. 
+* Improved description and examples for disk creation.
+
+## Version 4.24.1
+* Updated New-AzVM feature for `vCPUsAvailable` and `vCPUsPerCore` parameters. Cmdlets will not try to use the new `VMCustomizationPreview` feature if the user does not have access to that feature. [#17370]
 
 ## Version 4.24.0
 * Upgraded Compute .NET SDK package reference to version 52.0.0

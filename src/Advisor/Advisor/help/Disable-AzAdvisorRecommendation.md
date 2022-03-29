@@ -37,7 +37,7 @@ Creates a suppression for recommendation(s), this enables a particular recommend
 
 ### Example 1
 ```powershell
-Disable-AzAdvisorRecommendation -Name "f380a3a8-9d18-cfad-78e0-55762c72a178"
+Disable-AzAdvisorRecommendation -RecommendationName "f380a3a8-9d18-cfad-78e0-55762c72a178"
 ```
 
 ```output

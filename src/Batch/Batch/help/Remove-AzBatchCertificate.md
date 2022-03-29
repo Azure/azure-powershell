@@ -33,14 +33,12 @@ This command removes the certificate that has the specified thumbprint.
 
 ### Example 2:Remove all active certificates
 ```powershell
-Get-AzBatchCertificate -Filter "state eq 'active'" -BatchContext $Context | Remove-AzBatchCertificate -Force -BatchContext $Context
+Get-AzBatchCertificate -Filter "state eq 'active'" -BatchContext $Context | Remove-AzBatchCertificate -BatchContext $Context
 ```
 
 This command gets all certificates that are active by using the Get-AzBatchCertificate cmdlet.
 The command passes the active certificates to the current cmdlet by using the pipeline operator.
 That cmdlet removes each certificate.
-The command specifies the *Force* parameter.
-Therefore, the command does not prompt you for confirmation.
 
 ## PARAMETERS
 

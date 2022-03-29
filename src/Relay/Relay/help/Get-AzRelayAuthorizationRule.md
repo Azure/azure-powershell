@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Relay.dll-Help.xml
 Module Name: Az.Relay
 online version: https://docs.microsoft.com/powershell/module/az.relay/get-azrelayauthorizationrule
@@ -37,8 +37,10 @@ The **Get-AzRelayAuthorizationRule** cmdlet gets the description of the specifie
 
 ### Example 1: Namespace
 ```powershell
-PS C:\> Get-AzRelayNamespaceAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name AuthoRule1
+Get-AzRelayNamespaceAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name AuthoRule1
+```
 
+```output
 Rights : {Listen, Send}
 Name   : AuthoRule1
 Type   : Microsoft.Relay/AuthorizationRules
@@ -50,8 +52,10 @@ Returns the specified authorization rule description for a specified namespace.
 
 ### Example 2: WcfRelay
 ```powershell
-PS C:\>Get-AzWcfRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -WcfRelay TestWCFRelay1 -Name AuthoRule1
+Get-AzWcfRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -WcfRelay TestWCFRelay1 -Name AuthoRule1
+```
 
+```output
 Rights : {Listen, Send}
 Name   : AuthoRule1
 Type   : Microsoft.Relay/AuthorizationRules
@@ -63,8 +67,10 @@ Returns the specified authorization rule description for a given WcfRelay.
 
 ### Example 3: HybridConnection
 ```powershell
-PS C:\> Get-AzRelayHybridConnectionAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -HybridConnections TestHybridConnection -Name AuthoRule1
+Get-AzRelayHybridConnectionAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -HybridConnections TestHybridConnection -Name AuthoRule1
+```
 
+```output
 Rights : {Listen, Send}
 Name   : AuthoRule1
 Type   : Microsoft.Relay/AuthorizationRules

@@ -37,7 +37,10 @@ The **Get-AzStackEdgeDevice** cmdlet gets the information about the available St
 
 ### Example 1
 ```powershell
-PS C:\>Get-AzStackEdgeDevice
+Get-AzStackEdgeDevice
+```
+
+```output
 Name               ResourceGroupName  Model   Location
 ----               -----------------  -----   --------
 deviceNameOne      resourceGroupName1 Edge    eastus
@@ -47,28 +50,28 @@ deviceNameThree    resourceGroupName3 Gateway eastus
 
 ### Example 2
 ```powershell
-PS C:\>$device = Get-AzStackEdgeDevice -ResourceGroupName resourceGroupName1 -DeviceName deviceNameOne -Alert -UpdateSummary -NetworkSetting -ExtendedInfo
+$device = Get-AzStackEdgeDevice -ResourceGroupName resourceGroupName1 -DeviceName deviceNameOne -Alert -UpdateSummary -NetworkSetting -ExtendedInfo
 
-PS C:\>$device.Alert
+$device.Alert
 
 Title                            Severity AppearedDateTime      Recommendation
 -----                            -------- ----------------      --------------
-Lost heartbeat from your device. Critical 02-Jan-20 10:35:20 AM If your device is offline, then the device is not able to communicate with the Azure service. This could be due to one of the following reasons: <br/> &nbs�
+Lost heartbeat from your device. Critical 02-Jan-20 10:35:20 AM If your device is offline, then the device is not able to communicate with the Azure service. This could be due to one of the following reasons: <br/> &nbs
 
 
-PS C:\>$device.NetworkSetting
+$device.NetworkSetting
 
 State    IPv4         IPv6                                 Subnet        Default Gateway Physical address DNS Servers
 -----    ----         ----                                 ------        --------------- ---------------- -----------
 Disabled 10.150.76.82 2404:f801:4800:1e:8168:dca6:b3b9:d70 255.255.252.0 10.150.76.1     00155D4E262B     10.50.50.50,10.50.10.50
 
-PS C:\>$device.UpdateSummary
+$device.UpdateSummary
 
 DeviceName        Current Version Friendly name      Last Software Scan Last Software Update Pending Updates Pending Update Titles
 ----------        --------------- -------------      ------------------ -------------------- --------------- ---------------------
 deviceNameOne     2.0.998.537     Data Box Edge Mock                                         0
 
-PS C:\>$device.ExtendedInfo
+$device.ExtendedInfo
 
 ResourceGroupName   DeviceName        EncryptedCIK Thumbprint     ResourceKey        EncryptedCIK
 -----------------   ----------        -----------------------     -----------        ------------

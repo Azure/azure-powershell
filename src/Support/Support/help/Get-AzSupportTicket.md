@@ -44,8 +44,9 @@ You can also retrieve a single support ticket by specifying the ticket name.
 
 ### Example 1: Get first 2 tickets
 ```powershell
-PS C:\> Get-AzSupportTicket -First 2
-
+Get-AzSupportTicket -First 2
+```
+```output
 Name  Title                        SupportTicketId Severity ServiceDisplayName            Status CreatedDate
 ----  -----                        --------------- -------- ------------------            ------ -----------
 test1 test title1                  150010521000317 Minimal  Virtual Machine running Linux Closed 2/5/2020 1:33:53 AM
@@ -54,8 +55,9 @@ test2 test title2                  150010521000318 Minimal  Billing             
 
 ### Example 2: Get first 2 tickets after skipping the first 2
 ```powershell
-PS C:\> Get-AzSupportTicket -Skip 2 -First 2
-
+Get-AzSupportTicket -Skip 2 -First 2
+```
+```output
 Name  Title                        SupportTicketId Severity ServiceDisplayName            Status CreatedDate
 ----  -----                        --------------- -------- ------------------            ------ -----------
 test3 test title3                  150010521000314 Minimal  Virtual Machine running Linux Closed 2/5/2020 1:33:53 AM
@@ -64,8 +66,9 @@ test4 test title4                  150010521000315 Minimal  Billing             
 
 ### Example 3: Get a support ticket by name
 ```powershell
-PS C:\> Get-AzSupportTicket -Name "test1"
-
+Get-AzSupportTicket -Name "test1"
+```
+```output
 Name  Title                        SupportTicketId Severity ServiceDisplayName            Status CreatedDate
 ----  -----                        --------------- -------- ------------------            ------ -----------
 test1 test title1                  150010521000317 Minimal  Virtual Machine running Linux Closed 2/5/2020 1:33:53 AM
@@ -73,8 +76,9 @@ test1 test title1                  150010521000317 Minimal  Virtual Machine runn
 
 ### Example 4: Get first 2 support tickets filtered by status
 ```powershell
-PS C:\> Get-AzSupportTicket -Filter "Status eq 'Closed'" -First 2
-
+Get-AzSupportTicket -Filter "Status eq 'Closed'" -First 2
+```
+```output
 Name  Title                        SupportTicketId Severity ServiceDisplayName            Status CreatedDate
 ----  -----                        --------------- -------- ------------------            ------ -----------
 test1 test title1                  150010521000317 Minimal  Virtual Machine running Linux Closed 2/5/2020 1:33:53 AM
@@ -83,8 +87,9 @@ test2 test title2                  150010521000318 Minimal  Billing             
 
 ### Example 5: Get all support tickets that are in Open state and created after Dec 20th, 2019
 ```powershell
-PS C:\> Get-AzSupportTicket -Filter "Status eq 'Open' and CreatedDate gt 2019-12-20"
-
+Get-AzSupportTicket -Filter "Status eq 'Open' and CreatedDate gt 2019-12-20"
+```
+```output
 Name  Title                        SupportTicketId Severity ServiceDisplayName            Status CreatedDate
 ----  -----                        --------------- -------- ------------------            ------ -----------
 test6 test title6                  150010521000311 Minimal  Virtual Machine running Linux Open   2/5/2020 1:33:53 AM

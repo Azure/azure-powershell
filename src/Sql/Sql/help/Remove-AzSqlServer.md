@@ -26,8 +26,8 @@ For instance, you need to create a new server that uses the same name.
 ## EXAMPLES
 
 ### Example 1: Remove a server
-```
-PS C:\>Remove-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
+```powershell
+Remove-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
 ```
 
 This command removes the Azure SQL Database server named Server01.

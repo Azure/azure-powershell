@@ -20,7 +20,18 @@ Create an in-memory object for PowerBIDataSource.
 .Description
 Create an in-memory object for PowerBIDataSource.
 .Example
+PS C:\> New-AzPurviewPowerBIDataSourceObject -Kind 'PowerBI' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -Tenant 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx'
 
+CollectionLastModifiedAt :
+CollectionReferenceName  : parv-brs-2
+CollectionType           : CollectionReference
+CreatedAt                :
+Id                       :
+Kind                     : PowerBI
+LastModifiedAt           :
+Name                     :
+Scan                     :
+Tenant                   : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.PowerBiDataSource

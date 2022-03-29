@@ -29,8 +29,10 @@ The Get-AzSecuritySecureScore comlet gets security secure scores and their resul
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSecuritySecureScore
+Get-AzSecuritySecureScore
+```
 
+```output
 Id : /subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Security/secureScores/ascScore
 Name : ascScore
 Type : Microsoft.Security/secureScores

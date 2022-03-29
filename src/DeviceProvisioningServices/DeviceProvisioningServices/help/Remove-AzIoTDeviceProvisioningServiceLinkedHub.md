@@ -49,7 +49,7 @@ Delete linked IoT hub "myiothub" in an Azure IoT Hub device provisioning service
 
 ### Example 2
 ```powershell
-Get-AzIoTDpsHub -ResourceGroupName "myresourcegroup" -Name "myiotdps" -LinkedHubName "myiothub" | Remove-AzIoTDpsHub
+Get-AzIoTDeviceProvisioningServiceLinkedHub -ResourceGroupName "myresourcegroup" -Name "myiotdps" -LinkedHubName "myiothub" | Remove-AzIoTDeviceProvisioningServiceLinkedHub
 ```
 
 Delete linked IoT hub "myiothub" in an Azure IoT Hub device provisioning service using pipeline.

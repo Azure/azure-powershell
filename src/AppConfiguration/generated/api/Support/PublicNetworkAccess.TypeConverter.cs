@@ -6,7 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support
 {
 
-    /// <summary>TypeConverter implementation for PublicNetworkAccess.</summary>
+    /// <summary>
+    /// Control permission for data plane traffic coming from public networks while private endpoint is enabled.
+    /// </summary>
     public partial class PublicNetworkAccessTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

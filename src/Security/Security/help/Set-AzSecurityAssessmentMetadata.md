@@ -26,7 +26,7 @@ After this action you will be able to report assessment results on any resource 
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzSecurityAssessmentMetadata -Name $assessmentGuid -DisplayName "Resource should be secured" -Severity "High" -Description "The resource should be secured according to my company's security policy"
+Set-AzSecurityAssessmentMetadata -Name $assessmentGuid -DisplayName "Resource should be secured" -Severity "High" -Description "The resource should be secured according to my company's security policy"
 ```
 
 Create a new assessment type in a subscription.

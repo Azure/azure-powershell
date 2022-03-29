@@ -20,13 +20,9 @@ Description for Gets a snapshot of the configuration of an app at a previous poi
 .Description
 Description for Gets a snapshot of the configuration of an app at a previous point in time.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity

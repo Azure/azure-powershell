@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Purview-help.xml
 Module Name: Az.Purview
 online version: https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewCustomClassificationRuleObject
 schema: 2.0.0
@@ -58,7 +58,6 @@ Create custom classification rule object
 
 ### -ClassificationName
 
-
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -73,9 +72,8 @@ Accept wildcard characters: False
 
 ### -ColumnPattern
 
-
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20211001Preview.IClassificationRulePattern[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRulePattern[]
 Parameter Sets: (All)
 Aliases:
 
@@ -88,9 +86,8 @@ Accept wildcard characters: False
 
 ### -DataPattern
 
-
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20211001Preview.IClassificationRulePattern[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRulePattern[]
 Parameter Sets: (All)
 Aliases:
 
@@ -102,7 +99,6 @@ Accept wildcard characters: False
 ```
 
 ### -Description
-
 
 ```yaml
 Type: System.String
@@ -118,9 +114,8 @@ Accept wildcard characters: False
 
 ### -Kind
 
-
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.ClassificationRuleType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ClassificationRuleType
 Parameter Sets: (All)
 Aliases:
 
@@ -132,7 +127,6 @@ Accept wildcard characters: False
 ```
 
 ### -MinimumPercentageMatch
-
 
 ```yaml
 Type: System.Double
@@ -148,9 +142,8 @@ Accept wildcard characters: False
 
 ### -RuleStatus
 
-
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.ClassificationRuleStatus
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ClassificationRuleStatus
 Parameter Sets: (All)
 Aliases:
 
@@ -168,11 +161,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20211001Preview.CustomClassificationRule
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.CustomClassificationRule
 
 ## NOTES
 
 ALIASES
 
 ## RELATED LINKS
-

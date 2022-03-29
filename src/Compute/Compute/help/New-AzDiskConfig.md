@@ -343,6 +343,8 @@ Accept wildcard characters: False
 
 ### -ImageReference
 Specifies the image reference on a disk.
+The ID will be the ARM ID of the PIR or user image from which to create a disk.
+A LUN is needed if the source of the copy is one of the data disks in the gallery image; if null, the OS disk of the image will be copied.
 
 ```yaml
 Type: Microsoft.Azure.Management.Compute.Models.ImageDiskReference

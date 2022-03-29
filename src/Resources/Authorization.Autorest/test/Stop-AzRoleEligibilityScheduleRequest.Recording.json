@@ -1,0 +1,82 @@
+{
+  "Stop-AzRoleEligibilityScheduleRequest+[NoContext]+Cancel+$PUT+https://management.azure.com//subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d//providers/Microsoft.Authorization/roleEligibilityScheduleRequests/47f8978c-5d8d-4fbf-b4b6-2f43eeb43fc5?api-version=2020-10-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com//subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d//providers/Microsoft.Authorization/roleEligibilityScheduleRequests/47f8978c-5d8d-4fbf-b4b6-2f43eeb43fc5?api-version=2020-10-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"scheduleInfo\": {\r\n      \"expiration\": {\r\n        \"type\": \"AfterDuration\",\r\n        \"duration\": \"PT30M\"\r\n      },\r\n      \"startDateTime\": \"2022-03-09T17:11:19.7711006-08:00\"\r\n    },\r\n    \"roleDefinitionId\": \"subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/providers/Microsoft.Authorization/roleDefinitions/c8d4ff99-41c3-41a8-9f60-21dfdad59608\",\r\n    \"principalId\": \"5a4bdd72-ab3e-4d8e-ab0f-8dd8917481a2\",\r\n    \"requestType\": \"AdminAssign\",\r\n    \"justification\": \"Test\"\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "505" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "mspimslice": [ "PROD" ],
+        "x-ms-client-request-id": [ "d17c8eae-3cd8-4430-8807-aff5183c41f2" ],
+        "Access-Control-Allow-Origin": [ "*" ],
+        "Access-Control-Allow-Methods": [ "POST, PUT, DELETE, GET, OPTIONS, PATCH" ],
+        "Access-Control-Allow-Headers": [ "content-Type, accept, origin, X-Requested-With, Authorization, name, x-ms-client-session-id, accept-language, x-ms-client-request-id, x-ms-effective-locale" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
+        "x-ms-request-id": [ "faff5356-c4e3-40d8-9165-13e623977862" ],
+        "x-ms-correlation-request-id": [ "faff5356-c4e3-40d8-9165-13e623977862" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20220211T002050Z:faff5356-c4e3-40d8-9165-13e623977862" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 11 Feb 2022 00:20:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1652" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"targetRoleEligibilityScheduleId\":\"/providers/Microsoft.Subscription/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/providers/Microsoft.Authorization/roleEligibilitySchedules/47f8978c-5d8d-4fbf-b4b6-2f43eeb43fc5\",\"scope\":\"/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d\",\"roleDefinitionId\":\"/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/providers/Microsoft.Authorization/roleDefinitions/c8d4ff99-41c3-41a8-9f60-21dfdad59608\",\"principalId\":\"5a4bdd72-ab3e-4d8e-ab0f-8dd8917481a2\",\"principalType\":\"User\",\"requestType\":\"AdminAssign\",\"status\":\"Granted\",\"scheduleInfo\":{\"startDateTime\":\"2022-03-10T01:11:19.7711006+00:00\",\"expiration\":{\"type\":\"AfterDuration\",\"duration\":\"PT30M\"}},\"ticketInfo\":{},\"justification\":\"Test\",\"requestorId\":\"a2cc980e-9a66-442e-8755-fd5648ed19f2\",\"createdOn\":\"2022-02-11T00:20:48.9695484Z\",\"expandedProperties\":{\"principal\":{\"id\":\"5a4bdd72-ab3e-4d8e-ab0f-8dd8917481a2\",\"displayName\":\"Aman Swaika secondary\",\"email\":\"aman.swaika@gmail.com\",\"type\":\"User\"},\"roleDefinition\":{\"id\":\"/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/providers/Microsoft.Authorization/roleDefinitions/c8d4ff99-41c3-41a8-9f60-21dfdad59608\",\"displayName\":\"AcrQuarantineWriter\",\"type\":\"BuiltInRole\"},\"scope\":{\"id\":\"/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d\",\"displayName\":\"Wingtip Toys\",\"type\":\"subscription\"}}},\"name\":\"47f8978c-5d8d-4fbf-b4b6-2f43eeb43fc5\",\"id\":\"/providers/Microsoft.Subscription/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/providers/Microsoft.Authorization/roleEligibilityScheduleRequests/47f8978c-5d8d-4fbf-b4b6-2f43eeb43fc5\",\"type\":\"Microsoft.Authorization/roleEligibilityScheduleRequests\"}"
+    }
+  },
+  "Stop-AzRoleEligibilityScheduleRequest+[NoContext]+Cancel+$POST+https://management.azure.com//subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d//providers/Microsoft.Authorization/roleEligibilityScheduleRequests/47f8978c-5d8d-4fbf-b4b6-2f43eeb43fc5/cancel?api-version=2020-10-01-preview+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com//subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d//providers/Microsoft.Authorization/roleEligibilityScheduleRequests/47f8978c-5d8d-4fbf-b4b6-2f43eeb43fc5/cancel?api-version=2020-10-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "32" ],
+        "x-ms-client-request-id": [ "c92bb713-d08e-4b2e-aacc-57c05920e143" ],
+        "CommandName": [ "Stop-AzRoleEligibilityScheduleRequest" ],
+        "FullCommandName": [ "Stop-AzRoleEligibilityScheduleRequest_Cancel" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "mspimslice": [ "PROD" ],
+        "x-ms-client-request-id": [ "c92bb713-d08e-4b2e-aacc-57c05920e143" ],
+        "Access-Control-Allow-Origin": [ "*" ],
+        "Access-Control-Allow-Methods": [ "POST, PUT, DELETE, GET, OPTIONS, PATCH" ],
+        "Access-Control-Allow-Headers": [ "content-Type, accept, origin, X-Requested-With, Authorization, name, x-ms-client-session-id, accept-language, x-ms-client-request-id, x-ms-effective-locale" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-request-id": [ "27db00d1-6dbb-445c-ba23-533b624b7399" ],
+        "x-ms-correlation-request-id": [ "27db00d1-6dbb-445c-ba23-533b624b7399" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20220211T002051Z:27db00d1-6dbb-445c-ba23-533b624b7399" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 11 Feb 2022 00:20:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  }
+}

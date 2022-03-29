@@ -43,30 +43,30 @@ The **Update-AzSynapseWorkspace** cmdlet updates an Azure Synapse Analytics work
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzSynapseWorkspace -Name ContosoWorkspace -Tag @{'key'='value'}
+Update-AzSynapseWorkspace -Name ContosoWorkspace -Tag @{'key'='value'}
 ```
 
 This commands updates tags for the specififed Azure Synapse Analytics workspace.
 
 ### Example 2
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Update-AzSynapseWorkspace -Tag @{'key'='value1'}
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Update-AzSynapseWorkspace -Tag @{'key'='value1'}
 ```
 
 This commands updates tags for the specififed Azure Synapse Analytics workspace through pipeline.
 
 ### Example 3
 ```powershell
-PS C:\> Update-AzSynapseWorkspace -ResourceId /subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd/resourceGroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace -Tag @{'key'='value2'}
+Update-AzSynapseWorkspace -ResourceId /subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd/resourceGroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace -Tag @{'key'='value2'}
 ```
 
 This commands updates tags for the specififed Azure Synapse Analytics workspace through pipeline with resource ID.
 
 ### Example 4
 ```powershell
-PS C:\> $config = New-AzSynapseGitRepositoryConfig -RepositoryType GitHub -AccountName ContosoAccount -RepositoryName ContosoRepo -CollaborationBranch main
-PS C:\> Update-AzSynapseWorkspace -Name ContosoWorkspace -GitRepository $config
+$config = New-AzSynapseGitRepositoryConfig -RepositoryType GitHub -AccountName ContosoAccount -RepositoryName ContosoRepo -CollaborationBranch main
+Update-AzSynapseWorkspace -Name ContosoWorkspace -GitRepository $config
 ```
 
 This commands updates Git repository which workspace is conneceted to for the specififed Azure Synapse Analytics workspace.

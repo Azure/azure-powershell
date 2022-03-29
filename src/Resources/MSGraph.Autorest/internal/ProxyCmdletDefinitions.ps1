@@ -20,13 +20,9 @@ Invoke action addKey
 .Description
 Invoke action addKey
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IPaths17CrvdcApplicationsApplicationIdMicrosoftGraphAddkeyPostRequestbodyContentApplicationJsonSchema
@@ -214,13 +210,9 @@ Invoke action addPassword
 .Description
 Invoke action addPassword
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IPaths141Ryo0ApplicationsApplicationIdMicrosoftGraphAddpasswordPostRequestbodyContentApplicationJsonSchema
@@ -373,13 +365,9 @@ Invoke action addKey
 .Description
 Invoke action addKey
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IPathsN3Fx9GServiceprincipalsServiceprincipalIdMicrosoftGraphAddkeyPostRequestbodyContentApplicationJsonSchema
@@ -567,13 +555,9 @@ Invoke action addPassword
 .Description
 Invoke action addPassword
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IPathsIeboplServiceprincipalsServiceprincipalIdMicrosoftGraphAddpasswordPostRequestbodyContentApplicationJsonSchema
@@ -728,13 +712,13 @@ The directoryObject type is the base type for many other directory entity types.
 Represents an Azure Active Directory object.
 The directoryObject type is the base type for many other directory entity types.
 .Example
-PS C:\> Get-AzADApplication -DisplayName $appname
+Get-AzADApplication -DisplayName $appname
 .Example
-PS C:\> Get-AzADApplication -First 10
+Get-AzADApplication -First 10
 .Example
-PS C:\> Get-AzADApplication -DisplayNameStartsWith $prefix
+Get-AzADApplication -DisplayNameStartsWith $prefix
 .Example
-PS C:\> Get-AzADapplication -ObjectId $id -Select Tags -AppendSelected
+Get-AzADapplication -ObjectId $id -Select Tags -AppendSelected
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
@@ -908,9 +892,9 @@ HTTP Methods: GET (supported for all groups), POST (supported for security group
 Nullable.
 Supports $expand.
 .Example
-PS C:\> Get-AzADGroupMember -GroupDisplayName $name
+Get-AzADGroupMember -GroupDisplayName $name
 .Example
-PS C:\> Get-AzADGroup -DisplayName $name | Get-AzADGroupMember
+Get-AzADGroup -DisplayName $name | Get-AzADGroupMember
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject
@@ -1078,11 +1062,11 @@ The directoryObject type is the base type for many other directory entity types.
 Represents an Azure Active Directory object.
 The directoryObject type is the base type for many other directory entity types.
 .Example
-PS C:\> Get-AzADGroup -DisplayName $gname
+Get-AzADGroup -DisplayName $gname
 .Example
-PS C:\> Get-AzADGroup -First 10
+Get-AzADGroup -First 10
 .Example
-PS C:\> Get-AzADGroup -ObjectId $id -Select groupTypes -AppendSelected
+Get-AzADGroup -ObjectId $id -Select groupTypes -AppendSelected
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup
@@ -1252,15 +1236,15 @@ The directoryObject type is the base type for many other directory entity types.
 Represents an Azure Active Directory object.
 The directoryObject type is the base type for many other directory entity types.
 .Example
-PS C:\> Get-AzADServicePrincipal -DisplayName $name
+Get-AzADServicePrincipal -DisplayName $name
 .Example
-PS C:\> Get-AzADServicePrincipal -DisplayNameStartsWith $prefix
+Get-AzADServicePrincipal -DisplayNameStartsWith $prefix
 .Example
-PS C:\> Get-AzADServicePrincipal -First 10 -Select Tags -AppendSelected
+Get-AzADServicePrincipal -First 10 -Select Tags -AppendSelected
 .Example
-PS C:\> Get-AzADServicePrincipal -ApplicationId $appId
+Get-AzADServicePrincipal -ApplicationId $appId
 .Example
-PS C:\> Get-AzADApplication -DisplayName $name | Get-AzADServicePrincipal
+Get-AzADApplication -DisplayName $name | Get-AzADServicePrincipal
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal
@@ -1428,13 +1412,9 @@ Represents current signed-in user object.
 .Description
 Represents current signed-in user object.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser
@@ -1550,11 +1530,11 @@ Represents an Azure Active Directory user object.
 .Description
 Represents an Azure Active Directory user object.
 .Example
-PS C:\> Get-AzADUser -SignedIn
+Get-AzADUser -SignedIn
 .Example
-PS C:\> Get-AzADUser -First 10 -Select 'City' -AppendSelected
+Get-AzADUser -First 10 -Select 'City' -AppendSelected
 .Example
-PS C:\> Get-AzADUser -DisplayName $name
+Get-AzADUser -DisplayName $name
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser
@@ -1722,7 +1702,7 @@ Add new entity to applications
 .Description
 Add new entity to applications
 .Example
-PS C:\> New-AzADApplication -SigninAudience AzureADandPersonalMicrosoftAccount
+New-AzADApplication -SigninAudience AzureADandPersonalMicrosoftAccount
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
@@ -2356,13 +2336,9 @@ HTTP Methods: GET (supported for all groups), POST (supported for security group
 Nullable.
 Supports $expand.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 System.Collections.Hashtable
@@ -2492,7 +2468,7 @@ Add new entity to groups
 .Description
 Add new entity to groups
 .Example
-PS C:\> New-AzADGroup -DisplayName $gname -MailNickname $nickname
+New-AzADGroup -DisplayName $gname -MailNickname $nickname
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup
@@ -2861,11 +2837,11 @@ Add new entity to servicePrincipals
 .Description
 Add new entity to servicePrincipals
 .Example
-PS C:\> New-AzADServicePrincipal
+New-AzADServicePrincipal
 .Example
-PS C:\> New-AzADServicePrincipal -ApplicationId $appid
+New-AzADServicePrincipal -ApplicationId $appid
 .Example
-PS C:\> New-AzADServicePrincipal -DisplayName $name
+New-AzADServicePrincipal -DisplayName $name
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal
@@ -3548,8 +3524,8 @@ Add new entity to users
 .Description
 Add new entity to users
 .Example
-PS C:\> $pp=New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordProfile" -Property @{Password=$password}
-PS C:\> New-MgUser -DisplayName $uname -PasswordProfile $pp -AccountEnabled -MailNickname $nickname -UserPrincipalName $upn
+$pp=New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordProfile" -Property @{Password=$password}
+New-MgUser -DisplayName $uname -PasswordProfile $pp -AccountEnabled -MailNickname $nickname -UserPrincipalName $upn
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser
@@ -4096,13 +4072,9 @@ Invoke action removeKey
 .Description
 Invoke action removeKey
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IPathsHxlydaApplicationsApplicationIdMicrosoftGraphRemovekeyPostRequestbodyContentApplicationJsonSchema
@@ -4253,13 +4225,9 @@ Invoke action removePassword
 .Description
 Invoke action removePassword
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IPathsHv033BApplicationsApplicationIdMicrosoftGraphRemovepasswordPostRequestbodyContentApplicationJsonSchema
@@ -4405,9 +4373,9 @@ The directoryObject type is the base type for many other directory entity types.
 Represents an Azure Active Directory object.
 The directoryObject type is the base type for many other directory entity types.
 .Example
-PS C:\> Remove-AzADApplication -DisplayName $name
+Remove-AzADApplication -DisplayName $name
 .Example
-PS C:\> Get-AzADApplication -ObjectId $id | Remove-AzADApplication
+Get-AzADApplication -ObjectId $id | Remove-AzADApplication
 
 .Outputs
 System.Boolean
@@ -4534,13 +4502,9 @@ HTTP Methods: GET (supported for all groups), POST (supported for security group
 Nullable.
 Supports $expand.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Outputs
 System.Boolean
@@ -4662,9 +4626,9 @@ The directoryObject type is the base type for many other directory entity types.
 Represents an Azure Active Directory object.
 The directoryObject type is the base type for many other directory entity types.
 .Example
-PS C:\> Remove-AzADGroup -DisplayName $name
+Remove-AzADGroup -DisplayName $name
 .Example
-PS C:\> Get-AzADGroup -ObjectId $id | Remove-AzADGroup
+Get-AzADGroup -ObjectId $id | Remove-AzADGroup
 
 .Outputs
 System.Boolean
@@ -4785,13 +4749,9 @@ Invoke action removeKey
 .Description
 Invoke action removeKey
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IPaths1UhuhlbServiceprincipalsServiceprincipalIdMicrosoftGraphRemovekeyPostRequestbodyContentApplicationJsonSchema
@@ -4942,13 +4902,9 @@ Invoke action removePassword
 .Description
 Invoke action removePassword
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IPaths1Idoj4GServiceprincipalsServiceprincipalIdMicrosoftGraphRemovepasswordPostRequestbodyContentApplicationJsonSchema
@@ -5094,9 +5050,9 @@ The directoryObject type is the base type for many other directory entity types.
 Represents an Azure Active Directory object.
 The directoryObject type is the base type for many other directory entity types.
 .Example
-PS C:\> Remove-AzADServicePrincipal -DisplayName $name
+Remove-AzADServicePrincipal -DisplayName $name
 .Example
-PS C:\> Get-AzADServicePrincipal -Application $id | Remove-AzADServicePrincipal
+Get-AzADServicePrincipal -Application $id | Remove-AzADServicePrincipal
 
 .Outputs
 System.Boolean
@@ -5217,9 +5173,9 @@ Represents an Azure Active Directory user object.
 .Description
 Represents an Azure Active Directory user object.
 .Example
-PS C:\> Remove-AzADUser -DisplayName $name
+Remove-AzADUser -DisplayName $name
 .Example
-PS C:\> Get-AzADUser -UserPrincipalName $id | Remove-AzADUser
+Get-AzADUser -UserPrincipalName $id | Remove-AzADUser
 
 .Outputs
 System.Boolean
@@ -5342,9 +5298,9 @@ The directoryObject type is the base type for many other directory entity types.
 Represents an Azure Active Directory object.
 The directoryObject type is the base type for many other directory entity types.
 .Example
-PS C:\> Update-AzADApplication -DisplayName $name -HomePage $homepage
+Update-AzADApplication -DisplayName $name -HomePage $homepage
 .Example
-PS C:\> Get-AzADApplication -ObjectId $id | Update-AzADApplication -ReplyUrl $replyurl
+Get-AzADApplication -ObjectId $id | Update-AzADApplication -ReplyUrl $replyurl
 
 .Outputs
 System.Boolean
@@ -5848,13 +5804,9 @@ The directoryObject type is the base type for many other directory entity types.
 Represents an Azure Active Directory object.
 The directoryObject type is the base type for many other directory entity types.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Outputs
 System.Boolean
@@ -6185,9 +6137,9 @@ The directoryObject type is the base type for many other directory entity types.
 Represents an Azure Active Directory object.
 The directoryObject type is the base type for many other directory entity types.
 .Example
-PS C:\> Update-AzADServicePrincipal -DisplayName $name -IdentifierUri $uri
+Update-AzADServicePrincipal -DisplayName $name -IdentifierUri $uri
 .Example
-PS C:\> Get-AzADServicePrincipal -ObjectId $id | Update-AzADServicePrincipal -Note $note
+Get-AzADServicePrincipal -ObjectId $id | Update-AzADServicePrincipal -Note $note
 
 .Outputs
 System.Boolean
@@ -6753,7 +6705,7 @@ Represents an Azure Active Directory user object.
 .Description
 Represents an Azure Active Directory user object.
 .Example
-PS C:\> Update-AzADUser -UPNOrObjectId $upn -City $city
+Update-AzADUser -UPNOrObjectId $upn -City $city
 
 .Outputs
 System.Boolean

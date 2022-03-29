@@ -30,9 +30,9 @@ Delegated permissions under the `oauth2Permissions` property correspond to `Scop
 
 User needs to grant consent via Azure Portal if the permission requires admin consent because Azure PowerShell doesn't support it yet.
 .Example
-PS C:\> Add-AzADAppPermission -ObjectId 9cc74d5e-1162-4b90-8696-65f3d6a3f7d0 -ApiId 00000003-0000-0000-c000-000000000000 -PermissionId 5f8c59db-677d-491f-a6b8-5f174b11ec1d
+Add-AzADAppPermission -ObjectId 9cc74d5e-1162-4b90-8696-65f3d6a3f7d0 -ApiId 00000003-0000-0000-c000-000000000000 -PermissionId 5f8c59db-677d-491f-a6b8-5f174b11ec1d
 .Example
-PS C:\> Add-AzADAppPermission -ObjectId 9cc74d5e-1162-4b90-8696-65f3d6a3f7d0 -ApiId 00000003-0000-0000-c000-000000000000 -PermissionId 1138cb37-bd11-4084-a2b7-9f71582aeddb -Type Role
+Add-AzADAppPermission -ObjectId 9cc74d5e-1162-4b90-8696-65f3d6a3f7d0 -ApiId 00000003-0000-0000-c000-000000000000 -PermissionId 1138cb37-bd11-4084-a2b7-9f71582aeddb -Type Role
 
 .Outputs
 System.Boolean
@@ -169,11 +169,11 @@ Adds member to group.
 .Description
 Adds member to group.
 .Example
-PS C:\> $groupid=(Get-AzADGroup -DisplayName $gname).Id
-PS C:\> $members=@()
-PS C:\> $members+=(Get-AzADUser -DisplayName $uname).Id
-PS C:\> $members+=(Get-AzADServicePrincipal -ApplicationId $appid).Id
-PS C:\> Add-AzADGroupMember -TargetGroupObjectId $groupid MemberObjectId $members
+$groupid=(Get-AzADGroup -DisplayName $gname).Id
+$members=@()
+$members+=(Get-AzADUser -DisplayName $uname).Id
+$members+=(Get-AzADServicePrincipal -ApplicationId $appid).Id
+Add-AzADGroupMember -TargetGroupObjectId $groupid MemberObjectId $members
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphGroup
@@ -373,7 +373,7 @@ Lists key credentials and password credentials for an application.
 .Description
 Lists key credentials and password credentials for an application.
 .Example
-PS C:\> Get-AzADAppCredential -DisplayName $name
+Get-AzADAppCredential -DisplayName $name
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
@@ -641,13 +641,13 @@ Lists entities from applications or get entity from applications by key
 .Description
 Lists entities from applications or get entity from applications by key
 .Example
-PS C:\> Get-AzADApplication -DisplayName $appname
+Get-AzADApplication -DisplayName $appname
 .Example
-PS C:\> Get-AzADApplication -First 10
+Get-AzADApplication -First 10
 .Example
-PS C:\> Get-AzADApplication -DisplayNameStartsWith $prefix
+Get-AzADApplication -DisplayNameStartsWith $prefix
 .Example
-PS C:\> Get-AzADapplication -ObjectId $id -Select Tags -AppendSelected
+Get-AzADapplication -ObjectId $id -Select Tags -AppendSelected
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
@@ -839,12 +839,7 @@ Lists API permissions the application has requested.
 .Description
 Lists API permissions the application has requested.
 .Example
-PS C:\> Get-AzADAppPermission -ObjectId 18797549-86a9-4906-b2a9-54f08cd3c427
-
-ApiId                                Id                                   Type
------                                --                                   ----
-00000003-0000-0000-c000-000000000000 df021288-bdef-4463-88db-98f22de89214 Scope
-00000003-0000-0000-c000-000000000000 5b567255-7703-4780-807c-7be8301ae99b Scope
+Get-AzADAppPermission -ObjectId 18797549-86a9-4906-b2a9-54f08cd3c427
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.MicrosoftGraphApplicationApiPermission
@@ -960,11 +955,11 @@ Lists entities from groups or get entity from groups by key
 .Description
 Lists entities from groups or get entity from groups by key
 .Example
-PS C:\> Get-AzADGroup -DisplayName $gname
+Get-AzADGroup -DisplayName $gname
 .Example
-PS C:\> Get-AzADGroup -First 10
+Get-AzADGroup -First 10
 .Example
-PS C:\> Get-AzADGroup -ObjectId $id -Select groupTypes -AppendSelected
+Get-AzADGroup -ObjectId $id -Select groupTypes -AppendSelected
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup
@@ -1151,9 +1146,9 @@ Lists members from group.
 .Description
 Lists members from group.
 .Example
-PS C:\> Get-AzADGroupMember -GroupDisplayName $name
+Get-AzADGroupMember -GroupDisplayName $name
 .Example
-PS C:\> Get-AzADGroup -DisplayName $name | Get-AzADGroupMember
+Get-AzADGroup -DisplayName $name | Get-AzADGroupMember
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup
@@ -1371,15 +1366,15 @@ Lists entities from service principals or get entity from service principals by 
 .Description
 Lists entities from service principals or get entity from service principals by key
 .Example
-PS C:\> Get-AzADServicePrincipal -DisplayName $name
+Get-AzADServicePrincipal -DisplayName $name
 .Example
-PS C:\> Get-AzADServicePrincipal -DisplayNameStartsWith $prefix
+Get-AzADServicePrincipal -DisplayNameStartsWith $prefix
 .Example
-PS C:\> Get-AzADServicePrincipal -First 10 -Select Tags -AppendSelected
+Get-AzADServicePrincipal -First 10 -Select Tags -AppendSelected
 .Example
-PS C:\> Get-AzADServicePrincipal -ApplicationId $appId
+Get-AzADServicePrincipal -ApplicationId $appId
 .Example
-PS C:\> Get-AzADApplication -DisplayName $name | Get-AzADServicePrincipal
+Get-AzADApplication -DisplayName $name | Get-AzADServicePrincipal
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
@@ -1714,7 +1709,7 @@ Lists key credentials and password credentials for an service principal.
 .Description
 Lists key credentials and password credentials for an service principal.
 .Example
-PS C:\> Get-AzADSpCredential -DisplayName $name
+Get-AzADSpCredential -DisplayName $name
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal
@@ -1974,11 +1969,11 @@ Lists entities from users or get entity from users by key
 .Description
 Lists entities from users or get entity from users by key
 .Example
-PS C:\> Get-AzADUser -SignedIn
+Get-AzADUser -SignedIn
 .Example
-PS C:\> Get-AzADUser -First 10 -Select 'City' -AppendSelected
+Get-AzADUser -First 10 -Select 'City' -AppendSelected
 .Example
-PS C:\> Get-AzADUser -DisplayName $name
+Get-AzADUser -DisplayName $name
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser
@@ -2574,7 +2569,7 @@ Adds new entity to applications
 .Description
 Adds new entity to applications
 .Example
-PS C:\> New-AzADApplication -SigninAudience AzureADandPersonalMicrosoftAccount
+New-AzADApplication -SigninAudience AzureADandPersonalMicrosoftAccount
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
@@ -3087,7 +3082,7 @@ Adds new entity to groups
 .Description
 Adds new entity to groups
 .Example
-PS C:\> New-AzADGroup -DisplayName $gname -MailNickname $nickname
+New-AzADGroup -DisplayName $gname -MailNickname $nickname
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup
@@ -3446,11 +3441,11 @@ Adds new entity to servicePrincipals
 .Description
 Adds new entity to servicePrincipals
 .Example
-PS C:\> New-AzADServicePrincipal
+New-AzADServicePrincipal
 .Example
-PS C:\> New-AzADServicePrincipal -ApplicationId $appid
+New-AzADServicePrincipal -ApplicationId $appid
 .Example
-PS C:\> New-AzADServicePrincipal -DisplayName $name
+New-AzADServicePrincipal -DisplayName $name
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
@@ -3727,13 +3722,6 @@ param(
     # The display name for the service principal.
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith), $search, and $orderBy.
     ${DisplayName},
-
-    [Parameter(ParameterSetName='SimpleParameterSet')]
-    [Alias('AppId')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [System.Guid]
-    # The unique identifier for the associated application (its appId property).
-    ${ApplicationId},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -4078,6 +4066,13 @@ param(
     # To construct, see NOTES section for APPLICATIONOBJECT properties and create a hash table.
     ${ApplicationObject},
 
+    [Parameter(ParameterSetName='ApplicationIdParameterSet')]
+    [Alias('AppId')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.Guid]
+    # The unique identifier for the associated application (its appId property).
+    ${ApplicationId},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
@@ -4139,6 +4134,7 @@ begin {
             DisplayNameWithKeyCredentialParameterSet = 'Az.MSGraph.custom\New-AzADServicePrincipal';
             DisplayNameWithPasswordCredentialParameterSet = 'Az.MSGraph.custom\New-AzADServicePrincipal';
             ApplicationObjectParameterSet = 'Az.MSGraph.custom\New-AzADServicePrincipal';
+            ApplicationIdParameterSet = 'Az.MSGraph.custom\New-AzADServicePrincipal';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -4174,14 +4170,14 @@ Creates key credentials or password credentials for an service principal.
 .Description
 Creates key credentials or password credentials for an service principal.
 .Example
-PS C:\> $credential = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential" `
+$credential = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential" `
                                  -Property @{'Key' = $cert;
                                  'Usage'       = 'Verify'; 
                                  'Type'        = 'AsymmetricX509Cert'
                                  }
-PS C:\> New-AzADSpCredential -ObjectId $Id -KeyCredentials $credential
+New-AzADSpCredential -ObjectId $Id -KeyCredentials $credential
 .Example
-PS C:\> Get-AzADServicePrincipal -ApplicationId $appId | New-AzADSpCredential -StartDate $startDate -EndDate $endDate
+Get-AzADServicePrincipal -ApplicationId $appId | New-AzADSpCredential -StartDate $startDate -EndDate $endDate
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal
@@ -4523,8 +4519,8 @@ Adds new entity to users
 .Description
 Adds new entity to users
 .Example
-PS C:\> $pp=New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordProfile" -Property @{Password=$password}
-PS C:\> New-MgUser -DisplayName $uname -PasswordProfile $pp -AccountEnabled -MailNickname $nickname -UserPrincipalName $upn
+$pp=New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordProfile" -Property @{Password=$password}
+New-MgUser -DisplayName $uname -PasswordProfile $pp -AccountEnabled -MailNickname $nickname -UserPrincipalName $upn
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser
@@ -5019,9 +5015,9 @@ Removes key credentials or password credentials for an application.
 .Description
 Removes key credentials or password credentials for an application.
 .Example
-PS C:\> Remove-AzADAppCredential -DisplayName $name -KeyId $keyid
+Remove-AzADAppCredential -DisplayName $name -KeyId $keyid
 .Example
-PS C:\> Get-AzADApplication -DisplayName $name | Remove-AzADAppCredential
+Get-AzADApplication -DisplayName $name | Remove-AzADAppCredential
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
@@ -5299,9 +5295,9 @@ Deletes entity from applications
 .Description
 Deletes entity from applications
 .Example
-PS C:\> Remove-AzADApplication -DisplayName $name
+Remove-AzADApplication -DisplayName $name
 .Example
-PS C:\> Get-AzADApplication -ObjectId $id | Remove-AzADApplication
+Get-AzADApplication -ObjectId $id | Remove-AzADApplication
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
@@ -5573,7 +5569,7 @@ Removes an API permission.
 .Description
 Removes an API permission.
 .Example
-PS C:\> Remove-AzADAppPermission -ObjectId 9cc74d5e-1162-4b90-8696-65f3d6a3f7d0 -PermissionId 5f8c59db-677d-491f-a6b8-5f174b11ec1d
+Remove-AzADAppPermission -ObjectId 9cc74d5e-1162-4b90-8696-65f3d6a3f7d0 -PermissionId 5f8c59db-677d-491f-a6b8-5f174b11ec1d
 
 .Outputs
 System.Boolean
@@ -5696,9 +5692,9 @@ Deletes entity from groups.
 .Description
 Deletes entity from groups.
 .Example
-PS C:\> Remove-AzADGroup -DisplayName $name
+Remove-AzADGroup -DisplayName $name
 .Example
-PS C:\> Get-AzADGroup -ObjectId $id | Remove-AzADGroup
+Get-AzADGroup -ObjectId $id | Remove-AzADGroup
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup
@@ -5890,10 +5886,10 @@ HTTP Methods: GET (supported for all groups), POST (supported for security group
 Nullable.
 Supports $expand.
 .Example
-PS C:\> $members = @()
-PS C:\> $members += (Get-AzADUser -DisplayName $uname).Id
-PS C:\> $members += (Get-AzADServicePrincipal -ApplicationId $appid).Id
-PS C:\> Get-AzADGroupMember -DisplayName $gname | Remove-AzADGroupMember -MemberObjectId $member
+$members = @()
+$members += (Get-AzADUser -DisplayName $uname).Id
+$members += (Get-AzADServicePrincipal -ApplicationId $appid).Id
+Get-AzADGroupMember -DisplayName $gname | Remove-AzADGroupMember -MemberObjectId $member
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphGroup
@@ -6094,9 +6090,9 @@ Deletes entity from service principal.
 .Description
 Deletes entity from service principal.
 .Example
-PS C:\> Remove-AzADServicePrincipal -DisplayName $name
+Remove-AzADServicePrincipal -DisplayName $name
 .Example
-PS C:\> Get-AzADServicePrincipal -Application $id | Remove-AzADServicePrincipal
+Get-AzADServicePrincipal -Application $id | Remove-AzADServicePrincipal
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
@@ -6512,9 +6508,9 @@ Removes key credentials or password credentials for an service principal.
 .Description
 Removes key credentials or password credentials for an service principal.
 .Example
-PS C:\> Remove-AzADSpCredential -DisplayName $name -KeyId $keyid
+Remove-AzADSpCredential -DisplayName $name -KeyId $keyid
 .Example
-PS C:\> Get-AzADServicePrincipal -DisplayName $name | Remove-AzADSpCredential
+Get-AzADServicePrincipal -DisplayName $name | Remove-AzADSpCredential
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal
@@ -6784,9 +6780,9 @@ Deletes entity from users.
 .Description
 Deletes entity from users.
 .Example
-PS C:\> Remove-AzADUser -DisplayName $name
+Remove-AzADUser -DisplayName $name
 .Example
-PS C:\> Get-AzADUser -UserPrincipalName $id | Remove-AzADUser
+Get-AzADUser -UserPrincipalName $id | Remove-AzADUser
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser
@@ -6991,9 +6987,9 @@ Updates entity in applications
 .Description
 Updates entity in applications
 .Example
-PS C:\> Update-AzADApplication -DisplayName $name -HomePage $homepage
+Update-AzADApplication -DisplayName $name -HomePage $homepage
 .Example
-PS C:\> Get-AzADApplication -ObjectId $id | Update-AzADApplication -ReplyUrl $replyurl
+Get-AzADApplication -ObjectId $id | Update-AzADApplication -ReplyUrl $replyurl
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
@@ -7589,9 +7585,9 @@ Updates entity in service principal
 .Description
 Updates entity in service principal
 .Example
-PS C:\> Update-AzADServicePrincipal -DisplayName $name -IdentifierUri $uri
+Update-AzADServicePrincipal -DisplayName $name -IdentifierUri $uri
 .Example
-PS C:\> Get-AzADServicePrincipal -ObjectId $id | Update-AzADServicePrincipal -Note $note
+Get-AzADServicePrincipal -ObjectId $id | Update-AzADServicePrincipal -Note $note
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal
@@ -8294,7 +8290,7 @@ Updates entity in users
 .Description
 Updates entity in users
 .Example
-PS C:\> Update-AzADUser -UPNOrObjectId $upn -City $city
+Update-AzADUser -UPNOrObjectId $upn -City $city
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser

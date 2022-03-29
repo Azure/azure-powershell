@@ -22,7 +22,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeyVault", "..\KeyVault\KeyVault\KeyVault.csproj", "{7A4B0770-E6C4-479F-9EF4-6C549F217B3C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ManagedServiceIdentity", "..\ManagedServiceIdentity\ManagedServiceIdentity\ManagedServiceIdentity.csproj", "{7626312E-58ED-424B-AE3D-C27B85B54749}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ManagedServiceIdentity", "..\ManagedServiceIdentity\Az.ManagedServiceIdentity.csproj", "{7626312E-58ED-424B-AE3D-C27B85B54749}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -39,7 +39,10 @@ Several parameters (*-Dtu, -DatabaseDtuMin, and -DatabaseDtuMax*) require the va
 
 ### Example 1: Modify properties for an elastic pool
 ```powershell
-PS C:\>Set-AzSqlElasticPool -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool01" -Dtu 1000 -DatabaseDtuMax 100 -DatabaseDtuMin 20
+Set-AzSqlElasticPool -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool01" -Dtu 1000 -DatabaseDtuMax 100 -DatabaseDtuMin 20
+```
+
+```output
 ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/resourcegroup01/providers/Microsoft.Sql/servers/Server01/elasticPools/ElasticPool01
 ResourceGroupName : ResourceGroup01
 ServerName        : Server01
@@ -60,7 +63,10 @@ number of DTUs for the elastic pool to 1000 and sets the minimum and maximum DTU
 
 ### Example 2: Modify the storage max size of an elastic pool
 ```powershell
-PS C:\>Set-AzSqlElasticPool -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool01" -StorageMB 2097152
+Set-AzSqlElasticPool -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool01" -StorageMB 2097152
+```
+
+```output
 ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/resourcegroup01/providers/Microsoft.Sql/servers/Server01/elasticPools/ElasticPool01
 ResourceGroupName : ResourceGroup01
 ServerName        : Server01

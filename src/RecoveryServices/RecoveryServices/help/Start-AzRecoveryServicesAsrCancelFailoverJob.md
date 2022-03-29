@@ -31,7 +31,7 @@ The **Start-AzRecoveryServicesAsrCancelFailoverJob** cmdlet starts the cancel fa
 
 ### Example 1
 ```powershell
-PS C:\> $currentJob = Start-AzRecoveryServicesAsrCancelFailoverJob -RecoveryPlan $RP
+$currentJob = Start-AzRecoveryServicesAsrCancelFailoverJob -RecoveryPlan $RP
 ```
 
 Starts the cancel failover for the specified recovery plan and returns the ASR job used to track the operation.

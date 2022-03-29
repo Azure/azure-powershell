@@ -34,6 +34,7 @@ Regenerates an access key for the specified configuration store.
 $keys= Get-AzAppConfigurationStoreKey -Name appconfig-test01 -ResourceGroupName azpwsh-manual-test
 New-AzAppConfigurationStoreKey -Name appconfig-test01 -ResourceGroupName azpwsh-manual-test -Id $keys[0].id
 ```
+
 ```output
 ConnectionString                                                                                                                     LastModified        Name      ReadOnly Value
 ----------------                                                                                                                     ------------        ----      -------- -----
@@ -48,6 +49,7 @@ $app= New-AzAppConfigurationStore -Name appconfig-test10 -ResourceGroupName azpw
 $keys= Get-AzAppConfigurationStoreKey -Name appconfig-test01 -ResourceGroupName azpwsh-manual-test
 New-AzAppConfigurationStoreKey -InputObject $app -Id $keys[0].id
 ```
+
 ```output
 ConnectionString                                                                                                                     LastModified        Name      ReadOnly Value
 ----------------                                                                                                                     ------------        ----      -------- -----

@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Purview.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.Extensions;
+    using System;
 
     /// <summary>Gets a list of privately linkable resources for an account</summary>
     /// <remarks>
@@ -32,6 +33,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purview.Cmdlets
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
+
+        /// <summary>A flag to tell whether it is the first onOK call.</summary>
+        private bool _isFirst = true;
+
+        /// <summary>Link to retrieve next page.</summary>
+        private string _nextLink;
 
         /// <summary>Backing field for <see cref="AccountName" /> property.</summary>
         private string _accountName;
@@ -395,13 +402,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purview.Cmdlets
                 // pageable / value / nextLink
                 var result = await response;
                 WriteObject(result.Value,true);
-                if (result.NextLink != null)
+                _nextLink = result.NextLink;
+                if (_isFirst)
                 {
-                    if (responseMessage.RequestMessage is System.Net.Http.HttpRequestMessage requestMessage )
+                    _isFirst = false;
+                    while (_nextLink != null)
                     {
-                        requestMessage = requestMessage.Clone(new global::System.Uri( result.NextLink ),Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.Method.Get );
-                        await ((Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.Events.FollowingNextLink); if( ((Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                        await this.Client.PrivateLinkResourcesListByAccount_Call(requestMessage, onOk, onDefault, this, Pipeline);
+                        if (responseMessage.RequestMessage is System.Net.Http.HttpRequestMessage requestMessage )
+                        {
+                            requestMessage = requestMessage.Clone(new global::System.Uri( _nextLink ),Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.Method.Get );
+                            await ((Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.Events.FollowingNextLink); if( ((Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+                            await this.Client.PrivateLinkResourcesListByAccount_Call(requestMessage, onOk, onDefault, this, Pipeline);
+                        }
                     }
                 }
             }

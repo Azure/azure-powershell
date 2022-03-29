@@ -37,7 +37,10 @@ The **Disable-AzSqlServerActiveDirectoryOnlyAuthentication** cmdlet disables Azu
 
 ### Example 1
 ```powershell
-PS C:\>Disable-AzSqlServerActiveDirectoryOnlyAuthentication -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
+Disable-AzSqlServerActiveDirectoryOnlyAuthentication -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
+```
+
+```output
 ResourceGroupName ServerName AzureADOnlyAuthentication
 ----------------- ---------- ----------- -------- -----------
 ResourceGroup01   Server01   False

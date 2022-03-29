@@ -37,7 +37,10 @@ The **Disable-AzSqlInstanceActiveDirectoryOnlyAuthentication** cmdlet disables A
 
 ### Example 1
 ```powershell
-PS C:\>Disable-AzSqlInstanceActiveDirectoryOnlyAuthentication -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01"
+Disable-AzSqlInstanceActiveDirectoryOnlyAuthentication -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01"
+```
+
+```output
 ResourceGroupName InstanceName        AzureADOnlyAuthentication
 ----------------- ---------- ----------- -------- -----------
 ResourceGroup01   ManagedInstance01   True

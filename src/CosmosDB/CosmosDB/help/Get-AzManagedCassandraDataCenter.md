@@ -5,29 +5,35 @@ online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azm
 schema: 2.0.0
 ---
 
-# Get-AzManagedCassandraDataCenter
+# Get-AzManagedCassandraDatacenter
 
 ## SYNOPSIS
 Gets a Azure Managed Instances for Apache Cassandra data center.
 
 ## SYNTAX
 
-### NameParameterSet (Default)
+### ByNameParameterSet (Default)
 ```
-Get-AzManagedCassandraDataCenter -ResourceGroupName <String> -ClusterName <String> -DataCenterName <String>
+Get-AzManagedCassandraDatacenter -ResourceGroupName <String> -ClusterName <String> [-DataCenterName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ResourceIdParameterSet
+### ByResourceIdParameterSet
 ```
-Get-AzManagedCassandraDataCenter -ResourceId <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzManagedCassandraDatacenter -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
-### ParentObjectParameterSet
+### ByObjectParameterSet
 ```
-Get-AzManagedCassandraDataCenter -ParentObject <PSClusterResource>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzManagedCassandraDatacenter -InputObject <PSDataCenterResource> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### ByParentObjectParameterSet
+```
+Get-AzManagedCassandraDatacenter -ParentObject <PSClusterResource> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,7 +63,7 @@ Name of the managed Cassandra cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: NameParameterSet
+Parameter Sets: ByNameParameterSet
 Aliases:
 
 Required: True
@@ -72,10 +78,10 @@ Name of the managed Cassandra data center.
 
 ```yaml
 Type: System.String
-Parameter Sets: NameParameterSet
+Parameter Sets: ByNameParameterSet
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -97,12 +103,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Managed Cassandra Datacenter object
+
+```yaml
+Type: Microsoft.Azure.Commands.CosmosDB.Models.PSDataCenterResource
+Parameter Sets: ByObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ParentObject
 Managed Cassandra cluster object
 
 ```yaml
 Type: Microsoft.Azure.Commands.CosmosDB.Models.PSClusterResource
-Parameter Sets: ParentObjectParameterSet
+Parameter Sets: ByParentObjectParameterSet
 Aliases:
 
 Required: True
@@ -117,7 +138,7 @@ Name of resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: NameParameterSet
+Parameter Sets: ByNameParameterSet
 Aliases:
 
 Required: True
@@ -132,7 +153,7 @@ Resource id of the managed Cassandra cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceIdParameterSet
+Parameter Sets: ByResourceIdParameterSet
 Aliases:
 
 Required: True

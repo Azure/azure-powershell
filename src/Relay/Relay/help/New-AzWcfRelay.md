@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Relay.dll-Help.xml
 Module Name: Az.Relay
 online version: https://docs.microsoft.com/powershell/module/az.relay/new-azwcfrelay
@@ -32,13 +32,15 @@ The New-AzWcfRelay cmdlet creates a WcfRelay in the specified Relay namespace.
 ## EXAMPLES
 
 ### Example 1 - InputObject
+```powershell
+$getWcfRelay = Get-AzWcfRelay -ResourceGroupName Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -WcfRelayName TestWCFRelay1
+$GetWcfRelay.UserMetadata = "TestWCFRelay2"
+$GetWcfRelay.RequiresClientAuthorization = $False
+$GetWcfRelay.RelayType = "Http"
+New-AzWcfRelay -ResourceGroupName Default-Storage-WestUS -Namespace TestNameSpace-Relay1 -Name TestWCFRelay2 -InputObject
 ```
-PS C:\> $getWcfRelay = Get-AzWcfRelay -ResourceGroupName Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -WcfRelayName TestWCFRelay1
-PS C:\> $GetWcfRelay.UserMetadata = "TestWCFRelay2"
-PS C:\> $GetWcfRelay.RequiresClientAuthorization = $False
-PS C:\> $GetWcfRelay.RelayType = "Http"
-PS C:\> New-AzWcfRelay -ResourceGroupName Default-Storage-WestUS -Namespace TestNameSpace-Relay1 -Name TestWCFRelay2 -InputObject
 
+```output
 RelayType                   : Http
 CreatedAt                   : 4/26/2017 5:14:46 PM
 UpdatedAt                   : 4/26/2017 5:14:46 PM
@@ -56,9 +58,11 @@ Type                        : Microsoft.Relay/WcfRelays
 Creates a new WcfRelay \`TestWCFRelay2\` in the specified Relay namespace \`TestNameSpace-Relay\`.
 
 ### Example 2 - Properties
+```powershell
+New-AzWcfRelay -ResourceGroupName Default-Storage-WestUS -Namespace TestNameSpace-Relay1 -Name TestWCFRelay -WcfRelayType "NetTcp"  -RequiresClientAuthorization $True -RequiresTransportSecurity $True -UserMetadata "User Meta data"
 ```
-PS C:\> New-AzWcfRelay -ResourceGroupName Default-Storage-WestUS -Namespace TestNameSpace-Relay1 -Name TestWCFRelay -WcfRelayType "NetTcp"  -RequiresClientAuthorization $True -RequiresTransportSecurity $True -UserMetadata "User Meta data"
 
+```output
 RelayType                   : NetTcp
 CreatedAt                   : 4/26/2017 5:20:08 PM
 UpdatedAt                   : 4/26/2017 5:20:08 PM
