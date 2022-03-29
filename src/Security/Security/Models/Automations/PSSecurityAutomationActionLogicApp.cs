@@ -14,7 +14,7 @@
 
 namespace Microsoft.Azure.Commands.Security.Models.Automations
 {
-    public class PSSecurityAutomationActionWorkspace : PSSecurityAutomationAction
+    public class PSSecurityAutomationActionLogicApp : PSSecurityAutomationAction
     {
         /// <summary>
         /// Gets or sets the triggered Logic App Azure Resource ID. This can

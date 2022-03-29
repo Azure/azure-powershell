@@ -26,12 +26,12 @@ namespace Microsoft.Azure.Commands.Security.Models.Automations
         /// <summary>
         /// Gets the target Event Hub SAS policy name.
         /// </summary>
-        public string SasPolicyName { get; private set; }
+        public string SasPolicyName { get; set; }
 
         /// <summary>
         /// Gets or sets the target Event Hub connection string (it will not be
         /// included in any response).
         /// </summary>
-        public SecureString ConnectionString { get; set; }
+        public string ConnectionString { get; set; }
     }
 }

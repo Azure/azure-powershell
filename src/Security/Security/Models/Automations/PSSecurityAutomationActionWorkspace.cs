@@ -14,19 +14,12 @@
 
 namespace Microsoft.Azure.Commands.Security.Models.Automations
 {
-    public class PSSecurityAutomationActionLogicApp : PSSecurityAutomationAction
+    public class PSSecurityAutomationActionWorkspace : PSSecurityAutomationAction
     {
         /// <summary>
-        /// Gets or sets the triggered Logic App Azure Resource ID. This can
-        /// also reside on other subscriptions, given that you have permissions
-        /// to trigger the Logic App
+        /// Gets or sets the fully qualified Log Analytics Workspace Azure
+        /// Resource ID.
         /// </summary>
-        public string LogicAppResourceId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Logic App trigger URI endpoint (it will not be
-        /// included in any response).
-        /// </summary>
-        public string Uri { get; set; }
+        public string WorkspaceResourceId { get; set; }
     }
 }
