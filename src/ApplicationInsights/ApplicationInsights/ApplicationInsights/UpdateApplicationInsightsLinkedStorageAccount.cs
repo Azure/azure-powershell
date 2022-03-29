@@ -17,11 +17,13 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.ApplicationInsights.Management.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ApplicationInsights.ApplicationInsights
 {
+    [CmdletOutputBreakingChange(typeof(PSComponentLinkedStorageAccounts), ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20200301Preview.IComponentLinkedStorageAccounts")]
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationInsightsLinkedStorageAccount", DefaultParameterSetName = ByResourceNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSComponentLinkedStorageAccounts))]
     public class UpdateApplicationInsightsLinkedStorageAccount : ApplicationInsightsBaseCmdlet
     {
@@ -51,6 +53,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.ApplicationInsights
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "PSApplicationInsightsComponent")]
+        [CmdletParameterBreakingChange("InputObject", ChangeDescription = "Parameter InputObject will be deprecated in upcoming Az.ApplicationInsights 2.0.0")]
         [ValidateNotNullOrEmpty]
         public PSApplicationInsightsComponent InputObject { get; set; }
 

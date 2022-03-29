@@ -50,6 +50,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.ApplicationInsights
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "PSApplicationInsightsComponent")]
+        [CmdletParameterBreakingChange("InputObject", ChangeDescription = "Parameter InputObject will be deprecated in upcoming Az.ApplicationInsights 2.0.0")]
         [ValidateNotNullOrEmpty]
         public PSApplicationInsightsComponent InputObject { get; set; }
 

@@ -15,10 +15,12 @@
 using Microsoft.Azure.Commands.ApplicationInsights.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ApplicationInsights
 {
+    [CmdletOutputBreakingChange(typeof(PSApplicationInsightsComponent), ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationInsights", DefaultParameterSetName = ResourceGroupParameterSet), OutputType(typeof(PSApplicationInsightsComponent))]
     public class GetApplicationInsightsCommand : ApplicationInsightsBaseCmdlet
     {

@@ -16,11 +16,13 @@ using Microsoft.Azure.Commands.ApplicationInsights.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.ApplicationInsights.Management.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ApplicationInsights
 {
+    [CmdletOutputBreakingChange(typeof(PSApiKey), ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentApiKey")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationInsightsApiKey", DefaultParameterSetName = ComponentNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSApiKey))]
     public class NewAzureApplicationInsightsApiKeyCommand : ApplicationInsightsBaseCmdlet
     {
@@ -31,6 +33,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
             ValueFromPipeline = true,
             HelpMessage = "Application Insights Component Object.")]
         [ValidateNotNull]
+        [CmdletParameterBreakingChange("ApplicationInsightsComponent", ChangeDescription = "Parameter ApplicationInsightsComponent will be deprecated in upcoming Az.ApplicationInsights 2.0.0")]
         public PSApplicationInsightsComponent ApplicationInsightsComponent { get; set; }
 
         [Parameter(

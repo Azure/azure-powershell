@@ -16,10 +16,12 @@ using Microsoft.Azure.Commands.ApplicationInsights.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.ApplicationInsights.Management.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ApplicationInsights
 {
+    [CmdletOutputBreakingChange(typeof(PSPricingPlan), ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentBillingFeatures")]
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationInsightsPricingPlan", DefaultParameterSetName = ComponentNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSPricingPlan))]
     public class SetApplicationInsightsPricingPlanCommand : ApplicationInsightsBaseCmdlet
     {
@@ -29,6 +31,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
             ParameterSetName = ComponentObjectParameterSet,
             ValueFromPipeline = true,
             HelpMessage = "Application Insights Component Object.")]
+        [CmdletParameterBreakingChange("ApplicationInsightsComponent", ChangeDescription = "Parameter ApplicationInsightsComponent will be deprecated in upcoming Az.ApplicationInsights 2.0.0")]
         [ValidateNotNull]
         public PSApplicationInsightsComponent ApplicationInsightsComponent { get; set; }
 

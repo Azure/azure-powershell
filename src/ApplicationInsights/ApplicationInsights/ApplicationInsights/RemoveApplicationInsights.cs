@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.ApplicationInsights.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ApplicationInsights
@@ -29,6 +30,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
             ParameterSetName = ComponentObjectParameterSet,
             ValueFromPipeline = true,
             HelpMessage = "Application Insights Component Object.")]
+        [CmdletParameterBreakingChange("ApplicationInsightsComponent", OldParamaterType = typeof(PSApplicationInsightsComponent), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.ApplicationInsightsComponent")]
         [ValidateNotNull]
         public PSApplicationInsightsComponent ApplicationInsightsComponent { get; set; }
 

@@ -17,11 +17,13 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.ApplicationInsights.Management.Models;
 using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Collections;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ApplicationInsights
 {
+    [CmdletOutputBreakingChange(typeof(PSApplicationInsightsComponent), ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationInsights", SupportsShouldProcess = true), OutputType(typeof(PSApplicationInsightsComponent))]
     public class NewAzureApplicationInsights : ApplicationInsightsBaseCmdlet
     {
