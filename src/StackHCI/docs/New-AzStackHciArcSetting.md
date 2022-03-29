@@ -28,9 +28,9 @@ New-AzStackHciArcSetting -ResourceGroupName "test-rg" -ClusterName "myCluster"
 ```
 
 ```output
-Name
-----
-default
+Name    ResourceGroupName
+----    -----------------
+default test-rg
 ```
 
 This command creates arcSetting for a HCI cluster.

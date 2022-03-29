@@ -40,9 +40,9 @@ Get-AzStackHciArcSetting -ResourceGroupName test-rg -ClusterName myCluster
 ```
 
 ```output
-Name
-----
-default
+Name    ResourceGroupName
+----    -----------------
+default test-rg
 ```
 
 Gets arcSettings in a cluster.

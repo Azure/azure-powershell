@@ -40,9 +40,9 @@ Get-AzStackHciExtension -ResourceGroupName test-rg -ClusterName myCluster -ArcSe
 ```
 
 ```output
-Name
-----
-MicrosoftMonitoringAgent
+Name                     ResourceGroupName
+----                     -----------------
+MicrosoftMonitoringAgent test-rg
 ```
 
 Gets extensions in an arcSetting of a cluster.

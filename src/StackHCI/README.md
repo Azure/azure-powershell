@@ -63,6 +63,8 @@ subject-prefix: $(service-name)
 
 inlining-threshold: 50
 
+resourcegroup-append: true 
+
 directive:
   # Remove the unexpanded parameter set
   - where:
@@ -71,6 +73,11 @@ directive:
   - where:
       verb: Set
       subject: Workspace
+    remove: true
+  # Remove Update-AzStackHciExtension 
+  - where:
+      verb: Update
+      subject: Extension
     remove: true
   # Hide aadClientId from Update-AzStackHCICluster
   - where:

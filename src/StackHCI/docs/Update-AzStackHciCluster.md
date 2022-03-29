@@ -40,9 +40,9 @@ Update-AzStackHciCluster -ResourceGroupName test-rg -Name myCluster3 -DesiredPro
 ```
 
 ```output
-Location Name
--------- ----
-eastus   myCluster3
+Location Name       ResourceGroupName
+-------- ----       -----------------
+eastus   myCluster3 test-rg
 ```
 
 Updating DiagnosticLevel and WindowsServerSubscription values for a cluster.

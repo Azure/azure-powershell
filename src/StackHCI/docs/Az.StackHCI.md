@@ -87,6 +87,3 @@ The registered information available on the cluster is used to unregister the cl
 ### [Update-AzStackHciCluster](Update-AzStackHciCluster.md)
 Update an HCI cluster.
 
-### [Update-AzStackHciExtension](Update-AzStackHciExtension.md)
-Update Extension for HCI cluster.
-

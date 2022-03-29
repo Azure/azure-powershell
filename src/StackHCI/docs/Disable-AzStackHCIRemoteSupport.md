@@ -27,6 +27,12 @@ Any existing support sessions will be terminated, and new sessions can no longer
 Disable-AzStackHCIRemoteSupport
 ```
 
+```output
+Microsoft.AzureStack.Deployment.RemoteSupport is loaded already ...
+Disabling Remote Support.
+Remote Support successfully Disabled.
+```
+
 Disabling Remort support
 
 ## PARAMETERS

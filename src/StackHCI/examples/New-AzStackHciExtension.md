@@ -4,9 +4,9 @@ New-AzStackHciExtension -ArcSettingName "default" -ClusterName "myCluster" -Name
 ```
 
 ```output
-Name
-----
-MicrosoftMonitoringAgent
+Name                     ResourceGroupName
+----                     -----------------
+MicrosoftMonitoringAgent test-rg
 ```
 
 Creates a new arc extension. 
@@ -18,9 +18,9 @@ New-AzStackHciExtension -ArcSettingName "default" -ClusterName "myCluster" -Name
 ```
 
 ```output
-Name
-----
-MicrosoftMonitoringAgent
+Name                     ResourceGroupName
+----                     -----------------
+MicrosoftMonitoringAgent test-rg
 ```
 
 Creates new arc extension with the given parameters 

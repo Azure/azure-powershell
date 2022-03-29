@@ -27,14 +27,13 @@ Enable-AzStackHCIAttestation configures the host and enables specified guests fo
 Enable-AzStackHCIAttestation -AddVM
 ```
 
-Invoking on one of the cluster node.
-
-### Example 2:
-```powershell
-Enable-AzStackHCIAttestation -ComputerName "host1" -AddVM
+```output
+ComputerName  Status Expiration
+------------  ------ ----------
+HCINODE2     Expired
 ```
 
-Invoking from WAC/Management node and adding all existing VMs cluster-wide
+Invoking on one of the cluster node.
 
 ## PARAMETERS
 
