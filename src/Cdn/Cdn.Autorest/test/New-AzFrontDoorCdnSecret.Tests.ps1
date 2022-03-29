@@ -26,12 +26,15 @@ Describe 'New-AzFrontDoorCdnSecret' {
             Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
 
             $profileSku = "Standard_AzureFrontDoor";
-            $frontDoorCdnProfile = New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
+            New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
 
             $secretName = "se-" + (RandomString -allChars $false -len 6);
             Write-Host -ForegroundColor Green "Use secretName : $($secretName)"
 
-            New-AzFrontDoorCdnSecret -Name $secretName -ProfileName $frontDoorCdnProfile -ResourceGroupName $ResourceGroupName `
+            $parameter = New-AzCdnCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate"`
+            -SecretSourceId "/subscriptions/4d894474-aa7f-4611-b830-344860c3eb9c/resourceGroups/powershelltest/providers/Microsoft.KeyVault/vaults/cdn-ps-kv/certificates/cdndevcn2022-0329"
+            
+            New-AzFrontDoorCdnSecret -Name $secretName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Parameter $parameter
         } Finally
         {
             Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
