@@ -15,8 +15,6 @@
 using Commands.Security;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Security.Common;
-using Microsoft.Azure.Commands.Security.Models.AssessmentMetadata;
-using Microsoft.Azure.Commands.Security.Models.Assessments;
 using Microsoft.Azure.Commands.Security.Models.Automations;
 using Microsoft.Azure.Commands.SecurityCenter.Common;
 using System.Management.Automation;
