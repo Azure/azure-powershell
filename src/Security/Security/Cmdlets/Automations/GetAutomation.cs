@@ -31,7 +31,6 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Automations
         public string ResourceGroupName { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceName)]
-        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceName)]
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter("Microsoft.Security/automations", nameof(ResourceGroupName))]
         public string Name { get; set; }
