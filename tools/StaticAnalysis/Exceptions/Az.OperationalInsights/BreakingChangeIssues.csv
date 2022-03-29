@@ -1,7 +1,1 @@
 AssemblyFileName,ClassName,Target,Severity,ProblemId,Description,Remediation
-Az.OperationalInsights,Microsoft.Azure.Commands.OperationalInsights.Workspaces.GetAzureOperationalInsightsDeletedWorkspaceCommand,Get-AzOperationalInsightsDeletedWorkspace,0,1000,the cmdlet has been removed,transition to auto gen code
-Az.OperationalInsights,Microsoft.Azure.Commands.OperationalInsights.Tables.GetAzureOperationalInsightsTableCommand,Get-AzOperationalInsightsTable,0,1000,the cmdlet has been removed,transition to auto gen code
-Az.OperationalInsights,Microsoft.Azure.Commands.OperationalInsights.GetAzureOperationalInsightsWorkspaceCommand,Get-AzOperationalInsightsWorkspace,0,1000,the cmdlet has been removed,transition to auto gen code
-Az.OperationalInsights,Microsoft.Azure.Commands.OperationalInsights.NewAzureOperationalInsightsWorkspaceCommand,New-AzOperationalInsightsWorkspace,0,1000,the cmdlet has been removed,transition to auto gen code
-Az.OperationalInsights,Microsoft.Azure.Commands.OperationalInsights.RemoveAzureOperationalInsightsWorkspaceCommand,Remove-AzOperationalInsightsWorkspace,0,1000,the cmdlet has been removed,transition to auto gen code
-Az.OperationalInsights,Microsoft.Azure.Commands.OperationalInsights.SetAzureOperationalInsightsWorkspaceCommand,Set-AzOperationalInsightsWorkspace,0,1000,the cmdlet has been removed,transition to auto gen code
