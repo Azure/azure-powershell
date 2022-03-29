@@ -10,6 +10,7 @@ namespace Microsoft.Azure.Management.Compute
 {
     public static partial class VirtualMachinesOperationsExtensions
     {
+        ///*
         public static async Task<VirtualMachineWrapper> CreateOrUpdateWithCustomHeaderAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, VirtualMachineWrapper virtualMachineWrapper, CancellationToken cancellationToken = default(CancellationToken))
         {
             using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, vmName, virtualMachineWrapper.VirtualMachine, virtualMachineWrapper.CustomHeaders, cancellationToken).ConfigureAwait(false))
@@ -29,5 +30,23 @@ namespace Microsoft.Azure.Management.Compute
                 return ret;
             }
         }
+        //*/
+        /*
+        public static async Task<VirtualMachine> CreateOrUpdateWithCustomHeaderAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, VirtualMachineWrapper virtualMachineWrapper, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, vmName, virtualMachineWrapper.VirtualMachine, virtualMachineWrapper.CustomHeaders, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+
+        public static async Task<VirtualMachine> GetVMWrapperAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, InstanceViewTypes? expand = null, CancellationToken cancellationToken = default)
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, vmName, expand, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        */
     }
 }
