@@ -25,6 +25,12 @@
 * Upgraded Compute .NET SDK package reference to version 52.0.0
 * Updated `New-AzSshKey` cmdlet to write file paths to generated keys to the Warning stream instead of the console.
 * Added `vCPUsAvailable` and `vCPUsPerCore` integer parameters to the `New-AzVm`, `New-AzVmConfig`, and `Update-AzVm` cmdlets.
+* `New-AzGallery` can take in `-Permission` parameter to set its sharingProfile property.
+* `Update-AzGallery` can update sharingProfile.
+* New parameter set for the following cmdlets to support Shared Image Gallery Direct Sharing
+    - Get-AzGallery
+    - Get-AzGalleryImageDefinition
+    - Get-AzGalleryImageVersion
 
 ## Version 4.23.0
 * Remove ProvisioningDetails property from PSRestorePoint object.
@@ -146,12 +152,6 @@
     - New-AzDiskUpdateConfig
     - New-AzDiskEncryptionSetConfig
     - Update-AzDiskEncryptionSet
-* `New-AzGallery` can take in `-Permission` parameter to set its sharingProfile property.
-* `Update-AzGallery` can update sharingProfile.
-* New parameter set for the following cmdlets to support Shared Image Gallery Direct Sharing
-    - Get-AzGallery
-    - Get-AzGalleryImageDefinition
-    - Get-AzGalleryImageVersion
 
 ## Version 4.14.0
 * Updated Compute module to use the latest .Net SDK version 47.0.0.
