@@ -45,10 +45,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string ResourceGroupName { get; set; }
 
         [Parameter(
+            Position = 1,
             ParameterSetName = "DefaultParameter",
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         [Parameter(
+            Position = 1,
             ParameterSetName = "RestorePointCollectionId",
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
@@ -56,12 +58,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string Name { get; set; }
 
         [Parameter(
+            Position = 2,
             Mandatory = true,
             ValueFromPipeline = true,
             ParameterSetName = "DefaultParameter")]
+        [Parameter(
+            Position = 2,
+            Mandatory = false,
+            ValueFromPipeline = true,
+            ParameterSetName = "RestorePointCollectionId")]
         public string VmId { get; set; }
 
         [Parameter(
+            Position = 3,
             Mandatory = true,
             ValueFromPipeline = true,
             ParameterSetName = "RestorePointCollectionId")]

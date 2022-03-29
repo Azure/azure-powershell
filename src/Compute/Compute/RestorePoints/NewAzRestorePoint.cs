@@ -39,24 +39,27 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string ResourceGroupName { get; set; }
 
         [Parameter(
+            Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         public string RestorePointCollectionName{ get; set; }
 
         [Parameter(
+            Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         [Alias("RestorePointName")]
         public string Name { get; set; }
 
         [Parameter(
+            Position = 3,
             Mandatory = false,
             ValueFromPipelineByPropertyName = false)]
         public string Location { get; set; }
 
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipeline = true)]
         public string RestorePointId { get; set; }
 
