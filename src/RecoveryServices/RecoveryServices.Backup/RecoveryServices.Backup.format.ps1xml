@@ -79,10 +79,10 @@
             <Label>Name</Label>
             <Width>20</Width>
           </TableColumnHeader>
-		  <TableColumnHeader>
-		    <Label>PolicySubType</Label>
-		    <Width>20</Width>
-   	      </TableColumnHeader>
+			<TableColumnHeader>
+				<Label>PolicySubType</Label>
+				<Width>20</Width>
+			</TableColumnHeader>
           <TableColumnHeader>
             <Label>WorkloadType</Label>
             <Width>18</Width>
@@ -106,9 +106,9 @@
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
-			  <TableColumnItem>
-				<PropertyName>PolicySubType</PropertyName>
-			  </TableColumnItem>
+				<TableColumnItem>
+					<PropertyName>PolicySubType</PropertyName>
+				</TableColumnItem>
               <TableColumnItem>
                 <PropertyName>WorkloadType</PropertyName>
               </TableColumnItem>

@@ -67,8 +67,7 @@ RequiredAssemblies = 'AutoMapper.dll',
                'Microsoft.Azure.Management.RecoveryServices.dll', 
                'Microsoft.Azure.Management.RecoveryServices.SiteRecovery.dll', 
                'System.Configuration.ConfigurationManager.dll', 
-               'TimeZoneConverter.dll',
-               'Microsoft.Azure.Management.Compute'
+               'TimeZoneConverter.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()

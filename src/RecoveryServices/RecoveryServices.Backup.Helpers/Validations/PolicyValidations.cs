@@ -374,10 +374,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     }
                 }
             }
-            else
-            {
-                // SimpleSchedulePolicyV2 hourly validations
-            }
         }
 
         private static void ValidateRetentionAndScheduleDaysOfWeek(List<DayOfWeek> schList, List<DayOfWeek> retList)
