@@ -96,11 +96,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public int PlatformUpdateDomain { get; set; }
 
         [Parameter(
-            Mandatory = false)]
+            Mandatory = false,
+            HelpMessage = "Set the Zone for the VMSS")]
         public string Zone { get; set; }
 
         [Parameter(
-            Mandatory = false)]
+            Mandatory = false,
+            HelpMessage = "Set the Placement Group Id")]
         public string PlacementGroupId { get; set; }
 
         [Parameter(

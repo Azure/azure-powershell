@@ -54,13 +54,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Position = 3,
             Mandatory = false,
-            ValueFromPipelineByPropertyName = false)]
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = "Set the region of the Restore Point")]
         public string Location { get; set; }
 
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipeline = true)]
+            ValueFromPipeline = true,
+            HelpMessage = "ARM Id of the source Restore Point")]
         public string RestorePointId { get; set; }
 
 

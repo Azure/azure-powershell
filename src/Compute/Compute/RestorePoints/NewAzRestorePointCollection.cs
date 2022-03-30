@@ -73,7 +73,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 3,
             Mandatory = true,
             ValueFromPipeline = true,
-            ParameterSetName = "RestorePointCollectionId")]
+            ParameterSetName = "RestorePointCollectionId",
+            HelpMessage = "ARM Id for the source Restore Point Collection")]
         public string RestorePointCollectionId { get; set; }
 
         [Parameter(
@@ -83,7 +84,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             ParameterSetName = "RestorePointCollectionId",
             Mandatory = true,
-            ValueFromPipeline = true)]
+            ValueFromPipeline = true,
+            HelpMessage = "Location of the source Restore Point Collection")]
         public string Location { get; set; }
 
         public override void ExecuteCmdlet()

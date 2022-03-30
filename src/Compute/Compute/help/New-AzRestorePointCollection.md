@@ -14,14 +14,15 @@ Creates a New Restore Point Collection
 
 ### DefaultParameter (Default)
 ```
-New-AzRestorePointCollection [-ResourceGroupName] <String> -Name <String> -VmId <String> [-Location <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzRestorePointCollection [-ResourceGroupName] <String> [-Name] <String> [-VmId] <String>
+ [-Location <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RestorePointCollectionId
 ```
-New-AzRestorePointCollection [-ResourceGroupName] <String> -Name <String> -RestorePointCollectionId <String>
- -Location <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzRestorePointCollection [-ResourceGroupName] <String> [-Name] <String> [[-VmId] <String>]
+ [-RestorePointCollectionId] <String> -Location <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -89,7 +90,7 @@ Parameter Sets: (All)
 Aliases: RestorePointCollectionName
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -119,7 +120,7 @@ Parameter Sets: RestorePointCollectionId
 Aliases:
 
 Required: True
-Position: Named
+Position: 3
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -134,7 +135,19 @@ Parameter Sets: DefaultParameter
 Aliases:
 
 Required: True
-Position: Named
+Position: 2
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: RestorePointCollectionId
+Aliases:
+
+Required: False
+Position: 2
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
