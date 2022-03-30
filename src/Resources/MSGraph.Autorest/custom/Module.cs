@@ -35,11 +35,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                     end = query.Length;
                 }
                 search = query.Substring(start, end - start);
-                
+                // Replace " from previous runs
+                string searchClean = System.Text.RegularExpressions.Regex.Replace(search, "^%22|%22$", "");
                 System.Text.StringBuilder sb = new System.Text.StringBuilder();
                 sb.Append(query.Substring(0, start));
                 sb.Append("\"");
-                sb.Append(search);
+                sb.Append(searchClean);
                 sb.Append("\"");
                 sb.Append(query.Substring(end));
                 System.UriBuilder ub = new System.UriBuilder(request.RequestUri);
