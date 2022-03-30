@@ -49,6 +49,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string BackupManagementType = "The class of resources being protected. Currently the values supported for this cmdlet are ";
             public const string IdentityType = "The MSI type assigned to Recovery Services Vault. Input 'None' if MSI has to be removed."; 
             public const string UseSecondaryReg = "Filters from Secondary Region for Cross Region Restore";
+            public const string HybridBackupSecurity = "Optional flag ($true/$false) to disable/enable security setting for hybrid backups against accidental deletes and add additional layer of authentication for critical operations. Provide $false to enable the security.";
         }
 
         internal static class Policy
@@ -62,6 +63,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string FixForInConsistentItems = "Switch Parameter indicating whether or not to retry Policy Update for failed items.";
             public const string EnableProtectionPolicy = "Protection policy object. If policy ID is not present or the backup item is not associated with any" +
                 " policy, then this command will expect a policyID.";
+            public const string SchedulePolicySubType = "Type of schedule policy to be fetched: Standard, Enhanced";
+            public const string PolicySubType = "Type of policy to be fetched: Standard, Enhanced";
         }
 
         internal static class Job
