@@ -93,7 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### -PlacementGroupId
-{{ Fill PlacementGroupId Description }}
+Placement Group Id of the Vmss
 
 ```yaml
 Type: System.String
@@ -183,7 +183,7 @@ Accept wildcard characters: False
 ```
 
 ### -Zone
-{{ Fill Zone Description }}
+Zone of the Vmss
 
 ```yaml
 Type: System.String
