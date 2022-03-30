@@ -39,6 +39,12 @@ namespace Microsoft.Azure.Commands.Security.Models.Automations
         public string Location { get; set; }
 
         /// <summary>
+        /// Gets or sets the etag.
+        /// </summary>
+        /// <value>
+        public string ETag { get; set; }
+
+        /// <summary>
         /// Gets or sets the resource tags
         /// </summary>
         public IDictionary<string, string> Tags { get; set; }

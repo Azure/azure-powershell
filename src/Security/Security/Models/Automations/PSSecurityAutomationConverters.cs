@@ -36,6 +36,7 @@ namespace Microsoft.Azure.Commands.Security.Models.Automations
                 Name = value.Name,
                 Type = value.Type,
                 Location = value.Location,
+                ETag = value.Etag,
                 Tags = value.Tags,
                 Description = value.Description,
                 IsEnabled = value.IsEnabled,

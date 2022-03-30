@@ -24,8 +24,8 @@ using Microsoft.Azure.Management.Security.Models;
 
 namespace Microsoft.Azure.Commands.Security.Cmdlets.Automations
 {
-    [Cmdlet("Confirm", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityAutomation", DefaultParameterSetName = ParameterSetNames.ResourceGroupLevelResource, SupportsShouldProcess = true), OutputType(typeof(PSSecurityAutomation))]
-    public class ConfirmAutomation : SecurityCenterCmdletBase
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityAutomation", DefaultParameterSetName = ParameterSetNames.ResourceGroupLevelResource, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    public class SetAutomation : SecurityCenterCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceGroupName)]
         [ValidateNotNullOrEmpty]
@@ -114,10 +114,11 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Automations
                 Sources = null,
                 Actions = null
             };
+
             if (ShouldProcess(Name, VerbsCommon.Set))
             {
-                var result = SecurityCenterClient.Automations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, name, automation).GetAwaiter().GetResult().Body;
-                WriteObject(result.ConvertToPSType()); 
+                var result = SecurityCenterClient.Automations.ValidateWithHttpMessagesAsync(resourceGroupName, name, automation).GetAwaiter().GetResult().Body;
+                WriteObject(result?.IsValid ?? false); 
             }
         }
 

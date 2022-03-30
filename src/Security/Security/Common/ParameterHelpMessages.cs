@@ -177,5 +177,16 @@ namespace Microsoft.Azure.Commands.Security.Common
         public const string ForceSetBaseline = "Force set baseline without confirmation";
 
         #endregion
+
+        #region Security Automation
+
+        public const string Etag = "Entity tag is used for comparing two or more entities from the same requested resource";
+        public const string AutomationDescription = "The security automation description";
+        public const string AutomationIsEnabled = "Indicates whether the security automation is enabled";
+        public const string AutomationScopes = "A collection of scopes on which the security automations logic is applied. Supported scopes are the subscription itself or a resource group under that subscription. The automation will only apply on defined scopes";
+        public const string AutomationSources = "A collection of the source event types which evaluate the security automation set of rules";
+        public const string AutomationActions = "A collection of the actions which are triggered if all the configured rules evaluations, within at least one rule set, are true";
+
+        #endregion
     }
 }
