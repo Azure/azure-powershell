@@ -37,8 +37,9 @@ Name        : microsoft.operationalinsights/workspaces/features/{resource_name0}
 Provider    : MicrosoftOperationalInsights
 Resource    : {resource_name1}
 Operation   : 
-Description : 
+Description :
 ```
+
 This command gets all available OperationalInsights Rest API operations by tenant.
 
 ## PARAMETERS

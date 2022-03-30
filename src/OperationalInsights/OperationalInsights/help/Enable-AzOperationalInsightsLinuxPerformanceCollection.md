@@ -44,6 +44,7 @@ ResourceId        : /subscriptions/xxxx-xxxx-xxxx-xxxx-xxxx/resourceGroups/test-
 Kind              : LinuxPerformanceCollection
 Properties        : {"state":"Enabled"}
 ```
+
 Starts collection of performance counters from connected Linux computers in a workspace.
 
 ## PARAMETERS

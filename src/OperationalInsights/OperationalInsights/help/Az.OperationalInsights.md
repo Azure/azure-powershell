@@ -35,6 +35,9 @@ Starts collection of performance counters from Linux computers.
 ### [Enable-AzOperationalInsightsLinuxSyslogCollection](Enable-AzOperationalInsightsLinuxSyslogCollection.md)
 Starts collection of syslog data from Linux computers.
 
+### [Get-AzOperationalInsightsAvailableServiceTier](Get-AzOperationalInsightsAvailableServiceTier.md)
+This command gets all available service tiers for a given worksapce.
+
 ### [Get-AzOperationalInsightsCluster](Get-AzOperationalInsightsCluster.md)
 Get or list clusters
 
@@ -45,10 +48,13 @@ Get or list data exports for workspace.
 Get datasources under Azure Log Analytics workspace.
 
 ### [Get-AzOperationalInsightsDeletedWorkspace](Get-AzOperationalInsightsDeletedWorkspace.md)
-List deleted workspaces.
+Gets recently deleted workspaces in a subscription, available for recovery.
 
 ### [Get-AzOperationalInsightsIntelligencePack](Get-AzOperationalInsightsIntelligencePack.md)
 Gets the available Intelligence Packs.
+
+> [!NOTE]
+> Solutions is being deprecated, please use [az monitor log-analytics solution](https://docs.microsoft.com/en-us/cli/azure/monitor/log-analytics/solution?view=azure-cli-latest) and [Get-AzMonitorLogAnalyticsSolution](https://docs.microsoft.com/en-us/powershell/module/az.monitoringsolutions/get-azmonitorloganalyticssolution?view=azps-5.9.0) instead if this command.
 
 ### [Get-AzOperationalInsightsLinkedService](Get-AzOperationalInsightsLinkedService.md)
 Get or list linked service for workspace
@@ -75,10 +81,10 @@ Returns the schema associated with a workspace.
 Gets information about a Storage Insight.
 
 ### [Get-AzOperationalInsightsTable](Get-AzOperationalInsightsTable.md)
-Get or list tables for workspace.
+Gets a Log Analytics workspace table.
 
 ### [Get-AzOperationalInsightsWorkspace](Get-AzOperationalInsightsWorkspace.md)
-Gets information about a workspace.
+Gets a workspace instance.
 
 ### [Get-AzOperationalInsightsWorkspaceManagementGroup](Get-AzOperationalInsightsWorkspaceManagementGroup.md)
 Gets details of management groups connected to a workspace.
@@ -91,6 +97,9 @@ Gets the usage data for a workspace.
 
 ### [Invoke-AzOperationalInsightsQuery](Invoke-AzOperationalInsightsQuery.md)
 Returns search results based on the specified parameters.
+
+### [Move-AzOperationalInsightsTable](Move-AzOperationalInsightsTable.md)
+Migrate a Log Analytics table from support of the Data Collector API and Custom Fields features to support of Data Collection Rule-based Custom Logs.
 
 ### [New-AzOperationalInsightsApplicationInsightsDataSource](New-AzOperationalInsightsApplicationInsightsDataSource.md)
 Collect logs from given Application-Insights application.
@@ -128,6 +137,12 @@ Creates a new saved search with the specified parameters.
 ### [New-AzOperationalInsightsStorageInsight](New-AzOperationalInsightsStorageInsight.md)
 Creates a Storage Insight inside a workspace.
 
+### [New-AzOperationalInsightsTable](New-AzOperationalInsightsTable.md)
+Update or Create a Log Analytics workspace table.
+
+### [New-AzOperationalInsightsTableColumnObject](New-AzOperationalInsightsTableColumnObject.md)
+Create an in-memory object for Column.
+
 ### [New-AzOperationalInsightsWindowsEventDataSource](New-AzOperationalInsightsWindowsEventDataSource.md)
 Collects event logs from computers that run the Windows operating system.
 
@@ -135,7 +150,7 @@ Collects event logs from computers that run the Windows operating system.
 Adds Windows performance counter data source for connected computers that run the Windows operating system.
 
 ### [New-AzOperationalInsightsWorkspace](New-AzOperationalInsightsWorkspace.md)
-Creates a workspace, or restore a soft-deleted workspace.
+Create or update a workspace.
 
 ### [Remove-AzOperationalInsightsCluster](Remove-AzOperationalInsightsCluster.md)
 Delete cluster
@@ -158,8 +173,14 @@ Removes a saved search from the workspace.
 ### [Remove-AzOperationalInsightsStorageInsight](Remove-AzOperationalInsightsStorageInsight.md)
 Removes a Storage Insight.
 
+### [Remove-AzOperationalInsightsTable](Remove-AzOperationalInsightsTable.md)
+Delete a Log Analytics workspace table.
+
 ### [Remove-AzOperationalInsightsWorkspace](Remove-AzOperationalInsightsWorkspace.md)
-Removes a workspace.
+Deletes a workspace resource.
+To recover the workspace, create it again with the same name, in the same subscription, resource group and location.
+The name is kept for 14 days and cannot be used for another workspace.
+To remove the workspace completely and release the name, use the force flag.
 
 ### [Restore-AzOperationalInsightsWorkspace](Restore-AzOperationalInsightsWorkspace.md)
 Restore a deleted workspace.
@@ -169,6 +190,8 @@ Updates a data source.
 
 ### [Set-AzOperationalInsightsIntelligencePack](Set-AzOperationalInsightsIntelligencePack.md)
 Enables or disables the specified Intelligence Pack.
+> [!NOTE]
+> Solutions is being deprecated, please use [az monitor log-analytics solution](https://docs.microsoft.com/en-us/cli/azure/monitor/log-analytics/solution?view=azure-cli-latest) and [Get-AzMonitorLogAnalyticsSolution](https://docs.microsoft.com/en-us/powershell/module/az.monitoringsolutions/get-azmonitorloganalyticssolution?view=azps-5.9.0) instead if this command.
 
 ### [Set-AzOperationalInsightsLinkedService](Set-AzOperationalInsightsLinkedService.md)
 link service for workspace
@@ -190,6 +213,12 @@ update cluster
 
 ### [Update-AzOperationalInsightsDataExport](Update-AzOperationalInsightsDataExport.md)
 Update data export.
+
+### [Update-AzOperationalInsightsTable](Update-AzOperationalInsightsTable.md)
+Update a Log Analytics workspace table.
+
+### [Update-AzOperationalInsightsWorkspace](Update-AzOperationalInsightsWorkspace.md)
+Updates a workspace.
 
 ### [Update-AzOperationalInsightsWorkspaceSharedKey](Update-AzOperationalInsightsWorkspaceSharedKey.md)
 Regenerates the shared keys for a Log Analytics Workspace. These keys are used to connect Microsoft Operational Insights agents to the workspace.

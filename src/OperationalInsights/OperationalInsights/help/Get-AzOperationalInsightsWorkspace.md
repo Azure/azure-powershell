@@ -1,7 +1,6 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
+external help file: Az.OperationalInsights-help.xml
 Module Name: Az.OperationalInsights
-ms.assetid: F94415DA-1A4A-4D37-A626-1EDF5D1EFE74
 online version: https://docs.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightsworkspace
 schema: 2.0.0
 ---
@@ -9,39 +8,74 @@ schema: 2.0.0
 # Get-AzOperationalInsightsWorkspace
 
 ## SYNOPSIS
-Gets information about a workspace.
+Gets a workspace instance.
 
 ## SYNTAX
 
+### List (Default)
 ```
-Get-AzOperationalInsightsWorkspace [[-ResourceGroupName] <String>] [[-Name] <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzOperationalInsightsWorkspace [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzOperationalInsightsWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzOperationalInsightsWorkspace -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzOperationalInsightsWorkspace -InputObject <IOperationalInsightsIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzOperationalInsightsWorkspace** cmdlet gets information about an existing workspace.
-If you specify a workspace name, this cmdlet gets information about that workspace.
-If you do not specify a name, this cmdlet gets information about all workspaces in a resource group.
-If you do not specify a name and resource group, this cmdlet gets information about all workspaces in a subscription.
+Gets a workspace instance.
 
 ## EXAMPLES
 
-### Example 1: Get a workspace by name
+### Example 1: Get a worksapce by resource group and worksapce name
 ```powershell
-Get-AzOperationalInsightsWorkspace -Name "MyWorkspace" -ResourceGroupName "ContosoResourceGroup"
+Get-AzOperationalInsightsWorkspace -name {WS_Name} -ResourceGroupName {RG_Name}
+
+
+Location Name             ETag
+-------- ----             ----
+eastus   WS_Name
 ```
 
-This command gets a workspace named MyWorkspace in the resource group named ContosoResourceGroup.
+Get a Log-Analytics workspace
+
+### Example 2: List all worksapces for a given resource group name
+```powershell
+Get-AzOperationalInsightsWorkspace  -ResourceGroupName {RG_Name}
+
+
+Location    Name                        ETag
+--------    ----                        ----
+eastus      WS_Name1
+eastus      WS_Name2
+eastus      WS_Name3
+```
+
+List al Log-Analytics workspaces for a given resource group name
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -50,33 +84,65 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.Models.IOperationalInsightsIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
-Specifies the workspace name.
+The name of the workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
+Parameter Sets: Get
+Aliases: WorkspaceName
 
-Required: False
-Position: 1
+Required: True
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of an Azure resource group.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get, List1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+
+```yaml
+Type: System.String[]
+Parameter Sets: List, Get, List1
 Aliases:
 
 Required: False
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -85,16 +151,26 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.Models.IOperationalInsightsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace
+### Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.Models.Api20211201Preview.IWorkspace
 
 ## NOTES
 
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+INPUTOBJECT <IOperationalInsightsIdentity>: Identity Parameter
+  - `[Id <String>]`: Resource identity path
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
+  - `[TableName <String>]`: The name of the table.
+  - `[WorkspaceName <String>]`: The name of the workspace.
+
 ## RELATED LINKS
-
-[Azure Operational Insights Cmdlets](./Az.OperationalInsights.md)
-
-
