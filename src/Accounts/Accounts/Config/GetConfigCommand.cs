@@ -57,7 +57,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
         private ConfigFilter CreateConfigFilter()
         {
             ConfigFilter filter = new ConfigFilter() { AppliesTo = AppliesTo };
-            IEnumerable<string> configKeysFromInput = GetConfigsSpecifiedByUser().Where(x => (bool)x.Value).Select(x => x.Key);
+            IEnumerable<string> configKeysFromInput = GetConfigsSpecifiedByUser()
+                .Where(x => (SwitchParameter)x.Value)
+                .Select(x => x.Key);
             if (configKeysFromInput.Any())
             {
                 filter.Keys = configKeysFromInput;

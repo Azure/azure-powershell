@@ -78,7 +78,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
 
         private void ClearConfigByKey()
         {
-            IEnumerable<string> configKeysFromInput = GetConfigsSpecifiedByUser().Where(x => (bool)x.Value).Select(x => x.Key);
+            IEnumerable<string> configKeysFromInput = GetConfigsSpecifiedByUser()
+                .Where(x => (SwitchParameter)x.Value)
+                .Select(x => x.Key);
             if (!configKeysFromInput.Any())
             {
                 WriteWarning($"Please specify the key(s) of the configs to clear. Run `help {MyInvocation.MyCommand.Name}` for more information.");
