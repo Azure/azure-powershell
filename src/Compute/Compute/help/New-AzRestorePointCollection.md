@@ -112,7 +112,7 @@ Accept wildcard characters: False
 ```
 
 ### -RestorePointCollectionId
-{{ Fill RestorePointCollectionId Description }}
+ARM Id of Source RestorePoint Collection
 
 ```yaml
 Type: System.String
