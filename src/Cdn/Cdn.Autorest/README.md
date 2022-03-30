@@ -110,6 +110,11 @@ directive:
   - where:
       verb: Set
     remove: true
+  # Remove some cmdlets' ViaIdentity which are inconvinient to call
+  - where:
+      variant: ^CheckViaIdentity$|^CheckViaIdentityExpanded$
+      subject: ^NameAvailability$|^EndpointNameAvailability$
+    remove: true
 
   # Hide Cdn profile
   - where:
@@ -149,7 +154,11 @@ directive:
       subject: SecurityPolicy
     set:
       subject-prefix: FrontDoorCdn
-      subject: SecurityPolicy   
+      subject: SecurityPolicy  
+  - where:
+      subject: EndpointNameAvailability
+    set:
+      subject-prefix: FrontDoorCdn
 
   # https://github.com/Azure/autorest.powershell/issues/906
   - where:

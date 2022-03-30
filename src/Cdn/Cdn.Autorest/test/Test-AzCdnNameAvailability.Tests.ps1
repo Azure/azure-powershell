@@ -15,27 +15,157 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzCdnNameAvailability'))
 }
 
 Describe 'Test-AzCdnNameAvailability' {
-    It 'CheckExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CheckExpanded' {
+        { 
+            $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
+            try
+            {
+                Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
+                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
+
+                $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
+                Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
+
+                $profileSku = "Standard_Microsoft";
+                New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
+                
+                $endpointName = 'e-' + (RandomString -allChars $false -len 6);
+                $origin = @{
+                    Name = "origin1"
+                    HostName = "host1.hello.com"
+                };
+                $location = "westus"
+                $resourceType = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ResourceType]::MicrosoftCdnProfilesEndpoints
+                Write-Host -ForegroundColor Green "Create endpointName : $($endpointName), origin.Name : $($origin.Name), origin.HostName : $($origin.HostName)"
+                
+                $nameAvailability = Test-AzCdnNameAvailability -Name $endpointName -Type $resourceType
+                $nameAvailability.NameAvailable | Should -BeTrue
+
+                New-AzCdnEndpoint -Name $endpointName -ResourceGroupName $ResourceGroupName -ProfileName $cdnProfileName -Location $location -Origin $origin
+                $nameAvailability = Test-AzCdnNameAvailability -Name $endpointName -Type $resourceType
+                $nameAvailability.NameAvailable | Should -BeFalse
+            } Finally
+            {
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            }
+        } | Should -Not -Throw
     }
 
-    It 'CheckExpanded1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CheckExpanded1' {
+        { 
+            $subId = $env.SubscriptionId
+            $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
+            try
+            {
+                Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
+                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
+
+                $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
+                Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
+
+                $profileSku = "Standard_Microsoft";
+                New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
+                
+                $endpointName = 'e-' + (RandomString -allChars $false -len 6);
+                $origin = @{
+                    Name = "origin1"
+                    HostName = "host1.hello.com"
+                };
+                $location = "westus"
+                $resourceType = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ResourceType]::MicrosoftCdnProfilesEndpoints
+                Write-Host -ForegroundColor Green "Create endpointName : $($endpointName), origin.Name : $($origin.Name), origin.HostName : $($origin.HostName)"
+                
+                $nameAvailability = Test-AzCdnNameAvailability -Name $endpointName -Type $resourceType -SubscriptionId $subId
+                $nameAvailability.NameAvailable | Should -BeTrue
+
+                New-AzCdnEndpoint -Name $endpointName -ResourceGroupName $ResourceGroupName -ProfileName $cdnProfileName -Location $location -Origin $origin
+                $nameAvailability = Test-AzCdnNameAvailability -Name $endpointName -Type $resourceType -SubscriptionId $subId
+                $nameAvailability.NameAvailable | Should -BeFalse
+            } Finally
+            {
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            }
+        } | Should -Not -Throw
     }
 
-    It 'Check1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Check1' {
+        { 
+            $subId = $env.SubscriptionId
+            $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
+            try
+            {
+                Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
+                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
+
+                $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
+                Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
+
+                $profileSku = "Standard_Microsoft";
+                New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
+                
+                $endpointName = 'e-' + (RandomString -allChars $false -len 6);
+                $origin = @{
+                    Name = "origin1"
+                    HostName = "host1.hello.com"
+                };
+                $location = "westus"
+                Write-Host -ForegroundColor Green "Create endpointName : $($endpointName), origin.Name : $($origin.Name), origin.HostName : $($origin.HostName)"
+                
+                $resourceType = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ResourceType]::MicrosoftCdnProfilesEndpoints
+                $checkNameAvailabilityInput = @{
+                    Name = $endpointName
+                    Type = $resourceType
+                }
+                $nameAvailability = Test-AzCdnNameAvailability -CheckNameAvailabilityInput $checkNameAvailabilityInput -SubscriptionId $subId
+                $nameAvailability.NameAvailable | Should -BeTrue
+
+                New-AzCdnEndpoint -Name $endpointName -ResourceGroupName $ResourceGroupName -ProfileName $cdnProfileName -Location $location -Origin $origin
+                $nameAvailability = Test-AzCdnNameAvailability -CheckNameAvailabilityInput $checkNameAvailabilityInput -SubscriptionId $subId
+                $nameAvailability.NameAvailable | Should -BeFalse
+            } Finally
+            {
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            }
+        } | Should -Not -Throw
     }
 
-    It 'CheckViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'Check' {
+        { 
+            $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
+            try
+            {
+                Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
+                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
 
-    It 'CheckViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+                $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
+                Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
 
-    It 'Check' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+                $profileSku = "Standard_Microsoft";
+                New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
+                
+                $endpointName = 'e-' + (RandomString -allChars $false -len 6);
+                $origin = @{
+                    Name = "origin1"
+                    HostName = "host1.hello.com"
+                };
+                $location = "westus"
+                Write-Host -ForegroundColor Green "Create endpointName : $($endpointName), origin.Name : $($origin.Name), origin.HostName : $($origin.HostName)"
+                
+                $resourceType = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ResourceType]::MicrosoftCdnProfilesEndpoints
+                $checkNameAvailabilityInput = @{
+                    Name = $endpointName
+                    Type = $resourceType
+                }
+                $nameAvailability = Test-AzCdnNameAvailability -CheckNameAvailabilityInput $checkNameAvailabilityInput
+                $nameAvailability.NameAvailable | Should -BeTrue
+
+                New-AzCdnEndpoint -Name $endpointName -ResourceGroupName $ResourceGroupName -ProfileName $cdnProfileName -Location $location -Origin $origin
+                $nameAvailability = Test-AzCdnNameAvailability -CheckNameAvailabilityInput $checkNameAvailabilityInput
+                $nameAvailability.NameAvailable | Should -BeFalse
+            } Finally
+            {
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            }
+        } | Should -Not -Throw
     }
 }

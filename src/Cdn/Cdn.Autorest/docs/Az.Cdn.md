@@ -341,10 +341,6 @@ Stops an existing running CDN endpoint.
 ### [Test-AzCdnEndpointCustomDomain](Test-AzCdnEndpointCustomDomain.md)
 Validates the custom domain mapping to ensure it maps to the correct CDN endpoint in DNS.
 
-### [Test-AzCdnEndpointNameAvailability](Test-AzCdnEndpointNameAvailability.md)
-Check the availability of a resource name.
-This is needed for resources where name is globally unique, such as a afdx endpoint.
-
 ### [Test-AzCdnNameAvailability](Test-AzCdnNameAvailability.md)
 Check the availability of a resource name.
 This is needed for resources where name is globally unique, such as a CDN endpoint.
@@ -356,6 +352,10 @@ This path is relative to the origin path specified in the endpoint configuration
 
 ### [Test-AzFrontDoorCdnEndpointCustomDomain](Test-AzFrontDoorCdnEndpointCustomDomain.md)
 Validates the custom domain mapping to ensure it maps to the correct CDN endpoint in DNS.
+
+### [Test-AzFrontDoorCdnEndpointNameAvailability](Test-AzFrontDoorCdnEndpointNameAvailability.md)
+Check the availability of a resource name.
+This is needed for resources where name is globally unique, such as a afdx endpoint.
 
 ### [Test-AzFrontDoorCdnProfileHostNameAvailability](Test-AzFrontDoorCdnProfileHostNameAvailability.md)
 Validates the custom domain mapping to ensure it maps to the correct CDN endpoint in DNS.
