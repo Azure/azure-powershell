@@ -62,7 +62,7 @@ function New-AzHealthcareIotConnector {
         # The subscription identifier.
         ${SubscriptionId},
 
-        [Parameter()]
+        [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IIotMappingPropertiesContent]))]
         [System.Collections.Hashtable]
@@ -91,19 +91,19 @@ function New-AzHealthcareIotConnector {
         # The dictionary values can be empty objects ({}) in requests.
         ${IdentityUserAssignedIdentity},
 
-        [Parameter()]
+        [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
         [System.String]
         # Consumer group of the event hub to connected to.
         ${IngestionEndpointConfigurationConsumerGroup},
 
-        [Parameter()]
+        [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
         [System.String]
         # Event Hub name to connect to.
         ${IngestionEndpointConfigurationEventHubName},
 
-        [Parameter()]
+        [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
         [System.String]
         # Fully qualified namespace of the Event Hub to connect to.
