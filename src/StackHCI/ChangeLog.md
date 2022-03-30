@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Firewall rules for Attestation network to block all other traffic
+* Changes so Cluster ignores Attestation network
 
 ## Version 1.1.0
 * Adding support cmdlet for Remote Support 
