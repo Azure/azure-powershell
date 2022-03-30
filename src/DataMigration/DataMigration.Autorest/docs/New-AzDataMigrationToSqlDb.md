@@ -31,27 +31,31 @@ Create or Update Database Migration resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Start a Database Migration from the on-premise Source Sql Server to target Sql Db
 ```powershell
-{{ Add code here }}
+New-AzDataMigrationToSqlDb -ResourceGroupName myRG -SqlDbInstanceName "mysqldb" -MigrationService  "/subscriptions/1111-2222-3333-4444/resourceGroups/myRG/providers/Microsoft.DataMigration/SqlMigrationServices/myDMS" -TargetSqlConnectionAuthentication "SqlAuthentication" -TargetSqlConnectionDataSource "mydb.windows.net" -TargetSqlConnectionPassword "pass" -TargetSqlConnectionUserName "user" -SourceSqlConnectionAuthentication "SqlAuthentication" -SourceSqlConnectionDataSource "xyz.MICROSOFT.COM" -SourceSqlConnectionUserName "user1" -SourceSqlConnectionPassword "password" -SourceDatabaseName "sourcedb" -TargetDbName "mydb1" -Scope  "/subscriptions/1111-2222-3333-4444/resourceGroups/myRG/providers/Microsoft.Sql/servers/mysqldb" 
 ```
 
 ```output
-{{ Add output here }}
+Name       Kind  ProvisioningState MigrationStatus
+----       ----  ----------------- ---------------
+mydb1 SqlDb Succeeded         InProgress
 ```
 
-{{ Add description here }}
+This command starts a Database Migration from the Source Sql Server to target SQL DB.
 
-### Example 2: {{ Add title here }}
+### Example 2: Start a Database Migration with some selcted tables from the on-premise Source Sql Server to target Sql Db
 ```powershell
-{{ Add code here }}
+New-AzDataMigrationToSqlDb -ResourceGroupName myRG -SqlDbInstanceName "mysqldb" -MigrationService  "/subscriptions/1111-2222-3333-4444/resourceGroups/myRG/providers/Microsoft.DataMigration/SqlMigrationServices/myDMS" -TargetSqlConnectionAuthentication "SqlAuthentication" -TargetSqlConnectionDataSource "mydb.windows.net" -TargetSqlConnectionPassword "pass" -TargetSqlConnectionUserName "user" -SourceSqlConnectionAuthentication "SqlAuthentication" -SourceSqlConnectionDataSource "xyz.MICROSOFT.COM" -SourceSqlConnectionUserName "user1" -SourceSqlConnectionPassword "password" -SourceDatabaseName "sourcedb" -TargetDbName "mydb1" -Scope  "/subscriptions/1111-2222-3333-4444/resourceGroups/myRG/providers/Microsoft.Sql/servers/mysqldb"  -TableList "table_1"
 ```
 
 ```output
-{{ Add output here }}
+Name       Kind  ProvisioningState MigrationStatus
+----       ----  ----------------- ---------------
+mydb1 SqlDb Succeeded         InProgress
 ```
 
-{{ Add description here }}
+Start a Database Migration with some selcted tables from the on-premise Source Sql Server to target Sql Db
 
 ## PARAMETERS
 

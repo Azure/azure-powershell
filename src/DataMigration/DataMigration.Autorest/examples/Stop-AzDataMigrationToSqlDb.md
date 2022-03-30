@@ -1,22 +1,15 @@
-### Example 1: {{ Add title here }}
+### Example 1: Stop in-progress migration to SQL DB
 ```powershell
-{{ Add code here }}
+$dbMigration = Get-AzDataMigrationToSqlDb -ResourceGroupName "myRG" -SqlDbInstanceName "mySqlDb" -TargetDbName "mydb1"
+Stop-AzDataMigrationToSqlDb -ResourceGroupName "myRG" -SqlDbInstanceName "mySqlDb" -TargetDbName "mydb1" -MigrationOperationId $dbMigration.MigrationOperationId
+
+Get-AzDataMigrationToSqlDb -InputObject $dbMigration 
 ```
 
 ```output
-{{ Add output here }}
+Name               Type                                       Kind  ProvisioningState MigrationStatus
+----               ----                                       ----  ----------------- ---------------
+mydb1         Microsoft.DataMigration/databaseMigrations SqlDb Canceling         Canceling
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command stops the in-progress migration to SQL Managed Instance.

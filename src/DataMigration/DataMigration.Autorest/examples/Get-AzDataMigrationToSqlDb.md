@@ -1,22 +1,25 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get the details of a given Database Migration to a SQL DB
 ```powershell
-{{ Add code here }}
+Get-AzDataMigrationToSqlDb -ResourceGroupName "myRG" -SqlDbInstanceName "mySqlDb" -TargetDbName "mydb1"
 ```
 
 ```output
-{{ Add output here }}
+Name       Kind  ProvisioningState MigrationStatus
+----       ----  ----------------- ---------------
+mydb1 SqlDb Succeeded         InProgress
 ```
 
-{{ Add description here }}
+Get the details of a given Database Migration to a SQL DB
 
-### Example 2: {{ Add title here }}
+### Example 2: Get the expanded details of a given Database Migration to a SQL DB
 ```powershell
-{{ Add code here }}
+$dbMigration = Get-AzDataMigrationToSqlDb -ResourceGroupName "myRG" -SqlDbInstanceName "mySqlDb" -TargetDbName "mydb1" -Expand MigrationStatusDetails
+$dbMigration.MigrationStatusDetailMigrationState
 ```
 
 ```output
-{{ Add output here }}
+MonitorMigration
 ```
 
-{{ Add description here }}
+Get the expanded details of a given Database Migration to a SQL DB
 
