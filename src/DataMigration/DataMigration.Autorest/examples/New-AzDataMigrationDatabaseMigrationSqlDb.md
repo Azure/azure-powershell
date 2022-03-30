@@ -4,9 +4,9 @@ New-AzDataMigrationDatabaseMigrationSqlDb -ResourceGroupName "myRG" -SqlDbInstan
 ```
 
 ```output
-Name             
-----               
-mydb1               
+Name          Kind  ProvisioningState MigrationStatus
+----          ----  ----------------- ---------------
+mydb1 SqlDb Succeeded         InProgress          
 ```
 
 This command starts a Database Migration from the Source Sql Server to target SQL DB. 

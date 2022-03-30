@@ -42,10 +42,10 @@ module-version: 0.1.0
 directive:
 
   #Swagger description changes
-  - from: swagger-document
-    where: $.info
-    transform: $["version"] = "2022-01-30-preview"
-
+  #- from: swagger-document
+  #  where: $.info
+  #  transform: $["version"] = "2022-01-30-preview"
+    
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}"].get
     transform: $["description"] = "Retrieve the Database Migration Service."

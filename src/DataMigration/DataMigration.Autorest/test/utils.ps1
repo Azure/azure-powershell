@@ -11,18 +11,14 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
-
-
     $SqlMigrationServiceTestVariables = @{
         GroupName = "tsum38RG"
         SqlMigrationServiceName = "trialTD"
     }
-
     $RemoveNode = @{
         GroupName = "tsum38RG"
         SqlMigrationServiceName = "dms20211030"
     }
-
     $randomstring = RandomString -allChars $false -len 10
     $newSqlMigrationServiceName = "new-testing-sqlmigrationservice-" +  $randomstring
     $NewSqlMigrationServiceTestVariables = @{
@@ -30,26 +26,26 @@ function setupEnv() {
         SqlMigrationServiceName = $newSqlMigrationServiceName
         Location = "eastus"
     }
-
     $AuthKeyTestVariables = @{
         GroupName = "tsum38RG"
         SqlMigrationServiceName = "alias-dms"
     }
-
     $DatabaseMigrationTestVariablesMi = @{
         ResourceGroupName = "MigrationTesting"
         ManagedInstanceName = "migrationtestmi"
         TargetDbName = "discMiOn" 
     }
-    
     $DatabaseMigrationTestVariablesVm = @{
         ResourceGroupName = "tsum38RG"
         SqlVirtualMachineName = "unitTest"
         TargetDbName = "unitTestVm" 
     }
-
+    $DatabaseMigrationTestVariablesDb = @{
+        ResourceGroupName = "tsum38RG"
+        SqlDbInstanceName = "dmstestsqldb"
+        TargetDbName = "at_sqldbtrgt3" 
+    }
     $newDatabaseMigrationNameMi = "MiUnitTest" + $randomstring
-
     $NewDatabaseMigrationTestVariablesMi = @{
         ResourceGroupName = "migrationTesting"
         ManagedInstanceName = "migrationtestmi"
@@ -68,7 +64,6 @@ function setupEnv() {
         SourceSqlConnectionPassword = "domainPassword" 
         SourceDatabaseName = "AdventureWorks"
     }
-    
     $newDatabaseMigrationNameVm = "VmUnitTest" + $randomstring
     $NewDatabaseMigrationTestVariablesVm = @{
         ResourceGroupName = "tsum38RG" 
@@ -89,8 +84,24 @@ function setupEnv() {
         SourceDatabaseName = "AdventureWorks"
     }
     
+    $NewDatabaseMigrationTestVariablesDb = @{
+        ResourceGroupName = "tsum38RG" 
+        SqlDbInstanceName = "dmstestsqldb"
+        TargetDbName = "at_sqldbtrgt3"
+        Kind = "SqlDb" 
+        Scope = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb" 
+        MigrationService = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/SqlMigrationServices/dms20211030"
+        TargetSqlConnectionAuthentication = "SqlAuthentication" 
+        TargetSqlConnectionDataSource = "dmstestsqldb.database.windows.net" 
+        TargetSqlConnectionPassword = "demo@pass123" 
+        TargetSqlConnectionUserName = "demouser" 
+        SourceSqlConnectionAuthentication = "SqlAuthentication" 
+        SourceSqlConnectionDataSource = "AALAB03-2K8.REDMOND.CORP.MICROSOFT.COM" 
+        SourceSqlConnectionUserName = "hijavatestuser1" 
+        SourceSqlConnectionPassword = "testAdmin123" 
+        SourceDatabaseName = "AdventureWorks"  
+    }
     $cutDatabaseMigrationNameMi = "MiUnitTestCut" + $randomstring
-
     $CutDatabaseMigrationTestVariablesMi = @{
         ResourceGroupName = "migrationTesting"
         ManagedInstanceName = "migrationtestmi"
@@ -109,7 +120,6 @@ function setupEnv() {
         SourceSqlConnectionPassword = "domainPassword" 
         SourceDatabaseName = "AdventureWorks"
     }
-    
     $cutDatabaseMigrationNameVm = "VmUnitTestCut" + $randomstring
     $CutDatabaseMigrationTestVariablesVm = @{
         ResourceGroupName = "tsum38RG" 
@@ -129,9 +139,7 @@ function setupEnv() {
         SourceSqlConnectionPassword = "domainPassword" 
         SourceDatabaseName = "AdventureWorks"
     }
-
     $stopDatabaseMigrationNameMi = "MiUnitTestStop" + $randomstring
-
     $StopDatabaseMigrationTestVariablesMi = @{
         ResourceGroupName = "migrationTesting"
         ManagedInstanceName = "migrationtestmi"
@@ -150,7 +158,6 @@ function setupEnv() {
         SourceSqlConnectionPassword = "domainPassword" 
         SourceDatabaseName = "AdventureWorks"
     }
-    
     $stopDatabaseMigrationNameVm = "VmUnitTestStop" + $randomstring
     $StopDatabaseMigrationTestVariablesVm = @{
         ResourceGroupName = "tsum38RG" 
@@ -170,20 +177,39 @@ function setupEnv() {
         SourceSqlConnectionPassword = "domainPassword" 
         SourceDatabaseName = "AdventureWorks"
     }
-
+    
+    $StopDatabaseMigrationTestVariablesDb = @{
+        ResourceGroupName = "tsum38RG"
+        SqlDbInstanceName = "dmstestsqldb" 
+        MigrationService  = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/SqlMigrationServices/dms20211030"
+        TargetSqlConnectionAuthentication = "SqlAuthentication" 
+        TargetSqlConnectionDataSource = "dmstestsqldb.database.windows.net" 
+        TargetSqlConnectionPassword = "demo@pass123" 
+        TargetSqlConnectionUserName = "demouser" 
+        SourceSqlConnectionAuthentication = "SqlAuthentication" 
+        SourceSqlConnectionDataSource = "AALAB03-2K8.REDMOND.CORP.MICROSOFT.COM" 
+        SourceSqlConnectionUserName = "hijavatestuser1" 
+        SourceSqlConnectionPassword = "testAdmin123" 
+        SourceDatabaseName = "AdventureWorks" 
+        TargetDbName = "at_sqldbtrgt2"
+        Scope =  "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb" 
+        
+    }
     $env.add("TestSqlMigrationService", $SqlMigrationServiceTestVariables) | Out-Null
     $env.add("TestNewSqlMigrationService",$NewSqlMigrationServiceTestVariables) | Out-Null
     $env.add("TestAuthKey",$AuthKeyTestVariables) | Out-Null
     $env.add("TestDatabaseMigrationMi", $DatabaseMigrationTestVariablesMi) | Out-Null
     $env.add("TestDatabaseMigrationVm", $DatabaseMigrationTestVariablesVm) | Out-Null
+    $env.add("TestDatabaseMigrationDb", $DatabaseMigrationTestVariablesDb) | Out-Null
     $env.add("TestNewDatabaseMigrationMi", $NewDatabaseMigrationTestVariablesMi) | Out-Null
     $env.add("TestNewDatabaseMigrationVm", $NewDatabaseMigrationTestVariablesVm) | Out-Null
+    $env.add("TestNewDatabaseMigrationDb", $NewDatabaseMigrationTestVariablesDb) | Out-Null
     $env.add("RemoveNode",$RemoveNode) | Out-Null
     $env.add("TestStopDatabaseMigrationMi", $StopDatabaseMigrationTestVariablesMi) | Out-Null
     $env.add("TestStopDatabaseMigrationVm", $StopDatabaseMigrationTestVariablesVm) | Out-Null
+    $env.add("TestStopDatabaseMigrationDb", $StopDatabaseMigrationTestVariablesDb) | Out-Null
     $env.add("TestCutDatabaseMigrationMi", $CutDatabaseMigrationTestVariablesMi) | Out-Null
     $env.add("TestCutDatabaseMigrationVm", $CutDatabaseMigrationTestVariablesVm) | Out-Null
-
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
@@ -193,5 +219,4 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
-} 
-
+}

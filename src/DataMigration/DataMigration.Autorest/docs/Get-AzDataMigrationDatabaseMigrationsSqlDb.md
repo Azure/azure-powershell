@@ -36,9 +36,9 @@ Get-AzDataMigrationDatabaseMigrationsSqlDb -ResourceGroupName "MyResourceGroup" 
 ```
 
 ```output
-Name               
-----              
-MyDatabase         
+Name          Kind  ProvisioningState MigrationStatus
+----          ----  ----------------- ---------------
+MyDatabase SqlDb Succeeded         Succeeded     
 ```
 
 This command gets the details of a given Database Migration to a SQL DB.
@@ -50,7 +50,7 @@ $dbMigration.MigrationStatusDetail
 ```
 
 ```output
-                        
+ Succeeded                       
 ```
 
 This command gets the expanded details of a given Database Migration to a SQL DB.
@@ -205,7 +205,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220130Preview.IDatabaseMigrationSqlDb
+### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlDb
 
 ## NOTES
 

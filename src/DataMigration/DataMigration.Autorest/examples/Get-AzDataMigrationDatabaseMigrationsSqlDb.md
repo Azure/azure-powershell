@@ -4,9 +4,9 @@ Get-AzDataMigrationDatabaseMigrationsSqlDb -ResourceGroupName "MyResourceGroup" 
 ```
 
 ```output
-Name               
-----              
-MyDatabase         
+Name          Kind  ProvisioningState MigrationStatus
+----          ----  ----------------- ---------------
+MyDatabase SqlDb Succeeded         Succeeded     
 ```
 
 This command gets the details of a given Database Migration to a SQL DB.
@@ -18,7 +18,7 @@ $dbMigration.MigrationStatusDetail
 ```
 
 ```output
-                        
+ Succeeded                       
 ```
 
 This command gets the expanded details of a given Database Migration to a SQL DB.

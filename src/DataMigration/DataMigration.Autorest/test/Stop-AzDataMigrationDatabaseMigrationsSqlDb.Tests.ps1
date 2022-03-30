@@ -15,7 +15,21 @@ if(($null -eq $TestName) -or ($TestName -contains 'Stop-AzDataMigrationDatabaseM
 }
 
 Describe 'Stop-AzDataMigrationDatabaseMigrationsSqlDb' {
-    It 'CancelExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CancelExpanded' {
+        $instance = New-AzDataMigrationDatabaseMigrationSqlDb -ResourceGroupName $env.TestStopDatabaseMigrationDb.ResourceGroupName -SqlDbInstanceName $env.TestStopDatabaseMigrationDb.SqlDbInstanceName -MigrationService  $env.TestStopDatabaseMigrationDb.MigrationService -TargetSqlConnectionAuthentication $env.TestStopDatabaseMigrationDb.TargetSqlConnectionAuthentication -TargetSqlConnectionDataSource $env.TestStopDatabaseMigrationDb.TargetSqlConnectionDataSource -TargetSqlConnectionPassword $env.TestStopDatabaseMigrationDb.TargetSqlConnectionPassword -TargetSqlConnectionUserName $env.TestStopDatabaseMigrationDb.TargetSqlConnectionUserName -SourceSqlConnectionAuthentication $env.TestStopDatabaseMigrationDb.SourceSqlConnectionAuthentication -SourceSqlConnectionDataSource $env.TestStopDatabaseMigrationDb.SourceSqlConnectionDataSource -SourceSqlConnectionUserName $env.TestStopDatabaseMigrationDb.SourceSqlConnectionUsername -SourceSqlConnectionPassword $env.TestStopDatabaseMigrationDb.SourceSqlConnectionPassword -SourceDatabaseName $env.TestStopDatabaseMigrationDb.SourceDatabaseName -TargetDbName $env.TestStopDatabaseMigrationDb.TargetDbName -Scope  $env.TestStopDatabaseMigrationDb.Scope
+
+        Stop-AzDataMigrationDatabaseMigrationsSqlDb -ResourceGroupName $env.TestStopDatabaseMigrationDb.ResourceGroupName -SqlDbInstanceName $env.TestStopDatabaseMigrationDb.SqlDbInstanceName -TargetDbName $env.TestStopDatabaseMigrationDb.TargetDbName -MigrationOperationId $instance.MigrationOperationId
+
+        
+
+        $details = Get-AzDataMigrationDatabaseMigrationsSqlDb -ResourceGroupName $env.TestStopDatabaseMigrationDb.ResourceGroupName -SqlDbInstanceName $env.TestStopDatabaseMigrationDb.SqlDbInstanceName -TargetDbName $env.TestStopDatabaseMigrationDb.TargetDbName
+
+        While($details.MigrationStatus -eq "Canceling")
+        {
+            $details = Get-AzDataMigrationDatabaseMigrationsSqlDb -ResourceGroupName $env.TestStopDatabaseMigrationDb.ResourceGroupName -SqlDbInstanceName $env.TestStopDatabaseMigrationDb.SqlDbInstanceName -TargetDbName $env.TestStopDatabaseMigrationDb.TargetDbName
+            
+        }
+        $assert = ($details.MigrationStatus -eq "Canceled") 
+        $assert | should be $true
     }
 }

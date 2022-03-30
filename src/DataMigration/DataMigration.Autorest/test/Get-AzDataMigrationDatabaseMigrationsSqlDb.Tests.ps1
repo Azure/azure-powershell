@@ -15,8 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDataMigrationDatabaseMi
 }
 
 Describe 'Get-AzDataMigrationDatabaseMigrationsSqlDb' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get'  {
+        $instance = Get-AzDataMigrationDatabaseMigrationsSqlDb -ResourceGroupName $env.TestDatabaseMigrationDb.ResourceGroupName -SqlDbInstanceName $env.TestDatabaseMigrationDb.SqlDbInstanceName -TargetDbName $env.TestDatabaseMigrationDb.TargetDbName
+        $assert = ($instance.Name -eq $env.TestDatabaseMigrationDb.TargetDbName) -AND ($instance.Kind -eq 'SqlDb')
+        $assert | Should be $true
     }
 
     It 'GetViaIdentity' -skip {

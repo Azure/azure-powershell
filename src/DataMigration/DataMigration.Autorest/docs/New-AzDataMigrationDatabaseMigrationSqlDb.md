@@ -38,9 +38,9 @@ New-AzDataMigrationDatabaseMigrationSqlDb -ResourceGroupName "myRG" -SqlDbInstan
 ```
 
 ```output
-Name             
-----               
-mydb1               
+Name          Kind  ProvisioningState MigrationStatus
+----          ----  ----------------- ---------------
+mydb1 SqlDb Succeeded         InProgress          
 ```
 
 This command starts a Database Migration from the Source Sql Server to target SQL DB.
@@ -536,7 +536,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220130Preview.IDatabaseMigrationSqlDb
+### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlDb
 
 ## NOTES
 
