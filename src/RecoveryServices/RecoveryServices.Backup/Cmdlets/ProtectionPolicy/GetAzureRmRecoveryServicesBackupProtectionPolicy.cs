@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
@@ -71,6 +72,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             Mandatory = true, HelpMessage = ParamHelpMsgs.Common.BackupManagementType + validBackupManagementTypes)]
         [ValidateNotNullOrEmpty]
         public BackupManagementType? BackupManagementType { get; set; }
+
+        /// <summary>
+        /// policy subtype filter. 
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Policy.PolicySubType)]
+        public PSPolicyType PolicySubType = 0;
 
         public override void ExecuteCmdlet()
         {
@@ -198,9 +205,39 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     WriteDebug("Successfully got response from service");
 
                     policyList = ConversionHelpers.GetPolicyModelList(respList);
+                    policyList = FilterPolicyBasedOnPolicyType(policyList, PolicySubType);
+
                     WriteObject(policyList, enumerateCollection: true);
                 }
-            });
+            });            
         }
+
+        /// <summary>
+        /// filter policies based on policySubType
+        /// </summary>
+        /// <param name="policyList"></param>
+        /// <param name="policySubType"></param>
+        /// <returns></returns>
+        public static List<PolicyBase> FilterPolicyBasedOnPolicyType (List<PolicyBase> policyList, PSPolicyType policySubType)
+        {
+            if (policySubType != 0)
+            {
+                policyList = policyList.Where(policy =>
+                {
+                    if (policy.GetType() == typeof(AzureVmPolicy))
+                    {
+                        return ((AzureVmPolicy)policy).PolicySubType == policySubType;
+                    }
+                    else if (policySubType == PSPolicyType.Enhanced)
+                    {
+                        return false;
+                    }
+
+                    return true;
+                }).ToList();
+            }
+
+            return policyList;
+        }       
     }
 }

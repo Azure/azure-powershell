@@ -158,7 +158,7 @@ The third command gets the date from seven days earlier, and then stores it in t
 The fourth command gets the current date, and then stores it in the $EndDate variable.
 The fifth command gets a list of recovery points for the specific backup item filtered by $StartDate and $EndDate.
 The sixth command triggers an Alternate Location Restore (ALR) to create a new VM in Target_RG resource group as per the inputs specified by parameters TargetVMName, TargetVNetName, TargetVNetResourceGroup, TargetSubnetName. 
-Alternately, if a user wants to perform an in-place restore to the originally backed up VM in the original location, it can be done with the last command. Please **avoid** using TargetResourceGroupName, RestoreAsUnmanagedDisks, TargetVMName, TargetVNetName, TargetVNetResourceGroup, TargetSubnetName parameters for performing OLR.
+Alternately, if a user wants to perform an in-place restore to the originally backed up VM in the original location, it can be done with the last command. Please **avoid** using TargetResourceGroupName, RestoreAsUnmanagedDisks, TargetVMName, TargetVNetName, TargetVNetResourceGroup, TargetSubnetName parameters for performing Original Location Restore (OLR).
 
 ### Example 3: Restore specified disks of a backed up Managed disk Azure VM from a given recovery point
 

@@ -39,7 +39,7 @@ The second command sets the duration for the retention policy object to 365 days
 The third command gets the schedule policy object, and then stores it in the $SchPol variable.
 The last command creates a backup protection policy using the retention policy and schedule policy created with the previous commands.
 
-### Example 2: Get base hourly retention object for fileshare policy 
+### Example 2: Get base hourly retention object for fileshare policy
 ```powershell
 $retentionPolicy = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureFiles -BackupManagementType AzureStorage -ScheduleRunFrequency Hourly
 $retentionPolicy.DailySchedule.DurationCountInDays = 10
@@ -91,7 +91,7 @@ Frequency of the schedule for which base retention policy object is fetched. Acc
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ScheduleRunType
 Parameter Sets: (All)
 Aliases:
-Accepted values: Daily, Hourly
+Accepted values: Daily, Hourly, Weekly
 
 Required: False
 Position: 2

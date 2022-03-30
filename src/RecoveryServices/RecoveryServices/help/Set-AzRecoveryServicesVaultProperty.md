@@ -15,8 +15,9 @@ Updates properties of a Vault.
 
 ### AzureRSVaultSoftDelteParameterSet (Default)
 ```
-Set-AzRecoveryServicesVaultProperty -SoftDeleteFeatureState <String> [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzRecoveryServicesVaultProperty [-SoftDeleteFeatureState <String>]
+ [-DisableHybridBackupSecurityFeature <Boolean>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureRSVaultCMKParameterSet
@@ -83,6 +84,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisableHybridBackupSecurityFeature
+Optional flag ($true/$false) to disable/enable security setting for hybrid backups against accidental deletes and add additional layer of authentication for critical operations. Provide $false to enable the security.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: AzureRSVaultSoftDelteParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EncryptionKeyId
 KeyId of the encryption key to be used for CMK.
 
@@ -137,7 +153,7 @@ Parameter Sets: AzureRSVaultSoftDelteParameterSet
 Aliases:
 Accepted values: Enable, Disable
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
