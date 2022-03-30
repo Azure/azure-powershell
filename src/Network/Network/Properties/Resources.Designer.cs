@@ -1141,6 +1141,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing this Routing Intent resource will remove all routing policies present in this and may affect the routing in your VirtualHub.
+        /// </summary>
+        internal static string RemoveRoutingIntentWarning {
+            get {
+                return ResourceManager.GetString("RemoveRoutingIntentWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing this HubRouteTable will remove all routes present in this and may affect the routing in your VirtualHub..
         /// </summary>
         internal static string RemoveVHubRouteTableWarning {
@@ -1272,6 +1281,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string RouteTableNotFound {
             get {
                 return ResourceManager.GetString("RouteTableNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The routing intent resource could not be found.
+        /// </summary>
+        internal static string RoutingIntentNotFound {
+            get {
+                return ResourceManager.GetString("RoutingIntentNotFound", resourceCulture);
             }
         }
         
