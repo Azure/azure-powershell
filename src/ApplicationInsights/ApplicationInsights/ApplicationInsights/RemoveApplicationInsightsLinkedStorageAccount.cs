@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.ApplicationInsights
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "PSApplicationInsightsComponent")]
-        [CmdletParameterBreakingChange("InputObject", ChangeDescription = "Parameter InputObject will be deprecated in upcoming Az.ApplicationInsights 2.0.0")]
+        [CmdletParameterBreakingChange("InputObject", ChangeDescription = "Parameter InputObject will be removed in upcoming Az.ApplicationInsights 2.0.0")]
         [ValidateNotNullOrEmpty]
         public PSApplicationInsightsComponent InputObject { get; set; }
 
@@ -59,6 +59,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.ApplicationInsights
             ParameterSetName = ByResourceIdParameterSet,
             Mandatory = true,
             HelpMessage = "Component ResourceId")]
+        [CmdletParameterBreakingChange("ResourceId", ChangeDescription = "Parameter ResourceId will be removed in upcoming Az.ApplicationInsights 2.0.0")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 

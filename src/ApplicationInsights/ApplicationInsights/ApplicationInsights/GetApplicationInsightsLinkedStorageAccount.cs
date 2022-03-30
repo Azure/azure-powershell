@@ -23,7 +23,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ApplicationInsights.ApplicationInsights
 {
-    [CmdletOutputBreakingChange(typeof(PSComponentLinkedStorageAccounts), ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20200301Preview.IComponentLinkedStorageAccounts")]
+    [GenericBreakingChange("Output type will be updated to match API 2020-03-01-preview", "2.0.0")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationInsightsLinkedStorageAccount", DefaultParameterSetName = ByResourceNameParameterSet), OutputType(typeof(PSComponentLinkedStorageAccounts))]
     public class GetApplicationInsightsLinkedStorageAccount : ApplicationInsightsBaseCmdlet
     {
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.ApplicationInsights
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "PSApplicationInsightsComponent")]
-        [CmdletParameterBreakingChange("InputObject", ChangeDescription = "Parameter InputObject will be deprecated in upcoming Az.ApplicationInsights 2.0.0")]
+        [CmdletParameterBreakingChange("InputObject", ChangeDescription = "Parameter InputObject will be removed in upcoming Az.ApplicationInsights 2.0.0")]
         [ValidateNotNullOrEmpty]
         public PSApplicationInsightsComponent InputObject { get; set; }
 
@@ -61,6 +61,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.ApplicationInsights
             ParameterSetName = ByResourceIdParameterSet,
             Mandatory = true,
             HelpMessage = "Component ResourceId")]
+        [CmdletParameterBreakingChange("ResourceId", ChangeDescription = "Parameter ResourceId will be removed in upcoming Az.ApplicationInsights 2.0.0")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 

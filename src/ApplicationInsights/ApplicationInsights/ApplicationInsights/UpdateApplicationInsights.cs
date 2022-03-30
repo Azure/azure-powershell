@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.ApplicationInsights
 {
     public class UpdateApplicationInsights
     {
-        [CmdletOutputBreakingChange(typeof(PSApplicationInsightsComponent), ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent")]
+        [GenericBreakingChange("API version bump up to 2020-02, output type will be also updated to match the new API version", "2.0.0")]
         [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationInsights", SupportsShouldProcess = true), OutputType(typeof(PSApplicationInsightsComponent))]
         public class UpdateAzureApplicationInsights : ApplicationInsightsBaseCmdlet
         {

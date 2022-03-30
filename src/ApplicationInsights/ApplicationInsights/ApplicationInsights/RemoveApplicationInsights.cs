@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
             ParameterSetName = ComponentObjectParameterSet,
             ValueFromPipeline = true,
             HelpMessage = "Application Insights Component Object.")]
-        [CmdletParameterBreakingChange("ApplicationInsightsComponent", OldParamaterType = typeof(PSApplicationInsightsComponent), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.ApplicationInsightsComponent")]
+        [CmdletParameterBreakingChange("ApplicationInsightsComponent", ChangeDescription = "Type of ApplicationInsightsComponent will be updated to match API 2020-02 in Az.ApplicationInsights 2.0.0")]
         [ValidateNotNull]
         public PSApplicationInsightsComponent ApplicationInsightsComponent { get; set; }
 
@@ -40,6 +40,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
             ParameterSetName = ResourceIdParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Application Insights Component Resource Id.")]
+        [CmdletParameterBreakingChange("ResourceId", ChangeDescription = "Parameter 'ResourceId' will be removed and please use it in such way: '$resourceid | Remove-AzApplicationInsights' in upcoming Az.ApplicationInsights 2.0.0")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
