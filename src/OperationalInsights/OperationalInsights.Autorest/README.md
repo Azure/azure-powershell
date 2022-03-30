@@ -139,7 +139,7 @@ directive:
       parameter-name: WorkspaceCappingDailyQuotaGb
     set:
       parameter-name: DailyQuotaGb
-
+ 
   - where: 
       verb: Remove
       subject: Workspace
@@ -147,12 +147,11 @@ directive:
     set:
       parameter-name: ForceDelete
 	  
-   - where:
+  - where:
       verb: Update
       subject: Workspace
     set:
-      alias:
-        - Set-AzOperationalInsightsWorkspace
+      alias: Set-AzOperationalInsightsWorkspace
         
   # For memory object that generate cmdlet.  
   #- model-cmdlet:

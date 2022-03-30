@@ -12,7 +12,7 @@
   RequiredAssemblies = './bin/Az.OperationalInsights.private.dll'
   FormatsToProcess = './Az.OperationalInsights.format.ps1xml'
   FunctionsToExport = 'Get-AzOperationalInsightsDeletedWorkspace', 'Get-AzOperationalInsightsTable', 'Get-AzOperationalInsightsWorkspace', 'Move-AzOperationalInsightsTable', 'New-AzOperationalInsightsTable', 'New-AzOperationalInsightsTableColumnObject', 'New-AzOperationalInsightsWorkspace', 'Remove-AzOperationalInsightsTable', 'Remove-AzOperationalInsightsWorkspace', 'Update-AzOperationalInsightsTable', 'Update-AzOperationalInsightsWorkspace', '*'
-  AliasesToExport = '*'
+  AliasesToExport = 'Set-AzOperationalInsightsWorkspace', '*'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'OperationalInsights'

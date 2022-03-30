@@ -32,7 +32,7 @@ DataTypeHint Description                                                        
 
 ```
 
-
+Creates a TableColumnObject(1 of 2 that are required) which is required to use "New-AzOperationalInsightsTable" cmdlet.
 
 ### Example 2: Create a new Column which is used for New-AzOperationalInsightsTable cmdlet
 ```powershell
@@ -44,7 +44,7 @@ DataTypeHint Description                           DisplayName IsDefaultDisplay 
 
 ```
 
-Creates a TableColumnObject which is required to use "New-AzOperationalInsightsTable" cmdlet.
+Creates a TableColumnObject(2 of 2 that are required) which is required to use "New-AzOperationalInsightsTable" cmdlet.
 
 ## PARAMETERS
 
