@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 4.25.0
 * Updated `New-AzVM` to create a new storage account for boot diagnostics if one does not exist. This will prevent the cmdlet from using a random storage account in the current subscription to use for boot diagnostics.
 * Added `AutomaticRepairAction` string parameter to the `New-AzVmssConfig` and `Update-AzVmss` cmdlets.
 * Updated `Get-AzVm` to include `GetVirtualMachineById` parameter set.
