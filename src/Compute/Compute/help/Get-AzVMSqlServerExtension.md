@@ -59,7 +59,6 @@ This command gets the virtual machine named ContosoVM22 in the Resource Group te
 The command passes the results to the current cmdlet by using the pipeline operator.
 The current command gets the settings of the SQL Server IaaS Agent on that virtual machine.
 
-
 ## PARAMETERS
 
 ### -DefaultProfile

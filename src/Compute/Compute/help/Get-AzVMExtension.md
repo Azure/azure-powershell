@@ -117,7 +117,7 @@ AutoUpgradeMinorVersion : True
 ForceUpdateTag          :
 ```
 
-### Example 4: Get properties of an extension using the VM parameter
+### Example 4: Get properties of an extension using the VMObject parameter
 ```powershell
 $vm = Get-AzVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine22"
 Get-AzVMExtension -VMObject $vm
