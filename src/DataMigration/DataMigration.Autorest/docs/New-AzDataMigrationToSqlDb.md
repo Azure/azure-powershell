@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.DataMigration
-online version: https://docs.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationdatabasemigrationsqldb
+online version: https://docs.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationtosqldb
 schema: 2.0.0
 ---
 
-# New-AzDataMigrationDatabaseMigrationSqlDb
+# New-AzDataMigrationToSqlDb
 
 ## SYNOPSIS
 Create or Update Database Migration resource.
@@ -13,14 +13,13 @@ Create or Update Database Migration resource.
 ## SYNTAX
 
 ```
-New-AzDataMigrationDatabaseMigrationSqlDb -ResourceGroupName <String> -SqlDbInstanceName <String>
- -TargetDbName <String> [-SubscriptionId <String>] [-Kind <ResourceType>] [-MigrationOperationId <String>]
+New-AzDataMigrationToSqlDb -ResourceGroupName <String> -SqlDbInstanceName <String> -TargetDbName <String>
+ [-SubscriptionId <String>] [-Kind <ResourceType>] [-MigrationOperationId <String>]
  [-MigrationService <String>] [-ProvisioningError <String>] [-Scope <String>] [-SourceDatabaseName <String>]
  [-SourceSqlConnectionAuthentication <String>] [-SourceSqlConnectionDataSource <String>]
  [-SourceSqlConnectionEncryptConnection] [-SourceSqlConnectionPassword <String>]
- [-SourceSqlConnectionTrustServerCertificate] [-SourceSqlConnectionUserName <String>]
- [-SqlDataCopyThresholdCidxKbsThreshold <Int32>] [-SqlDataCopyThresholdCidxRowThreshold <Int32>]
- [-TableList <String[]>] [-TargetDatabaseCollation <String>] [-TargetSqlConnectionAuthentication <String>]
+ [-SourceSqlConnectionTrustServerCertificate] [-SourceSqlConnectionUserName <String>] [-TableList <String[]>]
+ [-TargetDatabaseCollation <String>] [-TargetSqlConnectionAuthentication <String>]
  [-TargetSqlConnectionDataSource <String>] [-TargetSqlConnectionEncryptConnection]
  [-TargetSqlConnectionPassword <String>] [-TargetSqlConnectionTrustServerCertificate]
  [-TargetSqlConnectionUserName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
@@ -32,18 +31,27 @@ Create or Update Database Migration resource.
 
 ## EXAMPLES
 
-### Example 1: Start a Database Migration from the on-premise Source Sql Server to target SQL DB
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzDataMigrationDatabaseMigrationSqlDb -ResourceGroupName "myRG" -SqlDbInstanceName "mySqlDb" -MigrationService  "/subscriptions/1111-2222-3333-4444/resourceGroups/myRG/providers/Microsoft.DataMigration/SqlMigrationServices/mydms" -TargetSqlConnectionAuthentication "SqlAuthentication" -TargetSqlConnectionDataSource "mySqlDb.database.windows.net" -TargetSqlConnectionPassword "password" -TargetSqlConnectionUserName "user" -SourceSqlConnectionAuthentication "SqlAuthentication" -SourceSqlConnectionDataSource "Server.COM" -SourceSqlConnectionUserName "testuser" -SourceSqlConnectionPassword "password" -SourceDatabaseName "AdventureWorks" -Scope  "/subscriptions/1111-222-3333-4444/resourceGroups/myRG/providers/Microsoft.Sql/servers/mySqlDb" -TargetDbName "mydb1"
+{{ Add code here }}
 ```
 
 ```output
-Name          Kind  ProvisioningState MigrationStatus
-----          ----  ----------------- ---------------
-mydb1 SqlDb Succeeded         InProgress          
+{{ Add output here }}
 ```
 
-This command starts a Database Migration from the Source Sql Server to target SQL DB.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -293,36 +301,6 @@ User name to connect to source SQL.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SqlDataCopyThresholdCidxKbsThreshold
-Minimum required size in kbs of a table with a clustered index to perform parallel data copy
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SqlDataCopyThresholdCidxRowThreshold
-Minimum row count of a table with clustered index to perform parallel data copy
-
-```yaml
-Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 

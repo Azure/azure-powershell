@@ -1,42 +1,56 @@
 ---
 external help file:
 Module Name: Az.DataMigration
-online version: https://docs.microsoft.com/powershell/module/az.datamigration/stop-azdatamigrationdatabasemigrationssqldb
+online version: https://docs.microsoft.com/powershell/module/az.datamigration/remove-azdatamigrationtosqldb
 schema: 2.0.0
 ---
 
-# Stop-AzDataMigrationDatabaseMigrationsSqlDb
+# Remove-AzDataMigrationToSqlDb
 
 ## SYNOPSIS
-Stop on going migration for the database.
+Delete Database Migration resource.
 
 ## SYNTAX
 
+### Delete (Default)
 ```
-Stop-AzDataMigrationDatabaseMigrationsSqlDb -ResourceGroupName <String> -SqlDbInstanceName <String>
- -TargetDbName <String> [-SubscriptionId <String>] [-MigrationOperationId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzDataMigrationToSqlDb -ResourceGroupName <String> -SqlDbInstanceName <String> -TargetDbName <String>
+ [-SubscriptionId <String>] [-Force] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteViaIdentity
+```
+Remove-AzDataMigrationToSqlDb -InputObject <IDataMigrationIdentity> [-Force] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Stop on going migration for the database.
+Delete Database Migration resource.
 
 ## EXAMPLES
 
-### Example 1: Stop in-progress migration to SQL DB
+### Example 1: {{ Add title here }}
 ```powershell
-$dbMigration = Get-AzDataMigrationDatabaseMigrationsSqlDb -ResourceGroupName "myRG" -SqlDbInstanceName "mySqlDb" -TargetDbName "mydb1"
-Stop-AzDataMigrationDatabaseMigrationsSqlDb -ResourceGroupName "myRG" -SqlDbInstanceName "mySqlDb" -TargetDbName "mydb1" -MigrationOperationId $dbMigration.MigrationOperationId
-Get-AzDataMigrationToSqlManagedInstance -InputObject $dbMigration 
+{{ Add code here }}
 ```
 
 ```output
- Name               Type                                       Kind  ProvisioningState MigrationStatus
-----               ----                                       ----  ----------------- ---------------
-mydb1         Microsoft.DataMigration/databaseMigrations SqlMi Canceling         Canceling    
+{{ Add output here }}
 ```
 
-This command stops the in-progress migration to SQL DB.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -70,11 +84,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MigrationOperationId
-ID tracking migration operation.
+### -Force
+Optional force delete boolean.
+If this is provided as true, migration will be deleted even if active.
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -82,6 +97,22 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity
+Parameter Sets: DeleteViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -121,7 +152,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -136,7 +167,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -151,7 +182,7 @@ Subscription ID that identifies an Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Delete
 Aliases:
 
 Required: False
@@ -166,7 +197,7 @@ The name of the target database.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -212,6 +243,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity
+
 ## OUTPUTS
 
 ### System.Boolean
@@ -219,6 +252,21 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+INPUTOBJECT <IDataMigrationIdentity>: Identity Parameter
+  - `[Id <String>]`: Resource identity path
+  - `[ManagedInstanceName <String>]`: 
+  - `[ResourceGroupName <String>]`: Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  - `[SqlDbInstanceName <String>]`: 
+  - `[SqlMigrationServiceName <String>]`: Name of the SQL Migration Service.
+  - `[SqlVirtualMachineName <String>]`: 
+  - `[SubscriptionId <String>]`: Subscription ID that identifies an Azure subscription.
+  - `[TargetDbName <String>]`: The name of the target database.
 
 ## RELATED LINKS
 

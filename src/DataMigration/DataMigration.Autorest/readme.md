@@ -150,6 +150,16 @@ directive:
       subject: ToSqlVM
   
   - where:
+      subject: (DatabaseMigrationSqlDb$)
+    set:
+      subject: ToSqlDb
+
+  - where:
+      subject: DatabaseMigrationsSqlDb
+    set:
+      subject: ToSqlDb
+  
+  - where:
       subject: (MonitoringData$)
     set:
       subject: IntegrationRuntimeMetric

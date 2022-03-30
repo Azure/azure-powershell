@@ -1,32 +1,25 @@
 ---
 external help file:
 Module Name: Az.DataMigration
-online version: https://docs.microsoft.com/powershell/module/az.datamigration/remove-azdatamigrationdatabasemigrationssqldb
+online version: https://docs.microsoft.com/powershell/module/az.datamigration/stop-azdatamigrationtosqldb
 schema: 2.0.0
 ---
 
-# Remove-AzDataMigrationDatabaseMigrationsSqlDb
+# Stop-AzDataMigrationToSqlDb
 
 ## SYNOPSIS
-Delete Database Migration resource.
+Stop on going migration for the database.
 
 ## SYNTAX
 
-### Delete (Default)
 ```
-Remove-AzDataMigrationDatabaseMigrationsSqlDb -ResourceGroupName <String> -SqlDbInstanceName <String>
- -TargetDbName <String> [-SubscriptionId <String>] [-Force] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Stop-AzDataMigrationToSqlDb -ResourceGroupName <String> -SqlDbInstanceName <String> -TargetDbName <String>
+ [-SubscriptionId <String>] [-MigrationOperationId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
-```
-Remove-AzDataMigrationDatabaseMigrationsSqlDb -InputObject <IDataMigrationIdentity> [-Force]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
-Delete Database Migration resource.
+Stop on going migration for the database.
 
 ## EXAMPLES
 
@@ -84,12 +77,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Optional force delete boolean.
-If this is provided as true, migration will be deleted even if active.
+### -MigrationOperationId
+ID tracking migration operation.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -97,22 +89,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity
-Parameter Sets: DeleteViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -152,7 +128,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -167,7 +143,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -182,7 +158,7 @@ Subscription ID that identifies an Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -197,7 +173,7 @@ The name of the target database.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -243,8 +219,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity
-
 ## OUTPUTS
 
 ### System.Boolean
@@ -252,21 +226,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IDataMigrationIdentity>: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[ManagedInstanceName <String>]`: 
-  - `[ResourceGroupName <String>]`: Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  - `[SqlDbInstanceName <String>]`: 
-  - `[SqlMigrationServiceName <String>]`: Name of the SQL Migration Service.
-  - `[SqlVirtualMachineName <String>]`: 
-  - `[SubscriptionId <String>]`: Subscription ID that identifies an Azure subscription.
-  - `[TargetDbName <String>]`: The name of the target database.
 
 ## RELATED LINKS
 

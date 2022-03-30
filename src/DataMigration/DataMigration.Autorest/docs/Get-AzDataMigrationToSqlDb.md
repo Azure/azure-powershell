@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.DataMigration
-online version: https://docs.microsoft.com/powershell/module/az.datamigration/get-azdatamigrationdatabasemigrationssqldb
+online version: https://docs.microsoft.com/powershell/module/az.datamigration/get-azdatamigrationtosqldb
 schema: 2.0.0
 ---
 
-# Get-AzDataMigrationDatabaseMigrationsSqlDb
+# Get-AzDataMigrationToSqlDb
 
 ## SYNOPSIS
 Retrieve the Database Migration resource.
@@ -14,14 +14,14 @@ Retrieve the Database Migration resource.
 
 ### Get (Default)
 ```
-Get-AzDataMigrationDatabaseMigrationsSqlDb -ResourceGroupName <String> -SqlDbInstanceName <String>
- -TargetDbName <String> [-SubscriptionId <String[]>] [-Expand <String>] [-MigrationOperationId <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
+Get-AzDataMigrationToSqlDb -ResourceGroupName <String> -SqlDbInstanceName <String> -TargetDbName <String>
+ [-SubscriptionId <String[]>] [-Expand <String>] [-MigrationOperationId <String>] [-DefaultProfile <PSObject>]
+ [-PassThru] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzDataMigrationDatabaseMigrationsSqlDb -InputObject <IDataMigrationIdentity> [-Expand <String>]
+Get-AzDataMigrationToSqlDb -InputObject <IDataMigrationIdentity> [-Expand <String>]
  [-MigrationOperationId <String>] [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
@@ -30,30 +30,27 @@ Retrieve the Database Migration resource.
 
 ## EXAMPLES
 
-### Example 1: Get the details of a given Database Migration to a SQL DB
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzDataMigrationDatabaseMigrationsSqlDb -ResourceGroupName "MyResourceGroup" -SqlDbInstanceName "MySqlDb" -TargetDbName "MyDatabase"
+{{ Add code here }}
 ```
 
 ```output
-Name          Kind  ProvisioningState MigrationStatus
-----          ----  ----------------- ---------------
-MyDatabase SqlDb Succeeded         Succeeded     
+{{ Add output here }}
 ```
 
-This command gets the details of a given Database Migration to a SQL DB.
+{{ Add description here }}
 
-### Example 2: Get the expanded details of a given Database Migration to a SQL DB
+### Example 2: {{ Add title here }}
 ```powershell
-$dbMigration = Get-AzDataMigrationDatabaseMigrationsSqlDb -ResourceGroupName "MyResourceGroup" -SqlDbInstanceName "MySqlDb" -TargetDbName "MyDatabase" -Expand MigrationStatusDetails
-$dbMigration.MigrationStatusDetail
+{{ Add code here }}
 ```
 
 ```output
- Succeeded                       
+{{ Add output here }}
 ```
 
-This command gets the expanded details of a given Database Migration to a SQL DB.
+{{ Add description here }}
 
 ## PARAMETERS
 
