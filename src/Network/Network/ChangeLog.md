@@ -20,11 +20,15 @@
 
 ## Upcoming Release
 * Added new cmdlets for RoutingIntent child resource of VirtualHub.
+    -`Add-AzRoutingPolicy`
+    -`Get-AzRoutingPolicy`
     -`New-AzRoutingPolicy`
-    -`New-AzRoutingIntent`
+    -`Remove-AzRoutingPolicy`
+    -`Set-AzRoutingPolicy`
     -`Get-AzRoutingIntent`
-    -`Update-AzRoutingIntent`
+    -`New-AzRoutingIntent`
     -`Remove-AzRoutingIntent`
+    -`Set-AzRoutingIntent`
 
 ## Version 4.14.0
 * Used case-insensitive comparison for ResourceId (Set/New-NetworkWatcherFlowLog)

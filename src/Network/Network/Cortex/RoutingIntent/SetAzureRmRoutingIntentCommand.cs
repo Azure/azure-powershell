@@ -21,12 +21,12 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
-    [Cmdlet("Update",
+    [Cmdlet("Set",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RoutingIntent",
         DefaultParameterSetName = CortexParameterSetNames.ByRoutingIntentName,
         SupportsShouldProcess = true),
         OutputType(typeof(PSRoutingIntent))]
-    public class UpdateAzureRmRoutingIntentCommand : RoutingIntentBaseCmdlet
+    public class SetAzureRmRoutingIntentCommand : RoutingIntentBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
