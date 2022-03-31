@@ -18,13 +18,14 @@ Add-AzStackHCIVMAttestation configures guests for AzureStack HCI IMDS Attestatio
 Disable-AzStackHCIAttestation disables IMDS Attestation on the host
 
 ### [Disable-AzStackHCIRemoteSupport](Disable-AzStackHCIRemoteSupport.md)
-Disables Remote Support.
+Disable Remote Support revokes all access levels previously granted.
+Any existing support sessions will be terminated, and new sessions can no longer be established.
 
 ### [Enable-AzStackHCIAttestation](Enable-AzStackHCIAttestation.md)
 Enable-AzStackHCIAttestation configures the host and enables specified guests for IMDS attestation.
 
 ### [Enable-AzStackHCIRemoteSupport](Enable-AzStackHCIRemoteSupport.md)
-Enables Remote Support.
+Enables Remote Support allows authorized Microsoft Support users to remotely access the device for diagnostics or repair depending on the access level granted.
 
 ### [Get-AzStackHciArcSetting](Get-AzStackHciArcSetting.md)
 Get ArcSetting resource details of HCI Cluster.
@@ -36,16 +37,16 @@ Get HCI cluster.
 Get particular Arc Extension of HCI Cluster.
 
 ### [Get-AzStackHCIRemoteSupportAccess](Get-AzStackHCIRemoteSupportAccess.md)
-Gets Remote Support Access.
+Gets remote support access.
 
 ### [Get-AzStackHCIRemoteSupportSessionHistory](Get-AzStackHCIRemoteSupportSessionHistory.md)
-Gets Remote Support Session History Details.
+Session history represents all remote accesses made by Microsoft Support for either Diagnostics or DiagnosticsRepair based on the Access Level granted.
 
 ### [Get-AzStackHCIVMAttestation](Get-AzStackHCIVMAttestation.md)
 Get-AzStackHCIVMAttestation shows a list of guests added to IMDS Attestation on a node.
 
 ### [Install-AzStackHCIRemoteSupport](Install-AzStackHCIRemoteSupport.md)
-Installs Remote Support.
+Install-AzStackHCIRemoteSupport installs Remote Support Deployment module.
 
 ### [New-AzStackHciArcSetting](New-AzStackHciArcSetting.md)
 Create ArcSetting for HCI cluster.
@@ -69,7 +70,7 @@ Delete an HCI cluster.
 Delete particular Arc Extension of HCI Cluster.
 
 ### [Remove-AzStackHCIRemoteSupport](Remove-AzStackHCIRemoteSupport.md)
-Removes Remote Support.
+Remove-AzStackHCIRemoteSupport uninstalls Remote Support Deployment module.
 
 ### [Remove-AzStackHCIVMAttestation](Remove-AzStackHCIVMAttestation.md)
 Remove-AzStackHCIVMAttestation removes guests from AzureStack HCI IMDS Attestation.

@@ -1,0 +1,45 @@
+{
+  "Get-AzStackHciCluster+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb/resourceGroups/azurestackhci-pwsh-rg-5n/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusterwsk5?api-version=2021-09-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb/resourceGroups/azurestackhci-pwsh-rg-5n/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusterwsk5?api-version=2021-09-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "3871972d-dee3-4edd-94c7-8dbf8720c962" ],
+        "CommandName": [ "Get-AzStackHciCluster" ],
+        "FullCommandName": [ "Get-AzStackHciCluster_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"e900fb0e-0000-0100-0000-62453d5c0000\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "39389397-0445-4a14-9b20-2d4602936e91" ],
+        "x-ms-correlation-request-id": [ "caca5144-3915-48e0-8e3d-20ed44bdd9d5" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20220331T053520Z:caca5144-3915-48e0-8e3d-20ed44bdd9d5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 31 Mar 2022 05:35:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "612" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb/resourceGroups/azurestackhci-pwsh-rg-5n/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusterwsk5\",\"name\":\"pwsh-Clusterwsk5\",\"type\":\"microsoft.azurestackhci/clusters\",\"location\":\"eastus\",\"properties\":{\"provisioningState\":\"Succeeded\",\"status\":\"NotYetRegistered\",\"cloudId\":\"ab1168ae-dca6-46d2-9985-2cd8d81ba8da\",\"aadClientId\":\"18f7096a-d495-4c9d-844e-0b9a3e246b36\",\"aadTenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"desiredProperties\":{\"windowsServerSubscription\":\"Disabled\",\"diagnosticLevel\":\"Basic\"},\"trialDaysRemaining\":60,\"billingModel\":\"Trial\"}}"
+    }
+  }
+}

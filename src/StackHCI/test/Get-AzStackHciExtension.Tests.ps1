@@ -15,15 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzStackHciExtension'))
 }
 
 Describe 'Get-AzStackHciExtension' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $job = Get-AzStackHciExtension -Name $env.ExtensionName -ClusterName $env.ClusterName -ArcSettingName $env.ArcSettingName -ResourceGroupName $env.ResourceGroup  
+        $job.Name | should -be $env.ExtensionName
     }
 }

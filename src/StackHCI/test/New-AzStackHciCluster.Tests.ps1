@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzStackHciCluster'))
 }
 
 Describe 'New-AzStackHciCluster' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        New-AzStackHciCluster -Name $env.ClusterName -ResourceGroupName $env.ResourceGroup -SubscriptionId $env.SubscriptionId -AadClientId $env.AadClientId -AadTenantId $env.AadTenantId -Location $env.Location
     }
 }

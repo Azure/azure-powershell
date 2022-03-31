@@ -1,0 +1,43 @@
+{
+  "Remove-AzStackHciExtension+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb/resourceGroups/azurestackhci-pwsh-rg-5n/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusterwsk5/arcSettings/default/extensions/MicrosoftMonitoringAgent?api-version=2021-09-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb/resourceGroups/azurestackhci-pwsh-rg-5n/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusterwsk5/arcSettings/default/extensions/MicrosoftMonitoringAgent?api-version=2021-09-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "21" ],
+        "x-ms-client-request-id": [ "67dd5255-796c-4138-93da-6022fc9a6720" ],
+        "CommandName": [ "Remove-AzStackHciExtension" ],
+        "FullCommandName": [ "Remove-AzStackHciExtension_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "fbc6dfc8-2227-4b27-a4c4-0fa4bb5ce049" ],
+        "x-ms-correlation-request-id": [ "b71eac40-453f-4b2d-abc2-bf39601a817a" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14994" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20220331T053622Z:b71eac40-453f-4b2d-abc2-bf39601a817a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 31 Mar 2022 05:36:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  }
+}

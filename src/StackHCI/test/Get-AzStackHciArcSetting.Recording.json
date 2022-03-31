@@ -1,0 +1,44 @@
+{
+  "Get-AzStackHciArcSetting+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb/resourceGroups/azurestackhci-pwsh-rg-5n/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusterwsk5/arcSettings?api-version=2021-09-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb/resourceGroups/azurestackhci-pwsh-rg-5n/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusterwsk5/arcSettings?api-version=2021-09-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "cbacb5f4-31a6-446b-8563-e96f1e216937" ],
+        "CommandName": [ "Get-AzStackHciArcSetting" ],
+        "FullCommandName": [ "Get-AzStackHciArcSetting_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "c179797f-2d54-4c08-b2e9-deecdae17661" ],
+        "x-ms-correlation-request-id": [ "b7d58fb6-f1cb-43d3-b0e0-48195f135be0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20220331T053517Z:b7d58fb6-f1cb-43d3-b0e0-48195f135be0" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 31 Mar 2022 05:35:17 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "458" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb/resourceGroups/azurestackhci-pwsh-rg-5n/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusterwsk5/arcSettings/default\",\"name\":\"default\",\"type\":\"microsoft.azurestackhci/clusters/arcsettings\",\"properties\":{\"provisioningState\":\"Succeeded\",\"arcInstanceResourceGroup\":\"pwsh-Clusterwsk5-ab1168ae-dca6-46d2-9985-2cd8d81ba8da-Arc-Infra-RG\",\"aggregateState\":\"NotSpecified\",\"perNodeDetails\":[]}}]}"
+    }
+  }
+}

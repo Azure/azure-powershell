@@ -15,15 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzStackHciArcSetting'))
 }
 
 Describe 'Get-AzStackHciArcSetting' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $job = Get-AzStackHciArcSetting -ClusterName $env.ClusterName -ResourceGroupName $env.ResourceGroup   
+        $job.Name | should -be $env.ArcSettingName
     }
 }

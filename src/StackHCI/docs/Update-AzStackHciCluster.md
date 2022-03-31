@@ -15,7 +15,7 @@ Update an HCI cluster.
 ### UpdateExpanded (Default)
 ```
 Update-AzStackHciCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AadTenantId <String>] [-CloudManagementEndpoint <String>]
+ [-AadClientId <String>] [-AadTenantId <String>] [-CloudManagementEndpoint <String>]
  [-DesiredPropertyDiagnosticLevel <DiagnosticLevel>]
  [-DesiredPropertyWindowsServerSubscription <WindowsServerSubscription>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -23,7 +23,7 @@ Update-AzStackHciCluster -Name <String> -ResourceGroupName <String> [-Subscripti
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzStackHciCluster -InputObject <IStackHciIdentity> [-AadTenantId <String>]
+Update-AzStackHciCluster -InputObject <IStackHciIdentity> [-AadClientId <String>] [-AadTenantId <String>]
  [-CloudManagementEndpoint <String>] [-DesiredPropertyDiagnosticLevel <DiagnosticLevel>]
  [-DesiredPropertyWindowsServerSubscription <WindowsServerSubscription>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -48,6 +48,21 @@ eastus   myCluster3 test-rg
 Updating DiagnosticLevel and WindowsServerSubscription values for a cluster.
 
 ## PARAMETERS
+
+### -AadClientId
+App id of cluster AAD identity.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AadTenantId
 Tenant id of cluster AAD identity.

@@ -1,0 +1,45 @@
+{
+  "Get-AzStackHciExtension+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb/resourceGroups/azurestackhci-pwsh-rg-5n/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusterwsk5/arcSettings/default/extensions/MicrosoftMonitoringAgent?api-version=2021-09-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb/resourceGroups/azurestackhci-pwsh-rg-5n/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusterwsk5/arcSettings/default/extensions/MicrosoftMonitoringAgent?api-version=2021-09-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "cc54d786-5530-4b4e-9231-20b7a4edf9d8" ],
+        "CommandName": [ "Get-AzStackHciExtension" ],
+        "FullCommandName": [ "Get-AzStackHciExtension_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"260023c7-0000-0100-0000-62453d690000\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "7534351a-634c-4ce1-8576-34f2a34ca1c8" ],
+        "x-ms-correlation-request-id": [ "13f3e57e-8e7d-455b-b71f-5261a081facd" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20220331T053522Z:13f3e57e-8e7d-455b-b71f-5261a081facd" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 31 Mar 2022 05:35:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "423" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb/resourceGroups/azurestackhci-pwsh-rg-5n/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusterwsk5/arcSettings/default/extensions/MicrosoftMonitoringAgent\",\"name\":\"MicrosoftMonitoringAgent\",\"type\":\"microsoft.azurestackhci/clusters/arcsettings/extensions\",\"properties\":{\"provisioningState\":\"Succeeded\",\"aggregateState\":\"NotSpecified\",\"perNodeExtensionDetails\":[]}}"
+    }
+  }
+}

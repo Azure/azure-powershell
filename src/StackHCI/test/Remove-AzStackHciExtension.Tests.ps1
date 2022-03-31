@@ -15,11 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzStackHciExtension'))
 }
 
 Describe 'Remove-AzStackHciExtension' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        Remove-AzStackHciExtension -ClusterName $env.ClusterName -ArcSettingName $env.ArcSettingName -Name $env.ExtensionName -ResourceGroupName $env.ResourceGroup
     }
 }

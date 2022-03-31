@@ -15,11 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzStackHciCluster'))
 }
 
 Describe 'Remove-AzStackHciCluster' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        Remove-AzStackHciCluster -ClusterName "$($env.ClusterName)-remove" -ResourceGroupName $env.ResourceGroup 
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteViaIdentity' {
+        $clusterremove = Get-AzStackHciCluster -Name "$($env.ClusterName)-remove2" -ResourceGroupName $env.ResourceGroup 
+        Remove-AzStackHciCluster -InputObject $clusterremove
     }
 }

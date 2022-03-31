@@ -53,7 +53,7 @@ Adding all guests on current node
 
 ### Example 2: 
 ```powershell
-Invoke-Command -ScriptBlock {Add-AzStackHCIVMAttestation -VMName "guest1", "guest2"} -ComputerName "node1"
+Invoke-Command -ScriptBlock {Add-AzStackHCIVMAttestation -VMName "bhat2", "ppt7pn0"} -ComputerName "HCINODE2"
 ```
 
 ```output

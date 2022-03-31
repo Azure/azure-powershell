@@ -15,11 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzStackHciArcSetting')
 }
 
 Describe 'Remove-AzStackHciArcSetting' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        Remove-AzStackHciArcSetting -Name $env.ArcSettingName -ClusterName $env.ClusterName -ResourceGroupName $env.ResourceGroup
     }
 }

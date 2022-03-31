@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzStackHciExtension'))
 }
 
 Describe 'New-AzStackHciExtension' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        New-AzStackHciExtension -ArcSettingName $env.ArcSettingName -ClusterName $env.ClusterName -Name $env.ExtensionName -ResourceGroupName $env.ResourceGroup
     }
 }

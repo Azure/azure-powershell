@@ -26,7 +26,7 @@ Get-AzStackHCIVMAttestation shows a list of guests added to IMDS Attestation on 
 Get-AzStackHCIVMAttestation
 ```
 
-```output
+```output 
 Name        AttestationHost    Status
 ----        ---------------    ------
 183hcinode1 HCINODE2        Connected

@@ -13,8 +13,8 @@ Create ArcSetting for HCI cluster.
 ## SYNTAX
 
 ```
-New-AzStackHciArcSetting -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzStackHciArcSetting -ClusterName <String> -ResourceGroupName <String> [-Name <String>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,6 +64,21 @@ Aliases: AzureRMContext, AzureCredential
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the proxy resource holding details of HCI ArcSetting information.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: ArcSettingName
+
+Required: False
+Position: Named
+Default value: "default"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

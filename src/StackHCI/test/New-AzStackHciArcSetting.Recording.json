@@ -1,0 +1,40 @@
+{
+  "New-AzStackHciArcSetting+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb/resourceGroups/azurestackhci-pwsh-rg-5n/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusterwsk5/arcSettings/default?api-version=2021-09-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb/resourceGroups/azurestackhci-pwsh-rg-5n/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusterwsk5/arcSettings/default?api-version=2021-09-01",
+      "Content": "{\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "3" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"26005112-0000-0100-0000-62453da50000\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1193" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "7d139576-2873-475e-95d2-2ad3472d3d07" ],
+        "x-ms-correlation-request-id": [ "e9fd4509-46b3-467c-8531-c82e94fe0308" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20220331T053534Z:e9fd4509-46b3-467c-8531-c82e94fe0308" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 31 Mar 2022 05:35:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "682" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb/resourceGroups/azurestackhci-pwsh-rg-5n/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusterwsk5/arcSettings/default\",\"name\":\"default\",\"type\":\"microsoft.azurestackhci/clusters/arcsettings\",\"systemData\":{\"createdBy\":\"priyjain@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-03-31T05:34:31.1123264Z\",\"lastModifiedBy\":\"priyjain@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-03-31T05:35:33.5262763Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"arcInstanceResourceGroup\":\"pwsh-Clusterwsk5-ab1168ae-dca6-46d2-9985-2cd8d81ba8da-Arc-Infra-RG\",\"aggregateState\":\"NotSpecified\",\"perNodeDetails\":[]}}"
+    }
+  }
+}

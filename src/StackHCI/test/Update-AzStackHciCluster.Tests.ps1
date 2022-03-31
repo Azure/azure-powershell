@@ -15,11 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzStackHciCluster'))
 }
 
 Describe 'Update-AzStackHciCluster' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        Update-AzStackHciCluster -ResourceGroupName $env.ResourceGroup -Name $env.ClusterName -DesiredPropertyDiagnosticLevel "Enhanced" -DesiredPropertyWindowsServerSubscription "Disabled"
     }
 }
