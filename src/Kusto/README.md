@@ -53,7 +53,8 @@ require:
   - $(this-folder)/../readme.azure.noprofile.md
 # lock the commit
 input-file:
-  - C:\GitHub\azure-rest-api-specs\specification\azure-kusto\resource-manager\Microsoft.Kusto\stable\2022-02-01\kusto.json
+  - $(repo)/specification/azure-kusto/resource-manager/Microsoft.Kusto/stable/2022-02-01/kusto.json
+branch: e14d80ab3f3630e8640ccd3b01e5ec9df647dc73
 
 ```
 
