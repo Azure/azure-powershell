@@ -7,8 +7,8 @@ schema: 2.0.0
 
 # Remove-AzSecurityAutomation
 
-## SYNOPSIS
-{{ Fill in the Synopsis }}
+## SYNOPSIS	
+Deletes a security automation.
 
 ## SYNTAX
 
@@ -31,16 +31,16 @@ Remove-AzSecurityAutomation -InputObject <PSSecurityAutomation> [-PassThru]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Deletes a security automation.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzSecurityAutomation -ResourceGroupName rg -Name testAutomation
 ```
 
-{{ Add example description here }}
+Deletes 'testAutomation' automation which resides under resource group named 'rg'
 
 ## PARAMETERS
 

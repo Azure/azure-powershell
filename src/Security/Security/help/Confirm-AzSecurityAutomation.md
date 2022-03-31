@@ -8,7 +8,7 @@ schema: 2.0.0
 # Confirm-AzSecurityAutomation
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Validates the security automation model before create or update. Any validation errors are returned to the client.
 
 ## SYNTAX
 
@@ -40,16 +40,16 @@ Confirm-AzSecurityAutomation [-Location <String>] [-Etag <String>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Validates the security automation model before create or update. Any validation errors are returned to the client.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\>  Confirm-AzSecurityAutomation -ResourceGroupName rg -Name automationTest -Location centralus -Description "Test automation creation" -Scopes $scopes -Sources $sources -Actions $actions
 ```
 
-{{ Add example description here }}
+Validates the provided security automation without creating it
 
 ## PARAMETERS
 

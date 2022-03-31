@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzSecurityAutomation
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates or updates a security automation. If a security automation is already created and a subsequent request is issued for the same automation id, then it will be updated.
 
 ## SYNTAX
 
@@ -40,16 +40,16 @@ Set-AzSecurityAutomation [-Location <String>] [-Etag <String>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Creates or updates a security automation. If a security automation is already created and a subsequent request is issued for the same automation id, then it will be updated.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Set-AzSecurityAutomation -ResourceGroupName rg -Name automationTest -Location centralus -Description "Test automation creation" -Scopes $scopes -Sources $sources -Actions $actions
 ```
 
-{{ Add example description here }}
+Creates or updates security automation 'automationTest' under resource group 'rg'
 
 ## PARAMETERS
 
