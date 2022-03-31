@@ -95,8 +95,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Operation request details. This parameter is optional.")]
-        public const String ChangeDesc = "Change Request.Representations.Sample to Request.Representations.Example";
-        [CmdletParameterBreakingChange("Request.Representations.Sample", ChangeDescription = ChangeDesc)]
         public PsApiManagementRequest Request { get; set; }
 
         public const String ChangeDesc2 = "Change Responses.Representations.Sample to Responses.Representations.Example";
@@ -105,8 +103,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Array of possible operation responses. This parameter is optional.")]
-        public const String ChangeDesc2 = "Change Responses.Representations.Sample to Responses.Representations.Example";
-        [CmdletParameterBreakingChange("Responses.Representations.Sample", ChangeDescription = ChangeDesc2)]
         public PsApiManagementResponse[] Responses { get; set; }
 
         public override void ExecuteApiManagementCmdlet()
