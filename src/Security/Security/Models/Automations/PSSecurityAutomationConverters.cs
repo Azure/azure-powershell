@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security;
@@ -42,7 +43,7 @@ namespace Microsoft.Azure.Commands.Security.Models.Automations
                 IsEnabled = value.IsEnabled,
                 Scopes = (IList<PSSecurityAutomationScope>)value.Scopes?.Select(scope => scope.ConvertToPSType()),
                 Sources = (IList<PSSecurityAutomationSource>)value.Sources?.Select(source => source.ConvertToPSType()),
-                Actions = (IList<PSSecurityAutomationAction>)value.Actions?.Select(action => action.ConvertToPSType()),
+                Actions = (IList<PSSecurityAutomationAction>)value.Actions?.Select(action => action.ConvertToPSType())
             };
         }
 
@@ -85,37 +86,37 @@ namespace Microsoft.Azure.Commands.Security.Models.Automations
 
         public static PSSecurityAutomationAction ConvertToPSType(this AutomationAction value)
         {
-            return new PSSecurityAutomationAction()
+            if(value is AutomationActionEventHub)
             {
-                
-            };
-        }
-
-        public static PSSecurityAutomationActionEventHub ConvertToPSType(this AutomationActionEventHub value)
-        {
-            return new PSSecurityAutomationActionEventHub()
+                var valueAsAutomationActionEventHub = (AutomationActionEventHub)value;
+                return new PSSecurityAutomationActionEventHub()
+                {
+                    ConnectionString = valueAsAutomationActionEventHub.ConnectionString,
+                    EventHubResourceId = valueAsAutomationActionEventHub.EventHubResourceId,
+                    SasPolicyName = valueAsAutomationActionEventHub.SasPolicyName
+                };
+            }
+            else if (value is AutomationActionWorkspace)
             {
-                ConnectionString = value.ConnectionString,
-                EventHubResourceId = value.EventHubResourceId,
-                SasPolicyName = value.SasPolicyName
-            };
-        }
-
-        public static PSSecurityAutomationActionWorkspace ConvertToPSType(this AutomationActionWorkspace value)
-        {
-            return new PSSecurityAutomationActionWorkspace()
+                var valueAsAutomationActionWorkspace = (AutomationActionWorkspace)value;
+                return new PSSecurityAutomationActionWorkspace()
+                {
+                    WorkspaceResourceId = valueAsAutomationActionWorkspace.WorkspaceResourceId
+                };
+            }
+            else if (value is AutomationActionLogicApp)
             {
-                WorkspaceResourceId = value.WorkspaceResourceId
-            };
-        }
-
-        public static PSSecurityAutomationActionLogicApp ConvertToPSType(this AutomationActionLogicApp value)
-        {
-            return new PSSecurityAutomationActionLogicApp()
+                var valueAsAutomationActionLogicApp = (AutomationActionLogicApp)value;
+                return new PSSecurityAutomationActionLogicApp()
+                {
+                    LogicAppResourceId = valueAsAutomationActionLogicApp.LogicAppResourceId,
+                    Uri = valueAsAutomationActionLogicApp.Uri
+                };
+            }
+            else
             {
-                LogicAppResourceId = value.LogicAppResourceId,
-                Uri = value.Uri
-            };
+                return new PSSecurityAutomationAction();
+            }
         }
     }
 }
