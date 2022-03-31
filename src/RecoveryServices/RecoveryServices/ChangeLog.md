@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 5.3.0
 * Added support for Trusted VM backup and Enhanced policy for WorkloadType AzureVM.
 * Added support for disabling hybrid backup security features in `Set-AzRecoveryServicesVaultProperty` cmdlet. The feature can be re-enabled by setting `DisableHybridBackupSecurityFeature` flag to $false.
 

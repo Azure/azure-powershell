@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.8.2
 * Added breaking change messages for upcoming breaking change release of version 2.0.0
 
 ## Version 1.8.1

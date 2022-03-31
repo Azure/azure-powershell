@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.0.2
 * Added support for Ubuntu 20.04 vm image. 
     - This enables cluster operations with Ubuntu 20.04 vm image using AZ powershell. 
 
