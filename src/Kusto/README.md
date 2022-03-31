@@ -133,10 +133,10 @@ directive:
       variant: ^Get$|^GetViaIdentity$
     set:
       subject: OperationsResultLocation
-  # For Get-AzKustoOperationsResult no particular need for -PassThru parameter
+  # For Get-AzKustoOperationResult no particular need for -PassThru parameter
   - where:
       verb: Get
-      subject: OperationsResultsLocation
+      subject: ^OperationsResultsLocation$|^OperationsResultLocation$
       variant: ^Get$|^GetViaIdentity$
       parameter-name: PassThru
     hide: true
