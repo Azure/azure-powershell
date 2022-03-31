@@ -125,7 +125,11 @@ CmdletsToExport = 'Get-AzSecurityAlert', 'Set-AzSecurityAlert',
                'Get-AzSecurityAdaptiveApplicationControlGroup', 
                'Get-AzSecurityAdaptiveApplicationControl', 
                'Get-AzSecuritySecureScore', 'Get-AzSecuritySecureScoreControl', 
-               'Get-AzSecuritySecureScoreControlDefinition'
+               'Get-AzSecuritySecureScoreControlDefinition',
+               'Get-AzSecurityAutomation',
+               'Set-AzSecurityAutomation',
+               'Remove-AzSecurityAutomation',
+               'Confirm-AzSecurityAutomation'
 
 # Variables to export from this module
 # VariablesToExport = @()
