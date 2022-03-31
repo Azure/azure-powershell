@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Kusto
-online version: https://docs.microsoft.com/powershell/module/az.kusto/get-azkustooperationsresultslocation
+online version: https://docs.microsoft.com/powershell/module/az.kusto/get-azkustooperationsresultlocation
 schema: 2.0.0
 ---
 
-# Get-AzKustoOperationsResultsLocation
+# Get-AzKustoOperationsResultLocation
 
 ## SYNOPSIS
 Returns operation results.
@@ -14,13 +14,13 @@ Returns operation results.
 
 ### Get (Default)
 ```
-Get-AzKustoOperationsResultsLocation -Location <String> -OperationId <String> [-SubscriptionId <String[]>]
+Get-AzKustoOperationsResultLocation -Location <String> -OperationId <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzKustoOperationsResultsLocation -InputObject <IKustoIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+Get-AzKustoOperationsResultLocation -InputObject <IKustoIdentity> [-DefaultProfile <PSObject>] [-PassThru]
  [<CommonParameters>]
 ```
 

@@ -126,6 +126,20 @@ directive:
   - where:
       verb: Set
     remove: true
+  # Rename cmdlet from Get-AzKustoOperationsResultsLocation to Get-AzKustoOperationsResultLocation so it's consistent with Get-AzKustoOperationsResult
+  - where:
+      verb: Get
+      subject: OperationsResultsLocation
+      variant: ^Get$|^GetViaIdentity$
+    set:
+      subject: OperationsResultLocation
+  # For Get-AzKustoOperationsResult no particular need for -PassThru parameter
+  - where:
+      verb: Get
+      subject: OperationsResultsLocation
+      variant: ^Get$|^GetViaIdentity$
+      parameter-name: PassThru
+    hide: true
   # Correct some generated code
   - from: source-file-csharp
     where: $
