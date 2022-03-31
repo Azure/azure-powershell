@@ -93,6 +93,10 @@ directive:
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}/cancel"].post
     transform: $["description"] = "Stop in-progress database migration to SQL VM."
+
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}"].put
+    transform: $["description"] = "Create a new database migration to a given SQL VM. Note - For the Scope parameter, use the Scope of the SQL VM (/subscriptions/111-222/resourceGroups/myRG/providers/Microsoft.SqlVirtualMachine/SqlVirtualMachines/xyz-SqlVM) and not the Compute SQL VM (/subscriptions/111-222/resourceGroups/myRG/providers/Microsoft.Compute/virtualMachines/xyz-SqlVM)"
   
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}"].patch
@@ -268,4 +272,22 @@ directive:
           - Kind
           - ProvisioningState
           - MigrationStatus
+
+  # Giving preview message to each command
+  - where:
+      subject: (^SqlService)
+    set:
+      preview-message: This is a SQL Service resource and can only be accessed using cmdlets that have SqlService in their name. (For example Get-AzDataMigrationSqlService should be used to access a data migration SQL Service and NOT Get-AzDataMigrationService)
+  - where:
+      subject: (^ToSqlManagedInstance)
+    set:
+      preview-message: Only use cmdlets containing ToSqlManagedInstance in their name for getting or deleting or performing cutover on a migration created using New-AzDataMigrationToSqlManagedInstance
+  - where:
+      subject: (^ToSqlVM)
+    set:
+      preview-message: Only use cmdlets containing ToSqlVM in their name for getting or deleting or performing cutover on a migration created using New-AzDataMigrationToSqlVM
+  - where:
+      subject: (^ToSqlDb)
+    set:
+      preview-message: Only use cmdlets containing ToSqlDb in their name for getting or stopping or deleting a migration created using New-AzDataMigrationToSqlDb
 ```

@@ -61,6 +61,7 @@ Create a new database migration to a given SQL Managed Instance.
 
 ### [New-AzDataMigrationToSqlVM](New-AzDataMigrationToSqlVM.md)
 Create a new database migration to a given SQL VM.
+Note - For the Scope parameter, use the Scope of the SQL VM (/subscriptions/111-222/resourceGroups/myRG/providers/Microsoft.SqlVirtualMachine/SqlVirtualMachines/xyz-SqlVM) and not the Compute SQL VM (/subscriptions/111-222/resourceGroups/myRG/providers/Microsoft.Compute/virtualMachines/xyz-SqlVM)
 
 ### [Register-AzDataMigrationIntegrationRuntime](Register-AzDataMigrationIntegrationRuntime.md)
 Registers Sql Migration Service on Integration Runtime
