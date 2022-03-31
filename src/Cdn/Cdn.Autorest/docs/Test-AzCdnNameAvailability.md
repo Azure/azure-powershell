@@ -37,19 +37,6 @@ Test-AzCdnNameAvailability -Name <String> -Type <ResourceType> [-SubscriptionId 
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CheckViaIdentity
-```
-Test-AzCdnNameAvailability -InputObject <ICdnIdentity>
- -CheckNameAvailabilityInput <ICheckNameAvailabilityInput> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CheckViaIdentityExpanded
-```
-Test-AzCdnNameAvailability -InputObject <ICdnIdentity> -Name <String> -Type <ResourceType>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Check the availability of a resource name.
 This is needed for resources where name is globally unique, such as a CDN endpoint.
@@ -82,7 +69,7 @@ To construct, see NOTES section for CHECKNAMEAVAILABILITYINPUT properties and cr
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ICheckNameAvailabilityInput
-Parameter Sets: Check, Check1, CheckViaIdentity
+Parameter Sets: Check, Check1
 Aliases:
 
 Required: True
@@ -107,28 +94,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-Parameter Sets: CheckViaIdentity, CheckViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Name
 The resource name to validate.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded, CheckExpanded1, CheckViaIdentityExpanded
+Parameter Sets: CheckExpanded, CheckExpanded1
 Aliases:
 
 Required: True
@@ -158,7 +129,7 @@ The type of the resource whose name is to be validated.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ResourceType
-Parameter Sets: CheckExpanded, CheckExpanded1, CheckViaIdentityExpanded
+Parameter Sets: CheckExpanded, CheckExpanded1
 Aliases:
 
 Required: True
@@ -206,8 +177,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ICheckNameAvailabilityInput
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ICheckNameAvailabilityOutput
@@ -224,22 +193,6 @@ To create the parameters described below, construct a hash table containing the 
 CHECKNAMEAVAILABILITYINPUT <ICheckNameAvailabilityInput>: Input of CheckNameAvailability API.
   - `Name <String>`: The resource name to validate.
   - `Type <ResourceType>`: The type of the resource whose name is to be validated.
-
-INPUTOBJECT <ICdnIdentity>: Identity Parameter
-  - `[CustomDomainName <String>]`: Name of the domain under the profile which is unique globally.
-  - `[EndpointName <String>]`: Name of the endpoint under the profile which is unique globally.
-  - `[Id <String>]`: Resource identity path
-  - `[OriginGroupName <String>]`: Name of the origin group which is unique within the endpoint.
-  - `[OriginName <String>]`: Name of the origin which is unique within the profile.
-  - `[PolicyName <String>]`: The name of the CdnWebApplicationFirewallPolicy.
-  - `[ProfileName <String>]`: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
-  - `[ResourceGroupName <String>]`: Name of the Resource group within the Azure subscription.
-  - `[RouteName <String>]`: Name of the routing rule.
-  - `[RuleName <String>]`: Name of the delivery rule which is unique within the endpoint.
-  - `[RuleSetName <String>]`: Name of the rule set under the profile which is unique globally.
-  - `[SecretName <String>]`: Name of the Secret under the profile.
-  - `[SecurityPolicyName <String>]`: Name of the security policy under the profile.
-  - `[SubscriptionId <String>]`: Azure Subscription ID.
 
 ## RELATED LINKS
 
