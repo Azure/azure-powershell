@@ -37,7 +37,8 @@ namespace PSModelGenerator
 
         private static readonly Dictionary<string, string> customMappings = new()
         {
-          { "Microsoft.Azure.Batch.UploadBatchServiceLogsResult", "PSStartComputeNodeServiceLogUploadResult" },
+            { "Microsoft.Azure.Batch.UploadBatchServiceLogsResult", "PSStartComputeNodeServiceLogUploadResult" },
+            { "Microsoft.Azure.Batch.Common.StatusLevelTypes", "PSStatusLevelTypes" }
         };
 
         private static readonly Dictionary<string, string> OMtoPSClassMappings = new();
@@ -98,9 +99,6 @@ namespace PSModelGenerator
             List<(string FullName, string Name)> typeNames = allTypes
                 .Where(t => t.GetInterface("IPropertyMetadata") != null && t.Namespace == "Microsoft.Azure.Batch" && t.IsPublic).Select(t => (t.FullName, t.Name)).ToList();
 
-            // We may want to wrap all enums in this namespace in the future, but limiting it to the scope of this change for now.
-            typeNames.Add(("Microsoft.Azure.Batch.Common.StatusLevelTypes", "StatusLevelTypes"));
-
             foreach ((string fullName, string className) in typeNames)
             {
                 if (OMtoPSClassMappings.ContainsKey(fullName) == false)
@@ -137,7 +135,7 @@ namespace PSModelGenerator
             CodeMemberField wrappedField = new();
             wrappedField.Attributes = MemberAttributes.Assembly;
             wrappedField.Name = OmObject;
-            wrappedField.Type = new CodeTypeReference(omType);
+            wrappedField.Type = new CodeTypeReference(omType.IsEnum ? $"{omType}?" : omType.FullName);
             codeType.Members.Add(wrappedField);
 
             GenerateConstructors(omType, codeType);
@@ -212,7 +210,7 @@ namespace PSModelGenerator
             // Default internal constructor that accepts the OM object to wrap
             CodeConstructor defaultConstructor = new();
             defaultConstructor.Attributes = MemberAttributes.Assembly;
-            CodeParameterDeclarationExpression omObjectParameter = new(t, OmObject);
+            CodeParameterDeclarationExpression omObjectParameter = new(t.IsEnum ? $"{t.FullName}?" : t.FullName, OmObject);
             defaultConstructor.Parameters.Add(omObjectParameter);
             CodeArgumentReferenceExpression omObjectArgumentReference = new(OmObject);
             CodeObjectCreateExpression createException = new(typeof(ArgumentNullException), new CodePrimitiveExpression(OmObject));

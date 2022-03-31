@@ -32,9 +32,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
     public partial class PSStatusLevelTypes
     {
         
-        internal Microsoft.Azure.Batch.Common.StatusLevelTypes omObject;
+        internal Microsoft.Azure.Batch.Common.StatusLevelTypes? omObject;
         
-        internal PSStatusLevelTypes(Microsoft.Azure.Batch.Common.StatusLevelTypes omObject)
+        internal PSStatusLevelTypes(Microsoft.Azure.Batch.Common.StatusLevelTypes? omObject)
         {
             if ((omObject == null))
             {
