@@ -74,7 +74,7 @@ NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Security.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzSecurityAlert', 'Set-AzSecurityAlert', 
+CmdletsToExport = 'Get-AzSecuritySolution', 'Get-AzSecurityAlert', 'Set-AzSecurityAlert', 
                'Get-AzSecurityAutoProvisioningSetting', 
                'Set-AzSecurityAutoProvisioningSetting', 'Get-AzSecurityCompliance', 
                'Get-AzDiscoveredSecuritySolution', 
