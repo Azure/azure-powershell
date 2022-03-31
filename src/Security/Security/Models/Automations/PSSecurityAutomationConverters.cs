@@ -41,9 +41,9 @@ namespace Microsoft.Azure.Commands.Security.Models.Automations
                 Tags = value.Tags,
                 Description = value.Description,
                 IsEnabled = value.IsEnabled,
-                Scopes = (IList<PSSecurityAutomationScope>)value.Scopes?.Select(scope => scope.ConvertToPSType()),
-                Sources = (IList<PSSecurityAutomationSource>)value.Sources?.Select(source => source.ConvertToPSType()),
-                Actions = (IList<PSSecurityAutomationAction>)value.Actions?.Select(action => action.ConvertToPSType())
+                Scopes = value.Scopes?.Select(scope => scope.ConvertToPSType()).ToList(),
+                Sources = value.Sources?.Select(source => source.ConvertToPSType()).ToList(),
+                Actions = value.Actions?.Select(action => action.ConvertToPSType()).ToList()
             };
         }
 
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Security.Models.Automations
             return new PSSecurityAutomationSource()
             {
                 EventSource = value.EventSource,
-                RuleSets = (IList<PSSecurityAutomationRuleSet>)value.RuleSets?.Select(ruleSet => ruleSet.ConvertToPSType())
+                RuleSets = value.RuleSets?.Select(ruleSet => ruleSet.ConvertToPSType()).ToList()
             };
         }
 
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Security.Models.Automations
         {
             return new PSSecurityAutomationRuleSet()
             {
-                Rules = (IList<PSSecurityAutomationTriggeringRule>)value.Rules?.Select(rule => rule.ConvertToPSType())
+                Rules = value.Rules?.Select(rule => rule.ConvertToPSType()).ToList()
             };
         }
 
