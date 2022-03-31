@@ -46,6 +46,7 @@ Describe 'Update-AzFrontDoorCdnEndpoint' {
     }
 
     It 'UpdateViaIdentityExpanded' {
+        $PSDefaultParameterValues['Disabled'] = $true
         $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
         try
         {

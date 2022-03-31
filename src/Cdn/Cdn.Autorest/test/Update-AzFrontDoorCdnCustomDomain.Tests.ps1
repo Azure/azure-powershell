@@ -15,11 +15,42 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzFrontDoorCdnCustomDo
 }
 
 Describe 'Update-AzFrontDoorCdnCustomDomain' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        { 
+            $ResourceGroupName = 'powershelltest'
+            Write-Host -ForegroundColor Green "Use test group $($ResourceGroupName)"
+            $frontDoorCdnProfileName = 'fdp-powershelltest'
+            Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
+            $secretName = "se-powershelltest"
+            Write-Host -ForegroundColor Green "Use secretName : $($secretName)"
+
+            $customDomainName = "domain-powershelltest"
+            Write-Host -ForegroundColor Green "Use custom domain name : $($customDomainName)"
+
+            $secret = Get-AzFrontDoorCdnSecret -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Name $secretName
+
+            Update-AzFrontDoorCdnCustomDomain -CustomDomainName $customDomainName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName `
+            -TlSettingCertificateType "CustomerCertificate" -TlSettingMinimumTlsVersion "TLS10" -SecretId $secret.Id
+        } | Should -Not -Throw
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityExpanded' {
+        { 
+            $PSDefaultParameterValues['Disabled'] = $true
+            $ResourceGroupName = 'powershelltest'
+            Write-Host -ForegroundColor Green "Use test group $($ResourceGroupName)"
+            $frontDoorCdnProfileName = 'fdp-powershelltest'
+            Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
+            $secretName = "se-powershelltest"
+            Write-Host -ForegroundColor Green "Use secretName : $($secretName)"
+
+            $customDomainName = "domain-powershelltest"
+            Write-Host -ForegroundColor Green "Use custom domain name : $($customDomainName)"
+
+            $secret = Get-AzFrontDoorCdnSecret -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Name $secretName
+                
+            Get-AzFrontDoorCdnCustomDomain -ResourceGroupName $ResourceGroupName -ProfileName $frontDoorCdnProfileName -CustomDomainName $customDomainName `
+            | Update-AzFrontDoorCdnCustomDomain -TlSettingCertificateType "CustomerCertificate" -TlSettingMinimumTlsVersion "TLS10" -SecretId $secret.Id
+        } | Should -Not -Throw
     }
 }
