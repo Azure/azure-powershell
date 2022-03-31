@@ -118,8 +118,8 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Automations
                 Tags = Tags ?? InputObject?.Tags,
                 Description = Description ?? InputObject?.Description,
                 IsEnabled = IsEnabled ?? InputObject?.IsEnabled,
-                Scopes = Scopes?.ConvertToAutomationType() ?? InputObject?.Scopes.ConvertToAutomationType(),
-                Sources = Sources?.ConvertToAutomationType() ?? InputObject?.Sources.ConvertToAutomationType(),
+                Scopes = Scopes?.ConvertToAutomationType() ?? InputObject?.Scopes?.ConvertToAutomationType(),
+                Sources = Sources?.ConvertToAutomationType() ?? InputObject?.Sources?.ConvertToAutomationType(),
                 Actions = Actions?.ConvertToAutomationType()
             };
             if (ShouldProcess(Name, VerbsCommon.Set))
