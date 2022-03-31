@@ -33,8 +33,8 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
            Mandatory = true,
            ValueFromPipeline = true,
-           HelpMessage = "The ExpressRoutePort")]
-        public PSExpressRoutePort ExpressRoutePort { get; set; }
+           HelpMessage = "The ExpressRoutePort Object")]
+        public PSExpressRoutePort ExpressRoutePortObject { get; set; }
 
         public override void Execute()
         {
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Network
 
             try
             {
-                this.NetworkClient.NetworkManagementClient.ExpressRoutePortAuthorizations.GetWithHttpMessagesAsync(this.ExpressRoutePort.ResourceGroupName, this.ExpressRoutePort.Name, this.Name).GetAwaiter().GetResult();
+                this.NetworkClient.NetworkManagementClient.ExpressRoutePortAuthorizations.GetWithHttpMessagesAsync(this.ExpressRoutePortObject.ResourceGroupName, this.ExpressRoutePortObject.Name, this.Name).GetAwaiter().GetResult();
             }
             catch (Microsoft.Rest.Azure.CloudException exception)
             {
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Network
             authorizationParameters.Name = this.Name;
 
             // Execute the PUT ExpressRoutePortAuthorizations call
-            var putExpressRoutePortAuthorization = this.NetworkClient.NetworkManagementClient.ExpressRoutePortAuthorizations.CreateOrUpdateWithHttpMessagesAsync(this.ExpressRoutePort.ResourceGroupName, this.ExpressRoutePort.Name, this.Name, authorizationParameters).GetAwaiter().GetResult().Body;
+            var putExpressRoutePortAuthorization = this.NetworkClient.NetworkManagementClient.ExpressRoutePortAuthorizations.CreateOrUpdateWithHttpMessagesAsync(this.ExpressRoutePortObject.ResourceGroupName, this.ExpressRoutePortObject.Name, this.Name, authorizationParameters).GetAwaiter().GetResult().Body;
             var psExpressRoutePortAuthorization = NetworkResourceManagerProfile.Mapper.Map<PSExpressRoutePortAuthorization>(putExpressRoutePortAuthorization);
             WriteObject(psExpressRoutePortAuthorization, true);
         }

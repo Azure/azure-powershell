@@ -25,7 +25,69 @@ The **Remove-AzExpressRoutePortAuthorization** cmdlet removes an authorization a
 ### Example 1
 ```powershell
 $ERPort = Get-AzExpressRoutePort -Name "ContosoPort" -ResourceGroupName "ContosoResourceGroup"
+```
+```output
+Name                       : ContosoPort
+ResourceGroupName          : ContosoResourceGroup
+Location                   : westcentralus
+Id                         : /subscriptions/62364504-2406-418e-971c-05822ff72fad/resourceGroups/ContosoResourceGroup/pr
+                             oviders/Microsoft.Network/expressRoutePorts/ContosoPort
+Etag                       : W/"cf987288-013e-40bf-a2aa-b29d017e7b7f"
+ResourceGuid               : 4c0e5cdb-79e1-4cb8-a430-0ce9b24472ca
+ProvisioningState          : Succeeded
+PeeringLocation            : Area51-ERDirect
+BandwidthInGbps            : 100
+ProvisionedBandwidthInGbps : 0
+Encapsulation              : QinQ
+Mtu                        : 1500
+EtherType                  : 0x8100
+AllocationDate             : Thursday, March 31, 2022
+Identity                   : null
+Links                      : [
+                               {
+                                 "Name": "link1",
+                                 "Etag": "W/\"cf987288-013e-40bf-a2aa-b29d017e7b7f\"",
+                                 "Id": "/subscriptions/62364504-2406-418e-971c-05822ff72fad/resourceGroups/ContosoResou
+                             rceGroup/providers/Microsoft.Network/expressRoutePorts/ContosoPort/links/link1",
+                                 "RouterName": "a51-test-06gmr-cis-3",
+                                 "InterfaceName": "HundredGigE15/15/19",
+                                 "PatchPanelId": "PP:0123:1110201 - Port 42",
+                                 "RackId": "A51 02050-0123-L",
+                                 "ConnectorType": "LC",
+                                 "AdminState": "Disabled",
+                                 "ProvisioningState": "Succeeded",
+                                 "MacSecConfig": {
+                                   "SciState": "Disabled",
+                                   "Cipher": "GcmAes128"
+                                 }
+                               },
+                               {
+                                 "Name": "link2",
+                                 "Etag": "W/\"cf987288-013e-40bf-a2aa-b29d017e7b7f\"",
+                                 "Id": "/subscriptions/62364504-2406-418e-971c-05822ff72fad/resourceGroups/ContosoResou
+                             rceGroup/providers/Microsoft.Network/expressRoutePorts/ContosoPort/links/link2",
+                                 "RouterName": "a51-test-06gmr-cis-4",
+                                 "InterfaceName": "HundredGigE15/15/19",
+                                 "PatchPanelId": "2050:0124:1110854 - Port 42",
+                                 "RackId": "A51 02050-0124-L",
+                                 "ConnectorType": "LC",
+                                 "AdminState": "Disabled",
+                                 "ProvisioningState": "Succeeded",
+                                 "MacSecConfig": {
+                                   "SciState": "Disabled",
+                                   "Cipher": "GcmAes128"
+                                 }
+                               }
+                             ]
+Circuits                   : []
+```
+```powershell
 Remove-AzExpressRoutePortAuthorization -Name "ContosoPortAuthorization" -ExpressRoutePort $ERPort
+```
+```output
+Confirm
+Are you sure you want to remove resource 'ContosoPortAuthorization'
+[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
 ```
 
 This example removes an authorization from an ExpressRoutePort. The first command uses

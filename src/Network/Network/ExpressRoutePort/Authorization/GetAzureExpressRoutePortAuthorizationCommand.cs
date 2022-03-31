@@ -31,22 +31,22 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The ExpressRoutePort")]
-        public PSExpressRoutePort ExpressRoutePort { get; set; }
+            HelpMessage = "The ExpressRoutePort Object")]
+        public PSExpressRoutePort ExpressRoutePortObject { get; set; }
 
         public override void Execute()
         {
             base.Execute();
             if (!string.IsNullOrEmpty(this.Name))
             {
-                var getExpressRoutePortAuthorization = this.NetworkClient.NetworkManagementClient.ExpressRoutePortAuthorizations.GetWithHttpMessagesAsync(this.ExpressRoutePort.ResourceGroupName, this.ExpressRoutePort.Name, this.Name).GetAwaiter().GetResult().Body;
+                var getExpressRoutePortAuthorization = this.NetworkClient.NetworkManagementClient.ExpressRoutePortAuthorizations.GetWithHttpMessagesAsync(this.ExpressRoutePortObject.ResourceGroupName, this.ExpressRoutePortObject.Name, this.Name).GetAwaiter().GetResult().Body;
                 var psExpressRoutePortAuthorization = NetworkResourceManagerProfile.Mapper.Map<PSExpressRoutePortAuthorization>(getExpressRoutePortAuthorization);
                 WriteObject(psExpressRoutePortAuthorization);
             }
             else
             {
 
-                var listExpressRoutePortAuthorizations = this.NetworkClient.NetworkManagementClient.ExpressRoutePortAuthorizations.ListWithHttpMessagesAsync(this.ExpressRoutePort.ResourceGroupName, this.ExpressRoutePort.Name).GetAwaiter().GetResult().Body;
+                var listExpressRoutePortAuthorizations = this.NetworkClient.NetworkManagementClient.ExpressRoutePortAuthorizations.ListWithHttpMessagesAsync(this.ExpressRoutePortObject.ResourceGroupName, this.ExpressRoutePortObject.Name).GetAwaiter().GetResult().Body;
                 var psExpressRoutePortAuthorizations = new List<PSExpressRoutePortAuthorization>();
                 if (listExpressRoutePortAuthorizations != null)
                 {

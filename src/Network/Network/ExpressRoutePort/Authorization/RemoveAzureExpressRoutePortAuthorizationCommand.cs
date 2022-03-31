@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
              Mandatory = true,
              ValueFromPipeline = true,
-             HelpMessage = "The ExpressRoutePort")]
+             HelpMessage = "The ExpressRoutePort Object")]
         public PSExpressRoutePort ExpressRoutePortObject { get; set; }
 
         [Parameter(
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Network
                 Name,
                 () =>
                 {
-                    this.NetworkClient.NetworkManagementClient.ExpressRoutePortAuthorizations.DeleteWithHttpMessagesAsync(ExpressRoutePort.ResourceGroupName, ExpressRoutePort.Name, Name).GetAwaiter().GetResult();
+                    this.NetworkClient.NetworkManagementClient.ExpressRoutePortAuthorizations.DeleteWithHttpMessagesAsync(ExpressRoutePortObject.ResourceGroupName, ExpressRoutePortObject.Name, Name).GetAwaiter().GetResult();
                     if (PassThru.IsPresent)
                     {
                         WriteObject(true);
