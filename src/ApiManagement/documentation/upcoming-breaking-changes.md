@@ -26,3 +26,10 @@
 -->
 
 # Upcoming Breaking Changes
+
+The following cmdlets were affected this release:
+
+**Set-AzApiManagementOperation**
+**New-AzApiManagementOperation**
+
+BreakingChangeAttributeParameterReplaced: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementRepresentation.Samlple
