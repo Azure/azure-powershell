@@ -27,24 +27,81 @@ function SystemTopicTests {
     $secondResourceGroup = Get-ResourceGroupName
     $subscriptionId = Get-SubscriptionId
 
-    #New-ResourceGroup $resourceGroupName $location
+    New-ResourceGroup $resourceGroupName $location
 
-    #New-ResourceGroup $secondResourceGroup $location
+    New-ResourceGroup $secondResourceGroup $location
+
+    $sbNamespaceName = Get-ServiceBusNameSpaceName
+    $sbNamespaceName2 = Get-ServiceBusNameSpaceName
+    $sbNamespaceName3 = Get-ServiceBusNameSpaceName
+    $sbQueueName = Get-ServiceBusQueueName
+    $sbTopicName = Get-ServiceBusTopicName
+
+    $sbNamespaceInRg1 = New-ServiceBusNamespace $ResourceGroupName $sbNamespaceName $Location
+
+    $sbNamespace1InRg2 = New-ServiceBusNamespace $secondResourceGroup $sbNamespaceName2 $Location
+
+    $sbNamespace2InRg2 = New-ServiceBusNamespace $secondResourceGroup $sbNamespaceName3 $Location
 
     try
     {
-        
+        Write-Debug "Creating a new EventGrid SystemTopic: $topicName in resource group $resourceGroupName"
+        Write-Debug "Topic: $topicName"
+        $result = New-AzEventGridSystemTopic -ResourceGroup $resourceGroupName -Name $topicName -Location $location -Source $sbNamespaceInRg1.Id -TopicType 'Microsoft.ServiceBus/Namespaces'
+        Assert-True {$result.ProvisioningState -eq "Succeeded"}
 
-        Write-Debug "Getting all the system topics created in the subscription"
+        Write-Debug "Getting the created topic within the resource group"
+        $createdTopic = Get-AzEventGridSystemTopic -ResourceGroup $resourceGroupName -Name $topicName
+        Assert-True {$createdTopic.Count -eq 1}
+        Assert-True {$createdTopic.TopicName -eq $topicName} "System Topic created earlier is not found."
+
+        Write-Debug "Creating a second EventGrid SystemTopic: $topicName2 in resource group $secondResourceGroup"
+        $result = New-AzEventGridSystemTopic -ResourceGroup $secondResourceGroup -Name $topicName2 -Location $location -Tag @{ Dept = "IT"; Environment = "Test" } -Source $sbNamespace1InRg2.Id -TopicType 'Microsoft.ServiceBus/Namespaces'
+        Assert-True {$result.ProvisioningState -eq "Succeeded"}
+
+        Write-Debug "Creating a third EventGrid SystemTopic: $topicName3 in resource group $secondResourceGroup"
+        $result = New-AzEventGridSystemTopic -ResourceGroup $secondResourceGroup -Name $topicName3 -Location $location -Source $sbNamespace1InRg2.Id -TopicType 'Microsoft.ServiceBus/Namespaces'
+        Assert-True {$result.ProvisioningState -eq "Succeeded"}
+
+        Write-Debug "Listing all the system topics created in the resourceGroup $secondResourceGroup"
+        $allCreatedTopics = Get-AzEventGridSystemTopic -ResourceGroup $secondResourceGroup
+        Assert-True {$allCreatedTopics.PsSystemTopicsList.Count -ge 0 } "Topic created earlier is not found in the list"
+
+        Write-Debug "Listing the topics created in the resourceGroup $secondResourceGroup using Top option"
+        $allCreatedTopics = Get-AzEventGridSystemTopic -ResourceGroup $secondResourceGroup -Top 1
+        Assert-True {$allCreatedTopics.NextLink -ne $null } "NextLink should not be null as more topics should be available under resource group.."
+
+        Write-Debug "Listing the next topics created in the resourceGroup $secondResourceGroup using NextLink"
+        $allCreatedTopics = Get-AzEventGridSystemTopic -NextLink $allCreatedTopics.NextLink
+
+        Write-Debug "Getting the first 1 topic created in the subscription using Top options"
+        $allCreatedTopics = Get-AzEventGridSystemTopic -Top 1
+        Assert-True {$allCreatedTopics.PsSystemTopicsList.Count -ge 0} "SystemTopics created earlier are not found."
+        Assert-True {$allCreatedTopics.NextLink -ne $null } "NextLink should not be null as more SystemTopics should be available under the azure subscription."
+
+        Write-Debug "Getting all the SystemTopics created in the subscription"
         $allCreatedTopics = Get-AzEventGridSystemTopic
-        Write "$allCreatedTopics"
-        Assert-True {$allCreatedTopics.PsTopicsList.Count -ge 0} "Topics created earlier are not found."
+        Assert-True {$allCreatedTopics.PsSystemTopicsList.Count -ge 0} "Topics created earlier are not found."
+
+        Write-Debug "Deleting topic: $topicName"
+        Remove-AzEventGridSystemTopic -ResourceGroup $resourceGroupName -Name $topicName
+
+        Write-Debug "Deleting topic: $topicName"
+        Remove-AzEventGridSystemTopic -ResourceGroup $secondResourceGroup -Name $topicName2
+
+        Write-Debug "Deleting topic: $topicName"
+        Remove-AzEventGridSystemTopic -ResourceGroup $secondResourceGroup -Name $topicName3
 
        
     }
     finally
     {
-        
+        Remove-AzServiceBusNamespace -ResourceGroup $resourceGroupName -Name $sbNamespaceInRg1
+        Remove-AzServiceBusNamespace -ResourceGroup $secondResourceGroup -Name $sbNamespace1InRg2
+        Remove-AzServiceBusNamespace -ResourceGroup $secondResourceGroup -Name $sbNamespace2InRg2
+
+        Remove-ResourceGroup $resourceGroupName
+        Remove-ResourceGroup $secondResourceGroup
     }
 }
 

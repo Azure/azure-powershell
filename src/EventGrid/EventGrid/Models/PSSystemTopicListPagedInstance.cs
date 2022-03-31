@@ -19,14 +19,14 @@ namespace Microsoft.Azure.Commands.EventGrid.Models
 {
     public class PSSystemTopicListPagedInstance
     {
-        public List<PSSytemTopicListInstance> PsTopicsList = new List<PSSytemTopicListInstance>();
+        public List<PSSytemTopicListInstance> PsSystemTopicsList = new List<PSSytemTopicListInstance>();
         public string NextLink;
 
         public PSSystemTopicListPagedInstance(IEnumerable<SystemTopic> topicsList, string nextLink)
         {
             foreach (SystemTopic topic in topicsList)
             {
-                this.PsTopicsList.Add(new PSSytemTopicListInstance(topic));
+                this.PsSystemTopicsList.Add(new PSSytemTopicListInstance(topic));
             }
 
             this.NextLink = nextLink;

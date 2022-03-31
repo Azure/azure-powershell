@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         /// string which represents the source.
         /// </summary>
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.TagsHelp,
             ParameterSetName = SystemTopicNameParameterSet)]
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         /// string which represents the topic type.
         /// </summary>
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.TagsHelp,
             ParameterSetName = SystemTopicNameParameterSet)]

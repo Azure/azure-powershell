@@ -368,6 +368,273 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         #endregion
 
+        #region SystemTopicEventSubscription
+
+        public EventSubscription GetSystemTopicEventSubscriptiion(string resourceGroupName, string systemTopicName, string eventSubscriptionName)
+        {
+            var systemTopicEventSubscription = this.Client.SystemTopicEventSubscriptions.Get(resourceGroupName, systemTopicName, eventSubscriptionName);
+            return systemTopicEventSubscription;
+        }
+
+        public EventSubscription createSystemTopicEventSubscriptiion(
+            string resourceGroupName,
+            string systemTopicName,
+            string eventSubscriptionName,
+            string scope,
+            string endpoint,
+            string endpointType,
+            string subjectBeginsWith,
+            string subjectEndsWith,
+            bool isSubjectCaseSensitive,
+            string[] includedEventTypes,
+            string[] labels,
+            RetryPolicy retryPolicy,
+            string deliverySchema,
+            string deadLetterEndpoint,
+            DateTime expirationDate,
+            Hashtable[] advancedFilter,
+            int maxEventsPerBatch,
+            int preferredBatchSizeInKiloByte,
+            string aadTenantId,
+            string aadAppIdOrUri)
+        {
+            EventSubscription eventSubscription = new EventSubscription();
+            EventSubscriptionDestination destination = null;
+
+            if (string.IsNullOrEmpty(endpointType) ||
+                string.Equals(endpointType, EventGridConstants.Webhook, StringComparison.OrdinalIgnoreCase))
+            {
+                destination = new WebHookEventSubscriptionDestination()
+                {
+                    EndpointUrl = endpoint,
+                    MaxEventsPerBatch = (maxEventsPerBatch == 0) ? (int?)null : maxEventsPerBatch,
+                    PreferredBatchSizeInKilobytes = (preferredBatchSizeInKiloByte == 0) ? (int?)null : preferredBatchSizeInKiloByte,
+                    AzureActiveDirectoryApplicationIdOrUri = aadAppIdOrUri,
+                    AzureActiveDirectoryTenantId = aadTenantId
+                };
+            }
+            else if (string.Equals(endpointType, EventGridConstants.EventHub, StringComparison.OrdinalIgnoreCase))
+            {
+                destination = new EventHubEventSubscriptionDestination()
+                {
+                    ResourceId = endpoint
+                };
+            }
+            else if (string.Equals(endpointType, EventGridConstants.StorageQueue, StringComparison.OrdinalIgnoreCase))
+            {
+                destination = this.GetStorageQueueEventSubscriptionDestinationFromEndpoint(endpoint);
+            }
+            else if (string.Equals(endpointType, EventGridConstants.HybridConnection, StringComparison.OrdinalIgnoreCase))
+            {
+                destination = new HybridConnectionEventSubscriptionDestination()
+                {
+                    ResourceId = endpoint
+                };
+            }
+            else if (string.Equals(endpointType, EventGridConstants.ServiceBusQueue, StringComparison.OrdinalIgnoreCase))
+            {
+                destination = new ServiceBusQueueEventSubscriptionDestination()
+                {
+                    ResourceId = endpoint
+                };
+            }
+            else if (string.Equals(endpointType, EventGridConstants.ServiceBusTopic, StringComparison.OrdinalIgnoreCase))
+            {
+                destination = new ServiceBusTopicEventSubscriptionDestination()
+                {
+                    ResourceId = endpoint
+                };
+            }
+            else if (string.Equals(endpointType, EventGridConstants.AzureFunction, StringComparison.OrdinalIgnoreCase))
+            {
+                destination = new AzureFunctionEventSubscriptionDestination()
+                {
+                    ResourceId = endpoint
+                };
+            }
+            else
+            {
+                throw new ArgumentNullException(nameof(endpointType), "Invalid EndpointType. Allowed values are WebHook, EventHub, StorageQueue, HybridConnection or ServiceBusQueue.");
+            }
+
+            eventSubscription.Destination = destination;
+
+            var filter = new EventSubscriptionFilter()
+            {
+                SubjectBeginsWith = subjectBeginsWith,
+                SubjectEndsWith = subjectEndsWith,
+                IsSubjectCaseSensitive = isSubjectCaseSensitive
+            };
+
+            if (includedEventTypes != null)
+            {
+                filter.IncludedEventTypes = new List<string>(includedEventTypes);
+            }
+
+            eventSubscription.Filter = filter;
+
+            if (advancedFilter != null && advancedFilter.Count() > 0)
+            {
+                this.UpdatedAdvancedFilterParameters(advancedFilter, eventSubscription.Filter);
+            }
+
+            if (labels != null)
+            {
+                eventSubscription.Labels = new List<string>(labels);
+            }
+
+            if (retryPolicy != null)
+            {
+                eventSubscription.RetryPolicy = retryPolicy;
+            }
+
+            if (!string.IsNullOrEmpty(deadLetterEndpoint))
+            {
+                eventSubscription.DeadLetterDestination = this.GetStorageBlobDeadLetterDestinationFromEndPoint(deadLetterEndpoint);
+            }
+
+            eventSubscription.EventDeliverySchema = deliverySchema;
+
+            if (expirationDate != null && expirationDate != DateTime.MinValue)
+            {
+                eventSubscription.ExpirationTimeUtc = expirationDate;
+            }
+            var systemTopicEventSubscription = this.Client.SystemTopicEventSubscriptions.CreateOrUpdate(resourceGroupName, systemTopicName, eventSubscriptionName, eventSubscription);
+            return systemTopicEventSubscription;
+        }
+
+        public EventSubscription UpdateSystemTopicEventSubscriptiion(
+            string resourceGroupName,
+            string systemTopicName,
+            string eventSubscriptionName,
+            string scope,
+            string endpoint,
+            string endpointType,
+            string subjectBeginsWith,
+            string subjectEndsWith,
+            bool isSubjectCaseSensitive,
+            string[] includedEventTypes,
+            string[] labels,
+            RetryPolicy retryPolicy,
+            string deliverySchema,
+            string deadLetterEndpoint,
+            DateTime expirationDate,
+            Hashtable[] advancedFilter,
+            int maxEventsPerBatch,
+            int preferredBatchSizeInKiloByte,
+            string aadTenantId,
+            string aadAppIdOrUri)
+        {
+            EventSubscriptionDestination destination = null;
+            DeadLetterDestination deadLetterDestination = null;
+            EventSubscriptionFilter eventSubscriptionFilter = null;
+
+            if (string.IsNullOrEmpty(endpointType) ||
+                string.Equals(endpointType, EventGridConstants.Webhook, StringComparison.OrdinalIgnoreCase))
+            {
+                destination = new WebHookEventSubscriptionDestination()
+                {
+                    EndpointUrl = endpoint,
+                    MaxEventsPerBatch = (maxEventsPerBatch == 0) ? (int?)null : maxEventsPerBatch,
+                    PreferredBatchSizeInKilobytes = (preferredBatchSizeInKiloByte == 0) ? (int?)null : preferredBatchSizeInKiloByte,
+                    AzureActiveDirectoryApplicationIdOrUri = aadAppIdOrUri,
+                    AzureActiveDirectoryTenantId = aadTenantId
+                };
+            }
+            else if (string.Equals(endpointType, EventGridConstants.EventHub, StringComparison.OrdinalIgnoreCase))
+            {
+                destination = new EventHubEventSubscriptionDestination()
+                {
+                    ResourceId = endpoint
+                };
+            }
+            else if (string.Equals(endpointType, EventGridConstants.StorageQueue, StringComparison.OrdinalIgnoreCase))
+            {
+                destination = this.GetStorageQueueEventSubscriptionDestinationFromEndpoint(endpoint);
+            }
+            else if (string.Equals(endpointType, EventGridConstants.HybridConnection, StringComparison.OrdinalIgnoreCase))
+            {
+                destination = new HybridConnectionEventSubscriptionDestination()
+                {
+                    ResourceId = endpoint
+                };
+            }
+            else if (string.Equals(endpointType, EventGridConstants.ServiceBusQueue, StringComparison.OrdinalIgnoreCase))
+            {
+                destination = new ServiceBusQueueEventSubscriptionDestination()
+                {
+                    ResourceId = endpoint
+                };
+            }
+            else if (string.Equals(endpointType, EventGridConstants.ServiceBusTopic, StringComparison.OrdinalIgnoreCase))
+            {
+                destination = new ServiceBusTopicEventSubscriptionDestination()
+                {
+                    ResourceId = endpoint
+                };
+            }
+            else if (string.Equals(endpointType, EventGridConstants.AzureFunction, StringComparison.OrdinalIgnoreCase))
+            {
+                destination = new AzureFunctionEventSubscriptionDestination()
+                {
+                    ResourceId = endpoint
+                };
+            }
+            else
+            {
+                throw new ArgumentNullException(nameof(endpointType), "Invalid EndpointType. Allowed values are WebHook, EventHub, StorageQueue, HybridConnection or ServiceBusQueue.");
+            }
+
+
+            var filter = new EventSubscriptionFilter()
+            {
+                SubjectBeginsWith = subjectBeginsWith,
+                SubjectEndsWith = subjectEndsWith,
+                IsSubjectCaseSensitive = isSubjectCaseSensitive
+            };
+
+            if (includedEventTypes != null)
+            {
+                filter.IncludedEventTypes = new List<string>(includedEventTypes);
+            }
+
+            eventSubscriptionFilter = filter;
+
+            if (advancedFilter != null && advancedFilter.Count() > 0)
+            {
+                this.UpdatedAdvancedFilterParameters(advancedFilter, eventSubscriptionFilter);
+            }
+
+
+            EventSubscriptionUpdateParameters eventSubscriptionUpdateParameters = new EventSubscriptionUpdateParameters();
+            eventSubscriptionUpdateParameters.Destination = destination;
+            eventSubscriptionUpdateParameters.DeliveryWithResourceIdentity = null;
+            eventSubscriptionUpdateParameters.Filter = filter;
+            eventSubscriptionUpdateParameters.Labels = labels;
+            eventSubscriptionUpdateParameters.ExpirationTimeUtc = expirationDate;
+            eventSubscriptionUpdateParameters.EventDeliverySchema = deliverySchema;
+            eventSubscriptionUpdateParameters.RetryPolicy = retryPolicy;
+            eventSubscriptionUpdateParameters.DeadLetterDestination = deadLetterDestination;
+            eventSubscriptionUpdateParameters.DeadLetterWithResourceIdentity = null;
+            //(EventSubscriptionDestination destination = null, DeliveryWithResourceIdentity deliveryWithResourceIdentity = null, EventSubscriptionFilter filter = null, IList<string> labels = null, DateTime ? expirationTimeUtc = null, string eventDeliverySchema = null, RetryPolicy retryPolicy = null, DeadLetterDestination deadLetterDestination = null, DeadLetterWithResourceIdentity deadLetterWithResourceIdentity = null);
+
+            var systemTopicEventSubscription = this.Client.SystemTopicEventSubscriptions.Update(resourceGroupName, systemTopicName, eventSubscriptionName, eventSubscriptionUpdateParameters);
+            return systemTopicEventSubscription;
+        }
+
+        public void DeleteSystemTopicEventSubscriptiion(string resourceGroupName, string systemTopicName, string eventSubscriptionName)
+        {
+            this.Client.SystemTopicEventSubscriptions.Delete(resourceGroupName, systemTopicName, eventSubscriptionName);
+        }
+
+        public EventSubscriptionFullUrl GetAzFullUrlForSystemTopicEventSubscription(string resourceGroupName, string systemTopicName, string eventSubscriptionName)
+        {
+            return this.Client.SystemTopicEventSubscriptions.GetFullUrl(resourceGroupName, systemTopicName, eventSubscriptionName);
+        }
+
+
+        #endregion
+
         #region Domain
         public Domain GetDomain(string resourceGroupName, string domainName)
         {
@@ -616,6 +883,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         }
 
         #endregion
+
 
         public EventSubscription CreateEventSubscription(
             string scope,
@@ -877,6 +1145,11 @@ namespace Microsoft.Azure.Commands.EventGrid
         public EventSubscriptionFullUrl GetEventSubscriptionFullUrl(string scope, string eventSubscriptionName)
         {
             return this.Client.EventSubscriptions.GetFullUrl(scope, eventSubscriptionName);
+        }
+
+        public DeliveryAttributeListResult GetAzFullUrlForSystemTopicEventSubscription(string scope, string eventSubscriptionName)
+        {
+            return this.Client.EventSubscriptions.GetDeliveryAttributes(scope, eventSubscriptionName);
         }
 
         public (IEnumerable<EventSubscription>, string) ListRegionalEventSubscriptionsByResourceGroup(string resourceGroupName, string location, string oDataQuery, int? top)

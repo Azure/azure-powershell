@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp,
-            ParameterSetName = TopicNameParameterSet)]
+            ParameterSetName = SystemTopicNameParameterSet)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [Alias(AliasResourceGroup)]
@@ -42,8 +42,8 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = EventGridConstants.TopicNameHelp,
-            ParameterSetName = TopicNameParameterSet)]
-        [ResourceNameCompleter("Microsoft.EventGrid/topics", nameof(ResourceGroupName))]
+            ParameterSetName = SystemTopicNameParameterSet)]
+        [ResourceNameCompleter("Microsoft.EventGrid/systemTopics", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
         [Alias("TopicName")]
         public string Name { get; set; }
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
-            HelpMessage = "EventGrid Topic ResourceID.",
+            HelpMessage = "EventGrid System Topic ResourceID.",
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             HelpMessage = EventGridConstants.TopicInputObjectHelp,
             ParameterSetName = TopicInputObjectParameterSet)]
         [ValidateNotNullOrEmpty]
-        public PSTopic InputObject { get; set; }
+        public PSSystemTopic InputObject { get; set; }
 
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.EventGrid
                     topicName = this.InputObject.TopicName;
                 }
 
-                this.Client.DeleteTopic(resourceGroupName, topicName);
+                this.Client.DeleteSystemTopic(resourceGroupName, topicName);
                 if (this.PassThru)
                 {
                     this.WriteObject(true);

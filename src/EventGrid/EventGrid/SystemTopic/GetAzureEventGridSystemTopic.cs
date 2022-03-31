@@ -24,7 +24,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 namespace Microsoft.Azure.Commands.EventGrid
 {
     /// <summary>
-    /// 'Get-AzEventGridTopic' Cmdlet gives the details of a / List of EventGrid topic(s)
+    /// 'Get-AzEventGridSystemTopic' Cmdlet gives the details of a / List of EventGrid topic(s)
     /// <para> If Topic name provided, a single Topic details will be returned</para>
     /// <para> If Topic name not provided, list of Topics will be returned</para>
     /// </summary>
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         "Get",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridSystemTopic",
         DefaultParameterSetName = ResourceGroupNameParameterSet),
-    OutputType(typeof(PSTopic), typeof(PSTopicListInstance))]
+    OutputType(typeof(PSSystemTopic), typeof(PSSytemTopicListInstance))]
 
     public class GetAzureRmEventGridSystemTopic : AzureEventGridCmdletBase
     {
