@@ -136,9 +136,8 @@ directive:
   # For Get-AzKustoOperationResult no particular need for -PassThru parameter
   - where:
       verb: Get
-      subject: ^OperationsResultsLocation$|^OperationsResultLocation$
-      variant: ^Get$|^GetViaIdentity$
-      parameter-name: PassThru
+      subject: OperationsResultLocation
+      parameter-name: ^PassThru$
     hide: true
   # Correct some generated code
   - from: source-file-csharp

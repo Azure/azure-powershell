@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1:
 ```powershell
-{{ Add code here }}
+PS C:\> Get-AzKustoOperationsResultLocation -Location eastus -OperationId 5c1495e5-f1c4-4c5e-ac95-01a1c7a33353
 ```
 
 ```output
-{{ Add output here }}
+EndTime             Name                                 PercentComplete StartTime           Status
+-------             ----                                 --------------- ---------           ------
+29/03/2022 10:02:20 5c1495e5-f1c4-4c5e-ac95-01a1c7a33353 1               29/03/2022 10:01:46 Completed
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Get operation result with kusto.
