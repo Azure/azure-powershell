@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Automations
         public string ResourceId { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.InputObject)]
-        [ValidateNotNullOrEmpty]
+        [ValidateNotNull]
         public PSSecurityAutomation InputObject { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = ParameterHelpMessages.PassThru)]

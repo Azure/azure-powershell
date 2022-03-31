@@ -65,21 +65,21 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Automations
 
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.AutomationScopes)]
         [Parameter(ParameterSetName = ParameterSetNames.ResourceId, Mandatory = true, HelpMessage = ParameterHelpMessages.AutomationScopes)]
-        [ValidateNotNullOrEmpty]
+        [ValidateNotNull]
         public PSSecurityAutomationScope[] Scopes { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.AutomationSources)]
         [Parameter(ParameterSetName = ParameterSetNames.ResourceId, Mandatory = true, HelpMessage = ParameterHelpMessages.AutomationSources)]
-        [ValidateNotNullOrEmpty]
+        [ValidateNotNull]
         public PSSecurityAutomationSource[] Sources { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.AutomationActions)]
         [Parameter(ParameterSetName = ParameterSetNames.ResourceId, Mandatory = true, HelpMessage = ParameterHelpMessages.AutomationActions)]
-        [ValidateNotNullOrEmpty]
+        [ValidateNotNull]
         public PSSecurityAutomationAction[] Actions { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.InputObject)]
-        [ValidateNotNullOrEmpty]
+        [ValidateNotNull]
         public PSSecurityAutomation InputObject { get; set; }
 
         public override void ExecuteCmdlet()
