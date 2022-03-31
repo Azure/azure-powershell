@@ -24,6 +24,8 @@ namespace Microsoft.Azure.Commands.Security.Models.Automations
     public static class PSSecurityAutomationConverters
     {
 
+        #region PSType Converters
+
         public static List<PSSecurityAutomation> ConvertToPSType(this IEnumerable<Automation> value)
         {
             return value.Select(aps => aps.ConvertToPSType()).ToList();
@@ -118,5 +120,93 @@ namespace Microsoft.Azure.Commands.Security.Models.Automations
                 return new PSSecurityAutomationAction();
             }
         }
+
+        #endregion
+
+        #region AutomationType Converters
+
+        public static List<AutomationScope> ConvertToAutomationType(this IEnumerable<PSSecurityAutomationScope> value)
+        {
+            return value.Select(aps => aps.ConvertToAutomationType()).ToList();
+        }
+
+        public static List<AutomationSource> ConvertToAutomationType(this IEnumerable<PSSecurityAutomationSource> value)
+        {
+            return value.Select(aps => aps.ConvertToAutomationType()).ToList();
+        }
+
+        public static List<AutomationAction> ConvertToAutomationType(this IEnumerable<PSSecurityAutomationAction> value)
+        {
+            return value.Select(aps => aps.ConvertToAutomationType()).ToList();
+        }
+
+        public static AutomationScope ConvertToAutomationType(this PSSecurityAutomationScope value)
+        {
+            return new AutomationScope()
+            {
+                Description = value.Description,
+                ScopePath = value.ScopePath
+            };
+        }
+
+        public static AutomationSource ConvertToAutomationType(this PSSecurityAutomationSource value)
+        {
+            return new AutomationSource()
+            {
+                EventSource = value.EventSource,
+                RuleSets = value.RuleSets?.Select(ruleSet => ruleSet.ConvertToAutomationType()).ToList()
+            };
+        }
+
+        public static AutomationRuleSet ConvertToAutomationType(this PSSecurityAutomationRuleSet value)
+        {
+            return new AutomationRuleSet()
+            {
+                Rules = value.Rules?.Select(rule => rule.ConvertToAutomationType()).ToList()
+            };
+        }
+
+        public static AutomationTriggeringRule ConvertToAutomationType(this PSSecurityAutomationTriggeringRule value)
+        {
+            return new AutomationTriggeringRule()
+            {
+                ExpectedValue = value.ExpectedValue,
+                OperatorProperty = value.OperatorProperty,
+                PropertyJPath = value.PropertyJPath,
+                PropertyType = value.PropertyType
+            };
+        }
+
+        public static AutomationAction ConvertToAutomationType(this PSSecurityAutomationAction value)
+        {
+            if (value is PSSecurityAutomationActionEventHub)
+            {
+                var valueAsAutomationActionEventHub = (PSSecurityAutomationActionEventHub)value;
+                return new AutomationActionEventHub(valueAsAutomationActionEventHub.ConnectionString, valueAsAutomationActionEventHub.EventHubResourceId, valueAsAutomationActionEventHub.SasPolicyName);
+            }
+            else if (value is PSSecurityAutomationActionWorkspace)
+            {
+                var valueAsAutomationActionWorkspace = (PSSecurityAutomationActionWorkspace)value;
+                return new AutomationActionWorkspace()
+                {
+                    WorkspaceResourceId = valueAsAutomationActionWorkspace.WorkspaceResourceId
+                };
+            }
+            else if (value is PSSecurityAutomationActionLogicApp)
+            {
+                var valueAsAutomationActionLogicApp = (PSSecurityAutomationActionLogicApp)value;
+                return new AutomationActionLogicApp()
+                {
+                    LogicAppResourceId = valueAsAutomationActionLogicApp.LogicAppResourceId,
+                    Uri = valueAsAutomationActionLogicApp.Uri
+                };
+            }
+            else
+            {
+                return new AutomationAction();
+            }
+        }
+
+        #endregion
     }
 }

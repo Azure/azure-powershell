@@ -43,38 +43,46 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Automations
 
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.Location)]
         [Parameter(ParameterSetName = ParameterSetNames.ResourceId, Mandatory = true, HelpMessage = ParameterHelpMessages.Location)]
+        [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = false, HelpMessage = ParameterHelpMessages.Location)]
         [ValidateNotNullOrEmpty]
         [LocationCompleter("Microsoft.Security/automations")]
         public string Location { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = false, HelpMessage = ParameterHelpMessages.Etag)]
         [Parameter(ParameterSetName = ParameterSetNames.ResourceId, Mandatory = false, HelpMessage = ParameterHelpMessages.Etag)]
+        [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = false, HelpMessage = ParameterHelpMessages.Etag)]
         public string Etag { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = false, HelpMessage = ParameterHelpMessages.Tags)]
         [Parameter(ParameterSetName = ParameterSetNames.ResourceId, Mandatory = false, HelpMessage = ParameterHelpMessages.Tags)]
+        [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = false, HelpMessage = ParameterHelpMessages.Tags)]
         public IDictionary<string, string> Tags { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = false, HelpMessage = ParameterHelpMessages.AutomationDescription)]
         [Parameter(ParameterSetName = ParameterSetNames.ResourceId, Mandatory = false, HelpMessage = ParameterHelpMessages.AutomationDescription)]
+        [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = false, HelpMessage = ParameterHelpMessages.AutomationDescription)]
         public string Description { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = false, HelpMessage = ParameterHelpMessages.IsEnabled)]
         [Parameter(ParameterSetName = ParameterSetNames.ResourceId, Mandatory = false, HelpMessage = ParameterHelpMessages.IsEnabled)]
-        public bool IsEnabled { get; set; }
+        [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = false, HelpMessage = ParameterHelpMessages.IsEnabled)]
+        public bool? IsEnabled { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.AutomationScopes)]
         [Parameter(ParameterSetName = ParameterSetNames.ResourceId, Mandatory = true, HelpMessage = ParameterHelpMessages.AutomationScopes)]
+        [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = false, HelpMessage = ParameterHelpMessages.AutomationScopes)]
         [ValidateNotNull]
         public PSSecurityAutomationScope[] Scopes { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.AutomationSources)]
         [Parameter(ParameterSetName = ParameterSetNames.ResourceId, Mandatory = true, HelpMessage = ParameterHelpMessages.AutomationSources)]
+        [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = false, HelpMessage = ParameterHelpMessages.AutomationSources)]
         [ValidateNotNull]
         public PSSecurityAutomationSource[] Sources { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.AutomationActions)]
         [Parameter(ParameterSetName = ParameterSetNames.ResourceId, Mandatory = true, HelpMessage = ParameterHelpMessages.AutomationActions)]
+        [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = true, HelpMessage = ParameterHelpMessages.AutomationActions)]
         [ValidateNotNull]
         public PSSecurityAutomationAction[] Actions { get; set; }
 
@@ -105,14 +113,14 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Automations
             }
             var automation = new Automation()
             {
-                Location = Location,
-                Etag = Etag,
-                Tags = Tags,
-                Description = Description,
-                IsEnabled = IsEnabled,
-                Scopes = null,
-                Sources = null,
-                Actions = null
+                Location = Location ?? InputObject?.Location,
+                Etag = Etag ?? InputObject?.ETag,
+                Tags = Tags ?? InputObject?.Tags,
+                Description = Description ?? InputObject?.Description,
+                IsEnabled = IsEnabled ?? InputObject?.IsEnabled,
+                Scopes = Scopes?.ConvertToAutomationType() ?? InputObject?.Scopes.ConvertToAutomationType(),
+                Sources = Sources?.ConvertToAutomationType() ?? InputObject?.Sources.ConvertToAutomationType(),
+                Actions = Actions?.ConvertToAutomationType()
             };
             if (ShouldProcess(Name, VerbsCommon.Set))
             {
