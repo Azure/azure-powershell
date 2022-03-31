@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Network
                 () =>
                 {
                     this.NetworkClient.NetworkManagementClient.ExpressRoutePortAuthorizations.DeleteWithHttpMessagesAsync(ExpressRoutePort.ResourceGroupName, ExpressRoutePort.Name, Name).GetAwaiter().GetResult();
-                    if (PassThru)
+                    if (PassThru.IsPresent)
                     {
                         WriteObject(true);
                     }
