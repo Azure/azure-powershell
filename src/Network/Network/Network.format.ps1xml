@@ -3478,6 +3478,10 @@
                 <Label>GatewayManagerEtag</Label>
                 <PropertyName>GatewayManagerEtag</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>AuthorizationKey</Label>
+                <PropertyName>AuthorizationKey</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
