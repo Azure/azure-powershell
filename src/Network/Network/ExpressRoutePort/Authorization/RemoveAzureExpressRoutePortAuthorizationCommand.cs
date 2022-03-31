@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Network
              Mandatory = true,
              ValueFromPipeline = true,
              HelpMessage = "The ExpressRoutePort")]
-        public PSExpressRoutePort ExpressRoutePort { get; set; }
+        public PSExpressRoutePort ExpressRoutePortObject { get; set; }
 
         [Parameter(
             Mandatory = false,
