@@ -31,7 +31,7 @@ Patch a HealthBot.
 
 ### Example 1: update HealthBot by Resourcegroupname and Name
 ```powershell
-update-AzHealthBot -ResourceGroupName youriTest -Name yourihealthbot -Sku S1
+Update-AzHealthBot -ResourceGroupName youriTest -Name yourihealthbot -Sku S1
 ```
 
 ```output
