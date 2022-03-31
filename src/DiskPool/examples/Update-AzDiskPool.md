@@ -12,7 +12,7 @@ This command updates a Disk Pool.
 ### Example 2: Update a Disk Pool by object
 ```powershell
 PS C:\> $inputObject = Get-AzDiskPool -ResourceGroupName 'storagepool-rg-test' -Name 'disk-pool-1'
-PS C:\> Update-AzDiskPool -InputObject $inputObject -ResourceGroupName 'storagepool-rg-test' -DiskId @()
+PS C:\> Update-AzDiskPool -InputObject $inputObject -DiskId @()
 
 Name             Location    Status    ProvisioningState AvailabilityZone
 ----             --------    ------    ----------------- ----------------
