@@ -19,6 +19,10 @@
 -->
 
 ## Upcoming Release
+* Generated the following cmdlets to autoGen: `Get-AzOperationalInsightsDeletedWorkspace`,`Get-AzOperationalInsightsTable`, 
+`Get-AzOperationalInsightsWorkspace`,`Move-AzOperationalInsightsTable`, `New-AzOperationalInsightsTable`,`New-AzOperationalInsightsTableColumnObject`, 
+`New-AzOperationalInsightsWorkspace`, `Remove-AzOperationalInsightsTable`, `Remove-AzOperationalInsightsWorkspace`, `Update-AzOperationalInsightsTable`, `Update-AzOperationalInsightsWorkspace`.
+* Removed the following handcrafted cmdlets: `Get-AzOperationalInsightsWorkspace`, `New-AzOperationalInsightsWorkspace`, `Remove-AzOperationalInsightsWorkspace`, `Set-AzOperationalInsightsWorkspace`, `Get-AzOperationalInsightsDeletedWorkspace`, `Get-AzOperationalInsightsTable`
 * Removed capacity validation in new and update cluster cmdlets as validation exists on server side.
 * Extended error message on base class for extended information.
 * Bug fix - prevent exceptions while using StorageInsight cmdlets.
