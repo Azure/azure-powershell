@@ -40,6 +40,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
             ParameterSetName = ResourceIdParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Application Insights Component Resource Id.")]
+        [CmdletParameterBreakingChange("ResourceId", ChangeDescription = "Parameter ResourceId will be removed in upcoming Az.ApplicationInsights 2.0.0")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 

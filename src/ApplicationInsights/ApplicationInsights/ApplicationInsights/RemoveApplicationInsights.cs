@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
             ParameterSetName = ComponentObjectParameterSet,
             ValueFromPipeline = true,
             HelpMessage = "Application Insights Component Object.")]
-        [CmdletParameterBreakingChange("ApplicationInsightsComponent", ChangeDescription = "Type of ApplicationInsightsComponent will be updated to match API 2020-02 in Az.ApplicationInsights 2.0.0")]
+        [CmdletParameterBreakingChange("ApplicationInsightsComponent", ChangeDescription = "Type of ApplicationInsightsComponent will be updated to match API 2020-02-02 in Az.ApplicationInsights 2.0.0")]
         [ValidateNotNull]
         public PSApplicationInsightsComponent ApplicationInsightsComponent { get; set; }
 
