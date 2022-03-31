@@ -250,15 +250,18 @@ function Test-AzureBackupDataMove
 
 function Test-AzureVMGetItems
 {
-	$location = "southeastasia"
-	$resourceGroupName = Create-ResourceGroup $location
+	$location = "centraluseuap" #"southeastasia"
+	$resourceGroupName = "hiagarg" #Create-ResourceGroup $location
+	$vmName1 = "hiagaNewVm1"
+	$vmName2 = "hiaganewVM2"
+	$vaultName = "hiaga-adhoc-vault"
 
 	try
 	{
 		# Setup
-		$vm = Create-VM $resourceGroupName $location 1
-		$vm2 = Create-VM $resourceGroupName $location 12
-		$vault = Create-RecoveryServicesVault $resourceGroupName $location
+		$vm = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmName1 # Create-VM $resourceGroupName $location 1
+		$vm2 = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmName2 # Create-VM $resourceGroupName $location 12
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName # Create-RecoveryServicesVault $resourceGroupName $location
 
 		# disable soft delete for successful cleanup
 		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState "Disable"
@@ -355,7 +358,8 @@ function Test-AzureVMGetItems
 	finally
 	{
 		# Cleanup
-		Cleanup-ResourceGroup $resourceGroupName
+		#Cleanup-ResourceGroup $resourceGroupName
+		# Disable protection with remove recovery points 
 	}
 }
 

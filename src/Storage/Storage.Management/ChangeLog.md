@@ -23,7 +23,7 @@
     - `New-AzStorageContext`
 * Fixed copy blob failure on Premium Storage account, or account enabled hierarchical namespace
     -  `Copy-AzStorageBlob` 
-* Supported create account SAS token, container SAS token, blob  SAS token with EncrptionScope
+* Supported create account SAS token, container SAS token, blob  SAS token with EncryptionScope
     -  `New-AzStorageAccountSASToken` 
     -  `New-AzStorageContainerSASToken` 
     -  `New-AzStorageBlobSASToken` 
