@@ -160,7 +160,6 @@ This release migrates Microsoft.Azure.Graph SDK to MicrosoftGraph SDK.
 * Axel B. Andersen (@Agazoth)
   * Update Get-AzADUser.md (#17549)
   * Added a new example (#17535)
-* @azure-powershell-bot, Move Websites to main
 * @davidslamb, Fix invalid SAS token from New-AzServiceBusAuthorizationRuleSASToken (#17349)
 * elle (@elle24), Update Get-AzApplicationGatewayRequestRoutingRule.md (#17405)
 * @enevoj, Update Get-AzDataCollectionRule.md (#17586)
