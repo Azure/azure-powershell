@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Resources.ManagementGroups
             {
                 PreregisterSubscription();
 
-                var checkRequest = new CheckNameAvailabilityRequest(name: GroupName, Type.HyphenMinusprovidersHyphenMinusMicrosoftFullStopManagementHyphenMinusmanagementGroups);
+                var checkRequest = new CheckNameAvailabilityRequest(name: GroupName, Type.MicrosoftManagementManagementGroups);
 
                 dynamic response = ManagementGroupsApiClient.CheckNameAvailability(checkRequest);
 

@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Resources.ManagementGroups.Common;
 using Microsoft.Azure.Commands.Resources.Models.ManagementGroups;
@@ -22,41 +21,30 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Resources.ManagementGroups
 {
-    /// <summary>
-    /// Add-AzManagementGroupSubscription Cmdlet
-    /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ManagementGroupSubscription",DefaultParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet,SupportsShouldProcess = true), OutputType(typeof(PSManagementGroupSubscription))]
-    public class NewAzureRmManagementGroupSubscription : AzureManagementGroupsCmdletBase
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HierarchySettings", DefaultParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSHierarchySettings))]
+    public class GetAzureRmManagementGroupHierarchySettings : AzureManagementGroupsCmdletBase
     {
         [Alias("GroupId")]
         [CmdletParameterBreakingChange("GroupName", ReplaceMentCmdletParameterName = "GroupId", ChangeDescription = "We will replace GroupName with GroupId to make it more clear.")]
-        [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = true,
-            HelpMessage = Constants.HelpMessages.GroupName, Position = 0)]
+        [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = true, HelpMessage = Constants.HelpMessages.GroupName, Position = 0)]
+        [Parameter(ParameterSetName = Constants.ParameterSetNames.ParentGroupParameterSet, Mandatory = true,
+            HelpMessage = Constants.HelpMessages.ParentObject)]
         [ValidateNotNullOrEmpty]
-        public string GroupName { get; set; } = null;
-
-        [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = true,
-            HelpMessage = Constants.HelpMessages.SubscriptionId, Position = 1)]
-        [ValidateNotNullOrEmpty]
-        public Guid SubscriptionId { get; set; }
-
-        [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = false)]
-        public SwitchParameter PassThru { get; set; }
+        public string GroupName { get; set; }
 
         public override void ExecuteCmdlet()
         {
             try
             {
                 if (ShouldProcess(
-                    string.Format(Resource.NewManagementGroupSubShouldProcessTarget, SubscriptionId, GroupName),
-                    string.Format(Resource.NewManagementGroupSubShouldProcessAction, SubscriptionId, GroupName)))
+                      string.Format(Resource.NewManagementGroupShouldProcessTarget, GroupName),
+                      string.Format(Resource.NewManagementGroupShouldProcessAction, GroupName)))
                 {
                     PreregisterSubscription();
-                    PreregisterSubscription(SubscriptionId.ToString());
-                    
-                    var response = ManagementGroupsApiClient.ManagementGroupSubscriptions.Create(GroupName, SubscriptionId.ToString());
 
-                    WriteObject(new PSManagementGroupSubscription(response));
+                    var response = ManagementGroupsApiClient.HierarchySettings.Get(GroupName);
+
+                    WriteObject(new PSHierarchySettings(response));
                 }
             }
             catch (ErrorResponseException ex)

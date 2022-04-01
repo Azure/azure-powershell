@@ -22,23 +22,20 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Resources.ManagementGroups
 {
-    /// <summary>
-    /// Add-AzManagementGroupSubscription Cmdlet
-    /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ManagementGroupSubscription",DefaultParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet,SupportsShouldProcess = true), OutputType(typeof(PSManagementGroupSubscription))]
-    public class NewAzureRmManagementGroupSubscription : AzureManagementGroupsCmdletBase
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ManagementGroupSubscription", DefaultParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSManagementGroupSubscription))]
+    public class GetAzureRmManagementGroupSubscription : AzureManagementGroupsCmdletBase
     {
         [Alias("GroupId")]
         [CmdletParameterBreakingChange("GroupName", ReplaceMentCmdletParameterName = "GroupId", ChangeDescription = "We will replace GroupName with GroupId to make it more clear.")]
         [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = true,
-            HelpMessage = Constants.HelpMessages.GroupName, Position = 0)]
+           HelpMessage = Constants.HelpMessages.GroupName, Position = 0)]
         [ValidateNotNullOrEmpty]
         public string GroupName { get; set; } = null;
 
         [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = true,
             HelpMessage = Constants.HelpMessages.SubscriptionId, Position = 1)]
         [ValidateNotNullOrEmpty]
-        public Guid SubscriptionId { get; set; }
+        public string SubscriptionId { get; set; }
 
         [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
@@ -53,12 +50,14 @@ namespace Microsoft.Azure.Commands.Resources.ManagementGroups
                 {
                     PreregisterSubscription();
                     PreregisterSubscription(SubscriptionId.ToString());
-                    
-                    var response = ManagementGroupsApiClient.ManagementGroupSubscriptions.Create(GroupName, SubscriptionId.ToString());
 
+                    var response = (SubscriptionUnderManagementGroup)ManagementGroupsApiClient.ManagementGroupSubscriptions.GetSubscription(GroupName, SubscriptionId);
+
+                    
                     WriteObject(new PSManagementGroupSubscription(response));
                 }
             }
+            
             catch (ErrorResponseException ex)
             {
                 Utility.HandleErrorResponseException(ex);

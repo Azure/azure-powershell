@@ -1,13 +1,13 @@
 {
   "Entries": [
     {
-      "RequestUri": "/providers/Microsoft.Management/checkNameAvailability?api-version=2018-03-01-preview",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9jaGVja05hbWVBdmFpbGFiaWxpdHk/YXBpLXZlcnNpb249MjAxOC0wMy0wMS1wcmV2aWV3",
+      "RequestUri": "/providers/Microsoft.Management/checkNameAvailability?api-version=2021-04-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9jaGVja05hbWVBdmFpbGFiaWxpdHk/YXBpLXZlcnNpb249MjAyMS0wNC0wMQ==",
       "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"name\": \"testMG3\",\r\n  \"type\": \"/providers/Microsoft.Management/managementGroups\"\r\n}",
+      "RequestBody": "{\r\n  \"name\": \"testMG3\",\r\n  \"type\": \"Microsoft.Management/managementGroups\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1578577b-1702-4240-80f7-af73d28cb1c0"
+          "b1ec9014-a9e7-4cd4-b33a-b7fe1876a0c4"
         ],
         "Accept-Language": [
           "en-US"
@@ -22,7 +22,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "88"
+          "77"
         ]
       },
       "ResponseHeaders": {
@@ -33,16 +33,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "westcentralus:77948d6e-1632-4d32-b9d9-ceaf0004aeb0"
+          "westus:7c5a7eca-18eb-4f2c-93c0-004ad3d5c74a"
         ],
         "x-ba-restapi": [
           "0.0.0.0"
         ],
         "client-request-id": [
-          "77948d6e-1632-4d32-b9d9-ceaf0004aeb0"
+          "7c5a7eca-18eb-4f2c-93c0-004ad3d5c74a"
         ],
         "request-id": [
-          "77948d6e-1632-4d32-b9d9-ceaf0004aeb0"
+          "7c5a7eca-18eb-4f2c-93c0-004ad3d5c74a"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -51,10 +51,10 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "77948d6e-1632-4d32-b9d9-ceaf0004aeb0"
+          "7c5a7eca-18eb-4f2c-93c0-004ad3d5c74a"
         ],
         "x-ms-routing-request-id": [
-          "WESTCENTRALUS:20220324T001510Z:77948d6e-1632-4d32-b9d9-ceaf0004aeb0"
+          "WESTUS:20220401T172155Z:7c5a7eca-18eb-4f2c-93c0-004ad3d5c74a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -63,7 +63,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 24 Mar 2022 00:15:10 GMT"
+          "Fri, 01 Apr 2022 17:21:54 GMT"
         ],
         "Content-Length": [
           "109"

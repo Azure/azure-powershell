@@ -1,13 +1,13 @@
 {
   "Entries": [
     {
-      "RequestUri": "/providers/Microsoft.Management/managementGroups/TestPSRemoveGroup?api-version=2018-03-01-preview",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9tYW5hZ2VtZW50R3JvdXBzL1Rlc3RQU1JlbW92ZUdyb3VwP2FwaS12ZXJzaW9uPTIwMTgtMDMtMDEtcHJldmlldw==",
+      "RequestUri": "/providers/Microsoft.Management/managementGroups/TestPSRemoveGroup?api-version=2021-04-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9tYW5hZ2VtZW50R3JvdXBzL1Rlc3RQU1JlbW92ZUdyb3VwP2FwaS12ZXJzaW9uPTIwMjEtMDQtMDE=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"name\": \"TestPSRemoveGroup\",\r\n  \"properties\": {\r\n    \"details\": {\r\n      \"parent\": {}\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "79c7ecdf-e3c8-4729-8a7f-ac1d67489ad4"
+          "c47bdd91-d3c3-4bec-b9a4-2cdb078935d6"
         ],
         "Cache-Control": [
           "no-cache"
@@ -39,16 +39,16 @@
           "59"
         ],
         "x-ms-request-id": [
-          "westcentralus:3787091c-2d6d-4597-ab12-60d5d7e264c0"
+          "westcentralus:29f5764f-93ab-44c0-a93f-71c58f66ee7a"
         ],
         "x-ba-restapi": [
           "0.0.0.0"
         ],
         "client-request-id": [
-          "3787091c-2d6d-4597-ab12-60d5d7e264c0"
+          "29f5764f-93ab-44c0-a93f-71c58f66ee7a"
         ],
         "request-id": [
-          "3787091c-2d6d-4597-ab12-60d5d7e264c0"
+          "29f5764f-93ab-44c0-a93f-71c58f66ee7a"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -57,10 +57,10 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "3787091c-2d6d-4597-ab12-60d5d7e264c0"
+          "29f5764f-93ab-44c0-a93f-71c58f66ee7a"
         ],
         "x-ms-routing-request-id": [
-          "WESTCENTRALUS:20220323T184923Z:3787091c-2d6d-4597-ab12-60d5d7e264c0"
+          "WESTCENTRALUS:20220401T174911Z:29f5764f-93ab-44c0-a93f-71c58f66ee7a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -69,10 +69,10 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 23 Mar 2022 18:49:23 GMT"
+          "Fri, 01 Apr 2022 17:49:11 GMT"
         ],
         "Content-Length": [
-          "567"
+          "556"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -84,17 +84,17 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestPSRemoveGroup\",\r\n  \"type\": \"/providers/Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestPSRemoveGroup\",\r\n  \"properties\": {\r\n    \"tenantId\": \"c7a87cda-9a66-4920-b0f8-869baa04efe0\",\r\n    \"displayName\": \"TestPSRemoveGroup\",\r\n    \"details\": {\r\n      \"version\": 5,\r\n      \"updatedTime\": \"2022-03-23T18:47:58.3537796Z\",\r\n      \"updatedBy\": \"9e41f384-0aa9-41bc-a29d-6d956cd8eadb\",\r\n      \"parent\": {\r\n        \"id\": \"/providers/Microsoft.Management/managementGroups/c7a87cda-9a66-4920-b0f8-869baa04efe0\",\r\n        \"name\": \"c7a87cda-9a66-4920-b0f8-869baa04efe0\",\r\n        \"displayName\": \"Root Management Group\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestPSRemoveGroup\",\r\n  \"type\": \"Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestPSRemoveGroup\",\r\n  \"properties\": {\r\n    \"tenantId\": \"c7a87cda-9a66-4920-b0f8-869baa04efe0\",\r\n    \"displayName\": \"TestPSRemoveGroup\",\r\n    \"details\": {\r\n      \"version\": 8,\r\n      \"updatedTime\": \"2022-04-01T17:17:50.0827327Z\",\r\n      \"updatedBy\": \"9e41f384-0aa9-41bc-a29d-6d956cd8eadb\",\r\n      \"parent\": {\r\n        \"id\": \"/providers/Microsoft.Management/managementGroups/c7a87cda-9a66-4920-b0f8-869baa04efe0\",\r\n        \"name\": \"c7a87cda-9a66-4920-b0f8-869baa04efe0\",\r\n        \"displayName\": \"Root Management Group\"\r\n      }\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/providers/Microsoft.Management/managementGroups/TestPSRemoveGroup?api-version=2018-03-01-preview&$recurse=false",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9tYW5hZ2VtZW50R3JvdXBzL1Rlc3RQU1JlbW92ZUdyb3VwP2FwaS12ZXJzaW9uPTIwMTgtMDMtMDEtcHJldmlldyYkcmVjdXJzZT1mYWxzZQ==",
+      "RequestUri": "/providers/Microsoft.Management/managementGroups/TestPSRemoveGroup?api-version=2021-04-01&$recurse=false",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9tYW5hZ2VtZW50R3JvdXBzL1Rlc3RQU1JlbW92ZUdyb3VwP2FwaS12ZXJzaW9uPTIwMjEtMDQtMDEmJHJlY3Vyc2U9ZmFsc2U=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "0e89a732-c02d-4c55-b745-d7967849efd2"
+          "859edb0c-0b37-449d-b813-85650917733f"
         ],
         "Cache-Control": [
           "no-cache"
@@ -117,16 +117,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "westcentralus:8f9791ec-a282-4187-bbb8-9068db8b41c8"
+          "westcentralus:5a4d42a8-0a81-4e94-8be1-f7ae7f7fc737"
         ],
         "x-ba-restapi": [
           "0.0.0.0"
         ],
         "client-request-id": [
-          "8f9791ec-a282-4187-bbb8-9068db8b41c8"
+          "5a4d42a8-0a81-4e94-8be1-f7ae7f7fc737"
         ],
         "request-id": [
-          "8f9791ec-a282-4187-bbb8-9068db8b41c8"
+          "5a4d42a8-0a81-4e94-8be1-f7ae7f7fc737"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -135,10 +135,10 @@
           "11996"
         ],
         "x-ms-correlation-request-id": [
-          "8f9791ec-a282-4187-bbb8-9068db8b41c8"
+          "5a4d42a8-0a81-4e94-8be1-f7ae7f7fc737"
         ],
         "x-ms-routing-request-id": [
-          "WESTCENTRALUS:20220323T184924Z:8f9791ec-a282-4187-bbb8-9068db8b41c8"
+          "WESTCENTRALUS:20220401T174911Z:5a4d42a8-0a81-4e94-8be1-f7ae7f7fc737"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -147,10 +147,10 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 23 Mar 2022 18:49:23 GMT"
+          "Fri, 01 Apr 2022 17:49:11 GMT"
         ],
         "Content-Length": [
-          "567"
+          "556"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -162,17 +162,17 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestPSRemoveGroup\",\r\n  \"type\": \"/providers/Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestPSRemoveGroup\",\r\n  \"properties\": {\r\n    \"tenantId\": \"c7a87cda-9a66-4920-b0f8-869baa04efe0\",\r\n    \"displayName\": \"TestPSRemoveGroup\",\r\n    \"details\": {\r\n      \"version\": 5,\r\n      \"updatedTime\": \"2022-03-23T18:47:58.3537796Z\",\r\n      \"updatedBy\": \"9e41f384-0aa9-41bc-a29d-6d956cd8eadb\",\r\n      \"parent\": {\r\n        \"id\": \"/providers/Microsoft.Management/managementGroups/c7a87cda-9a66-4920-b0f8-869baa04efe0\",\r\n        \"name\": \"c7a87cda-9a66-4920-b0f8-869baa04efe0\",\r\n        \"displayName\": \"Root Management Group\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestPSRemoveGroup\",\r\n  \"type\": \"Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestPSRemoveGroup\",\r\n  \"properties\": {\r\n    \"tenantId\": \"c7a87cda-9a66-4920-b0f8-869baa04efe0\",\r\n    \"displayName\": \"TestPSRemoveGroup\",\r\n    \"details\": {\r\n      \"version\": 8,\r\n      \"updatedTime\": \"2022-04-01T17:17:50.0827327Z\",\r\n      \"updatedBy\": \"9e41f384-0aa9-41bc-a29d-6d956cd8eadb\",\r\n      \"parent\": {\r\n        \"id\": \"/providers/Microsoft.Management/managementGroups/c7a87cda-9a66-4920-b0f8-869baa04efe0\",\r\n        \"name\": \"c7a87cda-9a66-4920-b0f8-869baa04efe0\",\r\n        \"displayName\": \"Root Management Group\"\r\n      }\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/providers/Microsoft.Management/managementGroups/TestPSRemoveGroup?api-version=2018-03-01-preview",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9tYW5hZ2VtZW50R3JvdXBzL1Rlc3RQU1JlbW92ZUdyb3VwP2FwaS12ZXJzaW9uPTIwMTgtMDMtMDEtcHJldmlldw==",
+      "RequestUri": "/providers/Microsoft.Management/managementGroups/TestPSRemoveGroup?api-version=2021-04-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9tYW5hZ2VtZW50R3JvdXBzL1Rlc3RQU1JlbW92ZUdyb3VwP2FwaS12ZXJzaW9uPTIwMjEtMDQtMDE=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "32152d5f-4197-424a-ad2f-c8dd783f1457"
+          "8fb1a47f-722a-475d-8a97-ca07a4781a92"
         ],
         "Cache-Control": [
           "no-cache"
@@ -195,28 +195,28 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/providers/Microsoft.Management/operationResults/delete/managementGroups/TestPSRemoveGroup?api-version=2018-03-01-preview"
+          "https://management.azure.com/providers/Microsoft.Management/operationResults/delete/managementGroups/TestPSRemoveGroup?api-version=2021-04-01"
         ],
         "Retry-After": [
           "0"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/providers/Microsoft.Management/operationResults/delete/asyncOperation/status/managementGroups/TestPSRemoveGroup?api-version=2018-03-01-preview"
+          "https://management.azure.com/providers/Microsoft.Management/operationResults/delete/asyncOperation/status/managementGroups/TestPSRemoveGroup?api-version=2021-04-01"
         ],
         "x-ms-ratelimit-remaining-managementgroups-requests": [
           "59"
         ],
         "x-ms-request-id": [
-          "westcentralus:fedb37ee-49df-43da-b1d0-296906e134a1"
+          "westcentralus:2af5712a-17fb-47ca-9eeb-20c00a39ed05"
         ],
         "x-ba-restapi": [
           "0.0.0.0"
         ],
         "client-request-id": [
-          "fedb37ee-49df-43da-b1d0-296906e134a1"
+          "2af5712a-17fb-47ca-9eeb-20c00a39ed05"
         ],
         "request-id": [
-          "fedb37ee-49df-43da-b1d0-296906e134a1"
+          "2af5712a-17fb-47ca-9eeb-20c00a39ed05"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -225,10 +225,10 @@
           "14999"
         ],
         "x-ms-correlation-request-id": [
-          "fedb37ee-49df-43da-b1d0-296906e134a1"
+          "2af5712a-17fb-47ca-9eeb-20c00a39ed05"
         ],
         "x-ms-routing-request-id": [
-          "WESTCENTRALUS:20220323T184925Z:fedb37ee-49df-43da-b1d0-296906e134a1"
+          "WESTCENTRALUS:20220401T174913Z:2af5712a-17fb-47ca-9eeb-20c00a39ed05"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -237,10 +237,10 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 23 Mar 2022 18:49:24 GMT"
+          "Fri, 01 Apr 2022 17:49:12 GMT"
         ],
         "Content-Length": [
-          "182"
+          "171"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -249,17 +249,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestPSRemoveGroup\",\r\n  \"type\": \"/providers/Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestPSRemoveGroup\",\r\n  \"status\": \"NotStarted\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestPSRemoveGroup\",\r\n  \"type\": \"Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestPSRemoveGroup\",\r\n  \"status\": \"NotStarted\"\r\n}",
       "StatusCode": 202
     },
     {
-      "RequestUri": "/providers/Microsoft.Management/operationResults/delete/asyncOperation/status/managementGroups/TestPSRemoveGroup?api-version=2018-03-01-preview",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9vcGVyYXRpb25SZXN1bHRzL2RlbGV0ZS9hc3luY09wZXJhdGlvbi9zdGF0dXMvbWFuYWdlbWVudEdyb3Vwcy9UZXN0UFNSZW1vdmVHcm91cD9hcGktdmVyc2lvbj0yMDE4LTAzLTAxLXByZXZpZXc=",
+      "RequestUri": "/providers/Microsoft.Management/operationResults/delete/asyncOperation/status/managementGroups/TestPSRemoveGroup?api-version=2021-04-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9vcGVyYXRpb25SZXN1bHRzL2RlbGV0ZS9hc3luY09wZXJhdGlvbi9zdGF0dXMvbWFuYWdlbWVudEdyb3Vwcy9UZXN0UFNSZW1vdmVHcm91cD9hcGktdmVyc2lvbj0yMDIxLTA0LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "32152d5f-4197-424a-ad2f-c8dd783f1457"
+          "8fb1a47f-722a-475d-8a97-ca07a4781a92"
         ],
         "User-Agent": [
           "FxVersion/5.0.1522.11506",
@@ -276,16 +276,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "westcentralus:4f139145-b986-479a-b605-eb6eb797dd2c"
+          "westcentralus:1e2844f1-6138-48c0-86f7-790d7ad21185"
         ],
         "x-ba-restapi": [
           "0.0.0.0"
         ],
         "client-request-id": [
-          "4f139145-b986-479a-b605-eb6eb797dd2c"
+          "1e2844f1-6138-48c0-86f7-790d7ad21185"
         ],
         "request-id": [
-          "4f139145-b986-479a-b605-eb6eb797dd2c"
+          "1e2844f1-6138-48c0-86f7-790d7ad21185"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -294,10 +294,10 @@
           "11997"
         ],
         "x-ms-correlation-request-id": [
-          "4f139145-b986-479a-b605-eb6eb797dd2c"
+          "1e2844f1-6138-48c0-86f7-790d7ad21185"
         ],
         "x-ms-routing-request-id": [
-          "WESTCENTRALUS:20220323T184935Z:4f139145-b986-479a-b605-eb6eb797dd2c"
+          "WESTCENTRALUS:20220401T174923Z:1e2844f1-6138-48c0-86f7-790d7ad21185"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -306,7 +306,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 23 Mar 2022 18:49:35 GMT"
+          "Fri, 01 Apr 2022 17:49:22 GMT"
         ],
         "Content-Length": [
           "169"
@@ -325,13 +325,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/providers/Microsoft.Management/operationResults/delete/managementGroups/TestPSRemoveGroup?api-version=2018-03-01-preview",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9vcGVyYXRpb25SZXN1bHRzL2RlbGV0ZS9tYW5hZ2VtZW50R3JvdXBzL1Rlc3RQU1JlbW92ZUdyb3VwP2FwaS12ZXJzaW9uPTIwMTgtMDMtMDEtcHJldmlldw==",
+      "RequestUri": "/providers/Microsoft.Management/operationResults/delete/managementGroups/TestPSRemoveGroup?api-version=2021-04-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9vcGVyYXRpb25SZXN1bHRzL2RlbGV0ZS9tYW5hZ2VtZW50R3JvdXBzL1Rlc3RQU1JlbW92ZUdyb3VwP2FwaS12ZXJzaW9uPTIwMjEtMDQtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "32152d5f-4197-424a-ad2f-c8dd783f1457"
+          "8fb1a47f-722a-475d-8a97-ca07a4781a92"
         ],
         "User-Agent": [
           "FxVersion/5.0.1522.11506",
@@ -348,16 +348,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "westcentralus:39f89099-f6ac-469d-9a0b-5657d7f357be"
+          "westcentralus:e7506d2c-ad78-4e3c-a18d-11e68e7ef840"
         ],
         "x-ba-restapi": [
           "0.0.0.0"
         ],
         "client-request-id": [
-          "39f89099-f6ac-469d-9a0b-5657d7f357be"
+          "e7506d2c-ad78-4e3c-a18d-11e68e7ef840"
         ],
         "request-id": [
-          "39f89099-f6ac-469d-9a0b-5657d7f357be"
+          "e7506d2c-ad78-4e3c-a18d-11e68e7ef840"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -366,10 +366,10 @@
           "11996"
         ],
         "x-ms-correlation-request-id": [
-          "39f89099-f6ac-469d-9a0b-5657d7f357be"
+          "e7506d2c-ad78-4e3c-a18d-11e68e7ef840"
         ],
         "x-ms-routing-request-id": [
-          "WESTCENTRALUS:20220323T184935Z:39f89099-f6ac-469d-9a0b-5657d7f357be"
+          "WESTCENTRALUS:20220401T174923Z:e7506d2c-ad78-4e3c-a18d-11e68e7ef840"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -378,10 +378,10 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 23 Mar 2022 18:49:35 GMT"
+          "Fri, 01 Apr 2022 17:49:22 GMT"
         ],
         "Content-Length": [
-          "181"
+          "170"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -393,7 +393,7 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestPSRemoveGroup\",\r\n  \"type\": \"/providers/Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestPSRemoveGroup\",\r\n  \"status\": \"Succeeded\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestPSRemoveGroup\",\r\n  \"type\": \"Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestPSRemoveGroup\",\r\n  \"status\": \"Succeeded\"\r\n}",
       "StatusCode": 200
     }
   ],
