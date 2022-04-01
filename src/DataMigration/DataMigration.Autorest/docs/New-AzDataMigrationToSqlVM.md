@@ -9,7 +9,6 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Create a new database migration to a given SQL VM.
-Note - For the Scope parameter, use the Scope of the SQL VM (/subscriptions/111-222/resourceGroups/myRG/providers/Microsoft.SqlVirtualMachine/SqlVirtualMachines/xyz-SqlVM) and not the Compute SQL VM (/subscriptions/111-222/resourceGroups/myRG/providers/Microsoft.Compute/virtualMachines/xyz-SqlVM)
 
 ## SYNTAX
 
@@ -29,7 +28,6 @@ New-AzDataMigrationToSqlVM -ResourceGroupName <String> -SqlVirtualMachineName <S
 
 ## DESCRIPTION
 Create a new database migration to a given SQL VM.
-Note - For the Scope parameter, use the Scope of the SQL VM (/subscriptions/111-222/resourceGroups/myRG/providers/Microsoft.SqlVirtualMachine/SqlVirtualMachines/xyz-SqlVM) and not the Compute SQL VM (/subscriptions/111-222/resourceGroups/myRG/providers/Microsoft.Compute/virtualMachines/xyz-SqlVM)
 
 ## EXAMPLES
 
@@ -313,7 +311,8 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-Resource Id of the target resource (SQL VM or SQL Managed Instance)
+Resource Id of the target resource (SQL VM).
+For the Scope parameter, use the Scope of the SQL VM (/subscriptions/111-222/resourceGroups/myRG/providers/Microsoft.SqlVirtualMachine/SqlVirtualMachines/xyz-SqlVM) and not the Compute SQL VM (/subscriptions/111-222/resourceGroups/myRG/providers/Microsoft.Compute/virtualMachines/xyz-SqlVM)
 
 ```yaml
 Type: System.String
