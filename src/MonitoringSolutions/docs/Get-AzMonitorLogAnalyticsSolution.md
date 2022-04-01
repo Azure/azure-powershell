@@ -43,7 +43,7 @@ Retrieves the user solution.
 
 ### Example 1: Get a monitor log analytics solution by name
 ```powershell
-Get-AzMonitorLogAnalyticsSolution -ResourceGroupName azureps-monitor -Name 'Containers(azureps-monitor)'
+Get-AzMonitorLogAnalyticsSolution -ResourceGroupName azureps-monitor -Type "Microsoft.OperationsManagement/solutions" -Location "West US 2" -WorkspaceResourceId workspaceResourceId
 ```
 
 ```output
