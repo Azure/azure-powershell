@@ -35,7 +35,7 @@ $clusterCreds = Get-Credential
 $statusFolder = "tempStatusFolder/"
 $query = "SHOW TABLES"
 
-New-AzHDInsightStreamingMapReduceJobDefinition -StatusFolder $statusFolder `
+New-AzHDInsightStreamingMapReduceJobDefinition -StatusFolder $statusFolder -File $query `
         | Start-AzHDInsightJob `
             -ClusterName $clusterName `
             -ClusterCredential $clusterCreds
