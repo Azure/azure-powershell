@@ -61,10 +61,6 @@ Describe 'Update-AzFrontDoorCdnSecurityPolicy' {
         } | Should -Not -Throw
     }
 
-    It 'Patch' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
     It 'PatchViaIdentityExpanded' {
         { 
             $PSDefaultParameterValues['Disabled'] = $true
@@ -108,12 +104,6 @@ Describe 'Update-AzFrontDoorCdnSecurityPolicy' {
             {
                 Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
-        } | Should -Not -Throw
-    }
-
-    It 'PatchViaIdentity' -skip {
-        { 
-            throw [System.NotImplementedException] 
         } | Should -Not -Throw
     }
 }
