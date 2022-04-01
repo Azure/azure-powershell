@@ -33,7 +33,7 @@ This will create 2 public ips on the firewall attached to the virtual hub. This 
 ```powershell
 $publicIp1 = New-AzFirewallPublicIpAddress -Address 10.2.3.4
 $publicIp2 = New-AzFirewallPublicIpAddress -Address 20.56.37.46
-New-AzFirewallHubPublicIpAddress -Count 3 -Addresses $publicIp1, $publicIp2
+New-AzFirewallHubPublicIpAddress -Count 3 -Address $publicIp1, $publicIp2
 ```
 
 This will create 1 new public ip on the firewall by retain $publicIp1, $publicIp2 which are already exist on the firewall.

@@ -36,7 +36,7 @@ a particular peering. You can use the ARP table to validate layer 2 configuratio
 
 ### Example 1: Display the ARP table for an ExpressRoute peer
 ```powershell
-Get-AzExpressRouteCrossConnectionARPTable -ResourceGroupName $RG -ExpressRouteCrossConnectionName $CrossConnectionName -PeeringType MicrosoftPeering -DevicePath Primary
+Get-AzExpressRouteCrossConnectionARPTable -ResourceGroupName $RG -CrossConnectionName $CrossConnectionName -PeeringType MicrosoftPeering -DevicePath Primary
 ```
 
 ## PARAMETERS

@@ -51,7 +51,7 @@ Removes the ExpressRoutePort resource in InputObject.
 
 ### Example 3
 ```powershell
-Remove-AzExpressRoutePort -Name $ResourceId $id
+Remove-AzExpressRoutePort -Name $ResourceId
 ```
 
 Removes the ExpressRoutePort resource with ResourceId $id.
