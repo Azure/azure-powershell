@@ -46,6 +46,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             {OperatingSystem.WindowsServer2012R2Datacenter, "2012-R2-Datacenter"},
             {OperatingSystem.UbuntuServer1604, "16.04-LTS"},
             {OperatingSystem.UbuntuServer1804, "18.04-LTS"},
+            {OperatingSystem.UbuntuServer2004, "20_04-LTS"},
             {OperatingSystem.WindowsServer2016DatacenterwithContainers, "2016-Datacenter-with-Containers"},
             {OperatingSystem.WindowsServer2016Datacenter, "2016-Datacenter"}
         };
@@ -448,6 +449,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         break;
                     case OperatingSystem.UbuntuServer1804:
                         osRelativePath = Constants.UbuntuServer18TemplateRelativePath;
+                        break;
+                    case OperatingSystem.UbuntuServer2004:
+                        osRelativePath = Constants.UbuntuServer20TemplateRelativePath;
                         break;
                     default:
                         throw new NotImplementedException("OS not defined for DeployWithDefaultTemplate");

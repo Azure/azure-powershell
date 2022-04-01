@@ -54,6 +54,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Position = 3,
             Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = "Set the region of the Restore Point")]
+        public string Location { get; set; }
+
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipeline = true,
+            HelpMessage = "ARM Id of the source Restore Point")]
+        public string RestorePointId { get; set; }
+
+
+        [Parameter(
+            Mandatory = false,
             ValueFromPipeline = true)]
         public string[] DisksToExclude { get; set; }
 
@@ -68,9 +82,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     string resourceGroup = this.ResourceGroupName;
                     string restorePointName = this.Name;
                     string restorePointCollectionName = this.RestorePointCollectionName;
+                    string location = this.Location;
+                    string restorePointId = this.RestorePointId;
                     List<ApiEntityReference> disksExclude = new List<ApiEntityReference>();
 
                     RestorePoint restorePoint = new RestorePoint();
+
+                    if(this.IsParameterBound(c=> c.RestorePointId))
+                    {
+                        restorePoint.SourceRestorePoint = new ApiEntityReference { Id = restorePointId };
+                    }
+
                     if (this.IsParameterBound(c => c.DisksToExclude))
                     {
                         foreach (string s in DisksToExclude)
@@ -78,19 +100,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             disksExclude.Add(new ApiEntityReference(s));
                         }
                         restorePoint.ExcludeDisks = disksExclude;
-                        var result = RestorePointClient.Create(resourceGroup, restorePointCollectionName, restorePointName, restorePoint);
-                        var psObject = new PSRestorePoint();
-                        ComputeAutomationAutoMapperProfile.Mapper.Map<RestorePoint, PSRestorePoint>(result, psObject);
-                        WriteObject(psObject);
+                    }
 
-                    }
-                    else
-                    {
-                        var result = RestorePointClient.Create(resourceGroup, restorePointCollectionName, restorePointName, restorePoint);
-                        var psObject = new PSRestorePoint();
-                        ComputeAutomationAutoMapperProfile.Mapper.Map<RestorePoint, PSRestorePoint>(result, psObject);
-                        WriteObject(psObject);
-                    }
+                    var result = RestorePointClient.Create(resourceGroup, restorePointCollectionName, restorePointName, restorePoint);
+                        
+                    var psObject = new PSRestorePoint();
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<RestorePoint, PSRestorePoint>(result, psObject);
+                    WriteObject(psObject);
                 }
             });
         }

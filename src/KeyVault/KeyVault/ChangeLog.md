@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 4.3.1
+* Fixed a bug to continue visiting `NextPageLink` when listing key vaults from ARM API
+ 
 ## Version 4.3.0
 * `New-AzKeyVaultManagedHsm`: supported specifying how long a deleted managed hsm is retained by `SoftDeleteRetentionInDays` and enabling purge protection by `EnablePurgeProtection`
 * `Update-AzKeyVaultManagedHsm`: supported enabling purge protection by `EnablePurgeProtection`
