@@ -120,6 +120,9 @@ directive:
   - where:
       subject: Profile
     hide: true
+  - where:
+      subject: LogAnalytic(.*)
+    hide: true
 
   - where:
       subject: Afd(.*)
