@@ -32,7 +32,6 @@
     - `Remove-AzSqlInstanceLink`
     - `Set-AzSqlInstanceLink`
 * Added support for DataWarehouse cross tenant and cross subscription restore operations to `Restore-AzSqlDatabase` cmdlet
-* Added examples for creating new SQL Server and Managed Instance with TDE CMK enabled to `New-AzSqlServer` and `New-AzSqlInstance` cmdlets
 
 ## Version 3.7.1
 * Deprecation of Get-AzSqlDatabaseTransparentDataEncryptionActivity cmdlet
