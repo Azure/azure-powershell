@@ -33,7 +33,7 @@ Exports the security domain data of a managed HSM for importing on another HSM.
 
 ### Example 1
 ```powershell
-Export-AzKeyVaultSecurityDomain -Name testmhsm -Certificates {./sd1, ./sd2,./sd3} -OutputPath sd.ps.json -Quorum 2
+Export-AzKeyVaultSecurityDomain -Name testmhsm -Certificates sd1.cer, sd2.cer, sd3.cer -OutputPath sd.ps.json -Quorum 2
 ```
 
 This command retrieves the managed HSM named testmhsm and saves a backup of that managed HSM security domain to the specified output file.
