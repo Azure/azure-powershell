@@ -80,6 +80,7 @@ directive:
   # Hide ApplicationInsightsComponent related cmdlets
   - where:
       subject: Component
+      verb: Get
     hide: true
 
   # Hide ComponentCurrentBillingFeature related cmdlets

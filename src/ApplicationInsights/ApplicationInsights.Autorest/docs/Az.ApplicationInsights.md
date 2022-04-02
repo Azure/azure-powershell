@@ -11,6 +11,12 @@ Locale: en-US
 Microsoft Azure PowerShell: ApplicationInsights cmdlets
 
 ## Az.ApplicationInsights Cmdlets
+### [Clear-AzApplicationInsightsComponent](Clear-AzApplicationInsightsComponent.md)
+Purges data in an Application Insights component by a set of user-defined filters.\n\nIn order to manage system resources, purge requests are throttled at 50 requests per hour.
+You should batch the execution of purge requests by sending a single command whose predicate includes all user identities that require purging.
+Use the in operator to specify multiple identities.
+You should run the query prior to using for a purge request to verify that the results are expected.
+
 ### [Get-AzApplicationInsights](Get-AzApplicationInsights.md)
 Returns an Application Insights component.
 
@@ -47,6 +53,10 @@ Create an Annotation of an Application Insights component.
 ### [New-AzApplicationInsightsApiKey](New-AzApplicationInsightsApiKey.md)
 Create an API Key of an Application Insights component.
 
+### [New-AzApplicationInsightsComponent](New-AzApplicationInsightsComponent.md)
+Creates (or updates) an Application Insights component.
+Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
+
 ### [New-AzApplicationInsightsComponentLinkedStorageAccountAndUpdate](New-AzApplicationInsightsComponentLinkedStorageAccountAndUpdate.md)
 Replace current linked storage account for an Application Insights component.
 
@@ -68,6 +78,9 @@ Delete an Annotation of an Application Insights component.
 ### [Remove-AzApplicationInsightsApiKey](Remove-AzApplicationInsightsApiKey.md)
 Delete an API Key of an Application Insights component.
 
+### [Remove-AzApplicationInsightsComponent](Remove-AzApplicationInsightsComponent.md)
+Deletes an Application Insights component.
+
 ### [Remove-AzApplicationInsightsComponentLinkedStorageAccount](Remove-AzApplicationInsightsComponentLinkedStorageAccount.md)
 Delete linked storage accounts for an Application Insights component.
 
@@ -76,6 +89,10 @@ Delete a Continuous Export configuration of an Application Insights component.
 
 ### [Remove-AzApplicationInsightsWebTest](Remove-AzApplicationInsightsWebTest.md)
 Deletes an Application Insights web test.
+
+### [Set-AzApplicationInsightsComponent](Set-AzApplicationInsightsComponent.md)
+Creates (or updates) an Application Insights component.
+Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
 
 ### [Set-AzApplicationInsightsContinuousExport](Set-AzApplicationInsightsContinuousExport.md)
 Create a Continuous Export configuration of an Application Insights component.
