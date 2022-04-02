@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated `Restore-AzDeletedWebApp` to fix issue that prevents the cmdlet from working on hosts with a locale is anything different from `en-US`
 
 ## Version 2.11.0
 * Fixed `Set-AzWebAppSlot` to support MinTlsVersion version update [#17663]
