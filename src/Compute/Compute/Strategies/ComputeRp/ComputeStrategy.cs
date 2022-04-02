@@ -42,23 +42,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                 createTime: createTime,
                 compulsoryLocation: true);
 
-        public static ResourceStrategy<TModel> CreateWithCustomHeader<TModel, TOperations>(
-            string provider,
-            Func<ComputeManagementClient, TOperations> getOperations,
-            Func<TOperations, GetAsyncParams, Task<TModel>> getAsync,
-            Func<TOperations, CreateOrUpdateAsyncParams<TModel>, Task<TModel>> createOrUpdateAsync,
-            Func<TModel, int> createTime)
-            where TModel : VirtualMachineWrapper
-            => ResourceStrategy.Create(
-                type: new ResourceType(Namespace, provider),
-                getOperations: getOperations,
-                getAsync: getAsync,
-                createOrUpdateAsync: createOrUpdateAsync,
-                getLocation: config => config.VirtualMachine.Location,
-                setLocation: (config, location) => config.VirtualMachine.Location = location,
-                createTime: createTime,
-                compulsoryLocation: true);
-
         public static string GetConnectionString(
             this ImageAndOsType imageAndOsType, string fqdn, string user, string port = null)
             => imageAndOsType.OsType == OperatingSystemTypes.Windows

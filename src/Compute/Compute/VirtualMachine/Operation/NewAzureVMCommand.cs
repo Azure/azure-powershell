@@ -517,72 +517,36 @@ namespace Microsoft.Azure.Commands.Compute
 
                 if (_cmdlet.DiskFile == null)
                 {
-                    if (auxAuthHeader != null)
-                    {
-                        var vmWrapper = resourceGroup.CreateVirtualMachineWrapperConfig(
-                        name: _cmdlet.Name,
-                        networkInterface: networkInterface,
-                        imageAndOsType: ImageAndOsType,
-                        adminUsername: _cmdlet.Credential.UserName,
-                        adminPassword:
-                            new NetworkCredential(string.Empty, _cmdlet.Credential.Password).Password,
-                        size: _cmdlet.Size,
-                        availabilitySet: availabilitySet,
-                        dataDisks: _cmdlet.DataDiskSizeInGb,
-                        zones: _cmdlet.Zone,
-                        ultraSSDEnabled: _cmdlet.EnableUltraSSD.IsPresent,
-                        identity: _cmdlet.GetVMIdentityFromArgs(),
-                        proximityPlacementGroup: ppgSubResourceFunc,
-                        hostId: _cmdlet.HostId,
-                        hostGroupId: _cmdlet.HostGroupId,
-                        capacityReservationGroupId: _cmdlet.CapacityReservationGroupId,
-                        VmssId: _cmdlet.VmssId,
-                        priority: _cmdlet.Priority,
-                        evictionPolicy: _cmdlet.EvictionPolicy,
-                        maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null,
-                        encryptionAtHostPresent: _cmdlet.EncryptionAtHost.IsPresent,
-                        sshPublicKeys: sshPublicKeyList,
-                        auxHeaders: auxAuthHeader,
-                        networkInterfaceDeleteOption: _cmdlet.NetworkInterfaceDeleteOption,
-                        osDiskDeleteOption: _cmdlet.OSDiskDeleteOption,
-                        dataDiskDeleteOption: _cmdlet.DataDiskDeleteOption,
-                        userData: _cmdlet.UserData,
-                        imageReferenceId: _cmdlet.ImageReferenceId
-                        );
-                        return vmWrapper;
-                    }
-                    else
-                    {
-                        return resourceGroup.CreateVirtualMachineConfig(
-                        name: _cmdlet.Name,
-                        networkInterface: networkInterface,
-                        imageAndOsType: ImageAndOsType,
-                        adminUsername: _cmdlet.Credential.UserName,
-                        adminPassword:
-                            new NetworkCredential(string.Empty, _cmdlet.Credential.Password).Password,
-                        size: _cmdlet.Size,
-                        availabilitySet: availabilitySet,
-                        dataDisks: _cmdlet.DataDiskSizeInGb,
-                        zones: _cmdlet.Zone,
-                        ultraSSDEnabled: _cmdlet.EnableUltraSSD.IsPresent,
-                        identity: _cmdlet.GetVMIdentityFromArgs(),
-                        proximityPlacementGroup: ppgSubResourceFunc,
-                        hostId: _cmdlet.HostId,
-                        hostGroupId: _cmdlet.HostGroupId,
-                        capacityReservationGroupId: _cmdlet.CapacityReservationGroupId,
-                        VmssId: _cmdlet.VmssId,
-                        priority: _cmdlet.Priority,
-                        evictionPolicy: _cmdlet.EvictionPolicy,
-                        maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null,
-                        encryptionAtHostPresent: _cmdlet.EncryptionAtHost.IsPresent,
-                        sshPublicKeys: sshPublicKeyList,
-                        networkInterfaceDeleteOption: _cmdlet.NetworkInterfaceDeleteOption,
-                        osDiskDeleteOption: _cmdlet.OSDiskDeleteOption,
-                        dataDiskDeleteOption: _cmdlet.DataDiskDeleteOption,
-                        userData: _cmdlet.UserData,
-                        imageReferenceId: _cmdlet.ImageReferenceId
-                        );
-                    }
+                    return resourceGroup.CreateVirtualMachineConfig(
+                    name: _cmdlet.Name,
+                    networkInterface: networkInterface,
+                    imageAndOsType: ImageAndOsType,
+                    adminUsername: _cmdlet.Credential.UserName,
+                    adminPassword:
+                        new NetworkCredential(string.Empty, _cmdlet.Credential.Password).Password,
+                    size: _cmdlet.Size,
+                    availabilitySet: availabilitySet,
+                    dataDisks: _cmdlet.DataDiskSizeInGb,
+                    zones: _cmdlet.Zone,
+                    ultraSSDEnabled: _cmdlet.EnableUltraSSD.IsPresent,
+                    identity: _cmdlet.GetVMIdentityFromArgs(),
+                    proximityPlacementGroup: ppgSubResourceFunc,
+                    hostId: _cmdlet.HostId,
+                    hostGroupId: _cmdlet.HostGroupId,
+                    capacityReservationGroupId: _cmdlet.CapacityReservationGroupId,
+                    VmssId: _cmdlet.VmssId,
+                    priority: _cmdlet.Priority,
+                    evictionPolicy: _cmdlet.EvictionPolicy,
+                    maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null,
+                    encryptionAtHostPresent: _cmdlet.EncryptionAtHost.IsPresent,
+                    sshPublicKeys: sshPublicKeyList,
+                    networkInterfaceDeleteOption: _cmdlet.NetworkInterfaceDeleteOption,
+                    osDiskDeleteOption: _cmdlet.OSDiskDeleteOption,
+                    dataDiskDeleteOption: _cmdlet.DataDiskDeleteOption,
+                    userData: _cmdlet.UserData,
+                    imageReferenceId: _cmdlet.ImageReferenceId,
+                    auxAuthHeader: auxAuthHeader
+                    );
                 }
                 else
                 {
