@@ -38,7 +38,7 @@ Remove/Delete the replication connection on the destination volume, and send rel
 
 ### Example 1
 ```powershell
-Remove-AnfReplication -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyDestinationAnfVolume"
+Remove-AzNetAppFilesReplication -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyDestinationAnfVolume"
 ```
 
 This command removes the ANF Replication connection on volume "MyDestinationAnfVolume".
