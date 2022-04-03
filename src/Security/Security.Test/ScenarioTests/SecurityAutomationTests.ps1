@@ -14,54 +14,6 @@
 
 <#
 .SYNOPSIS
-Get security Automations on a subscription
-#>
-function Get-AzSecurityAutomation-SubscriptionScope
-{
-    $automations = Get-AzSecurityAutomation
-	Validate-Automations $automations
-}
-
-<#
-.SYNOPSIS
-Get security Automations on a resource group
-#>
-function Get-AzSecurityAutomation-ResourceGroupScope
-{
-	$resourceGroupName = "Sample-RG"
-
-    $automations = Get-AzSecurityAutomation -ResourceGroupName $resourceGroupName
-	Validate-Automations $automations
-}
-
-<#
-.SYNOPSIS
-Get specific security Automation
-#>
-function Get-AzSecurityAutomation-ResourceGroupLevelResource
-{
-	$resourceGroupName = "Sample-RG"
-	$automationName = "sampleAutomation"
-
-    $automation = Get-AzSecurityAutomation -ResourceGroupName $resourceGroupName -Name $automationName
-	Validate-Automation $automation
-}
-
-<#
-.SYNOPSIS
-Get specific security Automation by resource Id
-#>
-function Get-AzSecurityAutomation-ResourceId
-{
-	$automations = Get-AzSecurityAutomation
-	$automation = $automations | Select -First 1
-
-    $automation = Get-AzSecurityAutomation -ResourceId $automation.Id
-	Validate-Automation $automation
-}
-
-<#
-.SYNOPSIS
 Set security Automation by resource level
 #>
 function Set-AzSecurityAutomation-ResourceGroupLevelResource
@@ -108,6 +60,54 @@ function Set-AzSecurityAutomation-InputObject
 	$actions = Convert-ToAutomationActionRequest $automation.Actions
 
     $automation = Set-AzSecurityAutomation -InputObject $automation -Actions $actions
+	Validate-Automation $automation
+}
+
+<#
+.SYNOPSIS
+Get security Automations on a subscription
+#>
+function Get-AzSecurityAutomation-SubscriptionScope
+{
+    $automations = Get-AzSecurityAutomation
+	Validate-Automations $automations
+}
+
+<#
+.SYNOPSIS
+Get security Automations on a resource group
+#>
+function Get-AzSecurityAutomation-ResourceGroupScope
+{
+	$resourceGroupName = "Sample-RG"
+
+    $automations = Get-AzSecurityAutomation -ResourceGroupName $resourceGroupName
+	Validate-Automations $automations
+}
+
+<#
+.SYNOPSIS
+Get specific security Automation
+#>
+function Get-AzSecurityAutomation-ResourceGroupLevelResource
+{
+	$resourceGroupName = "Sample-RG"
+	$automationName = "sampleAutomation"
+
+    $automation = Get-AzSecurityAutomation -ResourceGroupName $resourceGroupName -Name $automationName
+	Validate-Automation $automation
+}
+
+<#
+.SYNOPSIS
+Get specific security Automation by resource Id
+#>
+function Get-AzSecurityAutomation-ResourceId
+{
+	$automations = Get-AzSecurityAutomation
+	$automation = $automations | Select -First 1
+
+    $automation = Get-AzSecurityAutomation -ResourceId $automation.Id
 	Validate-Automation $automation
 }
 
@@ -238,7 +238,7 @@ function Convert-ToAutomationActionRequest
         }
         elseif($action.EventHubResourceId)
         {
-            $action.ConnectionString = "dummy"
+            $action.ConnectionString = "Endpoint=sb://dummy/;SharedAccessKeyName=dummy;SharedAccessKey=dummy;EntityPath=dummy"
             $action.SasPolicyName = "dummy"
         }
 	}
