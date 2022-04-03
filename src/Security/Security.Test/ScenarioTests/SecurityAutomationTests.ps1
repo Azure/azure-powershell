@@ -187,7 +187,7 @@ function Remove-AzSecurityAutomation-ResourceId
 .SYNOPSIS
 Remove security Automation by (input object)/piping
 #>
-function Remove-AzSecurityAutomation-ResourceId
+function Remove-AzSecurityAutomation-InputObject
 {
 	$automations = Get-AzSecurityAutomation
 	$automation = $automations | Select -First 1
