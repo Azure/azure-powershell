@@ -1,0 +1,74 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/03b601f1-7eca-4496-8f8d-355219eee254/resourceGroups/Sample-RG/providers/Microsoft.Security/automations/sampleAutomation?api-version=2019-01-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDNiNjAxZjEtN2VjYS00NDk2LThmOGQtMzU1MjE5ZWVlMjU0L3Jlc291cmNlR3JvdXBzL1NhbXBsZS1SRy9wcm92aWRlcnMvTWljcm9zb2Z0LlNlY3VyaXR5L2F1dG9tYXRpb25zL3NhbXBsZUF1dG9tYXRpb24/YXBpLXZlcnNpb249MjAxOS0wMS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7cd66b9a-3a2f-4c84-8956-dada1e5c09ed"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.11601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.Security.SecurityCenterClient/3.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "99"
+        ],
+        "api-supported-versions": [
+          "2019-01-01-preview"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "9b7ff7fc-1e95-4ec1-98e5-13be99506383"
+        ],
+        "x-ms-correlation-request-id": [
+          "9b7ff7fc-1e95-4ec1-98e5-13be99506383"
+        ],
+        "x-ms-routing-request-id": [
+          "GERMANYWESTCENTRAL:20220403T132443Z:9b7ff7fc-1e95-4ec1-98e5-13be99506383"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sun, 03 Apr 2022 13:24:43 GMT"
+        ],
+        "Content-Length": [
+          "1066"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"description\": \"\",\r\n    \"isEnabled\": true,\r\n    \"metadata\": {\r\n      \"createdDateTimeUtc\": \"2022-04-03T12:18:19.2743935Z\",\r\n      \"createdBy\": \"dc6a9278-25c3-47fc-98da-51506fa32469\",\r\n      \"lastUpdatedDateTimeUtc\": \"2022-04-03T12:26:41.8465751Z\",\r\n      \"lastUpdatedBy\": \"dc6a9278-25c3-47fc-98da-51506fa32469\"\r\n    },\r\n    \"scopes\": [\r\n      {\r\n        \"description\": \"scope for subscription 03b601f1-7eca-4496-8f8d-355219eee254\",\r\n        \"scopePath\": \"/subscriptions/03b601f1-7eca-4496-8f8d-355219eee254\"\r\n      }\r\n    ],\r\n    \"sources\": [\r\n      {\r\n        \"eventSource\": \"Alerts\",\r\n        \"ruleSets\": [\r\n          {\r\n            \"rules\": [\r\n              {\r\n                \"propertyJPath\": \"Version\",\r\n                \"propertyType\": \"String\",\r\n                \"expectedValue\": \"3.\",\r\n                \"operator\": \"Contains\"\r\n              }\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"actions\": [\r\n      {\r\n        \"logicAppResourceId\": \"/subscriptions/03b601f1-7eca-4496-8f8d-355219eee254/resourceGroups/rg-surashed/providers/Microsoft.Logic/workflows/surashedV\",\r\n        \"actionType\": \"LogicApp\"\r\n      }\r\n    ]\r\n  },\r\n  \"id\": \"/subscriptions/03b601f1-7eca-4496-8f8d-355219eee254/resourcegroups/Sample-RG/providers/Microsoft.Security/automations/sampleAutomation\",\r\n  \"name\": \"sampleAutomation\",\r\n  \"type\": \"Microsoft.Security/automations\",\r\n  \"etag\": \"\\\"160413db-0000-0d00-0000-624992810000\\\"\",\r\n  \"location\": \"centralus\",\r\n  \"tags\": {}\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "03b601f1-7eca-4496-8f8d-355219eee254"
+  }
+}
