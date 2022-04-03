@@ -24,7 +24,7 @@ Create a new Spatial Anchors Account in certain Subscription, Resource Group and
 
 ### Example 1
 ```powershell
-New-AzureRmSpatialAnchorsAccount -ResourceGroup rg1 -Name example -Location centralus
+New-AzSpatialAnchorsAccount -ResourceGroup rg1 -Name example -Location centralus
 ```
 
 ```output
