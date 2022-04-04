@@ -20,13 +20,9 @@ Description for Gets the configuration of an app, such as platform version and b
 .Description
 Description for Gets the configuration of an app, such as platform version and bitness, default documents, virtual applications, Always On, etc.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity

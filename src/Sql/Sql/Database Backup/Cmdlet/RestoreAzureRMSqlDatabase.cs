@@ -400,10 +400,11 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
             }
 
             /// get auth headers for cross-sub and cross-tenant restore operations
-            string targetSubscriptionId = ModelAdapter.Context?.Subscription.Id;
-            string sourceSubscriptionId = ParseSourceSubscriptionIdFromResourceId(ResourceId);
+            string targetSubscriptionId = ModelAdapter.Context?.Subscription?.Id;
+            string sourceSubscriptionId = ParseSubscriptionIdFromResourceId(ResourceId);
+            bool isCrossSubscriptionRestore = false;
             Dictionary<string, List<string>> auxAuthHeader = null;
-            if (!string.IsNullOrEmpty(ResourceId) && targetSubscriptionId!=sourceSubscriptionId)
+            if (!string.IsNullOrEmpty(sourceSubscriptionId) && !string.IsNullOrEmpty(targetSubscriptionId) && !targetSubscriptionId.Equals(sourceSubscriptionId, StringComparison.OrdinalIgnoreCase))
             {
                 List<string> resourceIds = new List<string>();
                 resourceIds.Add(ResourceId);
@@ -412,32 +413,34 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                 {
                     auxAuthHeader = new Dictionary<string, List<string>>(auxHeaderDictionary);
                 }
+
+                isCrossSubscriptionRestore = true;
             }
 
-            return ModelAdapter.RestoreDatabase(this.ResourceGroupName, restorePointInTime, ResourceId, model, sourceSubscriptionId, auxAuthHeader);
+            return ModelAdapter.RestoreDatabase(this.ResourceGroupName, restorePointInTime, ResourceId, model, isCrossSubscriptionRestore, auxAuthHeader);
         }
 
         /// <summary>
-        /// Parse source subscription id from ResourceId
+        /// Parse subscription id from ResourceId
         /// </summary>
-        /// <returns>Source Subscription Id</returns>
-        private string ParseSourceSubscriptionIdFromResourceId(string resourceId)
+        /// <returns>Subscription Id</returns>
+        private string ParseSubscriptionIdFromResourceId(string resourceId)
         {
-            if (string.IsNullOrEmpty(resourceId))
+            string subscriptionId = null;
+            if (!string.IsNullOrEmpty(resourceId))
             {
-            return null;
-            }
-
-            string[] words = resourceId.Split('/');
-            string sourceSubscriptionId = "";
-            for (int i = 0; i < words.Length; i++)
-            {
-                if (words[i] == "subscriptions")
+                string[] words = resourceId.Split('/');
+                for (int i = 0; i < words.Length - 1; i++)
                 {
-                    sourceSubscriptionId = words[i + 1];
+                    if ("subscriptions".Equals(words[i], StringComparison.OrdinalIgnoreCase))
+                    {
+                        subscriptionId = words[i + 1];
+                        break;
+                    }
                 }
             }
-            return sourceSubscriptionId;
+
+            return subscriptionId;
         }
     }
 }

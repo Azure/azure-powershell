@@ -7,15 +7,15 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ad9519d5-694b-4292-840e-eb9afd4a0476"
+          "d3836ee2-5052-42b8-8255-c8b382501463"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.30411.01",
+          "FxVersion/4.700.22.11601",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "OSVersion/Microsoft.Windows.10.0.22000",
           "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.2.0"
         ]
       },
@@ -27,31 +27,31 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11994"
+          "11999"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "e16aa12a-0995-4c1e-8198-43240204872a"
+          "7939f202-4602-4f49-a654-6b2454c3245d"
         ],
         "x-ms-client-request-id": [
-          "ad9519d5-694b-4292-840e-eb9afd4a0476"
+          "d3836ee2-5052-42b8-8255-c8b382501463"
         ],
         "Server": [
           "Kestrel"
         ],
         "x-ms-correlation-request-id": [
-          "e16aa12a-0995-4c1e-8198-43240204872a"
+          "7939f202-4602-4f49-a654-6b2454c3245d"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20220125T042218Z:e16aa12a-0995-4c1e-8198-43240204872a"
+          "JIOINDIAWEST:20220326T114543Z:7939f202-4602-4f49-a654-6b2454c3245d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Tue, 25 Jan 2022 04:22:18 GMT"
+          "Sat, 26 Mar 2022 11:45:43 GMT"
         ],
         "Content-Length": [
           "1248"
@@ -63,7 +63,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"cmk-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2021-10-26T02%3A33%3A42.7467287Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"identity\": {\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"c7fb28d8-227b-46b0-a17b-7e45e20a560f\",\r\n    \"type\": \"SystemAssigned, UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourcegroups/hiagarg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/cmk-pstest-msi1\": {\r\n        \"clientId\": \"cc17dc91-0ffc-41c4-9f4b-b7b61fa9f4e8\",\r\n        \"principalId\": \"79e6360a-251c-4431-b817-a7fff3ac5c91\"\r\n      }\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\",\r\n    \"encryption\": {\r\n      \"keyVaultProperties\": {\r\n        \"keyUri\": \"https://cmk-pstest-keyvault.vault.azure.net/keys/cmk-pstest-key/5569d5a163ee474cad2da4ac334af9d7\"\r\n      },\r\n      \"kekIdentity\": {\r\n        \"useSystemAssignedIdentity\": true,\r\n        \"userAssignedIdentity\": null\r\n      },\r\n      \"infrastructureEncryption\": \"Enabled\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/cmk-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"cmk-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2022-03-23T08%3A22%3A21.1986609Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"identity\": {\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"c7fb28d8-227b-46b0-a17b-7e45e20a560f\",\r\n    \"type\": \"SystemAssigned, UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourcegroups/hiagarg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/cmk-pstest-msi1\": {\r\n        \"clientId\": \"cc17dc91-0ffc-41c4-9f4b-b7b61fa9f4e8\",\r\n        \"principalId\": \"79e6360a-251c-4431-b817-a7fff3ac5c91\"\r\n      }\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\",\r\n    \"encryption\": {\r\n      \"keyVaultProperties\": {\r\n        \"keyUri\": \"https://cmk-pstest-keyvault.vault.azure.net/keys/cmk-pstest-key/5569d5a163ee474cad2da4ac334af9d7\"\r\n      },\r\n      \"kekIdentity\": {\r\n        \"useSystemAssignedIdentity\": true,\r\n        \"userAssignedIdentity\": null\r\n      },\r\n      \"infrastructureEncryption\": \"Enabled\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/cmk-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -73,12 +73,12 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "24fb16af-aba5-4532-96a7-aa4a8b5900fc"
+          "2f0b2881-e62c-498c-91bb-afc035f66ccf"
         ],
         "User-Agent": [
-          "FxVersion/4.6.30411.01",
+          "FxVersion/4.700.22.11601",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "OSVersion/Microsoft.Windows.10.0.22000",
           "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.2.0"
         ]
       },
@@ -89,44 +89,44 @@
         "Pragma": [
           "no-cache"
         ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "5a9bba2f-c138-42a8-9331-55fe49ecdaaa"
+          "457885ef-80f5-433f-9efb-7fd74abf3fb0"
         ],
         "x-ms-client-request-id": [
-          "24fb16af-aba5-4532-96a7-aa4a8b5900fc"
+          "2f0b2881-e62c-498c-91bb-afc035f66ccf"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-correlation-request-id": [
+          "457885ef-80f5-433f-9efb-7fd74abf3fb0"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIAWEST:20220326T114747Z:457885ef-80f5-433f-9efb-7fd74abf3fb0"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11991"
-        ],
-        "x-ms-correlation-request-id": [
-          "5a9bba2f-c138-42a8-9331-55fe49ecdaaa"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20220125T042423Z:5a9bba2f-c138-42a8-9331-55fe49ecdaaa"
-        ],
         "Date": [
-          "Tue, 25 Jan 2022 04:24:22 GMT"
+          "Sat, 26 Mar 2022 11:47:47 GMT"
         ],
         "Content-Length": [
           "1396"
         ],
         "Content-Type": [
-          "application/json"
+          "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"cmk-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2022-01-25T04%3A23%3A27.1812939Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"identity\": {\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"c7fb28d8-227b-46b0-a17b-7e45e20a560f\",\r\n    \"type\": \"SystemAssigned, UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourcegroups/hiagarg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/cmk-pstest-msi1\": {\r\n        \"clientId\": \"cc17dc91-0ffc-41c4-9f4b-b7b61fa9f4e8\",\r\n        \"principalId\": \"79e6360a-251c-4431-b817-a7fff3ac5c91\"\r\n      }\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\",\r\n    \"encryption\": {\r\n      \"keyVaultProperties\": {\r\n        \"keyUri\": \"https://cmk-pstest-keyvault.vault.azure.net/keys/cmk-pstest-key/5569d5a163ee474cad2da4ac334af9d7\"\r\n      },\r\n      \"kekIdentity\": {\r\n        \"useSystemAssignedIdentity\": false,\r\n        \"userAssignedIdentity\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourcegroups/hiagarg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/cmk-pstest-msi1\"\r\n      },\r\n      \"infrastructureEncryption\": \"Enabled\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/cmk-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"cmk-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2022-03-26T11%3A46%3A52.8195588Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"identity\": {\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"c7fb28d8-227b-46b0-a17b-7e45e20a560f\",\r\n    \"type\": \"SystemAssigned, UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourcegroups/hiagarg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/cmk-pstest-msi1\": {\r\n        \"clientId\": \"cc17dc91-0ffc-41c4-9f4b-b7b61fa9f4e8\",\r\n        \"principalId\": \"79e6360a-251c-4431-b817-a7fff3ac5c91\"\r\n      }\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\",\r\n    \"encryption\": {\r\n      \"keyVaultProperties\": {\r\n        \"keyUri\": \"https://cmk-pstest-keyvault.vault.azure.net/keys/cmk-pstest-key/5569d5a163ee474cad2da4ac334af9d7\"\r\n      },\r\n      \"kekIdentity\": {\r\n        \"useSystemAssignedIdentity\": false,\r\n        \"userAssignedIdentity\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourcegroups/hiagarg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/cmk-pstest-msi1\"\r\n      },\r\n      \"infrastructureEncryption\": \"Enabled\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/cmk-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -136,12 +136,12 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d178e494-7415-4d8e-ac48-d9ed308e02f0"
+          "9056caf1-5160-461c-b92a-075d6c806a98"
         ],
         "User-Agent": [
-          "FxVersion/4.6.30411.01",
+          "FxVersion/4.700.22.11601",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "OSVersion/Microsoft.Windows.10.0.22000",
           "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.2.0"
         ]
       },
@@ -152,44 +152,44 @@
         "Pragma": [
           "no-cache"
         ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11993"
+        ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "74dc75f9-88ba-4488-9edd-20e4dbc9fd49"
+          "9a183af0-21d3-4454-9888-a8df18c37735"
         ],
         "x-ms-client-request-id": [
-          "d178e494-7415-4d8e-ac48-d9ed308e02f0"
+          "9056caf1-5160-461c-b92a-075d6c806a98"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-correlation-request-id": [
+          "9a183af0-21d3-4454-9888-a8df18c37735"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIAWEST:20220326T115003Z:9a183af0-21d3-4454-9888-a8df18c37735"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11988"
-        ],
-        "x-ms-correlation-request-id": [
-          "74dc75f9-88ba-4488-9edd-20e4dbc9fd49"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20220125T042639Z:74dc75f9-88ba-4488-9edd-20e4dbc9fd49"
-        ],
         "Date": [
-          "Tue, 25 Jan 2022 04:26:39 GMT"
+          "Sat, 26 Mar 2022 11:50:02 GMT"
         ],
         "Content-Length": [
           "1248"
         ],
         "Content-Type": [
-          "application/json"
+          "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"cmk-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2022-01-25T04%3A25%3A38.0986593Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"identity\": {\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"c7fb28d8-227b-46b0-a17b-7e45e20a560f\",\r\n    \"type\": \"SystemAssigned, UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourcegroups/hiagarg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/cmk-pstest-msi1\": {\r\n        \"clientId\": \"cc17dc91-0ffc-41c4-9f4b-b7b61fa9f4e8\",\r\n        \"principalId\": \"79e6360a-251c-4431-b817-a7fff3ac5c91\"\r\n      }\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\",\r\n    \"encryption\": {\r\n      \"keyVaultProperties\": {\r\n        \"keyUri\": \"https://cmk-pstest-keyvault.vault.azure.net/keys/cmk-pstest-key/5569d5a163ee474cad2da4ac334af9d7\"\r\n      },\r\n      \"kekIdentity\": {\r\n        \"useSystemAssignedIdentity\": true,\r\n        \"userAssignedIdentity\": null\r\n      },\r\n      \"infrastructureEncryption\": \"Enabled\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/cmk-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"cmk-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2022-03-26T11%3A49%3A03.9700651Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"identity\": {\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"c7fb28d8-227b-46b0-a17b-7e45e20a560f\",\r\n    \"type\": \"SystemAssigned, UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourcegroups/hiagarg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/cmk-pstest-msi1\": {\r\n        \"clientId\": \"cc17dc91-0ffc-41c4-9f4b-b7b61fa9f4e8\",\r\n        \"principalId\": \"79e6360a-251c-4431-b817-a7fff3ac5c91\"\r\n      }\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\",\r\n    \"encryption\": {\r\n      \"keyVaultProperties\": {\r\n        \"keyUri\": \"https://cmk-pstest-keyvault.vault.azure.net/keys/cmk-pstest-key/5569d5a163ee474cad2da4ac334af9d7\"\r\n      },\r\n      \"kekIdentity\": {\r\n        \"useSystemAssignedIdentity\": true,\r\n        \"userAssignedIdentity\": null\r\n      },\r\n      \"infrastructureEncryption\": \"Enabled\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/cmk-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -199,15 +199,15 @@
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"encryption\": {\r\n      \"keyVaultProperties\": {\r\n        \"keyUri\": \"https://cmk-pstest-keyvault.vault.azure.net/keys/cmk-pstest-key/5569d5a163ee474cad2da4ac334af9d7\"\r\n      },\r\n      \"kekIdentity\": {\r\n        \"useSystemAssignedIdentity\": false,\r\n        \"userAssignedIdentity\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourcegroups/hiagarg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/cmk-pstest-msi1\"\r\n      },\r\n      \"infrastructureEncryption\": \"Enabled\"\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "24fb16af-aba5-4532-96a7-aa4a8b5900fc"
+          "2f0b2881-e62c-498c-91bb-afc035f66ccf"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.30411.01",
+          "FxVersion/4.700.22.11601",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "OSVersion/Microsoft.Windows.10.0.22000",
           "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.2.0"
         ],
         "Content-Type": [
@@ -225,13 +225,13 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/cmk-pstest-vault/operationResults/NDA5NTs2YTYzYzE0Mi01OGQzLTQ2ODctOGJjOS03ZTQ3Yjg3N2I3NDU=?api-version=2021-06-01"
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/cmk-pstest-vault/operationResults/NDA5NTswMDQ1NGZkYS0zMDFkLTQzNGItYTRiMy0wZTFmY2RmODM4MTc=?api-version=2021-06-01"
         ],
         "Retry-After": [
           "60"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/cmk-pstest-vault/operationStatus/NDA5NTs2YTYzYzE0Mi01OGQzLTQ2ODctOGJjOS03ZTQ3Yjg3N2I3NDU=?api-version=2021-06-01"
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/cmk-pstest-vault/operationStatus/NDA5NTswMDQ1NGZkYS0zMDFkLTQzNGItYTRiMy0wZTFmY2RmODM4MTc=?api-version=2021-06-01"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -249,16 +249,16 @@
           "299"
         ],
         "x-ms-correlation-request-id": [
-          "94ab2159-10b8-412e-8926-dadc5578551f"
+          "5c988bbc-6c90-4252-a413-44700052d69e"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20220125T042219Z:94ab2159-10b8-412e-8926-dadc5578551f"
+          "JIOINDIAWEST:20220326T114544Z:5c988bbc-6c90-4252-a413-44700052d69e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Tue, 25 Jan 2022 04:22:18 GMT"
+          "Sat, 26 Mar 2022 11:45:44 GMT"
         ],
         "Expires": [
           "-1"
@@ -277,15 +277,15 @@
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"encryption\": {\r\n      \"keyVaultProperties\": {\r\n        \"keyUri\": \"https://cmk-pstest-keyvault.vault.azure.net/keys/cmk-pstest-key/5569d5a163ee474cad2da4ac334af9d7\"\r\n      },\r\n      \"kekIdentity\": {\r\n        \"useSystemAssignedIdentity\": true\r\n      }\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d178e494-7415-4d8e-ac48-d9ed308e02f0"
+          "9056caf1-5160-461c-b92a-075d6c806a98"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.30411.01",
+          "FxVersion/4.700.22.11601",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "OSVersion/Microsoft.Windows.10.0.22000",
           "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.2.0"
         ],
         "Content-Type": [
@@ -303,37 +303,40 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/cmk-pstest-vault/operationResults/NDA5NTs5MTY1OGU0Yy1jZGE0LTRlMGUtYjgyYS05YWIwMzIwYzZiYzk=?api-version=2021-06-01"
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/cmk-pstest-vault/operationResults/NDA5NTtjZjg3ZjEzNi04M2I0LTQ0N2QtOTBiZS03YTJjOTAyMWIyZDY=?api-version=2021-06-01"
         ],
         "Retry-After": [
           "60"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/cmk-pstest-vault/operationStatus/NDA5NTs5MTY1OGU0Yy1jZGE0LTRlMGUtYjgyYS05YWIwMzIwYzZiYzk=?api-version=2021-06-01"
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/cmk-pstest-vault/operationStatus/NDA5NTtjZjg3ZjEzNi04M2I0LTQ0N2QtOTBiZS03YTJjOTAyMWIyZDY=?api-version=2021-06-01"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "f02d5640-939b-4737-bf26-6b0425e486ac"
+          "00000000-0000-0000-0000-000000000000"
         ],
         "x-ms-client-request-id": [
-          "d178e494-7415-4d8e-ac48-d9ed308e02f0"
+          "00000000-0000-0000-0000-000000000000"
         ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+        "Server": [
+          "Kestrel"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "298"
         ],
         "x-ms-correlation-request-id": [
-          "f02d5640-939b-4737-bf26-6b0425e486ac"
+          "738bffc0-4b4a-4b05-b6cf-0dcd0f107070"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20220125T042436Z:f02d5640-939b-4737-bf26-6b0425e486ac"
+          "JIOINDIAWEST:20220326T114800Z:738bffc0-4b4a-4b05-b6cf-0dcd0f107070"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Tue, 25 Jan 2022 04:24:35 GMT"
+          "Sat, 26 Mar 2022 11:48:00 GMT"
         ],
         "Expires": [
           "-1"
@@ -346,18 +349,18 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/cmk-pstest-vault/operationStatus/NDA5NTs2YTYzYzE0Mi01OGQzLTQ2ODctOGJjOS03ZTQ3Yjg3N2I3NDU=?api-version=2021-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9jbWstcHN0ZXN0LXZhdWx0L29wZXJhdGlvblN0YXR1cy9OREE1TlRzMllUWXpZekUwTWkwMU9HUXpMVFEyT0RjdE9HSmpPUzAzWlRRM1lqZzNOMkkzTkRVPT9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/cmk-pstest-vault/operationStatus/NDA5NTswMDQ1NGZkYS0zMDFkLTQzNGItYTRiMy0wZTFmY2RmODM4MTc=?api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9jbWstcHN0ZXN0LXZhdWx0L29wZXJhdGlvblN0YXR1cy9OREE1TlRzd01EUTFOR1prWVMwek1ERmtMVFF6TkdJdFlUUmlNeTB3WlRGbVkyUm1PRE00TVRjPT9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "24fb16af-aba5-4532-96a7-aa4a8b5900fc"
+          "2f0b2881-e62c-498c-91bb-afc035f66ccf"
         ],
         "User-Agent": [
-          "FxVersion/4.6.30411.01",
+          "FxVersion/4.700.22.11601",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "OSVersion/Microsoft.Windows.10.0.22000",
           "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.2.0"
         ]
       },
@@ -369,67 +372,67 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/cmk-pstest-vault/operationResults/NDA5NTs2YTYzYzE0Mi01OGQzLTQ2ODctOGJjOS03ZTQ3Yjg3N2I3NDU=?api-version=2021-06-01"
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/cmk-pstest-vault/operationResults/NDA5NTswMDQ1NGZkYS0zMDFkLTQzNGItYTRiMy0wZTFmY2RmODM4MTc=?api-version=2021-06-01"
         ],
         "Retry-After": [
           "60"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/cmk-pstest-vault/operationStatus/NDA5NTs2YTYzYzE0Mi01OGQzLTQ2ODctOGJjOS03ZTQ3Yjg3N2I3NDU=?api-version=2021-06-01"
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/cmk-pstest-vault/operationStatus/NDA5NTswMDQ1NGZkYS0zMDFkLTQzNGItYTRiMy0wZTFmY2RmODM4MTc=?api-version=2021-06-01"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "a7c35f85-4237-4fb6-a290-bac0a003de06"
+          "93860747-957e-4e02-b8d4-b358975340af"
         ],
         "x-ms-client-request-id": [
-          "24fb16af-aba5-4532-96a7-aa4a8b5900fc"
+          "2f0b2881-e62c-498c-91bb-afc035f66ccf"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "93860747-957e-4e02-b8d4-b358975340af"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIAWEST:20220326T114645Z:93860747-957e-4e02-b8d4-b358975340af"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11993"
-        ],
-        "x-ms-correlation-request-id": [
-          "a7c35f85-4237-4fb6-a290-bac0a003de06"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20220125T042321Z:a7c35f85-4237-4fb6-a290-bac0a003de06"
-        ],
         "Date": [
-          "Tue, 25 Jan 2022 04:23:20 GMT"
+          "Sat, 26 Mar 2022 11:46:45 GMT"
         ],
         "Content-Length": [
           "349"
         ],
         "Content-Type": [
-          "application/json"
+          "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/cmk-pstest-vault/operationStatus/NDA5NTs2YTYzYzE0Mi01OGQzLTQ2ODctOGJjOS03ZTQ3Yjg3N2I3NDU=\",\r\n  \"name\": \"NDA5NTs2YTYzYzE0Mi01OGQzLTQ2ODctOGJjOS03ZTQ3Yjg3N2I3NDU=\",\r\n  \"status\": \"InProgress\",\r\n  \"percentComplete\": 0.0\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/cmk-pstest-vault/operationStatus/NDA5NTswMDQ1NGZkYS0zMDFkLTQzNGItYTRiMy0wZTFmY2RmODM4MTc=\",\r\n  \"name\": \"NDA5NTswMDQ1NGZkYS0zMDFkLTQzNGItYTRiMy0wZTFmY2RmODM4MTc=\",\r\n  \"status\": \"InProgress\",\r\n  \"percentComplete\": 0.0\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/cmk-pstest-vault/operationStatus/NDA5NTs2YTYzYzE0Mi01OGQzLTQ2ODctOGJjOS03ZTQ3Yjg3N2I3NDU=?api-version=2021-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9jbWstcHN0ZXN0LXZhdWx0L29wZXJhdGlvblN0YXR1cy9OREE1TlRzMllUWXpZekUwTWkwMU9HUXpMVFEyT0RjdE9HSmpPUzAzWlRRM1lqZzNOMkkzTkRVPT9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/cmk-pstest-vault/operationStatus/NDA5NTswMDQ1NGZkYS0zMDFkLTQzNGItYTRiMy0wZTFmY2RmODM4MTc=?api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9jbWstcHN0ZXN0LXZhdWx0L29wZXJhdGlvblN0YXR1cy9OREE1TlRzd01EUTFOR1prWVMwek1ERmtMVFF6TkdJdFlUUmlNeTB3WlRGbVkyUm1PRE00TVRjPT9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "24fb16af-aba5-4532-96a7-aa4a8b5900fc"
+          "2f0b2881-e62c-498c-91bb-afc035f66ccf"
         ],
         "User-Agent": [
-          "FxVersion/4.6.30411.01",
+          "FxVersion/4.700.22.11601",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "OSVersion/Microsoft.Windows.10.0.22000",
           "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.2.0"
         ]
       },
@@ -444,59 +447,59 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "274d3eae-edf9-4719-ac3d-ce6f8cde2721"
+          "7b029cc7-db61-48aa-a36f-747cb9e0cd82"
         ],
         "x-ms-client-request-id": [
-          "24fb16af-aba5-4532-96a7-aa4a8b5900fc"
+          "2f0b2881-e62c-498c-91bb-afc035f66ccf"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "7b029cc7-db61-48aa-a36f-747cb9e0cd82"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIAWEST:20220326T114747Z:7b029cc7-db61-48aa-a36f-747cb9e0cd82"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11992"
-        ],
-        "x-ms-correlation-request-id": [
-          "274d3eae-edf9-4719-ac3d-ce6f8cde2721"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20220125T042422Z:274d3eae-edf9-4719-ac3d-ce6f8cde2721"
-        ],
         "Date": [
-          "Tue, 25 Jan 2022 04:24:22 GMT"
+          "Sat, 26 Mar 2022 11:47:47 GMT"
         ],
         "Content-Length": [
           "348"
         ],
         "Content-Type": [
-          "application/json"
+          "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/cmk-pstest-vault/operationStatus/NDA5NTs2YTYzYzE0Mi01OGQzLTQ2ODctOGJjOS03ZTQ3Yjg3N2I3NDU=\",\r\n  \"name\": \"NDA5NTs2YTYzYzE0Mi01OGQzLTQ2ODctOGJjOS03ZTQ3Yjg3N2I3NDU=\",\r\n  \"status\": \"Succeeded\",\r\n  \"percentComplete\": 0.0\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/cmk-pstest-vault/operationStatus/NDA5NTswMDQ1NGZkYS0zMDFkLTQzNGItYTRiMy0wZTFmY2RmODM4MTc=\",\r\n  \"name\": \"NDA5NTswMDQ1NGZkYS0zMDFkLTQzNGItYTRiMy0wZTFmY2RmODM4MTc=\",\r\n  \"status\": \"Succeeded\",\r\n  \"percentComplete\": 0.0\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/cmk-pstest-vault/backupEncryptionConfigs/backupResourceEncryptionConfig?api-version=2021-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9jbWstcHN0ZXN0LXZhdWx0L2JhY2t1cEVuY3J5cHRpb25Db25maWdzL2JhY2t1cFJlc291cmNlRW5jcnlwdGlvbkNvbmZpZz9hcGktdmVyc2lvbj0yMDIxLTEwLTAx",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/cmk-pstest-vault/backupEncryptionConfigs/backupResourceEncryptionConfig?api-version=2021-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9jbWstcHN0ZXN0LXZhdWx0L2JhY2t1cEVuY3J5cHRpb25Db25maWdzL2JhY2t1cFJlc291cmNlRW5jcnlwdGlvbkNvbmZpZz9hcGktdmVyc2lvbj0yMDIxLTEyLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b66d1e9c-a10a-40b2-be19-0cf25fd42add"
+          "bc5605d4-5957-476c-b3e4-6735c4e34f61"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.30411.01",
+          "FxVersion/4.700.22.11601",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.3.0.0"
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.4.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -510,17 +513,16 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "96d85399-8a73-4b6f-b3cd-9151f9bf91ca"
+          "a9f44d85-018d-427c-b1f9-f438f336a17a"
         ],
         "x-ms-client-request-id": [
-          "b66d1e9c-a10a-40b2-be19-0cf25fd42add",
-          "b66d1e9c-a10a-40b2-be19-0cf25fd42add"
+          "bc5605d4-5957-476c-b3e4-6735c4e34f61"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Server": [
-          "Microsoft-IIS/10.0"
+          "Kestrel"
         ],
         "X-Powered-By": [
           "ASP.NET"
@@ -529,19 +531,19 @@
           "299"
         ],
         "x-ms-correlation-request-id": [
-          "96d85399-8a73-4b6f-b3cd-9151f9bf91ca"
+          "a9f44d85-018d-427c-b1f9-f438f336a17a"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20220125T042425Z:96d85399-8a73-4b6f-b3cd-9151f9bf91ca"
+          "JIOINDIAWEST:20220326T114749Z:a9f44d85-018d-427c-b1f9-f438f336a17a"
         ],
         "Date": [
-          "Tue, 25 Jan 2022 04:24:24 GMT"
+          "Sat, 26 Mar 2022 11:47:48 GMT"
         ],
         "Content-Length": [
           "772"
         ],
         "Content-Type": [
-          "application/json"
+          "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
@@ -551,22 +553,22 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/cmk-pstest-vault/backupEncryptionConfigs/backupResourceEncryptionConfig?api-version=2021-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9jbWstcHN0ZXN0LXZhdWx0L2JhY2t1cEVuY3J5cHRpb25Db25maWdzL2JhY2t1cFJlc291cmNlRW5jcnlwdGlvbkNvbmZpZz9hcGktdmVyc2lvbj0yMDIxLTEwLTAx",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/cmk-pstest-vault/backupEncryptionConfigs/backupResourceEncryptionConfig?api-version=2021-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9jbWstcHN0ZXN0LXZhdWx0L2JhY2t1cEVuY3J5cHRpb25Db25maWdzL2JhY2t1cFJlc291cmNlRW5jcnlwdGlvbkNvbmZpZz9hcGktdmVyc2lvbj0yMDIxLTEyLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e7f3d6bf-9057-4968-9633-8b3dd81001cf"
+          "bc32b5a8-91cb-4cb6-981e-c34c50066c96"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.30411.01",
+          "FxVersion/4.700.22.11601",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.3.0.0"
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.4.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -580,17 +582,16 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "d68ad184-fb3e-4b8a-98c4-125d62204985"
+          "73d4b745-8b01-4951-84b9-cc9e327d199f"
         ],
         "x-ms-client-request-id": [
-          "e7f3d6bf-9057-4968-9633-8b3dd81001cf",
-          "e7f3d6bf-9057-4968-9633-8b3dd81001cf"
+          "bc32b5a8-91cb-4cb6-981e-c34c50066c96"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Server": [
-          "Microsoft-IIS/10.0"
+          "Kestrel"
         ],
         "X-Powered-By": [
           "ASP.NET"
@@ -599,19 +600,19 @@
           "299"
         ],
         "x-ms-correlation-request-id": [
-          "d68ad184-fb3e-4b8a-98c4-125d62204985"
+          "73d4b745-8b01-4951-84b9-cc9e327d199f"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20220125T042640Z:d68ad184-fb3e-4b8a-98c4-125d62204985"
+          "WESTINDIA:20220326T115004Z:73d4b745-8b01-4951-84b9-cc9e327d199f"
         ],
         "Date": [
-          "Tue, 25 Jan 2022 04:26:39 GMT"
+          "Sat, 26 Mar 2022 11:50:03 GMT"
         ],
         "Content-Length": [
           "596"
         ],
         "Content-Type": [
-          "application/json"
+          "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
@@ -621,22 +622,22 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/cmk-pstest-vault/backupconfig/vaultconfig?api-version=2021-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9jbWstcHN0ZXN0LXZhdWx0L2JhY2t1cGNvbmZpZy92YXVsdGNvbmZpZz9hcGktdmVyc2lvbj0yMDIxLTEwLTAx",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/cmk-pstest-vault/backupconfig/vaultconfig?api-version=2021-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9jbWstcHN0ZXN0LXZhdWx0L2JhY2t1cGNvbmZpZy92YXVsdGNvbmZpZz9hcGktdmVyc2lvbj0yMDIxLTEyLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b66d1e9c-a10a-40b2-be19-0cf25fd42add"
+          "bc5605d4-5957-476c-b3e4-6735c4e34f61"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.30411.01",
+          "FxVersion/4.700.22.11601",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.3.0.0"
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.4.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -649,18 +650,17 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "x-ms-request-id": [
-          "ac09d764-b72a-40d0-880c-a84f50647142"
-        ],
-        "x-ms-client-request-id": [
-          "b66d1e9c-a10a-40b2-be19-0cf25fd42add",
-          "b66d1e9c-a10a-40b2-be19-0cf25fd42add"
-        ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
+        "x-ms-request-id": [
+          "86c8c3d5-b80b-4497-81db-32f6d045ada0"
+        ],
+        "x-ms-client-request-id": [
+          "bc5605d4-5957-476c-b3e4-6735c4e34f61"
+        ],
         "Server": [
-          "Microsoft-IIS/10.0"
+          "Kestrel"
         ],
         "X-Powered-By": [
           "ASP.NET"
@@ -669,19 +669,19 @@
           "299"
         ],
         "x-ms-correlation-request-id": [
-          "ac09d764-b72a-40d0-880c-a84f50647142"
+          "86c8c3d5-b80b-4497-81db-32f6d045ada0"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20220125T042425Z:ac09d764-b72a-40d0-880c-a84f50647142"
+          "JIOINDIAWEST:20220326T114749Z:86c8c3d5-b80b-4497-81db-32f6d045ada0"
         ],
         "Date": [
-          "Tue, 25 Jan 2022 04:24:25 GMT"
+          "Sat, 26 Mar 2022 11:47:49 GMT"
         ],
         "Content-Length": [
           "370"
         ],
         "Content-Type": [
-          "application/json"
+          "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
@@ -691,22 +691,22 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/cmk-pstest-vault/backupconfig/vaultconfig?api-version=2021-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9jbWstcHN0ZXN0LXZhdWx0L2JhY2t1cGNvbmZpZy92YXVsdGNvbmZpZz9hcGktdmVyc2lvbj0yMDIxLTEwLTAx",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/cmk-pstest-vault/backupconfig/vaultconfig?api-version=2021-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9jbWstcHN0ZXN0LXZhdWx0L2JhY2t1cGNvbmZpZy92YXVsdGNvbmZpZz9hcGktdmVyc2lvbj0yMDIxLTEyLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e7f3d6bf-9057-4968-9633-8b3dd81001cf"
+          "bc32b5a8-91cb-4cb6-981e-c34c50066c96"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.30411.01",
+          "FxVersion/4.700.22.11601",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.3.0.0"
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.4.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -719,18 +719,17 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "x-ms-request-id": [
-          "c8c6f7d6-db92-4ec7-a007-6a39e6b6a6e1"
-        ],
-        "x-ms-client-request-id": [
-          "e7f3d6bf-9057-4968-9633-8b3dd81001cf",
-          "e7f3d6bf-9057-4968-9633-8b3dd81001cf"
-        ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
+        "x-ms-request-id": [
+          "b6435c8a-6a48-498b-9585-9a052b4c4315"
+        ],
+        "x-ms-client-request-id": [
+          "bc32b5a8-91cb-4cb6-981e-c34c50066c96"
+        ],
         "Server": [
-          "Microsoft-IIS/10.0"
+          "Kestrel"
         ],
         "X-Powered-By": [
           "ASP.NET"
@@ -739,19 +738,19 @@
           "299"
         ],
         "x-ms-correlation-request-id": [
-          "c8c6f7d6-db92-4ec7-a007-6a39e6b6a6e1"
+          "b6435c8a-6a48-498b-9585-9a052b4c4315"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20220125T042641Z:c8c6f7d6-db92-4ec7-a007-6a39e6b6a6e1"
+          "WESTINDIA:20220326T115004Z:b6435c8a-6a48-498b-9585-9a052b4c4315"
         ],
         "Date": [
-          "Tue, 25 Jan 2022 04:26:40 GMT"
+          "Sat, 26 Mar 2022 11:50:04 GMT"
         ],
         "Content-Length": [
           "370"
         ],
         "Content-Type": [
-          "application/json"
+          "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
@@ -761,18 +760,18 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/cmk-pstest-vault/operationStatus/NDA5NTs5MTY1OGU0Yy1jZGE0LTRlMGUtYjgyYS05YWIwMzIwYzZiYzk=?api-version=2021-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9jbWstcHN0ZXN0LXZhdWx0L29wZXJhdGlvblN0YXR1cy9OREE1TlRzNU1UWTFPR1UwWXkxalpHRTBMVFJsTUdVdFlqZ3lZUzA1WVdJd016SXdZelppWXprPT9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/cmk-pstest-vault/operationStatus/NDA5NTtjZjg3ZjEzNi04M2I0LTQ0N2QtOTBiZS03YTJjOTAyMWIyZDY=?api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9jbWstcHN0ZXN0LXZhdWx0L29wZXJhdGlvblN0YXR1cy9OREE1TlR0alpqZzNaakV6TmkwNE0ySTBMVFEwTjJRdE9UQmlaUzAzWVRKak9UQXlNV0l5WkRZPT9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d178e494-7415-4d8e-ac48-d9ed308e02f0"
+          "9056caf1-5160-461c-b92a-075d6c806a98"
         ],
         "User-Agent": [
-          "FxVersion/4.6.30411.01",
+          "FxVersion/4.700.22.11601",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "OSVersion/Microsoft.Windows.10.0.22000",
           "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.2.0"
         ]
       },
@@ -784,67 +783,67 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/cmk-pstest-vault/operationResults/NDA5NTs5MTY1OGU0Yy1jZGE0LTRlMGUtYjgyYS05YWIwMzIwYzZiYzk=?api-version=2021-06-01"
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/cmk-pstest-vault/operationResults/NDA5NTtjZjg3ZjEzNi04M2I0LTQ0N2QtOTBiZS03YTJjOTAyMWIyZDY=?api-version=2021-06-01"
         ],
         "Retry-After": [
           "60"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/cmk-pstest-vault/operationStatus/NDA5NTs5MTY1OGU0Yy1jZGE0LTRlMGUtYjgyYS05YWIwMzIwYzZiYzk=?api-version=2021-06-01"
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/cmk-pstest-vault/operationStatus/NDA5NTtjZjg3ZjEzNi04M2I0LTQ0N2QtOTBiZS03YTJjOTAyMWIyZDY=?api-version=2021-06-01"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "dba6baf6-dd13-46c5-968b-b7debf6f9e57"
+          "9d30c965-4f1c-4dbf-85f6-cf6b49a2b2b3"
         ],
         "x-ms-client-request-id": [
-          "d178e494-7415-4d8e-ac48-d9ed308e02f0"
+          "9056caf1-5160-461c-b92a-075d6c806a98"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
+        ],
+        "x-ms-correlation-request-id": [
+          "9d30c965-4f1c-4dbf-85f6-cf6b49a2b2b3"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIAWEST:20220326T114901Z:9d30c965-4f1c-4dbf-85f6-cf6b49a2b2b3"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11990"
-        ],
-        "x-ms-correlation-request-id": [
-          "dba6baf6-dd13-46c5-968b-b7debf6f9e57"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20220125T042537Z:dba6baf6-dd13-46c5-968b-b7debf6f9e57"
-        ],
         "Date": [
-          "Tue, 25 Jan 2022 04:25:37 GMT"
+          "Sat, 26 Mar 2022 11:49:00 GMT"
         ],
         "Content-Length": [
           "349"
         ],
         "Content-Type": [
-          "application/json"
+          "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/cmk-pstest-vault/operationStatus/NDA5NTs5MTY1OGU0Yy1jZGE0LTRlMGUtYjgyYS05YWIwMzIwYzZiYzk=\",\r\n  \"name\": \"NDA5NTs5MTY1OGU0Yy1jZGE0LTRlMGUtYjgyYS05YWIwMzIwYzZiYzk=\",\r\n  \"status\": \"InProgress\",\r\n  \"percentComplete\": 0.0\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/cmk-pstest-vault/operationStatus/NDA5NTtjZjg3ZjEzNi04M2I0LTQ0N2QtOTBiZS03YTJjOTAyMWIyZDY=\",\r\n  \"name\": \"NDA5NTtjZjg3ZjEzNi04M2I0LTQ0N2QtOTBiZS03YTJjOTAyMWIyZDY=\",\r\n  \"status\": \"InProgress\",\r\n  \"percentComplete\": 0.0\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/cmk-pstest-vault/operationStatus/NDA5NTs5MTY1OGU0Yy1jZGE0LTRlMGUtYjgyYS05YWIwMzIwYzZiYzk=?api-version=2021-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9jbWstcHN0ZXN0LXZhdWx0L29wZXJhdGlvblN0YXR1cy9OREE1TlRzNU1UWTFPR1UwWXkxalpHRTBMVFJsTUdVdFlqZ3lZUzA1WVdJd016SXdZelppWXprPT9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/cmk-pstest-vault/operationStatus/NDA5NTtjZjg3ZjEzNi04M2I0LTQ0N2QtOTBiZS03YTJjOTAyMWIyZDY=?api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9jbWstcHN0ZXN0LXZhdWx0L29wZXJhdGlvblN0YXR1cy9OREE1TlR0alpqZzNaakV6TmkwNE0ySTBMVFEwTjJRdE9UQmlaUzAzWVRKak9UQXlNV0l5WkRZPT9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d178e494-7415-4d8e-ac48-d9ed308e02f0"
+          "9056caf1-5160-461c-b92a-075d6c806a98"
         ],
         "User-Agent": [
-          "FxVersion/4.6.30411.01",
+          "FxVersion/4.700.22.11601",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "OSVersion/Microsoft.Windows.10.0.22000",
           "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.2.0"
         ]
       },
@@ -859,40 +858,40 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "c00bbcb4-d63b-4d49-a957-3eb3a174d210"
+          "b6eb4236-02e7-4da4-9c5f-b8245035b46d"
         ],
         "x-ms-client-request-id": [
-          "d178e494-7415-4d8e-ac48-d9ed308e02f0"
+          "9056caf1-5160-461c-b92a-075d6c806a98"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11994"
+        ],
+        "x-ms-correlation-request-id": [
+          "b6eb4236-02e7-4da4-9c5f-b8245035b46d"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIAWEST:20220326T115002Z:b6eb4236-02e7-4da4-9c5f-b8245035b46d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11989"
-        ],
-        "x-ms-correlation-request-id": [
-          "c00bbcb4-d63b-4d49-a957-3eb3a174d210"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20220125T042639Z:c00bbcb4-d63b-4d49-a957-3eb3a174d210"
-        ],
         "Date": [
-          "Tue, 25 Jan 2022 04:26:38 GMT"
+          "Sat, 26 Mar 2022 11:50:01 GMT"
         ],
         "Content-Length": [
           "348"
         ],
         "Content-Type": [
-          "application/json"
+          "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/cmk-pstest-vault/operationStatus/NDA5NTs5MTY1OGU0Yy1jZGE0LTRlMGUtYjgyYS05YWIwMzIwYzZiYzk=\",\r\n  \"name\": \"NDA5NTs5MTY1OGU0Yy1jZGE0LTRlMGUtYjgyYS05YWIwMzIwYzZiYzk=\",\r\n  \"status\": \"Succeeded\",\r\n  \"percentComplete\": 0.0\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/cmk-pstest-vault/operationStatus/NDA5NTtjZjg3ZjEzNi04M2I0LTQ0N2QtOTBiZS03YTJjOTAyMWIyZDY=\",\r\n  \"name\": \"NDA5NTtjZjg3ZjEzNi04M2I0LTQ0N2QtOTBiZS03YTJjOTAyMWIyZDY=\",\r\n  \"status\": \"Succeeded\",\r\n  \"percentComplete\": 0.0\r\n}",
       "StatusCode": 200
     }
   ],

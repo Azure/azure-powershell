@@ -63,7 +63,6 @@ Note: Values provided on the command line (e.g. parameters, metadata) override c
 
 ### Example 2: Create a parameterized policy definition using inline parameters
 
-
 ```powershell
 <#{
    "if": {
@@ -91,8 +90,8 @@ The command specifies the policy as a string in valid JSON format.
 ```powershell
 New-AzPolicyDefinition -Name 'VMPolicyDefinition' -Metadata '{"category":"Virtual Machine"}' -Policy '{"if":{"field":"type","equals":"Microsoft.Compute/virtualMachines"},"then":{"effect":"deny"}}'
 ```
-```output
 
+```output
 Name               : VMPolicyDefinition
 ResourceId         : /subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/policyDefinitions/VMPolicyDefinition
 ResourceName       : VMPolicyDefinition
@@ -109,8 +108,8 @@ The command specifies the policy as a string in valid JSON format.
 ```powershell
 New-AzPolicyDefinition -Name 'TagsPolicyDefinition' -Policy '{"if":{"value":"[less(length(field(''tags'')), 3)]","equals":true},"then":{"effect":"deny"}}' -Mode Indexed
 ```
-```output
 
+```output
 Name               : TagsPolicyDefinition
 ResourceId         : /subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/policyDefinitions/TagsPolicyDefinition
 ResourceName       : TagsPolicyDefinition

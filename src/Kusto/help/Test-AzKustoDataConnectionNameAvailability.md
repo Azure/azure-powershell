@@ -32,7 +32,7 @@ Checks that the data connection name is valid and is not already in use.
 
 ### Example 1: Check the availability of a Data Connection name which is in use
 ```powershell
-Test-AzKustoDataConnectionNameAvailability -ClusterName testnewkustocluster -DatabaseName mykustodatabase -ResourceGroupName testrg -Name mykustodataconnection -Type Microsoft.Kusto/Clusters/Databases/dataConnections
+Test-AzKustoDataConnectionNameAvailability -ClusterName testnewkustocluster -DatabaseName mykustodatabase -ResourceGroupName testrg -Name mykustodataconnection
 ```
 
 ```output
@@ -45,7 +45,7 @@ The above command returns whether or not a Data Connection named "mykustodatacon
 
 ### Example 2: Check the availability of a Data Connection name which is not in use
 ```powershell
-Test-AzKustoDataConnectionNameAvailability -ClusterName testnewkustocluster -DatabaseName mykustodatabase -ResourceGroupName testrg -Name mydataconnection -Type Microsoft.Kusto/Clusters/Databases/dataConnections
+Test-AzKustoDataConnectionNameAvailability -ClusterName testnewkustocluster -DatabaseName mykustodatabase -ResourceGroupName testrg -Name mydataconnection
 ```
 
 ```output

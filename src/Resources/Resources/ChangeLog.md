@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+
+## Version 5.5.0
+* Removed `-ApplicationId` from `New-AzADServicePrincipal` `SimpleParameterSet` [#17256]
 * Added `New-AzResourceManagementPrivateLink`, and `New-AzPrivateLinkAssociation` cmdlets
 * Added authorization related cmdlets:
     - `Get-AzRoleAssignmentSchedule`

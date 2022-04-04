@@ -34,4 +34,8 @@ Describe 'New-AzADServicePrincipal' {
     It 'ApplicationObjectParameterSet' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
+
+    It 'ApplicationIdParameterSet' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
 }

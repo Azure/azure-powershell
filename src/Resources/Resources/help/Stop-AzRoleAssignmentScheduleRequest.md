@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resources-help.xml
 Module Name: Az.Resources
 online version: https://docs.microsoft.com/powershell/module/az.resources/stop-azroleassignmentschedulerequest
 schema: 2.0.0
@@ -15,13 +15,13 @@ Cancels a pending role assignment schedule request.
 ### Cancel (Default)
 ```
 Stop-AzRoleAssignmentScheduleRequest -Name <String> -Scope <String> [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CancelViaIdentity
 ```
 Stop-AzRoleAssignmentScheduleRequest -InputObject <IAuthorizationIdentity> [-DefaultProfile <PSObject>]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,7 +34,6 @@ Cancels a pending role assignment schedule request.
 PS C:\> $scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
 PS C:\> $name = "47f8978c-5d8d-4fbf-b4b6-2f43eeb43ec6"
 PS C:\> Stop-AzRoleAssignmentScheduleRequest -Scope $scope -Name $name
-
 ```
 
 You can use this operation to cancel a `roleAssignmentScheduleRequest` which has not been provisioned yet.
@@ -181,4 +180,3 @@ INPUTOBJECT <IAuthorizationIdentity>: Identity Parameter
   - `[Scope <String>]`: The scope of the role management policy.
 
 ## RELATED LINKS
-
