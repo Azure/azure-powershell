@@ -15,8 +15,22 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzDataMigrationToSqlDb
 }
 
 Describe 'Remove-AzDataMigrationToSqlDb' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete'  {
+        $instance = New-AzDataMigrationToSqlDb -ResourceGroupName $env.TestDeleteDatabaseMigrationDb.ResourceGroupName -SqlDbInstanceName $env.TestDeleteDatabaseMigrationDb.SqlDbInstanceName -MigrationService  $env.TestDeleteDatabaseMigrationDb.MigrationService -TargetSqlConnectionAuthentication $env.TestDeleteDatabaseMigrationDb.TargetSqlConnectionAuthentication -TargetSqlConnectionDataSource $env.TestDeleteDatabaseMigrationDb.TargetSqlConnectionDataSource -TargetSqlConnectionPassword $env.TestDeleteDatabaseMigrationDb.TargetSqlConnectionPassword -TargetSqlConnectionUserName $env.TestDeleteDatabaseMigrationDb.TargetSqlConnectionUserName -SourceSqlConnectionAuthentication $env.TestDeleteDatabaseMigrationDb.SourceSqlConnectionAuthentication -SourceSqlConnectionDataSource $env.TestDeleteDatabaseMigrationDb.SourceSqlConnectionDataSource -SourceSqlConnectionUserName $env.TestDeleteDatabaseMigrationDb.SourceSqlConnectionUserName -SourceSqlConnectionPassword $env.TestDeleteDatabaseMigrationDb.SourceSqlConnectionPassword -SourceDatabaseName $env.TestDeleteDatabaseMigrationDb.SourceDatabaseName -TargetDbName $env.TestDeleteDatabaseMigrationDb.TargetDbName -Scope  $env.TestDeleteDatabaseMigrationDb.Scope
+        
+        Start-Sleep -Seconds 5
+
+        Remove-AzDataMigrationToSqlDb -ResourceGroupName $env.TestDeleteDatabaseMigrationDb.ResourceGroupName -SqlDbInstanceName $env.TestDeleteDatabaseMigrationDb.SqlDbInstanceName -TargetDbName $env.TestDeleteDatabaseMigrationDb.TargetDbName -Force
+
+        Start-Sleep -Seconds 5
+        
+        
+        $dbMig = Get-AzDataMigrationToSqlDb -ResourceGroupName $env.TestDeleteDatabaseMigrationDb.ResourceGroupName -SqlDbInstanceName $env.TestDeleteDatabaseMigrationDb.SqlDbInstanceName -TargetDbName $env.TestDeleteDatabaseMigrationDb.TargetDbName -ErrorAction SilentlyContinue
+        
+
+        $assert =  ($dbMig -eq $null)
+        $assert | Should be $true
+
     }
 
     It 'DeleteViaIdentity' -skip {

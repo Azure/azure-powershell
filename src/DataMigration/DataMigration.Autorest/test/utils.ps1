@@ -195,6 +195,24 @@ function setupEnv() {
         Scope =  "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb" 
         
     }
+
+    $DeleteDatabaseMigrationTestVariablesDb = @{
+        ResourceGroupName = "tsum38RG"
+        SqlDbInstanceName = "dmstestsqldb" 
+        MigrationService  = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/SqlMigrationServices/dms20211030"
+        TargetSqlConnectionAuthentication = "SqlAuthentication" 
+        TargetSqlConnectionDataSource = "dmstestsqldb.database.windows.net" 
+        TargetSqlConnectionPassword = "demo@pass123" 
+        TargetSqlConnectionUserName = "demouser" 
+        SourceSqlConnectionAuthentication = "SqlAuthentication" 
+        SourceSqlConnectionDataSource = "AALAB03-2K8.REDMOND.CORP.MICROSOFT.COM" 
+        SourceSqlConnectionUserName = "hijavatestuser1" 
+        SourceSqlConnectionPassword = "testAdmin123" 
+        SourceDatabaseName = "AdventureWorks" 
+        TargetDbName = "at_sqldbtrgt1"
+        Scope =  "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb"       
+    }
+
     $env.add("TestSqlMigrationService", $SqlMigrationServiceTestVariables) | Out-Null
     $env.add("TestNewSqlMigrationService",$NewSqlMigrationServiceTestVariables) | Out-Null
     $env.add("TestAuthKey",$AuthKeyTestVariables) | Out-Null
@@ -210,6 +228,8 @@ function setupEnv() {
     $env.add("TestStopDatabaseMigrationDb", $StopDatabaseMigrationTestVariablesDb) | Out-Null
     $env.add("TestCutDatabaseMigrationMi", $CutDatabaseMigrationTestVariablesMi) | Out-Null
     $env.add("TestCutDatabaseMigrationVm", $CutDatabaseMigrationTestVariablesVm) | Out-Null
+    $env.add("TestDeleteDatabaseMigrationDb", $DeleteDatabaseMigrationTestVariablesDb) | Out-Null
+    
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

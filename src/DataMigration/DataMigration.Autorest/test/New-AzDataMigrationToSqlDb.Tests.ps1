@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDataMigrationToSqlDb'))
 }
 
 Describe 'New-AzDataMigrationToSqlDb' {
-    It 'CreateExpanded'  {
+    It 'CreateExpanded' -skip {
         $instance = New-AzDataMigrationToSqlDb -ResourceGroupName $env.TestNewDatabaseMigrationDb.ResourceGroupName -SqlDbInstanceName $env.TestNewDatabaseMigrationDb.SqlDbInstanceName -MigrationService  $env.TestNewDatabaseMigrationDb.MigrationService -TargetSqlConnectionAuthentication $env.TestNewDatabaseMigrationDb.TargetSqlConnectionAuthentication -TargetSqlConnectionDataSource $env.TestNewDatabaseMigrationDb.TargetSqlConnectionDataSource -TargetSqlConnectionPassword $env.TestNewDatabaseMigrationDb.TargetSqlConnectionPassword -TargetSqlConnectionUserName $env.TestNewDatabaseMigrationDb.TargetSqlConnectionUserName -SourceSqlConnectionAuthentication $env.TestNewDatabaseMigrationDb.SourceSqlConnectionAuthentication -SourceSqlConnectionDataSource $env.TestNewDatabaseMigrationDb.SourceSqlConnectionDataSource -SourceSqlConnectionUserName $env.TestNewDatabaseMigrationDb.SourceSqlConnectionUserName -SourceSqlConnectionPassword $env.TestNewDatabaseMigrationDb.SourceSqlConnectionPassword -SourceDatabaseName $env.TestNewDatabaseMigrationDb.SourceDatabaseName -TargetDbName $env.TestNewDatabaseMigrationDb.TargetDbName -Scope  $env.TestNewDatabaseMigrationDb.Scope
         
         $assert = ($instance.Type -eq "Microsoft.DataMigration/databaseMigrations") -AND ($instance.Name -eq $env.TestNewDatabaseMigrationDb.TargetDbName) -AND ($instance.ProvisioningState -eq "Succeeded") -AND ($instance.Kind -eq "SqlDb")
