@@ -27,14 +27,14 @@ namespace Microsoft.Azure.Commands.Sql.EndpointCertificate.Model
         public string InstanceName { get; set; }
 
         /// <summary>
-        /// Gets or sets endpoint certificate type
-        /// </summary>
-        public string Type { get; set; }
-
-        /// <summary>
         /// Gets or sets endpoint certificate resource id
         /// </summary>
         public string Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets endpoint certificate type
+        /// </summary>
+        public string Type { get; set; }
 
         /// <summary>
         /// Gets or sets endpoint certificate name
