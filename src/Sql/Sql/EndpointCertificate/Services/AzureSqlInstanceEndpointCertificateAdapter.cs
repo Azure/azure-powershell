@@ -84,7 +84,6 @@ namespace Microsoft.Azure.Commands.Sql.EndpointCertificate.Services
                 Id = endpointCertificate.Id,
                 Type = endpointCertificate.Type,
                 Name = endpointCertificate.Name,
-                EndpointType = endpointCertificate.Name,
                 PublicKey = "0x" + endpointCertificate.PublicBlob,
             };
             return endpointCertificateModel;
