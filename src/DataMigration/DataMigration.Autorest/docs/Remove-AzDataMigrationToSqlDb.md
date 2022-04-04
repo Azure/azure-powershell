@@ -30,27 +30,19 @@ Delete Database Migration resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete the SQL DB Database Migration resource.
 ```powershell
-{{ Add code here }}
+Remove-AzDataMigrationToSqlDb -ResourceGroupName tsum38RG -SqlDbInstanceName dmstestsqldb -TargetDbName at_sqldbtrgtps1
 ```
 
-```output
-{{ Add output here }}
-```
+Delete the SQL DB Database Migration resource.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Delete the SQL DB Database Migration resource even if it is in progress 
 ```powershell
-{{ Add code here }}
+Remove-AzDataMigrationToSqlDb -ResourceGroupName tsum38RG -SqlDbInstanceName dmstestsqldb -TargetDbName at_sqldbtrgtps1 -Force
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Forcibly deletes an ongoing Migration to SQL DB by adding the optional "Force" parameter
 
 ## PARAMETERS
 
