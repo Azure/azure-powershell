@@ -1,0 +1,294 @@
+{
+  "Resume-AzsUpdateRun+[NoContext]+TestResumeAzsUpdateRun+$GET+https://management.azure.com/subscriptions/182830af-081a-4de2-b134-ba14d45d8dd2/resourceGroups/System.redmond/providers/Microsoft.Update.Admin/updateLocations/redmond/updates?api-version=2021-07-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.redmond.ext-v.masd.stbtest.microsoft.com/subscriptions/182830af-081a-4de2-b134-ba14d45d8dd2/resourceGroups/System.redmond/providers/Microsoft.Update.Admin/updateLocations/redmond/updates?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "45" ],
+        "x-ms-client-request-id": [ "5e7f1b58-3b43-49fb-b5ac-e92c69c1ae67" ],
+        "CommandName": [ "Azs.Update.Admin.internal\\Get-AzsUpdate" ],
+        "FullCommandName": [ "Get-AzsUpdate_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "d0d5a00d-5cf9-40c2-972a-3d60c9d867a7" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14963" ],
+        "x-ms-request-id": [ "d0d5a00d-5cf9-40c2-972a-3d60c9d867a7" ],
+        "x-ms-routing-request-id": [ "REDMOND:20220405T165035Z:d0d5a00d-5cf9-40c2-972a-3d60c9d867a7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Tue, 05 Apr 2022 16:50:34 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvKKdoQ8m+q8lIW8j7lMOtDkIp4nf5o2zXG4vbPdEK5elxXk7IdWZiszNET/37zGa64B2bDwhWrI74TiyjZa26kL9JhE+ZvgnTDucm9EL6KUB2fYFhLthSvrPf0RpXwyLFD+WYbgaUljJweyW+R0rA" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "992" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/182830af-081a-4de2-b134-ba14d45d8dd2/resourceGroups/System.redmond/providers/Microsoft.Update.Admin/updateLocations/redmond/updates/Microsoft9.8888.0.888\",\"name\":\"redmond/Microsoft9.8888.0.888\",\"type\":\"Microsoft.Update.Admin/updateLocations/updates\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"description\":\"AzS Update 9.8888.0.888\",\"state\":\"PreparationFailed\",\"kbLink\":\"https://docs.microsoft.com/azure-stack/operator/release-notes?view=azs-xxxx2008\",\"minVersionRequired\":\"9.2222.0.222\",\"minOemVersionRequired\":\"2.1.0.0\",\"packagePath\":\"\\\\\\\\SU1FileServer\\\\SU1_Infrastructure_2\\\\Updates\\\\Packages\\\\Microsoft9.8888.0.888\",\"packageSizeInMb\":224,\"displayName\":\"AzS Update - 9.8888.0.888\",\"version\":\"9.8888.0.888\",\"publisher\":\"Microsoft\",\"releaseLink\":\"https://docs.microsoft.com/azure-stack/operator/release-notes?view=azs-xxxx2008\",\"availabilityType\":\"Local\",\"packageType\":\"Infrastructure\",\"prerequisites\":[],\"updateStateProperties\":{\"progressPercentage\":0}}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Resume-AzsUpdateRun+[NoContext]+TestResumeAzsUpdateRun+$GET+https://management.azure.com/subscriptions/182830af-081a-4de2-b134-ba14d45d8dd2/resourceGroups/System.redmond/providers/Microsoft.Update.Admin/updateLocations/redmond/updates/Microsoft9.8888.0.888/updateRuns?api-version=2021-07-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.redmond.ext-v.masd.stbtest.microsoft.com/subscriptions/182830af-081a-4de2-b134-ba14d45d8dd2/resourceGroups/System.redmond/providers/Microsoft.Update.Admin/updateLocations/redmond/updates/Microsoft9.8888.0.888/updateRuns?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "46" ],
+        "x-ms-client-request-id": [ "fd6c7b37-9e26-42e3-8784-3c222f400e70" ],
+        "CommandName": [ "Azs.Update.Admin.internal\\Get-AzsUpdateRun" ],
+        "FullCommandName": [ "Get-AzsUpdateRun_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "b7705c80-0410-44f4-aa28-94cd57b4e2ee" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14958" ],
+        "x-ms-request-id": [ "b7705c80-0410-44f4-aa28-94cd57b4e2ee" ],
+        "x-ms-routing-request-id": [ "REDMOND:20220405T165039Z:b7705c80-0410-44f4-aa28-94cd57b4e2ee" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Tue, 05 Apr 2022 16:50:39 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvg2wAZemLJJFzcleDQiPceWn6cEUbowZnyFxSCz+5h6tWxUm9ouRFOJc1qXZJHkOSWQMj0qJ8bUrIxTPdp1OrCXrLFDCg63qE6BQHqg+GVapixp3NBOB5kaQYVrScn+WJ4GZld/byVKAqMuyLBDOU" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1146" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/182830af-081a-4de2-b134-ba14d45d8dd2/resourceGroups/System.redmond/providers/Microsoft.Update.Admin/updateLocations/redmond/updates/Microsoft9.8888.0.888/updateRuns/73879a9a-5a9e-4b82-a5d3-9a6028283b15\",\"name\":\"redmond/Microsoft9.8888.0.888/73879a9a-5a9e-4b82-a5d3-9a6028283b15\",\"type\":\"Microsoft.Update.Admin/updateLocations/updates/updateRuns\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"progress\":{\"name\":\"Preparing to install\",\"description\":\"Preparing to install\",\"status\":\"Extracted\",\"steps\":[{\"name\":\"Downloading update\",\"description\":\"\",\"status\":\"Success\"},{\"name\":\"Validating the download and extracting files.\",\"description\":\"\",\"status\":\"Success\"},{\"name\":\"Update is blocked due to health check failure\",\"description\":\"Update is blocked due to health check failure.\\r\\n    To remediate please check the health check alert details and \\r\\n    follow the instructions: https://aka.ms/TroubleshootAzureStackUpdates\",\"status\":\"Error\"},{\"name\":\"Initiating update installation.\",\"description\":\"\",\"status\":\"NotStarted\"}]},\"timeStarted\":\"2022-04-05T16:50:39.5783366+00:00\",\"duration\":\"PT0S\",\"state\":\"Failed\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Resume-AzsUpdateRun+[NoContext]+TestResumeAzsUpdateRun+$POST+https://management.azure.com/subscriptions/182830af-081a-4de2-b134-ba14d45d8dd2/resourceGroups/System.redmond/providers/Microsoft.Update.Admin/updateLocations/redmond/updates/redmond%2FMicrosoft9.8888.0.888/updateRuns/73879a9a-5a9e-4b82-a5d3-9a6028283b15/rerun?api-version=2021-07-01+3": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://adminmanagement.redmond.ext-v.masd.stbtest.microsoft.com/subscriptions/182830af-081a-4de2-b134-ba14d45d8dd2/resourceGroups/System.redmond/providers/Microsoft.Update.Admin/updateLocations/redmond/updates/redmond%2FMicrosoft9.8888.0.888/updateRuns/73879a9a-5a9e-4b82-a5d3-9a6028283b15/rerun?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "47" ],
+        "x-ms-client-request-id": [ "a9db268c-8997-4a07-bacc-5c3f8e8b9254" ],
+        "CommandName": [ "Azs.Update.Admin.internal\\Resume-AzsUpdateRun" ],
+        "FullCommandName": [ "Resume-AzsUpdateRun_Rerun" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-request-id": [ "95e6d2c6-474b-4a89-a2fb-e313e6a09fa7" ],
+        "x-ms-correlation-request-id": [ "95e6d2c6-474b-4a89-a2fb-e313e6a09fa7" ],
+        "x-ms-routing-request-id": [ "REDMOND:20220405T165044Z:95e6d2c6-474b-4a89-a2fb-e313e6a09fa7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Tue, 05 Apr 2022 16:50:43 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRv+cJ3HXVCvAifDJyx4A4SzDCmEk5qFVxLBQZ1v6+vVFMKY1YENMs4fdGlWADxUaDAfimLfbeAeolOgYEQ57rNS7Ac+cZ3+R26SkM4ST4EwqHr530VDVkxrXCfba2jI0NPUcxLqvMgbDxB1UJd56S/" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "0" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Resume-AzsUpdateRun+[NoContext]+TestResumeAzsUpdateRun+$GET+https://management.azure.com/subscriptions/182830af-081a-4de2-b134-ba14d45d8dd2/resourceGroups/System.redmond/providers/Microsoft.Update.Admin/updateLocations/redmond/updates/Microsoft9.8888.0.888/updateRuns?api-version=2021-07-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.redmond.ext-v.masd.stbtest.microsoft.com/subscriptions/182830af-081a-4de2-b134-ba14d45d8dd2/resourceGroups/System.redmond/providers/Microsoft.Update.Admin/updateLocations/redmond/updates/Microsoft9.8888.0.888/updateRuns?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "48" ],
+        "x-ms-client-request-id": [ "dfdf9cee-8a25-446b-aa3b-dab853e4cb66" ],
+        "CommandName": [ "Azs.Update.Admin.internal\\Get-AzsUpdateRun" ],
+        "FullCommandName": [ "Get-AzsUpdateRun_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "f49572b7-8b67-4199-a5e6-34f48a39664a" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14949" ],
+        "x-ms-request-id": [ "f49572b7-8b67-4199-a5e6-34f48a39664a" ],
+        "x-ms-routing-request-id": [ "REDMOND:20220405T165049Z:f49572b7-8b67-4199-a5e6-34f48a39664a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Tue, 05 Apr 2022 16:50:48 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvFkjprJWyiNtrY+0xe4dz7uf3XcdC95cu0OPMMkD0Q4avc9x/6vEixgkYN2q1W1mutBsSUP7rbX3NricJB7HULmF7GJlM19BRMoGFOk/EKMZevKp+1+D/niE1iD46BqCMFIBByU4Ec4M+X17jYm4q" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1146" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/182830af-081a-4de2-b134-ba14d45d8dd2/resourceGroups/System.redmond/providers/Microsoft.Update.Admin/updateLocations/redmond/updates/Microsoft9.8888.0.888/updateRuns/73879a9a-5a9e-4b82-a5d3-9a6028283b15\",\"name\":\"redmond/Microsoft9.8888.0.888/73879a9a-5a9e-4b82-a5d3-9a6028283b15\",\"type\":\"Microsoft.Update.Admin/updateLocations/updates/updateRuns\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"progress\":{\"name\":\"Preparing to install\",\"description\":\"Preparing to install\",\"status\":\"Extracted\",\"steps\":[{\"name\":\"Downloading update\",\"description\":\"\",\"status\":\"Success\"},{\"name\":\"Validating the download and extracting files.\",\"description\":\"\",\"status\":\"Success\"},{\"name\":\"Update is blocked due to health check failure\",\"description\":\"Update is blocked due to health check failure.\\r\\n    To remediate please check the health check alert details and \\r\\n    follow the instructions: https://aka.ms/TroubleshootAzureStackUpdates\",\"status\":\"Error\"},{\"name\":\"Initiating update installation.\",\"description\":\"\",\"status\":\"NotStarted\"}]},\"timeStarted\":\"2022-04-05T16:50:49.1827251+00:00\",\"duration\":\"PT0S\",\"state\":\"Failed\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "[NoDescription]+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/182830af-081a-4de2-b134-ba14d45d8dd2/resourceGroups/System.redmond/providers/Microsoft.Update.Admin/updateLocations/redmond/updates?api-version=2021-07-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.redmond.ext-v.masd.stbtest.microsoft.com/subscriptions/182830af-081a-4de2-b134-ba14d45d8dd2/resourceGroups/System.redmond/providers/Microsoft.Update.Admin/updateLocations/redmond/updates?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "49" ],
+        "x-ms-client-request-id": [ "00d3be14-b660-47c8-9fa9-4dd275a714a4" ],
+        "CommandName": [ "Azs.Update.Admin.internal\\Get-AzsUpdate" ],
+        "FullCommandName": [ "Get-AzsUpdate_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "eb2ce390-4d9a-406e-b9db-d883dcae6525" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14944" ],
+        "x-ms-request-id": [ "eb2ce390-4d9a-406e-b9db-d883dcae6525" ],
+        "x-ms-routing-request-id": [ "REDMOND:20220405T165114Z:eb2ce390-4d9a-406e-b9db-d883dcae6525" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Tue, 05 Apr 2022 16:51:14 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvbRooDDW3NC4M1hjNeVgCBJMXuNIx9Km0VQSD7NW3DaCkXk8Grwwmn5zTW8m6dE/2J2t9WiNsxlH9+kyR0YvCxeIGtOm534QK/emnpcTitVOacI6yqI9rVcGWTQy6ixmIcVvlH/9UmRnHuRLI8V53" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "992" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/182830af-081a-4de2-b134-ba14d45d8dd2/resourceGroups/System.redmond/providers/Microsoft.Update.Admin/updateLocations/redmond/updates/Microsoft9.8888.0.888\",\"name\":\"redmond/Microsoft9.8888.0.888\",\"type\":\"Microsoft.Update.Admin/updateLocations/updates\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"description\":\"AzS Update 9.8888.0.888\",\"state\":\"PreparationFailed\",\"kbLink\":\"https://docs.microsoft.com/azure-stack/operator/release-notes?view=azs-xxxx2008\",\"minVersionRequired\":\"9.2222.0.222\",\"minOemVersionRequired\":\"2.1.0.0\",\"packagePath\":\"\\\\\\\\SU1FileServer\\\\SU1_Infrastructure_2\\\\Updates\\\\Packages\\\\Microsoft9.8888.0.888\",\"packageSizeInMb\":224,\"displayName\":\"AzS Update - 9.8888.0.888\",\"version\":\"9.8888.0.888\",\"publisher\":\"Microsoft\",\"releaseLink\":\"https://docs.microsoft.com/azure-stack/operator/release-notes?view=azs-xxxx2008\",\"availabilityType\":\"Local\",\"packageType\":\"Infrastructure\",\"prerequisites\":[],\"updateStateProperties\":{\"progressPercentage\":0}}}]}",
+      "isContentBase64": false
+    }
+  },
+  "[NoDescription]+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/182830af-081a-4de2-b134-ba14d45d8dd2/resourceGroups/System.redmond/providers/Microsoft.Update.Admin/updateLocations/redmond/updates/Microsoft9.8888.0.888/updateRuns?api-version=2021-07-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.redmond.ext-v.masd.stbtest.microsoft.com/subscriptions/182830af-081a-4de2-b134-ba14d45d8dd2/resourceGroups/System.redmond/providers/Microsoft.Update.Admin/updateLocations/redmond/updates/Microsoft9.8888.0.888/updateRuns?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "50" ],
+        "x-ms-client-request-id": [ "02fd0324-cbea-4782-965b-6a3f02344232" ],
+        "CommandName": [ "Azs.Update.Admin.internal\\Get-AzsUpdateRun" ],
+        "FullCommandName": [ "Get-AzsUpdateRun_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "cfe16796-2cd6-437a-a5a1-09188b5423b8" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14939" ],
+        "x-ms-request-id": [ "cfe16796-2cd6-437a-a5a1-09188b5423b8" ],
+        "x-ms-routing-request-id": [ "REDMOND:20220405T165141Z:cfe16796-2cd6-437a-a5a1-09188b5423b8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Tue, 05 Apr 2022 16:51:40 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvquwxlsJn8VHMyFSS20TDZtZjWXQUqB+oKYAUmU5pFbh/FCr/Jk7cEq1C7Acf41S3XiNAQsrfgZoXeKkK6qw+sYE+DETWFlJ4mPzgBx1NMogcU4KKomIv4V7Na5l5VRH/gtdaE79gh6WiowFC8guc" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1146" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/182830af-081a-4de2-b134-ba14d45d8dd2/resourceGroups/System.redmond/providers/Microsoft.Update.Admin/updateLocations/redmond/updates/Microsoft9.8888.0.888/updateRuns/73879a9a-5a9e-4b82-a5d3-9a6028283b15\",\"name\":\"redmond/Microsoft9.8888.0.888/73879a9a-5a9e-4b82-a5d3-9a6028283b15\",\"type\":\"Microsoft.Update.Admin/updateLocations/updates/updateRuns\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"progress\":{\"name\":\"Preparing to install\",\"description\":\"Preparing to install\",\"status\":\"Extracted\",\"steps\":[{\"name\":\"Downloading update\",\"description\":\"\",\"status\":\"Success\"},{\"name\":\"Validating the download and extracting files.\",\"description\":\"\",\"status\":\"Success\"},{\"name\":\"Update is blocked due to health check failure\",\"description\":\"Update is blocked due to health check failure.\\r\\n    To remediate please check the health check alert details and \\r\\n    follow the instructions: https://aka.ms/TroubleshootAzureStackUpdates\",\"status\":\"Error\"},{\"name\":\"Initiating update installation.\",\"description\":\"\",\"status\":\"NotStarted\"}]},\"timeStarted\":\"2022-04-05T16:51:41.4864768+00:00\",\"duration\":\"PT0S\",\"state\":\"Failed\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "[NoDescription]+[NoContext]+[NoScenario]+$POST+https://management.azure.com/subscriptions/182830af-081a-4de2-b134-ba14d45d8dd2/resourceGroups/System.redmond/providers/Microsoft.Update.Admin/updateLocations/redmond/updates/redmond%2FMicrosoft9.8888.0.888/updateRuns/%24oldupdaterun.Name/rerun?api-version=2021-07-01+7": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://adminmanagement.redmond.ext-v.masd.stbtest.microsoft.com/subscriptions/182830af-081a-4de2-b134-ba14d45d8dd2/resourceGroups/System.redmond/providers/Microsoft.Update.Admin/updateLocations/redmond/updates/redmond%2FMicrosoft9.8888.0.888/updateRuns/%24oldupdaterun.Name/rerun?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "51" ],
+        "x-ms-client-request-id": [ "9caf5001-8980-4de3-a364-19d37c44147d" ],
+        "CommandName": [ "Azs.Update.Admin.internal\\Resume-AzsUpdateRun" ],
+        "FullCommandName": [ "Resume-AzsUpdateRun_Rerun" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
+        "x-ms-request-id": [ "9b3422f3-2439-4484-85fd-9a2951fe08fe" ],
+        "x-ms-correlation-request-id": [ "9b3422f3-2439-4484-85fd-9a2951fe08fe" ],
+        "x-ms-routing-request-id": [ "REDMOND:20220405T165233Z:9b3422f3-2439-4484-85fd-9a2951fe08fe" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Tue, 05 Apr 2022 16:52:32 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvobZZsRAVk4pMOP+t4wYdS8R7N00LPOqf+mpAhG7wk+SPXp1vpopA0eS9zrI6vEVg7XBEFqiCqOk8U0pG/x5A6uRwhJnBdGKDvmt/VzmItAULwScpjvTeAUP2AgCp9zLu9zw05E65+FemAcvIXapN" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "0" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

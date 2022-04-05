@@ -1,0 +1,44 @@
+{
+  "Get-AzsUpdateLocation+[NoContext]+TestGetAzsUpdateLocation+$GET+https://management.azure.com/subscriptions/182830af-081a-4de2-b134-ba14d45d8dd2/resourceGroups/System.redmond/providers/Microsoft.Update.Admin/updateLocations/redmond?api-version=2021-07-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.redmond.ext-v.masd.stbtest.microsoft.com/subscriptions/182830af-081a-4de2-b134-ba14d45d8dd2/resourceGroups/System.redmond/providers/Microsoft.Update.Admin/updateLocations/redmond?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "df0bb51d-ba56-49e8-b16e-7f5cb2f58d6f" ],
+        "CommandName": [ "Azs.Update.Admin.internal\\Get-AzsUpdateLocation" ],
+        "FullCommandName": [ "Get-AzsUpdateLocation_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "349940c5-92f1-4555-827b-c0becd510799" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14990" ],
+        "x-ms-request-id": [ "349940c5-92f1-4555-827b-c0becd510799" ],
+        "x-ms-routing-request-id": [ "REDMOND:20220405T151741Z:349940c5-92f1-4555-827b-c0becd510799" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Tue, 05 Apr 2022 15:17:41 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRv/P9phvlzOh09+BoB6YRv3LNpPr+JgeHzdLzSy5AwSaribFSL90XI/ua5wGxsgFT7st18hY7SGgWfgjlQhut10sNM7HFC7e11kDnrBy9oEBP2da2Wme1sO73M8QMGJ/ZLYyM/XRjeonJ7OWoZqVVM" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "598" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/182830af-081a-4de2-b134-ba14d45d8dd2/resourceGroups/System.redmond/providers/Microsoft.Update.Admin/updateLocations/redmond\",\"name\":\"redmond\",\"type\":\"Microsoft.Update.Admin/updateLocations\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"oemFamily\":\"\",\"hardwareModel\":\"Hyper-V\",\"lastChecked\":\"2022-04-05T15:17:41\",\"packageVersions\":[{\"packageType\":\"Services\",\"version\":\"9.2222.0.222\"},{\"packageType\":\"Infrastructure\",\"version\":\"9.2222.0.222\"},{\"packageType\":\"OEM\",\"version\":\"2.2.1907.2\"}],\"currentVersion\":\"9.2222.0.222\",\"currentOemVersion\":\"2.2.1907.2\",\"state\":\"UpdateFailed\"}}",
+      "isContentBase64": false
+    }
+  }
+}
