@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ParameterSetName = SimpleParameterSet,
-            HelpMessage = "Specified the gallery image unique id for vm deployment. This can be fetched from gallery image GET call.")]
+            HelpMessage = "Specified the gallery image unique id for vmss deployment. This can be fetched from gallery image GET call.")]
         [ResourceIdCompleter("Microsoft.Compute galleries/images/versions")]
         public string ImageReferenceId { get; set; }
 

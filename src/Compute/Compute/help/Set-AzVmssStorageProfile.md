@@ -20,7 +20,7 @@ Set-AzVmssStorageProfile [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet>
  [[-OsDiskCreateOption] <String>] [[-OsDiskOsType] <OperatingSystemTypes>] [[-Image] <String>]
  [[-VhdContainer] <String[]>] [-ImageReferenceId <String>] [-OsDiskWriteAccelerator]
  [-DiffDiskSetting <String>] [-ManagedDisk <String>] [-DiskEncryptionSetId <String>]
- [-DataDisk <VirtualMachineScaleSetDataDisk[]>] [-SharedGalleryImageId <String>]
+ [-DataDisk <VirtualMachineScaleSetDataDisk[]>] [-ImageReferenceId <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -298,8 +298,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SharedGalleryImageId
-Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.
+### -ImageReferenceId
+Specified the shared gallery image unique id for vmss deployment. This can be fetched from shared gallery image GET call.
 
 ```yaml
 Type: System.String
