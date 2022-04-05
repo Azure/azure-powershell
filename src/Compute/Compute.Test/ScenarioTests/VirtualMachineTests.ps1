@@ -5696,9 +5696,10 @@ function Test-HappyPathNonWhitelisted
         # VM Profile & Hardware
         $vmname = 'v' + $rgname;
         $domainNameLabel = "d1" + $rgname;
-        $subscription = "88fd8cb2-8248-499e-9a2d-4929a4b0133c";
+        $subscription = "24fb23e3-6ba3-41f0-9b6e-e41131d5d61e";
 
-        Set-AzContext -Subscription $subscription -Force;#just testing this line so far
+        #Set-AzContext -Subscription $subscription -Force;#just testing this line so far
+        Connect-AzContext -Subscription $subscription -Force;
 
         # Creating a VM using simple parameterset
         $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;  
