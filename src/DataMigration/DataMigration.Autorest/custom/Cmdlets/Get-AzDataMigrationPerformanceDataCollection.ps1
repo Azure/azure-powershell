@@ -46,11 +46,6 @@ function Get-AzDataMigrationPerformanceDataCollection
         [System.String]
         ${NumberOfIterations},
 
-        [Parameter(HelpMessage='Optional. Whether or not to start the performance data collection in a separate  console.')]
-        [System.Management.Automation.SwitchParameter]
-        ${NewConsole},
-        
-
         [Parameter(ParameterSetName='ConfigFile', Mandatory, HelpMessage='Path of the ConfigFile')]
         [System.String]
         ${ConfigFilePath},
@@ -110,7 +105,7 @@ function Get-AzDataMigrationPerformanceDataCollection
                 '--staticQueryIntervalInSec', $StaticQueryInterval
                 '--numberOfIterations', $NumberOfIterations
                 )
-               
+                
                 # Removing the parameters for which the user did not provide any values
                 for($i = $splat.Count-1; $i -gt -1; $i = $i-2)
                 { 
@@ -124,61 +119,16 @@ function Get-AzDataMigrationPerformanceDataCollection
                         $i2 = $i -1
                         $splat.RemoveAt($i2)
                     }                     
-                }                
-
-                # Running PerfDataCollection
-                If($PSBoundParameters.ContainsKey("NewConsole"))
-                {   
-                    #this is used to create a json file in case the perf collection is to start in a new console
-                    $jsonHash = [Ordered]@{
-                    'action' = "PerfDataCollection"
-                    'sqlConnectionStrings'= $SqlConnectionStrings
-                    'outputfolder'= $OutputFolder
-                    'perfQueryIntervalInSec'= $PerfQueryInterval
-                    'staticQueryIntervalInSec'= $StaticQueryInterval
-                    'numberOfIterations'= $NumberOfIterations
-                    }
-                    # removing empty key,vallue pairs from $jsonHash
-                    if($OutputFolder -eq "")
-                    {
-                        $jsonHash.Remove('outputfolder')
-                    }
-                    if($PerfQueryInterval -eq "")
-                    {
-                        $jsonHash.Remove('perfQueryIntervalInSec')
-                    }
-                    if($StaticQueryInterval -eq "")
-                    {
-                        $jsonHash.Remove('staticQueryIntervalInSec')
-                    }
-                    if($NumberOfIterations -eq "")
-                    {
-                        $jsonHash.Remove('numberOfIterations')
-                    } 
-                    
-                    $saveAt = Join-Path -Path $DefaultOutputFolder -ChildPath Downloads;
-                    $saveas = Join-Path -Path $saveAt -ChildPath "tempConfigFileForPerf.json"
-                    $jsonHash | ConvertTo-Json -depth 100 | Set-Content $saveas
-                    Start-Process -FilePath PowerShell -ArgumentList "& '$ExePath' --configFile '$saveas'"                   
-                }
-                else
-                {
-                    & $ExePath PerfDataCollection @splat
                 }
                 
+                # Running PerfDataCollection
+                & $ExePath PerfDataCollection @splat
                   
             }
             else
             {   
                 Test-ConfigFile $PSBoundParameters.ConfigFilePath "PerfDataCollection"
-                If($PSBoundParameters.ContainsKey("NewConsole"))
-                {
-                    Start-Process -FilePath PowerShell -ArgumentList "& '$ExePath' --configFile '$($PSBoundParameters.ConfigFilePath)'"
-                }
-                else
-                {
-                    & $ExePath --configFile $PSBoundParameters.ConfigFilePath
-                }                
+                & $ExePath --configFile $PSBoundParameters.ConfigFilePath
             }
 
             $LogFilePath = Join-Path -Path $DefaultOutputFolder -ChildPath Logs;
@@ -195,3 +145,4 @@ function Get-AzDataMigrationPerformanceDataCollection
         }
     }
 }
+
