@@ -48,13 +48,7 @@ In this directory, run AutoRest:
 ``` yaml
 require:
   - $(this-folder)/../readme.azurestack.md
-  - $(repo)/specification/azsadmin/resource-manager/update/readme.azsautogen.md
-
-input-file:
-  - $(repo)/specification/azsadmin/resource-manager/update/Microsoft.Update.Admin/stable/2021-07-01/Update.json
-  - $(repo)/specification/azsadmin/resource-manager/update/Microsoft.Update.Admin/stable/2021-07-01/UpdateLocations.json
-  - $(repo)/specification/azsadmin/resource-manager/update/Microsoft.Update.Admin/stable/2021-07-01/UpdateRuns.json
-  - $(repo)/specification/azsadmin/resource-manager/update/Microsoft.Update.Admin/stable/2021-07-01/Updates.json
+  - $(repo)/specification/azsadmin/resource-manager/update/readme.md
 
 subject-prefix: ''
 module-version: 0.0.1
@@ -76,15 +70,33 @@ directive:
       default:
         script: -join("System.",(Get-AzLocation)[0].Location)
 
+# UpdateLocation
   - where:
       parameter-name: UpdateLocation
     set:
       parameter-name: Location
 
   - where:
+      subject: UpdateLocation
+      parameter-name: Location
+    set:
+      parameter-name: Name
+      default:
+        script: (Get-AzLocation)[0].Location
+
+  - where:
+      subject: UpdateLocation
+    hide: true
+
+# Update
+  - where:
       verb: Add
     set:
       verb: Install
+
+  - where:
+      subject: Update
+    hide: true
 
   - where:
       verb: Invoke
@@ -124,18 +136,30 @@ directive:
       parameter-name: Name
 
   - where:
-      subject: AzsUpdateRun
-      parameter-name: UpdateName
-    set:
-      parameter-name: Name
+      subject: Update
+      parameter-name: Location
+    clear-alias: true
 
   - where:
+      subject: Update
+      parameter-name: Name
+    clear-alias: true
+
+  - where:
+      verb: Prepare
       subject: Update
     hide: true
 
   - where:
-      subject: UpdateLocation
+      subject: UpdateRunTopLevel
     hide: true
+
+# Upate Run
+  - where:
+      subject: UpdateRun
+      parameter-name: RunName
+    set:
+      parameter-name: Name
 
   - where:
       subject: UpdateRun
@@ -144,24 +168,6 @@ directive:
   - where:
       subject: UpdateRunTopLevel
     hide: true
-
-  - where:
-      subject: Update 
-      parameter-name: Location
-    clear-alias: true
-
-  - where:
-      subject: Update 
-      parameter-name: Name
-    clear-alias: true
-    
-  - where:
-      subject: UpdateLocation 
-      parameter-name: Location
-    set:
-      parameter-name: Name
-      default:
-        script: (Get-AzLocation)[0].Location
 
   - where:
       subject: (.*)Run$

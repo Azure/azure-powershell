@@ -141,22 +141,16 @@ process {
 
     if ($PSBoundParameters.ContainsKey(('Name')))
     {
-        $update = Get-AzsUpdate  
-
-        if($null -eq $update){
-            Throw "Update package " + $PSBoundParameters['Name'] + " does not exist."
-        }
-        
-        $selectedUpdate = $update | Where-Object {$_.Name.EndsWith($PSBoundParameters['Name'])} 
-
-        if ($selectedUpdate.State -notin "Ready","PreparationFailed") {
-            Throw "Can't run preparation for " + $PSBoundParameters['Name'] + " because the state of this update is " + $selectedUpdate.State
-        }
-
         if ($null -ne $Name -and $Name.Contains('/'))
         {
             $PSBoundParameters['Name'] = $Name.Split("/")[-1]
         }
+    }
+
+    $update = Get-AzsUpdate  -Name $PSBoundParameters['Name']
+
+    if($null -eq $update){
+        Throw "Update package " + $PSBoundParameters['Name'] + " does not exist."
     }
 
     Azs.Update.Admin.internal\Prepare-AzsUpdate @PSBoundParameters
