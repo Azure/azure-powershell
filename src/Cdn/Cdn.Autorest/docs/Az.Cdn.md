@@ -115,6 +115,9 @@ Create an in-memory object for AzureFirstPartyManagedCertificateParameters.
 ### [New-AzCdnCustomDomain](New-AzCdnCustomDomain.md)
 Creates a new custom domain within an endpoint.
 
+### [New-AzCdnCustomDomainHttpsParametersObject](New-AzCdnCustomDomainHttpsParametersObject.md)
+Create an in-memory object for CustomDomainHttpsParameters.
+
 ### [New-AzCdnCustomerCertificateParametersObject](New-AzCdnCustomerCertificateParametersObject.md)
 Create an in-memory object for CustomerCertificateParameters.
 
@@ -196,6 +199,9 @@ Creates a new CDN endpoint with the specified endpoint name under the specified 
 ### [New-AzCdnManagedCertificateParametersObject](New-AzCdnManagedCertificateParametersObject.md)
 Create an in-memory object for ManagedCertificateParameters.
 
+### [New-AzCdnManagedHttpsParametersObject](New-AzCdnManagedHttpsParametersObject.md)
+Create an in-memory object for CdnManagedHttpsParameters.
+
 ### [New-AzCdnOrigin](New-AzCdnOrigin.md)
 Creates a new origin within the specified endpoint.
 
@@ -233,6 +239,9 @@ Create an in-memory object for UrlSigningAction.
 
 ### [New-AzCdnUrlSigningKeyParametersObject](New-AzCdnUrlSigningKeyParametersObject.md)
 Create an in-memory object for UrlSigningKeyParameters.
+
+### [New-AzCdnUserManagedHttpsParametersObject](New-AzCdnUserManagedHttpsParametersObject.md)
+Create an in-memory object for UserManagedHttpsParameters.
 
 ### [New-AzFrontDoorCdnCustomDomain](New-AzFrontDoorCdnCustomDomain.md)
 Creates a new domain within the specified profile.
