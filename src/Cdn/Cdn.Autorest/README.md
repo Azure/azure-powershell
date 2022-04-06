@@ -58,6 +58,7 @@ directive:
   - no-inline:
     - SecurityPolicyPropertiesParameters
     - SecretParameters
+    - CustomDomainHttpsParameters
   # Generate memory object as parameter of the cmelet.
   - model-cmdlet:
     - SecurityPolicyWebApplicationFirewallAssociation
@@ -94,6 +95,10 @@ directive:
     - DeliveryRuleCacheExpirationAction
     - DeliveryRuleCacheKeyQueryStringAction
     - DeliveryRuleRouteConfigurationOverrideAction
+    # child classes for CustomDomainHttpsParameters
+    - UserManagedHttpsParameters
+    - CdnManagedHttpsParameters
+    - CustomDomainHttpsParameters
 
   # Following is two common directive which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
