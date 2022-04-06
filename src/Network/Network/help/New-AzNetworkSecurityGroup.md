@@ -14,7 +14,7 @@ Creates a network security group.
 ## SYNTAX
 
 ```
-New-AzNetworkSecurityGroup -Name <String> -ResourceGroupName <String> -Location <String> [-FlushConnection]
+New-AzNetworkSecurityGroup -Name <String> -ResourceGroupName <String> -Location <String> -FlushConnection <Bool>
  [-SecurityRules <PSSecurityRule[]>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -51,7 +51,7 @@ Step:3 Add the rules created above to a new NSG named NSG-FrontEnd.<br>
 
 ### Example 3: Create a new network security group with flush connection
 ```powershell
-New-AzNetworkSecurityGroup -Name "nsg1" -ResourceGroupName "rg1"  -Location  "westus" -FlushConnection
+New-AzNetworkSecurityGroup -Name "nsg1" -ResourceGroupName "rg1"  -Location  "westus" -FlushConnection $true
 ```
 
 This command creates a new Azure network security group named "nsg1" in resource group "rg1" in location "westus" and enables flushing of connection.
