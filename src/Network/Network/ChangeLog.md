@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Fix bug that can't display CustomIpPrefix in PublicIpPrefix.
 
 ## Version 4.14.0
 * Used case-insensitive comparison for ResourceId (Set/New-NetworkWatcherFlowLog)
