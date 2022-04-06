@@ -7,7 +7,7 @@
       "RequestBody": "{\r\n  \"name\": \"TestPSGetGroup1\",\r\n  \"properties\": {\r\n    \"details\": {\r\n      \"parent\": {}\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "67957d8b-aa8c-4b3e-ae39-7a268bf5b51d"
+          "be26d98d-1057-4d15-9644-feda72cb0ba2"
         ],
         "Cache-Control": [
           "no-cache"
@@ -39,16 +39,16 @@
           "59"
         ],
         "x-ms-request-id": [
-          "westus:962d8d1a-0569-4531-9d76-01a43c91bfc2"
+          "westus:2eeb7809-6de9-466c-aac0-7442ffa69a29"
         ],
         "x-ba-restapi": [
           "0.0.0.0"
         ],
         "client-request-id": [
-          "962d8d1a-0569-4531-9d76-01a43c91bfc2"
+          "2eeb7809-6de9-466c-aac0-7442ffa69a29"
         ],
         "request-id": [
-          "962d8d1a-0569-4531-9d76-01a43c91bfc2"
+          "2eeb7809-6de9-466c-aac0-7442ffa69a29"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -57,10 +57,10 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "962d8d1a-0569-4531-9d76-01a43c91bfc2"
+          "2eeb7809-6de9-466c-aac0-7442ffa69a29"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20220401T173053Z:962d8d1a-0569-4531-9d76-01a43c91bfc2"
+          "WESTUS:20220406T191232Z:2eeb7809-6de9-466c-aac0-7442ffa69a29"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -69,10 +69,10 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 01 Apr 2022 17:30:53 GMT"
+          "Wed, 06 Apr 2022 19:12:31 GMT"
         ],
         "Content-Length": [
-          "551"
+          "550"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -84,7 +84,7 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestPSGetGroup1\",\r\n  \"type\": \"Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestPSGetGroup1\",\r\n  \"properties\": {\r\n    \"tenantId\": \"c7a87cda-9a66-4920-b0f8-869baa04efe0\",\r\n    \"displayName\": \"TestPSGetGroup1\",\r\n    \"details\": {\r\n      \"version\": 13,\r\n      \"updatedTime\": \"2022-04-01T17:27:31.0934501Z\",\r\n      \"updatedBy\": \"9e41f384-0aa9-41bc-a29d-6d956cd8eadb\",\r\n      \"parent\": {\r\n        \"id\": \"/providers/Microsoft.Management/managementGroups/c7a87cda-9a66-4920-b0f8-869baa04efe0\",\r\n        \"name\": \"c7a87cda-9a66-4920-b0f8-869baa04efe0\",\r\n        \"displayName\": \"Root Management Group\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestPSGetGroup1\",\r\n  \"type\": \"Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestPSGetGroup1\",\r\n  \"properties\": {\r\n    \"tenantId\": \"c7a87cda-9a66-4920-b0f8-869baa04efe0\",\r\n    \"displayName\": \"TestPSGetGroup1\",\r\n    \"details\": {\r\n      \"version\": 15,\r\n      \"updatedTime\": \"2022-04-06T19:05:33.163983Z\",\r\n      \"updatedBy\": \"9e41f384-0aa9-41bc-a29d-6d956cd8eadb\",\r\n      \"parent\": {\r\n        \"id\": \"/providers/Microsoft.Management/managementGroups/c7a87cda-9a66-4920-b0f8-869baa04efe0\",\r\n        \"name\": \"c7a87cda-9a66-4920-b0f8-869baa04efe0\",\r\n        \"displayName\": \"Root Management Group\"\r\n      }\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -94,7 +94,7 @@
       "RequestBody": "{\r\n  \"name\": \"TestPSGetGroup2\",\r\n  \"properties\": {\r\n    \"details\": {\r\n      \"parent\": {\r\n        \"id\": \"/providers/Microsoft.Management/managementGroups/TestPSGetGroup1\"\r\n      }\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "8d0f9b21-8d5b-42de-975d-7bb817d64542"
+          "b871ecab-8a7a-44f1-ae2b-ec9e81ca9d31"
         ],
         "Cache-Control": [
           "no-cache"
@@ -126,16 +126,16 @@
           "59"
         ],
         "x-ms-request-id": [
-          "westus:0153f491-38ad-4d74-9ac3-9f09bf582ee2"
+          "westus:ae163eeb-96a0-4fe2-8b4f-96f3b4abebfa"
         ],
         "x-ba-restapi": [
           "0.0.0.0"
         ],
         "client-request-id": [
-          "0153f491-38ad-4d74-9ac3-9f09bf582ee2"
+          "ae163eeb-96a0-4fe2-8b4f-96f3b4abebfa"
         ],
         "request-id": [
-          "0153f491-38ad-4d74-9ac3-9f09bf582ee2"
+          "ae163eeb-96a0-4fe2-8b4f-96f3b4abebfa"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -144,10 +144,10 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "0153f491-38ad-4d74-9ac3-9f09bf582ee2"
+          "ae163eeb-96a0-4fe2-8b4f-96f3b4abebfa"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20220401T173054Z:0153f491-38ad-4d74-9ac3-9f09bf582ee2"
+          "WESTUS:20220406T191233Z:ae163eeb-96a0-4fe2-8b4f-96f3b4abebfa"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -156,7 +156,7 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 01 Apr 2022 17:30:53 GMT"
+          "Wed, 06 Apr 2022 19:12:33 GMT"
         ],
         "Content-Length": [
           "503"
@@ -171,7 +171,7 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestPSGetGroup2\",\r\n  \"type\": \"Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestPSGetGroup2\",\r\n  \"properties\": {\r\n    \"tenantId\": \"c7a87cda-9a66-4920-b0f8-869baa04efe0\",\r\n    \"displayName\": \"TestPSGetGroup2\",\r\n    \"details\": {\r\n      \"version\": 12,\r\n      \"updatedTime\": \"2022-04-01T17:28:12.6836666Z\",\r\n      \"updatedBy\": \"9e41f384-0aa9-41bc-a29d-6d956cd8eadb\",\r\n      \"parent\": {\r\n        \"id\": \"/providers/Microsoft.Management/managementGroups/TestPSGetGroup1\",\r\n        \"name\": \"TestPSGetGroup1\",\r\n        \"displayName\": \"TestPSGetGroup1\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestPSGetGroup2\",\r\n  \"type\": \"Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestPSGetGroup2\",\r\n  \"properties\": {\r\n    \"tenantId\": \"c7a87cda-9a66-4920-b0f8-869baa04efe0\",\r\n    \"displayName\": \"TestPSGetGroup2\",\r\n    \"details\": {\r\n      \"version\": 14,\r\n      \"updatedTime\": \"2022-04-06T19:07:27.8023319Z\",\r\n      \"updatedBy\": \"9e41f384-0aa9-41bc-a29d-6d956cd8eadb\",\r\n      \"parent\": {\r\n        \"id\": \"/providers/Microsoft.Management/managementGroups/TestPSGetGroup1\",\r\n        \"name\": \"TestPSGetGroup1\",\r\n        \"displayName\": \"TestPSGetGroup1\"\r\n      }\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -181,7 +181,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "42f82b14-7dfe-40a6-a76b-c8b93fb9953a"
+          "b185e360-937f-4a9b-adf1-995cc58224fd"
         ],
         "Cache-Control": [
           "no-cache"
@@ -203,17 +203,20 @@
         "Pragma": [
           "no-cache"
         ],
+        "x-ms-ratelimit-remaining-managementgroups-requests": [
+          "59"
+        ],
         "x-ms-request-id": [
-          "westus:2363889d-dc8a-4a7c-b4dd-a48bb0377449"
+          "westus:0b2cdeb2-4b0e-4446-88d4-2938829acd83"
         ],
         "x-ba-restapi": [
           "0.0.0.0"
         ],
         "client-request-id": [
-          "2363889d-dc8a-4a7c-b4dd-a48bb0377449"
+          "0b2cdeb2-4b0e-4446-88d4-2938829acd83"
         ],
         "request-id": [
-          "2363889d-dc8a-4a7c-b4dd-a48bb0377449"
+          "0b2cdeb2-4b0e-4446-88d4-2938829acd83"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -222,10 +225,10 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "2363889d-dc8a-4a7c-b4dd-a48bb0377449"
+          "0b2cdeb2-4b0e-4446-88d4-2938829acd83"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20220401T173054Z:2363889d-dc8a-4a7c-b4dd-a48bb0377449"
+          "WESTUS:20220406T191233Z:0b2cdeb2-4b0e-4446-88d4-2938829acd83"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -234,7 +237,7 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 01 Apr 2022 17:30:54 GMT"
+          "Wed, 06 Apr 2022 19:12:33 GMT"
         ],
         "Content-Length": [
           "503"
@@ -249,7 +252,7 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestPSGetGroup2\",\r\n  \"type\": \"Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestPSGetGroup2\",\r\n  \"properties\": {\r\n    \"tenantId\": \"c7a87cda-9a66-4920-b0f8-869baa04efe0\",\r\n    \"displayName\": \"TestPSGetGroup2\",\r\n    \"details\": {\r\n      \"version\": 12,\r\n      \"updatedTime\": \"2022-04-01T17:28:12.6836666Z\",\r\n      \"updatedBy\": \"9e41f384-0aa9-41bc-a29d-6d956cd8eadb\",\r\n      \"parent\": {\r\n        \"id\": \"/providers/Microsoft.Management/managementGroups/TestPSGetGroup1\",\r\n        \"name\": \"TestPSGetGroup1\",\r\n        \"displayName\": \"TestPSGetGroup1\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestPSGetGroup2\",\r\n  \"type\": \"Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestPSGetGroup2\",\r\n  \"properties\": {\r\n    \"tenantId\": \"c7a87cda-9a66-4920-b0f8-869baa04efe0\",\r\n    \"displayName\": \"TestPSGetGroup2\",\r\n    \"details\": {\r\n      \"version\": 14,\r\n      \"updatedTime\": \"2022-04-06T19:07:27.8023319Z\",\r\n      \"updatedBy\": \"9e41f384-0aa9-41bc-a29d-6d956cd8eadb\",\r\n      \"parent\": {\r\n        \"id\": \"/providers/Microsoft.Management/managementGroups/TestPSGetGroup1\",\r\n        \"name\": \"TestPSGetGroup1\",\r\n        \"displayName\": \"TestPSGetGroup1\"\r\n      }\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     }
   ],

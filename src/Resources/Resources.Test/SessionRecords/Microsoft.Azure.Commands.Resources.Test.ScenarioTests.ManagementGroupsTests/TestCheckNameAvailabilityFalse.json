@@ -7,7 +7,7 @@
       "RequestBody": "{\r\n  \"name\": \"testMG3\",\r\n  \"type\": \"Microsoft.Management/managementGroups\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b1ec9014-a9e7-4cd4-b33a-b7fe1876a0c4"
+          "6c7ffa6b-1989-47a2-ba70-7507cbb6629e"
         ],
         "Accept-Language": [
           "en-US"
@@ -33,16 +33,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "westus:7c5a7eca-18eb-4f2c-93c0-004ad3d5c74a"
+          "westus:d5934329-da73-46c1-bed9-fa5e9e8fc14e"
         ],
         "x-ba-restapi": [
           "0.0.0.0"
         ],
         "client-request-id": [
-          "7c5a7eca-18eb-4f2c-93c0-004ad3d5c74a"
+          "d5934329-da73-46c1-bed9-fa5e9e8fc14e"
         ],
         "request-id": [
-          "7c5a7eca-18eb-4f2c-93c0-004ad3d5c74a"
+          "d5934329-da73-46c1-bed9-fa5e9e8fc14e"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -51,10 +51,10 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "7c5a7eca-18eb-4f2c-93c0-004ad3d5c74a"
+          "d5934329-da73-46c1-bed9-fa5e9e8fc14e"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20220401T172155Z:7c5a7eca-18eb-4f2c-93c0-004ad3d5c74a"
+          "WESTUS:20220406T190940Z:d5934329-da73-46c1-bed9-fa5e9e8fc14e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -63,7 +63,7 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 01 Apr 2022 17:21:54 GMT"
+          "Wed, 06 Apr 2022 19:09:40 GMT"
         ],
         "Content-Length": [
           "109"
