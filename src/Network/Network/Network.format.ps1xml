@@ -1756,6 +1756,10 @@
                 <Label>PublicIpAddresses</Label>
                 <PropertyName>PublicIpAddressesText</PropertyName>
               </ListItem>
+                <ListItem>
+                    <Label>CustomIpPrefix</Label>
+                    <PropertyName>CustomIpPrefixText</PropertyName>
+                </ListItem>
               <ListItem>
                 <Label>ExtendedLocation</Label>
                 <PropertyName>ExtendedLocationText</PropertyName>
