@@ -1,6 +1,6 @@
 ### Example 1: Returns the payload of the logz sub account that needs to be passed in the request body for installing Logz.io agent on a VM
 ```powershell
-Invoke-AzLogzHostSubAccount -ResourceGroupName logz-rg-test -MonitorName pwsh-logz04 -Name logz-pwshsub01
+Invoke-AzLogzHostSubAccount -ResourceGroupName logz-rg-test -MonitorName pwsh-logz04 -SubAccountName logz-pwshsub01
 ```
 
 ```output
