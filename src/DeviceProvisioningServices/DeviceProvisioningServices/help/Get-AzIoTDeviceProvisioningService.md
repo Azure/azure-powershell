@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices.dll-Help.xml
 Module Name: Az.DeviceProvisioningServices
 online version: https://docs.microsoft.com/powershell/module/az.deviceprovisioningservices/get-aziotdeviceprovisioningservice
@@ -30,9 +30,11 @@ For an introduction to Azure IoT Hub Device Provisioning Service, see https://do
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Get-AzIoTDeviceProvisioningService
 ```
-PS C:\> Get-AzIoTDeviceProvisioningService
 
+```output
 ResourceGroupName	Name		Location	ServiceOperationsHostName					IotHubs	AllocationPolicy	Tags	State
 -----------------	----		--------	-------------------------					------- ----------------	----	-----	
 myresourcegroup0	myiotdps0	eastus		myiotdps0.azure-devices-provisioning.net	0       Static				0		Active
@@ -43,9 +45,11 @@ myresourcegroup1    myiotdps2	westus		myiotdps2.azure-devices-provisioning.net	4
 List all Azure IoT Hub device provisioning services in a subscription.
 
 ### Example 2
+```powershell
+Get-AzIoTDeviceProvisioningService -ResourceGroupName "myresourcegroup"
 ```
-PS C:\> Get-AzIoTDeviceProvisioningService -ResourceGroupName "myresourcegroup"
 
+```output
 ResourceGroupName	Name		Location	ServiceOperationsHostName					IotHubs	AllocationPolicy	Tags	State
 -----------------	----		--------	-------------------------					------- ----------------	----	-----
 myresourcegroup		myiotdps1	eastus		myiotdps1.azure-devices-provisioning.net	1       Hashed				0		Active
@@ -55,9 +59,11 @@ myresourcegroup     myiotdps2	westus		myiotdps2.azure-devices-provisioning.net	4
 List all Azure IoT Hub device provisioning services in the resource group 'myresourcegroup'.
 
 ### Example 3
+```powershell
+Get-AzIoTDeviceProvisioningService -ResourceGroupName "myresourcegroup" -Name "myiotdps"
 ```
-PS C:\> Get-AzIoTDeviceProvisioningService -ResourceGroupName "myresourcegroup" -Name "myiotdps"
 
+```output
 ResourceGroupName			: myresourcegroup
 Name						: myiotdps
 Location					: eastus

@@ -30,9 +30,9 @@ Delegated permissions under the `oauth2Permissions` property correspond to `Scop
 
 User needs to grant consent via Azure Portal if the permission requires admin consent because Azure PowerShell doesn't support it yet.
 .Example
-PS C:\> Add-AzADAppPermission -ObjectId 9cc74d5e-1162-4b90-8696-65f3d6a3f7d0 -ApiId 00000003-0000-0000-c000-000000000000 -PermissionId 5f8c59db-677d-491f-a6b8-5f174b11ec1d
+Add-AzADAppPermission -ObjectId 9cc74d5e-1162-4b90-8696-65f3d6a3f7d0 -ApiId 00000003-0000-0000-c000-000000000000 -PermissionId 5f8c59db-677d-491f-a6b8-5f174b11ec1d
 .Example
-PS C:\> Add-AzADAppPermission -ObjectId 9cc74d5e-1162-4b90-8696-65f3d6a3f7d0 -ApiId 00000003-0000-0000-c000-000000000000 -PermissionId 1138cb37-bd11-4084-a2b7-9f71582aeddb -Type Role
+Add-AzADAppPermission -ObjectId 9cc74d5e-1162-4b90-8696-65f3d6a3f7d0 -ApiId 00000003-0000-0000-c000-000000000000 -PermissionId 1138cb37-bd11-4084-a2b7-9f71582aeddb -Type Role
 
 .Outputs
 System.Boolean
@@ -132,8 +132,8 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            ObjectIdParameterSet = 'MSGraph.custom\Add-AzADAppPermission';
-            AppIdParameterSet = 'MSGraph.custom\Add-AzADAppPermission';
+            ObjectIdParameterSet = 'Az.MSGraph.custom\Add-AzADAppPermission';
+            AppIdParameterSet = 'Az.MSGraph.custom\Add-AzADAppPermission';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -169,11 +169,11 @@ Adds member to group.
 .Description
 Adds member to group.
 .Example
-PS C:\> $groupid=(Get-AzADGroup -DisplayName $gname).Id
-PS C:\> $members=@()
-PS C:\> $members+=(Get-AzADUser -DisplayName $uname).Id
-PS C:\> $members+=(Get-AzADServicePrincipal -ApplicationId $appid).Id
-PS C:\> Add-AzADGroupMember -TargetGroupObjectId $groupid MemberObjectId $members
+$groupid=(Get-AzADGroup -DisplayName $gname).Id
+$members=@()
+$members+=(Get-AzADUser -DisplayName $uname).Id
+$members+=(Get-AzADServicePrincipal -ApplicationId $appid).Id
+Add-AzADGroupMember -TargetGroupObjectId $groupid MemberObjectId $members
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphGroup
@@ -332,12 +332,12 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            MemberObjectIdWithGroupObjectIdParameterSet = 'MSGraph.custom\Add-AzADGroupMember';
-            MemberUPNWithGroupObjectIdParameterSet = 'MSGraph.custom\Add-AzADGroupMember';
-            MemberUPNWithGroupDisplayNameParameterSet = 'MSGraph.custom\Add-AzADGroupMember';
-            MemberObjectIdWithGroupDisplayNameParameterSet = 'MSGraph.custom\Add-AzADGroupMember';
-            MemberUPNWithGroupObjectParameterSet = 'MSGraph.custom\Add-AzADGroupMember';
-            MemberObjectIdWithGroupObjectParameterSet = 'MSGraph.custom\Add-AzADGroupMember';
+            MemberObjectIdWithGroupObjectIdParameterSet = 'Az.MSGraph.custom\Add-AzADGroupMember';
+            MemberUPNWithGroupObjectIdParameterSet = 'Az.MSGraph.custom\Add-AzADGroupMember';
+            MemberUPNWithGroupDisplayNameParameterSet = 'Az.MSGraph.custom\Add-AzADGroupMember';
+            MemberObjectIdWithGroupDisplayNameParameterSet = 'Az.MSGraph.custom\Add-AzADGroupMember';
+            MemberUPNWithGroupObjectParameterSet = 'Az.MSGraph.custom\Add-AzADGroupMember';
+            MemberObjectIdWithGroupObjectParameterSet = 'Az.MSGraph.custom\Add-AzADGroupMember';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -373,7 +373,7 @@ Lists key credentials and password credentials for an application.
 .Description
 Lists key credentials and password credentials for an application.
 .Example
-PS C:\> Get-AzADAppCredential -DisplayName $name
+Get-AzADAppCredential -DisplayName $name
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
@@ -602,10 +602,10 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            ApplicationObjectIdParameterSet = 'MSGraph.custom\Get-AzADAppCredential';
-            ApplicationIdParameterSet = 'MSGraph.custom\Get-AzADAppCredential';
-            DisplayNameParameterSet = 'MSGraph.custom\Get-AzADAppCredential';
-            ApplicationObjectParameterSet = 'MSGraph.custom\Get-AzADAppCredential';
+            ApplicationObjectIdParameterSet = 'Az.MSGraph.custom\Get-AzADAppCredential';
+            ApplicationIdParameterSet = 'Az.MSGraph.custom\Get-AzADAppCredential';
+            DisplayNameParameterSet = 'Az.MSGraph.custom\Get-AzADAppCredential';
+            ApplicationObjectParameterSet = 'Az.MSGraph.custom\Get-AzADAppCredential';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -641,13 +641,13 @@ Lists entities from applications or get entity from applications by key
 .Description
 Lists entities from applications or get entity from applications by key
 .Example
-PS C:\> Get-AzADApplication -DisplayName $appname
+Get-AzADApplication -DisplayName $appname
 .Example
-PS C:\> Get-AzADApplication -First 10
+Get-AzADApplication -First 10
 .Example
-PS C:\> Get-AzADApplication -DisplayNameStartsWith $prefix
+Get-AzADApplication -DisplayNameStartsWith $prefix
 .Example
-PS C:\> Get-AzADapplication -ObjectId $id -Select Tags -AppendSelected
+Get-AzADapplication -ObjectId $id -Select Tags -AppendSelected
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
@@ -798,12 +798,12 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            EmptyParameterSet = 'MSGraph.custom\Get-AzADApplication';
-            ApplicationObjectIdParameterSet = 'MSGraph.custom\Get-AzADApplication';
-            SearchStringParameterSet = 'MSGraph.custom\Get-AzADApplication';
-            DisplayNameParameterSet = 'MSGraph.custom\Get-AzADApplication';
-            ApplicationIdParameterSet = 'MSGraph.custom\Get-AzADApplication';
-            ApplicationIdentifierUriParameterSet = 'MSGraph.custom\Get-AzADApplication';
+            EmptyParameterSet = 'Az.MSGraph.custom\Get-AzADApplication';
+            ApplicationObjectIdParameterSet = 'Az.MSGraph.custom\Get-AzADApplication';
+            SearchStringParameterSet = 'Az.MSGraph.custom\Get-AzADApplication';
+            DisplayNameParameterSet = 'Az.MSGraph.custom\Get-AzADApplication';
+            ApplicationIdParameterSet = 'Az.MSGraph.custom\Get-AzADApplication';
+            ApplicationIdentifierUriParameterSet = 'Az.MSGraph.custom\Get-AzADApplication';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -839,12 +839,7 @@ Lists API permissions the application has requested.
 .Description
 Lists API permissions the application has requested.
 .Example
-PS C:\> Get-AzADAppPermission -ObjectId 18797549-86a9-4906-b2a9-54f08cd3c427
-
-ApiId                                Id                                   Type
------                                --                                   ----
-00000003-0000-0000-c000-000000000000 df021288-bdef-4463-88db-98f22de89214 Scope
-00000003-0000-0000-c000-000000000000 5b567255-7703-4780-807c-7be8301ae99b Scope
+Get-AzADAppPermission -ObjectId 18797549-86a9-4906-b2a9-54f08cd3c427
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.MicrosoftGraphApplicationApiPermission
@@ -923,8 +918,8 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            ObjectIdParameterSet = 'MSGraph.custom\Get-AzADAppPermission';
-            AppIdParameterSet = 'MSGraph.custom\Get-AzADAppPermission';
+            ObjectIdParameterSet = 'Az.MSGraph.custom\Get-AzADAppPermission';
+            AppIdParameterSet = 'Az.MSGraph.custom\Get-AzADAppPermission';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -960,11 +955,11 @@ Lists entities from groups or get entity from groups by key
 .Description
 Lists entities from groups or get entity from groups by key
 .Example
-PS C:\> Get-AzADGroup -DisplayName $gname
+Get-AzADGroup -DisplayName $gname
 .Example
-PS C:\> Get-AzADGroup -First 10
+Get-AzADGroup -First 10
 .Example
-PS C:\> Get-AzADGroup -ObjectId $id -Select groupTypes -AppendSelected
+Get-AzADGroup -ObjectId $id -Select groupTypes -AppendSelected
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup
@@ -1112,10 +1107,10 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            EmptyParameterSet = 'MSGraph.custom\Get-AzADGroup';
-            ObjectIdParameterSet = 'MSGraph.custom\Get-AzADGroup';
-            SearchStringParameterSet = 'MSGraph.custom\Get-AzADGroup';
-            DisplayNameParameterSet = 'MSGraph.custom\Get-AzADGroup';
+            EmptyParameterSet = 'Az.MSGraph.custom\Get-AzADGroup';
+            ObjectIdParameterSet = 'Az.MSGraph.custom\Get-AzADGroup';
+            SearchStringParameterSet = 'Az.MSGraph.custom\Get-AzADGroup';
+            DisplayNameParameterSet = 'Az.MSGraph.custom\Get-AzADGroup';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -1151,9 +1146,9 @@ Lists members from group.
 .Description
 Lists members from group.
 .Example
-PS C:\> Get-AzADGroupMember -GroupDisplayName $name
+Get-AzADGroupMember -GroupDisplayName $name
 .Example
-PS C:\> Get-AzADGroup -DisplayName $name | Get-AzADGroupMember
+Get-AzADGroup -DisplayName $name | Get-AzADGroupMember
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup
@@ -1333,9 +1328,9 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            ObjectIdParameterSet = 'MSGraph.custom\Get-AzADGroupMember';
-            DisplayNameParameterSet = 'MSGraph.custom\Get-AzADGroupMember';
-            GroupObjectParameterSet = 'MSGraph.custom\Get-AzADGroupMember';
+            ObjectIdParameterSet = 'Az.MSGraph.custom\Get-AzADGroupMember';
+            DisplayNameParameterSet = 'Az.MSGraph.custom\Get-AzADGroupMember';
+            GroupObjectParameterSet = 'Az.MSGraph.custom\Get-AzADGroupMember';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -1371,15 +1366,15 @@ Lists entities from service principals or get entity from service principals by 
 .Description
 Lists entities from service principals or get entity from service principals by key
 .Example
-PS C:\> Get-AzADServicePrincipal -DisplayName $name
+Get-AzADServicePrincipal -DisplayName $name
 .Example
-PS C:\> Get-AzADServicePrincipal -DisplayNameStartsWith $prefix
+Get-AzADServicePrincipal -DisplayNameStartsWith $prefix
 .Example
-PS C:\> Get-AzADServicePrincipal -First 10 -Select Tags -AppendSelected
+Get-AzADServicePrincipal -First 10 -Select Tags -AppendSelected
 .Example
-PS C:\> Get-AzADServicePrincipal -ApplicationId $appId
+Get-AzADServicePrincipal -ApplicationId $appId
 .Example
-PS C:\> Get-AzADApplication -DisplayName $name | Get-AzADServicePrincipal
+Get-AzADApplication -DisplayName $name | Get-AzADServicePrincipal
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
@@ -1672,13 +1667,13 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            EmptyParameterSet = 'MSGraph.custom\Get-AzADServicePrincipal';
-            ObjectIdParameterSet = 'MSGraph.custom\Get-AzADServicePrincipal';
-            SearchStringParameterSet = 'MSGraph.custom\Get-AzADServicePrincipal';
-            DisplayNameParameterSet = 'MSGraph.custom\Get-AzADServicePrincipal';
-            ApplicationIdParameterSet = 'MSGraph.custom\Get-AzADServicePrincipal';
-            ApplicationObjectParameterSet = 'MSGraph.custom\Get-AzADServicePrincipal';
-            SPNParameterSet = 'MSGraph.custom\Get-AzADServicePrincipal';
+            EmptyParameterSet = 'Az.MSGraph.custom\Get-AzADServicePrincipal';
+            ObjectIdParameterSet = 'Az.MSGraph.custom\Get-AzADServicePrincipal';
+            SearchStringParameterSet = 'Az.MSGraph.custom\Get-AzADServicePrincipal';
+            DisplayNameParameterSet = 'Az.MSGraph.custom\Get-AzADServicePrincipal';
+            ApplicationIdParameterSet = 'Az.MSGraph.custom\Get-AzADServicePrincipal';
+            ApplicationObjectParameterSet = 'Az.MSGraph.custom\Get-AzADServicePrincipal';
+            SPNParameterSet = 'Az.MSGraph.custom\Get-AzADServicePrincipal';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -1714,7 +1709,7 @@ Lists key credentials and password credentials for an service principal.
 .Description
 Lists key credentials and password credentials for an service principal.
 .Example
-PS C:\> Get-AzADSpCredential -DisplayName $name
+Get-AzADSpCredential -DisplayName $name
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal
@@ -1849,7 +1844,7 @@ SERVICEPRINCIPALOBJECT <IMicrosoftGraphServicePrincipal>: The service principal 
 https://docs.microsoft.com/powershell/module/az.resources/get-azadspcredential
 #>
 function Get-AzADSpCredential {
-[Alias('Get-ADServicePrincipalCredential')]
+[Alias('Get-AzADServicePrincipalCredential')]
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential], [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential])]
 [CmdletBinding(DefaultParameterSetName='ObjectIdParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
@@ -1935,10 +1930,10 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            ObjectIdParameterSet = 'MSGraph.custom\Get-AzADSpCredential';
-            SPNParameterSet = 'MSGraph.custom\Get-AzADSpCredential';
-            DisplayNameParameterSet = 'MSGraph.custom\Get-AzADSpCredential';
-            SPNObjectParameterSet = 'MSGraph.custom\Get-AzADSpCredential';
+            ObjectIdParameterSet = 'Az.MSGraph.custom\Get-AzADSpCredential';
+            SPNParameterSet = 'Az.MSGraph.custom\Get-AzADSpCredential';
+            DisplayNameParameterSet = 'Az.MSGraph.custom\Get-AzADSpCredential';
+            SPNObjectParameterSet = 'Az.MSGraph.custom\Get-AzADSpCredential';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -1974,11 +1969,11 @@ Lists entities from users or get entity from users by key
 .Description
 Lists entities from users or get entity from users by key
 .Example
-PS C:\> Get-AzADUser -SignedIn
+Get-AzADUser -SignedIn
 .Example
-PS C:\> Get-AzADUser -First 10 -Select 'City' -AppendSelected
+Get-AzADUser -First 10 -Select 'City' -AppendSelected
 .Example
-PS C:\> Get-AzADUser -DisplayName $name
+Get-AzADUser -DisplayName $name
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser
@@ -2147,13 +2142,13 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            List = 'MSGraph.custom\Get-AzADUser';
-            ObjectIdParameterSet = 'MSGraph.custom\Get-AzADUser';
-            StartsWithParameterSet = 'MSGraph.custom\Get-AzADUser';
-            DisplayNameParameterSet = 'MSGraph.custom\Get-AzADUser';
-            UPNParameterSet = 'MSGraph.custom\Get-AzADUser';
-            MailParameterSet = 'MSGraph.custom\Get-AzADUser';
-            SignedInUser = 'MSGraph.custom\Get-AzADUser';
+            List = 'Az.MSGraph.custom\Get-AzADUser';
+            ObjectIdParameterSet = 'Az.MSGraph.custom\Get-AzADUser';
+            StartsWithParameterSet = 'Az.MSGraph.custom\Get-AzADUser';
+            DisplayNameParameterSet = 'Az.MSGraph.custom\Get-AzADUser';
+            UPNParameterSet = 'Az.MSGraph.custom\Get-AzADUser';
+            MailParameterSet = 'Az.MSGraph.custom\Get-AzADUser';
+            SignedInUser = 'Az.MSGraph.custom\Get-AzADUser';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2189,14 +2184,18 @@ Creates key credentials or password credentials for an application.
 .Description
 Creates key credentials or password credentials for an application.
 .Example
-PS C:\> $credential = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential" `
-                                 -Property @{'Key' = $cert;
-                                 'Usage'       = 'Verify'; 
-                                 'Type'        = 'AsymmetricX509Cert'
+# ObjectId is the string representation of a GUID for directory object, application, in Azure AD.
+$Id = "00000000-0000-0000-0000-000000000000"
+# $cert is Base64 encoded content of certificate
+$credential = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential" `
+                                 -Property @{'Key' = $cert; `
+                                 'Usage'       = 'Verify'; `
+                                 'Type'        = 'AsymmetricX509Cert' `
                                  }
-PS C:\> New-AzADAppCredential -ObjectId $Id -KeyCredentials $credential
+New-AzADAppCredential -ObjectId $Id -KeyCredentials $credential
 .Example
-
+# ApplicationId is AppId of Application object which is different from directory id in Azure AD.
+Get-AzADApplication -ApplicationId $appId | New-AzADAppCredential -StartDate $startDate -EndDate $endDate
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
@@ -2361,7 +2360,8 @@ function New-AzADAppCredential {
 [CmdletBinding(DefaultParameterSetName='ApplicationObjectIdWithPasswordParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='ApplicationObjectIdWithPasswordParameterSet', Mandatory)]
-    [Parameter(ParameterSetName='ApplicationObjectIdWithCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='ApplicationObjectIdWithPasswordCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='ApplicationObjectIdWithKeyCredentialParameterSet', Mandatory)]
     [Parameter(ParameterSetName='ApplicationObjectIdWithCertValueParameterSet', Mandatory)]
     [Alias('Id')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -2404,25 +2404,25 @@ param(
     [System.String]
     ${CustomKeyIdentifier},
 
-    [Parameter(ParameterSetName='ApplicationObjectIdWithCredentialParameterSet')]
-    [Parameter(ParameterSetName='ApplicationIdWithCredentialParameterSet')]
-    [Parameter(ParameterSetName='DisplayNameWithCredentialParameterSet')]
-    [Parameter(ParameterSetName='ApplicationObjectWithCredentialParameterSet')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential[]]
-    # key credentials associated with the application.
-    # To construct, see NOTES section for KEYCREDENTIALS properties and create a hash table.
-    ${KeyCredentials},
-
-    [Parameter(ParameterSetName='ApplicationObjectIdWithCredentialParameterSet')]
-    [Parameter(ParameterSetName='ApplicationIdWithCredentialParameterSet')]
-    [Parameter(ParameterSetName='DisplayNameWithCredentialParameterSet')]
-    [Parameter(ParameterSetName='ApplicationObjectWithCredentialParameterSet')]
+    [Parameter(ParameterSetName='ApplicationObjectIdWithPasswordCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='ApplicationIdWithPasswordCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='DisplayNameWithPasswordCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='ApplicationObjectWithPasswordCredentialParameterSet', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphPasswordCredential[]]
     # Password credentials associated with the application.
     # To construct, see NOTES section for PASSWORDCREDENTIALS properties and create a hash table.
     ${PasswordCredentials},
+
+    [Parameter(ParameterSetName='ApplicationObjectIdWithKeyCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='ApplicationIdWithKeyCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='DisplayNameWithKeyCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='ApplicationObjectWithKeyCredentialParameterSet', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential[]]
+    # key credentials associated with the application.
+    # To construct, see NOTES section for KEYCREDENTIALS properties and create a hash table.
+    ${KeyCredentials},
 
     [Parameter(ParameterSetName='ApplicationObjectIdWithCertValueParameterSet', Mandatory)]
     [Parameter(ParameterSetName='ApplicationIdWithCertValueParameterSet', Mandatory)]
@@ -2434,7 +2434,8 @@ param(
     # It represents the base 64 encoded certificate.
     ${CertValue},
 
-    [Parameter(ParameterSetName='ApplicationIdWithCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='ApplicationIdWithPasswordCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='ApplicationIdWithKeyCredentialParameterSet', Mandatory)]
     [Parameter(ParameterSetName='ApplicationIdWithPasswordParameterSet', Mandatory)]
     [Parameter(ParameterSetName='ApplicationIdWithCertValueParameterSet', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -2442,7 +2443,8 @@ param(
     # The application Id.
     ${ApplicationId},
 
-    [Parameter(ParameterSetName='DisplayNameWithCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='DisplayNameWithPasswordCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='DisplayNameWithKeyCredentialParameterSet', Mandatory)]
     [Parameter(ParameterSetName='DisplayNameWithCertValueParameterSet', Mandatory)]
     [Parameter(ParameterSetName='DisplayNameWithPasswordParameterSet', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -2450,7 +2452,8 @@ param(
     # The display name of application.
     ${DisplayName},
 
-    [Parameter(ParameterSetName='ApplicationObjectWithCredentialParameterSet', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='ApplicationObjectWithPasswordCredentialParameterSet', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='ApplicationObjectWithKeyCredentialParameterSet', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='ApplicationObjectWithCertValueParameterSet', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='ApplicationObjectWithPasswordParameterSet', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -2515,18 +2518,22 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            ApplicationObjectIdWithPasswordParameterSet = 'MSGraph.custom\New-AzADAppCredential';
-            ApplicationObjectIdWithCredentialParameterSet = 'MSGraph.custom\New-AzADAppCredential';
-            ApplicationObjectIdWithCertValueParameterSet = 'MSGraph.custom\New-AzADAppCredential';
-            ApplicationIdWithCredentialParameterSet = 'MSGraph.custom\New-AzADAppCredential';
-            ApplicationIdWithPasswordParameterSet = 'MSGraph.custom\New-AzADAppCredential';
-            ApplicationIdWithCertValueParameterSet = 'MSGraph.custom\New-AzADAppCredential';
-            DisplayNameWithCredentialParameterSet = 'MSGraph.custom\New-AzADAppCredential';
-            DisplayNameWithCertValueParameterSet = 'MSGraph.custom\New-AzADAppCredential';
-            DisplayNameWithPasswordParameterSet = 'MSGraph.custom\New-AzADAppCredential';
-            ApplicationObjectWithCredentialParameterSet = 'MSGraph.custom\New-AzADAppCredential';
-            ApplicationObjectWithCertValueParameterSet = 'MSGraph.custom\New-AzADAppCredential';
-            ApplicationObjectWithPasswordParameterSet = 'MSGraph.custom\New-AzADAppCredential';
+            ApplicationObjectIdWithPasswordParameterSet = 'Az.MSGraph.custom\New-AzADAppCredential';
+            ApplicationObjectIdWithPasswordCredentialParameterSet = 'Az.MSGraph.custom\New-AzADAppCredential';
+            ApplicationObjectIdWithKeyCredentialParameterSet = 'Az.MSGraph.custom\New-AzADAppCredential';
+            ApplicationObjectIdWithCertValueParameterSet = 'Az.MSGraph.custom\New-AzADAppCredential';
+            ApplicationIdWithPasswordCredentialParameterSet = 'Az.MSGraph.custom\New-AzADAppCredential';
+            ApplicationIdWithKeyCredentialParameterSet = 'Az.MSGraph.custom\New-AzADAppCredential';
+            ApplicationIdWithPasswordParameterSet = 'Az.MSGraph.custom\New-AzADAppCredential';
+            ApplicationIdWithCertValueParameterSet = 'Az.MSGraph.custom\New-AzADAppCredential';
+            DisplayNameWithPasswordCredentialParameterSet = 'Az.MSGraph.custom\New-AzADAppCredential';
+            DisplayNameWithKeyCredentialParameterSet = 'Az.MSGraph.custom\New-AzADAppCredential';
+            DisplayNameWithCertValueParameterSet = 'Az.MSGraph.custom\New-AzADAppCredential';
+            DisplayNameWithPasswordParameterSet = 'Az.MSGraph.custom\New-AzADAppCredential';
+            ApplicationObjectWithPasswordCredentialParameterSet = 'Az.MSGraph.custom\New-AzADAppCredential';
+            ApplicationObjectWithKeyCredentialParameterSet = 'Az.MSGraph.custom\New-AzADAppCredential';
+            ApplicationObjectWithCertValueParameterSet = 'Az.MSGraph.custom\New-AzADAppCredential';
+            ApplicationObjectWithPasswordParameterSet = 'Az.MSGraph.custom\New-AzADAppCredential';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2562,7 +2569,7 @@ Adds new entity to applications
 .Description
 Adds new entity to applications
 .Example
-PS C:\> New-AzADApplication -SigninAudience AzureADandPersonalMicrosoftAccount
+New-AzADApplication -SigninAudience AzureADandPersonalMicrosoftAccount
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
@@ -2681,6 +2688,16 @@ TOKENLIFETIMEPOLICY <IMicrosoftGraphTokenLifetimePolicy[]>: The tokenLifetimePol
   [Description <String>]: Description for this policy.
   [DeletedDateTime <DateTime?>]: 
   [DisplayName <String>]: The name displayed in directory
+
+WEB <IMicrosoftGraphWebApplication>: webApplication
+  [(Any) <Object>]: This indicates any property can be added to this object.
+  [HomePageUrl <String>]: Home page or landing page of the application.
+  [ImplicitGrantSetting <IMicrosoftGraphImplicitGrantSettings>]: implicitGrantSettings
+    [(Any) <Object>]: This indicates any property can be added to this object.
+    [EnableAccessTokenIssuance <Boolean?>]: Specifies whether this web application can request an access token using the OAuth 2.0 implicit flow.
+    [EnableIdTokenIssuance <Boolean?>]: Specifies whether this web application can request an ID token using the OAuth 2.0 implicit flow.
+  [LogoutUrl <String>]: Specifies the URL that will be used by Microsoft's authorization service to logout an user using front-channel, back-channel or SAML logout protocols.
+  [RedirectUri <String[]>]: Specifies the URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
 .Link
 https://docs.microsoft.com/powershell/module/az.resources/new-azadapplication
 #>
@@ -2723,6 +2740,13 @@ param(
     [System.String[]]
     # The URIs that identify the application.
     ${IdentifierUri},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphWebApplication]
+    # webApplication
+    # To construct, see NOTES section for WEB properties and create a hash table.
+    ${Web},
 
     [Parameter()]
     [AllowEmptyCollection()]
@@ -3018,11 +3042,11 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            ApplicationWithoutCredentialParameterSet = 'MSGraph.custom\New-AzADApplication';
-            ApplicationWithKeyCredentialParameterSet = 'MSGraph.custom\New-AzADApplication';
-            ApplicationWithPasswordCredentialParameterSet = 'MSGraph.custom\New-AzADApplication';
-            ApplicationWithKeyPlainParameterSet = 'MSGraph.custom\New-AzADApplication';
-            ApplicationWithPasswordPlainParameterSet = 'MSGraph.custom\New-AzADApplication';
+            ApplicationWithoutCredentialParameterSet = 'Az.MSGraph.custom\New-AzADApplication';
+            ApplicationWithKeyCredentialParameterSet = 'Az.MSGraph.custom\New-AzADApplication';
+            ApplicationWithPasswordCredentialParameterSet = 'Az.MSGraph.custom\New-AzADApplication';
+            ApplicationWithKeyPlainParameterSet = 'Az.MSGraph.custom\New-AzADApplication';
+            ApplicationWithPasswordPlainParameterSet = 'Az.MSGraph.custom\New-AzADApplication';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -3058,7 +3082,7 @@ Adds new entity to groups
 .Description
 Adds new entity to groups
 .Example
-PS C:\> New-AzADGroup -DisplayName $gname -MailNickname $nickname
+New-AzADGroup -DisplayName $gname -MailNickname $nickname
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup
@@ -3381,7 +3405,7 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            __AllParameterSets = 'MSGraph.custom\New-AzADGroup';
+            __AllParameterSets = 'Az.MSGraph.custom\New-AzADGroup';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -3417,11 +3441,11 @@ Adds new entity to servicePrincipals
 .Description
 Adds new entity to servicePrincipals
 .Example
-PS C:\> New-AzADServicePrincipal
+New-AzADServicePrincipal
 .Example
-PS C:\> New-AzADServicePrincipal -ApplicationId $appid
+New-AzADServicePrincipal -ApplicationId $appid
 .Example
-PS C:\> New-AzADServicePrincipal -DisplayName $name
+New-AzADServicePrincipal -DisplayName $name
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
@@ -3699,16 +3723,6 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith), $search, and $orderBy.
     ${DisplayName},
 
-    [Parameter(ParameterSetName='SimpleParameterSet')]
-    [Parameter(ParameterSetName='ApplicationWithKeyPlainParameterSet', Mandatory)]
-    [Parameter(ParameterSetName='ApplicationWithKeyCredentialParameterSet', Mandatory)]
-    [Parameter(ParameterSetName='ApplicationWithPasswordCredentialParameterSet', Mandatory)]
-    [Alias('AppId')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [System.Guid]
-    # The unique identifier for the associated application (its appId property).
-    ${ApplicationId},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
@@ -3737,9 +3751,6 @@ param(
 
     [Parameter(ParameterSetName='SimpleParameterSet')]
     [Parameter(ParameterSetName='DisplayNameWithKeyPlainParameterSet')]
-    [Parameter(ParameterSetName='ApplicationObjectWithKeyPlainParameterSet')]
-    [Parameter(ParameterSetName='ApplicationObjectWithPasswordPlainParameterSet')]
-    [Parameter(ParameterSetName='ApplicationWithKeyPlainParameterSet')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.DateTime]
     # The effective start date of the credential usage.
@@ -3749,9 +3760,6 @@ param(
 
     [Parameter(ParameterSetName='SimpleParameterSet')]
     [Parameter(ParameterSetName='DisplayNameWithKeyPlainParameterSet')]
-    [Parameter(ParameterSetName='ApplicationObjectWithKeyPlainParameterSet')]
-    [Parameter(ParameterSetName='ApplicationObjectWithPasswordPlainParameterSet')]
-    [Parameter(ParameterSetName='ApplicationWithKeyPlainParameterSet')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.DateTime]
     # The effective end date of the credential usage.
@@ -4027,8 +4035,6 @@ param(
     ${TransitiveMemberOf},
 
     [Parameter(ParameterSetName='DisplayNameWithKeyPlainParameterSet', Mandatory)]
-    [Parameter(ParameterSetName='ApplicationObjectWithKeyPlainParameterSet', Mandatory)]
-    [Parameter(ParameterSetName='ApplicationWithKeyPlainParameterSet', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The value of the 'asymmetric' credential type.
@@ -4036,8 +4042,6 @@ param(
     ${CertValue},
 
     [Parameter(ParameterSetName='DisplayNameWithKeyCredentialParameterSet', Mandatory)]
-    [Parameter(ParameterSetName='ApplicationObjectWithKeyCredentialParameterSet', Mandatory)]
-    [Parameter(ParameterSetName='ApplicationWithKeyCredentialParameterSet', Mandatory)]
     [Alias('KeyCredentials')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -4047,8 +4051,6 @@ param(
     ${KeyCredential},
 
     [Parameter(ParameterSetName='DisplayNameWithPasswordCredentialParameterSet', Mandatory)]
-    [Parameter(ParameterSetName='ApplicationObjectWithPasswordCredentialParameterSet', Mandatory)]
-    [Parameter(ParameterSetName='ApplicationWithPasswordCredentialParameterSet', Mandatory)]
     [Alias('PasswordCredentials')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -4057,18 +4059,22 @@ param(
     # To construct, see NOTES section for PASSWORDCREDENTIAL properties and create a hash table.
     ${PasswordCredential},
 
-    [Parameter(ParameterSetName='ApplicationObjectWithKeyPlainParameterSet', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='ApplicationObjectWithPasswordPlainParameterSet', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='ApplicationObjectWithKeyCredentialParameterSet', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='ApplicationObjectWithPasswordCredentialParameterSet', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='ApplicationObjectParameterSet', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication]
     # The application object, could be used as pipeline input.
     # To construct, see NOTES section for APPLICATIONOBJECT properties and create a hash table.
     ${ApplicationObject},
 
+    [Parameter(ParameterSetName='ApplicationIdParameterSet')]
+    [Alias('AppId')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.Guid]
+    # The unique identifier for the associated application (its appId property).
+    ${ApplicationId},
+
     [Parameter()]
-    [Alias('AzContext', 'AzureRmContext', 'AzureCredential')]
+    [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
@@ -4123,17 +4129,12 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            SimpleParameterSet = 'MSGraph.custom\New-AzADServicePrincipal';
-            DisplayNameWithKeyPlainParameterSet = 'MSGraph.custom\New-AzADServicePrincipal';
-            DisplayNameWithKeyCredentialParameterSet = 'MSGraph.custom\New-AzADServicePrincipal';
-            DisplayNameWithPasswordCredentialParameterSet = 'MSGraph.custom\New-AzADServicePrincipal';
-            ApplicationObjectWithKeyPlainParameterSet = 'MSGraph.custom\New-AzADServicePrincipal';
-            ApplicationObjectWithPasswordPlainParameterSet = 'MSGraph.custom\New-AzADServicePrincipal';
-            ApplicationObjectWithKeyCredentialParameterSet = 'MSGraph.custom\New-AzADServicePrincipal';
-            ApplicationObjectWithPasswordCredentialParameterSet = 'MSGraph.custom\New-AzADServicePrincipal';
-            ApplicationWithKeyPlainParameterSet = 'MSGraph.custom\New-AzADServicePrincipal';
-            ApplicationWithKeyCredentialParameterSet = 'MSGraph.custom\New-AzADServicePrincipal';
-            ApplicationWithPasswordCredentialParameterSet = 'MSGraph.custom\New-AzADServicePrincipal';
+            SimpleParameterSet = 'Az.MSGraph.custom\New-AzADServicePrincipal';
+            DisplayNameWithKeyPlainParameterSet = 'Az.MSGraph.custom\New-AzADServicePrincipal';
+            DisplayNameWithKeyCredentialParameterSet = 'Az.MSGraph.custom\New-AzADServicePrincipal';
+            DisplayNameWithPasswordCredentialParameterSet = 'Az.MSGraph.custom\New-AzADServicePrincipal';
+            ApplicationObjectParameterSet = 'Az.MSGraph.custom\New-AzADServicePrincipal';
+            ApplicationIdParameterSet = 'Az.MSGraph.custom\New-AzADServicePrincipal';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -4169,14 +4170,14 @@ Creates key credentials or password credentials for an service principal.
 .Description
 Creates key credentials or password credentials for an service principal.
 .Example
-PS C:\> $credential = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential" `
+$credential = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential" `
                                  -Property @{'Key' = $cert;
                                  'Usage'       = 'Verify'; 
                                  'Type'        = 'AsymmetricX509Cert'
                                  }
-PS C:\> New-AzADSpCredential -ObjectId $Id -KeyCredentials $credential
+New-AzADSpCredential -ObjectId $Id -KeyCredentials $credential
 .Example
-PS C:\> Get-AzADServicePrincipal -ApplicationId $appId | New-AzADSpCredential -StartDate $startDate -EndDate $endDate
+Get-AzADServicePrincipal -ApplicationId $appId | New-AzADSpCredential -StartDate $startDate -EndDate $endDate
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal
@@ -4333,7 +4334,8 @@ function New-AzADSpCredential {
 [CmdletBinding(DefaultParameterSetName='SpObjectIdWithPasswordParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='SpObjectIdWithPasswordParameterSet', Mandatory)]
-    [Parameter(ParameterSetName='SpObjectIdWithCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='SpObjectIdWithPasswordCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='SpObjectIdWithKeyCredentialParameterSet', Mandatory)]
     [Parameter(ParameterSetName='SpObjectIdWithCertValueParameterSet', Mandatory)]
     [Alias('Id', 'ServicePrincipalObjectId')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -4367,23 +4369,23 @@ param(
     # For an 'asymmetric' type credential, this must be set to on or before the date that the X509 certificate is valid.
     ${EndDate},
 
-    [Parameter(ParameterSetName='SpObjectIdWithCredentialParameterSet')]
-    [Parameter(ParameterSetName='SPNWithCredentialParameterSet')]
-    [Parameter(ParameterSetName='ServicePrincipalObjectWithCredentialParameterSet')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential[]]
-    # key credentials associated with the service principal.
-    # To construct, see NOTES section for KEYCREDENTIALS properties and create a hash table.
-    ${KeyCredentials},
-
-    [Parameter(ParameterSetName='SpObjectIdWithCredentialParameterSet')]
-    [Parameter(ParameterSetName='SPNWithCredentialParameterSet')]
-    [Parameter(ParameterSetName='ServicePrincipalObjectWithCredentialParameterSet')]
+    [Parameter(ParameterSetName='SpObjectIdWithPasswordCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='SPNWithPasswordCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='ServicePrincipalObjectWithPasswordCredentialParameterSet', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphPasswordCredential[]]
     # Password credentials associated with the service principal.
     # To construct, see NOTES section for PASSWORDCREDENTIALS properties and create a hash table.
     ${PasswordCredentials},
+
+    [Parameter(ParameterSetName='SpObjectIdWithKeyCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='SPNWithKeyCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='ServicePrincipalObjectWithKeyCredentialParameterSet', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential[]]
+    # key credentials associated with the service principal.
+    # To construct, see NOTES section for KEYCREDENTIALS properties and create a hash table.
+    ${KeyCredentials},
 
     [Parameter(ParameterSetName='SpObjectIdWithCertValueParameterSet', Mandatory)]
     [Parameter(ParameterSetName='SPNWithCertValueParameterSet', Mandatory)]
@@ -4394,7 +4396,8 @@ param(
     # It represents the base 64 encoded certificate.
     ${CertValue},
 
-    [Parameter(ParameterSetName='SPNWithCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='SPNWithPasswordCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='SPNWithKeyCredentialParameterSet', Mandatory)]
     [Parameter(ParameterSetName='SPNWithPasswordParameterSet', Mandatory)]
     [Parameter(ParameterSetName='SPNWithCertValueParameterSet', Mandatory)]
     [Alias('SPN')]
@@ -4403,7 +4406,8 @@ param(
     # The service principal name.
     ${ServicePrincipalName},
 
-    [Parameter(ParameterSetName='ServicePrincipalObjectWithCredentialParameterSet', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='ServicePrincipalObjectWithPasswordCredentialParameterSet', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='ServicePrincipalObjectWithKeyCredentialParameterSet', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='ServicePrincipalObjectWithPasswordParameterSet', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='ServicePrincipalObjectWithCertValueParameterSet', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -4468,15 +4472,18 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            SpObjectIdWithPasswordParameterSet = 'MSGraph.custom\New-AzADSpCredential';
-            SpObjectIdWithCredentialParameterSet = 'MSGraph.custom\New-AzADSpCredential';
-            SpObjectIdWithCertValueParameterSet = 'MSGraph.custom\New-AzADSpCredential';
-            SPNWithCredentialParameterSet = 'MSGraph.custom\New-AzADSpCredential';
-            SPNWithPasswordParameterSet = 'MSGraph.custom\New-AzADSpCredential';
-            SPNWithCertValueParameterSet = 'MSGraph.custom\New-AzADSpCredential';
-            ServicePrincipalObjectWithCredentialParameterSet = 'MSGraph.custom\New-AzADSpCredential';
-            ServicePrincipalObjectWithPasswordParameterSet = 'MSGraph.custom\New-AzADSpCredential';
-            ServicePrincipalObjectWithCertValueParameterSet = 'MSGraph.custom\New-AzADSpCredential';
+            SpObjectIdWithPasswordParameterSet = 'Az.MSGraph.custom\New-AzADSpCredential';
+            SpObjectIdWithPasswordCredentialParameterSet = 'Az.MSGraph.custom\New-AzADSpCredential';
+            SpObjectIdWithKeyCredentialParameterSet = 'Az.MSGraph.custom\New-AzADSpCredential';
+            SpObjectIdWithCertValueParameterSet = 'Az.MSGraph.custom\New-AzADSpCredential';
+            SPNWithPasswordCredentialParameterSet = 'Az.MSGraph.custom\New-AzADSpCredential';
+            SPNWithKeyCredentialParameterSet = 'Az.MSGraph.custom\New-AzADSpCredential';
+            SPNWithPasswordParameterSet = 'Az.MSGraph.custom\New-AzADSpCredential';
+            SPNWithCertValueParameterSet = 'Az.MSGraph.custom\New-AzADSpCredential';
+            ServicePrincipalObjectWithPasswordCredentialParameterSet = 'Az.MSGraph.custom\New-AzADSpCredential';
+            ServicePrincipalObjectWithKeyCredentialParameterSet = 'Az.MSGraph.custom\New-AzADSpCredential';
+            ServicePrincipalObjectWithPasswordParameterSet = 'Az.MSGraph.custom\New-AzADSpCredential';
+            ServicePrincipalObjectWithCertValueParameterSet = 'Az.MSGraph.custom\New-AzADSpCredential';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -4512,8 +4519,8 @@ Adds new entity to users
 .Description
 Adds new entity to users
 .Example
-PS C:\> $pp=New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordProfile" -Property @{Password=$password}
-PS C:\> New-MgUser -DisplayName $uname -PasswordProfile $pp -AccountEnabled -MailNickname $nickname -UserPrincipalName $upn
+$pp=New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordProfile" -Property @{Password=$password}
+New-MgUser -DisplayName $uname -PasswordProfile $pp -AccountEnabled -MailNickname $nickname -UserPrincipalName $upn
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser
@@ -4583,11 +4590,10 @@ param(
     ${AboutMe},
 
     [Parameter()]
+    [Alias('EnableAccount')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # true if the account is enabled; otherwise, false.
-    # This property is required when a user is created.
-    # Supports $filter (eq, ne, NOT, and in).
+    [System.Boolean]
+    # true for enabling the account; otherwise, false.
     ${AccountEnabled},
 
     [Parameter()]
@@ -4973,7 +4979,7 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            __AllParameterSets = 'MSGraph.custom\New-AzADUser';
+            __AllParameterSets = 'Az.MSGraph.custom\New-AzADUser';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -5009,9 +5015,9 @@ Removes key credentials or password credentials for an application.
 .Description
 Removes key credentials or password credentials for an application.
 .Example
-PS C:\> Remove-AzADAppCredential -DisplayName $name -KeyId $keyid
+Remove-AzADAppCredential -DisplayName $name -KeyId $keyid
 .Example
-PS C:\> Get-AzADApplication -DisplayName $name | Remove-AzADAppCredential
+Get-AzADApplication -DisplayName $name | Remove-AzADAppCredential
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
@@ -5250,10 +5256,10 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            ApplicationObjectIdWithKeyIdParameterSet = 'MSGraph.custom\Remove-AzADAppCredential';
-            ApplicationIdWithKeyIdParameterSet = 'MSGraph.custom\Remove-AzADAppCredential';
-            ApplicationDisplayNameParameterSet = 'MSGraph.custom\Remove-AzADAppCredential';
-            ApplicationObjectWithKeyIdParameterSet = 'MSGraph.custom\Remove-AzADAppCredential';
+            ApplicationObjectIdWithKeyIdParameterSet = 'Az.MSGraph.custom\Remove-AzADAppCredential';
+            ApplicationIdWithKeyIdParameterSet = 'Az.MSGraph.custom\Remove-AzADAppCredential';
+            ApplicationDisplayNameParameterSet = 'Az.MSGraph.custom\Remove-AzADAppCredential';
+            ApplicationObjectWithKeyIdParameterSet = 'Az.MSGraph.custom\Remove-AzADAppCredential';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -5289,9 +5295,9 @@ Deletes entity from applications
 .Description
 Deletes entity from applications
 .Example
-PS C:\> Remove-AzADApplication -DisplayName $name
+Remove-AzADApplication -DisplayName $name
 .Example
-PS C:\> Get-AzADApplication -ObjectId $id | Remove-AzADApplication
+Get-AzADApplication -ObjectId $id | Remove-AzADApplication
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
@@ -5524,10 +5530,10 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            ObjectIdParameterSet = 'MSGraph.custom\Remove-AzADApplication';
-            ApplicationIdParameterSet = 'MSGraph.custom\Remove-AzADApplication';
-            ApplicationDisplayNameParameterSet = 'MSGraph.custom\Remove-AzADApplication';
-            InputObjectParameterSet = 'MSGraph.custom\Remove-AzADApplication';
+            ObjectIdParameterSet = 'Az.MSGraph.custom\Remove-AzADApplication';
+            ApplicationIdParameterSet = 'Az.MSGraph.custom\Remove-AzADApplication';
+            ApplicationDisplayNameParameterSet = 'Az.MSGraph.custom\Remove-AzADApplication';
+            InputObjectParameterSet = 'Az.MSGraph.custom\Remove-AzADApplication';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -5563,7 +5569,7 @@ Removes an API permission.
 .Description
 Removes an API permission.
 .Example
-PS C:\> Remove-AzADAppPermission -ObjectId 9cc74d5e-1162-4b90-8696-65f3d6a3f7d0 -PermissionId 5f8c59db-677d-491f-a6b8-5f174b11ec1d
+Remove-AzADAppPermission -ObjectId 9cc74d5e-1162-4b90-8696-65f3d6a3f7d0 -PermissionId 5f8c59db-677d-491f-a6b8-5f174b11ec1d
 
 .Outputs
 System.Boolean
@@ -5649,8 +5655,8 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            ObjectIdParameterSet = 'MSGraph.custom\Remove-AzADAppPermission';
-            AppIdParameterSet = 'MSGraph.custom\Remove-AzADAppPermission';
+            ObjectIdParameterSet = 'Az.MSGraph.custom\Remove-AzADAppPermission';
+            AppIdParameterSet = 'Az.MSGraph.custom\Remove-AzADAppPermission';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -5686,9 +5692,9 @@ Deletes entity from groups.
 .Description
 Deletes entity from groups.
 .Example
-PS C:\> Remove-AzADGroup -DisplayName $name
+Remove-AzADGroup -DisplayName $name
 .Example
-PS C:\> Get-AzADGroup -ObjectId $id | Remove-AzADGroup
+Get-AzADGroup -ObjectId $id | Remove-AzADGroup
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup
@@ -5834,9 +5840,9 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            ObjectIdParameterSet = 'MSGraph.custom\Remove-AzADGroup';
-            DisplayNameParameterSet = 'MSGraph.custom\Remove-AzADGroup';
-            InputObjectParameterSet = 'MSGraph.custom\Remove-AzADGroup';
+            ObjectIdParameterSet = 'Az.MSGraph.custom\Remove-AzADGroup';
+            DisplayNameParameterSet = 'Az.MSGraph.custom\Remove-AzADGroup';
+            InputObjectParameterSet = 'Az.MSGraph.custom\Remove-AzADGroup';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -5880,10 +5886,10 @@ HTTP Methods: GET (supported for all groups), POST (supported for security group
 Nullable.
 Supports $expand.
 .Example
-PS C:\> $members = @()
-PS C:\> $members += (Get-AzADUser -DisplayName $uname).Id
-PS C:\> $members += (Get-AzADServicePrincipal -ApplicationId $appid).Id
-PS C:\> Get-AzADGroupMember -DisplayName $gname | Remove-AzADGroupMember -MemberObjectId $member
+$members = @()
+$members += (Get-AzADUser -DisplayName $uname).Id
+$members += (Get-AzADServicePrincipal -ApplicationId $appid).Id
+Get-AzADGroupMember -DisplayName $gname | Remove-AzADGroupMember -MemberObjectId $member
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphGroup
@@ -6042,13 +6048,13 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            ExplicitParameterSet  = 'MSGraph.custom\Remove-AzADGroupMember';
-            MemberUPNWithGroupObjectIdParameterSet = 'MSGraph.custom\Remove-AzADGroupMember';
-            MemberObjectIdWithGroupObjectId = 'MSGraph.custom\Remove-AzADGroupMember';
-            MemberUPNWithGroupDisplayNameParameterSet = 'MSGraph.custom\Remove-AzADGroupMember';
-            MemberObjectIdWithGroupDisplayName = 'MSGraph.custom\Remove-AzADGroupMember';
-            MemberUPNWithGroupObjectParameterSet = 'MSGraph.custom\Remove-AzADGroupMember';
-            MemberObjectIdWithGroupObject = 'MSGraph.custom\Remove-AzADGroupMember';
+            ExplicitParameterSet  = 'Az.MSGraph.custom\Remove-AzADGroupMember';
+            MemberUPNWithGroupObjectIdParameterSet = 'Az.MSGraph.custom\Remove-AzADGroupMember';
+            MemberObjectIdWithGroupObjectId = 'Az.MSGraph.custom\Remove-AzADGroupMember';
+            MemberUPNWithGroupDisplayNameParameterSet = 'Az.MSGraph.custom\Remove-AzADGroupMember';
+            MemberObjectIdWithGroupDisplayName = 'Az.MSGraph.custom\Remove-AzADGroupMember';
+            MemberUPNWithGroupObjectParameterSet = 'Az.MSGraph.custom\Remove-AzADGroupMember';
+            MemberObjectIdWithGroupObject = 'Az.MSGraph.custom\Remove-AzADGroupMember';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -6084,9 +6090,9 @@ Deletes entity from service principal.
 .Description
 Deletes entity from service principal.
 .Example
-PS C:\> Remove-AzADServicePrincipal -DisplayName $name
+Remove-AzADServicePrincipal -DisplayName $name
 .Example
-PS C:\> Get-AzADServicePrincipal -Application $id | Remove-AzADServicePrincipal
+Get-AzADServicePrincipal -Application $id | Remove-AzADServicePrincipal
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
@@ -6461,12 +6467,12 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            ObjectIdParameterSet = 'MSGraph.custom\Remove-AzADServicePrincipal';
-            ApplicationIdParameterSet = 'MSGraph.custom\Remove-AzADServicePrincipal';
-            SPNParameterSet = 'MSGraph.custom\Remove-AzADServicePrincipal';
-            DisplayNameParameterSet = 'MSGraph.custom\Remove-AzADServicePrincipal';
-            InputObjectParameterSet = 'MSGraph.custom\Remove-AzADServicePrincipal';
-            ApplicationObjectParameterSet = 'MSGraph.custom\Remove-AzADServicePrincipal';
+            ObjectIdParameterSet = 'Az.MSGraph.custom\Remove-AzADServicePrincipal';
+            ApplicationIdParameterSet = 'Az.MSGraph.custom\Remove-AzADServicePrincipal';
+            SPNParameterSet = 'Az.MSGraph.custom\Remove-AzADServicePrincipal';
+            DisplayNameParameterSet = 'Az.MSGraph.custom\Remove-AzADServicePrincipal';
+            InputObjectParameterSet = 'Az.MSGraph.custom\Remove-AzADServicePrincipal';
+            ApplicationObjectParameterSet = 'Az.MSGraph.custom\Remove-AzADServicePrincipal';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -6502,9 +6508,9 @@ Removes key credentials or password credentials for an service principal.
 .Description
 Removes key credentials or password credentials for an service principal.
 .Example
-PS C:\> Remove-AzADSpCredential -DisplayName $name -KeyId $keyid
+Remove-AzADSpCredential -DisplayName $name -KeyId $keyid
 .Example
-PS C:\> Get-AzADServicePrincipal -DisplayName $name | Remove-AzADSpCredential
+Get-AzADServicePrincipal -DisplayName $name | Remove-AzADSpCredential
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal
@@ -6735,10 +6741,10 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            ObjectIdWithKeyIdParameterSet = 'MSGraph.custom\Remove-AzADSpCredential';
-            SPNWithKeyIdParameterSet = 'MSGraph.custom\Remove-AzADSpCredential';
-            DisplayNameWithKeyIdParameterSet = 'MSGraph.custom\Remove-AzADSpCredential';
-            ServicePrincipalObjectParameterSet = 'MSGraph.custom\Remove-AzADSpCredential';
+            ObjectIdWithKeyIdParameterSet = 'Az.MSGraph.custom\Remove-AzADSpCredential';
+            SPNWithKeyIdParameterSet = 'Az.MSGraph.custom\Remove-AzADSpCredential';
+            DisplayNameWithKeyIdParameterSet = 'Az.MSGraph.custom\Remove-AzADSpCredential';
+            ServicePrincipalObjectParameterSet = 'Az.MSGraph.custom\Remove-AzADSpCredential';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -6774,9 +6780,9 @@ Deletes entity from users.
 .Description
 Deletes entity from users.
 .Example
-PS C:\> Remove-AzADUser -DisplayName $name
+Remove-AzADUser -DisplayName $name
 .Example
-PS C:\> Get-AzADUser -UserPrincipalName $id | Remove-AzADUser
+Get-AzADUser -UserPrincipalName $id | Remove-AzADUser
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser
@@ -6793,11 +6799,14 @@ INPUTOBJECT <IMicrosoftGraphUser>: user input object
   [DisplayName <String>]: The name displayed in directory
   [AccountEnabled <Boolean?>]: true if the account is enabled; otherwise, false. This property is required when a user is created. Supports $filter (eq, ne, NOT, and in).
   [AgeGroup <String>]: Sets the age group of the user. Allowed values: null, minor, notAdult and adult. Refer to the legal age group property definitions for further information. Supports $filter (eq, ne, NOT, and in).
+  [ApproximateLastSignInDateTime <DateTime?>]: The timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only. Supports $filter (eq, ne, not, ge, le, and eq on null values) and $orderBy.
   [City <String>]: The city in which the user is located. Maximum length is 128 characters. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
   [CompanyName <String>]: The company name which the user is associated. This property can be useful for describing the company that an external user comes from. The maximum length of the company name is 64 characters.Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
+  [ComplianceExpirationDateTime <DateTime?>]: The timestamp when the device is no longer deemed compliant. The timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
   [ConsentProvidedForMinor <String>]: Sets whether consent has been obtained for minors. Allowed values: null, granted, denied and notRequired. Refer to the legal age group property definitions for further information. Supports $filter (eq, ne, NOT, and in).
   [Country <String>]: The country/region in which the user is located; for example, US or UK. Maximum length is 128 characters. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
   [Department <String>]: The name for the department in which the user works. Maximum length is 64 characters.Supports $filter (eq, ne, NOT , ge, le, and in operators).
+  [DeviceVersion <Int32?>]: For internal use only.
   [EmployeeHireDate <DateTime?>]: The date and time when the user was hired or will start work in case of a future hire. Supports $filter (eq, ne, NOT , ge, le, in).
   [EmployeeId <String>]: The employee identifier assigned to the user by the organization. Supports $filter (eq, ne, NOT , ge, le, in, startsWith).
   [EmployeeType <String>]: Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor. Supports $filter (eq, ne, NOT , ge, le, in, startsWith).
@@ -6815,6 +6824,10 @@ INPUTOBJECT <IMicrosoftGraphUser>: user input object
   [MailNickname <String>]: The mail alias for the user. This property must be specified when a user is created. Maximum length is 64 characters. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
   [OfficeLocation <String>]: The office location in the user's place of business. Maximum length is 128 characters. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
   [OnPremisesImmutableId <String>]: This property is used to associate an on-premises Active Directory user account to their Azure AD user object. This property must be specified when creating a new user account in the Graph if you are using a federated domain for the user's userPrincipalName (UPN) property. NOTE: The $ and _ characters cannot be used when specifying this property. Returned only on $select. Supports $filter (eq, ne, NOT, ge, le, in)..
+  [OnPremisesLastSyncDateTime <DateTime?>]: The last time at which the object was synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z Read-only. Supports $filter (eq, ne, not, ge, le, in).
+  [OnPremisesSyncEnabled <Boolean?>]: true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced; null if this object has never been synced from an on-premises directory (default). Read-only. Supports $filter (eq, ne, not, in, and eq on null values).
+  [OperatingSystem <String>]: Operating system of the device. Windows, iOS, etc. This property is read-only.
+  [OperatingSystemVersion <String>]: Operating system version of the device. Required. Supports $filter (eq, ne, not, ge, le, startsWith, and eq on null values).
   [OtherMail <String[]>]: A list of additional email addresses for the user; for example: ['bob@contoso.com', 'Robert@fabrikam.com'].NOTE: While this property can contain accent characters, they can cause access issues to first-party applications for the user.Supports $filter (eq, NOT, ge, le, in, startsWith).
   [PasswordPolicy <String>]: Specifies password policies for the user. This value is an enumeration with one possible value being DisableStrongPassword, which allows weaker passwords than the default policy to be specified. DisablePasswordExpiration can also be specified. The two may be specified together; for example: DisablePasswordExpiration, DisableStrongPassword.Supports $filter (ne, NOT).
   [PasswordProfile <IMicrosoftGraphPasswordProfile>]: passwordProfile
@@ -6822,12 +6835,14 @@ INPUTOBJECT <IMicrosoftGraphUser>: user input object
     [ForceChangePasswordNextSignIn <Boolean?>]: true if the user must change her password on the next login; otherwise false. If not set, default is false. NOTE:  For Azure B2C tenants, set to false and instead use custom policies and user flows to force password reset at first sign in. See Force password reset at first logon.
     [ForceChangePasswordNextSignInWithMfa <Boolean?>]: If true, at next sign-in, the user must perform a multi-factor authentication (MFA) before being forced to change their password. The behavior is identical to forceChangePasswordNextSignIn except that the user is required to first perform a multi-factor authentication before password change. After a password change, this property will be automatically reset to false. If not set, default is false.
     [Password <String>]: The password for the user. This property is required when a user is created. It can be updated, but the user will be required to change the password on the next login. The password must satisfy minimum requirements as specified by the user’s passwordPolicies property. By default, a strong password is required.
+  [PhysicalId <String[]>]: For internal use only. Not nullable. Supports $filter (eq, not, ge, le, startsWith).
   [PostalCode <String>]: The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code. Maximum length is 40 characters. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
   [PreferredLanguage <String>]: The preferred language for the user. Should follow ISO 639-1 Code; for example en-US. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
   [ShowInAddressList <Boolean?>]: true if the Outlook global address list should contain this user, otherwise false. If not set, this will be treated as true. For users invited through the invitation manager, this property will be set to false. Supports $filter (eq, ne, NOT, in).
   [State <String>]: The state or province in the user's address. Maximum length is 128 characters. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
   [StreetAddress <String>]: The street address of the user's place of business. Maximum length is 1024 characters. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
   [Surname <String>]: The user's surname (family name or last name). Maximum length is 64 characters. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
+  [TrustType <String>]: Type of trust for the joined device. Read-only. Possible values: Workplace (indicates bring your own personal devices), AzureAd (Cloud only joined devices), ServerAd (on-premises domain joined devices joined to Azure AD). For more details, see Introduction to device management in Azure Active Directory
   [UsageLocation <String>]: A two letter country code (ISO standard 3166). Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries.  Examples include: US, JP, and GB. Not nullable. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
   [UserPrincipalName <String>]: The user principal name (UPN) of the user. The UPN is an Internet-style login name for the user based on the Internet standard RFC 822. By convention, this should map to the user's email name. The general format is alias@domain, where domain must be present in the tenant's collection of verified domains. This property is required when a user is created. The verified domains for the tenant can be accessed from the verifiedDomains property of organization.NOTE: While this property can contain accent characters, they can cause access issues to first-party applications for the user. Supports $filter (eq, ne, NOT, ge, le, in, startsWith, endsWith) and $orderBy.
   [UserType <String>]: A string value that can be used to classify user types in your directory, such as Member and Guest. Supports $filter (eq, ne, NOT, in,).
@@ -6932,11 +6947,11 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            UPNOrObjectIdParameterSet = 'MSGraph.custom\Remove-AzADUser';
-            ObjectIdParameterSet = 'MSGraph.custom\Remove-AzADUser';
-            UPNParameterSet = 'MSGraph.custom\Remove-AzADUser';
-            DisplayNameParameterSet = 'MSGraph.custom\Remove-AzADUser';
-            InputObjectParameterSet = 'MSGraph.custom\Remove-AzADUser';
+            UPNOrObjectIdParameterSet = 'Az.MSGraph.custom\Remove-AzADUser';
+            ObjectIdParameterSet = 'Az.MSGraph.custom\Remove-AzADUser';
+            UPNParameterSet = 'Az.MSGraph.custom\Remove-AzADUser';
+            DisplayNameParameterSet = 'Az.MSGraph.custom\Remove-AzADUser';
+            InputObjectParameterSet = 'Az.MSGraph.custom\Remove-AzADUser';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -6972,9 +6987,9 @@ Updates entity in applications
 .Description
 Updates entity in applications
 .Example
-PS C:\> Update-AzADApplication -DisplayName $name -HomePage $homepage
+Update-AzADApplication -DisplayName $name -HomePage $homepage
 .Example
-PS C:\> Get-AzADApplication -ObjectId $id | Update-AzADApplication -ReplyUrl $replyurl
+Get-AzADApplication -ObjectId $id | Update-AzADApplication -ReplyUrl $replyurl
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
@@ -7532,9 +7547,9 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            ApplicationObjectIdWithUpdateParamsParameterSet = 'MSGraph.custom\Update-AzADApplication';
-            ApplicationIdWithUpdateParamsParameterSet = 'MSGraph.custom\Update-AzADApplication';
-            InputObjectWithUpdateParamsParameterSet = 'MSGraph.custom\Update-AzADApplication';
+            ApplicationObjectIdWithUpdateParamsParameterSet = 'Az.MSGraph.custom\Update-AzADApplication';
+            ApplicationIdWithUpdateParamsParameterSet = 'Az.MSGraph.custom\Update-AzADApplication';
+            InputObjectWithUpdateParamsParameterSet = 'Az.MSGraph.custom\Update-AzADApplication';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -7570,9 +7585,9 @@ Updates entity in service principal
 .Description
 Updates entity in service principal
 .Example
-PS C:\> Update-AzADServicePrincipal -DisplayName $name -IdentifierUri $uri
+Update-AzADServicePrincipal -DisplayName $name -IdentifierUri $uri
 .Example
-PS C:\> Get-AzADServicePrincipal -ObjectId $id | Update-AzADServicePrincipal -Note $note
+Get-AzADServicePrincipal -ObjectId $id | Update-AzADServicePrincipal -Note $note
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal
@@ -7838,19 +7853,6 @@ param(
     [System.String]
     # key: id of servicePrincipal
     ${ObjectId},
-
-    [Parameter()]
-    [Alias('SPN')]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [System.String]
-    # Contains the list of identifiersUris, copied over from the associated application.
-    # Additional values can be added to hybrid applications.
-    # These values can be used to identify the permissions exposed by this app within Azure AD.
-    # For example,Client apps can specify a resource URI which is based on the values of this property to acquire an access token, which is the URI returned in the 'aud' claim.The any operator is required for filter expressions on multi-valued properties.
-    # Not nullable.
-    # Supports $filter (eq, NOT, ge, le, startsWith).
-    ${ServicePrincipalName},
 
     [Parameter()]
     [AllowEmptyCollection()]
@@ -8174,6 +8176,19 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
+    [Parameter(ParameterSetName='SPNWithDisplayNameParameterSet', Mandatory)]
+    [Alias('SPN')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Contains the list of identifiersUris, copied over from the associated application.
+    # Additional values can be added to hybrid applications.
+    # These values can be used to identify the permissions exposed by this app within Azure AD.
+    # For example,Client apps can specify a resource URI which is based on the values of this property to acquire an access token, which is the URI returned in the 'aud' claim.The any operator is required for filter expressions on multi-valued properties.
+    # Not nullable.
+    # Supports $filter (eq, NOT, ge, le, startsWith).
+    ${ServicePrincipalName},
+
     [Parameter()]
     [Alias('AzContext', 'AzureRmContext', 'AzureCredential')]
     [ValidateNotNull()]
@@ -8236,10 +8251,10 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            SpObjectIdWithDisplayNameParameterSet = 'MSGraph.custom\Update-AzADServicePrincipal';
-            SpApplicationIdWithDisplayNameParameterSet = 'MSGraph.custom\Update-AzADServicePrincipal';
-            InputObjectWithDisplayNameParameterSet = 'MSGraph.custom\Update-AzADServicePrincipal';
-            SPNWithDisplayNameParameterSet = 'MSGraph.custom\Update-AzADServicePrincipal';
+            SpObjectIdWithDisplayNameParameterSet = 'Az.MSGraph.custom\Update-AzADServicePrincipal';
+            SpApplicationIdWithDisplayNameParameterSet = 'Az.MSGraph.custom\Update-AzADServicePrincipal';
+            InputObjectWithDisplayNameParameterSet = 'Az.MSGraph.custom\Update-AzADServicePrincipal';
+            SPNWithDisplayNameParameterSet = 'Az.MSGraph.custom\Update-AzADServicePrincipal';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -8275,7 +8290,7 @@ Updates entity in users
 .Description
 Updates entity in users
 .Example
-PS C:\> Update-AzADUser -UPNOrObjectId $upn -City $city
+Update-AzADUser -UPNOrObjectId $upn -City $city
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser
@@ -8297,11 +8312,14 @@ INPUTOBJECT <IMicrosoftGraphUser>: user input object
   [DisplayName <String>]: The name displayed in directory
   [AccountEnabled <Boolean?>]: true if the account is enabled; otherwise, false. This property is required when a user is created. Supports $filter (eq, ne, NOT, and in).
   [AgeGroup <String>]: Sets the age group of the user. Allowed values: null, minor, notAdult and adult. Refer to the legal age group property definitions for further information. Supports $filter (eq, ne, NOT, and in).
+  [ApproximateLastSignInDateTime <DateTime?>]: The timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only. Supports $filter (eq, ne, not, ge, le, and eq on null values) and $orderBy.
   [City <String>]: The city in which the user is located. Maximum length is 128 characters. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
   [CompanyName <String>]: The company name which the user is associated. This property can be useful for describing the company that an external user comes from. The maximum length of the company name is 64 characters.Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
+  [ComplianceExpirationDateTime <DateTime?>]: The timestamp when the device is no longer deemed compliant. The timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
   [ConsentProvidedForMinor <String>]: Sets whether consent has been obtained for minors. Allowed values: null, granted, denied and notRequired. Refer to the legal age group property definitions for further information. Supports $filter (eq, ne, NOT, and in).
   [Country <String>]: The country/region in which the user is located; for example, US or UK. Maximum length is 128 characters. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
   [Department <String>]: The name for the department in which the user works. Maximum length is 64 characters.Supports $filter (eq, ne, NOT , ge, le, and in operators).
+  [DeviceVersion <Int32?>]: For internal use only.
   [EmployeeHireDate <DateTime?>]: The date and time when the user was hired or will start work in case of a future hire. Supports $filter (eq, ne, NOT , ge, le, in).
   [EmployeeId <String>]: The employee identifier assigned to the user by the organization. Supports $filter (eq, ne, NOT , ge, le, in, startsWith).
   [EmployeeType <String>]: Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor. Supports $filter (eq, ne, NOT , ge, le, in, startsWith).
@@ -8319,6 +8337,10 @@ INPUTOBJECT <IMicrosoftGraphUser>: user input object
   [MailNickname <String>]: The mail alias for the user. This property must be specified when a user is created. Maximum length is 64 characters. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
   [OfficeLocation <String>]: The office location in the user's place of business. Maximum length is 128 characters. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
   [OnPremisesImmutableId <String>]: This property is used to associate an on-premises Active Directory user account to their Azure AD user object. This property must be specified when creating a new user account in the Graph if you are using a federated domain for the user's userPrincipalName (UPN) property. NOTE: The $ and _ characters cannot be used when specifying this property. Returned only on $select. Supports $filter (eq, ne, NOT, ge, le, in)..
+  [OnPremisesLastSyncDateTime <DateTime?>]: The last time at which the object was synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z Read-only. Supports $filter (eq, ne, not, ge, le, in).
+  [OnPremisesSyncEnabled <Boolean?>]: true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced; null if this object has never been synced from an on-premises directory (default). Read-only. Supports $filter (eq, ne, not, in, and eq on null values).
+  [OperatingSystem <String>]: Operating system of the device. Windows, iOS, etc. This property is read-only.
+  [OperatingSystemVersion <String>]: Operating system version of the device. Required. Supports $filter (eq, ne, not, ge, le, startsWith, and eq on null values).
   [OtherMail <String[]>]: A list of additional email addresses for the user; for example: ['bob@contoso.com', 'Robert@fabrikam.com'].NOTE: While this property can contain accent characters, they can cause access issues to first-party applications for the user.Supports $filter (eq, NOT, ge, le, in, startsWith).
   [PasswordPolicy <String>]: Specifies password policies for the user. This value is an enumeration with one possible value being DisableStrongPassword, which allows weaker passwords than the default policy to be specified. DisablePasswordExpiration can also be specified. The two may be specified together; for example: DisablePasswordExpiration, DisableStrongPassword.Supports $filter (ne, NOT).
   [PasswordProfile <IMicrosoftGraphPasswordProfile>]: passwordProfile
@@ -8326,12 +8348,14 @@ INPUTOBJECT <IMicrosoftGraphUser>: user input object
     [ForceChangePasswordNextSignIn <Boolean?>]: true if the user must change her password on the next login; otherwise false. If not set, default is false. NOTE:  For Azure B2C tenants, set to false and instead use custom policies and user flows to force password reset at first sign in. See Force password reset at first logon.
     [ForceChangePasswordNextSignInWithMfa <Boolean?>]: If true, at next sign-in, the user must perform a multi-factor authentication (MFA) before being forced to change their password. The behavior is identical to forceChangePasswordNextSignIn except that the user is required to first perform a multi-factor authentication before password change. After a password change, this property will be automatically reset to false. If not set, default is false.
     [Password <String>]: The password for the user. This property is required when a user is created. It can be updated, but the user will be required to change the password on the next login. The password must satisfy minimum requirements as specified by the user’s passwordPolicies property. By default, a strong password is required.
+  [PhysicalId <String[]>]: For internal use only. Not nullable. Supports $filter (eq, not, ge, le, startsWith).
   [PostalCode <String>]: The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code. Maximum length is 40 characters. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
   [PreferredLanguage <String>]: The preferred language for the user. Should follow ISO 639-1 Code; for example en-US. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
   [ShowInAddressList <Boolean?>]: true if the Outlook global address list should contain this user, otherwise false. If not set, this will be treated as true. For users invited through the invitation manager, this property will be set to false. Supports $filter (eq, ne, NOT, in).
   [State <String>]: The state or province in the user's address. Maximum length is 128 characters. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
   [StreetAddress <String>]: The street address of the user's place of business. Maximum length is 1024 characters. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
   [Surname <String>]: The user's surname (family name or last name). Maximum length is 64 characters. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
+  [TrustType <String>]: Type of trust for the joined device. Read-only. Possible values: Workplace (indicates bring your own personal devices), AzureAd (Cloud only joined devices), ServerAd (on-premises domain joined devices joined to Azure AD). For more details, see Introduction to device management in Azure Active Directory
   [UsageLocation <String>]: A two letter country code (ISO standard 3166). Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries.  Examples include: US, JP, and GB. Not nullable. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
   [UserPrincipalName <String>]: The user principal name (UPN) of the user. The UPN is an Internet-style login name for the user based on the Internet standard RFC 822. By convention, this should map to the user's email name. The general format is alias@domain, where domain must be present in the tenant's collection of verified domains. This property is required when a user is created. The verified domains for the tenant can be accessed from the verifiedDomains property of organization.NOTE: While this property can contain accent characters, they can cause access issues to first-party applications for the user. Supports $filter (eq, ne, NOT, ge, le, in, startsWith, endsWith) and $orderBy.
   [UserType <String>]: A string value that can be used to classify user types in your directory, such as Member and Guest. Supports $filter (eq, ne, NOT, in,).
@@ -8356,10 +8380,11 @@ param(
     ${UPNOrObjectId},
 
     [Parameter()]
+    [Alias('EnableAccount')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Boolean]
     # true for enabling the account; otherwise, false.
-    ${EnableAccount},
+    ${AccountEnabled},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -8739,10 +8764,10 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            UPNOrObjectIdParameterSet = 'MSGraph.custom\Update-AzADUser';
-            ObjectIdParameterSet = 'MSGraph.custom\Update-AzADUser';
-            InputObjectParameterSet = 'MSGraph.custom\Update-AzADUser';
-            UPNParameterSet = 'MSGraph.custom\Update-AzADUser';
+            UPNOrObjectIdParameterSet = 'Az.MSGraph.custom\Update-AzADUser';
+            ObjectIdParameterSet = 'Az.MSGraph.custom\Update-AzADUser';
+            InputObjectParameterSet = 'Az.MSGraph.custom\Update-AzADUser';
+            UPNParameterSet = 'Az.MSGraph.custom\Update-AzADUser';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

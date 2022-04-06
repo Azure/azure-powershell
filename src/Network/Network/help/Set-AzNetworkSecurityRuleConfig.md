@@ -40,9 +40,9 @@ The **Set-AzNetworkSecurityRuleConfig** cmdlet updates a network security rule c
 
 ### Example 1: Change the access configuration in a network security rule
 ```powershell
-PS C:\>$nsg = Get-AzNetworkSecurityGroup -Name "NSG-FrontEnd" -ResourceGroupName "TestRG"
-PS C:\> $nsg | Get-AzNetworkSecurityRuleConfig -Name "rdp-rule"
-PS C:\> Set-AzNetworkSecurityRuleConfig -Name "rdp-rule" -NetworkSecurityGroup $nsg -Access "Deny"
+$nsg = Get-AzNetworkSecurityGroup -Name "NSG-FrontEnd" -ResourceGroupName "TestRG"
+$nsg | Get-AzNetworkSecurityRuleConfig -Name "rdp-rule"
+Set-AzNetworkSecurityRuleConfig -Name "rdp-rule" -NetworkSecurityGroup $nsg -Access "Deny"
 ```
 
 The first command gets the network security group named NSG-FrontEnd, and then stores it in the variable $nsg.
@@ -65,6 +65,16 @@ Updates a network security rule configuration for a network security group. (aut
 <!-- Aladdin Generated Example -->
 ```powershell
 Set-AzNetworkSecurityRuleConfig -Access Allow -Description 'Allow RDP' -DestinationAddressPrefix * -DestinationPortRange 3389 -Direction Inbound -Name 'rdp-rule' -NetworkSecurityGroup <PSNetworkSecurityGroup> -Priority 1 -Protocol Tcp -SourceAddressPrefix 'Internet' -SourcePortRange *
+```
+
+### Example 4
+
+Updates a network security rule configuration for a network security group (Source IP address)
+
+```powershell
+$nsg = Get-AzNetworkSecurityGroup -ResourceGroupName "MyResource" -Name "MyNsg"
+($nsg.SecurityRules | Where-Object {$_.Name -eq "RuleName"}).SourceAddressPrefix = ([System.String[]] @("xxx.xxx.xxx.xxx"))
+$nsg | Set-AzNetworkSecurityGroup | Get-AzNetworkSecurityRuleConfig -Name "RuleName"
 ```
 
 ## PARAMETERS

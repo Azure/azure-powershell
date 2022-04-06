@@ -65,18 +65,54 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).VaultName = (string) content.GetValueForProperty("VaultName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).VaultName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).Location, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).OperationId = (string) content.GetValueForProperty("OperationId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).OperationId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).BackupPolicyName = (string) content.GetValueForProperty("BackupPolicyName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).BackupPolicyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).BackupInstanceName = (string) content.GetValueForProperty("BackupInstanceName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).BackupInstanceName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).RecoveryPointId = (string) content.GetValueForProperty("RecoveryPointId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).RecoveryPointId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).JobId = (string) content.GetValueForProperty("JobId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).JobId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).ResourceGuardsName = (string) content.GetValueForProperty("ResourceGuardsName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).ResourceGuardsName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).RequestName = (string) content.GetValueForProperty("RequestName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).RequestName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).Id, global::System.Convert.ToString);
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceGroupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("VaultName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).VaultName = (string) content.GetValueForProperty("VaultName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).VaultName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("OperationId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).OperationId = (string) content.GetValueForProperty("OperationId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).OperationId, global::System.Convert.ToString);
+            }
+            if (content.Contains("BackupPolicyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).BackupPolicyName = (string) content.GetValueForProperty("BackupPolicyName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).BackupPolicyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("BackupInstanceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).BackupInstanceName = (string) content.GetValueForProperty("BackupInstanceName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).BackupInstanceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryPointId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).RecoveryPointId = (string) content.GetValueForProperty("RecoveryPointId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).RecoveryPointId, global::System.Convert.ToString);
+            }
+            if (content.Contains("JobId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).JobId = (string) content.GetValueForProperty("JobId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).JobId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceGuardsName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).ResourceGuardsName = (string) content.GetValueForProperty("ResourceGuardsName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).ResourceGuardsName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RequestName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).RequestName = (string) content.GetValueForProperty("RequestName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).RequestName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).Id, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -94,18 +130,54 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).VaultName = (string) content.GetValueForProperty("VaultName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).VaultName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).Location, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).OperationId = (string) content.GetValueForProperty("OperationId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).OperationId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).BackupPolicyName = (string) content.GetValueForProperty("BackupPolicyName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).BackupPolicyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).BackupInstanceName = (string) content.GetValueForProperty("BackupInstanceName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).BackupInstanceName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).RecoveryPointId = (string) content.GetValueForProperty("RecoveryPointId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).RecoveryPointId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).JobId = (string) content.GetValueForProperty("JobId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).JobId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).ResourceGuardsName = (string) content.GetValueForProperty("ResourceGuardsName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).ResourceGuardsName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).RequestName = (string) content.GetValueForProperty("RequestName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).RequestName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).Id, global::System.Convert.ToString);
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceGroupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("VaultName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).VaultName = (string) content.GetValueForProperty("VaultName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).VaultName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("OperationId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).OperationId = (string) content.GetValueForProperty("OperationId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).OperationId, global::System.Convert.ToString);
+            }
+            if (content.Contains("BackupPolicyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).BackupPolicyName = (string) content.GetValueForProperty("BackupPolicyName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).BackupPolicyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("BackupInstanceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).BackupInstanceName = (string) content.GetValueForProperty("BackupInstanceName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).BackupInstanceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryPointId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).RecoveryPointId = (string) content.GetValueForProperty("RecoveryPointId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).RecoveryPointId, global::System.Convert.ToString);
+            }
+            if (content.Contains("JobId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).JobId = (string) content.GetValueForProperty("JobId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).JobId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceGuardsName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).ResourceGuardsName = (string) content.GetValueForProperty("ResourceGuardsName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).ResourceGuardsName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RequestName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).RequestName = (string) content.GetValueForProperty("RequestName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).RequestName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).Id, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

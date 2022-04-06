@@ -36,25 +36,25 @@ Creates a Resource File for usage by `New-AzBatchTask`.
 ## EXAMPLES
 
 ### Example 1: Create a resource file from an HTTP URL pointing at a single file
-```
-PS C:\> $file = New-AzBatchResourceFile -HttpUrl "https://testacct.blob.core.windows.net/" -FilePath "file1"
-PS C:\> New-AzBatchTask -JobId "Job-000001" -Id "Task23" -CommandLine "cmd /c dir /s" -ResourceFiles $file -BatchContext $Context
+```powershell
+$file = New-AzBatchResourceFile -HttpUrl "https://testacct.blob.core.windows.net/" -FilePath "file1"
+New-AzBatchTask -JobId "Job-000001" -Id "Task23" -CommandLine "cmd /c dir /s" -ResourceFiles $file -BatchContext $Context
 ```
 
 Creates a `PSResourceFile` referencing an HTTP url.
 
 ### Example 2: Create a resource file from an Azure Storage container URL
-```
-PS C:\> $file = New-AzBatchResourceFile -StorageContainerUrl "https://testacct.blob.core.windows.net/mycontainer" -FilePath "myfolder"
-PS C:\> New-AzBatchTask -JobId "Job-000001" -Id "Task23" -CommandLine "cmd /c dir /s" -ResourceFiles $file -BatchContext $Context
+```powershell
+$file = New-AzBatchResourceFile -StorageContainerUrl "https://testacct.blob.core.windows.net/mycontainer" -FilePath "myfolder"
+New-AzBatchTask -JobId "Job-000001" -Id "Task23" -CommandLine "cmd /c dir /s" -ResourceFiles $file -BatchContext $Context
 ```
 
 Creates a `PSResourceFile` referencing an Azure Storage container URL. All files in the container will be downloaded to the specified folder.
 
 ### Example 3: Create a resource file from an Auto Storage container name
-```
-PS C:\> $file = New-AzBatchResourceFile -AutoStorageContainerName "mycontainer" -FilePath "myfolder"
-PS C:\> New-AzBatchTask -JobId "Job-000001" -Id "Task23" -CommandLine "cmd /c dir /s" -ResourceFiles $file -BatchContext $Context
+```powershell
+$file = New-AzBatchResourceFile -AutoStorageContainerName "mycontainer" -FilePath "myfolder"
+New-AzBatchTask -JobId "Job-000001" -Id "Task23" -CommandLine "cmd /c dir /s" -ResourceFiles $file -BatchContext $Context
 ```
 
 Creates a `PSResourceFile` referencing an Auto Storage container name. All files in the container will be downloaded to the specified folder.

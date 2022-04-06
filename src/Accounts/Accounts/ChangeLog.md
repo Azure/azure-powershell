@@ -19,6 +19,29 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.7.5
+* Added `SshCredentialFactory` to support get ssh credential of vm from msal.
+* Fixed the bug of cmdlet fails when -DefaultProfile is set to service principal login context. [#16617]
+* Fixed the issue that authorization does not work in Dogfood environment
+
+## Version 2.7.4
+* Changed target framework of AuthenticationAssemblyLoadContext to netcoreapp2.1 [#17428]
+
+## Version 2.7.3
+* Fixed the issue that authorization does not work in customized environment [#17157]
+* Enabled Continue Access Evaluation for MSGraph
+* Improved error message when login is blocked by AAD
+* Improved error message when silent reauthentication failed
+* Loaded System.Private.ServiceModel and System.ServiceModel.Primitives on Windows PowerShell [#17087]
+
+## Version 2.7.2
+* Removed legacy assembly System.Private.ServiceModel and System.ServiceModel.Primitives [#16063]
+
+## Version 2.7.1
+* Copied `ServicePrincipalSecret` and `CertificatePassword` from Az.Accounts buildin profile to customer set profile. [#16617]
+* Updated help message and help markdown for parameter `Tenant` of the cmdlet `Set-AzContext`. [#16515]
+* Fixed the issue that Azure PowerShell could not work in a workflow. [#16408]
 * Fixed the doubled Api Version in the URI of the underlying request issued by `Invoke-AzRestMethod`. [#16615]
 
 ## Version 2.7.0

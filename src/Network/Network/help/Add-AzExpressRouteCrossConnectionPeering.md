@@ -31,7 +31,7 @@ cmdlet to activate the configuration.
 ## EXAMPLES
 
 ### Example 1: Add a peer to an existing ExpressRoute cross connection
-```
+```powershell
 $cc = Get-AzExpressRouteCrossConnection -Name $CrossConnectionName -ResourceGroupName $rg
 $parameters = @{
     Name = 'AzurePrivatePeering'

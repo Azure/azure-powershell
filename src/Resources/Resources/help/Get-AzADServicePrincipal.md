@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resources-help.xml
 Module Name: Az.Resources
 online version: https://docs.microsoft.com/powershell/module/az.resources/get-azadserviceprincipal
 schema: 2.0.0
@@ -14,45 +14,45 @@ Lists entities from service principals or get entity from service principals by 
 
 ### EmptyParameterSet (Default)
 ```
-Get-AzADServicePrincipal [-Filter <String>] [-Orderby <String[]>] [-Search <String>] [-Select <String[]>]
- [-ConsistencyLevel <String>] [-AppendSelected] [-First <UInt64>] [-Skip <UInt64>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### ApplicationIdParameterSet
-```
-Get-AzADServicePrincipal -ApplicationId <Guid> [-Select <String[]>] [-AppendSelected] [-First <UInt64>]
- [-Skip <UInt64>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### ApplicationObjectParameterSet
-```
-Get-AzADServicePrincipal -ApplicationObject <IMicrosoftGraphApplication> [-Select <String[]>]
- [-AppendSelected] [-First <UInt64>] [-Skip <UInt64>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### DisplayNameParameterSet
-```
-Get-AzADServicePrincipal -DisplayName <String> [-Select <String[]>] [-AppendSelected] [-First <UInt64>]
- [-Skip <UInt64>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzADServicePrincipal [-Select <String[]>] [-Filter <String>] [-Orderby <String[]>] [-Search <String>]
+ [-ConsistencyLevel <String>] [-First <UInt64>] [-Skip <UInt64>] [-AppendSelected] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### ObjectIdParameterSet
 ```
-Get-AzADServicePrincipal -ObjectId <String> [-Select <String[]>] [-AppendSelected] [-First <UInt64>]
- [-Skip <UInt64>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzADServicePrincipal -ObjectId <String> [-Select <String[]>] [-First <UInt64>] [-Skip <UInt64>]
+ [-AppendSelected] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### SearchStringParameterSet
 ```
-Get-AzADServicePrincipal -DisplayNameBeginsWith <String> [-Select <String[]>] [-AppendSelected]
- [-First <UInt64>] [-Skip <UInt64>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzADServicePrincipal [-Select <String[]>] -DisplayNameBeginsWith <String> [-First <UInt64>]
+ [-Skip <UInt64>] [-AppendSelected] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### DisplayNameParameterSet
+```
+Get-AzADServicePrincipal [-Select <String[]>] -DisplayName <String> [-First <UInt64>] [-Skip <UInt64>]
+ [-AppendSelected] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ApplicationIdParameterSet
+```
+Get-AzADServicePrincipal [-Select <String[]>] -ApplicationId <Guid> [-First <UInt64>] [-Skip <UInt64>]
+ [-AppendSelected] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ApplicationObjectParameterSet
+```
+Get-AzADServicePrincipal [-Select <String[]>] -ApplicationObject <IMicrosoftGraphApplication> [-First <UInt64>]
+ [-Skip <UInt64>] [-AppendSelected] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### SPNParameterSet
 ```
-Get-AzADServicePrincipal -ServicePrincipalName <String> [-Select <String[]>] [-AppendSelected]
- [-First <UInt64>] [-Skip <UInt64>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzADServicePrincipal [-Select <String[]>] -ServicePrincipalName <String> [-First <UInt64>] [-Skip <UInt64>]
+ [-AppendSelected] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,35 +62,35 @@ Lists entities from service principals or get entity from service principals by 
 
 ### Example 1: Get service principal by display name
 ```powershell
-PS C:\> Get-AzADServicePrincipal -DisplayName $name
+Get-AzADServicePrincipal -DisplayName $name
 ```
 
 Get service principal by display name
 
 ### Example 2: Search for service principal display name starts with
 ```powershell
-PS C:\> Get-AzADServicePrincipal -DisplayNameStartsWith $prefix
+Get-AzADServicePrincipal -DisplayNameStartsWith $prefix
 ```
 
 Search for service principal display name starts with
 
 ### Example 3: List service principals
 ```powershell
-PS C:\> Get-AzADServicePrincipal -First 10 -Select Tags -AppendSelected
+Get-AzADServicePrincipal -First 10 -Select Tags -AppendSelected
 ```
 
 List first 10 service principals and append property 'Tags' after default properties: 'DisplayName', 'Id', 'DeletedDateTime', 'ServicePrincipalNames', 'AppId'
 
 ### Example 4: Get service principal by application Id
 ```powershell
-PS C:\> Get-AzADServicePrincipal -ApplicationId $appId
+Get-AzADServicePrincipal -ApplicationId $appId
 ```
 
 Get service principal by application Id
 
 ### Example 5: Get service principal by pipeline input
 ```powershell
-PS C:\> Get-AzADApplication -DisplayName $name | Get-AzADServicePrincipal
+Get-AzADApplication -DisplayName $name | Get-AzADServicePrincipal
 ```
 
 Get service principal by pipeline input
@@ -219,21 +219,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -First
-Gets only the first 'n' objects.
-
-```yaml
-Type: System.UInt64
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ObjectId
 key: id of servicePrincipal
 
@@ -311,6 +296,21 @@ Accept wildcard characters: False
 
 ### -Skip
 Ignores the first 'n' objects and then gets the remaining objects.
+
+```yaml
+Type: System.UInt64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -First
+Gets only the first 'n' objects.
 
 ```yaml
 Type: System.UInt64
@@ -474,3 +474,4 @@ APPLICATIONOBJECT <IMicrosoftGraphApplication>: The service principal object, co
 
 ## RELATED LINKS
 
+## RELATED LINKS

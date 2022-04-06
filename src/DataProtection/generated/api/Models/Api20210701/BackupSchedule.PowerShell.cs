@@ -66,8 +66,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupScheduleInternal)this).RepeatingTimeInterval = (string[]) content.GetValueForProperty("RepeatingTimeInterval",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupScheduleInternal)this).RepeatingTimeInterval, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupScheduleInternal)this).TimeZone = (string) content.GetValueForProperty("TimeZone",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupScheduleInternal)this).TimeZone, global::System.Convert.ToString);
+            if (content.Contains("RepeatingTimeInterval"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupScheduleInternal)this).RepeatingTimeInterval = (string[]) content.GetValueForProperty("RepeatingTimeInterval",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupScheduleInternal)this).RepeatingTimeInterval, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("TimeZone"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupScheduleInternal)this).TimeZone = (string) content.GetValueForProperty("TimeZone",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupScheduleInternal)this).TimeZone, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -85,8 +91,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupScheduleInternal)this).RepeatingTimeInterval = (string[]) content.GetValueForProperty("RepeatingTimeInterval",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupScheduleInternal)this).RepeatingTimeInterval, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupScheduleInternal)this).TimeZone = (string) content.GetValueForProperty("TimeZone",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupScheduleInternal)this).TimeZone, global::System.Convert.ToString);
+            if (content.Contains("RepeatingTimeInterval"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupScheduleInternal)this).RepeatingTimeInterval = (string[]) content.GetValueForProperty("RepeatingTimeInterval",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupScheduleInternal)this).RepeatingTimeInterval, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("TimeZone"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupScheduleInternal)this).TimeZone = (string) content.GetValueForProperty("TimeZone",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupScheduleInternal)this).TimeZone, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

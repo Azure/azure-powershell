@@ -20,11 +20,11 @@ Lists entities from groups or get entity from groups by key
 .Description
 Lists entities from groups or get entity from groups by key
 .Example
-PS C:\> Get-AzADGroup -DisplayName $gname
+Get-AzADGroup -DisplayName $gname
 .Example
-PS C:\> Get-AzADGroup -First 10
+Get-AzADGroup -First 10
 .Example
-PS C:\> Get-AzADGroup -ObjectId $id -Select groupTypes -AppendSelected
+Get-AzADGroup -ObjectId $id -Select groupTypes -AppendSelected
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup
@@ -172,10 +172,10 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            EmptyParameterSet = 'MSGraph.custom\Get-AzADGroup';
-            ObjectIdParameterSet = 'MSGraph.custom\Get-AzADGroup';
-            SearchStringParameterSet = 'MSGraph.custom\Get-AzADGroup';
-            DisplayNameParameterSet = 'MSGraph.custom\Get-AzADGroup';
+            EmptyParameterSet = 'Az.MSGraph.custom\Get-AzADGroup';
+            ObjectIdParameterSet = 'Az.MSGraph.custom\Get-AzADGroup';
+            SearchStringParameterSet = 'Az.MSGraph.custom\Get-AzADGroup';
+            DisplayNameParameterSet = 'Az.MSGraph.custom\Get-AzADGroup';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

@@ -24,9 +24,9 @@ The **Set-AzApplicationGatewayTrustedClientCertificate** cmdlet modifies the tru
 
 ### Example 1
 ```powershell
-PS C:\> $gw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $resgpName
-PS C:\> $gw = Set-AzApplicationGatewayTrustedClientCertificate -ApplicationGateway $gw -Name $certName --CertificateFile ".\clientCAUpdated.cer"
-PS C:\> $gw = Set-AzApplicationGateway -ApplicationGateway $gw
+$gw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $resgpName
+$gw = Set-AzApplicationGatewayTrustedClientCertificate -ApplicationGateway $gw -Name $certName --CertificateFile ".\clientCAUpdated.cer"
+$gw = Set-AzApplicationGateway -ApplicationGateway $gw
 ```
 
 Above example scenarios shows how to update an existing trusted client CA certificate chain object. The first command gets an application gateway and stores it in the $gw variable. The second command modifies the existing trusted client CA certificate chain object with a new CA certificate chain file. The third command updates the application gateway on Azure.

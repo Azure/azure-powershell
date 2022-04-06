@@ -125,6 +125,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
         public override void ExecuteCmdlet()
         {
             if (String.IsNullOrEmpty(Name)) return;
+
+            // when user is using oauth credential, the current code uses track 2 sdk, which is why this needs to be blocked here.
+            // reimplement when we deprecate legacy table sdk, probably by adding a new AccountKey cmdlet parameter.
+            if (this.Channel.IsTokenCredential)
+            {
+                throw new ArgumentException("Create Shared Access Signature is not supported while using OAuth.");
+            }
+
             CloudTable table = Channel.GetTableReference(Name);
             SharedAccessTablePolicy policy = new SharedAccessTablePolicy();
             bool shouldSetExpiryTime = SasTokenHelper.ValidateTableAccessPolicy(Channel, table.Name, policy, accessPolicyIdentifier);

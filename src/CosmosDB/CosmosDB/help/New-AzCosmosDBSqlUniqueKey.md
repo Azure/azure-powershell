@@ -23,8 +23,10 @@ The **New-AzCosmosDBSqlUniqueKey** cmdlet creates a new object of type PSUniqueK
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCosmosDBSqlUniqueKey -Path {path}
+New-AzCosmosDBSqlUniqueKey -Path {path}
+```
 
+```output
 Path
 ----
 {path}

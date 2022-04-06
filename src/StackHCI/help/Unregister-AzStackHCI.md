@@ -29,7 +29,10 @@ The registered information available on the cluster is used to unregister the cl
 
 ### EXAMPLE 1
 ```powershell
-C:\PS\>Unregister-AzStackHCI
+Unregister-AzStackHCI
+```
+
+```output
 Result: Success
 ```
 
@@ -37,7 +40,10 @@ Invoking on one of the cluster node
 
 ### EXAMPLE 2
 ```powershell
-C:\PS\>Unregister-AzStackHCI -ComputerName ClusterNode1
+Unregister-AzStackHCI -ComputerName ClusterNode1
+```
+
+```output
 Result: Success
 ```
 
@@ -45,7 +51,10 @@ Invoking from the management node
 
 ### EXAMPLE 3
 ```powershell
-C:\PS\>Unregister-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ArmAccessToken etyer..ere= -GraphAccessToken acyee..rerrer -AccountId user1@corp1.com -ResourceName DemoHCICluster3 -ResourceGroupName DemoHCIRG -Confirm:$False
+Unregister-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ArmAccessToken etyer..ere= -GraphAccessToken acyee..rerrer -AccountId user1@corp1.com -ResourceName DemoHCICluster3 -ResourceGroupName DemoHCIRG -Confirm:$False
+```
+
+```output
 Result: Success
 ```
 
@@ -53,7 +62,10 @@ Invoking from WAC
 
 ### EXAMPLE 4
 ```powershell
-C:\PS\>Unregister-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ResourceName HciCluster1 -TenantId "c31c0dbb-ce27-4c78-ad26-a5f717c14557" -ResourceGroupName HciClusterRG -ArmAccessToken eerrer..ere= -GraphAccessToken acee..rerrer -AccountId user1@corp1.com -EnvironmentName AzureCloud -ComputerName node1hci -Credential Get-Credential
+Unregister-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ResourceName HciCluster1 -TenantId "c31c0dbb-ce27-4c78-ad26-a5f717c14557" -ResourceGroupName HciClusterRG -ArmAccessToken eerrer..ere= -GraphAccessToken acee..rerrer -AccountId user1@corp1.com -EnvironmentName AzureCloud -ComputerName node1hci -Credential Get-Credential
+```
+
+```output
 Result: Success
 ```
 

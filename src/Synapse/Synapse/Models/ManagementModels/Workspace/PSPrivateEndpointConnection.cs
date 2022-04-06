@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 {
     public class PSPrivateEndpointConnection : PSSynapseProxyResource
     {
-
         public PSPrivateEndpointConnection(PrivateEndpointConnection e)
             : base(e?.Id, e?.Name, e?.Type)
         {

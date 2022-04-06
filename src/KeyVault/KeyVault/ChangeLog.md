@@ -19,6 +19,25 @@
 -->
 ## Upcoming Release
 
+## Version 4.3.1
+* Fixed a bug to continue visiting `NextPageLink` when listing key vaults from ARM API
+ 
+## Version 4.3.0
+* `New-AzKeyVaultManagedHsm`: supported specifying how long a deleted managed hsm is retained by `SoftDeleteRetentionInDays` and enabling purge protection by `EnablePurgeProtection`
+* `Update-AzKeyVaultManagedHsm`: supported enabling purge protection by `EnablePurgeProtection`
+* `Get-AzKeyVaultManagedHsm`: Supported getting or listing deleted managed HSM(s)
+* `Remove-AzKeyVaultManagedHsm`: Supported purging a specified deleted managed HSM
+
+## Version 4.2.1
+* Improved the error message of Az.KeyVault.Extension [#16798]
+* Added default access policies for Key Vault key as "All but purge"
+* Absorbed KeyOps from parameter when importing key from certificate on managed HSM [#16773]
+* Fixed a bug when updating key operations on managed HSM [#16774]
+* Fixed the issue when importing no-password certificate [#16742]
+
+## Version 4.2.0
+* Added cmdlets: `Invoke-AzKeyVaultKeyRotation`, `Get-AzKeyVaultKeyRotationPolicy` and `Set-AzKeyVaultKeyRotationPolicy`
+
 ## Version 4.1.0
 * [Breaking Change] Renamed properties of `PSKeyVaultPermission` type to follow the pattern of Azure RBAC.
 * Migrated AAD Graph API to MSGraph API.

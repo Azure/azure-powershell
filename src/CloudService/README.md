@@ -47,12 +47,13 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 7b19bbd8ee63fa724edf5c780b63ae038312d2b1
+branch: b69b3fa5c26c94aa6efe6dadb76f599c204f297b
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  # - $(this-folder)/resources/CloudService.json
   - $(repo)/specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json
+  - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2021-03-01/cloudServiceNetworkInterface.json
+  - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2021-03-01/cloudServicePublicIpAddress.json
 
 title: CloudService
 module-version: 0.1.0
@@ -176,6 +177,36 @@ directive:
       verb: Switch
     hide: true
 
+  # 1. Fix the issue of naming in cloudServiceNetworkInterface.json
+  # 2. Merge the operation of roleInstances and cloudServices into one cmdlet
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/networkInterfaces"].get.operationId
+    transform: >-
+      return "NetworkInterfaces_ListByCloudServiceRoleInstance"
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/networkInterfaces"].get.operationId
+    transform: >-
+      return "NetworkInterfaces_ListByCloudService"
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/networkInterfaces/{networkInterfaceName}"].get.operationId
+    transform: >-
+      return "NetworkInterfaces_GetByCloudService"
+  
+  # 1. Fix the issue of naming in cloudServicePublicIpAddress.json
+  # 2. Merge the operation of roleInstances and cloudServices into one cmdlet
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/publicipaddresses"].get.operationId
+    transform: >-
+      return "PublicIPAddresses_ListByCloudService"
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/networkInterfaces/{networkInterfaceName}/ipconfigurations/{ipConfigurationName}/publicipaddresses"].get.operationId
+    transform: >-
+      return "PublicIPAddresses_ListByCloudServiceRoleInstance"
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/networkInterfaces/{networkInterfaceName}/ipconfigurations/{ipConfigurationName}/publicipaddresses/{publicIpAddressName}"].get.operationId
+    transform: >-
+      return "PublicIPAddresses_GetByCloudService"
+
   - from: source-file-csharp
     where: $
     transform: $ = $.replace('{_frontendIPConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonArray>("frontendIPConfigurations"), out var __jsonFrontendIPConfigurations) ? If( __jsonFrontendIPConfigurations as Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ILoadBalancerFrontendIPConfiguration[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ILoadBalancerFrontendIPConfiguration) (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.LoadBalancerFrontendIPConfiguration.FromJson(__u) )) ))() :' + ' null' + ' :' + ' FrontendIPConfiguration;}', 'var frontendIpConfigurationJsonArray = json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonArray>("frontendIpConfigurations") as Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonArray;\n\t\t\t_frontendIPConfiguration = global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(frontendIpConfigurationJsonArray, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ILoadBalancerFrontendIPConfiguration) (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.LoadBalancerFrontendIPConfiguration.FromJson(__u) )));');
@@ -188,6 +219,9 @@ directive:
   - from: source-file-csharp
     where: $
     transform: $ = $.replace('if (content.EndsWith("=="))','if (!(content.Contains("{") || content.Contains("[")))')
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('public static Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support.SecurityRuleProtocol = @"*";', 'public static Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support.SecurityRuleProtocol All = @"*";')
 
   # - from: source-file-csharp
   #   where: 

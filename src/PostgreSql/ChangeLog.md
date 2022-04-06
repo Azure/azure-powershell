@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.0
+* Added parameter PublicNetworkAccess for PostgreSQL single server related cmdlets [#17263]
+
+## Version 1.0.0
+* General availability of Az.PostgreSql
+
 ## Version 0.8.0
 * Removed `Location` in `Restore-AzPostgreSqlFlexibleServer`
 * Minor fixes for `Get-AzPostgreSqlFlexibleServerLocationBasedCapability`, `Test-AzPostgreSqlFlexibleServerConnect` and `New-AzPostgreSqlFlexibleServer`

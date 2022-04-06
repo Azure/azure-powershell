@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
 online version: https://docs.microsoft.com/powershell/module/az.iothub/new-aziothub
@@ -25,17 +25,17 @@ You can create the IotHub with either the default properties or specify the inpu
 ## EXAMPLES
 
 ### Example 1 Create a new IotHub with default properties
-```
-PS C:\> $tags = @{}
-PS C:\> $tags.Add('key1','value1')
-PS C:\> New-AzIotHub -ResourceGroupName "myresourcegroup" -Name "myiothub" -SkuName "S1" -Units 1 -Location "northeurope" -Tag $tags
+```powershell
+$tags = @{}
+$tags.Add('key1','value1')
+New-AzIotHub -ResourceGroupName "myresourcegroup" -Name "myiothub" -SkuName "S1" -Units 1 -Location "northeurope" -Tag $tags
 ```
 
 Creates a new IotHub named "myiothub" of the sku "S1", capacity 1 and location "northeurope" included with Tags.
 
 ### Example 2 Create a new IotHub with the MaxDeliveryCount of the CloudToDevice Queue set to 20
-```
-PS C:\> New-AzIotHub -ResourceGroupName "myresourcegroup" -Name "myiothub" -SkuName "S1" -Units 1 -Location "northeurope" -Properties $properties
+```powershell
+New-AzIotHub -ResourceGroupName "myresourcegroup" -Name "myiothub" -SkuName "S1" -Units 1 -Location "northeurope" -Properties $properties
 ```
 
 Creates a new IotHub named "myiothub" of the sku "S1", capacity 1 and location "northeurope" with advanced input properties represented by $properties.

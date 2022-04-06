@@ -23,6 +23,7 @@ using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Groups.Models;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
+using ServicePrincipal = Microsoft.Azure.Graph.RBAC.Version1_6.Models.ServicePrincipal;
 
 namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Services
 {
@@ -55,7 +56,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
             {
                 if (_microsoftGraphClient == null)
                 {
-                    _microsoftGraphClient = AzureSession.Instance.ClientFactory.CreateArmClient<MicrosoftGraphClient>(Context, AzureEnvironment.Endpoint.Graph);
+                    _microsoftGraphClient = AzureSession.Instance.ClientFactory.CreateArmClient<MicrosoftGraphClient>(Context, AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl);
                     _microsoftGraphClient.TenantID = Context.Tenant.Id;
                 }
                 return _microsoftGraphClient;
@@ -316,7 +317,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         {
             var tenantIdStr = Context.Tenant.Id.ToString();
             string adTenant = Context.Environment.GetEndpoint(AzureEnvironment.Endpoint.AdTenant);
-            string graph = Context.Environment.GetEndpoint(AzureEnvironment.Endpoint.Graph);
+            string graph = Context.Environment.GetEndpoint(AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl);
             var tenantIdGuid = Guid.Empty;
 
             if (string.IsNullOrWhiteSpace(tenantIdStr) || !Guid.TryParse(tenantIdStr, out tenantIdGuid))

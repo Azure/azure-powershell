@@ -27,8 +27,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         private const int CopySASLifeTimeInMinutes = 7 * 24 * 60;
 
         // The Oauth delegate SAS expire time must be in 7 days. 
-        // As client and server has time difference, to make it more stable, the time will be 1 hour less than 7 days.
-        private const int CopySASLifeTimeInMinutesOauth = 7 * 24 * 60 - 60;
+        // As client and server has time difference, to make it more stable, the time will be 2 hour less than 7 days.
+        private const int CopySASLifeTimeInMinutesOauth = 7 * 24 * 60 - 2 * 60;
 
         internal static Uri GenerateUriWithCredentials(
             this CloudFile file)

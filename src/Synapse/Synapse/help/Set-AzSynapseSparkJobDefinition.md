@@ -33,7 +33,7 @@ The **Set-AzSynapseSparkJobDefinition** cmdlet creates a Spark job definition in
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzSynapseSparkJobDefinition -WorkspaceName ContosoWorkspace -Name ContosoSparkJobDefinition -DefinitionFile "C:\sparkJobDefinition.json"
+Set-AzSynapseSparkJobDefinition -WorkspaceName ContosoWorkspace -Name ContosoSparkJobDefinition -DefinitionFile "C:\sparkJobDefinition.json"
 ```
 
 This command creates a Spark job definition named ContosoSparkJobDefinition in the workspace named ContosoWorkspace.
@@ -41,7 +41,7 @@ The command bases the Spark job definition on information in the sparkJobDefinit
 
 ### Example 2
 ```powershell
-PS C:\> Set-AzSynapseSparkJobDefinition -WorkspaceName ContosoWorkspace -Name ContosoSparkJobDefinition -DefinitionFile "C:\sparkJobDefinition.json" -FolderPath ContosoFolder
+Set-AzSynapseSparkJobDefinition -WorkspaceName ContosoWorkspace -Name ContosoSparkJobDefinition -DefinitionFile "C:\sparkJobDefinition.json" -FolderPath ContosoFolder
 ```
 
 This command creates a Spark job definition named ContosoSparkJobDefinition and specify a folder path ContosoFolder where the spark job definition will be placed in the workspace named ContosoWorkspace.
@@ -49,7 +49,7 @@ The command bases the Spark job definition on information in the sparkJobDefinit
 
 ### Example 3
 ```powershell
-PS C:\> Set-AzSynapseSparkJobDefinition -WorkspaceName ContosoWorkspace -Name ContosoSparkJobDefinition -DefinitionFile "C:\sparkJobDefinition.json" -FolderPath ContosoFolder/SubFolder
+Set-AzSynapseSparkJobDefinition -WorkspaceName ContosoWorkspace -Name ContosoSparkJobDefinition -DefinitionFile "C:\sparkJobDefinition.json" -FolderPath ContosoFolder/SubFolder
 ```
 
 This command creates a Spark job definition named ContosoSparkJobDefinition and specify a multi-level folder path ContosoFolder/SubFolder where the spark job definition will be placed in the workspace named ContosoWorkspace.
@@ -57,8 +57,8 @@ The command bases the Spark job definition on information in the sparkJobDefinit
 
 ### Example 4
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Set-AzSynapseSparkJobDefinition -Name ContosoSparkJobDefinition -DefinitionFile "C:\sparkJobDefinition.json"
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Set-AzSynapseSparkJobDefinition -Name ContosoSparkJobDefinition -DefinitionFile "C:\sparkJobDefinition.json"
 ```
 
 This command creates a Spark job definition named ContosoSparkJobDefinition in the workspace named ContosoWorkspace through pipeline.

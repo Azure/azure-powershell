@@ -38,9 +38,9 @@ The **Get-AzHDInsightClusterAutoscaleConfiguration** cmdlet gets the autoscale c
 
 ### Example 1: Get the autoscale configuration of HDInsight cluster.
 ```powershell
-PS C:\> $clusterResourceGroup="group"
-PS C:\> $clusterName="MyCluster"
-PS C:\> Get-AzHDInsightClusterAutoscaleConfiguration -ResourceGroupName $clusterResourceGroup -ClusterName $clusterName
+$clusterResourceGroup="group"
+$clusterName="MyCluster"
+Get-AzHDInsightClusterAutoscaleConfiguration -ResourceGroupName $clusterResourceGroup -ClusterName $clusterName
 ```
 
 This command gets the autoscale configuration of HDInsight cluster.

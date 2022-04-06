@@ -23,8 +23,10 @@ Gets the list of WAF managed rule set definitions to use as reference
 
 ### Example 1
 ```powershell
-PS C:> Get-AzFrontDoorWafManagedRuleSetDefinition
+Get-AzFrontDoorWafManagedRuleSetDefinition
+```
 
+```output
 ProvisioningState RuleSetType                 RuleSetVersion RuleGroups
 ----------------- -----------                 -------------- ----------
 Succeeded         DefaultRuleSet              1.0            {PROTOCOL-ATTACK, LFI, RFI, RCE...}
@@ -33,7 +35,7 @@ Succeeded         DefaultRuleSet              preview-0.1    {LFI, RFI, RCE, PHP
 Succeeded         BotProtection               preview-0.1    {KnownBadBots}
 ```
 
-{{ Add example description here }}
+Get WAF managed rule set definitions.
 
 ## PARAMETERS
 

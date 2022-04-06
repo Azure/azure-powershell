@@ -43,7 +43,7 @@ The Remove-AzSqlVMGroup cmdlet deletes a sql virtual machine group.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSqlVMGroup -ResourceGroupName "ResourceGroup01" -Name "test-group"
+Remove-AzSqlVMGroup -ResourceGroupName "ResourceGroup01" -Name "test-group"
 ```
 
 Deletes the Azure SQL virtual machine group "test-group" in the resource group ResourceGroup01.

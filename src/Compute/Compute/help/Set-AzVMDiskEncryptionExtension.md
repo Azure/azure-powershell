@@ -70,7 +70,7 @@ Windows: The **VolumeType** parameter may be omitted, in which case the operatio
 ## EXAMPLES
 
 ### Example 1: Enable encryption
-```
+```powershell
 $RGName = "MyResourceGroup"
 $VMName = "MyTestVM"
 $VaultName= "MyKeyVault"
@@ -84,7 +84,7 @@ Set-AzVMDiskEncryptionExtension -ResourceGroupName $RGName -VMName $VMName -Disk
 This example enables encryption on a VM without specifying AD credentials.
 
 ### Example 2: Enable encryption with pipelined input
-```
+```powershell
 $params = New-Object PSObject -Property @{
     ResourceGroupName = "[resource-group-name]"
     VMName = "[vm-name]"
@@ -101,7 +101,7 @@ $params | Set-AzVmDiskEncryptionExtension
 This example sends parameters using pipelined input to enable encryption on a VM, without specifying AD credentials.
 
 ### Example 3: Enable encryption using Azure AD Client ID and Client Secret
-```
+```powershell
 $RGName = "MyResourceGroup"
 $VMName = "MyTestVM"
 $AADClientID = "<clientID of your Azure AD app>"
@@ -117,7 +117,7 @@ Set-AzVMDiskEncryptionExtension -ResourceGroupName $RGName -VMName $VMName -AadC
 This example uses Azure AD client ID and client secret to enable encryption on a VM.
 
 ### Example 4: Enable encryption using Azure AD client ID and client certification thumbprint
-```
+```powershell
 $RGName = "MyResourceGroup"
 $VMName = "MyTestVM"
 #The KeyVault must have enabledForDiskEncryption property set on it
@@ -170,7 +170,7 @@ Set-AzVMDiskEncryptionExtension -ResourceGroupName $RGName -VMName $VMName -AadC
 This example uses Azure AD client ID and client certification thumbprints to enable encryption on a VM.
 
 ### Example 5: Enable encryption using Azure AD client ID, client secret, and wrap disk encryption key by using key encryption key
-```
+```powershell
 $RGName = "MyResourceGroup"
 $VMName = "MyTestVM"
 
@@ -193,7 +193,7 @@ Set-AzVMDiskEncryptionExtension -ResourceGroupName $RGName -VMName $VMName -AadC
 This example uses Azure AD client ID and client secret to enable encryption on a VM, and wraps the disk encryption key using a key encryption key.
 
 ### Example 6: Enable encryption using Azure AD client ID, client cert thumbprint, and wrap disk encryptionkey by using key encryption key
-```
+```powershell
 $RGName = "MyResourceGroup"
 $VMName = "MyTestVM"
 #The KeyVault must have enabledForDiskEncryption property set on it

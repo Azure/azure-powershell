@@ -24,7 +24,7 @@ Removes a virtual network peering.
 ## EXAMPLES
 
 ### Example 1: Remove a virtual network peering
-```
+```powershell
 # Remove the virtual network peering named myVnet1TomyVnet2 located in myVnet1 in the resource group named myResourceGroup.
 
 Remove-AzVirtualNetworkPeering -Name "myVnet1TomyVnet2" -VirtualNetworkName "myVnet" -ResourceGroupName "myResourceGroup"

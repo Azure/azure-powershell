@@ -13,23 +13,18 @@
 # ----------------------------------------------------------------------------------
 
 function Test-ServerTrustGroup()
-{
+{	
+	$params = Get-DefaultManagedInstanceParameters
 	$stgName = "stg-ps-test"
-	$location = "westeurope"
+	$location = $params.location
 	
 	# Setup
-	$rg = Create-ResourceGroupForTest $location
-	$vnetName = "cl_initial"
-	$subnetName = "Cool" 
-
-	# Setup VNET
-	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $location $rg.ResourceGroupName
-	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
+	$rg = Create-ResourceGroupForTest
 
 	# Setup Managed Instances
-	$managedInstance1 = Create-ManagedInstanceForTest $rg $subnetId
-	$managedInstance2 = Create-ManagedInstanceForTest $rg $subnetId
-	$managedInstance3 = Create-ManagedInstanceForTest $rg $subnetId
+	$managedInstance1 = Create-ManagedInstanceForTest $rg
+	$managedInstance2 = Create-ManagedInstanceForTest $rg
+	$managedInstance3 = Create-ManagedInstanceForTest $rg
 
 	try
 	{

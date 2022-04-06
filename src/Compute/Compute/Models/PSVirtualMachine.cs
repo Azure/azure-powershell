@@ -138,5 +138,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
         public string UserData { get; set; }
         
         public PSApplicationProfile ApplicationProfile { get; set; }
+
+        public int? PlatformFaultDomain { get; set; }
     }
 }

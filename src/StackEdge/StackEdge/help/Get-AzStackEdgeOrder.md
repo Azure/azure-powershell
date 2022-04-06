@@ -36,7 +36,10 @@ The **Get-AzStackEdgeOrder** cmdlet gets the order details for a Stack Edge devi
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzStackEdgeOrder -ResourceGroupName resourceGroupName -DeviceName deviceName
+Get-AzStackEdgeOrder -ResourceGroupName resourceGroupName -DeviceName deviceName
+```
+
+```output
 DeviceName  ResourceGroupName Status    UpdatedDatetime
 ----------  ----------------- ------    ---------------
 deviceName  resourceGroupName Untracked 01-Jan-01 12:00:00 AM

@@ -24,9 +24,9 @@ The **Get-AzApplicationGatewayWebApplicationFirewallConfiguration** cmdlet gets 
 ## EXAMPLES
 
 ### Example 1: Get an application gateway web application firewall configuration
-```
-PS C:\>$AppGW = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> $FirewallConfig = Get-AzApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGateway $AppGW
+```powershell
+$AppGW = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+$FirewallConfig = Get-AzApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGateway $AppGW
 ```
 
 The first command gets the application gateway named ApplicationGateway01, and then stores it in the $AppGW variable.

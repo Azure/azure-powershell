@@ -107,5 +107,5 @@ function Get-EnvironmentCompleterResult
     $command = Get-Command -Name $CmdletName
     $environmentCompleterAttribute = $command.Parameters.$ParameterName.Attributes | Where-Object { $_.GetType() -eq [Microsoft.Azure.Commands.Profile.Common.EnvironmentCompleterAttribute]}
 
-    return $environmentCompleterAttribute.ScriptBlock.Invoke().CompletionText
+    return $environmentCompleterAttribute.CompleteArgument($CmdletName, $ParameterName, "", $null, $null).CompletionText
 }

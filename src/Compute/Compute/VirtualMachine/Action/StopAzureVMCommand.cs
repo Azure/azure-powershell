@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -28,10 +29,35 @@ namespace Microsoft.Azure.Commands.Compute
     [OutputType(typeof(PSComputeLongRunningOperation), typeof(PSAzureOperationResponse))]
     public class StopAzureVMCommand : VirtualMachineActionBaseCmdlet
     {
+        private const string ResourceGroupHibernateParamSet = "ResourceGroupHibernateParameterSet",
+                             IdHibernateParamSet = "IdHibernateParameterSet";
+
+        [Parameter(
+           Mandatory = true,
+           Position = 0,
+           ParameterSetName = ResourceGroupNameParameterSet,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource group name.")]
+        [Parameter(
+           Mandatory = true,
+           Position = 0,
+           ParameterSetName = ResourceGroupHibernateParamSet,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
+        public new string ResourceGroupName { get; set; }
+
         [Parameter(
            Mandatory = true,
            Position = 1,
            ParameterSetName = ResourceGroupNameParameterSet,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The virtual machine name.")]
+        [Parameter(
+           Mandatory = true,
+           Position = 1,
+           ParameterSetName = ResourceGroupHibernateParamSet,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The virtual machine name.")]
         [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
@@ -46,6 +72,11 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             Mandatory = false,
+            ParameterSetName = ResourceGroupNameParameterSet,
+            HelpMessage = "To keep the VM provisioned.")]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = IdParameterSet,
             HelpMessage = "To keep the VM provisioned.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter StayProvisioned { get; set; }
@@ -55,8 +86,25 @@ namespace Microsoft.Azure.Commands.Compute
         
         [Parameter(
             Mandatory = false,
+            ParameterSetName = ResourceGroupNameParameterSet,
+            HelpMessage = "To request non-graceful VM shutdown when keeping the VM provisioned.")]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = IdParameterSet,
             HelpMessage = "To request non-graceful VM shutdown when keeping the VM provisioned.")]
         public SwitchParameter SkipShutdown { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = ResourceGroupHibernateParamSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Optional parameter to hibernate a virtual machine. (Feature in Preview)")]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = IdHibernateParamSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Optional parameter to hibernate a virtual machine. (Feature in Preview)")]
+        public SwitchParameter Hibernate { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -85,6 +133,17 @@ namespace Microsoft.Azure.Commands.Compute
                         else 
                         {
                             op = this.VirtualMachineClient.PowerOffWithHttpMessagesAsync(this.ResourceGroupName, this.Name, skipShutdown, null, CancellationToken.None).GetAwaiter().GetResult();
+                        }
+                    }
+                    else if (this.IsParameterBound(c => c.Hibernate) && this.Hibernate)
+                    {
+                        if (NoWait.IsPresent)
+                        {
+                            op = this.VirtualMachineClient.BeginDeallocateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, this.Hibernate, null, CancellationToken.None).GetAwaiter().GetResult();
+                        }
+                        else
+                        {
+                            op = this.VirtualMachineClient.DeallocateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, this.Hibernate, null, CancellationToken.None).GetAwaiter().GetResult();
                         }
                     }
                     else

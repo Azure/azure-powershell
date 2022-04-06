@@ -48,8 +48,8 @@ The Start-AzNetworkWatcherConnectionMonitor cmdlet starts the specified connecti
 ## EXAMPLES
 
 ### Example 1: Start a connection monitor
-```
-PS C:\> Start-AzNetworkWatcherConnectionMonitor -NetworkWatcherName NetworkWatcher_centraluseuap -ResourceGroupName NetworkWatcherRG -Name cm
+```powershell
+Start-AzNetworkWatcherConnectionMonitor -NetworkWatcherName NetworkWatcher_centraluseuap -ResourceGroupName NetworkWatcherRG -Name cm
 ```
 
 In this example we start connection monitor specified by name and network watcher

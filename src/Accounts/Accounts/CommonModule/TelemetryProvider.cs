@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Commands.Common
                 CommandName = invocationInfo?.MyCommand?.Name,
                 ModuleVersion = TrimModuleVersion(invocationInfo?.MyCommand?.Module?.Version),
                 ModuleName = TrimModuleName(invocationInfo?.MyCommand?.ModuleName),
-                SessionId = correlationId,
+                SessionId = MetricHelper.SessionId,
                 ParameterSetName = parameterSetName,
                 InvocationName = invocationInfo?.InvocationName,
                 InputFromPipeline = invocationInfo?.PipelineLength > 0,

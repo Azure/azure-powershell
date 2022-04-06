@@ -24,9 +24,9 @@ The **Get-AzApplicationGatewaySku** cmdlet gets the stock keeping unit (SKU) of 
 ## EXAMPLES
 
 ### Example 1: Get an application gateway SKU
-```
-PS C:\>$AppGW = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> $SKU = Get-AzApplicationGatewaySku -ApplicationGateway $AppGW
+```powershell
+$AppGW = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+$SKU = Get-AzApplicationGatewaySku -ApplicationGateway $AppGW
 ```
 
 The first command gets the Application Gateway named ApplicationGateway01 and stores the result in the variable named $AppGW.

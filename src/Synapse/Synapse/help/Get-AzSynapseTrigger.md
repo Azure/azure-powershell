@@ -31,22 +31,22 @@ The **Get-AzSynapseTrigger** cmdlet gets information about triggers in a workspa
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSynapseTrigger -WorkspaceName ContosoWorkspace
+Get-AzSynapseTrigger -WorkspaceName ContosoWorkspace
 ```
 
 Gets a list of all triggers that have been created in the workspace ContosoWorkspace.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzSynapseTrigger -WorkspaceName ContosoWorkspace -Name ContosoTrigger
+Get-AzSynapseTrigger -WorkspaceName ContosoWorkspace -Name ContosoTrigger
 ```
 
 Gets a single trigger called ContosoTrigger in the workspace ContosoWorkspace.
 
 ### Example 3
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Get-AzSynapseTrigger -Name ContosoTrigger
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Get-AzSynapseTrigger -Name ContosoTrigger
 ```
 
 Gets a single trigger called ContosoTrigger in the workspace ContosoWorkspace through pipeline.

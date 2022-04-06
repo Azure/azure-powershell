@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
 online version: https://docs.microsoft.com/powershell/module/az.iothub/get-aziothubkey
@@ -31,15 +31,15 @@ You can either list all Keys or filter the list by a specific Key Name.
 ## EXAMPLES
 
 ### Example 1 Get all Keys
-```
-PS C:\> Get-AzIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub"
+```powershell
+Get-AzIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub"
 ```
 
 Gets all the Keys for the IotHub named "myiothub"
 
 ### Example 2 Get information for a specific Key
-```
-PS C:\> Get-AzIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "iothubowner"
+```powershell
+Get-AzIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "iothubowner"
 ```
 
 Gets the information for a key named "iothubowner" for the IotHub named "myiothub"

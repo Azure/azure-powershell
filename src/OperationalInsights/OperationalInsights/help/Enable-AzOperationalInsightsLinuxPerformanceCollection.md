@@ -30,6 +30,22 @@ The **Enable-AzOperationalInsightsLinuxPerformanceCollection** cmdlet starts col
 
 ## EXAMPLES
 
+### Example 1
+```powershell
+Enable-AzOperationalInsightsLinuxPerformanceCollection -ResourceGroupName test-rg -WorkspaceName OperationalInsight
+```
+
+```output
+Name              : DataSource_LinuxPerformanceCollection
+ResourceGroupName : test-rg
+WorkspaceName     : OperationalInsight
+ResourceId        : /subscriptions/xxxx-xxxx-xxxx-xxxx-xxxx/resourceGroups/test-rg/providers/Microsoft.OperationalInsights/wo
+                    rkspaces/OperationalInsight/datasources/DataSource_LinuxPerformanceCollection
+Kind              : LinuxPerformanceCollection
+Properties        : {"state":"Enabled"}
+```
+Starts collection of performance counters from connected Linux computers in a workspace.
+
 ## PARAMETERS
 
 ### -DefaultProfile

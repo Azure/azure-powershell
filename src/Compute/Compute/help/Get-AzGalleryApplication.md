@@ -36,16 +36,14 @@ Retrieves information about a gallery Application Definition.
 
 ### Example 1: Get a Gallery Application in a Gallery
 ```powershell
-PS C:\> Get-AzGalleryApplication -ResourceGroupName $rgName -GalleryName $galleryName -name $galleryAppName
-
+Get-AzGalleryApplication -ResourceGroupName $rgName -GalleryName $galleryName -name $galleryAppName
 ```
 
 Retrieve a Gallery Application resource with the provided Resource Group, Gallery, and Gallery Application name.
 
 ### Example 2: Get all the Gallery Applications in a Gallery
 ```powershell
-PS C:\> Get-AzGalleryApplication -GalleryName $GalleryName -ResourceGroupName $rgName
-
+Get-AzGalleryApplication -GalleryName $GalleryName -ResourceGroupName $rgName
 ```
 
 Retrieve all the Gallery Application resources in the provided Resource Group and Gallery.
