@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-Added warning message for upcoming breaking change.
+ [Breaking change] Sample has been replaced by Examples in New-AzApiManagementOperation and Set-AzApiManagementOperation
 
 ## Version 2.3.1
 * Fixed a bug in `Get-AzApiManagementTenantGitAccess` cmdlet.
