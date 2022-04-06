@@ -14,16 +14,15 @@ Create or Update Database Migration resource.
 
 ```
 New-AzDataMigrationToSqlDb -ResourceGroupName <String> -SqlDbInstanceName <String> -TargetDbName <String>
- [-SubscriptionId <String>] [-Kind <ResourceType>] [-MigrationOperationId <String>]
- [-MigrationService <String>] [-ProvisioningError <String>] [-Scope <String>] [-SourceDatabaseName <String>]
- [-SourceSqlConnectionAuthentication <String>] [-SourceSqlConnectionDataSource <String>]
- [-SourceSqlConnectionEncryptConnection] [-SourceSqlConnectionPassword <String>]
- [-SourceSqlConnectionTrustServerCertificate] [-SourceSqlConnectionUserName <String>] [-TableList <String[]>]
- [-TargetDatabaseCollation <String>] [-TargetSqlConnectionAuthentication <String>]
- [-TargetSqlConnectionDataSource <String>] [-TargetSqlConnectionEncryptConnection]
- [-TargetSqlConnectionPassword <String>] [-TargetSqlConnectionTrustServerCertificate]
- [-TargetSqlConnectionUserName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-Kind <ResourceType>] [-MigrationService <String>] [-Scope <String>]
+ [-SourceDatabaseName <String>] [-SourceSqlConnectionAuthentication <String>]
+ [-SourceSqlConnectionDataSource <String>] [-SourceSqlConnectionEncryptConnection]
+ [-SourceSqlConnectionPassword <String>] [-SourceSqlConnectionTrustServerCertificate]
+ [-SourceSqlConnectionUserName <String>] [-TableList <String[]>] [-TargetDatabaseCollation <String>]
+ [-TargetSqlConnectionAuthentication <String>] [-TargetSqlConnectionDataSource <String>]
+ [-TargetSqlConnectionEncryptConnection] [-TargetSqlConnectionPassword <String>]
+ [-TargetSqlConnectionTrustServerCertificate] [-TargetSqlConnectionUserName <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,26 +32,26 @@ Create or Update Database Migration resource.
 
 ### Example 1: Start a Database Migration from the on-premise Source Sql Server to target Sql Db
 ```powershell
-New-AzDataMigrationToSqlDb -ResourceGroupName myRG -SqlDbInstanceName "mysqldb" -MigrationService  "/subscriptions/1111-2222-3333-4444/resourceGroups/myRG/providers/Microsoft.DataMigration/SqlMigrationServices/myDMS" -TargetSqlConnectionAuthentication "SqlAuthentication" -TargetSqlConnectionDataSource "mydb.windows.net" -TargetSqlConnectionPassword "pass" -TargetSqlConnectionUserName "user" -SourceSqlConnectionAuthentication "SqlAuthentication" -SourceSqlConnectionDataSource "xyz.MICROSOFT.COM" -SourceSqlConnectionUserName "user1" -SourceSqlConnectionPassword "password" -SourceDatabaseName "sourcedb" -TargetDbName "mydb1" -Scope  "/subscriptions/1111-2222-3333-4444/resourceGroups/myRG/providers/Microsoft.Sql/servers/mysqldb" 
+New-AzDataMigrationToSqlDb -ResourceGroupName myRG -SqlDbInstanceName "mysqldb" -MigrationService  "/subscriptions/1111-2222-3333-4444/resourceGroups/myRG/providers/Microsoft.DataMigration/SqlMigrationServices/myDMS" -TargetSqlConnectionAuthentication "SqlAuthentication" -TargetSqlConnectionDataSource "mydb.windows.net" -TargetSqlConnectionPassword "pass" -TargetSqlConnectionUserName "user" -SourceSqlConnectionAuthentication "SqlAuthentication" -SourceSqlConnectionDataSource "xyz.MICROSOFT.COM" -SourceSqlConnectionUserName "user1" -SourceSqlConnectionPassword "password" -SourceDatabaseName "sourcedb" -TargetDbName "mydb1" -Scope  "/subscriptions/1111-2222-3333-4444/resourceGroups/myRG/providers/Microsoft.Sql/servers/mysqldb"
 ```
 
 ```output
-Name       Kind  ProvisioningState MigrationStatus
-----       ----  ----------------- ---------------
-mydb1 SqlDb Succeeded         InProgress
+-Name       Kind  ProvisioningState MigrationStatus
+-----       ----  ----------------- ---------------
+-mydb1 SqlDb Succeeded         InProgress
 ```
 
-This command starts a Database Migration from the Source Sql Server to target SQL DB.
+Start a Database Migration from the on-premise Source Sql Server to target Sql Db
 
 ### Example 2: Start a Database Migration with some selcted tables from the on-premise Source Sql Server to target Sql Db
 ```powershell
-New-AzDataMigrationToSqlDb -ResourceGroupName myRG -SqlDbInstanceName "mysqldb" -MigrationService  "/subscriptions/1111-2222-3333-4444/resourceGroups/myRG/providers/Microsoft.DataMigration/SqlMigrationServices/myDMS" -TargetSqlConnectionAuthentication "SqlAuthentication" -TargetSqlConnectionDataSource "mydb.windows.net" -TargetSqlConnectionPassword "pass" -TargetSqlConnectionUserName "user" -SourceSqlConnectionAuthentication "SqlAuthentication" -SourceSqlConnectionDataSource "xyz.MICROSOFT.COM" -SourceSqlConnectionUserName "user1" -SourceSqlConnectionPassword "password" -SourceDatabaseName "sourcedb" -TargetDbName "mydb1" -Scope  "/subscriptions/1111-2222-3333-4444/resourceGroups/myRG/providers/Microsoft.Sql/servers/mysqldb"  -TableList "table_1"
+-New-AzDataMigrationToSqlDb -ResourceGroupName myRG -SqlDbInstanceName "mysqldb" -MigrationService  "/subscriptions/1111-2222-3333-4444/resourceGroups/myRG/providers/Microsoft.DataMigration/SqlMigrationServices/myDMS" -TargetSqlConnectionAuthentication "SqlAuthentication" -TargetSqlConnectionDataSource "mydb.windows.net" -TargetSqlConnectionPassword "pass" -TargetSqlConnectionUserName "user" -SourceSqlConnectionAuthentication "SqlAuthentication" -SourceSqlConnectionDataSource "xyz.MICROSOFT.COM" -SourceSqlConnectionUserName "user1" -SourceSqlConnectionPassword "password" -SourceDatabaseName "sourcedb" -TargetDbName "mydb1" -Scope  "/subscriptions/1111-2222-3333-4444/resourceGroups/myRG/providers/Microsoft.Sql/servers/mysqldb"  -TableList "table_1"
 ```
 
 ```output
-Name       Kind  ProvisioningState MigrationStatus
-----       ----  ----------------- ---------------
-mydb1 SqlDb Succeeded         InProgress
+-Name       Kind  ProvisioningState MigrationStatus
+-----       ----  ----------------- ---------------
+-mydb1 SqlDb Succeeded         InProgress
 ```
 
 Start a Database Migration with some selcted tables from the on-premise Source Sql Server to target Sql Db
@@ -104,21 +103,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MigrationOperationId
-ID tracking current migration operation.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -MigrationService
 Resource Id of the Migration Service.
 
@@ -154,21 +138,6 @@ Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProvisioningError
-Error message for migration provisioning failure, if any.
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 

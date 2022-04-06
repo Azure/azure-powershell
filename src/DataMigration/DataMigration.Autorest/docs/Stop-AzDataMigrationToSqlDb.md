@@ -14,7 +14,7 @@ Stop on going migration for the database.
 
 ```
 Stop-AzDataMigrationToSqlDb -ResourceGroupName <String> -SqlDbInstanceName <String> -TargetDbName <String>
- [-SubscriptionId <String>] [-MigrationOperationId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -MigrationOperationId <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -79,7 +79,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

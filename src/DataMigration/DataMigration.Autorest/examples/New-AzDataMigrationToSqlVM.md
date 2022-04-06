@@ -11,6 +11,6 @@ MyDb                 Microsoft.DataMigration/databaseMigrations SqlVm Succeeded 
 
 This command starts a Database Migration from the Source Sql Server to target Sql VM. This example is for online migration. To make it offline add -Offline to the parameters. 
 Note :
-Create a new database migration to a given SQL VM.. Note - For the Scope parameter, use the Scope of the SQL VM (/subscriptions/111-222/resourceGroups/myRG/providers/Microsoft.SqlVirtualMachine/SqlVirtualMachines/xyz-SqlVM) and not the Compute SQL VM (/subscriptions/111-222/resourceGroups/myRG/providers/Microsoft.Compute/virtualMachines/xyz-SqlVM)
+Create a new database migration to a given SQL VM. Note - For the Scope parameter, use the Scope of the SQL VM (/subscriptions/111-222/resourceGroups/myRG/providers/Microsoft.SqlVirtualMachine/SqlVirtualMachines/xyz-SqlVM) and not the Compute SQL VM (/subscriptions/111-222/resourceGroups/myRG/providers/Microsoft.Compute/virtualMachines/xyz-SqlVM)
 
 

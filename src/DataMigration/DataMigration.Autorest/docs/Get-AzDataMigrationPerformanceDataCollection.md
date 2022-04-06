@@ -14,15 +14,14 @@ Collect performance data for given SQL Server instance(s)
 
 ### CommandLine (Default)
 ```
-Get-AzDataMigrationPerformanceDataCollection -SqlConnectionStrings <String[]> [-NewConsole]
- [-NumberOfIterations <String>] [-OutputFolder <String>] [-PerfQueryInterval <String>]
- [-StaticQueryInterval <String>] [-PassThru] [<CommonParameters>]
+Get-AzDataMigrationPerformanceDataCollection -SqlConnectionStrings <String[]> [-NumberOfIterations <String>]
+ [-OutputFolder <String>] [-PerfQueryInterval <String>] [-StaticQueryInterval <String>] [-PassThru]
+ [<CommonParameters>]
 ```
 
 ### ConfigFile
 ```
-Get-AzDataMigrationPerformanceDataCollection -ConfigFilePath <String> [-NewConsole] [-PassThru]
- [<CommonParameters>]
+Get-AzDataMigrationPerformanceDataCollection -ConfigFilePath <String> [-PassThru] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -153,22 +152,6 @@ Parameter Sets: ConfigFile
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NewConsole
-Optional.
-Whether or not to start the performance data collection in a separate  console.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

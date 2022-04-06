@@ -169,6 +169,25 @@ directive:
     set:
       subject: SqlService
 
+  #Deleting parameters :
+  - where:
+      verb: New
+      subject: ToSqlDb
+      parameter-name: MigrationOperationId
+    hide: true
+
+  - where:
+      verb: New
+      subject: ToSqlDb
+      parameter-name: ProvisioningError
+    hide: true
+
+  - where:
+      verb: Get
+      subject: ToSqlDb
+      parameter-name: PassThru
+    hide: true
+
   #Changing parameter names
   - where:
       verb: New
@@ -294,4 +313,10 @@ directive:
       subject: (^ToSqlDb)
     set:
       preview-message: Only use cmdlets containing ToSqlDb in their name for getting or stopping or deleting a migration created using New-AzDataMigrationToSqlDb
+
+  # Making parameters required/optional
+  - from: swagger-document
+    where: $.definitions.MigrationOperationInput
+    transform: $['required'] = ['migrationOperationId']
+
 ```

@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDataMigrationToSqlDb'))
 }
 
 Describe 'Get-AzDataMigrationToSqlDb' {
-    It 'Get'  {
+    It 'Get'  -skip{
         $instance = Get-AzDataMigrationToSqlDb -SqlDbInstanceName $env.TestDatabaseMigrationDb.SqlDbInstanceName -ResourceGroupName $env.TestDatabaseMigrationDb.ResourceGroupName -TargetDbName $env.TestDatabaseMigrationDb.TargetDbName
         $assert = ($instance.Name -eq $env.TestDatabaseMigrationDb.TargetDbName) -AND ($instance.Kind -eq 'SqlDb')
         $assert | Should be $true
