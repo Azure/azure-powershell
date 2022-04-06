@@ -19,6 +19,27 @@
 --->
 
 ## Upcoming Release
+* Added support for retrieving the state of packet capture even when the provisioning state of the packet capture was failure
+    - `Get-AzNetworkWatcherPacketCapture`
+* Added support for accepting Vnet, Subnet and NIC resources as the TargetResourceId for the following cmdlets
+    - `Set-AzNetworkWatcherFlowLog`
+    - `New-AzNetworkWatcherFlowLog`
+* Added support for connection flushing in network security group which when enabled, re-evaluates flows when rules are updated
+    - `New-AzNetworkSecurityGroup`
+
+## Version 4.15.0
+* Added new property `SqlSetting` for Azure Firewall Policy cmdlets 
+    - `Get-AzFirewallPolicy` 
+    - `New-AzFirewallPolicy`
+    - `Set-AzFirewallPolicy`
+* Added new to create new `SqlSetting` object for creating Azure Firewall Policy
+    - `New-AzFirewallPolicySqlSetting`
+* Added new cmdlet to support query Load Balancer inbound nat rule port mapping lists for backend addresses
+    - `Get-AzLoadBalancerBackendAddressInboundNatRulePortMapping`
+    - Also updated cmdlets to support inbound nat rule V2 configurations
+        - `New-AzLoadBalancerInboundNatRuleConfig`
+        - `Set-AzLoadBalancerInboundNatRuleConfig`
+        - `Add-AzLoadBalancerInboundNatRuleConfig`
 
 ## Version 5.2.0
 * Added optional parameters `CustomBlockResponseStatusCode` and `CustomBlockResponseBody` parameter to `AzApplicationGatewayFirewallPolicySettings`
