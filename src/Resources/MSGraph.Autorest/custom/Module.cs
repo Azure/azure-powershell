@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
             pipeline.Append(SendAsync);
         }
 
+        
         public async System.Threading.Tasks.Task<System.Net.Http.HttpResponseMessage> SendAsync(System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener callback, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.ISendAsync next)
         {
             string search = "Search=";
