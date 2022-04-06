@@ -22,5 +22,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<PSAzureFirewallPolicyIntrusionDetectionSignatureOverride> SignatureOverrides { get; set; }
 
         public List<PSAzureFirewallPolicyIntrusionDetectionBypassTrafficSetting> BypassTrafficSettings { get; set; }
+
+        public List<String> PrivateRanges { get; set; }
     }
 }
