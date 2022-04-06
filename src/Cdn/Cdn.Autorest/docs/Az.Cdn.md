@@ -35,24 +35,6 @@ Gets an existing CDN endpoint with the specified endpoint name under the specifi
 ### [Get-AzCdnEndpointResourceUsage](Get-AzCdnEndpointResourceUsage.md)
 Checks the quota and usage of geo filters and custom domains under the given endpoint.
 
-### [Get-AzCdnLogAnalyticLocation](Get-AzCdnLogAnalyticLocation.md)
-Get all available location names for AFD log analytics report.
-
-### [Get-AzCdnLogAnalyticMetric](Get-AzCdnLogAnalyticMetric.md)
-Get log report for AFD profile
-
-### [Get-AzCdnLogAnalyticRanking](Get-AzCdnLogAnalyticRanking.md)
-Get log analytics ranking report for AFD profile
-
-### [Get-AzCdnLogAnalyticResource](Get-AzCdnLogAnalyticResource.md)
-Get all endpoints and custom domains available for AFD log report
-
-### [Get-AzCdnLogAnalyticWafLogAnalyticMetric](Get-AzCdnLogAnalyticWafLogAnalyticMetric.md)
-Get Waf related log analytics report for AFD profile.
-
-### [Get-AzCdnLogAnalyticWafLogAnalyticRanking](Get-AzCdnLogAnalyticWafLogAnalyticRanking.md)
-Get WAF log analytics charts for AFD profile
-
 ### [Get-AzCdnManagedRuleSet](Get-AzCdnManagedRuleSet.md)
 Lists all available managed rule sets.
 

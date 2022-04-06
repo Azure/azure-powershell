@@ -19,20 +19,6 @@ Update-AzFrontDoorCdnSecurityPolicy -Name <String> -ProfileName <String> -Resour
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Patch
-```
-Update-AzFrontDoorCdnSecurityPolicy -Name <String> -ProfileName <String> -ResourceGroupName <String>
- -SecurityPolicyUpdateProperty <ISecurityPolicyUpdateParameters> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### PatchViaIdentity
-```
-Update-AzFrontDoorCdnSecurityPolicy -InputObject <ICdnIdentity>
- -SecurityPolicyUpdateProperty <ISecurityPolicyUpdateParameters> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### PatchViaIdentityExpanded
 ```
 Update-AzFrontDoorCdnSecurityPolicy -InputObject <ICdnIdentity>
@@ -101,7 +87,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-Parameter Sets: PatchViaIdentity, PatchViaIdentityExpanded
+Parameter Sets: PatchViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -116,7 +102,7 @@ Name of the security policy under the profile.
 
 ```yaml
 Type: System.String
-Parameter Sets: Patch, PatchExpanded
+Parameter Sets: PatchExpanded
 Aliases: SecurityPolicyName
 
 Required: True
@@ -146,7 +132,7 @@ object which contains security policy parameters
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ISecurityPolicyPropertiesParameters
-Parameter Sets: PatchExpanded, PatchViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -161,7 +147,7 @@ Name of the Azure Front Door Standard or Azure Front Door Premium profile which 
 
 ```yaml
 Type: System.String
-Parameter Sets: Patch, PatchExpanded
+Parameter Sets: PatchExpanded
 Aliases:
 
 Required: True
@@ -176,7 +162,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Patch, PatchExpanded
+Parameter Sets: PatchExpanded
 Aliases:
 
 Required: True
@@ -186,28 +172,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SecurityPolicyUpdateProperty
-The JSON object containing security policy update parameters.
-To construct, see NOTES section for SECURITYPOLICYUPDATEPROPERTY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ISecurityPolicyUpdateParameters
-Parameter Sets: Patch, PatchViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
 Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Patch, PatchExpanded
+Parameter Sets: PatchExpanded
 Aliases:
 
 Required: False
@@ -253,8 +223,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ISecurityPolicyUpdateParameters
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 
 ## OUTPUTS
@@ -285,9 +253,6 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   - `[SecretName <String>]`: Name of the Secret under the profile.
   - `[SecurityPolicyName <String>]`: Name of the security policy under the profile.
   - `[SubscriptionId <String>]`: Azure Subscription ID.
-
-SECURITYPOLICYUPDATEPROPERTY <ISecurityPolicyUpdateParameters>: The JSON object containing security policy update parameters.
-  - `[Parameter <ISecurityPolicyPropertiesParameters>]`: object which contains security policy parameters
 
 ## RELATED LINKS
 
