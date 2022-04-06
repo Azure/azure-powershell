@@ -39,7 +39,7 @@ function Test-NetworkSecurityGroupCRUD
         $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         
         # Create NetworkSecurityGroup
-        $job = New-AzNetworkSecurityGroup -name $nsgName -ResourceGroupName $rgname -Location $location -FlushConnection $true -AsJob
+        $job = New-AzNetworkSecurityGroup -name $nsgName -ResourceGroupName $rgname -Location $location -FlushConnection -AsJob
 		$job | Wait-Job
 		$nsg = $job | Receive-Job
 

@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Network
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "When enabled, flows created from Network Security Group connections will be re-evaluated when rules are updates. Initial enablement will trigger re-evaluation")]
-        public virtual bool? FlushConnection { get; set; }
+        public SwitchParameter FlushConnection { get; set; }
 
         [Parameter(
              Mandatory = false,
