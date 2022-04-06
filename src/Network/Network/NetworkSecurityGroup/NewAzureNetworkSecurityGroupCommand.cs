@@ -102,6 +102,7 @@ namespace Microsoft.Azure.Commands.Network
             nsg.ResourceGroupName = this.ResourceGroupName;
             nsg.Location = this.Location;
             nsg.SecurityRules = this.SecurityRules?.ToList();
+            nsg.FlushConnection = this.FlushConnection;
 
             // Map to the sdk object
             var nsgModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkSecurityGroup>(nsg);
