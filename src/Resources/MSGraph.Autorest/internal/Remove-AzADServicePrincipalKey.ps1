@@ -20,13 +20,9 @@ Invoke action removeKey
 .Description
 Invoke action removeKey
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IPaths1UhuhlbServiceprincipalsServiceprincipalIdMicrosoftGraphRemovekeyPostRequestbodyContentApplicationJsonSchema
@@ -141,8 +137,8 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Remove = 'Az.Resources.MSGraph.private\Remove-AzADServicePrincipalKey_Remove';
-            RemoveExpanded = 'Az.Resources.MSGraph.private\Remove-AzADServicePrincipalKey_RemoveExpanded';
+            Remove = 'Az.MSGraph.private\Remove-AzADServicePrincipalKey_Remove';
+            RemoveExpanded = 'Az.MSGraph.private\Remove-AzADServicePrincipalKey_RemoveExpanded';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

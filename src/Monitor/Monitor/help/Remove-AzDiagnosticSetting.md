@@ -32,15 +32,15 @@ This cmdlet implements the ShouldProcess pattern, i.e. it might request confirma
 ## EXAMPLES
 
 ### Example 1: Remove the default diagnostic setting (service) for a resource
-```
-PS C:\>Remove-AzDiagnosticSetting -ResourceId "Resource01"
+```powershell
+Remove-AzDiagnosticSetting -ResourceId "Resource01"
 ```
 
 This command removes the default diagnostic setting (service) for the resource called Resource01.
 
 ### Example 2: Remove the default diagnostic setting identified by the given name for a resource
-```
-PS C:\>Remove-AzDiagnosticSetting -ResourceId "Resource01" -Name myDiagSetting
+```powershell
+Remove-AzDiagnosticSetting -ResourceId "Resource01" -Name myDiagSetting
 ```
 
 This command removes the diagnostic setting called myDiagSetting for the resource called Resource01.

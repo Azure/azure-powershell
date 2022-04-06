@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll-Help.xml
 Module Name: Az.DataLakeStore
 ms.assetid: 234D579E-B62D-4D70-8D2E-22AC0D9AC513
@@ -36,8 +36,8 @@ The **Get-AzDataLakeStoreAccount** cmdlet gets details of a Data Lake Store acco
 ## EXAMPLES
 
 ### Example 1: Get a Data Lake Store account
-```
-PS C:\>Get-AzDataLakeStoreAccount -Name "ContosoADL"
+```powershell
+Get-AzDataLakeStoreAccount -Name "ContosoADL"
 ```
 
 This command gets the account named ContosoADL.

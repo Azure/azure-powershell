@@ -30,9 +30,9 @@ The **Get-AzApiManagementAuthorizationServerClientSecret** cmdlet gets the clien
 ## EXAMPLES
 
 ### Example 1: Get a specified authorization server client secret by id
-```
-PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzApiManagementAuthorizationServerClientSecret -Context $ApiMgmtContext -ServerId "0123456789"
+```powershell
+$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Get-AzApiManagementAuthorizationServerClientSecret -Context $ApiMgmtContext -ServerId "0123456789"
 ```
 
 This command gets the specified authorization server cient secret.

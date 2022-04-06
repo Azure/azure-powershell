@@ -53,6 +53,30 @@
               <ListItem>
                 <PropertyName>DisableLocalAuth</PropertyName>
               </ListItem>
+			  <ListItem>
+                <Label>Identity</Label>
+                <ScriptBlock>
+                  "PrinicipalId : "+ $_.Identity.PrincipalId + ", TenantId: "+ $_.Identity.TenantId
+                </ScriptBlock>              
+             </ListItem>
+			 <ListItem>
+			    <Label>IdentityType</Label>
+				<ScriptBlock>
+					$_.Identity.Type
+				</ScriptBlock>
+				</ListItem>
+			<ListItem>
+				<Label>IdentityId</Label>
+				<ScriptBlock>
+					$_.IdentityId -join "`n"
+				</ScriptBlock>
+			</ListItem>
+			<ListItem>
+                <Label>EncryptionConfigs</Label>
+				<ScriptBlock>
+					$_.EncryptionConfig.GetEnumerator() | ForEach-Object{ "{ KeyName: "+$_.KeyName+",`nKeyVaultUri: "+$_.KeyVaultUri+",`nKeyVersion: "+$_.KeyVersion+",`nUserAssignedIdentity: "+$_.UserAssignedIdentity+" }`n" }
+				</ScriptBlock>
+            </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -154,9 +178,9 @@
       </ListControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Commands.EventHub.Models.PSNetworkRuleSetAttributes</Name>
+      <Name>Microsoft.Azure.Commands.ServiceBus.Models.PSNetworkRuleSetAttributes</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.EventHub.Models.PSNetworkRuleSetAttributes</TypeName>
+        <TypeName>Microsoft.Azure.Commands.ServiceBus.Models.PSNetworkRuleSetAttributes</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>
@@ -169,6 +193,10 @@
               <ListItem>
                 <Label>DefaultAction</Label>
                 <PropertyName>DefaultAction</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>PublicNetworkAccess</Label>
+                <PropertyName>PublicNetworkAccess</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>Id</Label>

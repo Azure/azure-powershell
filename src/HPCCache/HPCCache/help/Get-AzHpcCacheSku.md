@@ -23,7 +23,7 @@ The **Get-AzHpcCacheSku** cmdlet returns a list of SKUs available in subscriptio
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzHpcCacheSku
+Get-AzHpcCacheSku
 ```
 
 ## PARAMETERS

@@ -24,9 +24,10 @@ Get Public Maintenance Configuration record
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzMaintenancePublicConfiguration -ResourceGroupName smdtest -Name workervmscentralus
+Get-AzMaintenancePublicConfiguration -ResourceGroupName smdtest -Name workervmscentralus
+```
 
-
+```output
 Location            : centralus
 Tags                : {}
 NamespaceProperty   :

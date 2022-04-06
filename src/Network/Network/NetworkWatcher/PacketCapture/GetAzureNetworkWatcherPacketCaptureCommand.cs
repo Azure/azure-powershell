@@ -108,33 +108,45 @@ namespace Microsoft.Azure.Commands.Network
                 PSPacketCaptureResult psPacketCapture = new PSPacketCaptureResult();
                 psPacketCapture = this.GetPacketCapture(resourceGroupName, name, this.PacketCaptureName);
 
-                var packetCaptureStatus = this.PacketCaptures.GetStatus(resourceGroupName, name, this.PacketCaptureName);
-
                 PSGetPacketCaptureResult pcResult = new PSGetPacketCaptureResult();
 
-                pcResult.BytesToCapturePerPacket = psPacketCapture.BytesToCapturePerPacket;
-                pcResult.TotalBytesPerSession = psPacketCapture.TotalBytesPerSession;
-                pcResult.CaptureStartTime = packetCaptureStatus.CaptureStartTime;
-                pcResult.Etag = psPacketCapture.Etag;
-                pcResult.Filters = psPacketCapture.Filters;
-                pcResult.Id = psPacketCapture.Id;
-                pcResult.Name = psPacketCapture.Name;
-
-                pcResult.PacketCaptureError = new List<string>();
-
-                if (packetCaptureStatus.PacketCaptureError != null)
+                try
                 {
-                    foreach (var error in packetCaptureStatus.PacketCaptureError)
+                    var packetCaptureStatus = this.PacketCaptures.GetStatus(resourceGroupName, name, this.PacketCaptureName);
+                    pcResult.CaptureStartTime = packetCaptureStatus.CaptureStartTime;
+
+                    pcResult.PacketCaptureError = new List<string>();
+
+                    if (packetCaptureStatus.PacketCaptureError != null)
                     {
-                        pcResult.PacketCaptureError.Add(error);
+                        foreach (var error in packetCaptureStatus.PacketCaptureError)
+                        {
+                            pcResult.PacketCaptureError.Add(error);
+                        }
                     }
+                    pcResult.PacketCaptureStatus = packetCaptureStatus.PacketCaptureStatus;
+                    pcResult.StopReason = packetCaptureStatus.StopReason;
                 }
-                pcResult.PacketCaptureStatus = packetCaptureStatus.PacketCaptureStatus;
-                pcResult.ProvisioningState = psPacketCapture.ProvisioningState;
-                pcResult.StopReason = packetCaptureStatus.StopReason;
-                pcResult.StorageLocation = psPacketCapture.StorageLocation;
-                pcResult.Target = psPacketCapture.Target;
-                pcResult.TimeLimitInSeconds = psPacketCapture.TimeLimitInSeconds;
+                catch
+                {
+                    pcResult.CaptureStartTime = null;
+                    pcResult.PacketCaptureError = null;
+                    pcResult.PacketCaptureStatus = null;
+                    pcResult.StopReason = null;
+                }
+                finally
+                {
+                    pcResult.BytesToCapturePerPacket = psPacketCapture.BytesToCapturePerPacket;
+                    pcResult.TotalBytesPerSession = psPacketCapture.TotalBytesPerSession;
+                    pcResult.Etag = psPacketCapture.Etag;
+                    pcResult.Filters = psPacketCapture.Filters;
+                    pcResult.Id = psPacketCapture.Id;
+                    pcResult.Name = psPacketCapture.Name;
+                    pcResult.ProvisioningState = psPacketCapture.ProvisioningState;
+                    pcResult.StorageLocation = psPacketCapture.StorageLocation;
+                    pcResult.Target = psPacketCapture.Target;
+                    pcResult.TimeLimitInSeconds = psPacketCapture.TimeLimitInSeconds;
+                }
 
                 WriteObject(pcResult);
             }
@@ -151,33 +163,46 @@ namespace Microsoft.Azure.Commands.Network
                     PSPacketCaptureResult psPacketCapture = NetworkResourceManagerProfile.Mapper.Map<PSPacketCaptureResult>(pc);
                     psPacketCaptureList.Add(psPacketCapture);
 
-                    var packetCaptureStatus = this.PacketCaptures.GetStatus(resourceGroupName, name, psPacketCapture.Name);
-                    var psPacketCaptureStatus = NetworkResourceManagerProfile.Mapper.Map<PSPacketCaptureStatus>(packetCaptureStatus);
-
                     PSGetPacketCaptureResult pcResult = new PSGetPacketCaptureResult();
 
-                    pcResult.BytesToCapturePerPacket = psPacketCapture.BytesToCapturePerPacket;
-                    pcResult.TotalBytesPerSession = psPacketCapture.TotalBytesPerSession;
-                    pcResult.CaptureStartTime = psPacketCaptureStatus.CaptureStartTime;
-                    pcResult.Etag = psPacketCapture.Etag;
-                    pcResult.Filters = psPacketCapture.Filters;
-                    pcResult.Id = psPacketCapture.Id;
-                    pcResult.Name = psPacketCapture.Name;
-                    pcResult.PacketCaptureError = new List<string>();
-
-                    if (packetCaptureStatus.PacketCaptureError != null)
+                    try
                     {
-                        foreach (var error in packetCaptureStatus.PacketCaptureError)
+                        var packetCaptureStatus = this.PacketCaptures.GetStatus(resourceGroupName, name, psPacketCapture.Name);
+                        var psPacketCaptureStatus = NetworkResourceManagerProfile.Mapper.Map<PSPacketCaptureStatus>(packetCaptureStatus);
+
+                        pcResult.CaptureStartTime = psPacketCaptureStatus.CaptureStartTime;
+                        pcResult.PacketCaptureError = new List<string>();
+
+                        if (packetCaptureStatus.PacketCaptureError != null)
                         {
-                            pcResult.PacketCaptureError.Add(error);
+                            foreach (var error in packetCaptureStatus.PacketCaptureError)
+                            {
+                                pcResult.PacketCaptureError.Add(error);
+                            }
                         }
+                        pcResult.PacketCaptureStatus = psPacketCaptureStatus.PacketCaptureStatus;
+                        pcResult.StopReason = psPacketCaptureStatus.StopReason;
                     }
-                    pcResult.PacketCaptureStatus = psPacketCaptureStatus.PacketCaptureStatus;
-                    pcResult.ProvisioningState = psPacketCapture.ProvisioningState;
-                    pcResult.StopReason = psPacketCaptureStatus.StopReason;
-                    pcResult.StorageLocation = psPacketCapture.StorageLocation;
-                    pcResult.Target = psPacketCapture.Target;
-                    pcResult.TimeLimitInSeconds = psPacketCapture.TimeLimitInSeconds;
+                    catch
+                    {
+                        pcResult.CaptureStartTime = null;
+                        pcResult.PacketCaptureError = null;
+                        pcResult.PacketCaptureStatus = null;
+                        pcResult.StopReason = null;
+                    }
+                    finally
+                    {
+                        pcResult.BytesToCapturePerPacket = psPacketCapture.BytesToCapturePerPacket;
+                        pcResult.TotalBytesPerSession = psPacketCapture.TotalBytesPerSession;
+                        pcResult.Etag = psPacketCapture.Etag;
+                        pcResult.Filters = psPacketCapture.Filters;
+                        pcResult.Id = psPacketCapture.Id;
+                        pcResult.Name = psPacketCapture.Name;
+                        pcResult.StorageLocation = psPacketCapture.StorageLocation;
+                        pcResult.Target = psPacketCapture.Target;
+                        pcResult.TimeLimitInSeconds = psPacketCapture.TimeLimitInSeconds;
+                        pcResult.ProvisioningState = psPacketCapture.ProvisioningState;
+                    }
 
                     pcResultList.Add(pcResult);
                 }

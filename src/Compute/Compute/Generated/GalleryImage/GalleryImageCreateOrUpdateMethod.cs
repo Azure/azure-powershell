@@ -176,6 +176,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         galleryImage.PurchasePlan.Product = this.PurchasePlanProduct;
                     }
 
+                    if (this.IsParameterBound(c => c.Feature))
+                    {
+                        galleryImage.Features = this.Feature;
+                    }
+
                     var result = GalleryImagesClient.CreateOrUpdate(resourceGroupName, galleryName, galleryImageName, galleryImage);
                     var psObject = new PSGalleryImage();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<GalleryImage, PSGalleryImage>(result, psObject);
@@ -317,6 +322,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public Hashtable Tag { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public GalleryImageFeature[] Feature { get; set; }
     }
 
     [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "GalleryImageDefinition", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]

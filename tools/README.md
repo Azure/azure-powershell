@@ -22,4 +22,8 @@ This folder contains the utilities for Azure PowerShell.
 
 **GenerateExternalContributors.ps1** generates the list of external contributors which is appended as part of release notes. It needs personal access token of Github with sufficient permission.
 
-**GenerateCmdletDesignMarkdown.ps1** generates the cmdlet signatures for review.
+**GenerateCmdletDesignMarkdown.ps1** generates the cmdlet signatures for review. The content bases on generated cmdlet reference docs in markdown under docs folder. You can try below code from the root folder of your module after reference doc is generated.
+```
+..\..\tools\GenerateCmdletDesignMarkdown.ps1 -Path .\docs\ -OutPath .\docs\
+```
+Cmdldet is catorized by noun, resource type name by default, with Az prefix. `-NounPriority` is used to adjust the order of cmdlets in output.

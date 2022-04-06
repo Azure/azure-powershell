@@ -38,11 +38,11 @@ This cmdlet removes a service form the cluster.
 
 ### Example 1
 ```powershell
-PS C:\> $resourceGroupName = "testRG"
-PS C:\> $clusterName = "testCluster"
-PS C:\> $appName = "testApp"
-PS C:\> $serviceName = "testApp~testService1"
-PS C:\> Remove-AzServiceFabricService -ResourceGroupName $resourceGroupName -ClusterName $clusterName -ApplicationName $appName -Name $serviceName
+$resourceGroupName = "testRG"
+$clusterName = "testCluster"
+$appName = "testApp"
+$serviceName = "testApp~testService1"
+Remove-AzServiceFabricService -ResourceGroupName $resourceGroupName -ClusterName $clusterName -ApplicationName $appName -Name $serviceName
 ```
 
 This example will remove the service "testApp~testService1".
@@ -140,7 +140,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{Fill PassThru Description}}
+Returns $True if the command succeeds and $False if it fails. By default, this cmdlet does not return any output.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

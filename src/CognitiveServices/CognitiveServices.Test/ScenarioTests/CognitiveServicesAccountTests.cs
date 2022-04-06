@@ -247,5 +247,26 @@ namespace CognitiveServices.Test.ScenarioTests
         {
             TestController.NewInstance.RunPsTest(traceInterceptor, "Test-SoftDelete");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCommitmentPlan()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-CommitmentPlan");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDeployment()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-Deployment");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestListModels()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-ListModels");
+        }
     }
 }

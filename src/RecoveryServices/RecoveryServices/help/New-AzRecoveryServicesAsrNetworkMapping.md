@@ -39,15 +39,15 @@ The **New-AzRecoveryServicesAsrNetworkMapping** cmdlet starts the operation of c
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $currentJob = New-AzRecoveryServicesAsrNetworkMapping -Name $NetworkMapName -PrimaryNetwork $PrimaryNetwork -RecoveryNetwork $RecoveryNetwork
+```powershell
+$currentJob = New-AzRecoveryServicesAsrNetworkMapping -Name $NetworkMapName -PrimaryNetwork $PrimaryNetwork -RecoveryNetwork $RecoveryNetwork
 ```
 
 Starts the network mapping creation operation using the specified name, primary and recovery networks, and returns an ASR job to track the operation.
 
 ### Example 2
-```
-PS C:\> $currentJob = New-AzRecoveryServicesAsrNetworkMapping -AzureToAzure -Name "mappingName" -PrimaryFabric $AzureFabric `
+```powershell
+$currentJob = New-AzRecoveryServicesAsrNetworkMapping -AzureToAzure -Name "mappingName" -PrimaryFabric $AzureFabric `
  -PrimaryAzureNetworkId $AzureNetworkId -RecoveryFabric $RecoveryAzureFabric -RecoveryAzureNetworkId $RecoveryNetworkId
 ```
 

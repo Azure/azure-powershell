@@ -44,6 +44,14 @@ Test-AzResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMod
  [<CommonParameters>]
 ```
 
+### ByTemplateSpecResourceIdAndParamsObject
+```
+Test-AzResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMode>] [-RollbackToLastDeployment]
+ [-RollBackDeploymentName <String>] [-QueryString <String>] -TemplateParameterObject <Hashtable>
+ -TemplateSpecId <String> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
 ### ByTemplateObjectAndParameterFile
 ```
 Test-AzResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMode>] [-RollbackToLastDeployment]
@@ -137,9 +145,9 @@ The **Test-AzResourceGroupDeployment** cmdlet determines whether an Azure resour
 ### Example 1: Test deployment with a custom template object and parameter file
 
 ```powershell
-PS C:\> $TemplateFileText = [System.IO.File]::ReadAllText("D:\Azure\Templates\EngineeringSite.json")
-PS C:\> $TemplateObject = ConvertFrom-Json $TemplateFileText -AsHashtable
-PS C:\> Test-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateObject $TemplateObject -TemplateParameterFile "D:\Azure\Templates\EngSiteParams.json"
+$TemplateFileText = [System.IO.File]::ReadAllText("D:\Azure\Templates\EngineeringSite.json")
+$TemplateObject = ConvertFrom-Json $TemplateFileText -AsHashtable
+Test-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateObject $TemplateObject -TemplateParameterFile "D:\Azure\Templates\EngSiteParams.json"
 ```
 
 This command tests a deployment in the given resource group using the an in-memory hashtable created from the given template file and a parameter file.
@@ -147,7 +155,7 @@ This command tests a deployment in the given resource group using the an in-memo
 ### Example 2: Test deployment via template file and parameter file
 
 ```powershell
-PS C:\> Test-AzResourceGroupDeployment -ResourceGroupName testRG01 -TemplateFile "D:\Azure\Templates\sampleDeploymentTemplate.json" -TemplateParameterFile "D:\Azure\Templates\sampleDeploymentTemplateParams.json"
+Test-AzResourceGroupDeployment -ResourceGroupName testRG01 -TemplateFile "D:\Azure\Templates\sampleDeploymentTemplate.json" -TemplateParameterFile "D:\Azure\Templates\sampleDeploymentTemplateParams.json"
 ```
 
 This command tests a deployment in the given resource group and resource using the provided template file and a parameter file.
@@ -328,7 +336,7 @@ Specifies a hash table of template parameter names and values.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: ByTemplateObjectAndParameterObject, ByTemplateFileAndParameterObject, ByTemplateUriAndParameterObject
+Parameter Sets: ByTemplateObjectAndParameterObject, ByTemplateFileAndParameterObject, ByTemplateUriAndParameterObject, ByTemplateSpecResourceIdAndParamsObject
 Aliases:
 
 Required: True
@@ -358,7 +366,7 @@ Resource ID of the templateSpec to be deployed.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByTemplateSpecResourceIdAndParams, ByTemplateSpecResourceIdAndParamsUri, ByTemplateSpecResourceId
+Parameter Sets: ByTemplateSpecResourceIdAndParamsObject, ByTemplateSpecResourceIdAndParams, ByTemplateSpecResourceIdAndParamsUri, ByTemplateSpecResourceId
 Aliases:
 
 Required: True

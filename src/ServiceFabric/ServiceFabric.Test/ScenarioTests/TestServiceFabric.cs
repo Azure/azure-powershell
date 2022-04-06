@@ -169,6 +169,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
             parameterFilePath = Path.Combine(ubuntu18TemplateDirectory, Constants.ParameterFileName);
             Assert.True(File.Exists(templateFilePath), string.Format("file not found: {0}", templateFilePath));
             Assert.True(File.Exists(parameterFilePath), string.Format("file not found: {0}", parameterFilePath));
+
+            string ubuntu20TemplateDirectory = Path.Combine(assemblyFolder, Constants.UbuntuServer20TemplateRelativePath);
+            templateFilePath = Path.Combine(ubuntu20TemplateDirectory, Constants.TemplateFileName);
+            parameterFilePath = Path.Combine(ubuntu20TemplateDirectory, Constants.ParameterFileName);
+            Assert.True(File.Exists(templateFilePath), string.Format("file not found: {0}", templateFilePath));
+            Assert.True(File.Exists(parameterFilePath), string.Format("file not found: {0}", parameterFilePath));
         }
     }
 }

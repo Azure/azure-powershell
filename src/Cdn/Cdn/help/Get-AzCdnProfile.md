@@ -23,6 +23,24 @@ The **Get-AzCdnProfile** cmdlet gets an Azure Content Delivery Network (CDN) pro
 
 ## EXAMPLES
 
+### Example 1: Get all CDN profiles in the resource group
+```powershell
+Get-AzCdnProfile -ResourceGroupName myresourcegroup
+```
+
+```Output
+Sku               : Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku
+ResourceState     : Active
+ResourceGroupName : myresourcegroup
+Location          : WestUs
+Tags              : {}
+Id                : /subscriptions/11111111-1111-1111-1111-111111111111/resourcegroups/myresourcegroup/providers/Microsoft.Cdn
+                    /profiles/mycdnprofile
+Name              : mycdnprofile
+Type              : Microsoft.Cdn/profiles
+ProvisioningState : Succeeded
+```
+
 ## PARAMETERS
 
 ### -DefaultProfile

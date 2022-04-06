@@ -24,14 +24,14 @@ Disable-AzStackHCIAttestation disables IMDS Attestation on the host
 
 ### EXAMPLE 1
 ```powershell
-C:\PS\>Disable-AzStackHCIAttestation -RemoveVM
+Disable-AzStackHCIAttestation -RemoveVM
 ```
 
 Remove all guests from IMDS Attestation before disabling on cluster nodes.
 
 ### EXAMPLE 2
 ```powershell
-C:\PS\>Disable-AzStackHCIAttestation -ComputerName "host1"
+Disable-AzStackHCIAttestation -ComputerName "host1"
 ```
 
 ## PARAMETERS

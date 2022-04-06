@@ -69,11 +69,11 @@ The **Set-AzLoadBalancerFrontendIpConfig** cmdlet updates a front-end IP configu
 
 ### Example 1: Modify the front-end IP configuration of a load balancer
 ```powershell
-PS C:\> $Subnet = Get-AzVirtualNetwork -Name "MyVnet" -ResourceGroupName "MyResourceGroup" | Get-AzVirtualNetworkSubnetConfig -Name "Subnet"
-PS C:\> $slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
-PS C:\> $slb | Add-AzLoadBalancerFrontendIpConfig -Name "NewFrontend" -Subnet $Subnet
-PS C:\> $slb | Set-AzLoadBalancerFrontendIpConfig -Name "NewFrontend" -Subnet $Subnet
-PS C:\> $slb | Set-AzLoadBalancer
+$Subnet = Get-AzVirtualNetwork -Name "MyVnet" -ResourceGroupName "MyResourceGroup" | Get-AzVirtualNetworkSubnetConfig -Name "Subnet"
+$slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
+$slb | Add-AzLoadBalancerFrontendIpConfig -Name "NewFrontend" -Subnet $Subnet
+$slb | Set-AzLoadBalancerFrontendIpConfig -Name "NewFrontend" -Subnet $Subnet
+$slb | Set-AzLoadBalancer
 ```
 The first command gets the virtual subnet named Subnet, and then stores it in the $Subnet variable.
 The second command gets the associated load balancer named MyLoadBalancer, and then stores it in the $slb variable.
@@ -82,11 +82,11 @@ The fourth command passes the load balancer in $slb to **Set-AzLoadBalancerFront
 
 ### Example 2: Modify the front-end IP configuration of a load balancer with Gateway Load Balancer
 ```powershell
-PS C:\> $slb1 = Get-AzLoadBalancer -Name "MyLoadBalancer1" -ResourceGroupName "MyResourceGroup"
-PS C:\> $feip = $Get-AzLoadBalancerFrontendIpConfig -Name "MyFrontEnd" -LoadBalancer $slb1
-PS C:\> $slb2 = Get-AzLoadBalancer -Name "MyLoadBalancer1" -ResourceGroupName "MyResourceGroup"
-PS C:\> $slb2 | Set-AzLoadBalancerFrontendIpConfig -Name "NewFrontend" -PublicIpAddress $publicIp -GatewayLoadBalancerId $feip.Id
-PS C:\> $slb2 | Set-AzLoadBalancer
+$slb1 = Get-AzLoadBalancer -Name "MyLoadBalancer1" -ResourceGroupName "MyResourceGroup"
+$feip = $Get-AzLoadBalancerFrontendIpConfig -Name "MyFrontEnd" -LoadBalancer $slb1
+$slb2 = Get-AzLoadBalancer -Name "MyLoadBalancer1" -ResourceGroupName "MyResourceGroup"
+$slb2 | Set-AzLoadBalancerFrontendIpConfig -Name "NewFrontend" -PublicIpAddress $publicIp -GatewayLoadBalancerId $feip.Id
+$slb2 | Set-AzLoadBalancer
 ```
 
 ## PARAMETERS

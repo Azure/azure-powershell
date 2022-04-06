@@ -36,14 +36,14 @@ You can add a data disk when you create a virtual machine, or you can add a data
 ## EXAMPLES
 
 ### Example 1: Add data disks to a new virtual machine
-```
-PS C:\> $VirtualMachine = New-AzVMConfig -VMName "VirtualMachine07" -VMSize "Standard_A1"
-PS C:\> $DataDiskVhdUri01 = "https://contoso.blob.core.windows.net/test/data1.vhd"
-PS C:\> $DataDiskVhdUri02 = "https://contoso.blob.core.windows.net/test/data2.vhd"
-PS C:\> $DataDiskVhdUri03 = "https://contoso.blob.core.windows.net/test/data3.vhd"
-PS C:\> $VirtualMachine = Add-AzVMDataDisk -VM $VirtualMachine -Name 'DataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 0 -VhdUri $DataDiskVhdUri01 -CreateOption Empty
-PS C:\> $VirtualMachine = Add-AzVMDataDisk -VM $VirtualMachine -Name 'DataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 1 -VhdUri $DataDiskVhdUri02 -CreateOption Empty
-PS C:\> $VirtualMachine = Add-AzVMDataDisk -VM $VirtualMachine -Name 'DataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 2 -VhdUri $DataDiskVhdUri03 -CreateOption Empty
+```powershell
+$VirtualMachine = New-AzVMConfig -VMName "VirtualMachine07" -VMSize "Standard_A1"
+$DataDiskVhdUri01 = "https://contoso.blob.core.windows.net/test/data1.vhd"
+$DataDiskVhdUri02 = "https://contoso.blob.core.windows.net/test/data2.vhd"
+$DataDiskVhdUri03 = "https://contoso.blob.core.windows.net/test/data3.vhd"
+$VirtualMachine = Add-AzVMDataDisk -VM $VirtualMachine -Name 'DataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 0 -VhdUri $DataDiskVhdUri01 -CreateOption Empty
+$VirtualMachine = Add-AzVMDataDisk -VM $VirtualMachine -Name 'DataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 1 -VhdUri $DataDiskVhdUri02 -CreateOption Empty
+$VirtualMachine = Add-AzVMDataDisk -VM $VirtualMachine -Name 'DataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 2 -VhdUri $DataDiskVhdUri03 -CreateOption Empty
 ```
 
 The first command creates a virtual machine object, and then stores it in the $VirtualMachine variable.
@@ -55,10 +55,10 @@ The command specifies the name and location for the disk, and other properties o
 The URI of each disk is stored in $DataDiskVhdUri01, $DataDiskVhdUri02, and $DataDiskVhdUri03.
 
 ### Example 2: Add a data disk to an existing virtual machine
-```
-PS C:\> $VirtualMachine = Get-AzVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
-PS C:\> Add-AzVMDataDisk -VM $VirtualMachine -Name "disk1" -VhdUri "https://contoso.blob.core.windows.net/vhds/diskstandard03.vhd" -LUN 0 -Caching ReadOnly -DiskSizeinGB 1 -CreateOption Empty
-PS C:\> Update-AzVM -ResourceGroupName "ResourceGroup11" -VM $VirtualMachine
+```powershell
+$VirtualMachine = Get-AzVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
+Add-AzVMDataDisk -VM $VirtualMachine -Name "disk1" -VhdUri "https://contoso.blob.core.windows.net/vhds/diskstandard03.vhd" -LUN 0 -Caching ReadOnly -DiskSizeinGB 1 -CreateOption Empty
+Update-AzVM -ResourceGroupName "ResourceGroup11" -VM $VirtualMachine
 ```
 
 The first command gets the virtual machine named VirtualMachine07 by using the [Get-AzVM](./Get-AzVM.md) cmdlet.
@@ -67,11 +67,11 @@ The second command adds a data disk to the virtual machine stored in $VirtualMac
 The final command updates the state of the virtual machine stored in $VirtualMachine in ResourceGroup11.
 
 ### Example 3: Add a data disk to a new virtual machine from a generalized user image
-```
-PS C:\> $VirtualMachine = New-AzVMConfig -VMName "VirtualMachine07" -VMSize "Standard_A1"
-PS C:\> $DataImageUri = "https://contoso.blob.core.windows.net/system/Microsoft.Compute/Images/captured/dataimage.vhd"
-PS C:\> $DataDiskUri = "https://contoso.blob.core.windows.net/test/datadisk.vhd"
-PS C:\> $VirtualMachine = Add-AzVMDataDisk -VM $VirtualMachine -Name "disk1" -SourceImageUri $DataImageUri -VhdUri $DataDiskUri -Lun 0 -DiskSizeinGB 10 -CreateOption FromImage
+```powershell
+$VirtualMachine = New-AzVMConfig -VMName "VirtualMachine07" -VMSize "Standard_A1"
+$DataImageUri = "https://contoso.blob.core.windows.net/system/Microsoft.Compute/Images/captured/dataimage.vhd"
+$DataDiskUri = "https://contoso.blob.core.windows.net/test/datadisk.vhd"
+$VirtualMachine = Add-AzVMDataDisk -VM $VirtualMachine -Name "disk1" -SourceImageUri $DataImageUri -VhdUri $DataDiskUri -Lun 0 -DiskSizeinGB 10 -CreateOption FromImage
 ```
 
 The first command creates a virtual machine object and stores it in the $VirtualMachine variable.
@@ -82,10 +82,10 @@ The final commands adds a data disk to the virtual machine stored in $VirtualMac
 The command specifies the name and location for the disk and other properties of the disk.
 
 ### Example 4: Add data disks to a new virtual machine from a specialized user image
-```
-PS C:\> $VirtualMachine = New-AzVMConfig -VMName "VirtualMachine07" -VMSize "Standard_A1"
-PS C:\> $DataDiskUri = "https://contoso.blob.core.windows.net/test/datadisk.vhd"
-PS C:\> $VirtualMachine = Add-AzVMDataDisk -VM $VirtualMachine -Name "dd1" -VhdUri $DataDiskUri -Lun 0 -DiskSizeinGB 10 -CreateOption Attach
+```powershell
+$VirtualMachine = New-AzVMConfig -VMName "VirtualMachine07" -VMSize "Standard_A1"
+$DataDiskUri = "https://contoso.blob.core.windows.net/test/datadisk.vhd"
+$VirtualMachine = Add-AzVMDataDisk -VM $VirtualMachine -Name "dd1" -VhdUri $DataDiskUri -Lun 0 -DiskSizeinGB 10 -CreateOption Attach
 ```
 
 The first command creates a virtual machine object and stores it in the $VirtualMachine variable.

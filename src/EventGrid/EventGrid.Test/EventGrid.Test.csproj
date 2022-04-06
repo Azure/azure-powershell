@@ -12,10 +12,10 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.EventGrid" Version="6.0.0" />
-    <PackageReference Include="Microsoft.Azure.Management.EventHub" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.EventHub" Version="4.0.0" />
     <PackageReference Include="Microsoft.Azure.Management.Relay" Version="2.0.2" />
     <PackageReference Include="Microsoft.Azure.Management.ServiceBus" Version="3.0.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="23.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="23.1.0" />
   </ItemGroup>
 
 </Project>

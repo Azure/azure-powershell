@@ -37,7 +37,7 @@ Removes the custom domain.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzFrontDoorCdnCustomDomain -ResourceId $customDomainResourceId
+Remove-AzFrontDoorCdnCustomDomain -ResourceId $customDomainResourceId
 ```
 
 Removes the custom domain. 

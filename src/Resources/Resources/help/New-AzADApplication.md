@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resources-help.xml
 Module Name: Az.Resources
 online version: https://docs.microsoft.com/powershell/module/az.resources/new-azadapplication
 schema: 2.0.0
@@ -14,97 +14,98 @@ Adds new entity to applications
 
 ### ApplicationWithoutCredentialParameterSet (Default)
 ```
-New-AzADApplication -DisplayName <String> [-AddIn <IMicrosoftGraphAddIn[]>]
- [-Api <IMicrosoftGraphApiApplication>] [-ApplicationTemplateId <String>]
- [-AppRole <IMicrosoftGraphAppRole[]>] [-AvailableToOtherTenants <Boolean>]
- [-CreatedOnBehalfOfDeletedDateTime <DateTime>] [-DeletedDateTime <DateTime>] [-Description <String>]
- [-DisabledByMicrosoftStatus <String>] [-GroupMembershipClaim <String>] [-HomePage <String>]
- [-HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>] [-IdentifierUri <String[]>]
+New-AzADApplication -DisplayName <String> [-AvailableToOtherTenants <Boolean>] [-HomePage <String>]
+ [-ReplyUrls <String[]>] [-IdentifierUri <String[]>] [-Web <IMicrosoftGraphWebApplication>]
+ [-AddIn <IMicrosoftGraphAddIn[]>] [-Api <IMicrosoftGraphApiApplication>] [-AppRole <IMicrosoftGraphAppRole[]>]
+ [-ApplicationTemplateId <String>] [-CreatedOnBehalfOfDeletedDateTime <DateTime>] [-DeletedDateTime <DateTime>]
+ [-Description <String>] [-DisabledByMicrosoftStatus <String>] [-GroupMembershipClaim <String>]
+ [-HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>]
  [-Info <IMicrosoftGraphInformationalUrl>] [-IsDeviceOnlyAuthSupported] [-IsFallbackPublicClient]
  [-LogoInputFile <String>] [-Note <String>] [-Oauth2RequirePostResponse]
  [-OptionalClaim <IMicrosoftGraphOptionalClaims>]
  [-ParentalControlSetting <IMicrosoftGraphParentalControlSettings>] [-PublicClientRedirectUri <String[]>]
- [-ReplyUrls <String[]>] [-RequiredResourceAccess <IMicrosoftGraphRequiredResourceAccess[]>]
- [-SignInAudience <String>] [-SPARedirectUri <String[]>] [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
+ [-RequiredResourceAccess <IMicrosoftGraphRequiredResourceAccess[]>] [-SignInAudience <String>]
+ [-SPARedirectUri <String[]>] [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
  [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
- [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationWithKeyCredentialParameterSet
 ```
-New-AzADApplication -DisplayName <String> -KeyCredentials <IMicrosoftGraphKeyCredential[]>
- [-AddIn <IMicrosoftGraphAddIn[]>] [-Api <IMicrosoftGraphApiApplication>] [-ApplicationTemplateId <String>]
- [-AppRole <IMicrosoftGraphAppRole[]>] [-AvailableToOtherTenants <Boolean>]
- [-CreatedOnBehalfOfDeletedDateTime <DateTime>] [-DeletedDateTime <DateTime>] [-Description <String>]
- [-DisabledByMicrosoftStatus <String>] [-GroupMembershipClaim <String>] [-HomePage <String>]
- [-HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>] [-IdentifierUri <String[]>]
+New-AzADApplication -DisplayName <String> [-AvailableToOtherTenants <Boolean>] [-HomePage <String>]
+ [-ReplyUrls <String[]>] [-IdentifierUri <String[]>] [-Web <IMicrosoftGraphWebApplication>]
+ [-AddIn <IMicrosoftGraphAddIn[]>] [-Api <IMicrosoftGraphApiApplication>] [-AppRole <IMicrosoftGraphAppRole[]>]
+ [-ApplicationTemplateId <String>] [-CreatedOnBehalfOfDeletedDateTime <DateTime>] [-DeletedDateTime <DateTime>]
+ [-Description <String>] [-DisabledByMicrosoftStatus <String>] [-GroupMembershipClaim <String>]
+ [-HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>]
  [-Info <IMicrosoftGraphInformationalUrl>] [-IsDeviceOnlyAuthSupported] [-IsFallbackPublicClient]
  [-LogoInputFile <String>] [-Note <String>] [-Oauth2RequirePostResponse]
  [-OptionalClaim <IMicrosoftGraphOptionalClaims>]
  [-ParentalControlSetting <IMicrosoftGraphParentalControlSettings>] [-PublicClientRedirectUri <String[]>]
- [-ReplyUrls <String[]>] [-RequiredResourceAccess <IMicrosoftGraphRequiredResourceAccess[]>]
- [-SignInAudience <String>] [-SPARedirectUri <String[]>] [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
+ [-RequiredResourceAccess <IMicrosoftGraphRequiredResourceAccess[]>] [-SignInAudience <String>]
+ [-SPARedirectUri <String[]>] [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
  [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
- [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### ApplicationWithKeyPlainParameterSet
-```
-New-AzADApplication -CertValue <String> -DisplayName <String> [-AddIn <IMicrosoftGraphAddIn[]>]
- [-Api <IMicrosoftGraphApiApplication>] [-ApplicationTemplateId <String>]
- [-AppRole <IMicrosoftGraphAppRole[]>] [-AvailableToOtherTenants <Boolean>]
- [-CreatedOnBehalfOfDeletedDateTime <DateTime>] [-DeletedDateTime <DateTime>] [-Description <String>]
- [-DisabledByMicrosoftStatus <String>] [-EndDate <DateTime>] [-GroupMembershipClaim <String>]
- [-HomePage <String>] [-HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>]
- [-IdentifierUri <String[]>] [-Info <IMicrosoftGraphInformationalUrl>] [-IsDeviceOnlyAuthSupported]
- [-IsFallbackPublicClient] [-LogoInputFile <String>] [-Note <String>] [-Oauth2RequirePostResponse]
- [-OptionalClaim <IMicrosoftGraphOptionalClaims>]
- [-ParentalControlSetting <IMicrosoftGraphParentalControlSettings>] [-PublicClientRedirectUri <String[]>]
- [-ReplyUrls <String[]>] [-RequiredResourceAccess <IMicrosoftGraphRequiredResourceAccess[]>]
- [-SignInAudience <String>] [-SPARedirectUri <String[]>] [-StartDate <DateTime>] [-Tag <String[]>]
- [-TokenEncryptionKeyId <String>] [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
- [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>] -KeyCredentials <IMicrosoftGraphKeyCredential[]>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationWithPasswordCredentialParameterSet
 ```
-New-AzADApplication -DisplayName <String> -PasswordCredentials <IMicrosoftGraphPasswordCredential[]>
- [-AddIn <IMicrosoftGraphAddIn[]>] [-Api <IMicrosoftGraphApiApplication>] [-ApplicationTemplateId <String>]
- [-AppRole <IMicrosoftGraphAppRole[]>] [-AvailableToOtherTenants <Boolean>]
- [-CreatedOnBehalfOfDeletedDateTime <DateTime>] [-DeletedDateTime <DateTime>] [-Description <String>]
- [-DisabledByMicrosoftStatus <String>] [-GroupMembershipClaim <String>] [-HomePage <String>]
- [-HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>] [-IdentifierUri <String[]>]
+New-AzADApplication -DisplayName <String> [-AvailableToOtherTenants <Boolean>] [-HomePage <String>]
+ [-ReplyUrls <String[]>] [-IdentifierUri <String[]>] [-Web <IMicrosoftGraphWebApplication>]
+ [-AddIn <IMicrosoftGraphAddIn[]>] [-Api <IMicrosoftGraphApiApplication>] [-AppRole <IMicrosoftGraphAppRole[]>]
+ [-ApplicationTemplateId <String>] [-CreatedOnBehalfOfDeletedDateTime <DateTime>] [-DeletedDateTime <DateTime>]
+ [-Description <String>] [-DisabledByMicrosoftStatus <String>] [-GroupMembershipClaim <String>]
+ [-HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>]
  [-Info <IMicrosoftGraphInformationalUrl>] [-IsDeviceOnlyAuthSupported] [-IsFallbackPublicClient]
  [-LogoInputFile <String>] [-Note <String>] [-Oauth2RequirePostResponse]
  [-OptionalClaim <IMicrosoftGraphOptionalClaims>]
  [-ParentalControlSetting <IMicrosoftGraphParentalControlSettings>] [-PublicClientRedirectUri <String[]>]
- [-ReplyUrls <String[]>] [-RequiredResourceAccess <IMicrosoftGraphRequiredResourceAccess[]>]
- [-SignInAudience <String>] [-SPARedirectUri <String[]>] [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
+ [-RequiredResourceAccess <IMicrosoftGraphRequiredResourceAccess[]>] [-SignInAudience <String>]
+ [-SPARedirectUri <String[]>] [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
  [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
- [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
+ -PasswordCredentials <IMicrosoftGraphPasswordCredential[]> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ApplicationWithKeyPlainParameterSet
+```
+New-AzADApplication -DisplayName <String> [-AvailableToOtherTenants <Boolean>] [-HomePage <String>]
+ [-ReplyUrls <String[]>] [-IdentifierUri <String[]>] [-Web <IMicrosoftGraphWebApplication>]
+ [-AddIn <IMicrosoftGraphAddIn[]>] [-Api <IMicrosoftGraphApiApplication>] [-AppRole <IMicrosoftGraphAppRole[]>]
+ [-ApplicationTemplateId <String>] [-CreatedOnBehalfOfDeletedDateTime <DateTime>] [-DeletedDateTime <DateTime>]
+ [-Description <String>] [-DisabledByMicrosoftStatus <String>] [-GroupMembershipClaim <String>]
+ [-HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>]
+ [-Info <IMicrosoftGraphInformationalUrl>] [-IsDeviceOnlyAuthSupported] [-IsFallbackPublicClient]
+ [-LogoInputFile <String>] [-Note <String>] [-Oauth2RequirePostResponse]
+ [-OptionalClaim <IMicrosoftGraphOptionalClaims>]
+ [-ParentalControlSetting <IMicrosoftGraphParentalControlSettings>] [-PublicClientRedirectUri <String[]>]
+ [-RequiredResourceAccess <IMicrosoftGraphRequiredResourceAccess[]>] [-SignInAudience <String>]
+ [-SPARedirectUri <String[]>] [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
+ [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
+ [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>] -CertValue <String> [-StartDate <DateTime>]
+ [-EndDate <DateTime>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationWithPasswordPlainParameterSet
 ```
-New-AzADApplication -DisplayName <String> [-AddIn <IMicrosoftGraphAddIn[]>]
- [-Api <IMicrosoftGraphApiApplication>] [-ApplicationTemplateId <String>]
- [-AppRole <IMicrosoftGraphAppRole[]>] [-AvailableToOtherTenants <Boolean>]
- [-CreatedOnBehalfOfDeletedDateTime <DateTime>] [-DeletedDateTime <DateTime>] [-Description <String>]
- [-DisabledByMicrosoftStatus <String>] [-EndDate <DateTime>] [-GroupMembershipClaim <String>]
- [-HomePage <String>] [-HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>]
- [-IdentifierUri <String[]>] [-Info <IMicrosoftGraphInformationalUrl>] [-IsDeviceOnlyAuthSupported]
- [-IsFallbackPublicClient] [-LogoInputFile <String>] [-Note <String>] [-Oauth2RequirePostResponse]
+New-AzADApplication -DisplayName <String> [-AvailableToOtherTenants <Boolean>] [-HomePage <String>]
+ [-ReplyUrls <String[]>] [-IdentifierUri <String[]>] [-Web <IMicrosoftGraphWebApplication>]
+ [-AddIn <IMicrosoftGraphAddIn[]>] [-Api <IMicrosoftGraphApiApplication>] [-AppRole <IMicrosoftGraphAppRole[]>]
+ [-ApplicationTemplateId <String>] [-CreatedOnBehalfOfDeletedDateTime <DateTime>] [-DeletedDateTime <DateTime>]
+ [-Description <String>] [-DisabledByMicrosoftStatus <String>] [-GroupMembershipClaim <String>]
+ [-HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>]
+ [-Info <IMicrosoftGraphInformationalUrl>] [-IsDeviceOnlyAuthSupported] [-IsFallbackPublicClient]
+ [-LogoInputFile <String>] [-Note <String>] [-Oauth2RequirePostResponse]
  [-OptionalClaim <IMicrosoftGraphOptionalClaims>]
  [-ParentalControlSetting <IMicrosoftGraphParentalControlSettings>] [-PublicClientRedirectUri <String[]>]
- [-ReplyUrls <String[]>] [-RequiredResourceAccess <IMicrosoftGraphRequiredResourceAccess[]>]
- [-SignInAudience <String>] [-SPARedirectUri <String[]>] [-StartDate <DateTime>] [-Tag <String[]>]
- [-TokenEncryptionKeyId <String>] [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
- [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-RequiredResourceAccess <IMicrosoftGraphRequiredResourceAccess[]>] [-SignInAudience <String>]
+ [-SPARedirectUri <String[]>] [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
+ [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
+ [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>] [-StartDate <DateTime>] [-EndDate <DateTime>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -114,7 +115,7 @@ Adds new entity to applications
 
 ### Example 1: Create application
 ```powershell
-PS C:\> New-AzADApplication -SigninAudience AzureADandPersonalMicrosoftAccount
+New-AzADApplication -SigninAudience AzureADandPersonalMicrosoftAccount
 ```
 
 Create application with signin audience 'AzureADandPersonalMicrosoftAccount', other available options are: 'AzureADMyOrg', 'AzureADMultipleOrgs', 'PersonalMicrosoftAccount'
@@ -557,7 +558,6 @@ Accept wildcard characters: False
 
 ### -PublicClientRedirectUri
 
-
 ```yaml
 Type: System.String[]
 Parameter Sets: (All)
@@ -624,7 +624,6 @@ Accept wildcard characters: False
 ```
 
 ### -SPARedirectUri
-
 
 ```yaml
 Type: System.String[]
@@ -711,6 +710,22 @@ To construct, see NOTES section for TOKENLIFETIMEPOLICY properties and create a 
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphTokenLifetimePolicy[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Web
+webApplication
+To construct, see NOTES section for WEB properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphWebApplication
 Parameter Sets: (All)
 Aliases:
 
@@ -881,5 +896,16 @@ TOKENLIFETIMEPOLICY <IMicrosoftGraphTokenLifetimePolicy[]>: The tokenLifetimePol
   - `[DeletedDateTime <DateTime?>]`: 
   - `[DisplayName <String>]`: The name displayed in directory
 
+WEB <IMicrosoftGraphWebApplication>: webApplication
+  - `[(Any) <Object>]`: This indicates any property can be added to this object.
+  - `[HomePageUrl <String>]`: Home page or landing page of the application.
+  - `[ImplicitGrantSetting <IMicrosoftGraphImplicitGrantSettings>]`: implicitGrantSettings
+    - `[(Any) <Object>]`: This indicates any property can be added to this object.
+    - `[EnableAccessTokenIssuance <Boolean?>]`: Specifies whether this web application can request an access token using the OAuth 2.0 implicit flow.
+    - `[EnableIdTokenIssuance <Boolean?>]`: Specifies whether this web application can request an ID token using the OAuth 2.0 implicit flow.
+  - `[LogoutUrl <String>]`: Specifies the URL that will be used by Microsoft's authorization service to logout an user using front-channel, back-channel or SAML logout protocols.
+  - `[RedirectUri <String[]>]`: Specifies the URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+
 ## RELATED LINKS
 
+## RELATED LINKS

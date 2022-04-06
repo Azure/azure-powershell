@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll-Help.xml
 Module Name: Az.DataLakeStore
 ms.assetid: B008028D-27FC-4469-BE71-54F7218C068B
@@ -24,8 +24,8 @@ The **Add-AzDataLakeStoreItemContent** cmdlet adds content to an item in an Azur
 ## EXAMPLES
 
 ### Example 1: Add content to a file
-```
-PS C:\>Add-AzDataLakeStoreItemContent -AccountName "ContosoADLS" -Path /abc/myFile.txt -Value "My content here"
+```powershell
+Add-AzDataLakeStoreItemContent -AccountName "ContosoADLS" -Path /abc/myFile.txt -Value "My content here"
 ```
 
 This command adds content to the file myFile.txt.

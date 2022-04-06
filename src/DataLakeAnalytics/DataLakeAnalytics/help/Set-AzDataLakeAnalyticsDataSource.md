@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics.dll-Help.xml
 Module Name: Az.DataLakeAnalytics
 ms.assetid: 2F28118E-6A34-4261-85BD-8CFDDC8A2707
@@ -24,8 +24,8 @@ The **Set-AzDataLakeAnalyticsDataSource** cmdlet modifies the details of a data 
 ## EXAMPLES
 
 ### Example 1: Change the access key for a data source
-```
-PS C:\>Set-AzDataLakeAnalyticsDataSource -Account "ContosoAdlAccount" -Blob "contosowasb" -AccessKey "...newaccesskey..."
+```powershell
+Set-AzDataLakeAnalyticsDataSource -Account "ContosoAdlAccount" -Blob "contosowasb" -AccessKey "...newaccesskey..."
 ```
 
 This command changes the access key stored for an Azure Blob Storage data source.

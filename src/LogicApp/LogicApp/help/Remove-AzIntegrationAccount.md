@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.LogicApp.dll-Help.xml
 Module Name: Az.LogicApp
 ms.assetid: 607FBE75-727D-4388-9504-94AD31BCDBBF
@@ -29,8 +29,8 @@ If you omit a required template parameter, the cmdlet prompts you for the value.
 ## EXAMPLES
 
 ### Example 1: Remove an integration account
-```
-PS C:\>Remove-AzIntegrationAccount -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -Force
+```powershell
+Remove-AzIntegrationAccount -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -Force
 ```
 
 This command removes an integration account named IntegrationAccount31.

@@ -36,9 +36,11 @@ The Get-AzSqlElasticJobAgent cmdlet gets one or more Elastic Job agents
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Get-AzSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent
 ```
-PS C:\> Get-AzSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent
 
+```output
 ResourceGroupName ServerName       DatabaseName AgentName State Tags
 ----------------- ----------       ------------ --------- ----- ----
 rg                elasticjobserver jobdb        agent     Ready

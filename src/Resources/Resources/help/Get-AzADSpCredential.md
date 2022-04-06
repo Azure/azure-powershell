@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resources-help.xml
 Module Name: Az.Resources
 online version: https://docs.microsoft.com/powershell/module/az.resources/get-azadspcredential
 schema: 2.0.0
@@ -14,25 +14,25 @@ Lists key credentials and password credentials for an service principal.
 
 ### ObjectIdParameterSet (Default)
 ```
-Get-AzADSpCredential -ObjectId <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzADSpCredential -ObjectId <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SPNParameterSet
+```
+Get-AzADSpCredential -ServicePrincipalName <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### DisplayNameParameterSet
 ```
-Get-AzADSpCredential -DisplayName <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+Get-AzADSpCredential -DisplayName <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### SPNObjectParameterSet
 ```
 Get-AzADSpCredential -ServicePrincipalObject <IMicrosoftGraphServicePrincipal> [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### SPNParameterSet
-```
-Get-AzADSpCredential -ServicePrincipalName <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,7 +42,7 @@ Lists key credentials and password credentials for an service principal.
 
 ### Example 1: List credentials from service principal by display name
 ```powershell
-PS C:\> Get-AzADSpCredential -DisplayName $name
+Get-AzADSpCredential -DisplayName $name
 ```
 
 List credentials from service principal by display name
@@ -173,7 +173,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ALIASES
 
-Get-ADServicePrincipalCredential
+Get-AzADServicePrincipalCredential
 
 COMPLEX PARAMETER PROPERTIES
 
@@ -301,3 +301,4 @@ SERVICEPRINCIPALOBJECT <IMicrosoftGraphServicePrincipal>: The service principal 
 
 ## RELATED LINKS
 
+## RELATED LINKS

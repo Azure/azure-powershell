@@ -61,18 +61,24 @@ Microsoft accounts, such as those in the Outlook.com, Hotmail.com, or Live.com d
 Other guest accounts, such as those in the Gmail.com or Yahoo.com domains, are not supported as administrators.
 We recommend that you provision a dedicated Azure AD group as an administrator.
 
+The cmdlet may call below Microsoft Graph API according to input parameters:
+
+* GET /users/{id}
+* GET /servicePrincipals/{id}
+* GET /groups/{id}
+
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzSynapseSqlActiveDirectoryAdministrator -WorkspaceName ContosoWorkspace -DisplayName "DBAs"
+Set-AzSynapseSqlActiveDirectoryAdministrator -WorkspaceName ContosoWorkspace -DisplayName "DBAs"
 ```
 
 This command provisions an Azure AD administrator group named DBAs for the workspace named ContosoWorkspace.
 
 ### Example 2
 ```powershell
-PS C:\> Set-AzSynapseSqlActiveDirectoryAdministrator -WorkspaceName ContosoWorkspace -ObjectId "40b79501-b343-44ed-9ce7-da4c8cc7353b"
+Set-AzSynapseSqlActiveDirectoryAdministrator -WorkspaceName ContosoWorkspace -ObjectId "40b79501-b343-44ed-9ce7-da4c8cc7353b"
 ```
 
 This command provisions an Azure AD administrator by objectId for the workspace named ContosoWorkspace.

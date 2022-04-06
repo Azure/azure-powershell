@@ -37,29 +37,29 @@ Use this cmdlet to get the managed application type version details in the speci
 
 ### Example 1
 ```powershell
-PS C:\> $resourceGroupName = "testRG"
-PS C:\> $clusterName = "testCluster"
-PS C:\> $appTypeName = "testAppType"
-PS C:\> $appTypeVersion = "v1"
-PS C:\> Get-AzServiceFabricManagedClusterApplicationTypeVersion -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appTypeName -Version $appTypeVersion
+$resourceGroupName = "testRG"
+$clusterName = "testCluster"
+$appTypeName = "testAppType"
+$appTypeVersion = "v1"
+Get-AzServiceFabricManagedClusterApplicationTypeVersion -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appTypeName -Version $appTypeVersion
 ```
 
 This example gets the managed application type "testAppType" with version "v1", if it doesn't find the resource it will throw an exception.
 
 ### Example 2
 ```powershell
-PS C:\> $resourceGroupName = "testRG"
-PS C:\> $clusterName = "testCluster"
-PS C:\> $appTypeName = "testAppType"
-PS C:\> Get-AzServiceFabricManagedClusterApplicationTypeVersion -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appTypeName
+$resourceGroupName = "testRG"
+$clusterName = "testCluster"
+$appTypeName = "testAppType"
+Get-AzServiceFabricManagedClusterApplicationTypeVersion -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appTypeName
 ```
 
 This example gets a list of the managed application type versions defined under the specified cluster and type.
 
 ### Example 3
 ```powershell
-PS C:\> $resourceId = "/subscriptions/13ad2c84-84fa-4798-ad71-e70c07af873f/resourcegroups/testRG/providers/Microsoft.ServiceFabric/managedClusters/testCluster/applicationTypes/testAppType/versions/v1"
-PS C:\> Get-AzServiceFabricManagedClusterApplicationTypeVersion -ResourceId $resourceId
+$resourceId = "/subscriptions/13ad2c84-84fa-4798-ad71-e70c07af873f/resourcegroups/testRG/providers/Microsoft.ServiceFabric/managedClusters/testCluster/applicationTypes/testAppType/versions/v1"
+Get-AzServiceFabricManagedClusterApplicationTypeVersion -ResourceId $resourceId
 ```
 
 This example will get the managed application type version details with the ARM Resource ID specified, if it doesn't find the resource it will throw an exception.

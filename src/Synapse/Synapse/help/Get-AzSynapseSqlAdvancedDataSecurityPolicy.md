@@ -37,14 +37,14 @@ The **Get-AzSynapseSqlAdvancedDataSecurityPolicy** cmdlet retrieves the Advanced
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSynapseSqlAdvancedDataSecurityPolicy -WorkspaceName ContosoWorkspace
+Get-AzSynapseSqlAdvancedDataSecurityPolicy -WorkspaceName ContosoWorkspace
 ```
 
 This command gets Advanced Data Security on the workspace named ContosoWorkspace.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzSynapseWorkspace -Name ContosoWorkspace | Get-AzSynapseSqlAdvancedDataSecurityPolicy
+Get-AzSynapseWorkspace -Name ContosoWorkspace | Get-AzSynapseSqlAdvancedDataSecurityPolicy
 ```
 
 This command gets Advanced Data Security on the workspace named ContosoWorkspace through pipeline.

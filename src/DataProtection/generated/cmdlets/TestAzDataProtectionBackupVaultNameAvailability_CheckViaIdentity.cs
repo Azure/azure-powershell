@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Extensions;
+    using System;
 
     /// <summary>API to check for resource name availability</summary>
     /// <remarks>

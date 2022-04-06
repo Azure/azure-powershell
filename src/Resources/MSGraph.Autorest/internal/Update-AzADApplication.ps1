@@ -22,9 +22,9 @@ The directoryObject type is the base type for many other directory entity types.
 Represents an Azure Active Directory object.
 The directoryObject type is the base type for many other directory entity types.
 .Example
-PS C:\> Update-AzADApplication -DisplayName $name -HomePage $homepage
+Update-AzADApplication -DisplayName $name -HomePage $homepage
 .Example
-PS C:\> Get-AzADApplication -ObjectId $id | Update-AzADApplication -ReplyUrl $replyurl
+Get-AzADApplication -ObjectId $id | Update-AzADApplication -ReplyUrl $replyurl
 
 .Outputs
 System.Boolean
@@ -491,7 +491,7 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            UpdateExpanded = 'Az.Resources.MSGraph.private\Update-AzADApplication_UpdateExpanded';
+            UpdateExpanded = 'Az.MSGraph.private\Update-AzADApplication_UpdateExpanded';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

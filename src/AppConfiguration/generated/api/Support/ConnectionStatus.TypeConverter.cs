@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support
 {
 
-    /// <summary>TypeConverter implementation for ConnectionStatus.</summary>
+    /// <summary>The private link service connection status.</summary>
     public partial class ConnectionStatusTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

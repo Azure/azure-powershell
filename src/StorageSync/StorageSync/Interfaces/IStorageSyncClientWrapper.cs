@@ -13,7 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Graph.RBAC.Version1_6_20190326.ActiveDirectory;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Users.Models;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01.Models;
 using Microsoft.Azure.Management.Internal.Resources;
@@ -30,10 +33,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Interfaces
     {
 
         /// <summary>
-        /// Gets or sets the active directory client.
+        /// Gets or sets the Microsoft Graph Client.
         /// </summary>
-        /// <value>The active directory client.</value>
-        ActiveDirectoryClient ActiveDirectoryClient { get; set; }
+        /// <value>The Microsoft Graph client.</value>
+        MicrosoftGraphClient MicrosoftGraphClient { get; set; }
 
         /// <summary>
         /// Gets or sets the storage sync management client.
@@ -75,7 +78,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Interfaces
         /// Ensures the service principal.
         /// </summary>
         /// <returns>PSADServicePrincipal.</returns>
-        PSADServicePrincipal EnsureServicePrincipal();
+        MicrosoftGraphServicePrincipal GetServicePrincipalOrNull();
 
         /// <summary>
         /// Ensures the role assignment.
@@ -84,7 +87,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Interfaces
         /// <param name="storageAccountSubscriptionId">The storage account subscription identifier.</param>
         /// <param name="storageAccountResourceId">The storage account resource identifier.</param>
         /// <returns>RoleAssignment.</returns>
-        RoleAssignment EnsureRoleAssignment(PSADServicePrincipal serverPrincipal, string storageAccountSubscriptionId, string storageAccountResourceId);
+        RoleAssignment EnsureRoleAssignment(MicrosoftGraphServicePrincipal serverPrincipal, string storageAccountSubscriptionId, string storageAccountResourceId);
 
         /// <summary>
         /// This function will invoke the registration and continue operation with a success function call.

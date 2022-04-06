@@ -4,19 +4,19 @@
 
 **[Az Predictor](https://www.powershellgallery.com/packages/Az.Tools.Predictor/)** is a PowerShell module that helps you navigate the cmdlets and parameters of the [Az module](https://www.powershellgallery.com/packages/Az) by providing context-aware suggestions in the PowerShell command line.
 
-Az Predictor is using the [subsystem plugin model](https://docs.microsoft.com/en-us/powershell/scripting/learn/experimental-features?view=powershell-7.2#pssubsystempluginmodel) available with PowerShell 7.2. This updated version requires [PS Readline 2.2.0-beta3](https://www.powershellgallery.com/packages/PSReadLine/2.2.0-beta3) to display the suggestions.
+Az Predictor is using the [subsystem plugin model](https://docs.microsoft.com/en-us/powershell/scripting/learn/experimental-features?view=powershell-7.2#pssubsystempluginmodel) available with PowerShell 7.2. This updated version requires [PS Readline 2.2.2](https://www.powershellgallery.com/packages/PSReadLine/2.2.2) to display the suggestions.
 
 Required configuration for Az Predictor:
 
-- [PowerShell 7.2 preview 6](https://github.com/PowerShell/PowerShell/releases/tag/v7.2.0-preview.6)
-- [PSReadline 2.2.0-beta3](https://github.com/PowerShell/PSReadLine/releases/tag/v2.2.0-beta3)
+- [PowerShell 7.2](https://github.com/PowerShell/PowerShell/releases/tag/v7.2.0)
+- [PSReadline 2.2.2](https://github.com/PowerShell/PSReadLine/releases/tag/v2.2.2)
 
 ## Getting started
 
 ### Installing the module
 
-1. Install [PowerShell 7.2 preview 6](https://github.com/PowerShell/PowerShell/releases/tag/v7.2.0-preview.6)
-2. Install [PSReadline 2.2.0-beta3](https://www.powershellgallery.com/packages/PSReadLine/2.2.0-beta3)
+1. Install [PowerShell 7.2](https://github.com/PowerShell/PowerShell/releases/tag/v7.2.0)
+2. Install [PSReadline 2.2.2](https://www.powershellgallery.com/packages/PSReadLine/2.2.2)
 
     `Install-Module -Name PSReadline -AllowPrerelease`
 

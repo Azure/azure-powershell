@@ -40,7 +40,10 @@ Updates the throughput value of a CosmosDB Sql Database.
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzCosmosDBSqlDatabseThroughput -AccountName {myAccountName} -ResourceGroupName {myResourceGroupName} -Name {myDatabaseName} -Throughput {updatedThroughputValue}
+Update-AzCosmosDBSqlDatabaseThroughput -AccountName {myAccountName} -ResourceGroupName {myResourceGroupName} -Name {myDatabaseName} -Throughput {updatedThroughputValue}
+```
+
+```output
 Name                : mxGp
 Id                  : /subscriptions/{mySubscriptionId}/resourceGroups/{myResourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{myAccountName}/sqlDatabases/{myDatabaseName}/throughputSettings/default
 Throughput          : {updatedThroughputValue}

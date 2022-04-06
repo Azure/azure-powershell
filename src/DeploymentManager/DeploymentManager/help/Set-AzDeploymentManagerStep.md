@@ -25,7 +25,7 @@ The cmdlet returns the updated step object.
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzDeploymentManagerStep -InputObject $stepObject
+Set-AzDeploymentManagerStep -InputObject $stepObject
 ```
 
 This command updates a step whose name and ResourceGroup match the Name and ResourceGroupName properties of the $stepObject, respectively.

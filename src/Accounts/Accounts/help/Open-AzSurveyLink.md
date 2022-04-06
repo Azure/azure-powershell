@@ -22,8 +22,11 @@ Open survey link in default browser.
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 Open-AzSurveyLink
+```
+
+```Output
 Opening the default browser to https://aka.ms/azpssurvey?Q_CHL=INTERCEPT
 ```
 

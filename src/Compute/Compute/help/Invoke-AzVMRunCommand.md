@@ -40,7 +40,7 @@ Invoke a run command on the VM.
 
 ### Example 1: Invoke a command on Windows
 ```powershell
-PS C:\> Invoke-AzVMRunCommand -ResourceGroupName 'rgname' -VMName 'vmname' -CommandId 'RunPowerShellScript' -ScriptPath 'sample.ps1' -Parameter @{param1 = "var1"; param2 = "var2"}
+Invoke-AzVMRunCommand -ResourceGroupName 'rgname' -VMName 'vmname' -CommandId 'RunPowerShellScript' -ScriptPath 'sample.ps1' -Parameter @{param1 = "var1"; param2 = "var2"}
 ```
 
 Invoke a run command 'RunPowerShellScript' with overriding the script 'sample.ps1' on a Windows VM named 'vmname' in resource group 'rgname'. Var1 and var2 are defined as parameters in the sample.ps1. Parameter value can be string type only and script is responsible for converting them to other types if needed. 

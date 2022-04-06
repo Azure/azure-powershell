@@ -112,7 +112,7 @@ function Add-AzADAppPermission {
     process {
         switch ($PSCmdlet.ParameterSetName) {
             'ObjectIdParameterSet' {
-                $app = MSGraph.internal\Get-AzADApplication -Id $PSBoundParameters['ObjectId']
+                $app = Az.MSGraph.internal\Get-AzADApplication -Id $PSBoundParameters['ObjectId']
                 if($null -eq $app) {
                     Write-Error "Cannot find application by ObjectId $($PSBoundParameters['ObjectId'])"
                 }

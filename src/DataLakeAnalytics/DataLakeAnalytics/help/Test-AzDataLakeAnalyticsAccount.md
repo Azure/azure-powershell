@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics.dll-Help.xml
 Module Name: Az.DataLakeAnalytics
 ms.assetid: 0B52890D-102F-4C3C-9EF9-017F6ECA3E26
@@ -24,8 +24,8 @@ The **Test-AzDataLakeAnalyticsAccount** cmdlet checks for the existence of a Dat
 ## EXAMPLES
 
 ### Example 1: Test whether an account exists
-```
-PS C:\>Test-AzDataLakeAnalyticsAccount -Name "ContosoAdlAccount"
+```powershell
+Test-AzDataLakeAnalyticsAccount -Name "ContosoAdlAccount"
 ```
 
 This command tests whether the account named ContosoAdlAccount exists.

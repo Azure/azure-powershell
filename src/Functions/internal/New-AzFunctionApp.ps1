@@ -20,24 +20,23 @@ Description for Creates a new web, mobile, or API app in an existing resource gr
 .Description
 Description for Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.
 .Example
-PS C:\> New-AzFunctionApp -Name MyUniqueFunctionAppName `
-                          -ResourceGroupName MyResourceGroupName `
-                          -Location centralUS `
-                          -StorageAccount MyStorageAccountName `
-                          -Runtime PowerShell
+New-AzFunctionApp -Name MyUniqueFunctionAppName `
+                  -ResourceGroupName MyResourceGroupName `
+                  -Location centralUS `
+                  -StorageAccount MyStorageAccountName `
+                  -Runtime PowerShell
 .Example
-PS C:\> New-AzFunctionApp -Name MyUniqueFunctionAppName `
-                          -ResourceGroupName MyResourceGroupName `
-                          -PlanName MyPlanName `
-                          -StorageAccount MyStorageAccountName `
-                          -Runtime PowerShell
+New-AzFunctionApp -Name MyUniqueFunctionAppName `
+                  -ResourceGroupName MyResourceGroupName `
+                  -PlanName MyPlanName `
+                  -StorageAccount MyStorageAccountName `
+                  -Runtime PowerShell
 .Example
-PS C:\> New-AzFunctionApp -Name MyUniqueFunctionAppName `
-                          -ResourceGroupName MyResourceGroupName `
-                          -PlanName MyPlanName `
-                          -StorageAccount MyStorageAccountName `
-                          -DockerImageName myacr.azurecr.io/myimage:tag
-
+New-AzFunctionApp -Name MyUniqueFunctionAppName `
+                  -ResourceGroupName MyResourceGroupName `
+                  -PlanName MyPlanName `
+                  -StorageAccount MyStorageAccountName `
+                  -DockerImageName myacr.azurecr.io/myimage:tag
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite

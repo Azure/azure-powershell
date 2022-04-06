@@ -30,8 +30,10 @@ Lists eligible SKUs for Kusto resource provider.
 
 ### Example 1: Lists eligible SKUs
 ```powershell
-PS C:\> Get-AzKustoClusterSku
+Get-AzKustoClusterSku
+```
 
+```output
 Location             Name                        ResourceType Tier
 --------             ----                        ------------ ----
 {eastus2}            D13_v2                      clusters     Standard
@@ -72,8 +74,10 @@ The above command lists eligible SKUs.
 
 ### Example 2: Lists eligible SKUs for specific cluster
 ```powershell
-PS C:\>  Get-AzKustoClusterSku -ResourceGroupName testrg -ClusterName testnewkustocluster
+Get-AzKustoClusterSku -ResourceGroupName testrg -ClusterName testnewkustocluster
+```
 
+```output
 ResourceType
 ------------
 Microsoft.Kusto/clusters

@@ -51,7 +51,7 @@
           "CENTRALUSEUAP:20210826T070359Z:edfeac4d-9413-4ac7-9c92-373a75bc6490"
         ],
         "Date": [
-          "Wed, 03 Nov 2021 06:15:28 GMT"
+          "Mon, 24 Jan 2022 00:21:29 GMT"
         ],
         "Content-Length": [
           "460"
@@ -120,7 +120,7 @@
           "CENTRALUSEUAP:20210826T070400Z:9151d67a-89d5-48f1-bb37-b5b0ce0d395c"
         ],
         "Date": [
-          "Wed, 03 Nov 2021 06:15:28 GMT"
+          "Mon, 24 Jan 2022 00:21:29 GMT"
         ],
         "Content-Length": [
           "390"
@@ -186,7 +186,7 @@
           "CENTRALUSEUAP:20210826T070400Z:8fc95e17-77e1-4f4c-a363-950d7cfd82d7"
         ],
         "Date": [
-          "Wed, 03 Nov 2021 06:15:28 GMT"
+          "Mon, 24 Jan 2022 00:21:29 GMT"
         ],
         "Content-Length": [
           "941"
@@ -202,8 +202,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationFabrics/Rcm-Vault-150-vmwarefabric?api-version=2021-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL3JlcGxpY2F0aW9uRmFicmljcy9SY20tVmF1bHQtMTUwLXZtd2FyZWZhYnJpYz9hcGktdmVyc2lvbj0yMDIxLTA4LTAx",
+      "RequestUri": "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationFabrics/Rcm-Vault-150-vmwarefabric?api-version=2021-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL3JlcGxpY2F0aW9uRmFicmljcy9SY20tVmF1bHQtMTUwLXZtd2FyZWZhYnJpYz9hcGktdmVyc2lvbj0yMDIxLTExLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -220,7 +220,7 @@
           "FxVersion/4.6.30411.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.1.6.0"
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.2.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -256,7 +256,7 @@
           "CENTRALUSEUAP:20210826T070401Z:57b16e45-6c32-4428-925b-8bd38e5a4533"
         ],
         "Date": [
-          "Wed, 03 Nov 2021 06:15:28 GMT"
+          "Mon, 24 Jan 2022 00:21:29 GMT"
         ],
         "Content-Length": [
           "9945"
@@ -272,8 +272,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationFabrics/Rcm-Vault-150-vmwarefabric/replicationProtectionContainers/Rcm-Vault-4678replicationcontainer?api-version=2021-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL3JlcGxpY2F0aW9uRmFicmljcy9SY20tVmF1bHQtMTUwLXZtd2FyZWZhYnJpYy9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJzL1JjbS1WYXVsdC00Njc4cmVwbGljYXRpb25jb250YWluZXI/YXBpLXZlcnNpb249MjAyMS0wOC0wMQ==",
+      "RequestUri": "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationFabrics/Rcm-Vault-150-vmwarefabric/replicationProtectionContainers/Rcm-Vault-4678replicationcontainer?api-version=2021-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL3JlcGxpY2F0aW9uRmFicmljcy9SY20tVmF1bHQtMTUwLXZtd2FyZWZhYnJpYy9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJzL1JjbS1WYXVsdC00Njc4cmVwbGljYXRpb25jb250YWluZXI/YXBpLXZlcnNpb249MjAyMS0xMS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -290,7 +290,7 @@
           "FxVersion/4.6.30411.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.1.6.0"
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.2.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -326,7 +326,7 @@
           "CENTRALUSEUAP:20210826T070402Z:9e53d6c9-a164-4023-88f9-c2026c2ef932"
         ],
         "Date": [
-          "Wed, 03 Nov 2021 06:15:28 GMT"
+          "Mon, 24 Jan 2022 00:21:29 GMT"
         ],
         "Content-Length": [
           "628"
@@ -342,8 +342,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationFabrics/Rcm-Vault-150-vmwarefabric/replicationProtectionContainers/Rcm-Vault-4678replicationcontainer/replicationProtectionContainerMappings?api-version=2021-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL3JlcGxpY2F0aW9uRmFicmljcy9SY20tVmF1bHQtMTUwLXZtd2FyZWZhYnJpYy9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJzL1JjbS1WYXVsdC00Njc4cmVwbGljYXRpb25jb250YWluZXIvcmVwbGljYXRpb25Qcm90ZWN0aW9uQ29udGFpbmVyTWFwcGluZ3M/YXBpLXZlcnNpb249MjAyMS0wOC0wMQ==",
+      "RequestUri": "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationFabrics/Rcm-Vault-150-vmwarefabric/replicationProtectionContainers/Rcm-Vault-4678replicationcontainer/replicationProtectionContainerMappings?api-version=2021-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL3JlcGxpY2F0aW9uRmFicmljcy9SY20tVmF1bHQtMTUwLXZtd2FyZWZhYnJpYy9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJzL1JjbS1WYXVsdC00Njc4cmVwbGljYXRpb25jb250YWluZXIvcmVwbGljYXRpb25Qcm90ZWN0aW9uQ29udGFpbmVyTWFwcGluZ3M/YXBpLXZlcnNpb249MjAyMS0xMS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -360,7 +360,7 @@
           "FxVersion/4.6.30411.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.1.6.0"
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.2.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -396,7 +396,7 @@
           "CENTRALUSEUAP:20210826T070402Z:4302809b-a0cf-4a23-9762-9535948eef46"
         ],
         "Date": [
-          "Wed, 03 Nov 2021 06:15:28 GMT"
+          "Mon, 24 Jan 2022 00:21:29 GMT"
         ],
         "Content-Length": [
           "5227"
@@ -412,8 +412,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationPolicies/v2aRcm-pwsh-testpolicy?api-version=2021-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL3JlcGxpY2F0aW9uUG9saWNpZXMvdjJhUmNtLXB3c2gtdGVzdHBvbGljeT9hcGktdmVyc2lvbj0yMDIxLTA4LTAx",
+      "RequestUri": "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationPolicies/v2aRcm-pwsh-testpolicy?api-version=2021-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL3JlcGxpY2F0aW9uUG9saWNpZXMvdjJhUmNtLXB3c2gtdGVzdHBvbGljeT9hcGktdmVyc2lvbj0yMDIxLTExLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -430,7 +430,7 @@
           "FxVersion/4.6.30411.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.1.6.0"
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.2.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -466,7 +466,7 @@
           "CENTRALUSEUAP:20210826T070402Z:84068961-cd1c-4ffb-a56c-d1e76e254323"
         ],
         "Date": [
-          "Wed, 03 Nov 2021 06:15:28 GMT"
+          "Mon, 24 Jan 2022 00:21:29 GMT"
         ],
         "Content-Length": [
           "530"
@@ -482,8 +482,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationPolicies/appconsistency-policy-failback?api-version=2021-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL3JlcGxpY2F0aW9uUG9saWNpZXMvYXBwY29uc2lzdGVuY3ktcG9saWN5LWZhaWxiYWNrP2FwaS12ZXJzaW9uPTIwMjEtMDgtMDE=",
+      "RequestUri": "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationPolicies/appconsistency-policy-failback?api-version=2021-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL3JlcGxpY2F0aW9uUG9saWNpZXMvYXBwY29uc2lzdGVuY3ktcG9saWN5LWZhaWxiYWNrP2FwaS12ZXJzaW9uPTIwMjEtMTEtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -500,7 +500,7 @@
           "FxVersion/4.6.30411.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.1.6.0"
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.2.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -536,7 +536,7 @@
           "CENTRALUSEUAP:20210826T070403Z:31e83070-f700-4b1e-ac08-c58ac4c74357"
         ],
         "Date": [
-          "Wed, 03 Nov 2021 06:15:28 GMT"
+          "Mon, 24 Jan 2022 00:21:29 GMT"
         ],
         "Content-Length": [
           "496"
@@ -552,8 +552,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationPolicies/24-hour-replication-policy?api-version=2021-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL3JlcGxpY2F0aW9uUG9saWNpZXMvMjQtaG91ci1yZXBsaWNhdGlvbi1wb2xpY3k/YXBpLXZlcnNpb249MjAyMS0wOC0wMQ==",
+      "RequestUri": "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationPolicies/24-hour-replication-policy?api-version=2021-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL3JlcGxpY2F0aW9uUG9saWNpZXMvMjQtaG91ci1yZXBsaWNhdGlvbi1wb2xpY3k/YXBpLXZlcnNpb249MjAyMS0xMS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -570,7 +570,7 @@
           "FxVersion/4.6.30411.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.1.6.0"
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.2.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -606,7 +606,7 @@
           "CENTRALUSEUAP:20210826T070403Z:679537ce-fa42-4e7e-895b-ed0f3631dd6b"
         ],
         "Date": [
-          "Wed, 03 Nov 2021 06:15:28 GMT"
+          "Mon, 24 Jan 2022 00:21:29 GMT"
         ],
         "Content-Length": [
           "541"
@@ -622,8 +622,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationPolicies/crashconsistency-policy-failback?api-version=2021-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL3JlcGxpY2F0aW9uUG9saWNpZXMvY3Jhc2hjb25zaXN0ZW5jeS1wb2xpY3ktZmFpbGJhY2s/YXBpLXZlcnNpb249MjAyMS0wOC0wMQ==",
+      "RequestUri": "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationPolicies/crashconsistency-policy-failback?api-version=2021-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL3JlcGxpY2F0aW9uUG9saWNpZXMvY3Jhc2hjb25zaXN0ZW5jeS1wb2xpY3ktZmFpbGJhY2s/YXBpLXZlcnNpb249MjAyMS0xMS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -640,7 +640,7 @@
           "FxVersion/4.6.30411.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.1.6.0"
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.2.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -676,7 +676,7 @@
           "CENTRALUSEUAP:20210826T070403Z:d9c26094-89b8-4ae0-aeaa-f8f9f157e6b2"
         ],
         "Date": [
-          "Wed, 03 Nov 2021 06:15:28 GMT"
+          "Mon, 24 Jan 2022 00:21:29 GMT"
         ],
         "Content-Length": [
           "501"
@@ -692,8 +692,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationFabrics/Rcm-Vault-150-vmwarefabric/replicationProtectionContainers/Rcm-Vault-4678replicationcontainer/replicationProtectedItems?api-version=2021-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL3JlcGxpY2F0aW9uRmFicmljcy9SY20tVmF1bHQtMTUwLXZtd2FyZWZhYnJpYy9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJzL1JjbS1WYXVsdC00Njc4cmVwbGljYXRpb25jb250YWluZXIvcmVwbGljYXRpb25Qcm90ZWN0ZWRJdGVtcz9hcGktdmVyc2lvbj0yMDIxLTA4LTAx",
+      "RequestUri": "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationFabrics/Rcm-Vault-150-vmwarefabric/replicationProtectionContainers/Rcm-Vault-4678replicationcontainer/replicationProtectedItems?api-version=2021-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL3JlcGxpY2F0aW9uRmFicmljcy9SY20tVmF1bHQtMTUwLXZtd2FyZWZhYnJpYy9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJzL1JjbS1WYXVsdC00Njc4cmVwbGljYXRpb25jb250YWluZXIvcmVwbGljYXRpb25Qcm90ZWN0ZWRJdGVtcz9hcGktdmVyc2lvbj0yMDIxLTExLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -710,7 +710,7 @@
           "FxVersion/4.6.30411.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.1.6.0"
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.2.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -746,7 +746,7 @@
           "CENTRALUSEUAP:20210826T070404Z:e8dcd5cc-1c72-488c-a3b2-77ad90e5c527"
         ],
         "Date": [
-          "Wed, 03 Nov 2021 06:15:28 GMT"
+          "Mon, 24 Jan 2022 00:21:29 GMT"
         ],
         "Content-Length": [
           "30271"
@@ -762,8 +762,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationFabrics/Rcm-Vault-150-vmwarefabric/replicationProtectionContainers/Rcm-Vault-4678replicationcontainer/replicationProtectedItems/vcenter67_50158471-87c2-d4ad-caa2-abe22face6d8?api-version=2021-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL3JlcGxpY2F0aW9uRmFicmljcy9SY20tVmF1bHQtMTUwLXZtd2FyZWZhYnJpYy9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJzL1JjbS1WYXVsdC00Njc4cmVwbGljYXRpb25jb250YWluZXIvcmVwbGljYXRpb25Qcm90ZWN0ZWRJdGVtcy92Y2VudGVyNjdfNTAxNTg0NzEtODdjMi1kNGFkLWNhYTItYWJlMjJmYWNlNmQ4P2FwaS12ZXJzaW9uPTIwMjEtMDgtMDE=",
+      "RequestUri": "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationFabrics/Rcm-Vault-150-vmwarefabric/replicationProtectionContainers/Rcm-Vault-4678replicationcontainer/replicationProtectedItems/vcenter67_50158471-87c2-d4ad-caa2-abe22face6d8?api-version=2021-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL3JlcGxpY2F0aW9uRmFicmljcy9SY20tVmF1bHQtMTUwLXZtd2FyZWZhYnJpYy9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJzL1JjbS1WYXVsdC00Njc4cmVwbGljYXRpb25jb250YWluZXIvcmVwbGljYXRpb25Qcm90ZWN0ZWRJdGVtcy92Y2VudGVyNjdfNTAxNTg0NzEtODdjMi1kNGFkLWNhYTItYWJlMjJmYWNlNmQ4P2FwaS12ZXJzaW9uPTIwMjEtMTEtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -780,7 +780,7 @@
           "FxVersion/4.6.30411.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.1.6.0"
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.2.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -816,7 +816,7 @@
           "CENTRALUSEUAP:20210826T070404Z:fe92c87b-54fe-4c02-b962-859e1297c9f5"
         ],
         "Date": [
-          "Wed, 03 Nov 2021 06:15:28 GMT"
+          "Mon, 24 Jan 2022 00:21:29 GMT"
         ],
         "Content-Length": [
           "10078"
@@ -832,8 +832,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationFabrics/Rcm-Vault-150-vmwarefabric/replicationProtectionContainers/Rcm-Vault-4678replicationcontainer/replicationProtectedItems/vcenter67_50158471-87c2-d4ad-caa2-abe22face6d8/failoverCommit?api-version=2021-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL3JlcGxpY2F0aW9uRmFicmljcy9SY20tVmF1bHQtMTUwLXZtd2FyZWZhYnJpYy9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJzL1JjbS1WYXVsdC00Njc4cmVwbGljYXRpb25jb250YWluZXIvcmVwbGljYXRpb25Qcm90ZWN0ZWRJdGVtcy92Y2VudGVyNjdfNTAxNTg0NzEtODdjMi1kNGFkLWNhYTItYWJlMjJmYWNlNmQ4L2ZhaWxvdmVyQ29tbWl0P2FwaS12ZXJzaW9uPTIwMjEtMDgtMDE=",
+      "RequestUri": "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationFabrics/Rcm-Vault-150-vmwarefabric/replicationProtectionContainers/Rcm-Vault-4678replicationcontainer/replicationProtectedItems/vcenter67_50158471-87c2-d4ad-caa2-abe22face6d8/failoverCommit?api-version=2021-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL3JlcGxpY2F0aW9uRmFicmljcy9SY20tVmF1bHQtMTUwLXZtd2FyZWZhYnJpYy9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJzL1JjbS1WYXVsdC00Njc4cmVwbGljYXRpb25jb250YWluZXIvcmVwbGljYXRpb25Qcm90ZWN0ZWRJdGVtcy92Y2VudGVyNjdfNTAxNTg0NzEtODdjMi1kNGFkLWNhYTItYWJlMjJmYWNlNmQ4L2ZhaWxvdmVyQ29tbWl0P2FwaS12ZXJzaW9uPTIwMjEtMTEtMDE=",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
@@ -850,7 +850,7 @@
           "FxVersion/4.6.30411.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.1.6.0"
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.2.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -892,7 +892,7 @@
           "CENTRALUSEUAP:20210826T070405Z:336879a3-5175-45c0-9e7f-9a1a4962193a"
         ],
         "Date": [
-          "Wed, 03 Nov 2021 06:15:28 GMT"
+          "Mon, 24 Jan 2022 00:21:29 GMT"
         ],
         "Expires": [
           "-1"
@@ -905,8 +905,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationJobs/f2c09259-f703-4db3-a330-6e625fba7925?api-version=2021-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL3JlcGxpY2F0aW9uSm9icy9mMmMwOTI1OS1mNzAzLTRkYjMtYTMzMC02ZTYyNWZiYTc5MjU/YXBpLXZlcnNpb249MjAyMS0wOC0wMQ==",
+      "RequestUri": "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationJobs/f2c09259-f703-4db3-a330-6e625fba7925?api-version=2021-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL3JlcGxpY2F0aW9uSm9icy9mMmMwOTI1OS1mNzAzLTRkYjMtYTMzMC02ZTYyNWZiYTc5MjU/YXBpLXZlcnNpb249MjAyMS0xMS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -923,7 +923,7 @@
           "FxVersion/4.6.30411.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.1.6.0"
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.2.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -959,7 +959,7 @@
           "CENTRALUSEUAP:20210826T070406Z:912e2a05-7de5-4505-8767-d833694730dc"
         ],
         "Date": [
-          "Wed, 03 Nov 2021 06:15:28 GMT"
+          "Mon, 24 Jan 2022 00:21:29 GMT"
         ],
         "Content-Length": [
           "2242"
@@ -975,8 +975,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationJobs/f2c09259-f703-4db3-a330-6e625fba7925?api-version=2021-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL3JlcGxpY2F0aW9uSm9icy9mMmMwOTI1OS1mNzAzLTRkYjMtYTMzMC02ZTYyNWZiYTc5MjU/YXBpLXZlcnNpb249MjAyMS0wOC0wMQ==",
+      "RequestUri": "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/replicationJobs/f2c09259-f703-4db3-a330-6e625fba7925?api-version=2021-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL3JlcGxpY2F0aW9uSm9icy9mMmMwOTI1OS1mNzAzLTRkYjMtYTMzMC02ZTYyNWZiYTc5MjU/YXBpLXZlcnNpb249MjAyMS0xMS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -993,7 +993,7 @@
           "FxVersion/4.6.30411.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.1.6.0"
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.2.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -1029,7 +1029,7 @@
           "CENTRALUSEUAP:20210826T070406Z:9c0ba41c-53d3-4838-a12f-b2b08c0c4a1c"
         ],
         "Date": [
-          "Wed, 03 Nov 2021 06:15:28 GMT"
+          "Mon, 24 Jan 2022 00:21:29 GMT"
         ],
         "Content-Length": [
           "2272"

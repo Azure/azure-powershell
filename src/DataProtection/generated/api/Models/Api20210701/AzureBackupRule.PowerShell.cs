@@ -66,15 +66,42 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).BackupParameter = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupParameters) content.GetValueForProperty("BackupParameter",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).BackupParameter, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.BackupParametersTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).DataStore = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDataStoreInfoBase) content.GetValueForProperty("DataStore",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).DataStore, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.DataStoreInfoBaseTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).Trigger = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerContext) content.GetValueForProperty("Trigger",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).Trigger, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.TriggerContextTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBasePolicyRuleInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBasePolicyRuleInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBasePolicyRuleInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBasePolicyRuleInternal)this).ObjectType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).BackupParameterObjectType = (string) content.GetValueForProperty("BackupParameterObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).BackupParameterObjectType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).DataStoreType = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreTypes) content.GetValueForProperty("DataStoreType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).DataStoreType, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreTypes.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).DataStoreObjectType = (string) content.GetValueForProperty("DataStoreObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).DataStoreObjectType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).TriggerObjectType = (string) content.GetValueForProperty("TriggerObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).TriggerObjectType, global::System.Convert.ToString);
+            if (content.Contains("BackupParameter"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).BackupParameter = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupParameters) content.GetValueForProperty("BackupParameter",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).BackupParameter, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.BackupParametersTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DataStore"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).DataStore = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDataStoreInfoBase) content.GetValueForProperty("DataStore",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).DataStore, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.DataStoreInfoBaseTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Trigger"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).Trigger = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerContext) content.GetValueForProperty("Trigger",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).Trigger, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.TriggerContextTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBasePolicyRuleInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBasePolicyRuleInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("ObjectType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBasePolicyRuleInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBasePolicyRuleInternal)this).ObjectType, global::System.Convert.ToString);
+            }
+            if (content.Contains("BackupParameterObjectType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).BackupParameterObjectType = (string) content.GetValueForProperty("BackupParameterObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).BackupParameterObjectType, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataStoreType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).DataStoreType = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreTypes) content.GetValueForProperty("DataStoreType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).DataStoreType, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreTypes.CreateFrom);
+            }
+            if (content.Contains("DataStoreObjectType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).DataStoreObjectType = (string) content.GetValueForProperty("DataStoreObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).DataStoreObjectType, global::System.Convert.ToString);
+            }
+            if (content.Contains("TriggerObjectType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).TriggerObjectType = (string) content.GetValueForProperty("TriggerObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).TriggerObjectType, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -92,15 +119,42 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).BackupParameter = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupParameters) content.GetValueForProperty("BackupParameter",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).BackupParameter, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.BackupParametersTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).DataStore = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDataStoreInfoBase) content.GetValueForProperty("DataStore",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).DataStore, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.DataStoreInfoBaseTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).Trigger = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerContext) content.GetValueForProperty("Trigger",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).Trigger, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.TriggerContextTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBasePolicyRuleInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBasePolicyRuleInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBasePolicyRuleInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBasePolicyRuleInternal)this).ObjectType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).BackupParameterObjectType = (string) content.GetValueForProperty("BackupParameterObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).BackupParameterObjectType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).DataStoreType = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreTypes) content.GetValueForProperty("DataStoreType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).DataStoreType, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreTypes.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).DataStoreObjectType = (string) content.GetValueForProperty("DataStoreObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).DataStoreObjectType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).TriggerObjectType = (string) content.GetValueForProperty("TriggerObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).TriggerObjectType, global::System.Convert.ToString);
+            if (content.Contains("BackupParameter"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).BackupParameter = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupParameters) content.GetValueForProperty("BackupParameter",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).BackupParameter, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.BackupParametersTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DataStore"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).DataStore = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDataStoreInfoBase) content.GetValueForProperty("DataStore",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).DataStore, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.DataStoreInfoBaseTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Trigger"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).Trigger = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITriggerContext) content.GetValueForProperty("Trigger",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).Trigger, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.TriggerContextTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBasePolicyRuleInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBasePolicyRuleInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("ObjectType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBasePolicyRuleInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBasePolicyRuleInternal)this).ObjectType, global::System.Convert.ToString);
+            }
+            if (content.Contains("BackupParameterObjectType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).BackupParameterObjectType = (string) content.GetValueForProperty("BackupParameterObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).BackupParameterObjectType, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataStoreType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).DataStoreType = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreTypes) content.GetValueForProperty("DataStoreType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).DataStoreType, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreTypes.CreateFrom);
+            }
+            if (content.Contains("DataStoreObjectType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).DataStoreObjectType = (string) content.GetValueForProperty("DataStoreObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).DataStoreObjectType, global::System.Convert.ToString);
+            }
+            if (content.Contains("TriggerObjectType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).TriggerObjectType = (string) content.GetValueForProperty("TriggerObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRuleInternal)this).TriggerObjectType, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resources-help.xml
 Module Name: Az.Resources
 online version: https://docs.microsoft.com/powershell/module/az.resources/add-azadapppermission
 schema: 2.0.0
@@ -14,14 +14,14 @@ Adds an API permission.
 
 ### ObjectIdParameterSet (Default)
 ```
-Add-AzADAppPermission -ApiId <Guid> -ObjectId <Guid> -PermissionId <String> [-Type <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Add-AzADAppPermission -ApiId <Guid> -PermissionId <String> -ObjectId <Guid> [-Type <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AppIdParameterSet
 ```
-Add-AzADAppPermission -ApiId <Guid> -ApplicationId <Guid> -PermissionId <String> [-Type <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Add-AzADAppPermission -ApiId <Guid> -PermissionId <String> [-Type <String>] -ApplicationId <Guid>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,14 +41,14 @@ User needs to grant consent via Azure Portal if the permission requires admin co
 
 ### Example 1: Add API Permission
 ```powershell
-PS C:\> Add-AzADAppPermission -ObjectId 9cc74d5e-1162-4b90-8696-65f3d6a3f7d0 -ApiId 00000003-0000-0000-c000-000000000000 -PermissionId 5f8c59db-677d-491f-a6b8-5f174b11ec1d
+Add-AzADAppPermission -ObjectId 9cc74d5e-1162-4b90-8696-65f3d6a3f7d0 -ApiId 00000003-0000-0000-c000-000000000000 -PermissionId 5f8c59db-677d-491f-a6b8-5f174b11ec1d
 ```
 
 Add delegated permission "Group.Read.All" of Microsoft Graph API to AD Application (9cc74d5e-1162-4b90-8696-65f3d6a3f7d0)
 
 ### Example 2: Add API Permission
 ```powershell
-PS C:\> Add-AzADAppPermission -ObjectId 9cc74d5e-1162-4b90-8696-65f3d6a3f7d0 -ApiId 00000003-0000-0000-c000-000000000000 -PermissionId 1138cb37-bd11-4084-a2b7-9f71582aeddb -Type Role
+Add-AzADAppPermission -ObjectId 9cc74d5e-1162-4b90-8696-65f3d6a3f7d0 -ApiId 00000003-0000-0000-c000-000000000000 -PermissionId 1138cb37-bd11-4084-a2b7-9f71582aeddb -Type Role
 ```
 
 Add application permission "Device.ReadWrite.All" of Microsoft Graph API to AD Application (9cc74d5e-1162-4b90-8696-65f3d6a3f7d0)
@@ -191,4 +191,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-

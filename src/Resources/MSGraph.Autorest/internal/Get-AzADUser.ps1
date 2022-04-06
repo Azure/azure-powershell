@@ -20,11 +20,11 @@ Represents an Azure Active Directory user object.
 .Description
 Represents an Azure Active Directory user object.
 .Example
-PS C:\> Get-AzADUser -SignedIn
+Get-AzADUser -SignedIn
 .Example
-PS C:\> Get-AzADUser -First 10 -Select 'City' -AppendSelected
+Get-AzADUser -First 10 -Select 'City' -AppendSelected
 .Example
-PS C:\> Get-AzADUser -DisplayName $name
+Get-AzADUser -DisplayName $name
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser
@@ -156,8 +156,8 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Get = 'Az.Resources.MSGraph.private\Get-AzADUser_Get';
-            List = 'Az.Resources.MSGraph.private\Get-AzADUser_List';
+            Get = 'Az.MSGraph.private\Get-AzADUser_Get';
+            List = 'Az.MSGraph.private\Get-AzADUser_List';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

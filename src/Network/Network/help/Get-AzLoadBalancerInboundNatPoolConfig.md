@@ -24,9 +24,9 @@ The **Get-AzLoadBalancerInboundNatPoolConfig** cmdlet gets one or more inbound N
 ## EXAMPLES
 
 ### 1: Get
-```
-PS C:\> $slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
-PS C:\> $slb | Get-AzLoadBalancerInboundNatPoolConfig -Name myInboundNatPool
+```powershell
+$slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
+$slb | Get-AzLoadBalancerInboundNatPoolConfig -Name myInboundNatPool
 ```
 
 ## PARAMETERS

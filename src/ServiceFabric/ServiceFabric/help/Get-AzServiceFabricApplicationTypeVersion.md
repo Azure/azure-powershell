@@ -37,21 +37,21 @@ Use this cmdlet to get the application type version details in the specified res
 
 ### Example 1
 ```powershell
-PS C:\> $resourceGroupName = "testRG"
-PS C:\> $clusterName = "testCluster"
-PS C:\> $appTypeName = "testAppType"
-PS C:\> $appTypeName = "v1"
-PS C:\> Get-AzServiceFabricApplicationTypeVersion -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appTypeName -Version
+$resourceGroupName = "testRG"
+$clusterName = "testCluster"
+$appTypeName = "testAppType"
+$appTypeName = "v1"
+Get-AzServiceFabricApplicationTypeVersion -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appTypeName -Version
 ```
 
 This example gets the application type "testAppType" with version "v1", if it doesn't find the resource it will throw an exception.
 
 ### Example 2
 ```powershell
-PS C:\> $resourceGroupName = "testRG"
-PS C:\> $clusterName = "testCluster"
-PS C:\> $appTypeName = "testAppType"
-PS C:\> Get-AzServiceFabricApplicationTypeVersion -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appTypeName
+$resourceGroupName = "testRG"
+$clusterName = "testCluster"
+$appTypeName = "testAppType"
+Get-AzServiceFabricApplicationTypeVersion -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appTypeName
 ```
 
 This example gets a list of the application type versions defined under the specified cluster and type.

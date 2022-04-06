@@ -20,8 +20,24 @@ New-AzVMSqlServerKeyVaultCredentialConfig [-ResourceGroupName] <String> [-Enable
 ```
 
 ## DESCRIPTION
+The **New-AzVMSqlServerKeyVaultCredentialConfig** cmdlet creates a configuration object for SQL server key vault credential on a virtual machine.
 
 ## EXAMPLES
+
+### Example 1
+```powershell
+New-AzVMSqlServerKeyVaultCredentialConfig -ResourceGroupName "ResourceGroup11" -Enable -AzureKeyVaultUrl https://myvault.vault.azure.net/ -CredentialName test1
+```
+
+```Output
+ResourceGroupName      : ResourceGroup11
+Enable                 : True
+CredentialName         : test1
+AzureKeyVaultUrl       : https://myvault.vault.azure.net/
+ServicePrincipalName   :
+ServicePrincipalSecret :
+Credentials            :
+```
 
 ## PARAMETERS
 

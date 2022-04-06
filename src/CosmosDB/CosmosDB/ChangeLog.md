@@ -20,6 +20,13 @@
 
 ## Upcoming Release
 
+## Version 1.7.0
+* Introduced support for client encryption key resource management required for CosmosDB Client-Side Encryption by adding support for creating, updating and retrieving client encryption keys with following cmdlets: `Get-AzCosmosDbClientEncryptionKey`, `New-AzCosmosDbClientEncryptionKey` and `Update-AzCosmosDbClientEncryptionKey`
+
+## Version 1.5.1
+* Exposed BackupPolicyMigrationState as a part of Get-AzCosmosDBAccount response.
+  - This shew the status of a backup policy migration state when an account was being converted from peroidic backup mode to continuous.
+
 ## Version 1.5.0
 * Fixed when a warning about the value of AnalyticalStorageSchemaType is displayed when no value was given.
 * Added support for managed Cassandra.

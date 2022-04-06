@@ -36,6 +36,32 @@ The **Get-AzCdnOrigin** cmdlet gets an Azure Content Delivery Network (CDN) orig
 
 ## EXAMPLES
 
+### Example 1
+```powershell
+Get-AzCdnOrigin -ResourceGroupName myresourcegroup -ProfileName mycdnprofile -EndpointName myendpoint
+```
+
+```Output
+HostName                   : mystorage.blob.core.windows.net
+HttpPort                   :
+HttpsPort                  :
+OriginHostHeader           :
+Priority                   :
+PrivateLinkApprovalMessage :
+PrivateLinkLocation        :
+PrivateLinkResourceId      :
+Weight                     :
+ResourceState              : Active
+ResourceGroupName          : myresourcegroup
+ProfileName                : mycdnprofile
+EndpointName               : myendpoint
+Id                         : /subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/myresourcegroup/providers/Micr
+                             osoft.Cdn/profiles/mycdnprofile/endpoints/myendpoint/origins/mystorage
+Name                       : mystorage
+Type                       : Microsoft.Cdn/profiles/endpoints/origins
+ProvisioningState          : Succeeded
+```
+
 ## PARAMETERS
 
 ### -CdnEndpoint

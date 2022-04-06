@@ -27,14 +27,16 @@ Key Vault auto regenerates and switches the active key based on the regeneration
 
 ### Example 1: Set an Azure Storage Account with Key Vault to manage its keys
 ```powershell
-PS C:\> $storage = Get-AzStorageAccount -ResourceGroupName "mystorageResourceGroup" -StorageAccountName "mystorage"
-PS C:\> $servicePrincipal = Get-AzADServicePrincipal -ServicePrincipalName cfa8b339-82a2-471a-a3c9-0fc0be7a4093
-PS C:\> New-AzRoleAssignment -ObjectId $servicePrincipal.Id -RoleDefinitionName 'Storage Account Key Operator Service Role' -Scope $storage.Id
-PS C:\> $userPrincipalId = $(Get-AzADUser -SearchString "developer@contoso.com").Id
-PS C:\> Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -ObjectId $userPrincipalId -PermissionsToStorage get, set
-PS C:\> $regenerationPeriod = [System.Timespan]::FromDays(90)
-PS C:\> Add-AzKeyVaultManagedStorageAccount -VaultName 'myvault' -AccountName 'mystorageaccount' -AccountResourceId '/subscriptions/<subscription id>/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount' -ActiveKeyName 'key1' -RegenerationPeriod $regenerationPeriod
+$storage = Get-AzStorageAccount -ResourceGroupName "mystorageResourceGroup" -StorageAccountName "mystorage"
+$servicePrincipal = Get-AzADServicePrincipal -ServicePrincipalName cfa8b339-82a2-471a-a3c9-0fc0be7a4093
+New-AzRoleAssignment -ObjectId $servicePrincipal.Id -RoleDefinitionName 'Storage Account Key Operator Service Role' -Scope $storage.Id
+$userPrincipalId = $(Get-AzADUser -SearchString "developer@contoso.com").Id
+Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -ObjectId $userPrincipalId -PermissionsToStorage get, set
+$regenerationPeriod = [System.Timespan]::FromDays(90)
+Add-AzKeyVaultManagedStorageAccount -VaultName 'myvault' -AccountName 'mystorageaccount' -AccountResourceId '/subscriptions/<subscription id>/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount' -ActiveKeyName 'key1' -RegenerationPeriod $regenerationPeriod
+```
 
+```output
 Id                  : https://myvault.vault.azure.net:443/storage/mystorageaccount
 Vault Name          : myvault
 AccountName         : mystorageaccount
@@ -56,9 +58,11 @@ regeneration process will continue between 'key1' and 'key2' with a gap of 90 da
 
 ### Example 2: Set a Classic Azure Storage Account with Key Vault to manage its keys
 ```powershell
-PS C:\> $regenerationPeriod = [System.Timespan]::FromDays(90)
-PS C:\> Add-AzKeyVaultManagedStorageAccount -VaultName 'myvault' -AccountName 'mystorageaccount' -AccountResourceId '/subscriptions/<subscription id>/resourceGroups/myresourcegroup/providers/Microsoft.ClassicStorage/storageAccounts/mystorageaccount' -ActiveKeyName 'Primary' -RegenerationPeriod $regenerationPeriod
+$regenerationPeriod = [System.Timespan]::FromDays(90)
+Add-AzKeyVaultManagedStorageAccount -VaultName 'myvault' -AccountName 'mystorageaccount' -AccountResourceId '/subscriptions/<subscription id>/resourceGroups/myresourcegroup/providers/Microsoft.ClassicStorage/storageAccounts/mystorageaccount' -ActiveKeyName 'Primary' -RegenerationPeriod $regenerationPeriod
+```
 
+```output
 Id                  : https://myvault.vault.azure.net:443/storage/mystorageaccount
 Vault Name          : myvault
 AccountName         : mystorageaccount

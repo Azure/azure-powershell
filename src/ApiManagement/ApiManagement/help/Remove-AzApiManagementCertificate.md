@@ -25,12 +25,11 @@ The **Remove-AzApiManagementCertificate** cmdlet removes an Azure API Management
 
 ### Example 1: Remove a certificate
 ```powershell
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Remove-AzApiManagementCertificate -Context $ApiMgmtContext -CertificateId "0123456789" -Force
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Remove-AzApiManagementCertificate -Context $ApiMgmtContext -CertificateId "0123456789"
 ```
 
 This command removes the specified API Management certificate.
-Because the *Force* parameter is specified, no confirmation is required.
 
 ## PARAMETERS
 

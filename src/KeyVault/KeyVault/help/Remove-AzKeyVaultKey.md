@@ -40,8 +40,10 @@ This cmdlet has a value of high for the **ConfirmImpact** property.
 
 ### Example 1: Remove a key from a key vault
 ```powershell
-PS C:\> Remove-AzKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -PassThru
+Remove-AzKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -PassThru
+```
 
+```output
 Vault Name           : contoso
 Name                 : key2
 Id                   : https://contoso.vault.azure.net:443/keys/itsoftware/fdad15793ba0437e960497908ef9eb32
@@ -60,7 +62,7 @@ This command removes the key named ITSoftware from the key vault named Contoso.
 
 ### Example 2: Remove a key without user confirmation
 ```powershell
-PS C:\> Remove-AzKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -Force
+Remove-AzKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -Force
 ```
 
 This command removes the key named ITSoftware from the key vault named Contoso.
@@ -68,7 +70,7 @@ The command specifies the *Force* parameter, and, therefore, the cmdlet does not
 
 ### Example 3: Purge a deleted key from the key vault permanently
 ```powershell
-PS C:\> Remove-AzKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -InRemovedState
+Remove-AzKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -InRemovedState
 ```
 
 This command removes the key named ITSoftware from the key vault named Contoso permanently.
@@ -76,7 +78,7 @@ Executing this cmdlet requires the 'purge' permission, which must have been prev
 
 ### Example 4: Remove keys by using the pipeline operator
 ```powershell
-PS C:\> Get-AzKeyVaultKey -VaultName 'Contoso' | Where-Object {$_.Attributes.Enabled -eq $False} | Remove-AzKeyVaultKey
+Get-AzKeyVaultKey -VaultName 'Contoso' | Where-Object {$_.Attributes.Enabled -eq $False} | Remove-AzKeyVaultKey
 ```
 
 This command gets all the keys in the key vault named Contoso, and passes them to the **Where-Object** cmdlet by using the pipeline operator.
