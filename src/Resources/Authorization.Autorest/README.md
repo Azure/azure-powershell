@@ -55,6 +55,7 @@ identity-correction-for-post: true
 resourcegroup-append: true
 default-exclude-tableview-properties: false
 
+
 directive:
   # Swaager bug: The scope should be readonly according to the server response.
   - from: swagger-document
