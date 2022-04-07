@@ -186,6 +186,14 @@ namespace Microsoft.Azure.Commands.Security.Common
         public const string AutomationScopes = "A collection of scopes on which the security automations logic is applied. Supported scopes are the subscription itself or a resource group under that subscription. The automation will only apply on defined scopes";
         public const string AutomationSources = "A collection of the source event types which evaluate the security automation set of rules";
         public const string AutomationActions = "A collection of the actions which are triggered if all the configured rules evaluations, within at least one rule set, are true";
+        public const string AutomationScopeDescription = "The resources scope description";
+        public const string AutomationScopePath = "The resources scope path. Can be the subscription on which the automation is defined on or a resource group under that subscription (fully qualified Azure resource IDs)";
+        public const string AutomationActionEventHubConnectionString = "The target Event Hub connection string";
+        public const string AutomationActionEventHubResourceId = "The target Event Hub Azure Resource ID";
+        public const string AutomationActionEventHubSasPolicyName = "The target Event Hub SAS policy name";
+        public const string AutomationActionLogicAppResourceId = "The triggered Logic App Azure Resource ID. This can also reside on other subscriptions, given that you have permissions to trigger the Logic App";
+        public const string AutomationActionLogicAppUri = "The Logic App trigger URI endpoint (it will not be included in any response)";
+        public const string AutomationActionWorkspaceResourceId = "The fully qualified Log Analytics Workspace Azure Resource ID";
 
         #endregion
     }
