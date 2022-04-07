@@ -8,56 +8,53 @@ schema: 2.0.0
 # Confirm-AzSecurityAutomation
 
 ## SYNOPSIS
-Validates the security automation model before create or update. Any validation errors are returned to the client.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ### ResourceGroupLevelResource (Default)
 ```
 Confirm-AzSecurityAutomation -ResourceGroupName <String> -Name <String> -Location <String> [-Etag <String>]
- [-Tags <System.Collections.Generic.IDictionary`2[System.String,System.String]>] [-Description <String>]
- [-IsEnabled <Boolean>] -Scopes <PSSecurityAutomationScope[]> -Sources <PSSecurityAutomationSource[]>
- -Actions <PSSecurityAutomationAction[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Tag <Hashtable>] [-Description <String>] [-IsEnabled <Boolean>] -Scope <PSSecurityAutomationScope[]>
+ -Source <PSSecurityAutomationSource[]> -Action <PSSecurityAutomationAction[]>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Confirm-AzSecurityAutomation -ResourceId <String> -Location <String> [-Etag <String>]
- [-Tags <System.Collections.Generic.IDictionary`2[System.String,System.String]>] [-Description <String>]
- [-IsEnabled <Boolean>] -Scopes <PSSecurityAutomationScope[]> -Sources <PSSecurityAutomationSource[]>
- -Actions <PSSecurityAutomationAction[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Confirm-AzSecurityAutomation -ResourceId <String> -Location <String> [-Etag <String>] [-Tag <Hashtable>]
+ [-Description <String>] [-IsEnabled <Boolean>] -Scope <PSSecurityAutomationScope[]>
+ -Source <PSSecurityAutomationSource[]> -Action <PSSecurityAutomationAction[]>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Confirm-AzSecurityAutomation [-Location <String>] [-Etag <String>]
- [-Tags <System.Collections.Generic.IDictionary`2[System.String,System.String]>] [-Description <String>]
- [-IsEnabled <Boolean>] [-Scopes <PSSecurityAutomationScope[]>] [-Sources <PSSecurityAutomationSource[]>]
- -Actions <PSSecurityAutomationAction[]> -InputObject <PSSecurityAutomation>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Confirm-AzSecurityAutomation [-Location <String>] [-Etag <String>] [-Tag <Hashtable>] [-Description <String>]
+ [-IsEnabled <Boolean>] [-Scope <PSSecurityAutomationScope[]>] [-Source <PSSecurityAutomationSource[]>]
+ -Action <PSSecurityAutomationAction[]> -InputObject <PSSecurityAutomation>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Validates the security automation model before create or update. Any validation errors are returned to the client.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\>  Confirm-AzSecurityAutomation -ResourceGroupName rg -Name automationTest -Location centralus -Description "Test automation creation" -Scopes $scopes -Sources $sources -Actions $actions
+PS C:\> {{ Add example code here }}
 ```
 
-Validates the provided security automation without creating it
+{{ Add example description here }}
 
 ## PARAMETERS
 
-### -Actions
+### -Action
 A collection of the actions which are triggered if all the configured rules evaluations, within at least one rule set, are true
 
 ```yaml
-Type: PSSecurityAutomationAction[]
+Type: Microsoft.Azure.Commands.Security.Models.Automations.PSSecurityAutomationAction[]
 Parameter Sets: (All)
 Aliases:
 
@@ -72,7 +69,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -87,7 +84,7 @@ Accept wildcard characters: False
 The security automation description
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -102,7 +99,7 @@ Accept wildcard characters: False
 Entity tag is used for comparing two or more entities from the same requested resource
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -117,7 +114,7 @@ Accept wildcard characters: False
 Input Object.
 
 ```yaml
-Type: PSSecurityAutomation
+Type: Microsoft.Azure.Commands.Security.Models.Automations.PSSecurityAutomation
 Parameter Sets: InputObject
 Aliases:
 
@@ -132,7 +129,7 @@ Accept wildcard characters: False
 Is rule enabled.
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -147,7 +144,7 @@ Accept wildcard characters: False
 Location.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupLevelResource, ResourceId
 Aliases:
 
@@ -159,7 +156,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: InputObject
 Aliases:
 
@@ -174,7 +171,7 @@ Accept wildcard characters: False
 Resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupLevelResource
 Aliases:
 
@@ -189,7 +186,7 @@ Accept wildcard characters: False
 Resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupLevelResource
 Aliases:
 
@@ -204,7 +201,7 @@ Accept wildcard characters: False
 ID of the security resource that you want to invoke the command on.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceId
 Aliases:
 
@@ -215,13 +212,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Scopes
+### -Scope
 A collection of scopes on which the security automations logic is applied.
 Supported scopes are the subscription itself or a resource group under that subscription.
 The automation will only apply on defined scopes
 
 ```yaml
-Type: PSSecurityAutomationScope[]
+Type: Microsoft.Azure.Commands.Security.Models.Automations.PSSecurityAutomationScope[]
 Parameter Sets: ResourceGroupLevelResource, ResourceId
 Aliases:
 
@@ -233,7 +230,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: PSSecurityAutomationScope[]
+Type: Microsoft.Azure.Commands.Security.Models.Automations.PSSecurityAutomationScope[]
 Parameter Sets: InputObject
 Aliases:
 
@@ -244,11 +241,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Sources
+### -Source
 A collection of the source event types which evaluate the security automation set of rules
 
 ```yaml
-Type: PSSecurityAutomationSource[]
+Type: Microsoft.Azure.Commands.Security.Models.Automations.PSSecurityAutomationSource[]
 Parameter Sets: ResourceGroupLevelResource, ResourceId
 Aliases:
 
@@ -260,7 +257,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: PSSecurityAutomationSource[]
+Type: Microsoft.Azure.Commands.Security.Models.Automations.PSSecurityAutomationSource[]
 Parameter Sets: InputObject
 Aliases:
 
@@ -271,44 +268,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tags
+### -Tag
 Tags.
 
 ```yaml
-Type: System.Collections.Generic.IDictionary`2[System.String,System.String]
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
 
 Required: False
 Position: Named
