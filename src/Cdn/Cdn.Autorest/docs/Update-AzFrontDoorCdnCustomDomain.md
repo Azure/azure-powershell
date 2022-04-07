@@ -16,16 +16,14 @@ Updates an existing domain within a profile.
 ```
 Update-AzFrontDoorCdnCustomDomain -CustomDomainName <String> -ProfileName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-AzureDnsZoneId <String>]
- [-PropertiesPreValidatedCustomDomainResourceId <String>] [-SecretId <String>]
- [-TlSettingCertificateType <AfdCertificateType>] [-TlSettingMinimumTlsVersion <AfdMinimumTlsVersion>]
+ [-PropertiesPreValidatedCustomDomainResourceId <String>] [-TlsSetting <IAfdDomainHttpsParameters>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzFrontDoorCdnCustomDomain -InputObject <ICdnIdentity> [-AzureDnsZoneId <String>]
- [-PropertiesPreValidatedCustomDomainResourceId <String>] [-SecretId <String>]
- [-TlSettingCertificateType <AfdCertificateType>] [-TlSettingMinimumTlsVersion <AfdMinimumTlsVersion>]
+ [-PropertiesPreValidatedCustomDomainResourceId <String>] [-TlsSetting <IAfdDomainHttpsParameters>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -190,21 +188,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SecretId
-Resource ID.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
 Azure Subscription ID.
 
@@ -220,26 +203,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TlSettingCertificateType
-Defines the source of the SSL certificate.
+### -TlsSetting
+The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate.
+If not specified, enabling ssl uses AzureFrontDoor managed certificate by default.
+To construct, see NOTES section for TLSSETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.AfdCertificateType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TlSettingMinimumTlsVersion
-TLS protocol version that will be used for Https
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.AfdMinimumTlsVersion
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IAfdDomainHttpsParameters
 Parameter Sets: (All)
 Aliases:
 
@@ -316,6 +286,12 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   - `[SecretName <String>]`: Name of the Secret under the profile.
   - `[SecurityPolicyName <String>]`: Name of the security policy under the profile.
   - `[SubscriptionId <String>]`: Azure Subscription ID.
+
+TLSSETTING <IAfdDomainHttpsParameters>: The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default.
+  - `CertificateType <AfdCertificateType>`: Defines the source of the SSL certificate.
+  - `[MinimumTlsVersion <AfdMinimumTlsVersion?>]`: TLS protocol version that will be used for Https
+  - `[Secret <IResourceReference>]`: Resource reference to the secret. ie. subs/rg/profile/secret
+    - `[Id <String>]`: Resource ID.
 
 ## RELATED LINKS
 
