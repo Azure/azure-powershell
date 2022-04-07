@@ -38,8 +38,10 @@ Gets a Kusto cluster database principalAssignment.
 
 ### Example 1: List all PrincipalAssignment in a database by name
 ```powershell
-PS C:\> Get-AzKustoDatabasePrincipalAssignment -ResourceGroupName testrg -ClusterName testnewkustocluster -DatabaseName mykustodatabase
+Get-AzKustoDatabasePrincipalAssignment -ResourceGroupName testrg -ClusterName testnewkustocluster -DatabaseName mykustodatabase
+```
 
+```output
 Name                                                                     Type
 ----                                                                     ----
 testnewkustocluster/mykustodatabase/kustoprincipal1                      Microsoft.Kusto/Clusters/Databases/PrincipalAssignments
@@ -51,8 +53,10 @@ The above command returns all all PrincipalAssignment in the database "mykustoda
 
 ### Example 2: Get a specific PrincipalAssignment in a database by name
 ```powershell
-PS C:\> Get-AzKustoDatabasePrincipalAssignment -ResourceGroupName testrg -ClusterName testnewkustocluster -DatabaseName mykustodatabase -PrincipalAssignmentName kustoprincipal1
+Get-AzKustoDatabasePrincipalAssignment -ResourceGroupName testrg -ClusterName testnewkustocluster -DatabaseName mykustodatabase -PrincipalAssignmentName kustoprincipal1
+```
 
+```output
 Name                                                Type
 ----                                                ----
 testnewkustocluster/mykustodatabase/kustoprincipal1 Microsoft.Kusto/Clusters/Databases/PrincipalAssignments

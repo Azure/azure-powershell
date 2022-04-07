@@ -31,7 +31,7 @@ Returns operation results.
 
 ### Example 1:
 ```powershell
-PS C:\> Get-AzKustoOperationsResultLocation -Location eastus -OperationId 5c1495e5-f1c4-4c5e-ac95-01a1c7a33353
+Get-AzKustoOperationsResultLocation -Location eastus -OperationId 5c1495e5-f1c4-4c5e-ac95-01a1c7a33353
 ```
 
 ```output

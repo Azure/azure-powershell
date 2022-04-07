@@ -19,9 +19,9 @@ Updates a database.
 .Description
 Updates a database.
 .Example
-PS C:\> $2ds = New-TimeSpan -Days 2
-PS C:\> $4ds = New-TimeSpan -Days 4
-PS C:\> Update-AzKustoDatabase -ResourceGroupName testrg -ClusterName testnewkustocluster -Name mykustodatabase -Kind ReadWrite -SoftDeletePeriod $4ds -HotCachePeriod $2ds -Location 'East US'
+$2ds = New-TimeSpan -Days 2
+$4ds = New-TimeSpan -Days 4
+Update-AzKustoDatabase -ResourceGroupName testrg -ClusterName testnewkustocluster -Name mykustodatabase -Kind ReadWrite -SoftDeletePeriod $4ds -HotCachePeriod $2ds -Location 'East US'
 
 Kind      Location Name                                Type
 ----      -------- ----                                ----
