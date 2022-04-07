@@ -48,6 +48,15 @@ New-AzFirewallPolicy -Name fp1 -Location "westus2" -ResourceGroup TestRg -SkuTie
 
 This example creates intrusion detection with bypass traffic setting
 
+### Example 4: Create firewall policy with intrusion detection configured with private ranges setting
+```powershell
+$privateRanges = "10.0.0.0/8","172.16.0.0/12"
+$intrusionDetection = New-AzFirewallPolicyIntrusionDetection -Mode "Deny" -PrivateRanges $privateRanges
+New-AzFirewallPolicy -Name fp1 -Location "westus2" -ResourceGroup TestRg -SkuTier "Premium" -IntrusionDetection $intrusionDetection
+```
+
+This example creates intrusion detection with bypass traffic setting
+
 ## PARAMETERS
 
 ### -BypassTraffic
@@ -101,6 +110,21 @@ List of specific signatures states.
 
 ```yaml
 Type: PSAzureFirewallPolicyIntrusionDetectionSignatureOverride[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrivateRanges
+List of IDPS Private IP address ranges.
+
+```yaml
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
