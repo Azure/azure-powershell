@@ -13,7 +13,9 @@
 // ------------------------------------
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using Commands.Security;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -24,8 +26,9 @@ using Microsoft.Azure.Management.Security.Models;
 
 namespace Microsoft.Azure.Commands.Security.Cmdlets.Automations
 {
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityAutomation", DefaultParameterSetName = ParameterSetNames.ResourceGroupLevelResource, SupportsShouldProcess = true), OutputType(typeof(PSSecurityAutomation))]
-    public class SetAutomation : SecurityCenterCmdletBase
+    [Alias(VerbsCommon.Set + "-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityAutomation")]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityAutomation", DefaultParameterSetName = ParameterSetNames.ResourceGroupLevelResource, SupportsShouldProcess = true), OutputType(typeof(PSSecurityAutomation))]
+    public class NewAutomation : SecurityCenterCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceGroupName)]
         [ValidateNotNullOrEmpty]
@@ -56,7 +59,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Automations
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = false, HelpMessage = ParameterHelpMessages.Tags)]
         [Parameter(ParameterSetName = ParameterSetNames.ResourceId, Mandatory = false, HelpMessage = ParameterHelpMessages.Tags)]
         [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = false, HelpMessage = ParameterHelpMessages.Tags)]
-        public IDictionary<string, string> Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = false, HelpMessage = ParameterHelpMessages.AutomationDescription)]
         [Parameter(ParameterSetName = ParameterSetNames.ResourceId, Mandatory = false, HelpMessage = ParameterHelpMessages.AutomationDescription)]
@@ -72,19 +75,19 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Automations
         [Parameter(ParameterSetName = ParameterSetNames.ResourceId, Mandatory = true, HelpMessage = ParameterHelpMessages.AutomationScopes)]
         [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = false, HelpMessage = ParameterHelpMessages.AutomationScopes)]
         [ValidateNotNull]
-        public PSSecurityAutomationScope[] Scopes { get; set; }
+        public PSSecurityAutomationScope[] Scope { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.AutomationSources)]
         [Parameter(ParameterSetName = ParameterSetNames.ResourceId, Mandatory = true, HelpMessage = ParameterHelpMessages.AutomationSources)]
         [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = false, HelpMessage = ParameterHelpMessages.AutomationSources)]
         [ValidateNotNull]
-        public PSSecurityAutomationSource[] Sources { get; set; }
+        public PSSecurityAutomationSource[] Source { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.AutomationActions)]
         [Parameter(ParameterSetName = ParameterSetNames.ResourceId, Mandatory = true, HelpMessage = ParameterHelpMessages.AutomationActions)]
         [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = true, HelpMessage = ParameterHelpMessages.AutomationActions)]
         [ValidateNotNull]
-        public PSSecurityAutomationAction[] Actions { get; set; }
+        public PSSecurityAutomationAction[] Action { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.InputObject)]
         [ValidateNotNull]
@@ -115,12 +118,12 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Automations
             {
                 Location = Location ?? InputObject?.Location,
                 Etag = Etag ?? InputObject?.ETag,
-                Tags = Tags ?? InputObject?.Tags,
+                Tags = Utilities.ConvertHashTableToDictionary<string,string>(Tag) ?? Utilities.ConvertHashTableToDictionary<string, string>(InputObject?.Tags),
                 Description = Description ?? InputObject?.Description,
                 IsEnabled = IsEnabled ?? InputObject?.IsEnabled,
-                Scopes = Scopes?.ConvertToAutomationType() ?? InputObject?.Scopes?.ConvertToAutomationType(),
-                Sources = Sources?.ConvertToAutomationType() ?? InputObject?.Sources?.ConvertToAutomationType(),
-                Actions = Actions?.ConvertToAutomationType()
+                Scopes = Scope?.ConvertToAutomationType() ?? InputObject?.Scopes?.ConvertToAutomationType(),
+                Sources = Source?.ConvertToAutomationType() ?? InputObject?.Sources?.ConvertToAutomationType(),
+                Actions = Action?.ConvertToAutomationType()
             };
             if (ShouldProcess(Name, VerbsCommon.Set))
             {

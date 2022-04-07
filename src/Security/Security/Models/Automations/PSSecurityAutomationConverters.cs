@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security;
 using Microsoft.Azure.Commands.Security.Models.Automations;
+using Microsoft.Azure.Commands.SecurityCenter.Common;
 using Microsoft.Azure.Management.Security.Models;
 
 namespace Microsoft.Azure.Commands.Security.Models.Automations
@@ -40,7 +41,7 @@ namespace Microsoft.Azure.Commands.Security.Models.Automations
                 Type = value.Type,
                 Location = value.Location,
                 ETag = value.Etag,
-                Tags = value.Tags,
+                Tags = Utilities.ConvertDictionaryToHashTable((System.Collections.IDictionary)value.Tags),
                 Description = value.Description,
                 IsEnabled = value.IsEnabled,
                 Scopes = value.Scopes?.Select(scope => scope.ConvertToPSType()).ToList(),

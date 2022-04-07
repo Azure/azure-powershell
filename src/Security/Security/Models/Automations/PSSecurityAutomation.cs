@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Security.Models.Automations
@@ -47,7 +48,7 @@ namespace Microsoft.Azure.Commands.Security.Models.Automations
         /// <summary>
         /// Gets or sets the resource tags
         /// </summary>
-        public IDictionary<string, string> Tags { get; set; }
+        public Hashtable Tags { get; set; }
 
         /// <summary>
         /// Gets or sets the security automation description.
