@@ -59,8 +59,10 @@ directive:
     - SecurityPolicyPropertiesParameters
     - SecretParameters
     - CustomDomainHttpsParameters
+    - AFDDomainHttpsParameters
   # Generate memory object as parameter of the cmelet.
   - model-cmdlet:
+    - AFDDomainHttpsParameters
     - SecurityPolicyWebApplicationFirewallAssociation
     - SecurityPolicyWebApplicationFirewallParameters
     - AzureFirstPartyManagedCertificateParameters

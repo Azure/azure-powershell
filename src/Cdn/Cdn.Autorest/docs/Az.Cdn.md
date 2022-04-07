@@ -109,6 +109,9 @@ Available for Verizon Profiles.
 ### [Invoke-AzCdnSecretValidate](Invoke-AzCdnSecretValidate.md)
 Validate a Secret in the profile.
 
+### [New-AzCdnAFDDomainHttpsParametersObject](New-AzCdnAFDDomainHttpsParametersObject.md)
+Create an in-memory object for AFDDomainHttpsParameters.
+
 ### [New-AzCdnAzureFirstPartyManagedCertificateParametersObject](New-AzCdnAzureFirstPartyManagedCertificateParametersObject.md)
 Create an in-memory object for AzureFirstPartyManagedCertificateParameters.
 
