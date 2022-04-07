@@ -5,33 +5,22 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-AzSecurityAutomation
+# New-AzSecurityAutomationSource
 
 ## SYNOPSIS
 {{ Fill in the Synopsis }}
 
 ## SYNTAX
 
-### SubscriptionScope (Default)
+### SecurityAutomationSource (Default)
 ```
-Get-AzSecurityAutomation [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ResourceGroupScope
-```
-Get-AzSecurityAutomation -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+New-AzSecurityAutomationSource [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ResourceGroupLevelResource
+### SecurityAutomationActionLogicApp
 ```
-Get-AzSecurityAutomation -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### ResourceId
-```
-Get-AzSecurityAutomation -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzSecurityAutomationSource -EventSource <String> -RuleSets <PSSecurityAutomationRuleSet[]>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,12 +52,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Resource name.
+### -EventSource
+The triggered Logic App Azure Resource ID.
+This can also reside on other subscriptions, given that you have permissions to trigger the Logic App
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceGroupLevelResource
+Parameter Sets: SecurityAutomationActionLogicApp
 Aliases:
 
 Required: True
@@ -78,33 +68,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Resource group name.
+### -RuleSets
+The Logic App trigger URI endpoint (it will not be included in any response)
 
 ```yaml
-Type: System.String
-Parameter Sets: ResourceGroupScope, ResourceGroupLevelResource
+Type: Microsoft.Azure.Commands.Security.Models.Automations.PSSecurityAutomationRuleSet[]
+Parameter Sets: SecurityAutomationActionLogicApp
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceId
-ID of the security resource that you want to invoke the command on.
-
-```yaml
-Type: System.String
-Parameter Sets: ResourceId
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -113,11 +88,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### None
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Security.Models.Automations.PSSecurityAutomation
+### Microsoft.Azure.Commands.Security.Models.Automations.PSSecurityAutomationSource
 
 ## NOTES
 

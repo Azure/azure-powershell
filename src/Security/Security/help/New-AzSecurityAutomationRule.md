@@ -5,33 +5,16 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-AzSecurityAutomation
+# New-AzSecurityAutomationRule
 
 ## SYNOPSIS
 {{ Fill in the Synopsis }}
 
 ## SYNTAX
 
-### SubscriptionScope (Default)
 ```
-Get-AzSecurityAutomation [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ResourceGroupScope
-```
-Get-AzSecurityAutomation -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### ResourceGroupLevelResource
-```
-Get-AzSecurityAutomation -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### ResourceId
-```
-Get-AzSecurityAutomation -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzSecurityAutomationRule -PropertyJPath <String> -Operator <String> -ExpectedValue <String>
+ -PropertyType <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,12 +46,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Resource name.
+### -ExpectedValue
+The expected value
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceGroupLevelResource
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -78,12 +61,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Resource group name.
+### -Operator
+A valid comparer operator to use.
+A case-insensitive comparison will be applied for String PropertyType
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceGroupScope, ResourceGroupLevelResource
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -93,18 +77,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-ID of the security resource that you want to invoke the command on.
+### -PropertyJPath
+The JPath of the entity model property that should be checked
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceId
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PropertyType
+The data type of the compared operands (string, integer, floating point number or a boolean \[true/false\]\]
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -113,11 +112,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### None
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Security.Models.Automations.PSSecurityAutomation
+### Microsoft.Azure.Commands.Security.Models.Automations.PSSecurityAutomationTriggeringRule
 
 ## NOTES
 

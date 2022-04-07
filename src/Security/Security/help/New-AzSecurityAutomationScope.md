@@ -5,33 +5,16 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-AzSecurityAutomation
+# New-AzSecurityAutomationScope
 
 ## SYNOPSIS
 {{ Fill in the Synopsis }}
 
 ## SYNTAX
 
-### SubscriptionScope (Default)
 ```
-Get-AzSecurityAutomation [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ResourceGroupScope
-```
-Get-AzSecurityAutomation -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### ResourceGroupLevelResource
-```
-Get-AzSecurityAutomation -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### ResourceId
-```
-Get-AzSecurityAutomation -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzSecurityAutomationScope -Description <String> -ScopePath <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,12 +46,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Resource name.
+### -Description
+The resources scope description
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceGroupLevelResource
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -78,33 +61,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Resource group name.
+### -ScopePath
+The resources scope path.
+Can be the subscription on which the automation is defined on or a resource group under that subscription (fully qualified Azure resource IDs)
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceGroupScope, ResourceGroupLevelResource
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceId
-ID of the security resource that you want to invoke the command on.
-
-```yaml
-Type: System.String
-Parameter Sets: ResourceId
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -113,11 +82,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### None
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Security.Models.Automations.PSSecurityAutomation
+### Microsoft.Azure.Commands.Security.Models.Automations.PSSecurityAutomationScope
 
 ## NOTES
 
