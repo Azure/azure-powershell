@@ -1,7 +1,8 @@
 ### Example 1: Create a new LogAnalytics workspace
 ```powershell
-PS C:\> New-AzOperationalInsightsWorkspace -ResourceGroupName {RG-name} -Name {WS-name} -Location {Resource-location}
-
+New-AzOperationalInsightsWorkspace -ResourceGroupName RG-name -Name WS-name -Location Resource-location
+```
+```output
 Location Name                   ETag ResourceGroupName
 -------- ----                   ---- -----------------
 {Resource-location}   {WS-name}

@@ -1,7 +1,8 @@
 ### Example 1: Update table's retention 
 ```powershell
-PS C:\> Update-AzOperationalInsightsTable -ResourceGroupName {RG-name} -WorkspaceName {WS-name} -Name {TableName_CL} -RetentionInDay 40
-
+Update-AzOperationalInsightsTable -ResourceGroupName RG-name -WorkspaceName WS-name -Name TableName_CL -RetentionInDay 40
+```
+```output
 Name             ResourceGroupName
 ----             -----------------
 dabenhamKuku1_CL
@@ -11,26 +12,37 @@ Update of custom table retention
 
 ### Example 2: Update a default table will not work at first try 
 ```powershell
-PS C:\> Update-AzOperationalInsightsTable -ResourceGroupName {RG-name} -WorkspaceName {WS-name} -Name Heartbeat -RetentionInDay 40
+Update-AzOperationalInsightsTable -ResourceGroupName RG-name -WorkspaceName WS-name -Name Heartbeat -RetentionInDay 40
 
 Update-AzOperationalInsightsTable_UpdateExpanded: 'Patch' cannot be used for table creation - Heartbeat. Use 'Put' instead.
 
-PS C:\>$tempTable = New-AzOperationalInsightsTable -ResourceGroupName {RG-name} -WorkspaceName {WS-name} -Name Heartbeat -RetentionInDay 50 
-PS C:\>$tempTable
+$tempTable = New-AzOperationalInsightsTable -ResourceGroupName RG-name -WorkspaceName WS-name -Name Heartbeat -RetentionInDay 50 
+$tempTable
+```
+```output
 Name      ResourceGroupName
 ----      -----------------
 Heartbeat
-
+```
+```powershell
 $tempTable.RetentionInDay
+```
+```output
 50
-
-PS C:\>$tempTable = Update-AzOperationalInsightsTable -ResourceGroupName {RG-name} -WorkspaceName {WS-name} -Name Heartbeat -RetentionInDay 30
-PS C:\>$tempTable
+```
+```powershell
+$tempTable = Update-AzOperationalInsightsTable -ResourceGroupName RG-name -WorkspaceName WS-name -Name Heartbeat -RetentionInDay 30
+$tempTable
+```
+```output
 Name      ResourceGroupName
 ----      -----------------
 Heartbeat
-
+```
+```powershell
 $tempTable.RetentionInDay
+```
+```output
 30
 ```
 

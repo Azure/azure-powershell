@@ -1,7 +1,8 @@
 ### Example 1: Get a worksapce by resource group and worksapce name
 ```powershell
-Get-AzOperationalInsightsWorkspace -name {WS_Name} -ResourceGroupName {RG_Name}
-
+Get-AzOperationalInsightsWorkspace -Name WS_Name -ResourceGroupName RG_Name
+```
+```output
 
 Location Name             ETag
 -------- ----             ----
@@ -12,8 +13,9 @@ Get a Log-Analytics workspace
 
 ### Example 2: List all worksapces for a given resource group name
 ```powershell
-Get-AzOperationalInsightsWorkspace  -ResourceGroupName {RG_Name}
-
+Get-AzOperationalInsightsWorkspace  -ResourceGroupName RG_Name
+```
+```output
 
 Location    Name                        ETag
 --------    ----                        ----
