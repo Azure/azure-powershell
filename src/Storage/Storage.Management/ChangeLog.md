@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.4.1
 * Fixed get blob by tag failure on Powershell 7.2.2
     -  `Get-AzStorageBlobByTag`
 
