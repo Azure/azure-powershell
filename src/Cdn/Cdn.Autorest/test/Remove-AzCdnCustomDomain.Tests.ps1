@@ -31,8 +31,8 @@ Describe 'Remove-AzCdnCustomDomain' {
                 New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $ResourceGroupName -Location Global -SubscriptionId $subId
                 
                 # Hard-coding host and endpoint names due to requirement for DNS CNAME
-                $endpointName = 'e-8fwkya'
-                $customDomainHostName = 'e-8fwkya.ps.cdne2e.azfdtest.xyz'
+                $endpointName = 'e-20220407-8fwkya'
+                $customDomainHostName = 'e-20220407-8fwkya.ps.cdne2e.azfdtest.xyz'
                 $customDomainName = 'cd-' + (RandomString -allChars $false -len 6);
                 $origin = @{
                     Name = "origin1"
@@ -68,8 +68,8 @@ Describe 'Remove-AzCdnCustomDomain' {
                 New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $ResourceGroupName -Location Global -SubscriptionId $subId
                 
                 # Hard-coding host and endpoint names due to requirement for DNS CNAME
-                $endpointName = 'e-lw8iyz'
-                $customDomainHostName = 'e-lw8iyz.ps.cdne2e.azfdtest.xyz'
+                $endpointName = 'e-20220407-lw8iyz'
+                $customDomainHostName = 'e-20220407-lw8iyz.ps.cdne2e.azfdtest.xyz'
                 $customDomainName = 'cd-' + (RandomString -allChars $false -len 6);
                 $origin = @{
                     Name = "origin1"

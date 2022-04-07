@@ -31,8 +31,8 @@ Describe 'New-AzCdnCustomDomain' {
                 New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $ResourceGroupName -Location Global -SubscriptionId $subId
                 
                 # Hard-coding host and endpoint names due to requirement for DNS CNAME
-                $endpointName = 'e-52wg49'
-                $customDomainHostName = 'e-52wg49.ps.cdne2e.azfdtest.xyz'
+                $endpointName = 'e-20220407-52wg49'
+                $customDomainHostName = 'e-20220407-52wg49.ps.cdne2e.azfdtest.xyz'
                 $customDomainName = 'cd-' + (RandomString -allChars $false -len 6);
                 $origin = @{
                     Name = "origin1"

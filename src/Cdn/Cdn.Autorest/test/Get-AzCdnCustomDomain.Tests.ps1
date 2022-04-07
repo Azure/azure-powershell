@@ -31,8 +31,8 @@ Describe 'Get-AzCdnCustomDomain' {
                 New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $ResourceGroupName -Location Global -SubscriptionId $subId
                 
                 # Hard-coding host and endpoint names due to requirement for DNS CNAME
-                $endpointName = 'e-cyzd8j'
-                $customDomainHostName = 'e-cyzd8j.ps.cdne2e.azfdtest.xyz'
+                $endpointName = 'e-20220407-cyzd8j'
+                $customDomainHostName = 'e-20220407-cyzd8j.ps.cdne2e.azfdtest.xyz'
                 $customDomainName = 'cd-' + (RandomString -allChars $false -len 6);
                 $origin = @{
                     Name = "origin1"
@@ -69,8 +69,8 @@ Describe 'Get-AzCdnCustomDomain' {
                 New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $ResourceGroupName -Location Global -SubscriptionId $subId
                 
                 # Hard-coding host and endpoint names due to requirement for DNS CNAME
-                $endpointName = 'e-k0eyx9'
-                $customDomainHostName = 'e-k0eyx9.ps.cdne2e.azfdtest.xyz'
+                $endpointName = 'e-20220407-k0eyx9'
+                $customDomainHostName = 'e-20220407-k0eyx9.ps.cdne2e.azfdtest.xyz'
                 $customDomainName = 'cd-' + (RandomString -allChars $false -len 6);
                 $origin = @{
                     Name = "origin1"
@@ -109,8 +109,8 @@ Describe 'Get-AzCdnCustomDomain' {
                 New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $ResourceGroupName -Location Global -SubscriptionId $subId
                 
                 # Hard-coding host and endpoint names due to requirement for DNS CNAME
-                $endpointName = 'e-315rgw'
-                $customDomainHostName = 'e-315rgw.ps.cdne2e.azfdtest.xyz'
+                $endpointName = 'e-20220407-315rgw'
+                $customDomainHostName = 'e-20220407-315rgw.ps.cdne2e.azfdtest.xyz'
                 $customDomainName = 'cd-' + (RandomString -allChars $false -len 6);
                 $origin = @{
                     Name = "origin1"

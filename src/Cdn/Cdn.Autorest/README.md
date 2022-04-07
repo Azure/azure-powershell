@@ -59,6 +59,7 @@ directive:
     - SecurityPolicyPropertiesParameters
     - SecretParameters
     - CustomDomainHttpsParameters
+
   # Generate memory object as parameter of the cmelet.
   - model-cmdlet:
     - SecurityPolicyWebApplicationFirewallAssociation
@@ -67,6 +68,8 @@ directive:
     - CustomerCertificateParameters
     - ManagedCertificateParameters
     - UrlSigningKeyParameters
+    - UserManagedHttpsParameters
+    - CdnManagedHttpsParameters
     - DeliveryRuleRemoteAddressCondition
     - DeliveryRuleRequestMethodCondition
     - DeliveryRuleQueryStringCondition
@@ -95,10 +98,6 @@ directive:
     - DeliveryRuleCacheExpirationAction
     - DeliveryRuleCacheKeyQueryStringAction
     - DeliveryRuleRouteConfigurationOverrideAction
-    # child classes for CustomDomainHttpsParameters
-    - UserManagedHttpsParameters
-    - CdnManagedHttpsParameters
-    - CustomDomainHttpsParameters
 
   # Following is two common directive which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
@@ -119,6 +118,10 @@ directive:
   - where:
       variant: ^CheckViaIdentity$|^CheckViaIdentityExpanded$
       subject: ^NameAvailability$|^EndpointNameAvailability$
+    remove: true
+  - where:
+      variant: ^EnableExpanded$|^EnableViaIdentityExpanded$
+      subject: ^CustomDomainCustomHttps$
     remove: true
 
   # Hide Cdn profile
