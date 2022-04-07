@@ -28,9 +28,12 @@ Describe 'Update-AzFrontDoorCdnCustomDomain' {
             Write-Host -ForegroundColor Green "Use custom domain name : $($customDomainName)"
 
             $secret = Get-AzFrontDoorCdnSecret -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Name $secretName
+            $secretResoure = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ResourceReference]::new()
+            $secretResoure.Id = $secret.Id
+            $updateSetting = New-AzCdnAFDDomainHttpsParametersObject -CertificateType "CustomerCertificate" -MinimumTlsVersion "TLS10" -Secret $secretResoure
 
             Update-AzFrontDoorCdnCustomDomain -CustomDomainName $customDomainName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName `
-            -TlSettingCertificateType "CustomerCertificate" -TlSettingMinimumTlsVersion "TLS10" -SecretId $secret.Id
+            -TlsSetting $updateSetting
         } | Should -Not -Throw
     }
 
@@ -48,9 +51,12 @@ Describe 'Update-AzFrontDoorCdnCustomDomain' {
             Write-Host -ForegroundColor Green "Use custom domain name : $($customDomainName)"
 
             $secret = Get-AzFrontDoorCdnSecret -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Name $secretName
-                
+            $secretResoure = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ResourceReference]::new()
+            $secretResoure.Id = $secret.Id
+            $updateSetting = New-AzCdnAFDDomainHttpsParametersObject -CertificateType "CustomerCertificate" -MinimumTlsVersion "TLS10" -Secret $secretResoure
+
             Get-AzFrontDoorCdnCustomDomain -ResourceGroupName $ResourceGroupName -ProfileName $frontDoorCdnProfileName -CustomDomainName $customDomainName `
-            | Update-AzFrontDoorCdnCustomDomain -TlSettingCertificateType "CustomerCertificate" -TlSettingMinimumTlsVersion "TLS10" -SecretId $secret.Id
+            | Update-AzFrontDoorCdnCustomDomain -TlsSetting $updateSetting
         } | Should -Not -Throw
     }
 }
