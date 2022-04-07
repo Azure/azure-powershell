@@ -7,7 +7,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "7cd66b9a-3a2f-4c84-8956-dada1e5c09ed"
+          "b3da968c-6106-4bf2-bc60-5dc26df97574"
         ],
         "Accept-Language": [
           "en-US"
@@ -36,13 +36,13 @@
           "Kestrel"
         ],
         "x-ms-request-id": [
-          "9b7ff7fc-1e95-4ec1-98e5-13be99506383"
+          "535113cd-f1f9-4160-a955-e37de5929206"
         ],
         "x-ms-correlation-request-id": [
-          "9b7ff7fc-1e95-4ec1-98e5-13be99506383"
+          "535113cd-f1f9-4160-a955-e37de5929206"
         ],
         "x-ms-routing-request-id": [
-          "GERMANYWESTCENTRAL:20220403T132443Z:9b7ff7fc-1e95-4ec1-98e5-13be99506383"
+          "GERMANYWESTCENTRAL:20220407T154549Z:535113cd-f1f9-4160-a955-e37de5929206"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -51,10 +51,10 @@
           "nosniff"
         ],
         "Date": [
-          "Sun, 03 Apr 2022 13:24:43 GMT"
+          "Thu, 07 Apr 2022 15:45:48 GMT"
         ],
         "Content-Length": [
-          "1066"
+          "2089"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -63,7 +63,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"description\": \"\",\r\n    \"isEnabled\": true,\r\n    \"metadata\": {\r\n      \"createdDateTimeUtc\": \"2022-04-03T12:18:19.2743935Z\",\r\n      \"createdBy\": \"dc6a9278-25c3-47fc-98da-51506fa32469\",\r\n      \"lastUpdatedDateTimeUtc\": \"2022-04-03T12:26:41.8465751Z\",\r\n      \"lastUpdatedBy\": \"dc6a9278-25c3-47fc-98da-51506fa32469\"\r\n    },\r\n    \"scopes\": [\r\n      {\r\n        \"description\": \"scope for subscription 03b601f1-7eca-4496-8f8d-355219eee254\",\r\n        \"scopePath\": \"/subscriptions/03b601f1-7eca-4496-8f8d-355219eee254\"\r\n      }\r\n    ],\r\n    \"sources\": [\r\n      {\r\n        \"eventSource\": \"Alerts\",\r\n        \"ruleSets\": [\r\n          {\r\n            \"rules\": [\r\n              {\r\n                \"propertyJPath\": \"Version\",\r\n                \"propertyType\": \"String\",\r\n                \"expectedValue\": \"3.\",\r\n                \"operator\": \"Contains\"\r\n              }\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"actions\": [\r\n      {\r\n        \"logicAppResourceId\": \"/subscriptions/03b601f1-7eca-4496-8f8d-355219eee254/resourceGroups/rg-surashed/providers/Microsoft.Logic/workflows/surashedV\",\r\n        \"actionType\": \"LogicApp\"\r\n      }\r\n    ]\r\n  },\r\n  \"id\": \"/subscriptions/03b601f1-7eca-4496-8f8d-355219eee254/resourcegroups/Sample-RG/providers/Microsoft.Security/automations/sampleAutomation\",\r\n  \"name\": \"sampleAutomation\",\r\n  \"type\": \"Microsoft.Security/automations\",\r\n  \"etag\": \"\\\"160413db-0000-0d00-0000-624992810000\\\"\",\r\n  \"location\": \"centralus\",\r\n  \"tags\": {}\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"description\": \"\",\r\n    \"isEnabled\": true,\r\n    \"metadata\": {\r\n      \"createdDateTimeUtc\": \"2022-04-03T12:18:19.2743935Z\",\r\n      \"createdBy\": \"dc6a9278-25c3-47fc-98da-51506fa32469\",\r\n      \"lastUpdatedDateTimeUtc\": \"2022-04-07T15:40:48.851466Z\",\r\n      \"lastUpdatedBy\": \"293d7dce-b44a-40ff-a6f1-263cabed1d1e\"\r\n    },\r\n    \"scopes\": [\r\n      {\r\n        \"description\": \"scope for subscription 03b601f1-7eca-4496-8f8d-355219eee254\",\r\n        \"scopePath\": \"/subscriptions/03b601f1-7eca-4496-8f8d-355219eee254\"\r\n      }\r\n    ],\r\n    \"sources\": [\r\n      {\r\n        \"eventSource\": \"Assessments\",\r\n        \"ruleSets\": [\r\n          {\r\n            \"rules\": [\r\n              {\r\n                \"propertyJPath\": \"name\",\r\n                \"propertyType\": \"String\",\r\n                \"expectedValue\": \"a27e854a-8578-4395-8eaf-6fc7849f3050\",\r\n                \"operator\": \"Contains\"\r\n              },\r\n              {\r\n                \"propertyJPath\": \"properties.metadata.severity\",\r\n                \"propertyType\": \"String\",\r\n                \"expectedValue\": \"Medium\",\r\n                \"operator\": \"Equals\"\r\n              },\r\n              {\r\n                \"propertyJPath\": \"properties.status.code\",\r\n                \"propertyType\": \"String\",\r\n                \"expectedValue\": \"unhealthy\",\r\n                \"operator\": \"Contains\"\r\n              }\r\n            ]\r\n          },\r\n          {\r\n            \"rules\": [\r\n              {\r\n                \"propertyJPath\": \"name\",\r\n                \"propertyType\": \"String\",\r\n                \"expectedValue\": \"a27e854a-8578-4395-8eaf-6fc7849f3050\",\r\n                \"operator\": \"Contains\"\r\n              },\r\n              {\r\n                \"propertyJPath\": \"properties.metadata.severity\",\r\n                \"propertyType\": \"String\",\r\n                \"expectedValue\": \"Low\",\r\n                \"operator\": \"Equals\"\r\n              },\r\n              {\r\n                \"propertyJPath\": \"properties.status.code\",\r\n                \"propertyType\": \"String\",\r\n                \"expectedValue\": \"unhealthy\",\r\n                \"operator\": \"Contains\"\r\n              }\r\n            ]\r\n          },\r\n          {\r\n            \"rules\": [\r\n              {\r\n                \"propertyJPath\": \"name\",\r\n                \"propertyType\": \"String\",\r\n                \"expectedValue\": \"a27e854a-8578-4395-8eaf-6fc7849f3050\",\r\n                \"operator\": \"Contains\"\r\n              },\r\n              {\r\n                \"propertyJPath\": \"properties.metadata.severity\",\r\n                \"propertyType\": \"String\",\r\n                \"expectedValue\": \"High\",\r\n                \"operator\": \"Equals\"\r\n              },\r\n              {\r\n                \"propertyJPath\": \"properties.status.code\",\r\n                \"propertyType\": \"String\",\r\n                \"expectedValue\": \"unhealthy\",\r\n                \"operator\": \"Contains\"\r\n              }\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"actions\": [\r\n      {\r\n        \"logicAppResourceId\": \"/subscriptions/03b601f1-7eca-4496-8f8d-355219eee254/resourcegroups/wac-rg-surashed/providers/microsoft.logic/workflows/la\",\r\n        \"actionType\": \"LogicApp\"\r\n      }\r\n    ]\r\n  },\r\n  \"id\": \"/subscriptions/03b601f1-7eca-4496-8f8d-355219eee254/resourcegroups/Sample-RG/providers/Microsoft.Security/automations/sampleAutomation\",\r\n  \"name\": \"sampleAutomation\",\r\n  \"type\": \"Microsoft.Security/automations\",\r\n  \"etag\": \"\\\"0c006949-0000-0d00-0000-624f06000000\\\"\",\r\n  \"location\": \"centralus\",\r\n  \"tags\": {\r\n    \"key1\": \"value1\"\r\n  }\r\n}",
       "StatusCode": 200
     }
   ],
