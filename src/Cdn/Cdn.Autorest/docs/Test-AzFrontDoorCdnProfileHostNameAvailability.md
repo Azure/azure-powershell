@@ -19,20 +19,6 @@ Test-AzFrontDoorCdnProfileHostNameAvailability -ProfileName <String> -ResourceGr
  [<CommonParameters>]
 ```
 
-### Check
-```
-Test-AzFrontDoorCdnProfileHostNameAvailability -ProfileName <String> -ResourceGroupName <String>
- -CheckHostNameAvailabilityInput <ICheckHostNameAvailabilityInput> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CheckViaIdentity
-```
-Test-AzFrontDoorCdnProfileHostNameAvailability -InputObject <ICdnIdentity>
- -CheckHostNameAvailabilityInput <ICheckHostNameAvailabilityInput> [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
 ### CheckViaIdentityExpanded
 ```
 Test-AzFrontDoorCdnProfileHostNameAvailability -InputObject <ICdnIdentity> -HostName <String>
@@ -64,22 +50,6 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -CheckHostNameAvailabilityInput
-Input of CheckHostNameAvailability API.
-To construct, see NOTES section for CHECKHOSTNAMEAVAILABILITYINPUT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ICheckHostNameAvailabilityInput
-Parameter Sets: Check, CheckViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -100,7 +70,7 @@ The host name to validate.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -116,7 +86,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-Parameter Sets: CheckViaIdentity, CheckViaIdentityExpanded
+Parameter Sets: CheckViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -131,7 +101,7 @@ Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile
 
 ```yaml
 Type: System.String
-Parameter Sets: Check, CheckExpanded
+Parameter Sets: CheckExpanded
 Aliases:
 
 Required: True
@@ -146,7 +116,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Check, CheckExpanded
+Parameter Sets: CheckExpanded
 Aliases:
 
 Required: True
@@ -161,7 +131,7 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Check, CheckExpanded
+Parameter Sets: CheckExpanded
 Aliases:
 
 Required: False
@@ -207,8 +177,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ICheckHostNameAvailabilityInput
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 
 ## OUTPUTS
@@ -223,9 +191,6 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-
-CHECKHOSTNAMEAVAILABILITYINPUT <ICheckHostNameAvailabilityInput>: Input of CheckHostNameAvailability API.
-  - `HostName <String>`: The host name to validate.
 
 INPUTOBJECT <ICdnIdentity>: Identity Parameter
   - `[CustomDomainName <String>]`: Name of the domain under the profile which is unique globally.

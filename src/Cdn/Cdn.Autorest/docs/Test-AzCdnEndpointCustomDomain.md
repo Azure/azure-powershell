@@ -19,19 +19,6 @@ Test-AzCdnEndpointCustomDomain -EndpointName <String> -ProfileName <String> -Res
  [<CommonParameters>]
 ```
 
-### Validate1
-```
-Test-AzCdnEndpointCustomDomain -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
- -CustomDomainProperty <IValidateCustomDomainInput> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ValidateViaIdentity1
-```
-Test-AzCdnEndpointCustomDomain -InputObject <ICdnIdentity> -CustomDomainProperty <IValidateCustomDomainInput>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### ValidateViaIdentityExpanded1
 ```
 Test-AzCdnEndpointCustomDomain -InputObject <ICdnIdentity> -HostName <String> [-DefaultProfile <PSObject>]
@@ -63,22 +50,6 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -CustomDomainProperty
-Input of the custom domain to be validated for DNS mapping.
-To construct, see NOTES section for CUSTOMDOMAINPROPERTY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IValidateCustomDomainInput
-Parameter Sets: Validate1, ValidateViaIdentity1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -99,7 +70,7 @@ Name of the endpoint under the profile which is unique globally.
 
 ```yaml
 Type: System.String
-Parameter Sets: Validate1, ValidateExpanded1
+Parameter Sets: ValidateExpanded1
 Aliases:
 
 Required: True
@@ -115,7 +86,7 @@ Must be a domain name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded1, ValidateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -131,7 +102,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-Parameter Sets: ValidateViaIdentity1, ValidateViaIdentityExpanded1
+Parameter Sets: ValidateViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -146,7 +117,7 @@ Name of the CDN profile which is unique within the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Validate1, ValidateExpanded1
+Parameter Sets: ValidateExpanded1
 Aliases:
 
 Required: True
@@ -161,7 +132,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Validate1, ValidateExpanded1
+Parameter Sets: ValidateExpanded1
 Aliases:
 
 Required: True
@@ -176,7 +147,7 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Validate1, ValidateExpanded1
+Parameter Sets: ValidateExpanded1
 Aliases:
 
 Required: False
@@ -222,8 +193,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IValidateCustomDomainInput
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 
 ## OUTPUTS
@@ -238,9 +207,6 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-
-CUSTOMDOMAINPROPERTY <IValidateCustomDomainInput>: Input of the custom domain to be validated for DNS mapping.
-  - `HostName <String>`: The host name of the custom domain. Must be a domain name.
 
 INPUTOBJECT <ICdnIdentity>: Identity Parameter
   - `[CustomDomainName <String>]`: Name of the domain under the profile which is unique globally.
