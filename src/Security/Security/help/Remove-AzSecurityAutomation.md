@@ -7,8 +7,8 @@ schema: 2.0.0
 
 # Remove-AzSecurityAutomation
 
-## SYNOPSIS	
-Deletes a security automation.
+## SYNOPSIS
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
@@ -31,16 +31,16 @@ Remove-AzSecurityAutomation -InputObject <PSSecurityAutomation> [-PassThru]
 ```
 
 ## DESCRIPTION
-Deletes a security automation.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSecurityAutomation -ResourceGroupName rg -Name testAutomation
+PS C:\> {{ Add example code here }}
 ```
 
-Deletes 'testAutomation' automation which resides under resource group named 'rg'
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -48,7 +48,7 @@ Deletes 'testAutomation' automation which resides under resource group named 'rg
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 Input Object.
 
 ```yaml
-Type: PSSecurityAutomation
+Type: Microsoft.Azure.Commands.Security.Models.Automations.PSSecurityAutomation
 Parameter Sets: InputObject
 Aliases:
 
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 Resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupLevelResource
 Aliases:
 
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 Return whether the operation was successful.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 Resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupLevelResource
 Aliases:
 
@@ -123,7 +123,7 @@ Accept wildcard characters: False
 ID of the security resource that you want to invoke the command on.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceId
 Aliases:
 
@@ -138,7 +138,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -154,7 +154,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
