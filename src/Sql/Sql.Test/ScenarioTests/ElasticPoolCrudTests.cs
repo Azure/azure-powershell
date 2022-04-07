@@ -68,6 +68,20 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestHyperscaleElasticPoolCreate()
+        {
+            RunPowerShellTest("Test-CreateHyperscaleElasticPool");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestHyperscaleElasticPoolCreateWithReplica()
+        {
+            RunPowerShellTest("Test-CreateHyperscaleElasticPoolWithReplica");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestElasticPoolUpdate()
         {
             RunPowerShellTest("Test-UpdateElasticPool");
@@ -99,6 +113,13 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public void TestElasticPoolUpdateWithMaintenanceConfigurationId()
         {
             RunPowerShellTest("Test-UpdateElasticPoolWithMaintenanceConfigurationId");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestHyperscaleElasticPoolUpdateReplicaCount()
+        {
+            RunPowerShellTest("Test-UpdateHyperscaleElasticPoolReplicaCount");
         }
 
         [Fact]
