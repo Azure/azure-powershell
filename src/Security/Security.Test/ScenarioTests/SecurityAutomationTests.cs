@@ -60,6 +60,13 @@ namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewSecurityAutomationResourceGroupLevelResource()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "New-AzSecurityAutomation-ResourceGroupLevelResource");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetSecurityAutomationResourceGroupLevelResource()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzSecurityAutomation-ResourceGroupLevelResource");
@@ -119,6 +126,27 @@ namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
         public void RemoveSecurityAutomationInputObject()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Remove-AzSecurityAutomation-InputObject");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewSecurityAutomationScope()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "New-AzSecurityAutomationScope-Test");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewSecurityAutomationSource()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "New-AzSecurityAutomationSource-Test");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewSecurityAutomationAction()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "New-AzSecurityAutomationAction-Test");
         }
 
     }

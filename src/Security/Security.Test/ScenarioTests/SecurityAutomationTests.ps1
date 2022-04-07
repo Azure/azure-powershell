@@ -14,6 +14,28 @@
 
 <#
 .SYNOPSIS
+Create security Automation by resource level
+#>
+function New-AzSecurityAutomation-ResourceGroupLevelResource
+{
+	$randomGuid = New-Guid
+	$automations = Get-AzSecurityAutomation
+	$automation = $automations | Select -First 1
+
+	$resourceGroupName = "Sample-RG"
+	$automationName = "sampleAutomation-" + $randomGuid.Guid
+	$location = "centralus"
+	$scopes = $automation.Scopes
+	$sources = $automation.Sources
+	$actions = Convert-ToAutomationActionRequest $automation.Actions
+	$tags = @{"key1" = "value1"}
+
+    $automation = New-AzSecurityAutomation -Name $automationName -ResourceGroupName $resourceGroupName -Location $location -Scope $scopes -Source $sources -Action $actions -Tag $tags
+	Validate-Automation $automation
+}
+
+<#
+.SYNOPSIS
 Set security Automation by resource level
 #>
 function Set-AzSecurityAutomation-ResourceGroupLevelResource
@@ -27,8 +49,9 @@ function Set-AzSecurityAutomation-ResourceGroupLevelResource
 	$scopes = $automation.Scopes
 	$sources = $automation.Sources
 	$actions = Convert-ToAutomationActionRequest $automation.Actions
+	$tags = @{"key1" = "value1"}
 
-    $automation = Set-AzSecurityAutomation -Name $automationName -ResourceGroupName $resourceGroupName -Location $location -Scopes $scopes -Sources $sources -Actions $actions
+    $automation = Set-AzSecurityAutomation -Name $automationName -ResourceGroupName $resourceGroupName -Location $location -Scope $scopes -Source $sources -Action $actions -Tag $tags
 	Validate-Automation $automation
 }
 
@@ -44,8 +67,9 @@ function Set-AzSecurityAutomation-ResourceId
 	$scopes = $automation.Scopes
 	$sources = $automation.Sources
 	$actions = Convert-ToAutomationActionRequest $automation.Actions
+	$tags = @{"key1" = "value1"}
 
-    $automation = Set-AzSecurityAutomation -ResourceId $automation.Id -Location $location -Scopes $scopes -Sources $sources -Actions $actions
+    $automation = Set-AzSecurityAutomation -ResourceId $automation.Id -Location $location -Scope $scopes -Source $sources -Action $actions  -Tag $tags
 	Validate-Automation $automation
 }
 
@@ -59,7 +83,7 @@ function Set-AzSecurityAutomation-InputObject
 	$automation = $automations | Select -First 1
 	$actions = Convert-ToAutomationActionRequest $automation.Actions
 
-    $automation = Set-AzSecurityAutomation -InputObject $automation -Actions $actions
+    $automation = Set-AzSecurityAutomation -InputObject $automation -Action $actions
 	Validate-Automation $automation
 }
 
@@ -127,7 +151,7 @@ function Confirm-AzSecurityAutomation-ResourceGroupLevelResource
 	$sources = $automation.Sources
 	$actions = Convert-ToAutomationActionRequest $automation.Actions
 
-    Confirm-AzSecurityAutomation -Name $automationName -ResourceGroupName $resourceGroupName -Location $location -Scopes $scopes -Sources $sources -Actions $actions
+    Confirm-AzSecurityAutomation -Name $automationName -ResourceGroupName $resourceGroupName -Location $location -Scope $scopes -Source $sources -Action $actions
 }
 
 <#
@@ -143,7 +167,7 @@ function Confirm-AzSecurityAutomation-ResourceId
 	$sources = $automation.Sources
 	$actions = Convert-ToAutomationActionRequest $automation.Actions
 
-    Confirm-AzSecurityAutomation -ResourceId $automation.Id -Location $location -Scopes $scopes -Sources $sources -Actions $actions
+    Confirm-AzSecurityAutomation -ResourceId $automation.Id -Location $location -Scope $scopes -Source $sources -Action $actions
 }
 
 <#
@@ -156,7 +180,7 @@ function Confirm-AzSecurityAutomation-InputObject
 	$automation = $automations | Select -First 1
 	$actions = Convert-ToAutomationActionRequest $automation.Actions
 
-    Confirm-AzSecurityAutomation -InputObject $automation -Actions $actions
+    Confirm-AzSecurityAutomation -InputObject $automation -Action $actions
 }
 
 <#
@@ -193,6 +217,37 @@ function Remove-AzSecurityAutomation-InputObject
 	$automation = $automations | Select -First 1
 
     Remove-AzSecurityAutomation -InputObject $automation
+}
+
+<#
+.SYNOPSIS
+Creates security Automation source
+#>
+function New-AzSecurityAutomationSource-Test
+{
+    $rule = New-AzSecurityAutomationRule -PropertyJPath "properties.metadata.severity"  -PropertyType "String" -Operator "Equals"  -ExpectedValue "High"
+	$ruleSet = New-AzSecurityAutomationRuleSet -Rules $rule
+	New-AzSecurityAutomationSource -EventSource "Assessments" -RuleSets $ruleSet
+}
+
+<#
+.SYNOPSIS
+Creates security Automation Scope
+#>
+function New-AzSecurityAutomationScope-Test
+{
+	New-AzSecurityAutomationScope -Description "Security assessments that relate to the resource group myResourceGroup within the subscription a5caac9c-5c04-49af-b3d0-e204f40345d5"  -ScopePath "/subscriptions/a5caac9c-5c04-49af-b3d0-e204f40345d5/resourceGroups/myResourceGroup"
+}
+
+<#
+.SYNOPSIS
+Creates security Automation actions
+#>
+function New-AzSecurityAutomationAction-Test
+{
+    New-AzSecurityAutomationAction -LogicAppResourceId "/subscriptions/03b601f1-7eca-4496-8f8d-355219eee254/resourceGroups/wac-rg-surashed/providers/Microsoft.Logic/workflows/LA" -Uri "https://ms.portal.azure.com/"
+	New-AzSecurityAutomationAction -EventHubResourceId "subscriptions/03b601f1-7eca-4496-8f8d-355219eee254/resourceGroups/weu-surashed-rg/providers/Microsoft.EventHub/namespaces/cus-wsp-fake-assessment/eventhubs/cus-wsp-fake-assessment" -ConnectionString "Endpoint=sb://dummy/;SharedAccessKeyName=dummy;SharedAccessKey=dummy;EntityPath=dummy" -SasPolicyName "dummy"
+	New-AzSecurityAutomationAction -WorkspaceResourceId "/subscriptions/03b601f1-7eca-4496-8f8d-355219eee254/resourcegroups/newrgsurashed3/providers/microsoft.operationalinsights/workspaces/new-workspace-surashed-2"
 }
 
 <#

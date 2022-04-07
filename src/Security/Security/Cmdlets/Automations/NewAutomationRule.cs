@@ -22,17 +22,17 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Automations
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityAutomationRule", DefaultParameterSetName = ParameterSetNames.SecurityAutomationRule), OutputType(typeof(PSSecurityAutomationTriggeringRule))]
     public class NewAutomationRule : SecurityCenterCmdletBase
     {
-        [Parameter(ParameterSetName = ParameterSetNames.SecurityAutomationRule, Mandatory = true, HelpMessage = ParameterHelpMessages.AutomationRuleExpectedValue)]
+        [Parameter(ParameterSetName = ParameterSetNames.SecurityAutomationRule, Mandatory = true, HelpMessage = ParameterHelpMessages.AutomationRulePropertyJPath)]
         [ValidateNotNullOrEmpty]
-        public string ExpectedValue { get; set; }
+        public string PropertyJPath { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.SecurityAutomationRule, Mandatory = true, HelpMessage = ParameterHelpMessages.AutomationRuleOperator)]
         [ValidateNotNullOrEmpty]
         public string Operator { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.SecurityAutomationRule, Mandatory = true, HelpMessage = ParameterHelpMessages.AutomationRulePropertyJPath)]
+        [Parameter(ParameterSetName = ParameterSetNames.SecurityAutomationRule, Mandatory = true, HelpMessage = ParameterHelpMessages.AutomationRuleExpectedValue)]
         [ValidateNotNullOrEmpty]
-        public string PropertyJPath { get; set; }
+        public string ExpectedValue { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.SecurityAutomationRule, Mandatory = true, HelpMessage = ParameterHelpMessages.AutomationRulePropertyType)]
         [ValidateNotNullOrEmpty]
