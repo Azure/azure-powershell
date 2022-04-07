@@ -38,7 +38,7 @@ Resume/Resync the connection on the destination volume
 
 ### Example 1
 ```powershell
-Resume-AzNetAppReplication -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -Name "MyDestinationAnfVolume"
+Resume-AzNetAppFilesReplication -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -Name "MyDestinationAnfVolume"
 ```
 
 This command resumes the ANF Replication connection on volume "MyDestinationAnfVolume".

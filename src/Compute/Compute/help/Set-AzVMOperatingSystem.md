@@ -9,7 +9,7 @@ schema: 2.0.0
 # Set-AzVMOperatingSystem
 
 ## SYNOPSIS
-Sets operating system properties for a virtual machine.
+Sets operating system properties during the creation of a new virtual machine.
 
 ## SYNTAX
 
@@ -55,7 +55,7 @@ Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Linux] [-ComputerName] <Strin
 ```
 
 ## DESCRIPTION
-The **Set-AzVMOperatingSystem** cmdlet sets operating system properties for a virtual machine.
+The **Set-AzVMOperatingSystem** cmdlet sets operating system properties during the creation of a new virtual machine.
 You can specify logon credentials, computer name, and operating system type.
 
 ## EXAMPLES

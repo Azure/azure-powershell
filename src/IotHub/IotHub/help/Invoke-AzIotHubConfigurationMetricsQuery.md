@@ -50,7 +50,7 @@ Evaluate the custom defined 'warningLimit' metric.
 
 ### Example 2
 ```powershell
-Invoke-AzIotHubConfigMetric -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -Name "myConfig1" -MetricName "applied" -MetricType "system"
+Invoke-AzIotHubConfigurationMetricsQuery -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -Name "myConfig1" -MetricName "applied" -MetricType "system"
 ```
 
 Evaluate the system 'applied' metric.

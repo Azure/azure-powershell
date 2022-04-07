@@ -182,8 +182,8 @@ namespace VersionController
                     }
                 }
             }
-            //Make Az.Accounts as the first module to calcuate
-            changedModules = changedModules.OrderBy(c => c == "Az.Accounts" ? "" : c).ToList();
+            //Make Az.Accounts as the last module to calculate
+            changedModules = changedModules.OrderByDescending(c => c == "Az.Accounts" ? "" : c).ToList();
             foreach (var projectModuleManifestPath in changedModules)
             {
                 var moduleFileName = Path.GetFileName(projectModuleManifestPath);
@@ -204,7 +204,7 @@ namespace VersionController
 
                 var outputModuleManifestFile = outputModuleManifest.FirstOrDefault();
 
-                _versionBumper = new VersionBumper(new VersionFileHelper(_rootDirectory, outputModuleManifestFile, projectModuleManifestPath));
+                _versionBumper = new VersionBumper(new VersionFileHelper(_rootDirectory, outputModuleManifestFile, projectModuleManifestPath), changedModules);
                 _versionBumper.PSRepositories = targetRepositories;
                 if (_minimalVersion.ContainsKey(moduleName))
                 {

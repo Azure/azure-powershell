@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
         Windows,
         Linux,
         Ubuntu,
-        Ubuntu18_04
+        Ubuntu18_04,
+        Ubuntu20_04
     }
 }
