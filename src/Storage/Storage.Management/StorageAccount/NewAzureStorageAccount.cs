@@ -593,6 +593,13 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNullOrEmpty]
         public string AllowedCopyScope { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specify the type of endpoint. Set this to AzureDNSZone to create a large number of accounts in a single subscription, which creates accounts in an Azure DNS Zone and the endpoint URL will have an alphanumeric DNS Zone identifier. Possible values include: 'Standard', 'AzureDnsZone'.")]
+        [PSArgumentCompleter("Standard", "AzureDnsZone")]
+        [ValidateNotNullOrEmpty]
+        public string DnsEndpointType { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -859,6 +866,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
             if(this.AllowedCopyScope != null)
             {
                 createParameters.AllowedCopyScope = this.AllowedCopyScope;
+            }
+            if (this.DnsEndpointType != null)
+            {
+                createParameters.DnsEndpointType = this.DnsEndpointType;
             }
 
             var createAccountResponse = this.StorageClient.StorageAccounts.Create(

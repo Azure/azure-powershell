@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported create storage account with DnsEndpointType
+    -  `New-AzStorageAccount`
 
 ## Version 4.4.0
 * Updated examples in reference documentation for `Close-AzStorageFileHandle`
