@@ -55,7 +55,7 @@ Remove a prefix from a peering service resource id.
 
 ### Example 3
 ```powershell
-Remove-AzPeeringServicePrefix -ResourceGroupName $peeringServiceGroup -PeeringServiceName $peeringServiceName -Name $prefixName -PassThru
+Remove-AzPeeringServicePrefix -ResourceGroupName $peeringServiceGroup -Name $prefixName -PassThru
 ```
 
 ```output
