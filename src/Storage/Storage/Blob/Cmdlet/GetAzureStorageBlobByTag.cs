@@ -133,13 +133,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            //Func<long, Task> taskGenerator = null;
             IStorageBlobManagement localChannel = Channel;
 
             ListBlobsByTag(localChannel, this.TagFilterSqlExpression);
-            //taskGenerator = (taskId) => ListBlobsByTag(taskId, localChannel, this.TagFilterSqlExpression);
-
-            //RunTask(taskGenerator);
         }
     }
 }
