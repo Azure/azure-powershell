@@ -35,7 +35,7 @@ This command creates a standard SKU workspace named MyWorkspace in the resource 
 
 ### Example 2: Create a workspace and link it to an existing account
 ```powershell
-$OILinkTargets = Get-AzOperationalInsightsLinkTargets
+$OILinkTargets = Get-AzOperationalInsightsWorkspace
 
 $OILinkTargets[0] | New-AzOperationalInsightsWorkspace -ResourceGroupName "ContosoResourceGroup" -Name "MyWorkspace"
 ```
