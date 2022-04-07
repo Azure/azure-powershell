@@ -194,6 +194,10 @@ directive:
     transform: >-
       $["x-ms-long-running-operation-options"] = {"final-state-via": "azure-async-operation"}
   - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains/{customDomainName}"].delete
+    transform: >-
+      $["x-ms-long-running-operation-options"] = {"final-state-via": "azure-async-operation"}
+  - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}"].delete
     transform: >-
       $["x-ms-long-running-operation-options"] = {"final-state-via": "azure-async-operation"}
