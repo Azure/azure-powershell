@@ -194,6 +194,14 @@ namespace Microsoft.Azure.Commands.Security.Common
         public const string AutomationActionLogicAppResourceId = "The triggered Logic App Azure Resource ID. This can also reside on other subscriptions, given that you have permissions to trigger the Logic App";
         public const string AutomationActionLogicAppUri = "The Logic App trigger URI endpoint (it will not be included in any response)";
         public const string AutomationActionWorkspaceResourceId = "The fully qualified Log Analytics Workspace Azure Resource ID";
+        public const string AutomationRuleExpectedValue = "The expected value";
+        public const string AutomationRuleOperator = "A valid comparer operator to use. A case-insensitive comparison will be applied for String PropertyType";
+        public const string AutomationRulePropertyJPath = "The JPath of the entity model property that should be checked";
+        public const string AutomationRulePropertyType = "The data type of the compared operands (string, integer, floating point number or a boolean [true/false]]";
+        public const string AutomationRuleSetRules = "A rule which is evaluated upon event interception. The rule is configured by comparing a specific value from the event model to an expected value. This comparison is done by using one of the supported operators set";
+        public const string AutomationSourceEventSource = "A valid event source type";
+        public const string AutomationSourceRuleSets = "A set of rules which evaluate upon event interception. A logical disjunction is applied between defined rule sets (logical 'or')";
+
 
         #endregion
     }

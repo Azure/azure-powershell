@@ -19,25 +19,19 @@ using Microsoft.Azure.Commands.Security.Models.Automations;
 
 namespace Microsoft.Azure.Commands.Security.Cmdlets.Automations
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityAutomationScope", DefaultParameterSetName = ParameterSetNames.SecurityAutomationScope), OutputType(typeof(PSSecurityAutomationScope))]
-    public class NewAutomationScope : SecurityCenterCmdletBase
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityAutomationRuleSet", DefaultParameterSetName = ParameterSetNames.SecurityAutomationRuleSet), OutputType(typeof(PSSecurityAutomationRuleSet))]
+    public class NewAutomationRuleSet : SecurityCenterCmdletBase
     {
-        [Parameter(ParameterSetName = ParameterSetNames.SecurityAutomationScope, Mandatory = true, HelpMessage = ParameterHelpMessages.AutomationScopeDescription)]
-        [ValidateNotNullOrEmpty]
-        public string Description { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.SecurityAutomationScope, Mandatory = true, HelpMessage = ParameterHelpMessages.AutomationScopePath)]
-        [ValidateNotNullOrEmpty]
-        public string ScopePath { get; set; }
+        [Parameter(ParameterSetName = ParameterSetNames.SecurityAutomationRuleSet, Mandatory = true, HelpMessage = ParameterHelpMessages.AutomationRuleSetRules)]
+        public PSSecurityAutomationTriggeringRule[] Rules { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            var automationScope = new PSSecurityAutomationScope()
+            var automationRuleSet = new PSSecurityAutomationRuleSet()
             {
-                Description = Description,
-                ScopePath = ScopePath
+                Rules = Rules
             };
-            WriteObject(automationScope);
+            WriteObject(automationRuleSet);
         }
 
     }

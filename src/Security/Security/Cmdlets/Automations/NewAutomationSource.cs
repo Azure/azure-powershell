@@ -19,25 +19,24 @@ using Microsoft.Azure.Commands.Security.Models.Automations;
 
 namespace Microsoft.Azure.Commands.Security.Cmdlets.Automations
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityAutomationScope", DefaultParameterSetName = ParameterSetNames.SecurityAutomationScope), OutputType(typeof(PSSecurityAutomationScope))]
-    public class NewAutomationScope : SecurityCenterCmdletBase
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityAutomationSource", DefaultParameterSetName = ParameterSetNames.SecurityAutomationSource), OutputType(typeof(PSSecurityAutomationSource))]
+    public class NewAutomationSource : SecurityCenterCmdletBase
     {
-        [Parameter(ParameterSetName = ParameterSetNames.SecurityAutomationScope, Mandatory = true, HelpMessage = ParameterHelpMessages.AutomationScopeDescription)]
+        [Parameter(ParameterSetName = ParameterSetNames.SecurityAutomationActionLogicApp, Mandatory = true, HelpMessage = ParameterHelpMessages.AutomationActionLogicAppResourceId)]
         [ValidateNotNullOrEmpty]
-        public string Description { get; set; }
+        public string EventSource { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.SecurityAutomationScope, Mandatory = true, HelpMessage = ParameterHelpMessages.AutomationScopePath)]
-        [ValidateNotNullOrEmpty]
-        public string ScopePath { get; set; }
+        [Parameter(ParameterSetName = ParameterSetNames.SecurityAutomationActionLogicApp, Mandatory = true, HelpMessage = ParameterHelpMessages.AutomationActionLogicAppUri)]
+        public PSSecurityAutomationRuleSet[] RuleSets { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            var automationScope = new PSSecurityAutomationScope()
+            var automationSource = new PSSecurityAutomationSource()
             {
-                Description = Description,
-                ScopePath = ScopePath
+                EventSource = EventSource,
+                RuleSets = RuleSets
             };
-            WriteObject(automationScope);
+            WriteObject(automationSource);
         }
 
     }
