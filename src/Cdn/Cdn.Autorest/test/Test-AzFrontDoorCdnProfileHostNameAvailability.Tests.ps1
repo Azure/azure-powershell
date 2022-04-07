@@ -36,10 +36,6 @@ Describe 'Test-AzFrontDoorCdnProfileHostNameAvailability' {
         }
     }
 
-    It 'Check' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
     It 'CheckViaIdentityExpanded' {
         $PSDefaultParameterValues['Disabled'] = $true
         $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
@@ -61,9 +57,5 @@ Describe 'Test-AzFrontDoorCdnProfileHostNameAvailability' {
         {
             Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
-    }
-
-    It 'CheckViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

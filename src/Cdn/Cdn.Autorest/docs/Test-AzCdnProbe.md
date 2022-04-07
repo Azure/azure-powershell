@@ -20,18 +20,6 @@ Test-AzCdnProbe -ProbeUrl <String> [-SubscriptionId <String>] [-DefaultProfile <
  [-WhatIf] [<CommonParameters>]
 ```
 
-### Validate
-```
-Test-AzCdnProbe -ValidateProbeInput <IValidateProbeInput> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ValidateViaIdentity
-```
-Test-AzCdnProbe -InputObject <ICdnIdentity> -ValidateProbeInput <IValidateProbeInput>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### ValidateViaIdentityExpanded
 ```
 Test-AzCdnProbe -InputObject <ICdnIdentity> -ProbeUrl <String> [-DefaultProfile <PSObject>] [-Confirm]
@@ -86,7 +74,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-Parameter Sets: ValidateViaIdentity, ValidateViaIdentityExpanded
+Parameter Sets: ValidateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -101,7 +89,7 @@ The probe URL to validate.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -116,29 +104,13 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Validate, ValidateExpanded
+Parameter Sets: ValidateExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ValidateProbeInput
-Input of the validate probe API.
-To construct, see NOTES section for VALIDATEPROBEINPUT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IValidateProbeInput
-Parameter Sets: Validate, ValidateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -178,8 +150,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IValidateProbeInput
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 
 ## OUTPUTS
@@ -210,9 +180,6 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   - `[SecretName <String>]`: Name of the Secret under the profile.
   - `[SecurityPolicyName <String>]`: Name of the security policy under the profile.
   - `[SubscriptionId <String>]`: Azure Subscription ID.
-
-VALIDATEPROBEINPUT <IValidateProbeInput>: Input of the validate probe API.
-  - `ProbeUrl <String>`: The probe URL to validate.
 
 ## RELATED LINKS
 
