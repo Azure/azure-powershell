@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Automations
         [Parameter(ParameterSetName = ParameterSetNames.SecurityAutomationActionEventHub, Mandatory = false, HelpMessage = ParameterHelpMessages.AutomationActionEventHubSasPolicyName)]
         public string SasPolicyName { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.SecurityAutomationActionWorkspace, Mandatory = false, HelpMessage = ParameterHelpMessages.AutomationActionWorkspaceResourceId)]
+        [Parameter(ParameterSetName = ParameterSetNames.SecurityAutomationActionWorkspace, Mandatory = true, HelpMessage = ParameterHelpMessages.AutomationActionWorkspaceResourceId)]
         public string WorkspaceResourceId { get; set; }
 
 

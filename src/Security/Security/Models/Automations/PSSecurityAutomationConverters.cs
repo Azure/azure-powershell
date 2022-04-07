@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Commands.Security.Models.Automations
             if (value is PSSecurityAutomationActionEventHub)
             {
                 var valueAsAutomationActionEventHub = (PSSecurityAutomationActionEventHub)value;
-                return new AutomationActionEventHub(valueAsAutomationActionEventHub.ConnectionString, valueAsAutomationActionEventHub.EventHubResourceId, valueAsAutomationActionEventHub.SasPolicyName);
+                return new AutomationActionEventHub( valueAsAutomationActionEventHub.EventHubResourceId, valueAsAutomationActionEventHub.SasPolicyName, valueAsAutomationActionEventHub.ConnectionString);
             }
             else if (value is PSSecurityAutomationActionWorkspace)
             {
