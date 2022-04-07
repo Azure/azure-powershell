@@ -79,13 +79,13 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
             if (this.UserName == null)
             {
-                LocalUsers users = this.StorageClient.LocalUsers.List(
+                var users = this.StorageClient.LocalUsers.List(
                         this.ResourceGroupName,
                         this.StorageAccountName);
                
-                if (users.Value != null)
+                if (users != null)
                 {
-                    foreach(LocalUser localUser in users.Value)
+                    foreach(LocalUser localUser in users)
                     {
                         WriteObject(new PSLocalUser(localUser, this.ResourceGroupName, this.StorageAccountName));
                     }

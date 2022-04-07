@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported create storage account with DnsEndpointType
+    -  `New-AzStorageAccount`
+
 * Updated examples in reference documentation for `Close-AzStorageFileHandle`
 * Supported create storage context with customized blob, queue, file, table service endpoint
     - `New-AzStorageContext`
