@@ -49,7 +49,7 @@ Gets sub assessments results in a subscription.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSecuritySubAssessment
+Get-AzSecuritySubAssessment
 ```
 
 Gets all the sub assessments results in a subscription.

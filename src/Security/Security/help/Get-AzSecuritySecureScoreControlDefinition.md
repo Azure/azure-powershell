@@ -29,8 +29,10 @@ The Get-AzSecuritySecureScoreControlDefinition comlet gets security secure score
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSecuritySecureScoreControlDefinition
+Get-AzSecuritySecureScoreControlDefinition
+```
 
+```output
 Id                    : /providers/Microsoft.Security/secureScoreControlDefinitions/a9909064-42b4-4d34-8143-275477afe18b
 Name                  : a9909064-42b4-4d34-8143-275477afe18b
 Type                  : Microsoft.Security/secureScoreControlDefinitions

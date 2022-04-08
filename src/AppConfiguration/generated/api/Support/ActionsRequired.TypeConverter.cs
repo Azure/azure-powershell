@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support
 {
 
-    /// <summary>TypeConverter implementation for ActionsRequired.</summary>
+    /// <summary>Any action that is required beyond basic workflow (approve/ reject/ disconnect)</summary>
     public partial class ActionsRequiredTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

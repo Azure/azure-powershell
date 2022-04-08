@@ -40,8 +40,10 @@ Updates the CosmosDB Table. Performs a client side patch operation by reading th
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzCosmosDBTable -AccountName myAcccountName -Name myTableName -ResourceGroupName myRgName Throughput 800
+Update-AzCosmosDBTable -AccountName myAcccountName -Name myTableName -ResourceGroupName myRgName Throughput 800
+```
 
+```output
 Name     : myTableName
 Id       : /subscriptions/mySubscriptionId/resourceGroups/myResourcegroupName/providers/Microsoft.DocumentDB/databaseAccounts/myAccountName/Tables/myTableName
 Location :

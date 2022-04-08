@@ -29,7 +29,8 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 "NumberOfWorkers",
                 "AlwaysOn",
                 "MinTlsVersion",
-                "FtpsState"
+                "FtpsState",
+                "HealthCheckPath"
             };
 
         public static HashSet<string> SiteParameters = new HashSet<string>
@@ -513,7 +514,9 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 WindowsFxVersion = config.WindowsFxVersion,
                 ManagedServiceIdentityId = config.ManagedServiceIdentityId,
                 MinTlsVersion = config.MinTlsVersion,
-                FtpsState = config.FtpsState
+                FtpsState = config.FtpsState,
+                VnetRouteAllEnabled = config.VnetRouteAllEnabled,
+                HealthCheckPath=config.HealthCheckPath
             };
         }
 
@@ -569,7 +572,9 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 FtpsState = config.FtpsState,
                 ScmIpSecurityRestrictions = config.ScmIpSecurityRestrictions,
                 ScmIpSecurityRestrictionsUseMain = config.ScmIpSecurityRestrictionsUseMain,
-                Http20Enabled = config.Http20Enabled
+                Http20Enabled = config.Http20Enabled,
+                VnetRouteAllEnabled = config.VnetRouteAllEnabled,
+                HealthCheckPath = config.HealthCheckPath
             };
         }
 

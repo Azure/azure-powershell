@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV2.dll-Help.xml
 Module Name: Az.DataFactory
 online version: https://docs.microsoft.com/powershell/module/az.datafactory/set-azdatafactoryv2pipeline
@@ -40,9 +40,11 @@ If you confirm to overwrite the existing pipeline, the pipeline definition is al
 ## EXAMPLES
 
 ### Example 1: Create a pipeline
+```powershell
+Set-AzDataFactoryV2Pipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF" -File "C:\DPWikisample.json"
 ```
-PS C:\> Set-AzDataFactoryV2Pipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF" -File "C:\DPWikisample.json"
 
+```output
     PipelineName      : DPWikisample
     ResourceGroupName : ADF
     DataFactoryName   : WikiADF11

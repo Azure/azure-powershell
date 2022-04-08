@@ -82,36 +82,36 @@ This cmdlet updates a managed service form the cluster.
 
 ### Example 1
 ```powershell
-PS C:\> $resourceGroupName = "testRG"
-PS C:\> $clusterName = "testCluster"
-PS C:\> $appName = "testApp"
-PS C:\> $serviceName = "testService1"
-PS C:\> Set-AzServiceFabricManagedClusterService -ResourceGroupName $resourceGroupName -ClusterName $clusterName -ApplicationName $appName -Name $serviceName -Stateful -TargetReplicaSetSize 3 MinReplicaSetSize 5 -Verbose
+$resourceGroupName = "testRG"
+$clusterName = "testCluster"
+$appName = "testApp"
+$serviceName = "testService1"
+Set-AzServiceFabricManagedClusterService -ResourceGroupName $resourceGroupName -ClusterName $clusterName -ApplicationName $appName -Name $serviceName -Stateful -TargetReplicaSetSize 3 MinReplicaSetSize 5 -Verbose
 ```
 
 This example will update the managed service "testService1".
 
 ### Example 2
 ```powershell
-PS C:\> $resourceGroupName = "testRG"
-PS C:\> $clusterName = "testCluster"
-PS C:\> $appName = "testApp"
-PS C:\> $serviceName = "testService1"
-PS C:\> $minInstancePercentage = 20
-PS C:\> $minInstanceCount = 2
-PS C:\> $statelessServiceMetric = New-Object -TypeName "Microsoft.Azure.Commands.ServiceFabric.Models.PSServiceMetric" -ArgumentList @("metric1", "Low", 4)
-PS C:\> $service = Get-AzServiceFabricManagedClusterService -ResourceGroupName $resourceGroupName -ClusterName $clusterName -ApplicationName $appName
-PS C:\> $service | Set-AzServiceFabricManagedClusterService -Stateless -Metric @($statelessServiceMetric) -MinInstanceCount $minInstanceCount -MinInstancePercentage $minInstancePercentage -Verbose
+$resourceGroupName = "testRG"
+$clusterName = "testCluster"
+$appName = "testApp"
+$serviceName = "testService1"
+$minInstancePercentage = 20
+$minInstanceCount = 2
+$statelessServiceMetric = New-Object -TypeName "Microsoft.Azure.Commands.ServiceFabric.Models.PSServiceMetric" -ArgumentList @("metric1", "Low", 4)
+$service = Get-AzServiceFabricManagedClusterService -ResourceGroupName $resourceGroupName -ClusterName $clusterName -ApplicationName $appName
+$service | Set-AzServiceFabricManagedClusterService -Stateless -Metric @($statelessServiceMetric) -MinInstanceCount $minInstanceCount -MinInstancePercentage $minInstancePercentage -Verbose
 ```
 
 This example will remove the managed service testService1".
 
 ### Example 3
 ```powershell
-PS C:\> $standByReplicaKeepDuration = "00:11:00"
-PS C:\> $servicePlacementTimeLimit = "00:11:00"
-PS C:\> $resourceId = "/subscriptions/13ad2c84-84fa-4798-ad71-e70c07af873f/resourcegroups/testRG/providers/Microsoft.ServiceFabric/managedClusters/testCluster/applications/testApp/services/testService"
-PS C:\> Set-AzServiceFabricManagedClusterService -ResourceId $resourceId -StandByReplicaKeepDuration $standByReplicaKeepDuration -ServicePlacementTimeLimit $servicePlacementTimeLimit -Verbose
+$standByReplicaKeepDuration = "00:11:00"
+$servicePlacementTimeLimit = "00:11:00"
+$resourceId = "/subscriptions/13ad2c84-84fa-4798-ad71-e70c07af873f/resourcegroups/testRG/providers/Microsoft.ServiceFabric/managedClusters/testCluster/applications/testApp/services/testService"
+Set-AzServiceFabricManagedClusterService -ResourceId $resourceId -StandByReplicaKeepDuration $standByReplicaKeepDuration -ServicePlacementTimeLimit $servicePlacementTimeLimit -Verbose
 ```
 
 This example will remove the managed service details with the ARM Resource ID specified.

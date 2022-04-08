@@ -20,9 +20,9 @@ Updates entity in applications
 .Description
 Updates entity in applications
 .Example
-PS C:\> Update-AzADApplication -DisplayName $name -HomePage $homepage
+Update-AzADApplication -DisplayName $name -HomePage $homepage
 .Example
-PS C:\> Get-AzADApplication -ObjectId $id | Update-AzADApplication -ReplyUrl $replyurl
+Get-AzADApplication -ObjectId $id | Update-AzADApplication -ReplyUrl $replyurl
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication

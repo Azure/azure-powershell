@@ -34,19 +34,19 @@ You cannot use this cmdlet to change the name of a resource group.
 ## EXAMPLES
 
 ### Example 1: Apply a tag to a resource group
-```
-PS C:\>Set-AzResourceGroup -Name "ContosoRG" -Tag @{Department="IT"}
+```powershell
+Set-AzResourceGroup -Name "ContosoRG" -Tag @{Department="IT"}
 ```
 
 This command applies a Department tag with a value of IT to a resource group that has no existing tags.
 
 ### Example 2: Add tags to a resource group
-```
-PS C:\>$Tags = (Get-AzResourceGroup -Name "ContosoRG").Tags
-PS C:\> $Tags
-PS C:\> $Tags += @{"Status"="Approved"; "FY2016"=$null}
-PS C:\> Set-AzResourceGroup -Name "ContosoRG" -Tag $Tags
-PS C:> (Get-AzResourceGroup -Name "ContosoRG").Tags
+```powershell
+$Tags = (Get-AzResourceGroup -Name "ContosoRG").Tags
+$Tags
+$Tags += @{"Status"="Approved"; "FY2016"=$null}
+Set-AzResourceGroup -Name "ContosoRG" -Tag $Tags
+(Get-AzResourceGroup -Name "ContosoRG").Tags
 ```
 
 This example adds a Status tag with a value of Approved and an FY2016 tag to a resource group that
@@ -63,8 +63,8 @@ The fifth command gets all of the tags applied to the ContosoRG resource group. 
 that the resource group has the Department tag and the two new tags, Status and FY2015.
 
 ### Example 3: Delete all tags for a resource group
-```
-PS C:\>Set-AzResourceGroup -Name "ContosoRG" -Tag @{}
+```powershell
+Set-AzResourceGroup -Name "ContosoRG" -Tag @{}
 ```
 
 This command specifies the *Tag* parameter with an empty hash table value to delete all tags from

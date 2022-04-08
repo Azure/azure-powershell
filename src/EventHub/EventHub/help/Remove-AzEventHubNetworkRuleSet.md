@@ -37,36 +37,40 @@ Removes the NetworkRuleSet for the Given Namespace
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzEventHubNetworkRuleSet -ResourceGroupName  v-ajnavtest -Namespace Eventhub-Namespace1-1375 -PassThru
+Remove-AzEventHubNetworkRuleSet -ResourceGroupName  v-ajnavtest -Namespace Eventhub-Namespace1-1375 -PassThru
 ```
+
+```output
 Name                : default
 DefaultAction       : Allow
 Id                  : /subscriptions/subscriptionId/resourceGroups/ResourceGroup/providers/Microsoft.EventHub/namespaces/EventHub-Namespace-1375/networkRuleSets/default
 Type                : Microsoft.EventHub/Namespaces/NetworkRuleSet
 IpRules             : 
 VirtualNetworkRules : 
-
+```
 
 Deletes the NetworkRuleSet for the Given "Eventhub-Namespace1-1375" namespace 
 
 ### Example 2
 ```powershell
-PS C:\> Remove-AzEventHubNetworkRuleSet -InputObject $result1375
+Remove-AzEventHubNetworkRuleSet -InputObject $result1375
 ```
 
 Deletes the NetworkRuleSet using InputObject 
 
 ### Example 3
 ```powershell
-PS C:\> Remove-AzEventHubNetworkRuleSet -ResourceId /SubscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace1-1375 -PassThru
+Remove-AzEventHubNetworkRuleSet -ResourceId /SubscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace1-1375 -PassThru
 ```
+
+```output
 Name                : default
 DefaultAction       : Allow
 Id                  : /subscriptions/subscriptionId/resourceGroups/ResourceGroup/providers/Microsoft.EventHub/namespaces/EventHub-Namespace-1375/networkRuleSets/default
 Type                : Microsoft.EventHub/Namespaces/NetworkRuleSet
 IpRules             : 
 VirtualNetworkRules : 
-
+```
 Deletes the NetworkRuleSet using ResourceId of the Namespace
 
 

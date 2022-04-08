@@ -24,11 +24,13 @@ Object corresponding to Sql API's IncludedPath.
 
 ### Example 1
 ```powershell
-PS C:\> $index1 = New-AzCosmosDBSqlIncludedPathIndex -DataType String -Precision -1 -Kind Hash
+$index1 = New-AzCosmosDBSqlIncludedPathIndex -DataType String -Precision -1 -Kind Hash
 $index2 = New-AzCosmosDBSqlIncludedPathIndex -DataType String -Precision -1 -Kind Hash
 
 New-AzCosmosDBSqlIncludedPath -Path "/*" -Index $index1,$index2
+```
 
+```output
 Path Indexes
 ---- -------
 /*   {Microsoft.Azure.Commands.CosmosDB.Models.PSIndexes,Microsoft.Azure.Commands.CosmosDB.Models.PSIndexes}

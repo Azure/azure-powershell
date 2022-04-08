@@ -20,7 +20,7 @@ Gets app settings for a function app.
 .Description
 Gets app settings for a function app.
 .Example
-PS C:\> Get-AzFunctionAppSetting -Name MyAppName -ResourceGroupName MyResourceGroupName
+Get-AzFunctionAppSetting -Name MyAppName -ResourceGroupName MyResourceGroupName
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite

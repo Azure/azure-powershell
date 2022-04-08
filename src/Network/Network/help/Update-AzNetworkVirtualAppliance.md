@@ -25,7 +25,7 @@ The Update-AzNetworkVirtualAppliance modifies a Network Virtual Appliance resour
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzNetworkVirtualAppliance -ResourceGroupName testrg -Name nva -VirtualApplianceAsn 1234
+Update-AzNetworkVirtualAppliance -ResourceGroupName testrg -Name nva -VirtualApplianceAsn 1234
 ```
 
 Modify the Virtual Appliance ASN number.

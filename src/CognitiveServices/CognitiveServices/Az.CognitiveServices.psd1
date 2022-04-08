@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.7.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.7.4'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.CognitiveServices.dll'
@@ -95,8 +95,9 @@ CmdletsToExport = 'Get-AzCognitiveServicesAccount',
                'Remove-AzCognitiveServicesAccountCommitmentPlan', 
                'Get-AzCognitiveServicesAccountDeployment', 
                'New-AzCognitiveServicesAccountDeployment', 
-               'Remove-AzCognitiveServicesAccountDeployment', 
-               'New-AzCognitiveServicesObject'
+               'Remove-AzCognitiveServicesAccountDeployment',
+               'New-AzCognitiveServicesObject',
+               'Get-AzCognitiveServicesAccountModel'
 
 # Variables to export from this module
 # VariablesToExport = @()

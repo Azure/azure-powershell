@@ -36,8 +36,11 @@ The Add-AzAnalysisServicesAccount cmdlet is used to login to an instance of Azur
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Add-AzAnalysisServicesAccount
 ```
-PS C:\>Add-AzAnalysisServicesAccount
+
+```output
 RolloutEnvironment: westcentralus.asazure.windows.net
 Credential: $UserCredential
 ```
@@ -45,17 +48,17 @@ Credential: $UserCredential
 This example will add the account specified by the $UserCredential variable to the westcentralus.asazure.windows.net Analysis Services environment.
 
 ### Example 2
-```
-PS C:\>$ApplicationCredential = Get-Credential
-PS C:\>Add-AzAnalysisServicesAccount -RolloutEnvironment 'westcentralus.asazure.windows.net' -ServicePrincipal -Credential $ApplicationCredential -TenantId "xxxx-xxxx-xxxx-xxxx"
+```powershell
+$ApplicationCredential = Get-Credential
+Add-AzAnalysisServicesAccount -RolloutEnvironment 'westcentralus.asazure.windows.net' -ServicePrincipal -Credential $ApplicationCredential -TenantId "xxxx-xxxx-xxxx-xxxx"
 ```
 
 The first command gets the application service principal credentials, and then stores them in the $ApplicationCredential variable.
 The second command add the application service principal account specified by the $ApplicationCredential variable and TenantId to the westcentralus.asazure.windows.net Analysis Services environment.
 
 ### Example 3
-```
-PS C:\>Add-AzAnalysisServicesAccount -RolloutEnvironment 'westcentralus.asazure.windows.net' -ServicePrincipal -ApplicationId "yyyy-yyyy-yyyy-yyyy" -CertificateThumbprint 'zzzzzzzzzzzzzzzz' -TenantId "xxxx-xxxx-xxxx-xxxx"
+```powershell
+Add-AzAnalysisServicesAccount -RolloutEnvironment 'westcentralus.asazure.windows.net' -ServicePrincipal -ApplicationId "yyyy-yyyy-yyyy-yyyy" -CertificateThumbprint 'zzzzzzzzzzzzzzzz' -TenantId "xxxx-xxxx-xxxx-xxxx"
 ```
 
 This example will add the application service principal account specified by the ApplicationId, TenantId and CertificateThumbprint to the westcentralus.asazure.windows.net Analysis Services environment.

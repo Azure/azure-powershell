@@ -1,4 +1,5 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>Search</PsModuleName>
@@ -12,7 +13,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.Search" Version="4.0.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="23.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="23.1.0" />
   </ItemGroup>
 
 </Project>

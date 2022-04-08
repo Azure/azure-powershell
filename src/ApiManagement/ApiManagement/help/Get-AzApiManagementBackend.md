@@ -30,17 +30,17 @@ Get the details of the Backend.
 ## EXAMPLES
 
 ### Example 1: Get all Backends
-```
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzApiManagementBackend -Context $apimContext
+```powershell
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Get-AzApiManagementBackend -Context $apimContext
 ```
 
 Gets a list of all the Backends configured in the Api Management service.
 
 ### Example 2: Get the Backend specified by the Identifier 123
-```
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzApiManagementBackend -Context $apimContext -backendId 123
+```powershell
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Get-AzApiManagementBackend -Context $apimContext -backendId 123
 ```
 
 Get the details of the specified Backend identified by the Identifier '123'

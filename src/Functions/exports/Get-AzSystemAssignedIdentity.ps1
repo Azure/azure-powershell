@@ -20,13 +20,9 @@ Gets the systemAssignedIdentity available under the specified RP scope.
 .Description
 Gets the systemAssignedIdentity available under the specified RP scope.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity

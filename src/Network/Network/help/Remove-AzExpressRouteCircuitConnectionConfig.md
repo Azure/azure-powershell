@@ -25,26 +25,26 @@ connection configuration associated with a given Express Route Circuit.
 ## EXAMPLES
 
 ### Example 1: Remove a circuit connection configuration from an ExpressRoute circuit
-```
+```powershell
 $circuit_init = Get-AzExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg
 Remove-AzExpressRouteCircuitConnectionConfig -Name $circuitConnectionName -ExpressRouteCircuit $circuit_init
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $circuit_init
 ```
 
 ### Example 2: Remove a circuit connection configuration using Piping from an ExpressRoute Circuit
-```
+```powershell
 Get-AzExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg|Remove-AzExpressRouteCircuitConnectionConfig -Name $circuitConnectionName|Set-AzExpressRouteCircuit
 ```
 
 ### Example 3: Remove a circuit connection configuration from an ExpressRoute circuit for a specific address family
-```
+```powershell
 $circuit_init = Get-AzExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg
 Remove-AzExpressRouteCircuitConnectionConfig -Name $circuitConnectionName -ExpressRouteCircuit $circuit_init -AddressPrefixType IPv4
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $circuit_init
 ```
 
 ### Example 4: Remove a circuit connection configuration using Piping from an ExpressRoute Circuit for a specific address family
-```
+```powershell
 Get-AzExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg|Remove-AzExpressRouteCircuitConnectionConfig -Name $circuitConnectionName -AddressPrefixType IPv6|Set-AzExpressRouteCircuit
 ```
 

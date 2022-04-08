@@ -38,7 +38,7 @@ Retrieves information about a gallery Application Version.
 
 ### Example 1: Get a Gallery Application Version
 ```powershell
-PS C:\> Get-AzGalleryApplicationVersion -ResourceGroupName $rgName -GalleryName $galleryName -GalleryApplicationName $galleryAppName -Name $versionName
+Get-AzGalleryApplicationVersion -ResourceGroupName $rgName -GalleryName $galleryName -GalleryApplicationName $galleryAppName -Name $versionName
 
 ```
 
@@ -46,7 +46,7 @@ Retrieve a Gallery Application Version resource with the provided Resource Group
 
 ### Example 2: Get all the Gallery Application Versions in a GalleryApplication
 ```powershell
-PS C:\> Get-AzGalleryApplicationVersion -GalleryName $GalleryName -ResourceGroupName $rgName -GalleryApplicationName $galleryAppName
+Get-AzGalleryApplicationVersion -GalleryName $GalleryName -ResourceGroupName $rgName -GalleryApplicationName $galleryAppName
 
 ```
 

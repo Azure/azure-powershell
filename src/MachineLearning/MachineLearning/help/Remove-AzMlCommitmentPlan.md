@@ -30,7 +30,7 @@ Deletes an Azure Machine Learning commitment plan. Note that commitment plans wh
 ## EXAMPLES
 
 ### Example 1: Delete a commitment plan
-```
+```powershell
 Remove-AzMlCommitmentPlan -ResourceGroupName "MyResourceGroup" -Name "MyCommitmentPlanName"
 ```
 

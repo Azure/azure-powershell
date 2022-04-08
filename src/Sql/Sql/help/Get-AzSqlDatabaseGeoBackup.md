@@ -27,22 +27,22 @@ This cmdlet is also supported by the SQL Server Stretch Database service on Azur
 ## EXAMPLES
 
 ### Example 1: Get all geo-redundant backups on a server
-```
-PS C:\>Get-AzSqlDatabaseGeoBackup -ResourceGroupName "ContosoResourceGroup" -ServerName "ContosoServer"
+```powershell
+Get-AzSqlDatabaseGeoBackup -ResourceGroupName "ContosoResourceGroup" -ServerName "ContosoServer"
 ```
 
 This command gets all available geo-redundant backups on a specified server.
 
 ### Example 2: Get a specified geo-redundant backup
-```
-PS C:\>Get-AzSqlDatabaseGeoBackup -ResourceGroupName "ContosoResourceGroup" -ServerName "ContosoServer" -DatabaseName "ContosoDatabase"
+```powershell
+Get-AzSqlDatabaseGeoBackup -ResourceGroupName "ContosoResourceGroup" -ServerName "ContosoServer" -DatabaseName "ContosoDatabase"
 ```
 
 This command gets the database geo-redundant backup named ContosoDatabase.
 
 ### Example 3: Get all geo-redundant backups on a server using filtering
-```
-PS C:\>Get-AzSqlDatabaseGeoBackup -ResourceGroupName "ContosoResourceGroup" -ServerName "ContosoServer" -DatabaseName "Contoso*"
+```powershell
+Get-AzSqlDatabaseGeoBackup -ResourceGroupName "ContosoResourceGroup" -ServerName "ContosoServer" -DatabaseName "Contoso*"
 ```
 
 This command gets all available geo-redundant backups on a specified server that start with "Contoso".

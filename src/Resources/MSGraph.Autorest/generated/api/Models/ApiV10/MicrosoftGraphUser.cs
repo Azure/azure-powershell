@@ -41,6 +41,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.DoNotFormat]
         public string AgeGroup { get => this._ageGroup; set => this._ageGroup = value; }
 
+        /// <summary>Backing field for <see cref="ApproximateLastSignInDateTime" /> property.</summary>
+        private global::System.DateTime? _approximateLastSignInDateTime;
+
+        /// <summary>
+        /// The timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example,
+        /// midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only. Supports $filter (eq, ne, not, ge, le, and eq on null
+        /// values) and $orderBy.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Origin(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.PropertyOrigin.Owned)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.DoNotFormat]
+        public global::System.DateTime? ApproximateLastSignInDateTime { get => this._approximateLastSignInDateTime; set => this._approximateLastSignInDateTime = value; }
+
         /// <summary>Backing field for <see cref="BusinessPhone" /> property.</summary>
         private string[] _businessPhone;
 
@@ -72,6 +84,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Origin(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.PropertyOrigin.Owned)]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.DoNotFormat]
         public string CompanyName { get => this._companyName; set => this._companyName = value; }
+
+        /// <summary>Backing field for <see cref="ComplianceExpirationDateTime" /> property.</summary>
+        private global::System.DateTime? _complianceExpirationDateTime;
+
+        /// <summary>
+        /// The timestamp when the device is no longer deemed compliant. The timestamp type represents date and time information using
+        /// ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Origin(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.PropertyOrigin.Owned)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.DoNotFormat]
+        public global::System.DateTime? ComplianceExpirationDateTime { get => this._complianceExpirationDateTime; set => this._complianceExpirationDateTime = value; }
 
         /// <summary>Backing field for <see cref="ConsentProvidedForMinor" /> property.</summary>
         private string _consentProvidedForMinor;
@@ -134,6 +157,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Origin(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.PropertyOrigin.Owned)]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.DoNotFormat]
         public string Department { get => this._department; set => this._department = value; }
+
+        /// <summary>Backing field for <see cref="DeviceVersion" /> property.</summary>
+        private int? _deviceVersion;
+
+        /// <summary>For internal use only.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Origin(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.PropertyOrigin.Owned)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.DoNotFormat]
+        public int? DeviceVersion { get => this._deviceVersion; set => this._deviceVersion = value; }
 
         /// <summary>The name displayed in directory</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Origin(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.PropertyOrigin.Inherited)]
@@ -392,6 +423,48 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.DoNotFormat]
         public string OnPremisesImmutableId { get => this._onPremisesImmutableId; set => this._onPremisesImmutableId = value; }
 
+        /// <summary>Backing field for <see cref="OnPremisesLastSyncDateTime" /> property.</summary>
+        private global::System.DateTime? _onPremisesLastSyncDateTime;
+
+        /// <summary>
+        /// The last time at which the object was synced with the on-premises directory. The Timestamp type represents date and time
+        /// information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+        /// Read-only. Supports $filter (eq, ne, not, ge, le, in).
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Origin(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.PropertyOrigin.Owned)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.DoNotFormat]
+        public global::System.DateTime? OnPremisesLastSyncDateTime { get => this._onPremisesLastSyncDateTime; set => this._onPremisesLastSyncDateTime = value; }
+
+        /// <summary>Backing field for <see cref="OnPremisesSyncEnabled" /> property.</summary>
+        private bool? _onPremisesSyncEnabled;
+
+        /// <summary>
+        /// true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises
+        /// directory but is no longer synced; null if this object has never been synced from an on-premises directory (default).
+        /// Read-only. Supports $filter (eq, ne, not, in, and eq on null values).
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Origin(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.PropertyOrigin.Owned)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.DoNotFormat]
+        public bool? OnPremisesSyncEnabled { get => this._onPremisesSyncEnabled; set => this._onPremisesSyncEnabled = value; }
+
+        /// <summary>Backing field for <see cref="OperatingSystem" /> property.</summary>
+        private string _operatingSystem;
+
+        /// <summary>Operating system of the device. Windows, iOS, etc. This property is read-only.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Origin(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.PropertyOrigin.Owned)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.DoNotFormat]
+        public string OperatingSystem { get => this._operatingSystem; set => this._operatingSystem = value; }
+
+        /// <summary>Backing field for <see cref="OperatingSystemVersion" /> property.</summary>
+        private string _operatingSystemVersion;
+
+        /// <summary>
+        /// Operating system version of the device. Required. Supports $filter (eq, ne, not, ge, le, startsWith, and eq on null values).
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Origin(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.PropertyOrigin.Owned)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.DoNotFormat]
+        public string OperatingSystemVersion { get => this._operatingSystemVersion; set => this._operatingSystemVersion = value; }
+
         /// <summary>Backing field for <see cref="OtherMail" /> property.</summary>
         private string[] _otherMail;
 
@@ -424,6 +497,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Origin(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.PropertyOrigin.Owned)]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.DoNotFormat]
         public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordProfile PasswordProfile { get => (this._passwordProfile = this._passwordProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphPasswordProfile()); set => this._passwordProfile = value; }
+
+        /// <summary>Backing field for <see cref="PhysicalId" /> property.</summary>
+        private string[] _physicalId;
+
+        /// <summary>
+        /// For internal use only. Not nullable. Supports $filter (eq, not, ge, le, startsWith).
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Origin(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.PropertyOrigin.Owned)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.DoNotFormat]
+        public string[] PhysicalId { get => this._physicalId; set => this._physicalId = value; }
 
         /// <summary>Backing field for <see cref="PostalCode" /> property.</summary>
         private string _postalCode;
@@ -517,6 +600,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.DoNotFormat]
         public string Surname { get => this._surname; set => this._surname = value; }
 
+        /// <summary>Backing field for <see cref="TrustType" /> property.</summary>
+        private string _trustType;
+
+        /// <summary>
+        /// Type of trust for the joined device. Read-only. Possible values: Workplace (indicates bring your own personal devices),
+        /// AzureAd (Cloud only joined devices), ServerAd (on-premises domain joined devices joined to Azure AD). For more details,
+        /// see Introduction to device management in Azure Active Directory
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Origin(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.PropertyOrigin.Owned)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.DoNotFormat]
+        public string TrustType { get => this._trustType; set => this._trustType = value; }
+
         /// <summary>Backing field for <see cref="UsageLocation" /> property.</summary>
         private string _usageLocation;
 
@@ -602,6 +697,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         PossibleTypes = new [] { typeof(string) })]
         string AgeGroup { get; set; }
         /// <summary>
+        /// The timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example,
+        /// midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only. Supports $filter (eq, ne, not, ge, le, and eq on null
+        /// values) and $orderBy.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only. Supports $filter (eq, ne, not, ge, le, and eq on null values) and $orderBy.",
+        SerializedName = @"approximateLastSignInDateTime",
+        PossibleTypes = new [] { typeof(global::System.DateTime) })]
+        global::System.DateTime? ApproximateLastSignInDateTime { get; set; }
+        /// <summary>
         /// The telephone numbers for the user. Only one number can be set for this property. Read-only for users synced from on-premises
         /// directory. Supports $filter (eq and NOT).
         /// </summary>
@@ -633,6 +740,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         SerializedName = @"companyName",
         PossibleTypes = new [] { typeof(string) })]
         string CompanyName { get; set; }
+        /// <summary>
+        /// The timestamp when the device is no longer deemed compliant. The timestamp type represents date and time information using
+        /// ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The timestamp when the device is no longer deemed compliant. The timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.",
+        SerializedName = @"complianceExpirationDateTime",
+        PossibleTypes = new [] { typeof(global::System.DateTime) })]
+        global::System.DateTime? ComplianceExpirationDateTime { get; set; }
         /// <summary>
         /// Sets whether consent has been obtained for minors. Allowed values: null, granted, denied and notRequired. Refer to the
         /// legal age group property definitions for further information. Supports $filter (eq, ne, NOT, and in).
@@ -691,6 +809,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         SerializedName = @"department",
         PossibleTypes = new [] { typeof(string) })]
         string Department { get; set; }
+        /// <summary>For internal use only.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"For internal use only.",
+        SerializedName = @"deviceVersion",
+        PossibleTypes = new [] { typeof(int) })]
+        int? DeviceVersion { get; set; }
         /// <summary>
         /// The date and time when the user was hired or will start work in case of a future hire. Supports $filter (eq, ne, NOT ,
         /// ge, le, in).
@@ -893,6 +1019,48 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         PossibleTypes = new [] { typeof(string) })]
         string OnPremisesImmutableId { get; set; }
         /// <summary>
+        /// The last time at which the object was synced with the on-premises directory. The Timestamp type represents date and time
+        /// information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+        /// Read-only. Supports $filter (eq, ne, not, ge, le, in).
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The last time at which the object was synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z Read-only. Supports $filter (eq, ne, not, ge, le, in).",
+        SerializedName = @"onPremisesLastSyncDateTime",
+        PossibleTypes = new [] { typeof(global::System.DateTime) })]
+        global::System.DateTime? OnPremisesLastSyncDateTime { get; set; }
+        /// <summary>
+        /// true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises
+        /// directory but is no longer synced; null if this object has never been synced from an on-premises directory (default).
+        /// Read-only. Supports $filter (eq, ne, not, in, and eq on null values).
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced; null if this object has never been synced from an on-premises directory (default). Read-only. Supports $filter (eq, ne, not, in, and eq on null values).",
+        SerializedName = @"onPremisesSyncEnabled",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? OnPremisesSyncEnabled { get; set; }
+        /// <summary>Operating system of the device. Windows, iOS, etc. This property is read-only.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Operating system of the device. Windows, iOS, etc. This property is read-only.",
+        SerializedName = @"operatingSystem",
+        PossibleTypes = new [] { typeof(string) })]
+        string OperatingSystem { get; set; }
+        /// <summary>
+        /// Operating system version of the device. Required. Supports $filter (eq, ne, not, ge, le, startsWith, and eq on null values).
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Operating system version of the device. Required. Supports $filter (eq, ne, not, ge, le, startsWith, and eq on null values).",
+        SerializedName = @"operatingSystemVersion",
+        PossibleTypes = new [] { typeof(string) })]
+        string OperatingSystemVersion { get; set; }
+        /// <summary>
         /// A list of additional email addresses for the user; for example: ['bob@contoso.com', 'Robert@fabrikam.com'].NOTE: While
         /// this property can contain accent characters, they can cause access issues to first-party applications for the user.Supports
         /// $filter (eq, NOT, ge, le, in, startsWith).
@@ -925,6 +1093,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         SerializedName = @"passwordProfile",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordProfile) })]
         Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordProfile PasswordProfile { get; set; }
+        /// <summary>
+        /// For internal use only. Not nullable. Supports $filter (eq, not, ge, le, startsWith).
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"For internal use only. Not nullable. Supports $filter (eq, not, ge, le, startsWith).",
+        SerializedName = @"physicalIds",
+        PossibleTypes = new [] { typeof(string) })]
+        string[] PhysicalId { get; set; }
         /// <summary>
         /// The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United
         /// States of America, this attribute contains the ZIP code. Maximum length is 40 characters. Supports $filter (eq, ne, NOT,
@@ -1018,6 +1196,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         PossibleTypes = new [] { typeof(string) })]
         string Surname { get; set; }
         /// <summary>
+        /// Type of trust for the joined device. Read-only. Possible values: Workplace (indicates bring your own personal devices),
+        /// AzureAd (Cloud only joined devices), ServerAd (on-premises domain joined devices joined to Azure AD). For more details,
+        /// see Introduction to device management in Azure Active Directory
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Type of trust for the joined device. Read-only. Possible values: Workplace (indicates bring your own personal devices), AzureAd (Cloud only joined devices), ServerAd (on-premises domain joined devices joined to Azure AD). For more details, see Introduction to device management in Azure Active Directory",
+        SerializedName = @"trustType",
+        PossibleTypes = new [] { typeof(string) })]
+        string TrustType { get; set; }
+        /// <summary>
         /// A two letter country code (ISO standard 3166). Required for users that will be assigned licenses due to legal requirement
         /// to check for availability of services in countries. Examples include: US, JP, and GB. Not nullable. Supports $filter (eq,
         /// ne, NOT, ge, le, in, startsWith).
@@ -1072,6 +1262,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         /// </summary>
         string AgeGroup { get; set; }
         /// <summary>
+        /// The timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example,
+        /// midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only. Supports $filter (eq, ne, not, ge, le, and eq on null
+        /// values) and $orderBy.
+        /// </summary>
+        global::System.DateTime? ApproximateLastSignInDateTime { get; set; }
+        /// <summary>
         /// The telephone numbers for the user. Only one number can be set for this property. Read-only for users synced from on-premises
         /// directory. Supports $filter (eq and NOT).
         /// </summary>
@@ -1085,6 +1281,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         /// user comes from. The maximum length of the company name is 64 characters.Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
         /// </summary>
         string CompanyName { get; set; }
+        /// <summary>
+        /// The timestamp when the device is no longer deemed compliant. The timestamp type represents date and time information using
+        /// ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
+        /// </summary>
+        global::System.DateTime? ComplianceExpirationDateTime { get; set; }
         /// <summary>
         /// Sets whether consent has been obtained for minors. Allowed values: null, granted, denied and notRequired. Refer to the
         /// legal age group property definitions for further information. Supports $filter (eq, ne, NOT, and in).
@@ -1113,6 +1314,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         /// le, and in operators).
         /// </summary>
         string Department { get; set; }
+        /// <summary>For internal use only.</summary>
+        int? DeviceVersion { get; set; }
         /// <summary>
         /// The date and time when the user was hired or will start work in case of a future hire. Supports $filter (eq, ne, NOT ,
         /// ge, le, in).
@@ -1207,6 +1410,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         /// </summary>
         string OnPremisesImmutableId { get; set; }
         /// <summary>
+        /// The last time at which the object was synced with the on-premises directory. The Timestamp type represents date and time
+        /// information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+        /// Read-only. Supports $filter (eq, ne, not, ge, le, in).
+        /// </summary>
+        global::System.DateTime? OnPremisesLastSyncDateTime { get; set; }
+        /// <summary>
+        /// true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises
+        /// directory but is no longer synced; null if this object has never been synced from an on-premises directory (default).
+        /// Read-only. Supports $filter (eq, ne, not, in, and eq on null values).
+        /// </summary>
+        bool? OnPremisesSyncEnabled { get; set; }
+        /// <summary>Operating system of the device. Windows, iOS, etc. This property is read-only.</summary>
+        string OperatingSystem { get; set; }
+        /// <summary>
+        /// Operating system version of the device. Required. Supports $filter (eq, ne, not, ge, le, startsWith, and eq on null values).
+        /// </summary>
+        string OperatingSystemVersion { get; set; }
+        /// <summary>
         /// A list of additional email addresses for the user; for example: ['bob@contoso.com', 'Robert@fabrikam.com'].NOTE: While
         /// this property can contain accent characters, they can cause access issues to first-party applications for the user.Supports
         /// $filter (eq, NOT, ge, le, in, startsWith).
@@ -1221,6 +1442,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         string PasswordPolicy { get; set; }
         /// <summary>passwordProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordProfile PasswordProfile { get; set; }
+        /// <summary>
+        /// For internal use only. Not nullable. Supports $filter (eq, not, ge, le, startsWith).
+        /// </summary>
+        string[] PhysicalId { get; set; }
         /// <summary>
         /// The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United
         /// States of America, this attribute contains the ZIP code. Maximum length is 40 characters. Supports $filter (eq, ne, NOT,
@@ -1265,6 +1490,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         /// in, startsWith).
         /// </summary>
         string Surname { get; set; }
+        /// <summary>
+        /// Type of trust for the joined device. Read-only. Possible values: Workplace (indicates bring your own personal devices),
+        /// AzureAd (Cloud only joined devices), ServerAd (on-premises domain joined devices joined to Azure AD). For more details,
+        /// see Introduction to device management in Azure Active Directory
+        /// </summary>
+        string TrustType { get; set; }
         /// <summary>
         /// A two letter country code (ISO standard 3166). Required for users that will be assigned licenses due to legal requirement
         /// to check for availability of services in countries. Examples include: US, JP, and GB. Not nullable. Supports $filter (eq,

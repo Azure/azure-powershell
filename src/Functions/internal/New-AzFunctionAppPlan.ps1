@@ -20,14 +20,13 @@ Description for Creates or updates an App Service Plan.
 .Description
 Description for Creates or updates an App Service Plan.
 .Example
-PS C:\> New-AzFunctionAppPlan -ResourceGroupName MyResourceGroupName `
-                              -Name MyPremiumPlan `
-                              -Location WestEurope `
-                              -MinimumWorkerCount 1 `
-                              -MaximumWorkerCount 10 `
-                              -Sku EP1 `
-                              -WorkerType Windows
-
+New-AzFunctionAppPlan -ResourceGroupName MyResourceGroupName `
+                      -Name MyPremiumPlan `
+                      -Location WestEurope `
+                      -MinimumWorkerCount 1 `
+                      -MaximumWorkerCount 10 `
+                      -Sku EP1 `
+                      -WorkerType Windows
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan

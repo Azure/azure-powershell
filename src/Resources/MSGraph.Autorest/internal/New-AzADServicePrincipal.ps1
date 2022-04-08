@@ -20,11 +20,11 @@ Add new entity to servicePrincipals
 .Description
 Add new entity to servicePrincipals
 .Example
-PS C:\> New-AzADServicePrincipal
+New-AzADServicePrincipal
 .Example
-PS C:\> New-AzADServicePrincipal -ApplicationId $appid
+New-AzADServicePrincipal -ApplicationId $appid
 .Example
-PS C:\> New-AzADServicePrincipal -DisplayName $name
+New-AzADServicePrincipal -DisplayName $name
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal

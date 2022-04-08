@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NotificationHubs.dll-Help.xml
 Module Name: Az.NotificationHubs
 ms.assetid: 3BA94976-DE88-4F07-9C06-41FEEDE1B829
@@ -32,16 +32,16 @@ Authorization rules are used to manage permissions to the namespace.
 ## EXAMPLES
 
 ### Example 1: Create a notification hub
-```
-PS C:\>New-AzNotificationHubsNamespace -ResourceGroup "ContosoNotificationsGroup" -Location "West US" -Namespace "ContosoPartners"
+```powershell
+New-AzNotificationHubsNamespace -ResourceGroup "ContosoNotificationsGroup" -Location "West US" -Namespace "ContosoPartners"
 ```
 
 This command creates a notification hub named ContosoPartners.
 The namespace will be located in the West US datacenter and be assigned to the ContosoNotificationsGroup resource group.
 
 ### Example 2: Create a notification hub with tags
-```
-PS C:\>New-AzNotificationHubsNamespace -ResourceGroup "ContosoNotificationsGroup" -Location "West US" -Namespace "ContosoPartners" -Tags @{Name="Audience";Value="PartnerOrganizations"}
+```powershell
+New-AzNotificationHubsNamespace -ResourceGroup "ContosoNotificationsGroup" -Location "West US" -Namespace "ContosoPartners" -Tags @{Name="Audience";Value="PartnerOrganizations"}
 ```
 
 This command creates a notification hub named ContosoPartners.

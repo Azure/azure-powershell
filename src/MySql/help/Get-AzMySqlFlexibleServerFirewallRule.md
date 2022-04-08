@@ -37,8 +37,10 @@ Gets information about a server firewall rule.
 
 ### Example 1: Get firewall rules by name
 ```powershell
-PS C:\> Get-AzMySqlFlexibleServerFirewallRule -Name firewallrule-test -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
+Get-AzMySqlFlexibleServerFirewallRule -Name firewallrule-test -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
+```
 
+```output
 FirewallRuleName   StartIPAddress   EndIPAddress
 -----------------  ---------------  ---------------
 firewallrule-test   12.12.12.12     23.23.23.23
@@ -48,9 +50,11 @@ This cmdlet gets firewall rules by name.
 
 ### Example 2: Get firewall rules by identity
 ```powershell
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test/firewallRules/firewallrule-test"
-PS C:\> Get-AzMySqlFlexibleServerFirewallRule -InputObject $ID
+$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test/firewallRules/firewallrule-test"
+Get-AzMySqlFlexibleServerFirewallRule -InputObject $ID
+```
 
+```output
 FirewallRuleName   StartIPAddress   EndIPAddress
 -----------------  ---------------  ---------------
 firewallrule-test   12.12.12.12     23.23.23.23
@@ -60,8 +64,10 @@ This cmdlet gets firewall rules by identity.
 
 ### Example 3: Lists all the firewall rules in the specified MySql server
 ```powershell
-PS C:\> Get-AzMySqlFlexibleServerFirewallRule -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
+Get-AzMySqlFlexibleServerFirewallRule -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
+```
 
+```output
 FirewallRuleName   StartIPAddress   EndIPAddress
 -----------------  ---------------  ---------------
 firewallrule-test   12.12.12.12     23.23.23.23

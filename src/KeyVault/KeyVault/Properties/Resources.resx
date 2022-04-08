@@ -597,4 +597,13 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   <data name="SetKeyRotationPolicy" xml:space="preserve">
     <value>Set key rotation policy</value>
   </data>
+  <data name="DeletedManagedHsmNotFound" xml:space="preserve">
+    <value>Cannot find deleted managed HSM '{0}' in location '{1}'</value>
+  </data>
+  <data name="PurgeManagedHsmWarning" xml:space="preserve">
+    <value>Are you sure you want to remove managed HSM '{0}' forever.</value>
+  </data>
+  <data name="PurgeManagedHsmWarningWhatIf" xml:space="preserve">
+    <value>Purge managed HSM</value>
+  </data>
 </root>
