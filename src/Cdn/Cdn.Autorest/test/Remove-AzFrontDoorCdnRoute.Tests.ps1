@@ -54,7 +54,7 @@ Describe 'Remove-AzFrontDoorCdnRoute' {
                 $rulesetName = 'rs' + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use rulesetName : $($rulesetName)"
                 $ruleSet = New-AzFrontDoorCdnRuleSet -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Name $rulesetName
-                $uriConditon = New-AzCdnDeliveryRuleRequestUriConditionObject -Name "RequestUri" -ParameterOperator "Any"
+                $uriConditon = New-AzFrontDoorCdnRuleRequestUriConditionObject -Name "RequestUri" -ParameterOperator "Any"
                 $conditions = @(
                     $uriConditon
                 );
@@ -125,7 +125,7 @@ Describe 'Remove-AzFrontDoorCdnRoute' {
                 $rulesetName = 'rs' + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use rulesetName : $($rulesetName)"
                 $ruleSet = New-AzFrontDoorCdnRuleSet -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Name $rulesetName
-                $uriConditon = New-AzCdnDeliveryRuleRequestUriConditionObject -Name "RequestUri" -ParameterOperator "Any"
+                $uriConditon = New-AzFrontDoorCdnRuleRequestUriConditionObject -Name "RequestUri" -ParameterOperator "Any"
                 $conditions = @(
                     $uriConditon
                 );

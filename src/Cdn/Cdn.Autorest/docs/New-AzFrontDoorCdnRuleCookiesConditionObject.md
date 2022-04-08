@@ -1,25 +1,25 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleHostNameConditionObject
+online version: https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleCookiesConditionObject
 schema: 2.0.0
 ---
 
-# New-AzCdnDeliveryRuleHostNameConditionObject
+# New-AzFrontDoorCdnRuleCookiesConditionObject
 
 ## SYNOPSIS
-Create an in-memory object for DeliveryRuleHostNameCondition.
+Create an in-memory object for DeliveryRuleCookiesCondition.
 
 ## SYNTAX
 
 ```
-New-AzCdnDeliveryRuleHostNameConditionObject -Name <MatchVariable> -ParameterOperator <HostNameOperator>
- [-ParameterMatchValue <String[]>] [-ParameterNegateCondition <Boolean>] [-ParameterTransform <Transform[]>]
- [<CommonParameters>]
+New-AzFrontDoorCdnRuleCookiesConditionObject -Name <MatchVariable> -ParameterOperator <CookiesOperator>
+ [-ParameterMatchValue <String[]>] [-ParameterNegateCondition <Boolean>] [-ParameterSelector <String>]
+ [-ParameterTransform <Transform[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for DeliveryRuleHostNameCondition.
+Create an in-memory object for DeliveryRuleCookiesCondition.
 
 ## EXAMPLES
 
@@ -96,11 +96,26 @@ Accept wildcard characters: False
 Describes operator to be matched.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.HostNameOperator
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.CookiesOperator
 Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ParameterSelector
+Name of Cookies to be matched.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -129,7 +144,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleHostNameCondition
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleCookiesCondition
 
 ## NOTES
 

@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'New-AzCdnDeliveryRuleClientPortConditionObject'))
+if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorCdnRuleUrlFileExtensionConditionObject'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzCdnDeliveryRuleClientPortConditionObject.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzFrontDoorCdnRuleUrlFileExtensionConditionObject.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,8 +14,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzCdnDeliveryRuleClientPo
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzCdnDeliveryRuleClientPortConditionObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+Describe 'New-AzFrontDoorCdnRuleUrlFileExtensionConditionObject' {
+    It '__AllParameterSets' {
+        { 
+            # ignore 
+        } | Should -Not -Throw
     }
 }

@@ -1,25 +1,25 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleSocketAddrConditionObject
+online version: https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleClientPortConditionObject
 schema: 2.0.0
 ---
 
-# New-AzCdnDeliveryRuleSocketAddrConditionObject
+# New-AzFrontDoorCdnRuleClientPortConditionObject
 
 ## SYNOPSIS
-Create an in-memory object for DeliveryRuleSocketAddrCondition.
+Create an in-memory object for DeliveryRuleClientPortCondition.
 
 ## SYNTAX
 
 ```
-New-AzCdnDeliveryRuleSocketAddrConditionObject -Name <MatchVariable> -ParameterOperator <SocketAddrOperator>
+New-AzFrontDoorCdnRuleClientPortConditionObject -Name <MatchVariable> -ParameterOperator <ClientPortOperator>
  [-ParameterMatchValue <String[]>] [-ParameterNegateCondition <Boolean>] [-ParameterTransform <Transform[]>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for DeliveryRuleSocketAddrCondition.
+Create an in-memory object for DeliveryRuleClientPortCondition.
 
 ## EXAMPLES
 
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 Describes operator to be matched.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SocketAddrOperator
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ClientPortOperator
 Parameter Sets: (All)
 Aliases:
 
@@ -129,7 +129,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleSocketAddrCondition
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleClientPortCondition
 
 ## NOTES
 

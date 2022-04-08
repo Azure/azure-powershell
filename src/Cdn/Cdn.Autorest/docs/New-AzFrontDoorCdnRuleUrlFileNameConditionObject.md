@@ -1,25 +1,25 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleClientPortConditionObject
+online version: https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleUrlFileNameConditionObject
 schema: 2.0.0
 ---
 
-# New-AzCdnDeliveryRuleClientPortConditionObject
+# New-AzFrontDoorCdnRuleUrlFileNameConditionObject
 
 ## SYNOPSIS
-Create an in-memory object for DeliveryRuleClientPortCondition.
+Create an in-memory object for DeliveryRuleUrlFileNameCondition.
 
 ## SYNTAX
 
 ```
-New-AzCdnDeliveryRuleClientPortConditionObject -Name <MatchVariable> -ParameterOperator <ClientPortOperator>
- [-ParameterMatchValue <String[]>] [-ParameterNegateCondition <Boolean>] [-ParameterTransform <Transform[]>]
- [<CommonParameters>]
+New-AzFrontDoorCdnRuleUrlFileNameConditionObject -Name <MatchVariable>
+ -ParameterOperator <UrlFileNameOperator> [-ParameterMatchValue <String[]>]
+ [-ParameterNegateCondition <Boolean>] [-ParameterTransform <Transform[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for DeliveryRuleClientPortCondition.
+Create an in-memory object for DeliveryRuleUrlFileNameCondition.
 
 ## EXAMPLES
 
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 Describes operator to be matched.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ClientPortOperator
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.UrlFileNameOperator
 Parameter Sets: (All)
 Aliases:
 
@@ -129,7 +129,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleClientPortCondition
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleUrlFileNameCondition
 
 ## NOTES
 

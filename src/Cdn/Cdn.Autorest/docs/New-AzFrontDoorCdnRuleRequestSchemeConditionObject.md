@@ -1,24 +1,24 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleSslProtocolConditionObject
+online version: https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleRequestSchemeConditionObject
 schema: 2.0.0
 ---
 
-# New-AzCdnDeliveryRuleSslProtocolConditionObject
+# New-AzFrontDoorCdnRuleRequestSchemeConditionObject
 
 ## SYNOPSIS
-Create an in-memory object for DeliveryRuleSslProtocolCondition.
+Create an in-memory object for DeliveryRuleRequestSchemeCondition.
 
 ## SYNTAX
 
 ```
-New-AzCdnDeliveryRuleSslProtocolConditionObject -Name <MatchVariable> [-ParameterMatchValue <SslProtocol[]>]
+New-AzFrontDoorCdnRuleRequestSchemeConditionObject -Name <MatchVariable> [-ParameterMatchValue <String[]>]
  [-ParameterNegateCondition <Boolean>] [-ParameterTransform <Transform[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for DeliveryRuleSslProtocolCondition.
+Create an in-memory object for DeliveryRuleRequestSchemeCondition.
 
 ## EXAMPLES
 
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 The match value for the condition of the delivery rule.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SslProtocol[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -113,7 +113,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleSslProtocolCondition
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRequestSchemeCondition
 
 ## NOTES
 
