@@ -32,10 +32,10 @@ The Set-AzWcfRelay cmdlet updates the description for the WcfRelay in the specif
 
 ### Example 1 - InputObject
 ```powershell
-$getWcfRelay = Get-AzWcfRelay -ResourceGroupName Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -WcfRelayName TestWCFRelay
+$getWcfRelay = Get-AzWcfRelay -ResourceGroupName "Default-ServiceBus-WestUS" -Namespace "TestNameSpace-Relay1" -WcfRelay TestWCFRelay
 $getWcfRelay.UserMetadata = "usermetadata is a placeholder to store user-defined string data for the HybridConnection endpoint.e.g. it can be used to store  desc
 riptive data, such as list of teams and their contact information also user-defined configuration settings can be stored."
-Set-AzWcfRelay -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name TestWCFRelay1 -InputObject $getWcfRelay
+Set-AzWcfRelay -ResourceGroupName "Default-ServiceBus-WestUS" -Namespace "TestNameSpace-Relay1" -Name TestWCFRelay1 -InputObject $getWcfRelay
 ```
 
 ```output
@@ -56,7 +56,7 @@ Type                        : Microsoft.Relay/WcfRelays
 
 ### Example 2 - Properties
 ```powershell
-Set-AzWcfRelay -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name TestWCFRelay1 -UserMetadata "User Meta data"
+Set-AzWcfRelay -ResourceGroupName "Default-ServiceBus-WestUS" -Namespace "TestNameSpace-Relay1" -Name TestWCFRelay1 -UserMetadata "User Meta data"
 ```
 
 ```output
