@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnUrlSigningKeyParametersObject
+online version: https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnSecretUrlSigningKeyParametersObject
 schema: 2.0.0
 ---
 
-# New-AzCdnUrlSigningKeyParametersObject
+# New-AzFrontDoorCdnSecretUrlSigningKeyParametersObject
 
 ## SYNOPSIS
 Create an in-memory object for UrlSigningKeyParameters.
@@ -13,8 +13,8 @@ Create an in-memory object for UrlSigningKeyParameters.
 ## SYNTAX
 
 ```
-New-AzCdnUrlSigningKeyParametersObject -KeyId <String> -Type <SecretType> [-SecretSourceId <String>]
- [-SecretVersion <String>] [<CommonParameters>]
+New-AzFrontDoorCdnSecretUrlSigningKeyParametersObject -KeyId <String> -Type <SecretType>
+ [-SecretSourceId <String>] [-SecretVersion <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

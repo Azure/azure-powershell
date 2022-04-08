@@ -33,8 +33,10 @@ Deleting a profile will result in the deletion of all of the sub-resources inclu
 
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+{{ Add code here }}
+```
 
+```output
 {{ Add output here }}
 ```
 
@@ -42,8 +44,10 @@ PS C:\> {{ Add code here }}
 
 ### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+{{ Add code here }}
+```
 
+```output
 {{ Add output here }}
 ```
 

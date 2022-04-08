@@ -56,19 +56,16 @@ nested-object-to-string: true
 
 directive:
   - no-inline:
+    # AFDX
     - SecurityPolicyPropertiesParameters
     - SecretParameters
-    - CustomDomainHttpsParameters
     - AFDDomainHttpsParameters
+    # CDN
+    - CustomDomainHttpsParameters
   # Generate memory object as parameter of the cmelet.
   - model-cmdlet:
-    - AFDDomainHttpsParameters
     - SecurityPolicyWebApplicationFirewallAssociation
     - SecurityPolicyWebApplicationFirewallParameters
-    - AzureFirstPartyManagedCertificateParameters
-    - CustomerCertificateParameters
-    - ManagedCertificateParameters
-    - UrlSigningKeyParameters
     - DeliveryRuleRemoteAddressCondition
     - DeliveryRuleRequestMethodCondition
     - DeliveryRuleQueryStringCondition

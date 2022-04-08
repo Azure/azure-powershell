@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnAFDDomainHttpsParametersObject
+online version: https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnCustomDomainTlsSettingParametersObject
 schema: 2.0.0
 ---
 
-# New-AzCdnAFDDomainHttpsParametersObject
+# New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject
 
 ## SYNOPSIS
 Create an in-memory object for AFDDomainHttpsParameters.
@@ -13,7 +13,7 @@ Create an in-memory object for AFDDomainHttpsParameters.
 ## SYNTAX
 
 ```
-New-AzCdnAFDDomainHttpsParametersObject -CertificateType <AfdCertificateType>
+New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType <AfdCertificateType>
  [-MinimumTlsVersion <AfdMinimumTlsVersion>] [-Secret <IResourceReference>] [<CommonParameters>]
 ```
 
