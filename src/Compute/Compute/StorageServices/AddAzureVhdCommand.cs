@@ -192,8 +192,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                         convertVhd();
                     }
 
-                    checkForCorruptedAndDynamicallySizedVhd();
-                    checkVhdFileSize(this.LocalFilePath);
+                    CheckForInvalidVhd();
 
                     // 2.            RESIZE VHD
                     if (this.SkipResizing.IsPresent)
@@ -527,37 +526,24 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             WriteObject(psObject);
         }
 
-        private void checkForCorruptedAndDynamicallySizedVhd()
+        private void CheckForInvalidVhd()
         {
-            // checking for corrupted vhd
             PathIntrinsics currentPath = SessionState.Path;
-            var filePath = new FileInfo(currentPath.GetUnresolvedProviderPathFromPSPath(LocalFilePath.ToString()));
+            FileInfo filePath = new FileInfo(currentPath.GetUnresolvedProviderPathFromPSPath(LocalFilePath.ToString()));
 
-            using (var vds = new VirtualDiskStream(filePath.FullName))
+            try
             {
-                if (vds.DiskType == DiskType.Fixed)
+                using (VirtualDiskStream vds = new VirtualDiskStream(filePath.FullName))
                 {
-                    long divisor = Convert.ToInt64(Math.Pow(2, 9));
-                    long rem = 0;
-                    Math.DivRem(filePath.Length, divisor, out rem);
-                    if (rem != 0)
+                    if (vds.Length < 20971520 || vds.Length > 4396972769280)
                     {
-                        throw new ArgumentOutOfRangeException("LocalFilePath", "Given vhd file is a corrupted fixed VHD");
+                        throw new InvalidOperationException("The VHD must be between 20 MB and 4095 GB.");
                     }
                 }
-                else
-                {
-                    convertDynamicVhdToStatic();
-                }
             }
-            return;
-        }
-
-        private void checkVhdFileSize(FileInfo file)
-        {
-            if (file.Length < 20971520 || file.Length > 4396972769280)
+            catch (VhdParsingException)
             {
-                throw new Exception("VHD (Hard Disk Image) file must be between 20 MB and 4095 GB");
+                throw new InvalidOperationException("The VHD file is corrupted.");
             }
 
             return;
@@ -644,70 +630,6 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                     throw ex;
                 }
 
-            }
-        }
-
-        private void convertDynamicVhdToStatic()
-        {
-            string FixedSizePath = returnAvailExtensionName(this.LocalFilePath.FullName, "_FixedSize", ".vhd");
-            FileInfo FixedFileInfo = new FileInfo(FixedSizePath);
-            ManagementScope scope = new ManagementScope(@"\root\virtualization\V2");
-            VirtualHardDiskSettingData settingData = new VirtualHardDiskSettingData(VirtualHardDiskType.FixedSize, VirtualHardDiskFormat.Vhd, FixedFileInfo.FullName, null, 0, 0, 0, 0);
-            try
-            {
-                using (ManagementObject imageManagementService =
-                StorageUtilities.GetImageManagementService(scope))
-                {
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine("Converting dynamically sized VHD to fixed size VHD.");
-                    Console.ResetColor();
-
-                    using (ManagementBaseObject inParams =
-                        imageManagementService.GetMethodParameters("ConvertVirtualHardDisk"))
-                    {
-                        inParams["SourcePath"] = this.LocalFilePath.FullName;
-                        inParams["VirtualDiskSettingData"] =
-                            settingData.GetVirtualHardDiskSettingDataEmbeddedInstance(null, imageManagementService.Path.Path);
-
-                        using (ManagementBaseObject outParams = imageManagementService.InvokeMethod(
-                            "ConvertVirtualHardDisk", inParams, null))
-                        {
-                            ManagementPath path = new ManagementPath((string)outParams["Job"]);
-                            ManagementObject job = new ManagementObject(path);
-                            string jobStatus = (string)job["JobStatus"];
-                            ushort percentComplete = (ushort)job["PercentComplete"];
-                            while (jobStatus == "Job is running" && percentComplete < 100)
-                            {
-                                Program.SyncOutput.ProgressHyperV(percentComplete, "Converting dynamically sized VHD to fixed size VHD");
-                                Thread.Sleep(1000);
-                                job.Get();
-                                jobStatus = (string)job["JobStatus"];
-                                percentComplete = (ushort)job["PercentComplete"];
-                            }
-                            Program.SyncOutput.ProgressHyperV(percentComplete, "Converting dynamically sized VHD to fixed size VHD");
-                            WmiUtilities.ValidateOutput(outParams, scope);
-                        }
-                        Console.WriteLine("Fixed VHD file: " + FixedSizePath);
-                        this.LocalFilePath = FixedFileInfo;
-                        ConvertedResized = true;
-                    }
-                }
-            }
-            catch (System.Management.ManagementException ex)
-            {
-                if (ex.Message == "Invalid namespace ")
-                {
-                    Exception outputEx = new Exception("Failed to convert VHD file to fixed size. Hyper-V Platform is not found.\nFollow this link to enabled Hyper-V or convert file manually: https://aka.ms/usingAdd-AzVhd");
-                    ThrowTerminatingError(new ErrorRecord(
-                        outputEx,
-                        "Hyper-V is unavailable",
-                        ErrorCategory.InvalidOperation,
-                        null));
-                }
-                else
-                {
-                    throw ex;
-                }
             }
         }
 
