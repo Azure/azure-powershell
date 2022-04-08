@@ -32,7 +32,7 @@ Describe 'Remove-AzFrontDoorCdnCustomDomain' {
                 $secretName = "se-" + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use secretName : $($secretName)"
 
-                $parameter = New-AzCdnCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate"`
+                $parameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate"`
                 -SecretSourceId "/subscriptions/4d894474-aa7f-4611-b830-344860c3eb9c/resourceGroups/powershelltest/providers/Microsoft.KeyVault/vaults/cdn-ps-kv/certificates/cdndevcn2022-0329"
                 
                 $secret = New-AzFrontDoorCdnSecret -Name $secretName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Parameter $parameter
@@ -68,7 +68,7 @@ Describe 'Remove-AzFrontDoorCdnCustomDomain' {
                 $secretName = "se-" + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use secretName : $($secretName)"
 
-                $parameter = New-AzCdnCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate"`
+                $parameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate"`
                 -SecretSourceId "/subscriptions/4d894474-aa7f-4611-b830-344860c3eb9c/resourceGroups/powershelltest/providers/Microsoft.KeyVault/vaults/cdn-ps-kv/certificates/cdndevcn2022-0329"
                 
                 $secret = New-AzFrontDoorCdnSecret -Name $secretName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Parameter $parameter

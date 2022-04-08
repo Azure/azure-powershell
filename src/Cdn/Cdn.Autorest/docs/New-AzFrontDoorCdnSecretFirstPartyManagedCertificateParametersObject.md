@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnAzureFirstPartyManagedCertificateParametersObject
+online version: https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnSecretFirstPartyManagedCertificateParametersObject
 schema: 2.0.0
 ---
 
-# New-AzCdnAzureFirstPartyManagedCertificateParametersObject
+# New-AzFrontDoorCdnSecretFirstPartyManagedCertificateParametersObject
 
 ## SYNOPSIS
 Create an in-memory object for AzureFirstPartyManagedCertificateParameters.
@@ -13,7 +13,7 @@ Create an in-memory object for AzureFirstPartyManagedCertificateParameters.
 ## SYNTAX
 
 ```
-New-AzCdnAzureFirstPartyManagedCertificateParametersObject -Type <SecretType> [<CommonParameters>]
+New-AzFrontDoorCdnSecretFirstPartyManagedCertificateParametersObject -Type <SecretType> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
