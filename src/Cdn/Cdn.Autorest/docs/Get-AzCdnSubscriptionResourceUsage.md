@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.cdn/get-azcdnresourceusage
+online version: https://docs.microsoft.com/powershell/module/az.cdn/get-azcdnsubscriptionresourceusage
 schema: 2.0.0
 ---
 
-# Get-AzCdnResourceUsage
+# Get-AzCdnSubscriptionResourceUsage
 
 ## SYNOPSIS
 Check the quota and actual usage of the CDN profiles under the given subscription.
@@ -13,8 +13,8 @@ Check the quota and actual usage of the CDN profiles under the given subscriptio
 ## SYNTAX
 
 ```
-Get-AzCdnResourceUsage [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Get-AzCdnSubscriptionResourceUsage [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,8 +24,10 @@ Check the quota and actual usage of the CDN profiles under the given subscriptio
 
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+{{ Add code here }}
+```
 
+```output
 {{ Add output here }}
 ```
 
@@ -33,8 +35,10 @@ PS C:\> {{ Add code here }}
 
 ### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+{{ Add code here }}
+```
 
+```output
 {{ Add output here }}
 ```
 

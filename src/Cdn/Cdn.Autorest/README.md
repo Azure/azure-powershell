@@ -121,6 +121,10 @@ directive:
       subject: ^NameAvailability$|^EndpointNameAvailability$
     remove: true
   - where:
+      variant: ^ValidateViaIdentity$|^ValidateViaIdentityExpanded$
+      subject: ^Probe$
+    remove: true
+  - where:
       variant: ^EnableExpanded$|^EnableViaIdentityExpanded$
       subject: ^CustomDomainCustomHttps$
     remove: true
@@ -171,6 +175,10 @@ directive:
       subject: EndpointNameAvailability
     set:
       subject-prefix: FrontDoorCdn
+  - where:
+      subject: ResourceUsage
+    set:
+      subject: SubscriptionResourceUsage
 
   # https://github.com/Azure/autorest.powershell/issues/906
   - where:
