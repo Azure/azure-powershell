@@ -26,7 +26,7 @@ Restore a server from an existing backup
 ### Example 1: Restore PostgreSql server using PointInTime Restore
 ```powershell
  $restorePointInTime = (Get-Date).AddMinutes(-10)
- Restore-AzPostgreSqlFlexibleServer -Name pg-restore -ResourceGroupName PowershellPostgreSqlTest -SourceServerName postgresql-test -Location eastus -RestorePointInTime $restorePointInTime 
+ Restore-AzPostgreSqlFlexibleServer -Name pg-restore -ResourceGroupName PowershellPostgreSqlTest -SourceServerName postgresql-test -RestorePointInTime $restorePointInTime 
 ```
 
 ```output

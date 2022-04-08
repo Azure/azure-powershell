@@ -54,7 +54,7 @@ This cmdlet updates PostgreSql server by resource group and server name.
 
 ### Example 2: Update PostgreSql server by identity.
 ```powershell
- Get-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test | Update-AzPostgreSqlFlexibleServer -BackupRetentionDay 23 -StorageMb 10240
+ Get-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test | Update-AzPostgreSqlFlexibleServer -BackupRetentionDay 23 -StorageInMb 10240
 ```
 
 ```output
