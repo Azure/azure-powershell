@@ -157,9 +157,6 @@ Create an in-memory object for DeliveryRuleRequestUriCondition.
 ### [New-AzCdnDeliveryRuleResponseHeaderActionObject](New-AzCdnDeliveryRuleResponseHeaderActionObject.md)
 Create an in-memory object for DeliveryRuleResponseHeaderAction.
 
-### [New-AzCdnDeliveryRuleRouteConfigurationOverrideActionObject](New-AzCdnDeliveryRuleRouteConfigurationOverrideActionObject.md)
-Create an in-memory object for DeliveryRuleRouteConfigurationOverrideAction.
-
 ### [New-AzCdnDeliveryRuleServerPortConditionObject](New-AzCdnDeliveryRuleServerPortConditionObject.md)
 Create an in-memory object for DeliveryRuleServerPortCondition.
 
@@ -237,8 +234,26 @@ Creates a new route with the specified route name under the specified subscripti
 ### [New-AzFrontDoorCdnRule](New-AzFrontDoorCdnRule.md)
 Creates a new delivery rule within the specified rule set.
 
+### [New-AzFrontDoorCdnRuleRequestHeaderActionObject](New-AzFrontDoorCdnRuleRequestHeaderActionObject.md)
+Create an in-memory object for DeliveryRuleRequestHeaderAction.
+
+### [New-AzFrontDoorCdnRuleResponseHeaderActionObject](New-AzFrontDoorCdnRuleResponseHeaderActionObject.md)
+Create an in-memory object for DeliveryRuleResponseHeaderAction.
+
+### [New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject](New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject.md)
+Create an in-memory object for DeliveryRuleRouteConfigurationOverrideAction.
+
 ### [New-AzFrontDoorCdnRuleSet](New-AzFrontDoorCdnRuleSet.md)
 Creates a new rule set within the specified profile.
+
+### [New-AzFrontDoorCdnRuleUrlRedirectActionObject](New-AzFrontDoorCdnRuleUrlRedirectActionObject.md)
+Create an in-memory object for UrlRedirectAction.
+
+### [New-AzFrontDoorCdnRuleUrlRewriteActionObject](New-AzFrontDoorCdnRuleUrlRewriteActionObject.md)
+Create an in-memory object for UrlRewriteAction.
+
+### [New-AzFrontDoorCdnRuleUrlSigningActionObject](New-AzFrontDoorCdnRuleUrlSigningActionObject.md)
+Create an in-memory object for UrlSigningAction.
 
 ### [New-AzFrontDoorCdnSecret](New-AzFrontDoorCdnSecret.md)
 Creates a new Secret within the specified profile.

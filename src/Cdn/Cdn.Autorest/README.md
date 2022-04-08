@@ -85,12 +85,12 @@ directive:
     - DeliveryRuleServerPortCondition
     - DeliveryRuleHostNameCondition
     - DeliveryRuleSslProtocolCondition
+    # CDN action
     - UrlRedirectAction
     - UrlSigningAction
     - UrlRewriteAction
     - DeliveryRuleRequestHeaderAction
     - DeliveryRuleResponseHeaderAction
-    - DeliveryRuleRouteConfigurationOverrideAction
 
   # Following is two common directive which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set

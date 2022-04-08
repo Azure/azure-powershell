@@ -32,7 +32,7 @@ Describe 'Get-AzFrontDoorCdnRule' {
             $conditions = @(
                 $uriConditon
             );
-            $overrideAction = New-AzCdnDeliveryRuleRouteConfigurationOverrideActionObject -Name "RouteConfigurationOverride" `
+            $overrideAction = New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject -Name "RouteConfigurationOverride" `
             -CacheConfigurationQueryStringCachingBehavior "IgnoreSpecifiedQueryStrings" `
             -CacheConfigurationQueryParameter "a=test" `
             -CacheConfigurationIsCompressionEnabled "Enabled" `
@@ -69,7 +69,7 @@ Describe 'Get-AzFrontDoorCdnRule' {
             $conditions = @(
                 $uriConditon
             );
-            $overrideAction = New-AzCdnDeliveryRuleRouteConfigurationOverrideActionObject -Name "RouteConfigurationOverride" `
+            $overrideAction = New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject -Name "RouteConfigurationOverride" `
             -CacheConfigurationQueryStringCachingBehavior "IgnoreSpecifiedQueryStrings" `
             -CacheConfigurationQueryParameter "a=test" `
             -CacheConfigurationIsCompressionEnabled "Enabled" `
@@ -107,7 +107,7 @@ Describe 'Get-AzFrontDoorCdnRule' {
             $conditions = @(
                 $uriConditon
             );
-            $overrideAction = New-AzCdnDeliveryRuleRouteConfigurationOverrideActionObject -Name "RouteConfigurationOverride" `
+            $overrideAction = New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject -Name "RouteConfigurationOverride" `
             -CacheConfigurationQueryStringCachingBehavior "IgnoreSpecifiedQueryStrings" `
             -CacheConfigurationQueryParameter "a=test" `
             -CacheConfigurationIsCompressionEnabled "Enabled" `
