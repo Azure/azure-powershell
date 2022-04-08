@@ -57,7 +57,7 @@ Checks the quota and actual usage of endpoints under the given Azure Front Door 
 Gets the supported optimization types for the current profile.
 A user can create an endpoint with an optimization type from the listed values.
 
-### [Get-AzCdnResourceUsage](Get-AzCdnResourceUsage.md)
+### [Get-AzCdnSubscriptionResourceUsage](Get-AzCdnSubscriptionResourceUsage.md)
 Check the quota and actual usage of the CDN profiles under the given subscription.
 
 ### [Get-AzFrontDoorCdnCustomDomain](Get-AzFrontDoorCdnCustomDomain.md)

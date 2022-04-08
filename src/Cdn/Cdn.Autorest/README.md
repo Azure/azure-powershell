@@ -66,6 +66,8 @@ directive:
   - model-cmdlet:
     - SecurityPolicyWebApplicationFirewallAssociation
     - SecurityPolicyWebApplicationFirewallParameters
+    - UserManagedHttpsParameters
+    - CdnManagedHttpsParameters
     - DeliveryRuleRemoteAddressCondition
     - DeliveryRuleRequestMethodCondition
     - DeliveryRuleQueryStringCondition
@@ -94,10 +96,6 @@ directive:
     - DeliveryRuleCacheExpirationAction
     - DeliveryRuleCacheKeyQueryStringAction
     - DeliveryRuleRouteConfigurationOverrideAction
-    # child classes for CustomDomainHttpsParameters
-    - UserManagedHttpsParameters
-    - CdnManagedHttpsParameters
-    - CustomDomainHttpsParameters
 
   # Following is two common directive which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
@@ -118,6 +116,14 @@ directive:
   - where:
       variant: ^CheckViaIdentity$|^CheckViaIdentityExpanded$
       subject: ^NameAvailability$|^EndpointNameAvailability$
+    remove: true
+  - where:
+      variant: ^ValidateViaIdentity$|^ValidateViaIdentityExpanded$
+      subject: ^Probe$
+    remove: true
+  - where:
+      variant: ^EnableExpanded$|^EnableViaIdentityExpanded$
+      subject: ^CustomDomainCustomHttps$
     remove: true
 
   # Hide Cdn profile
@@ -166,6 +172,10 @@ directive:
       subject: EndpointNameAvailability
     set:
       subject-prefix: FrontDoorCdn
+  - where:
+      subject: ResourceUsage
+    set:
+      subject: SubscriptionResourceUsage
 
   # https://github.com/Azure/autorest.powershell/issues/906
   - where:
