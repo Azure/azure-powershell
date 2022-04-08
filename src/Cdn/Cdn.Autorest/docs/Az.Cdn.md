@@ -109,17 +109,11 @@ Available for Verizon Profiles.
 ### [Invoke-AzCdnSecretValidate](Invoke-AzCdnSecretValidate.md)
 Validate a Secret in the profile.
 
-### [New-AzCdnAFDDomainHttpsParametersObject](New-AzCdnAFDDomainHttpsParametersObject.md)
-Create an in-memory object for AFDDomainHttpsParameters.
-
-### [New-AzCdnAzureFirstPartyManagedCertificateParametersObject](New-AzCdnAzureFirstPartyManagedCertificateParametersObject.md)
-Create an in-memory object for AzureFirstPartyManagedCertificateParameters.
-
 ### [New-AzCdnCustomDomain](New-AzCdnCustomDomain.md)
 Creates a new custom domain within an endpoint.
 
-### [New-AzCdnCustomerCertificateParametersObject](New-AzCdnCustomerCertificateParametersObject.md)
-Create an in-memory object for CustomerCertificateParameters.
+### [New-AzCdnCustomDomainHttpsParametersObject](New-AzCdnCustomDomainHttpsParametersObject.md)
+Create an in-memory object for CustomDomainHttpsParameters.
 
 ### [New-AzCdnDeliveryRuleCacheExpirationActionObject](New-AzCdnDeliveryRuleCacheExpirationActionObject.md)
 Create an in-memory object for DeliveryRuleCacheExpirationAction.
@@ -196,9 +190,6 @@ Create an in-memory object for DeliveryRuleUrlPathCondition.
 ### [New-AzCdnEndpoint](New-AzCdnEndpoint.md)
 Creates a new CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 
-### [New-AzCdnManagedCertificateParametersObject](New-AzCdnManagedCertificateParametersObject.md)
-Create an in-memory object for ManagedCertificateParameters.
-
 ### [New-AzCdnManagedHttpsParametersObject](New-AzCdnManagedHttpsParametersObject.md)
 Create an in-memory object for CdnManagedHttpsParameters.
 
@@ -237,14 +228,14 @@ Create an in-memory object for UrlRewriteAction.
 ### [New-AzCdnUrlSigningActionObject](New-AzCdnUrlSigningActionObject.md)
 Create an in-memory object for UrlSigningAction.
 
-### [New-AzCdnUrlSigningKeyParametersObject](New-AzCdnUrlSigningKeyParametersObject.md)
-Create an in-memory object for UrlSigningKeyParameters.
-
 ### [New-AzCdnUserManagedHttpsParametersObject](New-AzCdnUserManagedHttpsParametersObject.md)
 Create an in-memory object for UserManagedHttpsParameters.
 
 ### [New-AzFrontDoorCdnCustomDomain](New-AzFrontDoorCdnCustomDomain.md)
 Creates a new domain within the specified profile.
+
+### [New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject](New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject.md)
+Create an in-memory object for AFDDomainHttpsParameters.
 
 ### [New-AzFrontDoorCdnEndpoint](New-AzFrontDoorCdnEndpoint.md)
 Creates a new AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile.
@@ -269,6 +260,18 @@ Creates a new rule set within the specified profile.
 
 ### [New-AzFrontDoorCdnSecret](New-AzFrontDoorCdnSecret.md)
 Creates a new Secret within the specified profile.
+
+### [New-AzFrontDoorCdnSecretCustomerCertificateParametersObject](New-AzFrontDoorCdnSecretCustomerCertificateParametersObject.md)
+Create an in-memory object for CustomerCertificateParameters.
+
+### [New-AzFrontDoorCdnSecretFirstPartyManagedCertificateParametersObject](New-AzFrontDoorCdnSecretFirstPartyManagedCertificateParametersObject.md)
+Create an in-memory object for AzureFirstPartyManagedCertificateParameters.
+
+### [New-AzFrontDoorCdnSecretManagedCertificateParametersObject](New-AzFrontDoorCdnSecretManagedCertificateParametersObject.md)
+Create an in-memory object for ManagedCertificateParameters.
+
+### [New-AzFrontDoorCdnSecretUrlSigningKeyParametersObject](New-AzFrontDoorCdnSecretUrlSigningKeyParametersObject.md)
+Create an in-memory object for UrlSigningKeyParameters.
 
 ### [New-AzFrontDoorCdnSecurityPolicy](New-AzFrontDoorCdnSecurityPolicy.md)
 Creates a new security policy within the specified profile.

@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnManagedCertificateParametersObject
+online version: https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnSecretManagedCertificateParametersObject
 schema: 2.0.0
 ---
 
-# New-AzCdnManagedCertificateParametersObject
+# New-AzFrontDoorCdnSecretManagedCertificateParametersObject
 
 ## SYNOPSIS
 Create an in-memory object for ManagedCertificateParameters.
@@ -13,7 +13,7 @@ Create an in-memory object for ManagedCertificateParameters.
 ## SYNTAX
 
 ```
-New-AzCdnManagedCertificateParametersObject -Type <SecretType> [<CommonParameters>]
+New-AzFrontDoorCdnSecretManagedCertificateParametersObject -Type <SecretType> [<CommonParameters>]
 ```
 
 ## DESCRIPTION

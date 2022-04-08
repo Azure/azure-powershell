@@ -32,13 +32,13 @@ Describe 'Update-AzFrontDoorCdnCustomDomainValidationToken' {
                 $secretName = "se-" + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use secretName : $($secretName)"
 
-                $parameter = New-AzCdnCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate"`
+                $parameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate"`
                 -SecretSourceId "/subscriptions/4d894474-aa7f-4611-b830-344860c3eb9c/resourceGroups/powershelltest/providers/Microsoft.KeyVault/vaults/cdn-ps-kv/certificates/cdndevcn2022-0329"
                 
                 $secret = New-AzFrontDoorCdnSecret -Name $secretName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Parameter $parameter
                 $secretResoure = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ResourceReference]::new()
                 $secretResoure.Id = $secret.Id
-                $tlsSetting = New-AzCdnAFDDomainHttpsParametersObject -CertificateType "CustomerCertificate" -MinimumTlsVersion "TLS12" -Secret $secretResoure
+                $tlsSetting = New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType "CustomerCertificate" -MinimumTlsVersion "TLS12" -Secret $secretResoure
 
                 $customDomainName = "domain-" + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use customDomainName : $($customDomainName)"
@@ -73,13 +73,13 @@ Describe 'Update-AzFrontDoorCdnCustomDomainValidationToken' {
                 $secretName = "se-" + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use secretName : $($secretName)"
 
-                $parameter = New-AzCdnCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate"`
+                $parameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate"`
                 -SecretSourceId "/subscriptions/4d894474-aa7f-4611-b830-344860c3eb9c/resourceGroups/powershelltest/providers/Microsoft.KeyVault/vaults/cdn-ps-kv/certificates/cdndevcn2022-0329"
                 
                 $secret = New-AzFrontDoorCdnSecret -Name $secretName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Parameter $parameter
                 $secretResoure = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ResourceReference]::new()
                 $secretResoure.Id = $secret.Id
-                $tlsSetting = New-AzCdnAFDDomainHttpsParametersObject -CertificateType "CustomerCertificate" -MinimumTlsVersion "TLS12" -Secret $secretResoure
+                $tlsSetting = New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType "CustomerCertificate" -MinimumTlsVersion "TLS12" -Secret $secretResoure
 
                 $customDomainName = "domain-" + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use customDomainName : $($customDomainName)"

@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnCustomerCertificateParametersObject
+online version: https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnSecretCustomerCertificateParametersObject
 schema: 2.0.0
 ---
 
-# New-AzCdnCustomerCertificateParametersObject
+# New-AzFrontDoorCdnSecretCustomerCertificateParametersObject
 
 ## SYNOPSIS
 Create an in-memory object for CustomerCertificateParameters.
@@ -13,7 +13,7 @@ Create an in-memory object for CustomerCertificateParameters.
 ## SYNTAX
 
 ```
-New-AzCdnCustomerCertificateParametersObject -Type <SecretType> [-SecretSourceId <String>]
+New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -Type <SecretType> [-SecretSourceId <String>]
  [-SecretVersion <String>] [-SubjectAlternativeName <String[]>] [-UseLatestVersion <Boolean>]
  [<CommonParameters>]
 ```

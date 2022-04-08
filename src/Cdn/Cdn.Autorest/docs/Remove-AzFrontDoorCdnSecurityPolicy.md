@@ -32,8 +32,10 @@ Deletes an existing security policy within profile.
 
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+{{ Add code here }}
+```
 
+```output
 {{ Add output here }}
 ```
 
@@ -41,8 +43,10 @@ PS C:\> {{ Add code here }}
 
 ### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+{{ Add code here }}
+```
 
+```output
 {{ Add output here }}
 ```
 

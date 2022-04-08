@@ -36,8 +36,10 @@ Gets an existing AzureFrontDoor rule set with the specified rule set name under 
 
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+{{ Add code here }}
+```
 
+```output
 {{ Add output here }}
 ```
 
@@ -45,8 +47,10 @@ PS C:\> {{ Add code here }}
 
 ### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+{{ Add code here }}
+```
 
+```output
 {{ Add output here }}
 ```
 
