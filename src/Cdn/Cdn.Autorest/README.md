@@ -64,8 +64,6 @@ directive:
     - CustomDomainHttpsParameters
   # Generate memory object as parameter of the cmelet.
   - model-cmdlet:
-    - SecurityPolicyWebApplicationFirewallAssociation
-    - SecurityPolicyWebApplicationFirewallParameters
     - UserManagedHttpsParameters
     - CdnManagedHttpsParameters
     - DeliveryRuleRemoteAddressCondition
