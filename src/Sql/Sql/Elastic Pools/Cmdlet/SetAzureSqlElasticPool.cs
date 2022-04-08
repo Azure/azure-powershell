@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
                 MaxCapacity = elasticPool.DatabaseCapacityMax
             };
 
-            if (ParameterSetName == DtuPoolParameterSet)
+            if (ParameterSetName == DtuPoolParameterSet && !elasticPool.Edition.Equals("Hyperscale"))
             {
                 if(!string.IsNullOrWhiteSpace(Edition) || MyInvocation.BoundParameters.ContainsKey("Dtu"))
                 {
@@ -249,7 +249,8 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
             }
             else
             {
-                if(!string.IsNullOrWhiteSpace(Edition) || MyInvocation.BoundParameters.ContainsKey("VCore") || !string.IsNullOrWhiteSpace(ComputeGeneration))
+                if(!string.IsNullOrWhiteSpace(Edition) || MyInvocation.BoundParameters.ContainsKey("VCore") || !string.IsNullOrWhiteSpace(ComputeGeneration)
+                    || MyInvocation.BoundParameters.ContainsKey("HighAvailabilityReplicaCount"))
                 {
                     string skuTier = string.IsNullOrWhiteSpace(Edition) ? poolCurrentSku.Tier : Edition;
 
