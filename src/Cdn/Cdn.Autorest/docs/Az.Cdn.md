@@ -112,15 +112,6 @@ Validate a Secret in the profile.
 ### [New-AzCdnCustomDomain](New-AzCdnCustomDomain.md)
 Creates a new custom domain within an endpoint.
 
-### [New-AzCdnCustomDomainHttpsParametersObject](New-AzCdnCustomDomainHttpsParametersObject.md)
-Create an in-memory object for CustomDomainHttpsParameters.
-
-### [New-AzCdnDeliveryRuleCacheExpirationActionObject](New-AzCdnDeliveryRuleCacheExpirationActionObject.md)
-Create an in-memory object for DeliveryRuleCacheExpirationAction.
-
-### [New-AzCdnDeliveryRuleCacheKeyQueryStringActionObject](New-AzCdnDeliveryRuleCacheKeyQueryStringActionObject.md)
-Create an in-memory object for DeliveryRuleCacheKeyQueryStringAction.
-
 ### [New-AzCdnDeliveryRuleClientPortConditionObject](New-AzCdnDeliveryRuleClientPortConditionObject.md)
 Create an in-memory object for DeliveryRuleClientPortCondition.
 
@@ -198,9 +189,6 @@ Creates a new origin within the specified endpoint.
 
 ### [New-AzCdnOriginGroup](New-AzCdnOriginGroup.md)
 Creates a new origin group within the specified endpoint.
-
-### [New-AzCdnOriginGroupOverrideActionObject](New-AzCdnOriginGroupOverrideActionObject.md)
-Create an in-memory object for OriginGroupOverrideAction.
 
 ### [New-AzCdnPolicy](New-AzCdnPolicy.md)
 Create or update policy with specified rule set name within a resource group.

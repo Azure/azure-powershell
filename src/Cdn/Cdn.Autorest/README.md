@@ -87,12 +87,9 @@ directive:
     - DeliveryRuleSslProtocolCondition
     - UrlRedirectAction
     - UrlSigningAction
-    - OriginGroupOverrideAction
     - UrlRewriteAction
     - DeliveryRuleRequestHeaderAction
     - DeliveryRuleResponseHeaderAction
-    - DeliveryRuleCacheExpirationAction
-    - DeliveryRuleCacheKeyQueryStringAction
     - DeliveryRuleRouteConfigurationOverrideAction
 
   # Following is two common directive which are normally required in all the RPs
