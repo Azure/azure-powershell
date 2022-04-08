@@ -58,7 +58,7 @@ Describe 'Remove-AzFrontDoorCdnRoute' {
                 $conditions = @(
                     $uriConditon
                 );
-                $overrideAction = New-AzCdnDeliveryRuleRouteConfigurationOverrideActionObject -Name "RouteConfigurationOverride" `
+                $overrideAction = New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject -Name "RouteConfigurationOverride" `
                 -CacheConfigurationQueryStringCachingBehavior "IgnoreSpecifiedQueryStrings" `
                 -CacheConfigurationQueryParameter "a=test" `
                 -CacheConfigurationIsCompressionEnabled "Enabled" `
@@ -129,7 +129,7 @@ Describe 'Remove-AzFrontDoorCdnRoute' {
                 $conditions = @(
                     $uriConditon
                 );
-                $overrideAction = New-AzCdnDeliveryRuleRouteConfigurationOverrideActionObject -Name "RouteConfigurationOverride" `
+                $overrideAction = New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject -Name "RouteConfigurationOverride" `
                 -CacheConfigurationQueryStringCachingBehavior "IgnoreSpecifiedQueryStrings" `
                 -CacheConfigurationQueryParameter "a=test" `
                 -CacheConfigurationIsCompressionEnabled "Enabled" `

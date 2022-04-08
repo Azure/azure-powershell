@@ -1,24 +1,25 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnCustomDomainHttpsParametersObject
+online version: https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleResponseHeaderActionObject
 schema: 2.0.0
 ---
 
-# New-AzCdnCustomDomainHttpsParametersObject
+# New-AzFrontDoorCdnRuleResponseHeaderActionObject
 
 ## SYNOPSIS
-Create an in-memory object for CustomDomainHttpsParameters.
+Create an in-memory object for DeliveryRuleResponseHeaderAction.
 
 ## SYNTAX
 
 ```
-New-AzCdnCustomDomainHttpsParametersObject -CertificateSource <CertificateSource> -ProtocolType <ProtocolType>
- [-MinimumTlsVersion <MinimumTlsVersion>] [<CommonParameters>]
+New-AzFrontDoorCdnRuleResponseHeaderActionObject -Name <DeliveryRuleAction>
+ -ParameterHeaderAction <HeaderAction> -ParameterHeaderName <String> [-ParameterValue <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for CustomDomainHttpsParameters.
+Create an in-memory object for DeliveryRuleResponseHeaderAction.
 
 ## EXAMPLES
 
@@ -46,11 +47,11 @@ Create an in-memory object for CustomDomainHttpsParameters.
 
 ## PARAMETERS
 
-### -CertificateSource
-Defines the source of the SSL certificate.
+### -Name
+The name of the action for the delivery rule.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.CertificateSource
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleAction
 Parameter Sets: (All)
 Aliases:
 
@@ -61,30 +62,45 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MinimumTlsVersion
-TLS protocol version that will be used for Https.
+### -ParameterHeaderAction
+Action to perform.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.MinimumTlsVersion
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.HeaderAction
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ParameterHeaderName
+Name of the header to modify.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ParameterValue
+Value for the specified action.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProtocolType
-Defines the TLS extension protocol that is used for secure delivery.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProtocolType
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -98,7 +114,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.CustomDomainHttpsParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleResponseHeaderAction
 
 ## NOTES
 

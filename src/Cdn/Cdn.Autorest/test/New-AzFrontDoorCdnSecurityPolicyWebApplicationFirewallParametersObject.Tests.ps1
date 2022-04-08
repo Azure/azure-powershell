@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'New-AzCdnOriginGroupOverrideActionObject'))
+if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzCdnOriginGroupOverrideActionObject.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzCdnOriginGroupOverrideA
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzCdnOriginGroupOverrideActionObject' {
+Describe 'New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject' {
     It '__AllParameterSets' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

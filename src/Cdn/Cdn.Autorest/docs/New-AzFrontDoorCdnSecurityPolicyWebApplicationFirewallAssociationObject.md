@@ -1,25 +1,24 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnSecurityPolicyWebApplicationFirewallParametersObject
+online version: https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject
 schema: 2.0.0
 ---
 
-# New-AzCdnSecurityPolicyWebApplicationFirewallParametersObject
+# New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject
 
 ## SYNOPSIS
-Create an in-memory object for SecurityPolicyWebApplicationFirewallParameters.
+Create an in-memory object for SecurityPolicyWebApplicationFirewallAssociation.
 
 ## SYNTAX
 
 ```
-New-AzCdnSecurityPolicyWebApplicationFirewallParametersObject
- [-Association <ISecurityPolicyWebApplicationFirewallAssociation[]>] [-WafPolicyId <String>]
- [<CommonParameters>]
+New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject
+ [-Domain <IActivatedResourceReference[]>] [-PatternsToMatch <String[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for SecurityPolicyWebApplicationFirewallParameters.
+Create an in-memory object for SecurityPolicyWebApplicationFirewallAssociation.
 
 ## EXAMPLES
 
@@ -47,12 +46,12 @@ Create an in-memory object for SecurityPolicyWebApplicationFirewallParameters.
 
 ## PARAMETERS
 
-### -Association
-Waf associations.
-To construct, see NOTES section for ASSOCIATION properties and create a hash table.
+### -Domain
+List of domains.
+To construct, see NOTES section for DOMAIN properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ISecurityPolicyWebApplicationFirewallAssociation[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IActivatedResourceReference[]
 Parameter Sets: (All)
 Aliases:
 
@@ -63,11 +62,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WafPolicyId
-Resource ID.
+### -PatternsToMatch
+List of paths.
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -85,7 +84,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.SecurityPolicyWebApplicationFirewallParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.SecurityPolicyWebApplicationFirewallAssociation
 
 ## NOTES
 
@@ -96,10 +95,8 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-ASSOCIATION <ISecurityPolicyWebApplicationFirewallAssociation[]>: Waf associations.
-  - `[Domain <IActivatedResourceReference[]>]`: List of domains.
-    - `[Id <String>]`: Resource ID.
-  - `[PatternsToMatch <String[]>]`: List of paths
+DOMAIN <IActivatedResourceReference[]>: List of domains.
+  - `[Id <String>]`: Resource ID.
 
 ## RELATED LINKS
 

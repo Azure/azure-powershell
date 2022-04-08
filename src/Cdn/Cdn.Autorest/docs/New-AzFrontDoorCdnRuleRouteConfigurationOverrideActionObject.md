@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleRouteConfigurationOverrideActionObject
+online version: https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject
 schema: 2.0.0
 ---
 
-# New-AzCdnDeliveryRuleRouteConfigurationOverrideActionObject
+# New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject
 
 ## SYNOPSIS
 Create an in-memory object for DeliveryRuleRouteConfigurationOverrideAction.
@@ -13,7 +13,7 @@ Create an in-memory object for DeliveryRuleRouteConfigurationOverrideAction.
 ## SYNTAX
 
 ```
-New-AzCdnDeliveryRuleRouteConfigurationOverrideActionObject -Name <DeliveryRuleAction>
+New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject -Name <DeliveryRuleAction>
  [-CacheConfigurationCacheBehavior <RuleCacheBehavior>] [-CacheConfigurationCacheDuration <String>]
  [-CacheConfigurationIsCompressionEnabled <RuleIsCompressionEnabled>]
  [-CacheConfigurationQueryParameter <String>]

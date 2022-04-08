@@ -1,24 +1,24 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleCacheKeyQueryStringActionObject
+online version: https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleUrlRewriteActionObject
 schema: 2.0.0
 ---
 
-# New-AzCdnDeliveryRuleCacheKeyQueryStringActionObject
+# New-AzFrontDoorCdnRuleUrlRewriteActionObject
 
 ## SYNOPSIS
-Create an in-memory object for DeliveryRuleCacheKeyQueryStringAction.
+Create an in-memory object for UrlRewriteAction.
 
 ## SYNTAX
 
 ```
-New-AzCdnDeliveryRuleCacheKeyQueryStringActionObject -Name <DeliveryRuleAction>
- -ParameterQueryStringBehavior <QueryStringBehavior> [-ParameterQueryParameter <String>] [<CommonParameters>]
+New-AzFrontDoorCdnRuleUrlRewriteActionObject -Name <DeliveryRuleAction> -ParameterDestination <String>
+ -ParameterSourcePattern <String> [-ParameterPreserveUnmatchedPath <Boolean>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for DeliveryRuleCacheKeyQueryStringAction.
+Create an in-memory object for UrlRewriteAction.
 
 ## EXAMPLES
 
@@ -61,11 +61,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ParameterQueryParameter
-query parameters to include or exclude (comma separated).
+### -ParameterDestination
+Define the relative URL to which the above requests will be rewritten by.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ParameterPreserveUnmatchedPath
+Whether to preserve unmatched path.
+Default value is true.
+
+```yaml
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -76,11 +92,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ParameterQueryStringBehavior
-Caching behavior for the requests.
+### -ParameterSourcePattern
+define a request URI pattern that identifies the type of requests that may be rewritten.
+If value is blank, all strings are matched.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.QueryStringBehavior
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -98,7 +115,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleCacheKeyQueryStringAction
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.UrlRewriteAction
 
 ## NOTES
 
