@@ -81,13 +81,13 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             Mandatory = true,
             ParameterSetName = DefaultParameterSet,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Local path of the vhd file")]
+            HelpMessage = "Local path of the VHD file")]
         [Parameter(
             Position = 2,
             Mandatory = true,
             ParameterSetName = DirectUploadToManagedDiskSet,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Local path of the vhd file")]
+            HelpMessage = "Local path of the VHD file")]
         [ValidateNotNullOrEmpty]
         [Alias("lf")]
         public FileInfo LocalFilePath { get; set; }
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             Mandatory = false, 
             ParameterSetName = DirectUploadToManagedDiskSet,
             ValueFromPipeline = true)]
-        public PSDisk Disk { get; set; }
+        public PSDisk DiskConfig { get; set; }
 
         [Parameter(
             Position = 3,
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
         [Parameter(
             Mandatory = false,
             HelpMessage = "Use this switch parameter to keep the VHD file that is resized/converted by Hyper-V.")]
-        public SwitchParameter KeepConvertedResizedVhd { get; set; }
+        public SwitchParameter KeepConvertedVhd { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                         }
                         else // does not need resizing
                         {
-                            WriteVerbose("Vhd file already sized correctly. Proceeding to uploading.");
+                            WriteVerbose("VHD file already sized correctly. Proceeding to uploading.");
                         }
                     }
 
@@ -293,9 +293,9 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                 }
                 finally
                 {
-                    if (!this.KeepConvertedResizedVhd.IsPresent && ConvertedResized == true)
+                    if (!this.KeepConvertedVhd.IsPresent && ConvertedResized == true)
                     {
-                        Console.WriteLine("Deleting file: " + this.LocalFilePath.FullName);
+                        WriteVerbose("Deleting file: " + this.LocalFilePath.FullName);
                         File.Delete(this.LocalFilePath.FullName);
                         
                     }
@@ -365,15 +365,15 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
 
         private PSDisk CreateDiskConfig()
         {
-            if (this.IsParameterBound(c => c.Disk))
+            if (this.IsParameterBound(c => c.DiskConfig))
             {
                 if (this.IsParameterBound(c => c.Zone))
                 {
-                    if (this.Disk.Zones == null)
+                    if (this.DiskConfig.Zones == null)
                     {
-                        this.Disk.Zones = this.Zone;
+                        this.DiskConfig.Zones = this.Zone;
                     }
-                    else if (this.Disk.Zones != this.Zone)
+                    else if (this.DiskConfig.Zones != this.Zone)
                     {
                         throw new Exception("You provided different 'Zone' values from '-Disk' and '-Zone' parameters. Please provide just one of the parameters or pass in same 'Zone' values.");
                     }
@@ -381,11 +381,11 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
 
                 if (this.IsParameterBound(c => c.Location))
                 {
-                    if (this.Disk.Location == null)
+                    if (this.DiskConfig.Location == null)
                     {
-                        this.Disk.Location = this.Location;
+                        this.DiskConfig.Location = this.Location;
                     }
-                    else if (this.Disk.Location != this.Location)
+                    else if (this.DiskConfig.Location != this.Location)
                     {
                         throw new Exception("You provided different 'Location' values from '-Disk' and '-Location' parameters. Please provide just one of the parameters or pass in same 'Location' values.");
                     }
@@ -393,18 +393,18 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
 
                 if (this.IsParameterBound(c => c.DiskSku))
                 {
-                    if (this.Disk.Sku == null)
+                    if (this.DiskConfig.Sku == null)
                     {
 
-                        this.Disk.Sku = new DiskSku();
-                        this.Disk.Sku.Name = this.DiskSku;
+                        this.DiskConfig.Sku = new DiskSku();
+                        this.DiskConfig.Sku.Name = this.DiskSku;
                     }
-                    else if (this.Disk.Sku.Name != this.DiskSku)
+                    else if (this.DiskConfig.Sku.Name != this.DiskSku)
                     {
                         throw new Exception("You provided different 'Sku' values from '-Disk' and '-DiskSku' parameters. Please provide just one of the parameters or pass in same 'Sku' values.");
                     }
                 }
-                return this.Disk;
+                return this.DiskConfig;
             }
             else
             {
@@ -542,7 +542,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                     Math.DivRem(filePath.Length, divisor, out rem);
                     if (rem != 0)
                     {
-                        throw new ArgumentOutOfRangeException("LocalFilePath", "Given vhd file is a corrupted fixed vhd");
+                        throw new ArgumentOutOfRangeException("LocalFilePath", "Given vhd file is a corrupted fixed VHD");
                     }
                 }
                 else
@@ -557,7 +557,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
         {
             if (file.Length < 20971520 || file.Length > 4396972769280)
             {
-                throw new Exception("Vhd (Hard Disk Image) file must be between 20 MB and 4095 GB");
+                throw new Exception("VHD (Hard Disk Image) file must be between 20 MB and 4095 GB");
             }
 
             return;
@@ -632,7 +632,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             {
                 if (ex.Message == "Invalid namespace ")
                 {
-                    Exception outputEx = new Exception("Failed to convert VHDx file. Hyper-V Platform is not found.\nFollow this link to enabled Hyper-V or convert file manually: https://aka.ms/usingAdd-AzVhd");
+                    Exception outputEx = new Exception("Failed to convert VHDX file. Hyper-V Platform is not found.\nFollow this link to enabled Hyper-V or convert file manually: https://aka.ms/usingAdd-AzVhd");
                     ThrowTerminatingError(new ErrorRecord(
                         outputEx,
                         "Hyper-V is unavailable",
