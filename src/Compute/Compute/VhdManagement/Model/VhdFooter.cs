@@ -44,10 +44,10 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model
         public HostOsType CreatorHostOsType { get; set; }
 
         [VhdProperty(Offset = 40, Size = 8)]
-        public long PhsyicalSize { get; set; }
+        public long OriginalSize { get; set; }
 
         [VhdProperty(Offset = 48, Size = 8)]
-        public long VirtualSize { get; set; }
+        public long CurrentSize { get; set; }
 
         [VhdProperty(Offset = 56, Size = 4)]
         public DiskGeometry DiskGeometry { get; set; }
@@ -82,8 +82,8 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model
                 CreatorApplication = this.CreatorApplication,
                 CreatorVersion = this.CreatorVersion,
                 CreatorHostOsType = this.CreatorHostOsType,
-                PhsyicalSize = this.PhsyicalSize,
-                VirtualSize = this.VirtualSize,
+                OriginalSize = this.OriginalSize,
+                CurrentSize = this.CurrentSize,
                 DiskGeometry = this.DiskGeometry.CreateCopy(),
                 DiskType = this.DiskType,
                 CheckSum = this.CheckSum,
@@ -110,7 +110,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return Equals(other.Cookie, Cookie) && Equals(other.Features, Features) && Equals(other.FileFormatVersion, FileFormatVersion) && other.HeaderOffset == HeaderOffset && other.TimeStamp.Equals(TimeStamp) && Equals(other.CreatorApplication, CreatorApplication) && Equals(other.CreatorVersion, CreatorVersion) && Equals(other.CreatorHostOsType, CreatorHostOsType) && other.PhsyicalSize == PhsyicalSize && other.VirtualSize == VirtualSize && Equals(other.DiskGeometry, DiskGeometry) && Equals(other.DiskType, DiskType) && other.CheckSum == CheckSum && other.UniqueId.Equals(UniqueId) && other.SavedState.Equals(SavedState) && Equals(other.Reserved, Reserved) && Equals(other.RawData, RawData);
+            return Equals(other.Cookie, Cookie) && Equals(other.Features, Features) && Equals(other.FileFormatVersion, FileFormatVersion) && other.HeaderOffset == HeaderOffset && other.TimeStamp.Equals(TimeStamp) && Equals(other.CreatorApplication, CreatorApplication) && Equals(other.CreatorVersion, CreatorVersion) && Equals(other.CreatorHostOsType, CreatorHostOsType) && other.OriginalSize == OriginalSize && other.CurrentSize == CurrentSize && Equals(other.DiskGeometry, DiskGeometry) && Equals(other.DiskType, DiskType) && other.CheckSum == CheckSum && other.UniqueId.Equals(UniqueId) && other.SavedState.Equals(SavedState) && Equals(other.Reserved, Reserved) && Equals(other.RawData, RawData);
         }
 
         public override int GetHashCode()
@@ -125,8 +125,8 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model
                 result = (result * 397) ^ (CreatorApplication != null ? CreatorApplication.GetHashCode() : 0);
                 result = (result * 397) ^ (CreatorVersion != null ? CreatorVersion.GetHashCode() : 0);
                 result = (result * 397) ^ CreatorHostOsType.GetHashCode();
-                result = (result * 397) ^ PhsyicalSize.GetHashCode();
-                result = (result * 397) ^ VirtualSize.GetHashCode();
+                result = (result * 397) ^ OriginalSize.GetHashCode();
+                result = (result * 397) ^ CurrentSize.GetHashCode();
                 result = (result * 397) ^ (DiskGeometry != null ? DiskGeometry.GetHashCode() : 0);
                 result = (result * 397) ^ DiskType.GetHashCode();
                 result = (result * 397) ^ CheckSum.GetHashCode();

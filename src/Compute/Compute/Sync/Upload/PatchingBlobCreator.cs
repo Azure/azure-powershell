@@ -61,7 +61,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
             {
                 localBaseVhdPath = vhdFile.GetFilePathBy(blobVhdFooter.UniqueId);
                 childrenVhdIds = vhdFile.GetChildrenIds(blobVhdFooter.UniqueId).ToArray();
-                blobSize = vhdFile.Footer.VirtualSize;
+                blobSize = vhdFile.Footer.CurrentSize;
             }
 
             FileMetaData fileMetaData = GetFileMetaData(baseBlob, localBaseVhdPath);
