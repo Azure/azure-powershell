@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.8.0
 * Added parameter `ServicePrincipalType` to `New-AzSqlInstance` and `Set-AzSqlInstance`
 * [Breaking change] Removed `Get-AzSqlDatabaseTransparentDataEncryptionActivity`
 * Added property `CurrentBackupStorageRedundancy` and `RequestedBackupStorageRedundancy` in  the outputs of Managed Instance CRUD commands

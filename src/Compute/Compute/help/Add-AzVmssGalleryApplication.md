@@ -27,7 +27,7 @@ Adds a GalleryApplication object to the PSVirtualMachineProfile object.
 ```powershell
 $vmss = Get-AzVmss -ResourceGroupName $rgName -Name $vmssName
 $vmGal = New-AzVmssGalleryApplication -PackageReferenceId $packageRefId -ConfigReferenceId $configRefId
-Add-AzVmssGalleryApplication -VM $vmss.VirtualMachineProfile -GalleryApplication $vmGal -Order 1
+Add-AzVmssGalleryApplication -VirtualMachineScaleSetVM $vmss.VirtualMachineProfile -GalleryApplication $vmGal -Order 1
 ```
 
 This example creates a local VMGalleryApplication object and adds it to a PSVirtualMachineScaleSetVM object.

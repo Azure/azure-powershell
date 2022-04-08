@@ -24,7 +24,7 @@ Create a new Remote Rendering Account in certain Subscription, Resource Group an
 
 ### Example 1
 ```powershell
-New-AzureRmRemoteRenderingAccount -ResourceGroup rg1 -Name example -Location centralus
+New-AzRemoteRenderingAccount -ResourceGroup rg1 -Name example -Location centralus
 ```
 
 ```output

@@ -33,16 +33,18 @@ namespace VersionController.Models
 
         private string _oldVersion, _newVersion;
         private bool _isPreview;
+        private IList<string> _changedModules { get; set; }
 
         public AzurePSVersion MinimalVersion { get; set; }
         public string PSRepositories { get; set; }
 
-        public VersionBumper(VersionFileHelper fileHelper)
+        public VersionBumper(VersionFileHelper fileHelper, IList<string> changedModules)
         {
             _fileHelper = fileHelper;
             _metadataHelper = new VersionMetadataHelper(_fileHelper);
             _loggerFactory = LoggerFactory.Create(builder => builder.AddConsole().AddDebug());
             _logger = _loggerFactory.CreateLogger<VersionBumper>();
+            _changedModules = changedModules;
         }
 
         /// <summary>
@@ -408,6 +410,8 @@ namespace VersionController.Models
                                                                !f.Contains("bin") &&
                                                                !f.Contains("dll-Help") &&
                                                                !ModuleFilter.IsAzureStackModule(f))
+                                                   // Only update changed modules in this release
+                                                   .Intersect(_changedModules)
                                                    .ToList();
                 foreach (var moduleManifestPath in moduleManifestPaths)
                 {
