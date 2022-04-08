@@ -276,6 +276,12 @@ Create an in-memory object for UrlSigningKeyParameters.
 ### [New-AzFrontDoorCdnSecurityPolicy](New-AzFrontDoorCdnSecurityPolicy.md)
 Creates a new security policy within the specified profile.
 
+### [New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject](New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject.md)
+Create an in-memory object for SecurityPolicyWebApplicationFirewallAssociation.
+
+### [New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject](New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject.md)
+Create an in-memory object for SecurityPolicyWebApplicationFirewallParameters.
+
 ### [Remove-AzCdnCustomDomain](Remove-AzCdnCustomDomain.md)
 Deletes an existing custom domain within an endpoint.
 
