@@ -1,4 +1,4 @@
-### Example 1: Delete a Kusto script 
+### Example 1: Delete a Kusto script
 ```powershell
 Remove-AzKustoScript -ClusterName testnewkustocluster -ResourceGroupName testrg -DatabaseName mykustodatabase -Name newkustoscript
 ```

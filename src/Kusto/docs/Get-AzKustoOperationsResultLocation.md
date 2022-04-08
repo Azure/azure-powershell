@@ -1,96 +1,48 @@
 ---
 external help file:
 Module Name: Az.Kusto
-online version: https://docs.microsoft.com/powershell/module/az.kusto/get-azkustodataconnection
+online version: https://docs.microsoft.com/powershell/module/az.kusto/get-azkustooperationsresultlocation
 schema: 2.0.0
 ---
 
-# Get-AzKustoDataConnection
+# Get-AzKustoOperationsResultLocation
 
 ## SYNOPSIS
-Returns a data connection.
+Returns operation results.
 
 ## SYNTAX
 
-### List (Default)
+### Get (Default)
 ```
-Get-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzKustoOperationsResultLocation -Location <String> -OperationId <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzKustoDataConnection -InputObject <IKustoIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzKustoOperationsResultLocation -InputObject <IKustoIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Returns a data connection.
+Returns operation results.
 
 ## EXAMPLES
 
-### Example 1: List all data connections in a specific database
+### Example 1:
 ```powershell
-Get-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase"
+Get-AzKustoOperationsResultLocation -Location eastus -OperationId 5c1495e5-f1c4-4c5e-ac95-01a1c7a33353
 ```
 
 ```output
-Kind     Location Name                                               Type
-----     -------- ----                                               ----
-EventHub East US  testnewkustocluster/mykustodatabase/mykustodataconnection Microsoft.Kusto/Clusters/Databases/DataConnections
+EndTime             Name                                 PercentComplete StartTime           Status
+-------             ----                                 --------------- ---------           ------
+29/03/2022 10:02:20 5c1495e5-f1c4-4c5e-ac95-01a1c7a33353 1               29/03/2022 10:01:46 Completed
 ```
 
-The above command returns all Kusto databases in the cluster "testnewkustocluster" found in the resource group "testrg".
-
-### Example 2: Get a specific data connection by name
-```powershell
-Get-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "mykustodataconnection"
-```
-
-```output
-Kind     Location Name                                               Type
-----     -------- ----                                               ----
-EventHub East US  testnewkustocluster/mykustodatabase/mykustodataconnection Microsoft.Kusto/Clusters/Databases/DataConnections
-```
-
-The above command returns the data connection named "mykustodataconnection" in database "mykustodatabase" of the existing cluster "testnewkustocluster" found in the resource group "testrg".
+Get operation result with kusto.
 
 ## PARAMETERS
-
-### -ClusterName
-The name of the Kusto cluster.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, List
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DatabaseName
-The name of the database in the Kusto cluster.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, List
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -123,13 +75,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the data connection.
+### -Location
+Azure location (region) name.
 
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases: DataConnectionName
+Aliases:
 
 Required: True
 Position: Named
@@ -138,15 +90,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group containing the Kusto cluster.
+### -OperationId
+The Guid of the operation ID
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -159,7 +126,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: False
@@ -178,7 +145,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDataConnection
+### System.Boolean
 
 ## NOTES
 
