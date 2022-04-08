@@ -33,10 +33,10 @@ After an item has been backed up, an **AzRecoveryServicesBackupRecoveryLogChain*
 
 ### Example 1
 ```powershell
-PS C:\> $StartDate = (Get-Date).AddDays(-7) 
-PS C:\> $EndDate = Get-Date 
-PS C:\> $Container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureWorkload -Status Registered
-PS C:\> $RP = Get-AzRecoveryServicesBackupItem -Container $Container -WorkloadType MSSQL | Get-AzRecoveryServicesBackupRecoveryLogChain -StartDate $Startdate.ToUniversalTime() -EndDate $Enddate.ToUniversalTime()
+$StartDate = (Get-Date).AddDays(-7) 
+$EndDate = Get-Date 
+$Container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureWorkload -Status Registered
+$RP = Get-AzRecoveryServicesBackupItem -Container $Container -WorkloadType MSSQL | Get-AzRecoveryServicesBackupRecoveryLogChain -StartDate $Startdate.ToUniversalTime() -EndDate $Enddate.ToUniversalTime()
 ```
 
 The first command gets the date from seven days ago, and then stores it in the $StartDate variable.

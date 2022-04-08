@@ -33,16 +33,16 @@ Alternatively, you can specify a **TrafficManagerProfile** object using the *Tra
 ## EXAMPLES
 
 ### Example 1: Delete a profile specified by name
-```
-PS C:\>Remove-AzTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11"
+```powershell
+Remove-AzTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11"
 ```
 
 This command deletes the profile named ContosoProfile in ResourceGroup11.
 The command prompts you for confirmation.
 
 ### Example 2: Delete a profile by using the pipeline
-```
-PS C:\>Get-AzTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11" | Remove-AzTrafficManagerProfile -Force
+```powershell
+Get-AzTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11" | Remove-AzTrafficManagerProfile -Force
 ```
 
 This command gets the profile named ContosoProfile in ResourceGroup11.

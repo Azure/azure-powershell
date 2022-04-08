@@ -39,14 +39,14 @@ If you do not specify the *IncidentCommentId* parameter, an array containing all
 
 ### Example 1
 ```powershell
-PS C:\> $IncidentComments = Get-AzSentinelIncidentComment -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -IncidentId "MyIncidentId"
+$IncidentComments = Get-AzSentinelIncidentComment -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -IncidentId "MyIncidentId"
 ```
 
 This example gets all of the IncidentComments for the specified Incident in the specified workspace, and then stores it in the $IncidentComments variable.
 
 ### Example 2
 ```powershell
-PS C:\> $IncidentComment = Get-AzSentinelIncidentComment -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -IncidentId "MyIncidentId" -IncidentCommentId "MyIncidentCommentId"
+$IncidentComment = Get-AzSentinelIncidentComment -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -IncidentId "MyIncidentId" -IncidentCommentId "MyIncidentCommentId"
 ```
 
 This example gets an IncidentComment for the specified Incident in the specified workspace, and then stores it in the $IncidentComment variable.

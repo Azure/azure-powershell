@@ -26,9 +26,10 @@ The policy is an Azure Backup resource used to define backup storage policy.
 
 ### Example 1: Get the current version of the long term retention policy
 ```powershell
-PS C:\> Get-AzSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroupName resourcegroup01 -ServerName server01 -DatabaseName database01
+Get-AzSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroupName resourcegroup01 -ServerName server01 -DatabaseName database01
+```
 
-
+```output
 ResourceGroupName                      : resourcegroup01
 ServerName                             : server01
 DatabaseName                           : database01

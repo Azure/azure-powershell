@@ -43,33 +43,33 @@ The **Remove-AzApiManagementPolicy** cmdlet removes the API Management policy fr
 ## EXAMPLES
 
 ### Example 1: Remove the tenant level policy
-```
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Remove-AzApiManagementPolicy -Context $apimContext
+```powershell
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Remove-AzApiManagementPolicy -Context $apimContext
 ```
 
 This command removes tenant level policy from API Management.
 
 ### Example 2: Remove the product-scope policy
-```
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Remove-AzApiManagementPolicy -Context $apimContext -ProductId "0123456789"
+```powershell
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Remove-AzApiManagementPolicy -Context $apimContext -ProductId "0123456789"
 ```
 
 This command removes product-scope policy from API Management.
 
 ### Example 3: Remove the API-scope policy
-```
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Remove-AzApiManagementPolicy -Context $apimContext -ApiId "9876543210"
+```powershell
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Remove-AzApiManagementPolicy -Context $apimContext -ApiId "9876543210"
 ```
 
 This command removes API-scope policy from API Management.
 
 ### Example 4: Remove the operation-scope policy
-```
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Remove-AzApiManagementPolicy -Context $apimContext -ApiId "9876543210" -OperationId "777"
+```powershell
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Remove-AzApiManagementPolicy -Context $apimContext -ApiId "9876543210" -OperationId "777"
 ```
 
 This command removes operation-scope policy from API Management.

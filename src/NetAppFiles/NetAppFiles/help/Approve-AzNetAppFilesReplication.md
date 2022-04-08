@@ -38,9 +38,10 @@ Approve the replication connection on the source volume
 
 ### Example 1
 ```powershell
-PS C:\> Approve-AzNetAppFilesReplication -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyAnfVolume" -DataProtectionVolumeId "MyDestinationVolumeId"
+Approve-AzNetAppFilesReplication -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyAnfVolume" -DataProtectionVolumeId "MyDestinationVolumeId"
+```
 
-Output:
+```output
 remoteVolumeResourceId          : resourceId
 ```
 

@@ -40,8 +40,10 @@ and specify a key vault in the second region.
 
 ### Example 1: Back up a certificate with an automatically generated file name
 ```powershell
-PS C:\Users\username\> Backup-AzKeyVaultCertificate -VaultName 'mykeyvault' -Name 'mycert'
+Backup-AzKeyVaultCertificate -VaultName 'mykeyvault' -Name 'mycert'
+```
 
+```output
 C:\Users\username\mykeyvault-mycert-1527029447.01191
 ```
 
@@ -49,8 +51,10 @@ This command retrieves the certificate named MyCert from the key vault named MyK
 
 ### Example 2: Back up a certificate to a specified file name
 ```powershell
-PS C:\> Backup-AzKeyVaultKey -VaultName 'MyKeyVault' -Name 'MyCert' -OutputFile 'C:\Backup.blob'
+Backup-AzKeyVaultKey -VaultName 'MyKeyVault' -Name 'MyCert' -OutputFile 'C:\Backup.blob'
+```
 
+```output
 C:\Backup.blob
 ```
 
@@ -58,9 +62,11 @@ This command retrieves the certificate named MyCert from the key vault named MyK
 
 ### Example 3: Back up a previously retrieved certificate to a specified file name, overwriting the destination file without prompting.
 ```powershell
-PS C:\> $cert = Get-AzKeyVaultCertificate -VaultName 'MyKeyVault' -Name 'MyCert'
-PS C:\> Backup-AzKeyVaultCertificate -Certificate $cert -OutputFile 'C:\Backup.blob' -Force
+$cert = Get-AzKeyVaultCertificate -VaultName 'MyKeyVault' -Name 'MyCert'
+Backup-AzKeyVaultCertificate -Certificate $cert -OutputFile 'C:\Backup.blob' -Force
+```
 
+```output
 C:\Backup.blob
 ```
 

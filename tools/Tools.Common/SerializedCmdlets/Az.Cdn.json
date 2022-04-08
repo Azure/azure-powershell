@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.Cdn",
-  "ModuleVersion": "1.8.1",
+  "ModuleVersion": "1.8.2",
   "Cmdlets": [
     {
       "VerbName": "Confirm",
@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSValidateProbeOutput",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSValidateProbeOutput, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSValidateProbeOutput, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IsValid": "System.Nullable`1[System.Boolean]",
               "ErrorCode": "System.String",
@@ -200,7 +200,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomainResourceState",
               "CustomHttpsProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningState",
@@ -364,7 +364,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomainResourceState",
                     "CustomHttpsProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningState",
@@ -541,7 +541,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomainResourceState",
               "CustomHttpsProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningState",
@@ -714,7 +714,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomainResourceState",
                     "CustomHttpsProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningState",
@@ -952,7 +952,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomainResourceState",
               "CustomHttpsProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningState",
@@ -1116,7 +1116,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomainResourceState",
                     "CustomHttpsProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningState",
@@ -1293,7 +1293,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomainResourceState",
               "CustomHttpsProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningState",
@@ -1466,7 +1466,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomainResourceState",
                     "CustomHttpsProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningState",
@@ -1655,7 +1655,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomainResourceState",
               "CustomHttpsProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningState",
@@ -1747,7 +1747,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -1944,7 +1944,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -2037,7 +2037,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.EdgeNodes",
             "Name": "Microsoft.Azure.Commands.Cdn.EdgeNodes.PSEdgeNode",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.EdgeNodes.PSEdgeNode, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.EdgeNodes.PSEdgeNode, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IpAddressGroups": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.EdgeNodes.PSIpAddressGroup]"
             },
@@ -2149,7 +2149,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -2243,7 +2243,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfileResourceState",
               "Sku": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku",
@@ -2411,7 +2411,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfileResourceState",
                     "Sku": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku",
@@ -2490,7 +2490,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSCheckNameAvailabilityOutput",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSCheckNameAvailabilityOutput, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSCheckNameAvailabilityOutput, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "NameAvailable": "System.Boolean",
               "Reason": "System.String",
@@ -2625,7 +2625,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.PSResourceUsage",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.PSResourceUsage, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.PSResourceUsage, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CurrentValue": "System.Int32",
               "Limit": "System.Int32",
@@ -2700,7 +2700,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -2851,7 +2851,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -2960,7 +2960,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Origin",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOriginResourceState",
               "ProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.PSProvisioningState",
@@ -3066,7 +3066,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -3324,7 +3324,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -3417,7 +3417,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup.PSOriginGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup.PSOriginGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup.PSOriginGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup.PSOriginGroupResourceState",
               "ProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.PSProvisioningState",
@@ -3720,7 +3720,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfileResourceState",
               "Sku": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku",
@@ -3885,7 +3885,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.PSResourceUsage",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.PSResourceUsage, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.PSResourceUsage, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CurrentValue": "System.Int32",
               "Limit": "System.Int32",
@@ -3951,7 +3951,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfileResourceState",
               "Sku": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku",
@@ -4058,7 +4058,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfileResourceState",
                     "Sku": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku",
@@ -4153,7 +4153,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSsoUri",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSsoUri, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSsoUri, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SsoUriValue": "System.String"
             },
@@ -4216,7 +4216,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfileResourceState",
               "Sku": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku",
@@ -4323,7 +4323,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfileResourceState",
                     "Sku": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku",
@@ -4418,7 +4418,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSOptimizationType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSOptimizationType, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSOptimizationType, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Methods": [
               {
                 "Name": "GetType",
@@ -4484,7 +4484,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfileResourceState",
               "Sku": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku",
@@ -4591,7 +4591,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfileResourceState",
                     "Sku": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku",
@@ -4686,7 +4686,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.PSResourceUsage",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.PSResourceUsage, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.PSResourceUsage, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CurrentValue": "System.Int32",
               "Limit": "System.Int32",
@@ -4798,7 +4798,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdCustomDomain",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "HostName": "System.String",
               "CertificateType": "System.String",
@@ -4863,7 +4863,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceState": "System.String",
@@ -5011,7 +5011,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
                   "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Tags": "System.Collections.Hashtable",
                     "ResourceState": "System.String",
@@ -5151,7 +5151,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "HostName": "System.String",
@@ -5212,7 +5212,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceState": "System.String",
@@ -5360,7 +5360,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
                   "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Tags": "System.Collections.Hashtable",
                     "ResourceState": "System.String",
@@ -5500,7 +5500,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOrigin",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "HttpPort": "System.Nullable`1[System.Int32]",
               "HttpsPort": "System.Nullable`1[System.Int32]",
@@ -5559,7 +5559,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOriginGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOriginGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOriginGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SampleSize": "System.Nullable`1[System.Int32]",
               "SuccessfulSamplesRequired": "System.Nullable`1[System.Int32]",
@@ -5653,7 +5653,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
                   "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOriginGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOriginGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOriginGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "SampleSize": "System.Nullable`1[System.Int32]",
                     "SuccessfulSamplesRequired": "System.Nullable`1[System.Int32]",
@@ -5888,7 +5888,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOriginGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOriginGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOriginGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SampleSize": "System.Nullable`1[System.Int32]",
               "SuccessfulSamplesRequired": "System.Nullable`1[System.Int32]",
@@ -5953,7 +5953,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceState": "System.String",
@@ -6101,7 +6101,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
                   "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Tags": "System.Collections.Hashtable",
                     "ResourceState": "System.String",
@@ -6241,7 +6241,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceState": "System.String",
@@ -6491,7 +6491,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRoute",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRoute, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRoute, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CustomDomainIds": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Cdn.Models.ResourceReference]",
               "RuleSetIds": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Cdn.Models.ResourceReference]",
@@ -6550,7 +6550,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "HostName": "System.String",
@@ -6640,7 +6640,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
                   "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Tags": "System.Collections.Hashtable",
                     "HostName": "System.String",
@@ -6871,7 +6871,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRule, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRule, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Actions": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Cdn.Models.DeliveryRuleAction]",
               "Conditions": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Cdn.Models.DeliveryRuleCondition]",
@@ -6950,7 +6950,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleSet, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleSet, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "Name": "System.String",
@@ -7146,7 +7146,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
                   "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleSet, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleSet, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "Name": "System.String",
@@ -7236,7 +7236,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleSet, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleSet, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "Name": "System.String",
@@ -7284,7 +7284,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceState": "System.String",
@@ -7365,7 +7365,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
                   "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Tags": "System.Collections.Hashtable",
                     "ResourceState": "System.String",
@@ -7581,7 +7581,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdSecret",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdSecret, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdSecret, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SubjectAlternativeNames": "System.Collections.Generic.List`1[System.String]",
               "UseLatestVersion": "System.Nullable`1[System.Boolean]",
@@ -7634,7 +7634,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceState": "System.String",
@@ -7715,7 +7715,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
                   "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Tags": "System.Collections.Hashtable",
                     "ResourceState": "System.String",
@@ -7931,7 +7931,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdSecurityPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdSecurityPolicy, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdSecurityPolicy, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Domains": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Cdn.Models.ResourceReference]",
               "PatternsToMatch": "System.Collections.Generic.List`1[System.String]",
@@ -7982,7 +7982,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceState": "System.String",
@@ -8063,7 +8063,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
                   "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Tags": "System.Collections.Hashtable",
                     "ResourceState": "System.String",
@@ -8279,7 +8279,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomainResourceState",
               "CustomHttpsProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningState",
@@ -8380,7 +8380,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -8607,7 +8607,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -8715,7 +8715,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Rules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRule]",
               "Description": "System.String"
@@ -8770,7 +8770,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRule[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRule[], Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRule[], Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRule"
           },
           "ValidateNotNullOrEmpty": false
@@ -8821,7 +8821,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRule[], Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRule[], Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRule"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8875,7 +8875,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRule, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRule, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Actions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleAction]",
               "Conditions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleCondition]",
@@ -8941,7 +8941,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleCondition[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleCondition[], Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleCondition[], Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleCondition"
           },
           "ValidateNotNullOrEmpty": false
@@ -8951,7 +8951,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleAction[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleAction[], Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleAction[], Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleAction"
           },
           "ValidateNotNullOrEmpty": true
@@ -9017,7 +9017,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleCondition[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleCondition[], Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleCondition[], Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleCondition"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9033,7 +9033,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleAction[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleAction[], Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleAction[], Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleAction"
                 },
                 "ValidateNotNullOrEmpty": true
@@ -9087,7 +9087,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleAction",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleAction, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleAction, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Methods": [
               {
                 "Name": "GetType",
@@ -9758,7 +9758,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleCondition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleCondition, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleCondition, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "MatchValue": "System.Collections.Generic.IList`1[System.String]",
               "Transfroms": "System.Collections.Generic.IList`1[System.String]",
@@ -10018,7 +10018,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -10112,7 +10112,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfileResourceState",
               "Sku": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku",
@@ -10205,7 +10205,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.Nullable`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior]",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "GenericTypeArguments": [
               "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior"
             ]
@@ -10277,7 +10277,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter[], Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter[], Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter"
           },
           "ValidateNotNullOrEmpty": false
@@ -10287,7 +10287,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Rules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRule]",
               "Description": "System.String"
@@ -10567,7 +10567,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior"
                   ]
@@ -10681,7 +10681,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter[], Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter[], Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -10697,7 +10697,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Rules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRule]",
                     "Description": "System.String"
@@ -11111,7 +11111,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior"
                   ]
@@ -11225,7 +11225,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter[], Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter[], Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -11241,7 +11241,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Rules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRule]",
                     "Description": "System.String"
@@ -11495,7 +11495,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfileResourceState",
                     "Sku": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku",
@@ -11636,7 +11636,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior"
                   ]
@@ -11750,7 +11750,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter[], Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter[], Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -11766,7 +11766,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Rules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRule]",
                     "Description": "System.String"
@@ -12027,7 +12027,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Origin",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOriginResourceState",
               "ProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.PSProvisioningState",
@@ -12217,7 +12217,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Origin",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOriginResourceState",
               "ProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.PSProvisioningState",
@@ -12702,7 +12702,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Origin",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOriginResourceState",
                     "ProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.PSProvisioningState",
@@ -12805,7 +12805,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup.PSOriginGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup.PSOriginGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup.PSOriginGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup.PSOriginGroupResourceState",
               "ProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.PSProvisioningState",
@@ -12946,7 +12946,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup.PSOriginGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup.PSOriginGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup.PSOriginGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup.PSOriginGroupResourceState",
               "ProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.PSProvisioningState",
@@ -13165,7 +13165,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup.PSOriginGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup.PSOriginGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup.PSOriginGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup.PSOriginGroupResourceState",
                     "ProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.PSProvisioningState",
@@ -13264,7 +13264,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfileResourceState",
               "Sku": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku",
@@ -13335,7 +13335,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSkuName",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSkuName, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSkuName, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -13418,7 +13418,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSkuName",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSkuName, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSkuName, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -13501,7 +13501,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdCustomDomain",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "HostName": "System.String",
               "CertificateType": "System.String",
@@ -13895,7 +13895,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "HostName": "System.String",
@@ -14138,7 +14138,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOrigin",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "HttpPort": "System.Nullable`1[System.Int32]",
               "HttpsPort": "System.Nullable`1[System.Int32]",
@@ -14754,7 +14754,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOriginGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOriginGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOriginGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SampleSize": "System.Nullable`1[System.Int32]",
               "SuccessfulSamplesRequired": "System.Nullable`1[System.Int32]",
@@ -15169,7 +15169,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceState": "System.String",
@@ -15412,7 +15412,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRoute",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRoute, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRoute, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CustomDomainIds": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Cdn.Models.ResourceReference]",
               "RuleSetIds": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Cdn.Models.ResourceReference]",
@@ -15716,7 +15716,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRule, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRule, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Actions": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Cdn.Models.DeliveryRuleAction]",
               "Conditions": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Cdn.Models.DeliveryRuleCondition]",
@@ -15768,7 +15768,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleAction]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleAction, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleAction, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "GenericTypeArguments": [
               "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleAction"
             ]
@@ -15780,7 +15780,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleCondition]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleCondition, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleCondition, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "GenericTypeArguments": [
               "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleCondition"
             ]
@@ -15872,7 +15872,7 @@
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleAction]",
-                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleAction, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleAction, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleAction"
                   ]
@@ -15890,7 +15890,7 @@
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleCondition]",
-                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleCondition, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleCondition, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleCondition"
                   ]
@@ -16036,7 +16036,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleAction",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleAction, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleAction, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Methods": [
               {
                 "Name": "GetType",
@@ -16760,7 +16760,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleCondition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleCondition, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleCondition, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "MatchValue": "System.Collections.Generic.List`1[System.String]",
               "Transforms": "System.Collections.Generic.List`1[System.String]",
@@ -17030,7 +17030,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleSet, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleSet, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "Name": "System.String",
@@ -17245,7 +17245,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdSecret",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdSecret, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdSecret, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SubjectAlternativeNames": "System.Collections.Generic.List`1[System.String]",
               "UseLatestVersion": "System.Nullable`1[System.Boolean]",
@@ -17591,7 +17591,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdSecurityPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdSecurityPolicy, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdSecurityPolicy, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Domains": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Cdn.Models.ResourceReference]",
               "PatternsToMatch": "System.Collections.Generic.List`1[System.String]",
@@ -17903,7 +17903,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -18089,7 +18089,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -18309,7 +18309,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomainResourceState",
               "CustomHttpsProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningState",
@@ -18473,7 +18473,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomainResourceState",
                     "CustomHttpsProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningState",
@@ -18641,7 +18641,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -18825,7 +18825,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -19061,7 +19061,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Origin",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOriginResourceState",
               "ProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.PSProvisioningState",
@@ -19328,7 +19328,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Origin",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOriginResourceState",
                     "ProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.PSProvisioningState",
@@ -19482,7 +19482,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup.PSOriginGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup.PSOriginGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup.PSOriginGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup.PSOriginGroupResourceState",
               "ProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.PSProvisioningState",
@@ -19745,7 +19745,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup.PSOriginGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup.PSOriginGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup.PSOriginGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup.PSOriginGroupResourceState",
                     "ProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.PSProvisioningState",
@@ -19859,7 +19859,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfileResourceState",
               "Sku": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku",
@@ -20014,7 +20014,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfileResourceState",
                     "Sku": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku",
@@ -20191,7 +20191,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdCustomDomain",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "HostName": "System.String",
               "CertificateType": "System.String",
@@ -20343,7 +20343,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
                   "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdCustomDomain",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "HostName": "System.String",
                     "CertificateType": "System.String",
@@ -20500,7 +20500,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "HostName": "System.String",
@@ -20590,7 +20590,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
                   "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Tags": "System.Collections.Hashtable",
                     "HostName": "System.String",
@@ -20866,7 +20866,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOrigin",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "HttpPort": "System.Nullable`1[System.Int32]",
               "HttpsPort": "System.Nullable`1[System.Int32]",
@@ -20970,7 +20970,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOrigin",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "HttpPort": "System.Nullable`1[System.Int32]",
               "HttpsPort": "System.Nullable`1[System.Int32]",
@@ -21198,7 +21198,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
                   "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOrigin",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "HttpPort": "System.Nullable`1[System.Int32]",
                     "HttpsPort": "System.Nullable`1[System.Int32]",
@@ -21342,7 +21342,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOriginGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOriginGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOriginGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SampleSize": "System.Nullable`1[System.Int32]",
               "SuccessfulSamplesRequired": "System.Nullable`1[System.Int32]",
@@ -21436,7 +21436,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
                   "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOriginGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOriginGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOriginGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "SampleSize": "System.Nullable`1[System.Int32]",
                     "SuccessfulSamplesRequired": "System.Nullable`1[System.Int32]",
@@ -21729,7 +21729,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceState": "System.String",
@@ -21810,7 +21810,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
                   "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Tags": "System.Collections.Hashtable",
                     "ResourceState": "System.String",
@@ -22120,7 +22120,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRoute",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRoute, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRoute, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CustomDomainIds": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Cdn.Models.ResourceReference]",
               "RuleSetIds": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Cdn.Models.ResourceReference]",
@@ -22357,7 +22357,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
                   "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRoute",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRoute, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRoute, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CustomDomainIds": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Cdn.Models.ResourceReference]",
                     "RuleSetIds": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Cdn.Models.ResourceReference]",
@@ -22528,7 +22528,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRule, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRule, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Actions": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Cdn.Models.DeliveryRuleAction]",
               "Conditions": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Cdn.Models.DeliveryRuleCondition]",
@@ -22767,7 +22767,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
                   "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRule",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRule, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRule, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Actions": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Cdn.Models.DeliveryRuleAction]",
                     "Conditions": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Cdn.Models.DeliveryRuleCondition]",
@@ -22904,7 +22904,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleSet, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleSet, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "Name": "System.String",
@@ -22990,7 +22990,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
                   "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleSet, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleSet, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "Name": "System.String",
@@ -23302,7 +23302,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdSecret",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdSecret, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdSecret, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SubjectAlternativeNames": "System.Collections.Generic.List`1[System.String]",
               "UseLatestVersion": "System.Nullable`1[System.Boolean]",
@@ -23518,7 +23518,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
                   "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdSecret",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdSecret, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdSecret, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "SubjectAlternativeNames": "System.Collections.Generic.List`1[System.String]",
                     "UseLatestVersion": "System.Nullable`1[System.Boolean]",
@@ -23683,7 +23683,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdSecurityPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdSecurityPolicy, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdSecurityPolicy, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Domains": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Cdn.Models.ResourceReference]",
               "PatternsToMatch": "System.Collections.Generic.List`1[System.String]",
@@ -23897,7 +23897,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
                   "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdSecurityPolicy",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdSecurityPolicy, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdSecurityPolicy, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Domains": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Cdn.Models.ResourceReference]",
                     "PatternsToMatch": "System.Collections.Generic.List`1[System.String]",
@@ -24020,7 +24020,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -24087,7 +24087,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -24147,7 +24147,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -24225,7 +24225,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Origin",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOriginResourceState",
               "ProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.PSProvisioningState",
@@ -24415,7 +24415,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Origin",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOriginResourceState",
               "ProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.PSProvisioningState",
@@ -24900,7 +24900,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Origin",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOriginResourceState",
                     "ProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.PSProvisioningState",
@@ -25003,7 +25003,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup.PSOriginGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup.PSOriginGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup.PSOriginGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup.PSOriginGroupResourceState",
               "ProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.PSProvisioningState",
@@ -25144,7 +25144,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup.PSOriginGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup.PSOriginGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup.PSOriginGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup.PSOriginGroupResourceState",
               "ProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.PSProvisioningState",
@@ -25363,7 +25363,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup.PSOriginGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup.PSOriginGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup.PSOriginGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup.PSOriginGroupResourceState",
                     "ProvisioningState": "Microsoft.Azure.Commands.Cdn.Models.PSProvisioningState",
@@ -25462,7 +25462,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfileResourceState",
               "Sku": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku",
@@ -25515,7 +25515,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfileResourceState",
               "Sku": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku",
@@ -25561,7 +25561,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfileResourceState",
                     "Sku": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku",
@@ -25625,7 +25625,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdCustomDomain",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdCustomDomain, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "HostName": "System.String",
               "CertificateType": "System.String",
@@ -25980,7 +25980,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "HostName": "System.String",
@@ -26032,7 +26032,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "HostName": "System.String",
@@ -26113,7 +26113,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
                   "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Tags": "System.Collections.Hashtable",
                     "HostName": "System.String",
@@ -26298,7 +26298,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOrigin",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "HttpPort": "System.Nullable`1[System.Int32]",
               "HttpsPort": "System.Nullable`1[System.Int32]",
@@ -26384,7 +26384,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOrigin",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "HttpPort": "System.Nullable`1[System.Int32]",
               "HttpsPort": "System.Nullable`1[System.Int32]",
@@ -26752,7 +26752,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
                   "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOrigin",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "HttpPort": "System.Nullable`1[System.Int32]",
                     "HttpsPort": "System.Nullable`1[System.Int32]",
@@ -26853,7 +26853,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOriginGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOriginGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOriginGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SampleSize": "System.Nullable`1[System.Int32]",
               "SuccessfulSamplesRequired": "System.Nullable`1[System.Int32]",
@@ -26918,7 +26918,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOriginGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOriginGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOriginGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SampleSize": "System.Nullable`1[System.Int32]",
               "SuccessfulSamplesRequired": "System.Nullable`1[System.Int32]",
@@ -27253,7 +27253,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
                   "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOriginGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOriginGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdOriginGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "SampleSize": "System.Nullable`1[System.Int32]",
                     "SuccessfulSamplesRequired": "System.Nullable`1[System.Int32]",
@@ -27351,7 +27351,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceState": "System.String",
@@ -27403,7 +27403,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceState": "System.String",
@@ -27475,7 +27475,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
                   "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Tags": "System.Collections.Hashtable",
                     "ResourceState": "System.String",
@@ -27645,7 +27645,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRoute",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRoute, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRoute, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CustomDomainIds": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Cdn.Models.ResourceReference]",
               "RuleSetIds": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Cdn.Models.ResourceReference]",
@@ -27779,7 +27779,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRoute",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRoute, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRoute, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CustomDomainIds": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Cdn.Models.ResourceReference]",
               "RuleSetIds": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Cdn.Models.ResourceReference]",
@@ -28093,7 +28093,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
                   "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRoute",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRoute, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRoute, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CustomDomainIds": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Cdn.Models.ResourceReference]",
                     "RuleSetIds": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Cdn.Models.ResourceReference]",
@@ -28194,7 +28194,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdSecret",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdSecret, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdSecret, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SubjectAlternativeNames": "System.Collections.Generic.List`1[System.String]",
               "UseLatestVersion": "System.Nullable`1[System.Boolean]",
@@ -28540,7 +28540,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdSecurityPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdSecurityPolicy, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdSecurityPolicy, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Domains": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Cdn.Models.ResourceReference]",
               "PatternsToMatch": "System.Collections.Generic.List`1[System.String]",
@@ -28621,7 +28621,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
             "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdSecurityPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdSecurityPolicy, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdSecurityPolicy, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Domains": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Cdn.Models.ResourceReference]",
               "PatternsToMatch": "System.Collections.Generic.List`1[System.String]",
@@ -28792,7 +28792,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
                   "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdSecurityPolicy",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdSecurityPolicy, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdSecurityPolicy, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Domains": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Cdn.Models.ResourceReference]",
                     "PatternsToMatch": "System.Collections.Generic.List`1[System.String]",
@@ -28925,7 +28925,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -29085,7 +29085,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -29264,7 +29264,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -29424,7 +29424,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -29563,7 +29563,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSValidateCustomDomainOutput",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSValidateCustomDomainOutput, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSValidateCustomDomainOutput, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CustomDomainValidated": "System.Boolean",
               "Reason": "System.String",
@@ -29637,7 +29637,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -29797,7 +29797,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -29979,7 +29979,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
             "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
               "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -30165,7 +30165,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
                   "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DeliveryPolicy": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
                     "ResourceState": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
@@ -30520,7 +30520,7 @@
     "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomainResourceState": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain",
       "Name": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomainResourceState",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomainResourceState, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomainResourceState, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "Equals",
@@ -30612,7 +30612,7 @@
     "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningState": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain",
       "Name": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningState",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "Equals",
@@ -30699,7 +30699,7 @@
     "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningSubstate": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain",
       "Name": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningSubstate",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningSubstate, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomHttpsProvisioningSubstate, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "Equals",
@@ -30786,7 +30786,7 @@
     "Microsoft.Azure.Commands.Cdn.Models.PSProvisioningState": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.Models",
       "Name": "Microsoft.Azure.Commands.Cdn.Models.PSProvisioningState",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.PSProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.PSProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "Equals",
@@ -30873,7 +30873,7 @@
     "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
       "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Rules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRule]",
         "Description": "System.String"
@@ -30911,7 +30911,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRule]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRule]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRule, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRule, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRule"
       ]
@@ -30919,7 +30919,7 @@
     "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRule": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
       "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRule",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRule, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRule, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Actions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleAction]",
         "Conditions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleCondition]",
@@ -30959,7 +30959,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleAction]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleAction]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleAction, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleAction, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleAction"
       ]
@@ -30967,7 +30967,7 @@
     "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleAction": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
       "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleAction",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleAction, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleAction, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "GetType",
@@ -31001,7 +31001,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleCondition]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleCondition]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleCondition, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleCondition, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleCondition"
       ]
@@ -31009,7 +31009,7 @@
     "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleCondition": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
       "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleCondition",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleCondition, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleCondition, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "MatchValue": "System.Collections.Generic.IList`1[System.String]",
         "Transfroms": "System.Collections.Generic.IList`1[System.String]",
@@ -31051,7 +31051,7 @@
     "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
       "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpointResourceState, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "Equals",
@@ -31138,7 +31138,7 @@
     "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
       "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSQueryStringCachingBehavior, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "Equals",
@@ -31271,7 +31271,7 @@
     "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeepCreatedOrigin]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeepCreatedOrigin]",
-      "AssemblyQualifiedName": "System.Collections.Generic.ICollection`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeepCreatedOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.ICollection`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeepCreatedOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeepCreatedOrigin"
       ]
@@ -31279,7 +31279,7 @@
     "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeepCreatedOrigin": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
       "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeepCreatedOrigin",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeepCreatedOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeepCreatedOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "HttpPort": "System.Nullable`1[System.Int32]",
         "HttpsPort": "System.Nullable`1[System.Int32]",
@@ -31327,7 +31327,7 @@
     "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter]",
-      "AssemblyQualifiedName": "System.Collections.Generic.ICollection`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.ICollection`1[[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter"
       ]
@@ -31335,7 +31335,7 @@
     "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
       "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilter, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Action": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilterAction",
         "RelativePath": "System.String",
@@ -31374,7 +31374,7 @@
     "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilterAction": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Endpoint",
       "Name": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilterAction",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilterAction, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSGeoFilterAction, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "Equals",
@@ -31472,7 +31472,7 @@
     "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.EdgeNodes.PSIpAddressGroup]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.EdgeNodes.PSIpAddressGroup]",
-      "AssemblyQualifiedName": "System.Collections.Generic.ICollection`1[[Microsoft.Azure.Commands.Cdn.EdgeNodes.PSIpAddressGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.ICollection`1[[Microsoft.Azure.Commands.Cdn.EdgeNodes.PSIpAddressGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.Cdn.EdgeNodes.PSIpAddressGroup"
       ]
@@ -31480,7 +31480,7 @@
     "Microsoft.Azure.Commands.Cdn.EdgeNodes.PSIpAddressGroup": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.EdgeNodes",
       "Name": "Microsoft.Azure.Commands.Cdn.EdgeNodes.PSIpAddressGroup",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.EdgeNodes.PSIpAddressGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.EdgeNodes.PSIpAddressGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Ipv4Addresses": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.EdgeNodes.PSCIDRIpAddress]",
         "Ipv6Addresses": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.EdgeNodes.PSCIDRIpAddress]",
@@ -31519,7 +31519,7 @@
     "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.EdgeNodes.PSCIDRIpAddress]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Cdn.EdgeNodes.PSCIDRIpAddress]",
-      "AssemblyQualifiedName": "System.Collections.Generic.ICollection`1[[Microsoft.Azure.Commands.Cdn.EdgeNodes.PSCIDRIpAddress, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.ICollection`1[[Microsoft.Azure.Commands.Cdn.EdgeNodes.PSCIDRIpAddress, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.Cdn.EdgeNodes.PSCIDRIpAddress"
       ]
@@ -31527,7 +31527,7 @@
     "Microsoft.Azure.Commands.Cdn.EdgeNodes.PSCIDRIpAddress": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.EdgeNodes",
       "Name": "Microsoft.Azure.Commands.Cdn.EdgeNodes.PSCIDRIpAddress",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.EdgeNodes.PSCIDRIpAddress, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.EdgeNodes.PSCIDRIpAddress, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "PrefixLength": "System.Int32",
         "BaseIpAddress": "System.String"
@@ -31565,7 +31565,7 @@
     "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfileResourceState": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
       "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfileResourceState",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfileResourceState, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfileResourceState, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "Equals",
@@ -31652,7 +31652,7 @@
     "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
       "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSku, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSkuName"
       },
@@ -31689,7 +31689,7 @@
     "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSkuName": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
       "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSkuName",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSkuName, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSSkuName, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "Equals",
@@ -31776,7 +31776,7 @@
     "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOriginResourceState": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Origin",
       "Name": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOriginResourceState",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOriginResourceState, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOriginResourceState, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "Equals",
@@ -31863,7 +31863,7 @@
     "Microsoft.Azure.Commands.Cdn.Models.OriginGroup.PSOriginGroupResourceState": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup",
       "Name": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup.PSOriginGroupResourceState",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup.PSOriginGroupResourceState, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.OriginGroup.PSOriginGroupResourceState, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "Equals",
@@ -32058,7 +32058,7 @@
     "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleAction": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
       "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleAction",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleAction, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleAction, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "GetType",
@@ -32092,7 +32092,7 @@
     "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleCondition": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.AfdModels",
       "Name": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleCondition",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleCondition, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleCondition, Microsoft.Azure.PowerShell.Cmdlets.Cdn, Version=1.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "MatchValue": "System.Collections.Generic.List`1[System.String]",
         "Transforms": "System.Collections.Generic.List`1[System.String]",

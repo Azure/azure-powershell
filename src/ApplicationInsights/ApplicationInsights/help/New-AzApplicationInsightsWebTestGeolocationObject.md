@@ -23,8 +23,9 @@ Create an in-memory object for WebTestGeolocation.
 
 ### Example 1: Create a in-memory object for WebTestGeolocation
 ```powershell
-PS C:\> New-AzApplicationInsightsWebTestGeolocationObject -Location "emea-nl-ams-azr"
-
+New-AzApplicationInsightsWebTestGeolocationObject -Location "emea-nl-ams-azr"
+```
+```output
 Location
 --------
 emea-nl-ams-azr

@@ -36,7 +36,7 @@ The **Get-AzNetAppFilesVault** cmdlet gets list of an ANF accounts backup vaults
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzNetAppFilesVault -ResourceGroupName "MyRG" -AccountName "MyAnfAccount"
+Get-AzNetAppFilesVault -ResourceGroupName "MyRG" -AccountName "MyAnfAccount"
 ```
 
 This command gets a list of the backup vaults for Azure NetappFiles (ANF) account "MyAnfAccount".

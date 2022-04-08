@@ -26,14 +26,14 @@ If the **Get-AzVirtualNetworkGatewayConnection** cmdlet is issued without specif
 ## EXAMPLES
 
 ### 1: Get a Virtual Network Gateway Connection
-```
+```powershell
 Get-AzVirtualNetworkGatewayConnection -Name myTunnel -ResourceGroupName myRG
 ```
 
 Returns the object of the Virtual Network Gateway Connection with the name "myTunnel" within the resource group "myRG"
 
 ### 2: Get all Virtual Network Gateway Connections using filtering
-```
+```powershell
 Get-AzVirtualNetworkGatewayConnection -Name myTunnel* -ResourceGroupName myRG
 ```
 

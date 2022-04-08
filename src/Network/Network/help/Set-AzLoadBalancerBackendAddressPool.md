@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 online version: https://docs.microsoft.com/powershell/module/az.network/set-azloadbalancerbackendaddresspool
@@ -47,31 +47,31 @@ Updates the backend pool on a loadbalancer
 ### Example 1
 ```powershell
 # Set by name and modified input object
-PS C:\> $virtualNetwork = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroup
-PS C:\> $lb = Get-AzLoadBalancer -ResourceGroupName $resourceGroup -Name $loadBalancerName
-PS C:\> $ip1 = New-AzLoadBalancerBackendAddressConfig -IpAddress "10.0.0.5" -Name "TestVNetRef" -VirtualNetworkId $virtualNetwork.Id
-PS C:\> $ip2 = New-AzLoadBalancerBackendAddressConfig -IpAddress "10.0.0.6" -Name "TestVNetRef2" -VirtualNetworkId $virtualNetwork.Id
-PS C:\> $ip3 = New-AzLoadBalancerBackendAddressConfig -IpAddress "10.0.0.7" -Name "TestVNetRef3" -VirtualNetworkId $virtualNetwork.id
-PS C:\> $tunnelInterface1 = New-AzLoadBalancerBackendAddressPoolTunnelInterfaceConfig -Protocol "Vxlan" -Type "Internal" -Port 2000 -Identifier 800
-PS C:\> $tunnelInterface2 = New-AzLoadBalancerBackendAddressPoolTunnelInterfaceConfig -Protocol "Vxlan" -Type "External" -Port 2001 -Identifier 801
-PS C:\> New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -Name $backendPool3 -TunnelInterface $tunnelInterface1, $tunnelInterface2
-PS C:\> $ips = @($ip1, $ip2)
-PS C:\> $b2 = Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -Name $backendPool1
-PS C:\> $b2.LoadBalancerBackendAddresses.Add($ip3)
+$virtualNetwork = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroup
+$lb = Get-AzLoadBalancer -ResourceGroupName $resourceGroup -Name $loadBalancerName
+$ip1 = New-AzLoadBalancerBackendAddressConfig -IpAddress "10.0.0.5" -Name "TestVNetRef" -VirtualNetworkId $virtualNetwork.Id
+$ip2 = New-AzLoadBalancerBackendAddressConfig -IpAddress "10.0.0.6" -Name "TestVNetRef2" -VirtualNetworkId $virtualNetwork.Id
+$ip3 = New-AzLoadBalancerBackendAddressConfig -IpAddress "10.0.0.7" -Name "TestVNetRef3" -VirtualNetworkId $virtualNetwork.id
+$tunnelInterface1 = New-AzLoadBalancerBackendAddressPoolTunnelInterfaceConfig -Protocol "Vxlan" -Type "Internal" -Port 2000 -Identifier 800
+$tunnelInterface2 = New-AzLoadBalancerBackendAddressPoolTunnelInterfaceConfig -Protocol "Vxlan" -Type "External" -Port 2001 -Identifier 801
+New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -Name $backendPool3 -TunnelInterface $tunnelInterface1, $tunnelInterface2
+$ips = @($ip1, $ip2)
+$b2 = Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -Name $backendPool1
+$b2.LoadBalancerBackendAddresses.Add($ip3)
 
-PS C:\> Set-AzLoadBalancerBackendAddressPool -InputObject $b2
+Set-AzLoadBalancerBackendAddressPool -InputObject $b2
 ```
 
 ### Example 2
 ```powershell
 # Set by specific backend from piped loadbalancer and set two IP's
-PS C:\> $lb | Set-AzLoadBalancerBackendAddressPool -LoadBalancerBackendAddress $ips -Name $backendPool1
+$lb | Set-AzLoadBalancerBackendAddressPool -LoadBalancerBackendAddress $ips -Name $backendPool1
 ```
 
 ### Example 3
 ```powershell
 # Set by ResourceId
-PS C:\> Set-AzLoadBalancerBackendAddressPool -ResourceId $b2.Id -LoadBalancerBackendAddress $b2.LoadBalancerBackendAddresses
+Set-AzLoadBalancerBackendAddressPool -ResourceId $b2.Id -LoadBalancerBackendAddress $b2.LoadBalancerBackendAddresses
 ```
 
 ## PARAMETERS

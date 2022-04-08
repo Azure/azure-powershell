@@ -42,8 +42,8 @@ The **Remove-AzNetAppFilesPool** cmdlet deletes an ANF pool.
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\>Remove-AzNetAppFilesPool -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool"
+```powershell
+Remove-AzNetAppFilesPool -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool"
 ```
 
 This command deletes the ANF pool "MyAnfPool".

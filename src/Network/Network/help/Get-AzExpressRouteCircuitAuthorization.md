@@ -31,7 +31,7 @@ well as other information about the authorization, can be viewed at any time by 
 ## EXAMPLES
 
 ### Example 1: Get all ExpressRoute authorizations
-```
+```powershell
 $Circuit = Get-AzExpressRouteCircuit -Name "ContosoCircuit" -ResourceGroupName "ContosoResourceGroup"
 Get-AzExpressRouteCircuitAuthorization -Circuit $Circuit
 ```
@@ -44,7 +44,7 @@ variable $Circuit. The second command then uses that object reference and the
 authorizations associated with ContosoCircuit.
 
 ### Example 2: Get all ExpressRoute authorizations using the Where-Object cmdlet
-```
+```powershell
 $Circuit = Get-AzExpressRouteCircuit -Name "ContosoCircuit" -ResourceGroupName "ContosoResourceGroup"
  Get-AzExpressRouteCircuitAuthorization -Circuit $Circuit | Where-Object {$_.AuthorizationUseStatus -eq "Available"}
 ```

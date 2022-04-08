@@ -39,8 +39,10 @@ Creates peering service prefix associated with a peering service object.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzPeeringService -ResourceGroupName $rgName -Name $peeringServiceName | New-AzPeeringServicePrefix -Name $prefixName -Prefix "10.0.0.0/24"
+Get-AzPeeringService -ResourceGroupName $rgName -Name $peeringServiceName | New-AzPeeringServicePrefix -Name $prefixName -Prefix "10.0.0.0/24"
+```
 
+```output
 Prefix                : 10.0.0.0/24
 PrefixValidationState : Pending
 LearnedType           : None
@@ -55,8 +57,10 @@ Creates a prefix from a peering service object
 
 ### Example 2
 ```powershell
-PS C:\> New-AzPeeringServicePrefix -PeeringServiceId $peeringServiceResourceId -Name $prefixName -Prefix "10.0.0.0/24"
+New-AzPeeringServicePrefix -PeeringServiceId $peeringServiceResourceId -Name $prefixName -Prefix "10.0.0.0/24"
+```
 
+```output
 Prefix                : 10.0.0.0/24
 PrefixValidationState : Pending
 LearnedType           : None
@@ -71,8 +75,10 @@ Creates a prefix from a peering service resource id.
 
 ### Example 3
 ```powershell
-PS C:\> New-AzPeeringServicePrefix -ResourceGroupName $peeringServiceGroup -PeeringServiceName $peeringServiceName -Name $prefixName -Prefix "10.0.0.0/24"
+New-AzPeeringServicePrefix -ResourceGroupName $peeringServiceGroup -PeeringServiceName $peeringServiceName -Name $prefixName -Prefix "10.0.0.0/24"
+```
 
+```output
 Prefix                : 10.0.0.0/24
 PrefixValidationState : Pending
 LearnedType           : None

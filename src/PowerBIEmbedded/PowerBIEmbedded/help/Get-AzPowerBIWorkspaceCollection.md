@@ -31,15 +31,15 @@ The **Get-AzPowerBIWorkspaceCollection** cmdlet gets Power BI workspace collecti
 ## EXAMPLES
 
 ### Example 1: Get all workspace collections in a resource group
-```
-PS C:\>Get-AzPowerBIWorkspaceCollection -ResourceGroupName "ResourceGroup17"
+```powershell
+Get-AzPowerBIWorkspaceCollection -ResourceGroupName "ResourceGroup17"
 ```
 
 This command gets the workspace collections that belong to the resource group named ResourceGroup17.
 
 ### Example 2: Get a workspace collection by using its name
-```
-PS C:\>Get-AzPowerBIWorkspaceCollection -ResourceGroupName "ResourceGroup17" -WorkspaceCollectionName "WCN11"
+```powershell
+Get-AzPowerBIWorkspaceCollection -ResourceGroupName "ResourceGroup17" -WorkspaceCollectionName "WCN11"
 ```
 
 This command gets the workspace collection named WCN11 in the specified resource group.

@@ -48,10 +48,11 @@ The Get-AzNetworkWatcherConnectionMonitorReport cmdlet returns the report on the
 ## EXAMPLES
 
 ### Example 1: Get the most recent connection snapshot of the connection monitor by name in the specified location
+```powershell
+Get-AzNetworkWatcherConnectionMonitorReport -Location centraluseuap -Name cm
 ```
-PS C:\> Get-AzNetworkWatcherConnectionMonitorReport -Location centraluseuap -Name cm
 
-
+```output
 States : [
            {
              "ConnectionState": "Reachable",

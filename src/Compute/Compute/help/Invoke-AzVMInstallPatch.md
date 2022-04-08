@@ -67,23 +67,23 @@ Installs patches on the VM
 
 ### Example 1
 ```powershell
-PS C:\> Invoke-AzVmInstallPatch -ResourceGroupName 'MyRG' -VmName 'MyVM' -Windows -RebootSetting 'never' -MaximumDuration PT2H -ClassificationToIncludeForWindows Critical
+Invoke-AzVmInstallPatch -ResourceGroupName 'MyRG' -VmName 'MyVM' -Windows -RebootSetting 'never' -MaximumDuration PT2H -ClassificationToIncludeForWindows Critical
 ```
 
 This example installs critical patches on the VM. 
 
 ### Example 2
 ```powershell
-PS C:\> $myVM = Get-AzVM -ResourceGroupName 'MyRG' -Name 'MyVM'
-PS C:\> Invoke-AzVmInstallPatch -VM $myVM -MaximumDuration "PT90M" -RebootSetting "Always" -Windows -ClassificationToIncludeForWindows "Security" -KBNumberToInclude ["KB1234567", "KB123567"] -KBNumberToExclude ["KB1234702", "KB1234802"] -ExcludeKBsRequiringReboot
+$myVM = Get-AzVM -ResourceGroupName 'MyRG' -Name 'MyVM'
+Invoke-AzVmInstallPatch -VM $myVM -MaximumDuration "PT90M" -RebootSetting "Always" -Windows -ClassificationToIncludeForWindows "Security" -KBNumberToInclude ["KB1234567", "KB123567"] -KBNumberToExclude ["KB1234702", "KB1234802"] -ExcludeKBsRequiringReboot
 ```
 
 This example passes a PSVirtualMachine object to '-VM' parameter. It also installs security patches while including and excluding certain KBs by using '-KBNumberToExclude' and '-KBNumberToInclude'. It also excludes KBs that require reboot by using '-ExcludeKBsRequiringReboot'.
 
 ### Example 3
 ```powershell
-PS C:\> $myLinuxVM = Get-AzVM -ResourceGroupName 'MyRG' -Name 'MyLinuxVM'
-PS C:\> Invoke-AzVMInstallPatch -ResourceId $myLinuxVM.id -MaximumDuration "PT90M" -RebootSetting "Always" -Linux -ClassificationToIncludeForLinux "Security" -PackageNameMaskToInclude ["package123"] -PackageNameMaskToExclude ["package567"]
+$myLinuxVM = Get-AzVM -ResourceGroupName 'MyRG' -Name 'MyLinuxVM'
+Invoke-AzVMInstallPatch -ResourceId $myLinuxVM.id -MaximumDuration "PT90M" -RebootSetting "Always" -Linux -ClassificationToIncludeForLinux "Security" -PackageNameMaskToInclude ["package123"] -PackageNameMaskToExclude ["package567"]
 ```
 
 This example installs certain packages to the Linux VM provided by Resource ID. 

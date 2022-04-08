@@ -40,8 +40,8 @@ The **Update-AzApiManagementGateway** cmdlet configures an API management Gatewa
 
 ### Example 1: Configure a management group
 ```powershell
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Update-AzApiManagementGateway -Context $apimContext -GatewayId "0001" -Description "Updated Gateway"
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Update-AzApiManagementGateway -Context $apimContext -GatewayId "0001" -Description "Updated Gateway"
 ```
 
 This command configures a gateway.

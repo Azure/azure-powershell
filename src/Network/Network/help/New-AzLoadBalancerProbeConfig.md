@@ -26,7 +26,7 @@ The **New-AzLoadBalancerProbeConfig** cmdlet creates a probe configuration for a
 
 ### Example 1: Create a probe configuration
 ```powershell
-PS C:\>New-AzLoadBalancerProbeConfig -Name "MyProbe" -Protocol "http" -Port 80 -IntervalInSeconds 15 -ProbeCount 15
+New-AzLoadBalancerProbeConfig -Name "MyProbe" -Protocol "http" -Port 80 -IntervalInSeconds 15 -ProbeCount 15
 ```
 
 This command creates a probe configuration named MyProbe using the HTTP protocol.

@@ -39,7 +39,7 @@ If the packet capture session is running when Remove-AzNetworkWatcherPacketCaptu
 ## EXAMPLES
 
 ### Example 1: Remove a packet capture session
-```
+```powershell
 Remove-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName "PacketCaptureTest"
 ```
 

@@ -43,7 +43,7 @@ Deletes the specified route table that is associated with the specified virtual 
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzVirtualHubRouteTable -ResourceGroupName "testRg" -HubName "westushub" -Name "routeTable1"
+Remove-AzVirtualHubRouteTable -ResourceGroupName "testRg" -HubName "westushub" -Name "routeTable1"
 ```
 
 This command deletes the routeTable1 of the virtual hub westushub.

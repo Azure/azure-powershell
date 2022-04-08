@@ -20,11 +20,40 @@
 
 -->
 ## Upcoming Release
+* `New-AzGallery` can take in `-Permission` parameter to set its sharingProfile property.
+* `Update-AzGallery` can update sharingProfile.
+* `Get-AzGallery` can take in `-Expand` parameter for expanded resource view.
+* New parameter set for the following cmdlets to support Shared Image Gallery Direct Sharing
+    - Get-AzGallery
+    - Get-AzGalleryImageDefinition
+    - Get-AzGalleryImageVersion
+
+## Version 4.25.0
+* Updated `New-AzVM` to create a new storage account for boot diagnostics if one does not exist. This will prevent the cmdlet from using a random storage account in the current subscription to use for boot diagnostics.
+* Added `AutomaticRepairAction` string parameter to the `New-AzVmssConfig` and `Update-AzVmss` cmdlets.
+* Updated `Get-AzVm` to include `GetVirtualMachineById` parameter set.
+* Edited the documentation for the cmdlet `Set-AzVMADDomainExtension` to ensure the example is accurate. 
+* Improved description and examples for disk creation.
+* Added new parameters to `New-AzRestorePoint` and `New-AzRestorePointCollection` for copying Restore Points and Restore Point Collections.
+* Added `Zone` and `PlacementGroupId` Parameters to `Repair-AzVmssServiceFabricUpdateDomain`.
+* Edited `New-AzVmss` logic to better check for null properties when the parameter `OrchestrationMode` is used.
+
+## Version 4.24.1
+* Updated New-AzVM feature for `vCPUsAvailable` and `vCPUsPerCore` parameters. Cmdlets will not try to use the new `VMCustomizationPreview` feature if the user does not have access to that feature. [#17370]
+
+## Version 4.24.0
+* Upgraded Compute .NET SDK package reference to version 52.0.0
+* Updated `New-AzSshKey` cmdlet to write file paths to generated keys to the Warning stream instead of the console.
+* Added `vCPUsAvailable` and `vCPUsPerCore` integer parameters to the `New-AzVm`, `New-AzVmConfig`, and `Update-AzVm` cmdlets.
+
+## Version 4.23.0
+* Remove ProvisioningDetails property from PSRestorePoint object.
 * Updated `Set-AzVmExtension` cmdlet to properly display `-Name` and `-Location` parameters as mandatory.
 * Edited `New-AzVmssConfig` second example so it runs successfully by changing the Tag input to the correct format. 
 * Added `Hibernate` parameter to `Stop-AzVm` cmdlet. 
 * Added `HibernationEnabled` parameter to `New-AzVm`, `New-AzVmConfig`, and `Update-AzVm` cmdlets.
 * Added `EnableHotpatching` parameter to the `Set-AzVmssOSProfile` cmdlet.
+* Added 'ForceDeletion' parameter to Remove-AzVM and Remove-AzVMSS.
 
 ## Version 4.22.0
 * Updated `UserData` parameter in VM and VMSS cmdlets to pipe by the Property Name to ensure piping scenarios occur correctly.

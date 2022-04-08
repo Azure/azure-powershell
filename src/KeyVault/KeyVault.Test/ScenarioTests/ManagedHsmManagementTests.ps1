@@ -14,7 +14,7 @@
 
 <#
 .SYNOPSIS
-Tests CRUD for Managed Hsm.
+Tests CRUD for managed HSM.
 #>
 function Test-ManagedHsmCRUD {
     $rgName = getAssetName
@@ -56,6 +56,67 @@ function Test-ManagedHsmCRUD {
         Assert-Throws {  New-AzKeyVaultManagedHsm -Name (getAssetName) -ResourceGroupName (getAssetName) -Location $hsmLocation -Administrator $administrator }
     }
 
+    finally {
+        Remove-AzResourceGroup -Name $rgName -Force
+    }
+
+}
+
+<#
+.SYNOPSIS
+Tests soft delete for managed HSM.
+#>
+function Test-ManagedHsmSoftDelete{
+    try{
+            $rgName = getAssetName
+            $rgLocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
+            $hsmName = getAssetName
+            $hsmLocation = Get-Location "Microsoft.KeyVault" "managedHSMs" "East US 2"
+            $administrator = "37f6731d-0484-43e3-b7e2-1f1bbc562109"
+            New-AzResourceGroup -Name $rgName -Location $rgLocation
+
+            # Test: create a SoftDeleteRetentionInDays-specified managed HSM
+            $hsm = New-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $rgName -Location $hsmLocation -Administrator $administrator -SoftDeleteRetentionInDays 70
+            Assert-AreEqual 70 $hsm.SoftDeleteRetentionInDays "SoftDeleteRetentionInDays should be 70 as specified"
+
+            Remove-AzKeyVaultManagedHsm -InputObject $hsm -Force
+            
+            # Test: get deleted managed HSM
+            $deletedMhsm = Get-AzKeyVaultManagedHsm -Name $hsmName -Location $hsmLocation -InRemovedState
+            Assert-NotNull $deletedMhsm
+
+            # Test: purge deleted managed Hsm
+            Remove-AzKeyVaultManagedHsm -InputObject $deletedMhsm -InRemovedState -Force
+    }
+    finally {
+        Remove-AzResourceGroup -Name $rgName -Force
+    }
+}
+
+<#
+.SYNOPSIS
+Tests purge protection for managed HSM.
+#>
+function Test-ManagedHsmPurgeProtection{
+    try{
+            $rgName = getAssetName
+            $rgLocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
+            $hsmName = getAssetName
+            $hsmLocation = Get-Location "Microsoft.KeyVault" "managedHSMs" "East US 2"
+            $administrator = "37f6731d-0484-43e3-b7e2-1f1bbc562109"
+            New-AzResourceGroup -Name $rgName -Location $rgLocation
+
+            # Test: create a default managed HSM
+            $hsm = New-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $rgName -Location $hsmLocation -Administrator $administrator
+            
+            # Test: EnablePurgeProtection
+            $purgeProtectedHsm = Update-AzKeyVaultManagedHsm -InputObject $hsm -EnablePurgeProtection
+            Assert-AreEqual $true $purgeProtectedHsm.EnablePurgeProtection
+            
+            # Test: purge deleted managed Hsm            
+            Remove-AzKeyVaultManagedHsm -InputObject $purgeProtectedHsm -Force
+            Assert-Throws { Remove-AzKeyVaultManagedHsm -InputObject $deletedMhsm -InRemovedState -Force}
+    }
     finally {
         Remove-AzResourceGroup -Name $rgName -Force
     }

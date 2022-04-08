@@ -31,8 +31,10 @@ The **Get-AzCosmosDBMongoDBDatabaseThroughput** cmdlet gets the throughput prope
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCosmosDBMongoDBDatabaseThroughput -ResourceGroupName {rgName} -AccountName {accountName} -Name {databaseName}
+Get-AzCosmosDBMongoDBDatabaseThroughput -ResourceGroupName {rgName} -AccountName {accountName} -Name {databaseName}
+```
 
+```output
 Name: {throughputName}
 Id: {Id}
 Throughput: {value} 

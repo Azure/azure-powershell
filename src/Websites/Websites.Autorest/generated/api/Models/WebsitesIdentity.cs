@@ -47,6 +47,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Websites.Origin(Microsoft.Azure.PowerShell.Cmdlets.Websites.PropertyOrigin.Owned)]
         public string Id { get => this._id; set => this._id = value; }
 
+        /// <summary>Backing field for <see cref="JobHistoryId" /> property.</summary>
+        private string _jobHistoryId;
+
+        /// <summary>History ID.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Websites.Origin(Microsoft.Azure.PowerShell.Cmdlets.Websites.PropertyOrigin.Owned)]
+        public string JobHistoryId { get => this._jobHistoryId; set => this._jobHistoryId = value; }
+
         /// <summary>Backing field for <see cref="Location" /> property.</summary>
         private string _location;
 
@@ -75,6 +82,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Websites.Origin(Microsoft.Azure.PowerShell.Cmdlets.Websites.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
+        /// <summary>Backing field for <see cref="Slot" /> property.</summary>
+        private string _slot;
+
+        /// <summary>
+        /// Name of the deployment slot. If a slot is not specified, the API deletes a deployment for the production slot.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Websites.Origin(Microsoft.Azure.PowerShell.Cmdlets.Websites.PropertyOrigin.Owned)]
+        public string Slot { get => this._slot; set => this._slot = value; }
+
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
@@ -90,6 +106,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Models
         /// <summary>The user id of the user.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Websites.Origin(Microsoft.Azure.PowerShell.Cmdlets.Websites.PropertyOrigin.Owned)]
         public string Userid { get => this._userid; set => this._userid = value; }
+
+        /// <summary>Backing field for <see cref="WebJobName" /> property.</summary>
+        private string _webJobName;
+
+        /// <summary>Name of Web Job.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Websites.Origin(Microsoft.Azure.PowerShell.Cmdlets.Websites.PropertyOrigin.Owned)]
+        public string WebJobName { get => this._webJobName; set => this._webJobName = value; }
 
         /// <summary>Creates an new <see cref="WebsitesIdentity" /> instance.</summary>
         public WebsitesIdentity()
@@ -140,6 +163,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
+        /// <summary>History ID.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"History ID.",
+        SerializedName = @"id",
+        PossibleTypes = new [] { typeof(string) })]
+        string JobHistoryId { get; set; }
         /// <summary>Location where you plan to create the static site.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Info(
         Required = false,
@@ -173,6 +204,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Models
         PossibleTypes = new [] { typeof(string) })]
         string ResourceGroupName { get; set; }
         /// <summary>
+        /// Name of the deployment slot. If a slot is not specified, the API deletes a deployment for the production slot.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Name of the deployment slot. If a slot is not specified, the API deletes a deployment for the production slot.",
+        SerializedName = @"slot",
+        PossibleTypes = new [] { typeof(string) })]
+        string Slot { get; set; }
+        /// <summary>
         /// Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Info(
@@ -190,6 +231,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Models
         SerializedName = @"userid",
         PossibleTypes = new [] { typeof(string) })]
         string Userid { get; set; }
+        /// <summary>Name of Web Job.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Name of Web Job.",
+        SerializedName = @"webJobName",
+        PossibleTypes = new [] { typeof(string) })]
+        string WebJobName { get; set; }
 
     }
     internal partial interface IWebsitesIdentityInternal
@@ -205,6 +254,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Models
         string FunctionAppName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
+        /// <summary>History ID.</summary>
+        string JobHistoryId { get; set; }
         /// <summary>Location where you plan to create the static site.</summary>
         string Location { get; set; }
         /// <summary>Name of the static site.</summary>
@@ -214,11 +265,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Models
         /// <summary>Name of the resource group to which the resource belongs.</summary>
         string ResourceGroupName { get; set; }
         /// <summary>
+        /// Name of the deployment slot. If a slot is not specified, the API deletes a deployment for the production slot.
+        /// </summary>
+        string Slot { get; set; }
+        /// <summary>
         /// Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
         /// </summary>
         string SubscriptionId { get; set; }
         /// <summary>The user id of the user.</summary>
         string Userid { get; set; }
+        /// <summary>Name of Web Job.</summary>
+        string WebJobName { get; set; }
 
     }
 }

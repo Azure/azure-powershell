@@ -31,8 +31,10 @@ Removes a Key Vault managed Azure Storage SAS definitions. This also removes the
 
 ### Example 1: Remove a Key Vault managed Azure Storage SAS definition.
 ```powershell
-PS C:\> Remove-AzKeyVaultManagedStorageSasDefinition -VaultName 'myvault' -AccountName 'mystorageaccount' -Name 'mysasdef' -PassThru
+Remove-AzKeyVaultManagedStorageSasDefinition -VaultName 'myvault' -AccountName 'mystorageaccount' -Name 'mysasdef' -PassThru
+```
 
+```output
 Id          : https://myvault.vault.azure.net:443/storage/mystorageaccount/sas/mysasdef
 Vault Name  : myvault
 AccountName : mystorageaccount
@@ -47,8 +49,10 @@ Removes a Key Vault managed Storage SAS definition 'mysasdef' associated with th
 
 ### Example 2: Remove a Key Vault managed Azure Storage SAS definition without user confirmation.
 ```powershell
-PS C:\> Remove-AzKeyVaultManagedStorageSasDefinition -VaultName 'myvault' -AccountName 'mystorageaccount' -Name 'mysasdef' -PassThru -Force
+Remove-AzKeyVaultManagedStorageSasDefinition -VaultName 'myvault' -AccountName 'mystorageaccount' -Name 'mysasdef' -PassThru -Force
+```
 
+```output
 Id          : https://myvault.vault.azure.net:443/storage/mystorageaccount/sas/mysasdef
 Vault Name  : myvault
 AccountName : mystorageaccount

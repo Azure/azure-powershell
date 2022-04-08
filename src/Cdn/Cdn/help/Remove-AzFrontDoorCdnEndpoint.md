@@ -37,7 +37,7 @@ Removes the endpoint.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzFrontDoorCdnEndpoint -ResourceId $endpointResourceId
+Remove-AzFrontDoorCdnEndpoint -ResourceId $endpointResourceId
 ```
 
 Removes the endpoint.

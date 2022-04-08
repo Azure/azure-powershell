@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.Profile.CommonModule;
 using Microsoft.Rest.Azure;
 using Microsoft.Rest.Serialization;
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using System;
@@ -121,31 +122,52 @@ namespace Microsoft.Azure.Commands.Common
             switch (id)
             {
                 case Events.CmdletBeginProcessing:
-                    await OnCmdletBeginProcessing(id, cancellationToken, getEventData, signal, processRecordId);
+                    await OnCmdletBeginProcessing(id, cancellationToken, getEventData, signal, correlationId);
                     break;
                 case Events.BeforeCall:
-                    await OnBeforeCall(id, cancellationToken, getEventData, signal, processRecordId);
+                    await OnBeforeCall(id, cancellationToken, getEventData, signal, correlationId);
                     break;
                 case Events.CmdletProcessRecordAsyncStart:
                     await OnProcessRecordAsyncStart(id, cancellationToken, getEventData, signal, processRecordId, invocationInfo, parameterSetName, correlationId);
                     break;
                 case Events.CmdletProcessRecordAsyncEnd:
-                    await OnProcessRecordAsyncEnd(id, cancellationToken, getEventData, signal, processRecordId);
+                    await OnProcessRecordAsyncEnd(id, cancellationToken, getEventData, signal, correlationId);
                     break;
                 case Events.CmdletException:
-                    await OnCmdletException(id, cancellationToken, getEventData, signal, processRecordId, exception);
+                    await OnCmdletException(id, cancellationToken, getEventData, signal, correlationId, exception);
                     break;
                 case Events.ResponseCreated:
-                    await OnResponseCreated(id, cancellationToken, getEventData, signal, processRecordId);
+                    await OnResponseCreated(id, cancellationToken, getEventData, signal, correlationId);
                     break;
                 case Events.Polling:
                     await OnPolling(id, cancellationToken, getEventData, signal, processRecordId);
                     break;
                 case Events.Finally:
-                    await OnFinally(id, cancellationToken, getEventData, signal, processRecordId);
+                    await OnFinally(id, cancellationToken, getEventData, signal, correlationId);
                     break;
                 case Events.CmdletEndProcessing:
-                    await OnCmdletEndProcessing(id, cancellationToken, getEventData, signal, processRecordId);
+                    await OnCmdletEndProcessing(id, cancellationToken, getEventData, signal, correlationId);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// The cmdlet will call this for every event during the pipeline. 
+        /// </summary>
+        /// <param name="id">a <c>string</c> containing the name of the event being raised (well-known events are in <see cref="Microsoft.Azure.Commands.Common.Events"/></param>
+        /// <param name="invocationInfo">The <see cref="System.Management.Automation.InvocationInfo" /> from the cmdlet</param>
+        /// <param name="parameterSetName">The <see cref="string" /> containing the name of the parameter set for this invocation (if available></param>
+        public void Telemetry(string id, InvocationInfo invocationInfo, string parameterSetName, PSCmdlet pscmdlet)
+        {
+            switch (id)
+            {
+                case Telemetries.Create:
+                    OnTelemetryCreated(invocationInfo, parameterSetName, pscmdlet);
+                    break;
+                case Telemetries.Send:
+                    OnTelemetrySent(pscmdlet);
                     break;
                 default:
                     break;
@@ -222,18 +244,45 @@ namespace Microsoft.Azure.Commands.Common
         internal async Task OnProcessRecordAsyncStart(string id, CancellationToken cancellationToken, GetEventData getEventData, SignalDelegate signal, string processRecordId, InvocationInfo invocationInfo, string parameterSetName, string correlationId)
         {
             //AzVersion is null indicates no SDK based cmdlet is invoked. Below properties needs to be filled.
-            if(_runtime != null && AzurePSCmdlet.AzVersion == null)
+            if (_runtime != null && AzurePSCmdlet.AzVersion == null)
             {
                 AzurePSCmdlet.PSHostName = _runtime.Host?.Name;
                 AzurePSCmdlet.PSHostVersion = _runtime.Host?.Version?.ToString();
             }
-            var qos = _telemetry.CreateQosEvent(invocationInfo, parameterSetName, correlationId, processRecordId);
+            var qos = _telemetry.CreateQosEvent(invocationInfo, parameterSetName, correlationId, correlationId);
             qos.PreviousEndTime = _previousEndTime;
             await signal(Events.Debug, cancellationToken,
                 () => EventHelper.CreateLogEvent($"[{id}]: Created new QosEvent for command '{qos?.CommandName}'"));
         }
 
-        internal async Task OnProcessRecordAsyncEnd(string id, CancellationToken cancellationToken, GetEventData getEventData, SignalDelegate signal, string processRecordId)
+        internal void OnTelemetryCreated(InvocationInfo invocationInfo, string parameterSetName, PSCmdlet pscmdlet)
+        {
+            //AzVersion is null indicates no SDK based cmdlet is invoked. Below properties needs to be filled.
+            if (_runtime != null && AzurePSCmdlet.AzVersion == null)
+            {
+                AzurePSCmdlet.PSHostName = _runtime.Host?.Name;
+                AzurePSCmdlet.PSHostVersion = _runtime.Host?.Version?.ToString();
+            }
+            var qos = _telemetry.CreateQosEvent(invocationInfo, parameterSetName, MetricHelper.TelemetryId, MetricHelper.TelemetryId);
+            qos.Parameters = string.Join(" ",
+                    invocationInfo.BoundParameters.Keys.Select(
+                        s => string.Format(System.Globalization.CultureInfo.InvariantCulture, "-{0} ***", s)));
+            qos.PreviousEndTime = _previousEndTime;
+        }
+
+        internal void OnTelemetrySent(PSCmdlet pscmdlet)
+        {
+            AzurePSQoSEvent qos;
+            if (_telemetry.TryGetValue(MetricHelper.TelemetryId, out qos))
+            {
+                qos.IsSuccess = (qos.Exception == null);
+                _telemetry.LogEvent(MetricHelper.TelemetryId);
+                _previousEndTime = DateTimeOffset.Now;
+                pscmdlet.WriteDebug(qos.ToString());
+            }
+        }
+
+        internal async Task OnProcessRecordAsyncEnd(string id, CancellationToken cancellationToken, GetEventData getEventData, SignalDelegate signal, string correlationId)
         {
             await signal(Events.Debug, cancellationToken,
                 () => EventHelper.CreateLogEvent($"[{id}]: Finish HTTP process"));

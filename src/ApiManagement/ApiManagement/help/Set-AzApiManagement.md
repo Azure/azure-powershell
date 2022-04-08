@@ -25,45 +25,45 @@ The **Set-AzApiManagement** cmdlet updates an Azure API Management service.
 
 ### Example 1: Get an API Management service and scale it to Premium and Add a region
 ```powershell
-PS C:\> $apim = Get-AzApiManagement -ResourceGroupName "ContosoGroup" -Name "ContosoApi"
-PS C:\> $apim.Sku = "Premium"
-PS C:\> $apim.Capacity = 5
-PS C:\> $apim.AddRegion("Central US", "Premium", 3)
-PS C:\>Set-AzApiManagement -InputObject $apim
+$apim = Get-AzApiManagement -ResourceGroupName "ContosoGroup" -Name "ContosoApi"
+$apim.Sku = "Premium"
+$apim.Capacity = 5
+$apim.AddRegion("Central US", "Premium", 3)
+Set-AzApiManagement -InputObject $apim
 ```
 
 This example gets an Api Management instance, scales it to five premium units and then adds an additional three units to the premium region.
 
 ### Example 2: Update deployment (external VNET)
 ```powershell
-PS C:\> $virtualNetwork = New-AzApiManagementVirtualNetwork -SubnetResourceId "/subscriptions/a8ff56dc-3bc7-4174-a1e8-3726ab15d0e2/resourceGroups/Api-Default-WestUS/providers/Microsoft.Network/virtualNetworks/dfVirtualNetwork/subnets/backendSubnet"
-PS C:\> $apim = Get-AzApiManagement -ResourceGroupName "ContosoGroup" -Name "ContosoApi"
-PS C:\> $apim.VpnType = "External"
-PS C:\> $apim.VirtualNetwork = $virtualNetwork
-PS C:\> Set-AzApiManagement -InputObject $apim
+$virtualNetwork = New-AzApiManagementVirtualNetwork -SubnetResourceId "/subscriptions/a8ff56dc-3bc7-4174-a1e8-3726ab15d0e2/resourceGroups/Api-Default-WestUS/providers/Microsoft.Network/virtualNetworks/dfVirtualNetwork/subnets/backendSubnet"
+$apim = Get-AzApiManagement -ResourceGroupName "ContosoGroup" -Name "ContosoApi"
+$apim.VpnType = "External"
+$apim.VirtualNetwork = $virtualNetwork
+Set-AzApiManagement -InputObject $apim
 ```
 
 This command updates an existing API Management deployment and joins to an external *VpnType*.
 
 ### Example 3: Create and initialize an instance of PsApiManagementCustomHostNameConfiguration using an Secret from KeyVault Resource
 ```powershell
-PS C:\>$portal = New-AzApiManagementCustomHostnameConfiguration -Hostname "portal.contoso.com" -HostnameType Portal -KeyVaultId "https://apim-test-keyvault.vault.azure.net/secrets/api-portal-custom-ssl.pfx"
-PS C:\>$proxy1 = New-AzApiManagementCustomHostnameConfiguration -Hostname "gatewayl.contoso.com" -HostnameType Proxy -KeyVaultId "https://apim-test-keyvault.vault.azure.net/secrets/contoso-proxy-custom-ssl.pfx"
-PS C:\>$proxy2 = New-AzApiManagementCustomHostnameConfiguration -Hostname "gatewayl.foobar.com" -HostnameType Proxy -KeyVaultId "https://apim-test-keyvault.vault.azure.net/secrets/foobar-proxy-custom-ssl.pfx"
-PS C:\>$proxyCustomConfig = @($proxy1,$proxy2)
-PS C:\>$apim = Get-AzApiManagement -ResourceGroupName "ContosoGroup" -Name "ContosoApi"
-PS C:\>$apim.PortalCustomHostnameConfiguration = $portal
-PS C:\>$apim.ProxyCustomHostnameConfiguration = $proxyCustomConfig 
-PS C:\>Set-AzApiManagement -InputObject $apim -SystemAssignedIdentity
+$portal = New-AzApiManagementCustomHostnameConfiguration -Hostname "portal.contoso.com" -HostnameType Portal -KeyVaultId "https://apim-test-keyvault.vault.azure.net/secrets/api-portal-custom-ssl.pfx"
+$proxy1 = New-AzApiManagementCustomHostnameConfiguration -Hostname "gatewayl.contoso.com" -HostnameType Proxy -KeyVaultId "https://apim-test-keyvault.vault.azure.net/secrets/contoso-proxy-custom-ssl.pfx"
+$proxy2 = New-AzApiManagementCustomHostnameConfiguration -Hostname "gatewayl.foobar.com" -HostnameType Proxy -KeyVaultId "https://apim-test-keyvault.vault.azure.net/secrets/foobar-proxy-custom-ssl.pfx"
+$proxyCustomConfig = @($proxy1,$proxy2)
+$apim = Get-AzApiManagement -ResourceGroupName "ContosoGroup" -Name "ContosoApi"
+$apim.PortalCustomHostnameConfiguration = $portal
+$apim.ProxyCustomHostnameConfiguration = $proxyCustomConfig 
+Set-AzApiManagement -InputObject $apim -SystemAssignedIdentity
 ```
 
 ### Example 4: Update Publisher Email, NotificationSender Email and Organization Name
 ```powershell
-PS C:\> $apim = Get-AzApiManagement -ResourceGroupName "api-Default-West-US" -Name "Contoso"
-PS C:\> $apim.PublisherEmail = "foobar@contoso.com"
-PS C:\> $apim.NotificationSenderEmail = "notification@contoso.com"
-PS C:\> $apim.OrganizationName = "Contoso"
-PS C:\> Set-AzApiManagement -InputObject $apim -PassThru
+$apim = Get-AzApiManagement -ResourceGroupName "api-Default-West-US" -Name "Contoso"
+$apim.PublisherEmail = "foobar@contoso.com"
+$apim.NotificationSenderEmail = "notification@contoso.com"
+$apim.OrganizationName = "Contoso"
+Set-AzApiManagement -InputObject $apim -PassThru
 ```
 
 ## PARAMETERS

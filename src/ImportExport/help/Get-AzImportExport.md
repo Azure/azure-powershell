@@ -43,7 +43,10 @@ Gets information about an existing job.
 
 ### Example 1: Get ImportExport job with default context
 ```powershell
-PS C:\> Get-AzImportExport
+Get-AzImportExport
+```
+
+```output
 Location Name     Type
 -------- ----     ----
 East US  test-job Microsoft.ImportExport/jobs
@@ -53,7 +56,10 @@ This cmdlet gets ImportExport job with default context.
 
 ### Example 2: Get ImportExport job by resource group and job name
 ```powershell
-PS C:\> Get-AzImportExport -Name test-job -ResourceGroupName ImportTestRG
+Get-AzImportExport -Name test-job -ResourceGroupName ImportTestRG
+```
+
+```output
 Location Name     Type
 -------- ----     ----
 East US  test-job Microsoft.ImportExport/jobs
@@ -63,7 +69,10 @@ This cmdlet gets ImportExport job by resource group and job name.
 
 ### Example 3: Lists all the ImportExport jobs in specified resource group
 ```powershell
-PS C:\> Get-AzImportExport -ResourceGroupName ImportTestRG
+Get-AzImportExport -ResourceGroupName ImportTestRG
+```
+
+```output
 Location Name     Type
 -------- ----     ----
 East US  test-job Microsoft.ImportExport/jobs
@@ -73,8 +82,11 @@ This cmdlet lists all the ImportExport jobs in specified resource group.
 
 ### Example 4: Get ImportExport job by identity
 ```powershell
-PS C:\> $Id = "/subscriptions/<SubscriptionId>/resourceGroups/ImportTestRG/providers/Microsoft.ImportExport/jobs/test-job"
-PS C:\> Get-AzImportExport -InputObject $Id
+$Id = "/subscriptions/<SubscriptionId>/resourceGroups/ImportTestRG/providers/Microsoft.ImportExport/jobs/test-job"
+Get-AzImportExport -InputObject $Id
+```
+
+```output
 Location Name     Type
 -------- ----     ----
 East US  test-job Microsoft.ImportExport/jobs
