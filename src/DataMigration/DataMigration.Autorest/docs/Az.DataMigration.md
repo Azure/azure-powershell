@@ -33,7 +33,7 @@ Retrieve the registered Integration Runtime nodes and their monitoring data for 
 Retrieve the List of database migrations attached to the service.
 
 ### [Get-AzDataMigrationToSqlDb](Get-AzDataMigrationToSqlDb.md)
-Retrieve the Database Migration resource.
+Retrieve the specified database migration for a given SQL Db.
 
 ### [Get-AzDataMigrationToSqlManagedInstance](Get-AzDataMigrationToSqlManagedInstance.md)
 Retrieve the specified database migration for a given SQL Managed Instance.
@@ -54,7 +54,7 @@ Create or Update Database Migration Service.
 Regenerate a new set of Authentication Keys for Self Hosted Integration Runtime.
 
 ### [New-AzDataMigrationToSqlDb](New-AzDataMigrationToSqlDb.md)
-Create or Update Database Migration resource.
+Create a new database migration to a given SQL Db.
 
 ### [New-AzDataMigrationToSqlManagedInstance](New-AzDataMigrationToSqlManagedInstance.md)
 Create a new database migration to a given SQL Managed Instance.
@@ -72,10 +72,10 @@ Delete Database Migration Service.
 Delete the integration runtime node.
 
 ### [Remove-AzDataMigrationToSqlDb](Remove-AzDataMigrationToSqlDb.md)
-Delete Database Migration resource.
+Remove the specified database migration for a given SQL Db.
 
 ### [Stop-AzDataMigrationToSqlDb](Stop-AzDataMigrationToSqlDb.md)
-Stop on going migration for the database.
+Stop in-progress database migration to SQL Db.
 
 ### [Stop-AzDataMigrationToSqlManagedInstance](Stop-AzDataMigrationToSqlManagedInstance.md)
 Stop in-progress database migration to SQL Managed Instance.

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzDataMigrationToSqlDb
 
 ## SYNOPSIS
-Delete Database Migration resource.
+Remove the specified database migration for a given SQL Db.
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ Remove-AzDataMigrationToSqlDb -InputObject <IDataMigrationIdentity> [-Force] [-D
 ```
 
 ## DESCRIPTION
-Delete Database Migration resource.
+Remove the specified database migration for a given SQL Db.
 
 ## EXAMPLES
 
