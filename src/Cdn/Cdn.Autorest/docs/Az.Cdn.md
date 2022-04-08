@@ -142,6 +142,9 @@ Create an in-memory object for DeliveryRuleHttpVersionCondition.
 ### [New-AzCdnDeliveryRuleIsDeviceConditionObject](New-AzCdnDeliveryRuleIsDeviceConditionObject.md)
 Create an in-memory object for DeliveryRuleIsDeviceCondition.
 
+### [New-AzCdnDeliveryRuleObject](New-AzCdnDeliveryRuleObject.md)
+Create an in-memory object for DeliveryRule.
+
 ### [New-AzCdnDeliveryRulePostArgsConditionObject](New-AzCdnDeliveryRulePostArgsConditionObject.md)
 Create an in-memory object for DeliveryRulePostArgsCondition.
 

@@ -71,6 +71,7 @@ directive:
     - UrlSigningKeyParameters
     - UserManagedHttpsParameters
     - CdnManagedHttpsParameters
+    - DeliveryRule
     - DeliveryRuleRemoteAddressCondition
     - DeliveryRuleRequestMethodCondition
     - DeliveryRuleQueryStringCondition
