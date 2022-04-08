@@ -33,8 +33,8 @@ For information on how to develop for `Az.DataMigration`, see [how-to.md](how-to
 branch: dev-datamigration-2022-03-30-preview
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
-input-file: 
-  - $(repo)/specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-03-30-preview/sqlmigration.json
+input-file:
+  - https://github.com/Azure/azure-rest-api-specs/blob/dev-datamigration-2022-03-30-preview/specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-03-30-preview/sqlmigration.json
 
 title: DataMigration
 module-version: 0.1.0
@@ -61,10 +61,6 @@ directive:
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}"].get
     transform: $["description"] = "Retrieve the specified database migration for a given SQL VM."
-
-  - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{sqlDbInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}"].get
-    transform: $["description"] = "Retrieve the specified database migration for a given SQL Db."
   
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}/cutover"].post
@@ -87,10 +83,6 @@ directive:
     transform: $["description"] = "Create a new database migration to a given SQL VM."
 
   - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{sqlDbInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}"].put
-    transform: $["description"] = "Create a new database migration to a given SQL Db."
-
-  - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}"].delete
     transform: $["description"] = "Delete Database Migration Service."
 
@@ -101,14 +93,6 @@ directive:
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}/cancel"].post
     transform: $["description"] = "Stop in-progress database migration to SQL VM."
-
-  - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{sqlDbInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}/cancel"].post
-    transform: $["description"] = "Stop in-progress database migration to SQL Db."
-
-  - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{sqlDbInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}"].delete
-    transform: $["description"] = "Remove the specified database migration for a given SQL Db."
   
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}"].patch
@@ -194,31 +178,7 @@ directive:
 
   - where:
       verb: New
-      subject: ToSqlManagedInstance
-      parameter-name: MigrationOperationId
-    hide: true
-
-  - where:
-      verb: New
-      subject: ToSqlVM
-      parameter-name: MigrationOperationId
-    hide: true
-
-  - where:
-      verb: New
       subject: ToSqlDb
-      parameter-name: ProvisioningError
-    hide: true
-
-  - where:
-      verb: New
-      subject: ToSqlManagedInstance
-      parameter-name: ProvisioningError
-    hide: true
-
-  - where:
-      verb: New
-      subject: ToSqlVM
       parameter-name: ProvisioningError
     hide: true
 

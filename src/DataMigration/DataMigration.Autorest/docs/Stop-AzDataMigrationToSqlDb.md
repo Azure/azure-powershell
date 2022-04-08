@@ -8,7 +8,7 @@ schema: 2.0.0
 # Stop-AzDataMigrationToSqlDb
 
 ## SYNOPSIS
-Stop in-progress database migration to SQL Db.
+Stop on going migration for the database.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Stop-AzDataMigrationToSqlDb -ResourceGroupName <String> -SqlDbInstanceName <Stri
 ```
 
 ## DESCRIPTION
-Stop in-progress database migration to SQL Db.
+Stop on going migration for the database.
 
 ## EXAMPLES
 

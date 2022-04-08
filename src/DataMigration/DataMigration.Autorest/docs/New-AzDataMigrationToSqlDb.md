@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDataMigrationToSqlDb
 
 ## SYNOPSIS
-Create a new database migration to a given SQL Db.
+Create or Update Database Migration resource.
 
 ## SYNTAX
 
@@ -17,16 +17,16 @@ New-AzDataMigrationToSqlDb -ResourceGroupName <String> -SqlDbInstanceName <Strin
  [-SubscriptionId <String>] [-Kind <ResourceType>] [-MigrationService <String>] [-Scope <String>]
  [-SourceDatabaseName <String>] [-SourceSqlConnectionAuthentication <String>]
  [-SourceSqlConnectionDataSource <String>] [-SourceSqlConnectionEncryptConnection]
- [-SourceSqlConnectionPassword <SecureString>] [-SourceSqlConnectionTrustServerCertificate]
+ [-SourceSqlConnectionPassword <String>] [-SourceSqlConnectionTrustServerCertificate]
  [-SourceSqlConnectionUserName <String>] [-TableList <String[]>] [-TargetDatabaseCollation <String>]
  [-TargetSqlConnectionAuthentication <String>] [-TargetSqlConnectionDataSource <String>]
- [-TargetSqlConnectionEncryptConnection] [-TargetSqlConnectionPassword <SecureString>]
+ [-TargetSqlConnectionEncryptConnection] [-TargetSqlConnectionPassword <String>]
  [-TargetSqlConnectionTrustServerCertificate] [-TargetSqlConnectionUserName <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a new database migration to a given SQL Db.
+Create or Update Database Migration resource.
 
 ## EXAMPLES
 
@@ -36,22 +36,22 @@ New-AzDataMigrationToSqlDb -ResourceGroupName myRG -SqlDbInstanceName "mysqldb" 
 ```
 
 ```output
-Name       Kind  ProvisioningState MigrationStatus
+-Name       Kind  ProvisioningState MigrationStatus
 -----       ----  ----------------- ---------------
-mydb1       SqlDb   Succeeded         InProgress
+-mydb1 SqlDb Succeeded         InProgress
 ```
 
 Start a Database Migration from the on-premise Source Sql Server to target Sql Db
 
 ### Example 2: Start a Database Migration with some selcted tables from the on-premise Source Sql Server to target Sql Db
 ```powershell
-New-AzDataMigrationToSqlDb -ResourceGroupName myRG -SqlDbInstanceName "mysqldb" -MigrationService  "/subscriptions/1111-2222-3333-4444/resourceGroups/myRG/providers/Microsoft.DataMigration/SqlMigrationServices/myDMS" -TargetSqlConnectionAuthentication "SqlAuthentication" -TargetSqlConnectionDataSource "mydb.windows.net" -TargetSqlConnectionPassword "pass" -TargetSqlConnectionUserName "user" -SourceSqlConnectionAuthentication "SqlAuthentication" -SourceSqlConnectionDataSource "xyz.MICROSOFT.COM" -SourceSqlConnectionUserName "user1" -SourceSqlConnectionPassword "password" -SourceDatabaseName "sourcedb" -TargetDbName "mydb1" -Scope  "/subscriptions/1111-2222-3333-4444/resourceGroups/myRG/providers/Microsoft.Sql/servers/mysqldb"  -TableList "table_1"
+-New-AzDataMigrationToSqlDb -ResourceGroupName myRG -SqlDbInstanceName "mysqldb" -MigrationService  "/subscriptions/1111-2222-3333-4444/resourceGroups/myRG/providers/Microsoft.DataMigration/SqlMigrationServices/myDMS" -TargetSqlConnectionAuthentication "SqlAuthentication" -TargetSqlConnectionDataSource "mydb.windows.net" -TargetSqlConnectionPassword "pass" -TargetSqlConnectionUserName "user" -SourceSqlConnectionAuthentication "SqlAuthentication" -SourceSqlConnectionDataSource "xyz.MICROSOFT.COM" -SourceSqlConnectionUserName "user1" -SourceSqlConnectionPassword "password" -SourceDatabaseName "sourcedb" -TargetDbName "mydb1" -Scope  "/subscriptions/1111-2222-3333-4444/resourceGroups/myRG/providers/Microsoft.Sql/servers/mysqldb"  -TableList "table_1"
 ```
 
 ```output
-Name       Kind  ProvisioningState MigrationStatus
+-Name       Kind  ProvisioningState MigrationStatus
 -----       ----  ----------------- ---------------
-mydb1       SqlDb   Succeeded         InProgress
+-mydb1 SqlDb Succeeded         InProgress
 ```
 
 Start a Database Migration with some selcted tables from the on-premise Source Sql Server to target Sql Db
@@ -243,7 +243,7 @@ Accept wildcard characters: False
 Password to connect to source SQL.
 
 ```yaml
-Type: System.Security.SecureString
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -408,7 +408,7 @@ Accept wildcard characters: False
 Password to connect to source SQL.
 
 ```yaml
-Type: System.Security.SecureString
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzDataMigrationToSqlDb
 
 ## SYNOPSIS
-Retrieve the specified database migration for a given SQL Db.
+Retrieve the Database Migration resource.
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ Get-AzDataMigrationToSqlDb -InputObject <IDataMigrationIdentity> [-Expand <Strin
 ```
 
 ## DESCRIPTION
-Retrieve the specified database migration for a given SQL Db.
+Retrieve the Database Migration resource.
 
 ## EXAMPLES
 
