@@ -57,7 +57,7 @@ Checks the quota and actual usage of endpoints under the given Azure Front Door 
 Gets the supported optimization types for the current profile.
 A user can create an endpoint with an optimization type from the listed values.
 
-### [Get-AzCdnResourceUsage](Get-AzCdnResourceUsage.md)
+### [Get-AzCdnSubscriptionResourceUsage](Get-AzCdnSubscriptionResourceUsage.md)
 Check the quota and actual usage of the CDN profiles under the given subscription.
 
 ### [Get-AzFrontDoorCdnCustomDomain](Get-AzFrontDoorCdnCustomDomain.md)
@@ -117,9 +117,6 @@ Create an in-memory object for AzureFirstPartyManagedCertificateParameters.
 
 ### [New-AzCdnCustomDomain](New-AzCdnCustomDomain.md)
 Creates a new custom domain within an endpoint.
-
-### [New-AzCdnCustomDomainHttpsParametersObject](New-AzCdnCustomDomainHttpsParametersObject.md)
-Create an in-memory object for CustomDomainHttpsParameters.
 
 ### [New-AzCdnCustomerCertificateParametersObject](New-AzCdnCustomerCertificateParametersObject.md)
 Create an in-memory object for CustomerCertificateParameters.

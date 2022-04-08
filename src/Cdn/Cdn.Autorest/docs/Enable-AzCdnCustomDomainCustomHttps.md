@@ -12,11 +12,10 @@ Enable https delivery of the custom domain.
 
 ## SYNTAX
 
-### EnableExpanded (Default)
+### EnableViaIdentity (Default)
 ```
-Enable-AzCdnCustomDomainCustomHttps -CustomDomainName <String> -EndpointName <String> -ProfileName <String>
- -ResourceGroupName <String> -CertificateSource <CertificateSource> -ProtocolType <ProtocolType>
- [-SubscriptionId <String>] [-MinimumTlsVersion <MinimumTlsVersion>] [-DefaultProfile <PSObject>] [-PassThru]
+Enable-AzCdnCustomDomainCustomHttps -InputObject <ICdnIdentity>
+ -CustomDomainHttpsParameter <ICustomDomainHttpsParameters> [-DefaultProfile <PSObject>] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -25,20 +24,6 @@ Enable-AzCdnCustomDomainCustomHttps -CustomDomainName <String> -EndpointName <St
 Enable-AzCdnCustomDomainCustomHttps -CustomDomainName <String> -EndpointName <String> -ProfileName <String>
  -ResourceGroupName <String> -CustomDomainHttpsParameter <ICustomDomainHttpsParameters>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### EnableViaIdentity
-```
-Enable-AzCdnCustomDomainCustomHttps -InputObject <ICdnIdentity>
- -CustomDomainHttpsParameter <ICustomDomainHttpsParameters> [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### EnableViaIdentityExpanded
-```
-Enable-AzCdnCustomDomainCustomHttps -InputObject <ICdnIdentity> -CertificateSource <CertificateSource>
- -ProtocolType <ProtocolType> [-MinimumTlsVersion <MinimumTlsVersion>] [-DefaultProfile <PSObject>]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,28 +51,13 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -CertificateSource
-Defines the source of the SSL certificate.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.CertificateSource
-Parameter Sets: EnableExpanded, EnableViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -CustomDomainHttpsParameter
 The JSON object that contains the properties to secure a custom domain.
 To construct, see NOTES section for CUSTOMDOMAINHTTPSPARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ICustomDomainHttpsParameters
-Parameter Sets: Enable, EnableViaIdentity
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -102,7 +72,7 @@ Name of the custom domain within an endpoint.
 
 ```yaml
 Type: System.String
-Parameter Sets: Enable, EnableExpanded
+Parameter Sets: Enable
 Aliases:
 
 Required: True
@@ -132,7 +102,7 @@ Name of the endpoint under the profile which is unique globally.
 
 ```yaml
 Type: System.String
-Parameter Sets: Enable, EnableExpanded
+Parameter Sets: Enable
 Aliases:
 
 Required: True
@@ -148,28 +118,13 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-Parameter Sets: EnableViaIdentity, EnableViaIdentityExpanded
+Parameter Sets: EnableViaIdentity
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -MinimumTlsVersion
-TLS protocol version that will be used for Https
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.MinimumTlsVersion
-Parameter Sets: EnableExpanded, EnableViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -193,22 +148,7 @@ Name of the CDN profile which is unique within the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Enable, EnableExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProtocolType
-Defines the TLS extension protocol that is used for secure delivery.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProtocolType
-Parameter Sets: EnableExpanded, EnableViaIdentityExpanded
+Parameter Sets: Enable
 Aliases:
 
 Required: True
@@ -223,7 +163,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Enable, EnableExpanded
+Parameter Sets: Enable
 Aliases:
 
 Required: True
@@ -238,7 +178,7 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Enable, EnableExpanded
+Parameter Sets: Enable
 Aliases:
 
 Required: False
