@@ -26,15 +26,15 @@ To update a deployment of an API Management, pass the modified **PsApiManagement
 ## EXAMPLES
 
 ### Example 1: Remove a region from a PsApiManagement instance
-```
-PS C:\>Remove-AzApiManagementRegion -ApiManagement $ApiManagement -Location "East US"
+```powershell
+Remove-AzApiManagementRegion -ApiManagement $ApiManagement -Location "East US"
 ```
 
 This command removes the region named East US from the **PsApiManagement** instance.
 
 ### Example 2: Remove a region from a PsApiManagement instance using a series of commands
-```
-PS C:\>Get-AzApiManagement -ResourceGroupName "Contoso" -Name ContosoApi | Remove-AzApiManagementRegion -Location "East US" | Set-AzApiManagement
+```powershell
+Get-AzApiManagement -ResourceGroupName "Contoso" -Name ContosoApi | Remove-AzApiManagementRegion -Location "East US" | Set-AzApiManagement
 ```
 
 This first command gets an instance of **PsApiManagement** from the resource group named Contoso named ContosoApi.

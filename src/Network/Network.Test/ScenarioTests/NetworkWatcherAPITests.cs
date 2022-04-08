@@ -125,9 +125,33 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
-        public void TestCRUDFlowLog()
+        public void TestCRUDNsgFlowLog()
         {
-            TestRunner.RunTestScript("Test-CRUDFlowLog");
+            TestRunner.RunTestScript("Test-CRUDNsgFlowLog");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
+        public void TestCRUDVnetFlowLog()
+        {
+            TestRunner.RunTestScript("Test-CRUDVnetFlowLog");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
+        public void TestCRUDSubnetFlowLog()
+        {
+            TestRunner.RunTestScript("Test-CRUDSubnetFlowLog");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
+        public void TestCRUDNicFlowLog()
+        {
+            TestRunner.RunTestScript("Test-CRUDNicFlowLog");
         }
     }
 }

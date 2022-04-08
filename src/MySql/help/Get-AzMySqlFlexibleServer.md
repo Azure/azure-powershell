@@ -41,8 +41,10 @@ Gets information about a server.
 
 ### Example 1: Get MySql server with default context
 ```powershell
-PS C:\> Get-AzMySqlFlexibleServer
+Get-AzMySqlFlexibleServer
+```
 
+```output
 Name         Location  SkuName          SkuTier        AdministratorLogin Version StorageSizeGb
 ----         --------  -------          -------        ------------------ ------- -------------
 mysql-test   West US 2 Standard_D2ds_v4 GeneralPurpose admin              5.7     32
@@ -53,8 +55,10 @@ This cmdlet gets MySql servers with default context.
 
 ### Example 2: Get MySql server by resource group and server name
 ```powershell
-PS C:\> Get-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -Name mysql-test
+Get-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -Name mysql-test
+```
 
+```output
 Name         Location  SkuName          SkuTier        AdministratorLogin Version StorageSizeGb
 ----         --------  -------          -------        ------------------ ------- -------------
 mysql-test   West US 2 Standard_D2ds_v4 GeneralPurpose admin              5.7     32
@@ -64,8 +68,10 @@ This cmdlet gets MySql servers by resource group and server name.
 
 ### Example 3: Lists all the MySql servers in specified resource group
 ```powershell
-PS C:\> Get-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest
+Get-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest
+```
 
+```output
 Name         Location  SkuName          SkuTier        AdministratorLogin Version StorageSizeGb
 ----         --------  -------          -------        ------------------ ------- -------------
 mysql-test   West US 2 Standard_D2ds_v4 GeneralPurpose admin              5.7     32
@@ -76,9 +82,11 @@ This cmdlet lists all the MySql servers in the specified resource group.
 
 ### Example 4: Get MySql server by identity
 ```powershell
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/flexibleServers/mysql-test"
-PS C:\> Get-AzMySqlFlexibleServer -InputObject $ID
+$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/flexibleServers/mysql-test"
+Get-AzMySqlFlexibleServer -InputObject $ID
+```
 
+```output
 Name         Location  SkuName          SkuTier        AdministratorLogin Version StorageSizeGb
 ----         --------  -------          -------        ------------------ ------- -------------
 mysql-test   West US 2 Standard_D2ds_v4 GeneralPurpose admin              5.7     32

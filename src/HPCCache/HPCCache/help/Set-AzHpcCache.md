@@ -31,7 +31,7 @@ The **Set-AzHpcCache** cmdlet updates an Azure HPC Cache tags.
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzHpcCache -ResourceGroupName testRG -CacheName testCache -Tag @{"tag3" = "value1"; "tag4" = "value2"}
+Set-AzHpcCache -ResourceGroupName testRG -CacheName testCache -Tag @{"tag3" = "value1"; "tag4" = "value2"}
 ```
 
 ## PARAMETERS

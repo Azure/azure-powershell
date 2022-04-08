@@ -28,8 +28,10 @@ Use New-AzCognitiveServicesAccountKey to regenerate a key.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCognitiveServicesAccountKey -ResourceGroupName cognitive-services-resource-group -name myluis
+Get-AzCognitiveServicesAccountKey -ResourceGroupName cognitive-services-resource-group -name myluis
+```
 
+```output
 Key1                             Key2
 ----                             ----
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx

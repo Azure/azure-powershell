@@ -5,7 +5,7 @@ variables:
   LinuxImage: ubuntu-20.04
   MacOSName: macOS
   MacOSImage: macOS-11
-  TestFramework: netcoreapp2.1
+  TestFramework: netcoreapp3.1
   TestTarget: Test
   Configuration: Debug
   DebugLocalBuildTasks: true

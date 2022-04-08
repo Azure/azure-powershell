@@ -32,24 +32,21 @@ The **New-AzAppServiceEnvironmentInboundServices** cmdlet create inbound service
 
 ### Example 1: Create Private DNS Zone and records for ASEv2
 ```powershell
-PS C:\> New-AzAppServiceEnvironmentInboundServices -ResourceGroupName AseResourceGroup -Name AseV2Name
--VirtualNetworkName MyVirtualNetwork -SubnetName InboundSubnet
+New-AzAppServiceEnvironmentInboundServices -ResourceGroupName AseResourceGroup -Name AseV2Name -VirtualNetworkName MyVirtualNetwork -SubnetName InboundSubnet
 ```
 
 Create Private DNS Zone and records for ASEv2
 
 ### Example 2: Create private endpoint, Private DNS Zone and records for ASEv3
 ```powershell
-PS C:\> New-AzAppServiceEnvironmentInboundServices -ResourceGroupName AseResourceGroup -Name AseV2Name
--VirtualNetworkName MyVirtualNetwork -SubnetName InboundSubnet
+New-AzAppServiceEnvironmentInboundServices -ResourceGroupName AseResourceGroup -Name AseV2Name -VirtualNetworkName MyVirtualNetwork -SubnetName InboundSubnet
 ```
 
 Create private endpoint, Private DNS Zone and records for ASEv3
 
 ### Example 3: Create private endpoint for ASEv3
 ```powershell
-PS C:\> New-AzAppServiceEnvironmentInboundServices -ResourceGroupName AseResourceGroup -Name AseV2Name
--VirtualNetworkName MyVirtualNetwork -SubnetName InboundSubnet -SkipDns
+New-AzAppServiceEnvironmentInboundServices -ResourceGroupName AseResourceGroup -Name AseV2Name -VirtualNetworkName MyVirtualNetwork -SubnetName InboundSubnet -SkipDns
 ```
 
 Create private endpoint for ASEv3

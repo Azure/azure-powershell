@@ -37,7 +37,10 @@ The New-AzConsumptionBudget cmdlet creates a budget in either a subscription or 
 
 ### Example 1: Create a cost budget with a budget name at subscription level
 ```powershell
-PS C:\> New-AzConsumptionBudget -Amount 60 -Name PSBudget -Category Cost -StartDate 2018-06-01 -EndDate 2018-11-01 -TimeGrain Monthly
+New-AzConsumptionBudget -Amount 60 -Name PSBudget -Category Cost -StartDate 2018-06-01 -EndDate 2018-11-01 -TimeGrain Monthly
+```
+
+```output
 Amount:  60		
 Category:  Cost
 CurrentSpend:  null
@@ -51,7 +54,10 @@ Type:  Microsoft.Consumption/budgets
 
 ### Example 2: Create a cost budget with a budget name at resource group level
 ```powershell
-PS C:\> New-AzConsumptionBudget -ResourceGroupName RGBudgets -Amount 60 -Name PSBudgetRG -Category Cost -StartDate 2018-06-01 -EndDate 2018-11-01 -TimeGrain Monthly
+New-AzConsumptionBudget -ResourceGroupName RGBudgets -Amount 60 -Name PSBudgetRG -Category Cost -StartDate 2018-06-01 -EndDate 2018-11-01 -TimeGrain Monthly
+```
+
+```output
 Amount:  60		
 Category:  Cost
 CurrentSpend:  null

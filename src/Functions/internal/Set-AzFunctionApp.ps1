@@ -20,13 +20,9 @@ Description for Creates a new web, mobile, or API app in an existing resource gr
 .Description
 Description for Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite

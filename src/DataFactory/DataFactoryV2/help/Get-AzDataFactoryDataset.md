@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactories.dll-Help.xml
 Module Name: Az.DataFactory
 ms.assetid: BB18EEF3-570A-4667-AF0E-FCEEE17B4905
@@ -33,8 +33,11 @@ If you do not specify a name, this cmdlet gets information about all the dataset
 ## EXAMPLES
 
 ### Example 1: Get information about all datasets
+```powershell
+Get-AzDataFactoryDataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF"
 ```
-PS C:\>Get-AzDataFactoryDataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF" 
+
+```output 
 DatasetName       : DACuratedWikiData
 ResourceGroupName : ADF
 DataFactoryName   : WikiADF
@@ -63,8 +66,11 @@ Structure         : {}
 This command gets information about all datasets in the data factory named WikiADF.
 
 ### Example 2: Get information about a specific dataset
+```powershell
+Get-AzDataFactoryDataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents" 
 ```
-PS C:\>Get-AzDataFactoryDataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents" 
+
+```output
 DatasetName       : DAWikipediaClickEvents
 ResourceGroupName : ADF
 DataFactoryName   : WikiADF
@@ -77,8 +83,11 @@ Structure         : {}
 This command gets information about the dataset named DAWikipediaClickEvents in the data factory named WikiADF.
 
 ### Example 3: Get the location for a specific dataset
+```powershell
+(Get-AzDataFactoryDataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents").Location
 ```
-PS C:\>(Get-AzDataFactoryDataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents").Location
+
+```output
 BlobPath          : wikidatagateway/wikisampledatain/
 FilenamePrefix    : 
 Format            : 

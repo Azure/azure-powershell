@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll-Help.xml
 Module Name: Az.DataLakeStore
 online version: https://docs.microsoft.com/powershell/module/az.datalakestore/enable-azdatalakestorekeyvault
@@ -23,8 +23,8 @@ The **Enable-AzDataLakeStoreKeyVault** cmdlet attempts to enable a user managed 
 ## EXAMPLES
 
 ### Example 1: Enable the Key Vault for the ContosoADLS account
-```
-PS C:\>Enable-AzDataLakeStoreKeyVault -Name "ContosoADLS"
+```powershell
+Enable-AzDataLakeStoreKeyVault -Name "ContosoADLS"
 ```
 
 This command attempts to enable the user managed Key Vault for the Data Lake Store account named ContosoADLS.

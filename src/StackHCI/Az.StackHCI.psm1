@@ -3458,7 +3458,7 @@ param(
             }
             else 
             {
-                Write-Warning "Found additional IMDS configuration on guest $($VM.Name) adapter count=$($adapterCount)"
+                Write-Information ("Found additional IMDS configuration on guest $($VM.Name) adapter count=$($adapterCount)")
                 $vmAdapter = $foundAdapter[0]    
             }
 
@@ -3509,6 +3509,25 @@ param(
         }
         try
         {
+            $ignoreAdaptersParams = @{
+                Path = "HKLM:\system\currentcontrolset\services\clussvc\parameters"
+                Name = "ExcludeAdaptersByFriendlyName"
+            }
+            $propVal    = $VmSwitchParams.Name
+            $propExists = Get-ItemProperty @ignoreAdaptersParams -ErrorAction SilentlyContinue
+
+            if ($propExists)
+            {
+                $existingEntries = $propExists.ExcludeAdaptersByFriendlyName -Split ","
+                if ($existingEntries -notcontains $propVal)
+                {
+                    $existingEntries += $propVal
+                }
+                $propVal = $existingEntries -Join ","
+            }
+
+            New-ItemProperty @ignoreAdaptersParams -Value $propVal -Force -ErrorAction SilentlyContinue | Out-Null
+            
             Write-Information "Searching for previous IMDS switch"
             if ($VmSwitchParams.SwitchId)
             {
@@ -3545,6 +3564,32 @@ param(
 
             $hostNetAdapter     = $hostNetAdapter | Rename-NetAdapter -NewName $hostSwitch.Name -PassThru -ErrorAction SilentlyContinue
 
+            $hostBindings       = $hostNetAdapter | Get-NetAdapterBinding | Where-Object { $_.ComponentID -ne "ms_tcpip" }
+
+            $hostBindings | Disable-NetAdapterBinding
+
+            $retry = 2
+            while ($retry -ne 0)
+            {
+                $clusInterface = Get-ClusterNetworkInterface | Where-Object {$_.AdapterId -eq ($hostNetAdapter.DeviceId -replace "[{}]","")}
+
+                if (($clusInterface | Measure-Object).Count -eq 0)
+                {
+                    Write-Verbose "Retrying..."
+                    $retry--
+                    Start-Sleep 2
+                    continue
+                }
+
+                $notAttestationNet  = ($clusInterface.Network | Get-ClusterNetworkInterface | Where-Object {$_.Name -notlike "*$($hostNetAdapter.Name)*"})
+
+                if (($notAttestationNet | Measure-Object).Count -eq 0)
+                {
+                    ($clusInterface.Network).Role = 0
+                    break
+                }
+            }
+
             $HostAdapterVlanCommonParams = @{
                 VMNetworkAdapter    = $hostVMNetAdapter
             }
@@ -3574,6 +3619,99 @@ param(
     }
 
     return $ret.Return
+}
+
+function Set-AttestationFirewallRules{
+param(
+    [bool] $Enabled,
+    [hashtable] $SessionParams
+)
+    $sc = {
+        param([bool]$Enabled)
+
+        $TemplateFirewallRuleBlockCommon = @{
+            Group                = "Azure Stack HCI"
+            Enabled              = "True"
+            Profile              = "Any"
+            Action               = "Block"
+            EdgeTraversalPolicy  = "Block"
+            LooseSourceMapping   = $False
+            LocalOnlyMapping     = $False
+            LocalAddress         = "169.254.169.253"
+            RemoteAddress        = "Any"
+            RemotePort           = "Any"
+            IcmpType             = "Any"
+            Program              = "Any"
+            Service              = "Any"
+            InterfaceAlias       = "Any"
+            InterfaceType        = "Any"
+            LocalUser            = "Any"
+            RemoteUser           = "Any"
+            RemoteMachine        = "Any"
+            Authentication       = "NotRequired"
+            Encryption           = "NotRequired"
+        }
+        
+        $TemplateFirewallRuleBlockTcpOutgoing = @{
+            Name                 = "AzsHci-ImdsAttestation-Block-TCP-Out"
+            DisplayName          = "Azure Stack HCI IMDS Attestation (TCP-Out)"
+            Description          = "Outbound rule to block all traffic for Attestation interface [TCP]"
+            Direction            = "Outbound"
+            Protocol             = "TCP"
+            LocalPort            = "Any"
+        } + $TemplateFirewallRuleBlockCommon
+        
+        $TemplateFirewallRuleBlockTcpIncoming = @{
+            Name                 = "AzsHci-ImdsAttestation-Block-TCP-In"
+            DisplayName          = "Azure Stack HCI IMDS Attestation (TCP-In)"
+            Description          = "Inbound rule to block all traffic for Attestation interface [TCP]"
+            Direction            = "Inbound"
+            Protocol             = "TCP"
+            LocalPort            = @("1-79","81-65535")
+        } + $TemplateFirewallRuleBlockCommon
+        
+        $TemplateFirewallRuleBlockUdpOutgoing = @{
+            Name                 = "AzsHci-ImdsAttestation-Block-UDP-Out"
+            DisplayName          = "Azure Stack HCI IMDS Attestation (UDP-Out)"
+            Description          = "Outbound rule to block all traffic for Attestation interface [UDP]"
+            Direction            = "Outbound"
+            Protocol             = "UDP"
+            LocalPort            = "Any"
+        } + $TemplateFirewallRuleBlockCommon
+        
+        $TemplateFirewallRuleBlockUdpIncoming = @{
+            Name                 = "AzsHci-ImdsAttestation-Block-UDP-In"
+            DisplayName          = "Azure Stack HCI IMDS Attestation (UDP-In)"
+            Description          = "Inbound rule to block all traffic for Attestation interface [UDP]"
+            Direction            = "Inbound"
+            Protocol             = "UDP"
+            LocalPort            = "Any"
+        } + $TemplateFirewallRuleBlockCommon
+
+        $DisplayGroup = "@FirewallAPI.dll,-55001"
+
+        $firewallRules = @($TemplateFirewallRuleBlockTcpOutgoing, $TemplateFirewallRuleBlockTcpIncoming, $TemplateFirewallRuleBlockUdpOutgoing, $TemplateFirewallRuleBlockUdpIncoming)
+
+        foreach ($rule in $firewallRules)
+        {
+            $foundRule = Get-NetFirewallRule -Name ($rule.Name) -ErrorAction SilentlyContinue
+
+            if (!$foundRule)
+            {
+                New-NetFirewallRule @rule
+                $tmpRule = Get-NetFirewallRule -Name ($rule.Name)
+                $tmpRule.Group = $DisplayGroup
+                $tmpRule | Set-NetFirewallRule
+            }
+
+            Set-NetFirewallRule -Name ($rule.Name) -Enabled $($Enabled.ToString())
+        }
+
+        # Also set the embedded rule with OS
+        Set-NetFirewallRule -Name "AzsHci-ImdsAttestation-Allow-In" -Enabled $($Enabled.ToString())
+    }
+
+    $ret = Invoke-Command @SessionParams -ScriptBlock $sc -ArgumentList $Enabled
 }
 
 
@@ -3805,7 +3943,7 @@ param(
                             Invoke-Command @SessionParams -ScriptBlock { param($switchId); Set-AzureStackHCIAttestation -SwitchId $switchId } -ArgumentList $attestationSwitchId | Out-Null
                         }
 
-                        $firewallRule = Invoke-Command @SessionParams -ScriptBlock { param($ruleName) Enable-NetFirewallRule -Name $ruleName } -ArgumentList $TemplateHostImdsParams["NetFirewallRuleName"] 
+                        Set-AttestationFirewallRules -SessionParams $SessionParams -Enabled $True
 
                         $nodeAttestation = (Invoke-Command @SessionParams -ScriptBlock { Get-AzureStackHCIAttestation })
 
@@ -4043,6 +4181,7 @@ param(
                     
                     Invoke-Command @SessionParams -ScriptBlock { param($switchId); Set-AzureStackHCIAttestation -SwitchId $switchId } -ArgumentList ([Guid]::Empty) | Out-Null
     
+                    Set-AttestationFirewallRules -SessionParams $SessionParams -Enabled $False
                     $nodeAttestation = (Invoke-Command @SessionParams -ScriptBlock { Get-AzureStackHCIAttestation })
                     $disableImdsOutput = New-Object -TypeName PSObject
                     $disableImdsOutput | Add-Member -MemberType NoteProperty -Name ComputerName -Value ($nodeAttestation.ComputerName)
@@ -4496,6 +4635,300 @@ param(
     }
 }
 
+<#
+.DESCRIPTION
+    New-Directory creates new directory if doesn't exist already.
+
+.PARAMETER Path
+    Mandatory. Directory path.
+
+.EXAMPLE
+    Get all guests on cluster.
+    C:\PS>New-Directory -Path "C:\tool"
+
+.NOTES
+#>
+function New-Directory{
+    param(
+    [Parameter(Mandatory=$true)][ValidateNotNull()][string]$Path
+    )
+
+    if (!(Test-Path -Path $Path -PathType Container))
+    {
+        Write-Progress("Creating directory at $Path")
+        New-Item -ItemType Directory -Path $Path | Out-Null
+    }
+    else
+    {
+        Write-Progress("Directory already exists at $Path")
+    }
+}
+
+<#
+.SYNOPSIS
+    Invokes deployment module download
+
+.Description
+    Invoke-DeploymentModuleDownload downloads Remote Support Deployment module from storage account.
+
+.EXAMPLE
+    Get all guests on cluster.
+    C:\PS>Invoke-DeploymentModuleDownload
+
+.NOTES
+#>
+function Invoke-DeploymentModuleDownload{
+    # Remote Support
+    New-Variable -Name RemoteSupportPackageUri -Value "https://remotesupportpackages.blob.core.windows.net/packages" -Option Constant -Scope Script
+    $DownloadCacheDirectory = Join-Path $env:Temp "RemoteSupportPkgCache"
+
+    $BlobLocation = "$script:RemoteSupportPackageUri/Microsoft.AzureStack.Deployment.RemoteSupport.psm1"
+    $OutFile = (Join-Path $DownloadCacheDirectory "Microsoft.AzureStack.Deployment.RemoteSupport.psm1")
+    New-Directory -Path $DownloadCacheDirectory
+    Write-Progress("Downloading Remote Support Deployment module from the BLOB $BlobLocation")
+    $retryCount = 3
+    Setup-Logging -LogFilePrefix "AzStackHCIRemoteSupport"
+    Retry-Command -Attempts $retryCount -RetryIfNullOutput $false -ScriptBlock { Invoke-WebRequest -Uri $BlobLocation -outfile $OutFile }
+}
+
+<#
+.SYNOPSIS
+    Installs deploy module.
+
+.DESCRIPTION 
+    Install-DeployModule checks if given module is loaded and if not, it downloads, imports and installs remote support deployment module.
+
+.EXAMPLE
+    C:\PS>Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
+
+.NOTES
+#>
+function Install-DeployModule {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory=$true)]
+        [string]
+        $ModuleName
+    )
+
+    if(Get-Module | Where-Object { $_.Name -eq $ModuleName }){
+        Write-Host "$ModuleName is loaded already ..."
+    }
+    else{
+        Write-Host "$ModuleName is not loaded, downloading ..."
+
+        # Download Remote Support Deployment module from storage
+        Invoke-DeploymentModuleDownload
+    }
+
+    # Import Remote Support Deployment module
+    $DownloadCacheDirectory = Join-Path $env:Temp "RemoteSupportPkgCache"
+    Import-Module (Join-Path $DownloadCacheDirectory "Microsoft.AzureStack.Deployment.RemoteSupport.psm1") -Force
+}
+
+<#
+.SYNOPSIS
+    Installs Remote Support.
+
+.DESCRIPTION
+    Install-AzStackHCIRemoteSupport installs Remote Support Deployment module.
+
+.EXAMPLE
+    C:\PS>Install-AzStackHCIRemoteSupport
+
+.NOTES
+#>
+function Install-AzStackHCIRemoteSupport{
+    [CmdletBinding(SupportsShouldProcess)]
+    [OutputType([Boolean])]
+    param()
+
+    Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
+    Microsoft.AzureStack.Deployment.RemoteSupport\Install-RemoteSupport
+}
+
+<#
+.SYNOPSIS
+    Removes Remote Support.
+
+.DESCRIPTION
+    Remove-AzStackHCIRemoteSupport uninstalls Remote Support Deployment module.
+
+.EXAMPLE
+    C:\PS>Remove-AzStackHCIRemoteSupport
+
+.NOTES
+#>
+function Remove-AzStackHCIRemoteSupport{
+    [CmdletBinding(SupportsShouldProcess)]
+    [OutputType([Boolean])]
+    param()
+
+    Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
+    Microsoft.AzureStack.Deployment.RemoteSupport\Remove-RemoteSupport
+}
+
+<#
+.SYNOPSIS
+    Enables Remote Support.
+
+.DESCRIPTION
+    Enables Remote Support allows authorized Microsoft Support users to remotely access the device for diagnostics or repair depending on the access level granted.
+
+.PARAMETER AccessLevel
+    Controls the remote operations that can be performed. This can be either Diagnostics or DiagnosticsAndRepair.
+
+.PARAMETER ExpireInDays
+    Optional. Defaults to 8 hours.
+
+.PARAMETER SasCredential
+    Hybrid Connection SAS Credential.
+
+.PARAMETER AgreeToRemoteSupportConsent
+    Optional. If set to true then records user consent as provided and proceeds without prompt.
+
+.EXAMPLE
+    The example below enables remote support for diagnostics only for 1 day. After expiration no more remote access is allowed.
+    PS C:\> Enable-AzStackHCIRemoteSupport -AccessLevel Diagnostics -ExpireInMinutes 1440 -SasCredential "Sample SAS"
+
+.NOTES
+    Requires Support VM to have stable internet connectivity.
+#>
+function Enable-AzStackHCIRemoteSupport{
+    [CmdletBinding(SupportsShouldProcess)]
+    [OutputType([Boolean])]
+    param (
+        [Parameter(Mandatory=$true)]
+        [ValidateSet("Diagnostics","DiagnosticsRepair")]
+        [string]
+        $AccessLevel,
+
+        [Parameter(Mandatory=$false)]
+        [int]
+        $ExpireInMinutes = 480,
+
+        [Parameter(Mandatory=$false)]
+        [string]
+        $SasCredential,
+
+        [Parameter(Mandatory=$false)]
+        [switch]
+        $AgreeToRemoteSupportConsent
+    )
+
+    Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
+
+    Microsoft.AzureStack.Deployment.RemoteSupport\Enable-RemoteSupport -AccessLevel $AccessLevel -ExpireInMinutes $ExpireInMinutes -SasCredential $SasCredential -AgreeToRemoteSupportConsent:$AgreeToRemoteSupportConsent
+}
+
+<#
+.SYNOPSIS
+    Disables Remote Support.
+
+.DESCRIPTION
+    Disable Remote Support revokes all access levels previously granted. Any existing support sessions will be terminated, and new sessions can no longer be established.
+
+.EXAMPLE
+    The example below disables remote support.
+    PS C:\> Disable-AzStackHCIRemoteSupport
+
+.NOTES
+
+#>
+function Disable-AzStackHCIRemoteSupport{
+    [CmdletBinding(SupportsShouldProcess)]
+    [OutputType([Boolean])]
+    param()
+    Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
+
+    Microsoft.AzureStack.Deployment.RemoteSupport\Disable-RemoteSupport
+}
+
+<#
+.SYNOPSIS
+    Gets Remote Support Access.
+
+.DESCRIPTION
+    Gets remote support access.
+
+.PARAMETER IncludeExpired
+    Optional. Defaults to false. Indicates whether to include past expired entries.
+
+.PARAMETER Cluster
+    Optional. Defaults to false. Indicates whether to show remote support sessions across cluster.
+
+.EXAMPLE
+    The example below retrieves access level granted for remote support. The result will also include expired consents in the last 30 days.
+    PS C:\> Get-AzStackHCIRemoteSupportAccess -IncludeExpired -Cluster
+
+.NOTES
+
+#>
+function Get-AzStackHCIRemoteSupportAccess{
+    [OutputType([Boolean])]
+    Param(
+        [Parameter(Mandatory=$false)]
+        [switch]
+        $Cluster,
+
+        [Parameter(Mandatory=$false)]
+        [switch]
+        $IncludeExpired
+    )
+
+    Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
+
+    Microsoft.AzureStack.Deployment.RemoteSupport\Get-RemoteSupportAccess -Cluster:$Cluster -IncludeExpired:$IncludeExpired
+}
+
+<#
+.SYNOPSIS
+    Gets Remote Support Session History Details.
+
+.DESCRIPTION
+    Session history represents all remote accesses made by Microsoft Support for either Diagnostics or DiagnosticsRepair based on the Access Level granted.
+
+.PARAMETER SessionId
+    Optional. Session Id to get details for a specific session. If omitted then lists all sessions starting from date 'FromDate'.
+
+.PARAMETER IncludeSessionTranscript
+    Optional. Defaults to false. Indicates whether to include complete session transcript. Transcript provides details on all operations performed during the session.
+
+.PARAMETER FromDate
+    Optional. Defaults to last 7 days. Indicates date from where to start listing sessions from until now.
+
+.EXAMPLE
+    The example below retrieves session history with transcript details for the specified session.
+    PS C:\> Get-AzStackHCIRemoteSupportSessionHistory -SessionId 467e3234-13f4-42f2-9422-81db248930fa -IncludeSessionTranscript $true
+
+.EXAMPLE
+    The example below lists session history starting from last 7 days (default) to now.
+    PS C:\> Get-AzStackHCIRemoteSupportSessionHistory
+
+.NOTES
+
+#>
+function Get-AzStackHCIRemoteSupportSessionHistory{
+    [OutputType([Boolean])]
+    Param(
+        [Parameter(Mandatory=$false)]
+        [string]
+        $SessionId,
+
+        [Parameter(Mandatory=$false)]
+        [switch]
+        $IncludeSessionTranscript,
+
+        [Parameter(Mandatory=$false)]
+        [DateTime]
+        $FromDate = (Get-Date).AddDays(-7)
+    )
+
+    Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
+
+    Microsoft.AzureStack.Deployment.RemoteSupport\Get-RemoteSupportSessionHistory -SessionId $SessionId -FromDate $FromDate -IncludeSessionTranscript:$IncludeSessionTranscript
+}
+
 Export-ModuleMember -Function Register-AzStackHCI
 Export-ModuleMember -Function Unregister-AzStackHCI
 Export-ModuleMember -Function Test-AzStackHCIConnection
@@ -4505,3 +4938,9 @@ Export-ModuleMember -Function Disable-AzStackHCIAttestation
 Export-ModuleMember -Function Add-AzStackHCIVMAttestation
 Export-ModuleMember -Function Remove-AzStackHCIVMAttestation
 Export-ModuleMember -Function Get-AzStackHCIVMAttestation
+Export-ModuleMember -Function Install-AzStackHCIRemoteSupport
+Export-ModuleMember -Function Remove-AzStackHCIRemoteSupport
+Export-ModuleMember -Function Enable-AzStackHCIRemoteSupport
+Export-ModuleMember -Function Disable-AzStackHCIRemoteSupport
+Export-ModuleMember -Function Get-AzStackHCIRemoteSupportAccess
+Export-ModuleMember -Function Get-AzStackHCIRemoteSupportSessionHistory

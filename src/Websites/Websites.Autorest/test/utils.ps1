@@ -29,7 +29,7 @@ function setupEnv() {
     $env.staticweb01 = "staticweb-" + (RandomString -allChars $false -len 6)
     $env.staticweb02 = "staticweb-" + (RandomString -allChars $false -len 6)
     $env.staticweb03 = "staticweb-" + (RandomString -allChars $false -len 6)
-    # Create the test group
+    Create the test group
     Write-Host -ForegroundColor Green "start to create test group"
     $env.resourceGroup = 'staticweb-rg-' + (RandomString -allChars $false -len 6)
     New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
@@ -82,11 +82,30 @@ function setupEnv() {
     # Register funtion app for static web.
     Write-Host "Register funtion app for static web."
     Register-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 -FunctionAppName $env.functionAppName01 -FunctionAppResourceId $env.functionAppId01 -FunctionAppRegion $env.location
+
+    # Test for web jobs of the app service.
+    # Cannot deploy use resource template json. We have to create resource for use in test via the azure portal.
+    # 1. create resource group.
+    # 2. create  App Service plan. ref:https://docs.microsoft.com/en-us/azure/app-service/overview-hosting-plans
+    # 3. create  App Service. ref:https://docs.microsoft.com/en-us/azure/app-service/
+    # 4. deployment slot. ref: https://docs.microsoft.com/en-us/azure/app-service/deploy-staging-slots
+    # 5. Create webjob for app and slot.
     
-    # # Create custom domian for static web.
-    # Write-Host "Create custom domian for static web."
-    # New-AzStaticWebAppCustomDomain -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 -DomainName $env.domain01
-    
+    Write-Host -ForegroundColor Green "start to create test group"
+    $env.webJobResourceGroup = "webjob-rg-test"
+    New-AzResourceGroup -Name $env.webJobResourceGroup -Location $env.location
+    # Create follow resources via the azure portal.
+    $env.servicePlan = "servicePlan-test01"
+    $env.webApp = "appService-test01"
+    $env.slot = "slot01"
+    $env.continuousJob01 = "continuousjob-01"
+    $env.continuousJob02 = "continuousjob-02"
+    $env.slotcontinuousJob03 = "slotcontinuousjob-03"
+    $env.slotcontinuousJob04 = "slotcontinuousjob-04"
+    $env.triggeredJob01 = "triggeredjob-01"
+    $env.triggeredJob02 = "triggeredjob-02"
+    $env.slottriggeredJob03 = "slottriggeredjob-03"
+    $env.slottriggeredJob04 = "slottriggeredjob-04"
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
@@ -96,5 +115,6 @@ function setupEnv() {
 function cleanupEnv() {
     # Clean resources you create for testing
     Remove-AzResourceGroup -Name $env.resourceGroup
+    Remove-AzResourceGroup -Name $env.webJobResourceGroup
 }
 

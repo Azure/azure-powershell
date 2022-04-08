@@ -32,7 +32,7 @@ Remove a single IP rule to the NetworkRuleSet of the given Namespace
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzEventHubIPRule -ResourceGroupName v-ajnavtest -Namespace Eventhub-Namespace1-2389 -IpMask "11.22.33.44"
+Remove-AzEventHubIPRule -ResourceGroupName v-ajnavtest -Namespace Eventhub-Namespace1-2389 -IpMask "11.22.33.44"
 ```
 
 Removes IpMask of the NetworkRuleSet of the given namespace

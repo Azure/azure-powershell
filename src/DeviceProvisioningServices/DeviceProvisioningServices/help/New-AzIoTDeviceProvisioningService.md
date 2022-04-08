@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices.dll-Help.xml
 Module Name: Az.DeviceProvisioningServices
 online version: https://docs.microsoft.com/powershell/module/az.deviceprovisioningservices/new-aziotdeviceprovisioningservice
@@ -24,11 +24,13 @@ For an introduction to Azure IoT Hub Device Provisioning Service, see https://do
 ## EXAMPLES
 
 ### Example 1
+```powershell
+$tags = @{}
+$tags.Add('key1','value1')
+New-AzIoTDeviceProvisioningService -ResourceGroupName "myresourcegroup" -Name "myiotdps" -Tag $tags
 ```
-PS C:\> $tags = @{}
-PS C:\> $tags.Add('key1','value1')
-PS C:\> New-AzIoTDeviceProvisioningService -ResourceGroupName "myresourcegroup" -Name "myiotdps" -Tag $tags
 
+```output
 ResourceGroupName			: myresourcegroup
 Name						: myiotdps
 Location					: westus
@@ -46,9 +48,11 @@ Etag						: AAAAAAAT52k=
 Create an Azure IoT Hub device provisioning service with the standard pricing tier S1 and tags, in the region of the resource group.
 
 ### Example 2
+```powershell
+New-AzIoTDeviceProvisioningService -ResourceGroupName "myresourcegroup" -Name "myiotdps" -Location "eastus"
 ```
-PS C:\> New-AzIoTDeviceProvisioningService -ResourceGroupName "myresourcegroup" -Name "myiotdps" -Location "eastus"
 
+```output
 ResourceGroupName			: myresourcegroup
 Name						: myiotdps
 Location					: eastus

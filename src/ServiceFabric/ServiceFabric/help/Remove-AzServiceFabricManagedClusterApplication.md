@@ -38,29 +38,29 @@ This cmdlet removes an managed application form the cluster. This will remove al
 
 ### Example 1
 ```powershell
-PS C:\> $resourceGroupName = "testRG"
-PS C:\> $clusterName = "testCluster"
-PS C:\> $appName = "testApp"
-PS C:\> Remove-AzServiceFabricManagedClusterApplication -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appName
+$resourceGroupName = "testRG"
+$clusterName = "testCluster"
+$appName = "testApp"
+Remove-AzServiceFabricManagedClusterApplication -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appName
 ```
 
 This example removes the managed application "testApp" under the resource group "testRG" and cluster "testCluster".
 
 ### Example 2
 ```powershell
-PS C:\> $resourceGroupName = "testRG"
-PS C:\> $clusterName = "testCluster"
-PS C:\> $appName = "testApp"
-PS C:\> $app = Get-AzServiceFabricManagedClusterApplication -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appName
-PS C:\> $app | Remove-AzServiceFabricManagedClusterApplication
+$resourceGroupName = "testRG"
+$clusterName = "testCluster"
+$appName = "testApp"
+$app = Get-AzServiceFabricManagedClusterApplication -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appName
+$app | Remove-AzServiceFabricManagedClusterApplication
 ```
 
 This example removes the managed application "testApp" under the resource group "testRG" and cluster "testCluster".
 
 ### Example 3
 ```powershell
-PS C:\> $resourceId = "/subscriptions/13ad2c84-84fa-4798-ad71-e70c07af873f/resourcegroups/testRG/providers/Microsoft.ServiceFabric/managedClusters/testCluster/applications/testApp/services/testService"
-PS C:\> Remove-AzServiceFabricManagedClusterApplication -ResourceId $resourceId
+$resourceId = "/subscriptions/13ad2c84-84fa-4798-ad71-e70c07af873f/resourcegroups/testRG/providers/Microsoft.ServiceFabric/managedClusters/testCluster/applications/testApp/services/testService"
+Remove-AzServiceFabricManagedClusterApplication -ResourceId $resourceId
 ```
 
 This example removes the managed application "testApp" with the ARM Resource ID specified.

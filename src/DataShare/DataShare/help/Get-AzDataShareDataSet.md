@@ -29,8 +29,11 @@ The **Get-AzDataShareDataSet** cmdlet gets information about data sets added in 
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Get-AzDataShareDataSet -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareName "AdsShare" -Name "AdsDataSet"
 ```
-PS C:\> Get-AzDataShareDataSet -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareName "AdsShare" -Name "AdsDataSet"
+
+```output
 ContainerName  : AdsContainer
 DataSetId      : d2411889-5357-4ca8-8d65-9363e46ef2ed
 ResourceGroup  : ADS

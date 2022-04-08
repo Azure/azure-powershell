@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventHub.dll-Help.xml
 Module Name: Az.EventHub
 online version: https://docs.microsoft.com/powershell/module/az.eventhub/remove-azeventhubnamespace
@@ -37,36 +37,36 @@ The Remove-AzEventHubNamespace cmdlet removes and deletes the specified Event Hu
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzEventHubNamespace -ResourceGroupName MyResourceGroupName -Name MyNamespaceName
+Remove-AzEventHubNamespace -ResourceGroupName MyResourceGroupName -Name MyNamespaceName
 ```
 
 Removes the Event Hubs namespace \`MyNamespaceName\` in resource group \`MyResourceGroupName\`.
 
 ### Example 2: InputObject - Using Variable:
 ```powershell
-PS C:\> $inputObject = Get-AzEventHubNamespace <params> 
-PS C:\> Remove-AzEventHubNamespace -InputObject $inputObject
+$inputObject = Get-AzEventHubNamespace <params> 
+Remove-AzEventHubNamespace -InputObject $inputObject
 ```
 
 ### Example 3: InputObject - Using Piping:
 ```powershell
-PS C:\> Get-AzEventHubNamespace <params> | Remove-AzEventHubNamespace
+Get-AzEventHubNamespace <params> | Remove-AzEventHubNamespace
 ```
 
 ### Example 4: ResourceId - Using Variable
 ```powershell
-PS C:\> $resourceid = Get-AzEventHubNamespace <params>
-PS C:\> Remove-AzEventHubNamespace -ResourceId $resourceid.Id
+$resourceid = Get-AzEventHubNamespace <params>
+Remove-AzEventHubNamespace -ResourceId $resourceid.Id
 ```
 
 ### Example 5: ResourceId - Using Piping:
 ```powershell
-PS C:\> Get-AzResource -ResourceType Microsoft.EventHub/Namespaces | Remove-AzEventHubNamespace
+Get-AzResource -ResourceType Microsoft.EventHub/Namespaces | Remove-AzEventHubNamespace
 ```
 
 ### Example 6: ResourceId - Using String:
 ```powershell
-PS C:\> Remove-AzEventHubNamespace -ResourceId "/subscriptions/xxx-xxxxx-xxxxxx-xxxxxx/resourceGroups/ResourceGroupName/providers/Microsoft.EventHub/namespaces/NamespaceName"
+Remove-AzEventHubNamespace -ResourceId "/subscriptions/xxx-xxxxx-xxxxxx-xxxxxx/resourceGroups/ResourceGroupName/providers/Microsoft.EventHub/namespaces/NamespaceName"
 ```
 
 ## PARAMETERS

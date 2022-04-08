@@ -23,8 +23,8 @@ New-AzApplicationGatewayProbeHealthResponseMatch [-Body <String>] [-StatusCode <
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\>$responsematch = New-AzApplicationGatewayProbeHealthResponseMatch -Body "helloworld" -StatusCode "200-399","503"
+```powershell
+$responsematch = New-AzApplicationGatewayProbeHealthResponseMatch -Body "helloworld" -StatusCode "200-399","503"
 ```
 
 This command creates a health response match which can be passed to ProbeConfig as a parameter.
