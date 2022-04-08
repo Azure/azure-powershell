@@ -1,25 +1,26 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleServerPortConditionObject
+online version: https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleRequestHeaderConditionObject
 schema: 2.0.0
 ---
 
-# New-AzCdnDeliveryRuleServerPortConditionObject
+# New-AzFrontDoorCdnRuleRequestHeaderConditionObject
 
 ## SYNOPSIS
-Create an in-memory object for DeliveryRuleServerPortCondition.
+Create an in-memory object for DeliveryRuleRequestHeaderCondition.
 
 ## SYNTAX
 
 ```
-New-AzCdnDeliveryRuleServerPortConditionObject -Name <MatchVariable> -ParameterOperator <ServerPortOperator>
- [-ParameterMatchValue <String[]>] [-ParameterNegateCondition <Boolean>] [-ParameterTransform <Transform[]>]
+New-AzFrontDoorCdnRuleRequestHeaderConditionObject -Name <MatchVariable>
+ -ParameterOperator <RequestHeaderOperator> [-ParameterMatchValue <String[]>]
+ [-ParameterNegateCondition <Boolean>] [-ParameterSelector <String>] [-ParameterTransform <Transform[]>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for DeliveryRuleServerPortCondition.
+Create an in-memory object for DeliveryRuleRequestHeaderCondition.
 
 ## EXAMPLES
 
@@ -96,11 +97,26 @@ Accept wildcard characters: False
 Describes operator to be matched.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ServerPortOperator
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.RequestHeaderOperator
 Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ParameterSelector
+Name of Header to be matched.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -129,7 +145,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleServerPortCondition
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRequestHeaderCondition
 
 ## NOTES
 

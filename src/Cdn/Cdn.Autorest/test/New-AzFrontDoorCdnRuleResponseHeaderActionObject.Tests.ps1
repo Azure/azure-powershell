@@ -15,7 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorCdnRuleRespons
 }
 
 Describe 'New-AzFrontDoorCdnRuleResponseHeaderActionObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        { 
+            # ignore 
+        } | Should -Not -Throw
     }
 }

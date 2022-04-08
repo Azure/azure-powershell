@@ -15,7 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzCdnDeliveryRuleCookiesC
 }
 
 Describe 'New-AzCdnDeliveryRuleCookiesConditionObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        { 
+            # ignore 
+        } | Should -Not -Throw
     }
 }

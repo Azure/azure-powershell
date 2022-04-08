@@ -15,7 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzCdnUrlRedirectActionObj
 }
 
 Describe 'New-AzCdnUrlRedirectActionObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        { 
+            # ignore 
+        } | Should -Not -Throw
     }
 }

@@ -23,27 +23,19 @@ Creates a new Azure Front Door Standard or Azure Front Door Premium or CDN profi
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
 {{ Add code here }}
 ```
 
-```output
 {{ Add output here }}
-```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### -------------------------- EXAMPLE 2 --------------------------
 ```powershell
 {{ Add code here }}
 ```
 
-```output
 {{ Add output here }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 

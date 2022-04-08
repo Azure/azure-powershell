@@ -66,6 +66,7 @@ directive:
   - model-cmdlet:
     - UserManagedHttpsParameters
     - CdnManagedHttpsParameters
+    # CDN condition
     - DeliveryRuleRemoteAddressCondition
     - DeliveryRuleRequestMethodCondition
     - DeliveryRuleQueryStringCondition
@@ -80,11 +81,6 @@ directive:
     - DeliveryRuleHttpVersionCondition
     - DeliveryRuleCookiesCondition
     - DeliveryRuleIsDeviceCondition
-    - DeliveryRuleSocketAddrCondition
-    - DeliveryRuleClientPortCondition
-    - DeliveryRuleServerPortCondition
-    - DeliveryRuleHostNameCondition
-    - DeliveryRuleSslProtocolCondition
     # CDN action
     - UrlRedirectAction
     - UrlSigningAction
@@ -124,6 +120,9 @@ directive:
   # Hide Cdn profile
   - where:
       subject: Profile
+    hide: true
+  - where:
+      subject: SecretValidate
     hide: true
   - where:
       subject: LogAnalytic(.*)
