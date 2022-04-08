@@ -124,6 +124,13 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMoveDatabaseOutHyperscaleElasticPool()
+        {
+            RunPowerShellTest("Test-MoveDatabaseOutHyperscaleElasticPool");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestElasticPoolGet()
         {
             RunPowerShellTest("Test-GetElasticPool");
@@ -141,6 +148,13 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public void TestElasticPoolGetWithMaintenanceConfigurationId()
         {
             RunPowerShellTest("Test-GetElasticPoolWithMaintenanceConfigurationId");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestHyperscaleElasticPoolGet()
+        {
+            RunPowerShellTest("Test-GetHyperscaleElasticPool");
         }
 
         [Fact]
