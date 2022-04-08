@@ -19,15 +19,7 @@ Describe 'Test-AzCdnEndpointCustomDomain' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Validate' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
     It 'ValidateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'ValidateViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

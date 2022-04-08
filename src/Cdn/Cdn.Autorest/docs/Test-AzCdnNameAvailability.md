@@ -19,18 +19,6 @@ Test-AzCdnNameAvailability -Name <String> -Type <ResourceType> [-DefaultProfile 
  [-WhatIf] [<CommonParameters>]
 ```
 
-### Check
-```
-Test-AzCdnNameAvailability -CheckNameAvailabilityInput <ICheckNameAvailabilityInput>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Check1
-```
-Test-AzCdnNameAvailability -CheckNameAvailabilityInput <ICheckNameAvailabilityInput>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### CheckExpanded1
 ```
 Test-AzCdnNameAvailability -Name <String> -Type <ResourceType> [-SubscriptionId <String>]
@@ -63,22 +51,6 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -CheckNameAvailabilityInput
-Input of CheckNameAvailability API.
-To construct, see NOTES section for CHECKNAMEAVAILABILITYINPUT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ICheckNameAvailabilityInput
-Parameter Sets: Check, Check1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -99,7 +71,7 @@ The resource name to validate.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded, CheckExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -114,7 +86,7 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Check1, CheckExpanded1
+Parameter Sets: CheckExpanded1
 Aliases:
 
 Required: False
@@ -129,7 +101,7 @@ The type of the resource whose name is to be validated.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ResourceType
-Parameter Sets: CheckExpanded, CheckExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -175,8 +147,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ICheckNameAvailabilityInput
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ICheckNameAvailabilityOutput
@@ -184,15 +154,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-CHECKNAMEAVAILABILITYINPUT <ICheckNameAvailabilityInput>: Input of CheckNameAvailability API.
-  - `Name <String>`: The resource name to validate.
-  - `Type <ResourceType>`: The type of the resource whose name is to be validated.
 
 ## RELATED LINKS
 
