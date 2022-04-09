@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonIgnore]
         public string CustomIpPrefixText
         {
-            get { return JsonConvert.SerializeObject(new PSResourceId() { Id = CustomIpPrefix.Id }, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            get { return JsonConvert.SerializeObject(CustomIpPrefix, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
