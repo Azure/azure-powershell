@@ -1,33 +1,31 @@
 ---
 external help file:
 Module Name: Az.ApplicationInsights
-online version: https://docs.microsoft.com/powershell/module/az.applicationinsights/update-azapplicationinsightscomponentlinkedstorageaccount
+online version: https://docs.microsoft.com/powershell/module/az.applicationinsights/remove-azapplicationinsightslinkedstorageaccount
 schema: 2.0.0
 ---
 
-# Update-AzApplicationInsightsComponentLinkedStorageAccount
+# Remove-AzApplicationInsightsLinkedStorageAccount
 
 ## SYNOPSIS
-Update linked storage accounts for an Application Insights component.
+Delete linked storage accounts for an Application Insights component.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### Delete (Default)
 ```
-Update-AzApplicationInsightsComponentLinkedStorageAccount -ComponentName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-LinkedStorageAccountResourceId <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Remove-AzApplicationInsightsLinkedStorageAccount -ComponentName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### DeleteViaIdentity
 ```
-Update-AzApplicationInsightsComponentLinkedStorageAccount -InputObject <IApplicationInsightsIdentity>
- [-LinkedStorageAccountResourceId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzApplicationInsightsLinkedStorageAccount -InputObject <IApplicationInsightsIdentity>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update linked storage accounts for an Application Insights component.
+Delete linked storage accounts for an Application Insights component.
 
 ## EXAMPLES
 
@@ -56,7 +54,7 @@ The name of the Application Insights component resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -87,7 +85,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -97,11 +95,11 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -LinkedStorageAccountResourceId
-Linked storage account resource ID
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -118,7 +116,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -133,7 +131,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Delete
 Aliases:
 
 Required: False
@@ -183,7 +181,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20200301Preview.IComponentLinkedStorageAccounts
+### System.Boolean
 
 ## NOTES
 

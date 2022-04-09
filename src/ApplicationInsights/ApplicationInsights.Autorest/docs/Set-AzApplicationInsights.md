@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.ApplicationInsights
-online version: https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightscomponent
+online version: https://docs.microsoft.com/powershell/module/az.applicationinsights/set-azapplicationinsights
 schema: 2.0.0
 ---
 
-# New-AzApplicationInsightsComponent
+# Set-AzApplicationInsights
 
 ## SYNOPSIS
 Creates (or updates) an Application Insights component.
@@ -14,10 +14,10 @@ Note: You cannot specify a different value for InstrumentationKey nor AppId in t
 ## SYNTAX
 
 ```
-New-AzApplicationInsightsComponent -ResourceGroupName <String> -ResourceName <String> -Kind <String>
- -Location <String> [-SubscriptionId <String>] [-ApplicationType <ApplicationType>] [-DisableIPMasking]
- [-DisableLocalAuth] [-Etag <String>] [-FlowType <FlowType>] [-ForceCustomerStorageForProfiler]
- [-HockeyAppId <String>] [-ImmediatePurgeDataOn30Day] [-IngestionMode <IngestionMode>]
+Set-AzApplicationInsights -ResourceGroupName <String> -ResourceName <String> -Kind <String> -Location <String>
+ [-SubscriptionId <String>] [-ApplicationType <ApplicationType>] [-DisableIPMasking] [-DisableLocalAuth]
+ [-Etag <String>] [-FlowType <FlowType>] [-ForceCustomerStorageForProfiler] [-HockeyAppId <String>]
+ [-ImmediatePurgeDataOn30Day] [-IngestionMode <IngestionMode>]
  [-PublicNetworkAccessForIngestion <PublicNetworkAccessType>]
  [-PublicNetworkAccessForQuery <PublicNetworkAccessType>] [-RequestSource <RequestSource>]
  [-RetentionInDay <Int32>] [-SamplingPercentage <Double>] [-Tag <Hashtable>] [-WorkspaceResourceId <String>]

@@ -33,7 +33,7 @@ Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IAppli
 https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightsapikey
 #>
 function New-AzApplicationInsightsApiKey {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.PSApiKey])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentApiKey])]
     [CmdletBinding(DefaultParameterSetName='ComponentNameParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName="ComponentNameParameterSet")]

@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.ApplicationInsights
-online version: https://docs.microsoft.com/powershell/module/az.applicationinsights/clear-azapplicationinsightscomponent
+online version: https://docs.microsoft.com/powershell/module/az.applicationinsights/clear-azapplicationinsights
 schema: 2.0.0
 ---
 
-# Clear-AzApplicationInsightsComponent
+# Clear-AzApplicationInsights
 
 ## SYNOPSIS
 Purges data in an Application Insights component by a set of user-defined filters.\n\nIn order to manage system resources, purge requests are throttled at 50 requests per hour.
@@ -17,29 +17,27 @@ You should run the query prior to using for a purge request to verify that the r
 
 ### PurgeViaIdentity (Default)
 ```
-Clear-AzApplicationInsightsComponent -InputObject <IApplicationInsightsIdentity> -Body <IComponentPurgeBody>
+Clear-AzApplicationInsights -InputObject <IApplicationInsightsIdentity> -Body <IComponentPurgeBody>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Purge
 ```
-Clear-AzApplicationInsightsComponent -ResourceGroupName <String> -ResourceName <String>
- -Body <IComponentPurgeBody> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Clear-AzApplicationInsights -ResourceGroupName <String> -ResourceName <String> -Body <IComponentPurgeBody>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### PurgeExpanded
 ```
-Clear-AzApplicationInsightsComponent -ResourceGroupName <String> -ResourceName <String>
+Clear-AzApplicationInsights -ResourceGroupName <String> -ResourceName <String>
  -Filter <IComponentPurgeBodyFilters[]> -Table <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### PurgeViaIdentityExpanded
 ```
-Clear-AzApplicationInsightsComponent -InputObject <IApplicationInsightsIdentity>
- -Filter <IComponentPurgeBodyFilters[]> -Table <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Clear-AzApplicationInsights -InputObject <IApplicationInsightsIdentity> -Filter <IComponentPurgeBodyFilters[]>
+ -Table <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

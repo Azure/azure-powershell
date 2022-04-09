@@ -80,12 +80,23 @@ directive:
   # Hide ApplicationInsightsComponent related cmdlets
   - where:
       subject: Component
-      verb: Get
+      verb: Remove
+      parameter-name: ResourceName
+    set:
+      parameter-name: Name
+  - where:
+      subject: Component
+      verb: Get|New
     hide: true
+  # Rename Component related cmdlets  
+  - where:
+      subject: (^Component$)(.*)
+    set:
+      subject: $2
 
   # Hide ComponentCurrentBillingFeature related cmdlets
   - where:
-      subject: ComponentCurrentBillingFeature
+      subject: ComponentCurrentBillingFeature|ComponentQuotaStatus
     hide: true
 
   # Rename ExportConfiguration to ContinuousExport
@@ -95,6 +106,12 @@ directive:
       subject: ContinuousExport
 
   # Rename parameters for New|Set ApplicationInsightsExportConfiguration
+  - where:
+      subject: ContinuousExport
+      verb: Get
+      parameter-name: ResourceName
+    set:
+      parameter-name: Name
   - where:
       subject: ContinuousExport
       verb: New|Set
@@ -126,6 +143,10 @@ directive:
 
   # Rename parameters for ComponentLinkedStorageAccount
   - where:
+      subject: ComponentLinkedStorageAccountAndUpdate
+    set:
+      subject: ComponentLinkedStorageAccount
+  - where:
       subject: ComponentLinkedStorageAccount
       parameter-name: ResourceName
     set:
@@ -135,6 +156,10 @@ directive:
       parameter-name: LinkedStorageAccount
     set:
       parameter-name: LinkedStorageAccountResourceId
+  - where:
+      subject: ComponentLinkedStorageAccount
+    set:
+      subject: LinkedStorageAccount
 
   # Rename parameter 'ResourceName' to 'Name'
   - where:

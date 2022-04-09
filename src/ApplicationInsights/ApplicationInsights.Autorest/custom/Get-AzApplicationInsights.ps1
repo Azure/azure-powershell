@@ -52,7 +52,7 @@ INPUTOBJECT <IApplicationInsightsIdentity>: Identity Parameter
 https://docs.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsightscomponent
 #>
 function Get-AzApplicationInsights {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.PSApplicationInsightsComponent], [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.PSApplicationInsightsComponentWithPricingPlan])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent], [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.PSApplicationInsightsComponentWithPricingPlan])]
     [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
     param(
         [Parameter(ParameterSetName='Get', Mandatory)]
@@ -171,7 +171,7 @@ function Get-AzApplicationInsights {
                         $dailyCapStatus  = (. Az.ApplicationInsights.internal\Get-AzApplicationInsightsComponentQuotaStatus @PSBoundParameters)
                     }
                 }
-                $component = (. Az.ApplicationInsights.internal\Get-AzApplicationInsightsComponent @PSBoundParameters)
+                $component = (. Az.ApplicationInsights.internal\Get-AzApplicationInsights @PSBoundParameters)
                 break
             }
         }

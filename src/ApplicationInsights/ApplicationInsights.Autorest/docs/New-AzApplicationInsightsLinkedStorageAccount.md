@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.ApplicationInsights
-online version: https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightscomponentlinkedstorageaccountandupdate
+online version: https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightslinkedstorageaccount
 schema: 2.0.0
 ---
 
-# New-AzApplicationInsightsComponentLinkedStorageAccountAndUpdate
+# New-AzApplicationInsightsLinkedStorageAccount
 
 ## SYNOPSIS
 Replace current linked storage account for an Application Insights component.
@@ -13,9 +13,9 @@ Replace current linked storage account for an Application Insights component.
 ## SYNTAX
 
 ```
-New-AzApplicationInsightsComponentLinkedStorageAccountAndUpdate -ResourceGroupName <String>
- -ResourceName <String> [-SubscriptionId <String>] [-LinkedStorageAccount <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzApplicationInsightsLinkedStorageAccount -ComponentName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-LinkedStorageAccountResourceId <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,6 +43,21 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
+### -ComponentName
+The name of the Application Insights component resource.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -58,7 +73,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LinkedStorageAccount
+### -LinkedStorageAccountResourceId
 Linked storage account resource ID
 
 ```yaml
@@ -76,21 +91,6 @@ Accept wildcard characters: False
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceName
-The name of the Application Insights component resource.
 
 ```yaml
 Type: System.String

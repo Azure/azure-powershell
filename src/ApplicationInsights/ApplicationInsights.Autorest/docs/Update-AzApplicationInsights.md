@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.ApplicationInsights
-online version: https://docs.microsoft.com/powershell/module/az.applicationinsights/set-azapplicationinsightscomponent
+online version: https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsights
 schema: 2.0.0
 ---
 
-# Set-AzApplicationInsightsComponent
+# Update-AzApplicationInsights
 
 ## SYNOPSIS
 Creates (or updates) an Application Insights component.
@@ -14,13 +14,13 @@ Note: You cannot specify a different value for InstrumentationKey nor AppId in t
 ## SYNTAX
 
 ```
-Set-AzApplicationInsightsComponent -ResourceGroupName <String> -ResourceName <String> -Kind <String>
- -Location <String> [-SubscriptionId <String>] [-ApplicationType <ApplicationType>] [-DisableIPMasking]
- [-DisableLocalAuth] [-Etag <String>] [-FlowType <FlowType>] [-ForceCustomerStorageForProfiler]
- [-HockeyAppId <String>] [-ImmediatePurgeDataOn30Day] [-IngestionMode <IngestionMode>]
+Update-AzApplicationInsights -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-ApplicationType <ApplicationType>] [-DisableIPMasking] [-DisableLocalAuth] [-Etag <String>]
+ [-FlowType <FlowType>] [-ForceCustomerStorageForProfiler] [-HockeyAppId <String>]
+ [-ImmediatePurgeDataOn30Day] [-IngestionMode <IngestionMode>]
  [-PublicNetworkAccessForIngestion <PublicNetworkAccessType>]
  [-PublicNetworkAccessForQuery <PublicNetworkAccessType>] [-RequestSource <RequestSource>]
- [-RetentionInDay <Int32>] [-SamplingPercentage <Double>] [-Tag <Hashtable>] [-WorkspaceResourceId <String>]
+ [-RetentionInDays <Int32>] [-SamplingPercentage <Double>] [-Tag <Hashtable>] [-WorkspaceResourceId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -201,24 +201,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Kind
-The kind of application that this component refers to, used to customize UI.
-This value is a freeform string, values should typically be one of the following: web, ios, other, store, java, phone.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Location
-Resource location
+### -Name
+The name of the Application Insights component resource.
 
 ```yaml
 Type: System.String
@@ -294,22 +278,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceName
-The name of the Application Insights component resource.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RetentionInDay
+### -RetentionInDays
 Retention period in days.
 
 ```yaml

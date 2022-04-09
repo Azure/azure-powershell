@@ -14,14 +14,14 @@ Get the Continuous Export configuration for this export id.
 
 ### List (Default)
 ```
-Get-AzApplicationInsightsContinuousExport -ResourceGroupName <String> -ResourceName <String>
+Get-AzApplicationInsightsContinuousExport -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzApplicationInsightsContinuousExport -ExportId <String> -ResourceGroupName <String>
- -ResourceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzApplicationInsightsContinuousExport -ExportId <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -102,9 +102,8 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+### -Name
+The name of the Application Insights component resource.
 
 ```yaml
 Type: System.String
@@ -118,8 +117,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceName
-The name of the Application Insights component resource.
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
