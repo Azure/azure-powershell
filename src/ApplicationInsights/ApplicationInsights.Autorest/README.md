@@ -86,7 +86,7 @@ directive:
       parameter-name: Name
   - where:
       subject: Component
-      verb: Get|New
+      verb: Get|New|Clear
     hide: true
   # Rename Component related cmdlets  
   - where:
@@ -192,6 +192,11 @@ directive:
   - where:
       subject: ApiKey
       verb: New
+    hide: true
+
+  # Hide cmdlets
+  - where:
+      subject: Annotation|AvailableFeature|FeatureCapability|PurgeStatus|ComponentTag
     hide: true
 
   # Hide the SyntheticMonitorId parameter because the default value is passed by the server.

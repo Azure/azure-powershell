@@ -19,15 +19,23 @@ Describe 'Get-AzApplicationInsights' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
     It 'Get' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' -skip {
+    It 'ListByResourceGroupName' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'ListBySubscription' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'GetByResourceId' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'GetByInputObject' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

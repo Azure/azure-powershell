@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzApplicationInsightsApiK
 }
 
 Describe 'New-AzApplicationInsightsApiKey' {
-    It 'CreateExpanded' -skip {
+    It 'ComponentNameParameterSet' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }
