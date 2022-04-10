@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 
+* Fix bug for `Get-AzAlertProcessingRule` does not fetch more than 50 Alert Processing Rules
+* Fix bug for `Get-AzAlert` rounds down the number of alerts to multiple of 100
+
 ## Version 0.4.0
 * Substitute cmdlets:
   - `Get-AzActionRule` with `Get-AzAlertProcessingRule`
