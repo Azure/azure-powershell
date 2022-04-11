@@ -20,27 +20,9 @@ Gets information about a configuration of server.
 .Description
 Gets information about a configuration of server.
 .Example
-PS C:\> Get-AzPostgreSqlConfiguration -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
-
-Name                                  Value
-----                                  -----
-array_nulls                           on
-backslash_quote                       safe_encoding
-bytea_output                          hex
-check_function_bodies                 on
-client_encoding                       sql_ascii
-...
-azure.replication_support             REPLICA
-max_wal_senders                       10
-max_replication_slots                 10
-hot_standby_feedback                  off
-logging_collector                     on
+Get-AzPostgreSqlConfiguration -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
 .Example
-PS C:\> Get-AzPostgreSqlConfiguration -Name timezone -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
-
-Name     Value
-----     -----
-timezone UTC
+Get-AzPostgreSqlConfiguration -Name timezone -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity

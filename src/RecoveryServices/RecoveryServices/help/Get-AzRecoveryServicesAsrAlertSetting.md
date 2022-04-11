@@ -22,9 +22,11 @@ The **Get-AzRecoveryServicesAsrAlertSetting** cmdlet gets the configured Azure S
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Get-AzRecoveryServicesAsrAlertSetting
 ```
-PS C:\> Get-AzRecoveryServicesAsrAlertSetting
 
+```output
 CustomEmailAddress     EmailSubscriptionOwner Locale
 ------------------     ---------------------- ------
 {abcxxxx@xxxx.com} On                     en-US

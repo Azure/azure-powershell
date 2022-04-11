@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.ApplicationInsights.Management.Models;
 using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections;
 using System.Management.Automation;
@@ -25,6 +26,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.ApplicationInsights
 {
     public class UpdateApplicationInsights
     {
+        [GenericBreakingChange("API version bump up to 2020-02-02, output type will be also updated to match the new API version", "2.0.0")]
         [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationInsights", SupportsShouldProcess = true), OutputType(typeof(PSApplicationInsightsComponent))]
         public class UpdateAzureApplicationInsights : ApplicationInsightsBaseCmdlet
         {

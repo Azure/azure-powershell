@@ -31,17 +31,17 @@ The **Get-AzApiManagementOperation** gets a list or a specified API Operation.
 ## EXAMPLES
 
 ### Example 1: Get all API management operations
-```
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzApiManagementOperation -Context $apimContext -ApiId $APIId
+```powershell
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Get-AzApiManagementOperation -Context $apimContext -ApiId $APIId
 ```
 
 This command gets all API management operations.
 
 ### Example 2: Get an API Management operation by operation ID
-```
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzApiManagementOperation -Context $apimContext -ApiId $APIId -OperationId "Operation003"
+```powershell
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Get-AzApiManagementOperation -Context $apimContext -ApiId $APIId -OperationId "Operation003"
 ```
 
 This command gets an API management operation by operation ID named Operation0003.

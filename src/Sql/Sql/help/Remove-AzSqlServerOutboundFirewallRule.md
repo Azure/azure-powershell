@@ -13,9 +13,9 @@ Deletes an allowed FQDN from the list of outbound firewall rules (Allowed FQDNs)
 ## SYNTAX
 
 ```
-Remove-AzSqlServerOutboundFirewallRule [-ResourceGroupName] <String> [-ServerName] <String>
- [-AllowedFQDN] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [-Force] [<CommonParameters>]
+Remove-AzSqlServerOutboundFirewallRule [-AllowedFQDN] <String> [-Force] [-ServerName] <String>
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,9 +24,11 @@ The **Remove-AzSqlServerOutboundFirewallRule** cmdlet deletes the specified allo
 ## EXAMPLES
 
 ### Example 1: Delete a outbound firewall rule
+```powershell
+Remove-AzSqlServerOutboundFirewallRule -ServerName "Server01" -ResourceGroupName "ResourceGroup01" -AllowedFQDN "OutboundFirewallRule01"
 ```
-PS C:\>Remove-AzSqlServerOutboundFirewallRule -ServerName "Server01" -ResourceGroupName "ResourceGroup01" -AllowedFQDN "OutboundFirewallRule01"
 
+```output
 ResourceGroupName : ResourceGroup01
 ServerName        : Server01
 AllowedFQDN       : OutboundFirewallRule01
@@ -36,6 +38,21 @@ This command deletes an allowed FQDN named OutboundFirewallRule01 from the list 
 
 ## PARAMETERS
 
+### -AllowedFQDN
+Specifies the allowed fully qualified domain name (FQDN) in the list of outbound firewall rules.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: Name
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -43,6 +60,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+Forces the command to run without asking for user confirmation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -78,36 +110,6 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -AllowedFQDN
-Specifies the allowed fully qualified domain name (FQDN) in the list of outbound firewall rules.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: Name
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Force
-Forces the command to run without asking for user confirmation.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

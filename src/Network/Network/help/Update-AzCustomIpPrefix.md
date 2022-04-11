@@ -38,42 +38,42 @@ The **Update-AzCustomIpPrefix** cmdlet allows the user to provision, commission,
 
 ### Example 1 : Commission the CustomIpPrefix
 ```powershell
-PS C:\> Update-AzCustomIpPrefix -Name $prefixName -ResourceGroupName $rgName -Commission
+Update-AzCustomIpPrefix -Name $prefixName -ResourceGroupName $rgName -Commission
 ```
 
 The above command will start the commissioning process of the CustomIpPrefix.
 
 ### Example 2 : Decommission the CustomIpPrefix
 ```powershell
-PS C:\> Update-AzCustomIpPrefix -Name $prefixName -ResourceGroupName $rgName -Decommission
+Update-AzCustomIpPrefix -Name $prefixName -ResourceGroupName $rgName -Decommission
 ```
 
 The above command will start the de-commissioning process of the CustomIpPrefix.
 
 ### Example 3 : Provision the CustomIpPrefix
 ```powershell
-PS C:\> Update-AzCustomIpPrefix -Name $prefixName -ResourceGroupName $rgName -Provision
+Update-AzCustomIpPrefix -Name $prefixName -ResourceGroupName $rgName -Provision
 ```
 
 The above command will start the provisioning process of the CustomIpPrefix.
 
 ### Example 4 : Deprovision the CustomIpPrefix
 ```powershell
-PS C:\> Update-AzCustomIpPrefix -Name $prefixName -ResourceGroupName $rgName -Deprovision
+Update-AzCustomIpPrefix -Name $prefixName -ResourceGroupName $rgName -Deprovision
 ```
 
 The above command will start the deprovisioning process of the CustomIpPrefix.
 
 ### Example 5 : Update tags for the CustomIpPrefix
 ```powershell
-PS C:\> Update-AzCustomIpPrefix -Name $prefixName -ResourceGroupName $rgName -Tag $tags
+Update-AzCustomIpPrefix -Name $prefixName -ResourceGroupName $rgName -Tag $tags
 ```
 
 The above command will update the tags for the CustomIpPrefix.
 
 ### Example 6 : Update CIDR for the CustomIpPrefix
 ```powershell
-PS C:\> Update-AzCustomIpPrefix -Name $prefixName -ResourceGroupName $rgName -Cidr $cidr
+Update-AzCustomIpPrefix -Name $prefixName -ResourceGroupName $rgName -Cidr $cidr
 ```
 
 The above command will update the cidr for the CustomIpPrefix. This would work only when resource is in validationfailed state.

@@ -31,9 +31,11 @@ If you do not specify a name, this cmdlet gets information about all of the data
 ## EXAMPLES
 
 ### Example 1: Get all data factories
+```powershell
+Get-AzDataFactoryV2 -ResourceGroupName "ADF"
 ```
-PS C:\> Get-AzDataFactoryV2 -ResourceGroupName "ADF"
 
+```output
     DataFactoryName   : WikiADF
     DataFactoryId     : /subscriptions/3e8e61b5-9a7d-4952-bfae-545ab997b9ea/resourceGroups/adf/providers/Microsoft.DataFactory/factories/wikiadf
     ResourceGroupName : ADF
@@ -54,9 +56,11 @@ PS C:\> Get-AzDataFactoryV2 -ResourceGroupName "ADF"
 Displays information about all data factories in the Azure subscription.
 
 ### Example 2: Get a specific data factory
+```powershell
+$DataFactory = Get-AzDataFactoryV2 -ResourceGroupName "ADF" -Name "WikiADF"
 ```
-PS C:\> $DataFactory = Get-AzDataFactoryV2 -ResourceGroupName "ADF" -Name "WikiADF"
 
+```output
     DataFactoryName   : WikiADF
     DataFactoryId     : /subscriptions/3e8e61b5-9a7d-4952-bfae-545ab997b9ea/resourceGroups/adf/providers/Microsoft.DataF
                         actory/factories/wikiadf

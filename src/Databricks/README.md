@@ -51,15 +51,21 @@ require:
   - $(this-folder)/../readme.azure.noprofile.md
 # lock the commit
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/9120c925c8de6840da38365bb8807be2e0e617c0/specification/databricks/resource-manager/Microsoft.Databricks/stable/2018-04-01/databricks.json
-
-module-version: 0.2.0
+  - https://github.com/Azure/azure-rest-api-specs/blob/cfe9bfd432231086b92cda77a327756a90758a8f/specification/databricks/resource-manager/Microsoft.Databricks/preview/2021-04-01-preview/databricks.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/a3c9363637ad7d30407cd6dd26d280cbb166cbf9/specification/databricks/resource-manager/Microsoft.Databricks/preview/2021-04-01-preview/vnetpeering.json
+module-version: 1.1.0
 title: Databricks
 subject-prefix: $(service-name)
 
-inlining-threshold: 50
+inlining-threshold: 100
+resourcegroup-append: true
+nested-object-to-string: true
 
 directive:
+  # Remove cmdlet, Private link related resource should be ignored. 
+  - where:
+     subject: PrivateEndpointConnection|PrivateLinkResource
+    remove: true
   # Remove the unexpanded parameter set
   - where:
       variant: ^Create$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
@@ -112,7 +118,63 @@ directive:
   - where:
       parameter-name: PeeringName
     set:
-      parameter-name: Name 
+      parameter-name: Name
+  - where:
+      parameter-name: AmlWorkspaceIdValue
+    set:
+      parameter-name: AmlWorkspaceId
+
+  - where:
+      parameter-name: EnableNoPublicIPValue
+    set:
+      parameter-name: EnableNoPublicIP
+  - where:
+      parameter-name: PublicIPNameValue
+    set:
+      parameter-name: PublicIPName
+
+  - where:
+      parameter-name: KeyVaultPropertyKeyName
+    set:
+      parameter-name: KeyVaultKeyName
+  - where:
+      parameter-name: KeyVaultPropertyKeyVaultUri
+    set:
+      parameter-name: KeyVaultUri
+  - where:
+      parameter-name: KeyVaultPropertyKeyVersion
+    set:
+      parameter-name: KeyVaultKeyVersion
+
+  - where:
+      parameter-name: LoadBalancerBackendPoolNameValue
+    set:
+      parameter-name: LoadBalancerBackendPoolName
+  - where:
+      parameter-name: LoadBalancerIdValue
+    set:
+      parameter-name: LoadBalancerId
+
+  - where:
+      parameter-name: NatGatewayNameValue
+    set:
+      parameter-name: NatGatewayName
+
+  - where:
+      parameter-name: StorageAccountNameValue
+    set:
+      parameter-name: StorageAccountName
+
+  - where:
+      parameter-name: StorageAccountSkuNameValue
+    set:
+      parameter-name: StorageAccountSku
+
+  - where:
+      parameter-name: VnetAddressPrefixValue
+    set:
+      parameter-name: VnetAddressPrefix
+
   # Rename parameters of Set VNetPeering cmdlet
   - where:
       verb: New
@@ -158,6 +220,7 @@ directive:
       format-table:
         properties:
           - Name
+          - ResourceGroupName
           - Location
           - ManagedResourceGroupId
         labels:

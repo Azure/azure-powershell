@@ -37,8 +37,11 @@ The Remove-AzPowerBIEmbeddedCapacity cmdlet deletes an instance of PowerBI Embed
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Remove-AzPowerBIEmbeddedCapacity -Name "testcapacity" -ResourceGroupName "testRG"
+```powershell
+ Remove-AzPowerBIEmbeddedCapacity -Name "testcapacity" -ResourceGroupName "testRG"
+ ```
+
+```output
 Type                   : Microsoft.PowerBIDedicated/capacities
 Id                     : /subscriptions/78e47976-.../resourceGroups/testRG/providers/Microsoft.PowerBIDedicated/capacities/testcapacity
 ResourceGroup          : testRG

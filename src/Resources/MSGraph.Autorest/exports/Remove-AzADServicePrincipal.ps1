@@ -20,9 +20,9 @@ Deletes entity from service principal.
 .Description
 Deletes entity from service principal.
 .Example
-PS C:\> Remove-AzADServicePrincipal -DisplayName $name
+Remove-AzADServicePrincipal -DisplayName $name
 .Example
-PS C:\> Get-AzADServicePrincipal -Application $id | Remove-AzADServicePrincipal
+Get-AzADServicePrincipal -Application $id | Remove-AzADServicePrincipal
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication

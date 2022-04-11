@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll-Help.xml
 Module Name: Az.DataLakeStore
 ms.assetid: 6C7A7E1A-87A2-4F0D-9091-413C111F47F0
@@ -25,8 +25,8 @@ The **Remove-AzDataLakeStoreFirewallRule** cmdlet removes the specified firewall
 ## EXAMPLES
 
 ### Example 1: Remove a firewall rule from an account
-```
-PS C:\> Remove-AzDataLakeStoreFirewallRule -AccountName "ContosoADL" -Name MyFirewallRule
+```powershell
+Remove-AzDataLakeStoreFirewallRule -AccountName "ContosoADL" -Name MyFirewallRule
 ```
 
 Removes firewall rule "MyFirewallRule" from account "ContosoADL"

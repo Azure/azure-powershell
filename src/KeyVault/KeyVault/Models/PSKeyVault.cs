@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         public bool? EnableSoftDelete { get; private set; }
 
-        public bool? EnablePurgeProtection { get; private set; }
+        public bool? EnablePurgeProtection { get; internal set; }
 
         public bool? EnableRbacAuthorization { get; private set; }
 

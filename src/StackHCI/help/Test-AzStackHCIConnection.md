@@ -24,7 +24,10 @@ Test-AzStackHCIConnection verifies connectivity from on-premises clustered nodes
 
 ### EXAMPLE 1
 ```powershell
-C:\PS\>Test-AzStackHCIConnection
+Test-AzStackHCIConnection
+```
+
+```output
 Test: Connect to Azure Stack HCI Service
 EndpointTested: https://azurestackhci-df.azurefd.net/health
 IsRequired: True
@@ -34,7 +37,10 @@ Invoking on one of the cluster node. Success case.
 
 ### EXAMPLE 2
 ```powershell
-C:\PS\>Test-AzStackHCIConnection
+Test-AzStackHCIConnection
+```
+
+```output
 Test: Connect to Azure Stack HCI Service
 EndpointTested: https://azurestackhci-df.azurefd.net/health
 IsRequired: True

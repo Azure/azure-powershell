@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-GetServerRecommendedAction");
         }
 
-        [Fact]
+        [Fact(Skip = "This action is not supported on backend. Verified with feature owners.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateServerRecommendedAction()
         {
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-GetElasticPoolRecommendedAction");
         }
 
-        [Fact]
+        [Fact(Skip = "This action is not supported on backend. Verified with feature owners.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateElasticPoolRecommendedAction()
         {

@@ -58,6 +58,14 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 1)]
         [Ps1Xml(Label = "BackendIPConfiguration", Target = ViewControl.Table, ScriptBlock = "$_.BackendIPConfiguration.Name")]
         public PSNetworkInterfaceIPConfiguration BackendIPConfiguration { get; set; }
+        [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
+        public int? FrontendPortRangeStart { get; set; }
+        [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
+        public int? FrontendPortRangeEnd { get; set; }
+        [JsonProperty(Order = 1)]
+        public PSResourceId BackendAddressPool { get; set; }
 
         [JsonIgnore]
         public string FrontendIPConfigurationText
@@ -69,6 +77,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string BackendIPConfigurationText
         {
             get { return JsonConvert.SerializeObject(BackendIPConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string BackendAddressPoolText
+        {
+            get { return JsonConvert.SerializeObject(BackendAddressPool, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         public bool ShouldSerializeFrontendPort()

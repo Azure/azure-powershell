@@ -20,13 +20,9 @@ Description for This is to allow calling via powershell and ARM template.
 .Description
 Description for This is to allow calling via powershell and ARM template.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Outputs
 System.Boolean

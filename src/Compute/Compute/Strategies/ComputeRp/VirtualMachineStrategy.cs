@@ -66,7 +66,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string osDiskDeleteOption = null,
             string dataDiskDeleteOption = null,
             string userData = null,
-            AdditionalCapabilities additionalCapabilities = null
+            AdditionalCapabilities additionalCapabilities = null,
+            int? vCPUsAvailable = null,
+            int? vCPUsPerCore = null
             )
 
             => Strategy.CreateResourceConfig(
@@ -95,7 +97,12 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     },
                     HardwareProfile = new HardwareProfile
                     {
-                        VmSize = size
+                        VmSize = size,
+                        VmSizeProperties = (vCPUsPerCore == null && vCPUsAvailable == null) ? null : new VMSizeProperties
+                        {
+                            VCPUsPerCore = vCPUsPerCore,
+                            VCPUsAvailable = vCPUsAvailable
+                        }
                     },
                     StorageProfile = new StorageProfile
                     {
@@ -148,7 +155,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string osDiskDeleteOption = null,
             string dataDiskDeleteOption = null,
             string userData = null,
-            AdditionalCapabilities additionalCapabilities = null
+            AdditionalCapabilities additionalCapabilities = null,
+            int? vCPUsAvailable = null,
+            int? vCPUsPerCore = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -164,7 +173,12 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     },
                     HardwareProfile = new HardwareProfile
                     {
-                        VmSize = size
+                        VmSize = size,
+                        VmSizeProperties = (vCPUsPerCore == null && vCPUsAvailable == null) ? null : new VMSizeProperties
+                        {
+                            VCPUsPerCore = vCPUsPerCore,
+                            VCPUsAvailable = vCPUsAvailable
+                        }
                     },
                     StorageProfile = new StorageProfile
                     {

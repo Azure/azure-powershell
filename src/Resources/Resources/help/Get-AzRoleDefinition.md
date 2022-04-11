@@ -38,15 +38,15 @@ To inspect individual operations that a role grants access to, review the Action
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Get-AzRoleDefinition -Name Reader
+```powershell
+Get-AzRoleDefinition -Name Reader
 ```
 
 Get the Reader role definition
 
 ### Example 2
-```
-PS C:\> Get-AzRoleDefinition
+```powershell
+Get-AzRoleDefinition
 ```
 
 Lists all RBAC role definitions

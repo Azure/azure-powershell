@@ -217,17 +217,20 @@ function New-AzADAppCredential {
             $null = $PSBoundParameters.Remove('PasswordCredentials')
         } else {
             $kc = $PSBoundParameters['KeyCredentials']
-            $null = $PSBoundParameters.Remove('PasswordCredentials')
+            $null = $PSBoundParameters.Remove('KeyCredentials')
         }
 
         $param = @{}
         switch ($PSCmdlet.ParameterSetName) {
-            { $_ -in 'ApplicationObjectIdWithPasswordParameterSet', 'ApplicationObjectIdWithCredentialParameterSet'} {
+            { $_ -in 'ApplicationObjectIdWithPasswordParameterSet', 'ApplicationObjectIdWithKeyCredentialParameterSet', 'ApplicationObjectIdWithPasswordCredentialParameterSet', 'ApplicationObjectIdWithCertValueParameterSet'} {
                 $id = $PSBoundParameters['ObjectId']
+                if ($kc) {
+                    $app = Get-AzADApplication -ObjectId $id
+                }
                 $null = $PSBoundParameters.Remove('ObjectId')
                 break
             }
-            { $_ -in 'ApplicationIdWithPasswordParameterSet', 'ApplicationIdWithCredentialParameterSet', 'ApplicationIdWithCertValueParameterSet'} {
+            { $_ -in 'ApplicationIdWithPasswordParameterSet', 'ApplicationIdWithKeyCredentialParameterSet', 'ApplicationIdWithPasswordCredentialParameterSet', 'ApplicationIdWithCertValueParameterSet'} {
                 $param['ApplicationId'] = $PSBoundParameters['ApplicationId']
                 $app = Get-AzADApplication @param
                 if ($app) {
@@ -240,9 +243,9 @@ function New-AzADAppCredential {
                 }
                 break
             }
-            { $_ -in 'DisplayNameWithPasswordParameterSet', 'DisplayNameWithCredentialParameterSet', 'DisplayNameWithCertValueParameterSet'} {
+            { $_ -in 'DisplayNameWithPasswordParameterSet', 'DisplayNameWithKeyCredentialParameterSet', 'DisplayNameWithPasswordCredentialParameterSet', 'DisplayNameWithCertValueParameterSet'} {
                 $param['DisplayName'] = $PSBoundParameters['DisplayName']
-                $app = Get-AzADApplication @param
+                [System.Array]$app = Get-AzADApplication @param
                 if (0 -eq $app.Count) {
                     Write-Error "application with display name '$($PSBoundParameters['DisPlayName'])' does not exist."
                     return
@@ -257,8 +260,11 @@ function New-AzADAppCredential {
                 }
                 break
             }
-            { $_ -in 'ApplicationObjectWithPasswordParameterSet', 'ApplicationObjectWithParameterSet', 'ApplicationObjectWithCertValueParameterSet'} {
+            { $_ -in 'ApplicationObjectWithPasswordParameterSet', 'ApplicationObjectWithKeyCredentialParameterSet', 'ApplicationObjectWithPasswordCredentialParameterSet', 'ApplicationObjectWithCertValueParameterSet'} {
                 $id = $PSBoundParameters['ApplicationObject'].Id
+                if ($kc) {
+                    $app = Get-AzADApplication -ObjectId $id
+                }
                 $null = $PSBoundParameters.Remove('ApplicationObject')
                 break
             }
@@ -278,8 +284,12 @@ function New-AzADAppCredential {
             }
         }
         if ($kc) {
+            [System.Array]$kcList = $app.KeyCredentials
             $PSBoundParameters['Id'] = $id
-            $PSBoundParameters['KeyCredentials'] = $kc
+            foreach ($k in $kc) {
+                $kcList += $k
+            }
+            $PSBoundParameters['KeyCredentials'] = $kcList
             Az.MSGraph.internal\Update-AzADApplication @PSBoundParameters
         }
     }

@@ -36,9 +36,11 @@ The **Get-AzRecoveryServicesAsrvCenter** cmdlet gets details of the vCenter serv
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Get-AzRecoveryServicesAsrvCenter -Fabric $Fabric -Name $Name
 ```
-PS C:\> Get-AzRecoveryServicesAsrvCenter -Fabric $Fabric -Name $Name
 
+```output
 FriendlyName          : inmtest81
 Server                : 10.150.209.27
 Port                  : 443
@@ -54,8 +56,8 @@ LastHeartbeat         :
 Get azure site recovery vCenter by fabric name and name of vCenter.
 
 ### Example 2
-```
-PS C:\> Get-AzRecoveryServicesAsrvCenter -Fabric $Fabric
+```powershell
+Get-AzRecoveryServicesAsrvCenter -Fabric $Fabric
 ```
 
 Get azure site recovery vCenter list by fabric name.

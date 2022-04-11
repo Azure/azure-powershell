@@ -9,7 +9,7 @@ schema: 2.0.0
 # Set-AzVMOperatingSystem
 
 ## SYNOPSIS
-Sets operating system properties for a virtual machine.
+Sets operating system properties during the creation of a new virtual machine.
 
 ## SYNTAX
 
@@ -55,13 +55,13 @@ Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Linux] [-ComputerName] <Strin
 ```
 
 ## DESCRIPTION
-The **Set-AzVMOperatingSystem** cmdlet sets operating system properties for a virtual machine.
+The **Set-AzVMOperatingSystem** cmdlet sets operating system properties during the creation of a new virtual machine.
 You can specify logon credentials, computer name, and operating system type.
 
 ## EXAMPLES
 
 ### Example 1: Set operating system properties for a new virtual machine
-```
+```powershell
 $SecurePassword = ConvertTo-SecureString "Password" -AsPlainText -Force
 $Credential = New-Object System.Management.Automation.PSCredential ("FullerP", $SecurePassword); 
 $AvailabilitySet = Get-AzAvailabilitySet -ResourceGroupName "ResourceGroup11" -Name "AvailabilitySet03" 
@@ -89,7 +89,7 @@ The command uses the credentials stored in $Credential.
 The command uses variables assigned in previous commands for some parameters.
 
 ### Example 2: Set operating system properties for a new virtual machine with hot patching enabled
-```
+```powershell
 $SecurePassword = ConvertTo-SecureString "Password" -AsPlainText -Force
 $Credential = New-Object System.Management.Automation.PSCredential ("FullerP", $SecurePassword); 
 $AvailabilitySet = Get-AzAvailabilitySet -ResourceGroupName "ResourceGroup11" -Name "AvailabilitySet03" 
@@ -118,7 +118,7 @@ The command uses variables assigned in previous commands for some parameters.
 The command enables Hotpatching on the virtual machine.
 
 ### Example 3: Set operating system properties for a new Linux virtual machine
-```
+```powershell
 $SecurePassword = ConvertTo-SecureString "Password" -AsPlainText -Force
 $Credential = New-Object System.Management.Automation.PSCredential ("FullerP", $SecurePassword); 
 $AvailabilitySet = Get-AzAvailabilitySet -ResourceGroupName "ResourceGroup11" -Name "AvailabilitySet03" 

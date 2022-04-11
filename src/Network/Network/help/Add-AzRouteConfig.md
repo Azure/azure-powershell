@@ -26,8 +26,8 @@ The **Add-AzRouteConfig** cmdlet adds a route to an Azure route table.
 
 ### Example 1: Add a route to a route table
 ```powershell
-PS C:\>$RouteTable = Get-AzRouteTable -ResourceGroupName "ResourceGroup11" -Name "RouteTable01"
-PS C:\> Add-AzRouteConfig -Name "Route13" -AddressPrefix 10.3.0.0/16 -NextHopType "VnetLocal" -RouteTable $RouteTable
+$RouteTable = Get-AzRouteTable -ResourceGroupName "ResourceGroup11" -Name "RouteTable01"
+Add-AzRouteConfig -Name "Route13" -AddressPrefix 10.3.0.0/16 -NextHopType "VnetLocal" -RouteTable $RouteTable
 ```
 
 The first command gets a route table named RouteTable01 by using the Get-AzRouteTable cmdlet.
@@ -37,7 +37,10 @@ This route forwards packets to the local virtual network.
 
 ### Example 2: Add a route to a route table by using the pipeline
 ```powershell
-PS C:\>Get-AzRouteTable -ResourceGroupName "ResourceGroup11" -Name "RouteTable01" | Add-AzRouteConfig -Name "Route02" -AddressPrefix 10.2.0.0/16 -NextHopType VnetLocal | Set-AzRouteTable
+Get-AzRouteTable -ResourceGroupName "ResourceGroup11" -Name "RouteTable01" | Add-AzRouteConfig -Name "Route02" -AddressPrefix 10.2.0.0/16 -NextHopType VnetLocal | Set-AzRouteTable
+```
+
+```output
 Name              : routetable01
 ResourceGroupName : ResourceGroup11
 Location          : eastus
@@ -86,8 +89,8 @@ The current cmdlet adds the route named Route02, and then passes the result to t
 
 ### Example 3: Add a route with a Service Tag to a route table (Public Preview)
 ```powershell
-PS C:\>$RouteTable = Get-AzRouteTable -ResourceGroupName "ResourceGroup11" -Name "RouteTable01"
-PS C:\> Add-AzRouteConfig -Name "Route13" -AddressPrefix "AppService" -NextHopType "VirtualAppliance" -NextHopIpAddress "10.0.2.4" -RouteTable $RouteTable
+$RouteTable = Get-AzRouteTable -ResourceGroupName "ResourceGroup11" -Name "RouteTable01"
+Add-AzRouteConfig -Name "Route13" -AddressPrefix "AppService" -NextHopType "VirtualAppliance" -NextHopIpAddress "10.0.2.4" -RouteTable $RouteTable
 ```
 
 The first command gets a route table named RouteTable01 by using the Get-AzRouteTable cmdlet.

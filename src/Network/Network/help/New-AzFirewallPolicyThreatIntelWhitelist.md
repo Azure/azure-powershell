@@ -24,7 +24,7 @@ The **New-AzFirewallPolicyThreatIntelWhitelist** cmdlet creates a threat intel w
 
 ### Example 1
 ```powershell
-PS C:\> New-AzFirewallPolicyThreatIntelWhitelist -IpAddress 23.46.72.91,192.79.236.79 -FQDN microsoft.com
+New-AzFirewallPolicyThreatIntelWhitelist -IpAddress 23.46.72.91,192.79.236.79 -FQDN microsoft.com
 ```
 
 This example creates a threat intel whitelist containing a FQDN whitelist of one entry and an Ip address whitelist of two entries

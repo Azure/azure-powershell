@@ -35,27 +35,27 @@ This cmdlet creates a new service fabric managed application under the specified
 
 ### Example 1
 ```powershell
-PS C:\> $resourceGroupName = "testRG"
-PS C:\> $clusterName = "testCluster"
-PS C:\> $appName = "testApp"
-PS C:\> $appTypeName = "testAppType"
-PS C:\> $appTypeVersion = "v1"
-PS C:\> $appParameters =  @{key0="value0";key1=$null;key2="value2"}
-PS C:\> New-AzServiceFabricManagedClusterApplication -ResourceGroupName $resourceGroupName -ClusterName $clusterName -ApplicationTypeName $appTypeName -ApplicationTypeVersion $appTypeVersion -Name $appName -ApplicationParameter $appParameters
+$resourceGroupName = "testRG"
+$clusterName = "testCluster"
+$appName = "testApp"
+$appTypeName = "testAppType"
+$appTypeVersion = "v1"
+$appParameters =  @{key0="value0";key1=$null;key2="value2"}
+New-AzServiceFabricManagedClusterApplication -ResourceGroupName $resourceGroupName -ClusterName $clusterName -ApplicationTypeName $appTypeName -ApplicationTypeVersion $appTypeVersion -Name $appName -ApplicationParameter $appParameters
 ```
 
 This example creates the managed application "testApp" under resource group "testRG" and cluster "testCluster". The managed application type "TestAppType" version "v1" should already exist in the cluster, and the application parameters should be defined in the application manifest otherwise the cmdlet will fail.
 
 ### Example 2: Specify -PackageUrl to create the application type version before creating the application.
 ```powershell
-PS C:\> $resourceGroupName = "testRG"
-PS C:\> $clusterName = "testCluster"
-PS C:\> $appName = "testApp"
-PS C:\> $appTypeName = "testAppType"
-PS C:\> $appTypeVersion = "v1"
-PS C:\> $appParameters =  @{key0="value0";key1=$null;key2="value2"}
-PS C:\> $packageUrlV1 = "https://sftestapp.blob.core.windows.net/sftestapp/testApp_1.0.sfpkg"
-PS C:\> New-AzServiceFabricManagedClusterApplication -ResourceGroupName $resourceGroupName -ClusterName $clusterName -ApplicationTypeName $appTypeName -ApplicationTypeVersion $appTypeVersion -Name $appName -PackageUrl $packageUrlV1 -ApplicationParameter $appParameters
+$resourceGroupName = "testRG"
+$clusterName = "testCluster"
+$appName = "testApp"
+$appTypeName = "testAppType"
+$appTypeVersion = "v1"
+$appParameters =  @{key0="value0";key1=$null;key2="value2"}
+$packageUrlV1 = "https://sftestapp.blob.core.windows.net/sftestapp/testApp_1.0.sfpkg"
+New-AzServiceFabricManagedClusterApplication -ResourceGroupName $resourceGroupName -ClusterName $clusterName -ApplicationTypeName $appTypeName -ApplicationTypeVersion $appTypeVersion -Name $appName -PackageUrl $packageUrlV1 -ApplicationParameter $appParameters
 ```
 
 This example creates the managed application type "testAppType"  version "v1" using the package url provided. After this, it will continue the normal process to create the application. If the managed application type version already exits and the provisioning state its in 'Failed' it will prompt to decide if the user wants to recreate the type version.

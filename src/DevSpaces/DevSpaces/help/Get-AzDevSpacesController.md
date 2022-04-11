@@ -31,8 +31,10 @@ Get or list Azure DevSpaces controller.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzDevSpacesController
+Get-AzDevSpacesController
+```
 
+```output
 Name        Resource Group  Location  Provisioning State
 ----------  --------------  --------  ------------------
 devSpaceControllerName   devSpaceResourceGroup     eastus    Succeeded
@@ -42,8 +44,10 @@ List all controllers in a subscription.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzDevSpacesController --ResourceGroupName devSpaceResourceGroup -Name devSpaceControllerName
+Get-AzDevSpacesController -ResourceGroupName devSpaceResourceGroup -Name devSpaceControllerName
+```
 
+```output
 Name        Resource Group  Location  Provisioning State
 ----------  --------------  --------  ------------------
 devSpaceControllerName   devSpaceResourceGroup     eastus    Succeeded

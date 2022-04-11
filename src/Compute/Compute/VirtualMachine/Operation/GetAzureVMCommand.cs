@@ -36,6 +36,7 @@ namespace Microsoft.Azure.Commands.Compute
         protected const string GetVirtualMachineInResourceGroupParamSet = "GetVirtualMachineInResourceGroupParamSet";
         protected const string ListNextLinkVirtualMachinesParamSet = "ListNextLinkVirtualMachinesParamSet";
         protected const string ListLocationVirtualMachinesParamSet = "ListLocationVirtualMachinesParamSet";
+        protected const string GetVirtualMachineById = "GetVirtualMachineById";
         private const string InfoNotAvailable = "Info Not Available";
         private const int MaxNumVMforStatus = 100;
         private InstanceViewTypes UserDataExpand = InstanceViewTypes.UserData;
@@ -121,6 +122,15 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true)]
         public SwitchParameter UserData { get; set; }
 
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = GetVirtualMachineById,
+            HelpMessage = "Id of the VM",
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true)]
+        public String ResourceId { get; set; }
+
+
         public override void ExecuteCmdlet()
         {
 
@@ -128,8 +138,15 @@ namespace Microsoft.Azure.Commands.Compute
 
             ExecuteClientAction(() =>
             {
+
+                if (this.ParameterSetName.Equals(GetVirtualMachineById))
+                {
+                    this.ResourceGroupName = GetResourceGroupNameId(this.ResourceId);
+                    this.Name = GetResourceNameFromId(this.ResourceId, "Microsoft.Compute/virtualMachines");
+                }
+
                 if (this.ParameterSetName.Equals(ListLocationVirtualMachinesParamSet))
-                {   
+                {
                     ReturnListVMObject(
                         this.VirtualMachineClient.ListByLocationWithHttpMessagesAsync(this.Location).GetAwaiter().GetResult(),
                         this.VirtualMachineClient.ListByLocationNextWithHttpMessagesAsync);

@@ -1949,7 +1949,7 @@ Executes a command for a specific container instance in a specified resource gro
 .Description
 Executes a command for a specific container instance in a specified resource group and container group.
 .Example
-PS C:\> Invoke-AzContainerInstanceCommand -ContainerGroupName test-cg -ContainerName test-container -ResourceGroupName　test-rg -Command "echo hello"
+PS C:\> Invoke-AzContainerInstanceCommand -ContainerGroupName test-cg -ContainerName test-container -ResourceGroupName test-rg -Command "echo hello"
 
 hello
 
@@ -2870,9 +2870,7 @@ Create a in-memory object for EnvironmentVariable
 .Description
 Create a in-memory object for EnvironmentVariable
 .Example
-PS C:\> {{ Add code here }}
-
-New-AzContainerInstanceEnvironmentVariableObject -Name "env1" -Value "value1"
+PS C:\> New-AzContainerInstanceEnvironmentVariableObject -Name "env1" -Value "value1"
 
 Name SecureValue Value
 ---- ----------- -----
@@ -3140,9 +3138,18 @@ Name
 ----
 test-container
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> New-AzContainerInstanceObject -Image alpine -Name "test-container" -LimitCpu 2 -LimitMemoryInGb 2.5
 
-{{ Add output here }}
+Name
+----
+test-container
+.Example
+PS C:\> $container = New-AzContainerInstanceObject -Name test-container -Image alpine
+PS C:\> New-AzContainerGroup -ResourceGroupName testrg-rg -Name test-cg -Location eastus -Container $container
+
+Location Name    Zone ResourceGroupName
+-------- ----    ---- -----------------
+eastus   test-cg      test-rg
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.Container

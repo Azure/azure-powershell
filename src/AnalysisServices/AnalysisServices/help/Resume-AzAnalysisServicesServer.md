@@ -23,8 +23,8 @@ The Resume-AzAnalysisServicesServer cmdlet resumes an instance of Analysis Servi
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Resume-AzAnalysisServicesServer -Name "testserver" -ResourceGroupName "testgroup"
+```powershell
+Resume-AzAnalysisServicesServer -Name "testserver" -ResourceGroupName "testgroup"
 ```
 
 This command will resume a paused server named testserver in the resourcegroup testgroup
