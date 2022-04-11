@@ -256,7 +256,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
 
                 newModel.DatabaseCapacityMin = MyInvocation.BoundParameters.ContainsKey("DatabaseVCoreMin") ? (double?)DatabaseVCoreMin : null;
                 newModel.DatabaseCapacityMax = MyInvocation.BoundParameters.ContainsKey("DatabaseVCoreMax") ? (double?)DatabaseVCoreMax : null;
-                newModel.HighAvailabilityReplicaCount = MyInvocation.BoundParameters.ContainsKey("HighAvailabilityReplicaCount") ? HighAvailabilityReplicaCount : 1;
+                newModel.HighAvailabilityReplicaCount = MyInvocation.BoundParameters.ContainsKey("HighAvailabilityReplicaCount") ? (int?)HighAvailabilityReplicaCount : null;
             }
 
             newEntity.Add(newModel);
