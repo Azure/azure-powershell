@@ -28,11 +28,11 @@ Describe 'Update-AzFrontDoorCdnRule' {
             $rulesetName = 'rs' + (RandomString -allChars $false -len 6);
             Write-Host -ForegroundColor Green "Use rulesetName : $($rulesetName)"
             New-AzFrontDoorCdnRuleSet -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Name $rulesetName
-            $uriConditon = New-AzCdnDeliveryRuleRequestUriConditionObject -Name "RequestUri" -ParameterOperator "Any"
+            $uriConditon = New-AzFrontDoorCdnRuleRequestUriConditionObject -Name "RequestUri" -ParameterOperator "Any"
             $conditions = @(
                 $uriConditon
             );
-            $overrideAction = New-AzCdnDeliveryRuleRouteConfigurationOverrideActionObject -Name "RouteConfigurationOverride" `
+            $overrideAction = New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject -Name "RouteConfigurationOverride" `
             -CacheConfigurationQueryStringCachingBehavior "IgnoreSpecifiedQueryStrings" `
             -CacheConfigurationQueryParameter "a=test" `
             -CacheConfigurationIsCompressionEnabled "Enabled" `
@@ -52,7 +52,7 @@ Describe 'Update-AzFrontDoorCdnRule' {
             $updatedConditions = @(
                 
             );
-            $updatedOverrideAction = New-AzCdnDeliveryRuleRouteConfigurationOverrideActionObject -Name "RouteConfigurationOverride" `
+            $updatedOverrideAction = New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject -Name "RouteConfigurationOverride" `
             -CacheConfigurationQueryStringCachingBehavior "IgnoreSpecifiedQueryStrings" `
             -CacheConfigurationQueryParameter "a=test1" `
             -CacheConfigurationIsCompressionEnabled "Enabled" `
@@ -85,11 +85,11 @@ Describe 'Update-AzFrontDoorCdnRule' {
             $rulesetName = 'rs' + (RandomString -allChars $false -len 6);
             Write-Host -ForegroundColor Green "Use rulesetName : $($rulesetName)"
             New-AzFrontDoorCdnRuleSet -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Name $rulesetName
-            $uriConditon = New-AzCdnDeliveryRuleRequestUriConditionObject -Name "RequestUri" -ParameterOperator "Any"
+            $uriConditon = New-AzFrontDoorCdnRuleRequestUriConditionObject -Name "RequestUri" -ParameterOperator "Any"
             $conditions = @(
                 $uriConditon
             );
-            $overrideAction = New-AzCdnDeliveryRuleRouteConfigurationOverrideActionObject -Name "RouteConfigurationOverride" `
+            $overrideAction = New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject -Name "RouteConfigurationOverride" `
             -CacheConfigurationQueryStringCachingBehavior "IgnoreSpecifiedQueryStrings" `
             -CacheConfigurationQueryParameter "a=test" `
             -CacheConfigurationIsCompressionEnabled "Enabled" `
@@ -109,7 +109,7 @@ Describe 'Update-AzFrontDoorCdnRule' {
             $updatedConditions = @(
                 
             );
-            $updatedOverrideAction = New-AzCdnDeliveryRuleRouteConfigurationOverrideActionObject -Name "RouteConfigurationOverride" `
+            $updatedOverrideAction = New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject -Name "RouteConfigurationOverride" `
             -CacheConfigurationQueryStringCachingBehavior "IgnoreSpecifiedQueryStrings" `
             -CacheConfigurationQueryParameter "a=test1" `
             -CacheConfigurationIsCompressionEnabled "Enabled" `

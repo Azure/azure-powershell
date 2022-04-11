@@ -106,29 +106,11 @@ Gets an existing security policy within a profile.
 Pre-loads a content to CDN.
 Available for Verizon Profiles.
 
-### [Invoke-AzCdnSecretValidate](Invoke-AzCdnSecretValidate.md)
-Validate a Secret in the profile.
-
 ### [New-AzCdnCustomDomain](New-AzCdnCustomDomain.md)
 Creates a new custom domain within an endpoint.
 
-### [New-AzCdnCustomDomainHttpsParametersObject](New-AzCdnCustomDomainHttpsParametersObject.md)
-Create an in-memory object for CustomDomainHttpsParameters.
-
-### [New-AzCdnDeliveryRuleCacheExpirationActionObject](New-AzCdnDeliveryRuleCacheExpirationActionObject.md)
-Create an in-memory object for DeliveryRuleCacheExpirationAction.
-
-### [New-AzCdnDeliveryRuleCacheKeyQueryStringActionObject](New-AzCdnDeliveryRuleCacheKeyQueryStringActionObject.md)
-Create an in-memory object for DeliveryRuleCacheKeyQueryStringAction.
-
-### [New-AzCdnDeliveryRuleClientPortConditionObject](New-AzCdnDeliveryRuleClientPortConditionObject.md)
-Create an in-memory object for DeliveryRuleClientPortCondition.
-
 ### [New-AzCdnDeliveryRuleCookiesConditionObject](New-AzCdnDeliveryRuleCookiesConditionObject.md)
 Create an in-memory object for DeliveryRuleCookiesCondition.
-
-### [New-AzCdnDeliveryRuleHostNameConditionObject](New-AzCdnDeliveryRuleHostNameConditionObject.md)
-Create an in-memory object for DeliveryRuleHostNameCondition.
 
 ### [New-AzCdnDeliveryRuleHttpVersionConditionObject](New-AzCdnDeliveryRuleHttpVersionConditionObject.md)
 Create an in-memory object for DeliveryRuleHttpVersionCondition.
@@ -169,18 +151,6 @@ Create an in-memory object for DeliveryRuleRequestUriCondition.
 ### [New-AzCdnDeliveryRuleResponseHeaderActionObject](New-AzCdnDeliveryRuleResponseHeaderActionObject.md)
 Create an in-memory object for DeliveryRuleResponseHeaderAction.
 
-### [New-AzCdnDeliveryRuleRouteConfigurationOverrideActionObject](New-AzCdnDeliveryRuleRouteConfigurationOverrideActionObject.md)
-Create an in-memory object for DeliveryRuleRouteConfigurationOverrideAction.
-
-### [New-AzCdnDeliveryRuleServerPortConditionObject](New-AzCdnDeliveryRuleServerPortConditionObject.md)
-Create an in-memory object for DeliveryRuleServerPortCondition.
-
-### [New-AzCdnDeliveryRuleSocketAddrConditionObject](New-AzCdnDeliveryRuleSocketAddrConditionObject.md)
-Create an in-memory object for DeliveryRuleSocketAddrCondition.
-
-### [New-AzCdnDeliveryRuleSslProtocolConditionObject](New-AzCdnDeliveryRuleSslProtocolConditionObject.md)
-Create an in-memory object for DeliveryRuleSslProtocolCondition.
-
 ### [New-AzCdnDeliveryRuleUrlFileExtensionConditionObject](New-AzCdnDeliveryRuleUrlFileExtensionConditionObject.md)
 Create an in-memory object for DeliveryRuleUrlFileExtensionCondition.
 
@@ -202,9 +172,6 @@ Creates a new origin within the specified endpoint.
 ### [New-AzCdnOriginGroup](New-AzCdnOriginGroup.md)
 Creates a new origin group within the specified endpoint.
 
-### [New-AzCdnOriginGroupOverrideActionObject](New-AzCdnOriginGroupOverrideActionObject.md)
-Create an in-memory object for OriginGroupOverrideAction.
-
 ### [New-AzCdnPolicy](New-AzCdnPolicy.md)
 Create or update policy with specified rule set name within a resource group.
 
@@ -215,12 +182,6 @@ Creates a new Azure Front Door Standard or Azure Front Door Premium or CDN profi
 Generates a dynamic SSO URI used to sign in to the CDN supplemental portal.
 Supplemental portal is used to configure advanced feature capabilities that are not yet available in the Azure portal, such as core reports in a standard profile; rules engine, advanced HTTP reports, and real-time stats and alerts in a premium profile.
 The SSO URI changes approximately every 10 minutes.
-
-### [New-AzCdnSecurityPolicyWebApplicationFirewallAssociationObject](New-AzCdnSecurityPolicyWebApplicationFirewallAssociationObject.md)
-Create an in-memory object for SecurityPolicyWebApplicationFirewallAssociation.
-
-### [New-AzCdnSecurityPolicyWebApplicationFirewallParametersObject](New-AzCdnSecurityPolicyWebApplicationFirewallParametersObject.md)
-Create an in-memory object for SecurityPolicyWebApplicationFirewallParameters.
 
 ### [New-AzCdnUrlRedirectActionObject](New-AzCdnUrlRedirectActionObject.md)
 Create an in-memory object for UrlRedirectAction.
@@ -258,8 +219,83 @@ Creates a new route with the specified route name under the specified subscripti
 ### [New-AzFrontDoorCdnRule](New-AzFrontDoorCdnRule.md)
 Creates a new delivery rule within the specified rule set.
 
+### [New-AzFrontDoorCdnRuleClientPortConditionObject](New-AzFrontDoorCdnRuleClientPortConditionObject.md)
+Create an in-memory object for DeliveryRuleClientPortCondition.
+
+### [New-AzFrontDoorCdnRuleCookiesConditionObject](New-AzFrontDoorCdnRuleCookiesConditionObject.md)
+Create an in-memory object for DeliveryRuleCookiesCondition.
+
+### [New-AzFrontDoorCdnRuleHostNameConditionObject](New-AzFrontDoorCdnRuleHostNameConditionObject.md)
+Create an in-memory object for DeliveryRuleHostNameCondition.
+
+### [New-AzFrontDoorCdnRuleHttpVersionConditionObject](New-AzFrontDoorCdnRuleHttpVersionConditionObject.md)
+Create an in-memory object for DeliveryRuleHttpVersionCondition.
+
+### [New-AzFrontDoorCdnRuleIsDeviceConditionObject](New-AzFrontDoorCdnRuleIsDeviceConditionObject.md)
+Create an in-memory object for DeliveryRuleIsDeviceCondition.
+
+### [New-AzFrontDoorCdnRulePostArgsConditionObject](New-AzFrontDoorCdnRulePostArgsConditionObject.md)
+Create an in-memory object for DeliveryRulePostArgsCondition.
+
+### [New-AzFrontDoorCdnRuleQueryStringConditionObject](New-AzFrontDoorCdnRuleQueryStringConditionObject.md)
+Create an in-memory object for DeliveryRuleQueryStringCondition.
+
+### [New-AzFrontDoorCdnRuleRemoteAddressConditionObject](New-AzFrontDoorCdnRuleRemoteAddressConditionObject.md)
+Create an in-memory object for DeliveryRuleRemoteAddressCondition.
+
+### [New-AzFrontDoorCdnRuleRequestBodyConditionObject](New-AzFrontDoorCdnRuleRequestBodyConditionObject.md)
+Create an in-memory object for DeliveryRuleRequestBodyCondition.
+
+### [New-AzFrontDoorCdnRuleRequestHeaderActionObject](New-AzFrontDoorCdnRuleRequestHeaderActionObject.md)
+Create an in-memory object for DeliveryRuleRequestHeaderAction.
+
+### [New-AzFrontDoorCdnRuleRequestHeaderConditionObject](New-AzFrontDoorCdnRuleRequestHeaderConditionObject.md)
+Create an in-memory object for DeliveryRuleRequestHeaderCondition.
+
+### [New-AzFrontDoorCdnRuleRequestMethodConditionObject](New-AzFrontDoorCdnRuleRequestMethodConditionObject.md)
+Create an in-memory object for DeliveryRuleRequestMethodCondition.
+
+### [New-AzFrontDoorCdnRuleRequestSchemeConditionObject](New-AzFrontDoorCdnRuleRequestSchemeConditionObject.md)
+Create an in-memory object for DeliveryRuleRequestSchemeCondition.
+
+### [New-AzFrontDoorCdnRuleRequestUriConditionObject](New-AzFrontDoorCdnRuleRequestUriConditionObject.md)
+Create an in-memory object for DeliveryRuleRequestUriCondition.
+
+### [New-AzFrontDoorCdnRuleResponseHeaderActionObject](New-AzFrontDoorCdnRuleResponseHeaderActionObject.md)
+Create an in-memory object for DeliveryRuleResponseHeaderAction.
+
+### [New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject](New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject.md)
+Create an in-memory object for DeliveryRuleRouteConfigurationOverrideAction.
+
+### [New-AzFrontDoorCdnRuleServerPortConditionObject](New-AzFrontDoorCdnRuleServerPortConditionObject.md)
+Create an in-memory object for DeliveryRuleServerPortCondition.
+
 ### [New-AzFrontDoorCdnRuleSet](New-AzFrontDoorCdnRuleSet.md)
 Creates a new rule set within the specified profile.
+
+### [New-AzFrontDoorCdnRuleSocketAddrConditionObject](New-AzFrontDoorCdnRuleSocketAddrConditionObject.md)
+Create an in-memory object for DeliveryRuleSocketAddrCondition.
+
+### [New-AzFrontDoorCdnRuleSslProtocolConditionObject](New-AzFrontDoorCdnRuleSslProtocolConditionObject.md)
+Create an in-memory object for DeliveryRuleSslProtocolCondition.
+
+### [New-AzFrontDoorCdnRuleUrlFileExtensionConditionObject](New-AzFrontDoorCdnRuleUrlFileExtensionConditionObject.md)
+Create an in-memory object for DeliveryRuleUrlFileExtensionCondition.
+
+### [New-AzFrontDoorCdnRuleUrlFileNameConditionObject](New-AzFrontDoorCdnRuleUrlFileNameConditionObject.md)
+Create an in-memory object for DeliveryRuleUrlFileNameCondition.
+
+### [New-AzFrontDoorCdnRuleUrlPathConditionObject](New-AzFrontDoorCdnRuleUrlPathConditionObject.md)
+Create an in-memory object for DeliveryRuleUrlPathCondition.
+
+### [New-AzFrontDoorCdnRuleUrlRedirectActionObject](New-AzFrontDoorCdnRuleUrlRedirectActionObject.md)
+Create an in-memory object for UrlRedirectAction.
+
+### [New-AzFrontDoorCdnRuleUrlRewriteActionObject](New-AzFrontDoorCdnRuleUrlRewriteActionObject.md)
+Create an in-memory object for UrlRewriteAction.
+
+### [New-AzFrontDoorCdnRuleUrlSigningActionObject](New-AzFrontDoorCdnRuleUrlSigningActionObject.md)
+Create an in-memory object for UrlSigningAction.
 
 ### [New-AzFrontDoorCdnSecret](New-AzFrontDoorCdnSecret.md)
 Creates a new Secret within the specified profile.
@@ -278,6 +314,12 @@ Create an in-memory object for UrlSigningKeyParameters.
 
 ### [New-AzFrontDoorCdnSecurityPolicy](New-AzFrontDoorCdnSecurityPolicy.md)
 Creates a new security policy within the specified profile.
+
+### [New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject](New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject.md)
+Create an in-memory object for SecurityPolicyWebApplicationFirewallAssociation.
+
+### [New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject](New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject.md)
+Create an in-memory object for SecurityPolicyWebApplicationFirewallParameters.
 
 ### [Remove-AzCdnCustomDomain](Remove-AzCdnCustomDomain.md)
 Deletes an existing custom domain within an endpoint.
