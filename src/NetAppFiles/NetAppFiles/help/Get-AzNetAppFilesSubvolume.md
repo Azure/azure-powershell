@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.netappfiles/get-aznetappfilessubvolume
 schema: 2.0.0
 ---
 
 # Get-AzNetAppFilesSubvolume
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets details of an Azure NetApp Files (ANF) volume.
 
 ## SYNTAX
 
@@ -31,16 +31,16 @@ Get-AzNetAppFilesSubvolume [-Name <String>] -VolumeObject <PSNetAppFilesVolume>
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzNetAppFilesVolume** cmdlet gets details of an ANF subvolume.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzNetAppFilesVolume -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyAnfVolume" -Name "MyAnfSubvolume"
 ```
 
-{{ Add example description here }}
+The **Get-AzNetAppFilesVolume** cmdlet gets details of an ANF volume.
 
 ## PARAMETERS
 

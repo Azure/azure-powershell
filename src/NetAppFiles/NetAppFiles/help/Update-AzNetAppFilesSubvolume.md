@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.netappfiles/update-aznetappfilessubvolume
 schema: 2.0.0
 ---
 
 # Update-AzNetAppFilesSubvolume
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates an Azure NetApp Files (ANF) subvolume according to the optional modifiers provided.
 
 ## SYNTAX
 
@@ -38,16 +38,16 @@ Update-AzNetAppFilesSubvolume [-Name <String>] -Path <String> -Size <Int64> -Inp
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Update-AzNetAppFilesSubvolume** cmdlet updates an ANF subvolume.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Update-AzNetAppFilesVolume -ResourceGroupName "MyRG" -l "westus2" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyAnfVolume" -Name "MyAnfSubvolume" -Size Size
 ```
 
-{{ Add example description here }}
+This command updates the ANF volume "MyAnfSubvolume" with the new size. This will truncate the subvolume to the provided size in bytes.
 
 ## PARAMETERS
 

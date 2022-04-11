@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzNetAppFilesVolumeGroup
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets details of an Azure NetApp Files (ANF) VolumeGroup.
 
 ## SYNTAX
 
@@ -31,16 +31,16 @@ Get-AzNetAppFilesVolumeGroup [-Name <String>] -AccountObject <PSNetAppFilesAccou
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzNetAppFilesVolumeGroup** cmdlet gets details of an ANF VolumeGroup.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzNetAppFilesVolume -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -Name "MyAnfVolumeGroup"
 ```
 
-{{ Add example description here }}
+This command gets the volume named MyAnfVolumeGroup from the Account "MyAnfAccount". 
 
 ## PARAMETERS
 

@@ -1,14 +1,15 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.netappfiles/new-aznetappfilesvolumegroup
 schema: 2.0.0
 ---
 
 # New-AzNetAppFilesVolumeGroup
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a new Azure NetApp Files (ANF) VolumeGroup along with requisite volumes.
+Creating volume group will create all the volumes specified in request body implicitly. Once volumes are created using volume group, those will be treated as regular volumes thereafter.
 
 ## SYNTAX
 
@@ -41,16 +42,16 @@ New-AzNetAppFilesVolumeGroup -PoolName <String> [-Name <String>] [-GroupDescript
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzNetAppFilesVolume** cmdlet creates an ANF VolumeGroup.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzNetAppFilesVolumeGroup -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyAnfVolume" -Name "MyAnfVolumeGroupName" -l "westus2"  -GroupDescription "MyAnfVolumeGroup Description" -ApplicationIdentifier "SH1" -ProximityPlacementGroup "MyPPGResourceId" -Vnet "MyAnfVnet" -SystemRole "PRIMARY" -NodeMemory 100 
 ```
 
-{{ Add example description here }}
+This command creates the new "PRIMARY" ANF VolumeGroup "MyAnfVolumeGroup" within the Account "MyAnfAccount" using the proximityPlacementGroup "MyPPGResourceId", the vnet "MyAnfVnet", and NodeMemory of 100
 
 ## PARAMETERS
 

@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.netappfiles/remove-aznetappfilessubvolume
 schema: 2.0.0
 ---
 
 # Remove-AzNetAppFilesSubvolume
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Deletes an Azure NetApp Files (ANF) subvolume.
 
 ## SYNTAX
 
@@ -38,16 +38,16 @@ Remove-AzNetAppFilesSubvolume [-Name <String>] -InputObject <PSNetAppFilesBackup
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Remove-AzNetAppFilesSubvolume** cmdlet deletes an ANF subvolume.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzNetAppFilesSubvolume -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyAnfVolume" -Name "MyAnfSubvolume"
 ```
 
-{{ Add example description here }}
+This command deletes the ANF volume "MyAnfSubvolume".
 
 ## PARAMETERS
 

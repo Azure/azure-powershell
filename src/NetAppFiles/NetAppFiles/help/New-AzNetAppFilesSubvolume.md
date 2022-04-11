@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.netappfiles/new-aznetappfilessubvolume
 schema: 2.0.0
 ---
 
 # New-AzNetAppFilesSubvolume
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a new Azure NetApp Files (ANF) subvolume.
 
 ## SYNTAX
 
@@ -27,16 +27,16 @@ New-AzNetAppFilesSubvolume -Name <String> -Path <String> -Size <Int64> [-ParentP
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzNetAppFilesVolume** cmdlet creates an ANF subvolume.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzNetAppFilesVolume -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyAnfVolume" -Name "MySubvolume" -l "westus2" "
 ```
 
-{{ Add example description here }}
+This command creates the new ANF subvolume "MySubvolume" for the parent volume "MyAnfVolume".
 
 ## PARAMETERS
 
