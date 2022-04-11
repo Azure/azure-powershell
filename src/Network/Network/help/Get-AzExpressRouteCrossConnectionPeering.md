@@ -26,7 +26,7 @@ relationship for an ExpressRoute cross connection.
 ## EXAMPLES
 
 ### Example 1: Display the peering configuration for an ExpressRoute cross connection
-```
+```powershell
 $cc = Get-AzExpressRouteCrossConnection -Name $CrossConnectionName -ResourceGroupName $RG
 Get-AzExpressRouteCrossConnectionPeering -Name "AzurePrivatePeering" -ExpressRouteCrossConnection $cc
 ```

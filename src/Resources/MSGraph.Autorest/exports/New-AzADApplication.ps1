@@ -20,7 +20,7 @@ Adds new entity to applications
 .Description
 Adds new entity to applications
 .Example
-PS C:\> New-AzADApplication -SigninAudience AzureADandPersonalMicrosoftAccount
+New-AzADApplication -SigninAudience AzureADandPersonalMicrosoftAccount
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication

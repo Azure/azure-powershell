@@ -28,13 +28,11 @@ whether the cmdlet prompts you for confirmation.
 ## EXAMPLES
 
 ### Example 1: Create a Private DNS zone
+```powershell
+$Zone = New-AzPrivateDnsZone -Name "myzone.com" -ResourceGroupName "MyResourceGroup"
 ```
-PS C:\>$Zone = New-AzPrivateDnsZone -Name "myzone.com" -ResourceGroupName "MyResourceGroup"
 
-
-This command creates a new private DNS zone named myzone.com in the specified resource group, and then
-stores it in the $Zone variable. $Zone object looks something like this,
-
+```output
 Name                          : myzone.com
 ResourceId                    : "/subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/PrivateZones/myzone.com"
 ResourceGroupName             : MyResourceGroup
@@ -44,7 +42,8 @@ Tags                          : {}
 NumberOfRecordSets            : 1
 MaxNumberOfRecordSets         : 5000
 ```
-
+This command creates a new private DNS zone named myzone.com in the specified resource group, and then
+stores it in the $Zone variable. $Zone object looks something like this,
 ## PARAMETERS
 
 ### -DefaultProfile

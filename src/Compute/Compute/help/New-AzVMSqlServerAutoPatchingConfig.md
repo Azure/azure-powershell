@@ -24,8 +24,11 @@ The **New-AzVMSqlServerAutoPatchingConfig** cmdlet creates a configuration objec
 ## EXAMPLES
 
 ### Example 1: Create a configuration object to configure automatic patching
+```powershell
+$AutoPatchingConfig = New-AzVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120 -PatchCategory "Important"
 ```
-PS C:\> $AutoPatchingConfig = New-AzVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120 -PatchCategory "Important"
+
+```output
 Enable                        : True
 DayOfWeek                     : Thursday
 MaintenanceWindowStartingHour : 11

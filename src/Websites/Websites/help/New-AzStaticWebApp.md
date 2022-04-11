@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Websites-help.xml
 Module Name: Az.Websites
 online version: https://docs.microsoft.com/powershell/module/az.websites/new-azstaticwebapp
 schema: 2.0.0
@@ -13,16 +13,16 @@ Description for Creates a new static site in an existing resource group, or upda
 ## SYNTAX
 
 ```
-New-AzStaticWebApp -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
+New-AzStaticWebApp -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
  [-AllowConfigFileUpdate] [-ApiBuildCommand <String>] [-ApiLocation <String>] [-AppArtifactLocation <String>]
  [-AppBuildCommand <String>] [-AppLocation <String>] [-Branch <String>] [-Capacity <Int32>]
- [-ForkRepositoryDescription <String>] [-ForkRepositoryIsPrivate] [-ForkRepositoryName <String>]
- [-ForkRepositoryOwner <String>] [-GithubActionSecretNameOverride <String>]
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Kind <String>]
- [-OutputLocation <String>] [-RepositoryToken <String>] [-RepositoryUrl <String>]
- [-SkipGithubActionWorkflowGeneration] [-SkuName <String>]
- [-StagingEnvironmentPolicy <StagingEnvironmentPolicy>] [-Tag <Hashtable>] [-TemplateRepositoryUrl <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-GithubActionSecretNameOverride <String>] [-IdentityType <ManagedServiceIdentityType>]
+ [-IdentityUserAssignedIdentity <Hashtable>] [-Kind <String>] [-OutputLocation <String>]
+ [-RepositoryToken <String>] [-RepositoryUrl <String>] [-SkipGithubActionWorkflowGeneration]
+ [-SkuName <String>] [-StagingEnvironmentPolicy <StagingEnvironmentPolicy>] [-Tag <Hashtable>]
+ [-ForkRepositoryDescription <String>] [-ForkRepositoryIsPrivate] [-ForkRepositoryOwner <String>]
+ [-ForkRepositoryName <String>] [-TemplateRepositoryUrl <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,8 +32,10 @@ Description for Creates a new static site in an existing resource group, or upda
 
 ### Example 1: Create a new static site in an existing resource group, or updates an existing static site
 ```powershell
-PS C:\> New-AzStaticWebApp -ResourceGroupName 'azure-rg-test' -Name 'staticweb-45asde' -Location 'Central US' -RepositoryUrl 'https://github.com/LucasYao93/blazor-starter' -RepositoryToken 'githubAccessToken' -Branch 'branch02' -AppLocation 'Client' -ApiLocation 'Api' -OutputLocation 'wwwroot' -SkuName 'Standard'
+New-AzStaticWebApp -ResourceGroupName 'azure-rg-test' -Name 'staticweb-45asde' -Location 'Central US' -RepositoryUrl 'https://github.com/LucasYao93/blazor-starter' -RepositoryToken 'githubAccessToken' -Branch 'branch02' -AppLocation 'Client' -ApiLocation 'Api' -OutputLocation 'wwwroot' -SkuName 'Standard'
+```
 
+```output
 Kind Location   Name             Type
 ---- --------   ----             ----
      Central US staticweb-45asde Microsoft.Web/staticSites
@@ -43,8 +45,10 @@ This command creates a new static site in an existing resource group, or updates
 
 ### Example 2: Create a new static site in an existing resource group through specified template repository
 ```powershell
-PS C:\> New-AzStaticWebApp -ResourceGroupName 'azure-rg-test' -Name staticweb-pwsh01 -Location "Central US" -RepositoryToken  'xxxxxxxxxxxxxxxxx' -TemplateRepositoryUrl 'https://github.com/staticwebdev/blazor-starter' -ForkRepositoryDescription "Test template repository function of the azure static web." -ForkRepositoryName "test-blazor-starter" -ForkRepositoryOwner 'LucasYao93' -Branch 'main' -AppLocation 'Client' -ApiLocation 'Api' -OutputLocation 'wwwroot' -SkuName 'Standard'
+New-AzStaticWebApp -ResourceGroupName 'azure-rg-test' -Name staticweb-pwsh01 -Location "Central US" -RepositoryToken  'xxxxxxxxxxxxxxxxx' -TemplateRepositoryUrl 'https://github.com/staticwebdev/blazor-starter' -ForkRepositoryDescription "Test template repository function of the azure static web." -ForkRepositoryName "test-blazor-starter" -ForkRepositoryOwner 'LucasYao93' -Branch 'main' -AppLocation 'Client' -ApiLocation 'Api' -OutputLocation 'wwwroot' -SkuName 'Standard'
+```
 
+```output
 Kind Location   Name             Type
 ---- --------   ----             ----
      Central US staticweb-pwsh01 Microsoft.Web/staticSites
@@ -571,4 +575,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-

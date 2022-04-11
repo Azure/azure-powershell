@@ -24,8 +24,8 @@ The **Suspend-AzSqlDatabase** cmdlet suspends an Azure SQL Data Warehouse databa
 ## EXAMPLES
 
 ### Example 1: Suspends an Azure SQL Data Warehouse database
-```
-PS C:\>Suspend-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
+```powershell
+Suspend-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
 ```
 
 This command suspends an active Azure SQL Data Warehouse database.

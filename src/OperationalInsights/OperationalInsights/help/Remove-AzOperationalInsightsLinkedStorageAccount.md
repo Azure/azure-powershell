@@ -26,6 +26,9 @@ Delete linked storage account for workspace
 ### Example 1
 ```powershell
 Remove-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName {rg-name} -WorkspaceName {workspace-name} -DataSourceType CustomLogs
+```
+
+```output
 True
 ```
 

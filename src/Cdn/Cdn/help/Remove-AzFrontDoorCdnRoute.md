@@ -38,7 +38,7 @@ Removes the route.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzFrontDoorCdnRoute -ResourceId $routeResourceId
+Remove-AzFrontDoorCdnRoute -ResourceId $routeResourceId
 ```
 
 Removes the route.

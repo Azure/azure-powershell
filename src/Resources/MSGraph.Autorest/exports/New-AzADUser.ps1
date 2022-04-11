@@ -20,8 +20,8 @@ Adds new entity to users
 .Description
 Adds new entity to users
 .Example
-PS C:\> $pp=New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordProfile" -Property @{Password=$password}
-PS C:\> New-MgUser -DisplayName $uname -PasswordProfile $pp -AccountEnabled -MailNickname $nickname -UserPrincipalName $upn
+$pp=New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordProfile" -Property @{Password=$password}
+New-MgUser -DisplayName $uname -PasswordProfile $pp -AccountEnabled -MailNickname $nickname -UserPrincipalName $upn
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser
@@ -91,11 +91,10 @@ param(
     ${AboutMe},
 
     [Parameter()]
+    [Alias('EnableAccount')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # true if the account is enabled; otherwise, false.
-    # This property is required when a user is created.
-    # Supports $filter (eq, ne, NOT, and in).
+    [System.Boolean]
+    # true for enabling the account; otherwise, false.
     ${AccountEnabled},
 
     [Parameter()]

@@ -261,5 +261,12 @@ namespace CognitiveServices.Test.ScenarioTests
         {
             TestController.NewInstance.RunPsTest(traceInterceptor, "Test-Deployment");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestListModels()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-ListModels");
+        }
     }
 }

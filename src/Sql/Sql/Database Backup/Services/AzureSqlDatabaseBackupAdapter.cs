@@ -13,17 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Backup.Model;
 using Microsoft.Azure.Commands.Sql.Database.Model;
-using Microsoft.Azure.Commands.Sql.Database.Services;
-using Microsoft.Azure.Commands.Sql.ElasticPool.Services;
 using Microsoft.Azure.Commands.Sql.Server.Adapter;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
 
@@ -586,8 +581,10 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="restorePointInTime">A point to time to restore to (for PITR and dropped DB restore)</param>
         /// <param name="resourceId">The resource ID of the DB to restore (live, geo backup, deleted database, long term retention backup, etc.)</param>
         /// <param name="model">An object modeling the database to create via restore</param>
+        /// <param name="isCrossSubscriptionRestore">Is cross subscription restore</param>
+        /// <param name="customHeaders">Custom headers</param>
         /// <returns>Restored database object</returns>
-        internal AzureSqlDatabaseModel RestoreDatabase(string resourceGroup, DateTime restorePointInTime, string resourceId, AzureSqlDatabaseModel model)
+        internal AzureSqlDatabaseModel RestoreDatabase(string resourceGroup, DateTime restorePointInTime, string resourceId, AzureSqlDatabaseModel model, bool isCrossSubscriptionRestore, Dictionary<string, List<string>> customHeaders = null)
         {
             // Construct the ARM resource Id of the pool
             string elasticPoolId = string.IsNullOrWhiteSpace(model.ElasticPoolName) ? null : AzureSqlDatabaseModel.PoolIdTemplate.FormatInvariant(
@@ -614,29 +611,46 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 RequestedBackupStorageRedundancy = model.RequestedBackupStorageRedundancy,
                 ZoneRedundant = model.ZoneRedundant,
             };
+            
+            // check if restore operation is cross subscription or same subscription
+            if (isCrossSubscriptionRestore)
+            {
+                // cross subscription path
+                if (dbModel.CreateMode != Management.Sql.Models.CreateMode.Recovery 
+                    && dbModel.CreateMode != Management.Sql.Models.CreateMode.Restore 
+                    && dbModel.CreateMode != Management.Sql.Models.CreateMode.PointInTimeRestore)
+				{
+                    throw new ArgumentException("Restore mode not supported for cross subscription restore. Supported restore modes for cross subscription are Recovery, Restore, PointInTimeRestore.");
+                }
 
-            if (model.CreateMode == Management.Sql.Models.CreateMode.Recovery)
-            {
-                dbModel.RecoverableDatabaseId = resourceId;
-            }
-            else if (model.CreateMode == Management.Sql.Models.CreateMode.Restore)
-            {
-                dbModel.RestorableDroppedDatabaseId = resourceId;
-            }
-            else if (model.CreateMode == Management.Sql.Models.CreateMode.PointInTimeRestore)
-            {
-                dbModel.SourceDatabaseId = resourceId;
-            }
-            else if (model.CreateMode == Management.Sql.Models.CreateMode.RestoreLongTermRetentionBackup)
-            {
-                dbModel.LongTermRetentionBackupResourceId = resourceId;
+                dbModel.SourceResourceId = resourceId;
             }
             else
             {
-                throw new ArgumentException("Restore mode not supported");
+                // same subscription path
+                if (model.CreateMode == Management.Sql.Models.CreateMode.Recovery)
+                {
+                    dbModel.RecoverableDatabaseId = resourceId;
+                }
+                else if (model.CreateMode == Management.Sql.Models.CreateMode.Restore)
+                {
+                    dbModel.RestorableDroppedDatabaseId = resourceId;
+                }
+                else if (model.CreateMode == Management.Sql.Models.CreateMode.PointInTimeRestore)
+                {
+                    dbModel.SourceDatabaseId = resourceId;
+                }
+                else if (model.CreateMode == Management.Sql.Models.CreateMode.RestoreLongTermRetentionBackup)
+                {
+                    dbModel.LongTermRetentionBackupResourceId = resourceId;
+                }
+                else
+                {
+                    throw new ArgumentException("Restore mode not supported");
+                }
             }
 
-            Management.Sql.Models.Database database = Communicator.RestoreDatabase(resourceGroup, model.ServerName, model.DatabaseName, dbModel);
+            Management.Sql.Models.Database database = Communicator.RestoreDatabase(resourceGroup, model.ServerName, model.DatabaseName, dbModel, customHeaders);
 
             return new AzureSqlDatabaseModel(resourceGroup, model.ServerName, database);
         }

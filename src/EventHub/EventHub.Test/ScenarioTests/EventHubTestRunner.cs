@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
                     helper.RMProfileModule,
                     helper.GetRMModulePath("AzureRM.EventHub.psd1"),
                     helper.GetRMModulePath("AzureRM.KeyVault.psd1"),
-
+                    helper.GetRMModulePath("AzureRM.ManagedServiceIdentity.psd1"),
                 })
                 .WithRecordMatcher(
                     (ignoreResourcesClient, resourceProviders, userAgentsToIgnore) =>
@@ -58,6 +58,7 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
                         {"Microsoft.Authorization", null},
                         {"Microsoft.EventHub", null},
                         {"Microsoft.KeyVault", null},
+                        {"Microsoft.ManagedServiceIdentity", null}
                     }
                 )
                 .Build();

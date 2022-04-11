@@ -29,8 +29,10 @@ The Get-AzSecuritySetting cmdlet get security settings in Azure Security Center.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSecuritySetting -SettingName "MCAS"
+Get-AzSecuritySetting -SettingName "MCAS"
+```
 
+```output
 Id: "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/settings/MCAS"
 Name: "MCAS"
 Type: "Microsoft.Security/settings"

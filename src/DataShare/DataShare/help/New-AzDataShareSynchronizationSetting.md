@@ -24,8 +24,11 @@ The **New-AzDataShareSynchronizationSetting** creates a synchronization setting 
 ## EXAMPLES
 
 ### Example 1
+```powershell
+New-AzDataShareSynchronizationSetting -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareName "AdsShare" -Name "ShareSynchronization" -RecurrenceInterval "Day" -SynchronizationTime 9:00
 ```
-PS C:\>  New-AzDataShareSynchronizationSetting -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareName "AdsShare" -Name "ShareSynchronization" -RecurrenceInterval "Day" -SynchronizationTime 9:00
+
+```output
 RecurrenceInterval  : Day
 SynchronizationTime : 7/9/2019 9:00:00 AM
 ProvisioningState   : Succeeded

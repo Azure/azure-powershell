@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
 online version: https://docs.microsoft.com/powershell/module/az.iothub/remove-aziothubdevice
@@ -37,15 +37,17 @@ Delete all devices or a specific device from an Iot Hub.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzIotHubDevice -ResourceGroupName "myresourcegroup" -IotHubName "myiothub"
+Remove-AzIotHubDevice -ResourceGroupName "myresourcegroup" -IotHubName "myiothub"
 ```
 
 Delete all Iot Hub devices.
 
 ### Example 2
 ```powershell
-PS C:\> Remove-AzIotHubDevice -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1" -PassThru
+Remove-AzIotHubDevice -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1" -PassThru
+```
 
+```output
 True
 ```
 

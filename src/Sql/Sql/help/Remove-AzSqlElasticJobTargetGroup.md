@@ -37,9 +37,11 @@ The Remove-AzSqlElasticJobTargetGroup cmdlet removes a target group and it's tar
 
 ### Example 1
 ```powershell
-PS C:\> $agent = Get-AzSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent 
+$agent = Get-AzSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent 
 $agent | Remove-AzSqlElasticJobTargetGroup -Name tg1
+```
 
+```output
 TargetGroupName Targets
 --------------- -------
 tg1             (s1,db1)

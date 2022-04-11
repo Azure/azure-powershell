@@ -32,9 +32,11 @@ The **Undo-AzKeyVaultManagedStorageSasDefinitionRemoval** command recovers a pre
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzKeyVaultManagedStorageSasDefinition -VaultName myVault -AccountName myAccount -Name mySasName -InRemovedState
-PS C:\> Undo-AzKeyVaultManagedStorageSasDefinitionRemoval -VaultName myVault -AccountName myAccount -Name mySasName
+Get-AzKeyVaultManagedStorageSasDefinition -VaultName myVault -AccountName myAccount -Name mySasName -InRemovedState
+Undo-AzKeyVaultManagedStorageSasDefinitionRemoval -VaultName myVault -AccountName myAccount -Name mySasName
+```
 
+```output
 Id          : https://myvault.vault.azure.net:443/storage/myaccount/sas/mysasname
 Secret Id   : https://myvault.vault.azure.net/secrets/myaccount-mysasname
 Vault Name  : myVault

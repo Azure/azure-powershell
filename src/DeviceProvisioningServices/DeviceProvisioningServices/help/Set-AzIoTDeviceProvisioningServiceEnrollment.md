@@ -55,25 +55,25 @@ Update a device enrollment in an Azure IoT Hub Device Provisioning Service.
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzIoTDeviceProvisioningServiceEnrollment -ResourceGroupName "myresourcegroup" -DpsName "mydps" -RegistrationId "enroll1" -AllocationPolicy Hashed -IotHub "hub1","hub2"
+Set-AzIoTDeviceProvisioningServiceEnrollment -ResourceGroupName "myresourcegroup" -DpsName "mydps" -RegistrationId "enroll1" -AllocationPolicy Hashed -IotHub "hub1","hub2"
 ```
 
 Update allocation policy and hubs for an enrollment record.
 
 ### Example 2
 ```powershell
-PS C:\> $tag = @{}
-PS C:\> $tag.Add("environment","updatedenv")
-PS C:\> $desired = @{}
-PS C:\> $desired.add("version_dps", "updateddps")
-PS C:\> Set-AzIoTDeviceProvisioningServiceEnrollment -ResourceGroupName "myresourcegroup" -DpsName "mydps" -RegistrationId "enroll1" -tag $tag -Desired $desired
+$tag = @{}
+$tag.Add("environment","updatedenv")
+$desired = @{}
+$desired.add("version_dps", "updateddps")
+Set-AzIoTDeviceProvisioningServiceEnrollment -ResourceGroupName "myresourcegroup" -DpsName "mydps" -RegistrationId "enroll1" -tag $tag -Desired $desired
 ```
 
 Update an enrollment's initial twin state.
 
 ### Example 3
 ```powershell
-PS C:\> Set-AzIoTDeviceProvisioningServiceEnrollment -ResourceGroupName "myresourcegroup" -DpsName "mydps" -RegistrationId "enroll1" -PrimaryCertificate ".\primaryCertificate.cer" -SecondaryCertificate ".\secondaryCertificate.cer"
+Set-AzIoTDeviceProvisioningServiceEnrollment -ResourceGroupName "myresourcegroup" -DpsName "mydps" -RegistrationId "enroll1" -PrimaryCertificate ".\primaryCertificate.cer" -SecondaryCertificate ".\secondaryCertificate.cer"
 ```
 
 Update a symmetric key enrollment's primary and secondary certificates

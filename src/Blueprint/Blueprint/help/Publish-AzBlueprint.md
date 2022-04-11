@@ -24,8 +24,10 @@ Publish a new version of a blueprint definition.
 
 ### Example 1
 ```powershell
-PS C:\> Publish-AzBlueprint -Blueprint $bp -Version 1.0 
+Publish-AzBlueprint -Blueprint $bp -Version 1.0 
+```
 
+```output
 Name           : SimpleBlueprint
 Id             : /subscriptions/{subscriptionId}/providers/Microsoft.Blueprint/blueprints/SimpleBlueprint/versions/1.0
 SubscriptionId : 00000000-1111-0000-1111-000000000000

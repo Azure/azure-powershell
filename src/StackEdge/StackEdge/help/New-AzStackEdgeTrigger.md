@@ -45,7 +45,10 @@ The **New-AzStackEdgeTrigger** cmdlet configures a trigger on the Stack Edge dev
 
 ### Example 1
 ```powershell
-PS C:\> New-AzStackEdgeTrigger -ResourceGroupName resourceGroupName -DeviceName deviceName -PeriodicTimerEvent -Name periodic-trigger -RoleName IOTRole -Schedule "00:00" -StartTime "2019-10-28 12:00:00" -Topic sample-topic
+New-AzStackEdgeTrigger -ResourceGroupName resourceGroupName -DeviceName deviceName -PeriodicTimerEvent -Name periodic-trigger -RoleName IOTRole -Schedule "00:00" -StartTime "2019-10-28 12:00:00" -Topic sample-topic
+```
+
+```output
 Name                  Kind               
 ----                  ----               
 periodic-trigger      PeriodicTimerEvent

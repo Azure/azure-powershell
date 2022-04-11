@@ -130,6 +130,14 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string CompositePathHelpMessage = "The path for which the indexing behavior applies to. Index paths typically start with root and end with wildcard (/path/*)";
         public const string CompositePathOrderTypeHelpMessage = " Gets or sets sort order for composite paths. Possible values include: 'Ascending', 'Descending'";
         public const string SqlContainerAnalyticalStorageTtlHelpMessage = "TTL for Analytical Storage (in Seconds).";
+        public const string ClientEncryptionKeyObjectHelpMessage = "Client Encryption Key object.";
+
+        //SQL Client Side Encryption
+        public const string ClientEncryptionKeyName = "Client Encryption Key name.";
+        public const string ClientEncryptionKeyNameAlias = "ClientEncryptionKeyName";
+        public const string EncryptionAlgorithmName = "Client Encryption Algorithm name.";
+        public const string KeyWrapMetaData = "KeyWrapMetaData Object of type Microsoft.Azure.Commands.CosmosDB.PSSqlKeyWrapMetadata.";
+        public const string KeyEncryptionKeyResolver = "KeyEncryptionKeyResolver interface of type Azure.Core.Cryptography.IKeyEncryptionKeyResolver. If KeyEncryptionKeyResolver is not passed Azure Key Vault KeyResolver is used.";
 
         //MongoDB cmdlets help messages
         public const string CollectionNameHelpMessage = "Collection name.";

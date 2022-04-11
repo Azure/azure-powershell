@@ -37,7 +37,7 @@ The **Remove-AzStackEdgeOrder** cmdlet deletes an existing order for a Stack Edg
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzStackEdgeOrder -ResourceGroupName resourceGroupName -DeviceName deviceName
+Remove-AzStackEdgeOrder -ResourceGroupName resourceGroupName -DeviceName deviceName
 ```
 
 ## PARAMETERS

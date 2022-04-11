@@ -28,10 +28,12 @@ The **Set-AzLocalNetworkGateway** cmdlet modifies a local network gateway.
 Set configuration for an existing gateway
 
 
-```
+```powershell
 $lgw = Get-AzLocalNetworkGateway -Name myLocalGW -ResourceGroupName myRG
 Set-AzLocalNetworkGateway -LocalNetworkGateway $lgw
+```
 
+```output
 Name                     : myLocalGW
 ResourceGroupName        : TestRG1
 Location                 : westus

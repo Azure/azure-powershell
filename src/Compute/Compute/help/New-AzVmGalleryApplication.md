@@ -24,9 +24,9 @@ Creates a local PSVMGalleryApplication object.
 
 ### Example 1
 ```powershell
-PS C:\> $vm = Get-AzVm -ResourceGroupName $rgName -Name $vmName
-PS C:\> $vmGal = New-AzVmGalleryApplication -PackageReferenceId $packageRefId -ConfigReferenceId $configRefId
-PS C:\> Add-AzVmGalleryApplication -VM $vm -GalleryApplication $vmGal -Order 1
+$vm = Get-AzVm -ResourceGroupName $rgName -Name $vmName
+$vmGal = New-AzVmGalleryApplication -PackageReferenceId $packageRefId -ConfigReferenceId $configRefId
+Add-AzVmGalleryApplication -VM $vm -GalleryApplication $vmGal -Order 1
 ```
 
 This example creates a local VMGalleryApplication object and adds it to a PSVirtualMachine object.

@@ -41,11 +41,12 @@ This can be suppressed using the *Overwrite* parameter, which updates the zone r
 ## EXAMPLES
 
 ### Example 1: Updates a private zone
+```powershell
+Set-AzPrivateDnsZone -Name "myzone.com" -ResourceGroupName "MyResourceGroup" -Tag @{tag1="value1";tag2="value2"}
+
 ```
-PS C:\>Set-AzPrivateDnsZone -Name "myzone.com" -ResourceGroupName "MyResourceGroup" -Tag @{tag1="value1";tag2="value2"}
 
-
-This command updates the zone named myzone.com from the resource group named MyResourceGroup with the tags provided. Use Get-AzPrivateDnsZone to retrieve the updated zone. Updated zone would look something like this:
+```output
 
 Name                          : myzone.com
 ResourceId                    : "/subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/PrivateZones/myzone.com"
@@ -56,6 +57,7 @@ Tags                          : {tag1="value1";tag2="value2"}
 NumberOfRecordSets            : 1
 MaxNumberOfRecordSets         : 5000
 ```
+This command updates the zone named myzone.com from the resource group named MyResourceGroup with the tags provided. Use Get-AzPrivateDnsZone to retrieve the updated zone. 
 
 ## PARAMETERS
 

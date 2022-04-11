@@ -91,8 +91,12 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             {
                 adObject = activeDirectoryClient.GetObjectByObjectId(assignment.PrincipalId);
             }
-            catch
+            catch (Common.MSGraph.Version1_0.DirectoryObjects.Models.OdataErrorException oe)
             {
+                if (oe.IsAuthorizationDeniedException() || oe.IsNotFoundException())
+                {
+                    adObject = new PSADObject() { Id = assignment.PrincipalId, Type = UnknownType};
+                }
                 //Swallow exceptions when displaying active directive object
             }
 
@@ -104,9 +108,10 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 DisplayName = adObject?.DisplayName,
                 SignInName = adObject is PSADUser user ? user.UserPrincipalName : null,
                 RoleDefinitionName = roleDefinition?.Name,
-                RoleDefinitionId = assignment.RoleDefinitionId,
+                RoleDefinitionId = assignment.RoleDefinitionId.GuidFromFullyQualifiedId(),
                 ObjectId = assignment.PrincipalId,
-                ObjectType = string.IsNullOrEmpty(assignment.PrincipalType) ? adObject?.Type?? UnknownType : assignment.PrincipalType,
+                // Use information from adObject first, assignment.PrincipalType is a cached information
+                ObjectType = adObject?.Type ?? assignment.PrincipalType,
                 // CanDelegate's value is absent from RoleAssignment
                 // CanDelegate = null,
                 Description = assignment.Description,
@@ -196,11 +201,12 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                     RoleAssignmentName = assignment.Name,
                     RoleAssignmentId = assignment.Id,
                     DisplayName = adObject.DisplayName,
-                    RoleDefinitionId = roleDefinition.Id,
+                    RoleDefinitionId = assignment.RoleDefinitionId,
                     RoleDefinitionName = roleDefinition.Name,
                     Scope = assignment.Scope,
                     ObjectId = assignment.PrincipalId,
-                    ObjectType = assignment.PrincipalType ?? adObject.Type,
+                    // Use information from adObject first, assignment.PrincipalType is a cached information
+                    ObjectType = adObject?.Type ?? assignment.PrincipalType,
                     Description = assignment.Description,
                     Condition = assignment.Condition,
                     ConditionVersion = assignment.ConditionVersion,

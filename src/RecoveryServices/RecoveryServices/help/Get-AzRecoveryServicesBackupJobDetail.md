@@ -38,10 +38,10 @@ Warning: **Get-AzRecoveryServicesBackupJobDetails** alias will be removed in a f
 ### Example 1: Get Backup job details for failed jobs
 
 ```powershell
-PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
-PS C:\> $Jobs = Get-AzRecoveryServicesBackupJob -Status Failed -VaultId $vault.ID
-PS C:\> $JobDetails = Get-AzRecoveryServicesBackupJobDetail -Job $Jobs[0] -VaultId $vault.ID
-PS C:\> $JobDetails.ErrorDetails
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+$Jobs = Get-AzRecoveryServicesBackupJob -Status Failed -VaultId $vault.ID
+$JobDetails = Get-AzRecoveryServicesBackupJobDetail -Job $Jobs[0] -VaultId $vault.ID
+$JobDetails.ErrorDetails
 ```
 
 The first command fetches the relevant vault. The second command gets an array of failed jobs in the vault, and then stores them in the $Jobs array.

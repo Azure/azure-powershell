@@ -44,7 +44,7 @@ The cmdlet **New-AzSynapseIntegrationRuntimeKey** regenerates the integration ru
 
 ### Example 1
 ```powershell
-PS C:\> New-AzSynapseIntegrationRuntimeKey -WorkspaceName ContosoWorkspace -Name 'test-selfhost-ir' -KeyName authKey2
+New-AzSynapseIntegrationRuntimeKey -WorkspaceName ContosoWorkspace -Name 'test-selfhost-ir' -KeyName authKey2
 ```
 
 The cmdlet regenerates key 'authKey2' for integration runtime named 'test-selfhost-ir'.

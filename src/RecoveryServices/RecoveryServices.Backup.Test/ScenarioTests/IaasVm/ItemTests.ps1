@@ -12,6 +12,50 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+function Test-AzureManagedVMRestore
+{
+	$location = "centraluseuap"
+	$resourceGroupName = "hiagarg"
+	$vaultName = "hiagaVault"
+	$vmName = "VM;iaasvmcontainerv2;hiagarg;hiagavm"
+	$saName = "hiagasa"
+	$targetVMName = "alr-pstest-vm"
+	$targetVNetName = "hiagarg-vnet"
+	$targetVNetRG = "hiagarg"
+	$targetSubnetName = "default"
+
+	try
+	{	
+		# Setup
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+		$item = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM `
+			-VaultId $vault.ID -Name $vmName
+
+		$backupJob = Backup-Item $vault $item
+		$backupStartTime = $backupJob.StartTime.AddMinutes(-1);
+		$backupEndTime = $backupJob.EndTime.AddMinutes(1);
+		
+		$rp = Get-AzRecoveryServicesBackupRecoveryPoint `
+			-VaultId $vault.ID `
+			-StartDate $backupStartTime `
+			-EndDate $backupEndTime `
+			-Item $item; 		
+
+		$restoreJobALR = Restore-AzRecoveryServicesBackupItem -VaultId $vault.ID -VaultLocation $vault.Location `
+			-RecoveryPoint $rp[0] -StorageAccountName $saName -StorageAccountResourceGroupName $vault.ResourceGroupName -TargetResourceGroupName $vault.ResourceGroupName -TargetVMName $targetVMName -TargetVNetName $targetVNetName -TargetVNetResourceGroup $targetVNetRG -TargetSubnetName $targetSubnetName | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+		
+		Assert-True { $restoreJobALR.Status -eq "Completed" }
+
+		$restoreJobOLR = Restore-AzRecoveryServicesBackupItem -VaultId $vault.ID -VaultLocation $vault.Location `
+			-RecoveryPoint $rp[0] -StorageAccountName $saName -StorageAccountResourceGroupName $vault.ResourceGroupName | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+
+		Assert-True { $restoreJobOLR.Status -eq "Completed" }  
+	}
+	finally
+	{
+		Delete-VM $resourceGroupName $targetVMName
+	}
+}
 
 function Test-AzureRSVaultCMK
 {
@@ -72,7 +116,7 @@ function Test-AzureVMRestoreWithMSI
 			-StartDate $backupStartTime `
 			-EndDate $backupEndTime `
 			-Item $item; 		
-
+		
 		$restoreJob1 = Restore-AzRecoveryServicesBackupItem -VaultId $vault.ID -VaultLocation $vault.Location `
 			-RecoveryPoint $rp[0] -StorageAccountName $saName -StorageAccountResourceGroupName `
 			$vault.ResourceGroupName -RestoreOnlyOSDisk -TargetResourceGroupName $vault.ResourceGroupName `
@@ -206,15 +250,18 @@ function Test-AzureBackupDataMove
 
 function Test-AzureVMGetItems
 {
-	$location = "southeastasia"
-	$resourceGroupName = Create-ResourceGroup $location
+	$location = "centraluseuap" #"southeastasia"
+	$resourceGroupName = "hiagarg" #Create-ResourceGroup $location
+	$vmName1 = "hiagaNewVm1"
+	$vmName2 = "hiaganewVM2"
+	$vaultName = "hiaga-adhoc-vault"
 
 	try
 	{
 		# Setup
-		$vm = Create-VM $resourceGroupName $location 1
-		$vm2 = Create-VM $resourceGroupName $location 12
-		$vault = Create-RecoveryServicesVault $resourceGroupName $location
+		$vm = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmName1 # Create-VM $resourceGroupName $location 1
+		$vm2 = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmName2 # Create-VM $resourceGroupName $location 12
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName # Create-RecoveryServicesVault $resourceGroupName $location
 
 		# disable soft delete for successful cleanup
 		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState "Disable"
@@ -311,7 +358,8 @@ function Test-AzureVMGetItems
 	finally
 	{
 		# Cleanup
-		Cleanup-ResourceGroup $resourceGroupName
+		#Cleanup-ResourceGroup $resourceGroupName
+		# Disable protection with remove recovery points 
 	}
 }
 

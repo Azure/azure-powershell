@@ -25,8 +25,11 @@ You can specify a route by name.
 ## EXAMPLES
 
 ### Example 1: Get a route table
+```powershell
+Get-AzRouteTable -ResourceGroupName "ResourceGroup11" -Name "RouteTable01" | Get-AzRouteConfig -Name "Route07"
 ```
-PS C:\>Get-AzRouteTable -ResourceGroupName "ResourceGroup11" -Name "RouteTable01" | Get-AzRouteConfig -Name "Route07"
+
+```output
 Name              : route07
 Id                : 
 Etag              : 

@@ -135,21 +135,12 @@ namespace Microsoft.Azure.Commands.KeyVault
                 return vaults;
             }
 
-            IEnumerable<PSKeyVaultIdentityItem> listResult;
             var resourceType = resourceTypeName.Equals(ResourceTypeName.Hsm) ?
                 KeyVaultManagementClient.ManagedHsmResourceType : KeyVaultManagementClient.VaultsResourceType;
-            if (ShouldListByResourceGroup(resourceGroupName, null))
-            {
-                listResult = ListByResourceGroup(resourceGroupName,
-                    new Rest.Azure.OData.ODataQuery<GenericResourceFilter>(
-                        r => r.ResourceType == resourceType));
-            }
-            else
-            {
-                listResult = ListResources(
-                    new Rest.Azure.OData.ODataQuery<GenericResourceFilter>(
-                        r => r.ResourceType == resourceType));
-            }
+
+            IEnumerable<PSKeyVaultIdentityItem> listResult = ListPagable(resourceGroupName,
+                new Rest.Azure.OData.ODataQuery<GenericResourceFilter>(
+                    r => r.ResourceType == resourceType));
 
             if (listResult != null)
             {
@@ -161,22 +152,40 @@ namespace Microsoft.Azure.Commands.KeyVault
             return vaults;
         }
 
-        public virtual IEnumerable<PSKeyVaultIdentityItem> ListResources(Rest.Azure.OData.ODataQuery<GenericResourceFilter> filter = null, ulong first = ulong.MaxValue, ulong skip = ulong.MinValue)
+        IEnumerable<PSKeyVaultIdentityItem> ListPagable(string resourceGroupName, Rest.Azure.OData.ODataQuery<GenericResourceFilter> filter = null)
         {
-            IResourceManagementClient armClient = ResourceClient;
-
-            return new GenericPageEnumerable<GenericResource>(() => armClient.Resources.List(filter), armClient.Resources.ListNext, first, skip).Select(r => new PSKeyVaultIdentityItem(r));
+            string nextPageLink = null;
+            var results = new List<PSKeyVaultIdentityItem>();
+            do
+            {
+                var response = ShouldListByResourceGroup(resourceGroupName, null) ?
+                    ListByResourceGroup(resourceGroupName, filter, nextPageLink) :
+                    ListResources(filter, nextPageLink);
+                results.AddRange(response.Select(r => new PSKeyVaultIdentityItem(r)));
+                nextPageLink = response?.NextPageLink;
+            } while (!string.IsNullOrEmpty(nextPageLink));
+            return results;
         }
 
-        private IEnumerable<PSKeyVaultIdentityItem> ListByResourceGroup(
-            string resourceGroupName,
-            Rest.Azure.OData.ODataQuery<GenericResourceFilter> filter,
-            ulong first = ulong.MaxValue,
-            ulong skip = ulong.MinValue)
+        public virtual Rest.Azure.IPage<GenericResource> ListResources(
+            Rest.Azure.OData.ODataQuery<GenericResourceFilter> filter = null, 
+            string NextPageLink = null)
         {
             IResourceManagementClient armClient = ResourceClient;
+            return string.IsNullOrEmpty(NextPageLink) ? 
+                armClient.Resources.List(filter) : 
+                armClient.Resources.ListNext(NextPageLink);
+        }
 
-            return new GenericPageEnumerable<GenericResource>(() => armClient.ResourceGroups.ListResources(resourceGroupName, filter), armClient.ResourceGroups.ListResourcesNext, first, skip).Select(r => new PSKeyVaultIdentityItem(r));
+        private Rest.Azure.IPage<GenericResource> ListByResourceGroup(
+            string resourceGroupName,
+            Rest.Azure.OData.ODataQuery<GenericResourceFilter> filter = null,
+            string NextPageLink = null)
+        {
+            IResourceManagementClient armClient = ResourceClient;
+            return string.IsNullOrEmpty(NextPageLink) ? 
+                armClient.ResourceGroups.ListResources(resourceGroupName, filter) :
+                armClient.ResourceGroups.ListResourcesNext(NextPageLink);
         }
 
         protected string GetResourceGroupName(string name, bool isHsm = false)

@@ -31,8 +31,10 @@ The **Get-AzCosmosDBGremlinGraphThroughput** cmdlet gets the throughput of a Cos
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCosmosDBGremlinGraphThroughput -ResourceGroupName {rgName} -AccountName {accountName} -DatabaseName {dbName} -Name {graphName}
+Get-AzCosmosDBGremlinGraphThroughput -ResourceGroupName {rgName} -AccountName {accountName} -DatabaseName {dbName} -Name {graphName}
+```
 
+```output
 Name: {throughputName}
 Id: {Id}
 Throughput: {value} 
