@@ -18,6 +18,16 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added `Subvolumes` support `Get-AzNetAppFilesSubvolume`, `Get-AzNetAppFilesSubvolume`,`New-AzNetAppFilesSubvolume`,`Update-AzNetAppFilesSubvolume`, `Remove-AzNetAppFilesSubvolume` and `Get-AzNetAppFilesSubvolumeMetadata`
+* Added `VolumeGroups` support `Get-AzNetAppFilesVolumeGroup`, `Get-AzNetAppFilesVolumeGroup`,`New-AzNetAppFilesVolumeGroup`,`Update-AzNetAppFilesVolumeGroup`, `Remove-AzNetAppFilesVolumeGroup` 
+* Added `Restore-AzNetAppFilesSnapshot`, To restore the specified files from the specified snapshot to the active filesystem
+* Added `LdapSearchScope` to `ActiveDirectory`
+* Added `SystemData` to `BackupPolicy`, `CapacityPool`, `Volumes` and `SnapshotPolicy` output 
+* Added `MaximumNumberOfFiles` and `EnableSubvolumes` to `Get-AzNetAppFilesVolume` output
+* Added `EnableSubvolumes` to `Update-AzNetAppFilesVolume` 
+* Added `UnixPermissions` to `Update-AzNetAppFilesVolume`
+* Added `forceDelete' to `Remove-AzNetAppFilesVolume`
+
 
 ## Version 0.9.0
 * Added `Administrators` and `EncryptDCConnections` to `ActiveDirectory`

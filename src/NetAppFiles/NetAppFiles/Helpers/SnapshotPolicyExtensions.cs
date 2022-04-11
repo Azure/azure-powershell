@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 HourlySchedule = snapshotPolicy.HourlySchedule.ConvertToPs(),
                 DailySchedule = snapshotPolicy.DailySchedule.ConvertToPs(),
                 WeeklySchedule = snapshotPolicy.WeeklySchedule.ConvertToPs(),
-                MonthlySchedule = snapshotPolicy.MonthlySchedule.ConvertToPs()
+                MonthlySchedule = snapshotPolicy.MonthlySchedule.ConvertToPs(),
+                SystemData = snapshotPolicy.SystemData.ToPsSystemData()
             };
             return psSnapshotPolicy;
         }

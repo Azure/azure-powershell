@@ -111,5 +111,10 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// Gets azure lifecycle management
         /// </summary>
         public string ProvisioningState { get; set; }
+
+        /// <summary>
+        /// Gets or sets System Data
+        /// </summary>
+        public PSSystemData SystemData { get; set; }
     }
 }

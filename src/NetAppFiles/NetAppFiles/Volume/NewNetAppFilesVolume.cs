@@ -273,6 +273,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
         [ValidateNotNullOrEmpty]
         public IList<PSKeyValuePairs> PlacementRule { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Flag indicating whether subvolume operations are enabled on the volume (Enabled, Disabled)")]
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        public string EnableSubvolume { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -355,7 +360,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 CapacityPoolResourceId = CapacityPoolResourceId,
                 ProximityPlacementGroup = ProximityPlacementGroup,
                 VolumeSpecName = VolumeSpecName,
-                PlacementRules = PlacementRule?.ToPlacementKeyValuePairs()
+                PlacementRules = PlacementRule?.ToPlacementKeyValuePairs(),
+                EnableSubvolumes = EnableSubvolume
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))

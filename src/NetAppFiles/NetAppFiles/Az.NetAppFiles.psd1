@@ -103,7 +103,12 @@ CmdletsToExport = 'Get-AzNetAppFilesAccount', 'New-AzNetAppFilesAccount',
                'Get-AzNetAppFilesActiveDirectory', 
                'Update-AzNetAppFilesActiveDirectory', 
                'Remove-AzNetAppFilesActiveDirectory', 
-               'Get-AzNetAppFilesQuotaLimit'
+               'Get-AzNetAppFilesQuotaLimit',
+               'New-AzNetAppFilesSubvolume', 'Get-AzNetAppFilesSubvolume', 
+               'Get-AzNetAppFilesSubvolumeMetadata', 'Update-AzNetAppFilesSubvolume', 
+               'Remove-AzNetAppFilesSubvolume',
+               'New-AzNetAppFilesVolumeGroup', 'Get-AzNetAppFilesVolumeGroup',
+               'Remove-AzNetAppFilesVolumeGroup'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -127,7 +132,10 @@ AliasesToExport = 'Get-AnfAccount', 'New-AnfAccount', 'Remove-AnfAccount',
                'Get-AnfVolumeBackupStatus', 'Get-AnfVolumeRestoreStatus', 
                'Get-AnfActiveDirectory', 'New-AnfActiveDirectory', 
                'Remove-AnfActiveDirectory', 'Update-AnfActiveDirectory', 
-               'Get-AnfQuotaLimit'
+               'Get-AnfQuotaLimit',
+                'Get-AnfSubvolume', 'Get-AnfSubvolumeMetadata','New-AnfSubvolume', 'Set-AnfSubvolume', 
+               'Remove-AnfSubvolume', 'Update-AnfSubvolume',
+               'Get-AnfVolumeGroup', 'New-AnfVolumeGroup', 'Remove-AnfVolumeGroup'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
