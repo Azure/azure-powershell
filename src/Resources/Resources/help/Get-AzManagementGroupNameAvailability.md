@@ -49,7 +49,7 @@ Get-AzManagementGroupNameAvailability -GroupName "testMG!"
 ```
 
 ```output
-Message              : The provided management group name 'testMG3!' has these invalid characters: '!'. The name can only be an ASCII letter, digit, -, _, (, ), .
+Message              : The provided management group name 'testMG!' has these invalid characters: '!'
 NameAvailable        : False
 Reason               : Invalid
 ```
