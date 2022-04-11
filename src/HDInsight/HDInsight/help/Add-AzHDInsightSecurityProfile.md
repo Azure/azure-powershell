@@ -57,7 +57,7 @@ $clusterUsersGroupDNs=("groupdn1","groupdn2")
 # Create the cluster
 New-AzHDInsightClusterConfig `
             | Add-AzHDInsightSecurityProfile `
-                -Domain $domain `
+                -DomainResourceId $domain `
                 -DomainUserCredential $domainUserCredential `
                 -OrganizationalUnitDN $organizationalUnitDN `
                 -LdapsUrls $ldapsUrls `

@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.2.0
 * Upgraded Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.14
 * Fixed the issue that following cmdlets only shows 100 entries
     - `Get-AzSynapseRoleAssignment` cmdlet
