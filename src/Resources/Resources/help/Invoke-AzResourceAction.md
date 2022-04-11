@@ -45,7 +45,7 @@ To get a list of supported actions, use the Azure Resource Explorer tool.
 ### Example 1: Invoke starting a VM with ResourceId
 
 ```powershell
-Invoke-AzResourceAction -ResourceId /subscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.Compute/virtualMachines/testVM -Action start
+Invoke-AzResourceAction -ResourceId /subscriptions/xxxx-xxxx-xxxx-xxxx-xxxx/resourceGroups/testrg/providers/Microsoft.Compute/virtualMachines/testVM -Action start
 ```
 ```output
 Confirm
@@ -67,7 +67,7 @@ The command specifies the *Force* parameter, therefore, it does not prompt you f
 ### Example 3: Invoke registering a resource provider with ResourceId
 
 ```powershell
-Invoke-AzResourceAction -ResourceId /subscriptions/{subId}/providers/Microsoft.Network -action register -Force
+Invoke-AzResourceAction -ResourceId /subscriptions/xxxx-xxxx-xxxx-xxxx-xxxx/providers/Microsoft.Network -action register -Force
 ```
 ```output
 id                : /subscriptions/{subId}/providers/Microsoft.Network

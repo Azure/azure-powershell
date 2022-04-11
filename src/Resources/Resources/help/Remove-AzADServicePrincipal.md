@@ -62,7 +62,7 @@ Remove service principal by display name
 
 ### Example 2: Remove service principal by pipeline input
 ```powershell
-Get-AzADServicePrincipal -Application $id | Remove-AzADServicePrincipal
+Get-AzADServicePrincipal -ApplicationId $id | Remove-AzADServicePrincipal
 ```
 
 Remove service principal by pipeline input

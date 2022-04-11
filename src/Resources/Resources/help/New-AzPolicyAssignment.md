@@ -95,7 +95,7 @@ The final command assigns the policy in $Policy at the level of the resource gro
 ```powershell
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
 $Policy = Get-AzPolicyDefinition -BuiltIn | Where-Object {$_.Properties.DisplayName -eq 'Allowed locations'}
-$Locations = Get-AzLocation | where displayname -like '*east*'
+$Locations = Get-AzLocation | Where-Object displayname -like '*east*'
 $AllowedLocations = @{'listOfAllowedLocations'=($Locations.location)}
 New-AzPolicyAssignment -Name 'RestrictLocationPolicyAssignment' -PolicyDefinition $Policy -Scope $ResourceGroup.ResourceId -PolicyParameterObject $AllowedLocations
 ```
