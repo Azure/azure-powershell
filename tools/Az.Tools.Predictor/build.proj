@@ -27,6 +27,7 @@
     <Message Text="Build $(ModuleName)" />
     <MakeDir Directories="$(ArtifactFolder)/$(ModuleName)" />
     <Exec Command="dotnet --version" />
+
     <Exec Command="dotnet $(BuildAction) $(ModuleSolutionFile) -c $(Configuration)" />
   </Target>
 

@@ -10,6 +10,5 @@ Param(
 )
 
 $ModuleFolder = Join-Path -Path $ArtifactFolder -ChildPath $ModuleName
-Import-Module PSReadLine
 Import-Module $ModuleFolder
 New-ExternalHelp –Path $HelpFolder -OutputPath $ModuleFolder -Force -Debug
