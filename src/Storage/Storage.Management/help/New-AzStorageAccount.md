@@ -338,7 +338,7 @@ LastKeyRotationTimestamp      : 3/3/2022 2:07:34 AM
 This command creates a storage account with Keyvault from another tenant (access Keyvault with FederatedClientId).
 
 ### Example 18: Create account with DnsEndpointType as AzureDnsZone
-```
+```powershell
 New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -SkuName Standard_LRS  -Location centraluseuap -Kind StorageV2 -DnsEndpointType AzureDnsZone
 ```
 
