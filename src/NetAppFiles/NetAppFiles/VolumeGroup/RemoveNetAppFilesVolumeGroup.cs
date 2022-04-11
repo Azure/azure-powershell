@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
     [Cmdlet(
         "Remove",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesVolumeGroup",
+        SupportsShouldProcess = true,
         DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(bool))]
     [Alias("Remove-AnfVolumeGroup")]
     public class RemoveAzureRmNetAppFilesVolumeGroup : AzureNetAppFilesCmdletBase

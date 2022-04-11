@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
     [Cmdlet(
         "New",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesVolumeGroup",
+        SupportsShouldProcess = true,
         DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSNetAppFilesVolumeGroupDetail))]
     [Alias("New-AnfVolumeGroup")]
     public class NewAzureRmNetAppFilesVolumeGroup : AzureNetAppFilesCmdletBase

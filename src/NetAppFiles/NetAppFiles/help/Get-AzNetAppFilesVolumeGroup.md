@@ -48,7 +48,7 @@ This command gets the volume named MyAnfVolumeGroup from the Account "MyAnfAccou
 The name of the ANF account
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 The Account object containing the VolumeGroup to return
 
 ```yaml
-Type: PSNetAppFilesAccount
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount
 Parameter Sets: ByParentObjectParameterSet
 Aliases:
 
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 The name of the ANF VolumeGroup
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: VolumeGroupName
 
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 The resource group of the ANF VolumeGroup
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -123,7 +123,7 @@ Accept wildcard characters: False
 The resource id of the ANF VolumeGroup
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceIdParameterSet
 Aliases:
 

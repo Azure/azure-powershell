@@ -24,7 +24,7 @@ New-AzNetAppFilesVolumeGroup -ResourceGroupName <String> -Location <String> -Acc
  [-DataBackupSize <Int64>] [-DataBackupPerformance <Int32>] [-LogBackupSize <Int64>]
  [-LogBackupPerformance <Int32>] [-HannaSystemReplication] [-DisasterRecoveryDestination]
  [-BackupProtocolType <String[]>] [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
@@ -38,7 +38,7 @@ New-AzNetAppFilesVolumeGroup -PoolName <String> [-Name <String>] [-GroupDescript
  [-LogBackupSize <Int64>] [-LogBackupPerformance <Int32>] [-HannaSystemReplication]
  [-DisasterRecoveryDestination] [-BackupProtocolType <String[]>]
  [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>] [-Tag <Hashtable>] -AccountObject <PSNetAppFilesAccount>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,7 +48,7 @@ The **New-AzNetAppFilesVolume** cmdlet creates an ANF VolumeGroup.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzNetAppFilesVolumeGroup -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyAnfVolume" -Name "MyAnfVolumeGroupName" -l "westus2"  -GroupDescription "MyAnfVolumeGroup Description" -ApplicationIdentifier "SH1" -ProximityPlacementGroup "MyPPGResourceId" -Vnet "MyAnfVnet" -SystemRole "PRIMARY" -NodeMemory 100 
+PS C:\> New-AzNetAppFilesVolumeGroup -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyAnfVolume" -Name "MyAnfVolumeGroupName" -l "westus2"  -GroupDescription "MyAnfVolumeGroup Description" -ApplicationIdentifier "SH1" -ProximityPlacementGroup "MyPPGResourceId" -Vnet "MyAnfVnet" -SystemRole "PRIMARY" -NodeMemory 100
 ```
 
 This command creates the new "PRIMARY" ANF VolumeGroup "MyAnfVolumeGroup" within the Account "MyAnfAccount" using the proximityPlacementGroup "MyPPGResourceId", the vnet "MyAnfVnet", and NodeMemory of 100
@@ -59,7 +59,7 @@ This command creates the new "PRIMARY" ANF VolumeGroup "MyAnfVolumeGroup" within
 The name of the ANF account
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -74,7 +74,7 @@ Accept wildcard characters: False
 The account for the new pool object
 
 ```yaml
-Type: PSNetAppFilesAccount
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount
 Parameter Sets: ByParentObjectParameterSet
 Aliases:
 
@@ -89,7 +89,7 @@ Accept wildcard characters: False
 Application specific identifier, default SAP System ID SH1
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -104,7 +104,7 @@ Accept wildcard characters: False
 Application Type, default SAP-HANA
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -119,7 +119,7 @@ Accept wildcard characters: False
 A hashtable array which represents the protocol types for Data Backup/Log Backup volumes default NFSv4.1, for other volume types nfsv4.1 will be used.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -134,7 +134,7 @@ Accept wildcard characters: False
 Capacity overhead %, Additional quota reserved for snapshots during best-practice sizing of data volume, default 50
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -150,7 +150,7 @@ Specify throughput in MiB/s.
 If ommited DataBackupPerformance will be autocalculated or specify an integer value representing throughput.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -166,7 +166,7 @@ Specify capacity (in GiB).
 If ommited DataSize will be autocalculated or specify an integer value representing size.
 
 ```yaml
-Type: Int64
+Type: System.Nullable`1[System.Int64]
 Parameter Sets: (All)
 Aliases:
 
@@ -182,7 +182,7 @@ Specify throughput in MiB/s.
 If ommited DataPerformance will be autocalculated or specify and integer value representing throughput.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -198,7 +198,7 @@ Specify capacity (in GiB).
 If ommited DataSize will be autocalculated or specify an integer value representing size.
 
 ```yaml
-Type: Int64
+Type: System.Nullable`1[System.Int64]
 Parameter Sets: (All)
 Aliases:
 
@@ -213,7 +213,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -228,7 +228,7 @@ Accept wildcard characters: False
 Create volume groups for DR, using ANF Cross Region Replication, scenario allows volumes to be replicated between different regions using SnapMirror
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -243,7 +243,7 @@ Accept wildcard characters: False
 A hashtable array which represents the export policy, which should be common to all volumes.
 
 ```yaml
-Type: PSNetAppFilesVolumeExportPolicy
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy
 Parameter Sets: (All)
 Aliases:
 
@@ -258,7 +258,7 @@ Accept wildcard characters: False
 Group Description, example Primary for SH1-{HostId} (default)
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -274,7 +274,7 @@ HANA System Replication (HSR): Replication between the same SID instance on host
 This could be Scale-Up or Scale-Out configurations.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -292,7 +292,7 @@ Defaults to 50 for single-host setups.
 Currently at max 3 nodes can be configured.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -307,7 +307,7 @@ Accept wildcard characters: False
 The location of the resource
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -323,7 +323,7 @@ Specify throughput in MiB/s.
 If ommited LogBackupPerformance will be autocalculated or specify an integer value representing throughput.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -339,7 +339,7 @@ Specify capacity (in GiB).
 If ommited DataSize will be autocalculated or specify an integer value representing size.
 
 ```yaml
-Type: Int64
+Type: System.Nullable`1[System.Int64]
 Parameter Sets: (All)
 Aliases:
 
@@ -355,7 +355,7 @@ Specify throughput in MiB/s.
 If ommited LogPerformance will be autocalculated or specify and integer value representing throughput.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -371,7 +371,7 @@ Specify capacity (in GiB).
 If ommited LogSize will be autocalculated or specify an integer value representing size.
 
 ```yaml
-Type: Int64
+Type: System.Nullable`1[System.Int64]
 Parameter Sets: (All)
 Aliases:
 
@@ -387,7 +387,7 @@ The name of the ANF VolumeGroup, example SAP-HANA-SH00001.
 Defaults to SAP-HANA-{HostId}, where the {HostId} pattern in the name will be replaced by a 5 digit host ID that begins at 1 for the Single-host and counts up for the subsequent Multiple-host, host
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: VolumeGroupName
 
@@ -402,7 +402,7 @@ Accept wildcard characters: False
 SAP node memory (GiB), Memory on SAP compute host
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -417,7 +417,7 @@ Accept wildcard characters: False
 Default capacity pool for volumes, use a manual QoS type capacity pool
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -434,7 +434,7 @@ The default values for prefix text depends on system role.
 For PRIMARY it will be empty and HA it will be "HA - "
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -450,7 +450,7 @@ Default proximity placement group, for data, log, and if present the shared volu
 Specifies that the data, log, and shared volumes are to be created close to the VMs
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -465,7 +465,7 @@ Accept wildcard characters: False
 The resource group of the ANF VolumeGroup
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -481,7 +481,7 @@ Specify throughput in MiB/s.
 If ommited SharedPerformance will be autocalculated or specify and integer value representing throughput.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -497,7 +497,7 @@ Specify capacity (in GiB).
 If ommited SharedSize will be autocalculated or specify an integer value representing size.
 
 ```yaml
-Type: Int64
+Type: System.Nullable`1[System.Int64]
 Parameter Sets: (All)
 Aliases:
 
@@ -515,7 +515,7 @@ Shared, Data Backup and Log Backup volumes are only provisioned for Master Host 
 HostID == 1.1
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -530,7 +530,7 @@ Accept wildcard characters: False
 Default delegated subnet, for all volume groups
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -545,7 +545,7 @@ Accept wildcard characters: False
 The role of the system, Primary SAP system, HANA System Replication(HSR) or DataRecovery destination for ANF Cross-region replication (CRR)
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -560,7 +560,7 @@ Accept wildcard characters: False
 A hashtable which represents resource tags
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases: Tags
 
@@ -575,9 +575,39 @@ Accept wildcard characters: False
 Default virtual network, for all volume groups
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named
