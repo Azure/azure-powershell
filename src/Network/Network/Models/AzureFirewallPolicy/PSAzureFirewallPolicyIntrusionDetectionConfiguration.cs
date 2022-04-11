@@ -13,6 +13,7 @@
 // limitations under the License.
 //
 
+using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network.Models
@@ -23,6 +24,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSAzureFirewallPolicyIntrusionDetectionBypassTrafficSetting> BypassTrafficSettings { get; set; }
 
-        public List<String> PrivateRanges { get; set; }
+        public List<string> PrivateRanges { get; set; }
+
     }
 }

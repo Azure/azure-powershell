@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Network
              Mandatory = false,
              HelpMessage = "List of IDPS Private IP ranges."
          )]
-        public List[] PrivateRanges { get; set; }
+        public string[] PrivateRanges { get; set; }
 
         public override void Execute()
         {
