@@ -49,12 +49,10 @@ Get-AzManagementGroupNameAvailability -GroupName "testMG!"
 ```
 
 ```output
-Message              : The provided management group name 'testMG!' has these invalid characters: '!'
+Message              : The provided management group name has invalid characters
 NameAvailable        : False
 Reason               : Invalid
 ```
-
-
 
 ## INPUTS
 
@@ -62,8 +60,7 @@ Reason               : Invalid
 
 ## OUTPUTS
 
-###
-Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupNameAvailabilityResult
+### Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupNameAvailabilityResult
 
 ## NOTES
 
