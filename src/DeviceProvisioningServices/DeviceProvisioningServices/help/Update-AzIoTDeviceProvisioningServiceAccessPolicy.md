@@ -55,7 +55,7 @@ Update access policy "mypolicy" in an Azure IoT Hub device provisioning service 
 
 ### Example 2
 ```powershell
-Get-AzIoTDpsAccessPolicy -ResourceGroupName "myresourcegroup" -Name "myiotdps" -KeyName "mypolicy" | Update-AzIoTDpsAccessPolicy -Permissions "EnrollmentWrite"
+Get-AzIoTDeviceProvisioningServiceAccessPolicy -ResourceGroupName "myresourcegroup" -Name "myiotdps" -KeyName "mypolicy" | Update-AzIoTDeviceProvisioningServiceAccessPolicy -Permissions "EnrollmentWrite"
 ```
 
 ```output

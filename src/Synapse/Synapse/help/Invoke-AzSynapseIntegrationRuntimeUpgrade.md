@@ -43,7 +43,7 @@ The **Invoke-AzSynapseIntegrationRuntimeUpgrade** cmdlet upgrades self-hosted in
 
 ### Example 1
 ```powershell
-PS C:\> Invoke-AzSynapseIntegrationRuntimeUpgrade -WorkspaceName ContosoWorkspace -Name 'test-selfhost-ir'
+Invoke-AzSynapseIntegrationRuntimeUpgrade -WorkspaceName ContosoWorkspace -Name 'test-selfhost-ir'
 ```
 
 The cmdlet upgrades self-hosted integration runtime named 'test-selfhost-ir' in workspace ContosoWorkspace.

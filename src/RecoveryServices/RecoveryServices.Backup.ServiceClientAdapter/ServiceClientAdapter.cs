@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
 
         public ClientProxy<RecoveryServicesBackupNS.RecoveryServicesBackupClient> BmsAdapter;
         public ClientProxy<RecoveryServicesBackupCRRNS.RecoveryServicesBackupClient> CrrAdapter;
+        
         ClientProxy<RecoveryServicesNS.RecoveryServicesClient> RSAdapter;
 
         ClientProxy<ResourcesNS.ResourceManagementClient> RMAdapter;

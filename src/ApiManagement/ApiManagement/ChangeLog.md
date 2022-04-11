@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+Added warning message for upcoming breaking change.
 
 ## Version 2.3.1
 * Fixed a bug in `Get-AzApiManagementTenantGitAccess` cmdlet.

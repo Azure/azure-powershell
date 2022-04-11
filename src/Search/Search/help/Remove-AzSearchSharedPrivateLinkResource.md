@@ -44,8 +44,9 @@ The **Remove-AzSearchSharedPrivateLinkResource** cmdlet removes the shared priva
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSearchSharedPrivateLinkResource -ResourceGroupName arjagann -ServiceName arjagann-test-cuseuap -Name blob-pe
-
+Remove-AzSearchSharedPrivateLinkResource -ResourceGroupName arjagann -ServiceName arjagann-test-cuseuap -Name blob-pe
+```
+```output
 Confirm
 Remove Shared Private Link Resource 'blob-pe'.
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y

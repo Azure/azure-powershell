@@ -29,7 +29,7 @@ To aid the user to prerequisite the operation the client can call operation with
 
 ### Example 1: Validate the dependecies before prepare of the resources. Get the required dependent resources that also need to be prepared.
 ```powershell
-PS C:\> $resp = Invoke-AzResourceMoverPrepare -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('psdemovm') -ValidateOnly
+$resp = Invoke-AzResourceMoverPrepare -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('psdemovm') -ValidateOnly
 
 AdditionalInfo : {Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.OperationErrorAdditionalInfo}
 Code           : MoveCollectionMissingRequiredDependentResources
@@ -46,10 +46,10 @@ Property       : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Any
 StartTime      : 2/9/2021 9:04:14 AM
 Status         : Failed
 
-PS C:> $resp.Code
+$resp.Code
 MoveCollectionMissingRequiredDependentResources
 
-PS C:> $resp.AdditionalInfo[0].InfoMoveResource
+$resp.AdditionalInfo[0].InfoMoveResource
 
 SourceId                                                                                                                                  
 --------                                                                                                                                  
@@ -64,8 +64,10 @@ Get the required dependent resources that also need to be prepared.
 
 ### Example 2: Initiate prepare for the set of resources in the Move Collection using "MoveResource Name" as input.
 ```powershell
-PS C:\> Invoke-AzResourceMoverPrepare -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('PSDemoVM','psdemovm111', 'PSDemoRM-vnet','PSDemoVM-nsg')
+Invoke-AzResourceMoverPrepare -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('PSDemoVM','psdemovm111', 'PSDemoRM-vnet','PSDemoVM-nsg')
+```
 
+```output
 AAdditionalInfo : 
 Code           : 
 Detail         : 
@@ -83,8 +85,10 @@ Initiate prepare for the set of resources in the Move Collection using "MoveReso
 
 ### Example 3: Initiate prepare for the set of resources in the Move Collection using "SourceARMID".
 ```powershell
-PS C:\> Invoke-AzResourceMoverPrepare -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -MoveResourceInputType MoveResourceSourceId  -MoveResource $('/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRMS/providers/Microsoft.Network/networkSecurityGroups/PSDemoVM-nsg')
+Invoke-AzResourceMoverPrepare -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -MoveResourceInputType MoveResourceSourceId  -MoveResource $('/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRMS/providers/Microsoft.Network/networkSecurityGroups/PSDemoVM-nsg')
+```
 
+```output
 AdditionalInfo :
 Code           :
 Detail         :

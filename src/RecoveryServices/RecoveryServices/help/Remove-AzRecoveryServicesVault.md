@@ -24,8 +24,8 @@ The **Remove-AzRecoveryServicesVault** cmdlet deletes a Recovery Services vault.
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Remove-AzRecoveryServicesVault -Vault $vault
+```powershell
+Remove-AzRecoveryServicesVault -Vault $vault
 ```
 
 Deletes a Recovery Services vault.

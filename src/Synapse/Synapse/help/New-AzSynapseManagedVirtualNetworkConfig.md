@@ -24,10 +24,10 @@ This **New-AzSynapseManagedVirtualNetworkConfig** cmdlets creates a managed virt
 
 ### Example 1
 ```powershell
-PS C:\> $config = New-AzSynapseManagedVirtualNetworkConfig -PreventDataExfiltration -AllowedAadTenantIdsForLinking ContosoTenantId
-PS C:\> $password = ConvertTo-SecureString "Password123!" -AsPlainText -Force
-PS C:\> $creds = New-Object System.Management.Automation.PSCredential ("ContosoUser", $password)
-PS C:\> New-AzSynapseWorkspace -ResourceGroupName ContosoResourceGroup -Name ContosoWorkspace -Location northeurope -DefaultDataLakeStorageAccountName ContosoAdlGen2Storage -DefaultDataLakeStorageFilesystem ContosoFileSystem -SqlAdministratorLoginCredential $creds -ManagedVirtualNetwork $config
+$config = New-AzSynapseManagedVirtualNetworkConfig -PreventDataExfiltration -AllowedAadTenantIdsForLinking ContosoTenantId
+$password = ConvertTo-SecureString "Password123!" -AsPlainText -Force
+$creds = New-Object System.Management.Automation.PSCredential ("ContosoUser", $password)
+New-AzSynapseWorkspace -ResourceGroupName ContosoResourceGroup -Name ContosoWorkspace -Location northeurope -DefaultDataLakeStorageAccountName ContosoAdlGen2Storage -DefaultDataLakeStorageFilesystem ContosoFileSystem -SqlAdministratorLoginCredential $creds -ManagedVirtualNetwork $config
 ```
 
 The first command creates a managed virtual network configuration. Then the rest methods uses the configuration to creates a new Synapse workspace.

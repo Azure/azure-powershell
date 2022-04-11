@@ -275,38 +275,38 @@ function NamespaceTests
     Write-Debug "Namespace name : $namespaceName2"
     $result = New-AzEventHubNamespace -ResourceGroup $secondResourceGroup -Name $namespaceName2 -Location $location
 
-	### change the Namespace SKU to Basic
-	Write-Debug "Namespace name : $namespaceName2"
-	$result = Set-AzEventHubNamespace -ResourceGroup $secondResourceGroup -Name $namespaceName2 -Location $location -SkuName "Basic"
-	Assert-AreEqual $result.Sku.Name "Basic" "Namespace SKU not changed."
-	   
+    ### change the Namespace SKU to Basic
+    Write-Debug "Namespace name : $namespaceName2"
+    $result = Set-AzEventHubNamespace -ResourceGroup $secondResourceGroup -Name $namespaceName2 -Location $location -SkuName "Basic"
+    Assert-AreEqual $result.Sku.Name "Basic" "Namespace SKU not changed."
+       
     Write-Debug "Get all the namespaces created in the resourceGroup"
     $allCreatedNamespace = Get-AzEventHubNamespace -ResourceGroup $secondResourceGroup
-	
-	#Assert
+    
+    #Assert
     Assert-True {$allCreatedNamespace.Count -ge 0 } "Namespace created earlier is not found. in list"
     
     Write-Debug "Get all the namespaces created in the subscription"
     $allCreatedNamespace = Get-AzEventHubNamespace
-	
+    
     Assert-True {$allCreatedNamespace.Count -ge 0} "Namespaces created earlier is not found."
 
     Write-Debug " Delete namespaces"
     Remove-AzEventHubNamespace -ResourceGroup $secondResourceGroup -Name $namespaceName2
     Remove-AzEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName
 
-	Write-Debug " Delete resourcegroup"
-	Remove-AzResourceGroup -Name $resourceGroupName -Force
+    Write-Debug " Delete resourcegroup"
+    Remove-AzResourceGroup -Name $resourceGroupName -Force
 }
 
 
 
 function SchemaRegistryTest {
 
-	$location = "eastus"
-	$resourceGroupName = getAssetName "PS-SDK-Testing-RG"
-	$namespaceName = getAssetName "PS-SDK-Testing-Namespace"
-	$schemaGroupName1 = getAssetName "SchemaGroup1"
+    $location = "eastus"
+    $resourceGroupName = getAssetName "PS-SDK-Testing-RG"
+    $namespaceName = getAssetName "PS-SDK-Testing-Namespace"
+    $schemaGroupName1 = getAssetName "SchemaGroup1"
     $schemaGroupName2 = getAssetName "SchemaGroup2"
     $schemaGroupName3 = getAssetName "SchemaGroup3"
     $schemaGroupName4 = getAssetName "SchemaGroup4"
@@ -316,76 +316,76 @@ function SchemaRegistryTest {
     
     Write-Debug "Create resource group"
     Write-Debug "ResourceGroup name : $resourceGroupName"
-	New-AzResourceGroup -Name $resourceGroupName -Location $location -Force 
+    New-AzResourceGroup -Name $resourceGroupName -Location $location -Force 
 
     $result = New-AzEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName -Location $location -SkuName "Premium"
-	Assert-AreEqual $result.ResourceGroup $resourceGroupName "Namespace create : ResourceGroup name matches"
-	Assert-AreEqual $result.ResourceGroupName $resourceGroupName "Namespace create : ResourceGroupName name matches"
+    Assert-AreEqual $result.ResourceGroup $resourceGroupName "Namespace create : ResourceGroup name matches"
+    Assert-AreEqual $result.ResourceGroupName $resourceGroupName "Namespace create : ResourceGroupName name matches"
     Assert-AreEqual $result.Sku.Name "Premium" "Namespace Premium"
 
 
-	#Create Schema Group
-	$resultSchemaGroup1 = New-AzEventHubSchemaGroup -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $schemaGroupName1 -SchemaCompatibility Forward -SchemaType Avro -GroupProperty @{"name"="name"}
-	
-	Assert-AreEqual $schemaGroupName1 $resultSchemaGroup1.Name
-	Assert-AreEqual "Forward" $resultSchemaGroup1.SchemaCompatibility
-	Assert-AreEqual "Avro" $resultSchemaGroup1.SchemaType
+    #Create Schema Group
+    $resultSchemaGroup1 = New-AzEventHubSchemaGroup -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $schemaGroupName1 -SchemaCompatibility Forward -SchemaType Avro -GroupProperty @{"name"="name"}
+    
+    Assert-AreEqual $schemaGroupName1 $resultSchemaGroup1.Name
+    Assert-AreEqual "Forward" $resultSchemaGroup1.SchemaCompatibility
+    Assert-AreEqual "Avro" $resultSchemaGroup1.SchemaType
 
     #Create Schema Group
-	$resultSchemaGroup2 = New-AzEventHubSchemaGroup -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $schemaGroupName2 -SchemaCompatibility Backward -SchemaType Avro -GroupProperty @{"name"="name";"key1"="value1"}
-	
-	Assert-AreEqual $schemaGroupName2 $resultSchemaGroup2.Name
-	Assert-AreEqual "Backward" $resultSchemaGroup2.SchemaCompatibility
-	Assert-AreEqual "Avro" $resultSchemaGroup2.SchemaType
+    $resultSchemaGroup2 = New-AzEventHubSchemaGroup -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $schemaGroupName2 -SchemaCompatibility Backward -SchemaType Avro -GroupProperty @{"name"="name";"key1"="value1"}
+    
+    Assert-AreEqual $schemaGroupName2 $resultSchemaGroup2.Name
+    Assert-AreEqual "Backward" $resultSchemaGroup2.SchemaCompatibility
+    Assert-AreEqual "Avro" $resultSchemaGroup2.SchemaType
 
     #Create Schema Group
-	$resultSchemaGroup3 = New-AzEventHubSchemaGroup -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $schemaGroupName3 -SchemaCompatibility None -SchemaType Avro
-	
-	Assert-AreEqual $schemaGroupName3 $resultSchemaGroup3.Name
-	Assert-AreEqual "None" $resultSchemaGroup3.SchemaCompatibility
-	Assert-AreEqual "Avro" $resultSchemaGroup3.SchemaType
+    $resultSchemaGroup3 = New-AzEventHubSchemaGroup -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $schemaGroupName3 -SchemaCompatibility None -SchemaType Avro
+    
+    Assert-AreEqual $schemaGroupName3 $resultSchemaGroup3.Name
+    Assert-AreEqual "None" $resultSchemaGroup3.SchemaCompatibility
+    Assert-AreEqual "Avro" $resultSchemaGroup3.SchemaType
 
     $getSchemaGroup1 = Get-AzEventHubSchemaGroup -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $schemaGroupName1
     Assert-AreEqual $schemaGroupName1 $getSchemaGroup1.Name
-	Assert-AreEqual "Forward" $getSchemaGroup1.SchemaCompatibility
-	Assert-AreEqual "Avro" $getSchemaGroup1.SchemaType
+    Assert-AreEqual "Forward" $getSchemaGroup1.SchemaCompatibility
+    Assert-AreEqual "Avro" $getSchemaGroup1.SchemaType
 
     $getSchemaGroup2 = Get-AzEventHubSchemaGroup -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $schemaGroupName2
     Assert-AreEqual $schemaGroupName2 $getSchemaGroup2.Name
-	Assert-AreEqual "Backward" $getSchemaGroup2.SchemaCompatibility
-	Assert-AreEqual "Avro" $getSchemaGroup2.SchemaType
+    Assert-AreEqual "Backward" $getSchemaGroup2.SchemaCompatibility
+    Assert-AreEqual "Avro" $getSchemaGroup2.SchemaType
 
     $getSchemaGroup3 = Get-AzEventHubSchemaGroup -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $schemaGroupName3
     Assert-AreEqual $schemaGroupName3 $getSchemaGroup3.Name
-	Assert-AreEqual "None" $getSchemaGroup3.SchemaCompatibility
-	Assert-AreEqual "Avro" $getSchemaGroup3.SchemaType
-	
-	Assert-AreEqual $schemaGroupName3 $resultSchemaGroup3.Name
-	Assert-AreEqual "None" $resultSchemaGroup3.SchemaCompatibility
-	Assert-AreEqual "Avro" $resultSchemaGroup3.SchemaType
+    Assert-AreEqual "None" $getSchemaGroup3.SchemaCompatibility
+    Assert-AreEqual "Avro" $getSchemaGroup3.SchemaType
+    
+    Assert-AreEqual $schemaGroupName3 $resultSchemaGroup3.Name
+    Assert-AreEqual "None" $resultSchemaGroup3.SchemaCompatibility
+    Assert-AreEqual "Avro" $resultSchemaGroup3.SchemaType
 
     $resultSchemaGroup4 = New-AzEventHubSchemaGroup -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $schemaGroupName4 -SchemaCompatibility None -SchemaType Avro
 
     Assert-AreEqual $schemaGroupName4 $resultSchemaGroup4.Name
-	Assert-AreEqual "None" $resultSchemaGroup4.SchemaCompatibility
-	Assert-AreEqual "Avro" $resultSchemaGroup4.SchemaType
+    Assert-AreEqual "None" $resultSchemaGroup4.SchemaCompatibility
+    Assert-AreEqual "Avro" $resultSchemaGroup4.SchemaType
 
     $getSchemaGroup4 = Get-AzEventHubSchemaGroup -ResourceId $resultSchemaGroup4.Id
 
     Assert-AreEqual $resultSchemaGroup4.Name $getSchemaGroup4.Name
-	Assert-AreEqual "None" $getSchemaGroup4.SchemaCompatibility
-	Assert-AreEqual "Avro" $getSchemaGroup4.SchemaType
+    Assert-AreEqual "None" $getSchemaGroup4.SchemaCompatibility
+    Assert-AreEqual "Avro" $getSchemaGroup4.SchemaType
 
     $resultSchemaGroup5 = New-AzEventHubSchemaGroup -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $schemaGroupName5 -SchemaCompatibility None -SchemaType Avro
 
     Assert-AreEqual $schemaGroupName5 $resultSchemaGroup5.Name
-	Assert-AreEqual "None" $resultSchemaGroup5.SchemaCompatibility
-	Assert-AreEqual "Avro" $resultSchemaGroup5.SchemaType
+    Assert-AreEqual "None" $resultSchemaGroup5.SchemaCompatibility
+    Assert-AreEqual "Avro" $resultSchemaGroup5.SchemaType
 
     $getAllSchemaGroups = Get-AzEventHubSchemaGroup -ResourceGroup $resourceGroupName -Namespace $namespaceName
     Assert-True {$getAllSchemaGroups.Count -ge 0} "All 3 schema groups are not there"
 
-	$resultRemove = Remove-AzEventHubSchemaGroup -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $schemaGroupName1
+    $resultRemove = Remove-AzEventHubSchemaGroup -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $schemaGroupName1
     $resultRemove = Remove-AzEventHubSchemaGroup -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $schemaGroupName2
     $resultRemove = Remove-AzEventHubSchemaGroup -ResourceId $getSchemaGroup4.Id
     $resultRemove = Remove-AzEventHubSchemaGroup -InputObject $getSchemaGroup3
@@ -393,8 +393,8 @@ function SchemaRegistryTest {
     Write-Debug " Delete namespaces"
     Remove-AzEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName
 
-	Write-Debug " Delete resourcegroup"
-	Remove-AzResourceGroup -Name $resourceGroupName -Force
+    Write-Debug " Delete resourcegroup"
+    Remove-AzResourceGroup -Name $resourceGroupName -Force
 }
 
 function MSITest{

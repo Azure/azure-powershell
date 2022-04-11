@@ -116,10 +116,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 throw new Exception("UpgradePolicy is not currently supported for a VMSS with OrchestrationMode set to Flexible.");
             }
-            else if (convertAPIVersionToInt(parameters?.VirtualMachineProfile?.NetworkProfile?.NetworkApiVersion) < vmssFlexibleOrchestrationModeNetworkAPIVersionMinimumInt)
+            else if (parameters?.VirtualMachineProfile?.NetworkProfile?.NetworkApiVersion != null 
+                && convertAPIVersionToInt(parameters?.VirtualMachineProfile?.NetworkProfile?.NetworkApiVersion) < vmssFlexibleOrchestrationModeNetworkAPIVersionMinimumInt)
             {
                 throw new Exception("The value for NetworkApiVersion is not valid for a VMSS with OrchestrationMode set to Flexible. You must use a valid Network API Version equal to or greater than " + vmssFlexibleOrchestrationModeNetworkAPIVersionMinimum);
             }
+            //else if (convertAPIVersionToInt(parameters?.VirtualMachineProfile?.NetworkProfile?.NetworkApiVersion) < vmssFlexibleOrchestrationModeNetworkAPIVersionMinimumInt)
+            //{
+            //    throw new Exception("The value for NetworkApiVersion is not valid for a VMSS with OrchestrationMode set to Flexible. You must use a valid Network API Version equal to or greater than " + vmssFlexibleOrchestrationModeNetworkAPIVersionMinimum);
+            //}
             else if (parameters?.SinglePlacementGroup == true)
             {
                 throw new Exception("The value provided for SinglePlacementGroup cannot be used for a VMSS with OrchestrationMode set to Flexible. Please use SinglePlacementGroup 'false' instead.");
@@ -132,10 +137,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 parameters.SinglePlacementGroup = false;
             }
-            if (parameters?.VirtualMachineProfile?.NetworkProfile?.NetworkApiVersion == null)
+            if (parameters?.VirtualMachineProfile?.NetworkProfile != null &&
+                parameters?.VirtualMachineProfile?.NetworkProfile.NetworkApiVersion == null)
             {
                 parameters.VirtualMachineProfile.NetworkProfile.NetworkApiVersion = vmssFlexibleOrchestrationModeNetworkAPIVersionMinimum;
             }
+            /*if (parameters?.VirtualMachineProfile?.NetworkProfile?.NetworkApiVersion == null)
+            {
+                parameters.VirtualMachineProfile.NetworkProfile.NetworkApiVersion = vmssFlexibleOrchestrationModeNetworkAPIVersionMinimum;
+            }*/
             if (parameters?.PlatformFaultDomainCount == null)
             {
                 parameters.PlatformFaultDomainCount = 1;

@@ -47,6 +47,7 @@ Get-AzCosmosDBLocation -Location "Central US" | ConvertTo-Json
                    }
 }
 ```
+
 ### Example 2: List Azure Cosmos DB Account Locations and their properties
 ```powershell
 Get-AzCosmosDBLocation
@@ -92,6 +93,7 @@ Get-AzCosmosDBLocation | ConvertTo-Json
     }
 ]
 ```
+
 ## PARAMETERS
 
 ### -DefaultProfile

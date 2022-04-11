@@ -39,15 +39,15 @@ To create a deployment at tenant scope, use the New-AzTenantDeployment cmdlet.
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\>Stop-AzTenantDeployment -Name "deployment01"
+```powershell
+Stop-AzTenantDeployment -Name "deployment01"
 ```
 
 This command cancels a running deployment "deployment01" at the current tenant scope.
 
 ### Example 2
-```
-PS C:\>Get-AzTenantDeployment -Name "deployment01" | Stop-AzTenantDeployment
+```powershell
+Get-AzTenantDeployment -Name "deployment01" | Stop-AzTenantDeployment
 ```
 
 This command gets the deployment "deployment01" at the current tenant scope and cancels it. 

@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support
 {
 
+    /// <summary>Any action that is required beyond basic workflow (approve/ reject/ disconnect)</summary>
     public partial struct ActionsRequired :
         System.IEquatable<ActionsRequired>
     {
@@ -27,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support
         /// <param name="value">the value to convert to an instance of <see cref="ActionsRequired" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new ActionsRequired(System.Convert.ToString(value));
+            return new ActionsRequired(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type ActionsRequired</summary>

@@ -25,8 +25,11 @@ The **Set-AzSqlServerFirewallRule** cmdlet modifies a firewall rule in an Azure 
 ## EXAMPLES
 
 ### Example 1: Modify a firewall rule
+```powershell
+Set-AzSqlServerFirewallRule -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -FirewallRuleName "Rule01" -StartIpAddress "192.168.0.197" -EndIpAddress "192.168.0.199"
 ```
-PS C:\>Set-AzSqlServerFirewallRule -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -FirewallRuleName "Rule01" -StartIpAddress "192.168.0.197" -EndIpAddress "192.168.0.199"
+
+```output
 ResourceGroupName : ResourceGroup01
 ServerName        : Server01
 StartIpAddress    : 192.168.0.199

@@ -40,14 +40,14 @@ The **Set-AzDataBoxEdgeStorageAccountCredential** cmdlet updates the storage acc
 
 ### Example 1
 ```powershell
-Set-AzDataBoxEdgeStorageAccountCredential -ResourceGroupName resourceGroupName -DeviceName deviceName -Name storageAcountCredentialName `
- -StorageAccountName storageaccountname -StorageAccountAccessKey @SecureString -EncryptionKey @SecureString
- ```
+Set-AzDataBoxEdgeStorageAccountCredential -ResourceGroupName resourceGroupName -DeviceName deviceName -Name storageAccountName `
+ -StorageAccountAccessKey @SecureString -EncryptionKey @SecureString
+```
 
 ```output
 Name                        StorageAccount      SslStatus  ResourceGroupName
 --------------------------- ------------------- ---------- ---------------------
-storageAcountCredentialName storageaccountname  Enabled    resourceGroupName
+storageAcountCredentialName storageAccountName  Enabled    resourceGroupName
 ```
 
 Helps in rotating access keys for a storage account

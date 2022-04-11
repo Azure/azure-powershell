@@ -5,6 +5,10 @@
   <Import Project="$(MSBuildThisFileDirectory)Az.Shared.props" />
 
   <!-- Build -->
+  <PropertyGroup Condition="'$(PsModuleFolder)'==''">
+    <PsModuleFolder>$(PsModuleName).Autorest</PsModuleFolder>
+  </PropertyGroup>
+
   <PropertyGroup>
     <LangVersion>7.1</LangVersion>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -12,7 +16,7 @@
     <RootNamespace>$(AzAssemblyPrefix)$(PsModuleName)</RootNamespace>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <OutputPath>$(RepoArtifacts)$(Configuration)\Az.$(PsRootModuleName)\$(PsModuleName).Autorest\bin</OutputPath>
+    <OutputPath>$(RepoArtifacts)$(Configuration)\Az.$(PsRootModuleName)\$(PsModuleFolder)\bin</OutputPath>
     <PublishDir>$(OutputPath)</PublishDir>
     <!-- Some methods are marked async and don't have an await in them -->
     <NoWarn>1998</NoWarn>
@@ -22,6 +26,7 @@
     <DelaySign>false</DelaySign>
     <DefineConstants>TRACE;DEBUG;NETSTANDARD</DefineConstants>
   </PropertyGroup>
+
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <SignAssembly>true</SignAssembly>
@@ -53,24 +58,23 @@
   </ItemGroup>
 
   <ItemGroup>
-        <ModuleCustomFiles Include="$(MSBuildThisFileDirectory)$(PsRootModuleName)\$(PsModuleName).Autorest\custom\**\*.*"/>
-        <ModuleHelpFiles Include="$(MSBuildThisFileDirectory)$(PsRootModuleName)\$(PsModuleName).Autorest\help\**\*.*"/>
-        <ModuleTestFiles Include="$(MSBuildThisFileDirectory)$(PsRootModuleName)\$(PsModuleName).Autorest\test\**\*.*"/>
-        <UtilsFiles Include="$(MSBuildThisFileDirectory)$(PsRootModuleName)\$(PsModuleName).Autorest\utils\**\*.*"/>
+        <ModuleCustomFiles Include="$(MSBuildThisFileDirectory)$(PsRootModuleName)\$(PsModuleFolder)\custom\**\*.*"/>
+        <ModuleHelpFiles Include="$(MSBuildThisFileDirectory)$(PsRootModuleName)\$(PsModuleFolder)\help\**\*.*"/>
+        <ModuleTestFiles Include="$(MSBuildThisFileDirectory)$(PsRootModuleName)\$(PsModuleFolder)\test\**\*.*"/>
+        <UtilsFiles Include="$(MSBuildThisFileDirectory)$(PsRootModuleName)\$(PsModuleFolder)\utils\**\*.*"/>
   </ItemGroup>
 
   <Target Name="CopyFiles" AfterTargets="Build">
-    <Copy SourceFiles="Az.$(PsModuleName).psm1" DestinationFolder="$(RepoArtifacts)$(Configuration)\Az.$(PsRootModuleName)\$(PsModuleName).Autorest" />
-    <Copy SourceFiles="Az.$(PsModuleName).format.ps1xml" DestinationFolder="$(RepoArtifacts)$(Configuration)\Az.$(PsRootModuleName)\$(PsModuleName).Autorest" />
-    <Copy SourceFiles="check-dependencies.ps1" DestinationFolder="$(RepoArtifacts)$(Configuration)\Az.$(PsRootModuleName)\$(PsModuleName).Autorest" Condition="'$(Configuration)'=='Debug'"/>
-    <Copy SourceFiles="test-module.ps1" DestinationFolder="$(RepoArtifacts)$(Configuration)\Az.$(PsRootModuleName)\$(PsModuleName).Autorest" Condition="'$(Configuration)'=='Debug'"/>
-    <Copy SourceFiles="@(ModuleCustomFiles)" DestinationFiles="@(ModuleCustomFiles->'$(RepoArtifacts)$(Configuration)\Az.$(PsRootModuleName)\$(PsModuleName).Autorest\custom\%(RecursiveDir)%(Filename)%(Extension)')" />
-    <Copy SourceFiles="@(ModuleHelpFiles)" DestinationFiles="@(ModuleHelpFiles->'$(RepoArtifacts)$(Configuration)\Az.$(PsRootModuleName)\$(PsModuleName).Autorest\help\%(RecursiveDir)%(Filename)%(Extension)')" />
-    <Copy SourceFiles="@(ModuleTestFiles)" DestinationFiles="@(ModuleTestFiles->'$(RepoArtifacts)$(Configuration)\Az.$(PsRootModuleName)\$(PsModuleName).Autorest\test\%(RecursiveDir)%(Filename)%(Extension)')" Condition="'$(Configuration)'=='Debug'"/>
-    <Copy SourceFiles="exports\ProxyCmdletDefinitions.ps1" DestinationFolder="$(RepoArtifacts)$(Configuration)\Az.$(PsRootModuleName)\$(PsModuleName).Autorest\exports" />
-    <Copy SourceFiles="internal\ProxyCmdletDefinitions.ps1" DestinationFolder="$(RepoArtifacts)$(Configuration)\Az.$(PsRootModuleName)\$(PsModuleName).Autorest\internal" Condition="Exists('internal\ProxyCmdletDefinitions.ps1')" />
-    <Copy SourceFiles="internal\Az.$(PsModuleName).internal.psm1" DestinationFolder="$(RepoArtifacts)$(Configuration)\Az.$(PsRootModuleName)\$(PsModuleName).Autorest\internal" />
-    <Copy SourceFiles="@(UtilsFiles)" DestinationFiles="@(UtilsFiles->'$(RepoArtifacts)$(Configuration)\Az.$(PsRootModuleName)\$(PsModuleName).Autorest\utils\%(RecursiveDir)%(Filename)%(Extension)')" Condition="Exists('utils')"/>
+    <Copy SourceFiles="Az.$(PsModuleName).psm1" DestinationFolder="$(RepoArtifacts)$(Configuration)\Az.$(PsRootModuleName)\$(PsModuleFolder)" />
+    <Copy SourceFiles="Az.$(PsModuleName).format.ps1xml" DestinationFolder="$(RepoArtifacts)$(Configuration)\Az.$(PsRootModuleName)\$(PsModuleFolder)" />
+    <Copy SourceFiles="check-dependencies.ps1" DestinationFolder="$(RepoArtifacts)$(Configuration)\Az.$(PsRootModuleName)\$(PsModuleFolder)" Condition="'$(Configuration)'=='Debug'"/>
+    <Copy SourceFiles="test-module.ps1" DestinationFolder="$(RepoArtifacts)$(Configuration)\Az.$(PsRootModuleName)\$(PsModuleFolder)" Condition="'$(Configuration)'=='Debug'"/>
+    <Copy SourceFiles="@(ModuleCustomFiles)" DestinationFiles="@(ModuleCustomFiles->'$(RepoArtifacts)$(Configuration)\Az.$(PsRootModuleName)\$(PsModuleFolder)\custom\%(RecursiveDir)%(Filename)%(Extension)')" />
+    <Copy SourceFiles="@(ModuleHelpFiles)" DestinationFiles="@(ModuleHelpFiles->'$(RepoArtifacts)$(Configuration)\Az.$(PsRootModuleName)\$(PsModuleFolder)\help\%(RecursiveDir)%(Filename)%(Extension)')" />
+    <Copy SourceFiles="@(ModuleTestFiles)" DestinationFiles="@(ModuleTestFiles->'$(RepoArtifacts)$(Configuration)\Az.$(PsRootModuleName)\$(PsModuleFolder)\test\%(RecursiveDir)%(Filename)%(Extension)')" Condition="'$(Configuration)'=='Debug'"/>
+    <Copy SourceFiles="exports\ProxyCmdletDefinitions.ps1" DestinationFolder="$(RepoArtifacts)$(Configuration)\Az.$(PsRootModuleName)\$(PsModuleFolder)\exports" />
+    <Copy SourceFiles="internal\ProxyCmdletDefinitions.ps1" DestinationFolder="$(RepoArtifacts)$(Configuration)\Az.$(PsRootModuleName)\$(PsModuleFolder)\internal" Condition="Exists('internal\ProxyCmdletDefinitions.ps1')" />
+    <Copy SourceFiles="internal\Az.$(PsModuleName).internal.psm1" DestinationFolder="$(RepoArtifacts)$(Configuration)\Az.$(PsRootModuleName)\$(PsModuleFolder)\internal" />
+    <Copy SourceFiles="@(UtilsFiles)" DestinationFiles="@(UtilsFiles->'$(RepoArtifacts)$(Configuration)\Az.$(PsRootModuleName)\$(PsModuleFolder)\utils\%(RecursiveDir)%(Filename)%(Extension)')" Condition="Exists('utils')"/>
   </Target>
-
 </Project>

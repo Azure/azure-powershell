@@ -117,24 +117,24 @@ ResourceName, ResourceType, ResourceGroupName and (optionally) ParentResource - 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Remove-AzRoleAssignment -ResourceGroupName rg1 -SignInName john.doe@contoso.com -RoleDefinitionName Reader
+```powershell
+Remove-AzRoleAssignment -ResourceGroupName rg1 -SignInName john.doe@contoso.com -RoleDefinitionName Reader
 ```
 
 Removes a role assignment for john.doe@contoso.com who is assigned to the Reader role at the rg1 resourcegroup scope.
 
 ### Example 2
-```
-PS C:\> Remove-AzRoleAssignment -ObjectId 36f81fc3-b00f-48cd-8218-3879f51ff39f -RoleDefinitionName Reader
+```powershell
+Remove-AzRoleAssignment -ObjectId 36f81fc3-b00f-48cd-8218-3879f51ff39f -RoleDefinitionName Reader
 ```
 
 Removes the role assignment to the group principal identified by the ObjectId and assigned to the Reader role.
 Defaults to using the current subscription as the scope to find the assignment to be deleted.
 
 ### Example 3
-```
-PS C:\> $roleassignment = Get-AzRoleAssignment |Select-Object -First 1 -Wait
-PS C:\> Remove-AzRoleAssignment -InputObject $roleassignment
+```powershell
+$roleassignment = Get-AzRoleAssignment |Select-Object -First 1 -Wait
+Remove-AzRoleAssignment -InputObject $roleassignment
 ```
 
 Removes the first role assignment object which is fetched from the Get-AzRoleAssignment commandlet.

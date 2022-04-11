@@ -38,8 +38,8 @@ Alternatively, you can specify the endpoint name and type by using the *Name* an
 ## EXAMPLES
 
 ### Example 1: Remove an endpoint from a profile
-```
-PS C:\>Remove-AzTrafficManagerEndpoint -Name "contoso" -ProfileName "ContosoProfile" -ResourceGroupName "ResourceGroup11" -Type AzureEndpoints
+```powershell
+Remove-AzTrafficManagerEndpoint -Name "contoso" -ProfileName "ContosoProfile" -ResourceGroupName "ResourceGroup11" -Type AzureEndpoints
 ```
 
 This command removes the Azure endpoint named contoso from the profile named ContosoProfile in the resource group named ResourceGroup11.

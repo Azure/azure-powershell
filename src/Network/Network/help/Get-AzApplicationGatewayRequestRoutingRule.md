@@ -26,7 +26,7 @@ The **Get-AzApplicationGatewayRequestRoutingRule** cmdlet gets the request routi
 ### Example 1: Get a specific request routing rule
 ```powershell
 $AppGW = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-$Rule = Get-AzApplicationGatewayRequestRoutingRule -"Rule01" -ApplicationGateway $AppGW
+$Rule = Get-AzApplicationGatewayRequestRoutingRule -Name "Rule01" -ApplicationGateway $AppGW
 ```
 
 The first command gets the Application Gateway named ApplicationGateway01 and stores the result in the variable named $AppGW.

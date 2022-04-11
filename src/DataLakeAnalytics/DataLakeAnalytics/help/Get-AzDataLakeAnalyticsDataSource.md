@@ -45,7 +45,7 @@ This command gets a Data Lake Store data source named ContosoAdls from a Data La
 
 ### Example 2: Get the list of Data Lake Store accounts in a Data Lake Analytics account
 ```powershell
-Get-AzDataLakeAnalyticsDataSource -AccountName "ContosoAdlA" -DataSource "DataLakeStore"
+Get-AzDataLakeAnalyticsDataSource -AccountName "ContosoAdlA"
 ```
 
 This command gets all Data Lake Store accounts from a Data Lake Analytics account.

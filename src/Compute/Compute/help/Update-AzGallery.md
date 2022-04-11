@@ -15,19 +15,25 @@ Update a gallery.
 ### DefaultParameter (Default)
 ```
 Update-AzGallery [-ResourceGroupName] <String> [-Name] <String> [-AsJob] [-Description <String>]
- [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-Permission <String>] [-Subscription <String[]>] [-Tenant <String[]>]
+ [-RemoveSubscription <String[]>] [-RemoveTenant <String[]>] [-Share] [-Reset]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameter
 ```
 Update-AzGallery [-ResourceId] <String> [-AsJob] [-Description <String>] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Permission <String>] [-Subscription <String[]>] [-Tenant <String[]>] [-RemoveSubscription <String[]>]
+ [-RemoveTenant <String[]>] [-Share] [-Reset] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ObjectParameter
 ```
 Update-AzGallery [-InputObject] <PSGallery> [-AsJob] [-Description <String>] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Permission <String>] [-Subscription <String[]>] [-Tenant <String[]>] [-RemoveSubscription <String[]>]
+ [-RemoveTenant <String[]>] [-Share] [-Reset] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,6 +47,14 @@ Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -Description $gal
 ```
 
 Update a gallery.
+
+### Example 2
+```powershell
+PS C:\> Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -Permission Groups -Share -Tenant xxxxxxxx-xxx-xxxxxxx,zzzzzz-zzzzzzz-zzzzzz
+```
+
+Update a gallery to be shared and add two subscriptions it is to be shared with.
+
 
 ## PARAMETERS
 
@@ -119,6 +133,66 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Permission
+This property allows you to specify the permission of the sharing gallery. Possible values are: 'Private' and 'Groups'.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RemoveSubscription
+A list of subscription IDs the gallery will stop sharing to.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RemoveTenant
+A list of tenant IDs the gallery will stop sharing to.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Reset
+Resets the sharing permission of the gallery to 'Private'.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
@@ -149,11 +223,56 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Share
+Update sharing profile of the gallery.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Subscription
+A list of subscription IDs the gallery is aimed to be shared to.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Tag
 Resource tags
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Tenant
+A list of tenant IDs the gallery is aimed to be shared to.
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

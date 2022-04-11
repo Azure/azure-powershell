@@ -33,12 +33,12 @@ To use the cmdlet, use the *ResourceGroupName* and *ServerName* parameters to id
 
 ### Example 1: Remove the Microsoft support operations auditing settings of an Azure SQL server
 ```powershell
-PS C:\>Remove-AzSqlServerMSSupportAudit -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
+Remove-AzSqlServerMSSupportAudit -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
 ```
 
 ### Example 2: Remove, through pipeline, the Microsoft support auditing settings of an Azure SQL server
-```
-PS C:\> Get-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01" | Remove-AzSqlServerMSSupportAudit
+```powershell
+Get-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01" | Remove-AzSqlServerMSSupportAudit
 ```
 
 ## PARAMETERS

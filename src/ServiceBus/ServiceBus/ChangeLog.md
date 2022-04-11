@@ -19,6 +19,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.8.1
+* Fixed that `New-AzServiceBusAuthorizationRuleSASToken` returns invalid token. [#12975]
+ 
+## Version 1.8.0
 * Added identity and encryption properties to New-AzServiceBusNamespace and Set-AzServiceBusNamespace.
 * Added New-AzServiceBusEncryptionConfig
 

@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+* Deprecating older MSI related fields in New-AzEventHubNamespace and Set-AzEventHubNamespace
+
+## Version 1.11.0
 * Added MSI properties to New-AzEventHubNamespace and Set-AzEventHubNamespace. Adding New-AzEventHubEncryptionConfig.
 
 ## Version 1.10.0

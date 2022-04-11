@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.8.1
 * Updated Microsoft.Azure.Management.Subscription .Net SDK version to 2.0.0
 
 ## Version 0.8.0

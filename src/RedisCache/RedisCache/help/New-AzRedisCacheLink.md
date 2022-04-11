@@ -23,9 +23,11 @@ Create a geo replication link between two Redis Caches.
 ## EXAMPLES
 
 ### Example 1: Create a link between two caches
+```powershell
+New-AzRedisCacheLink -PrimaryServerName "mycache1" -SecondaryServerName "mycache2"
 ```
-PS C:\>New-AzRedisCacheLink -PrimaryServerName "mycache1" -SecondaryServerName "mycache2"
 
+```output
         PrimaryServerName   : mycache1
         SecondaryServerName : mycache2
         ProvisioningState   : Creating

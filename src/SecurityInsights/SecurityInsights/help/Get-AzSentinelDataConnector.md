@@ -49,14 +49,14 @@ You can use the **DataConnector** object to update the Data Connector, for examp
 
 ### Example 1
 ```powershell
-PS C:\> $DataConnectors = Get-AzSentinelDataConnector -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName"
+$DataConnectors = Get-AzSentinelDataConnector -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName"
 ```
 
 This example gets all of the DataConnectors in the specified workspace, and then stores it in the $DataConnectors variable.
 
 ### Example 2
 ```powershell
-PS C:\> $DataConnector = Get-AzSentinelDataConnector -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -DataConnectorId "MyDataConnectorId"
+$DataConnector = Get-AzSentinelDataConnector -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -DataConnectorId "MyDataConnectorId"
 ```
 
 This example gets an DataConnector in the specified workspace, and then stores it in the $DataConnector variable.
