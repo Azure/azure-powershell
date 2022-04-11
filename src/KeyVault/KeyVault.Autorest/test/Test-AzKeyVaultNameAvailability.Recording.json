@@ -1,0 +1,41 @@
+{
+  "Test-AzKeyVaultNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/checkNameAvailability?api-version=2021-10-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/checkNameAvailability?api-version=2021-10-01",
+      "Content": "{\r\n  \"name\": \"bez-test-kv20220411\",\r\n  \"type\": \"Microsoft.KeyVault/vaults\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "77" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-client-request-id": [ "0b7bdcb9-8266-45c6-a11a-49067ed6ace0" ],
+        "x-ms-keyvault-service-version": [ "1.5.339.0" ],
+        "x-ms-request-id": [ "b831ca6b-a86b-4f45-b868-640860ed608c" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-correlation-request-id": [ "532c49df-e981-4760-87aa-ffe42e6355fb" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220411T081417Z:532c49df-e981-4760-87aa-ffe42e6355fb" ],
+        "Date": [ "Mon, 11 Apr 2022 08:14:16 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "22" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"nameAvailable\":true}",
+      "isContentBase64": false
+    }
+  }
+}
