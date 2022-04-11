@@ -27,12 +27,11 @@
     <Message Text="Build $(ModuleName)" />
     <MakeDir Directories="$(ArtifactFolder)/$(ModuleName)" />
     <Exec Command="dotnet --version" />
-
-    <Exec Command="msbuild $(ModuleSolutionFile) /p:configuration=$(Configuration)" />
+    <Exec Command="dotnet $(BuildAction) $(ModuleSolutionFile) -c $(Configuration)" />
   </Target>
 
   <Target Name="GenerateHelp">
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot; &amp; '$(RepoTools)/$(ModuleName)/GenerateHelp.ps1' -ArtifactFolder '$(ArtifactFolder)' -HelpFolder '$(RepoTools)/$(ModuleName)/help' -ModuleName $(ModuleName) &quot;" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot; &amp; '$(RepoTools)/$(ModuleName)/GenerateHelp.ps1' -ArtifactFolder '$(ArtifactFolder)' -HelpFolder '$(RepoTools)/$(ModuleName)/help' -ModuleName $(ModuleName) -ErrorAction Stop &quot;" />
   </Target>
 
   <Target Name="Test" DependsOnTargets="Build">
