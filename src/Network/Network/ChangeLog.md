@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 * Fixed `ArgumentNullException` in `Add-AzureRmRouteConfig` when `RouteTable.Routes` is null.
+* Fix bug that can't display CustomIpPrefix in PublicIpPrefix.
 
 ## Version 4.16.0
 * Added support for retrieving the state of packet capture even when the provisioning state of the packet capture was failure
