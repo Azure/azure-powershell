@@ -32,8 +32,6 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Compute.Common;
 using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Strategies.ComputeRp;
-//using Microsoft.Azure.Management.Internal.Resources;
-//using Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Network;
 
 
 

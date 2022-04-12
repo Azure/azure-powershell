@@ -35,7 +35,7 @@ using Microsoft.Azure.Commands.Compute.Models;
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Disk", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
-    [OutputType(typeof(PSDisk), typeof(PSAzureOperationResponse))]
+    [OutputType(typeof(PSDisk))]
     public partial class NewAzureRmDisk : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()

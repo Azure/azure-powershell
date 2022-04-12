@@ -20,7 +20,6 @@
 
 -->
 ## Upcoming Release
-* Changed New-AzVm cmdlet when using the SimpleParameterSet to not create a PublicIPAddress when a PUblicIPAddress name is not provided. 
 * Added `-ImageReferenceId` parameter to following cmdlets: `New-AzVm`, `New-AzVmConfig`, `New-AzVmss`, `Set-AzVmssStorageProfile`
 * Added functionality for cross-tenant image reference for VM, VMSS, Managed Disk, and Gallery Image Version creation. 
 * `New-AzGallery` can take in `-Permission` parameter to set its sharingProfile property.
