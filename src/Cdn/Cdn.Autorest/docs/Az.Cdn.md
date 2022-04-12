@@ -35,17 +35,11 @@ Gets an existing CDN endpoint with the specified endpoint name under the specifi
 ### [Get-AzCdnEndpointResourceUsage](Get-AzCdnEndpointResourceUsage.md)
 Checks the quota and usage of geo filters and custom domains under the given endpoint.
 
-### [Get-AzCdnManagedRuleSet](Get-AzCdnManagedRuleSet.md)
-Lists all available managed rule sets.
-
 ### [Get-AzCdnOrigin](Get-AzCdnOrigin.md)
 Gets an existing origin within an endpoint.
 
 ### [Get-AzCdnOriginGroup](Get-AzCdnOriginGroup.md)
 Gets an existing origin group within an endpoint.
-
-### [Get-AzCdnPolicy](Get-AzCdnPolicy.md)
-Retrieve protection policy with specified name within a resource group.
 
 ### [Get-AzCdnProfile](Get-AzCdnProfile.md)
 
@@ -172,16 +166,8 @@ Creates a new origin within the specified endpoint.
 ### [New-AzCdnOriginGroup](New-AzCdnOriginGroup.md)
 Creates a new origin group within the specified endpoint.
 
-### [New-AzCdnPolicy](New-AzCdnPolicy.md)
-Create or update policy with specified rule set name within a resource group.
-
 ### [New-AzCdnProfile](New-AzCdnProfile.md)
 Creates a new Azure Front Door Standard or Azure Front Door Premium or CDN profile with a profile name under the specified subscription and resource group.
-
-### [New-AzCdnProfileSsoUri](New-AzCdnProfileSsoUri.md)
-Generates a dynamic SSO URI used to sign in to the CDN supplemental portal.
-Supplemental portal is used to configure advanced feature capabilities that are not yet available in the Azure portal, such as core reports in a standard profile; rules engine, advanced HTTP reports, and real-time stats and alerts in a premium profile.
-The SSO URI changes approximately every 10 minutes.
 
 ### [New-AzCdnUrlRedirectActionObject](New-AzCdnUrlRedirectActionObject.md)
 Create an in-memory object for UrlRedirectAction.
@@ -333,9 +319,6 @@ Deletes an existing origin within an endpoint.
 ### [Remove-AzCdnOriginGroup](Remove-AzCdnOriginGroup.md)
 Deletes an existing origin group within an endpoint.
 
-### [Remove-AzCdnPolicy](Remove-AzCdnPolicy.md)
-Deletes Policy
-
 ### [Remove-AzCdnProfile](Remove-AzCdnProfile.md)
 Deletes an existing  Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified parameters.
 Deleting a profile will result in the deletion of all of the sub-resources including endpoints, origins and custom domains.
@@ -411,9 +394,6 @@ Updates an existing origin within an endpoint.
 
 ### [Update-AzCdnOriginGroup](Update-AzCdnOriginGroup.md)
 Updates an existing origin group within an endpoint.
-
-### [Update-AzCdnPolicy](Update-AzCdnPolicy.md)
-Update an existing CdnWebApplicationFirewallPolicy with the specified policy name under the specified subscription and resource group
 
 ### [Update-AzCdnProfile](Update-AzCdnProfile.md)
 Updates an existing Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified profile name under the specified subscription and resource group.

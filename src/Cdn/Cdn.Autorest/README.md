@@ -123,12 +123,22 @@ directive:
       subject: Profile
     hide: true
   - where:
+      subject: ProfileSsoUri
+    hide: true
+  - where:
+      subject: Policy
+    hide: true
+  - where:
+      subject: ManagedRuleSet
+    hide: true
+  - where:
       subject: SecretValidate
     hide: true
   - where:
       subject: LogAnalytic(.*)
     hide: true
 
+  # Rename
   - where:
       subject: Afd(.*)
     set:
