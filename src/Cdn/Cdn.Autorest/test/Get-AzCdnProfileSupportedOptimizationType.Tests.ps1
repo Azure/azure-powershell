@@ -15,7 +15,27 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCdnProfileSupportedOpti
 }
 
 Describe 'Get-AzCdnProfileSupportedOptimizationType' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { 
+            $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
+            try
+            {
+                Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
+                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
+
+                $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
+                Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
+
+                $profileSku = "Standard_Microsoft";
+                New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
+
+                Get-AzCdnProfile -ResourceGroupName $ResourceGroupName -Name $cdnProfileName
+
+                Get-AzCdnProfileSupportedOptimizationType -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName
+            } Finally
+            {
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            }    
+        } | Should -Not -Throw
     }
 }

@@ -31,19 +31,27 @@ Deleting a profile will result in the deletion of all of the sub-resources inclu
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: {{ Add title here }}
 ```powershell
 {{ Add code here }}
 ```
 
+```output
 {{ Add output here }}
+```
 
-### -------------------------- EXAMPLE 2 --------------------------
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
 ```powershell
 {{ Add code here }}
 ```
 
+```output
 {{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
