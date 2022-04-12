@@ -60,6 +60,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         public double? BandwidthInGbps { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
         public int? Stag { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string AuthorizationKey { get; set; }
 
         [JsonIgnore]
         public string SkuText

@@ -792,10 +792,12 @@ namespace Microsoft.Azure.Commands.Network
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSExpressRoutePort, MNM.ExpressRoutePort>();
                 cfg.CreateMap<CNM.PSExpressRouteLink, MNM.ExpressRouteLink>();
+                cfg.CreateMap<CNM.PSExpressRoutePortAuthorization, MNM.ExpressRoutePortAuthorization>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.ExpressRoutePort, CNM.PSExpressRoutePort>();
                 cfg.CreateMap<MNM.ExpressRouteLink, CNM.PSExpressRouteLink>();
+                cfg.CreateMap<MNM.ExpressRoutePortAuthorization, CNM.PSExpressRoutePortAuthorization>();
 
                 // ExpressRouteCircuit
                 // CNM to MNM

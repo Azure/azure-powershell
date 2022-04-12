@@ -31,6 +31,12 @@
     - `Update-AzVpnServerConfigurationPolicyGroup`
     - `Remove-AzVpnServerConfigurationPolicyGroup`	
 * Fixed `ArgumentNullException` in `Add-AzRouteConfig` when `RouteTable.Routes` is null.
+* Added new cmdlets to create/manage authorization objects for ExpressRoutePort:
+    - `Add-AzExpressRoutePortAuthorization`
+    - `Get-AzExpressRoutePortAuthorization`
+    - `Remove-AzExpressRoutePortAuthorization`
+* Added optional parameter `AuthorizationKey` to cmdlet `New-AzExpressRouteCircuit` to allow creating ExpressRoute Circuit on a ExpressRoutePort with a different owner.
+* Fixed a bug that can't display CustomIpPrefix in PublicIpPrefix.
 
 ## Version 4.16.0
 * Added support for retrieving the state of packet capture even when the provisioning state of the packet capture was failure
