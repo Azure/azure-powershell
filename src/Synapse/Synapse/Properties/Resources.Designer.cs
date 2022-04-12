@@ -350,6 +350,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Editing link tables under link connection &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string EditingLinkConnectionLinkTables {
+            get {
+                return ResourceManager.GetString("EditingLinkConnectionLinkTables", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to One or more of the email addresses you entered are not valid..
         /// </summary>
         internal static string EmailsAreNotValid {
@@ -1531,15 +1540,6 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Setting LinkTable &apos;{0}&apos; in workspace &apos;{1}&apos;..
-        /// </summary>
-        internal static string SettingSynapseLinkConnectionLinkTable {
-            get {
-                return ResourceManager.GetString("SettingSynapseLinkConnectionLinkTable", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Setting linked service &apos;{0}&apos; in workspace &apos;{1}&apos;..
         /// </summary>
         internal static string SettingSynapseLinkedService {
@@ -1900,6 +1900,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string UpdatingIntegrationRuntimeNode {
             get {
                 return ResourceManager.GetString("UpdatingIntegrationRuntimeNode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating the landing zone credential of  link connection &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string UpdatingLinkConnectionLandingZoneCredential {
+            get {
+                return ResourceManager.GetString("UpdatingLinkConnectionLandingZoneCredential", resourceCulture);
             }
         }
         

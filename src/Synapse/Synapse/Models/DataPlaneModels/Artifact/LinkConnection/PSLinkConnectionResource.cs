@@ -13,22 +13,30 @@
 // ----------------------------------------------------------------------------------
 
 using Azure.Analytics.Synapse.Artifacts.Models;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
-    public class PSLinkTableRequestTarget
+    public class PSLinkConnectionResource
     {
-        public PSLinkTableRequestTarget(LinkTableRequestTarget linkTableRequestTarget)
+        public PSLinkConnectionResource(LinkConnectionResource linkConnectionResource, string workspaceName)
         {
-            this.TableName = linkTableRequestTarget?.TableName;
-            this.SchemaName = linkTableRequestTarget?.SchemaName;
-            this.DistributionOptions = new PSLinkTableRequestTargetDistributionOptions(linkTableRequestTarget?.DistributionOptions);
+            this.WorkspaceName = workspaceName;
+            this.Id = linkConnectionResource?.Id;
+            this.Name = linkConnectionResource?.Name;
+            this.Type = linkConnectionResource?.Type;
+            this.Properties = linkConnectionResource?.Properties;
         }
 
-        public string TableName { get; set; }
+        public string WorkspaceName { get; set; }
 
-        public string SchemaName { get; set; }
+        public string Id { get; set; }
 
-        public PSLinkTableRequestTargetDistributionOptions DistributionOptions { get; set; }
+        public string Name { get; set; }
+
+        public string Type { get; set; }
+
+        public LinkConnection Properties { get; set; }
     }
 }

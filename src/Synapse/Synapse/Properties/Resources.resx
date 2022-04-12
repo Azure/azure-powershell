@@ -811,5 +811,10 @@ Failed: {2}.</value>
   </data>
   <data name="SettingSynapseLinkConnectionLinkTable" xml:space="preserve">
     <value>Setting LinkTable '{0}' in workspace '{1}'.</value>
+  <data name="EditingLinkConnectionLinkTables" xml:space="preserve">
+    <value>Editing link tables under link connection '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="UpdatingLinkConnectionLandingZoneCredential" xml:space="preserve">
+    <value>Updating the landing zone credential of  link connection '{0}' in workspace '{1}'.</value>
   </data>
 </root>

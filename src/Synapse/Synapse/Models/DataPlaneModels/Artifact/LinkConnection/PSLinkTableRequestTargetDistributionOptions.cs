@@ -20,21 +20,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     {
         public PSLinkTableRequestTargetDistributionOptions(LinkTableRequestTargetDistributionOptions linkTableRequestTargetDistributionOptions)
         {
-            this.Type = linkTableRequestTargetDistributionOptions.Type;
-            this.DistributionColumn = linkTableRequestTargetDistributionOptions.DistributionColumn;
+            this.Type = linkTableRequestTargetDistributionOptions?.Type;
+            this.DistributionColumn = linkTableRequestTargetDistributionOptions?.DistributionColumn;
         }
 
         public string Type { get; set; }
 
         public string DistributionColumn { get; set; }
-
-        public LinkTableRequestTargetDistributionOptions ToSdkObject()
-        {
-            return new LinkTableRequestTargetDistributionOptions
-            {
-                Type = this.Type,
-                DistributionColumn = this.DistributionColumn
-            };
-        }
     }
 }

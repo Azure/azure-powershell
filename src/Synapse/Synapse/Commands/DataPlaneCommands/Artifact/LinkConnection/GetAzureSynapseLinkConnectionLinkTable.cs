@@ -21,13 +21,14 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.LinkConnectionLinkTables,
-    DefaultParameterSetName = GetByName)]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.LinkConnectionLinkTable,
+        DefaultParameterSetName = GetByName)]
     [OutputType(typeof(PSLinkTableResource))]
-    public class GetAzureSynapseLinkConnectionLinkTables : SynapseArtifactsCmdletBase
+    public class GetAzureSynapseLinkConnectionLinkTable : SynapseArtifactsCmdletBase
     {
         private const string GetByName = "GetByName";
         private const string GetByObject = "GetByObject";
+        private const string GetByInputObject = "GetByInputObject";
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByName,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
@@ -40,7 +41,15 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNull]
         public PSSynapseWorkspace WorkspaceObject { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true, HelpMessage = HelpMessages.LinkConnectionName)]
+        [Parameter(ValueFromPipeline = true, ParameterSetName = GetByInputObject,
+            Mandatory = true, HelpMessage = HelpMessages.LinkConnectionObject)]
+        [ValidateNotNull]
+        public PSLinkConnectionResource InputObject { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByName,
+            Mandatory = true, HelpMessage = HelpMessages.LinkConnectionName)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByObject,
+            Mandatory = true, HelpMessage = HelpMessages.LinkConnectionName)]
         [ValidateNotNullOrEmpty]
         public string LinkConnectionName { get; set; }
 
@@ -51,9 +60,15 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.WorkspaceName = this.WorkspaceObject.Name;
             }
 
+            if (this.IsParameterBound(c => c.InputObject))
+            {
+                this.WorkspaceName = this.InputObject.WorkspaceName;
+                this.LinkConnectionName = this.InputObject.Name;
+            }
+
             var linkTables = SynapseAnalyticsClient.ListLinkTables(this.LinkConnectionName)
-            .Select(element => new PSLinkTableResource(element, this.LinkConnectionName));
-            WriteObject(linkTables);
+            .Select(element => new PSLinkTableResource(element, this.WorkspaceName, this.LinkConnectionName));
+            WriteObject(linkTables, true);
         }
     }
 }

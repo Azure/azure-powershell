@@ -22,13 +22,14 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.LinkConnectionLinkTablesStatus,
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.LinkConnectionLinkTableStatus,
         DefaultParameterSetName = GetByName)]
-    [OutputType(typeof(PSLinkTableResource))]
-    public class GetAzureSynapseLinkConnectionLinkTablesStatus : SynapseArtifactsCmdletBase
+    [OutputType(typeof(PSLinkConnectionQueryTableStatus))]
+    public class GetAzureSynapseLinkConnectionLinkTableStatus : SynapseArtifactsCmdletBase
     {
         private const string GetByName = "GetByName";
         private const string GetByObject = "GetByObject";
+        private const string GetByInputObject = "GetByInputObject";
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByName,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
@@ -41,13 +42,24 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNull]
         public PSSynapseWorkspace WorkspaceObject { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true, HelpMessage = HelpMessages.LinkConnectionName)]
-        [ValidateNotNullOrEmpty]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByName,
+            Mandatory = true, HelpMessage = HelpMessages.LinkConnectionName)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByObject,
+            Mandatory = true, HelpMessage = HelpMessages.LinkConnectionName)]
         public string LinkConnectionName { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.MaxSegmentCount)]
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true, HelpMessage = HelpMessages.MaxSegmentCount)]
         [ValidateNotNullOrEmpty]
         public int MaxSegmentCount { get; set; }
+
+        [Parameter(ValueFromPipeline = true, ParameterSetName = GetByInputObject,
+            Mandatory = true, HelpMessage = HelpMessages.LinkConnectionObject)]
+        [ValidateNotNull]
+        public PSLinkConnectionResource InputObject { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.LinkTableContinuationToken)]
+        [ValidateNotNullOrEmpty]
+        public object ContinuationToken { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -56,20 +68,25 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.WorkspaceName = this.WorkspaceObject.Name;
             }
 
+            if (this.IsParameterBound(c => c.InputObject))
+            {
+                this.WorkspaceName = this.InputObject.WorkspaceName;
+                this.LinkConnectionName = this.InputObject.Name;
+            }
+
             var queryTableStatusRequest = new QueryTableStatusRequest
             {
                 MaxSegmentCount = this.MaxSegmentCount
             };
 
-            if (this.IsParameterBound(c => c.WorkspaceObject))
+            if (this.IsParameterBound(c => c.ContinuationToken))
             {
-                queryTableStatusRequest.MaxSegmentCount = 50;
+                queryTableStatusRequest.ContinuationToken = this.ContinuationToken;
             }
+            
+            var linkTablesStatus = new PSLinkConnectionQueryTableStatus(SynapseAnalyticsClient.QueryTableStatus(this.LinkConnectionName, queryTableStatusRequest));
 
-            var linkTablesStatus = SynapseAnalyticsClient.QueryTableStatus(this.LinkConnectionName, queryTableStatusRequest)
-           .Select(element => new PSLinkTableStatus(element));
-
-            WriteObject(linkTablesStatus);
+            WriteObject(linkTablesStatus, true);
         }
     }
 }

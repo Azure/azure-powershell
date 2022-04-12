@@ -226,15 +226,12 @@ CmdletsToExport = 'Get-AzSynapseSparkJob', 'Stop-AzSynapseSparkJob',
                'Remove-AzSynapseSparkConfiguration', 'New-AzSynapseKqlScript', 
                'Get-AzSynapseKqlScript', 'Remove-AzSynapseKqlScript', 
                'Export-AzSynapseKqlScript',
-<<<<<<< HEAD
                'Get-AzSynapseActiveDirectoryOnlyAuthentication',
                'Enable-AzSynapseActiveDirectoryOnlyAuthentication',
-               'Disable-AzSynapseActiveDirectoryOnlyAuthentication'
-=======
-               'New-AzSynapseLinkTableRequest','Set-AzSynapseLinkConnectionLinkTables',
-               'Get-AzSynapseLinkConnectionLinkTables','Get-AzSynapseLinkConnectionLinkTablesStatus',
+               'Disable-AzSynapseActiveDirectoryOnlyAuthentication',
+               'Set-AzSynapseLinkConnectionLinkTable','Get-AzSynapseLinkConnectionLinkTable',
+               'Get-AzSynapseLinkConnectionLinkTableStatus',
                'Update-AzSynapseLinkConnectionLandingZoneCredential'
->>>>>>> c0ca0ea8bd (linktable cmd)
 
 # Variables to export from this module
 # VariablesToExport = @()

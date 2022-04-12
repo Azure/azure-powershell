@@ -495,9 +495,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             return _linkConnectionClient.ListLinkTables(linkConnectionName).Value.Value;
         }
 
-        public IReadOnlyList<LinkTableStatus> QueryTableStatus(string linkConnectionName, QueryTableStatusRequest queryTableStatusRequest)
+        public LinkConnectionQueryTableStatus QueryTableStatus(string linkConnectionName, QueryTableStatusRequest queryTableStatusRequest)
         {
-            return _linkConnectionClient.QueryTableStatus(linkConnectionName, queryTableStatusRequest).Value.Value;
+            return _linkConnectionClient.QueryTableStatus(linkConnectionName, queryTableStatusRequest);
         }
 
         public void UpdateLandingZoneCredential(string linkConnectionName, UpdateLandingZoneCredential updateLandingZoneCredentialRequest)
