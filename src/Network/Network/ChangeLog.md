@@ -19,6 +19,11 @@
 --->
 
 ## Upcoming Release
+* Added new cmdlets to create/manage authorization objects for ExpressRoutePort:
+    - `Add-AzExpressRoutePortAuthorization`
+    - `Get-AzExpressRoutePortAuthorization`
+    - `Remove-AzExpressRoutePortAuthorization`
+* Added option parameter `AuthorizationKey` to cmdlet `New-AzExpressRouteCircuit` to allow creating ExpressRoute Circuit on a ExpressRoutePort with a different owner.
 * Fixed `ArgumentNullException` in `Add-AzureRmRouteConfig` when `RouteTable.Routes` is null.
 * Fix bug that can't display CustomIpPrefix in PublicIpPrefix.
 
