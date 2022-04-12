@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.4.2
 * Supported create/upgrade storage account with Keyvault from another tenant and access Keyvault with FederatedClientId
     -  `New-AzStorageAccount`
     -  `Set-AzStorageAccount`
