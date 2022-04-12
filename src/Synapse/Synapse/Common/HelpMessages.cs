@@ -230,9 +230,15 @@ namespace Microsoft.Azure.Commands.Synapse.Common
 
         public const string LinkConnectionName = "Name of link connection.";
 
-        public const string MaxSegmentCount = "Maxwha segment count to query table status.";
+        public const string MaxSegmentCount = "Max segment count to query table status.";
 
         public const string SasToken = "Landing zone's sas token.";
+
+        public const string EditTablesRequestFile = "Specifies a local file path for a file to edit link tables";
+
+        public const string LinkTableContinuationToken = "Continuation token to query table status.";
+
+        public const string LinkConnectionObject = "The information about the link connection.";
 
         // TODO: need to update to Synapse link in future
         public const string AuditActionGroup =

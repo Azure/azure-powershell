@@ -233,7 +233,6 @@ CmdletsToExport = 'Get-AzSynapseSparkJob', 'Stop-AzSynapseSparkJob',
                'Get-AzSynapseLinkConnectionLinkTables','Get-AzSynapseLinkConnectionLinkTablesStatus',
                'Update-AzSynapseLinkConnectionLandingZoneCredential'
 
-
 # Variables to export from this module
 # VariablesToExport = @()
 

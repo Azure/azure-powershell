@@ -26,6 +26,11 @@
     - Added `Get-AzSynapseActiveDirectoryOnlyAuthentication` cmdlet
     - Added `Enable-AzSynapseActiveDirectoryOnlyAuthentication` cmdlet
     - Added `Disable-AzSynapseActiveDirectoryOnlyAuthentication` cmdlet
+* Added support for Synapse Link Connection
+    - Added `Set-AzSynapseLinkConnectionLinkTable` cmdlet
+    - Added `Get-AzSynapseLinkConnectionLinkTable` cmdlet
+    - Added `Get-AzSynapseLinkConnectionLinkTableStatus` cmdlet
+    - Added `Update-AzSynapseLinkConnectionLandingZoneCredential` cmdlet
 
 ## Version 1.2.0
 * Upgraded Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.14

@@ -86,6 +86,12 @@ Gets metric data for an integration runtime.
 ### [Get-AzSynapseIntegrationRuntimeNode](Get-AzSynapseIntegrationRuntimeNode.md)
 Gets an integration runtime node information.
 
+### [Get-AzSynapseLinkConnectionLinkTable](Get-AzSynapseLinkConnectionLinkTable.md)
+Gets information about link tables under a link connection.
+
+### [Get-AzSynapseLinkConnectionLinkTableStatus](Get-AzSynapseLinkConnectionLinkTableStatus.md)
+Gets status of link tables under a link connection.
+
 ### [Get-AzSynapseLinkedService](Get-AzSynapseLinkedService.md)
 Gets information about linked services in workspace.
 
@@ -371,6 +377,9 @@ Creates or updates a dataset in workspace.
 ### [Set-AzSynapseIntegrationRuntime](Set-AzSynapseIntegrationRuntime.md)
 Updates an integration runtime.
 
+### [Set-AzSynapseLinkConnectionLinkTable](Set-AzSynapseLinkConnectionLinkTable.md)
+Edits link tables under a link connection.
+
 ### [Set-AzSynapseLinkedService](Set-AzSynapseLinkedService.md)
 Links a data store or a cloud service to workspace.
 
@@ -478,6 +487,9 @@ Updates an integration runtime.
 
 ### [Update-AzSynapseIntegrationRuntimeNode](Update-AzSynapseIntegrationRuntimeNode.md)
 Updates self-hosted integration runtime node.
+
+### [Update-AzSynapseLinkConnectionLandingZoneCredential](Update-AzSynapseLinkConnectionLandingZoneCredential.md)
+Updates the landing zone credential of a link connection.
 
 ### [Update-AzSynapseManagedVirtualNetworkConfig](Update-AzSynapseManagedVirtualNetworkConfig.md)
 Updates managed virtual network configuration to workspace.

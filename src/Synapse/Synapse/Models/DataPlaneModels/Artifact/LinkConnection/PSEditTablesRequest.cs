@@ -14,7 +14,7 @@
 
 using Azure.Analytics.Synapse.Artifacts.Models;
 using System.Collections.Generic;
-
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
@@ -22,9 +22,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     {
         public PSEditTablesRequest(EditTablesRequest editTablesRequest)
         {
-            this.LinkTables = editTablesRequest.LinkTables;
+            this.LinkTables = editTablesRequest?.LinkTables?.Select(element => new PSLinkTableRequest(element)).ToList();
         }
 
-        public IList<LinkTableRequest> LinkTables { get; }
+        public IList<PSLinkTableRequest> LinkTables { get; }
     }
 }

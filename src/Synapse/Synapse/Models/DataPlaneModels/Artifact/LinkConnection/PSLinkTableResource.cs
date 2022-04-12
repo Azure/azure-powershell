@@ -18,16 +18,19 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 {
     public class PSLinkTableResource
     {
-        public PSLinkTableResource(LinkTableResource linkTableResource, string WorkspaceName)
+        public PSLinkTableResource(LinkTableResource linkTableResource, string workspaceName, string linkConnectionName)
         {
-            this.Id = linkTableResource.Id;
-            this.Name = linkTableResource.Name;
+            this.WorkspaceName = workspaceName;
+            this.LinkConnectionName = linkConnectionName;
+            this.Id = linkTableResource?.Id;
+            this.Name = linkTableResource?.Name;
             this.Source = new PSLinkTableRequestSource(linkTableResource?.Source);
             this.Target = new PSLinkTableRequestTarget(linkTableResource?.Target);
-            this.WorkspaceName = WorkspaceName;
         }
 
         public string WorkspaceName { get; set; }
+
+        public string LinkConnectionName { get; set; }
 
         public string Id { get; }
 

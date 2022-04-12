@@ -22,13 +22,14 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.LinkConnectionLinkTables,
-    DefaultParameterSetName = SetByName, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.LinkConnectionLinkTable,
+        DefaultParameterSetName = SetByName, SupportsShouldProcess = true)]
     [OutputType(typeof(void))]
-    public class SetAzureSynapseLinkConnectionLinkTables : SynapseArtifactsCmdletBase
+    public class SetAzureSynapseLinkConnectionLinkTable : SynapseArtifactsCmdletBase
     {
         private const string SetByName = "SetByName";
         private const string SetByObject = "SetByObject";
+        private const string SetByInputObject = "SetByInputObject";
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByName,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
@@ -41,14 +42,21 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNull]
         public PSSynapseWorkspace WorkspaceObject { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true, HelpMessage = HelpMessages.JsonFilePath)]
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true, HelpMessage = HelpMessages.EditTablesRequestFile)]
         [ValidateNotNullOrEmpty]
         [Alias("File")]
-        public string DefinitionFile { get; set; }
+        public string EditTablesRequestFile { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = HelpMessages.LinkConnectionName)]
-        [ValidateNotNull]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByName,
+            Mandatory = true, HelpMessage = HelpMessages.LinkConnectionName)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByObject,
+            Mandatory = true, HelpMessage = HelpMessages.LinkConnectionName)]
         public string LinkConnectionName { get; set; }
+
+        [Parameter(ValueFromPipeline = true, ParameterSetName = SetByInputObject,
+            Mandatory = true, HelpMessage = HelpMessages.LinkConnectionObject)]
+        [ValidateNotNull]
+        public PSLinkConnectionResource InputObject { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
@@ -60,10 +68,17 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.WorkspaceName = this.WorkspaceObject.Name;
             }
 
-            string rawJsonContent = SynapseAnalyticsClient.ReadJsonFileContent(this.TryResolvePath(DefinitionFile));
+            if (this.IsParameterBound(c => c.InputObject))
+            {
+                this.WorkspaceName = this.InputObject.WorkspaceName;
+                this.LinkConnectionName = this.InputObject.Name;
+            }
 
-            SynapseAnalyticsClient.EditTables(this.LinkConnectionName, rawJsonContent);
-
+            if (this.ShouldProcess(this.WorkspaceName, String.Format(Resources.EditingLinkConnectionLinkTables, this.LinkConnectionName, this.WorkspaceName)))
+            {
+                var rawJsonContent = SynapseAnalyticsClient.ReadJsonFileContent(this.TryResolvePath(EditTablesRequestFile));
+                SynapseAnalyticsClient.EditTables(this.LinkConnectionName, rawJsonContent);
+            }
         }
     }
 }

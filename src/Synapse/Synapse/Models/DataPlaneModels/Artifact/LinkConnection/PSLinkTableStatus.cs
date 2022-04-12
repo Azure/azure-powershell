@@ -20,32 +20,21 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     {
         public PSLinkTableStatus(LinkTableStatus linkTableStatus)
         {
-            this.Id = linkTableStatus.Id;
-            this.Status = linkTableStatus.Status;
-            this.ErrorMessage = linkTableStatus.ErrorMessage;
-            this.StartTime = linkTableStatus.StartTime;
-            this.StopTime = linkTableStatus.StopTime;
+            this.Id = linkTableStatus?.Id;
+            this.Status = linkTableStatus?.Status;
+            this.ErrorMessage = linkTableStatus?.ErrorMessage;
+            this.StartTime = linkTableStatus?.StartTime;
+            this.StopTime = linkTableStatus?.StopTime;
         }
 
-        //
-        // Summary:
-        //     Link table id.
         public string Id { get; }
-        //
-        // Summary:
-        //     Link table status.
+
         public string Status { get; }
-        //
-        // Summary:
-        //     Link table error message.
+
         public string ErrorMessage { get; }
-        //
-        // Summary:
-        //     Link table start time.
+
         public object StartTime { get; }
-        //
-        // Summary:
-        //     Link table stop time.
+
         public object StopTime { get; }
     }
 }

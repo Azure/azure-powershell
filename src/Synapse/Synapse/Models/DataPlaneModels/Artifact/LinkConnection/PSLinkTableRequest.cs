@@ -20,10 +20,10 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     {
         public PSLinkTableRequest(LinkTableRequest linkTableRequest)
         {
-            this.Id = linkTableRequest.Id;
+            this.Id = linkTableRequest?.Id;
             this.Source = new PSLinkTableRequestSource(linkTableRequest?.Source);
             this.Target = new PSLinkTableRequestTarget(linkTableRequest?.Target);
-            this.OperationType = linkTableRequest.OperationType;
+            this.OperationType = linkTableRequest?.OperationType;
         }
 
         public string Id { get; set; }
@@ -33,16 +33,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public PSLinkTableRequestTarget Target { get; set; }
 
         public string OperationType { get; set; }
-
-        public LinkTableRequest ToSdkObject()
-        {
-            return new LinkTableRequest
-            {
-                Id = this.Id,
-                Source = this.Source.ToSdkObject(),
-                Target = this.Target.ToSdkObject(),
-                OperationType = this.OperationType
-            };
-        }
     }
 }

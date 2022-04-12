@@ -24,18 +24,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.SchemaName = linkTableRequestSource?.SchemaName;
         }
 
-
         public string TableName { get; set; }
 
         public string SchemaName { get; set; }
-
-        public LinkTableRequestSource ToSdkObject()
-        {
-            return new LinkTableRequestSource
-            {
-                TableName = this.TableName,
-                SchemaName = this.SchemaName
-            };
-        }
     }
 }
