@@ -16,12 +16,11 @@ Create a new database migration to a given SQL Managed Instance.
 New-AzDataMigrationToSqlManagedInstance -ManagedInstanceName <String> -ResourceGroupName <String>
  -TargetDbName <String> [-SubscriptionId <String>] [-AzureBlobAccountKey <String>]
  [-AzureBlobContainerName <String>] [-AzureBlobStorageAccountResourceId <String>]
- [-FileSharePassword <String>] [-FileSharePath <String>] [-FileShareUsername <String>] [-Kind <ResourceType>]
- [-MigrationOperationId <String>] [-MigrationService <String>] [-Offline]
- [-OfflineConfigurationLastBackupName <String>] [-ProvisioningError <String>] [-Scope <String>]
- [-SourceDatabaseName <String>] [-SourceSqlConnectionAuthentication <String>]
+ [-FileSharePassword <SecureString>] [-FileSharePath <String>] [-FileShareUsername <String>]
+ [-Kind <ResourceType>] [-MigrationService <String>] [-Offline] [-OfflineConfigurationLastBackupName <String>]
+ [-Scope <String>] [-SourceDatabaseName <String>] [-SourceSqlConnectionAuthentication <String>]
  [-SourceSqlConnectionDataSource <String>] [-SourceSqlConnectionEncryptConnection]
- [-SourceSqlConnectionPassword <String>] [-SourceSqlConnectionTrustServerCertificate]
+ [-SourceSqlConnectionPassword <SecureString>] [-SourceSqlConnectionTrustServerCertificate]
  [-SourceSqlConnectionUserName <String>] [-StorageAccountKey <String>] [-StorageAccountResourceId <String>]
  [-TargetDatabaseCollation <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
  [-WhatIf] [<CommonParameters>]
@@ -128,7 +127,7 @@ Accept wildcard characters: False
 Password for username to access file share location.
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -193,21 +192,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MigrationOperationId
-ID tracking current migration operation.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -281,21 +265,6 @@ Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProvisioningError
-Error message for migration provisioning failure, if any.
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -401,7 +370,7 @@ Accept wildcard characters: False
 Password to connect to source SQL.
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -555,7 +524,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IDatabaseMigrationSqlMi
+### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlMi
 
 ## NOTES
 

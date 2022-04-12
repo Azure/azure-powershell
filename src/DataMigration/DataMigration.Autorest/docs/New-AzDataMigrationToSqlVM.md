@@ -15,12 +15,11 @@ Create a new database migration to a given SQL VM.
 ```
 New-AzDataMigrationToSqlVM -ResourceGroupName <String> -SqlVirtualMachineName <String> -TargetDbName <String>
  [-SubscriptionId <String>] [-AzureBlobAccountKey <String>] [-AzureBlobContainerName <String>]
- [-AzureBlobStorageAccountResourceId <String>] [-FileSharePassword <String>] [-FileSharePath <String>]
- [-FileShareUsername <String>] [-Kind <ResourceType>] [-MigrationOperationId <String>]
- [-MigrationService <String>] [-Offline] [-OfflineConfigurationLastBackupName <String>]
- [-ProvisioningError <String>] [-Scope <String>] [-SourceDatabaseName <String>]
+ [-AzureBlobStorageAccountResourceId <String>] [-FileSharePassword <SecureString>] [-FileSharePath <String>]
+ [-FileShareUsername <String>] [-Kind <ResourceType>] [-MigrationService <String>] [-Offline]
+ [-OfflineConfigurationLastBackupName <String>] [-Scope <String>] [-SourceDatabaseName <String>]
  [-SourceSqlConnectionAuthentication <String>] [-SourceSqlConnectionDataSource <String>]
- [-SourceSqlConnectionEncryptConnection] [-SourceSqlConnectionPassword <String>]
+ [-SourceSqlConnectionEncryptConnection] [-SourceSqlConnectionPassword <SecureString>]
  [-SourceSqlConnectionTrustServerCertificate] [-SourceSqlConnectionUserName <String>]
  [-StorageAccountKey <String>] [-StorageAccountResourceId <String>] [-TargetDatabaseCollation <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -45,6 +44,10 @@ MyDb                 Microsoft.DataMigration/databaseMigrations SqlVm Succeeded 
 This command starts a Database Migration from the Source Sql Server to target Sql VM.
 This example is for online migration.
 To make it offline add -Offline to the parameters.
+
+Note :
+Create a new database migration to a given SQL VM.
+Note - For the Scope parameter, use the Scope of the SQL VM (/subscriptions/111-222/resourceGroups/myRG/providers/Microsoft.SqlVirtualMachine/SqlVirtualMachines/xyz-SqlVM) and not the Compute SQL VM (/subscriptions/111-222/resourceGroups/myRG/providers/Microsoft.Compute/virtualMachines/xyz-SqlVM)
 
 ## PARAMETERS
 
@@ -127,7 +130,7 @@ Accept wildcard characters: False
 Password for username to access file share location.
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -173,21 +176,6 @@ Accept wildcard characters: False
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.ResourceType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MigrationOperationId
-ID tracking current migration operation.
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -275,21 +263,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProvisioningError
-Error message for migration provisioning failure, if any.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Name of the resource group that contains the resource.
 You can obtain this value from the Azure Resource Manager API or the portal.
@@ -307,7 +280,8 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-Resource Id of the target resource (SQL VM or SQL Managed Instance)
+Resource Id of the target resource (SQL VM).
+For the Scope parameter, use the Scope of the SQL VM (/subscriptions/111-222/resourceGroups/myRG/providers/Microsoft.SqlVirtualMachine/SqlVirtualMachines/xyz-SqlVM) and not the Compute SQL VM (/subscriptions/111-222/resourceGroups/myRG/providers/Microsoft.Compute/virtualMachines/xyz-SqlVM)
 
 ```yaml
 Type: System.String
@@ -385,7 +359,7 @@ Accept wildcard characters: False
 Password to connect to source SQL.
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -554,7 +528,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IDatabaseMigrationSqlVM
+### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlVM
 
 ## NOTES
 

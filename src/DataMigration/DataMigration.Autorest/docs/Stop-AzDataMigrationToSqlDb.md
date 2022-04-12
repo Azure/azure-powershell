@@ -1,57 +1,60 @@
 ---
 external help file:
 Module Name: Az.DataMigration
-online version: https://docs.microsoft.com/powershell/module/az.datamigration/get-azdatamigrationsqlserviceintegrationruntimemetric
+online version: https://docs.microsoft.com/powershell/module/az.datamigration/stop-azdatamigrationtosqldb
 schema: 2.0.0
 ---
 
-# Get-AzDataMigrationSqlServiceIntegrationRuntimeMetric
+# Stop-AzDataMigrationToSqlDb
 
 ## SYNOPSIS
-Retrieve the registered Integration Runtime nodes and their monitoring data for a given Database Migration Service
+Stop in-progress database migration to SQL Db.
 
 ## SYNTAX
 
 ```
-Get-AzDataMigrationSqlServiceIntegrationRuntimeMetric -ResourceGroupName <String>
- -SqlMigrationServiceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Stop-AzDataMigrationToSqlDb -ResourceGroupName <String> -SqlDbInstanceName <String> -TargetDbName <String>
+ -MigrationOperationId <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Retrieve the registered Integration Runtime nodes and their monitoring data for a given Database Migration Service
+Stop in-progress database migration to SQL Db.
 
 ## EXAMPLES
 
-### Example 1: Get the registered Integration Runtime nodes and their monitoring data for a given Sql Migration Service
+### Example 1: Stop in-progress migration to SQL DB
 ```powershell
-Get-AzDataMigrationSqlServiceIntegrationRuntimeMetric -ResourceGroupName "MyResourceGroup" -SqlMigrationServiceName "MySqlMigrationService" | Select *
+$dbMigration = Get-AzDataMigrationToSqlDb -ResourceGroupName "myRG" -SqlDbInstanceName "mySqlDb" -TargetDbName "mydb1"
+Stop-AzDataMigrationToSqlDb -ResourceGroupName "myRG" -SqlDbInstanceName "mySqlDb" -TargetDbName "mydb1" -MigrationOperationId $dbMigration.MigrationOperationId
+
+Get-AzDataMigrationToSqlDb -InputObject $dbMigration 
 ```
 
 ```output
-Name       Node
-----       ----
-default-ir {WIN-AKLAB}
+Name               Type                                       Kind  ProvisioningState MigrationStatus
+----               ----                                       ----  ----------------- ---------------
+mydb1         Microsoft.DataMigration/databaseMigrations SqlDb Canceling         Canceling
 ```
 
-This command gets the registered Integration Runtime nodes and their monitoring data for a given Sql Migration Service.
-
-### Example 2: Print the monitoring data for each Integration Runtime node
-```powershell
-$item = Get-AzDataMigrationSqlServiceIntegrationRuntimeMetric -ResourceGroupName "MyResourceGroup" -SqlMigrationService "MySqlMigrationService"
-$item.Node[0] 
-```
-
-```output
-AvailableMemoryInMb ConcurrentJobsLimit ConcurrentJobsRunning CpuUtilization MaxConcurrentJob NodeName     ReceivedByte     SentByte
-------------------- ------------------- --------------------- -------------- ---------------- --------     ------------     --------
-200138              20                  0                     8                               WIN-AKLAB    9.33309006690979 5.433871746063232
-```
-
-First command gets the node monitoring data of a Sql Migration Service.
-Second command is then used to print the monitoring data for each node.
+This command stops the in-progress migration to SQL Managed Instance.
 
 ## PARAMETERS
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -60,6 +63,36 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MigrationOperationId
+ID tracking migration operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -99,8 +132,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SqlMigrationServiceName
-Name of the SQL Migration Service.
+### -SqlDbInstanceName
+.
 
 ```yaml
 Type: System.String
@@ -118,13 +151,28 @@ Accept wildcard characters: False
 Subscription ID that identifies an Azure subscription.
 
 ```yaml
-Type: System.String[]
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetDbName
+The name of the target database.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -167,7 +215,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IIntegrationRuntimeMonitoringData
+### System.Boolean
 
 ## NOTES
 
