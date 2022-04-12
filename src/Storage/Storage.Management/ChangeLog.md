@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported DaysAfterLastTierChangeGreaterThan in Management Policy
+    -  `Add-AzStorageAccountManagementPolicyAction`
 
 ## Version 4.4.1
 * Fixed get blob by tag failure on Powershell 7.2.2
