@@ -50,7 +50,7 @@ In this directory, run AutoRest:
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 # lock the commit
-branch: dca0f55a844b694d314f635cc14374c1e87bb9fe
+branch: 59eb5a7f1d09d0be2b80b8497785ffa2d784b5b6
 
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/AlertRules.json
