@@ -30,7 +30,7 @@ For information on how to develop for `Az.DataMigration`, see [how-to.md](how-to
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: dev-datamigration-2022-03-30-preview
+branch: e8c359d8821038f133695c9b1f4cf40d330cbc80
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file: 
