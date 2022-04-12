@@ -181,11 +181,11 @@ CmdletsToExport = 'Get-AzProviderOperation', 'Remove-AzRoleAssignment',
                'New-AzResourceManagementPrivateLink', 
                'New-AzPrivateLinkAssociation', 'Get-AzPrivateLinkAssociation', 
                'Remove-AzPrivateLinkAssociation',
-               'Get-AzEntities', 'Get-AzManagementGroupNameAvailability',
+               'Get-AzEntity', 'Get-AzManagementGroupNameAvailability',
                'Get-AzTenantBackfillStatus', 'Start-AzTenantBackfill',
 	           'Get-AzManagementGroupSubscription', 'Get-AzSubscriptionUnderManagementGroup',
-	           'New-AzHierarchySettings', 'Update-AzHierarchySettings',
-               'Get-AzHierarchySettings', 'Remove-AzHierarchySettings'
+	           'New-AzHierarchySetting', 'Update-AzHierarchySetting',
+               'Get-AzHierarchySetting', 'Remove-AzHierarchySetting'
 
 # Variables to export from this module
 VariablesToExport = '*'
