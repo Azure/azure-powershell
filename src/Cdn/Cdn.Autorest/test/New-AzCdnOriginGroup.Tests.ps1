@@ -39,12 +39,10 @@ Describe 'New-AzCdnOriginGroup' {
                     HostName = "host1.hello.com"
                 };
                 $originId = "/subscriptions/$subId/resourcegroups/$ResourceGroupName/providers/Microsoft.Cdn/profiles/$cdnProfileName/endpoints/$endpointName/origins/$($origin.Name)"
+                $healthProbeParametersObject = New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond 240 -ProbePath "/health.aspx" -ProbeProtocol "Https" -ProbeRequestType "GET" 
                 $originGroup = @{
                     Name = "originGroup1"
-                    HealthProbeSettingProbeIntervalInSecond = 240
-                    HealthProbeSettingProbePath = "/health.aspx"
-                    HealthProbeSettingProbeProtocol = "Https"
-                    HealthProbeSettingProbeRequestType = "GET" 
+                    healthProbeSetting = $healthProbeParametersObject 
                     Origin = @(@{
                         Id = $originId
                     })
@@ -58,17 +56,18 @@ Describe 'New-AzCdnOriginGroup' {
                 $probePath2 = "/check-health.aspx"
                 $probeProtocol2 = "Http"
                 $probeRequestType2 = "HEAD"
+                $healthProbeParametersObject2 = New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond $probeInterval2 `
+                 -ProbePath $probePath2 -ProbeProtocol $probeProtocol2 -ProbeRequestType $probeRequestType2 
 
                 $createdOriginGroup = New-AzCdnOriginGroup -EndpointName $endpointName -Name $originGroupName2 -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName `
-                    -HealthProbeSettingProbeIntervalInSecond $probeInterval2 -HealthProbeSettingProbePath $probePath2 -HealthProbeSettingProbeProtocol $probeProtocol2 `
-                    -HealthProbeSettingProbeRequestType $probeRequestType2 -Origin @(@{ Id = $originId })
+                    -HealthProbeSetting $healthProbeParametersObject2 -Origin @(@{ Id = $originId })
                 
                 $createdEndpoint.DefaultOriginGroupId | Should -Be $defaultOriginGroup
                 $createdOriginGroup.Name | Should -Be $originGroupName2
-                $createdOriginGroup.HealthProbeSettingProbeIntervalInSecond | Should -Be $probeInterval2
-                $createdOriginGroup.HealthProbeSettingProbePath | Should -Be $probePath2
-                $createdOriginGroup.HealthProbeSettingProbeProtocol | Should -Be $probeProtocol2
-                $createdOriginGroup.HealthProbeSettingProbeRequestType | Should -Be $probeRequestType2
+                $createdOriginGroup.HealthProbeSetting.ProbeIntervalInSecond | Should -Be $probeInterval2
+                $createdOriginGroup.HealthProbeSetting.ProbePath | Should -Be $probePath2
+                $createdOriginGroup.HealthProbeSetting.ProbeProtocol | Should -Be $probeProtocol2
+                $createdOriginGroup.HealthProbeSetting.ProbeRequestType | Should -Be $probeRequestType2
                 $createdOriginGroup.Origin[0].Id | Should -Be $originId
             } Finally
             {

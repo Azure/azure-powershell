@@ -15,9 +15,7 @@ Updates an existing origin group within a profile.
 ### UpdateExpanded (Default)
 ```
 Update-AzFrontDoorCdnOriginGroup -OriginGroupName <String> -ProfileName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-HealthProbeSettingProbeIntervalInSecond <Int32>]
- [-HealthProbeSettingProbePath <String>] [-HealthProbeSettingProbeProtocol <ProbeProtocol>]
- [-HealthProbeSettingProbeRequestType <HealthProbeRequestType>]
+ [-SubscriptionId <String>] [-HealthProbeSetting <IHealthProbeParameters>]
  [-LoadBalancingSettingAdditionalLatencyInMillisecond <Int32>] [-LoadBalancingSettingSampleSize <Int32>]
  [-LoadBalancingSettingSuccessfulSamplesRequired <Int32>] [-SessionAffinityState <EnabledState>]
  [-TrafficRestorationTimeToHealedOrNewEndpointsInMinute <Int32>] [-DefaultProfile <PSObject>] [-AsJob]
@@ -26,10 +24,7 @@ Update-AzFrontDoorCdnOriginGroup -OriginGroupName <String> -ProfileName <String>
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzFrontDoorCdnOriginGroup -InputObject <ICdnIdentity>
- [-HealthProbeSettingProbeIntervalInSecond <Int32>] [-HealthProbeSettingProbePath <String>]
- [-HealthProbeSettingProbeProtocol <ProbeProtocol>]
- [-HealthProbeSettingProbeRequestType <HealthProbeRequestType>]
+Update-AzFrontDoorCdnOriginGroup -InputObject <ICdnIdentity> [-HealthProbeSetting <IHealthProbeParameters>]
  [-LoadBalancingSettingAdditionalLatencyInMillisecond <Int32>] [-LoadBalancingSettingSampleSize <Int32>]
  [-LoadBalancingSettingSuccessfulSamplesRequired <Int32>] [-SessionAffinityState <EnabledState>]
  [-TrafficRestorationTimeToHealedOrNewEndpointsInMinute <Int32>] [-DefaultProfile <PSObject>] [-AsJob]
@@ -95,56 +90,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HealthProbeSettingProbeIntervalInSecond
-The number of seconds between health probes.Default is 240sec.
+### -HealthProbeSetting
+Health probe settings to the origin that is used to determine the health of the origin.
+To construct, see NOTES section for HEALTHPROBESETTING properties and create a hash table.
 
 ```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HealthProbeSettingProbePath
-The path relative to the origin that is used to determine the health of the origin.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HealthProbeSettingProbeProtocol
-Protocol to use for health probe.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProbeProtocol
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HealthProbeSettingProbeRequestType
-The type of health probe request that is made.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.HealthProbeRequestType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IHealthProbeParameters
 Parameter Sets: (All)
 Aliases:
 
@@ -374,6 +325,12 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+
+HEALTHPROBESETTING <IHealthProbeParameters>: Health probe settings to the origin that is used to determine the health of the origin.
+  - `[ProbeIntervalInSecond <Int32?>]`: The number of seconds between health probes.Default is 240sec.
+  - `[ProbePath <String>]`: The path relative to the origin that is used to determine the health of the origin.
+  - `[ProbeProtocol <ProbeProtocol?>]`: Protocol to use for health probe.
+  - `[ProbeRequestType <HealthProbeRequestType?>]`: The type of health probe request that is made.
 
 INPUTOBJECT <ICdnIdentity>: Identity Parameter
   - `[CustomDomainName <String>]`: Name of the domain under the profile which is unique globally.

@@ -62,9 +62,16 @@ directive:
     - AFDDomainHttpsParameters
     # CDN
     - CustomDomainHttpsParameters
+    - ResponseBasedOriginErrorDetectionParameters
+    # Both CDN and AFDX
+    - HealthProbeParameters
   # Generate memory object as parameter of the cmelet.
   - model-cmdlet:
     - ResourceReference
+    # origin group parameters
+    - HealthProbeParameters
+    - ResponseBasedOriginErrorDetectionParameters
+    # https
     - UserManagedHttpsParameters
     - CdnManagedHttpsParameters
     - DeliveryRule

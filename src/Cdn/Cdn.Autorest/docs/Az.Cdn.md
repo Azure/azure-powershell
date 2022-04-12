@@ -157,6 +157,9 @@ Create an in-memory object for DeliveryRuleUrlPathCondition.
 ### [New-AzCdnEndpoint](New-AzCdnEndpoint.md)
 Creates a new CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 
+### [New-AzCdnHealthProbeParametersObject](New-AzCdnHealthProbeParametersObject.md)
+Create an in-memory object for HealthProbeParameters.
+
 ### [New-AzCdnManagedHttpsParametersObject](New-AzCdnManagedHttpsParametersObject.md)
 Create an in-memory object for CdnManagedHttpsParameters.
 
@@ -171,6 +174,9 @@ Creates a new Azure Front Door Standard or Azure Front Door Premium or CDN profi
 
 ### [New-AzCdnResourceReferenceObject](New-AzCdnResourceReferenceObject.md)
 Create an in-memory object for ResourceReference.
+
+### [New-AzCdnResponseBasedOriginErrorDetectionParametersObject](New-AzCdnResponseBasedOriginErrorDetectionParametersObject.md)
+Create an in-memory object for ResponseBasedOriginErrorDetectionParameters.
 
 ### [New-AzCdnUrlRedirectActionObject](New-AzCdnUrlRedirectActionObject.md)
 Create an in-memory object for UrlRedirectAction.

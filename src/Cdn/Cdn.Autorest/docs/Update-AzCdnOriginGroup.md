@@ -15,24 +15,18 @@ Updates an existing origin group within an endpoint.
 ### UpdateExpanded1 (Default)
 ```
 Update-AzCdnOriginGroup -EndpointName <String> -Name <String> -ProfileName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-HealthProbeSettingProbeIntervalInSecond <Int32>]
- [-HealthProbeSettingProbePath <String>] [-HealthProbeSettingProbeProtocol <ProbeProtocol>]
- [-HealthProbeSettingProbeRequestType <HealthProbeRequestType>] [-Origin <IResourceReference[]>]
- [-ResponseBasedOriginErrorDetectionSettingHttpErrorRange <IHttpErrorRangeParameters[]>]
- [-ResponseBasedOriginErrorDetectionSettingResponseBasedDetectedErrorType <ResponseBasedDetectedErrorTypes>]
- [-ResponseBasedOriginErrorDetectionSettingResponseBasedFailoverThresholdPercentage <Int32>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-HealthProbeSetting <IHealthProbeParameters>]
+ [-Origin <IResourceReference[]>]
+ [-ResponseBasedOriginErrorDetectionSetting <IResponseBasedOriginErrorDetectionParameters>]
  [-TrafficRestorationTimeToHealedOrNewEndpointsInMinute <Int32>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded1
 ```
-Update-AzCdnOriginGroup -InputObject <ICdnIdentity> [-HealthProbeSettingProbeIntervalInSecond <Int32>]
- [-HealthProbeSettingProbePath <String>] [-HealthProbeSettingProbeProtocol <ProbeProtocol>]
- [-HealthProbeSettingProbeRequestType <HealthProbeRequestType>] [-Origin <IResourceReference[]>]
- [-ResponseBasedOriginErrorDetectionSettingHttpErrorRange <IHttpErrorRangeParameters[]>]
- [-ResponseBasedOriginErrorDetectionSettingResponseBasedDetectedErrorType <ResponseBasedDetectedErrorTypes>]
- [-ResponseBasedOriginErrorDetectionSettingResponseBasedFailoverThresholdPercentage <Int32>]
+Update-AzCdnOriginGroup -InputObject <ICdnIdentity> [-HealthProbeSetting <IHealthProbeParameters>]
+ [-Origin <IResourceReference[]>]
+ [-ResponseBasedOriginErrorDetectionSetting <IResponseBasedOriginErrorDetectionParameters>]
  [-TrafficRestorationTimeToHealedOrNewEndpointsInMinute <Int32>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -111,56 +105,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HealthProbeSettingProbeIntervalInSecond
-The number of seconds between health probes.Default is 240sec.
+### -HealthProbeSetting
+Health probe settings to the origin that is used to determine the health of the origin.
+To construct, see NOTES section for HEALTHPROBESETTING properties and create a hash table.
 
 ```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HealthProbeSettingProbePath
-The path relative to the origin that is used to determine the health of the origin.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HealthProbeSettingProbeProtocol
-Protocol to use for health probe.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProbeProtocol
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HealthProbeSettingProbeRequestType
-The type of health probe request that is made.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.HealthProbeRequestType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IHealthProbeParameters
 Parameter Sets: (All)
 Aliases:
 
@@ -263,42 +213,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResponseBasedOriginErrorDetectionSettingHttpErrorRange
-The list of Http status code ranges that are considered as server errors for origin and it is marked as unhealthy.
-To construct, see NOTES section for RESPONSEBASEDORIGINERRORDETECTIONSETTINGHTTPERRORRANGE properties and create a hash table.
+### -ResponseBasedOriginErrorDetectionSetting
+The JSON object that contains the properties to determine origin health using real requests/responses.
+This property is currently not supported.
+To construct, see NOTES section for RESPONSEBASEDORIGINERRORDETECTIONSETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IHttpErrorRangeParameters[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResponseBasedOriginErrorDetectionSettingResponseBasedDetectedErrorType
-Type of response errors for real user requests for which origin will be deemed unhealthy
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ResponseBasedDetectedErrorTypes
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResponseBasedOriginErrorDetectionSettingResponseBasedFailoverThresholdPercentage
-The percentage of failed requests in the sample where failover should trigger.
-
-```yaml
-Type: System.Int32
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IResponseBasedOriginErrorDetectionParameters
 Parameter Sets: (All)
 Aliases:
 
@@ -392,6 +313,12 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
+HEALTHPROBESETTING <IHealthProbeParameters>: Health probe settings to the origin that is used to determine the health of the origin.
+  - `[ProbeIntervalInSecond <Int32?>]`: The number of seconds between health probes.Default is 240sec.
+  - `[ProbePath <String>]`: The path relative to the origin that is used to determine the health of the origin.
+  - `[ProbeProtocol <ProbeProtocol?>]`: Protocol to use for health probe.
+  - `[ProbeRequestType <HealthProbeRequestType?>]`: The type of health probe request that is made.
+
 INPUTOBJECT <ICdnIdentity>: Identity Parameter
   - `[CustomDomainName <String>]`: Name of the domain under the profile which is unique globally.
   - `[EndpointName <String>]`: Name of the endpoint under the profile which is unique globally.
@@ -411,9 +338,12 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 ORIGIN <IResourceReference[]>: The source of the content being delivered via CDN within given origin group.
   - `[Id <String>]`: Resource ID.
 
-RESPONSEBASEDORIGINERRORDETECTIONSETTINGHTTPERRORRANGE <IHttpErrorRangeParameters[]>: The list of Http status code ranges that are considered as server errors for origin and it is marked as unhealthy.
-  - `[Begin <Int32?>]`: The inclusive start of the http status code range.
-  - `[End <Int32?>]`: The inclusive end of the http status code range.
+RESPONSEBASEDORIGINERRORDETECTIONSETTING <IResponseBasedOriginErrorDetectionParameters>: The JSON object that contains the properties to determine origin health using real requests/responses. This property is currently not supported.
+  - `[HttpErrorRange <IHttpErrorRangeParameters[]>]`: The list of Http status code ranges that are considered as server errors for origin and it is marked as unhealthy.
+    - `[Begin <Int32?>]`: The inclusive start of the http status code range.
+    - `[End <Int32?>]`: The inclusive end of the http status code range.
+  - `[ResponseBasedDetectedErrorType <ResponseBasedDetectedErrorTypes?>]`: Type of response errors for real user requests for which origin will be deemed unhealthy
+  - `[ResponseBasedFailoverThresholdPercentage <Int32?>]`: The percentage of failed requests in the sample where failover should trigger.
 
 ## RELATED LINKS
 

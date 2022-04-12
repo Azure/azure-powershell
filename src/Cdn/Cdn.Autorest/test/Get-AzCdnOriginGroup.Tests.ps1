@@ -39,12 +39,10 @@ Describe 'Get-AzCdnOriginGroup' {
                     HostName = "host1.hello.com"
                 };
                 $originId = "/subscriptions/$subId/resourcegroups/$ResourceGroupName/providers/Microsoft.Cdn/profiles/$cdnProfileName/endpoints/$endpointName/origins/$($origin.Name)"
+                $healthProbeParametersObject = New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond 240 -ProbePath "/health.aspx" -ProbeProtocol "Https" -ProbeRequestType "GET" 
                 $originGroup = @{
                     Name = "originGroup1"
-                    HealthProbeSettingProbeIntervalInSecond = 240
-                    HealthProbeSettingProbePath = "/health.aspx"
-                    HealthProbeSettingProbeProtocol = "Https"
-                    HealthProbeSettingProbeRequestType = "GET" 
+                    healthProbeSetting = $healthProbeParametersObject 
                     Origin = @(@{
                         Id = $originId
                     })
@@ -86,12 +84,10 @@ Describe 'Get-AzCdnOriginGroup' {
                     HostName = "host1.hello.com"
                 };
                 $originId = "/subscriptions/$subId/resourcegroups/$ResourceGroupName/providers/Microsoft.Cdn/profiles/$cdnProfileName/endpoints/$endpointName/origins/$($origin.Name)"
+                $healthProbeParametersObject = New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond 240 -ProbePath "/health.aspx" -ProbeProtocol "Https" -ProbeRequestType "GET" 
                 $originGroup = @{
                     Name = "originGroup1"
-                    HealthProbeSettingProbeIntervalInSecond = 240
-                    HealthProbeSettingProbePath = "/health.aspx"
-                    HealthProbeSettingProbeProtocol = "Https"
-                    HealthProbeSettingProbeRequestType = "GET" 
+                    healthProbeSetting = $healthProbeParametersObject 
                     Origin = @(@{
                         Id = $originId
                     })
@@ -102,10 +98,10 @@ Describe 'Get-AzCdnOriginGroup' {
                 $endpointOriginGroup = Get-AzCdnOriginGroup -Name $originGroup.Name -EndpointName $endpointName -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName
                 
                 $endpointOriginGroup.Name | Should -Be $originGroup.Name
-                $endpointOriginGroup.HealthProbeSettingProbeIntervalInSecond | Should -Be $originGroup.HealthProbeSettingProbeIntervalInSecond
-                $endpointOriginGroup.HealthProbeSettingProbePath | Should -Be $originGroup.HealthProbeSettingProbePath
-                $endpointOriginGroup.HealthProbeSettingProbeProtocol | Should -Be $originGroup.HealthProbeSettingProbeProtocol
-                $endpointOriginGroup.HealthProbeSettingProbeRequestType | Should -Be  $originGroup.HealthProbeSettingProbeRequestType
+                $endpointOriginGroup.HealthProbeSetting.ProbeIntervalInSecond | Should -Be $originGroup.HealthProbeSetting.ProbeIntervalInSecond
+                $endpointOriginGroup.HealthProbeSetting.ProbePath | Should -Be $originGroup.HealthProbeSetting.ProbePath
+                $endpointOriginGroup.HealthProbeSetting.ProbeProtocol | Should -Be $originGroup.HealthProbeSetting.ProbeProtocol
+                $endpointOriginGroup.HealthProbeSetting.ProbeRequestType | Should -Be  $originGroup.HealthProbeSetting.ProbeRequestType
                 $endpointOriginGroup.Origin[0].Id | Should -Be $originGroup.Origin[0].Id
             } Finally
             {
@@ -139,12 +135,10 @@ Describe 'Get-AzCdnOriginGroup' {
                     HostName = "host1.hello.com"
                 };
                 $originId = "/subscriptions/$subId/resourcegroups/$ResourceGroupName/providers/Microsoft.Cdn/profiles/$cdnProfileName/endpoints/$endpointName/origins/$($origin.Name)"
+                $healthProbeParametersObject = New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond 240 -ProbePath "/health.aspx" -ProbeProtocol "Https" -ProbeRequestType "GET" 
                 $originGroup = @{
                     Name = "originGroup1"
-                    HealthProbeSettingProbeIntervalInSecond = 240
-                    HealthProbeSettingProbePath = "/health.aspx"
-                    HealthProbeSettingProbeProtocol = "Https"
-                    HealthProbeSettingProbeRequestType = "GET" 
+                    healthProbeSetting = $healthProbeParametersObject 
                     Origin = @(@{
                         Id = $originId
                     })
@@ -155,10 +149,10 @@ Describe 'Get-AzCdnOriginGroup' {
                 $endpointOriginGroup = Get-AzCdnOriginGroup -Name $originGroup.Name -EndpointName $endpointName -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName | Get-AzCdnOriginGroup
                 
                 $endpointOriginGroup.Name | Should -Be $originGroup.Name
-                $endpointOriginGroup.HealthProbeSettingProbeIntervalInSecond | Should -Be $originGroup.HealthProbeSettingProbeIntervalInSecond
-                $endpointOriginGroup.HealthProbeSettingProbePath | Should -Be $originGroup.HealthProbeSettingProbePath
-                $endpointOriginGroup.HealthProbeSettingProbeProtocol | Should -Be $originGroup.HealthProbeSettingProbeProtocol
-                $endpointOriginGroup.HealthProbeSettingProbeRequestType | Should -Be  $originGroup.HealthProbeSettingProbeRequestType
+                $endpointOriginGroup.HealthProbeSetting.ProbeIntervalInSecond | Should -Be $originGroup.HealthProbeSetting.ProbeIntervalInSecond
+                $endpointOriginGroup.HealthProbeSetting.ProbePath | Should -Be $originGroup.HealthProbeSetting.ProbePath
+                $endpointOriginGroup.HealthProbeSetting.ProbeProtocol | Should -Be $originGroup.HealthProbeSetting.ProbeProtocol
+                $endpointOriginGroup.HealthProbeSetting.ProbeRequestType | Should -Be  $originGroup.HealthProbeSetting.ProbeRequestType
                 $endpointOriginGroup.Origin[0].Id | Should -Be $originGroup.Origin[0].Id
             } Finally
             {
