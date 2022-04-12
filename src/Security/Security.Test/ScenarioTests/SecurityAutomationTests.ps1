@@ -23,7 +23,7 @@ function New-AzSecurityAutomation-ResourceGroupLevelResource
 	$automation = $automations | Select -First 1
 
 	$resourceGroupName = "Sample-RG"
-	$automationName = "sampleAutomation-" + $randomGuid.Guid
+	$automationName = "sampleAutomation"
 	$location = "centralus"
 	$scopes = $automation.Scopes
 	$sources = $automation.Sources
