@@ -60,6 +60,7 @@ directive:
     - SecurityPolicyPropertiesParameters
     - SecretParameters
     - AFDDomainHttpsParameters
+    - LoadBalancingSettingsParameters
     # CDN
     - CustomDomainHttpsParameters
     - ResponseBasedOriginErrorDetectionParameters

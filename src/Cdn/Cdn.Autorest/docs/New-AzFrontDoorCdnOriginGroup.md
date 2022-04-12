@@ -15,8 +15,7 @@ Creates a new origin group within the specified profile.
 ```
 New-AzFrontDoorCdnOriginGroup -OriginGroupName <String> -ProfileName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-HealthProbeSetting <IHealthProbeParameters>]
- [-LoadBalancingSettingAdditionalLatencyInMillisecond <Int32>] [-LoadBalancingSettingSampleSize <Int32>]
- [-LoadBalancingSettingSuccessfulSamplesRequired <Int32>] [-SessionAffinityState <EnabledState>]
+ [-LoadBalancingSetting <ILoadBalancingSettingsParameters>] [-SessionAffinityState <EnabledState>]
  [-TrafficRestorationTimeToHealedOrNewEndpointsInMinute <Int32>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -96,41 +95,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LoadBalancingSettingAdditionalLatencyInMillisecond
-The additional latency in milliseconds for probes to fall into the lowest latency bucket
+### -LoadBalancingSetting
+Load balancing settings for a backend pool
+To construct, see NOTES section for LOADBALANCINGSETTING properties and create a hash table.
 
 ```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -LoadBalancingSettingSampleSize
-The number of samples to consider for load balancing decisions
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -LoadBalancingSettingSuccessfulSamplesRequired
-The number of samples within the sample period that must succeed
-
-```yaml
-Type: System.Int32
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ILoadBalancingSettingsParameters
 Parameter Sets: (All)
 Aliases:
 
@@ -303,6 +273,11 @@ HEALTHPROBESETTING <IHealthProbeParameters>: Health probe settings to the origin
   - `[ProbePath <String>]`: The path relative to the origin that is used to determine the health of the origin.
   - `[ProbeProtocol <ProbeProtocol?>]`: Protocol to use for health probe.
   - `[ProbeRequestType <HealthProbeRequestType?>]`: The type of health probe request that is made.
+
+LOADBALANCINGSETTING <ILoadBalancingSettingsParameters>: Load balancing settings for a backend pool
+  - `[AdditionalLatencyInMillisecond <Int32?>]`: The additional latency in milliseconds for probes to fall into the lowest latency bucket
+  - `[SampleSize <Int32?>]`: The number of samples to consider for load balancing decisions
+  - `[SuccessfulSamplesRequired <Int32?>]`: The number of samples within the sample period that must succeed
 
 ## RELATED LINKS
 

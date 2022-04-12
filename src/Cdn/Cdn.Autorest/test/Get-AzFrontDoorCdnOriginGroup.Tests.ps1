@@ -29,14 +29,13 @@ Describe 'Get-AzFrontDoorCdnOriginGroup' {
             New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
 
             $originGroupName = 'org' + (RandomString -allChars $false -len 6);
+            $healthProbeSetting = New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath "/" `
+            -ProbeProtocol "Https" -ProbeRequestType "GET"
+            $loadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200 `
+            -SampleSize 5 -SuccessfulSamplesRequired 4
+
             New-AzFrontDoorCdnOriginGroup -OriginGroupName $originGroupName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName `
-            -LoadBalancingSettingSampleSize 5 `
-            -LoadBalancingSettingSuccessfulSamplesRequired 4 `
-            -LoadBalancingSettingAdditionalLatencyInMillisecond 200 `
-            -HealthProbeSettingProbeIntervalInSecond 1 `
-            -HealthProbeSettingProbePath "/" `
-            -HealthProbeSettingProbeProtocol $([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProbeProtocol]::Https) `
-            -HealthProbeSettingProbeRequestType $([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.HealthProbeRequestType]::Get) `
+            -LoadBalancingSetting $loadBalancingSetting -HealthProbeSetting $healthProbeSetting
 
             $originGroups = Get-AzFrontDoorCdnOriginGroup -ResourceGroupName $ResourceGroupName -ProfileName $frontDoorCdnProfileName
             $originGroups.Count | Should -Be 1
@@ -60,14 +59,13 @@ Describe 'Get-AzFrontDoorCdnOriginGroup' {
             New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
 
             $originGroupName = 'org' + (RandomString -allChars $false -len 6);
+                        $healthProbeSetting = New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath "/" `
+            -ProbeProtocol "Https" -ProbeRequestType "GET"
+            $loadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200 `
+            -SampleSize 5 -SuccessfulSamplesRequired 4
+
             New-AzFrontDoorCdnOriginGroup -OriginGroupName $originGroupName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName `
-            -LoadBalancingSettingSampleSize 5 `
-            -LoadBalancingSettingSuccessfulSamplesRequired 4 `
-            -LoadBalancingSettingAdditionalLatencyInMillisecond 200 `
-            -HealthProbeSettingProbeIntervalInSecond 1 `
-            -HealthProbeSettingProbePath "/" `
-            -HealthProbeSettingProbeProtocol $([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProbeProtocol]::Https) `
-            -HealthProbeSettingProbeRequestType $([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.HealthProbeRequestType]::Get) `
+            -LoadBalancingSetting $loadBalancingSetting -HealthProbeSetting $healthProbeSetting
 
             $originGroup = Get-AzFrontDoorCdnOriginGroup -ResourceGroupName $ResourceGroupName -ProfileName $frontDoorCdnProfileName -OriginGroupName $originGroupName
             $originGroup.Name | Should -Be $originGroupName
@@ -92,15 +90,14 @@ Describe 'Get-AzFrontDoorCdnOriginGroup' {
             New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
 
             $originGroupName = 'org' + (RandomString -allChars $false -len 6);
-            New-AzFrontDoorCdnOriginGroup -OriginGroupName $originGroupName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName `
-            -LoadBalancingSettingSampleSize 5 `
-            -LoadBalancingSettingSuccessfulSamplesRequired 4 `
-            -LoadBalancingSettingAdditionalLatencyInMillisecond 200 `
-            -HealthProbeSettingProbeIntervalInSecond 1 `
-            -HealthProbeSettingProbePath "/" `
-            -HealthProbeSettingProbeProtocol $([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProbeProtocol]::Https) `
-            -HealthProbeSettingProbeRequestType $([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.HealthProbeRequestType]::Get) `
+                        $healthProbeSetting = New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath "/" `
+            -ProbeProtocol "Https" -ProbeRequestType "GET"
+            $loadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200 `
+            -SampleSize 5 -SuccessfulSamplesRequired 4
 
+            New-AzFrontDoorCdnOriginGroup -OriginGroupName $originGroupName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName `
+            -LoadBalancingSetting $loadBalancingSetting -HealthProbeSetting $healthProbeSetting
+            
             $originGroup = Get-AzFrontDoorCdnOriginGroup -ResourceGroupName $ResourceGroupName -ProfileName $frontDoorCdnProfileName -OriginGroupName $originGroupName | Get-AzFrontDoorCdnOriginGroup
             $originGroup.Name | Should -Be $originGroupName
         } Finally

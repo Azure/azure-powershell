@@ -205,6 +205,12 @@ Creates a new origin within the specified origin group.
 ### [New-AzFrontDoorCdnOriginGroup](New-AzFrontDoorCdnOriginGroup.md)
 Creates a new origin group within the specified profile.
 
+### [New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject](New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject.md)
+Create an in-memory object for HealthProbeParameters.
+
+### [New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject](New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject.md)
+Create an in-memory object for LoadBalancingSettingsParameters.
+
 ### [New-AzFrontDoorCdnProfile](New-AzFrontDoorCdnProfile.md)
 Creates a new Azure Front Door Standard or Azure Front Door Premium or CDN profile with a profile name under the specified subscription and resource group.
 

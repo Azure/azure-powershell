@@ -16,8 +16,7 @@ Updates an existing origin group within a profile.
 ```
 Update-AzFrontDoorCdnOriginGroup -OriginGroupName <String> -ProfileName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-HealthProbeSetting <IHealthProbeParameters>]
- [-LoadBalancingSettingAdditionalLatencyInMillisecond <Int32>] [-LoadBalancingSettingSampleSize <Int32>]
- [-LoadBalancingSettingSuccessfulSamplesRequired <Int32>] [-SessionAffinityState <EnabledState>]
+ [-LoadBalancingSetting <ILoadBalancingSettingsParameters>] [-SessionAffinityState <EnabledState>]
  [-TrafficRestorationTimeToHealedOrNewEndpointsInMinute <Int32>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -25,8 +24,7 @@ Update-AzFrontDoorCdnOriginGroup -OriginGroupName <String> -ProfileName <String>
 ### UpdateViaIdentityExpanded
 ```
 Update-AzFrontDoorCdnOriginGroup -InputObject <ICdnIdentity> [-HealthProbeSetting <IHealthProbeParameters>]
- [-LoadBalancingSettingAdditionalLatencyInMillisecond <Int32>] [-LoadBalancingSettingSampleSize <Int32>]
- [-LoadBalancingSettingSuccessfulSamplesRequired <Int32>] [-SessionAffinityState <EnabledState>]
+ [-LoadBalancingSetting <ILoadBalancingSettingsParameters>] [-SessionAffinityState <EnabledState>]
  [-TrafficRestorationTimeToHealedOrNewEndpointsInMinute <Int32>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -122,41 +120,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -LoadBalancingSettingAdditionalLatencyInMillisecond
-The additional latency in milliseconds for probes to fall into the lowest latency bucket
+### -LoadBalancingSetting
+Load balancing settings for a backend pool
+To construct, see NOTES section for LOADBALANCINGSETTING properties and create a hash table.
 
 ```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -LoadBalancingSettingSampleSize
-The number of samples to consider for load balancing decisions
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -LoadBalancingSettingSuccessfulSamplesRequired
-The number of samples within the sample period that must succeed
-
-```yaml
-Type: System.Int32
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ILoadBalancingSettingsParameters
 Parameter Sets: (All)
 Aliases:
 
@@ -347,6 +316,11 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   - `[SecretName <String>]`: Name of the Secret under the profile.
   - `[SecurityPolicyName <String>]`: Name of the security policy under the profile.
   - `[SubscriptionId <String>]`: Azure Subscription ID.
+
+LOADBALANCINGSETTING <ILoadBalancingSettingsParameters>: Load balancing settings for a backend pool
+  - `[AdditionalLatencyInMillisecond <Int32?>]`: The additional latency in milliseconds for probes to fall into the lowest latency bucket
+  - `[SampleSize <Int32?>]`: The number of samples to consider for load balancing decisions
+  - `[SuccessfulSamplesRequired <Int32?>]`: The number of samples within the sample period that must succeed
 
 ## RELATED LINKS
 
