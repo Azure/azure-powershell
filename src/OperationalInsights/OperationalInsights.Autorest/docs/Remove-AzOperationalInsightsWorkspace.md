@@ -40,6 +40,7 @@ To remove the workspace completely and release the name, use the force flag.
 ```powershell
 Remove-AzOperationalInsightsWorkspace -ResourceGroupName RG-Name -Name WS-Name
 ```
+
 ```output
 Confirm
 Are you sure you want to remove workspace '{WS-Name}' in resource group '{RG-Name}'?

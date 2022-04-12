@@ -33,6 +33,7 @@ Gets recently deleted workspaces in a subscription, available for recovery.
 ```powershell
 Get-AzOperationalInsightsDeletedWorkspace -ResourceGroupName RG-Name
 ```
+
 ```output
 Name                            : {WS-Name1}
 ResourceId                      : /subscriptions/{SUB-id}/resourcegroups/{RG-Name}/providers/microsoft.operationalinsights/workspaces/{WS-Name1}
@@ -81,6 +82,7 @@ Get all deleted workspaces for a given resource group
 ```powershell
 Get-AzOperationalInsightsDeletedWorkspace -ResourceGroupName RG-Name -Name WS-Name1
 ```
+
 ```output
 Name                            : {WS-Name1}
 ResourceId                      : /subscriptions/{SUB-id}/resourcegroups/{RG-Name}/providers/microsoft.operationalinsights/workspaces/{WS-Name1}

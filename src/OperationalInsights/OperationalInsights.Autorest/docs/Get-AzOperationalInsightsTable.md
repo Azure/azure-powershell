@@ -39,6 +39,7 @@ Gets a Log Analytics workspace table.
 ```powershell
 Get-AzOperationalInsightsTable -ResourceGroupName RG-Name -WorkspaceName WS-Name
 ```
+
 ```output
 
 Name                                         Id                                                                                                                                                                                                      RetentionInDays
@@ -57,6 +58,7 @@ Get all tables for a given workspace name
 ```powershell
 Get-AzOperationalInsightsTable -ResourceGroupName RG-Name -WorkspaceName WS-Name -TableName Table-Name
 ```
+
 ```output
 Name  Id                                                                                                                                                               RetentionInDays
 ----  --                                                                                                                                                               ---------------

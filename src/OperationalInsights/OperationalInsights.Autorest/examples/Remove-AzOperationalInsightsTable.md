@@ -2,7 +2,7 @@
 ```powershell
 Remove-AzOperationalInsightsTable -ResourceGroupName RG-name -Name Table-name -WorkspaceName WS-name
 
-#--no output--
+# --no output--
 ```
 Remove a table by name.
 

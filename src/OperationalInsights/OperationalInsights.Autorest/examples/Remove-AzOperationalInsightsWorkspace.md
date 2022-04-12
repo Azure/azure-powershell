@@ -2,6 +2,7 @@
 ```powershell
 Remove-AzOperationalInsightsWorkspace -ResourceGroupName RG-Name -Name WS-Name
 ```
+
 ```output
 Confirm
 Are you sure you want to remove workspace '{WS-Name}' in resource group '{RG-Name}'?

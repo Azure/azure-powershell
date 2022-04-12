@@ -33,6 +33,7 @@ $schemaColumns = ($col1, $col2)
 
 New-AzOperationalInsightsTable -ResourceGroupName RG-name -WorkspaceName WS-name -Name TableName_CL -RetentionInDay 33 -TotalRetentionInDay 55 -SchemaName TableName_CL -SchemaColumn $schemaColumns
 ```
+
 ```output
 Name             ResourceGroupName
 ----             -----------------

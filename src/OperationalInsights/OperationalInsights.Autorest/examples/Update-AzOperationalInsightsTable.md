@@ -2,6 +2,7 @@
 ```powershell
 Update-AzOperationalInsightsTable -ResourceGroupName RG-name -WorkspaceName WS-name -Name TableName_CL -RetentionInDay 40
 ```
+
 ```output
 Name             ResourceGroupName
 ----             -----------------
@@ -18,31 +19,20 @@ Update-AzOperationalInsightsTable_UpdateExpanded: 'Patch' cannot be used for tab
 
 $tempTable = New-AzOperationalInsightsTable -ResourceGroupName RG-name -WorkspaceName WS-name -Name Heartbeat -RetentionInDay 50 
 $tempTable
-```
-```output
 Name      ResourceGroupName
 ----      -----------------
 Heartbeat
-```
-```powershell
+
 $tempTable.RetentionInDay
-```
-```output
 50
-```
-```powershell
+
 $tempTable = Update-AzOperationalInsightsTable -ResourceGroupName RG-name -WorkspaceName WS-name -Name Heartbeat -RetentionInDay 30
 $tempTable
-```
-```output
 Name      ResourceGroupName
 ----      -----------------
 Heartbeat
-```
-```powershell
+
 $tempTable.RetentionInDay
-```
-```output
 30
 ```
 

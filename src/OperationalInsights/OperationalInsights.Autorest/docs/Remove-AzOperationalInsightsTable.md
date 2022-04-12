@@ -34,7 +34,7 @@ Delete a Log Analytics workspace table.
 ```powershell
 Remove-AzOperationalInsightsTable -ResourceGroupName RG-name -Name Table-name -WorkspaceName WS-name
 
-#--no output--
+# --no output--
 ```
 
 Remove a table by name.
@@ -53,7 +53,7 @@ $tempTable.RetentionInDay
 
 Remove-AzOperationalInsightsTable -ResourceGroupName dabenham-dev -WorkspaceName dabenham-PSH2 -Name Heartbeat
 $tempTable = Get-AzOperationalInsightsTable -ResourceGroupName dabenham-dev -WorkspaceName dabenham-PSH2 -Name Heartbeat
-$tempTable.RetentionInDay 
+$tempTable.RetentionInDay
 30
 ```
 

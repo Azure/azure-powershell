@@ -2,16 +2,11 @@
 ```powershell
 $workspace =  Update-AzOperationalInsightsWorkspace -ResourceGroupName RG-name -Name WS-name -RetentionInDay 42
 $workspace
-```
-```output
 Location Name                   ETag ResourceGroupName
 -------- ----                   ---- -----------------
-eastus   {WS-name}t
-```
-```powershell
+eastus   {WS-name}
+
 $workspace.RetentionInDay
-```
-```output
 42
 ```
 

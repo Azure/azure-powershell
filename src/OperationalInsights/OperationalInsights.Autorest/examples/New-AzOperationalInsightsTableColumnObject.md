@@ -2,6 +2,7 @@
 ```powershell
 New-AzOperationalInsightsTableColumnObject -Name 'SourceSystem' -Description 'Type of agent the data was collected from. Possible values are OpsManager (Windows agent) or Linux.' -Type 'string'
 ```
+
 ```output
 DataTypeHint Description                                                                                         DisplayName IsDefaultDisplay IsHidden Name
 ------------ -----------                                                                                         ----------- ---------------- -------- ----
@@ -14,6 +15,7 @@ Creates a TableColumnObject(1 of 2 that are required) which is required to use "
 ```powershell
 New-AzOperationalInsightsTableColumnObject -Name 'TimeGenerated' -Description 'Date and time the record was created.' -Type 'datetime'
 ```
+
 ```output
 DataTypeHint Description                           DisplayName IsDefaultDisplay IsHidden Name
 ------------ -----------                           ----------- ---------------- -------- ----

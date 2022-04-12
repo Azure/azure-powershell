@@ -31,6 +31,7 @@ Create or update a workspace.
 ```powershell
 New-AzOperationalInsightsWorkspace -ResourceGroupName RG-name -Name WS-name -Location Resource-location
 ```
+
 ```output
 Location Name                   ETag ResourceGroupName
 -------- ----                   ---- -----------------

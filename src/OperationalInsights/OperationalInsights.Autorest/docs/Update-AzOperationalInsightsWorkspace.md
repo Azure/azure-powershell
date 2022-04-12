@@ -41,16 +41,11 @@ Updates a workspace.
 ```powershell
 $workspace =  Update-AzOperationalInsightsWorkspace -ResourceGroupName RG-name -Name WS-name -RetentionInDay 42
 $workspace
-```
-```output
 Location Name                   ETag ResourceGroupName
 -------- ----                   ---- -----------------
-eastus   {WS-name}t
-```
-```powershell
+eastus   {WS-name}
+
 $workspace.RetentionInDay
-```
-```output
 42
 ```
 
@@ -58,8 +53,10 @@ Update a custom property - retention for a workspace
 
 ### Example 2: Update a workspace that does not exist
 ```powershell
-Update-AzOperationalInsightsWorkspace -ResourceGroupName {RG-name} -Name {WS-name} -RetentionInDay 42
+Update-AzOperationalInsightsWorkspace -ResourceGroupName RG-name -Name WS-name -RetentionInDay 42
+```
 
+```output
 Update-AzOperationalInsightsWorkspace_UpdateExpanded: The Resource 'Microsoft.OperationalInsights/workspaces/{WS-name}' under resource group '{RG-name}' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix
 ```
 

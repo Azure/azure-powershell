@@ -2,7 +2,7 @@
 ```powershell
 Move-AzOperationalInsightsTable -ResourceGroupName RG-name -Name Table-name -WorkspaceName WS-name
 
-#no output if command is successfull 
+# no output if command is successful
 ```
 
 Migrate classic table

@@ -2,6 +2,7 @@
 ```powershell
 Get-AzOperationalInsightsWorkspace -Name WS_Name -ResourceGroupName RG_Name
 ```
+
 ```output
 
 Location Name             ETag
@@ -15,6 +16,7 @@ Get a Log-Analytics workspace
 ```powershell
 Get-AzOperationalInsightsWorkspace  -ResourceGroupName RG_Name
 ```
+
 ```output
 
 Location    Name                        ETag
