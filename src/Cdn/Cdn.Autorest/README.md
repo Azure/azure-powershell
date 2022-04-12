@@ -66,6 +66,7 @@ directive:
   - model-cmdlet:
     - UserManagedHttpsParameters
     - CdnManagedHttpsParameters
+    - DeliveryRule
     # CDN condition
     - DeliveryRuleRemoteAddressCondition
     - DeliveryRuleRequestMethodCondition
