@@ -64,6 +64,7 @@ directive:
     - CustomDomainHttpsParameters
   # Generate memory object as parameter of the cmelet.
   - model-cmdlet:
+    - ResourceReference
     - UserManagedHttpsParameters
     - CdnManagedHttpsParameters
     - DeliveryRule
