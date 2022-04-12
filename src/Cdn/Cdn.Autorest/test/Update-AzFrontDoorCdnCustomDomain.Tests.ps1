@@ -28,8 +28,7 @@ Describe 'Update-AzFrontDoorCdnCustomDomain' {
             Write-Host -ForegroundColor Green "Use custom domain name : $($customDomainName)"
 
             $secret = Get-AzFrontDoorCdnSecret -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Name $secretName
-            $secretResoure = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ResourceReference]::new()
-            $secretResoure.Id = $secret.Id
+            $secretResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id
             $updateSetting = New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType "CustomerCertificate" -MinimumTlsVersion "TLS10" -Secret $secretResoure
 
             Update-AzFrontDoorCdnCustomDomain -CustomDomainName $customDomainName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName `
@@ -51,8 +50,7 @@ Describe 'Update-AzFrontDoorCdnCustomDomain' {
             Write-Host -ForegroundColor Green "Use custom domain name : $($customDomainName)"
 
             $secret = Get-AzFrontDoorCdnSecret -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Name $secretName
-            $secretResoure = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ResourceReference]::new()
-            $secretResoure.Id = $secret.Id
+            $secretResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id
             $updateSetting = New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType "CustomerCertificate" -MinimumTlsVersion "TLS10" -Secret $secretResoure
 
             Get-AzFrontDoorCdnCustomDomain -ResourceGroupName $ResourceGroupName -ProfileName $frontDoorCdnProfileName -CustomDomainName $customDomainName `

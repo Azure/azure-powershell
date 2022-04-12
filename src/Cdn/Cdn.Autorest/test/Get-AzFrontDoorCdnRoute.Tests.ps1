@@ -69,8 +69,7 @@ Describe 'Get-AzFrontDoorCdnRoute' {
             New-AzFrontDoorCdnRule -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -RuleSetName $rulesetName -Name $ruleName `
             -Action $actions -Condition $conditions
 
-            $ruleSetResoure = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ResourceReference]::new()
-            $ruleSetResoure.Id = $ruleSet.Id
+            $ruleSetResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $ruleSet.Id
 
             $routeName = 'route' + (RandomString -allChars $false -len 6);
             New-AzFrontDoorCdnRoute -Name $routeName -EndpointName $endpointName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName `
@@ -138,8 +137,7 @@ Describe 'Get-AzFrontDoorCdnRoute' {
             New-AzFrontDoorCdnRule -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -RuleSetName $rulesetName -Name $ruleName `
             -Action $actions -Condition $conditions
 
-            $ruleSetResoure = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ResourceReference]::new()
-            $ruleSetResoure.Id = $ruleSet.Id
+            $ruleSetResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $ruleSet.Id
 
             $routeName = 'route' + (RandomString -allChars $false -len 6);
             New-AzFrontDoorCdnRoute -Name $routeName -EndpointName $endpointName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName `
@@ -208,8 +206,7 @@ Describe 'Get-AzFrontDoorCdnRoute' {
             New-AzFrontDoorCdnRule -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -RuleSetName $rulesetName -Name $ruleName `
             -Action $actions -Condition $conditions
 
-            $ruleSetResoure = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ResourceReference]::new()
-            $ruleSetResoure.Id = $ruleSet.Id
+            $ruleSetResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $ruleSet.Id
 
             $routeName = 'route' + (RandomString -allChars $false -len 6);
             New-AzFrontDoorCdnRoute -Name $routeName -EndpointName $endpointName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName `

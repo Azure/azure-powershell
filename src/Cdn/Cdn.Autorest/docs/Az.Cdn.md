@@ -169,6 +169,9 @@ Creates a new origin group within the specified endpoint.
 ### [New-AzCdnProfile](New-AzCdnProfile.md)
 Creates a new Azure Front Door Standard or Azure Front Door Premium or CDN profile with a profile name under the specified subscription and resource group.
 
+### [New-AzCdnResourceReferenceObject](New-AzCdnResourceReferenceObject.md)
+Create an in-memory object for ResourceReference.
+
 ### [New-AzCdnUrlRedirectActionObject](New-AzCdnUrlRedirectActionObject.md)
 Create an in-memory object for UrlRedirectAction.
 
@@ -198,6 +201,9 @@ Creates a new origin group within the specified profile.
 
 ### [New-AzFrontDoorCdnProfile](New-AzFrontDoorCdnProfile.md)
 Creates a new Azure Front Door Standard or Azure Front Door Premium or CDN profile with a profile name under the specified subscription and resource group.
+
+### [New-AzFrontDoorCdnResourceReferenceObject](New-AzFrontDoorCdnResourceReferenceObject.md)
+Create an in-memory object for ResourceReference.
 
 ### [New-AzFrontDoorCdnRoute](New-AzFrontDoorCdnRoute.md)
 Creates a new route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
