@@ -23,7 +23,7 @@ function New-AzSecurityAutomation-ResourceGroupLevelResource
 	$automation = $automations | Select -First 1
 
 	$resourceGroupName = "Sample-RG"
-	$automationName = "sampleAutomation"
+	$automationName = "sampleAutomation@"
 	$location = "centralus"
 	$scopes = $automation.Scopes
 	$sources = $automation.Sources
@@ -44,7 +44,7 @@ function Set-AzSecurityAutomation-ResourceGroupLevelResource
 	$automation = $automations | Select -First 1
 
 	$resourceGroupName = "Sample-RG"
-	$automationName = "sampleAutomation"
+	$automationName = "sampleAutomation@"
 	$location = "centralus"
 	$scopes = $automation.Scopes
 	$sources = $automation.Sources
@@ -116,7 +116,7 @@ Get specific security Automation
 function Get-AzSecurityAutomation-ResourceGroupLevelResource
 {
 	$resourceGroupName = "Sample-RG"
-	$automationName = "sampleAutomation"
+	$automationName = "sampleAutomation@"
 
     $automation = Get-AzSecurityAutomation -ResourceGroupName $resourceGroupName -Name $automationName
 	Validate-Automation $automation
@@ -145,7 +145,7 @@ function Confirm-AzSecurityAutomation-ResourceGroupLevelResource
 	$automation = $automations | Select -First 1
 
 	$resourceGroupName = "Sample-RG"
-	$automationName = "sampleAutomation"
+	$automationName = "sampleAutomation@"
 	$location = "centralus"
 	$scopes = $automation.Scopes
 	$sources = $automation.Sources
