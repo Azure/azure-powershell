@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
 online version: https://docs.microsoft.com/powershell/module/az.iothub/get-aziothubregistrystatistic
@@ -24,8 +24,8 @@ This provides information about the number of total, enabled and disabled device
 ## EXAMPLES
 
 ### Example 1 Get the RegistryStatistics
-```
-PS C:\> Get-AzIotHubRegistryStatistic -ResourceGroupName "myresourcegroup" -Name "myiothub"
+```powershell
+Get-AzIotHubRegistryStatistic -ResourceGroupName "myresourcegroup" -Name "myiothub"
 ```
 
 Gets the RegistryStatistics for the IotHub named "myiothub"

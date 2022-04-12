@@ -20,27 +20,9 @@ Gets information about a configuration of server.
 .Description
 Gets information about a configuration of server.
 .Example
-PS C:\> Get-AzPostgreSqlConfiguration -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
-
-Name                                  Value
-----                                  -----
-array_nulls                           on
-backslash_quote                       safe_encoding
-bytea_output                          hex
-check_function_bodies                 on
-client_encoding                       sql_ascii
-...
-azure.replication_support             REPLICA
-max_wal_senders                       10
-max_replication_slots                 10
-hot_standby_feedback                  off
-logging_collector                     on
+Get-AzPostgreSqlConfiguration -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
 .Example
-PS C:\> Get-AzPostgreSqlConfiguration -Name timezone -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
-
-Name     Value
-----     -----
-timezone UTC
+Get-AzPostgreSqlConfiguration -Name timezone -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
@@ -203,24 +185,12 @@ Gets information about a server firewall rule.
 .Description
 Gets information about a server firewall rule.
 .Example
-PS C:\> Get-AzPostgreSqlFirewallRule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
-
-Name StartIPAddress EndIPAddress
----- -------------- ------------
-rule 0.0.0.0        0.0.0.1
+Get-AzPostgreSqlFirewallRule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
 .Example
-PS C:\> Get-AzPostgreSqlFirewallRule -Name rule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
-
-Name StartIPAddress EndIPAddress
----- -------------- ------------
-rule 0.0.0.0        0.0.0.1
+Get-AzPostgreSqlFirewallRule -Name rule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
 .Example
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/firewallRules/rule"
-PS C:\> Get-AzPostgreSqlFirewallRule -InputObject $ID
-
-Name StartIPAddress EndIPAddress
----- -------------- ------------
-rule 0.0.0.0        0.0.0.1
+$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/firewallRules/rule"
+Get-AzPostgreSqlFirewallRule -InputObject $ID
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
@@ -383,27 +353,9 @@ Gets information about a configuration of server.
 .Description
 Gets information about a configuration of server.
 .Example
-PS C:\> Get-AzPostgreSqlFlexibleServerConfiguration -Name work_mem -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test
-
-Name     Value AllowedValue Source         DefaultValue
-----     ----- ------------ ------         ------------
-work_mem 4096  4096-2097151 system-default 4096
+Get-AzPostgreSqlFlexibleServerConfiguration -Name work_mem -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test
 .Example
-PS C:\> Get-AzPostgreSqlFlexibleServerConfiguration -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test
-
-Name                                       Value                      AllowedValue
-----                                       -----                      ------------
-application_name                                                      [A-Za-z0-9._-]*
-array_nulls                                on                         on,off
-autovacuum                                 on                         on,off
-autovacuum_analyze_scale_factor            0.1                        0-100
-...
-work_mem                                   4096                       4096-2097151
-xmlbinary                                  base64                     base64,hex
-xmloption                                  content                    content,document
-intelligent_tuning                         off                        on,off
-require_secure_transport                   on                         on,off
-pgbouncer.enabled                          false                      true, false
+Get-AzPostgreSqlFlexibleServerConfiguration -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
@@ -566,26 +518,11 @@ Gets information about a database.
 .Description
 Gets information about a database.
 .Example
-PS C:\> Get-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test
-
-Name              Charset Collation
-----              ------- ---------
-azure_maintenance UTF8    en_US.utf8
-postgres          UTF8    en_US.utf8
-azure_sys         UTF8    en_US.utf8
-flexibleserverdb  UTF8    en_US.utf8
+Get-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test
 .Example
-PS C:\> Get-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test -Name flexibleserverdb
-
-Name             Charset Collation
-----             ------- ---------
-flexibleserverdb UTF8    en_US.utf8
+Get-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test -Name flexibleserverdb
 .Example
-PS C:\> Get-AzPostgreSqlFlexibleServerDatabase -InputObject /subscriptions/0000000000-0000-0000-0000-000000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-test/databases/flexibleserverdb
-
-Name             Charset Collation
-----             ------- ---------
-flexibleserverdb UTF8    en_US.utf8
+Get-AzPostgreSqlFlexibleServerDatabase -InputObject /subscriptions/0000000000-0000-0000-0000-000000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-test/databases/flexibleserverdb
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
@@ -748,25 +685,12 @@ List all the firewall rules in a given server.
 .Description
 List all the firewall rules in a given server.
 .Example
-PS C:\> Get-AzPostgreSqlFlexibleServerFirewallRule -Name firewallrule-test -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test
-
-FirewallRuleName   StartIPAddress   EndIPAddress
------------------  ---------------  ---------------
-firewallrule-test   12.12.12.12     23.23.23.23
+Get-AzPostgreSqlFlexibleServerFirewallRule -Name firewallrule-test -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test
 .Example
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/servers/postgresql-test/firewallRules/firewallrule-test"
-PS C:\> Get-AzPostgreSqlFlexibleServerFirewallRule -InputObject $ID
-
-FirewallRuleName   StartIPAddress   EndIPAddress
------------------  ---------------  ---------------
-firewallrule-test   12.12.12.12     23.23.23.23
+$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/servers/postgresql-test/firewallRules/firewallrule-test"
+Get-AzPostgreSqlFlexibleServerFirewallRule -InputObject $ID
 .Example
-PS C:\> Get-AzPostgreSqlFlexibleServerFirewallRule -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test
-
-FirewallRuleName   StartIPAddress   EndIPAddress
------------------  ---------------  ---------------
-firewallrule-test   12.12.12.12     23.23.23.23
-firewallrule-test2  12.12.12.15     23.23.23.25
+Get-AzPostgreSqlFlexibleServerFirewallRule -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
@@ -929,34 +853,14 @@ Gets information about a server.
 .Description
 Gets information about a server.
 .Example
-PS C:\> Get-AzPostgreSqlFlexibleServer
-
-Name                Location  SkuName         SkuTier        AdministratorLogin StorageSizeGb
-----                --------  -------         -------        ------------------ -------------
-postgresql-test     East US   Standard_D2s_v3 GeneralPurpose daeunyim           128
-postgresql-test-2   East US   Standard_D2s_v3 GeneralPurpose daeunyim           128
-postgresql-test-3   East US   Standard_D2s_v3 GeneralPurpose daeunyim           128
-
+Get-AzPostgreSqlFlexibleServer
 .Example
-PS C:\> Get-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test
-
-Name                Location  SkuName         SkuTier        AdministratorLogin StorageSizeGb
-----                --------  -------         -------        ------------------ -------------
-postgresql-test     East US   Standard_D2s_v3 GeneralPurpose daeunyim           128
+Get-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test
 .Example
-PS C:\> Get-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest
-
-Name                Location  SkuName         SkuTier        AdministratorLogin StorageSizeGb
-----                --------  -------         -------        ------------------ -------------
-postgresql-test     East US   Standard_D2s_v3 GeneralPurpose daeunyim           128
-postgresql-test-2   East US   Standard_D2s_v3 GeneralPurpose daeunyim           128
+Get-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest
 .Example
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-test"
-PS C:\> Get-AzPostgreSqlFlexibleServer -InputObject $ID
-
-Name                Location  SkuName         SkuTier        AdministratorLogin StorageSizeGb
-----                --------  -------         -------        ------------------ -------------
-postgresql-test     East US   Standard_D2s_v3 GeneralPurpose daeunyim           128
+$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-test"
+Get-AzPostgreSqlFlexibleServer -InputObject $ID
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
@@ -1114,11 +1018,7 @@ List all the replicas for a given server.
 .Description
 List all the replicas for a given server.
 .Example
-PS C:\> Get-AzPostgreSqlReplica -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
-
-Name                        Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
-----                        -------- ------------------ ------- ----------------------- -------   -------        --------------
-postgresqltestserverreplica eastus   pwsh               9.6     5120                    GP_Gen5_4 GeneralPurpose Enabled
+Get-AzPostgreSqlReplica -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer
@@ -1244,30 +1144,14 @@ Gets information about a server.
 .Description
 Gets information about a server.
 .Example
-PS C:\> Get-AzPostgreSqlServer
-
-Name                        Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
-----                        -------- ------------------ ------- ----------------------- -------   -------        --------------
-postgresqltestserver        eastus   pwsh               9.6     5120                    GP_Gen5_4 GeneralPurpose Enabled
+Get-AzPostgreSqlServer
 .Example
-PS C:\> Get-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -Name PostgreSqlTestServer
-
-Name                 Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
-----                 -------- ------------------ ------- ----------------------- -------   -------        --------------
-postgresqltestserver eastus   pwsh               9.6     5120                    GP_Gen5_4 GeneralPurpose Enabled
+Get-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -Name PostgreSqlTestServer
 .Example
-PS C:\> Get-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG
-
-Name                        Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
-----                        -------- ------------------ ------- ----------------------- -------   -------        --------------
-postgresqltestserver        eastus   pwsh               9.6     5120                    GP_Gen5_4 GeneralPurpose Enabled
+Get-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG
 .Example
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/postgresqltestserver"
-PS C:\> Get-AzPostgreSqlServer -InputObject $ID
-
-Name                 Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
-----                 -------- ------------------ ------- ----------------------- -------   -------        --------------
-postgresqltestserver eastus   pwsh               9.6     5120                    GP_Gen5_4 GeneralPurpose Enabled
+$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/postgresqltestserver"
+Get-AzPostgreSqlServer -InputObject $ID
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
@@ -1425,24 +1309,12 @@ Gets a virtual network rule.
 .Description
 Gets a virtual network rule.
 .Example
-PS C:\> Get-AzPostgreSqlVirtualNetworkRule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer 
-
-Name Type
----- ----
-vnet Microsoft.DBforPostgreSQL/servers/virtualNetworkRules
+ Get-AzPostgreSqlVirtualNetworkRule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer 
 .Example
-PS C:\> Get-AzPostgreSqlVirtualNetworkRule -Name vnet -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
-
-Name Type
----- ----
-vnet Microsoft.DBforPostgreSQL/servers/virtualNetworkRules
+ Get-AzPostgreSqlVirtualNetworkRule -Name vnet -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
 .Example
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/virtualNetworkRules/vnet"
-PS C:\> Get-AzPostgreSqlVirtualNetworkRule -InputObject $ID
-
-Name Type
----- ----
-vnet Microsoft.DBforPostgreSQL/servers/virtualNetworkRules
+ $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/virtualNetworkRules/vnet"
+ Get-AzPostgreSqlVirtualNetworkRule -InputObject $ID
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
@@ -1611,11 +1483,7 @@ Creates a new database or updates an existing database.
 .Description
 Creates a new database or updates an existing database.
 .Example
-PS C:\> New-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql -Name testdb -Charset utf8 -Collation en_US.utf8
-
-Name   Charset Collation
-----   ------- ---------
-testdb UTF8    en_US.utf8
+ New-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql -Name testdb -Charset utf8 -Collation en_US.utf8
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
@@ -1798,12 +1666,8 @@ Creates or updates an existing virtual network rule.
 .Description
 Creates or updates an existing virtual network rule.
 .Example
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.Network/virtualNetworks/PostgreSqlVNet/subnets/default"
-PS C:\> New-AzPostgreSqlVirtualNetworkRule -Name vnet -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer -SubnetId $ID
-
-Name Type
----- ----
-vnet Microsoft.DBforPostgreSQL/servers/virtualNetworkRules
+ $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.Network/virtualNetworks/PostgreSqlVNet/subnets/default"
+ New-AzPostgreSqlVirtualNetworkRule -Name vnet -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer -SubnetId $ID
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IVirtualNetworkRule
@@ -1966,11 +1830,11 @@ Deletes a server firewall rule.
 .Description
 Deletes a server firewall rule.
 .Example
-PS C:\> Remove-AzPostgreSqlFirewallRule -Name rule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
+ Remove-AzPostgreSqlFirewallRule -Name rule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
 
 .Example
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/firewallRules/rule"
-PS C:\> Remove-AzPostgreSqlFirewallRule -InputObject $ID
+ $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/firewallRules/rule"
+ Remove-AzPostgreSqlFirewallRule -InputObject $ID
  
 
 .Inputs
@@ -2148,10 +2012,10 @@ Deletes a database.
 .Description
 Deletes a database.
 .Example
-PS C:\> Remove-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql -Name testdb
+Remove-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql -Name testdb
 
 .Example
-PS C:\> Remove-AzPostgreSqlFlexibleServerDatabase-InputObject /subscriptions/0000000000-0000-0000-0000-000000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-test/databases/flexibleserverdb
+ Remove-AzPostgreSqlFlexibleServerDatabase-InputObject /subscriptions/0000000000-0000-0000-0000-000000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-test/databases/flexibleserverdb
 
 
 .Inputs
@@ -2329,11 +2193,11 @@ Deletes a PostgreSQL server firewall rule.
 .Description
 Deletes a PostgreSQL server firewall rule.
 .Example
-PS C:\> Remove-AzPostgreSqlFlexibleServerFirewallRule -Name firewall-rule-test -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test
+Remove-AzPostgreSqlFlexibleServerFirewallRule -Name firewall-rule-test -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test
 
 .Example
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-test/firewallRules/firewall-rule-test"
-PS C:\> Remove-AzPostgreSqlFlexibleServerFirewallRule -InputObject $ID
+ $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-test/firewallRules/firewall-rule-test"
+ Remove-AzPostgreSqlFlexibleServerFirewallRule -InputObject $ID
  
 
 .Inputs
@@ -2511,11 +2375,11 @@ Deletes a server.
 .Description
 Deletes a server.
 .Example
-PS C:\> Remove-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test
+Remove-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test
 
 .Example
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-test"
-PS C:\> Remove-AzPostgreSqlFlexibleServer -InputObject $ID
+$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-test"
+Remove-AzPostgreSqlFlexibleServer -InputObject $ID
  
 
 .Inputs
@@ -2687,11 +2551,11 @@ Deletes a server.
 .Description
 Deletes a server.
 .Example
-PS C:\> Remove-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -Name PostgreSqlTestServer
+ Remove-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -Name PostgreSqlTestServer
 
 .Example
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer"
-PS C:\> Remove-AzPostgreSqlServer -InputObject $ID
+ $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer"
+ Remove-AzPostgreSqlServer -InputObject $ID
  
 
 .Inputs
@@ -2863,11 +2727,11 @@ Deletes the virtual network rule with the given name.
 .Description
 Deletes the virtual network rule with the given name.
 .Example
-PS C:\> Remove-AzPostgreSqlVirtualNetworkRule -Name vnet -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
+ Remove-AzPostgreSqlVirtualNetworkRule -Name vnet -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
 
 .Example
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/virtualNetworkRules/vnet"
-PS C:\> Remove-AzPostgreSqlVirtualNetworkRule -InputObject $ID
+ $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/virtualNetworkRules/vnet"
+ Remove-AzPostgreSqlVirtualNetworkRule -InputObject $ID
  
 
 .Inputs
@@ -3045,14 +2909,14 @@ Restarts a server.
 .Description
 Restarts a server.
 .Example
-PS C:\> Restart-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test
+ Restart-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test
 .Example
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test/restart"
-PS C:\> Restart-AzPostgreSqlFlexibleServer -InputObject $ID
+ $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test/restart"
+ Restart-AzPostgreSqlFlexibleServer -InputObject $ID
 .Example
-PS C:\> Restart-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test -RestartWithFailover -FailoverMode PlannedFailover
+ Restart-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test -RestartWithFailover -FailoverMode PlannedFailover
 .Example
-PS C:\> Restart-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test -RestartWithFailover -FailoverMode ForcedFailover
+ Restart-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test -RestartWithFailover -FailoverMode ForcedFailover
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IRestartParameter
@@ -3257,11 +3121,11 @@ Restarts a server.
 .Description
 Restarts a server.
 .Example
-PS C:\> Restart-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -Name PostgreSqlTestServer
+ Restart-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -Name PostgreSqlTestServer
 
 .Example
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/restart"
-PS C:\> Restart-AzPostgreSqlServer -InputObject $ID
+$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/restart"
+Restart-AzPostgreSqlServer -InputObject $ID
  
 
 .Inputs
@@ -3433,10 +3297,10 @@ Starts a server.
 .Description
 Starts a server.
 .Example
-PS C:\> Start-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test
+ Start-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test
 .Example
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-test/start"
-PS C:\> Start-AzPostgreSqlFlexibleServer -InputObject $ID
+ $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-test/start"
+ Start-AzPostgreSqlFlexibleServer -InputObject $ID
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
@@ -3607,10 +3471,10 @@ Stops a server.
 .Description
 Stops a server.
 .Example
-PS C:\> Stop-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test
+ Stop-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test
 .Example
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-test/stop"
-PS C:\> Stop-AzPostgreSqlFlexibleServer -InputObject $ID
+ $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-test/stop"
+ Stop-AzPostgreSqlFlexibleServer -InputObject $ID
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
@@ -3781,20 +3645,12 @@ Creates or updates an existing virtual network rule.
 .Description
 Creates or updates an existing virtual network rule.
 .Example
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.Network/virtualNetworks/PostgreSqlVNet/subnets/default2"
-PS C:\> Update-AzPostgreSqlVirtualNetworkRule -Name vnet -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer -SubnetId $ID
-
-Name Type
----- ----
-vnet Microsoft.DBforPostgreSQL/servers/virtualNetworkRules
+ $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.Network/virtualNetworks/PostgreSqlVNet/subnets/default2"
+ Update-AzPostgreSqlVirtualNetworkRule -Name vnet -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer -SubnetId $ID
 .Example
-PS C:\> $SubnetID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.Network/virtualNetworks/PostgreSqlVNet/subnets/default"
-PS C:\> $VNetID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/virtualNetworkRules/vnet"
-PS C:\> Update-AzPostgreSqlVirtualNetworkRule -InputObject $VNetID -SubnetId $SubnetID
-
-Name Type
----- ----
-vnet Microsoft.DBforPostgreSQL/servers/virtualNetworkRules
+ $SubnetID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.Network/virtualNetworks/PostgreSqlVNet/subnets/default"
+ $VNetID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/virtualNetworkRules/vnet"
+ Update-AzPostgreSqlVirtualNetworkRule -InputObject $VNetID -SubnetId $SubnetID
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
@@ -3983,13 +3839,9 @@ Get the connection string according to client connection provider.
 .Description
 Get the connection string according to client connection provider.
 .Example
-PS C:\> Get-AzPostgreSqlConnectionString -Client ADO.NET -Name PostgreSqlTestServer -ResourceGroupName PostgreSqlTestRG
-
-Server=postgresqltestserver.postgres.database.azure.com;Database={your_database};Port=5432;User Id=pwsh@postgresqltestserver;Password={your_password};Ssl Mode=Require;
+Get-AzPostgreSqlConnectionString -Client ADO.NET -Name PostgreSqlTestServer -ResourceGroupName PostgreSqlTestRG
 .Example
-PS C:\> Get-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer | Get-AzPostgreSqlConnectionString -Client PHP
-
-host=postgresqltestserver.postgres.database.azure.com port=5432 dbname={your_database} user=pwsh@postgresqltestserver password={your_password} sslmode=require
+Get-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer | Get-AzPostgreSqlConnectionString -Client PHP
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer
@@ -4157,13 +4009,9 @@ Get the connection string according to client connection provider.
 .Description
 Get the connection string according to client connection provider.
 .Example
-PS C:\> Get-AzPostgreSqlFlexibleServerConnectionString -Client ADO.NET -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test
-
-Server=postgresql-test.postgres.database.azure.com;Database={your_database};Port=5432;User Id=adminuser;Password={your_password};
+Get-AzPostgreSqlFlexibleServerConnectionString -Client ADO.NET -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test
 .Example
-PS C:\> Get-AzPostgreSqlFlexibleServer -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer | Get-AzPostgreSqlFlexibleServerConnectionString -Client PHP
-
-host=postgresqltestserver.postgres.database.azure.com port=5432 dbname={your_database} user=pwsh password={your_password} sslmode=require
+Get-AzPostgreSqlFlexibleServer -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer | Get-AzPostgreSqlFlexibleServerConnectionString -Client PHP
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerAutoGenerated
@@ -4343,41 +4191,7 @@ Get the available SKU information for the location
 .Description
 Get the available SKU information for the location
 .Example
-PS C:\> Get-AzPostgreSqlFlexibleServerLocationBasedCapability -Location eastus
-
-SKU               Memory vCore Tier
----               ------ ----- ----
-Standard_B1ms       2048     1 Burstable
-Standard_B2s        2048     2 Burstable
-Standard_D2s_v3     4096     2 GeneralPurpose
-Standard_D4s_v3     4096     4 GeneralPurpose
-Standard_D8s_v3     4096     8 GeneralPurpose
-Standard_D16s_v3    4096    16 GeneralPurpose
-Standard_D32s_v3    4096    32 GeneralPurpose
-Standard_D48s_v3    4096    48 GeneralPurpose
-Standard_D64s_v3    4096    64 GeneralPurpose
-Standard_D2ds_v4    4096     2 GeneralPurpose
-Standard_D4ds_v4    4096     4 GeneralPurpose
-Standard_D8ds_v4    4096     8 GeneralPurpose
-Standard_D16ds_v4   4096    16 GeneralPurpose
-Standard_D32ds_v4   4096    32 GeneralPurpose
-Standard_D48ds_v4   4096    48 GeneralPurpose
-Standard_D64ds_v4   4096    64 GeneralPurpose
-Standard_E2s_v3     8192     2 MemoryOptimized
-Standard_E4s_v3     8192     4 MemoryOptimized
-Standard_E8s_v3     8192     8 MemoryOptimized
-Standard_E16s_v3    8192    16 MemoryOptimized
-Standard_E32s_v3    8192    32 MemoryOptimized
-Standard_E48s_v3    8192    48 MemoryOptimized
-Standard_E64s_v3    6912    64 MemoryOptimized
-Standard_E2ds_v4    8192     2 MemoryOptimized
-Standard_E4ds_v4    8192     4 MemoryOptimized
-Standard_E8ds_v4    8192     8 MemoryOptimized
-Standard_E16ds_v4   8192    16 MemoryOptimized
-Standard_E20ds_v4   8192    20 MemoryOptimized
-Standard_E32ds_v4   8192    32 MemoryOptimized
-Standard_E48ds_v4   8192    48 MemoryOptimized
-Standard_E64ds_v4   6912    64 MemoryOptimized
+Get-AzPostgreSqlFlexibleServerLocationBasedCapability -Location eastus
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityProperties
@@ -4496,23 +4310,11 @@ Creates a new firewall rule or updates an existing firewall rule.
 .Description
 Creates a new firewall rule or updates an existing firewall rule.
 .Example
-PS C:\> New-AzPostgreSqlFirewallRule -Name rule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer -EndIPAddress 0.0.0.1 -StartIPAddress 0.0.0.0
-
-Name StartIPAddress EndIPAddress
----- -------------- ------------
-rule 0.0.0.0        0.0.0.1
+ New-AzPostgreSqlFirewallRule -Name rule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer -EndIPAddress 0.0.0.1 -StartIPAddress 0.0.0.0
 .Example
-PS C:\> New-AzPostgreSqlFirewallRule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer -ClientIPAddress 0.0.0.1
-
-Name                                StartIPAddress EndIPAddress
-----                                -------------- ------------
-ClientIPAddress_2020-08-11_18-19-27 0.0.0.1        0.0.0.1
+ New-AzPostgreSqlFirewallRule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer -ClientIPAddress 0.0.0.1
 .Example
-PS C:\> New-AzPostgreSqlFirewallRule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer -AllowAll
-
-Name                         StartIPAddress EndIPAddress
-----                         -------------- ------------
-AllowAll_2020-08-11_18-19-27 0.0.0.0        255.255.255.255
+ New-AzPostgreSqlFirewallRule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer -AllowAll
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRule
@@ -4686,102 +4488,28 @@ Creates a new server.
 .Description
 Creates a new server.
 .Example
-PS C:\> New-AzPostgreSqlFlexibleServer -Name postgresql-test -ResourceGroupName PowershellPostgreSqlTest \
+ New-AzPostgreSqlFlexibleServer -Name postgresql-test -ResourceGroupName PowershellPostgreSqlTest \
 -Location eastus -AdministratorUserName postgresqltest -AdministratorLoginPassword $password -Sku Standard_D2s_v3 -SkuTier GeneralPurpose -Version 12 -StorageInMb 131072 -PublicAccess none
-
-Checking the existence of the resource group PowershellPostgreSqlTest ...
-Resource group PowershellPostgreSqlTest exists ? : True
-Creating PostgreSQL server postgresql-test in group PostgreSqlTest...
-Your server postgresql-test is using sku Standard_D2s_v3 (Paid Tier). Please refer to https://aka.ms/postgresql-pricing for pricing details
-
-Name                Location  SkuName         SkuTier        AdministratorLogin StorageSizeGb
-----                --------  -------         -------        ------------------ -------------
-postgresql-test     East US   Standard_D2s_v3 GeneralPurpose daeunyim           128
-
 .Example
-PS C:\> $server = New-AzPostgreSqlFlexibleServer
-
-Creating resource group group00000000...
-Creating PostgreSQL server server00000000 in group group00000000...
-Your server postgresql-test is using sku Standard_D2s_v3 (Paid Tier). Please refer to https://aka.ms/postgresql-pricing for pricing details
-
-Name                Location  SkuName         SkuTier        AdministratorLogin StorageSizeGb
-----                --------  -------         -------        ------------------ -------------
-postgresql-test     East US   Standard_D2s_v3 GeneralPurpose daeunyim           128
+$server = New-AzPostgreSqlFlexibleServer
 .Example
-PS C:\> $Subnet = '/subscriptions/00000000-0000-0000-0000-0000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.Network/virtualNetworks/vnetname/subnets/subnetname'
-PS C:\> $DnsZone = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/postgresqltest/providers/Microsoft.Network/privateDnsZones/testserver.private.postgres.database.azure.com'
-PS C:\> New-AzPostgreSqlFlexibleServer  -ResourceGroupName postgresqltest -ServerName testserver -Subnet $Subnet -PrivateDnsZone $DnsZone
-
-Resource group PowershellPostgreSqlTest exists ? : True
-You have supplied a subnet Id. Verifying its existence...
-Creating PostgreSQL server testserver in group PowershellPostgreSqlTest...
-Your server server00000000 is using sku Standard_D2s_v3 (Paid Tier). Please refer to https://aka.ms/postgresql-pricing for pricing details
-Creating database flexibleserverdb...
-
-Name                Location  SkuName         SkuTier        AdministratorLogin StorageSizeGb
-----                --------  -------         -------        ------------------ -------------
-postgresql-test     East US   Standard_D2s_v3 GeneralPurpose daeunyim           128
-
+ $Subnet = '/subscriptions/00000000-0000-0000-0000-0000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.Network/virtualNetworks/vnetname/subnets/subnetname'
+ $DnsZone = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/postgresqltest/providers/Microsoft.Network/privateDnsZones/testserver.private.postgres.database.azure.com'
+ New-AzPostgreSqlFlexibleServer  -ResourceGroupName postgresqltest -ServerName testserver -Subnet $Subnet -PrivateDnsZone $DnsZone
 .Example
-PS C:\> New-AzPostgreSqlFlexibleServer -Name postgresql-test -ResourceGroupName PowershellPostgreSqlTest -Vnet postgresql-vnet -Subnet postgresql-subnet -VnetPrefix 10.0.0.0/16 -SubnetPrefix 10.0.0.0/24 -PrivateDnsZone /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.Network/privateDnsZones/postgresql-test.private.postgres.database.azure.com
-
-Resource group PowershellPostgreSqlTest exists ? : True
-Creating new vnet postgresql-vnet in resource group PowershellPostgreSqlTest
-Creating new subnet postgresql-subnet in resource group PowershellPostgreSqlTest and delegating it to Microsoft.DBforPostgreSQL/flexibleServers
-Creating PostgreSQL server postgresql-test in group PowershellPostgreSqlTest...
-Your server postgresql-test is using sku Standard_D2s_v3 (Paid Tier). Please refer to https://aka.ms/postgresql-pricing for pricing details
-Creating database flexibleserverdb...
-
-Name                Location  SkuName         SkuTier        AdministratorLogin StorageSizeGb
-----                --------  -------         -------        ------------------ -------------
-postgresql-test     East US   Standard_D2s_v3 GeneralPurpose daeunyim           128
-
+ New-AzPostgreSqlFlexibleServer -Name postgresql-test -ResourceGroupName PowershellPostgreSqlTest -Vnet postgresql-vnet -Subnet postgresql-subnet -VnetPrefix 10.0.0.0/16 -SubnetPrefix 10.0.0.0/24 -PrivateDnsZone /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.Network/privateDnsZones/postgresql-test.private.postgres.database.azure.com
 .Example
-PS C:\> $Vnet = 'vnetname'
-PS C:\> New-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Vnet $Vnet -PrivateDnsZone /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.Network/privateDnsZones/testserver.private.postgres.database.azure.com
+ $Vnet = 'vnetname'
+ New-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Vnet $Vnet -PrivateDnsZone /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.Network/privateDnsZones/testserver.private.postgres.database.azure.com
 
 or
 
-PS C:\> $Vnet = '/subscriptions/00000000-0000-0000-0000-0000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.Network/virtualNetworks/vnetname'
-PS C:\> New-AzPostgreSqlFlexibleServer  -ResourceGroupName PowershellPostgreSqlTest -Vnet $Vnet -PrivateDnsZone /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.Network/privateDnsZones/testserver.private.postgres.database.azure.com
-
-Resource group PowershellPostgreSqlTest exists ? : True
-You have supplied a vnet Id/name. Verifying its existence...
-Creating new vnet vnetname in resource group PowershellPostgreSqlTest
-Creating new subnet Subnetserver00000000 in resource group PowershellPostgreSqlTest and delegating it to Microsoft.DBforPostgreSQL/flexibleServers
-Creating PostgreSQL server server00000000 in group PowershellPostgreSqlTest...
-Your server server00000000 is using sku Standard_D2s_v3 (Paid Tier). Please refer to https://aka.ms/postgresql-pricing for pricing details
-Creating database flexibleserverdb...
-
-Name                Location  SkuName         SkuTier        AdministratorLogin StorageSizeGb
-----                --------  -------         -------        ------------------ -------------
-postgresql-test     East US   Standard_D2s_v3 GeneralPurpose daeunyim           128
+ $Vnet = '/subscriptions/00000000-0000-0000-0000-0000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.Network/virtualNetworks/vnetname'
+ New-AzPostgreSqlFlexibleServer  -ResourceGroupName PowershellPostgreSqlTest -Vnet $Vnet -PrivateDnsZone /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.Network/privateDnsZones/testserver.private.postgres.database.azure.com
 .Example
-PS C:\> New-AzPostgreSqlFlexibleServer -Name postgresql-test -ResourceGroupName PowershellPostgreSqlTest -PublicAccess All
-
-Resource group PowershellPostgreSqlTest exists ? : True
-Creating PostgreSQL server postgresql-test in group PowershellPostgreSqlTest...
-Your server postgresql-test is using sku Standard_D2s_v3 (Paid Tier). Please refer to https://aka.ms/postgresql-pricing for pricing details
-Creating database flexibleserverdb...
-Configuring server firewall rule to accept connections from 0.0.0.0 to 255.255.255.255
-
-Name                Location  SkuName         SkuTier        AdministratorLogin StorageSizeGb
-----                --------  -------         -------        ------------------ -------------
-postgresql-test     East US   Standard_D2s_v3 GeneralPurpose daeunyim           128
+ New-AzPostgreSqlFlexibleServer -Name postgresql-test -ResourceGroupName PowershellPostgreSqlTest -PublicAccess All
 .Example
-PS C:\> New-AzPostgreSqlFlexibleServer -Name postgresql-test -ResourceGroupName PowershellPostgreSqlTest -PublicAccess 10.10.10.10-10.10.10.12
-
-Resource group PowershellPostgreSqlTest exists ? : True
-Creating PostgreSQL server postgresql-test in group PowershellPostgreSqlTest...
-Your server postgresql-test is using sku Standard_D2s_v3 (Paid Tier). Please refer to https://aka.ms/postgresql-pricing for pricing details
-Creating database flexibleserverdb...
-Configuring server firewall rule to accept connections from 10.10.10.10 to 10.10.10.12
-
-Name                Location  SkuName         SkuTier        AdministratorLogin StorageSizeGb
-----                --------  -------         -------        ------------------ -------------
-postgresql-test     East US   Standard_D2s_v3 GeneralPurpose daeunyim           128
-
+ New-AzPostgreSqlFlexibleServer -Name postgresql-test -ResourceGroupName PowershellPostgreSqlTest -PublicAccess 10.10.10.10-10.10.10.12
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerAutoGenerated
@@ -5044,23 +4772,11 @@ Creates a new firewall rule or updates an existing firewall rule.
 .Description
 Creates a new firewall rule or updates an existing firewall rule.
 .Example
-PS C:\> New-AzPostgreSqlFlexibleServerFirewallRule -Name firewallrule-test -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test -EndIPAddress 0.0.0.1 -StartIPAddress 0.0.0.0
-
-Name              StartIPAddress EndIPAddress
------------------ -------------- ------------
-firewallrule-test 0.0.0.0        0.0.0.1
+ New-AzPostgreSqlFlexibleServerFirewallRule -Name firewallrule-test -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test -EndIPAddress 0.0.0.1 -StartIPAddress 0.0.0.0
 .Example
-PS C:\> New-AzPostgreSqlFlexibleServerFirewallRule -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test -ClientIPAddress 0.0.0.1
-
-Name                                StartIPAddress EndIPAddress
-----                                -------------- ------------
-ClientIPAddress_2020-08-11_18-19-27 0.0.0.1        0.0.0.1
+ New-AzPostgreSqlFlexibleServerFirewallRule -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test -ClientIPAddress 0.0.0.1
 .Example
-PS C:\> New-AzPostgreSqlFlexibleServerFirewallRule -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test -AllowAll
-
-Name                         StartIPAddress EndIPAddress
-----                         -------------- ------------
-AllowAll_2020-08-11_18-19-27 0.0.0.0        255.255.255.255
+ New-AzPostgreSqlFlexibleServerFirewallRule -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test -AllowAll
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRule
@@ -5236,18 +4952,10 @@ Creates a new replica from an existing database.
 .Description
 Creates a new replica from an existing database.
 .Example
-PS C:\> Get-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer | New-AzPostgreSqlReplica -ReplicaName PostgreSqlTestServerReplica -ResourceGroupName PostgreSqlTestRG
-
-Name                        Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
-----                        -------- ------------------ ------- ----------------------- -------   -------        --------------
-postgresqltestserverreplica eastus   pwsh               9.6     5120                    GP_Gen5_4 GeneralPurpose Enabled
+ Get-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer | New-AzPostgreSqlReplica -ReplicaName PostgreSqlTestServerReplica -ResourceGroupName PostgreSqlTestRG
 .Example
-PS C:\> $pgDb = Get-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer 
-PS C:\> New-AzPostgreSqlReplica -Master $pgDb -ReplicaName PostgreSqlTestServerReplica -ResourceGroupName PostgreSqlTestRG
-
-Name                        Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
-----                        -------- ------------------ ------- ----------------------- -------   -------        --------------
-postgresqltestserverreplica eastus   pwsh               9.6     5120                    GP_Gen5_4 GeneralPurpose Enabled
+ $pgDb = Get-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer 
+ New-AzPostgreSqlReplica -Master $pgDb -ReplicaName PostgreSqlTestServerReplica -ResourceGroupName PostgreSqlTestRG
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer
@@ -5434,11 +5142,7 @@ Creates a new server.
 .Description
 Creates a new server.
 .Example
-PS C:\> New-AzPostgreSqlServer -Name PostgreSqlTestServer -ResourceGroupName PostgreSqlTestRG -Location eastus -AdministratorUserName pwsh -AdministratorLoginPassword $password -Sku GP_Gen5_4
-
-Name                 Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
-----                 -------- ------------------ ------- ----------------------- -------   -------        --------------
-postgresqltestserver eastus   pwsh               9.6     5120                    GP_Gen5_4 GeneralPurpose Enabled
+ New-AzPostgreSqlServer -Name PostgreSqlTestServer -ResourceGroupName PostgreSqlTestRG -Location eastus -AdministratorUserName pwsh -AdministratorLoginPassword $password -Sku GP_Gen5_4
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer
@@ -5655,22 +5359,14 @@ Restore a server from an existing backup
 .Description
 Restore a server from an existing backup
 .Example
-PS C:\> $restorePointInTime = (Get-Date).AddMinutes(-10)
-PS C:\> Restore-AzPostgreSqlFlexibleServer -Name pg-restore -ResourceGroupName PowershellPostgreSqlTest -SourceServerName postgresql-test -Location eastus -RestorePointInTime $restorePointInTime 
-
-Name           Location  SkuName         SkuTier        AdministratorLogin StorageSizeGb
-----           --------  -------         -------        ------------------ -------------
-pg-restore     East US   Standard_D2s_v3 GeneralPurpose daeunyim           128
+$restorePointInTime = (Get-Date).AddMinutes(-10)
+Restore-AzPostgreSqlFlexibleServer -Name pg-restore -ResourceGroupName PowershellPostgreSqlTest -SourceServerName postgresql-test -Location eastus -RestorePointInTime $restorePointInTime 
 .Example
 
-PS C:\> $Subnet = '/subscriptions/00000000-0000-0000-0000-0000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.Network/virtualNetworks/vnetname/subnets/subnetname'
-PS C:\> $DnsZone = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/postgresqltest/providers/Microsoft.Network/privateDnsZones/testserver.private.postgres.database.azure.com'
-PS C:\> $restorePointInTime = (Get-Date).AddMinutes(-10)
-PS C:\> Restore-AzPostgreSqlFlexibleServer -Name pg-restore -ResourceGroupName PowershellPostgreSqlTest -SourceServerName postgresql-test -Location eastus -RestorePointInTime $restorePointInTime -Subnet $subnet -PrivateDnsZone $DnsZone
-
-Name           Location  SkuName         SkuTier        AdministratorLogin StorageSizeGb
-----           --------  -------         -------        ------------------ -------------
-pg-restore     East US   Standard_D2s_v3 GeneralPurpose daeunyim           128
+$Subnet = '/subscriptions/00000000-0000-0000-0000-0000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.Network/virtualNetworks/vnetname/subnets/subnetname'
+$DnsZone = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/postgresqltest/providers/Microsoft.Network/privateDnsZones/testserver.private.postgres.database.azure.com'
+ $restorePointInTime = (Get-Date).AddMinutes(-10)
+ Restore-AzPostgreSqlFlexibleServer -Name pg-restore -ResourceGroupName PowershellPostgreSqlTest -SourceServerName postgresql-test -Location eastus -RestorePointInTime $restorePointInTime -Subnet $subnet -PrivateDnsZone $DnsZone
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerAutoGenerated
@@ -5839,18 +5535,10 @@ Restore a server from an existing backup
 .Description
 Restore a server from an existing backup
 .Example
-PS C:\> Get-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -ServerName postgresqltestserverreplica | Restore-AzPostgreSqlServer -Name PostgreSqlTestServer -ResourceGroupName PostgreSqlTestRG -UseGeoRestore
-
-Name                 Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
-----                 -------- ------------------ ------- ----------------------- -------   -------        --------------
-postgresqltestserver eastus   pwsh               9.6     5120                    GP_Gen5_4 GeneralPurpose Enabled
+Get-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -ServerName postgresqltestserverreplica | Restore-AzPostgreSqlServer -Name PostgreSqlTestServer -ResourceGroupName PostgreSqlTestRG -UseGeoRestore
 .Example
-PS C:\> $restorePointInTime = (Get-Date).AddMinutes(-10)
-PS C:\> Get-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer | Restore-AzPostgreSqlServer -Name PostgreSqlTestServerGEO -ResourceGroupName PostgreSqlTestRG -RestorePointInTime $restorePointInTime -UsePointInTimeRestore
-
-Name                    Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
-----                    -------- ------------------ ------- ----------------------- -------   -------        --------------
-postgresqltestservergeo eastus   pwsh               9.6     5120                    GP_Gen5_4 GeneralPurpose Enabled
+$restorePointInTime = (Get-Date).AddMinutes(-10)
+Get-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer | Restore-AzPostgreSqlServer -Name PostgreSqlTestServerGEO -ResourceGroupName PostgreSqlTestRG -RestorePointInTime $restorePointInTime -UsePointInTimeRestore
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer
@@ -6062,32 +5750,16 @@ Test out the connection to the database server
 .Description
 Test out the connection to the database server
 .Example
-PS C:\> $password = ConvertTo-SecureString <YourPassword> -AsPlainText
-PS C:\> Get-AzPostgreSqlFlexibleServerConnect -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test -AdministratorLoginPassword $password
-
-The connection testing to postgresql-test.database.azure.com was successful!
+ $password = ConvertTo-SecureString <YourPassword> -AsPlainText
+ Get-AzPostgreSqlFlexibleServerConnect -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test -AdministratorLoginPassword $password
 .Example
-PS C:\> $password = ConvertTo-SecureString <YourPassword> -AsPlainText
-PS C:\> Get-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test | Test-AzPostgreSqlFlexibleServerConnect -AdministratorLoginPassword $password
-
-The connection testing to postgresql-test.database.azure.com was successful!
+ $password = ConvertTo-SecureString <YourPassword> -AsPlainText
+ Get-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test | Test-AzPostgreSqlFlexibleServerConnect -AdministratorLoginPassword $password
 .Example
-PS C:\> $password = ConvertTo-SecureString <YourPassword> -AsPlainText
-PS C:\> Test-AzPostgreSqlFlexibleServerConnect -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test -AdministratorLoginPassword $password -Query "SELECT * FROM test"
-
-col
------
-1
-2
-3
+ $password = ConvertTo-SecureString <YourPassword> -AsPlainText
+ Test-AzPostgreSqlFlexibleServerConnect -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test -AdministratorLoginPassword $password -Query "SELECT * FROM test"
 .Example
-PS C:\> Get-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test | Test-AzPostgreSqlFlexibleServerConnect -Query "SELECT * FROM test" -AdministratorLoginPassword $password
-
-col
------
-1
-2
-3
+ Get-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test | Test-AzPostgreSqlFlexibleServerConnect -Query "SELECT * FROM test" -AdministratorLoginPassword $password
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
@@ -6259,18 +5931,10 @@ Use Update-AzPostgreSqlServer instead if you want update AdministratorLoginPassw
 Updates a configuration of a server.
 Use Update-AzPostgreSqlServer instead if you want update AdministratorLoginPassword, sku, etc.
 .Example
-PS C:\> Update-AzPostgreSqlConfiguration -Name intervalstyle -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer -Value SQL_STANDARD
-
-Name          Value
-----          -----
-intervalstyle SQL_STANDARD
+ Update-AzPostgreSqlConfiguration -Name intervalstyle -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer -Value SQL_STANDARD
 .Example
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/configurations/deadlock_timeout"
-PS C:\> Update-AzPostgreSqlConfiguration -InputObject $ID -Value 2000
-
-Name             Value
-----             -----
-deadlock_timeout 2000
+ $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/configurations/deadlock_timeout"
+ Update-AzPostgreSqlConfiguration -InputObject $ID -Value 2000
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
@@ -6453,25 +6117,13 @@ Creates a new firewall rule or updates an existing firewall rule.
 .Description
 Creates a new firewall rule or updates an existing firewall rule.
 .Example
-PS C:\> Update-AzPostgreSqlFirewallRule -Name rule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer -EndIPAddress 0.0.0.3 -StartIPAddress 0.0.0.2
-
-Name StartIPAddress EndIPAddress
----- -------------- ------------
-rule 0.0.0.2        0.0.0.3
+ Update-AzPostgreSqlFirewallRule -Name rule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer -EndIPAddress 0.0.0.3 -StartIPAddress 0.0.0.2
 .Example
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/firewallRules/rule"
-PS C:\> Update-AzPostgreSqlFirewallRule -InputObject $ID -EndIPAddress 0.0.0.1 -StartIPAddress 0.0.0.0
-
-Name StartIPAddress EndIPAddress
----- -------------- ------------
-rule 0.0.0.0        0.0.0.1
+ $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/firewallRules/rule"
+ Update-AzPostgreSqlFirewallRule -InputObject $ID -EndIPAddress 0.0.0.1 -StartIPAddress 0.0.0.0
 .Example
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/firewallRules/rule"
-PS C:\> Update-AzPostgreSqlFirewallRule -InputObject $ID --ClientIPAddress 0.0.0.2
-
-Name StartIPAddress EndIPAddress
----- -------------- ------------
-rule 0.0.0.2        0.0.0.2
+ $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/firewallRules/rule"
+ Update-AzPostgreSqlFirewallRule -InputObject $ID --ClientIPAddress 0.0.0.2
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
@@ -6677,17 +6329,9 @@ Updates an existing server.
 The request body can contain one to many of the properties present in the normal server definition.
 Use Update-AzPostgreSqlFlexibleServerConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
 .Example
-PS C:\> Update-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test -Sku Standard_D4s_v3
-
-Name                Location  SkuName         SkuTier        AdministratorLogin StorageSizeGb
-----                --------  -------         -------        ------------------ -------------
-postgresql-test     East US   Standard_D4s_v3 GeneralPurpose daeunyim           256 GeneralPurpose
+ Update-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test -Sku Standard_D4s_v3
 .Example
-PS C:\> Get-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test | Update-AzPostgreSqlFlexibleServer -BackupRetentionDay 23 -StorageMb 262144
-
-Name                Location  SkuName         SkuTier        AdministratorLogin StorageSizeGb
-----                --------  -------         -------        ------------------ -------------
-postgresql-test     East US   Standard_D2s_v3 GeneralPurpose daeunyim           256
+ Get-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test | Update-AzPostgreSqlFlexibleServer -BackupRetentionDay 23 -StorageMb 262144
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
@@ -6911,19 +6555,10 @@ Use Update-AzPostgreSqlFlexibleServer instead if you want update AdministratorLo
 Updates a configuration of a server.
 Use Update-AzPostgreSqlFlexibleServer instead if you want update AdministratorLoginPassword, sku, etc.
 .Example
-PS C:\> Update-AzPostgreSqlFlexibleServerConfiguration -Name work_mem -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test -Value 8192
-
-Name     Value AllowedValue Source         DefaultValue
-----     ----- ------------ ------         ------------
-work_mem 8192  4096-2097151 system-default 4096
-
+ Update-AzPostgreSqlFlexibleServerConfiguration -Name work_mem -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test -Value 8192
 .Example
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-test/configurations/work_mem"
-PS C:\> Get-AzPostgreSqlFlexibleServerConfiguration -Name work_mem -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test -Value 8192
-
-Name     Value AllowedValue Source         DefaultValue
-----     ----- ------------ ------         ------------
-work_mem 8192  4096-2097151 system-default 4096
+ $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-test/configurations/work_mem"
+ Get-AzPostgreSqlFlexibleServerConfiguration -Name work_mem -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test -Value 8192
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
@@ -7106,18 +6741,10 @@ Creates a new firewall rule or updates an existing firewall rule.
 .Description
 Creates a new firewall rule or updates an existing firewall rule.
 .Example
-PS C:\> Update-AzPostgreSqlFlexibleServerFirewallRule -Name rule -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test -EndIPAddress 0.0.0.3 -StartIPAddress 0.0.0.2
-
-Name StartIPAddress EndIPAddress
----- -------------- ------------
-rule 0.0.0.2        0.0.0.3
+ Update-AzPostgreSqlFlexibleServerFirewallRule -Name rule -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test -EndIPAddress 0.0.0.3 -StartIPAddress 0.0.0.2
 .Example
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-test/firewallRules/rule"
-PS C:\> Update-AzPostgreSqlFlexibleServerFirewallRule -InputObject $ID -EndIPAddress 0.0.0.3 -StartIPAddress 0.0.0.2
-
-Name StartIPAddress EndIPAddress
----- -------------- ------------
-rule 0.0.0.2        0.0.0.3
+ $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-test/firewallRules/rule"
+ Update-AzPostgreSqlFlexibleServerFirewallRule -InputObject $ID -EndIPAddress 0.0.0.3 -StartIPAddress 0.0.0.2
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
@@ -7323,17 +6950,9 @@ Updates an existing server.
 The request body can contain one to many of the properties present in the normal server definition.
 Use Update-AzPostSqlConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
 .Example
-PS C:\> Update-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer -SslEnforcement Disabled
-
-Name                 Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
-----                 -------- ------------------ ------- ----------------------- -------   -------        --------------
-postgresqltestserver eastus   pwsh               9.6     5120                    GP_Gen5_4 GeneralPurpose Disabled
+ Update-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer -SslEnforcement Disabled
 .Example
-PS C:\> Get-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer | Update-AzPostgreSqlServer -BackupRetentionDay 23
-
-Name                 Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
-----                 -------- ------------------ ------- ----------------------- -------   -------        --------------
-postgresqltestserver eastus   pwsh               9.6     5120                    GP_Gen5_4 GeneralPurpose Disabled
+ Get-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer | Update-AzPostgreSqlServer -BackupRetentionDay 23
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
@@ -7470,6 +7089,13 @@ param(
     [System.Collections.Hashtable]
     # Application-specific metadata in the form of key-value pairs.
     ${Tag},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.PublicNetworkAccessEnum])]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.PublicNetworkAccessEnum]
+    # Enable or disable public network access
+    ${PublicNetworkAccess},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

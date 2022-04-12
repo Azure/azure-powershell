@@ -13,12 +13,14 @@
 // ----------------------------------------------------------------------------------
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
     /// <summary>
     /// this commandlet will create remote ps session with site
     /// </summary>
+    [CmdletDeprecation()]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppContainerPSSession", DefaultParameterSetName = ParameterSet1Name, SupportsShouldProcess = true)]
     [OutputType(typeof(System.Management.Automation.Runspaces.PSSession))]
     public class NewAzureRmWebAppContainerPSSession : WebAppBaseCmdlet

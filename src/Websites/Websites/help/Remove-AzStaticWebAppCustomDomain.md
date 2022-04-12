@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Websites-help.xml
 Module Name: Az.Websites
 online version: https://docs.microsoft.com/powershell/module/az.websites/remove-azstaticwebappcustomdomain
 schema: 2.0.0
@@ -15,14 +15,14 @@ Description for Deletes a custom domain.
 ### Delete (Default)
 ```
 Remove-AzStaticWebAppCustomDomain -DomainName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzStaticWebAppCustomDomain -InputObject <IWebsitesIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,16 +32,14 @@ Description for Deletes a custom domain.
 
 ### Example 1: Delete a custom domain
 ```powershell
-PS C:\> Remove-AzStaticWebAppCustomDomain -ResourceGroupName resourceGroup -Name staticweb00 -DomainName domainName
-
+Remove-AzStaticWebAppCustomDomain -ResourceGroupName resourceGroup -Name staticweb00 -DomainName domainName
 ```
 
 This command deletes a custom domain.
 
 ### Example 2: Delete a custom domain by pipeline
 ```powershell
-PS C:\> Get-AzStaticWebAppCustomDomain -ResourceGroupName resourceGroup -Name staticweb00 -DomainName domainName | Remove-AzStaticWebAppCustomDomain
-
+Get-AzStaticWebAppCustomDomain -ResourceGroupName resourceGroup -Name staticweb00 -DomainName domainName | Remove-AzStaticWebAppCustomDomain
 ```
 
 This command deletes a custom domain by pipeline.
@@ -243,12 +241,14 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   - `[EnvironmentName <String>]`: The stage site identifier.
   - `[FunctionAppName <String>]`: Name of the function app registered with the static site build.
   - `[Id <String>]`: Resource identity path
+  - `[JobHistoryId <String>]`: History ID.
   - `[Location <String>]`: Location where you plan to create the static site.
   - `[Name <String>]`: Name of the static site.
   - `[PrivateEndpointConnectionName <String>]`: Name of the private endpoint connection.
   - `[ResourceGroupName <String>]`: Name of the resource group to which the resource belongs.
+  - `[Slot <String>]`: Name of the deployment slot. If a slot is not specified, the API deletes a deployment for the production slot.
   - `[SubscriptionId <String>]`: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
   - `[Userid <String>]`: The user id of the user.
+  - `[WebJobName <String>]`: Name of Web Job.
 
 ## RELATED LINKS
-

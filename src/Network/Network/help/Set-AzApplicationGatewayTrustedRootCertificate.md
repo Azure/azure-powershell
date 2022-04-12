@@ -24,9 +24,9 @@ The **Set-AzApplicationGatewayTrustedRootCertificate** cmdlet modifies the exist
 
 ### Example 1
 ```powershell
-PS C:\> $gw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $resgpName
-PS C:\> $gw = Set-AzApplicationGatewayTrustedRootCertificate -ApplicationGateway $gw -Name $certName --CertificateFile ".\rootCAUpdated.cer"
-PS C:\> $gw = Set-AzApplicationGateway -ApplicationGateway $gw
+$gw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $resgpName
+$gw = Set-AzApplicationGatewayTrustedRootCertificate -ApplicationGateway $gw -Name $certName --CertificateFile ".\rootCAUpdated.cer"
+$gw = Set-AzApplicationGateway -ApplicationGateway $gw
 ```
 
 Above example scenarios shows how to update an existing trusted root certificate when a root certificate is rolled.

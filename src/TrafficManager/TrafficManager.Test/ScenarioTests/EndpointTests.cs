@@ -175,11 +175,13 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-AddAndRemoveCustomHeadersFromEndpoint");
         }
 
-        [Fact]
+    // This scenario is not supported with current API specs. Commenting this test.
+
+    /*  [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddAndRemoveIpAddressRanges()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-AddAndRemoveIpAddressRanges");
-        }
+        }*/
     }
 }

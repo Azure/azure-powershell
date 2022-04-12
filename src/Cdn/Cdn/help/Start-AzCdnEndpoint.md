@@ -30,6 +30,11 @@ The **Start-AzCdnEndpoint** cmdlet starts an Azure Content Delivery Network (CDN
 
 ## EXAMPLES
 
+### Example 1
+```powershell
+Start-AzCdnEndpoint -ResourceGroupName myresourcegroup -ProfileName mycdnprofile -EndpointName myendpoint
+```
+
 ## PARAMETERS
 
 ### -CdnEndpoint

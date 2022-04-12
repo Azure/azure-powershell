@@ -106,7 +106,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IOdataErrorInternal)this).Error = (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IOdataErrorMain) content.GetValueForProperty("Error",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IOdataErrorInternal)this).Error, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.OdataErrorMainTypeConverter.ConvertFrom);
+            if (content.Contains("Error"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IOdataErrorInternal)this).Error = (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IOdataErrorMain) content.GetValueForProperty("Error",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IOdataErrorInternal)this).Error, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.OdataErrorMainTypeConverter.ConvertFrom);
+            }
             // this type is a dictionary; copy elements from source to here.
             CopyFrom(content);
             AfterDeserializeDictionary(content);
@@ -126,7 +129,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IOdataErrorInternal)this).Error = (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IOdataErrorMain) content.GetValueForProperty("Error",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IOdataErrorInternal)this).Error, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.OdataErrorMainTypeConverter.ConvertFrom);
+            if (content.Contains("Error"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IOdataErrorInternal)this).Error = (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IOdataErrorMain) content.GetValueForProperty("Error",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IOdataErrorInternal)this).Error, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.OdataErrorMainTypeConverter.ConvertFrom);
+            }
             // this type is a dictionary; copy elements from source to here.
             CopyFrom(content);
             AfterDeserializePSObject(content);

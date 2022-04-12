@@ -38,8 +38,10 @@ The New-AzContainerRegistryReplication cmdlet creates a new container registry r
 
 ### Example 1: Create a new container registry replication.
 ```powershell
-PS C:\>New-AzContainerRegistryReplication -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry" -Name replication001 -Location 'west us' -Tag @{tagName='MyTag'}
+New-AzContainerRegistryReplication -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry" -Name replication001 -Location 'west us' -Tag @{tagName='MyTag'}
+```
 
+```output
 Name                 Location   Provisioni Status               StatusTimestamp                Tags
                                 ngState
 ----                 --------   ---------- ------               ---------------                ----

@@ -20,13 +20,9 @@ Invoke action addKey
 .Description
 Invoke action addKey
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IPathsN3Fx9GServiceprincipalsServiceprincipalIdMicrosoftGraphAddkeyPostRequestbodyContentApplicationJsonSchema
@@ -178,8 +174,8 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Add = 'Az.Resources.MSGraph.private\Add-AzADServicePrincipalKey_Add';
-            AddExpanded = 'Az.Resources.MSGraph.private\Add-AzADServicePrincipalKey_AddExpanded';
+            Add = 'Az.MSGraph.private\Add-AzADServicePrincipalKey_Add';
+            AddExpanded = 'Az.MSGraph.private\Add-AzADServicePrincipalKey_AddExpanded';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

@@ -99,9 +99,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IPolicyInfoInternal)this).PolicyId = (string) content.GetValueForProperty("PolicyId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IPolicyInfoInternal)this).PolicyId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IPolicyInfoInternal)this).PolicyVersion = (string) content.GetValueForProperty("PolicyVersion",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IPolicyInfoInternal)this).PolicyVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IPolicyInfoInternal)this).PolicyParameter = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IPolicyParameters) content.GetValueForProperty("PolicyParameter",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IPolicyInfoInternal)this).PolicyParameter, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.PolicyParametersTypeConverter.ConvertFrom);
+            if (content.Contains("PolicyId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IPolicyInfoInternal)this).PolicyId = (string) content.GetValueForProperty("PolicyId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IPolicyInfoInternal)this).PolicyId, global::System.Convert.ToString);
+            }
+            if (content.Contains("PolicyVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IPolicyInfoInternal)this).PolicyVersion = (string) content.GetValueForProperty("PolicyVersion",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IPolicyInfoInternal)this).PolicyVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("PolicyParameter"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IPolicyInfoInternal)this).PolicyParameter = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IPolicyParameters) content.GetValueForProperty("PolicyParameter",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IPolicyInfoInternal)this).PolicyParameter, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.PolicyParametersTypeConverter.ConvertFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -119,9 +128,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IPolicyInfoInternal)this).PolicyId = (string) content.GetValueForProperty("PolicyId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IPolicyInfoInternal)this).PolicyId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IPolicyInfoInternal)this).PolicyVersion = (string) content.GetValueForProperty("PolicyVersion",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IPolicyInfoInternal)this).PolicyVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IPolicyInfoInternal)this).PolicyParameter = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IPolicyParameters) content.GetValueForProperty("PolicyParameter",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IPolicyInfoInternal)this).PolicyParameter, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.PolicyParametersTypeConverter.ConvertFrom);
+            if (content.Contains("PolicyId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IPolicyInfoInternal)this).PolicyId = (string) content.GetValueForProperty("PolicyId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IPolicyInfoInternal)this).PolicyId, global::System.Convert.ToString);
+            }
+            if (content.Contains("PolicyVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IPolicyInfoInternal)this).PolicyVersion = (string) content.GetValueForProperty("PolicyVersion",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IPolicyInfoInternal)this).PolicyVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("PolicyParameter"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IPolicyInfoInternal)this).PolicyParameter = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IPolicyParameters) content.GetValueForProperty("PolicyParameter",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IPolicyInfoInternal)this).PolicyParameter, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.PolicyParametersTypeConverter.ConvertFrom);
+            }
             AfterDeserializePSObject(content);
         }
 

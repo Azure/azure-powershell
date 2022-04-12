@@ -10,6 +10,10 @@ schema: 2.0.0
 ## SYNOPSIS
 Create a new managed Kubernetes cluster.
 
+The cmdlet may call below Microsoft Graph API according to input parameters:
+
+- POST /servicePrincipals
+
 ## SYNTAX
 
 ```
@@ -25,6 +29,11 @@ New-AzAksCluster [-NodeVmSetType <String>] [-NodeVnetSubnetID <String>] [-NodeMa
  [-DnsNamePrefix <String>] [-KubernetesVersion <String>] [-NodeName <String>] [-NodeMinCount <Int32>]
  [-NodeMaxCount <Int32>] [-EnableNodeAutoScaling] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>]
  [-NodeVmSize <String>] [-SshKeyValue <String>] [-AcrNameToAttach <String>] [-AsJob] [-Tag <Hashtable>]
+ [-LoadBalancerAllocatedOutboundPort <Int32>] [-LoadBalancerManagedOutboundIpCount <Int32>]
+ [-LoadBalancerOutboundIp <String[]>] [-LoadBalancerOutboundIpPrefix <String[]>]
+ [-LoadBalancerIdleTimeoutInMinute <Int32>] [-ApiServerAccessAuthorizedIpRange <String[]>]
+ [-EnableApiServerAccessPrivateCluster] [-ApiServerAccessPrivateDnsZone <String>]
+ [-EnableApiServerAccessPrivateClusterPublicFQDN] [-FqdnSubdomain <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
  [<CommonParameters>]
 ```
@@ -38,7 +47,7 @@ Create a new Azure Kubernetes Service(AKS) cluster.
 ### New an AKS with default params.
 
 ```powershell
-PS C:\> New-AzAksCluster -ResourceGroupName myResourceGroup -Name myCluster
+New-AzAksCluster -ResourceGroupName myResourceGroup -Name myCluster
 ```
 
 ### Create Windows Server container on an AKS.
@@ -46,9 +55,9 @@ To create Windows Server container on an AKS, you must specify at least four fol
 `-WindowsProfileAdminUserName *** -WindowsProfileAdminUserPassword *** -NetworkPlugin azure -NodeVmSetType VirtualMachineScaleSets`
 
 ```powershell
-PS C:\> $cred = ConvertTo-SecureString -AsPlainText "Password!!123" -Force
-PS C:\> New-AzAksCluster -ResourceGroupName myResourceGroup -Name myCluster -WindowsProfileAdminUserName azureuser -WindowsProfileAdminUserPassword $cred -NetworkPlugin azure -NodeVmSetType VirtualMachineScaleSets
-PS C:\> New-AzAksNodePool -ResourceGroupName myResourceGroup -ClusterName myCluster -Name win1 -OsType Windows -VmSetType VirtualMachineScaleSets
+$cred = ConvertTo-SecureString -AsPlainText "Password!!123" -Force
+New-AzAksCluster -ResourceGroupName myResourceGroup -Name myCluster -WindowsProfileAdminUserName azureuser -WindowsProfileAdminUserPassword $cred -NetworkPlugin azure -NodeVmSetType VirtualMachineScaleSets
+New-AzAksNodePool -ResourceGroupName myResourceGroup -ClusterName myCluster -Name win1 -OsType Windows -VmSetType VirtualMachineScaleSets
 ```
 
 ## PARAMETERS
@@ -88,6 +97,36 @@ Aks custom headers used for building Kubernetes network.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ApiServerAccessAuthorizedIpRange
+The IP ranges authorized to access the Kubernetes API server.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ApiServerAccessPrivateDnsZone
+The private DNS zone mode for the cluster.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -173,6 +212,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableApiServerAccessPrivateCluster
+Whether to create the cluster as a private cluster or not.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableApiServerAccessPrivateClusterPublicFQDN
+Whether to create additional public FQDN for private cluster or not.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableNodeAutoScaling
 Whether to enable auto-scaler
 
@@ -233,6 +302,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -FqdnSubdomain
+The FQDN subdomain of the private cluster with custom private dns zone.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -GenerateSshKey
 Generate ssh key file to {HOME}/.ssh/id_rsa.
 
@@ -270,6 +354,81 @@ User name for the Linux Virtual Machines.
 Type: System.String
 Parameter Sets: (All)
 Aliases: AdminUserName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LoadBalancerAllocatedOutboundPort
+The desired number of allocated SNAT ports per VM.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LoadBalancerIdleTimeoutInMinute
+Desired outbound flow idle timeout in minutes.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LoadBalancerManagedOutboundIpCount
+Desired managed outbound IPs count for the cluster load balancer.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LoadBalancerOutboundIp
+Desired outbound IP resources for the cluster load balancer.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LoadBalancerOutboundIpPrefix
+Desired outbound IP Prefix resources for the cluster load balancer.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

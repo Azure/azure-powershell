@@ -43,7 +43,7 @@ The **Remove-AzNetAppFilesBackupPolicy** cmdlet deletes an ANF backup policy.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzNetAppFilesBackupPolicy -ResourceGroupName "MyRG" -AccountName "MyAccount" -Name "MyBackupPolicy"
+Remove-AzNetAppFilesBackupPolicy -ResourceGroupName "MyRG" -AccountName "MyAccount" -Name "MyBackupPolicy"
 ```
 
 This command deletes the new ANF backup policy with a the name "MyBackupPolicy" for account "MyAccount".

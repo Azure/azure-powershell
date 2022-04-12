@@ -30,6 +30,22 @@ The **Disable-AzOperationalInsightsLinuxPerformanceCollection** cmdlet stops col
 
 ## EXAMPLES
 
+### Example 1
+```powershell
+Disable-AzOperationalInsightsLinuxPerformanceCollection -ResourceGroupName test-rg -WorkspaceName OperationalInsight
+```
+
+```output
+Name              : DataSource_LinuxPerformanceCollection
+ResourceGroupName : test-rg
+WorkspaceName     : OperationalInsight
+ResourceId        : /subscriptions/xxxx-xxxx-xxxx-xxxx-xxxx/resourceGroups/test-rg/providers/Microsoft.OperationalInsights/wo
+                    rkspaces/OperationalInsight/datasources/DataSource_LinuxPerformanceCollection
+Kind              : LinuxPerformanceCollection
+Properties        : {"state":"Disabled"}
+```
+Stops collection of performance counters from connected Linux computers in a workspace.
+
 ## PARAMETERS
 
 ### -DefaultProfile

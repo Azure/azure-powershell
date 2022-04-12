@@ -101,8 +101,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IProtectionStatusDetailsInternal)this).ErrorDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingError) content.GetValueForProperty("ErrorDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IProtectionStatusDetailsInternal)this).ErrorDetail, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.UserFacingErrorTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IProtectionStatusDetailsInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.Status?) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IProtectionStatusDetailsInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.Status.CreateFrom);
+            if (content.Contains("ErrorDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IProtectionStatusDetailsInternal)this).ErrorDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingError) content.GetValueForProperty("ErrorDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IProtectionStatusDetailsInternal)this).ErrorDetail, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.UserFacingErrorTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Status"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IProtectionStatusDetailsInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.Status?) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IProtectionStatusDetailsInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.Status.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -120,8 +126,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IProtectionStatusDetailsInternal)this).ErrorDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingError) content.GetValueForProperty("ErrorDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IProtectionStatusDetailsInternal)this).ErrorDetail, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.UserFacingErrorTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IProtectionStatusDetailsInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.Status?) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IProtectionStatusDetailsInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.Status.CreateFrom);
+            if (content.Contains("ErrorDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IProtectionStatusDetailsInternal)this).ErrorDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IUserFacingError) content.GetValueForProperty("ErrorDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IProtectionStatusDetailsInternal)this).ErrorDetail, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.UserFacingErrorTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Status"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IProtectionStatusDetailsInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.Status?) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IProtectionStatusDetailsInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.Status.CreateFrom);
+            }
             AfterDeserializePSObject(content);
         }
 

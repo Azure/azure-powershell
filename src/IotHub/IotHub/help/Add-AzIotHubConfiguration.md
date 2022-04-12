@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
 online version: https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubconfiguration
@@ -46,44 +46,44 @@ Note: Target condition for modules must start with "from devices.modules where".
 
 ### Example 1
 ```powershell
-PS C:\> Add-AzIotHubConfiguration -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -Name "config1"
+Add-AzIotHubConfiguration -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -Name "config1"
 ```
 
 Create a device configuration with default metadata.
 
 ### Example 2
 ```powershell
-PS C:\> Add-AzIotHubConfiguration -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -Name "config1" -Priority 3 -TargetCondition "tags.building=9 and tags.environment='test'"
+Add-AzIotHubConfiguration -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -Name "config1" -Priority 3 -TargetCondition "tags.building=9 and tags.environment='test'"
 ```
 
 Create a device configuration with a priority of 3 that applies on condition when a device is tagged in building 9 and the environment is 'test'.
 
 ### Example 3
 ```powershell
-PS C:\> $metrics = @{}
-PS C:\> $metrics.add("query1", "select deviceId from devices where tags.location='US'")
-PS C:\> Add-AzIotHubConfiguration -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -Name "config1" -Metric $metrics
+$metrics = @{}
+$metrics.add("query1", "select deviceId from devices where tags.location='US'")
+Add-AzIotHubConfiguration -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -Name "config1" -Metric $metrics
 ```
 
 Create a device configuration with user metrics.
 
 ### Example 4
 ```powershell
-PS C:\> $labels = @{}
-PS C:\> $labels.add("key0","value0")
-PS C:\> $labels.add("key1","value1")
-PS C:\> Add-AzIotHubConfiguration -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -Name "config1" -Label $labels
+$labels = @{}
+$labels.add("key0","value0")
+$labels.add("key1","value1")
+Add-AzIotHubConfiguration -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -Name "config1" -Label $labels
 ```
 
 Create a device configuration with labels.
 
 ### Example 5
 ```powershell
-PS C:\> $prop = @{}
-PS C:\> $prop.add("Location", "US")
-PS C:\> $content = @{}
-PS C:\> $content.add("properties.desired.Region", $prop)
-PS C:\> Add-AzIotHubConfiguration -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -Name "config1" -DeviceContent $content
+$prop = @{}
+$prop.add("Location", "US")
+$content = @{}
+$content.add("properties.desired.Region", $prop)
+Add-AzIotHubConfiguration -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -Name "config1" -DeviceContent $content
 ```
 
 Create a device configuration with content.

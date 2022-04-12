@@ -24,9 +24,11 @@ Create an in-memory object for StorageAccountDetails.
 
 ### Example 1: Storage account in-memory object 
 ```powershell
-PS C:\> $dataAccount = New-AzDataBoxStorageAccountDetailsObject -DataAccountType "StorageAccount" -StorageAccountId "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.Storage/storageAccounts/storageAccountName"
-PS C:\> $dataAccount
+$dataAccount = New-AzDataBoxStorageAccountDetailsObject -DataAccountType "StorageAccount" -StorageAccountId "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.Storage/storageAccounts/storageAccountName"
+$dataAccount
+```
 
+```output
 DataAccountType SharePassword StorageAccountId
 --------------- ------------- ----------------
 StorageAccount                /subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.Storage/storageAccounts/storageAccountName

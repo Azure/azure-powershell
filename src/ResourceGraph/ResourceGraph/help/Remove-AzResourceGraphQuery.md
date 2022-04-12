@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ResourceGraph-help.xml
 Module Name: Az.ResourceGraph
 online version: https://docs.microsoft.com/powershell/module/az.resourcegraph/remove-azresourcegraphquery
 schema: 2.0.0
@@ -15,13 +15,13 @@ Delete a graph query.
 ### Delete (Default)
 ```
 Remove-AzResourceGraphQuery -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzResourceGraphQuery -InputObject <IResourceGraphIdentity> [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,17 +31,15 @@ Delete a graph query.
 
 ### Example 1: Remove a resource graph query by name
 ```powershell
-PS C:\> Remove-AzResourceGraphQuery -ResourceGroupName azure-rg-test -Name query-t03
-
+Remove-AzResourceGraphQuery -ResourceGroupName azure-rg-test -Name query-t03
 ```
 
 This command removes a resource graph query by name.
 
 ### Example 2: Remove a resource graph query by object
 ```powershell
-PS C:\> $query = Get-AzResourceGraphQuery -ResourceGroupName azure-rg-test -Name query-t02
-PS C:\> Remove-AzResourceGraphQuery -InputObject $query 
-
+$query = Get-AzResourceGraphQuery -ResourceGroupName azure-rg-test -Name query-t02
+Remove-AzResourceGraphQuery -InputObject $query
 ```
 
 This command removes a resource graph query by object.
@@ -197,4 +195,3 @@ INPUTOBJECT <IResourceGraphIdentity>: Identity Parameter
   - `[SubscriptionId <String>]`: The Azure subscription Id.
 
 ## RELATED LINKS
-

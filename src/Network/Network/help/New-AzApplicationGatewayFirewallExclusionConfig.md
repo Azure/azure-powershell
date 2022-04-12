@@ -24,7 +24,7 @@ The **New-AzApplicationGatewayFirewallExclusionConfig** cmdlet a new exclusion r
 
 ### Example 1
 ```powershell
-PS C:\> $exclusion1 = New-AzApplicationGatewayFirewallExclusionConfig -Variable "RequestHeaderNames" -Operator "StartsWith" -Selector "xyz"
+$exclusion1 = New-AzApplicationGatewayFirewallExclusionConfig -Variable "RequestHeaderNames" -Operator "StartsWith" -Selector "xyz"
 ```
 
 This command creates a new exclusion rule lists configuration for the variable named RequestHeaderNames and operator named StartsWith and Selector named xyz. The exclusion list configuration is saved in $exclusion1.

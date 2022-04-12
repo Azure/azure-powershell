@@ -20,11 +20,11 @@ Add new entity to servicePrincipals
 .Description
 Add new entity to servicePrincipals
 .Example
-PS C:\> New-AzADServicePrincipal
+New-AzADServicePrincipal
 .Example
-PS C:\> New-AzADServicePrincipal -ApplicationId $appid
+New-AzADServicePrincipal -ApplicationId $appid
 .Example
-PS C:\> New-AzADServicePrincipal -DisplayName $name
+New-AzADServicePrincipal -DisplayName $name
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal
@@ -671,8 +671,8 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Create = 'Az.Resources.MSGraph.private\New-AzADServicePrincipal_Create';
-            CreateExpanded = 'Az.Resources.MSGraph.private\New-AzADServicePrincipal_CreateExpanded';
+            Create = 'Az.MSGraph.private\New-AzADServicePrincipal_Create';
+            CreateExpanded = 'Az.MSGraph.private\New-AzADServicePrincipal_CreateExpanded';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

@@ -20,13 +20,9 @@ Invoke action removePassword
 .Description
 Invoke action removePassword
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IPathsHv033BApplicationsApplicationIdMicrosoftGraphRemovepasswordPostRequestbodyContentApplicationJsonSchema
@@ -134,8 +130,8 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Remove = 'Az.Resources.MSGraph.private\Remove-AzADApplicationPassword_Remove';
-            RemoveExpanded = 'Az.Resources.MSGraph.private\Remove-AzADApplicationPassword_RemoveExpanded';
+            Remove = 'Az.MSGraph.private\Remove-AzADApplicationPassword_Remove';
+            RemoveExpanded = 'Az.MSGraph.private\Remove-AzADApplicationPassword_RemoveExpanded';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

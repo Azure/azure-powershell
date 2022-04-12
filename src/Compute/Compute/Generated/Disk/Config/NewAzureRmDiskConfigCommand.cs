@@ -148,7 +148,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the image reference on a disk. The ID will be the ARM ID of the PIR or user image from which to create a disk. A lun is needed if the source of the copy is one of the data disks in the gallery image; if null, the OS disk of the image will be copied.")]
         public ImageDiskReference ImageReference { get; set; }
 
         [Parameter(

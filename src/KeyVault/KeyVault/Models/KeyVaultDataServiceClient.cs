@@ -421,6 +421,25 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return new PSKeyVaultKey(keyBundle, this.vaultUriHelper);
         }
 
+        #region Key Rotation
+        public PSKeyVaultKey RotateKey(string vaultName, string keyName)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public PSKeyRotationPolicy GetKeyRotationPolicy(string vaultName, string keyName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public PSKeyRotationPolicy SetKeyRotationPolicy(PSKeyRotationPolicy keyRotationPolicy)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
         #endregion
 
         #region Secret actions
@@ -2165,25 +2184,44 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             throw new NotImplementedException("Purging deleted keys on managed HSM is only possible in track 2 SDK.");
 
         }
-        public PSKeyOperationResult ManagedHsmKeyDecrypt(string vaultName, string keyName, string version, byte[] value, string encryptAlgorithm)
+        public PSKeyOperationResult ManagedHsmKeyDecrypt(string managedHsmName, string keyName, string version, byte[] value, string encryptAlgorithm)
         {
             throw new NotImplementedException("Decrypting with keys on managed HSM is only possible in track 2 SDK.");
         }
 
-        public PSKeyOperationResult ManagedHsmKeyEncrypt(string vaultName, string keyName, string version, byte[] value, string encryptAlgorithm)
+        public PSKeyOperationResult ManagedHsmKeyEncrypt(string managedHsmName, string keyName, string version, byte[] value, string encryptAlgorithm)
         {
             throw new NotImplementedException("Encrypting with keys on managed HSM is only possible in track 2 SDK.");
         }
 
-        public PSKeyOperationResult ManagedHsmUnwrapKey(string vaultName, string keyName, string keyVersion, byte[] wrapKey, string wrapAlgorithm)
+        public PSKeyOperationResult ManagedHsmUnwrapKey(string managedHsmName, string keyName, string keyVersion, byte[] wrapKey, string wrapAlgorithm)
         {
             throw new NotImplementedException("Unwrapping keys on managed HSM is only possible in track 2 SDK.");
         }
 
-        public PSKeyOperationResult ManagedHsmWrapKey(string vaultName, string keyName, string keyVersion, byte[] wrapKey, string wrapAlgorithm)
+        public PSKeyOperationResult ManagedHsmWrapKey(string managedHsmName, string keyName, string keyVersion, byte[] wrapKey, string wrapAlgorithm)
         {
             throw new NotImplementedException("Wrapping keys on managed HSM is only possible in track 2 SDK.");
         }
+
+        #region Key rotation
+        public PSKeyVaultKey RotateManagedHsmKey(string managedHsmName, string keyName)
+        {
+            throw new NotImplementedException("Rotating keys on managed HSM is only possible in track 2 SDK.");
+
+        }
+
+        public PSKeyRotationPolicy GetManagedHsmKeyRotationPolicy(string managedHsmName, string keyName)
+        {
+            throw new NotImplementedException("Getting key rotation policies on managed HSM is only possible in track 2 SDK.");
+        }
+
+        public PSKeyRotationPolicy SetManagedHsmKeyRotationPolicy(PSKeyRotationPolicy keyRotationPolicy)
+        {
+            throw new NotImplementedException("Updating key rotation policies on managed HSM is only possible in track 2 SDK.");
+        }
+        #endregion
+
         #endregion
     }
 }

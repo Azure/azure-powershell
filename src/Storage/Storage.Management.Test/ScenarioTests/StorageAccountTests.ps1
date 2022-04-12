@@ -2116,3 +2116,70 @@ function Test-AzureStorageAccountWorm
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Test Test-NewAzStorageContext
+.DESCRIPTION
+SmokeTest
+#>
+function Test-NewAzStorageContext
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_LRS';
+        $kind = 'StorageV2'
+
+        $loc = Get-ProviderLocation ResourceManagement;
+        New-AzResourceGroup -Name $rgname -Location $loc;
+		
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind;
+
+        $sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname;
+        $blobEndpoint = $sto.PrimaryEndpoints.Blob
+        $tableEndpoint = $sto.PrimaryEndpoints.Table
+        $queueEndpoint = $sto.PrimaryEndpoints.Queue
+        $fileEndpoint = $sto.PrimaryEndpoints.File
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+
+        $stokey = (Get-AzStorageAccountKey -ResourceGroupName $rgname -StorageAccountName $sto.StorageAccountName)[0].Value
+        $ctxAccountInfo = New-AzStorageContext -StorageAccountName $sto.StorageAccountName -StorageAccountKey $stokey
+        Assert-AreEqual $ctxAccountInfo.BlobEndpoint $blobEndpoint
+        Assert-AreEqual $ctxAccountInfo.TableEndpoint $tableEndpoint
+        Assert-AreEqual $ctxAccountInfo.QueueEndpoint $queueEndpoint 
+        Assert-AreEqual $ctxAccountInfo.FileEndpoint $fileEndpoint
+
+        $ctxAccountInfoServiceEndpoint = New-AzStorageContext -StorageAccountName $sto.StorageAccountName -StorageAccountKey $stokey -BlobEndpoint $blobEndpoint -TableEndpoint $tableEndpoint
+        Assert-AreEqual $ctxAccountInfoServiceEndpoint.BlobEndpoint $blobEndpoint
+        Assert-AreEqual $ctxAccountInfoServiceEndpoint.TableEndpoint $tableEndpoint
+        Assert-Null $ctxAccountInfoServiceEndpoint.QueueEndpoint 
+        Assert-Null $ctxAccountInfoServiceEndpoint.FileEndpoint
+
+        $ctxAnonymousServiceEndpoint = New-AzStorageContext -Anonymous -QueueEndpoint $queueEndpoint -FileEndpoint $fileEndpoint
+        Assert-AreEqual $ctxAnonymousServiceEndpoint.QueueEndpoint $queueEndpoint
+        Assert-AreEqual $ctxAnonymousServiceEndpoint.FileEndpoint $fileEndpoint
+        Assert-Null $ctxAnonymousServiceEndpoint.BlobEndpoint
+        Assert-Null $ctxAnonymousServiceEndpoint.TableEndpoint
+        Assert-AreEqual $ctxAnonymousServiceEndpoint.StorageAccountName "[Anonymous]"
+
+        $ctxOAuthServiceEndpoint = New-AzStorageContext -BlobEndpoint $blobEndpoint -FileEndpoint $fileEndpoint -TableEndpoint $tableEndpoint -UseConnectedAccount
+        Assert-AreEqual $ctxOAuthServiceEndpoint.BlobEndpoint $blobEndpoint
+        Assert-AreEqual $ctxOAuthServiceEndpoint.FileEndpoint $fileEndpoint
+        Assert-AreEqual $ctxOAuthServiceEndpoint.TableEndpoint $tableEndpoint
+        Assert-Null $ctxOAuthServiceEndpoint.QueueEndpoint
+        Assert-AreEqual $ctxOAuthServiceEndpoint.StorageAccountName "[AccessToken]"
+
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+  

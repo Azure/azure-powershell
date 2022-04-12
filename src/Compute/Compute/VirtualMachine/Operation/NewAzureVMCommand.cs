@@ -147,8 +147,14 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = true)]
         public PSCredential Credential { get; set; }
 
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
+        [Parameter(
+            ParameterSetName = SimpleParameterSet,
+            HelpMessage = "Specifies Network Interface delete option after VM deletion. Options are Detach or Delete.",
+            Mandatory = false)]
+        [Parameter(
+            ParameterSetName = DiskFileParameterSet,
+            HelpMessage = "Specifies Network Interface delete option after VM deletion. Options are Detach or Delete.",
+            Mandatory = false)]
         public string NetworkInterfaceDeleteOption { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
@@ -255,7 +261,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public string HostId { get; set; }
-        
+
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public string VmssId { get; set; }
@@ -285,7 +291,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false,
             HelpMessage = "EncryptionAtHost property can be used by user in the request to enable or disable the Host Encryption for the virtual machine. This will enable the encryption for all the disks including Resource/Temp disk at host itself.")]
         public SwitchParameter EncryptionAtHost { get; set; }
-        
+
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,
             HelpMessage = "The resource id of the dedicated host group, on which the customer wants their VM placed using automatic placement.",
             ValueFromPipelineByPropertyName = true)]
@@ -324,17 +330,17 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "Id of the capacity reservation Group that is used to allocate.")]
         [ResourceIdCompleter("Microsoft.Compute/capacityReservationGroups")]
         public string CapacityReservationGroupId { get; set; }
-        
+
         [Parameter(
             Mandatory = false,
             ParameterSetName = SimpleParameterSet,
             HelpMessage = "UserData for the VM, which will be Base64 encoded. Customer should not pass any secrets in here.",
-            ValueFromPipeline = true)]
+            ValueFromPipelineByPropertyName = true)]
         [Parameter(
             Mandatory = false,
             ParameterSetName = DiskFileParameterSet,
             HelpMessage = "UserData for the VM, which will be Base64 encoded. Customer should not pass any secrets in here.",
-            ValueFromPipeline = true)]
+            ValueFromPipelineByPropertyName = true)]
         public string UserData { get; set; }
 
         [Parameter(
@@ -343,6 +349,42 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "Specified the gallery image unique id for vm deployment. This can be fetched from gallery image GET call.")]
         [ResourceIdCompleter("Microsoft.Compute galleries/images/versions")]
         public string ImageReferenceId { get; set; }
+
+        [Parameter(
+            ParameterSetName = SimpleParameterSet,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the fault domain of the virtual machine.")]
+        [Parameter(
+            ParameterSetName = DiskFileParameterSet,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the fault domain of the virtual machine.")]
+        public int PlatformFaultDomain { get; set; }
+
+        [Parameter(
+            ParameterSetName = SimpleParameterSet,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The flag that enables or disables hibernation capability on the VM.")]
+        [Parameter(
+            ParameterSetName = DiskFileParameterSet,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The flag that enables or disables hibernation capability on the VM.")]
+        public SwitchParameter HibernationEnabled { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the number of vCPUs available for the VM. When this property is not specified in the request body the default behavior is to set it to the value of vCPUs available for that VM size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).")]
+        public int vCPUCountAvailable { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the vCPU to physical core ratio. When this property is not specified in the request body the default behavior is set to the value of vCPUsPerCore for the VM Size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list). Setting this property to 1 also means that hyper-threading is disabled.")]
+        public int vCPUCountPerCore { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -485,7 +527,7 @@ namespace Microsoft.Azure.Commands.Compute
                 if (string.IsNullOrEmpty(publicIpAddress.Name))
                 {
                     networkInterface = resourceGroup.CreateNetworkInterfaceConfigNoPublicIP(
-                        _cmdlet.Name, _cmdlet.EdgeZone, subnet, 
+                        _cmdlet.Name, _cmdlet.EdgeZone, subnet,
                         networkSecurityGroup, enableAcceleratedNetwork);
                 }
                 else
@@ -493,7 +535,7 @@ namespace Microsoft.Azure.Commands.Compute
                     networkInterface = resourceGroup.CreateNetworkInterfaceConfig(
                         _cmdlet.Name, _cmdlet.EdgeZone, subnet, publicIpAddress, networkSecurityGroup, enableAcceleratedNetwork);
                 }
-                
+
                 var ppgSubResourceFunc = resourceGroup.CreateProximityPlacementGroupSubResourceFunc(_cmdlet.ProximityPlacementGroupId);
 
                 var availabilitySet = _cmdlet.AvailabilitySetName == null
@@ -506,11 +548,22 @@ namespace Microsoft.Azure.Commands.Compute
                 List<SshPublicKey> sshPublicKeyList = null;
                 if (!String.IsNullOrEmpty(_cmdlet.SshKeyName))
                 {
-                    SshPublicKey sshPublicKey = _cmdlet.createPublicKeyObject(_cmdlet.Credential.UserName); 
+                    SshPublicKey sshPublicKey = _cmdlet.createPublicKeyObject(_cmdlet.Credential.UserName);
                     sshPublicKeyList = new List<SshPublicKey>()
                     {
                         sshPublicKey
                     };
+                }
+
+                // AdditionalCapabilities
+                var vAdditionalCapabilities = new AdditionalCapabilities();
+                if (_cmdlet.IsParameterBound(c => c.HibernationEnabled))
+                {
+                    vAdditionalCapabilities.HibernationEnabled = _cmdlet.HibernationEnabled;
+                }
+                if (_cmdlet.IsParameterBound(c => c.EnableUltraSSD))
+                {
+                    vAdditionalCapabilities.UltraSSDEnabled = _cmdlet.EnableUltraSSD;
                 }
 
                 _cmdlet.ConfigAsyncVisited = true;
@@ -518,35 +571,38 @@ namespace Microsoft.Azure.Commands.Compute
                 if (_cmdlet.DiskFile == null)
                 {
                     return resourceGroup.CreateVirtualMachineConfig(
-                    name: _cmdlet.Name,
-                    networkInterface: networkInterface,
-                    imageAndOsType: ImageAndOsType,
-                    adminUsername: _cmdlet.Credential.UserName,
-                    adminPassword:
-                        new NetworkCredential(string.Empty, _cmdlet.Credential.Password).Password,
-                    size: _cmdlet.Size,
-                    availabilitySet: availabilitySet,
-                    dataDisks: _cmdlet.DataDiskSizeInGb,
-                    zones: _cmdlet.Zone,
-                    ultraSSDEnabled: _cmdlet.EnableUltraSSD.IsPresent,
-                    identity: _cmdlet.GetVMIdentityFromArgs(),
-                    proximityPlacementGroup: ppgSubResourceFunc,
-                    hostId: _cmdlet.HostId,
-                    hostGroupId: _cmdlet.HostGroupId,
-                    capacityReservationGroupId: _cmdlet.CapacityReservationGroupId,
-                    VmssId: _cmdlet.VmssId,
-                    priority: _cmdlet.Priority,
-                    evictionPolicy: _cmdlet.EvictionPolicy,
-                    maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null,
-                    encryptionAtHostPresent: _cmdlet.EncryptionAtHost.IsPresent,
-                    sshPublicKeys: sshPublicKeyList,
-                    networkInterfaceDeleteOption: _cmdlet.NetworkInterfaceDeleteOption,
-                    osDiskDeleteOption: _cmdlet.OSDiskDeleteOption,
-                    dataDiskDeleteOption: _cmdlet.DataDiskDeleteOption,
-                    userData: _cmdlet.UserData,
-                    imageReferenceId: _cmdlet.ImageReferenceId,
-                    auxAuthHeader: auxAuthHeader
-                    );
+                        name: _cmdlet.Name,
+                        networkInterface: networkInterface,
+                        imageAndOsType: ImageAndOsType,
+                        adminUsername: _cmdlet.Credential.UserName,
+                        adminPassword:
+                            new NetworkCredential(string.Empty, _cmdlet.Credential.Password).Password,
+                        size: _cmdlet.Size,
+                        availabilitySet: availabilitySet,
+                        dataDisks: _cmdlet.DataDiskSizeInGb,
+                        zones: _cmdlet.Zone,
+                        identity: _cmdlet.GetVMIdentityFromArgs(),
+                        proximityPlacementGroup: ppgSubResourceFunc,
+                        hostId: _cmdlet.HostId,
+                        hostGroupId: _cmdlet.HostGroupId,
+                        capacityReservationGroupId: _cmdlet.CapacityReservationGroupId,
+                        VmssId: _cmdlet.VmssId,
+                        priority: _cmdlet.Priority,
+                        evictionPolicy: _cmdlet.EvictionPolicy,
+                        maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null,
+                        encryptionAtHostPresent: _cmdlet.EncryptionAtHost.IsPresent,
+                        sshPublicKeys: sshPublicKeyList,
+                        networkInterfaceDeleteOption: _cmdlet.NetworkInterfaceDeleteOption,
+                        osDiskDeleteOption: _cmdlet.OSDiskDeleteOption,
+                        dataDiskDeleteOption: _cmdlet.DataDiskDeleteOption,
+                        userData: _cmdlet.UserData,
+                        platformFaultDomain: _cmdlet.IsParameterBound(c => c.PlatformFaultDomain) ? _cmdlet.PlatformFaultDomain : (int?) null,
+                        additionalCapabilities: vAdditionalCapabilities,
+                        vCPUsAvailable: _cmdlet.IsParameterBound(c => c.vCPUCountAvailable) ? _cmdlet.vCPUCountAvailable : (int?)null,
+                        vCPUsPerCore: _cmdlet.IsParameterBound(c => c.vCPUCountPerCore) ? _cmdlet.vCPUCountPerCore : (int?)null,
+                        imageReferenceId: _cmdlet.ImageReferenceId,
+                        auxAuthHeader: auxAuthHeader
+                        );
                 }
                 else
                 {
@@ -563,7 +619,7 @@ namespace Microsoft.Azure.Commands.Compute
                         availabilitySet: availabilitySet,
                         dataDisks: _cmdlet.DataDiskSizeInGb,
                         zones: _cmdlet.Zone,
-                        ultraSSDEnabled: _cmdlet.EnableUltraSSD.IsPresent,
+                        ultraSSDEnabled: _cmdlet.EnableUltraSSD,
                         identity: _cmdlet.GetVMIdentityFromArgs(),
                         proximityPlacementGroup: ppgSubResourceFunc,
                         hostId: _cmdlet.HostId,
@@ -577,7 +633,11 @@ namespace Microsoft.Azure.Commands.Compute
                         networkInterfaceDeleteOption: _cmdlet.NetworkInterfaceDeleteOption,
                         osDiskDeleteOption: _cmdlet.OSDiskDeleteOption,
                         dataDiskDeleteOption: _cmdlet.DataDiskDeleteOption,
-                        userData: _cmdlet.UserData
+                        userData: _cmdlet.UserData,
+                        platformFaultDomain: _cmdlet.IsParameterBound(c => c.PlatformFaultDomain) ? _cmdlet.PlatformFaultDomain : (int?)null,
+                        additionalCapabilities: vAdditionalCapabilities,
+                        vCPUsAvailable: _cmdlet.IsParameterBound(c => c.vCPUCountAvailable) ? _cmdlet.vCPUCountAvailable : (int?)null,
+                        vCPUsPerCore: _cmdlet.IsParameterBound(c => c.vCPUCountPerCore) ? _cmdlet.vCPUCountPerCore : (int?)null
                     );
                 }
             }
@@ -785,8 +845,8 @@ namespace Microsoft.Azure.Commands.Compute
 
                     Rest.Azure.AzureOperationResponse<VirtualMachine> result;
 
-                    if (this.IsParameterBound (c => c.SshKeyName))
-                    { 
+                    if (this.IsParameterBound(c => c.SshKeyName))
+                    {
                         parameters = addSshPublicKey(parameters);
                     }
 
@@ -975,15 +1035,9 @@ namespace Microsoft.Azure.Commands.Compute
                 }
             }
 
-            var storageAccount = TryToChooseExistingStandardStorageAccount(storageClient);
-
-            if (storageAccount == null)
-            {
-                return CreateStandardStorageAccount(storageClient);
-            }
-
-            WriteWarning(string.Format(Properties.Resources.UsingExistingStorageAccountForBootDiagnostics, storageAccount.Name));
-            return storageAccount.PrimaryEndpoints.Blob;
+            var storagePrimaryEndpointBlob = CreateStandardStorageAccount(storageClient);
+            return storagePrimaryEndpointBlob;
+            
         }
 
         private string GetStorageAccountNameFromStorageProfile()
@@ -1225,7 +1279,7 @@ namespace Microsoft.Azure.Commands.Compute
                 {
                     throw new Exception("Please provide parameter '-SshKeyName' to be used with '-GenerateSshKey'");
                 }
-            }  
+            }
         }
     }
 }

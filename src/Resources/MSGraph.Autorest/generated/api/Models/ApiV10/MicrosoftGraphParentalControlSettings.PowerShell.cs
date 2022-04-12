@@ -110,8 +110,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphParentalControlSettingsInternal)this).CountriesBlockedForMinor = (string[]) content.GetValueForProperty("CountriesBlockedForMinor",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphParentalControlSettingsInternal)this).CountriesBlockedForMinor, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphParentalControlSettingsInternal)this).LegalAgeGroupRule = (string) content.GetValueForProperty("LegalAgeGroupRule",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphParentalControlSettingsInternal)this).LegalAgeGroupRule, global::System.Convert.ToString);
+            if (content.Contains("CountriesBlockedForMinor"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphParentalControlSettingsInternal)this).CountriesBlockedForMinor = (string[]) content.GetValueForProperty("CountriesBlockedForMinor",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphParentalControlSettingsInternal)this).CountriesBlockedForMinor, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("LegalAgeGroupRule"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphParentalControlSettingsInternal)this).LegalAgeGroupRule = (string) content.GetValueForProperty("LegalAgeGroupRule",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphParentalControlSettingsInternal)this).LegalAgeGroupRule, global::System.Convert.ToString);
+            }
             // this type is a dictionary; copy elements from source to here.
             CopyFrom(content);
             AfterDeserializeDictionary(content);
@@ -131,8 +137,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphParentalControlSettingsInternal)this).CountriesBlockedForMinor = (string[]) content.GetValueForProperty("CountriesBlockedForMinor",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphParentalControlSettingsInternal)this).CountriesBlockedForMinor, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphParentalControlSettingsInternal)this).LegalAgeGroupRule = (string) content.GetValueForProperty("LegalAgeGroupRule",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphParentalControlSettingsInternal)this).LegalAgeGroupRule, global::System.Convert.ToString);
+            if (content.Contains("CountriesBlockedForMinor"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphParentalControlSettingsInternal)this).CountriesBlockedForMinor = (string[]) content.GetValueForProperty("CountriesBlockedForMinor",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphParentalControlSettingsInternal)this).CountriesBlockedForMinor, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("LegalAgeGroupRule"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphParentalControlSettingsInternal)this).LegalAgeGroupRule = (string) content.GetValueForProperty("LegalAgeGroupRule",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphParentalControlSettingsInternal)this).LegalAgeGroupRule, global::System.Convert.ToString);
+            }
             // this type is a dictionary; copy elements from source to here.
             CopyFrom(content);
             AfterDeserializePSObject(content);

@@ -20,13 +20,9 @@ Invoke action addPassword
 .Description
 Invoke action addPassword
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IPaths141Ryo0ApplicationsApplicationIdMicrosoftGraphAddpasswordPostRequestbodyContentApplicationJsonSchema
@@ -143,8 +139,8 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Add = 'Az.Resources.MSGraph.private\Add-AzADApplicationPassword_Add';
-            AddExpanded = 'Az.Resources.MSGraph.private\Add-AzADApplicationPassword_AddExpanded';
+            Add = 'Az.MSGraph.private\Add-AzADApplicationPassword_Add';
+            AddExpanded = 'Az.MSGraph.private\Add-AzADApplicationPassword_AddExpanded';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

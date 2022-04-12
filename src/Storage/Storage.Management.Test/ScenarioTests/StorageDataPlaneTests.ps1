@@ -299,6 +299,8 @@ function Test-Blob
         Assert-AreEqual $scopename $blob.BlobProperties.EncryptionScope
         $blob = Copy-AzStorageBlob -Context $storageContext -SrcContainer $containerName -SrcBlob encryscopetest -DestContainer $containerName -DestBlob encryscopetest -Force  -EncryptionScope $scopename2
         Assert-AreEqual $scopename2 $blob.BlobProperties.EncryptionScope
+        $blob = Copy-AzStorageBlob -Context $storageContext -SrcContainer $containerName -SrcBlob encryscopetest -DestContainer $containerName2 -DestBlob "encryscopetest01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789" -Force
+        Assert-AreEqual $scopename $blob.BlobProperties.EncryptionScope
         Remove-AzStorageContainer -Name $containerName2 -Force -Context $storageContext
 
         # container softdelete test
@@ -330,11 +332,12 @@ function Test-Blob
         Update-AzStorageBlobServiceProperty -ResourceGroupName $ResourceGroupName -Name $StorageAccountName -IsVersioningEnabled $true
         $containerNamevlw = "vlwcontainer"
         # create container with ImmutableStorageWithVersioning
-        New-AzRmStorageContainer -ResourceGroupName $ResourceGroupName -Name $StorageAccountName -Name $containerNamevlw -EnableImmutableStorageWithVersioning
+        New-AzRmStorageContainer -ResourceGroupName $ResourceGroupName -StorageAccountName $StorageAccountName -Name $containerNamevlw -EnableImmutableStorageWithVersioning
         # upload a blob
+        $objectName = "testblob"
         Set-AzStorageBlobContent -File $localSrcFile -Container $containerNamevlw -Blob $objectName -Force -Context $storageContext
         # manage ImmutabilityPolicy
-        $policy = Set-AzStorageBlobImmutabilityPolicy -Container $containerNamevlw -Blob $objectName -ExpiriesOn (Get-Date).AddDays(1) -PolicyMode Unlocked -Context $storageContext
+        $policy = Set-AzStorageBlobImmutabilityPolicy -Container $containerNamevlw -Blob $objectName -ExpiresOn (Get-Date).AddDays(1) -PolicyMode Unlocked -Context $storageContext
         $blob = Get-AzStorageBlob -Container $containerNamevlw -Blob $objectName  -Context $storageContext
         Remove-AzStorageBlobImmutabilityPolicy -Container $containerNamevlw -Blob $objectName  -Context $storageContext 
         $blob = Get-AzStorageBlob -Container $containerNamevlw -Blob $objectName  -Context $storageContext

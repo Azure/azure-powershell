@@ -24,7 +24,7 @@ The New-AzVirtualApplianceSkuProperties command defines a Sku for Network Virtua
 
 ### Example 1
 ```powershell
-PS C:\> $var=New-AzVirtualApplianceSkuProperty -VendorName "barracudasdwanrelease" -BundledScaleUnit 1 -MarketPlaceVersion 'latest'
+$var=New-AzVirtualApplianceSkuProperty -VendorName "barracudasdwanrelease" -BundledScaleUnit 1 -MarketPlaceVersion 'latest'
 ```
 
 Create a Virtual Appliance Sku Properties object to be used with New-AzNetworkVirtualAppliance command. 

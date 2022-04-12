@@ -249,3 +249,61 @@ function Test-UpgradeKubernetesVersion
         Remove-AzResourceGroup -Name $resourceGroupName -Force
     }
 }
+
+function Test-LoadBalancer
+{
+    # Setup
+    $resourceGroupName = Get-RandomResourceGroupName
+    $kubeClusterName = Get-RandomClusterName
+    $location = 'eastus'
+    $nodeVmSize = "Standard_D2_v2"
+    $loadBalancerManagedOutboundIpCount = 16
+
+    try
+    {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+        
+        $credObject = $(createTestCredential "a6148f60-19b8-49b8-a5a5-54945aec926e" "xde7Q~bVRBoBzggfXn3Zw1uCqzRuLduEFPJXw")
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -ServicePrincipalIdAndSecret $credObject `
+                         -LoadBalancerAllocatedOutboundPort 24 -LoadBalancerSku standard -LoadBalancerManagedOutboundIpCount $loadBalancerManagedOutboundIpCount -LoadBalancerIdleTimeoutInMinute 40
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual $loadBalancerManagedOutboundIpCount $cluster.NetworkProfile.LoadBalancerProfile.EffectiveOutboundIPs.Count
+        Set-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -LoadBalancerManagedOutboundIpCount 24
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual 24 $cluster.NetworkProfile.LoadBalancerProfile.EffectiveOutboundIPs.Count
+    }
+    finally
+    {
+        Remove-AzResourceGroup -Name $resourceGroupName -Force
+    }
+}
+
+function Test-ApiServiceAccess
+{
+    # Setup
+    $resourceGroupName = Get-RandomResourceGroupName
+    $kubeClusterName = Get-RandomClusterName
+    $kubeClusterName2 = Get-RandomClusterName
+    $location = 'eastus'
+    $nodeVmSize = "Standard_D2_v2"
+    $loadBalancerManagedOutboundIpCount = 16
+
+    try
+    {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+        
+        $credObject = $(createTestCredential "a6148f60-19b8-49b8-a5a5-54945aec926e" "xde7Q~bVRBoBzggfXn3Zw1uCqzRuLduEFPJXw")
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -ServicePrincipalIdAndSecret $credObject `
+                        -EnableApiServerAccessPrivateCluster
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual $true $cluster.ApiServerAccessProfile.EnablePrivateCluster
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName2 -NodeVmSize $nodeVmSize -ServicePrincipalIdAndSecret $credObject `
+                        -ApiServerAccessAuthorizedIpRange "127.0.0.0/24"
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName2
+        Assert-AreEqual "127.0.0.0/24" $cluster.ApiServerAccessProfile.AuthorizedIPRanges
+    }
+    finally
+    {
+        Remove-AzResourceGroup -Name $resourceGroupName -Force
+    }
+}

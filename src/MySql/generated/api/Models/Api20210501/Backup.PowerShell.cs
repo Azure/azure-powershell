@@ -66,9 +66,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IBackupInternal)this).RetentionDay = (int?) content.GetValueForProperty("RetentionDay",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IBackupInternal)this).RetentionDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IBackupInternal)this).GeoRedundantBackup = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum?) content.GetValueForProperty("GeoRedundantBackup",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IBackupInternal)this).GeoRedundantBackup, Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IBackupInternal)this).EarliestRestoreDate = (global::System.DateTime?) content.GetValueForProperty("EarliestRestoreDate",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IBackupInternal)this).EarliestRestoreDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            if (content.Contains("RetentionDay"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IBackupInternal)this).RetentionDay = (int?) content.GetValueForProperty("RetentionDay",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IBackupInternal)this).RetentionDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("GeoRedundantBackup"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IBackupInternal)this).GeoRedundantBackup = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum?) content.GetValueForProperty("GeoRedundantBackup",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IBackupInternal)this).GeoRedundantBackup, Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum.CreateFrom);
+            }
+            if (content.Contains("EarliestRestoreDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IBackupInternal)this).EarliestRestoreDate = (global::System.DateTime?) content.GetValueForProperty("EarliestRestoreDate",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IBackupInternal)this).EarliestRestoreDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -86,9 +95,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IBackupInternal)this).RetentionDay = (int?) content.GetValueForProperty("RetentionDay",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IBackupInternal)this).RetentionDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IBackupInternal)this).GeoRedundantBackup = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum?) content.GetValueForProperty("GeoRedundantBackup",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IBackupInternal)this).GeoRedundantBackup, Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IBackupInternal)this).EarliestRestoreDate = (global::System.DateTime?) content.GetValueForProperty("EarliestRestoreDate",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IBackupInternal)this).EarliestRestoreDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            if (content.Contains("RetentionDay"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IBackupInternal)this).RetentionDay = (int?) content.GetValueForProperty("RetentionDay",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IBackupInternal)this).RetentionDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("GeoRedundantBackup"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IBackupInternal)this).GeoRedundantBackup = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum?) content.GetValueForProperty("GeoRedundantBackup",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IBackupInternal)this).GeoRedundantBackup, Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum.CreateFrom);
+            }
+            if (content.Contains("EarliestRestoreDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IBackupInternal)this).EarliestRestoreDate = (global::System.DateTime?) content.GetValueForProperty("EarliestRestoreDate",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IBackupInternal)this).EarliestRestoreDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             AfterDeserializePSObject(content);
         }
 

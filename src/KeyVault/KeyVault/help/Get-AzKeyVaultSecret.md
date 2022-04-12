@@ -75,8 +75,10 @@ This cmdlet gets a specific secret or all the secrets in a key vault.
 
 ### Example 1: Get all current versions of all secrets in a key vault
 ```powershell
-PS C:\> Get-AzKeyVaultSecret -VaultName 'Contoso'
+Get-AzKeyVaultSecret -VaultName 'Contoso'
+```
 
+```output
 Vault Name   : contoso
 Name         : secret1
 Version      :
@@ -106,8 +108,10 @@ This command gets the current versions of all secrets in the key vault named Con
 
 ### Example 2: Get all versions of a specific secret
 ```powershell
-PS C:\> Get-AzKeyVaultSecret -VaultName 'Contoso' -Name 'secret1' -IncludeVersions
+Get-AzKeyVaultSecret -VaultName 'Contoso' -Name 'secret1' -IncludeVersions
+```
 
+```output
 Vault Name   : contoso
 Name         : secret1
 Version      : 7128133570f84a71b48d7d0550deb74c
@@ -137,8 +141,10 @@ This command gets all versions of the secret named secret1 in the key vault name
 
 ### Example 3: Get the current version of a specific secret
 ```powershell
-PS C:\> Get-AzKeyVaultSecret -VaultName 'Contoso' -Name 'secret1'
+Get-AzKeyVaultSecret -VaultName 'Contoso' -Name 'secret1'
+```
 
+```output
 Vault Name   : contoso
 Name         : secret1
 Version      : 7128133570f84a71b48d7d0550deb74c
@@ -156,8 +162,10 @@ This command gets the current version of the secret named secret1 in the key vau
 
 ### Example 4: Get a specific version of a specific secret
 ```powershell
-PS C:\> Get-AzKeyVaultSecret -VaultName 'Contoso' -Name 'secret1' -Version '5d1a74ba2c454439886fb8509b6cab3c'
+Get-AzKeyVaultSecret -VaultName 'Contoso' -Name 'secret1' -Version '5d1a74ba2c454439886fb8509b6cab3c'
+```
 
+```output
 Vault Name   : contoso
 Name         : secret1
 Version      : 5d1a74ba2c454439886fb8509b6cab3c
@@ -175,7 +183,7 @@ This command gets a specific version of the secret named secret1 in the key vaul
 
 ### Example 5: Get the plain text value of the current version of a specific secret
 ```powershell
-PS C:\> $secretText = Get-AzKeyVaultSecret -VaultName 'Contoso' -Name 'ITSecret' -AsPlainText
+$secretText = Get-AzKeyVaultSecret -VaultName 'Contoso' -Name 'ITSecret' -AsPlainText
 ```
 
 The cmdlet returns the secret as a string when `-AsPlainText` is applied.
@@ -184,8 +192,10 @@ The cmdlet returns the secret as a string when `-AsPlainText` is applied.
 
 ### Example 6: Get all the secrets that have been deleted but not purged for this key vault.
 ```powershell
-PS C:\> Get-AzKeyVaultSecret -VaultName 'Contoso' -InRemovedState
+Get-AzKeyVaultSecret -VaultName 'Contoso' -InRemovedState
+```
 
+```output
 Vault Name           : contoso
 Name                 : secret1
 Id                   : https://contoso.vault.azure.net:443/secrets/secret1
@@ -217,8 +227,10 @@ This command gets all the secrets that have been previously deleted, but not pur
 
 ### Example 7: Gets the secret ITSecret that has been deleted but not purged for this key vault.
 ```powershell
-PS C:\> Get-AzKeyVaultSecret -VaultName 'Contoso' -Name 'secret1' -InRemovedState
+Get-AzKeyVaultSecret -VaultName 'Contoso' -Name 'secret1' -InRemovedState
+```
 
+```output
 Vault Name           : contoso
 Name                 : secret1
 Version              : 689d23346e9c42a2a64f4e3d75094dcc
@@ -239,8 +251,10 @@ This command will return metadata such as the deletion date, and the scheduled p
 
 ### Example 8: Get all current versions of all secrets in a key vault using filtering
 ```powershell
-PS C:\> Get-AzKeyVaultSecret -VaultName 'Contoso' -Name "secret*"
+Get-AzKeyVaultSecret -VaultName 'Contoso' -Name "secret*"
+```
 
+```output
 Vault Name   : contoso
 Name         : secret1
 Version      :

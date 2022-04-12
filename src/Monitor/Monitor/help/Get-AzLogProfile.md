@@ -21,7 +21,36 @@ Get-AzLogProfile [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [<C
 The **Get-AzLogProfile** cmdlet gets a log profile.
 
 ## EXAMPLES
+### Example 1: Gets a log profile
+```powershell
+Get-AzLogProfile
+```
 
+```output
+StorageAccountId : /subscriptions/xxxx-xxxx-xxxx-xxxx-xxxx/resourceGroups/testrg/providers/Microsoft.Stor
+age/storageAccounts/storageaccount
+ServiceBusRuleId :
+Locations
+     : eastus
+Categories
+     : Delete
+     : Write
+     : Action
+RetentionPolicy
+Enabled : False
+Days    : 0
+
+Id               :
+/subscriptions/xxxx-xxxx-xxxx-xxxx-xxxx/providers/microsoft.insights/logprofiles/exportlogprofile
+Name             : exportlogprofile
+Type             :
+Location         :
+Tags             :
+Kind             :
+Etag             :
+```
+
+This command gets a log profile.
 ## PARAMETERS
 
 ### -DefaultProfile

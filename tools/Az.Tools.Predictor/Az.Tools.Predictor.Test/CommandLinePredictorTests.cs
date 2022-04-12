@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks;
 using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities;
 using System;
 using System.Collections.Generic;
@@ -32,7 +33,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         private readonly ModelFixture _fixture;
         private readonly CommandLinePredictor _predictor;
         private readonly AzContext _azContext;
-        private PowerShellRuntime _powerShellRuntime;
+        private MockPowerShellRuntime _powerShellRuntime;
 
         /// <summary>
         /// Constructs a new instance of <see cref="CommandLinePredictorTests" />
@@ -40,7 +41,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public CommandLinePredictorTests(ModelFixture fixture)
         {
             _fixture = fixture;
-            _powerShellRuntime = new PowerShellRuntime();
+            _powerShellRuntime = new MockPowerShellRuntime();
             _azContext = new AzContext(_powerShellRuntime);
             var startHistory = $"{AzPredictorConstants.CommandPlaceholder}{AzPredictorConstants.CommandConcatenator}{AzPredictorConstants.CommandPlaceholder}";
             _predictor = new CommandLinePredictor(_fixture.PredictionCollection[startHistory], null,null,  _azContext);

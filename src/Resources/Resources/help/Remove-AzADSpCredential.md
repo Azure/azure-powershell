@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resources-help.xml
 Module Name: Az.Resources
 online version: https://docs.microsoft.com/powershell/module/az.resources/remove-azadspcredential
 schema: 2.0.0
@@ -14,26 +14,26 @@ Removes key credentials or password credentials for an service principal.
 
 ### ObjectIdWithKeyIdParameterSet (Default)
 ```
-Remove-AzADSpCredential -ObjectId <String> [-KeyId <Guid>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### DisplayNameWithKeyIdParameterSet
-```
-Remove-AzADSpCredential -DisplayName <String> [-KeyId <Guid>] [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ServicePrincipalObjectParameterSet
-```
-Remove-AzADSpCredential -ServicePrincipalObject <IMicrosoftGraphServicePrincipal> [-KeyId <Guid>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzADSpCredential -ObjectId <String> [-KeyId <Guid>] [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### SPNWithKeyIdParameterSet
 ```
-Remove-AzADSpCredential -ServicePrincipalName <String> [-KeyId <Guid>] [-DefaultProfile <PSObject>]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzADSpCredential [-KeyId <Guid>] -ServicePrincipalName <String> [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DisplayNameWithKeyIdParameterSet
+```
+Remove-AzADSpCredential [-KeyId <Guid>] -DisplayName <String> [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ServicePrincipalObjectParameterSet
+```
+Remove-AzADSpCredential [-KeyId <Guid>] -ServicePrincipalObject <IMicrosoftGraphServicePrincipal>
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,14 +43,14 @@ Removes key credentials or password credentials for an service principal.
 
 ### Example 1: Remove service principal credentials by key id
 ```powershell
-PS C:\> Remove-AzADSpCredential -DisplayName $name -KeyId $keyid
+Remove-AzADSpCredential -DisplayName $name -KeyId $keyid
 ```
 
 Remove service principal credentials by key id
 
 ### Example 2: Remove all credentials from service principal
 ```powershell
-PS C:\> Get-AzADServicePrincipal -DisplayName $name | Remove-AzADSpCredential
+Get-AzADServicePrincipal -DisplayName $name | Remove-AzADSpCredential
 ```
 
 Remove all credentials from service principal
@@ -337,3 +337,4 @@ SERVICEPRINCIPALOBJECT <IMicrosoftGraphServicePrincipal>: The service principal 
 
 ## RELATED LINKS
 
+## RELATED LINKS

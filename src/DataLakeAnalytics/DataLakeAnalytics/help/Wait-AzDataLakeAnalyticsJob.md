@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics.dll-Help.xml
 Module Name: Az.DataLakeAnalytics
 ms.assetid: CE7B54BC-C493-49CE-93BD-346ED0B966A1
@@ -24,8 +24,8 @@ The **Wait-AzDataLakeAnalyticsJob** cmdlet waits for an Azure Data Lake Analytic
 ## EXAMPLES
 
 ### Example 1: Wait for a job to complete
-```
-PS C:\>Wait-AzDataLakeAnalyticsJob -Account "ContosoAdlAccount" -JobId "a0a78d72-3fa8-4564-9b18-6becb3fda48a"
+```powershell
+Wait-AzDataLakeAnalyticsJob -Account "ContosoAdlAccount" -JobId "a0a78d72-3fa8-4564-9b18-6becb3fda48a"
 ```
 
 The following command waits for the job with the specified ID to complete.

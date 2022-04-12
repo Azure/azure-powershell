@@ -27,8 +27,10 @@ Use cmdlet "New-AzFrontDoorRulesEngineRule" to construct rules engine rules to p
 
 ### Example 1
 ```powershell
-PS C:\> New-AzFrontDoorRulesEngine -ResourceGroupName $resourceGroupName -FrontDoorName $frontDoorName -Name myRulesEngine -Rule $rulesEngineRule1
+New-AzFrontDoorRulesEngine -ResourceGroupName $resourceGroupName -FrontDoorName $frontDoorName -Name myRulesEngine -Rule $rulesEngineRule1
+```
 
+```output
 Name          RulesEngineRules
 ----          ----------------
 myRulesEngine {rules1}

@@ -28,43 +28,43 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Unknown".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Unknown", "Unknown", global::System.Management.Automation.CompletionResultType.ParameterValue, "Unknown");
+                yield return new global::System.Management.Automation.CompletionResult("'Unknown'", "Unknown", global::System.Management.Automation.CompletionResultType.ParameterValue, "Unknown");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "InProgress".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("InProgress", "InProgress", global::System.Management.Automation.CompletionResultType.ParameterValue, "InProgress");
+                yield return new global::System.Management.Automation.CompletionResult("'InProgress'", "InProgress", global::System.Management.Automation.CompletionResultType.ParameterValue, "InProgress");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "PrepareFailed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("PrepareFailed", "PrepareFailed", global::System.Management.Automation.CompletionResultType.ParameterValue, "PrepareFailed");
+                yield return new global::System.Management.Automation.CompletionResult("'PrepareFailed'", "PrepareFailed", global::System.Management.Automation.CompletionResultType.ParameterValue, "PrepareFailed");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "CommitFailed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("CommitFailed", "CommitFailed", global::System.Management.Automation.CompletionResultType.ParameterValue, "CommitFailed");
+                yield return new global::System.Management.Automation.CompletionResult("'CommitFailed'", "CommitFailed", global::System.Management.Automation.CompletionResultType.ParameterValue, "CommitFailed");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Failed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Failed", "Failed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Failed");
+                yield return new global::System.Management.Automation.CompletionResult("'Failed'", "Failed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Failed");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "PrepareTimedout".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("PrepareTimedout", "PrepareTimedout", global::System.Management.Automation.CompletionResultType.ParameterValue, "PrepareTimedout");
+                yield return new global::System.Management.Automation.CompletionResult("'PrepareTimedout'", "PrepareTimedout", global::System.Management.Automation.CompletionResultType.ParameterValue, "PrepareTimedout");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "CommitTimedout".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("CommitTimedout", "CommitTimedout", global::System.Management.Automation.CompletionResultType.ParameterValue, "CommitTimedout");
+                yield return new global::System.Management.Automation.CompletionResult("'CommitTimedout'", "CommitTimedout", global::System.Management.Automation.CompletionResultType.ParameterValue, "CommitTimedout");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "CriticalFailure".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("CriticalFailure", "CriticalFailure", global::System.Management.Automation.CompletionResultType.ParameterValue, "CriticalFailure");
+                yield return new global::System.Management.Automation.CompletionResult("'CriticalFailure'", "CriticalFailure", global::System.Management.Automation.CompletionResultType.ParameterValue, "CriticalFailure");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "PartialSuccess".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("PartialSuccess", "PartialSuccess", global::System.Management.Automation.CompletionResultType.ParameterValue, "PartialSuccess");
+                yield return new global::System.Management.Automation.CompletionResult("'PartialSuccess'", "PartialSuccess", global::System.Management.Automation.CompletionResultType.ParameterValue, "PartialSuccess");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "MoveSucceeded".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("MoveSucceeded", "MoveSucceeded", global::System.Management.Automation.CompletionResultType.ParameterValue, "MoveSucceeded");
+                yield return new global::System.Management.Automation.CompletionResult("'MoveSucceeded'", "MoveSucceeded", global::System.Management.Automation.CompletionResultType.ParameterValue, "MoveSucceeded");
             }
         }
     }

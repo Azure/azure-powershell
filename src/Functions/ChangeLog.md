@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 4.0.2
+* Exposed PowerShell 7.2 stack definition for function app creation in Functions V4 only
+
+## Version 4.0.1
+* Removed preview from the PowerShell 7.0 stack on Linux
+
 ## Version 4.0.0
 * [Breaking change] `Update-AzFunctionAppPlan` prompts for confirmation [#16490]
 * [Breaking change] `Remove-AzFunctionApp` does not delete ASP if it is the last app in the plan [#16487]

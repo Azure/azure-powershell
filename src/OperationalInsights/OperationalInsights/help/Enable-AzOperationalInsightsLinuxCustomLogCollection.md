@@ -30,6 +30,22 @@ The **Enable-AzOperationalInsightsLinuxCustomLogCollection** cmdlet starts colle
 
 ## EXAMPLES
 
+### Example 1
+```powershell
+Enable-AzOperationalInsightsLinuxCustomLogCollection -ResourceGroupName test-rg -WorkspaceName OperationalInsight
+```
+
+```output
+Name              : DataSource_CustomLogCollection
+ResourceGroupName : test-rg
+WorkspaceName     : OperationalInsight
+ResourceId        : /subscriptions/xxxx-xxxx-xxxx-xxxx-xxxx/resourceGroups/test-rg/providers/Microsoft.OperationalInsights/wo
+                    rkspaces/OperationalInsight/datasources/DataSource_CustomLogCollection
+Kind              : CustomLogCollection
+Properties        : {"state":"LinuxLogsEnabled"}
+```
+Starts collection of custom logs from connected Linux computers in a workspace.
+
 ## PARAMETERS
 
 ### -DefaultProfile

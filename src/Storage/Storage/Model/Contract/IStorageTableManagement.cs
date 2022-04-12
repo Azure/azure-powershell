@@ -14,17 +14,23 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
 {
-    using Microsoft.Azure.Storage;
-    using Microsoft.Azure.Cosmos.Table;
-    using XTable = Microsoft.Azure.Cosmos.Table;
     using System.Collections.Generic;
+    using System.Threading;
     using System.Threading.Tasks;
+    using global::Azure;
+    using global::Azure.Data.Tables.Models;
+    using Microsoft.Azure.Cosmos.Table;
+    using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
+    using ITableEntity = global::Azure.Data.Tables.ITableEntity;
+    using XTable = Microsoft.Azure.Cosmos.Table;
 
     /// <summary>
     /// Storage table management interface
     /// </summary>
     public interface IStorageTableManagement : IStorageManagement
     {
+        bool IsTokenCredential { get; }
+
         /// <summary>
         /// List azure storage tables
         /// </summary>
@@ -35,11 +41,27 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         IEnumerable<CloudTable> ListTables(string prefix, TableRequestOptions requestOptions = null, XTable.OperationContext operationContext = null);
 
         /// <summary>
+        /// Gets a list of tables from the storage account.
+        /// </summary>
+        /// <param name="filter">Table name filter expression.</param>
+        /// <param name="cancellationToken">A CancellationToken controlling the request lifetime.</param>
+        /// <returns></returns>
+        IEnumerable<TableItem> QueryTables(string filter, CancellationToken cancellationToken);
+
+        /// <summary>
         /// Get a table reference
         /// </summary>
         /// <param name="name">Table name</param>
         /// <returns>Cloud table object</returns>
         CloudTable GetTableReference(string name);
+
+        /// <summary>
+        /// Gets an instance of a AzureStorageTable wrapping TableClient configured with the current TableServiceClient options,
+        /// affinitized to the specified tableName.
+        /// </summary>
+        /// <param name="tableName"></param>
+        /// <returns></returns>
+        AzureStorageTable GetAzureStorageTable(string tableName);
 
         /// <summary>
         /// Checks whether the table exists.
@@ -60,12 +82,28 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         bool CreateTableIfNotExists(CloudTable table, TableRequestOptions requestOptions = null, XTable.OperationContext operationContext = null);
 
         /// <summary>
+        /// Creates a table on the service.
+        /// </summary>
+        /// <param name="tableName"></param>
+        /// <param name="cancellationToken">A CancellationToken controlling the request lifetime.</param>
+        /// <returns>True if table was created; otherwise, false.</returns>
+        bool CreateTableIfNotExists(string tableName, CancellationToken cancellationToken);
+
+        /// <summary>
         /// Delete the specified azure storage table
         /// </summary>
         /// <param name="table">Cloud table object</param>
         /// <param name="requestOptions">Table request options</param>
         /// <param name="operationContext">Operation context</param>
         void Delete(CloudTable table, TableRequestOptions requestOptions = null, XTable.OperationContext operationContext = null);
+
+        /// <summary>
+        /// Deletes the table on the service.
+        /// </summary>
+        /// <param name="tableName"></param>
+        /// <param name="cancellationToken">A CancellationToken controlling the request lifetime.</param>
+        /// <returns>True if table was deleted; otherwise, false.</returns>
+        bool DeleteTable(string tableName, CancellationToken cancellationToken);
 
         /// <summary>
         /// Get table permission
@@ -121,5 +159,33 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="options">Request options</param>
         /// <param name="operationContext">Operation context</param>
         void SetStorageTableServiceProperties(XTable.ServiceProperties properties, XTable.TableRequestOptions options, XTable.OperationContext operationContext);
+
+        /// <summary>
+        /// Gets the properties of an account's Table service, including properties for Analytics and CORS (Cross-Origin Resource Sharing) rules.
+        /// </summary>
+        /// <param name="cancellationToken">A CancellationToken controlling the request lifetime.</param>
+        /// <returns></returns>
+        Response<TableServiceProperties> GetProperties(CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Sets properties for an account's Table service endpoint, including properties for Analytics and CORS (Cross-Origin Resource Sharing) rules.
+        /// </summary>
+        /// <param name="properties">The Table Service properties.</param>
+        /// <param name="cancellationToken">A CancellationToken controlling the request lifetime.</param>
+        /// <returns></returns>
+        Response SetProperties(TableServiceProperties properties, CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Queries entities in the table.
+        /// </summary>
+        /// <typeparam name="T">A custom model type that implements ITableEntity or an instance of TableEntity.</typeparam>
+        /// <param name="tableName"></param>
+        /// <param name="filter">Returns only entities that satisfy the specified OData filter. For example, "PartitionKey eq 'foo'".</param>
+        /// <param name="maxPerPage">The maximum number of entities that will be returned per page.</param>
+        /// <param name="selects">An IEnumerable<T> of entity property names that selects which set of entity properties to return in the result set.</param>
+        /// <param name="cancellationToken">A CancellationToken controlling the request lifetime.</param>
+        /// <returns></returns>
+        IEnumerable<T> QueryTableEntities<T>(string tableName, string filter, int maxPerPage, IEnumerable<string> selects, CancellationToken cancellationToken)
+            where T : class, ITableEntity, new();
     }
 }

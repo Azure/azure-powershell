@@ -94,9 +94,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IFeatureValidationResponseInternal)this).FeatureType = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.FeatureType?) content.GetValueForProperty("FeatureType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IFeatureValidationResponseInternal)this).FeatureType, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.FeatureType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IFeatureValidationResponseInternal)this).Feature = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISupportedFeature[]) content.GetValueForProperty("Feature",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IFeatureValidationResponseInternal)this).Feature, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISupportedFeature>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.SupportedFeatureTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IFeatureValidationResponseBaseInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IFeatureValidationResponseBaseInternal)this).ObjectType, global::System.Convert.ToString);
+            if (content.Contains("FeatureType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IFeatureValidationResponseInternal)this).FeatureType = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.FeatureType?) content.GetValueForProperty("FeatureType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IFeatureValidationResponseInternal)this).FeatureType, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.FeatureType.CreateFrom);
+            }
+            if (content.Contains("Feature"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IFeatureValidationResponseInternal)this).Feature = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISupportedFeature[]) content.GetValueForProperty("Feature",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IFeatureValidationResponseInternal)this).Feature, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISupportedFeature>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.SupportedFeatureTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("ObjectType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IFeatureValidationResponseBaseInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IFeatureValidationResponseBaseInternal)this).ObjectType, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -114,9 +123,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IFeatureValidationResponseInternal)this).FeatureType = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.FeatureType?) content.GetValueForProperty("FeatureType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IFeatureValidationResponseInternal)this).FeatureType, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.FeatureType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IFeatureValidationResponseInternal)this).Feature = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISupportedFeature[]) content.GetValueForProperty("Feature",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IFeatureValidationResponseInternal)this).Feature, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISupportedFeature>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.SupportedFeatureTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IFeatureValidationResponseBaseInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IFeatureValidationResponseBaseInternal)this).ObjectType, global::System.Convert.ToString);
+            if (content.Contains("FeatureType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IFeatureValidationResponseInternal)this).FeatureType = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.FeatureType?) content.GetValueForProperty("FeatureType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IFeatureValidationResponseInternal)this).FeatureType, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.FeatureType.CreateFrom);
+            }
+            if (content.Contains("Feature"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IFeatureValidationResponseInternal)this).Feature = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISupportedFeature[]) content.GetValueForProperty("Feature",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IFeatureValidationResponseInternal)this).Feature, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ISupportedFeature>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.SupportedFeatureTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("ObjectType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IFeatureValidationResponseBaseInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IFeatureValidationResponseBaseInternal)this).ObjectType, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

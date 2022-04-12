@@ -41,7 +41,7 @@ existing versions will be preserved).
 
 ### Example 1
 ```powershell
-PS C:\> $templateJson = @"
+$templateJson = @"
 {
     "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
@@ -49,7 +49,7 @@ PS C:\> $templateJson = @"
     "resources": []
 }
 "@
-PS C:\> New-AzTemplateSpec -ResourceGroupName 'myRG' -Name 'myTemplateSpec' -Version 'v1.0' -Location 'West US' -TemplateJson $templateJson
+New-AzTemplateSpec -ResourceGroupName 'myRG' -Name 'myTemplateSpec' -Version 'v1.0' -Location 'West US' -TemplateJson $templateJson
 ```
 
 Creates a new Template Spec version "v1.0" in a Template Spec named "myTemplateSpec". The specified version 
@@ -60,7 +60,7 @@ it contains no actual resources.
 
 ### Example 2
 ```powershell
-PS C:\> New-AzTemplateSpec -ResourceGroupName 'myRG' -Name 'myTemplateSpec' -Version 'v2.0' -Location 'West US' -TemplateFile 'myTemplateContent.json'
+New-AzTemplateSpec -ResourceGroupName 'myRG' -Name 'myTemplateSpec' -Version 'v2.0' -Location 'West US' -TemplateFile 'myTemplateContent.json'
 ```
 
 Creates a new Template Spec version "v2.0" in a Template Spec named "myTemplateSpec". The specified version 

@@ -1,0 +1,48 @@
+{
+  "Get-AzWebAppWebJob+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/webjob-rg-test/providers/Microsoft.Web/sites/appService-test01/slots/slot01/webjobs?api-version=2021-02-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/webjob-rg-test/providers/Microsoft.Web/sites/appService-test01/slots/slot01/webjobs?api-version=2021-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "ff17b9bc-7550-4c34-8206-19a0ba736b2d" ],
+        "CommandName": [ "Get-AzWebAppSlotWebJob" ],
+        "FullCommandName": [ "Get-AzWebAppSlotWebJob_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.Websites/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"6639056e\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "cd2c2964-3732-46d4-986f-690f17111202" ],
+        "Set-Cookie": [ "ARRAffinity=54146e8a427f2ebd92841849bd05deb7404c264922301252bfeb1f942b3f0989;Path=/;HttpOnly;Secure;Domain=appservice-test01-slot01.scm.azurewebsites.net", "ARRAffinitySameSite=54146e8a427f2ebd92841849bd05deb7404c264922301252bfeb1f942b3f0989;Path=/;HttpOnly;SameSite=None;Secure;Domain=appservice-test01-slot01.scm.azurewebsites.net" ],
+        "Server": [ "Microsoft-IIS/10.0", "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "x-ms-correlation-request-id": [ "b9c2cb5b-b697-40dc-8629-581a5c8ae9b6" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220104T101158Z:b9c2cb5b-b697-40dc-8629-581a5c8ae9b6" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 04 Jan 2022 10:11:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4510" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/webjob-rg-test/providers/Microsoft.Web/sites/appService-test01/slots/slot01/webjobs/slottriggeredjob-03\",\"name\":\"appService-test01/slot01/slottriggeredjob-03\",\"type\":\"Microsoft.Web/sites/slots/webjobs\",\"location\":\"Central US\",\"properties\":{\"latest_run\":{\"id\":\"202201041009598613\",\"name\":\"202201041009598613\",\"status\":\"Success\",\"start_time\":\"2022-01-04T10:09:59.8613659Z\",\"end_time\":\"2022-01-04T10:10:02.2520289Z\",\"duration\":\"00:00:02.3906630\",\"output_url\":\"https://appservice-test01-slot01.scm.azurewebsites.net/vfs/data/jobs/triggered/slottriggeredjob-03/202201041009598613/output_log.txt\",\"error_url\":null,\"url\":\"https://appservice-test01-slot01.scm.azurewebsites.net/api/triggeredwebjobs/slottriggeredjob-03/history/202201041009598613\",\"job_name\":\"slottriggeredjob-03\",\"trigger\":\"External - \"},\"history_url\":\"https://appservice-test01-slot01.scm.azurewebsites.net/api/triggeredwebjobs/slottriggeredjob-03/history\",\"scheduler_logs_url\":null,\"name\":\"slottriggeredjob-03\",\"run_command\":\"continuouwebjob.ps1\",\"url\":\"https://appservice-test01-slot01.scm.azurewebsites.net/api/triggeredwebjobs/slottriggeredjob-03\",\"extra_info_url\":\"https://appservice-test01-slot01.scm.azurewebsites.net/azurejobs/#/jobs/triggered/slottriggeredjob-03\",\"type\":\"triggered\",\"error\":null,\"using_sdk\":false,\"settings\":{}}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/webjob-rg-test/providers/Microsoft.Web/sites/appService-test01/slots/slot01/webjobs/slottriggeredjob-04\",\"name\":\"appService-test01/slot01/slottriggeredjob-04\",\"type\":\"Microsoft.Web/sites/slots/webjobs\",\"location\":\"Central US\",\"properties\":{\"latest_run\":{\"id\":\"202201041010026772\",\"name\":\"202201041010026772\",\"status\":\"Success\",\"start_time\":\"2022-01-04T10:10:02.6772899Z\",\"end_time\":\"2022-01-04T10:10:04.974194Z\",\"duration\":\"00:00:02.2969041\",\"output_url\":\"https://appservice-test01-slot01.scm.azurewebsites.net/vfs/data/jobs/triggered/slottriggeredjob-04/202201041010026772/output_log.txt\",\"error_url\":null,\"url\":\"https://appservice-test01-slot01.scm.azurewebsites.net/api/triggeredwebjobs/slottriggeredjob-04/history/202201041010026772\",\"job_name\":\"slottriggeredjob-04\",\"trigger\":\"External - \"},\"history_url\":\"https://appservice-test01-slot01.scm.azurewebsites.net/api/triggeredwebjobs/slottriggeredjob-04/history\",\"scheduler_logs_url\":null,\"name\":\"slottriggeredjob-04\",\"run_command\":\"continuouwebjob.ps1\",\"url\":\"https://appservice-test01-slot01.scm.azurewebsites.net/api/triggeredwebjobs/slottriggeredjob-04\",\"extra_info_url\":\"https://appservice-test01-slot01.scm.azurewebsites.net/azurejobs/#/jobs/triggered/slottriggeredjob-04\",\"type\":\"triggered\",\"error\":null,\"using_sdk\":false,\"settings\":{}}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/webjob-rg-test/providers/Microsoft.Web/sites/appService-test01/slots/slot01/webjobs/slotcontinuousjob-03\",\"name\":\"appService-test01/slot01/slotcontinuousjob-03\",\"type\":\"Microsoft.Web/sites/slots/webjobs\",\"location\":\"Central US\",\"properties\":{\"status\":\"PendingRestart\",\"detailed_status\":\"54146e - PendingRestart\\r\\n\",\"log_url\":\"https://appservice-test01-slot01.scm.azurewebsites.net/vfs/data/jobs/continuous/slotcontinuousjob-03/job_log.txt\",\"name\":\"slotcontinuousjob-03\",\"run_command\":\"continuouwebjob.ps1\",\"url\":\"https://appservice-test01-slot01.scm.azurewebsites.net/api/continuouswebjobs/slotcontinuousjob-03\",\"extra_info_url\":\"https://appservice-test01-slot01.scm.azurewebsites.net/azurejobs/#/jobs/continuous/slotcontinuousjob-03\",\"type\":\"continuous\",\"error\":null,\"using_sdk\":false,\"settings\":{}}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/webjob-rg-test/providers/Microsoft.Web/sites/appService-test01/slots/slot01/webjobs/slotcontinuousjob-04\",\"name\":\"appService-test01/slot01/slotcontinuousjob-04\",\"type\":\"Microsoft.Web/sites/slots/webjobs\",\"location\":\"Central US\",\"properties\":{\"status\":\"PendingRestart\",\"detailed_status\":\"54146e - PendingRestart\\r\\n\",\"log_url\":\"https://appservice-test01-slot01.scm.azurewebsites.net/vfs/data/jobs/continuous/slotcontinuousjob-04/job_log.txt\",\"name\":\"slotcontinuousjob-04\",\"run_command\":\"continuouwebjob.ps1\",\"url\":\"https://appservice-test01-slot01.scm.azurewebsites.net/api/continuouswebjobs/slotcontinuousjob-04\",\"extra_info_url\":\"https://appservice-test01-slot01.scm.azurewebsites.net/azurejobs/#/jobs/continuous/slotcontinuousjob-04\",\"type\":\"continuous\",\"error\":null,\"using_sdk\":false,\"settings\":{}}}]}",
+      "isContentBase64": false
+    }
+  }
+}

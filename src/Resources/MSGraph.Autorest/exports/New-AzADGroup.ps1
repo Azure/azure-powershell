@@ -20,7 +20,7 @@ Adds new entity to groups
 .Description
 Adds new entity to groups
 .Example
-PS C:\> New-AzADGroup -DisplayName $gname -MailNickname $nickname
+New-AzADGroup -DisplayName $gname -MailNickname $nickname
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup
@@ -343,7 +343,7 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            __AllParameterSets = 'MSGraph.custom\New-AzADGroup';
+            __AllParameterSets = 'Az.MSGraph.custom\New-AzADGroup';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

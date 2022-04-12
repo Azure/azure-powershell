@@ -16,9 +16,8 @@
 .SYNOPSIS
 Get policy states summary at management group scope
 #>
-function Get-AzureRmPolicyStateSummary-ManagementGroupScope
-{
-    $managementGroupName = Get-TestManagementGroupName
+function Get-AzureRmPolicyStateSummary-ManagementGroupScope {
+	$managementGroupName = Get-TestManagementGroupName
 	$from = Get-TestQueryIntervalStart
 
 	$policyStateSummary = Get-AzPolicyStateSummary -ManagementGroupName $managementGroupName -Top 10 -From $from
@@ -29,11 +28,10 @@ function Get-AzureRmPolicyStateSummary-ManagementGroupScope
 .SYNOPSIS
 Get policy states summary at subscription scope
 #>
-function Get-AzureRmPolicyStateSummary-SubscriptionScope
-{
+function Get-AzureRmPolicyStateSummary-SubscriptionScope {
 	$from = Get-TestQueryIntervalStart
 
-    $policyStateSummary = Get-AzPolicyStateSummary -Top 10 -From $from
+	$policyStateSummary = Get-AzPolicyStateSummary -Top 10 -From $from
 	Validate-PolicyStateSummary $policyStateSummary
 }
 
@@ -41,12 +39,11 @@ function Get-AzureRmPolicyStateSummary-SubscriptionScope
 .SYNOPSIS
 Get policy states summary at resource group scope
 #>
-function Get-AzureRmPolicyStateSummary-ResourceGroupScope
-{
-	$resourceGroupName = Get-TestResourceGroupName
+function Get-AzureRmPolicyStateSummary-ResourceGroupScope {
+	$resourceGroupName = Get-FirstTestResourceGroupName
 	$from = Get-TestQueryIntervalStart
 
-    $policyStateSummary = Get-AzPolicyStateSummary -ResourceGroupName $resourceGroupName -Top 10 -From $from
+	$policyStateSummary = Get-AzPolicyStateSummary -ResourceGroupName $resourceGroupName -Top 10 -From $from
 	Validate-PolicyStateSummary $policyStateSummary
 }
 
@@ -54,12 +51,11 @@ function Get-AzureRmPolicyStateSummary-ResourceGroupScope
 .SYNOPSIS
 Get policy states summary at resource scope
 #>
-function Get-AzureRmPolicyStateSummary-ResourceScope
-{
+function Get-AzureRmPolicyStateSummary-ResourceScope {
 	$resourceId = Get-TestResourceId
 	$from = Get-TestQueryIntervalStart
 
-    $policyStateSummary = Get-AzPolicyStateSummary -ResourceId $resourceId -Top 10 -From $from
+	$policyStateSummary = Get-AzPolicyStateSummary -ResourceId $resourceId -Top 10 -From $from
 	Validate-PolicyStateSummary $policyStateSummary
 }
 
@@ -67,11 +63,10 @@ function Get-AzureRmPolicyStateSummary-ResourceScope
 .SYNOPSIS
 Get policy states summary at policy set definition scope
 #>
-function Get-AzureRmPolicyStateSummary-PolicySetDefinitionScope
-{
+function Get-AzureRmPolicyStateSummary-PolicySetDefinitionScope {
 	$policySetDefinitionName = Get-TestPolicySetDefinitionName
 
-    $policyStateSummary = Get-AzPolicyStateSummary -PolicySetDefinitionName $policySetDefinitionName -Top 10
+	$policyStateSummary = Get-AzPolicyStateSummary -PolicySetDefinitionName $policySetDefinitionName -Top 10
 	Validate-PolicyStateSummary $policyStateSummary
 }
 
@@ -79,11 +74,10 @@ function Get-AzureRmPolicyStateSummary-PolicySetDefinitionScope
 .SYNOPSIS
 Get policy states summary at policy definition scope
 #>
-function Get-AzureRmPolicyStateSummary-PolicyDefinitionScope
-{
-	$policyDefinitionName = Get-TestPolicyDefinitionName
+function Get-AzureRmPolicyStateSummary-PolicyDefinitionScope {
+	$policyDefinitionName = Get-TestAuditPolicyDefinitionName
 
-    $policyStateSummary = Get-AzPolicyStateSummary -PolicyDefinitionName $policyDefinitionName -Top 10
+	$policyStateSummary = Get-AzPolicyStateSummary -PolicyDefinitionName $policyDefinitionName -Top 10
 	Validate-PolicyStateSummary $policyStateSummary
 }
 
@@ -91,11 +85,10 @@ function Get-AzureRmPolicyStateSummary-PolicyDefinitionScope
 .SYNOPSIS
 Get policy states summary at subscription level policy assignment scope
 #>
-function Get-AzureRmPolicyStateSummary-SubscriptionLevelPolicyAssignmentScope
-{
-	$policyAssignmentName = Get-TestPolicyAssignmentName
+function Get-AzureRmPolicyStateSummary-SubscriptionLevelPolicyAssignmentScope {
+	$policyAssignmentName = Get-TestSubscriptionAuditAssignmentName
 
-    $policyStateSummary = Get-AzPolicyStateSummary -PolicyAssignmentName $policyAssignmentName -Top 10
+	$policyStateSummary = Get-AzPolicyStateSummary -PolicyAssignmentName $policyAssignmentName -Top 10
 	Validate-PolicyStateSummary $policyStateSummary
 }
 
@@ -103,11 +96,10 @@ function Get-AzureRmPolicyStateSummary-SubscriptionLevelPolicyAssignmentScope
 .SYNOPSIS
 Get policy states summary at resource group level policy assignment scope
 #>
-function Get-AzureRmPolicyStateSummary-ResourceGroupLevelPolicyAssignmentScope
-{
-	$resourceGroupName = Get-TestResourceGroupNameForPolicyAssignmentStates
-	$policyAssignmentName = Get-TestPolicyAssignmentNameResourceGroupLevelStates
+function Get-AzureRmPolicyStateSummary-ResourceGroupLevelPolicyAssignmentScope {
+	$resourceGroupName = Get-FirstTestResourceGroupName
+	$policyAssignmentName = Get-TestResourceGroupAuditAssignmentName
 
-    $policyStateSummary = Get-AzPolicyStateSummary -ResourceGroupName $resourceGroupName -PolicyAssignmentName $policyAssignmentName -Top 10
+	$policyStateSummary = Get-AzPolicyStateSummary -ResourceGroupName $resourceGroupName -PolicyAssignmentName $policyAssignmentName -Top 10
 	Validate-PolicyStateSummary $policyStateSummary
 }

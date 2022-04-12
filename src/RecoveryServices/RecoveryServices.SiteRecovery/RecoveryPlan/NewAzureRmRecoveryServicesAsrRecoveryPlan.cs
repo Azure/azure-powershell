@@ -18,6 +18,7 @@ using System.IO;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
@@ -105,6 +106,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string RecoveryZone { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the primary EdgeZone of the replication protected items that will be part of this recovery plan.
+        /// </summary>
+        [Parameter(
+            ParameterSetName = ASRParameterSets.AzureZoneToZone,
+            Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public string PrimaryEdgeZone { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the recovery EdgeZone of the replication protected items that will be part of this recovery plan.
+        /// </summary>
+        [Parameter(
+            ParameterSetName = ASRParameterSets.AzureZoneToZone,
+            Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public string RecoveryEdgeZone { get; set; }
 
         /// <summary>
         ///     Switch parameter to specify that the recovery location for recovery plan is Azure.
@@ -356,7 +375,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 var recoveryPlanA2AInput = new RecoveryPlanA2AInput
                 {
                     PrimaryZone = this.PrimaryZone,
-                    RecoveryZone = this.RecoveryZone
+                    RecoveryZone = this.RecoveryZone,
+                    PrimaryExtendedLocation = this.IsParameterBound(c => c.PrimaryEdgeZone) ? new ExtendedLocation
+                    {
+                        Name = this.PrimaryEdgeZone
+                    } : null,
+                    RecoveryExtendedLocation = this.IsParameterBound(c => c.RecoveryEdgeZone) ? new ExtendedLocation
+                    {
+                        Name = this.RecoveryEdgeZone
+                    } : null
                 };
 
                 createRecoveryPlanInputProperties.ProviderSpecificInput = new List<RecoveryPlanProviderSpecificInput>();

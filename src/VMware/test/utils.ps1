@@ -30,6 +30,9 @@ function setupEnv() {
     $env.Add("rstr3", $rstr3)
     $env.Add("rstr4", $rstr4)
 
+    $env.Add("policy1", "policy1")
+    $env.Add("policy2", "policy2")
+
     $env.Add("location1", "centralus")
     $env.Add("location2", "westcentralus")
 
@@ -42,27 +45,28 @@ function setupEnv() {
     $env.Add("resourceGroup2", $resourceGroup2)
     $env.Add("resourceGroup3", $resourceGroup3)
     
-    New-AzResourceGroup -Name $env.resourceGroup1 -Location $env.location1
-    New-AzResourceGroup -Name $env.resourceGroup2 -Location $env.location1
-    New-AzResourceGroup -Name $env.resourceGroup3 -Location $env.location1
+    # Use mock environment, so we donnot run this cmdlet.
+    # New-AzResourceGroup -Name $env.resourceGroup1 -Location $env.location1
+    # New-AzResourceGroup -Name $env.resourceGroup2 -Location $env.location1
+    # New-AzResourceGroup -Name $env.resourceGroup3 -Location $env.location1
 
-    New-AzVMwarePrivateCloud -Name $env.privateCloudName1 `
-        -ResourceGroupName $env.resourceGroup1 -NetworkBlock 192.168.48.0/22 `
-        -Sku av36 -ManagementClusterSize 3 -Location $env.location1 -AcceptEULA
-    New-AzVMwareAuthorization -Name $env.rstr1 -PrivateCloudName $env.privateCloudName1 `
-        -ResourceGroupName $env.resourceGroup1
+    # New-AzVMwarePrivateCloud -Name $env.privateCloudName1 `
+    #     -ResourceGroupName $env.resourceGroup1 -NetworkBlock 192.168.48.0/22 `
+    #     -Sku av36 -ManagementClusterSize 3 -Location $env.location1 -AcceptEULA
+    # New-AzVMwareAuthorization -Name $env.rstr1 -PrivateCloudName $env.privateCloudName1 `
+    #     -ResourceGroupName $env.resourceGroup1
     
-    New-AzVMwarePrivateCloud -Name $env.privateCloudName2 `
-        -ResourceGroupName $env.resourceGroup2 -NetworkBlock 192.168.48.0/22 `
-        -Sku av36 -ManagementClusterSize 3 -Location $env.location1 -AcceptEULA
-    New-AzVMwareAuthorization -Name $env.rstr1 -PrivateCloudName $env.privateCloudName2 `
-        -ResourceGroupName $env.resourceGroup2
+    # New-AzVMwarePrivateCloud -Name $env.privateCloudName2 `
+    #     -ResourceGroupName $env.resourceGroup2 -NetworkBlock 192.168.48.0/22 `
+    #     -Sku av36 -ManagementClusterSize 3 -Location $env.location1 -AcceptEULA
+    # New-AzVMwareAuthorization -Name $env.rstr1 -PrivateCloudName $env.privateCloudName2 `
+    #     -ResourceGroupName $env.resourceGroup2
 
-    New-AzVMwarePrivateCloud -Name $env.privateCloudName3 `
-        -ResourceGroupName $env.resourceGroup3 -NetworkBlock 192.168.48.0/22 `
-        -Sku av36 -ManagementClusterSize 3 -Location $env.location2 -AcceptEULA
-    New-AzVMwareAuthorization -Name $env.rstr1 -PrivateCloudName $env.privateCloudName3 `
-        -ResourceGroupName $env.resourceGroup3
+    # New-AzVMwarePrivateCloud -Name $env.privateCloudName3 `
+    #     -ResourceGroupName $env.resourceGroup3 -NetworkBlock 192.168.48.0/22 `
+    #     -Sku av36 -ManagementClusterSize 3 -Location $env.location2 -AcceptEULA
+    # New-AzVMwareAuthorization -Name $env.rstr1 -PrivateCloudName $env.privateCloudName3 `
+    #     -ResourceGroupName $env.resourceGroup3
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
@@ -72,7 +76,7 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
-    Remove-AzResourceGroup -Name $env.resourceGroup1
-    Remove-AzResourceGroup -Name $env.resourceGroup2
-    Remove-AzResourceGroup -Name $env.resourceGroup3
+    # Remove-AzResourceGroup -Name $env.resourceGroup1
+    # Remove-AzResourceGroup -Name $env.resourceGroup2
+    # Remove-AzResourceGroup -Name $env.resourceGroup3
 }

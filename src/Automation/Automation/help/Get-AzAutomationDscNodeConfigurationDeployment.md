@@ -48,7 +48,7 @@ NodeConfigurationName : Config01.Node1
 JobSchedule           :
 JobScheduleId         : 00000000-0000-0000-0000-000000000000
 
-PS C:\> $deployment | Select -expand nodeStatus
+PS C:\> $deployment | Select-Object -expandproperty nodeStatus
 
 Key        Value
 ---        -----

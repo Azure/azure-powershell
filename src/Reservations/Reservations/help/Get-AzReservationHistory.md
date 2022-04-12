@@ -30,8 +30,8 @@ List of all the revisions for the `Reservation`.
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Get-AzReservationHistory -ReservationOrderId "1111aaaa-b1b2-c0c2-d0d2-00000fffff" -ReservationId "00000000-ffff-ffff-0000-00000fffff"
+```powershell
+Get-AzReservationHistory -ReservationOrderId "1111aaaa-b1b2-c0c2-d0d2-00000fffff" -ReservationId "00000000-ffff-ffff-0000-00000fffff"
 ```
 
 Get the revision history of the specific reservation

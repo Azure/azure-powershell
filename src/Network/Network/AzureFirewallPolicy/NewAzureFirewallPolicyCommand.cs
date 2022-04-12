@@ -73,10 +73,15 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The base policy to inherit from")]
         public string BasePolicy { get; set; }
 
-       [Parameter(
+        [Parameter(
             Mandatory = false,
             HelpMessage = "The DNS Setting")]
         public PSAzureFirewallPolicyDnsSettings DnsSetting { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The SQL related setting")]
+        public PSAzureFirewallPolicySqlSetting SqlSetting { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -143,7 +148,7 @@ namespace Microsoft.Azure.Commands.Network
 
             base.Execute();
 
-            var present = NetworkBaseCmdlet.IsResourcePresent(() => GetAzureFirewallPolicy(this.ResourceGroupName, this.Name));  
+            var present = NetworkBaseCmdlet.IsResourcePresent(() => GetAzureFirewallPolicy(this.ResourceGroupName, this.Name));
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(Properties.Resources.OverwritingResource, Name),
@@ -165,7 +170,9 @@ namespace Microsoft.Azure.Commands.Network
                 ThreatIntelWhitelist = this.ThreatIntelWhitelist,
                 BasePolicy = BasePolicy != null ? new Microsoft.Azure.Management.Network.Models.SubResource(BasePolicy) : null,
                 DnsSettings = this.DnsSetting,
-                Sku = new PSAzureFirewallPolicySku {
+                SqlSetting = this.SqlSetting,
+                Sku = new PSAzureFirewallPolicySku
+                {
                     Tier = this.SkuTier ?? MNM.FirewallPolicySkuTier.Standard
                 },
                 IntrusionDetection = this.IntrusionDetection,

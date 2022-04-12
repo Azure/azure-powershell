@@ -31,8 +31,8 @@ The Remove-AzAttestationPolicySigner cmdlet removes a trusted policy signer for 
 
 ### Example 1
 ```powershell
-PS C:\> $trustedSigner = Get-Content -Path .\trusted.signer.txt
-PS C:\> Remove-AzAttestationPolicySigner -Name pshtest -ResourceGroupName psh-test-rg -Signer $trustedSigner
+$trustedSigner = Get-Content -Path .\trusted.signer.txt
+Remove-AzAttestationPolicySigner -Name pshtest -ResourceGroupName psh-test-rg -Signer $trustedSigner
 ```
 
 Remove a trusted signer for the Attestation Provider named *pshtest*.

@@ -62,6 +62,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
         [ValidateNotNullOrEmpty]
         public PSNetAppFilesActiveDirectory[] ActiveDirectory { get; set; }
 
+
         [Parameter(
             Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags")]
