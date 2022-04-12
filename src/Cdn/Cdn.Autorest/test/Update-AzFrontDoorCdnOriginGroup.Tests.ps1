@@ -29,26 +29,24 @@ Describe 'Update-AzFrontDoorCdnOriginGroup' {
             New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
 
             $originGroupName = 'org' + (RandomString -allChars $false -len 6);
+            $healthProbeSetting = New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath "/" `
+            -ProbeProtocol "Https" -ProbeRequestType "GET"
+            $loadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200 `
+            -SampleSize 5 -SuccessfulSamplesRequired 4
             New-AzFrontDoorCdnOriginGroup -OriginGroupName $originGroupName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName `
-            -LoadBalancingSettingSampleSize 5 `
-            -LoadBalancingSettingSuccessfulSamplesRequired 4 `
-            -LoadBalancingSettingAdditionalLatencyInMillisecond 200 `
-            -HealthProbeSettingProbeIntervalInSecond 1 `
-            -HealthProbeSettingProbePath "/" `
-            -HealthProbeSettingProbeProtocol $([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProbeProtocol]::Https) `
-            -HealthProbeSettingProbeRequestType $([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.HealthProbeRequestType]::Get) `
+            -LoadBalancingSetting $loadBalancingSetting -HealthProbeSetting $healthProbeSetting
 
             $originGroup = Get-AzFrontDoorCdnOriginGroup -ResourceGroupName $ResourceGroupName -ProfileName $frontDoorCdnProfileName -OriginGroupName $originGroupName
             $originGroup.Name | Should -Be $originGroupName
-            $originGroup.LoadBalancingSettingSuccessfulSamplesRequired | Should -Be 4
+            $originGroup.LoadBalancingSetting.SuccessfulSamplesRequired | Should -Be 4
 
+            $updateLoadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200 `
+            -SampleSize 5 -SuccessfulSamplesRequired 3
             Update-AzFrontDoorCdnOriginGroup -ResourceGroupName $ResourceGroupName -ProfileName $frontDoorCdnProfileName -OriginGroupName $originGroupName `
-            -LoadBalancingSettingSampleSize 5 `
-            -LoadBalancingSettingSuccessfulSamplesRequired 3 `
-            -LoadBalancingSettingAdditionalLatencyInMillisecond 200 `
+            -LoadBalancingSetting $updateLoadBalancingSetting
         
             $originGroup = Get-AzFrontDoorCdnOriginGroup -ResourceGroupName $ResourceGroupName -ProfileName $frontDoorCdnProfileName -OriginGroupName $originGroupName
-            $originGroup.LoadBalancingSettingSuccessfulSamplesRequired | Should -Be 3
+            $originGroup.LoadBalancingSetting.SuccessfulSamplesRequired | Should -Be 3
         } Finally
         {
             Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
@@ -70,19 +68,18 @@ Describe 'Update-AzFrontDoorCdnOriginGroup' {
             New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
 
             $originGroupName = 'org' + (RandomString -allChars $false -len 6);
-            New-AzFrontDoorCdnOriginGroup -OriginGroupName $originGroupName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName `
-            -LoadBalancingSettingSampleSize 5 `
-            -LoadBalancingSettingSuccessfulSamplesRequired 4 `
-            -LoadBalancingSettingAdditionalLatencyInMillisecond 200 `
-            -HealthProbeSettingProbeIntervalInSecond 1 `
-            -HealthProbeSettingProbePath "/" `
-            -HealthProbeSettingProbeProtocol $([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProbeProtocol]::Https) `
-            -HealthProbeSettingProbeRequestType $([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.HealthProbeRequestType]::Get) `
+            $healthProbeSetting = New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath "/" `
+            -ProbeProtocol "Https" -ProbeRequestType "GET"
+            $loadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200 `
+            -SampleSize 5 -SuccessfulSamplesRequired 4
 
+            New-AzFrontDoorCdnOriginGroup -OriginGroupName $originGroupName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName `
+            -LoadBalancingSetting $loadBalancingSetting -HealthProbeSetting $healthProbeSetting
+
+            $updateLoadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200 `
+            -SampleSize 5 -SuccessfulSamplesRequired 3
             Get-AzFrontDoorCdnOriginGroup -ResourceGroupName $ResourceGroupName -ProfileName $frontDoorCdnProfileName -OriginGroupName $originGroupName `
-            | Update-AzFrontDoorCdnOriginGroup  -LoadBalancingSettingSampleSize 5 `
-            -LoadBalancingSettingSuccessfulSamplesRequired 3 `
-            -LoadBalancingSettingAdditionalLatencyInMillisecond 200 `
+            | Update-AzFrontDoorCdnOriginGroup  -LoadBalancingSetting $updateLoadBalancingSetting
         
             $originGroup = Get-AzFrontDoorCdnOriginGroup -ResourceGroupName $ResourceGroupName -ProfileName $frontDoorCdnProfileName -OriginGroupName $originGroupName
             $originGroup.LoadBalancingSettingSuccessfulSamplesRequired | Should -Be 3
