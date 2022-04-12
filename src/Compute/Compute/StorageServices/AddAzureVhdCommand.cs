@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
     /// <summary>
     /// Uploads a vhd as fixed disk format vhd to a blob in Microsoft Azure Storage
     /// </summary>
-    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Vhd", DefaultParameterSetName = DefaultParameterSet)]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Vhd", DefaultParameterSetName = DefaultParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(VhdUploadContext))]
     public class AddAzureVhdCommand : ComputeClientBaseCmdlet
     {
@@ -51,6 +51,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
         private const string DefaultParameterSet = "DefaultParameterSet";
         private const string DirectUploadToManagedDiskSet = "DirectUploadToManagedDiskSet";
         private bool ConvertedResized = false;
+        private long FixedSize;
 
         [Parameter(
             Position = 0,
@@ -117,17 +118,29 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
         [PSArgumentCompleter("Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "UltraSSD_LRS")]
         public string DiskSku { get; set; }
 
+        [Alias("Zone")]
         [Parameter(
             Mandatory = false,
             ParameterSetName = DirectUploadToManagedDiskSet,
             ValueFromPipelineByPropertyName = true)]
-        public string[] Zone { get; set; }
+        public string[] DiskZone { get; set; }
 
+        [Alias("HyperVGeneration")]
         [Parameter(
-            Mandatory = false, 
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = DirectUploadToManagedDiskSet,
-            ValueFromPipeline = true)]
-        public PSDisk DiskConfig { get; set; }
+            HelpMessage = "Posssible values are: 'V1', 'V2'")]
+        [PSArgumentCompleter("V1", "V2")]
+        public string DiskHyperVGeneration { get; set; }
+
+        [Alias("OsType")]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = DirectUploadToManagedDiskSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Possible values are: 'Windows', 'Linux'")]
+        public OperatingSystemTypes DiskOsType { get; set; }
 
         [Parameter(
             Position = 3,
@@ -181,35 +194,20 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                 try
                 {
                     Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine("To be compatible with Azure, Add-AzVhd will automatically try to convert VHDX files to VHD, and resize VHD files to N * Mib using Hyper-V Platform, a Windows naitive virtualization product. \nFor more information visit https://aka.ms/usingAdd-AzVhd \n");
+                    Console.WriteLine("To be compatible with Azure, Add-AzVhd will automatically try to convert VHDX files to VHD, and resize VHD files to N * Mib using Hyper-V Platform, a Windows native virtualization product. \nFor more information visit https://aka.ms/usingAdd-AzVhd \n");
                     Console.ResetColor();
 
 
                     Program.SyncOutput = new PSSyncOutputEvents(this);
+
                     // 1.              CONVERT VHDX TO VHD
                     if (this.LocalFilePath.Extension == ".vhdx")
                     {
                         convertVhd();
                     }
 
+                    // 2.              RESIZE VHD
                     CheckForInvalidVhd();
-
-                    // 2.            RESIZE VHD
-                    if (this.SkipResizing.IsPresent)
-                    {
-                        Console.WriteLine("Skipping VHD resizing.");
-                    }
-                    else
-                    {
-                        if ((this.LocalFilePath.Length - 512) % 1048576 != 0)
-                        {
-                            resizeVhdFile();
-                        }
-                        else // does not need resizing
-                        {
-                            WriteVerbose("VHD file already sized correctly. Proceeding to uploading.");
-                        }
-                    }
 
                     if (this.ParameterSetName == DirectUploadToManagedDiskSet)
                     {
@@ -296,7 +294,6 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                     {
                         WriteVerbose("Deleting file: " + this.LocalFilePath.FullName);
                         File.Delete(this.LocalFilePath.FullName);
-                        
                     }
                 }
             });
@@ -364,90 +361,46 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
 
         private PSDisk CreateDiskConfig()
         {
-            if (this.IsParameterBound(c => c.DiskConfig))
+            // Sku
+            DiskSku vSku = null;
+
+            // CreationData
+            CreationData vCreationData = null;
+
+            if (this.IsParameterBound(c => c.DiskSku))
             {
-                if (this.IsParameterBound(c => c.Zone))
+                if (vSku == null)
                 {
-                    if (this.DiskConfig.Zones == null)
-                    {
-                        this.DiskConfig.Zones = this.Zone;
-                    }
-                    else if (this.DiskConfig.Zones != this.Zone)
-                    {
-                        throw new Exception("You provided different 'Zone' values from '-Disk' and '-Zone' parameters. Please provide just one of the parameters or pass in same 'Zone' values.");
-                    }
+                    vSku = new DiskSku();
                 }
-
-                if (this.IsParameterBound(c => c.Location))
-                {
-                    if (this.DiskConfig.Location == null)
-                    {
-                        this.DiskConfig.Location = this.Location;
-                    }
-                    else if (this.DiskConfig.Location != this.Location)
-                    {
-                        throw new Exception("You provided different 'Location' values from '-Disk' and '-Location' parameters. Please provide just one of the parameters or pass in same 'Location' values.");
-                    }
-                }
-
-                if (this.IsParameterBound(c => c.DiskSku))
-                {
-                    if (this.DiskConfig.Sku == null)
-                    {
-
-                        this.DiskConfig.Sku = new DiskSku();
-                        this.DiskConfig.Sku.Name = this.DiskSku;
-                    }
-                    else if (this.DiskConfig.Sku.Name != this.DiskSku)
-                    {
-                        throw new Exception("You provided different 'Sku' values from '-Disk' and '-DiskSku' parameters. Please provide just one of the parameters or pass in same 'Sku' values.");
-                    }
-                }
-                return this.DiskConfig;
+                vSku.Name = this.DiskSku;
             }
-            else
+
+            vCreationData = new CreationData();
+            vCreationData.CreateOption = "upload";
+            vCreationData.UploadSizeBytes = FixedSize;
+
+            var vDisk = new PSDisk
             {
-                // Sku
-                DiskSku vSku = null;
-
-                // CreationData
-                CreationData vCreationData = null;
-
-                if (this.IsParameterBound(c => c.DiskSku))
-                {
-                    if (vSku == null)
-                    {
-                        vSku = new DiskSku();
-                    }
-                    vSku.Name = this.DiskSku;
-                }
-
-                vCreationData = new CreationData();
-                vCreationData.CreateOption = "upload";
-                vCreationData.UploadSizeBytes = this.LocalFilePath.Length;
-
-                var vDisk = new PSDisk
-                {
-                    Zones = this.IsParameterBound(c => c.Zone) ? this.Zone : null,
-                    OsType = OperatingSystemTypes.Windows,
-                    HyperVGeneration = null,
-                    DiskSizeGB = null,
-                    DiskIOPSReadWrite = null,
-                    DiskMBpsReadWrite = null,
-                    DiskIOPSReadOnly = null,
-                    DiskMBpsReadOnly = null,
-                    MaxShares = null,
-                    Location = this.IsParameterBound(c => c.Location) ? this.Location : null,
-                    Tags = null,
-                    Sku = vSku,
-                    CreationData = vCreationData,
-                    EncryptionSettingsCollection = null,
-                    Encryption = null,
-                    NetworkAccessPolicy = null,
-                    DiskAccessId = null
-                };
-                return vDisk;
-            }
+                Zones = this.IsParameterBound(c => c.DiskZone) ? this.DiskZone : null,
+                OsType = this.IsParameterBound(c => c.DiskOsType) ? this.DiskOsType : OperatingSystemTypes.Windows,
+                HyperVGeneration = this.IsParameterBound(c => c.DiskHyperVGeneration) ? this.DiskHyperVGeneration : null,
+                DiskSizeGB = null,
+                DiskIOPSReadWrite = null,
+                DiskMBpsReadWrite = null,
+                DiskIOPSReadOnly = null,
+                DiskMBpsReadOnly = null,
+                MaxShares = null,
+                Location = this.IsParameterBound(c => c.Location) ? this.Location : null,
+                Tags = null,
+                Sku = vSku,
+                CreationData = vCreationData,
+                EncryptionSettingsCollection = null,
+                Encryption = null,
+                NetworkAccessPolicy = null,
+                DiskAccessId = null
+            };
+            return vDisk;
         }
 
         private void createBackUp(string filePath)
@@ -539,6 +492,21 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                     {
                         throw new InvalidOperationException("The VHD must be between 20 MB and 4095 GB.");
                     }
+
+                    if (!this.SkipResizing.IsPresent && (vds.Length - 512) % 1048576 != 0)
+                    {
+                        resizeVhdFile();
+                    }
+                    else if (this.SkipResizing.IsPresent)
+                    {
+                        // skipping resize
+                    }
+                    else
+                    {
+                        // properly sized 
+                    }
+
+                    FixedSize = vds.FixedSizeLength;
                 }
             }
             catch (VhdParsingException)
@@ -618,7 +586,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             {
                 if (ex.Message == "Invalid namespace ")
                 {
-                    Exception outputEx = new Exception("Failed to convert VHDX file. Hyper-V Platform is not found.\nFollow this link to enabled Hyper-V or convert file manually: https://aka.ms/usingAdd-AzVhd");
+                    Exception outputEx = new Exception("Failed to convert VHDX file. Hyper-V Platform is not found.\nFollow this link to enable Hyper-V or convert file manually: https://aka.ms/usingAdd-AzVhd");
                     ThrowTerminatingError(new ErrorRecord(
                         outputEx,
                         "Hyper-V is unavailable",
@@ -684,7 +652,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             {
                 if (ex.Message == "Invalid namespace ")
                 {
-                    Exception outputEx = new Exception("Failed to resize VHD file. Hyper-V Platform is not found.\nFollow this link to enabled Hyper-V or resize file manually: https://aka.ms/usingAdd-AzVhd");
+                    Exception outputEx = new Exception("Failed to resize VHD file. Hyper-V Platform is not found.\nFollow this link to enable Hyper-V or resize file manually: https://aka.ms/usingAdd-AzVhd");
                     ThrowTerminatingError(new ErrorRecord(
                         outputEx,
                         "Hyper-V is unavailable",

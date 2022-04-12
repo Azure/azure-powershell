@@ -25,6 +25,15 @@
 * Updated `Get-AzVm` to include `GetVirtualMachineById` parameter set.
 * Edited the documentation for the cmdlet `Set-AzVMADDomainExtension` to ensure the example is accurate. 
 * Improved description and examples for disk creation.
+* Updates and improvements to `Add-AzVhd`
+    - Added `-DiskHyperVGeneration` and `-DiskOsType` parameters to the DirectUploadToManagedDisk parameter set for upload to more robust managed disk settings.
+    - Updated progress output functions so that it works with VHD files with "&" character in its name.
+    - Updated so that uploading dynamically sized VHD files are converted to fixed size during upload.
+    - Fixed a bug in uploading a differencing disk.
+    - Automically delete converted/resized VHD files after upload.
+    - Add `-KeepConvertedVhd` parameter to keep the converted/resized VHD files after upload
+    - Fixed a bug that indicates `-ResourceGroupName` parameter as optional when it is actually mandatory.
+
 
 ## Version 4.24.1
 * Updated New-AzVM feature for `vCPUsAvailable` and `vCPUsPerCore` parameters. Cmdlets will not try to use the new `VMCustomizationPreview` feature if the user does not have access to that feature. [#17370]

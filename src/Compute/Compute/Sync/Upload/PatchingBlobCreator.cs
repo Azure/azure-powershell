@@ -106,7 +106,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
                 .ConfigureAwait(false).GetAwaiter().GetResult();
 
             var copyStatus = new ProgressStatus(0, source.Properties.Length);
-            using (new ProgressTracker(copyStatus, Program.SyncOutput.ProgressCopyStatus, Program.SyncOutput.ProgressCopyComplete, TimeSpan.FromSeconds(1)))
+            using (ProgressTracker progressTracker = new ProgressTracker(copyStatus, Program.SyncOutput.ProgressCopyStatus, Program.SyncOutput.ProgressCopyComplete))
             {
                 destinationBlob.StartCopyAsync(source).ConfigureAwait(false).GetAwaiter().GetResult();
                 destinationBlob.FetchAttributesAsync().ConfigureAwait(false).GetAwaiter().GetResult();
@@ -123,6 +123,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
                     }
                     if (destinationBlob.CopyState.Status == CopyStatus.Pending)
                     {
+                        progressTracker.Update();
                         Thread.Sleep(TimeSpan.FromSeconds(1));
                     }
                     else
