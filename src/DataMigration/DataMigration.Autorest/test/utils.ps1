@@ -57,11 +57,11 @@ function setupEnv() {
         TargetLocationAccountKey = "accountKey"
         FileSharePath = "\\sampledomain.onmicrosoft.com\SharedBackup\tsuman" 
         FileShareUsername = "domainUserName" 
-        FileSharePassword = "domainPassword" 
+        FileSharePassword = "password" 
         SourceSqlConnectionAuthentication = "SqlAuthentication" 
         SourceSqlConnectionDataSource = "sampledomain.onmicrosoft.com" 
         SourceSqlConnectionUserName = "domainUserName" 
-        SourceSqlConnectionPassword = "domainPassword" 
+        SourceSqlConnectionPassword = "password" 
         SourceDatabaseName = "AdventureWorks"
     }
     $newDatabaseMigrationNameVm = "VmUnitTest" + $randomstring
@@ -76,11 +76,11 @@ function setupEnv() {
         TargetLocationAccountKey = "accountKey"
         FileSharePath = "\\sampledomain.onmicrosoft.com\SharedBackup\tsuman" 
         FileShareUsername = "domainUserName" 
-        FileSharePassword = "domainPassword" 
+        FileSharePassword = "password"
         SourceSqlConnectionAuthentication = "SqlAuthentication" 
         SourceSqlConnectionDataSource = "sampledomain.onmicrosoft.com" 
         SourceSqlConnectionUserName = "domainUserName" 
-        SourceSqlConnectionPassword = "domainPassword" 
+        SourceSqlConnectionPassword = "password" 
         SourceDatabaseName = "AdventureWorks"
     }
     
@@ -113,11 +113,11 @@ function setupEnv() {
         TargetLocationAccountKey = "accountKey"
         FileSharePath = "\\sampledomain.onmicrosoft.com\SharedBackup\tsuman" 
         FileShareUsername = "domainUserName" 
-        FileSharePassword = "domainPassword" 
+        FileSharePassword = "password" 
         SourceSqlConnectionAuthentication = "SqlAuthentication" 
         SourceSqlConnectionDataSource = "sampledomain.onmicrosoft.com" 
         SourceSqlConnectionUserName = "domainUserName" 
-        SourceSqlConnectionPassword = "domainPassword" 
+        SourceSqlConnectionPassword = "password" 
         SourceDatabaseName = "AdventureWorks"
     }
     $cutDatabaseMigrationNameVm = "VmUnitTestCut" + $randomstring
@@ -132,11 +132,11 @@ function setupEnv() {
         TargetLocationAccountKey = "accountKey"
         FileSharePath = "\\sampledomain.onmicrosoft.com\SharedBackup\tsuman" 
         FileShareUsername = "domainUserName" 
-        FileSharePassword = "domainPassword" 
+        FileSharePassword = "password" 
         SourceSqlConnectionAuthentication = "SqlAuthentication" 
         SourceSqlConnectionDataSource = "sampledomain.onmicrosoft.com" 
         SourceSqlConnectionUserName = "domainUserName" 
-        SourceSqlConnectionPassword = "domainPassword" 
+        SourceSqlConnectionPassword = "password" 
         SourceDatabaseName = "AdventureWorks"
     }
     $stopDatabaseMigrationNameMi = "MiUnitTestStop" + $randomstring
@@ -151,11 +151,11 @@ function setupEnv() {
         TargetLocationAccountKey = "accountKey"
         FileSharePath = "\\sampledomain.onmicrosoft.com\SharedBackup\tsuman" 
         FileShareUsername = "domainUserName" 
-        FileSharePassword = "domainPassword" 
+        FileSharePassword = "password" 
         SourceSqlConnectionAuthentication = "SqlAuthentication" 
         SourceSqlConnectionDataSource = "sampledomain.onmicrosoft.com" 
         SourceSqlConnectionUserName = "domainUserName" 
-        SourceSqlConnectionPassword = "domainPassword" 
+        SourceSqlConnectionPassword = "password" 
         SourceDatabaseName = "AdventureWorks"
     }
     $stopDatabaseMigrationNameVm = "VmUnitTestStop" + $randomstring
@@ -170,11 +170,11 @@ function setupEnv() {
         TargetLocationAccountKey = "accountKey"
         FileSharePath = "\\sampledomain.onmicrosoft.com\SharedBackup\tsuman" 
         FileShareUsername = "domainUserName" 
-        FileSharePassword = "domainPassword" 
+        FileSharePassword = "password" 
         SourceSqlConnectionAuthentication = "SqlAuthentication" 
         SourceSqlConnectionDataSource = "sampledomain.onmicrosoft.com" 
         SourceSqlConnectionUserName = "domainUserName" 
-        SourceSqlConnectionPassword = "domainPassword" 
+        SourceSqlConnectionPassword = "password" 
         SourceDatabaseName = "AdventureWorks"
     }
     
@@ -189,7 +189,7 @@ function setupEnv() {
         SourceSqlConnectionAuthentication = "SqlAuthentication" 
         SourceSqlConnectionDataSource = "sampledomain.microsoft.com" 
         SourceSqlConnectionUserName = "user" 
-        SourceSqlConnectionPassword = "password" 
+        SourceSqlConnectionPassword = "password"
         SourceDatabaseName = "AdventureWorks" 
         TargetDbName = "at_sqldbtrgt2"
         Scope =  "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb" 
