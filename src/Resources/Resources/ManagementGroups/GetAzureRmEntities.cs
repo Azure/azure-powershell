@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Resources.ManagementGroups
     /// <summary>
     /// Get-AzEntities Cmdlet
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Entitiy", SupportsShouldProcess = true), OutputType(typeof(PSEntityInfo))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Entity", SupportsShouldProcess = true), OutputType(typeof(PSEntityInfo))]
     public class GetAzureRmEntities : AzureManagementGroupsCmdletBase
     {
         public override void ExecuteCmdlet()
