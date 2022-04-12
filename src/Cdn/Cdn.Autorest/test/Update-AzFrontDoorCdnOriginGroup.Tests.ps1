@@ -82,7 +82,7 @@ Describe 'Update-AzFrontDoorCdnOriginGroup' {
             | Update-AzFrontDoorCdnOriginGroup  -LoadBalancingSetting $updateLoadBalancingSetting
         
             $originGroup = Get-AzFrontDoorCdnOriginGroup -ResourceGroupName $ResourceGroupName -ProfileName $frontDoorCdnProfileName -OriginGroupName $originGroupName
-            $originGroup.LoadBalancingSettingSuccessfulSamplesRequired | Should -Be 3
+            $originGroup.LoadBalancingSetting.SuccessfulSamplesRequired | Should -Be 3
         } Finally
         {
             Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
