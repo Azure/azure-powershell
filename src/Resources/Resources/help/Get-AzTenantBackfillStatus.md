@@ -37,8 +37,7 @@ Type              : c7a87cda-9a66-4920-b0f8-869baa04efe0
 
 ## OUTPUTS
 
-###
-Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSBackfillStatus
+### Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSBackfillStatus
 
 ## NOTES
 
