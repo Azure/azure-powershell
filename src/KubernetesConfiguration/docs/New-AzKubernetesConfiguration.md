@@ -28,26 +28,24 @@ Create a new Kubernetes Source Control Configuration.
 
 ### Example 1: Create a configuration for kubernetes cluster
 ```powershell
-New-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azps_test_cluster -Name azpstestk8s01 -RepositoryUrl http://github.com/xxxx
-```
+PS C:\> New-AzConnectedKubernetes -ClusterName azpstest_cluster_arc -ResourceGroupName azpstest_gp -Location eastus
+PS C:\> New-AzKubernetesConfiguration -ResourceGroupName azpstest_gp -ClusterName azpstest_cluster_arc -Name azpstestk8s -RepositoryUrl http://github.com/xxxx -ClusterType ConnectedClusters
 
-```output
-Name          Type
-----          ----
-azpstestk8s01 Microsoft.KubernetesConfiguration/sourceControlConfigurations
+Name        RepositoryUrl          ResourceGroupName
+----        -------------          -----------------
+azpstestk8s http://github.com/xxxx azpstest_gp
 ```
 
 This command creates a configuration for kubernetes cluster.
 
 ### Example 2: Create a configuration for kubernetes cluster with specify paramter OperatorNamespace
 ```powershell
-New-AzKubernetesConfiguration -ResourceGroupName azpstestgroup -ClusterName azpstestcluster -Name azpstestk8s02 -RepositoryUrl http://github.com/xxxx -OperatorNamespace namespace-t01 -ClusterType ConnectedClusters
-```
+PS C:\> New-AzConnectedKubernetes -ClusterName azpstest_cluster_arc -ResourceGroupName azpstest_gp -Location eastus
+PS C:\> New-AzKubernetesConfiguration -ResourceGroupName azpstest_gp -ClusterName azpstest_cluster_arc -Name azpstestk8s-operator -RepositoryUrl http://github.com/xxxx -OperatorNamespace namespace-t01 -ClusterType ConnectedClusters
 
-```output
-Name          RepositoryUrl          ResourceGroupName
-----          -------------          -----------------
-azpstestk8s02 http://github.com/xxxx azpstestgroup
+Name                 RepositoryUrl          ResourceGroupName
+----                 -------------          -----------------
+azpstestk8s-operator http://github.com/xxxx azpstest_gp
 ```
 
 This command creates a configuration in the new operator namespace for kubernetes cluster.

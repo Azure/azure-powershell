@@ -30,23 +30,16 @@ Get Async Operation status
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get Async Operation status
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzKubernetesConfigFluxOperationStatus  -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -FluxConfigurationName azpstestflux-k8s -ResourceGroupName azpstest_gp -OperationId e9871335-7ba8-4100-8cb4-73b3464eb863
 
-{{ Add output here }}
+Name                                 ResourceGroupName Status
+----                                 ----------------- ------
+e9871335-7ba8-4100-8cb4-73b3464eb863 azpstest_gp       Succeeded
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Get Async Operation status
 
 ## PARAMETERS
 

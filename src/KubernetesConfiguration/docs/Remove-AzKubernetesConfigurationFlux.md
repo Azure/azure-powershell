@@ -30,23 +30,21 @@ This will delete the YAML file used to set up the Flux Configuration, thus stopp
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: This will delete the YAML file used to set up the Flux Configuration, thus stopping future sync from the source repo.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzKubernetesConfigurationFlux -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstestflux-k8s -ResourceGroupName azpstest_gp
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This will delete the YAML file used to set up the Flux Configuration, thus stopping future sync from the source repo.
 
-### Example 2: {{ Add title here }}
+### Example 2: This will delete the YAML file used to set up the Flux Configuration, thus stopping future sync from the source repo.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzKubernetesConfigurationFlux  -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstestflux-k8s -ResourceGroupName azpstest_gp | Remove-AzKubernetesConfigurationFlux
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This will delete the YAML file used to set up the Flux Configuration, thus stopping future sync from the source repo.
 
 ## PARAMETERS
 

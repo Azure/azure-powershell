@@ -19,55 +19,55 @@ function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
 
-    $k8sNameEUAP = RandomString -allChars $false -len 6
-    $k8sNameCUS = RandomString -allChars $false -len 6
+    $k8sName1 = RandomString -allChars $false -len 6
 
-    $clusterNameEUAP = RandomString -allChars $false -len 6
-    $clusterNameCUS = RandomString -allChars $false -len 6
+    $flux1 = RandomString -allChars $false -len 6
+    $flux2 = RandomString -allChars $false -len 6
 
-    $extensionNameEUAP1 = RandomString -allChars $false -len 6
+    $clusterName = RandomString -allChars $false -len 6
 
-    $kubernetesConfigurationNameCUS1 = RandomString -allChars $false -len 6
-    $kubernetesConfigurationNameCUS2 = RandomString -allChars $false -len 6
+    $extensionName = RandomString -allChars $false -len 6
 
-    $env.Add("k8sNameEUAP", $k8sNameEUAP)
-    $env.Add("k8sNameCUS", $k8sNameCUS)
+    $kubernetesConfigurationName1 = RandomString -allChars $false -len 6
+    $kubernetesConfigurationName2 = RandomString -allChars $false -len 6
 
-    $env.Add("clusterNameEUAP", $clusterNameEUAP)
-    $env.Add("clusterNameCUS", $clusterNameCUS)
+    $env.Add("k8sName1", $k8sName1)
 
-    $env.Add("extensionNameEUAP1", $extensionNameEUAP1)
+    $env.Add("flux1", $flux1)
+    $env.Add("flux2", $flux2)
 
-    $env.Add("kubernetesConfigurationNameCUS1", $kubernetesConfigurationNameCUS1)
-    $env.Add("kubernetesConfigurationNameCUS2", $kubernetesConfigurationNameCUS2)
+    $env.Add("clusterName", $clusterName)
 
-    $env.Add("locationEUAP", "eastus2euap")
-    $env.Add("locationCUS", "centralus")
+    $env.Add("extensionName", $extensionName)
 
-    $resourceGroupEUAP = "testgroup" + $env.locationEUAP
-    $resourceGroupCUS = "testgroup" + $env.locationCUS
+    $env.Add("kubernetesConfigurationName1", $kubernetesConfigurationName1)
+    $env.Add("kubernetesConfigurationName2", $kubernetesConfigurationName2)
 
-    $env.Add("resourceGroupEUAP", $resourceGroupEUAP)
-    $env.Add("resourceGroupCUS", $resourceGroupCUS)
+    $env.Add("location", "eastus")
+
+    $resourceGroup = "testgroup" + $env.k8sName1
+    $env.Add("resourceGroup", $resourceGroup)
 
     write-host "1. start to create test group..."
-    New-AzResourceGroup -Name $env.resourceGroupEUAP -Location "eastus"
-    write-host "1. az aks create..."
-    az aks create --name $env.k8sNameEUAP --resource-group $env.resourceGroupEUAP --kubernetes-version 1.20.9 --vm-set-type AvailabilitySet
-    write-host "1. az aks get-credentials..."
-    az aks get-credentials --resource-group $env.resourceGroupEUAP --name $env.k8sNameEUAP
-    write-host "1. az connectedk8s connect..."
-    az connectedk8s connect --name $env.clusterNameEUAP --resource-group $env.resourceGroupEUAP --location $env.locationEUAP
+    New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
 
-    write-host "2. start to create test group..."
-    New-AzResourceGroup -Name $env.resourceGroupCUS -Location "eastus"
-    write-host "2. az aks create..."
-    az aks create --name $env.k8sNameCUS --resource-group $env.resourceGroupCUS --kubernetes-version 1.20.9 --vm-set-type AvailabilitySet
-    write-host "2. az aks get-credentials..."
-    az aks get-credentials --resource-group $env.resourceGroupCUS --name $env.k8sNameCUS
-    write-host "2. az connectedk8s connect..."
-    # az connectedk8s connect --name $env.clusterNameCUS --resource-group $env.resourceGroupCUS --location $env.locationCUS
-    New-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Location eastus2
+    write-host "1. az aks create..."
+    az aks create --name $env.k8sName1 --resource-group $env.resourceGroup --kubernetes-version 1.20.13 --vm-set-type AvailabilitySet
+
+    write-host "1. az aks get-credentials..."
+    az aks get-credentials --name $env.k8sName1 --resource-group $env.resourceGroup
+
+    write-host "1. az connectedk8s connect..."
+    az connectedk8s connect --name $env.clusterName --resource-group $env.resourceGroup --location $env.location
+
+    write-host "1. az k8s-configuration flux create..."
+    az k8s-configuration flux create -g $env.resourceGroup -c $env.clusterName -n azpstestflux-k8s -t connectedClusters --namespace namespace-t01 --scope cluster -u https://github.com/fluxcd/flux2-kustomize-helm-example --branch main --kustomization name=infra path=./infrastructure prune=true --kustomization name=apps path=./apps/staging prune=true dependsOn=["infra"]
+
+    write-host "1. Remove-AzK8sConfigurationFlux..."
+    Remove-AzK8sConfigurationFlux -Name azpstestflux-k8s -ClusterName $env.clusterName -ClusterType ConnectedClusters -ResourceGroupName $env.resourceGroup
+    
+    write-host "1. Remove-AzK8sExtension..."
+    Remove-AzK8sExtension -ClusterName $env.clusterName -ClusterType ConnectedClusters -Name flux -ResourceGroupName $env.resourceGroup 
 
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
@@ -77,6 +77,5 @@ function setupEnv() {
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
 }
 function cleanupEnv() {
-    Remove-AzResourceGroup -Name $env.resourceGroupEUAP
-    Remove-AzResourceGroup -Name $env.resourceGroupCUS
+    Remove-AzResourceGroup -Name $env.resourceGroup
 }

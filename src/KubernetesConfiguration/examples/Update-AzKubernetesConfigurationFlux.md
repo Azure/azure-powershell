@@ -1,18 +1,21 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update an existing Kubernetes Flux Configuration.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzKubernetesConfigurationFlux -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstestflux-k8s -ResourceGroupName azpstest_gp -GitRepositoryUrl https://github.com/fluxcd/flux2-kustomize-helm-example -RepositoryRefBranch main -SourceKind 'GitRepository' -GitRepositorySyncIntervalInSecond 600 -GitRepositoryTimeoutInSecond 600 -Suspend:$false
 
-{{ Add output here }}
+Name             ResourceGroupName
+----             -----------------
+azpstestflux-k8s azpstest_gp
 ```
 
-{{ Add description here }}
+Update an existing Kubernetes Flux Configuration.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update an existing Kubernetes Flux Configuration.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzKubernetesConfigurationFlux -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstestflux-k8s -ResourceGroupName azpstest_gp | Update-AzKubernetesConfigurationFlux -GitRepositoryUrl https://github.com/fluxcd/flux2-kustomize-helm-example -RepositoryRefBranch main -SourceKind 'GitRepository' -GitRepositorySyncIntervalInSecond 600 -GitRepositoryTimeoutInSecond 600 -Suspend:$false
 
-{{ Add output here }}
+Name             ResourceGroupName
+----             -----------------
+azpstestflux-k8s azpstest_gp
 ```
 
-{{ Add description here }}
-
+Update an existing Kubernetes Flux Configuration.

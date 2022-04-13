@@ -1,18 +1,21 @@
-### Example 1: {{ Add title here }}
+### Example 1: List details of the Flux Configuration.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzKubernetesConfigurationFlux -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -ResourceGroupName azpstest_gp
 
-{{ Add output here }}
+Name             ResourceGroupName
+----             -----------------
+azpstestflux-k8s azpstest_gp
 ```
 
-{{ Add description here }}
+List details of the Flux Configuration.
 
-### Example 2: {{ Add title here }}
+### Example 2: Gets details of the Flux Configuration.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzKubernetesConfigurationFlux -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstestflux-k8s -ResourceGroupName azpstest_gp
 
-{{ Add output here }}
+Name             ResourceGroupName
+----             -----------------
+azpstestflux-k8s azpstest_gp
 ```
 
-{{ Add description here }}
-
+Gets details of the Flux Configuration.

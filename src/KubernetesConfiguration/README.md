@@ -75,6 +75,12 @@ directive:
             "$ref": "#/definitions/Extension"
           }
         },
+        "201": {
+          "description": "Request received successfully.",
+          "schema": {
+            "$ref": "#/definitions/Extension"
+          }
+        },
         "202": {
           "description": "Request received successfully, and the resource will be updated asynchronously.",
           "schema": {
@@ -116,6 +122,29 @@ directive:
           "x-ms-error-response": true,
           "schema": {
             "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/791255f0c5dd775015cd51f3e642549190fb3803/specification/common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
+          }
+        },
+        "default": {
+          "description": "Error response describing why the operation failed.",
+          "schema": {
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/791255f0c5dd775015cd51f3e642549190fb3803/specification/common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
+          }
+        }
+      }
+  - from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/fluxConfigurations/{fluxConfigurationName}"].patch.responses
+    transform: >-
+      return {
+        "200": {
+          "description": "Request received successfully for an existing resource.",
+          "schema": {
+            "$ref": "#/definitions/FluxConfiguration"
+          }
+        },
+        "202": {
+          "description": "Request received successfully, and the resource will be updated asynchronously.",
+          "schema": {
+            "$ref": "#/definitions/FluxConfiguration"
           }
         },
         "default": {
