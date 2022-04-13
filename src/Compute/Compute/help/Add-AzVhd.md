@@ -15,15 +15,16 @@ Uploads a virtual hard disk from an on-premises machine to Azure (managed disk o
 
 ### DefaultParameterSet (Default)
 ```
-Add-AzVhd [[-ResourceGroupName] <String>] [-Destination] <Uri> [-LocalFilePath] <FileInfo>
- [[-NumberOfUploaderThreads] <Int32>] [[-BaseImageUriToPatch] <Uri>] [-OverWrite] [-skipResizing] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Add-AzVhd [-ResourceGroupName] <String> [-Destination] <Uri> [-LocalFilePath] <FileInfo>
+ [[-NumberOfUploaderThreads] <Int32>] [[-BaseImageUriToPatch] <Uri>] [-OverWrite] [-SkipResizing]
+ [-KeepConvertedVhd] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### DirectUploadToManagedDiskSet
 ```
 Add-AzVhd [-ResourceGroupName] <String> [-LocalFilePath] <FileInfo> -DiskName <String> [-Location] <String>
- [-DiskSku <String>] [-Zone <String[]>] [[-NumberOfUploaderThreads] <Int32>] [-AsJob]
+ [-DiskSku <String>] [-DiskZone <String[]>] [-DiskHyperVGeneration <String>]
+ [-DiskOsType <OperatingSystemTypes>] [[-NumberOfUploaderThreads] <Int32>] [-KeepConvertedVhd] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -31,9 +32,10 @@ Add-AzVhd [-ResourceGroupName] <String> [-LocalFilePath] <FileInfo> -DiskName <S
 The **Add-AzVhd** cmdlet uploads an on-premise virtual hard disk to a managed disk or a blob storage account.<br/>
 
 The virtual hard disk being uploaded needs to be a .vhd file and in size N * Mib + 512 bytes. Using [Hyper-V](https://docs.microsoft.com/en-us/windows-server/virtualization/hyper-v/hyper-v-technology-overview) 
-functionality, **Add-AzVhd** will convert any .vhdx files to a .vhd file, convert dynamically sized .vhd file to a fixed size .vhd, and resize before uploading. 
+functionality, **Add-AzVhd** will convert any .vhdx files to a .vhd file and resize before uploading. 
 To allow this functionality, you will need to [enable Hyper-V](https://docs.microsoft.com/en-us/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server). 
 If you are using a Linux machine or choose to not use this functionality, you will need to [resize the Vhd file manually](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/create-upload-generic?branch=pr-en-us-185925#resizing-vhds). <br/>
+Additioinally, **Add-AzVhd** will convert dynamically sized VHD files to fixed size during upload.
 
 For Default Parameter set (upload to blob), also supported is the ability to upload a patched version of an on-premises .vhd file.
 When a base virtual hard disk has already been uploaded, you can upload differencing disks that use the base image as the parent.
@@ -156,6 +158,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DiskHyperVGeneration
+The hypervisor generation of the Virtual Machine. Applicable to OS disks only. Posssible values are: 'V1', 'V2'.
+
+```yaml
+Type: System.String
+Parameter Sets: DirectUploadToManagedDiskSet
+Aliases: HyperVGeneration
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -DiskName
 Name of the new managed Disk
 
@@ -165,6 +182,22 @@ Parameter Sets: DirectUploadToManagedDiskSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DiskOsType
+The Operating System type of the managed disk. Possible values are: 'Windows', 'Linux'.
+
+```yaml
+Type: Microsoft.Azure.Management.Compute.Models.OperatingSystemTypes
+Parameter Sets: DirectUploadToManagedDiskSet
+Aliases: OsType
+Accepted values: Windows, Linux
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -183,6 +216,36 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DiskZone
+The Logical zone list for Disk.
+
+```yaml
+Type: System.String[]
+Parameter Sets: DirectUploadToManagedDiskSet
+Aliases: Zone
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -KeepConvertedVhd
+Use this switch parameter to keep the VHD file that is resized/converted by Hyper-V.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -273,7 +336,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -skipResizing
+### -SkipResizing
 Skips the resizing of the VHD file. 
 Users that wish to upload a VHD files that has its size misaligned (not N * Mib + 512 bytes) to a blob can use this switch parameter.
 
@@ -286,21 +349,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Zone
-Specifies the logical zone list for Disk. To attach the Disk to a VM, must be same zone as the VM.
-
-```yaml
-Type: System.String[]
-Parameter Sets: DirectUploadToManagedDiskSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
