@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated examples in reference documentation for a few `*-AzStorageAccount*` cmdlets to use `-Name` instead of its aliases
 
 ## Version 4.4.1
 * Fixed get blob by tag failure on Powershell 7.2.2
