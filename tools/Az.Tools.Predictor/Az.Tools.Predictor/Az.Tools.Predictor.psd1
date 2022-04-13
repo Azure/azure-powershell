@@ -78,7 +78,7 @@ PrivateData = @{
         # RequireLicenseAcceptance = $false
 
         # External dependent modules of this module
-        # ExternalModuleDependencies = @()
+        ExternalModuleDependencies = @('Az.Accounts', 'PSReadLine')
 
     } # End of PSData hashtable
 
