@@ -32,9 +32,9 @@ Add-AzVhd [-ResourceGroupName] <String> [-LocalFilePath] <FileInfo> -DiskName <S
 The **Add-AzVhd** cmdlet uploads an on-premise virtual hard disk to a managed disk or a blob storage account.<br/>
 
 The virtual hard disk being uploaded needs to be a .vhd file and in size N * Mib + 512 bytes. Using [Hyper-V](https://docs.microsoft.com/en-us/windows-server/virtualization/hyper-v/hyper-v-technology-overview) 
-functionality, **Add-AzVhd** will convert any .vhdx files to a .vhd file and resize before uploading. 
+functionality, **Add-AzVhd** will convert any .vhdx file to a .vhd file and resize before uploading. 
 To allow this functionality, you will need to [enable Hyper-V](https://docs.microsoft.com/en-us/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server). 
-If you are using a Linux machine or choose to not use this functionality, you will need to [resize the Vhd file manually](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/create-upload-generic?branch=pr-en-us-185925#resizing-vhds). 
+If you are using a Linux machine or choose to not use this functionality, you will need to [resize the VHD file manually](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/create-upload-generic?branch=pr-en-us-185925#resizing-vhds). 
 Additionally, **Add-AzVhd** will convert dynamically sized VHD files to fixed size during upload. Use `-Verbose` to follow all the process. 
 
 For Default Parameter set (upload to blob), also supported is the ability to upload a patched version of an on-premises .vhd file.
