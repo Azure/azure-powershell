@@ -28,9 +28,9 @@ To update a deployment of an API Management use the modified **PsApiManagementIn
 
 ### Example 1: Increases capacity of Additional Region in a PsApiManagement instance
 ```powershell
-PS C:\>$apimService = Get-AzApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName
-PS C:\>$apimService = Update-AzApiManagementRegion -ApiManagement $apimService -Location "North Central US" -Capacity 2 -Sku Premium
-PS C:\>$apimService = Set-AzApiManagement -InputObject $apimService -PassThru
+$apimService = Get-AzApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName
+$apimService = Update-AzApiManagementRegion -ApiManagement $apimService -Location "North Central US" -Capacity 2 -Sku Premium
+$apimService = Set-AzApiManagement -InputObject $apimService -PassThru
 ```
 
 This command gets the API Management Premium SKU service, having regions in South Central US and North Central US. It then increases the Capacity of the North Central US region to 2 using the **Set-AzApiManagement**. The next cmdlet **Set-AzApiManagement** applies the configuration change to the Api Management service.

@@ -28,6 +28,7 @@ using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using Microsoft.Rest.Azure.OData;
+using ServicePrincipal = Microsoft.Azure.Graph.RBAC.Version1_6.Models.ServicePrincipal;
 
 namespace Microsoft.Azure.Commands.Sql.Server.Adapter
 {

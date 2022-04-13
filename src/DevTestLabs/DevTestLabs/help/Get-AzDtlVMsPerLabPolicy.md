@@ -26,8 +26,10 @@ The cmdlet returns the enabled or disabled status of the policy, and the total n
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzDtlVMsPerLabPolicy -LabName debtestlab -ResourceGroupName yuzhi-rg
+Get-AzDtlVMsPerLabPolicy -LabName debtestlab -ResourceGroupName yuzhi-rg
+```
 
+```output
 Name               : MaxVmsAllowedPerLab
 Type               : Microsoft.DevTestLab/labs/policySets/policies
 Tags               : 

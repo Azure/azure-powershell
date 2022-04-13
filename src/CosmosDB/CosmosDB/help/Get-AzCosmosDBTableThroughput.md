@@ -31,8 +31,10 @@ The **Get-AzCosmosDBTableThroughput** cmdlet gets the throughput of a CosmosDB T
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCosmosDBTableThroughput -ResourceGroupName {rgName} -AccountName {accountName} -Name {databaseName}
+Get-AzCosmosDBTableThroughput -ResourceGroupName {rgName} -AccountName {accountName} -Name {databaseName}
+```
 
+```output
 Name: {throughputName}
 Id: {Id}
 Throughput: {value} 

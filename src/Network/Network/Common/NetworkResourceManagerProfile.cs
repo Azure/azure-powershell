@@ -664,6 +664,22 @@ namespace Microsoft.Azure.Commands.Network
                 // MNM to CNM
                 cfg.CreateMap<MNM.LoadBalancerBackendAddress, CNM.PSLoadBalancerBackendAddress>();
 
+                // InboundNatRulePortMapping
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSInboundNatRulePortMapping, MNM.InboundNatRulePortMapping>();
+
+                // InboundNatRulePortMapping
+                // MNM to CNM
+                cfg.CreateMap<MNM.InboundNatRulePortMapping, CNM.PSInboundNatRulePortMapping>();
+
+                // NatRulePortMapping
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSNatRulePortMapping, MNM.NatRulePortMapping>();
+
+                // NatRulePortMapping
+                // MNM to CNM
+                cfg.CreateMap<MNM.NatRulePortMapping, CNM.PSNatRulePortMapping>();
+
                 // MNM to CNM
                 cfg.CreateMap<MNM.BackendAddressPool, CNM.PSBackendAddressPool>();
 
@@ -776,10 +792,12 @@ namespace Microsoft.Azure.Commands.Network
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSExpressRoutePort, MNM.ExpressRoutePort>();
                 cfg.CreateMap<CNM.PSExpressRouteLink, MNM.ExpressRouteLink>();
+                cfg.CreateMap<CNM.PSExpressRoutePortAuthorization, MNM.ExpressRoutePortAuthorization>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.ExpressRoutePort, CNM.PSExpressRoutePort>();
                 cfg.CreateMap<MNM.ExpressRouteLink, CNM.PSExpressRouteLink>();
+                cfg.CreateMap<MNM.ExpressRoutePortAuthorization, CNM.PSExpressRoutePortAuthorization>();
 
                 // ExpressRouteCircuit
                 // CNM to MNM
@@ -1344,11 +1362,17 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSAzureFirewallPolicy, MNM.FirewallPolicy>().ForCtorParam("dnsSettings", opt =>
                 {
                     opt.MapFrom(src => src.DnsSettings == null ? null : new MNM.DnsSettings(src.DnsSettings.Servers, src.DnsSettings.EnableProxy, null));
+                }).AfterMap((src, dst) =>
+                {
+                    dst.Sql = src.SqlSetting == null ? null : new MNM.FirewallPolicySQL(src.SqlSetting.AllowSqlRedirect);
                 });
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.FirewallPolicyRuleCollectionGroup, CNM.PSAzureFirewallPolicyRuleCollectionGroup>();
-                cfg.CreateMap<MNM.FirewallPolicy, CNM.PSAzureFirewallPolicy>();
+                cfg.CreateMap<MNM.FirewallPolicy, CNM.PSAzureFirewallPolicy>().AfterMap((src, dst) =>
+                {
+                    dst.SqlSetting = src.Sql == null ? null : new CNM.PSAzureFirewallPolicySqlSetting { AllowSqlRedirect = src.Sql.AllowSqlRedirect };
+                });
 
                 // Virtual Network Tap
                 // CNM to MNM

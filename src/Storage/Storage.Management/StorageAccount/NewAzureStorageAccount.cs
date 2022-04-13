@@ -341,6 +341,21 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNullOrEmpty]
         public string ActiveDirectoryAzureStorageSid { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies the Active Directory SAMAccountName for Azure Storage.",
+            ParameterSetName = ActiveDirectoryDomainServicesForFileParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string ActiveDirectorySamAccountName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies the Active Directory account type for Azure Storage. Possible values include: 'User', 'Computer'.",
+            ParameterSetName = ActiveDirectoryDomainServicesForFileParameterSet)]
+        [PSArgumentCompleter("User", "Computer")]
+        [ValidateNotNullOrEmpty]
+        public string ActiveDirectoryAccountType { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -621,7 +636,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         ForestName = this.ActiveDirectoryForestName,
                         DomainGuid = this.ActiveDirectoryDomainGuid,
                         DomainSid = this.ActiveDirectoryDomainSid,
-                        AzureStorageSid = this.ActiveDirectoryAzureStorageSid
+                        AzureStorageSid = this.ActiveDirectoryAzureStorageSid,
+                        SamAccountName = this.ActiveDirectorySamAccountName,
+                        AccountType = this.ActiveDirectoryAccountType
                     };
                 }
                 else

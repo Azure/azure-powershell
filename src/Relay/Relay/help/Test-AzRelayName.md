@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Relay.dll-Help.xml
 Module Name: Az.Relay
 online version: https://docs.microsoft.com/powershell/module/az.relay/test-azrelayname
@@ -22,27 +22,33 @@ The **Test-AzRelayName** Cmdlet Check Availability of the NameSpace Name
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Test-AzRelayName -Namespace TestingtheAvailability
 ```
-PS C:\> Test-AzRelayName -Namespace TestingtheAvailability
 
+```output
 NameAvailable Reason Message
 ------------- ------ -------
          True   None
 ```
 
 ### Example 2
+```powershell
+Test-AzRelayName -Namespace Testi
 ```
-PS C:\> Test-AzRelayName -Namespace Testi
 
+```output
 NameAvailable      Reason Message
 -------------      ------ -------
         False InvalidName The specified service namespace is invalid.
 ```
 
 ### Example 3
+```powershell
+Test-AzRelayName -Namespace Test123
 ```
-PS C:\> Test-AzRelayName -Namespace Test123
 
+```output
 NameAvailable    Reason Message
 -------------    ------ -------
         False NameInUse The specified service namespace is not available.

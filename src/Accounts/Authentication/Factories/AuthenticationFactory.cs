@@ -17,8 +17,10 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Azure.Commands.Common.Exceptions;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Identity.Client;
 using Microsoft.Rest;
+using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Linq;
 using System.Security;
@@ -38,10 +40,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         {
             _getKeyStore = () =>
             {
-                IServicePrincipalKeyStore keyStore = null;
-                if (!AzureSession.Instance.TryGetComponent(ServicePrincipalKeyStore.Name, out keyStore))
+                if (!AzureSession.Instance.TryGetComponent(AzKeyStore.Name, out AzKeyStore keyStore))
                 {
-                    keyStore = new ServicePrincipalKeyStore();
+                    keyStore = null;
                 }
 
                 return keyStore;
@@ -59,9 +60,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             };
         }
 
-        private Func<IServicePrincipalKeyStore> _getKeyStore;
-        private IServicePrincipalKeyStore _keyStore;
-        public IServicePrincipalKeyStore KeyStore
+        private readonly Func<AzKeyStore> _getKeyStore;
+        private AzKeyStore _keyStore;
+        public AzKeyStore KeyStore
         {
             get
             {
@@ -80,7 +81,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
         private Func<IAuthenticatorBuilder> _getAuthenticator;
         internal IAuthenticatorBuilder Builder => _getAuthenticator();
-       
+
         public ITokenProvider TokenProvider { get; set; }
 
         /// <summary>
@@ -166,7 +167,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         private static bool IsTransientException(Exception e)
         {
             var msalException = e.InnerException as MsalServiceException;
-            if(msalException != null)
+            if (msalException != null)
             {
                 return msalException.ErrorCode == MsalError.RequestTimeout ||
                     msalException.ErrorCode == MsalError.ServiceNotAvailable;
@@ -177,12 +178,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         private static AzPSAuthenticationFailedException AnalyzeMsalException(Exception exception, IAzureEnvironment environment, string tenantId, string resourceId)
         {
             var originalException = exception;
-            while(exception != null)
+            while (exception != null)
             {
-                if(exception is MsalUiRequiredException msalUiRequiredException)
+                if (exception is MsalUiRequiredException msalUiRequiredException)
                 {
                     //There's no official error message for requiring MFA permission, so have to compare UGLY error message
-                    if(msalUiRequiredException.ErrorCode == "invalid_grant" &&
+                    if (msalUiRequiredException.ErrorCode == "invalid_grant" &&
                         msalUiRequiredException.Message.Contains("you must use multi-factor authentication to access"))
                     {
                         string errorMessage;
@@ -333,7 +334,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
         public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context, string targetEndpoint)
         {
-            if(context == null)
+            if (context == null)
             {
                 throw new AzPSApplicationException("Azure context is empty");
             }
@@ -351,7 +352,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 case AzureAccount.AccountType.Certificate:
                     throw new NotSupportedException(AzureAccount.AccountType.Certificate.ToString());
                 case AzureAccount.AccountType.AccessToken:
-                    return new RenewingTokenCredential(new ExternalAccessToken (GetEndpointToken(context.Account, targetEndpoint), () => GetEndpointToken(context.Account, targetEndpoint)));
+                    return new RenewingTokenCredential(new ExternalAccessToken(GetEndpointToken(context.Account, targetEndpoint), () => GetEndpointToken(context.Account, targetEndpoint)));
             }
 
 
@@ -430,7 +431,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                     case AzureAccount.AccountType.ServicePrincipal:
                         try
                         {
-                            KeyStore.DeleteKey(account.Id, account.GetTenants().FirstOrDefault());
+                            KeyStore.DeleteKey(new ServicePrincipalKey(AzureAccount.Property.ServicePrincipalSecret,
+                                account.Id, account.GetTenants().FirstOrDefault()));
+                            KeyStore.DeleteKey(new ServicePrincipalKey(AzureAccount.Property.CertificatePassword,
+    account.Id, account.GetTenants().FirstOrDefault()));
                         }
                         catch
                         {
@@ -566,8 +570,18 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                     {
                         sendCertificateChain = Boolean.Parse(sendCertificateChainStr);
                     }
-                    password = password ?? ConvertToSecureString(account.GetProperty(AzureAccount.Property.ServicePrincipalSecret));
-                    var certificatePassword = ConvertToSecureString(account.GetProperty(AzureAccount.Property.CertificatePassword));
+                    password = password ?? account.GetProperty(AzureAccount.Property.ServicePrincipalSecret)?.ConvertToSecureString();
+                    if (password == null)
+                    {
+                        password = KeyStore.GetKey(new ServicePrincipalKey(AzureAccount.Property.ServicePrincipalSecret
+                        , account.Id, tenant));
+                    }
+                    var certificatePassword = account.GetProperty(AzureAccount.Property.CertificatePassword)?.ConvertToSecureString();
+                    if (certificatePassword == null)
+                    {
+                        certificatePassword = KeyStore.GetKey(new ServicePrincipalKey(AzureAccount.Property.CertificatePassword
+                        , account.Id, tenant));
+                    }
                     return new ServicePrincipalParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.Id, account.GetProperty(AzureAccount.Property.CertificateThumbprint), account.GetProperty(AzureAccount.Property.CertificatePath),
                         certificatePassword, password, sendCertificateChain);
                 case AzureAccount.AccountType.ManagedService:
@@ -575,29 +589,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 case AzureAccount.AccountType.AccessToken:
                     return new AccessTokenParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account);
                 case "ClientAssertion":
-                    password = password ?? ConvertToSecureString(account.GetProperty("ClientAssertion"));
+                    password = password ?? account.GetProperty("ClientAssertion")?.ConvertToSecureString();
                     return new ClientAssertionParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.Id, password);
                 default:
                     return null;
             }
-        }
-
-        internal SecureString ConvertToSecureString(string password)
-        {
-            if (password == null)
-            {
-                return null;
-            }
-
-            var securePassword = new SecureString();
-
-            foreach (char c in password)
-            {
-                securePassword.AppendChar(c);
-            }
-
-            securePassword.MakeReadOnly();
-            return securePassword;
         }
     }
 }

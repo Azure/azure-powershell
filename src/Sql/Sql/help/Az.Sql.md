@@ -21,7 +21,7 @@ Adds a job step to a job
 Adds a target to a target group
 
 ### [Add-AzSqlInstanceKeyVaultKey](Add-AzSqlInstanceKeyVaultKey.md)
-Adds a key vault key to the provided Managed Instance.
+Adds a key vault key to the provided Managed Instance. 
 
 ### [Add-AzSqlManagedInstanceTransparentDataEncryptionCertificate](Add-AzSqlManagedInstanceTransparentDataEncryptionCertificate.md)
 Adds a Transparent Data Encryption Certificate for the given managed instance
@@ -66,7 +66,7 @@ Converts a vulnerability assessment scan results to Excel format.
 Converts a vulnerability assessment scan results to Excel format.
 
 ### [Copy-AzSqlDatabaseLongTermRetentionBackup](Copy-AzSqlDatabaseLongTermRetentionBackup.md)
-Copies a long term retention backup to a target database.
+Copies a long term retention backup to a target database.  
 
 ### [Disable-AzSqlDatabaseLedgerDigestUpload](Disable-AzSqlDatabaseLedgerDigestUpload.md)
 Disables uploading ledger digests to Azure Blob storage or to Azure Confidential Ledger.
@@ -185,9 +185,6 @@ Gets the recommended information types and sensitivity labels of columns in the 
 ### [Get-AzSqlDatabaseTransparentDataEncryption](Get-AzSqlDatabaseTransparentDataEncryption.md)
 Gets the TDE state for a database.
 
-### [Get-AzSqlDatabaseTransparentDataEncryptionActivity](Get-AzSqlDatabaseTransparentDataEncryptionActivity.md)
-Gets the progress of a TDE scan of a database.
-
 ### [Get-AzSqlDatabaseUpgradeHint](Get-AzSqlDatabaseUpgradeHint.md)
 Gets pricing tier hints for a database.
 
@@ -296,6 +293,9 @@ Gets the vulnerability assessment settings of a managed database.
 ### [Get-AzSqlInstanceKeyVaultKey](Get-AzSqlInstanceKeyVaultKey.md)
 Gets a SQL managed instance's Key Vault keys.
 
+### [Get-AzSqlInstanceLink](Get-AzSqlInstanceLink.md)
+Returns information about link feature for Azure SQL Managed Instance.
+
 ### [Get-AzSqlInstanceOperation](Get-AzSqlInstanceOperation.md)
 Gets a SQL managed instance's operations.
 
@@ -304,6 +304,9 @@ Returns information about the Azure SQL Instance pool.
 
 ### [Get-AzSqlInstancePoolUsage](Get-AzSqlInstancePoolUsage.md)
 Returns information about an Azure SQL Instance pool's usage.
+
+### [Get-AzSqlInstanceServerTrustCertificate](Get-AzSqlInstanceServerTrustCertificate.md)
+Returns information about server trust certificate.
 
 ### [Get-AzSqlInstanceTransparentDataEncryptionProtector](Get-AzSqlInstanceTransparentDataEncryptionProtector.md)
 Gets the Transparent Data Encryption (TDE) protector for a SQL managed instance.
@@ -354,7 +357,7 @@ Gets a SQL server's Key Vault keys.
 Gets the Microsoft support operations auditing settings of an Azure SQL server.
 
 ### [Get-AzSqlServerOutboundFirewallRule](Get-AzSqlServerOutboundFirewallRule.md)
-Gets the allowed FQDN from the list of Outbound Firewall Rules for a SQL server.
+Gets outbound firewall rules (Allowed FQDNs) for a SQL Database server.
 
 ### [Get-AzSqlServerRecommendedAction](Get-AzSqlServerRecommendedAction.md)
 Gets one or more recommended actions for an Azure SQL Server Advisor.
@@ -455,8 +458,14 @@ Creates an Azure SQL Database Managed Instance.
 ### [New-AzSqlInstanceDatabase](New-AzSqlInstanceDatabase.md)
 Creates an Azure SQL Managed Instance database.
 
+### [New-AzSqlInstanceLink](New-AzSqlInstanceLink.md)
+Creates a new instance link.
+
 ### [New-AzSqlInstancePool](New-AzSqlInstancePool.md)
 Creates an Azure SQL Instance pool.
+
+### [New-AzSqlInstanceServerTrustCertificate](New-AzSqlInstanceServerTrustCertificate.md)
+Creates a new server trust certificate.
 
 ### [New-AzSqlServer](New-AzSqlServer.md)
 Creates a SQL Database server.
@@ -474,13 +483,13 @@ This command creates a new Azure SQL Server DNS Alias.
 Creates a firewall rule for a SQL Database server.
 
 ### [New-AzSqlServerOutboundFirewallRule](New-AzSqlServerOutboundFirewallRule.md)
-Creates a new Outbound Firewall Rule by adding the new allowed FQDN to list.
+Adds the allowed FQDN to the list of outbound firewall rules and creates a new outbound firewall rule for Azure SQL Database server.
 
 ### [New-AzSqlServerTrustGroup](New-AzSqlServerTrustGroup.md)
-Creates a new Server Trust Group.
+Creates or updates a Server Trust Group.
 
 ### [New-AzSqlServerVirtualNetworkRule](New-AzSqlServerVirtualNetworkRule.md)
-Creates an Azure SQL Server Virtual Network Rule.
+Creates an Azure SQL Server Virtual Network Rule. 
 
 ### [New-AzSqlSyncAgent](New-AzSqlSyncAgent.md)
 Creates an Azure SQL Sync Agent.
@@ -563,8 +572,14 @@ Removes the information types and sensitivity labels of columns in the Azure SQL
 ### [Remove-AzSqlInstanceKeyVaultKey](Remove-AzSqlInstanceKeyVaultKey.md)
 Removes a Key Vault key from a SQL managed instance
 
+### [Remove-AzSqlInstanceLink](Remove-AzSqlInstanceLink.md)
+Removes an instance link.
+
 ### [Remove-AzSqlInstancePool](Remove-AzSqlInstancePool.md)
 Removes an Azure SQL Instance pool.
+
+### [Remove-AzSqlInstanceServerTrustCertificate](Remove-AzSqlInstanceServerTrustCertificate.md)
+Removes a server trust certificate.
 
 ### [Remove-AzSqlServer](Remove-AzSqlServer.md)
 Removes an Azure SQL Database server.
@@ -594,7 +609,7 @@ Removes a Key Vault key from a SQL server.
 Removes the Microsoft support operations auditing settings of an Azure SQL server.
 
 ### [Remove-AzSqlServerOutboundFirewallRule](Remove-AzSqlServerOutboundFirewallRule.md)
-Removes the allowed FQDN from the list of Outbound Firewall Rules for a SQL server.
+Deletes an allowed FQDN from the list of outbound firewall rules (Allowed FQDNs) from a SQL Database server.
 
 ### [Remove-AzSqlServerTrustGroup](Remove-AzSqlServerTrustGroup.md)
 Deletes a Server Trust Group.
@@ -630,7 +645,7 @@ Sets properties for a database, or moves an existing database into an elastic po
 Modifies auto execute status of an Azure SQL Database Advisor.
 
 ### [Set-AzSqlDatabaseAudit](Set-AzSqlDatabaseAudit.md)
-Changes the auditing settings for an Azure SQL database.
+Changes the auditing settings for an Azure SQL Database.
 
 ### [Set-AzSqlDatabaseBackupLongTermRetentionPolicy](Set-AzSqlDatabaseBackupLongTermRetentionPolicy.md)
 Sets a server long term retention policy.
@@ -806,6 +821,9 @@ Updates the vulnerability assessment settings of a database.
 ### [Update-AzSqlInstanceDatabaseVulnerabilityAssessmentSetting](Update-AzSqlInstanceDatabaseVulnerabilityAssessmentSetting.md)
 Updates the vulnerability assessment settings of a managed database.
 
+### [Update-AzSqlInstanceLink](Update-AzSqlInstanceLink.md)
+Updates the properties of an instance link.
+
 ### [Update-AzSqlInstanceVulnerabilityAssessmentSetting](Update-AzSqlInstanceVulnerabilityAssessmentSetting.md)
 Updates the vulnerability assessment settings of a managed instance.
 
@@ -825,3 +843,4 @@ Updates an Azure SQL Database Sync Member.
 Update the sync schema for a sync member database or a sync hub database.
 It will get the latest database schema from the real database and then use it refresh the schema cached by Sync metadata database.
 If "SyncMemberName" is specified, it will refresh the member database schema; if not, it will refresh the hub database schema.
+

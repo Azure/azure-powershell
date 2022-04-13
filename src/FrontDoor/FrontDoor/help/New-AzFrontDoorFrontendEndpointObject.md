@@ -27,9 +27,10 @@ Create a PSFrontendEndpoint Object for Front Door creation
 
 ### Example 1
 ```powershell
-PS C:\> New-AzFrontDoorFrontendEndpointObject -Name "frontendendpoint1" -HostName "frontendendpoint1"
+New-AzFrontDoorFrontendEndpointObject -Name "frontendendpoint1" -HostName "frontendendpoint1"
+```
 
-
+```output
 HostName                         : frontendendpoint1
 SessionAffinityEnabledState      : Disabled
 SessionAffinityTtlSeconds        : 0

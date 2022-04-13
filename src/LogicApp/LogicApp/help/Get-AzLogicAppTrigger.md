@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.LogicApp.dll-Help.xml
 Module Name: Az.LogicApp
 ms.assetid: 5307F1F1-E84C-4949-A557-99EF0012C3DF
@@ -30,8 +30,11 @@ If you omit a required template parameter, the cmdlet prompts you for the value.
 ## EXAMPLES
 
 ### Example 1: Get a trigger of a logic app
+```powershell
+Get-AzLogicAppTrigger -ResourceGroupName "ResourceGroup11" -Name "LogicApp05" -TriggerName "Trigger01"
 ```
-PS C:\>Get-AzLogicAppTrigger -ResourceGroupName "ResourceGroup11" -Name "LogicApp05" -TriggerName "Trigger01"
+
+```output
 ChangedTime         : 1/14/2016 11:45:07 AM
 CreatedTime         : 1/13/2016 2:42:26 PM
 LastExecutionTime   : 1/14/2016 11:45:07 AM
@@ -48,8 +51,11 @@ LogicAppVersion     : 08587489107406290826
 This command gets the trigger named Trigger01 from the logic app named LogicApp05.
 
 ### Example 2: Get all triggers of a logic app
+```powershell
+Get-AzLogicAppTrigger -ResourceGroupName "ResourceGroup11" -Name "LogicApp07"
 ```
-PS C:\>Get-AzLogicAppTrigger -ResourceGroupName "ResourceGroup11" -Name "LogicApp07"
+
+```output
 ChangedTime         : 1/14/2016 11:45:07 AM
 CreatedTime         : 1/13/2016 2:42:26 PM
 LastExecutionTime   : 1/14/2016 11:45:07 AM

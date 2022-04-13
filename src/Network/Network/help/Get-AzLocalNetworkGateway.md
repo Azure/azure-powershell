@@ -27,7 +27,9 @@ The **Get-AzLocalNetworkGateway** cmdlet returns the object representing your on
 ### Example 1: Get a Local Network Gateway
 ```powershell
 Get-AzLocalNetworkGateway -Name myLocalGW1 -ResourceGroupName myRG
+```
 
+```output
 Name                     : myLocalGW1
 ResourceGroupName        : myRG
 Location                 : eastus
@@ -49,7 +51,9 @@ Returns the object of the Local Network Gateway with the name "myLocalGW1" withi
 ### Example 2: Get Local Network Gateways using filtering
 ```powershell
 Get-AzLocalNetworkGateway -Name myLocalGW* -ResourceGroupName myRG
+```
 
+```output
 Name                     : myLocalGW1
 ResourceGroupName        : myRG
 Location                 : eastus

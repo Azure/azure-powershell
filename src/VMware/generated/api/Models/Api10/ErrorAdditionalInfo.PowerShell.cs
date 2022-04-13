@@ -53,6 +53,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10
         partial void BeforeDeserializePSObject(global::System.Management.Automation.PSObject content, ref bool returnNow);
 
         /// <summary>
+        /// <c>OverrideToString</c> will be called if it is implemented. Implement this method in a partial class to enable this behavior
+        /// </summary>
+        /// <param name="stringResult">/// instance serialized to a string, normally it is a Json</param>
+        /// <param name="returnNow">/// set returnNow to true if you provide a customized OverrideToString function</param>
+
+        partial void OverrideToString(ref string stringResult, ref bool returnNow);
+
+        /// <summary>
         /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.ErrorAdditionalInfo"
         /// />.
         /// </summary>
@@ -92,8 +100,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorAdditionalInfoInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorAdditionalInfoInternal)this).Type, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorAdditionalInfoInternal)this).Info = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAny) content.GetValueForProperty("Info",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorAdditionalInfoInternal)this).Info, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.AnyTypeConverter.ConvertFrom);
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorAdditionalInfoInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorAdditionalInfoInternal)this).Type, global::System.Convert.ToString);
+            }
+            if (content.Contains("Info"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorAdditionalInfoInternal)this).Info = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAny) content.GetValueForProperty("Info",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorAdditionalInfoInternal)this).Info, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.AnyTypeConverter.ConvertFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -111,8 +125,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorAdditionalInfoInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorAdditionalInfoInternal)this).Type, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorAdditionalInfoInternal)this).Info = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAny) content.GetValueForProperty("Info",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorAdditionalInfoInternal)this).Info, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.AnyTypeConverter.ConvertFrom);
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorAdditionalInfoInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorAdditionalInfoInternal)this).Type, global::System.Convert.ToString);
+            }
+            if (content.Contains("Info"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorAdditionalInfoInternal)this).Info = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAny) content.GetValueForProperty("Info",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorAdditionalInfoInternal)this).Info, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.AnyTypeConverter.ConvertFrom);
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -127,6 +147,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10
 
         /// <returns>a <see cref="System.String" /> containing this model serialized to JSON text.</returns>
         public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeAll)?.ToString();
+
+        public override string ToString()
+        {
+            var returnNow = false;
+            var result = global::System.String.Empty;
+            OverrideToString(ref result, ref returnNow);
+            if (returnNow)
+            {
+                return result;
+            }
+            return ToJsonString();
+        }
     }
     /// The resource management error additional info.
     [System.ComponentModel.TypeConverter(typeof(ErrorAdditionalInfoTypeConverter))]

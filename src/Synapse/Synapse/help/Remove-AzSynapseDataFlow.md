@@ -37,7 +37,7 @@ The **Remove-AzSynapseDataFlow** cmdlet removes a data flow from workspace.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSynapseDataFlow -WorkspaceName ContosoWorkspace -Name ContosoDataFlow
+Remove-AzSynapseDataFlow -WorkspaceName ContosoWorkspace -Name ContosoDataFlow
 ```
 
 This command removes the data flow named ContosoDataFlow from the workspace named ContosoWorkspace.

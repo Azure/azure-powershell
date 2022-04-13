@@ -26,8 +26,11 @@ The **New-AzRouteConfig** cmdlet creates a route for an Azure route table.
 
 ### Example 1: Create a route
 ```powershell
-PS C:\>$Route = New-AzRouteConfig -Name "Route07" -AddressPrefix 10.1.0.0/16 -NextHopType "VnetLocal"
-PS C:\> $Route
+$Route = New-AzRouteConfig -Name "Route07" -AddressPrefix 10.1.0.0/16 -NextHopType "VnetLocal"
+$Route
+```
+
+```output
 Name              : Route07
 Id                : 
 Etag              : 

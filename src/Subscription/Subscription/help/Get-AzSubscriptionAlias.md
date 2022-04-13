@@ -24,7 +24,7 @@ The **Get-AzSubscriptionAlias** cmdlet gets subscription alias details.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSubscriptionAlias -AliasName "ExistingAliasName"
+Get-AzSubscriptionAlias -AliasName "ExistingAliasName"
 ```
 
 Gets subscription alias details

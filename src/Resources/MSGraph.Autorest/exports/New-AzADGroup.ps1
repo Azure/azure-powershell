@@ -20,7 +20,7 @@ Adds new entity to groups
 .Description
 Adds new entity to groups
 .Example
-PS C:\> New-AzADGroup -DisplayName $gname -MailNickname $nickname
+New-AzADGroup -DisplayName $gname -MailNickname $nickname
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup

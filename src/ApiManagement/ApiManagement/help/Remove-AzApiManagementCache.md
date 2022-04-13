@@ -37,8 +37,8 @@ The cmdlet **Remove-AzApiManagementCache** removes the cache entity.
 
 ### Example 1 : Remove the Cache entity
 ```powershell
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Remove-AzApiManagementCache -Context $apimContext -CacheId "centralus"
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Remove-AzApiManagementCache -Context $apimContext -CacheId "centralus"
 ```
 
 This cmdlet remove the cache `centralus` from Api Management service.

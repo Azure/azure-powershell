@@ -37,7 +37,7 @@ This command will roll storage sync server certificate used to describe the serv
 
 ### Example 1
 ```powershell
-PS C:\> Reset-AzStorageSyncServerCertificate -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName"
+Reset-AzStorageSyncServerCertificate -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName"
 ```
 
 This command will roll the local server certificate and inform the corresponding storage sync service of the server's new identity, in a secure way.

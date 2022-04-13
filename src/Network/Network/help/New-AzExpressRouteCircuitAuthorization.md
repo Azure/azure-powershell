@@ -33,7 +33,7 @@ authorization that can be added to a new circuit at the same time the circuit is
 ## EXAMPLES
 
 ### Example 1: Create a new circuit authorization
-```
+```powershell
 $Authorization = New-AzExpressRouteCircuitAuthorization -Name "ContosoCircuitAuthorization"
 ```
 

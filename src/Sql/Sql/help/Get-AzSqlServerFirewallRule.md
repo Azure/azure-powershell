@@ -25,8 +25,11 @@ If you specify the name of a firewall rule, this cmdlet gets information about t
 ## EXAMPLES
 
 ### Example 1: Get all rules for a server
+```powershell
+Get-AzSqlServerFirewallRule -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
 ```
-PS C:\>Get-AzSqlServerFirewallRule -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
+
+```output
 ResourceGroupName : ResourceGroup01
 ServerName        : server01
 StartIpAddress    : 0.0.0.0
@@ -43,8 +46,11 @@ FirewallRuleName  : Rule01
 This command gets all the firewall rules for the server named Server01.
 
 ### Example 2: Get all rules for a server using filtering
+```powershell
+Get-AzSqlServerFirewallRule -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -FirewallRuleName "Rule*"
 ```
-PS C:\>Get-AzSqlServerFirewallRule -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -FirewallRuleName "Rule*"
+
+```output
 ResourceGroupName : ResourceGroup01
 ServerName        : server01
 StartIpAddress    : 0.0.0.0

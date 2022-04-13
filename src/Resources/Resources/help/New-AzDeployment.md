@@ -171,8 +171,8 @@ Template parameter values that you enter at the command prompt take precedence o
 ## EXAMPLES
 
 ### Example 1: Use a custom template and parameter file to create a deployment
-```
-PS C:\> New-AzDeployment -Location "West US" -TemplateFile "D:\Azure\Templates\EngineeringSite.json" -TemplateParameterFile "D:\Azure\Templates\EngSiteParms.json" -TemplateVersion "2.1" -Tag @{"key1"="value1"; "key2"="value2";}
+```powershell
+New-AzDeployment -Location "West US" -TemplateFile "D:\Azure\Templates\EngineeringSite.json" -TemplateParameterFile "D:\Azure\Templates\EngSiteParms.json" -TemplateVersion "2.1" -Tag @{"key1"="value1"; "key2"="value2";}
 ```
 
 This command creates a new deployment at the current subscription scope by using a custom template and a template file on disk, with defined tags parameter.
@@ -180,8 +180,8 @@ The command uses the *TemplateFile* parameter to specify the template and the *T
 It uses the *TemplateVersion* parameter to specify the version of the template.
 
 ### Example 2: Deploy a template stored in a non public storage account using a uri and SAS token
-```
-PS C:\> New-AzDeployment -Location "West US" -TemplateUri "https://example.com/example.json" -QueryString "foo"
+```powershell
+New-AzDeployment -Location "West US" -TemplateUri "https://example.com/example.json" -QueryString "foo"
 ```
 
 This command creates a new deployment using the template in TemplateUri which is not public and requires a token parameter to access which would be provided using the QueryString parameter.
@@ -189,10 +189,10 @@ Running this command effectively accesses the template using the url `https://ex
 This can be used if you want to use a template in a storage account by providing the SAS token as the QueryString
 
 ### Example 3: Use a custom template object and parameter file to create a deployment
-```
-PS C:\> $TemplateFileText = [System.IO.File]::ReadAllText("D:\Azure\Templates\EngineeringSite.json")
-PS C:\> $TemplateObject = ConvertFrom-Json $TemplateFileText -AsHashtable
-PS C:\> New-AzDeployment -Location "West US" -TemplateObject $TemplateObject -TemplateParameterFile "D:\Azure\Templates\EngSiteParams.json" -TemplateVersion "2.1"
+```powershell
+$TemplateFileText = [System.IO.File]::ReadAllText("D:\Azure\Templates\EngineeringSite.json")
+$TemplateObject = ConvertFrom-Json $TemplateFileText -AsHashtable
+New-AzDeployment -Location "West US" -TemplateObject $TemplateObject -TemplateParameterFile "D:\Azure\Templates\EngSiteParams.json" -TemplateVersion "2.1"
 ```
 
 This command creates a new deployment at the current subscription scope by using a custom template and a template file on disk that has been converted to an in-memory hashtable.

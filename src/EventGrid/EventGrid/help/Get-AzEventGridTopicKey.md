@@ -36,14 +36,14 @@ Gets the shared access keys used to publish events to an Event Grid topic.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzEventGridTopicKey -ResourceGroup MyResourceGroupName -Name Topic1
+Get-AzEventGridTopicKey -ResourceGroup MyResourceGroupName -Name Topic1
 ```
 
 Gets the shared access keys of Event Grid topic \`Topic1\` in resource group \`MyResourceGroupName\`.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzEventGridTopic -ResourceGroup MyResourceGroupName -Name Topic1 | Get-AzEventGridTopicKey
+Get-AzEventGridTopic -ResourceGroup MyResourceGroupName -Name Topic1 | Get-AzEventGridTopicKey
 ```
 
 Gets the shared access keys of Event Grid topic \`Topic1\` in resource group \`MyResourceGroupName\`.

@@ -1,7 +1,7 @@
 variables:
   WindowsName: windows
   WindowsImage: windows-2019
-  TestFramework: netcoreapp2.1
+  TestFramework: netcoreapp3.1
   TestTarget: Test
   Configuration: Debug
   DebugLocalBuildTasks: true

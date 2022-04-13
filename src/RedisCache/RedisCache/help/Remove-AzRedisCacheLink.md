@@ -23,8 +23,8 @@ Remove a geo replication link between two Redis Caches.
 ## EXAMPLES
 
 ### Example 1: Remove a geo replication link
-```
-PS C:\>Remove-AzRedisCacheLink -PrimaryServerName "mycache1" -SecondaryServerName "mycache2"
+```powershell
+Remove-AzRedisCacheLink -PrimaryServerName "mycache1" -SecondaryServerName "mycache2"
 ```
 
 This command removes a geo-replication links where Redis Cache named mycache1 is primary and Redis Cache named mycache2 is secondary.

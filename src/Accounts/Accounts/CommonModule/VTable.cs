@@ -21,6 +21,8 @@ namespace Microsoft.Azure.Commands.Common
 {
     using EventListenerDelegate = Func<string, CancellationToken, Func<EventArgs>, Func<string, CancellationToken, Func<EventArgs>, Task>, System.Management.Automation.InvocationInfo, string, string, string, System.Exception, Task>;
     using GetParameterDelegate = Func<string, string, System.Management.Automation.InvocationInfo, string, string, object>;
+    using TelemetryDelegate = Action<string, System.Management.Automation.InvocationInfo, string, System.Management.Automation.PSCmdlet>;
+    using GetTelemetryIdDelegate = Func<string>;
     using ModuleLoadPipelineDelegate = Action<string, string, Action<Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Task<HttpResponseMessage>>, Task<HttpResponseMessage>>>, Action<Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Task<HttpResponseMessage>>, Task<HttpResponseMessage>>>>;
     using NewRequestPipelineDelegate = Action<System.Management.Automation.InvocationInfo, string, string, Action<Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Task<HttpResponseMessage>>, Task<HttpResponseMessage>>>, Action<Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Task<HttpResponseMessage>>, Task<HttpResponseMessage>>>>;
     using ArgumentCompleterDelegate = Func<string, System.Management.Automation.InvocationInfo, string, string[], string[], string[]>;
@@ -47,6 +49,11 @@ namespace Microsoft.Azure.Commands.Common
         /// <param name="name">The <see cref="string" /> parameter name being asked for</param>
         /// <example>public object GetParameterValue(string resourceId, string moduleName, System.Management.Automation.InvocationInfo invocationInfo, string name)</example>
         public GetParameterDelegate GetParameterValue;
+
+        public GetTelemetryIdDelegate GetTelemetryId;
+
+        public TelemetryDelegate Telemetry;
+
 
         /// <summary>
         /// The cmdlet will call this for every event during the pipeline. 

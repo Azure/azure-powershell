@@ -20,14 +20,13 @@ Creates a function app service plan.
 .Description
 Creates a function app service plan.
 .Example
-PS C:\> New-AzFunctionAppPlan -ResourceGroupName MyResourceGroupName `
-                              -Name MyPremiumPlan `
-                              -Location WestEurope `
-                              -MinimumWorkerCount 1 `
-                              -MaximumWorkerCount 10 `
-                              -Sku EP1 `
-                              -WorkerType Windows
-
+New-AzFunctionAppPlan -ResourceGroupName MyResourceGroupName `
+                      -Name MyPremiumPlan `
+                      -Location WestEurope `
+                      -MinimumWorkerCount 1 `
+                      -MaximumWorkerCount 10 `
+                      -Sku EP1 `
+                      -WorkerType Windows
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan

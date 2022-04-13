@@ -638,9 +638,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         "/applications/"
                         + global::System.Uri.EscapeDataString(applicationId)
                         + "?"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -698,9 +698,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         "/applications/"
                         + applicationId
                         + "?"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -825,11 +825,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         + "&"
                         + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
                         + "&"
-                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         + "&"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -892,11 +892,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         + "&"
                         + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
                         + "&"
-                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         + "&"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -2124,9 +2124,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         "/groups/"
                         + global::System.Uri.EscapeDataString(groupId)
                         + "?"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -2184,9 +2184,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         "/groups/"
                         + groupId
                         + "?"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -2309,11 +2309,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         + "&"
                         + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
                         + "&"
-                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         + "&"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -2376,11 +2376,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         + "&"
                         + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
                         + "&"
-                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         + "&"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -2679,11 +2679,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         + "&"
                         + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
                         + "&"
-                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         + "&"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -2753,11 +2753,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         + "&"
                         + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
                         + "&"
-                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         + "&"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -3802,9 +3802,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         "/servicePrincipals/"
                         + global::System.Uri.EscapeDataString(servicePrincipalId)
                         + "?"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -3862,9 +3862,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         "/servicePrincipals/"
                         + servicePrincipalId
                         + "?"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -3989,11 +3989,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         + "&"
                         + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
                         + "&"
-                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         + "&"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -4056,11 +4056,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         + "&"
                         + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
                         + "&"
-                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         + "&"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -4612,9 +4612,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/me"
                         + "?"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -4660,9 +4660,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/me"
                         + "?"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -4768,9 +4768,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         "/users/"
                         + global::System.Uri.EscapeDataString(userId)
                         + "?"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -4825,9 +4825,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         "/users/"
                         + userId
                         + "?"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -4950,11 +4950,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         + "&"
                         + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
                         + "&"
-                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         + "&"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -5017,11 +5017,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                         + "&"
                         + (null == Count ? global::System.String.Empty : "$count=" + global::System.Uri.EscapeDataString(Count.ToString().ToLower()))
                         + "&"
-                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Orderby  && Orderby.Length > 0 ? "$orderby=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Orderby, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         + "&"
-                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Length > 0 ? "$select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         + "&"
-                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(each?.ToString()??global::System.String.Empty) ))) : global::System.String.Empty)
+                        + (null != Expand  && Expand.Length > 0 ? "$expand=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Expand, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }

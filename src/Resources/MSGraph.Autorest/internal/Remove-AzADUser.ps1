@@ -20,9 +20,9 @@ Represents an Azure Active Directory user object.
 .Description
 Represents an Azure Active Directory user object.
 .Example
-PS C:\> Remove-AzADUser -DisplayName $name
+Remove-AzADUser -DisplayName $name
 .Example
-PS C:\> Get-AzADUser -UserPrincipalName $id | Remove-AzADUser
+Get-AzADUser -UserPrincipalName $id | Remove-AzADUser
 
 .Outputs
 System.Boolean

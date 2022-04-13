@@ -94,6 +94,7 @@ Start-AzStorageFileCopy -AbsoluteUri <String> -DestFile <CloudFile> [-Force] [-S
 
 ## DESCRIPTION
 The **Start-AzStorageFileCopy** cmdlet starts to copy a source file to a destination file.
+This cmdlet will trigger asynchronous blob copy, the copy process is handled by server. If this is a cross account blob copy, there is no SLA for the blob copy.
 
 ## EXAMPLES
 

@@ -24,16 +24,16 @@ The **New-AzHDInsightPigJobDefinition** cmdlet defines a Pig job object for use 
 ## EXAMPLES
 
 ### Example 1: Create a Pig job definition
-```
-PS C:\># Cluster info
-PS C:\>$clusterName = "your-hadoop-001"
-PS C:\>$clusterCreds = Get-Credential
+```powershell
+# Cluster info
+$clusterName = "your-hadoop-001"
+$clusterCreds = Get-Credential
 
 # Pig job details
-PS C:\>$statusFolder = "tempStatusFolder/"
-PS C:\>$query = "SHOW TABLES"
+$statusFolder = "tempStatusFolder/"
+$query = "SHOW TABLES"
 
-PS C:\>New-AzHDInsightPigJobDefinition -StatusFolder $statusFolder `
+New-AzHDInsightPigJobDefinition -StatusFolder $statusFolder `
             -Query $query `
         | Start-AzHDInsightJob `
             -ClusterName $clusterName `

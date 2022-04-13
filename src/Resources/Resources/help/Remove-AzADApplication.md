@@ -43,14 +43,14 @@ Deletes entity from applications
 
 ### Example 1: Remove application by display name
 ```powershell
-PS C:\> Remove-AzADApplication -DisplayName $name
+Remove-AzADApplication -DisplayName $name
 ```
 
 Remove application by display name
 
 ### Example 2: Remove application by pipeline input
 ```powershell
-PS C:\> Get-AzADApplication -ObjectId $id | Remove-AzADApplication
+Get-AzADApplication -ObjectId $id | Remove-AzADApplication
 ```
 
 Remove application by pipeline input
@@ -326,5 +326,7 @@ INPUTOBJECT <IMicrosoftGraphApplication>: The application object, could be used 
       - `[EnableIdTokenIssuance <Boolean?>]`: Specifies whether this web application can request an ID token using the OAuth 2.0 implicit flow.
     - `[LogoutUrl <String>]`: Specifies the URL that will be used by Microsoft's authorization service to logout an user using front-channel, back-channel or SAML logout protocols.
     - `[RedirectUri <String[]>]`: Specifies the URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+
+## RELATED LINKS
 
 ## RELATED LINKS

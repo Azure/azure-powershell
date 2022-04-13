@@ -24,9 +24,9 @@ The **Add-AzApiManagementUserToGroup** cmdlet adds a user to a group.
 ## EXAMPLES
 
 ### Example 1: Add a user to a group
-```
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Add-AzApiManagementUserToGroup -Context $apimContext -GroupId "0001" -UserId "0123456789"
+```powershell
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Add-AzApiManagementUserToGroup -Context $apimContext -GroupId "0001" -UserId "0123456789"
 ```
 
 This command adds an existing user to an existing group.
