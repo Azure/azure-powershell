@@ -20,14 +20,14 @@ Creates key credentials or password credentials for an service principal.
 .Description
 Creates key credentials or password credentials for an service principal.
 .Example
-PS C:\> $credential = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential" `
+$credential = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential" `
                                  -Property @{'Key' = $cert;
                                  'Usage'       = 'Verify'; 
                                  'Type'        = 'AsymmetricX509Cert'
                                  }
-PS C:\> New-AzADSpCredential -ObjectId $Id -KeyCredentials $credential
+New-AzADSpCredential -ObjectId $Id -KeyCredentials $credential
 .Example
-PS C:\> Get-AzADServicePrincipal -ApplicationId $appId | New-AzADSpCredential -StartDate $startDate -EndDate $endDate
+Get-AzADServicePrincipal -ApplicationId $appId | New-AzADSpCredential -StartDate $startDate -EndDate $endDate
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal

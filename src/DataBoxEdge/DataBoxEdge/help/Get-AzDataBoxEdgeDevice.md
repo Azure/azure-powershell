@@ -108,7 +108,7 @@ deviceName      resourceGroupName    Edge    eastus
 
 ### Example 3
 ```powershell
-Get-AzDataBoxEdgeDevice -ResourceGroupName resourceGroupName -DeviceName deviceName
+Get-AzDataBoxEdgeDevice -ResourceGroupName resourceGroupName -Name deviceName
 ```
 
 ```output
@@ -165,7 +165,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Resource Group Name
+Device Name
 
 ```yaml
 Type: System.String

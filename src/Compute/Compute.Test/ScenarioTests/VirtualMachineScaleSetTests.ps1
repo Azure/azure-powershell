@@ -2876,6 +2876,37 @@ function Test-VirtualMachineScaleSetFlexibleOModeDefaulting
 
 <#
 .SYNOPSIS
+Test Virtual Machine Scale Set OrchestrationMode NetworkAPIVersion null checks work
+#>
+function Test-VirtualMachineScaleSetOrchestrationModeNullChecks
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+
+    try
+    {
+        # Common
+        $loc = "eastus";
+
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        $VMSSName = "sap-flex";
+        $omode = "Flexible";
+
+        # Create Vmss 
+        $vmssConfig = New-AzVmssConfig -Location $loc -PlatformFaultDomainCount 3 -OrchestrationMode $omode;
+        $vmss = New-AzVmss -ResourceGroupName $rgname -Name $VMSSName -VirtualMachineScaleSet $vmssConfig;
+        Assert-AreEqual $omode $vmss.OrchestrationMode;
+
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
 Test Add and remove Vmss Run Command. 
 #>
 function Test-AddAndRemoveAzVmssRunCommand

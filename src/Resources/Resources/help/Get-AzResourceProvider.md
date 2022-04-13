@@ -35,6 +35,7 @@ The **Get-AzResourceProvider** cmdlet gets an Azure resource provider.
 ```powershell
 Get-AzResourceProvider
 ```
+
 ```output
 ProviderNamespace : Microsoft.AppConfiguration
 RegistrationState : Registered
@@ -100,6 +101,7 @@ This command gets all the resource providers from the subscription.
 ```powershell
 Get-AzResourceProvider -ProviderNamespace Microsoft.Compute
 ```
+
 ```output
 ProviderNamespace : Microsoft.Compute
 RegistrationState : Registered
@@ -145,6 +147,7 @@ This command Gets all the resource providers under "Microsoft.Compute".
 ```powershell
 Get-AzResourceProvider -ProviderNamespace Microsoft.Compute,Microsoft.Network
 ```
+
 ```output
 ProviderNamespace : Microsoft.Compute
 RegistrationState : Registered

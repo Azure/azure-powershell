@@ -20,7 +20,7 @@ Updates entity in users
 .Description
 Updates entity in users
 .Example
-PS C:\> Update-AzADUser -UPNOrObjectId $upn -City $city
+Update-AzADUser -UPNOrObjectId $upn -City $city
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser

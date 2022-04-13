@@ -20,9 +20,9 @@ Description for Deletes a web, mobile, or API app, or one of the deployment slot
 .Description
 Description for Deletes a web, mobile, or API app, or one of the deployment slots.
 .Example
-PS C:\> Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Remove-AzFunctionApp -Force
+Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Remove-AzFunctionApp -Force
 .Example
-PS C:\> Remove-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName -Force
+Remove-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName -Force
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity

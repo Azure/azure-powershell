@@ -48,7 +48,7 @@ $secondStorageAccountResourceGroupName = "Group"
 $secondStorageAccountName = "yourstorageacct002"
 $secondStorageAccountKey = Get-AzStorageAccountKey `
 -ResourceGroupName $secondStorageAccountResourceGroupName `
-            -Name $secondStorageAccountName | %{ $_.Key1 }
+            -Name $secondStorageAccountName | ForEach-Object{ $_.Key1 }
 
 # Create the cluster
 New-AzHDInsightClusterConfig `

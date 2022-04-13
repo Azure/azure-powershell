@@ -50,6 +50,7 @@ Get-AzMarketplaceTerms -Publisher "microsoft-ads" -Product "windows-data-science
 This command gets the marketplace publisher agreement
 ### Example 2
 ```powershell
+$agreementTerms = Get-AzMarketplaceTerms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016"
 Set-AzMarketplaceTerms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016" -Terms $agreementTerms -Accept
 ```
 This command sets the publisher agreement to 'Accept', and it gets the value for the 'Terms' parameter from the 'Get-AzMarketplaceTerms' cmdlet

@@ -18,7 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-This release migrates Microsoft.Azure.Graph SDK to MicrsoftGraph SDK.
+
+## Version 5.0.1
+This release migrates Microsoft.Azure.Graph SDK to MicrosoftGraph SDK.
 
 ## Version 5.0.0
 * Added two parameters `-Zone` and `-PrivateLinkConfiguration` to cmdlet `New-AzHDInsightCluster`

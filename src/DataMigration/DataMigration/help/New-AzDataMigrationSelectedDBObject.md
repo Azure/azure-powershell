@@ -34,7 +34,7 @@ The New-AzDataMigrationSelectedDB cmdlet creates a database info object that con
 
 ### Example 1
 ```powershell
-New-AzDataMigrationSelectedDB -MigrateSqlServerSqlDb -Name "HR" -TargetDatabaseName "HR_PSTEST" -TableMap $tableMap
+New-AzDataMigrationSelectedDBObject -MigrateSqlServerSqlDb -Name "HR" -TargetDatabaseName "HR_PSTEST" -TableMap $tableMap
 ```
 
 ```output
@@ -45,7 +45,7 @@ HR   HR_PSTEST                         False {[HR.COUNTRIES, HR.COUNTRIES]}
 
 ### Example 2
 ```powershell
-New-AzDataMigrationSelectedDB -MigrateSqlServerSqlDbMi -Name "HR" -TargetDatabaseName "HR_PSTEST" -BackupFileShare $backupFileShare
+New-AzDataMigrationSelectedDBObject -MigrateSqlServerSqlDbMi -Name "HR" -TargetDatabaseName "HR_PSTEST" -BackupFileShare $backupFileShare
 ```
 
 ```output

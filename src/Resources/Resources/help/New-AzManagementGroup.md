@@ -33,6 +33,7 @@ The **New-AzManagementGroup** cmdlet creates a management group.
 ```powershell
 New-AzManagementGroup -GroupName "TestGroup"
 ```
+
 ```output
 Id                : /providers/Microsoft.Management/managementGroups/TestGroup
 Type              : /providers/Microsoft.Management/managementGroups
@@ -52,6 +53,7 @@ Creation of a new group with `DisplayName` and `ParentId` set to `null`. The `Di
 ```powershell
 New-AzManagementGroup -GroupName "TestGroup" -DisplayName "TestGroupDisplayName"
 ```
+
 ```output
 Id                : /providers/Microsoft.Management/managementGroups/TestGroup
 Type              : /providers/Microsoft.Management/managementGroups
@@ -71,6 +73,7 @@ In this case, the parent of the group will be the tenant and the `DisplayName` w
 ```powershell
 New-AzManagementGroup -GroupName "TestGroup" -DisplayName "TestGroupDisplayName" -ParentId "/providers/Microsoft.Management/managementGroups/TestGroupParent"
 ```
+
 ```output
 Id                : /providers/Microsoft.Management/managementGroups/TestGroup
 Type              : /providers/Microsoft.Management/managementGroups
@@ -89,6 +92,7 @@ ParentDisplayName : TestGroupParent
 $parentObject = Get-AzManagementGroup -GroupName "TestGroupParent"
 New-AzManagementGroup -GroupName "TestGroup" -ParentObject $parentObject
 ```
+
 ```output
 Id                : /providers/Microsoft.Management/managementGroups/TestGroup
 Type              : /providers/Microsoft.Management/managementGroups

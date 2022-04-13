@@ -33,6 +33,7 @@ This command gets all locations and the supported resource providers for each lo
 ```powershell
 Get-AzLocation | Where-Object {$_.Providers -contains "Microsoft.AppConfiguration"}
 ```
+
 ```output
 Location    : eastasia
 DisplayName : East Asia

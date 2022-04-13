@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Resources.PrivateLinks
             {
                 if (!string.IsNullOrEmpty(ManagementGroupId) && string.IsNullOrEmpty(Name))
                 {
-                    var response = ResourceManagementPrivateLinkClient.PrivateLinkAssociation.Get(
+                    var response = ResourceManagementPrivateLinkClient.PrivateLinkAssociation.List(
                         groupId: ManagementGroupId);
                     var items = response.Value.Select(privateLinkAssociation => new PSResourceManagementPrivateLinkAssociation(privateLinkAssociation))
                         .ToList();
@@ -65,11 +65,9 @@ namespace Microsoft.Azure.Commands.Resources.PrivateLinks
                 else if (!string.IsNullOrEmpty(ManagementGroupId) && !string.IsNullOrEmpty(Name))
                 {
                     var response = ResourceManagementPrivateLinkClient.PrivateLinkAssociation.Get(
-                        groupId: ManagementGroupId);
-                    var items = response.Value.Select(privateLinkAssociation => new PSResourceManagementPrivateLinkAssociation(privateLinkAssociation))
-                        .Where(privateLinkAssociation => privateLinkAssociation.Name.Equals(Name))
-                        .ToList();
-                    WriteObject(items);
+                        groupId: ManagementGroupId,
+                        plaId: Name);
+                    WriteObject(new PSResourceManagementPrivateLinkAssociation(response));
                 }
             }
             catch (Exception ex)

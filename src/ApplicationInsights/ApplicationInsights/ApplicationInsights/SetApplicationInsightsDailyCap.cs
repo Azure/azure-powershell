@@ -16,10 +16,12 @@ using Microsoft.Azure.Commands.ApplicationInsights.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.ApplicationInsights.Management.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ApplicationInsights
 {
+    [GenericBreakingChange("Output type will be updated to match API 2015-05-01", "2.0.0")]
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationInsightsDailyCap", DefaultParameterSetName = ComponentNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSPricingPlan))]
     public class SetApplicationInsightsDailyCapCommand : ApplicationInsightsBaseCmdlet
     {
@@ -29,6 +31,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
             ParameterSetName = ComponentObjectParameterSet,
             ValueFromPipeline = true,
             HelpMessage = "Application Insights Component Object.")]
+        [CmdletParameterBreakingChange("ApplicationInsightsComponent", ChangeDescription = "Parameter ApplicationInsightsComponent will be removed in upcoming Az.ApplicationInsights 2.0.0")]
         [ValidateNotNull]
         public PSApplicationInsightsComponent ApplicationInsightsComponent { get; set; }
 
@@ -38,6 +41,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
             ParameterSetName = ResourceIdParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Application Insights Component Resource Id.")]
+        [CmdletParameterBreakingChange("ResourceId", ChangeDescription = "Parameter ResourceId will be removed in upcoming Az.ApplicationInsights 2.0.0")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 

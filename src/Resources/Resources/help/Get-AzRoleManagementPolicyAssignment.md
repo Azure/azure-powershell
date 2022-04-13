@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resources-help.xml
 Module Name: Az.Resources
 online version: https://docs.microsoft.com/powershell/module/az.resources/get-azrolemanagementpolicyassignment
 schema: 2.0.0
@@ -44,7 +44,7 @@ Name                                                                      Type  
 588b80cc-f50c-4616-acc9-0003872624db_00493d72-78f6-4148-b6c5-d3ce8e4799dd Microsoft.Authorization/roleManagementPolicyAssignment /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f… 
 8dbbf139-4d46-4ad4-a56b-004156c117d2_056cd41c-7e88-42e1-933e-88ba6a50c9c3 Microsoft.Authorization/roleManagementPolicyAssignment /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f… 
 1c8bc687-402c-4e62-b38b-009d6fc244d3_b97fb8bc-a8b2-4522-a38b-dd33c7e65ead Microsoft.Authorization/roleManagementPolicyAssignment /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f… 
-5d582357-e60a-4322-a299-00ab23713a07_70bbe301-9835-447d-afdd-19eb3167307c Microsoft.Authorization/roleManagementPolicyAssignment /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f… 
+5d582357-e60a-4322-a299-00ab23713a07_70bbe301-9835-447d-afdd-19eb3167307c Microsoft.Authorization/roleManagementPolicyAssignment /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f…
 ```
 
 Returns all `roleManagementPolicyAssignment` for the `scope`
@@ -115,7 +115,7 @@ The scope of the role management policy.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -158,4 +158,3 @@ INPUTOBJECT <IAuthorizationIdentity>: Identity Parameter
   - `[Scope <String>]`: The scope of the role management policy.
 
 ## RELATED LINKS
-
