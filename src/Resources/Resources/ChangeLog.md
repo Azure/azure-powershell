@@ -20,6 +20,19 @@
 
 ## Upcoming Release
 
+## Version 5.6.0
+* Added the following cmdlets to remain in parity with 2021-04-01 API version:
+    - `New-AzHierarchySetting`
+    - `Get-AzHierarchySetting`
+    - `Update-AzHierarchySetting`
+    - `Remove-AzHierarchySetting`
+    - `Get-AzManagementGroupSubscription`
+    - `Get-AzSubscriptionUnderManagementGroup` 
+    - `Start-AzTenantBackfill`
+    - `Get-AzTenantBackfillStatus` 
+    - `Get-AzManagementGroupNameAvailability`
+    - `Get-AzEntity` 
+
 ## Version 5.5.0
 * Removed `-ApplicationId` from `New-AzADServicePrincipal` `SimpleParameterSet` [#17256]
 * Added `New-AzResourceManagementPrivateLink`, and `New-AzPrivateLinkAssociation` cmdlets
