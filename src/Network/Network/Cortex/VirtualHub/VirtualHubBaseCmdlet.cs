@@ -92,6 +92,7 @@ namespace Microsoft.Azure.Commands.Network
             virtualHub.VirtualNetworkConnections = null;
             var virtualHubModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualHub>(virtualHub);
             virtualHubModel.Location = virtualHub.Location;
+            virtualHubModel.HubRoutingPreference = virtualHub.HubRoutingPreference;
             virtualHubModel.Tags = TagsConversionHelper.CreateTagDictionary(tags, validate: true);
             MNM.VirtualHub virtualHubCreatedOrUpdated;
 
