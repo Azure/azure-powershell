@@ -133,3 +133,42 @@ function Test-GetSubscriptionsWithTags
 	$allSubscriptions = Get-AzSubscription
 	Assert-True {($allSubscriptions | Where-Object { $_.Tags -ne $null}).Count -gt 0}
 }
+
+<#
+.SYNOPSIS
+Tests whether subscripitions before and after context rename and set are equal.
+.DESCRIPTION
+SmokeTest
+#>
+function Test-GetSubscriptionsAfterContextRenameAndSet
+{
+	$subscriptionExp = Get-AzSubscription
+
+	$contextWithOutSecret = Get-AzContext
+	Assert-False {$contextWithOutSecret.Account.ExtendedProperties.Keys -Contains 'ServicePrincipalSecret'}
+	$newContextName = "ContextWithoutSecret"
+	Set-AzContext -Context $contextWithOutSecret -Name $newContextName
+	Assert-AreEqual $newContextName (Get-AzContext).Name
+	Assert-False {(Get-AzContext).Account.ExtendedProperties.Keys -Contains 'ServicePrincipalSecret'}
+
+	$subscriptionActual = Get-AzSubscription
+	Assert-AreEqualObjectProperties $subscriptionExp $subscriptionActual
+}
+
+<#
+.SYNOPSIS
+Tests whether subscripitions is successfully when default profile is set to the context without a ServicePrincipalSecret.
+.DESCRIPTION
+SmokeTest
+#>
+function Test-GetSubscriptionsWithDefaultProfileAsInput
+{
+	$subscriptionExp = Get-AzSubscription
+
+	$contextWithOutSecret = Get-AzContext
+	Assert-False {$contextWithOutSecret.Account.ExtendedProperties.Keys -Contains 'ServicePrincipalSecret'}
+
+	$subscriptionActual = Get-AzSubscription -DefaultProfile $contextWithOutSecret
+	Assert-AreEqualObjectProperties $subscriptionExp $subscriptionActual
+}
+

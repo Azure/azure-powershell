@@ -25,8 +25,9 @@ Create or update an ExpressRoute Circuit Authorization in a private cloud
 
 ### Example 1: Create an Circuit Authorization in a private cloud
 ```powershell
-PS C:\> New-AzVMwareAuthorization -Name azps_test_authorization -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
-
+New-AzVMwareAuthorization -Name azps_test_authorization -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
+```
+```output
 Name                    Type                                       ResourceGroupName
 ----                    ----                                       -----------------
 azps_test_authorization Microsoft.AVS/privateClouds/authorizations azps_test_group
@@ -180,7 +181,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.IExpressRouteAuthorization
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IExpressRouteAuthorization
 
 ## NOTES
 

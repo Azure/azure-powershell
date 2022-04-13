@@ -99,8 +99,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteSealRequestInternal)this).LightTheme = (bool?) content.GetValueForProperty("LightTheme",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteSealRequestInternal)this).LightTheme, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteSealRequestInternal)this).Locale = (string) content.GetValueForProperty("Locale",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteSealRequestInternal)this).Locale, global::System.Convert.ToString);
+            if (content.Contains("LightTheme"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteSealRequestInternal)this).LightTheme = (bool?) content.GetValueForProperty("LightTheme",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteSealRequestInternal)this).LightTheme, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("Locale"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteSealRequestInternal)this).Locale = (string) content.GetValueForProperty("Locale",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteSealRequestInternal)this).Locale, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -118,8 +124,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteSealRequestInternal)this).LightTheme = (bool?) content.GetValueForProperty("LightTheme",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteSealRequestInternal)this).LightTheme, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteSealRequestInternal)this).Locale = (string) content.GetValueForProperty("Locale",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteSealRequestInternal)this).Locale, global::System.Convert.ToString);
+            if (content.Contains("LightTheme"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteSealRequestInternal)this).LightTheme = (bool?) content.GetValueForProperty("LightTheme",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteSealRequestInternal)this).LightTheme, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("Locale"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteSealRequestInternal)this).Locale = (string) content.GetValueForProperty("Locale",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteSealRequestInternal)this).Locale, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

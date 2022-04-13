@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics.dll-Help.xml
 Module Name: Az.DataLakeAnalytics
 ms.assetid: ED17430D-4DAF-4B9E-937D-0F8A843DAB96
@@ -24,8 +24,8 @@ The **Test-AzDataLakeAnalyticsCatalogItem** cmdlet checks for the existence of a
 ## EXAMPLES
 
 ### Example 1: Test whether a catalog item exists
-```
-PS C:\>Test-AzDataLakeAnalyticsCatalogItem -Account "ContosoAdlAccount" -ItemType Schema -Path "databaseName.schemaName"
+```powershell
+Test-AzDataLakeAnalyticsCatalogItem -Account "ContosoAdlAccount" -ItemType Schema -Path "databaseName.schemaName"
 ```
 
 This command tests whether a specified Schema item exists.

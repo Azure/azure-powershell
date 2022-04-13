@@ -481,9 +481,25 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 && !string.IsNullOrEmpty(aseResourceGroupName))
             {
                 appServicePlan.HostingEnvironmentProfile = new HostingEnvironmentProfile(
-                id: CmdletHelpers.GetApplicationServiceEnvironmentResourceId(WrappedWebsitesClient.SubscriptionId, aseResourceGroupName, aseName),
+                id: CmdletHelpers.GetAppServiceEnvironmentResourceId(WrappedWebsitesClient.SubscriptionId, aseResourceGroupName, aseName),
                     name: aseName,
-                    type: CmdletHelpers.ApplicationServiceEnvironmentResourcesName);
+                    type: CmdletHelpers.AppServiceEnvironmentResourcesName);
+            }
+
+            return WrappedWebsitesClient.AppServicePlans().CreateOrUpdate(resourceGroupName, appServicePlanName, appServicePlan);
+        }
+
+        public AppServicePlan CreateOrUpdateAppServicePlan(string resourceGroupName, string appServicePlanName, AppServicePlan appServicePlan, string aseRecourceId)
+        {
+            if (!string.IsNullOrEmpty(aseRecourceId))
+            {
+                string aseResourceGroupName, aseName;
+                if (!CmdletHelpers.TryParseAppServiceEnvironmentMetadataFromResourceId(aseRecourceId, out aseResourceGroupName, out aseName))
+                    throw new ArgumentException(string.Format("AseResourceId format is invalid"));
+                appServicePlan.HostingEnvironmentProfile = new HostingEnvironmentProfile(
+                id: aseRecourceId,
+                name: aseName,
+                type: CmdletHelpers.AppServiceEnvironmentResourcesName);
             }
 
             return WrappedWebsitesClient.AppServicePlans().CreateOrUpdate(resourceGroupName, appServicePlanName, appServicePlan);

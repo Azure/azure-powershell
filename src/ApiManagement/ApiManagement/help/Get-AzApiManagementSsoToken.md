@@ -31,8 +31,8 @@ The **Get-AzApiManagementSsoToken** cmdlet returns a link (URL) containing a sin
 ## EXAMPLES
 
 ### Example 1: Get the SSO token of an API Management service
-```
-PS C:\>Get-AzApiManagementSsoToken -ResourceGroupName "Contoso" -Name "ContosoApi"
+```powershell
+Get-AzApiManagementSsoToken -ResourceGroupName "Contoso" -Name "ContosoApi"
 ```
 
 This command gets the SSO token of an API Management service.

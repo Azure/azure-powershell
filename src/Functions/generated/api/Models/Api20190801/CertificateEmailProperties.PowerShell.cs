@@ -66,8 +66,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICertificateEmailPropertiesInternal)this).EmailId = (string) content.GetValueForProperty("EmailId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICertificateEmailPropertiesInternal)this).EmailId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICertificateEmailPropertiesInternal)this).TimeStamp = (global::System.DateTime?) content.GetValueForProperty("TimeStamp",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICertificateEmailPropertiesInternal)this).TimeStamp, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            if (content.Contains("EmailId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICertificateEmailPropertiesInternal)this).EmailId = (string) content.GetValueForProperty("EmailId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICertificateEmailPropertiesInternal)this).EmailId, global::System.Convert.ToString);
+            }
+            if (content.Contains("TimeStamp"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICertificateEmailPropertiesInternal)this).TimeStamp = (global::System.DateTime?) content.GetValueForProperty("TimeStamp",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICertificateEmailPropertiesInternal)this).TimeStamp, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -85,8 +91,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICertificateEmailPropertiesInternal)this).EmailId = (string) content.GetValueForProperty("EmailId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICertificateEmailPropertiesInternal)this).EmailId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICertificateEmailPropertiesInternal)this).TimeStamp = (global::System.DateTime?) content.GetValueForProperty("TimeStamp",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICertificateEmailPropertiesInternal)this).TimeStamp, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            if (content.Contains("EmailId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICertificateEmailPropertiesInternal)this).EmailId = (string) content.GetValueForProperty("EmailId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICertificateEmailPropertiesInternal)this).EmailId, global::System.Convert.ToString);
+            }
+            if (content.Contains("TimeStamp"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICertificateEmailPropertiesInternal)this).TimeStamp = (global::System.DateTime?) content.GetValueForProperty("TimeStamp",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICertificateEmailPropertiesInternal)this).TimeStamp, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             AfterDeserializePSObject(content);
         }
 

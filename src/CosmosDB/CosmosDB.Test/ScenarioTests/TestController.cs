@@ -27,6 +27,8 @@ using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
+using Microsoft.Azure.KeyVault;
+using Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1;
 
 namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
 {
@@ -42,6 +44,12 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
 
         public AzureRestClient AzureRestClient { get; private set; }
 
+        public KeyVaultManagementClient KeyVaultManagementClient { get; private set; }
+
+        public KeyVaultClient KeyVaultClient { get; private set; }
+
+        public static CosmosDBTestHelper CosmosDBTestHelper { get; private set; }
+
         public static TestController NewInstance => new TestController();
 
         protected TestController()
@@ -55,11 +63,13 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
             CosmosDBManagementClient = GetCosmosDBManagementClient(context);
             NetworkManagementClient = GetNetworkManagementClient(context);
             AzureRestClient = GetAzureRestClient(context);
+            KeyVaultManagementClient = GetKeyVaultManagementClient(context);
             _helper.SetupManagementClients(
                 ResourceManagementClient,
                 CosmosDBManagementClient,
                 NetworkManagementClient,
-                AzureRestClient);
+                AzureRestClient,
+                KeyVaultManagementClient);
         }
 
         public void RunPowerShellTest(ServiceManagement.Common.Models.XunitTracingInterceptor logger, params string[] scripts)
@@ -106,12 +116,16 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
 
                 _helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
+                KeyVaultClient = GetKeyVaultClient();
+                CosmosDBTestHelper = GetTestHelper();
+
                 var callingClassName = callingClassType.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries).Last();
 
                 _helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     _helper.RMProfileModule,
+                    _helper.GetRMModulePath("Az.KeyVault.psd1"),
                     _helper.GetRMModulePath("Az.CosmosDB.psd1"),
                     _helper.GetRMModulePath("Az.Network.psd1"),
                     "AzureRM.Resources.ps1");
@@ -148,6 +162,20 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
         private static AzureRestClient GetAzureRestClient(MockContext context)
         {
             return context.GetServiceClient<AzureRestClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private static KeyVaultManagementClient GetKeyVaultManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<KeyVaultManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+        private CosmosDBTestHelper GetTestHelper()
+        {
+            return new CosmosDBTestHelper(this.KeyVaultManagementClient, this.KeyVaultClient);
+        }
+
+        private static KeyVaultClient GetKeyVaultClient()
+        {
+            return new KeyVaultClient(CosmosDBTestHelper.GetAccessToken, CosmosDBTestHelper.GetHandlers());
         }
     }
 }

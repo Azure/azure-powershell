@@ -67,9 +67,11 @@ namespace Microsoft.Azure.Commands.Aks
         [PSArgumentCompleter("Linux", "Windows")]
         public string OsType { get; set; }
 
-        //Hide as PublicIp is going to GA around May
-        //[Parameter(Mandatory = false, HelpMessage = "Whether to enable public IP for nodes")]
-        //public SwitchParameter EnableNodePublicIp { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enable public IP for nodes.")]
+        public SwitchParameter EnableNodePublicIp { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The resource Id of public IP prefix for node pool.")]
+        public string NodePublicIPPrefixID { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "ScaleSetPriority to be used to specify virtual machine scale set priority. Default to regular.")]
         [PSArgumentCompleter("Low", "Regular")]
@@ -160,11 +162,15 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 agentPool.EnableAutoScaling = EnableAutoScaling.ToBool();
             }
-            //if(EnableNodePublicIp.IsPresent)
-            //{
-            //    agentPool.EnableNodePublicIP = EnableNodePublicIp.ToBool();
-            //}
-            if(this.IsParameterBound(c => c.ScaleSetEvictionPolicy))
+            if (EnableNodePublicIp.IsPresent)
+            {
+                agentPool.EnableNodePublicIP = EnableNodePublicIp.ToBool();
+            }
+            if (this.IsParameterBound(c => c.NodePublicIPPrefixID))
+            {
+                agentPool.NodePublicIPPrefixID = NodePublicIPPrefixID;
+            }
+            if (this.IsParameterBound(c => c.ScaleSetEvictionPolicy))
             {
                 agentPool.ScaleSetEvictionPolicy = ScaleSetEvictionPolicy;
             }

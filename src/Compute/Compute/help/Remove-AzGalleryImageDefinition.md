@@ -37,7 +37,7 @@ Delete a gallery image definition.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $gallery -GalleryImageDefinitionName $galleryImage
+Remove-AzGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $gallery -GalleryImageDefinitionName $galleryImage
 ```
 
 Remove the gallery image definition.

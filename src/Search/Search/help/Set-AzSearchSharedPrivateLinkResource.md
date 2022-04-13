@@ -44,8 +44,9 @@ This **Set-AzSearchSharedPrivateLinkResource** updates the shared private link r
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzSearchSharedPrivateLinkResource -ResourceGroupName arjagann -ServiceName arjagann-test-cuseuap -Name blob-pe -RequestMessage "Please kindly approve"
-
+Set-AzSearchSharedPrivateLinkResource -ResourceGroupName arjagann -ServiceName arjagann-test-cuseuap -Name blob-pe -RequestMessage "Please kindly approve"
+```
+```output
 
 Id                    : /subscriptions/a4337210-c6b0-4de4-907a-688f1c120d9a/resourceGroups/arjagann/providers/Microsoft.Search/searchServices/arjagann-test-cuseuap/sharedPrivateLinkResources/blob-pe
 Type                  : Microsoft.Search/searchServices/sharedPrivateLinkResources

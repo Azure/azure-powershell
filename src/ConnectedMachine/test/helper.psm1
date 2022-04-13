@@ -40,9 +40,9 @@ function Start-ExtensionPopulate {
     } elseif ($IsWindows) {
         $splat.ExtensionType = "CustomScriptExtension"
         $splat.Publisher = "Microsoft.Compute"
-        $splat.TypeHandlerVersion = "1.10"
+        $splat.TypeHandlerVersion = "1.10.10"
         $splat.Settings = @{
-            commandToExecute = "dir"
+            CommandToExecute = "dir"
         }
     }
 

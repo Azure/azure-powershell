@@ -99,14 +99,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).FileSystem = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IFileSystemHttpLogsConfig) content.GetValueForProperty("FileSystem",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).FileSystem, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.FileSystemHttpLogsConfigTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).AzureBlobStorage = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureBlobStorageHttpLogsConfig) content.GetValueForProperty("AzureBlobStorage",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).AzureBlobStorage, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.AzureBlobStorageHttpLogsConfigTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).FileSystemRetentionInMb = (int?) content.GetValueForProperty("FileSystemRetentionInMb",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).FileSystemRetentionInMb, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).FileSystemRetentionInDay = (int?) content.GetValueForProperty("FileSystemRetentionInDay",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).FileSystemRetentionInDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).FileSystemEnabled = (bool?) content.GetValueForProperty("FileSystemEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).FileSystemEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).AzureBlobStorageSasUrl = (string) content.GetValueForProperty("AzureBlobStorageSasUrl",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).AzureBlobStorageSasUrl, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).AzureBlobStorageRetentionInDay = (int?) content.GetValueForProperty("AzureBlobStorageRetentionInDay",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).AzureBlobStorageRetentionInDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).AzureBlobStorageEnabled = (bool?) content.GetValueForProperty("AzureBlobStorageEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).AzureBlobStorageEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            if (content.Contains("FileSystem"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).FileSystem = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IFileSystemHttpLogsConfig) content.GetValueForProperty("FileSystem",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).FileSystem, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.FileSystemHttpLogsConfigTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("AzureBlobStorage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).AzureBlobStorage = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureBlobStorageHttpLogsConfig) content.GetValueForProperty("AzureBlobStorage",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).AzureBlobStorage, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.AzureBlobStorageHttpLogsConfigTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("FileSystemRetentionInMb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).FileSystemRetentionInMb = (int?) content.GetValueForProperty("FileSystemRetentionInMb",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).FileSystemRetentionInMb, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("FileSystemRetentionInDay"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).FileSystemRetentionInDay = (int?) content.GetValueForProperty("FileSystemRetentionInDay",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).FileSystemRetentionInDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("FileSystemEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).FileSystemEnabled = (bool?) content.GetValueForProperty("FileSystemEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).FileSystemEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("AzureBlobStorageSasUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).AzureBlobStorageSasUrl = (string) content.GetValueForProperty("AzureBlobStorageSasUrl",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).AzureBlobStorageSasUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("AzureBlobStorageRetentionInDay"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).AzureBlobStorageRetentionInDay = (int?) content.GetValueForProperty("AzureBlobStorageRetentionInDay",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).AzureBlobStorageRetentionInDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("AzureBlobStorageEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).AzureBlobStorageEnabled = (bool?) content.GetValueForProperty("AzureBlobStorageEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).AzureBlobStorageEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -124,14 +148,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).FileSystem = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IFileSystemHttpLogsConfig) content.GetValueForProperty("FileSystem",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).FileSystem, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.FileSystemHttpLogsConfigTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).AzureBlobStorage = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureBlobStorageHttpLogsConfig) content.GetValueForProperty("AzureBlobStorage",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).AzureBlobStorage, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.AzureBlobStorageHttpLogsConfigTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).FileSystemRetentionInMb = (int?) content.GetValueForProperty("FileSystemRetentionInMb",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).FileSystemRetentionInMb, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).FileSystemRetentionInDay = (int?) content.GetValueForProperty("FileSystemRetentionInDay",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).FileSystemRetentionInDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).FileSystemEnabled = (bool?) content.GetValueForProperty("FileSystemEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).FileSystemEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).AzureBlobStorageSasUrl = (string) content.GetValueForProperty("AzureBlobStorageSasUrl",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).AzureBlobStorageSasUrl, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).AzureBlobStorageRetentionInDay = (int?) content.GetValueForProperty("AzureBlobStorageRetentionInDay",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).AzureBlobStorageRetentionInDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).AzureBlobStorageEnabled = (bool?) content.GetValueForProperty("AzureBlobStorageEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).AzureBlobStorageEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            if (content.Contains("FileSystem"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).FileSystem = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IFileSystemHttpLogsConfig) content.GetValueForProperty("FileSystem",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).FileSystem, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.FileSystemHttpLogsConfigTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("AzureBlobStorage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).AzureBlobStorage = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAzureBlobStorageHttpLogsConfig) content.GetValueForProperty("AzureBlobStorage",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).AzureBlobStorage, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.AzureBlobStorageHttpLogsConfigTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("FileSystemRetentionInMb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).FileSystemRetentionInMb = (int?) content.GetValueForProperty("FileSystemRetentionInMb",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).FileSystemRetentionInMb, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("FileSystemRetentionInDay"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).FileSystemRetentionInDay = (int?) content.GetValueForProperty("FileSystemRetentionInDay",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).FileSystemRetentionInDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("FileSystemEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).FileSystemEnabled = (bool?) content.GetValueForProperty("FileSystemEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).FileSystemEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("AzureBlobStorageSasUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).AzureBlobStorageSasUrl = (string) content.GetValueForProperty("AzureBlobStorageSasUrl",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).AzureBlobStorageSasUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("AzureBlobStorageRetentionInDay"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).AzureBlobStorageRetentionInDay = (int?) content.GetValueForProperty("AzureBlobStorageRetentionInDay",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).AzureBlobStorageRetentionInDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("AzureBlobStorageEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).AzureBlobStorageEnabled = (bool?) content.GetValueForProperty("AzureBlobStorageEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHttpLogsConfigInternal)this).AzureBlobStorageEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             AfterDeserializePSObject(content);
         }
 

@@ -17,7 +17,7 @@ Creates a non-persisted cluster configuration object that describes an Azure HDI
 New-AzHDInsightClusterConfig [-StorageAccountResourceId <String>] [-StorageAccountKey <String>]
  [-StorageAccountType <StorageType>] [-OozieMetastore <AzureHDInsightMetastore>]
  [-HiveMetastore <AzureHDInsightMetastore>] [-HeadNodeSize <String>] [-WorkerNodeSize <String>]
- [-EdgeNodeSize <String>] [-ZookeeperNodeSize <String>] [-ClusterType <String>] [-ClusterTier <Tier>]
+ [-EdgeNodeSize <String>] [-ZookeeperNodeSize <String>] [-ClusterType <String>] [-ClusterTier <String>]
  [-ObjectId <Guid>] [-ApplicationId <Guid>] [-CertificateFileContents <Byte[]>] [-CertificateFilePath <String>]
  [-CertificatePassword <String>] [-AadTenantId <Guid>] [-MinSupportedTlsVersion <String>]
  [-AssignedIdentity <String>] [-EncryptionAlgorithm <String>] [-EncryptionKeyName <String>]
@@ -31,27 +31,27 @@ The **New-AzHDInsightClusterConfig** cmdlet creates a non-persisted object that 
 ## EXAMPLES
 
 ### Example 1: Create a cluster configuration object
-```
-PS C:\># Primary storage account info
-PS C:\> $storageAccountResourceGroupName = "Group"
-PS C:\> $storageAccountResourceId = "yourstorageaccountresourceid"
-PS C:\> $storageAccountName = "yourstorageaccountname"
-PS C:\> $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $storageAccountResourceGroupName -Name $storageAccountName)[0].value
+```powershell
+# Primary storage account info
+$storageAccountResourceGroupName = "Group"
+$storageAccountResourceId = "yourstorageaccountresourceid"
+$storageAccountName = "yourstorageaccountname"
+$storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $storageAccountResourceGroupName -Name $storageAccountName)[0].value
 
 
-PS C:\> $storageContainer = "container002"
+$storageContainer = "container002"
 
 # Cluster configuration info
-PS C:\> $location = "East US 2"
-PS C:\> $clusterResourceGroupName = "Group"
-PS C:\> $clusterName = "your-hadoop-002"
-PS C:\> $clusterCreds = Get-Credential
+$location = "East US 2"
+$clusterResourceGroupName = "Group"
+$clusterName = "your-hadoop-002"
+$clusterCreds = Get-Credential
 
 # If the cluster's resource group doesn't exist yet, run:
 #   New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
 
 # Create the cluster
-PS C:\> New-AzHDInsightClusterConfig `
+New-AzHDInsightClusterConfig `
             | Add-AzHDInsightStorage `
                 -StorageAccountName "$secondStorageAccountName.blob.core.contoso.net" `
                 -StorageAccountKey $key2 `
@@ -173,7 +173,7 @@ The default value is Standard.
 The Premium tier can only be used with Linux clusters, and it enables the use of some new features.
 
 ```yaml
-Type: Microsoft.Azure.Management.HDInsight.Models.Tier
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Standard, Premium

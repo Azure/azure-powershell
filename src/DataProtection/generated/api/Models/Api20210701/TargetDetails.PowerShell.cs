@@ -101,9 +101,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetDetailsInternal)this).FilePrefix = (string) content.GetValueForProperty("FilePrefix",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetDetailsInternal)this).FilePrefix, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetDetailsInternal)this).RestoreTargetLocationType = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RestoreTargetLocationType) content.GetValueForProperty("RestoreTargetLocationType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetDetailsInternal)this).RestoreTargetLocationType, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RestoreTargetLocationType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetDetailsInternal)this).Url = (string) content.GetValueForProperty("Url",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetDetailsInternal)this).Url, global::System.Convert.ToString);
+            if (content.Contains("FilePrefix"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetDetailsInternal)this).FilePrefix = (string) content.GetValueForProperty("FilePrefix",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetDetailsInternal)this).FilePrefix, global::System.Convert.ToString);
+            }
+            if (content.Contains("RestoreTargetLocationType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetDetailsInternal)this).RestoreTargetLocationType = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RestoreTargetLocationType) content.GetValueForProperty("RestoreTargetLocationType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetDetailsInternal)this).RestoreTargetLocationType, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RestoreTargetLocationType.CreateFrom);
+            }
+            if (content.Contains("Url"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetDetailsInternal)this).Url = (string) content.GetValueForProperty("Url",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetDetailsInternal)this).Url, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -121,9 +130,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetDetailsInternal)this).FilePrefix = (string) content.GetValueForProperty("FilePrefix",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetDetailsInternal)this).FilePrefix, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetDetailsInternal)this).RestoreTargetLocationType = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RestoreTargetLocationType) content.GetValueForProperty("RestoreTargetLocationType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetDetailsInternal)this).RestoreTargetLocationType, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RestoreTargetLocationType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetDetailsInternal)this).Url = (string) content.GetValueForProperty("Url",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetDetailsInternal)this).Url, global::System.Convert.ToString);
+            if (content.Contains("FilePrefix"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetDetailsInternal)this).FilePrefix = (string) content.GetValueForProperty("FilePrefix",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetDetailsInternal)this).FilePrefix, global::System.Convert.ToString);
+            }
+            if (content.Contains("RestoreTargetLocationType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetDetailsInternal)this).RestoreTargetLocationType = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RestoreTargetLocationType) content.GetValueForProperty("RestoreTargetLocationType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetDetailsInternal)this).RestoreTargetLocationType, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RestoreTargetLocationType.CreateFrom);
+            }
+            if (content.Contains("Url"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetDetailsInternal)this).Url = (string) content.GetValueForProperty("Url",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.ITargetDetailsInternal)this).Url, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

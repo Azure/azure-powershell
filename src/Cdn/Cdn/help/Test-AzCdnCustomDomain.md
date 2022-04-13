@@ -30,6 +30,17 @@ The **Test-AzCdnCustomDomain** cmdlet checks whether a custom domain can be adde
 
 ## EXAMPLES
 
+### Example 1
+```powershell
+Test-AzCdnCustomDomain -ResourceGroupName myresourcegroup -ProfileName mycdnprofile -EndpointName myendpoint -CustomDomainHostName cdn.example.com
+```
+
+```Output
+CustomDomainValidated Reason Message
+--------------------- ------ -------
+                 True
+```
+
 ## PARAMETERS
 
 ### -CdnEndpoint

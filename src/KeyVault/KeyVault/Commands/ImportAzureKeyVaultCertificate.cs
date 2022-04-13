@@ -140,17 +140,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
                         if (doImport)
                         {
-                            byte[] base64Bytes;
-
-                            if (Password == null)
-                            {
-                                base64Bytes = userProvidedCertColl.Export(X509ContentType.Pfx);
-                            }
-                            else
-                            {
-                                base64Bytes = userProvidedCertColl.Export(X509ContentType.Pfx, Password.ConvertToString());
-                            }
-
+                            byte[] base64Bytes = userProvidedCertColl.Export(X509ContentType.Pfx, Password?.ConvertToString());
                             string base64CertCollection = Convert.ToBase64String(base64Bytes);
                             certBundle = this.DataServiceClient.ImportCertificate(VaultName, Name, base64CertCollection, Password, Tag == null ? null : Tag.ConvertToDictionary());
                         }
@@ -188,15 +178,8 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
 
             X509Certificate2Collection certificateCollection = new X509Certificate2Collection();
-
-            if (null == this.Password)
-            {
-                certificateCollection.Import(certFile.FullName);
-            }
-            else
-            {
-                certificateCollection.Import(certFile.FullName, this.Password.ConvertToString(), X509KeyStorageFlags.Exportable);
-            }
+            
+            certificateCollection.Import(certFile.FullName, this.Password?.ConvertToString(), X509KeyStorageFlags.Exportable);
 
             return certificateCollection;
         }

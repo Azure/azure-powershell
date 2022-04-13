@@ -12,12 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-// TODO: Remove IfDef
-#if NETSTANDARD
-using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
-#else
-using Microsoft.Azure.ActiveDirectory.GraphClient;
-#endif
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.DirectoryObjects;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Groups;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Users;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
@@ -103,41 +102,40 @@ namespace Microsoft.Azure.Commands.KeyVault
             return str;
         }
 
-        public static string GetDisplayNameForADObject(string objectId, ActiveDirectoryClient adClient) =>
-            GetDetailsFromADObjectId(objectId, adClient).Item1;
+        public static string GetDisplayNameForADObject(string objectId, IMicrosoftGraphClient graphClient) =>
+            GetDetailsFromADObjectId(objectId, graphClient).Item1;
 
-        public static (string, string) GetDetailsFromADObjectId(string objectId, ActiveDirectoryClient adClient)
+        public static (string, string) GetDetailsFromADObjectId(string objectId, IMicrosoftGraphClient graphClient)
         {
             var displayName = "";
             var upnOrSpn = "";
             var objectType = "Unknown";
 
-            if (adClient == null || string.IsNullOrWhiteSpace(objectId))
+            if (graphClient == null || string.IsNullOrWhiteSpace(objectId))
                 return (displayName, objectType);
 
             try
             {
-                var obj = adClient.GetObjectsByObjectId(new List<string> { objectId }).FirstOrDefault();
+                var obj = graphClient.DirectoryObjects.GetDirectoryObject(objectId);
                 if (obj != null)
                 {
-                    if (obj.Type.Equals("user", StringComparison.InvariantCultureIgnoreCase))
+                    if (obj.Odatatype.Equals("#microsoft.graph.user", StringComparison.InvariantCultureIgnoreCase))
                     {
-                        var user = adClient.FilterUsers(new ADObjectFilterOptions { Id = objectId }).FirstOrDefault();
+                        var user = graphClient.Users.GetUser(objectId);
                         displayName = user.DisplayName;
                         upnOrSpn = user.UserPrincipalName;
                         objectType = "User";
                     }
-                    else if (obj.Type.Equals("serviceprincipal", StringComparison.InvariantCultureIgnoreCase))
+                    else if (obj.Odatatype.Equals("#microsoft.graph.serviceprincipal", StringComparison.InvariantCultureIgnoreCase))
                     {
-                        var odataQuery = new Rest.Azure.OData.ODataQuery<Graph.RBAC.Version1_6.Models.ServicePrincipal>(s => s.ObjectId == objectId);
-                        var servicePrincipal = adClient.FilterServicePrincipals(odataQuery).FirstOrDefault();
+                        var servicePrincipal = graphClient.ServicePrincipals.GetServicePrincipal(objectId);
                         displayName = servicePrincipal.DisplayName;
                         upnOrSpn = servicePrincipal.ServicePrincipalNames.FirstOrDefault();
                         objectType = "Service Principal";
                     }
-                    else if (obj.Type.Equals("group", StringComparison.InvariantCultureIgnoreCase))
+                    else if (obj.Odatatype.Equals("#microsoft.graph.group", StringComparison.InvariantCultureIgnoreCase))
                     {
-                        var group = adClient.FilterGroups(new ADObjectFilterOptions { Id = objectId }).FirstOrDefault();
+                        var group = graphClient.Groups.GetGroup(objectId);
                         displayName = group.DisplayName;
                         objectType = "Group";
                     }
@@ -155,7 +153,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         }
 
-        public static string GetDisplayNameForTenant(Guid id, ActiveDirectoryClient adClient)
+        public static string GetDisplayNameForTenant(Guid id, IMicrosoftGraphClient graphClient)
         {
             if (id == null)
                 return string.Empty;

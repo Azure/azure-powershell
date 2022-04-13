@@ -104,9 +104,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IUpstreamAuthSettingsInternal)this).ManagedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IManagedIdentitySettings) content.GetValueForProperty("ManagedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IUpstreamAuthSettingsInternal)this).ManagedIdentity, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ManagedIdentitySettingsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IUpstreamAuthSettingsInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.UpstreamAuthType?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IUpstreamAuthSettingsInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.UpstreamAuthType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IUpstreamAuthSettingsInternal)this).ManagedIdentityResource = (string) content.GetValueForProperty("ManagedIdentityResource",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IUpstreamAuthSettingsInternal)this).ManagedIdentityResource, global::System.Convert.ToString);
+            if (content.Contains("ManagedIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IUpstreamAuthSettingsInternal)this).ManagedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IManagedIdentitySettings) content.GetValueForProperty("ManagedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IUpstreamAuthSettingsInternal)this).ManagedIdentity, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ManagedIdentitySettingsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IUpstreamAuthSettingsInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.UpstreamAuthType?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IUpstreamAuthSettingsInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.UpstreamAuthType.CreateFrom);
+            }
+            if (content.Contains("ManagedIdentityResource"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IUpstreamAuthSettingsInternal)this).ManagedIdentityResource = (string) content.GetValueForProperty("ManagedIdentityResource",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IUpstreamAuthSettingsInternal)this).ManagedIdentityResource, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -124,9 +133,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IUpstreamAuthSettingsInternal)this).ManagedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IManagedIdentitySettings) content.GetValueForProperty("ManagedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IUpstreamAuthSettingsInternal)this).ManagedIdentity, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ManagedIdentitySettingsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IUpstreamAuthSettingsInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.UpstreamAuthType?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IUpstreamAuthSettingsInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.UpstreamAuthType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IUpstreamAuthSettingsInternal)this).ManagedIdentityResource = (string) content.GetValueForProperty("ManagedIdentityResource",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IUpstreamAuthSettingsInternal)this).ManagedIdentityResource, global::System.Convert.ToString);
+            if (content.Contains("ManagedIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IUpstreamAuthSettingsInternal)this).ManagedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IManagedIdentitySettings) content.GetValueForProperty("ManagedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IUpstreamAuthSettingsInternal)this).ManagedIdentity, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ManagedIdentitySettingsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IUpstreamAuthSettingsInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.UpstreamAuthType?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IUpstreamAuthSettingsInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.UpstreamAuthType.CreateFrom);
+            }
+            if (content.Contains("ManagedIdentityResource"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IUpstreamAuthSettingsInternal)this).ManagedIdentityResource = (string) content.GetValueForProperty("ManagedIdentityResource",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IUpstreamAuthSettingsInternal)this).ManagedIdentityResource, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
     }

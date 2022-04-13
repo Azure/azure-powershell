@@ -69,18 +69,23 @@ Remove-AzKeyVaultRoleAssignment [-Scope <String>] [-PassThru] -InputObject <PSKe
 ## DESCRIPTION
 Use the `Remove-AzKeyVaultRoleAssignment` cmdlet to revoke access to any principal at given scope and given role. The object of the assignment i.e. the principal MUST be specified. The principal can be a user (use SignInName or ObjectId parameters to identify a user), security group (use ObjectId parameter to identify a group) or service principal (use ApplicationId or ObjectId parameters to identify a ServicePrincipal. The role that the principal is assigned to MUST be specified using the RoleDefinitionName or RoleDefinitionId parameter.
 
+The cmdlet may call below Microsoft Graph API according to input parameters:
+
+- GET /users/{id}
+- GET /servicePrincipals
+
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzKeyVaultRoleAssignment -HsmName myHsm -RoleDefinitionName "Managed HSM Policy Administrator" -SignInName user1@microsoft.com -Scope "/keys"
+Remove-AzKeyVaultRoleAssignment -HsmName myHsm -RoleDefinitionName "Managed HSM Policy Administrator" -SignInName user1@microsoft.com -Scope "/keys"
 ```
 
 This example revokes "Managed HSM Policy Administrator" role of "user1@microsoft.com" at "/keys" scope.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzKeyVaultRoleAssignment -HsmName myHsm -SignInName user1@microsoft.com | Remove-AzKeyVaultRoleAssignment
+Get-AzKeyVaultRoleAssignment -HsmName myHsm -SignInName user1@microsoft.com | Remove-AzKeyVaultRoleAssignment
 ```
 
 This example revokes all roles of "user1@microsoft.com" at all scopes.

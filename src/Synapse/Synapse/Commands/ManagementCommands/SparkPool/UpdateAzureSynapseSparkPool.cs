@@ -137,6 +137,11 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public List<PSSynapseWorkspacePackage> Package { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
+            HelpMessage = HelpMessages.ForceApplySetting)]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter ForceApplySetting { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
 
@@ -213,7 +218,7 @@ namespace Microsoft.Azure.Commands.Synapse
                     Enabled = this.EnableAutoPause != null ? this.EnableAutoPause : existingSparkPool.AutoPause?.Enabled ?? false,
                     DelayInMinutes = this.IsParameterBound(c => c.AutoPauseDelayInMinute)
                         ? this.AutoPauseDelayInMinute
-                        : existingSparkPool.AutoPause?.DelayInMinutes ?? 0
+                        : existingSparkPool.AutoPause?.DelayInMinutes ?? int.Parse(SynapseConstants.DefaultAutoPauseDelayInMinute)
                 };
             }
 
@@ -247,9 +252,15 @@ namespace Microsoft.Azure.Commands.Synapse
                 }
             }
 
+            bool? isForceApplySetting = false;
+            if (ForceApplySetting.IsPresent)
+            {
+                isForceApplySetting = true;
+            }
+
             if (this.ShouldProcess(this.Name, string.Format(Resources.UpdatingSynapseSparkPool, this.Name, this.ResourceGroupName, this.WorkspaceName)))
             {
-                var result = new PSSynapseSparkPool(this.SynapseAnalyticsClient.CreateOrUpdateSparkPool(this.ResourceGroupName, this.WorkspaceName, this.Name, existingSparkPool));
+                var result = new PSSynapseSparkPool(this.SynapseAnalyticsClient.CreateOrUpdateSparkPool(this.ResourceGroupName, this.WorkspaceName, this.Name, existingSparkPool, isForceApplySetting));
                 WriteObject(result);
             }
         }

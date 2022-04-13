@@ -21,7 +21,6 @@ using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Properties;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
@@ -44,6 +43,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         private readonly SparkJobDefinitionClient _sparkJobDefinitionClient;
         private readonly SqlScriptClient _sqlScriptClient;
         private readonly SparkConfigurationClient _sparkConfigurationClient;
+        private readonly KqlScriptClient _kqlScriptClient;
+        private readonly KqlScriptsClient _kqlScriptsClient;
 
         public SynapseAnalyticsArtifactsClient(string workspaceName, IAzureContext context)
         {
@@ -69,6 +70,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             _sparkJobDefinitionClient = new SparkJobDefinitionClient(uri, new AzureSessionCredential(context));
             _sqlScriptClient = new SqlScriptClient(uri, new AzureSessionCredential(context));
             _sparkConfigurationClient = new SparkConfigurationClient(uri, new AzureSessionCredential(context));
+            _kqlScriptClient = new KqlScriptClient(uri, new AzureSessionCredential(context));
+            _kqlScriptsClient = new KqlScriptsClient(uri, new AzureSessionCredential(context));
         }
 
         #region pipeline
@@ -109,9 +112,20 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             return _pipelineRunClient.GetPipelineRun(runId).Value;
         }
 
-        public IReadOnlyList<PipelineRun> QueryPipelineRunsByWorkspace(RunFilterParameters filterParameters)
+        public List<PipelineRun> QueryPipelineRunsByWorkspace(RunFilterParameters filterParameters)
         {
-            return _pipelineRunClient.QueryPipelineRunsByWorkspace(filterParameters).Value.Value;
+            List<PipelineRun> pipelineRuns = new List<PipelineRun>();
+            string ContinuationToken = null;
+            do
+            {
+                var response = _pipelineRunClient.QueryPipelineRunsByWorkspace(filterParameters).Value;
+                ContinuationToken = response.ContinuationToken;
+                filterParameters.ContinuationToken = ContinuationToken;
+                pipelineRuns.AddRange(response.Value);
+            }
+            while (!string.IsNullOrWhiteSpace(ContinuationToken));            
+           
+            return pipelineRuns;
         }
 
         public void CancelPipelineRun(string runId)
@@ -119,9 +133,20 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             _pipelineRunClient.CancelPipelineRun(runId);
         }
 
-        public ActivityRunsQueryResponse GetActivityRuns(string pipelineName, string runId, RunFilterParameters filterParameters)
+        public List<ActivityRunsQueryResponse> GetActivityRuns(string pipelineName, string runId, RunFilterParameters filterParameters)
         {
-            return _pipelineRunClient.QueryActivityRuns(pipelineName, runId, filterParameters).Value;
+            List<ActivityRunsQueryResponse> activityRuns = new List<ActivityRunsQueryResponse>();
+            string ContinuationToken = null;
+            do
+            {
+                var response = _pipelineRunClient.QueryActivityRuns(pipelineName, runId, filterParameters).Value;
+                ContinuationToken = response.ContinuationToken;
+                filterParameters.ContinuationToken = ContinuationToken;
+                activityRuns.Add(response);
+            }
+            while (!string.IsNullOrWhiteSpace(ContinuationToken));
+
+            return activityRuns;
         }
 
         #endregion
@@ -227,9 +252,20 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             _triggerClient.StartStopTrigger(triggerName).Poll();
         }
 
-        public IReadOnlyList<TriggerRun> QueryTriggerRunsByWorkspace(RunFilterParameters filterParameters)
+        public List<TriggerRun> QueryTriggerRunsByWorkspace(RunFilterParameters filterParameters)
         {
-            return _triggerRunClient.QueryTriggerRunsByWorkspace(filterParameters).Value.Value;
+            List<TriggerRun> triggerRuns = new List<TriggerRun>();
+            string continuationToken = null;
+            do
+            {
+                var response = _triggerRunClient.QueryTriggerRunsByWorkspace(filterParameters).Value;
+                continuationToken = response.ContinuationToken;
+                filterParameters.ContinuationToken = continuationToken;
+                triggerRuns.AddRange(response.Value);
+            }
+            while (!string.IsNullOrWhiteSpace(continuationToken));
+
+            return triggerRuns;
         }
 
         public void StopTriggerRun(string triggerName, string triggerRunId)
@@ -247,7 +283,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public DatasetResource CreateOrUpdateDataset(string datasetName, string rawJsonContent)
         {
-           DatasetResource dataset = JsonConvert.DeserializeObject<DatasetResource>(rawJsonContent);
+            DatasetResource dataset = JsonConvert.DeserializeObject<DatasetResource>(rawJsonContent);
             var operation = _datasetClient.StartCreateOrUpdateDataset(datasetName, dataset);
             return operation.Poll().Value;
         }
@@ -415,6 +451,31 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public void DeleteSparkConfiguration(string sparkConfigurationName)
         {
             _sparkConfigurationClient.StartDeleteSparkConfiguration(sparkConfigurationName).Poll();
+        }
+
+        #endregion
+
+        #region Kql Script
+
+        public KqlScriptResource GetKqlScript(string kqlScriptName)
+        {
+            return _kqlScriptClient.GetByName(kqlScriptName);
+        }
+
+        public Pageable<KqlScriptResource> GetKqlScriptsByWorkspace()
+        {
+            return _kqlScriptsClient.GetAll();
+        }
+
+        public void DeleteKqlScript(string kqlScriptName)
+        {
+            _kqlScriptClient.StartDeleteByName(kqlScriptName).Poll();
+        }
+
+        public KqlScriptResource CreateOrUpdateKqlScript(string kqlScriptName, KqlScriptResource kqlScript)
+        {
+            var operation = _kqlScriptClient.StartCreateOrUpdate(kqlScriptName, kqlScript);
+            return operation.Poll().Value;
         }
 
         #endregion

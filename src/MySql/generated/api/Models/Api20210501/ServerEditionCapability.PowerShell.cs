@@ -99,9 +99,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerEditionCapabilityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerEditionCapabilityInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerEditionCapabilityInternal)this).SupportedStorageEdition = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapability[]) content.GetValueForProperty("SupportedStorageEdition",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerEditionCapabilityInternal)this).SupportedStorageEdition, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapability>(__y, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.StorageEditionCapabilityTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerEditionCapabilityInternal)this).SupportedServerVersion = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerVersionCapability[]) content.GetValueForProperty("SupportedServerVersion",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerEditionCapabilityInternal)this).SupportedServerVersion, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerVersionCapability>(__y, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ServerVersionCapabilityTypeConverter.ConvertFrom));
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerEditionCapabilityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerEditionCapabilityInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("SupportedStorageEdition"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerEditionCapabilityInternal)this).SupportedStorageEdition = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapability[]) content.GetValueForProperty("SupportedStorageEdition",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerEditionCapabilityInternal)this).SupportedStorageEdition, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapability>(__y, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.StorageEditionCapabilityTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("SupportedServerVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerEditionCapabilityInternal)this).SupportedServerVersion = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerVersionCapability[]) content.GetValueForProperty("SupportedServerVersion",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerEditionCapabilityInternal)this).SupportedServerVersion, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerVersionCapability>(__y, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ServerVersionCapabilityTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -119,9 +128,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerEditionCapabilityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerEditionCapabilityInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerEditionCapabilityInternal)this).SupportedStorageEdition = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapability[]) content.GetValueForProperty("SupportedStorageEdition",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerEditionCapabilityInternal)this).SupportedStorageEdition, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapability>(__y, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.StorageEditionCapabilityTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerEditionCapabilityInternal)this).SupportedServerVersion = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerVersionCapability[]) content.GetValueForProperty("SupportedServerVersion",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerEditionCapabilityInternal)this).SupportedServerVersion, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerVersionCapability>(__y, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ServerVersionCapabilityTypeConverter.ConvertFrom));
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerEditionCapabilityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerEditionCapabilityInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("SupportedStorageEdition"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerEditionCapabilityInternal)this).SupportedStorageEdition = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapability[]) content.GetValueForProperty("SupportedStorageEdition",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerEditionCapabilityInternal)this).SupportedStorageEdition, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IStorageEditionCapability>(__y, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.StorageEditionCapabilityTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("SupportedServerVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerEditionCapabilityInternal)this).SupportedServerVersion = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerVersionCapability[]) content.GetValueForProperty("SupportedServerVersion",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerEditionCapabilityInternal)this).SupportedServerVersion, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerVersionCapability>(__y, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ServerVersionCapabilityTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
 

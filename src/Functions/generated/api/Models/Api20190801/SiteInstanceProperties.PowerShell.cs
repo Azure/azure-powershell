@@ -99,7 +99,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteInstancePropertiesInternal)this).SiteInstanceName = (string) content.GetValueForProperty("SiteInstanceName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteInstancePropertiesInternal)this).SiteInstanceName, global::System.Convert.ToString);
+            if (content.Contains("SiteInstanceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteInstancePropertiesInternal)this).SiteInstanceName = (string) content.GetValueForProperty("SiteInstanceName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteInstancePropertiesInternal)this).SiteInstanceName, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -117,7 +120,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteInstancePropertiesInternal)this).SiteInstanceName = (string) content.GetValueForProperty("SiteInstanceName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteInstancePropertiesInternal)this).SiteInstanceName, global::System.Convert.ToString);
+            if (content.Contains("SiteInstanceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteInstancePropertiesInternal)this).SiteInstanceName = (string) content.GetValueForProperty("SiteInstanceName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteInstancePropertiesInternal)this).SiteInstanceName, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

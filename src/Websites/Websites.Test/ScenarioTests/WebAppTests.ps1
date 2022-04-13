@@ -464,15 +464,15 @@ function Test-CreateNewWebAppHyperV
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$wname = Get-WebsiteName
-	$location = Get-WebLocation
+	$location = "East US 2"
 	$whpName = Get-WebHostPlanName
-	$tier = "PremiumContainer"
+	$tier = "PremiumV3"
 	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
     $containerImageName = "dotnetsdktesting.azurecr.io/webapplication3:latest"
     $containerRegistryUrl = "https://dotnetsdktesting.azurecr.io"
     $containerRegistryUser ="DotNetSDKTesting"
-    $pass = "NuO4xVus40R/wukMM9i1OdMIohADB=oR"
+    $pass = "q=VAWnvGlmJc35yxD4c+1=os7p4tq5Nd"
     $containerRegistryPassword = ConvertTo-SecureString -String $pass -AsPlainText -Force
     $dockerPrefix = "DOCKER|" 
 
@@ -533,15 +533,15 @@ function Test-SetWebAppHyperVCredentials
 		# Setup
 		$rgname = Get-ResourceGroupName
 		$wname = Get-WebsiteName
-		$location = Get-WebLocation
+		$location = "East US 2"
 		$whpName = Get-WebHostPlanName
-		$tier = "PremiumContainer"
+		$tier = "PremiumV3"
 		$apiversion = "2015-08-01"
 		$resourceType = "Microsoft.Web/sites"
-		$containerImageName = "pstestacr.azurecr.io/tests/iis:latest"
-		$containerRegistryUrl = "https://pstestacr.azurecr.io"
-		$containerRegistryUser = "pstestacr"
-		$pass = "cYK4qnENExflnnOkBN7P+gkmBG0sqgIv"
+		$containerImageName = "dotnetsdktesting.azurecr.io/webapplication3:latest"
+		$containerRegistryUrl = "https://dotnetsdktesting.azurecr.io"
+		$containerRegistryUser = "DotNetSDKTesting"
+		$pass = "q=VAWnvGlmJc35yxD4c+1=os7p4tq5Nd"
 		$containerRegistryPassword = ConvertTo-SecureString -String $pass -AsPlainText -Force
 		$dockerPrefix = "DOCKER|" 
 	
@@ -658,15 +658,15 @@ function Test-EnableContainerContinuousDeploymentAndGetUrl
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$wname = Get-WebsiteName
-	$location = Get-WebLocation
+	$location = 'East US 2'
 	$whpName = Get-WebHostPlanName
-	$tier = "PremiumContainer"
+	$tier = "PremiumV3"
 	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
-    $containerImageName = "pstestacr.azurecr.io/tests/iis:latest"
-    $containerRegistryUrl = "https://pstestacr.azurecr.io"
-    $containerRegistryUser = "pstestacr"
-    $pass = "cYK4qnENExflnnOkBN7P+gkmBG0sqgIv"
+    $containerImageName = "dotnetsdktesting.azurecr.io/webapplication3:latest"
+    $containerRegistryUrl = "https://dotnetsdktesting.azurecr.io"
+    $containerRegistryUser = "DotNetSDKTesting"
+    $pass = "q=VAWnvGlmJc35yxD4c+1=os7p4tq5Nd"
     $containerRegistryPassword = ConvertTo-SecureString -String $pass -AsPlainText -Force
     $dockerPrefix = "DOCKER|"
  	try
@@ -1022,26 +1022,26 @@ function Test-SetAzureStorageWebAppHyperV
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$wname = Get-WebsiteName
-	$location = Get-WebLocation
+	$location = 'East US 2'
 	$whpName = Get-WebHostPlanName
-	$tier = "PremiumContainer"
+	$tier = "PremiumV3"
 	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
     $containerImageName = "dotnetsdktesting.azurecr.io/webapplication3:latest"
     $containerRegistryUrl = "https://dotnetsdktesting.azurecr.io"
     $containerRegistryUser ="DotNetSDKTesting"
-    $pass = "NuO4xVus40R/wukMM9i1OdMIohADB=oR"
+    $pass = "q=VAWnvGlmJc35yxD4c+1=os7p4tq5Nd"
     $containerRegistryPassword = ConvertTo-SecureString -String $pass -AsPlainText -Force
     $dockerPrefix = "DOCKER|" 
 	$azureStorageAccountCustomId1 = "mystorageaccount"
 	$azureStorageAccountType1 = "AzureFiles"
-	$azureStorageAccountName1 = "myaccountname.file.core.windows.net"
+	$azureStorageAccountName1 = "myaccountname"
 	$azureStorageAccountShareName1 = "myremoteshare"
 	$azureStorageAccountAccessKey1 = "AnAccessKey"
 	$azureStorageAccountMountPath1 = "/mymountpath"
 	$azureStorageAccountCustomId2 = "mystorageaccount2"
 	$azureStorageAccountType2 = "AzureFiles"
-	$azureStorageAccountName2 = "myaccountname2.file.core.windows.net"
+	$azureStorageAccountName2 = "myaccountname2"
 	$azureStorageAccountShareName2 = "myremoteshare2"
 	$azureStorageAccountAccessKey2 = "AnAccessKey2"
 	$azureStorageAccountMountPath2 = "/mymountpath2"
@@ -1144,11 +1144,11 @@ function Test-CreateNewWebAppOnAse
 	# Setup
 	# Creating and provisioning an ASE currently takes 30 mins to an hour, hence this test requires that the ASE & ASP are already created 
 	# before creating the app on the ASE
-	$rgname = "11698RG1"
+	$rgname = ".NETSDKRG"
 	$wname = Get-WebsiteName
 	$location = "East US"
-	$whpName = "powershellasp"
-	$aseName = "11698ASP-PS"
+	$whpName = "DotNet-SDK-ASP"
+	$aseName = "dotnetsdkase"
 	$resourceType = "Microsoft.Web/sites"
 	try
 	{
@@ -1238,6 +1238,7 @@ function Test-SetWebApp
 		$webapp.SiteConfig.RequestTracingEnabled = $true
 		$webapp.SiteConfig.FtpsState = "FtpsOnly"
 		$webApp.SiteConfig.MinTlsVersion = "1.0"
+		$webApp.SiteConfig.HealthCheckPath = "/api/path"
 
 		# Set site properties
 		$webApp = $webApp | Set-AzWebApp
@@ -1252,6 +1253,7 @@ function Test-SetWebApp
 		Assert-AreEqual $false $webApp.SiteConfig.AlwaysOn
 		Assert-AreEqual "FtpsOnly" $webApp.SiteConfig.FtpsState
 		Assert-AreEqual "1.0" $webApp.SiteConfig.MinTlsVersion
+		Assert-AreEqual "/api/path" $webApp.SiteConfig.HealthCheckPath
 		 
 		$appSettings = @{ "setting1" = "valueA"; "setting2" = "valueB"}
 		$connectionStrings = @{ connstring1 = @{ Type="MySql"; Value="string value 1"}; connstring2 = @{ Type = "SQLAzure"; Value="string value 2"}}

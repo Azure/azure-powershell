@@ -34,9 +34,9 @@ Set the vault context by using the Set-AzRecoveryServicesVaultContext cmdlet bef
 ## EXAMPLES
 
 ### Example 1: Stop a backup job
-```
-PS C:\>$Job = Get-AzRecoveryServicesBackupJob -Operation Backup
-PS C:\> Stop-AzRecoveryServicesBackupJob -JobID $Job.InstanceId
+```powershell
+$Job = Get-AzRecoveryServicesBackupJob -Operation Backup
+Stop-AzRecoveryServicesBackupJob -JobID $Job.InstanceId
 ```
 
 The first command gets a backup job, and then stores the job in the $Job variable.

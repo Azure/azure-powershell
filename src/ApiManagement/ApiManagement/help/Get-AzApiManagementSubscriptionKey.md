@@ -24,10 +24,12 @@ The **Get-AzApiManagementSubscriptionKey** cmdlet gets a keys of a specified sub
 ## EXAMPLES
 
 ### Example 1: Get a subscription keys with a specified ID
+```powershell
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-East-US" -ServiceName "contoso"
+Get-AzApiManagementSubscriptionKey -Context $apimContext -SubscriptionId "0123456789"
 ```
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-East-US" -ServiceName "contoso"
-PS C:\>Get-AzApiManagementSubscriptionKey -Context $apimContext -SubscriptionId "0123456789"
 
+```output
 PrimaryKey        : 5e48532634114fe999a6979ce0d63a64
 SecondaryKey      : 0a8efaf85a664aa0a412241015c7c8f6
 ```

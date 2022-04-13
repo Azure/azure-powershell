@@ -28,27 +28,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ValidateAddress".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ValidateAddress", "ValidateAddress", global::System.Management.Automation.CompletionResultType.ParameterValue, "ValidateAddress");
+                yield return new global::System.Management.Automation.CompletionResult("'ValidateAddress'", "ValidateAddress", global::System.Management.Automation.CompletionResultType.ParameterValue, "ValidateAddress");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ValidateSubscriptionIsAllowedToCreateJob".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ValidateSubscriptionIsAllowedToCreateJob", "ValidateSubscriptionIsAllowedToCreateJob", global::System.Management.Automation.CompletionResultType.ParameterValue, "ValidateSubscriptionIsAllowedToCreateJob");
+                yield return new global::System.Management.Automation.CompletionResult("'ValidateSubscriptionIsAllowedToCreateJob'", "ValidateSubscriptionIsAllowedToCreateJob", global::System.Management.Automation.CompletionResultType.ParameterValue, "ValidateSubscriptionIsAllowedToCreateJob");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ValidatePreferences".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ValidatePreferences", "ValidatePreferences", global::System.Management.Automation.CompletionResultType.ParameterValue, "ValidatePreferences");
+                yield return new global::System.Management.Automation.CompletionResult("'ValidatePreferences'", "ValidatePreferences", global::System.Management.Automation.CompletionResultType.ParameterValue, "ValidatePreferences");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ValidateCreateOrderLimit".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ValidateCreateOrderLimit", "ValidateCreateOrderLimit", global::System.Management.Automation.CompletionResultType.ParameterValue, "ValidateCreateOrderLimit");
+                yield return new global::System.Management.Automation.CompletionResult("'ValidateCreateOrderLimit'", "ValidateCreateOrderLimit", global::System.Management.Automation.CompletionResultType.ParameterValue, "ValidateCreateOrderLimit");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ValidateSkuAvailability".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ValidateSkuAvailability", "ValidateSkuAvailability", global::System.Management.Automation.CompletionResultType.ParameterValue, "ValidateSkuAvailability");
+                yield return new global::System.Management.Automation.CompletionResult("'ValidateSkuAvailability'", "ValidateSkuAvailability", global::System.Management.Automation.CompletionResultType.ParameterValue, "ValidateSkuAvailability");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ValidateDataTransferDetails".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ValidateDataTransferDetails", "ValidateDataTransferDetails", global::System.Management.Automation.CompletionResultType.ParameterValue, "ValidateDataTransferDetails");
+                yield return new global::System.Management.Automation.CompletionResult("'ValidateDataTransferDetails'", "ValidateDataTransferDetails", global::System.Management.Automation.CompletionResultType.ParameterValue, "ValidateDataTransferDetails");
             }
         }
     }

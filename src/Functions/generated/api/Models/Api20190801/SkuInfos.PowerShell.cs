@@ -99,8 +99,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISkuInfosInternal)this).ResourceType = (string) content.GetValueForProperty("ResourceType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISkuInfosInternal)this).ResourceType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISkuInfosInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGlobalCsmSkuDescription[]) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISkuInfosInternal)this).Sku, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGlobalCsmSkuDescription>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.GlobalCsmSkuDescriptionTypeConverter.ConvertFrom));
+            if (content.Contains("ResourceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISkuInfosInternal)this).ResourceType = (string) content.GetValueForProperty("ResourceType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISkuInfosInternal)this).ResourceType, global::System.Convert.ToString);
+            }
+            if (content.Contains("Sku"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISkuInfosInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGlobalCsmSkuDescription[]) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISkuInfosInternal)this).Sku, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGlobalCsmSkuDescription>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.GlobalCsmSkuDescriptionTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -118,8 +124,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISkuInfosInternal)this).ResourceType = (string) content.GetValueForProperty("ResourceType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISkuInfosInternal)this).ResourceType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISkuInfosInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGlobalCsmSkuDescription[]) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISkuInfosInternal)this).Sku, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGlobalCsmSkuDescription>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.GlobalCsmSkuDescriptionTypeConverter.ConvertFrom));
+            if (content.Contains("ResourceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISkuInfosInternal)this).ResourceType = (string) content.GetValueForProperty("ResourceType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISkuInfosInternal)this).ResourceType, global::System.Convert.ToString);
+            }
+            if (content.Contains("Sku"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISkuInfosInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGlobalCsmSkuDescription[]) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISkuInfosInternal)this).Sku, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGlobalCsmSkuDescription>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.GlobalCsmSkuDescriptionTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
 

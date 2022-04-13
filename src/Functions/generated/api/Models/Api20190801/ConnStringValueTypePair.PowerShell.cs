@@ -66,8 +66,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IConnStringValueTypePairInternal)this).Value = (string) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IConnStringValueTypePairInternal)this).Value, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IConnStringValueTypePairInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ConnectionStringType) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IConnStringValueTypePairInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ConnectionStringType.CreateFrom);
+            if (content.Contains("Value"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IConnStringValueTypePairInternal)this).Value = (string) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IConnStringValueTypePairInternal)this).Value, global::System.Convert.ToString);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IConnStringValueTypePairInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ConnectionStringType) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IConnStringValueTypePairInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ConnectionStringType.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -85,8 +91,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IConnStringValueTypePairInternal)this).Value = (string) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IConnStringValueTypePairInternal)this).Value, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IConnStringValueTypePairInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ConnectionStringType) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IConnStringValueTypePairInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ConnectionStringType.CreateFrom);
+            if (content.Contains("Value"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IConnStringValueTypePairInternal)this).Value = (string) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IConnStringValueTypePairInternal)this).Value, global::System.Convert.ToString);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IConnStringValueTypePairInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ConnectionStringType) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IConnStringValueTypePairInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ConnectionStringType.CreateFrom);
+            }
             AfterDeserializePSObject(content);
         }
 

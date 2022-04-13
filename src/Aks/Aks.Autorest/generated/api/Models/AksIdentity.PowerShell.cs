@@ -65,13 +65,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).ResourceName = (string) content.GetValueForProperty("ResourceName",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).ResourceName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).RoleName = (string) content.GetValueForProperty("RoleName",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).RoleName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).AgentPoolName = (string) content.GetValueForProperty("AgentPoolName",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).AgentPoolName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).Id, global::System.Convert.ToString);
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceGroupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).ResourceName = (string) content.GetValueForProperty("ResourceName",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).ResourceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RoleName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).RoleName = (string) content.GetValueForProperty("RoleName",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).RoleName, global::System.Convert.ToString);
+            }
+            if (content.Contains("AgentPoolName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).AgentPoolName = (string) content.GetValueForProperty("AgentPoolName",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).AgentPoolName, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateEndpointConnectionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).Id, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -89,13 +114,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).ResourceName = (string) content.GetValueForProperty("ResourceName",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).ResourceName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).RoleName = (string) content.GetValueForProperty("RoleName",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).RoleName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).AgentPoolName = (string) content.GetValueForProperty("AgentPoolName",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).AgentPoolName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).Id, global::System.Convert.ToString);
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceGroupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).ResourceName = (string) content.GetValueForProperty("ResourceName",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).ResourceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RoleName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).RoleName = (string) content.GetValueForProperty("RoleName",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).RoleName, global::System.Convert.ToString);
+            }
+            if (content.Contains("AgentPoolName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).AgentPoolName = (string) content.GetValueForProperty("AgentPoolName",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).AgentPoolName, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateEndpointConnectionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).Id, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

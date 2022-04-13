@@ -24,7 +24,7 @@ The **Remove-AzExpressRoutePortIdentity** cmdlet removes identity from a local A
 
 ### Example 1
 ```powershell
-PS C:\> $expressroutePort = Remove-AzExpressRoutePortIdentity -ExpressRoutePort $expressroutePort
+$expressroutePort = Remove-AzExpressRoutePortIdentity -ExpressRoutePort $expressroutePort
 ```
 
 ## PARAMETERS

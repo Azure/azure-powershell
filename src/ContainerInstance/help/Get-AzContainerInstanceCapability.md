@@ -24,8 +24,10 @@ Get the list of CPU/memory/GPU capabilities of a region.
 
 ### Example 1: Get the list of capabilities of the location
 ```powershell
-PS C:\> Get-AzContainerInstanceCapability -Location eastus
+Get-AzContainerInstanceCapability -Location eastus
+```
 
+```output
 Gpu  IPAddressType Location OSType       ResourceType   
 ---  ------------- -------- ------       ------------   
 None Public        eastus   NotSpecified containerGroups
@@ -95,7 +97,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.ICapabilities
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.ICapabilities
 
 ## NOTES
 

@@ -19,6 +19,36 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.2.0
+* Upgraded Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.14
+* Fixed the issue that following cmdlets only shows 100 entries
+    - `Get-AzSynapseRoleAssignment` cmdlet
+    - `Get-AzSynapsePipelineRun` cmdlet
+    - `Get-AzSynapseTriggerRun` cmdlet
+    - `Get-AzSynapseActivityRun` cmdlet
+* Fixed the issue that there should be an error message when removing a dependency pipeline
+
+## Version 1.1.0
+* Updated `Update-AzSynapseSparkPool` to support new parameter [-ForceApplySetting]
+
+## Version 1.0.0
+* General availability of Az.Synapse
+* Migrated Azure AD features in Az.Synapse to MSGraph APIs. The cmdlets below called MSGraph API according to input parameters:
+    - `New-AzSynapseRoleAssignment` cmdlet
+    - `Get-AzSynapseRoleAssignment` cmdlet
+    - `Remove-AzSynapseRoleAssignment` cmdlet
+    - `Set-AzSynapseSqlActiveDirectoryAdministrator` cmdlet
+* Added a default value for [-AutoPauseDelayInMinute] parameter of command `New-AzSynapseSparkpool` and `Update-AzSynapseSparkpool`
+
+## Version 0.19.0
+* Added support for Synapse KQL script
+    - Added `Get-AzSynapseKqlScript` cmdlet
+    - Added `Export-AzSynapseKqlScript` cmdlet
+    - Added `Remove-AzSynapseKqlScript` cmdlet
+    - Added `New-AzSynapseKqlScript` cmdlet
+* Updated `New-AzSynapseSqlPool` to support new parameter [-StorageAccountType]
+* Updated `Restore-AzSynapseSqlPool` to support new parameter [-Tag] and [-StorageAccountType]
 * Renamed parameter FolderName in `Set-AzSynapseSqlScript` to FolderPath and keeped FolderName as alias
 * Updated `Set-AzSynapseNoteBook` and `Set-AzSynapseSparkJobDefinition` to support new parameter [-FolderPath]
 * Added cmdlets for Synapse Spark Configuration

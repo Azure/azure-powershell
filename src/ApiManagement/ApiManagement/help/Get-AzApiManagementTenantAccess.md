@@ -25,9 +25,9 @@ Keys will not be included into result details. To get client secret, use **Get-A
 ## EXAMPLES
 
 ### Example 1: Get tenant access configuration
-```
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzApiManagementTenantAccess -Context $apimContext
+```powershell
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Get-AzApiManagementTenantAccess -Context $apimContext
 ```
 
 This command gets the tenant access configuration for the specified context.

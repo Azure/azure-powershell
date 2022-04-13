@@ -31,6 +31,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.Key
 
         #region Input Parameter Definitions
 
+        /// <summary>
+        /// Key version.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Key version.")]
+        [Alias("KeyVersion")]
+        public string Version { get; set; }
+
         [Parameter(Mandatory = true,
             HelpMessage = "Algorithm identifier")]
         [ValidateNotNullOrEmpty]
@@ -50,6 +58,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.Key
         public SecureString Value { get; set; }
         #endregion Input Parameter Definitions
 
+        internal override void NormalizeParameterSets()
+        {
+            if (InputObject != null)
+            {
+                Version = Version ?? InputObject.Version;
+            }
+            base.NormalizeParameterSets();
+        }
+        
         public override void ExecuteCmdlet()
         {
             NormalizeParameterSets();

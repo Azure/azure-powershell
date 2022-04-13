@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Relay.dll-Help.xml
 Module Name: Az.Relay
 online version: https://docs.microsoft.com/powershell/module/az.relay/get-azrelayhybridconnection
@@ -23,9 +23,11 @@ The **Get-AzRelayHybridConnection** cmdlet gets a description for the specified 
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Get-AzRelayHybridConnection -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name TestHybridConnection
 ```
-PS C:\>Get-AzRelayHybridConnection -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name TestHybridConnection
 
+```output
 CreatedAt                   : 4/12/2017 3:17:02 AM
 UpdatedAt                   : 4/12/2017 3:17:02 AM
 ListenerCount               : 0

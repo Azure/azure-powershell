@@ -89,8 +89,6 @@ PRIVATEENDPOINTACL <IPrivateEndpointAcl[]>: ACLs for requests from private endpo
 RESOURCELOGCATEGORY <IResourceLogCategory[]>: Gets or sets the list of category configurations.
   [Enabled <String>]: Indicates whether or the resource log category is enabled.         Available values: true, false.         Case insensitive.
   [Name <String>]: Gets or sets the resource log category's name.         Available values: ConnectivityLogs, MessagingLogs.         Case insensitive.
-.Link
-https://docs.microsoft.com/powershell/module/az.webpubsub/new-azwebpubsub
 #>
 function New-AzWebPubSub
 {

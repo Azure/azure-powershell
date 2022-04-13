@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ResourceGraph-help.xml
 Module Name: Az.ResourceGraph
 online version: https://docs.microsoft.com/powershell/module/az.resourcegraph/get-azresourcegraphquery
 schema: 2.0.0
@@ -37,8 +37,10 @@ Get a single graph query by its resourceName.
 
 ### Example 1: Get all resource graph queries under a resource group
 ```powershell
-PS C:\> Get-AzResourceGraphQuery -ResourceGroupName azure-rg-test
+Get-AzResourceGraphQuery -ResourceGroupName azure-rg-test
+```
 
+```output
 Location Name            Type
 -------- ----            ----
      global   SharedQuery-t01 microsoft.resourcegraph/queries
@@ -48,23 +50,27 @@ This command gets all resource graph query under a resource group.
 
 ### Example 2: Get a resource graph query by name
 ```powershell
-PS C:\> Get-AzResourceGraphQuery -ResourceGroupName azure-rg-test -Name SharedQuery-t01
+Get-AzResourceGraphQuery -ResourceGroupName azure-rg-test -Name SharedQuery-t01
+```
 
+```output
 Location Name            Type
 -------- ----            ----
-     global   SharedQuery-t01 microsoft.resourcegraph/queries
+global   SharedQuery-t01 microsoft.resourcegraph/queries
 ```
 
 This command gets a resource graph query by name.
 
-### Example 2: Get a resource graph query by object
+### Example 3: Get a resource graph query by object
 ```powershell
-PS C:\> $query = New-AzResourceGraphQuery -ResourceGroupName azure-rg-test -Name query-t03 -Location 'global' -Query 'project id, name, type, location' -Description 'test'
-PS C:\> Get-AzResourceGraphQuery -InputObject $query
+$query = New-AzResourceGraphQuery -ResourceGroupName azure-rg-test -Name query-t03 -Location 'global' -Query 'project id, name, type, location' -Description 'test'
+Get-AzResourceGraphQuery -InputObject $query
+```
 
+```output
 Location Name            Type
 -------- ----            ----
-     global   SharedQuery-t01 microsoft.resourcegraph/queries
+global   SharedQuery-t01 microsoft.resourcegraph/queries
 ```
 
 This command gets a resource graph query by object.
@@ -123,7 +129,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -138,7 +144,7 @@ The Azure subscription Id.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -175,4 +181,3 @@ INPUTOBJECT <IResourceGraphIdentity>: Identity Parameter
   - `[SubscriptionId <String>]`: The Azure subscription Id.
 
 ## RELATED LINKS
-

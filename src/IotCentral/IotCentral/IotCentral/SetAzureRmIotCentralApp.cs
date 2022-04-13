@@ -54,6 +54,11 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
         [ValidateNotNullOrEmpty]
         public string Sku { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Managed Identity Type. Can be None or SystemAssigned.")]
+        public string Identity { get; set; }
+
         public override void ExecuteCmdlet()
         {
             this.SetNameAndResourceGroup();
@@ -67,7 +72,19 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
 
         private AppPatch CreateApplicationPatch()
         {
-            return new AppPatch(TagsConversionHelper.CreateTagDictionary(this.Tag, true), new AppSkuInfo(this.Sku), null, this.DisplayName, this.Subdomain);
+            var appPatch = new AppPatch(
+                tags: TagsConversionHelper.CreateTagDictionary(this.Tag, true),
+                sku: new AppSkuInfo(this.Sku),
+                displayName: this.DisplayName,
+                subdomain: this.Subdomain
+            );
+
+            if (!string.IsNullOrEmpty(this.Identity))
+            {
+                appPatch.Identity = new SystemAssignedServiceIdentity(type: this.Identity);
+            }
+
+            return appPatch;
         }
     }
 }

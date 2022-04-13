@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             cmdlet.StorageAccountKey = StorageKey;
             cmdlet.ClusterType = ClusterType;
 
-            var cluster = new Cluster(id: "id", name: ClusterName)
+            var cluster = new Cluster(id: "id", name: ClusterName, location: Location)
             {
                 Location = Location,
                 Properties = new ClusterGetProperties
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     {
                         CoresUsed = 24
                     },
-                    OsType = OSType.Linux
+                    OsType = "Linux"
                 }
             };
             var coreConfigs = new Dictionary<string, string>
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             hdinsightManagementMock.Setup(c => c.CreateCluster(ResourceGroupName, ClusterName, It.Is<ClusterCreateParametersExtended>(
                                          parameters => parameters.Location == Location &&
                                          parameters.Properties.ClusterDefinition.Kind == ClusterType &&
-                                         parameters.Properties.OsType == OSType.Linux
+                                         parameters.Properties.OsType == "Linux"
                                          ))
                                          ).Returns(cluster).Verifiable();
 
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     clusterout.CoresUsed == 24 &&
                     clusterout.Location == Location &&
                     clusterout.Name == ClusterName &&
-                    clusterout.OperatingSystemType == OSType.Linux)),
+                    clusterout.OperatingSystemType.ToString() == "Linux")),
                     Times.Once);
         }
 
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     clusterout.CoresUsed == 24 &&
                     clusterout.Location == Location &&
                     clusterout.Name == ClusterName &&
-                    clusterout.OperatingSystemType == OSType.Linux)),
+                    clusterout.OperatingSystemType.ToString() == "Linux")),
                 Times.Once);
         }
 
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     clusterout.CoresUsed == 24 &&
                     clusterout.Location == Location &&
                     clusterout.Name == ClusterName &&
-                    clusterout.OperatingSystemType == OSType.Linux &&
+                    clusterout.OperatingSystemType.ToString() == "Linux" &&
                     clusterout.SecurityProfile.DomainResourceId.Equals(cmdlet.SecurityProfile.DomainResourceId) &&
                     clusterout.SecurityProfile.DomainUserCredential.UserName.Equals(
                         cmdlet.SecurityProfile.DomainUserCredential.UserName) &&
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             }
 
             // Construct cluster Object
-            var cluster = new Cluster(id: "id", name: ClusterName)
+            var cluster = new Cluster(id: "id", name: ClusterName, location: Location)
             {
                 Location = Location,
                 Properties = new ClusterGetProperties
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     {
                         CoresUsed = 24
                     },
-                    OsType = OSType.Linux,
+                    OsType = "Linux",
                     ComputeProfile = new ComputeProfile()
                     {
                         Roles = new List<Role>()
@@ -303,7 +303,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             hdinsightManagementMock.Setup(c => c.CreateCluster(ResourceGroupName, ClusterName, It.Is<ClusterCreateParametersExtended>(
                              parameters => parameters.Location == Location &&
                              parameters.Properties.ClusterDefinition.Kind == ClusterType &&
-                             parameters.Properties.OsType == OSType.Linux
+                             parameters.Properties.OsType == "Linux"
                              ))
                              ).Returns(cluster).Verifiable();
 
@@ -319,7 +319,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     clusterout.CoresUsed == 24 &&
                     clusterout.Location == Location &&
                     clusterout.Name == ClusterName &&
-                    clusterout.OperatingSystemType == OSType.Linux &&
+                    clusterout.OperatingSystemType.ToString() == "Linux" &&
                     (workerNodeDataDisks == 0) || (clusterout.WorkerNodeDataDisksGroups.First().DisksPerNode == workerNodeDataDisks))),
                     Times.Once);
         }
@@ -346,7 +346,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             cmdlet.SshCredential = _sshCred;
             cmdlet.ComponentVersion = componentVersion;
 
-            var cluster = new Cluster(id: "id", name: ClusterName)
+            var cluster = new Cluster(id: "id", name: ClusterName, location: Location)
             {
                 Location = Location,
                 Properties = new ClusterGetProperties
@@ -361,7 +361,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     {
                         CoresUsed = 24
                     },
-                    OsType = OSType.Linux
+                    OsType = "Linux"
                 }
             };
 
@@ -393,14 +393,14 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             hdinsightManagementMock.Setup(c => c.CreateCluster(ResourceGroupName, ClusterName, It.Is<ClusterCreateParametersExtended>(
                  parameters => parameters.Location == Location &&
                  parameters.Properties.ClusterDefinition.Kind == sparkClusterType &&
-                 parameters.Properties.OsType == OSType.Linux
+                 parameters.Properties.OsType == "Linux"
                  ))
                  ).Returns(cluster).Verifiable();
 
             hdinsightManagementMock.Setup(c => c.CreateCluster(ResourceGroupName, ClusterName, It.Is<ClusterCreateParametersExtended>(
                              parameters => parameters.Location == Location &&
                              parameters.Properties.ClusterDefinition.Kind == ClusterType &&
-                             parameters.Properties.OsType == OSType.Linux
+                             parameters.Properties.OsType == "Linux"
                              )))
                 .Returns(cluster)
                 .Verifiable();
@@ -416,7 +416,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     clusterout.CoresUsed == 24 &&
                     clusterout.Location == Location &&
                     clusterout.Name == ClusterName &&
-                    clusterout.OperatingSystemType == OSType.Linux &&
+                    clusterout.OperatingSystemType.ToString() == "Linux" &&
                     clusterout.ComponentVersion[0] == componentVersionResponse)),
                     Times.Once);
         }
@@ -460,15 +460,15 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             var ClusterIdentity = new ClusterIdentity
             {
                 Type = ResourceIdentityType.UserAssigned,
-                UserAssignedIdentities = new Dictionary<string, ClusterIdentityUserAssignedIdentitiesValue>
+                UserAssignedIdentities = new Dictionary<string, UserAssignedIdentity>
                     {
                         {
-                            AssignedIdentity, new ClusterIdentityUserAssignedIdentitiesValue(principalId:"PrincipalId",clientId:"ClientId")
+                            AssignedIdentity, new UserAssignedIdentity(principalId:"PrincipalId",clientId:"ClientId")
                         }
                     }
             };
 
-            var cluster = new Cluster(id: "id", name: ClusterName, identity:ClusterIdentity)
+            var cluster = new Cluster(id: "id", name: ClusterName, identity:ClusterIdentity, location: Location)
             {
                 Location = Location,
                 Properties = new ClusterGetProperties
@@ -483,7 +483,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     {
                         CoresUsed = 24
                     },
-                    OsType = OSType.Linux,
+                    OsType = "Linux",
                     DiskEncryptionProperties = new DiskEncryptionProperties()
                     {
                         KeyName = EncryptionKeyName,
@@ -521,7 +521,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             hdinsightManagementMock.Setup(c => c.CreateCluster(ResourceGroupName, ClusterName, It.Is<ClusterCreateParametersExtended>(
                  parameters => parameters.Location == Location &&
                  parameters.Properties.ClusterDefinition.Kind == sparkClusterType &&
-                 parameters.Properties.OsType == OSType.Linux
+                 parameters.Properties.OsType == "Linux"
                  ))
                  ).Returns(cluster).Verifiable();
 
@@ -536,7 +536,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     clusterout.CoresUsed == 24 &&
                     clusterout.Location == Location &&
                     clusterout.Name == ClusterName &&
-                    clusterout.OperatingSystemType == OSType.Linux &&
+                    clusterout.OperatingSystemType.ToString() == "Linux" &&
                     clusterout.DiskEncryption.KeyName == EncryptionKeyName &&
                     clusterout.DiskEncryption.KeyVersion == EncryptionKeyVersion &&
                     clusterout.DiskEncryption.VaultUri == EncryptionVaultUri &&
@@ -564,7 +564,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             hdinsightManagementMock.Setup(c => c.CreateCluster(ResourceGroupName, ClusterName, It.Is<ClusterCreateParametersExtended>(
                              parameters => parameters.Location == Location &&
                              parameters.Properties.ClusterDefinition.Kind == ClusterType &&
-                             parameters.Properties.OsType == OSType.Linux
+                             parameters.Properties.OsType == "Linux"
                              )));
 
             cmdlet.ExecuteCmdlet();
@@ -572,7 +572,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             hdinsightManagementMock.Verify(c => c.CreateCluster(ResourceGroupName, ClusterName, It.Is<ClusterCreateParametersExtended>(
                              parameters => parameters.Location == Location &&
                              parameters.Properties.ClusterDefinition.Kind == ClusterType &&
-                             parameters.Properties.OsType == OSType.Linux
+                             parameters.Properties.OsType == "Linux"
                              )),
                 Times.Once);
         }
@@ -594,7 +594,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             hdinsightManagementMock.Setup(c => c.CreateCluster(ResourceGroupName, ClusterName, It.Is<ClusterCreateParametersExtended>(
                              parameters => parameters.Location == Location &&
                              parameters.Properties.ClusterDefinition.Kind == ClusterType &&
-                             parameters.Properties.OsType == OSType.Linux
+                             parameters.Properties.OsType == "Linux"
                              )));
 
             cmdlet.ExecuteCmdlet();
@@ -602,7 +602,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             hdinsightManagementMock.Verify(c => c.CreateCluster(ResourceGroupName, ClusterName, It.Is<ClusterCreateParametersExtended>(
                              parameters => parameters.Location == Location &&
                              parameters.Properties.ClusterDefinition.Kind == ClusterType &&
-                             parameters.Properties.OsType == OSType.Linux
+                             parameters.Properties.OsType == "Linux"
                              )),
                 Times.Once);
         }
@@ -629,7 +629,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             hdinsightManagementMock.Verify(c => c.CreateCluster(ResourceGroupName, ClusterName, It.Is<ClusterCreateParametersExtended>(
                              parameters => parameters.Location == Location &&
                              parameters.Properties.ClusterDefinition.Kind == ClusterType &&
-                             parameters.Properties.OsType == OSType.Linux
+                             parameters.Properties.OsType == "Linux"
                              )),
                 Times.Once);
         }

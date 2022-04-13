@@ -27,20 +27,57 @@ The **Add-AzVmssExtension** cmdlet adds an extension to the Virtual Machine Scal
 ## EXAMPLES
 
 ### Example 1: Add an extension to the VMSS
-```
-PS C:\> Add-AzVmssExtension -VirtualMachineScaleSet $VMSS -Name $ExtName -Publisher $Publisher -Type $ExtType -TypeHandlerVersion $ExtVer -AutoUpgradeMinorVersion $True
+```powershell
+Add-AzVmssExtension -VirtualMachineScaleSet $VMSS -Name $ExtName -Publisher $Publisher -Type $ExtType -TypeHandlerVersion $ExtVer -AutoUpgradeMinorVersion $True
 ```
 
 This command adds an extension to the VMSS.
 
 ### Example 2: Add an extension to the VMSS with settings and protected settings
-```
-PS C:\> $Settings = @{"fileUris" = "[]"; "commandToExecute" = ""};
-PS C:\> $ProtectedSettings = @{"storageAccountName" = $stoname; "storageAccountKey" = $stokey};
+```powershell
+$Settings = @{"fileUris" = "[]"; "commandToExecute" = ""};
+$ProtectedSettings = @{"storageAccountName" = $stoname; "storageAccountKey" = $stokey};
 
-PS C:\> Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name $vmssExtensionName -Publisher $vmssPublisher  `
+Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name $vmssExtensionName -Publisher $vmssPublisher  `
   -Type $vmssExtensionType -TypeHandlerVersion $ExtVer -AutoUpgradeMinorVersion $True  `
   -Setting $Settings -ProtectedSetting $ProtectedSettings
+```
+
+### Example 3: Add an extension to the VMSS with settings and protected settings
+```powershell
+$BatchFile = "runbook.sh"
+$ResourceGroupName = "HelloRG"
+$VMScaleSetName = "HelloVmSS"
+$TypeHandlerVersion = 2.1
+
+#Best Practice for securd paramaters.
+$protectedSettings = @{
+"managedIdentity" = @{ "clientId" = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"};
+}
+
+$publicSettings = @{ 
+"fileUris"= (,"https://storage.blob.core.windows.net/itfiles/$($BatchFile)");
+"commandToExecute"= "sh $($BatchFile)"
+}
+
+# Get information about the scale set
+$vmss = Get-AzVmss `
+            -ResourceGroupName $ResourceGroupName `
+            -VMScaleSetName $VMScaleSetName
+
+Add-AzVmssExtension -VirtualMachineScaleSet $vmss `
+    -Name "CustomScript" `
+    -Publisher "Microsoft.Azure.Extensions" `
+    -Type "CustomScript" `
+    -TypeHandlerVersion $TypeHandlerVersion `
+    -AutoUpgradeMinorVersion $true `
+    -Setting $publicSettings `
+    -ProtectedSetting $protectedSettings
+
+Update-AzVmss `
+    -ResourceGroupName $ResourceGroupName `
+    -Name $VMScaleSetName `
+    -VirtualMachineScaleSet $vmss
 ```
 
 This command adds an extension to the VMSS with a sample bash script on a blob storage, specify the url of blob storage and executable command in settings and security access in protected settings. 

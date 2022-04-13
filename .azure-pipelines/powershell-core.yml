@@ -4,8 +4,8 @@ variables:
   LinuxName: linux
   LinuxImage: ubuntu-20.04
   MacOSName: macOS
-  MacOSImage: macOS-10.14
-  TestFramework: netcoreapp2.1
+  MacOSImage: macOS-11
+  TestFramework: netcoreapp3.1
   TestTarget: Test
   Configuration: Debug
   DebugLocalBuildTasks: true

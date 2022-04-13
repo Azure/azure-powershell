@@ -92,7 +92,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IExperimentsInternal)this).RampUpRule = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRule[]) content.GetValueForProperty("RampUpRule",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IExperimentsInternal)this).RampUpRule, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.RampUpRuleTypeConverter.ConvertFrom));
+            if (content.Contains("RampUpRule"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IExperimentsInternal)this).RampUpRule = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRule[]) content.GetValueForProperty("RampUpRule",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IExperimentsInternal)this).RampUpRule, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.RampUpRuleTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -110,7 +113,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IExperimentsInternal)this).RampUpRule = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRule[]) content.GetValueForProperty("RampUpRule",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IExperimentsInternal)this).RampUpRule, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.RampUpRuleTypeConverter.ConvertFrom));
+            if (content.Contains("RampUpRule"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IExperimentsInternal)this).RampUpRule = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRule[]) content.GetValueForProperty("RampUpRule",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IExperimentsInternal)this).RampUpRule, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRampUpRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.RampUpRuleTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
 

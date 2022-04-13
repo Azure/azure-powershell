@@ -99,8 +99,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRuleInternal)this).IPAddressOrRange = (string) content.GetValueForProperty("IPAddressOrRange",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRuleInternal)this).IPAddressOrRange, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRuleInternal)this).Action = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Action?) content.GetValueForProperty("Action",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRuleInternal)this).Action, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Action.CreateFrom);
+            if (content.Contains("IPAddressOrRange"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRuleInternal)this).IPAddressOrRange = (string) content.GetValueForProperty("IPAddressOrRange",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRuleInternal)this).IPAddressOrRange, global::System.Convert.ToString);
+            }
+            if (content.Contains("Action"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRuleInternal)this).Action = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Action?) content.GetValueForProperty("Action",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRuleInternal)this).Action, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Action.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -118,8 +124,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRuleInternal)this).IPAddressOrRange = (string) content.GetValueForProperty("IPAddressOrRange",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRuleInternal)this).IPAddressOrRange, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRuleInternal)this).Action = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Action?) content.GetValueForProperty("Action",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRuleInternal)this).Action, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Action.CreateFrom);
+            if (content.Contains("IPAddressOrRange"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRuleInternal)this).IPAddressOrRange = (string) content.GetValueForProperty("IPAddressOrRange",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRuleInternal)this).IPAddressOrRange, global::System.Convert.ToString);
+            }
+            if (content.Contains("Action"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRuleInternal)this).Action = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Action?) content.GetValueForProperty("Action",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRuleInternal)this).Action, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Action.CreateFrom);
+            }
             AfterDeserializePSObject(content);
         }
 

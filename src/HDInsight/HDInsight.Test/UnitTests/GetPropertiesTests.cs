@@ -44,17 +44,21 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         {
             var features = new string[] { "feature1", "feature2" };
             var versions = new Dictionary<string, VersionsCapability> { { "key", new VersionsCapability() } };
-            var vm = new Dictionary<string, VmSizesCapability> { { "key1", new VmSizesCapability() } };
             var regions = new Dictionary<string, RegionsCapability> { { "eastus", new RegionsCapability() } };
             var capabilitiesResult = new CapabilitiesResult
             {
                 Features = features,
                 Versions = versions,
-                Vmsizes = vm,
                 Regions = regions
             };
 
-            var propertiesResponse = new AzureHDInsightCapabilities(capabilitiesResult);
+            var billingResponseResult = new BillingResponseListResult()
+            {
+                VmSizes = new List<string>(),
+                VmSizeFilters = new List<VmSizeCompatibilityFilterV2>()
+            };
+
+            var propertiesResponse = new AzureHDInsightCapabilities(capabilitiesResult, billingResponseResult);
 
             hdinsightManagementMock.Setup(c => c.GetProperties(Location))
                 .Returns(capabilitiesResult)
@@ -70,8 +74,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                             resp =>
                                 resp.Features == propertiesResponse.Features
                                 && resp.Regions["eastus"].Available == propertiesResponse.Regions["eastus"].Available
-                                && resp.Versions.Count == propertiesResponse.Versions.Count 
-                                && resp.VmSizes["key1"].Available == propertiesResponse.VmSizes["key1"].Available), true),
+                                && resp.Versions.Count == propertiesResponse.Versions.Count), true),
                 Times.Once);
         }
     }

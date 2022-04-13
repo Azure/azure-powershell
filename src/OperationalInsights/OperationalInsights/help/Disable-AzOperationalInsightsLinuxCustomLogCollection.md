@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
 ms.assetid: EF3FE3F1-1C8F-41EB-990E-F2B30BD9D082
@@ -29,6 +29,22 @@ Disable-AzOperationalInsightsLinuxCustomLogCollection [-Workspace] <PSWorkspace>
 The **Disable-AzOperationalInsightsLinuxCustomLogCollection** cmdlet stops collection of custom logs from connected Linux computers in a workspace.
 
 ## EXAMPLES
+
+### Example 1
+```powershell
+Disable-AzOperationalInsightsLinuxCustomLogCollection -ResourceGroupName test-rg -WorkspaceName OperationalInsight
+```
+
+```output
+Name              : DataSource_CustomLogCollection
+ResourceGroupName : test-rg
+WorkspaceName     : OperationalInsight
+ResourceId        : /subscriptions/xxxx-xxxx-xxxx-xxxx-xxxx/resourceGroups/test-rg/providers/Microsoft.OperationalInsights/wo
+                    rkspaces/OperationalInsight/datasources/DataSource_CustomLogCollection
+Kind              : CustomLogCollection
+Properties        : {"state":"LinuxLogsDisabled"}
+```
+Stops collection of custom logs from connected Linux computers in a workspace.
 
 ## PARAMETERS
 
@@ -124,7 +140,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

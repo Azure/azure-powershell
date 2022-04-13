@@ -133,6 +133,12 @@ namespace Microsoft.Azure.Commands.Compute.Models
         public SubResource HostGroup { get; set; }
 
         public CapacityReservationProfile CapacityReservation { get; set; }
+        
+        // Gets or sets the UserData
+        public string UserData { get; set; }
+        
         public PSApplicationProfile ApplicationProfile { get; set; }
+
+        public int? PlatformFaultDomain { get; set; }
     }
 }

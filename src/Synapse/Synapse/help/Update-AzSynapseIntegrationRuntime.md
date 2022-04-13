@@ -47,8 +47,8 @@ The **Update-AzSynapseIntegrationRuntime** cmdlet updates integration runtime pr
 
 ### Example 1
 ```powershell
-PS C:\> $ts = New-TimeSpan -Hours 3
-PS C:\> Update-AzSynapseIntegrationRuntime -WorkspaceName ContosoWorkspace -Name 'test-selfhost-ir' -AutoUpdate Off -AutoUpdateDelayOffset $ts
+$ts = New-TimeSpan -Hours 3
+Update-AzSynapseIntegrationRuntime -WorkspaceName ContosoWorkspace -Name 'test-selfhost-ir' -AutoUpdate Off -AutoUpdateDelayOffset $ts
 ```
 
 The cmdlet updates self-hosted integration runtime named 'test-selfhost-ir'.

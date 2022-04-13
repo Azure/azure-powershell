@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.dll-Help.xml
 Module Name: Az.DataMigration
 online version: https://docs.microsoft.com/powershell/module/az.datamigration/Remove-AzDataMigrationTask
@@ -37,16 +37,16 @@ The Remove-AzDataMigrationTask cmdlet removes an Azure Database Migration Servic
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Remove-AzDataMigrationTask -TaskName TestTask -ProjectName myTestProject -ServiceName MyTestService
+```powershell
+Remove-AzDataMigrationTask -TaskName TestTask -ProjectName myTestProject -ServiceName MyTestService
  -ResourceGroupName MyResourceGroup
 ```
 
 The preceding example removes an Azure Database Migration Service task named TestTask from Azure based on task name parameter.
 
 ### Example 2
-```
-PS C:\> Remove-AzDataMigrationTask -InputObject $TestTask
+```powershell
+Remove-AzDataMigrationTask -InputObject $TestTask
 ```
 
 The preceding example removes an Azure Database Migration Service task based on PSProjectTask object passed in.
@@ -221,7 +221,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

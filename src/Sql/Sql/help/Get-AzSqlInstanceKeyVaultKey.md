@@ -37,8 +37,10 @@ The Get-AzSqlInstanceKeyVaultKey cmdlet gets information about the Key Vault key
 
 ### Example 1: Get all Key Vault keys
 ```powershell
-PS C:\> Get-AzSqlInstanceKeyVaultKey -ResourceGroupName 'ContosoResourceGroup' -InstanceName 'ContosoManagedInstanceName'
+Get-AzSqlInstanceKeyVaultKey -ResourceGroupName 'ContosoResourceGroup' -InstanceName 'ContosoManagedInstanceName'
+```
 
+```output
 ResourceGroupName      : ContosoResourceGroup
 ManagedInstanceName    : ContosoManagedInstanceName
 KeyId                  : https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901
@@ -52,8 +54,10 @@ This command gets all the Key Vault keys on a SQL managed instance.
 
 ### Example 2: Get a specific Key Vault key
 ```powershell
-PS C:\> Get-AzSqlInstanceKeyVaultKey -ResourceGroupName 'ContosoResourceGroup' -InstanceName 'ContosoManagedInstanceName' -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'
+Get-AzSqlInstanceKeyVaultKey -ResourceGroupName 'ContosoResourceGroup' -InstanceName 'ContosoManagedInstanceName' -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'
+```
 
+```output
 ResourceGroupName      : ContosoResourceGroup
 ManagedInstanceName    : ContosoManagedInstanceName
 KeyId                  : https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901
@@ -67,9 +71,11 @@ This command gets the Key Vault key with Id 'https://contoso.vault.azure.net/key
 
 ### Example 3: Using instance object
 ```powershell
-PS C:\> $managedInstance = Get-AzSqlInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
-PS C:\> Get-AzSqlInstanceKeyVaultKey -ManagedInstance $managedInstance -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'
+$managedInstance = Get-AzSqlInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
+Get-AzSqlInstanceKeyVaultKey -ManagedInstance $managedInstance -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'
+```
 
+```output
 ResourceGroupName      : ContosoResourceGroup
 ManagedInstanceName    : ContosoManagedInstanceName
 KeyId                  : https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901
@@ -83,9 +89,11 @@ This command gets the Key Vault key with Id 'https://contoso.vault.azure.net/key
 
 ### Example 4: Using instance resource id
 ```powershell
-PS C:\> $managedInstance = Get-AzSqlInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
-PS C:\> Get-AzSqlInstanceKeyVaultKey -InstanceResourceId $managedInstance.ResourceId -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'
+$managedInstance = Get-AzSqlInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
+Get-AzSqlInstanceKeyVaultKey -InstanceResourceId $managedInstance.ResourceId -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'
+```
 
+```output
 ResourceGroupName      : ContosoResourceGroup
 ManagedInstanceName    : ContosoManagedInstanceName
 KeyId                  : https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901
@@ -99,9 +107,11 @@ This command gets the Key Vault key with Id 'https://contoso.vault.azure.net/key
 
 ### Example 5: Using piping
 ```powershell
-PS C:\> $managedInstance = Get-AzSqlInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
-PS C:\> $managedInstance | Get-AzSqlInstanceKeyVaultKey -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'
+$managedInstance = Get-AzSqlInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
+$managedInstance | Get-AzSqlInstanceKeyVaultKey -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'
+```
 
+```output
 ResourceGroupName      : ContosoResourceGroup
 ManagedInstanceName    : ContosoManagedInstanceName
 KeyId                  : https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901

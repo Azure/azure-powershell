@@ -30,17 +30,17 @@ The **Get-AzApiManagementGateway** cmdlet gets all or specific API management Ga
 ## EXAMPLES
 
 ### Example 1: Get all gateways
-```
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzApiManagementGateway -Context $apimContext
+```powershell
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Get-AzApiManagementGateway -Context $apimContext
 ```
 
 This command gets all gateways.
 
 ### Example 2: Get a gateway by ID
-```
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzApiManagementGateway -Context $apimContext -GatewayId "0123456789"
+```powershell
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Get-AzApiManagementGateway -Context $apimContext -GatewayId "0123456789"
 ```
 
 This command gets the gateway 0123456789.

@@ -99,7 +99,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDeliveryInfoInternal)this).ScheduledDateTime = (global::System.DateTime?) content.GetValueForProperty("ScheduledDateTime",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDeliveryInfoInternal)this).ScheduledDateTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            if (content.Contains("ScheduledDateTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDeliveryInfoInternal)this).ScheduledDateTime = (global::System.DateTime?) content.GetValueForProperty("ScheduledDateTime",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDeliveryInfoInternal)this).ScheduledDateTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -117,7 +120,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDeliveryInfoInternal)this).ScheduledDateTime = (global::System.DateTime?) content.GetValueForProperty("ScheduledDateTime",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDeliveryInfoInternal)this).ScheduledDateTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            if (content.Contains("ScheduledDateTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDeliveryInfoInternal)this).ScheduledDateTime = (global::System.DateTime?) content.GetValueForProperty("ScheduledDateTime",((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDeliveryInfoInternal)this).ScheduledDateTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             AfterDeserializePSObject(content);
         }
 

@@ -82,6 +82,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
             {
                 { "Microsoft.Insights", null },
                 { "Microsoft.Network", null },
+                { "Microsoft.OperationalInsights", null}
             };
 
             var providersToIgnore = new Dictionary<string, string>();

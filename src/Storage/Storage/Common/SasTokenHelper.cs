@@ -261,7 +261,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             DateTime? StartTime = null,
             DateTime? ExpiryTime = null,
             string iPAddressOrRange = null,
-            SharedAccessProtocol? Protocol = null)
+            SharedAccessProtocol? Protocol = null,
+            string EncryptionScope = null)
         {
             BlobSasBuilder sasBuilder = SetBlobSasBuilder(blobClient.BlobContainerName,
                 blobClient.Name,
@@ -270,7 +271,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 StartTime,
                 ExpiryTime,
                 iPAddressOrRange,
-                Protocol);
+                Protocol,
+                EncryptionScope);
             if (Util.GetVersionIdFromBlobUri(blobClient.Uri) != null)
             {
                 sasBuilder.BlobVersionId = Util.GetVersionIdFromBlobUri(blobClient.Uri);
@@ -291,7 +293,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             DateTime? StartTime = null,
             DateTime? ExpiryTime = null,
             string iPAddressOrRange = null,
-            SharedAccessProtocol? Protocol = null)
+            SharedAccessProtocol? Protocol = null,
+            string EncryptionScope = null)
         {
             BlobSasBuilder sasBuilder = SetBlobSasBuilder(container.Name,
                 null,
@@ -300,7 +303,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 StartTime,
                 ExpiryTime,
                 iPAddressOrRange,
-                Protocol);
+                Protocol,
+                EncryptionScope);
             return sasBuilder;
         }
 
@@ -314,7 +318,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             DateTime? StartTime = null,
             DateTime? ExpiryTime = null,
             string iPAddressOrRange = null,
-            SharedAccessProtocol? Protocol = null)
+            SharedAccessProtocol? Protocol = null,
+            string EncryptionScope = null)
         {
             BlobSasBuilder sasBuilder;
             if (signedIdentifier != null) // Use save access policy
@@ -328,7 +333,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
 
                 if (StartTime != null)
                 {
-                    if (signedIdentifier.AccessPolicy.StartsOn != DateTimeOffset.MinValue)
+                    if (signedIdentifier.AccessPolicy.StartsOn != DateTimeOffset.MinValue && signedIdentifier.AccessPolicy.StartsOn != null)
                     {
                         throw new InvalidOperationException(Resources.SignedStartTimeMustBeOmitted);
                     }
@@ -340,7 +345,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
 
                 if (ExpiryTime != null)
                 {
-                    if (signedIdentifier.AccessPolicy.PolicyExpiresOn != DateTimeOffset.MinValue)
+                    if (signedIdentifier.AccessPolicy.PolicyExpiresOn != DateTimeOffset.MinValue && signedIdentifier.AccessPolicy.PolicyExpiresOn != null)
                     {
                         throw new ArgumentException(Resources.SignedExpiryTimeMustBeOmitted);
                     }
@@ -349,9 +354,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                         sasBuilder.ExpiresOn = ExpiryTime.Value.ToUniversalTime();
                     }
                 }
-                else if (signedIdentifier.AccessPolicy.PolicyExpiresOn == DateTimeOffset.MinValue)
+                else if (signedIdentifier.AccessPolicy.PolicyExpiresOn == DateTimeOffset.MinValue && signedIdentifier.AccessPolicy.PolicyExpiresOn != null)
                 {
-                    if (sasBuilder.StartsOn != DateTimeOffset.MinValue)
+                    if (sasBuilder.StartsOn != DateTimeOffset.MinValue && sasBuilder.StartsOn != null)
                     {
                         sasBuilder.ExpiresOn = sasBuilder.StartsOn.ToUniversalTime().AddHours(1);
                     }
@@ -416,6 +421,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                     sasBuilder.Protocol = SasProtocol.Https;
                 }
             }
+            if (EncryptionScope != null)
+            {
+                sasBuilder.EncryptionScope = EncryptionScope;
+            }
             return sasBuilder;
         }
 
@@ -453,6 +462,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                     case 'x':
                         permission = permission | BlobContainerSasPermissions.DeleteBlobVersion;
                         break;
+                    case 'i':
+                        permission = permission | BlobContainerSasPermissions.SetImmutabilityPolicy;
+                        break;
                     default:
                         // Can't convert to permission supported by XSCL, so use raw permission string
                         sasBuilder.SetPermissions(rawPermission);
@@ -480,7 +492,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 Util.ValidateUserDelegationKeyStartEndTime(sasBuilder.StartsOn, sasBuilder.ExpiresOn);
 
                 userDelegationKey = oauthService.GetUserDelegationKey(
-                    startsOn: sasBuilder.StartsOn == DateTimeOffset.MinValue ? DateTimeOffset.UtcNow : sasBuilder.StartsOn.ToUniversalTime(),
+                    startsOn: sasBuilder.StartsOn == DateTimeOffset.MinValue || sasBuilder.StartsOn == null ? DateTimeOffset.UtcNow : sasBuilder.StartsOn.ToUniversalTime(),
                     expiresOn: sasBuilder.ExpiresOn.ToUniversalTime(),
                     cancellationToken: cancelToken);
 
@@ -501,7 +513,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             DateTime? StartTime = null,
             DateTime? ExpiryTime = null,
             string iPAddressOrRange = null,
-            SharedAccessProtocol? Protocol = null)
+            SharedAccessProtocol? Protocol = null,
+            string EncryptionScope = null)
         {
             AccountSasBuilder sasBuilder = new AccountSasBuilder();
             sasBuilder.ResourceTypes = GetAccountSasResourceTypes(type);
@@ -518,7 +531,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
             else
             {
-                if (sasBuilder.StartsOn != DateTimeOffset.MinValue)
+                if (sasBuilder.StartsOn != DateTimeOffset.MinValue && sasBuilder.StartsOn != null)
                 {
                     sasBuilder.ExpiresOn = sasBuilder.StartsOn.AddHours(1).ToUniversalTime();
                 }
@@ -541,6 +554,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 {
                     sasBuilder.Protocol = SasProtocol.Https;
                 }
+            }
+            if (EncryptionScope != null)
+            {
+                sasBuilder.EncryptionScope = EncryptionScope;
             }
             return sasBuilder;
         }
@@ -633,6 +650,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                         break;
                     case 'x':
                         permission = permission | AccountSasPermissions.DeleteVersion;
+                        break;
+                    case 'i':
+                        permission = permission | AccountSasPermissions.SetImmutabilityPolicy;
+                        break;
+                    case 'y':
+                        permission = permission | AccountSasPermissions.PermanentDelete;
                         break;
                     default:
                         // Can't convert to permission supported by XSCL, so use raw permission string

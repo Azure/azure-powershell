@@ -42,8 +42,10 @@ Description for Creates a new static site in an existing resource group, or upda
 
 ### Example 1: Update a static site
 ```powershell
-PS C:\> Update-AzStaticWebApp -ResourceGroupName 'resourceGroup' -Name 'staticweb00'
+Update-AzStaticWebApp -ResourceGroupName 'resourceGroup' -Name 'staticweb00'
+```
 
+```output
 Kind Location   Name             Type
 ---- --------   ----             ----
      Central US staticweb00 Microsoft.Web/staticSites
@@ -53,8 +55,10 @@ This command updates a static site.
 
 ### Example 2: Update a static site by pipeline
 ```powershell
-PS C:\> Get-AzStaticWebApp -ResourceGroupName 'resourceGroup' -Name 'staticweb00' | Update-AzStaticWebApp
+Get-AzStaticWebApp -ResourceGroupName 'resourceGroup' -Name 'staticweb00' | Update-AzStaticWebApp
+```
 
+```output
 Kind Location   Name             Type
 ---- --------   ----             ----
      Central US staticweb00 Microsoft.Web/staticSites
@@ -488,12 +492,15 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   - `[EnvironmentName <String>]`: The stage site identifier.
   - `[FunctionAppName <String>]`: Name of the function app registered with the static site build.
   - `[Id <String>]`: Resource identity path
+  - `[JobHistoryId <String>]`: History ID.
   - `[Location <String>]`: Location where you plan to create the static site.
   - `[Name <String>]`: Name of the static site.
   - `[PrivateEndpointConnectionName <String>]`: Name of the private endpoint connection.
   - `[ResourceGroupName <String>]`: Name of the resource group to which the resource belongs.
+  - `[Slot <String>]`: Name of the deployment slot. If a slot is not specified, the API deletes a deployment for the production slot.
   - `[SubscriptionId <String>]`: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
   - `[Userid <String>]`: The user id of the user.
+  - `[WebJobName <String>]`: Name of Web Job.
 
 ## RELATED LINKS
 

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Commands.ServiceBus.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Collections;
@@ -88,25 +89,52 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "enabling or disabling SAS authentication for the Service Bus namespace")]
         public SwitchParameter DisableLocalAuth { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage ="Identity Type" )]
+        [ValidateSet("SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned", "None", IgnoreCase = true)]
+        public string IdentityType { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "List of user assigned Identity Ids")]
+        public string[] IdentityId { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Key Property")]
+        public PSEncryptionConfigAttributes[] EncryptionConfig { get; set; }
+
         /// <summary>
         /// 
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            // Create a new ServiceBus namespace
-            Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
-
-            if (ShouldProcess(target: Name, action: string.Format(Resources.CreateNamesapce, Name, ResourceGroupName)))
+            try
             {
-                try
+                // Create a new ServiceBus namespace
+                Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
+
+                if (ShouldProcess(target: Name, action: string.Format(Resources.CreateNamesapce, Name, ResourceGroupName)))
                 {
-                    PSNamespaceAttributes createresponse = Client.BeginCreateNamespace(ResourceGroupName, Name, Location, SkuName, tagDictionary, ZoneRedundant.IsPresent, DisableLocalAuth.IsPresent, SkuCapacity);
-                    WriteObject(createresponse);
+                    try
+                    {
+                        PSNamespaceAttributes createresponse = Client.BeginCreateNamespace(resourceGroupName: ResourceGroupName,
+                                                                                           namespaceName: Name,
+                                                                                           location: Location, 
+                                                                                           skuName: SkuName, 
+                                                                                           tags: tagDictionary, 
+                                                                                           isZoneRedundant: ZoneRedundant.IsPresent,
+                                                                                           isDisableLocalAuth: DisableLocalAuth.IsPresent,
+                                                                                           identityType: IdentityType, 
+                                                                                           identityIds: IdentityId, 
+                                                                                           encryptionconfigs: EncryptionConfig, 
+                                                                                           skuCapacity: SkuCapacity);
+                        WriteObject(createresponse);
+                    }
+                    catch (ErrorResponseException ex)
+                    {
+                        WriteError(ServiceBusClient.WriteErrorforBadrequest(ex));
+                    }
                 }
-                catch (ErrorResponseException ex)
-                {
-                   WriteError(ServiceBusClient.WriteErrorforBadrequest(ex));
-                }
+            }
+            catch(Exception ex)
+            {
+                WriteError(new ErrorRecord(ex, ex.Message, ErrorCategory.OpenError, ex));
             }
         }
     }

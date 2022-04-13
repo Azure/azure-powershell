@@ -66,16 +66,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).FriendlyName = (string) content.GetValueForProperty("FriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).FriendlyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RecoveryPointDataStoresDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetails[]) content.GetValueForProperty("RecoveryPointDataStoresDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RecoveryPointDataStoresDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.RecoveryPointDataStoreDetailsTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RecoveryPointTime = (global::System.DateTime) content.GetValueForProperty("RecoveryPointTime",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RecoveryPointTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).PolicyName = (string) content.GetValueForProperty("PolicyName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).PolicyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).PolicyVersion = (string) content.GetValueForProperty("PolicyVersion",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).PolicyVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RecoveryPointId = (string) content.GetValueForProperty("RecoveryPointId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RecoveryPointId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RecoveryPointType = (string) content.GetValueForProperty("RecoveryPointType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RecoveryPointType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RetentionTagName = (string) content.GetValueForProperty("RetentionTagName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RetentionTagName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RetentionTagVersion = (string) content.GetValueForProperty("RetentionTagVersion",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RetentionTagVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRecoveryPointInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRecoveryPointInternal)this).ObjectType, global::System.Convert.ToString);
+            if (content.Contains("FriendlyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).FriendlyName = (string) content.GetValueForProperty("FriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).FriendlyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryPointDataStoresDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RecoveryPointDataStoresDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetails[]) content.GetValueForProperty("RecoveryPointDataStoresDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RecoveryPointDataStoresDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.RecoveryPointDataStoreDetailsTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("RecoveryPointTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RecoveryPointTime = (global::System.DateTime) content.GetValueForProperty("RecoveryPointTime",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RecoveryPointTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("PolicyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).PolicyName = (string) content.GetValueForProperty("PolicyName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).PolicyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("PolicyVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).PolicyVersion = (string) content.GetValueForProperty("PolicyVersion",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).PolicyVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryPointId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RecoveryPointId = (string) content.GetValueForProperty("RecoveryPointId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RecoveryPointId, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryPointType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RecoveryPointType = (string) content.GetValueForProperty("RecoveryPointType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RecoveryPointType, global::System.Convert.ToString);
+            }
+            if (content.Contains("RetentionTagName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RetentionTagName = (string) content.GetValueForProperty("RetentionTagName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RetentionTagName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RetentionTagVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RetentionTagVersion = (string) content.GetValueForProperty("RetentionTagVersion",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RetentionTagVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("ObjectType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRecoveryPointInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRecoveryPointInternal)this).ObjectType, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -93,16 +123,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).FriendlyName = (string) content.GetValueForProperty("FriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).FriendlyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RecoveryPointDataStoresDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetails[]) content.GetValueForProperty("RecoveryPointDataStoresDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RecoveryPointDataStoresDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.RecoveryPointDataStoreDetailsTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RecoveryPointTime = (global::System.DateTime) content.GetValueForProperty("RecoveryPointTime",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RecoveryPointTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).PolicyName = (string) content.GetValueForProperty("PolicyName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).PolicyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).PolicyVersion = (string) content.GetValueForProperty("PolicyVersion",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).PolicyVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RecoveryPointId = (string) content.GetValueForProperty("RecoveryPointId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RecoveryPointId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RecoveryPointType = (string) content.GetValueForProperty("RecoveryPointType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RecoveryPointType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RetentionTagName = (string) content.GetValueForProperty("RetentionTagName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RetentionTagName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RetentionTagVersion = (string) content.GetValueForProperty("RetentionTagVersion",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RetentionTagVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRecoveryPointInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRecoveryPointInternal)this).ObjectType, global::System.Convert.ToString);
+            if (content.Contains("FriendlyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).FriendlyName = (string) content.GetValueForProperty("FriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).FriendlyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryPointDataStoresDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RecoveryPointDataStoresDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetails[]) content.GetValueForProperty("RecoveryPointDataStoresDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RecoveryPointDataStoresDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRecoveryPointDataStoreDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.RecoveryPointDataStoreDetailsTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("RecoveryPointTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RecoveryPointTime = (global::System.DateTime) content.GetValueForProperty("RecoveryPointTime",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RecoveryPointTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("PolicyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).PolicyName = (string) content.GetValueForProperty("PolicyName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).PolicyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("PolicyVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).PolicyVersion = (string) content.GetValueForProperty("PolicyVersion",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).PolicyVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryPointId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RecoveryPointId = (string) content.GetValueForProperty("RecoveryPointId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RecoveryPointId, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryPointType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RecoveryPointType = (string) content.GetValueForProperty("RecoveryPointType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RecoveryPointType, global::System.Convert.ToString);
+            }
+            if (content.Contains("RetentionTagName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RetentionTagName = (string) content.GetValueForProperty("RetentionTagName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RetentionTagName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RetentionTagVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RetentionTagVersion = (string) content.GetValueForProperty("RetentionTagVersion",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupDiscreteRecoveryPointInternal)this).RetentionTagVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("ObjectType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRecoveryPointInternal)this).ObjectType = (string) content.GetValueForProperty("ObjectType",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRecoveryPointInternal)this).ObjectType, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

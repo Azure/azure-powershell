@@ -101,10 +101,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessVirtualNetworkInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessVirtualNetworkInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessVirtualNetworkInternal)this).Key = (int?) content.GetValueForProperty("Key",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessVirtualNetworkInternal)this).Key, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessVirtualNetworkInternal)this).ResourceId = (string) content.GetValueForProperty("ResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessVirtualNetworkInternal)this).ResourceId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessVirtualNetworkInternal)this).Subnet = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessSubnet[]) content.GetValueForProperty("Subnet",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessVirtualNetworkInternal)this).Subnet, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessSubnet>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.PrivateAccessSubnetTypeConverter.ConvertFrom));
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessVirtualNetworkInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessVirtualNetworkInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("Key"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessVirtualNetworkInternal)this).Key = (int?) content.GetValueForProperty("Key",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessVirtualNetworkInternal)this).Key, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("ResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessVirtualNetworkInternal)this).ResourceId = (string) content.GetValueForProperty("ResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessVirtualNetworkInternal)this).ResourceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("Subnet"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessVirtualNetworkInternal)this).Subnet = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessSubnet[]) content.GetValueForProperty("Subnet",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessVirtualNetworkInternal)this).Subnet, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessSubnet>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.PrivateAccessSubnetTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -122,10 +134,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessVirtualNetworkInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessVirtualNetworkInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessVirtualNetworkInternal)this).Key = (int?) content.GetValueForProperty("Key",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessVirtualNetworkInternal)this).Key, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessVirtualNetworkInternal)this).ResourceId = (string) content.GetValueForProperty("ResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessVirtualNetworkInternal)this).ResourceId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessVirtualNetworkInternal)this).Subnet = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessSubnet[]) content.GetValueForProperty("Subnet",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessVirtualNetworkInternal)this).Subnet, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessSubnet>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.PrivateAccessSubnetTypeConverter.ConvertFrom));
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessVirtualNetworkInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessVirtualNetworkInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("Key"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessVirtualNetworkInternal)this).Key = (int?) content.GetValueForProperty("Key",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessVirtualNetworkInternal)this).Key, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("ResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessVirtualNetworkInternal)this).ResourceId = (string) content.GetValueForProperty("ResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessVirtualNetworkInternal)this).ResourceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("Subnet"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessVirtualNetworkInternal)this).Subnet = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessSubnet[]) content.GetValueForProperty("Subnet",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessVirtualNetworkInternal)this).Subnet, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPrivateAccessSubnet>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.PrivateAccessSubnetTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
 

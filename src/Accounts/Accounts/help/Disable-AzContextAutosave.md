@@ -24,7 +24,7 @@ Turn off autosaving Azure credentials.  Your login information will be forgotten
 
 ### Example 1: Disable autosaving the context
 ```powershell
-PS C:\> Disable-AzContextAutosave
+Disable-AzContextAutosave
 ```
 
 Disable autosave for the current user.

@@ -38,30 +38,30 @@ The name of the spark configuration becomes the name of the exported file. If yo
 
 ### Example 1
 ```powershell
-PS C:\> Export-AzSynapseSparkConfiguration -WorkspaceName ContosoWorkspace -OutputFolder "C:\SparkConfiguration"
+Export-AzSynapseSparkConfiguration -WorkspaceName ContosoWorkspace -OutputFolder "C:\SparkConfiguration"
 ```
 
 Exports all spark configurations in the workspace ContosoWorkspace to the folder "C:\SparkConfiguration".
 
 ### Example 2
 ```powershell
-PS C:\> Export-AzSynapseSparkConfiguration -WorkspaceName ContosoWorkspace -Name ContoSparkConfiguration -OutputFolder "C:\SparkConfiguration"
+Export-AzSynapseSparkConfiguration -WorkspaceName ContosoWorkspace -Name ContoSparkConfiguration -OutputFolder "C:\SparkConfiguration"
 ```
 
 Exports a single spark configuration named ContoSparkConfiguration in the workspace ContosoWorkspace to the folder "C:\SparkConfiguration".
 
 ### Example 3
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Export-AzSynapseSparkConfiguration -Name ContoSparkConfiguration -OutputFolder "C:\SparkConfiguration"
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Export-AzSynapseSparkConfiguration -Name ContoSparkConfiguration -OutputFolder "C:\SparkConfiguration"
 ```
 
 Exports a single spark configuration named ContoSparkConfiguration in the workspace ContosoWorkspace to the folder "C:\SparkConfiguration" through pipeline.
 
 ### Example 4
 ```powershell
-PS C:\> $sparkConfiguration = Get-AzSynapseSparkConfiguration -WorkspaceName ContosoWorkspace -Name ContoSparkConfiguration
-PS C:\> $sparkConfiguration | Export-AzSynapseSparkConfiguration -OutputFolder "C:\SparkConfiguration"
+$sparkConfiguration = Get-AzSynapseSparkConfiguration -WorkspaceName ContosoWorkspace -Name ContoSparkConfiguration
+$sparkConfiguration | Export-AzSynapseSparkConfiguration -OutputFolder "C:\SparkConfiguration"
 ```
 
 Exports a single spark configuration called ContoSparkConfiguration in the workspace ContosoWorkspace to the folder "C:\SparkConfiguration" through pipeline.

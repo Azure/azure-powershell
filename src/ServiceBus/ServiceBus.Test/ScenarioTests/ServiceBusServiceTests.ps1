@@ -17,6 +17,7 @@
 .SYNOPSIS
 Tests EventHub Namespace Create List Remove operations.
 #>
+
 function ServiceBusTests {
     # Setup    
     $location = "East US 2"
@@ -35,7 +36,7 @@ function ServiceBusTests {
 
     Write-Debug " Create new eventHub namespace"
     Write-Debug "NamespaceName : $namespaceName"
-    $result = New-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location  -Name $namespaceName -SkuName "Standard"
+    $result = New-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location  -Name $namespaceName -SkuName "Standard" -Tag @{Tag1="Tag1Value"}
     # Assert
     Assert-AreEqual $result.Name $namespaceName
     Assert-AreEqual $result.ProvisioningState "Succeeded"
@@ -48,8 +49,13 @@ function ServiceBusTests {
     Assert-AreEqual $getNamespace.ResourceGroup $resourceGroupName "Namespace get : ResourceGroup name matches"
     Assert-AreEqual $getNamespace.ResourceGroupName $resourceGroupName "Namespace get : ResourceGroupName name matches"
     
-    $UpdatedNameSpace = Set-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location -Name $namespaceName -SkuName "Standard" -SkuCapacity 2
+    $UpdatedNameSpace = Set-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location -Name $namespaceName -SkuName "Standard" -SkuCapacity 2 -Tag @{Tag1="Tag1Value"; Tag2="Tag1Value2"}
     Assert-AreEqual $UpdatedNameSpace.Name $namespaceName
+    Assert-True { $UpdatedNameSpace.Tags.Count -eq 2 }
+
+    $UpdatedNameSpace = Set-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location -Name $namespaceName -SkuName "Standard"
+    Assert-AreEqual $UpdatedNameSpace.Name $namespaceName
+    Assert-True { $UpdatedNameSpace.Tags.Count -eq 2 }
 
     Write-Debug "Namespace name : $namespaceName2"
     $result = New-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location -Name $namespaceName2
@@ -232,4 +238,117 @@ function ServiceBusNameSpaceAuthTests {
     Write-Debug " Delete namespaces"
     Remove-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName
 	   
+}
+
+function MSITest{
+    $resourceGroupName = "PS-Testing"
+    $msi1 = "PS-Testing-MSI1"
+    $msi2 = "PS-Testing-MSI2"
+    $msi3 = "PS-Testing-MSI3"
+    $namespace1 = getAssetName "Namespace1-"
+    $namespace2 = getAssetName "Namespace2-"
+    try{
+
+        $uad1 = Get-AzUserAssignedIdentity -ResourceGroupName $resourceGroupName -Name $msi1
+        $uad2 = Get-AzUserAssignedIdentity -ResourceGroupName $resourceGroupName -Name $msi2
+        $uad3 = Get-AzUserAssignedIdentity -ResourceGroupName $resourceGroupName -Name $msi3
+
+        $namespace = New-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespace1 -SkuName Standard -Location northeurope
+        Assert-AreEqual $namespace.Name $namespace1
+        Assert-AreEqual $namespace.Sku.Name "Standard"
+
+        $namespace = Set-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespace1 -IdentityType "SystemAssigned"
+        Assert-AreEqual $namespace.Name $namespace1
+        Assert-AreEqual $namespace.Sku.Name "Standard"
+        Assert-AreEqual $namespace.IdentityType "SystemAssigned"
+
+        $namespace = Set-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespace1 -IdentityType "UserAssigned" -IdentityId $uad1.Id,$uad2.Id
+        Assert-AreEqual $namespace.Name $namespace1
+        Assert-AreEqual $namespace.Sku.Name "Standard"
+        Assert-AreEqual $namespace.IdentityType "UserAssigned"
+        Assert-True { $namespace.IdentityId.Count -eq 2 }
+
+        $namespace = Set-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespace1 -IdentityType "SystemAssigned, UserAssigned" -IdentityId $uad1.Id,$uad2.Id
+        Assert-AreEqual $namespace.Name $namespace1
+        Assert-AreEqual $namespace.Sku.Name "Standard"
+        Assert-AreEqual $namespace.IdentityType "SystemAssignedUserAssigned"
+        Assert-True { $namespace.IdentityId.Count -eq 2 }
+
+        $namespace = Set-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespace1 -IdentityType "None"
+        Assert-AreEqual $namespace.Name $namespace1
+        Assert-AreEqual $namespace.Sku.Name "Standard"
+        Assert-Null $namespace.Identity
+    }
+    finally{
+        Remove-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespace1
+    }
+}
+
+function EncryptionTest{
+    try{
+        $resourceGroupName = "PS-Testing"
+        $msi1 = "PS-Testing-MSI1"
+        $msi2 = "PS-Testing-MSI2"
+        $msi3 = "PS-Testing-MSI3"
+        $kv1 = "PS-Testing-kv1"
+        $kv2 = "PS-Testing-kv2"
+        $kv1uri = "https://ps-testing-kv1.vault.azure.net/"
+        $kv2uri = "https://ps-testing-kv2.vault.azure.net"
+        $namespace1 = getAssetName "Namespace1-"
+        $namespace2 = getAssetName "Namespace2-"
+
+        $uad1 = Get-AzUserAssignedIdentity -ResourceGroupName $resourceGroupName -Name $msi1
+        $uad2 = Get-AzUserAssignedIdentity -ResourceGroupName $resourceGroupName -Name $msi2
+        $uad3 = Get-AzUserAssignedIdentity -ResourceGroupName $resourceGroupName -Name $msi3
+
+        $namespace = New-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespace2 -SkuName Premium -Location northeurope -IdentityType SystemAssigned
+        Assert-AreEqual $namespace.Name $namespace2
+        Assert-AreEqual $namespace.Sku.Name "Premium"
+        Assert-AreEqual $namespace.IdentityType "SystemAssigned"
+
+        Set-AzKeyVaultAccessPolicy -VaultName $kv1 -ObjectId $namespace.Identity.PrincipalId -PermissionsToKeys wrapkey,unwrapkey,get -BypassObjectIdValidation
+
+        $ec1 = New-AzServiceBusEncryptionConfig -KeyName key1 -KeyVaultUri $kv1uri
+        $ec2 = New-AzServiceBusEncryptionConfig -KeyName key2 -KeyVaultUri $kv1uri
+
+        $namespace = Set-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespace2 -EncryptionConfig $ec1,$ec2
+        Assert-AreEqual $namespace.Name $namespace2
+        Assert-AreEqual $namespace.Sku.Name "Premium"
+        Assert-AreEqual $namespace.IdentityType "SystemAssigned"
+        Assert-True { $namespace.EncryptionConfig.Count -eq 2 }
+
+
+        $ec1 = New-AzServiceBusEncryptionConfig -KeyName key1 -KeyVaultUri $kv1uri -UserAssignedIdentity $uad1.Id
+        $ec2 = New-AzServiceBusEncryptionConfig -KeyName key2 -KeyVaultUri $kv1uri -UserAssignedIdentity $uad1.Id
+
+        $namespace = New-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespace1 -SkuName Premium -Location northeurope -IdentityType UserAssigned -IdentityId $uad1.Id,$uad2.Id -EncryptionConfig $ec1,$ec2
+        Assert-AreEqual $namespace.Name $namespace1
+        Assert-AreEqual $namespace.Sku.Name "Premium"
+        Assert-AreEqual $namespace.IdentityType "UserAssigned"
+        Assert-True { $namespace.IdentityId.Count -eq 2 }
+        Assert-True { $namespace.EncryptionConfig.Count -eq 2 }
+
+        $ec3 = New-AzServiceBusEncryptionConfig -KeyName key1 -KeyVaultUri $kv2uri -UserAssignedIdentity $uad1.id
+        $namespace.EncryptionConfig += $ec3
+
+        $namespace = Set-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespace1 -EncryptionConfig $namespace.EncryptionConfig -Location northeurope
+        Assert-AreEqual $namespace.Name $namespace1
+        Assert-AreEqual $namespace.Sku.Name "Premium"
+        Assert-AreEqual $namespace.IdentityType "UserAssigned"
+        Assert-True { $namespace.IdentityId.Count -eq 2 }
+        Assert-True { $namespace.EncryptionConfig.Count -eq 3 }
+
+        $namespace = Get-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespace1
+        Assert-AreEqual $namespace.Name $namespace1
+        Assert-AreEqual $namespace.Sku.Name "Premium"
+        Assert-AreEqual $namespace.IdentityType "UserAssigned"
+        Assert-True { $namespace.IdentityId.Count -eq 2 }
+        Assert-True { $namespace.EncryptionConfig.Count -eq 3 }
+
+    }
+     
+    finally{
+        Remove-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespace1
+        Remove-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespace2
+    }
 }

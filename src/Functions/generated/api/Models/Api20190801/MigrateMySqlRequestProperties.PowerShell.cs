@@ -101,8 +101,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlRequestPropertiesInternal)this).ConnectionString = (string) content.GetValueForProperty("ConnectionString",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlRequestPropertiesInternal)this).ConnectionString, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlRequestPropertiesInternal)this).MigrationType = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.MySqlMigrationType) content.GetValueForProperty("MigrationType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlRequestPropertiesInternal)this).MigrationType, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.MySqlMigrationType.CreateFrom);
+            if (content.Contains("ConnectionString"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlRequestPropertiesInternal)this).ConnectionString = (string) content.GetValueForProperty("ConnectionString",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlRequestPropertiesInternal)this).ConnectionString, global::System.Convert.ToString);
+            }
+            if (content.Contains("MigrationType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlRequestPropertiesInternal)this).MigrationType = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.MySqlMigrationType) content.GetValueForProperty("MigrationType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlRequestPropertiesInternal)this).MigrationType, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.MySqlMigrationType.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -120,8 +126,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlRequestPropertiesInternal)this).ConnectionString = (string) content.GetValueForProperty("ConnectionString",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlRequestPropertiesInternal)this).ConnectionString, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlRequestPropertiesInternal)this).MigrationType = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.MySqlMigrationType) content.GetValueForProperty("MigrationType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlRequestPropertiesInternal)this).MigrationType, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.MySqlMigrationType.CreateFrom);
+            if (content.Contains("ConnectionString"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlRequestPropertiesInternal)this).ConnectionString = (string) content.GetValueForProperty("ConnectionString",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlRequestPropertiesInternal)this).ConnectionString, global::System.Convert.ToString);
+            }
+            if (content.Contains("MigrationType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlRequestPropertiesInternal)this).MigrationType = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.MySqlMigrationType) content.GetValueForProperty("MigrationType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlRequestPropertiesInternal)this).MigrationType, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.MySqlMigrationType.CreateFrom);
+            }
             AfterDeserializePSObject(content);
         }
 

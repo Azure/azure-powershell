@@ -99,7 +99,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IRegenerateKeyParametersInternal)this).KeyType = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.KeyType?) content.GetValueForProperty("KeyType",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IRegenerateKeyParametersInternal)this).KeyType, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.KeyType.CreateFrom);
+            if (content.Contains("KeyType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IRegenerateKeyParametersInternal)this).KeyType = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.KeyType?) content.GetValueForProperty("KeyType",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IRegenerateKeyParametersInternal)this).KeyType, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.KeyType.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -117,7 +120,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IRegenerateKeyParametersInternal)this).KeyType = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.KeyType?) content.GetValueForProperty("KeyType",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IRegenerateKeyParametersInternal)this).KeyType, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.KeyType.CreateFrom);
+            if (content.Contains("KeyType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IRegenerateKeyParametersInternal)this).KeyType = (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.KeyType?) content.GetValueForProperty("KeyType",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IRegenerateKeyParametersInternal)this).KeyType, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.KeyType.CreateFrom);
+            }
             AfterDeserializePSObject(content);
         }
 

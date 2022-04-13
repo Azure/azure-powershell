@@ -1,0 +1,79 @@
+<Project>
+
+  <Import Project="$(MSBuildThisFileDirectory)..\Repo.props" />
+  <Import Project="$(RepoTools)Common.Netcore.Dependencies.targets" />
+  <Import Project="$(MSBuildThisFileDirectory)Az.Shared.props" />
+
+  <!-- Build -->
+  <PropertyGroup>
+    <LangVersion>7.1</LangVersion>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Az.$(PsModuleName).$(MSBuildProjectName).private</AssemblyName>
+    <RootNamespace>$(AzAssemblyPrefix)$(PsModuleName)</RootNamespace>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <ModuleOutputPath>$(RepoArtifacts)$(Configuration)\Az.$(PsModuleName)\$(MSBuildProjectName)</ModuleOutputPath>
+    <OutputPath>$(ModuleOutputPath)\bin</OutputPath>
+    <PublishDir>$(OutputPath)</PublishDir>
+    <!-- Some methods are marked async and don't have an await in them -->
+    <NoWarn>1998</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DelaySign>false</DelaySign>
+    <DefineConstants>TRACE;DEBUG;NETSTANDARD</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <SignAssembly>true</SignAssembly>
+    <DelaySign>true</DelaySign>
+    <AssemblyOriginatorKeyFile>$(RepoSrc)MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+    <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
+  </PropertyGroup>
+
+  <!-- Resources -->
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>true</DesignTime>
+      <AutoGen>true</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <!-- Assets -->
+  <ItemGroup>
+    <PackageReference Include="PowerShellStandard.Library" Version="5.1.0" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+        <ModuleCustomFiles Include="$(MSBuildThisFileDirectory)$(PsModuleName)\$(MSBuildProjectName).Autorest\custom\**\*.*"/>
+        <ModuleHelpFiles Include="$(MSBuildThisFileDirectory)$(PsModuleName)\$(MSBuildProjectName).Autorest\help\**\*.*"/>
+        <ModuleGeneratedFiles Include="$(MSBuildThisFileDirectory)$(PsModuleName)\$(MSBuildProjectName).Autorest\generated\**\*.*"/>
+        <ModuleTestFiles Include="$(MSBuildThisFileDirectory)$(PsModuleName)\$(MSBuildProjectName).Autorest\test\**\*.*"/>
+        <UtilsFiles Include="$(MSBuildThisFileDirectory)$(PsModuleName)\$(MSBuildProjectName).Autorest\utils\**\*.*"/>
+  </ItemGroup>
+
+  <Target Name="CopyFiles" AfterTargets="Build">
+    <Copy SourceFiles="$(MSBuildProjectName).psm1" DestinationFolder="$(ModuleOutputPath)" />
+    <Copy SourceFiles="$(MSBuildProjectName).format.ps1xml" DestinationFolder="$(ModuleOutputPath)" />
+    <Copy SourceFiles="check-dependencies.ps1" DestinationFolder="$(ModuleOutputPath)" Condition="'$(Configuration)'=='Debug'"/>
+    <Copy SourceFiles="test-module.ps1" DestinationFolder="$(ModuleOutputPath)" Condition="'$(Configuration)'=='Debug'"/>
+    <Copy SourceFiles="@(ModuleCustomFiles)" DestinationFiles="@(ModuleCustomFiles->'$(ModuleOutputPath)\custom\%(RecursiveDir)%(Filename)%(Extension)')" />
+    <Copy SourceFiles="@(ModuleHelpFiles)" DestinationFiles="@(ModuleHelpFiles->'$(ModuleOutputPath)\help\%(RecursiveDir)%(Filename)%(Extension)')" />
+    <Copy SourceFiles="@(ModuleGeneratedFiles)" DestinationFiles="@(ModuleGeneratedFiles->'$(ModuleOutputPath)\generated\%(RecursiveDir)%(Filename)%(Extension)')" Condition="'$(Configuration)'=='Debug'"/>
+    <Copy SourceFiles="@(ModuleTestFiles)" DestinationFiles="@(ModuleTestFiles->'$(ModuleOutputPath)\test\%(RecursiveDir)%(Filename)%(Extension)')" Condition="'$(Configuration)'=='Debug'"/>
+    <Copy SourceFiles="exports\ProxyCmdletDefinitions.ps1" DestinationFolder="$(ModuleOutputPath)\exports" />
+    <Copy SourceFiles="internal\ProxyCmdletDefinitions.ps1" DestinationFolder="$(ModuleOutputPath)\internal" Condition="Exists('internal\ProxyCmdletDefinitions.ps1')" />
+    <Copy SourceFiles="internal\$(MSBuildProjectName).internal.psm1" DestinationFolder="$(ModuleOutputPath)\internal" />
+    <Copy SourceFiles="@(UtilsFiles)" DestinationFiles="@(UtilsFiles->'$(ModuleOutputPath)\utils\%(RecursiveDir)%(Filename)%(Extension)')" Condition="Exists('utils')"/>
+  </Target>
+
+</Project>

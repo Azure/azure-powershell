@@ -37,8 +37,10 @@ List role definitions of a given managed HSM at a given scope.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzKeyVaultRoleDefinition -HsmName myHsm -Scope "/keys"
+Get-AzKeyVaultRoleDefinition -HsmName myHsm -Scope "/keys"
+```
 
+```output
 RoleName                              Description Permissions
 --------                              ----------- -----------
 Managed HSM Administrator                         1 permission(s)
@@ -54,29 +56,19 @@ The example lists all the roles at "/keys" scope.
 
 ### Example 2
 ```powershell
-PS C:\> $backupRole = Get-AzKeyVaultRoleDefinition -HsmName myHsm -RoleDefinitionName "managed hsm backup"
+$backupRole = Get-AzKeyVaultRoleDefinition -HsmName myHsm -RoleDefinitionName "Managed HSM Backup User"
 
-PS C:\> $backupRole.Permissions
+$backupRole.Permissions
 
-AllowedActions DeniedActions AllowedDataActions DeniedDataActions
--------------- ------------- ------------------ -----------------
-0 action(s)    0 action(s)   3 action(s)        0 action(s)
+Actions     NotActions  DataActions NotDataActions
+-------     ----------  ----------- --------------
+0 action(s) 0 action(s) 3 action(s) 0 action(s)
 
-PS C:\> $backupRole.Permissions.AllowedDataActions
+$backupRole.Permissions.DataActions
 
 Microsoft.KeyVault/managedHsm/backup/start/action
 Microsoft.KeyVault/managedHsm/backup/status/action
 Microsoft.KeyVault/managedHsm/keys/backup/action
-
-RoleName                              Description Permissions
---------                              ----------- -----------
-Managed HSM Administrator                         1 permission(s)
-Managed HSM Crypto Officer                        1 permission(s)
-Managed HSM Crypto User                           1 permission(s)
-Managed HSM Policy Administrator                  1 permission(s)
-Managed HSM Crypto Auditor                        1 permission(s)
-Managed HSM Crypto Service Encryption             1 permission(s)
-Managed HSM Backup                                1 permission(s)
 ```
 
 The example gets the "Managed HSM Backup" role and inspects its permissions.

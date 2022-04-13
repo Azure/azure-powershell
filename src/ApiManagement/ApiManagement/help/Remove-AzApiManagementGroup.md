@@ -25,11 +25,11 @@ The **Remove-AzApiManagementGroup** cmdlet removes an existing API management gr
 
 ### Example 1: Remove an existing management group
 ```powershell
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Remove-AzApiManagementGroup -Context $apimContext -GroupId "Group0001" -Force
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Remove-AzApiManagementGroup -Context $apimContext -GroupId "Group0001"
 ```
 
-This command removes an existing management group named Group0001 and does not prompt the user for confirmation.
+This command removes an existing management group named Group0001.
 
 ## PARAMETERS
 

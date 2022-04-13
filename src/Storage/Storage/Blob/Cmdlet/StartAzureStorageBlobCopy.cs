@@ -300,11 +300,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
         protected override bool UseTrack2Sdk()
         {
-            if (this.BlobTag != null || this.TagCondition != null || this.DestTagCondition != null)
-            {
-                return true;
-            }
-            return base.UseTrack2Sdk();
+            return true;
         }
 
         private bool skipSourceChannelInit;

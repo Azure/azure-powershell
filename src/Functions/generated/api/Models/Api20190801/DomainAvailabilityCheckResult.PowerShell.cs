@@ -94,9 +94,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainAvailabilityCheckResultInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainAvailabilityCheckResultInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainAvailabilityCheckResultInternal)this).Available = (bool?) content.GetValueForProperty("Available",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainAvailabilityCheckResultInternal)this).Available, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainAvailabilityCheckResultInternal)this).DomainType = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DomainType?) content.GetValueForProperty("DomainType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainAvailabilityCheckResultInternal)this).DomainType, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DomainType.CreateFrom);
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainAvailabilityCheckResultInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainAvailabilityCheckResultInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("Available"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainAvailabilityCheckResultInternal)this).Available = (bool?) content.GetValueForProperty("Available",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainAvailabilityCheckResultInternal)this).Available, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("DomainType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainAvailabilityCheckResultInternal)this).DomainType = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DomainType?) content.GetValueForProperty("DomainType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainAvailabilityCheckResultInternal)this).DomainType, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DomainType.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -114,9 +123,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainAvailabilityCheckResultInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainAvailabilityCheckResultInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainAvailabilityCheckResultInternal)this).Available = (bool?) content.GetValueForProperty("Available",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainAvailabilityCheckResultInternal)this).Available, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainAvailabilityCheckResultInternal)this).DomainType = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DomainType?) content.GetValueForProperty("DomainType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainAvailabilityCheckResultInternal)this).DomainType, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DomainType.CreateFrom);
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainAvailabilityCheckResultInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainAvailabilityCheckResultInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("Available"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainAvailabilityCheckResultInternal)this).Available = (bool?) content.GetValueForProperty("Available",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainAvailabilityCheckResultInternal)this).Available, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("DomainType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainAvailabilityCheckResultInternal)this).DomainType = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DomainType?) content.GetValueForProperty("DomainType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainAvailabilityCheckResultInternal)this).DomainType, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DomainType.CreateFrom);
+            }
             AfterDeserializePSObject(content);
         }
 

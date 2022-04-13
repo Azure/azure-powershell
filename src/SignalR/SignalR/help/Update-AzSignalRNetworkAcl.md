@@ -40,15 +40,15 @@ Update the Network ACL of a SignalR service, including the default action and th
 
 ### Allow RESTAPI,ClientConnection for public network and set default action to Deny
 ```powershell
-PS C:\> $networkAcl = Update-AzSignalRNetworkAcl -Name pssignalr -ResourceGroupName test_resource_group -DefaultAction Deny -PublicNetwork -Allow RESTAPI,ClientConnection
+$networkAcl = Update-AzSignalRNetworkAcl -Name pssignalr -ResourceGroupName test_resource_group -DefaultAction Deny -PublicNetwork -Allow RESTAPI,ClientConnection
 
-PS C:\>  $networkAcl
+$networkAcl
 
 DefaultAction PublicNetwork                                        PrivateEndpoints
 ------------- -------------                                        ----------------
 Deny          Microsoft.Azure.Commands.SignalR.Models.PSNetworkAcl {pssignalr.70197ffc-d138-49a5-a336-98b21a8d04d1}
 
-PS C:\> $networkAcl.PublicNetwork
+$networkAcl.PublicNetwork
 Allow                       Deny
 -----                       ----
 {ClientConnection, RESTAPI} {}
@@ -56,10 +56,12 @@ Allow                       Deny
 
 ### Allow client connection and server connection for a private endpoint connection
 ```powershell
-PS C:\> $networkAcl = Update-AzSignalRNetworkAcl -Name pssignalr -ResourceGroupName test_resource_group -PrivateEndpointName pssignalr.70197ffc-d138-49a5-a336-98b21a8d04d1  -Allow ClientConnection,ServerConnection
+$networkAcl = Update-AzSignalRNetworkAcl -Name pssignalr -ResourceGroupName test_resource_group -PrivateEndpointName pssignalr.70197ffc-d138-49a5-a336-98b21a8d04d1  -Allow ClientConnection,ServerConnection
 
-PS C:\>$networkAcl.PrivateEndpoints[0]
+$networkAcl.PrivateEndpoints[0]
+```
 
+```output
 Name                                           Allow                                Deny
 ----                                           -----                                ----
 pssignalr.70197ffc-d138-49a5-a336-98b21a8d04d1 {ServerConnection, ClientConnection} {}
@@ -67,7 +69,7 @@ pssignalr.70197ffc-d138-49a5-a336-98b21a8d04d1 {ServerConnection, ClientConnecti
 
 ### Deny client connection for both public network and a private endpoint connection
 ```powershell
-PS C:\>$networkAcl = Update-AzSignalRNetworkAcl -Name pssignalr -ResourceGroupName test_resource_group -PrivateEndpointName pssignalr.70197ffc-d138-49a5-a336-98b21a8d04d1  -PublicNetwork -Deny ClientConnection
+$networkAcl = Update-AzSignalRNetworkAcl -Name pssignalr -ResourceGroupName test_resource_group -PrivateEndpointName pssignalr.70197ffc-d138-49a5-a336-98b21a8d04d1  -PublicNetwork -Deny ClientConnection
 ```
 
 ## PARAMETERS

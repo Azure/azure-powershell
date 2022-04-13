@@ -66,8 +66,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmPublishingProfileOptionsInternal)this).Format = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.PublishingProfileFormat?) content.GetValueForProperty("Format",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmPublishingProfileOptionsInternal)this).Format, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.PublishingProfileFormat.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmPublishingProfileOptionsInternal)this).IncludeDisasterRecoveryEndpoint = (bool?) content.GetValueForProperty("IncludeDisasterRecoveryEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmPublishingProfileOptionsInternal)this).IncludeDisasterRecoveryEndpoint, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            if (content.Contains("Format"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmPublishingProfileOptionsInternal)this).Format = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.PublishingProfileFormat?) content.GetValueForProperty("Format",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmPublishingProfileOptionsInternal)this).Format, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.PublishingProfileFormat.CreateFrom);
+            }
+            if (content.Contains("IncludeDisasterRecoveryEndpoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmPublishingProfileOptionsInternal)this).IncludeDisasterRecoveryEndpoint = (bool?) content.GetValueForProperty("IncludeDisasterRecoveryEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmPublishingProfileOptionsInternal)this).IncludeDisasterRecoveryEndpoint, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -85,8 +91,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmPublishingProfileOptionsInternal)this).Format = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.PublishingProfileFormat?) content.GetValueForProperty("Format",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmPublishingProfileOptionsInternal)this).Format, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.PublishingProfileFormat.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmPublishingProfileOptionsInternal)this).IncludeDisasterRecoveryEndpoint = (bool?) content.GetValueForProperty("IncludeDisasterRecoveryEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmPublishingProfileOptionsInternal)this).IncludeDisasterRecoveryEndpoint, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            if (content.Contains("Format"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmPublishingProfileOptionsInternal)this).Format = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.PublishingProfileFormat?) content.GetValueForProperty("Format",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmPublishingProfileOptionsInternal)this).Format, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.PublishingProfileFormat.CreateFrom);
+            }
+            if (content.Contains("IncludeDisasterRecoveryEndpoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmPublishingProfileOptionsInternal)this).IncludeDisasterRecoveryEndpoint = (bool?) content.GetValueForProperty("IncludeDisasterRecoveryEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmPublishingProfileOptionsInternal)this).IncludeDisasterRecoveryEndpoint, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             AfterDeserializePSObject(content);
         }
 

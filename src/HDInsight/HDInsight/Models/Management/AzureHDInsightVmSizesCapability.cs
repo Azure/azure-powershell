@@ -21,9 +21,9 @@ namespace Microsoft.Azure.Commands.HDInsight.Models.Management
 {
     public class AzureHDInsightVmSizesCapability
     {
-        public AzureHDInsightVmSizesCapability(VmSizesCapability vmSizesCapability)
+        public AzureHDInsightVmSizesCapability(IList<string> VmSizes)
         {
-            this.Available = vmSizesCapability?.Available;
+            this.Available = VmSizes;
         }
         public IList<string> Available { get; set; }
     }

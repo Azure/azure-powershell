@@ -30,11 +30,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Delete".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Delete", "Delete", global::System.Management.Automation.CompletionResultType.ParameterValue, "Delete");
+                yield return new global::System.Management.Automation.CompletionResult("'Delete'", "Delete", global::System.Management.Automation.CompletionResultType.ParameterValue, "Delete");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Deallocate".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Deallocate", "Deallocate", global::System.Management.Automation.CompletionResultType.ParameterValue, "Deallocate");
+                yield return new global::System.Management.Automation.CompletionResult("'Deallocate'", "Deallocate", global::System.Management.Automation.CompletionResultType.ParameterValue, "Deallocate");
             }
         }
     }

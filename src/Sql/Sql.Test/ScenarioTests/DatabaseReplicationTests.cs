@@ -97,5 +97,33 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             RunPowerShellTest("Test-CreateSecondaryDatabaseWithBackupStorageRedundancy");
         }
+
+        [Fact(Skip = "Location 'East US 2 EUAP' is not accepting creation of new Windows Azure SQL Database servers at this time.'")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateCopyRegularAndZoneRedundantDatabaseWithSourceNotZoneRedundant()
+        {
+            RunPowerShellTest("Test-CreateCopyRegularAndZoneRedundantDatabaseWithSourceNotZoneRedundant");
+        }
+
+        [Fact(Skip = "Location 'East US 2 EUAP' is not accepting creation of new Windows Azure SQL Database servers at this time.'")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateCopyRegularAndZoneRedundantDatabaseWithSourceZoneRedundant()
+        {
+            RunPowerShellTest("Test-CreateCopyRegularAndZoneRedundantDatabaseWithSourceZoneRedundant");
+        }
+
+        [Fact(Skip = "Location 'East US 2 EUAP' is not accepting creation of new Windows Azure SQL Database servers at this time.'")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateSecondaryRegularAndZoneRedundantDatabaseWithSourceNotZoneRedundant()
+        {
+            RunPowerShellTest("Test-CreateSecondaryRegularAndZoneRedundantDatabaseWithSourceNotZoneRedundant");
+        }
+
+        [Fact(Skip = "Location 'East US 2 EUAP' is not accepting creation of new Windows Azure SQL Database servers at this time.'")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateSecondaryRegularAndZoneRedundantDatabaseWithSourceZoneRedundant()
+        {
+            RunPowerShellTest("Test-CreateSecondaryRegularAndZoneRedundantDatabaseWithSourceZoneRedundant");
+        }
     }
 }

@@ -104,16 +104,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.UserPropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Id, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Kind = (string) content.GetValueForProperty("Kind",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Kind, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Type, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).PublishingUserName = (string) content.GetValueForProperty("PublishingUserName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).PublishingUserName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).PublishingPassword = (System.Security.SecureString) content.GetValueForProperty("PublishingPassword",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).PublishingPassword, (object ss) => (System.Security.SecureString)ss);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).PublishingPasswordHash = (System.Security.SecureString) content.GetValueForProperty("PublishingPasswordHash",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).PublishingPasswordHash, (object ss) => (System.Security.SecureString)ss);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).PublishingPasswordHashSalt = (System.Security.SecureString) content.GetValueForProperty("PublishingPasswordHashSalt",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).PublishingPasswordHashSalt, (object ss) => (System.Security.SecureString)ss);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).ScmUri = (string) content.GetValueForProperty("ScmUri",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).ScmUri, global::System.Convert.ToString);
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.UserPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Id, global::System.Convert.ToString);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("Kind"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Kind = (string) content.GetValueForProperty("Kind",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Kind, global::System.Convert.ToString);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Type, global::System.Convert.ToString);
+            }
+            if (content.Contains("PublishingUserName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).PublishingUserName = (string) content.GetValueForProperty("PublishingUserName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).PublishingUserName, global::System.Convert.ToString);
+            }
+            if (content.Contains("PublishingPassword"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).PublishingPassword = (System.Security.SecureString) content.GetValueForProperty("PublishingPassword",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).PublishingPassword, (object ss) => (System.Security.SecureString)ss);
+            }
+            if (content.Contains("PublishingPasswordHash"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).PublishingPasswordHash = (System.Security.SecureString) content.GetValueForProperty("PublishingPasswordHash",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).PublishingPasswordHash, (object ss) => (System.Security.SecureString)ss);
+            }
+            if (content.Contains("PublishingPasswordHashSalt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).PublishingPasswordHashSalt = (System.Security.SecureString) content.GetValueForProperty("PublishingPasswordHashSalt",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).PublishingPasswordHashSalt, (object ss) => (System.Security.SecureString)ss);
+            }
+            if (content.Contains("ScmUri"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).ScmUri = (string) content.GetValueForProperty("ScmUri",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).ScmUri, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -131,16 +161,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.UserPropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Id, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Kind = (string) content.GetValueForProperty("Kind",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Kind, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Type, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).PublishingUserName = (string) content.GetValueForProperty("PublishingUserName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).PublishingUserName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).PublishingPassword = (System.Security.SecureString) content.GetValueForProperty("PublishingPassword",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).PublishingPassword, (object ss) => (System.Security.SecureString)ss);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).PublishingPasswordHash = (System.Security.SecureString) content.GetValueForProperty("PublishingPasswordHash",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).PublishingPasswordHash, (object ss) => (System.Security.SecureString)ss);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).PublishingPasswordHashSalt = (System.Security.SecureString) content.GetValueForProperty("PublishingPasswordHashSalt",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).PublishingPasswordHashSalt, (object ss) => (System.Security.SecureString)ss);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).ScmUri = (string) content.GetValueForProperty("ScmUri",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).ScmUri, global::System.Convert.ToString);
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.UserPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Id, global::System.Convert.ToString);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("Kind"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Kind = (string) content.GetValueForProperty("Kind",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Kind, global::System.Convert.ToString);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)this).Type, global::System.Convert.ToString);
+            }
+            if (content.Contains("PublishingUserName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).PublishingUserName = (string) content.GetValueForProperty("PublishingUserName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).PublishingUserName, global::System.Convert.ToString);
+            }
+            if (content.Contains("PublishingPassword"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).PublishingPassword = (System.Security.SecureString) content.GetValueForProperty("PublishingPassword",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).PublishingPassword, (object ss) => (System.Security.SecureString)ss);
+            }
+            if (content.Contains("PublishingPasswordHash"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).PublishingPasswordHash = (System.Security.SecureString) content.GetValueForProperty("PublishingPasswordHash",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).PublishingPasswordHash, (object ss) => (System.Security.SecureString)ss);
+            }
+            if (content.Contains("PublishingPasswordHashSalt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).PublishingPasswordHashSalt = (System.Security.SecureString) content.GetValueForProperty("PublishingPasswordHashSalt",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).PublishingPasswordHashSalt, (object ss) => (System.Security.SecureString)ss);
+            }
+            if (content.Contains("ScmUri"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).ScmUri = (string) content.GetValueForProperty("ScmUri",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserInternal)this).ScmUri, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
     }

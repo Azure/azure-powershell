@@ -38,6 +38,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// object defining the RG Name suffix to store Restore Points
         /// </summary>
         public string AzureBackupRGNameSuffix { get; set; }
-    }
 
+        /// <summary>
+        /// Type of the AzureVM policy : Standard, Enhanced
+        /// </summary>
+        public PSPolicyType PolicySubType { get; set; }
+    }
 }

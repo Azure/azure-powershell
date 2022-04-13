@@ -19,6 +19,14 @@
 -->
 ## Upcoming Release
 
+## Version 0.9.0
+* Added `Administrators` and `EncryptDCConnections` to `ActiveDirectory`
+* Added `Get-AzNetAppFilesQuotaLimit` to get the default and current limits for quotas
+* Added `CapacityPoolResourceId`, `ProximityPlacementGroup`, `VolumeSpecName` and `PlacementRules` to `Volume`
+
+Breaking change:
+* The `Administrators` parameter in `New-AzNetAppFilesActiveDirectory` and `Update-AzNetAppFilesActiveDirectory` is changed to singularform `Administrator` to follow Powrshell convetion
+
 ## Version 0.8.0
 * Added list NetAppAccounts by subscription
 * Added etags to response PSNetAppFilesVolume, PSNetAppFilesPool, PSNetAppFilesAccount, PSNetAppFilesBackupPolicy, PSNetAppFilesSnapshotPolicy

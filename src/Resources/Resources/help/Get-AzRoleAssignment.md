@@ -13,6 +13,16 @@ Lists Azure RBAC role assignments at the specified scope.
 By default it lists all role assignments in the selected Azure subscription.
 Use respective parameters to list assignments to a specific user, or to list assignments on a specific resource group or resource.
 
+The cmdlet may call below Microsoft Graph API according to input parameters:
+
+- GET /users/{id}
+- GET /servicePrincipals/{id}
+- GET /groups/{id}
+- GET /directoryObjects/{id}
+- POST /directoryObjects/getByIds
+
+Please notice that this cmdlet will mark `ObjectType` as `Unknown` in output if the object of role assignment is not found or current account has insufficient privileges to get object type.
+
 ## SYNTAX
 
 ### EmptyParameterSet (Default)
@@ -149,29 +159,29 @@ Use the IncludeClassicAdministrators switch to also display the subscription adm
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Get-AzRoleAssignment
+```powershell
+Get-AzRoleAssignment
 ```
 
 List all role assignments in the subscription
 
 ### Example 2
-```
-PS C:\> Get-AzRoleAssignment -ResourceGroupName testRG -SignInName john.doe@contoso.com
+```powershell
+Get-AzRoleAssignment -ResourceGroupName testRG -SignInName john.doe@contoso.com
 ```
 
 Gets all role assignments made to user john.doe@contoso.com, and the groups of which he is member, at the testRG scope or above.
 
 ### Example 3
-```
-PS C:\> Get-AzRoleAssignment -ServicePrincipalName "http://testapp1.com"
+```powershell
+Get-AzRoleAssignment -ServicePrincipalName "http://testapp1.com"
 ```
 
 Gets all role assignments of the specified service principal
 
 ### Example 4
-```
-PS C:\> Get-AzRoleAssignment -Scope "/subscriptions/96231a05-34ce-4eb4-aa6a-70759cbb5e83/resourcegroups/rg1/providers/Microsoft.Web/sites/site1"
+```powershell
+Get-AzRoleAssignment -Scope "/subscriptions/96231a05-34ce-4eb4-aa6a-70759cbb5e83/resourcegroups/rg1/providers/Microsoft.Web/sites/site1"
 ```
 
 Gets role assignments at the 'site1' website scope.

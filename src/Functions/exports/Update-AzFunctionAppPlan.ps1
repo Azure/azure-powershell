@@ -20,11 +20,11 @@ Updates a function app service plan.
 .Description
 Updates a function app service plan.
 .Example
-PS C:\> Update-AzFunctionAppPlan -ResourceGroupName MyResourceGroupName `
-                                 -Name MyPremiumPlan `
-                                 -MaximumWorkerCount 20 `
-                                 -Sku EP2
-
+Update-AzFunctionAppPlan -ResourceGroupName MyResourceGroupName `
+                         -Name MyPremiumPlan `
+                         -MaximumWorkerCount 20 `
+                         -Sku EP2 `
+                         -Force
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan
@@ -113,6 +113,12 @@ param(
     [System.Int32]
     # The minimum number of workers for the app service plan.
     ${MinimumWorkerCount},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Forces the cmdlet to update the function app plan without prompting for confirmation.
+    ${Force},
 
     [Parameter()]
     [ValidateNotNull()]

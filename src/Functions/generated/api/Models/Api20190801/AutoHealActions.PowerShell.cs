@@ -66,11 +66,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealActionsInternal)this).CustomAction = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealCustomAction) content.GetValueForProperty("CustomAction",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealActionsInternal)this).CustomAction, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.AutoHealCustomActionTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealActionsInternal)this).ActionType = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AutoHealActionType?) content.GetValueForProperty("ActionType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealActionsInternal)this).ActionType, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AutoHealActionType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealActionsInternal)this).MinProcessExecutionTime = (string) content.GetValueForProperty("MinProcessExecutionTime",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealActionsInternal)this).MinProcessExecutionTime, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealActionsInternal)this).CustomActionExe = (string) content.GetValueForProperty("CustomActionExe",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealActionsInternal)this).CustomActionExe, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealActionsInternal)this).CustomActionParameter = (string) content.GetValueForProperty("CustomActionParameter",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealActionsInternal)this).CustomActionParameter, global::System.Convert.ToString);
+            if (content.Contains("CustomAction"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealActionsInternal)this).CustomAction = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealCustomAction) content.GetValueForProperty("CustomAction",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealActionsInternal)this).CustomAction, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.AutoHealCustomActionTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ActionType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealActionsInternal)this).ActionType = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AutoHealActionType?) content.GetValueForProperty("ActionType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealActionsInternal)this).ActionType, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AutoHealActionType.CreateFrom);
+            }
+            if (content.Contains("MinProcessExecutionTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealActionsInternal)this).MinProcessExecutionTime = (string) content.GetValueForProperty("MinProcessExecutionTime",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealActionsInternal)this).MinProcessExecutionTime, global::System.Convert.ToString);
+            }
+            if (content.Contains("CustomActionExe"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealActionsInternal)this).CustomActionExe = (string) content.GetValueForProperty("CustomActionExe",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealActionsInternal)this).CustomActionExe, global::System.Convert.ToString);
+            }
+            if (content.Contains("CustomActionParameter"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealActionsInternal)this).CustomActionParameter = (string) content.GetValueForProperty("CustomActionParameter",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealActionsInternal)this).CustomActionParameter, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -88,11 +103,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealActionsInternal)this).CustomAction = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealCustomAction) content.GetValueForProperty("CustomAction",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealActionsInternal)this).CustomAction, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.AutoHealCustomActionTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealActionsInternal)this).ActionType = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AutoHealActionType?) content.GetValueForProperty("ActionType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealActionsInternal)this).ActionType, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AutoHealActionType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealActionsInternal)this).MinProcessExecutionTime = (string) content.GetValueForProperty("MinProcessExecutionTime",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealActionsInternal)this).MinProcessExecutionTime, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealActionsInternal)this).CustomActionExe = (string) content.GetValueForProperty("CustomActionExe",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealActionsInternal)this).CustomActionExe, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealActionsInternal)this).CustomActionParameter = (string) content.GetValueForProperty("CustomActionParameter",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealActionsInternal)this).CustomActionParameter, global::System.Convert.ToString);
+            if (content.Contains("CustomAction"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealActionsInternal)this).CustomAction = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealCustomAction) content.GetValueForProperty("CustomAction",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealActionsInternal)this).CustomAction, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.AutoHealCustomActionTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ActionType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealActionsInternal)this).ActionType = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AutoHealActionType?) content.GetValueForProperty("ActionType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealActionsInternal)this).ActionType, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AutoHealActionType.CreateFrom);
+            }
+            if (content.Contains("MinProcessExecutionTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealActionsInternal)this).MinProcessExecutionTime = (string) content.GetValueForProperty("MinProcessExecutionTime",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealActionsInternal)this).MinProcessExecutionTime, global::System.Convert.ToString);
+            }
+            if (content.Contains("CustomActionExe"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealActionsInternal)this).CustomActionExe = (string) content.GetValueForProperty("CustomActionExe",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealActionsInternal)this).CustomActionExe, global::System.Convert.ToString);
+            }
+            if (content.Contains("CustomActionParameter"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealActionsInternal)this).CustomActionParameter = (string) content.GetValueForProperty("CustomActionParameter",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealActionsInternal)this).CustomActionParameter, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

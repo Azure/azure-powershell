@@ -32,7 +32,7 @@ The **Remove-AzPrivateEndpointConnection** cmdlet removes a private endpoint con
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 Remove-AzPrivateEndpointConnection -Name MyPrivateEndpointConnection1 -ResourceGroupName TestResourceGroup -ServiceName MyPrivateLinkServiceName
 ```
 

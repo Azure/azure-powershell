@@ -24,8 +24,10 @@ The New-AzDeviceSecurityGroupThresholdCustomAlertRuleObject cmdlet creates a new
 
 ### Example 1
 ```powershell
-PS C:\> New-AzDeviceSecurityGroupThresholdCustomAlertRuleObject -MinThreshold 0 -MaxThreshold 10 -Enabled $true -Type "SomeRuleType"
+New-AzDeviceSecurityGroupThresholdCustomAlertRuleObject -MinThreshold 0 -MaxThreshold 10 -Enabled $true -Type "SomeRuleType"
+```
 
+```output
 RuleType: "SomeRuleType"
 DisplayName: "Display name for some rule type"
 Description: "Description for some rule type"

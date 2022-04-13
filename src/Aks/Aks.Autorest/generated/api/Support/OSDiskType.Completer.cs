@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Managed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Managed", "Managed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Managed");
+                yield return new global::System.Management.Automation.CompletionResult("'Managed'", "Managed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Managed");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Ephemeral".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Ephemeral", "Ephemeral", global::System.Management.Automation.CompletionResultType.ParameterValue, "Ephemeral");
+                yield return new global::System.Management.Automation.CompletionResult("'Ephemeral'", "Ephemeral", global::System.Management.Automation.CompletionResultType.ParameterValue, "Ephemeral");
             }
         }
     }

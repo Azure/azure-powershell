@@ -2,9 +2,9 @@
 ```powershell
 PS C:\> Remove-AzContainerGroup -Name test-cg -ResourceGroupName test-rg
 
-Location Name    Type
--------- ----    ----
-eastus   test-cg Microsoft.ContainerInstance/containerGroups
+Location Name    Zone ResourceGroupName
+-------- ----    ---- -----------------
+eastus   test-cg      test-rg
 ```
 
 This command removes the specified container group.
@@ -13,9 +13,9 @@ This command removes the specified container group.
 ```powershell
 PS C:\> Get-AzContainerGroup -Name test-cg -ResourceGroupName bez-rg | Remove-AzContainerGroup
 
-Location Name    Type
--------- ----    ----
-eastus   test-cg Microsoft.ContainerInstance/containerGroups
+Location Name    Zone ResourceGroupName
+-------- ----    ---- -----------------
+eastus   test-cg      test-rg
 ```
 
 This command removes a container group by piping.

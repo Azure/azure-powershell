@@ -34,8 +34,8 @@ The **Set-AzVMDataDisk** cmdlet modifies properties of a virtual machine data di
 
 ### Example 1: Modify the caching mode of a data disk
 ```powershell
-PS C:\> $VM = Get-AzVM -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM07"
-PS C:\> Set-AzVMDataDisk -VM $VM -Name "DataDisk01" -Caching ReadWrite | Update-AzVM
+$VM = Get-AzVM -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM07"
+Set-AzVMDataDisk -VM $VM -Name "DataDisk01" -Caching ReadWrite | Update-AzVM
 ```
 
 The first command gets the virtual machine named ContosoVM07 by using **Get-AzVM**.

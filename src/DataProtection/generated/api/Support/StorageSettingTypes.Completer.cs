@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "GeoRedundant".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("GeoRedundant", "GeoRedundant", global::System.Management.Automation.CompletionResultType.ParameterValue, "GeoRedundant");
+                yield return new global::System.Management.Automation.CompletionResult("'GeoRedundant'", "GeoRedundant", global::System.Management.Automation.CompletionResultType.ParameterValue, "GeoRedundant");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "LocallyRedundant".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("LocallyRedundant", "LocallyRedundant", global::System.Management.Automation.CompletionResultType.ParameterValue, "LocallyRedundant");
+                yield return new global::System.Management.Automation.CompletionResult("'LocallyRedundant'", "LocallyRedundant", global::System.Management.Automation.CompletionResultType.ParameterValue, "LocallyRedundant");
             }
         }
     }

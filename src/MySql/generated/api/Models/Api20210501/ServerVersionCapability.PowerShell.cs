@@ -99,8 +99,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerVersionCapabilityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerVersionCapabilityInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerVersionCapabilityInternal)this).SupportedSku = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ISkuCapability[]) content.GetValueForProperty("SupportedSku",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerVersionCapabilityInternal)this).SupportedSku, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ISkuCapability>(__y, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.SkuCapabilityTypeConverter.ConvertFrom));
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerVersionCapabilityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerVersionCapabilityInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("SupportedSku"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerVersionCapabilityInternal)this).SupportedSku = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ISkuCapability[]) content.GetValueForProperty("SupportedSku",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerVersionCapabilityInternal)this).SupportedSku, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ISkuCapability>(__y, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.SkuCapabilityTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -118,8 +124,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerVersionCapabilityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerVersionCapabilityInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerVersionCapabilityInternal)this).SupportedSku = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ISkuCapability[]) content.GetValueForProperty("SupportedSku",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerVersionCapabilityInternal)this).SupportedSku, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ISkuCapability>(__y, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.SkuCapabilityTypeConverter.ConvertFrom));
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerVersionCapabilityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerVersionCapabilityInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("SupportedSku"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerVersionCapabilityInternal)this).SupportedSku = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ISkuCapability[]) content.GetValueForProperty("SupportedSku",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerVersionCapabilityInternal)this).SupportedSku, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ISkuCapability>(__y, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.SkuCapabilityTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
 

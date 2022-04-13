@@ -59,5 +59,19 @@ namespace Microsoft.Azure.Commands.Profile.Test
         {
             TestRunner.RunTestScript("Test-GetSubscriptionsWithTags");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetSubscriptionsAfterContextRenameAndSet()
+        {
+            TestRunner.RunTestScript("Test-GetSubscriptionsAfterContextRenameAndSet");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetSubscriptionsWithDefaultProfileAsInput()
+        {
+            TestRunner.RunTestScript("Test-GetSubscriptionsWithDefaultProfileAsInput");
+        }
     }
 }
