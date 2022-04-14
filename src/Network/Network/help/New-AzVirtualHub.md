@@ -129,6 +129,7 @@ $virtualWan = New-AzVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" 
 New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.1.0/24" -HubRoutingPreference "VpnGateway"    
 ```
 
+
 ```output
 VirtualWan                : /subscriptions/{subscriptionId}resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
 ResourceGroupName         : testRG
