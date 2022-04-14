@@ -7,7 +7,7 @@
       "RequestBody": "{\r\n  \"name\": \"TestParent4\",\r\n  \"properties\": {\r\n    \"details\": {\r\n      \"parent\": {}\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "7f0dd074-141c-4064-8cc6-35f9c8682185"
+          "8df0b580-34d1-4c79-9ddb-bb96da9f7fea"
         ],
         "Cache-Control": [
           "no-cache"
@@ -16,7 +16,7 @@
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/5.0.1522.11506",
+          "FxVersion/4.700.22.16002",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19044",
           "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.1.1.0"
@@ -39,16 +39,16 @@
           "59"
         ],
         "x-ms-request-id": [
-          "westus:1be27dbe-e435-4791-bc0c-080288a3b2f6"
+          "westcentralus:be297863-9364-4bbd-951f-ad012899a561"
         ],
         "x-ba-restapi": [
           "0.0.0.0"
         ],
         "client-request-id": [
-          "1be27dbe-e435-4791-bc0c-080288a3b2f6"
+          "be297863-9364-4bbd-951f-ad012899a561"
         ],
         "request-id": [
-          "1be27dbe-e435-4791-bc0c-080288a3b2f6"
+          "be297863-9364-4bbd-951f-ad012899a561"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -57,10 +57,10 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "1be27dbe-e435-4791-bc0c-080288a3b2f6"
+          "be297863-9364-4bbd-951f-ad012899a561"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20220406T192805Z:1be27dbe-e435-4791-bc0c-080288a3b2f6"
+          "WESTCENTRALUS:20220414T190556Z:be297863-9364-4bbd-951f-ad012899a561"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -69,7 +69,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 06 Apr 2022 19:28:04 GMT"
+          "Thu, 14 Apr 2022 19:05:56 GMT"
         ],
         "Content-Length": [
           "538"
@@ -84,7 +84,7 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestParent4\",\r\n  \"type\": \"Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestParent4\",\r\n  \"properties\": {\r\n    \"tenantId\": \"c7a87cda-9a66-4920-b0f8-869baa04efe0\",\r\n    \"displayName\": \"TestParent4\",\r\n    \"details\": {\r\n      \"version\": 5,\r\n      \"updatedTime\": \"2022-04-06T19:08:12.9403513Z\",\r\n      \"updatedBy\": \"9e41f384-0aa9-41bc-a29d-6d956cd8eadb\",\r\n      \"parent\": {\r\n        \"id\": \"/providers/Microsoft.Management/managementGroups/c7a87cda-9a66-4920-b0f8-869baa04efe0\",\r\n        \"name\": \"c7a87cda-9a66-4920-b0f8-869baa04efe0\",\r\n        \"displayName\": \"Root Management Group\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestParent4\",\r\n  \"type\": \"Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestParent4\",\r\n  \"properties\": {\r\n    \"tenantId\": \"c7a87cda-9a66-4920-b0f8-869baa04efe0\",\r\n    \"displayName\": \"TestParent4\",\r\n    \"details\": {\r\n      \"version\": 6,\r\n      \"updatedTime\": \"2022-04-14T18:35:47.9236336Z\",\r\n      \"updatedBy\": \"9e41f384-0aa9-41bc-a29d-6d956cd8eadb\",\r\n      \"parent\": {\r\n        \"id\": \"/providers/Microsoft.Management/managementGroups/c7a87cda-9a66-4920-b0f8-869baa04efe0\",\r\n        \"name\": \"c7a87cda-9a66-4920-b0f8-869baa04efe0\",\r\n        \"displayName\": \"Root Management Group\"\r\n      }\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -94,7 +94,7 @@
       "RequestBody": "{\r\n  \"name\": \"TestPSGroup4\",\r\n  \"properties\": {\r\n    \"displayName\": \"TestDisplayName\",\r\n    \"details\": {\r\n      \"parent\": {\r\n        \"id\": \"/providers/Microsoft.Management/managementGroups/TestParent4\"\r\n      }\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "81b67ee8-71c7-4243-82aa-2aabb23f6e06"
+          "88756137-bda9-42a8-85ae-1e91b3130b31"
         ],
         "Cache-Control": [
           "no-cache"
@@ -103,7 +103,7 @@
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/5.0.1522.11506",
+          "FxVersion/4.700.22.16002",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19044",
           "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.1.1.0"
@@ -126,16 +126,16 @@
           "59"
         ],
         "x-ms-request-id": [
-          "westus:bbdec431-4fca-4efb-bba9-8e30f81a97ed"
+          "westcentralus:814301da-7bf1-4852-bbc5-0c68245d344b"
         ],
         "x-ba-restapi": [
           "0.0.0.0"
         ],
         "client-request-id": [
-          "bbdec431-4fca-4efb-bba9-8e30f81a97ed"
+          "814301da-7bf1-4852-bbc5-0c68245d344b"
         ],
         "request-id": [
-          "bbdec431-4fca-4efb-bba9-8e30f81a97ed"
+          "814301da-7bf1-4852-bbc5-0c68245d344b"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -144,10 +144,10 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "bbdec431-4fca-4efb-bba9-8e30f81a97ed"
+          "814301da-7bf1-4852-bbc5-0c68245d344b"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20220406T192806Z:bbdec431-4fca-4efb-bba9-8e30f81a97ed"
+          "WESTCENTRALUS:20220414T190557Z:814301da-7bf1-4852-bbc5-0c68245d344b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -156,7 +156,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 06 Apr 2022 19:28:05 GMT"
+          "Thu, 14 Apr 2022 19:05:57 GMT"
         ],
         "Content-Length": [
           "484"
@@ -171,7 +171,7 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestPSGroup4\",\r\n  \"type\": \"Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestPSGroup4\",\r\n  \"properties\": {\r\n    \"tenantId\": \"c7a87cda-9a66-4920-b0f8-869baa04efe0\",\r\n    \"displayName\": \"TestDisplayName\",\r\n    \"details\": {\r\n      \"version\": 6,\r\n      \"updatedTime\": \"2022-04-06T19:27:33.5536025Z\",\r\n      \"updatedBy\": \"9e41f384-0aa9-41bc-a29d-6d956cd8eadb\",\r\n      \"parent\": {\r\n        \"id\": \"/providers/Microsoft.Management/managementGroups/TestParent4\",\r\n        \"name\": \"TestParent4\",\r\n        \"displayName\": \"TestParent4\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestPSGroup4\",\r\n  \"type\": \"Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestPSGroup4\",\r\n  \"properties\": {\r\n    \"tenantId\": \"c7a87cda-9a66-4920-b0f8-869baa04efe0\",\r\n    \"displayName\": \"TestDisplayName\",\r\n    \"details\": {\r\n      \"version\": 7,\r\n      \"updatedTime\": \"2022-04-14T18:57:56.9406062Z\",\r\n      \"updatedBy\": \"9e41f384-0aa9-41bc-a29d-6d956cd8eadb\",\r\n      \"parent\": {\r\n        \"id\": \"/providers/Microsoft.Management/managementGroups/TestParent4\",\r\n        \"name\": \"TestParent4\",\r\n        \"displayName\": \"TestParent4\"\r\n      }\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -181,7 +181,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2366158f-7d2d-41ee-818f-731f8b30e157"
+          "00c109ff-0ed3-4710-b2ce-b628e6d8f36c"
         ],
         "Cache-Control": [
           "no-cache"
@@ -190,7 +190,7 @@
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/5.0.1522.11506",
+          "FxVersion/4.700.22.16002",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19044",
           "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.1.1.0"
@@ -216,16 +216,16 @@
           "59"
         ],
         "x-ms-request-id": [
-          "westus:32ae367a-fc68-4602-90fe-41eb1c7aeb07"
+          "westcentralus:bbc82583-14ff-4e5a-b827-1c2c594ec3fc"
         ],
         "x-ba-restapi": [
           "0.0.0.0"
         ],
         "client-request-id": [
-          "32ae367a-fc68-4602-90fe-41eb1c7aeb07"
+          "bbc82583-14ff-4e5a-b827-1c2c594ec3fc"
         ],
         "request-id": [
-          "32ae367a-fc68-4602-90fe-41eb1c7aeb07"
+          "bbc82583-14ff-4e5a-b827-1c2c594ec3fc"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -234,10 +234,10 @@
           "14999"
         ],
         "x-ms-correlation-request-id": [
-          "32ae367a-fc68-4602-90fe-41eb1c7aeb07"
+          "bbc82583-14ff-4e5a-b827-1c2c594ec3fc"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20220406T192807Z:32ae367a-fc68-4602-90fe-41eb1c7aeb07"
+          "WESTCENTRALUS:20220414T190559Z:bbc82583-14ff-4e5a-b827-1c2c594ec3fc"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -246,7 +246,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 06 Apr 2022 19:28:07 GMT"
+          "Thu, 14 Apr 2022 19:05:58 GMT"
         ],
         "Content-Length": [
           "161"
@@ -268,10 +268,10 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2366158f-7d2d-41ee-818f-731f8b30e157"
+          "00c109ff-0ed3-4710-b2ce-b628e6d8f36c"
         ],
         "User-Agent": [
-          "FxVersion/5.0.1522.11506",
+          "FxVersion/4.700.22.16002",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19044",
           "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.1.1.0"
@@ -285,28 +285,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "westus:4953764f-c8c8-419b-8f12-59b491e47522"
+          "westcentralus:0bc8f5c7-9266-4496-9119-1988f8602f3b"
         ],
         "x-ba-restapi": [
           "0.0.0.0"
         ],
         "client-request-id": [
-          "4953764f-c8c8-419b-8f12-59b491e47522"
+          "0bc8f5c7-9266-4496-9119-1988f8602f3b"
         ],
         "request-id": [
-          "4953764f-c8c8-419b-8f12-59b491e47522"
+          "0bc8f5c7-9266-4496-9119-1988f8602f3b"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-tenant-reads": [
-          "11999"
+          "11998"
         ],
         "x-ms-correlation-request-id": [
-          "4953764f-c8c8-419b-8f12-59b491e47522"
+          "0bc8f5c7-9266-4496-9119-1988f8602f3b"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20220406T192817Z:4953764f-c8c8-419b-8f12-59b491e47522"
+          "WESTCENTRALUS:20220414T190609Z:0bc8f5c7-9266-4496-9119-1988f8602f3b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -315,7 +315,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 06 Apr 2022 19:28:17 GMT"
+          "Thu, 14 Apr 2022 19:06:08 GMT"
         ],
         "Content-Length": [
           "159"
@@ -340,10 +340,10 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2366158f-7d2d-41ee-818f-731f8b30e157"
+          "00c109ff-0ed3-4710-b2ce-b628e6d8f36c"
         ],
         "User-Agent": [
-          "FxVersion/5.0.1522.11506",
+          "FxVersion/4.700.22.16002",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19044",
           "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.1.1.0"
@@ -357,28 +357,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "westus:12aa5c43-a1c2-4984-aa15-c5626fa946f0"
+          "westcentralus:94bb812b-dcf5-42a5-b76f-e2243d6dc1a8"
         ],
         "x-ba-restapi": [
           "0.0.0.0"
         ],
         "client-request-id": [
-          "12aa5c43-a1c2-4984-aa15-c5626fa946f0"
+          "94bb812b-dcf5-42a5-b76f-e2243d6dc1a8"
         ],
         "request-id": [
-          "12aa5c43-a1c2-4984-aa15-c5626fa946f0"
+          "94bb812b-dcf5-42a5-b76f-e2243d6dc1a8"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-tenant-reads": [
-          "11998"
+          "11997"
         ],
         "x-ms-correlation-request-id": [
-          "12aa5c43-a1c2-4984-aa15-c5626fa946f0"
+          "94bb812b-dcf5-42a5-b76f-e2243d6dc1a8"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20220406T192818Z:12aa5c43-a1c2-4984-aa15-c5626fa946f0"
+          "WESTCENTRALUS:20220414T190609Z:94bb812b-dcf5-42a5-b76f-e2243d6dc1a8"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -387,7 +387,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 06 Apr 2022 19:28:17 GMT"
+          "Thu, 14 Apr 2022 19:06:08 GMT"
         ],
         "Content-Length": [
           "160"
@@ -412,7 +412,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "04ff9f6e-5743-4060-9e95-5f5277fc1a9f"
+          "9ef3eb2f-fb43-4d50-b6fe-77dd1fdcc554"
         ],
         "Cache-Control": [
           "no-cache"
@@ -421,7 +421,7 @@
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/5.0.1522.11506",
+          "FxVersion/4.700.22.16002",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19044",
           "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.1.1.0"
@@ -444,31 +444,31 @@
           "https://management.azure.com/providers/Microsoft.Management/operationResults/delete/asyncOperation/status/managementGroups/TestParent4?api-version=2021-04-01"
         ],
         "x-ms-ratelimit-remaining-managementgroups-requests": [
-          "59"
+          "58"
         ],
         "x-ms-request-id": [
-          "westcentralus:9d956fb9-ca8e-430d-a731-43f30b6bb22b"
+          "westcentralus:855295c4-ac6b-4142-9139-419d1fb64610"
         ],
         "x-ba-restapi": [
           "0.0.0.0"
         ],
         "client-request-id": [
-          "9d956fb9-ca8e-430d-a731-43f30b6bb22b"
+          "855295c4-ac6b-4142-9139-419d1fb64610"
         ],
         "request-id": [
-          "9d956fb9-ca8e-430d-a731-43f30b6bb22b"
+          "855295c4-ac6b-4142-9139-419d1fb64610"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-tenant-deletes": [
-          "14998"
+          "14999"
         ],
         "x-ms-correlation-request-id": [
-          "9d956fb9-ca8e-430d-a731-43f30b6bb22b"
+          "855295c4-ac6b-4142-9139-419d1fb64610"
         ],
         "x-ms-routing-request-id": [
-          "WESTCENTRALUS:20220406T192819Z:9d956fb9-ca8e-430d-a731-43f30b6bb22b"
+          "WESTCENTRALUS:20220414T190610Z:855295c4-ac6b-4142-9139-419d1fb64610"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -477,7 +477,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 06 Apr 2022 19:28:19 GMT"
+          "Thu, 14 Apr 2022 19:06:10 GMT"
         ],
         "Content-Length": [
           "159"
@@ -499,10 +499,10 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "04ff9f6e-5743-4060-9e95-5f5277fc1a9f"
+          "9ef3eb2f-fb43-4d50-b6fe-77dd1fdcc554"
         ],
         "User-Agent": [
-          "FxVersion/5.0.1522.11506",
+          "FxVersion/4.700.22.16002",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19044",
           "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.1.1.0"
@@ -516,28 +516,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "westcentralus:eec234cc-bf55-4357-a985-33976ae0873a"
+          "westcentralus:17a6ec7d-1335-49e4-9726-61aa15126686"
         ],
         "x-ba-restapi": [
           "0.0.0.0"
         ],
         "client-request-id": [
-          "eec234cc-bf55-4357-a985-33976ae0873a"
+          "17a6ec7d-1335-49e4-9726-61aa15126686"
         ],
         "request-id": [
-          "eec234cc-bf55-4357-a985-33976ae0873a"
+          "17a6ec7d-1335-49e4-9726-61aa15126686"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-tenant-reads": [
-          "11996"
+          "11993"
         ],
         "x-ms-correlation-request-id": [
-          "eec234cc-bf55-4357-a985-33976ae0873a"
+          "17a6ec7d-1335-49e4-9726-61aa15126686"
         ],
         "x-ms-routing-request-id": [
-          "WESTCENTRALUS:20220406T192829Z:eec234cc-bf55-4357-a985-33976ae0873a"
+          "WESTCENTRALUS:20220414T190621Z:17a6ec7d-1335-49e4-9726-61aa15126686"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -546,7 +546,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 06 Apr 2022 19:28:29 GMT"
+          "Thu, 14 Apr 2022 19:06:20 GMT"
         ],
         "Content-Length": [
           "157"
@@ -571,10 +571,10 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "04ff9f6e-5743-4060-9e95-5f5277fc1a9f"
+          "9ef3eb2f-fb43-4d50-b6fe-77dd1fdcc554"
         ],
         "User-Agent": [
-          "FxVersion/5.0.1522.11506",
+          "FxVersion/4.700.22.16002",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19044",
           "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.1.1.0"
@@ -588,28 +588,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "westcentralus:f1293832-0606-4e1d-9b61-fa0cff93c61e"
+          "westcentralus:aec02686-e61d-463b-843e-7fc295214d96"
         ],
         "x-ba-restapi": [
           "0.0.0.0"
         ],
         "client-request-id": [
-          "f1293832-0606-4e1d-9b61-fa0cff93c61e"
+          "aec02686-e61d-463b-843e-7fc295214d96"
         ],
         "request-id": [
-          "f1293832-0606-4e1d-9b61-fa0cff93c61e"
+          "aec02686-e61d-463b-843e-7fc295214d96"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-tenant-reads": [
-          "11995"
+          "11992"
         ],
         "x-ms-correlation-request-id": [
-          "f1293832-0606-4e1d-9b61-fa0cff93c61e"
+          "aec02686-e61d-463b-843e-7fc295214d96"
         ],
         "x-ms-routing-request-id": [
-          "WESTCENTRALUS:20220406T192830Z:f1293832-0606-4e1d-9b61-fa0cff93c61e"
+          "WESTCENTRALUS:20220414T190621Z:aec02686-e61d-463b-843e-7fc295214d96"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -618,7 +618,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 06 Apr 2022 19:28:29 GMT"
+          "Thu, 14 Apr 2022 19:06:20 GMT"
         ],
         "Content-Length": [
           "158"
