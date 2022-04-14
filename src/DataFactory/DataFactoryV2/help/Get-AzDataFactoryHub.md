@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactories.dll-Help.xml
 Module Name: Az.DataFactory
 ms.assetid: B07FE1A2-732D-4CCF-A0DF-3CF6B91FB3F3
@@ -33,15 +33,15 @@ If you do not specify a name, this cmdlet gets information about all of the hubs
 ## EXAMPLES
 
 ### Example 1: Get all data hubs
-```
-PS C:\>Get-AzDataFactoryHub -ResourceGroupName "ADFResourceGroup" -DataFactoryName "ADFDataFactory"
+```powershell
+Get-AzDataFactoryHub -ResourceGroupName "ADFResourceGroup" -DataFactoryName "ADFDataFactory"
 ```
 
 This command gets all data hubs in the Azure resource group named ADFResourceGroup and the data factory named ADFDataFactory.
 
 ### Example 2: Get a specific data hub
-```
-PS C:\>Get-AzDataFactoryHub -ResourceGroupName "ADFResourceGroup" -DataFactoryName "ADFDataFactory" -Name "MyDataHub"
+```powershell
+Get-AzDataFactoryHub -ResourceGroupName "ADFResourceGroup" -DataFactoryName "ADFDataFactory" -Name "MyDataHub"
 ```
 
 This command gets information about the hub named MyDataHub in the Azure resource group named ADFResourceGroup and the data factory named ADFDataFactory.

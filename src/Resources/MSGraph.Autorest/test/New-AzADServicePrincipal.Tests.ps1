@@ -31,31 +31,11 @@ Describe 'New-AzADServicePrincipal' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'ApplicationWithPasswordCredentialParameterSet' -skip {
+    It 'ApplicationObjectParameterSet' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'ApplicationWithKeyCredentialParameterSet' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'ApplicationWithKeyPlainParameterSet' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'ApplicationObjectWithPasswordPlainParameterSet' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'ApplicationObjectWithKeyPlainParameterSet' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'ApplicationObjectWithKeyCredentialParameterSet' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'ApplicationObjectWithPasswordCredentialParameterSet' -skip {
+    It 'ApplicationIdParameterSet' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

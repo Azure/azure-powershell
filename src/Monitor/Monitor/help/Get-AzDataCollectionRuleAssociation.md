@@ -54,10 +54,12 @@ To apply a DCR to a virtual machine, you create an association for the virtual m
 ## EXAMPLES
 
 ### Example 1: Get data collection rules associations by target resource ID (associated virtual machine)
+```powershell
+$vm = Get-AzVM -ResourceGroupName $rg -Name $vmName
+Get-AzDataCollectionRuleAssociation -TargetResourceId $vm.Id
 ```
-PS C:\>$vm = Get-AzVM -ResourceGroupName $rg -Name $vmName
-PS C:\>Get-AzDataCollectionRuleAssociation -TargetResourceId $vm.Id
 
+```output
 Description          :
 DataCollectionRuleId : /subscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.I
                        nsights/dataCollectionRules/{dcrName}
@@ -72,9 +74,11 @@ Type                 : Microsoft.Insights/dataCollectionRuleAssociations
 This command lists all the data collection rules for the given target resource ID (virtual machine).
 
 ### Example 2: Get data collection rules associations by rule (DCR)
+```powershell
+Get-AzDataCollectionRuleAssociation -ResourceGroup $rg -RuleName $dcrName
 ```
-PS C:\>Get-AzDataCollectionRuleAssociation -ResourceGroup $rg -RuleName $dcrName
 
+```output
 Description          :
 DataCollectionRuleId : /subscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.I
                        nsights/dataCollectionRules/{dcrName}
@@ -89,10 +93,12 @@ Type                 : Microsoft.Insights/dataCollectionRuleAssociations
 This command lists data collection rules associations for the given resource group and rule (DCR).
 
 ### Example 3: Get data collection rule associations by input object (PSDataCollectionRuleResource)
+```powershell
+$dcr = Get-AzDataCollectionRule -ResourceGroupName $rg -RuleName $dcrName
+$dcr | Get-AzDataCollectionRuleAssociation
 ```
-PS C:\>$dcr = Get-AzDataCollectionRule -ResourceGroupName $rg -RuleName $dcrName
-PS C:\>$dcr | Get-AzDataCollectionRuleAssociation
 
+```output
 Description          :
 DataCollectionRuleId : /subscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.I
                        nsights/dataCollectionRules/{dcrName}
@@ -107,9 +113,11 @@ Type                 : Microsoft.Insights/dataCollectionRuleAssociations
 This command lists data collection rules associations for the given input object.
 
 ### Example 4: Get a data collection rule association by target resource ID (associated virtual machine) and association name
+```powershell
+Get-AzDataCollectionRuleAssociation -TargetResourceId $vm.Id -AssociationName $assocName
 ```
-PS C:\>Get-AzDataCollectionRuleAssociation -TargetResourceId $vm.Id -AssociationName $assocName
 
+```output
 Description          :
 DataCollectionRuleId : /subscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.I
                        nsights/dataCollectionRules/{dcrName}

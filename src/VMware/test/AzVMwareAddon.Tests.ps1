@@ -14,27 +14,27 @@ while(-not $mockingPath) {
 Describe 'AzVMwareAddon' {
     It 'List' {
         {
-            $config = New-AzVMwareAddonVrPropertiesObject -VrsCount 2
+            $config = New-AzVMwareAddonSrmPropertiesObject -LicenseKey "YourLicenseKeyValue"
             $config = New-AzVMwareAddon -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGroup1 -Property $config
-            $config.Name | Should -Be "VR"
+            $config.Name | Should -Be "SRM"
 
             $config = Get-AzVMwareAddon -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGroup1
-            $config.Count | Should -Be 1
+            $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }
 
     It 'Get' {
         {
             $config = Get-AzVMwareAddon -AddonType vr -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGroup1
-            $config.Name | Should -Be "vr"
+            $config.Name | Should -Be "SRM"
         } | Should -Not -Throw
     }
 
     It 'CreateExpanded' {
         {
-            $config = New-AzVMwareAddonVrPropertiesObject -VrsCount 2
+            $config = New-AzVMwareAddonSrmPropertiesObject -LicenseKey "YourLicenseKeyValue"
             $config = New-AzVMwareAddon -PrivateCloudName $env.privateCloudName2 -ResourceGroupName $env.resourceGroup2 -Property $config
-            $config.Name | Should -Be "VR"
+            $config.Name | Should -Be "SRM"
         } | Should -Not -Throw
     }
 

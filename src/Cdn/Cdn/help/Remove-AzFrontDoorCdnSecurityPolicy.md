@@ -38,7 +38,7 @@ Removes the security policy.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzFrontDoorCdnSecurityPolicy -ResourceId $securityPolicyResourceId
+Remove-AzFrontDoorCdnSecurityPolicy -ResourceId $securityPolicyResourceId
 ```
 
 Removes the security policy.

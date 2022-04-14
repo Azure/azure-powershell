@@ -25,8 +25,8 @@ The **Set-AzBatchComputeNodeUser** cmdlet modifies properties of a user account 
 ## EXAMPLES
 
 ### Example 1: Update a user account
-```
-PS C:\>Set-AzBatchComputeNodeUser -PoolId "ContosoPool" -ComputeNodeId "tvm-3257026573_1-20150904t230807z" -Name "PFuller" -BatchContext $Context -Password "Password" -ExpiryTime ([DateTime]::Now.AddDays(14))
+```powershell
+Set-AzBatchComputeNodeUser -PoolId "ContosoPool" -ComputeNodeId "tvm-3257026573_1-20150904t230807z" -Name "PFuller" -BatchContext $Context -Password "Password" -ExpiryTime ([DateTime]::Now.AddDays(14))
 ```
 
 This command modifies user account named PFuller on the compute node that has the specified ID in the pool named ContosoPool.

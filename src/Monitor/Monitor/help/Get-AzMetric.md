@@ -33,8 +33,11 @@ The **Get-AzMetric** cmdlet gets the metric values for a specified resource.
 ## EXAMPLES
 
 ### Example 1: Get a metric with summarized output
+```powershell
+Get-AzMetric -ResourceId "/subscriptions/e3f5b07d-3c39-4b0f-bf3b-40fdeba10f2a/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website3" -TimeGrain 00:01:00
 ```
-PS C:\>Get-AzMetric -ResourceId "/subscriptions/e3f5b07d-3c39-4b0f-bf3b-40fdeba10f2a/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website3" -TimeGrain 00:01:00
+
+```output
 DimensionName  :
 DimensionValue :
 Name           : AverageResponseTime
@@ -62,8 +65,11 @@ Unit           : Bytes
 This command gets the metric values for website3 with a time grain of 1 minute.
 
 ### Example 2: Get a metric with detailed output
+```powershell
+Get-AzMetric -ResourceId "/subscriptions/e3f5b07d-3c39-4b0f-bf3b-40fdeba10f2a/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website3" -TimeGrain 00:01:00 -DetailedOutput
 ```
-PS C:\>Get-AzMetric -ResourceId "/subscriptions/e3f5b07d-3c39-4b0f-bf3b-40fdeba10f2a/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website3" -TimeGrain 00:01:00 -DetailedOutput
+
+```output
 MetricValues   :
                      Average    : 0
                      Count      : 1
@@ -104,8 +110,11 @@ This command gets the metric values for website3 with a time grain of 1 minute.
 The output is detailed.
 
 ### Example 3: Get detailed output for a specified metric
+```powershell
+Get-AzMetric -ResourceId "/subscriptions/e3f5b07d-3c39-4b0f-bf3b-40fdeba10f2a/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website3" -MetricName "Requests" -TimeGrain 00:01:00 -DetailedOutput
 ```
-PS C:\>Get-AzMetric -ResourceId "/subscriptions/e3f5b07d-3c39-4b0f-bf3b-40fdeba10f2a/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website3" -MetricName "Requests" -TimeGrain 00:01:00 -DetailedOutput
+
+```output
 MetricValues   :
                      Average    : 1
                      Count      : 1
@@ -161,34 +170,37 @@ Unit           : Count
 This command gets detailed output for the Requests metric.
 
 ### Example 4: Get summarized output for a specified metric with specified dimension filter
-```
-PS C:\> $dimFilter = @((New-AzMetricFilter -Dimension City -Operator eq -Value "Seattle","Toronto"), (New-AzMetricFilter -Dimension AuthenticationType -Operator eq -Value User))
+```powershell
+$dimFilter = @((New-AzMetricFilter -Dimension City -Operator eq -Value "Seattle","Toronto"), (New-AzMetricFilter -Dimension AuthenticationType -Operator eq -Value User))
 
-PS C:\> Get-AzMetric -ResourceId <resourceId> -MetricName PageViews -TimeGrain 00:05:00 -MetricFilter $dimFilter -StartTime 2018-02-01T12:00:00Z -EndTime 2018-02-01T12:10:00Z -AggregationType -Average
+Get-AzMetric -ResourceId <resourceId> -MetricName PageViews -TimeGrain 00:05:00 -MetricFilter $dimFilter -StartTime 2018-02-01T12:00:00Z -EndTime 2018-02-01T12:10:00Z -AggregationType -Average
+```
+
+```output
 ResourceId	: [ResourceId]
 MetricNamespace	: Microsoft.Insights/ApplicationInsights
 Metric Name	:
-					LocalizedValue	: Page Views
-					Value		: PageViews
+LocalizedValue	: Page Views
+Value		: PageViews
 Unit		: Seconds
 Timeseries	:
-			City 			: Seattle
-			AuthenticationType 	: User
+City 		: Seattle
+AuthenticationType 	: User
 
-					Timestamp	: 2018-02-01 12:00:00 PM
-					Average		: 3518
+Timestamp	: 2018-02-01 12:00:00 PM
+Average		: 3518
 
-					Timestamp	: 2018-02-01 12:05:00 PM
-					Average		: 1984
+Timestamp	: 2018-02-01 12:05:00 PM
+Average		: 1984
 
-			City 			: Toronto
-			AuthenticationType 	: User
+City 		: Toronto
+AuthenticationType 	: User
 
-					Timestamp	: 2018-02-01 12:00:00 PM
-					Average		: 894
+Timestamp	: 2018-02-01 12:00:00 PM
+Average		: 894
 
-					Timestamp	: 2018-02-01 12:05:00 PM
-					Average		: 967
+Timestamp	: 2018-02-01 12:05:00 PM
+Average		: 967
 ```
 
 This command gets summarized output for the PageViews metric with specified dimension filter and aggregation type.

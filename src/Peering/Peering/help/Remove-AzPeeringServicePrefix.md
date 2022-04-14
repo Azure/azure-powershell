@@ -37,15 +37,17 @@ Removes a peering service prefix from a peering service.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzPeeringService -ResourceGroupName $rgName -Name $peeringServiceName | Remove-AzPeeringServicePrefix -Name $prefixName
+Get-AzPeeringService -ResourceGroupName $rgName -Name $peeringServiceName | Remove-AzPeeringServicePrefix -Name $prefixName
 ```
 
 Remove a prefix from a peering service object
 
 ### Example 2
 ```powershell
-PS C:\> Remove-AzPeeringServicePrefix -ResourceId $peeringServiceResourceId -Name $prefixName -PassThru
+Remove-AzPeeringServicePrefix -ResourceId $peeringServiceResourceId -Name $prefixName -PassThru
+```
 
+```output
 True
 ```
 
@@ -53,8 +55,10 @@ Remove a prefix from a peering service resource id.
 
 ### Example 3
 ```powershell
-PS C:\> Remove-AzPeeringServicePrefix -ResourceGroupName $peeringServiceGroup -PeeringServiceName $peeringServiceName -Name $prefixName -PassThru
+Remove-AzPeeringServicePrefix -ResourceGroupName $peeringServiceGroup -PeeringServiceName $peeringServiceName -Name $prefixName -PassThru
+```
 
+```output
 True
 ```
 

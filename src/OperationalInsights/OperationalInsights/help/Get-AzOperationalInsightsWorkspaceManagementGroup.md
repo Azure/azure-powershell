@@ -24,15 +24,15 @@ The **Get-AzOperationalInsightsWorkspaceManagementGroup** cmdlet lists the manag
 ## EXAMPLES
 
 ### Example 1: Get management groups by workspace name
-```
-PS C:\>Get-AzOperationalInsightsWorkspaceManagementGroup -ResourceGroupName "ContosoResourceGroup" -Name "MyWorkspace"
+```powershell
+Get-AzOperationalInsightsWorkspaceManagementGroup -ResourceGroupName "ContosoResourceGroup" -Name "MyWorkspace"
 ```
 
 This command gets the management groups for the workspace named MyWorkspace in the resource group named ContosoResourceGroup.
 
 ### Example 2: Get management groups by using the pipeline
-```
-PS C:\>Get-AzOperationalInsightsWorkspace -ResourceGroupName "ContosoResourceGroup" -Name "MyWorkspace" | Get-AzOperationalInsightsWorkspaceManagementGroup
+```powershell
+Get-AzOperationalInsightsWorkspace -ResourceGroupName "ContosoResourceGroup" -Name "MyWorkspace" | Get-AzOperationalInsightsWorkspaceManagementGroup
 ```
 
 This command uses the Get-AzOperationalInsightsWorkspace cmdlet to get the workspace named MyWorkspace, and then passes the workspace to the current cmdlet, which gets the management groups for that workspace.

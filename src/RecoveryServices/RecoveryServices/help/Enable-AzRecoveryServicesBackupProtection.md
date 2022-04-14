@@ -58,9 +58,12 @@ Set the vault context by using the Set-AzRecoveryServicesVaultContext cmdlet bef
 
 ### Example 1: Enable Backup protection for an item
 ```powershell
-PS C:\> $Pol = Get-AzRecoveryServicesBackupProtectionPolicy -Name "DefaultPolicy"
-PS C:\> $inclusionDiskLUNS = ("1", "2")
-PS C:\> Enable-AzRecoveryServicesBackupProtection -Policy $Pol -Name "V2VM" -ResourceGroupName "RGName1" -InclusionDisksList $inclusionDiskLUNS
+$Pol = Get-AzRecoveryServicesBackupProtectionPolicy -Name "DefaultPolicy"
+$inclusionDiskLUNS = ("1", "2")
+Enable-AzRecoveryServicesBackupProtection -Policy $Pol -Name "V2VM" -ResourceGroupName "RGName1" -InclusionDisksList $inclusionDiskLUNS
+```
+
+```output
 WorkloadName    Operation        Status          StartTime                  EndTime
 ------------    ---------        ------          ---------                  -------
 co03-vm         ConfigureBackup  Completed       11-Apr-16 12:19:49 PM      11-Apr-16 12:19:54 PM

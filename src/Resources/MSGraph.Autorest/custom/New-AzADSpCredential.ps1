@@ -192,12 +192,15 @@ function New-AzADSpCredential {
         
         $param = @{}
         switch ($PSCmdlet.ParameterSetName) {
-            {$_ -in 'SpObjectIdWithPasswordParameterSet', 'SpObjectIdWithCredentialParameterSet', 'SpObjectIdWithCertValueParameterSet'} {
+            {$_ -in 'SpObjectIdWithPasswordParameterSet', 'SpObjectIdWithKeyCredentialParameterSet', 'SpObjectIdWithPasswordCredentialParameterSet', 'SpObjectIdWithCertValueParameterSet'} {
                 $id = $PSBoundParameters['ObjectId']
+                if ($kc) {
+                    $sp = Get-AzADServicePrincipal -ObjectId $id
+                }
                 $null = $PSBoundParameters.Remove('ObjectId')
                 break
             }
-            {$_ -in 'SPNWithPasswordParameterSet', 'SPNWithCredentialParameterSet', 'SPNWithCertValueParameterSet'} {
+            {$_ -in 'SPNWithPasswordParameterSet', 'SPNWithKeyCredentialParameterSet', 'SPNWithPasswordCredentialParameterSet', 'SPNWithCertValueParameterSet'} {
                 $param['ServicePrincipalName'] = $PSBoundParameters['ServicePrincipalName']
                 $sp = Get-AzADServicePrincipal @param
                 if($sp) {
@@ -209,8 +212,11 @@ function New-AzADSpCredential {
                 }
                 break
             }
-            {$_ -in 'ServicePrincipalObjectWithPasswordParameterSet', 'ServicePrincipalObjectWithCredentialParameterSet', 'ServicePrincipalObjectWithCertValueParameterSet'} {
+            {$_ -in 'ServicePrincipalObjectWithPasswordParameterSet', 'ServicePrincipalObjectWithKeyCredentialParameterSet', 'ServicePrincipalObjectWithPasswordCredentialParameterSet', 'ServicePrincipalObjectWithCertValueParameterSet'} {
                 $id = $PSBoundParameters['ServicePrincipalObject'].Id
+                if ($kc) {
+                    $sp = Get-AzADServicePrincipal -ObjectId $id
+                }
                 $null = $PSBoundParameters.Remove('ServicePrincipalObject')
                 break
             }
@@ -230,8 +236,12 @@ function New-AzADSpCredential {
             }
         }
         if ($kc) {
+            [System.Array]$kcList = $sp.KeyCredentials
             $PSBoundParameters['Id'] = $id
-            $PSBoundParameters['KeyCredentials'] = $kc
+            foreach ($k in $kc) {
+                $kcList += $k
+            }
+            $PSBoundParameters['KeyCredentials'] = $kcList
             Az.MSGraph.internal\Update-AzADServicePrincipal @PSBoundParameters
         }  
     }

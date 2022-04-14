@@ -25,8 +25,10 @@ Creates or updates a database.
 
 ### Example 1: Create a new database
 ```powershell
-PS C:\> New-AzKustoDatabase -ResourceGroupName testrg -ClusterName testnewkustocluster -Name mykustodatabase -Kind ReadWrite -Location 'East US'
+New-AzKustoDatabase -ResourceGroupName testrg -ClusterName testnewkustocluster -Name mykustodatabase -Kind ReadWrite -Location 'East US'
+```
 
+```output
 Kind      Location Name                                Type
 ----      -------- ----                                ----
 ReadWrite East US  testnewkustocluster/mykustodatabase Microsoft.Kusto/Clusters/Databases

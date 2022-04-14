@@ -25,8 +25,8 @@ The **Remove-AzSqlServerFirewallRule** cmdlet deletes a firewall rule from the s
 ## EXAMPLES
 
 ### Example 1: Delete a rule
-```
-PS C:\>Remove-AzSqlServerFirewallRule -FirewallRuleName "Rule01" -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
+```powershell
+Remove-AzSqlServerFirewallRule -FirewallRuleName "Rule01" -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
 ```
 
 This command deletes a firewall rule named Rule01 on the server named Server01.

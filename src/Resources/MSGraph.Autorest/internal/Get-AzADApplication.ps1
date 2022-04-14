@@ -22,13 +22,13 @@ The directoryObject type is the base type for many other directory entity types.
 Represents an Azure Active Directory object.
 The directoryObject type is the base type for many other directory entity types.
 .Example
-PS C:\> Get-AzADApplication -DisplayName $appname
+Get-AzADApplication -DisplayName $appname
 .Example
-PS C:\> Get-AzADApplication -First 10
+Get-AzADApplication -First 10
 .Example
-PS C:\> Get-AzADApplication -DisplayNameStartsWith $prefix
+Get-AzADApplication -DisplayNameStartsWith $prefix
 .Example
-PS C:\> Get-AzADapplication -ObjectId $id -Select Tags -AppendSelected
+Get-AzADapplication -ObjectId $id -Select Tags -AppendSelected
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication

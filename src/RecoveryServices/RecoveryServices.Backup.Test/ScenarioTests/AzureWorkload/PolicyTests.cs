@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
     public partial class PolicyTests : RMTestBase
     {
-        [Fact]
+        [Fact(Skip = "To re-record in next release")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVmWorkload)]
         public void TestAzureVmWorkloadPolicy()

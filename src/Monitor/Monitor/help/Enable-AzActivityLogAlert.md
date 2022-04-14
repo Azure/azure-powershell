@@ -38,23 +38,23 @@ This cmdlet implements the ShouldProcess pattern, i.e. it might request confirma
 ## EXAMPLES
 
 ### Example 1: Enable an activity log alert
-```
-PS C:\>Enable-AzActivityLogAlert -Name "alert1" -ResourceGroupName "Default-ActivityLogsAlerts"
+```powershell
+Enable-AzActivityLogAlert -Name "alert1" -ResourceGroupName "Default-ActivityLogsAlerts"
 ```
 
 This command enables the activity log alert called alert1 in the resource group Default-ActivityLogsAlerts.
 
 ### Example 2: Enable an activity log alert using a PSActivityLogAlertResource object as input
-```
-PS C:\>$obj = Get-AzActivityLogAlert -ResourceGroup "Default-activityLogAlerts" -Name "alert1"
-PS C:\>Enable-AzActivityLogAlert -InputObject $obj
+```powershell
+$obj = Get-AzActivityLogAlert -ResourceGroup "Default-activityLogAlerts" -Name "alert1"
+Enable-AzActivityLogAlert -InputObject $obj
 ```
 
 This command enables an activity log alert called alert1. For this it uses a PSActivityLogAlertResource object as input argument.
 
 ### Example 3: Enable the ActivityLogAlert using the ResourceId parameter
-```
-PS C:\>Get-AzResource -ResourceGroupName "myResourceGroup" -Name "myLogAlert" | Enable-AzActivityLogAlert
+```powershell
+Get-AzResource -ResourceGroupName "myResourceGroup" -Name "myLogAlert" | Enable-AzActivityLogAlert
 ```
 
 This command enables the ActivityLogAlert using the ResourceId parameter from the pipe.

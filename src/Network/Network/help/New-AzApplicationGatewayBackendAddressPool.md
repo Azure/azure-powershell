@@ -26,15 +26,15 @@ A back-end address can be specified as an IP address, a fully-qualified domain n
 ## EXAMPLES
 
 ### Example 1: Create a back-end address pool by using the FQDN of a back-end server
-```
-PS C:\>$Pool = New-AzApplicationGatewayBackendAddressPool -Name "Pool01" -BackendFqdns "contoso1.com", "contoso2.com"
+```powershell
+$Pool = New-AzApplicationGatewayBackendAddressPool -Name "Pool01" -BackendFqdns "contoso1.com", "contoso2.com"
 ```
 
 This command creates a back-end address pool named Pool01 by using the FQDNs of back-end servers, and stores it in the $Pool variable.
 
 ### Example 2: Create a back-end address pool by using the IP address of a back-end server
-```
-PS C:\>$Pool = New-AzApplicationGatewayBackendAddressPool -Name "Pool02" -BackendFqdns "10.10.10.10", "10.10.10.11"
+```powershell
+$Pool = New-AzApplicationGatewayBackendAddressPool -Name "Pool02" -BackendFqdns "10.10.10.10", "10.10.10.11"
 ```
 
 This command creates a back-end address pool named Pool02 by using the IP addresses of back-end servers, and stores it in the $Pool variable.

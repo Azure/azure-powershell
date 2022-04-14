@@ -31,8 +31,11 @@ The Get-AzPowerBIEmbeddedCapacity cmdlet gets the details of a PowerBI Embedded 
 ## EXAMPLES
 
 ### Example 1: Get resource group capacities
+```powershell
+Get-AzPowerBIEmbeddedCapacity -ResourceGroupName "testRG"
 ```
-PS C:\>Get-AzPowerBIEmbeddedCapacity -ResourceGroupName "testRG"
+
+```output
 Type                   : Microsoft.PowerBIDedicated/capacities
 Id                     : /subscriptions/78e47976-.../resourceGroups/testRG/providers/Microsoft.PowerBIDedicated/capacities/testcapacity
 ResourceGroup          : testRG
@@ -59,8 +62,11 @@ Tag                    : {}
 This command gets all Azure PowerBI Embedded Capacity in the resource group named testRG
 
 ### Example 2: Get a capacity
+```powershell
+Get-AzPowerBIEmbeddedCapacity -ResourceGroupName "testRG" -Name "testcapacity"
 ```
-PS C:\>Get-AzPowerBIEmbeddedCapacity -ResourceGroupName "testRG" -Name "testcapacity"
+
+```output
 Type                   : Microsoft.PowerBIDedicated/capacities
 Id                     : /subscriptions/78e47976-.../resourceGroups/testRG/providers/Microsoft.PowerBIDedicated/capacities/testcapacity
 ResourceGroup          : testRG

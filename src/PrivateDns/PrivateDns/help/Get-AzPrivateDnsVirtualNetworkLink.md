@@ -27,9 +27,11 @@ You can use the **PSPrivateDnsVirtualNetworkLink** object to update the link.
 ## EXAMPLES
 
 ### Example 1: Get a virtual network link.
+```powershell
+ $Link = Get-AzPrivateDnsVirtualNetworkLink -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com" -Name "mylink"
 ```
-PS C:\> $Link = Get-AzPrivateDnsVirtualNetworkLink -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com" -Name "mylink"
 
+```output
 The link object returned looks like the following:
 
 Name                    : mylink
@@ -50,9 +52,11 @@ ProvisioningState       : Succeeded
 This example gets the virtual network link mylink associated with the Private DNS zone named myzone.com from the specified resource group, and then stores it in the $Link variable.
 
 ### Example 2: Get all of the links associated with a zone in a resource group.
+```powershell
+ $Links = Get-AzPrivateDnsVirtualNetworkLink -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com"
 ```
-PS C:\> $Links = Get-AzPrivateDnsVirtualNetworkLink -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com"
 
+```output
 Name                    : mylink1
 ResourceId              : /subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.N
                           etwork/privateDnsZones/myzone.com/virtualNetworkLinks/mylink1

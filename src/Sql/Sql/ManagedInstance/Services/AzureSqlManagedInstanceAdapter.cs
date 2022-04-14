@@ -29,6 +29,7 @@ using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using Microsoft.Rest.Azure.OData;
+using ServicePrincipal = Microsoft.Azure.Graph.RBAC.Version1_6.Models.ServicePrincipal;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
 {
@@ -170,12 +171,13 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                     string.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Sql/instancePools/{2}",
                         Context.Subscription.Id, model.ResourceGroupName, model.InstancePoolName) : null,
                 MinimalTlsVersion = model.MinimalTlsVersion,
-                StorageAccountType = MapExternalBackupStorageRedundancyToInternal(model.BackupStorageRedundancy),
+                RequestedBackupStorageRedundancy = model.RequestedBackupStorageRedundancy,
                 MaintenanceConfigurationId = MaintenanceConfigurationHelper.ConvertMaintenanceConfigurationIdArgument(model.MaintenanceConfigurationId, Context.Subscription.Id),
                 Administrators = GetActiveDirectoryInformation(model.Administrators),
                 PrimaryUserAssignedIdentityId = model.PrimaryUserAssignedIdentityId,
                 KeyId = model.KeyId,
-                ZoneRedundant = model.ZoneRedundant
+                ZoneRedundant = model.ZoneRedundant,
+                ServicePrincipal = ResourceServicePrincipalHelper.UnwrapServicePrincipalObject(model.ServicePrincipal)
             });
 
             return CreateManagedInstanceModelFromResponse(resp);
@@ -200,7 +202,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                 VCores = model.VCores,
                 PublicDataEndpointEnabled = model.PublicDataEndpointEnabled,
                 ProxyOverride = model.ProxyOverride,
-        });
+            });
 
             return CreateManagedInstanceModelFromResponse(resp);
         }
@@ -251,8 +253,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
             managedInstance.InstancePoolName = resp.InstancePoolId != null ?
                 new ResourceIdentifier(resp.InstancePoolId).ResourceName : null;
             managedInstance.MinimalTlsVersion = resp.MinimalTlsVersion;
-            managedInstance.BackupStorageRedundancy = MapInternalBackupStorageRedundancyToExternal(resp.StorageAccountType);
+            managedInstance.BackupStorageRedundancy = resp.CurrentBackupStorageRedundancy;
+            managedInstance.RequestedBackupStorageRedundancy = resp.RequestedBackupStorageRedundancy;
+            managedInstance.CurrentBackupStorageRedundancy = resp.CurrentBackupStorageRedundancy;
             managedInstance.MaintenanceConfigurationId = resp.MaintenanceConfigurationId;
+            managedInstance.ServicePrincipal = ResourceServicePrincipalHelper.WrapServicePrincipalObject(resp.ServicePrincipal);
 
             Management.Internal.Resources.Models.Sku sku = new Management.Internal.Resources.Models.Sku();
             sku.Name = resp.Sku.Name;
@@ -289,51 +294,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
             }
 
             return SqlSkuUtils.GetVcoreSkuPrefix(tier) ?? "Unknown";
-        }
-
-        /// <summary>
-        /// Map external BackupStorageRedundancy to Internal
-        /// </summary>
-        /// <param name="backupStorageRedundancy">Backup storage redundancy</param>
-        /// <returns>internal backupStorageRedundancy</returns>
-        public static string MapExternalBackupStorageRedundancyToInternal(string backupStorageRedundancy)
-        {
-            if (string.IsNullOrWhiteSpace(backupStorageRedundancy))
-            {
-                return null;
-            }
-
-            switch (backupStorageRedundancy.ToLower())
-            {
-                case "geo":
-                    return "GRS";
-                case "local":
-                    return "LRS";
-                case "zone":
-                    return "ZRS";
-                default:
-                    return null;
-            }
-        }
-
-        /// <summary>
-        /// Map internal BackupStorageRedundancy to external
-        /// </summary>
-        /// <param name="backupStorageRedundancy">Backup storage redundancy</param>
-        /// <returns>internal backupStorageRedundancy</returns>
-        public static string MapInternalBackupStorageRedundancyToExternal(string backupStorageRedundancy)
-        {
-            switch (backupStorageRedundancy)
-            {
-                case "GRS":
-                    return "Geo";
-                case "LRS":
-                    return "Local";
-                case "ZRS":
-                    return "Zone";
-                default:
-                    return null;
-            }
         }
 
         /// <summary>

@@ -23,7 +23,7 @@ The **Set-AzServiceEndpointPolicy** cmdlet create a service endpoint policy.
 ## EXAMPLES
 
 ### Example 1: Sets a service endpoint policy
-```
+```powershell
 $serviceEndpointPolicy = Set-AzServiceEndpointPolicy -Name "Policy1" -ServiceEndpointPolicy $serviceEndpointPolicy -ResourceGroup "resourcegroup1"
 ```
 

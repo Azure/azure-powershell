@@ -24,9 +24,9 @@ The **Remove-AzApiManagementUserFromGroup** cmdlet removes a user from an existi
 ## EXAMPLES
 
 ### Example 1: Remove a user from a group
-```
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Remove-AzApiManagementUserFromGroup -Context $apimContext -GroupId "0001" -UserId "0123456789"
+```powershell
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Remove-AzApiManagementUserFromGroup -Context $apimContext -GroupId "0001" -UserId "0123456789"
 ```
 
 This command removes a user from a group.

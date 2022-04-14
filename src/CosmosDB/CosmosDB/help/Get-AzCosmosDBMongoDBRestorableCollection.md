@@ -34,8 +34,10 @@ For example, if user wants to restore the database account to a timestamp when a
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCosmosDBMongoDBRestorableCollection -Location {locationName} -DatabaseAccountInstanceId {DatabaseAccountInstanceIdInstanceId} -DatabaseRId {DatabaseRId}
+Get-AzCosmosDBMongoDBRestorableCollection -Location {locationName} -DatabaseAccountInstanceId {DatabaseAccountInstanceIdInstanceId} -DatabaseRId {DatabaseRId}
+```
 
+```output
 Id              : /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{locationName}/restorableDatabaseAccounts
                     /{DatabaseAccountInstanceIdInstanceId}/restorableMongoDBCollections/6a0cb3e4-7d2b-4363-b585-04a3b14ada8c
 Name            : 6a0cb3e4-7d2b-4363-b585-04a3b14ada8c
@@ -87,21 +89,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
-
-```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DatabaseRId
 ResourceId of the database.
 
@@ -111,6 +98,21 @@ Parameter Sets: ByNameParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -43,7 +43,7 @@ Deletes a security assessment result from a subscription, usually used when a re
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSecurityAssessment -Name 4FB6C0A0-1137-42C7-A1C7-4BD37C91DE8D
+Remove-AzSecurityAssessment -Name 4FB6C0A0-1137-42C7-A1C7-4BD37C91DE8D
 ```
 
 Deletes an assessment result on a subscription

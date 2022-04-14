@@ -25,14 +25,17 @@ The **Get-AzAutoscaleHistory** cmdlet gets the history of events related to an A
 
 ### Example 1: Get all events associated with a subscription
 ```
-PS C:\>Get-AzAutoscaleHistory -StartTime 2015-02-09T18:35:00 -EndTime 2015-02-09T18:40:00 -DetailedOutput
+Get-AzAutoscaleHistory -StartTime 2015-02-09T18:35:00 -EndTime 2015-02-09T18:40:00 -DetailedOutput
 ```
 
 This command gets all of the Autoscale-related events associated with the current subscription.
 
 ### Example 2: GetAutoscaleHistory for a particular resource
+```powershell
+Get-AzAutoscaleHistory -StartTime 2015-02-09T18:35:00 -EndTime 2015-02-09T18:40:00 -ResourceId "/subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/Microsoft.Insights/autoscalesettings/DefaultServerFarm-Default-Web-EastUS" -DetailedOutput
 ```
-PS C:\>Get-AzAutoscaleHistory -StartTime 2015-02-09T18:35:00 -EndTime 2015-02-09T18:40:00 -ResourceId "/subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/Microsoft.Insights/autoscalesettings/DefaultServerFarm-Default-Web-EastUS" -DetailedOutput
+
+```output
 Authorization        : 
 Caller               : Microsoft.Insights/autoscaleSettings
 Claims               :  http://schemas.xmlsoap.org/ws/2005/05/identity/claims/spn: Microsoft.Insights/autoscaleSettings

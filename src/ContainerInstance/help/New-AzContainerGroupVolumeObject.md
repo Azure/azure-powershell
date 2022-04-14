@@ -20,14 +20,16 @@ New-AzContainerGroupVolumeObject -Name <String> [-AzureFileReadOnly] [-AzureFile
 ```
 
 ## DESCRIPTION
-Create a in-memory object for Volume
+Create a in-memory object for Volume. Currently, we support mounting Azure File share as a volume or specifying git repository as volume directory. The empty directory volume and secret volume are not supported yet.
 
 ## EXAMPLES
 
 ### Example 1: Create a Azure File volume
 ```powershell
-PS C:\> New-AzContainerGroupVolumeObject -Name "myvolume" -AzureFileShareName "myshare" -AzureFileStorageAccountName "username" -AzureFileStorageAccountKey (ConvertTo-SecureString "******" -AsPlainText -Force)
+New-AzContainerGroupVolumeObject -Name "myvolume" -AzureFileShareName "myshare" -AzureFileStorageAccountName "username" -AzureFileStorageAccountKey (ConvertTo-SecureString "******" -AsPlainText -Force)
+```
 
+```output
 ******
 
 Name

@@ -24,7 +24,7 @@ Creates Azure Machine Learning regional properties for an existing web service.
 
 ### Example 1: Add new regional properties for West Central US
 
-```
+```powershell
 Add-AzMlWebServiceRegionalProperty -ResourceGroupName "myresourcegroup" -Name "mywebservicename" -Region westcentralus
 ```
 

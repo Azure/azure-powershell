@@ -37,10 +37,10 @@ The **Add-AzLoadBalancerRuleConfig** cmdlet adds a rule configuration to an Azur
 ## EXAMPLES
 
 ### Example 1: Add a rule configuration to a load balancer
-```
-PS C:\>$slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
-PS C:\> $slb | Add-AzLoadBalancerRuleConfig -Name "NewRule" -FrontendIPConfiguration $slb.FrontendIpConfigurations[0] -Protocol "Tcp" -FrontendPort 3350 -BackendPort 3350 -EnableFloatingIP
-PS C:\>$slb | Set-AzLoadBalancer
+```powershell
+$slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
+$slb | Add-AzLoadBalancerRuleConfig -Name "NewRule" -FrontendIPConfiguration $slb.FrontendIpConfigurations[0] -Protocol "Tcp" -FrontendPort 3350 -BackendPort 3350 -EnableFloatingIP
+$slb | Set-AzLoadBalancer
 ```
 
 The first command gets the load balancer named MyLoadBalancer, and then stores it in the variable $slb.
@@ -48,12 +48,12 @@ The second command uses the pipeline operator to pass the load balancer in $slb 
 The third command will update the load balancer in azure with the new Load Balancer Rule Config.
 
 ### Example 2: Add a rule configuration with two backend address pools to a load balancer
-```
-PS C:\>$slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
-PS C:\> $MyBackendPool1 = Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $MyLoadBalancer -Name $backendPool1Name
-PS C:\> $MyBackendPool2 = Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $MyLoadBalancer -Name $backendPool2Name
-PS C:\> $slb | Add-AzLoadBalancerRuleConfig -Name "NewRule" -FrontendIPConfiguration $slb.FrontendIpConfigurations[0] -Protocol All -FrontendPort 0 -BackendPort 0 -BackendAddressPool $MyBackendPool1, $MyBackendPool2
-PS C:\>$slb | Set-AzLoadBalancer
+```powershell
+$slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
+$MyBackendPool1 = Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $MyLoadBalancer -Name $backendPool1Name
+$MyBackendPool2 = Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $MyLoadBalancer -Name $backendPool2Name
+$slb | Add-AzLoadBalancerRuleConfig -Name "NewRule" -FrontendIPConfiguration $slb.FrontendIpConfigurations[0] -Protocol All -FrontendPort 0 -BackendPort 0 -BackendAddressPool $MyBackendPool1, $MyBackendPool2
+$slb | Set-AzLoadBalancer
 ```
 This enables Gateway Load Balancer to have multiple backend pools
 The first command will get the load balancer named MyLoadBalancer, and then stores it in the variable $slb.

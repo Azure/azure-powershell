@@ -31,7 +31,7 @@ The **Test-AzSynapseSparkPool** cmdlet checks for the existence of a Synapse Ana
 
 ### Example 1
 ```powershell
-PS C:\> Test-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool
+Test-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool
 ```
 
 This command checks the existence of the specified Spark pool.
