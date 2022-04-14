@@ -84,5 +84,6 @@ namespace Microsoft.Azure.Commands.Network
         internal const string ByHubBgpConnectionObject = "ByHubBgpConnectionObject";
         internal const string ByHubBgpConnectionResourceId = "ByHubBgpConnectionResourceId";
 
-    }
+        internal const string None = "None";
+  }
 }
