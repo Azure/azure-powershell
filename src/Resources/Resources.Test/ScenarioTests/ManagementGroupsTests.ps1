@@ -467,7 +467,7 @@ function Test-StartTenantBackfill
 
 function Test-NewAuthHierarchySetting 
 {
-    $newHierarchySetting = New-AzHierarchySetting -GroupName c7a87cda-9a66-4920-b0f8-869baa04efe0 -RequireAuthorizationForGroupCreation $true
+    $newHierarchySetting = New-AzHierarchySetting -GroupName c7a87cda-9a66-4920-b0f8-869baa04efe0 -Authorization $true
 
     Remove-AzHierarchySetting -GroupName c7a87cda-9a66-4920-b0f8-869baa04efe0
 
@@ -490,7 +490,7 @@ function Test-NewDefaultMGHierarcySetting
 {
     New-AzManagementGroup -GroupName defaultMG
     
-    $newHierarchySetting = New-AzHierarchySetting -GroupName c7a87cda-9a66-4920-b0f8-869baa04efe0 -DefaultManagementGroup "/providers/Microsoft.Management/managementGroups/defaultMG"
+    $newHierarchySetting = New-AzHierarchySetting -GroupName c7a87cda-9a66-4920-b0f8-869baa04efe0 -DefaultMG "/providers/Microsoft.Management/managementGroups/defaultMG"
 
     Remove-AzHierarchySetting -GroupName c7a87cda-9a66-4920-b0f8-869baa04efe0
 
@@ -513,7 +513,7 @@ function Test-NewHierarchySettings
 {
     New-AzManagementGroup -GroupName defaultMG
     
-    $newHierarchySetting = New-AzHierarchySetting -GroupName c7a87cda-9a66-4920-b0f8-869baa04efe0 -RequireAuthorizationForGroupCreation $true -DefaultManagementGroup "/providers/Microsoft.Management/managementGroups/defaultMG"
+    $newHierarchySetting = New-AzHierarchySetting -GroupName c7a87cda-9a66-4920-b0f8-869baa04efe0 -Authorization $true -DefaultMG "/providers/Microsoft.Management/managementGroups/defaultMG"
 
     Remove-AzHierarchySetting -GroupName c7a87cda-9a66-4920-b0f8-869baa04efe0
 
@@ -536,16 +536,16 @@ function Test-NewHierarchySettings
 
 function Test-RemoveHierarchySetting
 {
-    New-AzHierarchySetting -GroupName c7a87cda-9a66-4920-b0f8-869baa04efe0 -RequireAuthorizationForGroupCreation $true
+    New-AzHierarchySetting -GroupName c7a87cda-9a66-4920-b0f8-869baa04efe0 -Authorization $true
     
     Remove-AzHierarchySetting -GroupName c7a87cda-9a66-4920-b0f8-869baa04efe0
 }
 
 function Test-UpdateAuthHierarchySetting
 {
-    New-AzHierarchySetting -GroupName c7a87cda-9a66-4920-b0f8-869baa04efe0 -RequireAuthorizationForGroupCreation $false
+    New-AzHierarchySetting -GroupName c7a87cda-9a66-4920-b0f8-869baa04efe0 -Authorization $false
     
-    $updateHierarchySetting = Update-AzHierarchySetting -GroupName c7a87cda-9a66-4920-b0f8-869baa04efe0 -RequireAuthorizationForGroupCreation $true
+    $updateHierarchySetting = Update-AzHierarchySetting -GroupName c7a87cda-9a66-4920-b0f8-869baa04efe0 -Authorization $true
 
     Remove-AzHierarchySetting -GroupName c7a87cda-9a66-4920-b0f8-869baa04efe0
 
@@ -566,11 +566,11 @@ function Test-UpdateAuthHierarchySetting
 
 function Test-UpdateAuthHierarchySetting
 {
-    New-AzHierarchySetting -GroupName c7a87cda-9a66-4920-b0f8-869baa04efe0 -DefaultManagementGroup "/providers/Microsoft.Management/managementGroups/c7a87cda-9a66-4920-b0f8-869baa04efe0"
+    New-AzHierarchySetting -GroupName c7a87cda-9a66-4920-b0f8-869baa04efe0 -DefaultMG "/providers/Microsoft.Management/managementGroups/c7a87cda-9a66-4920-b0f8-869baa04efe0"
 
     New-AzManagementGroup -GroupName defaultMG
     
-    $updateHierarchySetting = Update-AzHierarchySetting -GroupName c7a87cda-9a66-4920-b0f8-869baa04efe0 -DefaultManagementGroup "/providers/Microsoft.Management/managementGroups/defaultMG"
+    $updateHierarchySetting = Update-AzHierarchySetting -GroupName c7a87cda-9a66-4920-b0f8-869baa04efe0 -DefaultMG "/providers/Microsoft.Management/managementGroups/defaultMG"
 
     Remove-AzHierarchySetting -GroupName c7a87cda-9a66-4920-b0f8-869baa04efe0
 
@@ -591,11 +591,11 @@ function Test-UpdateAuthHierarchySetting
 
 function Test-UpdateBothHierarchySettings
 {
-    New-AzHierarchySetting -GroupName c7a87cda-9a66-4920-b0f8-869baa04efe0 -RequireAuthorizationForGroupCreation $false -DefaultManagementGroup "/providers/Microsoft.Management/managementGroups/c7a87cda-9a66-4920-b0f8-869baa04efe0"
+    New-AzHierarchySetting -GroupName c7a87cda-9a66-4920-b0f8-869baa04efe0 -Authorization $false -DefaultMG "/providers/Microsoft.Management/managementGroups/c7a87cda-9a66-4920-b0f8-869baa04efe0"
 
     New-AzManagementGroup -GroupName defaultMG
     
-    $updateHierarchySetting = Update-AzHierarchySetting -GroupName c7a87cda-9a66-4920-b0f8-869baa04efe0 -RequireAuthorizationForGroupCreation $true -DefaultManagementGroup "/providers/Microsoft.Management/managementGroups/defaultMG"
+    $updateHierarchySetting = Update-AzHierarchySetting -GroupName c7a87cda-9a66-4920-b0f8-869baa04efe0 -Authorization $true -DefaultMG "/providers/Microsoft.Management/managementGroups/defaultMG"
 
     Remove-AzHierarchySetting -GroupName c7a87cda-9a66-4920-b0f8-869baa04efe0
 

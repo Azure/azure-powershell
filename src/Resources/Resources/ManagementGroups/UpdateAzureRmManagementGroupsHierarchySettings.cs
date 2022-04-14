@@ -32,17 +32,19 @@ namespace Microsoft.Azure.Commands.Resources.ManagementGroups
         [ValidateNotNullOrEmpty]
         public string GroupName { get; set; }
 
+        [Alias("RequireAuthorizationForGroupCreation")]
         [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = false,
             HelpMessage = Constants.HelpMessages.DisplayName)]
         [Parameter(ParameterSetName = Constants.ParameterSetNames.ParentGroupParameterSet, Mandatory = false,
             HelpMessage = Constants.HelpMessages.DisplayName, ValueFromPipeline = false)]
         [ValidateNotNullOrEmpty]
-        public bool RequireAuthorizationForGroupCreation { get; set; } = false;
+        public bool Authorization { get; set; } = false;
 
+        [Alias("DefaultManagementGroup")]
         [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = false,
             HelpMessage = Constants.HelpMessages.ParentId)]
         [ValidateNotNullOrEmpty]
-        public string DefaultManagementGroup { get; set; } = null;
+        public string DefaultMG { get; set; } = null;
 
 
         public override void ExecuteCmdlet()
@@ -55,7 +57,7 @@ namespace Microsoft.Azure.Commands.Resources.ManagementGroups
                 {
                     PreregisterSubscription();
 
-                    var response = ManagementGroupsApiClient.HierarchySettings.Update(GroupName, new CreateOrUpdateSettingsRequest(RequireAuthorizationForGroupCreation, DefaultManagementGroup));
+                    var response = ManagementGroupsApiClient.HierarchySettings.Update(GroupName, new CreateOrUpdateSettingsRequest(Authorization, DefaultMG));
 
                     WriteObject(new PSHierarchySettings(response));
                 }

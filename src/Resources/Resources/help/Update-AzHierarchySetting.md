@@ -14,9 +14,7 @@ Creates Hierarchy Settings under the current tenant
 
 ### GetOperation
 ```
-Update-AzHierarchySetting  [-GroupName] <String> [-DefaultProfile <IAzureContextContainer>] 
-[-RequireAuthorizationForGroupCreation] <String> 
-[-DefaultManagementGroup] <String> 
+Update-AzHierarchySetting  [-GroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-Authorization] <String> [-DefaultMG] <String> 
 ```
 
 ## DESCRIPTION
@@ -26,7 +24,7 @@ The Update-AzHierarchySetting cmdlet updates the hierarchy settings under the cu
 
 ### Example 1: Update the Hierarchy Setting for Authorization Requirement for Group Creation
 ```powershell
-Update-AzHierarchySetting -GroupName c7a87cda-9a66-4920-b0f8-869baa04efe0 -RequireAuthorizationForGroupCreation True
+Update-AzHierarchySetting -GroupName c7a87cda-9a66-4920-b0f8-869baa04efe0 -Authorization True
 ```
 
 ```output
@@ -40,7 +38,7 @@ DefaultManagementGroup :
 
 ### Example 2: Update the Hierarchy Setting that the default Management Group new Groups get placed under
 ```powershell
-Update-AzHierarchySetting -GroupName c7a87cda-9a66-4920-b0f8-869baa04efe0 -DefaultManagementGroup TestGroup
+Update-AzHierarchySetting -GroupName c7a87cda-9a66-4920-b0f8-869baa04efe0 -DefaultMG TestGroup
 ```
 
 ```output
@@ -54,7 +52,7 @@ DefaultManagementGroup : TestGroup
 
 ### Example 3: Create both Hierarchy Settings
 ```powershell
-Update-AzHierarchySetting -GroupName c7a87cda-9a66-4920-b0f8-869baa04efe0 -RequireAuthorizationForGroupCreation True -DefaultManagementGroup TestGroup
+Update-AzHierarchySetting -GroupName c7a87cda-9a66-4920-b0f8-869baa04efe0 -Authorization True -DefaultMG TestGroup
 ```
 
 ```output
@@ -85,7 +83,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RequireAuthorizationForGroupCreation
+### -Authorization
 Indicate whether RBAC access is required upon group creation under the root Management Group. True means user will require Microsoft.Management/managementGroups/write action on the root Management Group. Default setting is false.
 
 ```yaml
@@ -99,7 +97,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DefaultManagementGroup
+### -DefaultMG
 Expand the output to list the children of the management group
 
 ```yaml
