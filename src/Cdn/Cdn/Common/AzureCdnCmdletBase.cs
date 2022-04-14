@@ -84,8 +84,9 @@ namespace Microsoft.Azure.Commands.Cdn.Common
 
         protected override void BeginProcessing()
         {
-            CdnMessageHelper.WriteMessage(this, 
-                "When you bump up Az.CDN module version, there will be changes to parameters and output, please use the new version: 2.0.0");
+            CdnMessageHelper.WriteMessage(this,
+                $"Breaking changes in the cmdlet: { MyInvocation.InvocationName}" + Environment.NewLine +
+                "- When you bump up Az.CDN module version, there will be changes to parameters and output, please use the new version: 2.0.0");
             base.BeginProcessing();
         }
     }
