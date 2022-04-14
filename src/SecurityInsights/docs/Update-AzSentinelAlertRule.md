@@ -18,7 +18,7 @@ Update-AzSentinelAlertRule -ResourceGroupName <String> -RuleId <String> -Workspa
  [-SubscriptionId <String>] [-AlertDetailOverrideAlertDescriptionFormat <String>]
  [-AlertDetailOverrideAlertDisplayNameFormat <String>] [-AlertDetailOverrideAlertSeverityColumnName <String>]
  [-AlertDetailOverrideAlertTacticsColumnName <String>] [-AlertRuleTemplateName <String>]
- [-Description <String>] [-Disabled] [-DisplayName <String>] [-Enabled] [-EntityMapping <EntityMapping>]
+ [-Description <String>] [-DisplayName <String>] [-Enabled] [-EntityMapping <EntityMapping>]
  [-EventGroupingSettingAggregationKind <EventGroupingAggregationKind>] [-GroupingConfigurationEnabled]
  [-GroupingConfigurationGroupByAlertDetail <AlertDetail>]
  [-GroupingConfigurationGroupByCustomDetail <String[]>]
@@ -33,14 +33,14 @@ Update-AzSentinelAlertRule -ResourceGroupName <String> -RuleId <String> -Workspa
 ### UpdateFusionMLTI
 ```
 Update-AzSentinelAlertRule -ResourceGroupName <String> -RuleId <String> -WorkspaceName <String>
- [-SubscriptionId <String>] [-AlertRuleTemplateName <String>] [-Disabled] [-Enabled]
- [-DefaultProfile <PSObject>] [-AsJob] [-FusionMLorTI] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-AlertRuleTemplateName <String>] [-Enabled] [-DefaultProfile <PSObject>] [-AsJob]
+ [-FusionMLorTI] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateMicrosoftSecurityIncidentCreation
 ```
 Update-AzSentinelAlertRule -ResourceGroupName <String> -RuleId <String> -WorkspaceName <String>
- [-SubscriptionId <String>] [-AlertRuleTemplateName <String>] [-Description <String>] [-Disabled]
+ [-SubscriptionId <String>] [-AlertRuleTemplateName <String>] [-Description <String>]
  [-DisplayNamesExcludeFilter <String>] [-DisplayNamesFilter <String>] [-Enabled]
  [-ProductFilter <MicrosoftSecurityProductName>] [-SeveritiesFilter <AlertSeverity[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-MicrosoftSecurityIncidentCreation] [-NoWait] [-Confirm] [-WhatIf]
@@ -53,7 +53,7 @@ Update-AzSentinelAlertRule -ResourceGroupName <String> -RuleId <String> -Workspa
  [-SubscriptionId <String>] [-AlertDetailOverrideAlertDescriptionFormat <String>]
  [-AlertDetailOverrideAlertDisplayNameFormat <String>] [-AlertDetailOverrideAlertSeverityColumnName <String>]
  [-AlertDetailOverrideAlertTacticsColumnName <String>] [-AlertRuleTemplateName <String>]
- [-Description <String>] [-Disabled] [-DisplayName <String>] [-Enabled] [-EntityMapping <EntityMapping>]
+ [-Description <String>] [-DisplayName <String>] [-Enabled] [-EntityMapping <EntityMapping>]
  [-GroupingConfigurationEnabled] [-GroupingConfigurationGroupByAlertDetail <AlertDetail>]
  [-GroupingConfigurationGroupByCustomDetail <String[]>]
  [-GroupingConfigurationGroupByEntity <EntityMappingType>] [-GroupingConfigurationLookbackDuration <TimeSpan>]
@@ -66,15 +66,15 @@ Update-AzSentinelAlertRule -ResourceGroupName <String> -RuleId <String> -Workspa
 ### UpdateViaIdentityFusionMLTI
 ```
 Update-AzSentinelAlertRule -InputObject <ISecurityInsightsIdentity> [-AlertRuleTemplateName <String>]
- [-Disabled] [-Enabled] [-DefaultProfile <PSObject>] [-AsJob] [-FusionMLorTI] [-NoWait] [-Confirm] [-WhatIf]
+ [-Enabled] [-DefaultProfile <PSObject>] [-AsJob] [-FusionMLorTI] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityMicrosoftSecurityIncidentCreation
 ```
 Update-AzSentinelAlertRule -InputObject <ISecurityInsightsIdentity> [-AlertRuleTemplateName <String>]
- [-Description <String>] [-Disabled] [-DisplayNamesExcludeFilter <String>] [-DisplayNamesFilter <String>]
- [-Enabled] [-ProductFilter <MicrosoftSecurityProductName>] [-SeveritiesFilter <AlertSeverity[]>]
+ [-Description <String>] [-DisplayNamesExcludeFilter <String>] [-DisplayNamesFilter <String>] [-Enabled]
+ [-ProductFilter <MicrosoftSecurityProductName>] [-SeveritiesFilter <AlertSeverity[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-MicrosoftSecurityIncidentCreation] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -84,7 +84,7 @@ Update-AzSentinelAlertRule -InputObject <ISecurityInsightsIdentity> [-AlertRuleT
 Update-AzSentinelAlertRule -InputObject <ISecurityInsightsIdentity>
  [-AlertDetailOverrideAlertDescriptionFormat <String>] [-AlertDetailOverrideAlertDisplayNameFormat <String>]
  [-AlertDetailOverrideAlertSeverityColumnName <String>] [-AlertDetailOverrideAlertTacticsColumnName <String>]
- [-AlertRuleTemplateName <String>] [-Description <String>] [-Disabled] [-DisplayName <String>] [-Enabled]
+ [-AlertRuleTemplateName <String>] [-Description <String>] [-DisplayName <String>] [-Enabled]
  [-EntityMapping <EntityMapping>] [-GroupingConfigurationEnabled]
  [-GroupingConfigurationGroupByAlertDetail <AlertDetail>]
  [-GroupingConfigurationGroupByCustomDetail <String[]>]
@@ -100,7 +100,7 @@ Update-AzSentinelAlertRule -InputObject <ISecurityInsightsIdentity>
 Update-AzSentinelAlertRule -InputObject <ISecurityInsightsIdentity>
  [-AlertDetailOverrideAlertDescriptionFormat <String>] [-AlertDetailOverrideAlertDisplayNameFormat <String>]
  [-AlertDetailOverrideAlertSeverityColumnName <String>] [-AlertDetailOverrideAlertTacticsColumnName <String>]
- [-AlertRuleTemplateName <String>] [-Description <String>] [-Disabled] [-DisplayName <String>] [-Enabled]
+ [-AlertRuleTemplateName <String>] [-Description <String>] [-DisplayName <String>] [-Enabled]
  [-EntityMapping <EntityMapping>] [-EventGroupingSettingAggregationKind <EventGroupingAggregationKind>]
  [-GroupingConfigurationEnabled] [-GroupingConfigurationGroupByAlertDetail <AlertDetail>]
  [-GroupingConfigurationGroupByCustomDetail <String[]>]
@@ -238,21 +238,6 @@ Accept wildcard characters: False
 ```yaml
 Type: System.String
 Parameter Sets: UpdateMicrosoftSecurityIncidentCreation, UpdateNRT, UpdateScheduled, UpdateViaIdentityMicrosoftSecurityIncidentCreation, UpdateViaIdentityNRT, UpdateViaIdentityUpdateScheduled
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Disabled
-
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
 Aliases:
 
 Required: False

@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the SecurityInsights service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -264,6 +264,37 @@ directive:
       verb: ^Connect$|^Disconnect$
       subject: DataConnector
     hide: true
+  # cmdlet review feedback
+  - where:
+      subject: Bookmark
+      parameter-name: Created|^CreatedByObjectId&|^Updated$|^UpdatedByObjectId$
+    hide: true
+  - where:
+      subject: DataConnector
+      parameter-name: SQSURLs
+    set:
+      parameter-name: SQSURL
+  - where:
+      subject: DataConnector
+      parameter-name: CommonDataServiceActivities
+    set:
+      parameter-name: CommonDataServiceActivity
+  - where:
+      verb: Invoke
+      subject: DataConnectorsCheckRequirement
+    set:
+      verb: Test
+  - where:
+      verb: Invoke
+      subject: DataConnectorsCheckRequirement
+    set:
+      subject: DataConnectorCheckRequirement
+  - where:
+      verb: Invoke
+      subject: DataConnectorsCheckRequirement
+      parameter-name: DataConnectorsCheckRequirement
+    set:
+      parameter-name: DataConnectorCheckRequirement
   # Hide Expand
   - where:
       verb: Expand

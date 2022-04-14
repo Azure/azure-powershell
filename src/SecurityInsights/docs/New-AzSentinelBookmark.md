@@ -15,12 +15,10 @@ Creates or updates the bookmark.
 ### CreateExpanded (Default)
 ```
 New-AzSentinelBookmark -Id <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String>] [-Created <DateTime>] [-CreatedByObjectId <String>] [-DisplayName <String>]
- [-EventTime <DateTime>] [-IncidentInfoIncidentId <String>] [-IncidentInfoRelationName <String>]
- [-IncidentInfoSeverity <IncidentSeverity>] [-IncidentInfoTitle <String>] [-Label <String[]>] [-Note <String>]
- [-Query <String>] [-QueryEndTime <DateTime>] [-QueryResult <String>] [-QueryStartTime <DateTime>]
- [-Updated <DateTime>] [-UpdatedByObjectId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-DisplayName <String>] [-EventTime <DateTime>] [-IncidentInfoIncidentId <String>]
+ [-IncidentInfoRelationName <String>] [-IncidentInfoSeverity <IncidentSeverity>] [-IncidentInfoTitle <String>]
+ [-Label <String[]>] [-Note <String>] [-Query <String>] [-QueryEndTime <DateTime>] [-QueryResult <String>]
+ [-QueryStartTime <DateTime>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create
@@ -64,36 +62,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Created
-The time the bookmark was created
-
-```yaml
-Type: System.DateTime
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CreatedByObjectId
-The object id of the user.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -334,36 +302,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Updated
-The last time the bookmark was updated
-
-```yaml
-Type: System.DateTime
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UpdatedByObjectId
-The object id of the user.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

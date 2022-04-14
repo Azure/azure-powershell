@@ -15,15 +15,15 @@ Creates or updates the alert rule.
 ### FusionMLTI (Default)
 ```
 New-AzSentinelAlertRule -ResourceGroupName <String> -WorkspaceName <String> -AlertRuleTemplate <String>
- -Kind <AlertRuleKind> [-RuleId <String>] [-SubscriptionId <String>] [-Disabled] [-Enabled]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Kind <AlertRuleKind> [-RuleId <String>] [-SubscriptionId <String>] [-Enabled] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### MicrosoftSecurityIncidentCreation
 ```
 New-AzSentinelAlertRule -ResourceGroupName <String> -WorkspaceName <String> -Kind <AlertRuleKind>
  -ProductFilter <MicrosoftSecurityProductName> [-RuleId <String>] [-SubscriptionId <String>]
- [-AlertRuleTemplateName <String>] [-Description <String>] [-Disabled] [-DisplayNamesExcludeFilter <String>]
+ [-AlertRuleTemplateName <String>] [-Description <String>] [-DisplayNamesExcludeFilter <String>]
  [-DisplayNamesFilter <String>] [-Enabled] [-SeveritiesFilter <AlertSeverity[]>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -34,9 +34,8 @@ New-AzSentinelAlertRule -ResourceGroupName <String> -WorkspaceName <String> -Dis
  -Kind <AlertRuleKind> -Query <String> -Severity <AlertSeverity> [-RuleId <String>] [-SubscriptionId <String>]
  [-AlertDetailOverrideAlertDescriptionFormat <String>] [-AlertDetailOverrideAlertDisplayNameFormat <String>]
  [-AlertDetailOverrideAlertSeverityColumnName <String>] [-AlertDetailOverrideAlertTacticsColumnName <String>]
- [-AlertRuleTemplateName <String>] [-Description <String>] [-Disabled] [-Enabled]
- [-EntityMapping <EntityMapping>] [-GroupingConfigurationEnabled]
- [-GroupingConfigurationGroupByAlertDetail <AlertDetail>]
+ [-AlertRuleTemplateName <String>] [-Description <String>] [-Enabled] [-EntityMapping <EntityMapping>]
+ [-GroupingConfigurationEnabled] [-GroupingConfigurationGroupByAlertDetail <AlertDetail>]
  [-GroupingConfigurationGroupByCustomDetail <String[]>]
  [-GroupingConfigurationGroupByEntity <EntityMappingType>] [-GroupingConfigurationLookbackDuration <TimeSpan>]
  [-GroupingConfigurationMatchingMethod <String>] [-GroupingConfigurationReOpenClosedIncident]
@@ -52,7 +51,7 @@ New-AzSentinelAlertRule -ResourceGroupName <String> -WorkspaceName <String> -Dis
  [-SubscriptionId <String>] [-AlertDetailOverrideAlertDescriptionFormat <String>]
  [-AlertDetailOverrideAlertDisplayNameFormat <String>] [-AlertDetailOverrideAlertSeverityColumnName <String>]
  [-AlertDetailOverrideAlertTacticsColumnName <String>] [-AlertRuleTemplateName <String>]
- [-Description <String>] [-Disabled] [-Enabled] [-EntityMapping <EntityMapping>]
+ [-Description <String>] [-Enabled] [-EntityMapping <EntityMapping>]
  [-EventGroupingSettingAggregationKind <EventGroupingAggregationKind>] [-GroupingConfigurationEnabled]
  [-GroupingConfigurationGroupByAlertDetail <AlertDetail>]
  [-GroupingConfigurationGroupByCustomDetail <String[]>]
@@ -250,21 +249,6 @@ Accept wildcard characters: False
 ```yaml
 Type: System.String
 Parameter Sets: MicrosoftSecurityIncidentCreation, NRT, Scheduled
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Disabled
-
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
 Aliases:
 
 Required: False

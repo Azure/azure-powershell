@@ -24,7 +24,7 @@ https://docs.microsoft.com/powershell/module/az.securityinsights/new-azsentineld
 #>
 function New-AzSentinelDataConnector {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.DataConnector])]
-    [CmdletBinding(DefaultParameterSetName = 'AzureActiveDirectory', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
+    [CmdletBinding(DefaultParameterSetName = 'AADAATP', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
@@ -60,8 +60,7 @@ function New-AzSentinelDataConnector {
         # Kind of the the data connection
         ${Kind},
 
-        [Parameter(ParameterSetName = 'AzureActiveDirectory')]
-        [Parameter(ParameterSetName = 'AzureAdvancedThreatProtection')]
+        [Parameter(ParameterSetName = 'AADAATP')]
         [Parameter(ParameterSetName = 'Dynamics365')]
         [Parameter(ParameterSetName = 'MicrosoftCloudAppSecurity')]
         [Parameter(ParameterSetName = 'MicrosoftDefenderAdvancedThreatProtection')]
@@ -84,8 +83,7 @@ function New-AzSentinelDataConnector {
         # ASC Subscription Id.
         ${ASCSubscriptionId},
 
-        [Parameter(ParameterSetName = 'AzureActiveDirectory')]
-        [Parameter(ParameterSetName = 'AzureAdvancedThreatProtection')]
+        [Parameter(ParameterSetName = 'AADAATP')]
         [Parameter(ParameterSetName = 'AzureSecurityCenter')]
         [Parameter(ParameterSetName = 'MicrosoftCloudAppSecurity')]
         [Parameter(ParameterSetName = 'MicrosoftDefenderAdvancedThreatProtection')]
@@ -100,7 +98,7 @@ function New-AzSentinelDataConnector {
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
-        ${CommonDataServiceActivities},
+        ${CommonDataServiceActivity},
 
         [Parameter(ParameterSetName = 'MicrosoftCloudAppSecurity')]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
@@ -220,7 +218,7 @@ function New-AzSentinelDataConnector {
         [Parameter(ParameterSetName = 'AmazonWebServicesS3', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [String[]]
-        ${SQSURLs},
+        ${SQSURL},
 
         [Parameter(ParameterSetName = 'AmazonWebServicesS3', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
@@ -402,9 +400,9 @@ function New-AzSentinelDataConnector {
                 $DataConnector.TenantId = $PSBoundParameters['TenantId']
                 $null = $PSBoundParameters.Remove('TenantId')
 
-                If($PSBoundParameters['CommonDataServiceActivities']){
-                    $DataConnector.Dynamics365CdActivityState = $PSBoundParameters['CommonDataServiceActivities']
-                    $null = $PSBoundParameters.Remove('CommonDataServiceActivities')
+                If($PSBoundParameters['CommonDataServiceActivity']){
+                    $DataConnector.Dynamics365CdActivityState = $PSBoundParameters['CommonDataServiceActivity']
+                    $null = $PSBoundParameters.Remove('CommonDataServiceActivity')
                 }
             }
             if($PSBoundParameters['Kind'] -eq 'MicrosoftCloudAppSecurity'){
@@ -631,8 +629,8 @@ function New-AzSentinelDataConnector {
                     $null = $PSBoundParameters.Remove('Logs')
                 }
                 
-                $DataConnector.SqsUrl = $PSBoundParameters['SQSURLs']
-                $null = $PSBoundParameters.Remove('SQSURLs')
+                $DataConnector.SqsUrl = $PSBoundParameters['SQSURL']
+                $null = $PSBoundParameters.Remove('SQSURL')
                 
                 $DataConnector.DestinationTable = $PSBoundParameters['DetinationTable']
                 $null = $PSBoundParameters.Remove('DetinationTable')

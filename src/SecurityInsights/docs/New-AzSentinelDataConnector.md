@@ -12,7 +12,7 @@ Creates or updates the data connector.
 
 ## SYNTAX
 
-### AzureActiveDirectory (Default)
+### AADAATP (Default)
 ```
 New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Kind <DataConnectorKind>
  [-DataConnectorId <String>] [-SubscriptionId <String>] [-Alerts <String>] [-TenantId <String>]
@@ -29,16 +29,9 @@ New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> 
 ### AmazonWebServicesS3
 ```
 New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -AWSRoleArn <String>
- -DetinationTable <String> -Kind <DataConnectorKind> -Logs <String> -SQSURLs <String[]>
+ -DetinationTable <String> -Kind <DataConnectorKind> -Logs <String> -SQSURL <String[]>
  [-DataConnectorId <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### AzureAdvancedThreatProtection
-```
-New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Kind <DataConnectorKind>
- [-DataConnectorId <String>] [-SubscriptionId <String>] [-Alerts <String>] [-TenantId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### AzureSecurityCenter
@@ -51,7 +44,7 @@ New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> 
 ### Dynamics365
 ```
 New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Kind <DataConnectorKind>
- [-DataConnectorId <String>] [-SubscriptionId <String>] [-CommonDataServiceActivities <String>]
+ [-DataConnectorId <String>] [-SubscriptionId <String>] [-CommonDataServiceActivity <String>]
  [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -158,7 +151,7 @@ This command enables the Threat Intelligence data connector
 
 ```yaml
 Type: System.String
-Parameter Sets: AzureActiveDirectory, AzureAdvancedThreatProtection, AzureSecurityCenter, MicrosoftCloudAppSecurity, MicrosoftDefenderAdvancedThreatProtection, OfficeATP, OfficeIRM
+Parameter Sets: AADAATP, AzureSecurityCenter, MicrosoftCloudAppSecurity, MicrosoftDefenderAdvancedThreatProtection, OfficeATP, OfficeIRM
 Aliases:
 
 Required: False
@@ -303,7 +296,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CommonDataServiceActivities
+### -CommonDataServiceActivity
 
 
 ```yaml
@@ -760,7 +753,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SQSURLs
+### -SQSURL
 
 
 ```yaml
@@ -826,7 +819,7 @@ The TenantId.
 
 ```yaml
 Type: System.String
-Parameter Sets: AzureActiveDirectory, AzureAdvancedThreatProtection, Dynamics365, MicrosoftCloudAppSecurity, MicrosoftDefenderAdvancedThreatProtection, MicrosoftThreatIntelligence, MicrosoftThreatProtection, Office365, OfficeATP, OfficeIRM, ThreatIntelligence, ThreatIntelligenceTaxii
+Parameter Sets: AADAATP, Dynamics365, MicrosoftCloudAppSecurity, MicrosoftDefenderAdvancedThreatProtection, MicrosoftThreatIntelligence, MicrosoftThreatProtection, Office365, OfficeATP, OfficeIRM, ThreatIntelligence, ThreatIntelligenceTaxii
 Aliases:
 
 Required: False

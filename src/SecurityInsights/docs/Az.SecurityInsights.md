@@ -92,9 +92,6 @@ View a threat intelligence indicator by name.
 ### [Get-AzSentinelThreatIntelligenceIndicatorMetric](Get-AzSentinelThreatIntelligenceIndicatorMetric.md)
 Get threat intelligence indicators metrics (Indicators counts by Type, Threat Type, Source).
 
-### [Invoke-AzSentinelDataConnectorsCheckRequirement](Invoke-AzSentinelDataConnectorsCheckRequirement.md)
-Get requirements state for a data connector type.
-
 ### [Invoke-AzSentinelThreatIntelligenceIndicatorQuery](Invoke-AzSentinelThreatIntelligenceIndicatorQuery.md)
 Query threat intelligence indicators as per filtering criteria.
 
@@ -166,6 +163,9 @@ Delete the incident relation.
 
 ### [Remove-AzSentinelOnboardingState](Remove-AzSentinelOnboardingState.md)
 Delete Sentinel onboarding state
+
+### [Test-AzSentinelDataConnectorCheckRequirement](Test-AzSentinelDataConnectorCheckRequirement.md)
+Get requirements state for a data connector type.
 
 ### [Update-AzSentinelAlertRule](Update-AzSentinelAlertRule.md)
 Updates the alert rule.

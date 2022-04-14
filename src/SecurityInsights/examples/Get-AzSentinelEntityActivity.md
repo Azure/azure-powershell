@@ -1,6 +1,6 @@
 ### Example 1: Get Insights and Activities for an Entity
 ```powershell
-PS C:\> Get-AzSentinelEntityAcivity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
+PS C:\> Get-AzSentinelEntityAcivity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -EntityId "myEntityId"
 
 FriendlyName : WIN2019
 Kind         : Host

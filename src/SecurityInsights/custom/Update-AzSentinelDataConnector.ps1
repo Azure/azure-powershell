@@ -24,12 +24,11 @@ https://docs.microsoft.com/powershell/module/az.securityinsights/update-azsentin
 #>
 function Update-AzSentinelDataConnector {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.DataConnector])]
-    [CmdletBinding(DefaultParameterSetName = 'UpdateAzureActiveDirectory', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
+    [CmdletBinding(DefaultParameterSetName = 'UpdateAADAATP', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName = 'UpdateAmazonWebServicesCloudTrail')]
         [Parameter(ParameterSetName = 'UpdateAmazonWebServicesS3')]
-        [Parameter(ParameterSetName = 'UpdateAzureActiveDirectory')]    
-        [Parameter(ParameterSetName = 'UpdateAzureAdvancedThreatProtection')]
+        [Parameter(ParameterSetName = 'UpdateAADAATP')]    
         [Parameter(ParameterSetName = 'UpdateAzureSecurityCenter')]
         [Parameter(ParameterSetName = 'UpdateDynamics365')]
         #[Parameter(ParameterSetName = 'UpdateGenericUI')]
@@ -51,8 +50,7 @@ function Update-AzSentinelDataConnector {
 
         [Parameter(ParameterSetName = 'UpdateAmazonWebServicesCloudTrail', Mandatory)]
         [Parameter(ParameterSetName = 'UpdateAmazonWebServicesS3', Mandatory)]
-        [Parameter(ParameterSetName = 'UpdateAzureActiveDirectory', Mandatory)]    
-        [Parameter(ParameterSetName = 'UpdateAzureAdvancedThreatProtection', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateAADAATP', Mandatory)]
         [Parameter(ParameterSetName = 'UpdateAzureSecurityCenter', Mandatory)]
         [Parameter(ParameterSetName = 'UpdateDynamics365', Mandatory)]
         #[Parameter(ParameterSetName = 'UpdateGenericUI', Mandatory)]
@@ -72,8 +70,7 @@ function Update-AzSentinelDataConnector {
 
         [Parameter(ParameterSetName = 'UpdateAmazonWebServicesCloudTrail', Mandatory)]
         [Parameter(ParameterSetName = 'UpdateAmazonWebServicesS3', Mandatory)]
-        [Parameter(ParameterSetName = 'UpdateAzureActiveDirectory', Mandatory)]    
-        [Parameter(ParameterSetName = 'UpdateAzureAdvancedThreatProtection', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateAADAATP', Mandatory)]
         [Parameter(ParameterSetName = 'UpdateAzureSecurityCenter', Mandatory)]
         [Parameter(ParameterSetName = 'UpdateDynamics365', Mandatory)]
         #[Parameter(ParameterSetName = 'UpdateGenericUI', Mandatory)]
@@ -93,8 +90,7 @@ function Update-AzSentinelDataConnector {
 
         [Parameter(ParameterSetName = 'UpdateAmazonWebServicesCloudTrail', Mandatory)]
         [Parameter(ParameterSetName = 'UpdateAmazonWebServicesS3', Mandatory)]
-        [Parameter(ParameterSetName = 'UpdateAzureActiveDirectory', Mandatory)]    
-        [Parameter(ParameterSetName = 'UpdateAzureAdvancedThreatProtection', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateAADAATP', Mandatory)]
         [Parameter(ParameterSetName = 'UpdateAzureSecurityCenter', Mandatory)]
         [Parameter(ParameterSetName = 'UpdateDynamics365', Mandatory)]
         #[Parameter(ParameterSetName = 'UpdateGenericUI', Mandatory)]
@@ -114,8 +110,7 @@ function Update-AzSentinelDataConnector {
 
         [Parameter(ParameterSetName = 'UpdateViaIdentityAmazonWebServicesCloudTrail', Mandatory, ValueFromPipeline)]
         [Parameter(ParameterSetName = 'UpdateViaIdentityAmazonWebServicesS3', Mandatory, ValueFromPipeline)]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityAzureActiveDirectory', Mandatory, ValueFromPipeline)]    
-        [Parameter(ParameterSetName = 'UpdateViaIdentityAzureAdvancedThreatProtection', Mandatory, ValueFromPipeline)]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityAADAATP', Mandatory, ValueFromPipeline)]
         [Parameter(ParameterSetName = 'UpdateViaIdentityAzureSecurityCenter', Mandatory, ValueFromPipeline)]
         [Parameter(ParameterSetName = 'UpdateViaIdentityDynamics365', Mandatory, ValueFromPipeline)]
         #[Parameter(ParameterSetName = 'UpdateViaIdentityGenericUI', Mandatory, ValueFromPipeline)]
@@ -134,8 +129,7 @@ function Update-AzSentinelDataConnector {
         # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
         ${InputObject},
 
-        [Parameter(ParameterSetName = 'UpdateAzureActiveDirectory')]
-        [Parameter(ParameterSetName = 'UpdateAzureAdvancedThreatProtection')]
+        [Parameter(ParameterSetName = 'UpdateAADAATP')]
         [Parameter(ParameterSetName = 'UpdateDynamics365')]
         [Parameter(ParameterSetName = 'UpdateMicrosoftCloudAppSecurity')]
         [Parameter(ParameterSetName = 'UpdateMicrosoftDefenderAdvancedThreatProtection')]
@@ -148,8 +142,7 @@ function Update-AzSentinelDataConnector {
         [Parameter(ParameterSetName = 'UpdateThreatIntelligenceTaxii')]
         [Parameter(ParameterSetName = 'UpdateViaIdentityAmazonWebServicesCloudTrail')]
         [Parameter(ParameterSetName = 'UpdateViaIdentityAmazonWebServicesS3')]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityAzureActiveDirectory')]    
-        [Parameter(ParameterSetName = 'UpdateViaIdentityAzureAdvancedThreatProtection')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityAADAATP')]
         [Parameter(ParameterSetName = 'UpdateViaIdentityAzureSecurityCenter')]
         [Parameter(ParameterSetName = 'UpdateViaIdentityDynamics365')]
         #[Parameter(ParameterSetName = 'UpdateViaIdentityGenericUI')]
@@ -175,15 +168,13 @@ function Update-AzSentinelDataConnector {
         # ASC Subscription Id.
         ${ASCSubscriptionId},
 
-        [Parameter(ParameterSetName = 'UpdateAzureActiveDirectory')]
-        [Parameter(ParameterSetName = 'UpdateAzureAdvancedThreatProtection')]
+        [Parameter(ParameterSetName = 'UpdateAADAATP')]
         [Parameter(ParameterSetName = 'UpdateAzureSecurityCenter')]
         [Parameter(ParameterSetName = 'UpdateMicrosoftCloudAppSecurity')]
         [Parameter(ParameterSetName = 'UpdateMicrosoftDefenderAdvancedThreatProtection')]
         [Parameter(ParameterSetName = 'UpdateOfficeATP')]
         [Parameter(ParameterSetName = 'UpdateOfficeIRM')]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityAzureActiveDirectory')]    
-        [Parameter(ParameterSetName = 'UpdateViaIdentityAzureAdvancedThreatProtection')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityAADAATP')]
         [Parameter(ParameterSetName = 'UpdateViaIdentityAzureSecurityCenter')]
         [Parameter(ParameterSetName = 'UpdateViaIdentityMicrosoftCloudAppSecurity')]
         [Parameter(ParameterSetName = 'UpdateViaIdentityMicrosoftDefenderAdvancedThreatProtection')]
@@ -199,7 +190,7 @@ function Update-AzSentinelDataConnector {
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
-        ${CommonDataServiceActivities},
+        ${CommonDataServiceActivity},
 
         [Parameter(ParameterSetName = 'UpdateMicrosoftCloudAppSecurity')]
         [Parameter(ParameterSetName = 'UpdateViaIdentityMicrosoftCloudAppSecurity')]
@@ -341,7 +332,7 @@ function Update-AzSentinelDataConnector {
         [Parameter(ParameterSetName = 'UpdateViaIdentityAmazonWebServicesS3')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [String[]]
-        ${SQSURLs},
+        ${SQSURL},
 
         [Parameter(ParameterSetName = 'UpdateAmazonWebServicesS3')]
         [Parameter(ParameterSetName = 'UpdateViaIdentityAmazonWebServicesS3')]
@@ -535,9 +526,9 @@ function Update-AzSentinelDataConnector {
                     $null = $PSBoundParameters.Remove('TenantId')
                 }
 
-                If ($PSBoundParameters['CommonDataServiceActivities']) {
-                    $DataConnector.Dynamics365CdActivityState = $PSBoundParameters['CommonDataServiceActivities']
-                    $null = $PSBoundParameters.Remove('CommonDataServiceActivities')
+                If ($PSBoundParameters['CommonDataServiceActivity']) {
+                    $DataConnector.Dynamics365CdActivityState = $PSBoundParameters['CommonDataServiceActivity']
+                    $null = $PSBoundParameters.Remove('CommonDataServiceActivity')
                 }
             }
             if ($DataConnector.Kind -eq 'MicrosoftCloudAppSecurity') {
@@ -762,9 +753,9 @@ function Update-AzSentinelDataConnector {
                     $null = $PSBoundParameters.Remove('Logs')
                 }
                 
-                If ($PSBoundParameters['SQSURLs']) {
-                    $DataConnector.SqsUrl = $PSBoundParameters['SQSURLs']
-                    $null = $PSBoundParameters.Remove('SQSURLs')
+                If ($PSBoundParameters['SQSURL']) {
+                    $DataConnector.SqsUrl = $PSBoundParameters['SQSURL']
+                    $null = $PSBoundParameters.Remove('SQSURL')
                 }
                 If ($PSBoundParameters['DetinationTable']) {
                     $DataConnector.DestinationTable = $PSBoundParameters['DetinationTable']

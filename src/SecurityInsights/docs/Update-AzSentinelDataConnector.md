@@ -12,7 +12,7 @@ Updates the data connector.
 
 ## SYNTAX
 
-### UpdateAzureActiveDirectory (Default)
+### UpdateAADAATP (Default)
 ```
 Update-AzSentinelDataConnector -DataConnectorId <String> -ResourceGroupName <String> -WorkspaceName <String>
  [-SubscriptionId <String>] [-Alerts <String>] [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob]
@@ -30,15 +30,8 @@ Update-AzSentinelDataConnector -DataConnectorId <String> -ResourceGroupName <Str
 ```
 Update-AzSentinelDataConnector -DataConnectorId <String> -ResourceGroupName <String> -WorkspaceName <String>
  [-SubscriptionId <String>] [-AWSRoleArn <String>] [-DetinationTable <String>] [-Logs <String>]
- [-SQSURLs <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-SQSURL <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
-```
-
-### UpdateAzureAdvancedThreatProtection
-```
-Update-AzSentinelDataConnector -DataConnectorId <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String>] [-Alerts <String>] [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateAzureSecurityCenter
@@ -51,7 +44,7 @@ Update-AzSentinelDataConnector -DataConnectorId <String> -ResourceGroupName <Str
 ### UpdateDynamics365
 ```
 Update-AzSentinelDataConnector -DataConnectorId <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String>] [-CommonDataServiceActivities <String>] [-TenantId <String>]
+ [-SubscriptionId <String>] [-CommonDataServiceActivity <String>] [-TenantId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -135,6 +128,13 @@ Update-AzSentinelDataConnector -DataConnectorId <String> -ResourceGroupName <Str
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### UpdateViaIdentityAADAATP
+```
+Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> [-Alerts <String>]
+ [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ### UpdateViaIdentityAmazonWebServicesCloudTrail
 ```
 Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> [-AWSRoleArn <String>]
@@ -145,22 +145,8 @@ Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> [-AWSRol
 ### UpdateViaIdentityAmazonWebServicesS3
 ```
 Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> [-AWSRoleArn <String>]
- [-DetinationTable <String>] [-Logs <String>] [-SQSURLs <String[]>] [-TenantId <String>]
+ [-DetinationTable <String>] [-Logs <String>] [-SQSURL <String[]>] [-TenantId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityAzureActiveDirectory
-```
-Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> [-Alerts <String>]
- [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateViaIdentityAzureAdvancedThreatProtection
-```
-Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> [-Alerts <String>]
- [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityAzureSecurityCenter
@@ -172,9 +158,9 @@ Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> [-Alerts
 
 ### UpdateViaIdentityDynamics365
 ```
-Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity>
- [-CommonDataServiceActivities <String>] [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> [-CommonDataServiceActivity <String>]
+ [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityGenericUI
@@ -276,7 +262,7 @@ This command updates a Sentinel data connector
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateAzureActiveDirectory, UpdateAzureAdvancedThreatProtection, UpdateAzureSecurityCenter, UpdateMicrosoftCloudAppSecurity, UpdateMicrosoftDefenderAdvancedThreatProtection, UpdateOfficeATP, UpdateOfficeIRM, UpdateViaIdentityAzureActiveDirectory, UpdateViaIdentityAzureAdvancedThreatProtection, UpdateViaIdentityAzureSecurityCenter, UpdateViaIdentityMicrosoftCloudAppSecurity, UpdateViaIdentityMicrosoftDefenderAdvancedThreatProtection, UpdateViaIdentityOfficeATP, UpdateViaIdentityOfficeIRM
+Parameter Sets: UpdateAADAATP, UpdateAzureSecurityCenter, UpdateMicrosoftCloudAppSecurity, UpdateMicrosoftDefenderAdvancedThreatProtection, UpdateOfficeATP, UpdateOfficeIRM, UpdateViaIdentityAADAATP, UpdateViaIdentityAzureSecurityCenter, UpdateViaIdentityMicrosoftCloudAppSecurity, UpdateViaIdentityMicrosoftDefenderAdvancedThreatProtection, UpdateViaIdentityOfficeATP, UpdateViaIdentityOfficeIRM
 Aliases:
 
 Required: False
@@ -421,7 +407,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CommonDataServiceActivities
+### -CommonDataServiceActivity
 
 
 ```yaml
@@ -592,7 +578,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateAmazonWebServicesCloudTrail, UpdateAmazonWebServicesS3, UpdateAzureActiveDirectory, UpdateAzureAdvancedThreatProtection, UpdateAzureSecurityCenter, UpdateDynamics365, UpdateMicrosoftCloudAppSecurity, UpdateMicrosoftDefenderAdvancedThreatProtection, UpdateMicrosoftThreatIntelligence, UpdateMicrosoftThreatProtection, UpdateOffice365, UpdateOfficeATP, UpdateOfficeIRM, UpdateThreatIntelligence, UpdateThreatIntelligenceTaxii
+Parameter Sets: UpdateAADAATP, UpdateAmazonWebServicesCloudTrail, UpdateAmazonWebServicesS3, UpdateAzureSecurityCenter, UpdateDynamics365, UpdateMicrosoftCloudAppSecurity, UpdateMicrosoftDefenderAdvancedThreatProtection, UpdateMicrosoftThreatIntelligence, UpdateMicrosoftThreatProtection, UpdateOffice365, UpdateOfficeATP, UpdateOfficeIRM, UpdateThreatIntelligence, UpdateThreatIntelligenceTaxii
 Aliases:
 
 Required: True
@@ -715,7 +701,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
-Parameter Sets: UpdateViaIdentityAmazonWebServicesCloudTrail, UpdateViaIdentityAmazonWebServicesS3, UpdateViaIdentityAzureActiveDirectory, UpdateViaIdentityAzureAdvancedThreatProtection, UpdateViaIdentityAzureSecurityCenter, UpdateViaIdentityDynamics365, UpdateViaIdentityMicrosoftCloudAppSecurity, UpdateViaIdentityMicrosoftDefenderAdvancedThreatProtection, UpdateViaIdentityMicrosoftThreatIntelligence, UpdateViaIdentityMicrosoftThreatProtection, UpdateViaIdentityOffice365, UpdateViaIdentityOfficeATP, UpdateViaIdentityOfficeIRM, UpdateViaIdentityThreatIntelligence, UpdateViaIdentityThreatIntelligenceTaxii
+Parameter Sets: UpdateViaIdentityAADAATP, UpdateViaIdentityAmazonWebServicesCloudTrail, UpdateViaIdentityAmazonWebServicesS3, UpdateViaIdentityAzureSecurityCenter, UpdateViaIdentityDynamics365, UpdateViaIdentityMicrosoftCloudAppSecurity, UpdateViaIdentityMicrosoftDefenderAdvancedThreatProtection, UpdateViaIdentityMicrosoftThreatIntelligence, UpdateViaIdentityMicrosoftThreatProtection, UpdateViaIdentityOffice365, UpdateViaIdentityOfficeATP, UpdateViaIdentityOfficeIRM, UpdateViaIdentityThreatIntelligence, UpdateViaIdentityThreatIntelligenceTaxii
 Aliases:
 
 Required: True
@@ -851,7 +837,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateAmazonWebServicesCloudTrail, UpdateAmazonWebServicesS3, UpdateAzureActiveDirectory, UpdateAzureAdvancedThreatProtection, UpdateAzureSecurityCenter, UpdateDynamics365, UpdateMicrosoftCloudAppSecurity, UpdateMicrosoftDefenderAdvancedThreatProtection, UpdateMicrosoftThreatIntelligence, UpdateMicrosoftThreatProtection, UpdateOffice365, UpdateOfficeATP, UpdateOfficeIRM, UpdateThreatIntelligence, UpdateThreatIntelligenceTaxii
+Parameter Sets: UpdateAADAATP, UpdateAmazonWebServicesCloudTrail, UpdateAmazonWebServicesS3, UpdateAzureSecurityCenter, UpdateDynamics365, UpdateMicrosoftCloudAppSecurity, UpdateMicrosoftDefenderAdvancedThreatProtection, UpdateMicrosoftThreatIntelligence, UpdateMicrosoftThreatProtection, UpdateOffice365, UpdateOfficeATP, UpdateOfficeIRM, UpdateThreatIntelligence, UpdateThreatIntelligenceTaxii
 Aliases:
 
 Required: True
@@ -876,7 +862,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SQSURLs
+### -SQSURL
 
 
 ```yaml
@@ -898,7 +884,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateAmazonWebServicesCloudTrail, UpdateAmazonWebServicesS3, UpdateAzureActiveDirectory, UpdateAzureAdvancedThreatProtection, UpdateAzureSecurityCenter, UpdateDynamics365, UpdateMicrosoftCloudAppSecurity, UpdateMicrosoftDefenderAdvancedThreatProtection, UpdateMicrosoftThreatIntelligence, UpdateMicrosoftThreatProtection, UpdateOffice365, UpdateOfficeATP, UpdateOfficeIRM, UpdateThreatIntelligence, UpdateThreatIntelligenceTaxii
+Parameter Sets: UpdateAADAATP, UpdateAmazonWebServicesCloudTrail, UpdateAmazonWebServicesS3, UpdateAzureSecurityCenter, UpdateDynamics365, UpdateMicrosoftCloudAppSecurity, UpdateMicrosoftDefenderAdvancedThreatProtection, UpdateMicrosoftThreatIntelligence, UpdateMicrosoftThreatProtection, UpdateOffice365, UpdateOfficeATP, UpdateOfficeIRM, UpdateThreatIntelligence, UpdateThreatIntelligenceTaxii
 Aliases:
 
 Required: False
@@ -944,7 +930,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateAzureActiveDirectory, UpdateAzureAdvancedThreatProtection, UpdateDynamics365, UpdateMicrosoftCloudAppSecurity, UpdateMicrosoftDefenderAdvancedThreatProtection, UpdateMicrosoftThreatIntelligence, UpdateMicrosoftThreatProtection, UpdateOffice365, UpdateOfficeATP, UpdateOfficeIRM, UpdateThreatIntelligence, UpdateThreatIntelligenceTaxii, UpdateViaIdentityAmazonWebServicesCloudTrail, UpdateViaIdentityAmazonWebServicesS3, UpdateViaIdentityAzureActiveDirectory, UpdateViaIdentityAzureAdvancedThreatProtection, UpdateViaIdentityAzureSecurityCenter, UpdateViaIdentityDynamics365, UpdateViaIdentityMicrosoftCloudAppSecurity, UpdateViaIdentityMicrosoftDefenderAdvancedThreatProtection, UpdateViaIdentityMicrosoftThreatIntelligence, UpdateViaIdentityMicrosoftThreatProtection, UpdateViaIdentityOffice365, UpdateViaIdentityOfficeATP, UpdateViaIdentityOfficeIRM, UpdateViaIdentityThreatIntelligence, UpdateViaIdentityThreatIntelligenceTaxii
+Parameter Sets: UpdateAADAATP, UpdateDynamics365, UpdateMicrosoftCloudAppSecurity, UpdateMicrosoftDefenderAdvancedThreatProtection, UpdateMicrosoftThreatIntelligence, UpdateMicrosoftThreatProtection, UpdateOffice365, UpdateOfficeATP, UpdateOfficeIRM, UpdateThreatIntelligence, UpdateThreatIntelligenceTaxii, UpdateViaIdentityAADAATP, UpdateViaIdentityAmazonWebServicesCloudTrail, UpdateViaIdentityAmazonWebServicesS3, UpdateViaIdentityAzureSecurityCenter, UpdateViaIdentityDynamics365, UpdateViaIdentityMicrosoftCloudAppSecurity, UpdateViaIdentityMicrosoftDefenderAdvancedThreatProtection, UpdateViaIdentityMicrosoftThreatIntelligence, UpdateViaIdentityMicrosoftThreatProtection, UpdateViaIdentityOffice365, UpdateViaIdentityOfficeATP, UpdateViaIdentityOfficeIRM, UpdateViaIdentityThreatIntelligence, UpdateViaIdentityThreatIntelligenceTaxii
 Aliases:
 
 Required: False
@@ -990,7 +976,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateAmazonWebServicesCloudTrail, UpdateAmazonWebServicesS3, UpdateAzureActiveDirectory, UpdateAzureAdvancedThreatProtection, UpdateAzureSecurityCenter, UpdateDynamics365, UpdateMicrosoftCloudAppSecurity, UpdateMicrosoftDefenderAdvancedThreatProtection, UpdateMicrosoftThreatIntelligence, UpdateMicrosoftThreatProtection, UpdateOffice365, UpdateOfficeATP, UpdateOfficeIRM, UpdateThreatIntelligence, UpdateThreatIntelligenceTaxii
+Parameter Sets: UpdateAADAATP, UpdateAmazonWebServicesCloudTrail, UpdateAmazonWebServicesS3, UpdateAzureSecurityCenter, UpdateDynamics365, UpdateMicrosoftCloudAppSecurity, UpdateMicrosoftDefenderAdvancedThreatProtection, UpdateMicrosoftThreatIntelligence, UpdateMicrosoftThreatProtection, UpdateOffice365, UpdateOfficeATP, UpdateOfficeIRM, UpdateThreatIntelligence, UpdateThreatIntelligenceTaxii
 Aliases:
 
 Required: True
