@@ -27,8 +27,8 @@ The New-AzSqlVMGroup cmdlet creates an Azure SQL virtual machine group.
 
 ### Example 1
 ```powershell
-$secureKey = ConvertTo-SecureString $profile.StorageAccountPrimaryKey -AsPlainText -Force
-New-AzSqlVMGroup $resourceGroupName $groupName $location -ClusterOperatorAccount $profile.ClusterOperatorAccount `
+$secureKey = ConvertTo-SecureString -SecureKey $profile.StorageAccountPrimaryKey -AsPlainText -Force
+New-AzSqlVMGroup -ResourceGroupName $resourceGroupName -Name $groupName -Location $location -ClusterOperatorAccount $profile.ClusterOperatorAccount `
          -SqlServiceAccount $profile.SqlServiceAccount -StorageAccountUrl $profile.StorageAccountUrl `
          -StorageAccountPrimaryKey $secureKey -DomainFqdn $profile.DomainFqdn `
          -Offer 'SQL2017-WS2016' -Sku 'Developer'
