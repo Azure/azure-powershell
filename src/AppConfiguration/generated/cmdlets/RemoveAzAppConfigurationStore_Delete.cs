@@ -6,10 +6,11 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Extensions;
+    using System;
 
     /// <summary>Deletes a configuration store.</summary>
     /// <remarks>
-    /// [OpenAPI] ConfigurationStores_Delete=>DELETE:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}"
+    /// [OpenAPI] Delete=>DELETE:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Remove, @"AzAppConfigurationStore_Delete", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(bool))]

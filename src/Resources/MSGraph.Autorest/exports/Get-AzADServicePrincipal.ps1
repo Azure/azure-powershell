@@ -20,15 +20,15 @@ Lists entities from service principals or get entity from service principals by 
 .Description
 Lists entities from service principals or get entity from service principals by key
 .Example
-PS C:\> Get-AzADServicePrincipal -DisplayName $name
+Get-AzADServicePrincipal -DisplayName $name
 .Example
-PS C:\> Get-AzADServicePrincipal -DisplayNameStartsWith $prefix
+Get-AzADServicePrincipal -DisplayNameStartsWith $prefix
 .Example
-PS C:\> Get-AzADServicePrincipal -First 10 -Select Tags -AppendSelected
+Get-AzADServicePrincipal -First 10 -Select Tags -AppendSelected
 .Example
-PS C:\> Get-AzADServicePrincipal -ApplicationId $appId
+Get-AzADServicePrincipal -ApplicationId $appId
 .Example
-PS C:\> Get-AzADApplication -DisplayName $name | Get-AzADServicePrincipal
+Get-AzADApplication -DisplayName $name | Get-AzADServicePrincipal
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication

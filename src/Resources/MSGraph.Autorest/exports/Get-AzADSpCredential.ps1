@@ -20,7 +20,7 @@ Lists key credentials and password credentials for an service principal.
 .Description
 Lists key credentials and password credentials for an service principal.
 .Example
-PS C:\> Get-AzADSpCredential -DisplayName $name
+Get-AzADSpCredential -DisplayName $name
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal

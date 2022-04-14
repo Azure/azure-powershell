@@ -67,7 +67,7 @@ container2 BlockBlob  Ok     edgestorageaccount1    db-edge    resourceGroupName
 
 ### Example 3
 ```powershell
-Get-AzDataBoxEdgeDevice -ResourceGroupName resourceGroupName -DeviceName db-edge | Get-AzDataBoxEdgeStorageAccount | Get-AzDataBoxEdgeStorageContainer
+Get-AzDataBoxEdgeDevice -ResourceGroupName resourceGroupName -Name db-edge | Get-AzDataBoxEdgeStorageAccount | Get-AzDataBoxEdgeStorageContainer
 ```
 
 ```output

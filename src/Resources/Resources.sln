@@ -30,6 +30,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.MSGraph", "MSGraph.Autor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Authorization", "Authorization.Autorest\Az.Authorization.csproj", "{E14B71EE-4EDA-4FFC-8BD2-DDB73331B955}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ManagedServiceIdentity", "..\ManagedServiceIdentity\Az.ManagedServiceIdentity.csproj", "{9F6FD098-3A06-4D8F-9807-7E941FBCFEE4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

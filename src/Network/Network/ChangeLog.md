@@ -19,9 +19,12 @@
 --->
 
 ## Upcoming Release
-* Added support for retreiving the state of packet capture even when the provisioning state of the packet capture was failure
+* Fixed `ArgumentNullException` in `Add-AzureRmRouteConfig` when `RouteTable.Routes` is null.
+
+## Version 4.16.0
+* Added support for retrieving the state of packet capture even when the provisioning state of the packet capture was failure
     - `Get-AzNetworkWatcherPacketCapture`
-* Added support for accepting Vnet, Subnet and NIC resources as the TargetResourceId for the following cdmlets
+* Added support for accepting Vnet, Subnet and NIC resources as the TargetResourceId for the following cmdlets
     - `Set-AzNetworkWatcherFlowLog`
     - `New-AzNetworkWatcherFlowLog`
 
@@ -67,7 +70,6 @@
     - Also updated cmdlet to add the property for configuring ExclusionManagedRuleSet within Exclusions
         - `New-AzApplicationGatewayFirewallPolicyExclusion`
 * Bug Fix in Application Gateway Trusted Client Certificate cmdlets to load the entire cert chain from file.
-
 ## Version 4.12.0
 * Support for Sku, ScaleUnits parameters of BastionHost resource.
     - `New-AzBastion`

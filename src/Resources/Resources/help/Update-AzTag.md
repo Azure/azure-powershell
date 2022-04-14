@@ -32,6 +32,7 @@ This operation allows replacing, merging or selectively deleting tags on the spe
 $mergedTags = @{"key1"="value1"; "key3"="value3";}
 Update-AzTag -ResourceId /subscriptions/{subId} -Tag $mergedTags -Operation Merge
 ```
+
 ```output
 Id         : {Id}
 Name       : {Name}
@@ -52,6 +53,7 @@ This command Merges the set of tags on the subscription with {subId}.
 $replacedTags = @{"key1"="value1"; "key3"="value3";}
 Update-AzTag -ResourceId /subscriptions/{subId} -Tag $replacedTags -Operation Replace
 ```
+
 ```output
 Id         : {Id}
 Name       : {Name}
@@ -71,6 +73,7 @@ This command Replaces the set of tags on the subscription with {subId}.
 $deletedTags = @{"key1"="value1"}
 Update-AzTag -ResourceId /subscriptions/{subId} -Tag $deletedTags -Operation Delete
 ```
+
 ```output
 Id         : {Id}
 Name       : {Name}

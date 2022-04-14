@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Commands.Resources.PrivateLinks.Common
             public const string ResourceGroupName = "The name of the resource group.";
             public const string PrivateLinkName = "The name of the private link.";
             public const string PrivateLinkObject = "The private link object.";
+            public const string PrivateLinkLocation = "The private link location.";
             public const string ManagementGroupId = "The management group Id.";
             public const string PrivateLinkAssociationId = "The private link association Id.";
             public const string PrivateLinkResourceId = "The resource management private link resource Id.";

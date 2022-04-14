@@ -46,6 +46,7 @@ The **Update-AzManagementGroup** cmdlet updates the **ParentId** or **DisplayNam
 ```powershell
 Update-AzManagementGroup -Group "TestGroup" -DisplayName "New Display Name"
 ```
+
 ```output
 Id                : /providers/Microsoft.Management/managementGroups/TestGroup
 Type              : /providers/Microsoft.Management/managementGroups
@@ -63,6 +64,7 @@ ParentDisplayName : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
 ```powershell
 Update-AzManagementGroup -Group "TestGroup" -ParentId "/providers/Microsoft.Management/managementGroups/TestGroupParent"
 ```
+
 ```output
 Id                : /providers/Microsoft.Management/managementGroups/TestGroup
 Type              : /providers/Microsoft.Management/managementGroups
@@ -80,6 +82,7 @@ ParentDisplayName : TestGroupParent
 ```powershell
 Get-AzManagementGroup -GroupName "TestGroup" | Update-AzManagementGroup -DisplayName "TestDisplayName" -ParentId "/providers/Microsoft.Management/managementGroups/TestGroupParent"
 ```
+
 ```output
 Id                : /providers/Microsoft.Management/managementGroups/TestGroup
 Type              : /providers/Microsoft.Management/managementGroups
@@ -98,6 +101,7 @@ ParentDisplayName : TestGroupParent
 $parentObject = Get-AzManagementGroup -GroupName "TestGroupParent"
 Update-AzManagementGroup -GroupName "TestGroup" -ParentObject $parentObject
 ```
+
 ```output
 Id                : /providers/Microsoft.Management/managementGroups/TestGroup
 Type              : /providers/Microsoft.Management/managementGroups

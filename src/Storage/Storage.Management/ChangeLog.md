@@ -18,11 +18,29 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed the issue that upload blob might fail on Linux [#17743]
+    -  `Set-AzStorageBlobContent`
+
+## Version 4.4.1
+* Fixed get blob by tag failure on Powershell 7.2.2
+    -  `Get-AzStorageBlobByTag`
+
+## Version 4.4.0
 * Updated examples in reference documentation for `Close-AzStorageFileHandle`
 * Supported create storage context with customized blob, queue, file, table service endpoint
     - `New-AzStorageContext`
 * Fixed copy blob failure on Premium Storage account, or account enabled hierarchical namespace
     -  `Copy-AzStorageBlob` 
+* Supported create account SAS token, container SAS token, blob  SAS token with EncryptionScope
+    -  `New-AzStorageAccountSASToken` 
+    -  `New-AzStorageContainerSASToken` 
+    -  `New-AzStorageBlobSASToken` 
+* Supported asynchronous blob copy run on new API version
+    -  `Start-AzStorageBlobCopy`
+* Fixed IpRule examples in help
+    -  `Add-AzStorageAccountNetworkRule`
+    -  `Remove-AzStorageAccountNetworkRule`
+    -  `Update-AzStorageAccountNetworkRuleSet`
 
 ## Version 4.3.0
 * Supported download blob from managed disk account with Sas Uri and bearer token

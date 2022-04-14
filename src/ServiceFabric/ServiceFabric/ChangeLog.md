@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 3.0.2
+* Added support for Ubuntu 20.04 vm image. 
+    - This enables cluster operations with Ubuntu 20.04 vm image using AZ powershell. 
+
 ## Version 3.0.1
 * Fixed Managed and Classic Application models (Application, Cluster, Service) by updating constructor to take all new properties
     - This solves piping related issues where piping the results directly from a Get cmdlet call into and Update or Set call remove some intentionally set properties

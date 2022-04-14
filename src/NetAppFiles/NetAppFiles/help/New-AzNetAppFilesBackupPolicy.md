@@ -35,7 +35,7 @@ The **New-AzNetAppFilesActiveDirectory** cmdlet creates a new backup policy for 
 
 ### Example 1
 ```powershell
-New-AzNetAppFilesBackupPolicy -ResourceGroupName "MyRG" -l "westus2" -AccountName "MyAccount" -Name "MyBackupPolicy" -Tag @{"tag1" = "tagValue"} -Enabled -DailyBackupsToKeep 1 -WeeklyBackupsToKeep 2 -MonthlyBackupsToKeep 2
+New-AzNetAppFilesBackupPolicy -ResourceGroupName "MyRG" -Location "westus2" -AccountName "MyAccount" -Name "MyBackupPolicy" -Tag @{"tag1" = "tagValue"} -Enabled -DailyBackupsToKeep 1 -WeeklyBackupsToKeep 2 -MonthlyBackupsToKeep 2
 ```
 
 This command creates the new ANF backup policy for ANF account named account "MyAccount".
