@@ -128,6 +128,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                     .ForMember(dest => dest.IsOnline, opt => opt.MapFrom(src => src.IsOnline ?? false))
                     .ForMember(dest => dest.ApiVersionSetDescription, opt => opt.MapFrom(src => src.ApiVersionDescription))
                     .ForMember(dest => dest.Protocols, opt => opt.MapFrom(src => src.Protocols.ToArray()))
+                    .ForMember(dest => dest.TermsOfServiceUrl, opt => opt.MapFrom(src => src.TermsOfServiceUrl))
                     .ForMember(
                         dest => dest.AuthorizationServerId,
                         opt => opt.MapFrom(
@@ -211,6 +212,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                     .ForMember(dest => dest.IsOnline, opt => opt.MapFrom(src => src.IsOnline))
                     .ForMember(dest => dest.ApiVersionDescription, opt => opt.MapFrom(src => src.ApiVersionSetDescription))
                     .ForMember(dest => dest.Protocols, opt => opt.MapFrom(src => src.Protocols.ToArray()))
+                    .ForMember(dest => dest.TermsOfServiceUrl, opt => opt.MapFrom(src => src.TermsOfServiceUrl))
                     .AfterMap((src, dest) =>
                         dest.AuthenticationSettings = Utils.ToAuthenticationSettings(src))
                     .AfterMap((src, dest) =>
@@ -233,6 +235,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                     .ForMember(dest => dest.IsOnline, opt => opt.MapFrom(src => src.IsOnline))
                     .ForMember(dest => dest.ApiVersionDescription, opt => opt.MapFrom(src => src.ApiVersionSetDescription))
                     .ForMember(dest => dest.Protocols, opt => opt.MapFrom(src => src.Protocols.ToArray()))
+                    .ForMember(dest => dest.TermsOfServiceUrl, opt => opt.MapFrom(src => src.TermsOfServiceUrl))
                     .AfterMap((src, dest) =>
                         dest.AuthenticationSettings = Utils.ToAuthenticationSettings(src))
                     .AfterMap((src, dest) =>
@@ -1070,7 +1073,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 };
             }
 
-            if (!string.IsNullOrEmpty(apiType))
+            if (apiType != null)
             {
                 api.ApiType = apiType;
             }

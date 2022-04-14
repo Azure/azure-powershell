@@ -132,8 +132,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
         public string LicenseName { get; set; }
 
         /// <summary>
-        /// Gets or sets a URL to the Terms of Service for the API.
+        /// Gets or sets a URL to the License for the API.
         /// </summary>
         public string LicenseUrl { get; set; }
+
+        /// <summary>
+        /// Gets or sets a URL to the Terms of Service for the API.
+        /// </summary>
+        public string TermsOfServiceUrl { get; set; }
     }
 }

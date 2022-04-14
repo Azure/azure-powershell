@@ -207,11 +207,11 @@ function Api-CrudGraphQlTest {
         Assert-AreEqual $subscriptionKeyQueryStringParamName $newApi.SubscriptionKeyQueryParamName
         Assert-AreEqual $newApiType $newApi.ApiType
         Assert-AreEqual $newApiTermsOfServiceUrl $newApi.TermsOfServiceUrl
-        Assert-AreEqual $newApiContactName $newApi.Contact.Name
-        Assert-AreEqual $newApiContactUrl $newApi.Contact.Url
-        Assert-AreEqual $newApiContactEmail $newApi.Contact.Email
-        Assert-AreEqual $newApiLicenseName $newApi.Nicense.Name
-        Assert-AreEqual $newApiLicenseUrl $newApi.Nicense.Url
+        Assert-AreEqual $newApiContactName $newApi.ContactName
+        Assert-AreEqual $newApiContactUrl $newApi.ContactUrl
+        Assert-AreEqual $newApiContactEmail $newApi.ContactEmail
+        Assert-AreEqual $newApiLicenseName $newApi.LicenseName
+        Assert-AreEqual $newApiLicenseUrl $newApi.LicenseUrl
 
         # set api
         $newApiName = getAssetName
@@ -248,11 +248,11 @@ function Api-CrudGraphQlTest {
         Assert-AreEqual $subscriptionKeyQueryStringParamName $newApi.SubscriptionKeyQueryParamName
         Assert-AreEqual $newApiType $newApi.ApiType
         Assert-AreEqual $newApiTermsOfServiceUrl $newApi.TermsOfServiceUrl
-        Assert-AreEqual $newApiContactName $newApi.Contact.Name
-        Assert-AreEqual $newApiContactUrl $newApi.Contact.Url
-        Assert-AreEqual $newApiContactEmail $newApi.Contact.Email
-        Assert-AreEqual $newApiLicenseName $newApi.Nicense.Name
-        Assert-AreEqual $newApiLicenseUrl $newApi.Nicense.Url
+        Assert-AreEqual $newApiContactName $newApi.ContactName
+        Assert-AreEqual $newApiContactUrl $newApi.ContactUrl
+        Assert-AreEqual $newApiContactEmail $newApi.ContactEmail
+        Assert-AreEqual $newApiLicenseName $newApi.LicenseName
+        Assert-AreEqual $newApiLicenseUrl $newApi.LicenseUrl
 
 
         $product = Get-AzApiManagementProduct -Context $context | Select-Object -First 1
@@ -296,7 +296,7 @@ function Api-CrudWebsocketTest {
         $newApiName = getAssetName
         $newApiDescription = getAssetName
         $newApiPath = getAssetName
-        $newApiServiceUrl = "http://newechoapi.cloudapp.net/newapi"
+        $newApiServiceUrl = "ws://newechoapi.cloudapp.net/newapi"
         $subscriptionKeyParametersHeader = getAssetName
         $subscriptionKeyQueryStringParamName = getAssetName
         $newApiType = "websocket"
@@ -319,25 +319,25 @@ function Api-CrudWebsocketTest {
         Assert-AreEqual $newApiServiceUrl $newApi.ServiceUrl
         Assert-AreEqual $newApiPath $newApi.Path
         Assert-AreEqual 2 $newApi.Protocols.Length
-        Assert-AreEqual http $newApi.Protocols[0]
-        Assert-AreEqual https $newApi.Protocols[1]
+        Assert-AreEqual ws $newApi.Protocols[0]
+        Assert-AreEqual wss $newApi.Protocols[1]
         Assert-Null $newApi.AuthorizationServerId
         Assert-Null $newApi.AuthorizationScope
         Assert-AreEqual $subscriptionKeyParametersHeader $newApi.SubscriptionKeyHeaderName
         Assert-AreEqual $subscriptionKeyQueryStringParamName $newApi.SubscriptionKeyQueryParamName
         Assert-AreEqual $newApiType $newApi.ApiType
         Assert-AreEqual $newApiTermsOfServiceUrl $newApi.TermsOfServiceUrl
-        Assert-AreEqual $newApiContactName $newApi.Contact.Name
-        Assert-AreEqual $newApiContactUrl $newApi.Contact.Url
-        Assert-AreEqual $newApiContactEmail $newApi.Contact.Email
-        Assert-AreEqual $newApiLicenseName $newApi.Nicense.Name
-        Assert-AreEqual $newApiLicenseUrl $newApi.Nicense.Url
+        Assert-AreEqual $newApiContactName $newApi.ContactName
+        Assert-AreEqual $newApiContactUrl $newApi.ContactUrl
+        Assert-AreEqual $newApiContactEmail $newApi.ContactEmail
+        Assert-AreEqual $newApiLicenseName $newApi.LicenseName
+        Assert-AreEqual $newApiLicenseUrl $newApi.LicenseUrl
 
         # set api
         $newApiName = getAssetName
         $newApiDescription = getAssetName
         $newApiPath = getAssetName
-        $newApiServiceUrl = "http://newechoapi.cloudapp.net/newapinew"
+        $newApiServiceUrl = "ws://newechoapi.cloudapp.net/newapinew"
         $subscriptionKeyParametersHeader = getAssetName
         $subscriptionKeyQueryStringParamName = getAssetName
         $newApiType = "websocket"
@@ -361,18 +361,18 @@ function Api-CrudWebsocketTest {
         Assert-AreEqual $newApiServiceUrl $newApi.ServiceUrl
         Assert-AreEqual $newApiPath $newApi.Path
         Assert-AreEqual 1 $newApi.Protocols.Length
-        Assert-AreEqual https $newApi.Protocols[0]
+        Assert-AreEqual ws $newApi.Protocols[0]
         Assert-Null $newApi.AuthorizationServerId
         Assert-Null $newApi.AuthorizationScope
         Assert-AreEqual $subscriptionKeyParametersHeader $newApi.SubscriptionKeyHeaderName
         Assert-AreEqual $subscriptionKeyQueryStringParamName $newApi.SubscriptionKeyQueryParamName
         Assert-AreEqual $newApiType $newApi.ApiType
         Assert-AreEqual $newApiTermsOfServiceUrl $newApi.TermsOfServiceUrl
-        Assert-AreEqual $newApiContactName $newApi.Contact.Name
-        Assert-AreEqual $newApiContactUrl $newApi.Contact.Url
-        Assert-AreEqual $newApiContactEmail $newApi.Contact.Email
-        Assert-AreEqual $newApiLicenseName $newApi.Nicense.Name
-        Assert-AreEqual $newApiLicenseUrl $newApi.Nicense.Url
+        Assert-AreEqual $newApiContactName $newApi.ContactName
+        Assert-AreEqual $newApiContactUrl $newApi.ContactUrl
+        Assert-AreEqual $newApiContactEmail $newApi.ContactEmail
+        Assert-AreEqual $newApiLicenseName $newApi.LicenseName
+        Assert-AreEqual $newApiLicenseUrl $newApi.LicenseUrl
 
 
         $product = Get-AzApiManagementProduct -Context $context | Select-Object -First 1
