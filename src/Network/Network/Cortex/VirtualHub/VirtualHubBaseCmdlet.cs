@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Network
         public PSVirtualHub ToPsVirtualHub(Management.Network.Models.VirtualHub virtualHub)
         {
             var psVirtualHub = NetworkResourceManagerProfile.Mapper.Map<PSVirtualHub>(virtualHub);
-
+            
             psVirtualHub.Tag = TagsConversionHelper.CreateTagHashtable(virtualHub.Tags);
 
             return psVirtualHub;
@@ -91,6 +91,7 @@ namespace Microsoft.Azure.Commands.Network
             var psHubVnetConnections = virtualHub.VirtualNetworkConnections;
             virtualHub.VirtualNetworkConnections = null;
             var virtualHubModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualHub>(virtualHub);
+            virtualHubModel.HubRoutingPreference = virtualHub.HubRoutingPreference;
             virtualHubModel.Location = virtualHub.Location;
             virtualHubModel.Tags = TagsConversionHelper.CreateTagDictionary(tags, validate: true);
             MNM.VirtualHub virtualHubCreatedOrUpdated;

@@ -118,9 +118,9 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "Virtual Hub Routing Preference to route traffic")]
         [ValidateSet(
-            CortexParameterSetNames.ExpressRoute,
-            CortexParameterSetNames.VpnGateway,
-            CortexParameterSetNames.ASPath,
+            MNM.HubRoutingPreference.ExpressRoute,
+            MNM.HubRoutingPreference.VpnGateway,
+            MNM.HubRoutingPreference.ASPath,
             IgnoreCase = true)]
         public string HubRoutingPreference { get; set; }
 
