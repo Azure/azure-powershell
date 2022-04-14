@@ -178,11 +178,6 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             HelpMessage = "Skips the resizing of VHD")]
         public SwitchParameter SkipResizing { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Use this switch parameter to keep the VHD file that is resized/converted by Hyper-V.")]
-        public SwitchParameter KeepConvertedVhd { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -276,11 +271,9 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                 }
                 finally
                 {
-                    if (!this.KeepConvertedVhd.IsPresent && ConvertedResized == true)
-                    {
-                        WriteVerbose("Deleting file: " + this.LocalFilePath.FullName);
-                        File.Delete(this.LocalFilePath.FullName);
-                    }
+
+                    WriteVerbose("Deleting file: " + this.LocalFilePath.FullName);
+                    File.Delete(this.LocalFilePath.FullName);
                 }
             });
 
@@ -457,7 +450,6 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             ComputeAutomationAutoMapperProfile.Mapper.Map<Disk, PSDisk>(result, psObject);
 
             WriteVerbose("\nCreated Managed Disk:");
-            WriteObject(psObject);
         }
 
         private void CheckForInvalidVhd()

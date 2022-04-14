@@ -31,7 +31,6 @@
     - Updated so that uploading dynamically sized VHD files are converted to fixed size during upload.
     - Fixed a bug in uploading a differencing disk.
     - Automically delete converted/resized VHD files after upload.
-    - Add `-KeepConvertedVhd` parameter to keep the converted/resized VHD files after upload
     - Fixed a bug that indicates `-ResourceGroupName` parameter as optional when it is actually mandatory.
 
 

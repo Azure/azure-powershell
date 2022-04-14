@@ -17,14 +17,14 @@ Uploads a virtual hard disk from an on-premises machine to Azure (managed disk o
 ```
 Add-AzVhd [-ResourceGroupName] <String> [-Destination] <Uri> [-LocalFilePath] <FileInfo>
  [[-NumberOfUploaderThreads] <Int32>] [[-BaseImageUriToPatch] <Uri>] [-OverWrite] [-SkipResizing]
- [-KeepConvertedVhd] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### DirectUploadToManagedDiskSet
 ```
 Add-AzVhd [-ResourceGroupName] <String> [-LocalFilePath] <FileInfo> -DiskName <String> [-Location] <String>
  [-DiskSku <String>] [-DiskZone <String[]>] [-DiskHyperVGeneration <String>]
- [-DiskOsType <OperatingSystemTypes>] [[-NumberOfUploaderThreads] <Int32>] [-KeepConvertedVhd] [-AsJob]
+ [-DiskOsType <OperatingSystemTypes>] [[-NumberOfUploaderThreads] <Int32>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -231,21 +231,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -KeepConvertedVhd
-Use this switch parameter to keep the VHD file that is resized/converted by Hyper-V.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
