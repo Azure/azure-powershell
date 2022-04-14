@@ -94,11 +94,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Flag to set this as non Default Policy Group on this VpnServerConfiguration.")]
-        public SwitchParameter NotDefaultPolicyGroup { get; set; }
-
-        [Parameter(
-            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The list of Policy members.")]
         public PSVpnServerConfigurationPolicyGroupMember[] PolicyMember { get; set; }
@@ -160,16 +155,11 @@ namespace Microsoft.Azure.Commands.Network
                 PolicyMembers = new List<PSVpnServerConfigurationPolicyGroupMember>()
             };
 
-            if (this.DefaultPolicyGroup.IsPresent && this.NotDefaultPolicyGroup.IsPresent)
-            {
-                throw new ArgumentException("Both DefaultPolicyGroup and NotDefaultPolicyGroup Parameters can not be passed.");
-            }
-
             if (this.DefaultPolicyGroup.IsPresent)
             {
                 policyGroup.IsDefault = true;
             }
-            if (this.NotDefaultPolicyGroup.IsPresent)
+            else
             {
                 policyGroup.IsDefault = false;
             }

@@ -89,13 +89,8 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Flag to set this as Default Policy Group on this VpnServerConfiguration.")]
-        public SwitchParameter DefaultPolicyGroup { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Flag to set this as non Default Policy Group on this VpnServerConfiguration.")]
-        public SwitchParameter NotDefaultPolicyGroup { get; set; }
+            HelpMessage = "Set this as Default Policy Group on this VpnServerConfiguration.")]
+        public bool? DefaultPolicyGroup { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -162,19 +157,10 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
             {
                 policyGroupToUpdate.Priority = this.Priority;
             }
-
-            if (this.DefaultPolicyGroup.IsPresent && this.NotDefaultPolicyGroup.IsPresent)
+            
+            if (this.DefaultPolicyGroup.HasValue)
             {
-                throw new ArgumentException("Both DefaultPolicyGroup and NotDefaultPolicyGroup Parameters can not be passed.");
-            }
-
-            if (this.DefaultPolicyGroup.IsPresent)
-            {
-                policyGroupToUpdate.IsDefault = true;
-            }
-            if (this.NotDefaultPolicyGroup.IsPresent)
-            {
-                policyGroupToUpdate.IsDefault = false;
+                policyGroupToUpdate.IsDefault = this.DefaultPolicyGroup.Value;
             }
 
             if (this.PolicyMember != null)
