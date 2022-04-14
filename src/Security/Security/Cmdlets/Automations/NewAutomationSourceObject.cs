@@ -20,21 +20,21 @@ using Microsoft.Azure.Commands.Security.Models.Automations;
 namespace Microsoft.Azure.Commands.Security.Cmdlets.Automations
 {
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityAutomationSourceObject", DefaultParameterSetName = ParameterSetNames.SecurityAutomationSource), OutputType(typeof(PSSecurityAutomationSource))]
-    public class NewAutomationSource : SecurityCenterCmdletBase
+    public class NewAutomationSourceObject : SecurityCenterCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.SecurityAutomationActionLogicApp, Mandatory = true, HelpMessage = ParameterHelpMessages.AutomationActionLogicAppResourceId)]
         [ValidateNotNullOrEmpty]
         public string EventSource { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.SecurityAutomationActionLogicApp, Mandatory = true, HelpMessage = ParameterHelpMessages.AutomationActionLogicAppUri)]
-        public PSSecurityAutomationRuleSet[] RuleSets { get; set; }
+        public PSSecurityAutomationRuleSet[] RuleSet { get; set; }
 
         public override void ExecuteCmdlet()
         {
             var automationSource = new PSSecurityAutomationSource()
             {
                 EventSource = EventSource,
-                RuleSets = RuleSets
+                RuleSets = RuleSet
             };
             WriteObject(automationSource);
         }

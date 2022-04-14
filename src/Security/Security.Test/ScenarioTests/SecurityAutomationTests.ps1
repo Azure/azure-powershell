@@ -229,8 +229,8 @@ function New-AzSecurityAutomationSourceObject-Test
 	Get-AzSecurityAutomation-ResourceGroupLevelResource
 
     $rule = New-AzSecurityAutomationRuleObject -PropertyJPath "properties.metadata.severity"  -PropertyType "String" -Operator "Equals"  -ExpectedValue "High"
-	$ruleSet = New-AzSecurityAutomationRuleSetObject -Rules $rule
-	New-AzSecurityAutomationSourceObject -EventSource "Assessments" -RuleSets $ruleSet
+	$ruleSet = New-AzSecurityAutomationRuleSetObject -Rule $rule
+	New-AzSecurityAutomationSourceObject -EventSource "Assessments" -RuleSet $ruleSet
 }
 
 <#

@@ -20,16 +20,16 @@ using Microsoft.Azure.Commands.Security.Models.Automations;
 namespace Microsoft.Azure.Commands.Security.Cmdlets.Automations
 {
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityAutomationRuleSetObject", DefaultParameterSetName = ParameterSetNames.SecurityAutomationRuleSet), OutputType(typeof(PSSecurityAutomationRuleSet))]
-    public class NewAutomationRuleSet : SecurityCenterCmdletBase
+    public class NewAutomationRuleSetObject : SecurityCenterCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.SecurityAutomationRuleSet, Mandatory = true, HelpMessage = ParameterHelpMessages.AutomationRuleSetRules)]
-        public PSSecurityAutomationTriggeringRule[] Rules { get; set; }
+        public PSSecurityAutomationTriggeringRule[] Rule { get; set; }
 
         public override void ExecuteCmdlet()
         {
             var automationRuleSet = new PSSecurityAutomationRuleSet()
             {
-                Rules = Rules
+                Rules = Rule
             };
             WriteObject(automationRuleSet);
         }
