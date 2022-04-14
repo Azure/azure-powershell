@@ -144,7 +144,19 @@ directive:
       property-name: Items
 
   - where:
-      subject: application$|applicationpassword$|applicationkey$|serviceprincipal$|serviceprincipalpassword$|serviceprincipalkey$|groupmember$|user$|group$|groupmember$|grouprefmember$
+      subject: application$|applicationpassword$|applicationkey$|serviceprincipal$|serviceprincipalpassword$|serviceprincipalkey$|groupmember$|user$|groupmember$|grouprefmember$
+    hide: true
+
+  - where:
+      subject: ^group$
+      verb: ^Update$
+      parameter-name: Id
+    set:
+      parameter-name: ObjectId
+
+  - where: 
+      subject: ^group$
+      verb: ^(?!.*Update).*
     hide: true
 
   - where:
