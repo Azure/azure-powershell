@@ -65,7 +65,7 @@ function New-AzApplicationInsights {
         [ValidateSet("web", "other", "nodejs", "java", "ios", "store", "phone", IgnoreCase)]
         # The kind of application that this component refers to, used to customize UI.
         # This value is a freeform string, values should typically be one of the following: web, ios, other, store, java, phone.
-        ${Kind} = "web",
+        ${Kind},
     
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
@@ -234,6 +234,12 @@ function New-AzApplicationInsights {
         if ($PSBoundParameters.ContainsKey("RetentionInDays")) {
             $PSBoundParameters["RetentionInDay"] = $PSBoundParameters["RetentionInDays"]
             $null = $PSBoundParameters.Remove("RetentionInDays")
+        }
+        if (!$PSBoundParameters.ContainsKey("Kind")) {
+            $PSBoundParameters["Kind"] = "web"
+        }
+        if (!$PSBoundParameters.ContainsKey("ApplicationType")) {
+            $PSBoundParameters["ApplicationType"] = $PSBoundParameters["Kind"]
         }
         . Az.ApplicationInsights.internal\New-AzApplicationInsights @PSBoundParameters
     }

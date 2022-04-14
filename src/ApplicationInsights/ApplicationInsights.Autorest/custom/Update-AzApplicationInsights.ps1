@@ -224,52 +224,52 @@ function Update-AzApplicationInsights {
         $PSBoundParameters["Location"] = $component.Location
         $PSBoundParameters["Kind"] = $component.Kind
 
-        if (!$PSBoundParameters["ApplicationType"]) {
+        if (!$PSBoundParameters.ContainsKey("ApplicationType") -and ($null -ne $component.ApplicationType)) {
             $PSBoundParameters["ApplicationType"] = $component.ApplicationType
         }
-        if (!$PSBoundParameters["DisableIPMasking"]) {
+        if (!$PSBoundParameters.ContainsKey("DisableIPMasking") -and ($null -ne $component.DisableIPMasking)) {
             $PSBoundParameters["DisableIPMasking"] = $component.DisableIPMasking
         }
-        if (!$PSBoundParameters["DisableLocalAuth"]) {
+        if (!$PSBoundParameters.ContainsKey("DisableLocalAuth") -and ($null -ne $component.DisableLocalAuth)) {
             $PSBoundParameters["DisableLocalAuth"] = $component.DisableLocalAuth
         }
-        if (!$PSBoundParameters["Etag"]) {
+        if (!$PSBoundParameters.ContainsKey("Etag") -and ($null -ne $component.Etag)) {
             $PSBoundParameters["Etag"] = $component.Etag
         }
-        if (!$PSBoundParameters["FlowType"]) {
+        if (!$PSBoundParameters.ContainsKey("FlowType") -and ($null -ne $component.FlowType)) {
             $PSBoundParameters["FlowType"] = $component.FlowType
         }
-        if (!$PSBoundParameters["ForceCustomerStorageForProfiler"]) {
+        if (!$PSBoundParameters.ContainsKey("ForceCustomerStorageForProfiler") -and ($null -ne $component.ForceCustomerStorageForProfiler)) {
             $PSBoundParameters["ForceCustomerStorageForProfiler"] = $component.ForceCustomerStorageForProfiler
         }
-        if (!$PSBoundParameters["HockeyAppId"]) {
+        if (!$PSBoundParameters.ContainsKey("HockeyAppId") -and ($null -ne $component.HockeyAppId)) {
             $PSBoundParameters["HockeyAppId"] = $component.HockeyAppId
         }
-        if (!$PSBoundParameters["ImmediatePurgeDataOn30Day"]) {
+        if (!$PSBoundParameters.ContainsKey("ImmediatePurgeDataOn30Day") -and ($null -ne $component.ImmediatePurgeDataOn30Day)) {
             $PSBoundParameters["ImmediatePurgeDataOn30Day"] = $component.ImmediatePurgeDataOn30Day
         }
-        if (!$PSBoundParameters["IngestionMode"]) {
+        if (!$PSBoundParameters.ContainsKey("IngestionMode") -and ($null -ne $component.IngestionMode)) {
             $PSBoundParameters["IngestionMode"] = $component.IngestionMode
         }
-        if (!$PSBoundParameters["PublicNetworkAccessForIngestion"]) {
+        if (!$PSBoundParameters.ContainsKey("PublicNetworkAccessForIngestion") -and ($null -ne $component.PublicNetworkAccessForIngestion)) {
             $PSBoundParameters["PublicNetworkAccessForIngestion"] = $component.PublicNetworkAccessForIngestion
         }
-        if (!$PSBoundParameters["PublicNetworkAccessForQuery"]) {
+        if (!$PSBoundParameters.ContainsKey("PublicNetworkAccessForQuery") -and ($null -ne $component.PublicNetworkAccessForQuery)) {
             $PSBoundParameters["PublicNetworkAccessForQuery"] = $component.PublicNetworkAccessForQuery
         }
-        if (!$PSBoundParameters["RequestSource"]) {
+        if (!$PSBoundParameters.ContainsKey("RequestSource") -and ($null -ne $component.RequestSource)) {
             $PSBoundParameters["RequestSource"] = $component.RequestSource
         }
-        if (!$PSBoundParameters["RetentionInDays"]) {
+        if (!$PSBoundParameters.ContainsKey("RetentionInDays") -and ($null -ne $component.RetentionInDay)) {
             $PSBoundParameters["RetentionInDays"] = $component.RetentionInDay
         }
-        if (!$PSBoundParameters["SamplingPercentage"]) {
+        if (!$PSBoundParameters.ContainsKey("SamplingPercentage") -and ($null -ne $component.SamplingPercentage)) {
             $PSBoundParameters["SamplingPercentage"] = $component.SamplingPercentage
         }
-        if (!$PSBoundParameters["Tag"]) {
-            $PSBoundParameters["Tag"] = $component.Tag
+        if (!$PSBoundParameters.ContainsKey("Tag") -and ($null -ne $component.Tag)) {
+            $PSBoundParameters["Tag"] = [System.Collections.Hashtable]$component.Tag.AddtionalProperties
         }
-        if (!$PSBoundParameters["WorkspaceResourceId"]) {
+        if (!$PSBoundParameters.ContainsKey("WorkspaceResourceId") -and ![System.String]::IsNullOrEmpty($component.WorkspaceResourceId)) {
             $PSBoundParameters["WorkspaceResourceId"] = $component.WorkspaceResourceId
         }
 

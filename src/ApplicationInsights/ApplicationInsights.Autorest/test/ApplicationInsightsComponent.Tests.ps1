@@ -16,13 +16,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'ApplicationInsightsComponent'
 
 Describe 'ApplicationInsightsComponent' {
     It 'Component' {
-        $loc = Get-ProviderLocation ResourceManagement;
         $kind = "web";
         $key = "key"
         $val = "val"
         $tag = @{$key=$val}
 
-        New-AzApplicationInsights -ResourceGroupName $env.resourceGroup -Name $env.component1 -Location $loc -Kind $kind
+        New-AzApplicationInsights -ResourceGroupName $env.resourceGroup -Name $env.component1 -Location $env.location -Kind $kind
         $component = Get-AzApplicationInsights -ResourceGroupName $env.resourceGroup -Name $env.component1
 
         $component.Name | Should -Be $env.component1
@@ -31,11 +30,11 @@ Describe 'ApplicationInsightsComponent' {
         "Enabled" | Should -Be $component.PublicNetworkAccessForIngestion
         "Enabled" | Should -Be $component.PublicNetworkAccessForQuery
 
-        $component = Update-AzApplicationInsights -ResourceGroupName $env.resourceGroup -Name $env.component1 -Tags $tag -PublicNetworkAccessForIngestion "Disabled" -PublicNetworkAccessForQuery "Disabled"
+        $component = Update-AzApplicationInsights -ResourceGroupName $env.resourceGroup -Name $env.component1 -Tag $tag -PublicNetworkAccessForIngestion "Disabled" -PublicNetworkAccessForQuery "Disabled"
 
         "Disabled" | Should -Be $component.PublicNetworkAccessForIngestion
         "Disabled" | Should -Be $component.PublicNetworkAccessForQuery
-        $val | Shuold -Be $component.Tags[$key]
+        $val | Should -Be $component.Tag[$key]
 
         Remove-AzApplicationInsights -ResourceGroupName $env.resourceGroup -Name $env.component1
     }
