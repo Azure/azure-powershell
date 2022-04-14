@@ -317,6 +317,34 @@ ZoneRedundant            : true
 
 This command creates a new instance with external administrator properties and azure active directory only authentication enabled.
 
+### Example 9: Create a new instance with TDE CMK
+```powershell
+New-AzSqlInstance -Name managedInstance1 -ResourceGroupName ResourceGroup01 -Location westcentralus -AdministratorCredential (Get-Credential) -SubnetId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name" -LicenseType LicenseIncluded -StorageSizeInGB 1024 -VCore 16 -SkuName GP_Gen4 -DnsZonePartner "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/partnerServerForDnsZone" -AssignIdentity -IdentityType "UserAssigned" -PrimaryUserAssignedIdentityId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity01" -UserAssignedIdentityId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity01" -KeyId "https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901"
+```
+
+```output
+Location                 : westcentralus
+Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
+ResourceGroupName        : resourcegroup01
+ManagedInstanceName      : managedInstance1
+Tags                     :
+Identity                 : Microsoft.Azure.Management.Sql.Models.ResourceIdentity
+Sku                      : Microsoft.Azure.Management.Internal.Resources.Models.Sku
+FullyQualifiedDomainName : managedInstance1.wcusxxxxxxxxxxxxx.database.windows.net
+AdministratorLogin       : adminLogin1
+AdministratorPassword    :
+SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
+LicenseType              : LicenseIncluded
+VCores                   : 16
+StorageSizeInGB          : 1024
+DnsZone                  : ad35cna0mw
+InstancePoolName         :
+KeyId                    : https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901
+PrimaryUserAssignedIdentityId : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity01
+```
+
+This command creates a new managed instance with TDE CMK enabled.
+
 ## PARAMETERS
 
 ### -AdministratorCredential

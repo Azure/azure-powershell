@@ -33,7 +33,7 @@ The **New-AzNetAppFilesPool** cmdlet creates an ANF pool.
 
 ### Example 1: Create an ANF pool
 ```powershell
-New-AzNetAppFilesPool -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -Name "MyAnfPool" -l "westus2" -PoolSize 4398046511104 -ServiceLevel "Premium" -QosType "Auto"
+New-AzNetAppFilesPool -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -Name "MyAnfPool" -Location "westus2" -PoolSize 4398046511104 -ServiceLevel "Premium" -QosType "Auto"
 ```
 
 ```output

@@ -20,13 +20,9 @@ Description for Get function keys for a function in a web site, or a deployment 
 .Description
 Description for Get function keys for a function in a web site, or a deployment slot.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary

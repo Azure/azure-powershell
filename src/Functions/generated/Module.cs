@@ -30,6 +30,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions
         /// <summary>the ISendAsync pipeline instance (when proxy is enabled)</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.HttpPipeline _pipelineWithProxy;
 
+        public bool _useProxy = false;
+
         public global::System.Net.WebProxy _webProxy = new global::System.Net.WebProxy();
 
         /// <summary>Gets completion data for azure specific fields</summary>
@@ -88,7 +90,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions
         {
             Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.HttpPipeline pipeline = null;
             BeforeCreatePipeline(invocationInfo, ref pipeline);
-            pipeline = (pipeline ?? (_handler.UseProxy ? _pipelineWithProxy : _pipeline)).Clone();
+            pipeline = (pipeline ?? (_useProxy ? _pipelineWithProxy : _pipeline)).Clone();
             AfterCreatePipeline(invocationInfo, ref pipeline);
             pipeline.Append(new Runtime.CmdInfoHandler(processRecordId, invocationInfo, parameterSetName).SendAsync);
             OnNewRequest?.Invoke( invocationInfo, correlationId,processRecordId, (step)=> { pipeline.Prepend(step); } , (step)=> { pipeline.Append(step); } );
@@ -127,12 +129,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions
         /// <param name="proxyUseDefaultCredentials">True if the proxy should use default credentials</param>
         public void SetProxyConfiguration(global::System.Uri proxy, global::System.Management.Automation.PSCredential proxyCredential, bool proxyUseDefaultCredentials)
         {
+            _useProxy = proxy != null;
+            if (proxy == null)
+            {
+                return;
+            }
             // set the proxy configuration
             _webProxy.Address = proxy;
             _webProxy.BypassProxyOnLocal = false;
-            _webProxy.Credentials = proxyCredential ?.GetNetworkCredential();
-            _webProxy.UseDefaultCredentials = proxyUseDefaultCredentials;
-            _handler.UseProxy = proxy != null;
+            if (proxyUseDefaultCredentials)
+            {
+                _webProxy.Credentials = null;
+                _webProxy.UseDefaultCredentials = true;
+            }
+            else
+            {
+                _webProxy.UseDefaultCredentials = false;
+                _webProxy.Credentials = proxyCredential ?.GetNetworkCredential();
+            }
         }
 
         /// <summary>Called to dispatch events to the common module listener</summary>

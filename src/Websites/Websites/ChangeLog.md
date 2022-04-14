@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated 'New-AzWebAppContainerPSSession' with CmdletDeprecation Attribute [#16646]
+* Updated `Restore-AzDeletedWebApp` to fix issue that prevents the cmdlet from working on hosts with a locale is anything different from `en-US`
+
+## Version 2.11.0
+* Fixed `Set-AzWebAppSlot` to support MinTlsVersion version update [#17663]
+* Fixed `Set-AzAppServicePlan` to keep existing Tags when adding new Tags 
 * Fixed `Set-AzWebApp`,`Set-AzWebAppSlot`, `Get-AzWebApp` and `Get-AzWebAppSlot` to expose `VnetRouteAllEnabled` property in `SiteConfig` [#15663]
 * Fixed `Set-AzWebApp`, `Set-AzWebAppSlot`, `Get-AzWebApp` and `Get-AzWebAppSlot` to expose `HealthCheckPath` property in `SiteConfig` [#16325]
 * Fixed DateTime conversion issue caused by culture [#17253]

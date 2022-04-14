@@ -44,7 +44,7 @@ Restore/Revert a volume to the snapshot specified in the SnapshotId paramter
 
 ### Example 1
 ```powershell
-Restore-AzNetAppFilesVolume -ResourceGroupName "MyRG" -Location "westus2" -AccountName "MyAccount" -PoolName "MyPool" -VolumeName "MyVolume" -SnapshotId 7d6e4069-6c78-6c61-7bf6-c60968e45fbf
+Restore-AzNetAppFilesVolume -ResourceGroupName "MyRG" -AccountName "MyAccount" -PoolName "MyPool" -VolumeName "MyVolume" -SnapshotId "7d6e4069-6c78-6c61-7bf6-c60968e45fbf"
 ```
 
 This command Restores/Reverts the volume MyVolume to one of its snapshots with the snapshotId of 7d6e4069-6c78-6c61-7bf6-c60968e45fbf

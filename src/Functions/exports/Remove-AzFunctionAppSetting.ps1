@@ -20,7 +20,7 @@ Removes app settings from a function app.
 .Description
 Removes app settings from a function app.
 .Example
-PS C:\> Remove-AzFunctionAppSetting -Name MyAppName -ResourceGroupName MyResourceGroupName -AppSettingName "MyAppSetting1", "MyAppSetting2"
+Remove-AzFunctionAppSetting -Name MyAppName -ResourceGroupName MyResourceGroupName -AppSettingName "MyAppSetting1", "MyAppSetting2"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite

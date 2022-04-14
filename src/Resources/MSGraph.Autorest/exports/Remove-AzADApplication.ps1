@@ -20,9 +20,9 @@ Deletes entity from applications
 .Description
 Deletes entity from applications
 .Example
-PS C:\> Remove-AzADApplication -DisplayName $name
+Remove-AzADApplication -DisplayName $name
 .Example
-PS C:\> Get-AzADApplication -ObjectId $id | Remove-AzADApplication
+Get-AzADApplication -ObjectId $id | Remove-AzADApplication
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication

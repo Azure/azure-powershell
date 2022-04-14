@@ -31,7 +31,7 @@ The **Get-AzNetAppFilesActiveDirectory** cmdlet gets details of an ANF accounts 
 
 ### Example 1
 ```powershell
-Get-AzNetAppFilesActiveDirectory -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -Name "MyADConfigName"
+Get-AzNetAppFilesActiveDirectory -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -ActiveDirectoryId "MyADConfigName"
 ```
 
 This command gets the AD configuration named MyADConfigName for the Azure NetApp Files (ANF) account named MyAnfAccount.
