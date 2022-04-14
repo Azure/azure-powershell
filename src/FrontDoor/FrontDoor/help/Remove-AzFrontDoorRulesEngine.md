@@ -37,7 +37,10 @@ Remove Rules Engine from Front Door
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzFrontDoorRulesEngine -ResourceGroupName $resourceGroupName -FrontDoorName $frontDoorName -Name $rulesEngine.Name -PassThru
+Remove-AzFrontDoorRulesEngine -ResourceGroupName $resourceGroupName -FrontDoorName $frontDoorName -Name $rulesEngine.Name -PassThru
+```
+
+```output
 True
 ```
 
@@ -45,7 +48,10 @@ Remove rules engine configuration.
 
 ### Example 2
 ```powershell
-PS C:> Remove-AzFrontDoorRulesEngine -ResourceGroupName $resourceGroupName -FrontDoorName $frontDoorName -Name nonexistentRulesEngine
+Remove-AzFrontDoorRulesEngine -ResourceGroupName $resourceGroupName -FrontDoorName $frontDoorName -Name nonexistentRulesEngine
+```
+
+```output
 Remove-AzFrontDoorRulesEngine : Rules Engine with name 'nonexistentRulesEngine' in Front Door 'frontDoorName' in the resource group 'resourceGroupName' does not exist.
 At line:1 char:1
 + Remove-AzFrontDoorRulesEngine -ResourceGroupName resourceGroupName -Fro ...

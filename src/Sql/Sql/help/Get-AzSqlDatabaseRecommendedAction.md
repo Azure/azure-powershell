@@ -25,8 +25,11 @@ The **Get-AzSqlDatabaseRecommendedAction** cmdlet gets one or more recommended a
 ## EXAMPLES
 
 ### Example 1: List all the recommended actions for an Advisor
+```powershell
+Get-AzSqlDatabaseRecommendedAction -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -DatabaseName "WIRunner" -AdvisorName "CreateIndex"
 ```
-PS C:\>Get-AzSqlDatabaseRecommendedAction -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -DatabaseName "WIRunner" -AdvisorName "CreateIndex"
+
+```output
 DatabaseName               : WIRunner
 ResourceGroupName          : WIRunnersProd
 ServerName                 : wi-runner-australia-east
@@ -120,8 +123,11 @@ ValidSince                 : 4/21/2016 3:24:47 PM
 This command gets a list of all recommended actions of the Advisor named CreateIndex available for the database named wi-runner-australia-east.
 
 ### Example 2: Get a single recommended action for an Advisor
+```powershell
+Get-AzSqlDatabaseRecommendedAction -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -DatabaseName "WIRunner" -AdvisorName "CreateIndex" -RecommendedActionName "IR_[test_schema]_[test_table_0.0361551]_6C7AE8CC9C87E7FD5893"
 ```
-PS C:\>Get-AzSqlDatabaseRecommendedAction -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -DatabaseName "WIRunner" -AdvisorName "CreateIndex" -RecommendedActionName "IR_[test_schema]_[test_table_0.0361551]_6C7AE8CC9C87E7FD5893"
+
+```output
 DatabaseName               : WIRunner
 ResourceGroupName          : WIRunnersProd
 ServerName                 : wi-runner-australia-east

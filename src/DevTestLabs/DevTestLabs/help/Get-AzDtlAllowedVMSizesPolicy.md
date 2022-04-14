@@ -26,8 +26,10 @@ The cmdlet returns the enabled or disabled status of the policy and a list of al
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzDtlAllowedVMSizesPolicy -LabName debtestlab -ResourceGroupName yuzhi-rg
+Get-AzDtlAllowedVMSizesPolicy -LabName debtestlab -ResourceGroupName yuzhi-rg
+```
 
+```output
 Name               : AllowedVmSizesInLab
 Type               : Microsoft.DevTestLab/labs/policySets/policies
 Tags               : 

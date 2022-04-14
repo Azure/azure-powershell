@@ -42,7 +42,7 @@ You can modify the returned object locally and then apply the changes to the ste
 
 ### Example 1
 ```powershell
-PS C:\> New-AzDeploymentManagerStep -ResourceGroupName ContosoResourceGroup -Name ContosoService1WaitStep -Location "Central US" -Duration PT20M
+New-AzDeploymentManagerStep -ResourceGroupName ContosoResourceGroup -Name ContosoService1WaitStep -Location "Central US" -Duration PT20M
 ```
 
 Creates a step in the ContosoResourceGroup with the name ContosoService1WaitStep with Central US as the location of the resource. The Duration property provides the duration the rollout will wait before running the next step.

@@ -35,10 +35,10 @@ function GetResourceNames()
 {
 	return @{ `
 		"Location"          = "Australia East"
-		"ResourceGroupName" = "WIRunnersProd"; `
-		"ServerName"        = "wi-runner-australia-east"; `
-		"DatabaseName"      = "WIRunner"; `
-		"ElasticPoolName"   = "WIRunnerPool"; `
+		"ResourceGroupName" = "WiPowershellTestRg"; `
+		"ServerName"        = "wipowershelltestserver"; `
+		"DatabaseName"      = "WiPowershellTestDb"; `
+		"ElasticPoolName"   = "WiPowershellTestEp"; `
 	}
 }
 
@@ -54,7 +54,7 @@ function Test-ListServerRecommendedActions
 		-ServerName $names["ServerName"] `
 		-AdvisorName CreateIndex
 	Assert-NotNull $response
-	Assert-AreEqual $response.Count 2
+	Assert-AreEqual $response.Count 3
 }
 
 <#
@@ -64,14 +64,18 @@ function Test-ListServerRecommendedActions
 function Test-GetServerRecommendedAction
 {
 	$names = GetResourceNames
+	$responseList = Get-AzSqlServerRecommendedAction `
+		-ResourceGroupName $names["ResourceGroupName"] `
+		-ServerName $names["ServerName"] `
+		-AdvisorName CreateIndex | Where-Object {$_.State.currentValue -eq "Active"}
 	$response = Get-AzSqlServerRecommendedAction `
 		-ResourceGroupName $names["ResourceGroupName"] `
 		-ServerName $names["ServerName"] `
 		-AdvisorName CreateIndex `
-		-RecommendedActionName IR_[test_schema]_[test_table_0.0361551]_6C7AE8CC9C87E7FD5893
+		-RecommendedActionName $responseList[0].RecommendedActionName
 	Assert-NotNull $response
 	ValidateServer $response
-	ValidateRecommendedActionProperties $response
+	ValidateRecommendedActionProperties $response $responseList[0] 'Active'
 }
 
 <#
@@ -81,15 +85,36 @@ function Test-GetServerRecommendedAction
 function Test-UpdateServerRecommendedAction
 {
 	$names = GetResourceNames
-	$response = Set-AzSqlServerRecommendedActionState `
+	$responseList = Get-AzSqlServerRecommendedAction `
 		-ResourceGroupName $names["ResourceGroupName"] `
 		-ServerName $names["ServerName"] `
-		-AdvisorName CreateIndex `
-		-RecommendedActionName IR_[test_schema]_[test_table_0.0361551]_6C7AE8CC9C87E7FD5893 `
-		-State Pending
-	Assert-NotNull $response
-	ValidateServer $response
-	ValidateRecommendedActionProperties $response 'Pending'
+		-AdvisorName CreateIndex | Where-Object {$_.State.currentValue -eq "Active"}
+	try
+	{
+		$response = Set-AzSqlServerRecommendedActionState `
+			-ResourceGroupName $names["ResourceGroupName"] `
+			-ServerName $names["ServerName"] `
+			-AdvisorName CreateIndex `
+			-RecommendedActionName $responseList[0].RecommendedActionName `
+			-State Pending
+		$response1 = Get-AzSqlServerRecommendedAction `
+			-ResourceGroupName $names["ResourceGroupName"] `
+			-ServerName $names["ServerName"] `
+			-AdvisorName CreateIndex `
+			-RecommendedActionName $responseList[0].RecommendedActionName
+		Assert-NotNull $response
+		ValidateDatabase $response
+		ValidateRecommendedActionProperties $response $response1 'Pending'
+	}
+	finally
+	{
+		Set-AzSqlServerRecommendedActionState `
+			-ResourceGroupName $names["ResourceGroupName"] `
+			-ServerName $names["ServerName"] `
+			-AdvisorName CreateIndex `
+			-RecommendedActionName $responseList[0].RecommendedActionName `
+			-State Active
+	}
 }
 
 <#
@@ -105,7 +130,7 @@ function Test-ListDatabaseRecommendedActions
 		-DatabaseName $names["DatabaseName"] `
 		-AdvisorName CreateIndex
 	Assert-NotNull $response
-	Assert-AreEqual $response.Count 2
+	Assert-AreEqual $response.Count 3
 }
 
 <#
@@ -115,15 +140,20 @@ function Test-ListDatabaseRecommendedActions
 function Test-GetDatabaseRecommendedAction
 {
 	$names = GetResourceNames
+	$responseList = Get-AzSqlDatabaseRecommendedAction `
+		-ResourceGroupName $names["ResourceGroupName"] `
+		-ServerName $names["ServerName"] `
+		-DatabaseName $names["DatabaseName"] `
+		-AdvisorName CreateIndex | Where-Object {$_.State.currentValue -eq "Active"}
 	$response = Get-AzSqlDatabaseRecommendedAction `
 		-ResourceGroupName $names["ResourceGroupName"] `
 		-ServerName $names["ServerName"] `
 		-DatabaseName $names["DatabaseName"] `
 		-AdvisorName CreateIndex `
-		-RecommendedActionName IR_[test_schema]_[test_table_0.0361551]_6C7AE8CC9C87E7FD5893
+		-RecommendedActionName $responseList[0].RecommendedActionName
 	Assert-NotNull $response
 	ValidateDatabase $response
-	ValidateRecommendedActionProperties $response
+	ValidateRecommendedActionProperties $response $responseList[0] 'Active'
 }
 
 <#
@@ -133,16 +163,40 @@ function Test-GetDatabaseRecommendedAction
 function Test-UpdateDatabaseRecommendedAction
 {
 	$names = GetResourceNames
-	$response = Set-AzSqlDatabaseRecommendedActionState `
+	$responseList = Get-AzSqlDatabaseRecommendedAction `
 		-ResourceGroupName $names["ResourceGroupName"] `
 		-ServerName $names["ServerName"] `
 		-DatabaseName $names["DatabaseName"] `
-		-AdvisorName CreateIndex `
-		-RecommendedActionName IR_[test_schema]_[test_table_0.0361551]_6C7AE8CC9C87E7FD5893 `
-		-State Pending
-	Assert-NotNull $response
-	ValidateDatabase $response
-	ValidateRecommendedActionProperties $response 'Pending'
+		-AdvisorName CreateIndex | Where-Object {$_.State.currentValue -eq "Active"}
+	try
+	{
+		$response = Set-AzSqlDatabaseRecommendedActionState `
+			-ResourceGroupName $names["ResourceGroupName"] `
+			-ServerName $names["ServerName"] `
+			-DatabaseName $names["DatabaseName"] `
+			-AdvisorName CreateIndex `
+			-RecommendedActionName $responseList[0].RecommendedActionName `
+			-State Pending
+		$response1 = Get-AzSqlDatabaseRecommendedAction `
+			-ResourceGroupName $names["ResourceGroupName"] `
+			-ServerName $names["ServerName"] `
+			-DatabaseName $names["DatabaseName"] `
+			-AdvisorName CreateIndex `
+			-RecommendedActionName $responseList[0].RecommendedActionName
+		Assert-NotNull $response
+		ValidateDatabase $response
+		ValidateRecommendedActionProperties $response $response1 'Pending'
+	}
+	finally
+	{
+		Set-AzSqlDatabaseRecommendedActionState `
+			-ResourceGroupName $names["ResourceGroupName"] `
+			-ServerName $names["ServerName"] `
+			-DatabaseName $names["DatabaseName"] `
+			-AdvisorName CreateIndex `
+			-RecommendedActionName $responseList[0].RecommendedActionName `
+			-State Active
+	}
 }
 <#
 	.SYNOPSIS
@@ -157,7 +211,7 @@ function Test-ListElasticPoolRecommendedActions
 		-ElasticPoolName $names["ElasticPoolName"] `
 		-AdvisorName CreateIndex
 	Assert-NotNull $response
-	Assert-AreEqual $response.Count 2
+	Assert-AreEqual $response.Count 3
 }
 
 <#
@@ -167,15 +221,20 @@ function Test-ListElasticPoolRecommendedActions
 function Test-GetElasticPoolRecommendedAction
 {
 	$names = GetResourceNames
+	$responseList = Get-AzSqlElasticPoolRecommendedAction `
+		-ResourceGroupName $names["ResourceGroupName"] `
+		-ServerName $names["ServerName"] `
+		-ElasticPoolName $names["ElasticPoolName"] `
+		-AdvisorName CreateIndex | Where-Object {$_.State.currentValue -eq "Active"}
 	$response = Get-AzSqlElasticPoolRecommendedAction `
 		-ResourceGroupName $names["ResourceGroupName"] `
 		-ServerName $names["ServerName"] `
 		-ElasticPoolName $names["ElasticPoolName"] `
 		-AdvisorName CreateIndex `
-		-RecommendedActionName IR_[test_schema]_[test_table_0.0361551]_6C7AE8CC9C87E7FD5893
+		-RecommendedActionName $responseList[0].RecommendedActionName
 	Assert-NotNull $response
 	ValidateElasticPool $response
-	ValidateRecommendedActionProperties $response
+	ValidateRecommendedActionProperties $response $responseList[0] 'Active'
 }
 
 <#
@@ -185,16 +244,40 @@ function Test-GetElasticPoolRecommendedAction
 function Test-UpdateElasticPoolRecommendedAction
 {
 	$names = GetResourceNames
-	$response = Set-AzSqlElasticPoolRecommendedActionState `
+	$responseList = Get-AzSqlElasticPoolRecommendedAction `
 		-ResourceGroupName $names["ResourceGroupName"] `
-		-ServerName wi-runner-australia-east `
+		-ServerName $names["ServerName"] `
 		-ElasticPoolName $names["ElasticPoolName"] `
-		-AdvisorName CreateIndex `
-		-RecommendedActionName IR_[test_schema]_[test_table_0.0361551]_6C7AE8CC9C87E7FD5893 `
-		-State Pending
-	Assert-NotNull $response
-	ValidateElasticPool $response
-	ValidateRecommendedActionProperties $response 'Pending'
+		-AdvisorName CreateIndex | Where-Object {$_.State.currentValue -eq "Active"}
+	try
+	{
+		$response = Set-AzSqlElasticPoolRecommendedActionState `
+			-ResourceGroupName $names["ResourceGroupName"] `
+			-ServerName $names["ServerName"] `
+			-ElasticPoolName $names["ElasticPoolName"] `
+			-AdvisorName CreateIndex `
+			-RecommendedActionName $responseList[0].RecommendedActionName `
+			-State Pending
+		$response1 = Get-AzSqlElasticPoolRecommendedAction `
+			-ResourceGroupName $names["ResourceGroupName"] `
+			-ServerName $names["ServerName"] `
+			-ElasticPoolName $names["ElasticPoolName"] `
+			-AdvisorName CreateIndex `
+			-RecommendedActionName $responseList[0].RecommendedActionName
+		Assert-NotNull $response
+		ValidateElasticPool $response
+		ValidateRecommendedActionProperties $response $response1 'Pending'
+	}
+	finally
+	{
+		$response = Set-AzSqlElasticPoolRecommendedActionState `
+			-ResourceGroupName $names["ResourceGroupName"] `
+			-ServerName $names["ServerName"] `
+			-ElasticPoolName $names["ElasticPoolName"] `
+			-AdvisorName CreateIndex `
+			-RecommendedActionName $responseList[0].RecommendedActionName `
+			-State Active
+	}
 }
 
 <#
@@ -232,33 +315,33 @@ function ValidateElasticPool($recommendedAction)
 	.SYNOPSIS
 	Validates properties in RecommendedAction response
 #>
-function ValidateRecommendedActionProperties($recommendedAction, $expectedState = "Success")
+function ValidateRecommendedActionProperties($recommendedAction, $expectedAction, $expectedState = "Success")
 {
-	Assert-AreEqual $recommendedAction.RecommendedActionName "IR_[test_schema]_[test_table_0.0361551]_6C7AE8CC9C87E7FD5893"
-	Assert-AreEqual $recommendedAction.ExecuteActionDuration "PT1M"
-	Assert-AreEqual $recommendedAction.ExecuteActionInitiatedBy "User"
-	Assert-AreEqual $recommendedAction.ExecuteActionInitiatedTime "4/21/2016 3:24:47 PM"
-	Assert-AreEqual $recommendedAction.ExecuteActionStartTime "4/21/2016 3:24:47 PM"
-	Assert-AreEqual $recommendedAction.IsArchivedAction $false
-	Assert-AreEqual $recommendedAction.IsExecutableAction $true
-	Assert-AreEqual $recommendedAction.IsRevertableAction $true
-	Assert-AreEqual $recommendedAction.LastRefresh "4/21/2016 3:24:47 PM"
-	Assert-AreEqual $recommendedAction.RecommendationReason ""
-	Assert-Null $recommendedAction.RevertActionDuration
+	Assert-AreEqual $recommendedAction.RecommendedActionName $expectedAction.RecommendedActionName
+	Assert-AreEqual $recommendedAction.ExecuteActionDuration $expectedAction.ExecuteActionDuration
+	Assert-AreEqual $recommendedAction.ExecuteActionInitiatedBy $expectedAction.ExecuteActionInitiatedBy
+	Assert-AreEqual $recommendedAction.ExecuteActionInitiatedTime $expectedAction.ExecuteActionInitiatedTime
+	Assert-AreEqual $recommendedAction.ExecuteActionStartTime $expectedAction.ExecuteActionStartTime
+	Assert-AreEqual $recommendedAction.IsArchivedAction $expectedAction.IsArchivedAction
+	Assert-AreEqual $recommendedAction.IsExecutableAction $expectedAction.IsExecutableAction
+	Assert-AreEqual $recommendedAction.IsRevertableAction $expectedAction.IsRevertableAction
+	Assert-AreEqual $recommendedAction.LastRefresh $expectedAction.LastRefresh
+	Assert-AreEqual $recommendedAction.RecommendationReason $expectedAction.RecommendationReason
+	Assert-Null $recommendedAction.RevertActionDuration 
 	Assert-Null $recommendedAction.RevertActionInitiatedBy
 	Assert-Null $recommendedAction.RevertActionInitiatedTime
 	Assert-Null $recommendedAction.RevertActionStartTime
-	Assert-AreEqual $recommendedAction.Score 2
-	Assert-AreEqual $recommendedAction.ValidSince "4/21/2016 3:24:47 PM"
+	Assert-AreEqual $recommendedAction.Score $expectedAction.Score
+	Assert-AreEqual $recommendedAction.ValidSince $expectedAction.ValidSince
 	
 	ValidateRecommendedActionState $recommendedAction.State $expectedState
-	ValidateRecommendedActionImplInfo $recommendedAction.ImplementationDetails
+	ValidateRecommendedActionImplInfo $recommendedAction.ImplementationDetails $expectedAction.ImplementationDetails
 	Assert-Null $recommendedAction.ErrorDetails.ErrorCode
-	Assert-AreEqual $recommendedAction.EstimatedImpact.Count 2
-	Assert-AreEqual $recommendedAction.ObservedImpact.Count 1
-	Assert-AreEqual $recommendedAction.TimeSeries.Count 0
-	Assert-AreEqual $recommendedAction.LinkedObjects.Count 0
-	ValidateRecommendedActionDetails $recommendedAction.Details
+	Assert-AreEqual $recommendedAction.EstimatedImpact.Count $expectedAction.EstimatedImpact.Count
+	Assert-AreEqual $recommendedAction.ObservedImpact.Count $expectedAction.ObservedImpact.Count
+	Assert-AreEqual $recommendedAction.TimeSeries.Count $expectedAction.TimeSeries.Count
+	Assert-AreEqual $recommendedAction.LinkedObjects.Count $expectedAction.LinkedObjects.Count
+	ValidateRecommendedActionDetails $recommendedAction.Details $expectedAction.Details
 }
 
 <#
@@ -267,36 +350,31 @@ function ValidateRecommendedActionProperties($recommendedAction, $expectedState 
 #>
 function ValidateRecommendedActionState($state, $expectedState)
 {
-	Assert-AreEqual $state.ActionInitiatedBy "User"
 	Assert-AreEqual $state.CurrentValue $expectedState
-	Assert-AreEqual $state.LastModified "4/21/2016 3:24:47 PM"
 }
 
 <#
 	.SYNOPSIS
 	Validates implementation info in RecommendedAction response
 #>
-function ValidateRecommendedActionImplInfo($implInfo)
+function ValidateRecommendedActionImplInfo($implInfo, $expectedInfo)
 {
-	Assert-AreEqual $implInfo.Method "TSql"
-	Assert-AreEqual $implInfo.Script "CREATE NONCLUSTERED INDEX [nci_wi_test_table_0.0361551_6C7AE8CC9C87E7FD5893] ON [test_schema].[test_table_0.0361551] ([index_1],[index_2],[index_3]) INCLUDE ([included_1]) WITH (ONLINE = ON)"
+	Assert-AreEqual $implInfo.Method $expectedInfo.Method
+	Assert-AreEqual $implInfo.Script $expectedInfo.Script
 }
 
 <#
 	.SYNOPSIS
 	Validates implementation info in RecommendedAction response
 #>
-function ValidateRecommendedActionDetails($details)
+function ValidateRecommendedActionDetails($details, $expectedDetails)
 {
-	Assert-AreEqual $details.Item("indexName") "nci_wi_test_table_0.0361551_6C7AE8CC9C87E7FD5893"
-	Assert-AreEqual $details.Item("indexType") "NONCLUSTERED"
-	Assert-AreEqual $details.Item("schema") "[test_schema]"
-	Assert-AreEqual $details.Item("table") "[test_table_0.0361551]"
-	Assert-AreEqual $details.Item("indexColumns") "[index_1],[index_2],[index_3]"
-	Assert-AreEqual $details.Item("benefit") "2"
-	Assert-AreEqual $details.Item("includedColumns") "[included_1]"
-	Assert-AreEqual $details.Item("indexActionStartTime") "04/21/2016 15:24:47"
-	Assert-AreEqual $details.Item("indexActionDuration") "00:01:00"
+	Assert-AreEqual $details.Item("indexName") $expectedDetails.Item("indexName")
+	Assert-AreEqual $details.Item("indexType") $expectedDetails.Item("indexType")
+	Assert-AreEqual $details.Item("schema") $expectedDetails.Item("schema")
+	Assert-AreEqual $details.Item("table") $expectedDetails.Item("table")
+	Assert-AreEqual $details.Item("indexColumns") $expectedDetails.Item("indexColumns")
+	Assert-AreEqual $details.Item("includedColumns") $expectedDetails.Item("includedColumns")
 }
 
 <#

@@ -25,8 +25,11 @@ To use this cmdlet, specify the *ResourceGroupName* and *ServerName* parameters 
 ## EXAMPLES
 
 ### Example 1: Get the advanced threat protection settings for a server
+```powershell
+Get-AzSqlServerAdvancedThreatProtectionSetting -ResourceGroupName "ResourceGroup11" -ServerName "Server01"
 ```
-PS C:\>Get-AzSqlServerAdvancedThreatProtectionSetting -ResourceGroupName "ResourceGroup11" -ServerName "Server01"
+
+```output
 ResourceGroupName            : ResourceGroup11
 ServerName                   : Server01
 ThreatDetectionState         : Enabled

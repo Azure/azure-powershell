@@ -191,6 +191,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 2,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
+        [Alias("GalleryImageName")]
         public string GalleryImageDefinitionName { get; set; }
 
         [Alias("GalleryImageVersionName")]
@@ -413,6 +414,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 2,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
+        [Alias("GalleryImageName")]
         public string GalleryImageDefinitionName { get; set; }
 
         [Alias("GalleryImageVersionName")]

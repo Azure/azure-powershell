@@ -38,30 +38,30 @@ This cmdlet updates the state of an Azure key vault.
 
 ## EXAMPLES
 
-### Example 1： Enable purge protection
+### Example 1: Enable purge protection
 ```powershell
-PS C:\> Get-AzKeyVault -VaultName $keyVaultName -ResourceGroupName $resourceGroupName | Update-AzKeyVault -EnablePurgeProtection
+Get-AzKeyVault -VaultName $keyVaultName -ResourceGroupName $resourceGroupName | Update-AzKeyVault -EnablePurgeProtection
 ```
 
 Enables purge protection using piping syntax.
 
-### Example 2： Enable RBAC Authorization
+### Example 2: Enable RBAC Authorization
 ```powershell
-PS C:\> Get-AzKeyVault -VaultName $keyVaultName -ResourceGroupName $resourceGroupName | Update-AzKeyVault -EnableRbacAuthorization $true
+Get-AzKeyVault -VaultName $keyVaultName -ResourceGroupName $resourceGroupName | Update-AzKeyVault -EnableRbacAuthorization $true
 ```
 
 Enables RBAC Authorization using piping syntax.
 
-### Example 3： Set tags
+### Example 3: Set tags
 ```powershell
-PS C:\> Get-AzKeyVault -VaultName $keyVaultName | Update-AzKeyVault -Tags @{key = "value"}
+Get-AzKeyVault -VaultName $keyVaultName | Update-AzKeyVault -Tags @{key = "value"}
 ```
 
 Sets the tags of a key vault named $keyVaultName.
 
-### Example 4： Clean tags
+### Example 4: Clean tags
 ```powershell
-PS C:\> Get-AzKeyVault -VaultName $keyVaultName | Update-AzKeyVault -Tags @{}
+Get-AzKeyVault -VaultName $keyVaultName | Update-AzKeyVault -Tags @{}
 ```
 
 Deletes all tags of a key vault named $keyVaultName.

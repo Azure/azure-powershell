@@ -20,9 +20,7 @@ Create a in-memory object for EnvironmentVariable
 .Description
 Create a in-memory object for EnvironmentVariable
 .Example
-PS C:\> {{ Add code here }}
-
-New-AzContainerInstanceEnvironmentVariableObject -Name "env1" -Value "value1"
+PS C:\> New-AzContainerInstanceEnvironmentVariableObject -Name "env1" -Value "value1"
 
 Name SecureValue Value
 ---- ----------- -----

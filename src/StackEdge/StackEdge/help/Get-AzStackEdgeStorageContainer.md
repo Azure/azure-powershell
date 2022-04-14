@@ -44,7 +44,10 @@ The **Get-AzStackEdgeStorageContainer** cmdlet gets the storage container for an
 
 ### Example 1
 ```powershell
-PS C:\>  Get-AzStackEdgeStorageContainer -ResourceGroupName resourceGroupName -DeviceName db-edge -EdgeStorageAccountName edgestorageaccount1 -Name container1
+Get-AzStackEdgeStorageContainer -ResourceGroupName resourceGroupName -DeviceName db-edge -EdgeStorageAccountName edgestorageaccount1 -Name container1
+```
+
+```output
 Name       DataFormat Status EdgeStorageAccountName DeviceName ResourceGroupName
 ----       ---------- ------ ---------------------- ---------- -----------------
 container1 BlockBlob  Ok     edgestorageaccount1    db-edge    resourceGroupName
@@ -52,7 +55,10 @@ container1 BlockBlob  Ok     edgestorageaccount1    db-edge    resourceGroupName
 
 ### Example 2
 ```powershell
-PS C:\>  Get-AzStackEdgeStorageContainer -ResourceGroupName resourceGroupName -DeviceName db-edge -EdgeStorageAccountName edgestorageaccount1
+Get-AzStackEdgeStorageContainer -ResourceGroupName resourceGroupName -DeviceName db-edge -EdgeStorageAccountName edgestorageaccount1
+```
+
+```output
 Name       DataFormat Status EdgeStorageAccountName DeviceName ResourceGroupName
 ----       ---------- ------ ---------------------- ---------- -----------------
 container1 BlockBlob  Ok     edgestorageaccount1    db-edge    resourceGroupName
@@ -61,7 +67,10 @@ container2 BlockBlob  Ok     edgestorageaccount1    db-edge    resourceGroupName
 
 ### Example 3
 ```powershell
-PS C:\>  Get-AzStackEdgeDevice -ResourceGroupName resourceGroupName -DeviceName db-edge | Get-AzStackEdgeStorageAccount | Get-AzStackEdgeStorageContainer
+Get-AzStackEdgeDevice -ResourceGroupName resourceGroupName -DeviceName db-edge | Get-AzStackEdgeStorageAccount | Get-AzStackEdgeStorageContainer
+```
+
+```output
 Name       DataFormat Status EdgeStorageAccountName DeviceName ResourceGroupName
 ----       ---------- ------ ---------------------- ---------- -----------------
 container1 BlockBlob  Ok     edgestorageaccount1    db-edge    resourceGroupName

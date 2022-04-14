@@ -31,9 +31,11 @@ The **Revoke-AzDataShareSubscriptionAccess** cmdlet grants a share subscription 
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Revoke-AzDataShareSubscriptionAccess -ResourceGroupName "ADS" -AccountName "WikiAdsAccount" -ShareName "AdsShare" -ShareSubscriptionId 8ee6e6fd-b4a1-49a4-bb66-f187f38e0e12
 ```
-PS C:\> Revoke-AzDataShareSubscriptionAccess -ResourceGroupName "ADS" -AccountName "WikiAdsAccount" -ShareName "AdsShare" -ShareSubscriptionId 8ee6e6fd-b4a1-49a4-bb66-f187f38e0e12
 
+```output
 Company                   : ADS
 CreatedAt                 : 6/15/2019 1:02:28 AM
 CreatedBy                 : abc@microsoft.com

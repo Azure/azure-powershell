@@ -23,8 +23,8 @@ The **Get-AzCognitiveServicesAccountNetworkRuleSet** cmdlet gets the NetworkRule
 ## EXAMPLES
 
 ### Example 1: Get NetworkRule property of a specified Cognitive Services account
-```
-PS C:\> Get-AzCognitiveServicesAccountNetworkRuleSet  -ResourceGroupName "rg1" -Name "myaccount"
+```powershell
+Get-AzCognitiveServicesAccountNetworkRuleSet  -ResourceGroupName "rg1" -Name "myaccount"
 ```
 
 This command gets NetworkRule property of a specified Cognitive Services account

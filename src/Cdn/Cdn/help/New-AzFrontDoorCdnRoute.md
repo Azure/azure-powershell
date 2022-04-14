@@ -25,7 +25,7 @@ Creates the route.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzFrontDoorCdnRoute -CustomDomainId $customDomainId -EndpointName $endpointName -OriginGroupId $originGroupId -ProfileName $profileName -ResourceGroupName $resourceGroupName -RouteName $routeName
+New-AzFrontDoorCdnRoute -CustomDomainId $customDomainId -EndpointName $endpointName -OriginGroupId $originGroupId -ProfileName $profileName -ResourceGroupName $resourceGroupName -RouteName $routeName
 ```
 
 Creates the route.

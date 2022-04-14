@@ -49,16 +49,16 @@ The **Remove-AzPolicyDefinition** cmdlet removes a policy definition.
 ## EXAMPLES
 
 ### Example 1: Remove the policy definition by name
-```
-PS C:\> Remove-AzPolicyDefinition -Name 'VMPolicyDefinition'
+```powershell
+Remove-AzPolicyDefinition -Name 'VMPolicyDefinition'
 ```
 
 This command removes the specified policy definition.
 
 ### Example 2: Remove policy definition by resource ID
-```
-PS C:\> $PolicyDefinition = Get-AzPolicyDefinition -Name 'VMPolicyDefinition' 
-PS C:\> Remove-AzPolicyDefinition -Id $PolicyDefinition.ResourceId -Force
+```powershell
+$PolicyDefinition = Get-AzPolicyDefinition -Name 'VMPolicyDefinition' 
+Remove-AzPolicyDefinition -Id $PolicyDefinition.ResourceId -Force
 ```
 
 The first command gets a policy definition named VMPolicyDefinition by using the Get-AzPolicyDefinition cmdlet.

@@ -19,6 +19,13 @@
 -->
 ## Upcoming Release
 
+## Version 0.4.0
+* Substitute cmdlets:
+  - `Get-AzActionRule` with `Get-AzAlertProcessingRule`
+  - `Set-AzActionRule` with `Set-AzAlertProcessingRule`
+  - `Update-AzActionRule` with `Update-AzAlertProcessingRule`
+  - `Remove-AzActionRule` with `Remove-AzAlertProcessingRule`
+
 ## Version 0.3.0
 * Fixed bug for `Set-AzActionRule` when RecurrenceType is "Once" and no "ReccurentValue" provided [#14476]
 

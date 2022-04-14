@@ -26,9 +26,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Support
         /// </returns>
         public global::System.Collections.Generic.IEnumerable<global::System.Management.Automation.CompletionResult> CompleteArgument(global::System.String commandName, global::System.String parameterName, global::System.String wordToComplete, global::System.Management.Automation.Language.CommandAst commandAst, global::System.Collections.IDictionary fakeBoundParameters)
         {
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "SUCCESS, FAILURE".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "SUCCESS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("'SUCCESS, FAILURE'", "SUCCESS, FAILURE", global::System.Management.Automation.CompletionResultType.ParameterValue, "SUCCESS, FAILURE");
+                yield return new global::System.Management.Automation.CompletionResult("'SUCCESS'", "SUCCESS", global::System.Management.Automation.CompletionResultType.ParameterValue, "SUCCESS");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "FAILURE".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'FAILURE'", "FAILURE", global::System.Management.Automation.CompletionResultType.ParameterValue, "FAILURE");
             }
         }
     }

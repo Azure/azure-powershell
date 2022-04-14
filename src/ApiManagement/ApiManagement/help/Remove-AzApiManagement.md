@@ -24,8 +24,8 @@ The **Remove-AzApiManagement** cmdlet removes an Azure API Management service.
 ## EXAMPLES
 
 ### Example 1: Remove an API Management service
-```
-PS C:\>Remove-AzApiManagement -ResourceGroupName "ContosoGroup02" -Name "ContosoApi"
+```powershell
+Remove-AzApiManagement -ResourceGroupName "ContosoGroup02" -Name "ContosoApi"
 ```
 
 This command removes the API Management service named ContosoApi.

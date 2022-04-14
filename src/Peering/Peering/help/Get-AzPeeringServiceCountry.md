@@ -23,7 +23,7 @@ Lists the countries available for peering service.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzPeeringServiceCountry
+Get-AzPeeringServiceCountry
 ```
 
 List of countries available for peering service.

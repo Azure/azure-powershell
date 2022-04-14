@@ -20,27 +20,9 @@ Gets information about a configuration of server.
 .Description
 Gets information about a configuration of server.
 .Example
-PS C:\> Get-AzPostgreSqlFlexibleServerConfiguration -Name work_mem -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test
-
-Name     Value AllowedValue Source         DefaultValue
-----     ----- ------------ ------         ------------
-work_mem 4096  4096-2097151 system-default 4096
+Get-AzPostgreSqlFlexibleServerConfiguration -Name work_mem -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test
 .Example
-PS C:\> Get-AzPostgreSqlFlexibleServerConfiguration -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test
-
-Name                                       Value                      AllowedValue
-----                                       -----                      ------------
-application_name                                                      [A-Za-z0-9._-]*
-array_nulls                                on                         on,off
-autovacuum                                 on                         on,off
-autovacuum_analyze_scale_factor            0.1                        0-100
-...
-work_mem                                   4096                       4096-2097151
-xmlbinary                                  base64                     base64,hex
-xmloption                                  content                    content,document
-intelligent_tuning                         off                        on,off
-require_secure_transport                   on                         on,off
-pgbouncer.enabled                          false                      true, false
+Get-AzPostgreSqlFlexibleServerConfiguration -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity

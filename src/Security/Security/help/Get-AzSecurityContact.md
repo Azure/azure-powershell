@@ -35,7 +35,10 @@ The security contact can get notifications on security alerts that happen on the
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSecurityContact
+Get-AzSecurityContact
+```
+
+```output
 Id                 : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/securityContacts/default1
 Name               : default1
 Email              : ascasc@microsoft.com

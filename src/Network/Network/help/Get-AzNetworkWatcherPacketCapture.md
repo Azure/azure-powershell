@@ -36,7 +36,7 @@ The Get-AzNetworkWatcherPacketCapture gets the properties and status of a packet
 ## EXAMPLES
 
 ### Example 1: Create a Packet Capture with multiple filters and retrieve its status
-```
+```powershell
 $nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
 $networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName 
 
@@ -57,7 +57,7 @@ Note: The Azure Network Watcher extension must be installed on the target virtua
 >If you create a reference to the packet capture directly from the New-AzNetworkWatcherPacketCapture command, it won't have all the properties. You can get all of the properties of the packet capture by making a call to the Get-AzNetworkWatcherPacketCapture command.
 
 ### Example 2: Create a Packet Capture with multiple filters and retrieve its status
-```
+```powershell
 Get-AzNetworkWatcherPacketCapture -ResourceGroupName rg1 -NetworkWatcherName nw1 -PacketCaptureName PacketCapture*
 ```
 

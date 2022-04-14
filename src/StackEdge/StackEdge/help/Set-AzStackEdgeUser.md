@@ -38,8 +38,7 @@ The **Set-AzStackEdgeUser** cmdlet sets a new password for a user on the Stack E
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzStackEdgeUser -ResourceGroupName resourceGroupName -DeviceName deviceName -Name username
- -Password @SecureString -EncryptionKey @SecureString
+Set-AzStackEdgeUser -ResourceGroupName resourceGroupName -DeviceName deviceName -Name username -Password @SecureString -EncryptionKey @SecureString
 ```
 
 ## PARAMETERS

@@ -49,8 +49,10 @@ The Get-AzContainerRegistryReplication cmdlet gets a specified replication of a 
 
 ### Example 1: Gets a specified replication of a container registry
 ```powershell
-PS C:\>Get-AzContainerRegistryReplication -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry" -Name "myreplication"
+Get-AzContainerRegistryReplication -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry" -Name "myreplication"
+```
 
+```output
 Name                 Location   Provisioni Status               StatusTimestamp                Tags
                                 ngState
 ----                 --------   ---------- ------               ---------------                ----
@@ -61,8 +63,10 @@ Gets a specified replication of a container registry
 
 ### Example 2: Gets all the replications of a container registry
 ```powershell
-PS C:\>Get-AzContainerRegistryReplication -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry"
+Get-AzContainerRegistryReplication -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry"
+```
 
+```output
 Name                 Location   Provisioni Status               StatusTimestamp                Tags
                                 ngState
 ----                 --------   ---------- ------               ---------------                ----

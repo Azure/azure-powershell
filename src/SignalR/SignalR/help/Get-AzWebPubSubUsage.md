@@ -24,8 +24,10 @@ List resource usage quotas by location.
 
 ### Example 1: List Web PubSub usage in east US region.
 ```powershell
-PS C:\> Get-AzWebPubSubUsage -Location eastus | Format-List
+Get-AzWebPubSubUsage -Location eastus | Format-List
+```
 
+```output
 CurrentValue       : 4
 Id                 : /subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/providers/Microsoft.SignalRService/locations/eastus/usages/FreeTierInstances
 Limit              : 5
