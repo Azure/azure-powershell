@@ -73,7 +73,6 @@ function Test-CortexCRUD
 		Assert-AreEqual $rgName $virtualHub.ResourceGroupName
 		Assert-AreEqual $virtualHubName $virtualHub.Name
 		Assert-AreEqual "192.168.1.0/24" $virtualHub.AddressPrefix
-		Assert-AreEqual "ASPath" $virtualHub.HubRoutingPreference
 
 		$virtualHubs = Get-AzVirtualHub -ResourceGroupName $rgName
 		Assert-NotNull $virtualHubs
@@ -99,7 +98,6 @@ function Test-CortexCRUD
 		$virtualHub = Get-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName
 		Assert-AreEqual $rgName $virtualHub.ResourceGroupName
 		Assert-AreEqual $virtualHubName $virtualHub.Name
-		Assert-AreEqual "ExpressRoute" $virtualHub.HubRoutingPreference
 		$routes = $virtualHub.RouteTable.Routes
 		Assert-AreEqual 2 @($routes).Count
 
