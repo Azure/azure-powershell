@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# New-AzSecurityAutomationRuleSet
+# New-AzSecurityAutomationRuleObject
 
 ## SYNOPSIS
 {{ Fill in the Synopsis }}
@@ -13,8 +13,8 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-New-AzSecurityAutomationRuleSet -Rules <PSSecurityAutomationTriggeringRule[]>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzSecurityAutomationRuleObject -PropertyJPath <String> -Operator <String> -ExpectedValue <String>
+ -PropertyType <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,7 +35,7 @@ PS C:\> {{ Add example code here }}
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -46,13 +46,57 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Rules
-A rule which is evaluated upon event interception.
-The rule is configured by comparing a specific value from the event model to an expected value.
-This comparison is done by using one of the supported operators set
+### -ExpectedValue
+The expected value
 
 ```yaml
-Type: Microsoft.Azure.Commands.Security.Models.Automations.PSSecurityAutomationTriggeringRule[]
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Operator
+A valid comparer operator to use.
+A case-insensitive comparison will be applied for String PropertyType
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PropertyJPath
+The JPath of the entity model property that should be checked
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PropertyType
+The data type of the compared operands (string, integer, floating point number or a boolean \[true/false\]\]
+
+```yaml
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -72,7 +116,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Security.Models.Automations.PSSecurityAutomationRuleSet
+### Microsoft.Azure.Commands.Security.Models.Automations.PSSecurityAutomationTriggeringRule
 
 ## NOTES
 

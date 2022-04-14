@@ -17,6 +17,9 @@ Enforces the given rules on the NSG(s) listed in the request
 ### [Add-AzSecuritySqlVulnerabilityAssessmentBaseline](Add-AzSecuritySqlVulnerabilityAssessmentBaseline.md)
 Add SQL vulnerability assessment baseline.
 
+### [Confirm-AzSecurityAutomation](Confirm-AzSecurityAutomation.md)
+{{ Fill in the Synopsis }}
+
 ### [Disable-AzIotSecurityAnalyticsAggregatedAlert](Disable-AzIotSecurityAnalyticsAggregatedAlert.md)
 Dismiss Iot aggregated alert
 
@@ -82,6 +85,9 @@ Gets security assessments and their results on a subscription
 
 ### [Get-AzSecurityAssessmentMetadata](Get-AzSecurityAssessmentMetadata.md)
 Gets security assessments types and metadta in a subscription.
+
+### [Get-AzSecurityAutomation](Get-AzSecurityAutomation.md)
+{{ Fill in the Synopsis }}
 
 ### [Get-AzSecurityAutoProvisioningSetting](Get-AzSecurityAutoProvisioningSetting.md)
 Gets the security automatic provisioning settings
@@ -152,6 +158,9 @@ Create new recommendation configuration for iot security solution
 ### [New-AzIotSecuritySolutionUserDefinedResourcesObject](New-AzIotSecuritySolutionUserDefinedResourcesObject.md)
 Create new user defined resources for iot security solution
 
+### [New-AzSecurityAutomation](New-AzSecurityAutomation.md)
+{{ Fill in the Synopsis }}
+
 ### [Remove-AzDeviceSecurityGroup](Remove-AzDeviceSecurityGroup.md)
 Delete device security group
 
@@ -166,6 +175,9 @@ Deletes a security assessment result from a subscription.
 
 ### [Remove-AzSecurityAssessmentMetadata](Remove-AzSecurityAssessmentMetadata.md)
 Deletes a security assessment metadata from a subscription.
+
+### [Remove-AzSecurityAutomation](Remove-AzSecurityAutomation.md)
+{{ Fill in the Synopsis }}
 
 ### [Remove-AzSecurityContact](Remove-AzSecurityContact.md)
 Deletes a security contact.
@@ -193,6 +205,9 @@ Create or update a security assessment result on a resource
 
 ### [Set-AzSecurityAssessmentMetadata](Set-AzSecurityAssessmentMetadata.md)
 Creates or updates a security assessment type.
+
+### [Set-AzSecurityAutomation](Set-AzSecurityAutomation.md)
+Creates or updates a security automation. If a security automation is already created and a subsequent request is issued for the same automation id, then it will be updated.
 
 ### [Set-AzSecurityAutoProvisioningSetting](Set-AzSecurityAutoProvisioningSetting.md)
 Updates automatic provisioning setting

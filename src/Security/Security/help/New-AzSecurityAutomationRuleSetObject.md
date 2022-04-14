@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# New-AzSecurityAutomationScope
+# New-AzSecurityAutomationRuleSetObject
 
 ## SYNOPSIS
 {{ Fill in the Synopsis }}
@@ -13,7 +13,7 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-New-AzSecurityAutomationScope -Description <String> -ScopePath <String>
+New-AzSecurityAutomationRuleSetObject -Rules <PSSecurityAutomationTriggeringRule[]>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -35,7 +35,7 @@ PS C:\> {{ Add example code here }}
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -46,27 +46,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Description
-The resources scope description
+### -Rules
+A rule which is evaluated upon event interception.
+The rule is configured by comparing a specific value from the event model to an expected value.
+This comparison is done by using one of the supported operators set
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ScopePath
-The resources scope path.
-Can be the subscription on which the automation is defined on or a resource group under that subscription (fully qualified Azure resource IDs)
-
-```yaml
-Type: System.String
+Type: PSSecurityAutomationTriggeringRule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -86,7 +72,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Security.Models.Automations.PSSecurityAutomationScope
+### Microsoft.Azure.Commands.Security.Models.Automations.PSSecurityAutomationRuleSet
 
 ## NOTES
 

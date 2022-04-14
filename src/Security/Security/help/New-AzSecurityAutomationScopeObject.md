@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# New-AzSecurityAutomationRule
+# New-AzSecurityAutomationScopeObject
 
 ## SYNOPSIS
 {{ Fill in the Synopsis }}
@@ -13,8 +13,8 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-New-AzSecurityAutomationRule -PropertyJPath <String> -Operator <String> -ExpectedValue <String>
- -PropertyType <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzSecurityAutomationScopeObject -Description <String> -ScopePath <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,7 +35,7 @@ PS C:\> {{ Add example code here }}
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -46,11 +46,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExpectedValue
-The expected value
+### -Description
+The resources scope description
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -61,42 +61,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Operator
-A valid comparer operator to use.
-A case-insensitive comparison will be applied for String PropertyType
+### -ScopePath
+The resources scope path.
+Can be the subscription on which the automation is defined on or a resource group under that subscription (fully qualified Azure resource IDs)
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PropertyJPath
-The JPath of the entity model property that should be checked
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PropertyType
-The data type of the compared operands (string, integer, floating point number or a boolean \[true/false\]\]
-
-```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -116,7 +86,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Security.Models.Automations.PSSecurityAutomationTriggeringRule
+### Microsoft.Azure.Commands.Security.Models.Automations.PSSecurityAutomationScope
 
 ## NOTES
 
