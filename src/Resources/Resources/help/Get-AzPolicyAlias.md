@@ -32,6 +32,7 @@ A given match value matches if the target string contains it using case insensit
 ```powershell
 Get-AzPolicyAlias
 ```
+
 ```output
 Namespace                     ResourceType                                   Aliases
 ---------                     ------------                                   -------
@@ -44,8 +45,6 @@ Microsoft.Authorization       roleDefinitions                                {Mi
 Microsoft.Web                 hostingEnvironments                            {Microsoft.Web/hostingEnvironments/clusterSettings[*].name, Microsoft.W...
 Microsoft.Web                 sites/config                                   {Microsoft.Web/sites/config/httpLoggingEnabled, Microsoft.Web/sites/con...
 Microsoft.GuestConfiguration  guestConfigurationAssignments                  {Microsoft.GuestConfiguration/guestConfigurationAssignments/complianceS...
-
-
 ```
 
 Lists all provider resource types that have an alias.
@@ -54,6 +53,7 @@ Lists all provider resource types that have an alias.
 ```powershell
 Get-AzPolicyAlias -ListAvailable
 ```
+
 ```output
 Namespace                                ResourceType                                                        Aliases
 ---------                                ------------                                                        -------
@@ -65,7 +65,6 @@ Microsoft.AnalysisServices               servers                                
 Microsoft.AnalysisServices               locations                                                           {}
 
 ...                                      ...                                                                 ...
-
 ```
 
 Lists all provider resource types, including those without aliases.
@@ -74,6 +73,7 @@ Lists all provider resource types, including those without aliases.
 ```powershell
 Get-AzPolicyAlias -NamespaceMatch 'compute'
 ```
+
 ```output
 Namespace         ResourceType                       Aliases
 ---------         ------------                       -------
@@ -82,8 +82,6 @@ Microsoft.Compute virtualMachines/extensions         {Microsoft.Compute/virtualM
 Microsoft.Compute virtualMachineScaleSets            {Microsoft.Compute/VirtualMachineScaleSets/sku.name, Microsoft.Compute/VirtualMachineScaleSets/...
 Microsoft.Compute virtualMachineScaleSets/extensions {Microsoft.Compute/virtualMachineScaleSets/extensions/provisioningState, Microsoft.Compute/virt...
 Microsoft.Compute disks                              {Microsoft.Compute/imagePublisher, Microsoft.Compute/imageOffer, Microsoft.Compute/imageSku, Mi...
-
-
 ```
 
 Lists all provider resource types whose namespace matches 'compute' and contain an alias.
@@ -92,6 +90,7 @@ Lists all provider resource types whose namespace matches 'compute' and contain 
 ```powershell
 Get-AzPolicyAlias -ResourceTypeMatch 'virtual'
 ```
+
 ```output
 Namespace         ResourceType                           Aliases
 ---------         ------------                           -------
@@ -104,8 +103,6 @@ Microsoft.Network virtualNetworkGateways                 {Microsoft.Network/virt
 Microsoft.Network virtualNetworks/subnets                {Microsoft.Network/virtualNetworks/subnets/routeTable.id, Microsoft.Network/virtualNetworks...
 Microsoft.Network virtualNetworks/virtualNetworkPeerings {Microsoft.Network/virtualNetworks/virtualNetworkPeerings/remoteVirtualNetwork.id}
 Microsoft.Sql     servers/virtualNetworkRules            {Microsoft.Sql/servers/virtualNetworkRules/virtualNetworkSubnetId, Microsoft.Sql/servers/vi...
-
-
 ```
 
 Lists all provider resource types whose resource type matches 'virtual' and contain an alias.
@@ -114,6 +111,7 @@ Lists all provider resource types whose resource type matches 'virtual' and cont
 ```powershell
 Get-AzPolicyAlias -ResourceTypeMatch 'virtual' -ListAvailable
 ```
+
 ```output
 Namespace                    ResourceType                                               Aliases
 ---------                    ------------                                               -------
@@ -126,8 +124,6 @@ Microsoft.Network            virtualNetworkGateways                             
 Microsoft.Network            locations/virtualNetworkAvailableEndpointServices          {}
 
 ...                          ...                                                        ...
-
-
 ```
 
 Lists all provider resource types whose resource type matches 'virtual', including those without aliases.
@@ -136,6 +132,7 @@ Lists all provider resource types whose resource type matches 'virtual', includi
 ```powershell
 Get-AzPolicyAlias -NamespaceMatch 'compute' -ResourceTypeMatch 'virtual'
 ```
+
 ```output
 Namespace         ResourceType                       Aliases
 ---------         ------------                       -------
@@ -143,8 +140,6 @@ Microsoft.Compute virtualMachines                    {Microsoft.Compute/licenseT
 Microsoft.Compute virtualMachines/extensions         {Microsoft.Compute/virtualMachines/extensions/provisioningState, Microsoft.Compute/virtualMachi...
 Microsoft.Compute virtualMachineScaleSets            {Microsoft.Compute/VirtualMachineScaleSets/sku.name, Microsoft.Compute/VirtualMachineScaleSets/...
 Microsoft.Compute virtualMachineScaleSets/extensions {Microsoft.Compute/virtualMachineScaleSets/extensions/provisioningState, Microsoft.Compute/virt...
-
-
 ```
 
 Lists all provider resource types whose namespace matches 'compute' and resource type matches 'virtual' and contain an alias.
@@ -154,6 +149,7 @@ Note: -NamespaceMatch and -ResourceTypeMatch provide exclusive matches, whereas 
 ```powershell
 Get-AzPolicyAlias -AliasMatch 'virtual'
 ```
+
 ```output
 Namespace            ResourceType                           Aliases
 ---------            ------------                           -------
@@ -170,8 +166,6 @@ Microsoft.Network    virtualNetworks/subnets                {Microsoft.Network/v
 Microsoft.Network    virtualNetworks/virtualNetworkPeerings {Microsoft.Network/virtualNetworks/virtualNetworkPeerings/remoteVirtualNetwork.id}
 Microsoft.Sql        servers/virtualNetworkRules            {Microsoft.Sql/servers/virtualNetworkRules/virtualNetworkSubnetId, Microsoft.Sql/servers...
 Microsoft.Storage    storageAccounts                        {Microsoft.Storage/storageAccounts/accountType, Microsoft.Storage/storageAccounts/sku.na...
-
-
 ```
 
 Lists all provider resource types that contain an alias matching 'virtual'.
@@ -180,6 +174,7 @@ Lists all provider resource types that contain an alias matching 'virtual'.
 ```powershell
 Get-AzPolicyAlias -AliasMatch 'virtual' -PathMatch 'network'
 ```
+
 ```output
 Namespace            ResourceType                           Aliases
 ---------            ------------                           -------
@@ -198,8 +193,6 @@ Microsoft.Network    virtualNetworks/subnets                {Microsoft.Network/v
 Microsoft.Network    virtualNetworks/virtualNetworkPeerings {Microsoft.Network/virtualNetworks/virtualNetworkPeerings/remoteVirtualNetwork.id}
 Microsoft.Sql        servers/virtualNetworkRules            {Microsoft.Sql/servers/virtualNetworkRules/virtualNetworkSubnetId, Microsoft.Sql/servers...
 Microsoft.Storage    storageAccounts                        {Microsoft.Storage/storageAccounts/accountType, Microsoft.Storage/storageAccounts/sku.na...
-
-
 ```
 
 Lists all provider resource types that contain an alias matching 'virtual' or an alias with a path matching 'network'.
@@ -208,6 +201,7 @@ Lists all provider resource types that contain an alias matching 'virtual' or an
 ```powershell
 Get-AzPolicyAlias -ApiVersionMatch 'alpha'
 ```
+
 ```output
 Namespace          ResourceType        Aliases
 ---------          ------------        -------
@@ -216,8 +210,6 @@ Microsoft.Cache    Redis/firewallrules {Microsoft.Cache/Redis/firewallrules/star
 Microsoft.Security alerts              {Microsoft.Security/alerts/state}
 Microsoft.Security pricings            {Microsoft.Security/pricings/pricingTier}
 Microsoft.Security complianceResults   {Microsoft.Security/complianceResults/resourceStatus}
-
-
 ```
 
 Lists all provider resource types with alpha api version or containing an alias with an alpha api version.

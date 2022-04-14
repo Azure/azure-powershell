@@ -36,6 +36,7 @@ The **Remove-AzResourceGroupDeployment** cmdlet removes an Azure resource group 
 ```powershell
 Remove-AzResourceGroupDeployment -ResourceId /subscriptions/{subId}/resourceGroups/testGroup/providers/Microsoft.Resources/deployments/testDeployment1
 ```
+
 ```output
 True
 ```
@@ -48,6 +49,7 @@ Successful removal returns true.
 ```powershell
 Remove-AzResourceGroupDeployment -ResourceGroupName testGroup -Name testDeployment1
 ```
+
 ```output
 True
 ```

@@ -52,11 +52,6 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
                 throw new PSArgumentException($"Sku name only supports: {AllowedClusterServiceTiers.CapacityReservation} ");
             }
 
-            if (this.Capacity < 1000)
-            {
-                throw new PSArgumentException("SkuCapacity need to be more than 1000 GB ");
-            }
-
             if (this.Capacity % 100 != 0)
             {
                 throw new PSArgumentException("SkuCapacity need to be multiple of 100 ");

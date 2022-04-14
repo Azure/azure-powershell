@@ -63,7 +63,7 @@ ContosoVault, using the stored variables.
 
 ### Example 2: Delete the tags and content type for a secret
 ```powershell
-Update-AzKeyVaultSecret -VaultName 'ContosoVault' -Name 'HR' -Version '9EEA45C6EE50490B9C3176A80AC1A0DF' -ContentType '' -Tag -@{}
+Update-AzKeyVaultSecret -VaultName 'ContosoVault' -Name 'HR' -Version '9EEA45C6EE50490B9C3176A80AC1A0DF' -ContentType '' -Tag @{}
 ```
 
 This command deletes the tags and the content type for the specified version of the secret named HR

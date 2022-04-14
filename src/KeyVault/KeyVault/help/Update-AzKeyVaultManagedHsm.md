@@ -40,7 +40,7 @@ This cmdlet updates the state of an Azure managed HSM.
 
 ### Example 1: Update a managed Hsm directly
 ```powershell
-Update-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $resourceGroupName -Tag @{testKey="testValue"} | fl
+Update-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $resourceGroupName -Tag @{testKey="testValue"} | Format-List
 ```
 
 ```output

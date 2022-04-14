@@ -40,7 +40,7 @@ Update the metadata for an IoT Central Application.
 
 ### Example 1 Update Display Name
 ```powershell
-Set-AzureRmIotCentralApp -ResourceGroupName "MyResourceGroupName" -Name "MyAppResourceName" -DisplayName "My New Custom Display Name"
+Set-AzIotCentralApp -ResourceGroupName "MyResourceGroupName" -Name "MyAppResourceName" -DisplayName "My New Custom Display Name"
 ```
 
 ```output
@@ -62,7 +62,7 @@ Identity          : Microsoft.Azure.Management.IotCentral.Models.SystemAssignedS
 Update the Display name on an existing IoT Central Application.
 ### Example 2 Update Subdomain
 ```powershell
-Set-AzureRmIotCentralApp -ResourceGroupName "MyResourceGroupName" -Name "MyAppResourceName" -Subdomain "new-subdomain"
+Set-AzIotCentralApp -ResourceGroupName "MyResourceGroupName" -Name "MyAppResourceName" -Subdomain "new-subdomain"
 ```
 
 ```output
@@ -84,7 +84,7 @@ Identity          : Microsoft.Azure.Management.IotCentral.Models.SystemAssignedS
 Update the Display name on an existing IoT Central Application.
 ### Example 3 Update App Sku Info
 ```powershell
-Set-AzureRmIotCentralApp -ResourceGroupName "MyResourceGroupName" -Name "MyAppResourceName" -Sku "ST2"
+Set-AzIotCentralApp -ResourceGroupName "MyResourceGroupName" -Name "MyAppResourceName" -Sku "ST2"
 ```
 
 ```output

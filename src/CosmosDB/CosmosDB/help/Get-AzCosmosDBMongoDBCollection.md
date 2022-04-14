@@ -31,24 +31,27 @@ The **Get-AzCosmosDBMongoDBCollection** cmdlet gets the CosmosDB MongoDB Collect
 
 ### Example 1
 ```powershell
-Get-AzCosmosDBMongoDBCollection -ResourceGroupName {rgName} -AccountName {accountName} -Database {dbName} -Name {collectionName}
+Get-AzCosmosDBMongoDBCollection -ResourceGroupName rgName -AccountName accountName -DatabaseName dbName -Name collectionName
 ```
 
 ```output
-Name    Id   Resource
-{name}  {id} Microsoft.Azure.Commands.CosmosDB.Models.PSMongoDBCollectionGetPropertiesResource
+Name     : collectionName
+Id       : /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/rgName/providers/Microsoft.DocumentDB/databaseAccounts/accountName/mongodbDatabases/dbName/collections/collectionName
+Location :
+Tags     :
+Resource : Microsoft.Azure.Commands.CosmosDB.Models.PSMongoDBCollectionGetPropertiesResource
 ```
 
-Resource Object contains MongoIndexes, _rid, _ts, _etag properties.
+Resource Object contains AnalyticalStorageTtl, Id, Indexes, ShardKey, _etag, _rid, _ts properties.
 
 ### Example 2
 ```powershell
-(Get-AzCosmosDBMongoDBCollection -ResourceGroupName {rgName} -AccountName {accountName} -Database {dbName} -Name {collectionName}).Resource.ShardKey
+(Get-AzCosmosDBMongoDBCollection -ResourceGroupName rgName -AccountName accountName -DatabaseName dbName -Name collectionName).Resource.ShardKey
 ```
 
 ```output
 Key           Value
-----          ----- 
+----          -----
 <ShardKey>    <Value>
 ```
 
