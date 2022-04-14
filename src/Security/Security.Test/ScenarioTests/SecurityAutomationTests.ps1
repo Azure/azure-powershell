@@ -223,40 +223,40 @@ function Remove-AzSecurityAutomation-InputObject
 .SYNOPSIS
 Creates security Automation source
 #>
-function New-AzSecurityAutomationSource-Test
+function New-AzSecurityAutomationSourceObject-Test
 {	
 	# Making the API Call only to make the test being logged (workaround)
 	Get-AzSecurityAutomation-ResourceGroupLevelResource
 
-    $rule = New-AzSecurityAutomationRule -PropertyJPath "properties.metadata.severity"  -PropertyType "String" -Operator "Equals"  -ExpectedValue "High"
-	$ruleSet = New-AzSecurityAutomationRuleSet -Rules $rule
-	New-AzSecurityAutomationSource -EventSource "Assessments" -RuleSets $ruleSet
+    $rule = New-AzSecurityAutomationRuleObject -PropertyJPath "properties.metadata.severity"  -PropertyType "String" -Operator "Equals"  -ExpectedValue "High"
+	$ruleSet = New-AzSecurityAutomationRuleSetObject -Rules $rule
+	New-AzSecurityAutomationSourceObject -EventSource "Assessments" -RuleSets $ruleSet
 }
 
 <#
 .SYNOPSIS
 Creates security Automation Scope
 #>
-function New-AzSecurityAutomationScope-Test
+function New-AzSecurityAutomationScopeObject-Test
 {
 	# Making the API Call only to make the test being logged (workaround)
 	Get-AzSecurityAutomation-ResourceGroupLevelResource
 
-	New-AzSecurityAutomationScope -Description "Security assessments that relate to the resource group myResourceGroup within the subscription a5caac9c-5c04-49af-b3d0-e204f40345d5"  -ScopePath "/subscriptions/a5caac9c-5c04-49af-b3d0-e204f40345d5/resourceGroups/myResourceGroup"
+	New-AzSecurityAutomationScopeObject -Description "Security assessments that relate to the resource group myResourceGroup within the subscription a5caac9c-5c04-49af-b3d0-e204f40345d5"  -ScopePath "/subscriptions/a5caac9c-5c04-49af-b3d0-e204f40345d5/resourceGroups/myResourceGroup"
 }
 
 <#
 .SYNOPSIS
 Creates security Automation actions
 #>
-function New-AzSecurityAutomationAction-Test
+function New-AzSecurityAutomationActionObject-Test
 {
 	# Making the API Call only to make the test being logged (workaround)
 	Get-AzSecurityAutomation-ResourceGroupLevelResource
 
-    New-AzSecurityAutomationAction -LogicAppResourceId "/subscriptions/03b601f1-7eca-4496-8f8d-355219eee254/resourceGroups/wac-rg-surashed/providers/Microsoft.Logic/workflows/LA" -Uri "https://ms.portal.azure.com/"
-	New-AzSecurityAutomationAction -EventHubResourceId "subscriptions/03b601f1-7eca-4496-8f8d-355219eee254/resourceGroups/weu-surashed-rg/providers/Microsoft.EventHub/namespaces/cus-wsp-fake-assessment/eventhubs/cus-wsp-fake-assessment" -ConnectionString "Endpoint=sb://dummy/;SharedAccessKeyName=dummy;SharedAccessKey=dummy;EntityPath=dummy" -SasPolicyName "dummy"
-	New-AzSecurityAutomationAction -WorkspaceResourceId "/subscriptions/03b601f1-7eca-4496-8f8d-355219eee254/resourcegroups/newrgsurashed3/providers/microsoft.operationalinsights/workspaces/new-workspace-surashed-2"
+    New-AzSecurityAutomationActionObject -LogicAppResourceId "/subscriptions/03b601f1-7eca-4496-8f8d-355219eee254/resourceGroups/wac-rg-surashed/providers/Microsoft.Logic/workflows/LA" -Uri "https://ms.portal.azure.com/"
+	New-AzSecurityAutomationActionObject -EventHubResourceId "subscriptions/03b601f1-7eca-4496-8f8d-355219eee254/resourceGroups/weu-surashed-rg/providers/Microsoft.EventHub/namespaces/cus-wsp-fake-assessment/eventhubs/cus-wsp-fake-assessment" -ConnectionString "Endpoint=sb://dummy/;SharedAccessKeyName=dummy;SharedAccessKey=dummy;EntityPath=dummy" -SasPolicyName "dummy"
+	New-AzSecurityAutomationActionObject -WorkspaceResourceId "/subscriptions/03b601f1-7eca-4496-8f8d-355219eee254/resourcegroups/newrgsurashed3/providers/microsoft.operationalinsights/workspaces/new-workspace-surashed-2"
 }
 
 <#

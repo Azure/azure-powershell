@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.Security.Models.Automations;
 
 namespace Microsoft.Azure.Commands.Security.Cmdlets.Automations
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityAutomationScope", DefaultParameterSetName = ParameterSetNames.SecurityAutomationScope), OutputType(typeof(PSSecurityAutomationScope))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityAutomationScopeObject", DefaultParameterSetName = ParameterSetNames.SecurityAutomationScope), OutputType(typeof(PSSecurityAutomationScope))]
     public class NewAutomationScope : SecurityCenterCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.SecurityAutomationScope, Mandatory = true, HelpMessage = ParameterHelpMessages.AutomationScopeDescription)]

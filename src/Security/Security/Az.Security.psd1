@@ -130,11 +130,11 @@ CmdletsToExport = 'Get-AzSecurityAlert', 'Set-AzSecurityAlert',
                'New-AzSecurityAutomation',
                'Remove-AzSecurityAutomation',
                'Confirm-AzSecurityAutomation',
-               'New-AzSecurityAutomationAction',
-               'New-AzSecurityAutomationRule',
-               'New-AzSecurityAutomationRuleSet',
-               'New-AzSecurityAutomationScope',
-               'New-AzSecurityAutomationSource'
+               'New-AzSecurityAutomationActionObject',
+               'New-AzSecurityAutomationRuleObject',
+               'New-AzSecurityAutomationRuleSetObject',
+               'New-AzSecurityAutomationScopeObject',
+               'New-AzSecurityAutomationSourceObject'
 
 # Variables to export from this module
 # VariablesToExport = @()

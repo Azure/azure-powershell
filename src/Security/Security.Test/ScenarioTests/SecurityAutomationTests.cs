@@ -130,23 +130,23 @@ namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void NewSecurityAutomationScope()
+        public void NewSecurityAutomationScopeObject()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "New-AzSecurityAutomationScope-Test");
+            TestController.NewInstance.RunPowerShellTest(_logger, "New-AzSecurityAutomationScopeObject-Test");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void NewSecurityAutomationSource()
+        public void NewSecurityAutomationSourceObject()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "New-AzSecurityAutomationSource-Test");
+            TestController.NewInstance.RunPowerShellTest(_logger, "New-AzSecurityAutomationSourceObject-Test");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void NewSecurityAutomationAction()
+        public void NewSecurityAutomationActionObject()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "New-AzSecurityAutomationAction-Test");
+            TestController.NewInstance.RunPowerShellTest(_logger, "New-AzSecurityAutomationActionObject-Test");
         }
 
     }
