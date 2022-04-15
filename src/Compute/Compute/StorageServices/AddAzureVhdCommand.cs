@@ -389,7 +389,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             string resizedFileName = returnAvailExtensionName(filePath, "_resized", ".vhd");
             System.IO.File.Move(filePath, resizedFileName);
             this.LocalFilePath = new FileInfo(resizedFileName);
-            if (filePath.Contains("_FixedSize") || filePath.Contains("_converted"))
+            if (filePath.Contains("_fixedSize") || filePath.Contains("_converted"))
             {
                 return;
             }
