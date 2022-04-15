@@ -50,7 +50,6 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
         private const int DefaultNumberOfUploaderThreads = 8;
         private const string DefaultParameterSet = "DefaultParameterSet";
         private const string DirectUploadToManagedDiskSet = "DirectUploadToManagedDiskSet";
-        private bool ConvertedResized = false;
         private long FixedSize;
 
         [Parameter(
@@ -554,7 +553,6 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                     }
                     WriteVerbose("Converted file: " + ConvertedPath);
                     this.LocalFilePath = new FileInfo(vhdFileInfo.FullName);
-                    ConvertedResized = true;
                 }
             }
             catch (System.Management.ManagementException ex)
@@ -617,7 +615,6 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                     }
                     WriteVerbose("Resized " + this.LocalFilePath + " from " + sizeBefore + " bytes to " + FullFileSize + " bytes.");
                     this.LocalFilePath = new FileInfo(this.LocalFilePath.FullName);
-                    ConvertedResized = true;
                     FixedSize = FullFileSize;
                 }
             }
