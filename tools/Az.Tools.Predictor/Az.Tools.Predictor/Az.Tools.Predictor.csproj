@@ -5,8 +5,8 @@
     <RootNamespace>Microsoft.Azure.PowerShell.Tools.AzPredictor</RootNamespace>
     <RepoArtifacts>$(MSBuildThisFileDirectory)</RepoArtifacts>
     <OutputPath>$(RepoArtifacts)..\..\..\artifacts\Tools\Az.Tools.Predictor\</OutputPath>
-           <DisableTransitiveProjectReferences>true</DisableTransitiveProjectReferences>
-               <ProduceReferenceAssemblyInOutDir>false</ProduceReferenceAssemblyInOutDir>
+    <DisableTransitiveProjectReferences>true</DisableTransitiveProjectReferences>
+    <ProduceReferenceAssemblyInOutDir>false</ProduceReferenceAssemblyInOutDir>
   </PropertyGroup>
 
   <PropertyGroup>
