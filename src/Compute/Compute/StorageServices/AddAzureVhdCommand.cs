@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             {
                 try
                 {
-                    WriteWarning("To be compatible with Azure, Add-AzVhd will automatically try to convert VHDX files to VHD and resize VHD files to N * Mib using Hyper-V Platform, a Windows native virtualization product. During the process the cmdlet will temporarily create a converted/resized file in the same directory as the provided VHD/VHDX file. \nFor more information visit https://aka.ms/usingAdd-AzVhd \n");
+                    WriteVerbose("To be compatible with Azure, Add-AzVhd will automatically try to convert VHDX files to VHD and resize VHD files to N * Mib using Hyper-V Platform, a Windows native virtualization product. During the process the cmdlet will temporarily create a converted/resized file in the same directory as the provided VHD/VHDX file. \nFor more information visit https://aka.ms/usingAdd-AzVhd \n");
 
 
                     Program.SyncOutput = new PSSyncOutputEvents(this);
@@ -271,9 +271,11 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                 }
                 finally
                 {
-
-                    WriteVerbose("Deleting file: " + this.LocalFilePath.FullName);
-                    File.Delete(this.LocalFilePath.FullName);
+                    if (ConvertedResized)
+                    {
+                        WriteVerbose("Deleting file: " + this.LocalFilePath.FullName);
+                        File.Delete(this.LocalFilePath.FullName);
+                    }
                 }
             });
 
