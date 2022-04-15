@@ -19,6 +19,18 @@
 --->
 
 ## Upcoming Release
+* Fixed `ArgumentNullException` in `Add-AzRouteConfig` when `RouteTable.Routes` is null.
+
+* Added new cmdlets to create/manage authorization objects for ExpressRoutePort:
+    - `Add-AzExpressRoutePortAuthorization`
+    - `Get-AzExpressRoutePortAuthorization`
+    - `Remove-AzExpressRoutePortAuthorization`
+* Added option parameter `AuthorizationKey` to cmdlet `New-AzExpressRouteCircuit` to allow creating ExpressRoute Circuit on a ExpressRoutePort with a different owner.
+* Fixed `ArgumentNullException` in `Add-AzureRmRouteConfig` when `RouteTable.Routes` is null.
+* Fix bug that can't display CustomIpPrefix in PublicIpPrefix.
+* Updated cmdlets to add new property of `HubRoutingPreference` in VirtualHub and set property of `PreferredRoutingGateway` deprecated .
+    - `New-AzVirtualHub`
+    - `Update-AzVirtualHub`
 * Multipool feature change: Updated cmdlets to add new optional property: `ConfigurationPolicyGroups` object for associating policy groups.
     - `Update-AzVpnServerConfiguration`
     - `New-AzVpnServerConfiguration`
@@ -29,14 +41,7 @@
     - `Get-AzVpnServerConfigurationPolicyGroup`
     - `New-AzVpnServerConfigurationPolicyGroup`
     - `Update-AzVpnServerConfigurationPolicyGroup`
-    - `Remove-AzVpnServerConfigurationPolicyGroup`	
-* Fixed `ArgumentNullException` in `Add-AzRouteConfig` when `RouteTable.Routes` is null.
-* Added new cmdlets to create/manage authorization objects for ExpressRoutePort:
-    - `Add-AzExpressRoutePortAuthorization`
-    - `Get-AzExpressRoutePortAuthorization`
-    - `Remove-AzExpressRoutePortAuthorization`
-* Added optional parameter `AuthorizationKey` to cmdlet `New-AzExpressRouteCircuit` to allow creating ExpressRoute Circuit on a ExpressRoutePort with a different owner.
-* Fixed a bug that can't display CustomIpPrefix in PublicIpPrefix.
+    - `Remove-AzVpnServerConfigurationPolicyGroup`
 
 ## Version 4.16.0
 * Added support for retrieving the state of packet capture even when the provisioning state of the packet capture was failure
