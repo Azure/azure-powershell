@@ -78,7 +78,7 @@ PrivateData = @{
         # RequireLicenseAcceptance = $false
 
         # External dependent modules of this module
-        ExternalModuleDependencies = @('Az')
+        ExternalModuleDependencies = @()
 
     } # End of PSData hashtable
 
