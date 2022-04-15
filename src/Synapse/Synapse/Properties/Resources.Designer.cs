@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -955,6 +955,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove link connection &apos;{0}&apos; under workspace &apos;{1}&apos;.
+        /// </summary>
+        internal static string RemoveSynapseLinkConnection {
+            get {
+                return ResourceManager.GetString("RemoveSynapseLinkConnection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove linked service &apos;{0}&apos;?.
         /// </summary>
         internal static string RemoveSynapseLinkedService {
@@ -1185,6 +1194,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string RemovingSynapseKqlScript {
             get {
                 return ResourceManager.GetString("RemovingSynapseKqlScript", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing link connection &apos;{0}&apos; in workspace &apos;{1}&apos;....
+        /// </summary>
+        internal static string RemovingSynapseLinkConnection {
+            get {
+                return ResourceManager.GetString("RemovingSynapseLinkConnection", resourceCulture);
             }
         }
         
@@ -1531,6 +1549,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Setting link connection &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string SettingSynapseLinkConnection {
+            get {
+                return ResourceManager.GetString("SettingSynapseLinkConnection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Setting linked service &apos;{0}&apos; in workspace &apos;{1}&apos;..
         /// </summary>
         internal static string SettingSynapseLinkedService {
@@ -1657,6 +1684,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Starting link connection &apos;{0}&apos; in workspace &apos;{1}&apos;....
+        /// </summary>
+        internal static string StartingSynapseLinkConnection {
+            get {
+                return ResourceManager.GetString("StartingSynapseLinkConnection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Starting Spark session in Spark pool &apos;{0}&apos; under workspace &apos;{1}&apos; ....
         /// </summary>
         internal static string StartingSynapseSparkSession {
@@ -1716,6 +1752,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string StoppingSparkStatement {
             get {
                 return ResourceManager.GetString("StoppingSparkStatement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stopping link connection &apos;{0}&apos; in workspace &apos;{1}&apos;....
+        /// </summary>
+        internal static string StoppingSynapseLinkConnection {
+            get {
+                return ResourceManager.GetString("StoppingSynapseLinkConnection", resourceCulture);
             }
         }
         

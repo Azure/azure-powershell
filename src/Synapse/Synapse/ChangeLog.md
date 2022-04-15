@@ -19,6 +19,13 @@
 -->
 
 ## Upcoming Release
+* Add support for Synapse Link for Azure Sql Database
+    - `Get-AzSynapseLinkConnection` cmdlet
+    - `Get-AzSynapseLinkConnectionDetailedStatus` cmdlet
+    - `Set-AzSynapseLinkConnection` cmdlet
+    - `Remove-AzSynapseLinkConnection` cmdlet
+    - `Start-AzSynapseLinkConnection` cmdlet
+    - `Stop-AzSynapseLinkConnection` cmdlet
 * Added support for Synapse Azure Active Directory (Azure AD) only authentication
     - Added `Get-AzSynapseActiveDirectoryOnlyAuthentication` cmdlet
     - Added `Enable-AzSynapseActiveDirectoryOnlyAuthentication` cmdlet

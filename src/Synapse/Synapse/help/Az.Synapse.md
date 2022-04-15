@@ -86,6 +86,12 @@ Gets metric data for an integration runtime.
 ### [Get-AzSynapseIntegrationRuntimeNode](Get-AzSynapseIntegrationRuntimeNode.md)
 Gets an integration runtime node information.
 
+### [Get-AzSynapseLinkConnection](Get-AzSynapseLinkConnection.md)
+Gets information about link connections in workspace.
+
+### [Get-AzSynapseLinkConnectionDetailedStatus](Get-AzSynapseLinkConnectionDetailedStatus.md)
+Gets detail status about a link connection in workspace.
+
 ### [Get-AzSynapseLinkedService](Get-AzSynapseLinkedService.md)
 Gets information about linked services in workspace.
 
@@ -371,6 +377,9 @@ Creates or updates a dataset in workspace.
 ### [Set-AzSynapseIntegrationRuntime](Set-AzSynapseIntegrationRuntime.md)
 Updates an integration runtime.
 
+### [Set-AzSynapseLinkConnection](Set-AzSynapseLinkConnection.md)
+Creates or updates a link connection in workspace.
+
 ### [Set-AzSynapseLinkedService](Set-AzSynapseLinkedService.md)
 Links a data store or a cloud service to workspace.
 
@@ -581,11 +590,20 @@ Remove a list of language extensions that can run within KQL queries.
 ### [Remove-AzSynapseKustoPoolPrincipalAssignment](Remove-AzSynapseKustoPoolPrincipalAssignment.md)
 Deletes a Kusto pool principalAssignment.
 
+### [Remove-AzSynapseLinkConnection](Remove-AzSynapseLinkConnection.md)
+Deletes a link connection from workspace.
+
 ### [Start-AzSynapseKustoPool](Start-AzSynapseKustoPool.md)
 Starts a Kusto pool.
 
+### [Start-AzSynapseLinkConnection](Start-AzSynapseLinkConnection.md)
+Starts a link connection.
+
 ### [Stop-AzSynapseKustoPool](Stop-AzSynapseKustoPool.md)
 Stops a Kusto pool.
+
+### [Stop-AzSynapseLinkConnection](Stop-AzSynapseLinkConnection.md)
+Stops a link connection.
 
 ### [Update-AzSynapseKustoPool](Update-AzSynapseKustoPool.md)
 Update a Kusto Kusto Pool.
