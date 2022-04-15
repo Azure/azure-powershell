@@ -94,10 +94,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>ID tracking migration operation.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "ID tracking migration operation.")]
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "ID tracking migration operation.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Description = @"ID tracking migration operation.",
         SerializedName = @"migrationOperationId",
@@ -113,10 +113,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
         public global::System.Management.Automation.SwitchParameter NoWait { get; set; }
 
         /// <summary>Backing field for <see cref="ParametersBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IMigrationOperationInput _parametersBody= new Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.MigrationOperationInput();
+        private Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IMigrationOperationInput _parametersBody= new Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.MigrationOperationInput();
 
         /// <summary>Migration Operation Input</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IMigrationOperationInput ParametersBody { get => this._parametersBody; set => this._parametersBody = value; }
+        private Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IMigrationOperationInput ParametersBody { get => this._parametersBody; set => this._parametersBody = value; }
 
         /// <summary>
         /// When specified, forces the cmdlet return a 'bool' given that there isn't a return type by default.
@@ -220,6 +220,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
         /// </summary>
         protected override void BeginProcessing()
         {
+            var telemetryId = Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Module.Instance.GetTelemetryId.Invoke();
+            if (telemetryId != "" && telemetryId != "internal")
+            {
+                __correlationId = telemetryId;
+            }
             Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
             if (Break)
             {
@@ -258,7 +263,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+
         }
 
         /// <summary>
@@ -400,7 +405,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                await ((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 await ((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 Pipeline = Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
