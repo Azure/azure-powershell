@@ -61,13 +61,13 @@ The Add-AzPrivateDnsRecordConfig cmdlet adds a Private Domain Name System (DNS) 
 
 ### Example 1: Add an A record to a record set
 ```powershell
- $RecordSet = Get-AzPrivateDnsRecordSet -Name www -RecordType A -ResourceGroupName MyResourceGroup -ZoneName myzone.com
- Add-AzPrivateDnsRecordConfig -RecordSet $RecordSet -Ipv4Address 1.2.3.4
- Set-AzPrivateDnsRecordSet -RecordSet $RecordSet
+$RecordSet = Get-AzPrivateDnsRecordSet -Name www -RecordType A -ResourceGroupName MyResourceGroup -ZoneName myzone.com
+Add-AzPrivateDnsRecordConfig -RecordSet $RecordSet -Ipv4Address 1.2.3.4
+Set-AzPrivateDnsRecordSet -RecordSet $RecordSet
 
 # You can also pipe the above sequence:
 
- Get-AzPrivateDnsRecordSet -Name www -RecordType A -ResourceGroupName MyResourceGroup -ZoneName myzone.com | Add-AzPrivateDnsRecordConfig -Ipv4Address 1.2.3.4 | Set-AzPrivateDnsRecordSet
+Get-AzPrivateDnsRecordSet -Name www -RecordType A -ResourceGroupName MyResourceGroup -ZoneName myzone.com | Add-AzPrivateDnsRecordConfig -Ipv4Address 1.2.3.4 | Set-AzPrivateDnsRecordSet
 ```
 
 ```output
@@ -88,13 +88,13 @@ This example adds an A record to an existing record set.
 
 ### Example 2: Add an AAAA record to a record set
 ```powershell
- $RecordSet = Get-AzPrivateDnsRecordSet -Name www -RecordType AAAAA -ResourceGroupName MyResourceGroup -ZoneName myzone.com
- Add-AzPrivateDnsRecordConfig -RecordSet $RecordSet -Ipv6Address 2001:DB80:4009:1803::1005
- Set-AzPrivateDnsRecordSet -RecordSet $RecordSet
+$RecordSet = Get-AzPrivateDnsRecordSet -Name www -RecordType AAAAA -ResourceGroupName MyResourceGroup -ZoneName myzone.com
+Add-AzPrivateDnsRecordConfig -RecordSet $RecordSet -Ipv6Address 2001:DB80:4009:1803::1005
+Set-AzPrivateDnsRecordSet -RecordSet $RecordSet
 
 # You can also pipe the above sequence:
 
- Get-AzPrivateDnsRecordSet -Name www -RecordType AAAAA -ResourceGroupName MyResourceGroup -ZoneName myzone.com | Add-AzPrivateDnsRecordConfig -Ipv6Address 2001:DB80:4009:1803::1005 | Set-AzPrivateDnsRecordSet
+Get-AzPrivateDnsRecordSet -Name www -RecordType AAAAA -ResourceGroupName MyResourceGroup -ZoneName myzone.com | Add-AzPrivateDnsRecordConfig -Ipv6Address 2001:DB80:4009:1803::1005 | Set-AzPrivateDnsRecordSet
 ```
 
 ```output
@@ -115,13 +115,13 @@ This example adds an AAAAA record to an existing record set.
 
 ### Example 3: Add a CNAME record to a record set
 ```powershell
- $RecordSet = Get-AzPrivateDnsRecordSet -Name www -RecordType CNAME -ResourceGroupName MyResourceGroup -ZoneName myzone.com
- Add-AzPrivateDnsRecordConfig -RecordSet $RecordSet -Cname contoso.com
- Set-AzPrivateDnsRecordSet -RecordSet $RecordSet
+$RecordSet = Get-AzPrivateDnsRecordSet -Name www -RecordType CNAME -ResourceGroupName MyResourceGroup -ZoneName myzone.com
+Add-AzPrivateDnsRecordConfig -RecordSet $RecordSet -Cname contoso.com
+Set-AzPrivateDnsRecordSet -RecordSet $RecordSet
 
 # You can also pipe the above sequence:
 
- Get-AzPrivateDnsRecordSet -Name www -RecordType CNAME -ResourceGroupName MyResourceGroup -ZoneName myzone.com | Add-AzPrivateDnsRecordConfig -Cname contoso.com | Set-AzPrivateDnsRecordSet
+Get-AzPrivateDnsRecordSet -Name www -RecordType CNAME -ResourceGroupName MyResourceGroup -ZoneName myzone.com | Add-AzPrivateDnsRecordConfig -Cname contoso.com | Set-AzPrivateDnsRecordSet
 ```
 
 ```output
@@ -148,7 +148,7 @@ Set-AzPrivateDnsRecordSet -RecordSet $RecordSet
 
 # You can also pipe the above sequence:
 
-Get-AzPrivateDnsRecordSet -Name "www" -RecordType MX -ResourceGroupName MyResourceGroup -ZoneName myzone.com | Add-AzPrivateDnsRecordConfig -Exchange mail.microsoft.com -Preference 5 | Set-AzPrivateDnsRecordSet
+Get-AzPrivateDnsRecordSet -Name www -RecordType MX -ResourceGroupName MyResourceGroup -ZoneName myzone.com | Add-AzPrivateDnsRecordConfig -Exchange mail.microsoft.com -Preference 5 | Set-AzPrivateDnsRecordSet
 ```
 
 ```output

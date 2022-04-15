@@ -31,7 +31,6 @@ $Zone = Get-AzPrivateDnsZone -ResourceGroupName "MyResourceGroup" -Name "myzone.
 ```
 
 ```output
-
 Name                          : myzone.com
 ResourceId:                   : "/subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/PrivateZones/myzone.com"
 ResourceGroupName             : MyResourceGroup
@@ -42,6 +41,7 @@ NumberOfRecordSets            : 1
 MaxNumberOfRecordSets         : 5000
 ```
 This example gets the Private DNS zone named myzone.com from the specified resource group, and then stores it in the $Zone variable.
+
 ### Example 2: Get all of the zones in a resource group
 ```powershell
 $Zones = Get-AzPrivateDnsZone -ResourceGroupName "MyResourceGroup"

@@ -142,8 +142,8 @@ This command gets an array of all record sets in the private zone named myzone.c
 
 ### Example 4: Get all record sets in a private zone, using a PSPrivateDnsZone object
 ```powershell
- $Zone = Get-AzPrivateDnsZone -Name "myzone.com" -ResourceGroupName "MyResourceGroup"
- $RecordSets = Get-AzPrivateDnsRecordSet -Zone $Zone
+$Zone = Get-AzPrivateDnsZone -Name "myzone.com" -ResourceGroupName "MyResourceGroup"
+$RecordSets = Get-AzPrivateDnsRecordSet -Zone $Zone
 ```
 
 ```output
