@@ -237,10 +237,10 @@ This command updates a Storage account with RoutingPreference setting: PublishMi
 ```powershell
 PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -KeyExpirationPeriodInDay 5 -SasExpirationPeriod "1.12:05:06" -EnableHttpsTrafficOnly $true
 
-PS C:\> $$account.KeyPolicy.KeyExpirationPeriodInDays
+PS C:\> $account.KeyPolicy.KeyExpirationPeriodInDays
 5
 
-PS C:\> $$account.SasPolicy.SasExpirationPeriod
+PS C:\> $account.SasPolicy.SasExpirationPeriod
 1.12:05:06
 ```
 
@@ -258,7 +258,7 @@ PS C:\> Set-AzKeyVaultAccessPolicy -VaultName $keyvaultName -ResourceGroupName $
 PS C:\> $useridentityId= $userId.Id
 
 # Update Storage account with Keyvault encryption and access Keyvault with user assigned identity, then show properties
-PS C:\> $account = Update-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName `
+PS C:\> $account = Set-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName `
                 -IdentityType UserAssigned  -UserAssignedIdentityId $useridentityId  `
                 -KeyVaultUri $keyVault.VaultUri -KeyName $keyname -KeyVaultUserAssignedIdentityId $useridentityId
 

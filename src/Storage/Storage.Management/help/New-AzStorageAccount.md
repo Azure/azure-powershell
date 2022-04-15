@@ -124,7 +124,7 @@ This command creates a Storage account withenable Files Active Directory Domain 
 ```powershell
 PS C:\>New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -Location "eastus2euap" -SkuName "Standard_LRS" -Kind StorageV2  -EncryptionKeyTypeForTable Account -EncryptionKeyTypeForQueue Account -RequireInfrastructureEncryption
 
-PS C:\>$account = get-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $accountName
+PS C:\>$account = Get-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $accountName
 
 PS C:\>$account.Encryption.Services.Queue
 
@@ -207,10 +207,10 @@ This command creates a Storage account with EdgeZone as "microsoftlosangeles1" a
 ```powershell
 PS C:\> $account = New-AzStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -SkuName Premium_LRS -Location eastus -KeyExpirationPeriodInDay 5 -SasExpirationPeriod "1.12:05:06"
 
-PS C:\> $$account.KeyPolicy.KeyExpirationPeriodInDays
+PS C:\> $account.KeyPolicy.KeyExpirationPeriodInDays
 5
 
-PS C:\> $$account.SasPolicy.SasExpirationPeriod
+PS C:\> $account.SasPolicy.SasExpirationPeriod
 1.12:05:06
 ```
 
