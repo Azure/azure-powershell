@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
         private const int DefaultNumberOfUploaderThreads = 8;
         private const string DefaultParameterSet = "DefaultParameterSet";
         private const string DirectUploadToManagedDiskSet = "DirectUploadToManagedDiskSet";
-        private bool ConvertedResized = false;
+        private bool temporaryFileCreated = false;
         private long FixedSize;
 
         [Parameter(
@@ -190,7 +190,6 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                 {
                     WriteVerbose("To be compatible with Azure, Add-AzVhd will automatically try to convert VHDX files to VHD and resize VHD files to N * Mib using Hyper-V Platform, a Windows native virtualization product. During the process the cmdlet will temporarily create a converted/resized file in the same directory as the provided VHD/VHDX file. \nFor more information visit https://aka.ms/usingAdd-AzVhd \n");
 
-
                     Program.SyncOutput = new PSSyncOutputEvents(this);
 
                     // 1.              CONVERT VHDX TO VHD
@@ -271,7 +270,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                 }
                 finally
                 {
-                    if (ConvertedResized)
+                    if (temporaryFileCreated)
                     {
                         WriteVerbose("Deleting file: " + this.LocalFilePath.FullName);
                         File.Delete(this.LocalFilePath.FullName);
@@ -556,7 +555,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                     }
                     WriteVerbose("Converted file: " + ConvertedPath);
                     this.LocalFilePath = new FileInfo(vhdFileInfo.FullName);
-                    ConvertedResized = true;
+                    temporaryFileCreated = true;
                 }
             }
             catch (System.Management.ManagementException ex)
@@ -619,7 +618,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                     }
                     WriteVerbose("Resized " + this.LocalFilePath + " from " + sizeBefore + " bytes to " + FullFileSize + " bytes.");
                     this.LocalFilePath = new FileInfo(this.LocalFilePath.FullName);
-                    ConvertedResized = true;
+                    temporaryFileCreated = true;
                     FixedSize = FullFileSize;
                 }
             }
