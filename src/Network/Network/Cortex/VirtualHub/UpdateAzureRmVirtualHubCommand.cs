@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Network
         [PSArgumentCompleter("Basic", "Standard")]
         public string Sku { get; set; }
 
-        public const String PreferredGWChangeDesc = "PreferredRoutingGateway parameter is deprecated. Use *HubRoutingPreference* property";
+        public const String PreferredGWChangeDesc = "PreferredRoutingGateway parameter will be deprecated. Use *HubRoutingPreference* parameter";
         [CmdletParameterBreakingChange("PreferredRoutingGateway", ChangeDescription = PreferredGWChangeDesc)]
         [Parameter(
             Mandatory = false,
