@@ -27,6 +27,13 @@
     - Get-AzGallery
     - Get-AzGalleryImageDefinition
     - Get-AzGalleryImageVersion
+* Updates and improvements to `Add-AzVhd`
+    - Added `-DiskHyperVGeneration` and `-DiskOsType` parameters to the DirectUploadToManagedDisk parameter set for upload to more robust managed disk settings.
+    - Updated progress output functions so that it works with VHD files with "&" character in its name.
+    - Updated so that uploading dynamically sized VHD files are converted to fixed size during upload.
+    - Fixed a bug in uploading a differencing disk.
+    - Automically delete converted/resized VHD files after upload.
+    - Fixed a bug that indicates `-ResourceGroupName` parameter as optional when it is actually mandatory.
 
 ## Version 4.25.0
 * Updated `New-AzVM` to create a new storage account for boot diagnostics if one does not exist. This will prevent the cmdlet from using a random storage account in the current subscription to use for boot diagnostics.
