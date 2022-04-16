@@ -43,6 +43,12 @@ Get-AzADApplication -DisplayName <String> [-Select <String[]>] [-AppendSelected]
  [-Skip <UInt64>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### OwnedApplicationParameterSet
+```
+Get-AzADApplication -OwnedApplication [-Orderby <String[]>] [-Select <String[]>] [-AppendSelected]
+ [-First <UInt64>] [-Skip <UInt64>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### SearchStringParameterSet
 ```
 Get-AzADApplication -DisplayNameStartWith <String> [-Select <String[]>] [-AppendSelected] [-First <UInt64>]
@@ -240,10 +246,25 @@ Order items by property values
 
 ```yaml
 Type: System.String[]
-Parameter Sets: EmptyParameterSet
+Parameter Sets: EmptyParameterSet, OwnedApplicationParameterSet
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OwnedApplication
+get owned application
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: OwnedApplicationParameterSet
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -303,6 +324,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
+
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject
 
 ## NOTES
 

@@ -1138,7 +1138,7 @@ components:
   schemas:
     microsoft.graph.application:
       allOf:
-        - $ref: 'CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
+        - $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
         - title: application
           type: object
           properties:
@@ -1257,7 +1257,7 @@ components:
             web:
               $ref: '#/components/schemas/microsoft.graph.webApplication'
             createdOnBehalfOf:
-              $ref: 'CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
+              $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
             extensionProperties:
               type: array
               items:
@@ -1271,7 +1271,7 @@ components:
             owners:
               type: array
               items:
-                $ref: 'CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
+                $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
               readOnly: true
               description: Directory objects that are owners of the application. Read-only. Nullable. Supports $expand.
             tokenIssuancePolicies:
@@ -1288,7 +1288,7 @@ components:
           description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
     microsoft.graph.extensionProperty:
       allOf:
-        - $ref: 'CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
+        - $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
         - title: extensionProperty
           type: object
           properties:
@@ -1431,7 +1431,7 @@ components:
           description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
     microsoft.graph.appRoleAssignment:
       allOf:
-        - $ref: 'CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
+        - $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
         - title: appRoleAssignment
           type: object
           properties:
@@ -1478,7 +1478,7 @@ components:
           description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
     microsoft.graph.servicePrincipal:
       allOf:
-        - $ref: 'CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
+        - $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
         - title: servicePrincipal
           type: object
           properties:
@@ -1635,7 +1635,7 @@ components:
             createdObjects:
               type: array
               items:
-                $ref: 'CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
+                $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
               readOnly: true
               description: Directory objects created by this service principal. Read-only. Nullable.
             delegatedPermissionClassifications:
@@ -1656,7 +1656,7 @@ components:
             memberOf:
               type: array
               items:
-                $ref: 'CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
+                $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
               readOnly: true
               description: 'Roles that this service principal is a member of. HTTP Methods: GET Read-only. Nullable. Supports $expand.'
             oauth2PermissionGrants:
@@ -1668,13 +1668,13 @@ components:
             ownedObjects:
               type: array
               items:
-                $ref: 'CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
+                $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
               readOnly: true
               description: Directory objects that are owned by this service principal. Read-only. Nullable. Supports $expand.
             owners:
               type: array
               items:
-                $ref: 'CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
+                $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
               readOnly: true
               description: Directory objects that are owners of this servicePrincipal. The owners are a set of non-admin users or servicePrincipals who are allowed to modify this object. Read-only. Nullable. Supports $expand.
             tokenIssuancePolicies:
@@ -1690,7 +1690,7 @@ components:
             transitiveMemberOf:
               type: array
               items:
-                $ref: 'CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
+                $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
           additionalProperties:
             type: object
           description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
@@ -1704,7 +1704,7 @@ components:
           description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
     microsoft.graph.delegatedPermissionClassification:
       allOf:
-        - $ref: 'CommonTypes.yml#/components/schemas/microsoft.graph.entity'
+        - $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.entity'
         - title: delegatedPermissionClassification
           type: object
           properties:
@@ -1722,7 +1722,7 @@ components:
             type: object
     microsoft.graph.endpoint:
       allOf:
-        - $ref: 'CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
+        - $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
         - title: endpoint
           type: object
           properties:
@@ -1754,7 +1754,7 @@ components:
           description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
     microsoft.graph.oAuth2PermissionGrant:
       allOf:
-        - $ref: 'CommonTypes.yml#/components/schemas/microsoft.graph.entity'
+        - $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.entity'
         - title: oAuth2PermissionGrant
           type: object
           properties:
@@ -2005,7 +2005,7 @@ components:
             appliesTo:
               type: array
               items:
-                $ref: 'CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
+                $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
           additionalProperties:
             type: object
           description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
@@ -2159,7 +2159,7 @@ components:
         type: object
     microsoft.graph.policyBase:
       allOf:
-        - $ref: 'CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
+        - $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
         - title: policyBase
           type: object
           properties:

@@ -28,10 +28,10 @@ HTTP Methods: GET (supported for all groups), POST (supported for security group
 Nullable.
 Supports $expand.
 .Example
-PS C:\> $members = @()
-PS C:\> $members += (Get-AzADUser -DisplayName $uname).Id
-PS C:\> $members += (Get-AzADServicePrincipal -ApplicationId $appid).Id
-PS C:\> Get-AzADGroupMember -DisplayName $gname | Remove-AzADGroupMember -MemberObjectId $member
+$members = @()
+$members += (Get-AzADUser -DisplayName $uname).Id
+$members += (Get-AzADServicePrincipal -ApplicationId $appid).Id
+Get-AzADGroupMember -DisplayName $gname | Remove-AzADGroupMember -MemberObjectId $member
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphGroup
@@ -56,6 +56,7 @@ GROUPOBJECT <MicrosoftGraphGroup>: The target group object, could be used as pip
     [ResourceId <String>]: The unique identifier (id) for the resource service principal for which the assignment is made. Required on create. Supports $filter (eq only).
   [Classification <String>]: Describes a classification for the group (such as low, medium or high business impact). Valid values for this property are defined by creating a ClassificationList setting value, based on the template definition.Returned by default. Supports $filter (eq, ne, NOT, ge, le, startsWith).
   [CreatedOnBehalfOf <IMicrosoftGraphDirectoryObject>]: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
+    [(Any) <Object>]: This indicates any property can be added to this object.
     [DeletedDateTime <DateTime?>]: 
     [DisplayName <String>]: The name displayed in directory
   [Description <String>]: An optional description for the group. Returned by default. Supports $filter (eq, ne, NOT, ge, le, startsWith) and $search.
@@ -190,13 +191,13 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            ExplicitParameterSet  = 'MSGraph.custom\Remove-AzADGroupMember';
-            MemberUPNWithGroupObjectIdParameterSet = 'MSGraph.custom\Remove-AzADGroupMember';
-            MemberObjectIdWithGroupObjectId = 'MSGraph.custom\Remove-AzADGroupMember';
-            MemberUPNWithGroupDisplayNameParameterSet = 'MSGraph.custom\Remove-AzADGroupMember';
-            MemberObjectIdWithGroupDisplayName = 'MSGraph.custom\Remove-AzADGroupMember';
-            MemberUPNWithGroupObjectParameterSet = 'MSGraph.custom\Remove-AzADGroupMember';
-            MemberObjectIdWithGroupObject = 'MSGraph.custom\Remove-AzADGroupMember';
+            ExplicitParameterSet  = 'Az.MSGraph.custom\Remove-AzADGroupMember';
+            MemberUPNWithGroupObjectIdParameterSet = 'Az.MSGraph.custom\Remove-AzADGroupMember';
+            MemberObjectIdWithGroupObjectId = 'Az.MSGraph.custom\Remove-AzADGroupMember';
+            MemberUPNWithGroupDisplayNameParameterSet = 'Az.MSGraph.custom\Remove-AzADGroupMember';
+            MemberObjectIdWithGroupDisplayName = 'Az.MSGraph.custom\Remove-AzADGroupMember';
+            MemberUPNWithGroupObjectParameterSet = 'Az.MSGraph.custom\Remove-AzADGroupMember';
+            MemberObjectIdWithGroupObject = 'Az.MSGraph.custom\Remove-AzADGroupMember';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

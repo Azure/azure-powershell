@@ -20,9 +20,9 @@ Lists members from group.
 .Description
 Lists members from group.
 .Example
-PS C:\> Get-AzADGroupMember -GroupDisplayName $name
+Get-AzADGroupMember -GroupDisplayName $name
 .Example
-PS C:\> Get-AzADGroup -DisplayName $name | Get-AzADGroupMember
+Get-AzADGroup -DisplayName $name | Get-AzADGroupMember
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup
@@ -49,6 +49,7 @@ GROUPOBJECT <IMicrosoftGraphGroup>: The target group object, could be used as pi
     [ResourceId <String>]: The unique identifier (id) for the resource service principal for which the assignment is made. Required on create. Supports $filter (eq only).
   [Classification <String>]: Describes a classification for the group (such as low, medium or high business impact). Valid values for this property are defined by creating a ClassificationList setting value, based on the template definition.Returned by default. Supports $filter (eq, ne, NOT, ge, le, startsWith).
   [CreatedOnBehalfOf <IMicrosoftGraphDirectoryObject>]: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
+    [(Any) <Object>]: This indicates any property can be added to this object.
     [DeletedDateTime <DateTime?>]: 
     [DisplayName <String>]: The name displayed in directory
   [Description <String>]: An optional description for the group. Returned by default. Supports $filter (eq, ne, NOT, ge, le, startsWith) and $search.
@@ -202,9 +203,9 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            ObjectIdParameterSet = 'MSGraph.custom\Get-AzADGroupMember';
-            DisplayNameParameterSet = 'MSGraph.custom\Get-AzADGroupMember';
-            GroupObjectParameterSet = 'MSGraph.custom\Get-AzADGroupMember';
+            ObjectIdParameterSet = 'Az.MSGraph.custom\Get-AzADGroupMember';
+            DisplayNameParameterSet = 'Az.MSGraph.custom\Get-AzADGroupMember';
+            GroupObjectParameterSet = 'Az.MSGraph.custom\Get-AzADGroupMember';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

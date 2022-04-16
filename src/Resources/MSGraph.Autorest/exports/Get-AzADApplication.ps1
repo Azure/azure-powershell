@@ -20,21 +20,23 @@ Lists entities from applications or get entity from applications by key
 .Description
 Lists entities from applications or get entity from applications by key
 .Example
-PS C:\> Get-AzADApplication -DisplayName $appname
+Get-AzADApplication -DisplayName $appname
 .Example
-PS C:\> Get-AzADApplication -First 10
+Get-AzADApplication -First 10
 .Example
-PS C:\> Get-AzADApplication -DisplayNameStartsWith $prefix
+Get-AzADApplication -DisplayNameStartsWith $prefix
 .Example
-PS C:\> Get-AzADapplication -ObjectId $id -Select Tags -AppendSelected
+Get-AzADapplication -ObjectId $id -Select Tags -AppendSelected
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject
 .Link
 https://docs.microsoft.com/powershell/module/az.resources/get-azadapplication
 #>
 function Get-AzADApplication {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication], [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject])]
 [CmdletBinding(DefaultParameterSetName='EmptyParameterSet', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='ApplicationObjectIdParameterSet', Mandatory)]
@@ -58,6 +60,7 @@ param(
     ${Filter},
 
     [Parameter(ParameterSetName='EmptyParameterSet')]
+    [Parameter(ParameterSetName='OwnedApplicationParameterSet')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
     [System.String[]]
@@ -95,6 +98,12 @@ param(
     [System.String]
     # application identifier uri
     ${IdentifierUri},
+
+    [Parameter(ParameterSetName='OwnedApplicationParameterSet', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
+    [System.Management.Automation.SwitchParameter]
+    # get owned application
+    ${OwnedApplication},
 
     [Parameter(ParameterSetName='EmptyParameterSet')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Header')]
@@ -177,12 +186,13 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            EmptyParameterSet = 'MSGraph.custom\Get-AzADApplication';
-            ApplicationObjectIdParameterSet = 'MSGraph.custom\Get-AzADApplication';
-            SearchStringParameterSet = 'MSGraph.custom\Get-AzADApplication';
-            DisplayNameParameterSet = 'MSGraph.custom\Get-AzADApplication';
-            ApplicationIdParameterSet = 'MSGraph.custom\Get-AzADApplication';
-            ApplicationIdentifierUriParameterSet = 'MSGraph.custom\Get-AzADApplication';
+            EmptyParameterSet = 'Az.MSGraph.custom\Get-AzADApplication';
+            ApplicationObjectIdParameterSet = 'Az.MSGraph.custom\Get-AzADApplication';
+            SearchStringParameterSet = 'Az.MSGraph.custom\Get-AzADApplication';
+            DisplayNameParameterSet = 'Az.MSGraph.custom\Get-AzADApplication';
+            ApplicationIdParameterSet = 'Az.MSGraph.custom\Get-AzADApplication';
+            ApplicationIdentifierUriParameterSet = 'Az.MSGraph.custom\Get-AzADApplication';
+            OwnedApplicationParameterSet = 'Az.MSGraph.custom\Get-AzADApplication';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

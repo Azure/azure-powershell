@@ -20,9 +20,9 @@ Deletes entity from groups.
 .Description
 Deletes entity from groups.
 .Example
-PS C:\> Remove-AzADGroup -DisplayName $name
+Remove-AzADGroup -DisplayName $name
 .Example
-PS C:\> Get-AzADGroup -ObjectId $id | Remove-AzADGroup
+Get-AzADGroup -ObjectId $id | Remove-AzADGroup
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup
@@ -49,6 +49,7 @@ INPUTOBJECT <IMicrosoftGraphGroup>: user input object
     [ResourceId <String>]: The unique identifier (id) for the resource service principal for which the assignment is made. Required on create. Supports $filter (eq only).
   [Classification <String>]: Describes a classification for the group (such as low, medium or high business impact). Valid values for this property are defined by creating a ClassificationList setting value, based on the template definition.Returned by default. Supports $filter (eq, ne, NOT, ge, le, startsWith).
   [CreatedOnBehalfOf <IMicrosoftGraphDirectoryObject>]: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
+    [(Any) <Object>]: This indicates any property can be added to this object.
     [DeletedDateTime <DateTime?>]: 
     [DisplayName <String>]: The name displayed in directory
   [Description <String>]: An optional description for the group. Returned by default. Supports $filter (eq, ne, NOT, ge, le, startsWith) and $search.
@@ -168,9 +169,9 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            ObjectIdParameterSet = 'MSGraph.custom\Remove-AzADGroup';
-            DisplayNameParameterSet = 'MSGraph.custom\Remove-AzADGroup';
-            InputObjectParameterSet = 'MSGraph.custom\Remove-AzADGroup';
+            ObjectIdParameterSet = 'Az.MSGraph.custom\Remove-AzADGroup';
+            DisplayNameParameterSet = 'Az.MSGraph.custom\Remove-AzADGroup';
+            InputObjectParameterSet = 'Az.MSGraph.custom\Remove-AzADGroup';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

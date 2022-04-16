@@ -20,9 +20,9 @@ Deletes entity from applications
 .Description
 Deletes entity from applications
 .Example
-PS C:\> Remove-AzADApplication -DisplayName $name
+Remove-AzADApplication -DisplayName $name
 .Example
-PS C:\> Get-AzADApplication -ObjectId $id | Remove-AzADApplication
+Get-AzADApplication -ObjectId $id | Remove-AzADApplication
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
@@ -69,15 +69,15 @@ INPUTOBJECT <IMicrosoftGraphApplication>: The application object, could be used 
     [IsEnabled <Boolean?>]: When creating or updating an app role, this must be set to true (which is the default). To delete a role, this must first be set to false.  At that point, in a subsequent call, this role may be removed.
     [Value <String>]: Specifies the value to include in the roles claim in ID tokens and access tokens authenticating an assigned user or service principal. Must not exceed 120 characters in length. Allowed characters are : ! # $ % & ' ( ) * + , - . / : ;  =  ? @ [ ] ^ + _  {  } ~, as well as characters in the ranges 0-9, A-Z and a-z. Any other character, including the space character, are not allowed. May not begin with ..
   [ApplicationTemplateId <String>]: Unique identifier of the applicationTemplate.
-  [CreatedOnBehalfOfDeletedDateTime <DateTime?>]: 
-  [CreatedOnBehalfOfDisplayName <String>]: The name displayed in directory
+  [CreatedOnBehalfOf <IMicrosoftGraphDirectoryObject>]: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
+    [(Any) <Object>]: This indicates any property can be added to this object.
+    [DeletedDateTime <DateTime?>]: 
+    [DisplayName <String>]: The name displayed in directory
   [Description <String>]: An optional description of the application. Returned by default. Supports $filter (eq, ne, NOT, ge, le, startsWith) and $search.
   [DisabledByMicrosoftStatus <String>]: Specifies whether Microsoft has disabled the registered application. Possible values are: null (default value), NotDisabled, and DisabledDueToViolationOfServicesAgreement (reasons may include suspicious, abusive, or malicious activity, or a violation of the Microsoft Services Agreement).  Supports $filter (eq, ne, NOT).
   [GroupMembershipClaim <String>]: Configures the groups claim issued in a user or OAuth 2.0 access token that the application expects. To set this attribute, use one of the following string values: None, SecurityGroup (for security groups and Azure AD roles), All (this gets all security groups, distribution groups, and Azure AD directory roles that the signed-in user is a member of).
   [HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>]: 
     [AppliesTo <IMicrosoftGraphDirectoryObject[]>]: 
-      [DeletedDateTime <DateTime?>]: 
-      [DisplayName <String>]: The name displayed in directory
     [Definition <String[]>]: A string collection containing a JSON string that defines the rules and settings for a policy. The syntax for the definition differs for each derived policy type. Required.
     [IsOrganizationDefault <Boolean?>]: If set to true, activates this policy. There can be many policies for the same policy type, but only one can be activated as the organization default. Optional, default value is false.
     [Description <String>]: Description for this policy.
@@ -255,10 +255,10 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            ObjectIdParameterSet = 'MSGraph.custom\Remove-AzADApplication';
-            ApplicationIdParameterSet = 'MSGraph.custom\Remove-AzADApplication';
-            ApplicationDisplayNameParameterSet = 'MSGraph.custom\Remove-AzADApplication';
-            InputObjectParameterSet = 'MSGraph.custom\Remove-AzADApplication';
+            ObjectIdParameterSet = 'Az.MSGraph.custom\Remove-AzADApplication';
+            ApplicationIdParameterSet = 'Az.MSGraph.custom\Remove-AzADApplication';
+            ApplicationDisplayNameParameterSet = 'Az.MSGraph.custom\Remove-AzADApplication';
+            InputObjectParameterSet = 'Az.MSGraph.custom\Remove-AzADApplication';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

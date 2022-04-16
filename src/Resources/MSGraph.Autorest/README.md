@@ -51,10 +51,11 @@ require:
   - $(this-folder)/../../readme.azure.noprofile.md
 
 input-file:
-  - ../Applications.yml
-  - ../Groups.yml
-  - ../Users.yml
-  - ../CommonTypes.yml
+  - ../OpenApiSpecs/v1.0/Applications.yml
+  - ../OpenApiSpecs/v1.0/Groups.yml
+  - ../OpenApiSpecs/beta/Groups.yml
+  - ../OpenApiSpecs/v1.0/Users.yml
+  - ../OpenApiSpecs/CommonTypes.yml
 
 root-module-name: $(prefix).Resources
 title: MSGraph
@@ -117,6 +118,11 @@ directive:
     where: $
     transform: if ($documentPath.endsWith("MSGraph.cs")) {$ = $.replace(/Count.ToString\(\)/g, "Count.ToString().ToLower()")}
   
+  # hide user owned object cmdlets
+  - where:
+      subject: UserOwnedObject
+    hide: true
+
   # remove pipe support support since data plane does not have resource Id.
   - where:
       variant: (.*)ViaIdentity(.*)
@@ -144,7 +150,7 @@ directive:
       property-name: Items
 
   - where:
-      subject: application$|applicationpassword$|applicationkey$|serviceprincipal$|serviceprincipalpassword$|serviceprincipalkey$|groupmember$|user$|groupmember$|grouprefmember$
+      subject: application$|applicationpassword$|applicationkey$|serviceprincipal$|serviceprincipalpassword$|serviceprincipalkey$|groupmember$|user$|GroupGraphRefMember$|grouprefmember$
     hide: true
 
   - where:
