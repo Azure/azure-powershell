@@ -33,21 +33,11 @@ The directoryObject type is the base type for many other directory entity types.
 
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzADGroup -ObjectId $objectid -Description $description
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Update description for group.
 
 ## PARAMETERS
 
