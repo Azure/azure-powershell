@@ -51,5 +51,11 @@ namespace Microsoft.Azure.Commands.Security.Common
         public const string OnPremMachinesWithScanId = "OnPremMachinesWithScanId";
 
         #endregion
+
+        #region AlertsSuppressionRules
+
+        public const string RuleNameWithParameters = "RuleNameWithParameters";
+
+        #endregion
     }
 }

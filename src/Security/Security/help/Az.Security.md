@@ -20,6 +20,9 @@ Disables the advanced threat protection policy for a storage / cosmosDB account.
 ### [Enable-AzSecurityAdvancedThreatProtection](Enable-AzSecurityAdvancedThreatProtection.md)
 Enables the advanced threat protection policy for a storage / cosmosDB account.
 
+### [Get-AzAlertsSuppressionRule](Get-AzAlertsSuppressionRule.md)
+Gets alerts suppression rules.
+
 ### [Get-AzDeviceSecurityGroup](Get-AzDeviceSecurityGroup.md)
 Get device security group (IoT Hub security)
 
@@ -101,6 +104,9 @@ Create new recommendation configuration for iot security solution
 ### [New-AzIotSecuritySolutionUserDefinedResourcesObject](New-AzIotSecuritySolutionUserDefinedResourcesObject.md)
 Create new user defined resources for iot security solution
 
+### [Remove-AzAlertsSuppressionRule](Remove-AzAlertsSuppressionRule.md)
+Deletes an alerts suppression rule.
+
 ### [Remove-AzDeviceSecurityGroup](Remove-AzDeviceSecurityGroup.md)
 Delete device security group
 
@@ -115,6 +121,9 @@ Deletes a security contact.
 
 ### [Remove-AzSecurityWorkspaceSetting](Remove-AzSecurityWorkspaceSetting.md)
 Deletes the security workspace setting for this subscription.
+
+### [Set-AzAlertsSuppressionRule](Set-AzAlertsSuppressionRule.md)
+Create or update an alerts suppression rule.
 
 ### [Set-AzDeviceSecurityGroup](Set-AzDeviceSecurityGroup.md)
 Create or update device security group

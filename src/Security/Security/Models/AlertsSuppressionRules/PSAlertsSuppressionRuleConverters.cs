@@ -70,18 +70,13 @@ namespace Microsoft.Azure.Commands.Security.Models.AlertsSuppressionRules
             var hasInValue = value.AdditionalProperties.Any(keyValuePair => "in".Equals(keyValuePair.Key, StringComparison.InvariantCultureIgnoreCase));
             if (hasInValue)
             {
-                return new PSScopeElementIn
-                {
-                    Field = value.Field,
-                    In = (value.AdditionalProperties.First(keyValuePair => "in".Equals(keyValuePair.Key, StringComparison.InvariantCultureIgnoreCase)).Value as JArray)?.ToObject<string[]>()
-                };
+                return new PSScopeElementIn(value.Field,
+                    (value.AdditionalProperties.First(keyValuePair => "in".Equals(keyValuePair.Key, StringComparison.InvariantCultureIgnoreCase)).Value as JArray)?.ToObject<string[]>());
             }
 
-            return new PSScopeElementContains
-            {
-                Field = value.Field,
-                Contains = value.AdditionalProperties.FirstOrDefault(keyValuePair => "contains".Equals(keyValuePair.Key, StringComparison.InvariantCultureIgnoreCase)).Value?.ToString()
-            };
+            return new PSScopeElementContains(
+                value.Field,
+                value.AdditionalProperties.FirstOrDefault(keyValuePair => "contains".Equals(keyValuePair.Key, StringComparison.InvariantCultureIgnoreCase)).Value?.ToString());
         }
 
         public static List<PSAlertsSuppressionRule> ConvertToPSType(this IEnumerable<AlertsSuppressionRule> value)

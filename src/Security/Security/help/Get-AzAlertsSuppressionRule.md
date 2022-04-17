@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzAlertsSuppressionRule
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets alerts suppression rules.
 
 ## SYNTAX
 
@@ -29,16 +29,23 @@ Get-AzAlertsSuppressionRule -ResourceId <String> [-DefaultProfile <IAzureContext
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Gets or list alerts suppression rules.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzAlertsSuppressionRule
 ```
 
-{{ Add example description here }}
+List all alerts suppression rules in the subscription.
+
+### Example 2
+```powershell
+PS C:\> Get-AzAlertsSuppressionRule -Name "Example"
+```
+
+Gets an alerts suppression rule with the name "Example".
 
 ## PARAMETERS
 
@@ -46,7 +53,7 @@ PS C:\> {{ Add example code here }}
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -61,7 +68,7 @@ Accept wildcard characters: False
 Resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SubscriptionLevelResource
 Aliases:
 
@@ -76,7 +83,7 @@ Accept wildcard characters: False
 ID of the security resource that you want to invoke the command on.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceId
 Aliases:
 

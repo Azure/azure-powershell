@@ -14,10 +14,16 @@
 
 namespace Microsoft.Azure.Commands.Security.Models.AlertsSuppressionRules
 {
-    class PSScopeElementIn : PSIScopeElement
+    public class PSScopeElementIn : PSIScopeElement
     {
         public string Field { get; set; }
 
         public string[] In { get; set; }
+
+        public PSScopeElementIn(string field, string[] @in)
+        {
+            Field = field;
+            In = @in;
+        }
     }
 }
