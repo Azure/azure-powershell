@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+* Added `-ImageReferenceId` parameter to following cmdlets: `New-AzVm`, `New-AzVmConfig`, `New-AzVmss`, `Set-AzVmssStorageProfile`
+* Added functionality for cross-tenant image reference for VM, VMSS, Managed Disk, and Gallery Image Version creation. 
 * `New-AzGallery` can take in `-Permission` parameter to set its sharingProfile property.
 * `Update-AzGallery` can update sharingProfile.
 * `Get-AzGallery` can take in `-Expand` parameter for expanded resource view.
