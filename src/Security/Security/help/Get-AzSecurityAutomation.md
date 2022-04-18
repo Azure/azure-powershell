@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzSecurityAutomation
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets security automations
 
 ## SYNTAX
 
@@ -35,16 +35,16 @@ Get-AzSecurityAutomation -ResourceId <String> [-DefaultProfile <IAzureContextCon
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Gets security automations
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzSecurityAutomation
 ```
 
-{{ Add example description here }}
+Gets all security automations under the subscription
 
 ## PARAMETERS
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSecurityAutomationSourceObject
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates security automation source object
 
 ## SYNTAX
 
@@ -24,16 +24,16 @@ New-AzSecurityAutomationSourceObject -EventSource <String> -RuleSets <PSSecurity
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Creates security automation source object
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzSecurityAutomationSourceObject -EventSource 'Assessments' -RuleSet $ruleSet
 ```
 
-{{ Add example description here }}
+Creates security automation source object
 
 ## PARAMETERS
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSecurityAutomationRuleSetObject
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates security automation rule set object
 
 ## SYNTAX
 
@@ -18,16 +18,16 @@ New-AzSecurityAutomationRuleSetObject -Rules <PSSecurityAutomationTriggeringRule
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Creates security automation rule set object
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzSecurityAutomationRuleSetObject -Rule $rule
 ```
 
-{{ Add example description here }}
+Creates security automation rule set object
 
 ## PARAMETERS
 

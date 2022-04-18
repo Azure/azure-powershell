@@ -18,7 +18,7 @@ Enforces the given rules on the NSG(s) listed in the request
 Add SQL vulnerability assessment baseline.
 
 ### [Confirm-AzSecurityAutomation](Confirm-AzSecurityAutomation.md)
-{{ Fill in the Synopsis }}
+Validates the security automation model before create or update. Any validation errors are returned to the client
 
 ### [Disable-AzIotSecurityAnalyticsAggregatedAlert](Disable-AzIotSecurityAnalyticsAggregatedAlert.md)
 Dismiss Iot aggregated alert
@@ -87,7 +87,7 @@ Gets security assessments and their results on a subscription
 Gets security assessments types and metadta in a subscription.
 
 ### [Get-AzSecurityAutomation](Get-AzSecurityAutomation.md)
-{{ Fill in the Synopsis }}
+Get security automation(s)
 
 ### [Get-AzSecurityAutoProvisioningSetting](Get-AzSecurityAutoProvisioningSetting.md)
 Gets the security automatic provisioning settings
@@ -159,7 +159,22 @@ Create new recommendation configuration for iot security solution
 Create new user defined resources for iot security solution
 
 ### [New-AzSecurityAutomation](New-AzSecurityAutomation.md)
-{{ Fill in the Synopsis }}
+Creates new security automation
+
+### [New-AzSecurityAutomationActionObject](New-AzSecurityAutomationActionObject.md)
+Creates new security automation action object
+
+### [New-AzSecurityAutomationRuleObject](New-AzSecurityAutomationRuleObject.md)
+Creates new security automation rule object
+
+### [New-AzSecurityAutomationRuleSetObject](New-AzSecurityAutomationRuleSetObject.md)
+Creates new security automation rule set object
+
+### [New-AzSecurityAutomationScopeObject](New-AzSecurityAutomationScopeObject.md)
+Creates new security automation scope object
+
+### [New-AzSecurityAutomationSourceObject](New-AzSecurityAutomationSourceObject.md)
+Creates new security automation source object
 
 ### [Remove-AzDeviceSecurityGroup](Remove-AzDeviceSecurityGroup.md)
 Delete device security group
@@ -177,7 +192,7 @@ Deletes a security assessment result from a subscription.
 Deletes a security assessment metadata from a subscription.
 
 ### [Remove-AzSecurityAutomation](Remove-AzSecurityAutomation.md)
-{{ Fill in the Synopsis }}
+Deletes security automation
 
 ### [Remove-AzSecurityContact](Remove-AzSecurityContact.md)
 Deletes a security contact.
