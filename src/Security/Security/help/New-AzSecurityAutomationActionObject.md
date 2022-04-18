@@ -44,7 +44,7 @@ Creates new security automation action with workspace type
 
 ### Example 2
 ```powershell
-PS C:\> New-AzSecurityAutomationActionObject -LogicAppResourceId '/subscriptions/03b601f1-7eca-4496-8f8d-355219eee254/resourceGroups/sampleResourceGroup/providers/Microsoft.Logic/workflows/LA" -Uri "https://dummy.com/'
+PS C:\> New-AzSecurityAutomationActionObject -LogicAppResourceId '/subscriptions/03b601f1-7eca-4496-8f8d-355219eee254/resourceGroups/sampleResourceGroup/providers/Microsoft.Logic/workflows/LA' -Uri 'https://dummy.com/'
 ```
 
 Creates new security automation action with logicApp type

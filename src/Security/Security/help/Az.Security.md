@@ -87,7 +87,7 @@ Gets security assessments and their results on a subscription
 Gets security assessments types and metadta in a subscription.
 
 ### [Get-AzSecurityAutomation](Get-AzSecurityAutomation.md)
-Get security automation(s)
+Gets security automation(s)
 
 ### [Get-AzSecurityAutoProvisioningSetting](Get-AzSecurityAutoProvisioningSetting.md)
 Gets the security automatic provisioning settings
