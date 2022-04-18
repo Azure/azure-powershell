@@ -10,7 +10,7 @@ using System.Text;
 namespace Microsoft.Azure.Commands.KeyVault.Commands.Key
 {
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultRandomNumber", DefaultParameterSetName = GetByHsmNameParameterSet)]
-    [OutputType(typeof(string), typeof(byte[]))]
+    [OutputType(typeof(string), typeof(byte))]
     public class GetAzKeyVaultRandomNumber: KeyVaultCmdletBase
     {
         #region Parameter Set Names
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.Key
             }
             else
             {
-                this.WriteObject(result);
+                this.WriteObject(result, true);
             }
         }
 

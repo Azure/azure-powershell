@@ -192,6 +192,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
+### System.Byte
+
 ## NOTES
 
 ## RELATED LINKS
