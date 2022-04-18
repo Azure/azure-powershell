@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzKubernetesConfigurationFlux
 Describe 'AzKubernetesConfigurationFlux' {
     It 'CreateExpanded' {
         {
-            $config = New-AzKubernetesExtension -ClusterName $env.clusterName -ClusterType ConnectedClusters -Name flux -ResourceGroupName $env.resourceGroup -ExtensionType microsoft.flux
+            $config = New-AzKubernetesExtension -ClusterName $env.clusterName -ClusterType ConnectedClusters -Name flux -ResourceGroupName $env.resourceGroup -ExtensionType microsoft.flux -AutoUpgradeMinorVersion -ClusterReleaseNamespace flux-system -IdentityType 'SystemAssigned'
             $config.Name | Should -Be "flux"
 
             $config = New-AzKubernetesConfigurationFlux -ClusterName $env.clusterName -ClusterType ConnectedClusters -Name $env.flux1 -ResourceGroupName $env.resourceGroup -Namespace namespace-t01 -Scope 'cluster' -GitRepositoryUrl https://github.com/fluxcd/flux2-kustomize-helm-example -RepositoryRefBranch main -SourceKind 'GitRepository' -GitRepositorySyncIntervalInSecond 600 -GitRepositoryTimeoutInSecond 600 -Suspend:$false

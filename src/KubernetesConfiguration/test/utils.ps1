@@ -52,22 +52,13 @@ function setupEnv() {
     New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
 
     write-host "1. az aks create..."
-    az aks create --name $env.k8sName1 --resource-group $env.resourceGroup --kubernetes-version 1.20.13 --vm-set-type AvailabilitySet
+    az aks create --name $env.k8sName1 --resource-group $env.resourceGroup --kubernetes-version 1.22.6 --vm-set-type AvailabilitySet
 
     write-host "1. az aks get-credentials..."
     az aks get-credentials --name $env.k8sName1 --resource-group $env.resourceGroup
 
     write-host "1. az connectedk8s connect..."
     az connectedk8s connect --name $env.clusterName --resource-group $env.resourceGroup --location $env.location
-
-    write-host "1. az k8s-configuration flux create..."
-    az k8s-configuration flux create -g $env.resourceGroup -c $env.clusterName -n azpstestflux-k8s -t connectedClusters --namespace namespace-t01 --scope cluster -u https://github.com/fluxcd/flux2-kustomize-helm-example --branch main --kustomization name=infra path=./infrastructure prune=true --kustomization name=apps path=./apps/staging prune=true dependsOn=["infra"]
-
-    write-host "1. Remove-AzK8sConfigurationFlux..."
-    Remove-AzK8sConfigurationFlux -Name azpstestflux-k8s -ClusterName $env.clusterName -ClusterType ConnectedClusters -ResourceGroupName $env.resourceGroup
-    
-    write-host "1. Remove-AzK8sExtension..."
-    Remove-AzK8sExtension -ClusterName $env.clusterName -ClusterType ConnectedClusters -Name flux -ResourceGroupName $env.resourceGroup 
 
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
