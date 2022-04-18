@@ -29,44 +29,44 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.AlertsSuppressionRules
         public string Field { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = SuppressionRuleScopeParams, HelpMessage = "Suppress only when field contains this specific value.")]
-        public string Contains { get; set; }
+        public string ContainsSubstring { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = SuppressionRuleScopeParams, HelpMessage = "Suppress only when field equals one of those values.")]
-        public string[] In { get; set; }
+        public string[] AnyOf { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            var containsBound = this.IsParameterBound(c => c.Contains);
-            var inBound = this.IsParameterBound(c => c.In);
+            var containsBound = this.IsParameterBound(c => c.ContainsSubstring);
+            var inBound = this.IsParameterBound(c => c.AnyOf);
 
             if (!containsBound && !inBound)
             {
-                throw new ArgumentException("Only \"Contains\" or \"In\" can be populated.");
+                throw new ArgumentException("Only \"ContainsSubstring\" or \"AnyOf\" can be populated.");
             }
             
             if (containsBound && inBound)
             {
-                throw new ArgumentException("At least one of \"Contains\" or \"In\" needs to be populated.");
+                throw new ArgumentException("At least one of \"ContainsSubstring\" or \"AnyOf\" needs to be populated.");
             }
 
-            if (containsBound && string.IsNullOrWhiteSpace(Contains))
+            if (containsBound && string.IsNullOrWhiteSpace(ContainsSubstring))
             {
-                throw new ArgumentNullException(nameof(Contains), "\"Contains\" value can't be null");
+                throw new ArgumentNullException(nameof(ContainsSubstring), "\"ContainsSubstring\" value can't be null");
             }
 
-            if (inBound && (In == null || In.Length == 0))
+            if (inBound && (AnyOf == null || AnyOf.Length == 0))
             {
-                throw new ArgumentNullException(nameof(In), "\"In\" value can't be empty");
+                throw new ArgumentNullException(nameof(AnyOf), "\"AnyOf\" value can't be empty");
             }
 
             if (containsBound)
             {
-                var psScopeElementContains = new PSScopeElementContains(Field, Contains);
+                var psScopeElementContains = new PSScopeElementContains(Field, ContainsSubstring);
                 WriteObject(psScopeElementContains, enumerateCollection: false);
                 return;
             }
 
-            var psScopeElementIn = new PSScopeElementIn(Field, In);
+            var psScopeElementIn = new PSScopeElementIn(Field, AnyOf);
             WriteObject(psScopeElementIn, enumerateCollection: false);
         }
     }

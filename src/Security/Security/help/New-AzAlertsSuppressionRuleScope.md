@@ -13,7 +13,7 @@ Helper cmdlet to create PSIScopeElement.
 ## SYNTAX
 
 ```
-New-AzAlertsSuppressionRuleScope -Field <String> [-Contains <String>] [-In <String[]>]
+New-AzAlertsSuppressionRuleScope -Field <String> [-ContainsSubstring <String>] [-AnyOf <String[]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -39,11 +39,26 @@ Creates a PSScopeElementIn.
 
 ## PARAMETERS
 
-### -Contains
+### -AnyOf
+Suppress only when field equals one of those values.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ContainsSubstring
 Suppress only when field contains this specific value.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -58,7 +73,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -73,26 +88,11 @@ Accept wildcard characters: False
 Entity field to scope by.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -In
-Suppress only when field equals one of those values.
-
-```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
