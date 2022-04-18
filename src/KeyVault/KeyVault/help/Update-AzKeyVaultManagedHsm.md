@@ -161,7 +161,7 @@ Accept wildcard characters: False
 ```
 
 ### -PublicNetworkAccess
-Controls permission for data plane traffic coming from public networks while private endpoint is enabled..
+Controls permission for data plane traffic coming from public networks while private endpoint is enabled.
 
 ```yaml
 Type: System.String

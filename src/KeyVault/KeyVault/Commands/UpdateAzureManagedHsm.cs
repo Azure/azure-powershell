@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         public SwitchParameter EnablePurgeProtection { get; set; }
 
         [Parameter(Mandatory = false,
-            HelpMessage = "Controls permission for data plane traffic coming from public networks while private endpoint is enabled..")]
+            HelpMessage = "Controls permission for data plane traffic coming from public networks while private endpoint is enabled.")]
         [PSArgumentCompleter("Enabled", "Disabled")]
         public string PublicNetworkAccess { get; set; }
 

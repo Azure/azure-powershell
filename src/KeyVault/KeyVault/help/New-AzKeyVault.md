@@ -402,8 +402,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Management.Automation.SwitchParameter
 
-### Microsoft.Azure.Management.KeyVault.Models.SkuName
-
 ### System.Collections.Hashtable
 
 ## OUTPUTS

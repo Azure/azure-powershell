@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         public int SoftDeleteRetentionInDays { get; set; }
 
         [Parameter(Mandatory = false,
-            HelpMessage = "Specifies whether the vault will accept traffic from public internet. If set to 'disabled' all traffic except private endpoint traffic and that that originates from trusted services will be blocked. This will override the set firewall rules, meaning that even if the firewall rules are present we will not honor the rules. By default, we will enable public network access.")]
+            HelpMessage = "Specifies whether the vault will accept traffic from public internet. If set to 'disabled' all traffic except private endpoint traffic and that originates from trusted services will be blocked. This will override the set firewall rules, meaning that even if the firewall rules are present we will not honor the rules. By default, we will enable public network access.")]
         [PSArgumentCompleter("Enabled", "Disabled")]
         public string PublicNetworkAccess { get; set; }
 
