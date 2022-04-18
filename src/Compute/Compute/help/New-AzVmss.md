@@ -33,7 +33,7 @@ New-AzVmss [[-ResourceGroupName] <String>] [-VMScaleSetName] <String> [-AsJob] [
  [-DataDiskSizeInGb <Int32[]>] [-ProximityPlacementGroupId <String>] [-HostGroupId <String>]
  [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-ScaleInPolicy <String[]>]
  [-SkipExtensionsOnOverprovisionedVMs] [-EncryptionAtHost] [-PlatformFaultDomainCount <Int32>]
- [-OrchestrationMode <String>] [-CapacityReservationGroupId <String>]
+ [-OrchestrationMode <String>] [-CapacityReservationGroupId <String>] [-ImageReferenceId <String>]
  [-DefaultProfile <IAzureContextContainer>] [-SinglePlacementGroup] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -627,6 +627,21 @@ Accept wildcard characters: False
 
 ### -SecurityGroupName
 The name of the network security group to apply to this Scale Set.  If no value is provided, a default network security group with the same name as the Scale Set will be created and applied to the Scale Set.
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ImageReferenceId
+Specified the shared gallery image unique id for vmss deployment. This can be fetched from shared gallery image GET call.
 
 ```yaml
 Type: System.String

@@ -117,7 +117,7 @@ $autoscaleConfig=Get-AzHDInsightClusterAutoscaleConfiguration -ResourceGroupName
 $clusterResourceGroup="group"
 $clusterName="MyCluster"
 Set-AzHDInsightClusterAutoscaleConfiguration -ResourceGroupName $clusterResourceGroup -ClusterName $clusterName `
-            -Autoscale $autoscaleConfig
+            -AutoscaleConfiguration $autoscaleConfig
 ```
 
 This command sets the autoscale configuration of the HDInsight cluster based another cluster.

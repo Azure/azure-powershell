@@ -87,6 +87,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Parameter(Mandatory = false, HelpMessage = "Display ServiceProperties")]
         public SwitchParameter PassThru { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Allow deletion of the soft deleted blob versions and snapshots.")]
+        public SwitchParameter AllowPermanentDelete { get; set; }        
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -112,6 +115,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 serviceProperties.DeleteRetentionPolicy = new DeleteRetentionPolicy();
                 serviceProperties.DeleteRetentionPolicy.Enabled = true;
                 serviceProperties.DeleteRetentionPolicy.Days = RetentionDays;
+                serviceProperties.DeleteRetentionPolicy.AllowPermanentDelete = this.AllowPermanentDelete.IsPresent ? true : false;
 
                 serviceProperties = this.StorageClient.BlobServices.SetServiceProperties(this.ResourceGroupName, this.StorageAccountName, serviceProperties);
 

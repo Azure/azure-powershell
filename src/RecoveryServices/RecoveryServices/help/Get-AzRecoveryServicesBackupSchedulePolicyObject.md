@@ -16,7 +16,7 @@ Gets a base schedule policy object.
 ```
 Get-AzRecoveryServicesBackupSchedulePolicyObject [-WorkloadType] <WorkloadType>
  [[-BackupManagementType] <BackupManagementType>] [-DefaultProfile <IAzureContextContainer>]
- [[-ScheduleRunFrequency] <ScheduleRunType>] [<CommonParameters>]
+ [[-ScheduleRunFrequency] <ScheduleRunType>] [[-PolicySubType] <PSPolicyType>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,7 +55,7 @@ The fourth command replaces the scheduled run times with the current time.
 You can only backup AzureVM once per day, so to reset the backup time you must replace the original schedule.
 The last command creates a backup protection policy using the new schedule.
 
-### Example 3: Get hourly schedule for fileshare policy 
+### Example 3: Get hourly schedule for fileshare policy
 ```powershell
 $schedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureFiles -BackupManagementType AzureStorage -ScheduleRunFrequency Hourly
 $timeZone = Get-TimeZone
@@ -69,6 +69,22 @@ $schedulePolicy.ScheduleWindowDuration = 14
 The first command gets a base hourly **SchedulePolicyObject**, and then stores it in the $schedulePolicy variable.
 The second and third command fetches the timezone and updates the timezone in the $schedulePolicy.
 The fourth and fifth command initializes the schedule window start time and updates the $schedulePolicy. Please note the start time must be in UTC even if the timezone is not UTC. 
+The sixth and seventh command updates the interval (in hours) after which the backup will be retriggered on the same day, duration (in hours) for which the schedule will run.
+
+### Example 4: Get enhanced hourly schedule for AzureVM policy
+```powershell
+$schedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureVM -BackupManagementType AzureVM -PolicySubType Enhanced -ScheduleRunFrequency Hourly
+$timeZone = Get-TimeZone -ListAvailable | Where-Object { $_.Id -match "India" }
+$schedulePolicy.ScheduleRunTimeZone = $timeZone.Id
+$windowStartTime = (Get-Date -Date "2022-04-14T08:00:00.00+00:00").ToUniversalTime()
+$schPol.HourlySchedule.WindowStartTime = $windowStartTime
+$schedulePolicy.HourlySchedule.ScheduleInterval = 4
+$schedulePolicy.HourlySchedule.ScheduleWindowDuration = 23
+```
+
+The first command gets a base enhanced hourly **SchedulePolicyObject** for WorkloadType AzureVM, and then stores it in the $schedulePolicy variable.
+The second and third command fetches the India timezone and updates the timezone in the $schedulePolicy.
+The fourth and fifth command initializes the schedule window start time and updates the $schedulePolicy. Please note that the start time must be in UTC even if the timezone is not UTC. 
 The sixth and seventh command updates the interval (in hours) after which the backup will be retriggered on the same day, duration (in hours) for which the schedule will run.
 
 ## PARAMETERS
@@ -107,6 +123,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PolicySubType
+Type of schedule policy to be fetched: Standard, Enhanced
+
+```yaml
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PSPolicyType
+Parameter Sets: (All)
+Aliases:
+Accepted values: Standard, Enhanced
+
+Required: False
+Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ScheduleRunFrequency
 Schedule run frequency for the policy schedule.
 
@@ -114,7 +146,7 @@ Schedule run frequency for the policy schedule.
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ScheduleRunType
 Parameter Sets: (All)
 Aliases:
-Accepted values: Daily, Hourly
+Accepted values: Daily, Hourly, Weekly
 
 Required: False
 Position: 2
