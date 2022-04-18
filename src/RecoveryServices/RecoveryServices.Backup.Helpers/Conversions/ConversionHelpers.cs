@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 return null;
             }
 
-            Type schedulePolicyType = ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).SchedulePolicy.GetType();
+            Type schedulePolicyType = ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).SchedulePolicy.GetType();            
             if (schedulePolicyType != typeof(ServiceClientModel.SimpleSchedulePolicy) && schedulePolicyType != typeof(ServiceClientModel.SimpleSchedulePolicyV2))
             {
                 Logger.Instance.WriteDebug("Unknown SchedulePolicy object received: " + schedulePolicyType);                           

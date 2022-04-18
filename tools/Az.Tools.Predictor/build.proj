@@ -32,7 +32,7 @@
   </Target>
 
   <Target Name="GenerateHelp">
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;$(RepoTools)/$(ModuleName)/GenerateHelp.ps1 -ArtifactFolder $(ArtifactFolder) -HelpFolder $(RepoTools)/$(ModuleName)/help -ModuleName $(ModuleName)" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;$(RepoTools)/$(ModuleName)/GenerateHelp.ps1 -ArtifactFolder $(ArtifactFolder) -HelpFolder $(RepoTools)/$(ModuleName)/help -ModuleName $(ModuleName) -ErrorAction Stop &quot;" />
   </Target>
 
   <Target Name="Test" DependsOnTargets="Build">

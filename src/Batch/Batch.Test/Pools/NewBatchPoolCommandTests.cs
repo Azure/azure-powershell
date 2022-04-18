@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.CloudServiceConfiguration = new PSCloudServiceConfiguration("4", "*");
             cmdlet.DisplayName = "display name";
             cmdlet.InterComputeNodeCommunicationEnabled = true;
-            cmdlet.MaxTasksPerComputeNode = 4;
+            cmdlet.TaskSlotsPerNode = 4;
             cmdlet.Metadata = new Dictionary<string, string>();
             cmdlet.Metadata.Add("meta1", "value1");
             cmdlet.ResizeTimeout = TimeSpan.FromMinutes(20);
@@ -103,7 +103,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.TaskSchedulingPolicy = new PSTaskSchedulingPolicy(Azure.Batch.Common.ComputeNodeFillType.Spread);
             cmdlet.VirtualMachineConfiguration = new PSVirtualMachineConfiguration(new PSImageReference("offer", "publisher", "sku"), "node agent");
             cmdlet.VirtualMachineSize = "small";
-            cmdlet.MountConfiguration = new[] { new PSMountConfiguration(new PSAzureBlobFileSystemConfiguration("foo", "bar", "baz", AzureStorageAuthenticationKey.FromAccountKey("abc"))) };
+            cmdlet.MountConfiguration = new[] {
+                new PSMountConfiguration(new PSAzureBlobFileSystemConfiguration("foo", "bar", "baz", AzureStorageAuthenticationKey.FromAccountKey("abc"))),
+                new PSMountConfiguration(new PSAzureBlobFileSystemConfiguration("foo2", "bar2", "baz2", new PSComputeNodeIdentityReference(new Azure.Batch.ComputeNodeIdentityReference { ResourceId = "fake-identity"})))
+            };
             
             PoolAddParameter requestParameters = null;
 
@@ -130,7 +133,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             Assert.Equal(cmdlet.CloudServiceConfiguration.OSVersion, requestParameters.CloudServiceConfiguration.OsVersion);
             Assert.Equal(cmdlet.DisplayName, requestParameters.DisplayName);
             Assert.Equal(cmdlet.InterComputeNodeCommunicationEnabled, requestParameters.EnableInterNodeCommunication);
-            Assert.Equal(cmdlet.MaxTasksPerComputeNode, requestParameters.MaxTasksPerNode);
+            Assert.Equal(cmdlet.TaskSlotsPerNode, requestParameters.TaskSlotsPerNode);
             Assert.Equal(cmdlet.Metadata.Count, requestParameters.Metadata.Count);
             Assert.Equal(cmdlet.Metadata["meta1"], requestParameters.Metadata[0].Value);
             Assert.Equal(cmdlet.ResizeTimeout, requestParameters.ResizeTimeout);
@@ -147,6 +150,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             Assert.Equal(cmdlet.MountConfiguration[0].AzureBlobFileSystemConfiguration.AccountKey, requestParameters.MountConfiguration[0].AzureBlobFileSystemConfiguration.AccountKey);
             Assert.Equal(cmdlet.MountConfiguration[0].AzureBlobFileSystemConfiguration.ContainerName, requestParameters.MountConfiguration[0].AzureBlobFileSystemConfiguration.ContainerName);
             Assert.Equal(cmdlet.MountConfiguration[0].AzureBlobFileSystemConfiguration.RelativeMountPath, requestParameters.MountConfiguration[0].AzureBlobFileSystemConfiguration.RelativeMountPath);
+            Assert.Equal(cmdlet.MountConfiguration[1].AzureBlobFileSystemConfiguration.AccountName, requestParameters.MountConfiguration[1].AzureBlobFileSystemConfiguration.AccountName);
+            Assert.Equal(cmdlet.MountConfiguration[1].AzureBlobFileSystemConfiguration.IdentityReference.ResourceId, requestParameters.MountConfiguration[1].AzureBlobFileSystemConfiguration.IdentityReference.ResourceId);
+            Assert.Equal(cmdlet.MountConfiguration[1].AzureBlobFileSystemConfiguration.ContainerName, requestParameters.MountConfiguration[1].AzureBlobFileSystemConfiguration.ContainerName);
+            Assert.Equal(cmdlet.MountConfiguration[1].AzureBlobFileSystemConfiguration.RelativeMountPath, requestParameters.MountConfiguration[1].AzureBlobFileSystemConfiguration.RelativeMountPath);
         }
 
         [Fact]

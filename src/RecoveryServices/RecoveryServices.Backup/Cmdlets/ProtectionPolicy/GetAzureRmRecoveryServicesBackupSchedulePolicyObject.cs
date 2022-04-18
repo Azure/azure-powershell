@@ -94,11 +94,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     throw new ArgumentException(Resources.EnhancedPolicyNotSupported);
                 }
 
-                if (PolicySubType == PSPolicyType.Enhanced && ScheduleRunFrequency == ScheduleRunType.Hourly)
-                {
-                    throw new ArgumentException(Resources.EnhancedHourlyPolicyNotSupported);
-                }
-
                 PsBackupProviderManager providerManager = new PsBackupProviderManager(
                     providerParameters, ServiceClientAdapter);
 

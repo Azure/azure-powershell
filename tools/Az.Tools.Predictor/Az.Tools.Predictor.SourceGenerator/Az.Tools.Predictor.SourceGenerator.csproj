@@ -38,10 +38,17 @@
   </PropertyGroup>
 
   <Target Name="GetDependencyTargetPaths" AfterTargets="ResolvePackageDependenciesForBuild">
-    <ItemGroup>
-      <!-- We need to add all the (direct and indirect) dependencies. @(ResolvedCompileFileDefinitions) is a way to get that.
-        - See more about Transient Dependencies here https://turnerj.com/blog/the-pain-points-of-csharp-source-generators
-      -->
+    <!-- We need to add all the (direct and indirect) dependencies. @(ResolvedCompileFileDefinitions) is a way to get that.
+      - See more about Transient Dependencies here https://turnerj.com/blog/the-pain-points-of-csharp-source-generators
+      - Follow up the issue here https://github.com/dotnet/sdk/issues/17775
+    -->
+    <ItemGroup Condition="'$(MSBuildRuntimeType)' == 'Core'">
+      <None Include="@(ResolvedCompileFileDefinitions)" Pack="true" PackagePath="analyzers/dotnet/cs" />
+    </ItemGroup>
+    <ItemGroup Condition="'$(MSBuildRuntimeType)' == 'Mono'">
+      <Error Text="Doesn't support building with Mono." />
+    </ItemGroup>
+    <ItemGroup Condition="'$(MSBuildRuntimeType)' != 'Core'">
       <TargetPathWithTargetPlatformMoniker Include="@(ResolvedCompileFileDefinitions)" IncludeRuntimeDependency="false" />
     </ItemGroup>
   </Target>

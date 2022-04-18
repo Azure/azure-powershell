@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Updated the decsription of `Force` in `Invoke-AzAksRunCommand` [#17756]
+* Fixed the issue that `identity` cannot be piped into `Set-AzAksCluster` [#17376]
 
 ## Version 3.1.2
 * Updated the breaking change warning messages [#16805]
