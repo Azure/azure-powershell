@@ -15,6 +15,12 @@ Describe 'Update-AzKustoCluster' {
         }
         . ($mockingPath | Select-Object -First 1).FullName
     }
+    
+    It 'UpdateExpandedPublicIpType' {
+        $updatedCluster = Update-AzKustoCluster -ResourceGroupName $env.resourceGroupName -Name $env.clusterName -SkuName $env.updatedSkuName -SkuTier $env.skuTier -PublicIPType "DualStack"
+        $updatedCluster.PublicIPType | Should -Be "DualStack"        
+    }
+
     It 'UpdateExpanded' {
         $updatedCluster = Update-AzKustoCluster -ResourceGroupName $env.resourceGroupName -Name $env.clusterName -SkuName $env.updatedSkuName -SkuTier $env.skuTier
         Validate_Cluster $updatedCluster $env.clusterName $env.location "Running" "Succeeded" $env.resourceType $env.updatedSkuName $env.skuTier $env.capacity

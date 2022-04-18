@@ -779,7 +779,7 @@ This release migrates Microsoft.Azure.Graph SDK to MicrosoftGraph SDK.
 * Performance improvement for Get-AzPolicyAlias when -NamespaceMatch matches a single RP namespace
 
 #### Az.Security
-* Updated Security .NET SDK package reference to version 3.0.0
+* Added new cmdlets for security Automations API
 
 #### Az.ServiceBus
 * Added support for ZoneRedundant and optional switch parameter 'DisableLocalAuth' to 'New-AzServiceBusNamespace' and 'Set-AzServiceBusNamespace' 

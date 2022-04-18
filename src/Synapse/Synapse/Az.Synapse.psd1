@@ -225,7 +225,10 @@ CmdletsToExport = 'Get-AzSynapseSparkJob', 'Stop-AzSynapseSparkJob',
                'Export-AzSynapseSparkConfiguration', 
                'Remove-AzSynapseSparkConfiguration', 'New-AzSynapseKqlScript', 
                'Get-AzSynapseKqlScript', 'Remove-AzSynapseKqlScript', 
-               'Export-AzSynapseKqlScript'
+               'Export-AzSynapseKqlScript',
+               'Get-AzSynapseActiveDirectoryOnlyAuthentication',
+               'Enable-AzSynapseActiveDirectoryOnlyAuthentication',
+               'Disable-AzSynapseActiveDirectoryOnlyAuthentication'
 
 # Variables to export from this module
 # VariablesToExport = @()

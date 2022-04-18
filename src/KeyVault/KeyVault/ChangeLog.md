@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Supported getting random number from managed HSM by `Get-AzKeyVaultRandomNumber`
+* Enabled public network access setting
 
 ## Version 4.3.1
 * Fixed a bug to continue visiting `NextPageLink` when listing key vaults from ARM API

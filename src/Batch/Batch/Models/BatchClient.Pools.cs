@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 IPagedEnumerable<CloudPool> pools = poolOperations.ListPools(listDetailLevel, options.AdditionalBehaviors);
                 Func<CloudPool, PSCloudPool> mappingFunction = p => { return new PSCloudPool(p); };
                 return PSPagedEnumerable<PSCloudPool, CloudPool>.CreateWithMaxCount(
-                    pools, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
+                    pools, mappingFunction, options.MaxCount, () => WriteMaxCount(options.MaxCount));
             }
         }
 
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             pool.VirtualMachineSize = parameters.VirtualMachineSize;
             pool.DisplayName = parameters.DisplayName;
             pool.ResizeTimeout = parameters.ResizeTimeout;
-            pool.MaxTasksPerComputeNode = parameters.MaxTasksPerComputeNode;
+            pool.TaskSlotsPerNode = parameters.TaskSlotsPerNode;
             pool.InterComputeNodeCommunicationEnabled = parameters.InterComputeNodeCommunicationEnabled;
 
             if (!string.IsNullOrEmpty(parameters.AutoScaleFormula))
@@ -383,7 +383,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             Func<PoolNodeCounts, PSPoolNodeCounts> mappingFunction = p => { return new PSPoolNodeCounts(p); };
 
             return PSPagedEnumerable<PSPoolNodeCounts, PoolNodeCounts>.CreateWithMaxCount(poolNodeCounts, mappingFunction,
-                options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
+                options.MaxCount, () => WriteMaxCount(options.MaxCount));
         }
     }
 }

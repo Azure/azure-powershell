@@ -803,4 +803,10 @@ Failed: {2}.</value>
   <data name="SettingSynapseKqlScript" xml:space="preserve">
     <value>Setting KQL script '{0}' in workspace '{1}'.</value>
   </data>
+  <data name="DisablingAzureADOnlyAuthentication" xml:space="preserve">
+    <value>Disabling Azure AD only authentication for workspace '{0}' .</value>
+  </data>
+  <data name="EnablingAzureADOnlyAuthentication" xml:space="preserve">
+    <value>Enabling Azure AD only authentication for workspace '{0}' .</value>
+  </data>
 </root>

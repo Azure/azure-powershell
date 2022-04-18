@@ -24,7 +24,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
     {
         public const string WindowsAzureCreatorApplicationName = "wa";
 
-        public static VhdFooter CreateFixedDiskFooter(long virtualSize)
+        public static VhdFooter CreateFixedDiskFooter(long size)
         {
             var helper = new AttributeHelper<VhdFooter>();
             var footer = new VhdFooter();
@@ -38,9 +38,9 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
             footer.CreatorApplication = WindowsAzureCreatorApplicationName;
             footer.CreatorVersion = VhdCreatorVersion.CSUP2011;
             footer.CreatorHostOsType = HostOsType.Windows;
-            footer.PhsyicalSize = virtualSize;
-            footer.VirtualSize = virtualSize;
-            footer.DiskGeometry = DiskGeometry.CreateFromVirtualSize(virtualSize);
+            footer.OriginalSize = size;
+            footer.CurrentSize = size;
+            footer.DiskGeometry = DiskGeometry.CreateFromSize(size);
             footer.DiskType = DiskType.Fixed;
             footer.UniqueId = Guid.NewGuid();
             footer.SavedState = false;
@@ -83,8 +83,8 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
                 footer.CreatorApplication = ReadCreatorApplication(attributeHelper.GetAttribute(() => footer.CreatorApplication));
                 footer.CreatorVersion = ReadCreatorVersion(attributeHelper.GetAttribute(() => footer.CreatorVersion));
                 footer.CreatorHostOsType = ReadCreatorHostOsType(attributeHelper.GetAttribute(() => footer.CreatorHostOsType));
-                footer.PhsyicalSize = ReadPhysicalSize(attributeHelper.GetAttribute(() => footer.PhsyicalSize));
-                footer.VirtualSize = ReadVirtualSize(attributeHelper.GetAttribute(() => footer.VirtualSize));
+                footer.OriginalSize = ReadOriginalSize(attributeHelper.GetAttribute(() => footer.OriginalSize));
+                footer.CurrentSize = ReadCurrentSize(attributeHelper.GetAttribute(() => footer.CurrentSize));
                 footer.DiskGeometry = ReadDiskGeometry(attributeHelper.GetAttribute(() => footer.DiskGeometry));
                 footer.DiskType = ReadDiskType(attributeHelper.GetAttribute(() => footer.DiskType));
                 footer.CheckSum = ReadCheckSum(attributeHelper.GetAttribute(() => footer.CheckSum));
@@ -160,13 +160,13 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
             yield return CompletionPort.SingleOperation;
             footer.CreatorHostOsType = TryCatch<HostOsType>(EndReadCreatorHostOsType, machine.CompletionResult);
 
-            BeginReadPhysicalSize(attributeHelper.GetAttribute(() => footer.PhsyicalSize), machine.CompletionCallback, null);
+            BeginReadOriginalSize(attributeHelper.GetAttribute(() => footer.OriginalSize), machine.CompletionCallback, null);
             yield return CompletionPort.SingleOperation;
-            footer.PhsyicalSize = TryCatch<long>(EndReadPhysicalSize, machine.CompletionResult);
+            footer.OriginalSize = TryCatch<long>(EndReadOriginalSize, machine.CompletionResult);
 
-            BeginReadVirtualSize(attributeHelper.GetAttribute(() => footer.VirtualSize), machine.CompletionCallback, null);
+            BeginReadCurrentSize(attributeHelper.GetAttribute(() => footer.CurrentSize), machine.CompletionCallback, null);
             yield return CompletionPort.SingleOperation;
-            footer.VirtualSize = TryCatch<long>(EndReadVirtualSize, machine.CompletionResult);
+            footer.CurrentSize = TryCatch<long>(EndReadCurrentSize, machine.CompletionResult);
 
             BeginReadDiskGeometry(attributeHelper.GetAttribute(() => footer.DiskGeometry), machine.CompletionCallback, null);
             yield return CompletionPort.SingleOperation;
@@ -199,17 +199,17 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
             machine.ParameterValue = footer;
         }
 
-        private long ReadPhysicalSize(VhdPropertyAttribute attribute)
+        private long ReadOriginalSize(VhdPropertyAttribute attribute)
         {
             return (long)dataReader.ReadUInt64(this.GetFooterOffset() + attribute.Offset);
         }
 
-        private IAsyncResult BeginReadPhysicalSize(VhdPropertyAttribute attribute, AsyncCallback callback, object state)
+        private IAsyncResult BeginReadOriginalSize(VhdPropertyAttribute attribute, AsyncCallback callback, object state)
         {
             return dataReader.BeginReadUInt64(this.GetFooterOffset() + attribute.Offset, callback, state);
         }
 
-        private long EndReadPhysicalSize(IAsyncResult result)
+        private long EndReadOriginalSize(IAsyncResult result)
         {
             var value = dataReader.EndReadUInt64(result);
             return (long)value;
@@ -450,17 +450,17 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
             return diskTypeFactory.Create(readDiskType);
         }
 
-        private long ReadVirtualSize(VhdPropertyAttribute attribute)
+        private long ReadCurrentSize(VhdPropertyAttribute attribute)
         {
             return (long)dataReader.ReadUInt64(this.GetFooterOffset() + attribute.Offset);
         }
 
-        private IAsyncResult BeginReadVirtualSize(VhdPropertyAttribute attribute, AsyncCallback callback, object state)
+        private IAsyncResult BeginReadCurrentSize(VhdPropertyAttribute attribute, AsyncCallback callback, object state)
         {
             return dataReader.BeginReadUInt64(this.GetFooterOffset() + attribute.Offset, callback, state);
         }
 
-        private long EndReadVirtualSize(IAsyncResult result)
+        private long EndReadCurrentSize(IAsyncResult result)
         {
             return (long)dataReader.EndReadUInt64(result);
         }

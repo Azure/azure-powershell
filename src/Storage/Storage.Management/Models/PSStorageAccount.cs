@@ -63,12 +63,13 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.EnableNfsV3 = storageAccount.EnableNfsV3;
             this.ExtendedLocation = storageAccount.ExtendedLocation is null ? null : new PSExtendedLocation(storageAccount.ExtendedLocation);
             this.AllowSharedKeyAccess = storageAccount.AllowSharedKeyAccess;
-            this.KeyCreationTime = storageAccount.KeyCreationTime is null? null : new PSKeyCreationTime(storageAccount.KeyCreationTime);
+            this.KeyCreationTime = storageAccount.KeyCreationTime is null ? null : new PSKeyCreationTime(storageAccount.KeyCreationTime);
             this.KeyPolicy = storageAccount.KeyPolicy;
             this.SasPolicy = storageAccount.SasPolicy;
             this.AllowCrossTenantReplication = storageAccount.AllowCrossTenantReplication;
             this.PublicNetworkAccess = storageAccount.PublicNetworkAccess;
             this.ImmutableStorageWithVersioning = storageAccount.ImmutableStorageWithVersioning is null ? null : new PSImmutableStorageAccount(storageAccount.ImmutableStorageWithVersioning);
+            this.StorageAccountSkuConversionStatus = storageAccount.StorageAccountSkuConversionStatus is null ? null : new PSStorageAccountSkuConversionStatus(storageAccount.StorageAccountSkuConversionStatus);
         }
         public bool? AllowCrossTenantReplication { get; set; }
 
@@ -146,7 +147,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public bool? AllowBlobPublicAccess { get; set; }
 
         public string MinimumTlsVersion { get; set; }
-        
+
         public bool? EnableNfsV3 { get; set; }
 
         public bool? AllowSharedKeyAccess { get; set; }
@@ -156,14 +157,16 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public string PublicNetworkAccess { get; set; }
 
         public PSImmutableStorageAccount ImmutableStorageWithVersioning { get; set; }
+        public PSStorageAccountSkuConversionStatus StorageAccountSkuConversionStatus { get; set; }
+
 
         public static PSStorageAccount Create(StorageModels.StorageAccount storageAccount, IStorageManagementClient client)
         {
             var result = new PSStorageAccount(storageAccount);
-             result.Context = new LazyAzureStorageContext((s) => 
-             { 
-                return (new ARMStorageProvider(client)).GetCloudStorageAccount(s, result.ResourceGroupName);  
-             }, result.StorageAccountName) as AzureStorageContext; 
+            result.Context = new LazyAzureStorageContext((s) =>
+            {
+                return (new ARMStorageProvider(client)).GetCloudStorageAccount(s, result.ResourceGroupName);
+            }, result.StorageAccountName) as AzureStorageContext;
 
             return result;
         }
@@ -295,5 +298,27 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         }
         public int? ImmutabilityPeriodSinceCreationInDays { get; set; }
         public string State { get; set; }
+    }
+
+    /// <summary>
+    ///  wrapper class of StorageAccountSkuConversionStatus
+    /// </summary>
+    public class PSStorageAccountSkuConversionStatus
+    {
+        public string SkuConversionStatus { get; set; }
+        public string TargetSkuName { get; set; }
+        public string StartTime { get; set; }
+        public string EndTime { get; set; }
+
+        public PSStorageAccountSkuConversionStatus(StorageAccountSkuConversionStatus status)
+        {
+            if (status != null)
+            {
+                this.SkuConversionStatus = status.SkuConversionStatus;
+                this.TargetSkuName = status.TargetSkuName;
+                this.StartTime = status.StartTime;
+                this.EndTime = status.EndTime;
+            }
+        }
     }
 }

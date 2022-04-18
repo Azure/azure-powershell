@@ -461,7 +461,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                     if (pr != null)
                     {
                         // Size of the source file might be 0, when it is, directly treat the progress as 100 percent.
-                        pr.PercentComplete = 0 == fileSize ? 100 : (int)(finishedBytes * 100 / fileSize);
+                        pr.PercentComplete = 0 == fileSize ? 100 : (int)(finishedBytes * 100 / fileSize % 101);
                         pr.StatusDescription = string.Format(CultureInfo.CurrentCulture, Resources.FileTransmitStatus, pr.PercentComplete);
                         this.OutputStream.WriteProgress(pr);
                     }
