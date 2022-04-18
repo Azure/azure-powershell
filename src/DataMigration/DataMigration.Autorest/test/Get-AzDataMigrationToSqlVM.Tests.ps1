@@ -12,7 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzDataMigrationToSqlVM' {
-    It 'Get'  {
+    It 'Get' -skip  {
         $instance = Get-AzDataMigrationToSqlVM -SqlVirtualMachineName $env.TestDatabaseMigrationVm.SqlVirtualMachineName -ResourceGroupName $env.TestDatabaseMigrationVm.ResourceGroupName -TargetDbName $env.TestDatabaseMigrationVm.TargetDbName
         $assert = ($instance.Name -eq $env.TestDatabaseMigrationVm.TargetDbName) -AND ($instance.Kind -eq 'SqlVm')
         $assert | Should be $true
