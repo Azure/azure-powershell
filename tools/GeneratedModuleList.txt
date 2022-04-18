@@ -24,6 +24,7 @@ Az.Elastic
 Az.Functions
 Az.HanaOnAzure
 Az.HealthBot
+Az.HealthcareApis
 Az.ImageBuilder
 Az.ImportExport
 Az.KubernetesConfiguration
