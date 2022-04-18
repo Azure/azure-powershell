@@ -51,7 +51,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.Key
         [Parameter(Mandatory = true,
             Position = 0,
             ParameterSetName = GetByHsmResourceIdParameterSet,
-            ValueFromPipelineByPropertyName = true)]
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "HSM resource id.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 

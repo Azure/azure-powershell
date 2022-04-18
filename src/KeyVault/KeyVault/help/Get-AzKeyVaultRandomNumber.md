@@ -165,7 +165,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-{{ Fill ResourceId Description }}
+HSM resource id.
 
 ```yaml
 Type: System.String
