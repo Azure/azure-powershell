@@ -16,6 +16,154 @@
 
 <#
 .Synopsis
+Directory objects that are owned by the user.
+Read-only.
+Nullable.
+Supports $expand.
+.Description
+Directory objects that are owned by the user.
+Read-only.
+Nullable.
+Supports $expand.
+.Example
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+.Example
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject
+.Link
+https://docs.microsoft.com/powershell/module/az.resources/get-azaduserownedobject
+#>
+function Get-AzADUserOwnedObject {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
+    [System.String[]]
+    # Expand related entities
+    ${Expand},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
+    [System.String[]]
+    # Order items by property values
+    ${Orderby},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
+    [System.String[]]
+    # Select properties to be returned
+    ${Select},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.UInt64]
+    # Gets only the first 'n' objects.
+    ${First},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.UInt64]
+    # Ignores the first 'n' objects and then gets the remaining objects.
+    ${Skip},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        $mapping = @{
+            List = 'Az.MSGraph.private\Get-AzADUserOwnedObject_List';
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        throw
+    }
+}
+
+end {
+    try {
+        $steppablePipeline.End()
+    } catch {
+        throw
+    }
+}
+}
+
+<#
+.Synopsis
 Represents an Azure Active Directory object.
 The directoryObject type is the base type for many other directory entity types.
 .Description
@@ -44,7 +192,6 @@ APPROLEASSIGNMENT <IMicrosoftGraphAppRoleAssignmentAutoGenerated[]>: Represents 
   [ResourceId <String>]: The unique identifier (id) for the resource service principal for which the assignment is made. Required on create. Supports $filter (eq only).
 
 CREATEDONBEHALFOF <IMicrosoftGraphDirectoryObject>: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
-  [(Any) <Object>]: This indicates any property can be added to this object.
   [DeletedDateTime <DateTime?>]: 
   [DisplayName <String>]: The name displayed in directory
 
@@ -532,7 +679,6 @@ TARGETGROUPOBJECT <MicrosoftGraphGroup>: The target group object, could be used 
     [ResourceId <String>]: The unique identifier (id) for the resource service principal for which the assignment is made. Required on create. Supports $filter (eq only).
   [Classification <String>]: Describes a classification for the group (such as low, medium or high business impact). Valid values for this property are defined by creating a ClassificationList setting value, based on the template definition.Returned by default. Supports $filter (eq, ne, NOT, ge, le, startsWith).
   [CreatedOnBehalfOf <IMicrosoftGraphDirectoryObject>]: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
-    [(Any) <Object>]: This indicates any property can be added to this object.
     [DeletedDateTime <DateTime?>]: 
     [DisplayName <String>]: The name displayed in directory
   [Description <String>]: An optional description for the group. Returned by default. Supports $filter (eq, ne, NOT, ge, le, startsWith) and $search.
@@ -988,13 +1134,11 @@ Get-AzADapplication -OwnedApplication
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject
 .Link
 https://docs.microsoft.com/powershell/module/az.resources/get-azadapplication
 #>
 function Get-AzADApplication {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication], [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication])]
 [CmdletBinding(DefaultParameterSetName='EmptyParameterSet', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='ApplicationObjectIdParameterSet', Mandatory)]
@@ -1003,6 +1147,12 @@ param(
     [System.String]
     # key: id of application
     ${ObjectId},
+
+    [Parameter(ParameterSetName='OwnedApplicationParameterSet', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
+    [System.Management.Automation.SwitchParameter]
+    # get owned application
+    ${OwnedApplication},
 
     [Parameter()]
     [AllowEmptyCollection()]
@@ -1056,12 +1206,6 @@ param(
     [System.String]
     # application identifier uri
     ${IdentifierUri},
-
-    [Parameter(ParameterSetName='OwnedApplicationParameterSet', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
-    [System.Management.Automation.SwitchParameter]
-    # get owned application
-    ${OwnedApplication},
 
     [Parameter(ParameterSetName='EmptyParameterSet')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Header')]
@@ -1522,7 +1666,6 @@ GROUPOBJECT <IMicrosoftGraphGroup>: The target group object, could be used as pi
     [ResourceId <String>]: The unique identifier (id) for the resource service principal for which the assignment is made. Required on create. Supports $filter (eq only).
   [Classification <String>]: Describes a classification for the group (such as low, medium or high business impact). Valid values for this property are defined by creating a ClassificationList setting value, based on the template definition.Returned by default. Supports $filter (eq, ne, NOT, ge, le, startsWith).
   [CreatedOnBehalfOf <IMicrosoftGraphDirectoryObject>]: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
-    [(Any) <Object>]: This indicates any property can be added to this object.
     [DeletedDateTime <DateTime?>]: 
     [DisplayName <String>]: The name displayed in directory
   [Description <String>]: An optional description for the group. Returned by default. Supports $filter (eq, ne, NOT, ge, le, startsWith) and $search.
@@ -3457,7 +3600,6 @@ APPROLEASSIGNMENT <IMicrosoftGraphAppRoleAssignmentAutoGenerated[]>: Represents 
   [ResourceId <String>]: The unique identifier (id) for the resource service principal for which the assignment is made. Required on create. Supports $filter (eq only).
 
 CREATEDONBEHALFOF <IMicrosoftGraphDirectoryObject>: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
-  [(Any) <Object>]: This indicates any property can be added to this object.
   [DeletedDateTime <DateTime?>]: 
   [DisplayName <String>]: The name displayed in directory
 
@@ -6070,7 +6212,6 @@ INPUTOBJECT <IMicrosoftGraphGroup>: user input object
     [ResourceId <String>]: The unique identifier (id) for the resource service principal for which the assignment is made. Required on create. Supports $filter (eq only).
   [Classification <String>]: Describes a classification for the group (such as low, medium or high business impact). Valid values for this property are defined by creating a ClassificationList setting value, based on the template definition.Returned by default. Supports $filter (eq, ne, NOT, ge, le, startsWith).
   [CreatedOnBehalfOf <IMicrosoftGraphDirectoryObject>]: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
-    [(Any) <Object>]: This indicates any property can be added to this object.
     [DeletedDateTime <DateTime?>]: 
     [DisplayName <String>]: The name displayed in directory
   [Description <String>]: An optional description for the group. Returned by default. Supports $filter (eq, ne, NOT, ge, le, startsWith) and $search.
@@ -6264,7 +6405,6 @@ GROUPOBJECT <MicrosoftGraphGroup>: The target group object, could be used as pip
     [ResourceId <String>]: The unique identifier (id) for the resource service principal for which the assignment is made. Required on create. Supports $filter (eq only).
   [Classification <String>]: Describes a classification for the group (such as low, medium or high business impact). Valid values for this property are defined by creating a ClassificationList setting value, based on the template definition.Returned by default. Supports $filter (eq, ne, NOT, ge, le, startsWith).
   [CreatedOnBehalfOf <IMicrosoftGraphDirectoryObject>]: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
-    [(Any) <Object>]: This indicates any property can be added to this object.
     [DeletedDateTime <DateTime?>]: 
     [DisplayName <String>]: The name displayed in directory
   [Description <String>]: An optional description for the group. Returned by default. Supports $filter (eq, ne, NOT, ge, le, startsWith) and $search.

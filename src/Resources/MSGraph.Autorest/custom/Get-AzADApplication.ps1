@@ -33,7 +33,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGra
 https://docs.microsoft.com/powershell/module/az.resources/get-azadapplication
 #>
 function Get-AzADApplication {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication], [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication])]
 [CmdletBinding(DefaultParameterSetName='EmptyParameterSet', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='ApplicationObjectIdParameterSet', Mandatory)]

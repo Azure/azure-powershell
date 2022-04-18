@@ -13,8 +13,6 @@ components:
           type: string
           readOnly: true
           description: Read-only.
-      additionalProperties:
-        type: object
     microsoft.graph.directoryObject:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -41,5 +39,3 @@ components:
               description: 'The full id of object in directory'
               nullable: true
           description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
-          additionalProperties:
-            type: object

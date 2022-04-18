@@ -32,13 +32,11 @@ Get-AzADapplication -OwnedApplication
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject
 .Link
 https://docs.microsoft.com/powershell/module/az.resources/get-azadapplication
 #>
 function Get-AzADApplication {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication], [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication])]
 [CmdletBinding(DefaultParameterSetName='EmptyParameterSet', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='ApplicationObjectIdParameterSet', Mandatory)]
@@ -47,6 +45,12 @@ param(
     [System.String]
     # key: id of application
     ${ObjectId},
+
+    [Parameter(ParameterSetName='OwnedApplicationParameterSet', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
+    [System.Management.Automation.SwitchParameter]
+    # get owned application
+    ${OwnedApplication},
 
     [Parameter()]
     [AllowEmptyCollection()]
@@ -100,12 +104,6 @@ param(
     [System.String]
     # application identifier uri
     ${IdentifierUri},
-
-    [Parameter(ParameterSetName='OwnedApplicationParameterSet', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
-    [System.Management.Automation.SwitchParameter]
-    # get owned application
-    ${OwnedApplication},
 
     [Parameter(ParameterSetName='EmptyParameterSet')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Header')]
