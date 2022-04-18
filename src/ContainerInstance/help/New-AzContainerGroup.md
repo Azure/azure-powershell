@@ -29,7 +29,7 @@ New-AzContainerGroup -Name <String> -ResourceGroupName <String> -Container <ICon
 ```
 
 ## DESCRIPTION
-Create or update container groups with specified configurations. For property Volume, we support mounting Azure File share as a volume or specifying git repository as volume directory. The empty directory volume and secret volume are not supported yet.
+Create or update container groups with specified configurations.
 
 ## EXAMPLES
 
@@ -112,8 +112,7 @@ This commands creates a container group with a container instance, whose image i
 ### Example 6: Create a container group that mounts Azure File volume
 ```powershell
 $volume = New-AzContainerGroupVolumeObject -Name "myvolume" -AzureFileShareName "myshare" -AzureFileStorageAccountName "username" -AzureFileStorageAccountKey (ConvertTo-SecureString "PlainTextPassword" -AsPlainText -Force)
-$mount = New-AzContainerInstanceVolumeMountObject -MountPath "/aci/logs" -Name "myvolume"
-$container = New-AzContainerInstanceObject -Name test-container -Image alpine -VolumeMount $mount
+$container = New-AzContainerInstanceObject -Name test-container -Image alpine
 $containerGroup = New-AzContainerGroup -ResourceGroupName test-rg -Name test-cg -Location eastus -Container $container -Volume $volume
 ```
 
@@ -791,7 +790,8 @@ VOLUME <IVolume[]>: The list of volumes that can be mounted by containers in thi
   - `[AzureFileShareName <String>]`: The name of the Azure File share to be mounted as a volume.
   - `[AzureFileStorageAccountKey <String>]`: The storage account access key used to access the Azure File share.
   - `[AzureFileStorageAccountName <String>]`: The name of the storage account that contains the Azure File share.
-  - `[EmptyDir <IAny>]`: The empty directory volume.
+  - `[EmptyDir <IVolumeEmptyDir>]`: The empty directory volume.
+    - `[(Any) <Object>]`: This indicates any property can be added to this object.
   - `[GitRepoDirectory <String>]`: Target directory name. Must not contain or start with '..'.  If '.' is supplied, the volume directory will be the git repository.  Otherwise, if specified, the volume will contain the git repository in the subdirectory with the given name.
   - `[GitRepoRepository <String>]`: Repository URL
   - `[GitRepoRevision <String>]`: Commit hash for the specified revision.

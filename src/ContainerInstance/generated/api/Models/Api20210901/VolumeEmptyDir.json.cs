@@ -7,8 +7,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2021090
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Extensions;
 
-    /// <summary>The properties of the volume.</summary>
-    public partial class Volume
+    /// <summary>The empty directory volume.</summary>
+    public partial class VolumeEmptyDir
     {
 
         /// <summary>
@@ -52,25 +52,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2021090
         partial void BeforeToJson(ref Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonObject container, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IVolume.
+        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IVolumeEmptyDir.
         /// </summary>
         /// <param name="node">a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonNode" /> to deserialize from.</param>
         /// <returns>
-        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IVolume.
+        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IVolumeEmptyDir.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IVolume FromJson(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonNode node)
+        public static Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IVolumeEmptyDir FromJson(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonNode node)
         {
-            return node is Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonObject json ? new Volume(json) : null;
+            return node is Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonObject json ? new VolumeEmptyDir(json) : null;
         }
 
         /// <summary>
-        /// Serializes this instance of <see cref="Volume" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonNode" />.
+        /// Serializes this instance of <see cref="VolumeEmptyDir" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonNode" />.
         /// </summary>
         /// <param name="container">The <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonObject"/> container to serialize this object into. If the caller
         /// passes in <c>null</c>, a new instance will be created and returned to the caller.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.SerializationMode"/>.</param>
         /// <returns>
-        /// a serialized instance of <see cref="Volume" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonNode" />.
+        /// a serialized instance of <see cref="VolumeEmptyDir" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonNode" />.
         /// </returns>
         public Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonNode ToJson(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonObject container, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.SerializationMode serializationMode)
         {
@@ -82,20 +82,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2021090
             {
                 return container;
             }
-            AddIf( null != this._azureFile ? (Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonNode) this._azureFile.ToJson(null,serializationMode) : null, "azureFile" ,container.Add );
-            AddIf( null != this._gitRepo ? (Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonNode) this._gitRepo.ToJson(null,serializationMode) : null, "gitRepo" ,container.Add );
-            AddIf( null != (((object)this._name)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonString(this._name.ToString()) : null, "name" ,container.Add );
-            AddIf( null != this._emptyDir ? (Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonNode) this._emptyDir.ToJson(null,serializationMode) : null, "emptyDir" ,container.Add );
-            AddIf( null != this._secret ? (Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonNode) this._secret.ToJson(null,serializationMode) : null, "secret" ,container.Add );
+            Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.JsonSerializable.ToJson( ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.IAssociativeArray<global::System.Object>)this).AdditionalProperties, container);
             AfterToJson(ref container);
             return container;
         }
 
         /// <summary>
-        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonObject into a new instance of <see cref="Volume" />.
+        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonObject into a new instance of <see cref="VolumeEmptyDir" />.
         /// </summary>
         /// <param name="json">A Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonObject instance to deserialize from.</param>
-        internal Volume(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonObject json)
+        /// <param name="exclusions"></param>
+        internal VolumeEmptyDir(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonObject json, global::System.Collections.Generic.HashSet<string> exclusions = null)
         {
             bool returnNow = false;
             BeforeFromJson(json, ref returnNow);
@@ -103,11 +100,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2021090
             {
                 return;
             }
-            {_azureFile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonObject>("azureFile"), out var __jsonAzureFile) ? Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.AzureFileVolume.FromJson(__jsonAzureFile) : AzureFile;}
-            {_gitRepo = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonObject>("gitRepo"), out var __jsonGitRepo) ? Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.GitRepoVolume.FromJson(__jsonGitRepo) : GitRepo;}
-            {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)Name;}
-            {_emptyDir = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonObject>("emptyDir"), out var __jsonEmptyDir) ? Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.VolumeEmptyDir.FromJson(__jsonEmptyDir) : EmptyDir;}
-            {_secret = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonObject>("secret"), out var __jsonSecret) ? Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.SecretVolume.FromJson(__jsonSecret) : Secret;}
+            Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.JsonSerializable.FromJson( json, ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.IAssociativeArray<global::System.Object>)this).AdditionalProperties, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.JsonSerializable.DeserializeDictionary(()=>new global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object>()),exclusions );
             AfterFromJson(json);
         }
     }
