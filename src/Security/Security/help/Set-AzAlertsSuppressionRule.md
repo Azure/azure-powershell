@@ -16,16 +16,15 @@ Create or update an alerts suppression rule.
 ```
 Set-AzAlertsSuppressionRule -Name <String> -AlertType <String> [-ExpirationDateUtc <DateTime>] -Reason <String>
  -State <PSRuleState> [-Comment <String>] [-SuppressionAlertsScope <PSSuppressionAlertsScope>]
- [-AllOf <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Security.Models.AlertsSuppressionRules.PSIScopeElement]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AllOf <PSIScopeElement[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### InputObject
 ```
 Set-AzAlertsSuppressionRule -InputObject <PSAlertsSuppressionRule> [-Name <String>] [-AlertType <String>]
  [-ExpirationDateUtc <DateTime>] [-Reason <String>] [-State <PSRuleState>] [-Comment <String>]
- [-SuppressionAlertsScope <PSSuppressionAlertsScope>]
- [-AllOf <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Security.Models.AlertsSuppressionRules.PSIScopeElement]>]
+ [-SuppressionAlertsScope <PSSuppressionAlertsScope>] [-AllOf <PSIScopeElement[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -74,7 +73,7 @@ Accept wildcard characters: False
 Scope the suppression rule using specific entities.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Security.Models.AlertsSuppressionRules.PSIScopeElement]
+Type: Microsoft.Azure.Commands.Security.Models.AlertsSuppressionRules.PSIScopeElement[]
 Parameter Sets: (All)
 Aliases:
 

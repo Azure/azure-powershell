@@ -23,6 +23,7 @@
     `Get-AlertsSuppressionRule`
     `Remove-AlertsSuppressionRule`
     `Set-AlertsSuppressionRule`
+    `New-AzAlertsSuppressionRuleScope`
 
 ## Version 1.1.1
 * Updated Security .NET SDK package reference to version 3.0.0

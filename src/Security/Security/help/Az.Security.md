@@ -86,6 +86,9 @@ Gets the configured security workspace settings on a subscription.
 ### [Get-AzSqlInformationProtectionPolicy](Get-AzSqlInformationProtectionPolicy.md)
 Retrieves the effective tenant SQL information protection policy.
 
+### [New-AzAlertsSuppressionRuleScope](New-AzAlertsSuppressionRuleScope.md)
+Helper cmdlet to create PSIScopeElement.
+
 ### [New-AzDeviceSecurityGroupAllowlistCustomAlertRuleObject](New-AzDeviceSecurityGroupAllowlistCustomAlertRuleObject.md)
 Create new allow list custom alert rule for device security group (IoT Security)
 

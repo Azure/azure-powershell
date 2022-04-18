@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.AlertsSuppressionRules
 
         [Parameter(Mandatory = false, ParameterSetName = ParameterSetNames.RuleNameWithParameters, HelpMessage = "Scope the suppression rule using specific entities.")]
         [Parameter(Mandatory = false, ParameterSetName = ParameterSetNames.InputObject, HelpMessage = "Scope the suppression rule using specific entities.")]
-        public List<PSIScopeElement> AllOf { get; set; }
+        public PSIScopeElement[] AllOf { get; set; }
 
         public override void ExecuteCmdlet()
         {
