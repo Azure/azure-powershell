@@ -57,7 +57,7 @@ function Invoke-SwaggerCI {
             $packages += $package
         } catch {
             $package = @{
-                packageName = "Az.$moduleName"
+                packageName = "Az.$modulePath"
                 path = @("swaggerci/$modulePath")
                 readmeMd = @($rd)
                 result = "warning"
