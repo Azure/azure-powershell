@@ -1072,7 +1072,7 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation  
-  '/me/ownedObjects':
+  '/me/ownedObjects/$/Microsoft.Graph.Application':
     get:
       tags:
         - users.directoryObject

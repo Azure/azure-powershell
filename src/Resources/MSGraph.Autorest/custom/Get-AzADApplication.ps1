@@ -70,7 +70,7 @@ param(
     ${IdentifierUri},
 
     [Parameter(ParameterSetName='OwnedApplicationParameterSet', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
     [System.Management.Automation.SwitchParameter]
     # get owned application
     ${OwnedApplication},
@@ -208,10 +208,8 @@ process {
         }
         'OwnedApplicationParameterSet' {
             $null = $PSBoundParameters.Remove("OwnedApplication")
-            [System.Array]$apps = . Az.MSGraph.internal\Get-AzADUserOwnedObject @PSBoundParameters
-            $result = @()
-            $apps | Where-Object {$_.OdataType -eq "#microsoft.graph.application"} | Foreach-Object {$result += $_}
-            $PSCmdlet.WriteObject($result)
+            [System.Array]$apps = . Az.MSGraph.internal\Get-AzADUserOwnedApplication @PSBoundParameters
+            $PSCmdlet.WriteObject($apps)
             return
         }
         default {

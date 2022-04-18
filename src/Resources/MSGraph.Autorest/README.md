@@ -70,6 +70,8 @@ nested-object-to-string: true
 default-exclude-tableview-properties: false
 exclude-tableview-properties: []
 
+inlining-threshold: 200
+
 directive:
   - no-inline:
     - MicrosoftGraphUser
@@ -118,9 +120,9 @@ directive:
     where: $
     transform: if ($documentPath.endsWith("MSGraph.cs")) {$ = $.replace(/Count.ToString\(\)/g, "Count.ToString().ToLower()")}
   
-  # hide user owned object cmdlets
+  # hide user owned application cmdlets
   - where:
-      subject: UserOwnedObject
+      subject: UserOwnedApplication
     hide: true
 
   # remove pipe support support since data plane does not have resource Id.
