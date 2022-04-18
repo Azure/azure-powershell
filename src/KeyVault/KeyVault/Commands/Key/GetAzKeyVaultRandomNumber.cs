@@ -10,7 +10,7 @@ using System.Text;
 namespace Microsoft.Azure.Commands.KeyVault.Commands.Key
 {
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultRandomNumber", DefaultParameterSetName = GetByHsmNameParameterSet)]
-    [OutputType(typeof(string))]
+    [OutputType(typeof(string), typeof(byte[]))]
     public class GetAzKeyVaultRandomNumber: KeyVaultCmdletBase
     {
         #region Parameter Set Names
@@ -32,8 +32,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.Key
             HelpMessage = "HSM name. Cmdlet constructs the FQDN of a managed HSM based on the name and currently selected environment.")]
         [ResourceNameCompleter("Microsoft.KeyVault/managedHSMs", "FakeResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        [Alias("HsmName")]
-        public string Name;
+        public string HsmName;
 
         /// <summary>
         /// HSM Input Object
@@ -70,7 +69,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.Key
         public override void ExecuteCmdlet()
         {
             NormalizeKeySourceParameters();
-            var result = Track2DataClient.GetManagedHsmRandomNumber(Name, Count);
+            var result = Track2DataClient.GetManagedHsmRandomNumber(HsmName, Count);
             if(AsBase64String.IsPresent)
             {
                 this.WriteObject(Convert.ToBase64String(result));
@@ -85,12 +84,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.Key
         {
             if (InputObject != null)
             {
-                Name = InputObject.Name;
+                HsmName = InputObject.Name;
             }
             else if (ResourceId != null)
             {
                 var resourceIdentifier = new ResourceIdentifier(ResourceId);
-                Name = resourceIdentifier.ResourceName;
+                HsmName = resourceIdentifier.ResourceName;
             }
         }
     }
