@@ -30,6 +30,10 @@ function Invoke-SwaggerCI {
             autorest (Join-Path $moduleFolder "readme.md") --version:3.7.6
             #Build the module
             . (Join-Path $moduleFolder "build-module.ps1")
+            if ($LASTEXITCODE -ne 0) {
+                # throw except if build fails
+                throw
+            }
             #Override the generated .gitignore file
             cp ./tools/SwaggerCI/gitignoreconf (Join-Path $moduleFolder ".gitignore")
             #Package
@@ -51,7 +55,7 @@ function Invoke-SwaggerCI {
             $packages += $package
         } catch {
             $package = @{
-                packageName = "Az.$moduleName"
+                packageName = "Az.$modulePath"
                 path = @("swaggerci/$modulePath")
                 readmeMd = @($rd)
                 result = "warning"
