@@ -56,11 +56,12 @@ function Invoke-SwaggerCI {
             }
             $packages += $package
         } catch {
+            Write-Error "Azure PowerShell CI validation failed for Az.$modulePath"
             $package = @{
                 packageName = "Az.$modulePath"
                 path = @("swaggerci/$modulePath")
                 readmeMd = @($rd)
-                result = "warning"
+                result = "failed"
             }
             $packages += $package
         }
