@@ -73,7 +73,7 @@ If the value has been applied to any resources or resource groups, the command f
 Remove-AzTag -ResourceId /subscriptions/xxxx-xxxx-xxxx-xxxx-xxxx
 ```
 
-This command deletes the entire set of tags on the subscription with subId. It will not return the object deleted if not passing in "-PassThru".
+This command deletes the entire set of tags on the subscription with {subId}. It will not return the object deleted if not passing in "-PassThru".
 
 ### Example 4: Deletes the entire set of tags on a resource
 
@@ -91,7 +91,7 @@ Properties :
              Status   Normal
 ```
 
-This command deletes the entire set of tags on the resource with resourceId. It returns the deleted oject when passing in "-PassThru".
+This command deletes the entire set of tags on the resource with {resourceId}. It returns the deleted oject when passing in "-PassThru".
 
 ## PARAMETERS
 

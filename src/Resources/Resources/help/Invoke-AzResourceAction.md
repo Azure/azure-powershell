@@ -49,7 +49,7 @@ Invoke-AzResourceAction -ResourceId /subscriptions/xxxx-xxxx-xxxx-xxxx-xxxx/reso
 ```
 ```output
 Confirm
-Are you sure you want to invoke the 'start' action on the following resource: /subscriptions/{subId}/resourceGroups/testGroup/providers/Microsoft.Compute/virtualMachines/testVM
+Are you sure you want to invoke the 'start' action on the following resource: /subscriptions/xxxx-xxxx-xxxx-xxxx-xxxx/resourceGroups/testrg/providers/Microsoft.Compute/virtualMachines/testVM
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
 ```
 
@@ -70,7 +70,7 @@ The command specifies the *Force* parameter, therefore, it does not prompt you f
 Invoke-AzResourceAction -ResourceId /subscriptions/xxxx-xxxx-xxxx-xxxx-xxxx/providers/Microsoft.Network -action register -Force
 ```
 ```output
-id                : /subscriptions/{subId}/providers/Microsoft.Network
+id                : /subscriptions/xxxx-xxxx-xxxx-xxxx-xxxx/providers/Microsoft.Network
 namespace         : Microsoft.Network
 authorizations    : {…}
 resourceTypes     : {@{resourceType=virtualNetworks; locations=System.Object[]; apiVersions=System.Object[]},

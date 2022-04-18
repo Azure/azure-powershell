@@ -56,14 +56,14 @@ Get-AzResourceGroup -Tag @{'environment'='prod'}
 ```powershell
 Get-AzResourceGroup |
   Sort-Object Location,ResourceGroupName |
-  Format-Table -GroupBy Location ResourceGroupName,ProvisioningState,Tags
+    Format-Table -GroupBy Location ResourceGroupName,ProvisioningState,Tags
 ```
 
 ### Example 5: Show the names of all the Resource groups in a particular location
 ```powershell
 Get-AzResourceGroup -Location westus2 |
-   Sort-Object ResourceGroupName | 
-   Format-Wide ResourceGroupName -Column 4
+  Sort-Object ResourceGroupName |
+    Format-Wide ResourceGroupName -Column 4
 ```
 
 ### Example 6: Show the Resource groups whose names begin with WebServer

@@ -93,7 +93,7 @@ This command updates the groups of a policy set definition named VMPolicySetDefi
 
 ### Example 4: Update the groups of a policy set definition using a hash table
 ```powershell
-$groupsJson = ConvertTo-Json { name = "group1", displayName = "Virtual Machine Security" }, { name = "group2" }
+$groupsJson = ConvertTo-Json @{ name = "group1"; displayName = "Virtual Machine Security" }, @{ name = "group2" }
 Set-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -GroupDefinition $groupsJson
 ```
 
