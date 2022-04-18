@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 IPagedEnumerable<Certificate> certificates = certOperations.ListCertificates(listDetailLevel, options.AdditionalBehaviors);
                 Func<Certificate, PSCertificate> mappingFunction = c => { return new PSCertificate(c); };
                 return PSPagedEnumerable<PSCertificate, Certificate>.CreateWithMaxCount(
-                    certificates, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
+                    certificates, mappingFunction, options.MaxCount, () => WriteMaxCount(options.MaxCount));
             }
         }
 

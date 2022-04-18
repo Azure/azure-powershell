@@ -29,7 +29,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
         protected const string BaseBlobLastAccessTimeParameterSet = "BaseBlobLastAccessTime";
         protected const string SnapshotParameterSet = "Snapshot";
         protected const string BlobVersionParameterSet = "BlobVersion";
-
         [Parameter(Mandatory = true,
             HelpMessage = "The management policy action for baseblob.",
             ParameterSetName = BaseBlobParameterSet)]
@@ -104,6 +103,29 @@ namespace Microsoft.Azure.Commands.Management.Storage
         public int? daysAfterLastAccessTimeGreaterThan;
 
         [Parameter(Mandatory = false,
+            HelpMessage = "Integer value indicating the age in days after last blob tier change time. This property is only applicable for tierToArchive actions. It requires daysAfterModificationGreaterThan to be set for baseBlobs based actions, or daysAfterModificationGreaterThan to be set for snapshots and blob version based actions.",
+            ParameterSetName = BaseBlobParameterSet)]
+        [Parameter(Mandatory = false,
+            HelpMessage = "Integer value indicating the age in days after last blob tier change time. This property is only applicable for tierToArchive actions. It requires daysAfterModificationGreaterThan to be set for baseBlobs based actions, or daysAfterModificationGreaterThan to be set for snapshots and blob version based actions.",
+            ParameterSetName = SnapshotParameterSet)]
+        [Parameter(Mandatory = false,
+            HelpMessage = "Integer value indicating the age in days after last blob tier change time. This property is only applicable for tierToArchive actions. It requires daysAfterModificationGreaterThan to be set for baseBlobs based actions, or daysAfterModificationGreaterThan to be set for snapshots and blob version based actions.",
+            ParameterSetName = BlobVersionParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public int DaysAfterLastTierChangeGreaterThan
+        {
+            get
+            {
+                return daysAfterLastTierChangeGreaterThan is null ? 0 : daysAfterLastTierChangeGreaterThan.Value;
+            }
+            set
+            {
+                daysAfterLastTierChangeGreaterThan = value;
+            }
+        }
+        public int? daysAfterLastTierChangeGreaterThan;
+
+        [Parameter(Mandatory = false,
             HelpMessage = "Enables auto tiering of a blob from cool to hot on a blob access. It only works with TierToCool action and DaysAfterLastAccessTimeGreaterThan.",
             ParameterSetName = BaseBlobLastAccessTimeParameterSet)]
         public SwitchParameter EnableAutoTierToHotFromCool { get; set; }
@@ -131,16 +153,36 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     {
                         action.BaseBlob = new PSManagementPolicyBaseBlob();
                     }
+
+                    if (this.daysAfterLastTierChangeGreaterThan != null
+                        & BaseBlobAction != ManagementPolicyAction.TierToArchive
+                        & SnapshotAction != ManagementPolicyAction.TierToArchive
+                        & BlobVersionAction != ManagementPolicyAction.TierToArchive)
+                    {
+                        throw new PSArgumentException("-DaysAfterLastTierChangeGreaterThan is only avaialbe with action TierToArchive.", "DaysAfterLastTierChangeGreaterThan");
+                    }
+
+                    int? daysAfterCreationGreaterThan = this.DaysAfterCreationGreaterThan;
+                    if (daysAfterCreationGreaterThan == 0)
+                    {
+                        daysAfterCreationGreaterThan = null;
+                    }
                     switch (BaseBlobAction)
                     {
                         case ManagementPolicyAction.Delete:
-                            action.BaseBlob.Delete = new PSDateAfterModification(this.daysAfterModificationGreaterThan, this.daysAfterLastAccessTimeGreaterThan);
+                            action.BaseBlob.Delete = new PSDateAfterModification(this.daysAfterModificationGreaterThan, 
+                                this.daysAfterLastAccessTimeGreaterThan, 
+                                this.daysAfterLastTierChangeGreaterThan);
                             break;
                         case ManagementPolicyAction.TierToCool:
-                            action.BaseBlob.TierToCool = new PSDateAfterModification(this.daysAfterModificationGreaterThan, this.daysAfterLastAccessTimeGreaterThan);
-                            break;
+                            action.BaseBlob.TierToCool = new PSDateAfterModification(this.daysAfterModificationGreaterThan,
+                                this.daysAfterLastAccessTimeGreaterThan,
+                                this.daysAfterLastTierChangeGreaterThan); 
+                    break;
                         case ManagementPolicyAction.TierToArchive:
-                            action.BaseBlob.TierToArchive = new PSDateAfterModification(this.daysAfterModificationGreaterThan, this.daysAfterLastAccessTimeGreaterThan);
+                            action.BaseBlob.TierToArchive = new PSDateAfterModification(this.daysAfterModificationGreaterThan,
+                                this.daysAfterLastAccessTimeGreaterThan,
+                                this.daysAfterLastTierChangeGreaterThan); 
                             break;
                         default:
                             throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, "Invalid BaseBlobAction: {0}", this.BaseBlobAction));
@@ -158,13 +200,13 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     switch (SnapshotAction)
                     {
                         case ManagementPolicyAction.Delete:
-                            action.Snapshot.Delete = new PSDateAfterCreation(this.DaysAfterCreationGreaterThan);
+                            action.Snapshot.Delete = new PSDateAfterCreation(this.DaysAfterCreationGreaterThan, this.daysAfterLastTierChangeGreaterThan);
                             break;
                         case ManagementPolicyAction.TierToCool:
-                            action.Snapshot.TierToCool = new PSDateAfterCreation(this.DaysAfterCreationGreaterThan);
+                            action.Snapshot.TierToCool = new PSDateAfterCreation(this.DaysAfterCreationGreaterThan, this.daysAfterLastTierChangeGreaterThan);
                             break;
                         case ManagementPolicyAction.TierToArchive:
-                            action.Snapshot.TierToArchive = new PSDateAfterCreation(this.DaysAfterCreationGreaterThan);
+                            action.Snapshot.TierToArchive = new PSDateAfterCreation(this.DaysAfterCreationGreaterThan, this.daysAfterLastTierChangeGreaterThan);
                             break;
                         default:
                             throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, "Invalid SnapshotAction: {0}", this.SnapshotAction));
@@ -178,13 +220,13 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     switch (BlobVersionAction)
                     {
                         case ManagementPolicyAction.Delete:
-                            action.Version.Delete = new PSDateAfterCreation(this.DaysAfterCreationGreaterThan);
+                            action.Version.Delete = new PSDateAfterCreation(this.DaysAfterCreationGreaterThan, this.daysAfterLastTierChangeGreaterThan);
                             break;
                         case ManagementPolicyAction.TierToCool:
-                            action.Version.TierToCool = new PSDateAfterCreation(this.DaysAfterCreationGreaterThan);
+                            action.Version.TierToCool = new PSDateAfterCreation(this.DaysAfterCreationGreaterThan, this.daysAfterLastTierChangeGreaterThan);
                             break;
                         case ManagementPolicyAction.TierToArchive:
-                            action.Version.TierToArchive = new PSDateAfterCreation(this.DaysAfterCreationGreaterThan);
+                            action.Version.TierToArchive = new PSDateAfterCreation(this.DaysAfterCreationGreaterThan, this.daysAfterLastTierChangeGreaterThan);
                             break;
                         default:
                             throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, "Invalid BlobVersionAction: {0}", this.BlobVersionAction));

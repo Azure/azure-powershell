@@ -110,6 +110,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                             ServiceClientAdapter,
                             vaultName: vaultName,
                             resourceGroupName: resourceGroupName);
+
                     if (policy == null)
                     {
                         throw new ArgumentException(string.Format(Resources.PolicyNotFoundException, Name));

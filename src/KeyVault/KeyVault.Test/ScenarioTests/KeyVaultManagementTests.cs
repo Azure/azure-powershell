@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
             }
         }
 
-        #region New-AzureRmKeyVault
+        #region New-AzureKeyVault
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -68,6 +68,19 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
             KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
                 _logger,
                 () => { return new[] { "Test-CreateNewVault" }; },
+                null,
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name
+                );
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPublicNetworkAccessWhenCreateNewVault()
+        {
+            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
+                _logger,
+                () => { return new[] { "Test-PublicNetworkAccessWhenCreateNewVault" }; },
                 null,
                 MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
                 MethodBase.GetCurrentMethod().Name
@@ -102,6 +115,19 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
             KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
                _logger,
                () => { return new[] { "Test-UpdateKeyVault" }; },
+               null,
+               MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+               MethodBase.GetCurrentMethod().Name
+               );
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateKeyVaultWithPublicNetworkAccess()
+        {
+            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
+               _logger,
+               () => { return new[] { "Test-UpdateKeyVaultWithPublicNetworkAccess" }; },
                null,
                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
                MethodBase.GetCurrentMethod().Name

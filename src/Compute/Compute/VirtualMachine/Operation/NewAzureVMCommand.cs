@@ -344,6 +344,13 @@ namespace Microsoft.Azure.Commands.Compute
         public string UserData { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            ParameterSetName = SimpleParameterSet,
+            HelpMessage = "Specified the gallery image unique id for vm deployment. This can be fetched from gallery image GET call.")]
+        [ResourceIdCompleter("Microsoft.Compute galleries/images/versions")]
+        public string ImageReferenceId { get; set; }
+
+        [Parameter(
             ParameterSetName = SimpleParameterSet,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -476,6 +483,25 @@ namespace Microsoft.Azure.Commands.Compute
                     location: Location,
                     client: _client);
 
+                Dictionary<string, List<string>> auxAuthHeader = null;
+                if (!string.IsNullOrEmpty(_cmdlet.ImageReferenceId))
+                {
+                    var resourceId = ResourceId.TryParse(_cmdlet.ImageReferenceId);
+
+                    if (string.Equals(ComputeStrategy.Namespace, resourceId?.ResourceType?.Namespace, StringComparison.OrdinalIgnoreCase)
+                     && string.Equals("galleries", resourceId?.ResourceType?.Provider, StringComparison.OrdinalIgnoreCase)
+                     && !string.Equals(_cmdlet.ComputeClient?.ComputeManagementClient?.SubscriptionId, resourceId?.SubscriptionId, StringComparison.OrdinalIgnoreCase))
+                    {
+                        List<string> resourceIds = new List<string>();
+                        resourceIds.Add(_cmdlet.ImageReferenceId);
+                        var auxHeaderDictionary = _cmdlet.GetAuxilaryAuthHeaderFromResourceIds(resourceIds);
+                        if (auxHeaderDictionary != null && auxHeaderDictionary.Count > 0)
+                        {
+                            auxAuthHeader = new Dictionary<string, List<string>>(auxHeaderDictionary);
+                        }
+                    }
+                }
+
                 var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(_cmdlet.ResourceGroupName);
                 var virtualNetwork = resourceGroup.CreateVirtualNetworkConfig(
                     name: _cmdlet.VirtualNetworkName, edgeZone: _cmdlet.EdgeZone, addressPrefix: _cmdlet.AddressPrefix);
@@ -573,7 +599,9 @@ namespace Microsoft.Azure.Commands.Compute
                         platformFaultDomain: _cmdlet.IsParameterBound(c => c.PlatformFaultDomain) ? _cmdlet.PlatformFaultDomain : (int?) null,
                         additionalCapabilities: vAdditionalCapabilities,
                         vCPUsAvailable: _cmdlet.IsParameterBound(c => c.vCPUCountAvailable) ? _cmdlet.vCPUCountAvailable : (int?)null,
-                        vCPUsPerCore: _cmdlet.IsParameterBound(c => c.vCPUCountPerCore) ? _cmdlet.vCPUCountPerCore : (int?)null
+                        vCPUsPerCore: _cmdlet.IsParameterBound(c => c.vCPUCountPerCore) ? _cmdlet.vCPUCountPerCore : (int?)null,
+                        imageReferenceId: _cmdlet.ImageReferenceId,
+                        auxAuthHeader: auxAuthHeader
                         );
                 }
                 else

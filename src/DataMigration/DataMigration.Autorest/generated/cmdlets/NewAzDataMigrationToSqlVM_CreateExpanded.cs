@@ -13,7 +13,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzDataMigrationToSqlVM_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IDatabaseMigrationSqlVM))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.PreviewMessage("Only use cmdlets containing ToSqlVM in their name for getting or deleting or performing cutover on a migration created using New-AzDataMigrationToSqlVM")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlVM))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Description(@"Create a new database migration to a given SQL VM.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Generated]
     public partial class NewAzDataMigrationToSqlVM_CreateExpanded : global::System.Management.Automation.PSCmdlet,
@@ -96,8 +97,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
         ReadOnly = false,
         Description = @"Password for username to access file share location.",
         SerializedName = @"password",
-        PossibleTypes = new [] { typeof(string) })]
-        public string FileSharePassword { get => ParametersBody.FileSharePassword ?? null; set => ParametersBody.FileSharePassword = value; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        public System.Security.SecureString FileSharePassword { get => ParametersBody.FileSharePassword ?? null; set => ParametersBody.FileSharePassword = value; }
 
         /// <summary>Location as SMB share or local drive where backups are placed.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Location as SMB share or local drive where backups are placed.")]
@@ -165,6 +166,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
         Description = @"ID tracking current migration operation.",
         SerializedName = @"migrationOperationId",
         PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.DoNotExport]
         public string MigrationOperationId { get => ParametersBody.MigrationOperationId ?? null; set => ParametersBody.MigrationOperationId = value; }
 
         /// <summary>Resource Id of the Migration Service.</summary>
@@ -212,10 +214,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
         public string OfflineConfigurationLastBackupName { get => ParametersBody.OfflineConfigurationLastBackupName ?? null; set => ParametersBody.OfflineConfigurationLastBackupName = value; }
 
         /// <summary>Backing field for <see cref="ParametersBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IDatabaseMigrationSqlVM _parametersBody= new Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.DatabaseMigrationSqlVM();
+        private Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlVM _parametersBody= new Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.DatabaseMigrationSqlVM();
 
         /// <summary>Database Migration Resource for SQL Virtual Machine.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IDatabaseMigrationSqlVM ParametersBody { get => this._parametersBody; set => this._parametersBody = value; }
+        private Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlVM ParametersBody { get => this._parametersBody; set => this._parametersBody = value; }
 
         /// <summary>
         /// When specified, forces the cmdlet return a 'bool' given that there isn't a return type by default.
@@ -238,6 +240,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
         Description = @"Error message for migration provisioning failure, if any.",
         SerializedName = @"provisioningError",
         PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.DoNotExport]
         public string ProvisioningError { get => ParametersBody.ProvisioningError ?? null; set => ParametersBody.ProvisioningError = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
@@ -273,13 +276,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.ParameterCategory.Path)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
-        /// <summary>Resource Id of the target resource (SQL VM or SQL Managed Instance)</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource Id of the target resource (SQL VM or SQL Managed Instance)")]
+        /// <summary>
+        /// Resource Id of the target resource (SQL VM). For the Scope parameter, use the Scope of the SQL VM (/subscriptions/111-222/resourceGroups/myRG/providers/Microsoft.SqlVirtualMachine/SqlVirtualMachines/xyz-SqlVM)
+        /// and not the Compute SQL VM (/subscriptions/111-222/resourceGroups/myRG/providers/Microsoft.Compute/virtualMachines/xyz-SqlVM)
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource Id of the target resource (SQL VM). For the Scope parameter, use the Scope of the SQL VM (/subscriptions/111-222/resourceGroups/myRG/providers/Microsoft.SqlVirtualMachine/SqlVirtualMachines/xyz-SqlVM) and not the Compute SQL VM (/subscriptions/111-222/resourceGroups/myRG/providers/Microsoft.Compute/virtualMachines/xyz-SqlVM)")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Resource Id of the target resource (SQL VM or SQL Managed Instance)",
+        Description = @"Resource Id of the target resource (SQL VM). For the Scope parameter, use the Scope of the SQL VM (/subscriptions/111-222/resourceGroups/myRG/providers/Microsoft.SqlVirtualMachine/SqlVirtualMachines/xyz-SqlVM) and not the Compute SQL VM (/subscriptions/111-222/resourceGroups/myRG/providers/Microsoft.Compute/virtualMachines/xyz-SqlVM)",
         SerializedName = @"scope",
         PossibleTypes = new [] { typeof(string) })]
         public string Scope { get => ParametersBody.Scope ?? null; set => ParametersBody.Scope = value; }
@@ -336,8 +342,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
         ReadOnly = false,
         Description = @"Password to connect to source SQL.",
         SerializedName = @"password",
-        PossibleTypes = new [] { typeof(string) })]
-        public string SourceSqlConnectionPassword { get => ParametersBody.SourceSqlConnectionPassword ?? null; set => ParametersBody.SourceSqlConnectionPassword = value; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        public System.Security.SecureString SourceSqlConnectionPassword { get => ParametersBody.SourceSqlConnectionPassword ?? null; set => ParametersBody.SourceSqlConnectionPassword = value; }
 
         /// <summary>Whether to trust server certificate or not.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Whether to trust server certificate or not.")]
@@ -454,18 +460,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IDatabaseMigrationSqlVM"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlVM"
         /// /> from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IDatabaseMigrationSqlVM> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlVM> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
         /// </summary>
         protected override void BeginProcessing()
         {
+            var telemetryId = Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Module.Instance.GetTelemetryId.Invoke();
+            if (telemetryId != "" && telemetryId != "internal")
+            {
+                __correlationId = telemetryId;
+            }
             Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
             if (Break)
             {
@@ -502,7 +513,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -643,7 +654,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                await ((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 await ((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 Pipeline = Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
@@ -712,12 +722,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IDatabaseMigrationSqlVM"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlVM"
         /// /> from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IDatabaseMigrationSqlVM> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlVM> response)
         {
             using( NoSynchronizationContext )
             {
@@ -729,7 +739,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IDatabaseMigrationSqlVM
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlVM
                 WriteObject((await response));
             }
         }

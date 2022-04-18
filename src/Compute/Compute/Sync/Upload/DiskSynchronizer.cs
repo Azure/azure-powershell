@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.WindowsAzure.Commands.Sync.Threading;
+using Threading = Microsoft.WindowsAzure.Commands.Sync.Threading;
 using Microsoft.WindowsAzure.Storage.Blob;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using Microsoft.WindowsAzure.Commands.Sync.Upload;
 using Microsoft.WindowsAzure.Commands.Sync;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Compute.Sync.Upload
 {
@@ -50,9 +52,11 @@ namespace Microsoft.Azure.Commands.Compute.Sync.Upload
             var uploadStatus = new ProgressStatus(alreadyUploadedData, alreadyUploadedData + dataToUpload, new ComputeStats());
 
             using (new ServicePointHandler(pageBlob.Uri, this.maxParallelism))
-            using (new ProgressTracker(uploadStatus))
+            using (ProgressTracker progressTracker = new ProgressTracker(uploadStatus))
             {
-                var loopResult = Parallel.ForEach(dataWithRanges,
+                Task<LoopResult> task = Task<LoopResult>.Factory.StartNew(() =>
+                {
+                    return Threading.Parallel.ForEach(dataWithRanges,
                                                   () => new PSPageBlobClient(pageBlob.Uri),
                                                   (dwr, b) =>
                                                   {
@@ -66,6 +70,14 @@ namespace Microsoft.Azure.Commands.Compute.Sync.Upload
                                                       }
                                                       uploadStatus.AddToProcessedBytes((int)dwr.Range.Length);
                                                   }, this.maxParallelism);
+                });
+
+                while (!task.Wait(TimeSpan.FromSeconds(1)))
+                {
+                    progressTracker.Update();
+                }
+
+                LoopResult loopResult = task.Result;
                 if (loopResult.IsExceptional)
                 {
                     if (loopResult.Exceptions.Any())
