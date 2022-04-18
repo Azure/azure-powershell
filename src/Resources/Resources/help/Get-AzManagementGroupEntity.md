@@ -5,7 +5,7 @@ online version: https://docs.microsoft.com/powershell/module/az.resources/get-az
 schema: 2.0.0
 ---
 
-# Get-AzEntity
+# Get-AzManagementGroupEntity
 
 ## SYNOPSIS
 Lists all Entities under the current Tenant
@@ -14,18 +14,18 @@ Lists all Entities under the current Tenant
 
 ### GetOperation
 ```
-Get-AzEntity [-DefaultProfile <IAzureContextContainer>] [-Expand] [-Recurse] [-WhatIf] 
+Get-AzManagementGroupEntity [-DefaultProfile <IAzureContextContainer>] [-Expand] [-Recurse] [-WhatIf] 
 [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzEntity cmdlet Gets all or a specific Management Group.
+The Get-AzManagementGroupEntity cmdlet Gets all or a specific Management Group.
 
 ## EXAMPLES
 
 ### Example 1: Get all Management Groups
 ```powershell
-Get-AzEntity
+Get-AzManagementGroupEntity
 ```
 
 ```output

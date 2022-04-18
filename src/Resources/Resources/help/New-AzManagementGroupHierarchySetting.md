@@ -5,26 +5,26 @@ online version: https://docs.microsoft.com/powershell/module/az.resources/get-az
 schema: 2.0.0
 ---
 
-# Update-AzHierarchySetting
+# New-AzManagementGroupHierarchySetting
 
 ## SYNOPSIS
 Creates Hierarchy Settings under the current tenant
 
 ## SYNTAX
 
-### GetOperation
+### CreateOperation
 ```
-Update-AzHierarchySetting  [-GroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-Authorization] <String> [-DefaultMG] <String> 
+New-AzManagementGroupHierarchySetting  [-GroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-Authorization] <String> [-DefaultManagementGroup] <String> 
 ```
 
 ## DESCRIPTION
-The Update-AzHierarchySetting cmdlet updates the hierarchy settings under the current tenant.
+The New-AzManagementGroupHierarchySetting cmdlet creates new hierarchy settings under the current tenant.
 
 ## EXAMPLES
 
-### Example 1: Update the Hierarchy Setting for Authorization Requirement for Group Creation
+### Example 1: Create a Hierarchy Setting for an Authorization Requirement for Group Creation
 ```powershell
-Update-AzHierarchySetting -GroupName c7a87cda-9a66-4920-b0f8-869baa04efe0 -Authorization True
+New-AzManagementGroupHierarchySetting -GroupName c7a87cda-9a66-4920-b0f8-869baa04efe0 -Authorization True
 ```
 
 ```output
@@ -36,9 +36,9 @@ RequireAuthorizationForGroupCreation : true
 DefaultManagementGroup : 
 ```
 
-### Example 2: Update the Hierarchy Setting that the default Management Group new Groups get placed under
+### Example 2: Create a Hierarchy Setting for the default Management Group new Groups get placed under
 ```powershell
-Update-AzHierarchySetting -GroupName c7a87cda-9a66-4920-b0f8-869baa04efe0 -DefaultMG TestGroup
+New-AzManagementGroupHierarchySetting -GroupName c7a87cda-9a66-4920-b0f8-869baa04efe0 -DefaultManagementGroup TestGroup
 ```
 
 ```output
@@ -52,7 +52,7 @@ DefaultManagementGroup : TestGroup
 
 ### Example 3: Create both Hierarchy Settings
 ```powershell
-Update-AzHierarchySetting -GroupName c7a87cda-9a66-4920-b0f8-869baa04efe0 -Authorization True -DefaultMG TestGroup
+New-AzManagementGroupHierarchySetting -GroupName c7a87cda-9a66-4920-b0f8-869baa04efe0 -Authorization True -DefaultManagementGroup TestGroup
 ```
 
 ```output
@@ -89,6 +89,7 @@ Indicate whether RBAC access is required upon group creation under the root Mana
 ```yaml
 Type: System.String
 Parameter Sets: NewOperation and UpdateOperation
+Aliases: RequireAuthorizationForGroupCreation
 
 Required: False
 Position: Named
@@ -103,7 +104,7 @@ Expand the output to list the children of the management group
 ```yaml
 Type: System.String
 Parameter Sets: NewOperation and UpdateOperation
-Aliases:
+Aliases: DefaultMG
 
 Required: False
 Position: Named

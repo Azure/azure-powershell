@@ -8,10 +8,17 @@ schema: 2.0.0
 # Get-AzManagementGroupSubscription
 
 ## SYNOPSIS
-Adds a Subscription to a Management Group.
+Gets the details of Subscription(s) under a Management Group.
 
 ## SYNTAX
 
+### ListOperation
+```
+Get-AzManagementGroupSubscription [-GroupName] <String> [-PassThru][-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+
+### GetOperation
 ```
 Get-AzManagementGroupSubscription [-GroupName] <String> [-SubscriptionId] <Guid> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -22,7 +29,7 @@ The **Get-AzManagementGroupSubscription** cmdlet gets the subscription info unde
 
 ## EXAMPLES
 
-### Example 1: Get Subscription under a Management Group
+### Example 1: Get Subscription Details under a Management Group
 ```powershell
 Get-AzManagementGroupSubscription -GroupName "TestGroup" -SubscriptionId 5602fbd9-fb0d-4fbb-98b3-10c8ea20b6de
 ```
@@ -36,6 +43,31 @@ DisplayName       : Visual Studio Enterprise Subscription
 ParentId          : /providers/Microsoft.Management/managementGroups/TestGroup
 State             : Active
 ```
+
+### Example 2: Get all Subscription Details under a Management Group
+```powershell
+Get-AzManagementGroupSubscription -GroupName "TestGroup"
+```
+
+```output
+Name              : 5602fbd9-fb0d-4fbb-98b3-10c8ea20b6de
+Type              : Microsoft.Management/managementGroups/subscriptions
+Id                : /providers/Microsoft.Management/managementGroups/TestGroup/subscriptions/5602fbd9-fb0d-4fbb-98b3-10c8ea20b6de
+TenantId          : 14307de0-5e6f-46cf-b2ba-64a062964d30
+DisplayName       : Visual Studio Enterprise Subscription
+ParentId          : /providers/Microsoft.Management/managementGroups/TestGroup
+State             : Active
+
+Name              : 2120692d-35c3-44c8-81f5-631fa7351726
+Type              : Microsoft.Management/managementGroups/subscriptions
+Id                : /providers/Microsoft.Management/managementGroups/TestGroup/subscriptions/2120692d-35c3-44c8-81f5-631fa7351726
+TenantId          : 14307de0-5e6f-46cf-b2ba-64a062964d30
+DisplayName       : Test Subscription
+ParentId          : /providers/Microsoft.Management/managementGroups/TestGroup
+State             : Active
+
+```
+
 
 
 ## PARAMETERS
@@ -93,7 +125,7 @@ Type: System.Guid
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 1
 Default value: None
 Accept pipeline input: False

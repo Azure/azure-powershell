@@ -21,7 +21,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Resources.ManagementGroups
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HierarchySetting", DefaultParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSHierarchySettings))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ManagementGroupHierarchySetting", DefaultParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSHierarchySettings))]
     public class NewAzureRmManagementGroupsHierarchySettings : AzureManagementGroupsCmdletBase
     {
         [Alias("GroupId")]
@@ -40,11 +40,11 @@ namespace Microsoft.Azure.Commands.Resources.ManagementGroups
         [ValidateNotNullOrEmpty]
         public bool Authorization { get; set; } = false;
 
-        [Alias("DefaultManagementGroup")]
+        [Alias("DefaultMG")]
         [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = false,
             HelpMessage = Constants.HelpMessages.ParentId)]
         [ValidateNotNullOrEmpty]
-        public string DefaultMG { get; set; } = null;
+        public string DefaultManagementGroup { get; set; } = null;
 
         public override void ExecuteCmdlet()
         {
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Resources.ManagementGroups
                 {
                     PreregisterSubscription();
 
-                    var response = ManagementGroupsApiClient.HierarchySettings.CreateOrUpdate(GroupName, new CreateOrUpdateSettingsRequest(Authorization, DefaultMG));
+                    var response = ManagementGroupsApiClient.HierarchySettings.CreateOrUpdate(GroupName, new CreateOrUpdateSettingsRequest(Authorization, DefaultManagementGroup));
 
                     WriteObject(new PSHierarchySettings(response));
                 }

@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Resources.ManagementGroups.Common;
 using Microsoft.Azure.Commands.Resources.Models.ManagementGroups;
@@ -32,7 +33,7 @@ namespace Microsoft.Azure.Commands.Resources.ManagementGroups
         [ValidateNotNullOrEmpty]
         public string GroupName { get; set; } = null;
 
-        [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = true,
+        [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = false,
             HelpMessage = Constants.HelpMessages.SubscriptionId, Position = 1)]
         [ValidateNotNullOrEmpty]
         public string SubscriptionId { get; set; }
@@ -44,17 +45,29 @@ namespace Microsoft.Azure.Commands.Resources.ManagementGroups
         {
             try
             {
-                if (ShouldProcess(
+                if (!string.IsNullOrEmpty(SubscriptionId) && ShouldProcess(
                     string.Format(Resource.NewManagementGroupSubShouldProcessTarget, SubscriptionId, GroupName),
                     string.Format(Resource.NewManagementGroupSubShouldProcessAction, SubscriptionId, GroupName)))
                 {
                     PreregisterSubscription();
                     PreregisterSubscription(SubscriptionId.ToString());
 
-                    var response = (SubscriptionUnderManagementGroup)ManagementGroupsApiClient.ManagementGroupSubscriptions.GetSubscription(GroupName, SubscriptionId);
-
+                    var response = ManagementGroupsApiClient.ManagementGroupSubscriptions.GetSubscription(GroupName, SubscriptionId);
                     
                     WriteObject(new PSManagementGroupSubscription(response));
+                }
+
+                else if(ShouldProcess(
+                        string.Format(Resource.NewManagementGroupShouldProcessTarget, GroupName),
+                        string.Format(Resource.NewManagementGroupShouldProcessAction, GroupName)))
+                {
+                    PreregisterSubscription();
+
+                    var responses = ManagementGroupsApiClient.ManagementGroupSubscriptions.GetSubscriptionsUnderManagementGroup(GroupName);
+
+                    var items = responses.Select(item => new PSManagementGroupSubscription(item)).ToList();
+
+                    WriteObject(items, true);
                 }
             }
             

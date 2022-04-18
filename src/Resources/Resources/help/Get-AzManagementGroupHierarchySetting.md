@@ -5,29 +5,35 @@ online version: https://docs.microsoft.com/powershell/module/az.resources/get-az
 schema: 2.0.0
 ---
 
-# Remove-AzHierarchySetting
+# Get-AzManagementGroupHierarchySetting
 
 ## SYNOPSIS
-Deletes all Hierarchy Settings under the current tenant
+Gets the Hierarchy Settings under the current tenant
 
 ## SYNTAX
 
 ### GetOperation
 ```
-Remove-AzHierarchySetting  [-GroupName] <String> [-DefaultProfile <IAzureContextContainer>] 
+Get-AzManagementGroupHierarchySettings [-GroupName] <String> [-DefaultProfile <IAzureContextContainer>] 
 ```
 
 ## DESCRIPTION
-The Remove-AzHierarchySetting cmdlet Removes all hierarchy settings under the current tenant.
+The Get-AzManagementGroupHierarchySetting cmdlet Gets all hierarchy settings under the current tenant.
 
 ## EXAMPLES
 
-### Example 1: Remove Hierarchy Settings
+### Example 1: Get Hierarchy Settings
 ```powershell
-Remove-AzHierarchySetting -GroupName c7a87cda-9a66-4920-b0f8-869baa04efe0
+Get-AzManagementGroupHierarchySetting -GroupName c7a87cda-9a66-4920-b0f8-869baa04efe0
 ```
 
 ```output
+Id          : /providers/Microsoft.Management/managementGroups/c7a87cda-9a66-4920-b0f8-869baa04efe0/settings/default
+Type        : Microsoft.Management/managementGroups/settings
+Name        : default
+TenantId    : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
+RequireAuthorizationForGroupCreation : true
+DefaultManagementGroup : TestGroup
 ```
 
 ## PARAMETERS
@@ -56,7 +62,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### None
+### Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSHierarchySettings
+
+### Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSHierarchySettings
 
 ## NOTES
 
