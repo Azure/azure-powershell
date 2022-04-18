@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Enabled public network access setting
 
 ## Version 4.3.1
 * Fixed a bug to continue visiting `NextPageLink` when listing key vaults from ARM API
