@@ -24,27 +24,13 @@ The operation returns properties of each egress endpoint.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Gets a list of egress endpoints (network endpoints of all outbound dependencies) in the specified dedicated hsm resource.
 ```powershell
-{{ Add code here }}
+Get-AzDedicatedHsmOutboundNetworkDependencyEndpoint -Name dedicatedHsmName01 -ResourceGroupName resourceGroup
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command gets a list of egress endpoints (network endpoints of all outbound dependencies) in the specified dedicated hsm resource.
+The operation returns properties of each egress endpoint.
 
 ## PARAMETERS
 
