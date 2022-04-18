@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for multiple backups per day (hourly) Enhanced policy for workloadType AzureVM.
 
 ## Version 5.3.0
 * Added support for Trusted VM backup and Enhanced policy for WorkloadType AzureVM.

@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Upgraded Microsoft.Rest.ClientRuntime to 2.3.24
 
 ## Version 2.7.5
 * Added `SshCredentialFactory` to support get ssh credential of vm from msal.

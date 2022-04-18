@@ -15,9 +15,9 @@ Updates a database script.
 ### UpdateExpanded (Default)
 ```
 Update-AzKustoScript -ClusterName <String> -DatabaseName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-ContinueOnError] [-ForceUpdateTag <String>] [-ScriptUrl <String>]
- [-ScriptUrlSasToken <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-ContinueOnError] [-ForceUpdateTag <String>] [-ScriptContent <String>]
+ [-ScriptUrl <String>] [-ScriptUrlSasToken <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
@@ -36,8 +36,8 @@ Update-AzKustoScript -InputObject <IKustoIdentity> -Parameter <IScript> [-Defaul
 ### UpdateViaIdentityExpanded
 ```
 Update-AzKustoScript -InputObject <IKustoIdentity> [-ContinueOnError] [-ForceUpdateTag <String>]
- [-ScriptUrl <String>] [-ScriptUrlSasToken <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ScriptContent <String>] [-ScriptUrl <String>] [-ScriptUrlSasToken <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -202,7 +202,7 @@ Class representing a database script.
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api202101.IScript
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IScript
 Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
@@ -228,8 +228,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ScriptContent
+The script content.
+This property should be used when the script is provide inline and not through file in a SA.
+Must not be used together with scriptUrl and scriptUrlSasToken properties.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ScriptUrl
 The url to the KQL script blob file.
+Must not be used together with scriptContent property
 
 ```yaml
 Type: System.String
@@ -244,7 +262,8 @@ Accept wildcard characters: False
 ```
 
 ### -ScriptUrlSasToken
-The SaS token.
+The SaS token that provide read access to the file which contain the script.
+Must be provided when using scriptUrl property.
 
 ```yaml
 Type: System.String
@@ -310,13 +329,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api202101.IScript
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IScript
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api202101.IScript
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IScript
 
 ## NOTES
 
@@ -334,13 +353,18 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   - `[DatabaseName <String>]`: The name of the database in the Kusto cluster.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: Azure location (region) name.
+  - `[ManagedPrivateEndpointName <String>]`: The name of the managed private endpoint.
   - `[OperationId <String>]`: The Guid of the operation ID
   - `[PrincipalAssignmentName <String>]`: The name of the Kusto principalAssignment.
+  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection.
+  - `[PrivateLinkResourceName <String>]`: The name of the private link resource.
   - `[ResourceGroupName <String>]`: The name of the resource group containing the Kusto cluster.
   - `[ScriptName <String>]`: The name of the Kusto database script.
   - `[SubscriptionId <String>]`: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 PARAMETER <IScript>: Class representing a database script.
+  - `[AzureAsyncOperation <String>]`: 
+  - `[Content <String>]`: The script content. This property should be used when the script is provide inline and not through file in a SA. Must not be used together with scriptUrl and scriptUrlSasToken properties.
   - `[ContinueOnError <Boolean?>]`: Flag that indicates whether to continue if one of the command fails.
   - `[ForceUpdateTag <String>]`: A unique string. If changed the script will be applied again.
   - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
@@ -349,8 +373,8 @@ PARAMETER <IScript>: Class representing a database script.
   - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
   - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
   - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-  - `[Url <String>]`: The url to the KQL script blob file.
-  - `[UrlSasToken <String>]`: The SaS token.
+  - `[Url <String>]`: The url to the KQL script blob file. Must not be used together with scriptContent property
+  - `[UrlSasToken <String>]`: The SaS token that provide read access to the file which contain the script. Must be provided when using scriptUrl property.
 
 ## RELATED LINKS
 
