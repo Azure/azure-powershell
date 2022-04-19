@@ -172,8 +172,8 @@ $startTime = Get-Date
 $resourceCommands | ForEach-Object {
     $testName = $_.Name
     $script = $_.Command
-    $retry = if($null -eq $_.retry) {0} Else {$_.retry}
-    $sleep = if($null -eq $_.sleep) {30} Else {$_.sleep}
+    $retry = if($null -eq $_.Retry) {0} Else {$_.Retry}
+    $sleep = if($null -eq $_.Sleep) {30} Else {$_.Sleep}
     if($null -ne $_.Since -and "Core" -eq $PSVersionTable.PSEdition -and $PSVersionTable.PSVersion -lt [System.Version]$_.Since) {
         Write-Output "Skip test $testName"
         $testInfo.SkippedCount += 1
