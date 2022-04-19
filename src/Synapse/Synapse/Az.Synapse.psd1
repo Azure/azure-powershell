@@ -229,7 +229,16 @@ CmdletsToExport = 'Get-AzSynapseSparkJob', 'Stop-AzSynapseSparkJob',
                'Get-AzSynapseActiveDirectoryOnlyAuthentication', 
                'Enable-AzSynapseActiveDirectoryOnlyAuthentication', 
                'Disable-AzSynapseActiveDirectoryOnlyAuthentication',
-               'New-AzSynapseLinkTableRequest','Set-AzSynapseLinkConnectionLinkTables',
+               'Set-AzSynapseLinkConnectionLinkTable','Get-AzSynapseLinkConnectionLinkTable',
+               'Get-AzSynapseLinkConnectionLinkTableStatus',
+               'Update-AzSynapseLinkConnectionLandingZoneCredential',
+               'Get-AzSynapseLinkConnection',
+               'Set-AzSynapseLinkConnection',
+               'Start-AzSynapseLinkConnection',
+               'Stop-AzSynapseLinkConnection',
+               'Remove-AzSynapseLinkConnection',
+               'Get-AzSynapseLinkConnectionDetailedStatus',
+               'Set-AzSynapseLinkConnectionLinkTables',
                'Get-AzSynapseLinkConnectionLinkTables','Get-AzSynapseLinkConnectionLinkTablesStatus',
                'Update-AzSynapseLinkConnectionLandingZoneCredential'
 
@@ -254,7 +263,8 @@ AliasesToExport = 'New-AzSynapsePipeline', 'New-AzSynapseLinkedService',
                'Set-AzSynapseManagedPrivateEndpoint', 'New-AzSynapseSqlScript', 
                'Import-AzSynapseSqlScript', 'Set-AzSynapseSparkConfiguration', 
                'Import-AzSynapseSparkConfiguration', 'Set-AzSynapseKqlScript', 
-               'Import-AzSynapseKqlScript'
+               'Import-AzSynapseKqlScript',
+               'New-AzSynapseLinkConnection'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

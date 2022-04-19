@@ -19,6 +19,17 @@
 -->
 
 ## Upcoming Release
+* Add support for Synapse Link for Azure Sql Database
+    - Added `Get-AzSynapseLinkConnection` cmdlet
+    - Added `Get-AzSynapseLinkConnectionDetailedStatus` cmdlet
+    - Added `Set-AzSynapseLinkConnection` cmdlet
+    - Added `Remove-AzSynapseLinkConnection` cmdlet
+    - Added `Start-AzSynapseLinkConnection` cmdlet
+    - Added `Stop-AzSynapseLinkConnection` cmdlet
+    - Added `Set-AzSynapseLinkConnectionLinkTable` cmdlet
+    - Added `Get-AzSynapseLinkConnectionLinkTable` cmdlet
+    - Added `Get-AzSynapseLinkConnectionLinkTableStatus` cmdlet
+    - Added `Update-AzSynapseLinkConnectionLandingZoneCredential` cmdlet
 * Set UploadedTimestamp when adding package to spark pool by `Update-AzSynapseSparkPool`
 
 ## Version 1.3.0
@@ -26,11 +37,6 @@
     - Added `Get-AzSynapseActiveDirectoryOnlyAuthentication` cmdlet
     - Added `Enable-AzSynapseActiveDirectoryOnlyAuthentication` cmdlet
     - Added `Disable-AzSynapseActiveDirectoryOnlyAuthentication` cmdlet
-* Added support for Synapse Link Connection
-    - Added `Set-AzSynapseLinkConnectionLinkTable` cmdlet
-    - Added `Get-AzSynapseLinkConnectionLinkTable` cmdlet
-    - Added `Get-AzSynapseLinkConnectionLinkTableStatus` cmdlet
-    - Added `Update-AzSynapseLinkConnectionLandingZoneCredential` cmdlet
 
 ## Version 1.2.0
 * Upgraded Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.14

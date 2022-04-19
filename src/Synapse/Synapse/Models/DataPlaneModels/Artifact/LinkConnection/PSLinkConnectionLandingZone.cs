@@ -16,25 +16,22 @@ using Azure.Analytics.Synapse.Artifacts.Models;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
-    public class PSLinkConnectionResource
+    public class PSLinkConnectionLandingZone
     {
-        public PSLinkConnectionResource(LinkConnectionResource linkConnectionResource, string workspaceName)
+        public PSLinkConnectionLandingZone(LinkConnectionLandingZone landingZone)
         {
-            this.WorkspaceName = workspaceName;
-            this.Id = linkConnectionResource?.Id;
-            this.Name = linkConnectionResource?.Name;
-            this.Type = linkConnectionResource?.Type;
-            this.Properties = linkConnectionResource?.Properties;
+            this.LinkedService =  landingZone?.LinkedService != null ? new PSLinkedServiceReference(landingZone?.LinkedService) : null;
+            this.FileSystem = landingZone?.FileSystem;
+            this.FolderPath = landingZone?.FolderPath;
+            this.SasToken = landingZone?.SasToken != null ? new PSSecureString(landingZone?.SasToken) : null;
         }
 
-        public string WorkspaceName { get; set; }
+        public PSLinkedServiceReference LinkedService { get; set; }
 
-        public string Id { get; set; }
+        public string FileSystem { get; set; }
 
-        public string Name { get; set; }   
+        public string FolderPath { get; set; }
 
-        public string Type { get; set; }
-
-        public LinkConnection Properties { get; set; }
+        public PSSecureString SasToken { get; set; }
     }
 }

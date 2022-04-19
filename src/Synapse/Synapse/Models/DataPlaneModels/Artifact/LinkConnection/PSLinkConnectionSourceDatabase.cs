@@ -16,25 +16,16 @@ using Azure.Analytics.Synapse.Artifacts.Models;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
-    public class PSLinkConnectionResource
+    public class PSLinkConnectionSourceDatabase
     {
-        public PSLinkConnectionResource(LinkConnectionResource linkConnectionResource, string workspaceName)
+        public PSLinkConnectionSourceDatabase(LinkConnectionSourceDatabase sourceDatabase)
         {
-            this.WorkspaceName = workspaceName;
-            this.Id = linkConnectionResource?.Id;
-            this.Name = linkConnectionResource?.Name;
-            this.Type = linkConnectionResource?.Type;
-            this.Properties = linkConnectionResource?.Properties;
+            this.LinkedService = sourceDatabase?.LinkedService != null ? new PSLinkedServiceReference(sourceDatabase?.LinkedService) : null;
+            this.TypeProperties = sourceDatabase?.TypeProperties != null ? new PSLinkConnectionSourceDatabaseTypeProperties(sourceDatabase?.TypeProperties) : null;
         }
 
-        public string WorkspaceName { get; set; }
+        public PSLinkedServiceReference LinkedService { get; set; }
 
-        public string Id { get; set; }
-
-        public string Name { get; set; }   
-
-        public string Type { get; set; }
-
-        public LinkConnection Properties { get; set; }
+        public PSLinkConnectionSourceDatabaseTypeProperties TypeProperties { get; set; }
     }
 }

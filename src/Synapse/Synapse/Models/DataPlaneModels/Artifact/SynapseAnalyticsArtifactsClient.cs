@@ -504,6 +504,43 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             _linkConnectionClient.UpdateLandingZoneCredential(linkConnectionName, updateLandingZoneCredentialRequest);
         }
+
+        public LinkConnectionResource GetLinkConnection(string linkConnectionName)
+        {
+            return _linkConnectionClient.GetLinkConnection(linkConnectionName).Value;
+        }
+
+        public Pageable<LinkConnectionResource> GetLinkConnectionByWorkspace()
+        {
+            return _linkConnectionClient.ListLinkConnectionsByWorkspace();
+        }
+
+        public void StartLinkConnection(string linkConnectionName)
+        {
+            _linkConnectionClient.Start(linkConnectionName);
+        }
+
+        public void StopLinkConnection(string linkConnectionName)
+        {
+             _linkConnectionClient.Stop(linkConnectionName);
+        }
+
+        public void DeleteLinkConnection(string linkConnectionName)
+        {
+            _linkConnectionClient.DeleteLinkConnection(linkConnectionName);
+        }
+
+        public LinkConnectionResource CreateOrUpdateLinkConnection(string linkConnectionName, string rawJsonContent)
+        {
+            LinkConnectionResource linkConnection = JsonConvert.DeserializeObject<LinkConnectionResource>(rawJsonContent);
+            var response = _linkConnectionClient.CreateOrUpdateLinkConnection(linkConnectionName, linkConnection);
+            return response.Value;
+        }
+
+        public LinkConnectionDetailedStatus GetLinkConnectionDetailedStatus(string linkConnectionName)
+        {
+            return _linkConnectionClient.GetDetailedStatus(linkConnectionName).Value;
+        }
         #endregion
 
         #region helpers

@@ -16,25 +16,13 @@ using Azure.Analytics.Synapse.Artifacts.Models;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
-    public class PSLinkConnectionResource
+    public class PSSecureString
     {
-        public PSLinkConnectionResource(LinkConnectionResource linkConnectionResource, string workspaceName)
+        public PSSecureString(SecureString secureString)
         {
-            this.WorkspaceName = workspaceName;
-            this.Id = linkConnectionResource?.Id;
-            this.Name = linkConnectionResource?.Name;
-            this.Type = linkConnectionResource?.Type;
-            this.Properties = linkConnectionResource?.Properties;
+            this.Value = secureString?.Value;
         }
 
-        public string WorkspaceName { get; set; }
-
-        public string Id { get; set; }
-
-        public string Name { get; set; }   
-
-        public string Type { get; set; }
-
-        public LinkConnection Properties { get; set; }
+        public string Value { get; set; }
     }
 }

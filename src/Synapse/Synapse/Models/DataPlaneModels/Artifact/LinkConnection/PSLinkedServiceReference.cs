@@ -12,29 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Azure.Analytics.Synapse.Artifacts;
 using Azure.Analytics.Synapse.Artifacts.Models;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
-    public class PSLinkConnectionResource
+    public class PSLinkedServiceReference
     {
-        public PSLinkConnectionResource(LinkConnectionResource linkConnectionResource, string workspaceName)
+        public PSLinkedServiceReference(LinkedServiceReference linkServiceReference)
         {
-            this.WorkspaceName = workspaceName;
-            this.Id = linkConnectionResource?.Id;
-            this.Name = linkConnectionResource?.Name;
-            this.Type = linkConnectionResource?.Type;
-            this.Properties = linkConnectionResource?.Properties;
+            this.Type = linkServiceReference?.Type;
+            this.ReferenceName = linkServiceReference?.ReferenceName;
+            this.Parameters = linkServiceReference?.Parameters;
         }
 
-        public string WorkspaceName { get; set; }
+        public LinkedServiceReferenceType? Type { get; set; }
 
-        public string Id { get; set; }
+        public string ReferenceName { get; set; }
 
-        public string Name { get; set; }   
-
-        public string Type { get; set; }
-
-        public LinkConnection Properties { get; set; }
+        public object Parameters { get; set; }
     }
 }
+
