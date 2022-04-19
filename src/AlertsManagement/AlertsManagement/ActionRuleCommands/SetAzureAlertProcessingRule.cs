@@ -660,7 +660,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
 
         private void ValidateSchedule()
         {
-            string format = "yyyy-MM-dd hh:mm:ss";
+            string format = "yyyy-MM-dd HH:mm:ss";
             System.DateTime outDateTime;
 
             if (ScheduleStartDateTime == null)
@@ -677,7 +677,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
             {
                 if (System.DateTime.TryParseExact(ScheduleStartDateTime, format, CultureInfo.InvariantCulture, DateTimeStyles.None, out outDateTime) == false)
                 {
-                    throw new PSInvalidOperationException("Invalid ScheduleStartDateTime Format");
+                    throw new PSInvalidOperationException("Invalid ScheduleEndDateTime Format");
                 }
             }
             
