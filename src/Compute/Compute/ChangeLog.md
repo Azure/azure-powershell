@@ -34,7 +34,7 @@
     - Updated progress output functions so that it works with VHD files with "&" character in its name.
     - Updated so that uploading dynamically sized VHD files are converted to fixed size during upload.
     - Fixed a bug in uploading a differencing disk.
-    - Automically delete converted/resized VHD files after upload.
+    - Automatically delete converted/resized VHD files after upload.
     - Fixed a bug that indicates `-ResourceGroupName` parameter as optional when it is actually mandatory.
 
 ## Version 4.25.0
