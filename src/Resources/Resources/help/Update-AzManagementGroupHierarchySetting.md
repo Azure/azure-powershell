@@ -18,7 +18,7 @@ Update-AzManagementGroupHierarchySetting  [-GroupName] <String> [-DefaultProfile
 ```
 
 ## DESCRIPTION
-The Update-AzManagementGroupHierarchySetting cmdlet updates the hierarchy settings under the current tenant.
+The Update-AzManagementGroupHierarchySetting cmdlet updates the hierarchy settings under the current tenant. Requiring **Authorization** and setting the **DefaultManagementGroup** that new groups get created under can be updated.
 
 ## EXAMPLES
 

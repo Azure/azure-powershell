@@ -18,7 +18,7 @@ New-AzManagementGroupHierarchySetting  [-GroupName] <String> [-DefaultProfile <I
 ```
 
 ## DESCRIPTION
-The New-AzManagementGroupHierarchySetting cmdlet creates new hierarchy settings under the current tenant.
+The **New-AzManagementGroupHierarchySetting** cmdlet creates new hierarchy settings under the current tenant. Requiring **Authorization** and setting the **DefaultManagementGroup** that new groups get created under can be set.
 
 ## EXAMPLES
 
@@ -98,7 +98,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DefaultMG
+### -DefaultManagementGroup
 Expand the output to list the children of the management group
 
 ```yaml

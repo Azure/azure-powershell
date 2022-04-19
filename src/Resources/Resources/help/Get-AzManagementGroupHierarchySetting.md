@@ -18,7 +18,7 @@ Get-AzManagementGroupHierarchySettings [-GroupName] <String> [-DefaultProfile <I
 ```
 
 ## DESCRIPTION
-The Get-AzManagementGroupHierarchySetting cmdlet Gets all hierarchy settings under the current tenant.
+The **Get-AzManagementGroupHierarchySetting** cmdlet Gets all hierarchy settings under the current tenant using the **GroupName** parameter.
 
 ## EXAMPLES
 

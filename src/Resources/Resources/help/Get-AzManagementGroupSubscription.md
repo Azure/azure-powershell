@@ -25,7 +25,7 @@ Get-AzManagementGroupSubscription [-GroupName] <String> [-SubscriptionId] <Guid>
 ```
 
 ## DESCRIPTION
-The **Get-AzManagementGroupSubscription** cmdlet gets the subscription info under a Management Group.
+The **Get-AzManagementGroupSubscription** cmdlet gets the subscription info under a Management Group. Providing the **SubscriptionId** and **GroupName** will give only the Subscription details for that subscription. Providing only the **GroupName** will list the details for all Subscriptions under the Management Group.
 
 ## EXAMPLES
 

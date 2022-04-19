@@ -19,8 +19,7 @@ Get-AzManagementGroupEntity [-DefaultProfile <IAzureContextContainer>] [-Expand]
 ```
 
 ## DESCRIPTION
-The Get-AzManagementGroupEntity cmdlet Gets all or a specific Management Group.
-
+The **Get-AzManagementGroupEntity** cmdlet gets all entities (Management Groups and Subscriptions) under the current tenant.
 ## EXAMPLES
 
 ### Example 1: Get all Management Groups
