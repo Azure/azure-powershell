@@ -8,7 +8,7 @@ Name       Location SkuName
 ----       -------- -------
 psdemo-wps eastus   Standard_S1
 
-$wps | format-list
+$wps | Format-List
 
 DisableAadAuth               : False
 DisableLocalAuth             : False
@@ -27,7 +27,7 @@ ResourceName = 'psdemo-wps'
 SubscriptionId = $(Get-AzContext).Subscription.Id }
 $identity | Update-AzWebPubSub -EnableTlsClientCert
 
-$wps | format-list
+$wps | Format-List
 ```
 
 ```output
