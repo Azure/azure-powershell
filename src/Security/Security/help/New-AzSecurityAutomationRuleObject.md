@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSecurityAutomationRuleObject
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates security automation rule object
 
 ## SYNTAX
 
@@ -18,16 +18,16 @@ New-AzSecurityAutomationRuleObject -PropertyJPath <String> -Operator <String> -E
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Creates security automation rule object
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzSecurityAutomationRuleObject -PropertyJPath 'properties.metadata.severity'  -PropertyType 'String' -Operator 'Equals'  -ExpectedValue 'High'
 ```
 
-{{ Add example description here }}
+Creates security automation rule object that filters messages that with "High" severity
 
 ## PARAMETERS
 

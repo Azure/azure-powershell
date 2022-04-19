@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSecurityAutomationScopeObject
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates security automation scope object
 
 ## SYNTAX
 
@@ -18,16 +18,16 @@ New-AzSecurityAutomationScopeObject -Description <String> -ScopePath <String>
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Creates security automation scope object
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzSecurityAutomationScopeObject -Description 'Security assessments that relate to the resource group myResourceGroup within the subscription a5caac9c-5c04-49af-b3d0-e204f40345d5'  -ScopePath '/subscriptions/a5caac9c-5c04-49af-b3d0-e204f40345d5/resourceGroups/myResourceGroup'
 ```
 
-{{ Add example description here }}
+Creates security automation scope object
 
 ## PARAMETERS
 

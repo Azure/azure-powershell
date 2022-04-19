@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSecurityAutomationActionObject
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates new security automation action object
 
 ## SYNTAX
 
@@ -31,16 +31,30 @@ New-AzSecurityAutomationActionObject -WorkspaceResourceId <String> [-DefaultProf
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Creates new security automation action object
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzSecurityAutomationActionObject -WorkspaceResourceId '/subscriptions/64ac75e7-15ff-4963-8c07-a16016505e0f/resourceGroups/sampleResourceGroup/providers/Microsoft.OperationalInsights/workspaces/surashed-test'
 ```
 
-{{ Add example description here }}
+Creates new security automation action with workspace type
+
+### Example 2
+```powershell
+PS C:\> New-AzSecurityAutomationActionObject -LogicAppResourceId '/subscriptions/03b601f1-7eca-4496-8f8d-355219eee254/resourceGroups/sampleResourceGroup/providers/Microsoft.Logic/workflows/LA' -Uri 'https://dummy.com/'
+```
+
+Creates new security automation action with logicApp type
+
+### Example 3
+```powershell
+PS C:\> New-AzSecurityAutomationActionObject -EventHubResourceId 'subscriptions/03b601f1-7eca-4496-8f8d-355219eee254/resourceGroups/sampleResourceGroup/providers/Microsoft.EventHub/namespaces/cus-wsp-fake-assessment/eventhubs/cus-wsp-fake-assessment' -ConnectionString 'Endpoint=sb://dummy/;SharedAccessKeyName=dummy;SharedAccessKey=dummy;EntityPath=dummy'
+```
+
+Creates new security automation action with even-hub type
 
 ## PARAMETERS
 
