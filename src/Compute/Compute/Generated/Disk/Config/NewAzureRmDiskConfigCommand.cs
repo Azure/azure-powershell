@@ -154,7 +154,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The GalleryImageReference object. Required if creating from a Gallery Image. The id will be the ARM id of the shared galley image version from which to create a disk. A lun is needed if the source of the copy is one of the data disks in the gallery image; if null, the OS disk of the image will be copied.")]
         public ImageDiskReference GalleryImageReference { get; set; }
 
         [Parameter(

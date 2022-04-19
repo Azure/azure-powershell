@@ -144,16 +144,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 }                
             }
             else if (psPolicy.ScheduleRunFrequency == ScheduleRunType.Hourly)
-            {
-                return null;
-
-                /* // Uncomment Hourly policy
+            {   
                 psPolicy.HourlySchedule = new HourlySchedule();
                 
                 // multiple backups per day 
                 psPolicy.HourlySchedule.Interval = serviceClientPolicy.HourlySchedule.Interval;
                 psPolicy.HourlySchedule.WindowStartTime = serviceClientPolicy.HourlySchedule.ScheduleWindowStartTime;
-                psPolicy.HourlySchedule.WindowDuration = serviceClientPolicy.HourlySchedule.ScheduleWindowDuration;                             */
+                psPolicy.HourlySchedule.WindowDuration = serviceClientPolicy.HourlySchedule.ScheduleWindowDuration;
             }
             else
             {

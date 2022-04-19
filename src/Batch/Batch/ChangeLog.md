@@ -19,6 +19,28 @@
 -->
 ## Upcoming Release
 
+* Updated Az.Batch to use `Microsoft.Azure.Batch` SDK version 15.3.0
+  - Add ability to assign user-assigned managed identities to `PSCloudPool`. These identities will be made available on each node in the pool, and can be used to access various resources.
+  - Added `IdentityReference` property to the following models to support accessing resources via managed identity:
+    - `PSAzureBlobFileSystemConfiguration`
+    - `PSOutputFileBlobContainerDestination`
+    - `PSContainerRegistry`
+    - `PSResourceFile`
+    - `PSUploadBatchServiceLogsConfiguration`
+  - Added new `extensions` property to `PSVirtualMachineConfiguration` on `PSCloudPool` to specify virtual machine extensions for nodes
+  - Added the ability to specify availability zones using a new property `NodePlacementConfiguration` on `VirtualMachineConfiguration`
+  - Added new `OSDisk` property to `VirtualMachineConfiguration`, which contains settings for the operating system disk of the Virtual Machine.
+    - The `Placement` property on `PSDiffDiskSettings` specifies the ephemeral disk placement for operating system disks for all VMs in the pool. Setting it to "CacheDisk" will store the ephemeral OS disk on the VM cache.
+  - Added `MaxParallelTasks` property on `PSCloudJob` to control the maximum allowed tasks per job (defaults to -1, meaning unlimited).
+  - Added `VirtualMachineInfo` property on `PSComputeNode` which contains information about the current state of the virtual machine, including the exact version of the marketplace image the VM is using.
+  - Added `RecurrenceInterval` property to `PSSchedule` to control the interval between the start times of two successive job under a job schedule.
+  - Added a new 'Get-AzBatchComputeNodeExtension' command, which gets a specific extension by name, or a list of all extensions, for a given compute node.
+* Updated Az.Batch`Microsoft.Azure.Management.Batch` SDK version 14.0.0.
+  - Added a new `Get-AzBatchSupportedVirtualMachineSku` command, which gets the list of Batch-supported Virtual Machine VM sizes available at a given location.
+  - Added a new `Get-AzBatchTaskSlotCount` command, which gets the number of task slots required by a given job.
+  - 'MaxTasksPerComputeNode' has been renamed to 'TaskSlotsPerNode', to match a change in functionality.
+    - 'MaxTasksPerComputeNode' will remain as an alias but will be removed in a coming update.
+
 ## Version 3.1.1
 * Removed assembly `System.Text.Encodings.Web.dll` [#16062]
 
