@@ -546,6 +546,10 @@ Unregisters a resource provider.
 ### [Update-AzADApplication](Update-AzADApplication.md)
 Updates entity in applications
 
+### [Update-AzADGroup](Update-AzADGroup.md)
+Represents an Azure Active Directory object.
+The directoryObject type is the base type for many other directory entity types.
+
 ### [Update-AzADServicePrincipal](Update-AzADServicePrincipal.md)
 Updates entity in service principal
 
