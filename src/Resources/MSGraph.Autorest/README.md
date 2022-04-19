@@ -122,7 +122,7 @@ directive:
   
   # hide user owned application cmdlets
   - where:
-      subject: UserOwnedApplication
+      subject: UserOwnedApplication|UserOwnedObject
     hide: true
 
   # remove pipe support support since data plane does not have resource Id.

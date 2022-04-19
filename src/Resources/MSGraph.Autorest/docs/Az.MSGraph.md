@@ -41,12 +41,6 @@ Lists key credentials and password credentials for an service principal.
 ### [Get-AzADUser](Get-AzADUser.md)
 Lists entities from users or get entity from users by key
 
-### [Get-AzADUserOwnedObject](Get-AzADUserOwnedObject.md)
-Directory objects that are owned by the user.
-Read-only.
-Nullable.
-Supports $expand.
-
 ### [New-AzADAppCredential](New-AzADAppCredential.md)
 Creates key credentials or password credentials for an application.
 
