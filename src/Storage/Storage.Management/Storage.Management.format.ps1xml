@@ -430,6 +430,10 @@
                 <ScriptBlock>$_.DeleteRetentionPolicy.Days</ScriptBlock>
               </ListItem>
               <ListItem>
+                <Label>DeleteRetentionPolicy.AllowPermanentDelete</Label>
+                <ScriptBlock>$_.DeleteRetentionPolicy.AllowPermanentDelete</ScriptBlock>
+              </ListItem>
+              <ListItem>
                 <Label>ContainerDeleteRetentionPolicy.Enabled</Label>
                 <ScriptBlock>$_.ContainerDeleteRetentionPolicy.Enabled</ScriptBlock>
               </ListItem>
