@@ -52,7 +52,7 @@ Type                        : Microsoft.Relay/HybridConnections
 
 ### Example 2
 ```powershell
-Set-AzRelayHybridConnection -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name TestHybridConnection -UserMetadata = "Test UserMetadata updated"
+Set-AzRelayHybridConnection -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name TestHybridConnection -UserMetadata "Test UserMetadata updated"
 ```
 
 ```output
