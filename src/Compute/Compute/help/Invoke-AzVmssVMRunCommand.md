@@ -15,22 +15,23 @@ Run command on the Virtual Machine Scale Set VM.
 ### DefaultParameter (Default)
 ```
 Invoke-AzVmssVMRunCommand [-ResourceGroupName] <String> [-VMScaleSetName] <String> [-InstanceId] <String>
- -CommandId <String> [-ScriptPath <String>] [-Parameter <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -CommandId <String> [-ScriptPath <String>] [-ScriptEncoding <String>] [-ScriptString <String>]
+ [-Parameter <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdParameter
 ```
-Invoke-AzVmssVMRunCommand -CommandId <String> [-ScriptPath <String>] [-Parameter <Hashtable>]
- [-ResourceId] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Invoke-AzVmssVMRunCommand -CommandId <String> [-ScriptPath <String>] [-ScriptEncoding <String>]
+ [-ScriptString <String>] [-Parameter <Hashtable>] [-ResourceId] <String> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ObjectParameter
 ```
-Invoke-AzVmssVMRunCommand -CommandId <String> [-ScriptPath <String>] [-Parameter <Hashtable>]
- [-VirtualMachineScaleSetVM] <PSVirtualMachineScaleSetVM> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Invoke-AzVmssVMRunCommand -CommandId <String> [-ScriptPath <String>] [-ScriptEncoding <String>]
+ [-ScriptString <String>] [-Parameter <Hashtable>] [-VirtualMachineScaleSetVM] <PSVirtualMachineScaleSetVM>
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -160,8 +161,38 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ScriptEncoding
+Specify Script Encoding to convert it to UTF-8. Default value is UTF-8.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ScriptPath
 Path of the script to be executed.  When this value is given, the given script will override the default script of the command.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScriptString
+Script passed as a String.
 
 ```yaml
 Type: System.String
