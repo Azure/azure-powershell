@@ -120,7 +120,7 @@ function Add-AzADGroupMember {
     
     process {
         $baseUrl = (Get-AzContext).Environment.ExtendedProperties.MicrosoftGraphUrl
-        $apiVersion = 'V1.0'
+        $apiVersion = 'beta'
         $odataIdUriPrefix = "$($baseUrl)/$($apiVersion)/directoryObjects"
 
         if ($PSBoundParameters['TargetGroupDisplayName']) {
@@ -152,7 +152,7 @@ function Add-AzADGroupMember {
         foreach ($member in $members) {
             $additionalProperties = @{'@odata.id'="$($odataIdUriPrefix)/$($member)"}
             $PSBoundParameters['AdditionalProperties'] = $additionalProperties
-            Az.MSGraph.internal\New-AzADGroupRefMember @PSBoundParameters
+            Az.MSGraph.internal\New-AzADGroupGraphRefMember @PSBoundParameters
         }
 
         if ($PSBoundParameters['PassThru']) {
