@@ -36,6 +36,7 @@
     - Fixed a bug in uploading a differencing disk.
     - Automatically delete converted/resized VHD files after upload.
     - Fixed a bug that indicates `-ResourceGroupName` parameter as optional when it is actually mandatory.
+* Edited `New-AzVm` cmdlet internal logic to use the `PlatformFaultDomain` value in the `PSVirtualMachine` object passed to it in the new virtual machine.
 
 ## Version 4.25.0
 * Updated `New-AzVM` to create a new storage account for boot diagnostics if one does not exist. This will prevent the cmdlet from using a random storage account in the current subscription to use for boot diagnostics.
