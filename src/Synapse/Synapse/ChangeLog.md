@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* Add support for Synapse Link for Azure Sql Database
+* Added support for Synapse Link for Azure Sql Database
     - Added `Get-AzSynapseLinkConnection` cmdlet
     - Added `Get-AzSynapseLinkConnectionDetailedStatus` cmdlet
     - Added `Set-AzSynapseLinkConnection` cmdlet
