@@ -151,7 +151,7 @@ Accept wildcard characters: False
 ```
 
 ### -ScriptEncoding
-{{ Fill ScriptEncoding Description }}
+Specify Script Encoding to convert it to UTF-8. Default value is UTF-8.
 
 ```yaml
 Type: System.String
@@ -182,7 +182,7 @@ Accept wildcard characters: False
 ```
 
 ### -ScriptString
-{{ Fill ScriptString Description }}
+Script passed as a String.
 
 ```yaml
 Type: System.String
