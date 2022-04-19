@@ -68,7 +68,34 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         PathIntrinsics currentPath = SessionState.Path;
                         var filePath = new System.IO.FileInfo(currentPath.GetUnresolvedProviderPathFromPSPath(this.ScriptPath));
                         string fileContent = Commands.Common.Authentication.Abstractions.FileUtilities.DataStore.ReadFileAsText(filePath.FullName);
-                        parameters.Script = fileContent.Split(new string[] { "\r\n", "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries);
+                        List<string> commandstext = fileContent.Split(new string[] { "\r\n", "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries).ToList();
+                        System.Text.Encoding fileencoding = Commands.Common.Authentication.Abstractions.FileUtilities.GetFileEncoding(filePath.FullName);
+
+                        if (this.ScriptEncoding != null || !fileencoding.Equals(System.Text.Encoding.UTF8))
+                        {
+                            foreach (var cmd in commandstext)
+                            {
+                                try
+                                {
+                                    byte[] cmdBytes = fileencoding.GetBytes(cmd);
+                                }
+                                catch (System.Text.EncoderFallbackException e)
+                                {
+                                    WriteError(new ErrorRecord(new Exception(e.Message), "Error", ErrorCategory.NotSpecified, null));
+                                    return;
+                                }
+                                byte[] cmdBytesUTF8 = System.Text.Encoding.Convert(fileencoding, System.Text.Encoding.UTF8, fileencoding.GetBytes(cmd));
+                                parameters.Script.Add(System.Text.Encoding.UTF8.GetString(cmdBytesUTF8));
+                            }
+                        }
+                        else
+                        {
+                            parameters.Script = commandstext;
+                        }
+                    }
+                    else if(this.ScriptString != null)
+                    {
+                        parameters.Script = new List<string>() { this.ScriptString };
                     }
                     if (this.Parameter != null)
                     {
@@ -117,6 +144,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false)]
         [AllowNull]
         public string ScriptPath { get; set; }
+
+        [Parameter(
+            Mandatory = false)]
+        public string ScriptEncoding { get; set; }
+
+        [Parameter(
+            Mandatory = false)]
+        public string ScriptString {get; set; }
 
         [Parameter(
             Mandatory = false)]
