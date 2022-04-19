@@ -41,6 +41,12 @@ Lists key credentials and password credentials for an service principal.
 ### [Get-AzADUser](Get-AzADUser.md)
 Lists entities from users or get entity from users by key
 
+### [Get-AzADUserOwnedObject](Get-AzADUserOwnedObject.md)
+Directory objects that are owned by the user.
+Read-only.
+Nullable.
+Supports $expand.
+
 ### [New-AzADAppCredential](New-AzADAppCredential.md)
 Creates key credentials or password credentials for an application.
 
@@ -91,8 +97,7 @@ Deletes entity from users.
 Updates entity in applications
 
 ### [Update-AzADGroup](Update-AzADGroup.md)
-Represents an Azure Active Directory object.
-The directoryObject type is the base type for many other directory entity types.
+Update entity in groups
 
 ### [Update-AzADServicePrincipal](Update-AzADServicePrincipal.md)
 Updates entity in service principal
