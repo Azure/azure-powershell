@@ -14,20 +14,17 @@ Gets the Azure Defender plans for a subscription in Azure Security Center.
 ## SYNTAX
 
 ### SubscriptionScope (Default)
-
-```powershell
+```
 Get-AzSecurityPricing [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SubscriptionLevelResource
-
-```powershell
+```
 Get-AzSecurityPricing -Name <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceId
-
-```powershell
+```
 Get-AzSecurityPricing -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -60,8 +57,6 @@ Id                                                                              
 
 Gets the status of each Azure Defender plan for the subscription.
 
-
-
 ### Example 2
 
 ```powershell
@@ -77,7 +72,6 @@ Get-AzSecurityPricing -Name
 ```
 
 Gets pricing details of the named Azure Defender plan. Where `name` is one of the names returned by `Get-AzSecurityPricing`.
-
 
 ## PARAMETERS
 
@@ -130,8 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

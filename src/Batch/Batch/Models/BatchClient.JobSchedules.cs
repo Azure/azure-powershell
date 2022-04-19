@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 IPagedEnumerable<CloudJobSchedule> workItems = jobScheduleOperations.ListJobSchedules(listDetailLevel, options.AdditionalBehaviors);
                 Func<CloudJobSchedule, PSCloudJobSchedule> mappingFunction = j => { return new PSCloudJobSchedule(j); };
                 return PSPagedEnumerable<PSCloudJobSchedule, CloudJobSchedule>.CreateWithMaxCount(
-                    workItems, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
+                    workItems, mappingFunction, options.MaxCount, () => WriteMaxCount(options.MaxCount));
             }
         }
 
