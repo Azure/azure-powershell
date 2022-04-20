@@ -20,9 +20,9 @@ Updates entity in applications
 .Description
 Updates entity in applications
 .Example
-PS C:\> Update-AzADApplication -DisplayName $name -HomePage $homepage
+Update-AzADApplication -DisplayName $name -HomePage $homepage
 .Example
-PS C:\> Get-AzADApplication -ObjectId $id | Update-AzADApplication -ReplyUrl $replyurl
+Get-AzADApplication -ObjectId $id | Update-AzADApplication -ReplyUrl $replyurl
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
@@ -252,6 +252,16 @@ TOKENLIFETIMEPOLICY <IMicrosoftGraphTokenLifetimePolicy[]>: The tokenLifetimePol
   [Description <String>]: Description for this policy.
   [DeletedDateTime <DateTime?>]: 
   [DisplayName <String>]: The name displayed in directory
+
+WEB <IMicrosoftGraphWebApplication>: webApplication
+  [(Any) <Object>]: This indicates any property can be added to this object.
+  [HomePageUrl <String>]: Home page or landing page of the application.
+  [ImplicitGrantSetting <IMicrosoftGraphImplicitGrantSettings>]: implicitGrantSettings
+    [(Any) <Object>]: This indicates any property can be added to this object.
+    [EnableAccessTokenIssuance <Boolean?>]: Specifies whether this web application can request an access token using the OAuth 2.0 implicit flow.
+    [EnableIdTokenIssuance <Boolean?>]: Specifies whether this web application can request an ID token using the OAuth 2.0 implicit flow.
+  [LogoutUrl <String>]: Specifies the URL that will be used by Microsoft's authorization service to logout an user using front-channel, back-channel or SAML logout protocols.
+  [RedirectUri <String[]>]: Specifies the URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
 .Link
 https://docs.microsoft.com/powershell/module/az.resources/update-azadapplication
 #>
@@ -519,6 +529,13 @@ param(
     ${TokenLifetimePolicy},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphWebApplication]
+    # webApplication
+    # To construct, see NOTES section for WEB properties and create a hash table.
+    ${Web},
+
+    [Parameter()]
     [Alias('AzContext', 'AzureRmContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
@@ -580,9 +597,9 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            ApplicationObjectIdWithUpdateParamsParameterSet = 'MSGraph.custom\Update-AzADApplication';
-            ApplicationIdWithUpdateParamsParameterSet = 'MSGraph.custom\Update-AzADApplication';
-            InputObjectWithUpdateParamsParameterSet = 'MSGraph.custom\Update-AzADApplication';
+            ApplicationObjectIdWithUpdateParamsParameterSet = 'Az.MSGraph.custom\Update-AzADApplication';
+            ApplicationIdWithUpdateParamsParameterSet = 'Az.MSGraph.custom\Update-AzADApplication';
+            InputObjectWithUpdateParamsParameterSet = 'Az.MSGraph.custom\Update-AzADApplication';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
