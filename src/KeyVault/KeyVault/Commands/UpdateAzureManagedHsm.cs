@@ -54,6 +54,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         public SwitchParameter EnablePurgeProtection { get; set; }
 
         [Parameter(Mandatory = false,
+            HelpMessage = "Controls permission for data plane traffic coming from public networks while private endpoint is enabled.")]
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        public string PublicNetworkAccess { get; set; }
+
+        [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hash table which represents resource tags.")]
         [Alias(Constants.TagsAlias)]
@@ -91,6 +96,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
                     {
                         // false is not accepted
                         EnablePurgeProtection = this.EnablePurgeProtection.IsPresent ? (true as bool?) : null,
+                        PublicNetworkAccess = this.PublicNetworkAccess,
                         Tags = this.Tag
                     }, null);
                 WriteObject(result);

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resources-help.xml
 Module Name: Az.Resources
 online version: https://docs.microsoft.com/powershell/module/az.resources/get-azroleeligiblechildresource
 schema: 2.0.0
@@ -158,4 +158,3 @@ INPUTOBJECT <IAuthorizationIdentity>: Identity Parameter
   - `[Scope <String>]`: The scope of the role management policy.
 
 ## RELATED LINKS
-

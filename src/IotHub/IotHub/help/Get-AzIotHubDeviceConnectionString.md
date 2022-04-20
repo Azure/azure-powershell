@@ -51,7 +51,7 @@ Show all devices connection string in an Iot Hub.
 
 ### Example 2
 ```powershell
-Get-AzIotHubDCS -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "device1" -KeyType secondary
+Get-AzIotHubDeviceConnectionString -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "device1" -KeyType secondary
 ```
 
 ```output

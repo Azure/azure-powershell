@@ -38,7 +38,7 @@ Suspend/break the replication connection on the destination volume
 
 ### Example 1
 ```powershell
-Suspend-AnfReplication -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyDestinationAnfVolume"
+Suspend-AzNetAppFilesReplication -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyDestinationAnfVolume"
 ```
 
 This command suspends the ANF Replication connection on volume "MyDestinationAnfVolume".

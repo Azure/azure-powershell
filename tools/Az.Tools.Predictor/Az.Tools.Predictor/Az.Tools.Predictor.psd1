@@ -11,7 +11,7 @@
 RootModule = 'Az.Tools.Predictor.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.6.0'
+ModuleVersion = '1.0.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -41,8 +41,10 @@ For more information on Az Predictor, please visit the following: https://aka.ms
 PowerShellVersion = '7.2'
 
 # Modules that must be imported into the global environment prior to importing this module
-# "RequiredModules" requires the module in the build pipeline to build/sign this package. Instead, we will validate the dependencies at runtime by Az.Tools.Predictor.psm1
+RequiredModules = @(@{ModuleName = 'PSReadLine'; ModuleVersion = '2.2.2'; },
+                    @{ModuleName = 'Az.Accounts'; ModuleVersion = '2.6.2';})
 
+# Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @("Enable-AzPredictor", "Disable-AzPredictor", "Open-AzPredictorSurvey", "Send-AzPredictorRating")
 
 # Format files (.ps1xml) to be loaded when importing this module
@@ -65,9 +67,9 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Improvements in command parsing mechanism
-* Fixed end of user input detection when - character is used
-* Optimized collection of anonymized data'
+        ReleaseNotes = '* Updated dependency on PSReadline 2.2.2 
+* Updated dependency on PowerShell 7.2
+* Added validation of pre-requisites before loading module'
 
         # Prerelease string of this module
         # Prerelease = ''

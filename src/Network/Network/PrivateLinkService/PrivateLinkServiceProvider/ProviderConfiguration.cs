@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.Compute/diskAccesses", "2020-09-30", true, false);
             RegisterConfiguration("Microsoft.ContainerRegistry/registries", "2019-12-01-preview", true, false);
             RegisterConfiguration("Microsoft.ContainerService/managedClusters", "2021-07-01", true, false);
+            RegisterConfiguration("Microsoft.Databricks/workspaces", "2021-04-01-preview", true, true);            
             RegisterConfiguration("Microsoft.DataFactory/factories", "2018-06-01", true, false);
             RegisterConfiguration("Microsoft.DBforMariaDB/servers", "2018-06-01", true, true);
             RegisterConfiguration("Microsoft.DBforMySQL/servers", "2018-06-01", true, true);
@@ -68,6 +69,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.Web/sites", "2019-08-01", true, false);
             RegisterConfiguration("Microsoft.Web/staticSites", "2021-02-01", true, false);
             RegisterConfiguration("Microsoft.Web/hostingEnvironments", "2020-10-01", true, false);
+            RegisterConfiguration("Microsoft.BotService/botServices", "2021-05-01-preview", true, true);
         }
 
         private static void RegisterConfiguration(string type, string apiVersion, bool hasConnectionsURI = false, bool hasResourceURI = false)
