@@ -69,6 +69,12 @@ param(
     # application identifier uri
     ${IdentifierUri},
 
+    [Parameter(ParameterSetName='OwnedApplicationParameterSet', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
+    [System.Management.Automation.SwitchParameter]
+    # get owned application
+    ${OwnedApplication},
+
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
@@ -83,6 +89,7 @@ param(
     ${Filter},
 
     [Parameter(ParameterSetName='EmptyParameterSet')]
+    [Parameter(ParameterSetName='OwnedApplicationParameterSet')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
     [System.String[]]
@@ -198,6 +205,12 @@ process {
             $PSBOundParameters['Filter'] = "appId eq '$($PSBoundParameters['ApplicationId'])'"
             $null = $PSBoundParameters.Remove('ApplicationId')
             break
+        }
+        'OwnedApplicationParameterSet' {
+            $null = $PSBoundParameters.Remove("OwnedApplication")
+            [System.Array]$apps = . Az.MSGraph.internal\Get-AzADUserOwnedApplication @PSBoundParameters
+            $PSCmdlet.WriteObject($apps)
+            return
         }
         default {
             break

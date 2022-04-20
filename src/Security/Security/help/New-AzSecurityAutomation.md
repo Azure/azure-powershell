@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSecurityAutomation
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates new security automation
 
 ## SYNTAX
 
@@ -37,16 +37,16 @@ New-AzSecurityAutomation [-Location <String>] [-Etag <String>] [-Tag <Hashtable>
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Creates new security automation
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzSecurityAutomation -Name 'ampleAutomation' -ResourceGroupName 'SampleResourceGroup' -Description 'Sample security automation' -Scope $scopes -Source $sources -Action $actions
 ```
 
-{{ Add example description here }}
+Creates new security automation named "SampleAutomation" under resource group named "SampleResourceGroup"
 
 ## PARAMETERS
 

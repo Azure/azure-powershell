@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported getting random number from managed HSM by `Get-AzKeyVaultRandomNumber`
+* Skipped subscription connection status validation for Az.KeyVault.Extension [#17712]
 * Enabled public network access setting
 
 ## Version 4.3.1
