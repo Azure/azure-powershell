@@ -1,8 +1,22 @@
+# ----------------------------------------------------------------------------------
+#
+# Copyright Microsoft Corporation
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# ----------------------------------------------------------------------------------
+
 # To get upcoming breaking change info, you need to build the debug version of az first
 # ```powershell
 # dotnet msbuild build.proj /t:build /p:configuration=debug
 # Import-Module tools/BreakingChanges/GetUpcomingBreakingChange.ps1
-# Export-BreakingChangeMsg, this will create UpcommingBreakingChanges.md under current path
+# Export-BreakingChangeMsg, this will create `UpcommingBreakingChanges.md` under current path
 # ```
 
 function Get-AttributeSpecificMessage
@@ -19,7 +33,7 @@ function Get-AttributeSpecificMessage
     }
     # GenericBreakingChangeAttribute is the base class of the BreakingChangeAttribute classes and have a protected method named as Get-AttributeSpecificMessage.
     # We can use this to get the specific message to show on document.
-    $Method = $attribute.GetType().GetMethod('Get-AttributeSpecificMessage', [System.Reflection.BindingFlags]::NonPublic -bor [System.Reflection.BindingFlags]::Instance)
+    $Method = $attribute.GetType().GetMethod('GetAttributeSpecificMessage', [System.Reflection.BindingFlags]::NonPublic -bor [System.Reflection.BindingFlags]::Instance)
 
     return $Method.Invoke($attribute, @())
 }
@@ -55,6 +69,7 @@ function Find-CmdletBreakingChange
         $CmdletInfo
     )
     $Result = @{}
+    #Region get breaking change info of cmdlet
     $customAttributes = $CmdletInfo.ImplementingType.GetTypeInfo().GetCustomAttributes([System.object], $true)
     foreach ($customAttribute in $customAttributes)
     {
@@ -64,6 +79,9 @@ function Find-CmdletBreakingChange
             $result.Add($customAttribute.TypeId.Name, $tmp)
         }
     }
+    #EndRegion
+
+    #Region get breaking change info of parameters
     $ParameterBreakingChanges = @{}
     foreach ($parameterInfo in $CmdletInfo.Parameters.values)
     {
@@ -77,6 +95,7 @@ function Find-CmdletBreakingChange
     {
         $Result.Add("Parameter", $ParameterBreakingChanges)
     }
+    #EndRegion
 
     return $Result
 }
@@ -90,6 +109,7 @@ function Get-ModuleBreakingChangeMsg
         [String]
         $ModuleName
     )
+    #Region get the breaking changes of cmdlets and parameters
     $psd1Path = [System.IO.Path]::Combine($PSScriptRoot, "..", "..", "artifacts", "Debug", "$ModuleName", "$ModuleName.psd1")
     Import-Module $psd1Path
     $ModuleInfo = Get-Module $ModuleName
@@ -102,6 +122,9 @@ function Get-ModuleBreakingChangeMsg
             $Result.Add($cmdletInfo.Name, $cmdletBreakingChangeInfo)
         }
     }
+    #EndRegion
+
+    #Region combine the breaking change messages into markdown format
     if ($Result.Count -ne 0)
     {
         $Msg = "# $ModuleName`n"
@@ -127,6 +150,7 @@ function Get-ModuleBreakingChangeMsg
         }
         return $Msg
     }
+    #EndRegion
 }
 
 function Export-BreakingChangeMsg
