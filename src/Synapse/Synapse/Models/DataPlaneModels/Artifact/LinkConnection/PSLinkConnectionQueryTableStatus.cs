@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Azure.Analytics.Synapse.Artifacts.Models;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -20,15 +21,20 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 {
     public class PSLinkConnectionQueryTableStatus
     {
-
         public PSLinkConnectionQueryTableStatus(LinkConnectionQueryTableStatus linkConnectionQueryTableStatus)
         {
-            this.Value = linkConnectionQueryTableStatus?.Value.Select(element => new PSLinkTableStatus(element)).ToList(); ;
+            this.Value = linkConnectionQueryTableStatus?.Value.Select(element => new PSLinkTableStatus(element)).ToList();
             this.ContinuationToken = linkConnectionQueryTableStatus?.ContinuationToken;
         }
 
         public IReadOnlyList<PSLinkTableStatus> Value { get; }
 
         public object ContinuationToken { get; }
+
+        [JsonIgnore]
+        public string ValueText
+        {
+            get { return JsonConvert.SerializeObject(Value, Formatting.Indented, new JsonSerializerSettings()); }
+        }
     }
 }

@@ -38,8 +38,7 @@ The **Update-AzSynapseLinkConnectionLandingZoneCredential** cmdlet updates the l
 
 ### Example 1
 ```powershell
-$st = ConvertTo-SecureString "exampleSasToken" -AsPlainText -Force
-Update-AzSynapseLinkConnectionLandingZoneCredential -WorkspaceName ContosoWorkspace -LinkConnectionName ContosoLinkConnection -SasToken $st
+Update-AzSynapseLinkConnectionLandingZoneCredential -WorkspaceName ContosoWorkspace -LinkConnectionName ContosoLinkConnection -SasToken "SampleSasToken"
 ```
 
 This command updates the landing zone credential with sas token "exampleSasToken" of link connection ContosoLinkConnection in workspace ContosoWorkspace.
@@ -47,8 +46,7 @@ This command updates the landing zone credential with sas token "exampleSasToken
 ### Example 2
 ```powershell
 $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-$st = ConvertTo-SecureString "exampleSasToken" -AsPlainText -Force
-$ws | Update-AzSynapseLinkConnectionLandingZoneCredential -LinkConnectionName ContosoLinkConnection -SasToken $st
+$ws | Update-AzSynapseLinkConnectionLandingZoneCredential -LinkConnectionName ContosoLinkConnection -SasToken "SampleSasToken"
 ```
 
 This command updates the landing zone credential with sas token "exampleSasToken" of link connection ContosoLinkConnection in workspace ContosoWorkspace through pipeline.
@@ -56,8 +54,7 @@ This command updates the landing zone credential with sas token "exampleSasToken
 ### Example 3
 ```powershell
 $lc = Get-AzSynpaseLinkConnection -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
-$st = ConvertTo-SecureString "exampleSasToken" -AsPlainText -Force
-$lc | Update-AzSynapseLinkConnectionLandingZoneCredential -SasToken $st
+$lc | Update-AzSynapseLinkConnectionLandingZoneCredential -SasToken "SampleSasToken"
 ```
 
 This command updates the landing zone credential with sas token "exampleSasToken" of a link connection through pipeline.
