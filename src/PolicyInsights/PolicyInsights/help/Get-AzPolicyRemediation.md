@@ -56,7 +56,7 @@ The **Get-AzPolicyRemediation** cmdlet gets all policy remediations in a scope o
 
 ### Example 1: Get all policy remediations in the current subscription
 ```powershell
-Select-AzSubscription -Subscription "My Subscription"
+Set-AzContext -Subscription "My Subscription"
 Get-AzPolicyRemediation
 ```
 

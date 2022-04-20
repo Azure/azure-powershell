@@ -321,6 +321,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         Weekly = 2
     }
 
+    /// <summary>
+    /// Represents the type of the policy
+    /// </summary>
+    public enum PSPolicyType
+    {
+        Standard = 1,
+        Enhanced = 2
+    }
+
     #endregion
 
     #region jobs

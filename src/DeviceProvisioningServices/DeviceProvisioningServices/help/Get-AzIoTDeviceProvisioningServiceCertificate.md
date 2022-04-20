@@ -57,7 +57,7 @@ Show details about "mycertificate" in an Azure IoT Hub device provisioning servi
 
 ### Example 2
 ```powershell
-Get-AzIoTDps -ResourceGroupName "myresourcegroup" -Name "myiotdps" | Get-AzIoTDpsCertificate
+Get-AzIoTDeviceProvisioningService -ResourceGroupName "myresourcegroup" -Name "myiotdps" | Get-AzIoTDeviceProvisioningServiceCertificate
 ```
 
 ```output

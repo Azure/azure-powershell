@@ -59,7 +59,7 @@ The **Remove-AzStorageAccountNetworkRule** cmdlet removes IpRules or VirtualNetw
 
 ### Example 1: Remove several IpRules with IPAddressOrRange
 ```
-PS C:\>Remove-AzStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -AccountName "mystorageaccount" -IPAddressOrRange "10.0.0.0/24,28.1.0.0/16"
+PS C:\>Remove-AzStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -AccountName "mystorageaccount" -IPAddressOrRange "10.0.0.0/7,28.1.0.0/16"
 ```
 
 This command remove several IpRules with IPAddressOrRange.

@@ -48,7 +48,7 @@ Delete an Azure IoT Hub device provisioning service 'myiotdps'.
 
 ### Example 2
 ```powershell
-Get-AzIotDps -ResourceGroupName "myresourcegroup" -Name "myiotdps" | Remove-AzIotDps
+Get-AzIoTDeviceProvisioningService -ResourceGroupName "myresourcegroup" -Name "myiotdps" | Remove-AzIoTDeviceProvisioningService
 ```
 
 Delete an Azure IoT Hub device provisioning service 'myiotdps' using pipeline.

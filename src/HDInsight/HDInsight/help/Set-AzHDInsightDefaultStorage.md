@@ -33,7 +33,7 @@ $storageAccountName = "yourstorageaccountname"
 $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $storageAccountResourceGroupName -Name $storageAccountName)[0].value
 
 
-$storageContainer = "container002"
+$storageType = "AzureStorage"
 
 # Cluster configuration info
 $location = "East US 2"
@@ -49,7 +49,7 @@ New-AzHDInsightClusterConfig `
             | Set-AzHDInsightDefaultStorage `
                 -StorageAccountResourceId $storageAccountResourceId `
                 -StorageAccountKey $key2 `
-                -StorageContainer $storageContainer `
+                -StorageAccountType $storageType `
             | New-AzHDInsightCluster `
                 -ClusterType Hadoop `
                 -OSType Windows `

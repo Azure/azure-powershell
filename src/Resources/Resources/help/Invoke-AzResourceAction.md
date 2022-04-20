@@ -47,6 +47,7 @@ To get a list of supported actions, use the Azure Resource Explorer tool.
 ```powershell
 Invoke-AzResourceAction -ResourceId /subscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.Compute/virtualMachines/testVM -Action start
 ```
+
 ```output
 Confirm
 Are you sure you want to invoke the 'start' action on the following resource: /subscriptions/{subId}/resourceGroups/testGroup/providers/Microsoft.Compute/virtualMachines/testVM
@@ -69,6 +70,7 @@ The command specifies the *Force* parameter, therefore, it does not prompt you f
 ```powershell
 Invoke-AzResourceAction -ResourceId /subscriptions/{subId}/providers/Microsoft.Network -action register -Force
 ```
+
 ```output
 id                : /subscriptions/{subId}/providers/Microsoft.Network
 namespace         : Microsoft.Network

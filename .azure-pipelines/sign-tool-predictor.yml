@@ -5,28 +5,29 @@ pool:
 
 steps:
 - task: PowerShell@2
-  displayName: Install PS 7.2
+  displayName: Install PowerShell
   inputs:
     targetType: 'inline'
     script: |
-      $url = "https://github.com/PowerShell/PowerShell/releases/download/v7.2.0-preview.3/PowerShell-7.2.0-preview.3-win-x64.zip"
-      $output = Join-Path -Path $(Pipeline.Workspace) -ChildPath "./PowerShell-7.2.0-preview.3-win-x64.zip"
+      $url = "https://github.com/PowerShell/PowerShell/releases/download/v7.2.0/PowerShell-7.2.0-win-x64.zip"
+      $output = Join-Path -Path $(Pipeline.Workspace) -ChildPath "./PowerShell-7.2.0-win-x64.zip"
       (New-Object System.Net.WebClient).DownloadFile($url, $output)
-      $pwshPath= Join-Path -Path $(Pipeline.Workspace) -ChildPath "./PowerShell-7.2.0-preview.3/"
+      $pwshPath= Join-Path -Path $(Pipeline.Workspace) -ChildPath "./PowerShell/"
       Expand-Archive -Path $output -DestinationPath $pwshPath
       $pwshFullPath = Convert-Path $pwshPath
       Write-Host $pwshFullPath
 
 - task: PowerShell@2
-  displayName: 'Install platyPS, PowerShellGet, Az 3.0.0'
+  displayName: 'Install Dependent Modules'
   inputs:
     targetType: inline
     script: |
-      $pwshPath= Join-Path -Path $(Pipeline.Workspace) -ChildPath "./PowerShell-7.2.0-preview.3/pwsh.exe"        
+      $pwshPath= Join-Path -Path $(Pipeline.Workspace) -ChildPath "./PowerShell/pwsh.exe"        
       $command = "`$PSVersionTable `
         Install-Module platyPS -Force -Confirm:`$false -Scope CurrentUser `
         Install-Module PowerShellGet -Force -Confirm:`$false -Scope CurrentUser -SkipPublisherCheck `
-        Install-Module Az -Repository PSGallery -RequiredVersion 3.0.0 -Confirm:`$false -Scope CurrentUser -AllowClobber -Force"      
+        Install-Module PSReadLine -Force -Confirm:`$false -Scope CurrentUser `
+        Install-Module Az.Accounts -Repository PSGallery -Confirm:`$false -Scope CurrentUser -AllowClobber -Force"      
       Invoke-Command -ScriptBlock { param ($pwshPath, $command) & $pwshPath -Command $command } -ArgumentList $pwshPath, $command 
 
 - task: UseDotNet@2
@@ -41,7 +42,7 @@ steps:
   inputs:
     command: custom
     custom: msbuild
-    arguments: 'tools\Az.Tools.Predictor\build.proj /target:"Clean;Build;GenerateHelp" /p:Configuration=Release /p:PowerShellCoreCommandPrefix="$(Pipeline.Workspace)\\PowerShell-7.2.0-preview.3\\pwsh.exe -NonInteractive -NoLogo -NoProfile -Command"'
+    arguments: 'tools\Az.Tools.Predictor\build.proj /target:"Clean;Build;GenerateHelp" /p:Configuration=Release /p:PowerShellCoreCommandPrefix="$(Pipeline.Workspace)\\PowerShell\\pwsh.exe -NonInteractive -NoLogo -NoProfile -Command"'
 
 - task: UseDotNet@2
   displayName: 'Install DotNet 2.1 Runtime for Signing'
@@ -90,7 +91,7 @@ steps:
   inputs:
     command: custom
     custom: msbuild
-    arguments: 'tools\Az.Tools.Predictor\build.proj /target:"Package" /p:Configuration=Release /p:PowerShellCoreCommandPrefix="$(Pipeline.Workspace)\\PowerShell-7.2.0-preview.3\\pwsh.exe -NonInteractive -NoLogo -NoProfile -Command" '
+    arguments: 'tools\Az.Tools.Predictor\build.proj /target:"Package" /p:Configuration=Release /p:PowerShellCoreCommandPrefix="$(Pipeline.Workspace)\\PowerShell\\pwsh.exe -NonInteractive -NoLogo -NoProfile -Command" '
 
 - task: PublishPipelineArtifact@0
   displayName: 'Save artifacts'

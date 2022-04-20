@@ -51,7 +51,6 @@ $JitPolicy = (@{
     })
 $ActivationVM = @($JitPolicy)
 Start-AzJitNetworkAccessPolicy -ResourceGroupName $($MyResource.ResourceGroupName) -Location $MyResource.Location -Name "default" -VirtualMachine $ActivationVM
-
 ```
 
 Opens up a network connection for 1 hour over port 22 from my public IP (not shown).

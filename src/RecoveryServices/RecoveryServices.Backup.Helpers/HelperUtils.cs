@@ -274,6 +274,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return resourceGroupName;
         }
 
+        public static string GetVMNameFromId(Dictionary<CmdletModel.UriEnums, string> keyValuePairs,
+            string id)
+        {
+            string virtualMachineName = string.Empty;
+
+            if (keyValuePairs.ContainsKey(CmdletModel.UriEnums.VirtualMachines))
+            {
+                virtualMachineName = keyValuePairs[CmdletModel.UriEnums.VirtualMachines];
+            }
+            else
+            {
+                throw new ArgumentException(string.Format(Resources.URIValueNotFound,
+                    CmdletModel.UriEnums.VirtualMachines.ToString(), id));
+            }
+
+            return virtualMachineName;
+        }
+
         public static string GetVaultNameFromId(
             Dictionary<CmdletModel.UriEnums, string> keyValuePairs,
             string id)
