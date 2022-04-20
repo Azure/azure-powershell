@@ -1,2 +1,0 @@
-tools/BuildPackagesTask/Microsoft.Azure.Build.Tasks/CIFilterTask.cs
-tools/BuildPackagesTask/SelectedModuleList.txt
