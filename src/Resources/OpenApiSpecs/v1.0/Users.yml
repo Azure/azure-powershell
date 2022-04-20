@@ -1071,13 +1071,84 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.user'
         default:
           $ref: '#/components/responses/error'
-      x-ms-docs-operation-type: operation   
+      x-ms-docs-operation-type: operation  
+  '/me/ownedObjects/$/Microsoft.Graph.Application':
+    get:
+      tags:
+        - users.directoryObject
+      summary: Get ownedObjects from users
+      description: Directory objects that are owned by the user. Read-only. Nullable. Supports $expand.
+      operationId: users_ListOwnedObjects
+      parameters:
+        - name: $orderby
+          in: query
+          description: Order items by property values
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - id
+                - id desc
+                - deletedDateTime
+                - deletedDateTime desc
+              type: string
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - id
+                - deletedDateTime
+              type: string
+        - name: $expand
+          in: query
+          description: Expand related entities
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - '*'
+              type: string
+      responses:
+        '200':
+          description: Retrieved navigation property
+          content:
+            application/json:
+              schema:
+                title: Collection of directoryObject
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
+                  '@odata.nextLink':
+                    type: string
+                additionalProperties:
+                  type: object
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-pageable:
+        nextLinkName: '@odata.nextLink'
+        operationName: listMore
+      x-ms-docs-operation-type: operation
 components:
   schemas:
     microsoft.graph.user:
       title: user
       allOf:
-        - $ref: 'CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
+        - $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
         - title: userinternal
           type: object
           properties:
