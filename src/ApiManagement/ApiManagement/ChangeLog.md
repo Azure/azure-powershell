@@ -18,7 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
  [Breaking change] Sample has been replaced by Examples in 
  `New-AzApiManagementOperation` and `Set-AzApiManagementOperation`
 
