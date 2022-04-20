@@ -18,7 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Updated examples in reference documentation for a few `*-AzStorageAccount*` cmdlets to use `-Name` instead of its aliases
 * Supported DaysAfterLastTierChangeGreaterThan in Management Policy
     -  `Add-AzStorageAccountManagementPolicyAction`
 * Fixed the issue that upload blob might fail on Linux [#17743]
