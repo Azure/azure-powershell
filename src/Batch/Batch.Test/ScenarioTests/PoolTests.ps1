@@ -36,8 +36,8 @@ function Test-PoolCRUD
         $vmSize = "standard_d1_v2"
         $publisher = "microsoft-azure-batch"
         $offer = "ubuntu-server-container"
-        $osSKU = "16-04-lts"
-        $nodeAgent = "batch.node.ubuntu 16.04"
+        $osSKU = "20-04-lts"
+        $nodeAgent = "batch.node.ubuntu 20.04"
         $imageRef = New-Object Microsoft.Azure.Commands.Batch.Models.PSImageReference -ArgumentList @($offer, $publisher, $osSKU)
         $iaasConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSVirtualMachineConfiguration -ArgumentList @($imageRef, $nodeAgent)
         $iaasConfiguration.ContainerConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSContainerConfiguration

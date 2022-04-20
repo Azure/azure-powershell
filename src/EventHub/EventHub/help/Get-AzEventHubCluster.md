@@ -26,8 +26,10 @@ If an cluster name is not provided, a list of all clusters in the specified reso
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzEventHubCluster -ResourceGroupName RSG-Cluster27651 -Name Eventhub-Cluster-5557
+Get-AzEventHubCluster -ResourceGroupName RSG-Cluster27651 -Name Eventhub-Cluster-5557
+```
 
+```output
 Id        : /subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RSG-Cluster27651/providers/Microsoft.Eve
             ntHub/clusters/Eventhub-Cluster-5557
 Name      : Eventhub-Cluster-5557

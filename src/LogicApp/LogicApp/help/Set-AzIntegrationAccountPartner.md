@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.LogicApp.dll-Help.xml
 Module Name: Az.LogicApp
 ms.assetid: 9B3B6AD4-C37C-4877-9864-9FB2E3B0BDAB
@@ -32,8 +32,11 @@ If you omit a required template parameter, the cmdlet prompts you for the value.
 
 ### Example 1: Modify an integration account partner
 ```powershell
-PS C:\>$BusinessIdentities = @("ZZ","AA"),@("XX","GG")
-PS C:\>Set-AzIntegrationAccountPartner -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -PartnerName "IntegrationAccountPartner22" -PartnerType "B2B" -BusinessIdentities $BusinessIdentities
+$BusinessIdentities = @("ZZ","AA"),@("XX","GG")
+Set-AzIntegrationAccountPartner -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -PartnerName "IntegrationAccountPartner22" -PartnerType "B2B" -BusinessIdentities $BusinessIdentities
+```
+
+```output
 Id                 : /subscriptions/<SubscriptionId>/resourceGroups/ResourceGroup11/providers/Microsoft.Logic/integrationAccounts/IntegrationAccount31/partners/IntegrationAccountPartner22
 Name               : IntegrationAccountPartner22
 Type               : Microsoft.Logic/integrationAccounts/partners

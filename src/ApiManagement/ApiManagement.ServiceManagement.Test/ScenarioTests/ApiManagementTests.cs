@@ -69,6 +69,20 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ApiCrudGraphQLTest()
+        {
+            RunPowerShellTest("Api-CrudGraphQlTest");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ApiCrudWebSocketTest()
+        {
+            RunPowerShellTest("Api-CrudWebSocketTest");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
          public void ApiCloneCrudTest()
         {
             RunPowerShellTest("ApiClone-Test");

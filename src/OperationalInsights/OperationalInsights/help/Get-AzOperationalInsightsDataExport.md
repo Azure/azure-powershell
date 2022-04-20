@@ -37,8 +37,10 @@ Gets a workspace's Data export by name or all existing workspace's data exports.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzOperationalInsightsDataExport -ResourceGroupName {rg-name} -WorkspaceName {workspace-name} -DataExportName {dataExportName}
+Get-AzOperationalInsightsDataExport -ResourceGroupName {rg-name} -WorkspaceName {workspace-name} -DataExportName {dataExportName}
+```
 
+```output
 Name             : {dataExportName}
 Id               : /subscriptions/{subscription}/resourcegroups/{rg-name}/providers/microsoft.operationalinsights/workspaces/{workspace-name}/dataexports/{dataExportName}
 Type             : Microsoft.OperationalInsights/workspaces/export
@@ -57,7 +59,7 @@ Gets a workspace's Data export.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzOperationalInsightsDataExport -ResourceGroupName {rg-name} -WorkspaceName {workspace-name}
+Get-AzOperationalInsightsDataExport -ResourceGroupName {rg-name} -WorkspaceName {workspace-name}
 ```
 
 Gets all workspace's Data exports.

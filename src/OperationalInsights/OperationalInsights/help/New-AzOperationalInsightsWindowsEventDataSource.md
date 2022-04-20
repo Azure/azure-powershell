@@ -33,7 +33,7 @@ The **New-AzOperationalInsightsWindowsEventDataSource** cmdlet adds a data sourc
 ## EXAMPLES
 
 ### Example 1: Create system Windows event data source
-```
+```powershell
 $EventLogNames       = @()
 $EventLogNames      += 'Directory Service'
 $EventLogNames      += 'Microsoft-Windows-EventCollector/Operational'

@@ -25,18 +25,18 @@ The New-AzEventHubAuthorizationRuleSASToken cmdlet generates a Shared Access Sig
 
 ### Example 1
 ```powershell
-PS C:\> $StartTime = Get-Date
-PS C:\> $EndTime = $StartTime.AddHours(2.0)
-PS C:\> $SasToken = New-AzEventHubAuthorizationRuleSASToken -AuthorizationRuleId $updatedAuthRule.Id  -KeyType Primary -ExpiryTime $EndTime -StartTime $StartTime
+$StartTime = Get-Date
+$EndTime = $StartTime.AddHours(2.0)
+$SasToken = New-AzEventHubAuthorizationRuleSASToken -AuthorizationRuleId $updatedAuthRule.Id  -KeyType Primary -ExpiryTime $EndTime -StartTime $StartTime
 ```
 
 Generate SAS token for the given authorixation rule for Namespace with start and expiry time..
 
 ### Example 2
 ```powershell
-PS C:\> $StartTime = Get-Date
-PS C:\> $EndTime = $StartTime.AddHours(2.0)
-PS C:\> $SasToken = New-AzEventHubAuthorizationRuleSASToken -AuthorizationRuleId $updatedAuthRule.Id  -KeyType Primary -ExpiryTime $EndTime
+$StartTime = Get-Date
+$EndTime = $StartTime.AddHours(2.0)
+$SasToken = New-AzEventHubAuthorizationRuleSASToken -AuthorizationRuleId $updatedAuthRule.Id  -KeyType Primary -ExpiryTime $EndTime
 ```
 
 Generate SAS token for the given authorixation rule for Namespace with expiry time.

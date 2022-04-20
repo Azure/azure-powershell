@@ -461,6 +461,7 @@ function Test-SetWebAppSlot
 		$slot.SiteConfig.RequestTracingEnabled = $true
 		$slot.SiteConfig.FtpsState = "FtpsOnly"
 		$slot.SiteConfig.MinTlsVersion = "1.0"
+		$slot.SiteConfig.HealthCheckPath = "/api/path"
 
 		$slot = $slot | Set-AzWebAppSlot
 
@@ -471,6 +472,7 @@ function Test-SetWebAppSlot
 		Assert-AreEqual $true $slot.SiteConfig.RequestTracingEnabled
 		Assert-AreEqual "FtpsOnly" $slot.SiteConfig.FtpsState
 		Assert-AreEqual "1.0" $slot.SiteConfig.MinTlsVersion
+		Assert-AreEqual "/api/path" $slot.SiteConfig.HealthCheckPath
 
 		# set app settings and connection strings
 		$appSettings = @{ "setting1" = "valueA"; "setting2" = "valueB"}
@@ -481,7 +483,7 @@ function Test-SetWebAppSlot
         # Assert
         Assert-NotNull  $slot.Identity
         Assert-AreEqual ($appSettings.Keys.Count) $slot.SiteConfig.AppSettings.Count
-		Assert-AreEqual "1.0" $slot.SiteConfig.MinTlsVersion
+		Assert-AreEqual "1.2" $slot.SiteConfig.MinTlsVersion
 
         $slot = Set-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AppSettings $appSettings -ConnectionStrings $connectionStrings -numberofworkers $numberOfWorkers
 

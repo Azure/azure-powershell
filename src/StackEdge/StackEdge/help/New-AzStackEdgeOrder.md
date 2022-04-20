@@ -20,13 +20,16 @@ New-AzStackEdgeOrder [-ResourceGroupName] <String> [-DeviceName] <String> -Conta
 ```
 
 ## DESCRIPTION
-The **New-AzStackEdgeOrder** cmdlet creates a new order for a Stack Edge device. A Stack Edge device resource needs to be created first before creating an order. You can specify details like contact person, company name, email, address etc. as parameters for creating the order.�
+The **New-AzStackEdgeOrder** cmdlet creates a new order for a Stack Edge device. A Stack Edge device resource needs to be created first before creating an order. You can specify details like contact person, company name, email, address etc. as parameters for creating the order.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> New-AzStackEdgeOrder -ResourceGroupName rg-name -DeviceName device-name -ContactPerson "John Mcclane" -CompanyName Microsoft -Phone 8004269400 -Email john@microsoft.com -AddressLine1  "Microsoft Corporation" -PostalCode 98052 -City Redmond -State WA -Country USA
+New-AzStackEdgeOrder -ResourceGroupName rg-name -DeviceName device-name -ContactPerson "John Mcclane" -CompanyName Microsoft -Phone 8004269400 -Email john@microsoft.com -AddressLine1  "Microsoft Corporation" -PostalCode 98052 -City Redmond -State WA -Country USA
+```
+
+```output
 DeviceName  ResourceGroupName Status    UpdatedDatetime
 ----------  ----------------- ------    ---------------
 deviceName  resourceGroupName Untracked 01-Jan-01 12:00:00 AM

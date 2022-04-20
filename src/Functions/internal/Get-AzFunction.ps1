@@ -20,13 +20,9 @@ Description for Get function information by its ID for web site, or a deployment
 .Description
 Description for Get function information by its ID for web site, or a deployment slot.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity

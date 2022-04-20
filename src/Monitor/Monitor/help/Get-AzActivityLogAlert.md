@@ -31,22 +31,22 @@ The **Get-AzActivityLogAlert** cmdlet gets one or more activity log alert resour
 ## EXAMPLES
 
 ### Example 1: Get a activity log alerts by subscription ID
-```
-PS C:\>Get-AzActivityLogAlert
+```powershell
+Get-AzActivityLogAlert
 ```
 
 This command lists all the activity log alerts for the current subscription.
 
 ### Example 2: Get activity log alerts for the given resource group
-```
-PS C:\>Get-AzActivityLogAlert -ResourceGroupName "Default-activityLogAlerts"
+```powershell
+Get-AzActivityLogAlert -ResourceGroupName "Default-activityLogAlerts"
 ```
 
 This command lists activity log alerts for the given resource group.
 
 ### Example 3: Get an activity log alert.
-```
-PS C:\>Get-AzActivityLogAlert -ResourceGroupName "Default-activityLogAlerts" -Name "alert1"
+```powershell
+Get-AzActivityLogAlert -ResourceGroupName "Default-activityLogAlerts" -Name "alert1"
 ```
 
 This command lists one (a list with a single element) activity log alert.

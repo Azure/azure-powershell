@@ -28,14 +28,14 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachine()
         {
-            TestRunner.RunTestScript("Test-VirtualMachine $null");
+            TestRunner.RunTestScript("Test-VirtualMachine 'eastus2euap'");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachine_Managed()
         {
-            TestRunner.RunTestScript("Test-VirtualMachine $null $true");
+            TestRunner.RunTestScript("Test-VirtualMachine 'eastus2euap' $true");
         }
 
         [Fact]
@@ -458,7 +458,14 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VMNoPublicIPAddress");
         }
-        
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVMForceDelete()
+        {
+            TestRunner.RunTestScript("Test-ForceDelete");
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineDiffDiskPlacement()
@@ -471,6 +478,20 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestVirtualMachineHibernate()
         {
             TestRunner.RunTestScript("Test-VirtualMachineHibernate");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVMvCPUFeatures()
+        {
+            TestRunner.RunTestScript("Test-VMvCPUFeatures");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetVirtualMachineById()
+        {
+            TestRunner.RunTestScript("Test-GetVirtualMachineById");
         }
     }
 }

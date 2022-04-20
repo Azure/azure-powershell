@@ -44,7 +44,7 @@ The **Reset-AzSynapseSqlPoolAdvancedThreatProtectionSetting** cmdlet removes the
 
 ### Example 1
 ```powershell
-PS C:\> Reset-AzSynapseSqlPoolAdvancedThreatProtectionSetting -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
+Reset-AzSynapseSqlPoolAdvancedThreatProtectionSetting -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
 ```
 
 This command removes the advanced threat protection settings from a SQL pool named ContosoSqlPool under the workspace named ContosoWorkspace.

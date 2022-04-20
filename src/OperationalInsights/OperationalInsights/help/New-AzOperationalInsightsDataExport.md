@@ -25,8 +25,10 @@ Creates data export for a workspace.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzOperationalInsightsDataExport  -ResourceGroupName {rg-name} -WorkspaceName {workspace-name} -DataExportName {dataExportName} -TableNames {table_names} -ResourceId {resource}
+New-AzOperationalInsightsDataExport  -ResourceGroupName {rg-name} -WorkspaceName {workspace-name} -DataExportName {dataExportName} -TableNames {table_names} -ResourceId {resource}
+```
 
+```output
 Name             : {dataExportName}
 Id               : /subscriptions/{subscription}/resourcegroups/{rg-name}/providers/microsoft.operationalinsights/workspaces/{workspace-name}/dataexports/{dataExportName}
 DataExportId     : {GUID}

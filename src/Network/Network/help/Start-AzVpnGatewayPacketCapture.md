@@ -38,6 +38,9 @@ Starts Packet Capture Operation on a Vpn Gateway.
 ### Example 1
 ```powershell
 Start-AzVpnGatewayPacketCapture -ResourceGroupName "PktCaptureTestSite2RG" -Name "PktCaptureTestSite2VNG"
+```
+
+```output
 Code              : Succeeded
 EndTime           : 10/1/2019 12:57:27 AM
 StartTime         : 10/1/2019 12:57:16 AM
@@ -57,6 +60,9 @@ Id                :
 ```powershell
 $a="{`"TracingFlags`":11,`"MaxPacketBufferSize`":120,`"MaxFileSize`":500,`"Filters`":[{`"SourceSubnets`":[`"10.19.0.4/32`",`"10.20.0.4/32`"],`"DestinationSubnets`":[`"10.20.0.4/32`",`"10.19.0.4/32`"],`"TcpFlags`":-1,`"Protocol`":[6],`"CaptureSingleDirectionTrafficOnly`":true}]}"
 Start-AzVpnGatewayPacketCapture -ResourceGroupName "PktCaptureTestSite2RG" -Name "PktCaptureTestSite2VNG" -FilterData $a
+```
+
+```output
 Code              : Succeeded
 EndTime           : 10/1/2019 12:57:27 AM
 StartTime         : 10/1/2019 12:57:16 AM

@@ -38,30 +38,30 @@ The name of the KQL script becomes the name of the exported file. If you specify
 
 ### Example 1
 ```powershell
-PS C:\> Export-AzSynapseKqlScript -WorkspaceName ContosoWorkspace -OutputFolder "C:\KqlScirpt"
+Export-AzSynapseKqlScript -WorkspaceName ContosoWorkspace -OutputFolder "C:\KqlScirpt"
 ```
 
 Exports all KQL scripts in the workspace ContosoWorkspace to the folder "C:\KqlScirpt".
 
 ### Example 2
 ```powershell
-PS C:\> Export-AzSynapseKqlScript -WorkspaceName ContosoWorkspace -Name ContosoKqlScript -OutputFolder "C:\KqlScript"
+Export-AzSynapseKqlScript -WorkspaceName ContosoWorkspace -Name ContosoKqlScript -OutputFolder "C:\KqlScript"
 ```
 
 Exports a single KQL script called ContosoKqlScript in the workspace ContosoWorkspace to the folder "C:\KqlScript".
 
 ### Example 3
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Export-AzSynapseKqlScript -Name ContosoKqlScript -OutputFolder "C:\KqlScript"
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Export-AzSynapseKqlScript -Name ContosoKqlScript -OutputFolder "C:\KqlScript"
 ```
 
 Exports a single KQL script called ContosoKqlScript in the workspace ContosoWorkspace to the folder "C:\KqlScript" through pipeline.
 
 ### Example 4
 ```powershell
-PS C:\> $KqlScript = Get-AzSynapseKqlScript -WorkspaceName ContosoWorkspace -Name ContosoKqlScript
-PS C:\> $KqlScript | Export-AzSynapseKqlScript -OutputFolder "C:\KqlScript"
+$KqlScript = Get-AzSynapseKqlScript -WorkspaceName ContosoWorkspace -Name ContosoKqlScript
+$KqlScript | Export-AzSynapseKqlScript -OutputFolder "C:\KqlScript"
 ```
 
 Exports a single KQL script called ContosoKqlScript in the workspace ContosoWorkspace to the folder "C:\KqlScript" through pipeline.

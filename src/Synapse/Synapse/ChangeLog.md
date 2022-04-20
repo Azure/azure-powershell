@@ -19,6 +19,22 @@
 -->
 
 ## Upcoming Release
+* Added support for Synapse Azure Active Directory (Azure AD) only authentication
+    - Added `Get-AzSynapseActiveDirectoryOnlyAuthentication` cmdlet
+    - Added `Enable-AzSynapseActiveDirectoryOnlyAuthentication` cmdlet
+    - Added `Disable-AzSynapseActiveDirectoryOnlyAuthentication` cmdlet
+
+## Version 1.2.0
+* Upgraded Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.14
+* Fixed the issue that following cmdlets only shows 100 entries
+    - `Get-AzSynapseRoleAssignment` cmdlet
+    - `Get-AzSynapsePipelineRun` cmdlet
+    - `Get-AzSynapseTriggerRun` cmdlet
+    - `Get-AzSynapseActivityRun` cmdlet
+* Fixed the issue that there should be an error message when removing a dependency pipeline
+
+## Version 1.1.0
+* Updated `Update-AzSynapseSparkPool` to support new parameter [-ForceApplySetting]
 
 ## Version 1.0.0
 * General availability of Az.Synapse

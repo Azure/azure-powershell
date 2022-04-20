@@ -8,10 +8,10 @@
 @{
 
 # Script module or binary module file associated with this manifest.
-RootModule = ''
+RootModule = 'Az.Tools.Predictor.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.5.0'
+ModuleVersion = '1.0.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -29,7 +29,7 @@ CompanyName = 'Microsoft Corporation'
 Copyright = 'Microsoft Corporation. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'Microsoft Azure PowerShell - Module providing recommendations for cmdlets comprised in the Az module - This module requires PowerShell 7.2-preview.6 and PSReadLine 2.2.0-beta3.
+Description = 'Microsoft Azure PowerShell - Module providing recommendations for cmdlets comprised in the Az module - This module requires PowerShell 7.2 and PSReadLine 2.2.2.
 
 Suggestions must be activated:
 - Enable-AzPredictor:  Activate the suggestions
@@ -41,10 +41,10 @@ For more information on Az Predictor, please visit the following: https://aka.ms
 PowerShellVersion = '7.2'
 
 # Modules that must be imported into the global environment prior to importing this module
-# RequiredModules = @(@{ModuleName="PSReadLine"; ModuleVersion="2.2.0-beta2"})
+RequiredModules = @(@{ModuleName = 'PSReadLine'; ModuleVersion = '2.2.2'; },
+                    @{ModuleName = 'Az.Accounts'; ModuleVersion = '2.6.2';})
 
-NestedModules = @("Microsoft.Azure.PowerShell.Tools.AzPredictor.dll")
-
+# Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @("Enable-AzPredictor", "Disable-AzPredictor", "Open-AzPredictorSurvey", "Send-AzPredictorRating")
 
 # Format files (.ps1xml) to be loaded when importing this module
@@ -67,9 +67,9 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Improvements in command parsing mechanism
-* Fixed end of user input detection when - character is used
-* Optimized collection of anonymized data'
+        ReleaseNotes = '* Updated dependency on PSReadline 2.2.2 
+* Updated dependency on PowerShell 7.2
+* Added validation of pre-requisites before loading module'
 
         # Prerelease string of this module
         # Prerelease = ''

@@ -37,14 +37,14 @@ Gets or lists the registered prefix for peerings.
 
 ### List registered ASNs for peering
 ```powershell
-PS C:\> Get-AzPeeringRegisteredPrefix -ResourceGroupName $resourceGroupName -PeeringName $peeringName
+Get-AzPeeringRegisteredPrefix -ResourceGroupName $resourceGroupName -PeeringName $peeringName
 ```
 
 Lists registered asn.
 
 ### Gets registered ASN for peering by name
 ```powershell
-PS C:\> Get-AzPeeringRegisteredPrefix -ResourceGroupName $resourceGroupName -PeeringName $peeringName -Name $registeredPrefixName
+Get-AzPeeringRegisteredPrefix -ResourceGroupName $resourceGroupName -PeeringName $peeringName -Name $registeredPrefixName
 ```
 
 Gets registered peering asn.

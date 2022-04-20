@@ -20,34 +20,14 @@ Gets information about a server.
 .Description
 Gets information about a server.
 .Example
-PS C:\> Get-AzPostgreSqlFlexibleServer
-
-Name                Location  SkuName         SkuTier        AdministratorLogin StorageSizeGb
-----                --------  -------         -------        ------------------ -------------
-postgresql-test     East US   Standard_D2s_v3 GeneralPurpose daeunyim           128
-postgresql-test-2   East US   Standard_D2s_v3 GeneralPurpose daeunyim           128
-postgresql-test-3   East US   Standard_D2s_v3 GeneralPurpose daeunyim           128
-
+Get-AzPostgreSqlFlexibleServer
 .Example
-PS C:\> Get-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test
-
-Name                Location  SkuName         SkuTier        AdministratorLogin StorageSizeGb
-----                --------  -------         -------        ------------------ -------------
-postgresql-test     East US   Standard_D2s_v3 GeneralPurpose daeunyim           128
+Get-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test
 .Example
-PS C:\> Get-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest
-
-Name                Location  SkuName         SkuTier        AdministratorLogin StorageSizeGb
-----                --------  -------         -------        ------------------ -------------
-postgresql-test     East US   Standard_D2s_v3 GeneralPurpose daeunyim           128
-postgresql-test-2   East US   Standard_D2s_v3 GeneralPurpose daeunyim           128
+Get-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest
 .Example
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-test"
-PS C:\> Get-AzPostgreSqlFlexibleServer -InputObject $ID
-
-Name                Location  SkuName         SkuTier        AdministratorLogin StorageSizeGb
-----                --------  -------         -------        ------------------ -------------
-postgresql-test     East US   Standard_D2s_v3 GeneralPurpose daeunyim           128
+$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-test"
+Get-AzPostgreSqlFlexibleServer -InputObject $ID
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity

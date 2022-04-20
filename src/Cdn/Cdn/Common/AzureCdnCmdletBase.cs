@@ -14,10 +14,14 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+
+using Microsoft.Azure.Commands.Cdn.Helpers;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Cdn;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Cdn.Common
 {
@@ -76,6 +80,14 @@ namespace Microsoft.Azure.Commands.Cdn.Common
             {
                 action();
             }
+        }
+
+        protected override void BeginProcessing()
+        {
+            CdnMessageHelper.WriteMessage(this,
+                $"Breaking changes in the cmdlet: { MyInvocation.InvocationName}" + Environment.NewLine +
+                "- When you bump up Az.CDN module version, there will be changes to parameters and output, please use the new version: 2.0.0");
+            base.BeginProcessing();
         }
     }
 }

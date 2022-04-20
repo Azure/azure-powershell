@@ -18,6 +18,14 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.16.5
+* Updated ADF .Net SDK version to 5.4.0
+
+## Version 1.16.4
+* Updated ADF .Net SDK version to 5.2.0
+
+## Version 1.16.3
 * Updated ADF .Net SDK version to 5.1.0
 
 ## Version 1.16.2

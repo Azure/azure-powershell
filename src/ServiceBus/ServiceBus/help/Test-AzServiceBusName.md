@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.dll-Help.xml
 Module Name: Az.ServiceBus
 online version: https://docs.microsoft.com/powershell/module/az.servicebus/test-azservicebusname
@@ -29,22 +29,22 @@ The **Test-AzServiceBusName** Cmdlet Check Availability of the NameSpace Name or
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Test-AzServiceBusName -Namespace MyNameSpaceName
+```powershell
+Test-AzServiceBusName -Namespace MyNameSpaceName
 ```
 
 Returns the status on availability of the namespace name 'MyNameSpaceName' as True
 
 ### Example 2
-```
-PS C:\> Test-AzServiceBusName -Namespace MyNameSpaceName
+```powershell
+Test-AzServiceBusName -Namespace MyNameSpaceName
 ```
 
 Returns the status on availability of the namespace name 'MyNameSpaceName' as False with Reason
 
 ### Example 3
-```
-PS C:\> Test-AzServiceBusName -ResourceGroupName MyResourceGroup -Namespace Test123 -AliasName myAliasName
+```powershell
+Test-AzServiceBusName -ResourceGroupName MyResourceGroup -Namespace Test123 -AliasName myAliasName
 ```
 
 ## PARAMETERS

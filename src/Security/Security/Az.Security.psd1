@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.7.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.7.4'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.SecurityCenter.dll'
@@ -125,13 +125,22 @@ CmdletsToExport = 'Get-AzSecurityAlert', 'Set-AzSecurityAlert',
                'Get-AzSecurityAdaptiveApplicationControlGroup', 
                'Get-AzSecurityAdaptiveApplicationControl', 
                'Get-AzSecuritySecureScore', 'Get-AzSecuritySecureScoreControl', 
-               'Get-AzSecuritySecureScoreControlDefinition'
+               'Get-AzSecuritySecureScoreControlDefinition',
+               'Get-AzSecurityAutomation',
+               'New-AzSecurityAutomation',
+               'Remove-AzSecurityAutomation',
+               'Confirm-AzSecurityAutomation',
+               'New-AzSecurityAutomationActionObject',
+               'New-AzSecurityAutomationRuleObject',
+               'New-AzSecurityAutomationRuleSetObject',
+               'New-AzSecurityAutomationScopeObject',
+               'New-AzSecurityAutomationSourceObject'
 
 # Variables to export from this module
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Get-AzRegulatoryComplainceAssessment'
+AliasesToExport = 'Get-AzRegulatoryComplainceAssessment','Set-AzSecurityAutomation'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

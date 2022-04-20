@@ -20,7 +20,9 @@ New-AzApiManagementApi -Context <PsApiManagementContext> [-ApiId <String>] -Name
  [-BearerTokenSendingMethod <String[]>] [-SubscriptionKeyHeaderName <String>]
  [-SubscriptionKeyQueryParamName <String>] [-ProductIds <String[]>] [-SubscriptionRequired]
  [-ApiVersionDescription <String>] [-ApiVersionSetId <String>] [-ApiVersion <String>] [-SourceApiId <String>]
- [-SourceApiRevision <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-SourceApiRevision <String>] [-ApiType <PsApiManagementApiType>] [-TermsOfServiceUrl <String>]
+ [-ContactName <String>] [-ContactUrl <String>] [-ContactEmail <String>] [-LicenseName <String>]
+ [-LicenseUrl <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -91,6 +93,22 @@ If you do not specify this parameter, this cmdlet generates an ID for you.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ApiType
+Type of API to create (http, soap, websocket, graphql). This parameter is optional.
+
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiType]
+Parameter Sets: (All)
+Aliases:
+Accepted values: Http, Soap, WebSocket, GraphQL
 
 Required: False
 Position: Named
@@ -192,6 +210,51 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ContactEmail
+The email address of the contact person/organization. MUST be in the format of an email address. This parameter is optional.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ContactName
+The identifying name of the contact person/organization. This parameter is optional.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ContactUrl
+The URL pointing to the contact information. MUST be in the format of a URL. This parameter is optional.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Context
 Specifies a **PsApiManagementContext** object.
 
@@ -224,6 +287,36 @@ Accept wildcard characters: False
 
 ### -Description
 Specifies a description for the web API.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -LicenseName
+The license name used for the API. This parameter is optional.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -LicenseUrl
+A URL to the Terms of Service for the API. This parameter is optional.
 
 ```yaml
 Type: System.String
@@ -310,7 +403,7 @@ The default value is $Null.
 Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementSchema[]
 Parameter Sets: (All)
 Aliases:
-Accepted values: Http, Https
+Accepted values: Http, Https, Ws, Wss
 
 Required: True
 Position: Named
@@ -403,6 +496,21 @@ Flag to enforce SubscriptionRequired for requests to the Api. This parameter is 
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -TermsOfServiceUrl
+A URL to the Terms of Service for the API. This parameter is optional.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

@@ -26,14 +26,14 @@ Creates a new Azure Event Grid Topic. Once the topic is created, an application 
 
 ### Example 1
 ```powershell
-PS C:\> New-AzEventGridTopic -ResourceGroupName MyResourceGroupName -Name Topic1 -Location westus2
+New-AzEventGridTopic -ResourceGroupName MyResourceGroupName -Name Topic1 -Location westus2
 ```
 
 Creates an Event Grid topic \`Topic1\` in the specified geographic location \`westus2\`, in resource group \`MyResourceGroupName\`.
 
 ### Example 2
 ```powershell
-PS C:\> New-AzEventGridTopic -ResourceGroupName MyResourceGroupName -Name Topic1 -Location westus2 -Tag @{ Department="Finance"; Environment="Test" }
+New-AzEventGridTopic -ResourceGroupName MyResourceGroupName -Name Topic1 -Location westus2 -Tag @{ Department="Finance"; Environment="Test" }
 ```
 
 Creates an Event Grid topic \`Topic1\` in the specified geographic location \`westus2\`, in resource group \`MyResourceGroupName\` with the specified tags "Department" and "Environment".

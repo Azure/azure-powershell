@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.7.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.7.4'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Batch.dll', 'Microsoft.Azure.Management.Batch.dll', 
@@ -113,7 +113,9 @@ CmdletsToExport = 'Remove-AzBatchAccount', 'Get-AzBatchAccount',
                'Remove-AzBatchJobSchedule', 'Get-AzBatchTaskCount', 
                'Get-AzBatchPoolNodeCount', 
                'Start-AzBatchComputeNodeServiceLogUpload', 
-               'New-AzBatchResourceFile'
+               'New-AzBatchResourceFile',
+               'Get-AzBatchSupportedVirtualMachineSku', 'Get-AzBatchTaskSlotCount',
+               'Get-AzBatchComputeNodeExtension'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -123,7 +125,8 @@ AliasesToExport = 'Reactivate-AzBatchTask', 'Get-AzBatchSubscriptionQuotas',
                'Get-AzBatchAccountKeys', 'Get-AzBatchJobStatistics', 
                'Get-AzBatchLocationQuotas', 'Get-AzBatchPoolNodeCounts', 
                'Get-AzBatchPoolStatistics', 'Get-AzBatchPoolUsageMetrics', 
-               'Get-AzBatchRemoteLoginSettings', 'Get-AzBatchTaskCounts'
+               'Get-AzBatchRemoteLoginSettings', 'Get-AzBatchTaskCounts',
+               'Get-AzBatchSupportedVMSku'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

@@ -24,7 +24,7 @@ Regenerates the shared keys for a Log Analytics Workspace. These keys are used t
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzOperationalInsightsWorkspaceSharedKey -ResourceGroupName "ContosoResourceGroup" -Name "MyWorkspace"
+Update-AzOperationalInsightsWorkspaceSharedKey -ResourceGroupName "ContosoResourceGroup" -Name "MyWorkspace"
 ```
 
 Regenerates the shared keys for a Log Analytics Workspace. returns Primary and Secondary shared keys

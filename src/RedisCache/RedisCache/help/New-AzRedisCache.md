@@ -28,9 +28,11 @@ The **New-AzRedisCache** cmdlet creates an Azure Redis Cache.
 ## EXAMPLES
 
 ### Example 1: Create a Redis Cache
+```powershell
+New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "North Central US"
 ```
-PS C:\>New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "North Central US"
 
+```output
           PrimaryKey         : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
           SecondaryKey       : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
           ResourceGroupName  : MyGroup
@@ -38,7 +40,7 @@ PS C:\>New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "
           Location           : North Central US
           Name               : MyCache
           Type               : Microsoft.Cache/Redis
-          HostName           : mycache.redis.cache.windows.net 
+          HostName           : mycache.redis.cache.windows.net
           Port               : 6379
           ProvisioningState  : creating
           SslPort            : 6380
@@ -54,9 +56,11 @@ PS C:\>New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "
 This command creates a Redis Cache.
 
 ### Example 2: Create a Standard SKU Redis Cache
+```powershell
+New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "North Central US" -Size 250MB -Sku "Standard" -RedisConfiguration @{"maxmemory-policy" = "allkeys-random"} -Force
 ```
-PS C:\>New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "North Central US" -Size 250MB -Sku "Standard" -RedisConfiguration @{"maxmemory-policy" = "allkeys-random"} -Force
 
+```output
           PrimaryKey         : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
           SecondaryKey       : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
           ResourceGroupName  : MyGroup
@@ -68,7 +72,7 @@ PS C:\>New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "
           Port               : 6379
           ProvisioningState  : creating
           SslPort            : 6380
-          RedisConfiguration : {[maxmemory-policy, allkeys-random]} 
+          RedisConfiguration : {[maxmemory-policy, allkeys-random]}
           EnableNonSslPort   : False
           RedisVersion       : 2.8
           Size               : 250MB
@@ -81,9 +85,11 @@ This cmdlet creates a cache using Azure Cache for Redis.
 
 ### Example 3: Create a Zone Redundant Cache
 
+```powershell
+New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "Central US" -Size P1 -Sku "Premium" -Zone @("1","2")
 ```
-PS C:\> New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "Central US" -Size P1 -Sku "Premium" -Zone @("1","2")
 
+```output
           PrimaryKey         : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
           SecondaryKey       : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
           ResourceGroupName  : MyGroup
@@ -96,7 +102,7 @@ PS C:\> New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location 
           ProvisioningState  : creating
           SslPort            : 6380
           RedisConfiguration : {[maxmemory-policy, allkeys-random], [maxclients, 7500], [maxmemory-reserved, 200],
-                                [maxfragmentationmemory-reserved, 300]...} 
+                                [maxfragmentationmemory-reserved, 300]...}
           EnableNonSslPort   : False
           RedisVersion       : 4.0.14
           Size               : 6GB
@@ -110,14 +116,16 @@ This command creates Azure cache for Redis instance in mutliple zones.
 ### Example 4: Create a Virtual Network enable Cache
 
 Requirements for creating Virtual Network enable cache.
-1. Create the virtual network in same resource group in which you want to create your redis cache. You can create virtual network from [New-AzVirtualNetwork](./../../../Network/Network/help/New-AzVirtualNetwork.md) powershell command.
+1. Create the virtual network in same resource group in which you want to create your redis cache. You can create virtual network from [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) powershell command.
 1. You will need SubnetID for VNET enable cache. Syntax of SubnetID is given below.
 
 Format of SubnetID: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/providers/Microsoft.ClassicNetwork/VirtualNetworks/{vnetName}/subnets/{subnetName}
 
+```powershell
+New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "Central US" -Size P1 -Sku "Premium" -SubnetId "/subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/mygroup/providers/Microsoft.Network/virtualNetworks/MyNet/subnets/MySubnet"
 ```
-PS C:\> New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "Central US" -Size P1 -Sku "Premium" -SubnetId "/subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/mygroup/providers/Microsoft.Network/virtualNetworks/MyNet/subnets/MySubnet"
 
+```output
           PrimaryKey         : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
           SecondaryKey       : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
           ResourceGroupName  : MyGroup
@@ -130,13 +138,13 @@ PS C:\> New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location 
           ProvisioningState  : creating
           SslPort            : 6380
           RedisConfiguration : {[maxmemory-policy, allkeys-random], [maxclients, 7500], [maxmemory-reserved, 200],
-                                [maxfragmentationmemory-reserved, 300]...} 
+                                [maxfragmentationmemory-reserved, 300]...}
           EnableNonSslPort   : False
           RedisVersion       : 4.0.14
           Size               : 6GB
           Sku                : Premium
           SubnetId           : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/mygroup/providers/Microsoft.Network/virtualNetworks/MyNet/subnets/MySubnet
-          StaticIP           : 10.0.0.4  
+          StaticIP           : 10.0.0.4
           Tag                : {}
           Zone               : []
 ```
@@ -153,18 +161,20 @@ After creating a storage account, get the storage account connection string usin
 
 Connection String Format :- "DefaultEndpointsProtocol=https;AccountName={storageAccountName};AccountKey={storageAccountKey};EndpointSuffix=core.windows.net"</br>
 
-You must have the specific Redis configuration settings to enable data persistence.  
+You must have the specific Redis configuration settings to enable data persistence.
 
 For RDB backup enable
 -  rdb-backup-enabled (Set true or false)
--  rdb-storage-connection-string (Give connection string in above format.)    
--  rdb-backup-frequency (Set a backup interval in minutes. You can only choose from - 15, 30, 60, 360, 720 and 1440 minutes.)  
-    
+-  rdb-storage-connection-string (Give connection string in above format.)
+-  rdb-backup-frequency (Set a backup interval in minutes. You can only choose from - 15, 30, 60, 360, 720 and 1440 minutes.)
 
 
+
+```powershell
+New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "Central US" -Size P1 -Sku "Premium" -RedisConfiguration @{"rdb-backup-enabled" = "true"; "rdb-storage-connection-string" = "DefaultEndpointsProtocol=https;AccountName=mystorageaccount;AccountKey=pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=;EndpointSuffix=core.windows.net"; "rdb-backup-frequency" = "30"}
 ```
-PS C:\> New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "Central US" -Size P1 -Sku "Premium" -RedisConfiguration @{"rdb-backup-enabled" = "true"; "rdb-storage-connection-string" = "DefaultEndpointsProtocol=https;AccountName=mystorageaccount;AccountKey=pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=;EndpointSuffix=core.windows.net"; "rdb-backup-frequency" = "30"}
 
+```output
           PrimaryKey         : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
           SecondaryKey       : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
           ResourceGroupName  : MyGroup
@@ -177,7 +187,7 @@ PS C:\> New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location 
           ProvisioningState  : creating
           SslPort            : 6380
           RedisConfiguration : {[maxmemory-policy, allkeys-random], [maxclients, 7500], [maxmemory-reserved, 200],
-                                [maxfragmentationmemory-reserved, 300], [rdb-backup-enabled, true]....} 
+                                [maxfragmentationmemory-reserved, 300], [rdb-backup-enabled, true]....}
           EnableNonSslPort   : False
           RedisVersion       : 4.0.14
           Size               : 6GB
@@ -191,11 +201,13 @@ PS C:\> New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location 
 For AOF back up enabled.
 -  aof-backup-enabled (Set true or false),
 -  aof-storage-connection-string-0 (Give connection string in above format.)
--  aof-storage-connection-string-1 (You can optionally configure another storage account. If a second storage account is configured, the writes to the replica cache are written to this second storage account.) 
+-  aof-storage-connection-string-1 (You can optionally configure another storage account. If a second storage account is configured, the writes to the replica cache are written to this second storage account.)
 
+```powershell
+New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "Central US" -Size P1 -Sku "Premium" -RedisConfiguration @{"aof-backup-enabled" = "true"; "aof-storage-connection-string-0" = "DefaultEndpointsProtocol=https;AccountName=mystorageaccount;AccountKey=pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=;EndpointSuffix=core.windows.net"}
 ```
-PS C:\> New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "Central US" -Size P1 -Sku "Premium" -RedisConfiguration @{"aof-backup-enabled" = "true"; "aof-storage-connection-string-0" = "DefaultEndpointsProtocol=https;AccountName=mystorageaccount;AccountKey=pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=;EndpointSuffix=core.windows.net"}
 
+```output
           PrimaryKey         : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
           SecondaryKey       : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
           ResourceGroupName  : MyGroup
@@ -208,7 +220,7 @@ PS C:\> New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location 
           ProvisioningState  : creating
           SslPort            : 6380
           RedisConfiguration : {[maxmemory-policy, allkeys-random], [maxclients, 7500], [maxmemory-reserved, 200],
-                                [maxfragmentationmemory-reserved, 300], [aof-backup-enabled, true]...} 
+                                [maxfragmentationmemory-reserved, 300], [aof-backup-enabled, true]...}
           EnableNonSslPort   : False
           RedisVersion       : 4.0.14
           Size               : 6GB
@@ -267,7 +279,7 @@ Accept wildcard characters: False
 
 ### -Location
 Specifies the location in which to create a Redis Cache.
-Valid values are: 
+Valid values are:
 - North Central US
 - South Central US
 - Central US
@@ -337,31 +349,31 @@ Specifies the connection string to the Storage account for Redis data persistenc
 Premium tier only.
 - rdb-backup-frequency.
 Specifies the backup frequency for Redis data persistence.
-Premium tier only. 
+Premium tier only.
 - maxmemory-reserved.
 Configures the memory reserved for non-cache processes.
-Standard and Premium tiers. 
+Standard and Premium tiers.
 - maxmemory-policy.
 Configures the eviction policy for the cache.
-All pricing tiers. 
+All pricing tiers.
 - notify-keyspace-events.
 Configures keyspace notifications.
-Standard and premium tiers. 
+Standard and premium tiers.
 - hash-max-ziplist-entries.
 Configures memory optimization for small aggregate data types.
-Standard and Premium tiers. 
+Standard and Premium tiers.
 - hash-max-ziplist-value.
 Configures memory optimization for small aggregate data types.
-Standard and Premium tiers. 
+Standard and Premium tiers.
 - set-max-intset-entries.
 Configures memory optimization for small aggregate data types.
-Standard and Premium tiers. 
+Standard and Premium tiers.
 - zset-max-ziplist-entries.
 Configures memory optimization for small aggregate data types.
-Standard and Premium tiers. 
+Standard and Premium tiers.
 - zset-max-ziplist-value.
 Configures memory optimization for small aggregate data types.
-Standard and Premium tiers. 
+Standard and Premium tiers.
 - databases.
 Configures the number of databases.
 This property can be configured only at cache creation.
@@ -421,7 +433,7 @@ The acceptable values for this parameter are:
 - 6
 - 7
 - 8
-- 9 
+- 9
 - 10
 
 ```yaml
@@ -438,7 +450,7 @@ Accept wildcard characters: False
 
 ### -Size
 Specifies the size of the Redis Cache.
-Valid values are: 
+Valid values are:
 - P1
 - P2
 - P3
@@ -474,7 +486,7 @@ Accept wildcard characters: False
 
 ### -Sku
 Specifies the SKU of the Redis Cache to create.
-Valid values are: 
+Valid values are:
 - Basic
 - Standard
 - Premium

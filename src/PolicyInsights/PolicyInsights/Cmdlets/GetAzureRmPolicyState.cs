@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.PolicyInsights.Common;
@@ -158,9 +159,15 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets
         /// </summary>
         public override void Execute()
         {
+            const int PageSize = 1000;
+
+            int numberOfResults = MyInvocation.BoundParameters.ContainsKey("Top") ? Top : int.MaxValue;
+
+            // Using the $top as a query parameter for the policy states API will cause it to return all results in a single page, which may exceed the response size limits.
+            // Therefore, only pass a $top value if the requested number of results is below the size of a single page. If more than one page is needed, make paged requests until enough results were returned.
             var queryOptions = new RestApiModels.QueryOptions
             {
-                Top = MyInvocation.BoundParameters.ContainsKey("Top") ? (int?)Top : null,
+                Top = numberOfResults <= PageSize ? (int?)numberOfResults : null,
                 OrderBy = OrderBy,
                 Select = Select,
                 FromProperty = MyInvocation.BoundParameters.ContainsKey("From") ? (DateTime?)From : null,
@@ -170,7 +177,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets
                 Expand = Expand
             };
 
-            RestApiModels.PolicyStatesQueryResults policyStatesQueryResults;
+            var policyStatesQueryResults = new List<RestApiModels.PolicyState>();
 
             var policyStatesResource = !All.IsPresent
                 ? RestApiModels.PolicyStatesResource.Latest
@@ -179,64 +186,90 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets
             switch (ParameterSetName)
             {
                 case ParameterSetNames.ManagementGroupScope:
-                    policyStatesQueryResults = PolicyInsightsClient.PolicyStates.ListQueryResultsForManagementGroup(
-                        policyStatesResource,
-                        ManagementGroupName,
-                        queryOptions);
+                    PaginationHelper.ForEach(
+                        getFirstPage: () => PolicyInsightsClient.PolicyStates.ListQueryResultsForManagementGroup(policyStatesResource, ManagementGroupName, queryOptions),
+                        getNextPage: nextLink => PolicyInsightsClient.PolicyStates.ListQueryResultsForManagementGroupNext(nextLink),
+                        action: results => policyStatesQueryResults.AddRange(results),
+                        numberOfResults: numberOfResults,
+                        cancellationToken: this.CancellationToken);
+
                     break;
+
                 case ParameterSetNames.SubscriptionScope:
-                    policyStatesQueryResults = PolicyInsightsClient.PolicyStates.ListQueryResultsForSubscription(
-                        policyStatesResource,
-                        SubscriptionId ?? DefaultContext.Subscription.Id,
-                        queryOptions);
+                    PaginationHelper.ForEach(
+                        getFirstPage: () => PolicyInsightsClient.PolicyStates.ListQueryResultsForSubscription(policyStatesResource, SubscriptionId ?? DefaultContext.Subscription.Id, queryOptions),
+                        getNextPage: nextLink => PolicyInsightsClient.PolicyStates.ListQueryResultsForSubscriptionNext(nextLink),
+                        action: results => policyStatesQueryResults.AddRange(results),
+                        numberOfResults: numberOfResults,
+                        cancellationToken: this.CancellationToken);
+
                     break;
+
                 case ParameterSetNames.ResourceGroupScope:
-                    policyStatesQueryResults = PolicyInsightsClient.PolicyStates.ListQueryResultsForResourceGroup(
-                        policyStatesResource,
-                        SubscriptionId ?? DefaultContext.Subscription.Id,
-                        ResourceGroupName,
-                        queryOptions);
+                    PaginationHelper.ForEach(
+                        getFirstPage: () => PolicyInsightsClient.PolicyStates.ListQueryResultsForResourceGroup(policyStatesResource, SubscriptionId ?? DefaultContext.Subscription.Id, ResourceGroupName, queryOptions),
+                        getNextPage: nextLink => PolicyInsightsClient.PolicyStates.ListQueryResultsForResourceGroupNext(nextLink),
+                        action: results => policyStatesQueryResults.AddRange(results),
+                        numberOfResults: numberOfResults,
+                        cancellationToken: this.CancellationToken);
+
                     break;
+
                 case ParameterSetNames.ResourceScope:
-                    policyStatesQueryResults = PolicyInsightsClient.PolicyStates.ListQueryResultsForResource(
-                        policyStatesResource,
-                        ResourceId,
-                        queryOptions);
+                    PaginationHelper.ForEach(
+                        getFirstPage: () => PolicyInsightsClient.PolicyStates.ListQueryResultsForResource(policyStatesResource, ResourceId, queryOptions),
+                        getNextPage: nextLink => PolicyInsightsClient.PolicyStates.ListQueryResultsForResourceNext(nextLink),
+                        action: results => policyStatesQueryResults.AddRange(results),
+                        numberOfResults: numberOfResults,
+                        cancellationToken: this.CancellationToken);
+
                     break;
+
                 case ParameterSetNames.PolicySetDefinitionScope:
-                    policyStatesQueryResults = PolicyInsightsClient.PolicyStates.ListQueryResultsForPolicySetDefinition(
-                        policyStatesResource,
-                        SubscriptionId ?? DefaultContext.Subscription.Id,
-                        PolicySetDefinitionName,
-                        queryOptions);
+                    PaginationHelper.ForEach(
+                        getFirstPage: () => PolicyInsightsClient.PolicyStates.ListQueryResultsForPolicySetDefinition(policyStatesResource, SubscriptionId ?? DefaultContext.Subscription.Id, PolicySetDefinitionName, queryOptions),
+                        getNextPage: nextLink => PolicyInsightsClient.PolicyStates.ListQueryResultsForPolicySetDefinitionNext(nextLink),
+                        action: results => policyStatesQueryResults.AddRange(results),
+                        numberOfResults: numberOfResults,
+                        cancellationToken: this.CancellationToken);
+
                     break;
+
                 case ParameterSetNames.PolicyDefinitionScope:
-                    policyStatesQueryResults = PolicyInsightsClient.PolicyStates.ListQueryResultsForPolicyDefinition(
-                        policyStatesResource,
-                        SubscriptionId ?? DefaultContext.Subscription.Id,
-                        PolicyDefinitionName,
-                        queryOptions);
+                    PaginationHelper.ForEach(
+                        getFirstPage: () => PolicyInsightsClient.PolicyStates.ListQueryResultsForPolicyDefinition(policyStatesResource, SubscriptionId ?? DefaultContext.Subscription.Id, PolicyDefinitionName, queryOptions),
+                        getNextPage: nextLink => PolicyInsightsClient.PolicyStates.ListQueryResultsForPolicyDefinitionNext(nextLink),
+                        action: results => policyStatesQueryResults.AddRange(results),
+                        numberOfResults: numberOfResults,
+                        cancellationToken: this.CancellationToken);
+
                     break;
+
                 case ParameterSetNames.SubscriptionLevelPolicyAssignmentScope:
-                    policyStatesQueryResults = PolicyInsightsClient.PolicyStates.ListQueryResultsForSubscriptionLevelPolicyAssignment(
-                        policyStatesResource,
-                        SubscriptionId ?? DefaultContext.Subscription.Id,
-                        PolicyAssignmentName,
-                        queryOptions);
+                    PaginationHelper.ForEach(
+                        getFirstPage: () => PolicyInsightsClient.PolicyStates.ListQueryResultsForSubscriptionLevelPolicyAssignment(policyStatesResource, SubscriptionId ?? DefaultContext.Subscription.Id, PolicyAssignmentName, queryOptions),
+                        getNextPage: nextLink => PolicyInsightsClient.PolicyStates.ListQueryResultsForSubscriptionLevelPolicyAssignmentNext(nextLink),
+                        action: results => policyStatesQueryResults.AddRange(results),
+                        numberOfResults: numberOfResults,
+                        cancellationToken: this.CancellationToken);
+
                     break;
+
                 case ParameterSetNames.ResourceGroupLevelPolicyAssignmentScope:
-                    policyStatesQueryResults = PolicyInsightsClient.PolicyStates.ListQueryResultsForResourceGroupLevelPolicyAssignment(
-                        policyStatesResource,
-                        SubscriptionId ?? DefaultContext.Subscription.Id,
-                        ResourceGroupName,
-                        PolicyAssignmentName,
-                        queryOptions);
+                    PaginationHelper.ForEach(
+                        getFirstPage: () => PolicyInsightsClient.PolicyStates.ListQueryResultsForResourceGroupLevelPolicyAssignment(policyStatesResource, SubscriptionId ?? DefaultContext.Subscription.Id, ResourceGroupName, PolicyAssignmentName, queryOptions),
+                        getNextPage: nextLink => PolicyInsightsClient.PolicyStates.ListQueryResultsForResourceGroupLevelPolicyAssignmentNext(nextLink),
+                        action: results => policyStatesQueryResults.AddRange(results),
+                        numberOfResults: numberOfResults,
+                        cancellationToken: this.CancellationToken);
+
                     break;
+
                 default:
                     throw new PSInvalidOperationException();
             }
 
-            WriteObject(policyStatesQueryResults.Value.Select(policyState => new PolicyState(policyState)), true);
+            WriteObject(policyStatesQueryResults.Select(policyState => new PolicyState(policyState)), true);
         }
     }
 }

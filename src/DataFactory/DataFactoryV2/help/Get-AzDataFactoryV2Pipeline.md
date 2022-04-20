@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV2.dll-Help.xml
 Module Name: Az.DataFactory
 online version: https://docs.microsoft.com/powershell/module/az.datafactory/get-azdatafactoryv2pipeline
@@ -39,8 +39,10 @@ If you do not specify a name, this cmdlet gets information about all the pipelin
 
 ### Example 1: Get information about all pipelines
 ```powershell
-PS C:\> Get-AzDataFactoryV2Pipeline -ResourceGroupName "ADF" -DataFactoryName "WikiADF" 
+Get-AzDataFactoryV2Pipeline -ResourceGroupName "ADF" -DataFactoryName "WikiADF" 
+```
 
+```output
     PipelineName      : DPWikisample
     ResourceGroupName : ADF
     DataFactoryName   : WikiADF
@@ -60,8 +62,10 @@ The second one uses a DataFactory object as a parameter.
 
 ### Example 2: Get information about a specific pipeline
 ```powershell
-PS C:\> Get-AzDataFactoryV2Pipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF" | Format-List
+Get-AzDataFactoryV2Pipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF" | Format-List
+```
 
+```output
     PipelineName      : DPWikisample
     ResourceGroupName : ADF
     DataFactoryName   : WikiADF
@@ -76,8 +80,10 @@ For more information, type Get-Help Format-List.
 
 ### Example 3: Get the properties for a specific pipeline
 ```powershell
-PS C:\> (Get-AzDataFactoryV2Pipeline -ResourceGroupName "ADF" -Name DPWikisample -DataFactoryName "WikiADF").Activities
+(Get-AzDataFactoryV2Pipeline -ResourceGroupName "ADF" -Name DPWikisample -DataFactoryName "WikiADF").Activities
+```
 
+```output
     Source                          : Microsoft.Azure.Management.DataFactory.Models.BlobSource
     Sink                            : Microsoft.Azure.Management.DataFactory.Models.BlobSink
     Translator                      :
@@ -117,8 +123,10 @@ This command gets information for the pipeline named DPWikisample in the data fa
 
 ### Example 4: Get information about inputs for the first activity
 ```powershell
-PS C:\> (Get-AzDataFactoryV2Pipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF11").Activities[0].Inputs | Format-List
+(Get-AzDataFactoryV2Pipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF11").Activities[0].Inputs | Format-List
+```
 
+```output
     ReferenceName : dsIn
     Parameters    :
 ```
