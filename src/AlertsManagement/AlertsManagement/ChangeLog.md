@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for 24-hour clock in `Set-AzAlertProcessingRule` [#17762]
 
 ## Version 
 * Fixed bug for `Get-AzAlertProcessingRule` does not fetch more than 50 Alert Processing Rules
