@@ -91,6 +91,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNull]
         public PSSqlConflictResolutionPolicy ConflictResolutionPolicy { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = Constants.SqlClientEncryptionPolicyHelpMessage)]
+        [ValidateNotNull]
+        public PSSqlClientEncryptionPolicy ClientEncryptionPolicy { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = Constants.SqlContainerAnalyticalStorageTtlHelpMessage)]
         public int? AnalyticalStorageTtl { get; set; }
 
@@ -156,6 +160,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 sqlContainerResource.ConflictResolutionPolicy = PSConflictResolutionPolicy.ToSDKModel(ConflictResolutionPolicy);
             }
 
+            if (ClientEncryptionPolicy != null)
+            {
+                sqlContainerResource.ClientEncryptionPolicy = PSClientEncryptionPolicy.ToSDKModel(ClientEncryptionPolicy, Paths);
+            }
+
             if (ConflictResolutionPolicyMode != null)
             {
                 ConflictResolutionPolicy conflictResolutionPolicy = new ConflictResolutionPolicy
@@ -184,7 +193,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 sqlContainerResource.AnalyticalStorageTtl = AnalyticalStorageTtl;
             }
-
+           
             CreateUpdateOptions options = ThroughputHelper.PopulateCreateUpdateOptions(Throughput, AutoscaleMaxThroughput);
 
             SqlContainerCreateUpdateParameters sqlContainerCreateUpdateParameters = new SqlContainerCreateUpdateParameters
