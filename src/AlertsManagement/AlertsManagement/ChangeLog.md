@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update the `Set-AzAlertProcessingRule` to support 24-hour clock
+* Causes the program to validate `ScheduleEndDateTime` instead of `ScheduleStartDateTime`
 
 ## Version 
 * Fixed bug for `Get-AzAlertProcessingRule` does not fetch more than 50 Alert Processing Rules

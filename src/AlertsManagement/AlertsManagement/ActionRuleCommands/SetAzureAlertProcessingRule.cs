@@ -675,7 +675,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
             }
             if (ScheduleEndDateTime != null)
             {
-                if (System.DateTime.TryParseExact(ScheduleStartDateTime, format, CultureInfo.InvariantCulture, DateTimeStyles.None, out outDateTime) == false)
+                if (System.DateTime.TryParseExact(ScheduleEndDateTime, format, CultureInfo.InvariantCulture, DateTimeStyles.None, out outDateTime) == false)
                 {
                     throw new PSInvalidOperationException("Invalid ScheduleEndDateTime Format");
                 }
