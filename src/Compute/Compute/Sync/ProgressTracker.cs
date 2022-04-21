@@ -14,75 +14,36 @@
 
 using System;
 using System.Diagnostics;
-using System.Timers;
 
 namespace Microsoft.WindowsAzure.Commands.Sync
 {
     public class ProgressTracker : IDisposable
     {
         private readonly ProgressStatus progressStatus;
-        private readonly Action<ProgressRecord> progress;
-        private readonly Action<TimeSpan> complete;
-        private readonly TimeSpan progressInterval;
-        private Timer progressTimer;
-        private object thisLock = new object();
-        private ElapsedEventHandler progressTimerOnElapsed;
+        private readonly Action<ProgressRecord> progressAction;
+        private readonly Action<TimeSpan> completionAction;
         private Stopwatch stopWatch;
         private bool isDisposed;
 
         public ProgressTracker(ProgressStatus progressStatus) :
-            this(progressStatus, Program.SyncOutput.ProgressUploadStatus, Program.SyncOutput.ProgressUploadComplete, TimeSpan.FromSeconds(1))
+            this(progressStatus, Program.SyncOutput.ProgressUploadStatus, Program.SyncOutput.ProgressUploadComplete)
         {
         }
 
-        public ProgressTracker(ProgressStatus progressStatus, Action<ProgressRecord> progress, Action<TimeSpan> complete, TimeSpan progressInterval)
+        public ProgressTracker(ProgressStatus progressStatus, Action<ProgressRecord> progressAction, Action<TimeSpan> completionAction)
         {
             this.progressStatus = progressStatus;
-            this.progress = progress;
-            this.complete = complete;
-            this.progressInterval = progressInterval;
-            this.stopWatch = new Stopwatch();
-            InitilizeProgressTimer();
+            this.progressAction = progressAction;
+            this.completionAction = completionAction;
+            this.stopWatch = Stopwatch.StartNew();
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification = "Lifetime of timer is bound to ProgressTracker")]
-        private void InitilizeProgressTimer()
+        public void Update()
         {
-            stopWatch.Start();
-            bool throwing = false;
-            try
+            ProgressRecord progressRecord;
+            if (progressStatus.TryGetProgressRecord(out progressRecord))
             {
-                progressTimer = new Timer
-                {
-                    AutoReset = false,
-                    Interval = progressInterval.TotalMilliseconds
-                };
-                progressTimerOnElapsed = (sender, args) =>
-                {
-                    ProgressRecord pr;
-                    if (progressStatus.TryGetProgressRecord(out pr))
-                    {
-                        this.progress(pr);
-                    }
-                    progressTimer.Enabled = true;
-                };
-                progressTimer.Elapsed += progressTimerOnElapsed;
-                progressTimer.Enabled = true;
-            }
-            catch (Exception)
-            {
-                throwing = true;
-                throw;
-            }
-            finally
-            {
-                if (throwing && progressTimer != null)
-                {
-                    progressTimer.Elapsed -= progressTimerOnElapsed;
-                    progressTimer.Enabled = false;
-                    progressTimer.Dispose();
-                    progressTimer = null;
-                }
+                this.progressAction(progressRecord);
             }
         }
 
@@ -95,23 +56,19 @@ namespace Microsoft.WindowsAzure.Commands.Sync
 
         protected virtual void Dispose(bool disposing)
         {
-            if (isDisposed)
+            if (!isDisposed)
             {
-                return;
-            }
-            if (disposing)
-            {
-                progressTimer.Elapsed -= progressTimerOnElapsed;
-                progressTimer.Enabled = false;
-                stopWatch.Stop();
-                if (stopWatch.Elapsed != TimeSpan.Zero)
+                if (disposing)
                 {
-                    this.complete(stopWatch.Elapsed);
+                    stopWatch.Stop();
+                    if (stopWatch.Elapsed != TimeSpan.Zero)
+                    {
+                        this.completionAction(stopWatch.Elapsed);
+                    }
+
+                    this.isDisposed = true;
                 }
-                progressTimer.Dispose();
-                this.isDisposed = true;
             }
         }
-
     }
 }

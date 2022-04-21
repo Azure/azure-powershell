@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the MSGraph service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -51,10 +51,11 @@ require:
   - $(this-folder)/../../readme.azure.noprofile.md
 
 input-file:
-  - ../Applications.yml
-  - ../Groups.yml
-  - ../Users.yml
-  - ../CommonTypes.yml
+  - ../OpenApiSpecs/v1.0/Applications.yml
+  - ../OpenApiSpecs/v1.0/Groups.yml
+  - ../OpenApiSpecs/beta/Groups.yml
+  - ../OpenApiSpecs/v1.0/Users.yml
+  - ../OpenApiSpecs/CommonTypes.yml
 
 root-module-name: $(prefix).Resources
 title: MSGraph
@@ -68,6 +69,8 @@ nested-object-to-string: true
 # Disable default settings and Set in to empty for msgraph
 default-exclude-tableview-properties: false
 exclude-tableview-properties: []
+
+inlining-threshold: 200
 
 directive:
   - no-inline:
@@ -117,6 +120,11 @@ directive:
     where: $
     transform: if ($documentPath.endsWith("MSGraph.cs")) {$ = $.replace(/Count.ToString\(\)/g, "Count.ToString().ToLower()")}
   
+  # hide user owned application cmdlets
+  - where:
+      subject: UserOwnedApplication|UserOwnedObject
+    hide: true
+
   # remove pipe support support since data plane does not have resource Id.
   - where:
       variant: (.*)ViaIdentity(.*)
@@ -144,7 +152,19 @@ directive:
       property-name: Items
 
   - where:
-      subject: application$|applicationpassword$|applicationkey$|serviceprincipal$|serviceprincipalpassword$|serviceprincipalkey$|groupmember$|user$|group$|groupmember$|grouprefmember$
+      subject: application$|applicationpassword$|applicationkey$|serviceprincipal$|serviceprincipalpassword$|serviceprincipalkey$|groupmember$|user$|GroupGraphRefMember$|grouprefmember$
+    hide: true
+
+  - where:
+      subject: ^group$
+      verb: ^Update$
+      parameter-name: Id
+    set:
+      parameter-name: ObjectId
+
+  - where: 
+      subject: ^group$
+      verb: ^(?!.*Update).*
     hide: true
 
   - where:

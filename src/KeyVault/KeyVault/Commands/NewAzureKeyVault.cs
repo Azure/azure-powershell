@@ -98,6 +98,11 @@ namespace Microsoft.Azure.Commands.KeyVault
         public int SoftDeleteRetentionInDays { get; set; }
 
         [Parameter(Mandatory = false,
+            HelpMessage = "Specifies whether the vault will accept traffic from public internet. If set to 'disabled' all traffic except private endpoint traffic and that originates from trusted services will be blocked. This will override the set firewall rules, meaning that even if the firewall rules are present we will not honor the rules. By default, we will enable public network access.")]
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        public string PublicNetworkAccess { get; set; }
+
+        [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the SKU of the key vault instance. For information about which features are available for each SKU, see the Azure Key Vault Pricing website (http://go.microsoft.com/fwlink/?linkid=512521).")]
         [PSArgumentCompleter("Standard", "Premium")]
@@ -177,7 +182,9 @@ namespace Microsoft.Azure.Commands.KeyVault
                     SkuName = this.Sku,
                     TenantId = GetTenantId(),
                     AccessPolicy = accessPolicy,
-                    NetworkAcls = new NetworkRuleSet(),     // New key-vault takes in default network rule set
+                    // New key-vault takes in default network rule set
+                    NetworkAcls = new NetworkRuleSet(),
+                    PublicNetworkAccess = this.PublicNetworkAccess,
                     Tags = this.Tag
                 },
                     GraphClient,

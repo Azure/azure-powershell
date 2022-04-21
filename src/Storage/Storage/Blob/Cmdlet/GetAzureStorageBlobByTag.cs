@@ -90,7 +90,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <summary>
         /// list blobs by blob Tag
         /// </summary>
-        internal async Task ListBlobsByTag(long taskId, IStorageBlobManagement localChannel, string tagFilterSqlExpression)
+        internal void ListBlobsByTag(IStorageBlobManagement localChannel, string tagFilterSqlExpression)
         {
 
             BlobServiceClient blobServiceClient = Util.GetTrack2BlobServiceClient(localChannel.StorageContext, ClientOptions);
@@ -106,16 +106,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             {
                 requestCount = Math.Min(listCount, MaxListCount);
                 realListCount = 0;
-                IAsyncEnumerator<Page<TaggedBlobItem>> enumerator = blobServiceClient.FindBlobsByTagsAsync(tagFilterSqlExpression, CmdletCancellationToken)
+                IEnumerator<Page<TaggedBlobItem>> enumerator = blobServiceClient.FindBlobsByTags(tagFilterSqlExpression, CmdletCancellationToken)
                     .AsPages(track2ContinuationToken, requestCount)
-                    .GetAsyncEnumerator();
+                    .GetEnumerator();
 
                 Page<TaggedBlobItem> page;
-                await enumerator.MoveNextAsync().ConfigureAwait(false);
+                enumerator.MoveNext();
                 page = enumerator.Current;
                 foreach (TaggedBlobItem item in page.Values)
                 {
-                    OutputStream.WriteObject(taskId, new AzureStorageBlob(item, Channel.StorageContext, page.ContinuationToken, ClientOptions, this.GetBlobProperty.IsPresent));
+                    WriteObject(new AzureStorageBlob(item, Channel.StorageContext, page.ContinuationToken, ClientOptions, this.GetBlobProperty.IsPresent));
                     realListCount++;
                 }
                 track2ContinuationToken = page.ContinuationToken;
@@ -133,12 +133,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            Func<long, Task> taskGenerator = null;
             IStorageBlobManagement localChannel = Channel;
 
-            taskGenerator = (taskId) => ListBlobsByTag(taskId, localChannel, this.TagFilterSqlExpression);    
-
-            RunTask(taskGenerator);
+            ListBlobsByTag(localChannel, this.TagFilterSqlExpression);
         }
     }
 }

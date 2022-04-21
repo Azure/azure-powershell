@@ -24,8 +24,8 @@ The **Get-AzAutomationRegistrationInfo** cmdlet gets the endpoint and keys requi
 ## EXAMPLES
 
 ### Example 1: Get registration information
-```
-PS C:\>Get-AzAutomationRegistrationInfo -ResourceGroupName "ResourceGroup01" -AutomationAccountName "AutomationAccount01"
+```powershell
+Get-AzAutomationRegistrationInfo -ResourceGroupName "ResourceGroup01" -AutomationAccountName "AutomationAccount01"
 ```
 
 This command gets the registration information for the Automation account named AutomationAccount01 in the Resource Group named ResourceGroup01.

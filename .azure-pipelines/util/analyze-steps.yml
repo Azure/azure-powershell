@@ -1,11 +1,12 @@
 parameters:
   osName: ''
   configuration: ''
+  testFramework: ''
 
 steps:
 - template: download-build-steps.yml
   parameters:
-    osName: ${{ parameters.osName }}
+    artifactName: build-${{ parameters.testFramework }}
 - task: NodeTool@0
   condition: eq(variables.IsGenerateBased, true)
   displayName: Install autorest
@@ -47,4 +48,4 @@ steps:
 
 - template: publish-artifacts-steps.yml
   parameters:
-    artifactName: analyze-${{ parameters.osName }}
+    artifactName: analyze-${{ parameters.testFramework }}

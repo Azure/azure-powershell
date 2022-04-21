@@ -31,7 +31,7 @@ This cmdlet will get or list Proximity Placement Group resource(s).
 
 ### Example 1
 ```powershell
-Get-AzureRmProximityPlacementGroup -ResourceGroupName $resourceGroupName -Name $proximityPlacementGroupName
+Get-AzProximityPlacementGroup -ResourceGroupName $resourceGroupName -Name $proximityPlacementGroupName
 ```
 
 ```output
@@ -51,7 +51,7 @@ This command gets the proximity placement group
 
 ### Example 2
 ```powershell
-Get-AzureRmProximityPlacementGroup -ResourceGroupName $resourceGroupName
+Get-AzProximityPlacementGroup -ResourceGroupName $resourceGroupName
 ```
 
 ```output
@@ -65,7 +65,7 @@ This command list all proximity placement groups under the given resource group.
 
 ### Example 3
 ```powershell
-Get-AzureRmProximityPlacementGroup
+Get-AzProximityPlacementGroup
 ```
 
 ```output

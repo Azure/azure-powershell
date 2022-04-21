@@ -53,7 +53,7 @@ Evaluate the custom defined 'warningLimit' metric.
 
 ### Example 2
 ```powershell
-Invoke-AzIotHubDeployMetric -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -Name "myDeploy1" -MetricName "Reporting Success" -MetricType "system"
+Invoke-AzIotHubDeploymentMetricsQuery -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -Name "myDeploy1" -MetricName "Reporting Success" -MetricType "system"
 ```
 
 Evaluate the system 'Reporting Success' metric.

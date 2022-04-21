@@ -58,7 +58,7 @@ The **Update-AzNetAppFilesVolume** cmdlet updates an ANF volume.
 
 ### Example 1: Update an ANF volume
 ```powershell
-Update-AzNetAppFilesVolume -ResourceGroupName "MyRG" -l "westus2" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -Name "MyAnfVolume" -UsageThreshold Size
+Update-AzNetAppFilesVolume -ResourceGroupName "MyRG" -Location "westus2" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -Name "MyAnfVolume" -UsageThreshold Size
 ```
 
 ```output

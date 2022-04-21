@@ -41,8 +41,10 @@ For more information on Az Predictor, please visit the following: https://aka.ms
 PowerShellVersion = '7.2'
 
 # Modules that must be imported into the global environment prior to importing this module
-# "RequiredModules" requires the module in the build pipeline to build/sign this package. Instead, we will validate the dependencies at runtime by Az.Tools.Predictor.psm1
+RequiredModules = @(@{ModuleName = 'PSReadLine'; ModuleVersion = '2.2.2'; },
+                    @{ModuleName = 'Az.Accounts'; ModuleVersion = '2.6.2';})
 
+# Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @("Enable-AzPredictor", "Disable-AzPredictor", "Open-AzPredictorSurvey", "Send-AzPredictorRating")
 
 # Format files (.ps1xml) to be loaded when importing this module

@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// </summary>
         public static PolicyBase GetPolicyModelForAzureIaaSVM(ServiceClientModel.ProtectionPolicyResource serviceClientResponse,
            PolicyBase policyModel)
-        {
+        {   
             string backupManagementType = Management.RecoveryServices.Backup.Models.BackupManagementType.AzureIaasVM;
             if (((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).RetentionPolicy.GetType() !=
                                                                        typeof(ServiceClientModel.LongTermRetentionPolicy))
@@ -149,34 +149,48 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 return null;
             }
 
-            if (((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).SchedulePolicy.GetType() !=
-                                                                        typeof(ServiceClientModel.SimpleSchedulePolicy))
+            Type schedulePolicyType = ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).SchedulePolicy.GetType();            
+            if (schedulePolicyType != typeof(ServiceClientModel.SimpleSchedulePolicy) && schedulePolicyType != typeof(ServiceClientModel.SimpleSchedulePolicyV2))
             {
-                Logger.Instance.WriteDebug("Unknown SchedulePolicy object received: " +
-                           ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).SchedulePolicy.GetType());
+                Logger.Instance.WriteDebug("Unknown SchedulePolicy object received: " + schedulePolicyType);                           
                 Logger.Instance.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
                 return null;
             }
-
+            
             policyModel = new AzureVmPolicy();
             AzureVmPolicy iaasPolicyModel = policyModel as AzureVmPolicy;
             iaasPolicyModel.WorkloadType = WorkloadType.AzureVM;
             iaasPolicyModel.BackupManagementType = BackupManagementType.AzureVM;
             iaasPolicyModel.SnapshotRetentionInDays = ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.
                 Properties).InstantRpRetentionRangeInDays;
+
+            string policyType = ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).PolicyType;
+            iaasPolicyModel.PolicySubType = (policyType != null && policyType.ToLower().Contains("v2")) ? PSPolicyType.Enhanced : PSPolicyType.Standard;
             iaasPolicyModel.ProtectedItemsCount = ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.
                 Properties).ProtectedItemsCount;
             iaasPolicyModel.RetentionPolicy = PolicyHelpers.GetPSLongTermRetentionPolicy((ServiceClientModel.LongTermRetentionPolicy)
                                               ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).RetentionPolicy,
                                               ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).TimeZone,
                                               backupManagementType);
-            iaasPolicyModel.SchedulePolicy = PolicyHelpers.GetPSSimpleSchedulePolicy((ServiceClientModel.SimpleSchedulePolicy)
+            
+            if (schedulePolicyType == typeof(ServiceClientModel.SimpleSchedulePolicyV2))
+            {
+                iaasPolicyModel.SchedulePolicy = PolicyHelpers.GetPSSimpleSchedulePolicyV2((ServiceClientModel.SimpleSchedulePolicyV2)
                                              ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).SchedulePolicy,
                                              ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).TimeZone);
+            }
+            else
+            {
+                iaasPolicyModel.SchedulePolicy = PolicyHelpers.GetPSSimpleSchedulePolicy((ServiceClientModel.SimpleSchedulePolicy)
+                                             ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).SchedulePolicy,
+                                             ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).TimeZone);
+            }
+            
             iaasPolicyModel.AzureBackupRGName = 
                 ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).InstantRPDetails.AzureBackupRGNamePrefix;
             iaasPolicyModel.AzureBackupRGNameSuffix = 
                 ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).InstantRPDetails.AzureBackupRGNameSuffix;
+            
             return policyModel;
         }
 

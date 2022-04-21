@@ -62,7 +62,7 @@ New-AzHDInsightClusterConfig `
             | Add-AzHDInsightClusterIdentity `
                 -AadTenantId $tenantId `
                 -ObjectId $objectId `
-                -Application $applicationId
+                -ApplicationId $applicationId
                 -CertificateFilePath $certificateFilePath `
                 -CertificatePassword $certificatePassword `
             | New-AzHDInsightCluster `

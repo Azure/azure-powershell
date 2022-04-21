@@ -566,7 +566,7 @@ Please contact Microsoft for further assistance.</value>
     <value>Please provide the target of the restore operation using the switch -OriginalWorkloadRestore or -AlternateWorkloadRestore</value>
   </data>
   <data name="InstantRPRetentionDaysException" xml:space="preserve">
-    <value>For SnapshotRetentionRangeInDays, the minimum value is 1 and maximum is 5. For weekly backup policies, the only allowed value is 5. Please set the value accordingly</value>
+    <value>For Standard policy SnapshotRetentionRangeInDays, the minimum value is 1 and maximum is 5. For weekly backup policies, the only allowed value is 5. Please set the value accordingly</value>
   </data>
   <data name="RetentionDurationCountInDaysInvalidException" xml:space="preserve">
     <value>RetentionDuration in Days should be from 7 - 9999</value>
@@ -702,5 +702,41 @@ Please contact Microsoft for further assistance.</value>
   </data>
   <data name="TargetRGNotRequiredException" xml:space="preserve">
     <value>TargetResourceGroupName parameter should be empty for OriginalLocation in-place restore</value>
+  </data>
+  <data name="EnhancedHourlyPolicyNotSupported" xml:space="preserve">
+    <value>Enhanced Hourly policy is currently not supported for WorkloadType AzureIaasVM. This will be supported soon</value>
+  </data>
+  <data name="EnhancedPolicyNotSupported" xml:space="preserve">
+    <value>Enhanced policy is only supported for workloadType AzureVM. Please provide correct PolicySubType and WorkloadType</value>
+  </data>
+  <data name="HourlyScheduleNotNull" xml:space="preserve">
+    <value>ScheduleInterval, ScheduleWindowStartTime, ScheduleWindowDuration must be empty for non-Hourly policy</value>
+  </data>
+  <data name="NonHourlyAttributesNotNull" xml:space="preserve">
+    <value>ScheduleRunTimes and ScheduleRunDays must be empty for Hourly policy</value>
+  </data>
+  <data name="SnapshotRetentionOutOfRange" xml:space="preserve">
+    <value>For Enhanced policy SnapshotRetentionRangeInDays, the minimum value is 1 and maximum is 30. For weekly backup policies, the minimum allowed value is 5. Please set the value accordingly</value>
+  </data>
+  <data name="StandardHourlyPolicyNotSupported" xml:space="preserve">
+    <value>Standard Hourly policy is not supported for WorkloadType AzureIaasVM, please try with Enhanced policy or different schedule frequency: Daily, Weekly</value>
+  </data>
+  <data name="StandardHourlyScheduleNotSupported" xml:space="preserve">
+    <value>Standard Hourly schedule is not supported for WorkloadType AzureVM</value>
+  </data>
+  <data name="UnexpectedParamScheduleRunFrequency" xml:space="preserve">
+    <value>ScheduleRunFrequency parameter is only expected for WorkloadTypes: AzureVM, AzureFiles</value>
+  </data>
+  <data name="WeeklyScheduleNotSupported" xml:space="preserve">
+    <value>Weekly ScheduleRunFrequency isn't supported for WorkloadType: AzureFiles</value>
+  </data>
+  <data name="WindowDurationLessThanInterval" xml:space="preserve">
+    <value>ScheduleWindowDuration can't be less than ScheduleInterval for Hourly policy</value>
+  </data>
+  <data name="WindowStartTimeNotInUTC" xml:space="preserve">
+    <value>ScheduleWindowStartTime in Hourly schedule policy should be in UTC time, however policy can be created in a different time zone by providing the timezone in ScheduleRunTimeZone attribute</value>
+  </data>
+  <data name="InvalidPolicyForTrustedVMProtection" xml:space="preserve">
+    <value>Trusted VM can only be protected using Enhanced policy. Please provide a valid AzureVM Enhanced policy</value>
   </data>
 </root>
