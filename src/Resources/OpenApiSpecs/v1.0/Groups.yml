@@ -544,7 +544,7 @@ paths:
       tags:
         - groups.group
       summary: Update entity in groups
-      description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
+      description: Update entity in groups
       operationId: groups.group_UpdateGroup
       parameters:
         - name: group-id
