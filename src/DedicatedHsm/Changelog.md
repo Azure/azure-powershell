@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated API version to 2021-11-03
+    - Added `Get-AzDedicatedHsmOutboundNetworkDependencyEndpoint`
 
 ## Version 0.2.0
 * Fixed an issue that may cause `New-AzDedicatedHsm` to return before the HSM is fully provisioned (https://github.com/Azure/autorest.powershell/issues/610)

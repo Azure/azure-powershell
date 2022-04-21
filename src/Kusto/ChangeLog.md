@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported inline script resource (creation of script with content instead of sas token)
+* Added managed identity support to EventGrid
+* Added databaseRouting (Single/Multi) to all data connections
+* Added PublicIPType to cluster
 
 ## Version 2.0.0
 * Bumped API version to stable 2021-01-01

@@ -1,14 +1,27 @@
-﻿using System;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Reflection;
-using Tools.Common.Models;
-using VersionController.Models;
-using Tools.Common.Utilities;
 using Tools.Common.Loaders;
+using Tools.Common.Models;
+using Tools.Common.Utilities;
+using VersionController.Models;
 
 namespace VersionController
 {
@@ -104,6 +117,43 @@ namespace VersionController
         /// </summary>
         private static void BumpVersions()
         {
+            string targetRepositories = null;
+            using (PowerShell powershell = PowerShell.Create())
+            {
+                powershell.AddScript("Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process;");
+                powershell.AddScript("Register-PackageSource -Name PSGallery -Location https://www.powershellgallery.com/api/v2 -ProviderName PowerShellGet");
+                powershell.AddScript("Register-PackageSource -Name TestGallery -Location https://www.poshtestgallery.com/api/v2 -ProviderName PowerShellGet");
+                powershell.AddScript("Get-PSRepository");
+                var repositories = powershell.Invoke();
+                string psgallery = null;
+                string testgallery = null;
+                foreach (var repo in repositories)
+                {
+                    if ("https://www.powershellgallery.com/api/v2".Equals(repo.Properties["SourceLocation"]?.Value))
+                    {
+                        psgallery = repo.Properties["Name"]?.Value?.ToString();
+                    }
+                    if ("https://www.poshtestgallery.com/api/v2".Equals(repo.Properties["SourceLocation"]?.Value))
+                    {
+                        testgallery = repo.Properties["Name"]?.Value?.ToString();
+                    }
+                }
+                if (psgallery == null)
+                {
+                    throw new Exception("Cannot calculate module version because PSGallery is not available.");
+                }
+                targetRepositories = psgallery;
+                if (testgallery == null)
+                {
+                    Console.WriteLine("Warning: Cannot calculate module version precisely because TestGallery is not available.");
+                }
+                else
+                {
+                    targetRepositories += $",{testgallery}";
+                }
+
+            }
+
             var changedModules = new List<string>();
             foreach (var directory in _projectDirectories)
             {
@@ -132,7 +182,8 @@ namespace VersionController
                     }
                 }
             }
-
+            //Make Az.Accounts as the last module to calculate
+            changedModules = changedModules.OrderByDescending(c => c == "Az.Accounts" ? "" : c).ToList();
             foreach (var projectModuleManifestPath in changedModules)
             {
                 var moduleFileName = Path.GetFileName(projectModuleManifestPath);
@@ -153,9 +204,9 @@ namespace VersionController
 
                 var outputModuleManifestFile = outputModuleManifest.FirstOrDefault();
 
-                _versionBumper = new VersionBumper(new VersionFileHelper(_rootDirectory, outputModuleManifestFile, projectModuleManifestPath));
-
-                if(_minimalVersion.ContainsKey(moduleName))
+                _versionBumper = new VersionBumper(new VersionFileHelper(_rootDirectory, outputModuleManifestFile, projectModuleManifestPath), changedModules);
+                _versionBumper.PSRepositories = targetRepositories;
+                if (_minimalVersion.ContainsKey(moduleName))
                 {
                     _versionBumper.MinimalVersion = _minimalVersion[moduleName];
                 }

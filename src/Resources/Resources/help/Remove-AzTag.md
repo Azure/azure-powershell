@@ -51,6 +51,7 @@ If the tag has been applied to any resources or resource groups, the command fai
 ```powershell
 Remove-AzTag -Name "Department" -Value "HumanResources" -PassThru
 ```
+
 ```output
 Name:   Department
 Count:  14
@@ -80,6 +81,7 @@ This command deletes the entire set of tags on the subscription with {subId}. It
 ```powershell
 Remove-AzTag -ResourceId /subscriptions/xxxx-xxxx-xxxx-xxxx-xxxx/resourcegroups/testrg/providers/Microsoft.Sql/servers/Server1 -PassThru
 ```
+
 ```output
 Id         : {Id}
 Name       : {Name}

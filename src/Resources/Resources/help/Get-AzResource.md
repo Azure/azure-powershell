@@ -45,6 +45,7 @@ The **Get-AzResource** cmdlet gets Azure resources.
 ```powershell
 Get-AzResource | Format-Table
 ```
+
 ```output
 Name    ResourceGroupName  ResourceType                            Location
 ----    -----------------  ------------                            --------
@@ -66,6 +67,7 @@ This command gets all of the resources in the current subscription.
 ```powershell
 Get-AzResource -ResourceGroupName testRG | Format-Table
 ```
+
 ```output
 Name   ResourceGroupName ResourceType                            Location
 ----   ----------------- ------------                            --------
@@ -84,6 +86,7 @@ This command gets all of the resources in the resource group "testRG".
 ```powershell
 Get-AzResource -ResourceGroupName other* | Format-Table
 ```
+
 ```output
 Name    ResourceGroupName  ResourceType                      Location
 ----    -----------------  ------------                      --------
@@ -99,6 +102,7 @@ This command gets all of the resources whose resource group they belong in being
 ```powershell
 Get-AzResource -Name testVM | Format-List
 ```
+
 ```output
 Name              : testVM
 ResourceGroupName : testRG
@@ -120,6 +124,7 @@ This command gets all of the resources whose resource name is "testVM".
 ```powershell
 Get-AzResource -Name test* | Format-Table
 ```
+
 ```output
 Name    ResourceGroupName  ResourceType                      Location
 ----    -----------------  ------------                      --------
@@ -135,6 +140,7 @@ This command gets all of the resources whose resource name begins with "test".
 ```powershell
 Get-AzResource -ResourceType Microsoft.Compute/virtualMachines | Format-Table
 ```
+
 ```output
 Name    ResourceGroupName  ResourceType                      Location
 ----    -----------------  ------------                      --------
@@ -149,6 +155,7 @@ This command gets all of the resources in the current subscriptions that are vir
 ```powershell
 Get-AzResource -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM
 ```
+
 ```output
 Name              : testVM
 ResourceGroupName : testRG

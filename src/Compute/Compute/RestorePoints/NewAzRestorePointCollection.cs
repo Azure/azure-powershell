@@ -32,6 +32,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
 
         [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 0,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            ParameterSetName = "RestorePointCollectionId",
             Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
@@ -40,6 +46,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Position = 1,
+            ParameterSetName = "DefaultParameter",
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Position = 1,
+            ParameterSetName = "RestorePointCollectionId",
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         [Alias("RestorePointCollectionName")]
@@ -48,15 +60,33 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Position = 2,
             Mandatory = true,
-            ValueFromPipeline = true)]
+            ValueFromPipeline = true,
+            ParameterSetName = "DefaultParameter")]
+        [Parameter(
+            Position = 2,
+            Mandatory = false,
+            ValueFromPipeline = true,
+            ParameterSetName = "RestorePointCollectionId")]
         public string VmId { get; set; }
 
         [Parameter(
             Position = 3,
             Mandatory = true,
-            ValueFromPipeline = true)]
-        public string Location { get; set; }
+            ValueFromPipeline = true,
+            ParameterSetName = "RestorePointCollectionId",
+            HelpMessage = "ARM Id for the source Restore Point Collection")]
+        public string RestorePointCollectionId { get; set; }
 
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Mandatory = false,
+            ValueFromPipeline = true)]
+        [Parameter(
+            ParameterSetName = "RestorePointCollectionId",
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "Location of the source Restore Point Collection")]
+        public string Location { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -65,18 +95,46 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (ShouldProcess(this.Name, VerbsCommon.New))
                 {
-                    string resourceGroup = this.ResourceGroupName;
-                    string restorePointCollectionName = this.Name;
-                    string vmId = this.VmId;
-                    string location = this.Location;
+                    if (ParameterSetName == "DefaultParameter")
+                    {
+                        string resourceGroup = this.ResourceGroupName;
+                        string restorePointCollectionName = this.Name;
+                        string vmId = this.VmId;
+                        RestorePointCollection restorePointCollection;
+                        if (this.IsParameterBound(c => c.Location))
+                        {
+                            string location = this.Location;
+                            restorePointCollection = new RestorePointCollection(location);
+                            restorePointCollection.Source = new RestorePointCollectionSourceProperties() { Id = vmId };
 
-                    RestorePointCollection restorePointCollection = new RestorePointCollection(location);
-                    restorePointCollection.Source = new RestorePointCollectionSourceProperties() { Id = vmId }; 
+                        }
+                        else
+                        {
+                            restorePointCollection = new RestorePointCollection();
+                            restorePointCollection.Source = new RestorePointCollectionSourceProperties() { Id = vmId };
 
-                    var result = RestorePointCollectionsClient.CreateOrUpdate(resourceGroup, restorePointCollectionName, restorePointCollection);
-                    var psObject = new PSRestorePointCollection();
-                    ComputeAutomationAutoMapperProfile.Mapper.Map<RestorePointCollection, PSRestorePointCollection>(result, psObject);
-                    WriteObject(psObject);
+                        }
+
+                        var result = RestorePointCollectionsClient.CreateOrUpdate(resourceGroup, restorePointCollectionName, restorePointCollection);
+                        var psObject = new PSRestorePointCollection();
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<RestorePointCollection, PSRestorePointCollection>(result, psObject);
+                        WriteObject(psObject);
+                    }
+                    else if(ParameterSetName == "RestorePointCollectionId")
+                    {
+                        string resourceGroup = this.ResourceGroupName;
+                        string restorePointCollectionName = this.Name;
+                        string restorePointCollectionId = this.RestorePointCollectionId;
+                        string location = this.Location;
+
+                        RestorePointCollection restorePointCollection = new RestorePointCollection(location, restorePointCollectionId: restorePointCollectionId);
+                        restorePointCollection.Source = new RestorePointCollectionSourceProperties(location, RestorePointCollectionId);
+
+                        var result = RestorePointCollectionsClient.CreateOrUpdate(resourceGroup, restorePointCollectionName, restorePointCollection);
+                        var psObject = new PSRestorePointCollection();
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<RestorePointCollection, PSRestorePointCollection>(result, psObject);
+                        WriteObject(psObject);
+                    }
                 }
             });
         }

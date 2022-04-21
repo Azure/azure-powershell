@@ -43,7 +43,7 @@ The **Set-AzNetAppFilesBackupPolicy** cmdlet modifies an ANF account.
 
 ### Example 1
 ```powershell
-Set-AzNetAppFilesBackupPolicy -ResourceGroupName "MyRG" -l "westus2" -AccountName "MyAccount" -Name "MyBackupPolicy" -Tag @{"tag1" = "tagValue"} -Enabled -DailyBackupsToKeep 1 -WeeklyBackupsToKeep 2 -MonthlyBackupsToKeep 2
+Set-AzNetAppFilesBackupPolicy -ResourceGroupName "MyRG" -Location "westus2" -AccountName "MyAccount" -Name "MyBackupPolicy" -Tag @{"tag1" = "tagValue"} -Enabled -DailyBackupsToKeep 1 -WeeklyBackupsToKeep 2 -MonthlyBackupsToKeep 2
 ```
 
 This command performs an update on the given backup policy. 

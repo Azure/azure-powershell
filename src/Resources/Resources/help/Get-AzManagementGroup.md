@@ -32,6 +32,7 @@ The Get-AzManagementGroup cmdlet Gets all or a specific Management Group.
 ```powershell
 Get-AzManagementGroup
 ```
+
 ```output
 Id          : /providers/Microsoft.Management/managementGroups/TestGroup
 Type        : /providers/Microsoft.Management/managementGroups
@@ -50,6 +51,7 @@ DisplayName : TestGroupChildDisplayName
 ```powershell
 Get-AzManagementGroup -GroupName TestGroup
 ```
+
 ```output
 Id                : /providers/Microsoft.Management/managementGroups/TestGroup
 Type              : /providers/Microsoft.Management/managementGroups

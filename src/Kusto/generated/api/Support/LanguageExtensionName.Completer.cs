@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "PYTHON".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("PYTHON", "PYTHON", global::System.Management.Automation.CompletionResultType.ParameterValue, "PYTHON");
+                yield return new global::System.Management.Automation.CompletionResult("'PYTHON'", "PYTHON", global::System.Management.Automation.CompletionResultType.ParameterValue, "PYTHON");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "R".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("R", "R", global::System.Management.Automation.CompletionResultType.ParameterValue, "R");
+                yield return new global::System.Management.Automation.CompletionResult("'R'", "R", global::System.Management.Automation.CompletionResultType.ParameterValue, "R");
             }
         }
     }

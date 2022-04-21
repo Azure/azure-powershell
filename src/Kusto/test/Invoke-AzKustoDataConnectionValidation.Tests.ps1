@@ -27,7 +27,7 @@ Describe 'Invoke-AzKustoDataConnectionValidation' {
         $eventHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventhubNS/eventhubs/$eventhub"
         $kind = "EventHub"
 
-        { Invoke-AzKustoDataConnectionValidation -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -Location $location -Kind $kind -EventHubResourceId $eventHubResourceId -ConsumerGroup '$Default' -Compression "None" } | Should -Not -Throw
+        { Invoke-AzKustoDataConnectionValidation -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -Location $location -Kind $kind -EventHubResourceId $eventHubResourceId -ConsumerGroup 'Default' -Compression "None" } | Should -Not -Throw
     }
 
     It 'DataExpandedEventGrid' {
@@ -44,7 +44,7 @@ Describe 'Invoke-AzKustoDataConnectionValidation' {
         $storageAccountResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccountName"
         $kind = "EventGrid"
 
-        { Invoke-AzKustoDataConnectionValidation -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -Location $location -Kind $kind -EventHubResourceId $eventHubResourceId -StorageAccountResourceId $storageAccountResourceId -ConsumerGroup '$Default' } | Should -Not -Throw
+        { Invoke-AzKustoDataConnectionValidation -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -Location $location -Kind $kind -EventHubResourceId $eventHubResourceId -StorageAccountResourceId $storageAccountResourceId -ConsumerGroup 'Default' } | Should -Not -Throw
     }
 
     It 'DataExpandedIotHub' {
@@ -59,7 +59,7 @@ Describe 'Invoke-AzKustoDataConnectionValidation' {
         $sharedAccessPolicyName = $env.iothubSharedAccessPolicyName
         $kind = "IotHub"
 
-        { Invoke-AzKustoDataConnectionValidation -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -Location $location -Kind $kind -IotHubResourceId $iotHubResourceId -SharedAccessPolicyName $sharedAccessPolicyName -ConsumerGroup '$Default' } | Should -Not -Throw
+        { Invoke-AzKustoDataConnectionValidation -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -Location $location -Kind $kind -IotHubResourceId $iotHubResourceId -SharedAccessPolicyName $sharedAccessPolicyName -ConsumerGroup 'Default' } | Should -Not -Throw
     }
 
     It 'DataViaIdentityExpandedEventHub' {
@@ -75,7 +75,7 @@ Describe 'Invoke-AzKustoDataConnectionValidation' {
         $kind = "EventHub"
 
         $database = Get-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName
-        { Invoke-AzKustoDataConnectionValidation -InputObject $database -DataConnectionName $dataConnectionName -Location $location -Kind $kind -EventHubResourceId $eventHubResourceId -ConsumerGroup '$Default' -Compression "None" } | Should -Not -Throw
+        { Invoke-AzKustoDataConnectionValidation -InputObject $database -DataConnectionName $dataConnectionName -Location $location -Kind $kind -EventHubResourceId $eventHubResourceId -ConsumerGroup 'Default' -Compression "None" } | Should -Not -Throw
     }
 
     It 'DataViaIdentityExpandedEventGrid' {
@@ -93,7 +93,7 @@ Describe 'Invoke-AzKustoDataConnectionValidation' {
         $kind = "EventGrid"
 
         $database = Get-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName
-        { Invoke-AzKustoDataConnectionValidation -InputObject $database -DataConnectionName $dataConnectionName -Location $location -Kind $kind -EventHubResourceId $eventHubResourceId -StorageAccountResourceId $storageAccountResourceId -ConsumerGroup '$Default' } | Should -Not -Throw
+        { Invoke-AzKustoDataConnectionValidation -InputObject $database -DataConnectionName $dataConnectionName -Location $location -Kind $kind -EventHubResourceId $eventHubResourceId -StorageAccountResourceId $storageAccountResourceId -ConsumerGroup 'Default' } | Should -Not -Throw
     }
 
     It 'DataViaIdentityExpandedIotHub' {
@@ -109,6 +109,6 @@ Describe 'Invoke-AzKustoDataConnectionValidation' {
         $kind = "IotHub"
 
         $database = Get-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName
-        { Invoke-AzKustoDataConnectionValidation -InputObject $database -DataConnectionName $dataConnectionName -Location $location -Kind $kind -IotHubResourceId $iotHubResourceId -SharedAccessPolicyName $sharedAccessPolicyName -ConsumerGroup '$Default' } | Should -Not -Throw
+        { Invoke-AzKustoDataConnectionValidation -InputObject $database -DataConnectionName $dataConnectionName -Location $location -Kind $kind -IotHubResourceId $iotHubResourceId -SharedAccessPolicyName $sharedAccessPolicyName -ConsumerGroup 'Default' } | Should -Not -Throw
     }
 }
