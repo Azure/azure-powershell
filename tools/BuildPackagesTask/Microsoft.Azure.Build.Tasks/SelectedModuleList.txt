@@ -1,0 +1,5 @@
+Accounts
+KeyVault
+Network
+Compute
+Storage
