@@ -8,8 +8,7 @@ schema: 2.0.0
 # Update-AzADGroup
 
 ## SYNOPSIS
-Represents an Azure Active Directory object.
-The directoryObject type is the base type for many other directory entity types.
+Update entity in groups
 
 ## SYNTAX
 
@@ -26,8 +25,7 @@ Update-AzADGroup -ObjectId <String> [-AdditionalProperties <Hashtable>]
 ```
 
 ## DESCRIPTION
-Represents an Azure Active Directory object.
-The directoryObject type is the base type for many other directory entity types.
+Update entity in groups
 
 ## EXAMPLES
 
