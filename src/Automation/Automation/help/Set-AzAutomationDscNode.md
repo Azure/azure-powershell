@@ -26,8 +26,8 @@ Azure Automation stores DSC node configuration as a Managed Object Format (MOF) 
 ## EXAMPLES
 
 ### Example 1: Modify node configuration mapping
-```
-PS C:\>Set-AzAutomationDscNode -NodeConfigurationName "Contoso.NodeConfiguration01" -ResourceGroupName "ResourceGroup01" -Id 064a8929-c98b-25e4-80hh-111c8a6067j8
+```powershell
+Set-AzAutomationDscNode -NodeConfigurationName "Contoso.NodeConfiguration01" -ResourceGroupName "ResourceGroup01" -Id 064a8929-c98b-25e4-80hh-111c8a6067j8
 ```
 
 This command assigns the node configuration named Contoso.NodeConfiguration01 to the node that has the specified GUID.

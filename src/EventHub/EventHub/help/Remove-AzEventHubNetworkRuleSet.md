@@ -37,7 +37,7 @@ Removes the NetworkRuleSet for the Given Namespace
 
 ### Example 1
 ```powershell
-Remove-AzEventHubNetworkRuleSet -ResourceGroupName  v-ajnavtest -Namespace Eventhub-Namespace1-1375 -PassThru
+Remove-AzEventHubNetworkRuleSet -ResourceGroupName  v-ajnavtest -Name Eventhub-Namespace1-1375 -PassThru
 ```
 
 ```output

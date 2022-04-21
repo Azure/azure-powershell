@@ -70,7 +70,7 @@ For more information about script blocks, type `Get-Help about_Script_Blocks`.
 
 ### Example 3: Upload a local file to an Azure file, and perserve the local File SMB properties (File Attributtes, File Creation Time, File Last Write Time) in the Azure file.
 ```
-PS C:\>Set-AzStorageFileContent -source $localFilePath -ShareName sample -Path "dir1/file1" -PreserveSMBAttribute
+PS C:\>Set-AzStorageFileContent -Source $localFilePath -ShareName sample -Path "dir1/file1" -PreserveSMBAttribute
 ```
 
 This example uploads a local file to an Azure file, and perserves the local File SMB properties (File Attributtes, File Creation Time, File Last Write Time) in the Azure file.

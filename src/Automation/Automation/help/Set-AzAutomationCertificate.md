@@ -25,9 +25,9 @@ The **Set-AzAutomationCertificate** cmdlet modifies the configuration of a certi
 ## EXAMPLES
 
 ### Example 1: Modify a certificate
-```
-PS C:\>$Password = ConvertTo-SecureString -String "Password" -AsPlainText -Force
-PS C:\> Set-AzAutomationCertificate -AutomationAccountName "Contos17" -Name "ContosoCertificate" -Path "./cert.pfx" -Password $Password -ResourceGroupName "ResourceGroup01"
+```powershell
+$Password = ConvertTo-SecureString -String "Password" -AsPlainText -Force
+Set-AzAutomationCertificate -AutomationAccountName "Contos17" -Name "ContosoCertificate" -Path "./cert.pfx" -Password $Password -ResourceGroupName "ResourceGroup01"
 ```
 
 The first command converts a plain text password to be a secure string by using the ConvertTo-SecureString cmdlet.
