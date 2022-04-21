@@ -63,7 +63,7 @@ By machine id.
 ### Example 2: By input object
 ```powershell
 $obj = Get-AzMigrateServerReplication -TargetObjectID $env.srsMachineId -SubscriptionId $env.srsSubscriptionId
-Start-AzMigrateTestMigrationCleanup -InputObject $ob
+Start-AzMigrateTestMigrationCleanup -InputObject $obj
 ```
 
 ```output

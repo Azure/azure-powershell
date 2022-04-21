@@ -97,6 +97,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             {
                 response = GetPSAzureVaultJob(serviceClientJob); // add Crr if needed 
             }*/
+            else if (serviceClientJob.Properties.GetType() == typeof(CrrModel.Job))
+            {
+                response = GetPSAzureBaseJobCrr(serviceClientJob);
+            }
 
             return response;
         }
@@ -884,6 +888,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 }
             }
 
+            return response;
+        }
+
+        /// <summary>
+        /// Helper function to convert ps azure vm backup policy job from service response.
+        /// </summary>
+        private static CmdletModel.AzureJob GetPSAzureBaseJobCrr(CrrModel.JobResource serviceClientJob)
+        {
+            CrrModel.Job baseJob = serviceClientJob.Properties;
+            CmdletModel.AzureJob response = new CmdletModel.AzureJob();
+
+            response.JobId = GetLastIdFromFullId(serviceClientJob.Id);
+            response.StartTime = GetJobStartTime(baseJob.StartTime);
+            response.EndTime = baseJob.EndTime;            
+            response.Status = baseJob.Status;            
+            response.WorkloadName = baseJob.EntityFriendlyName;
+            response.ActivityId = baseJob.ActivityId;
+            response.BackupManagementType = CmdletModel.ConversionUtils.GetPsBackupManagementType(baseJob.BackupManagementType);
+            response.Operation = baseJob.Operation;
+            
             return response;
         }
 

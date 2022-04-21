@@ -11,7 +11,7 @@ Since .NET Core and above cannot load 2 different versions of one assembly into 
 Service module of Azure PowerShell also can create its assembly load context when it must depend on a assembly with different version from other modules. The page [How to define AssemblyLoadContext for module](/src/Accounts/AuthenticationAssemblyLoadContext) provides a comprehensive sample used by `Az.Compute`. 
 
 ## Windows PowerShell with .NET Framework
-Azure PowerShell uses a different approach for Windows PowerShell with .NET Framework because, instead of assembly conflict, the major problem is required assembly may not be offered by Windows PowerShell or .NET Framework. `Az.Accounts` registers a handler in `CustomAssemblyResolver` to handle event that required assembly could not be resolved. It means target assembly cannot be found from the probing path of .NET Framework or Windows PowerShell. Then, resolver compares expected version and loads target from directory `/PreloadAssemblies`  (`src/lib/NetCorePreloadAssemblies`) in `Az.Accounts` if major version is the same. Here, we assume there is no breaking change across minor or patch versions, but it cannot be guaranteed.
+The major problem on Windows PowerShell is required assembly may not be offered by Windows PowerShell or .NET Framework. `Az.Accounts` registers a handler in `CustomAssemblyResolver` to handle event that required assembly could not be resolved. It means target assembly cannot be found from the probing path of .NET Framework or Windows PowerShell. Then, resolver compares expected version and loads target from directory `/PreloadAssemblies`  (`src/lib/NetCorePreloadAssemblies`) in `Az.Accounts` if major version is the same. Here, we assume there is no breaking change across minor or patch versions, but it cannot be guaranteed.
 
 For further reading, please visit https://docs.microsoft.com/en-us/dotnet/standard/assembly/resolve-loads#how-the-assemblyresolve-event-works
 
@@ -20,9 +20,9 @@ For further reading, please visit https://docs.microsoft.com/en-us/dotnet/standa
 `Azure.Core` is common library used by management plane and data plane SDKs. Below are steps to upgrade its version.
 1. Navigate to [Common.Netcore.Dependencies.targets](/tools/Common.Netcore.Dependencies.targets) to check current version of `Azure.Core` used by latest code and bump version to expected.
 2. Compare dependencies of `Azure.Core` on [nuget.org](https://www.nuget.org/packages/Azure.Core/) between current version and expected version.
-3. Extract DLL file in nuget package folder `lib/netcoreapp2.1` of `Azure.Core` and changed dependencies and copy them to `src/lib/NetCorePreloadAssemblies`.
+3. Extract DLL file in nuget package folder `lib/netcoreapp2.1` of `Azure.Core` and changed dependencies and copy them to `src/lib/NetCorePreloadAssemblies`. You need to ensure the version CANNOT be higher than existing assembly if PowerShell already includes it. 
 4. Update assembly version of `Azure.Core` and changed dependencies to .NET Stardard 2.0 in `/src/Accounts/AuthenticationAssemblyLoadContext/AzAssemblyLoadContextInitializer.cs`.
-5. Extract DLL file in nuget package folder `lib/net461` of `Azure.Core` and changed dependencies and copy them to `src/lib/NetFxPreloadAssemblies`.
+5. Extract DLL file in nuget package folder `lib/net461` (alternatively, `netstandard2.0`) of `Azure.Core` and changed dependencies and copy them to `src/lib/NetFxPreloadAssemblies`.
 6. Update assembly version of `Azure.Core` and changed dependencies to .NET Framework in `/src/Accounts/Authentication/Utilities/CustomAssemblyResolver.cs`.
 7. Verify built `Az.Accounts` can work with existing Azure PowerShell modules on PowerShell 7 and Windows PowerShell.
    - Import module into PowerShell 7 or Windows PowerShell.

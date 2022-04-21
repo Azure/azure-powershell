@@ -25,24 +25,24 @@ Creates an "Update Management Azure Query" object that will dynamically resolve 
 
 ### Example 1
 ```powershell
-PS C:\>$query1Scope = @(        
-"/subscriptions/22e2445a-0984-4fa5-86a4-0280d76c4b2c/resourceGroups/resourceGroupName",
-"/subscriptions/32e2445a-0984-4fa5-86a4-0280d76c4b2d/"
-    )
-PS C:\>$query1Location =@("Japan East", "UK South")
-PS C:\>$query1FilterOperator = "All"
-PS C:\>$tag1 = @{"tag1"= @("tag1Value1", "tag1Value2")}
-PS C:\>$tag1.add("tag2", "tag2Value")
-PS C:\>$azq = New-AzAutomationUpdateManagementAzureQuery -ResourceGroupName "mygroup" `
+$query1Scope = @(
+    "/subscriptions/22e2445a-0984-4fa5-86a4-0280d76c4b2c/resourceGroups/resourceGroupName",
+    "/subscriptions/32e2445a-0984-4fa5-86a4-0280d76c4b2d/"
+)
+$query1Location =@("Japan East", "UK South")
+$query1FilterOperator = "All"
+$tag1 = @{"tag1"= @("tag1Value1", "tag1Value2")}
+$tag1.add("tag2", "tag2Value")
+$azq = New-AzAutomationUpdateManagementAzureQuery -ResourceGroupName "mygroup" `
                                        -AutomationAccountName "myaccount" `
                                        -Scope $query1Scope `
                                        -Location $query1Location `
                                        -Tag $tag1
-PS C:\>$AzureQueries = @($azq)
-PS C:\> $startTime = [DateTimeOffset]"2018-09-13T21:00"
+$AzureQueries = @($azq)
+$startTime = [DateTimeOffset]"2018-09-13T21:00"
 
-PS C:\> $duration = New-TimeSpan -Hours 2
-PS C:\> $schedule = New-AzAutomationSchedule -ResourceGroupName "mygroup" `
+$duration = New-TimeSpan -Hours 2
+$schedule = New-AzAutomationSchedule -ResourceGroupName "mygroup" `
                                                   -AutomationAccountName "myaccount" `
                                                   -Name MyWeeklySchedule `
                                                   -StartTime $startTime `
@@ -57,7 +57,8 @@ New-AzAutomationSoftwareUpdateConfiguration -ResourceGroupName "mygroup" `
                                                  -AzureQuery $AzureQueries `
                                                  -IncludedUpdateClassification Critical `
                                                  -Duration $duration
-
+```
+```output
 UpdateConfiguration   : Microsoft.Azure.Commands.Automation.Model.UpdateManagement.UpdateConfiguration
 ScheduleConfiguration : Microsoft.Azure.Commands.Automation.Model.Schedule
 ProvisioningState     : Provisioning

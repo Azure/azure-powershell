@@ -739,7 +739,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to For SnapshotRetentionRangeInDays, the minimum value is 1 and maximum is 5. For weekly backup policies, the only allowed value is 5. Please set the value accordingly.
+        ///   Looks up a localized string similar to For Standard policy SnapshotRetentionRangeInDays, the minimum value is 1 and maximum is 5. For weekly backup policies, the only allowed value is 5. Please set the value accordingly.
         /// </summary>
         public static string InstantRPRetentionDaysException
         {
@@ -2180,6 +2180,138 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
             get
             {
                 return ResourceManager.GetString("TargetParamsMissingException", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ScheduleRunFrequency parameter is only expected for WorkloadTypes: AzureVM, AzureFiles
+        /// </summary>
+        public static string UnexpectedParamScheduleRunFrequency
+        {
+            get
+            {
+                return ResourceManager.GetString("UnexpectedParamScheduleRunFrequency", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ScheduleInterval, ScheduleWindowStartTime, ScheduleWindowDuration must be empty for non-Hourly policy
+        /// </summary>
+        public static string HourlyScheduleNotNull
+        {
+            get
+            {
+                return ResourceManager.GetString("HourlyScheduleNotNull", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ScheduleRunTimes and ScheduleRunDays must be empty for Hourly policy
+        /// </summary>
+        public static string NonHourlyAttributesNotNull
+        {
+            get
+            {
+                return ResourceManager.GetString("NonHourlyAttributesNotNull", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ScheduleWindowDuration can't be less than ScheduleInterval for Hourly policy
+        /// </summary>
+        public static string WindowDurationLessThanInterval
+        {
+            get
+            {
+                return ResourceManager.GetString("WindowDurationLessThanInterval", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ScheduleWindowStartTime in Hourly schedule policy should be in UTC time, however policy can be created in a different time zone by providing the timezone in ScheduleRunTimeZone attribute
+        /// </summary>
+        public static string WindowStartTimeNotInUTC
+        {
+            get
+            {
+                return ResourceManager.GetString("WindowStartTimeNotInUTC", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Standard Hourly policy is not supported for WorkloadType AzureIaasVM, please try with Enhanced policy or different schedule frequency: Daily, Weekly
+        /// </summary>
+        public static string StandardHourlyPolicyNotSupported
+        {
+            get
+            {
+                return ResourceManager.GetString("StandardHourlyPolicyNotSupported", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Standard Hourly schedule is not supported for WorkloadType AzureVM
+        /// </summary>
+        public static string StandardHourlyScheduleNotSupported
+        {
+            get
+            {
+                return ResourceManager.GetString("StandardHourlyScheduleNotSupported", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to For Enhanced policy SnapshotRetentionRangeInDays, the minimum value is 1 and maximum is 30. For weekly backup policies, the minimum allowed value is 5. Please set the value accordingly
+        /// </summary>
+        public static string SnapshotRetentionOutOfRange
+        {
+            get
+            {
+                return ResourceManager.GetString("SnapshotRetentionOutOfRange", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Weekly ScheduleRunFrequency isn't supported for WorkloadType: AzureFiles
+        /// </summary>
+        public static string WeeklyScheduleNotSupported
+        {
+            get
+            {
+                return ResourceManager.GetString("WeeklyScheduleNotSupported", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Enhanced policy is only supported for workloadType AzureVM. Please provide correct PolicySubType and WorkloadType
+        /// </summary>
+        public static string EnhancedPolicyNotSupported
+        {
+            get
+            {
+                return ResourceManager.GetString("EnhancedPolicyNotSupported", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Enhanced Hourly policy is currently not supported for WorkloadType AzureIaasVM. This will be supported soon
+        /// </summary>
+        public static string EnhancedHourlyPolicyNotSupported
+        {
+            get
+            {
+                return ResourceManager.GetString("EnhancedHourlyPolicyNotSupported", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Trusted VM can only be protected using Enhanced policy. Please provide a valid AzureVM Enhanced policy
+        /// </summary>
+        public static string InvalidPolicyForTrustedVMProtection
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidPolicyForTrustedVMProtection", resourceCulture);
             }
         }
     }

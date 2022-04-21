@@ -20,7 +20,7 @@ Add new entity to groups
 .Description
 Add new entity to groups
 .Example
-PS C:\> New-AzADGroup -DisplayName $gname -MailNickname $nickname
+New-AzADGroup -DisplayName $gname -MailNickname $nickname
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup
@@ -352,6 +352,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Create = 'Az.MSGraph.private\New-AzADGroup_Create';
             CreateExpanded = 'Az.MSGraph.private\New-AzADGroup_CreateExpanded';
@@ -362,6 +363,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -370,15 +372,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

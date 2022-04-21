@@ -20,13 +20,9 @@ Description for Restores a specific backup to another app (or deployment slot, i
 .Description
 Description for Restores a specific backup to another app (or deployment slot, if specified).
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRestoreRequest

@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for multiple backups per day (hourly) Enhanced policy for workloadType AzureVM.
+
+## Version 5.3.0
+* Added support for Trusted VM backup and Enhanced policy for WorkloadType AzureVM.
+* Added support for disabling hybrid backup security features in `Set-AzRecoveryServicesVaultProperty` cmdlet. The feature can be re-enabled by setting `DisableHybridBackupSecurityFeature` flag to $false.
 
 ## Version 5.2.0
 * Azure Backup added support for "Create new virtual machine" and "Replace existing virtual machine" experience for Managed VMs in Restore-AzRecoveryServicesBackupItem cmdlet. To perform a VM restore to AlternateLocation use TargetVMName, TargetVNetName, TargetVNetResourceGroup, TargetSubnetName parameters. To perform a restore to a VM in OriginalLocation, do not provide TargetResourceGroupName and RestoreAsUnmanagedDisks parameters, refer examples for more details.

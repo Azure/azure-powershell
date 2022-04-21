@@ -26,105 +26,181 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
         /// </returns>
         public global::System.Collections.Generic.IEnumerable<global::System.Management.Automation.CompletionResult> CompleteArgument(global::System.String commandName, global::System.String parameterName, global::System.String wordToComplete, global::System.Management.Automation.Language.CommandAst commandAst, global::System.Collections.IDictionary fakeBoundParameters)
         {
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_DS13_v2+1TB_PS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
-            {
-                yield return new global::System.Management.Automation.CompletionResult("Standard_DS13_v2+1TB_PS", "Standard_DS13_v2+1TB_PS", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_DS13_v2+1TB_PS");
-            }
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_DS13_v2+2TB_PS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
-            {
-                yield return new global::System.Management.Automation.CompletionResult("Standard_DS13_v2+2TB_PS", "Standard_DS13_v2+2TB_PS", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_DS13_v2+2TB_PS");
-            }
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_DS14_v2+3TB_PS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
-            {
-                yield return new global::System.Management.Automation.CompletionResult("Standard_DS14_v2+3TB_PS", "Standard_DS14_v2+3TB_PS", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_DS14_v2+3TB_PS");
-            }
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_DS14_v2+4TB_PS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
-            {
-                yield return new global::System.Management.Automation.CompletionResult("Standard_DS14_v2+4TB_PS", "Standard_DS14_v2+4TB_PS", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_DS14_v2+4TB_PS");
-            }
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_D13_v2".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
-            {
-                yield return new global::System.Management.Automation.CompletionResult("Standard_D13_v2", "Standard_D13_v2", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_D13_v2");
-            }
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_D14_v2".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
-            {
-                yield return new global::System.Management.Automation.CompletionResult("Standard_D14_v2", "Standard_D14_v2", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_D14_v2");
-            }
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_L8s".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
-            {
-                yield return new global::System.Management.Automation.CompletionResult("Standard_L8s", "Standard_L8s", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_L8s");
-            }
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_L16s".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
-            {
-                yield return new global::System.Management.Automation.CompletionResult("Standard_L16s", "Standard_L16s", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_L16s");
-            }
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_L8s_v2".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
-            {
-                yield return new global::System.Management.Automation.CompletionResult("Standard_L8s_v2", "Standard_L8s_v2", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_L8s_v2");
-            }
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_L16s_v2".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
-            {
-                yield return new global::System.Management.Automation.CompletionResult("Standard_L16s_v2", "Standard_L16s_v2", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_L16s_v2");
-            }
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_D11_v2".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
-            {
-                yield return new global::System.Management.Automation.CompletionResult("Standard_D11_v2", "Standard_D11_v2", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_D11_v2");
-            }
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_D12_v2".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
-            {
-                yield return new global::System.Management.Automation.CompletionResult("Standard_D12_v2", "Standard_D12_v2", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_D12_v2");
-            }
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_L4s".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
-            {
-                yield return new global::System.Management.Automation.CompletionResult("Standard_L4s", "Standard_L4s", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_L4s");
-            }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Dev(No SLA)_Standard_D11_v2".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Dev(No SLA)_Standard_D11_v2", "Dev(No SLA)_Standard_D11_v2", global::System.Management.Automation.CompletionResultType.ParameterValue, "Dev(No SLA)_Standard_D11_v2");
-            }
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_E64i_v3".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
-            {
-                yield return new global::System.Management.Automation.CompletionResult("Standard_E64i_v3", "Standard_E64i_v3", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_E64i_v3");
-            }
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_E80ids_v4".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
-            {
-                yield return new global::System.Management.Automation.CompletionResult("Standard_E80ids_v4", "Standard_E80ids_v4", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_E80ids_v4");
-            }
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_E2a_v4".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
-            {
-                yield return new global::System.Management.Automation.CompletionResult("Standard_E2a_v4", "Standard_E2a_v4", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_E2a_v4");
-            }
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_E4a_v4".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
-            {
-                yield return new global::System.Management.Automation.CompletionResult("Standard_E4a_v4", "Standard_E4a_v4", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_E4a_v4");
-            }
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_E8a_v4".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
-            {
-                yield return new global::System.Management.Automation.CompletionResult("Standard_E8a_v4", "Standard_E8a_v4", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_E8a_v4");
-            }
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_E16a_v4".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
-            {
-                yield return new global::System.Management.Automation.CompletionResult("Standard_E16a_v4", "Standard_E16a_v4", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_E16a_v4");
-            }
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_E8as_v4+1TB_PS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
-            {
-                yield return new global::System.Management.Automation.CompletionResult("Standard_E8as_v4+1TB_PS", "Standard_E8as_v4+1TB_PS", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_E8as_v4+1TB_PS");
-            }
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_E8as_v4+2TB_PS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
-            {
-                yield return new global::System.Management.Automation.CompletionResult("Standard_E8as_v4+2TB_PS", "Standard_E8as_v4+2TB_PS", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_E8as_v4+2TB_PS");
-            }
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_E16as_v4+3TB_PS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
-            {
-                yield return new global::System.Management.Automation.CompletionResult("Standard_E16as_v4+3TB_PS", "Standard_E16as_v4+3TB_PS", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_E16as_v4+3TB_PS");
-            }
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_E16as_v4+4TB_PS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
-            {
-                yield return new global::System.Management.Automation.CompletionResult("Standard_E16as_v4+4TB_PS", "Standard_E16as_v4+4TB_PS", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_E16as_v4+4TB_PS");
+                yield return new global::System.Management.Automation.CompletionResult("'Dev(No SLA)_Standard_D11_v2'", "Dev(No SLA)_Standard_D11_v2", global::System.Management.Automation.CompletionResultType.ParameterValue, "Dev(No SLA)_Standard_D11_v2");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Dev(No SLA)_Standard_E2a_v4".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Dev(No SLA)_Standard_E2a_v4", "Dev(No SLA)_Standard_E2a_v4", global::System.Management.Automation.CompletionResultType.ParameterValue, "Dev(No SLA)_Standard_E2a_v4");
+                yield return new global::System.Management.Automation.CompletionResult("'Dev(No SLA)_Standard_E2a_v4'", "Dev(No SLA)_Standard_E2a_v4", global::System.Management.Automation.CompletionResultType.ParameterValue, "Dev(No SLA)_Standard_E2a_v4");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_D11_v2".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Standard_D11_v2'", "Standard_D11_v2", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_D11_v2");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_D12_v2".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Standard_D12_v2'", "Standard_D12_v2", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_D12_v2");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_D13_v2".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Standard_D13_v2'", "Standard_D13_v2", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_D13_v2");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_D14_v2".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Standard_D14_v2'", "Standard_D14_v2", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_D14_v2");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_D32d_v4".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Standard_D32d_v4'", "Standard_D32d_v4", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_D32d_v4");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_D16d_v5".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Standard_D16d_v5'", "Standard_D16d_v5", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_D16d_v5");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_D32d_v5".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Standard_D32d_v5'", "Standard_D32d_v5", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_D32d_v5");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_DS13_v2+1TB_PS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Standard_DS13_v2+1TB_PS'", "Standard_DS13_v2+1TB_PS", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_DS13_v2+1TB_PS");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_DS13_v2+2TB_PS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Standard_DS13_v2+2TB_PS'", "Standard_DS13_v2+2TB_PS", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_DS13_v2+2TB_PS");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_DS14_v2+3TB_PS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Standard_DS14_v2+3TB_PS'", "Standard_DS14_v2+3TB_PS", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_DS14_v2+3TB_PS");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_DS14_v2+4TB_PS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Standard_DS14_v2+4TB_PS'", "Standard_DS14_v2+4TB_PS", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_DS14_v2+4TB_PS");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_L4s".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Standard_L4s'", "Standard_L4s", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_L4s");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_L8s".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Standard_L8s'", "Standard_L8s", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_L8s");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_L16s".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Standard_L16s'", "Standard_L16s", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_L16s");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_L8s_v2".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Standard_L8s_v2'", "Standard_L8s_v2", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_L8s_v2");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_L16s_v2".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Standard_L16s_v2'", "Standard_L16s_v2", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_L16s_v2");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_E64i_v3".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Standard_E64i_v3'", "Standard_E64i_v3", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_E64i_v3");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_E80ids_v4".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Standard_E80ids_v4'", "Standard_E80ids_v4", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_E80ids_v4");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_E2a_v4".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Standard_E2a_v4'", "Standard_E2a_v4", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_E2a_v4");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_E4a_v4".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Standard_E4a_v4'", "Standard_E4a_v4", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_E4a_v4");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_E8a_v4".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Standard_E8a_v4'", "Standard_E8a_v4", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_E8a_v4");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_E16a_v4".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Standard_E16a_v4'", "Standard_E16a_v4", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_E16a_v4");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_E8as_v4+1TB_PS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Standard_E8as_v4+1TB_PS'", "Standard_E8as_v4+1TB_PS", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_E8as_v4+1TB_PS");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_E8as_v4+2TB_PS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Standard_E8as_v4+2TB_PS'", "Standard_E8as_v4+2TB_PS", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_E8as_v4+2TB_PS");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_E16as_v4+3TB_PS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Standard_E16as_v4+3TB_PS'", "Standard_E16as_v4+3TB_PS", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_E16as_v4+3TB_PS");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_E16as_v4+4TB_PS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Standard_E16as_v4+4TB_PS'", "Standard_E16as_v4+4TB_PS", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_E16as_v4+4TB_PS");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_E8as_v5+1TB_PS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Standard_E8as_v5+1TB_PS'", "Standard_E8as_v5+1TB_PS", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_E8as_v5+1TB_PS");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_E8as_v5+2TB_PS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Standard_E8as_v5+2TB_PS'", "Standard_E8as_v5+2TB_PS", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_E8as_v5+2TB_PS");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_E16as_v5+3TB_PS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Standard_E16as_v5+3TB_PS'", "Standard_E16as_v5+3TB_PS", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_E16as_v5+3TB_PS");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_E16as_v5+4TB_PS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Standard_E16as_v5+4TB_PS'", "Standard_E16as_v5+4TB_PS", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_E16as_v5+4TB_PS");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_E2ads_v5".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Standard_E2ads_v5'", "Standard_E2ads_v5", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_E2ads_v5");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_E4ads_v5".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Standard_E4ads_v5'", "Standard_E4ads_v5", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_E4ads_v5");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_E8ads_v5".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Standard_E8ads_v5'", "Standard_E8ads_v5", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_E8ads_v5");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_E16ads_v5".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Standard_E16ads_v5'", "Standard_E16ads_v5", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_E16ads_v5");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_E8s_v4+1TB_PS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Standard_E8s_v4+1TB_PS'", "Standard_E8s_v4+1TB_PS", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_E8s_v4+1TB_PS");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_E8s_v4+2TB_PS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Standard_E8s_v4+2TB_PS'", "Standard_E8s_v4+2TB_PS", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_E8s_v4+2TB_PS");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_E16s_v4+3TB_PS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Standard_E16s_v4+3TB_PS'", "Standard_E16s_v4+3TB_PS", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_E16s_v4+3TB_PS");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_E16s_v4+4TB_PS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Standard_E16s_v4+4TB_PS'", "Standard_E16s_v4+4TB_PS", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_E16s_v4+4TB_PS");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_E8s_v5+1TB_PS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Standard_E8s_v5+1TB_PS'", "Standard_E8s_v5+1TB_PS", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_E8s_v5+1TB_PS");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_E8s_v5+2TB_PS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Standard_E8s_v5+2TB_PS'", "Standard_E8s_v5+2TB_PS", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_E8s_v5+2TB_PS");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_E16s_v5+3TB_PS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Standard_E16s_v5+3TB_PS'", "Standard_E16s_v5+3TB_PS", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_E16s_v5+3TB_PS");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_E16s_v5+4TB_PS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Standard_E16s_v5+4TB_PS'", "Standard_E16s_v5+4TB_PS", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_E16s_v5+4TB_PS");
             }
         }
     }

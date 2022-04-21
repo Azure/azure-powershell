@@ -19,6 +19,10 @@
 -->
 
 ## Upcoming Release
+
+## Version 3.1.0
+* Removed capacity validation in new and update cluster cmdlets as validation exists on server side.
+* Extended error message on base class for extended information.
 * Bug fix - prevent exceptions while using StorageInsight cmdlets.
 * Bug fix - when updating a cluster, it's SKU was set even if no value was passed.
 

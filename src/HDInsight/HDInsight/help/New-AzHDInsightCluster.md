@@ -114,7 +114,7 @@ The cmdlet may call below Microsoft Graph API according to input parameters:
         $storageAccountName = "yourstorageacct001"
         $storageAccountKey = Get-AzStorageAccountKey `
             -ResourceGroupName $storageAccountResourceGroupName `
-            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | %{$_.Value}
+            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | ForEach-Object{$_.Value}
         $storageContainer = "container002"
 
         # Cluster configuration info
@@ -150,7 +150,7 @@ This command creates a cluster in the current subscription.
         $storageAccountName = "yourstorageacct001"
         $storageAccountKey = Get-AzStorageAccountKey `
             -ResourceGroupName $storageAccountResourceGroupName `
-            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | %{$_.Value}
+            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | ForEach-Object{$_.Value}
         $storageContainer = "container002"
 
         # Cluster configuration info
@@ -194,7 +194,7 @@ This command creates a cluster in the current subscription.
         $storageAccountName = "yourstorageacct001"
         $storageAccountKey = Get-AzStorageAccountKey `
             -ResourceGroupName $storageAccountResourceGroupName `
-            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | %{$_.Value}}
+            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | ForEach-Object{$_.Value}
         $storageContainer = "container002"
 
         # Cluster configuration info
@@ -229,7 +229,7 @@ This command creates a cluster in the current subscription.
         $storageAccountName = "yourstorageacct001"
         $storageAccountKey = Get-AzStorageAccountKey `
             -ResourceGroupName $storageAccountResourceGroupName `
-            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | %{$_.Value}
+            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | ForEach-Object{$_.Value}
         $storageContainer = "container002"
 
         # Cluster configuration info
@@ -269,7 +269,7 @@ This command creates a cluster in the current subscription.
         $storageAccountName = "yourstorageacct001"
         $storageAccountKey = Get-AzStorageAccountKey `
             -ResourceGroupName $storageAccountResourceGroupName `
-            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | %{$_.Value}
+            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | ForEach-Object{$_.Value}
         $storageContainer = "container002"
 
         # Cluster configuration info
@@ -304,7 +304,7 @@ This command creates a cluster in the current subscription.
         $storageAccountName = "yourstorageacct001"
         $storageAccountKey = Get-AzStorageAccountKey `
             -ResourceGroupName $storageAccountResourceGroupName `
-            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | %{$_.Value}
+            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | ForEach-Object{$_.Value}
         $storageContainer = "container002"
 
         # Cluster configuration info
@@ -343,7 +343,7 @@ This command creates a cluster in the current subscription.
         $storageAccountName = "yourstorageacct001"
         $storageAccountKey = Get-AzStorageAccountKey `
             -ResourceGroupName $storageAccountResourceGroupName `
-            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | %{$_.Value}
+            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | ForEach-Object{$_.Value}
         $storageContainer = "container002"
 
         # Cluster configuration info
@@ -384,7 +384,7 @@ This command creates a cluster in the current subscription.
         $storageAccountResourceId = "yourstorageaccountresourceid"
         $storageManagedIdentity = "yourstorageusermanagedidentity"
         $storageFileSystem = "filesystem01"
-        $storageAccountType=AzureDataLakeStorageGen2
+        $storageAccountType = "AzureDataLakeStorageGen2"
 
         # Cluster configuration info
         $location = "East US 2"
@@ -436,7 +436,7 @@ This command creates a cluster in the current subscription.
         $clusterUserGroupDns = "dominusergroup"
         $ldapUrls = "ldaps://{your domain name}:636"
 
-        $clusterTier = Premium
+        $clusterTier = "Premium"
         $vnetId = "yourvnetid"
         $subnetName = "yoursubnetname"
         $assignedIdentity = "your user managed assigned identity resourcee id"
@@ -446,7 +446,7 @@ This command creates a cluster in the current subscription.
 
         # Create the cluster
         New-AzHDInsightCluster `
-            -ClusteTier $clusterTier `
+            -ClusterTier $clusterTier `
             -ClusterType Hadoop `
             -ClusterSizeInNodes 3 `
             -ResourceGroupName $clusterResourceGroupName `
@@ -470,7 +470,7 @@ This command creates a cluster in the current subscription.
         $storageAccountName = "yourstorageacct001"
         $storageAccountKey = Get-AzStorageAccountKey `
             -ResourceGroupName $storageAccountResourceGroupName `
-            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | %{$_.Value}
+            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | ForEach-Object{$_.Value}
         $storageContainer = "container002"
 
         # Cluster configuration info
@@ -511,7 +511,7 @@ This command creates a cluster in the current subscription.
         $storageAccountName = "yourstorageacct001"
         $storageAccountKey = Get-AzStorageAccountKey `
             -ResourceGroupName $storageAccountResourceGroupName `
-            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | %{$_.Value}
+            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | ForEach-Object{$_.Value}
         $storageContainer = "container002"
 
         # Cluster configuration info
@@ -562,7 +562,7 @@ This command creates a cluster in the current subscription.
         $storageAccountName = "yourstorageacct001"
         $storageAccountKey = Get-AzStorageAccountKey `
             -ResourceGroupName $storageAccountResourceGroupName `
-            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | %{$_.Value}
+            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | ForEach-Object{$_.Value}
         $storageContainer = "container002"
 
         # Cluster configuration info

@@ -1,3 +1,173 @@
+## 7.4.0 - April 2022
+#### Az.Accounts
+* Added 'SshCredentialFactory' to support get ssh credential of vm from msal.
+* Fixed the bug of cmdlet fails when -DefaultProfile is set to service principal login context. [#16617]
+* Fixed the issue that authorization does not work in Dogfood environment
+
+#### Az.AppConfiguration
+* Added parameter 'PublicNetworkAccess' in 'New-AzAppConfigurationStore' and 'Update-AzAppConfigurationStore'
+
+#### Az.ApplicationInsights
+* Added breaking change warnings for upcoming Az.ApplicationInsights 2.0.0
+
+#### Az.Cdn
+* Added breaking change messages for upcoming breaking change release of version 2.0.0
+
+#### Az.Compute
+* Updated 'New-AzVM' to create a new storage account for boot diagnostics if one does not exist. This will prevent the cmdlet from using a random storage account in the current subscription to use for boot diagnostics.
+* Added 'AutomaticRepairAction' string parameter to the 'New-AzVmssConfig' and 'Update-AzVmss' cmdlets.
+* Updated 'Get-AzVm' to include 'GetVirtualMachineById' parameter set.
+* Edited the documentation for the cmdlet 'Set-AzVMADDomainExtension' to ensure the example is accurate. 
+* Improved description and examples for disk creation.
+* Added new parameters to 'New-AzRestorePoint' and 'New-AzRestorePointCollection' for copying Restore Points and Restore Point Collections.
+* Added 'Zone' and 'PlacementGroupId' Parameters to 'Repair-AzVmssServiceFabricUpdateDomain'.
+* Edited 'New-AzVmss' logic to better check for null properties when the parameter 'OrchestrationMode' is used.
+
+#### Az.CosmosDB
+* Introduced support for client encryption key resource management required for CosmosDB Client-Side Encryption by adding support for creating, updating and retrieving client encryption keys with following cmdlets: 'Get-AzCosmosDbClientEncryptionKey', 'New-AzCosmosDbClientEncryptionKey' and 'Update-AzCosmosDbClientEncryptionKey'
+
+#### Az.DataFactory
+* Updated ADF .Net SDK version to 5.4.0
+
+#### Az.Functions
+* Exposed PowerShell 7.2 stack definition for function app creation in Functions V4 only
+
+#### Az.HDInsight
+This release migrates Microsoft.Azure.Graph SDK to MicrosoftGraph SDK.
+
+#### Az.KeyVault
+* Fixed a bug to continue visiting 'NextPageLink' when listing key vaults from ARM API
+
+#### Az.Network
+* Added support for retrieving the state of packet capture even when the provisioning state of the packet capture was failure
+    - 'Get-AzNetworkWatcherPacketCapture'
+* Added support for accepting Vnet, Subnet and NIC resources as the TargetResourceId for the following cmdlets
+    - 'Set-AzNetworkWatcherFlowLog'
+    - 'New-AzNetworkWatcherFlowLog'
+
+#### Az.OperationalInsights
+* Removed capacity validation in new and update cluster cmdlets as validation exists on server side.
+* Extended error message on base class for extended information.
+* Bug fix - prevent exceptions while using StorageInsight cmdlets.
+* Bug fix - when updating a cluster, it's SKU was set even if no value was passed.
+
+#### Az.PostgreSql
+* Added parameter PublicNetworkAccess for PostgreSQL single server related cmdlets [#17263]
+
+#### Az.RecoveryServices
+* Added support for Trusted VM backup and Enhanced policy for WorkloadType AzureVM.
+* Added support for disabling hybrid backup security features in 'Set-AzRecoveryServicesVaultProperty' cmdlet. The feature can be re-enabled by setting 'DisableHybridBackupSecurityFeature' flag to False.
+
+#### Az.Resources
+* Removed '-ApplicationId' from 'New-AzADServicePrincipal' 'SimpleParameterSet' [#17256]
+* Added 'New-AzResourceManagementPrivateLink', and 'New-AzPrivateLinkAssociation' cmdlets
+* Added authorization related cmdlets:
+    - 'Get-AzRoleAssignmentSchedule'
+    - 'Get-AzRoleAssignmentScheduleInstance'
+    - 'Get-AzRoleAssignmentScheduleRequest'
+    - 'Get-AzRoleEligibilitySchedule'
+    - 'Get-AzRoleEligibilityScheduleInstance'
+    - 'Get-AzRoleEligibilityScheduleRequest' 
+    - 'Get-AzRoleEligibleChildResource'
+    - 'Get-AzRoleManagementPolicy' 
+    - 'Get-AzRoleManagementPolicyAssignment'
+    - 'New-AzRoleAssignmentScheduleRequest' 
+    - 'New-AzRoleEligibilityScheduleRequest'
+    - 'New-AzRoleManagementPolicyAssignment' 
+    - 'Remove-AzRoleManagementPolicy'
+    - 'Remove-AzRoleManagementPolicyAssignment' 
+    - 'Stop-AzRoleAssignmentScheduleRequest'
+    - 'Stop-AzRoleEligibilityScheduleRequest' 
+    - 'Update-AzRoleManagementPolicy'
+* Added 'Get-AzResourceManagementPrivateLink', 'Remove-AzResourceManagementPrivateLink', 'Get-AzResourceManagementPrivateLinkAssociation' and  'Remove-AzResourceManagementPrivateLinkAssociation' cmdlets
+
+#### Az.ServiceBus
+* Fixed that 'New-AzServiceBusAuthorizationRuleSASToken' returns invalid token. [#12975]
+
+#### Az.ServiceFabric
+* Added support for Ubuntu 20.04 vm image. 
+    - This enables cluster operations with Ubuntu 20.04 vm image using AZ powershell. 
+
+#### Az.Sql
+* Added parameter 'ServicePrincipalType' to 'New-AzSqlInstance' and 'Set-AzSqlInstance'
+* [Breaking change] Removed 'Get-AzSqlDatabaseTransparentDataEncryptionActivity'
+* Added property 'CurrentBackupStorageRedundancy' and 'RequestedBackupStorageRedundancy' in  the outputs of Managed Instance CRUD commands
+* Added optional property 'Tag' to 'Restore-AzSqlDatabase'
+* Added new cmdlets for managing Server Trust Certificates
+    - 'New-AzSqlInstanceServerTrustCertificate'
+    - 'Get-AzSqlInstanceServerTrustCertificate'
+    - 'Remove-AzSqlInstanceServerTrustCertificate'
+* Added new cmdlets for managing Managed Instance Link
+    - 'New-AzSqlInstanceLink'
+    - 'Get-AzSqlInstanceLink'
+    - 'Remove-AzSqlInstanceLink'
+    - 'Set-AzSqlInstanceLink'
+* Added support for DataWarehouse cross tenant and cross subscription restore operations to 'Restore-AzSqlDatabase' cmdlet
+
+#### Az.Storage
+* Updated examples in reference documentation for 'Close-AzStorageFileHandle'
+* Supported create storage context with customized blob, queue, file, table service endpoint
+    - 'New-AzStorageContext'
+* Fixed copy blob failure on Premium Storage account, or account enabled hierarchical namespace
+    -  'Copy-AzStorageBlob' 
+* Supported create account SAS token, container SAS token, blob  SAS token with EncryptionScope
+    -  'New-AzStorageAccountSASToken' 
+    -  'New-AzStorageContainerSASToken' 
+    -  'New-AzStorageBlobSASToken' 
+* Supported asynchronous blob copy run on new API version
+    -  'Start-AzStorageBlobCopy'
+* Fixed IpRule examples in help
+    -  'Add-AzStorageAccountNetworkRule'
+    -  'Remove-AzStorageAccountNetworkRule'
+    -  'Update-AzStorageAccountNetworkRuleSet'
+
+#### Az.Synapse
+* Upgraded Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.14
+* Fixed the issue that following cmdlets only shows 100 entries
+    - 'Get-AzSynapseRoleAssignment' cmdlet
+    - 'Get-AzSynapsePipelineRun' cmdlet
+    - 'Get-AzSynapseTriggerRun' cmdlet
+    - 'Get-AzSynapseActivityRun' cmdlet
+* Fixed the issue that there should be an error message when removing a dependency pipeline
+
+#### Az.Websites
+* Fixed 'Set-AzWebAppSlot' to support MinTlsVersion version update [#17663]
+* Fixed 'Set-AzAppServicePlan' to keep existing Tags when adding new Tags 
+* Fixed 'Set-AzWebApp','Set-AzWebAppSlot', 'Get-AzWebApp' and 'Get-AzWebAppSlot' to expose 'VnetRouteAllEnabled' property in 'SiteConfig' [#15663]
+* Fixed 'Set-AzWebApp', 'Set-AzWebAppSlot', 'Get-AzWebApp' and 'Get-AzWebAppSlot' to expose 'HealthCheckPath' property in 'SiteConfig' [#16325]
+* Fixed DateTime conversion issue caused by culture [#17253]
+* Added support for the web job feature [#661]
+    - Get-AzWebAppContinuousWebJob
+    - Get-AzWebAppSlotContinuousWebJob
+    - Get-AzWebAppSlotTriggeredWebJob
+    - Get-AzWebAppSlotTriggeredWebJobHistory
+    - Get-AzWebAppSlotWebJob
+    - Get-AzWebAppTriggeredWebJob
+    - Get-AzWebAppTriggeredWebJobHistory
+    - Get-AzWebAppWebJob
+    - Remove-AzWebAppContinuousWebJob
+    - Remove-AzWebAppSlotContinuousWebJob
+    - Remove-AzWebAppSlotTriggeredWebJob
+    - Remove-AzWebAppTriggeredWebJob
+    - Start-AzWebAppContinuousWebJob
+    - Start-AzWebAppSlotContinuousWebJob
+    - Start-AzWebAppSlotTriggeredWebJob
+    - Start-AzWebAppTriggeredWebJob
+    - Stop-AzWebAppContinuousWebJob
+    - Stop-AzWebAppSlotContinuousWebJob
+
+### Thanks to our community contributors
+* Axel B. Andersen (@Agazoth)
+  * Update Get-AzADUser.md (#17549)
+  * Added a new example (#17535)
+* @davidslamb, Fix invalid SAS token from New-AzServiceBusAuthorizationRuleSASToken (#17349)
+* elle (@elle24), Update Get-AzApplicationGatewayRequestRoutingRule.md (#17405)
+* @enevoj, Update Get-AzDataCollectionRule.md (#17586)
+* Felipe Guth de Freitas Bergstrom (@guthbergstrom), Update New-AzDatabricksWorkspace.md (#17472)
+* @k0rtina, Update Set-AzConsumptionBudget.md (#17355)
+* Kanika Gupta (@kangupt), Added example for New-AzVM
+* Evgeniy Chuvikov (@snofe), Update Update-AzCosmosDBSqlDatabaseThroughput.md
+
 ## 7.3.2 - March 2022
 #### Az.Accounts
 * Changed target framework of AuthenticationAssemblyLoadContext to netcoreapp2.1 [#17428]
@@ -609,7 +779,7 @@
 * Performance improvement for Get-AzPolicyAlias when -NamespaceMatch matches a single RP namespace
 
 #### Az.Security
-* Updated Security .NET SDK package reference to version 3.0.0
+* Added new cmdlets for security Automations API
 
 #### Az.ServiceBus
 * Added support for ZoneRedundant and optional switch parameter 'DisableLocalAuth' to 'New-AzServiceBusNamespace' and 'Set-AzServiceBusNamespace' 

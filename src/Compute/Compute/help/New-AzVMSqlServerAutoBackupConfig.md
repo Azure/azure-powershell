@@ -38,7 +38,7 @@ The **New-AzVMSqlServerAutoBackupConfig** cmdlet creates a configuration object 
 
 ### Example 1: Create an automatic backup configuration using storage URI and account key
 ```powershell
-$AutoBackupConfig = New-AzVMSqlServerAutoBackupConfig -Enable -RetentionPeriod 10 -StorageUri "\\contoso\StorageGeneral" -StorageKey "< Storage Key for ContosoGeneral >"
+$AutoBackupConfig = New-AzVMSqlServerAutoBackupConfig -Enable -RetentionPeriodInDays 10 -StorageUri "\\contoso\StorageGeneral" -StorageKey "< Storage Key for ContosoGeneral >"
 ```
 
 ```output
@@ -55,7 +55,7 @@ You can specify this configuration item for other cmdlets, such as the Set-AzVMS
 ### Example 2: Create an automatic backup configuration using storage context
 ```powershell
 $StorageContext = New-AzStorageContext -StorageAccountName "ContosoGeneral" -StorageAccountKey "< Storage Key for ContosoGeneral >"
-$AutoBackupConfig = New-AzVMSqlServerAutoBackupConfig -StorageContext $StorageContext -Enable -RetentionPeriod 10
+$AutoBackupConfig = New-AzVMSqlServerAutoBackupConfig -StorageContext $StorageContext -Enable -RetentionPeriodInDays 10
 ```
 
 ```output
@@ -71,7 +71,7 @@ Automatic backup is enabled and automatic backups are kept for 10 days.
 
 ### Example 3: Create an automatic backup configuration using storage context with encryption and password
 ```powershell
-$StorageContext = New-AzVMSqlServerAutoBackupConfig -StorageContext $StorageContext -Enable -RetentionPeriod 10 -EnableEncryption -CertificatePassword $CertificatePassword
+$StorageContext = New-AzVMSqlServerAutoBackupConfig -StorageContext $StorageContext -Enable -RetentionPeriodInDays 10 -EnableEncryption -CertificatePassword $CertificatePassword
 ```
 
 ```output

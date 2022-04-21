@@ -20,11 +20,11 @@ Add new entity to servicePrincipals
 .Description
 Add new entity to servicePrincipals
 .Example
-PS C:\> New-AzADServicePrincipal
+New-AzADServicePrincipal
 .Example
-PS C:\> New-AzADServicePrincipal -ApplicationId $appid
+New-AzADServicePrincipal -ApplicationId $appid
 .Example
-PS C:\> New-AzADServicePrincipal -DisplayName $name
+New-AzADServicePrincipal -DisplayName $name
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal
@@ -670,6 +670,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Create = 'Az.MSGraph.private\New-AzADServicePrincipal_Create';
             CreateExpanded = 'Az.MSGraph.private\New-AzADServicePrincipal_CreateExpanded';
@@ -680,6 +681,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -688,15 +690,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

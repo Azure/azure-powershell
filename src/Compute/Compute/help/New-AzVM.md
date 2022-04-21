@@ -25,7 +25,7 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
  [-EnableUltraSSD] [-ProximityPlacementGroupId <String>] [-HostId <String>] [-VmssId <String>]
  [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-EncryptionAtHost]
  [-HostGroupId <String>] [-SshKeyName <String>] [-GenerateSshKey] [-CapacityReservationGroupId <String>]
- [-UserData <String>] [-PlatformFaultDomain <Int32>] [-HibernationEnabled] [-vCPUCountAvailable <Int32>]
+ [-UserData <String>] [-ImageReferenceId <String>] [-PlatformFaultDomain <Int32>] [-HibernationEnabled] [-vCPUCountAvailable <Int32>]
  [-vCPUCountPerCore <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -50,7 +50,7 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
  [-DataDiskDeleteOption <String>] [-EnableUltraSSD] [-ProximityPlacementGroupId <String>] [-HostId <String>]
  [-VmssId <String>] [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-EncryptionAtHost]
  [-HostGroupId <String>] [-CapacityReservationGroupId <String>] [-UserData <String>]
- [-PlatformFaultDomain <Int32>] [-HibernationEnabled] [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>]
+ [-ImageReferenceId <String>] [-PlatformFaultDomain <Int32>] [-HibernationEnabled] [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -176,6 +176,8 @@ $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'Micros
 New-AzVM -ResourceGroupName $ResourceGroupName -Location $LocationName -VM $VirtualMachine -Verbose
 ```
 
+This command creates a VM from a marketplace image without a Public IP.
+
 ### Example 4: Create a VM with a UserData value:
 ```powershell
 ## VM Account
@@ -203,8 +205,7 @@ $vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName -UserData;
 
 The UserData value must always be Base64 encoded. 
 
-
-### Example 4: Creating a New VM in RG1 with an existing subnet in RG2
+### Example 5: Creating a new VM with an existing subnet in another resource group
 ```
 $UserName = "User"
 $Password = ConvertTo-SecureString "############" -AsPlainText -Force
@@ -222,7 +223,6 @@ New-AzVm -ResourceGroupName ResourceGroup1 -Location SouthCentralUS -VM $Virtual
 ```
 
 This example deploys a Windows VM from the marketplace in one resource group with an existing subnet in another resource group.
-
 
 ## PARAMETERS
 
@@ -774,6 +774,21 @@ Accept wildcard characters: False
 
 ### -SecurityGroupName
 The name of a new (or existing) network security group (NSG) for the created VM to use.  If not specified, a name will be generated.
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ImageReferenceId
+Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.
 
 ```yaml
 Type: System.String

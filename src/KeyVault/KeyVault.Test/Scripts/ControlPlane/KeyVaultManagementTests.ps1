@@ -153,6 +153,33 @@ function Test-CreateNewVault {
     }
 }
 
+<#
+.SYNOPSIS
+Tests setting public network access when creating a new vault.
+#>
+function Test-PublicNetworkAccessWhenCreateNewVault{
+    $rgName = getAssetName
+    $vaultName1 = getAssetName
+    $vaultName2 = getAssetName
+    $vaultName3 = getAssetName
+    $rgLocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
+    $vaultLocation = Get-Location "Microsoft.KeyVault" "vault" "West US"
+    New-AzResourceGroup -Name $rgName -Location $rgLocation
+    try {
+        # Test default behavior of PublicNetworkAccess
+        $vault1 = New-AzKeyVault -VaultName $vaultName1 -ResourceGroupName $rgName -Location $vaultLocation
+        Assert-AreEqual "Enabled" $vault1.PublicNetworkAccess
+        $vault2 = New-AzKeyVault -VaultName $vaultName2 -ResourceGroupName $rgName -Location $vaultLocation -PublicNetworkAccess Enabled
+        Assert-AreEqual "Enabled" $vault2.PublicNetworkAccess
+        $vault3 = New-AzKeyVault -VaultName $vaultName3 -ResourceGroupName $rgName -Location $vaultLocation -PublicNetworkAccess Disabled
+        Assert-AreEqual "Disabled" $vault3.PublicNetworkAccess
+    }
+    finally {
+        Remove-AzResourceGroup -Name $rgName -Force
+    }
+}
+
+
 #-------------------------------------------------------------------------------------
 
 #------------------------------Soft-delete--------------------------------------
@@ -812,6 +839,34 @@ function Test-UpdateKeyVault {
         # Clean Tags
         $vault = $vault | Update-AzKeyVault -Tag @{}
         Assert-AreEqual 0 $vault.Tags.Count "8. Tags should be empty"
+
+    }
+    finally {
+        $rg | Remove-AzResourceGroup -Force
+    }
+}
+
+function Test-UpdateKeyVaultWithPublicNetworkAccess {
+    $resourceGroupName = getAssetName
+    $resourceGroupLocation = Get-Location "Microsoft.Resources" "resourceGroups" "westus"
+    $vaultLocation = Get-Location "Microsoft.KeyVault" "vaults" "westus"
+
+    try {
+        $rg = New-AzResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation
+        $originVault = New-AzKeyVault -VaultName (getAssetName) -ResourceGroupName $resourceGroupName -Location $vaultLocation
+        Assert-AreEqual "Enabled" $originVault.PublicNetworkAccess "1. PublicNetworkAccess should default to Enabled"
+
+        # Then disable PublicNetworkAccess
+        $vault = $originVault | Update-AzKeyVault -PublicNetworkAccess Disabled
+        Assert-AreEqual "Disabled" $vault.PublicNetworkAccess "2. PublicNetworkAccess should be Disabled"
+
+        # Update other property, PublicNetworkAccess should not change
+        $vault = $vault | Update-AzKeyVault -Tag @{key = "value"}
+        Assert-AreEqual "Disabled" $vault.PublicNetworkAccess "3. PublicNetworkAccess should not change"
+
+        #Set EnableRbacAuthorization true
+        $vault = $vault | Update-AzKeyVault -PublicNetworkAccess Enabled
+        Assert-AreEqual "Enabled" $originVault.PublicNetworkAccess "4. EnableRbacAuthorization should be Enabled"
 
     }
     finally {

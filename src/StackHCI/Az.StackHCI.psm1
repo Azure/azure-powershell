@@ -3458,7 +3458,7 @@ param(
             }
             else 
             {
-                Write-Warning "Found additional IMDS configuration on guest $($VM.Name) adapter count=$($adapterCount)"
+                Write-Information ("Found additional IMDS configuration on guest $($VM.Name) adapter count=$($adapterCount)")
                 $vmAdapter = $foundAdapter[0]    
             }
 
@@ -3509,6 +3509,25 @@ param(
         }
         try
         {
+            $ignoreAdaptersParams = @{
+                Path = "HKLM:\system\currentcontrolset\services\clussvc\parameters"
+                Name = "ExcludeAdaptersByFriendlyName"
+            }
+            $propVal    = $VmSwitchParams.Name
+            $propExists = Get-ItemProperty @ignoreAdaptersParams -ErrorAction SilentlyContinue
+
+            if ($propExists)
+            {
+                $existingEntries = $propExists.ExcludeAdaptersByFriendlyName -Split ","
+                if ($existingEntries -notcontains $propVal)
+                {
+                    $existingEntries += $propVal
+                }
+                $propVal = $existingEntries -Join ","
+            }
+
+            New-ItemProperty @ignoreAdaptersParams -Value $propVal -Force -ErrorAction SilentlyContinue | Out-Null
+            
             Write-Information "Searching for previous IMDS switch"
             if ($VmSwitchParams.SwitchId)
             {
@@ -3545,6 +3564,32 @@ param(
 
             $hostNetAdapter     = $hostNetAdapter | Rename-NetAdapter -NewName $hostSwitch.Name -PassThru -ErrorAction SilentlyContinue
 
+            $hostBindings       = $hostNetAdapter | Get-NetAdapterBinding | Where-Object { $_.ComponentID -ne "ms_tcpip" }
+
+            $hostBindings | Disable-NetAdapterBinding
+
+            $retry = 2
+            while ($retry -ne 0)
+            {
+                $clusInterface = Get-ClusterNetworkInterface | Where-Object {$_.AdapterId -eq ($hostNetAdapter.DeviceId -replace "[{}]","")}
+
+                if (($clusInterface | Measure-Object).Count -eq 0)
+                {
+                    Write-Verbose "Retrying..."
+                    $retry--
+                    Start-Sleep 2
+                    continue
+                }
+
+                $notAttestationNet  = ($clusInterface.Network | Get-ClusterNetworkInterface | Where-Object {$_.Name -notlike "*$($hostNetAdapter.Name)*"})
+
+                if (($notAttestationNet | Measure-Object).Count -eq 0)
+                {
+                    ($clusInterface.Network).Role = 0
+                    break
+                }
+            }
+
             $HostAdapterVlanCommonParams = @{
                 VMNetworkAdapter    = $hostVMNetAdapter
             }
@@ -3574,6 +3619,99 @@ param(
     }
 
     return $ret.Return
+}
+
+function Set-AttestationFirewallRules{
+param(
+    [bool] $Enabled,
+    [hashtable] $SessionParams
+)
+    $sc = {
+        param([bool]$Enabled)
+
+        $TemplateFirewallRuleBlockCommon = @{
+            Group                = "Azure Stack HCI"
+            Enabled              = "True"
+            Profile              = "Any"
+            Action               = "Block"
+            EdgeTraversalPolicy  = "Block"
+            LooseSourceMapping   = $False
+            LocalOnlyMapping     = $False
+            LocalAddress         = "169.254.169.253"
+            RemoteAddress        = "Any"
+            RemotePort           = "Any"
+            IcmpType             = "Any"
+            Program              = "Any"
+            Service              = "Any"
+            InterfaceAlias       = "Any"
+            InterfaceType        = "Any"
+            LocalUser            = "Any"
+            RemoteUser           = "Any"
+            RemoteMachine        = "Any"
+            Authentication       = "NotRequired"
+            Encryption           = "NotRequired"
+        }
+        
+        $TemplateFirewallRuleBlockTcpOutgoing = @{
+            Name                 = "AzsHci-ImdsAttestation-Block-TCP-Out"
+            DisplayName          = "Azure Stack HCI IMDS Attestation (TCP-Out)"
+            Description          = "Outbound rule to block all traffic for Attestation interface [TCP]"
+            Direction            = "Outbound"
+            Protocol             = "TCP"
+            LocalPort            = "Any"
+        } + $TemplateFirewallRuleBlockCommon
+        
+        $TemplateFirewallRuleBlockTcpIncoming = @{
+            Name                 = "AzsHci-ImdsAttestation-Block-TCP-In"
+            DisplayName          = "Azure Stack HCI IMDS Attestation (TCP-In)"
+            Description          = "Inbound rule to block all traffic for Attestation interface [TCP]"
+            Direction            = "Inbound"
+            Protocol             = "TCP"
+            LocalPort            = @("1-79","81-65535")
+        } + $TemplateFirewallRuleBlockCommon
+        
+        $TemplateFirewallRuleBlockUdpOutgoing = @{
+            Name                 = "AzsHci-ImdsAttestation-Block-UDP-Out"
+            DisplayName          = "Azure Stack HCI IMDS Attestation (UDP-Out)"
+            Description          = "Outbound rule to block all traffic for Attestation interface [UDP]"
+            Direction            = "Outbound"
+            Protocol             = "UDP"
+            LocalPort            = "Any"
+        } + $TemplateFirewallRuleBlockCommon
+        
+        $TemplateFirewallRuleBlockUdpIncoming = @{
+            Name                 = "AzsHci-ImdsAttestation-Block-UDP-In"
+            DisplayName          = "Azure Stack HCI IMDS Attestation (UDP-In)"
+            Description          = "Inbound rule to block all traffic for Attestation interface [UDP]"
+            Direction            = "Inbound"
+            Protocol             = "UDP"
+            LocalPort            = "Any"
+        } + $TemplateFirewallRuleBlockCommon
+
+        $DisplayGroup = "@FirewallAPI.dll,-55001"
+
+        $firewallRules = @($TemplateFirewallRuleBlockTcpOutgoing, $TemplateFirewallRuleBlockTcpIncoming, $TemplateFirewallRuleBlockUdpOutgoing, $TemplateFirewallRuleBlockUdpIncoming)
+
+        foreach ($rule in $firewallRules)
+        {
+            $foundRule = Get-NetFirewallRule -Name ($rule.Name) -ErrorAction SilentlyContinue
+
+            if (!$foundRule)
+            {
+                New-NetFirewallRule @rule
+                $tmpRule = Get-NetFirewallRule -Name ($rule.Name)
+                $tmpRule.Group = $DisplayGroup
+                $tmpRule | Set-NetFirewallRule
+            }
+
+            Set-NetFirewallRule -Name ($rule.Name) -Enabled $($Enabled.ToString())
+        }
+
+        # Also set the embedded rule with OS
+        Set-NetFirewallRule -Name "AzsHci-ImdsAttestation-Allow-In" -Enabled $($Enabled.ToString())
+    }
+
+    $ret = Invoke-Command @SessionParams -ScriptBlock $sc -ArgumentList $Enabled
 }
 
 
@@ -3805,7 +3943,7 @@ param(
                             Invoke-Command @SessionParams -ScriptBlock { param($switchId); Set-AzureStackHCIAttestation -SwitchId $switchId } -ArgumentList $attestationSwitchId | Out-Null
                         }
 
-                        $firewallRule = Invoke-Command @SessionParams -ScriptBlock { param($ruleName) Enable-NetFirewallRule -Name $ruleName } -ArgumentList $TemplateHostImdsParams["NetFirewallRuleName"] 
+                        Set-AttestationFirewallRules -SessionParams $SessionParams -Enabled $True
 
                         $nodeAttestation = (Invoke-Command @SessionParams -ScriptBlock { Get-AzureStackHCIAttestation })
 
@@ -4043,6 +4181,7 @@ param(
                     
                     Invoke-Command @SessionParams -ScriptBlock { param($switchId); Set-AzureStackHCIAttestation -SwitchId $switchId } -ArgumentList ([Guid]::Empty) | Out-Null
     
+                    Set-AttestationFirewallRules -SessionParams $SessionParams -Enabled $False
                     $nodeAttestation = (Invoke-Command @SessionParams -ScriptBlock { Get-AzureStackHCIAttestation })
                     $disableImdsOutput = New-Object -TypeName PSObject
                     $disableImdsOutput | Add-Member -MemberType NoteProperty -Name ComputerName -Value ($nodeAttestation.ComputerName)

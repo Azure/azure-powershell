@@ -33,6 +33,7 @@ Cloud Service                         | `Az.CloudService`                       
 Cognitive Services                    | `Az.CognitiveServices`                  | [![CognitiveServices]][CognitiveServicesGallery]
 Communication                         | `Az.Communication`                      | [![Communication]][CommunicationGallery]
 Compute                               | `Az.Compute`                            | [![Compute]][ComputeGallery]
+ConfidentialLedger                    | `Az.ConfidentialLedger`                 | [![ConfidentialLedger]][ConfidentialLedgerGallery]
 Confluent                             | `Az.Confluent`                          | [![Confluent]][ConfluentGallery]
 Connected Kubernetes                  | `Az.ConnectedKubernetes`                | [![ConnectedKubernetes]][ConnectedKubernetesGallery]
 Connected Machine                     | `Az.ConnectedMachine`                   | [![ConnectedMachine]][ConnectedMachineGallery]
@@ -169,6 +170,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [CloudService]:               https://img.shields.io/powershellgallery/v/Az.CloudService.svg?style=flat-square&label=Az.CloudService
 [CognitiveServices]:          https://img.shields.io/powershellgallery/v/Az.CognitiveServices.svg?style=flat-square&label=Az.CognitiveServices
 [Compute]:                    https://img.shields.io/powershellgallery/v/Az.Compute.svg?style=flat-square&label=Az.Compute
+[ConfidentialLedger]:         https://img.shields.io/powershellgallery/v/Az.ConfidentialLedger.svg?style=flat-square&label=Az.ConfidentialLedger
 [Communication]:              https://img.shields.io/powershellgallery/v/Az.Communication.svg?style=flat-square&label=Az.Communication
 [Confluent]:                  https://img.shields.io/powershellgallery/v/Az.Confluent.svg?style=flat-square&label=Az.Confluent
 [ConnectedKubernetes]:        https://img.shields.io/powershellgallery/v/Az.ConnectedKubernetes.svg?style=flat-square&label=Az.ConnectedKubernetes
@@ -304,6 +306,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [CloudServiceGallery]:               https://www.powershellgallery.com/packages/Az.CloudService/
 [CognitiveServicesGallery]:          https://www.powershellgallery.com/packages/Az.CognitiveServices/
 [ComputeGallery]:                    https://www.powershellgallery.com/packages/Az.Compute/
+[ConfidentialLedgerGallery]:         https://www.powershellgallery.com/packages/Az.ConfidentialLedger/
 [CommunicationGallery]:              https://www.powershellgallery.com/packages/Az.Communication/
 [ConfluentGallery]:                  https://www.powershellgallery.com/packages/Az.Confluent/
 [ConnectedKubernetesGallery]:        https://www.powershellgallery.com/packages/Az.ConnectedKubernetes/
