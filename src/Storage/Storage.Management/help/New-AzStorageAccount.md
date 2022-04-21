@@ -207,10 +207,10 @@ This command creates a Storage account with EdgeZone as "microsoftlosangeles1" a
 ```powershell
 PS C:\> $account = New-AzStorageAccount -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -SkuName Premium_LRS -Location eastus -KeyExpirationPeriodInDay 5 -SasExpirationPeriod "1.12:05:06"
 
-PS C:\> $$account.KeyPolicy.KeyExpirationPeriodInDays
+PS C:\> $account.KeyPolicy.KeyExpirationPeriodInDays
 5
 
-PS C:\> $$account.SasPolicy.SasExpirationPeriod
+PS C:\> $account.SasPolicy.SasExpirationPeriod
 1.12:05:06
 ```
 

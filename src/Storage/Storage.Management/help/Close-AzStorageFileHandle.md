@@ -74,7 +74,7 @@ This command closes all file handles on a file.
 
 ### Example 2: Close all file handles which is opened 1 day ago on a file directory
 ```
-PS C:\> Get-AzStorageFileHandle -ShareName "mysharename" -Path 'dir1/dir2' -Recursive | ? {$_.OpenTime.DateTime.AddDays(1) -lt (Get-Date)} | Close-AzStorageFileHandle -ShareName "mysharename"
+PS C:\> Get-AzStorageFileHandle -ShareName "mysharename" -Path 'dir1/dir2' -Recursive | Where-Object {$_.OpenTime.DateTime.AddDays(1) -lt (Get-Date)} | Close-AzStorageFileHandle -ShareName "mysharename"
 ```
 
 This command lists all file handles on a file directory recursively, filters out the handles which are opened 1 day ago, and then closes them.
