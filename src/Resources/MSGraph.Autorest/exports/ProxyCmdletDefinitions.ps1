@@ -16,11 +16,9 @@
 
 <#
 .Synopsis
-Represents an Azure Active Directory object.
-The directoryObject type is the base type for many other directory entity types.
+Update entity in groups
 .Description
-Represents an Azure Active Directory object.
-The directoryObject type is the base type for many other directory entity types.
+Update entity in groups
 .Example
 PS C:\> Update-AzADGroup -ObjectId $objectid -Description $description
 
