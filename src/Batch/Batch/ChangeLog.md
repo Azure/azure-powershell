@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+## Version 3.2.0
+
 * Updated Az.Batch to use `Microsoft.Azure.Batch` SDK version 15.3.0
   - Add ability to assign user-assigned managed identities to `PSCloudPool`. These identities will be made available on each node in the pool, and can be used to access various resources.
   - Added `IdentityReference` property to the following models to support accessing resources via managed identity:

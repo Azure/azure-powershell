@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.1.0
 * Supported inline script resource (creation of script with content instead of sas token)
 * Added managed identity support to EventGrid
 * Added databaseRouting (Single/Multi) to all data connections
