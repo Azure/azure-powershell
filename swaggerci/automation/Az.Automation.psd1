@@ -1,0 +1,24 @@
+@{
+  GUID = '57aae4f0-ab69-40a0-9e74-8106fbac9d72'
+  RootModule = './Az.Automation.psm1'
+  ModuleVersion = '0.1.0'
+  CompatiblePSEditions = 'Core', 'Desktop'
+  Author = 'Microsoft Corporation'
+  CompanyName = 'Microsoft Corporation'
+  Copyright = 'Microsoft Corporation. All rights reserved.'
+  Description = 'Microsoft Azure PowerShell: Automation cmdlets'
+  PowerShellVersion = '5.1'
+  DotNetFrameworkVersion = '4.7.2'
+  RequiredAssemblies = './bin/Az.Automation.private.dll'
+  FormatsToProcess = './Az.Automation.format.ps1xml'
+  FunctionsToExport = 'Convert-AzAutomationGraphRunbookContent', 'Get-AzAutomationAccount', 'Get-AzAutomationActivity', 'Get-AzAutomationAgentRegistrationInformation', 'Get-AzAutomationCertificate', 'Get-AzAutomationConnection', 'Get-AzAutomationConnectionType', 'Get-AzAutomationCredential', 'Get-AzAutomationDscCompilationJob', 'Get-AzAutomationDscCompilationJobStream', 'Get-AzAutomationDscConfiguration', 'Get-AzAutomationDscConfigurationContent', 'Get-AzAutomationDscNode', 'Get-AzAutomationDscNodeConfiguration', 'Get-AzAutomationField', 'Get-AzAutomationHybridRunbookWorker', 'Get-AzAutomationHybridRunbookWorkerGroup', 'Get-AzAutomationJob', 'Get-AzAutomationJobOutput', 'Get-AzAutomationJobRunbookContent', 'Get-AzAutomationJobSchedule', 'Get-AzAutomationJobStream', 'Get-AzAutomationKey', 'Get-AzAutomationLinkedWorkspace', 'Get-AzAutomationModule', 'Get-AzAutomationNodeCountInformation', 'Get-AzAutomationNodeReport', 'Get-AzAutomationNodeReportContent', 'Get-AzAutomationObjectDataTypeField', 'Get-AzAutomationPrivateEndpointConnection', 'Get-AzAutomationPython2Package', 'Get-AzAutomationRunbook', 'Get-AzAutomationRunbookContent', 'Get-AzAutomationRunbookDraft', 'Get-AzAutomationRunbookDraftContent', 'Get-AzAutomationSchedule', 'Get-AzAutomationSoftwareUpdateConfiguration', 'Get-AzAutomationSoftwareUpdateConfigurationMachineRun', 'Get-AzAutomationSoftwareUpdateConfigurationRun', 'Get-AzAutomationSourceControl', 'Get-AzAutomationSourceControlSyncJob', 'Get-AzAutomationSourceControlSyncJobStream', 'Get-AzAutomationStatistics', 'Get-AzAutomationTestJob', 'Get-AzAutomationTestJobStream', 'Get-AzAutomationUsage', 'Get-AzAutomationVariable', 'Get-AzAutomationWatcher', 'Get-AzAutomationWebhook', 'Invoke-AzAutomationPrivateLinkResource', 'Move-AzAutomationHybridRunbookWorker', 'New-AzAutomationAccount', 'New-AzAutomationAgentRegistrationInformationKey', 'New-AzAutomationCertificate', 'New-AzAutomationConnection', 'New-AzAutomationConnectionType', 'New-AzAutomationCredential', 'New-AzAutomationDscCompilationJob', 'New-AzAutomationDscNodeConfiguration', 'New-AzAutomationHybridRunbookWorker', 'New-AzAutomationHybridRunbookWorkerGroup', 'New-AzAutomationJob', 'New-AzAutomationJobSchedule', 'New-AzAutomationModule', 'New-AzAutomationPrivateEndpointConnection', 'New-AzAutomationPython2Package', 'New-AzAutomationRunbook', 'New-AzAutomationSchedule', 'New-AzAutomationSoftwareUpdateConfiguration', 'New-AzAutomationSourceControl', 'New-AzAutomationSourceControlSyncJob', 'New-AzAutomationTestJob', 'New-AzAutomationVariable', 'New-AzAutomationWatcher', 'New-AzAutomationWebhook', 'New-AzAutomationWebhookUri', 'Publish-AzAutomationRunbook', 'Remove-AzAutomationAccount', 'Remove-AzAutomationCertificate', 'Remove-AzAutomationConnection', 'Remove-AzAutomationConnectionType', 'Remove-AzAutomationCredential', 'Remove-AzAutomationDscConfiguration', 'Remove-AzAutomationDscNode', 'Remove-AzAutomationDscNodeConfiguration', 'Remove-AzAutomationHybridRunbookWorker', 'Remove-AzAutomationHybridRunbookWorkerGroup', 'Remove-AzAutomationJobSchedule', 'Remove-AzAutomationModule', 'Remove-AzAutomationPrivateEndpointConnection', 'Remove-AzAutomationPython2Package', 'Remove-AzAutomationRunbook', 'Remove-AzAutomationSchedule', 'Remove-AzAutomationSoftwareUpdateConfiguration', 'Remove-AzAutomationSourceControl', 'Remove-AzAutomationVariable', 'Remove-AzAutomationWatcher', 'Remove-AzAutomationWebhook', 'Resume-AzAutomationJob', 'Resume-AzAutomationTestJob', 'Start-AzAutomationWatcher', 'Stop-AzAutomationJob', 'Stop-AzAutomationTestJob', 'Stop-AzAutomationWatcher', 'Suspend-AzAutomationJob', 'Suspend-AzAutomationTestJob', 'Undo-AzAutomationRunbookDraftEdit', 'Update-AzAutomationAccount', 'Update-AzAutomationCertificate', 'Update-AzAutomationConnection', 'Update-AzAutomationCredential', 'Update-AzAutomationDscNode', 'Update-AzAutomationHybridRunbookWorkerGroup', 'Update-AzAutomationModule', 'Update-AzAutomationPython2Package', 'Update-AzAutomationRunbook', 'Update-AzAutomationSchedule', 'Update-AzAutomationSourceControl', 'Update-AzAutomationVariable', 'Update-AzAutomationWatcher', 'Update-AzAutomationWebhook', '*'
+  AliasesToExport = '*'
+  PrivateData = @{
+    PSData = @{
+      Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'Automation'
+      LicenseUri = 'https://aka.ms/azps-license'
+      ProjectUri = 'https://github.com/Azure/azure-powershell'
+      ReleaseNotes = ''
+    }
+  }
+}
