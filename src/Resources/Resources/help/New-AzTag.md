@@ -163,7 +163,7 @@ The commands in this example create and use a predefined tag.
 
 ```powershell
 $Tags = @{"tagKey1"="tagValue1"; "tagKey2"="tagValue2"}
-New-AzTag -ResourceId /subscriptions/xxxx-xxxx-xxxx-xxxx-xxxx -Tag $Tags
+New-AzTag -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -Tag $Tags
 ```
 
 ```output
@@ -183,7 +183,7 @@ This command creates or updates the entire set of tags on the subscription with 
 
 ```powershell
 $Tags = @{"Dept"="Finance"; "Status"="Normal"}
-New-AzTag -ResourceId /subscriptions/xxxx-xxxx-xxxx-xxxx-xxxx/resourcegroups/testrg/providers/Microsoft.Sql/servers/Server1 -Tag $Tags
+New-AzTag -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/testrg/providers/Microsoft.Sql/servers/Server1 -Tag $Tags
 ```
 
 ```output
