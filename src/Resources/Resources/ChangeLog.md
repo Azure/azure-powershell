@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 5.6.0
 * Fixed redundant quotes in list pagination [#17667]
 * Added cmdlet `Update-AzADGroup` [#17514]
 * Updated API version to beta for group member related cmdlet to allow service principal to be add, get and delete from group [#16698]

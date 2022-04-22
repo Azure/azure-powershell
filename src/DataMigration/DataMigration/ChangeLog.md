@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.10.0
 * Added support for migrating SQL Server databases to Azure SQL DB
 * Used `System.Security.SecureString` for secrets and passwords
 
