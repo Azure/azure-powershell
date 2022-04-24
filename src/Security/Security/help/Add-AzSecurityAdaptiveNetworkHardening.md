@@ -12,9 +12,12 @@ Enforces the given rules on the NSG(s) listed in the request
 
 ## SYNTAX
 
-### ResourceGroupLevelResource (Default)
 ```
-Add-AzSecurityAdaptiveNetworkHardening [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Add-AzSecurityAdaptiveNetworkHardening -AdaptiveNetworkHardeningResourceName <String>
+ -ResourceGroupName <String> -ResourceName <String> -ResourceNamespace <String> -ResourceType <String>
+ -SubscriptionId <String> -Rule <PSSecurityAdaptiveNetworkHardeningsRule[]>
+ -NetworkSecurityGroup <System.Collections.Generic.List`1[System.String]> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,9 +34,25 @@ Add-AzSecurityAdaptiveNetworkHardening -AdaptiveNetworkHardeningResourceName def
 ```output
 True
 ```
+
 Enforces the given rules on the NSG(s) listed in the request
 
 ## PARAMETERS
+
+### -AdaptiveNetworkHardeningResourceName
+The name of the Adaptive Network Hardening resource.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -50,117 +69,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AdaptiveNetworkHardeningResourceName
-The name of the Adaptive Network Hardening resource.
+### -NetworkSecurityGroup
+The Azure resource IDs of the effective network security groups
 
 ```yaml
-Type: System.String
-Parameter Sets: AdaptiveNetworkHardeningResourceName
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Resource group name.
-
-```yaml
-Type: System.String
-Parameter Sets: ResourceGroupName
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceName
-Resource name.
-
-```yaml
-Type: System.String
-Parameter Sets: ResourceName
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceNamespace
-The Namespace of the resource.
-
-```yaml
-Type: System.String
-Parameter Sets: ResourceNamespace
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceType
-The type of the resource.
-
-```yaml
-Type: System.String
-Parameter Sets: ResourceType
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SubscriptionId
-Azure subscription ID.
-
-```yaml
-Type: System.String
-Parameter Sets: SubscriptionId
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Rules
-The rules to enforce.
-
-```yaml
-Type: Microsoft.Azure.Commands.SecurityCenter.Models.AdaptiveNetworkHardenings.PSSecurityAdaptiveNetworkHardeningsRule
-Parameter Sets: Rules
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -NetworkSecurityGroups
-The Azure resource IDs of the effective network security groups that will be updated with the created security rules from the Adaptive Network Hardening rules.
-
-```yaml
-Type: System.Collections.Generic.List<System.String>
-Parameter Sets: NetworkSecurityGroups
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -185,8 +99,128 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceGroupName
+Resource group name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceName
+Resource name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceNamespace
+The Namespace of the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceType
+The type of the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Rule
+Rule to enforce
+
+```yaml
+Type: Microsoft.Azure.Commands.SecurityCenter.Models.AdaptiveNetworkHardening.PSSecurityAdaptiveNetworkHardeningsRule[]
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Azure subscription ID.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.1.1
 * Updated firewall rules for Attestation network to block all other traffic
 * Updated cluster to ignore Attestation network
 

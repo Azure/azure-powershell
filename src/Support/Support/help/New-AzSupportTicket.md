@@ -115,7 +115,7 @@ For detailed documentation on how to construct Payload for various quota types, 
 
 ## EXAMPLES
 
-### Example 1: Create a Billing or Subscription Management support ticket. Use Get-AzSupportService and Get-AzSupportProblemClassification to retrieve correct GUIDs for Billing or Subscription Management problem classification for which you want to request support 
+### Example 1: Create a Billing or Subscription Management support ticket. Use Get-AzSupportService and Get-AzSupportProblemClassification to retrieve correct GUIDs for Billing or Subscription Management problem classification for which you want to request support
 ```powershell
 New-AzSupportTicket -Name "test1" -Title "Test" -Description "Test" -Severity "minimal" -ProblemClassificationId "/providers/Microsoft.Support/services/{billing_service_guid}/problemClassifications/{problemClassification_guid}" -CustomerContactDetail @{FirstName = "first" ; LastName = "last" ; PreferredTimeZone = "pacific standard time" ; PreferredSupportLanguage = "en-us" ; Country = "USA" ; PreferredContactMethod = "Email" ; PrimaryEmailAddress = "user@contoso.com"}
 ```
@@ -125,7 +125,7 @@ Name  Title SupportTicketId Severity ServiceDisplayName Status CreatedDate
 test1 Test  150010521000317 Minimal  Billing            Open   2/5/2020 1:33:53 AM
 ```
 
-### Example 2: Create a technical support ticket for Virtual Machine for Windows resource. Use Get-AzSupportService and Get-AzSupportProblemClassification to retrieve correct GUIDs for Virtual Machine for Windows problem classification for which you want to request support 
+### Example 2: Create a technical support ticket for Virtual Machine for Windows resource. Use Get-AzSupportService and Get-AzSupportProblemClassification to retrieve correct GUIDs for Virtual Machine for Windows problem classification for which you want to request support
 ```powershell
 New-AzSupportTicket -Name "test1" -Title "Test" -Description "Test" -Severity "minimal" -ProblemClassificationId "/providers/Microsoft.Support/services/{vm_windows_service_guid}/problemClassifications/{problemClassification_guid}" -TechnicalTicketResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM" -CustomerContactDetail @{FirstName = "first" ; LastName = "last" ; PreferredTimeZone = "pacific standard time" ; PreferredSupportLanguage = "en-us" ; Country = "USA" ; PreferredContactMethod = "Email" ; PrimaryEmailAddress = "user@contoso.com"}
 ```
@@ -265,9 +265,9 @@ Name  Title SupportTicketId Severity ServiceDisplayName                       St
 test1 Test  150010521000317 Minimal  Service and subscription limits (quotas) Open   2/5/2020 1:33:53 AM
 ```
 
-### Example 16: Create a support ticket by specifying individual customer contact parameters instead of CustomerContactDetail object. 
+### Example 16: Create a support ticket by specifying individual customer contact parameters instead of CustomerContactDetail object.
 ```powershell
-New-AzSupportTicket -Name "test1" -Title "Test" -Description "Test" -Severity "minimal" -ProblemClassificationId "/providers/Microsoft.Support/services/{billing_service_guid}/problemClassifications/{problemClassification_guid}" -CustomerFirstName "first" -CustomerLastName "last" -CustomerPreferredTimeZone "pacific standard time" -CustomerPreferredSupportLanguage "en-us" -CustomerCountry = "USA" -PreferredContactMethod "Email" -CustomerPrimaryEmailAddress "user@contoso.com"
+New-AzSupportTicket -Name "test1" -Title "Test" -Description "Test" -Severity "minimal" -ProblemClassificationId "/providers/Microsoft.Support/services/{billing_service_guid}/problemClassifications/{problemClassification_guid}" -CustomerFirstName "first" -CustomerLastName "last" -CustomerPreferredTimeZone "pacific standard time" -CustomerPreferredSupportLanguage "en-us" -CustomerCountry "USA" -PreferredContactMethod "Email" -CustomerPrimaryEmailAddress "user@contoso.com"
 ```
 ```output
 Name  Title SupportTicketId Severity ServiceDisplayName Status CreatedDate
@@ -275,9 +275,9 @@ Name  Title SupportTicketId Severity ServiceDisplayName Status CreatedDate
 test1 Test  150010521000317 Minimal  Billing            Open   2/5/2020 1:33:53 AM
 ```
 
-### Example 17: Create a support ticket with request for 24 x 7 response from Azure. 
+### Example 17: Create a support ticket with request for 24 x 7 response from Azure.
 ```powershell
-New-AzSupportTicket -Name "test1" -Title "Test" -Description "Test" -Severity "critical" -ProblemClassificationId "/providers/Microsoft.Support/services/{billing_service_guid}/problemClassifications/{problemClassification_guid}" -CustomerFirstName "first" -CustomerLastName "last" -CustomerPreferredTimeZone "pacific standard time" -CustomerPreferredSupportLanguage "en-us" -CustomerCountry = "USA" -PreferredContactMethod "Email" -CustomerPrimaryEmailAddress "user@contoso.com" -Require24X7Response 
+New-AzSupportTicket -Name "test1" -Title "Test" -Description "Test" -Severity "critical" -ProblemClassificationId "/providers/Microsoft.Support/services/{billing_service_guid}/problemClassifications/{problemClassification_guid}" -CustomerFirstName "first" -CustomerLastName "last" -CustomerPreferredTimeZone "pacific standard time" -CustomerPreferredSupportLanguage "en-us" -CustomerCountry "USA" -PreferredContactMethod "Email" -CustomerPrimaryEmailAddress "user@contoso.com" -Require24X7Response
 ```
 ```output
 Name  Title SupportTicketId Severity ServiceDisplayName Status CreatedDate
@@ -285,14 +285,14 @@ Name  Title SupportTicketId Severity ServiceDisplayName Status CreatedDate
 test1 Test  150010521000317 Critical  Billing            Open   2/5/2020 1:33:53 AM
 ```
 
-### Example 18: Create a support ticket on behalf of your customer if you are a Cloud Solution Provider (CSP). CSP should first login into their tenant, and then login into customer's tenant as shown in the example below. They must then use -CSPHomeTenantId parameter to specify their home tenant id at the time of creating a support ticket.  
+### Example 18: Create a support ticket on behalf of your customer if you are a Cloud Solution Provider (CSP). CSP should first login into their tenant, and then login into customer's tenant as shown in the example below. They must then use -CSPHomeTenantId parameter to specify their home tenant id at the time of creating a support ticket.
 ```powershell
 
-Login-AzAccount
+Connect-AzAccount
 
-Login-AzAccount -TenantId {customer_tenant_id}
+Connect-AzAccount -TenantId "customer_tenant_id"
 
-New-AzSupportTicket -Name "test1" -Title "Test" -Description "Test" -Severity "minimal" -ProblemClassificationId "/providers/Microsoft.Support/services/{billing_service_guid}/problemClassifications/{problemClassification_guid}" -CustomerFirstName "first" -CustomerLastName "last" -CustomerPreferredTimeZone "pacific standard time" -CustomerPreferredSupportLanguage "en-us" -CustomerCountry = "USA" -PreferredContactMethod "Email" -CustomerPrimaryEmailAddress "user@contoso.com" -CSPHomeTenantId {csp_home_tenant_id} 
+New-AzSupportTicket -Name "test1" -Title "Test" -Description "Test" -Severity "minimal" -ProblemClassificationId "/providers/Microsoft.Support/services/{billing_service_guid}/problemClassifications/{problemClassification_guid}" -CustomerFirstName "first" -CustomerLastName "last" -CustomerPreferredTimeZone "pacific standard time" -CustomerPreferredSupportLanguage "en-us" -CustomerCountry "USA" -PreferredContactMethod "Email" -CustomerPrimaryEmailAddress "user@contoso.com" -CSPHomeTenantId "csp_home_tenant_id"
 ```
 ```output
 Name  Title SupportTicketId Severity ServiceDisplayName Status CreatedDate

@@ -276,6 +276,10 @@
                 <Label>BaseBlob.TierToArchive.DaysAfterLastAccessTimeGreaterThan</Label>
               </ListItem>
               <ListItem>
+                <ScriptBlock>$_.BaseBlob.TierToArchive.DaysAfterLastTierChangeGreaterThan</ScriptBlock>
+                <Label>BaseBlob.TierToArchive.DaysAfterLastTierChangeGreaterThan</Label>
+              </ListItem>
+              <ListItem>
                 <ScriptBlock>$_.BaseBlob.Delete.DaysAfterModificationGreaterThan</ScriptBlock>
                 <Label>BaseBlob.Delete.DaysAfterModificationGreaterThan</Label>
               </ListItem>
@@ -292,6 +296,10 @@
                 <Label>Snapshot.TierToArchive.DaysAfterCreationGreaterThan</Label>
               </ListItem>
               <ListItem>
+                <ScriptBlock>$_.Snapshot.TierToArchive.DaysAfterLastTierChangeGreaterThan</ScriptBlock>
+                <Label>Snapshot.TierToArchive.DaysAfterLastTierChangeGreaterThan</Label>
+              </ListItem>
+              <ListItem>
                 <ScriptBlock>$_.Snapshot.Delete.DaysAfterCreationGreaterThan</ScriptBlock>
                 <Label>Snapshot.Delete.DaysAfterCreationGreaterThan</Label>
               </ListItem>
@@ -302,6 +310,10 @@
               <ListItem>
                 <ScriptBlock>$_.Version.TierToArchive.DaysAfterCreationGreaterThan</ScriptBlock>
                 <Label>Version.TierToArchive.DaysAfterCreationGreaterThan</Label>
+              </ListItem>
+              <ListItem>
+                <ScriptBlock>$_.Version.TierToArchive.DaysAfterLastTierChangeGreaterThan</ScriptBlock>
+                <Label>Version.TierToArchive.DaysAfterLastTierChangeGreaterThan</Label>
               </ListItem>
               <ListItem>
                 <ScriptBlock>$_.Version.Delete.DaysAfterCreationGreaterThan</ScriptBlock>
@@ -416,6 +428,10 @@
               <ListItem>
                 <Label>DeleteRetentionPolicy.Days</Label>
                 <ScriptBlock>$_.DeleteRetentionPolicy.Days</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>DeleteRetentionPolicy.AllowPermanentDelete</Label>
+                <ScriptBlock>$_.DeleteRetentionPolicy.AllowPermanentDelete</ScriptBlock>
               </ListItem>
               <ListItem>
                 <Label>ContainerDeleteRetentionPolicy.Enabled</Label>
