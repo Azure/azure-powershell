@@ -33,21 +33,8 @@ namespace Microsoft.Azure.Commands.Advisor.Test.ScenarioTests
                         {"Microsoft.Features", null},
                         {"Microsoft.Authorization", null}
                     }
-                ).WithManagementClients(
-                    GetResourceGraphClient,
-                    GetSubscriptionClient
                 )
                 .Build();
-        }
-
-        private static IAdvisorManagementClient GetResourceGraphClient(MockContext context)
-        {
-            return context.GetServiceClient<AdvisorManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        private static SubscriptionClient GetSubscriptionClient(MockContext context)
-        {
-            return context.GetServiceClient<SubscriptionClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }
