@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             Func<string, RestAzureNS.IPage<ProtectionPolicyResource>> listNextAsync =
                 nextLink => BmsAdapter.Client.BackupPolicies.ListNextWithHttpMessagesAsync(
                     nextLink,
-                    cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
+                    cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;            
 
             return HelperUtils.GetPagedList(listAsync, listNextAsync);
         }

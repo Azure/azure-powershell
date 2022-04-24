@@ -24,7 +24,7 @@ The directoryObject type is the base type for many other directory entity types.
 .Example
 Remove-AzADServicePrincipal -DisplayName $name
 .Example
-Get-AzADServicePrincipal -Application $id | Remove-AzADServicePrincipal
+Get-AzADServicePrincipal -ApplicationId $id | Remove-AzADServicePrincipal
 
 .Outputs
 System.Boolean
@@ -109,6 +109,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Delete = 'Az.MSGraph.private\Remove-AzADServicePrincipal_Delete';
         }
@@ -118,6 +119,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -126,15 +128,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

@@ -12,10 +12,12 @@ Gets a list of Adaptive Network Hardenings resources in scope of an extended res
 
 ## SYNTAX
 
-### ResourceGroupLevelResource
 ```
-Get-AzSecurityAdaptiveNetworkHardening [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSecurityAdaptiveNetworkHardening [-AdaptiveNetworkHardeningResourceName <String>]
+ -ResourceGroupName <String> -ResourceName <String> -ResourceNamespace <String> -ResourceType <String>
+ [-SubscriptionId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
+
 ## DESCRIPTION
 Adaptive Network Hardenings are automatically calculated by Azure Security Center, use this cmdlet to get a list of Adaptive Network Hardenings resources in scope of an extended resource.
 
@@ -44,9 +46,25 @@ Id                                                                              
 --                                                                                                                                                                                                                      ----    ----                                         ----------
 /subscriptions/3eeab341-f466-499c-a8be-85427e154baf7612f869/resourceGroups/myService1/providers/Microsoft.Compute/virtualMachines/myResource1/providers/Microsoft.Security/adaptiveNetworkHardenings/default default Microsoft.Security/adaptiveNetworkHardenings Microsoft.Azure.Commands.SecurityCenter.Models…
 ```
+
 Get  a single Adaptive Network Hardenings resource
 
 ## PARAMETERS
+
+### -AdaptiveNetworkHardeningResourceName
+The name of the Adaptive Network Hardening resource.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -68,7 +86,7 @@ Resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceGroupName
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -83,7 +101,7 @@ Resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceName
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -98,7 +116,7 @@ The Namespace of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceNamespace
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -113,25 +131,10 @@ The type of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceType
+Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AdaptiveNetworkHardeningResourceName
-The name of the Adaptive Network Hardening resource.
-
-```yaml
-Type: System.String
-Parameter Sets: AdaptiveNetworkHardeningResourceName
-Aliases:
-
-Required: false
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -143,17 +146,18 @@ Azure subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: SubscriptionId
+Parameter Sets: (All)
 Aliases:
 
-Required: false
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

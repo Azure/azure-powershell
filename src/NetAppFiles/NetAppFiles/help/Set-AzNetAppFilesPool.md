@@ -40,7 +40,7 @@ The **Set-AzNetAppFilesPool** cmdlet modifies an ANF Capacity Pool.
 
 ### Example 1
 ```powershell
-Set-AzNetAppFilesPool -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -Name "MyAnfPool" -l "westus2" -PoolSize 4398046511104 -ServiceLevel "Premium" -QosType "Auto"
+Set-AzNetAppFilesPool -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -Name "MyAnfPool" -Location "westus2" -PoolSize 4398046511104 -ServiceLevel "Premium" -QosType "Auto"
 ```
 
 This command updates the new ANF pool "MyAnfPool" within the account "MyAnfAccount".

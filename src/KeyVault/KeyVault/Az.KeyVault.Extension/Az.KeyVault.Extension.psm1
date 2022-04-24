@@ -40,8 +40,6 @@ function Get-Secret
         [hashtable] $AdditionalParameters
     )
 
-    Check-SubscriptionLogIn $AdditionalParameters.SubscriptionId $AdditionalParameters.AZKVaultName
-
     $secret = Az.KeyVault\Get-AzKeyVaultSecret -Name $Name -VaultName $AdditionalParameters.AZKVaultName
     if ($null -ne $secret)
     {
@@ -139,8 +137,6 @@ function Set-Secret
         [string] $VaultName,
         [hashtable] $AdditionalParameters
     )
-
-    Check-SubscriptionLogIn $AdditionalParameters.SubscriptionId $AdditionalParameters.AZKVaultName
 
     switch ($Secret.GetType().Name) {
         'Byte[]' 
@@ -242,8 +238,6 @@ function Remove-Secret
         [hashtable] $AdditionalParameters
     )
 
-    Check-SubscriptionLogIn $AdditionalParameters.SubscriptionId $AdditionalParameters.AZKVaultName
-
     $null = Az.KeyVault\Remove-AzKeyVaultSecret -Name $Name -VaultName $AdditionalParameters.AZKVaultName -Force
     return $?
 }
@@ -256,9 +250,7 @@ function Get-SecretInfo
         [hashtable] $AdditionalParameters
     )
    
-    Check-SubscriptionLogIn $AdditionalParameters.SubscriptionId $AdditionalParameters.AZKVaultName
-
-       if ([string]::IsNullOrEmpty($Filter))
+    if ([string]::IsNullOrEmpty($Filter))
     {
         $Filter = "*"
     }

@@ -79,6 +79,10 @@
             <Label>Name</Label>
             <Width>20</Width>
           </TableColumnHeader>
+			<TableColumnHeader>
+				<Label>PolicySubType</Label>
+				<Width>20</Width>
+			</TableColumnHeader>
           <TableColumnHeader>
             <Label>WorkloadType</Label>
             <Width>18</Width>
@@ -88,12 +92,32 @@
             <Width>20</Width>
           </TableColumnHeader>		  
           <TableColumnHeader>
+            <Label>ScheduleFrequency</Label>
+            <Width>20</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>BackupTime (UTC)</Label>
             <Width>25</Width>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>WindowStartTime</Label>
+            <Width>25</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Interval (Hours)</Label>
+            <Width>8</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>WindowDuration (Hours)</Label>
+            <Width>14</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TimeZone</Label>
+            <Width>25</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>DaysOfWeek</Label>
-            <Width>40</Width>
+            <Width>20</Width>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -102,6 +126,9 @@
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
+				<TableColumnItem>
+					<PropertyName>PolicySubType</PropertyName>
+				</TableColumnItem>
               <TableColumnItem>
                 <PropertyName>WorkloadType</PropertyName>
               </TableColumnItem>
@@ -109,7 +136,22 @@
                 <PropertyName>BackupManagementType</PropertyName>
               </TableColumnItem>			  
               <TableColumnItem>
+                <ScriptBlock>$_.SchedulePolicy.ScheduleRunFrequency</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
                 <ScriptBlock>$_.SchedulePolicy.ScheduleRunTimes</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.SchedulePolicy.HourlySchedule.WindowStartTime</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.SchedulePolicy.HourlySchedule.Interval</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.SchedulePolicy.HourlySchedule.WindowDuration</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.SchedulePolicy.ScheduleRunTimeZone</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>$_.SchedulePolicy.ScheduleRunDays</ScriptBlock>

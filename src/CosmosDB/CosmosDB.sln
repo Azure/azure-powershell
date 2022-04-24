@@ -1,4 +1,4 @@
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32126.315
 MinimumVisualStudioVersion = 10.0.40219.1
@@ -32,6 +32,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tags", "..\Resources\Tags\Tags.csproj", "{6BD4D521-DAFB-472B-A803-81F053AB1396}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeyVault", "..\KeyVault\KeyVault\KeyVault.csproj", "{1C67BD60-FE24-482C-BE67-E400FCF0BAC2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Authorization", "..\Resources\Authorization.Autorest\Az.Authorization.csproj", "{AC2D75A0-C617-4198-8DBF-051318F0B18A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -143,6 +145,14 @@ Global
 		{1C67BD60-FE24-482C-BE67-E400FCF0BAC2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1C67BD60-FE24-482C-BE67-E400FCF0BAC2}.Release|x64.ActiveCfg = Release|Any CPU
 		{1C67BD60-FE24-482C-BE67-E400FCF0BAC2}.Release|x64.Build.0 = Release|Any CPU
+		{AC2D75A0-C617-4198-8DBF-051318F0B18A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC2D75A0-C617-4198-8DBF-051318F0B18A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC2D75A0-C617-4198-8DBF-051318F0B18A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{AC2D75A0-C617-4198-8DBF-051318F0B18A}.Debug|x64.Build.0 = Debug|Any CPU
+		{AC2D75A0-C617-4198-8DBF-051318F0B18A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC2D75A0-C617-4198-8DBF-051318F0B18A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC2D75A0-C617-4198-8DBF-051318F0B18A}.Release|x64.ActiveCfg = Release|Any CPU
+		{AC2D75A0-C617-4198-8DBF-051318F0B18A}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

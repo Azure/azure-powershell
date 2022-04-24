@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
     /// <summary>
     /// this commandlet will let you Create Eventhub namespace.
     /// </summary>
-    [CmdletOutputBreakingChange(typeof(PSNamespaceAttributes), DeprecatedOutputProperties = new string[] {"ResourceGroup"}, NewOutputProperties = new string[] { "ResourceGroupName", "Tags"})]
+    [CmdletOutputBreakingChange(typeof(PSNamespaceAttributes), DeprecatedOutputProperties = new string[] {"ResourceGroup", "Identity"}, NewOutputProperties = new string[] { "ResourceGroupName", "Tags", "IdentityType"})]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubNamespace", SupportsShouldProcess = true, DefaultParameterSetName = NamespaceParameterSet), OutputType(typeof(PSNamespaceAttributes))]
     public class NewAzureEventHubNamespace : AzureEventHubsCmdletBase
     {

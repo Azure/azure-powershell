@@ -25,7 +25,7 @@ The **New-AzMediaServiceStorageConfig** cmdlet creates a storage account configu
 
 ### Example 1: Create a storage account configuration for the media service cmdlets
 ```powershell
-$StorageAccount = New-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name "Storage1" -Location "East US" -Type "Standard_GRS"
+$StorageAccount = New-AzStorageAccount -ResourceGroupName "ResourceGroup001" -Name "Storage1" -Location "East US" -Type "Standard_GRS"
 
 New-AzMediaServiceStorageConfig -StorageAccountId $StorageAccount.Id -IsPrimary
 ```

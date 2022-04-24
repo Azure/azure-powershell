@@ -68,12 +68,13 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         {
             BatchController controller = BatchController.NewInstance;
             BatchAccountContext context = null;
+            string poolId = "testPool";
             string jobId = "testJobCompletesWhenTaskFails";
             string taskId = "taskId-1";
             PSCloudJob completedJob = null;
             controller.RunPsTestWorkflow(
                 _logger,
-                () => { return new string[] { string.Format("IfJobSetsAutoFailure-ItCompletesWhenAnyTaskFails '{0}' '{1}'", jobId, taskId) }; },
+                () => { return new string[] { string.Format("IfJobSetsAutoFailure-ItCompletesWhenAnyTaskFails '{0}' '{1}' '{2}'", poolId, jobId, taskId) }; },
                 null,
                 () =>
                 {

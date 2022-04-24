@@ -51,7 +51,7 @@ Show all modules connection string of a target IoT device in an Iot Hub.
 
 ### Example 2
 ```powershell
-Get-AzIotHubMCS -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1" -ModuleId "module1" -KeyType secondary
+Get-AzIotHubModuleConnectionString -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1" -ModuleId "module1" -KeyType secondary
 ```
 
 ```output

@@ -69,7 +69,7 @@ This command gets a monitor log analytics solution by resource id.
 
 ### Example 3: Get a monitor log analytics solution by object
 ```powershell
-$monitor = New-AzMonitorLogAnalyticsSolution -ResourceGroupName azureps-monitor -Name 'Containers(azureps-monitor)'
+$monitor = New-AzMonitorLogAnalyticsSolution -ResourceGroupName azureps-monitor -Type "Microsoft.OperationsManagement/solutions" -Location "West US 2" -WorkspaceResourceId workspaceResourceId
 Get-AzMonitorLogAnalyticsSolution -InputObject $monitor
 ```
 

@@ -20,13 +20,9 @@ Description for Creates a backup of an app.
 .Description
 Description for Creates a backup of an app.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupRequest
@@ -337,13 +333,9 @@ Get the API Key for this key id.
 .Description
 Get the API Key for this key id.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
@@ -553,13 +545,9 @@ Returns an Application Insights component.
 .Description
 Returns an Application Insights component.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
@@ -763,109 +751,11 @@ Description for Get a list of available geographical regions.
 .Description
 Description for Get a list of available geographical regions.
 .Example
-PS C:\> Get-AzFunctionAppAvailableLocation
-
-Name
-----
-Central US
-North Europe
-West Europe
-Southeast Asia
-East Asia
-West US
-East US
-Japan West
-Japan East
-East US 2
-North Central US
-South Central US
-Brazil South
-Australia East
-Australia Southeast
-East Asia (Stage)
-West India
-South India
-Canada Central
-West US 2
-UK West
-UK South
-East US 2 EUAP
-Central US EUAP
-Korea Central
-France Central
-Australia Central 2
-Australia Central
-Germany West Central
-Norway East
+Get-AzFunctionAppAvailableLocation
 .Example
-PS C:\> Get-AzFunctionAppAvailableLocation -PlanType Premium -OSType Linux
-
-Name
-----
-Central US
-North Europe
-West Europe
-Southeast Asia
-East Asia
-West US
-East US
-Japan West
-Japan East
-East US 2
-North Central US
-South Central US
-Brazil South
-Australia East
-Australia Southeast
-West India
-Canada Central
-West Central US
-West US 2
-UK West
-UK South
-Central US EUAP
-Korea Central
-France Central
-Norway East
+Get-AzFunctionAppAvailableLocation -PlanType Premium -OSType Linux
 .Example
-PS C:\> Get-AzFunctionAppAvailableLocation -PlanType Consumption -OSType Windows
-
-Name
-----
-Central US
-North Europe
-West Europe
-Southeast Asia
-East Asia
-West US
-East US
-Japan West
-Japan East
-East US 2
-North Central US
-South Central US
-Brazil South
-Australia East
-Australia Southeast
-East Asia (Stage)
-Central India
-West India
-South India
-Canada Central
-Canada East
-West Central US
-West US 2
-UK West
-UK South
-East US 2 EUAP
-Central US EUAP
-Korea Central
-France Central
-Australia Central 2
-Australia Central
-South Africa North
-Switzerland North
-Germany West Central
+Get-AzFunctionAppAvailableLocation -PlanType Consumption -OSType Windows
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegion
@@ -1004,37 +894,13 @@ Description for Get an App Service plan.
 .Description
 Description for Get an App Service plan.
 .Example
-PS C:\> Get-AzFunctionAppPlan
-
-Name                               WorkerType SkuTier        SkuName Location    ResourceGroupName                SubscriptionId
-----                               ---------- -------        ------- --------    -----------------                --------------
-Func99-West-Europe-Linux-Premium   Linux      ElasticPremium EP1     West Europe Func99-West-Europe-Linux-Premium fe16564a-d943-4bf8-8c28-cf01708c3f8b
-Func99-West-Europe-Windows-Premium Windows    ElasticPremium EP1     West Europe Func99-West-Europe-Win-Premium   fe16564a-d943-4bf8-8c28-cf01708c3f8b
-Func99-Windows-Premium1680894595   Windows    ElasticPremium EP1     West Europe Func99-West-Europe-Win-Premium   fe16564a-d943-4bf8-8c28-cf01708c3f8b
-Func99-Windows-Premium428118799    Windows    ElasticPremium EP1     West Europe Func99-West-Europe-Win-Premium   fe16564a-d943-4bf8-8c28-cf01708c3f8b
-Func99-Windows-Premium677505437    Windows    ElasticPremium EP1     West Europe Func99-West-Europe-Win-Premium   fe16564a-d943-4bf8-8c28-cf01708c3f8b
-Func99-Windows-Premium711892854    Windows    ElasticPremium EP1     West Europe Func99-West-Europe-Win-Premium   fe16564a-d943-4bf8-8c28-cf01708c3f8b
-Func99-Windows-Premium819994758    Windows    ElasticPremium EP1     West Europe Func99-West-Europe-Win-Premium   fe16564a-d943-4bf8-8c28-cf01708c3f8b
+Get-AzFunctionAppPlan
 .Example
-PS C:\> Get-AzFunctionAppPlan -ResourceGroupName "West Europe"
-
-Name                               WorkerType SkuTier        SkuName Location    ResourceGroupName                SubscriptionId
-----                               ---------- -------        ------- --------    -----------------                --------------
-Func99-West-Europe-Linux-Premium   Linux      ElasticPremium EP1     West Europe Func99-West-Europe-Linux-Premium fe16564a-d943-4bf8-8c28-cf01708c3f8b
-Func99-West-Europe-Windows-Premium Windows    ElasticPremium EP1     West Europe Func99-West-Europe-Win-Premium   fe16564a-d943-4bf8-8c28-cf01708c3f8b
-Func99-Windows-Premium1680894595   Windows    ElasticPremium EP1     West Europe Func99-West-Europe-Win-Premium   fe16564a-d943-4bf8-8c28-cf01708c3f8b
+Get-AzFunctionAppPlan -ResourceGroupName "West Europe"
 .Example
-PS C:\> Get-AzFunctionAppPlan -SubscriptionId fe16564a-d943-4bf8-8c28-cf01708c3f8z
-
-Name                               WorkerType SkuTier        SkuName Location    ResourceGroupName                SubscriptionId
-----                               ---------- -------        ------- --------    -----------------                --------------
-Func99-West-Europe-Windows-Premium Windows    ElasticPremium EP1     West Europe Func99-West-Europe-Win-Premium   fe16564a-d943-4bf8-8c28-cf01708c3f8z
+Get-AzFunctionAppPlan -SubscriptionId fe16564a-d943-4bf8-8c28-cf01708c3f8z
 .Example
-PS C:\> Get-AzFunctionAppPlan -Location "Central US"
-
-Name                               WorkerType SkuTier        SkuName Location   ResourceGroupName                SubscriptionId
-----                               ---------- -------        ------- --------   -----------------                --------------
-Func99-West-Europe-Windows-Premium Windows    ElasticPremium EP1     Central US Func99-West-Europe-Win-Premium   3r16564a-d943-4bf8-8c28-cf01708c3f8b
+Get-AzFunctionAppPlan -Location "Central US"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
@@ -1252,36 +1118,15 @@ Description for Gets the details of a web, mobile, or API app.
 .Description
 Description for Gets the details of a web, mobile, or API app.
 .Example
-PS C:\> Get-AzFunctionApp
-
-Name                     Status  OSType  Runtime Location    AppServicePlan ResourceGroupName         SubscriptionId
-----                     ------  ------  ------- --------    -------------- -----------------         --------------
-Functions1-Windows-DoNet Running Windows DotNet  Central US  CentralUSPlan  Functions-West-Europe-Win fe16564a-d943-4bf8-8c28-cf01708c3f8b
-Functions1-Windows-Java  Running Windows Java    West Europe Premium1-WE    Functions-West-Europe1    fe16564a-d943-4bf8-8c28-cf01708c3f8b
+Get-AzFunctionApp
 .Example
-PS C:\> Get-AzFunctionApp -ResourceGroupName Functions-West-Europe-Win -Name Functions1-Windows-DoNet
-
-Name                     Status  OSType  Runtime Location   AppServicePlan ResourceGroupName         SubscriptionId
-----                     ------  ------  ------- --------   -------------- -----------------         --------------
-Functions1-Windows-DoNet Running Windows DotNet  Central US CentralUSPlan  Functions-West-Europe-Win fe16564a-d943-4bf8-8c28-cf01708c3f8b
+Get-AzFunctionApp -ResourceGroupName Functions-West-Europe-Win -Name Functions1-Windows-DoNet
 .Example
-PS C:\> Get-AzFunctionApp -ResourceGroupName Functions-West-Europe-Win
-
-Name                     Status  OSType  Runtime Location   AppServicePlan ResourceGroupName         SubscriptionId
-----                     ------  ------  ------- --------   -------------- -----------------         --------------
-Functions1-Windows-DoNet Running Windows DotNet  Central US CentralUSPlan  Functions-West-Europe-Win fe16564a-d943-4bf8-8c28-cf01708c3f8b
+Get-AzFunctionApp -ResourceGroupName Functions-West-Europe-Win
 .Example
-PS C:\> Get-AzFunctionApp -SubscriptionId fe16564a-d943-4bf8-8c28-cf01708c3f8b
-
-Name                     Status  OSType  Runtime Location   AppServicePlan ResourceGroupName         SubscriptionId
-----                     ------  ------  ------- --------   -------------- -----------------         --------------
-Functions1-Windows-DoNet Running Windows DotNet  Central US CentralUSPlan  Functions-West-Europe-Win fe16564a-d943-4bf8-8c28-cf01708c3f8b
+Get-AzFunctionApp -SubscriptionId fe16564a-d943-4bf8-8c28-cf01708c3f8b
 .Example
-PS C:\> Get-AzFunctionApp -Location "Central US"
-
-Name                     Status  OSType  Runtime Location   AppServicePlan ResourceGroupName         SubscriptionId
-----                     ------  ------  ------- --------   -------------- -----------------         --------------
-Functions1-Windows-DoNet Running Windows DotNet  Central US CentralUSPlan  Functions-West-Europe-Win fe16564a-d943-4bf8-8c28-cf01708c3f8b
+Get-AzFunctionApp -Location "Central US"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
@@ -1498,13 +1343,9 @@ Description for Get function information by its ID for web site, or a deployment
 .Description
 Description for Get function information by its ID for web site, or a deployment slot.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
@@ -1718,13 +1559,9 @@ Lists the access keys or Kerberos keys (if active directory enabled) for the spe
 .Description
 Lists the access keys or Kerberos keys (if active directory enabled) for the specified storage account.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountKey
@@ -1862,13 +1699,9 @@ Note that storage keys are not returned; use the ListKeys operation for this.
 Lists all the storage accounts available under the subscription.
 Note that storage keys are not returned; use the ListKeys operation for this.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccount
@@ -1990,13 +1823,9 @@ Gets the identity.
 .Description
 Gets the identity.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
@@ -2199,13 +2028,9 @@ Description for Gets the application settings of an app.
 .Description
 Description for Gets the application settings of an app.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary
@@ -2338,13 +2163,9 @@ Description for Gets the application settings of an app.
 .Description
 Description for Gets the application settings of an app.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary
@@ -2470,13 +2291,9 @@ Description for Gets the configuration of an app, such as platform version and b
 .Description
 Description for Gets the configuration of an app, such as platform version and bitness, default documents, virtual applications, Always On, etc.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
@@ -2688,13 +2505,9 @@ Each element of the list contains a timestamp and the ID of the snapshot.
 Description for Gets a list of web app configuration snapshots identifiers.
 Each element of the list contains a timestamp and the ID of the snapshot.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigurationSnapshotInfo
@@ -2829,13 +2642,9 @@ Each element of the list contains a timestamp and the ID of the snapshot.
 Description for Gets a list of web app configuration snapshots identifiers.
 Each element of the list contains a timestamp and the ID of the snapshot.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigurationSnapshotInfo
@@ -2961,13 +2770,9 @@ Description for Gets a snapshot of the configuration of an app at a previous poi
 .Description
 Description for Gets a snapshot of the configuration of an app at a previous point in time.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
@@ -3178,13 +2983,9 @@ Description for Gets a snapshot of the configuration of an app at a previous poi
 .Description
 Description for Gets a snapshot of the configuration of an app at a previous point in time.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
@@ -3388,13 +3189,9 @@ Description for Gets the configuration of an app, such as platform version and b
 .Description
 Description for Gets the configuration of an app, such as platform version and bitness, default documents, virtual applications, Always On, etc.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
@@ -3598,13 +3395,9 @@ Note: You cannot specify a different value for InstrumentationKey nor AppId in t
 Creates (or updates) an Application Insights component.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponent
@@ -3893,14 +3686,13 @@ Description for Creates or updates an App Service Plan.
 .Description
 Description for Creates or updates an App Service Plan.
 .Example
-PS C:\> New-AzFunctionAppPlan -ResourceGroupName MyResourceGroupName `
-                              -Name MyPremiumPlan `
-                              -Location WestEurope `
-                              -MinimumWorkerCount 1 `
-                              -MaximumWorkerCount 10 `
-                              -Sku EP1 `
-                              -WorkerType Windows
-
+New-AzFunctionAppPlan -ResourceGroupName MyResourceGroupName `
+                      -Name MyPremiumPlan `
+                      -Location WestEurope `
+                      -MinimumWorkerCount 1 `
+                      -MaximumWorkerCount 10 `
+                      -Sku EP1 `
+                      -WorkerType Windows
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan
@@ -4350,24 +4142,23 @@ Description for Creates a new web, mobile, or API app in an existing resource gr
 .Description
 Description for Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.
 .Example
-PS C:\> New-AzFunctionApp -Name MyUniqueFunctionAppName `
-                          -ResourceGroupName MyResourceGroupName `
-                          -Location centralUS `
-                          -StorageAccount MyStorageAccountName `
-                          -Runtime PowerShell
+New-AzFunctionApp -Name MyUniqueFunctionAppName `
+                  -ResourceGroupName MyResourceGroupName `
+                  -Location centralUS `
+                  -StorageAccount MyStorageAccountName `
+                  -Runtime PowerShell
 .Example
-PS C:\> New-AzFunctionApp -Name MyUniqueFunctionAppName `
-                          -ResourceGroupName MyResourceGroupName `
-                          -PlanName MyPlanName `
-                          -StorageAccount MyStorageAccountName `
-                          -Runtime PowerShell
+New-AzFunctionApp -Name MyUniqueFunctionAppName `
+                  -ResourceGroupName MyResourceGroupName `
+                  -PlanName MyPlanName `
+                  -StorageAccount MyStorageAccountName `
+                  -Runtime PowerShell
 .Example
-PS C:\> New-AzFunctionApp -Name MyUniqueFunctionAppName `
-                          -ResourceGroupName MyResourceGroupName `
-                          -PlanName MyPlanName `
-                          -StorageAccount MyStorageAccountName `
-                          -DockerImageName myacr.azurecr.io/myimage:tag
-
+New-AzFunctionApp -Name MyUniqueFunctionAppName `
+                  -ResourceGroupName MyResourceGroupName `
+                  -PlanName MyPlanName `
+                  -StorageAccount MyStorageAccountName `
+                  -DockerImageName myacr.azurecr.io/myimage:tag
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite
@@ -5124,13 +4915,9 @@ Description for Create function for web site, or a deployment slot.
 .Description
 Description for Create function for web site, or a deployment slot.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IFunctionEnvelope
@@ -5479,13 +5266,9 @@ Create or update an identity in the specified subscription and resource group.
 .Description
 Create or update an identity in the specified subscription and resource group.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.IIdentityAutoGenerated
@@ -5719,13 +5502,9 @@ Description for Updates the configuration of an app.
 .Description
 Description for Updates the configuration of an app.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResource
@@ -6656,13 +6435,9 @@ Description for Updates the configuration of an app.
 .Description
 Description for Updates the configuration of an app.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResource
@@ -7585,9 +7360,9 @@ Description for Delete an App Service plan.
 .Description
 Description for Delete an App Service plan.
 .Example
-PS C:\> Get-AzFunctionAppPlan -Name MyAppName -ResourceGroupName MyResourceGroupName | Remove-AzFunctionAppPlan -Force
+Get-AzFunctionAppPlan -Name MyAppName -ResourceGroupName MyResourceGroupName | Remove-AzFunctionAppPlan -Force
 .Example
-PS C:\> Remove-AzFunctionAppPlan -Name MyAppName -ResourceGroupName MyResourceGroupName -Force
+Remove-AzFunctionAppPlan -Name MyAppName -ResourceGroupName MyResourceGroupName -Force
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
@@ -7791,9 +7566,9 @@ Description for Deletes a web, mobile, or API app, or one of the deployment slot
 .Description
 Description for Deletes a web, mobile, or API app, or one of the deployment slots.
 .Example
-PS C:\> Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Remove-AzFunctionApp -Force
+Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Remove-AzFunctionApp -Force
 .Example
-PS C:\> Remove-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName -Force
+Remove-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName -Force
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
@@ -8010,13 +7785,9 @@ Description for Delete a function for web site, or a deployment slot.
 .Description
 Description for Delete a function for web site, or a deployment slot.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
@@ -8226,13 +7997,9 @@ Deletes the identity.
 .Description
 Deletes the identity.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
@@ -8436,9 +8203,9 @@ Description for Restarts an app (or deployment slot, if specified).
 .Description
 Description for Restarts an app (or deployment slot, if specified).
 .Example
-PS C:\> Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Restart-AzFunctionApp -Force
+Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Restart-AzFunctionApp -Force
 .Example
-PS C:\> Restart-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName -Force
+Restart-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName -Force
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
@@ -8656,13 +8423,9 @@ Description for Restores a specific backup to another app (or deployment slot, i
 .Description
 Description for Restores a specific backup to another app (or deployment slot, if specified).
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRestoreRequest
@@ -9016,13 +8779,9 @@ Description for Creates or updates an App Service Plan.
 .Description
 Description for Creates or updates an App Service Plan.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan
@@ -9372,13 +9131,9 @@ Description for Creates a new web, mobile, or API app in an existing resource gr
 .Description
 Description for Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite
@@ -10028,13 +9783,9 @@ Create or update an identity in the specified subscription and resource group.
 .Description
 Create or update an identity in the specified subscription and resource group.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.IIdentityAutoGenerated
@@ -10192,13 +9943,9 @@ Description for Replaces the application settings of an app.
 .Description
 Description for Replaces the application settings of an app.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary
@@ -10363,13 +10110,9 @@ Description for Replaces the application settings of an app.
 .Description
 Description for Replaces the application settings of an app.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary
@@ -10527,13 +10270,9 @@ Description for Updates the configuration of an app.
 .Description
 Description for Updates the configuration of an app.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResource
@@ -11317,13 +11056,9 @@ Description for Updates the configuration of an app.
 .Description
 Description for Updates the configuration of an app.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResource
@@ -12100,9 +11835,9 @@ Description for Starts an app (or deployment slot, if specified).
 .Description
 Description for Starts an app (or deployment slot, if specified).
 .Example
-PS C:\> Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Start-AzFunctionApp
+Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Start-AzFunctionApp
 .Example
-PS C:\> Start-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName
+Start-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
@@ -12306,9 +12041,9 @@ Description for Stops an app (or deployment slot, if specified).
 .Description
 Description for Stops an app (or deployment slot, if specified).
 .Example
-PS C:\> Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Stop-AzFunctionApp -Force
+Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Stop-AzFunctionApp -Force
 .Example
-PS C:\> Stop-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName -Force
+Stop-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName -Force
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
@@ -12512,13 +12247,9 @@ Description for Syncs function trigger metadata to the management database
 .Description
 Description for Syncs function trigger metadata to the management database
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
@@ -12722,13 +12453,9 @@ Description for Check if a resource name is available.
 .Description
 Description for Check if a resource name is available.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceNameAvailabilityRequest
@@ -12955,12 +12682,11 @@ Description for Creates or updates an App Service Plan.
 .Description
 Description for Creates or updates an App Service Plan.
 .Example
-PS C:\> Update-AzFunctionAppPlan -ResourceGroupName MyResourceGroupName `
-                                 -Name MyPremiumPlan `
-                                 -MaximumWorkerCount 20 `
-                                 -Sku EP2 `
-                                 -Force
-
+Update-AzFunctionAppPlan -ResourceGroupName MyResourceGroupName `
+                         -Name MyPremiumPlan `
+                         -MaximumWorkerCount 20 `
+                         -Sku EP2 `
+                         -Force
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlanPatchResource
@@ -13281,13 +13007,13 @@ Description for Creates a new web, mobile, or API app in an existing resource gr
 .Description
 Description for Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.
 .Example
-PS C:\> Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResourceGroupName -PlanName NewPlanName -Force
+Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResourceGroupName -PlanName NewPlanName -Force
 .Example
-PS C:\> Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResourceGroupName -IdentityType SystemAssigned -Force
+Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResourceGroupName -IdentityType SystemAssigned -Force
 .Example
-PS C:\> Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResourceGroupName -ApplicationInsightsName ApplicationInsightsProjectName -Force
+Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResourceGroupName -ApplicationInsightsName ApplicationInsightsProjectName -Force
 .Example
-PS C:\> Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResourceGroupName -IdentityType None -Force
+Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResourceGroupName -IdentityType None -Force
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePatchResource
@@ -14014,13 +13740,9 @@ Update an identity in the specified subscription and resource group.
 .Description
 Update an identity in the specified subscription and resource group.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.IIdentityUpdate
@@ -14254,13 +13976,9 @@ Description for Updates the configuration of an app.
 .Description
 Description for Updates the configuration of an app.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResource
@@ -15191,13 +14909,9 @@ Description for Updates the configuration of an app.
 .Description
 Description for Updates the configuration of an app.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResource
