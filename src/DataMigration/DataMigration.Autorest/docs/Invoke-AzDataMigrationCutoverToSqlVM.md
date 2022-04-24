@@ -14,8 +14,8 @@ Initiate cutover for in-progress online database migration to SQL VM.
 
 ```
 Invoke-AzDataMigrationCutoverToSqlVM -ResourceGroupName <String> -SqlVirtualMachineName <String>
- -TargetDbName <String> [-SubscriptionId <String>] [-MigrationOperationId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -TargetDbName <String> -MigrationOperationId <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,10 +25,12 @@ Initiate cutover for in-progress online database migration to SQL VM.
 
 ### Example 1: Initiate cutover for the specified in-progress online migration to SQL Virtual Machine
 ```powershell
-PS C:\> $vmMigration = Get-AzDataMigrationToSqlVM -ResourceGroupName "MyResourceGroup" -SqlVirtualMachineName "MySqlVM" -TargetDbName "MyDatabase"
-PS C:\> Invoke-AzDataMigrationCutoverToSqlVM -ResourceGroupName "MyResourceGroup" -SqlVirtualMachineName "MySqlVM" -TargetDbName "MyDatabase" -MigrationOperationId $vmMigration.MigrationOperationId
-PS C:\> Get-AzDataMigrationToSqlVM -InputObject $vmMigration
+$vmMigration = Get-AzDataMigrationToSqlVM -ResourceGroupName "MyResourceGroup" -SqlVirtualMachineName "MySqlVM" -TargetDbName "MyDatabase"
+Invoke-AzDataMigrationCutoverToSqlVM -ResourceGroupName "MyResourceGroup" -SqlVirtualMachineName "MySqlVM" -TargetDbName "MyDatabase" -MigrationOperationId $vmMigration.MigrationOperationId
+Get-AzDataMigrationToSqlVM -InputObject $vmMigration
+```
 
+```output
 Name                 Type                                       Kind  ProvisioningState MigrationStatus
 ----                 ----                                       ----  ----------------- ---------------
 MyDatabase           Microsoft.DataMigration/databaseMigrations SqlVm Completing        Completing
@@ -76,7 +78,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

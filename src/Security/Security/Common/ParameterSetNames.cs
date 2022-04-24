@@ -51,5 +51,17 @@ namespace Microsoft.Azure.Commands.Security.Common
         public const string OnPremMachinesWithScanId = "OnPremMachinesWithScanId";
 
         #endregion
+
+        #region Security Automation
+
+        public const string SecurityAutomationScope = "SecurityAutomationScope";
+        public const string SecurityAutomationActionWorkspace = "SecurityAutomationActionWorkspace";
+        public const string SecurityAutomationActionEventHub = "SecurityAutomationActionEventHub";
+        public const string SecurityAutomationActionLogicApp = "SecurityAutomationActionLogicApp";
+        public const string SecurityAutomationRule = "SecurityAutomationRule";
+        public const string SecurityAutomationRuleSet = "SecurityAutomationRuleSet";
+        public const string SecurityAutomationSource = "SecurityAutomationSource";
+
+        #endregion
     }
 }

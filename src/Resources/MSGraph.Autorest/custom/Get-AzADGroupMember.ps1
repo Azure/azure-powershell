@@ -149,8 +149,6 @@ function Get-AzADGroupMember {
             $null = $PSBoundParameters.Remove('GroupDisplayName')
         }
 
-        $PSBOundParameters['ConsistencyLevel'] = 'eventual'
-
         Az.MSGraph.internal\Get-AzADGroupMember @PSBoundParameters
     }
     

@@ -36,6 +36,12 @@ Set-AzSecurityAlert [-ActionType <String>] -InputObject <PSSecurityAlert> [-Pass
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### InputObjectV3
+```
+Set-AzSecurityAlert -InputObjectV3 <PSSecurityAlertV3> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Sets a security alert state.
 
@@ -98,6 +104,21 @@ Input Object.
 ```yaml
 Type: Microsoft.Azure.Commands.Security.Models.Alerts.PSSecurityAlert
 Parameter Sets: InputObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -InputObjectV3
+Input Object V3.
+
+```yaml
+Type: Microsoft.Azure.Commands.SecurityCenter.Models.Alerts.PSSecurityAlertV3
+Parameter Sets: InputObjectV3
 Aliases:
 
 Required: True

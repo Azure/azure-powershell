@@ -25,3 +25,10 @@ Get-AzADapplication -ObjectId $id -Select Tags -AppendSelected
 ```
 
 Get application by object Id and append property 'Tags' after default properties: 'DisplayName', 'Id', 'DeletedDateTime', 'IdentifierUris', 'Web', 'AppId', 'SignInAudience'
+
+### Example 4: Get applications owned by current user
+```powershell
+Get-AzADapplication -OwnedApplication
+```
+
+ Get applications owned by current user

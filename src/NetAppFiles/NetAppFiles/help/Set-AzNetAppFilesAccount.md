@@ -37,7 +37,7 @@ The **Set-AzNetAppFilesAccount** cmdlet modifies an ANF account.
 
 ### Example 1 : Modify an ANF account
 ```powershell
-Set-AzNetAppFilesAccount -ResourceGroupName "MyRG" -l "westus2" -Name "MyAnfAccount"
+Set-AzNetAppFilesAccount -ResourceGroupName "MyRG" -Location "westus2" -Name "MyAnfAccount"
 ```
 
 ```output

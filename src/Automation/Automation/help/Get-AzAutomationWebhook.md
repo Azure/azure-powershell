@@ -39,8 +39,8 @@ To get specific webhooks, specify a webhook name or specify the name of an Azure
 ## EXAMPLES
 
 ### Example 1: Get all webhooks for a runbook
-```
-PS C:\>Get-AzAutomationWebhook -RunbookName "Runbook03" -ResourceGroupName "ResourceGroup01" -AutomationAccountName "AutomationAccount01"
+```powershell
+Get-AzAutomationWebhook -RunbookName "Runbook03" -ResourceGroupName "ResourceGroup01" -AutomationAccountName "AutomationAccount01"
 ```
 
 This command gets all webhooks for a runbook named Runbook03 in the Automation account named AutomationAccount01 in the resource group named ResourceGroup01.

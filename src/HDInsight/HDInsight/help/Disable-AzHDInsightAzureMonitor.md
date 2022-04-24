@@ -40,7 +40,7 @@ This cmdlet **Disable-AzHDInsightAzureMonitor** disables Azure Monitor in a spec
 # Cluster info
 $clusterName = "your-hadoop-001"
 $resourceGroupName = "Group"
-Disable-AzHDInsightAzureMonitor -ClusterName $clusterName -ResourceGroup $resourceGroupName
+Disable-AzHDInsightAzureMonitor -ClusterName $clusterName -ResourceGroupName $resourceGroupName
 ```
 
 This cmdlet disables the azure monitor in a specified HDInsight cluster.

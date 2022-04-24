@@ -18,7 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added parameter `ServicePrinipalType` to `New-AzSqlInstance` and `Set-AzSqlInstance`
+
+## Version 3.8.0
+* Added parameter `HighAvailabilityReplicaCount` to `New-AzSqlElasticPool` and `Set-AzSqlElasticPool`
+* Added parameter `ServicePrincipalType` to `New-AzSqlInstance` and `Set-AzSqlInstance`
 * [Breaking change] Removed `Get-AzSqlDatabaseTransparentDataEncryptionActivity`
 * Added property `CurrentBackupStorageRedundancy` and `RequestedBackupStorageRedundancy` in  the outputs of Managed Instance CRUD commands
 * Added optional property `Tag` to `Restore-AzSqlDatabase`

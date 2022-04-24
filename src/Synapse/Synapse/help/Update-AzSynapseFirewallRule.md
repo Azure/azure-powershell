@@ -41,7 +41,7 @@ This command updates firewall rule named ContosoFirewallRule under workspace Con
 ### Example 2
 ```powershell
 $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-$ws | Update-AzSynapseFirewallRule -Name ContosoFirewallRule -StartIpAddress "0.0.0.0" -EndIpAssdress "255.255.255.255"
+$ws | Update-AzSynapseFirewallRule -Name ContosoFirewallRule -StartIpAddress "0.0.0.0" -EndIpAddress "255.255.255.255"
 ```
 
 This command updates firewall rule named ContosoFirewallRule under a workspace through pipeline.

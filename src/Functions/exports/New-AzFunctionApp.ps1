@@ -20,24 +20,23 @@ Creates a function app.
 .Description
 Creates a function app.
 .Example
-PS C:\> New-AzFunctionApp -Name MyUniqueFunctionAppName `
-                          -ResourceGroupName MyResourceGroupName `
-                          -Location centralUS `
-                          -StorageAccount MyStorageAccountName `
-                          -Runtime PowerShell
+New-AzFunctionApp -Name MyUniqueFunctionAppName `
+                  -ResourceGroupName MyResourceGroupName `
+                  -Location centralUS `
+                  -StorageAccount MyStorageAccountName `
+                  -Runtime PowerShell
 .Example
-PS C:\> New-AzFunctionApp -Name MyUniqueFunctionAppName `
-                          -ResourceGroupName MyResourceGroupName `
-                          -PlanName MyPlanName `
-                          -StorageAccount MyStorageAccountName `
-                          -Runtime PowerShell
+New-AzFunctionApp -Name MyUniqueFunctionAppName `
+                  -ResourceGroupName MyResourceGroupName `
+                  -PlanName MyPlanName `
+                  -StorageAccount MyStorageAccountName `
+                  -Runtime PowerShell
 .Example
-PS C:\> New-AzFunctionApp -Name MyUniqueFunctionAppName `
-                          -ResourceGroupName MyResourceGroupName `
-                          -PlanName MyPlanName `
-                          -StorageAccount MyStorageAccountName `
-                          -DockerImageName myacr.azurecr.io/myimage:tag
-
+New-AzFunctionApp -Name MyUniqueFunctionAppName `
+                  -ResourceGroupName MyResourceGroupName `
+                  -PlanName MyPlanName `
+                  -StorageAccount MyStorageAccountName `
+                  -DockerImageName myacr.azurecr.io/myimage:tag
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite

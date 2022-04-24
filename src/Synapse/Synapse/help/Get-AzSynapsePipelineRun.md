@@ -60,7 +60,7 @@ This command gets details about the runs of all pipelines in the workspace Conto
 
 ### Example 3: Get a single pipeline runs between the dates
 ```powershell
-Get-AzSynapsePipelineRun -WorkspaceName ContosoWorkspace -Name ContosoPipeline -RunStartedAfter "4/2/2007 7:23:57 PM" -RunStartedBefore "4/2/2027 7:23:57 PM"
+Get-AzSynapsePipelineRun -WorkspaceName ContosoWorkspace -PipelineName ContosoPipeline -RunStartedAfter "4/2/2007 7:23:57 PM" -RunStartedBefore "4/2/2027 7:23:57 PM"
 ```
 
 This command gets details about the runs of ContosoPipeline pipeline in the workspace ContosoWorkspace that started between "4/2/2007 7:23:57 PM" and "4/2/2027 7:23:57 PM"
