@@ -20,7 +20,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Security.Cmdlets.AlertsSuppressionRules
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AlertsSuppressionRuleScope", DefaultParameterSetName = SuppressionRuleScopeParams), OutputType(typeof(PSIScopeElement))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AlertsSuppressionRuleScope", DefaultParameterSetName = SuppressionRuleScopeParams, SupportsShouldProcess = false), OutputType(typeof(PSIScopeElement))]
     public class NewAlertsSuppressionRuleScope : SecurityCenterCmdletBase
     {
         public const string SuppressionRuleScopeParams = "AlertsSuppressionRuleScopeParams";
