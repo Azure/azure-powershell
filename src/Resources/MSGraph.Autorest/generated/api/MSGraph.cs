@@ -2465,10 +2465,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
             }
         }
 
-        /// <summary>
-        /// Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity
-        /// types.
-        /// </summary>
+        /// <summary>Update entity in groups</summary>
         /// <param name="groupId">key: id of group</param>
         /// <param name="body">New property values</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -2508,10 +2505,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
             }
         }
 
-        /// <summary>
-        /// Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity
-        /// types.
-        /// </summary>
+        /// <summary>Update entity in groups</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">New property values</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>

@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 3.1.0
 * Supported empty directory volume and secret volume for creating container group [#17410]
 
 ## Version 3.0.1

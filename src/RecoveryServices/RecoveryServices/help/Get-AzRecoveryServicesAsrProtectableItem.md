@@ -56,7 +56,7 @@ Gets all the protectable items in specified ASR protection container.
 
 ### Example 2
 ```powershell
-Get-ASRProtectableItem -ProtectionContainer $pc -FriendlyName $piFriendlyName
+Get-AzRecoveryServicesAsrProtectableItem -ProtectionContainer $pc -FriendlyName $piFriendlyName
 ```
 
 ```output
@@ -81,7 +81,7 @@ Get the protectable items in specified ASR protection container and with given f
 
 ### Example 3
 ```powershell
-Get-ASRProtectableItem -ProtectionContainer $pc -Name $piName
+Get-AzRecoveryServicesAsrProtectableItem -ProtectionContainer $pc -Name $piName
 ```
 
 ```output

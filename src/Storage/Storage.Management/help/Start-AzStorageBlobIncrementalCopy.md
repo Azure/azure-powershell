@@ -83,7 +83,7 @@ This command start Incremental Copy Operation using container pipeline from GetA
 
 ### Example 4:  start Incremental copy operation from CloudPageBlob object to destination blob with blob name
 ```
-PS C:\>$srcBlobSnapshot = Get-AzStorageBlob -Container container1 -prefix blob1| ?{$_.ICloudBlob.IsSnapshot})[0]
+PS C:\>$srcBlobSnapshot = Get-AzStorageBlob -Container container1 -prefix blob1| Where-Object ({$_.ICloudBlob.IsSnapshot})[0]
 PS C:\>Start-AzStorageBlobIncrementalCopy -CloudBlob $srcBlobSnapshot.ICloudBlob -DestContainer container2 -DestBlob blob2
 ```
 

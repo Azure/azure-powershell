@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 4.16.1
 * Fixed `ArgumentNullException` in `Add-AzureRmRouteConfig` when `RouteTable.Routes` is null.
 
 ## Version 4.16.0

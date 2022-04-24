@@ -21,6 +21,8 @@
 -->
 ## Upcoming Release
 * Edited `New-AzVm` cmdlet internal logic to use the `PlatformFaultDomain` value in the `PSVirtualMachine` object passed to it in the new virtual machine.
+
+## Version 4.26.0
 * Added `-ImageReferenceId` parameter to following cmdlets: `New-AzVm`, `New-AzVmConfig`, `New-AzVmss`, `Set-AzVmssStorageProfile`
 * Added functionality for cross-tenant image reference for VM, VMSS, Managed Disk, and Gallery Image Version creation. 
 * `New-AzGallery` can take in `-Permission` parameter to set its sharingProfile property.

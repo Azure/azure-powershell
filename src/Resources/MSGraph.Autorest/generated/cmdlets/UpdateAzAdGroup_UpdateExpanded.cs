@@ -8,16 +8,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
     using static Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Extensions;
     using System;
 
-    /// <summary>
-    /// Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity
-    /// types.
-    /// </summary>
+    /// <summary>Update entity in groups</summary>
     /// <remarks>
     /// [OpenAPI] UpdateGroup=>PATCH:"/groups/{group-id}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzADGroup_UpdateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(bool))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Description(@"Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Description(@"Update entity in groups")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Generated]
     public partial class UpdateAzADGroup_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener

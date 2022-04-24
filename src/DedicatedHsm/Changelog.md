@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.3.0
 * Updated API version to 2021-11-03
     - Added `Get-AzDedicatedHsmOutboundNetworkDependencyEndpoint`
 

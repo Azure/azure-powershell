@@ -42,7 +42,7 @@ Update the NetworkruleSet of the given Namespace in the current Azure subscripti
 ```powershell
 $IpRules = @([Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes] @{IpMask = "4.4.4.4";Action = "Allow"},[Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes] @{IpMask = "3.3.3.3";Action = "Allow"})
 $VirtualNetworkRules = @([Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes]@{Subnet=@{Id="/subscriptions/subscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/default"};IgnoreMissingVnetServiceEndpoint=$True})
-Set-AzEventHubNetworkRuleSet -ResourceGroupName v-ajnavtest -Namespace EventHub-Namespace1-1375 -IPRule $IpRules -VirtualNetworkRule $VirtualNetworkRules -DefaultAction "Allow" -Debug
+Set-AzEventHubNetworkRuleSet -ResourceGroupName v-ajnavtest -Name EventHub-Namespace1-1375 -IPRule $IpRules -VirtualNetworkRule $VirtualNetworkRules -DefaultAction "Allow" -Debug
 ```
 
 ```output
@@ -58,7 +58,7 @@ Update the NetworkRuleSet using -IPRule and -VirtualNetworkRule parameters
 ### Example 2
 ```powershell
 $getresult = Get-AzEventHubNetworkRuleSet -ResourceGroupName v-ajnavtest -Namespace Eventhub-Namespace1-1375
-Set-AzEventHubNetworkRuleSet -ResourceGroupName v-ajnavtest -Namespace Eventhub-Namespace1-1375 -InputObject $getresult
+Set-AzEventHubNetworkRuleSet -ResourceGroupName v-ajnavtest -Name Eventhub-Namespace1-1375 -InputObject $getresult
 ```
 
 ```output
@@ -74,7 +74,7 @@ Update the NetworkRuleSet using -InputObject
 
 ### Example 3
 ```powershell
-Set-AzEventHubNetworkRuleSet -ResourceGroupName v-ajnavtest -Namespace Eventhub-Namespace1-1375 -ResourceId /subscriptions/SubscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace1-1375
+Set-AzEventHubNetworkRuleSet -ResourceGroupName v-ajnavtest -Name Eventhub-Namespace1-1375 -ResourceId /subscriptions/SubscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace1-1375
 ```
 
 ```output
