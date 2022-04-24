@@ -239,7 +239,8 @@ CmdletsToExport = 'Get-AzSynapseSparkJob', 'Stop-AzSynapseSparkJob',
                'Remove-AzSynapseLinkConnection',
                'Get-AzSynapseLinkConnectionDetailedStatus',
                'Set-AzSynapseLinkConnectionLinkTables',
-               'Get-AzSynapseLinkConnectionLinkTables','Get-AzSynapseLinkConnectionLinkTablesStatus',
+               'Get-AzSynapseLinkConnectionLinkTables',
+               'Get-AzSynapseLinkConnectionLinkTablesStatus',
                'Update-AzSynapseLinkConnectionLandingZoneCredential'
 
 # Variables to export from this module
