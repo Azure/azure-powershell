@@ -32,7 +32,7 @@ namespace Commands.Aks.Test.ScenarioTests
                 .WithNewRmModules (helper => new[]
                 {
                     helper.RMProfileModule,
-                    helper.GetRMModulePath("AzureRM.Aks.psd1")
+                    helper.GetRMModulePath("Az.Aks.psd1")
                 })
                 .WithNewRecordMatcherArguments (
                     userAgentsToIgnore: new Dictionary<string, string>
@@ -80,30 +80,8 @@ namespace Commands.Aks.Test.ScenarioTests
                         AzureSession.Instance.DataStore.WriteFile(Path.Combine(home, ".azure", "acsServicePrincipal.json"), jsonOutput);
                     }
                 }
-                ).WithManagementClients(
-                    GetContainerServiceClient,
-                    GetGraphManagementClient,
-                    GetAuthorizationManagementClient,
-                    GetInternalResourceManagementClient
                 )
                 .Build();
-        }
-
-        private static ContainerServiceClient GetContainerServiceClient(MockContext context)
-        {
-            return context.GetServiceClient<ContainerServiceClient>();
-        }
-        private MicrosoftGraphClient GetGraphManagementClient(MockContext context)
-        {
-            return context.GetServiceClient<MicrosoftGraphClient>();
-        }
-        private static AuthorizationManagementClient GetAuthorizationManagementClient(MockContext context)
-        {
-            return context.GetServiceClient<AuthorizationManagementClient>();
-        }
-        private static ResourceManagementClient GetInternalResourceManagementClient(MockContext context)
-        {
-            return context.GetServiceClient<ResourceManagementClient>();
         }
     }
 }
