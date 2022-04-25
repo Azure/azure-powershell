@@ -235,6 +235,15 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "The auxiliary mode of the Network Interface ")]
+        [ValidateSet(
+            MNM.NetworkInterfaceAuxiliaryMode.None,
+            MNM.NetworkInterfaceAuxiliaryMode.MaxConnections,
+            IgnoreCase = true)]
+        public string AuxiliaryMode { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
@@ -436,6 +445,11 @@ namespace Microsoft.Azure.Commands.Network
             {
                 networkInterface.NetworkSecurityGroup = new PSNetworkSecurityGroup();
                 networkInterface.NetworkSecurityGroup.Id = this.NetworkSecurityGroupId;
+            }
+
+            if (!string.IsNullOrEmpty(this.AuxiliaryMode))
+            {
+                networkInterface.AuxiliaryMode = this.AuxiliaryMode;
             }
 
             List<string> resourceIdsRequiringAuthToken = new List<string>();

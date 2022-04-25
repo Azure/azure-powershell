@@ -29,6 +29,7 @@
 * Updated cmdlets to add new property of `HubRoutingPreference` in VirtualHub and set property of `PreferredRoutingGateway` deprecated .
     - `New-AzVirtualHub`
     - `Update-AzVirtualHub`
+* Added optional parameter `AuxiliaryMode` to cmdlet `New-AzNetworkInterface` to enable this network interface as Sirius enabled. Allowed values are None(default) and MaxConnections.
 
 ## Version 4.16.0
 * Added support for retrieving the state of packet capture even when the provisioning state of the packet capture was failure
