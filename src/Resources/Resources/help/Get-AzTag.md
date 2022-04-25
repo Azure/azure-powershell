@@ -116,6 +116,7 @@ Using the *Detailed* parameter is the equivalent of using the *Name* parameter f
 
 ```powershell
 Get-AzTag -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+```
 
 ```output
 Id         : {Id}
