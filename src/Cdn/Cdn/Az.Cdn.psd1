@@ -12,13 +12,13 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.1.0'
+ModuleVersion = '1.8.3'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
 
 # ID used to uniquely identify this module
-GUID = 'accceef6-8113-453a-a31c-4f2ce57893d6'
+GUID = '91832aaa-dc11-4583-8239-bce5fd531604'
 
 # Author of this module
 Author = 'Microsoft Corporation'
@@ -30,7 +30,9 @@ CompanyName = 'Microsoft Corporation'
 Copyright = 'Microsoft Corporation. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'Microsoft Azure PowerShell: Cdn cmdlets'
+Description = 'Microsoft Azure PowerShell - CDN service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.
+
+For more information on Cdn, please visit the following: https://docs.microsoft.com/azure/cdn/'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'
