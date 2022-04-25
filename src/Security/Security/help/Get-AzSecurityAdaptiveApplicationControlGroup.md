@@ -12,10 +12,9 @@ Gets an application control VM/server group.
 
 ## SYNTAX
 
-### SubscriptionScope (Default)
 ```
-Get-AzSecurityAdaptiveApplicationControlGroup  -GroupName <String> -AscLocation <String> [-SubscriptionId <String>]
-[-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSecurityAdaptiveApplicationControlGroup -GroupName <String> -AscLocation <String>
+ [-SubscriptionId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,10 +34,25 @@ Type       : Microsoft.Security/applicationWhitelistings
 Location   : centralus
 Properties : Microsoft.Azure.Commands.SecurityCenter.Models.AdaptiveApplicationControls.PSSecurityAdaptiveApplicationControlsProperties
 ```
+
 Gets an application control VM/server group.
 
-
 ## PARAMETERS
+
+### -AscLocation
+The location where ASC stores the data of the subscription. can be retrieved from Get locations.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -55,27 +69,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AscLocation
-The location where ASC stores the data of the subscription. can be retrieved from Get locations.
-
-```yaml
-Type: System.String
-Parameter Sets: AscLocation
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -GroupName
 Name of an application control VM/server group.
 
 ```yaml
 Type: System.String
-Parameter Sets: GroupName
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -90,7 +89,7 @@ Azure subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: SubscriptionId
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -100,9 +99,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -323,6 +323,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Disabling Azure AD only authentication for workspace &apos;{0}&apos; ..
+        /// </summary>
+        internal static string DisablingAzureADOnlyAuthentication {
+            get {
+                return ResourceManager.GetString("DisablingAzureADOnlyAuthentication", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Disabling Auto-pause for spark pool &apos;{0}&apos; in resource group &apos;{1}&apos; under parent workspace &apos;{2}&apos;..
         /// </summary>
         internal static string DisablingSynapseSparkPoolAutoPause {
@@ -355,6 +364,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string EnablingAdvancedDataSecurity {
             get {
                 return ResourceManager.GetString("EnablingAdvancedDataSecurity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enabling Azure AD only authentication for workspace &apos;{0}&apos; ..
+        /// </summary>
+        internal static string EnablingAzureADOnlyAuthentication {
+            get {
+                return ResourceManager.GetString("EnablingAzureADOnlyAuthentication", resourceCulture);
             }
         }
         
@@ -1619,7 +1637,7 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
                 return ResourceManager.GetString("SqlPoolRestorePointDoesNotExist", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Start a Data Flow debug session under workspace &apos;{0}&apos;..
         /// </summary>
@@ -1628,7 +1646,7 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
                 return ResourceManager.GetString("StartDataFlowDebugSession", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Starting integration runtime &apos;{0}&apos; in workspace &apos;{1}&apos;.
         /// </summary>

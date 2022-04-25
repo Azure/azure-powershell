@@ -27,7 +27,7 @@ Specify the path of an APS script that contains a single DSC configuration.
 
 ### Example 1: Import a DSC configuration into Automation
 ```powershell
-PS C:\>Import-AzAutomationDscConfiguration -AutomationAccountName "Contoso17" -ResourceGroupName "ResourceGroup01" -SourcePath "C:\DSC\client.ps1" -Force
+Import-AzAutomationDscConfiguration -AutomationAccountName "Contoso17" -ResourceGroupName "ResourceGroup01" -SourcePath "C:\DSC\client.ps1" -Force
 ```
 
 This command imports the DSC configuration in the file named client.ps1 into the Automation account

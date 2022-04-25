@@ -115,7 +115,7 @@ Using the *Detailed* parameter is the equivalent of using the *Name* parameter f
 ### Example 4: Get the entire set of tags on a subscription
 
 ```powershell
-Get-AzTag -ResourceId /subscriptions/{subId}
+Get-AzTag -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
 
 ```output
@@ -134,7 +134,7 @@ This command gets the entire set of tags on the subscription with {subId}.
 ### Example 5: Get the entire set of tags on a resource
 
 ```powershell
-Get-AzTag -ResourceId /subscriptions/{subId}/resourcegroups/{rg}/providers/Microsoft.Sql/servers/Server1
+Get-AzTag -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/testrg/providers/Microsoft.Sql/servers/Server1
 ```
 
 ```output

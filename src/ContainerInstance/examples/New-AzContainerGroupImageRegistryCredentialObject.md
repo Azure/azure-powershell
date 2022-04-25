@@ -1,8 +1,9 @@
 ### Example 1: Set up an image registry credential to create a container group
 ```powershell
-PS C:\> New-AzContainerGroupImageRegistryCredentialObject -Server "myserver.com" -Username "username" -Password (ConvertTo-SecureString "******" -AsPlainText -Force) 
+New-AzContainerGroupImageRegistryCredentialObject -Server "myserver.com" -Username "username" -Password (ConvertTo-SecureString "******" -AsPlainText -Force) 
+```
 
-
+```output
 Password          Server       Username
 --------          ------       --------
 ****** myserver.com username

@@ -9,6 +9,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support
     public partial struct ResourceType :
         System.IEquatable<ResourceType>
     {
+        public static Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.ResourceType SqlDb = @"SqlDb";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.ResourceType SqlMi = @"SqlMi";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.ResourceType SqlVM = @"SqlVm";

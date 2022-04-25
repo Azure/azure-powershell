@@ -66,18 +66,18 @@ The **New-AzAutomationSchedule** cmdlet creates a schedule in Azure Automation.
 ## EXAMPLES
 
 ### Example 1: Create a one-time schedule in local time
-```
-PS C:\> $TimeZone = ([System.TimeZoneInfo]::Local).Id
-PS C:\> New-AzAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule01" -StartTime "23:00" -OneTime -ResourceGroupName "ResourceGroup01" -TimeZone $TimeZone
+```powershell
+$TimeZone = ([System.TimeZoneInfo]::Local).Id
+New-AzAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule01" -StartTime "23:00" -OneTime -ResourceGroupName "ResourceGroup01" -TimeZone $TimeZone
 ```
 
 The first command gets the time zone ID from the system and stores it in the $TimeZone variable.
 The second command creates a schedule that runs one time on the current date at 11:00 PM in the specified time zone.
 
 ### Example 2: Create a one-time schedule in another time zone
-```
-PS C:\> $TimeZone = "Europe/Paris"
-PS C:\> New-AzAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule01" -StartTime "23:00Z" -OneTime -ResourceGroupName "ResourceGroup01" -TimeZone $TimeZone
+```powershell
+$TimeZone = "Europe/Paris"
+New-AzAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule01" -StartTime "23:00Z" -OneTime -ResourceGroupName "ResourceGroup01" -TimeZone $TimeZone
 ```
 
 The first command initializes a $TimeZone variable with value `Europe/Paris`
@@ -85,10 +85,10 @@ The second command creates a schedule that runs one time on the current date at 
 > Note: Schedule *StartTime* is calculated by adding the *TimeZone* Offset to provided *StartTime*
 
 ### Example 3: Create a recurring schedule
-```
-PS C:\> $StartTime = Get-Date "13:00:00"
-PS C:\> $EndTime = $StartTime.AddYears(1)
-PS C:\> New-AzAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule02" -StartTime $StartTime -ExpiryTime $EndTime -DayInterval 1 -ResourceGroupName "ResourceGroup01"
+```powershell
+$StartTime = Get-Date "13:00:00"
+$EndTime = $StartTime.AddYears(1)
+New-AzAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule02" -StartTime $StartTime -ExpiryTime $EndTime -DayInterval 1 -ResourceGroupName "ResourceGroup01"
 ```
 
 The first command creates a date object by using the **Get-Date** cmdlet, and then stores the object in the $StartDate variable.

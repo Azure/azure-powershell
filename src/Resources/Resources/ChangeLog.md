@@ -20,7 +20,7 @@
 
 ## Upcoming Release
 
-## Version 5.6.0
+## Version 5.7.0
 * Added the following cmdlets to remain in parity with 2021-04-01 API version:
     - `New-AzHierarchySetting`
     - `Get-AzHierarchySetting`
@@ -32,6 +32,13 @@
     - `Get-AzTenantBackfillStatus` 
     - `Get-AzManagementGroupNameAvailability`
     - `Get-AzEntity` 
+
+## Version 5.6.0
+* Fixed redundant quotes in list pagination [#17667]
+* Added cmdlet `Update-AzADGroup` [#17514]
+* Updated API version to beta for group member related cmdlet to allow service principal to be add, get and delete from group [#16698]
+* Added parameter '-OwnedApplication' for `Get-AzADApplication` to get applications owned by current user
+* Added parameter '-Web' for `Update-AzADApplication` [#16750]
 
 ## Version 5.5.0
 * Removed `-ApplicationId` from `New-AzADServicePrincipal` `SimpleParameterSet` [#17256]

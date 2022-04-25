@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 
+## Version 1.2.0
+* Added new cmdlets for security Automations API
+
 ## Version 1.1.1
 * Updated Security .NET SDK package reference to version 3.0.0
 

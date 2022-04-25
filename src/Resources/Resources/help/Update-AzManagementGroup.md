@@ -44,7 +44,7 @@ The **Update-AzManagementGroup** cmdlet updates the **ParentId** or **DisplayNam
 
 ### Example 1: Update a Management Group's Display Name
 ```powershell
-Update-AzManagementGroup -Group "TestGroup" -DisplayName "New Display Name"
+Update-AzManagementGroup -GroupName "TestGroup" -DisplayName "New Display Name"
 ```
 
 ```output
@@ -62,7 +62,7 @@ ParentDisplayName : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
 
 ### Example 2: Update a Management Group's Parent
 ```powershell
-Update-AzManagementGroup -Group "TestGroup" -ParentId "/providers/Microsoft.Management/managementGroups/TestGroupParent"
+Update-AzManagementGroup -GroupName "TestGroup" -ParentId "/providers/Microsoft.Management/managementGroups/TestGroupParent"
 ```
 
 ```output

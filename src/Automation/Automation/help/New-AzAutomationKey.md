@@ -24,8 +24,8 @@ The **New-AzAutomationKey** cmdlet regenerates registration keys for an Azure Au
 ## EXAMPLES
 
 ### Example 1: Regenerate a key for an Automation account
-```
-PS C:\>New-AzAutomationKey -KeyType Primary -ResourceGroupName "ResourceGroup01" -AutomationAccountName "AutomationAccount01"
+```powershell
+New-AzAutomationKey -KeyType Primary -ResourceGroupName "ResourceGroup01" -AutomationAccountName "AutomationAccount01"
 ```
 
 This command regenerates the primary key for the Azure Automation account named AutomationAccount01 in the resource group named ResourceGroup01.

@@ -304,6 +304,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
     {
         public int? DaysAfterModificationGreaterThan { get; set; }
         public int? DaysAfterLastAccessTimeGreaterThan { get; set; }
+        public int? DaysAfterLastTierChangeGreaterThan { get; set; }
 
         public PSDateAfterModification()
         {
@@ -321,6 +322,13 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         {
             this.DaysAfterModificationGreaterThan = daysAfterModificationGreaterThan;
             this.DaysAfterLastAccessTimeGreaterThan = daysAfterLastAccessTimeGreaterThan;
+        }
+
+        public PSDateAfterModification(int? daysAfterModificationGreaterThan, int? daysAfterLastAccessTimeGreaterThan, int? DaysAfterLastTierChangeGreaterThan)
+        {
+            this.DaysAfterModificationGreaterThan = daysAfterModificationGreaterThan;
+            this.DaysAfterLastAccessTimeGreaterThan = daysAfterLastAccessTimeGreaterThan;
+            this.DaysAfterLastTierChangeGreaterThan = DaysAfterLastTierChangeGreaterThan;
         }
 
         public PSDateAfterModification(DateAfterModification data)
@@ -341,10 +349,18 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             {
                 this.DaysAfterLastAccessTimeGreaterThan = Convert.ToInt32(data.DaysAfterLastAccessTimeGreaterThan);
             }
+            if (data.DaysAfterLastTierChangeGreaterThan is null)
+            {
+                this.DaysAfterLastTierChangeGreaterThan = null;
+            }
+            else
+            {
+                this.DaysAfterLastTierChangeGreaterThan = Convert.ToInt32(data.DaysAfterLastTierChangeGreaterThan);
+            }
         }
         public DateAfterModification ParseDateAfterModification()
         {
-            return new DateAfterModification(this.DaysAfterModificationGreaterThan, this.DaysAfterLastAccessTimeGreaterThan);
+            return new DateAfterModification(this.DaysAfterModificationGreaterThan, this.DaysAfterLastAccessTimeGreaterThan, this.DaysAfterLastTierChangeGreaterThan);
         }
     }
 
@@ -355,6 +371,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
     public class PSDateAfterCreation
     {
         public int DaysAfterCreationGreaterThan { get; set; }
+        public int? DaysAfterLastTierChangeGreaterThan { get; set; }
 
         public PSDateAfterCreation()
         {
@@ -366,13 +383,27 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.DaysAfterCreationGreaterThan = daysAfterCreationGreaterThan;
         }
 
+        public PSDateAfterCreation(int daysAfterCreationGreaterThan, int? DaysAfterLastTierChangeGreaterThan)
+        {
+            this.DaysAfterCreationGreaterThan = daysAfterCreationGreaterThan;
+            this.DaysAfterLastTierChangeGreaterThan = DaysAfterLastTierChangeGreaterThan;
+        }
+
         public PSDateAfterCreation(DateAfterCreation data)
         {
             this.DaysAfterCreationGreaterThan = Convert.ToInt32(data.DaysAfterCreationGreaterThan);
+            if (data.DaysAfterLastTierChangeGreaterThan is null)
+            {
+                this.DaysAfterLastTierChangeGreaterThan = null;
+            }
+            else
+            {
+                this.DaysAfterLastTierChangeGreaterThan = Convert.ToInt32(data.DaysAfterLastTierChangeGreaterThan);
+            }
         }
         public DateAfterCreation ParseDateAfterCreation()
         {
-            return new DateAfterCreation(this.DaysAfterCreationGreaterThan);
+            return new DateAfterCreation(this.DaysAfterCreationGreaterThan, this.DaysAfterLastTierChangeGreaterThan);
         }
     }
 
