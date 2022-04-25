@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.0.0
 * Migrated to generated codebase
 
 ## Version 1.8.3
