@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Removed the alias:
+* Removed these aliases:
   * `Get-AzAks`
   * `New-AzAks`
   * `Set-AzAks`
