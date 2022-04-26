@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             HelpMessage = "Client ingress specification as comma separated string with IPv4 CIDRs, IPv4 host addresses and host names.",
              ParameterSetName = "ExportPolicyRule")]
         [ValidateNotNullOrEmpty]
-        public string AllowedClients { get; set; }
+        public string AllowedClient { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 Nfsv41 = Nfsv41,
                 Cifs = Cifs,
                 HasRootAccess = HasRootAccess,
-                AllowedClients = AllowedClients,
+                AllowedClients = AllowedClient,
                 ChownMode = ChownMode
             };
             WriteObject(exportPolicyRuleItem);

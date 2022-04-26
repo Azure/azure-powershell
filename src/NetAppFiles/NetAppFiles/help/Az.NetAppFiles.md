@@ -65,6 +65,12 @@ Get volume's restore status
 ### [Initialize-AzNetAppFilesReplication](Initialize-AzNetAppFilesReplication.md)
 Re-Initializes the replication connection on the destination volume
 
+### [New-AzExportPolicyObject](New-AzExportPolicyObject.md)
+Creates export policy object.
+
+### [New-AzExportPolicyRuleObject](New-AzExportPolicyRuleObject.md)
+{{ Fill in the Synopsis }}
+
 ### [New-AzNetAppFilesAccount](New-AzNetAppFilesAccount.md)
 Creates a new Azure NetApp Files (ANF) account.
 

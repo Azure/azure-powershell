@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.netappfiles/new-azexportpolicyruleobject
 schema: 2.0.0
 ---
 
 # New-AzExportPolicyRuleObject
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates export policy rule object.
 
 ## SYNTAX
 
@@ -20,16 +20,19 @@ New-AzExportPolicyRuleObject -RuleIndex <Int32> [-UnixReadOnly] [-UnixReadWrite]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+New-AzExportPolicyRuleObject is a helper cmdlet that creates an export policy rule object that can be used with New-AzExportPolicyObject and New-AzNetAppFilesVolume.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $exportPolicyRule = New-AzExportPolicyRuleObject -RuleIndex 1 -AllowedClients '0.0.0.0/0' -UnixReadOnly -UnixReadWrite -Cifs -Nfsv3 
+PS C:\> $exportPolicyRules = $($exportPolicyRule)
+PS C:\> $newExportPolicy = New-AzExportPolicyObject -Rules $exportPolicyRules
+PS C:\> New-AzNetAppFilesVolume -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -Name "MyAnfVolume" -l "westus2" -CreationToken "MyAnfVolume" -UsageThreshold 1099511627776 -ServiceLevel "Premium" -SubnetId "/subscriptions/subsId/resourceGroups/MyRG/providers/Microsoft.Network/virtualNetworks/MyVnetName/subnets/MySubNetName" -ExportPolicy $newExportPolicy
 ```
 
-{{ Add example description here }}
+This example creates an ExportPolicyRule in variable $exportPolicyRule, sets it an export policy object  $exportPolicyRules that is then used in the creation of an AFN volume "MyAnfVolume""
 
 ## PARAMETERS
 
@@ -37,7 +40,7 @@ PS C:\> {{ Add example code here }}
 Client ingress specification as comma separated string with IPv4 CIDRs, IPv4 host addresses and host names.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -54,7 +57,7 @@ restricted - Only root user can change the ownership of the file.
 unrestricted - Non-root users can change ownership of files that they own.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -69,7 +72,7 @@ Accept wildcard characters: False
 Allows CIFS protocol.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -84,7 +87,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -99,7 +102,7 @@ Accept wildcard characters: False
 Has root access to volume.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -114,7 +117,7 @@ Accept wildcard characters: False
 Kerberos5i Read only access.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -129,7 +132,7 @@ Accept wildcard characters: False
 Kerberos5i Read and write access.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -144,7 +147,7 @@ Accept wildcard characters: False
 Kerberos5p Read only access.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -159,7 +162,7 @@ Accept wildcard characters: False
 Kerberos5p Read and write access.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -174,7 +177,7 @@ Accept wildcard characters: False
 Kerberos5 Read only access.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -189,7 +192,7 @@ Accept wildcard characters: False
 Kerberos5 Read and write access.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -204,7 +207,7 @@ Accept wildcard characters: False
 Allows NFSv3 protocol.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -219,7 +222,7 @@ Accept wildcard characters: False
 Allows NFSv41 protocol.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -234,7 +237,7 @@ Accept wildcard characters: False
 Order index.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -249,7 +252,7 @@ Accept wildcard characters: False
 Read only access.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -264,7 +267,7 @@ Accept wildcard characters: False
 Read and write access.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -279,7 +282,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -295,7 +298,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

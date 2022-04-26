@@ -28,7 +28,7 @@ Each ExportPolicy object consists of a set of ExportPolicy rules that can be app
 PS C:\> $exportPolicyRule = New-AzExportPolicyRuleObject -RuleIndex 1 -AllowedClients '0.0.0.0/0' -UnixReadOnly -UnixReadWrite -Cifs -Nfsv3 
 PS C:\> $exportPolicyRules = $($exportPolicyRule)
 PS C:\> $newExportPolicy = New-AzExportPolicyObject -Rules $exportPolicyRules
-PS C:\> New-AzNetAppFilesVolume -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -Name "MyAnfVolume" -l "westus2" -CreationToken "MyAnfVolume" -UsageThreshold 1099511627776 -ServiceLevel "Premium" -SubnetId "/subscriptions/subsId/resourceGroups/MyRG/providers/Microsoft.Network/virtualNetworks/MyVnetName/subnets/MySubNetName" -ExportPolicy $newExportPolicy 
+PS C:\> New-AzNetAppFilesVolume -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -Name "MyAnfVolume" -l "westus2" -CreationToken "MyAnfVolume" -UsageThreshold 1099511627776 -ServiceLevel "Premium" -SubnetId "/subscriptions/subsId/resourceGroups/MyRG/providers/Microsoft.Network/virtualNetworks/MyVnetName/subnets/MySubNetName" -ExportPolicy $newExportPolicy
 ```
 
 This example creates an ExportPolicyRule in variable $exportPolicyRule, sets it an export policy object  $exportPolicyRules that is then used in the creation of an AFN volume "MyAnfVolume""
@@ -39,8 +39,8 @@ This example creates an ExportPolicyRule in variable $exportPolicyRule, sets it 
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
-Parameter Sets: (All) 
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
@@ -54,7 +54,7 @@ Accept wildcard characters: False
 List of items which need to be included into endpont scope.
 
 ```yaml
-Type: PSNetAppFilesExportPolicyRule[]
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesExportPolicyRule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -69,7 +69,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -85,7 +85,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

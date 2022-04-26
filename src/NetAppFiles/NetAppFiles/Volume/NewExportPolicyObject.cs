@@ -27,14 +27,14 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             HelpMessage = "List of items which need to be included into endpont scope.",
              ParameterSetName = "ExportPolicyObject")]
         [ValidateNotNullOrEmpty]
-        public PSNetAppFilesExportPolicyRule[] Rules { get; set; }
+        public PSNetAppFilesExportPolicyRule[] Rule { get; set; }
 
         public override void ExecuteCmdlet()
         {
             PSNetAppFilesVolumeExportPolicy exportPolicyItem = new PSNetAppFilesVolumeExportPolicy();
-            if(Rules != null)
+            if(Rule != null)
             {
-                exportPolicyItem.Rules = Rules;
+                exportPolicyItem.Rules = Rule;
             }
             WriteObject(exportPolicyItem);
         }

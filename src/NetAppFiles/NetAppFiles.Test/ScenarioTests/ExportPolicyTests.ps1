@@ -59,10 +59,10 @@ function Test-ExportPolicy
         # create pool
         $retrievedPool = New-AzNetAppFilesPool -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -PoolSize $poolSize -ServiceLevel $serviceLevel
         #$exportPolicyRule = New-AzExportPolicyRuleObject -RuleIndex 1 -AllowedClients '0.0.0.0/0' -UnixReadOnly $false -UnixReadWrite $false -Cifs $false -Nfsv3 $true -Nfsv41 $false
-        $exportPolicyRule = New-AzExportPolicyRuleObject -RuleIndex 1 -AllowedClients '0.0.0.0/0' -UnixReadOnly -UnixReadWrite -Cifs -Nfsv3 
+        $exportPolicyRule = New-AzExportPolicyRuleObject -RuleIndex 1 -AllowedClient '0.0.0.0/0' -UnixReadOnly -UnixReadWrite -Cifs -Nfsv3 
         $exportPolicyRules = $($exportPolicyRule)
         
-        $newExportPolicy = New-AzExportPolicyObject -Rules $exportPolicyRules
+        $newExportPolicy = New-AzExportPolicyObject -Rule $exportPolicyRules
 
         # create first volume and check
         $newTagName = "tag1"
