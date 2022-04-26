@@ -83,7 +83,7 @@ This command gets all custom policy set definitions from the management group na
 
 ### Example 5: Get policy set definitions from a given category
 ```powershell
-Get-AzPolicySetDefinition | where-object {$_.Properties.metadata.category -eq "Virtual Machine"}
+Get-AzPolicySetDefinition | Where-Object {$_.Properties.metadata.category -eq "Virtual Machine"}
 ```
 
 This command gets all policy set definitions in category "Virtual Machine".

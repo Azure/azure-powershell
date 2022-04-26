@@ -19,6 +19,11 @@
 -->
 
 ## Upcoming Release
+* Added Alerts Suppression Rules to cmdlets:
+    `Get-AlertsSuppressionRule`
+    `Remove-AlertsSuppressionRule`
+    `Set-AlertsSuppressionRule`
+    `New-AzAlertsSuppressionRuleScope`
 
 ## Version 1.3.0
 * Added new cmdlets for security  SecuritySolutionsReferenceData API
