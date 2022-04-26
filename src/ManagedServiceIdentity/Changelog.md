@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* General availability of `Az.ManagedServiceIdentity`
 
 ## Version 0.8.0
 * Bumped API Version to 2018-11-30

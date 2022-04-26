@@ -423,6 +423,13 @@ function Update-AzADApplication {
     ${TokenLifetimePolicy},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphWebApplication]
+    # webApplication
+    # To construct, see NOTES section for WEB properties and create a hash table.
+    ${Web},
+
+    [Parameter()]
     [Alias("AzContext", "AzureRmContext", "AzureCredential")]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
@@ -525,7 +532,7 @@ function Update-AzADApplication {
     }
     # even if payload contains all three redirect options, only one will be added in the actual app, the order is
     # web -> spa -> public client
-    if ($PSBoundParameters['HomePage'] -or $PSBoundParameters['ReplyUrl']) {
+    if (!$PSBoundParameters['Web'] -And ($PSBoundParameters['HomePage'] -or $PSBoundParameters['ReplyUrl'])) {
       $props = @{}
       if ($PSBoundParameters['HomePage']) {
         $props['HomePageUrl'] = $PSBoundParameters['HomePage']

@@ -32,12 +32,12 @@ The **Get-AzAutomationDscNodeConfigurationDeployment** cmdlet deploys an APS Des
 ## EXAMPLES
 
 ### Example 1: Get a node configuration deployment
-```
-PS C:\> $deployment = Get-AzAutomationDscNodeConfigurationDeployment `
+```powershell
+$deployment = Get-AzAutomationDscNodeConfigurationDeployment `
                          -JobId 35b14eb4-52b7-4a1d-ad62-8e9f84adc657 `
-                         -AutomationAccountName "Contoso01"  `
-                         -ResourceGroupName "ResourceGroup01" `
-            
+                         -AutomationAccountName "Contoso01" `
+                         -ResourceGroupName "ResourceGroup01"
+
 ResourceGroupName     : ResourceGroup01
 AutomationAccountName : Contoso01
 JobId                 : 35b14eb4-52b7-4a1d-ad62-8e9f84adc657
@@ -48,7 +48,7 @@ NodeConfigurationName : Config01.Node1
 JobSchedule           :
 JobScheduleId         : 00000000-0000-0000-0000-000000000000
 
-PS C:\> $deployment | Select-Object -expandproperty nodeStatus
+$deployment | Select-Object -ExpandProperty nodeStatus
 
 Key        Value
 ---        -----

@@ -27,7 +27,7 @@ These recovery points when moved together will lead to maximum savings.
 ```powershell
 $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
 $item = Get-AzRecoveryServicesBackupItem -BackupManagementType "AzureVM" -WorkloadType "AzureVM" -VaultId $vault.ID
-$rpGroup = Get-AzRecoveryServicesRecommendedArchivableRPGroup -Item $item[3] -VaultId $vault.ID
+$rpGroup = Get-AzRecoveryServicesBackupRecommendedArchivableRPGroup -Item $item[3] -VaultId $vault.ID
 ```
 
 Here we use **Get-AzRecoveryServicesRecommendedArchivableRPGroup** cmdlet to fetch the recommended RPs list to be moved to VaultArchive tier

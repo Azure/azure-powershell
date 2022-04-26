@@ -508,4 +508,16 @@
   <data name="GetPrivateLinkResourceNoFilter" xml:space="preserve">
     <value>Getting all private link resources in resource group "{0}", account "{0}"</value>
   </data>
+  <data name="GettingSupportedVirtualMachineSku" xml:space="preserve">
+    <value>Getting all supported virtual machine Skus for location {0}.</value>
+  </data>
+  <data name="GettingSupportedVirtualMachineSkuWithODataParameters" xml:space="preserve">
+    <value>Getting all supported virtual machine Skus for location {0}. MaxResultCount: {1}, Filter: {2}.</value>
+  </data>
+  <data name="GetComputeNodeExtensionByName" xml:space="preserve">
+    <value>Getting compute node extension "{0}" from compute node "{1}" on pool "{2}".</value>
+  </data>
+  <data name="GetComputeNodeExtensions" xml:space="preserve">
+    <value>Getting compute nodes extensions from pool "{0}", compute node {1}.</value>
+  </data>
 </root>

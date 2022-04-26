@@ -31,8 +31,8 @@ The **Get-AzAutomationSchedule** cmdlet gets an Azure Automation schedule.
 ## EXAMPLES
 
 ### Example 1: Get a schedule
-```
-PS C:\>Get-AzAutomationSchedule -AutomationAccountName "Contoso17" -Name "DailySchedule08" -ResourceGroupName "ResourceGroup01"
+```powershell
+Get-AzAutomationSchedule -AutomationAccountName "Contoso17" -Name "DailySchedule08" -ResourceGroupName "ResourceGroup01"
 ```
 
 This command gets the schedule named DailySchedule08.

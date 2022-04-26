@@ -491,6 +491,16 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
                 throw GetInnerException(ex);
             }
         }
+
+        public byte[] GetRandomNumberBytes(string managedHsmName, int count)
+        {
+            if (string.IsNullOrEmpty(managedHsmName))
+                throw new ArgumentNullException(nameof(managedHsmName));
+            
+            var client = CreateKeyClient(managedHsmName);
+            return client.GetRandomBytes(count);
+        }
+
         #endregion
 
         #region Key rotation

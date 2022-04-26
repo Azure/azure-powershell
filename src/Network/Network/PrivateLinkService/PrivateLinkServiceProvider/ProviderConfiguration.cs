@@ -69,6 +69,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.Web/sites", "2019-08-01", true, false);
             RegisterConfiguration("Microsoft.Web/staticSites", "2021-02-01", true, false);
             RegisterConfiguration("Microsoft.Web/hostingEnvironments", "2020-10-01", true, false);
+            RegisterConfiguration("Microsoft.BotService/botServices", "2021-05-01-preview", true, true);
         }
 
         private static void RegisterConfiguration(string type, string apiVersion, bool hasConnectionsURI = false, bool hasResourceURI = false)

@@ -146,4 +146,3 @@ function Get-AzDataMigrationPerformanceDataCollection
     }
 }
 
-
