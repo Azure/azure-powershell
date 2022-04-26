@@ -1861,6 +1861,10 @@
                 <PropertyName>VnetEncryptionSupported</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>AuxiliaryMode</Label>
+                <PropertyName>AuxiliaryMode</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>NetworkSecurityGroup</Label>
                 <PropertyName>NetworkSecurityGroupText</PropertyName>
               </ListItem>
