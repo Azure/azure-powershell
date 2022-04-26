@@ -157,4 +157,4 @@ jobs:
         # Push nupkg files
         Get-ChildItem -Path . -Filter *.nupkg | Set-AzStorageBlobContent -Container $(ContainerName) -Context $context
       azurePowerShellVersion: LatestVersion
-    condition: and(succeeded())
+    condition: succeeded()
