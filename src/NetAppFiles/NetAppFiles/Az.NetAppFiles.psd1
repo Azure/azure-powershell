@@ -108,7 +108,8 @@ CmdletsToExport = 'Get-AzNetAppFilesAccount', 'New-AzNetAppFilesAccount',
                'Get-AzNetAppFilesSubvolumeMetadata', 'Update-AzNetAppFilesSubvolume', 
                'Remove-AzNetAppFilesSubvolume',
                'New-AzNetAppFilesVolumeGroup', 'Get-AzNetAppFilesVolumeGroup',
-               'Remove-AzNetAppFilesVolumeGroup'
+               'Remove-AzNetAppFilesVolumeGroup',
+               'New-AzExportPolicyRuleObject', 'New-AzExportPolicyObject'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -135,7 +136,7 @@ AliasesToExport = 'Get-AnfAccount', 'New-AnfAccount', 'Remove-AnfAccount',
                'Get-AnfQuotaLimit',
                 'Get-AnfSubvolume', 'Get-AnfSubvolumeMetadata','New-AnfSubvolume', 'Set-AnfSubvolume', 
                'Remove-AnfSubvolume', 'Update-AnfSubvolume',
-               'Get-AnfVolumeGroup', 'New-AnfVolumeGroup', 'Remove-AnfVolumeGroup'
+               'Get-AnfVolumeGroup', 'New-AnfVolumeGroup', 'Remove-AnfVolumeGroup'               
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

@@ -576,30 +576,30 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
         public static long CalculateThroughput(int nodeMemory, string volumeType)
         {            
             int throughput = 1500;
-            double nodeMemorytb = nodeMemory / tbInGi9b; //Double.Divide(nodeMemory,tbInGi9b);
+            //double nodeMemorytb = nodeMemory / tbInGi9b; //Double.Divide(nodeMemory,tbInGi9b);
             if (volumeType == SapVolumeType.Data)
             {
-                if (nodeMemorytb <= 1024)
+                if (nodeMemory <= 1024)
                 {
                     throughput = 400;
                 }
-                else if ( nodeMemorytb <= 2048)
+                else if (nodeMemory <= 2048)
                 {
                     throughput = 600;
                 }
-                else if (nodeMemorytb <= 4096)
+                else if (nodeMemory <= 4096)
                 {
                     throughput = 800;
                 }
-                else if (nodeMemorytb <= 6144)
+                else if (nodeMemory <= 6144)
                 {
                     throughput = 1000;
                 }
-                else if (nodeMemorytb <= 8192)
+                else if (nodeMemory <= 8192)
                 {
                     throughput = 1200;
                 }
-                else if (nodeMemorytb <= 10248)
+                else if (nodeMemory <= 10248)
                 {
                     throughput = 1400;
                 }
@@ -607,7 +607,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
             else if (volumeType == SapVolumeType.Log)
             {
                 throughput = 500;
-                if (nodeMemorytb <= 4096)
+                if (nodeMemory <= 4096)
                 {
                     throughput = 250;
                 }

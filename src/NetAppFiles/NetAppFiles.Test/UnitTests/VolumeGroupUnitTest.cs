@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.UnitTest
         [Fact]
         public void DataVolumeNameScaleup()
         {
-            string expectedVolumeName = "SH1-data-mnt-00001";
+            string expectedVolumeName = "SH1-data-mnt00001";
             var volumeName = NewAzureRmNetAppFilesVolumeGroup.GenerateVolumeName(NewAzureRmNetAppFilesVolumeGroup.DefaultSapSystemId, NewAzureRmNetAppFilesVolumeGroup.SapVolumeType.Data, 1, NewAzureRmNetAppFilesVolumeGroup.SystemRoles.PRIMARY, null);
             Assert.Equal(expectedVolumeName, volumeName);
         }
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.UnitTest
         [Fact]
         public void DataVolumeNameScaleoutHost1()
         {
-            string expectedVolumeName = "SH1-data-mnt-00001";
+            string expectedVolumeName = "SH1-data-mnt00001";
             var volumeName = NewAzureRmNetAppFilesVolumeGroup.GenerateVolumeName(NewAzureRmNetAppFilesVolumeGroup.DefaultSapSystemId, NewAzureRmNetAppFilesVolumeGroup.SapVolumeType.Data, 1, NewAzureRmNetAppFilesVolumeGroup.SystemRoles.PRIMARY, null);
             Assert.Equal(expectedVolumeName, volumeName);
         }
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.UnitTest
         [Fact]
         public void DataVolumeNameScaleoutHost2()
         {
-            string expectedVolumeName = "SH1-data-mnt-00002";
+            string expectedVolumeName = "SH1-data-mnt00002";
             var volumeName = NewAzureRmNetAppFilesVolumeGroup.GenerateVolumeName(NewAzureRmNetAppFilesVolumeGroup.DefaultSapSystemId, NewAzureRmNetAppFilesVolumeGroup.SapVolumeType.Data, 2, NewAzureRmNetAppFilesVolumeGroup.SystemRoles.PRIMARY, null);
             Assert.Equal(expectedVolumeName, volumeName);
         }
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.UnitTest
         [Fact]
         public void LogVolumeNameScaleup()
         {
-            string expectedVolumeName = "SH1-log-mnt-00001";
+            string expectedVolumeName = "SH1-log-mnt00001";
             var volumeName = NewAzureRmNetAppFilesVolumeGroup.GenerateVolumeName(NewAzureRmNetAppFilesVolumeGroup.DefaultSapSystemId, NewAzureRmNetAppFilesVolumeGroup.SapVolumeType.Log, 1, NewAzureRmNetAppFilesVolumeGroup.SystemRoles.PRIMARY, null);
             Assert.Equal(expectedVolumeName, volumeName);
         }

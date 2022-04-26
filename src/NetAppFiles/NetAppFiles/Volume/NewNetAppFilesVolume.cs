@@ -22,6 +22,7 @@ using Microsoft.Azure.Management.NetApp;
 using System.Collections.Generic;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
+using Microsoft.Azure.Management.NetApp.Models;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 {
@@ -220,7 +221,9 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
         [Parameter(
             Mandatory = false,
             HelpMessage = "UNIX permissions for NFS volume accepted in octal 4 digit format. First digit selects the set user ID(4), set group ID (2) and sticky (1) attributes. Second digit selects permission for the owner of the file: read (4), write (2) and execute (1). Third selects permissions for other users in the same group. the fourth for other users not in the group. 0755 - gives read/write/execute permissions to owner and read/execute to group and other users.")]
-        public string UnixPermissions { get; set; }
+        [CmdletParameterBreakingChange("UnixPermissions", ChangeDescription = "Parameter Alias UnixPermissions will be removed, please use  UnixPermission.")]
+        [Alias("UnixPermissions")]
+        public string UnixPermission { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -275,9 +278,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Flag indicating whether subvolume operations are enabled on the volume (Enabled, Disabled)")]
-        [PSArgumentCompleter("Enabled", "Disabled")]
-        public string EnableSubvolume { get; set; }
+            HelpMessage = "Flag indicating whether subvolume operations are enabled on the volume (Enabled, Disabled)")]        
+        public SwitchParameter EnableSubvolume { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -351,7 +353,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 LdapEnabled = LdapEnabled,
                 CoolAccess = CoolAccess,
                 CoolnessPeriod = CoolnessPeriod,
-                UnixPermissions = UnixPermissions,
+                UnixPermissions = UnixPermission,
                 AvsDataStore = AvsDataStore,
                 IsDefaultQuotaEnabled = IsDefaultQuotaEnabled,
                 DefaultUserQuotaInKiBs = DefaultUserQuotaInKiB,
@@ -361,7 +363,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 ProximityPlacementGroup = ProximityPlacementGroup,
                 VolumeSpecName = VolumeSpecName,
                 PlacementRules = PlacementRule?.ToPlacementKeyValuePairs(),
-                EnableSubvolumes = EnableSubvolume
+                EnableSubvolumes = EnableSubvolume.IsPresent ? EnableSubvolumes.Enabled : EnableSubvolumes.Disabled,
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
