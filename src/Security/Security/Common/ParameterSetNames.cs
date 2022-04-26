@@ -52,6 +52,12 @@ namespace Microsoft.Azure.Commands.Security.Common
 
         #endregion
 
+        #region AlertsSuppressionRules
+
+        public const string RuleNameWithParameters = "RuleNameWithParameters";
+
+        #endregion
+
         #region Security Automation
 
         public const string SecurityAutomationScope = "SecurityAutomationScope";

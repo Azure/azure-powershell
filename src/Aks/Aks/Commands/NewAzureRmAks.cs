@@ -40,7 +40,6 @@ namespace Microsoft.Azure.Commands.Aks
 {
     [GenericBreakingChange("New-AzAks will be removed in the next major release. Please use New-AzAksCluster instead of New-AzAks")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AksCluster", DefaultParameterSetName = DefaultParamSet, SupportsShouldProcess = true)]
-    [Alias("New-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Aks")]
     [OutputType(typeof(PSKubernetesCluster))]
     public class NewAzureRmAks : CreateOrUpdateKubeBase
     {
