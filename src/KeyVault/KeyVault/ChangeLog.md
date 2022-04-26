@@ -19,6 +19,11 @@
 -->
 ## Upcoming Release
 
+## Version 4.4.0
+* Supported getting random number from managed HSM by `Get-AzKeyVaultRandomNumber`
+* Skipped subscription connection status validation for Az.KeyVault.Extension [#17712]
+* Enabled public network access setting
+
 ## Version 4.3.1
 * Fixed a bug to continue visiting `NextPageLink` when listing key vaults from ARM API
  

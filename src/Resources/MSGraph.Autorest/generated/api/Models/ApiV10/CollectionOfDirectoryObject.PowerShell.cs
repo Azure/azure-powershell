@@ -76,7 +76,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
             // actually deserialize
             if (content.Contains("Value"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfDirectoryObjectInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfDirectoryObjectInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject>(__y, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphDirectoryObjectTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfDirectoryObjectInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfDirectoryObjectInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication>(__y, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphApplicationTypeConverter.ConvertFrom));
             }
             if (content.Contains("OdataNextLink"))
             {
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
             // actually deserialize
             if (content.Contains("Value"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfDirectoryObjectInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfDirectoryObjectInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject>(__y, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphDirectoryObjectTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfDirectoryObjectInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfDirectoryObjectInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication>(__y, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphApplicationTypeConverter.ConvertFrom));
             }
             if (content.Contains("OdataNextLink"))
             {

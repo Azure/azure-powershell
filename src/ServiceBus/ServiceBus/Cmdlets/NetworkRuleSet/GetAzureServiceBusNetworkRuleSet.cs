@@ -26,15 +26,15 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.NetworkruleSet
     /// <para> If EventHub name provided, a single EventHub detials will be returned</para>
     /// <para> If EventHub name not provided, list of EventHub will be returned</para>
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusNetworkRuleSet", DefaultParameterSetName = NetwrokruleSetPropertiesParameterSet), OutputType(typeof(PSNetworkRuleSetAttributes))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusNetworkRuleSet", DefaultParameterSetName = NetworkRuleSetPropertiesParameterSet), OutputType(typeof(PSNetworkRuleSetAttributes))]
     public class GetAzureServiceBusNetworkRuleSet : AzureServiceBusCmdletBase
     {
-        [Parameter(Mandatory = true, ParameterSetName = NetwrokruleSetPropertiesParameterSet, Position = 0, HelpMessage = "Resource Group Name")]
-        [Parameter(Mandatory = false, ParameterSetName = NetwrokruleSetNamespacePropertiesParameterSet, HelpMessage = "Resource Group Name")]
+        [Parameter(Mandatory = true, ParameterSetName = NetworkRuleSetPropertiesParameterSet, Position = 0, HelpMessage = "Resource Group Name")]
+        [Parameter(Mandatory = false, ParameterSetName = NetworkRuleSetNamespacePropertiesParameterSet, HelpMessage = "Resource Group Name")]
          public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = NetwrokruleSetPropertiesParameterSet, Position = 1, HelpMessage = "Namespace Name")]
-        [Parameter(Mandatory = true, ParameterSetName = NetwrokruleSetNamespacePropertiesParameterSet, Position = 0, HelpMessage = "Namespace Name")]
+        [Parameter(Mandatory = true, ParameterSetName = NetworkRuleSetPropertiesParameterSet, Position = 1, HelpMessage = "Namespace Name")]
+        [Parameter(Mandatory = true, ParameterSetName = NetworkRuleSetNamespacePropertiesParameterSet, Position = 0, HelpMessage = "Namespace Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasNamespaceName)]
         public string Namespace { get; set; }
@@ -57,27 +57,27 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.NetworkruleSet
                     ResourceGroupName = identifier.ResourceGroupName;
                     Namespace = identifier.ResourceName;
 
-                    PSNetworkRuleSetAttributes netwrokruleSet = Client.GetNetworkRuleSet(ResourceGroupName, Namespace);
-                    WriteObject(netwrokruleSet);
+                    PSNetworkRuleSetAttributes networkruleSet = Client.GetNetworkRuleSet(ResourceGroupName, Namespace);
+                    WriteObject(networkruleSet);
                 }
 
-                if (ParameterSetName.Equals(NetwrokruleSetPropertiesParameterSet))
+                if (ParameterSetName.Equals(NetworkRuleSetPropertiesParameterSet))
                 {
                     // Get a VNet Rule
-                    PSNetworkRuleSetAttributes netwrokruleSet = Client.GetNetworkRuleSet(ResourceGroupName, Namespace);
-                    WriteObject(netwrokruleSet);
+                    PSNetworkRuleSetAttributes networkruleSet = Client.GetNetworkRuleSet(ResourceGroupName, Namespace);
+                    WriteObject(networkruleSet);
                 }
 
                 // only Namespacename provided
-                if (ParameterSetName.Equals(NetwrokruleSetNamespacePropertiesParameterSet))
+                if (ParameterSetName.Equals(NetworkRuleSetNamespacePropertiesParameterSet))
                 {
                     var namespaceNames = Client.ListAllNamespaces();
                     IEnumerable<string>  ResourceGrouplst = from nsName in namespaceNames
                                         where nsName.Name == Namespace
                                         select nsName.ResourceGroup;
 
-                    PSNetworkRuleSetAttributes netwrokruleSet = Client.GetNetworkRuleSet(ResourceGrouplst.FirstOrDefault(), Namespace);
-                    WriteObject(netwrokruleSet);                    
+                    PSNetworkRuleSetAttributes networkruleSet = Client.GetNetworkRuleSet(ResourceGrouplst.FirstOrDefault(), Namespace);
+                    WriteObject(networkruleSet);                    
                 }
 
             }

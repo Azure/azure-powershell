@@ -2204,6 +2204,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             throw new NotImplementedException("Wrapping keys on managed HSM is only possible in track 2 SDK.");
         }
 
+        public byte[] GetManagedHsmRandomNumber(string managedHsmName, int count)
+        {
+            throw new NotImplementedException("Getting random number on managed HSM is only possible in track 2 SDK.");
+        }
+
         #region Key rotation
         public PSKeyVaultKey RotateManagedHsmKey(string managedHsmName, string keyName)
         {

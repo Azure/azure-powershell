@@ -25,7 +25,7 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
  [-EnableUltraSSD] [-ProximityPlacementGroupId <String>] [-HostId <String>] [-VmssId <String>]
  [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-EncryptionAtHost]
  [-HostGroupId <String>] [-SshKeyName <String>] [-GenerateSshKey] [-CapacityReservationGroupId <String>]
- [-UserData <String>] [-PlatformFaultDomain <Int32>] [-HibernationEnabled] [-vCPUCountAvailable <Int32>]
+ [-UserData <String>] [-ImageReferenceId <String>] [-PlatformFaultDomain <Int32>] [-HibernationEnabled] [-vCPUCountAvailable <Int32>]
  [-vCPUCountPerCore <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -50,7 +50,7 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
  [-DataDiskDeleteOption <String>] [-EnableUltraSSD] [-ProximityPlacementGroupId <String>] [-HostId <String>]
  [-VmssId <String>] [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-EncryptionAtHost]
  [-HostGroupId <String>] [-CapacityReservationGroupId <String>] [-UserData <String>]
- [-PlatformFaultDomain <Int32>] [-HibernationEnabled] [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>]
+ [-ImageReferenceId <String>] [-PlatformFaultDomain <Int32>] [-HibernationEnabled] [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -223,6 +223,23 @@ New-AzVm -ResourceGroupName ResourceGroup1 -Location SouthCentralUS -VM $Virtual
 ```
 
 This example deploys a Windows VM from the marketplace in one resource group with an existing subnet in another resource group.
+
+### Example 6: Creating a new VM as part of a VMSS with a PlatformFaultDomain value.
+```
+$resourceGroupName= <Resource Group Name>
+$domainNameLabel = <Domain Name Label Name>
+$vmname = "<Virtual Machine Name>
+$platformFaultDomainVMDefaultSet = 2
+$securePassword = <Password> | ConvertTo-SecureString -AsPlainText -Force
+$user = <Username>
+$cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword)
+$vmssName = <Vmss Name>;
+
+$vmssConfig = New-AzVmssConfig -Location $loc -PlatformFaultDomainCount $vmssFaultDomain;
+$vmss = New-AzVmss -ResourceGroupName $resourceGroupName -Name $vmssName -VirtualMachineScaleSet $vmssConfig;
+
+$vm = New-AzVM -ResourceGroupName $resourceGroupName -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -PlatformFaultDomain $platformFaultDomainVMDefaultSet -VmssId $vmss.Id
+```
 
 ## PARAMETERS
 
@@ -774,6 +791,21 @@ Accept wildcard characters: False
 
 ### -SecurityGroupName
 The name of a new (or existing) network security group (NSG) for the created VM to use.  If not specified, a name will be generated.
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ImageReferenceId
+Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.
 
 ```yaml
 Type: System.String

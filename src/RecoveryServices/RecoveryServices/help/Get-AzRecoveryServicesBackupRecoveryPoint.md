@@ -50,8 +50,8 @@ Set the vault context by using the -VaultId parameter.
 $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
 $startDate = (Get-Date).AddDays(-7)
 $endDate = Get-Date
-$container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVM -Status Registered -Name "V2VM" -VaultId $vault.ID
-$backupItem = Get-AzRecoveryServicesBackupItem -ContainerType AzureVM -WorkloadType AzureVM -VaultId $vault.ID
+$container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVM -Status Registered -FriendlyName "V2VM" -VaultId $vault.ID
+$backupItem = Get-AzRecoveryServicesBackupItem -Container $container -WorkloadType AzureVM -VaultId $vault.ID
 $rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $backupItem -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime() -VaultId $vault.ID
 ```
 
@@ -67,7 +67,7 @@ The last command gets an array of recovery points for the item in $BackupItem, a
 ```powershell
 $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
 $startDate = (Get-Date).AddDays(-7).ToUniversalTime()
-$endDate = Get-Date.ToUniversalTime()
+$endDate = (Get-Date).ToUniversalTime()
 $item = Get-AzRecoveryServicesBackupItem -BackupManagementType "AzureVM" -WorkloadType "AzureVM" -VaultId $vault.ID
 $rp = Get-AzRecoveryServicesBackupRecoveryPoint -StartDate $startDate -EndDate $endDate -VaultId $vault.ID -Item $item[3] 
 -IsReadyForMove $true -TargetTier VaultArchive
@@ -84,7 +84,7 @@ then stores them in the $rp variable.
 ```powershell
 $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
 $startDate = (Get-Date).AddDays(-7).ToUniversalTime()
-$endDate = Get-Date.ToUniversalTime()
+$endDate = (Get-Date).ToUniversalTime()
 $item = Get-AzRecoveryServicesBackupItem -BackupManagementType "AzureVM" -WorkloadType "AzureVM" -VaultId $vault.ID
 $rp = Get-AzRecoveryServicesBackupRecoveryPoint -StartDate $startDate -EndDate $endDate -VaultId $vault.ID -Item $item[3] 
 -Tier VaultStandard

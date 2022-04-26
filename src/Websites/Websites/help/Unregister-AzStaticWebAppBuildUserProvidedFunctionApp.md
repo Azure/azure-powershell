@@ -39,7 +39,7 @@ This command unregisters the user provided function app from the static site bui
 
 ### Example 2: Unregister the user provided function app from the static site build by pipeline
 ```powershell
-Register-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName 'resourceGroup' -Name 'staticweb00' -EnvironmentName 'default' -FunctionAppName 'functionAppName01' -FunctionAppResourceId 'functionAppId01' -FunctionAppRegion 'eastus' -IsForced | Unregister-AzStaticWebAppBuildUserProvidedFunctionApp
+Register-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName 'resourceGroup' -Name 'staticweb00' -EnvironmentName 'default' -FunctionAppName 'functionAppName01' -FunctionAppResourceId 'functionAppId01' -FunctionAppRegion 'eastus' -Forced | Unregister-AzStaticWebAppBuildUserProvidedFunctionApp
 ```
 
 This command unregisters the user provided function app from the static site build by pipeline.

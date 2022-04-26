@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "V2".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("V2", "V2", global::System.Management.Automation.CompletionResultType.ParameterValue, "V2");
+                yield return new global::System.Management.Automation.CompletionResult("'V2'", "V2", global::System.Management.Automation.CompletionResultType.ParameterValue, "V2");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "V3".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("V3", "V3", global::System.Management.Automation.CompletionResultType.ParameterValue, "V3");
+                yield return new global::System.Management.Automation.CompletionResult("'V3'", "V3", global::System.Management.Automation.CompletionResultType.ParameterValue, "V3");
             }
         }
     }

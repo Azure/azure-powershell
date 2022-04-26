@@ -65,9 +65,13 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
                 PoolOperations poolOperations = options.Context.BatchOMClient.PoolOperations;
                 IPagedEnumerable<ComputeNode> computeNodes = poolOperations.ListComputeNodes(poolId, listDetailLevel, options.AdditionalBehaviors);
-                Func<ComputeNode, PSComputeNode> mappingFunction = c => { return new PSComputeNode(c); };
-                return PSPagedEnumerable<PSComputeNode, ComputeNode>.CreateWithMaxCount(
-                    computeNodes, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
+                return PSPagedEnumerable<PSComputeNode, ComputeNode>.CreateWithMaxCount
+                (
+                    computeNodes,
+                    c => { return new PSComputeNode(c); },
+                    options.MaxCount,
+                    () => WriteMaxCount(options.MaxCount)
+                );
             }
         }
 

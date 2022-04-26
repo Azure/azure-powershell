@@ -18,6 +18,18 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.5.0
+* Supported DaysAfterLastTierChangeGreaterThan in Management Policy
+    -  `Add-AzStorageAccountManagementPolicyAction`
+* Fixed the issue that upload blob might fail on Linux [#17743]
+    -  `Set-AzStorageBlobContent`
+* Supported AllowPermanentDelete when enable blob soft delete
+    - `Enable-AzStorageBlobDeleteRetentionPolicy`
+* Added breaking change warning message for upcoming cmdlet breaking change
+    - `Get-AzStorageFile`
+
+## Version 4.4.1
 * Fixed get blob by tag failure on Powershell 7.2.2
     -  `Get-AzStorageBlobByTag`
 

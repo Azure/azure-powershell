@@ -61,7 +61,7 @@ This command removes unlocked ImmutabilityPolicy of a Storage blob container, wi
 
 ### Example 3: Remove unlocked ImmutabilityPolicy of a Storage blob container, with container object
 ```
-PS C:\>$containerObject = Get-AzStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -Name "myContainer"
+PS C:\>$containerObject = Get-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -Name "myContainer"
 PS C:\>$policy = Get-AzRmStorageContainerImmutabilityPolicy -Container $containerObject
 PS C:\>Remove-AzRmStorageContainerImmutabilityPolicy -Container $containerObject -Etag $policy.Etag
 ```

@@ -33,9 +33,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public bool? EnablePurgeProtection { get; set; }
         public bool? EnableRbacAuthorization { get; set; }
         public int? SoftDeleteRetentionInDays { get; set; }
+        public string PublicNetworkAccess { get; set; }
         public Guid TenantId { get; set; }
         public AccessPolicyEntry AccessPolicy { get; set; }
         public NetworkRuleSet NetworkAcls { get; set; }
+        public MHSMNetworkRuleSet MhsmNetworkAcls { get; set; }
         public CreateMode? CreateMode { get; set; }
         public string[] Administrator { get; set; }
     }

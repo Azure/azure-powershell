@@ -161,6 +161,14 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         public string MaintenanceConfigurationId { get; set; }
 
         /// <summary>
+        /// Gets or sets the total number of high availability replicas associated with the elastic pool
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The total number of high availability replicas associated with the elastic pool.")]
+        [ValidateNotNullOrEmpty]
+        public int HighAvailabilityReplicaCount { get; set; }
+
+        /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
@@ -222,7 +230,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
                 MaxCapacity = elasticPool.DatabaseCapacityMax
             };
 
-            if (ParameterSetName == DtuPoolParameterSet)
+            if (ParameterSetName == DtuPoolParameterSet && !elasticPool.Edition.Equals("Hyperscale"))
             {
                 if(!string.IsNullOrWhiteSpace(Edition) || MyInvocation.BoundParameters.ContainsKey("Dtu"))
                 {
@@ -241,7 +249,8 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
             }
             else
             {
-                if(!string.IsNullOrWhiteSpace(Edition) || MyInvocation.BoundParameters.ContainsKey("VCore") || !string.IsNullOrWhiteSpace(ComputeGeneration))
+                if(!string.IsNullOrWhiteSpace(Edition) || MyInvocation.BoundParameters.ContainsKey("VCore") || !string.IsNullOrWhiteSpace(ComputeGeneration)
+                    || MyInvocation.BoundParameters.ContainsKey("HighAvailabilityReplicaCount"))
                 {
                     string skuTier = string.IsNullOrWhiteSpace(Edition) ? poolCurrentSku.Tier : Edition;
 
@@ -249,6 +258,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
                     newModel.Edition = skuTier;
                     newModel.Capacity = MyInvocation.BoundParameters.ContainsKey("VCore") ? VCore : poolCurrentSku.Capacity;
                     newModel.Family = string.IsNullOrWhiteSpace(ComputeGeneration) ? poolCurrentSku.Family : ComputeGeneration;
+                    newModel.HighAvailabilityReplicaCount = MyInvocation.BoundParameters.ContainsKey("HighAvailabilityReplicaCount") ? HighAvailabilityReplicaCount : elasticPool.HighAvailabilityReplicaCount;
                 }
 
                 if (MyInvocation.BoundParameters.ContainsKey("DatabaseVCoreMin") || MyInvocation.BoundParameters.ContainsKey("DatabaseVCoreMax"))

@@ -23,11 +23,17 @@ Clears the vulnerability assessment rule baseline.
 ### [Convert-AzSynapseSqlPoolVulnerabilityAssessmentScan](Convert-AzSynapseSqlPoolVulnerabilityAssessmentScan.md)
 Converts a vulnerability assessment scan results to Excel format.
 
+### [Disable-AzSynapseActiveDirectoryOnlyAuthentication](Disable-AzSynapseActiveDirectoryOnlyAuthentication.md)
+Disables Azure Active Directory (Azure AD) only authentication for a specific Synapse workspace.
+
 ### [Disable-AzSynapseSqlAdvancedDataSecurity](Disable-AzSynapseSqlAdvancedDataSecurity.md)
 Disables Advanced Data Security on a workspace.
 
 ### [Disable-AzSynapseSqlPoolSensitivityRecommendation](Disable-AzSynapseSqlPoolSensitivityRecommendation.md)
 Disables (dismisses) sensitivity recommendations on columns in the SQL pool.
+
+### [Enable-AzSynapseActiveDirectoryOnlyAuthentication](Enable-AzSynapseActiveDirectoryOnlyAuthentication.md)
+Enables Azure Active Directory (Azure AD) only authentication for a specific Synapse workspace.
 
 ### [Enable-AzSynapseSqlAdvancedDataSecurity](Enable-AzSynapseSqlAdvancedDataSecurity.md)
 Enables Advanced Data Security on a workspace.
@@ -46,6 +52,9 @@ Exports a sql script from a Synapse workspace.
 
 ### [Export-AzSynapseSparkConfiguration](Export-AzSynapseSparkConfiguration.md)
 Exports a Synapse spark configuration to an output folder.
+
+### [Get-AzSynapseActiveDirectoryOnlyAuthentication](Get-AzSynapseActiveDirectoryOnlyAuthentication.md)
+Gets Azure Active Directory (Azure AD) only authentication for a specific Synapse workspace.
 
 ### [Get-AzSynapseActivityRun](Get-AzSynapseActivityRun.md)
 Gets information about activity runs for a pipeline run.
