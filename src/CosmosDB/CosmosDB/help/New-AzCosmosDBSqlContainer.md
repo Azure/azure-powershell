@@ -20,8 +20,8 @@ New-AzCosmosDBSqlContainer -ResourceGroupName <String> -AccountName <String> -Da
  [-AutoscaleMaxThroughput <Int32>] [-TtlInSeconds <Int32>] [-UniqueKeyPolicy <PSSqlUniqueKeyPolicy>]
  [-ConflictResolutionPolicyMode <String>] [-ConflictResolutionPolicyPath <String>]
  [-ConflictResolutionPolicyProcedure <String>] [-ConflictResolutionPolicy <PSSqlConflictResolutionPolicy>]
- [-AnalyticalStorageTtl <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ClientEncryptionPolicy <PSSqlClientEncryptionPolicy>] [-AnalyticalStorageTtl <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
@@ -31,8 +31,9 @@ New-AzCosmosDBSqlContainer -Name <String> [-IndexingPolicy <PSSqlIndexingPolicy>
  [-AutoscaleMaxThroughput <Int32>] [-TtlInSeconds <Int32>] [-UniqueKeyPolicy <PSSqlUniqueKeyPolicy>]
  [-ConflictResolutionPolicyMode <String>] [-ConflictResolutionPolicyPath <String>]
  [-ConflictResolutionPolicyProcedure <String>] [-ConflictResolutionPolicy <PSSqlConflictResolutionPolicy>]
- [-AnalyticalStorageTtl <Int32>] -ParentObject <PSSqlDatabaseGetResults>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ClientEncryptionPolicy <PSSqlClientEncryptionPolicy>] [-AnalyticalStorageTtl <Int32>]
+ -ParentObject <PSSqlDatabaseGetResults> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -98,6 +99,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ClientEncryptionPolicy
+ClientEncryptionPolicy Object of type PSSqlClientEncryptionPolicy, when provided this is set as the ClientEncryptionPolicy of the container.
+
+```yaml
+Type: Microsoft.Azure.Commands.CosmosDB.Models.PSSqlClientEncryptionPolicy
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
