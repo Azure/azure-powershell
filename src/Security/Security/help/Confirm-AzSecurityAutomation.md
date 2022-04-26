@@ -8,7 +8,7 @@ schema: 2.0.0
 # Confirm-AzSecurityAutomation
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Validates the security automation model before create or update. Any validation errors are returned to the client
 
 ## SYNTAX
 
@@ -37,16 +37,16 @@ Confirm-AzSecurityAutomation [-Location <String>] [-Etag <String>] [-Tag <Hashta
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Validates the security automation model before create or update. Any validation errors are returned to the client
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Confirm-AzSecurityAutomation -Name 'SampleAutomation' -ResourceGroupName 'SampleResourceGroup' -Description 'Sample security automation' -Scope $scopes -Source $sources -Action $actions
 ```
 
-{{ Add example description here }}
+Validates that the creation of security automation named "SampleAutomation" under resource group named "SampleResourceGroup"
 
 ## PARAMETERS
 

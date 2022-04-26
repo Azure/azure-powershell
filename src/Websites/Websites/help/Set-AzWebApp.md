@@ -70,7 +70,7 @@ ContosoWebApp. This replaces all existing connection strings for Web App Contoso
 
 ```powershell
 $hashtable =  @{myConnectionString = @{Type='MySql';Value='MySql Connection string'}}
-Set-AzWebApp -Name 'ContosoWebApp' -ResourceGroupName 'Default-Web-WestUS' -ConnectionString $hashtable
+Set-AzWebApp -Name 'ContosoWebApp' -ResourceGroupName 'Default-Web-WestUS' -ConnectionStrings $hashtable
 ```
 
 ### Example 5

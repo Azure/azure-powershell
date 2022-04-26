@@ -12,7 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Remove-AzDataMigrationSqlServiceNode' {
-    It 'DeleteExpanded' {
+    It 'DeleteExpanded' -skip {
         $temp =  Get-AzDataMigrationSqlServiceIntegrationRuntimeMetric -ResourceGroupName $env.RemoveNode.GroupName -SqlMigrationServiceName $env.RemoveNode.SqlMigrationServiceName
         $nodeList = $temp.Node
         $cnt1 = $nodeList.Count

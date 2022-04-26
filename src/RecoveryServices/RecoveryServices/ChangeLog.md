@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 5.3.1
 * Added support for multiple backups per day (hourly) Enhanced policy for workloadType AzureVM.
 
 ## Version 5.3.0

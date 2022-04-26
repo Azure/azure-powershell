@@ -25,10 +25,11 @@ For further reading, please visit https://docs.microsoft.com/en-us/dotnet/standa
 5. Extract DLL file in nuget package folder `lib/net461` (alternatively, `netstandard2.0`) of `Azure.Core` and changed dependencies and copy them to `src/lib/NetFxPreloadAssemblies`.
 6. Update assembly version of `Azure.Core` and changed dependencies to .NET Framework in `/src/Accounts/Authentication/Utilities/CustomAssemblyResolver.cs`.
 7. Verify built `Az.Accounts` can work with existing Azure PowerShell modules on PowerShell 7 and Windows PowerShell.
-   - Import module into PowerShell 7 or Windows PowerShell.
-   ```powershell
-   Import-Module .\artifacts\Release\Az.Accounts\Az.Accounts.psd1
-   ```
+   - Import module into PowerShell 7 or Windows PowerShell, and ensure there is no error in verbose output
+    ```powershell
+    $VerbosePreference = "Continue"
+    Import-Module .\artifacts\Release\Az.Accounts\Az.Accounts.psd1
+    ```
    - Connect to Azure and switch to your test subscription
     ```powershell
     Connect-AzAccount

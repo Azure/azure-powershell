@@ -18,7 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
- [Breaking change] Sample has been replaced by Examples in 
+
+[Breaking change] Sample has been replaced by Examples in 
  `New-AzApiManagementOperation` and `Set-AzApiManagementOperation`
 
 * `Add-AzApiManagementRegion`: New parameter added:
@@ -62,6 +63,9 @@
  [-ContactEmail <String>]
  [-LicenseName <String>]
  [-LicenseUrl <String>]
+
+## Version 2.3.2
+Added warning message for upcoming breaking change.
 
 ## Version 2.3.1
 * Fixed a bug in `Get-AzApiManagementTenantGitAccess` cmdlet.

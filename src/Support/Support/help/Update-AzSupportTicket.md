@@ -70,7 +70,7 @@ test1 test title1                  150010521000317 Moderate Virtual Machine runn
 
 ### Example 3: Update contact details of support ticket by specify contact object.
 ```powershell
-$contactDetail = new-object Microsoft.Azure.Commands.Support.Models.PSContactProfile
+$contactDetail = New-Object Microsoft.Azure.Commands.Support.Models.PSContactProfile
 $contactDetail.FirstName = "first name updated"
 $contactDetail.LastName = "last name updated"
 Update-AzSupportTicket -Name "test1" -CustomerContactDetail $contactDetail 
