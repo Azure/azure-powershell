@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 
+## Version 1.3.0
+* Added new cmdlets for security  SecuritySolutionsReferenceData API
+
 ## Version 1.2.0
 * Added new cmdlets for security Automations API
 
