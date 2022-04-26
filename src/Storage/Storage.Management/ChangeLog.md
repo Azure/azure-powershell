@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Show OAuth token in debug log in debug build only
+    -  `New-AzStorageContext`
 
 ## Version 4.5.0
 * Supported DaysAfterLastTierChangeGreaterThan in Management Policy
