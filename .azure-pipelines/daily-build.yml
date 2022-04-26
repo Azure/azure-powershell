@@ -146,3 +146,15 @@ jobs:
       artifactName: artifacts
       targetPath: artifacts
     condition: succeededOrFailed()
+    
+  - task: AzurePowerShell@5
+    displayName: 'Push packages to storage account'
+    inputs:
+      azureSubscription: 'azureps-infra-sp'
+      ScriptType: InlineScript
+      Inline: |
+        $context = New-AzStorageContext -StorageAccountName "$(StorageAccountName)"
+        # Push nupkg files
+        Get-ChildItem -Path . -Filter *.nupkg | Set-AzStorageBlobContent -Container $(ContainerName) -Context $context
+      azurePowerShellVersion: LatestVersion
+    condition: and(succeeded(), eq(variables['PushPackageToStorageAccount'], 'true'))
