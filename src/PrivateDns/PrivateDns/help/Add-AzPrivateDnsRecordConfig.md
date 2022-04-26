@@ -142,13 +142,13 @@ This example adds a CNAME record to an existing record set.
 
 ### Example 4: Add a MX record to a record set
 ```powershell
-$RecordSet = Get-AzPrivateDnsRecordSet -Name www -RecordType MX -ResourceGroupName MyResourceGroup -ZoneName myzone.com
+$RecordSet = Get-AzPrivateDnsRecordSet -Name @ -RecordType MX -ResourceGroupName MyResourceGroup -ZoneName myzone.com
 Add-AzPrivateDnsRecordConfig -Exchange mail.microsoft.com -Preference 5 -RecordSet $RecordSet
 Set-AzPrivateDnsRecordSet -RecordSet $RecordSet
 
 # You can also pipe the above sequence:
 
-Get-AzPrivateDnsRecordSet -Name www -RecordType MX -ResourceGroupName MyResourceGroup -ZoneName myzone.com | Add-AzPrivateDnsRecordConfig -Exchange mail.microsoft.com -Preference 5 | Set-AzPrivateDnsRecordSet
+Get-AzPrivateDnsRecordSet -Name "@" -RecordType MX -ResourceGroupName MyResourceGroup -ZoneName myzone.com | Add-AzPrivateDnsRecordConfig -Exchange mail.microsoft.com -Preference 5 | Set-AzPrivateDnsRecordSet
 ```
 
 ```output
