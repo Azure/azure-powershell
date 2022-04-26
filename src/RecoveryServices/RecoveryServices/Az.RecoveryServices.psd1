@@ -199,7 +199,10 @@ CmdletsToExport = 'Get-AzRecoveryServicesBackupProperty',
                'Test-AzRecoveryServicesDSMove', 
                'Initialize-AzRecoveryServicesDSMove', 
                'Get-AzRecoveryServicesBackupRecommendedArchivableRPGroup', 
-               'Move-AzRecoveryServicesBackupRecoveryPoint'
+               'Move-AzRecoveryServicesBackupRecoveryPoint',
+               'Get-AzRecoveryServicesResourceGuardMapping',
+               'Remove-AzRecoveryServicesResourceGuardMapping',
+               'Set-AzRecoveryServicesResourceGuardMapping'
 
 # Variables to export from this module
 # VariablesToExport = @()
