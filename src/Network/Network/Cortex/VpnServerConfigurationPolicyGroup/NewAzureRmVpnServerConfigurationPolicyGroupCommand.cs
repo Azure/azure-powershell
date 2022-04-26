@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Network
         public string ServerConfigurationResourceId { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "The Priority of the policy group.",
             ValueFromPipelineByPropertyName = true)]
         public int Priority { get; set; }
