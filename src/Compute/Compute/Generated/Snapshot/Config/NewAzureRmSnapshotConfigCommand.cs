@@ -173,6 +173,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "True if the image from which the OS disk is created supports accelerated networking.")]
         public bool? AcceleratedNetwork { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Additional authentication requirements when exporting or uploading to a disk or snapshot.")]
+        [PSArgumentCompleter("AzureActiveDirectory", "None")]
+        public string DataAccessAuthMode { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("Snapshot", "New"))
@@ -354,7 +361,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 PurchasePlan = this.IsParameterBound(c => c.PurchasePlan) ? this.PurchasePlan : null,
                 SupportsHibernation = this.IsParameterBound(c => c.SupportsHibernation) ? SupportsHibernation : null,
                 SupportedCapabilities = vSupportedCapabilities,
-                PublicNetworkAccess = this.IsParameterBound(c => c.PublicNetworkAccess) ? PublicNetworkAccess : null
+                PublicNetworkAccess = this.IsParameterBound(c => c.PublicNetworkAccess) ? PublicNetworkAccess : null,
+                DataAccessAuthMode = this.IsParameterBound(c => c.DataAccessAuthMode) ? DataAccessAuthMode : null
             };
 
             WriteObject(vSnapshot);

@@ -101,6 +101,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [PSArgumentCompleter("Enabled", "Disabled")]
         public string PublicNetworkAccess { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Additional authentication requirements when exporting or uploading to a disk or snapshot.")]
+        [PSArgumentCompleter("AzureActiveDirectory", "None")]
+        public string DataAccessAuthMode { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("SnapshotUpdate", "New"))
@@ -202,7 +209,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 Encryption = vEncryption,
                 Sku = vSku,
                 SupportsHibernation = this.IsParameterBound(c => c.SupportsHibernation) ? SupportsHibernation : null,
-                PublicNetworkAccess = this.IsParameterBound(c => c.PublicNetworkAccess) ? PublicNetworkAccess : null
+                PublicNetworkAccess = this.IsParameterBound(c => c.PublicNetworkAccess) ? PublicNetworkAccess : null,
+                DataAccessAuthMode = this.IsParameterBound(c => c.DataAccessAuthMode) ? DataAccessAuthMode : null
             };
 
             WriteObject(vSnapshotUpdate);
