@@ -52,6 +52,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.Migrate/assessmentProjects", "2020-05-01-preview", false, false);
             RegisterConfiguration("Microsoft.Migrate/migrateProjects", "2020-06-01-preview", false, false);
             RegisterConfiguration("Microsoft.Network/applicationgateways", "2020-05-01", true, false);
+            RegisterConfiguration("Microsoft.Network/privateLinkServices", "2020-05-01", true, false, false);
             RegisterConfiguration("Microsoft.OffAzure/masterSites", "2020-07-07", false, false);
             RegisterConfiguration("Microsoft.PowerBI/privateLinkServicesForPowerBI", "2020-06-01", false, true);
             RegisterConfiguration("Microsoft.Purview/accounts", "2020-12-01-preview", true, true);
@@ -71,15 +72,23 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.Web/hostingEnvironments", "2020-10-01", true, false);
             RegisterConfiguration("Microsoft.BotService/botServices", "2021-05-01-preview", true, true);
         }
-
-        private static void RegisterConfiguration(string type, string apiVersion, bool hasConnectionsURI = false, bool hasResourceURI = false)
+        /// <summary>
+        /// Register priavte endopoint connection and private link resource configuration
+        /// </summary>
+        /// <param name="type">Resource type</param>
+        /// <param name="apiVersion">Resource api version</param>
+        /// <param name="hasConnectionsURI">True if the private endpoint connection can be list by URL <see cref="GenericProvider.BuildPrivateEndpointConnectionsURL(string, string)"/>, otherwise it can be list by URL <see cref="GenericProvider.BuildPrivateEndpointConnectionsOwnerURL(string, string)"/></param>
+        /// <param name="hasResourceURIById">True if the private link resource can be get by Id, otherwise it can be list</param>
+        /// <param name="hasSupportResourceURI">True if the private link resource be supported, otherwise false</param>
+        private static void RegisterConfiguration(string type, string apiVersion, bool hasConnectionsURI = false, bool hasResourceURIById = false, bool hasSupportResourceURI = true)
         {
             ProviderConfiguration configuration = new ProviderConfiguration
             {
                 Type = type,
                 ApiVersion = apiVersion,
                 HasConnectionsURI = hasConnectionsURI,
-                HasResourceURI = hasResourceURI
+                HasResourceURIById = hasResourceURIById,
+                HasSupportResourceURI = hasSupportResourceURI,
             };
             _configurations.Add(type, configuration);
         }
@@ -87,7 +96,8 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
         public string Type { get; set; }
         public string ApiVersion { get; set; }
         public bool HasConnectionsURI { get; set; }
-        public bool HasResourceURI { get; set; }
+        public bool HasResourceURIById { get; set; }
+        public bool HasSupportResourceURI { get; set; }
 
         public static ProviderConfiguration GetProviderConfiguration(string type)
         {
