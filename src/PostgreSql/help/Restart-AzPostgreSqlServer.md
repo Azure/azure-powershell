@@ -41,7 +41,7 @@ This cmdlet restarts PostgreSql server by resource group and server name.
 ```powershell
 $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/restart"
 Restart-AzPostgreSqlServer -InputObject $ID
- 
+
 ```
 
 These cmdlets restart PostgreSql server by identity.

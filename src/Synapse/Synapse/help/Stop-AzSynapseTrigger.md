@@ -37,23 +37,23 @@ The **Stop-AzSynapseTrigger** cmdlet stops a trigger in a workspace. If the trig
 
 ### Example 1
 ```powershell
-PS C:\> Stop-AzSynapseTrigger -WorkspaceName ContosoWorkspace -Name ContosoTrigger
+Stop-AzSynapseTrigger -WorkspaceName ContosoWorkspace -Name ContosoTrigger
 ```
 
 Stops a trigger called ContosoTrigger in the workspace ContosoWorkspace.
 
 ### Example 2
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Stop-AzSynapseTrigger -Name ContosoTrigger
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Stop-AzSynapseTrigger -Name ContosoTrigger
 ```
 
 Stops a trigger called ContosoTrigger in the workspace ContosoWorkspace through pipeline.
 
 ### Example 3
 ```powershell
-PS C:\> $trigger = Get-AzSynapseTrigger -WorkspaceName ContosoWorkspace -Name ContosoTrigger
-PS C:\> $trigger | Stop-AzSynapseTrigger
+$trigger = Get-AzSynapseTrigger -WorkspaceName ContosoWorkspace -Name ContosoTrigger
+$trigger | Stop-AzSynapseTrigger
 ```
 
 Stop a trigger called ContosoTrigger in the workspace ContosoWorkspace through pipeline.

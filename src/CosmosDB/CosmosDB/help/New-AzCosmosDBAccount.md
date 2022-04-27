@@ -33,7 +33,7 @@ Create a new CosmosDB Account in the given ResourceGroup.
 
 ### Example 1
 ```powershell
-New-AzCosmosDBAccount -ResourceGroupName resourceGroupName -Name databaseAccountName  -Location "East US"
+New-AzCosmosDBAccount -ResourceGroupName resourceGroupName -Name databaseAccountName -Location "East US"
 ```
 
 ```output
@@ -64,7 +64,7 @@ A new CosmosDB Account with name databaseAccountName is created in the ResourceG
 
 ### Example 2
 ```powershell
-New-AzCosmosDBAccount -ResourceGroupName resourceGroupName -Name restored-account-name  -Location "West US" -FromPointInTimeBackup -RestoreSourceId /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/restorableDatabaseAccounts/{instance-id} -RestoreTimesampInUtc 2020-07-20T17:19:25+0000
+New-AzCosmosDBAccount -ResourceGroupName resourceGroupName -Name restored-account-name -Location "West US" -FromPointInTimeBackup -SourceRestorableDatabaseAccountId /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/restorableDatabaseAccounts/{instance-id} -RestoreTimesampInUtc 2020-07-20T17:19:25+0000
 ```
 
 ```output
@@ -106,7 +106,7 @@ A new account with the name restoredDatabaseAccountName is created by restoring 
 
 ### Example 3
 ```powershell
-New-AzCosmosDBAccount -ResourceGroupName resourceGroupName -Name restored-account-name  -Location "West US" -FromPointInTimeBackup -SourceDatabaseAccountName source-database-account-name -RestoreTimesampInUtc 2020-07-20T17:19:25+0000
+New-AzCosmosDBAccount -ResourceGroupName resourceGroupName -Name restored-account-name -Location "West US" -FromPointInTimeBackup -SourceDatabaseAccountName source-database-account-name -RestoreTimesampInUtc 2020-07-20T17:19:25+0000
 ```
 
 ```output
@@ -230,6 +230,21 @@ The time(in hours) for which each backup is retained (only for accounts with per
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BackupStorageRedundancy
+The redundancy type of the backup Storage account
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -632,21 +647,6 @@ The cmdlet is not run.
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -BackupStorageRedundancy
-The redundancy type of the backup Storage account
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named

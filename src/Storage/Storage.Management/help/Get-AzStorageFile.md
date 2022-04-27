@@ -44,7 +44,7 @@ You can use the **IsDirectory** property to distinguish between folders and file
 
 ### Example 1: List directories in a share
 ```
-PS C:\>Get-AzStorageFile -ShareName "ContosoShare06" | where {$_.GetType().Name -eq "AzureStorageFileDirectory"}
+PS C:\>Get-AzStorageFile -ShareName "ContosoShare06" | Where-Object {$_.GetType().Name -eq "AzureStorageFileDirectory"}
 ```
 
 This command lists only the directories in the share ContosoShare06.

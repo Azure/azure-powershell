@@ -37,7 +37,7 @@ The **Remove-AzStackEdgeUser** cmdlet removes a user on the Stack Edge device. C
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzStackEdgeUser -ResourceGroupName resourceGroupName -DeviceName deviceName -Name username
+Remove-AzStackEdgeUser -ResourceGroupName resourceGroupName -DeviceName deviceName -Name username
 ```
 
 ## PARAMETERS

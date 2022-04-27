@@ -34,7 +34,7 @@ Creates a new CosmosDB Cassandra Table.
 ## EXAMPLES
 
 ### Example 1
-```powershell       
+```powershell
 $Column1 = New-AzCosmosDBCassandraColumn -Name "ColumnA" -Type "int"
 $Column2 = New-AzCosmosDBCassandraColumn -Name "ColumnB" -Type "ascii"
 $Column3 = New-AzCosmosDBCassandraColumn -Name "ColumnC" -Type "int"

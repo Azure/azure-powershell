@@ -29,8 +29,10 @@ The Get-AzSecuritySecureScore comlet gets security secure scores and their resul
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSecuritySecureScore
+Get-AzSecuritySecureScore
+```
 
+```output
 Id : /subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Security/secureScores/ascScore
 Name : ascScore
 Type : Microsoft.Security/secureScores
@@ -49,7 +51,7 @@ Gets all the security secure scores in a subscription
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -64,7 +66,7 @@ Accept wildcard characters: False
 Resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SubscriptionLevelResource
 Aliases:
 

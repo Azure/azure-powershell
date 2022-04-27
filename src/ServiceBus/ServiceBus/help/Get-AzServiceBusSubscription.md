@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.dll-Help.xml
 Module Name: Az.ServiceBus
 online version: https://docs.microsoft.com/powershell/module/az.servicebus/get-azservicebussubscription
@@ -23,9 +23,11 @@ The **Get-AzServiceBusSubscription** cmdlet returns a subscription description f
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Get-AzServiceBusSubscription -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -SubscriptionName SB-TopicSubscription-Example1
 ```
-PS C:\> Get-AzServiceBusSubscription -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -SubscriptionName SB-TopicSubscription-Example1
 
+```output
 Name                                      : SB-TopicSubscription-Example1
 AccessedAt                                : 1/20/2017 3:18:54 AM
 AutoDeleteOnIdle                          : 10675199.02:48:05.4775807
@@ -45,15 +47,15 @@ UpdatedAt                                 : 1/20/2017 3:18:54 AM
 Returns a subscription description for the specified Service Bus topic.
 
 ### Example 2
-```
-PS C:\> Get-AzServiceBusSubscription -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1
+```powershell
+Get-AzServiceBusSubscription -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1
 ```
 
 Returns list of subscriptions for specified Service Bus topic. By default 100 subscriptions will be returned, for number of subscriptions please use -MaxCount Parameter
 
 ### Example 3
-```
-PS C:\> Get-AzServiceBusSubscription -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -MaxCount 150
+```powershell
+Get-AzServiceBusSubscription -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -MaxCount 150
 ```
 
 Returns list of first 150 subscriptions for specified Service Bus topic.

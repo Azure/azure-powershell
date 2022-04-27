@@ -28,14 +28,13 @@ This command gets the output of source control sync job with id 08d6d266-27b6-46
 
 
 ```powershell
-PS C:\> Get-AzAutomationSourceControlSyncJobOutput -ResourceGroupName "rg1" `
+Get-AzAutomationSourceControlSyncJobOutput -ResourceGroupName "rg1" `
                                                         -AutomationAccountName "devAccount" `
                                                         -Name "VSTSNative"
                                                         -Id "08d6d266-27b6-463c-beea-bc48a67ace15" `
                                                         -Stream Output | ForEach-Object {$_.summary}
-
-========================================================================================================
-
+```
+```output
 Azure Automation Source Control Public Preview.
 Supported runbooks to sync: PowerShell Workflow, PowerShell Scripts, DSC Configurations, Graphical, and Python 2.
 Setting AzureRmEnvironment.
@@ -61,11 +60,6 @@ File is not a runbook:
 
 File size exceeds 1Mb:
  - RunbookD_GreatherThan1MB.ps1
-
-Invalid runbook name:
- - RunbookZ_ĈĦŕĬŞ.ps1
-
-========================================================================================================
 ```
 
 ## PARAMETERS

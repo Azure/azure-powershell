@@ -256,5 +256,19 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             TestRunner.RunTestScript("Test-RemoveVmssForceDeletion");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetRepairsAction()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetRepairsAction");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetOrchestrationModeNullChecks()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetOrchestrationModeNullChecks");
+        }
+
     }
 }

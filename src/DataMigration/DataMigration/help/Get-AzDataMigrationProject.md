@@ -37,7 +37,7 @@ The Get-AzDataMigrationProject cmdlet retrieves the properties of an Azure Datab
 
 ### Example 1
 ```powershell
-Get-AzDataMigrationProject -ServiceName testService -Name testProject -ResourceGroup testResourceGroup
+Get-AzDataMigrationProject -ServiceName testService -Name testProject -ResourceGroupName testResourceGroup
 ```
 
 The above example retrieves  Azure Database Migration project named TestProject in the resource group called testResourceGroup and under service called testService

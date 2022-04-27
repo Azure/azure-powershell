@@ -24,8 +24,8 @@ The **Publish-AzAutomationRunbook** cmdlet publishes a runbook for use in the pr
 ## EXAMPLES
 
 ### Example 1: Publish a runbook
-```
-PS C:\>Publish-AzAutomationRunbook -AutomationAccountName "Contoso17" -Name "Runbk01" -ResourceGroupName "ResourceGroup01"
+```powershell
+Publish-AzAutomationRunbook -AutomationAccountName "Contoso17" -Name "Runbk01" -ResourceGroupName "ResourceGroup01"
 ```
 
 This command publishes the runbook named Runbk01 in the Azure Automation account named Contoso17.

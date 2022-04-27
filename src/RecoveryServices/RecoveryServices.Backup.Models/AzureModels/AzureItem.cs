@@ -86,6 +86,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             DeleteState = ItemDeleteState.NotDeleted;
         }
     }
+
     public class AzureItemExtendedInfo : ItemExtendedInfoBase
     {
         /// <summary>

@@ -14,8 +14,8 @@ Stop in-progress database migration to SQL Managed Instance.
 
 ```
 Stop-AzDataMigrationToSqlManagedInstance -ManagedInstanceName <String> -ResourceGroupName <String>
- -TargetDbName <String> [-SubscriptionId <String>] [-MigrationOperationId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -TargetDbName <String> [-SubscriptionId <String>] -MigrationOperationId <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,7 +27,7 @@ Stop in-progress database migration to SQL Managed Instance.
 ```powershell
 $miMigration = Get-AzDataMigrationToSqlManagedInstance -ResourceGroupName "MyResourceGroup" -ManagedInstanceName "MyManagedInstance" -TargetDbName "MyDatabase"
 Stop-AzDataMigrationToSqlManagedInstance -ResourceGroupName "MyResourceGroup" -ManagedInstanceName "MyManagedInstance" -TargetDbName "MyDatabase" -MigrationOperationId $miMigration.MigrationOperationId
-Get-AzDataMigrationToSqlManagedInstance -InputObject $miMigration 
+Get-AzDataMigrationToSqlManagedInstance -InputObject $miMigration
 ```
 
 ```output
@@ -93,7 +93,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

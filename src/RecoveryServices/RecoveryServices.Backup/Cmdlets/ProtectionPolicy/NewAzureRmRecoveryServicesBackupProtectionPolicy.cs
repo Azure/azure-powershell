@@ -126,15 +126,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 psBackupProvider.CreatePolicy();
                 
                 WriteDebug("Successfully created policy, now fetching it from service: " + Name);
-
+                
                 // now get the created policy and return
                 ServiceClientModel.ProtectionPolicyResource policy = PolicyCmdletHelpers.GetProtectionPolicyByName(
                     Name,
                     ServiceClientAdapter,
                     vaultName: vaultName,
                     resourceGroupName: resourceGroupName);
+
                 // now convert service Policy to PSObject
                 WriteObject(ConversionHelpers.GetPolicyModel(policy));
+
             }, ShouldProcess(Name, VerbsCommon.New));
         }
     }

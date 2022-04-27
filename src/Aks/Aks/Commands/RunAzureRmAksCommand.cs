@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Remove managed Kubernetes cluster without prompt")]
+        [Parameter(Mandatory = false, HelpMessage = "Execute the command without confirm")]
         public SwitchParameter Force { get; set; }
 
         private string GetCommandContext()

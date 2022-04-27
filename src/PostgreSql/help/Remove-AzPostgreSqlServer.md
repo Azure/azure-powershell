@@ -41,7 +41,7 @@ This cmdlet removes PostgreSql server by resourceGroup and server name.
 ```powershell
 $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer"
 Remove-AzPostgreSqlServer -InputObject $ID
- 
+
 ```
 
 These cmdlets remove PostgreSql server by identity.

@@ -63,7 +63,7 @@ This cmdlet gets Virtual Network Rule by name.
 
 ### Example 3: Get Virtual Network Rule by identity
 ```powershell
- $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/virtualNetworkRules/vnet"
+$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/virtualNetworkRules/vnet"
 Get-AzPostgreSqlVirtualNetworkRule -InputObject $ID
 ```
 

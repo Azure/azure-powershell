@@ -17,7 +17,7 @@ Describe 'New-AzKustoCluster' {
     }
     It 'CreateExpanded' {
         $name = "testcluster" + $env.rstr4
-        $clusterCreated = New-AzKustoCluster -ResourceGroupName $env.resourceGroupName -Name $name -Location $env.location -SkuName $env.skuName -SkuTier $env.skuTier
+        $clusterCreated = New-AzKustoCluster -ResourceGroupName $env.resourceGroupName -Name $name -Location $env.location -SkuName $env.skuName -SkuTier $env.skuTier -SkuCapacity $env.capacity
         Validate_Cluster $clusterCreated $name  $env.location  "Running" "Succeeded" $env.resourceType $env.skuName $env.skuTier $env.capacity
         { Remove-AzKustoCluster -ResourceGroupName $env.resourceGroupName -Name $name } | Should -Not -Throw
     }

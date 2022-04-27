@@ -25,13 +25,11 @@ The webhook is deleted.
 ## EXAMPLES
 
 ### Example 1: Remove a webhook
-```
-PS C:\>Remove-AzAutomationWebhook -Name "Webhook11" -ResourceGroup "ResourceGroup01" -AutomationAccountName "AutomationAccount01" -Force
+```powershell
+Remove-AzAutomationWebhook -Name "Webhook11" -ResourceGroupName "ResourceGroup01" -AutomationAccountName "AutomationAccount01"
 ```
 
 This command removes a webhook named Webhook11 in the Automation account named AutomationAccount01.
-The command specifies the *Force* parameter.
-Therefore, it does not prompt you for confirmation.
 
 ## PARAMETERS
 

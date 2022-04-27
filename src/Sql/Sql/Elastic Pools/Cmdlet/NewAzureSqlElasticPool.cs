@@ -160,6 +160,14 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         public string MaintenanceConfigurationId { get; set; }
 
         /// <summary>
+        /// Gets or sets the total number of high availability replicas associated with the elastic pool
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The total number of high availability replicas associated with the elastic pool.")]
+        [ValidateNotNullOrEmpty]
+        public int HighAvailabilityReplicaCount { get; set; }
+
+        /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
@@ -248,6 +256,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
 
                 newModel.DatabaseCapacityMin = MyInvocation.BoundParameters.ContainsKey("DatabaseVCoreMin") ? (double?)DatabaseVCoreMin : null;
                 newModel.DatabaseCapacityMax = MyInvocation.BoundParameters.ContainsKey("DatabaseVCoreMax") ? (double?)DatabaseVCoreMax : null;
+                newModel.HighAvailabilityReplicaCount = MyInvocation.BoundParameters.ContainsKey("HighAvailabilityReplicaCount") ? (int?)HighAvailabilityReplicaCount : null;
             }
 
             newEntity.Add(newModel);
