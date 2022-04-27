@@ -19,7 +19,6 @@
 --->
 
 ## Upcoming Release
-* Fixed `ArgumentNullException` in `Add-AzRouteConfig` when `RouteTable.Routes` is null.
 * Added new cmdlets to create/manage authorization objects for ExpressRoutePort:
     - `Add-AzExpressRoutePortAuthorization`
     - `Get-AzExpressRoutePortAuthorization`
