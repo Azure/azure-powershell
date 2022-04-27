@@ -1,6 +1,6 @@
 ### Example 1: Update PostgreSql server by resource group and server name
 ```powershell
- Update-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer -SslEnforcement Disabled
+Update-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer -SslEnforcement Disabled
 ```
 
 ```output
@@ -13,7 +13,7 @@ This cmdlet updates PostgreSql server by resource group and server name.
 
 ### Example 2: Update PostgreSql server by identity.
 ```powershell
- Get-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer | Update-AzPostgreSqlServer -BackupRetentionDay 23
+Get-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer | Update-AzPostgreSqlServer -BackupRetentionDay 23
 ```
 
 ```output
