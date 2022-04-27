@@ -20,17 +20,19 @@
 // code is regenerated.
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Commands.Compute.Strategies;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Compute.Common;
+using AutoMapper;
+using Microsoft.Azure.Commands.Compute.Strategies.ComputeRp;
+
 
 
 namespace Microsoft.Azure.Commands.Compute.Automation
@@ -96,9 +98,43 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                 flexibleOrchestrationModeDefaultParameters(parameters);
                                 checkFlexibleOrchestrationModeParamsDefaultParamSet(parameters);
                             }
-                            
 
-                            var result = VirtualMachineScaleSetsClient.CreateOrUpdate(resourceGroupName, vmScaleSetName, parameters);
+                            // For Cross-tenant RBAC sharing
+                            Dictionary<string, List<string>> auxAuthHeader = null;
+                            if (!string.IsNullOrEmpty(parameters.VirtualMachineProfile?.StorageProfile?.ImageReference?.Id))
+                            {
+                                var resourceId = ResourceId.TryParse(parameters.VirtualMachineProfile?.StorageProfile.ImageReference.Id);
+
+                                if (string.Equals(ComputeStrategy.Namespace, resourceId?.ResourceType?.Namespace, StringComparison.OrdinalIgnoreCase)
+                                 && string.Equals("galleries", resourceId?.ResourceType?.Provider, StringComparison.OrdinalIgnoreCase)
+                                 && !string.Equals(this.ComputeClient?.ComputeManagementClient?.SubscriptionId, resourceId?.SubscriptionId, StringComparison.OrdinalIgnoreCase))
+                                {
+                                    List<string> resourceIds = new List<string>();
+                                    resourceIds.Add(parameters.VirtualMachineProfile?.StorageProfile.ImageReference.Id);
+                                    var auxHeaderDictionary = GetAuxilaryAuthHeaderFromResourceIds(resourceIds);
+                                    if (auxHeaderDictionary != null && auxHeaderDictionary.Count > 0)
+                                    {
+                                        auxAuthHeader = new Dictionary<string, List<string>>(auxHeaderDictionary);
+                                    }
+                                }
+                            }
+                            // END: For Cross-tenant RBAC sharing
+
+                            VirtualMachineScaleSet result;
+                            if (auxAuthHeader != null)
+                            {
+                                var res = VirtualMachineScaleSetsClient.CreateOrUpdateWithHttpMessagesAsync(
+                                        resourceGroupName,
+                                        vmScaleSetName,
+                                        parameters,
+                                        auxAuthHeader).GetAwaiter().GetResult();
+
+                                result = res.Body;
+                            }
+                            else
+                            {
+                                result = VirtualMachineScaleSetsClient.CreateOrUpdate(resourceGroupName, vmScaleSetName, parameters);
+                            }
                             var psObject = new PSVirtualMachineScaleSet();
                             ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSet>(result, psObject);
                             WriteObject(psObject);

@@ -20,7 +20,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model
     [VhdEntity(Size = 4)]
     public class DiskGeometry
     {
-        public static DiskGeometry CreateFromVirtualSize(long size)
+        public static DiskGeometry CreateFromSize(long size)
         {
             long totalSectors = size / VhdConstants.VHD_SECTOR_LENGTH;
             if (totalSectors > 65535 * 16 * 255)

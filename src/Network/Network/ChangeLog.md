@@ -25,7 +25,6 @@
     - `Get-AzExpressRoutePortAuthorization`
     - `Remove-AzExpressRoutePortAuthorization`
 * Added option parameter `AuthorizationKey` to cmdlet `New-AzExpressRouteCircuit` to allow creating ExpressRoute Circuit on a ExpressRoutePort with a different owner.
-* Fixed `ArgumentNullException` in `Add-AzureRmRouteConfig` when `RouteTable.Routes` is null.
 * Fix bug that can't display CustomIpPrefix in PublicIpPrefix.
 * Updated cmdlets to add new property of `HubRoutingPreference` in VirtualHub and set property of `PreferredRoutingGateway` deprecated .
     - `New-AzVirtualHub`
@@ -42,6 +41,9 @@
     - `New-AzVpnServerConfigurationPolicyGroup`
     - `Update-AzVpnServerConfigurationPolicyGroup`
     - `Remove-AzVpnServerConfigurationPolicyGroup`
+
+## Version 4.16.1
+* Fixed `ArgumentNullException` in `Add-AzureRmRouteConfig` when `RouteTable.Routes` is null.
 
 ## Version 4.16.0
 * Added support for retrieving the state of packet capture even when the provisioning state of the packet capture was failure

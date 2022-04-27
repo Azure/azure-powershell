@@ -119,7 +119,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Remove managed Kubernetes cluster without prompt
+Execute the command without confirm
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

@@ -10,7 +10,6 @@ schema: 2.0.0
 ## SYNOPSIS
 Used to display allowed traffic between resources for the subscription
 
-
 ## SYNTAX
 
 ### SubscriptionScope (Default)
@@ -24,10 +23,9 @@ Get-AzAllowedConnection -ResourceGroupName <String> -Name <String> -Location <St
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### -ResourceId
+### ResourceId
 ```
-Get-AzAllowedConnection -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzAllowedConnection -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -141,7 +139,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -150,7 +148,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Security.Models.AllowedConnection.PSSecurityAllowedConnection
-
 
 ## NOTES
 

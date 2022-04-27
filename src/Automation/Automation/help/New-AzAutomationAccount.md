@@ -28,7 +28,7 @@ of other Automation accounts. Automation resources include runbooks, Desired Sta
 
 ### Example 1: Create an automation account
 ```powershell
-PS C:\> New-AzAutomationAccount -Name "ContosoAutomationAccount" -Location "East US" -ResourceGroupName "ResourceGroup01"
+New-AzAutomationAccount -Name "ContosoAutomationAccount" -Location "East US" -ResourceGroupName "ResourceGroup01"
 ```
 
 This command creates a new automation account named ContosoAutomationAccount in the East US region.

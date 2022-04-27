@@ -22,77 +22,13 @@ The operation returns the properties of each container group including container
 Gets the properties of the specified container group in the specified subscription and resource group.
 The operation returns the properties of each container group including containers, image registry credentials, restart policy, IP address type, OS type, state, and volumes.
 .Example
-PS C:\> Get-AzContainerGroup
-
-Location Name    Zone ResourceGroupName
--------- ----    ---- -----------------
-eastus   test-cg1      test-rg
-eastus   test-cg2      test-rg
+Get-AzContainerGroup
 .Example
-PS C:\> Get-AzContainerGroup -Name test-cg1 -ResourceGroupName test-rg | fl
-
-
-Container                      : {test-container1}
-DnsConfigNameServer            :
-DnsConfigOption                :
-DnsConfigSearchDomain          :
-EncryptionPropertyKeyName      :
-EncryptionPropertyKeyVersion   :
-EncryptionPropertyVaultBaseUrl :
-IPAddressDnsNameLabel          :
-IPAddressFqdn                  :
-IPAddressIP                    : 000.000.000.000
-IPAddressPort                  : {Microsoft.Azure.PowerShell.Cmdlets.ContainerInsta 
-                                 nce.Models.Api20210301.Port, Microsoft.Azure.Power 
-                                 Shell.Cmdlets.ContainerInstance.Models.Api20210301 
-                                 .Port}
-IPAddressType                  : Public
-Id                             : /subscriptions/00000000-0000-0000-0000-000000000000 
-                                 0/resourceGroups/test-rg/providers/Microsoft.Contai 
-                                 nerInstance/containerGroups/test-cg1
-IdentityPrincipalId            :
-IdentityTenantId               :
-IdentityType                   :
-IdentityUserAssignedIdentity   : Microsoft.Azure.PowerShell.Cmdlets.ContainerInstan 
-                                 ce.Models.Api20210301.ContainerGroupIdentityUserAs 
-                                 signedIdentities
-ImageRegistryCredentials       :
-InitContainer                  : {}
-InstanceViewEvent              :
-InstanceViewState              :
-Location                       : eastus
-LogAnalyticLogType             : 
-LogAnalyticMetadata            : Microsoft.Azure.PowerShell.Cmdlets.ContainerInstan 
-                                 ce.Models.Api20210301.LogAnalyticsMetadata
-LogAnalyticWorkspaceId         :
-LogAnalyticWorkspaceKey        :
-LogAnalyticWorkspaceResourceId : Microsoft.Azure.PowerShell.Cmdlets.ContainerInstan 
-                                 ce.Models.Api20210301.LogAnalyticsWorkspaceResourc 
-                                 eId
-Name                           : test-cg1
-NetworkProfileId               :
-OSType                         : Linux
-ProvisioningState              : Succeeded
-ResourceGroupName              : test-rg
-RestartPolicy                  : Never
-Sku                            : Standard
-Tag                            : Microsoft.Azure.PowerShell.Cmdlets.ContainerInstan 
-                                 ce.Models.Api20210301.ResourceTags
-Type                           : Microsoft.ContainerInstance/containerGroups        
-Volume                         :
+Get-AzContainerGroup -Name test-cg1 -ResourceGroupName test-rg | Format-List
 .Example
-PS C:\> Get-AzContainerGroup -ResourceGroupName test-rg
-
-Location Name    Zone ResourceGroupName
--------- ----    ---- -----------------
-eastus   test-cg1      test-rg
-eastus   test-cg2      test-rg
+Get-AzContainerGroup -ResourceGroupName test-rg
 .Example
-PS C:\> Update-AzContainerGroup -Name test-cg1 -ResourceGroupName test-rg -Tag @{"test"="value"} | Get-AzContainerGroup
-
-Location Name    Zone ResourceGroupName
--------- ----    ---- -----------------
-eastus   test-cg1      test-rg
+Update-AzContainerGroup -Name test-cg1 -ResourceGroupName test-rg -Tag @{"test"="value"} | Get-AzContainerGroup
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentity
@@ -203,6 +139,24 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Runspace.Version.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
         $mapping = @{
             Get = 'Az.ContainerInstance.private\Get-AzContainerGroup_Get';
             GetViaIdentity = 'Az.ContainerInstance.private\Get-AzContainerGroup_GetViaIdentity';
@@ -219,6 +173,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
 }
@@ -227,15 +182,32 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
 
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
 end {
     try {
         $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
+} 
 }

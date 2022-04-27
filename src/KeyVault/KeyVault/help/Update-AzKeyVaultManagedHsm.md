@@ -15,21 +15,21 @@ Update the state of an Azure managed HSM.
 ### UpdateByNameParameterSet (Default)
 ```
 Update-AzKeyVaultManagedHsm -Name <String> -ResourceGroupName <String> [-EnablePurgeProtection]
- [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
- [<CommonParameters>]
+ [-PublicNetworkAccess <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### UpdateByInputObjectParameterSet
 ```
-Update-AzKeyVaultManagedHsm -InputObject <PSManagedHsm> [-EnablePurgeProtection] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
- [<CommonParameters>]
+Update-AzKeyVaultManagedHsm -InputObject <PSManagedHsm> [-EnablePurgeProtection]
+ [-PublicNetworkAccess <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### UpdateByResourceIdParameterSet
 ```
-Update-AzKeyVaultManagedHsm -ResourceId <String> [-EnablePurgeProtection] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
+Update-AzKeyVaultManagedHsm -ResourceId <String> [-EnablePurgeProtection] [-PublicNetworkAccess <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
  [<CommonParameters>]
 ```
 
@@ -73,10 +73,11 @@ Get-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $resourceGroupName | 
 
 Updates tags for the managed Hsm using piping syntax.
 
-### Example 3: Enable purge protection for a managed Hsm 
+### Example 3: Enable purge protection for a managed Hsm
 ```powershell
 PS C:\> Update-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $resourceGroupName -EnablePurgeProtection | fl
 ```
+
 ```output
 Managed HSM Name                    : testmhsm
 Resource Group Name                 : test-rg
@@ -153,6 +154,21 @@ Parameter Sets: UpdateByNameParameterSet
 Aliases: HsmName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicNetworkAccess
+Controls permission for data plane traffic coming from public networks while private endpoint is enabled.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

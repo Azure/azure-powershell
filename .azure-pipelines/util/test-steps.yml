@@ -7,10 +7,10 @@ parameters:
 steps:
 - template: download-build-steps.yml
   parameters:
-    osName: ${{ parameters.osName }}
+    artifactName: build-${{ parameters.testFramework }}
 - task: NodeTool@0
   condition: eq(variables.IsGenerateBased, true)
-  displayName: Install autorest
+  displayName: Install Autorest
   inputs:
     versionSpec: '14.17.1'
     command: custom
@@ -18,7 +18,7 @@ steps:
     customCommand: install autorest@latest
 - task: PowerShell@2
   condition: eq(variables.IsGenerateBased, true)
-  displayName: Setup environment for autorest
+  displayName: Setup environment for Autorest
   inputs:
     targetType: inline
     script: "$env:NODE_OPTIONS=\"--max-old-space-size=65536\""
@@ -63,4 +63,4 @@ steps:
 
 - template: publish-artifacts-steps.yml
   parameters:
-    artifactName: test-${{ parameters.osName }}
+    artifactName: test-${{ parameters.testFramework }}-${{ parameters.osName }}

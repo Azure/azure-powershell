@@ -41,7 +41,7 @@ Get-AzGallery -ResourceGroupName rg1 -GalleryName gallery1
 
 ```output
 ResourceGroupName : rg1
-Description       : Gallery created by Powershell.
+Description       : Gallery created by PowerShell.
 Identifier        : 
   UniqueName      : 00000000-0000-0000-0000-000000000000-gallery1
 ProvisioningState : Succeeded
@@ -61,7 +61,7 @@ Get-AzGallery -ResourceGroupName rg1
 
 ```output
 ResourceGroupName : rg1
-Description       : Gallery created by Powershell.
+Description       : Gallery created by PowerShell.
 Identifier        : 
   UniqueName      : 00000000-0000-0000-0000-000000000000-gallery1
 ProvisioningState : Succeeded
@@ -72,9 +72,9 @@ Location          : southcentralus
 Tags              : {}
 
 ResourceGroupName : rg1
-Description       : Gallery created by Powershell.
+Description       : Gallery created by PowerShell.
 Identifier        : 
-  UniqueName      : 00000000-0000-0000-0000-000000000000-gallery1
+  UniqueName      : 00000000-0000-0000-0000-000000000000-gallery2
 ProvisioningState : Succeeded
 Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Compute/galleries/gallery2
 Name              : gallery2
@@ -92,7 +92,7 @@ Get-AzGallery
 
 ```output
 ResourceGroupName : rg1
-Description       : Gallery created by Powershell.
+Description       : Gallery created by PowerShell.
 Identifier        : 
   UniqueName      : 00000000-0000-0000-0000-000000000000-gallery1
 ProvisioningState : Succeeded
@@ -103,9 +103,9 @@ Location          : southcentralus
 Tags              : {}
 
 ResourceGroupName : rg1
-Description       : Gallery created by Powershell.
+Description       : Gallery created by PowerShell.
 Identifier        : 
-  UniqueName      : 00000000-0000-0000-0000-000000000000-gallery1
+  UniqueName      : 00000000-0000-0000-0000-000000000000-gallery2
 ProvisioningState : Succeeded
 Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Compute/galleries/gallery2
 Name              : gallery2
@@ -114,9 +114,9 @@ Location          : southcentralus
 Tags              : {}
 
 ResourceGroupName : rg2
-Description       : Gallery created by Powershell.
+Description       : Gallery created by PowerShell.
 Identifier        : 
-  UniqueName      : 00000000-0000-0000-0000-000000000000-gallery1
+  UniqueName      : 00000000-0000-0000-0000-000000000000-gallery3
 ProvisioningState : Succeeded
 Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg2/providers/Microsoft.Compute/galleries/gallery3
 Name              : gallery3
@@ -134,7 +134,7 @@ Get-AzGallery -Name gallery*
 
 ```output
 ResourceGroupName : rg1
-Description       : Gallery created by Powershell.
+Description       : Gallery created by PowerShell.
 Identifier        : 
   UniqueName      : 00000000-0000-0000-0000-000000000000-gallery1
 ProvisioningState : Succeeded
@@ -145,9 +145,9 @@ Location          : southcentralus
 Tags              : {}
 
 ResourceGroupName : rg1
-Description       : Gallery created by Powershell.
+Description       : Gallery created by PowerShell.
 Identifier        : 
-  UniqueName      : 00000000-0000-0000-0000-000000000000-gallery1
+  UniqueName      : 00000000-0000-0000-0000-000000000000-gallery2
 ProvisioningState : Succeeded
 Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Compute/galleries/gallery2
 Name              : gallery2
@@ -156,9 +156,9 @@ Location          : southcentralus
 Tags              : {}
 
 ResourceGroupName : rg2
-Description       : Gallery created by Powershell.
+Description       : Gallery created by PowerShell.
 Identifier        : 
-  UniqueName      : 00000000-0000-0000-0000-000000000000-gallery1
+  UniqueName      : 00000000-0000-0000-0000-000000000000-gallery3
 ProvisioningState : Succeeded
 Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg2/providers/Microsoft.Compute/galleries/gallery3
 Name              : gallery3

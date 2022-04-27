@@ -127,7 +127,7 @@ Errors           : {}
 ### Example 4
 ```powershell
 $Job = New-AzRecoveryServicesAsrPolicy -Name $TestPolicy1 -AzureToAzure -RecoveryPointRetentionInHours 10  -ApplicationConsistentSnapshotFrequencyInHours 5 
-Get-AsrJob -name $Job.id
+Get-AzRecoveryServicesAsrJob -name $Job.id
 ```
 
 Starts the replication policy creation operation using the specified parameters and returns the ASR job used to track the operation.

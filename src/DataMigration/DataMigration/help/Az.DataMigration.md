@@ -41,6 +41,9 @@ Retrieve the List of database migrations attached to the service.
 ### [Get-AzDataMigrationTask](Get-AzDataMigrationTask.md)
 Retrieves the PSProjectTask object associated with an Azure Database Migration Service migration task.
 
+### [Get-AzDataMigrationToSqlDb](Get-AzDataMigrationToSqlDb.md)
+Retrieve the specified database migration for a given SQL Db.
+
 ### [Get-AzDataMigrationToSqlManagedInstance](Get-AzDataMigrationToSqlManagedInstance.md)
 Retrieve the specified database migration for a given SQL Managed Instance.
 
@@ -95,6 +98,9 @@ Creates a database info object specific to the sync scenario to be used for a mi
 ### [New-AzDataMigrationTask](New-AzDataMigrationTask.md)
 Creates and starts a data migration task in the Azure Database Migration Service.
 
+### [New-AzDataMigrationToSqlDb](New-AzDataMigrationToSqlDb.md)
+Create a new database migration to a given SQL Db.
+
 ### [New-AzDataMigrationToSqlManagedInstance](New-AzDataMigrationToSqlManagedInstance.md)
 Create a new database migration to a given SQL Managed Instance.
 
@@ -119,6 +125,9 @@ Delete the integration runtime node.
 ### [Remove-AzDataMigrationTask](Remove-AzDataMigrationTask.md)
 Removes an Azure Database Migration Service task from Azure.
 
+### [Remove-AzDataMigrationToSqlDb](Remove-AzDataMigrationToSqlDb.md)
+Remove the specified database migration for a given SQL Db.
+
 ### [Start-AzDataMigrationService](Start-AzDataMigrationService.md)
 Starts an instance of the Azure Database Migration Service in a stopped state. 
 
@@ -127,6 +136,9 @@ Stops an instance of the Azure Database Migration Service that is in a running s
 
 ### [Stop-AzDataMigrationTask](Stop-AzDataMigrationTask.md)
 Stops an  Azure Database Migration Service task that is in a running state.
+
+### [Stop-AzDataMigrationToSqlDb](Stop-AzDataMigrationToSqlDb.md)
+Stop in-progress database migration to SQL Db.
 
 ### [Stop-AzDataMigrationToSqlManagedInstance](Stop-AzDataMigrationToSqlManagedInstance.md)
 Stop in-progress database migration to SQL Managed Instance.
