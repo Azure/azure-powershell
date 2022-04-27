@@ -22,47 +22,7 @@
 [Breaking change] Sample has been replaced by Examples in 
  `New-AzApiManagementOperation` and `Set-AzApiManagementOperation`
 
-* `Add-AzApiManagementRegion`: New parameter added:
-[-PublicIpAddressId <String>] 
-
-* `Backup-AzApiManagement`: New parameter added:
-[-AccessType <String>]
-[-IdentityClientId <String>]
-
-* `New-AzApiManagement`: New parameter added:
-[-PublicNetworkAccess <String>]
-[-PublicIpAddressId <String>]
-
-* `New-AzApiManagementCustomHostnameConfiguration`: New parameter added:
-[-ManagedCertificate]
-
-* `New-AzApiManagementRegion`: New parameter added:
-[-PublicIpAddressId <String>]
-
-* `Restore-AzApiManagement`: New parameter added:
-[-AccessType <String>]
-[-IdentityClientId <String>]
-
-* `Update-AzApiManagementRegion`: New parameter added:
-[-PublicIpAddressId <String>]
-
-* `New-AzApiManagementApi`: New parameter added:
- [-ApiType <PsApiManagementApiType>]
- [-TermsOfServiceUrl <String>]
- [-ContactName <String>]
- [-ContactUrl <String>]
- [-ContactEmail <String>]
- [-LicenseName <String>]
- [-LicenseUrl <String>]
-
-* `Set-AzApiManagementApi`: New parameter added:
- [-ApiType <PsApiManagementApiType>]
- [-TermsOfServiceUrl <String>]
- [-ContactName <String>]
- [-ContactUrl <String>]
- [-ContactEmail <String>]
- [-LicenseName <String>]
- [-LicenseUrl <String>]
+* Updated APIM .Net SDK version to 8.0.0 / Api Version 2021-08-01
 
 ## Version 2.3.2
 Added warning message for upcoming breaking change.
